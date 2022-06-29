@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jun 27 13:10:04 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.5+kde5, rebased upstream:
+  * Revert "Allow creation of custom QQuickPopupItem-derived types"
+  * QQuickAbstractButton: fix crash on destruction
+  * TextArea: Detach the flickable when it is deleted
+  * Don't call QQml_setParent_noEvent with a nullptr item
+  * Hide old scroll bars
+  * Allow creation of custom QQuickPopupItem-derived types
+  * Imagine: fix GroupBox's bottom edge being clipped
+  * QQuickDial: Keep value integer if everything is integer
+  * ScrollView: fix crash when scrolling with zero-sized item
+  * Change the name of the material style plugin to avoid a path limit
+  * QmlDesigner: Fix RangeSliderSpecifics snap mode
+  * Ensure the ninepatch image is detached
+  * Ninepatch: keep resetNode status to not lose track of ImageNode->NinePatchNode changes
+  * Revert "Update commercial license headers"
+  * Fix static build
+  * ComboBox: don't focus TextField when clicking on indicator
+  * Combobox: Fix initial set of inputMethodHints
+  * Fix popups with exit transitions blocking mouse events when destroyed
+  * a11y: Fix ordering on header, content item and footer in Page
+  * Update commercial license headers
+  * Fix initial currentIndex in Tumbler when wrap is set to false
+  * SwipeDelegate: ensure background and contentItem are resized
+  * Reset the opacity and scale properties after the exit transition
+- Drop 0001-Revert-Bump-version.patch, it's versioned correctly now
+
+-------------------------------------------------------------------
 Fri Jan 21 08:13:58 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.2+kde10:

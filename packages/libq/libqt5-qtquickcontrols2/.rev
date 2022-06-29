@@ -201,4 +201,12 @@
     <comment>New snapshots</comment>
     <requestid>948152</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f7947200dc30d3cffab33d7b9d6c1127</srcmd5>
+    <version>5.15.5+kde5</version>
+    <time>1656511238</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
+    <requestid>985485</requestid>
+  </revision>
 </revisionlist>
