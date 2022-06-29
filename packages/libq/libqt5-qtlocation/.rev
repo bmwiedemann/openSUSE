@@ -402,4 +402,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   GeoClue2 DBus service file.</comment>
     <requestid>914862</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>50a8cd69d20dd24ac3224803397a2401</srcmd5>
+    <version>5.15.5+kde3</version>
+    <time>1656511235</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
+    <requestid>985479</requestid>
+  </revision>
 </revisionlist>
