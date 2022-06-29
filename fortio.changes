@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 29 11:18:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.34.0:
+  * moved rest api and tsv to rapi/ package, restore linters and fix lints (#597)
+  * add echo back to the connection reuse flag and revert readme  (#598)
+  * Max connection reuse (#594)
+  * Cleanup in generics implementation, clarity on DynValueTypes (#596)
+
+-------------------------------------------------------------------
 Wed Jun 22 07:37:06 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.33.0:
