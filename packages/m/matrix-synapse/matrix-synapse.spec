@@ -140,14 +140,14 @@
 #define use_python python38
 #define __python3 #{_bindir}/python3
 #else
-%define use_python python3
+%define use_python python310
 #endif
 
 %define         modname synapse
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.61.0
+Version:        1.61.1
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
