@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 28 14:39:26 UTC 2022 - Stefan Schubert <schubi@intern>
+
+- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d. 
+
+-------------------------------------------------------------------
 Wed Jun  8 11:26:13 UTC 2022 - pgajdos@suse.com
 
 - update httpd-framework to svn revision 1898917

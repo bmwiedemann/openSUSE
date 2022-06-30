@@ -513,8 +513,13 @@ cat > %{buildroot}/%{_libexecdir}/apache2_MMN <<-EOF
 echo %{apache_mmn}
 EOF
 
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+install -m 644 %{SOURCE31} %{buildroot}/%{_distconfdir}/logrotate.d/apache2
+%else
 mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
 install -m 644 %{SOURCE31} %{buildroot}/%{_sysconfdir}/logrotate.d/apache2
+%endif
 
 make DESTDIR=%{buildroot} install-suexec -j1
 
@@ -852,7 +857,11 @@ exit 0
 %dir %{sysconfdir}/conf.d
 %dir %{sysconfdir}/vhosts.d
 %{_fillupdir}/sysconfig.apache2
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/apache2
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/apache2
+%endif
 %{_unitdir}/apache2.service
 %{_unitdir}/apache2@.service
 %{_unitdir}/apache2.target
