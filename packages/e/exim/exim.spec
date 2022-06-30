@@ -1,7 +1,7 @@
 #
 # spec file for package exim
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,7 @@ BuildRequires:  pam-devel
 %if %{with_ldap}
 BuildRequires:  openldap2-devel
 %endif
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libssl)
@@ -74,8 +74,8 @@ Requires(pre):  group(mail)
 %endif
 Requires(pre):  fileutils textutils
 %endif
-Version:        4.95
-Release:        1
+Version:        4.96
+Release:        0
 %if %{with_mysql}
 BuildRequires:  mysql-devel
 %endif
@@ -307,7 +307,11 @@ mkdir -p $RPM_BUILD_ROOT/%{_unitdir}
 %else
 mkdir -p $RPM_BUILD_ROOT/etc/init.d
 %endif
-mkdir -p $RPM_BUILD_ROOT/etc/logrotate.d
+%if 0%{?suse_version} > 1500
+mkdir -p $RPM_BUILD_ROOT%{_distconfdir}/logrotate.d
+%else
+mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/logrotate.d
+%endif
 mkdir -p $RPM_BUILD_ROOT/usr/{bin,sbin,lib}
 mkdir -p $RPM_BUILD_ROOT/var/log/exim
 mkdir -p $RPM_BUILD_ROOT/var/spool/mail/
@@ -344,7 +348,11 @@ ln -sv ../../etc/init.d/exim $RPM_BUILD_ROOT/usr/sbin/rcexim
 %endif
 mv $RPM_BUILD_ROOT/usr/sbin/eximon* $RPM_BUILD_ROOT/usr/bin/
 cp -p %{S:1} $RPM_BUILD_ROOT%{_fillupdir}/sysconfig.exim
-install -m 0644 %{S:2} $RPM_BUILD_ROOT/etc/logrotate.d/exim
+%if 0%{?suse_version} > 1500
+install -m 0644 %{S:2} $RPM_BUILD_ROOT%{_distconfdir}/logrotate.d/exim
+%else
+install -m 0644 %{S:2} $RPM_BUILD_ROOT%{_sysconfdir}/logrotate.d/exim
+%endif
 # man pages
 mv doc/exim.8 $RPM_BUILD_ROOT/%{_mandir}/man8/
 cp $RPM_SOURCE_DIR/exim_db.8.gz $RPM_BUILD_ROOT/%{_mandir}/man8
@@ -476,7 +484,11 @@ exit 0
 %else
 %config /etc/init.d/exim
 %endif
-%config(noreplace) /etc/logrotate.d/exim
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/exim
+%else
+%config(noreplace) %{_sysconfdir}/logrotate.d/exim
+%endif
 %if %{?suse_version:%suse_version}%{?!suse_version:99999} < 1000
 %config(noreplace) /etc/permissions.d/exim
 %endif

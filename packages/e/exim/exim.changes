@@ -1,3 +1,79 @@
+-------------------------------------------------------------------
+Wed Jun 29 14:20:50 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d.
+
+Mon Jun 27 08:33:59 UTC 2022 - Peter Wullinger <wullinger@rz.uni-kiel.de>
+
+- update to exim 4.96
+  * Move from using the pcre library to pcre2.
+  * Constification work in the filters module required a major version
+    bump for the local-scan API.  Specifically, the "headers_charset"
+    global which is visible via the API is now const and may therefore
+    not be modified by local-scan code.
+  * Bug 2819: speed up command-line messages being read in.  Previously a
+    time check was being done for every character; replace that with one
+    per buffer.
+  * Bug 2815: Fix ALPN sent by server under OpenSSL.  Previously the string
+    sent was prefixed with a length byte.
+  * Change the SMTP feature name for pipelining connect to be compliant with
+    RFC 5321.  Previously Dovecot (at least) would log errors during
+    submission.
+  * Fix macro-definition during "-be" expansion testing.  The move to
+    write-protected store for macros had not accounted for these runtime
+    additions; fix by removing this protection for "-be" mode.
+  * Convert all uses of select() to poll().
+  * Fix use of $sender_host_name in daemon process.  When used in certain
+    main-section options or in a connect ACL, the value from the first ever
+    connection was never replaced for subsequent connections.
+  * Bug 2838: Fix for i32lp64 hard-align platforms
+  * Bug 2845: Fix handling of tls_require_ciphers for OpenSSL when a value
+    with underbars is given.
+  * Bug 1895: TLS: Deprecate RFC 5114 Diffie-Hellman parameters.
+  * Debugging initiated by an ACL control now continues through into routing
+    and transport processes.
+  * The "expand" debug selector now gives more detail, specifically on the
+    result of expansion operators and items.
+  * Bug 2751: Fix include_directory in redirect routers.  Previously a
+    bad comparison between the option value and the name of the file to
+    be included was done, and a mismatch was wrongly identified.
+  * Support for Berkeley DB versions 1 and 2 is withdrawn.
+  * When built with NDBM for hints DB's check for nonexistence of a name
+    supplied as the db file-pair basename.
+  * Remove the "allow_insecure_tainted_data" main config option and the
+    "taint" log_selector.
+  * Fix static address-list lookups to properly return the matched item.
+    Previously only the domain part was returned.
+  * The ${run} expansion item now expands its command string elements after
+    splitting.  Previously it was before; the new ordering makes handling
+    zero-length arguments simpler.
+  * Taint-check exec arguments for transport-initiated external processes.
+    Previously, tainted values could be used.  This affects "pipe", "lmtp" and
+    "queryprogram" transport, transport-filter, and ETRN commands.
+    The ${run} expansion is also affected: in "preexpand" mode no part of
+    the command line may be tainted, in default mode the executable name
+    may not be tainted.
+  * Fix CHUNKING on a continued-transport.  Previously the usabilility of
+    the facility was not passed across execs, and only the first message
+    passed over a connection could use BDAT; any further ones using DATA. 
+  * Support the PIPECONNECT facility in the smtp transport when the helo_data
+    uses $sending_ip_address and an interface is specified.
+  * OpenSSL: fix transport-required OCSP stapling verification under session
+    resumption.
+  * TLS resumption: the key for session lookup in the client now includes
+    more info that a server could potentially use in configuring a TLS
+    session, avoiding oferring mismatching sessions to such a server.
+  * Fix string_copyn() for limit greater than actual string length.
+  * Bug 2886: GnuTLS: Do not free the cached creds on transport connection
+    close; it may be needed for a subsequent connection.
+  * Fix CHUNKING for a second message on a connection when the first was
+    rejected.
+  * Fix ${srs_encode ...} to handle an empty sender address, now returning
+    an empty address.
+  * Bug 2855: Handle a v4mapped sender address given us by a frontending
+    proxy. 
+
 Wed Jan 19 11:41:15 UTC 2022 - Peter Wullinger <wullinger@rz.uni-kiel.de>
 
 - disable ProtectHome=, it prevents local delivery (bsc#1194810)
