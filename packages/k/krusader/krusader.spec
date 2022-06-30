@@ -1,7 +1,7 @@
 #
 # spec file for package krusader
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,11 @@ Summary:        A File Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            https://krusader.org/
-Source:         http://download.kde.org/stable/krusader/%{version}/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/krusader/%{version}/%{name}-%{version}.tar.xz
 Source1:        krusader_browse_iso.desktop
 Source2:        org.kde.krusader.root-mode.desktop
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fixed-non-working-actions-for-create-extract-archive.patch
 BuildRequires:  extra-cmake-modules >= 1.7.0
 BuildRequires:  fdupes
 BuildRequires:  libacl-devel
@@ -82,19 +84,23 @@ Group:          Productivity/File utilities
 An advanced twin panel (commander style) file manager for KDE.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
+
 mkdir -p %{buildroot}%{_kf5_servicesdir}/ServiceMenus/
 cp %{SOURCE1} %{buildroot}%{_kf5_servicesdir}/ServiceMenus/
 cp %{SOURCE2} %{buildroot}%{_kf5_applicationsdir}/
+
 %suse_update_desktop_file org.kde.krusader.root-mode FileManager Utility
+
 %find_lang %{name}
+
 %fdupes %{buildroot}
 
 %post   -p /sbin/ldconfig
@@ -103,27 +109,27 @@ cp %{SOURCE2} %{buildroot}%{_kf5_applicationsdir}/
 %files -f %{name}.lang
 %license COPYING
 %doc README AUTHORS ChangeLog TODO
-%{_kf5_applicationsdir}/org.kde.krusader*.desktop
-%{_kf5_appsdir}/krusader
-%{_kf5_bindir}/krusader
-%{_kf5_iconsdir}/??color/*/apps/krusader*.png
-%{_kf5_plugindir}/kio_krarc.so
-%{_kf5_servicesdir}/krarc.protocol
-%{_kf5_kxmlguidir}/
-%{_kf5_mandir}/man1/krusader.1.gz
+%dir %{_kf5_appstreamdir}
 %dir %{_kf5_mandir}/uk
 %dir %{_kf5_mandir}/uk/man1
-%{_kf5_mandir}/*/man1/krusader.1.gz
 %exclude %{_kf5_htmldir}/*/krusader
-%dir %{_kf5_appstreamdir}
+%{_kf5_applicationsdir}/org.kde.krusader*.desktop
+%{_kf5_appsdir}/krusader
 %{_kf5_appstreamdir}/org.kde.krusader.appdata.xml
+%{_kf5_bindir}/krusader
+%{_kf5_iconsdir}/??color/*/apps/krusader*.png
+%{_kf5_kxmlguidir}/
+%{_kf5_mandir}/*/man1/krusader.1.gz
+%{_kf5_mandir}/man1/krusader.1.gz
+%{_kf5_plugindir}/kio_krarc.so
+%{_kf5_servicesdir}/krarc.protocol
 
 %files -n kio_iso
 %config %{_kf5_configdir}/kio_isorc
-%{_kf5_plugindir}/kio_iso.so*
-%{_kf5_servicesdir}/iso.protocol
 %dir %{_kf5_servicesdir}/ServiceMenus
+%{_kf5_plugindir}/kio_iso.so*
 %{_kf5_servicesdir}/ServiceMenus/krusader_browse_iso.desktop
+%{_kf5_servicesdir}/iso.protocol
 
 %files doc
 %doc %lang(en) %{_kf5_htmldir}/en/krusader

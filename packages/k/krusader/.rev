@@ -468,4 +468,15 @@
 - Run spec-cleaner (forwarded request 726070 from wolfi323)</comment>
     <requestid>726075</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>e121c5b7fbcab0c9fd22fb0d74813d57</srcmd5>
+    <version>2.7.2</version>
+    <time>1656587897</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix the 'Compress' menu (boo#1198725)
+  * 0001-Fixed-non-working-actions-for-create-extract-archive.patch
+
+- Spec cleanup</comment>
+    <requestid>985850</requestid>
+  </revision>
 </revisionlist>
