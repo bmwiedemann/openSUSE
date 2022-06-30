@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 29 12:49:20 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Remove obsolete 0%{suse_version} < 1500 conditions
+
+-------------------------------------------------------------------
+Wed Jun 29 12:04:22 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Add options-old.patch, options-cxx17.patch
+  * Ensure ABI stability regardless of compiler settings per instruction in the header.
+
+-------------------------------------------------------------------
 Mon Apr  4 11:37:33 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Implement shlib packaging policy
