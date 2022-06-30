@@ -1,7 +1,7 @@
 #
 # spec file for package atftp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,7 +77,12 @@ install -D -m 0644 %{SOURCE5} %{buildroot}/%{_unitdir}/atftpd.service
 install -D -m 0644 %{SOURCE6} %{buildroot}/%{_unitdir}/atftpd.socket
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcatftpd
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.atftpd
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_distconfdir}/logrotate.d/%{name}
+%else
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
+%endif
 install -d -m 0755 %{buildroot}/srv/tftpboot
 install -d -m 0750 %{buildroot}%{_localstatedir}/log/atftpd
 
@@ -109,7 +114,11 @@ fi
 %{_sbindir}/rcatftpd
 %{_unitdir}/atftpd.service
 %{_unitdir}/atftpd.socket
-%config %{_sysconfdir}/logrotate.d/%{name}
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/%{name}
+%else
+%config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
+%endif
 %{_fillupdir}/sysconfig.atftpd
 %{_mandir}/man1/atftp.1.gz
 %{_mandir}/man8/atftpd.8.gz
