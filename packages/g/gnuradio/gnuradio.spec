@@ -16,14 +16,14 @@
 #
 
 
-%define sover  3_10_2
+%define sover  3_10_3
 %ifarch %{arm}
 # boo#1182440
 %define _lto_cflags %{nil}
 %endif
 %bcond_without docs
 Name:           gnuradio
-Version:        3.10.2.0
+Version:        3.10.3.0
 Release:        0
 Summary:        GNU software radio
 License:        GPL-3.0-or-later
@@ -49,6 +49,7 @@ BuildRequires:  libboost_atomic-devel >= 1.69
 BuildRequires:  libboost_filesystem-devel >= 1.69
 BuildRequires:  libboost_system-devel  >= 1.69
 BuildRequires:  libgsm-devel
+BuildRequires:  libiio-devel
 BuildRequires:  libjack-devel
 BuildRequires:  libmpir-devel
 BuildRequires:  libsndfile-devel
