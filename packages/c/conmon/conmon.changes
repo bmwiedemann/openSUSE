@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 29 06:05:57 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 2.1.2:
+  * add log-global-size-max option to limit the total output conmon processes (CVE-2022-1708 boo#1200285)
+  * journald: print tag and name if both are specified
+  * drop some logs to debug level
+
+-------------------------------------------------------------------
 Thu May  5 15:46:07 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.1.0
