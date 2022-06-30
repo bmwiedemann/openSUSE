@@ -17,7 +17,7 @@
 
 
 Name:           cyreal-lora-fonts
-Version:        3.002
+Version:        3.003
 Release:        0
 Summary:        Serif family for text. Variable Open Source Font
 License:        OFL-1.1
@@ -48,14 +48,14 @@ print.
 Designed by Olga Karpushina, and Alexei Vanyashin for Cyreal.
 
 %prep
-%autosetup -n Lora-v%{version}
+%autosetup -c
 cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} .
 
 %build
 
 %install
 install -dm0755 %{buildroot}%{_ttfontsdir}
-install -m0644 fonts/otf/*.otf %{buildroot}%{_ttfontsdir}
+install -m0644 otf/*.otf %{buildroot}%{_ttfontsdir}
 
 %reconfigure_fonts_scriptlets
 
