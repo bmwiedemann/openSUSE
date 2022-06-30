@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Jun 26 08:53:26 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 91.11.0
+  * CLIENTID fix for bmo#1759197 in Thunderbird 91.8.1 did not work
+    additional fix applied
+  * "Save-As" attachment dialog did not have filename pre-populated
+  MFSA 2022-26 (bsc#1200793)
+  * CVE-2022-34479 (bmo#1745595)
+    A popup window could be resized in a way to overlay the
+    address bar with web content
+  * CVE-2022-34470 (bmo#1765951)
+    Use-after-free in nsSHistory
+  * CVE-2022-34468 (bmo#1768537)
+    CSP sandbox header without `allow-scripts` can be bypassed
+    via retargeted javascript: URI
+  * CVE-2022-2226 (bmo#1775441)
+    An email with a mismatching OpenPGP signature date was
+    accepted as valid
+  * CVE-2022-34481 (bmo#1497246)
+    Potential integer overflow in ReplaceElementsAt
+  * CVE-2022-31744 (bmo#1757604)
+    CSP bypass enabling stylesheet injection
+  * CVE-2022-34472 (bmo#1770123)
+    Unavailable PAC file resulted in OCSP requests being blocked
+  * CVE-2022-34478 (bmo#1773717)
+    Microsoft protocols can be attacked if a user accepts a prompt
+  * CVE-2022-2200 (bmo#1771381)
+    Undesired attributes could be set as part of prototype pollution
+  * CVE-2022-34484 (bmo#1763634, bmo#1772651)
+    Memory safety bugs fixed in Thunderbird 91.11 and Thunderbird 102
+
+-------------------------------------------------------------------
 Thu May 26 07:56:09 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 91.10.0
