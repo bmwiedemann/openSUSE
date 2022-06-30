@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 28 16:32:42 UTC 2022 - malcolmlewis@opensuse.org
+
+- Update to version 2017.08+git.20220516:
+  * vkutil: Fix compilation with older vulkan-hpp versions
+  * vkutil: Avoid deprecated vk::ResultValue implicit cast
+  * tests: Update catch.hpp to v2.13.9
+- Drop vkmark-sigstksz-not-constant.patch as this is upstreamed.
+
+-------------------------------------------------------------------
 Mon Dec 20 13:32:45 UTC 2021 - malcolmlewis@opensuse.org
 
 - Add vkmark-sigstksz-not-constant.patch: Temporary fix for glibc

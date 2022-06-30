@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Wed Jun 29 21:05:12 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.4.0:
+  - NEW diagnostics:
+        cast-local-type
+        assign-type-mismatch
+        param-type-mismatch
+        unknown-cast-variable
+        cast-type-mismatch
+        missing-return-value
+        redundant-return-value
+        missing-return
+        return-type-mismatch
+  - NEW settings:
+        diagnostics.groupSeverity
+        diagnostics.groupFileStatus
+        type.castNumberToInteger
+        type.weakUnionCheck
+        hint.semicolon
+  - CHG infer nil as redundant return value
+
+    local function f() end
+    local x = f() -- `x` is `nil` instead of `unknown`
+
+  - CHG infer called function by params num
+
+    ---@overload fun(x: number, y: number):string
+    ---@overload fun(x: number):number
+    ---@return boolean
+    local function f() end
+
+    local n1 = f()     -- `n1` is `boolean`
+    local n2 = f(0)    -- `n2` is `number`
+    local n3 = f(0, 0) -- `n3` is `string`
+
+  - CHG semicolons and parentheses can be used in DocTable
+
+    ---@type { (x: number); (y: boolean) }
+
+    CHG return names and parentheses can be used in DocFunction
+
+    ---@type fun():(x: number, y: number, ...: number)
+
+  - CHG supports ---@return boolean ...
+  - CHG improve experience for diagnostics and semantic-tokens
+  - FIX diagnostics flash when opening a file
+  - FIX sometimes workspace diagnostics are not triggered
+
+- Update to 3.3.0:
+  - NEW LuaDoc supports `CODE`
+
+    ---@type `CONST.X` | `CONST.Y`
+    local x
+
+    if x == -- suggest `CONST.X` and `CONST.Y` here
+
+  - CHG infer type by error
+
+    ---@type integer|nil
+    local n
+
+    if not n then
+        error('n is nil')
+    end
+
+    print(n) -- `n` is `integer` here
+
+  - CHG infer type by t and t.x
+
+    ---@type table|nil
+    local t
+
+    local s = t and t.x or 1 -- `t` in `t.x` is `table`
+
+  - CHG infer type by type(x)
+
+    local x
+
+    if type(x) == 'string' then
+        print(x) -- `x` is `string` here
+    end
+
+    local tp = type(x)
+
+    if tp == 'boolean' then
+        print(x) -- `x` is `boolean` here
+    end
+
+  - CHG infer type by >/</>=/<=
+    FIX with clients that support LSP 3.17 (VSCode), workspace
+        diagnostics are triggered every time when opening a file.
+    FIX #1204
+    FIX #1208
+
+- Update to 3.2.5:
+  - NEW provide config docs in LUA_LANGUAGE_SERVER/doc/
+
+-------------------------------------------------------------------
 Sat May 28 06:07:09 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 3.2.4:

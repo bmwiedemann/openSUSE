@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyaes
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/ricmoo/pyaes/
 Source:         https://files.pythonhosted.org/packages/source/p/pyaes/pyaes-%{version}.tar.gz
-BuildRequires:  %{python_module pycrypto}
+BuildRequires:  %{python_module pycryptodome}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pycrypto
+Requires:       python-pycryptodome
 BuildArch:      noarch
 %python_subpackages
 

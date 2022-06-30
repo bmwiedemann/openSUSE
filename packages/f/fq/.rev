@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d5c24cbfe74f50ea124b74fb248eb12b</srcmd5>
+    <version>0.0.7</version>
+    <time>1656587909</time>
+    <user>dimstar_suse</user>
+    <comment>New package fq v0.0.7 is a CLI tool and REPL for binary data inspired by jq.
+
+New functionality via a SUSE Hack Week project is in progress for a subsequent release:
+https://hackweek.opensuse.org/21/projects/add-mbr-binary-format-support-to-the-fq-command-line-tool</comment>
+    <requestid>985962</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Wed Jun 29 23:01:01 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Initial package version 0.0.7:
+  * decode,interp: Support for format specific options
+  * macho: Add section and encryption_info raw data fields
+  * Update gomod-mapstructure from 1.4.3 to 1.5.0
+  * interp: dump: Show field name for compound values in arrays
+  * interp: Don't truncate last display column
+  * interp: Simpler and more efficient hexdump
+  * interp: Proper display column truncate
+  * Update github-go-version from 1.18.0, 1.18.0, 1.18.0 to 1.18.1
+  * Update docker-golang from 1.18.0 to 1.18.1
+  * decode,format: Add d.FieldFormatOrRaw(Len)
+  * macho: Cleanup syms and remove redundant fat_arch struct
+  * mpeg_pes: Support mpeg1 and some cleanup
+  * tcp,udp: Refactor and make port matching better
+  * interp: Paths with a array as root was missing start dot
+  * mp4: Add more HEIF boxes
+  * matroska: More sym cleanup
+  * id3v2: Add 2.0 PIC support
+  * formats: Sym and field name cleanup to be more jq friendly
+  * amf0: Decode strings in more detail
+  * rtmp,amf0: Improve decoders, aac asc, chunk stream interrupt, fix amf0 ecma arrays
+  * ipv6,icmpv6: Add decoder
+  * rtmp,amf0: Add decoders
+  * interp: Remove opts refactor leftover
+  * hevc_vpc,hevc_sps: Use same nameing for profile as in spec
+  * hevc: Add hevc_vps, hevc_sps and hevc_pps decoders
+  * Update github-golangci-lint from 1.45.0 to 1.45.2
+  * Update make-golangci-lint from 1.45.0 to 1.45.2
+  * mp4: Add more HEIF boxes
+  * Update github-go-version from 1.17.7, 1.17.7, 1.17.7 to 1.18.0
+  * Update github-golangci-lint from 1.44.2 to 1.45.0
+  * Update make-golangci-lint from 1.44.2 to 1.45.0
+  * avc_sps: Add chroma format name mapping
+  * interp: Remove to*range pad argument and fix stdout padding issue
+  * Update docker-golang from 1.17.8 to 1.18.0
+  * interp,cli: Handle ctrl-c properly
+  * github: Update action versions

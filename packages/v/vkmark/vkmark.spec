@@ -1,7 +1,7 @@
 #
 # spec file for package vkmark
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018-2019 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,12 @@
 
 
 Name:           vkmark
-Version:        2017.08+git.20211008
+Version:        2017.08+git.20220516
 Release:        0
 Summary:        Vulkan benchmark utility
 License:        LGPL-2.1-or-later
 URL:            https://github.com/vkmark/vkmark
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE vkmark-sigstksz-not-constant.patch (gh#vkmark/vkmark#37) malcolmlewis@opensuse.org -- Temporary fix for glibc changes.
-Patch0:         vkmark-sigstksz-not-constant.patch
 BuildRequires:  gcc-c++
 BuildRequires:  glm-devel
 BuildRequires:  meson >= 0.45
@@ -46,7 +44,7 @@ BuildRequires:  Mesa-libVulkan-devel
 An extensible Vulkan benchmarking suite with targeted, configurable scenes.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %meson

@@ -1,6 +1,6 @@
 <services>
   <service mode="disabled" name="obs_scm">
-    <param name="url">git://github.com/vkmark/vkmark</param>
+    <param name="url">https://github.com/vkmark/vkmark</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
     <param name="changesgenerate">enable</param>

@@ -17,7 +17,7 @@
 
 
 Name:           qdirstat
-Version:        1.8
+Version:        1.8.1
 Release:        0
 Summary:        Directory Statistics
 License:        GPL-2.0-only

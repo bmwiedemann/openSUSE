@@ -1,0 +1,11 @@
+<package name="fq" project="openSUSE:Factory">
+  <title>fq CLI tool and REPL for working with binary data inspired by jq
+ </title>
+  <description>
+fq is inspired by the well known jq tool and language and allows you to work
+with binary formats the same way you would using jq. In addition it can present
+data like a hex viewer, transform, slice and concatenate binary data. It also
+supports nested formats and has an interactive REPL with auto-completion.
+</description>
+  <devel project="devel:languages:go" package="fq"/>
+</package>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 23 04:55:11 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.035:
+  * Add project checkboxes to mirror report (#280)
+  * Collect report from subsidiaries (#282)
+  * Fix incorrect path in metalink for origin file (#281)
+  * Add config CUSTOM_FOOTER_MESSAGE (#283)
+  * CircleCI: ignore gh-pages branch (#279)
+
+-------------------------------------------------------------------
 Tue Jun 07 09:05:15 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.034:

@@ -1,7 +1,7 @@
 #
 # spec file for package quagga
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -30,7 +30,6 @@
 %bcond_without irdp
 %bcond_with    isis
 %bcond_with    isis_topology
-%bcond_without pcre
 %if %{defined _rundir}
 %define         quagga_statedir %{_rundir}/%{name}
 %else
@@ -42,7 +41,7 @@ Release:        0
 Summary:        Routing Software for BGP, OSPF and RIP
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Routing
-Url:            http://www.quagga.net
+URL:            http://www.quagga.net
 Source:         http://download.savannah.gnu.org/releases/quagga/%{name}-%{version}.tar.gz
 Source1:        %{name}-SUSE.tar.bz2
 Source2:        %{name}.pam
@@ -57,6 +56,13 @@ Source7:        %{name}.logrotate
 Patch1:         %{name}-add-ospf6_main-return-value.patch
 Patch2:         %{name}-add-table_test-return-value.patch
 Patch3:         0001-systemd-change-the-WantedBy-target.patch
+Patch4:         harden_bgpd.service.patch
+Patch5:         harden_isisd.service.patch
+Patch6:         harden_ospf6d.service.patch
+Patch7:         harden_ospfd.service.patch
+Patch8:         harden_ripd.service.patch
+Patch9:         harden_ripngd.service.patch
+Patch10:        harden_zebra.service.patch
 BuildRequires:  autoconf >= 2.6
 BuildRequires:  automake >= 1.6
 BuildRequires:  c-ares-devel
@@ -73,9 +79,6 @@ Recommends:     logrotate
 Provides:       zebra = %{version}
 Obsoletes:      zebra < %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if %{with pcre}
-BuildRequires:  pcre-devel
-%endif
 %if 0%{?suse_version} > 1220
 BuildRequires:  makeinfo
 %endif
@@ -149,6 +152,13 @@ This subpackage contains the headers for the Quagga libraries.
 %patch1 -p 1
 %patch2 -p 1
 %patch3 -p 1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
@@ -171,9 +181,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
     %if %{with irdp}
     --enable-irdp \
     %endif
-    %if %{with pcre}
-    --enable-pcreposix \
-    %endif
+    --disable-pcreposix \
     --sysconfdir=%{_sysconfdir}/quagga \
     --localstatedir=%{quagga_statedir} \
     --enable-multipath=0
@@ -183,7 +191,12 @@ make %{?_smp_mflags}
 rm -r doc/quagga.info
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-install -d %{buildroot}%{_sysconfdir}/{init.d,quagga,pam.d,logrotate.d}
+install -d %{buildroot}%{_sysconfdir}/{init.d,quagga,pam.d}
+%if 0%{?suse_version} > 1500
+install -d %{buildroot}%{_distconfdir}/logrotate.d
+%else
+install -d %{buildroot}%{_sysconfdir}/logrotate.d
+%endif
 %if %{with systemd}
 install -d %{buildroot}%{_unitdir}
 install -p -m 0644 redhat/zebra.service %{buildroot}%{_unitdir}/zebra.service
@@ -218,7 +231,11 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/quagga
 install -d -m 0750 %{buildroot}%{_localstatedir}/log/quagga
 install -d -m 0751 %{buildroot}%{quagga_statedir}
+%if 0%{?suse_version} > 1500
+install -m 0644 %{SOURCE7} %{buildroot}%{_distconfdir}/logrotate.d/quagga
+%else
 install -m 0644 %{SOURCE7} %{buildroot}%{_sysconfdir}/logrotate.d/quagga
+%endif
 rm -f %{buildroot}%{_sysconfdir}/quagga/*.sample*
 cat > %{buildroot}%{_sysconfdir}/quagga/zebra.conf << __EOF__
 !hostname quagga
@@ -287,7 +304,11 @@ test -d %{quagga_statedir} || mkdir -m 0751 -p %{quagga_statedir}
 %{_sbindir}/*
 %dir %attr(750,quagga,quagga) %{_sysconfdir}/quagga/
 %config(noreplace) %attr(640,quagga,quagga) %{_sysconfdir}/%{name}/*.conf
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/*
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/*
+%endif
 %{_fillupdir}/sysconfig.quagga
 %if %{with systemd}
 %{_unitdir}/*.service

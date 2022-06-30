@@ -54,25 +54,25 @@ Requires:       python3-python-dateutil >= %{du_min_ver}
 Requires:       python3-vobject >= %{vo_min_ver}
 Recommends:     apache2-utils
 Recommends:     python3-bcrypt
+Recommends:     python3-passlib
 Recommends:     python3-systemd
 BuildArch:      noarch
 %sysusers_requires
 
 %description
-Radicale is a small but powerful CalDAV (calendars, to-do lists) and CardDAV (contacts) server, that:
+Radicale is a server for CalDAV (calendars, to-do lists) and CardDAV (contacts).
 
 * Shares calendars and contact lists through CalDAV, CardDAV and HTTP.
 * Supports events, todos, journal entries and business cards.
-* Works out-of-the-box, no complicated setup or configuration required.
+* Works out-of-the-box, no setup or configuration required.
 * Can limit access by authentication.
 * Can secure connections with TLS.
 * Works with many CalDAV and CardDAV clients.
-* Stores all data on the file system in a simple folder structure.
+* Stores all data on the file system in a directory structure.
 * Can be extended with plugins.
-* Is GPLv3-licensed free software.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %python3_build

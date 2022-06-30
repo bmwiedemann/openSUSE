@@ -55,4 +55,12 @@
     <comment>- Update to release 2020-01-25 (forwarded request 863363 from jengelh)</comment>
     <requestid>870910</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>28cb1ceba1aa706e782ee594c5ece621</srcmd5>
+    <version>1.3.216.0</version>
+    <time>1656587920</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.3.216.0</comment>
+    <requestid>986020</requestid>
+  </revision>
 </revisionlist>

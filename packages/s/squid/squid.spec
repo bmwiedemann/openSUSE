@@ -175,8 +175,14 @@ mv %{buildroot}{%{_sysconfdir}/%{name}/,%{_datadir}/%{name}/}mime.conf.default
 ln -s %{_sysconfdir}/%{name}/mime.conf %{buildroot}%{_datadir}/%{name} # backward compatible
 
 # install logrotate file
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+install -Dpm 644 %{SOURCE7} \
+  %{buildroot}%{_distconfdir}/logrotate.d/%{name}
+%else
 install -Dpm 644 %{SOURCE7} \
   %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
+%endif
 
 install -d -m 755 doc/scripts
 install scripts/*.pl doc/scripts
@@ -315,7 +321,11 @@ fi
 %config(noreplace) %{squidconfdir}/cachemgr.conf
 %config(noreplace) %{squidconfdir}/errorpage.css
 %config(noreplace) %{squidconfdir}/errors
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/%{name}
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
+%endif
 %config(noreplace) %{squidconfdir}/mime.conf
 %config(noreplace) %{squidconfdir}/%{name}.conf
 %config %{squidconfdir}/cachemgr.conf.default

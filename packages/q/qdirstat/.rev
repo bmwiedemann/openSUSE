@@ -162,4 +162,12 @@ Mon 22. Jul 15:20:45 CEST 2019 - shundhammer@suse.de
 </comment>
     <requestid>914822</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>caec22a8842e57b37ffe045345427e7d</srcmd5>
+    <version>1.8.1</version>
+    <time>1656587924</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986023</requestid>
+  </revision>
 </revisionlist>

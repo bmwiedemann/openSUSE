@@ -1,0 +1,22 @@
+Index: quagga-1.2.4/redhat/ospf6d.service
+===================================================================
+--- quagga-1.2.4.orig/redhat/ospf6d.service
++++ quagga-1.2.4/redhat/ospf6d.service
+@@ -8,6 +8,17 @@ ConditionPathExists=/etc/quagga/ospf6d.c
+ Documentation=man:ospf6d
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=forking
+ PIDFile=/run/quagga/ospf6d.pid
+ EnvironmentFile=/etc/sysconfig/quagga

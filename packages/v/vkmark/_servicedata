@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">git://github.com/vkmark/vkmark</param>
-              <param name="changesrevision">cf45f2faee236fd1118be2fcd27e4f2a91fc2e40</param></service></servicedata>
+              <param name="changesrevision">cf45f2faee236fd1118be2fcd27e4f2a91fc2e40</param></service><service name="tar_scm">
+                <param name="url">https://github.com/vkmark/vkmark</param>
+              <param name="changesrevision">d872846e2e7c47010c11227eb713d00ccfdd35c6</param></service></servicedata>

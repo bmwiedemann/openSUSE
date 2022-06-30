@@ -82,4 +82,41 @@
     <comment></comment>
     <requestid>979571</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>671ea2f515509ecaaffdd7cca4509a74</srcmd5>
+    <version>3.4.0</version>
+    <time>1656587907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.0:
+  - NEW diagnostics:
+        cast-local-type
+        assign-type-mismatch
+        param-type-mismatch
+        unknown-cast-variable
+        cast-type-mismatch
+        missing-return-value
+        redundant-return-value
+        missing-return
+        return-type-mismatch
+  - NEW settings:
+        diagnostics.groupSeverity
+        diagnostics.groupFileStatus
+        type.castNumberToInteger
+        type.weakUnionCheck
+        hint.semicolon
+  - CHG infer nil as redundant return value
+    local function f() end
+    local x = f() -- `x` is `nil` instead of `unknown`
+  - CHG infer called function by params num
+    ---@overload fun(x: number, y: number):string
+    ---@overload fun(x: number):number
+    ---@return boolean
+    local function f() end
+    local n1 = f()     -- `n1` is `boolean`
+    local n2 = f(0)    -- `n2` is `number`
+    local n3 = f(0, 0) -- `n3` is `string`
+  - CHG semicolons and parentheses can be used in DocTable
+    ---@type { (x: number); (y: boolean) }</comment>
+    <requestid>985951</requestid>
+  </revision>
 </revisionlist>

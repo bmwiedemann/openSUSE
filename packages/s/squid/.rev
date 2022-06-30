@@ -1051,4 +1051,12 @@ from the squid 3.x changelog</comment>
   * Kid restart leads to persistent queue overflows, delays/timeouts</comment>
     <requestid>984871</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>1b749bf7bf10f06334a6f342e8cd64e2</srcmd5>
+    <version>5.6</version>
+    <time>1656587905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985925</requestid>
+  </revision>
 </revisionlist>

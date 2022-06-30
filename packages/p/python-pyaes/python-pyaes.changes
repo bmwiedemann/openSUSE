@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 28 20:12:42 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- PyCrypto 2.x is unmaintained, obsolete, and contains security vulnerabilities.
+  Move to PyCryptodome
+
+-------------------------------------------------------------------
 Fri Aug 14 15:01:30 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Fix test suite invocation, removing nose

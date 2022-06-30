@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 29 13:28:11 UTC 2022 - llyyr <thighsaspillows@gmail.com>
+
+- Update to version v0.3.0
+  * Support for ffmpeg filters with the -F <filter> option (5384bc9). This allows using many of the effects ffmpeg provides, see https://github.com/schauveau/wf-recorder-x for a good introduction on filters.
+  * Support for recording new frames only when the screen contents actually change (#82). This is now the default behavior. If this is not desired (because for ex. the recording has variable refresh rate and not fixed), the -D option can be used to get the old behavior.
+  * wf-recorder now asks the user if the output file will be overwritten (0b74ad4)
+  * Various bug fixes, see the git log for complete list of changes.
+
+-------------------------------------------------------------------
 Tue Feb 16 18:17:10 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
 
 - fix for the issue #92 (Requested output format 'v4l2' is not a suitable output format)

@@ -1323,4 +1323,13 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
     added in 2.2.0. Please see the UPDATING file for more details. (forwarded request 980734 from dirkmueller)</comment>
     <requestid>981120</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>f6a1360f0389a652c6a301dd32a09328</srcmd5>
+    <version>2.2.6</version>
+    <time>1656587913</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.6:
+  * This is a bug-fix release, fixing a variety of small issues (forwarded request 985076 from dirkmueller)</comment>
+    <requestid>985999</requestid>
+  </revision>
 </revisionlist>

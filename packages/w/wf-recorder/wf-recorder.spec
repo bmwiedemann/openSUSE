@@ -1,7 +1,7 @@
 #
-# spec file for package light
+# spec file for package wf-recorder
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018 Michael Aquilina
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,25 +18,29 @@
 
 
 Name:           wf-recorder
-Version:        0.2.1
+Version:        0.3.0
 Release:        0%{?dist}
 Summary:        Utility program for screen recording of wlroots-based compositors
 License:        MIT
 Group:          System/Management
 URL:            https://github.com/ammen99/wf-recorder
 Source0:        https://github.com/ammen99/wf-recorder/archive/v%{version}.tar.gz
-BuildRequires:  meson ninja gcc gcc-c++ cmake
+BuildRequires:  cmake
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+BuildRequires:  libavcodec-devel
+BuildRequires:  libavdevice-devel
+BuildRequires:  libavformat-devel
+BuildRequires:  libavutil-devel
+BuildRequires:  libpulse-devel
+BuildRequires:  libswscale-devel
+BuildRequires:  meson
+BuildRequires:  ninja
+BuildRequires:  opencl-cpp-headers
+BuildRequires:  opencl-headers
+BuildRequires:  pkg-config
 BuildRequires:  wayland-devel
 BuildRequires:  wayland-protocols-devel
-BuildRequires:  libavutil-devel
-BuildRequires:  libavcodec-devel
-BuildRequires:  libavformat-devel
-BuildRequires:  libavdevice-devel
-BuildRequires:  libswscale-devel
-BuildRequires:  libpulse-devel
-BuildRequires:  pkg-config
-BuildRequires:	opencl-cpp-headers
-BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(scdoc)
 

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun 30 05:52:05 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.10.2
+  * cmake: adding src/ include path to build
+  * Allow unused parameter in KJ_STRINGIFY
+  * Add List::addFront().
+  * Don't use deprecated std::iterator
+  * using absolute includes across library boundary
+  * Add kj::VectorOutputStream::clear()
+  * Mention map() and orDefault() in KJ tour
+  * Fix ASAN problems under Clang 15.
+  * Add header guards to all headers that were missing them.
+  * Support permessage-deflate WebSocket Extension
+  version 0.10.1:
+  * Add missing header to makefiles.
+
+-------------------------------------------------------------------
 Fri Jun  3 15:20:21 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.10.0

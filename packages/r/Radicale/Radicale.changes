@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 22 18:47:02 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
+
+- Add python passlib as a recommendation as it is needed for
+  htpasswd authentication
+
+-------------------------------------------------------------------
+Mon Jun 13 10:37:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from descriptions.
+
+-------------------------------------------------------------------
 Mon Apr 25 06:20:20 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
 
 - Update to 3.1.7

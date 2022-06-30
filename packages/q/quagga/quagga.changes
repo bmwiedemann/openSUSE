@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jun 29 09:31:14 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d. 
+
+-------------------------------------------------------------------
+Thu Oct 21 07:17:41 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_bgpd.service.patch
+  * harden_isisd.service.patch
+  * harden_ospf6d.service.patch
+  * harden_ospfd.service.patch
+  * harden_ripd.service.patch
+  * harden_ripngd.service.patch
+  * harden_zebra.service.patch
+
+-------------------------------------------------------------------
+Fri Apr  9 20:02:44 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Avoid using libpcre-posix, which is intended for systems without
+  a working regex.h, symbols clash with libc and undefined behaviour
+  may ensue.
+
+-------------------------------------------------------------------
 Fri Apr 26 10:55:02 UTC 2019 - mvetter@suse.com
 
 - bsc#1130588: Require shadow instead of old pwdutils
