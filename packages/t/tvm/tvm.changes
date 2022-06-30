@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 28 11:39:05 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Requires python38-* for tvmc on Tumbleweed since the default
+  python (3.10) is not compatible yet, so no python3-* available
+
+-------------------------------------------------------------------
 Wed Apr  6 08:03:50 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix boo#1197347:

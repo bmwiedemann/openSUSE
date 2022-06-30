@@ -108,12 +108,22 @@ TVM is a deep learning compiler stack for CPUs, GPUs, and specialized accelerato
 %package -n tvmc
 Summary:        TVM command line driver
 Requires:       libtvm = %{version}
+%if 0%{?suse_version} > 1550
+# Tumbleweed defaults to python 3.10 which is not compatible yet
+Requires:       python38-scipy
+Requires:       python38-setuptools
+Requires:       python38-tvm = %{version}
+Requires:       python38-typed-ast
+Recommends:     python38-Pillow
+Recommends:     python38-onnx
+%else
 Requires:       python3-scipy
 Requires:       python3-setuptools
 Requires:       python3-tvm = %{version}
 Requires:       python3-typed-ast
 Recommends:     python3-Pillow
 Recommends:     python3-onnx
+%endif
 
 %description -n tvmc
 TVMC is a tool that exposes TVM features such as auto-tuning, compiling,
