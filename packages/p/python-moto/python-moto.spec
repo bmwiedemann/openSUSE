@@ -19,12 +19,14 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-moto
-Version:        3.1.8
+Version:        3.1.16
 Release:        0
 Summary:        Library to mock out the boto library
 License:        Apache-2.0
 URL:            https://github.com/spulec/moto
 Source:         https://files.pythonhosted.org/packages/source/m/moto/moto-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE remove-mock.patch -- https://trello.com/c/S6eADbii
+Patch1:         remove-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -64,7 +66,7 @@ BuildRequires:  %{python_module idna >= 2.5}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module jsondiff >= 1.1.2}
 BuildRequires:  %{python_module jsonpickle}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module openapi-spec-validator}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pyparsing >= 3}
 BuildRequires:  %{python_module pytest-xdist}
@@ -94,8 +96,10 @@ Requires:       python-graphql-core
 Requires:       python-idna >= 2.5
 Requires:       python-jsondiff >= 1.1.2
 Requires:       python-moto = %{version}
+Requires:       python-openapi-spec-validator
 Requires:       python-pyparsing >= 3
 Requires:       python-python-jose
+Requires:       python-setuptools
 Requires:       python-sshpubkeys >= 3.1.0
 
 %description all
@@ -141,16 +145,14 @@ donttest+=" or (test_cloudformation_custom_resources and test_create_custom_lamb
 donttest+=" or (test_cloudformation_stack_integration and test_lambda_function)"
 donttest+=" or test_firehose_put"
 donttest+=" or test_vpc_peering_connections_cross_region_fail"
+donttest+=" or test_events_lambdatriggers_integration"
 donttest+=" or (test_s3_lambda_integration and test_objectcreated_put__invokes_lambda and ObjectCreated)"
 # no  python2.7 on TW
 donttest+=" or test_invoke_function_from_sqs_exception"
 donttest+=" or test_rotate_secret_lambda_invocations"
+# requires botocore >= 1.27.14, see https://github.com/spulec/moto/pull/5253
+donttest+=" or test_create_customer_gateways_using_publicip_argument"
 
-# https://github.com/boto/botocore/issues/2355
-if [ $(getconf LONG_BIT) -eq 32 ]; then
-  donttest+=" or test_describe_certificate"
-  donttest+=" or (test_budgets and test_create_and_describe)"
-fi
 # see Makefile
 deselect_for_parallel=" or test_kinesisvideoarchivedmedia or test_awslambda or test_batch or test_ec2 or test_sqs"
 parallel_tests="./tests/test_awslambda ./tests/test_batch ./tests/test_ec2 ./tests/test_sqs"

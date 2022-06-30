@@ -1,4 +1,201 @@
 -------------------------------------------------------------------
+Mon Jun 27 20:07:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.1.16
+  * New Methods:
+    * Autoscaling:
+      * enable_metrics_collection()
+  * Miscellaneous:
+    * Fixes a dependency-error that popped up in 3.1.15.
+- Release 3.1.15
+  * Known bugs:
+    * Some services will throw an error: Missing module
+      'openapi_spec_validator'.
+  * New Methods:
+    * Databrew:
+      * create_profile_job()
+      * create_recipe_job()
+      * delete_job()
+      * describe_job()
+      * list_jobs()
+      * update_profile_job()
+      * update_recipe_job()
+    * Glue:
+      * create_registry()
+    * Greengrass:
+      * create_group()
+      * create_group_version()
+      * delete_group()
+      * get_group()
+      * get_group_version()
+      * list_groups()
+      * list_group_versions()
+      * update_group()
+    * KMS:
+      * sign()
+      * verify()
+    * Route53Resolver:
+      * associate_resolver_endpoint_ip_address()
+      * disassociate_resolver_endpoint_ip_address()
+- Release 3.1.14
+  * New Methods:
+    * Greengrass:
+      * create_function_definition()
+      * create_resource_definition()
+      * create_function_definition_version()
+      * create_resource_definition_version()
+      * create_subscription_definition()
+      * create_subscription_definition_version()
+      * delete_function_definition()
+      * delete_resource_definition()
+      * delete_subscription_definition()
+      * get_function_definition()
+      * get_function_definition_version()
+      * get_resource_definition()
+      * get_resource_definition_version()
+      * get_subscription_definition()
+      * get_subscription_definition_version()
+      * list_function_definitions()
+      * list_function_definition_versions()
+      * list_resource_definitions()
+      * list_resource_definition_versions()
+      * list_subscription_definitions()
+      * list_subscription_definition_versions()
+      * update_function_definition()
+      * update_resource_definition()
+      * update_subscription_definition()
+    * EKS:
+      * list_tags_for_resources()
+      * tag_resource()
+      * untag_resource()
+    * Route53:
+      * associate_vpc_with_hosted_zone()
+      * disassociate_vpc_from_hosted_zone()
+      * update_health_check()
+      * update_hosted_zone_comment()
+  * Miscellaneous:
+      * APIGateway:put_integration() now supports the
+        requestParameters-parameter
+      * EC2:create_route() now validates whether a route already
+        exists
+- Add remove-mock.patch -- https://trello.com/c/S6eADbii
+
+-------------------------------------------------------------------
+Wed Jun 15 02:28:28 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.1.13
+  New Methods:
+    * EC2:
+        * create_default_vpc()
+    * Greengrass:
+        * create_device_definition()
+        * create_device_definition_version()
+        * delete_core_definition()
+        * delete_device_definition()
+        * get_core_definition()
+        * get_core_definition_version()
+        * get_device_definition()
+        * get_device_definition_version()
+        * list_core_definitions()
+        * list_core_definition_versions()
+        * list_device_definitions()
+        * list_device_definition_versions()
+        * update_core_definition()
+        * update_device_definition()
+    * SSO Admin:
+        * create_permission_set()
+        * delete_permission_set()
+        * describe_permission_set()
+        * list_permission_sets()
+        * update_permission_set()
+    * Route53:
+        * get_dnssec()
+        * get_health_check()
+    * Miscellaneous:
+    * StateManager now supports `s3::keyrestore`, managing how long it takes to restore S3 objects from Glacier.
+- Update to 3.1.12
+  New Services:
+    * Greengrass:
+        * create_core_definition()
+        * create_core_definition_version()
+  Internal Changes:
+    * The data structure containing all of Moto's state has been updated to support multiple accounts
+- Update to 3.1.11
+  New Methods:
+    * GuardDuty:
+        * create_filter()
+        * delete_detector()
+        * delete_filter()
+        * enable_organization_admin_account()
+        * get_detector()
+        * get_filter()
+        * list_organization_admin_accounts()
+        * update_detector()
+        * update_filter()
+    * KMS:
+        * create_grant()
+        * list_grants()
+        * list_retirable_grants()
+        * retire_grant()
+        * revoke_grant()
+
+  Miscellaneous:
+    * EC2:describe_network_acls() now supports the `entry.egress`-filter
+    * EC2:run_instances() now supports validation for the KeyPair-parameter. This is disabled by default - set MOTO_ENABLE_KEYPAIR_VALIDATION to true to enable this.
+    * EC2:run_instances() now supports validation for the ImageId-parameter. This is disabled by default - set MOTO_ENABLE_AMI_VALIDATION to true to enable this. 
+- Update to 3.1.10
+  New Methods:
+    * APIGateway:
+        * import_rest_api()
+        * put_rest_api()
+    * Glue:
+        * get_tags()
+        * tag_resource()
+        * untag_resource()
+
+  Miscellaneous:
+    * APIGateway:put_integration() now supports the passthroughBehavior-parameter
+    * APIGatewayV2:create_authorizer() now supports the AuthorizerPayloadFormatVersion-parameter
+    * AWSLamba:publish_layer_version() now supports the CompatibleArchitectures-parameter
+    * DAX:create_cluster() now supports the ClusterEndpointEncryptionType-parameter
+    * EC2:describe_route_tables() now supports the filter `route.gateway-id`
+    * EC2:run_instances() now validates whether the Placement-parameter has a valid availabilty zone
+    * ECS:list_services() now supports the launchType-parameter
+    * ELB:describe_instance_health() now returns the OutOfService-status when appropriate
+    * Organizations:list_accounts_for_parent() now supports pagination
+    * Organizations:list_organizational_units_for_parent() now supports pagination
+- Update to 3.1.9 
+  New Services:
+    * EBS:
+        * complete_snapshot()
+        * get_snapshot_block()
+        * list_changed_blocks()
+        * list_snapshot_blocks()
+        * put_snapshot_block()
+        * start_snapshot()
+
+  New Methods:
+    * CloudFront:
+        * update_distribution()
+    * Datasets:
+        * create_dataset()
+        * delete_dataset()
+        * describe_dataset()
+        * list_datasets()
+        * update_dataset()
+    * Glue:
+        * list_crawlers()
+    * Rekognition:
+        * get_face_search()
+        * start_face_seach()
+
+  Miscellaneous:
+    * EC2:describe_vpc_endpoints() now supports the `vpc-endpoint-type`-filter
+    * RDS:create_db_cluster() now supports the EnableCloudwatchLogsExports-parameter
+    * RDS:create_db_instance() now supports the EnableCloudwatchLogsExports-parameter
+    * SSM now integrates with SecretsManager
+
+-------------------------------------------------------------------
 Tue May 10 08:32:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.1.8
