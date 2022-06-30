@@ -1,13 +1,13 @@
 ---
  pico/basic.c  |   50 ++++++++++++++++++++++++++++++++++++++++++++++++++
  pico/efunc.h  |    1 +
- pico/search.c |    8 ++++++--
- 3 files changed, 57 insertions(+), 2 deletions(-)
+ pico/search.c |    7 ++++++-
+ 3 files changed, 57 insertions(+), 1 deletion(-)
 
-Index: alpine-2.25.1/pico/basic.c
+Index: alpine-2.26/pico/basic.c
 ===================================================================
---- alpine-2.25.1.orig/pico/basic.c
-+++ alpine-2.25.1/pico/basic.c
+--- alpine-2.26.orig/pico/basic.c
++++ alpine-2.26/pico/basic.c
 @@ -772,7 +772,57 @@ scrolldownline(int f, int n)
      return (scrollforw (1, FALSE));
  }
@@ -66,10 +66,10 @@ Index: alpine-2.25.1/pico/basic.c
  
  /*
   * Scroll to a position.
-Index: alpine-2.25.1/pico/efunc.h
+Index: alpine-2.26/pico/efunc.h
 ===================================================================
---- alpine-2.25.1.orig/pico/efunc.h
-+++ alpine-2.25.1/pico/efunc.h
+--- alpine-2.26.orig/pico/efunc.h
++++ alpine-2.26/pico/efunc.h
 @@ -56,6 +56,7 @@ extern	int gotobop(int, int);
  extern	int gotoeop(int, int);
  extern	int forwpage(int, int);
@@ -78,20 +78,19 @@ Index: alpine-2.25.1/pico/efunc.h
  extern  int scrollupline(int, int);
  extern  int scrolldownline(int, int);
  extern  int scrollto(int, int);
-Index: alpine-2.25.1/pico/search.c
+Index: alpine-2.26/pico/search.c
 ===================================================================
---- alpine-2.25.1.orig/pico/search.c
-+++ alpine-2.25.1/pico/search.c
-@@ -69,7 +69,7 @@ EXTRAKEYS    menu_srchpat[] = {
+--- alpine-2.26.orig/pico/search.c
++++ alpine-2.26/pico/search.c
+@@ -69,6 +69,7 @@ EXTRAKEYS    menu_srchpat[] = {
  	{"^O", N_("End of Para"),   (CTRL|'O')},
  	{"^U", N_("FullJustify"),   (CTRL|'U')},
  	{"^P", N_("Delete Para"),   (CTRL|'P')},
--	{NULL, NULL, 0}
 + 	{"^X", N_("Del End"),       (CTRL|'X')},
+ 	{NULL, NULL, 0}
  };
  
- #define EXACTSR_KEY     1	/* toggle an exact or approximate search */
-@@ -282,7 +282,11 @@ forwsearch(int f, int n)
+@@ -282,7 +283,11 @@ forwsearch(int f, int n)
  	    break;
  
  	  case (CTRL|'X'):

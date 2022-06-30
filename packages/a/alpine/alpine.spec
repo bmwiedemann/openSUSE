@@ -16,20 +16,22 @@
 #
 
 
+# grep '\*version' for new pico version number
+# grep 'PILOT_VERSION' for new pilot version number
 Name:           alpine
 # For debugging only:
 %define		build_vanilla		0
-Version:        2.25.1
+Version:        2.26
 Release:        0
 Summary:        Mail User Agent
 License:        Apache-2.0
 Group:          Productivity/Networking/Email/Clients
-URL:            http://alpine.x10host.com/alpine/
+URL:            https://alpineapp.email/
 #Git-Clone:     https://repo.or.cz/alpine.git
 
-Source:         %name-%version.tar.xz
-#Source:         http://alpine.x10host.com/alpine/release/src/alpine-%%version.tar.xz
-#Source2:        http://alpine.x10host.com/alpine/release/src/sig/alpine-%%version.tar.xz.sig
+#Source:         %name-%version.tar.xz
+Source:         https://alpineapp.email/alpine/release/src/alpine-%version.tar.xz
+Source2:        https://alpineapp.email/alpine/release/src/sig/alpine-%version.tar.xz.sig
 Source3:        %name.png
 Source4:        %name.desktop
 Source9:        UPDATING.txt
@@ -88,7 +90,7 @@ command.
 %package -n pico
 Summary:        A small, easy to use editor
 Group:          Productivity/Editors/Other
-Version:        5.07
+Version:        5.09
 Release:        0
 
 %description -n pico

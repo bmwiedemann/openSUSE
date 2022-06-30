@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jun 10 15:51:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.26
+  * Alpine is built with password file support by default. If
+    Alpine is built with SMIME support and the password file does
+    not exist, then Alpine will create it by default and encrypt
+    it.
+  * In the past, Alpine did not recognize images embedded in an
+    HTML file, so now it does and a link to open them is given.
+    Additionally, Alpine did not pass these images to an external
+    browser for display using the external command; it does so now.
+  * Support for code_verifier and code_challenge when generating
+    a refresh token and access token in Gmail and Outlook using
+    the S256 method and plain method.
+  * Changed the redirect_uri scheme for Gmail, as Google is
+    deprecating the use of oob. Changed to http://localhost.
+    Users are supposed to enter the URL they see in their browser
+    in place of the code.
+  * Added support to the LDAP attribute "userCertificate";
+  * If new mail has arrived when a user is closing a mailbox,
+    Alpine will also announce how many new messages have arrived.
+
+-------------------------------------------------------------------
 Tue Mar 15 10:46:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.25.1

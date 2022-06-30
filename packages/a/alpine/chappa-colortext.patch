@@ -1,9 +1,9 @@
-diff -rc alpine-2.25/alpine/confscroll.c alpine-2.25.colortext/alpine/confscroll.c
-*** alpine-2.25/alpine/confscroll.c	2021-09-18 09:02:36.346783285 -0600
---- alpine-2.25.colortext/alpine/confscroll.c	2021-09-18 09:03:19.255079499 -0600
+diff -rc alpine-2.26/alpine/confscroll.c alpine-2.26.colortext/alpine/confscroll.c
+*** alpine-2.26/alpine/confscroll.c	2022-06-02 18:14:00.463274817 -0600
+--- alpine-2.26.colortext/alpine/confscroll.c	2022-06-02 18:15:04.147118665 -0600
 ***************
-*** 5248,5253 ****
---- 5248,5256 ----
+*** 5246,5251 ****
+--- 5246,5254 ----
   
   	clear_index_cache(ps->mail_stream, 0);
       }
@@ -13,12 +13,12 @@ diff -rc alpine-2.25/alpine/confscroll.c alpine-2.25.colortext/alpine/confscroll
       else if(var == &ps->vars[V_INIT_CMD_LIST]){
   	if(!revert)
   	  q_status_message(SM_ASYNC, 0, 3,
-diff -rc alpine-2.25/pith/conf.c alpine-2.25.colortext/pith/conf.c
-*** alpine-2.25/pith/conf.c	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.colortext/pith/conf.c	2021-09-18 09:03:19.267079582 -0600
+diff -rc alpine-2.26/pith/conf.c alpine-2.26.colortext/pith/conf.c
+*** alpine-2.26/pith/conf.c	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.colortext/pith/conf.c	2022-06-02 18:15:04.151118655 -0600
 ***************
-*** 233,238 ****
---- 233,240 ----
+*** 229,234 ****
+--- 229,236 ----
   
   CONF_TXT_T cf_text_fillcol[] =		"Specifies the column of the screen where the composer should wrap.";
   
@@ -28,8 +28,8 @@ diff -rc alpine-2.25/pith/conf.c alpine-2.25.colortext/pith/conf.c
   
   CONF_TXT_T cf_text_quotereplstr[] =    	"Specifies the string to replace quotes with when viewing a message.";
 ***************
-*** 589,594 ****
---- 591,598 ----
+*** 585,590 ****
+--- 587,594 ----
   #endif /* _WINDOWS */
   {"composer-wrap-column",		0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0,
   	NULL,			cf_text_fillcol},
@@ -39,8 +39,8 @@ diff -rc alpine-2.25/pith/conf.c alpine-2.25.colortext/pith/conf.c
   	NULL,			cf_text_replystr},
   {"reply-leadin",			0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0,
 ***************
-*** 866,871 ****
---- 870,877 ----
+*** 864,869 ****
+--- 868,875 ----
   {"incoming-unseen-background-color",	0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0},
   {"signature-foreground-color",		0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0},
   {"signature-background-color",		0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0},
@@ -61,8 +61,8 @@ diff -rc alpine-2.25/pith/conf.c alpine-2.25.colortext/pith/conf.c
       set_current_val(&vars[V_HISTORY], TRUE, TRUE);
       set_current_val(&vars[V_SMTP_SERVER], TRUE, TRUE);
 ***************
-*** 6684,6689 ****
---- 6692,6698 ----
+*** 6685,6690 ****
+--- 6693,6699 ----
       set_color_val(&vars[V_IND_OP_FORE_COLOR], 0);
       set_color_val(&vars[V_INCUNSEEN_FORE_COLOR], 0);
       set_color_val(&vars[V_SIGNATURE_FORE_COLOR], 0);
@@ -71,8 +71,8 @@ diff -rc alpine-2.25/pith/conf.c alpine-2.25.colortext/pith/conf.c
       set_current_val(&ps->vars[V_INDEX_TOKEN_COLORS], TRUE, TRUE);
       set_current_val(&ps->vars[V_VIEW_HDR_COLORS], TRUE, TRUE);
 ***************
-*** 7933,7938 ****
---- 7942,7949 ----
+*** 7934,7939 ****
+--- 7943,7950 ----
   	return(h_config_scroll_margin);
         case V_DEADLETS :
   	return(h_config_deadlets);
@@ -82,8 +82,8 @@ diff -rc alpine-2.25/pith/conf.c alpine-2.25.colortext/pith/conf.c
   	return(h_config_composer_wrap_column);
         case V_TCPOPENTIMEO :
 ***************
-*** 8116,8121 ****
---- 8127,8135 ----
+*** 8119,8124 ****
+--- 8130,8138 ----
         case V_SIGNATURE_FORE_COLOR :
         case V_SIGNATURE_BACK_COLOR :
   	return(h_config_signature_color);
@@ -93,9 +93,9 @@ diff -rc alpine-2.25/pith/conf.c alpine-2.25.colortext/pith/conf.c
         case V_PROMPT_FORE_COLOR :
         case V_PROMPT_BACK_COLOR :
   	return(h_config_prompt_color);
-diff -rc alpine-2.25/pith/conf.h alpine-2.25.colortext/pith/conf.h
-*** alpine-2.25/pith/conf.h	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.colortext/pith/conf.h	2021-09-18 09:03:19.283079692 -0600
+diff -rc alpine-2.26/pith/conf.h alpine-2.26.colortext/pith/conf.h
+*** alpine-2.26/pith/conf.h	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.colortext/pith/conf.h	2022-06-02 18:15:04.187118567 -0600
 ***************
 *** 176,181 ****
 --- 176,183 ----
@@ -118,9 +118,9 @@ diff -rc alpine-2.25/pith/conf.h alpine-2.25.colortext/pith/conf.h
   #define VAR_PROMPT_FORE_COLOR	     vars[V_PROMPT_FORE_COLOR].current_val.p
   #define VAR_PROMPT_BACK_COLOR	     vars[V_PROMPT_BACK_COLOR].current_val.p
   #define VAR_VIEW_HDR_COLORS	     vars[V_VIEW_HDR_COLORS].current_val.l
-diff -rc alpine-2.25/pith/conftype.h alpine-2.25.colortext/pith/conftype.h
-*** alpine-2.25/pith/conftype.h	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.colortext/pith/conftype.h	2021-09-18 09:03:19.315079913 -0600
+diff -rc alpine-2.26/pith/conftype.h alpine-2.26.colortext/pith/conftype.h
+*** alpine-2.26/pith/conftype.h	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.colortext/pith/conftype.h	2022-06-02 18:15:04.235118450 -0600
 ***************
 *** 83,88 ****
 --- 83,89 ----
@@ -132,8 +132,8 @@ diff -rc alpine-2.25/pith/conftype.h alpine-2.25.colortext/pith/conftype.h
   		, V_REPLY_INTRO
   		, V_QUOTE_REPLACE_STRING
 ***************
-*** 244,249 ****
---- 245,252 ----
+*** 246,251 ****
+--- 247,254 ----
   		, V_INCUNSEEN_BACK_COLOR
   		, V_SIGNATURE_FORE_COLOR
   		, V_SIGNATURE_BACK_COLOR
@@ -142,12 +142,12 @@ diff -rc alpine-2.25/pith/conftype.h alpine-2.25.colortext/pith/conftype.h
   		, V_PROMPT_FORE_COLOR
   		, V_PROMPT_BACK_COLOR
   		, V_HEADER_GENERAL_FORE_COLOR
-diff -rc alpine-2.25/pith/mailview.c alpine-2.25.colortext/pith/mailview.c
-*** alpine-2.25/pith/mailview.c	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.colortext/pith/mailview.c	2021-09-18 09:03:19.367080271 -0600
+diff -rc alpine-2.26/pith/mailview.c alpine-2.26.colortext/pith/mailview.c
+*** alpine-2.26/pith/mailview.c	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.colortext/pith/mailview.c	2022-06-02 18:15:04.251118410 -0600
 ***************
-*** 636,641 ****
---- 636,649 ----
+*** 632,637 ****
+--- 632,645 ----
   	    if((flgs & FM_DISPLAY)
   	       && !(flgs & FM_NOCOLOR)
   	       && pico_usingcolor()
@@ -163,8 +163,8 @@ diff -rc alpine-2.25/pith/mailview.c alpine-2.25.colortext/pith/mailview.c
   	       && ps_global->VAR_SIGNATURE_BACK_COLOR){
   		gf_link_filter(gf_line_test, gf_line_test_opt(color_signature, &is_in_sig));
 ***************
-*** 2868,2873 ****
---- 2876,3065 ----
+*** 2864,2869 ****
+--- 2872,3061 ----
       return(color_pair);
   }
   
@@ -295,7 +295,7 @@ diff -rc alpine-2.25/pith/mailview.c alpine-2.25.colortext/pith/mailview.c
 +     else
 +       return;
 +     for (i = 0; isspace((unsigned char) p[ival->end - i - 1]); i++);
-+      ival->end -= i;
++     ival->end -= i;
 +     if (ival->next)
 + 	remove_spaces_ival(&(ival->next), p);
 + }
@@ -325,7 +325,7 @@ diff -rc alpine-2.25/pith/mailview.c alpine-2.25.colortext/pith/mailview.c
 +        int done = 0, begin_color = 0;
 + 
 +         while (!done){
-+            if (i = any_color_in_string(p)){
++            if ((i = any_color_in_string(p))){
 + 	      begin_color = (begin_color + 1) % 2;
 + 	      if (begin_color){
 +                  p[i - 1] = '\0';
@@ -355,9 +355,9 @@ diff -rc alpine-2.25/pith/mailview.c alpine-2.25.colortext/pith/mailview.c
   
   /*
    * The argument fieldname is something like "Subject:..." or "Subject".
-diff -rc alpine-2.25/pith/mailview.h alpine-2.25.colortext/pith/mailview.h
-*** alpine-2.25/pith/mailview.h	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.colortext/pith/mailview.h	2021-09-18 09:03:19.379080355 -0600
+diff -rc alpine-2.26/pith/mailview.h alpine-2.26.colortext/pith/mailview.h
+*** alpine-2.26/pith/mailview.h	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.colortext/pith/mailview.h	2022-06-02 18:15:04.263118380 -0600
 ***************
 *** 30,35 ****
 --- 30,41 ----
@@ -391,12 +391,12 @@ diff -rc alpine-2.25/pith/mailview.h alpine-2.25.colortext/pith/mailview.h
   
   /*
    * BUG:  BELOW IS UNIX/PC ONLY since config'd browser means nothing to webpine
-diff -rc alpine-2.25/pith/pine.hlp alpine-2.25.colortext/pith/pine.hlp
-*** alpine-2.25/pith/pine.hlp	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.colortext/pith/pine.hlp	2021-09-18 09:03:19.399080492 -0600
+diff -rc alpine-2.26/pith/pine.hlp alpine-2.26.colortext/pith/pine.hlp
+*** alpine-2.26/pith/pine.hlp	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.colortext/pith/pine.hlp	2022-06-02 18:15:04.299118293 -0600
 ***************
-*** 5134,5139 ****
---- 5134,5140 ----
+*** 5290,5295 ****
+--- 5290,5296 ----
   <li><a href="h_config_print_cat">OPTION: <!--#echo var="VAR_personal-print-category"--></a>
   <li><a href="h_config_print_command">OPTION: <!--#echo var="VAR_personal-print-command"--></a>
   <li><a href="h_config_post_char_set">OPTION: <!--#echo var="VAR_posting-character-set"--></a>
@@ -405,8 +405,8 @@ diff -rc alpine-2.25/pith/pine.hlp alpine-2.25.colortext/pith/pine.hlp
   <li><a href="h_config_print_font_char_set">OPTION: Print-Font-Char-Set</a>
   <li><a href="h_config_print_font_name">OPTION: Print-Font-Name</a>
 ***************
-*** 5162,5167 ****
---- 5163,5169 ----
+*** 5318,5323 ****
+--- 5319,5325 ----
   <li><a href="h_config_sending_filter">OPTION: <!--#echo var="VAR_sending-filters"--></a>
   <li><a href="h_config_sendmail_path">OPTION: <!--#echo var="VAR_sendmail-path"--></a>
   <li><a href="h_config_signature_color">OPTION: Signature Color</a>
@@ -415,8 +415,8 @@ diff -rc alpine-2.25/pith/pine.hlp alpine-2.25.colortext/pith/pine.hlp
   <li><a href="h_config_smtp_server">OPTION: <!--#echo var="VAR_smtp-server"--></a>
   <li><a href="h_config_sort_key">OPTION: <!--#echo var="VAR_sort-key"--></a>
 ***************
-*** 25004,25009 ****
---- 25006,25048 ----
+*** 25158,25163 ****
+--- 25160,25202 ----
   &lt;End of help on this topic&gt;
   </BODY>
   </HTML>
@@ -461,8 +461,8 @@ diff -rc alpine-2.25/pith/pine.hlp alpine-2.25.colortext/pith/pine.hlp
   <HTML>
   <HEAD>
 ***************
-*** 33616,33621 ****
---- 33655,33684 ----
+*** 33778,33783 ****
+--- 33817,33846 ----
   
   <P>
   <A HREF="h_color_setup">Descriptions of the available commands</A>
@@ -493,12 +493,12 @@ diff -rc alpine-2.25/pith/pine.hlp alpine-2.25.colortext/pith/pine.hlp
   <P>
   Look <A HREF="h_edit_nav_cmds">here</A>
   to see the available Editing and Navigation commands.
-diff -rc alpine-2.25/pith/state.c alpine-2.25.colortext/pith/state.c
-*** alpine-2.25/pith/state.c	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.colortext/pith/state.c	2021-09-18 09:03:19.403080521 -0600
+diff -rc alpine-2.26/pith/state.c alpine-2.26.colortext/pith/state.c
+*** alpine-2.26/pith/state.c	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.colortext/pith/state.c	2022-06-02 18:15:04.299118293 -0600
 ***************
-*** 144,149 ****
---- 144,152 ----
+*** 140,145 ****
+--- 140,148 ----
       if((*pps)->html_dir_list != NULL)
         free_html_log(&(*pps)->html_dir_list);
   
@@ -508,12 +508,12 @@ diff -rc alpine-2.25/pith/state.c alpine-2.25.colortext/pith/state.c
       if((*pps)->ui.homedir)
         fs_give((void **)&(*pps)->ui.homedir);
   
-diff -rc alpine-2.25/pith/state.h alpine-2.25.colortext/pith/state.h
-*** alpine-2.25/pith/state.h	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.colortext/pith/state.h	2021-09-18 09:03:19.407080548 -0600
+diff -rc alpine-2.26/pith/state.h alpine-2.26.colortext/pith/state.h
+*** alpine-2.26/pith/state.h	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.colortext/pith/state.h	2022-06-02 18:15:04.303118282 -0600
 ***************
-*** 349,354 ****
---- 349,356 ----
+*** 351,356 ****
+--- 351,358 ----
       char        *display_charmap;	/* needs to be freed */
       char        *keyboard_charmap;	/* needs to be freed */
       void        *input_cs;
@@ -522,12 +522,12 @@ diff -rc alpine-2.25/pith/state.h alpine-2.25.colortext/pith/state.h
   
       char        *posting_charmap;	/* needs to be freed */
   
-diff -rc alpine-2.25/pith/text.c alpine-2.25.colortext/pith/text.c
-*** alpine-2.25/pith/text.c	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.colortext/pith/text.c	2021-09-18 09:03:19.415080603 -0600
+diff -rc alpine-2.26/pith/text.c alpine-2.26.colortext/pith/text.c
+*** alpine-2.26/pith/text.c	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.colortext/pith/text.c	2022-06-02 18:15:04.315118253 -0600
 ***************
-*** 171,176 ****
---- 171,185 ----
+*** 167,172 ****
+--- 167,181 ----
   						       gf_url_hilite_opt(&uh,handlesp,0));
   	}
   

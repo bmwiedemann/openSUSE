@@ -4,8 +4,8 @@ Some features of Alpine do not exist in the release tarball but are only
 provided as patches (but by the same author..). So when there is a new
 release, the out-of-tree patches on the website get updated too.
 
-	version="2.25"
-	for i in WrtAcc colortext fancy fillpara fromheader insertpat maildir rules DelText; do
+	version="2.26"
+	for i in colortext fancy fillpara fromheader insertpat maildir rules DelText; do
 	wget -O- "http://alpine.x10host.com/alpine/patches/alpine-$version/$i.patch.gz" | gzip -cd >"chappa-$i.patch";
 	done
 

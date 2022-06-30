@@ -1,9 +1,9 @@
-diff -rc alpine-2.25/alpine/mailview.c alpine-2.25.fillpara/alpine/mailview.c
-*** alpine-2.25/alpine/mailview.c	2021-09-18 09:02:36.350783312 -0600
---- alpine-2.25.fillpara/alpine/mailview.c	2021-09-18 09:03:13.523039928 -0600
+diff -rc alpine-2.26/alpine/mailview.c alpine-2.26.fillpara/alpine/mailview.c
+*** alpine-2.26/alpine/mailview.c	2022-06-02 18:14:00.463274817 -0600
+--- alpine-2.26.fillpara/alpine/mailview.c	2022-06-02 18:14:56.983136230 -0600
 ***************
-*** 205,211 ****
---- 205,219 ----
+*** 203,209 ****
+--- 203,217 ----
   int	    pcpine_view_cursor(int, long);
   #endif
   
@@ -20,8 +20,8 @@ diff -rc alpine-2.25/alpine/mailview.c alpine-2.25.fillpara/alpine/mailview.c
   /*----------------------------------------------------------------------
        Format a buffer with the text of the current message for browser
 ***************
-*** 296,301 ****
---- 304,320 ----
+*** 294,299 ****
+--- 302,318 ----
   	else
   	  ps->unseen_in_view = !mc->seen;
   
@@ -40,8 +40,8 @@ diff -rc alpine-2.25/alpine/mailview.c alpine-2.25.fillpara/alpine/mailview.c
   
   	store = so_get(src, NULL, EDIT_ACCESS);
 ***************
-*** 480,485 ****
---- 499,506 ----
+*** 478,483 ****
+--- 497,504 ----
       }
       while(ps->next_screen == SCREEN_FUN_NULL);
   
@@ -50,11 +50,11 @@ diff -rc alpine-2.25/alpine/mailview.c alpine-2.25.fillpara/alpine/mailview.c
       if(we_cancel)
         cancel_busy_cue(-1);
   
-diff -rc alpine-2.25/pico/basic.c alpine-2.25.fillpara/pico/basic.c
-*** alpine-2.25/pico/basic.c	2021-09-18 09:02:36.386783561 -0600
---- alpine-2.25.fillpara/pico/basic.c	2021-09-18 09:03:13.523039928 -0600
+diff -rc alpine-2.26/pico/basic.c alpine-2.26.fillpara/pico/basic.c
+*** alpine-2.26/pico/basic.c	2022-06-02 18:14:00.487274758 -0600
+--- alpine-2.26.fillpara/pico/basic.c	2022-06-02 18:14:56.983136230 -0600
 ***************
-*** 26,34 ****
+*** 22,30 ****
    * framing, are hard.
    */
   #include        "headers.h"
@@ -64,7 +64,7 @@ diff -rc alpine-2.25/pico/basic.c alpine-2.25.fillpara/pico/basic.c
   
   /*
    * Move the cursor to the
---- 26,35 ----
+--- 22,31 ----
    * framing, are hard.
    */
   #include        "headers.h"
@@ -76,7 +76,7 @@ diff -rc alpine-2.25/pico/basic.c alpine-2.25.fillpara/pico/basic.c
   /*
    * Move the cursor to the
 ***************
-*** 285,291 ****
+*** 281,287 ****
   gotobop(int f, int n)
   {
       int quoted, qlen;
@@ -84,7 +84,7 @@ diff -rc alpine-2.25/pico/basic.c alpine-2.25.fillpara/pico/basic.c
   
       if (n < 0)	/* the other way...*/
         return(gotoeop(f, -n));
---- 286,292 ----
+--- 282,288 ----
   gotobop(int f, int n)
   {
       int quoted, qlen;
@@ -93,8 +93,8 @@ diff -rc alpine-2.25/pico/basic.c alpine-2.25.fillpara/pico/basic.c
       if (n < 0)	/* the other way...*/
         return(gotoeop(f, -n));
 ***************
-*** 297,302 ****
---- 298,311 ----
+*** 293,298 ****
+--- 294,307 ----
   	    curwp->w_dotp = lback(curwp->w_dotp);
   	    curwp->w_doto = 0;
   	}
@@ -110,7 +110,7 @@ diff -rc alpine-2.25/pico/basic.c alpine-2.25.fillpara/pico/basic.c
   	/* scan line by line until we come to a line ending with
   	 * a <NL><NL> or <NL><TAB> or <NL><SPACE>
 ***************
-*** 304,321 ****
+*** 300,317 ****
   	 * PLUS: if there's a quote string, a quoted-to-non-quoted
   	 *	 line transition.
   	 */
@@ -129,7 +129,7 @@ diff -rc alpine-2.25/pico/basic.c alpine-2.25.fillpara/pico/basic.c
   	if(n){
   	    /* keep looking */
   	    if(lback(curwp->w_dotp) == curbp->b_linep)
---- 313,371 ----
+--- 309,367 ----
   	 * PLUS: if there's a quote string, a quoted-to-non-quoted
   	 *	 line transition.
   	 */
@@ -152,7 +152,7 @@ diff -rc alpine-2.25/pico/basic.c alpine-2.25.fillpara/pico/basic.c
 + 	 /*
 + 	  * Ok, we made it here and we assume that we are at the begining
 + 	  * of the paragraph. Let's double check this now. In order to do
-+ 	  * so we shell check if the first line was indented in a special
++ 	  * so we shall check if the first line was indented in a special
 + 	  * way.
 + 	  */
 + 	if(lback(curwp->w_dotp) == curbp->b_linep)
@@ -175,14 +175,14 @@ diff -rc alpine-2.25/pico/basic.c alpine-2.25.fillpara/pico/basic.c
 + 						ind_str, NLINE, 1)
 + 	       && (strlenis(qstr2) 
 + 			+ strlenis(ind_str) >= strlenis(qstr)))
-+ 	      || (lback(curwp->w_dotp) != curbp->b_linep
++ 	      || ((lback(curwp->w_dotp) != curbp->b_linep
 + 	         && llength(lback(curwp->w_dotp)) > qlen
 + 	         && (quoted == quote_match(default_qstr(glo_quote_str, 1),
 + 				lback(curwp->w_dotp), pqstr, NLINE, 0))
 + 		 && !strcmp(qstr, pqstr)
 + 		 && !ISspace(lgetc(curwp->w_dotp, qlen).c)
-+ 		 && (strlenis(qstr2) > strlenis(qstr)))
-+ 	         && !qstr2[i] && !qstr[j])
++ 		 && strlenis(qstr2) > strlenis(qstr))
++ 	         && !qstr2[i] && !qstr[j]))
 + 		curwp->w_dotp = lback(curwp->w_dotp);
 + 	}
 + 
@@ -190,7 +190,7 @@ diff -rc alpine-2.25/pico/basic.c alpine-2.25.fillpara/pico/basic.c
   	    /* keep looking */
   	    if(lback(curwp->w_dotp) == curbp->b_linep)
 ***************
-*** 328,334 ****
+*** 324,330 ****
   	else{
   	  /* leave cursor on first word in para */
   	    curwp->w_doto = 0;
@@ -198,7 +198,7 @@ diff -rc alpine-2.25/pico/basic.c alpine-2.25.fillpara/pico/basic.c
   	      if(++curwp->w_doto >= llength(curwp->w_dotp)){
   		  curwp->w_doto = 0;
   		  curwp->w_dotp = lforw(curwp->w_dotp);
---- 378,384 ----
+--- 374,380 ----
   	else{
   	  /* leave cursor on first word in para */
   	    curwp->w_doto = 0;
@@ -207,7 +207,7 @@ diff -rc alpine-2.25/pico/basic.c alpine-2.25.fillpara/pico/basic.c
   		  curwp->w_doto = 0;
   		  curwp->w_dotp = lforw(curwp->w_dotp);
 ***************
-*** 351,358 ****
+*** 347,354 ****
   int
   gotoeop(int f, int n)
   {
@@ -216,7 +216,7 @@ diff -rc alpine-2.25/pico/basic.c alpine-2.25.fillpara/pico/basic.c
   
       if (n < 0)	/* the other way...*/
         return(gotobop(f, -n));
---- 401,409 ----
+--- 397,405 ----
   int
   gotoeop(int f, int n)
   {
@@ -227,7 +227,7 @@ diff -rc alpine-2.25/pico/basic.c alpine-2.25.fillpara/pico/basic.c
       if (n < 0)	/* the other way...*/
         return(gotobop(f, -n));
 ***************
-*** 365,388 ****
+*** 361,384 ****
   	      break;
   	}
   
@@ -252,7 +252,7 @@ diff -rc alpine-2.25/pico/basic.c alpine-2.25.fillpara/pico/basic.c
   	  curwp->w_dotp = lforw(curwp->w_dotp);
   
   	curwp->w_doto = llength(curwp->w_dotp);
---- 416,485 ----
+--- 412,481 ----
   	      break;
   	}
   
@@ -323,9 +323,9 @@ diff -rc alpine-2.25/pico/basic.c alpine-2.25.fillpara/pico/basic.c
   	  curwp->w_dotp = lforw(curwp->w_dotp);
   
   	curwp->w_doto = llength(curwp->w_dotp);
-diff -rc alpine-2.25/pico/efunc.h alpine-2.25.fillpara/pico/efunc.h
-*** alpine-2.25/pico/efunc.h	2021-09-18 09:02:36.386783561 -0600
---- alpine-2.25.fillpara/pico/efunc.h	2021-09-18 09:03:13.527039955 -0600
+diff -rc alpine-2.26/pico/efunc.h alpine-2.26.fillpara/pico/efunc.h
+*** alpine-2.26/pico/efunc.h	2022-06-02 18:14:00.487274758 -0600
+--- alpine-2.26.fillpara/pico/efunc.h	2022-06-02 18:14:56.983136230 -0600
 ***************
 *** 253,262 ****
   extern	int fillpara(int, int);
@@ -355,11 +355,11 @@ diff -rc alpine-2.25/pico/efunc.h alpine-2.25.fillpara/pico/efunc.h
   
   #endif	/* EFUNC_H */
 + 
-diff -rc alpine-2.25/pico/line.c alpine-2.25.fillpara/pico/line.c
-*** alpine-2.25/pico/line.c	2021-09-18 09:02:36.386783561 -0600
---- alpine-2.25.fillpara/pico/line.c	2021-09-18 09:03:13.575040287 -0600
+diff -rc alpine-2.26/pico/line.c alpine-2.26.fillpara/pico/line.c
+*** alpine-2.26/pico/line.c	2022-06-02 18:14:00.487274758 -0600
+--- alpine-2.26.fillpara/pico/line.c	2022-06-02 18:14:57.007136171 -0600
 ***************
-*** 612,627 ****
+*** 608,623 ****
   lisblank(LINE *line)
   {
       int n = 0;
@@ -376,7 +376,7 @@ diff -rc alpine-2.25/pico/line.c alpine-2.25.fillpara/pico/line.c
   	return(FALSE);
   
       return(TRUE);
---- 612,623 ----
+--- 608,619 ----
   lisblank(LINE *line)
   {
       int n = 0;
@@ -389,9 +389,9 @@ diff -rc alpine-2.25/pico/line.c alpine-2.25.fillpara/pico/line.c
   	return(FALSE);
   
       return(TRUE);
-diff -rc alpine-2.25/pico/osdep/color.h alpine-2.25.fillpara/pico/osdep/color.h
-*** alpine-2.25/pico/osdep/color.h	2021-09-18 09:02:36.386783561 -0600
---- alpine-2.25.fillpara/pico/osdep/color.h	2021-09-18 09:03:13.579040315 -0600
+diff -rc alpine-2.26/pico/osdep/color.h alpine-2.26.fillpara/pico/osdep/color.h
+*** alpine-2.26/pico/osdep/color.h	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.fillpara/pico/osdep/color.h	2022-06-02 18:14:57.007136171 -0600
 ***************
 *** 33,38 ****
 --- 33,39 ----
@@ -402,12 +402,12 @@ diff -rc alpine-2.25/pico/osdep/color.h alpine-2.25.fillpara/pico/osdep/color.h
   
   
   #endif /* PICO_OSDEP_COLOR_INCLUDED */
-diff -rc alpine-2.25/pico/search.c alpine-2.25.fillpara/pico/search.c
-*** alpine-2.25/pico/search.c	2021-09-18 09:02:36.386783561 -0600
---- alpine-2.25.fillpara/pico/search.c	2021-09-18 09:03:13.579040315 -0600
+diff -rc alpine-2.26/pico/search.c alpine-2.26.fillpara/pico/search.c
+*** alpine-2.26/pico/search.c	2022-06-02 18:14:00.487274758 -0600
+--- alpine-2.26.fillpara/pico/search.c	2022-06-02 18:14:57.015136151 -0600
 ***************
-*** 36,41 ****
---- 36,42 ----
+*** 32,37 ****
+--- 32,38 ----
   int     readpattern(char *, int, int);
   int     replace_pat(UCS *, int *, int);
   int     replace_all(UCS *, UCS *, int);
@@ -416,7 +416,7 @@ diff -rc alpine-2.25/pico/search.c alpine-2.25.fillpara/pico/search.c
   void	reverse_buffer(void);
   void	reverse_ucs4(UCS *);
 ***************
-*** 71,77 ****
+*** 67,73 ****
   	{"^W", N_("Start of Para"), (CTRL|'W')},
   	{"^O", N_("End of Para"),   (CTRL|'O')},
   	{"^U", N_("FullJustify"),   (CTRL|'U')},
@@ -424,7 +424,7 @@ diff -rc alpine-2.25/pico/search.c alpine-2.25.fillpara/pico/search.c
   	{NULL, NULL, 0}
   };
   
---- 72,78 ----
+--- 68,74 ----
   	{"^W", N_("Start of Para"), (CTRL|'W')},
   	{"^O", N_("End of Para"),   (CTRL|'O')},
   	{"^U", N_("FullJustify"),   (CTRL|'U')},
@@ -433,7 +433,7 @@ diff -rc alpine-2.25/pico/search.c alpine-2.25.fillpara/pico/search.c
   };
   
 ***************
-*** 220,228 ****
+*** 216,224 ****
   
   	  case (CTRL|'P'):
   	    if(flags & SR_ORIGMEN){
@@ -443,7 +443,7 @@ diff -rc alpine-2.25/pico/search.c alpine-2.25.fillpara/pico/search.c
   	      if(flags & SR_FORWARD){
   		flags &= ~SR_FORWARD;
   		flags |=  SR_BACKWRD;
---- 221,231 ----
+--- 217,227 ----
   
   	  case (CTRL|'P'):
   	    if(flags & SR_ORIGMEN){
@@ -456,8 +456,8 @@ diff -rc alpine-2.25/pico/search.c alpine-2.25.fillpara/pico/search.c
   		flags &= ~SR_FORWARD;
   		flags |=  SR_BACKWRD;
 ***************
-*** 1420,1422 ****
---- 1423,1447 ----
+*** 1416,1418 ****
+--- 1419,1443 ----
     if(bsearch) reverse_ucs4(orig);
     return utf8;
   }
@@ -483,11 +483,11 @@ diff -rc alpine-2.25/pico/search.c alpine-2.25.fillpara/pico/search.c
 +    return(TRUE);
 + }
 + 
-diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
-*** alpine-2.25/pico/word.c	2021-09-18 09:02:36.386783561 -0600
---- alpine-2.25.fillpara/pico/word.c	2021-09-18 09:03:13.583040342 -0600
+diff -rc alpine-2.26/pico/word.c alpine-2.26.fillpara/pico/word.c
+*** alpine-2.26/pico/word.c	2022-06-02 18:14:00.487274758 -0600
+--- alpine-2.26.fillpara/pico/word.c	2022-06-02 18:14:57.019136141 -0600
 ***************
-*** 25,34 ****
+*** 21,30 ****
    */
   
   #include	"headers.h"
@@ -498,7 +498,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   int setquotelevelinregion(int quotelevel, REGION *addedregion);
   int is_user_separator(UCS c);
   
---- 25,34 ----
+--- 21,30 ----
    */
   
   #include	"headers.h"
@@ -510,7 +510,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   int is_user_separator(UCS c);
   
 ***************
-*** 431,555 ****
+*** 427,551 ****
       return 0;
   }
   
@@ -636,7 +636,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   
   /* Justify the entire buffer instead of just a paragraph */
   int
---- 431,595 ----
+--- 427,591 ----
       return 0;
   }
   
@@ -803,8 +803,8 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   /* Justify the entire buffer instead of just a paragraph */
   int
 ***************
-*** 804,809 ****
---- 844,850 ----
+*** 800,805 ****
+--- 840,846 ----
       }
   
       if(action == 'R' && curwp->w_markp){
@@ -813,7 +813,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   	thisflag |= CFFILL;
   
 ***************
-*** 815,835 ****
+*** 811,831 ****
   	swap_mark_and_dot_if_mark_comes_first();
   
   	/* determine if we're justifying quoted text or not */
@@ -835,7 +835,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   
   	/*
   	 * Justfiy the current paragraph.
---- 856,881 ----
+--- 852,877 ----
   	swap_mark_and_dot_if_mark_comes_first();
   
   	/* determine if we're justifying quoted text or not */
@@ -863,7 +863,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   	/*
   	 * Justfiy the current paragraph.
 ***************
-*** 841,856 ****
+*** 837,852 ****
   	if(gotoeop(FALSE, 1) == FALSE)
   	  return(FALSE);
   
@@ -880,7 +880,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   	/* let yank() know that it may be restoring a paragraph */
   	thisflag |= (CFFILL | CFFLPA);
   
---- 887,902 ----
+--- 883,898 ----
   	if(gotoeop(FALSE, 1) == FALSE)
   	  return(FALSE);
   
@@ -898,7 +898,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   	thisflag |= (CFFILL | CFFLPA);
   
 ***************
-*** 864,872 ****
+*** 860,868 ****
   	/*
   	 * Fillregion moves dot to the end of the filled region.
   	 */
@@ -908,7 +908,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   	set_last_region_added(&addedregion);
   
   	/* Leave cursor on first char of first line after justified region */
---- 910,924 ----
+--- 906,920 ----
   	/*
   	 * Fillregion moves dot to the end of the filled region.
   	 */
@@ -925,7 +925,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   
   	/* Leave cursor on first char of first line after justified region */
 ***************
-*** 908,923 ****
+*** 904,919 ****
    * can delete it and restore the saved part.
    */
   int
@@ -942,7 +942,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
       REGION  region;
   
       /* if region starts midline insert a newline */
---- 960,975 ----
+--- 956,971 ----
    * can delete it and restore the saved part.
    */
   int
@@ -960,8 +960,8 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   
       /* if region starts midline insert a newline */
 ***************
-*** 928,933 ****
---- 980,1014 ----
+*** 924,929 ****
+--- 976,1010 ----
       if(curwp->w_marko > 0 && curwp->w_marko < llength(curwp->w_markp))
         ends_midline++;
   
@@ -998,7 +998,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
       fdelete();
       if(!getregion(&region, curwp->w_markp, curwp->w_marko))
 ***************
-*** 944,971 ****
+*** 940,967 ****
   
       /* Now insert it back wrapped */
       spaces = word_len = word_ind = line_len = same_word = 0;
@@ -1027,7 +1027,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   
       /* then digest the rest... */
       while((c = fremove(i++)) >= 0){
---- 1025,1060 ----
+--- 1021,1056 ----
   
       /* Now insert it back wrapped */
       spaces = word_len = word_ind = line_len = same_word = 0;
@@ -1065,7 +1065,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
       /* then digest the rest... */
       while((c = fremove(i++)) >= 0){
 ***************
-*** 986,1006 ****
+*** 982,1002 ****
   
   	  case TAB :
   	  case ' ' :
@@ -1087,7 +1087,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   			linsert(1, ' ');	/* need padding? */
   			line_len++;
   		    }
---- 1075,1096 ----
+--- 1071,1092 ----
   
   	  case TAB :
   	  case ' ' :
@@ -1111,7 +1111,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   			line_len++;
   		    }
 ***************
-*** 1022,1029 ****
+*** 1018,1025 ****
   
   	    if(word_ind + 1 >= NSTRING){
   		/* Magic!  Fake that we output a wrapped word */
@@ -1120,7 +1120,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   		      linsert(1, ' ');
   		    line_len = fpnewline(qstr);
   		}
---- 1112,1119 ----
+--- 1108,1115 ----
   
   	    if(word_ind + 1 >= NSTRING){
   		/* Magic!  Fake that we output a wrapped word */
@@ -1130,7 +1130,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   		    line_len = fpnewline(qstr);
   		}
 ***************
-*** 1045,1056 ****
+*** 1041,1052 ****
       }
   
       if(word_len){
@@ -1143,7 +1143,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   	  linsert(1, ' ');
   
   	for(j = 0; j < word_ind; j++)
---- 1135,1146 ----
+--- 1131,1142 ----
       }
   
       if(word_len){
@@ -1157,7 +1157,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   
   	for(j = 0; j < word_ind; j++)
 ***************
-*** 1108,1118 ****
+*** 1104,1114 ****
       int len;
   
       lnewline();
@@ -1169,7 +1169,7 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
   	linsert(1, *quote);
       }
   
---- 1198,1208 ----
+--- 1194,1204 ----
       int len;
   
       lnewline();
@@ -1182,8 +1182,8 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
       }
   
 ***************
-*** 1256,1260 ****
---- 1346,1390 ----
+*** 1252,1256 ****
+--- 1342,1386 ----
   	markregion(1);
       }
   
@@ -1229,12 +1229,12 @@ diff -rc alpine-2.25/pico/word.c alpine-2.25.fillpara/pico/word.c
 +      return get_indent_raw_line(q, GLine, buf, buflen, k, plb);
 + }
 + 
-diff -rc alpine-2.25/pith/charconv/utf8.c alpine-2.25.fillpara/pith/charconv/utf8.c
-*** alpine-2.25/pith/charconv/utf8.c	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.fillpara/pith/charconv/utf8.c	2021-09-18 09:03:13.583040342 -0600
+diff -rc alpine-2.26/pith/charconv/utf8.c alpine-2.26.fillpara/pith/charconv/utf8.c
+*** alpine-2.26/pith/charconv/utf8.c	2022-06-02 18:14:00.495274738 -0600
+--- alpine-2.26.fillpara/pith/charconv/utf8.c	2022-06-02 18:14:57.019136141 -0600
 ***************
-*** 1117,1122 ****
---- 1117,1172 ----
+*** 1113,1118 ****
+--- 1113,1168 ----
   
   
   /*
@@ -1291,9 +1291,9 @@ diff -rc alpine-2.25/pith/charconv/utf8.c alpine-2.25.fillpara/pith/charconv/utf
    * Copy UTF-8 characters from src into dst.
    * This is intended to be used if you want to truncate a string at
    * the start instead of the end. For example, you have a long string
-diff -rc alpine-2.25/pith/charconv/utf8.h alpine-2.25.fillpara/pith/charconv/utf8.h
-*** alpine-2.25/pith/charconv/utf8.h	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.fillpara/pith/charconv/utf8.h	2021-09-18 09:03:13.583040342 -0600
+diff -rc alpine-2.26/pith/charconv/utf8.h alpine-2.26.fillpara/pith/charconv/utf8.h
+*** alpine-2.26/pith/charconv/utf8.h	2022-06-02 18:14:00.495274738 -0600
+--- alpine-2.26.fillpara/pith/charconv/utf8.h	2022-06-02 18:14:57.023136132 -0600
 ***************
 *** 82,87 ****
 --- 82,88 ----
@@ -1304,11 +1304,11 @@ diff -rc alpine-2.25/pith/charconv/utf8.h alpine-2.25.fillpara/pith/charconv/utf
   size_t         utf8_to_width_rhs(char *, char *, size_t, unsigned);
   int            utf8_snprintf(char *, size_t, char *, ...);
   size_t         utf8_to_width(char *, char *, size_t, unsigned, unsigned *);
-diff -rc alpine-2.25/pith/color.c alpine-2.25.fillpara/pith/color.c
-*** alpine-2.25/pith/color.c	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.fillpara/pith/color.c	2021-09-18 09:03:13.583040342 -0600
+diff -rc alpine-2.26/pith/color.c alpine-2.26.fillpara/pith/color.c
+*** alpine-2.26/pith/color.c	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.fillpara/pith/color.c	2022-06-02 18:14:57.023136132 -0600
 ***************
-*** 21,27 ****
+*** 17,23 ****
   #include "../pith/state.h"
   #include "../pith/conf.h"
   #include "../pith/filter.h"
@@ -1316,7 +1316,7 @@ diff -rc alpine-2.25/pith/color.c alpine-2.25.fillpara/pith/color.c
   
   char *
   color_embed(char *fg, char *bg)
---- 21,28 ----
+--- 17,24 ----
   #include "../pith/state.h"
   #include "../pith/conf.h"
   #include "../pith/filter.h"
@@ -1326,7 +1326,7 @@ diff -rc alpine-2.25/pith/color.c alpine-2.25.fillpara/pith/color.c
   char *
   color_embed(char *fg, char *bg)
 ***************
-*** 70,92 ****
+*** 66,88 ****
       struct quote_colors *next;
   };
   
@@ -1350,7 +1350,7 @@ diff -rc alpine-2.25/pith/color.c alpine-2.25.fillpara/pith/color.c
   	struct quote_colors *c;
   
   	/*
---- 71,180 ----
+--- 67,176 ----
       struct quote_colors *next;
   };
   
@@ -1462,7 +1462,7 @@ diff -rc alpine-2.25/pith/color.c alpine-2.25.fillpara/pith/color.c
   
   	/*
 ***************
-*** 135,141 ****
+*** 131,137 ****
         free_color_pair(&col);
   
       cp = NULL;
@@ -1470,7 +1470,7 @@ diff -rc alpine-2.25/pith/color.c alpine-2.25.fillpara/pith/color.c
   	cp = (cp && cp->next) ? cp->next : colors;
   
   	if(countem > 0)
---- 223,229 ----
+--- 219,225 ----
         free_color_pair(&col);
   
       cp = NULL;
@@ -1479,7 +1479,7 @@ diff -rc alpine-2.25/pith/color.c alpine-2.25.fillpara/pith/color.c
   
   	if(countem > 0)
 ***************
-*** 145,154 ****
+*** 141,150 ****
   
   	countem = (countem == 1) ? 0 : countem;
   
@@ -1490,7 +1490,7 @@ diff -rc alpine-2.25/pith/color.c alpine-2.25.fillpara/pith/color.c
       }
   
       if(colors){
---- 233,241 ----
+--- 229,237 ----
   
   	countem = (countem == 1) ? 0 : countem;
   
@@ -1501,7 +1501,7 @@ diff -rc alpine-2.25/pith/color.c alpine-2.25.fillpara/pith/color.c
   
       if(colors){
 ***************
-*** 211,217 ****
+*** 207,213 ****
   	}
       }
   
@@ -1509,7 +1509,7 @@ diff -rc alpine-2.25/pith/color.c alpine-2.25.fillpara/pith/color.c
   }
   
   
---- 298,304 ----
+--- 294,300 ----
   	}
       }
   
@@ -1517,9 +1517,9 @@ diff -rc alpine-2.25/pith/color.c alpine-2.25.fillpara/pith/color.c
   }
   
   
-diff -rc alpine-2.25/pith/color.h alpine-2.25.fillpara/pith/color.h
-*** alpine-2.25/pith/color.h	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.fillpara/pith/color.h	2021-09-18 09:03:13.583040342 -0600
+diff -rc alpine-2.26/pith/color.h alpine-2.26.fillpara/pith/color.h
+*** alpine-2.26/pith/color.h	2022-06-02 18:14:00.495274738 -0600
+--- alpine-2.26.fillpara/pith/color.h	2022-06-02 18:14:57.027136121 -0600
 ***************
 *** 22,27 ****
 --- 22,45 ----
@@ -1557,12 +1557,12 @@ diff -rc alpine-2.25/pith/color.h alpine-2.25.fillpara/pith/color.h
   int	 color_a_quote(long, char *, LT_INS_S **, void *);
   void	 free_spec_colors(SPEC_COLOR_S **);
   
-diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
-*** alpine-2.25/pith/filter.c	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.fillpara/pith/filter.c	2021-09-18 09:03:13.591040398 -0600
+diff -rc alpine-2.26/pith/filter.c alpine-2.26.fillpara/pith/filter.c
+*** alpine-2.26/pith/filter.c	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.fillpara/pith/filter.c	2022-06-02 18:14:57.031136112 -0600
 ***************
-*** 46,51 ****
---- 46,52 ----
+*** 42,47 ****
+--- 42,48 ----
   #include "../pith/conf.h"
   #include "../pith/store.h"
   #include "../pith/color.h"
@@ -1571,8 +1571,8 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   #include "../pith/pipe.h"
   #include "../pith/status.h"
 ***************
-*** 9454,9459 ****
---- 9455,9465 ----
+*** 9503,9508 ****
+--- 9504,9514 ----
   		margin_r,
   		indent;
       char	special[256];
@@ -1585,8 +1585,8 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   
   #define	WRAP_MARG_L(F)	(((WRAP_S *)(F)->opt)->margin_l)
 ***************
-*** 9495,9500 ****
---- 9501,9512 ----
+*** 9544,9549 ****
+--- 9550,9561 ----
   #define	WRAP_COLOR(F)	(((WRAP_S *)(F)->opt)->color)
   #define	WRAP_COLOR_SET(F)  ((WRAP_COLOR(F)) && (WRAP_COLOR(F)->fg[0]))
   #define	WRAP_SPACES(F)	(((WRAP_S *)(F)->opt)->spaces)
@@ -1600,8 +1600,8 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   			    if((F)->linep == WRAP_LASTC(F)){		\
   				size_t offset = (F)->linep - (F)->line;	\
 ***************
-*** 9572,9577 ****
---- 9584,9591 ----
+*** 9621,9626 ****
+--- 9633,9640 ----
   	      case CCR :				/* CRLF or CR in text ? */
   		state = BOL;				/* either way, handle start */
   
@@ -1611,7 +1611,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   		    /* wrapped line? */
   		    if(f->f2 == 0 && WRAP_SPC_LEN(f) && WRAP_TRL_SPC(f)){
 ***************
-*** 9665,9671 ****
+*** 9714,9720 ****
   
   	      case BOL :
   		if(WRAP_FLOW(f)){
@@ -1619,7 +1619,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   			WRAP_FL_QC(f) = 1;		/* init it */
   			state = FL_QLEV;		/* go collect it */
   		    }
---- 9679,9689 ----
+--- 9728,9738 ----
   
   	      case BOL :
   		if(WRAP_FLOW(f)){
@@ -1632,7 +1632,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   			state = FL_QLEV;		/* go collect it */
   		    }
 ***************
-*** 9679,9685 ****
+*** 9728,9734 ****
   			}
   
   			/* quote level change implies new paragraph */
@@ -1640,7 +1640,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   			    WRAP_FL_QD(f) = 0;
   			    if(WRAP_HARD(f) == 0){
   				WRAP_HARD(f) = 1;
---- 9697,9712 ----
+--- 9746,9761 ----
   			}
   
   			/* quote level change implies new paragraph */
@@ -1658,7 +1658,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   			    if(WRAP_HARD(f) == 0){
   				WRAP_HARD(f) = 1;
 ***************
-*** 9731,9738 ****
+*** 9780,9787 ****
   		break;
   
   	      case  FL_QLEV :
@@ -1667,7 +1667,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   		}
   		else {
   		    /* if EMBEDed, process it and return here */
---- 9758,9769 ----
+--- 9807,9818 ----
   		break;
   
   	      case  FL_QLEV :
@@ -1681,7 +1681,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   		else {
   		    /* if EMBEDed, process it and return here */
 ***************
-*** 9744,9750 ****
+*** 9793,9799 ****
   		    }
   
   		    /* quote level change signals new paragraph */
@@ -1689,7 +1689,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   			WRAP_FL_QD(f) = WRAP_FL_QC(f);
   			if(WRAP_HARD(f) == 0){		/* add hard newline */ 
   			    WRAP_HARD(f) = 1;		/* hard newline */
---- 9775,9790 ----
+--- 9824,9839 ----
   		    }
   
   		    /* quote level change signals new paragraph */
@@ -1707,8 +1707,8 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   			if(WRAP_HARD(f) == 0){		/* add hard newline */ 
   			    WRAP_HARD(f) = 1;		/* hard newline */
 ***************
-*** 9801,9806 ****
---- 9841,9853 ----
+*** 9850,9855 ****
+--- 9890,9902 ----
   		    state = FL_SIG;
   		    break;
   
@@ -1723,7 +1723,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   		    state = DFL;
   		    goto case_dfl;			/* handle c like DFL */
 ***************
-*** 9817,9823 ****
+*** 9866,9872 ****
   					     &eob);      /* note any embedded*/
   			    wrap_eol(f, 1, &ip, &eib,
   				     &op, &eob);       /* plunk down newline */
@@ -1731,7 +1731,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   				     &op, &eob);         /* write any prefix */
   			}
   
---- 9864,9870 ----
+--- 9913,9919 ----
   					     &eob);      /* note any embedded*/
   			    wrap_eol(f, 1, &ip, &eib,
   				     &op, &eob);       /* plunk down newline */
@@ -1740,7 +1740,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   			}
   
 ***************
-*** 10314,10320 ****
+*** 10363,10369 ****
   		    wrap_flush_embed(f, &ip, &eib, &op, &eob);
   		    wrap_eol(f, 1, &ip, &eib, &op,
   			     &eob);	    /* plunk down newline */
@@ -1748,7 +1748,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   			     &eob);	      /* write any prefix */
   		}
   
---- 10361,10367 ----
+--- 10410,10416 ----
   		    wrap_flush_embed(f, &ip, &eib, &op, &eob);
   		    wrap_eol(f, 1, &ip, &eib, &op,
   			     &eob);	    /* plunk down newline */
@@ -1757,8 +1757,8 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   		}
   
 ***************
-*** 10387,10392 ****
---- 10434,10446 ----
+*** 10436,10441 ****
+--- 10483,10495 ----
   	if(WRAP_COLOR(f))
   	  free_color_pair(&WRAP_COLOR(f));
   
@@ -1773,7 +1773,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   	so_give(&WRAP_SPACES(f));
   	fs_give((void **) &f->opt);	/* free wrap widths struct */
 ***************
-*** 10737,10743 ****
+*** 10786,10792 ****
   {
       int j, i;
       COLOR_PAIR *col = NULL;
@@ -1781,7 +1781,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   
       if(ps_global->VAR_QUOTE_REPLACE_STRING){
   	get_pair(ps_global->VAR_QUOTE_REPLACE_STRING, &prefix, &last_prefix, 0, 0);
---- 10791,10798 ----
+--- 10840,10847 ----
   {
       int j, i;
       COLOR_PAIR *col = NULL;
@@ -1791,7 +1791,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
       if(ps_global->VAR_QUOTE_REPLACE_STRING){
   	get_pair(ps_global->VAR_QUOTE_REPLACE_STRING, &prefix, &last_prefix, 0, 0);
 ***************
-*** 10746,10755 ****
+*** 10795,10804 ****
   	    last_prefix = NULL;
   	}
       }
@@ -1802,7 +1802,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   	       && ps_global->VAR_QUOTE1_FORE_COLOR
   	       && ps_global->VAR_QUOTE1_BACK_COLOR
   	       && (col = new_color_pair(ps_global->VAR_QUOTE1_FORE_COLOR,
---- 10801,10822 ----
+--- 10850,10871 ----
   	    last_prefix = NULL;
   	}
       }
@@ -1826,7 +1826,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   	       && ps_global->VAR_QUOTE1_BACK_COLOR
   	       && (col = new_color_pair(ps_global->VAR_QUOTE1_FORE_COLOR,
 ***************
-*** 10757,10763 ****
+*** 10806,10812 ****
   	       && pico_is_good_colorpair(col)){
                   GF_COLOR_PUTC(f, col);
               }
@@ -1834,7 +1834,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   		    && ps_global->VAR_QUOTE2_FORE_COLOR
   		    && ps_global->VAR_QUOTE2_BACK_COLOR
   		    && (col = new_color_pair(ps_global->VAR_QUOTE2_FORE_COLOR,
---- 10824,10830 ----
+--- 10873,10879 ----
   	       && pico_is_good_colorpair(col)){
                   GF_COLOR_PUTC(f, col);
               }
@@ -1843,7 +1843,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   		    && ps_global->VAR_QUOTE2_BACK_COLOR
   		    && (col = new_color_pair(ps_global->VAR_QUOTE2_FORE_COLOR,
 ***************
-*** 10765,10771 ****
+*** 10814,10820 ****
   		    && pico_is_good_colorpair(col)){
   	        GF_COLOR_PUTC(f, col);
               }
@@ -1851,7 +1851,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   		    && ps_global->VAR_QUOTE3_FORE_COLOR
   		    && ps_global->VAR_QUOTE3_BACK_COLOR
   		    && (col = new_color_pair(ps_global->VAR_QUOTE3_FORE_COLOR,
---- 10832,10838 ----
+--- 10881,10887 ----
   		    && pico_is_good_colorpair(col)){
   	        GF_COLOR_PUTC(f, col);
               }
@@ -1860,7 +1860,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   		    && ps_global->VAR_QUOTE3_BACK_COLOR
   		    && (col = new_color_pair(ps_global->VAR_QUOTE3_FORE_COLOR,
 ***************
-*** 10779,10821 ****
+*** 10828,10870 ****
   	    }
   	}
   
@@ -1904,7 +1904,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   
       return 0;
   }
---- 10846,10892 ----
+--- 10895,10941 ----
   	    }
   	}
   
@@ -1953,8 +1953,8 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
       return 0;
   }
 ***************
-*** 10847,10852 ****
---- 10918,10929 ----
+*** 10896,10901 ****
+--- 10967,10978 ----
       wrap->hdr_color    = (GFW_HDRCOLOR & flags) == GFW_HDRCOLOR;
       wrap->for_compose  = (GFW_FORCOMPOSE & flags) == GFW_FORCOMPOSE;
       wrap->handle_soft_hyphen = (GFW_SOFTHYPHEN & flags) == GFW_SOFTHYPHEN;
@@ -1968,8 +1968,8 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
       return((void *) wrap);
   }
 ***************
-*** 11290,11296 ****
---- 11367,11581 ----
+*** 11339,11345 ****
+--- 11416,11630 ----
   			    } \
   			}
   
@@ -2022,7 +2022,7 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
 +     register int   l;\
 + 	\
 +     for (gline = cline = line; gline && cline; ){\
-+ 	if(cline = strchr(gline,'\012'))\
++ 	if((cline = strchr(gline,'\012')) != NULL)\
 + 	  *cline = '\0';\
 + 	done = (*((LINETEST_S *) (F)->opt)->f)((F)->n++, gline, &ins,\
 + 			   ((LINETEST_S *) (F)->opt)->local);\
@@ -2185,9 +2185,9 @@ diff -rc alpine-2.25/pith/filter.c alpine-2.25.fillpara/pith/filter.c
   
   /*
    * this simple filter accumulates characters until a newline, offers it
-diff -rc alpine-2.25/pith/filter.h alpine-2.25.fillpara/pith/filter.h
-*** alpine-2.25/pith/filter.h	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.fillpara/pith/filter.h	2021-09-18 09:03:13.591040398 -0600
+diff -rc alpine-2.26/pith/filter.h alpine-2.26.fillpara/pith/filter.h
+*** alpine-2.26/pith/filter.h	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.fillpara/pith/filter.h	2022-06-02 18:14:57.031136112 -0600
 ***************
 *** 217,222 ****
 --- 217,223 ----
@@ -2198,9 +2198,9 @@ diff -rc alpine-2.25/pith/filter.h alpine-2.25.fillpara/pith/filter.h
   void	   *gf_url_hilite_opt(URL_HILITE_S *, HANDLE_S **, int);
   void	    free_filter_module_globals(void);
   
-diff -rc alpine-2.25/pith/filttype.h alpine-2.25.fillpara/pith/filttype.h
-*** alpine-2.25/pith/filttype.h	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.fillpara/pith/filttype.h	2021-09-18 09:03:13.591040398 -0600
+diff -rc alpine-2.26/pith/filttype.h alpine-2.26.fillpara/pith/filttype.h
+*** alpine-2.26/pith/filttype.h	2022-06-02 18:14:00.495274738 -0600
+--- alpine-2.26.fillpara/pith/filttype.h	2022-06-02 18:14:57.031136112 -0600
 ***************
 *** 36,41 ****
 --- 36,43 ----
@@ -2212,11 +2212,11 @@ diff -rc alpine-2.25/pith/filttype.h alpine-2.25.fillpara/pith/filttype.h
       void     *opt;		/* optional per instance data		 */
       void     *data;		/* misc internal data pointer		 */
       unsigned char queue[1 + GF_MAXBUF];
-diff -rc alpine-2.25/pith/mailview.c alpine-2.25.fillpara/pith/mailview.c
-*** alpine-2.25/pith/mailview.c	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.fillpara/pith/mailview.c	2021-09-18 09:03:13.603040480 -0600
+diff -rc alpine-2.26/pith/mailview.c alpine-2.26.fillpara/pith/mailview.c
+*** alpine-2.26/pith/mailview.c	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.fillpara/pith/mailview.c	2022-06-02 18:14:57.035136102 -0600
 ***************
-*** 55,61 ****
+*** 51,57 ****
   #include "../pith/escapes.h"
   #include "../pith/keyword.h"
   #include "../pith/smime.h"
@@ -2224,7 +2224,7 @@ diff -rc alpine-2.25/pith/mailview.c alpine-2.25.fillpara/pith/mailview.c
   
   #define FBUF_LEN	(50)
   
---- 55,65 ----
+--- 51,61 ----
   #include "../pith/escapes.h"
   #include "../pith/keyword.h"
   #include "../pith/smime.h"
@@ -2237,7 +2237,7 @@ diff -rc alpine-2.25/pith/mailview.c alpine-2.25.fillpara/pith/mailview.c
   #define FBUF_LEN	(50)
   
 ***************
-*** 638,644 ****
+*** 634,640 ****
   	       && pico_usingcolor()
   	       && ps_global->VAR_SIGNATURE_FORE_COLOR
   	       && ps_global->VAR_SIGNATURE_BACK_COLOR){
@@ -2245,7 +2245,7 @@ diff -rc alpine-2.25/pith/mailview.c alpine-2.25.fillpara/pith/mailview.c
   	    }
   
   	    if((flgs & FM_DISPLAY)
---- 642,648 ----
+--- 638,644 ----
   	       && pico_usingcolor()
   	       && ps_global->VAR_SIGNATURE_FORE_COLOR
   	       && ps_global->VAR_SIGNATURE_BACK_COLOR){
@@ -2254,7 +2254,7 @@ diff -rc alpine-2.25/pith/mailview.c alpine-2.25.fillpara/pith/mailview.c
   
   	    if((flgs & FM_DISPLAY)
 ***************
-*** 646,653 ****
+*** 642,649 ****
   	       && pico_usingcolor()
   	       && ps_global->VAR_QUOTE1_FORE_COLOR
   	       && ps_global->VAR_QUOTE1_BACK_COLOR){
@@ -2263,7 +2263,7 @@ diff -rc alpine-2.25/pith/mailview.c alpine-2.25.fillpara/pith/mailview.c
   
   	    if(!(flgs & FM_NOWRAP)){
   		wrapflags = (flgs & FM_DISPLAY) ? (GFW_HANDLES|GFW_SOFTHYPHEN) : GFW_NONE;
---- 650,659 ----
+--- 646,655 ----
   	       && pico_usingcolor()
   	       && ps_global->VAR_QUOTE1_FORE_COLOR
   	       && ps_global->VAR_QUOTE1_BACK_COLOR){
@@ -2275,7 +2275,7 @@ diff -rc alpine-2.25/pith/mailview.c alpine-2.25.fillpara/pith/mailview.c
   	    if(!(flgs & FM_NOWRAP)){
   		wrapflags = (flgs & FM_DISPLAY) ? (GFW_HANDLES|GFW_SOFTHYPHEN) : GFW_NONE;
 ***************
-*** 1463,1489 ****
+*** 1459,1485 ****
   color_signature(long int linenum, char *line, LT_INS_S **ins, void *is_in_sig)
   {
       struct variable *vars = ps_global->vars;
@@ -2303,7 +2303,7 @@ diff -rc alpine-2.25/pith/mailview.c alpine-2.25.fillpara/pith/mailview.c
       if(*in_sig_block != OUT_SIG_BLOCK
          && VAR_SIGNATURE_FORE_COLOR && VAR_SIGNATURE_BACK_COLOR
          && (col = new_color_pair(VAR_SIGNATURE_FORE_COLOR,
---- 1469,1556 ----
+--- 1465,1552 ----
   color_signature(long int linenum, char *line, LT_INS_S **ins, void *is_in_sig)
   {
       struct variable *vars = ps_global->vars;
@@ -2327,7 +2327,7 @@ diff -rc alpine-2.25/pith/mailview.c alpine-2.25.fillpara/pith/mailview.c
 + 	PLine[sizeof(PLine)-1] = '\0';
 +     }
 + 
-+     if(p = strchr(tmp_20k_buf, '\015')) *p = '\0';
++     if((p = strchr(tmp_20k_buf, '\015')) != NULL) *p = '\0';
 +     strncpy(NLine, tmp_20k_buf, sizeof(NLine));
 +     NLine[sizeof(NLine) - 1] = '\0';
 +     if (p) *p = '\015';
@@ -2393,8 +2393,8 @@ diff -rc alpine-2.25/pith/mailview.c alpine-2.25.fillpara/pith/mailview.c
          && VAR_SIGNATURE_FORE_COLOR && VAR_SIGNATURE_BACK_COLOR
          && (col = new_color_pair(VAR_SIGNATURE_FORE_COLOR,
 ***************
-*** 2043,2048 ****
---- 2110,2186 ----
+*** 2039,2044 ****
+--- 2106,2182 ----
   }
   
   
@@ -2472,9 +2472,9 @@ diff -rc alpine-2.25/pith/mailview.c alpine-2.25.fillpara/pith/mailview.c
   
   #define	UES_LEN	12
   #define	UES_MAX	32
-diff -rc alpine-2.25/pith/mailview.h alpine-2.25.fillpara/pith/mailview.h
-*** alpine-2.25/pith/mailview.h	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.fillpara/pith/mailview.h	2021-09-18 09:03:13.603040480 -0600
+diff -rc alpine-2.26/pith/mailview.h alpine-2.26.fillpara/pith/mailview.h
+*** alpine-2.26/pith/mailview.h	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.fillpara/pith/mailview.h	2022-06-02 18:14:57.035136102 -0600
 ***************
 *** 146,151 ****
 --- 146,152 ----
@@ -2485,11 +2485,11 @@ diff -rc alpine-2.25/pith/mailview.h alpine-2.25.fillpara/pith/mailview.h
   int	    scroll_handle_start_color(char *, size_t, int *);
   int	    scroll_handle_end_color(char *, size_t, int *, int);
   int         width_at_this_position(unsigned char *, unsigned long);
-diff -rc alpine-2.25/pith/osdep/color.c alpine-2.25.fillpara/pith/osdep/color.c
-*** alpine-2.25/pith/osdep/color.c	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.fillpara/pith/osdep/color.c	2021-09-18 09:03:13.611040536 -0600
+diff -rc alpine-2.26/pith/osdep/color.c alpine-2.26.fillpara/pith/osdep/color.c
+*** alpine-2.26/pith/osdep/color.c	2022-06-02 18:14:00.495274738 -0600
+--- alpine-2.26.fillpara/pith/osdep/color.c	2022-06-02 18:14:57.039136093 -0600
 ***************
-*** 32,38 ****
+*** 28,34 ****
   
   #include <system.h>
   #include "./color.h"
@@ -2497,7 +2497,7 @@ diff -rc alpine-2.25/pith/osdep/color.c alpine-2.25.fillpara/pith/osdep/color.c
   
   
   /*
---- 32,40 ----
+--- 28,36 ----
   
   #include <system.h>
   #include "./color.h"
@@ -2508,8 +2508,8 @@ diff -rc alpine-2.25/pith/osdep/color.c alpine-2.25.fillpara/pith/osdep/color.c
   
   /*
 ***************
-*** 92,94 ****
---- 94,1375 ----
+*** 88,90 ****
+--- 90,1372 ----
   {
       return(pico_set_colors(col ? col->fg : NULL, col ? col->bg : NULL, flags));
   }
@@ -2533,8 +2533,8 @@ diff -rc alpine-2.25/pith/osdep/color.c alpine-2.25.fillpara/pith/osdep/color.c
 + 			     allowed_after_period(next((word),(k))))  ||\
 + 				(c) == RPAREN || (c) == '}' || (c) == ']' ||\
 + 				  ISspace(c) ||  is_a_digit(c) || \
-+ 				  ((c) == '-' ) && \
-+ 				    allowed_after_dash(next((word),(k)))) \
++ 				  (((c) == '-' ) && \
++ 				    allowed_after_dash(next((word),(k))))) \
 + 				? 1 : 0)
 + #define allowed_after_period(c)	 (((c) == RPAREN || (c) == '}' || (c) == ']' ||\
 + 				   ISspace(c) || (c) == '-' || \
@@ -2566,9 +2566,9 @@ diff -rc alpine-2.25/pith/osdep/color.c alpine-2.25.fillpara/pith/osdep/color.c
 +                        ((c) == LPAREN) || ((c) == '/')|| ((c) == '`') ||\
 +                        ((c) == '{') || ((c) == '\\') || (iscontrol((c))) ||\
 +                        (((c) >= '0')  && ((c) <= '9')) || ((c) == '?'))
-+ #define is_cletter(c)  ((((c) >= 'a') && ((c) <= 'z'))) ||\
++ #define is_cletter(c)  (((((c) >= 'a') && ((c) <= 'z'))) ||\
 +                        ((((c) >= 'A') && ((c) <= 'Z'))||\
-+                       is8bit(c))
++                       is8bit(c)))
 + #define is_cnumber(c) ((c) >= '0' && (c) <= '9')
 + #define allwd_after_word(c) (((c) == ' ') || ((c) == '>') || is_cletter(c))
 + #define allwd_after_qsword(c)  (((c) != '\\') && ((c) != RPAREN) && ((c) !=  '/'))
@@ -2626,8 +2626,8 @@ diff -rc alpine-2.25/pith/osdep/color.c alpine-2.25.fillpara/pith/osdep/color.c
 +      if(!strncmp(list1[i], word, k) && ISspace(word[k]))
 +        rv++;
 + 
-+      if(rv)
-+        return rv;
++   if(rv)
++      return rv;
 + 
 +    for(i = 0; rv == 0 && list2[i] && (k = strlen(list2[i])) && k <= j; i++)
 +      if(!strncmp(list2[i], word, k) && (!word[k] || ISspace(word[k])))
@@ -3215,7 +3215,7 @@ diff -rc alpine-2.25/pith/osdep/color.c alpine-2.25.fillpara/pith/osdep/color.c
 +                   * strange is coming. We need to confirm if this is a
 +                   * good choice later. For now we will let it pass.
 +                   */
-+                  if (isaword(word,i,j) || isamailbox(word,i,j)){
++                if (isaword(word,i,j) || isamailbox(word,i,j)){
 +                    int offset;
 +                    QStrType qstype;
 + 
@@ -3243,15 +3243,15 @@ diff -rc alpine-2.25/pith/osdep/color.c alpine-2.25.fillpara/pith/osdep/color.c
 +                        return qs_add(qs, word, qstype, i, j, offset, 1);
 +                  }
 +                  finished++;
-+            }
-+            else{
-+ 	       if(i > 0)
-+ 		return qs_add(qs, word, qsNormal, 0, i, 0, 1);
-+ 	       else if(!forbidden(c))
-+                   return qs_add(qs, word, qsChar, 0, 1, 0, 1);
-+                else    /* chao pescao */
-+                   finished++;
-+            }
++                }
++                else{
++ 	           if(i > 0)
++ 		     return qs_add(qs, word, qsNormal, 0, i, 0, 1);
++ 	           else if(!forbidden(c))
++                      return qs_add(qs, word, qsChar, 0, 1, 0, 1);
++                    else    /* chao pescao */
++                      finished++;
++                }
 +        break;
 +       }  /* End Switch */
 +     }  /* End while */
@@ -3263,7 +3263,7 @@ diff -rc alpine-2.25/pith/osdep/color.c alpine-2.25.fillpara/pith/osdep/color.c
 + int
 + isaword(char word[NSTRING], int i, int j)
 + {
-+   return i <= j && is_cletter(word[i]) ?
++   return (i <= j && is_cletter(word[i])) ?
 +           (i < j ? isaword(word,i+1,j) : 1) : 0;
 + }
 + 
@@ -3363,7 +3363,7 @@ diff -rc alpine-2.25/pith/osdep/color.c alpine-2.25.fillpara/pith/osdep/color.c
 +     */ 
 +    flatten_qstring(pl, pbuf, NSTRING);
 +    emptypl = (!PLine || !PLine[0] ||
-+                (pl && value_is_space(pbuf)) && !PLine[strlen(pbuf)]) ? 1 : 0;
++                (pl && value_is_space(pbuf) && !PLine[strlen(pbuf)])) ? 1 : 0;
 +    if (emptypl){
 +       flatten_qstring(nl, nbuf, NSTRING);
 +       emptynl = (!NLine || !NLine[0] ||
@@ -3469,26 +3469,26 @@ diff -rc alpine-2.25/pith/osdep/color.c alpine-2.25.fillpara/pith/osdep/color.c
 +        cl = qs_remove_trailing_spaces(cl);
 +      else
 +        if (NewC > NewN){
-+        int agree = 0;
-+          for (j = 0; (j < n) && (GLine[j] == NLine[j]); j++);
-+        clength = j;
++           int agree = 0;
++           for (j = 0; (j < n) && (GLine[j] == NLine[j]); j++);
++           clength = j;
 +        /* clength is the common length in which Gline and Nline agree */
 +        /* j < n means that they do not agree fully */
 +        /* GLine = "   \tText"
 +           NLine = "   Text" */
-+        if(j == n)
-+           agree++;
-+        if (clength < n){ /* see if buf and nbuf are padded with spaces and tabs */
-+           for (i = clength; i < n && ISspace(NLine[i]); i++);
-+           if (i == n){/* padded NLine until the end of spaces? */
-+              for (i = clength; i < c && ISspace(GLine[i]); i++);
++          if(j == n)
++             agree++;
++          if (clength < n){ /* see if buf and nbuf are padded with spaces and tabs */
++             for (i = clength; i < n && ISspace(NLine[i]); i++);
++             if (i == n){/* padded NLine until the end of spaces? */
++                for (i = clength; i < c && ISspace(GLine[i]); i++);
 +                if (i == c) /* Padded CLine until the end of spaces? */
 +                   agree++;
-+           }
-+        }
-+        if (agree){
-+ 	  for (j = clength; j < c && ISspace(GLine[j]); j++);
-+ 	  if (j == c){
++             }
++          }
++          if (agree){
++ 	    for (j = clength; j < c && ISspace(GLine[j]); j++);
++ 	    if (j == c){
 +       /*
 +        * If we get here, it means that the current line has the same
 +        * quote string (visually) than the next line, but both of them
@@ -3535,15 +3535,15 @@ diff -rc alpine-2.25/pith/osdep/color.c alpine-2.25.fillpara/pith/osdep/color.c
 +        * "   More Text"       (NLine) n = 3
 +        *
 +        */
-+            for (j = 0; (j < p) && (GLine[j] == PLine[j]); j++);
-+             if ((p != c || j != p) && NLine[n])
-+                if(!get_indent_raw_line(q, PLine, nbuf, NSTRING, p, plb)
-+                  || NewP + strlenis(nbuf) != NewC){
-+                  free_qs(&cl);
-+                  free_qs(&pl);
-+                  return nl;
-+                }
-+             }
++               for (j = 0; (j < p) && (GLine[j] == PLine[j]); j++);
++ 	      if ((p != c || j != p) && NLine[n])
++ 		 if(!get_indent_raw_line(q, PLine, nbuf, NSTRING, p, plb)
++                    || NewP + strlenis(nbuf) != NewC){
++                    free_qs(&cl);
++                    free_qs(&pl);
++                    return nl;
++ 		 }
++             } 
 +          }
 +        }
 + 
@@ -3626,7 +3626,8 @@ diff -rc alpine-2.25/pith/osdep/color.c alpine-2.25.fillpara/pith/osdep/color.c
 +       switch (c = (unsigned char) now(word,i)){
 +           case NBSP:
 +           case TAB :
-+           case ' ' : for (; ISspace(word[i]); i++);
++           case ' ' : for (; ISspace(word[i]); i++)
++ 			;
 +                      if (!is_indent_char(now(word,i)))
 +                        finished++;
 +                   break;
@@ -3792,9 +3793,9 @@ diff -rc alpine-2.25/pith/osdep/color.c alpine-2.25.fillpara/pith/osdep/color.c
 +   return allowed_qstr;
 + }
 + 
-diff -rc alpine-2.25/pith/osdep/color.h alpine-2.25.fillpara/pith/osdep/color.h
-*** alpine-2.25/pith/osdep/color.h	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.fillpara/pith/osdep/color.h	2021-09-18 09:03:13.615040563 -0600
+diff -rc alpine-2.26/pith/osdep/color.h alpine-2.26.fillpara/pith/osdep/color.h
+*** alpine-2.26/pith/osdep/color.h	2022-06-02 18:14:00.495274738 -0600
+--- alpine-2.26.fillpara/pith/osdep/color.h	2022-06-02 18:14:57.039136093 -0600
 ***************
 *** 17,22 ****
 --- 17,40 ----
@@ -3845,12 +3846,12 @@ diff -rc alpine-2.25/pith/osdep/color.h alpine-2.25.fillpara/pith/osdep/color.h
 ! void	    record_quote_string (QSTRING_S *);
   
   #endif /* PITH_OSDEP_COLOR_INCLUDED */
-diff -rc alpine-2.25/pith/pine.hlp alpine-2.25.fillpara/pith/pine.hlp
-*** alpine-2.25/pith/pine.hlp	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.fillpara/pith/pine.hlp	2021-09-18 09:03:13.627040646 -0600
+diff -rc alpine-2.26/pith/pine.hlp alpine-2.26.fillpara/pith/pine.hlp
+*** alpine-2.26/pith/pine.hlp	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.fillpara/pith/pine.hlp	2022-06-02 18:14:57.059136043 -0600
 ***************
-*** 8354,8359 ****
---- 8354,8399 ----
+*** 8510,8515 ****
+--- 8510,8555 ----
   &quot;type the character ^&quot;.
   
   <P>
@@ -3897,12 +3898,12 @@ diff -rc alpine-2.25/pith/pine.hlp alpine-2.25.fillpara/pith/pine.hlp
   &lt;End of help on this topic&gt;
   </BODY>
   </HTML>
-diff -rc alpine-2.25/pith/reply.c alpine-2.25.fillpara/pith/reply.c
-*** alpine-2.25/pith/reply.c	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.fillpara/pith/reply.c	2021-09-18 09:03:13.631040673 -0600
+diff -rc alpine-2.26/pith/reply.c alpine-2.26.fillpara/pith/reply.c
+*** alpine-2.26/pith/reply.c	2022-06-02 18:14:00.495274738 -0600
+--- alpine-2.26.fillpara/pith/reply.c	2022-06-02 18:14:57.059136043 -0600
 ***************
-*** 2838,2843 ****
---- 2838,2846 ----
+*** 2834,2839 ****
+--- 2834,2842 ----
    		if(flow_res && ps_global->reply.use_flowed)
   		  wrapflags |= GFW_FLOW_RESULT;
   
@@ -3913,7 +3914,7 @@ diff -rc alpine-2.25/pith/reply.c alpine-2.25.fillpara/pith/reply.c
   		/* 
   		 * The 80 will cause longer lines than what is likely
 ***************
-*** 2931,2937 ****
+*** 2927,2933 ****
   	dq.do_color   = 0;
   	dq.delete_all = 1;
   
@@ -3921,7 +3922,7 @@ diff -rc alpine-2.25/pith/reply.c alpine-2.25.fillpara/pith/reply.c
   	filters[filtcnt++].data = gf_line_test_opt(delete_quotes, &dq);
       }
   
---- 2934,2940 ----
+--- 2930,2936 ----
   	dq.do_color   = 0;
   	dq.delete_all = 1;
   
@@ -3929,12 +3930,12 @@ diff -rc alpine-2.25/pith/reply.c alpine-2.25.fillpara/pith/reply.c
   	filters[filtcnt++].data = gf_line_test_opt(delete_quotes, &dq);
       }
   
-diff -rc alpine-2.25/pith/state.c alpine-2.25.fillpara/pith/state.c
-*** alpine-2.25/pith/state.c	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.fillpara/pith/state.c	2021-09-18 09:03:13.631040673 -0600
+diff -rc alpine-2.26/pith/state.c alpine-2.26.fillpara/pith/state.c
+*** alpine-2.26/pith/state.c	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.fillpara/pith/state.c	2022-06-02 18:14:57.059136043 -0600
 ***************
-*** 235,240 ****
---- 235,242 ----
+*** 231,236 ****
+--- 231,238 ----
       if((*pps)->kw_colors)
         free_spec_colors(&(*pps)->kw_colors);
   
@@ -3943,12 +3944,12 @@ diff -rc alpine-2.25/pith/state.c alpine-2.25.fillpara/pith/state.c
       if((*pps)->atmts){
   	int i;
   
-diff -rc alpine-2.25/pith/state.h alpine-2.25.fillpara/pith/state.h
-*** alpine-2.25/pith/state.h	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.fillpara/pith/state.h	2021-09-18 09:03:13.631040673 -0600
+diff -rc alpine-2.26/pith/state.h alpine-2.26.fillpara/pith/state.h
+*** alpine-2.26/pith/state.h	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.fillpara/pith/state.h	2022-06-02 18:14:57.087135974 -0600
 ***************
-*** 262,267 ****
---- 262,269 ----
+*** 264,269 ****
+--- 264,271 ----
       SPEC_COLOR_S *hdr_colors;		/* list of configured colors for view */
       SPEC_COLOR_S *index_token_colors;	/* list of configured colors for index */
   
@@ -3957,11 +3958,11 @@ diff -rc alpine-2.25/pith/state.h alpine-2.25.fillpara/pith/state.h
       short	 init_context;
   
       struct { 
-diff -rc alpine-2.25/pith/text.c alpine-2.25.fillpara/pith/text.c
-*** alpine-2.25/pith/text.c	2021-09-18 09:02:36.390783589 -0600
---- alpine-2.25.fillpara/pith/text.c	2021-09-18 09:03:13.643040757 -0600
+diff -rc alpine-2.26/pith/text.c alpine-2.26.fillpara/pith/text.c
+*** alpine-2.26/pith/text.c	2022-06-02 18:14:00.491274749 -0600
+--- alpine-2.26.fillpara/pith/text.c	2022-06-02 18:14:57.091135965 -0600
 ***************
-*** 92,98 ****
+*** 88,94 ****
       char       *err, *charset;
       int		filtcnt = 0, error_found = 0, column, wrapit;
       int         is_in_sig = OUT_SIG_BLOCK;
@@ -3969,7 +3970,7 @@ diff -rc alpine-2.25/pith/text.c alpine-2.25.fillpara/pith/text.c
       int         is_delsp_yes = 0;
       int         filt_only_c0 = 0;
       char       *parmval;
---- 92,98 ----
+--- 88,94 ----
       char       *err, *charset;
       int		filtcnt = 0, error_found = 0, column, wrapit;
       int         is_in_sig = OUT_SIG_BLOCK;
@@ -3978,7 +3979,7 @@ diff -rc alpine-2.25/pith/text.c alpine-2.25.fillpara/pith/text.c
       int         filt_only_c0 = 0;
       char       *parmval;
 ***************
-*** 180,186 ****
+*** 176,182 ****
   	   && pico_usingcolor()
   	   && VAR_SIGNATURE_FORE_COLOR
   	   && VAR_SIGNATURE_BACK_COLOR){
@@ -3986,7 +3987,7 @@ diff -rc alpine-2.25/pith/text.c alpine-2.25.fillpara/pith/text.c
   	    filters[filtcnt++].data = gf_line_test_opt(color_signature,
   						       &is_in_sig);
   	}
---- 180,186 ----
+--- 176,182 ----
   	   && pico_usingcolor()
   	   && VAR_SIGNATURE_FORE_COLOR
   	   && VAR_SIGNATURE_BACK_COLOR){
@@ -3995,7 +3996,7 @@ diff -rc alpine-2.25/pith/text.c alpine-2.25.fillpara/pith/text.c
   						       &is_in_sig);
   	}
 ***************
-*** 198,206 ****
+*** 194,202 ****
   	   && pico_usingcolor()
   	   && VAR_QUOTE1_FORE_COLOR
   	   && VAR_QUOTE1_BACK_COLOR){
@@ -4005,7 +4006,7 @@ diff -rc alpine-2.25/pith/text.c alpine-2.25.fillpara/pith/text.c
   	}
       }
       else if(!strucmp(att->body->subtype, "richtext")){
---- 198,206 ----
+--- 194,202 ----
   	   && pico_usingcolor()
   	   && VAR_QUOTE1_FORE_COLOR
   	   && VAR_QUOTE1_BACK_COLOR){
@@ -4016,8 +4017,8 @@ diff -rc alpine-2.25/pith/text.c alpine-2.25.fillpara/pith/text.c
       }
       else if(!strucmp(att->body->subtype, "richtext")){
 ***************
-*** 281,286 ****
---- 281,291 ----
+*** 277,282 ****
+--- 277,287 ----
   	}
       }
   
@@ -4030,7 +4031,7 @@ diff -rc alpine-2.25/pith/text.c alpine-2.25.fillpara/pith/text.c
        * If the message is not flowed, we do the quote suppression before
        * the wrapping, because the wrapping does not preserve the quote
 ***************
-*** 305,311 ****
+*** 301,307 ****
   	    dq.handlesp   = handlesp;
   	    dq.do_color   = (!(flags & FM_NOCOLOR) && pico_usingcolor());
   
@@ -4038,7 +4039,7 @@ diff -rc alpine-2.25/pith/text.c alpine-2.25.fillpara/pith/text.c
   	    filters[filtcnt++].data = gf_line_test_opt(delete_quotes, &dq);
   	}
   	if(ps_global->VAR_QUOTE_REPLACE_STRING
---- 310,316 ----
+--- 306,312 ----
   	    dq.handlesp   = handlesp;
   	    dq.do_color   = (!(flags & FM_NOCOLOR) && pico_usingcolor());
   
@@ -4047,7 +4048,7 @@ diff -rc alpine-2.25/pith/text.c alpine-2.25.fillpara/pith/text.c
   	}
   	if(ps_global->VAR_QUOTE_REPLACE_STRING
 ***************
-*** 364,370 ****
+*** 360,366 ****
   	dq.handlesp   = handlesp;
   	dq.do_color   = (!(flags & FM_NOCOLOR) && pico_usingcolor());
   
@@ -4055,7 +4056,7 @@ diff -rc alpine-2.25/pith/text.c alpine-2.25.fillpara/pith/text.c
   	filters[filtcnt++].data = gf_line_test_opt(delete_quotes, &dq);
       }
   
---- 369,375 ----
+--- 365,371 ----
   	dq.handlesp   = handlesp;
   	dq.do_color   = (!(flags & FM_NOCOLOR) && pico_usingcolor());
   
@@ -4064,7 +4065,7 @@ diff -rc alpine-2.25/pith/text.c alpine-2.25.fillpara/pith/text.c
       }
   
 ***************
-*** 569,575 ****
+*** 565,571 ****
   {
       DELQ_S *dq;
       char   *lp;
@@ -4072,7 +4073,7 @@ diff -rc alpine-2.25/pith/text.c alpine-2.25.fillpara/pith/text.c
       size_t  len = 0;
   
       dq = (DELQ_S *) local;
---- 574,580 ----
+--- 570,576 ----
   {
       DELQ_S *dq;
       char   *lp;
@@ -4081,8 +4082,8 @@ diff -rc alpine-2.25/pith/text.c alpine-2.25.fillpara/pith/text.c
   
       dq = (DELQ_S *) local;
 ***************
-*** 589,594 ****
---- 594,601 ----
+*** 585,590 ****
+--- 590,597 ----
   	for(i = dq->indent_length; i > 0 && !not_a_quote && *lp; i--)
   	  if(*lp++ != SPACE)
   	    not_a_quote++;
@@ -4092,7 +4093,7 @@ diff -rc alpine-2.25/pith/text.c alpine-2.25.fillpara/pith/text.c
   	/* skip over leading tags */
   	while(!not_a_quote
 ***************
-*** 628,640 ****
+*** 624,636 ****
   	    }
   	}
   
@@ -4106,7 +4107,7 @@ diff -rc alpine-2.25/pith/text.c alpine-2.25.fillpara/pith/text.c
   	  not_a_quote++;
   
   	if(not_a_quote){
---- 635,646 ----
+--- 631,642 ----
   	    }
   	}
   
