@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 29 11:05:08 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Conflict also rust-keylime for all the subpackages
+
+-------------------------------------------------------------------
 Thu Jun 23 14:50:05 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Remove user downgrade mechanism from the package (CVE-2022-31250, bsc#1200885)

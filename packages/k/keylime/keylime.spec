@@ -16,17 +16,16 @@
 #
 
 
+%global srcname keylime
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 # Consolidate _distconfdir and _sysconfdir
 %if 0%{?_distconfdir:1}
-  %define _config_norepl %nil
+  %define _config_norepl %{nil}
 %else
   %define _distconfdir   %{_sysconfdir}
   %define _config_norepl %config(noreplace)
 %endif
-
-%global srcname keylime
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           keylime
 Version:        6.4.1
 Release:        0
@@ -76,6 +75,7 @@ and runtime integrity measurement solution.
 %package -n %{name}-config
 Summary:        Configuration file for keylime
 Requires:       python3-%{name} = %{version}
+Conflicts:      rust-keylime
 
 %description -n %{name}-config
 Subpackage of %{name} for the shared configuration file of the agent
@@ -84,6 +84,7 @@ and the server components.
 %package -n %{name}-firewalld
 Summary:        Firewalld service file for keylime
 Requires:       python3-%{name} = %{version}
+Conflicts:      rust-keylime
 
 %description -n %{name}-firewalld
 Subpackage of %{name} for the firewalld XML service file.
@@ -91,6 +92,7 @@ Subpackage of %{name} for the firewalld XML service file.
 %package -n %{name}-tpm_cert_store
 Summary:        Certify store for the TPM
 Requires:       python3-%{name} = %{version}
+Conflicts:      rust-keylime
 
 %description -n %{name}-tpm_cert_store
 Subpackage of %{name} for storing the TPM certificates.
@@ -103,6 +105,7 @@ Requires:       %{name}-tpm_cert_store = %{version}
 Requires:       python3-%{name} = %{version}
 Recommends:     %{name}-firewalld = %{version}
 Recommends:     dmidecode
+Conflicts:      rust-keylime
 
 %description -n %{name}-agent
 Subpackage of %{name} for agent service.
@@ -114,6 +117,7 @@ Requires:       %{name}-logrotate = %{version}
 Requires:       %{name}-tpm_cert_store = %{version}
 Requires:       python3-%{name} = %{version}
 Recommends:     %{name}-firewalld = %{version}
+Conflicts:      rust-keylime
 
 %description -n %{name}-registrar
 Subpackage of %{name} for registrar service.
@@ -125,6 +129,7 @@ Requires:       %{name}-logrotate = %{version}
 Requires:       %{name}-tpm_cert_store = %{version}
 Requires:       python3-%{name} = %{version}
 Recommends:     %{name}-firewalld = %{version}
+Conflicts:      rust-keylime
 
 %description -n %{name}-verifier
 Subpackage of %{name} for verifier service.
@@ -132,6 +137,7 @@ Subpackage of %{name} for verifier service.
 %package -n %{name}-logrotate
 Summary:        Logrotate for Keylime servies
 Requires:       logrotate
+Conflicts:      rust-keylime
 
 %description -n %{name}-logrotate
 Subpacakge of %{name} for logrotate for Keylime services
