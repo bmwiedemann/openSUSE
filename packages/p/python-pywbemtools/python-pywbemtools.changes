@@ -1,4 +1,179 @@
 -------------------------------------------------------------------
+Thu Jun 23 10:04:49 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.0.0
+  * Incompatible changes:
+    - The PYWBEMCLI_TERMWIDTH environment variable was renamed to
+      PYWBEMTOOLS_TERMWIDTH since it is common to all pywbemtools
+      commands.
+    - Changed option --default on command connection select to
+      set-default. to be compatible with other commands that touch
+      the default connection definition.
+    - Removed the deprecated option --force from the class delete
+      command. It had been marked deprecated in pywbemtools version
+      0.9.0 and was superseded by the --include-instances option
+      which performs exactly the same function. (see issue # 1142)
+  * Bug fixes:
+    - Test: Fixed that test_utils.py changed the
+      PYWBEMCLI_TERMWIDTH env var for testing purposes without
+      restoring it.
+    - Fixes issue where the command: class invokemethod <class>
+      <method> -n <namespace> ignores the command namespace option
+      (-n) and usedsthe default namespace. (see issue #990)
+    - Fix issue where an exception occurs if the user tries to
+      display cim instances as a table but the class for the
+      instances returned are not in the default namespace and an
+      alternate namespace is defined for the command. The function
+      display_cim_objects(...) uses valuemapping_for_property() but
+      specifies the default namespace as the target. (See issue
+      #995)
+    - Fixed issues raised by new Pylint versions 2.9 and 2.10.
+    - Fixed an error that resulted in exception traceback when
+      instance commands used the instance wildcard (e.g.
+      'CIM_ManagedSystemElement.?') and the enumerate instances
+      operation failed for some reason. (issue #963)
+    - Fix issue where the general help for '--log' was unclear.
+      (see issue #1025)
+    - Fixed an error that resulted in exception traceback when
+      instance commands used the instance wildcard (e.g.
+      'CIM_ManagedSystemElement.?') and the enumerate instances
+      operation failed for some reason. (issue #963)
+    - Fix issue with --log general option where the log was left
+      enabled when the option was used in interactive mode command;
+      it did not revert to the log state before the interactive
+      command. The change caused the log configuration to restore
+      to either off if there was no --log option on the subsequent
+      command line or to the value defined on the command line.(see
+      issue #1023)
+    - Disabled new Pylint issue 'consider-using-f-string', since
+      f-strings were introduced only in Python 3.6.
+    - Fixed install error of wrapt 1.13.0 on Python 2.7 on Windows
+      due to lack of MS Visual C++ 9.0 on GitHub Actions, by
+      pinning it to <1.13.
+    - Fix issue with message from _common.py (parse_version_value)
+      that was passed to warning_msg but should have been subclass
+      of python warning. Changed to use pywbemtools_warn(). (see
+      issue #1041)
+    - Fixed issue with Sphinx and python 2.7 by changing the sphinx
+      requirements in dev-requirements.txt and
+      minimum-constraints.txt. (see issue #1070)
+    - Modify dev-requirements.txt to limit version of
+      more-itertools to != 8.11.0 for python < 3.6. (see issue
+      #1077)
+    - Fixed new issues raised by pylint 2.12.2.
+    - Fixed issue with instance commands (ex. instance get,
+      references, etc) that use the wildcard .? to request that
+      pywbemcli present list of possible instances. It was not
+      handling the non-existence of class in the target namespace
+      correctly and would crash because no instances were returned
+      get_instanceNames() . Now generates an exception. (see issue
+      #1105)
+    - Fixed issues in "instance count" including unitialized
+      variable and correctly finishing scan when errors occur. Adds
+      new option to this command to allow user to ignore classes
+      defined with this option (--ignore-class). (see issues #1108
+      and #916 )
+    - Fixed issue where pywbemcli can get exception if used against
+      server that does not support pull operations (see #1118)
+  * Enhancements:
+    - Added a 'pywbemlistener' command for running and managing
+      WBEM listeners. (issues #430, #479, #948)
+    - Implement server schema command that returns information
+      about the schemas for each namespace including: 5. the DMTF
+      schemas, 2. schema version, 3. whether any classes in the
+      schema/namespace are experimental, and 4) the number of
+      classes in this schema, and 5. the DMTF schemas (characters
+      before the _ in the namespace). (see issue #444)
+    - Remove restrictions on parameter modification of server
+      parameters when the --name general option is specified.
+      Originally the --name server definition could not be modified
+      with other general options (ex. --timeout). Those
+      restrictions are removed. (see issue #1034)
+    - Generate exception when general options such as --user,
+      --password, etc. that apply only to the server are used with
+      the --mock-server general option. (see issue #1035)
+    - Extend the capability to set the default connection in a
+      connections file to the connection save command and a
+      specific command that will set or clear the default. Since
+      the ability to set the default connection was only an option
+      in the connection select command it was difficult to find.
+      This makes the functionality more visible and more usable.
+    - Enhanced test matrix for push-driven runs on GitHub Actions
+      to add Python 3.5 on macOS, and removing Python 3.5 minimum
+      on Windows.
+    - Implement command group subscription that manages the
+      creation, viewing and removal of indication subscription on
+      WBEM servers. This creates a new command group 'subscription'
+      and new commands for adding, removing, and displaying (list)
+      indication destination, filter, and subscription instances on
+      target WBEM servers. It includes the code for the new
+      commands, a set of tests and the documentation for the new
+      commands. (see issue #4)
+    - Add new MutuallyExclusiveOption class to
+      pywbemtools/_click_extensions.py to allow defining command
+      options as mutually exclusive. See the class for
+      documentation. Modify pywbemcli.py mutually excluseive
+      options --server, --name, and --mock-server to use this
+      class.
+    - Increased minimum version of pywbem to 1.4.0. (issues #1020,
+      #991, #1124)
+    - Support for Python 3.10: Added Python 3.10 in GitHub Actions
+      tests, and in package metadata.
+    - Implement an end-end test for the subscription command group.
+    - Changed output format for table output of instance enumerate
+      --no option to show each key as a column in the table so that
+      keys are more readable.
+    - The '-v' option now displays better information about
+      namespace creation and deletion, particularly in mock
+      environments. (related to issue #991)
+    - Test: Added testcases for namespace creation and deletion.
+      (related to issue #991)
+    - Extended the table view of CIM instances to improve
+      formatting, allow hiding columns where all property values
+      are Null (--show-null option) and allow the table to be wider
+      than the terminal width if there is more information than
+      could be shown in the terminal width. (see issue #1131)
+  * Cleanup:
+    - Prepared the development environment for having more than one
+      pywbemtools command. As part of that, moved a number of
+      utility functions from the 'pywbemtools/pywbemcli'
+      subdirectory to the common 'pywbemtools' directory.
+    - Moved the environment variable names from being class
+      attributes on the PywbemServer class to become constants in
+      the config module. (issue #658)
+    - Cleanup the test code used as pywbemcli scripts. Named all of
+      them with the last part of the name _script.py and modified
+      them to use the setup initialization with Python 3.6 and
+      greater as well as the old script interface.
+    - Modify pywbemcli.py code that copies command line defined
+      pywbem_server for reuse in interactive commands to use
+      WBEMConnection.copy() rather than deepcopy(). This includes
+      adding a copy() method to PywbemServer. This also requires
+      that the minimum version of pywbem be set to at least 1.3.0
+      where the copy() method was added to pywbem (see issue
+      #1030). This fixes issue in python 2.7 with exception and
+      avoids copying the FakedWBEMConnection CIM repository.
+    - Add list of security issues to be ignored by Makefile
+      security test and enable failure of build if security test
+      fails. This brings Pywbemtools into line with pywbem
+      Makefile.Reordered some of the items in the
+      minumum_constraints.txt file to better compare with the
+      pywbem file and also commented out all minimum constraints
+      for Jupyter and its dependencies since we have no notebooks
+      in pywbemcli today. Modified minimum version of typed-ast,
+      pylint and astrid to match pywbem and pass saftey tests.
+    - Remove the file minimum-constraints-base.txt and put contents
+      into minimum-constraints.txt. (see issue #1076)
+    - Add instance count tests to end-end testing against
+      OpenPegasus.
+    - Removed the deprecated option --force from the class delete
+      command. It had been created in pywbemtools version 0.8.0 and
+      was deprecated in version 0.90 in favor of the
+      --include-instances option which performs exactly the same
+      function. (see issue # 1142)
+- Add pywbemtools-pr1154-click8.patch -- gh#pywbem/pywbemtools#1154
+
+-------------------------------------------------------------------
 Fri Oct 22 20:10:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.9.0
