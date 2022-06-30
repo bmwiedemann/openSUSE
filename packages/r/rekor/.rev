@@ -129,4 +129,13 @@
   - name stored attestations by digest instead of UUID by @bobcallaway in #769 (forwarded request 983852 from msmeissn)</comment>
     <requestid>983855</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>40d54306cad407fe12bb742307321077</srcmd5>
+    <version>0.8.1</version>
+    <time>1656587896</time>
+    <user>dimstar_suse</user>
+    <comment>- rekor-zypper-verify.sh: add a small script that verifies the on-system
+  zypper repo cache against rekor transparency log.</comment>
+    <requestid>985790</requestid>
+  </revision>
 </revisionlist>

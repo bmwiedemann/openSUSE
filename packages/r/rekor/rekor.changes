@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 29 12:26:43 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- rekor-zypper-verify.sh: add a small script that verifies the on-system
+  zypper repo cache against rekor transparency log.
+
+-------------------------------------------------------------------
 Mon Jun 20 06:54:51 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - Updated to rekor 0.8.1

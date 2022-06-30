@@ -27,6 +27,7 @@ License:        Apache-2.0
 URL:            https://github.com/sigstore/rekor
 Source:         https://github.com/sigstore/rekor/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+Source2:        rekor-zypper-verify.sh
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API)
 %{go_nostrip}
@@ -55,6 +56,7 @@ done
 for app in %{apps} ; do
 install -D -m 0755 rekor-${app} %{buildroot}%{_bindir}/rekor-${app}
 done
+install -m 0755 %SOURCE2 %{buildroot}%{_bindir}/rekor-zypp-verify
 
 %files
 %license LICENSE
