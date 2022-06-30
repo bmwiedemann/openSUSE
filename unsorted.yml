@@ -3929,6 +3929,7 @@ unsorted:
   - fplll-devel 
   - fprintd-devel 
   - fprintd-doc 
+  - fq 
   - fractal 
   - fractal-lang 
   - frame 
@@ -10121,7 +10122,7 @@ unsorted:
   - libcapi20-devel 
   - libcapi20-devel-32bit: [x86_64] 
   - libcapi20-mod_misdn 
-  - libcapnp-0_10_0 
+  - libcapnp-0_10_2 
   - libcapnp-devel 
   - libcapstone-devel 
   - libcapstone4 
@@ -11158,7 +11159,7 @@ unsorted:
   - libgnt0 
   - libgnt0-32bit: [x86_64] 
   - libgnuastro15 
-  - libgnuradio-3_10_2 
+  - libgnuradio-3_10_3 
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_9_0 
   - libgnutls-dane-devel 
@@ -12940,6 +12941,7 @@ unsorted:
   - libpcre2-posix3-32bit: [x86_64] 
   - libpcrecpp0 
   - libpcrecpp0-32bit: [x86_64] 
+  - libpcreposix0 
   - libpcreposix0-32bit: [x86_64] 
   - libpcsclite1-32bit: [x86_64] 
   - libpcscspy0 
@@ -13951,7 +13953,6 @@ unsorted:
   - libspice-server-devel 
   - libspiro-devel 
   - libspiro1 
-  - libspirv-cross-c-shared-devel 
   - libspirv-cross-c-shared0 
   - libsplinter-3-0 
   - libspnav-devel 
@@ -33073,6 +33074,7 @@ unsorted:
   - spindle: [x86_64] 
   - spindle-devel: [x86_64] 
   - spirv-cross 
+  - spirv-cross-devel 
   - spirv-headers 
   - spirv-tools 
   - spirv-tools-devel 
