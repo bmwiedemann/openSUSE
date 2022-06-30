@@ -11646,6 +11646,11 @@ unsorted:
   - libigfxcmrt-devel 
   - libigfxcmrt7 
   - libigfxcmrt7-32bit: [x86_64] 
+  - libiio 
+  - libiio-daemon 
+  - libiio-devel 
+  - libiio-usb-udev-rules 
+  - libiio0 
   - libilbc0 
   - libimaevm3: [i586] 
   - libimagequant-devel 
@@ -18194,6 +18199,7 @@ unsorted:
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
+  - openSUSE-xfce-icon-theme 
   - openSUSEway 
   - openafs-authlibs 
   - openafs-authlibs-devel 
@@ -21762,6 +21768,7 @@ unsorted:
   - python3-pyghmi 
   - python3-pyginac 
   - python3-pyginac-devel 
+  - python3-pylibiio 
   - python3-pymod2pkg 
   - python3-pynest2d 
   - python3-pyprompter 
@@ -32341,6 +32348,7 @@ unsorted:
   - rtl8812au-kmp-pae: [i586] 
   - rtl_433 
   - rtl_433-devel 
+  - rtla 
   - rtmidi-devel 
   - rtorrent 
   - rtr-tools 
