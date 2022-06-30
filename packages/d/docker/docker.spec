@@ -97,6 +97,8 @@ Patch301:       0005-bsc1183855-btrfs-Do-not-disable-quota-on-cleanup.patch
 # SUSE-BACKPORT: Backport of several golang.org/x/crypto updates.
 #                bsc#1193930 CVE-2021-43565 bsc#1197284 CVE-2022-27191
 Patch302:       0006-bsc1193930-vendor-update-golang.org-x-crypto.patch
+# SUSE-BACKPORT: Backport of <https://github.com/containerd/fifo/pull/32>. bsc#1200022
+Patch303:       0007-bsc1200022-fifo.Close-prevent-possible-panic-if-fifo.patch
 BuildRequires:  audit
 BuildRequires:  bash-completion
 BuildRequires:  ca-certificates
@@ -269,6 +271,8 @@ docker container runtime configuration for kubeadm
 %patch301 -p1
 # bsc#1193930 CVE-2021-43565 bsc#1197284 CVE-2022-27191
 %patch302 -p1
+# bsc#1200022
+%patch303 -p1
 
 # README_SUSE.md for documentation.
 cp %{SOURCE103} .

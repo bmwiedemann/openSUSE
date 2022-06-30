@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 29 12:19:55 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Backport <https://github.com/containerd/fifo/pull/32> to fix a crash-on-start
+  issue with dockerd. bsc#1200022
+  + 0007-bsc1200022-fifo.Close-prevent-possible-panic-if-fifo.patch
+
+-------------------------------------------------------------------
 Tue Jun  7 07:18:41 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 20.10.17-ce. See upstream changelog online at
