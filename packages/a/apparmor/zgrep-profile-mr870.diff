@@ -1,4 +1,5 @@
 [Extended to include the fix from https://gitlab.com/apparmor/apparmor/-/merge_requests/873]
+[Extended to include the fix from https://gitlab.com/apparmor/apparmor/-/merge_requests/892]
 
 
 From 3a3b49ccd93d00cbc373319b90c6acecdd6f45fa Mon Sep 17 00:00:00 2001
@@ -17,10 +18,10 @@ Index: apparmor-3.0.4/profiles/apparmor.d/zgrep
 ===================================================================
 --- /dev/null
 +++ apparmor-3.0.4/profiles/apparmor.d/zgrep
-@@ -0,0 +1,62 @@
+@@ -0,0 +1,66 @@
 +# ------------------------------------------------------------------
 +#
-+#    Copyright (C) 2021 Christian Boltz
++#    Copyright (C) 2022 Christian Boltz
 +#
 +#    This program is free software; you can redistribute it and/or
 +#    modify it under the terms of version 2 of the GNU General Public
@@ -37,10 +38,12 @@ Index: apparmor-3.0.4/profiles/apparmor.d/zgrep
 +  include <abstractions/bash>
 +
 +  /dev/tty rw,
-+  /usr/bin/bash ix,
++  /usr/bin/{ba,da,}sh ix,
 +  /usr/bin/bzip2 Cx -> helper,
 +  /usr/bin/cat ix,
++  /usr/bin/egrep Cx -> helper,
 +  /usr/bin/expr ix,
++  /usr/bin/fgrep Cx -> helper,
 +  /usr/bin/grep Cx -> helper,
 +  /usr/bin/gzip Cx -> helper,
 +  /usr/bin/mktemp ix,
@@ -61,9 +64,11 @@ Index: apparmor-3.0.4/profiles/apparmor.d/zgrep
 +    capability dac_override,
 +    capability dac_read_search,
 +
-+    /usr/bin/bash ix,
++    /dev/tty w,
++
++    /usr/bin/{ba,da,}sh ix,
 +    /usr/bin/bzip2 mr,
-+    /usr/bin/grep mr,
++    /usr/bin/grep mrix,
 +    /usr/bin/gzip mr,
 +    /usr/bin/xz mr,
 +    /usr/bin/zstd mr,
@@ -75,7 +80,7 @@ Index: apparmor-3.0.4/profiles/apparmor.d/zgrep
 +    include <abstractions/base>
 +
 +    /dev/tty rw,
-+    /usr/bin/bash ix,
++    /usr/bin/{ba,da,}sh ix,
 +    /usr/bin/sed mr,
 +
 +  }

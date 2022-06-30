@@ -2377,4 +2377,13 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   for latest dovecot (boo#1199535) (forwarded request 977391 from cboltz)</comment>
     <requestid>977392</requestid>
   </revision>
+  <revision rev="175" vrev="12">
+    <srcmd5>801c1ede7a58650a7d4b0432f41f2a5c</srcmd5>
+    <version>3.0.4</version>
+    <time>1656587870</time>
+    <user>dimstar_suse</user>
+    <comment>- update zgrep-profile-mr870.diff: allow zgrep to execute egrep and fgrep
+  (poo#113108) (forwarded request 985681 from cboltz)</comment>
+    <requestid>985682</requestid>
+  </revision>
 </revisionlist>

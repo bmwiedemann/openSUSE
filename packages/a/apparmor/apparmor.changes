@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 28 21:34:26 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- update zgrep-profile-mr870.diff: allow zgrep to execute egrep and fgrep
+  (poo#113108)
+
+-------------------------------------------------------------------
 Sun May 15 18:59:47 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 
 - add dovecot-profiles-boo1199535-mr881.diff: update dovecot profiles
