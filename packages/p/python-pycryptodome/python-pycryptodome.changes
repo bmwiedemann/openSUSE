@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 28 20:38:31 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- update to 3.15.0:
+  * Add support for curves Ed25519 and Ed448, including export and import of keys.
+  * Add support for EdDSA signatures.
+  * Add support for Asymmetric Key Packages (RFC5958) to import private keys.
+  * GH#620: for Crypto.Util.number.getPrime , do not sequentially scan numbers searching for a prime.
+
+-------------------------------------------------------------------
 Wed Mar  9 13:31:35 UTC 2022 - pgajdos@suse.com
 
 - do not use setup.py test construct

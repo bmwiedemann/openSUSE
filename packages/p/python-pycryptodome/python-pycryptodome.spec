@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-pycryptodome
-Version:        3.14.1
+Version:        3.15.0
 Release:        0
 Summary:        Cryptographic library for Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://www.pycryptodome.org
-Source:         https://github.com/Legrandin/pycryptodome/archive/v%{version}.tar.gz
+Source:         https://github.com/Legrandin/pycryptodome/archive/v%{version}.tar.gz#/pycryptodome-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
