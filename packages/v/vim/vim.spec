@@ -16,10 +16,10 @@
 #
 
 
-%define pkg_version 8.2
-%define patchlevel 5154
+%define pkg_version 9.0
+%define patchlevel 0000
 %define patchlevel_compact %{patchlevel}
-%define VIM_SUBDIR vim82
+%define VIM_SUBDIR vim90
 %define site_runtimepath %{_datadir}/vim/site
 %define make make VIMRCLOC=%{_sysconfdir} VIMRUNTIMEDIR=%{_datadir}/vim/current MAKE="make -e" %{?_smp_mflags}
 %bcond_without python2

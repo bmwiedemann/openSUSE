@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun 28 17:52:07 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.0000, fixes the following problems
+  * Reading beyond the end of the line with lisp indenting.
+  * search() gets stuck with "c" and skip evaluates to true.
+  * "make uninstall" does not remove colors/lists.
+  * Still mentioning version8, some cosmetic issues.
+  * In diff mode windows may get out of sync. (Gary Johnson)
+  * TSTP and INT signal tests are not run with valgrind.
+  * Fix for CTRL-key combinations causes more problems than it solves.
+  * Accessing invalid memory after changing terminal size.
+  * Might still access invalid memory.
+  * Reading before the start of the line with BS in Replace mode.
+  * Crash when deleting buffers in diff mode.
+  * Invalid memory access after diff buffer manipulations.
+  * Import test fails because 'diffexpr' isn't reset.
+  * Test for DiffUpdated fails.
+  * get(Fn, 'name') on funcref returns special byte code.
+  * Cannot build with Python 3.11.
+  * Nested :source may use NULL pointer.
+  * Dependencies and proto files are outdated.
+  * "make menu" still uses legacy script.
+
+-------------------------------------------------------------------
 Fri Jun 24 07:47:35 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.5154, fixes the following problems

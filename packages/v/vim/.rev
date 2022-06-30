@@ -5979,4 +5979,31 @@ always built-in because vim has direct perl dependencies anyway.
   * Still mentioning version8, some cosmetic issues.</comment>
     <requestid>984835</requestid>
   </revision>
+  <revision rev="313" vrev="1">
+    <srcmd5>480732a784087ad7752d0cc0dafb209e</srcmd5>
+    <version>9.0.0000</version>
+    <time>1656587869</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.0000, fixes the following problems
+  * Reading beyond the end of the line with lisp indenting.
+  * search() gets stuck with &quot;c&quot; and skip evaluates to true.
+  * &quot;make uninstall&quot; does not remove colors/lists.
+  * Still mentioning version8, some cosmetic issues.
+  * In diff mode windows may get out of sync. (Gary Johnson)
+  * TSTP and INT signal tests are not run with valgrind.
+  * Fix for CTRL-key combinations causes more problems than it solves.
+  * Accessing invalid memory after changing terminal size.
+  * Might still access invalid memory.
+  * Reading before the start of the line with BS in Replace mode.
+  * Crash when deleting buffers in diff mode.
+  * Invalid memory access after diff buffer manipulations.
+  * Import test fails because 'diffexpr' isn't reset.
+  * Test for DiffUpdated fails.
+  * get(Fn, 'name') on funcref returns special byte code.
+  * Cannot build with Python 3.11.
+  * Nested :source may use NULL pointer.
+  * Dependencies and proto files are outdated.
+  * &quot;make menu&quot; still uses legacy script.</comment>
+    <requestid>985660</requestid>
+  </revision>
 </revisionlist>

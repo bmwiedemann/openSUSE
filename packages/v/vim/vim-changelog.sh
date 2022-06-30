@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 directory=https://ftp.nluug.nl/pub/vim/patches/
-version=8.2
+version=9.0
 
 if [ $# -ne 2 ]; then
     echo "usage: $0 <old-minor-version> <new-minor-version>" 1>&2
