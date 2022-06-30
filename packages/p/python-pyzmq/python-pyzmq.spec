@@ -16,41 +16,43 @@
 #
 
 
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Disable tests, they are very slow/halt on many arch
+%define plainpython python
 %ifarch x86_64
 %bcond_without  tests
 %else
+# Disable tests, they are very slow/halt on many arch
 %bcond_with     tests
 %endif
 Name:           python-pyzmq
-Version:        22.3.0
+Version:        23.2.0
 Release:        0
 Summary:        Python bindings for 0MQ
 License:        BSD-3-Clause AND LGPL-3.0-or-later
 URL:            https://github.com/zeromq/pyzmq
 Source:         https://files.pythonhosted.org/packages/source/p/pyzmq/pyzmq-%{version}.tar.gz
-Source1:        python-pyzmq-rpmlintrc
-# PATCH-FIX-UPSTREAM less-flaky.patch bsc#[0-9]+ mcepl@suse.com
-# Make test suite less flaky
-Patch0:         less-flaky.patch
+# For test markers
+Source1:        https://raw.githubusercontent.com/zeromq/pyzmq/v%{version}/pytest.ini
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.6}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  zeromq-devel
 # SECTION Test requirements
-BuildRequires:  %{python_module gevent}
-BuildRequires:  %{python_module flaky}
+%if 0%{?suse_version} >= 1550
+# SLE/Leap <= 15.4 has incompatible gevent API # https://www.gevent.org/api/gevent.timeout.html#gevent.Timeout.close
+BuildRequires:  %{python_module gevent >= 1.3a1}
+%endif
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module simplejson}
 BuildRequires:  %{python_module tornado}
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 # /SECTION
 # SECTION pypy3 is not in openSUSE at the moment, it would use the cffi backend
 BuildRequires:  %{python_module cffi if (%python with pypy3)}
@@ -60,14 +62,12 @@ Requires:       python-cffi
 Requires:       python-py
 %endif
 # /SECTION
-%if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
 Recommends:     python-gevent
 Recommends:     python-numpy
 Recommends:     python-pexpect
 Recommends:     python-simplejson
 Recommends:     python-tornado
 Suggests:       python-paramiko
-%endif
 %python_subpackages
 
 %description
@@ -77,20 +77,21 @@ the ZeroMQ library (http://www.zeromq.org).
 %package devel
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}
-Requires:       python-base
 Requires:       python-devel
 Requires:       zeromq-devel
+Requires:       %plainpython(abi) = %{python_version}
 
 %description devel
 Development libraries and headers needed to build software using %{name}.
 
 %prep
 %autosetup -n pyzmq-%{version} -p1
+cp %{SOURCE1} ./
 
 # Fix non-executable script rpmlint warning:
 find examples zmq -name "*.py" -exec sed -i "s|#\!\/usr\/bin\/env python||" {} \;
+chmod -x examples/pubsub/topics_pub.py examples/pubsub/topics_sub.py
 
-%build
 # See https://github.com/zeromq/pyzmq/blob/master/setup.cfg.template
 echo '
 [global]
@@ -98,6 +99,8 @@ skip_check_zmq = False
 zmq_prefix = %{_prefix}
 no_libzmq_extension = True
 '>> setup.cfg
+
+%build
 export CFLAGS="%{optflags}"
 %python_build
 
@@ -115,7 +118,7 @@ SKIPPED_TESTS+=" or test_cython"
 SKIPPED_TESTS+=" or test_log"
 %if 0%{?suse_version} < 1550
 # tries to open a network connection on older distributions
-SKIPPED_TESTS+=" or test_null"
+SKIPPED_TESTS+=" or test_null or test_int_sockopts"
 %endif
 mkdir cleantest
 pushd cleantest
