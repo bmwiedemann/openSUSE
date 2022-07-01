@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 28 13:03:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.2
+- Changes since 5.25.1:
+  * flatpak: Use flatpak remote prio property to prioritise remotes
+  * updates: Move the extended delegate state into the model (kde#452129)
+
+-------------------------------------------------------------------
 Tue Jun 21 11:39:42 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.1
