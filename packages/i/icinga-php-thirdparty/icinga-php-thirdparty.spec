@@ -1,7 +1,7 @@
 #
 # spec file for package icinga-php-thirdparty
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global module_name icinga-php-thirdparty
 %global basedir %{_datadir}/icinga-php/vendor
 Name:           %{module_name}
-Version:        0.10.0
+Version:        0.11.0
 Release:        %{revision}%{?dist}
 Summary:        Icinga PHP Thirdparty for Icinga Web 2
 License:        MIT
@@ -32,6 +32,11 @@ BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  icinga-php-common
 Requires:       icinga-php-common
+# php extension requirements
+Requires:       php-soap
+Requires:       php-curl
+Requires:       php-json
+Requires:       php-sockets
 
 %description
 This package bundles all 3rd party PHP libraries
@@ -47,6 +52,7 @@ which can be integrated as library into Icinga Web 2.
 %install
 mkdir -vp %{buildroot}%{basedir}
 
+cp -vr asset %{buildroot}%{basedir}
 cp -vr vendor %{buildroot}%{basedir}
 cp -vr composer.* %{buildroot}%{basedir}
 cp -vr VERSION %{buildroot}%{basedir}
