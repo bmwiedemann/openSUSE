@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jul  1 05:59:19 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.11.0
+  * Enhancements, Some
+    - Support for PHP 8.1 #4609
+    - Redesign User Menu #4651
+    - &showFullscreen suppresses announcements #4596
+  * Fixes, More
+    - Navigation item filter * not working #4772
+    - Objects with a * in the name are not found #4682
+    - Theme mode switch disabled on theme with mode support #4744
+  * When developers become cleaning maniacs
+    - User preferences in INI files not supported anymore #4765
+    - mysql: use of utf8 vs utfmb4 #4680
+    - Remove Vagrant file and its assets #4762
+  
+-------------------------------------------------------------------
+Thu Jun 30 13:25:43 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.10.3
+  This release mainly ensures compatibility with icinga-php-library
+  v0.9.0 and Icinga DB Web 1.0.0. Two fixes regarding the theme
+  mode support are also included (#4744 and #4835)
+
+-------------------------------------------------------------------
 Wed Apr  6 12:00:53 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.10.1

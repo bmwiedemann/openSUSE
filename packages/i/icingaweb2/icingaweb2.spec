@@ -20,7 +20,7 @@
 %define revision 1
 
 Name:           icingaweb2
-Version:        2.10.1
+Version:        2.11.0
 Release:        %{revision}%{?dist}
 Summary:        Icinga Web 2
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -35,9 +35,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?fedora} || 0%{?rhel} || 0%{?amzn}
 %if 0%{?rhel} == 7
 %define php_scl         rh-php73
-%endif
-%if 0%{?rhel} == 6
-%define php_scl         rh-php70
 %endif
 
 %if 0%{?el5}%{?el6}%{?amzn}
@@ -70,6 +67,9 @@ Requires:       %{php}-pgsql
 # minimum required PHP version
 %define php_version 7.3.0
 
+# unsupported PHP version
+%define php_unsupported_version 8.2
+
 %if 0%{?suse_version}
 %define wwwconfigdir    %{_sysconfdir}/apache2/conf.d
 %define wwwuser         wwwrun
@@ -97,6 +97,7 @@ Conflicts:      php53
 
 Requires:       %{php_common} >= %{php_version}
 Requires:       %{php_runtime} >= %{php_version}
+Conflicts:      %{php_runtime} >= %{php_unsupported_version}
 %if 0%{?suse_version}
 Requires:       apache2
 %endif
@@ -108,8 +109,8 @@ Requires:       %{name}-vendor-Parsedown = %{version}-%{release}
 Requires:       %{name}-vendor-dompdf = %{version}-%{release}
 Requires:       %{name}-vendor-lessphp = %{version}-%{release}
 Requires:       icinga-l10n >= 1.1.0
-Requires:       icinga-php-library >= 0.8.0
-Requires:       icinga-php-thirdparty >= 0.10.0
+Requires:       icinga-php-library >= 0.9.0
+Requires:       icinga-php-thirdparty >= 0.11.0
 Requires:       icingacli = %{version}-%{release}
 Requires:       php-Icinga = %{version}-%{release}
 
@@ -149,7 +150,13 @@ License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
 Group:          Development/Libraries/Other
 Requires:       %{php_common} >= %{php_version}
 Requires:       %{php}-gd %{php}-intl %{php}-mbstring
+%if 0%{?sle_version} >= 150200
+Requires:       %{php}-dom %{php}-curl %{php}-fileinfo
+%endif
 %{?rhel:Requires:           %{php}-pdo %{php}-xml}
+%if 0%{?rhel} >= 8 || 0%{?fedora} >= 30
+Requires:       %{php}-json
+%endif rhel >= 8 || fedora >= 30
 Requires:       %{name}-vendor-zf1 = %{version}-%{release}
 %{?amzn:Requires:           %{php}-pecl-imagick}
 %{?fedora:Requires:         php-pecl-imagick}
@@ -166,8 +173,8 @@ Requires:       %{name}-common = %{version}-%{release}
 Requires:       %{php_cli} >= %{php_version}
 Requires:       bash-completion
 Requires:       icinga-l10n >= 1.1.0
-Requires:       icinga-php-library >= 0.8.0
-Requires:       icinga-php-thirdparty >= 0.10.0
+Requires:       icinga-php-library >= 0.9.0
+Requires:       icinga-php-thirdparty >= 0.11.0
 Requires:       php-Icinga = %{version}-%{release}
 %if 0%{?suse_version}
 # conflict with older PHP on SLES and openSUSE
