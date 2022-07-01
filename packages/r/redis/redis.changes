@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 29 10:54:08 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d.
+
+-------------------------------------------------------------------
 Sun Jun 12 16:30:32 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 7.0.2

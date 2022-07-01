@@ -104,7 +104,12 @@ install -Dpm0660 sentinel.conf          %{buildroot}%{_conf_dir}/sentinel.conf.e
 
 # some sysctl stuff
 install -Dpm0644 %{SOURCE6} %{buildroot}/%{_prefix}/lib/sysctl.d/00-%{name}.conf
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+install -Dpm0644 %{SOURCE1} %{buildroot}%{_distconfdir}/logrotate.d/%{name}
+%else
 install -Dpm0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
+%endif
 install -Dpm0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.target
 install -Dpm0644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}@.service
 install -Dpm0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
@@ -144,7 +149,11 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %files
 %license COPYING
 %doc 00-RELEASENOTES BUGS CONTRIBUTING README.md
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/%{name}
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
+%endif
 %{_prefix}/lib/sysctl.d/00-%{name}.conf
 %{_bindir}/%{name}-*
 %{_sbindir}/%{name}-*
