@@ -285,7 +285,12 @@ install -D -m 0644 dist/snmpd.service %{buildroot}%{_unitdir}/snmpd.service
 install -D -m 0644 dist/snmptrapd.service %{buildroot}%{_unitdir}/snmptrapd.service
 install -D -m 0600 %{SOURCE1} %{buildroot}%{_sysconfdir}/snmp/snmpd.conf
 install -m 0644 %{SOURCE2} .
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_distconfdir}/logrotate.d/net-snmp
+%else
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/net-snmp
+%endif
 install -m 0744 %{SOURCE4} testing/
 ln -sf service %{buildroot}%{_sbindir}/rcsnmpd
 ln -sf service %{buildroot}%{_sbindir}/rcsnmptrapd
@@ -379,7 +384,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_localstatedir}/lib/net-snmp
 %dir %ghost %attr(700,root,root) %{netsnmp_agentx_socket_dir_fhs}
 %ghost %{netsnmp_logfile}
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/net-snmp
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/net-snmp
+%endif
 %{_fillupdir}/sysconfig.snmpd
 %{_fillupdir}/sysconfig.snmptrapd
 %{netsnmp_agentx_socket_dir_rfc}

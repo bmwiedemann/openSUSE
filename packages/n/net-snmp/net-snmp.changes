@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 29 11:21:07 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d.
+
+-------------------------------------------------------------------
 Wed Mar 30 15:32:41 UTC 2022 - Alexander Bergmann <abergmann@suse.com>
 
 - Decouple snmp-mibs from net-snmp version to allow major version
