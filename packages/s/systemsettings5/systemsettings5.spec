@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           systemsettings5
-Version:        5.25.1
+Version:        5.25.2
 Release:        0
 Summary:        KDE's control center
 License:        GPL-2.0-or-later
