@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul  1 08:08:06 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- New upstream release 4.6.0
+
+FEATURES:
+- Port zone-verification from CreDNS to NSD4.
+BUG FIXES:
+- Fix static analyzer reports on ixfrcreate temp file.
+- Fixup wrong ixfrcreate fread return check.
+
+-------------------------------------------------------------------
 Sat May 14 23:58:59 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - New upstream release 4.5.0
