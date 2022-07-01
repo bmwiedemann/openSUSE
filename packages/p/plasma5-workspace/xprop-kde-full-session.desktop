@@ -1,5 +1,5 @@
 [Desktop Entry]
-# To work around boo#1191825 until all FF versions got the fix
+# To work around boo#1191825 until all FF and TB versions got the fix
 Name=Set KDE_FULL_SESSION=1
 Exec=xprop -root -format KDE_FULL_SESSION 32a -set KDE_FULL_SESSION 1
 Type=Application
@@ -7,4 +7,3 @@ X-KDE-StartupNotify=false
 NoDisplay=true
 OnlyShowIn=KDE;
 X-KDE-autostart-phase=0
-X-systemd-skip=true

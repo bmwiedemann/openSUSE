@@ -29,7 +29,7 @@ Name:           plasma5-workspace
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.25.1
+Version:        5.25.2
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
@@ -46,8 +46,6 @@ Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
 # PATCH-FEATURE-OPENSUSE
 Patch506:       0001-Revert-No-icons-on-the-desktop-by-default.patch
-# PATCH-FIX-UPSTREAM kde#450443 https://invent.kde.org/plasma/plasma-workspace/-/merge_requests/1781
-Patch507:       0001-shell-refresh-geometries-of-all-DesktopView-and-Pane.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1550

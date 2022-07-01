@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jun 28 13:03:35 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.2
+- Changes since 5.25.1:
+  * shell: avoid crash after waking up from sleep (kde#455328)
+  * Revert "Prevent panel going out of screen boundaries"
+  * shell: refresh geometries of all `DesktopView` and `PanelView` when receiving `logicalDotsPerInchChanged` (kde#450443,kde#438114)
+  * Avoid crash in plasma-session teardown (kde#454159)
+  * kcms/colors: Fix window titlebar tinting in colorsapplicator (kde#455395)
+  * kcms/feedback: Properly fit the items inside the layout (kde#455713)
+  * Fix session restore + kwin interaction race (kde#442380)
+- Drop patches, now upstream:
+  * 0001-shell-refresh-geometries-of-all-DesktopView-and-Pane.patch
+
+-------------------------------------------------------------------
+Tue Jun 28 09:27:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Also use xprop-kde-full-session.desktop with systemd startup
+
+-------------------------------------------------------------------
 Tue Jun 21 11:39:48 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.1
