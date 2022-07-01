@@ -1232,4 +1232,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.25.1. As usual, completely untested. (forwarded request 984192 from Vogtinator)</comment>
     <requestid>984359</requestid>
   </revision>
+  <revision rev="148" vrev="3">
+    <srcmd5>d2a6a1316ac17cfbf0b61fd40229b59b</srcmd5>
+    <version>84.87~git20220602T134713~22403ba</version>
+    <time>1656675870</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.2 (forwarded request 985627 from Vogtinator)</comment>
+    <requestid>985913</requestid>
+  </revision>
 </revisionlist>
