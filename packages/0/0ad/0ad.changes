@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 26 11:24:08 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
+
+- s390x CPU not implemented. 
+  ExcludeArch: s390x
+
+-------------------------------------------------------------------
 Wed Mar 23 19:03:43 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop fix-i586-build.patch after boo#1197065 was fixed

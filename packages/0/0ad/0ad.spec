@@ -83,6 +83,7 @@ BuildRequires:  pkgconfig(mozjs-78) >= 78.7
 BuildRequires:  cargo
 BuildRequires:  rust
 %endif
+ExcludeArch:    s390x
 
 %description
 0 A.D. (pronounced "zero ey-dee") is a real-time strategy (RTS) game
