@@ -17,7 +17,7 @@
 
 
 Name:           sad
-Version:        0.4.20~0
+Version:        0.4.22
 Release:        0
 Summary:        CLI search and replace batch file editing tool
 URL:            https://github.com/ms-jpq/sad
@@ -45,6 +45,11 @@ cp %{SOURCE2} .cargo/config.toml
 
 %install
 %{cargo_install}
+
+%if %{with check}
+%check
+%{cargo_test}
+%endif
 
 %files
 %license LICENSE
