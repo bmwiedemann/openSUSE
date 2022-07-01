@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 28 13:03:30 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.2
+- Changes since 5.25.1:
+  * greeter: fix undefined wallpaper by initializing wallpaper plugin before lock screen
+  * Initialise pam response in all converse conditions (kde#455608)
+
+-------------------------------------------------------------------
 Tue Jun 21 11:39:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.1
