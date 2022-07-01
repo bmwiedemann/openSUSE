@@ -16,9 +16,8 @@
 #
 
 
-%define _lto_cflags %nil
 Name:           ocaml-stdcompat
-Version:        18
+Version:        19
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Stdcompat: compatibility module for OCaml standard library 
@@ -30,9 +29,9 @@ Source1:        %name-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bash
-BuildRequires:  ocamlfind(findlib)
-BuildRequires:  ocaml-rpm-macros >= 20220222
-BuildRequires:  ocaml(ocaml.opt)
+BuildRequires:  ocaml
+BuildRequires:  ocaml-dune >= 2.0
+BuildRequires:  ocaml-rpm-macros >= 20220409
 
 %description
 Stdcompat is a compatibility layer allowing programs to use some recent additions to the OCaml standard library while preserving the ability to be compiled on former versions of OCaml.
@@ -50,14 +49,12 @@ developing applications that use %name.
 %autosetup -p1
 
 %build
-%make_build -f Makefile.bootstrap
-%configure \
-	--libdir=%ocaml_standard_library
-%make_build -j1
+dune_release_pkgs='stdcompat'
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-%make_install
-find %buildroot -type f -exec chmod -v 644 '{}' +
+%ocaml_dune_install
 %ocaml_create_file_list
 
 %files -f %name.files
