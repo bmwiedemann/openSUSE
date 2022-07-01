@@ -1,0 +1,21 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="versionformat">0.1.0+git.%ct.%h</param>
+    <param name="revision">master</param>
+    <param name="url">https://github.com/keylime/rust-keylime.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <!-- <service name="cargo_vendor" mode="disabled"> -->
+  <!--    <param name="srcdir">rust-keylime</param> -->
+  <!--    <param name="compression">xz</param> -->
+  <!-- </service> -->
+  <!-- <service name="cargo_audit" mode="disabled"> -->
+  <!--    <param name="srcdir">rust-keylime</param> -->
+  <!-- </service> -->
+  <service name="set_version" mode="disabled"/>
+</services>

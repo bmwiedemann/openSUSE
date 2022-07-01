@@ -1,0 +1,8 @@
+/var/log/keylime/*.log {
+    su keylime tss
+    weekly
+    missingok
+    rotate 4
+    copytruncate
+    minsize 1M
+}
