@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul  1 09:13:58 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 1.3.1
+  * mold now supports .preinit_array sections. Without this,
+    AddressSanitizer didn't work in some environments. (3b75398)
+  * [ARM32] R_ARM_MOVT_PREL and R_ARM_PREL31 relocations are now handled
+    correctly so that mold no longer emit spurious "recompile with -fPIC" errors. (5294300)
+
+-------------------------------------------------------------------
 Sat Jun 18 07:10:09 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 1.3.0
