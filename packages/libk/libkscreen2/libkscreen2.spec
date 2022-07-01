@@ -19,7 +19,7 @@
 %bcond_without released
 %define lname   libKF5Screen7
 Name:           libkscreen2
-Version:        5.25.1
+Version:        5.25.2
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
