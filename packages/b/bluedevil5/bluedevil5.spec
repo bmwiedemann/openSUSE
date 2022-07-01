@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           bluedevil5
-Version:        5.25.1
+Version:        5.25.2
 Release:        0
 Summary:        Bluetooth Manager for KDE Plasma
 License:        GPL-2.0-or-later
