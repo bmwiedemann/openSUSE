@@ -1038,4 +1038,12 @@
     <comment>Plasma 5.25.1. As usual, completely untested. (forwarded request 984192 from Vogtinator)</comment>
     <requestid>984367</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>10b9461217ab3e7e0fbfa2c09bce5153</srcmd5>
+    <version>5.25.2</version>
+    <time>1656675867</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.2 (forwarded request 985627 from Vogtinator)</comment>
+    <requestid>985909</requestid>
+  </revision>
 </revisionlist>
