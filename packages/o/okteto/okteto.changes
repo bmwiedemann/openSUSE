@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 01 10:54:47 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.4.1:
+  * Handle jobs "completed" status properly for the "--wait" flag (#2862) (#2863)
+  * Run windows tests in staging (#2784) (#2859)
+  * Use seconds instead of miliseconds to build the test name for the autowake, this is a quick fix to fix the tests (#2818) (#2860)
+  * Run e2e tests in staging (#2779) (#2858)
+  * use master branch from movies (#2850)
+  * use main branch for github actions (#2845)
+  * Github action release (#2833) (#2840)
+  * Update .DEREK.yml (#2838) (#2839)
+  * Clearer patters for remote stignore (#2831) (#2837)
+  * fix beta release sorting (#2815) (#2816)
+
+-------------------------------------------------------------------
 Wed Jun 22 12:42:46 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.4.0:
