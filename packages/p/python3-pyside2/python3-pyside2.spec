@@ -22,7 +22,7 @@
 %global __requires_exclude qmlimport\\((Charts|TextBalloonPlugin)
 
 Name:           python3-pyside2
-Version:        5.15.4
+Version:        5.15.5
 Release:        0
 Summary:        Python bindings for Qt
 # Legal:
@@ -41,6 +41,8 @@ Patch1:         0001-Don-t-try-to-install-or-use-uic-rcc-designer-copies.patch
 Patch2:         0001-cmake-Don-t-assume-qhelpgenerator-is-in-PATH.patch
 # PATCH-FIX-UPSTREAM
 Patch3:         0001-Backport-LLVM-13-fix-from-shiboken6.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-Backport-Fix-GLES-builds.patch
 # Provide the PyPI names
 Provides:       python3-PySide2 = %{version}-%{release}
 Provides:       python3-shiboken2 = %{version}-%{release}
