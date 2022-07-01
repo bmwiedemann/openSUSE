@@ -831,7 +831,12 @@ install -m644 %SOURCE30 %{buildroot}/etc/pam.d/xen-api
 install -m644 %SOURCE31 %{buildroot}/etc/xen/
 
 # Logrotate
-install -m644 -D %SOURCE14 %{buildroot}/etc/logrotate.d/xen
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+install -m644 -D %SOURCE14 %{buildroot}%{_distconfdir}/logrotate.d/xen
+%else
+install -m644 -D %SOURCE14 %{buildroot}%{_sysconfdir}/logrotate.d/xen
+%endif
 
 # Directories
 mkdir -p %{buildroot}/var/lib/xenstored
@@ -1060,7 +1065,11 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %dir /var/lib/xenstored
 %dir /var/log/xen
 %dir /var/log/xen/console
-%config /etc/logrotate.d/xen
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/xen
+%else
+%config(noreplace) %{_sysconfdir}/logrotate.d/xen
+%endif
 /etc/xen/auto
 %config /etc/xen/examples
 %config /etc/xen/cpupool
