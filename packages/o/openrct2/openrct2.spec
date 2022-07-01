@@ -1,7 +1,7 @@
 #
 # spec file for package openrct2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,6 +58,7 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     (kdialog or zenity)
+ExcludeArch:    s390x
 
 %description
 An open source clone of RollerCoaster Tycoon 2

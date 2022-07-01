@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 26 14:01:11 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
+
+- Program only knows little endian. Disable s390x builds.
+
+-------------------------------------------------------------------
 Mon Nov 22 06:40:34 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.3.5.1
