@@ -99,7 +99,7 @@ Group:          System/Monitoring
 %else
 %endif
 Name:           icinga2
-Version:        2.13.3
+Version:        2.13.4
 Release:        %{revision}%{?dist}
 URL:            https://www.icinga.com/
 Source:         https://github.com/Icinga/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -108,6 +108,8 @@ Source1:        icinga2-rpmlintrc
 %if "%{_vendor}" == "suse"
 # PATCH-FEATURE-OPENSUSE ecsos -- insert missing graphite tags as descriped in icingaweb2-module-graphite docs.
 Patch0:         icinga2-graphite.patch
+# PATCH-FIX-OPENSUSE lrupp -- fixing the syntax file for vim >= 8.x
+Patch1:         icinga2-vim_syntax.patch
 %endif
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -322,6 +324,7 @@ Provides Nano syntax highlighting for icinga2.
 %if "%{_vendor}" == "suse"
 find . -type f -name '*.sh' -exec sed -i -e 's|\/usr\/bin\/env bash|\/bin\/bash|g' {} \;
 %patch0 -p1
+%patch1 -p1
 %endif
 
 %build

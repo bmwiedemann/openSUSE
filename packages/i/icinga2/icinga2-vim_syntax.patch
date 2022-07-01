@@ -1,0 +1,40 @@
+#
+# vim > 8.2 produces the following error output below, if not set into 
+# nocompatibility mode. 
+#
+# Error detected while processing /usr/share/vim/vim82/suse.vimrc[10]..
+# /usr/share/vim/vim82/syntax/syntax.vim[43]..
+# BufRead Autocommands for "/*etc/icinga2/*.conf"..
+# FileType Autocommands for "*"..Syntax 
+# Autocommands for "*"..function <SNR>3_SynSet[25]..
+# script /usr/share/vim/site/syntax/icinga2.vim:
+# line  [...]:
+# E10: \ should be followed by /, ? or &
+#
+# The patch below is a quick workaround, stolen from:
+# https://trac.nginx.org/nginx/attachment/ticket/2276/fix-nginx-syntax.patch
+#
+
+Index: icinga2-2.13.3/tools/syntax/vim/syntax/icinga2.vim
+===================================================================
+--- icinga2-2.13.3.orig/tools/syntax/vim/syntax/icinga2.vim
++++ icinga2-2.13.3/tools/syntax/vim/syntax/icinga2.vim
+@@ -16,6 +16,10 @@ if !exists("main_syntax")
+ 	let main_syntax = 'icinga2'
+ endif
+ 
++" Reset compatible-options to Vim default value, just in case:
++let s:save_cpo = &cpo
++set cpo&vim
++
+ " case off
+ syntax case ignore
+ 
+@@ -358,3 +362,7 @@ hi link icinga2Namespace			Statement
+ hi link valueNumber				Number
+ hi link valueBoolean				Boolean
+ hi link valueNull				Special
++
++" Restore current compatible-options:
++let &cpo = s:save_cpo
++unlet s:save_cpo
