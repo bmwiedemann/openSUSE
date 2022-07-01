@@ -49,6 +49,7 @@ Requires(pre):  shared-mime-info
 %if %{with mpg123}
 BuildRequires:  pkgconfig(libmpg123)
 %endif
+ExcludeArch:    s390x
 
 %description
 LÖVE is a framework for making 2D games in Lua.

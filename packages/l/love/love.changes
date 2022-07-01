@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 26 13:35:34 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
+
+- HashFunction.cpp:25:9: error: #error Hashing not yet implemented for big endian
+  Disable s390x builds.
+
+-------------------------------------------------------------------
 Sat Feb 19 18:41:00 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - update to 11.4:

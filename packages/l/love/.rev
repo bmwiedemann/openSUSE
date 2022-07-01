@@ -71,4 +71,12 @@
     <comment>- update to 11.4</comment>
     <requestid>956317</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>4a445bb1dccc399ce6f838362f463957</srcmd5>
+    <version>11.4</version>
+    <time>1656675897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986052</requestid>
+  </revision>
 </revisionlist>
