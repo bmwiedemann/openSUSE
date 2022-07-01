@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 01 10:54:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.25.21:
+  * K9s rel v0.25.21 (#1635)
+  * Fix delete dialog dropdown styling (#1632)
+  * Fix TestToAge (#1627)
+  * Fix reference to base image in Dockerfile (#1629)
+  * [FIX] chg makefile version (#1624)
+
+-------------------------------------------------------------------
 Tue Jun 28 15:46:51 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.25.20:
