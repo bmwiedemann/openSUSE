@@ -1,4 +1,146 @@
 -------------------------------------------------------------------
+Thu Jun 30 08:07:09 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u332 (icedtea-3.23.0)
+  * April 2022 CPU
+  * Security fixes
+    + JDK-8269938: Enhance XML processing passes redux
+    + JDK-8270504, bsc#1198672, CVE-2022-21426: Better XPath
+      expression handling
+    + JDK-8272255: Completely handle MIDI files
+    + JDK-8272261: Improve JFR recording file processing
+    + JDK-8272594: Better record of recordings
+    + JDK-8274221: More definite BER encodings
+    + JDK-8275151, bsc#1198675, CVE-2022-21443: Improved Object
+      Identification
+    + JDK-8277227: Better identification of OIDs
+    + JDK-8277672, bsc#1198674, CVE-2022-21434: Better invocation
+      handler handling
+    + JDK-8278008, bsc#1198671, CVE-2022-21476: Improve Santuario
+      processing
+    + JDK-8278356: Improve file creation
+    + JDK-8278449: Improve keychain support
+    + JDK-8278805: Enhance BMP image loading
+    + JDK-8278972, bsc#1198673, CVE-2022-21496: Improve URL supports
+    + JDK-8281388: Change wrapping of EncryptedPrivateKeyInfo
+  * Import of OpenJDK 8 u332
+    + JDK-8033980: Xerces Update: datatype XMLGregorianCalendarImpl
+      and DurationImpl
+    + JDK-8035437: Xerces Update: xml/serialize/DOMSerializerImpl
+    + JDK-8035577: Xerces Update: impl/xpath/regex/RangeToken.java
+    + JDK-8037259: xerces update: xpointer update
+    + JDK-8041523: Xerces Update: Serializer improvements from Xalan
+    + JDK-8141508: java.lang.invoke.LambdaConversionException:
+      Invalid receiver type
+    + JDK-8162572: Update License Header for all JAXP sources
+    + JDK-8167014: jdeps: Missing message: warn.skipped.entry
+    + JDK-8198411: [TEST_BUG] Two java2d tests are unstable in mach5
+    + JDK-8202822: Add .git to .hgignore
+    + JDK-8205540: test/hotspot/jtreg/vmTestbase/nsk/jdb/trace/
+      /trace001/trace001.java fails with Debuggee did not exit after
+      15 <cont> commands
+    + JDK-8209178: Proxied HttpsURLConnection doesn't send BODY
+      when retrying POST request
+    + JDK-8210283: Support git as an SCM alternative in the build
+    + JDK-8218682: [TEST_BUG] DashOffset fails in mach5
+    + JDK-8225690: Multiple AttachListener threads can be created
+    + JDK-8227738: jvmti/DataDumpRequest/datadumpreq001 failed due
+      to "exit code is 134"
+    + JDK-8227815: Minimal VM: set_state is not a member of
+      AttachListener
+    + JDK-8240633: Memory leaks in the implementations of
+      FileChooserUI
+    + JDK-8241768: git needs .gitattributes
+    + JDK-8247766: [aarch64] guarantee(val < (1U << nbits)) failed:
+      Field too big for insn
+    + JDK-8253147: The javax/swing/JPopupMenu/7154841/
+      /bug7154841.java fail on big screens
+    + JDK-8253353: Crash in C2: guarantee(n != NULL) failed: No Node
+    + JDK-8266749: AArch64: Backtracing broken on PAC enabled
+      systems
+    + JDK-8270290: NTLM authentication fails if HEAD request is used
+    + JDK-8273229: Update OS detection code to recognize Windows
+      Server 2022
+    + JDK-8273341: Update Siphash to version 1.0
+    + JDK-8273575: memory leak in appendBootClassPath(), paths must
+      be deallocated
+    + JDK-8274524: SSLSocket.close() hangs if it is called during
+      the ssl handshake
+    + JDK-8277224: sun.security.pkcs.PKCS9Attributes.toString()
+      throws NPE
+    + JDK-8277488: Add expiry exception for Digicert
+      (geotrustglobalca) expiring in May 2022
+    + JDK-8279077: JFR crashes on Linux ppc due to missing crash
+      protector in signal handler
+    + JDK-8280060: The sun/rmi/server/Activation.java class use
+      Thread.dumpStack()
+    + JDK-8282300: Throws NamingException instead of
+      InvalidNameException after JDK-8278972
+    + JDK-8282397: createTempFile method of java.io.File is failing
+      when called with suffix of spaces character
+    + JDK-8284548: Invalid XPath expression causes
+      StringIndexOutOfBoundsException
+    + JDK-8284920: Incorrect Token type causes XPath expression to
+      return empty result
+    + JDK-8284936: Fix Java 7 bootstrap breakage due to use of
+      Arrays.stream
+  * Backports
+    + JDK-8031567: Better model for storing source revision
+      information
+    + JDK-8170385: JDK-8031567 broke source bundles
+    + JDK-8170392: JDK-8031567 broke builds from source bundles
+    + JDK-8253424: Add support for running pre-submit testing using
+      GitHub Actions
+    + JDK-8253865: Pre-submit testing using GitHub Actions does not
+      detect failures reliably
+    + JDK-8254054: Pre-submit testing using GitHub Actions should
+      not use the deprecated set-env command
+    + JDK-8254173: Add Zero, Minimal hotspot targets to submit
+      workflow
+    + JDK-8254175: Build no-pch configuration in debug mode for
+      submit checks
+    + JDK-8254282: Add Linux x86_32 builds to submit workflow
+    + JDK-8255305: Add Linux x86_32 tier1 to submit workflow
+    + JDK-8255352: Archive important test outputs in submit workflow
+    + JDK-8255373: Submit workflow artifact name is always
+      "test-results_.zip"
+    + JDK-8255895: Submit workflow artifacts miss hs_errs/replays
+      due to ZIP include mismatch
+    + JDK-8256127: Add cross-compiled foreign architectures builds
+      to submit workflow
+    + JDK-8256277: Github Action build on macOS should define OS
+      and Xcode versions
+    + JDK-8256354: Github Action build on Windows should define OS
+      and MSVC versions
+    + JDK-8256393: Github Actions build on Linux should define OS
+      and GCC versions
+    + JDK-8256414: add optimized build to submit workflow
+    + JDK-8256747: GitHub Actions: decouple the hotspot build-only
+      jobs from Linux x64 testing
+    + JDK-8257056: Submit workflow should apt-get update to avoid
+      package installation errors
+    + JDK-8259924: GitHub actions fail on Linux x86_32 with "Could
+      not configure libc6:i386"
+    + JDK-8260460: GitHub actions still fail on Linux x86_32 with
+      "Could not configure libc6:i386"
+    + JDK-8263667: Avoid running GitHub actions on branches named
+      pr/*
+    + JDK-8282225: GHA: Allow one concurrent run per PR only
+    + JDK-8284772: 8u GHA: Use GCC Major Version Dependencies Only
+  * Bug fixes
+    + GH002: Only add -Wno-unused-parameter on gcc and clang
+      compilers.
+    + GH004: Fix naming of sockaddr_in6 variable (sa6->him6) in
+      SOCKETADDRESS union on Windows
+    + GH007: Fix NetworkInterface_winXP.c variable declarations to
+      compile on VS2010
+    + GH008: Reinstate POST_STRIP_CMD empty check in Images.gmk
+    + GH012: Building from tarball broken by bad backport of
+      JDK-8210283
+  * Shenandoah
+    + JDK-8260632: Build failures after JDK-8253353
+
+-------------------------------------------------------------------
 Mon Apr  4 07:24:25 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Add java-1_8_0-openjdk-autoconf27.patch to accept autoconf 2.71
