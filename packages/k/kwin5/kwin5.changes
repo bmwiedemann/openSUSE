@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 28 13:03:31 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.2
+- Changes since 5.25.1:
+  * backends/drm: fix flicker with rotation on mobile
+  * tablet: Leave the surface we were previously on, not the one we are going to
+  * backends/drm: ensure modeset properties are reset properly
+  * effects/slide: Save correct current position
+  * effects: Set timestamp for input events (kde#454275,kde#449907)
+  * Internal tracking for quick effect item focus (kde#455807,kde#455783)
+  * Move WindowHeap delegate to own file
+  * Delegate updateShadow to event loop.
+  * Fix flaky testTextInputV3Interface
+  * Windowview: Fix broken keyboard navigation while filtering (kde#455633,kde#455764,kde#455099,kde#455586,kde#455753)
+  * screencasting: No need to adjust the scale on the cursor
+  * screencasting: Properly disable the cursor when it exits the viewport
+  * backends/drm: fix enabled+inactive check
+
+-------------------------------------------------------------------
 Tue Jun 21 11:39:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.1
