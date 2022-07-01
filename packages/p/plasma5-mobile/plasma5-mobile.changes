@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 28 13:03:33 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.2
+- Changes since 5.25.1:
+  * quicksettings: Fix brightness slider alignment, and forced row count
+  * panel & taskpanel: Only opaque if windows are maximized
+  * lockscreen: Improve physical keyboard input
+
+-------------------------------------------------------------------
 Tue Jun 21 11:39:46 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.1
