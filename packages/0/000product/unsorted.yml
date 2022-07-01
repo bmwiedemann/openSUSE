@@ -282,7 +282,7 @@ unsorted:
   - VirtualGL-devel 
   - WSL-DistroLauncher 
   - WSL-DistroLauncher-debug 
-  - WebKit2GTK-5.0-lang 
+  - WebKit2GTK-5.0-lang: [i586] 
   - WindowMaker-devel 
   - WoeUSB 
   - XSStrike 
@@ -2317,7 +2317,7 @@ unsorted:
   - coredns-for-k8s1.24-extras 
   - corepack16 
   - corepack17 
-  - coreutils-doc 
+  - coreutils-doc: [i586] 
   - coreutils-single 
   - coreutils-testsuite 
   - corosync 
@@ -2401,8 +2401,7 @@ unsorted:
   - cri-o: [x86_64] 
   - cri-o-kubeadm-criconfig: [x86_64] 
   - cri-tools 
-  - criu: [x86_64] # recommended by opensuse_microos:patterns-microos-alt_onlyDVD 
-  - criu-devel: [x86_64] 
+  - criu-devel: [x86_64] # devel package of opensuse_microos:criu 
   - criu-plugin-amdgpu: [x86_64] 
   - crmsh 
   - crmsh-scripts 
@@ -5147,7 +5146,7 @@ unsorted:
   - ghc-optparse-simple: [x86_64] 
   - ghc-optparse-simple-devel: [x86_64] 
   - ghc-pandoc: [x86_64] 
-  - ghc-pandoc-devel: [x86_64] 
+  - ghc-pandoc-devel: [x86_64] # devel package of opensuse_microos_desktop:pandoc 
   - ghc-pandoc-lua-marshal: [x86_64] 
   - ghc-pandoc-lua-marshal-devel: [x86_64] 
   - ghc-pandoc-types: [x86_64] 
@@ -6021,7 +6020,7 @@ unsorted:
   - gnome-tour 
   - gnome-tour-lang 
   - gnome-usage: [i586] 
-  - gnome-usage-lang 
+  - gnome-usage-lang: [i586] 
   - gnome-user-docs-lang 
   - gnome-video-effects-devel 
   - gnonograms 
@@ -6036,7 +6035,6 @@ unsorted:
   - gnu-compilers-hpc-macros-devel 
   - gnu-crypto 
   - gnu-efi 
-  - gnu-free-fonts 
   - gnu-getopt 
   - gnu-getopt-javadoc 
   - gnu-netcat 
@@ -7181,7 +7179,7 @@ unsorted:
   - infinoted 
   - influxdb 
   - influxdb-devel 
-  - info-std 
+  - info-std: [i586] 
   - info2html 
   - infos-creator-rpm 
   - ini4j 
@@ -7487,11 +7485,9 @@ unsorted:
   - java-17-openjdk-javadoc 
   - java-17-openjdk-jmods 
   - java-17-openjdk-src 
-  - java-18-openjdk 
   - java-18-openjdk-accessibility 
   - java-18-openjdk-demo 
   - java-18-openjdk-devel 
-  - java-18-openjdk-headless 
   - java-18-openjdk-javadoc 
   - java-18-openjdk-jmods 
   - java-18-openjdk-src 
@@ -7852,42 +7848,42 @@ unsorted:
   - jupyter-ipyevents 
   - jupyter-ipyevents-jupyterlab 
   - jupyter-ipyleaflet 
-  - jupyter-ipyparallel 
+  - jupyter-ipyparallel: [i586] 
   - jupyter-ipyscales 
   - jupyter-ipyvolume 
   - jupyter-ipywebrtc 
-  - jupyter-jupyter-client 
+  - jupyter-jupyter-client: [i586] 
   - jupyter-jupyter-full-width 
   - jupyter-jupyter-themer 
   - jupyter-jupyter-wysiwyg 
   - jupyter-jupyter_cms 
   - jupyter-jupyter_contrib_core 
-  - jupyter-jupyter_core-filesystem 
+  - jupyter-jupyter_core-filesystem: [i586] 
   - jupyter-jupyter_dashboards 
   - jupyter-jupyter_highlight_selected_word 
   - jupyter-jupyter_latex_envs 
   - jupyter-jupyter_nbextensions_configurator 
   - jupyter-jupyterbgnotify 
   - jupyter-jupyterlab 
-  - jupyter-jupyterlab-filesystem 
+  - jupyter-jupyterlab-filesystem: [i586] 
   - jupyter-jupyterlab-ipyscales 
   - jupyter-jupyterlab-latex 
   - jupyter-jupyterlab-templates 
-  - jupyter-jupyterlab-widgets 
+  - jupyter-jupyterlab-widgets: [i586] 
   - jupyter-lineup-widget 
   - jupyter-matlab-kernel 
   - jupyter-matplotlib 
   - jupyter-matplotlib-jupyterlab 
   - jupyter-nbclassic 
-  - jupyter-nbconvert 
+  - jupyter-nbconvert: [i586] 
   - jupyter-nbconvert-latex 
   - jupyter-nbdime 
   - jupyter-nbdime-git 
   - jupyter-nbdime-hg 
   - jupyter-nbdime-jupyterlab 
-  - jupyter-nbformat 
-  - jupyter-notebook 
-  - jupyter-notebook-filesystem 
+  - jupyter-nbformat: [i586] 
+  - jupyter-notebook: [i586] 
+  - jupyter-notebook-filesystem: [i586] 
   - jupyter-notebook-lang 
   - jupyter-notebook-latex 
   - jupyter-notebook-shim 
@@ -7897,13 +7893,13 @@ unsorted:
   - jupyter-pythreejs 
   - jupyter-pythreejs-jupyterlab 
   - jupyter-qgrid 
-  - jupyter-qtconsole 
+  - jupyter-qtconsole: [i586] 
   - jupyter-rpm-macros 
   - jupyter-server-mathjax 
   - jupyter-sidecar-jupyterlab 
   - jupyter-vispy 
   - jupyter-voila 
-  - jupyter-widgetsnbextension 
+  - jupyter-widgetsnbextension: [i586] 
   - jvnet-parent 
   - jvyamlb 
   - jwnl 
@@ -10739,7 +10735,7 @@ unsorted:
   - libfabric 
   - libfabric-devel 
   - libfabric-devel-32bit: [x86_64] 
-  - libfabric1 
+  - libfabric1: [i586] 
   - libfabric1-32bit: [x86_64] 
   - libfakekey-devel 
   - libfaketime 
@@ -11680,7 +11676,7 @@ unsorted:
   - libindicator7 
   - libindidriver1 
   - libindilx200-1 
-  - libinfinipath4 
+  - libinfinipath4: [i586] 
   - libinfinipath4-32bit: [x86_64] 
   - libinfinity-0_7-0 
   - libinfinity-devel 
@@ -11762,7 +11758,7 @@ unsorted:
   - libjavamapscript 
   - libjavascriptcoregtk-4_0-18-32bit: [x86_64] 
   - libjavascriptcoregtk-4_1-0-32bit: [x86_64] 
-  - libjavascriptcoregtk-5_0-0 
+  - libjavascriptcoregtk-5_0-0: [i586] 
   - libjaylink 
   - libjaylink-devel 
   - libjaylink0 
@@ -12408,7 +12404,7 @@ unsorted:
   - libnest2d-devel 
   - libnet-devel 
   - libnet-doc 
-  - libnet9 
+  - libnet9: [i586] 
   - libnetcdf-cxx4-gnu-hpc 
   - libnetcdf-cxx4-gnu-hpc-devel 
   - libnetcdf-cxx4_4_3_1-gnu-hpc 
@@ -13144,10 +13140,9 @@ unsorted:
   - libpskc-devel 
   - libpsl-devel 
   - libpsl5-32bit: [x86_64] 
-  - libpsm2-2: [x86_64] 
   - libpsm2-compat: [x86_64] 
-  - libpsm2-devel: [x86_64] 
-  - libpsm_infinipath1 
+  - libpsm2-devel: [x86_64] # devel package of opensuse_microos_desktop:libpsm2-2 
+  - libpsm_infinipath1: [i586] 
   - libpsm_infinipath1-32bit: [x86_64] 
   - libpspell15 
   - libpspell15-32bit: [x86_64] 
@@ -13505,7 +13500,6 @@ unsorted:
   - librelp0 
   - librem0 
   - libreoffice-base-drivers-postgresql 
-  - libreoffice-branding-upstream 
   - libreoffice-calc-extensions 
   - libreoffice-gdb-pretty-printers 
   - libreoffice-glade 
@@ -14343,16 +14337,12 @@ unsorted:
   - libuchardet0 
   - libuchardet0-32bit: [x86_64] 
   - libucl1 
-  - libucm-devel: [x86_64] 
-  - libucm0: [x86_64] 
+  - libucm-devel: [x86_64] # devel package of opensuse_microos_desktop:libuct0 
   - libucommon8 
-  - libucp-devel: [x86_64] 
-  - libucp0: [x86_64] 
+  - libucp-devel: [x86_64] # devel package of opensuse_microos_desktop:libuct0 
   - libucpp13 
-  - libucs-devel: [x86_64] 
-  - libucs0: [x86_64] 
-  - libuct-devel: [x86_64] 
-  - libuct0: [x86_64] 
+  - libucs-devel: [x86_64] # devel package of opensuse_microos_desktop:libuct0 
+  - libuct-devel: [x86_64] # devel package of opensuse_microos_desktop:libuct0 
   - libudev-mini1 
   - libudf0 
   - libudf0-32bit: [x86_64] 
@@ -14638,7 +14628,7 @@ unsorted:
   - libwebcam0 
   - libwebkit2gtk-4_0-37-32bit: [x86_64] 
   - libwebkit2gtk-4_1-0-32bit: [x86_64] 
-  - libwebkit2gtk-5_0-0 
+  - libwebkit2gtk-5_0-0: [i586] 
   - libwebp-devel 
   - libwebp-devel-32bit: [x86_64] 
   - libwebp-tools 
@@ -16544,7 +16534,7 @@ unsorted:
   - mpg123-pulse-32bit: [x86_64] 
   - mpg123-sdl 
   - mpg123-sdl-32bit: [x86_64] 
-  - mpi-selector 
+  - mpi-selector: [i586] 
   - mpiP-gnu-mpich-hpc 
   - mpiP-gnu-mpich-hpc-devel 
   - mpiP-gnu-mpich-hpc-doc 
@@ -17436,14 +17426,11 @@ unsorted:
   - noto-sans-inscriptionalparthian-fonts 
   - noto-sans-javanese-fonts 
   - noto-sans-jp-black-fonts 
-  - noto-sans-jp-bold-fonts 
   - noto-sans-jp-demilight-fonts 
-  - noto-sans-jp-fonts 
   - noto-sans-jp-fonts-full 
   - noto-sans-jp-light-fonts 
   - noto-sans-jp-medium-fonts 
   - noto-sans-jp-mono-fonts 
-  - noto-sans-jp-regular-fonts 
   - noto-sans-jp-thin-fonts 
   - noto-sans-kaithi-fonts 
   - noto-sans-kannada-fonts 
@@ -17525,14 +17512,11 @@ unsorted:
   - noto-sans-samaritan-fonts 
   - noto-sans-saurashtra-fonts 
   - noto-sans-sc-black-fonts 
-  - noto-sans-sc-bold-fonts 
   - noto-sans-sc-demilight-fonts 
-  - noto-sans-sc-fonts 
   - noto-sans-sc-fonts-full 
   - noto-sans-sc-light-fonts 
   - noto-sans-sc-medium-fonts 
   - noto-sans-sc-mono-fonts 
-  - noto-sans-sc-regular-fonts 
   - noto-sans-sc-thin-fonts 
   - noto-sans-sharada-fonts 
   - noto-sans-shavian-fonts 
@@ -17559,14 +17543,11 @@ unsorted:
   - noto-sans-tamilsupplement-fonts 
   - noto-sans-tangsa-fonts 
   - noto-sans-tc-black-fonts 
-  - noto-sans-tc-bold-fonts 
   - noto-sans-tc-demilight-fonts 
-  - noto-sans-tc-fonts 
   - noto-sans-tc-fonts-full 
   - noto-sans-tc-light-fonts 
   - noto-sans-tc-medium-fonts 
   - noto-sans-tc-mono-fonts 
-  - noto-sans-tc-regular-fonts 
   - noto-sans-tc-thin-fonts 
   - noto-sans-telugu-fonts 
   - noto-sans-telugu-ui-fonts 
@@ -18319,8 +18300,8 @@ unsorted:
   - openmpi2-libs-32bit: [x86_64] 
   - openmpi2-macros-devel 
   - openmpi2-testsuite 
-  - openmpi3 
-  - openmpi3-config 
+  - openmpi3: [i586] 
+  - openmpi3-config: [i586] 
   - openmpi3-devel 
   - openmpi3-docs 
   - openmpi3-gnu-hpc 
@@ -18328,7 +18309,7 @@ unsorted:
   - openmpi3-gnu-hpc-devel-static 
   - openmpi3-gnu-hpc-docs 
   - openmpi3-gnu-hpc-macros-devel 
-  - openmpi3-libs 
+  - openmpi3-libs: [i586] 
   - openmpi3-libs-32bit: [x86_64] 
   - openmpi3-macros-devel 
   - openmpi3-testsuite 
@@ -18702,7 +18683,6 @@ unsorted:
   - pamixer 
   - pan 
   - pan-lang 
-  - pandoc: [x86_64] 
   - pango-devel 
   - pango-devel-32bit: [x86_64] 
   - pango-tools 
@@ -18796,7 +18776,7 @@ unsorted:
   - patterns-base-apparmor-32bit 
   - patterns-base-base-32bit 
   - patterns-base-bootloader: [i586] 
-  - patterns-base-documentation 
+  - patterns-base-documentation: [i586] 
   - patterns-base-enhanced_base-32bit 
   - patterns-base-fips 
   - patterns-base-minimal_base-32bit 
@@ -20919,7 +20899,6 @@ unsorted:
   - pommed 
   - pongix 
   - popeye 
-  - poppler-data 
   - poppler-data-devel 
   - popt-devel 
   - popt-devel-32bit: [x86_64] 
@@ -21501,8 +21480,8 @@ unsorted:
   - python-rcssmin-docs 
   - python-rdflib-doc 
   - python-renderspec-doc 
-  - python-rpm-generators 
-  - python-rpm-macros 
+  - python-rpm-generators: [i586] 
+  - python-rpm-macros: [i586] 
   - python-rtslib-fb-common 
   - python-saharaclient-doc 
   - python-senlinclient-doc 
@@ -22000,7 +21979,7 @@ unsorted:
   - python310-QR-Code-generator 
   - python310-Qt.py 
   - python310-QtAwesome 
-  - python310-QtPy 
+  - python310-QtPy: [i586] 
   - python310-RegexOrder 
   - python310-Routes 
   - python310-Rtree 
@@ -22008,7 +21987,7 @@ unsorted:
   - python310-SQLAlchemy-Utils 
   - python310-Scrapy 
   - python310-SecretStorage 
-  - python310-Send2Trash 
+  - python310-Send2Trash: [i586] 
   - python310-Shapely 
   - python310-SimpleWebSocketServer 
   - python310-SoundCard 
@@ -22434,6 +22413,7 @@ unsorted:
   - python310-azure-mgmt-vmwarecloudsimple 
   - python310-azure-mgmt-web 
   - python310-azure-mgmt-webpubsub 
+  - python310-azure-mgmt-workloads 
   - python310-azure-mixedreality-authentication 
   - python310-azure-mixedreality-nspkg 
   - python310-azure-monitor 
@@ -22498,7 +22478,7 @@ unsorted:
   - python310-bitstring 
   - python310-bitstruct 
   - python310-bjoern 
-  - python310-bleach 
+  - python310-bleach: [i586] 
   - python310-blessed 
   - python310-blessings 
   - python310-blinker: [i586] 
@@ -22733,11 +22713,11 @@ unsorted:
   - python310-ddt 
   - python310-deap 
   - python310-debian 
-  - python310-debugpy 
+  - python310-debugpy: [i586] 
   - python310-deepdiff 
   - python310-deepmerge 
   - python310-defcon 
-  - python310-defusedxml 
+  - python310-defusedxml: [i586] 
   - python310-delegator 
   - python310-delegator.py 
   - python310-dennis 
@@ -22925,7 +22905,7 @@ unsorted:
   - python310-encore 
   - python310-enrich 
   - python310-entrypoint2 
-  - python310-entrypoints 
+  - python310-entrypoints: [i586] 
   - python310-environ-config 
   - python310-environmental-override 
   - python310-envisage 
@@ -23210,16 +23190,16 @@ unsorted:
   - python310-ipydatawidgets 
   - python310-ipyevents 
   - python310-ipyfilechooser 
-  - python310-ipykernel 
+  - python310-ipykernel: [i586] 
   - python310-ipyleaflet 
   - python310-ipympl 
-  - python310-ipyparallel 
+  - python310-ipyparallel: [i586] 
   - python310-ipyscales 
   - python310-ipysheet 
-  - python310-ipython_genutils 
+  - python310-ipython_genutils: [i586] 
   - python310-ipyvolume 
   - python310-ipywebrtc 
-  - python310-ipywidgets 
+  - python310-ipywidgets: [i586] 
   - python310-irc 
   - python310-isc_dhcp_leases 
   - python310-iso3166 
@@ -23283,9 +23263,9 @@ unsorted:
   - python310-junit-xml 
   - python310-junitxml 
   - python310-junos-eznc 
-  - python310-jupyter 
-  - python310-jupyter-client 
-  - python310-jupyter-core 
+  - python310-jupyter: [i586] 
+  - python310-jupyter-client: [i586] 
+  - python310-jupyter-core: [i586] 
   - python310-jupyter-jupyterlab-server 
   - python310-jupyter-jupyterlab-server-test 
   - python310-jupyter-kernel-test 
@@ -23296,15 +23276,15 @@ unsorted:
   - python310-jupyter-server-test 
   - python310-jupyter-sphinx 
   - python310-jupyter-telemetry 
-  - python310-jupyter_console 
+  - python310-jupyter_console: [i586] 
   - python310-jupyter_contrib_core 
   - python310-jupyter_highlight_selected_word 
   - python310-jupyter_latex_envs 
   - python310-jupyter_nbextensions_configurator 
   - python310-jupyterlab 
-  - python310-jupyterlab-pygments 
+  - python310-jupyterlab-pygments: [i586] 
   - python310-jupyterlab-templates 
-  - python310-jupyterlab-widgets 
+  - python310-jupyterlab-widgets: [i586] 
   - python310-jwcrypto 
   - python310-k5test 
   - python310-kafka-python 
@@ -23523,7 +23503,7 @@ unsorted:
   - python310-moto 
   - python310-moto-all 
   - python310-moto-server 
-  - python310-mpi4py 
+  - python310-mpi4py: [i586] 
   - python310-mpi4py-devel 
   - python310-mpl-animators 
   - python310-mplcursors 
@@ -23565,10 +23545,10 @@ unsorted:
   - python310-nautilus 
   - python310-nautilus-devel 
   - python310-nbclassic 
-  - python310-nbclient 
-  - python310-nbconvert 
+  - python310-nbclient: [i586] 
+  - python310-nbconvert: [i586] 
   - python310-nbdime 
-  - python310-nbformat 
+  - python310-nbformat: [i586] 
   - python310-nbindex-jupyter 
   - python310-nbsmoke 
   - python310-nbsphinx 
@@ -23580,7 +23560,7 @@ unsorted:
   - python310-ndg-httpsclient 
   - python310-neovim 
   - python310-neovim-remote 
-  - python310-nest-asyncio 
+  - python310-nest-asyncio: [i586] 
   - python310-nested-lookup 
   - python310-net-snmp 
   - python310-netCDF4 
@@ -23597,7 +23577,7 @@ unsorted:
   - python310-nodeenv 
   - python310-nornir 
   - python310-nose2 
-  - python310-notebook 
+  - python310-notebook: [i586] 
   - python310-notebook-lang 
   - python310-notebook-shim 
   - python310-nox 
@@ -23683,7 +23663,7 @@ unsorted:
   - python310-pan-python 
   - python310-pandas-datareader 
   - python310-pandas-ext 
-  - python310-pandocfilters 
+  - python310-pandocfilters: [i586] 
   - python310-panel 
   - python310-panflute 
   - python310-papermill 
@@ -23810,12 +23790,12 @@ unsorted:
   - python310-progress 
   - python310-progressbar 
   - python310-progressbar2 
-  - python310-prometheus-client 
+  - python310-prometheus-client: [i586] 
   - python310-promise 
   - python310-prompt_toolkit1 
   - python310-proselint 
   - python310-proto-plus 
-  - python310-protobuf 
+  - python310-protobuf: [i586] 
   - python310-proton-client 
   - python310-protonvpn-nm-lib 
   - python310-proxy.py 
@@ -24257,7 +24237,7 @@ unsorted:
   - python310-qtcharts-qt5-api 
   - python310-qtcharts-qt5-doc 
   - python310-qtcharts-qt5-sip 
-  - python310-qtconsole 
+  - python310-qtconsole: [i586] 
   - python310-qtdatavis3d-qt5 
   - python310-qtdatavis3d-qt5-api 
   - python310-qtdatavis3d-qt5-doc 
@@ -24572,7 +24552,7 @@ unsorted:
   - python310-tensorpac 
   - python310-term-background 
   - python310-termcolor 
-  - python310-terminado 
+  - python310-terminado: [i586] 
   - python310-terminaltables 
   - python310-termstyle 
   - python310-tesserocr 
@@ -24603,7 +24583,7 @@ unsorted:
   - python310-time-travel 
   - python310-timeout-decorator 
   - python310-tinyarray 
-  - python310-tinycss2 
+  - python310-tinycss2: [i586] 
   - python310-tinydb 
   - python310-tinyrecord 
   - python310-tinyrpc 
@@ -24758,7 +24738,7 @@ unsorted:
   - python310-whichcraft 
   - python310-whitenoise 
   - python310-whois_similarity_distance 
-  - python310-widgetsnbextension 
+  - python310-widgetsnbextension: [i586] 
   - python310-wikipedia 
   - python310-wirerope 
   - python310-wiring 
@@ -25501,6 +25481,7 @@ unsorted:
   - python38-azure-mgmt-vmwarecloudsimple 
   - python38-azure-mgmt-web 
   - python38-azure-mgmt-webpubsub 
+  - python38-azure-mgmt-workloads 
   - python38-azure-mixedreality-authentication 
   - python38-azure-mixedreality-nspkg 
   - python38-azure-monitor 
@@ -28778,6 +28759,7 @@ unsorted:
   - python39-azure-mgmt-vmwarecloudsimple 
   - python39-azure-mgmt-web 
   - python39-azure-mgmt-webpubsub 
+  - python39-azure-mgmt-workloads 
   - python39-azure-mixedreality-authentication 
   - python39-azure-mixedreality-nspkg 
   - python39-azure-monitor 
@@ -32395,6 +32377,7 @@ unsorted:
   - rust 
   - rust-analyzer 
   - rust-cbindgen 
+  - rust-keylime: [x86_64] 
   - rust-packaging 
   - rust-srpm-macros 
   - rust1.60 
@@ -33394,7 +33377,7 @@ unsorted:
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
   - systemd-devel: [i586] # devel package of common_locks:systemd-lang 
-  - systemd-doc 
+  - systemd-doc: [i586] 
   - systemd-experimental 
   - systemd-inputmethod-generator 
   - systemd-journal-remote 
@@ -42559,7 +42542,7 @@ unsorted:
   - typelib-1_0-ICal-3_0 
   - typelib-1_0-ICalGLib-3_0 
   - typelib-1_0-Ido3-0_1 
-  - typelib-1_0-JavaScriptCore-5_0 
+  - typelib-1_0-JavaScriptCore-5_0: [i586] 
   - typelib-1_0-Jcat-1_0 
   - typelib-1_0-Jsonrpc-1_0 
   - typelib-1_0-Keybinder-0_0 
@@ -42614,7 +42597,7 @@ unsorted:
   - typelib-1_0-Uhm-0_0 
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8_12 
-  - typelib-1_0-WebKit2-5_0 
+  - typelib-1_0-WebKit2-5_0: [i586] 
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-WebKit2WebExtension-4_1 
   - typelib-1_0-WebKit2WebExtension-5_0 
@@ -43170,7 +43153,7 @@ unsorted:
   - webkit-jsc-4 
   - webkit-jsc-4.1 
   - webkit-jsc-5.0 
-  - webkit2gtk-5_0-injected-bundles 
+  - webkit2gtk-5_0-injected-bundles: [i586] 
   - webkit2gtk3-devel 
   - webkit2gtk3-minibrowser 
   - webkit2gtk3-soup2-devel 
