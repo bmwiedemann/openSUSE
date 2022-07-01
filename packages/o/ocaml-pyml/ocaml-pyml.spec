@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-pyml
-Version:        20220325
+Version:        20220615
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Stdcompat: compatibility module for OCaml standard library
@@ -27,7 +27,7 @@ URL:            https://opam.ocaml.org/packages/pyml
 Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.8
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20220409
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(stdcompat)
 BuildRequires:  ocamlfind(unix)
