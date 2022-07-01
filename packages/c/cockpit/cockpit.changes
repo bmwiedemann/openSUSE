@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 23 09:27:17 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Add conflict between cockpit-networkmanager and cockpit-wicked
+  as they use the same URL paths.
+
+-------------------------------------------------------------------
 Mon Jun 20 08:15:34 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - Re-arrange patches and apply them manually again.

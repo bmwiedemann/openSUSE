@@ -192,4 +192,12 @@
   Some were accidentally added and should be sle only</comment>
     <requestid>983884</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>1049df653fc3606991e1556896829685</srcmd5>
+    <version>271</version>
+    <time>1656675833</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>986033</requestid>
+  </revision>
 </revisionlist>
