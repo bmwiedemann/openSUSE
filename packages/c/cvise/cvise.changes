@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 30 11:41:10 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git.20220630.80a749e:
+  * Skip pass if enormous test-case growth is seen
+  * README: add a tip about -Wfatal-errors
+  * Use LLVM 14 as a default library version.
+  * return UINT_MAX for invalid CstArray size
+  * remove spelling locations in case of macros
+  * handle macros for reduce-class-template-param
+  * handle more macro cases for remove-namespace
+  * handle more macro cases for ReplaceExpr
+  * skip recursive calls for simple-inliner
+  * skip defaulted function for param-to-local
+
+-------------------------------------------------------------------
 Tue Jan 04 13:49:40 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.4.0+git.20220104.21c4e26:

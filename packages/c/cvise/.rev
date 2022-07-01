@@ -703,4 +703,22 @@
 - Add chardet as a Requirement.</comment>
     <requestid>943772</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e32a5a1b8fb150a43f5d7201d2bd8e99</srcmd5>
+    <version>2.4.0+git.20220630.80a749e</version>
+    <time>1656675898</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git.20220630.80a749e:
+  * Skip pass if enormous test-case growth is seen
+  * README: add a tip about -Wfatal-errors
+  * Use LLVM 14 as a default library version.
+  * return UINT_MAX for invalid CstArray size
+  * remove spelling locations in case of macros
+  * handle macros for reduce-class-template-param
+  * handle more macro cases for remove-namespace
+  * handle more macro cases for ReplaceExpr
+  * skip recursive calls for simple-inliner
+  * skip defaulted function for param-to-local</comment>
+    <requestid>986054</requestid>
+  </revision>
 </revisionlist>
