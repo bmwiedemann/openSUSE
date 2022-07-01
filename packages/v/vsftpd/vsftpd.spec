@@ -150,7 +150,12 @@ install -D -m 600 %{name}.conf %{buildroot}%{_sysconfdir}/%{name}.conf
 install -D -m 600 xinetd.d/%{name} %{buildroot}%{_sysconfdir}/xinetd.d/%{name}
 %endif
 install -D -m 644 $RPM_SOURCE_DIR/%{name}.pam %{buildroot}%{_sysconfdir}/pam.d/%{name}
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+install -D -m 644 $RPM_SOURCE_DIR/%{name}.logrotate %{buildroot}%{_distconfdir}/logrotate.d/%{name}
+%else
 install -D -m 644 $RPM_SOURCE_DIR/%{name}.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
+%endif
 install -D -m 644 %{name}.conf.5 %{buildroot}/%{_mandir}/man5/%{name}.conf.5
 install -D -m 644 %{name}.8 %{buildroot}/%{_mandir}/man8/%{name}.8
 %if %{with_systemd}
@@ -218,7 +223,11 @@ getent passwd ftpsecure >/dev/null || useradd -r -g nobody -s /bin/false -c "Sec
 %endif
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %config %{_sysconfdir}/pam.d/%{name}
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/%{name}
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
+%endif
 %{_mandir}/man5/%{name}.conf.*
 %{_mandir}/man8/%{name}.*
 %license LICENSE

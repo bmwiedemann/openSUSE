@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 29 13:53:16 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d.
+
+-------------------------------------------------------------------
 Tue Mar  3 16:44:28 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Use rpm conditional to build against the proper OpenSSL version
