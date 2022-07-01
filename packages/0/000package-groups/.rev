@@ -1416,4 +1416,12 @@ is not needed.
     <time>1655326841</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="198" vrev="196">
+    <srcmd5>c3b573b097d831136963c743aaaeb98a</srcmd5>
+    <version>unknown</version>
+    <time>1656675873</time>
+    <user>dimstar_suse</user>
+    <comment>Enable soft deps for the MicroOS DVD to make -lang packages and some others available.</comment>
+    <requestid>985847</requestid>
+  </revision>
 </revisionlist>

@@ -12,7 +12,7 @@ OUTPUT:
       includes:
         - common_locks
   - opensuse_microos:
-      recommends: false
+      recommends: true
       require_all: true
       includes:
         - common_locks
