@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-digitaltwins
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        Microsoft Azure DigitalTwins Management Client Library for Python
 License:        MIT
