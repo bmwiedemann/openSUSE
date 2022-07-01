@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-msi
-Version:        6.0.1
+Version:        6.1.0
 Release:        0
 Summary:        Microsoft Azure MSI Management Client Library
 License:        MIT
@@ -38,7 +38,7 @@ BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-mgmt-core < 2.0.0
-Requires:       python-azure-mgmt-core >= 1.3.0
+Requires:       python-azure-mgmt-core >= 1.3.1
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-msrest >= 0.6.21
