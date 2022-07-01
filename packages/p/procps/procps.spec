@@ -416,5 +416,8 @@ test $error = no || exit 1
 %{_libdir}/libprocps.so.%{somajor}*
 
 %files lang -f procps-ng.lang
+%if 0%{?suse_version} < 1550
+%dir %{_mandir}/uk/
+%endif
 
 %changelog

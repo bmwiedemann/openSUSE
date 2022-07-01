@@ -1324,4 +1324,12 @@ There are also man pages translations but they doesn't get installed automatical
   * 'free' command reports misleading &quot;used&quot; value</comment>
     <requestid>984476</requestid>
   </revision>
+  <revision rev="129" vrev="10">
+    <srcmd5>28efa4cf8cd8dade26ec6aaee6d080d4</srcmd5>
+    <version>3.3.17</version>
+    <time>1656675836</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>986057</requestid>
+  </revision>
 </revisionlist>
