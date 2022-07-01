@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 30 14:44:51 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix BuildRequires for pkgconfig(Qt5Sensors): also require that
+  one >= 5.15.2, like all the others (was = 5.15.2).
+
+-------------------------------------------------------------------
 Fri Jun 17 09:06:09 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update ot 5.44.0
