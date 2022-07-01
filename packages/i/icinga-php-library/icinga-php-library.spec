@@ -20,7 +20,7 @@
 %global module_name icinga-php-library
 %global basedir %{_datadir}/icinga-php/ipl
 Name:           %{module_name}
-Version:        0.8.0
+Version:        0.9.0
 Release:        %{revision}%{?dist}
 Summary:        Icinga PHP Library for Icinga Web 2
 License:        MIT
