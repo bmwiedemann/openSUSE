@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 28 13:03:32 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.2
+- Changes since 5.25.1:
+  * wallpapers/hunyango: call repaintNeeded after color is changed
+  * wallpapers/potd: clear unused QDebug header in providers
+  * wallpapers/potd: load the old cached image to avoid blank screen
+  * wallpapers/potd: always force update after resume from sleep
+  * wallpapers/potd: shorten update interval if one provider fails to update
+
+-------------------------------------------------------------------
 Tue Jun 21 11:39:46 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.1
