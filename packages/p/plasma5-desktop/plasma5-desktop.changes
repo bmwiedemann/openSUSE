@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 28 13:03:33 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.2
+- Changes since 5.25.1:
+  * desktoppackage: enable Apply button only after the wallpaper plugin is changed
+  * Fix includes when building the kglobalaccel dbus interface
+  * [applets/kicker] Fix missing highlight on Dashboard grids & list (kde#453980)
+  * desktoppackage: avoid loading wallpaper settings again when the plugin is changed
+  * Break Toolbox into two rows when screen space is limited
+
+-------------------------------------------------------------------
 Tue Jun 21 11:39:46 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.1
