@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-chaos
-Version:        1.0.0b3
+Version:        1.0.0b4
 Release:        0
 Summary:        Microsoft Azure Chaos Management Client Library for Python
 License:        MIT
@@ -38,7 +38,7 @@ BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-mgmt-core < 2.0.0
-Requires:       python-azure-mgmt-core >= 1.3.0
+Requires:       python-azure-mgmt-core >= 1.3.1
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-msrest >= 0.6.21
