@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 01 10:54:01 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.10.0:
+  * Allow package users to populate `Output.Deprecated|Removed` fields by exporting the `Instance.filterOutput` receiver. (#341)
+  * update dependencies (#342)
+
+-------------------------------------------------------------------
 Mon Jun 27 13:19:56 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 5.9.0:
