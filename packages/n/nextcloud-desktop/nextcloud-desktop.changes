@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  1 11:08:59 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Fix Tumbleweed build and install error boo#1201070.
+  Use own CFLAGS for Tumblweed with -D_FORTIFY_SOURCE=2 instead of -D_FORTIFY_SOURCE=3.
+
+-------------------------------------------------------------------
 Tue May 17 16:42:55 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.5.1

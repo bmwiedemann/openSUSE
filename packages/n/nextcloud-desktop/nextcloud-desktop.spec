@@ -180,6 +180,11 @@ Dolphin filemanager to display overlay icons.
 cp -a %{SOURCE1} sysctl-sync-inotify.conf
 
 %build
+
+%if %{?suse_version} > 1500
+CFLAGS="-O2 -Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type"
+%endif
+
 %cmake \
 %if 0%{?is_opensuse}
   -DWITH_DOC=ON \
