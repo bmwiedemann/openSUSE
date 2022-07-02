@@ -1,7 +1,7 @@
 #
 # spec file for package qatzip
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        BSD-3-Clause
 Group:          Hardware/Other
 URL:            https://github.com/intel/QATzip
 Source:         %{name}-%{version}.tar.xz
+Patch0:         qatzip-fortify_source=3.patch
 BuildRequires:  gcc >= 4.8.5
 BuildRequires:  qatlib-devel >= 21.08.0
 BuildRequires:  zlib-devel >= 1.2.7
