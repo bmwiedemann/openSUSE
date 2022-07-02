@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 30 11:22:41 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add Git-Clone URL
+
+-------------------------------------------------------------------
 Wed Aug 11 12:39:22 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Added patch(es):

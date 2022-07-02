@@ -25,6 +25,7 @@ License:        Zlib
 Group:          Productivity/Networking/IRC
 URL:            https://biboumi.louiz.org/
 Source0:        https://git.louiz.org/biboumi/snapshot/biboumi-%{version}.tar.xz
+#Git-Clone:     https://git.louiz.org/biboumi.git
 # PATCH-FEATURE-UPSTREAM do-not-require-git.patch -- Only add git target if file is missing
 Patch0:         do-not-require-git.patch
 Patch1:         harden_biboumi.service.patch
