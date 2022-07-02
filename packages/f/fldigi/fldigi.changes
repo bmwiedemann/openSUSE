@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jun 30 19:43:37 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.1.23
+  * Remove C17 deprecated use of "std::iterator"
+  * Correct errors caused by commit 9c035e809b, original commit
+    failed to correctly send flmsg autosend character stream
+  * modify debugging statements in xmlrpc notch
+  * audio alerts / monitor
+    + change sound card defaults
+  * nanoIO ptt
+    + bug fix
+  * cw browser
+    + partial reversion of commit dbe3622cc4d01f7
+    + bug fixes for multi signal cw decoder
+    + correct marquee scrolling to use all of available space
+  * Signal browser
+    + correct marquee end of line detection
+  * cw via flrig
+    + remove dead code
+  * update build scripts for recent development OS update
+  * FSK via flrig / nanoIO
+    + add automatic insertion of '[' and ']' start/stop characters
+  * INSTALL update
+    + update dependency list
+
+-------------------------------------------------------------------
 Sat May 14 09:35:23 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.1.22
