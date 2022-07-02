@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 01 09:05:39 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1656666331.ed970be:
+  * Mark t/ui/23-audit-log.t as unstable
+  * CI: Fix execution of compound statements with "retry"
+  * CI: Retry also on sporadic install errors
+
+-------------------------------------------------------------------
 Fri Jun 24 15:11:36 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1656072301.e097342:
