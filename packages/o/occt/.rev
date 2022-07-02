@@ -105,4 +105,41 @@ includes also opencascade</comment>
     <comment></comment>
     <requestid>916950</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0020f81f64c9776c7d72247f8d6ee630</srcmd5>
+    <version>7.6.2</version>
+    <time>1656768857</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 7.6.2
+  * Details on
+    https://www.opencascade.com/open-cascade-technology-7-6-2-maintenance-release/
+- removed obsolete
+  * 0001-0032328-Missing-include-of-TopoDS_Edge.hxx-in-ShapeU.patch
+  * 0001-Add-error-checking-to-chamfer-and-fillet-code.patch
+
+- update to version 7.5.3
+
+- update to version 7.5.0
+  See for details:
+  https://old.opencascade.com/sites/default/files/documents/release_notes_7.5.0.pdf
+
+- update to version 7.4.0p1
+    0031462: Modeling Algorithms - BOP result depends on the arguments order
+    0031470: Modeling Algorithms - Regression: BOP common produces empty result (box and holed sphere)
+    0031441: UnifySameDomain corrupts the shape
+    0031415: Modeling Algorithms - Solid classifier works incorrectly on a cylinder
+    0031460: Modeling Algorithms - Regression: Revolution not done.
+    0031404: Modeling Algorithms - BOP Fuse produces a self-interfering or a good shape depending on the order of arguments
+    0031407: [Regression to 7.3.0] Extrema does not process parallel circles correctly
+    0030386: Modeling Algorithms - Unable to perform Cut operation
+    0031187: Modeling Algorithms - Regression relatively 7.3.0. Unify same domain algorithm produces invalid shape.
+    0031242: Scaling with different coefficients along axes produces invalid shape
+    0031294: Modeling Algorithms - Regression relatively 7.3.0. Crash in method BRepPrimAPI_MakePrism::Generated(...)
+    0031031: Incorrect result is returned from BRepPrimAPI_MakePrism::Generated()
+    0030597: Result of BRepOffsetAPI_MakePipeShell doesn't match the given profiles
+    0031153: Visualization - Non clear highlighting of selected trihedron elements
+    0026071: BRepOffsetAPI_MakePipeShell produces rough result
+    0031066: Infinite loop in ShapeUpgrade_UnifySameDomain</comment>
+    <requestid>986246</requestid>
+  </revision>
 </revisionlist>

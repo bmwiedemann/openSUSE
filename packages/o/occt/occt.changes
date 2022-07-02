@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul  1 11:39:41 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- update to version 7.6.2
+  * Details on
+    https://www.opencascade.com/open-cascade-technology-7-6-2-maintenance-release/
+- removed obsolete
+  * 0001-0032328-Missing-include-of-TopoDS_Edge.hxx-in-ShapeU.patch
+  * 0001-Add-error-checking-to-chamfer-and-fillet-code.patch
+
+-------------------------------------------------------------------
 Sun Sep  5 22:46:29 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build failures of FreeCAD due to a missing class definition,
@@ -24,6 +34,11 @@ Wed Aug 25 08:54:15 UTC 2021 - Adrian Schröter <adrian@suse.de>
   – Modeling Data – Wrong result of extrema curve-surface [Major]
   Data Exchange:
   – STEP exporter generates bad geometry [REGRESSION since 7.4.0]
+
+-------------------------------------------------------------------
+Wed Aug 25 08:33:37 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to version 7.5.3
 
 -------------------------------------------------------------------
 Mon May 10 12:50:36 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
@@ -61,16 +76,39 @@ Mon Feb 22 15:17:23 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
   use BUILD_RELEASE_DISABLE_EXCEPTIONS=false
 
 -------------------------------------------------------------------
-Mon Oct 21 09:19:23 UTC 2019 - Adrian Schröter <adrian@suse.de>
+Wed Nov 11 07:15:00 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
-- update to version 7.3.0p4
-  * bugfixes:
-    0030760: Modeling Algorithms - Intersection fails in Occt 7.3.0
-    0029711: General Fuse operation produces invalid result
-    0030915: Visualization - AIS_ColorScale::FindColor() returns Wrong color for maximal value
-    0030897: Modeling Algorithms - Crash in UnifySameDomain [Regression]
-    0030534: Regression in the tool UnifySameDomain - the shape looses faces
-- adapt license tag to current definition (no license change)
+- update to version 7.5.0
+  See for details:
+  https://old.opencascade.com/sites/default/files/documents/release_notes_7.5.0.pdf
+
+-------------------------------------------------------------------
+Mon Apr 20 06:00:15 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to version 7.4.0p1
+    0031462: Modeling Algorithms - BOP result depends on the arguments order
+    0031470: Modeling Algorithms - Regression: BOP common produces empty result (box and holed sphere)
+    0031441: UnifySameDomain corrupts the shape
+    0031415: Modeling Algorithms - Solid classifier works incorrectly on a cylinder
+    0031460: Modeling Algorithms - Regression: Revolution not done.
+    0031404: Modeling Algorithms - BOP Fuse produces a self-interfering or a good shape depending on the order of arguments
+    0031407: [Regression to 7.3.0] Extrema does not process parallel circles correctly
+    0030386: Modeling Algorithms - Unable to perform Cut operation
+    0031187: Modeling Algorithms - Regression relatively 7.3.0. Unify same domain algorithm produces invalid shape.
+    0031242: Scaling with different coefficients along axes produces invalid shape
+    0031294: Modeling Algorithms - Regression relatively 7.3.0. Crash in method BRepPrimAPI_MakePrism::Generated(...)
+    0031031: Incorrect result is returned from BRepPrimAPI_MakePrism::Generated()
+    0030597: Result of BRepOffsetAPI_MakePipeShell doesn't match the given profiles
+    0031153: Visualization - Non clear highlighting of selected trihedron elements
+    0026071: BRepOffsetAPI_MakePipeShell produces rough result
+    0031066: Infinite loop in ShapeUpgrade_UnifySameDomain
+    0029843: Modeling Algorithms - Boolean FUSE produces incorrect result
+
+-------------------------------------------------------------------
+Mon Sep 30 09:12:06 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 7.4.0
+- enable VTK support
 
 -------------------------------------------------------------------
 Fri Mar  1 10:57:15 UTC 2019 - Adrian Schröter <adrian@suse.de>

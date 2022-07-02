@@ -1,7 +1,7 @@
 #
 # spec file for package occt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           occt
-Version:        7.5.3
+Version:        7.6.2
 Release:        0
 %define soname 7
 Summary:        OpenCASCADE Official Edition
@@ -29,10 +29,6 @@ URL:            https://www.opencascade.com/open-cascade-technology/
 # getting it from git for patch level releases not existing as tar ball
 Source0:        occt-%{version}.tar.xz
 Patch1:         fix_build.patch
-# PATCH-FIX-UPSTREAM - https://gitlab.com/blobfish/occt/-/commit/ad0ba55f55b36dc957f66192c4766ace83f82b7e
-Patch2:         0001-Add-error-checking-to-chamfer-and-fillet-code.patch
-# PATCH-FIX-UPSTREAM - https://tracker.dev.opencascade.org/view.php?id=32328
-Patch3:         0001-0032328-Missing-include-of-TopoDS_Edge.hxx-in-ShapeU.patch
 Provides:       OpenCASCADE = %{version}
 BuildRequires:  bison
 BuildRequires:  cmake
