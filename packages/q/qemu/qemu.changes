@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  1 11:46:41 UTC 2022 - Lin Ma <lma@suse.com>
+
+- Fix usb ehci boot failure (bsc#1192115)
+* Patches added:
+  hw-usb-hcd-ehci-fix-writeback-order.patch
+
+-------------------------------------------------------------------
 Tue Jun 21 07:30:46 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fix bugs boo#1200557 and boo#1199924

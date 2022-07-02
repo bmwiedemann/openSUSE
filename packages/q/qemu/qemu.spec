@@ -250,6 +250,7 @@ Patch00106:     python-aqmp-drop-_bind_hack.patch
 Patch00107:     block-qdict-Fix-Werror-maybe-uninitializ.patch
 Patch00108:     pci-fix-overflow-in-snprintf-string-form.patch
 Patch00109:     sphinx-change-default-language-to-en.patch
+Patch00110:     hw-usb-hcd-ehci-fix-writeback-order.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -1282,6 +1283,7 @@ This package records qemu testsuite results and represents successful testing.
 %patch00107 -p1
 %patch00108 -p1
 %patch00109 -p1
+%patch00110 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1

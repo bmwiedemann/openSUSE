@@ -1,0 +1,64 @@
+From e4ad2b63e748643e12306d61aea7aaf5a41a0d3c Mon Sep 17 00:00:00 2001
+From: Arnout Engelen <arnout@bzzt.net>
+Date: Sun, 8 May 2022 17:32:22 +0200
+Subject: [PATCH] hw/usb/hcd-ehci: fix writeback order
+
+Git-commit: f471e8b060798f26a7fc339c6152f82f22a7b33d
+References: bsc#1192115
+
+The 'active' bit passes control over a qTD between the guest and the
+controller: set to 1 by guest to enable execution by the controller,
+and the controller sets it to '0' to hand back control to the guest.
+
+ehci_state_writeback write two dwords to main memory using DMA:
+the third dword of the qTD (containing dt, total bytes to transfer,
+cpage, cerr and status) and the fourth dword of the qTD (containing
+the offset).
+
+This commit makes sure the fourth dword is written before the third,
+avoiding a race condition where a new offset written into the qTD
+by the guest after it observed the status going to go to '0' gets
+overwritten by a 'late' DMA writeback of the previous offset.
+
+This race condition could lead to 'cpage out of range (5)' errors,
+and reproduced by:
+
+./qemu-system-x86_64 -enable-kvm -bios $SEABIOS/bios.bin -m 4096 -device usb-ehci -blockdev driver=file,read-only=on,filename=/home/aengelen/Downloads/openSUSE-Tumbleweed-DVD-i586-Snapshot20220428-Media.iso,node-name=iso -device usb-storage,drive=iso,bootindex=0 -chardev pipe,id=shell,path=/tmp/pipe -device virtio-serial -device virtconsole,chardev=shell -device virtio-rng-pci -serial mon:stdio -nographic
+
+(press a key, select 'Installation' (2), and accept the default
+values. On my machine the 'cpage out of range' is reproduced while
+loading the Linux Kernel about once per 7 attempts. With the fix in
+this commit it no longer fails)
+
+This problem was previously reported as a seabios problem in
+https://mail.coreboot.org/hyperkitty/list/seabios@seabios.org/thread/OUTHT5ISSQJGXPNTUPY3O5E5EPZJCHM3/
+and as a nixos CI build failure in
+https://github.com/NixOS/nixpkgs/issues/170803
+
+Signed-off-by: Arnout Engelen <arnout@bzzt.net>
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+(cherry picked from commit f471e8b060798f26a7fc339c6152f82f22a7b33d)
+Signed-off-by: Lin Ma <lma@suse.com>
+---
+ hw/usb/hcd-ehci.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
+index 6caa7ac6c2..3464b2406e 100644
+--- a/hw/usb/hcd-ehci.c
++++ b/hw/usb/hcd-ehci.c
+@@ -2009,7 +2009,10 @@ static int ehci_state_writeback(EHCIQueue *q)
+     ehci_trace_qtd(q, NLPTR_GET(p->qtdaddr), (EHCIqtd *) &q->qh.next_qtd);
+     qtd = (uint32_t *) &q->qh.next_qtd;
+     addr = NLPTR_GET(p->qtdaddr);
+-    put_dwords(q->ehci, addr + 2 * sizeof(uint32_t), qtd + 2, 2);
++    /* First write back the offset */
++    put_dwords(q->ehci, addr + 3 * sizeof(uint32_t), qtd + 3, 1);
++    /* Then write back the token, clearing the 'active' bit */
++    put_dwords(q->ehci, addr + 2 * sizeof(uint32_t), qtd + 2, 1);
+     ehci_free_packet(p);
+ 
+     /*
+-- 
+2.34.1
+
