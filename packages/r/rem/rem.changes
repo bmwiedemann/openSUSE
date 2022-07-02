@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 28 21:31:44 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 2.4.0:
+  * No high level changelog provided, see packaged CHANGELOG.md for
+    details.
+- Changes from version 2.3.1, 2.0.1, 2.0.0:
+  * No high level changelog provided, see packaged CHANGELOG.md for
+    details.
+- Remove 0001-mk-add-abi-versioning.patch: Upstreamed.
+
+-------------------------------------------------------------------
 Wed May 12 23:24:56 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Switch baresip fork, required for baresip.

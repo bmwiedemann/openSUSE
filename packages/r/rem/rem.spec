@@ -1,7 +1,7 @@
 #
 # spec file for package rem
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,19 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%global sover   0
+
+%global sover   3
 %global libname lib%{name}%{sover}
 Name:           rem
-Version:        1.0.0
+Version:        2.4.0
 Release:        0
 Summary:        Audio and Video processing media library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/baresip/rem
-Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch:          0001-mk-add-abi-versioning.patch
+Source:         %{URL}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libre) >= 2.0
+BuildRequires:  pkgconfig(libre) >= 2.4.0
 
 %description
 Librem is a generic library for real-time audio
@@ -84,7 +84,7 @@ rm %{buildroot}/%{_libdir}/librem.a
 
 %files -n %{libname}
 %license docs/COPYING
-%doc README.md
+%doc CHANGELOG.md README.md
 %{_libdir}/librem.so.%{sover}*
 
 %files devel
