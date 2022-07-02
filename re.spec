@@ -16,17 +16,16 @@
 #
 
 
-%global sover   5
+%global sover   6
 %global libname lib%{name}%{sover}
 Name:           re
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Library for real-time communications with async IO support
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-#Git-Clone:     https://github.com/baresip/re.git
 URL:            https://github.com/baresip/re
-Source:         https://github.com/baresip/re/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{URL}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 
@@ -79,7 +78,7 @@ rm %{buildroot}/%{_libdir}/libre.a
 
 %files -n %{libname}
 %license LICENSE
-%doc README.md
+%doc CHANGELOG.md README.md
 %{_libdir}/libre.so.%{sover}*
 
 %files devel
