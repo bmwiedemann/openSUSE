@@ -194,7 +194,6 @@ unsorted:
   - Printrun-common 
   - PrusaSlicer 
   - PyCBC-utils: [x86_64] 
-  - PythonQt-devel 
   - QCSXCAD-devel 
   - QMPlay2 
   - QMPlay2-devel 
@@ -9068,8 +9067,6 @@ unsorted:
   - libPocoUtil83 
   - libPocoXML83 
   - libPocoZip83 
-  - libPythonQt-Qt5-Python3-3 
-  - libPythonQt_QtAll-Qt5-Python3-3 
   - libQCSXCAD0 
   - libQCoro5Core0 
   - libQCoro5DBus0 
@@ -13465,7 +13462,7 @@ unsorted:
   - librdmacm-utils 
   - librdmacm1-32bit: [x86_64] 
   - libre2-9-32bit: [x86_64] 
-  - libre5 
+  - libre6 
   - libreadline-java 
   - libreadline-java-32bit: [x86_64] 
   - libreadline-java-javadoc 
@@ -13498,7 +13495,7 @@ unsorted:
   - libreiserfscore-devel 
   - librelp-devel 
   - librelp0 
-  - librem0 
+  - librem3 
   - libreoffice-base-drivers-postgresql 
   - libreoffice-calc-extensions 
   - libreoffice-gdb-pretty-printers 
@@ -20814,6 +20811,7 @@ unsorted:
   - pmix-headers: [x86_64] 
   - pmix-mca-params: [x86_64] 
   - pmix-plugins: [x86_64] 
+  - pmix-test: [x86_64] 
   - pnetcdf-devel-data: [x86_64] 
   - pnetcdf-doc: [x86_64] 
   - pnetcdf-gnu-mpich-hpc: [x86_64] 
@@ -21769,6 +21767,7 @@ unsorted:
   - python3-rrdtool 
   - python3-rust2rpm 
   - python3-saharaclient 
+  - python3-seccomp 
   - python3-senlinclient 
   - python3-shiboken6 
   - python3-shiboken6-devel 
