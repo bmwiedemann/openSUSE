@@ -1,7 +1,7 @@
 #
-# spec file for package libkcapi
+# spec file for package liboqs
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,13 +22,16 @@ Release:        0
 Summary:        C library for quantum-resistant cryptographic algorithms
 License:        MIT
 Group:          Productivity/Security
-Url:            https://github.com/open-quantum-safe/liboqs/
-Source:		https://github.com/open-quantum-safe/liboqs/archive/refs/tags/%{version}.tar.gz
-Source1:	baselibs.conf
-Patch0:		liboqs-fix-build.patch
-BuildRequires:	cmake
-BuildRequires:	libopenssl-devel
-BuildRequires:	doxygen
+URL:            https://github.com/open-quantum-safe/liboqs/
+Source:         https://github.com/open-quantum-safe/liboqs/archive/refs/tags/%{version}.tar.gz
+Source1:        baselibs.conf
+Patch0:         liboqs-fix-build.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Add-support-for-powerpc64.-1160.patch
+Patch2:         0002-Mark-stack-non-executable-when-compiling-with-clang-.patch
+BuildRequires:  cmake
+BuildRequires:  doxygen
+BuildRequires:  libopenssl-devel
 
 %description
 liboqs is an open source C library for quantum-resistant cryptographic
@@ -40,17 +43,17 @@ Summary:        C library for quantum-resistant cryptographic algorithms
 Group:          System/Libraries
 
 %description -n liboqs0
-liboqs is a C library for quantum-resistant cryptographic 
+liboqs is a C library for quantum-resistant cryptographic
 algorithms. Details about liboqs can be found in README.md. See in
 particular limitations on intended use.
 
 %package devel
 Summary:        Open source C library for quantum-resistant cryptographic algorithms
 Group:          Development/Languages/C and C++
-Requires:	liboqs0 = %version
+Requires:       liboqs0 = %{version}
 
 %description devel
-liboqs is an open source C library for quantum-resistant cryptographic 
+liboqs is an open source C library for quantum-resistant cryptographic
 algorithms. Details about liboqs can be found in README.md. See in
 particular limitations on intended use.
 
@@ -58,36 +61,43 @@ particular limitations on intended use.
 %autosetup -p1
 
 %build
-mkdir build
-export RPM_OPT_FLAGS="%optflags -std=gnu11"
-cd build
-cmake -DBUILD_SHARED_LIBS=ON -DOQS_DIST_BUILD=ON ..
-%cmake_build 
+export RPM_OPT_FLAGS="%{optflags} -std=gnu11"
+
+# 20220702: The %%cmake macro can't be used because a 'CMakeLists.txt' folder
+# exists
+cmake -S . -B build -DBUILD_SHARED_LIBS:BOOL=ON -DOQS_DIST_BUILD:BOOL=ON
+
+pushd build
+%cmake_build
+popd
 
 %install
 %cmake_install
+
 # need to find out what cmake option is needed
-mv %buildroot/usr/local/* %buildroot/usr
-if [ "%_lib" != "lib" ]; then
-	mv %buildroot/usr/lib %buildroot/usr/%_lib
+mv %{buildroot}%{_prefix}/local/* %{buildroot}%{_prefix}
+
+if [ "%{_lib}" != "lib" ]; then
+  mv %{buildroot}%{_prefix}/lib %{buildroot}%{_libdir}
 fi
-rmdir %buildroot/usr/local/
+
+rmdir %{buildroot}%{_prefix}/local/
 
 %post -n liboqs0 -p /sbin/ldconfig
 %postun -n liboqs0 -p /sbin/ldconfig
 
 %files -n liboqs0
-%license LICENSE.txt 
-/%{_libdir}/liboqs.so.0*
+%license LICENSE.txt
+%{_libdir}/liboqs.so.0*
 
 %files devel
-%license LICENSE.txt 
+%license LICENSE.txt
 %dir %{_includedir}/oqs
 %{_includedir}/oqs/*
-/%_libdir/liboqs.so
-%dir /%_libdir/cmake/
-%dir /%_libdir/cmake/liboqs/
-/%_libdir/cmake/liboqs/liboqsConfig-noconfig.cmake
-/%_libdir/cmake/liboqs/liboqsConfig.cmake
+%{_libdir}/liboqs.so
+%dir %{_libdir}/cmake/
+%dir %{_libdir}/cmake/liboqs/
+%{_libdir}/cmake/liboqs/liboqsConfig-noconfig.cmake
+%{_libdir}/cmake/liboqs/liboqsConfig.cmake
 
 %changelog

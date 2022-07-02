@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul  2 07:21:42 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream changes:
+  * 0001-Add-support-for-powerpc64.-1160.patch
+  * 0002-Mark-stack-non-executable-when-compiling-with-clang-.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Tue Jan 25 07:48:57 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Stop building with march=native to get reproducible binaries (boo#1100677)

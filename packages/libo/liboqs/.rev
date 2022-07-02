@@ -23,4 +23,15 @@
     <comment>Stop building with march=native to get reproducible binaries (boo#1100677) (forwarded request 948948 from bmwiedemann)</comment>
     <requestid>948952</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>99a685a6b7105b0e3ae83310e9ca7180</srcmd5>
+    <version>0.7.1</version>
+    <time>1656768885</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream changes:
+  * 0001-Add-support-for-powerpc64.-1160.patch
+  * 0002-Mark-stack-non-executable-when-compiling-with-clang-.patch
+- Spec cleanup</comment>
+    <requestid>986343</requestid>
+  </revision>
 </revisionlist>
