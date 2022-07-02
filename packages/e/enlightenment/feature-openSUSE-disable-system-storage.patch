@@ -1,0 +1,54 @@
+Index: enlightenment-0.25.3/src/bin/system/e_system.h
+===================================================================
+--- enlightenment-0.25.3.orig/src/bin/system/e_system.h
++++ enlightenment-0.25.3/src/bin/system/e_system.h
+@@ -108,8 +108,8 @@ void e_system_inout_command_send(const c
+ void e_system_backlight_init(void);
+ void e_system_backlight_shutdown(void);
+ 
+-void e_system_storage_init(void);
+-void e_system_storage_shutdown(void);
++// void e_system_storage_init(void);
++// void e_system_storage_shutdown(void);
+ 
+ void e_system_power_init(void);
+ void e_system_power_shutdown(void);
+@@ -129,4 +129,3 @@ void e_system_ddc_shutdown(void);
+ extern Ecore_Exe *e_system_run(const char *exe);
+ 
+ #endif
+-
+Index: enlightenment-0.25.3/src/bin/system/e_system_main.c
+===================================================================
+--- enlightenment-0.25.3.orig/src/bin/system/e_system_main.c
++++ enlightenment-0.25.3/src/bin/system/e_system_main.c
+@@ -168,7 +168,7 @@ main(int argc EINA_UNUSED, const char **
+ 
+    CONF_INIT_CHECK("backlight", e_system_backlight_init, init_backlight);
+    CONF_INIT_CHECK("ddc",       e_system_ddc_init,       init_ddc);
+-   CONF_INIT_CHECK("storage",   e_system_storage_init,   init_storage);
++   // CONF_INIT_CHECK("storage",   e_system_storage_init,   init_storage);
+    CONF_INIT_CHECK("power",     e_system_power_init,     init_power);
+    CONF_INIT_CHECK("rfkill",    e_system_rfkill_init,    init_rfkill);
+    CONF_INIT_CHECK("l2ping",    e_system_l2ping_init,    init_l2ping);
+@@ -188,7 +188,7 @@ main(int argc EINA_UNUSED, const char **
+    CONF_SHUTDOWN(e_system_l2ping_shutdown,    init_l2ping);
+    CONF_SHUTDOWN(e_system_rfkill_shutdown,    init_rfkill);
+    CONF_SHUTDOWN(e_system_power_shutdown,     init_power);
+-   CONF_SHUTDOWN(e_system_storage_shutdown,   init_storage);
++   // CONF_SHUTDOWN(e_system_storage_shutdown,   init_storage);
+    CONF_SHUTDOWN(e_system_ddc_shutdown,       init_ddc);
+    CONF_SHUTDOWN(e_system_backlight_shutdown, init_backlight);
+ 
+Index: enlightenment-0.25.3/src/bin/system/meson.build
+===================================================================
+--- enlightenment-0.25.3.orig/src/bin/system/meson.build
++++ enlightenment-0.25.3/src/bin/system/meson.build
+@@ -3,7 +3,6 @@ src = [
+   'e_system_inout.c',
+   'e_system_backlight.c',
+   'e_system_ddc.c',
+-  'e_system_storage.c',
+   'e_system_power.c',
+   'e_system_rfkill.c',
+   'e_system_l2ping.c',

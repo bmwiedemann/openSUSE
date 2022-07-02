@@ -10,11 +10,11 @@ Date:   Wed Jun 28 12:58:55 2017 +0930
     selected as there default just set the language without showing
     the wizard page.
 
-Index: enlightenment-0.24.0/src/modules/wizard/page_010.c
+Index: enlightenment-0.25.3/src/modules/wizard/page_010.c
 ===================================================================
---- enlightenment-0.24.0.orig/src/modules/wizard/page_010.c
-+++ enlightenment-0.24.0/src/modules/wizard/page_010.c
-@@ -172,17 +172,11 @@ _lang_content_get(E_Intl_Pair *pair, Eva
+--- enlightenment-0.25.3.orig/src/modules/wizard/page_010.c
++++ enlightenment-0.25.3/src/modules/wizard/page_010.c
+@@ -176,17 +176,11 @@ _lang_content_get(E_Intl_Pair *pair, Eva
  static char *
  _lang_text_get(E_Intl_Pair *pair, Evas_Object *obj EINA_UNUSED, const char *part)
  {
@@ -33,7 +33,7 @@ Index: enlightenment-0.24.0/src/modules/wizard/page_010.c
  }
  
  static void
-@@ -211,6 +205,24 @@ wizard_page_show(E_Wizard_Page *pg EINA_
+@@ -215,6 +209,24 @@ wizard_page_show(E_Wizard_Page *pg EINA_
        .version = ELM_GENLIST_ITEM_CLASS_VERSION
     };
  
@@ -58,7 +58,7 @@ Index: enlightenment-0.24.0/src/modules/wizard/page_010.c
     api->wizard_title_set(_("Language"));
     of = elm_frame_add(e_comp->elm);
     elm_object_text_set(of, _("Select one"));
-@@ -267,4 +279,3 @@ wizard_page_apply(E_Wizard_Page *pg EINA
+@@ -271,4 +283,3 @@ wizard_page_apply(E_Wizard_Page *pg EINA
     api->wizard_labels_update();
     return 1;
  }

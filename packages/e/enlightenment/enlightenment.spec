@@ -46,8 +46,10 @@ Patch4:         feature-wizard-keylayout-from-sys.patch
 Patch5:         feature-qt-apps-gtk2-theme.patch
 # We'd rather log to the journal then e's log file.
 Patch6:         feature-openSUSE-log-to-journal.patch
+# boo#1170162 - disable the storage module thats not used on Linux for enhanced security
+Patch7:         feature-openSUSE-disable-system-storage.patch
 # boo#1197326 Don't Enable modules that don't exist in profile migration.
-Patch7:         fix-upstream-dont-migrate-sysinfoluncher.patch
+Patch8:         fix-upstream-dont-migrate-sysinfoluncher.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -337,6 +339,7 @@ fi
 %{_datadir}/wayland-sessions/enlightenment-wayland.desktop
 %endif
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
+%ghost %{_sysconfdir}/alternatives/default.desktop
 %{_datadir}/enlightenment/
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*

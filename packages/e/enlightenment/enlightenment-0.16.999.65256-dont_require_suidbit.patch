@@ -1,8 +1,8 @@
-Index: src/bin/e_sys_main.c
+Index: enlightenment-0.25.3/src/bin/e_sys_main.c
 ===================================================================
---- a/src/bin/e_sys_main.c.orig
-+++ b/src/bin/e_sys_main.c
-@@ -121,6 +121,7 @@ main(int argc,
+--- enlightenment-0.25.3.orig/src/bin/e_sys_main.c
++++ enlightenment-0.25.3/src/bin/e_sys_main.c
+@@ -120,6 +120,7 @@ main(int argc,
          printf("ERROR: MEMBER OF MORE THAN 65536 GROUPS\n");
          exit(3);
       }
@@ -10,12 +10,12 @@ Index: src/bin/e_sys_main.c
     if (setuid(0) != 0)
       {
          printf("ERROR: UNABLE TO ASSUME ROOT PRIVILEGES\n");
-@@ -131,6 +132,8 @@ main(int argc,
+@@ -130,6 +131,8 @@ main(int argc,
          printf("ERROR: UNABLE TO ASSUME ROOT GROUP PRIVILEGES\n");
          exit(7);
       }
 +   */
 +   eina_init();
-
+ 
     if (!auth_action_ok(action, gid, gl, gn, egid))
       {
