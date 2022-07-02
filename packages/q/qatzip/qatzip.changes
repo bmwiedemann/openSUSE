@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  1 14:39:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add qatzip-fortify_source=3.patch: Use distro default CFLAGS.
+  Resolves a clash between source defined FORTIFY_SOURCE=3 and
+  distro defined FORTIFY_SOURCE=3.
+
+-------------------------------------------------------------------
 Thu Dec  9 14:01:41 UTC 2021 - Torsten Duwe <duwe@suse.com>
 
 - fix devel dependency that was missed at the shared library

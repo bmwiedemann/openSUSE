@@ -1,0 +1,13 @@
+Index: QATzip-1.0.6/configure
+===================================================================
+--- QATzip-1.0.6.orig/configure
++++ QATzip-1.0.6/configure
+@@ -160,8 +160,6 @@ fi
+ 
+ if [ "$enable_debug" = "yes" ] ; then
+   CFLAGS+=" -g -DQATZIP_DEBUG -O0"
+-else
+-  CFLAGS+=" -O2 -D_FORTIFY_SOURCE=2"
+ fi
+ 
+ if [ "$enable_symbol" = "yes" ] ; then
