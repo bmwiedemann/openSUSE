@@ -31,6 +31,7 @@ URL:            https://github.com/Irqbalance/irqbalance
 Source:         %{name}-%{version}.tar.gz
 Source3:        sysconfig.irqbalance
 Patch1:         Set-fd-limit.patch
+Patch2:         proc-interrupts.patch
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel

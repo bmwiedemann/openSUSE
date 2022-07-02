@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 27 12:52:42 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- proc-interrupts.patch: parse_proc_interrupts: fix parsing interrupt
+  counts
+
+-------------------------------------------------------------------
 Wed Sep 08 09:59:35 UTC 2021 - trenn@suse.de
 
 - Update to version 1.8.0.18.git+2435e8d:

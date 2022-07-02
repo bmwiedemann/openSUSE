@@ -1,0 +1,26 @@
+From 0a82dddbaf5702caded0d0d83a6eafaca743254d Mon Sep 17 00:00:00 2001
+From: Andreas Schwab <schwab@suse.de>
+Date: Mon, 27 Jun 2022 13:43:04 +0200
+Subject: [PATCH] parse_proc_interrupts: fix parsing interrupt counts
+
+The name of an interrupt chip can start with a number, stop before it.
+---
+ procinterrupts.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/procinterrupts.c b/procinterrupts.c
+index 57c8801..d90bf6d 100644
+--- a/procinterrupts.c
++++ b/procinterrupts.c
+@@ -331,7 +331,7 @@ void parse_proc_interrupts(void)
+ 		while (1) {
+ 			uint64_t C;
+ 			C = strtoull(c, &c2, 10);
+-			if (c==c2) /* end of numbers */
++			if (c==c2 || !strchr(" \t", *c2)) /* end of numbers */
+ 				break;
+ 			count += C;
+ 			c=c2;
+-- 
+2.35.3
+
