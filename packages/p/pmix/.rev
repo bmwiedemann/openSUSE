@@ -127,4 +127,14 @@
   Not needed and not available for SLE.</comment>
     <requestid>873303</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>195b20b945fa2ab75df9fd86dbdc0c39</srcmd5>
+    <version>3.2.3</version>
+    <time>1656768888</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide Pmix tests in a test package to give users the
+  opportunity to test their setup. This is particularly
+  useful for Slurm. (forwarded request 986350 from eeich)</comment>
+    <requestid>986351</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package pmix
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,7 +68,7 @@ Summary:        PMI-X plugins version 1
 Group:          System/Libraries
 Requires:       libmca_common_dstore1
 # explicit requires for package libmca_common_dstore1
-# as other providers for libmca_common_dstore.so.1 exist
+# as other providers for libmca_common_dstore.so.1 exit
 
 %description  plugins
 This package contains plugins used by libpmix2.
@@ -103,13 +103,19 @@ This Package contains necessary the headers for PMI-X.
 Summary:        Settings for the Module Component Architecure
 Group:          Development/Libraries/C and C++
 Provides:       pmix-runtime-config = %{version}
-Conflicts:      otherproviders(pmix-runtime-config)
+Conflicts:      pmix-runtime-config
 BuildArch:      noarch
 
 %description -n pmix-mca-params
 PMIX is part of the Module Component Architecure and needs so to have its
 parameters configured.
 
+%package test
+Summary:        Test packages for PMIx
+Group:          Development/Libraries/C and C++
+
+%description test
+Test binaries which allow to test proper PMIx operations.
 
 %prep
 %setup -q -n openpmix-%{version}
@@ -133,7 +139,11 @@ make %{?_smp_mflags}
 %make_install
 # removed static libaries
 rm -v %{buildroot}/%{_libdir}/*.la %{buildroot}/%{_libdir}/pmix/*.la
-%fdupes %{buildroot}/%{_datadir} 
+mkdir -p %{buildroot}/%{_prefix}/lib/pmix/test
+for i in pmix_test pmix_client pmix_regex; do
+    cp test/.libs/$i %{buildroot}/%{_prefix}/lib/pmix/test
+done
+%fdupes %{buildroot}/%{_datadir}
 
 %check
 make check
@@ -156,7 +166,6 @@ make check
 #%%{_bindir}/pattrs
 #%%{_bindir}/pmixcc
 #%%{_bindir}/pquery
-%{_libdir}/pkgconfig/pmix.pc
 
 %files -n pmix-mca-params
 %config %{_sysconfdir}/pmix-mca-params.conf
@@ -173,10 +182,15 @@ make check
 %files devel
 %{_libdir}/libpmix.so
 %{_libdir}/libmca_common_dstore.so
+%{_libdir}/pkgconfig/pmix.pc
 
 %files headers
 %dir %{_includedir}/pmix
 %{_includedir}/pmix*.h
 %{_includedir}/pmix/*
+
+%files test
+%dir %{_prefix}/lib/pmix
+%{_prefix}/lib/pmix/*
 
 %changelog
