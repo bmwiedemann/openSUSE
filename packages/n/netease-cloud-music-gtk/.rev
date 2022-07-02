@@ -89,4 +89,17 @@
 </comment>
     <requestid>985506</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7ab72ca9a91df78d225da0ca429d4483</srcmd5>
+    <version>2.0.1</version>
+    <time>1656768887</time>
+    <user>dimstar_suse</user>
+    <comment>- Release version 2.0.1
+ + Real-time synchronization of playlist status.
+ + Add automatic cache cleaning. 
+ + Add the function of viewing the currently playing song album.
+ + Update translation.
+</comment>
+    <requestid>986346</requestid>
+  </revision>
 </revisionlist>
