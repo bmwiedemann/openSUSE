@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun 30 10:38:28 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- also track quilt series file to make it easy to setup a quilt
+  working copy
+
+-------------------------------------------------------------------
+Thu Jun 30 10:35:08 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- also make the config file permissions more strict:
+  /etc/loki/loki.yaml     root:loki u=rw,g=r,o=
+  /etc/loki/promtail.yaml root:root u=rw,g=r,o=
+
+-------------------------------------------------------------------
+Thu Jun 30 10:22:20 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- default configs reference paths in /tmp. move those to proper
+  places:
+  loki data dir: /var/lib/loki loki:loki u=rwx,g=rx,o=
+  promtail data dir: /var/lib/promtail root:root u=rwx,g=rx,o=
+
+  Existing configs will not be updated
+
+  Added proper-data-directories.patch
+
+-------------------------------------------------------------------
 Mon May 23 07:35:18 UTC 2022 - ecsos@opensuse.org
 
 - Update to version 2.5.0+git.1649366683.2d9d0ee23:

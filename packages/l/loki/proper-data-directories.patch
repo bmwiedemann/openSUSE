@@ -1,0 +1,310 @@
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/cmd/loki/loki-local-config.yaml
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/cmd/loki/loki-local-config.yaml
++++ loki-2.5.0+git.1649366683.2d9d0ee23/cmd/loki/loki-local-config.yaml
+@@ -5,11 +5,11 @@ server:
+   grpc_listen_port: 9096
+ 
+ common:
+-  path_prefix: /tmp/loki
++  path_prefix: /var/lib/loki
+   storage:
+     filesystem:
+-      chunks_directory: /tmp/loki/chunks
+-      rules_directory: /tmp/loki/rules
++      chunks_directory: /var/lib/loki/chunks
++      rules_directory: /var/lib/loki/rules
+   replication_factor: 1
+   ring:
+     instance_addr: 127.0.0.1
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/configuration/examples.md
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/configuration/examples.md
++++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/configuration/examples.md
+@@ -148,7 +148,7 @@ storage_config:
+     keyspace: lokiindex
+ 
+   filesystem:
+-    directory: /tmp/loki/chunks
++    directory: /var/lib/loki/chunks
+     
+ ```
+ 
+@@ -184,10 +184,10 @@ schema_config:
+ 
+ storage_config:
+   boltdb:
+-    directory: /tmp/loki/index
++    directory: /var/lib/loki/index
+ 
+   filesystem:
+-    directory: /tmp/loki/chunks
++    directory: /var/lib/loki/chunks
+ 
+ limits_config:
+   enforce_metric_name: false
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/configuration/examples/cassandra-index.yaml
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/configuration/examples/cassandra-index.yaml
++++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/configuration/examples/cassandra-index.yaml
+@@ -19,5 +19,5 @@ storage_config:
+     keyspace: lokiindex
+ 
+   filesystem:
+-    directory: /tmp/loki/chunks
+-    
+\ No newline at end of file
++    directory: /var/lib/loki/chunks
++
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/configuration/examples/complete-local-config.yaml
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/configuration/examples/complete-local-config.yaml
++++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/configuration/examples/complete-local-config.yaml
+@@ -26,10 +26,10 @@ schema_config:
+ 
+ storage_config:
+   boltdb:
+-    directory: /tmp/loki/index
++    directory: /var/lib/loki/index
+ 
+   filesystem:
+-    directory: /tmp/loki/chunks
++    directory: /var/lib/loki/chunks
+ 
+ limits_config:
+   enforce_metric_name: false
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/operations/storage/filesystem.md
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/operations/storage/filesystem.md
++++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/operations/storage/filesystem.md
+@@ -10,7 +10,7 @@ Very simply it stores all the objects (c
+ ```yaml
+ storage_config:
+   filesystem:
+-    directory: /tmp/loki/
++    directory: /var/lib/loki/
+ ```
+ 
+ A folder is created for every tenant all the chunks for one tenant are stored in that directory.
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/rules/_index.md
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/rules/_index.md
++++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/rules/_index.md
+@@ -260,12 +260,12 @@ The local implementation reads the rule
+ A typical local configuration might look something like:
+ ```
+   -ruler.storage.type=local
+-  -ruler.storage.local.directory=/tmp/loki/rules
++  -ruler.storage.local.directory=/var/lib/loki/rules
+ ```
+ 
+ With the above configuration, the Ruler would expect the following layout:
+ ```
+-/tmp/loki/rules/<tenant id>/rules1.yaml
++/var/lib/loki/rules/<tenant id>/rules1.yaml
+                            /rules2.yaml
+ ```
+ Yaml files are expected to be [Prometheus compatible](#Prometheus_Compatible) but include LogQL expressions as specified in the beginning of this doc.
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/upgrading/_index.md
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/upgrading/_index.md
++++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/upgrading/_index.md
+@@ -862,8 +862,8 @@ Not every environment will allow this ca
+ In 1.4.0 and earlier the included config file in the docker container was using directories:
+ 
+ ```
+-/tmp/loki/index
+-/tmp/loki/chunks
++/var/lib/loki/index
++/var/lib/loki/chunks
+ ```
+ 
+ In 1.5.0 this has changed:
+@@ -879,9 +879,9 @@ This will mostly affect anyone using doc
+ 
+ One possible upgrade path would look like this:
+ 
+-If I were running Loki with this command `docker run -d --name=loki --mount source=loki-data,target=/tmp/loki -p 3100:3100 grafana/loki:1.4.0`
++If I were running Loki with this command `docker run -d --name=loki --mount source=loki-data,target=/var/lib/loki -p 3100:3100 grafana/loki:1.4.0`
+ 
+-This would mount a docker volume named `loki-data` to the `/tmp/loki` folder which is where Loki will persist the `index` and `chunks` folder in 1.4.0
++This would mount a docker volume named `loki-data` to the `/var/lib/loki` folder which is where Loki will persist the `index` and `chunks` folder in 1.4.0
+ 
+ To move to 1.5.0 I can do the following (please note that your container names and paths and volumes etc may be different):
+ 
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/operator/internal/manifests/distributor.go
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/operator/internal/manifests/distributor.go
++++ loki-2.5.0+git.1649366683.2d9d0ee23/operator/internal/manifests/distributor.go
+@@ -18,8 +18,8 @@ const (
+ 	walVolumeName     = "wal"
+ 	configVolumeName  = "config"
+ 	storageVolumeName = "storage"
+-	walDirectory      = "/tmp/wal"
+-	dataDirectory     = "/tmp/loki"
++	walDirectory      = "/var/lib/loki/wal"
++	dataDirectory     = "/var/lib/loki"
+ 	secretDirectory   = "/etc/proxy/secrets"
+ )
+ 
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-cloudflare.yaml
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/clients/cmd/promtail/promtail-cloudflare.yaml
++++ loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-cloudflare.yaml
+@@ -3,7 +3,7 @@ server:
+   grpc_listen_port: 0
+ 
+ positions:
+-  filename: /tmp/positions.yaml
++  filename: /var/lib/promtail/positions.yaml
+ 
+ clients:
+   - url: http://localhost:3100/loki/api/v1/push
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-docker-config.yaml
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/clients/cmd/promtail/promtail-docker-config.yaml
++++ loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-docker-config.yaml
+@@ -3,7 +3,7 @@ server:
+   grpc_listen_port: 0
+ 
+ positions:
+-  filename: /tmp/positions.yaml
++  filename: /var/lib/promtail/positions.yaml
+ 
+ clients:
+   - url: http://loki:3100/loki/api/v1/push
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-local-config.yaml
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/clients/cmd/promtail/promtail-local-config.yaml
++++ loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-local-config.yaml
+@@ -3,7 +3,7 @@ server:
+   grpc_listen_port: 0
+ 
+ positions:
+-  filename: /tmp/positions.yaml
++  filename: /var/lib/promtail/positions.yaml
+ 
+ clients:
+   - url: http://localhost:3100/loki/api/v1/push
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-local-limit-config.yaml
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/clients/cmd/promtail/promtail-local-limit-config.yaml
++++ loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-local-limit-config.yaml
+@@ -3,7 +3,7 @@ server:
+   grpc_listen_port: 0
+ 
+ positions:
+-  filename: /tmp/positions.yaml
++  filename: /var/lib/promtail/positions.yaml
+ 
+ clients:
+   - url: http://localhost:3100/loki/api/v1/push
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-local-pubsub-config.yaml
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/clients/cmd/promtail/promtail-local-pubsub-config.yaml
++++ loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-local-pubsub-config.yaml
+@@ -3,7 +3,7 @@ server:
+   grpc_listen_port: 0
+ 
+ positions:
+-  filename: /tmp/positions.yaml
++  filename: /var/lib/promtail/positions.yaml
+ 
+ clients:
+   - url: http://localhost:3100/loki/api/v1/push
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/clients/lambda-promtail/_index.md
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/clients/lambda-promtail/_index.md
++++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/clients/lambda-promtail/_index.md
+@@ -134,7 +134,7 @@ server:
+   grpc_listen_port: 0
+ 
+ positions:
+-  filename: /tmp/positions.yaml
++  filename: /var/lib/promtail/positions.yaml
+ 
+ clients:
+   - url: http://ip_or_hostname_where_Loki_run:3100/loki/api/v1/push
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/clients/promtail/configuration.md
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/clients/promtail/configuration.md
++++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/clients/promtail/configuration.md
+@@ -1865,7 +1865,7 @@ server:
+   grpc_listen_port: 0
+ 
+ positions:
+-  filename: /tmp/positions.yaml
++  filename: /var/lib/promtail/positions.yaml
+ 
+ clients:
+   - url: http://ip_or_hostname_where_loki_runs:3100/loki/api/v1/push
+@@ -1891,7 +1891,7 @@ server:
+   grpc_listen_port: 0
+ 
+ positions:
+-  filename: /tmp/positions.yaml
++  filename: /var/lib/promtail/positions.yaml
+ 
+ clients:
+   - url: http://loki_addr:3100/loki/api/v1/push
+@@ -1917,7 +1917,7 @@ server:
+   grpc_listen_port: 0
+ 
+ positions:
+-  filename: /tmp/positions.yaml
++  filename: /var/lib/promtail/positions.yaml
+ 
+ clients:
+   - url: http://ip_or_hostname_where_Loki_run:3100/loki/api/v1/push
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/getting-started/get-logs-into-loki.md
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/getting-started/get-logs-into-loki.md
++++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/getting-started/get-logs-into-loki.md
+@@ -26,7 +26,7 @@ The following instructions should help y
+       grpc_listen_port: 0
+     
+     positions:
+-      filename: /tmp/positions.yaml
++      filename: /var/lib/promtail/positions.yaml
+     
+     clients:
+       - url: http://loki:3100/loki/api/v1/push
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/getting-started/troubleshooting.md
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/getting-started/troubleshooting.md
++++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/getting-started/troubleshooting.md
+@@ -31,7 +31,7 @@ Promtail yet. There may be one of many r
+   them off. Here is what you can do:
+     - Start Promtail after Loki, e.g., 60 seconds later.
+     - To force Promtail to re-send log messages, delete the positions file
+-      (default location `/tmp/positions.yaml`).
++      (default location `/var/lib/promtail/positions.yaml`).
+ - Promtail is ignoring targets and isn't reading any logs because of a
+   configuration issue.
+     - This can be detected by turning on debug logging in Promtail and looking
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/production/docker/config/promtail-gateway.yaml
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/production/docker/config/promtail-gateway.yaml
++++ loki-2.5.0+git.1649366683.2d9d0ee23/production/docker/config/promtail-gateway.yaml
+@@ -4,7 +4,7 @@ server:
+     log_level: "debug"
+   
+ positions:
+-    filename: /tmp/positions.yaml
++    filename: /var/lib/promtail/positions.yaml
+   
+ clients:
+     - url: http://loki-gateway:80/loki/api/v1/push
+Index: loki-2.5.0+git.1649366683.2d9d0ee23/production/simple-scalable/promtail-config.yaml
+===================================================================
+--- loki-2.5.0+git.1649366683.2d9d0ee23.orig/production/simple-scalable/promtail-config.yaml
++++ loki-2.5.0+git.1649366683.2d9d0ee23/production/simple-scalable/promtail-config.yaml
+@@ -4,7 +4,7 @@ server:
+   grpc_listen_port: 0
+ 
+ positions:
+-  filename: /tmp/positions.yaml
++  filename: /var/lib/promtail/positions.yaml
+ 
+ clients:
+   - url: http://gateway:3100/loki/api/v1/push

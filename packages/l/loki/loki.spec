@@ -16,6 +16,9 @@
 #
 
 
+%global loki_datadir /var/lib/loki
+%global promtail_datadir /var/lib/promtail
+
 Name:           loki
 Version:        2.5.0+git.1649366683.2d9d0ee23
 Release:        0
@@ -28,7 +31,9 @@ Source1:        loki.service
 Source2:        promtail.service
 Source3:        sysconfig.loki
 Source4:        sysconfig.promtail
+Source99:       series
 Patch0:         harden_promtail.service.patch
+Patch1:         proper-data-directories.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-devel
@@ -65,8 +70,7 @@ Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation 
 This package contains the LogCLI command-line tool.
 
 %prep
-%setup -q %{name}-%{version}
-%patch0 -p1
+%autosetup -p1 %{name}-%{version}
 
 %build
 %define buildpkg github.com/grafana/loki/pkg/build
@@ -94,9 +98,9 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcloki
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcpromtail
 
 # Config files
-install -Dm644 cmd/loki/loki-local-config.yaml \
+install -Dm640 cmd/loki/loki-local-config.yaml \
     %{buildroot}%{_sysconfdir}/loki/loki.yaml
-install -Dm644 clients/cmd/promtail/promtail-local-config.yaml \
+install -Dm640 clients/cmd/promtail/promtail-local-config.yaml \
     %{buildroot}%{_sysconfdir}/loki/promtail.yaml
 
 # Binaries
@@ -104,6 +108,8 @@ install -dm755 %{buildroot}%{_bindir}
 install -Dm755 loki %{buildroot}%{_bindir}
 install -Dm755 promtail %{buildroot}%{_bindir}
 install -Dm755 logcli %{buildroot}%{_bindir}
+
+install -D -d -m 0750 %{buildroot}%{promtail_datadir} %{buildroot}%{loki_datadir}
 
 %pre
 %service_add_pre loki.service
@@ -138,15 +144,18 @@ install -Dm755 logcli %{buildroot}%{_bindir}
 %{_fillupdir}/sysconfig.loki
 %{_bindir}/loki
 %dir %{_sysconfdir}/loki
-%config(noreplace) %{_sysconfdir}/loki/loki.yaml
+%config(noreplace) %attr(-,root,loki) %{_sysconfdir}/loki/loki.yaml
 %{_sbindir}/rcloki
+%dir %attr(-,loki,loki) %{loki_datadir}/
 
 %files -n promtail
 %{_unitdir}/promtail.service
 %{_fillupdir}/sysconfig.promtail
 %{_bindir}/promtail
+%dir %{_sysconfdir}/loki
 %config(noreplace) %{_sysconfdir}/loki/promtail.yaml
 %{_sbindir}/rcpromtail
+%dir %{promtail_datadir}/
 
 %files -n logcli
 %{_bindir}/logcli
