@@ -335,4 +335,15 @@
     <comment>- Deactive python3 by default, it's just not a good idea for ring0.</comment>
     <requestid>974367</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>85b6518580cb2f7b3d6ba6b7714f291d</srcmd5>
+    <version>2.5.4</version>
+    <time>1656768818</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build of python3 bindings so that the debug* package names do
+  not overlay with the main package
+
+- Use multibuild to get python3 support back</comment>
+    <requestid>986224</requestid>
+  </revision>
 </revisionlist>

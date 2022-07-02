@@ -1,5 +1,5 @@
 #
-# spec file for package libseccomp
+# spec file for package python3-seccomp
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,17 +16,26 @@
 #
 
 
-%define lname   libseccomp2
+%global pname libseccomp
+%global lname   libseccomp2
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" == "python3"
+Name:           python3-seccomp
+Summary:        Python 3 bindings for seccomp
+Group:          Development/Tools/Debuggers
+%else
 Name:           libseccomp
+Summary:        A Seccomp (mode 2) helper library
+Group:          Development/Libraries/C and C++
+%endif
 Version:        2.5.4
 Release:        0
-Summary:        A Seccomp (mode 2) helper library
 License:        LGPL-2.1-only
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/seccomp/libseccomp
 Source:         https://github.com/seccomp/libseccomp/releases/download/v%version/libseccomp-%version.tar.gz
 Source2:        https://github.com/seccomp/libseccomp/releases/download/v%version/libseccomp-%version.tar.gz.asc
-Source3:        %name.keyring
+Source3:        %pname.keyring
 Source99:       baselibs.conf
 Patch1:         make-python-build.patch
 BuildRequires:  autoconf
@@ -34,8 +43,7 @@ BuildRequires:  automake >= 1.11
 BuildRequires:  fdupes
 BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig
-%bcond_with python
-%if 0%{?with python}
+%if "%{flavor}" == "python3"
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Cython >= 0.29
 %endif
@@ -45,6 +53,10 @@ The libseccomp library provides an interface to the Linux Kernel's
 syscall filtering mechanism, seccomp. The libseccomp API abstracts
 away the underlying BPF-based syscall filter language and presents a
 more conventional function-call based filtering interface.
+
+%if "%{flavor}" == "python3"
+This subpackage contains the python3 bindings for seccomp.
+%endif
 
 %package -n %lname
 Summary:        An enhanced Seccomp (mode 2) helper library
@@ -79,19 +91,8 @@ syscall filtering mechanism, seccomp.
 
 This subpackage contains debug utilities for the seccomp interface.
 
-%package -n python3-seccomp
-Summary:        Python 3 bindings for seccomp
-Group:          Development/Tools/Debuggers
-Requires:       python3-Cython >= 0.29
-
-%description -n python3-seccomp
-The libseccomp library provides an interface to the Linux Kernel's
-syscall filtering mechanism, seccomp.
-
-This subpackage contains the python3 bindings for seccomp.
-
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{pname}-%{version}
 
 %if 0%{?qemu_user_space_build}
 # The qemu linux-user emulation does not allow executing
@@ -103,8 +104,8 @@ echo 'int main () { return 0; }' >tests/52-basic-load.c
 %build
 autoreconf -fiv
 %configure \
-    --includedir="%_includedir/%name" \
-%if %{with python}
+    --includedir="%_includedir/%pname" \
+%if "%{flavor}" == "python3"
     --enable-python \
 %endif
     --disable-static \
@@ -116,6 +117,13 @@ autoreconf -fiv
 %make_install
 find "%buildroot/%_libdir" -type f -name "*.la" -delete
 rm -fv %buildroot/%python3_sitearch/install_files.txt
+%if "%{flavor}" == "python3"
+rm %buildroot/%_libdir/%pname.so*
+rm -r %buildroot/%_mandir/
+rm -r %buildroot/%_includedir/%pname/
+rm -r %buildroot/%_libdir/pkgconfig
+rm -r %buildroot/%_bindir/
+%endif
 %fdupes %buildroot/%_prefix
 
 %check
@@ -125,24 +133,25 @@ make check
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
+%if "%{flavor}" == "python3"
+%files
+%python3_sitearch/seccomp-%version-py*.egg-info
+%python3_sitearch/seccomp.cpython*.so
+%else
+
 %files -n %lname
-%_libdir/%name.so.2*
+%_libdir/%pname.so.2*
 %license LICENSE
 
 %files devel
 %_mandir/man3/seccomp_*.3*
-%_includedir/%name/
-%_libdir/%name.so
-%_libdir/pkgconfig/%name.pc
+%_includedir/%pname/
+%_libdir/%pname.so
+%_libdir/pkgconfig/%pname.pc
 
 %files tools
 %_bindir/scmp_sys_resolver
 %_mandir/man1/scmp_sys_resolver.1*
-
-%if %{with python}
-%files -n python3-seccomp
-%python3_sitearch/seccomp-%version-py*.egg-info
-%python3_sitearch/seccomp.cpython*.so
 %endif
 
 %changelog

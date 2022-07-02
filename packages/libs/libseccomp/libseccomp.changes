@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul  1 11:33:22 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix build of python3 bindings so that the debug* package names do
+  not overlay with the main package
+
+-------------------------------------------------------------------
+Wed Jun 29 13:05:06 UTC 2022 - Robert Frohl <rfrohl@suse.com>
+
+- Use multibuild to get python3 support back
+
+-------------------------------------------------------------------
 Sat Apr 30 16:42:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Deactive python3 by default, it's just not a good idea for ring0.
