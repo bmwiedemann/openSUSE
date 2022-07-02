@@ -39,4 +39,12 @@
     <comment>Update to version 2.0.6. Drop extraneous Requires: libnbd</comment>
     <requestid>980412</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>36cbe59535e533238dccba3209ebb250</srcmd5>
+    <version>2.0.6</version>
+    <time>1656768869</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1201064 VUL-0: CVE-2022-2211: Libguestfs: Buffer overflow in get_keys leads to DOS</comment>
+    <requestid>986264</requestid>
+  </revision>
 </revisionlist>

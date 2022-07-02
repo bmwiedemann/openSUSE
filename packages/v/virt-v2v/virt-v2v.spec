@@ -30,6 +30,7 @@ Group:          System/Management
 URL:            https://github.com/libguestfs/virt-v2v
 Source0:        https://download.libguestfs.org/virt-v2v/%{source_directory}/%{name}-%{version}.tar.gz
 Source1:        https://download.libguestfs.org/virt-v2v/%{source_directory}/%{name}-%{version}.tar.gz.sig
+Patch1:         CVE-2022-2211-options-fix-buffer-overflow-in-get_keys.patch
 BuildRequires:  augeas-devel
 BuildRequires:  file-devel
 #BuildRequires: /usr/bin/pod2man
