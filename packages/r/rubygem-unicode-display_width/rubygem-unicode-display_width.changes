@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 29 21:09:01 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.2.0
+
+  * Add *Hangul Jamo Extended-B* block to zero-width chars, thanks @ninjalj #22
+
+-------------------------------------------------------------------
 Sat Oct  9 09:22:51 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.1.0
