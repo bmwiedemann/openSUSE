@@ -1,0 +1,2 @@
+# README contains some words about drop-in customizations for TLP.
+addFilter("non-conffile-in-etc.*/etc/tlp.d/README");

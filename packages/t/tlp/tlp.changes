@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon May 23 09:47:56 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fix SourceURL (misplaced space) for Factory submission
+
+-------------------------------------------------------------------
+Wed May 18 16:15:17 UTC 2022 - Stefan Schubert <schubi@suse.de>
+
+- Moved 99tlp-rdw-nm from user specif directory
+  /etc/NetworkManager/dispatcher.d to vendor specific directory
+  /usr/lib/NetworkManager/dispatcher.d. So, users changes can
+  still be done in /etc and will not be overwritten by an update.
+
+-------------------------------------------------------------------
+Fri Apr 18 13:35:05 UTC 2022 - popov895@ukr.net
+
+- Due to conflicts with rfkill, we need to additionally mask the systemd-rfkill.socket
+- Update to 1.5.0 07.01.2022
+- * Features
+    Battery:
+      - Sony laptops: stop threshold 50/80/100% aka "battery care limiter"
+      - ThinkPads:
+        - Use new sysfs attribute 'charge_behaviour' for recalibration
+        - Support T400 running coreboot via natacpi (Issue #601)
+      - tlp-stat -b: display "cycle_count = 0"  with the note "or not supported"
+    Radio Devices:
+      - Add support for switching NFC devices
+      - Remove support for wireless-tools (iwconfig)
+- * Bugfixes
+    tlp-stat:
+      - drop PM_RUNTIME=y kernel config recommendation
+    Battery:
+      - ASUS laptops: apply stop threshold reliably on boot and after hibernate
+        (Issue #589)
+    Disks:
+      - tlp-stat -d: display correct sysfs path for disk runtime pm:
+        /sys/block/<DISK>/device/power/control (Issue #606)
+
+-------------------------------------------------------------------
+Tue Dec 28 10:04:15 UTC 2021 - lars@linux-schulserver.de - 1.4.0
+
+- package bash completions for tlp-rdw in the corresponding 
+  sub-package (bsc#1180496)
+- add tlp-rpmlintrc to mark some rpmlint warnings as known good
+- Fix bsc#1181279, bsc#1179635, bsc#1177313 - Failed to preset 
+  unit: Unit file tlp-sleep.service does not exist. 
+- As tlp somehow conflicts with rfkill and power-profiles-daemon 
+  running at the same time, lets mask these services, when tlp is 
+  installed. ...and obviously unmask them again on uninstall.
+- Require at least NetworkManager >= 1.20 
+- define _udev(,rules)dir, if not already set (for Leap)
+- Pre-Require systemd (and BuildRequire systemd-rpm-macros) for 
+  completeness
+- tlp is not activated per default (bsc#1183235), as it may conflict
+  with other Laptop mode tools. At the moment, users have to manually
+  activate the service via 'sudo systemctl enable --now tlp.service'
+
+-------------------------------------------------------------------
 Thu Nov 11 09:15:25 UTC 2021 - Mikael S <mikaels@iki.fi>
 
 - Update to 1.4.0 24.09.2021
