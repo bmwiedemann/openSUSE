@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul  1 13:04:20 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.6.0:
+  * It's now possible to import SVG tokens (in addition to PNG ones).
+  * Add support for importing and exporting encrypted Aegis backups.
+  * Add support for importing Google migration QR codes (hamburger menu -> import -> Google migration QR).
+    You need to provide the QR file (e.g. by taking a screenshot with the webcam or another phone).
+  * Fix andOTP import bug.
+  * Improve row deletion workflow.
+  * Add support for libsecret. By default, the password is saved into the secret service provider of your OS.
+    This means that you won't be required a password as long as you're logged in. You can disable this feature from the settings menu.
+  * Show a video feed when adding a QR using the webcam.
+
+-------------------------------------------------------------------
 Sun Apr  3 06:50:05 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.5.1:
