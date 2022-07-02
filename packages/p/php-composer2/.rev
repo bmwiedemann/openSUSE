@@ -120,4 +120,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>983561</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6618208bed1abeb4a349d9ae6531babd</srcmd5>
+    <version>2.3.8</version>
+    <time>1656768881</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.8
+  * Fixed support for cache-read-only where the filesystem is not writable (#10906)
+  * Fixed type error when using allow-plugins: true (#10909)
+  * Fixed @putenv scripts receiving arguments passed to the command (#10846)
+  * Fixed support for spaces in paths with binary proxies on Windows (#10836)
+  * Fixed type error in GitDownloader if branches cannot be listed (#10888)
+  * Fixed RootPackageInterface issue on PHP 5.3.3 (#10895)
+  * Fixed type errors (#10904, #10897)
+</comment>
+    <requestid>986327</requestid>
+  </revision>
 </revisionlist>
