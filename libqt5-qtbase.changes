@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 01 10:37:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.5+kde166:
+  * Drop call to setPlatformScreen in QHighDpiScaling::setScreenFactor
+    (kde#450443)
+
+-------------------------------------------------------------------
 Mon Jun 27 12:10:11 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.5+kde165, rebased upstream:
