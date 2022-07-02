@@ -721,4 +721,14 @@
   * skip defaulted function for param-to-local</comment>
     <requestid>986054</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>a598995a42701d956d86a8a24e7d09dc</srcmd5>
+    <version>2.4.0+git.20220701.2941a38</version>
+    <time>1656768852</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git.20220701.2941a38:
+  * Add new option --skip-after-n-transforms.
+  * llvm{9,10} are removed in Tumbleweed now</comment>
+    <requestid>986225</requestid>
+  </revision>
 </revisionlist>

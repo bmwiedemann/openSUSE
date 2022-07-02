@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 01 12:15:15 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git.20220701.2941a38:
+  * Add new option --skip-after-n-transforms.
+  * llvm{9,10} are removed in Tumbleweed now
+
+-------------------------------------------------------------------
 Thu Jun 30 11:41:10 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.4.0+git.20220630.80a749e:
