@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 28 21:15:18 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 2.4.0:
+  * No high level changelog provided, see packaged CHANGELOG.md for
+    details.
+- Changes from version 2.3.0, 2.0.2, 2.0.1, 2.0.0:
+  * No high level changelog provided, see packaged CHANGELOG.md for
+    details.
+- Add build dependencies on:
+  * aom: Enables module av1.
+  * fdk-aac: Enables module aac.
+  * gcc-c++, webrtc-audio-processing: Enables module webrtc_aec.
+  * gstreamer-app-1.0: Enables module gst_video.
+  * libmp3lame, libmpg123, twolame: Enables module mpa.
+  * libmosquitto: Enables module mqtt.
+  * portaudio: Enables module portaudio.
+  * sndio: Enables module sndio.
+- Drop build dependency on cairo: Module cairo has been removed.
+- Enable extra module avfilter.
+
+-------------------------------------------------------------------
 Wed May 12 22:23:01 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.1.0
