@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 01 10:52:34 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.3:
+  * #2113 Improved parsing of AWS policy response (#2118)
+  * #2109  Updated reading of AWS response using BoolValue function (#2111)
+  * Integration tests stability (#2160)
+
+-------------------------------------------------------------------
 Tue Jun 28 14:22:42 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.38.2:
