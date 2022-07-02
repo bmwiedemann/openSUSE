@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>982048</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b79dd3ea1a3c468dbc0793190454804f</srcmd5>
+    <version>1.48.2</version>
+    <time>1656768868</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1201064 VUL-0: CVE-2022-2211: Libguestfs: Buffer overflow in get_keys leads to DOS</comment>
+    <requestid>986263</requestid>
+  </revision>
 </revisionlist>

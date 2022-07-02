@@ -42,6 +42,8 @@ URL:            http://libguestfs.org/
 Source0:        http://download.libguestfs.org/guestfs-tools/%{source_directory}/%{name}-%{version}.tar.gz
 Source1:        http://download.libguestfs.org/guestfs-tools/%{source_directory}/%{name}-%{version}.tar.gz.sig
 
+Patch1:         CVE-2022-2211-options-fix-buffer-overflow-in-get_keys.patch
+
 %if 0%{patches_touch_autotools}
 BuildRequires:  autoconf
 BuildRequires:  automake
