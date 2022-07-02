@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 29 09:51:03 MDT 2022 - carnold@suse.com
+
+- bsc#1201064 - Libguestfs: Buffer overflow in get_keys leads
+  to DOS - CVE-2022-2211
+  CVE-2022-2211-options-fix-buffer-overflow-in-get_keys.patch
+  CVE-2022-2211-docs-guestfs-security-document.patch
+
+-------------------------------------------------------------------
 Fri Jun  3 15:28:15 MDT 2022 - carnold@suse.com
 
 - bsc#1190501 - virt-builder fails to install packages when

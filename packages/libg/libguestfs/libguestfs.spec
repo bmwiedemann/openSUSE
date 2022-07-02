@@ -32,6 +32,8 @@ Source100:      mount-rootfs-and-chroot.sh
 Source101:      README
 
 # Patches
+Patch1:         CVE-2022-2211-options-fix-buffer-overflow-in-get_keys.patch
+Patch2:         CVE-2022-2211-docs-guestfs-security-document.patch
 
 BuildRequires:  bison
 BuildRequires:  file-devel
