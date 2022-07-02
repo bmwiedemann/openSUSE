@@ -176,6 +176,11 @@ ln -s %{_sysconfdir}/alternatives/default-displaymanager %{buildroot}%{_prefix}/
 # Inject a dummy 'console' selection - which used to be choice in /etc/sysconfig/displaymanager
 touch %{buildroot}%{_prefix}/lib/X11/displaymanagers/console
 
+%if 0%{?UsrEtcMove}
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+mv %{buildroot}%{_sysconfdir}/logrotate.d/xdm %{buildroot}%{_distconfdir}/logrotate.d/xdm
+%endif
+
 %post
 # enable Xorg on s390x with virtio (Redhat PCI ID 1af4:1050) on installation (but not upgrade)
 if [ $1 -eq 1 ] ; then
@@ -239,7 +244,11 @@ sed -i 's/DISPLAYMANAGER=.*//g' %{_sysconfdir}/sysconfig/displaymanager
 %{_prefix}/lib/firewalld/services/x11.xml
 %{_unitdir}/display-manager.service
 %{_prefix}/lib/X11/display-manager
+%if 0%{?UsrEtcMove}
+%{_distconfdir}/logrotate.d/xdm
+%else
 %config %{_sysconfdir}/logrotate.d/xdm
+%endif
 %if 0%{?UsrEtcMove}
 %{_distconfdir}/pam.d/xdm
 %{_distconfdir}/pam.d/xdm-np

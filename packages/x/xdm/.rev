@@ -957,4 +957,12 @@
   * bugfix release</comment>
     <requestid>966779</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>84bf018b6c25daf08d4f7a437807c16e</srcmd5>
+    <version>1.1.13</version>
+    <time>1656768822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986179</requestid>
+  </revision>
 </revisionlist>

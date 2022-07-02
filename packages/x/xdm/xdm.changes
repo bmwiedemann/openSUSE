@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 30 12:18:41 UTC 2022 - Stefan Schubert <schubi@suse.de>
+
+- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d.
+
+-------------------------------------------------------------------
 Mon Apr  4 10:13:13 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - udpate to release 1.1.13
