@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul  2 07:34:13 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.12 development release
+  - Theming support for Qt5 applications.
+  - Bundled vkd3d upgraded to version 1.4.
+  - Improved effect support in Direct2D.
+  - QWORD support in registry tools.
+  - Various bug fixes.
+- update staging to 7.12 release
+
+-------------------------------------------------------------------
 Sat Jun 18 08:50:44 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.11 development release

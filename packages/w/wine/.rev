@@ -4476,4 +4476,18 @@
 - update staging to 7.11 release</comment>
     <requestid>983555</requestid>
   </revision>
+  <revision rev="381" vrev="1">
+    <srcmd5>eddcce64db210dec3a3d62cb85ccaf41</srcmd5>
+    <version>7.12</version>
+    <time>1656768883</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.12 development release
+  - Theming support for Qt5 applications.
+  - Bundled vkd3d upgraded to version 1.4.
+  - Improved effect support in Direct2D.
+  - QWORD support in registry tools.
+  - Various bug fixes.
+- update staging to 7.12 release</comment>
+    <requestid>986338</requestid>
+  </revision>
 </revisionlist>
