@@ -25,6 +25,7 @@ Summary:        Formalization of floating point numbers for Coq
 Group:          Productivity/Scientific/Math
 License:        LGPL-3.0-or-later
 URL:            https://flocq.gitlabpages.inria.fr/
+#Git-Clone:     https://gitlab.inria.fr/flocq/flocq.git
 Source0:        https://flocq.gitlabpages.inria.fr/releases/%{name}-%{version}.tar.gz
 Source100:      %{name}-rpmlintrc
 BuildRequires:  coq-devel >= 8.12
