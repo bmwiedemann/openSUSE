@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 29 13:03:28 UTC 2022 - Nathan Cutler <ncutler@suse.com>
+
+- updated to 0.284
+   see /usr/share/doc/packages/perl-Web-MREST-CLI/Changes
+
+-------------------------------------------------------------------
 Mon Sep  5 07:07:09 UTC 2016 - ncutler@suse.com
 
 - fix %doc in spec file 
