@@ -22,7 +22,7 @@
 
 Name:           kmod-testsuite
 %define lname	libkmod2
-Version:        29
+Version:        30
 Release:        0
 Summary:        Testsuite of the kmod package
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -42,7 +42,7 @@ Patch5:         0011-Do-not-filter-unsupported-modules-when-running-a-van.patch
 Patch6:         0012-modprobe-print-unsupported-status.patch
 Patch7:         usr-lib-modprobe.patch
 Patch8:         no-stylesheet-download.patch
-Patch9:         libkmod-Provide-info-even-for-modules-built-into-the.patch
+Patch9:         0001-testsuite-repair-read-of-uninitialized-memory.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
@@ -74,7 +74,7 @@ buildloop with the kernel.
 %autopatch -p1
 
 %build
-autoreconf -fi
+GTKDOCIZE=/bin/true autoreconf -fi
 export LDFLAGS="-Wl,-z,relro,-z,now"
 # The extra --includedir gives us the possibility to detect dependent
 # packages which fail to properly use pkgconfig.

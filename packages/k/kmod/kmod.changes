@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 30 16:15:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 30
+  * libkmod: support for the SM3 hash algorithm
+  * modprobe: added the --wait option
+- Drop libkmod-Provide-info-even-for-modules-built-into-the.patch
+  (merged)
+- Add 0001-testsuite-repair-read-of-uninitialized-memory.patch
+
+-------------------------------------------------------------------
 Mon Mar 28 15:01:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add keyring so that gpg validation actually does something 
