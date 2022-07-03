@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul  2 11:37:03 UTC 2022 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to version 5.6.2
+ * No upstream provided changelog.
+ * Drop 563.patch and 574.patch, merged upstream/no longer required.
+ * Disable i586 arch build for now.
+
+-------------------------------------------------------------------
 Wed May 25 11:16:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve rpmlint error "libdispatch.x86_64: E:

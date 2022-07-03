@@ -16,9 +16,9 @@
 #
 
 
-%define reltag 5.5-RELEASE
+%define reltag 5.6.2-RELEASE
 Name:           libdispatch
-Version:        5.5
+Version:        5.6.2
 Release:        0
 Summary:        Apple's Grand Central Dispatch library
 License:        Apache-2.0
@@ -26,11 +26,6 @@ Group:          Development/Languages/C and C++
 URL:            https://github.com/apple/swift-corelibs-libdispatch
 Source0:        https://github.com/apple/swift-corelibs-libdispatch/archive/swift-%{reltag}.tar.gz#/corelibs-libdispatch.tar.gz
 Source1:        libdispatch-rpmlintrc
-# Clang13 fix for warnings treated as errors
-# https://patch-diff.githubusercontent.com/raw/apple/swift-corelibs-libdispatch/pull/574.patch
-Patch0:         574.patch
-# https://patch-diff.githubusercontent.com/raw/apple/swift-corelibs-libdispatch/pull/563.patch
-Patch1:         563.patch
 # set library versions
 Patch2:         soversion.patch
 BuildRequires:  chrpath
@@ -40,6 +35,10 @@ BuildRequires:  libbsd-devel
 BuildRequires:  libstdc++-devel
 BuildRequires:  llvm-gold
 BuildRequires:  ninja
+# Disable i586 build for now
+%ifarch i586
+ExclusiveArch:  do_not_build
+%endif
 
 %description
 Grand Central Dispatch (GCD or libdispatch) provides support for
@@ -48,7 +47,7 @@ concurrent code execution on multicore hardware.
 %package -n libdispatch1_3
 Summary:        Apple's Grand Central Dispatch library
 Group:          System/Libraries
-Obsoletes:      libdispatch
+Obsoletes:      libdispatch < %{version}-%{release}
 Provides:       libdispatch = %{version}-%{release}
 
 %description -n libdispatch1_3
