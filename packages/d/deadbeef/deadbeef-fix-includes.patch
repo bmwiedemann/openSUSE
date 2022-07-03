@@ -1,0 +1,60 @@
+diff -Naur deadbeef-1.9.1/plugins/gtkui/covermanager/albumartwidget.c deadbeef-1.9.1.new/plugins/gtkui/covermanager/albumartwidget.c
+--- deadbeef-1.9.1/plugins/gtkui/covermanager/albumartwidget.c	2022-05-14 19:19:32.000000000 +0200
++++ deadbeef-1.9.1.new/plugins/gtkui/covermanager/albumartwidget.c	2022-07-02 16:24:48.747116995 +0200
+@@ -30,7 +30,7 @@
+ #include "albumartwidget.h"
+ #include "covermanager.h"
+ #include "gobjcache.h"
+-#include <Block.h>
++#include <block/Block.h>
+ 
+ #define min(x,y) ((x)<(y)?(x):(y))
+ 
+diff -Naur deadbeef-1.9.1/plugins/gtkui/covermanager/covermanager.c deadbeef-1.9.1.new/plugins/gtkui/covermanager/covermanager.c
+--- deadbeef-1.9.1/plugins/gtkui/covermanager/covermanager.c	2022-05-14 19:19:32.000000000 +0200
++++ deadbeef-1.9.1.new/plugins/gtkui/covermanager/covermanager.c	2022-07-02 16:24:11.875158405 +0200
+@@ -26,7 +26,7 @@
+ #include "../../artwork/artwork.h"
+ #include "covermanager.h"
+ #include "gobjcache.h"
+-#include <Block.h>
++#include <block/Block.h>
+ #include "gtkui.h"
+ 
+ #define min(x,y) ((x)<(y)?(x):(y))
+diff -Naur deadbeef-1.9.1/plugins/gtkui/playlist/playlistcontroller.c deadbeef-1.9.1.new/plugins/gtkui/playlist/playlistcontroller.c
+--- deadbeef-1.9.1/plugins/gtkui/playlist/playlistcontroller.c	2022-05-14 19:19:32.000000000 +0200
++++ deadbeef-1.9.1.new/plugins/gtkui/playlist/playlistcontroller.c	2022-07-02 16:23:28.347207313 +0200
+@@ -21,7 +21,7 @@
+     3. This notice may not be removed or altered from any source distribution.
+ */
+ 
+-#include <Block.h>
++#include <block/Block.h>
+ #include <dispatch/dispatch.h>
+ #include <stdlib.h>
+ #include <string.h>
+diff -Naur deadbeef-1.9.1/plugins/notify/notify.c deadbeef-1.9.1.new/plugins/notify/notify.c
+--- deadbeef-1.9.1/plugins/notify/notify.c	2022-05-14 19:19:32.000000000 +0200
++++ deadbeef-1.9.1.new/plugins/notify/notify.c	2022-07-02 16:22:58.271241120 +0200
+@@ -16,7 +16,7 @@
+     along with this program; if not, write to the Free Software
+     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+-#include <Block.h>
++#include <block/Block.h>
+ #include <dbus/dbus.h>
+ #include <dispatch/dispatch.h>
+ #include "../../deadbeef.h"
+diff -Naur deadbeef-1.9.1/plugins.c deadbeef-1.9.1.new/plugins.c
+--- deadbeef-1.9.1/plugins.c	2022-05-14 19:19:32.000000000 +0200
++++ deadbeef-1.9.1.new/plugins.c	2022-07-02 16:22:27.495275699 +0200
+@@ -24,7 +24,7 @@
+ 
+   Alexey Yakovenko waker@users.sourceforge.net
+ */
+-#include <Block.h>
++#include <block/Block.h>
+ #include <ctype.h>
+ #include <dirent.h>
+ #include <dispatch/dispatch.h>

@@ -1,7 +1,7 @@
 #
 # spec file for package deadbeef
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,10 @@
 %define _lto_cflags %{nil}
 %bcond_with restricted
 Name:           deadbeef
-Version:        1.8.8
+Version:        1.9.1
 Release:        0
 Summary:        GTK+ audio player
-License:        Zlib AND GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-or-later AND Zlib AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://deadbeef.sourceforge.io/
 Source:         %{name}-%{version}.tar.xz
@@ -32,7 +32,8 @@ Source1:        %{name}.appdata.xml
 # PATCH-FIX-OPENSUSE 0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
 Patch0:         0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
 # PATCH-FIX-OPENSUSE deadbeef-drop-documents-installation.patch hillwood@opensuse.org -- Install documents by rpmbuild.
-Patch2:         %{name}-drop-documents-installation.patch
+Patch1:         %{name}-drop-documents-installation.patch
+Patch2:         %{name}-fix-includes.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  clang
@@ -92,7 +93,7 @@ similar to Foobar2000.
 %if %{with restricted}
 %package plugins-extra
 Summary:        Extra plugins for DeaDBeeF
-License:        Zlib AND GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause AND Unicode AND NonFree
+License:        BSD-3-Clause AND GPL-2.0-or-later AND Zlib AND LGPL-2.1-or-later AND Unicode AND NonFree
 Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}
 Recommends:     faac
@@ -120,8 +121,14 @@ cp %{SOURCE1} %{name}.appdata.xml
 %build
 export CC=clang
 export CXX=clang++
-export CFLAGS="%{optflags} -fno-strict-aliasing -fpie -fPIC"
+# clang on 15.3 doesn't know about '-Wno-unused-but-set-variable'
+%if 0%{?sle_version} == 150300
+export CFLAGS="%{optflags} -fno-strict-aliasing -Wno-unused-command-line-argument -fpie -fPIC"
 export CXXFLAGS="$CFLAGS"
+%else
+export CFLAGS="%{optflags} -fno-strict-aliasing -Wno-unused-command-line-argument -Wno-unused-but-set-variable -fpie -fPIC"
+export CXXFLAGS="$CFLAGS"
+%endif
 export LDFLAGS="$LDFLAGS -pie"
 
 NOCONFIGURE=1 ./autogen.sh
@@ -145,8 +152,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes -s %{buildroot}%{_libdir}/%{name}/data68/Replay
 
 %files
-%doc README README.md help.txt about.txt translators.txt CONTRIBUTING.md
-%doc AUTHORS ChangeLog translation/help.ru.txt ABOUT-NLS
+%doc README help.txt about.txt translators.txt ChangeLog
 %license COPYING COPYING.GPLv2 COPYING.LGPLv2.1
 %{_bindir}/%{name}
 %dir %{_libdir}/%{name}/

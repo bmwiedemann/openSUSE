@@ -2,8 +2,9 @@
   <service mode="disabled" name="tar_scm">
     <param name="url">https://github.com/DeaDBeeF-Player/deadbeef.git</param>
     <param name="scm">git</param>
-    <param name="revision">1.8.8</param>
+    <param name="revision">1.9.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
     <param name="filename">deadbeef</param>
   </service>
   <service mode="disabled" name="recompress">
