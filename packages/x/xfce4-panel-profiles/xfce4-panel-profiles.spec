@@ -23,6 +23,7 @@ Summary:        Simple application to manage Xfce panel layouts
 License:        GPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://git.xfce.org/apps/xfce4-panel-profiles/about/
+#Git-Clone:     https://gitlab.xfce.org/apps/xfce4-panel-profiles.git
 Source:         https://archive.xfce.org/src/apps/xfce4-panel-profiles/1.0/%{name}-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE Libxfce4ui.patch maurizio.galli@gmail.com -- OBS gets confused which typelib to require as dependency and we only need Libxfce4ui
 Patch0:         Libxfce4ui.patch
