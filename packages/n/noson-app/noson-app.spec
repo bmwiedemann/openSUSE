@@ -17,13 +17,13 @@
 
 
 Name:           noson-app
-Version:        4.5.0
+Version:        5.2.2
 Release:        0
 Summary:        SONOS device controller
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://janbar.github.io/noson-app/index.html
-Source0:        https://github.com/janbar/noson-app/archive/%{version}.tar.gz
+Source0:        https://github.com/janbar/noson-app/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  flac-devel
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(noson) = 2.6.0
+BuildRequires:  pkgconfig(noson) = 2.8.6
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
 
