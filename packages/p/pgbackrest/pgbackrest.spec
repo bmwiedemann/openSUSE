@@ -2,7 +2,7 @@
 # spec file for package pgbackrest
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2019-2021 Ioda-Net Sàrl, Charmoille, Switzerland.
+# Copyright (c) 2019-2022 Ioda-Net Sàrl, Charmoille, Switzerland.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define services pgbackrest.target pgbackrest-diff@.service pgbackrest-full@.service pgbackrest-incr@.service pgbackrest.service pgbackrest-diff@.timer pgbackrest-full@.timer pgbackrest-incr@.timer
 
 Name:           pgbackrest
-Version:        2.37
+Version:        2.39
 Release:        0
 Summary:        Reliable PostgreSQL Backup & Restore
 License:        MIT
 Group:          Productivity/Databases/Tools
 URL:            http://www.pgbackrest.org
-Source:         https://github.com/pgbackrest/pgbackrest/archive/release/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/%{name}/%{name}/archive/release/%{version}/%{name}-%{version}.tar.gz
 Source1:        pgbackrest.conf
 
 Source10:       pgbackrest-diff@.service
@@ -119,7 +120,6 @@ install -m 0644 \
 install -D -m 0644 \
     %{SOURCE18} \
     %{buildroot}%{_tmpfilesdir}/%{name}.conf
-
 
 %check
 # Tests are only available with Vagrant

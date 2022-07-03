@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Mon Jun 27 12:45:15 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update do version 2.39
+  + Bug Fixes:
+    - Fix error thrown from FINALLY() causing an infinite loop.
+    - Error on all lock failures except another process holding the lock.
+  + Features:
+    - Backup file bundling for improved small file support.
+    - Verify command to validate the contents of a repository.
+    - PostgreSQL 15 support.
+    - Show backup percent complete in info output.
+    - Auto-select backup for restore command --type=lsn.
+    - Suppress existing WAL warning when archive-mode-check is disabled.
+    - Add AWS IMDSv2 support.
+  + Improvements:
+    - Allow repo-hardlink option to be changed after full backup.
+    - Increase precision of percent complete logging for backup and restore.
+    - Improve path validation for repo-* commands.
+    - Improve stop command to honor stanza option.
+    - Improve error message for invalid repo-azure-key. 
+    - Add hint to check the log on archive-get/archive-push async error.
+    - Add ClockError for unexpected clock skew and timezone changes.
+    - Strip extensions from history manifest before showing in error message.
+    - Add user:group to lock permission error.
+  + Documentation Bug Fixes:
+    - Fix incorrect reference to stanza-update in the user guide.
+    - Fix example for repo-gcs-key-type option in configuration reference. 
+    - Fix tls-server-auth example and add clarifications.
+  + Documentation Improvements:
+    - Simplify messaging around supported versions in the documentation.
+    - Add option type descriptions.
+    - Add FAQ about backup types and restore speed.
+    - Document required base branch for pull requests.
+- update copyright year
+
+-------------------------------------------------------------------
+Mon Apr 18 13:47:07 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to version 2.38
+  IMPORTANT NOTE: Repository size reported by the info command is
+  now entirely based on what pgBackRest has written to storage.
+  Previously, in certain cases, pgBackRest could detect if
+  additional compression was being applied by the storage but this
+  is no longer supported.
+
+  - Bug Fixes:
+    - Retry errors in S3 batch file delete. (Reviewed by Reid
+      Thompson. Reported by Alex Richman.)
+    - Allow case-insensitive matching of HTTP connection header
+      values. (Reviewed by Reid Thompson. Reported by Rémi Vidier.)
+  - Features:
+    - Add support for AWS S3 server-side encryption using KMS.
+      (Contributed by Christoph Berg. Reviewed by David Steele,
+      Tharindu Amila.)
+    - Add archive-missing-retry option. (Reviewed by Stefan
+      Fercot.)
+    - Add backup type filter to info command. (Contributed by
+      Stefan Fercot. Reviewed by David Steele.)
+  - Improvements:
+    - Retry on page validation failure during backup. (Reviewed by
+      Stephen Frost, David Christensen.)
+    - Handle TLS servers that do not close connections gracefully.
+      (Reviewed by Rémi Vidier, David Christensen, Stephen Frost.)
+    - Add backup LSNs to info command output. (Contributed by
+      Stefan Fercot. Reviewed by David Steele.)
+    - Automatically strip trailing slashes for repo-ls paths.
+      (Contributed by David Christensen. Reviewed by David Steele.)
+    - Do not retry fatal errors. (Reviewed by Reid Thompson.)
+    - Remove support for PostgreSQL 8.3/8.4. (Reviewed by Reid
+      Thompson, Stefan Fercot.)
+    - Remove logic that tried to determine additional file system
+      compression. (Reviewed by Reid Thompson, Stefan Fercot.)
+  - Documentation Bug Fixes:
+    - Move repo options in TLS documentation to the global section.
+      (Reported by Anton Kurochkin.)
+    - Remove unused backup-standby option from stanza commands.
+      (Reported by Stefan Fercot.)
+    - Fix typos in help and release notes. (Fixed by Daniel
+      Gustafsson. Reviewed by David Steele.)
+  - Documentation Improvements:
+    - Add aliveness check to systemd service configuration.
+      (Suggested by Yogesh Sharma.)
+    - Add FAQ explaining WAL archive suffix. (Contributed by Stefan
+      Fercot. Reviewed by David Steele.)
+    - Note that replications slots are not restored. (Contributed
+      by Reid Thompson. Reviewed by David Steele, Stefan Fercot.
+      Suggested by Christophe Courtois.)
+
+-------------------------------------------------------------------
 Mon Mar  7 21:41:10 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Move lock file default to /run/pgbackrest and make sure it gets
@@ -34,7 +123,7 @@ Tue Jan 25 13:27:08 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Tue Jan 25 10:49:49 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
-- update to version 2.37 
+- update to version 2.37
   IMPORTANT NOTE: If the restore command is unable to find a backup
   that matches a specified time target then an error will be
   thrown, whereas before a warning was logged.
