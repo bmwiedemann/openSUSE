@@ -9703,6 +9703,7 @@ unsorted:
   - libasan8-32bit: [x86_64] 
   - libasm-devel 
   - libasm1-32bit: [x86_64] 
+  - libasn1-8 
   - libasn1c-devel 
   - libasn1c1 
   - libaspell15 
@@ -10518,8 +10519,8 @@ unsorted:
   - libdiscid0-32bit: [x86_64] 
   - libdiscord-rpc3_4_0 
   - libdisomaster1 
-  - libdispatch-devel 
-  - libdispatch1_3 
+  - libdispatch-devel: [x86_64] 
+  - libdispatch1_3: [x86_64] 
   - libdjvulibre-devel 
   - libdlm-devel 
   - libdmapsharing-3_0-2 
@@ -11243,6 +11244,7 @@ unsorted:
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
   - libgsoap-2_8_121 
+  - libgssapi3 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgstadaptivedemux-1_0-0-32bit: [x86_64] 
@@ -11389,6 +11391,8 @@ unsorted:
   - libharminv3 
   - libharu-devel 
   - libhashcat6_2_5 
+  - libhcrypto4 
+  - libhdb9 
   - libhdf5-103-32bit: [x86_64] 
   - libhdf5-103-mvapich2 
   - libhdf5-103-mvapich2-32bit: [x86_64] 
@@ -11544,8 +11548,10 @@ unsorted:
   - libhealpix_cxx3 
   - libheif-devel 
   - libheif1-32bit: [x86_64] 
-  - libheimdal 
+  - libheimbase1 
   - libheimdal-devel 
+  - libheimedit0 
+  - libheimntlm0 
   - libhfst55 
   - libhfstospell11 
   - libhfstospell11-32bit: [x86_64] 
@@ -11585,6 +11591,7 @@ unsorted:
   - libhugetlbfs-tests 
   - libhunspell-1_7-0-32bit: [x86_64] 
   - libhwloc15 
+  - libhx509-5 
   - libhydrogen-core-devel 
   - libhydrogen-core1 
   - libhyphen0-32bit: [x86_64] 
@@ -11793,6 +11800,9 @@ unsorted:
   - libjthread1_3_3 
   - libjxrglue0 
   - libjxrglue0-32bit: [x86_64] 
+  - libkadm5clnt7 
+  - libkadm5srv8 
+  - libkafs0 
   - libkate-devel 
   - libkate-tools 
   - libkate1-32bit: [x86_64] 
@@ -11801,6 +11811,7 @@ unsorted:
   - libkcapi1 
   - libkcddb-devel 
   - libkcompactdisc-devel 
+  - libkdc2 
   - libkdcraw-devel 
   - libkdecoration2-devel 
   - libkdegames-devel 
@@ -11879,6 +11890,7 @@ unsorted:
   - libkomparediff2-devel 
   - libkonkretcmpi0 
   - libkpmcore12 
+  - libkrb5-26 
   - libkrun: [x86_64] 
   - libkrunfw: [x86_64] 
   - libksane-devel 
@@ -12845,6 +12857,7 @@ unsorted:
   - libotf-devel 
   - libotf-devel-32bit: [x86_64] 
   - libotf1-32bit: [x86_64] 
+  - libotp0 
   - libotr-devel 
   - libotr-tools 
   - libout123-0 
@@ -13649,6 +13662,7 @@ unsorted:
   - librnnoise0 
   - librnp0 
   - librocsgraphtheory0 
+  - libroken18 
   - librpma0: [x86_64] 
   - librpmem-devel: [x86_64] # devel package of dvd:pmdk 
   - librpmem1: [x86_64] 
@@ -13851,6 +13865,7 @@ unsorted:
   - libskk-devel 
   - libskk0 
   - libskk0-32bit: [x86_64] 
+  - libsl0 
   - libslang2-32bit: [x86_64] 
   - libsliplu1 
   - libslirp-devel 
@@ -14647,6 +14662,7 @@ unsorted:
   - libwhich 
   - libwiiuse0 
   - libwim15 
+  - libwind0 
   - libwireshark15 
   - libwiretap12 
   - libwlroots10 
@@ -23528,6 +23544,7 @@ unsorted:
   - python310-mutatorMath 
   - python310-mutmut 
   - python310-mutt-ics 
+  - python310-mwclient 
   - python310-mygpoclient 
   - python310-mypy 
   - python310-mypy-protobuf 
@@ -23705,6 +23722,8 @@ unsorted:
   - python310-pecan 
   - python310-peewee 
   - python310-pefile 
+  - python310-pegasus-wms.api 
+  - python310-pegasus-wms.common 
   - python310-pelican: [x86_64] 
   - python310-pem 
   - python310-pendulum 
@@ -26691,6 +26710,7 @@ unsorted:
   - python38-mutatorMath 
   - python38-mutmut 
   - python38-mutt-ics 
+  - python38-mwclient 
   - python38-mygpoclient 
   - python38-mypy 
   - python38-mypy-protobuf 
@@ -26884,6 +26904,8 @@ unsorted:
   - python38-pecan 
   - python38-peewee 
   - python38-pefile 
+  - python38-pegasus-wms.api 
+  - python38-pegasus-wms.common 
   - python38-pelican: [x86_64] 
   - python38-pem 
   - python38-pendulum 
@@ -29965,6 +29987,7 @@ unsorted:
   - python39-mutatorMath 
   - python39-mutmut 
   - python39-mutt-ics 
+  - python39-mwclient 
   - python39-mygpoclient 
   - python39-mypy 
   - python39-mypy-protobuf 
@@ -30160,6 +30183,8 @@ unsorted:
   - python39-pecan 
   - python39-peewee 
   - python39-pefile 
+  - python39-pegasus-wms.api 
+  - python39-pegasus-wms.common 
   - python39-pelican: [x86_64] 
   - python39-pem 
   - python39-pendulum 
