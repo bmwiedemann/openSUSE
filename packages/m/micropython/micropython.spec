@@ -17,7 +17,7 @@
 
 
 Name:           micropython
-Version:        1.18
+Version:        1.19.1
 Release:        0
 Summary:        Implementation of Python 3 with very low memory footprint
 License:        MIT
@@ -25,6 +25,7 @@ Group:          Development/Languages/Python
 URL:            https://micropython.org/
 Source:         https://micropython.org/resources/source/%{name}-%{version}.tar.xz
 BuildRequires:  openssl
+BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libffi)
