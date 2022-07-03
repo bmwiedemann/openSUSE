@@ -17,7 +17,7 @@
 
 
 Name:           adwaita-xfce-icon-theme
-Version:        0.0.1+git0.e151182
+Version:        0.0.2+git0.ee9b710
 Release:        0
 Summary:        Icon theme for Xfce complementing Adwaita
 License:        GPL-2.0-only
@@ -29,7 +29,7 @@ Provides:       openSUSE-xfce-icon-theme = 4.16.2
 Obsoletes:      openSUSE-xfce-icon-theme < 4.16.2
 
 %description
-This icon theme is an extension for Adwaita fixing missing icons that are used in Xfce. 
+This icon theme is an extension for Adwaita fixing missing icons that are used in Xfce.
 It is not a complete theme and inherits the bulk of icons from Adwaita.
 
 %prep

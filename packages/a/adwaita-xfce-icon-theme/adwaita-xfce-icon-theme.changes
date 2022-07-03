@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 30 12:56:17 UTC 2022 - mauriziogalli@opensuse.org
+
+- Update to version 0.0.2+git0.ee9b710:
+  * Added multimedia-player icon
+  * Added camera-photo icon
+
+-------------------------------------------------------------------
 Tue Jun 28 03:09:31 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Fix Provides/Obsoletes mechanism in spec file

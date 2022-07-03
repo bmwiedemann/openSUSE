@@ -7,4 +7,12 @@
     <comment>replacement for openSUSE-xfce-icon-theme</comment>
     <requestid>985559</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c1706822014fc6e59977e7f229783510</srcmd5>
+    <version>0.0.2+git0.ee9b710</version>
+    <time>1656865624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986457</requestid>
+  </revision>
 </revisionlist>
