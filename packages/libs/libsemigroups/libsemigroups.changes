@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul  2 10:27:30 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.0
+  * New: Sims Low-Index Congruence Algorithm
+  * Added permutation group intersections
+
+-------------------------------------------------------------------
 Thu Apr 21 21:27:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1.5

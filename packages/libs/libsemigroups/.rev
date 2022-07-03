@@ -111,4 +111,12 @@
     <comment>- Update to release 2.1.5</comment>
     <requestid>971932</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c89aacc88053d2bcb1f7d706714c27df</srcmd5>
+    <version>2.2.0</version>
+    <time>1656865610</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.2.0</comment>
+    <requestid>986365</requestid>
+  </revision>
 </revisionlist>
