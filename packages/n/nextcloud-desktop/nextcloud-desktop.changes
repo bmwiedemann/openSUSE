@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul  3 12:21:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add nextcloud-remove-fortify-source-2.patch
+  * A more future-proof and distribution friendly fix for
+    boo#1201070
+  * Upstream issue: gh#nextcloud/desktop#4697
+
+-------------------------------------------------------------------
 Fri Jul  1 11:08:59 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Fix Tumbleweed build and install error boo#1201070.

@@ -29,6 +29,8 @@ Source:         https://github.com/nextcloud/desktop/archive/v%{version}/%{name}
 Source1:        sysctl-sync-inotify.conf
 # PATCH-FIX-OPENSUSE nextcloud-desktop-remove-datetime.patch sor.alexei@meowr.ru -- Remove __TIME__ and __DATE__.
 Patch1:         nextcloud-desktop-remove-datetime.patch
+# PATCH-FIX-OPENSUSE nextcloud-remove-fortify-source-2.patch code@bnavigator.de -- Remove hardcoding of _FORTIFY_SOURCE=2 in order to not conflict with distribtion presets, boo#1201070, gh#nextcloud/desktop#4697
+Patch2:         nextcloud-remove-fortify-source-2.patch
 BuildRequires:  AppStream
 BuildRequires:  cmake >= 3.2
 BuildRequires:  extra-cmake-modules
@@ -175,15 +177,10 @@ Dolphin filemanager to display overlay icons.
 %endif
 
 %prep
-%setup -q -n desktop-%{version}
-%patch1 -p1
+%autosetup -p1 -n desktop-%{version}
 cp -a %{SOURCE1} sysctl-sync-inotify.conf
 
 %build
-
-%if %{?suse_version} > 1500
-CFLAGS="-O2 -Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type"
-%endif
 
 %cmake \
 %if 0%{?is_opensuse}
