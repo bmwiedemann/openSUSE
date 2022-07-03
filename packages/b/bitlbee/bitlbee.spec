@@ -27,8 +27,7 @@ Group:          Productivity/Networking/IRC
 URL:            http://www.bitlbee.org/
 Source:         http://get.bitlbee.org/src/bitlbee-%{version}.tar.gz
 Source2:        %{name}.service-suse.in
-Patch0:	harden_bitlbee.service.patch
-BuildRequires:  fdupes
+Patch0:         harden_bitlbee.service.patch
 BuildRequires:  glibc-devel
 BuildRequires:  gnutls-devel
 BuildRequires:  libgcrypt-devel
@@ -132,8 +131,6 @@ install -d "%{buildroot}%{_localstatedir}/lib/bitlbee"
 make DESTDIR=%{buildroot} -C doc
 make DESTDIR=%{buildroot} install install-etc
 make DESTDIR=%{buildroot} install-dev
-
-%fdupes -s
 
 install -D -p -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}

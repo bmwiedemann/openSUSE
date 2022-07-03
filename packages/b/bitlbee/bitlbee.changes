@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 28 20:30:09 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Remove call to %fdupes: It was breaking the build on Tumbleweed
+  because of missing directory argument. No duplicate file is
+  reported by rpmlint anyway.
+
+-------------------------------------------------------------------
 Thu Feb 10 09:16:15 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Fix bitlbee runtime directory (bsc#1193230)
