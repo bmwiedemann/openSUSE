@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Sun Jul  3 09:34:55 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.6.0
+  - Fix Deployment (#1474)
+  - Serverless V2 (#1450)
+  - Use logging levelno instead of levelname. Levelnames can be
+    overridden (#1449)
+
+-------------------------------------------------------------------
+Sun Jul  3 09:24:33 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.5.12
+  - feat(measurements): Add experimental set_measurement api on
+    transaction (#1359)
+  - fix: Remove incorrect usage from flask helper example (#1434)
+- Update to 1.5.11
+  - chore: Bump mypy and fix abstract ContextManager typing (#1421)
+  - chore(issues): add link to Sentry support (#1420)
+  - fix: replace git.io links with redirect targets (#1412)
+  - ref: Update error verbose for sentry init (#1361)
+  - fix(sessions): Update session also for non sampled events and
+    change filter order (#1394)
+- Update to 1.5.10
+  - Remove Flask version contraint (#1395)
+  - Change ordering of event drop mechanisms (#1390)
+- Update to 1.5.9
+  - fix(sqlalchemy): Use context instead of connection in
+    sqlalchemy integration (#1388)
+  - Update correct test command in contributing docs (#1377)
+  - Update black (#1379)
+  - build(deps): bump sphinx from 4.1.1 to 4.5.0 (#1376)
+  - fix: Auto-enabling Redis and Pyramid integration (#737)
+  - feat(testing): Add pytest-watch (#853)
+  - Treat x-api-key header as sensitive (#1236)
+  - fix: Remove obsolete MAX_FORMAT_PARAM_LENGTH (#1375)
+- Update to 1.5.8
+  - feat(asgi): Add support for setting transaction name to path
+    in FastAPI (#1349)
+  - fix(sqlalchemy): Change context manager type to avoid race in
+    threads (#1368)
+  - fix(perf): Fix transaction setter on scope to use
+    containing_transaction to match with getter (#1366)
+  - chore(ci): Change stale GitHub workflow to run once a day
+    (#1367)
+  - feat(django): Make django middleware expose more wrapped
+    attributes (#1202)
+- Update to 1.5.7
+  - fix(serializer): Make sentry_repr dunder method to avoid mock
+    problems (#1364)
+- Update to 1.5.6
+  - Create feature.yml (#1350)
+  - Update contribution guide (#1346)
+  - chore: add bug issue template (#1345)
+  - Added default value for auto_session_tracking (#1337)
+  - docs(readme): reordered content (#1343)
+  - fix(tests): Removed unsupported Django 1.6 from tests to avoid
+    confusion (#1338)
+  - Group captured warnings under separate issues (#1324)
+  - build(changelogs): Use automated changelogs from Craft (#1340)
+  - fix(aiohttp): AioHttpIntegration sentry_app_handle() now
+    ignores ConnectionResetError (#1331)
+  - meta: Remove black GH action (#1339)
+  - feat(flask): Add sentry_trace() template helper (#1336)
+- Update to 1.5.5
+  - Add session tracking to ASGI integration (#1329)
+  - Pinning test requirements versions (#1330)
+  - Allow classes to short circuit serializer with sentry_repr
+    (#1322)
+  - Set default on json.dumps in compute_tracestate_value to ensure
+    string conversion (#1318)
+
+-------------------------------------------------------------------
 Sun Jan 30 11:20:25 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.5.4

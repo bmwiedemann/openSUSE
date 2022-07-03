@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-sentry-sdk
-Version:        1.5.4
+Version:        1.6.0
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
@@ -65,6 +65,7 @@ BuildRequires:  %{python_module tox}
 #BuildRequires:  %%{python_module apache-beam >= 2.12}
 #BuildRequires:  %%{python_module chalice >= 1.16.0}
 #BuildRequires:  %%{python_module pure_eval}
+#BuildRequires:  %%{python_module quart >= 1.16.1}
 #BuildRequires:  %%{python_module sanic >= 0.8}
 # /SECTION
 Requires:       python-Flask >= 0.11
@@ -116,7 +117,7 @@ rm -r tests/integrations
 %pytest -k 'not (test_transport_works or test_auto_enabling_integrations_catches_import_error or test_filename or test_transport_infinite_loop or test_simple_rate_limits or test_data_category_limits or test_complex_limits_without_data_category or test_leaks)'
 
 %files %{python_files}
-%doc README.md CHANGELOG.md
+%doc README.md CHANGELOG.md CONTRIBUTING.md CONTRIBUTING-aws-lambda.md
 %license LICENSE
 %{python_sitelib}/*
 
