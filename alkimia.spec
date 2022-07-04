@@ -19,7 +19,7 @@
 %define sonum 8
 %bcond_without lang
 Name:           alkimia
-Version:        8.1.0
+Version:        8.1.1
 Release:        0
 Summary:        Library with common classes and functionality used by finance applications
 License:        LGPL-2.1-or-later
@@ -27,8 +27,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://kmymoney.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
-# PATCH-FIX-UPSTREAM fix took from upstream GIT
-Patch0:         0001-Add-missing-QUrl-include-with-DBUILD_WITH_WEBENGINE.patch
+Source2:        alkimia.keyring
 BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gmp-devel
@@ -93,15 +92,16 @@ mv %{buildroot}/alkimia5/misc/financequote.pl %{buildroot}%{_datadir}/alkimia5/m
 
 %files
 %license COPYING.LIB
+%dir %{_kf5_qmldir}/org/
+%dir %{_kf5_qmldir}/org/kde
+%dir %{_kf5_qmldir}/org/kde/alkimia
 %{_kf5_applicationsdir}/org.kde.onlinequoteseditor5.desktop
+%{_kf5_appstreamdir}/org.kde.onlinequoteseditor5.appdata.xml
 %{_kf5_bindir}/onlinequoteseditor5
 %{_kf5_iconsdir}/hicolor/*/apps/onlinequoteseditor5.*
 %{_kf5_knsrcfilesdir}/alkimia-quotes.knsrc
 %{_kf5_knsrcfilesdir}/kmymoney-quotes.knsrc
 %{_kf5_knsrcfilesdir}/skrooge-quotes.knsrc
-%dir %{_kf5_qmldir}/org/
-%dir %{_kf5_qmldir}/org/kde
-%dir %{_kf5_qmldir}/org/kde/alkimia
 %{_kf5_qmldir}/org/kde/alkimia/libqmlalkimia.so
 %{_kf5_qmldir}/org/kde/alkimia/qmldir
 %{_kf5_sharedir}/alkimia5/
