@@ -16,23 +16,38 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+# test suite requires network connection, you can test locally with `rpmbuild --with test`
+%bcond_with test
 Name:           python-protonvpn-nm-lib
-Version:        3.7.0
+Version:        3.11.0
 Release:        0
-Summary:        ProtonVPN NetworkManager library
+Summary:        Proton VPN NetworkManager library
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/ProtonVPN/protonvpn-nm-lib
 Source:         https://github.com/ProtonVPN/protonvpn-nm-lib/archive/refs/tags/%{version}.tar.gz#/protonvpn-nm-lib-%{version}.tar.gz
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyxdg}
-BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  gobject-introspection
 BuildRequires:  python-rpm-macros
+# SECTION check that all runtime requirements are available
+BuildRequires:  NetworkManager-openvpn
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module dbus-python}
+BuildRequires:  %{python_module distro}
+BuildRequires:  %{python_module gobject}
+BuildRequires:  %{python_module keyring}
+BuildRequires:  %{python_module proton-client >= 0.5.0}
+BuildRequires:  %{python_module pyxdg}
+BuildRequires:  %{python_module systemd}
+BuildRequires:  dbus-1-x11
+# /SECTION
+%if %{with test}
+BuildRequires:  %{python_module pytest}
+%endif
 Requires:       NetworkManager-openvpn
 Requires:       dbus-1-x11
 Requires:       python-Jinja2
@@ -47,22 +62,28 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-The ProtonVPN NetworkManager library
+The Proton VPN NetworkManager library
 
 %prep
 %setup -q -n protonvpn-nm-lib-%{version}
+sed -i '/addopts/d' setup.cfg
 
 %build
 %python_build
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{python_sitelib}/protonvpn_nm_lib
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%if %{with test}
+%check
+%pytest
+%endif
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/protonvpn_nm_lib
-%{python_sitelib}/protonvpn_nm_lib-*-py*.*-info
+%{python_sitelib}/protonvpn_nm_lib-%{version}*-info
 
 %changelog

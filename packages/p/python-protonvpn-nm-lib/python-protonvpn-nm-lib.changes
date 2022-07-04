@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jul  1 19:26:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.11.0
+  * Fix: When loading a session from keyring, update the app
+    version and user agent with the current ones
+- Release 3.10.0
+  * Introducing Proton's refreshed look. As we continue to make
+    privacy accessible to everyone, we've updated our apps to
+    provide you with an even better experience with our services.
+    Proton - Privacy by default
+- Release 3.9.0
+  * Fix: Crash when attempting to fetch netzone
+  * Fix: "1000:Permission Denied" error when killswitch is enabled
+- Release 3.8.0
+  * Improve: Server list
+  * Improve: Rename exception
+  * Feature: Moderate NAT, Non Standard Ports
+- Enable local (non-obs) testing when network connection is
+  available
+
+-------------------------------------------------------------------
 Tue May  3 10:38:34 UTC 2022 - Max Lin <mlin@suse.com>
 
 - Requiring python-Jinja2 instead of python-jinja2
