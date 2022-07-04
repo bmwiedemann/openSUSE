@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jun 26 21:55:20 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 1.5.3
+  * Enigma: Fix initial synchronization of private keys
+  * Enigma: Fix double quoted-printable encoding of pgp-signed messages with no attachments (#8413)
+  * Fix various PHP8 warnings (#8392)
+  * Fix mail headers injection via the subject field on mail compose (#8404)
+  * Fix bug where small message/rfc822 parts could not be decoded (#8408)
+  * Fix setting HTML mode on reply/forward of a signed message (#8405)
+  * Fix handling of RFC2231-encoded attachment names inside of a message/rfc822 part (#8418)
+  * Fix bug where some mail parts (images) could have not be listed as attachments (#8425)
+  * Fix bug where attachment icons were stuck at the top of the messages list in Safari (#8433)
+  * Fix handling of message/rfc822 parts that are small and are multipart structures with a single part (#8458)
+  * Fix bug where session could time out if DB and PHP timezone were different (#8303)
+  * Fix bug where DSN flag state wasn't stored with a draft (#8371)
+  * Fix broken encoding of HTML content encapsulated in a RTF attachment (#8444)
+  * Fix problem with aria-hidden=true on toolbar menus in the Elastic skin (#8517)
+  * Fix bug where title tag content was displayed in the body if it contained HTML tags (#8540)
+  * Fix support for DSN specification without host e.g. pgsql:///dbname (#8558)
+
+-------------------------------------------------------------------
 Fri Dec 31 12:03:35 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.5.2

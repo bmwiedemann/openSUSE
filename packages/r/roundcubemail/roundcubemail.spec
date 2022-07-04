@@ -1,7 +1,7 @@
 #
 # spec file for package roundcubemail
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define roundcubeconfigpath %{_sysconfdir}/%{name}
 
 Name:           roundcubemail
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        A browser-based multilingual IMAP client
 License:        BSD-3-Clause AND GPL-2.0-only AND GPL-3.0-or-later
@@ -129,6 +129,8 @@ install %{SOURCE5} %{buildroot}/%{_sysconfdir}/logrotate.d/%{name}
 # extract roundcube-framework
 install -d -m 0755 %{buildroot}/%{_datadir}/php
 mv program/lib/Roundcube %{buildroot}%{_datadir}/php/Roundcube
+# fix path to the roundcube-framework via symlink
+ln -s %{_datadir}/php/Roundcube program/lib/Roundcube
 
 # install roundcubemail
 install -d -m 0755 %{buildroot}/%{roundcubepath}
