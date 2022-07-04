@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul  1 03:07:22 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.034
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  0.034 2022-06-30 10:31:56+02:00
+
+      - Fix parsing empty folded block scalars with trailing linebreaks
+      - Fix error handling (remaining tokens on invalid input)
+      - Support experimental v5.36 booleans
+      - Allow to specify multiple boolean classes (issue #37)
+
+-------------------------------------------------------------------
 Tue Jun 28 03:09:17 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.033
