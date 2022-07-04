@@ -1,7 +1,7 @@
 #
 # spec file for package unique-factory
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,16 @@
 
 
 Name:           unique-factory
-Version:        0~git12
+Version:        0.2.1
 Release:        0
 Summary:        Header-only C++ UniqueFactory
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/flatsurf/unique-factory
-Source:         %name-%version.tar.xz
+Source:         https://github.com/flatsurf/unique-factory/releases/download/%version/%name-%version.tar.gz
 BuildRequires:  autoconf-archive
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  xz
 
 %description
 Header-only C++ UniqueFactory
@@ -44,7 +43,7 @@ Header-only C++ UniqueFactory
 
 %build
 autoreconf -fi
-%configure --disable-static --without-googletest
+%configure --disable-static --without-googletest --without-benchmark
 %make_build
 
 %install
