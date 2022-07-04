@@ -45,4 +45,13 @@
 - Remove obsolete python-flufl.i18n-fix-setup.patch</comment>
     <requestid>948294</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f0a2835a6c5e929971a04a150b02af1c</srcmd5>
+    <version>4.0</version>
+    <time>1656927157</time>
+    <user>dimstar_suse</user>
+    <comment>- Why, oh why, somebody switched of multi-version build? (bsc#1201111)
+</comment>
+    <requestid>986348</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define pythons python3
 Name:           python-flufl.i18n
 Version:        4.0
 Release:        0
