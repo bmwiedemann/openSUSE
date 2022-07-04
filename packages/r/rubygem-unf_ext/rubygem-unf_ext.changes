@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 29 21:01:34 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 0.0.8.2
+
+  * Add x64-mingw-ucrt native gem support for RubyInstaller 3.1.
+
+-------------------------------------------------------------------
 Thu Apr 28 05:53:43 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 0.0.8.1

@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-unf_ext
-Version:        0.0.8.1
+Version:        0.0.8.2
 Release:        0
 %define mod_name unf_ext
 %define mod_full_name %{mod_name}-%{version}
