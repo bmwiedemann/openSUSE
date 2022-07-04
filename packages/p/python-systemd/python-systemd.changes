@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul  3 21:14:35 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Remove exclude-tests-on-obs.patch, this is not the way how to
+  do it, besides %python_exec setup.py check doesn't the test
+  suite.
+- Make tests running properly again
+
+-------------------------------------------------------------------
+Sun Jul  3 18:00:37 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- 0002-reader-make-PY_SSIZE_T_CLEAN.patch added to fix boo#1200686
+  reader: make PY_SSIZE_T_CLEAN
+
+-------------------------------------------------------------------
 Sun Feb  2 14:05:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
