@@ -381,4 +381,27 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
     <comment></comment>
     <requestid>974087</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>dd293091ce47e4ad17795fcfa6d4d835</srcmd5>
+    <version>12.42</version>
+    <time>1656927178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 12.42:
+  * Added support for reading maker notes from Panasonic DC-GH6 videos
+  * Added conversion for Samsung MCCData
+  * Added a new Nikon LensID (thanks Chris)
+  * Added a few new Canon LensType values
+  * Added a couple of new Olympus StackedImage values (thanks Eberhard)
+  * Added a few new values for some Nikon Settings tags (thanks Warren Hatch)
+  * Added a &quot;lang:&quot; element to the -json output for alternate language tags when -D, -H or -t is used
+  * Update DNG writer to not issue an error when writing DNG 1.6 files
+  * Decode information from DJI &quot;ae_dbg_info&quot; maker notes
+  * Decode Olympus AISubjectTrackingMode
+  * Changed ExifTool FileSize print conversion to use kB/MB/GB units instead of KiB/MiB/GiB
+  * Changed &quot;is not shiftable&quot; warning to appear in -v (instead of just -v3) output
+  * Patched to allow PDF Encrypt object to be &quot;null&quot;
+  * Fixed bug reading ICC_Profile 'meta' tags
+</comment>
+    <requestid>986550</requestid>
+  </revision>
 </revisionlist>
