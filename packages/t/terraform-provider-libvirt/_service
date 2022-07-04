@@ -5,7 +5,7 @@
     <param name="filename">terraform-provider-libvirt</param>
     <param name="versionformat">@PARENT_TAG@+git.%ct.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v0.6.11</param>
+    <param name="revision">v0.6.14</param>
     <param name="exclude">.git</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">dmacvicar@suse.de</param>

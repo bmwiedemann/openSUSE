@@ -31,4 +31,12 @@
     <comment>- exclude build for 32bit targets</comment>
     <requestid>967499</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b52b94e01cadd264b8534816ba0d9beb</srcmd5>
+    <version>0.6.14+git.1643667786.ed8e2bbb</version>
+    <time>1656927171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986474</requestid>
+  </revision>
 </revisionlist>

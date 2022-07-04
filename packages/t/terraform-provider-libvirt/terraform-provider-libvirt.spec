@@ -17,7 +17,7 @@
 
 
 Name:           terraform-provider-libvirt
-Version:        0.6.11+git.1631460851.7074fe3c
+Version:        0.6.14+git.1643667786.ed8e2bbb
 Release:        0
 Summary:        Terraform provider for kvm hypervisors via libvirt
 License:        MPL-2.0

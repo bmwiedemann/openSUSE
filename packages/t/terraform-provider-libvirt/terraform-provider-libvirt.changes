@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Jun 29 10:06:14 UTC 2022 - ralf@h4kamp.de
+
+- Update to version 0.6.14+git.1643667786.ed8e2bbb:
+  * use a fork of golang-crypto with RFC8308 patches (#925)
+  * update github.com/digitalocean/go-libvirt
+  * update go to 1.17
+  * update golang.org/x/crypto
+  * qemu-guest-agent network interface query (re)implemented
+  * fix dead links XSLT (#912)
+  * add generated binary under PHONY section for recurring builds to actually happen (#903)
+  * add gomnd linter
+  * cleanup Makfile
+  * Force removal of domains with snapshots or checkpoints (#899)
+  * Support specifying "open" forward mode (#900)
+  * Copy images using a decently-sized buffer (#902)
+  * fetch previous commit
+  * add golangci-lint
+  * remove fmt.Printf calls from tests
+  * ST1005: error strings should not be capitalized (stylecheck)
+  * use short if where possible
+  * missing error check
+  * fix capitalized error lines
+  * SA9003: empty branch (staticcheck)
+  * use const for timeout
+  * stylecheck: ST1016: methods on the same type should have the same receiver name
+  * stylecheck: ST1016: methods on the same type should have the same receiver name
+  * update xz lib
+  * stylecheck: ST1016: methods on the same type should have the same receiver name
+  * Add support for passwords using the SSH URI's (#887)
+  * Support specifying websocket port for VNC
+  * fix: force new domain if graphics changed
+  * S1025: byte slice should use a simple conversion
+  * fix %w usage only supported for functions backed by fmt.Errorf
+  * S1034: assigning the result of this type assertion to a variable
+  * S1021: should merge variable declaration with assignment on next line
+  * ineffectual assignment to err
+  * log.Printf call has error-wrapping directive %w, which is only supported for functions backed by fmt.Errorf
+  * Error return value is not checked
+  * S1021: should merge variable declaration with assignment on next line
+  * Error return value is not checked
+  * unused import
+  * S1021: should merge variable declaration with assignment on next line
+  * S1021: should merge variable declaration with assignment on next line
+  * Error return value is not checked
+  * S1021: should merge variable declaration with assignment on next line
+  * S1021: should merge variable declaration with assignment on next line
+  * simplify
+  * S1021: should merge variable declaration with assignment on next line
+  * Error return value is not checked
+  * Error return value of  is not checked
+  * connect is unused (deadcode)
+  * S1021: should merge variable declaration with assignment on next line
+  * SA4009: argument NVRAMPath is overwritten before first use
+  * Support TPM devices
+
+-------------------------------------------------------------------
 Wed Mar 30 06:55:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - exclude build for 32bit targets 
