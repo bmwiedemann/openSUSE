@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun 29 09:00:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update ot 2022.5.0
+  Enhancements
+  * mutable ReferenceFS (#958)
+  Fixes
+  * Make archive FSs not cachable (#966)
+  * glob fixes (#961)
+  * generic copy with unknown size (#959)
+  * zstd open (#956)
+  * empty archive file (#954)
+  * tar chaining (#950, 947)
+  * missing exceptions in mapper (#940)
+  Other
+  * update registry (#852)
+  * allow None cache (#942)
+  * mappers to remember init arguments (#939)
+  * cache docstrings (#933)
+
+-------------------------------------------------------------------
 Mon Apr  4 09:08:29 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2022.3.0

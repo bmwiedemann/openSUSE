@@ -26,15 +26,14 @@
 %bcond_with test
 %endif
 %define         skip_python2 1
-%define ghversion 2022.3.0
 Name:           python-fsspec%{psuffix}
-Version:        2022.3.0
+Version:        2022.5.0
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
 URL:            https://github.com/fsspec/filesystem_spec
 # the tests are only in the GitHub archive
-Source:         %{url}/archive/%{ghversion}.tar.gz#/fsspec-%{ghversion}.tar.gz
+Source:         %{url}/archive/%{version}.tar.gz#/fsspec-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
 BuildRequires:  %{python_module setuptools}
@@ -86,7 +85,7 @@ BuildRequires:  %{python_module zstandard}
 A specification for pythonic filesystems.
 
 %prep
-%autosetup -p1 -n filesystem_spec-%{ghversion}
+%autosetup -p1 -n filesystem_spec-%{version}
 
 %build
 %python_build
