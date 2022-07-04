@@ -1584,4 +1584,28 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>972881</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>2b41b7fac2273ce1a8c90a0277221320</srcmd5>
+    <version>2.5.30</version>
+    <time>1656927149</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.30 release
+  - ptp2:
+    * Canon: fixed display locking/unlocking after exit
+    * generic: avoid potential crash on image addition
+    * Sony: Add image information when wait_for_event, some config values added
+    * Added IDs:
+      * Nikon Zfc, Z9
+      * Sony DSC-WX220, Alpha-A7 IV
+      * Nikon P950
+      * Canon EOS Rebel T8i
+      * Fuji Fujifilm X-E4
+      * GoPro HERO10 Black
+  - general:
+    * fix parallel builds by requiring gettext 0.19.1 for builds from git (PR #797)
+    * add gp_init_localedir() function to allow for non-standard installations (PR #796)
+  - translations:
+    * updated traditional chinese</comment>
+    <requestid>986347</requestid>
+  </revision>
 </revisionlist>
