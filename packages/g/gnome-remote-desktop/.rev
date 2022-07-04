@@ -105,4 +105,12 @@ need to be staged with libVNCServer sr#862644 (forwarded request 862647 from fcr
     <comment>GNOME 42.2 (forwarded request 979892 from dimstar)</comment>
     <requestid>980030</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>62f4be6b734be7fb1b00984e765b7747</srcmd5>
+    <version>42.3</version>
+    <time>1656928145</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 986487 from iznogood)</comment>
+    <requestid>986583</requestid>
+  </revision>
 </revisionlist>
