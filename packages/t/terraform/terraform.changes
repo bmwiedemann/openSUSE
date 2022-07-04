@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 29 18:23:23 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to 1.2.4:
+  * ENHANCEMENTS:
+    - Improved validation of required_providers to prevent single providers from being required with multiple names. (#31218)
+    - Improved plan performance by optimizing addrs.Module.String for allocations. (#31293)
+  * BUG FIXES:
+    - backend/http: Fixed bug where the HTTP backend would fail to retry acquiring the state lock and ignored the -lock-timeout flag. (#31256)
+    - Fix crash if a precondition or postcondition block omitted the required condition argument. (#31290)
+
+-------------------------------------------------------------------
 Wed Jun 22 07:58:20 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - Update to 1.2.3:
