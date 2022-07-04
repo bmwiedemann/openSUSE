@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 30 07:43:44 UTC 2022 - Daniel García Moreno <dani@danigm.net>
+
+- add xml-to-dict-0.13.patch: 
+  * fix tests with xmltodict 0.13.0 version
+
+-------------------------------------------------------------------
 Wed Jan 20 16:02:14 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add Suggests for optional dependencies

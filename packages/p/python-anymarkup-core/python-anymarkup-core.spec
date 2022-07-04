@@ -1,7 +1,7 @@
 #
 # spec file for package python-anymarkup-core
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 SUSE Software Solutions Germany GmbH.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/bkabrda/anymarkup-core
 Source0:        https://github.com/bkabrda/anymarkup-core/archive/v%{version}/anymarkup-core-%{version}.tar.gz
+Patch0:         xml-to-dict-0.13.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -54,6 +55,7 @@ python-anymarkup.
 
 %prep
 %setup -q -n anymarkup-core-%{version}
+%autopatch -p1
 
 %build
 %python_build

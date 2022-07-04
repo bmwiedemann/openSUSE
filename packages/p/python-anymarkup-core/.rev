@@ -7,4 +7,13 @@
     <comment>FROM Backports:SLE-15-SP3</comment>
     <requestid>865378</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9475d003d4607c04fccd8fc13c13b8dd</srcmd5>
+    <version>0.8.1</version>
+    <time>1656927164</time>
+    <user>dimstar_suse</user>
+    <comment>- add xml-to-dict-0.13.patch: 
+  * fix tests with xmltodict 0.13.0 version</comment>
+    <requestid>986471</requestid>
+  </revision>
 </revisionlist>
