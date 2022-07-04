@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 29 20:07:14 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Include ws-discovey-udp service from firewalld 1.0 as part of wsdd.xml
+
+-------------------------------------------------------------------
 Thu Feb 24 16:36:40 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add CONFIG parameter to %sysusers_generate_pre

@@ -1,7 +1,7 @@
 #
 # spec file for package wsdd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,9 @@ Source3:        %{name}.xml
 Source4:        sysconfig.%{name}
 Source5:        %{name}.conf
 Source6:        %{name}-user.conf
+%if 0%{suse_version} < 1599
+Source7:        ws-discovery-udp.xml
+%endif
 Patch1:         %{name}-shebang.patch
 BuildRequires:  firewall-macros
 BuildRequires:  python3
@@ -61,6 +64,9 @@ install -m 755 -D %{SOURCE1} %{buildroot}%{_libexecdir}/wsdd-init.sh
 mkdir -p %{buildroot}%{_unitdir}
 sed 's#@LIBEXECDIR@#%{_libexecdir}#' %{SOURCE2} >%{buildroot}%{_unitdir}/wsdd.service
 install -m 644 -D %{SOURCE3} %{buildroot}%{_prefix}/lib/firewalld/services/wsdd.xml
+%if 0%{suse_version} < 1599
+install -m 644 -D %{SOURCE7} %{buildroot}%{_prefix}/lib/firewalld/services/ws-discovery-udp.xml
+%endif
 install -m 644 -D %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.wsdd
 install -m 755 -d %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
@@ -98,6 +104,9 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services
 %{_prefix}/lib/firewalld/services/wsdd.xml
+%if 0%{suse_version} < 1599
+%{_prefix}/lib/firewalld/services/ws-discovery-udp.xml
+%endif
 %{_fillupdir}/sysconfig.%{name}
 %{_sysusersdir}/%{name}-user.conf
 %dir %attr(0755,wsdd,wsdd) %ghost /run/%{name}
