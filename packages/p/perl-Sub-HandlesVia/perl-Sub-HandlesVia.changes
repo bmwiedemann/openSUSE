@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 30 03:06:38 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.027
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.027	2022-06-30
+   [ Test Suite ]
+   - Skip Mite test on Perl < 5.10.1
+  0.026	2022-06-30
+   - Added: Support classes built with Mite.
+
+-------------------------------------------------------------------
 Fri Jun 17 03:08:03 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.025
