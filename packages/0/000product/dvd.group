@@ -3543,7 +3543,6 @@
     <package name="python3-cupshelpers" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-firewall" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python3-flufl.bounce" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python3-flufl.i18n" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-gedit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-ldb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python3-louis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3646,6 +3645,7 @@
     <package name="python310-fastparquet" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-filetype" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-fixtures" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="python310-flufl.i18n" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python310-flufl.lock" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python310-frozenlist" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-fs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->

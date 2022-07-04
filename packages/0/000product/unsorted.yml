@@ -23774,6 +23774,7 @@ unsorted:
   - python310-pname 
   - python310-podcastparser 
   - python310-podman 
+  - python310-podman-compose 
   - python310-poetry 
   - python310-poetry-core 
   - python310-polib 
@@ -24287,6 +24288,7 @@ unsorted:
   - python310-reconfigure 
   - python310-redbaron 
   - python310-redfish 
+  - python310-reedsolo 
   - python310-regex: [i586] 
   - python310-relatorio 
   - python310-releases 
@@ -26122,6 +26124,7 @@ unsorted:
   - python38-flit-core 
   - python38-flower 
   - python38-fluent 
+  - python38-flufl.i18n 
   - python38-flufl.lock 
   - python38-flufl.testing 
   - python38-fluidity-sm 
@@ -26962,6 +26965,7 @@ unsorted:
   - python38-pname 
   - python38-podcastparser 
   - python38-podman 
+  - python38-podman-compose 
   - python38-poetry 
   - python38-poetry-core 
   - python38-polib 
@@ -27517,6 +27521,7 @@ unsorted:
   - python38-redbaron 
   - python38-redfish 
   - python38-redis 
+  - python38-reedsolo 
   - python38-regex 
   - python38-relatorio 
   - python38-releases 
@@ -29401,6 +29406,7 @@ unsorted:
   - python39-flit-core 
   - python39-flower 
   - python39-fluent 
+  - python39-flufl.i18n 
   - python39-flufl.lock 
   - python39-flufl.testing 
   - python39-fluidity-sm 
@@ -30241,6 +30247,7 @@ unsorted:
   - python39-pname 
   - python39-podcastparser 
   - python39-podman 
+  - python39-podman-compose 
   - python39-poetry 
   - python39-poetry-core 
   - python39-polib 
@@ -30795,6 +30802,7 @@ unsorted:
   - python39-redbaron 
   - python39-redfish 
   - python39-redis 
+  - python39-reedsolo 
   - python39-regex 
   - python39-relatorio 
   - python39-releases 
