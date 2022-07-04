@@ -16,6 +16,7 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -26,15 +27,13 @@
 %bcond_with test
 %endif
 Name:           python-podman%{psuffix}
-Version:        3.2.1
+Version:        4.0.0
 Release:        0
 Summary:        A library to interact with a Podman server
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/containers/podman-py
 Source:         https://github.com/containers/podman-py/archive/refs/tags/v%{version}.tar.gz#/podman-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: https://github.com/containers/podman-py/pull/154.patch
-Patch1:         python310.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pytoml}
 BuildRequires:  %{python_module pyxdg}
@@ -72,7 +71,6 @@ A library to interact with a Podman server
 
 %prep
 %setup -q -n podman-py-%{version}
-%patch1 -p1
 
 %build
 %python_build

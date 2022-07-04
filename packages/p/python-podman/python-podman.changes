@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun 30 06:31:58 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.0.0
+  * Remove support for old (ApiConnection) API
+  * Update CI to use copr and release podman packages for testing
+  * Port code to support Podman 4.0.0 API changes
+  * Added support for Python 3.10
+  * lint scrub and correction of code
+  * Bug fixes
+  * Move to tox for development support
+  * Move to pytest from nose for test execution
+  * Support testing python 3.6,3.8-3.10
+  * Allow passing string values to memory limits
+
+- remove patch python310.patch 
+
+-------------------------------------------------------------------
+Wed Jun 29 15:13:29 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- disable building for python2
+
+-------------------------------------------------------------------
 Mon Feb 21 08:55:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.1:
