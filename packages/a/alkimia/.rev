@@ -99,4 +99,14 @@
   * 0001-Add-missing-QUrl-include-with-DBUILD_WITH_WEBENGINE.patch</comment>
     <requestid>889064</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1a6993d70f35499809d990f6db777e53</srcmd5>
+    <version>8.1.1</version>
+    <time>1656927177</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.1.1. No changelog.
+- Drop patch, fixed upstream:
+  * 0001-Add-missing-QUrl-include-with-DBUILD_WITH_WEBENGINE.patch</comment>
+    <requestid>986551</requestid>
+  </revision>
 </revisionlist>
