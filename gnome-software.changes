@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 30 20:16:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.3:
+  + Fix some crashes when handling flatpaks.
+  + Fix incorrectly showing a restart notification after a failed
+    firmware update.
+  + Fix a mismatch between app review ratings at the top and bottom
+    of the page.
+  + Fix prompt dialogs when updating firmware on devices which need
+    user interaction.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Jun 23 13:46:51 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Ship software-opensuse.gschema.override, declaring the
