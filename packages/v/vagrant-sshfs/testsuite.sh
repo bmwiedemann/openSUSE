@@ -7,21 +7,21 @@ function cleanup {
     vagrant destroy -f || true
     popd
 
-    fusermount -uz /tmp/reverse_mount_etc || true
+    fusermount -uz /tmp/reverse_mount_etc_uid_gid || true
 
     vagrant destroy -f || true
 
-    rmdir /tmp/reverse_mount_etc
+    rmdir /tmp/reverse_mount_etc_uid_gid/
     rm -rf .vagrant "${OTHER_MACHINE_DIR}"
 }
 
 trap cleanup EXIT
 
-mkdir /tmp/reverse_mount_etc 2>/dev/null
+mkdir /tmp/reverse_mount_etc_uid_gid 2>/dev/null
 if [ $? -ne 0 ]; then
-    OWNER=$(stat -c '%U' /tmp/reverse_mount_etc)
+    OWNER=$(stat -c '%U' /tmp/reverse_mount_etc_uid_gid)
     if [ "$OWNER" != "$USER" ]; then
-        echo "/tmp/reverse_mount_etc already exists and is owned by a different user. refusing to continue" 1>&2
+        echo "/tmp/reverse_mount_etc_uid_gid already exists and is owned by a different user. refusing to continue" 1>&2
         exit 1
     fi
 fi
@@ -47,7 +47,7 @@ SLAVE_FORWARD_SYMLINK_MACHINE_ID=$(vagrant ssh -- cat /run/forward_slave_mount_s
 
 FORWARD_MACHINE_ID=$(vagrant ssh -- cat /tmp/forward_normal_mount_etc/machine-id)
 
-REVERSE_MACHINE_ID=$(cat /tmp/reverse_mount_etc/machine-id)
+REVERSE_MACHINE_ID=$(cat /tmp/reverse_mount_etc_uid_gid/machine-id)
 
 vagrant destroy -f
 

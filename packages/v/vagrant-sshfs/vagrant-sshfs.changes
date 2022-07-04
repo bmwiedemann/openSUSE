@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  1 12:33:19 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix testsuite.sh: Follow changes of version 1.3.7, use
+  reverse_mount with uid/gid (boo#1200894).
+
+-------------------------------------------------------------------
 Tue Jun 21 08:43:04 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 1.3.7

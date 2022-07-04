@@ -1,5 +1,5 @@
 #
-# spec file for package vagrant-sshfs
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global rb_build_versions %rb_default_ruby
 %global rb_build_abi %rb_default_ruby_abi
