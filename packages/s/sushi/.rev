@@ -422,4 +422,12 @@
     <comment> (forwarded request 967686 from iznogood)</comment>
     <requestid>967857</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>eed08b5d3bb32688da424a56217c433c</srcmd5>
+    <version>42.0</version>
+    <time>1656928144</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 986292 from iznogood)</comment>
+    <requestid>986575</requestid>
+  </revision>
 </revisionlist>

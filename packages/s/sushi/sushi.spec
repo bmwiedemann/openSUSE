@@ -19,13 +19,13 @@
 %global __requires_exclude typelib\\(LOKDocView\\)
 
 Name:           sushi
-Version:        41.2
+Version:        42.0
 Release:        0
 Summary:        Quick Previewer for Nautilus
 License:        SUSE-GPL-2.0-with-plugin-exception
 Group:          Productivity/File utilities
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/sushi/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/sushi/42/%{name}-%{version}.tar.xz
 Source99:       sushi-rpmlintrc
 
 BuildRequires:  meson
