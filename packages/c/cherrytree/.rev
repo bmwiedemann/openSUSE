@@ -1410,4 +1410,36 @@
     <comment></comment>
     <requestid>971857</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a0768fd3cdf3a79fc98183311ae16029</srcmd5>
+    <version>0.99.48</version>
+    <time>1656928141</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.99.48:
+  * Added support for right to left languages in export to html and
+    pdf (gh#giuspen/cherrytree#2044, gh#giuspen/cherrytree#1668
+    and gh#giuspen/cherrytree# #698).
+  * In order to support the right to left languages in export to
+    html, the resulting html text lines are no longer LINE&lt;br/&gt; but
+    &lt;p&gt;LINE&lt;/p&gt;.
+  * Fixed in export to pdf the link to node+anchor with non ascii
+    anchor name.
+  * Improved detection of missing executables required for
+    rendering LatexBoxes. These dependencies are no longer
+    mandatory (gh#giuspen/cherrytree#2033).
+  * Added help to the user to show again a hidden menubar
+    (gh#giuspen/cherrytree#1927 and gh#giuspen/cherrytree#2054).
+  * Pressing Tab on the very latest table cell now adds a new table
+    line and moves to its first cell.
+  * Fixed issue with relative links to files and folders and
+    documents moved between linux and windows.
+  * In export to html and txt multiple files, now appending the
+    node id to the file names to support multiple nodes with the
+    same name.
+  * Added syntax highlight support for solidity
+    (gh#giuspen/cherrytree#2030).
+  * After issues with the domain giuspen.com, the domain changed to
+    giuspen.net and giuspen.com will eventually go. (forwarded request 985963 from malcolmlewis)</comment>
+    <requestid>986588</requestid>
+  </revision>
 </revisionlist>

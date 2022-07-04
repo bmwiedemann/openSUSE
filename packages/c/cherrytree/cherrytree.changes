@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jun 29 23:50:37 UTC 2022 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.48:
+  * Added support for right to left languages in export to html and
+    pdf (gh#giuspen/cherrytree#2044, gh#giuspen/cherrytree#1668
+    and gh#giuspen/cherrytree# #698).
+  * In order to support the right to left languages in export to
+    html, the resulting html text lines are no longer LINE<br/> but
+    <p>LINE</p>.
+  * Fixed in export to pdf the link to node+anchor with non ascii
+    anchor name.
+  * Improved detection of missing executables required for
+    rendering LatexBoxes. These dependencies are no longer
+    mandatory (gh#giuspen/cherrytree#2033).
+  * Added help to the user to show again a hidden menubar
+    (gh#giuspen/cherrytree#1927 and gh#giuspen/cherrytree#2054).
+  * Pressing Tab on the very latest table cell now adds a new table
+    line and moves to its first cell.
+  * Fixed issue with relative links to files and folders and
+    documents moved between linux and windows.
+  * In export to html and txt multiple files, now appending the
+    node id to the file names to support multiple nodes with the
+    same name.
+  * Added syntax highlight support for solidity
+    (gh#giuspen/cherrytree#2030).
+  * After issues with the domain giuspen.com, the domain changed to
+    giuspen.net and giuspen.com will eventually go.
+
+-------------------------------------------------------------------
 Thu Apr 21 06:59:28 UTC 2022 - info@paolostivanin.com
 
 - Update to version 0.99.47+2:

@@ -17,7 +17,7 @@
 
 
 Name:           cherrytree
-Version:        0.99.47+2
+Version:        0.99.48
 Release:        0
 Summary:        A hierarchical note taking application
 License:        GPL-3.0-or-later AND LGPL-2.1-only
@@ -70,7 +70,7 @@ rm %{buildroot}%{_datadir}/mime-info/cherrytree.*
 %doc changelog.txt
 %{_bindir}/cherrytree
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/com.giuspen.cherrytree.metainfo.xml
+%{_datadir}/metainfo/net.giuspen.cherrytree.metainfo.xml
 %{_datadir}/applications/cherrytree.desktop
 %{_datadir}/cherrytree/
 %{_datadir}/icons/hicolor/scalable/apps/cherrytree.svg
