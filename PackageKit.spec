@@ -54,6 +54,8 @@ Patch3:         PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.
 Patch4:         PackageKit-fix-crash-pre-dbus.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-locked-packages.patch gh#hughsie/PackageKit#543, boo#1199895 sckang@suse.com -- zypp: ignore locked packages
 Patch5:         PackageKit-zypp-locked-packages.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-add-upgrade-system.patch gh#hughsie/PackageKit/commit/930dd201b sckang@suse.com -- zypp: implement upgrade-system method
+Patch6:         PackageKit-zypp-add-upgrade-system.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

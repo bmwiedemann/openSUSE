@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  1 03:34:35 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-add-upgrade-system.patch: implement
+  upgrade-system method(gh#hughsie/PackageKit/commit/930dd201b).
+
+-------------------------------------------------------------------
 Thu May 26 07:25:04 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-zypp-locked-packages.patch: zypp: ignore locked
