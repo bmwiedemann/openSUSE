@@ -1,4 +1,181 @@
 -------------------------------------------------------------------
+Tue Jun 28 19:02:14 UTC 2022 - Torsten Gruner <simmphomnie@opensuse.org>
+
+- update to 3.3.1
+  * New Features
+    + Added stub flasher support for ESP32-C2 ECO1, deprecated ECO0 stub (can still be used with ROM)
+  * espefuse.py
+    + Added a new package - ESP32-D0WDR2-V3
+  * Bug Fixes
+    + Fixed ESP32-S3 USB-OTG compressed flashing
+
+- version 3.3
+  * New Features
+    + Added flash size options up to 128MB. (#680)
+    + Added stub flasher support for ESP32-C2.
+    + Added --flash-mmu-page-size option to change flash MMU page size on ESP32-C2.
+    + Added address and dummy cycles configuration to SPI flash commands, allowed reading flash SFDP registers.
+    + Added target-specific flash frequency options.
+  * espsecure.py
+    + Added support for ECDSA P192 and P256 signatures in Secure Boot V2.
+    + Refined Secure Boot V2 ECC support.
+    + Added support for XTS_AES_128 using 128 bit key FE scheme.
+  * espefuse.py
+    + Added execute_scripts nesting support, a script can now be called from another script.
+    + Added ESP32-C2 espefuse.py support.
+    + Fixed power-out time for VDDQ settings for ESP32-S3.
+    + Removed dysfunctional JTAG_SEL_ENABLE on ESP32-C3.
+    + Removed unused eFuse fields on ESP32-C3 and ESP32-H2.
+    + Added execute_scripts error handling in script files. (espressif/esp-idf#8420)
+    + Added support for running multiple commands at once.
+    + Added checks for secure download mode.
+    + Added a recovery option to fix eFuse blocks after encoding errors.
+  * Internal features
+    These features are intended for use inside Espressif:
+    + Preview support for ESP32-H2-beta2 has been added. This SoC is not generally available,
+      so it is unsupported in this release. Official support will be added in a later esptool.py release.
+  * Bug Fixes
+    + Fixed autodetection on ESP32-S2 in USB-OTG mode. (#685)
+    + Fixed flash.rodata not being recognized as part of IRAM in the ELF parser.
+    + Fixed wrong UART_RXFIFO_CNT_M mask values in the stub flasher.
+    + Added overerase detection and a fix sequence for certain XMC flash chips.
+    + Allowed USB PID detection for USB-JTAG-Serial mode on lowercase port names.
+    + Fixed chip autodetection to work in secure download mode.
+    + Fixed wrong firmware image being returned for beta chips.
+    + Fixed a wrong bootloader flashing offset on ESP32-S3. (#728)
+  * Miscellaneous Changes
+    + Launched a new self-hosted esptool.py documentation and heavily updated its contents.
+    + Renamed the ESP8684 target to ESP32-C2 (added alias for compatibility).
+    + Added a warning for flash sizes that are not supported by the stub flasher.
+
+- version 3.2
+  * New Features
+    + Support for ESP32-S3 SoC has been added (removed ESP32-S3-beta3).
+    + Added USB-JTAG-Serial and USB-CDC support for ESP32-S3.
+    + Added a check to disable stub when connecting to an unsupported chip.
+    + Added boot log detection and context of failures logging.
+    + Improved error messages to cover more cases and provide more information.
+    + Added get_security_info command stub support.
+    + Augmented chip autodetection to work even in secure download mode. (ESP32-C3 and later only)
+    + Added flash chip connection verification check.
+    + Added ESP8266 version 3 image format support.
+  * espsecure.py
+    + Added option for 512bit keys for encrypt_flash_data.
+  * espefuse.py
+    + Added a new command which can execute custom python scripts to burn efuses all at once.
+    + Added ESP32-S2 flash_ver, psram_ver, and pkg_ver efuses.
+    + Corrected lenght of soft_dis_jtag efuse.
+    + Added custom_mac eFuse field for ESP32-C3/-S2/-S3/-H2.
+    + Added a check for read_protect_efuse. (#640)
+    + Added support for 512bit XTS_AES flash encryption key.
+    + Added a step to close the serial port after espefuse operations. (#671)
+    + Added a security confirmation flag to espefuse tests. (#677)
+  * Internal features
+    These features are intended for use inside Espressif:
+    - Preview support for ESP32-H2 and ESP8684 has been added. These SoCs are not generally available,
+      so they are unsupported in this release. Official support will be added in a later esptool release.
+    - Added automatic delay for boot time after ESP32 reset in FPGA.
+  * Bug Fixes
+    + Fixed build from sources (require wheel only when installing from pip). (#632)
+    + Fixed failing flashing process on some supported chips. (#635)
+    + Fixed ESP32-C3 package detection. (#638, #639)
+    + Fixed test child processes being blocked waiting for the OS pipe buffer to accept more data. (#637)
+    + Fixed MacOS USB PID detection on tty and cu ports.
+    + Fixed erroneous comparison when handling deflated data. (#650)
+  * Miscellaneous Changes
+    + Changed unnecessarily alarming error to a warning. (#631)
+    + Removed ESP32 rev0 connection workaround.
+    + Added a readable error and a use example to merge_bin.
+
+- version 3.1
+  * New Features
+    + Support for ESP32-C3 SoC has been added
+    + Added --encrypt-files option to specify which files need encryption before flashing.
+    + Added --use_segments option for elf2image to use segments instead of sections to generate the image. (#546)
+    + Improved the write_flash timeout calculation and status message.
+    + Support for detecting ESP8285 versions -N08, -N16, -H08, and -H16 has been added.
+    + Added support for all write_reg command forms (including delay and mask parameters) to flasher stub.
+    + Added merge_bin command to combine binary files on host (#254, #568)
+    + Extended the --min-rev argument of elf2image to work on all chips apart from ESP8266.
+    + Added diagnostic warnings about the memory regions needing to be erased during a flash write (#306)
+    + Added --after no_reset_stub option to keep the flasher stub running and allow its repeated usage.
+    + Added support for the USB-JTAG-Serial peripheral of ESP32-C3.
+  * espsecure.py
+    + Added custom command-line argument to allow calling from other Python scripts.
+    + Added --aes-xts option to encrypt/decrypt flash data files with AES-XTS algorithm on the S2 and C3.
+    + Fixed handling of files to forbid empty output and re-writing input.
+  * espefuse.py
+    + Added custom command-line argument to allow calling from other Python scripts.
+    + Added security measures to prevent burning custom multicast MAC address. (#472)
+    + Fixed errors when burning and read-protecting an efuse at the same time (#584)
+    + Fixed burning of SPI pins configuration efuses (#216)
+  * Internal features
+    These features are intended for use inside Espressif:
+    - Support for ESP32-S3-beta3 & ESP32-C6-beta have been added. These SoCs are not generally available,
+      so they are unsupported in this release. Official support will be added in a later esptool release.
+    - Support for 32-bit addressing to enable 32/64MB flash memory chips on the S3.
+  * Bug Fixes
+    + Fixed error outputs when installing from pip.
+    + Increased the timeout for writing to flash to improve stability (#577, #533)
+    + Fixed failing dump_mem overall bytes read message.
+    + Allowed the write_mem mask argument to be optional to match with its usage example on Wiki.
+    + Ensured expand_file_arguments gets called when using custom command-line arguments. (#400)
+    + Fixed SecureBoot v2 public key extraction (#623)
+  * Miscellaneous Changes
+    + Decomposed port detection logic.
+    + Added flushing after each command before waiting for a reply.
+    + Made it easier to use esptool.py as a component by permitting passing an already formed esp object to main() (#402)
+    + Added function to merge adjacent sections in elf2image for the use case of linker scripts that have a large number of sections.
+    + Decoupled esptool reset logic for easier monkey-patching (#508)
+
+- version 3.0
+  * Breaking changes
+    + The default esptool.py write_flash --flash_size argument has changed from detect to keep.
+      This means that if no --flash_size argument is passed when flashing a bootloader, the value
+      in the bootloader .bin file header is kept instead of detecting the actual flash size and
+      updating the header. To keep the old behaviour, add the argument esptool.py [...] write_flash [...] -fs detect
+    + espefuse.py command line arguments for ESP32 have changed:
+      - BLK1, BLK2, BLK3 is now BLOCK1, BLOCK2, BLOCK3`
+      - The key usage secure_boot has been replaced with secure_boot_v1, secure_boot_v2.
+        Secure Boot V2 is the new RSA-based Secure Boot mechanism supported on ESP32 V3.
+  * New Features
+    + Support for ESP32-S2 SoC has been added
+    + Support for detecting ESP32-PICO-V3-02 and ESP32-U4WDH have been added
+    + New --connect-attempts argument (#464)
+    + Fixed scrolling problems when output is redirected (for example in Arduino IDE, see discussion at #482)
+    + Produce a meaningful error if the SoC we connect to doesn't match the --chip argument
+    + Support different capitalization and spelling for --chip argument (ie -c ESP32, -c esp32-s2, etc.
+    + Added dedicated program esp_rfc_2217_server.py for flashing via RFC2217 (i.e. flashing over the network, #383)
+  * espsecure.py
+    + Added support for Secure Boot V2 (ESP32 V3, ESP32-S2)
+    + Secure Boot V1: PKCS8 formatted ECDSA keys are now supported via ecdsa library (not including password protected keys)
+  * espefuse.py
+    + Added ESP32 ECO3 efuse UART_DOWNLOAD_DIS
+    + Added new batch burn mode, support burning more than one eFuse on a single command line
+    + espefuse.py internals have been refactored to support multiple chips, produce more information about
+      which eFuses are being written to which values.
+    + "Virtual" mode added for host-based testing, allows updating eFuse values on a "virtual" chip inside the host.
+  * Internal features
+    + These features are intended for use inside Espressif:
+      Support for ESP32-S3beta2 & ESP32-C3 have been added. These SoCs are not currently available
+      outside Espressif, so these SoCs are unsupported in this release. Official support will be
+      added in a later esptool release.
+      esptool.py --no-stub read_flash is now supported on ESP32 and later. This option
+      is slower than using the default stub option to read flash, so it's generally not useful for production SoCs.
+  * Bug Fixes
+    + Added temporary workaround for a pyserial failure on macOS Big Sur Preview (#540)
+    + Fixed gcc9 warning in the stub (#501)
+    + Fixed some memory types printed in the memory map output
+    + Fixed the check for zero bytes before applying an ELF SHA-256 with elf2image --elf-sha256-offset option (#560)
+    + Fixed displaying some single core ESP32 features incorrectly, i.e. ESP32-S0WD
+    + Fixed exception on Python 3 if the same flash address was repeated twice (#558)
+  * Miscellanous Changes
+    + Updated miniz to v2.1.0 (#500)
+    + Moved ESP32 stub loader location to facilitate loading large applications direct to IRAM
+    + Vendored modules ecdsa, pyaes and optional pycrypto have been removed. Pyaes has been replaced
+      with the pyca-cryptography library
+
+-------------------------------------------------------------------
 Tue May 26 06:34:07 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

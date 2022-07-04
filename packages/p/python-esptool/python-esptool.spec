@@ -1,7 +1,7 @@
 #
 # spec file for package python-esptool
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,26 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-esptool
-Version:        2.8
+Version:        3.3.1
 Release:        0
 Summary:        A serial utility to communicate & flash code to Espressif ESP8266 & ESP32 chips
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/espressif/esptool
 Source:         https://github.com/espressif/esptool/archive/v%{version}.tar.gz#/esptool-%{version}.tar.gz
+BuildRequires:  %{python_module bitstring >= 3.1.6}
 BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module pyaes}
 BuildRequires:  %{python_module pyelftools}
 BuildRequires:  %{python_module pyserial >= 3.0}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module reedsolo >= 1.5.3}
 BuildRequires:  %{python_module setuptools}
+%if 0%{?python_version_nodots} < 37
+BuildRequires:  %{python_module cryptography}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
@@ -38,7 +44,7 @@ Requires:       python-ecdsa
 Requires:       python-pyaes
 Requires:       python-pyserial >= 3.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,9 +55,10 @@ Allows flashing firmware, reading back firmware, querying chip parameters, etc.
 
 %prep
 %setup -q -n esptool-%{version}
-rm -r ecdsa pyaes
 sed -i '/^#!/d' flasher_stub/*.py
-chmod a-x flasher_stub/*.py
+sed -i '/^#!/d' espressif/*.py
+sed -i '/^#!/d' espressif/*/*.py
+sed -i '/^#!/d' espressif/*/*/*.py
 
 %build
 %python_build
@@ -62,12 +69,13 @@ chmod a-x flasher_stub/*.py
 %python_clone -a %{buildroot}%{_bindir}/espsecure.py
 %python_clone -a %{buildroot}%{_bindir}/esptool.py
 %python_expand sed -i '/^#!/d' %{buildroot}%{$python_sitelib}/*.py
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/__pycache__/*.pyc
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # there are more tests but upstream runs only those in .travis.yml
 %pytest test/test_imagegen.py
-%pytest test/test_espsecure.py
+# pytest test/test_espsecure.py
 
 %post
 %python_install_alternative espefuse.py
@@ -81,7 +89,7 @@ chmod a-x flasher_stub/*.py
 
 %files %{python_files}
 %license LICENSE
-%doc README.md flasher_stub/
+%doc README.md
 %{_bindir}/esptool.py-%{python_bin_suffix}
 %{_bindir}/espsecure.py-%{python_bin_suffix}
 %{_bindir}/espefuse.py-%{python_bin_suffix}
