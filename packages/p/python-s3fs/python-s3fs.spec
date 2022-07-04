@@ -19,14 +19,14 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-s3fs
-Version:        2022.3.0
+Version:        2022.5.0
 Release:        0
 Summary:        Python filesystem interface for S3
 License:        BSD-3-Clause
 URL:            https://github.com/fsspec/s3fs/
 Source:         https://files.pythonhosted.org/packages/source/s/s3fs/s3fs-%{version}.tar.gz
 BuildRequires:  %{python_module Flask}
-BuildRequires:  %{python_module aiobotocore >= 2.1.0}
+BuildRequires:  %{python_module aiobotocore >= 2.3.0}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module fsspec = %{version}}
@@ -36,10 +36,7 @@ BuildRequires:  %{python_module pytest-env}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with python2}
-BuildRequires:  python-mock
-%endif
-Requires:       python-aiobotocore >= 2.1.0
+Requires:       python-aiobotocore >= 2.3.0
 Requires:       python-aiohttp
 Requires:       python-fsspec = %{version}
 Recommends:     aws-cli
@@ -63,9 +60,11 @@ chmod -x s3fs.egg-info/*
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_anonymous_access - online test
-# test_async_close - online test
-%pytest -k 'not (test_anonymous_access or test_async_close)'
+# online test (not mocked through moto)
+donttest="test_async_close"
+# not deleting fast enough obs serverside
+donttest+=" or test_s3_big_ls"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.rst
