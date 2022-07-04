@@ -1,3 +1,5 @@
 addFilter("zero-length")
 addFilter("non-standard-gid")
 addFilter("non-standard-uid")
+addFilter("spurious-executable-perm .*example_project/wsgi.py")
+addFilter("hidden-file-or-dir .*example_project/logs/.keep")

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jul  3 20:46:20 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add hyperkitty-fix-py310-tests.patch
+  * Fix test failures on Python 3.10 (and Python 3.9.13)
+  * https://gitlab.com/mailman/hyperkitty/-/issues/401
+  * https://gitlab.com/mailman/hyperkitty/-/merge_requests/381
+  * https://gitlab.com/mailman/hyperkitty/-/merge_requests/449
+
+-------------------------------------------------------------------
+Sat Jul  2 06:12:09 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix django warning that timeout is bigger than retry
+  * Added hyperkitty-fix-qcluster-timeout.patch
+
+-------------------------------------------------------------------
 Fri Jun 10 08:14:18 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - First Make migrations on update, then call migrate

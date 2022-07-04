@@ -63,6 +63,10 @@ Patch1:         hyperkitty-fix-mistune-2.0-imports.patch
 Patch2:         hyperkitty-django4.patch
 # https://gitlab.com/mailman/hyperkitty/-/issues/429
 Patch3:         python-HyperKitty-no-mock.patch
+# https://gitlab.com/mailman/hyperkitty/-/commit/3edc0c58b8dea3b0bdccd77c0794ada28d1c6f61
+Patch4:         hyperkitty-fix-qcluster-timeout.patch
+# https://gitlab.com/mailman/hyperkitty/-/merge_requests/381 + https://gitlab.com/mailman/hyperkitty/-/merge_requests/449
+Patch5:         hyperkitty-fix-py310-tests.patch
 #
 BuildRequires:  %{python_module django-debug-toolbar >= 2.2}
 BuildRequires:  %{python_module isort}
@@ -162,6 +166,8 @@ rsync -a example_project/* build_static_files
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 sed -i 's|^#!/usr/bin/env.*|#!%{_bindir}/python3|' \
