@@ -1,7 +1,7 @@
 #
 # spec file for package python-sigal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sigal
-Version:        2.1.1
+Version:        2.3
 Release:        0
 Summary:        Static gallery generator
 License:        MIT
@@ -51,7 +51,7 @@ Requires:       python-click
 Requires:       python-natsort
 Requires:       python-pilkit
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-boto
 Suggests:       python-Brotli
 Suggests:       python-zopfli
@@ -85,7 +85,7 @@ image resizing, thumbnail creation and HTML page generation.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests -k "not (test_generate_video_fit_height or test_generate_video_fit_width or test_generate_video_dont_enlarge or test_build)"
+%pytest tests -k "not (test_generate_video_fit_height or test_generate_video_fit_width or test_generate_video_dont_enlarge)"
 
 %post
 %python_install_alternative sigal

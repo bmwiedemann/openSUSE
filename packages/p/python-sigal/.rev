@@ -91,4 +91,12 @@
  * Improve performance when reading metadata</comment>
     <requestid>828450</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>07d41ec92e0869f5d4b364eb522d7c5d</srcmd5>
+    <version>2.3</version>
+    <time>1656927159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986379</requestid>
+  </revision>
 </revisionlist>
