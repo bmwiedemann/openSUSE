@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul  2 18:49:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Enable the test suite with fake-gcs-server running
+
+-------------------------------------------------------------------
+Wed Jun 29 10:18:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.5.0
+  * invalidate listings cache for simple put/pipe (#474)
+  * conform _mkdir and _cat_file to upstream (#471)
+
+-------------------------------------------------------------------
 Wed Apr 27 21:15:17 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2022.3.0

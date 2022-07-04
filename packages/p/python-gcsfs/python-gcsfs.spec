@@ -17,11 +17,9 @@
 
 
 %{?!python_module:%define python_module() python3-%{**}}
-# the test suite moved to a docker simulator which we cannot run inside an obs environment
-%bcond_with fulltest
 %define         skip_python2 1
 Name:           python-gcsfs
-Version:        2022.3.0
+Version:        2022.5.0
 Release:        0
 Summary:        Filesystem interface over GCS
 License:        BSD-3-Clause
@@ -44,9 +42,7 @@ Recommends:     python-gcsfs-fuse = %{version}
 Suggests:       python-crcmod
 BuildArch:      noarch
 # SECTION test requirements
-# always import in order to detect dependency breakages at build time
 BuildRequires:  %{python_module aiohttp}
-BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module decorator > 4.1.2}
 BuildRequires:  %{python_module fsspec == %{version}}
@@ -56,8 +52,10 @@ BuildRequires:  %{python_module google-api-python-client}
 BuildRequires:  %{python_module google-auth >= 1.2}
 BuildRequires:  %{python_module google-auth-oauthlib}
 BuildRequires:  %{python_module google-cloud-storage}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
+BuildRequires:  fake-gcs-server
 # /SECTION
 %python_subpackages
 
@@ -87,33 +85,21 @@ sed -i 's/--color=yes//' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-## # Tests test_map_simple, test_map_with_data and test_map_clear_empty require a network connection
-## %%pytest -k "not network" gcsfs/tests
-## # export GCSFS_RECORD_MODE=none
-## # export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcsfs/tests/fake-secret.json
-## # %%%%pytest -rfEs
-##
-##       - name: Install dependencies
-##         shell: bash -l {0}
-##         run: |
-##           pip install git+https://github.com/fsspec/filesystem_spec --no-deps
-##           conda list
-##           conda --version
-##       - name: Install
-##         shell: bash -l {0}
-##         run: pip install .[crc]
-##
-##       - name: Run Tests
-##         shell: bash -l {0}
-##         run: |
-##             export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcsfs/tests/fake-secret.json
-##             py.test -vv gcsfs
+# https://github.com/fsspec/gcsfs/blob/main/docs/source/developer.rst
+fake-gcs-server \
+  -backend memory \
+  -scheme http \
+  -public-host http://localhost:4443 \
+  -external-url http://localhost:4443 \
+  >$PWD/fake-gcs-server.stdout 2>$PWD/fake-gcs-server.stderr &
+trap "jobs; kill %1 || true" EXIT
+export STORAGE_EMULATOR_HOST=http://localhost:4443
 export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcsfs/tests/fake-secret.json
-%if %{with fulltest}
-%pytest -rfEs
-%else
-%pytest -rfEs -k test_checkers
-%endif
+# Don't test fuse, it hangs on mounting inside obs
+donttest="test_fuse"
+# finds an existing path on the non-first multiflavor test runs"
+donttest+=" or test_mkdir_with_path"
+%pytest -rfEs -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.rst
