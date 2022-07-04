@@ -879,4 +879,12 @@ cd - (forwarded request 199127 from Zaitor)</comment>
   official repositories (boo#1189907). (forwarded request 984724 from dimstar)</comment>
     <requestid>984839</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>5e6f2d7b2e7226615b8a97defe588f96</srcmd5>
+    <version>42.3</version>
+    <time>1656927144</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986277</requestid>
+  </revision>
 </revisionlist>
