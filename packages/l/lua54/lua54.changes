@@ -3,7 +3,7 @@ Sat Jun  4 13:49:42 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Added more numbered patches from upstream:
   * luabugs3.patch
-  * luabugs4.patch
+  * luabugs4.patch (bsc#1201146, CVE-2022-33099)
   * luabugs5.patch
 
 -------------------------------------------------------------------

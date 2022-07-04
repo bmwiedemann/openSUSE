@@ -191,4 +191,12 @@
     <comment>bsc#1192613, bsc#1194575</comment>
     <requestid>984874</requestid>
   </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>2339da595b36d80998860f5e5f5988f7</srcmd5>
+    <version>5.4.4</version>
+    <time>1656934692</time>
+    <user>dimstar_suse</user>
+    <comment>* luabugs4.patch (bsc#1201146, CVE-2022-33099)</comment>
+    <requestid>986624</requestid>
+  </revision>
 </revisionlist>
