@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul  2 03:06:03 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.016
+   see /usr/share/doc/packages/perl-Devel-FindPerl/Changes
+
+  0.016     2022-07-01 12:37:45+02:00 Europe/Amsterdam
+            Delete %ENV entries after localizing them to bypass taint
+
+-------------------------------------------------------------------
 Thu Nov  8 06:16:01 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.015

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-FindPerl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-Devel-FindPerl
-Version:        0.015
-Release:        0
 %define cpan_name Devel-FindPerl
-Summary:        Find the path to your perl
+Name:           perl-Devel-FindPerl
+Version:        0.016
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+Summary:        Find the path to your perl
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 Recommends:     perl(ExtUtils::Config) >= 0.007
@@ -38,14 +36,14 @@ This module tries to find the path to the currently running perl. It
 (optionally) exports the following functions:
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -53,7 +51,6 @@ perl Makefile.PL INSTALLDIRS=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 
