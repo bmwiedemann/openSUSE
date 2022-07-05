@@ -204,4 +204,22 @@
   * wayland: various fixes #249</comment>
     <requestid>956607</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>44b3e77f8e3afc764c1b500770915d20</srcmd5>
+    <version>0.6.9</version>
+    <time>1657015796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.9:
+  * Fix Wayland event loop order to avoid missed renders (fixes
+    regressions on #274, #275) #279
+
+- Update to 0.6.8:
+  * Fix --ch cursor height option parsing #253
+  * Add option to specify cursor width #268
+  * Add option to specify alternating background/foreground colors for entries #267
+  * Add option to specify horizontal padding in single line mode #266
+  * Add option to define a border and border color #265
+  * Fix missed rendering regressions on Wayland (fixes --grab flag) #273</comment>
+    <requestid>986755</requestid>
+  </revision>
 </revisionlist>

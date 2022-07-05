@@ -18,13 +18,13 @@
 
 %define bcond_with curses
 Name:           bemenu
-Version:        0.6.7
+Version:        0.6.9
 Release:        0
 Summary:        Dynamic menu library and client program inspired by dmenu
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/Cloudef/bemenu
-Source0:        https://github.com/Cloudef/bemenu/archive/%{version}.tar.gz
+Source0:        https://github.com/Cloudef/bemenu/releases/download/%{version}/bemenu-%{version}.tar.gz
 BuildRequires:  Mesa-devel
 BuildRequires:  gcc-c++
 BuildRequires:  make

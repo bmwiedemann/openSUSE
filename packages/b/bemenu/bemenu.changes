@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul  5 04:46:12 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.9:
+  * Fix Wayland event loop order to avoid missed renders (fixes
+    regressions on #274, #275) #279
+
+-------------------------------------------------------------------
+Tue Jul  5 04:45:23 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.8:
+  * Fix --ch cursor height option parsing #253
+  * Add option to specify cursor width #268
+  * Add option to specify alternating background/foreground colors for entries #267
+  * Add option to specify horizontal padding in single line mode #266
+  * Add option to define a border and border color #265
+  * Fix missed rendering regressions on Wayland (fixes --grab flag) #273
+
+-------------------------------------------------------------------
 Tue Feb 22 06:46:32 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.7:
