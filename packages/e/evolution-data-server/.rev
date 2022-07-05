@@ -2041,4 +2041,21 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment>GNOME 42.2 (forwarded request 979883 from dimstar)</comment>
     <requestid>980022</requestid>
   </revision>
+  <revision rev="237" vrev="1">
+    <srcmd5>ce2a8807a9808052dc323eadadf8f236</srcmd5>
+    <version>3.44.3</version>
+    <time>1657016829</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.44.3:
+  + Disable hardware acceleration for WebKitGTK.
+  + ESource: Reconnect signal handlers when the D-Bus 'source'
+    interface changes.
+  + Bugs fixed:
+    - LDAP: Conditionally use 'description' as Note.
+    - Tests fail with libphonenumber 8.12.49.
+    - Sanitize IPv6 proxy address before passing it to WebKitGTK.
+    - Calendar: Correct UNTIL recurrence with midnight start.
+    - Camel: Read message ID-s with multiple `@`. (forwarded request 986296 from iznogood)</comment>
+    <requestid>986577</requestid>
+  </revision>
 </revisionlist>

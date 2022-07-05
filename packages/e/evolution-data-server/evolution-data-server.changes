@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul  1 20:30:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.44.3:
+  + Disable hardware acceleration for WebKitGTK.
+  + ESource: Reconnect signal handlers when the D-Bus 'source'
+    interface changes.
+  + Bugs fixed:
+    - LDAP: Conditionally use 'description' as Note.
+    - Tests fail with libphonenumber 8.12.49.
+    - Sanitize IPv6 proxy address before passing it to WebKitGTK.
+    - Calendar: Correct UNTIL recurrence with midnight start.
+    - Camel: Read message ID-s with multiple `@`.
+
+-------------------------------------------------------------------
 Mon May 30 11:38:48 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.44.2:
