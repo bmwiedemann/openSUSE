@@ -6,11 +6,11 @@
 #
 # dnf install python3-base git-core npm16 yarn python2-base
 
-ELECTRON_PKGVERSION="$(rpmspec -P ./*.spec | grep Version | sed -e 's/Version:[ ]*//g')"
+ELECTRON_PKGVERSION="$(rpmspec -P ./*.spec | grep ^\s*Version | sed -e 's/Version:[ ]*//g')"
 ELECTRON_PKGNAME="electron"
 ELECTRON_PKGDIR="$(pwd)"
 ELECTRON_TMPDIR="$(mktemp --tmpdir -d electron-XXXXXXXX)"
-ELECTRON_PATH="${ELECTRON_TMPDIR}/${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}"
+ELECTRON_PATH="${ELECTRON_TMPDIR}/src"
 
 echo "NAME:    $ELECTRON_PKGNAME"
 echo "VERSION: $ELECTRON_PKGVERSION"
@@ -45,6 +45,9 @@ fi
 PATH="$(pwd)/depot_tools:$PATH"
 export PATH
 
+# HACK to make gclient much faster, do not download entire history
+sed -i 's/remote or self.remote,$/remote or self.remote, "--depth=1"/' depot_tools/gclient_scm.py
+
 
 echo ">>>>>> Create gclient config"
 cat >.gclient <<EOF
@@ -65,13 +68,15 @@ if [ $? -ne 0 ]; then
     cleanup_and_exit 1
 fi
 
-echo ">>>>>> Apply electron-${ELECTRON_PKGVERSION} patches"
-python3 src/electron/script/apply_all_patches.py \
-      src/electron/patches/config.json
-if [ $? -ne 0 ]; then
-    echo "ERROR: apply_all_patches.py failed"
-    cleanup_and_exit 1
-fi
+pushd src || cleanup_and_exit 1
+
+echo ">>>>>> Create LASTCHANGE(.committime) file"
+echo -n "LASTCHANGE=$(git log -1 --format=format:%H HEAD)" > build/util/LASTCHANGE
+# shellcheck disable=1091
+source build/util/LASTCHANGE
+echo -n "$(git log -1 --date=unix --format=format:%cd "$LASTCHANGE")" > build/util/LASTCHANGE.committime
+
+popd
 
 echo ">>>>>> Generate GPU_LISTS_VERSION"
 python3 src/build/util/lastchange.py -m GPU_LISTS_VERSION \
@@ -86,6 +91,14 @@ python3 src/build/util/lastchange.py -m SKIA_COMMIT_HASH \
     -s src/third_party/skia --header src/skia/ext/skia_commit_hash.h
 if [ $? -ne 0 ]; then
     echo "ERROR: lastchange.py -m SKIA_COMMIT_HASH failed"
+    cleanup_and_exit 1
+fi
+
+echo ">>>>>> Apply electron-${ELECTRON_PKGVERSION} patches"
+python3 src/electron/script/apply_all_patches.py \
+      src/electron/patches/config.json
+if [ $? -ne 0 ]; then
+    echo "ERROR: apply_all_patches.py failed"
     cleanup_and_exit 1
 fi
 
@@ -126,15 +139,8 @@ if [ $? -ne 0 ]; then
 fi
 popd || cleanup_and_exit 1
 
-mv src "${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}"
 
 pushd "${ELECTRON_PATH}" || cleanup_and_exit 1
-
-echo ">>>>>> Create LASTCHANGE(.committime) file"
-echo -n "LASTCHANGE=$(git log -1 --format=format:%H HEAD)" > build/util/LASTCHANGE
-# shellcheck disable=1091
-source build/util/LASTCHANGE
-echo -n "$(git log -1 --date=unix --format=format:%cd "$LASTCHANGE")" > build/util/LASTCHANGE.committime
 
 echo ">>>>>> Remove bundled libs"
 keeplibs=(
@@ -142,7 +148,6 @@ keeplibs=(
     base/third_party/double_conversion
     base/third_party/dynamic_annotations
     base/third_party/icu
-    base/third_party/nspr
     base/third_party/superfasthash
     base/third_party/symbolize
     base/third_party/valgrind
@@ -162,7 +167,6 @@ keeplibs=(
     third_party/angle
     third_party/angle/src/common/third_party/base
     third_party/angle/src/common/third_party/smhasher
-    third_party/angle/src/common/third_party/xxhash
     third_party/angle/src/third_party/libXNVCtrl
     third_party/angle/src/third_party/trace_event
     third_party/angle/src/third_party/volk
@@ -173,7 +177,6 @@ keeplibs=(
     third_party/boringssl/src/third_party/fiat
     third_party/breakpad
     third_party/breakpad/breakpad/src/third_party/curl
-    third_party/brotli
     third_party/catapult
     third_party/catapult/common/py_vulcanize/third_party/rcssmin
     third_party/catapult/common/py_vulcanize/third_party/rjsmin
@@ -200,11 +203,11 @@ keeplibs=(
     third_party/dav1d
     third_party/dawn
     third_party/dawn/third_party
-    third_party/dawn/third_party/tint/src/ast
     third_party/depot_tools
     third_party/depot_tools/third_party/six
     third_party/devscripts
     third_party/devtools-frontend
+    third_party/devtools-frontend/src/front_end/third_party
     third_party/devtools-frontend/src/front_end/third_party/acorn
     third_party/devtools-frontend/src/front_end/third_party/axe-core
     third_party/devtools-frontend/src/front_end/third_party/chromium
@@ -261,7 +264,7 @@ keeplibs=(
     third_party/libphonenumber
     third_party/libsecret
     third_party/libsrtp
-    third_party/libsync
+    third_party/libsync/src
     third_party/libudev
     third_party/liburlpattern
     third_party/libva_protected_content
@@ -271,12 +274,10 @@ keeplibs=(
     third_party/libx11/src
     third_party/libxcb-keysyms/keysyms
     third_party/libxml/chromium
-    third_party/libXNVCtrl
     third_party/libyuv
     third_party/libzip
     third_party/lottie
     third_party/lss
-    third_party/lzma_sdk
     third_party/mako
     third_party/maldoca
     third_party/maldoca/src/third_party
@@ -290,7 +291,6 @@ keeplibs=(
     third_party/node
     third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2
     third_party/one_euro_filter
-    third_party/opencv
     third_party/openscreen
     third_party/openscreen/src/third_party/mozilla
     third_party/openscreen/src/third_party/tinycbor/src/src
@@ -300,9 +300,6 @@ keeplibs=(
     third_party/pdfium/third_party/base
     third_party/pdfium/third_party/bigint
     third_party/pdfium/third_party/freetype
-    third_party/pdfium/third_party/lcms
-    third_party/pdfium/third_party/libopenjpeg20
-    third_party/pdfium/third_party/libpng16
     third_party/pdfium/third_party/libtiff
     third_party/pdfium/third_party/skia_shared
     third_party/perfetto
@@ -332,19 +329,18 @@ keeplibs=(
     third_party/sqlite
     third_party/swiftshader
     third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1
+    third_party/swiftshader/third_party/SPIRV-Tools
     third_party/swiftshader/third_party/astc-encoder
     third_party/swiftshader/third_party/llvm-10.0
     third_party/swiftshader/third_party/llvm-subzero
     third_party/swiftshader/third_party/marl
     third_party/swiftshader/third_party/subzero
-    third_party/tcmalloc
     third_party/tensorflow-text
     third_party/tflite
     third_party/tflite/src/third_party/eigen3
     third_party/tflite/src/third_party/fft2d
     third_party/ukey2
     third_party/usb_ids
-    third_party/usrsctp
     third_party/utf
     third_party/vulkan
     third_party/wayland
@@ -385,10 +381,12 @@ find . -type d -name .git -print0 | xargs -0 rm -rf
 # Remove generatted python bytecode
 find . -type d -name __pycache__ -print0 | xargs -0 rm -rvf
 find . -type f -name '*.pyc' -print -delete
+# Remove empty directories
+find . -type d -empty -print -delete
 popd || cleanup_and_exit 1
 
 echo ">>>>>> Create tarball"
-XZ_OPT="-T$(nproc) -e9" tar -vcJf "${ELECTRON_PKGDIR}/${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}.tar.xz" "${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}"
+XZ_OPT="-T$(nproc) -e9 -vv" tar -vvcJf "${ELECTRON_PKGDIR}/${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}.tar.xz" src
 if [ $? -ne 0 ]; then
     echo "ERROR: tar cJf failed"
     cleanup_and_exit 1

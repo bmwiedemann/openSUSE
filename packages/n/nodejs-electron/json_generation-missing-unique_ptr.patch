@@ -1,0 +1,10 @@
+--- a/components/policy/core/browser/webui/json_generation.h
++++ b/components/policy/core/browser/webui/json_generation.h
+@@ -5,6 +5,7 @@
+ #ifndef COMPONENTS_POLICY_CORE_BROWSER_WEBUI_JSON_GENERATION_H_
+ #define COMPONENTS_POLICY_CORE_BROWSER_WEBUI_JSON_GENERATION_H_
+ 
++#include <memory>
+ #include <string>
+ 
+ #include "components/policy/policy_export.h"

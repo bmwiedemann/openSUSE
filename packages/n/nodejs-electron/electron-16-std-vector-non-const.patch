@@ -4,12 +4,12 @@ Index: electron-17.1.0/chrome/browser/process_singleton.h
 +++ electron-17.1.0/chrome/browser/process_singleton.h	2022-03-09 08:29:01.682773127 +0100
 @@ -102,7 +102,7 @@ class ProcessSingleton {
    using NotificationCallback =
-       base::RepeatingCallback<bool(const base::CommandLine& command_line,
+        base::RepeatingCallback<bool(const base::CommandLine& command_line,
                                     const base::FilePath& current_directory,
 -                                   const std::vector<const uint8_t> additional_data)>;
 +                                   const std::vector<uint8_t> additional_data)>;
  
- #if defined(OS_WIN)
+ #if BUILDFLAG(IS_WIN)
    ProcessSingleton(const std::string& program_name,
 Index: electron-17.1.0/chrome/browser/process_singleton_posix.cc
 ===================================================================
@@ -55,7 +55,7 @@ Index: electron-17.1.0/chrome/browser/process_singleton_win.cc
 ===================================================================
 --- electron-17.1.0.orig/chrome/browser/process_singleton_win.cc	2022-03-07 17:39:06.993345117 +0100
 +++ electron-17.1.0/chrome/browser/process_singleton_win.cc	2022-03-09 08:29:01.682773127 +0100
-@@ -99,7 +99,7 @@ BOOL CALLBACK BrowserWindowEnumeration(H
+@@ -81,7 +81,7 @@ BOOL CALLBACK BrowserWindowEnumeration(H
  bool ParseCommandLine(const COPYDATASTRUCT* cds,
                        base::CommandLine* parsed_command_line,
                        base::FilePath* current_directory,
@@ -64,7 +64,7 @@ Index: electron-17.1.0/chrome/browser/process_singleton_win.cc
    // We should have enough room for the shortest command (min_message_size)
    // and also be a multiple of wchar_t bytes. The shortest command
    // possible is L"START\0\0" (empty command line, current directory,
-@@ -181,7 +181,7 @@ bool ParseCommandLine(const COPYDATASTRU
+@@ -163,7 +163,7 @@ bool ParseCommandLine(const COPYDATASTRU
          msg.substr(fourth_null + 1, fifth_null - fourth_null);
      const uint8_t* additional_data_bytes =
          reinterpret_cast<const uint8_t*>(additional_data.c_str());
@@ -73,8 +73,8 @@ Index: electron-17.1.0/chrome/browser/process_singleton_win.cc
          additional_data_bytes + additional_data_length);
  
      return true;
-@@ -202,7 +202,7 @@ bool ProcessLaunchNotification(
-   const COPYDATASTRUCT* cds = reinterpret_cast<COPYDATASTRUCT*>(lparam);
+@@ -187,7 +187,7 @@ bool ProcessLaunchNotification(
+ 
    base::CommandLine parsed_command_line(base::CommandLine::NO_PROGRAM);
    base::FilePath current_directory;
 -  std::vector<const uint8_t> additional_data;

@@ -53,18 +53,18 @@ Index: electron-17.1.0/sandbox/linux/BUILD.gn
  
    if (is_android) {
      sources += [
-Index: electron-17.1.0/base/BUILD.gn
-===================================================================
---- electron-17.1.0.orig/base/BUILD.gn	2022-03-07 17:20:29.432807450 +0100
-+++ electron-17.1.0/base/BUILD.gn	2022-03-09 08:25:02.250701641 +0100
-@@ -2026,6 +2026,10 @@ component("base") {
-         ]
-       }
- 
-+      if (gcc_lto) {
-+        configs -= [ "//build/config/compiler:gcc_lto" ]
-+      }
+Index: chromium-96.0.4664.93/base/BUILD.gn
+===================================================================     
+--- a/base/BUILD.gn
++++ b/base/BUILD.gn
+@@ -1986,6 +1986,10 @@
+     }
+   }
+
++  if (gcc_lto) {
++    configs -= [ "//build/config/compiler:gcc_lto" ]
++  }
 +
-       if (current_cpu == "x64") {
-         defines += [ "PA_PCSCAN_STACK_SUPPORTED" ]
-         sources += [ "allocator/partition_allocator/starscan/stack/asm/x64/push_registers_asm.cc" ]
+   if (use_partition_alloc) {
+     sources += [
+       "allocator/partition_allocator/address_pool_manager_unittest.cc",

@@ -1,0 +1,21 @@
+This source file was copied from libbsd, use the system library instead
+
+--- a/third_party/libsync/BUILD.gn	2022-06-21 21:52:53.867987945 +0200
++++ a/third_party/libsync/BUILD.gn	2022-06-28 17:30:45.327377489 +0200
+@@ -31,7 +31,6 @@
+       "src/include/sync/sync.h",
+       "src/sw_sync.h",
+       "src/sync.c",
+-      "strlcpy.c",
+     ]
+ 
+     configs -= [ "//build/config/compiler:chromium_code" ]
+@@ -41,6 +40,8 @@
+     ]
+ 
+     public_configs = [ ":libsync_config" ]
++
++    libs = [ "bsd" ]
+   }
+ }
+ 

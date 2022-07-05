@@ -1,0 +1,44 @@
+description: fix build error when building with clang & GNU libstdc++
+author: Stephan Hartmann <stha09@googlemail.com>
+
+Apparently this doesn't happen with the embedded clang, but we get this:
+
+In file included from ../../components/autofill/core/browser/form_parsing/regex_patterns.cc:5:
+In file included from ../../components/autofill/core/browser/form_parsing/regex_patterns.h:8:
+In file included from ../../base/containers/span.h:10:
+In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/algorithm:74:
+In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/pstl/glue_algorithm_defs.h:13:
+In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/functional:54:
+In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/tuple:39:
+/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/array:268:52: fatal error: instantiating fold expression with 303 arguments exceeded expression nesting limit of 256
+      -> array<enable_if_t<(is_same_v<_Tp, _Up> && ...), _Tp>,
+                           ~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+gen/components/autofill/core/browser/form_parsing/regex_patterns_inl.h:77:22: note: while substituting deduced template arguments into function template '<deduction guide for array>' [with _Tp = autofill::MatchingPattern, _Up = <autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPattern, autofill::MatchingPatter[...]
+
+
+
+
+This is fixed upstream in chromium 103 with the following commit:
+https://chromium-review.googlesource.com/c/chromium/src/+/3613356
+
+However, that depends on other stuff and we can't use it without a
+bunch more changes - so we'll just use this fix which I nabbed from
+Stephan Hartmann instead:
+https://github.com/stha09/chromium-patches/blob/master/chromium-102-regex_pattern-array.patch
+
+
+
+--- a/components/autofill/core/browser/BUILD.gn
++++ b/components/autofill/core/browser/BUILD.gn
+@@ -54,6 +54,11 @@ action("regex_patterns_inl_h") {
+ }
+ 
+ static_library("browser") {
++  if (is_clang) {
++    cflags = [
++      "-fbracket-depth=1000",
++    ]
++  }
+   sources = [
+     "address_normalization_manager.cc",
+     "address_normalization_manager.h",

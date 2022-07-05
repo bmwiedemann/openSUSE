@@ -1,0 +1,15 @@
+You may not depend on the signatures of Abseil APIs.
+
+--- a/base/strings/abseil_string_number_conversions.h	2022-06-21 21:52:33.000000000 +0200
++++ b/base/strings/abseil_string_number_conversions.h	2022-06-24 07:31:47.677340600 +0200
+@@ -8,9 +8,7 @@
+ #include "base/base_export.h"
+ #include "base/strings/string_piece_forward.h"
+ 
+-namespace absl {
+-class uint128;
+-}  // namespace absl
++#include "third_party/abseil-cpp/absl/numeric/int128.h"
+ 
+ namespace base {
+ 

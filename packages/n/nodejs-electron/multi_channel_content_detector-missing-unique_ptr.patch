@@ -1,0 +1,10 @@
+--- a/third_party/webrtc/modules/audio_processing/aec3/multi_channel_content_detector.h
++++ b/third_party/webrtc/modules/audio_processing/aec3/multi_channel_content_detector.h
+@@ -14,6 +14,7 @@
+ 
+ #include <stddef.h>
+ 
++#include <memory>
+ #include <vector>
+ 
+ #include "absl/types/optional.h"

@@ -1,0 +1,10 @@
+--- a/device/bluetooth/bluez/metrics_recorder.h	2022-06-21 21:52:39.079987764 +0200
++++ b/device/bluetooth/bluez/metrics_recorder.h	2022-06-24 20:38:27.125802209 +0200
+@@ -5,6 +5,7 @@
+ #ifndef DEVICE_BLUETOOTH_BLUEZ_METRICS_RECORDER_H_
+ #define DEVICE_BLUETOOTH_BLUEZ_METRICS_RECORDER_H_
+ 
++#include <string>
+ #include "third_party/abseil-cpp/absl/types/optional.h"
+ 
+ namespace bluetooth {

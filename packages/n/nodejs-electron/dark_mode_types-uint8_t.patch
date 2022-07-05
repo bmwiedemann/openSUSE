@@ -1,0 +1,11 @@
+--- a/third_party/blink/renderer/platform/graphics/dark_mode_types.h	2022-06-21 21:52:42.607987807 +0200
++++ b/third_party/blink/renderer/platform/graphics/dark_mode_types.h	2022-06-24 22:25:53.282241863 +0200
+@@ -5,6 +5,8 @@
+ #ifndef THIRD_PARTY_BLINK_RENDERER_PLATFORM_GRAPHICS_DARK_MODE_TYPES_H_
+ #define THIRD_PARTY_BLINK_RENDERER_PLATFORM_GRAPHICS_DARK_MODE_TYPES_H_
+ 
++#include <cstdint>
++
+ namespace blink {
+ 
+ enum class DarkModeResult : uint8_t {

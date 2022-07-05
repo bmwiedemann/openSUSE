@@ -1,0 +1,41 @@
+--- a/third_party/angle/BUILD.gn	2022-06-21 21:57:49.019991551 +0200
++++ b/third_party/angle/BUILD.gn	2022-06-25 16:54:47.267968400 +0200
+@@ -1,3 +1,4 @@
++import("//build/config/linux/pkg_config.gni")
+ # Copyright 2019 The ANGLE Project Authors. All rights reserved.
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+@@ -355,18 +356,12 @@
+   }
+ }
+ 
+-angle_source_set("xxhash") {
+-  sources = xxhash_sources
+-  if (is_clang) {
+-    cflags_c = [ "-Wno-implicit-fallthrough" ]
+-  }
++pkg_config("system_xxhash") {
++  packages = [ "libxxhash" ]
+ }
+ 
+-if (angle_has_build) {
+-  fuzzer_test("xxhash_fuzzer") {
+-    sources = [ "src/common/third_party/xxhash/xxhash_fuzzer.cpp" ]
+-    deps = [ ":xxhash" ]
+-  }
++source_set("xxhash") {
++  public_configs = [ ":system_xxhash" ]
+ }
+ 
+ angle_static_library("angle_common") {
+--- a/third_party/angle/src/common/hash_utils.h
++++ b/third_party/angle/src/common/hash_utils.h
+@@ -9,7 +9,7 @@
+ #define COMMON_HASHUTILS_H_
+ 
+ #include "common/debug.h"
+-#include "common/third_party/xxhash/xxhash.h"
++#include <xxhash.h>
+ 
+ namespace angle
+ {

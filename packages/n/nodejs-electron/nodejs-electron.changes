@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Sat Jul  2 09:16:30 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Update to 19.0.7:
+  * Breaking change: nativeWindowOpen removed
+  * Updated Chromium to 102.0.5005.134
+  * Fixed an error where setWindowOpenHandler() would crash if the callback threw an error.
+  * Fixed an issue where passing { name: 'All Files', extensions: ['*'] } in the filters param of open or save dialogs on Linux would disallow choosing files without an extension.
+  * Fixed missing Sec-CH-UA headers and empty navigator.userAgentData.
+  * Backported fix for CVE-2022-2162.
+- Move lastchange.py in create tarball script before patching for reproducibility sake
+- Disable widevine — not supported by upstream and does not build anymore
+- Use gcc also on aarch64 due to clang crashes while compiling
+- Temporarily disable aom codec on aarch64 Tumbleweed to reduce binary size
+- Fix Fedora aarch64 build
+- Fix private ANGLE dlls leaking into rpm provides (bsc#1108175)
+- Ship chrome_crashpad_handler — some code expects it to be there
+- Do not ship libVkICD_mock_icd.so — that's a build tool (not shipped by upstream)
+- Do not compile tensorflow — it is huge, and urlbar prediction is of no use in Electron
+- Do not compile openscreen/chromecast — useless in Electron
+- Do not compile safe browsing — useless in Electron
+- Do not compile error reporter — useless for our use case
+- Disable webgpu support — it is HUGE and we do not ship any apps which depend on it
+- Use system freetype, icu also on 15.3 and 15.4
+- Use system harfbuzz also on 15.4
+- Use system libraries instead of vendored ones:
+  * abseil (TW and Rawhide, GCC only)
+  * avif (15.4+ and Fedora only)
+  * brotli
+  * crc32c (TW and Fedora only)
+  * dav1d (TW and Rawhide only)
+  * double-conversion
+  * jsoncpp
+  * jxl (Fedora only)
+  * libbsd
+  * nspr
+  * spirv (TW only)
+  * woff2
+  * xxhash
+  * zlib in courgette
+  * lcms2, libjpeg, libpng16, openjp2, tiff in PDFium
+  * cares in node
+  * nghttp2 in node (TW and Fedora only)
+  * XNVCtrl in angle (Fedora only)
+  * llvm in swiftshader (arm64 only; intel does not use llvm)
+- Replace chromium-98-compiler.patch with chromium-102-compiler.patch
+- Add patches:
+  * abseil_string_number_conversions-do-not-assume-ABI.patch
+  * abseil-remove-unused-targets.patch
+  * angle-system-xxhash.patch
+  * async_shared_storage_database_impl-missing-absl-WrapUnique.patch
+  * attribution_manager_impl-missing-absl-WrapUnique.patch
+  * ax_property_node-missing-unique_ptr-forward.patch
+  * base-system-nspr.patch
+  * byteswap-constexpr.patch (thanks Debian)
+  * byteswap-constexpr2.patch  (thanks Debian)
+  * cares_public_headers.patch
+  * chromium-101-libxml-unbundle.patch
+  * chromium-102-fenced_frame_utils-include.patch
+  * chromium-99-pdfium-system-libtiff.patch (thanks Mageia)
+  * chromium-fix-pac-with-gcc.patch
+  * chromium-remove-bundled-roboto-font.patch
+  * dark_mode_types-uint8_t.patch
+  * device_perf_info-missing-uint32_t.patch
+  * ffmpeg-new-channel-layout.patch
+  * json_generation-missing-unique_ptr.patch
+  * metrics_recorder-missing-string.patch
+  * multi_channel_content_detector-missing-unique_ptr.patch
+  * multiplex_router-ExclusiveSyncWaitInfo-is-not-is_constructible_v-on-clang.patch
+  * nested-nested-nested-nested-nested-nested-regex-patterns.patch
+  * node-system-libs.patch (thanks Arch)
+  * pdfium-fix-system-libs.patch (thanks Mageia)
+  * process_doc_wrapper-do-not-assume-ABI.patch
+  * replace_gn_files-system-libs.patch
+  * skia_utils-missing-uint64_t.patch
+  * support-i386.patch (thanks Debian)
+  * swiftshader-use-system-llvm.patch
+  * system-libbsd.patch
+  * system-jsoncpp.patch (thanks Debian)
+  * system-zlib.patch (thanks Debian)
+  * thread_annotations-fix-build-with-system-abseil.patch
+- Add GN shims (provided directly instead of as patches, but should also be submitted upstream):
+  * absl_algorithm.gn
+  * absl_base.gn
+  * absl_cleanup.gn
+  * absl_container.gn
+  * absl_debugging.gn
+  * absl_flags.gn
+  * absl_functional.gn
+  * absl_hash.gn
+  * absl_memory.gn
+  * absl_meta.gn
+  * absl_numeric.gn
+  * absl_random.gn
+  * absl_status.gn
+  * absl_strings.gn
+  * absl_synchronization.gn
+  * absl_time.gn
+  * absl_types.gn
+  * brotli.gn
+  * crc32c.gn
+  * dav1d.gn (thanks Mageia)
+  * double-conversion.gn
+  * libaom.gn (thanks Mageia)
+  * libavif.gn
+  * libjxl.gn
+  * libXNVCtrl.gn
+  * swiftshader-SPIRV-Headers.gn
+  * swiftshader-SPIRV-Tools.gn
+  * vulkan-SPIRV-Headers.gn
+  * vulkan-SPIRV-Tools.gn
+  * woff2.gn
+- Remove chromium-disable-parallel-gold.patch as it referes to old now-unsupported systems
+- Remove patches applied upstream:
+  * chromium-98-MiraclePtr-gcc-ice.patch
+  * chromium-98-WaylandFrameManager-check.patch
+  * chromium-glibc-2.34.patch
+  * electron-16-v8-missing-utility-include.patch
+  * electron-17-breakpad-align-int-types.patch
+
+-------------------------------------------------------------------
 Wed May 25 19:46:26 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 17.4.6:
   * Fixed crash when calling navigator.serial.getPorts().

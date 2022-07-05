@@ -4,18 +4,24 @@
     <disk>
       <size unit="G">24</size>
     </disk>
+    <memory>
+      <size unit="G">16</size>
+    </memory>
     <physicalmemory>
-      <size unit="G">8</size>
+      <size unit="G">12</size>
     </physicalmemory>
+    <processors>8</processors>
   </hardware>
   <overwrite>
     <conditions>
       <arch>x86_64</arch>
+      <arch>i586</arch>
     </conditions>
     <hardware>
       <memory>
-        <size unit="G">24</size>
+        <size unit="G">32</size>
       </memory>
+      <processors>16</processors>
     </hardware>
   </overwrite>
   <overwrite>
@@ -24,7 +30,7 @@
     </conditions>
     <hardware>
       <cpu>
-      <flag>asimdrdm</flag>
+      <flag>asimdrdm</flag> <!-- prevent scheduling on old machines -->
       </cpu>
     </hardware>
   </overwrite>

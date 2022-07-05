@@ -1,0 +1,52 @@
+--- chromium-79.0.3945.29/build/linux/unbundle/replace_gn_files.py.system-dav1d	2019-11-09 14:30:17.297016975 +0100
++++ chromium-79.0.3945.29/build/linux/unbundle/replace_gn_files.py	2019-11-10 09:40:19.694662891 +0100
+@@ -17,12 +17,37 @@ import sys
+ 
+ 
+ REPLACEMENTS = {
++  'absl_algorithm': 'third_party/abseil-cpp/absl/algorithm/BUILD.gn',
++  'absl_base': 'third_party/abseil-cpp/absl/base/BUILD.gn',
++  'absl_cleanup': 'third_party/abseil-cpp/absl/cleanup/BUILD.gn',
++  'absl_container': 'third_party/abseil-cpp/absl/container/BUILD.gn',
++  'absl_debugging': 'third_party/abseil-cpp/absl/debugging/BUILD.gn',
++  'absl_flags': 'third_party/abseil-cpp/absl/flags/BUILD.gn',
++  'absl_functional': 'third_party/abseil-cpp/absl/functional/BUILD.gn',
++  'absl_hash': 'third_party/abseil-cpp/absl/hash/BUILD.gn',
++  'absl_memory': 'third_party/abseil-cpp/absl/memory/BUILD.gn',
++  'absl_meta': 'third_party/abseil-cpp/absl/meta/BUILD.gn',
++  'absl_numeric': 'third_party/abseil-cpp/absl/numeric/BUILD.gn',
++  'absl_random': 'third_party/abseil-cpp/absl/random/BUILD.gn',
++  'absl_status': 'third_party/abseil-cpp/absl/status/BUILD.gn',
++  'absl_strings': 'third_party/abseil-cpp/absl/strings/BUILD.gn',
++  'absl_synchronization': 'third_party/abseil-cpp/absl/synchronization/BUILD.gn',
++  'absl_time': 'third_party/abseil-cpp/absl/time/BUILD.gn',
++  'absl_types': 'third_party/abseil-cpp/absl/types/BUILD.gn',
++  'brotli': 'third_party/brotli/BUILD.gn',
++  'crc32c': 'third_party/crc32c/BUILD.gn',
++  'dav1d': 'third_party/dav1d/BUILD.gn',
++  'double-conversion': 'base/third_party/double_conversion/BUILD.gn',
+   'ffmpeg': 'third_party/ffmpeg/BUILD.gn',
+   'flac': 'third_party/flac/BUILD.gn',
+   'fontconfig': 'third_party/fontconfig/BUILD.gn',
+   'freetype': 'build/config/freetype/freetype.gni',
+   'harfbuzz-ng': 'third_party/harfbuzz-ng/harfbuzz.gni',
+   'icu': 'third_party/icu/BUILD.gn',
++  'libXNVCtrl' : 'third_party/angle/src/third_party/libXNVCtrl/BUILD.gn',
++  'libaom' : 'third_party/libaom/BUILD.gn',
++  'libavif' : 'third_party/libavif/BUILD.gn',
++  'libjxl' : 'third_party/libjxl/BUILD.gn',
+   'libdrm': 'third_party/libdrm/BUILD.gn',
+   'libevent': 'base/third_party/libevent/BUILD.gn',
+   'libjpeg': 'third_party/libjpeg.gni',
+@@ -33,6 +61,11 @@
+   'opus': 'third_party/opus/BUILD.gn',
+   're2': 'third_party/re2/BUILD.gn',
+   'snappy': 'third_party/snappy/BUILD.gn',
++  'swiftshader-SPIRV-Headers' : 'third_party/swiftshader/third_party/SPIRV-Headers/BUILD.gn',
++  'swiftshader-SPIRV-Tools' : 'third_party/swiftshader/third_party/SPIRV-Tools/BUILD.gn',
++  'vulkan-SPIRV-Headers' : 'third_party/vulkan-deps/spirv-headers/src/BUILD.gn',
++  'vulkan-SPIRV-Tools' : 'third_party/vulkan-deps/spirv-tools/src/BUILD.gn',
++  'woff2': 'third_party/woff2/BUILD.gn',
+   'zlib': 'third_party/zlib/BUILD.gn',
+ }
+ 

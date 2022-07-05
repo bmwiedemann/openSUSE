@@ -1,0 +1,22 @@
+--- chromium-102.0.5005.61/v8/src/execution/arm64/pointer-authentication-arm64.h.orig	2022-06-01 12:11:14.983350526 +0200
++++ chromium-102.0.5005.61/v8/src/execution/arm64/pointer-authentication-arm64.h	2022-06-01 12:11:42.691630379 +0200
+@@ -48,14 +48,14 @@ V8_INLINE Address PointerAuthentication:
+   return Simulator::StripPAC(pc, Simulator::kInstructionPointer);
+ #else
+   asm volatile(
+-      "  mov x16, lr\n"
+-      "  mov lr, %[pc]\n"
++      "  mov x16, x30\n"
++      "  mov x30, %[pc]\n"
+       "  xpaclri\n"
+-      "  mov %[pc], lr\n"
+-      "  mov lr, x16\n"
++      "  mov %[pc], x30\n"
++      "  mov x30, x16\n"
+       : [pc] "+r"(pc)
+       :
+-      : "x16", "lr");
++      : "x16", "x30");
+   return pc;
+ #endif
+ }

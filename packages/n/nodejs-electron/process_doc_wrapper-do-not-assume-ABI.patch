@@ -1,0 +1,15 @@
+You may not depend on the signatures of Abseil APIs.
+
+--- a/third_party/maldoca/src/maldoca/service/common/process_doc_wrapper.h	2022-06-21 21:52:33.000000000 +0200
++++ a/third_party/maldoca/src/maldoca/service/common/process_doc_wrapper.h	2022-06-24 07:31:47.677340600 +0200
+@@ -8,9 +8,7 @@
+ #include "maldoca/service/proto/maldoca_service.pb.h"
+ #include "maldoca/service/proto/processing_config.pb.h"
+ 
+-namespace absl {
+-class Status;
+-}  // namespace absl
++#include "third_party/abseil-cpp/absl/status/status.h"
+ 
+ namespace third_party_maldoca {
+ 

@@ -22,7 +22,7 @@ Index: electron-17.1.0/chrome/browser/flag_descriptions.cc
 ===================================================================
 --- electron-17.1.0.orig/chrome/browser/flag_descriptions.cc	2022-03-07 17:20:30.960813654 +0100
 +++ electron-17.1.0/chrome/browser/flag_descriptions.cc	2022-03-09 08:25:19.662417046 +0100
-@@ -3981,12 +3981,24 @@ const char kUseAngleGL[] = "OpenGL";
+@@ -4031,12 +4031,24 @@ const char kUseAngleGL[] = "OpenGL";
  
  #if BUILDFLAG(IS_CHROMEOS_ASH)
  
@@ -44,14 +44,14 @@ Index: electron-17.1.0/chrome/browser/flag_descriptions.cc
 +
 +#if BUILDFLAG(IS_CHROMEOS_ASH)
 +
- const char kAllowDisableMouseAccelerationName[] =
-     "Allow disabling mouse acceleration";
- const char kAllowDisableMouseAccelerationDescription[] =
+ const char kAllowDisableTouchpadHapticFeedbackName[] =
+     "Allow disabling touchpad haptic feedback";
+ const char kAllowDisableTouchpadHapticFeedbackDescription[] =
 Index: electron-17.1.0/chrome/browser/flag_descriptions.h
 ===================================================================
 --- electron-17.1.0.orig/chrome/browser/flag_descriptions.h	2022-03-07 17:20:30.960813654 +0100
 +++ electron-17.1.0/chrome/browser/flag_descriptions.h	2022-03-09 08:25:19.666416981 +0100
-@@ -2299,9 +2299,21 @@ extern const char kUseAngleGL[];
+@@ -2305,9 +2305,21 @@ extern const char kUseAngleGL[];
  
  #if BUILDFLAG(IS_CHROMEOS_ASH)
  
@@ -70,6 +70,6 @@ Index: electron-17.1.0/chrome/browser/flag_descriptions.h
 +
 +// Chrome OS ------------------------------------------------------------------
 +
- extern const char kAllowDisableMouseAccelerationName[];
- extern const char kAllowDisableMouseAccelerationDescription[];
+ extern const char kAllowDisableTouchpadHapticFeedbackName[];
+ extern const char kAllowDisableTouchpadHapticFeedbackDescription[];
  

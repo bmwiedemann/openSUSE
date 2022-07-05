@@ -1,17 +1,17 @@
 From 307a0f63dd9b118f4b8470ed3d7567e81fdb7a6d Mon Sep 17 00:00:00 2001
 From: Mike Gilbert <floppym@gentoo.org>
-Date: Fri, 3 Dec 2021 09:50:31 +0000
+Date: Fri, 22 Apr 2022 09:05:24 +0000
 Subject: [PATCH] Disable various compiler configs
 
 ---
- build/config/compiler/BUILD.gn | 105 ++++++---------------------------
- 1 file changed, 17 insertions(+), 88 deletions(-)
+ build/config/compiler/BUILD.gn | 114 +++++----------------------------
+ 1 file changed, 17 insertions(+), 97 deletions(-)
 
 diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
-index 5365544..e6d9b56 100644
+index d40843b..b92f03b 100644
 --- a/build/config/compiler/BUILD.gn
 +++ b/build/config/compiler/BUILD.gn
-@@ -291,9 +291,7 @@ config("compiler") {
+@@ -286,9 +286,7 @@ config("compiler") {
  
    configs += [
      # See the definitions below.
@@ -21,7 +21,7 @@ index 5365544..e6d9b56 100644
      ":compiler_codegen",
      ":compiler_deterministic",
    ]
-@@ -534,31 +532,6 @@ config("compiler") {
+@@ -522,31 +520,6 @@ config("compiler") {
      ldflags += [ "-Wl,-z,keep-text-section-prefix" ]
    }
  
@@ -50,10 +50,10 @@ index 5365544..e6d9b56 100644
 -    }
 -  }
 -
-   # C11/C++11 compiler flags setup.
-   # ---------------------------
-   if (is_linux || is_chromeos || is_android || (is_nacl && is_clang) ||
-@@ -1231,45 +1204,6 @@ config("compiler_deterministic") {
+   # Rust compiler setup (for either clang or rustc).
+   if (enable_rust) {
+     defines += [ "RUST_ENABLED" ]
+@@ -1232,45 +1205,6 @@ config("compiler_deterministic") {
      }
    }
  
@@ -99,7 +99,23 @@ index 5365544..e6d9b56 100644
    # Tells the compiler not to use absolute paths when passing the default
    # paths to the tools it invokes. We don't want this because we don't
    # really need it and it can mess up the goma cache entries.
-@@ -1556,7 +1490,7 @@ config("chromium_code") {
+@@ -1538,15 +1472,6 @@ config("default_warnings") {
+         cflags += [ "-Wno-deprecated-non-prototype" ]
+       }
+ 
+-      if (!is_nacl && !(is_chromeos ||
+-                        default_toolchain == "//build/toolchain/cros:target")) {
+-        # TODO(https://crbug.com/1316298): Re-enable once test failure is figured out
+-        cflags += [
+-          "-Xclang",
+-          "-no-opaque-pointers",
+-        ]
+-      }
+-
+       if (is_fuchsia) {
+         # TODO(https://bugs.chromium.org/p/fuchsia/issues/detail?id=77383)
+         cflags += [ "-Wno-deprecated-copy" ]
+@@ -1615,7 +1540,7 @@ config("chromium_code") {
        defines = [ "_HAS_NODISCARD" ]
      }
    } else {
@@ -108,7 +124,7 @@ index 5365544..e6d9b56 100644
      if (treat_warnings_as_errors) {
        cflags += [ "-Werror" ]
  
-@@ -1565,10 +1499,6 @@ config("chromium_code") {
+@@ -1624,10 +1549,6 @@ config("chromium_code") {
        # well.
        ldflags = [ "-Werror" ]
      }
@@ -119,7 +135,7 @@ index 5365544..e6d9b56 100644
  
      # In Chromium code, we define __STDC_foo_MACROS in order to get the
      # C99 macros on Mac and Linux.
-@@ -1577,15 +1507,6 @@ config("chromium_code") {
+@@ -1636,15 +1557,6 @@ config("chromium_code") {
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -135,7 +151,7 @@ index 5365544..e6d9b56 100644
      if (is_mac) {
        cflags_objc = [ "-Wobjc-missing-property-synthesis" ]
        cflags_objcc = [ "-Wobjc-missing-property-synthesis" ]
-@@ -1988,7 +1909,8 @@ config("default_stack_frames") {
+@@ -2035,7 +1947,8 @@ config("default_stack_frames") {
  }
  
  # Default "optimization on" config.
@@ -145,7 +161,7 @@ index 5365544..e6d9b56 100644
    if (is_win) {
      if (chrome_pgo_phase != 2) {
        # Favor size over speed, /O1 must be before the common flags.
-@@ -2026,7 +1948,8 @@ config("optimize") {
+@@ -2073,7 +1986,8 @@ config("optimize") {
  }
  
  # Turn off optimizations.
@@ -155,7 +171,7 @@ index 5365544..e6d9b56 100644
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -2066,7 +1989,8 @@ config("no_optimize") {
+@@ -2113,7 +2027,8 @@ config("no_optimize") {
  # Turns up the optimization level. On Windows, this implies whole program
  # optimization and link-time code generation which is very expensive and should
  # be used sparingly.
@@ -165,7 +181,7 @@ index 5365544..e6d9b56 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2099,7 +2023,8 @@ config("optimize_max") {
+@@ -2146,7 +2061,8 @@ config("optimize_max") {
  #
  # TODO(crbug.com/621335) - rework how all of these configs are related
  # so that we don't need this disclaimer.
@@ -175,7 +191,7 @@ index 5365544..e6d9b56 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2125,7 +2050,8 @@ config("optimize_speed") {
+@@ -2172,7 +2088,8 @@ config("optimize_speed") {
    }
  }
  
@@ -185,7 +201,7 @@ index 5365544..e6d9b56 100644
    cflags = [ "-O1" ] + common_optimize_on_cflags
    rustflags = [ "-Copt-level=1" ]
    ldflags = common_optimize_on_ldflags
-@@ -2245,7 +2171,8 @@ config("win_pdbaltpath") {
+@@ -2291,7 +2208,8 @@ config("win_pdbaltpath") {
  }
  
  # Full symbols.
@@ -195,7 +211,7 @@ index 5365544..e6d9b56 100644
    if (is_win) {
      if (is_clang) {
        cflags = [ "/Z7" ]  # Debug information in the .obj files.
-@@ -2369,7 +2296,8 @@ config("symbols") {
+@@ -2419,7 +2337,8 @@ config("symbols") {
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
@@ -205,7 +221,7 @@ index 5365544..e6d9b56 100644
    if (is_win) {
      # Functions, files, and line tables only.
      cflags = []
-@@ -2438,7 +2366,8 @@ config("minimal_symbols") {
+@@ -2492,7 +2411,8 @@ config("minimal_symbols") {
  # This configuration contains function names only. That is, the compiler is
  # told to not generate debug information and the linker then just puts function
  # names in the final debug information.
@@ -216,5 +232,5 @@ index 5365544..e6d9b56 100644
      ldflags = [ "/DEBUG" ]
  
 -- 
-2.32.0
+2.35.1
 

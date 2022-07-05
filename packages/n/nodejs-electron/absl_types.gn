@@ -1,0 +1,47 @@
+import("//build/config/linux/pkg_config.gni")
+import("//build/shim_headers.gni")
+
+pkg_config("system_absl_optional") {
+  packages = [ "absl_optional" ]
+}
+
+pkg_config("system_absl_span") {
+  packages = [ "absl_span" ]
+}
+
+pkg_config("system_absl_variant") {
+  packages = [ "absl_variant" ]
+}
+
+shim_headers("optional_shim") {
+  root_path = "."
+  prefix = "absl/types/"
+  headers = [ "optional.h" ]
+}
+
+source_set("optional") {
+  deps = [ ":optional_shim" ]
+  public_configs = [ ":system_absl_optional" ]
+}
+
+shim_headers("span_shim") {
+  root_path = "."
+  prefix = "absl/types/"
+  headers = [ "span.h" ]
+}
+
+source_set("span") {
+  deps = [ ":span_shim" ]
+  public_configs = [ ":system_absl_span" ]
+}
+
+shim_headers("variant_shim") {
+  root_path = "."
+  prefix = "absl/types/"
+  headers = [ "variant.h" ]
+}
+
+source_set("variant") {
+  deps = [ ":variant_shim" ]
+  public_configs = [ ":system_absl_variant" ]
+}

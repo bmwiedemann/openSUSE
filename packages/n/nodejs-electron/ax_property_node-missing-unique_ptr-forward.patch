@@ -1,0 +1,12 @@
+--- a/ui/accessibility/platform/inspect/ax_property_node.h	2022-06-21 21:52:56.275987974 +0200
++++ b/ui/accessibility/platform/inspect/ax_property_node.h	2022-06-24 23:18:58.285982565 +0200
+@@ -5,7 +5,9 @@
+ #ifndef UI_ACCESSIBILITY_PLATFORM_INSPECT_AX_PROPERTY_NODE_H_
+ #define UI_ACCESSIBILITY_PLATFORM_INSPECT_AX_PROPERTY_NODE_H_
+ 
++#include <memory>
+ #include <string>
++#include <utility>
+ #include <vector>
+ 
+ #include "third_party/abseil-cpp/absl/types/optional.h"

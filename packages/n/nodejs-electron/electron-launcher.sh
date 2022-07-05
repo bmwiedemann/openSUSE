@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 set -euo pipefail
 
@@ -17,4 +17,4 @@ for line in "${MAPFILE[@]}"; do
     fi
 done
 
-exec /usr/lib64/${name}/electron "$@" "${flags[@]}"
+exec XXXLIBDIRXXX/${name}/electron "$@" "${flags[@]}"
