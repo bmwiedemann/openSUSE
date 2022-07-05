@@ -217,4 +217,13 @@
     <comment></comment>
     <requestid>575579</requestid>
   </revision>
+  <revision rev="31" vrev="18">
+    <srcmd5>d756db0784b8b792eadc4f16085aa928</srcmd5>
+    <version>2.3.3.4</version>
+    <time>1657016842</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc12-header-files.patch in order to fix build
+  with GCC 12.</comment>
+    <requestid>986591</requestid>
+  </revision>
 </revisionlist>

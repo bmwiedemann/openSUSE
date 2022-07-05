@@ -1,7 +1,7 @@
 #
 # spec file for package clucene-core
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           clucene-core
 Version:        2.3.3.4
 Release:        0
 Summary:        CLucene is a C++ port of Lucene
-License:        LGPL-2.1 OR Apache-2.0
+License:        Apache-2.0 OR LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-Url:            http://clucene.sourceforge.net/
+URL:            http://clucene.sourceforge.net/
 #Git-Clone:	git://clucene.git.sourceforge.net/gitroot/clucene/clucene
 Source0:        http://sourceforge.net/projects/clucene/files/clucene-core-unstable/2.3/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
@@ -32,6 +32,7 @@ Patch0:         clucene-2.3.3.4-pkgconfig.patch
 Patch1:         clucene-2.3.3.4-contrib-libs.patch
 Patch2:         clucene-kill-ext-includes.diff
 Patch3:         clucene-new-gcc.patch
+Patch4:         gcc12-header-files.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes

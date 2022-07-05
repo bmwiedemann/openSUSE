@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 30 08:11:41 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add gcc12-header-files.patch in order to fix build
+  with GCC 12.
+
+-------------------------------------------------------------------
 Wed Feb  7 14:12:14 UTC 2018 - tchvatal@suse.com
 
 - Add patch clucene-new-gcc.patch to fix visibility issues
