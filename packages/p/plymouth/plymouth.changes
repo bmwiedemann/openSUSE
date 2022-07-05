@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 29 08:52:34 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d.
+
+-------------------------------------------------------------------
 Sun May 15 15:58:33 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
 - Add plymouth-crash-avoid-on-keyboard-remove-input-handler.patch

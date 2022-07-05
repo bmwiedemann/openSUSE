@@ -405,6 +405,13 @@ rm -rf %{buildroot}%{_datadir}/plymouth/themes/glow/
 rm -f %{buildroot}%{_sysconfdir}/plymouth/plymouthd.conf
 rm -f %{buildroot}%{_datadir}/plymouth/plymouthd.conf
 
+# Move logrotate files from user specific directory /etc/logrotate.d
+# to vendor specific directory /usr/etc/logrotate.d.
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+mv %{buildroot}%{_sysconfdir}/logrotate.d/bootlog %{buildroot}%{_distconfdir}/logrotate.d/bootlog
+%endif
+
 %find_lang %{name}
 
 %post
@@ -517,7 +524,11 @@ fi
 %dir %{_sharedstatedir}/plymouth
 %dir %{_libdir}/plymouth
 %dir %{_libdir}/plymouth/renderers
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/bootlog
+%else
 %{_sysconfdir}/logrotate.d/bootlog
+%endif
 %{_bindir}/plymouth
 %{_sbindir}/plymouthd
 %{_libdir}/plymouth/details.so
