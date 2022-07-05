@@ -168,8 +168,8 @@ Group:          Productivity/Scientific/Math
 Requires:       makeinfo
 Requires(pre):  update-alternatives
 # SECTION Resolve degeneracy between multiple libsundials{_ida}.so providers from serial and parallel flavours of sundials
-Requires:       libsundials3
-Requires:       libsundials_ida5
+Requires:       %(rpm -qR sundials-devel | grep -oP "libsundials[0-9]")
+Requires:       %(rpm -qR sundials-devel | grep -oP "libsundials_ida[0-9]")
 # /SECTION
 %if %{with native_graphics}
 Recommends:     epstool

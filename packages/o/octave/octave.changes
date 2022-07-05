@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  5 12:08:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Dynamically generate the dependencies on the correct
+  libsundials/libsundials_ida package: the so-version can change
+  over time.
+
+-------------------------------------------------------------------
 Sun Apr 10 21:30:11 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 7.1.0:
