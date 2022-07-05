@@ -315,4 +315,23 @@
     <comment></comment>
     <requestid>975862</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c0b9b709039a0a2ecc86aca01999aa81</srcmd5>
+    <version>1.1.4</version>
+    <time>1657015767</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4:
+  * release 1.1.4
+  * po: Update Croatian translation
+  * po: Update Croatian translation
+  * release 1.1.4rc2
+  * settings: handle unusual values for persistent remappable action
+  * settings: remove unused class variables
+  * device: fix no-output values for persistent key mappings
+  * doc: improve documentation on library needed for system tray integration
+  * ui: remove blank lines from system tray popup
+  * po: update Polish translation
+</comment>
+    <requestid>986676</requestid>
+  </revision>
 </revisionlist>
