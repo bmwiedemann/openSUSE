@@ -72,12 +72,6 @@ music component library.
 # There is handcrafted assembler, which LTO does not play nice with.
 %define _lto_cflags %nil
 
-%ifarch %ix86
-# Allow sw to use intrinsics (functions like _mm_set_sd).
-# Guarded by cpuid calls by sw.
-export CFLAGS="%optflags -msse -msse2"
-export CXXFLAGS="%optflags -msse -msse2"
-%endif
 %cmake -DNO_STRIP=1 \
 	-DCMAKE_SHARED_LINKER_FLAGS="" \
 	-DCMAKE_EXE_LINKER_FLAGS="" -DCMAKE_MODULE_LINKER_FLAGS="" \
