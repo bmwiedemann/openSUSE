@@ -143,4 +143,12 @@ update to version v2.5
   - Fix Russian typo in documentation</comment>
     <requestid>925735</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>89c55894a7d927d73bfc9c5c4d86ccbd</srcmd5>
+    <version>3.3</version>
+    <time>1657016842</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986597</requestid>
+  </revision>
 </revisionlist>

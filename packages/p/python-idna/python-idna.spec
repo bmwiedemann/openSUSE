@@ -1,7 +1,7 @@
 #
 # spec file for package python-idna
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ URL:            https://github.com/kjd/idna
 Source0:        https://files.pythonhosted.org/packages/source/i/idna/idna-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20220106.80d3756
 BuildArch:      noarch
 %python_subpackages
 
