@@ -637,4 +637,22 @@
   * Fixed segfault when attempting to open an unresolved IP on mac/BSDs.</comment>
     <requestid>980298</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d0b4bee6e622626b60423d7bdd6a5938</srcmd5>
+    <version>1.6.1</version>
+    <time>1657015747</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.1:
+  * Added a `--ping-interval=&lt;secs&gt;` in an attempt to keep the WebSocket
+    connection opened.
+  * Added support for timezone conversion via `--datetime-format=&lt;format&gt;` and
+    `--tz=&lt;timezone&gt;`.
+  * Added the ability to reconnect to WebSocket server after 1 sec with
+    exponential backoff (x20).
+  * Fixed issue where an invalid client connection would stall data out to
+    clients via the WebSocket server.
+  * Fixed issue where real-time data would be parsed multiple times under
+    `Cygwin`.</comment>
+    <requestid>986593</requestid>
+  </revision>
 </revisionlist>

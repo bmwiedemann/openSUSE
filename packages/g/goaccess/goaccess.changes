@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul  4 09:22:38 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.1:
+  * Added a `--ping-interval=<secs>` in an attempt to keep the WebSocket
+    connection opened.
+  * Added support for timezone conversion via `--datetime-format=<format>` and
+    `--tz=<timezone>`.
+  * Added the ability to reconnect to WebSocket server after 1 sec with
+    exponential backoff (x20).
+  * Fixed issue where an invalid client connection would stall data out to
+    clients via the WebSocket server.
+  * Fixed issue where real-time data would be parsed multiple times under
+    `Cygwin`.
+
+-------------------------------------------------------------------
 Wed Jun  1 07:15:26 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6:

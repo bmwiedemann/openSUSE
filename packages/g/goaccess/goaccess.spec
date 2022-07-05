@@ -1,4 +1,3 @@
-# vim: set sw=4 ts=4 et nu:
 #
 # spec file for package goaccess
 #
@@ -21,7 +20,7 @@
 %global goaccess_services goaccess@.service goaccess@.timer
 
 Name:           goaccess
-Version:        1.6
+Version:        1.6.1
 Release:        0
 Summary:        Apache Web Log Analyzer
 License:        GPL-2.0-or-later
