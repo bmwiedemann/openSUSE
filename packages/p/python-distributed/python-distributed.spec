@@ -40,34 +40,22 @@
 %bcond_with test
 %endif
 
-%ifarch %{ix86} %{arm}
-# cython optimizations not supported on 32-bit: https://github.com/dask/dask/issues/7489
-%bcond_with cythonize
-%else
-%bcond_without cythonize
-%endif
-%if %{with cythonize}
-%define cythonize --with-cython
-%endif
-
 # use this to run tests with xdist in parallel, unfortunately fails server side
 %bcond_with paralleltests
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-# ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-%define         ghversiontag 2022.03.0
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2022.3.0
+Version:        2022.6.1
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
 URL:            https://distributed.dask.org
-Source:         https://github.com/dask/distributed/archive/refs/tags/%{ghversiontag}.tar.gz#/distributed-%{ghversiontag}-gh.tar.gz
+Source:         https://github.com/dask/distributed/archive/refs/tags/%{version}.tar.gz#/distributed-%{version}-gh.tar.gz
 Source99:       python-distributed-rpmlintrc
-# PATCH-FIX-UPSTREAM distributed-pr5952-py310.patch -- gh#dask/distributed#5952
-Patch1:         distributed-pr5952-py310.patch
+# PATCH-FIX-OPENSUSE distributed-ignore-off.patch -- ignore that we can't probe addresses on obs, code@bnavigator.de
+Patch1:         distributed-ignore-offline.patch
 # PATCH-FIX-OPENSUSE distributed-ignore-thread-leaks.patch -- ignore leaking threads on obs, code@bnavigator.de
 Patch2:         distributed-ignore-thread-leaks.patch
 BuildRequires:  %{python_module base >= 3.8}
@@ -79,49 +67,36 @@ Requires:       python-certifi
 Requires:       python-click >= 6.6
 Requires:       python-cloudpickle >= 1.5.0
 Requires:       python-dask = %{version}
-Requires:       python-msgpack
+Requires:       python-locket >= 1.0.0
+Requires:       python-msgpack >= 0.6.0
 Requires:       python-packaging >= 20.0
 Requires:       python-psutil >= 5.0
 Requires:       python-sortedcontainers
 Requires:       python-tblib
 Requires:       python-toolz >= 0.8.2
 Requires:       python-tornado >= 6.0.3
+Requires:       python-urllib3
 Requires:       python-zict >= 0.1.3
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-%if %{with cythonize}
-BuildRequires:  %{python_module Cython}
-# the cythonized scheduler needs Cython also as runtime dep for some checks
-Requires:       python-Cython
-%endif
 %if %{with test}
-BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module bokeh}
-BuildRequires:  %{python_module certifi}
-BuildRequires:  %{python_module click >= 6.6}
-BuildRequires:  %{python_module cloudpickle >= 1.5.0}
 BuildRequires:  %{python_module dask-all = %{version}}
 BuildRequires:  %{python_module distributed = %{version}}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module jupyter_client}
-BuildRequires:  %{python_module msgpack}
-BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-asyncio >= 0.17.2}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module sortedcontainers}
 BuildRequires:  %{python_module sparse}
-BuildRequires:  %{python_module tblib}
-BuildRequires:  %{python_module toolz >= 0.8.2}
-BuildRequires:  %{python_module tornado >= 6.0.3}
-BuildRequires:  %{python_module zict >= 0.1.3}
 %if %{with paralleltests}
 BuildRequires:  %{python_module pytest-xdist}
 %endif
 %endif
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -130,45 +105,61 @@ extends both the concurrent.futures and dask APIs to moderate sized
 clusters.
 
 %prep
-%autosetup -p1 -n distributed-%{ghversiontag}
+%autosetup -p1 -n distributed-%{version}
 
-sed -i -e '/addopts/ {s/--durations=20//; s/--color=yes//}' \
-       -e 's/timeout_method = thread/timeout_method = signal/' setup.cfg
+sed -e '/--durations=20/d' \
+    -e '/--color=yes/d'  \
+    -e 's/timeout_method = thread/timeout_method = signal/' \
+    -i setup.cfg
 
 %build
 %if ! %{with test}
-%python_build %{?cythonize}
+%python_build
 %endif
 
 %install
 %if ! %{with test}
-%python_install %{?cythonize}
+%python_install
 %python_clone -a %{buildroot}%{_bindir}/dask-ssh
 %python_clone -a %{buildroot}%{_bindir}/dask-scheduler
 %python_clone -a %{buildroot}%{_bindir}/dask-worker
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %if %{with test}
 %check
+# test local src dir, not installed path: looks for test certificates and not installed test modules
+export PYTHONPATH=":x"
+# disable profiling completely -- https://github.com/dask/distributed/pull/6490
+sed '/enable profiling/ {s/enabled: True/enabled: False/}' -i distributed/distributed.yaml
+# make sure the change was successful, this is only for the tests, we didn't patch any installed source
+grep 'enabled: False .*enable profiling' distributed/distributed.yaml
+
 # we obviously don't test a git repo
 donttest="test_git_revision"
 # logger error
 donttest+=" or test_version_warning_in_cluster"
+# invalid task state
+donttest+=" or test_fail_to_pickle_target_2"
 
 # Some tests randomly fail server-side -- too slow for obs (?)
 # see also https://github.com/dask/distributed/issues/5818
-donttest+=" or (test_asyncprocess and test_exit_callback)"
+donttest+=" or (test_asyncprocess and (test_exit_callback or test_simple))"
 donttest+=" or (test_client and test_repr)"
+donttest+=" or (test_client and test_profile_server)"
+donttest+=" or (test_metrics and test_wall_clock)"
 donttest+=" or (test_priorities and test_compute)"
 donttest+=" or (test_resources and test_prefer_constrained)"
 donttest+=" or (test_steal and test_steal_twice)"
-donttest+=" or (test_worker and test_gather_dep_one_worker_always_busy)"
+donttest+=" or (test_variable and test_variable_in_task)"
 donttest+=" or (test_worker and test_worker_reconnects_mid_compute)"
+# server-side fail due to the non-network warning in a subprocess where the patched filter does not apply
+donttest+=" or (test_client and test_quiet_close_process)"
 
 # Exception messages not caught -- https://github.com/dask/distributed/issues/5460#issuecomment-1079432890
 python310_donttest+=" or test_exception_text"
 python310_donttest+=" or test_worker_bad_args"
+python310_donttest+=" or test_run_spec_deserialize_fail"
 
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   # OverflowError -- https://github.com/dask/distributed/issues/5252
@@ -183,11 +174,20 @@ fi
 notparallel="rebalance or memory or upload"
 notparallel+=" or test_open_close_many_workers"
 notparallel+=" or test_recreate_error_array"
-notparallel+=" or (test_preload and test_web_preload_worker)"
-%pytest_arch distributed/tests -m "not avoid_ci" -n auto -k "not ($notparallel or $donttest ${$python_donttest})"
-%pytest_arch distributed/tests -m "not avoid_ci" -k "($notparallel) and (not ($donttest ${$python_donttest}))"
+notparallel+=" or (test_preload and test_web_preload)"
+#  Recursion error, https://github.com/dask/distributed/issues/6406
+notparallel+=" or test_stack_overflow"
+#
+notparallel+=" or test_dashboard_host"
+notparallel+=" or test_close_properly"
+notparallel+=" or test_popen_timeout"
+notparallel+=" or test_plugin_internal_exception"
+notparallel+=" or test_runspec_regression_sync"
+
+%pytest distributed/tests -m "not avoid_ci" -n auto -k "not ($notparallel or $donttest ${$python_donttest})"
+%pytest distributed/tests -m "not avoid_ci" -k "($notparallel) and not ($donttest ${$python_donttest})"
 %else
-%pytest_arch distributed/tests -m "not avoid_ci" -k "not ($donttest ${$python_donttest})" --reruns 3 --reruns-delay 3
+%pytest distributed/tests -m "not avoid_ci" -k "not ($donttest ${$python_donttest})" --reruns 3 --reruns-delay 3
 %endif
 %endif
 
@@ -204,8 +204,8 @@ notparallel+=" or (test_preload and test_web_preload_worker)"
 %python_alternative %{_bindir}/dask-ssh
 %python_alternative %{_bindir}/dask-scheduler
 %python_alternative %{_bindir}/dask-worker
-%{python_sitearch}/distributed
-%{python_sitearch}/distributed-%{version}*-info
+%{python_sitelib}/distributed
+%{python_sitelib}/distributed-%{version}*-info
 
 %endif
 

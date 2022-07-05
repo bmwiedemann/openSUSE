@@ -1,4 +1,257 @@
 -------------------------------------------------------------------
+Fri Jun 24 20:21:16 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.6.1 
+  * Highlights
+    - This release includes the Worker State Machine refactor. The
+      expectation should be that the worker state is its own
+      synchronous subclass. Pulling all the state out into its own
+      class allows us to write targeted unit tests without invoking
+      any concurrent or asynchronous code.
+  * Enhancements
+    - Make worker state machine methods private (GH#6564)
+      crusaderky
+    - Yank state machine out of Worker class (GH#6566) crusaderky
+    - Track worker_state_machine.TaskState instances (GH#6525)
+      Hendrik Makait
+    - Trivial tweaks to the Worker State Machine (GH#6586)
+      crusaderky
+    - Replace loop.call_later and loop.add_callback with background
+      tasks added to Server. (GH#6603) Thomas Grainger
+    - Support for neater WorkerState tests (GH#6609) crusaderky
+    - Limit TCP writes with Tornado to 2GB (GH#6557) hhuuggoo
+    - Enable no_implicit_optional for scheduler (GH#6622) Thomas
+      Grainger
+  * Bug Fixes
+    - Partial revert of compute-task message format (GH#6626)
+      Florian Jetter
+    - Restore log message about received signals in CLI (GH#6618)
+      Florian Jetter
+    - Handle empty memoryviews of bytearrays when (de)serializing
+      (GH#6576) Benjamin Zaitlen
+    - Ensure steal requests from same-IP but distinct workers are
+      rejected (GH#6585) Florian Jetter
+    - Fix tls_(min|max)_ version having no effect on openssl 1.1.0g
+      or lower (GH#6562) Thomas Grainger
+    - Fix idle_timeout and unxfail test (GH#6563) Matthew Rocklin
+    - Fix crashing debug statement in _purge_state (GH#6589)
+      crusaderky
+    - Abort connections on CancelledError (GH#6574) Thomas Grainger
+    - Fix Active Memory Manager ignores nbytes thresholds (GH#6583)
+      crusaderky
+  * Deprecations
+    - Deprecate WorkerState accessors (GH#6579)
+      crusaderky
+- Release 2022.6.0
+  * Enhancements
+    - Make disk access in system monitor configurable (GH#6537)
+      Matthew Rocklin
+    - Log and except errors on preload start (GH#6553) Matthew
+      Rocklin
+    - Fix Scheduler.restart logic (GH#6504) Gabe Joseph
+    - Don’t heartbeat while Worker is closing (GH#6543) Gabe Joseph
+    - No longer retry LocalCluster on errno.EADDRINUSE (GH#6369)
+      Thomas Grainger
+    - Don’t invoke log_event from state machine (GH#6512)
+      crusaderky
+    - Add config option to disable profiling and disable it in many
+      tests per default (GH#6490) Hendrik Makait
+    - Encapsulate Worker.batched_stream.send() (GH#6475) crusaderky
+  * Bug Fixes
+    - refresh-who-has can break the worker state machine (GH#6529)
+      crusaderky
+    - Restart worker if it’s unrecognized by scheduler (GH#6505)
+      Gabe Joseph
+    - Fix import error when distributed.rmm.pool-size is set
+      (GH#6482) KoyamaSohei
+  * Deprecations
+    - Restore signature compatibility for dask-gateway (GH#6561)
+      Tom Augspurger
+    - Deprecate the io_loop and loop kwarg to Server, Worker, and
+      Nanny (GH#6473) Thomas Grainger
+    - Deprecate the loop kwarg to Scheduler (GH#6443) Thomas
+      Grainger
+- Release 2022.05.2
+  * Enhancements
+    - Add a lock to distributed.profile for better concurrency
+      control (GH#6421) Hendrik Makait
+    - Send SIGKILL after SIGTERM when passing 95% memory (GH#6419)
+      crusaderky
+  * Bug Fixes
+    - Log rather than raise exceptions in preload.teardown()
+      (GH#6458) Matthew Rocklin
+    - Handle failing plugin.close() calls during scheduler shutdown
+      (GH#6450) Matthew Rocklin
+    - Fix slicing bug in ensure_memoryview (GH#6449) jakirkham
+    - Generalize UCX errors on connect() and correct pytest
+      fixtures (GH#6434) Peter Andreas Entschev
+    - Run cluster widget periodic callbacks on the correct event
+      loop (GH#6444) Thomas Grainger
+- Release 2022.05.1
+  * New Features
+    - Add HTTP API to scheduler (GH#6270) Matthew Murray
+    - Shuffle Service with Scheduler Logic (GH#6007) Matthew
+      Rocklin
+  * Enhancements
+    - Follow-up on removing report and safe from Worker.close
+      (GH#6423) Gabe Joseph
+    - Server close faster (GH#6415) Florian Jetter
+    - Disable HTTP API by default (GH#6420) Jacob Tomlinson
+    - Remove report and safe from Worker.close (GH#6363) Florian
+      Jetter
+    - Allow deserialized plugins in register_scheduler_plugin
+      (GH#6401) Matthew Rocklin
+    - WorkerState are different for different addresses (GH#6398)
+      Florian Jetter
+    - Do not filter tasks before gathering data (GH#6371)
+      crusaderky
+    - Remove worker reconnect (GH#6361) Gabe Joseph
+    - Add SchedulerPlugin.log_event handler (GH#6381) Matthew
+      Rocklin
+    - Ensure occupancy tracking works as expected for long running
+      tasks (GH#6351) Florian Jetter
+    - stimulus_id for all Instructions (GH#6347) crusaderky
+    - Refactor missing-data command (GH#6332) crusaderky
+    - Add idempotent to register_scheduler_plugin client (GH#6328)
+      Alex Ford
+    - Add option to specify a scheduler address for workers to use
+      (GH#5944) Enric Tejedor
+  * Bug Fixes
+    - Remove stray breakpoint (GH#6417) Thomas Grainger
+    - Fix API JSON MIME type (GH#6397) Jacob Tomlinson
+    - Remove wrong assert in handle compute (GH#6370) Florian
+      Jetter
+    - Ensure multiple clients can cancel their key without
+      interference (GH#6016) Florian Jetter
+    - Fix Nanny shutdown assertion (GH#6357) Gabe Joseph
+    - Fix fail_hard for sync functions (GH#6269) Gabe Joseph
+    - Prevent infinite transition loops; more aggressive
+      validate_state() (GH#6318) crusaderky
+    - Ensure cleanup of many GBs of spilled data on terminate
+      (GH#6280) crusaderky
+    - Fix WORKER_ANY_RUNNING regression (GH#6297) Florian Jetter
+    - Race conditions from fetch to compute while AMM requests
+      replica (GH#6248) Florian Jetter
+    - Ensure resumed tasks are not accidentally forgotten (GH#6217)
+      Florian Jetter
+    - Do not allow closing workers to be awaited again (GH#5910)
+      Florian Jetter
+  * Deprecations
+    - Move wait_for_signals to private module and deprecate
+      distributed.cli.utils (GH#6367) Hendrik Makait
+- Release 2022.05.0
+  * Highlights
+    - This is a bugfix release for this issue.
+  * Enhancements
+    - Handle writeable in buffer_callback (GH#6238) jakirkham
+    - Use .data with NumPy array allocation (GH#6242) jakirkham
+  * Bug Fixes
+    - Close executor in event loop if interpreter is closing
+      (GH#6256) Matthew Rocklin
+- Release 2022.04.2
+  * Enhancements
+    - Unblock event loop while waiting for ThreadpoolExecutor to
+      shut down (GH#6091) Florian Jetter
+    - RetireWorker policy is done if removed (GH#6234) Gabe Joseph
+    - Pause to disable dependency gathering (GH#6195) crusaderky
+    - Add EOFError to nanny multiprocessing.queue except list
+      (GH#6213) Matthew Rocklin
+    - Re-interpret error in lost worker scenario (GH#6193) Matthew
+      Rocklin
+    - Add Stimulus IDs to Scheduler (GH#6161) Florian Jetter
+    - Set a five minute TTL for Dask workers (GH#6200) Matthew
+      Rocklin
+    - Add distributed.metrics.monotonic (GH#6181) crusaderky
+    - Send worker validation errors to scheduler and err on test
+      completion (GH#6192) Matthew Rocklin
+    - Redesign worker exponential backoff on busy-gather (GH#6173)
+      crusaderky
+    - Log all invalid worker transitions to scheduler (GH#6134)
+      Matthew Rocklin
+    - Make Graph dashboard plot have invisible axes (GH#6149)
+      Matthew Rocklin
+    - Remove Nanny auto_restart state (GH#6138) Matthew Rocklin
+  * Bug Fixes
+    - Ensure scheduler events do not hold on to TaskState objects
+      (GH#6226) Florian Jetter
+    - Allow pausing and choke event loop while spilling (GH#6189)
+      crusaderky
+    - Do not use UUID in stealing (GH#6179) Florian Jetter
+    - Handle int worker names in info page (GH#6158) Brett Naul
+    - Fix psutil dio counters none (GH#6093) ungarj
+    - Join Nanny watch thread (GH#6146) Matthew Rocklin
+    - Improve logging when closing workers (GH#6129) Matthew
+      Rocklin
+    - Avoid stack overflow in profiling (GH#6141) Matthew Rocklin
+    - Clean up SSHCluster if failure to start (GH#6130) Matthew
+      Rocklin
+  * Deprecations
+    - Deprecate rpc synchronous context manager (GH#6171) Thomas
+      Grainger
+- Release 2022.04.1
+  * New Features
+    - Add KillWorker Plugin (GH#6126) Matthew Rocklin
+  * Enhancements
+    - Sort worker list in info pages (GH#6135) Matthew Rocklin
+    - Add back Worker.transition_fetch_missing (GH#6112) Matthew
+      Rocklin
+    - Log state machine events (GH#6092) crusaderky
+    - Migrate ensure_executing transitions to new WorkerState event
+      mechanism - part 1 (GH#6003) crusaderky
+    - Migrate ensure_executing transitions to new WorkerState event
+      mechanism - part 2 (GH#6062) crusaderky
+    - Annotate worker transitions to error (GH#6012) crusaderky
+  * Bug Fixes
+    - Avoid transitioning from memory/released to missing in worker
+      (GH#6123) Matthew Rocklin
+    - Don’t try to reconnect client on interpreter shutdown
+      (GH#6120) Matthew Rocklin
+    - Wrap UCX init warnings in importable functions (GH#6121)
+      Charles Blackmon-Luca
+    - Cancel asyncio tasks on worker close (GH#6098) crusaderky
+    - Avoid port collisions when defining port ranges (GH#6054)
+      crusaderky
+- Release 2022.04.0
+  * This is the first release with support for Python 3.10
+  * New Features
+    - Add Python 3.10 support (GH#5952) Thomas Grainger
+    - New cluster dump utilities (GH#5920) Simon Perkins
+    - New ClusterDump SchedulerPlugin for dumping cluster state on
+      close (GH#5983) Simon Perkins
+    - Track Event Loop intervals in dashboard plot (GH#5964)
+      Matthew Rocklin
+    - ToPickle - Unpickle on the Scheduler (GH#5728) Mads R. B.
+      Kristensen
+  * Enhancements
+    - Retry on transient error codes in preload (GH#5982) Matthew
+      Rocklin
+    - More idiomatic mypy configuration (GH#6022) crusaderky
+    - Name extensions and enable extension heartbeats (GH#5957)
+      Matthew Rocklin
+    - Better error message on misspelled executor annotation
+      (GH#6009) crusaderky
+    - Clarify that SchedulerPlugin must be subclassed (GH#6008)
+      crusaderky
+    - Remove duplication from stealing (GH#5787) Duncan McGregor
+    - Remove cache in iscoroutinefunction to avoid holding on to
+      refs (GH#5985) Florian Jetter
+    - Add title to individual plots (GH#5967) Matthew Rocklin
+    - Specify average in timeseries titles (GH#5974) Matthew
+      Rocklin
+  * Bug Fixes
+    - Do not catch CancelledError in CommPool (GH#6005) Florian
+      Jetter
+  * Deprecations
+    - Remove distributed._ipython_utils and dependents (GH#6036)
+      Thomas Grainger
+    - Remove support for PyPy (GH#6029) James Bourbeau
+    - Drop runtime dependency to setuptools (GH#6017) crusaderky
+    - Remove heartbeats from events (GH#5989) Matthew Rocklin
+- Cythonization has been abandoned upstream: Back to noarch.
+- Add distributed-ignore-offline.patch
+- Drop distributed-pr5952-py310.patch
+
+-------------------------------------------------------------------
 Fri Mar 25 19:18:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2022.03.0
