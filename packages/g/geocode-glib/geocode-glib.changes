@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 30 14:53:38 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.26.3:
+  + This release adds support for libsoup 3.x. To use the libsoup
+    3.x build, applications will need to be adapted to look for the
+    "-2.0" version of the API.
+- Create multibuild flavor "soup2":
+  + The soup2 flavor contains the packages we had so far, API 1.0
+  + The ""-flavor is API 2.0, creating new subpackages
+    libgeocode-glib-2-0 and typelib-1_0-GeocodeGlib-2_0.
+
+-------------------------------------------------------------------
 Wed Mar 11 00:40:33 UTC 2020 - mgorse@suse.com
 
 - Update to version 3.26.2:

@@ -252,4 +252,21 @@
 </comment>
     <requestid>784034</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c33fe74a411ba82dbd2965475df549fb</srcmd5>
+    <version>3.26.3</version>
+    <time>1657016828</time>
+    <user>dimstar_suse</user>
+    <comment>Seems sane to me - lets forward it
+
+- Update to version 3.26.3:
+  + This release adds support for libsoup 3.x. To use the libsoup
+    3.x build, applications will need to be adapted to look for the
+    &quot;-2.0&quot; version of the API.
+- Create multibuild flavor &quot;soup2&quot;:
+  + The soup2 flavor contains the packages we had so far, API 1.0
+  + The &quot;&quot;-flavor is API 2.0, creating new subpackages
+    libgeocode-glib-2-0 and typelib-1_0-GeocodeGlib-2_0. (forwarded request 986279 from iznogood)</comment>
+    <requestid>986574</requestid>
+  </revision>
 </revisionlist>

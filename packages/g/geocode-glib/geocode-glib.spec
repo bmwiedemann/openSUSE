@@ -1,7 +1,7 @@
 #
-# spec file for package geocode-glib
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,25 @@
 #
 
 
-Name:           geocode-glib
-Version:        3.26.2
+%define flavor @BUILD_FLAVOR@%nil
+%if "%{flavor}" == "soup2"
+%define nsuffix -soup2
+%define shlib   libgeocode-glib0
+%define typelib typelib-1_0-GeocodeGlib-1_0
+%else
+%define shlib   libgeocode-glib-2-0
+%define typelib typelib-1_0-GeocodeGlib-2_0
+
+%endif
+
+Name:           geocode-glib%{?nsuffix}
+Version:        3.26.3
 Release:        0
 Summary:        Convenience library for the Yahoo! Place Finder APIs
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://www.gnome.org/
-Source0:        https://download.gnome.org/sources/geocode-glib/3.26/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/geocode-glib/3.26/geocode-glib-%{version}.tar.xz
 Source1:        baselibs.conf
 
 BuildRequires:  gobject-introspection-devel
@@ -33,7 +44,11 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.34
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.99.2
+%if "%{flavor}" == "soup2"
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42
+%else
+BuildRequires:  pkgconfig(libsoup-3.0)
+%endif
 
 %description
 The geocode-glib library is a convenience library for the Yahoo! Place
@@ -43,14 +58,15 @@ The Place Finder web service allows to do geocoding (finding longitude
 and latitude from an address), and reverse geocoding (finding an address
 from coordinates).
 
-%package -n libgeocode-glib0
+%package -n %{shlib}
 Summary:        Convenience library for the Yahoo! Place Finder APIs
 # We require the icon set, which is shipped in the main package (in order
 # to keep the library parallel installable, we require at least current version).
 Group:          System/Libraries
-Requires:       %{name} >= %{version}
+# geocode-glib (without suffix) is built only once in the ""-flavor
+Requires:       geocode-glib >= %{version}
 
-%description -n libgeocode-glib0
+%description -n %{shlib}
 The geocode-glib library is a convenience library for the Yahoo! Place
 Finder APIs, as described at http://developer.yahoo.com/geo/placefinder/
 
@@ -58,11 +74,11 @@ The Place Finder web service allows to do geocoding (finding longitude
 and latitude from an address), and reverse geocoding (finding an address
 from coordinates).
 
-%package -n typelib-1_0-GeocodeGlib-1_0
+%package -n %{typelib}
 Summary:        Introspection bindings for geocode-glib
 Group:          System/Libraries
 
-%description -n typelib-1_0-GeocodeGlib-1_0
+%description -n %{typelib}
 The geocode-glib library is a convenience library for the Yahoo! Place
 Finder APIs, as described at http://developer.yahoo.com/geo/placefinder/
 
@@ -76,8 +92,8 @@ geocode-glib library.
 %package devel
 Summary:        Development files for geocode-glib, a library for the Yahoo Place Finder APIs
 Group:          Development/Libraries/C and C++
-Requires:       libgeocode-glib0 = %{version}
-Requires:       typelib-1_0-GeocodeGlib-1_0 = %{version}
+Requires:       %{shlib} = %{version}
+Requires:       %{typelib} = %{version}
 
 %description devel
 The geocode-glib library is a convenience library for the Yahoo! Place
@@ -91,39 +107,48 @@ This package contains development files needed to develop with the
 geocode-glib library.
 
 %prep
-%setup -q
+%setup -q -n geocode-glib-%{version}
 
 %build
 # FIXME Please investigate if we should package installed-tests
 %meson \
 	-Denable-gtk-doc=true \
 	-Denable-installed-tests=false \
+%if "%{flavor}" == "soup2"
+	-Dsoup2=true \
+%else
+	-Dsoup2=false \
+%endif
 	%{nil}
 %meson_build
 
 %install
 %meson_install
-find %{buildroot} -type f -name "*.la" -delete -print
+# we package the icons as part of the ""-flavor package
+%if "%{flavor}" != ""
+rm -rf %{buildroot}%{_datadir}/icons/hicolor
+%endif
 
-%post -n libgeocode-glib0 -p /sbin/ldconfig
-%postun -n libgeocode-glib0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
 
+%if "%{flavor}" == ""
 %files
-%{_datadir}/icons/gnome/
+%{_datadir}/icons/hicolor/
+%endif
 
-%files -n libgeocode-glib0
+%files -n %{shlib}
 %license COPYING.LIB
 %doc AUTHORS NEWS README
 %{_libdir}/*.so.*
 
-%files -n typelib-1_0-GeocodeGlib-1_0
-%{_libdir}/girepository-1.0/GeocodeGlib-1.0.typelib
+%files -n %{typelib}
+%{_libdir}/girepository-1.0/GeocodeGlib-*.typelib
 
 %files devel
-%doc %{_datadir}/gtk-doc/html/geocode-glib/
+%doc %{_datadir}/gtk-doc/html/geocode-glib*/
 %{_datadir}/gir-1.0/*.gir
-%{_includedir}/geocode-glib-1.0/
-%{_libdir}/pkgconfig/geocode-glib-1.0.pc
+%{_includedir}/geocode-glib-*/
+%{_libdir}/pkgconfig/geocode-glib-*.pc
 %{_libdir}/*.so
 
 %changelog
