@@ -1,7 +1,7 @@
 #
 # spec file for package flint
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           flint
-%define lname	libflint16
-Version:        2.8.2
+%define lname	libflint17
+Version:        2.9.0
 Release:        0
 Summary:        C library for doing number theory
 License:        LGPL-2.1-or-later

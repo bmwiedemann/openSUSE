@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Jul  5 09:34:01 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.9.0
+  * Add Eulerian polynomials
+  * Support "multivariate" polynomials with zero variables
+  * Improve Stirling numbers of both kinds
+  * Speed up numerous fmpz functions for small inputs
+  * Speedups to nmod arithmetic
+  * Improve nmod_mat LU decomposition
+  * Speed up Hermite polynomials
+  * Add n-th derivative for Z[x] and Q[x]
+  * Improve fq_default module (nmod is now used where optimal)
+  * Add sqrt functions for numerous polynomial/series modules and
+    finite fields
+  * Add FFT matrix multiplication
+  * Improve LLL for general use
+  * Add matrix-vector products over Q
+  * Add can_solve function for fmpq_mat, handling
+    non-square/singular matrices
+
+-------------------------------------------------------------------
+Tue Apr 26 08:33:32 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.5
+  * Fix unspecified serious bug in LLL
+
+-------------------------------------------------------------------
+Thu Apr 21 10:03:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.4
+  * Fix a serious bug in nmod_poly_xgcd_hgcd, nmod_poly_xgcd,
+    fmpz_poly_xgcd_modular, fmpz_poly_xgcd, fmpq_poly_xgcd for
+    polynomials of length >= 340.
+  * Fix a serious big in fmpz_mod_poly_xgcd for polynomials of
+    large length
+  * Fix an assertion failure in fmpz_mat_solve_fflu (only
+    relevant if asserts enabled)
+  * Fix some bugs on 32 bit machines
+  * Fix bug in nmod_mpoly_factor (returned 0 for some
+    factorisations)
+
+-------------------------------------------------------------------
 Mon Nov  1 13:16:41 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to release 2.8.2

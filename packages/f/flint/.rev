@@ -104,4 +104,12 @@
     <comment>- Update to release 2.8.2</comment>
     <requestid>928858</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>091e8700d091b2b3290a30d9cddce4a2</srcmd5>
+    <version>2.9.0</version>
+    <time>1657015806</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.9.0</comment>
+    <requestid>986819</requestid>
+  </revision>
 </revisionlist>
