@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  4 09:16:20 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.13.7
+  - Fixed reporting of errors related to a proxy server certificate.
+  - An untrusted proxy server certificate can be trusted via Page Information.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
 Thu May 26 09:38:07 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.13.6
