@@ -19,8 +19,9 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname mvapich2
-%define vers  2.3.6
-%define _vers 2_3_6
+%define vers  2.3.7
+%define _vers 2_3_7
+%define rc_ver -1
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
@@ -241,7 +242,7 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
 Version:        %{vers}
 Release:        0
-Source0:        http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-%{version}.tar.gz
+Source0:        http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-%{version}%{?rc_ver}.tar.gz
 Source1:        mpivars.sh
 Source2:        mpivars.csh
 Source3:        macros.hpc-mvapich2
@@ -252,13 +253,14 @@ Patch2:         mvapich2-arm-support.patch
 # It's been merged upstream, should be removed with the next release
 Patch3:         0001-Drop-GCC-check.patch
 Patch4:         reproducible.patch
+Patch5:         pass-correct-size-to-snprintf.patch
 
 ## Armv7 specific patches
 # PATCH-FIX-UPSTREAM 0001-Drop-real128.patch (https://github.com/pmodels/mpich/issues/4005)
 Patch50:        0001-Drop-real128.patch
 Patch51:        0001-Drop-Real-16.patch
 
-URL:            http://mvapich.cse.ohio-state.edu/overview/mvapich2/
+URL:            http://mvapich.cse.ohio-state.edu
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %if %{without skip_hpc_build}
@@ -389,6 +391,7 @@ is based on MPICH2 and MVICH. This package contains the static libraries
 %patch2
 %patch3
 %patch4
+%patch5 -p1
 
 # Only apply these patches on Armv7
 %ifarch armv7hl

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Jun 29 12:54:33 UTC 2022 - Klaus Kämpf <kkaempf@suse.com>
+
+- add pass-correct-size-to-snprintf.patch to fix potential buffer
+  overflows (required to make 'sundials' testsuite pass)
+
+- Update to mvapich2 2.3.7
+  * Features and Enhancements (since 2.3.6):
+    - Added support for systems with Rockport's switchless networks
+      * Added automatic architecture detection
+      * Optimized performance for point-to-point operations
+    - Added support for the Cray Slingshot 10 interconnect
+    - Enhanced support for blocking collective offload using
+      Mellanox SHARP
+        * Scatter and Scatterv
+    - Enhanced support for non-blocking collective offload using
+      Mellanox SHARP
+        * Iallreduce, Ibarrier, Ibcast, and Ireduce
+
+  * Bug Fixes (since 2.3.6):
+    - Removed several deprectated functions
+      - Thanks to Honggang Li @RedHat for the report
+    - Fixed a bug where tools like CMake FindMPI would not
+      detect MVAPICH  when compiled without Hydra mpiexec
+      - Thanks to Chris Chambreau and Adam Moody @LLNL for the report
+    - Fixed compilation error when building with mpirun and without hydra
+      - Thanks to James Long @University of Illinois for the report
+    - Fixed issue with setting RoCE mode correctly without RDMA_CM.
+      - Thanks to Nicolas Gagnon @Rockport Networks for the report
+    - Fixed an issue on heterogeneous clusters where QP attributes were
+      set incorrectly
+      - Thanks to X-ScaleSolutions for the report and fix
+    - Fixed a memory leak in improbe on the PSM channel
+      - Thanks to Gregory Lee @LLNL Beichuan Yan @University of Colorado
+        for the report
+    - Added retry logic for PSM connection establishment
+      - Thanks to Gregory Lee @LLNL for the report and X-ScaleSolutions
+        for the patch
+    - Fixed an initialization error when using PSM and gcc's -pg option
+      - Thanks to Gregory Lee @LLNL for the report and X-ScaleSolutions for 
+        the patch
+    - Fixed a potential integer overflow when transfering large arrays
+      - Thanks to Alexander Melnikov for the report and patch  
+
+- Fix Url: link
+
+-------------------------------------------------------------------
 Wed Feb 16 11:07:12 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Disable dlopen for verbs library (bsc#1196019)
