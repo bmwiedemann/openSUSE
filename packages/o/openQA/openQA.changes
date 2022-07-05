@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 04 19:22:50 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1656945135.425b473:
+  * Dependency cron 2022-07-04
+  * Fix liveview dysfunctional with directly chained jobs
+  * Dependency cron 2022-07-02
+
+-------------------------------------------------------------------
 Fri Jul 01 09:05:39 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1656666331.ed970be:
