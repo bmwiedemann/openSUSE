@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul  4 00:04:11 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.151
+  * Gtk2 minimal version is now 2.24.0.
+  * Fix header handling errors (fixes glgo#GNOME/pan#61 and
+    glgo#GNOME/pan#66).
+  * Add a menu entry to allow editing the Score file in text
+    editor (fixes glgo#GNOME/pan#11).
+
+-------------------------------------------------------------------
 Fri Mar 25 19:16:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(enchant) for pkgconfig(enchant-2)
