@@ -1,7 +1,7 @@
 #
 # spec file for package gnubg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2003 Achim Mueller, Germany.
 # Updated by Christopher Hofmann in 2010
 #
@@ -28,41 +28,32 @@ URL:            http://www.gnubg.org
 Source:         http://gnubg.org/media/sources/gnubg-release-%{version}-sources.tar.gz
 Source1:        %{name}.desktop
 BuildRequires:  autoconf
+BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  bison
+BuildRequires:  cairo-devel
 BuildRequires:  flex
 BuildRequires:  freetype2-devel
 BuildRequires:  glibc-devel
-%if 0%{?suse_version} != 1230
 BuildRequires:  glu-devel
-BuildRequires:  gtkglext-devel
-%endif
 BuildRequires:  gmp-devel
-BuildRequires:  libcanberra-devel
+BuildRequires:  gtkglext-devel
+BuildRequires:  libcanberra-gtk-devel
+BuildRequires:  libcurl-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtool
+BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  readline-devel
+BuildRequires:  sqlite3-devel
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} > 1120
-BuildRequires:  libpng-devel >= 1.4
-%else
-BuildRequires:  libpng-devel
-%endif
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-Recommends:     gnubg-databases = %{version}
-Recommends:     gnubg-sounds = %{version}
-Recommends:     gnubg-doc = %{version}
-Recommends:     python3-MySQL-python
-BuildRequires:  sqlite3-devel
-%endif
-%if 0%{?fedora}
-BuildRequires:  sqlite-devel
-%endif
 Recommends:     %{name}-lang
+Recommends:     gnubg-databases = %{version}
+Recommends:     gnubg-doc = %{version}
+Recommends:     gnubg-sounds = %{version}
+Recommends:     python3-MySQL-python
 
 %description
 Program for playing and analysing backgammon positions, games and matches. It is
@@ -77,6 +68,7 @@ Summary:        Bearoff databases for gnubg
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Other
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description databases
 Precalculated GNU Backgammon bearoff databases - its intelligence. If you prefer
@@ -88,6 +80,7 @@ Summary:        Sounds for gnubg
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Other
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description sounds
 Sounds for GNU Backgammon. See description of gnubg for more details.
@@ -96,6 +89,7 @@ Sounds for GNU Backgammon. See description of gnubg for more details.
 Summary:        Documentation for gnubg
 License:        GFDL-1.3-only
 Group:          Amusements/Games/Board/Other
+BuildArch:      noarch
 
 %description doc
 Manual for GNU Backgammon. See description of gnubg for more details.
@@ -109,60 +103,53 @@ Manual for GNU Backgammon. See description of gnubg for more details.
 if [ -f %{_datadir}/aclocal/glib-gettext.m4 ]; then
   rm m4/glib-gettext.m4
 fi
+# Replace ax_python_devel.m4 for compatibility with Python 3.10.
+rm -f m4/ax_python_devel.m4
+cp -a %{_datadir}/aclocal/ax_python_devel.m4 m4/
 
 %build
 autoreconf -fi
-export SUSE_ASNEEDED=1
 simd=no
-%ifarch %ix86 x86_64
+%ifarch %{ix86} x86_64
 simd=sse2
 %endif
 %configure --docdir=%{_docdir}/%{name} --enable-simd=$simd
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
-DOC="ABOUT-NLS COPYING NEWS README TODO"
-install -m 0644 $DOC %{buildroot}/%{_docdir}/%{name}/
-
-%if 0%{?suse_version}
 %suse_update_desktop_file -i %{name}
-%endif
+
 %find_lang %{name}
 
 %files
-%defattr(-,root,root)
+%license COPYING
+%doc NEWS README TODO
 %{_bindir}/*
 %{_mandir}/man?/%{name}*
 %{_mandir}/man?/bearoffdump.*
 %{_mandir}/man?/makebearoff.*
 %{_mandir}/man?/makehyper.*
 %{_mandir}/man?/makeweights.*
-
-%if 0%{?suse_version}
 %{_datadir}/applications/gnubg.desktop
-%endif
 %{_datadir}/icons/hicolor/*/apps/gnubg.png
 %{_datadir}/gnubg
-%attr(755, -, root) %{_datadir}/gnubg/scripts/query_player.sh
+%attr(755,-,root) %{_datadir}/gnubg/scripts/query_player.sh
 %exclude %{_datadir}/gnubg/*.bd
 %exclude %{_datadir}/gnubg/sounds
-%doc %{_docdir}/%{name}
+%{_docdir}/%{name}
 %exclude %{_docdir}/%{name}/images
 %exclude %{_docdir}/%{name}/gnubg.html
 %exclude %{_docdir}/%{name}/allabout.html
 
 %files databases
-%defattr(-,root,root)
 %{_datadir}/gnubg/*.bd
 
 %files sounds
-%defattr(-,root,root)
 %{_datadir}/gnubg/sounds
 
 %files doc
-%defattr(-,root,root)
 %doc %{_docdir}/%{name}/images
 %doc %{_docdir}/%{name}/gnubg.html
 %doc %{_docdir}/%{name}/allabout.html

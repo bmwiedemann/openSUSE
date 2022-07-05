@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul  4 22:14:43 UTC 2022 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Fix build with python 3.10 (update m4/ax_python_devel.m4). Added
+  autoconf-archive build requirement for this.
+- Added new build requirements: cairo-devel, libcurl-devel and
+  pkgconfig.
+- Replaced libcanberra-devel build requirement with correct
+  libcanberra-gtk-devel.
+- Build databases, sounds and doc subpackages as noarch (fix
+  rpmlint error).
+- Removed SUSE_ASNEEDED=1 (not needed anymore).
+- Removed support for old openSUSE versions and Fedora.
+
+-------------------------------------------------------------------
 Mon Feb  3 05:25:24 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to depending on python3.
