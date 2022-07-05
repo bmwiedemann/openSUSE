@@ -204,4 +204,12 @@
   * Ensure ABI stability regardless of compiler settings per instruction in the header.</comment>
     <requestid>985793</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b274648425133606adb6b787ec85011c</srcmd5>
+    <version>20220623.0</version>
+    <time>1657016825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986572</requestid>
+  </revision>
 </revisionlist>

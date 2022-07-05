@@ -16,24 +16,24 @@
 #
 
 
+%define lname	libabsl2206_0_0
 Name:           abseil-cpp
-%define lname	libabsl2111_0_0
-Version:        20211102.0
+Version:        20220623.0
 Release:        0
 Summary:        C++11 libraries which augment the C++ stdlib
 License:        Apache-2.0
 URL:            https://abseil.io/
 Source0:        https://github.com/abseil/abseil-cpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE options-{old,cxx17}.patch Ensure ABI stability regardless of compiler options
-%if %{suse_version} < 1550
-Patch0:         options-old.patch
-%else
-Patch0:         options-cxx17.patch
-%endif
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
+# PATCH-FIX-OPENSUSE options-{old,cxx17}.patch Ensure ABI stability regardless of compiler options
+%if 0%{?suse_version} < 1550
+Patch0:         options-old.patch
+%else
+Patch0:         options-cxx17.patch
+%endif
 
 %description
 Abseil is a collection of C++11 libraries which augment the C++
@@ -42,8 +42,8 @@ and C++17 standards.
 
 %package -n %{lname}
 Summary:        C++11 libraries which augment the C++ stdlib
-Obsoletes:      abseil-cpp < %version-%release
-Provides:       abseil-cpp = %version-%release
+Obsoletes:      abseil-cpp < %{version}-%{release}
+Provides:       abseil-cpp = %{version}-%{release}
 
 %description -n %{lname}
 Abseil is a collection of C++11 libraries which augment the C++

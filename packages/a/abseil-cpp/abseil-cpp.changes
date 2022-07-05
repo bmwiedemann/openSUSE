@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jul  3 21:25:15 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20220623.0
+  What's New:
+  * Added absl::AnyInvocable, a move-only function type.
+  * Added absl::CordBuffer, a type for buffering data for eventual inclusion an
+    absl::Cord, which is useful for writing zero-copy code.
+  * Added support for command-line flags of type absl::optional<T>.
+  Breaking Changes:
+  * CMake builds now use the flag ABSL_BUILD_TESTING (default: OFF) to control
+    whether or not unit tests are built.
+  * The ABSL_DEPRECATED macro now works with the GCC compiler. GCC users that
+    are experiencing new warnings can use -Wno-deprecated-declatations silence
+	the warnings or use -Wno-error=deprecated-declarations to see warnings but
+	not fail the build.
+  * ABSL_CONST_INIT uses the C++20 keyword constinit when available. Some
+    compilers are more strict about where this keyword must appear compared to
+	the pre-C++20 implementation.
+  * Bazel builds now depend on the bazelbuild/bazel-skylib repository.
+    See Abseil's WORKSPACE file for an example of how to add this dependency.
+  Other:
+  * This will be the last release to support C++11. Future releases will require at least C++14.
+- run spec-cleaner
+
+-------------------------------------------------------------------
 Wed Jun 29 12:49:20 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Remove obsolete 0%{suse_version} < 1500 conditions
