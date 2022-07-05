@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  4 18:11:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Do not unset various variables when calling make (only CFLAGS
+  should be set).
+
+-------------------------------------------------------------------
 Tue Jun 28 10:12:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add par-1.53-i18n.1.patch (which is port of

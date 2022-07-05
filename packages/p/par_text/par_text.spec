@@ -57,7 +57,7 @@ end in the same column.
 %autosetup -p1 -n %{upname}-%{version}
 
 %build
-make -f protoMakefile CC="cc -c" LINK1="cc" LINK2="-o" RM="rm" JUNK="" %{?_smp_mflags} CFLAGS="%{optflags}"$*
+make -f protoMakefile %{?_smp_mflags} CFLAGS="%{optflags}" $*
 
 %install
 install -D -t %{buildroot}/%{_bindir} par

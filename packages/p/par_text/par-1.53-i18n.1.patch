@@ -6,11 +6,11 @@
  errmsg.c      |   12 +
  errmsg.h      |   12 +
  par.c         |  444 ++++++++++++++++++++++++++++++----------------------------
- protoMakefile |    2 
+ protoMakefile |    8 -
  reformat.c    |  168 +++++++++++++--------
  reformat.h    |    6 
  releasenotes  |   16 ++
- 11 files changed, 419 insertions(+), 324 deletions(-)
+ 12 files changed, 423 insertions(+), 328 deletions(-)
 
 --- a/buffer.c
 +++ b/buffer.c
@@ -1244,14 +1244,27 @@
    return *errmsg ? EXIT_FAILURE : EXIT_SUCCESS;
 --- a/protoMakefile
 +++ b/protoMakefile
-@@ -47,7 +47,7 @@
+@@ -45,9 +45,9 @@
+ # Example (for Solaris 2.x with SPARCompiler C):
+ # CC = cc -c -O -s -Xc -DDONTFREE
  
- CPPFLAGS =
- CFLAGS =
+-CPPFLAGS =
+-CFLAGS =
 -CC = cc $(CPPFLAGS) $(CFLAGS) -c
++CPPFLAGS ?=
++CFLAGS ?=
 +CC = cc -std=c99 $(CPPFLAGS) $(CFLAGS) -c
  
  # Define LINK1 and LINK2 so that the command
+ #
+@@ -62,7 +62,7 @@ CC = cc $(CPPFLAGS) $(CFLAGS) -c
+ # LINK2 = -o
+ 
+ LINK1 = cc
+-LINK2 = -o
++LINK2 = $(CFLAGS) $(CPPFLAGS) -o
+ 
+ # Define RM so that the command
  #
 --- a/reformat.c
 +++ b/reformat.c

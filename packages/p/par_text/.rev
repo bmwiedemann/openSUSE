@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>985599</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>94771f9fd9f9e9fde9873c73879d2351</srcmd5>
+    <version>1.53.0+git.1584347654.eb0590f</version>
+    <time>1657015775</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not unset various variables when calling make (only CFLAGS
+  should be set).
+</comment>
+    <requestid>986720</requestid>
+  </revision>
 </revisionlist>
