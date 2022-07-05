@@ -252,4 +252,14 @@
   (bsc#1197781).</comment>
     <requestid>971217</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>1d253c0b6aa0dc13c463c36f01c1c131</srcmd5>
+    <version>13.2.0</version>
+    <time>1657015770</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependency settings: due to missing packages the macro
+  %{req_equal} returned empty.
+- Fix HPC environment module dependency. (forwarded request 986703 from eeich)</comment>
+    <requestid>986706</requestid>
+  </revision>
 </revisionlist>

@@ -508,8 +508,11 @@ Requires:       %{compiler_family}%{?c_f_ver}-compilers-hpc
 Requires:       %{mpi_family}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc
 # Fix this once boost is available as a HPC version
 #Requires:       boost-%%{compiler_family}-hpc
-%{requires_eq libhdf5%{hpc_package_name_tail}}
-%{requires_eq libnetcdf%{hpc_package_name_tail}}
+BuildRequires:  libhdf5-%{compiler_family}-%{mpi_family}%{?mpi_ext}-hpc
+%{requires_eq libhdf5-%{compiler_family}-%{mpi_family}%{?mpi_ext}-hpc}
+BuildRequires:  libnetcdf-%{compiler_family}-%{mpi_family}%{?mpi_ext}-hpc
+%{requires_eq libnetcdf-%{compiler_family}-%{mpi_family}%{?mpi_ext}-hpc}
+BuildRequires:  libopenblas-%{compiler_family}-hpc
 %{requires_eq libopenblas-%{compiler_family}-hpc}
 Requires:       lua-lmod >= 7.6.1
 %endif
@@ -773,7 +776,7 @@ setenv          %{PNAME}_LIB        %{hpc_libdir}
 
 depends-on openblas
 depends-on %{?with_mpi:p}hdf5
-depends-on %{?with_mpi:p}netcdf
+depends-on netcdf
 #depends-on boost
 EOF
 %endif

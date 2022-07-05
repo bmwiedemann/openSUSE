@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 27 15:18:16 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Fix dependency settings: due to missing packages the macro
+  %{req_equal} returned empty.
+- Fix HPC environment module dependency.
+
+-------------------------------------------------------------------
 Fri Apr  1 15:32:15 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Tie %python_flavor to python3 on Leap/SLE 15 < SP3
