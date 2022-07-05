@@ -30,7 +30,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  golang(API) = 1.16
+BuildRequires:  golang(API) = 1.18
 
 %description
 NoiseTorch is an easy to use open source application for Linux with PulseAudio.
