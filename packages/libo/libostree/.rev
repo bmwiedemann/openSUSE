@@ -272,4 +272,13 @@
     <comment></comment>
     <requestid>940312</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>94afde4fb7ad2d074406ce453749d4e8</srcmd5>
+    <version>2021.6</version>
+    <time>1657016832</time>
+    <user>dimstar_suse</user>
+    <comment>- fix incorrect preun scriptlet leading to ostree-remount.service
+  message upon package removal boo#1036208 (forwarded request 986395 from AndreasStieger)</comment>
+    <requestid>986580</requestid>
+  </revision>
 </revisionlist>

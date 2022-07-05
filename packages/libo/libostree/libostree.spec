@@ -1,7 +1,7 @@
 #
 # spec file for package libostree
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
-
 Name:           libostree
 Version:        2021.6
 Release:        0
@@ -28,7 +27,6 @@ URL:            https://github.com/ostreedev/ostree
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE ostree-grub2-location.patch boo#974714 dimstar@opensuse.org -- Fix path to grub-mkconfig_lib
 Patch0:         ostree-grub2-location.patch
-
 BuildRequires:  bison
 BuildRequires:  gjs
 BuildRequires:  gnome-common
@@ -145,7 +143,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 
 %preun
 %service_del_preun ostree-prepare-root.service
-%service_del_preun ostree-remount.service.service
+%service_del_preun ostree-remount.service
 
 %post
 %service_add_post ostree-prepare-root.service
@@ -187,12 +185,15 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 %exclude %{_libexecdir}/libostree/grub2*
 
 %files -n libostree-1-1
+%license COPYING
 %{_libdir}/libostree-1.so.*
 
 %files -n typelib-1_0-OSTree-1_0
+%license COPYING
 %{_libdir}/girepository-1.0/OSTree-1.0.typelib
 
 %files devel
+%license COPYING
 %{_includedir}/ostree-1/
 %{_libdir}/libostree-1.so
 %{_libdir}/pkgconfig/ostree-1.pc
@@ -200,6 +201,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 
 %ifnarch s390 s390x %{arm}
 %files grub2
+%license COPYING
 %dir %{_sysconfdir}/grub.d/
 %{_sysconfdir}/grub.d/*ostree
 %{_libexecdir}/libostree/grub2*

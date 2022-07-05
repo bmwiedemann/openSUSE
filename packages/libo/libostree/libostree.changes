@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul  2 20:32:48 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix incorrect preun scriptlet leading to ostree-remount.service
+  message upon package removal boo#1036208
+
+-------------------------------------------------------------------
 Fri Dec 10 19:38:06 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2021.6:
