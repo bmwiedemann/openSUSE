@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul  2 07:32:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the %%cmake macro which tried to run sed on 'CMakeLists.txt'
+  without making sure it's not a folder.
+
+-------------------------------------------------------------------
 Sun Jun  5 00:03:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.23.2:

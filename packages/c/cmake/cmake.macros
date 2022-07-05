@@ -8,7 +8,7 @@
 %__sourcedir .
 
 %cmake \
-    find %__sourcedir -name CMakeLists.txt \\\
+    find %__sourcedir -type f -name CMakeLists.txt \\\
         -exec sed -i -re '/^[[:blank:]]*[sS][eE][tT][[:blank:]]*\\\([[:blank:]]*(CMAKE_BUILD_TYPE|CMAKE_COLOR_MAKEFILE|CMAKE_INSTALL_PREFIX|CMAKE_VERBOSE_MAKEFILE).*\\\)/{s/^/#IGNORE /}' {} + \
     mkdir -p %__builddir \
     cd %__builddir \
