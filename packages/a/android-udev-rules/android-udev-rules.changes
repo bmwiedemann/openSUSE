@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun 29 18:02:37 UTC 2022 - munix9@googlemail.com
+
+- Update to version 20220611
+  added:
+  * Oppo A94 5G
+  * OPPO Watch fastboot mode
+  * Realme 8
+  * Verifone vendor
+  * Yongnuo YN450M
+  * ZTE Nubia series
+  * ZTE Blade A5 2020
+
+  enhancements:
+  * remove install.sh dead code
+  * better indentation with spaces
+  * remove duplicated Samsung 6860 product id
+
+-------------------------------------------------------------------
 Tue Jan  4 07:43:23 UTC 2022 - munix9@googlemail.com
 
 - Update to version 20220102
