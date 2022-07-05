@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  4 08:11:44 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
+
+- Add compatible dependency "python3-gobject-Gdk if python3-gobject"
+  to the typelib package for SLE and Leap (boo#1200614).
+
+-------------------------------------------------------------------
 Fri Jun 17 08:37:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add dependency "python3x-gobject-Gdk if python3x-gobject" to the

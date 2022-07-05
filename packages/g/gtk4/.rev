@@ -480,4 +480,13 @@
   typelib package (boo#1200614). (forwarded request 983262 from dimstar)</comment>
     <requestid>983441</requestid>
   </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>171bb5807a3eed6063b64deabfb976b6</srcmd5>
+    <version>4.7.0</version>
+    <time>1657016836</time>
+    <user>dimstar_suse</user>
+    <comment>- Add compatible dependency &quot;python3-gobject-Gdk if python3-gobject&quot;
+  to the typelib package for SLE and Leap (boo#1200614). (forwarded request 986562 from yfjiang)</comment>
+    <requestid>986586</requestid>
+  </revision>
 </revisionlist>

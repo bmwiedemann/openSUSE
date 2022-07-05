@@ -141,6 +141,7 @@ ranging from small one-off projects to complete application suites.
 %package -n typelib-1_0-Gtk-4_0
 Summary:        Introspection bindings for the GTK+ toolkit library v4
 Group:          System/Libraries
+Requires:       (python3-gobject-Gdk if python3-gobject)
 Requires:       (python310-gobject-Gdk if python310-gobject)
 Requires:       (python38-gobject-Gdk if python38-gobject)
 Requires:       (python39-gobject-Gdk if python39-gobject)
