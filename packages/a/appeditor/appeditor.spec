@@ -25,7 +25,9 @@ Group:          System/GUI/Other
 URL:            https://github.com/donadigo/appeditor
 Source:         https://github.com/donadigo/appeditor/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM appeditor-1.1.3-fix-flickering-titlebar.patch -- gh#donadigo/appeditor#103
-Patch:          https://src.fedoraproject.org/rpms/appeditor/raw/rawhide/f/appeditor-1.1.3-fix-flickering-titlebar.patch
+Patch0:         https://src.fedoraproject.org/rpms/appeditor/raw/rawhide/f/appeditor-1.1.3-fix-flickering-titlebar.patch
+# PATCH-FIX-UPSTREAM appeditor-1.1.3-vala-0.55.1.patch -- gh#donadigo/appeditor#121
+Patch1:         appeditor-1.1.3-vala-0.55.1.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libxml2-tools
