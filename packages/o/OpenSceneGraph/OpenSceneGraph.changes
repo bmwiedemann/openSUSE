@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  4 22:32:11 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with OpenCASCADE 7.6, add
+  0001-Use-non-deprecated-methods-to-access-OpenCascade-Tri.patch
+
+-------------------------------------------------------------------
 Thu Apr 28 00:14:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve rpmlint report "libOpenSceneGraph158.x86_64: E:

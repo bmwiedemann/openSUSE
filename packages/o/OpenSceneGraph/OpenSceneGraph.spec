@@ -51,6 +51,8 @@ Source0:        https://github.com/openscenegraph/%{name}/archive/%{name}-%{vers
 # PATCH-FIX-OPENSUSE - fix build with asio >= 1.14.0, https://github.com/openscenegraph/OpenSceneGraph/issues/921
 Patch0:         0001-Replace-boost-bind-usage-with-std-bind.patch
 Patch1:         0002-Replace-obsoleted-asio-basic_stream_socket-get_io_se.patch
+# PATCH-FIX-UPSTREAM - Fix build with OCCT 7.6
+Patch2:         0001-Use-non-deprecated-methods-to-access-OpenCascade-Tri.patch
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  ffmpeg-devel
@@ -216,6 +218,7 @@ This package contains some example applications built with OpenSceneGraph
 %patch0 -p1
 %patch1 -p1
 %endif
+%patch2 -p1
 
 for file in *.md *.txt; do
 	sed -i "s/\r//g" "$file"
