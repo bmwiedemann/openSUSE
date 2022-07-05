@@ -80,6 +80,7 @@ Requires:       %{name}-plugins-extra = %{version}-%{release}
 %else
 Recommends:     %{name}-plugins-extra = %{version}
 %endif
+ExcludeArch:    %ix86
 
 %description
 DeaDBeeF is an audio player using GTK+. Through use of the ffmpeg

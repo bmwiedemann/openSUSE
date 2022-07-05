@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  4 12:03:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Sync ExcludeArch %ix86 with libdispatch: libdispatch is not being
+  buily and as such we don't have the needed dep available.
+
+-------------------------------------------------------------------
 Sat Jul 02 13:08:43 UTC 2022 - predivan@mts.rs
 
 - Update to version 1.9.1:
