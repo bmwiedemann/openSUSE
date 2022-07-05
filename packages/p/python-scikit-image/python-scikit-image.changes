@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Fri Jul  1 09:19:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.19.3
+  * Revert unintentional change to default multichannel behavior
+    introduced in v0.19.0 for skimage.restoration.cycle_spin (now
+    defaults to single channel again)
+  * Fix corner case with an optimal angle of 0 degrees in
+    hough_line_peaks
+  * Fixed the gallery example involving registration with log-polar
+    transformations
+  * Update test suite for compatibility with the most recent
+    tifffile release.
+  * warp/rotate: fixed a bug with clipping when cval is not in the
+    input range
+  * Fix computation of histogram bins for multichannel
+    integer-valued images
+  * Update skimage.future.manual_polygon_segmentation to work with
+    Matplotlib 3.5.
+  * Update skimage.io.imread to avoid warnings when using
+    imageio>=2.16.2.
+  * Now compatible with Pillow >= 9.1 (palette may contain <256
+    entries)
+  * Added support for NumPy 1.23
+- Release 0.19.2
+  * This is primarily a bug fix release, although there is one new
+    gallery example related to detection of fluorescence at the
+    nuclear envelope of mammalian cells.
+- Release 0.19.1
+  * This is a small bug fix release that resolves a couple of
+    backwards compatibility issues.
+- Release 0.19.0
+  * A highlight of this release is the addition of the popular
+    scale-invariant feature transform (SIFT) feature detector and
+    descriptor. This release also introduces a perceptual blur
+    metric, new pixel graph algorithms, and most functions now
+    operate in single-precision when single-precision inputs are
+    provided. Many other bug fixes, enhancements and performance
+    improvements are detailed below.
+  * A significant change in this release is in the treatment of
+    multichannel images. The existing multichannel argument to
+    functions has been deprecated in favor of a new channel_axis
+    argument. channel_axis can be used to specify which axis of an
+    array contains channel information (with channel_axis=None
+    indicating a grayscale image).
+  * scikit-image now uses "lazy loading", which enables users to
+    access the functions from all skimage submodules without the
+    overhead of eagerly importing all submodules. As a concrete
+    example, after calling "import skimage" a user can directly
+    call a function such as skimage.transform.warp whereas
+    previously it would have been required to first "import
+    skimage.transform".
+  * An exciting change on the development side is the introduction
+    of support for Pythran as an alternative to Cython for
+    generating compiled code. We plan to keep Cython support as
+    well going forward, so developers are free to use either one as
+    appropriate. For those curious about Pythran, a good overview
+    was given in the SciPy 2021 presentation, "Building SciPy
+    Kernels with Pythran"
+    (https://www.youtube.com/watch?v=6a9D9WL6ZjQ).
+  * This release now supports Python 3.7-3.10.
+- Release 0.18.3
+  * This is a small bugfix release for compatibility with Pooch 1.5
+    and SciPy 1.7.
+- Release 0.18.2
+  * This release fixes a couple of minor bugs.
+- Add skimage-fix-module-install.patch
+  * gh#scikit-image/scikit-image#6428
+
+-------------------------------------------------------------------
 Fri Jan 22 19:18:32 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 0.18.1
