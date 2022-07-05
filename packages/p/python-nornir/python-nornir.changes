@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  5 07:46:50 UTC 2022 - Daniel García Moreno <dani@danigm.net>
+
+- Update to version 3.3.0 
+  * Remove not needed dependencies
+  * Remove tests that requires nornir-utils
+
+-------------------------------------------------------------------
 Wed Mar 17 16:53:43 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Don't use setup.py from somewhere, but proper poetry toolchain

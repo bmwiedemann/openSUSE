@@ -1,7 +1,7 @@
 #
 # spec file for package python-nornir
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-nornir
-Version:        2.4.0
+Version:        3.3.0
 Release:        0
 Summary:        Network automation framework written in Python
 License:        Apache-2.0
@@ -32,27 +32,16 @@ BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Jinja2 >= 2
-Requires:       python-colorama >= 0.4.1
 Requires:       python-mypy_extensions >= 0.4.1
-Requires:       python-napalm >= 2
-Requires:       python-ncclient >= 0.6.4
-Requires:       python-netmiko >= 2.3.3
-Requires:       python-paramiko >= 2.1.1
-Requires:       python-pydantic >= 0.18.2
-Requires:       python-requests >= 2
-Requires:       python-ruamel.yaml >= 0.15.85
-Requires:       python-typing_extensions >= 3.7
+Requires:       python-ruamel.yaml >= 0.17
+Requires:       python-typing_extensions >= 4.1
 # SECTION test requirements
-BuildRequires:  %{python_module colorama >= 0.4.1}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module mypy_extensions >= 0.4.1}
-BuildRequires:  %{python_module napalm >= 2}
-BuildRequires:  %{python_module pydantic >= 0.18.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-mock}
-BuildRequires:  %{python_module ruamel.yaml >= 0.15.85}
-BuildRequires:  %{python_module typing_extensions >= 3.7}
+BuildRequires:  %{python_module ruamel.yaml >= 0.17}
+BuildRequires:  %{python_module typing_extensions >= 4.1}
 # /SECTION
 BuildArch:      noarch
 %python_subpackages
@@ -79,7 +68,7 @@ plugins if you aren't happy with the ones we ship.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest --ignore tests/core/test_registered_plugins.py
 
 %files %{python_files}
 %license LICENSE
