@@ -17,7 +17,7 @@
 
 
 Name:           chafa
-Version:        1.12.1
+Version:        1.12.3
 Release:        0
 Summary:        Image-to-text converter for terminal
 License:        LGPL-3.0-or-later
@@ -27,7 +27,7 @@ Source0:        https://github.com/hpjansson/%{name}/releases/download/%{version
 BuildRequires:  ImageMagick-devel
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc
-BuildRequires:  glib2-devel >= 2.20
+BuildRequires:  glib2-devel >= 2.26
 BuildRequires:  gtk-doc
 BuildRequires:  libtool
 Requires:       libchafa0 = %{version}

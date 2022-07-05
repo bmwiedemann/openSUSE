@@ -303,4 +303,24 @@
     + [unfiled] Calculating offset from NULL pointer in LodePNG.</comment>
     <requestid>983868</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>765cf33b55ac5091be2e4200a8a8d20f</srcmd5>
+    <version>1.12.3</version>
+    <time>1657015753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.12.3:
+  * Increased GLib minimum version to 2.26.
+  * Enabled a few compiler warnings not included in -Wall -Wextra
+    in order to catch more potential issues early. Also started
+    using -Werror selectively.
+  * Silenced deprecation warnings for older GLib APIs that we
+    would like to keep using a bit longer.
+  * Fix #96 Regression: Fails to build on Linux/Debian
+
+- Update to 1.12.2:
+  * Made everything compile for the x86_64-w64-mingw32 target using gcc.
+  * Added support for the Windows 10 Command Prompt.
+  * Improved error reporting.</comment>
+    <requestid>986632</requestid>
+  </revision>
 </revisionlist>
