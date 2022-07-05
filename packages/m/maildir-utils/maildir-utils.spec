@@ -17,13 +17,13 @@
 
 
 Name:           maildir-utils
-Version:        1.6.11
+Version:        1.8.3
 Release:        0
 Summary:        Maildir indexer and searcher
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Utilities
 URL:            https://www.djcbsoftware.nl/code/mu/
-Source:         https://github.com/djcb/mu/releases/download/%{version}/mu-%{version}.tar.xz
+Source:         https://github.com/djcb/mu/releases/download/v%{version}/mu-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.14
 BuildRequires:  emacs-nox >= 24.4
@@ -41,6 +41,7 @@ Set of utilities to index and search Maildirs. Upstream name is mu.
 %package -n mu4e
 Summary:        Emacs-based e-mail client based on the mu e-mail indexer/searcher
 Group:          Productivity/Networking/Email/Clients
+BuildArch:      noarch
 Requires:       %{name} = %{version}
 Requires(post): %{install_info_prereq}
 Requires(preun):%{install_info_prereq}

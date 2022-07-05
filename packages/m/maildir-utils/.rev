@@ -404,4 +404,41 @@
   * mu4e: don't loop mu4e-update-index when index is empty #2240.</comment>
     <requestid>980883</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4705ff713d1d9e5327e6a40f30b2d0ee</srcmd5>
+    <version>1.8.3</version>
+    <time>1657015751</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.3:
+  * properly install info files
+  * allow for alternative emacs binaries
+  * extra tests
+  * mu: propagate read marks to all with same message-id
+  * small doc updates
+
+- Update to 1.8.2:
+  * handle some corner-case queries with special characters
+  * allow searching for email address components
+  * fix find with links generations
+  * update doc versioning
+
+- Update to 1.8.1:
+  mu:
+  * The server protocol (as used my mu4e) has seen a number of updates, to allow for faster rendering. As before, there’s no compatibility between minor release numbers (1.4 vs 1.6 vs 1.8) nor within development series (such as 1.7). However, within a stable release (such as all 1.6.x) the protocol won’t change (except if required to fix some severe bug; never happened in practice)
+  * The processed number in the indexing statistics has been renamed into checked and describes the number of message files considered for updating, which is a bit more useful that the old value, which was more-or-less synonymous with the updated number (which are the message that got (re)parsed / (re)added to the database.  Basically, it counts all the messages for which we checked their timestamp.
+  * The internals of the message handling in mu have been heavily reworked; much of this is not immediately visible but is an enabler for some new features.
+  * Instead of passing --muhome, you can now also set an environment variable MUHOME.
+  * The info command now includes information about the last indexing operation and the last database change that took place; note that the information may be slightly delayed due to database caching.
+  * the verify command for checking signatures has been updated, and is more informative
+  * a new command fields provides information about the message fields and flags for use in queries. The information is the same information that mu uses and so stays up to date.
+  * a new message field changed, which refers to the time/date of the last time a message was changed (the file ctime)
+  * new message flags personal to search for “personal” messages, which are defined as a message with at least one personal contact, and calendar for messages with calendar-invitations.
+  * message sexps are now cached in the store, which makes delivering sexp-based search results (as used by mu4e) much faster.
+  mu4e:
+  * the old mu4e-view is gone; only the gnus-based one remains. This allowed for removing quite a bit of old code.
+  * the mu4e headers rendering is much faster (a factor of 3+), which makes displaying big results snappier. This required some updates in the headers handling and in the server protocol. Separate from that, the cached message sexps (see the mu section) make getting the results much faster. This becomes esp. clear when there are a lot of query results.
+  * “related” messages are now recognizable as such in the headers-view, with their own face, mu4e-related-face; by default with an italic slant.
+  * For performance testing, you can set the variable mu4e-headers-report-render-time to t and mu4e will report the search/rendering speed of each query operation.</comment>
+    <requestid>986622</requestid>
+  </revision>
 </revisionlist>
