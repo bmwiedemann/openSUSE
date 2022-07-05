@@ -17,13 +17,13 @@
 
 
 Name:           commandergenius
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        An open clone of the Commander Keen engines
 License:        GPL-2.0-only
 Group:          Amusements/Games/Action/Arcade
 URL:            http://clonekeenplus.sf.net/
-#Git-Clone:     https://gitlab.com/Dringgstein/Commander-Genius.git
+#Git-Clone:     https://gitlab.com/Dringgstein/Commander-Genius
 Source:         https://gitlab.com/Dringgstein/Commander-Genius/-/archive/v%version/Commander-Genius-v%version.tar.bz2
 Patch0:         fix-icons.patch
 BuildRequires:  boost-devel
@@ -46,8 +46,7 @@ Keen Vorticon (1-3) and Galaxy (3½-6) series.
 It has 4-player cooperative mode and six difficulty modes.
 
 %prep
-%setup -q -n Commander-Genius-v%version
-%patch0 -p1
+%autosetup -p1 -n Commander-Genius-v%version
 
 %build
 %cmake \
