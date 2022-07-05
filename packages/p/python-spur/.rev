@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>45cce64c9ea0b124897b4cd147d5add0</srcmd5>
+    <version>0.3.22</version>
+    <time>1657015736</time>
+    <user>dimstar_suse</user>
+    <comment>required for the test suite of python-locket
+=&gt; locket required for dask &amp; distributed</comment>
+    <requestid>986483</requestid>
+  </revision>
+</revisionlist>
