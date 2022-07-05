@@ -42,21 +42,15 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-# ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-%define         ghversiontag 2022.03.0
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2022.3.0
+Version:        2022.6.1
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
 URL:            https://dask.org
 Source0:        https://files.pythonhosted.org/packages/source/d/dask/dask-%{version}.tar.gz
-Source1:        https://github.com/dask/dask/raw/%{ghversiontag}/conftest.py
-# PATCH-FIX-UPSTREAM dask-fix8169-pandas13.patch -- gh#dask/dask#8169, gh#dask/dask#8851
-Patch0:         dask-fix8169-pandas13.patch
-# PATCH-FIX-UPSTREAM dask-py310-test.patch -- gh#dask/dask#8566
-Patch1:         https://github.com/dask/dask/pull/8566/commits/c329509fc9e78925682c9a0d5c579101da740d43.patch#/dask-py310-test.patch
+Source1:        https://github.com/dask/dask/raw/%{version}/conftest.py
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module setuptools}

@@ -1,4 +1,227 @@
 -------------------------------------------------------------------
+Fri Jun 24 20:21:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to to 2022.6.1
+  * Enhancements
+    - Dask in pyodide (GH#9053) Ian Rose
+    - Create dask.utils.show_versions (GH#9144) Sultan Orazbayev
+    - Better error message for unsupported numpy operations on
+      dask.dataframe objects. (GH#9201) Julia Signell
+    - Add allow_rechunk kwarg to dask.array.overlap function
+      (GH#7776) Genevieve Buckley
+    - Add minutes and hours to dask.utils.format_time (GH#9116)
+      Matthew Rocklin
+    - More retries when writing parquet to remote filesystem
+      (GH#9175) Ian Rose
+  * Bug Fixes
+    - Timedelta deterministic hashing (GH#9213) Fabien Aulaire
+    - Enum deterministic hashing (GH#9212) Fabien Aulaire
+    - shuffle_group(): avoid converting to arrays (GH#9157) Mads R.
+      B. Kristensen
+  * Deprecations
+    - Deprecate extra format_time utility (GH#9184) James Bourbeau
+- Release 2022.6.0
+  * Enhancements
+    - Add feature to show names of layer dependencies in HLG
+      JupyterLab repr (GH#9081) Angelos Omirolis
+    - Add arrow schema extraction dispatch (GH#9169) GALI PREM
+      SAGAR
+    - Add sort_results argument to assert_eq (GH#9130) Pavithra
+      Eswaramoorthy
+    - Add weeks to parse_timedelta (GH#9168) Matthew Rocklin
+    - Warn that cloudpickle is not always deterministic (GH#9148)
+      Pavithra Eswaramoorthy
+    - Switch parquet default engine (GH#9140) Jim Crist-Harif
+    - Use deterministic hashing with _iLocIndexer / _LocIndexer
+      (GH#9108) Fabien Aulaire
+    - Enfore consistent schema in to_parquet pyarrow (GH#9131) Jim
+      Crist-Harif
+  * Bug Fixes
+    - Fix pyarrow.StringArray pickle (GH#9170) Jim Crist-Harif
+    - Fix parallel metadata collection in pyarrow engine (GH#9165)
+      Richard (Rick) Zamora
+    - Improve pyarrow partitioning logic (GH#9147) James Bourbeau
+    - pyarrow 8.0 partitioning fix (GH#9143) James Bourbeau
+- Release 2022.05.2
+  * Enhancements
+    - Add a dispatch for non-pandas Grouper objects and use it in
+      GroupBy (GH#9074) brandon-b-miller
+    - Error if read_parquet & to_parquet files intersect (GH#9124)
+      Jim Crist-Harif
+    - Visualize task graphs using ipycytoscape (GH#9091) Ian Rose
+- Release 2022.05.1
+  * New Features
+    - Add DataFrame.from_dict classmethod (GH#9017) Matthew Powers
+    - Add from_map function to Dask DataFrame (GH#8911) Richard
+      (Rick) Zamora
+  * Enhancements
+    - Improve to_parquet error for appended divisions overlap
+      (GH#9102) Jim Crist-Harif
+    - Enabled user-defined process-initializer functions (GH#9087)
+      ParticularMiner
+    - Mention align_dataframes=False option in map_partitions error
+      (GH#9075) Gabe Joseph
+    - Add kwarg enforce_ndim to dask.array.map_blocks() (GH#8865)
+      ParticularMiner
+    - Implement Series.GroupBy.fillna / DataFrame.GroupBy.fillna
+      methods (GH#8869) Pavithra Eswaramoorthy
+    - Allow fillna with Dask DataFrame (GH#8950) Pavithra
+      Eswaramoorthy
+    - Update error message for assignment with 1-d dask array
+      (GH#9036) Pavithra Eswaramoorthy
+    - Collection Protocol (GH#8674) Doug Davis
+    - Patch around pandas ArrowStringArray pickling (GH#9024) Jim
+      Crist-Harif
+    - Band-aid for compute_as_if_collection (GH#8998) Ian Rose
+    - Add p2p shuffle option (GH#8836) Matthew Rocklin
+  * Bug Fixes
+    - Fixup column projection with no columns (GH#9106) Jim
+      Crist-Harif
+    - Blockwise cull NumPy dtype (GH#9100) Ian Rose
+    - Fix column-projection bug in from_map (GH#9078) Richard
+      (Rick) Zamora
+    - Prevent nulls in index for non-numeric dtypes (GH#8963) Jorge
+      López
+    - Fix is_monotonic methods for more than 8 partitions (GH#9019)
+      Julia Signell
+    - Handle enumerate and generator inputs to from_map (GH#9066)
+      Richard (Rick) Zamora
+    - Revert is_dask_collection; back to previous implementation
+      (GH#9062) Doug Davis
+    - Fix Blockwise.clone does not handle iterable literal
+      arguments correctly (GH#8979) JSKenyon
+    - Array setitem hardmask (GH#9027) David Hassell
+    - Fix overlapping divisions error on append (GH#8997) Ian Rose
+  * Deprecations
+    - Add pre-deprecation warnings for read_parquet kwargs
+      chunksize and aggregate_files (GH#9052) Richard (Rick) Zamora
+- Release 2022.05.0
+  * This is a bugfix release with doc changes only
+- Release 2022.04.2
+  * This release includes several deprecations/breaking API changes
+    to dask.dataframe.read_parquet and dask.dataframe.to_parquet:
+    - to_parquet no longer writes _metadata files by default. If
+      you want to write a _metadata file, you can pass in
+      write_metadata_file=True.
+    - read_parquet now defaults to split_row_groups=False, which
+      results in one Dask dataframe partition per parquet file when
+      reading in a parquet dataset. If you’re working with large
+      parquet files you may need to set split_row_groups=True to
+      reduce your partition size.
+    - read_parquet no longer calculates divisions by default. If
+      you require read_parquet to return dataframes with known
+      divisions, please set calculate_divisions=True.
+    - read_parquet has deprecated the gather_statistics keyword
+      argument. Please use the calculate_divisions keyword argument
+      instead.
+    - read_parquet has deprecated the require_extensions keyword
+      argument. Please use the parquet_file_extension keyword
+      argument instead.
+  * New Features
+    - Add removeprefix and removesuffix as StringMethods (GH#8912)
+      Jorge López
+  * Enhancements
+    - Call fs.invalidate_cache in to_parquet (GH#8994) Jim
+      Crist-Harif
+    - Change to_parquet default to write_metadata_file=None
+      (GH#8988) Jim Crist-Harif
+    - Let arg reductions pass keepdims (GH#8926) Julia Signell
+    - Change split_row_groups default to False in read_parquet
+      (GH#8981) Richard (Rick) Zamora
+    - Improve NotImplementedError message for da.reshape (GH#8987)
+      Jim Crist-Harif
+    - Simplify to_parquet compute path (GH#8982) Jim Crist-Harif
+    - Raise an error if you try to use vindex with a Dask object
+      (GH#8945) Julia Signell
+    - Avoid pre_buffer=True when a precache method is specified
+      (GH#8957) Richard (Rick) Zamora
+    - from_dask_array uses blockwise instead of merging graphs
+      (GH#8889) Bryan Weber
+    - Use pre_buffer=True for “pyarrow” Parquet engine (GH#8952)
+      Richard (Rick) Zamora
+  * Bug Fixes
+    - Handle dtype=None correctly in da.full (GH#8954) Tom White
+    - Fix dask-sql bug caused by blockwise fusion (GH#8989) Richard
+      (Rick) Zamora
+    - to_parquet errors for non-string column names (GH#8990) Jim
+      Crist-Harif
+    - Make sure da.roll works even if shape is 0 (GH#8925) Julia
+      Signell
+    - Fix recursion error issue with set_index (GH#8967) Paul
+      Hobson
+    - Stringify BlockwiseDepDict mapping values when
+      produces_keys=True (GH#8972) Richard (Rick) Zamora
+    - Use DataFram`eIOLayer in DataFrame.from_delayed (GH#8852)
+      Richard (Rick) Zamora
+    - Check that values for the in predicate in read_parquet are
+      correct (GH#8846) Bryan Weber
+    - Fix bug for reduction of zero dimensional arrays (GH#8930)
+      Tom White
+    - Specify dtype when deciding division using np.linspace in
+      read_sql_query (GH#8940) Cheun Hong
+  * Deprecations
+    - Deprecate gather_statistics from read_parquet (GH#8992)
+      Richard (Rick) Zamora
+    - Change require_extension to top-level parquet_file_extension
+      read_parquet kwarg (GH#8935) Richard (Rick) Zamora
+- Release 2022.04.1
+  * New Features
+    - Add missing NumPy ufuncs: abs, left_shift, right_shift,
+      positive. (GH#8920) Tom White
+  * Enhancements
+    - Avoid collecting parquet metadata in pyarrow when
+      write_metadata_file=False (GH#8906) Richard (Rick) Zamora
+    - Better error for failed wildcard path in dd.read_csv() (fixes
+      #8878) (GH#8908) Roger Filmyer
+    - Return da.Array rather than dd.Series for non-ufunc
+      elementwise functions on dd.Series (GH#8558) Julia Signell
+    - Let get_dummies use meta computation in map_partitions
+      (GH#8898) Julia Signell
+    - Masked scalars input to da.from_array (GH#8895) David Hassell
+    - Raise ValueError in merge_asof for duplicate kwargs (GH#8861)
+      Bryan Weber
+  * Bug Fixes
+    - Make is_monotonic work when some partitions are empty
+      (GH#8897) Julia Signell
+    - Fix custom getter in da.from_array when inline_array=False
+      (GH#8903) Ian Rose
+    - Correctly handle dict-specification for rechunk. (GH#8859)
+      Richard
+    - Fix merge_asof: drop index column if left_on == right_on
+      (GH#8874) Gil Forsyth
+  * Deprecations
+    - Warn users that engine='auto' will change in future (GH#8907)
+      Jim Crist-Harif
+    - Remove pyarrow-legacy engine from parquet API (GH#8835)
+      Richard (Rick) Zamora
+- Release 2022.04.0
+  * This is the first release with support for Python 3.10
+  * New Features
+    - Add Python 3.10 support (GH#8566) James Bourbeau
+  * Enhancements
+    - Add check on dtype.itemsize in order to produce a useful
+      error (GH#8860) Davide Gavio
+    - Add mild typing to common utils functions (GH#8848) Matthew
+      Rocklin
+    - Add sanity checks to divisions setter (GH#8806) Jim
+      Crist-Harif
+    - Use Blockwise and map_partitions for more tasks (GH#8831)
+      Bryan Weber
+  * Bug Fixes
+    - Fix dataframe.merge_asof to preserve right_on column
+      (GH#8857) Sarah Charlotte Johnson
+    - Fix “Buffer dtype mismatch” for pandas >= 1.3 on 32bit
+      (GH#8851) Ben Greiner
+    - Fix slicing fusion by altering SubgraphCallable getter
+      (GH#8827) Ian Rose
+  * Deprecations
+    - Remove support for PyPy (GH#8863) James Bourbeau
+    - Drop setuptools at runtime (GH#8855) crusaderky
+    - Remove dataframe.tseries.resample.getnanos (GH#8834) Sarah
+      Charlotte Johnson
+- Drop dask-fix8169-pandas13.patch and dask-py310-test.patch
+
+-------------------------------------------------------------------
 Sun Mar 27 19:18:19 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - dask.dataframe requires dask.bag (revealed by swifter test suite)
