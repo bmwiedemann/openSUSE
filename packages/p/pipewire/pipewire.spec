@@ -54,7 +54,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.52
+Version:        0.3.53
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -64,8 +64,8 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-settings-remove-44.1KHz-from-allowed-rates-again.patch
+# PATCH-FIX-UPSTREAM 0001-audioconvert-ensure-temp-buffers-are-large-enough.patch
+Patch1:         0001-audioconvert-ensure-temp-buffers-are-large-enough.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
