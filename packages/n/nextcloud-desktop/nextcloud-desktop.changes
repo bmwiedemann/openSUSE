@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jul  4 17:09:14 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.5.2
+  - desktop#4569 [stable-3.5] Explicitly ask user for notification authorisation on launch (macOS)
+  - desktop#4571 [stable-3.5] Fix crash caused by overflow in FinderSyncExtension
+  - desktop#4583 [stable-3.5] add new fixup workflow from nextcloud org
+  - desktop#4589 [stable-3.5] Bump up minimum macOS version
+  - desktop#4592 [stable-3.5] Display chat message inside the OS notification.
+  - desktop#4595 [stable-3.5] Fix 'TypeError: Cannot readproperty 'messageSent' of undefined'.
+  - desktop#4596 [stable-3.5] Add a transparent background to the send reply button.
+  - desktop#4605 [stable-3.5] Fix build on macOS versions pre-11 (down to 10.14)
+  - desktop#4623 [stable-3.5] Ignore Office temp folders on Mac ('.sb-' in folder name).
+  - desktop#4647 [stable-3.5] Remove assert, it is no longer useful.
+  - desktop#4658 [stable-3.5] Add contrast to the text/icon of buttons if the server defined color is light.
+  - desktop#4665 [stable-3.5] fix general section
+  - desktop#4666 [stable-3.5] Remove tooltip because it is only repeating the label of the link.
+  - desktop#4668 [stable-3.5] bugfix/share-dialog
+  - desktop#4676 [stable-3.5] Updating command-rebase.yml workflow from template
+  - desktop#4680 [stable-3.5] Reply button size should be same as the input field, smaller + text color
+  - desktop#4692 [stable-3.5] Close call notifications when the call has been joined by the user, or the call has ended
+  - desktop#4694 [stable-3.5] Increase the call state checking interval to not overload the server
+  - desktop#4696 [stable-3.5] Ensure the dispatch source only gets deallocated after
+    the dispatch_source_cancel is done, avoiding crashing of the Finder Sync Extension on macOS
+
+-------------------------------------------------------------------
 Sun Jul  3 12:21:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add nextcloud-remove-fortify-source-2.patch
