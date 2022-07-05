@@ -39,6 +39,7 @@ ExclusiveArch:  do_not_build
 
 %if "%{flavor}" == "mvapich2"
 %global mpi_flavor mvapich2
+%global mpi_version >= 2.3.7
 %endif
 
 %if "%{flavor}" == "openmpi1"
@@ -94,28 +95,29 @@ ExclusiveArch:  do_not_build
 
 # /SECTION
 
-%define shlib_main libsundials3%{?my_suffix}
-%define shlib_arkode libsundials_arkode4%{?my_suffix}
-%define shlib_cvode libsundials_cvode5%{?my_suffix}
-%define shlib_cvodes libsundials_cvodes5%{?my_suffix}
-%define shlib_generic libsundials_generic5%{?my_suffix}
-%define shlib_ida libsundials_ida5%{?my_suffix}
-%define shlib_idas libsundials_idas4%{?my_suffix}
-%define shlib_kinsol libsundials_kinsol5%{?my_suffix}
-%define shlib_nvec libsundials_nvec5%{?my_suffix}
+%define shlib_main libsundials4%{?my_suffix}
+%define shlib_arkode libsundials_arkode5%{?my_suffix}
+%define shlib_cvode libsundials_cvode6%{?my_suffix}
+%define shlib_cvodes libsundials_cvodes6%{?my_suffix}
+%define shlib_generic libsundials_generic6%{?my_suffix}
+%define shlib_ida libsundials_ida6%{?my_suffix}
+%define shlib_idas libsundials_idas5%{?my_suffix}
+%define shlib_kinsol libsundials_kinsol6%{?my_suffix}
+%define shlib_nvec libsundials_nvec6%{?my_suffix}
 
 Name:           %{package_name}
-Version:        5.7.0
+Version:        6.2.0
 Release:        0
 Summary:        Suite of nonlinear solvers
 # SUNDIALS is licensed under BSD with some additional (but unrestrictive) clauses.
 # Check the file 'LICENSE' for details.
 License:        BSD-3-Clause
-URL:            https://computation.llnl.gov/projects/sundials/
-Source0:        https://computation.llnl.gov/projects/sundials/download/%{pname}-%{version}.tar.gz
+URL:            https://computing.llnl.gov/projects/sundials
+Source0:        https://github.com/LLNL/%{pname}/releases/download/v%{version}/%{pname}-%{version}.tar.gz
 Source99:       sundials-rpmlintrc
 # PATCH-FIX-UPSTREAM sundials-link-pthread.patch badshah400@gmail.com -- Explicitly link against pthread to fix linking errors when `-Wl,--no-undefined` is added to the linker flags
 Patch0:         sundials-link-pthread.patch
+Group:          Development/Libraries/Parallel
 BuildRequires:  blas-devel
 BuildRequires:  cmake >= 3.12
 BuildRequires:  fdupes
@@ -123,7 +125,7 @@ BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
 BuildRequires:  suitesparse-devel
 %if %{with mpi}
-BuildRequires:  %{mpi_flavor}%{?mpi_ext}-devel
+BuildRequires:  %{mpi_flavor}%{?mpi_ext}-devel %{?mpi_version}
 %if 0%{?suse_version} >= 1550 && "%{flavor}" != "mvapich2"
 # hackish workaround for multiple openmpX-config all providing openmpX-runtime-config
 BuildRequires:  %{mpi_flavor}%{?mpi_ext}-config

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 27 14:21:45 UTC 2022 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 6.2.0
+  See https://github.com/LLNL/sundials/blob/main/CHANGELOG.md
+
+- https://github.com/LLNL/sundials is now the official SUNDIALS
+  development repository.
+
+-------------------------------------------------------------------
 Wed Apr 27 09:16:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add rpmlintrc for shlib-policy-name-error
