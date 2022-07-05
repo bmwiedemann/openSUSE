@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-q
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define pythons python3
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-django-q
 Version:        1.3.9
 Release:        0
@@ -79,6 +79,7 @@ dos2unix README.rst
 %files %{python_files}
 %doc CHANGELOG.md README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/django_q
+%{python_sitelib}/django_q-%{version}*-info
 
 %changelog
