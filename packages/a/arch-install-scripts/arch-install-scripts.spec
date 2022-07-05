@@ -17,7 +17,7 @@
 
 
 Name:           arch-install-scripts
-Version:        24
+Version:        25
 Release:        0
 Summary:        Scripts aimed at automating some menial installation/recovery tasks
 License:        GPL-2.0-only
@@ -27,7 +27,6 @@ Source0:        https://github.com/archlinux/arch-install-scripts/archive/refs/t
 Patch0:         Do_not_build_Arch-specific_scripts.patch
 BuildRequires:  asciidoc
 BuildRequires:  m4
-BuildRequires:  zsh
 Requires:       awk
 Requires:       bash >= 4.1
 Requires:       coreutils >= 8.15
@@ -63,6 +62,8 @@ find . -name 'pacstrap*' -delete
 %{_bindir}/genfstab
 %{_datadir}/bash-completion/completions/arch-chroot
 %{_datadir}/bash-completion/completions/genfstab
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_archinstallscripts
 %{_mandir}/man8/arch-chroot.8%{?ext_man}
 %{_mandir}/man8/genfstab.8%{?ext_man}

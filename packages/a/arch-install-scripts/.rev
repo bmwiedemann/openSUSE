@@ -9,4 +9,16 @@
 I have made the fixes you requested.</comment>
     <requestid>944230</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>33e5e07a98299b6d50fc75396af8d114</srcmd5>
+    <version>25</version>
+    <time>1657015769</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream version 25
+  * arch-chroot: add unshare mode
+  * arch-chroot: resolv.conf recursive host + target symlinks
+  * arch-chroot: Make run a tmpfs mount
+</comment>
+    <requestid>986693</requestid>
+  </revision>
 </revisionlist>
