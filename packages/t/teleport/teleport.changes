@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Jul 04 12:35:43 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.3.9:
+  * Release 9.3.9 (#14034)
+  * [v9] Fix TDP/RDP termination (#14024)
+  * Updated upcoming releases (06/30)
+  * (v9) Fully check the policy set for and v5 policies without short-circuiting (#14013)
+  * [v9] Fix database role fetch for `tsh db ls --all` (#13626)
+  * [v9] Add error check before `handle_bitmap` (#13828) (#14019)
+  * remove extra `handle.Delete()` (#14010)
+  * [v9] Backport #11616, #11714, and #12499 (#13707)
+  * [v9] Open a new remote client when the remote site has changed in a web session (#13967)
+  * [v9] Improve error msg when client fails to auth in Teleport (#13835)
+  * [v9] Improve log message when we fail to retrieve the client cert pool (#13675)
+  * [v9] Fix JumpHost TLSRouting flow when root cluster is offline (#13791) (#13928)
+  * [v9] Fix AWS credentials format in IBM guide (#13847)
+  * [v9] updates rdp-rs ref to new HEAD where scroll wheel delta is fixed (#13905)
+  * Clarify our version compatibility guarantees (#13593)
+  * [v9] fix panic child.Close() called without logger initialized (#11117) (#13907)
+  * [v9] Properly handle empty list of role requests (#13456) (#13893)
+  * [v9] Mongo clients with `serverSelectionTimeoutMS` set to 5000 (#13859)
+  * Optionally provide ca_pin as a file path (#13089)
+  * [v9] Pass proxy address to PromptMFAChallenge calls (#13772) (#13856)
+  * [v9] Move predicate err check earlier, inside RetryWithRelogin (#13368) (#13747)
+  * [v9] ensure timestamps on request reviews (#13758)
+  * [v9] Add OpenSSH Proxy Jump docs (#13851)
+  * Backport lib/utils/prompt improvements to [v9] (#13822)
+  * [v9] Update Terraform reference (retries and provider source) (#13842)
+  * [v9] Fix LDAP attribute labeling
+  * [v9] Update docs version (#13810)
+  * [v9] backport fips #11291 and #13222 (#13703)
+  * Enterprise docker getting started fixes (#13550)
+- skipping non-existent version 9.3.8
+
+-------------------------------------------------------------------
 Wed Jun 22 20:44:53 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 9.3.7:
