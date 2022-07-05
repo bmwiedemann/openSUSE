@@ -18,7 +18,7 @@
 
 Name:           arb
 %define lname   libarb2
-Version:        2.22.1
+Version:        2.23.0
 Release:        0
 Summary:        Arbitrary-precision floating-point ball arithmetic library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -28,7 +28,7 @@ URL:            http://fredrikj.net/arb/
 Source:         https://github.com/fredrik-johansson/arb/archive/%version.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  flint-devel
+BuildRequires:  flint-devel >= 2.9
 BuildRequires:  gcc-c++
 BuildRequires:  libmpir-devel
 BuildRequires:  libtool
