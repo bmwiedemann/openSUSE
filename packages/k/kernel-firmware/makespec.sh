@@ -3,9 +3,10 @@
 # makespec.sh VERSION < kernel-firmware.spec.in > kernel-firmware.spec
 #
 
+export LANG=C
 version="$1"
 
-topics=$(awk '{print $1}' topicdefs)
+topics=$(awk '{print $1}' topicdefs | sort)
 
 define_subpackage () {
     local topic="$1"

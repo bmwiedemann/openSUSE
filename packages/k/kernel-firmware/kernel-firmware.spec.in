@@ -61,6 +61,7 @@ Source1013:     update-aliases.py
 Source1014:     README.build
 # temporary fix
 Patch1:         wfx-WHENCE-fix.diff
+Patch2:         brcm-symlink-fixes.diff
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 Requires(post): /usr/bin/mkdir /usr/bin/touch
@@ -121,6 +122,7 @@ all files that have been provided by kernel-firmware package.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .

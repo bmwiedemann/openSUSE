@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jul 04 07:42:16 UTC 2022 - tiwai@suse.com
+
+- Update to version 20220622 (git commit 9ed4d42c51ac):
+  * amdgpu: update Yellow Carp VCN firmware
+  * linux-firmware: update firmware for MT7921 WiFi device
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7921)
+  * qed: update 8.59.1.0 firmware
+  * Link some devices that ship with the AW-CM256SM
+  * Add initial AzureWave AW-CM256SM NVRAM file
+  * Remove the Pine64 Quartz copy of the RPi NVRAM
+  *     qca: Update firmware files for BT chip WCN6750.
+  * QCA: Update Bluetooth WCN685x 2.1 firmware to 2.1.0-00409
+  * WHENCE: add symlinks for StarFive based boards
+  * linux-firmware: wilc1000: update WILC1000 firmware to v15.6
+  * brcm: Add NVRAM file 43455 based Wifi/BT module as used on the Quartz64 Model B from Pine64. This file is based on the existing "brcm/brcmfmac43455-sdio.raspberrypi,4-model-b.txt" NVRAM file.
+  * iwlwifi: add new FWs from core70-87 release
+  * iwlwifi: update 9000-family firmwares to core70-87
+- Temporary fix for incorrect symlinks for brcm in WHENCE:
+  brcm-symlink-fixes.diff
+- Minor updates of scripts, sorting alphabetically and add version
+  to Provides/Obsoletes
+- Update alias
+
+-------------------------------------------------------------------
 Wed Jun 08 08:06:57 UTC 2022 - tiwai@suse.com
 
 - Update to version 20220607 (git commit 02c69863c885):

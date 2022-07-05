@@ -1793,6 +1793,7 @@ io_ti: usb:v1608p030Ad*dc*dsc*dp*ic*isc*ip*in*
 io_ti: usb:v1608p030Bd*dc*dsc*dp*ic*isc*ip*in*
 io_ti: usb:v1608p030Cd*dc*dsc*dp*ic*isc*ip*in*
 io_ti: usb:v1608p030Ed*dc*dsc*dp*ic*isc*ip*in*
+io_ti: usb:v1608p1A01d*dc*dsc*dp*ic*isc*ip*in*
 ipu3_imgu: pci:v00008086d00001919sv*sd*bc*sc*i*
 isci: pci:v00008086d00001D60sv*sd*bc*sc*i*
 isci: pci:v00008086d00001D61sv*sd*bc*sc*i*

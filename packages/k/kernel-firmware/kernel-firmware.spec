@@ -23,10 +23,10 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20220607
+%define version_unconverted 20220622
 
 Name:           kernel-firmware
-Version:        20220607
+Version:        20220622
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -61,38 +61,39 @@ Source1013:     update-aliases.py
 Source1014:     README.build
 # temporary fix
 Patch1:         wfx-WHENCE-fix.diff
+Patch2:         brcm-symlink-fixes.diff
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 BuildArch:      noarch
-Provides:       ath3k-firmware
-Obsoletes:      ath3k-firmware
+Provides:       ath3k-firmware = %{version}
+Obsoletes:      ath3k-firmware < %{version}
 Provides:       bcm43xx-firmware:/lib/firmware/brcm/brcmfmac43430-sdio.bin
-Provides:       cxgb3-firmware
-Obsoletes:      cxgb3-firmware
-Provides:       iwl1000-ucode
-Obsoletes:      iwl1000-ucode
-Provides:       iwl3945-ucode
-Obsoletes:      iwl3945-ucode
-Provides:       iwl4965-ucode
-Obsoletes:      iwl4965-ucode
-Provides:       iwl5000-ucode
-Obsoletes:      iwl5000-ucode
-Provides:       iwl5150-ucode
-Obsoletes:      iwl5150-ucode
-Provides:       iwl100-ucode
-Obsoletes:      iwl100-ucode
-Provides:       iwl6000-ucode
-Obsoletes:      iwl6000-ucode
-Provides:       iwl6050-ucode
-Obsoletes:      iwl6050-ucode
-Provides:       iwl6000g2-ucode
-Obsoletes:      iwl6000g2-ucode
-Provides:       ralink-firmware
-Obsoletes:      ralink-firmware
-Provides:       qlogic-firmware
-Obsoletes:      qlogic-firmware
+Provides:       cxgb3-firmware = %{version}
+Obsoletes:      cxgb3-firmware < %{version}
+Provides:       iwl1000-ucode = %{version}
+Obsoletes:      iwl1000-ucode < %{version}
+Provides:       iwl3945-ucode = %{version}
+Obsoletes:      iwl3945-ucode < %{version}
+Provides:       iwl4965-ucode = %{version}
+Obsoletes:      iwl4965-ucode < %{version}
+Provides:       iwl5000-ucode = %{version}
+Obsoletes:      iwl5000-ucode < %{version}
+Provides:       iwl5150-ucode = %{version}
+Obsoletes:      iwl5150-ucode < %{version}
+Provides:       iwl100-ucode = %{version}
+Obsoletes:      iwl100-ucode < %{version}
+Provides:       iwl6000-ucode = %{version}
+Obsoletes:      iwl6000-ucode < %{version}
+Provides:       iwl6050-ucode = %{version}
+Obsoletes:      iwl6050-ucode < %{version}
+Provides:       iwl6000g2-ucode = %{version}
+Obsoletes:      iwl6000g2-ucode < %{version}
+Provides:       ralink-firmware = %{version}
+Obsoletes:      ralink-firmware < %{version}
+Provides:       qlogic-firmware = %{version}
+Obsoletes:      qlogic-firmware < %{version}
 Provides:       compat-wireless-firmware = 4.4
 Obsoletes:      compat-wireless-firmware < 4.4
 %if 0%{?suse_version} >= 1550
@@ -495,6 +496,55 @@ Supplements:    modalias(pci:v00001002d000098E4sv*sd*bc*sc*i*)
 This package contains compressed kernel firmware files for
 AMDGPU graphics driver.
 
+%package ath10k
+Summary:        Kernel firmware files for Atheros QCA988x WiFi drivers
+Group:          System/Kernel
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
+Requires(post): dracut >= 049
+Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
+Supplements:    modalias(of:N*T*Cqcom,ipq4019-wifi)
+Supplements:    modalias(of:N*T*Cqcom,ipq4019-wifiC*)
+Supplements:    modalias(pci:v00000777d000011ACsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v0000168Cd0000003Csv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v0000168Cd0000003Esv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v0000168Cd00000040sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v0000168Cd00000041sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v0000168Cd00000042sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v0000168Cd00000046sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v0000168Cd00000050sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v0000168Cd00000056sv*sd*bc*sc*i*)
+Supplements:    modalias(sdio:c*v0271d050A*)
+Supplements:    modalias(sdio:c*v0271d0701*)
+Supplements:    modalias(usb:v13B1p0042d*dc*dsc*dp*ic*isc*ip*in*)
+
+%description ath10k
+This package contains compressed kernel firmware files for
+Atheros QCA988x WiFi drivers.
+
+%package ath11k
+Summary:        Kernel firmware files for Atheros Qualcomm WiFi drivers
+Group:          System/Kernel
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
+Requires(post): dracut >= 049
+Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
+Supplements:    modalias(pci:v000017CBd00001101sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000017CBd00001103sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000017CBd00001104sv*sd*bc*sc*i*)
+
+%description ath11k
+This package contains compressed kernel firmware files for
+Atheros Qualcomm WiFi drivers.
+
 %package atheros
 Summary:        Kernel firmware files for Atheros wireless drivers
 Group:          System/Kernel
@@ -506,8 +556,8 @@ Conflicts:      kernel < 5.3
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
 %endif
-Provides:       ath3k-firmware
-Obsoletes:      ath3k-firmware
+Provides:       ath3k-firmware = %{version}
+Obsoletes:      ath3k-firmware < %{version}
 Supplements:    modalias(ar9170usb)
 Supplements:    modalias(arusb_lnx)
 Supplements:    modalias(pci:v000017CBd00001201sv*sd*bc*sc*i*)
@@ -700,55 +750,6 @@ Supplements:    modalias(usb:vCACEp0300d*dc*dsc*dp*ic*isc*ip*in*)
 This package contains compressed kernel firmware files for
 Atheros wireless drivers.
 
-%package ath10k
-Summary:        Kernel firmware files for Atheros QCA988x WiFi drivers
-Group:          System/Kernel
-Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun):/usr/bin/mkdir /usr/bin/touch
-Requires(post): dracut >= 049
-Conflicts:      kernel < 5.3
-%if 0%{?suse_version} >= 1550
-# make sure we have post-usrmerge filesystem package on TW
-Conflicts:      filesystem < 84
-%endif
-Supplements:    modalias(of:N*T*Cqcom,ipq4019-wifi)
-Supplements:    modalias(of:N*T*Cqcom,ipq4019-wifiC*)
-Supplements:    modalias(pci:v00000777d000011ACsv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v0000168Cd0000003Csv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v0000168Cd0000003Esv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v0000168Cd00000040sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v0000168Cd00000041sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v0000168Cd00000042sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v0000168Cd00000046sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v0000168Cd00000050sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v0000168Cd00000056sv*sd*bc*sc*i*)
-Supplements:    modalias(sdio:c*v0271d050A*)
-Supplements:    modalias(sdio:c*v0271d0701*)
-Supplements:    modalias(usb:v13B1p0042d*dc*dsc*dp*ic*isc*ip*in*)
-
-%description ath10k
-This package contains compressed kernel firmware files for
-Atheros QCA988x WiFi drivers.
-
-%package ath11k
-Summary:        Kernel firmware files for Atheros Qualcomm WiFi drivers
-Group:          System/Kernel
-Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun):/usr/bin/mkdir /usr/bin/touch
-Requires(post): dracut >= 049
-Conflicts:      kernel < 5.3
-%if 0%{?suse_version} >= 1550
-# make sure we have post-usrmerge filesystem package on TW
-Conflicts:      filesystem < 84
-%endif
-Supplements:    modalias(pci:v000017CBd00001101sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v000017CBd00001103sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v000017CBd00001104sv*sd*bc*sc*i*)
-
-%description ath11k
-This package contains compressed kernel firmware files for
-Atheros Qualcomm WiFi drivers.
-
 %package bluetooth
 Summary:        Kernel firmware files for various Bluetooth drivers
 Group:          System/Kernel
@@ -937,8 +938,8 @@ Conflicts:      kernel < 5.3
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
 %endif
-Provides:       cxgb3-firmware
-Obsoletes:      cxgb3-firmware
+Provides:       cxgb3-firmware = %{version}
+Obsoletes:      cxgb3-firmware < %{version}
 Supplements:    modalias(pci:v00001425d00000020sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001425d00000021sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001425d00000022sv*sd*bc*sc*i*)
@@ -1760,24 +1761,24 @@ Conflicts:      kernel < 5.3
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
 %endif
-Provides:       iwl1000-ucode
-Obsoletes:      iwl1000-ucode
-Provides:       iwl3945-ucode
-Obsoletes:      iwl3945-ucode
-Provides:       iwl4965-ucode
-Obsoletes:      iwl4965-ucode
-Provides:       iwl5000-ucode
-Obsoletes:      iwl5000-ucode
-Provides:       iwl5150-ucode
-Obsoletes:      iwl5150-ucode
-Provides:       iwl100-ucode
-Obsoletes:      iwl100-ucode
-Provides:       iwl6000-ucode
-Obsoletes:      iwl6000-ucode
-Provides:       iwl6050-ucode
-Obsoletes:      iwl6050-ucode
-Provides:       iwl6000g2-ucode
-Obsoletes:      iwl6000g2-ucode
+Provides:       iwl1000-ucode = %{version}
+Obsoletes:      iwl1000-ucode < %{version}
+Provides:       iwl3945-ucode = %{version}
+Obsoletes:      iwl3945-ucode < %{version}
+Provides:       iwl4965-ucode = %{version}
+Obsoletes:      iwl4965-ucode < %{version}
+Provides:       iwl5000-ucode = %{version}
+Obsoletes:      iwl5000-ucode < %{version}
+Provides:       iwl5150-ucode = %{version}
+Obsoletes:      iwl5150-ucode < %{version}
+Provides:       iwl100-ucode = %{version}
+Obsoletes:      iwl100-ucode < %{version}
+Provides:       iwl6000-ucode = %{version}
+Obsoletes:      iwl6000-ucode < %{version}
+Provides:       iwl6050-ucode = %{version}
+Obsoletes:      iwl6050-ucode < %{version}
+Provides:       iwl6000g2-ucode = %{version}
+Obsoletes:      iwl6000g2-ucode < %{version}
 Supplements:    modalias(iwl4965)
 Supplements:    modalias(pci:v00008086d00000082sv*sd00001301bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00000082sv*sd00001304bc*sc*i*)
@@ -2954,8 +2955,8 @@ Conflicts:      kernel < 5.3
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
 %endif
-Provides:       ralink-firmware
-Obsoletes:      ralink-firmware
+Provides:       ralink-firmware = %{version}
+Obsoletes:      ralink-firmware < %{version}
 Supplements:    modalias(of:N*T*Cmediatek,mt7622-bluetooth)
 Supplements:    modalias(of:N*T*Cmediatek,mt7622-bluetoothC*)
 Supplements:    modalias(of:N*T*Cmediatek,mt7663u-bluetooth)
@@ -4138,8 +4139,8 @@ Conflicts:      kernel < 5.3
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
 %endif
-Provides:       qlogic-firmware
-Obsoletes:      qlogic-firmware
+Provides:       qlogic-firmware = %{version}
+Obsoletes:      qlogic-firmware < %{version}
 Supplements:    modalias(fs-ipathfs)
 Supplements:    modalias(pci:v00001077d00001016sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00001020sv*sd*bc*sc*i*)
@@ -5940,6 +5941,7 @@ Supplements:    modalias(usb:v1608p030Bd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1608p030Cd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1608p030Ed*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1608p1403d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v1608p1A01d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1645p8093d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1A61p3410d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1A61p3420d*dc*dsc*dp*ic*isc*ip*in*)
@@ -6206,6 +6208,7 @@ various USB WiFi / Ethernet drivers.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
@@ -6261,15 +6264,6 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %posttrans amdgpu
 %{?regenerate_initrd_posttrans}
 
-%post atheros
-%{?regenerate_initrd_post}
-
-%postun atheros
-%{?regenerate_initrd_post}
-
-%posttrans atheros
-%{?regenerate_initrd_posttrans}
-
 %post ath10k
 %{?regenerate_initrd_post}
 
@@ -6286,6 +6280,15 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %{?regenerate_initrd_post}
 
 %posttrans ath11k
+%{?regenerate_initrd_posttrans}
+
+%post atheros
+%{?regenerate_initrd_post}
+
+%postun atheros
+%{?regenerate_initrd_post}
+
+%posttrans atheros
 %{?regenerate_initrd_posttrans}
 
 %post bluetooth
@@ -6561,11 +6564,11 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 
 %files -f files-amdgpu amdgpu
 
-%files -f files-atheros atheros
-
 %files -f files-ath10k ath10k
 
 %files -f files-ath11k ath11k
+
+%files -f files-atheros atheros
 
 %files -f files-bluetooth bluetooth
 
