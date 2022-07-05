@@ -1095,4 +1095,19 @@
 </comment>
     <requestid>981456</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>e6840fb40ec45b2f93f91f78c91834cc</srcmd5>
+    <version>1.20.3</version>
+    <time>1657015800</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.20.3
+  * Bugfixes:
+    #8369: Shared device names are missing from &quot;Edit Folder -&gt; Sharing&quot;
+    #8376: Chrome Autofill Breaks Authentication
+    #8386: Ignore patterns with wildcard and non-ASCII characters don't work as expected
+  * Enhancements:
+    #8393: Warn if two devices are introducers to each other
+</comment>
+    <requestid>986795</requestid>
+  </revision>
 </revisionlist>
