@@ -199,4 +199,21 @@
     will be private without replacement:</comment>
     <requestid>975881</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>88263ac1bd19ea41964f09b4eb94a7b5</srcmd5>
+    <version>0.12.1</version>
+    <time>1657015795</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.1:
+  * Fix compilation in buildroot (#207)
+  * Fixes regarding OpenSSL (#208)
+  * Fix some build steps when builddir != srcdir (#208)
+  * Allow the user to disable build of examples (#209)
+  * CI builds against OpenSSL 3 (#206)
+  * Change the call signature of the following API:
+    xmpp_conn_set_client_cert() - the PKCS#12 file has now to be passed via the cert
+    parameter. Originally it was via key. Currently both styles are supported,
+    but in a future release only passing via cert will be accepted.</comment>
+    <requestid>986754</requestid>
+  </revision>
 </revisionlist>
