@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul  1 19:51:00 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.2:
+  + Web:
+    - Fix several issues relating to presentation of navigation
+      among focusable descendants within ARIA grids and tables.
+    - Improve support for description lists.
+    - Fix SayAll presentation of time element inside link.
+    - Fix presentation of the FluentUI react dialog (and any other
+      dialog which has an ARIA document-role descendant.
+    - Eliminate chattiness from newly-expanded/shown listbox.
+  + WebKitGtk: Fail gracefully when structural navigation commands
+    are used in WebKitGtk 2.36.x (the collection interface won't be
+    supported until 2.26.4).
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue May 17 12:07:26 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.1:
