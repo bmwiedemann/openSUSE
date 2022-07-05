@@ -168,4 +168,12 @@
     when rendering formatted text to the output, and we expect it to follow</comment>
     <requestid>965076</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2121e0867b45e4794faf70c6e1ee651f</srcmd5>
+    <version>3.0.30</version>
+    <time>1657015725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986469</requestid>
+  </revision>
 </revisionlist>
