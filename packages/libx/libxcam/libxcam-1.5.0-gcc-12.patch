@@ -1,0 +1,88 @@
+From d13b69e6332277a4a59cd736439e17851fe8be74 Mon Sep 17 00:00:00 2001
+From: Naveen Saini <naveen.kumar.saini@intel.com>
+Date: Wed, 18 May 2022 15:41:24 +0800
+Subject: [PATCH] fake_v4l2_device.h: fix narrowing warning
+
+Use uint32_t instead of int for IOCTLs commands.
+
+Warning log:
+| ../../../git/xcore/fake_v4l2_device.h: In member function 'virtual int XCam::FakeV4l2Device::io_control(int, void*)':
+| ../../../git/xcore/fake_v4l2_device.h:42:14: error: narrowing conversion of '3225441794' from 'long unsigned int' to 'int' [-Wnarrowing]
+|    42 |         case VIDIOC_ENUM_FMT:
+|       |              ^~~~~~~~~~~~~~~
+| make[4]: *** [Makefile:685: libgstxcamsrc_la-gstxcamsrc.lo] Error 1
+
+Signed-off-by: Naveen Saini <naveen.kumar.saini@intel.com>
+---
+ xcore/base/xcam_common.h | 2 +-
+ xcore/fake_v4l2_device.h | 2 +-
+ xcore/v4l2_device.cpp    | 2 +-
+ xcore/v4l2_device.h      | 2 +-
+ xcore/xcam_common.cpp    | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/xcore/base/xcam_common.h b/xcore/base/xcam_common.h
+index 1f16e1ea3..4aa6cb9a6 100644
+--- a/xcore/base/xcam_common.h
++++ b/xcore/base/xcam_common.h
+@@ -75,7 +75,7 @@ void xcam_free (void *ptr);
+   * return, 0 successfully
+   *            else, check errno
+   */
+-int xcam_device_ioctl (int fd, int cmd, void *arg);
++int xcam_device_ioctl (int fd, uint32_t cmd, void *arg);
+ const char *xcam_fourcc_to_string (uint32_t fourcc);
+ 
+ void xcam_set_log (const char* file_name);
+diff --git a/xcore/fake_v4l2_device.h b/xcore/fake_v4l2_device.h
+index f679c19ce..e29787d21 100644
+--- a/xcore/fake_v4l2_device.h
++++ b/xcore/fake_v4l2_device.h
+@@ -33,7 +33,7 @@ class FakeV4l2Device
+         : V4l2Device ("/dev/null")
+     {}
+ 
+-    int io_control (int cmd, void *arg)
++    int io_control (uint32_t cmd, void *arg)
+     {
+         XCAM_UNUSED (arg);
+ 
+diff --git a/xcore/v4l2_device.cpp b/xcore/v4l2_device.cpp
+index 395461e70..66a8ac67b 100644
+--- a/xcore/v4l2_device.cpp
++++ b/xcore/v4l2_device.cpp
+@@ -185,7 +185,7 @@ V4l2Device::close ()
+ }
+ 
+ int
+-V4l2Device::io_control (int cmd, void *arg)
++V4l2Device::io_control (uint32_t cmd, void *arg)
+ 
+ {
+     if (_fd <= 0)
+diff --git a/xcore/v4l2_device.h b/xcore/v4l2_device.h
+index b4ad7ade3..2551a92da 100644
+--- a/xcore/v4l2_device.h
++++ b/xcore/v4l2_device.h
+@@ -104,7 +104,7 @@ class V4l2Device {
+     XCamReturn queue_buffer (SmartPtr<V4l2Buffer> &buf);
+ 
+     // use as less as possible
+-    virtual int io_control (int cmd, void *arg);
++    virtual int io_control (uint32_t cmd, void *arg);
+ 
+ protected:
+ 
+diff --git a/xcore/xcam_common.cpp b/xcore/xcam_common.cpp
+index 848884df9..d4d5093f5 100644
+--- a/xcore/xcam_common.cpp
++++ b/xcore/xcam_common.cpp
+@@ -53,7 +53,7 @@ void xcam_free(void *ptr)
+         free (ptr);
+ }
+ 
+-int xcam_device_ioctl (int fd, int cmd, void *arg)
++int xcam_device_ioctl (int fd, uint32_t cmd, void *arg)
+ {
+     int ret = 0;
+     int tried_time = 0;

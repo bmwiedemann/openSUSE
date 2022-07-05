@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul  4 14:35:03 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-generated patches based on upstream commits (osc service ra
+  download_files):
+  M 0001-New_features_camera_tunning_and_fixes.patch
+  M 0001-gl-stitch_support_EGL_initialize_by_GBM.patch
+
+-------------------------------------------------------------------
+Mon Jun 27 21:49:08 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add libxcam-1.5.0-gcc-12.patch: Fix build with gcc 12 (gh#intel/libxcam#801).
+
+-------------------------------------------------------------------
 Fri Apr 29 04:50:51 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use -std=gnu++11 in ppc64le to work around a bug in gcc7 which

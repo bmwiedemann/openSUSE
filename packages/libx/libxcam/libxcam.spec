@@ -34,6 +34,8 @@ Patch1:         https://github.com/intel/libxcam/commit/6a20559b402493ff29eac736
 Patch2:         https://github.com/intel/libxcam/commit/ea99d89082c2473c2e22c848bff4f9f537af3fde.patch#/0001-pkg_config_check_opencv_module_version.patch
 # PATCH-FIX-UPSTREAM Fix ODR violation
 Patch3:         0001-Fix-multiple-definitions-of-XCam-ShaderID-ODR-violat.patch
+# PATCH-FIX-UPSTREAM Fix build with GCC 12
+Patch4:         https://github.com/intel/libxcam/pull/802/commits/d13b69e6332277a4a59cd736439e17851fe8be74.patch#/libxcam-1.5.0-gcc-12.patch
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  autoconf
 BuildRequires:  automake

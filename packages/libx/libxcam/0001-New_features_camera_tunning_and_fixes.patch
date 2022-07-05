@@ -24,7 +24,7 @@ Fix code indentation
  create mode 100644 tests/camera_calibration_insta.json
 
 diff --git a/configure.ac b/configure.ac
-index 0319a700..0161e947 100644
+index 0319a700a..0161e947d 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -29,7 +29,7 @@ AC_SUBST(XCAM_LT_LDFLAGS)
@@ -54,7 +54,7 @@ index 0319a700..0161e947 100644
  XCAM_DEFINE_MACOR(ENABLE_DVS_CL_PATH, $ENABLE_DVS_CL_PATH, enable dvs cl path)
  XCAM_DEFINE_MACOR(ENABLE_CAPI, $ENABLE_CAPI, enable capi)
 diff --git a/m4/xcam-utils.m4 b/m4/xcam-utils.m4
-index aefaf907..a93c45c6 100644
+index aefaf9077..a93c45c6b 100644
 --- a/m4/xcam-utils.m4
 +++ b/m4/xcam-utils.m4
 @@ -55,7 +55,7 @@ AC_DEFUN([XCAM_CHECK_DOXYGEN],
@@ -76,7 +76,7 @@ index aefaf907..a93c45c6 100644
  
  # XCAM_CHECK_OCV_VIDEOSTAB([$1:value], [$2:if-found], [$3:if-not-found])
 diff --git a/modules/gles/gl_stitcher.cpp b/modules/gles/gl_stitcher.cpp
-index 1cdf46ad..22ac110a 100644
+index 1cdf46ad7..22ac110ae 100644
 --- a/modules/gles/gl_stitcher.cpp
 +++ b/modules/gles/gl_stitcher.cpp
 @@ -746,15 +746,19 @@ StitcherImpl::create_feature_match (SmartPtr<FeatureMatch> &matcher)
@@ -100,7 +100,7 @@ index 1cdf46ad..22ac110a 100644
      XCAM_ASSERT (matcher.ptr ());
  
 diff --git a/modules/ocv/cv_capi_feature_match.cpp b/modules/ocv/cv_capi_feature_match.cpp
-index d478f3c0..e24416b7 100644
+index d478f3c0f..e24416b7a 100644
 --- a/modules/ocv/cv_capi_feature_match.cpp
 +++ b/modules/ocv/cv_capi_feature_match.cpp
 @@ -22,6 +22,7 @@
@@ -117,7 +117,7 @@ index d478f3c0..e24416b7 100644
  }
 +#endif
 diff --git a/modules/ocv/cv_capi_feature_match.h b/modules/ocv/cv_capi_feature_match.h
-index f1f87948..26c60629 100644
+index f1f87948f..26c60629f 100644
 --- a/modules/ocv/cv_capi_feature_match.h
 +++ b/modules/ocv/cv_capi_feature_match.h
 @@ -31,6 +31,7 @@
@@ -134,7 +134,7 @@ index f1f87948..26c60629 100644
  #endif // CV_CAPI_FEATURE_MATCH_H
 +#endif
 diff --git a/modules/soft/Makefile.am b/modules/soft/Makefile.am
-index 9c4fbdb9..fa398221 100644
+index 9c4fbdb9e..fa3982210 100644
 --- a/modules/soft/Makefile.am
 +++ b/modules/soft/Makefile.am
 @@ -31,7 +31,7 @@ xcam_soft_sources = \
@@ -147,7 +147,7 @@ index 9c4fbdb9..fa398221 100644
  libxcam_soft_la_SOURCES = \
      $(xcam_soft_sources) \
 diff --git a/modules/soft/soft_stitcher.cpp b/modules/soft/soft_stitcher.cpp
-index 35081216..dde33d19 100644
+index 350812163..dde33d199 100644
 --- a/modules/soft/soft_stitcher.cpp
 +++ b/modules/soft/soft_stitcher.cpp
 @@ -470,8 +470,10 @@ StitcherImpl::init_feature_match (uint32_t idx)
@@ -162,7 +162,7 @@ index 35081216..dde33d19 100644
          XCAM_LOG_ERROR ("unsupported FeatureMatchMode: %d", fm_mode);
          XCAM_ASSERT (false);
 diff --git a/modules/vulkan/vk_stitcher.cpp b/modules/vulkan/vk_stitcher.cpp
-index 06ec8a77..9e12fd7c 100644
+index 06ec8a772..9e12fd7c1 100644
 --- a/modules/vulkan/vk_stitcher.cpp
 +++ b/modules/vulkan/vk_stitcher.cpp
 @@ -423,15 +423,19 @@ StitcherImpl::init_feature_matchers ()
@@ -187,7 +187,7 @@ index 06ec8a77..9e12fd7c 100644
  
 diff --git a/tests/camera_calibration_insta.json b/tests/camera_calibration_insta.json
 new file mode 100644
-index 00000000..9d7fae84
+index 000000000..9d7fae848
 --- /dev/null
 +++ b/tests/camera_calibration_insta.json
 @@ -0,0 +1,115 @@
@@ -307,7 +307,7 @@ index 00000000..9d7fae84
 +	}
 +}
 diff --git a/tests/test-surround-view.cpp b/tests/test-surround-view.cpp
-index 1e7297df..2fff0a3e 100644
+index 1e7297df0..2fff0a3e4 100644
 --- a/tests/test-surround-view.cpp
 +++ b/tests/test-surround-view.cpp
 @@ -528,7 +528,7 @@ static void usage(const char* arg0)
@@ -347,7 +347,7 @@ index 1e7297df..2fff0a3e 100644
                            soft_stitch_info (cam_model, scopic_mode) : gl_stitch_info (cam_model, scopic_mode);
  
 diff --git a/tests/test_sv_params.h b/tests/test_sv_params.h
-index 7610aa1b..25e70534 100644
+index 7610aa1bf..25e70534b 100644
 --- a/tests/test_sv_params.h
 +++ b/tests/test_sv_params.h
 @@ -30,6 +30,7 @@ enum CamModel {
@@ -543,7 +543,7 @@ index 7610aa1b..25e70534 100644
          switch (scopic_mode) {
          case ScopicStereoLeft: {
 diff --git a/xcore/interface/stitcher.cpp b/xcore/interface/stitcher.cpp
-index 0f79a9cc..40f1cc28 100644
+index 0f79a9ccd..40f1cc28c 100644
 --- a/xcore/interface/stitcher.cpp
 +++ b/xcore/interface/stitcher.cpp
 @@ -336,7 +336,7 @@ Stitcher::estimate_round_slices ()

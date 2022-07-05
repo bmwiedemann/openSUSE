@@ -13,7 +13,7 @@ Subject: [PATCH] gl-stitch: support EGL initialize by GBM
  5 files changed, 83 insertions(+), 9 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 0e80aab9..0319a700 100644
+index 0e80aab99..0319a700a 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -73,6 +73,7 @@ XCAM_ARG_ENABLE(json, --enable-json, enable_json, no, enable camera calibration
@@ -33,7 +33,7 @@ index 0e80aab9..0319a700 100644
  XCAM_DEFINE_MACOR(ENABLE_AVX512, $ENABLE_AVX512, have avx instruction)
  XCAM_DEFINE_MACOR(ENABLE_RENDER, $ENABLE_RENDER, enable texture render)
 diff --git a/modules/gles/Makefile.am b/modules/gles/Makefile.am
-index 2c6acd43..5bc05904 100644
+index 2c6acd439..5bc05904d 100644
 --- a/modules/gles/Makefile.am
 +++ b/modules/gles/Makefile.am
 @@ -17,6 +17,10 @@ if HAVE_OPENCV
@@ -48,7 +48,7 @@ index 2c6acd43..5bc05904 100644
      gles_std.cpp           \
      gl_buffer.cpp          \
 diff --git a/modules/gles/egl/egl_base.cpp b/modules/gles/egl/egl_base.cpp
-index 694ac54b..835e0c52 100644
+index 694ac54b5..835e0c52f 100644
 --- a/modules/gles/egl/egl_base.cpp
 +++ b/modules/gles/egl/egl_base.cpp
 @@ -26,6 +26,10 @@ EGLBase::EGLBase ()
@@ -124,7 +124,7 @@ index 694ac54b..835e0c52 100644
  EGLBase::get_display (NativeDisplayType native_display, EGLDisplay &display)
  {
 diff --git a/modules/gles/egl/egl_base.h b/modules/gles/egl/egl_base.h
-index baa9a10c..152aa53c 100644
+index baa9a10c4..152aa53c3 100644
 --- a/modules/gles/egl/egl_base.h
 +++ b/modules/gles/egl/egl_base.h
 @@ -23,6 +23,11 @@
@@ -162,7 +162,7 @@ index baa9a10c..152aa53c 100644
  
  }
 diff --git a/tests/test-surround-view.cpp b/tests/test-surround-view.cpp
-index cf378525..8bd0ae13 100644
+index cf3785259..8bd0ae13a 100644
 --- a/tests/test-surround-view.cpp
 +++ b/tests/test-surround-view.cpp
 @@ -526,6 +526,7 @@ int main (int argc, char *argv[])
