@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul  3 18:24:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.3:
+  + Fix setting the correct month in the public transit time
+    settings.
+  + Fix a crash on exit.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon May 30 12:03:53 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.2:
