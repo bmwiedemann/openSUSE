@@ -1113,4 +1113,12 @@
     <comment>Scripted push from GNOME:Next (forwarded request 972578 from dimstar)</comment>
     <requestid>973135</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>e5eda1f368848d5ce415b4912336fcbb</srcmd5>
+    <version>1.50.8</version>
+    <time>1657016834</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 986488 from iznogood)</comment>
+    <requestid>986584</requestid>
+  </revision>
 </revisionlist>

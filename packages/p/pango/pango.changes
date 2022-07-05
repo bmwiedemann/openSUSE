@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul  3 18:22:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.50.8:
+  + Add some properties to fontmap and family.
+  + Fix handling of ligature carets in mixed directions.
+
+-------------------------------------------------------------------
 Mon Apr 25 08:46:12 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.50.7:
