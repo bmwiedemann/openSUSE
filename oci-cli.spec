@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           oci-cli%{psuffix}
-Version:        3.9.0
+Version:        3.10.5
 Release:        0
 Summary:        Oracle Cloud Infrastructure CLI
 License:        Apache-2.0
@@ -46,7 +46,7 @@ BuildRequires:  python3-click >= 7.1.2
 BuildRequires:  python3-cryptography >= 3.2.1
 BuildRequires:  python3-devel
 BuildRequires:  python3-jmespath >= 0.10.0
-BuildRequires:  python3-oci-sdk >= 2.67.0
+BuildRequires:  python3-oci-sdk >= 2.73.0
 BuildRequires:  python3-pyOpenSSL >= 19.1.0
 BuildRequires:  python3-python-dateutil >= 2.5.3
 BuildRequires:  python3-pytz >= 2016.10
@@ -82,7 +82,8 @@ Requires:       python3-certifi
 Requires:       python3-click >= 7.1.2
 Requires:       python3-cryptography >= 3.2.1
 Requires:       python3-jmespath >= 0.10.0
-Requires:       python3-oci-sdk >= 2.67.0
+Requires:       python3-oci-sdk >= 2.73.0
+Requires:       python3-prompt_toolkit >= 3.0.29
 Requires:       python3-pyOpenSSL >= 19.1.0
 Requires:       python3-python-dateutil >= 2.5.3
 Requires:       python3-pytz >= 2016.10
