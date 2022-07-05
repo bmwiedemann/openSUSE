@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jul  3 09:33:36 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- harfbuzz 4.4.1:
+  + Fix test failure with some compilers
+  + Fix Telugu and Kannada kerning regression
+- includes changes from 4.4.0:
+  + Caching of variable fonts shaping
+  + Caching of format 2 “Contextual Substitution” and “Chained
+    Contexts Substitution” lookups
+  + Improved ANSI output from hb-view
+  + Support for shaping legacy, pre-OpenType, Windows 3.1-era,
+    Arabic fonts that relied on a fixed PUA encoding
+  + Sinhala script is now shaped by the USE shaper instead of
+    “indic” one
+  + Thai shaper improvements
+  + hb-ot-name API supports approximate BCP-47 language matching,
+    for example asking for “en_US” in a font that has only “en”
+    names will return them
+  + Optimized TrueType glyph shape loading
+  + Fix subsetting of HarfBuzz faces created via
+    hb_face_create_for_tables()
+  + Add 32 bit var store support to the subsetter
+  + CVE-2022-33068: overflow in hb-ot-shape-fallback boo#1200900
+
+-------------------------------------------------------------------
 Sat May 21 08:10:59 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 4.3.0:
