@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul  2 03:06:43 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-File-ShareDir-Install/Changes
+
+  0.14      2022-07-01 03:46:36Z
+      - work around a build issue on windows (RT#125571)
+
+-------------------------------------------------------------------
 Tue Apr 24 05:17:59 UTC 2018 - coolo@suse.com
 
 - updated to 0.13
