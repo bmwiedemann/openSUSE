@@ -2153,4 +2153,24 @@ Recommended for 12.3</comment>
     <comment>GNOME 42.2 (forwarded request 979882 from dimstar)</comment>
     <requestid>980021</requestid>
   </revision>
+  <revision rev="258" vrev="1">
+    <srcmd5>b15e9e4b23b9a48abaaf6f7dbf29128f</srcmd5>
+    <version>3.44.3</version>
+    <time>1657016830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.44.3:
+  + EMailStripSigFilter: Make sure it doesn't read out of buffer
+    bounds.
+  + Bugs fixed:
+    - icons: Add symbolic variants for toolbar/folder tree icons.
+    - Composer: Skip STYLE and other tags in convert to Plain Text.
+    - Drag&amp;Drop creates many identical temporary files.
+    - Update Task preview, when Task is updated.
+    - ESourceSelectorDialog: Close on double-click on source only.
+    - Crash when printing task list to pdf.
+    - Logic of &quot;Do not sign meeting requests&quot; is inverted.
+    - EShell: Use symbolic icons on GNOME.
+  + Updated translations. (forwarded request 986298 from iznogood)</comment>
+    <requestid>986578</requestid>
+  </revision>
 </revisionlist>
