@@ -114,4 +114,42 @@ Used by https://build.opensuse.org/package/show/home:gladiac/rav1e (AV1 encoder)
     <comment></comment>
     <requestid>958395</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9cefc31cd6ede996fec18253a2850ab1</srcmd5>
+    <version>0.9.11~git0.41f5562</version>
+    <time>1657016854</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.11~git0.41f5562:
+  * Prepare for release
+  * Fix clippy warnings
+  * Versions bump
+  * Add back the deps.rs badge
+  * Increase the regex requirement
+  * Prepare for release
+  * Bump cargo
+  * Add support for Haiku Operating System
+  * Add udbserver to users
+  * Extend the coverage further
+  * Fix the code coverage script
+  * Fix subcommand fallback support
+  * Print the issued commands
+  * Fix testing cross compilation
+  * Bump cargo-metadata
+  * Bump cbindgen
+  * Support rustc-1.60 and following
+  * Update to clap-3.1 and cargo-0.61
+  * Prepare for release
+  * Do not use the patch version in macOS -install_name
+  * Add Android to the build targets supported by LibType
+  * Make nightly clippy happy
+  * Simplify a writln
+  * Prepare for release
+  * Bump cargo version
+  * Remove newlines from the description
+  * Make the default destdir None
+  * CI: use MSYS2 cargo package for example project
+  * Print the PKG_CONFIG_PATH in verbose mode
+</comment>
+    <requestid>986660</requestid>
+  </revision>
 </revisionlist>

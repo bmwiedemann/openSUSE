@@ -20,7 +20,7 @@
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
 
 Name:           cargo-c
-Version:        0.9.6~git0.68e65ad
+Version:        0.9.11~git0.41f5562
 Release:        0
 Summary:        Helper to build and install c-like libraries from Rust
 License:        MIT
