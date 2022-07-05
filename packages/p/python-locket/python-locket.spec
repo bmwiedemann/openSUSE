@@ -1,7 +1,7 @@
 #
 # spec file for package python-locket
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-locket
-Version:        0.2.0
+Version:        1.0.0
 Release:        0
 Summary:        File-based locks for Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            http://github.com/mwilliamson/locket.py
-Source:         https://files.pythonhosted.org/packages/source/l/locket/locket-%{version}.tar.gz
+URL:            https://github.com/mwilliamson/locket.py
+Source:         https://github.com/mwilliamson/locket.py/archive/refs/tags/%{version}.tar.gz#/locket-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module spur}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -50,7 +52,7 @@ module in the standard library. Specifically, their behaviour is:
 * Behaviour of locks after `fork` is undefined.
 
 %prep
-%setup -q -n locket-%{version}
+%setup -q -n locket.py-%{version}
 
 %build
 %python_build
@@ -59,9 +61,13 @@ module in the standard library. Specifically, their behaviour is:
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+%pytest
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/locket
+%{python_sitelib}/locket-%{version}*-info
 
 %changelog

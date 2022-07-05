@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 24 21:37:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.0
+  * No release notes. From git log:
+  * Fix #5: make sure it is sane to use different timeouts on the
+    same file
+  * Close file when acquire() fails
+  * Raise LockError when calling release on an unlocked lock
+  * Use time.monotonic() when available
+- Enable test suite -- by requiring untested spur.py :(
+
+-------------------------------------------------------------------
 Tue Dec  4 12:50:05 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
