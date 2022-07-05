@@ -33,4 +33,12 @@
     <comment>Scripted push from GNOME:Next (forwarded request 973163 from dimstar)</comment>
     <requestid>973168</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6b264aff27d972260fc01bb50652194c</srcmd5>
+    <version>42.3</version>
+    <time>1657016833</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 986486 from iznogood)</comment>
+    <requestid>986582</requestid>
+  </revision>
 </revisionlist>
