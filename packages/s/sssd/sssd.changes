@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul  4 12:11:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.7.3
+  * All SSSD client libraries (nss, pam, etc) won't serialize
+    requests anymore by default, i.e. requests from multiple
+    threads can be executed in parallel. Old behavior
+    (serialization) can be enabled by setting environment
+    variable "SSS_LOCKFREE" to "NO".
+
+-------------------------------------------------------------------
 Tue Jun 21 10:19:54 UTC 2022 - Stefan Schubert <schubi@localhost>
 
 - Removed %config flag for files in /usr directory.

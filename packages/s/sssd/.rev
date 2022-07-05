@@ -1058,4 +1058,12 @@ goes in line with 946250</comment>
     <comment></comment>
     <requestid>984190</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>82e084a9001e86ef98c1655e4f7e6618</srcmd5>
+    <version>2.7.3</version>
+    <time>1657016857</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.7.3</comment>
+    <requestid>986685</requestid>
+  </revision>
 </revisionlist>
