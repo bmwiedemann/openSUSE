@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul  4 13:07:24 UTC 2022 - Haochuan Chen <yjcoshc@mail.nankai.edu.cn>
+
+- Update to version 5.0.16
+  * Also monitor user theme config file.
+  * Make sure we set client_window/widget to null if app set it.
+- Update to version 5.0.15
+  * gio unix is only im modules's dependency.
+  * Do now show size 0 window.
+  * Depend on gio-unix-2.0 (#18)
+- Update to version 5.0.14
+  * properly use g_cancellable in watcher.
+  * Free the address returned from g_dbus_address_get_for_bus_sync
+  * Change the dbus connection used by watcher
+  * Set no exit on close for the dbus connection used by fcitx im module.
+  * Add shadow margin support to gtk client side input panel
+  * fix: Compatible with glib 2.5.58 < 2.60 (#17)
+
+-------------------------------------------------------------------
 Sat Mar 12 09:51:57 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 5.0.13
