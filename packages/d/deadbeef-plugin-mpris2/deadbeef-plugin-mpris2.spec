@@ -1,7 +1,7 @@
 #
 # spec file for package deadbeef-plugin-mpris2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -39,6 +39,7 @@ Obsoletes:      %{_name} < %{version}
 Provides:       %{_name} = %{version}
 Provides:       deadbeef-MPRIS-plugin = %{version}
 Obsoletes:      deadbeef-MPRIS-plugin < %{version}
+ExcludeArch:    %ix86
 
 %description
 This plugin aims to implement the MPRISv2 D-Bus interface for

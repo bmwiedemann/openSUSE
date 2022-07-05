@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>898194</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>df95b98d48803685cf4643f5aa4b3a58</srcmd5>
+    <version>1.14</version>
+    <time>1657015761</time>
+    <user>dimstar_suse</user>
+    <comment>- Sync ExcludeArch %ix86 with libdispatch: libdispatch is not being
+  buily and as such we don't have the needed dep available. (forwarded request 986634 from dimstar)</comment>
+    <requestid>986668</requestid>
+  </revision>
 </revisionlist>
