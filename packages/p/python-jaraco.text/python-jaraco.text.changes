@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 28 14:33:21 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 3.8.0:
+  * Added ``layouts`` module and ``to-qwerty`` and ``to-dvorak`` scripts.
+  * Introducing ``yield_lines``, ``drop_comment``, and ``join_continuation``.
+- droping dependency to jaraco.base
+
+-------------------------------------------------------------------
 Tue Nov 16 08:37:12 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.6.0:

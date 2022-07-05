@@ -77,4 +77,12 @@
   * #5: Fixed warning in docs builds.</comment>
     <requestid>931668</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>845751f814e8653414c71d6d336a5c49</srcmd5>
+    <version>3.8.0</version>
+    <time>1657016819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986349</requestid>
+  </revision>
 </revisionlist>

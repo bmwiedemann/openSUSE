@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.text
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,22 +19,25 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-jaraco.text
-Version:        3.6.0
+Version:        3.8.0
 Release:        0
 Summary:        Tools to work with text
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.text
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.text/jaraco.text-%{version}.tar.gz
 BuildRequires:  %{python_module importlib_resources}
-BuildRequires:  %{python_module jaraco.base >= 6.1}
+BuildRequires:  %{python_module jaraco.context}
 BuildRequires:  %{python_module jaraco.functools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-black}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib_resources
-Requires:       python-jaraco.base >= 6.1
+Requires:       python-jaraco.context >= 4.1
 Requires:       python-jaraco.functools
 Requires:       python-six
 BuildArch:      noarch
@@ -45,14 +48,12 @@ jaraco.text Tools for working with text.
 
 %prep
 %setup -q -n jaraco.text-%{version}
-sed -i 's/--flake8 --black --cov//' pytest.ini
-rm -rf jaraco.text.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand install -Dm 0644 jaraco/text/*.txt %{buildroot}%{$python_sitelib}/jaraco/text/
 
 %{python_expand rm -f %{buildroot}%{$python_sitelib}/jaraco/__init__.py* \
@@ -68,7 +69,6 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/ja
 %files %{python_files}
 %license LICENSE
 %doc docs/*.rst README.rst CHANGES.rst
-%{python_sitelib}/jaraco.text-%{version}-py*.egg-info
 %{python_sitelib}/jaraco*
 
 %changelog
