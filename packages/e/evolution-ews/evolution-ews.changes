@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul  1 20:35:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.44.3:
+  + Bugs fixed: Specify FolderClass when creating generic folder
+    only.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon May 30 11:43:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.44.2:

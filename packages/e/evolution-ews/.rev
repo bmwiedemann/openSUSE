@@ -1060,4 +1060,15 @@
 - Drop evolution-ews-fix-gtk-linkage.patch: fixed upstream. (forwarded request 980012 from dimstar)</comment>
     <requestid>980039</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>b3414360e2a6aa908b24f91ea05f2e00</srcmd5>
+    <version>3.44.3</version>
+    <time>1657016831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.44.3:
+  + Bugs fixed: Specify FolderClass when creating generic folder
+    only.
+  + Updated translations. (forwarded request 986299 from iznogood)</comment>
+    <requestid>986579</requestid>
+  </revision>
 </revisionlist>
