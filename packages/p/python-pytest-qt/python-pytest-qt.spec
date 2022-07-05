@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,13 +65,14 @@ BuildConflicts: %{python_module qt5}
 %endif
 
 Name:           python-pytest-qt%{psuffix}
-Version:        4.0.2
+Version:        4.1.0
 Release:        0
 Summary:        Pytest support for PyQt and PySide applications
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-qt
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-qt/pytest-qt-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
@@ -91,9 +92,8 @@ Requires:       (python-qt5 or python-PyQt6 or python3-pyside2 or python3-pyside
 Requires:       (python-qt5 or python-PyQt6)
 %endif
 %if %{with test}
-# https://github.com/pytest-dev/pytest-qt/issues/376
-BuildRequires:  %{python_module pytest >= 4.5}
 BuildRequires:  %{python_module pytest-qt = %{version}}
+BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
 

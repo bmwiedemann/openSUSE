@@ -2,5 +2,5 @@
   <flavor>test-pyqt5</flavor>
   <flavor>test-pyqt6</flavor>
   <flavor>test-pyside2</flavor>
-  <!-- flavor>test-pyside6</flavor -->
+  <flavor>test-pyside6</flavor>
 </multibuild>
