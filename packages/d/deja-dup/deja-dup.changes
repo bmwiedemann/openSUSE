@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul  5 05:49:32 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 43.4:
+  + Warn about delayed backups due to power saver mode,
+    if it's been over a day since we were supposed to back up.
+  + Improve support for mobile screen sizes.
+  + Add some in-preferences help explaining some of the
+    always-ignored folders.
+  + Bump default volume size from 25/50MB to 200MB, to keep fewer
+    files around and improve network throughput.
+  + Minor fixes to our experimental restic support (make sure
+    to unlock the repo and warn if some files could not be read
+    when backing up).
+
+-------------------------------------------------------------------
 Fri May 20 12:31:39 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 43.3:

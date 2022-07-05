@@ -620,4 +620,12 @@ So preferably for 13.1 as well.</comment>
 - Drop 60856db.patch and 9c17deb0526b.patch: fixed upstream. (forwarded request 978273 from dimstar)</comment>
     <requestid>978661</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>249065f3994f44cec017ace4028119fb</srcmd5>
+    <version>43.4</version>
+    <time>1657015805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986813</requestid>
+  </revision>
 </revisionlist>
