@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul  3 03:06:39 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.999837
+   see /usr/share/doc/packages/perl-Math-BigInt/CHANGES
+
+  1.999837 2022-07-02
+
+   * Improve the interoperability between objects of different classes for the
+     methods that are still used as functions.
+
+-------------------------------------------------------------------
 Sat Jun 25 03:08:07 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.999836
