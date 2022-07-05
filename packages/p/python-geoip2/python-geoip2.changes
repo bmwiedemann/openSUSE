@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul  4 07:11:02 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 4.6.0:
+  - The AddressNotFoundError class now has an ip_address attribute
+    with the lookup address and network property for the empty network
+    in the database containing the IP address. These are only available
+    when using a database, not the web service. 
+- Rebase 0001-Removing-unused-urllib3-dependency-loosening-request.patch
+
+-------------------------------------------------------------------
 Thu Nov 18 19:55:34 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 4.5.0:

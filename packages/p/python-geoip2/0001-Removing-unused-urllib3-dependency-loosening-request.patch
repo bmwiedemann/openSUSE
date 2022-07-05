@@ -13,11 +13,11 @@ Subject: [PATCH] Removing unused urllib3 dependency, loosening requests
  setup.py                   |  5 +++++
  6 files changed, 46 insertions(+), 15 deletions(-)
 
-diff --git a/README.rst b/README.rst
-index a17082e..8969781 100644
---- a/README.rst
-+++ b/README.rst
-@@ -19,6 +19,9 @@ To install the ``geoip2`` module, type:
+Index: geoip2-4.6.0/README.rst
+===================================================================
+--- geoip2-4.6.0.orig/README.rst
++++ geoip2-4.6.0/README.rst
+@@ -17,6 +17,9 @@ To install the ``geoip2`` module, type:
  .. code-block:: bash
  
      $ pip install geoip2
@@ -27,11 +27,11 @@ index a17082e..8969781 100644
  
  If you are not able to use pip, you may also use easy_install from the
  source directory:
-diff --git a/geoip2/webservice.py b/geoip2/webservice.py
-index 4b1fc15..6ab0e84 100644
---- a/geoip2/webservice.py
-+++ b/geoip2/webservice.py
-@@ -27,12 +27,21 @@
+Index: geoip2-4.6.0/geoip2/webservice.py
+===================================================================
+--- geoip2-4.6.0.orig/geoip2/webservice.py
++++ geoip2-4.6.0/geoip2/webservice.py
+@@ -27,12 +27,21 @@ Requests to the web service are always m
  
  import ipaddress
  import json
@@ -57,7 +57,7 @@ index 4b1fc15..6ab0e84 100644
  
  import geoip2
  import geoip2.models
-@@ -48,13 +57,28 @@
+@@ -48,13 +57,28 @@ from geoip2.errors import (
  from geoip2.models import City, Country, Insights
  from geoip2.types import IPAddress
  
@@ -93,20 +93,20 @@ index 4b1fc15..6ab0e84 100644
  
  
  class BaseClient:  # pylint: disable=missing-class-docstring, too-few-public-methods
-diff --git a/requirements.txt b/requirements.txt
-index af2c6ff..9c772e4 100644
---- a/requirements.txt
-+++ b/requirements.txt
+Index: geoip2-4.6.0/requirements.txt
+===================================================================
+--- geoip2-4.6.0.orig/requirements.txt
++++ geoip2-4.6.0/requirements.txt
 @@ -1,4 +1 @@
 -aiohttp>=3.6.2,<4.0.0
  maxminddb>=2.2.0,<3.0.0
 -requests>=2.24.0,<3.0.0
 -urllib3>=1.25.2,<2.0.0
-diff --git a/setup.cfg b/setup.cfg
-index 9d48adc..c77568d 100644
---- a/setup.cfg
-+++ b/setup.cfg
-@@ -22,8 +22,9 @@
+Index: geoip2-4.6.0/setup.cfg
+===================================================================
+--- geoip2-4.6.0.orig/setup.cfg
++++ geoip2-4.6.0/setup.cfg
+@@ -26,8 +26,9 @@ deps =
  	pytest
  	mocket
  commands = pytest tests
@@ -117,11 +117,11 @@ index 9d48adc..c77568d 100644
  tag_build = 
  tag_date = 0
 -
-diff --git a/setup.py b/setup.py
-index 2194e8f..14b6d99 100644
---- a/setup.py
-+++ b/setup.py
-@@ -26,6 +26,11 @@
+Index: geoip2-4.6.0/setup.py
+===================================================================
+--- geoip2-4.6.0.orig/setup.py
++++ geoip2-4.6.0/setup.py
+@@ -26,6 +26,11 @@ setup(
      include_package_data=True,
      python_requires=">=3.6",
      install_requires=requirements,
