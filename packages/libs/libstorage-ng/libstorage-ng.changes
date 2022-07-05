@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Mon Jul 4 12:19:59 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#886
+- removed unused class MdadmExamine
+- added Pool::empty function
+- use in-class member initialization
+- 4.5.25
+
+--------------------------------------------------------------------
 Tue Jun 28 11:45:53 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#885
