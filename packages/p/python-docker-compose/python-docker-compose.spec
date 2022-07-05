@@ -1,7 +1,7 @@
 #
 # spec file for package python-docker-compose
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-docker-compose
-Version:        1.28.5
+Version:        1.29.2
 Release:        0
 Summary:        Tool to define and run complex applications using Docker
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://pypi.python.org/pypi/docker-compose
 Source0:        https://files.pythonhosted.org/packages/source/d/docker-compose/docker-compose-%{version}.tar.gz
-BuildRequires:  %{python_module PyYAML >= 5.3.1}
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module cached-property >= 1.5.1}
 BuildRequires:  %{python_module ddt >= 1.2.2}
 BuildRequires:  %{python_module distro >= 1.5.0}
@@ -66,7 +66,7 @@ Requires:       python-six >= 1.3.0
 Requires:       python-texttable >= 1.6.2
 Requires:       python-websocket-client >= 0.57.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 Provides:       docker-compose = %{version}
 Obsoletes:      docker-compose < %{version}
