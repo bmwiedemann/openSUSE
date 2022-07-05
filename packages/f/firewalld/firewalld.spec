@@ -27,7 +27,7 @@
 %global modprobe_d_files firewalld-sysctls.conf
 
 Name:           firewalld
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        A firewall daemon with D-Bus interface providing a dynamic firewall
 License:        GPL-2.0-or-later
@@ -259,7 +259,7 @@ fi
 %{_bindir}/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 
 %files
-%doc README
+%doc README.md
 %license COPYING
 %{_sbindir}/firewalld
 %{_sbindir}/rcfirewalld
@@ -273,7 +273,7 @@ fi
 %dir %{_prefix}/lib/firewalld/helpers
 %dir %{_prefix}/lib/firewalld/policies
 %{_prefix}/lib/firewalld/icmptypes/*.xml
-%{_prefix}/lib/firewalld/ipsets/README
+%{_prefix}/lib/firewalld/ipsets/README.md
 %{_prefix}/lib/firewalld/services/*.xml
 %{_prefix}/lib/firewalld/zones/*.xml
 %{_prefix}/lib/firewalld/helpers/*.xml
@@ -350,7 +350,7 @@ fi
 
 %files test
 %dir %{_datadir}/firewalld/testsuite
-%{_datadir}/firewalld/testsuite/README
+%{_datadir}/firewalld/testsuite/README.md
 %{_datadir}/firewalld/testsuite/testsuite
 %dir %{_datadir}/firewalld/testsuite/integration
 %{_datadir}/firewalld/testsuite/integration/testsuite

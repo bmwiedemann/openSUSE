@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul  4 11:05:13 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 1.2.0:
+  * feat(firewalld): add new --log-target parameter
+  * feat(service): add snmptls, snmptls-trap services
+  * feat(service): add IPFS service
+  * feat(fw): startup failsafe
+  * feat(service): Add kubelet-readonly
+  * feat(service): Add secure version of k8s controller-plane components
+  * feat(bash): completion of policy-related commands
+  * feat(service): add prometheus node-exporter
+  * feat(service): add Kodi JSON-RPC and EventServer services
+
+-------------------------------------------------------------------
 Wed Jun 15 09:32:57 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Moved logrotate files from user specific directory /etc/logrotate.d
