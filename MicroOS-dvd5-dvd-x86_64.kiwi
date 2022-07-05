@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20220704" schemaversion="4.1">
+<image name="OBS__MicroOS___20220705" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220704</productvar>
+      <productvar name="VERSION">20220705</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220704,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220705,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220704/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220705/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -797,7 +797,7 @@
       <repopackage name="kwrited5" arch="x86_64"/>
       <repopackage name="layer-shell-qt5" arch="x86_64"/>
       <repopackage name="less" arch="x86_64"/>
-      <repopackage name="libabsl2111_0_0"/>
+      <repopackage name="libabsl2206_0_0"/>
       <repopackage name="libabw-0_1-1"/>
       <repopackage name="libaccounts-glib0" arch="x86_64"/>
       <repopackage name="libaccounts-qt5-1" arch="x86_64"/>

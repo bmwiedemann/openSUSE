@@ -2758,10 +2758,10 @@ unsorted:
   - ddnet-server 
   - ddrescueview 
   - dds2tar 
-  - deadbeef 
-  - deadbeef-devel 
-  - deadbeef-lang 
-  - deadbeef-plugin-mpris2 
+  - deadbeef: [x86_64] 
+  - deadbeef-devel: [x86_64] 
+  - deadbeef-lang: [x86_64] 
+  - deadbeef-plugin-mpris2: [x86_64] 
   - deal_II-devel: [x86_64] 
   - deal_II-openmpi2-devel: [x86_64] 
   - deal_II-openmpi3-devel: [x86_64] 
@@ -3823,7 +3823,6 @@ unsorted:
   - flatpak-devel 
   - flatpak-spawn 
   - flatpak-xdg-utils 
-  - flatpak-zsh-completion 
   - flawfinder 
   - fldigi 
   - fldigi-lang 
@@ -4307,6 +4306,7 @@ unsorted:
   - gensio-devel 
   - geoclue2-devel 
   - geocode-glib-devel 
+  - geocode-glib-soup2-devel 
   - geoipupdate 
   - geoipupdate-legacy 
   - geolite2legacy 
@@ -10838,7 +10838,7 @@ unsorted:
   - libflickcurl-devel 
   - libflickcurl0 
   - libflickcurl0-32bit: [x86_64] 
-  - libflint16 
+  - libflint17 
   - libflorence-1_0-1 
   - libfltk1_3-32bit: [x86_64] 
   - libfluidsynth3 
@@ -11057,6 +11057,7 @@ unsorted:
   - libgeners0 
   - libgensio0 
   - libgensiocpp1 
+  - libgeocode-glib-2-0 
   - libgeocode-glib0-32bit: [x86_64] 
   - libgeos3_10_3 
   - libgeos_c1 
@@ -14051,60 +14052,60 @@ unsorted:
   - libsubtitleeditor0 
   - libsubunit0 
   - libsuil-0-0: [i586] 
-  - libsundials3 
-  - libsundials3-mvapich2 
-  - libsundials3-openmpi1 
-  - libsundials3-openmpi2 
-  - libsundials3-openmpi3 
-  - libsundials3-openmpi4 
-  - libsundials_arkode4 
-  - libsundials_arkode4-mvapich2 
-  - libsundials_arkode4-openmpi1 
-  - libsundials_arkode4-openmpi2 
-  - libsundials_arkode4-openmpi3 
-  - libsundials_arkode4-openmpi4 
-  - libsundials_cvode5 
-  - libsundials_cvode5-mvapich2 
-  - libsundials_cvode5-openmpi1 
-  - libsundials_cvode5-openmpi2 
-  - libsundials_cvode5-openmpi3 
-  - libsundials_cvode5-openmpi4 
-  - libsundials_cvodes5 
-  - libsundials_cvodes5-mvapich2 
-  - libsundials_cvodes5-openmpi1 
-  - libsundials_cvodes5-openmpi2 
-  - libsundials_cvodes5-openmpi3 
-  - libsundials_cvodes5-openmpi4 
-  - libsundials_generic5 
-  - libsundials_generic5-mvapich2 
-  - libsundials_generic5-openmpi1 
-  - libsundials_generic5-openmpi2 
-  - libsundials_generic5-openmpi3 
-  - libsundials_generic5-openmpi4 
-  - libsundials_ida5 
-  - libsundials_ida5-mvapich2 
-  - libsundials_ida5-openmpi1 
-  - libsundials_ida5-openmpi2 
-  - libsundials_ida5-openmpi3 
-  - libsundials_ida5-openmpi4 
-  - libsundials_idas4 
-  - libsundials_idas4-mvapich2 
-  - libsundials_idas4-openmpi1 
-  - libsundials_idas4-openmpi2 
-  - libsundials_idas4-openmpi3 
-  - libsundials_idas4-openmpi4 
-  - libsundials_kinsol5 
-  - libsundials_kinsol5-mvapich2 
-  - libsundials_kinsol5-openmpi1 
-  - libsundials_kinsol5-openmpi2 
-  - libsundials_kinsol5-openmpi3 
-  - libsundials_kinsol5-openmpi4 
-  - libsundials_nvec5 
-  - libsundials_nvec5-mvapich2 
-  - libsundials_nvec5-openmpi1 
-  - libsundials_nvec5-openmpi2 
-  - libsundials_nvec5-openmpi3 
-  - libsundials_nvec5-openmpi4 
+  - libsundials4 
+  - libsundials4-mvapich2 
+  - libsundials4-openmpi1 
+  - libsundials4-openmpi2 
+  - libsundials4-openmpi3 
+  - libsundials4-openmpi4 
+  - libsundials_arkode5 
+  - libsundials_arkode5-mvapich2 
+  - libsundials_arkode5-openmpi1 
+  - libsundials_arkode5-openmpi2 
+  - libsundials_arkode5-openmpi3 
+  - libsundials_arkode5-openmpi4 
+  - libsundials_cvode6 
+  - libsundials_cvode6-mvapich2 
+  - libsundials_cvode6-openmpi1 
+  - libsundials_cvode6-openmpi2 
+  - libsundials_cvode6-openmpi3 
+  - libsundials_cvode6-openmpi4 
+  - libsundials_cvodes6 
+  - libsundials_cvodes6-mvapich2 
+  - libsundials_cvodes6-openmpi1 
+  - libsundials_cvodes6-openmpi2 
+  - libsundials_cvodes6-openmpi3 
+  - libsundials_cvodes6-openmpi4 
+  - libsundials_generic6 
+  - libsundials_generic6-mvapich2 
+  - libsundials_generic6-openmpi1 
+  - libsundials_generic6-openmpi2 
+  - libsundials_generic6-openmpi3 
+  - libsundials_generic6-openmpi4 
+  - libsundials_ida6 
+  - libsundials_ida6-mvapich2 
+  - libsundials_ida6-openmpi1 
+  - libsundials_ida6-openmpi2 
+  - libsundials_ida6-openmpi3 
+  - libsundials_ida6-openmpi4 
+  - libsundials_idas5 
+  - libsundials_idas5-mvapich2 
+  - libsundials_idas5-openmpi1 
+  - libsundials_idas5-openmpi2 
+  - libsundials_idas5-openmpi3 
+  - libsundials_idas5-openmpi4 
+  - libsundials_kinsol6 
+  - libsundials_kinsol6-mvapich2 
+  - libsundials_kinsol6-openmpi1 
+  - libsundials_kinsol6-openmpi2 
+  - libsundials_kinsol6-openmpi3 
+  - libsundials_kinsol6-openmpi4 
+  - libsundials_nvec6 
+  - libsundials_nvec6-mvapich2 
+  - libsundials_nvec6-openmpi1 
+  - libsundials_nvec6-openmpi2 
+  - libsundials_nvec6-openmpi3 
+  - libsundials_nvec6-openmpi4 
   - libsuperlu-gnu-hpc 
   - libsuperlu5 
   - libsuperlu5-32bit: [x86_64] 
@@ -16836,21 +16837,21 @@ unsorted:
   - mvapich2-psm2-gnu-hpc-devel: [x86_64] 
   - mvapich2-psm2-gnu-hpc-doc: [x86_64] 
   - mvapich2-psm2-gnu-hpc-macros-devel: [x86_64] 
-  - mvapich2-psm2_2_3_6-gnu-hpc: [x86_64] 
-  - mvapich2-psm2_2_3_6-gnu-hpc-devel: [x86_64] 
-  - mvapich2-psm2_2_3_6-gnu-hpc-devel-static: [x86_64] 
-  - mvapich2-psm2_2_3_6-gnu-hpc-doc: [x86_64] 
-  - mvapich2-psm2_2_3_6-gnu-hpc-macros-devel: [x86_64] 
-  - mvapich2-psm_2_3_6-gnu-hpc 
-  - mvapich2-psm_2_3_6-gnu-hpc-devel 
-  - mvapich2-psm_2_3_6-gnu-hpc-devel-static 
-  - mvapich2-psm_2_3_6-gnu-hpc-doc 
-  - mvapich2-psm_2_3_6-gnu-hpc-macros-devel 
-  - mvapich2_2_3_6-gnu-hpc 
-  - mvapich2_2_3_6-gnu-hpc-devel 
-  - mvapich2_2_3_6-gnu-hpc-devel-static 
-  - mvapich2_2_3_6-gnu-hpc-doc 
-  - mvapich2_2_3_6-gnu-hpc-macros-devel 
+  - mvapich2-psm2_2_3_7-gnu-hpc: [x86_64] 
+  - mvapich2-psm2_2_3_7-gnu-hpc-devel: [x86_64] 
+  - mvapich2-psm2_2_3_7-gnu-hpc-devel-static: [x86_64] 
+  - mvapich2-psm2_2_3_7-gnu-hpc-doc: [x86_64] 
+  - mvapich2-psm2_2_3_7-gnu-hpc-macros-devel: [x86_64] 
+  - mvapich2-psm_2_3_7-gnu-hpc 
+  - mvapich2-psm_2_3_7-gnu-hpc-devel 
+  - mvapich2-psm_2_3_7-gnu-hpc-devel-static 
+  - mvapich2-psm_2_3_7-gnu-hpc-doc 
+  - mvapich2-psm_2_3_7-gnu-hpc-macros-devel 
+  - mvapich2_2_3_7-gnu-hpc 
+  - mvapich2_2_3_7-gnu-hpc-devel 
+  - mvapich2_2_3_7-gnu-hpc-devel-static 
+  - mvapich2_2_3_7-gnu-hpc-doc 
+  - mvapich2_2_3_7-gnu-hpc-macros-devel 
   - mwic 
   - mx4j 
   - mxml-devel 
@@ -21591,7 +21592,6 @@ unsorted:
   - python3-deltarpm 
   - python3-designateclient 
   - python3-django-mailman3 
-  - python3-django-q 
   - python3-dnf 
   - python3-dnf-plugin-kickstart 
   - python3-dnf-plugin-leaves 
@@ -22828,6 +22828,7 @@ unsorted:
   - python310-django-pipeline 
   - python310-django-polymorphic 
   - python310-django-push-notifications 
+  - python310-django-q 
   - python310-django-qsessions 
   - python310-django-redis 
   - python310-django-registration 
@@ -24508,6 +24509,7 @@ unsorted:
   - python310-sphobjinv 
   - python310-spidev 
   - python310-spotipy 
+  - python310-spur 
   - python310-spyder-kernels 
   - python310-sqlalchemy-migrate 
   - python310-sqlite-fts4 
@@ -25932,6 +25934,7 @@ unsorted:
   - python38-django-pipeline 
   - python38-django-polymorphic 
   - python38-django-push-notifications 
+  - python38-django-q 
   - python38-django-qsessions 
   - python38-django-redis 
   - python38-django-registration 
@@ -27765,6 +27768,7 @@ unsorted:
   - python38-sphobjinv 
   - python38-spidev 
   - python38-spotipy 
+  - python38-spur 
   - python38-spyder-kernels 
   - python38-sqlalchemy-migrate 
   - python38-sqlite-fts4 
@@ -29214,6 +29218,7 @@ unsorted:
   - python39-django-pipeline 
   - python39-django-polymorphic 
   - python39-django-push-notifications 
+  - python39-django-q 
   - python39-django-qsessions 
   - python39-django-redis 
   - python39-django-registration 
@@ -31046,6 +31051,7 @@ unsorted:
   - python39-sphobjinv 
   - python39-spidev 
   - python39-spotipy 
+  - python39-spur 
   - python39-spyder-kernels 
   - python39-sqlalchemy-migrate 
   - python39-sqlite-fts4 
@@ -42520,6 +42526,7 @@ unsorted:
   - typelib-1_0-Gee-0_8 
   - typelib-1_0-Gee-1_0 
   - typelib-1_0-Gegl-0_4 
+  - typelib-1_0-GeocodeGlib-2_0 
   - typelib-1_0-Gepub-0_6 
   - typelib-1_0-Ggit-1_0 
   - typelib-1_0-Gitg-1_0 
