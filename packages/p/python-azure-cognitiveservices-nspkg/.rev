@@ -41,4 +41,12 @@
   + Use canonical %{python_sitelib} path in %files section (forwarded request 864342 from glaubitz)</comment>
     <requestid>864394</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>8e0cf53899ce6815f09820a78f89b466</srcmd5>
+    <version>3.0.1</version>
+    <time>1657044833</time>
+    <user>dimstar_suse</user>
+    <comment>- Restore mangled changelog entry</comment>
+    <requestid>986884</requestid>
+  </revision>
 </revisionlist>
