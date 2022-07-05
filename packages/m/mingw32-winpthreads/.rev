@@ -31,4 +31,12 @@
     <comment>- Add arch-independent-package-contains-binary-or-object to rpmlintrc</comment>
     <requestid>920847</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cce1ec2cfaee9fa2b47d566d85cf49fc</srcmd5>
+    <version>10.0.0</version>
+    <time>1657015797</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>986791</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 27 16:37:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10
+  * New msvcrt10, 20, 40, 70 and 71 import libraries.
+
+-------------------------------------------------------------------
 Wed Sep 22 07:54:22 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add arch-independent-package-contains-binary-or-object
