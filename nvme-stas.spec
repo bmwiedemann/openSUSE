@@ -17,7 +17,7 @@
 
 
 Name:           nvme-stas
-Version:        1.0
+Version:        1.1.5
 Release:        0
 Summary:        NVMe STorage Appliance Services
 License:        Apache-2.0
@@ -86,12 +86,7 @@ Automatic (zeroconf) and Manual configuration.
 %{_sbindir}/stafd
 %{_unitdir}/stacd.service
 %{_unitdir}/stafd.service
-%dir %{python3_sitearch}/staslib
-%{python3_sitearch}/staslib/__init__.py
-%{python3_sitearch}/staslib/avahi.py
-%{python3_sitearch}/staslib/defs.py
-%{python3_sitearch}/staslib/glibudev.py
-%{python3_sitearch}/staslib/stas.py
-%{python3_sitearch}/staslib/version.py
+%{python3_sitelib}/staslib
+%{_unitdir}/stas*
 
 %changelog

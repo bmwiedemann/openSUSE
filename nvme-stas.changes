@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jul 04 13:19:16 UTC 2022 - mwilck@suse.com
+
+- Update to version 1.1.5 (bsc#1200128)
+  Bug fix release
+  * udev: fix I/O controller scan & detect algorithm
+  * stacd: Fix D-Bus race condition between stacd and stafd.
+  * staslib: fix support for fibre channel
+  * doc: update README.md
+  * staslib: fix race conditions during controller object removal.
+  * stacd: fix defered call to remove_controller() with wrong arguments
+  * staslib: make sure controller object gets "purged" when removed.
+  * staslib: calling wrong cback function on controller removal.
+  * staslib: Fix cback function deleting object that called the cback.
+  * stacd: audit connections
+  * stafd, stacd: Add man page to systend service file.
+  * stacd: Add configuration parameter 'sticky-connections'
+  * doc: troubleshoot guide for missing mDNS packets
+  * stacd: allow disabling nvme-cli auto-connect udev rule.
+- Added systemd service file (service disabled)
+- Spec file: use %python_sitelib rather than %python_sitearch, and install
+  everything under %{python_sitelib}/staslib
+
+
+-------------------------------------------------------------------
 Wed Apr 06 11:07:53 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version v1.0:
