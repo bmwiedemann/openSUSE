@@ -759,4 +759,16 @@
     <comment></comment>
     <requestid>962394</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>866cb16d371a357b38d7bd822844d266</srcmd5>
+    <version>1.12.7</version>
+    <time>1657016833</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct Supplements for flatpak-zsh-completion boo#1201113
+- package LICENSE file in every package
+- make flatpak-zsh-completion and system-user-flatpak noarch
+- add update-system-flatpaks timer that updates installed flatpaks
+  daily if enabled (forwarded request 986433 from AndreasStieger)</comment>
+    <requestid>986581</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,10 @@
+[Unit]
+Description=Update system Flatpaks daily
+Documentation=man:flatpak-update(1)
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target

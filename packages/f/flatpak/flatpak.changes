@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul  3 08:33:14 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Correct Supplements for flatpak-zsh-completion boo#1201113
+- package LICENSE file in every package
+- make flatpak-zsh-completion and system-user-flatpak noarch
+- add update-system-flatpaks timer that updates installed flatpaks
+  daily if enabled
+
+-------------------------------------------------------------------
 Tue Mar 15 18:47:24 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 1.12.7:

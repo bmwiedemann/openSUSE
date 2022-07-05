@@ -37,6 +37,8 @@ License:        LGPL-2.1-or-later
 Group:          System/Packages
 URL:            https://flatpak.github.io/
 Source0:        https://github.com/flatpak/flatpak/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        update-system-flatpaks.service
+Source2:        update-system-flatpaks.timer
 Patch0:         polkit_rules_usability.patch
 BuildRequires:  bison
 BuildRequires:  bubblewrap >= 0.4.1
@@ -48,6 +50,7 @@ BuildRequires:  libgpg-error-devel
 BuildRequires:  libgpgme-devel >= 1.1.8
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  xdg-dbus-proxy >= 0.1.0
 BuildRequires:  xsltproc
@@ -88,6 +91,7 @@ more information.
 %package -n system-user-flatpak
 Summary:        System user for the flatpak system helper
 Group:          System/Base
+BuildArch:      noarch
 %sysusers_requires
 
 %description -n system-user-flatpak
@@ -114,7 +118,8 @@ more information.
 %package zsh-completion
 Summary:        Zsh tab-completion for flatpak
 Group:          System/Shells
-Supplements:    packageand(%{name}:%(rpm -q --qf '%%{NAME}' --whatprovides zsh))
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
 
 %description zsh-completion
 flatpak is a system for building, distributing and running sandboxed desktop
@@ -148,9 +153,9 @@ sed -i -e '1s,#!%{_bindir}/env python3,#!%{_bindir}/python3,' scripts/flatpak-*
 	--with-system-bubblewrap \
 	--with-priv-mode=none \
 	--with-dbus-config-dir=%{_dbusconfigdir} \
-        --with-system-dbus-proxy=%{_bindir}/xdg-dbus-proxy \
+	--with-system-dbus-proxy=%{_bindir}/xdg-dbus-proxy \
 %if !%{support_environment_generators}
-        --enable-gdm-env-file \
+	--enable-gdm-env-file \
 %endif
 	%{nil}
 %make_build
@@ -173,6 +178,9 @@ rm -Rf %{buildroot}%{_systemd_user_env_generator_dir}
 rm -Rf %{buildroot}%{_systemd_system_env_generator_dir}
 %endif
 
+install -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/update-system-flatpaks.service
+install -D -m 644 %{SOURCE2} %{buildroot}%{_unitdir}/update-system-flatpaks.timer
+
 mkdir -p %{buildroot}%{_sysconfdir}/flatpak/remotes.d
 
 %find_lang %{name}
@@ -183,12 +191,18 @@ mkdir -p %{buildroot}%{_sysconfdir}/flatpak/remotes.d
 
 %pre
 %service_add_pre flatpak-system-helper.service
+%service_add_pre update-system-flatpaks.service
+%service_add_pre update-system-flatpaks.timer
 
 %preun
 %service_del_preun flatpak-system-helper.service
+%service_del_preun update-system-flatpaks.service
+%service_del_preun update-system-flatpaks.timer
 
 %post
 %service_add_post flatpak-system-helper.service
+%service_add_post update-system-flatpaks.service
+%service_add_post update-system-flatpaks.timer
 # Remove any empty repo directory, which is seen as invalid by flatpak. After that, create a skeleton repository using "flatpak remotes".
 if [ -e "%{_localstatedir}/lib/flatpak/repo" ] && [ -z "$(ls -A %{_localstatedir}/lib/flatpak/repo)" ]; then
 rm -r %{_localstatedir}/lib/flatpak/repo
@@ -197,6 +211,8 @@ fi
 
 %postun
 %service_del_postun flatpak-system-helper.service
+%service_del_postun update-system-flatpaks.service
+%service_del_postun update-system-flatpaks.timer
 
 %files -f %{name}.lang
 %license COPYING
@@ -233,6 +249,8 @@ fi
 %config %{_sysconfdir}/profile.d/flatpak.sh
 %{_sysconfdir}/flatpak
 %{_unitdir}/flatpak-system-helper.service
+%{_unitdir}/update-system-flatpaks.service
+%{_unitdir}/update-system-flatpaks.timer
 %{_sbindir}/rcflatpak-system-helper
 %{_userunitdir}/flatpak-session-helper.service
 %{_userunitdir}/flatpak-portal.service
@@ -253,19 +271,24 @@ fi
 %{_datadir}/dbus-1/services/org.flatpak.Authenticator.Oci.service
 
 %files -n system-user-flatpak
+%license COPYING
 %{_sysusersdir}/flatpak.conf
 
 %files -n %{libname}
+%license COPYING
 %{_libdir}/libflatpak.so.*
 
 %files -n typelib-1_0-Flatpak-1_0
+%license COPYING
 %{_libdir}/girepository-1.0/Flatpak-1.0.typelib
 
 %files zsh-completion
+%license COPYING
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_flatpak
 
 %files devel
+%license COPYING
 %{_bindir}/flatpak-bisect
 %{_bindir}/flatpak-coredumpctl
 %{_libdir}/pkgconfig/flatpak.pc
