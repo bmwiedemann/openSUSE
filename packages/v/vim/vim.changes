@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Jul  4 10:06:35 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.0032, fixes the following problems
+- fix CVE-2022-2285 - boo#1201134 
+- fix CVE-2022-2257 - boo#1201154
+  * Map functionality outside of map.c.
+  * Functions are global while they could be local.
+  * Plural messages not translated properly.
+  * Hare files are not recognized.
+  * Not all Visual Basic files are recognized.
+  * No support for double, dotted and dashed underlines.
+  * Cannot specify the variable name for "xxd -i".
+  * Going past the end of a menu item with only modifier.
+  * Returning 0 for has('patch-9.0.0') is inconsistent.
+  * Reading beyond the end of the line with put command.
+  * Signature files not detected properly.
+  * Reproducing memory access errors can be difficult.
+  * Missing part of the test override change.
+  * With EXITFREE defined terminal menus are not cleared.
+  * Comparing line pointer for 'breakindent' is not reliable.
+  * Accessing memory beyond the end of the line.
+  * Going over the end of the typahead.
+  * Timers test not run where possible.
+  * With some completion reading past end of string.
+  * Invalid memory access when adding word with a control character to the
+  internal spell word list.
+  * Spell test fails.
+  * On Solaris timer_create() exists but does not work.
+  * May access part of typeahead buf that isn't filled.
+  * Accessing beyond allocated memory when using the cmdline window in Ex mode.
+  * Accessing freed memory with diff put.
+  * The command line test is getting quite big.
+  * The bitmaps/vim.ico file is not in the distribution.
+  * Matchfuzzy test depends on path of current directory.
+  * <cmod> of user command does not have correct verbose value.
+  * In the quickfix window 'cursorline' overrules QuickFixLine highlighting.
+
+-------------------------------------------------------------------
 Tue Jun 28 17:52:07 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0000, fixes the following problems
