@@ -17,7 +17,7 @@
 
 
 Name:           gzdoom
-Version:        4.8.0
+Version:        4.8.2
 Release:        0
 Summary:        A DOOM source port with graphic and modding extensions
 License:        GPL-3.0-only
@@ -32,8 +32,8 @@ Patch3:         gzdoom-asmjit.patch
 Patch4:         gzdoom-sdlbug.patch
 Patch5:         gzdoom-vulkan.patch
 Patch6:         gzdoom-discord.patch
-Patch7:         0001-Resolve-build-failure-on-i686-linux.patch
 Patch8:         0001-Revert-load-the-hex-font-as-early-as-possible.patch
+Patch9:         0001-Revert-use-static_assert-to-make-32-bit-builds-fail.patch
 BuildRequires:  cmake >= 2.8.7
 BuildRequires:  discord-rpc-devel
 BuildRequires:  gcc-c++
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2) >= 2.0.6
 BuildRequires:  pkgconfig(vpx)
-BuildRequires:  pkgconfig(vulkan)
+BuildRequires:  pkgconfig(vulkan) >= 1.2.162
 BuildRequires:  pkgconfig(zlib)
 Suggests:       freedoom
 Provides:       qzdoom = 1.3.0
@@ -72,6 +72,8 @@ GZDoom is a port (a modification) of the original Doom source code, featuring:
   ZScript, and various modding features regarding actors and scenery.
 * Demo record/playback of classic and Boom demos is not supported.
 
+The executables hard-require SSE2 on i686 currently.
+
 %prep
 %autosetup -n %name-g%version -p1
 perl -i -pe 's{__DATE__}{"does not matter when"}g' src/common/platform/posix/sdl/i_main.cpp
@@ -86,12 +88,6 @@ touch extra_include/glslang/build_info.h
 # There is handcrafted assembler, which LTO does not play nice with.
 %define _lto_cflags %nil
 
-%ifarch %ix86
-# Allow sw to use intrinsics (functions like _mm_set_sd).
-# Guarded by cpuid calls by sw.
-export CFLAGS="%optflags -msse -msse2"
-export CXXFLAGS="%optflags -msse -msse2"
-%endif
 export CXXFLAGS="$CXXFLAGS -I$PWD/extra_include"
 %cmake -DNO_STRIP=1 \
 	-DCMAKE_SHARED_LINKER_FLAGS="" \

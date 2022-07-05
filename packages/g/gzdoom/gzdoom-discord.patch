@@ -3,19 +3,18 @@ Date: 2022-06-12 10:37:00.984596068 +0200
 
 Unbundle discord-rpc.
 ---
- CMakeLists.txt                          |    7 +++----
+ CMakeLists.txt                          |    6 +++---
  libraries/discordrpc/src/CMakeLists.txt |    2 +-
- 2 files changed, 4 insertions(+), 5 deletions(-)
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-Index: gzdoom-g4.8.0/CMakeLists.txt
+Index: gzdoom-g4.8.1/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.8.0.orig/CMakeLists.txt
-+++ gzdoom-g4.8.0/CMakeLists.txt
-@@ -328,10 +328,9 @@ if (HAVE_VULKAN)
- 	include_directories(/usr/include/glslang/Public /usr/include/SPIRV)
+--- gzdoom-g4.8.1.orig/CMakeLists.txt
++++ gzdoom-g4.8.1/CMakeLists.txt
+@@ -329,9 +329,9 @@ if (HAVE_VULKAN)
  endif()
  
--add_subdirectory( libraries/discordrpc )
+ add_subdirectory( libraries/discordrpc EXCLUDE_FROM_ALL )
 -set( DRPC_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libraries/discordrpc/include" )
 -set( DRPC_LIBRARIES discord-rpc )
 -set( DRPC_LIBRARY discord-rpc )
@@ -25,10 +24,10 @@ Index: gzdoom-g4.8.0/CMakeLists.txt
  
  if( ZLIB_FOUND AND NOT FORCE_INTERNAL_ZLIB )
  	message( STATUS "Using system zlib, includes found at ${ZLIB_INCLUDE_DIR}" )
-Index: gzdoom-g4.8.0/libraries/discordrpc/src/CMakeLists.txt
+Index: gzdoom-g4.8.1/libraries/discordrpc/src/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.8.0.orig/libraries/discordrpc/src/CMakeLists.txt
-+++ gzdoom-g4.8.0/libraries/discordrpc/src/CMakeLists.txt
+--- gzdoom-g4.8.1.orig/libraries/discordrpc/src/CMakeLists.txt
++++ gzdoom-g4.8.1/libraries/discordrpc/src/CMakeLists.txt
 @@ -28,7 +28,7 @@ endif(${BUILD_SHARED_LIBS})
  if(WIN32)
      add_definitions(-DDISCORD_WINDOWS)

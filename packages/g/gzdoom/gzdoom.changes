@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul  5 00:26:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.8.2
+  * add a few maps to the rebuildnodes compatibility block
+
+-------------------------------------------------------------------
+Sun Jun 26 13:02:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.8.1
+  * Bugfix for software mode mirrors not working
+  * Feature: Add +ONLYVISIBLEINMIRRORS and +INVISIBLEINMIRRORS
+    actor flags. The former makes the actor only visible in
+    reflections, while the latter makes the actor not cast
+    reflections in mirrors.
+- Drop 0001-Resolve-build-failure-on-i686-linux.patch (merged)
+- Add 0001-Revert-use-static_assert-to-make-32-bit-builds-fail.patch
+
+-------------------------------------------------------------------
 Thu Jun 23 21:42:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Revert-load-the-hex-font-as-early-as-possible.patch

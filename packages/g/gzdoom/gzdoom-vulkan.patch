@@ -6,13 +6,13 @@ Use Vulkan/glslang/spirv system libraries instead of bundled code.
 ---
  CMakeLists.txt                                     |    4 +---
  src/CMakeLists.txt                                 |    2 +-
- src/common/rendering/vulkan/system/vk_builders.cpp |    4 ++++
- 3 files changed, 6 insertions(+), 4 deletions(-)
+ src/common/rendering/vulkan/system/vk_builders.cpp |    1 +
+ 3 files changed, 3 insertions(+), 4 deletions(-)
 
-Index: gzdoom-g4.8.0/CMakeLists.txt
+Index: gzdoom-g4.8.1/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.8.0.orig/CMakeLists.txt
-+++ gzdoom-g4.8.0/CMakeLists.txt
+--- gzdoom-g4.8.1.orig/CMakeLists.txt
++++ gzdoom-g4.8.1/CMakeLists.txt
 @@ -325,9 +325,7 @@ option(FORCE_INTERNAL_ASMJIT "Use intern
  mark_as_advanced( FORCE_INTERNAL_ASMJIT )
  
@@ -23,11 +23,11 @@ Index: gzdoom-g4.8.0/CMakeLists.txt
 +	include_directories(/usr/include/glslang/Public /usr/include/SPIRV)
  endif()
  
- add_subdirectory( libraries/discordrpc )
-Index: gzdoom-g4.8.0/src/CMakeLists.txt
+ add_subdirectory( libraries/discordrpc EXCLUDE_FROM_ALL )
+Index: gzdoom-g4.8.1/src/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.8.0.orig/src/CMakeLists.txt
-+++ gzdoom-g4.8.0/src/CMakeLists.txt
+--- gzdoom-g4.8.1.orig/src/CMakeLists.txt
++++ gzdoom-g4.8.1/src/CMakeLists.txt
 @@ -368,7 +368,7 @@ add_custom_target( revision_check ALL
  
  set( PROJECT_LIBRARIES ${PROJECT_LIBRARIES} "${ZLIB_LIBRARIES}" "${JPEG_LIBRARIES}" "${BZIP2_LIBRARIES}" "${CMAKE_DL_LIBS}" "${DRPC_LIBRARIES}")
@@ -37,10 +37,10 @@ Index: gzdoom-g4.8.0/src/CMakeLists.txt
  endif()
  
  # ZMUSIC
-Index: gzdoom-g4.8.0/src/common/rendering/vulkan/system/vk_builders.cpp
+Index: gzdoom-g4.8.1/src/common/rendering/vulkan/system/vk_builders.cpp
 ===================================================================
---- gzdoom-g4.8.0.orig/src/common/rendering/vulkan/system/vk_builders.cpp
-+++ gzdoom-g4.8.0/src/common/rendering/vulkan/system/vk_builders.cpp
+--- gzdoom-g4.8.1.orig/src/common/rendering/vulkan/system/vk_builders.cpp
++++ gzdoom-g4.8.1/src/common/rendering/vulkan/system/vk_builders.cpp
 @@ -25,6 +25,7 @@
  #include "renderstyle.h"
  #include <ShaderLang.h>
@@ -49,13 +49,3 @@ Index: gzdoom-g4.8.0/src/common/rendering/vulkan/system/vk_builders.cpp
  
  static const TBuiltInResource DefaultTBuiltInResource = {
  	/* .MaxLights = */ 32,
-@@ -119,6 +120,9 @@ static const TBuiltInResource DefaultTBu
- 	/* .maxTaskWorkGroupSizeY_NV = */ 1,
- 	/* .maxTaskWorkGroupSizeZ_NV = */ 1,
- 	/* .maxMeshViewCountNV = */ 4,
-+#if defined(GLSLANG_VERSION_MAJOR) && GLSLANG_VERSION_MAJOR >= 11
-+	/* .maxDualSourceDrawBuffersEXT = */ 4,
-+#endif
- 
- 	/* .limits = */ {
- 	/* .nonInductiveForLoops = */ 1,
