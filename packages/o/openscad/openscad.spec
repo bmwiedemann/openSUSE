@@ -24,22 +24,23 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            https://www.openscad.org/
 Source:         https://files.openscad.org/%{name}-%{version}.src.tar.gz
-Patch1:         fix_build_with_cgal-5.3.patch
-Patch2:         CVE-2022-0496.patch
-Patch3:         CVE-2022-0497.patch
+Patch0:         fix_build_with_cgal-5.3.patch
+Patch1:         CVE-2022-0496.patch
+Patch2:         CVE-2022-0497.patch
+Patch3:         fix_build_with_cgal-5.4.patch
+Patch4:         fix_build_issue_with_overloaded_join.patch
 BuildRequires:  bison
 BuildRequires:  double-conversion-devel
-BuildRequires:  eigen3-devel
 BuildRequires:  flex
-BuildRequires:  fontconfig-devel
-BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
-BuildRequires:  harfbuzz-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_thread-devel
-BuildRequires:  libcgal-devel
+# Upstream has dropped pre-cgal-5.0 support and with that, reworked
+# CGAL integration fully.
+# Backporting relevant patches does not make sense.
+BuildRequires:  libcgal-devel > 5.0
 BuildRequires:  libqscintilla-qt5-devel
 BuildRequires:  libspnav-devel
 BuildRequires:  memory-constraints
@@ -48,10 +49,17 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Gamepad)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
+BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(cairo) > 1.14
+BuildRequires:  pkgconfig(eigen3)
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzip)
 # With v2019.05, openGL is required but Arm uses openGL ES
@@ -64,24 +72,24 @@ creation of, say, computer-animated movies, but instead on the CAD
 aspects, e.g. modelling of machine parts.
 
 %prep
-%setup -q
-
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
-%qmake5 PREFIX=%{_prefix} CONFIG+=qopenglwidget CONFIG+=c++14
+%qmake5 PREFIX=%{_prefix} CONFIG+=qopenglwidget
+
 # As of 08.05.2021, memoryperjob constraint is not working correctly,
 # so limit memory per job here.
 %limit_build -m 2500
 %make_build
 
 %install
-make INSTALL_ROOT=%{buildroot} install
+%qmake5_install
+
 install -D -m 0644 doc/openscad.1 %{buildroot}%{_mandir}/man1/openscad.1
+
 # remove bundled liberation fonts
-rm -rf %{buildroot}%{_datadir}/openscad/fonts
+rm -r %{buildroot}%{_datadir}/openscad/fonts
+
 %find_lang %{name}
 
 rm %{buildroot}%{_datadir}/openscad/libraries/MCAD/.gitignore

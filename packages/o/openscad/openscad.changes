@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul  4 10:02:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Rebase fix_build_with_cgal-5.4.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
+Sun Apr  3 07:42:33 UTC 2022 - Samu Voutilainen <smar@smar.fi>
+
+- Disable build with GCAL-5.4 or newer.
+  Upstream has dropped pre-cgal-5.0 support and with that, reworked
+  CGAL integration fully. Backporting relevant patches does not
+  make sense.
+- Add patch to fix compilation with CGAL-5.4
+  + fix_build_with_cgal-5.4.patch
+- Add patch to fix compilation with newer Boost versions
+  + fix_build_issue_with_overloaded_join.patch
+
+-------------------------------------------------------------------
 Sun Feb  6 19:02:05 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add patch to fix out-of-bounds memory access in DXF loader
@@ -16,7 +34,7 @@ Fri Aug 27 07:43:42 UTC 2021 - Samu Voutilainen <smar@smar.fi>
 Sat May  8 07:00:15 UTC 2021 - Samu Voutilainen <smar@smar.fi>
 
 - Reintroduce memory-contraints macro %limit_build -m 2500.
-  Constraint memoryperjob is allowing too small workers for 
+  Constraint memoryperjob is allowing too small workers for
   the jobs it provides.
 
 -------------------------------------------------------------------

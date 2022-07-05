@@ -6,11 +6,11 @@ Subject: Upstream patch to fix build with cgal-5.3.
 
     Fix build failure with "generic_print_polyhedron" on CGAL-5.3.
 
-diff --git a/src/cgalutils-polyhedron.cc b/src/cgalutils-polyhedron.cc
-index 0e5c72c36..14bddb7f4 100644
---- a/src/cgalutils-polyhedron.cc
-+++ b/src/cgalutils-polyhedron.cc
-@@ -335,19 +335,6 @@ namespace CGALUtils {
+Index: openscad-2021.01/src/cgalutils-polyhedron.cc
+===================================================================
+--- openscad-2021.01.orig/src/cgalutils-polyhedron.cc
++++ openscad-2021.01/src/cgalutils-polyhedron.cc
+@@ -337,19 +337,6 @@ namespace CGALUtils {
      }
  	};
  
@@ -30,11 +30,11 @@ index 0e5c72c36..14bddb7f4 100644
  }; // namespace CGALUtils
  
  #endif /* ENABLE_CGAL */
-diff --git a/src/cgalutils.h b/src/cgalutils.h
-index 231762ebc..7da5a25ca 100644
---- a/src/cgalutils.h
-+++ b/src/cgalutils.h
-@@ -33,7 +33,6 @@ namespace CGALUtils {
+Index: openscad-2021.01/src/cgalutils.h
+===================================================================
+--- openscad-2021.01.orig/src/cgalutils.h
++++ openscad-2021.01/src/cgalutils.h
+@@ -45,7 +45,6 @@ namespace CGALUtils {
  	bool is_approximately_convex(const PolySet &ps);
  	Geometry const* applyMinkowski(const Geometry::Geometries &children);
  
