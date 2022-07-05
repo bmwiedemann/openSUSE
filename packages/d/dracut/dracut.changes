@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 04 12:43:36 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 057+suse.294.gaa9ea2d2:
+  * fix(i18n): add required includes for keymaps (bsc#1200950)
+
+-------------------------------------------------------------------
 Tue Jun 21 14:02:11 UTC 2022 - antonio.feijoo@suse.com
 
 - Update to version 057+suse.292.g508db4cd:
