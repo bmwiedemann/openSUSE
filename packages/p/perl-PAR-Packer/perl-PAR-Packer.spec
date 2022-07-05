@@ -18,7 +18,7 @@
 
 %define cpan_name PAR-Packer
 Name:           perl-PAR-Packer
-Version:        1.054
+Version:        1.055
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        PAR Packager
