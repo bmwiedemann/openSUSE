@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>882148</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>80ebd7f742adbfa0c5d10ba5f8ff549b</srcmd5>
+    <version>4.1.1</version>
+    <time>1657016844</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.1
+  * Fixed some docs rendering issues.
+  * To the ``ExceptionTrap``, added ``.raises()`` and ``.passes``
+    decorators.
+</comment>
+    <requestid>986611</requestid>
+  </revision>
 </revisionlist>
