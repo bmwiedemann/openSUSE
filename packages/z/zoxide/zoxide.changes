@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul  1 14:22:46 UTC 2022 - Jacob Hansen <me@jacobbaungard.com>
+
+- Version 0.8.2:
+  * CHANGED: Fzf: show preview window below results.
+  * FIXED: Fish: completions not working on certain systems.
+  * FIXED: Bash: completions not escaping spaces correctly. 
+
+-------------------------------------------------------------------
 Thu Jun 16 14:47:33 UTC 2022 - Jacob Hansen <me@jacobbaungard.com>
 
 - Updated description in spec file so it matches the description
