@@ -31,6 +31,8 @@ URL:            https://github.com/Ultimaker/Cura
 Source:         https://github.com/Ultimaker/Cura/archive/%{sversion}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE disable-code-style-check.patch code style is no distro business
 Patch1:         disable-code-style-check.patch
+# PATCH-FIX-UPSTREAM - remove unused import of sentry_sdk
+Patch2:         https://github.com/Ultimaker/Cura/commit/aad41807c365ccef001b787407d7dc756e11de02.patch#/remove_unused_sentry_sdk.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  python3-Arcus >= %{version}
@@ -58,6 +60,7 @@ Requires:       python3-pyserial
 Requires:       python3-qt5 >= 5.10
 Requires:       python3-requests
 Requires:       python3-scipy
+Requires:       python3-sentry-sdk
 Requires:       python3-shapely
 Requires:       python3-typing
 Requires:       uranium >= %{version}
@@ -66,7 +69,7 @@ Recommends:     python3-trimesh
 Recommends:     python3-zeroconf
 BuildArch:      noarch
 # The CuraEngine is not supported on 32bit Linux anymore
-ExcludeArch:    %ix86 %arm s390
+ExcludeArch:    %ix86 %arm s390 ppc
 
 %description
 Cura is a project which aims to be an single software solution for 3D printing.
@@ -83,7 +86,6 @@ sed -i -e '1 s/env python3/python3/' cura_app.py
 
 %build
 export CFLAGS="%{optflags}"
-sed -i 's/PythonInterp 3.5.0/PythonInterp 3.4.0/' CMakeLists.txt cmake/CuraTests.cmake
 # Hack, remove LIB_SUFFIX for 64bit, which is correct as cura is pure python (i.e. noarch)
 %cmake -DLIB_SUFFIX="" \
        -DCURA_BUILDTYPE=RPM \
