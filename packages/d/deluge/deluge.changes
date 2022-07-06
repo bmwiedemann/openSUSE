@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 21 20:07:20 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Actually needs "twisted[tls]": python-Twisted-tls on Tumbleweed
+
+-------------------------------------------------------------------
 Thu Mar 31 10:13:11 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add global typelib gconf exclude, filter out unneeded and

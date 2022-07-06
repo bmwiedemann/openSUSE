@@ -37,7 +37,11 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  python-rpm-macros
+%if 0%{suse_version} >= 1550
+BuildRequires:  python3-Twisted-tls >= 17.1
+%else
 BuildRequires:  python3-Twisted >= 17.1
+%endif
 BuildRequires:  python3-devel
 BuildRequires:  python3-libtorrent-rasterbar >= 1.1.1
 BuildRequires:  python3-rjsmin
@@ -47,7 +51,11 @@ BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 Requires:       python3-Mako
 Requires:       python3-Pillow
+%if 0%{suse_version} >= 1550
+Requires:       python3-Twisted-tls >= 17.1
+%else
 Requires:       python3-Twisted >= 17.1
+%endif
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
