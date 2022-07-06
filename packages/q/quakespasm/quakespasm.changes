@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul  4 09:17:52 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.94.6
+  * Server protocol size check fixes for sounds and particles.
+  * An invalid memory access fix in the jpg screenshot writer.
+  * Minor build fix for C++ compilers.
+  * Other small improvements elsewhere in the code.
+
+-------------------------------------------------------------------
 Wed Jun 15 18:55:59 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.94.5
