@@ -414,7 +414,6 @@
     <package name="ed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="edict2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="eekboard" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="efont-unicode-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="elfutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="elfutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="elilo" supportstatus="unsupported"/> <!-- reason: dvd:elilo -->
@@ -701,7 +700,6 @@
     <package name="gnu-unifont-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="gnutls" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="google-carlito-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="google-droid-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="google-opensans-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="google-poppins-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="google-roboto-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
@@ -3086,17 +3084,241 @@
     <package name="nodejs17" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="notification-daemon" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="notification-daemon-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="noto-arimo-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="noto-coloremoji-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="noto-cousine-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-kufiarabic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-loopedlao-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-loopedlao-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-loopedthai-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-loopedthai-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-music-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-naskharabic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-naskharabic-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-nastaliqurdu-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-rashihebrew-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-adlam-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-adlamunjoined-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-anatolianhieroglyphs-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-arabic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-arabic-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-armenian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-avestan-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-balinese-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-bamum-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-bassavah-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-batak-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-bengali-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-bengali-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-bhaiksuki-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-brahmi-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-buginese-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-buhid-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-canadianaboriginal-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-carian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-caucasianalbanian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-chakma-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-cham-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-cherokee-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-chorasmian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-coptic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-cuneiform-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-cypriot-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-cyprominoan-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-deseret-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-devanagari-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-devanagari-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-duployan-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-egyptianhieroglyphs-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-elbasan-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-elymaic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-ethiopic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="noto-sans-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="noto-sans-georgian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-glagolitic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-gothic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-grantha-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-gujarati-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-gujarati-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-gunjalagondi-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-gurmukhi-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-gurmukhi-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-hanifirohingya-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-hanunoo-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-hatran-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-hebrew-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-hebrewdroid-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-hebrewnew-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-imperialaramaic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-indicsiyaqnumbers-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-inscriptionalpahlavi-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-inscriptionalparthian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-javanese-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-kaithi-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-kannada-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-kannada-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-kayahli-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-kharoshthi-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-khmer-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-khmer-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-khojki-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-khudawadi-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-lao-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-lao-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-lepcha-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-limbu-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-lineara-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-linearb-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-lisu-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-lycian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-lydian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-mahajani-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-malayalam-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-malayalam-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-mandaic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-manichaean-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-marchen-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-masaramgondi-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-math-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-mayannumerals-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-medefaidrin-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-meeteimayek-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-mendekikakui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-meroitic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-miao-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-modi-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-mongolian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-mono-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-mro-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-multani-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-myanmar-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-myanmar-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-nabataean-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-nandinagari-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-newa-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-newtailue-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-nko-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-nushu-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-ogham-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-olchiki-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-oldhungarian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-olditalic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-oldnortharabian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-oldpermic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-oldpersian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-oldsogdian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-oldsoutharabian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-oldturkic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-oriya-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-oriya-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-osage-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-osmanya-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-pahawhhmong-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-palmyrene-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-paucinhau-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-phagspa-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-phoenician-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-psalterpahlavi-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-rejang-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-runic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-samaritan-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-saurashtra-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-sharada-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-shavian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-siddham-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-signwriting-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-sinhala-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-sinhala-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-sogdian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-sorasompeng-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-soyombo-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-sundanese-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-sylotinagri-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-symbols-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-symbols2-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-syriac-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tagalog-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tagbanwa-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-taile-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-taitham-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-taiviet-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-takri-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tamil-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tamil-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tamilsupplement-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tangsa-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-telugu-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-telugu-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-thaana-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-thai-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-thai-ui-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tifinagh-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tifinaghadrar-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tifinaghagrawimazighen-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tifinaghahaggar-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tifinaghair-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tifinaghapt-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tifinaghazawagh-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tifinaghghat-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tifinaghhawad-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tifinaghrhissaixa-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tifinaghsil-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tifinaghtawellemmet-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-tirhuta-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-ugaritic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-vai-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-vithkuqi-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-wancho-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-warangciti-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-yi-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-sans-zanabazarsquare-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-ahom-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-armenian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-balinese-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-bengali-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-devanagari-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-display-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-divesakuru-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-dogra-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-ethiopic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-georgian-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-grantha-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-gujarati-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-gurmukhi-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-hebrew-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="noto-serif-jp-bold-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="noto-serif-jp-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="noto-serif-jp-regular-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="noto-serif-kannada-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-khmer-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-khojki-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-lao-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-makasar-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-malayalam-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-myanmar-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-nyiakengpuachuehmong-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-olduyghur-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-oriya-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="noto-serif-sc-bold-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="noto-serif-sc-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="noto-serif-sc-regular-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="noto-serif-sinhala-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-tamil-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-tamilslanted-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-tangut-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="noto-serif-tc-bold-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="noto-serif-tc-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="noto-serif-tc-regular-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="noto-serif-telugu-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-thai-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-tibetan-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-toto-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-vithkuqi-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-serif-yezidi-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-tinos-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
+    <package name="noto-traditionalnushu-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="npm17" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="nscd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="nss-mdns" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
