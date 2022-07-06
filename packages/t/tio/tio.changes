@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul  5 05:35:29 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.42
+  * Update man page
+  * Handle malloc failure
+  * Add missing 'string.h' include.
+
+-------------------------------------------------------------------
+Mon Jul  4 15:55:37 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.41
+  * Rename --hex-mode to --hexadecimal
+  * Enable buffered writing / reading
+
+-------------------------------------------------------------------
 Sat Jun 18 17:21:03 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.40
