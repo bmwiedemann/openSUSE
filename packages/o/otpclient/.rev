@@ -165,4 +165,17 @@
 </comment>
     <requestid>986337</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f3fa3cad0b9a908ec69b38042ebb1e2c</srcmd5>
+    <version>2.6.2</version>
+    <time>1657114911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.2:
+  * Add info message about the new secret service behavior.
+- Update to 2.6.1:
+  * Add ability to import google migration QR also via webcam.
+  * Avoid double free on error while importing encrypted aegis.
+</comment>
+    <requestid>986970</requestid>
+  </revision>
 </revisionlist>

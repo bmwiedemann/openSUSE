@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul  6 06:53:14 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.6.2:
+  * Add info message about the new secret service behavior.
+
+-------------------------------------------------------------------
+Tue Jul  5 13:43:05 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.6.1:
+  * Add ability to import google migration QR also via webcam.
+  * Avoid double free on error while importing encrypted aegis.
+
+-------------------------------------------------------------------
 Fri Jul  1 13:04:20 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.6.0:
