@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul  4 22:42:11 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use verifiable source tarball from upstream
+- Use soversion including minor version (i.e. 7_6) to avoid
+  incompatibilities due to ABI changes:
+  https://tracker.dev.opencascade.org/view.php?id=32856, add
+  fix_soversion_minor.patch
+
+-------------------------------------------------------------------
 Fri Jul  1 11:39:41 UTC 2022 - Adrian Schröter <adrian@suse.de>
 
 - update to version 7.6.2

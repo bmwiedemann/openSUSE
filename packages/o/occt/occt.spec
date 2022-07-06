@@ -16,10 +16,13 @@
 #
 
 
+%define OCCT_TAG 7_6_2
+
 Name:           occt
 Version:        7.6.2
 Release:        0
-%define soname 7
+%define soname 7_6
+%define sover  7.6
 Summary:        OpenCASCADE Official Edition
 License:        LGPL-2.1-only WITH OCCT-exception-1.0
 Group:          Productivity/Graphics/CAD
@@ -27,7 +30,9 @@ URL:            https://www.opencascade.com/open-cascade-technology/
 # Password protected URL, factory validation will fail
 # https://www.opencascade.com/sites/default/files/private/occt/OCC_%%{version}_release/opencascade-%%{version}.tgz
 # getting it from git for patch level releases not existing as tar ball
-Source0:        occt-%{version}.tar.xz
+Source0:        https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V%{OCCT_TAG}.tar.gz#/occt-%{version}.tar.gz
+# PATCH-FIX_UPSTREAM - include minor version in SOVERSION
+Patch0:         https://git.dev.opencascade.org/gitweb/?p=occt.git;a=patch;h=75e2ba16951821ab6b435929272445d993845235#/fix_soversion_minor.patch
 Patch1:         fix_build.patch
 Provides:       OpenCASCADE = %{version}
 BuildRequires:  bison
@@ -89,6 +94,7 @@ Developer documentation for OpenCASCADE
 Summary:        OpenCASCADE libraries
 Group:          System/Libraries
 Requires:       %{name}-resources
+Obsoletes:      libopencascade7 = 7.6.2
 
 %description -n libopencascade%{soname}
 This package contain the needed libraries for OpenCASCADE
@@ -102,7 +108,7 @@ Conflicts:      oce-DRAWEXE
 This package contains the DRAWEXE executable of OpenCASCADE.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n OCCT-%{OCCT_TAG}
 
 %build
 %cmake \
@@ -115,8 +121,7 @@ This package contains the DRAWEXE executable of OpenCASCADE.
 %cmake_build
 
 cd ..
-# Sidestep gendoc error (#32156) by adding -pdf option
-./gendoc -refman -html -pdf -mathjax="%{_datadir}/javascript/mathjax"
+./gendoc -refman -html -mathjax="%{_datadir}/javascript/mathjax"
 
 %install
 %cmake_install
@@ -127,10 +132,11 @@ chmod 0755 %buildroot/usr/bin/*
 # fixing up broken files
 sed -i -e 's,'%{_lib}'\\${OCCT_INSTALL_BIN_LETTER}/,'%{_lib}'/,' %{buildroot}%{_libdir}/cmake/opencascade/*
 sed -i -e 's,/lib\$,/'%{_lib}'\$,' %{buildroot}%{_libdir}/cmake/opencascade/*
+grep -C5 -E "BIN_LETTER|/lib" %{buildroot}%{_libdir}/cmake/opencascade/*
 
 rm -rf %buildroot/usr/share/doc
 
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}%{_datadir}
 
 %post -n libopencascade%{soname} -p /sbin/ldconfig
 
@@ -138,7 +144,7 @@ rm -rf %buildroot/usr/share/doc
 
 %files -n libopencascade%{soname}
 %license LICENSE_LGPL_21.txt OCCT_LGPL_EXCEPTION.txt
-%_libdir/lib*.so.%{soname}*
+%_libdir/lib*.so.%{sover}*
 
 %files resources
 %dir %{_datadir}/opencascade
