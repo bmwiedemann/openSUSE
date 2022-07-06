@@ -1,7 +1,7 @@
 #
 # spec file for package munge
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@
 %define munge_descr "MUNGE authentication service"
 
 Name:           munge
-Version:        0.5.14
+Version:        0.5.15
 Release:        0
 Summary:        An authentication service for creating and validating credentials
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -71,9 +71,8 @@ BuildRequires:  pkgconfig(systemd)
 %{?have_sysuser:BuildRequires:  sysuser-tools}
 %{?systemd_requires}
 %endif
-Requires(post):     coreutils
-Requires(postun):   coreutils
-ExcludeArch:    s390 s390x
+Requires(post): coreutils
+Requires(postun):coreutils
 
 %description
 MUNGE (MUNGE Uid 'N' Gid Emporium) is an authentication service for
@@ -84,7 +83,6 @@ that can be obtained by an untrusted client and forwarded by untrusted
 intermediaries within a security realm.  Clients within this realm can
 create and validate credentials without the use of root privileges,
 reserved ports, or platform-specific methods.
-#'
 
 %package -n lib%{name}%{lversion}
 Summary:        Libraries for applications using MUNGE
@@ -102,7 +100,7 @@ Summary:        Headers and Libraries for building applications using %{name}
 Group:          Development/Libraries/C and C++
 
 %description devel
-A header file and libraries for building applications using the %{name} 
+A header file and libraries for building applications using the %{name}
 authenication service.
 
 %{!?_rundir:%define _rundir %_localstatedir/run}
@@ -150,8 +148,8 @@ install -m 0755 -d %{buildroot}%{_fillupdir}
   sed -i 's/User=munge/User=%munge_u/g' %{buildroot}%{_unitdir}/munge.service
   sed -i 's/Group=munge/Group=%munge_g/g' %{buildroot}%{_unitdir}/munge.service
   rm -f %{buildroot}%{_initddir}/munge
-  rmdir %{buildroot}/%{munge_run}
-  rmdir %{buildroot}/%{_rundir}
+  rm -Rf %{buildroot}/%{munge_run}
+  rm -Rf %{buildroot}/%{_rundir}
   mkdir -p %{buildroot}%{_tmpfilesdir}
   cp src/etc/munge.tmpfiles.conf %{buildroot}%{_tmpfilesdir}/munge.conf
   sed -i 's/munge \+munge/%munge_u %munge_g/g' %{buildroot}%{_tmpfilesdir}/munge.conf
@@ -166,7 +164,7 @@ install -m 0755 -d %{buildroot}%{_fillupdir}
 %endif
 
 %check
-# To debug add verbose=t to T_LOG_DRIVER variable in t/Makefile.am 
+# To debug add verbose=t to T_LOG_DRIVER variable in t/Makefile.am
 make check
 
 %post -n lib%{name}%{lversion} -p /sbin/ldconfig
@@ -193,6 +191,7 @@ exit 0
 %endif
 
 %define fixperm() [ -e %1 ] && /bin/chown -h %munge_u:%munge_g %1
+
 %postun
 if [ $1 -eq 1 ]
 then
@@ -218,7 +217,7 @@ then
 fi
 unset tmpfile
 tmpdir=$(mktemp -d /tmp/tmpdir-XXXXXXXXX)
-if [ -e %{_sysconfdir}/munge/munge.key ]; then 
+if [ -e %{_sysconfdir}/munge/munge.key ]; then
     # Preserve symlink so we can check for it
     cp -pP %{_sysconfdir}/munge/munge.key ${tmpdir}
 fi

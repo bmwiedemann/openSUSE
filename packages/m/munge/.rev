@@ -162,4 +162,12 @@ as well.</comment>
     <comment>- Disable s390*-builds. On s390x the test suite fails.</comment>
     <requestid>933240</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8d5747999481e7fe2089bb9d9e966d4f</srcmd5>
+    <version>0.5.15</version>
+    <time>1657114939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987006</requestid>
+  </revision>
 </revisionlist>

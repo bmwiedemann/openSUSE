@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul  6 09:29:47 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to version 0.15.4:
+  - Added support for OpenSSL 3.0.
+  - Fixed "make install" conflict with systemd RuntimeDirectory.
+  - Fixed big-endian bug causing failures on s390x.
+  - Fixed systemd service unit conf to wait until network is online.
+  - Fixed excessive logging of "suspended new connections".
+  - Fixed gcry_check_version(GCRYPT_VERSION) bug reported by Debian.
+  - Fixed sending repeated SIGTERMs to signal stop. (dbe6dcc)
+  - Fixed failure to clean up socket or create seedfile having relative path.
+  - Fixed test suite to clean up errant processes from failed tests.
+- Re-enable build for s390*
+
+-------------------------------------------------------------------
 Tue Nov 23 09:52:25 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Disable s390*-builds. On s390x the test suite fails.
