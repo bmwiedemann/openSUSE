@@ -27,9 +27,10 @@ Release:        0
 Source:         %{name}-%{version}.tar.xz
 Source99:       obs-service-cargo_audit-rpmlintrc
 BuildRequires:  cargo-packaging
-BuildRequires:  python3
+BuildRequires:  python3 >= 3.8
 Requires:       cargo-audit
 Requires:       cargo-audit-advisory-db
+Requires:       python3 >= 3.8
 ExclusiveArch:  %{rust_tier1_arches}
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
