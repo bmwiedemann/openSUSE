@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Dec  8 22:22:55 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Install upstream desktop file with logo to fix build on Leap
+
+-------------------------------------------------------------------
+Mon Aug 17 20:18:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.13.1:
+  - Contacts won’t be seen playing games or music when they actually stop doing
+    so.
+  - /leave now toggles off the autojoin flag instead of removing the bookmark.
+  - Only add auotjoin on new bookmarks for synchronise_open_rooms on /join
+  - /affiliation displays things in the info win instead of directly in the room,
+    and additionally displays which room it refers to.
+  - List the correct required versions for package maintainers.
+  - Fix the AppStream manifest to get Flathub to accept it.
+  - Add a warning when the terminal doesn’t support 256color mode.
+  - Display our own nick properly in messages received from MAM.
+  - Only send an unavailable presence on closing a room if we are joined.
+  - Don’t display the current date for history messages received today.
+  - Fix marquee and dice plugin to use newer Last Message Correction format.
+  - Bookmarks tab properly displays bookmarks method (local/remote) and allows
+    to switch between them again.
+  - Updated manpages and added manpages built from the doc in the setup process.
+    Packagers need to run setup.py build_man to have them built.
+
+-------------------------------------------------------------------
+Tue Mar 24 11:35:24 UTC 2020 - Tomas Cech <sleep_walker@opensuse.org>
+
+- add python3-pyasn1-modules as run-time dependency (fixes bnc#1167427)
+- bump to 0.12.1 (fixes bnc#1167427)
+  - Fix compatibility with the Python 3.5 in debian stable
+  - Require Python 3.5, to add support for Python 3.7, use proper async
+    functions, use typing, italics formatting, FIXME
+  - Added support for XEP-0392 (Consistent Color Generation)
+  - Added support for XEP-0153 (vCard-Based Avatars) and XEP-0084 (User
+    Avatar) in the roster tab
+  - Added support for XEP-0363 (HTTP File Upload) for easy file transfer,
+    in the upload plugin with /upload
+  - Added support for XEP-0066 (Out of Band Data) for Conversations
+    compatibility when sharing images, in the embed plugin with /embed
+  - Removed support for XEP-0296 (Best Practices for Resource Locking),
+    to use all features available no matter what our contact’s current
+    clients support
+  - Check for usable Unicode support on start
+  - Generate a device id on first start, and use it for our resource
+  - Display the public key hash instead of the certificate’s
+  - Handle carbons properly for private messages in rooms
+  - /bookmarks can now be used to rename tabs as you want
+  - Remove unexpected command completion based on command prefix
+  - Add an irssi theme
+  - Add a code plugin, which requires pygments
+  - Fix resource duplication on reconnect
+  - Misc fixes and improvements
+
+
+-------------------------------------------------------------------
 Sun Mar  4 10:27:02 UTC 2018 - jengelh@inai.de
 
 - Remove filler wording from description.
