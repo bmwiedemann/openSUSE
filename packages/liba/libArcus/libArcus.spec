@@ -33,6 +33,7 @@ Patch1:         0001-Use-single-parameter-SetTotalBytesLimit-fix-protobuf.patch
 BuildRequires:  cmake >= 3.6
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel >= 3.0.0
+BuildRequires:  python3-packaging
 BuildRequires:  python3-sip-devel < 5
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 BuildRequires:  python3-qt5-sip
@@ -86,6 +87,16 @@ Python bindings for the Arcus communication library.
 
 %install
 %cmake_install
+# Create a minimal dist-info (PEP 241/314)
+cat > %{buildroot}%{python3_sitearch}/Arcus-%{version}.egg-info <<HERE_EOF
+Metadata-Version: 1.1
+Name: Arcus
+Version: %{version}
+Summary: Python bindings for libArcus
+Author-email: info@ultimaker.com
+License: LGPL-3.0-only
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+HERE_EOF
 
 %post   -n %name%{sover} -p /sbin/ldconfig
 
@@ -105,5 +116,6 @@ Python bindings for the Arcus communication library.
 %files -n python3-Arcus
 %license LICENSE
 %{python3_sitearch}/Arcus.so
+%{python3_sitearch}/Arcus-*.egg-info
 
 %changelog
