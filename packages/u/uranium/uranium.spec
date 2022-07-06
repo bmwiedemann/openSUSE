@@ -42,8 +42,16 @@ BuildRequires:  python3-qt5
 BuildRequires:  python3-scipy
 BuildRequires:  python3-shapely
 # END for tests
+%if 0%{?suse_version} >= 1550
+# Automatic provides are not generated in Leap 15.x
+Requires:       %{python3_dist arcus}
+Requires:       %{python3_dist cryptography}
+Requires:       %{python3_dist shapely}
+%else
 Requires:       python3-Arcus
 Requires:       python3-cryptography
+Requires:       python3-Shapely
+%endif
 Recommends:     python3-numpy-stl
 BuildArch:      noarch
 # No 32bit support in cura-engine anymore

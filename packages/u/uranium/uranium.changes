@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 21 15:56:30 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use versioned python dist provides to enforce a consistent set
+  of installed dependies on change of default python version.
+
+-------------------------------------------------------------------
 Sun Feb  6 21:40:04 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 4.13.1
