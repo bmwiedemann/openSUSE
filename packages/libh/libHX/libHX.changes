@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 27 16:48:54 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.6
+  * HX_slurp_fd/HX_slurp_file now supports reading from files
+    reporting their own size as 0 (e.g. ttys, /proc special
+    files).
+
+-------------------------------------------------------------------
 Sun Apr 10 12:49:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.5

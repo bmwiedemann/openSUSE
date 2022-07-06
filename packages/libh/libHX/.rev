@@ -525,4 +525,12 @@ Try submission again, hoping that the service validator is updated on the server
     <comment>- Update to release 4.5</comment>
     <requestid>968244</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>f83fc0b9a68714bab8a5f216dbaba3be</srcmd5>
+    <version>4.6</version>
+    <time>1657114892</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>986705</requestid>
+  </revision>
 </revisionlist>
