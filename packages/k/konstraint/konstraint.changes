@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 06 06:23:10 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.22.0:
+  * Add support for skip-template annotation (#307)
+  * Bump github.com/open-policy-agent/opa from 0.41.0 to 0.42.0 (#306)
+  * Bump github.com/spf13/cobra from 1.4.0 to 1.5.0 (#305)
+  * Bump k8s.io/apimachinery from 0.24.1 to 0.24.2 (#303)
+  * Bump golang from 1.18.2-alpine to 1.18.3-alpine (#300)
+  * Update constraint_creation.md (#302)
+  * Remove measurements lib from examples (#299)
+  * Bump github.com/open-policy-agent/opa from 0.40.0 to 0.41.0 (#298)
+  * Misc. verbiage fixes (#296)
+
+-------------------------------------------------------------------
 Tue May 31 11:08:59 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.21.0:
