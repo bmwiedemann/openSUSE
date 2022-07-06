@@ -17,7 +17,7 @@
 
 
 Name:           yast2-schema-micro
-Version:        4.5.3
+Version:        4.5.4
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -52,7 +52,8 @@ BuildRequires:  yast2-iscsi-client >= 4.3.3
 # Added fcoe-client schema
 BuildRequires:  yast2-fcoe-client >= 4.3.1
 BuildRequires:  yast2-kdump
-BuildRequires:  yast2-network >= 4.3.81
+# add route 'extrapara' element
+BuildRequires:  yast2-network >= 4.5.4
 # registration is available only where suse connect is also available
 %ifnarch s390 %ix86
 # addons: architecture/version is optional

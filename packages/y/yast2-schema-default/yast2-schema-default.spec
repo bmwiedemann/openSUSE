@@ -18,7 +18,7 @@
 
 Name:           yast2-schema-default
 # Keep versions in sync with yast2-schema-micro
-Version:        4.5.3
+Version:        4.5.4
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -68,8 +68,8 @@ BuildRequires:  yast2-tftp-server >= 4.1.7
 BuildRequires:  yast2-iscsi-client >= 4.3.3
 BuildRequires:  yast2-kdump
 BuildRequires:  yast2-mail >= 4.3.3
-# Added backend to the networking section
-BuildRequires:  yast2-network >= 4.4.29
+# add route 'extrapara' element
+BuildRequires:  yast2-network >= 4.5.4
 BuildRequires:  yast2-nfs-client
 BuildRequires:  yast2-nfs-server
 # YaST NIS packages are dropped from TW (bsc#1183893)

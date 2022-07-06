@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  4 13:20:29 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Add 'extrapara' to routes in the networking section (bsc#1201129)
+- 4.5.4
+
+-------------------------------------------------------------------
 Thu May 26 15:34:50 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Support for flatten and nested "category_filter" element in the
