@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  6 09:26:15 UTC 2022 - Julio González Gil <jgonzalez@suse.com>
+
+- Fix the build for RHEL 9 and clones
+
+-------------------------------------------------------------------
 Mon Jun 27 12:59:21 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - fix-bash-template.patch: convert one bash emitter to new jinja method.

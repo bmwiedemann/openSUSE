@@ -95,7 +95,7 @@ BuildRequires:  python3-PyYAML
 %if 0%{?rhel} == 7
 BuildRequires:  python-jinja2
 %else
-%if 0%{?rhel} == 8
+%if 0%{?rhel} >= 8
 BuildRequires:  python3-jinja2
 %else
 %if "%{_vendor}" == "debbuild"
