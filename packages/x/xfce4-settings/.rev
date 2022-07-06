@@ -424,4 +424,17 @@
   with Recommends from the main package (forwarded request 947865 from mauriziogalli)</comment>
     <requestid>948386</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>403ec108498ae70cf5b709a294a07940</srcmd5>
+    <version>4.16.3</version>
+    <time>1657114920</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.16.3
+  * xfsettingsd: Fix recursive lock in libX11
+    (gxo#xfce/xfce4-settings#369 boo#1200468)
+  * build: Fix intltool lock file problem during make distcheck
+  * Translation Updates
+</comment>
+    <requestid>986992</requestid>
+  </revision>
 </revisionlist>

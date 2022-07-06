@@ -19,7 +19,7 @@
 %bcond_with git
 
 Name:           xfce4-settings
-Version:        4.16.2
+Version:        4.16.3
 Release:        0
 Summary:        Tools for Managing Xfce Settings
 License:        GPL-2.0-only AND GPL-2.0-or-later
@@ -52,8 +52,8 @@ BuildRequires:  xorgproto-devel
 BuildRequires:  xfce4-dev-tools
 %endif
 Requires:       %{name}-branding = %{version}
-Recommends:     %{name}-lang = %{version}
 Recommends:     %{name}-color
+Recommends:     %{name}-lang = %{version}
 Provides:       xfce-mcs-manager = %{version}
 Obsoletes:      xfce-mcs-manager < %{version}
 Provides:       xfce-mcs-plugins = %{version}
@@ -79,15 +79,15 @@ This package provides the upstream look and feel for xfce4-settings.
 
 %package color
 Summary:        Subpackage providing xfce4-color-settings
-BuildRequires:  pkgconfig(colord) >= 0.1.24
-BuildRequires:  pkgconfig(colord-gtk) >= 0.1.24
 BuildRequires:  sane-backends
 BuildRequires:  xiccd
+BuildRequires:  pkgconfig(colord) >= 0.1.24
+BuildRequires:  pkgconfig(colord-gtk) >= 0.1.24
 # Make sure colord and other runtime dependencies are installed boo#1173953
 Requires:       colord
+Requires:       %{name} = %{version}-%{release}
 Requires:       sane-backends
 Requires:       xiccd
-Requires:       %{name} = %{version}-%{release}
 Provides:       xfce4-color-settings
 
 %description color

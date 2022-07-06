@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  5 16:00:31 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.16.3
+  * xfsettingsd: Fix recursive lock in libX11
+    (gxo#xfce/xfce4-settings#369 boo#1200468)
+  * build: Fix intltool lock file problem during make distcheck
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Jan 20 15:06:15 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Fix runtime dependencies for xfce4-color-settings and replace Supplements
