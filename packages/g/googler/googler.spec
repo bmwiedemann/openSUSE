@@ -1,7 +1,7 @@
 #
 # spec file for package googler
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           googler
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        Google Search, Google Site Search, Google News from the terminal
 License:        GPL-3.0-or-later
@@ -32,7 +32,7 @@ BuildArch:      noarch
 googler is a power tool to Google (Web & News) and Google Site Search
 from the command-line. It shows the title, URL and abstract for each
 result, which can be directly opened in a browser from the terminal.
-Results are fetched in pages (with page navigation). Supports 
+Results are fetched in pages (with page navigation). Supports
 sequential searches in a single googler instance.
 
 %prep
@@ -51,7 +51,7 @@ sed -i 's|/usr/bin/env\ python|/usr/bin/python|1' %{buildroot}/%{_bindir}/%{name
 rm -rf %{buildroot}%{_datadir}/doc/googler
 
 install -Dm644 auto-completion/fish/googler.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/googler.fish
-install -Dm644 auto-completion/bash/googler-completion.bash %{buildroot}%{_sysconfdir}/bash_completion.d/googler
+install -Dm644 auto-completion/bash/googler-completion.bash %{buildroot}%{_datadir}/bash-completion/completions/googler
 install -Dm644 auto-completion/zsh/_googler %{buildroot}%{_datadir}/zsh/site-functions/_googler
 
 %files
@@ -60,7 +60,7 @@ install -Dm644 auto-completion/zsh/_googler %{buildroot}%{_datadir}/zsh/site-fun
 %doc CHANGELOG README.md
 %{_bindir}/googler
 %{_mandir}/man1/googler.*
-%{_sysconfdir}/bash_completion.d/
+%{_datadir}/bash-completion/completions/
 %dir %{_datadir}/fish/
 %{_datadir}/fish/vendor_completions.d/
 %{_datadir}/zsh/
