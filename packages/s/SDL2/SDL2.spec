@@ -33,6 +33,7 @@ Source3:        %name.keyring
 Source4:        baselibs.conf
 Patch1:         sdl2-symvers.patch
 Patch2:         sdl2-khronos.patch
+Patch3:         fix-xi2-crash.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  nasm
@@ -87,6 +88,9 @@ This is the "Simple DirectMedia Layer" library. It provides a generic
 API for access to audio, keyboard, mouse, and display framebuffer
 across multiple platforms.
 
+SDL2 uses dlopen, so if you experience problems under X11, check
+again that libXrandr2 and libXi6 are in fact installed.
+
 %package -n libSDL2-devel
 Summary:        SDL2 Library Developer Files
 Group:          Development/Libraries/X11
@@ -120,8 +124,7 @@ perl -i -pe 's{\r\n}{\n}g' *.txt README.md
 %ifarch ix86
 	--enable-sse2=no \
 %endif
-	--enable-sse3=no --disable-rpath --disable-3dnow \
-	CFLAGS="%optflags -fcommon"
+	--enable-sse3=no --disable-rpath --disable-3dnow
 %make_build
 
 %install

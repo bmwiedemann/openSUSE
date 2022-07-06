@@ -1,0 +1,67 @@
+From fdb86b8266947e225f058b32ebb77fa949f6ae42 Mon Sep 17 00:00:00 2001
+From: "Ryan C. Gordon" <icculus@icculus.org>
+Date: Mon, 4 Jul 2022 12:48:32 -0400
+Subject: [PATCH] x11: Don't try to use XInput2 multitouch if not supported.
+
+Fixes #5889.
+---
+ src/video/x11/SDL_x11touch.c   |  4 +---
+ src/video/x11/SDL_x11xinput2.c | 13 +++++++++++++
+ 2 files changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/src/video/x11/SDL_x11touch.c b/src/video/x11/SDL_x11touch.c
+index 958bee9df..c608cf24d 100644
+--- a/src/video/x11/SDL_x11touch.c
++++ b/src/video/x11/SDL_x11touch.c
+@@ -31,9 +31,7 @@
+ void
+ X11_InitTouch(_THIS)
+ {
+-    if (X11_Xinput2IsMultitouchSupported()) {
+-        X11_InitXinput2Multitouch(_this);
+-    }
++    X11_InitXinput2Multitouch(_this);
+ }
+ 
+ void
+diff --git a/src/video/x11/SDL_x11xinput2.c b/src/video/x11/SDL_x11xinput2.c
+index abfbdf0e3..21d8bd6c1 100644
+--- a/src/video/x11/SDL_x11xinput2.c
++++ b/src/video/x11/SDL_x11xinput2.c
+@@ -265,6 +265,11 @@ X11_InitXinput2Multitouch(_THIS)
+     SDL_VideoData *data = (SDL_VideoData *) _this->driverdata;
+     XIDeviceInfo *info;
+     int ndevices,i,j;
++
++    if (!X11_Xinput2IsMultitouchSupported()) {
++        return;
++    }
++
+     info = X11_XIQueryDevice(data->display, XIAllDevices, &ndevices);
+ 
+     for (i = 0; i < ndevices; i++) {
+@@ -354,6 +359,10 @@ X11_Xinput2GrabTouch(_THIS, SDL_Window *window)
+     XIGrabModifiers mods;
+     XIEventMask eventmask;
+ 
++    if (!X11_Xinput2IsMultitouchSupported()) {
++        return;
++    }
++
+     mods.modifiers = XIAnyModifier;
+     mods.status = 0;
+ 
+@@ -379,6 +388,10 @@ X11_Xinput2UngrabTouch(_THIS, SDL_Window *window)
+ 
+     XIGrabModifiers mods;
+ 
++    if (!X11_Xinput2IsMultitouchSupported()) {
++        return;
++    }
++
+     mods.modifiers = XIAnyModifier;
+     mods.status = 0;
+ 
+-- 
+2.36.1
+
