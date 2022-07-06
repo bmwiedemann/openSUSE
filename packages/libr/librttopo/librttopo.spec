@@ -1,7 +1,7 @@
 #
 # spec file for package librttopo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,17 +25,19 @@ Summary:        RT Topology Library
 License:        GPL-2.0-or-later
 URL:            https://git.osgeo.org/gitea/rttopo/librttopo
 Source:         https://git.osgeo.org/gitea/rttopo/librttopo/archive/%{name}-%{version}.tar.gz
-BuildRequires:  fdupes
+Patch0:         https://git.osgeo.org/gitea/rttopo/librttopo/commit/2a9cc526.patch
+Patch1:         https://git.osgeo.org/gitea/rttopo/librttopo/pulls/41.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  libtool
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  sqlite-devel >= 3.7.3
-BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(geos)
-BuildRequires:  pkgconfig(proj)
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(minizip)
+BuildRequires:  pkgconfig(proj)
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -71,6 +73,7 @@ to compile and develop applications that use librttopo.
 
 %prep
 %setup -q -n %{name}
+%autopatch -p1
 ./autogen.sh
 
 %build

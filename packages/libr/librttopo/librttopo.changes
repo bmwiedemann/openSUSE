@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  5 13:25:15 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Fix boo#1201215 VUL-0: CVE-2017-18359: librttopo: 
+  denial of service in rtgeom_to_x3d3()
+  by adding upstream patches
+  + 2a9cc526.patch
+  + 41.patch
+- Update copyright year 
+
+-------------------------------------------------------------------
 Mon May 10 16:39:34 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Initial packaging for openSUSE

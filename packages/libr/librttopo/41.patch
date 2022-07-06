@@ -1,0 +1,29 @@
+From 1b5c6df4d01891c28c222655541fc483b4ee7aa5 Mon Sep 17 00:00:00 2001
+From: jmckenna <jmckenna@gatewaygeomatics.com>
+Date: Thu, 24 Feb 2022 13:10:10 -0400
+Subject: [PATCH] fix security patch
+
+---
+ src/rtout_x3d.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/rtout_x3d.c b/src/rtout_x3d.c
+index 4d4c130..f6bbee2 100644
+--- a/src/rtout_x3d.c
++++ b/src/rtout_x3d.c
+@@ -67,10 +67,10 @@ rtgeom_to_x3d3(const RTCTX *ctx, const RTGEOM *geom, char *srs, int precision, i
+ /* https://trac.osgeo.org/postgis/ticket/3704 */
+ 
+ /* Empty string for empties */
+-  if( lwgeom_is_empty(geom) )
++  if( rtgeom_is_empty(ctx, geom) )
+   {
+     char *ret = NULL;
+-    ret = lwalloc(1);
++    ret = rtalloc(ctx, 1);
+     ret[0] = '\0';
+     return ret;
+   }
+-- 
+2.20.1
+
