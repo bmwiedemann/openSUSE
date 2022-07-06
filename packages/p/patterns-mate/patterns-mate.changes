@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  5 12:26:31 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use pipewire as default audio server in TW.
+
+-------------------------------------------------------------------
 Tue Mar  8 13:59:38 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Require xdg-desktop-portal-gtk in mate_basis for compatibility

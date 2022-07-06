@@ -199,11 +199,17 @@ Recommends:     shared-mime-info
 Recommends:     tango-icon-theme
 Recommends:     xkeyboard-config
 Recommends:     yelp
+
+%if 0%{suse_version} > 1500
+# Pipewire is the default sound server.
+Recommends:     pipewire-pulseaudio
+%else
 # PulseAudio is the default sound server.
 Recommends:     pulseaudio-module-bluetooth
 Recommends:     pulseaudio-module-lirc
 Recommends:     pulseaudio-module-x11
 Recommends:     pulseaudio-module-zeroconf
+%endif
 Recommends:     pulseaudio-utils
 Recommends:     xdg-user-dirs-gtk
 # We need something for xdg-su.
