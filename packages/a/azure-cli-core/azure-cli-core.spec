@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-core
-Version:        2.37.0
+Version:        2.38.0
 Release:        0
 Summary:        Microsoft Azure CLI Core Module
 License:        MIT
