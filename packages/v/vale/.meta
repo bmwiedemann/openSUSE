@@ -1,0 +1,20 @@
+<package name="vale" project="openSUSE:Factory">
+  <title>
+    Vale CLI tool to lint prose text with syntax awareneness and extensible markup format support
+    </title>
+  <description>
+Vale is a command-line tool that brings code-like linting to prose. It's fast,
+cross-platform (Windows, macOS, and Linux), and highly customizable.
+
+Vale has support for markup: Vale has a rich understanding of many markup
+formats, allowing it to avoid syntax-related false positives and intelligently
+exclude code snippets from prose-related rules.
+
+Vale includes a highly customizable extension system capable of enforcing your
+style-be it a standard editorial style guide or a custom in-house set of rules
+(such as those created by GitLab, Homebrew, Linode, CockroachDB, and Spotify).
+
+https://vale.sh/
+      </description>
+  <devel project="devel:languages:go" package="vale"/>
+</package>

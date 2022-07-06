@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Fri Jul 01 19:56:20 UTC 2022 - jkowalczyk@suse.com
+
+- Initial package version 2.19.0:
+  * chore: add dispatch step
+  * refactor: remove unused param
+  * feat: support tag matching for sequence anchor
+  * chore: build linux_arm64
+  * chore: move fixtures to testdata
+  * chore: move pkg managers to their own repo
+  * chore: add chocolatey files
+  * feat: more patterns
+  * refactor: remove manual offset
+  * fix: use line index as comment offset
+  * chore: mark fixtures as vendored
+  * chore: remove lgtm.yml
+  * chore: mark `testdata` as vendored
+  * feat: support embedded markup
+  * docs: update link
