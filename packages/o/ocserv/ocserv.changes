@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 20 07:49:38 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- explicitly buildignore libevent-devel, which is pulled in by
+  ubound. We use libev here and can get away with this.
+
+-------------------------------------------------------------------
 Sat Jun  5 10:37:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.3

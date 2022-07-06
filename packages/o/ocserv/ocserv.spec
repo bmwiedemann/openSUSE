@@ -1,7 +1,7 @@
 #
 # spec file for package ocserv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,7 @@ BuildRequires:  freeradius-client-devel
 BuildRequires:  gperf
 BuildRequires:  gpg2
 BuildRequires:  libev-devel
+#!BuildIgnore:  libevent-devel
 BuildRequires:  libgnutls-devel >= 3.1.10
 BuildRequires:  libmaxminddb-devel
 BuildRequires:  libnl3-devel
