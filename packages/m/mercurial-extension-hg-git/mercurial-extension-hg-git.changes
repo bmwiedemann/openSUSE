@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  4 21:11:08 UTC 2022 - Manuel Jacob <me@manueljacob.de>
+
+- Remove `BuildRequires: python3-dulwich >= 0.19.0`.
+  The dependency is not available at build time on 15.3.
+  We don’t need it at build time. The user has to provide
+  the dependency from another repository at install time.
+
+-------------------------------------------------------------------
 Fri Jun 17 17:27:24 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Blacklist failing test.

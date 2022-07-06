@@ -36,7 +36,6 @@ BuildRequires:  git
 BuildRequires:  mercurial
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
-BuildRequires:  python3-dulwich >= 0.19.0
 BuildRequires:  python3-gpg
 BuildRequires:  python3-setuptools
 BuildRequires:  unzip
