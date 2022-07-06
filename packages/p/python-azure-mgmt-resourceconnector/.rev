@@ -7,4 +7,16 @@
     <comment>New package part of the Azure SDk</comment>
     <requestid>931596</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7f82d563698b2e982641b20902558f0c</srcmd5>
+    <version>1.0.0b2</version>
+    <time>1657114910</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 986620 from glaubitz)</comment>
+    <requestid>986839</requestid>
+  </revision>
 </revisionlist>
