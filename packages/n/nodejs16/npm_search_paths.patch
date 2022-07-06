@@ -1,8 +1,8 @@
-Index: node-v16.14.0/deps/npm/lib/npm.js
+Index: node-v16.15.1/deps/npm/lib/npm.js
 ===================================================================
---- node-v16.14.0.orig/deps/npm/lib/npm.js
-+++ node-v16.14.0/deps/npm/lib/npm.js
-@@ -329,7 +329,13 @@ class Npm extends EventEmitter {
+--- node-v16.15.1.orig/deps/npm/lib/npm.js
++++ node-v16.15.1/deps/npm/lib/npm.js
+@@ -386,7 +386,13 @@ class Npm extends EventEmitter {
    }
  
    get globalPrefix () {
@@ -17,16 +17,16 @@ Index: node-v16.14.0/deps/npm/lib/npm.js
    }
  
    set globalPrefix (r) {
-Index: node-v16.14.0/deps/npm/lib/commands/help-search.js
+Index: node-v16.15.1/deps/npm/lib/commands/help-search.js
 ===================================================================
---- node-v16.14.0.orig/deps/npm/lib/commands/help-search.js
-+++ node-v16.14.0/deps/npm/lib/commands/help-search.js
-@@ -17,7 +17,7 @@ class HelpSearch extends BaseCommand {
+--- node-v16.15.1.orig/deps/npm/lib/commands/help-search.js
++++ node-v16.15.1/deps/npm/lib/commands/help-search.js
+@@ -20,7 +20,7 @@ class HelpSearch extends BaseCommand {
        throw this.usageError()
      }
  
 -    const docPath = path.resolve(__dirname, '..', '..', 'docs/content')
-+    const docPath = '/usr/share/doc/packages/nodejs'
-     const files = await glob(`${docPath}/*/*.md`)
++    const docPath = '/usr/share/doc/packages/nodejs/content'
+     const files = await glob(`${globify(docPath)}/*/*.md`)
      const data = await this.readFiles(files)
      const results = await this.searchFiles(args, data, files)

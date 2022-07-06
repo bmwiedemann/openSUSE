@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 23 13:42:03 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to LTS version 16.15.1
+  * upgrade npm to 8.11.0
+- Update to LTS version 16.15.0
+  * Add experimental support to the fetch API. This adds the 
+    `--experimental-fetch` flag that installs the fetch, Request,
+    Response, Headers, and FormData globals.
+  * Broken x32 support is removed
+  * crypto: Add KeyObject.prototype.equals method
+  * esm: support https remotely and http locally under flag
+  * module: unflag esm jso
+
+- rebased: nodejs-libpath.patch, npm_search_paths.patch, versioned.patch
+
+-------------------------------------------------------------------
 Wed Apr 13 12:55:22 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - update to LTS release 16.14.2:

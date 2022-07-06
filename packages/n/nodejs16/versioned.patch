@@ -8,10 +8,10 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v16.14.1/Makefile
+Index: node-v16.15.1/Makefile
 ===================================================================
---- node-v16.14.1.orig/Makefile
-+++ node-v16.14.1/Makefile
+--- node-v16.15.1.orig/Makefile
++++ node-v16.15.1/Makefile
 @@ -55,7 +55,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
@@ -21,10 +21,10 @@ Index: node-v16.14.1/Makefile
  NODE ?= ./$(NODE_EXE)
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
-Index: node-v16.14.1/tools/install.py
+Index: node-v16.15.1/tools/install.py
 ===================================================================
---- node-v16.14.1.orig/tools/install.py
-+++ node-v16.14.1/tools/install.py
+--- node-v16.15.1.orig/tools/install.py
++++ node-v16.15.1/tools/install.py
 @@ -86,7 +86,7 @@ def uninstall(paths, dst):
      try_remove(path, dst)
  
@@ -122,10 +122,10 @@ Index: node-v16.14.1/tools/install.py
  
    if sys.platform == 'zos':
      zoslibinc = os.environ.get('ZOSLIB_INCLUDES')
-Index: node-v16.14.1/doc/node.1
+Index: node-v16.15.1/doc/node.1
 ===================================================================
---- node-v16.14.1.orig/doc/node.1
-+++ node-v16.14.1/doc/node.1
+--- node-v16.15.1.orig/doc/node.1
++++ node-v16.15.1/doc/node.1
 @@ -30,24 +30,24 @@
  .Dt NODE 1
  .
@@ -155,10 +155,10 @@ Index: node-v16.14.1/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v16.14.1/src/node.stp
+Index: node-v16.15.1/src/node.stp
 ===================================================================
---- node-v16.14.1.orig/src/node.stp
-+++ node-v16.14.1/src/node.stp
+--- node-v16.15.1.orig/src/node.stp
++++ node-v16.15.1/src/node.stp
 @@ -19,7 +19,7 @@
  // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  // USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -231,19 +231,19 @@ Index: node-v16.14.1/src/node.stp
  {
    scavenge = 1 << 0;
    compact = 1 << 1;
-Index: node-v16.14.1/deps/npm/man/man1/npm.1
+Index: node-v16.15.1/deps/npm/man/man1/npm.1
 ===================================================================
---- node-v16.14.1.orig/deps/npm/man/man1/npm.1
-+++ node-v16.14.1/deps/npm/man/man1/npm.1
+--- node-v16.15.1.orig/deps/npm/man/man1/npm.1
++++ node-v16.15.1/deps/npm/man/man1/npm.1
 @@ -1,6 +1,6 @@
- .TH "NPM" "1" "February 2022" "" ""
+ .TH "NPM" "1" "May 2022" "" ""
  .SH "NAME"
 -\fBnpm\fR \- javascript package manager
 +\fBnpm16\fR \- javascript package manager
  .SS Synopsis
+ .SS Version
  .P
- .RS 2
-@@ -21,7 +21,7 @@ It is extremely configurable to support
+@@ -15,7 +15,7 @@ It is extremely configurable to support
  commonly, you use it to publish, discover, install, and develop node
  programs\.
  .P
@@ -252,7 +252,7 @@ Index: node-v16.14.1/deps/npm/man/man1/npm.1
  .SS Important
  .P
  npm comes preconfigured to use npm's public registry at
-@@ -37,14 +37,14 @@ their terms of use\.
+@@ -31,14 +31,14 @@ their terms of use\.
  You probably got npm because you want to install stuff\.
  .P
  The very first thing you will most likely want to run in any node
@@ -271,7 +271,7 @@ Index: node-v16.14.1/deps/npm/man/man1/npm.1
  .SS Dependencies
  .P
  If a package lists a dependency using a git URL, npm will install that
-@@ -93,7 +93,7 @@ npm help \fBpackage\.json\fP\|\.
+@@ -87,7 +87,7 @@ npm help \fBpackage\.json\fP\|\.
  .IP \(bu 2
  link:
  Links your current working code into Node's path, so that you don't
@@ -280,7 +280,7 @@ Index: node-v16.14.1/deps/npm/man/man1/npm.1
  link\fP to do this\.
  .IP \(bu 2
  install:
-@@ -176,18 +176,18 @@ https://github\.com/npm/rfcs
+@@ -170,18 +170,18 @@ https://github\.com/npm/rfcs
  .SS See Also
  .RS 0
  .IP \(bu 2
@@ -306,10 +306,10 @@ Index: node-v16.14.1/deps/npm/man/man1/npm.1
 +npm16 help publish
  
  .RE
-Index: node-v16.14.1/src/node_main.cc
+Index: node-v16.15.1/src/node_main.cc
 ===================================================================
---- node-v16.14.1.orig/src/node_main.cc
-+++ node-v16.14.1/src/node_main.cc
+--- node-v16.15.1.orig/src/node_main.cc
++++ node-v16.15.1/src/node_main.cc
 @@ -122,6 +122,7 @@ int main(int argc, char* argv[]) {
  #endif
    // Disable stdio buffering, it interacts poorly with printf()
@@ -318,10 +318,10 @@ Index: node-v16.14.1/src/node_main.cc
    setvbuf(stdout, nullptr, _IONBF, 0);
    setvbuf(stderr, nullptr, _IONBF, 0);
    return node::Start(argc, argv);
-Index: node-v16.14.1/tools/test.py
+Index: node-v16.15.1/tools/test.py
 ===================================================================
---- node-v16.14.1.orig/tools/test.py
-+++ node-v16.14.1/tools/test.py
+--- node-v16.15.1.orig/tools/test.py
++++ node-v16.15.1/tools/test.py
 @@ -935,7 +935,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
@@ -331,10 +331,10 @@ Index: node-v16.14.1/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-v16.14.1/node.gyp
+Index: node-v16.15.1/node.gyp
 ===================================================================
---- node-v16.14.1.orig/node.gyp
-+++ node-v16.14.1/node.gyp
+--- node-v16.15.1.orig/node.gyp
++++ node-v16.15.1/node.gyp
 @@ -23,8 +23,8 @@
      'node_use_openssl%': 'true',
      'node_shared_openssl%': 'false',
@@ -346,36 +346,31 @@ Index: node-v16.14.1/node.gyp
      'node_intermediate_lib_type%': 'static_library',
      'node_builtin_modules_path%': '',
      # We list the deps/ files out instead of globbing them in js2c.py since we
-Index: node-v16.14.1/deps/npm/man/man1/npx.1
+Index: node-v16.15.1/deps/npm/man/man1/npx.1
 ===================================================================
---- node-v16.14.1.orig/deps/npm/man/man1/npx.1
-+++ node-v16.14.1/deps/npm/man/man1/npx.1
-@@ -5,15 +5,15 @@
+--- node-v16.15.1.orig/deps/npm/man/man1/npx.1
++++ node-v16.15.1/deps/npm/man/man1/npx.1
+@@ -1,14 +1,14 @@
+ .TH "NPX" "1" "May 2022" "" ""
+ .SH "NAME"
+-\fBnpx\fR \- Run a command from a local or remote npm package
++\fBnpx16\fR \- Run a command from a local or remote npm package
+ .SS Synopsis
  .P
  .RS 2
  .nf
--npm exec \-\- <pkg>[@<version>] [args\.\.\.]
--npm exec \-\-package=<pkg>[@<version>] \-\- <cmd> [args\.\.\.]
--npm exec \-c '<cmd> [args\.\.\.]'
--npm exec \-\-package=foo \-c '<cmd> [args\.\.\.]'
--
--npx <pkg>[@<specifier>] [args\.\.\.]
--npx \-p <pkg>[@<specifier>] <cmd> [args\.\.\.]
+-npx \-\- <pkg>[@<version>] [args\.\.\.]
+-npx \-\-package=<pkg>[@<version>] \-\- <cmd> [args\.\.\.]
 -npx \-c '<cmd> [args\.\.\.]'
--npx \-p <pkg>[@<specifier>] \-c '<cmd> [args\.\.\.]'
-+npm16 exec \-\- <pkg>[@<version>] [args\.\.\.]
-+npm16 exec \-\-package=<pkg>[@<version>] \-\- <cmd> [args\.\.\.]
-+npm16 exec \-c '<cmd> [args\.\.\.]'
-+npm16 exec \-\-package=foo \-c '<cmd> [args\.\.\.]'
-+
-+npx16 <pkg>[@<specifier>] [args\.\.\.]
-+npx16 \-p <pkg>[@<specifier>] <cmd> [args\.\.\.]
+-npx \-\-package=foo \-c '<cmd> [args\.\.\.]'
++npx16 \-\- <pkg>[@<version>] [args\.\.\.]
++npx16 \-\-package=<pkg>[@<version>] \-\- <cmd> [args\.\.\.]
 +npx16 \-c '<cmd> [args\.\.\.]'
-+npx16 \-p <pkg>[@<specifier>] \-c '<cmd> [args\.\.\.]'
- 
- alias: npm x, npx
- 
-@@ -68,9 +68,9 @@ no bin entries, or none of them match th
++npx16 \-\-package=foo \-c '<cmd> [args\.\.\.]'
+ .fi
+ .RE
+ .SS Description
+@@ -57,9 +57,9 @@ no bin entries, or none of them match th
  To run a binary \fIother than\fR the named binary, specify one or more
  \fB\-\-package\fP options, which will prevent npm from inferring the package from
  the first command argument\.
@@ -387,7 +382,7 @@ Index: node-v16.14.1/deps/npm/man/man1/npx.1
  any positional arguments\.  When run via \fBnpm exec\fP, a double\-hyphen \fB\-\-\fP
  flag can be used to suppress npm's parsing of switches and options that
  should be sent to the executed command\.
-@@ -79,7 +79,7 @@ For example:
+@@ -68,7 +68,7 @@ For example:
  .P
  .RS 2
  .nf
@@ -396,7 +391,7 @@ Index: node-v16.14.1/deps/npm/man/man1/npx.1
  .fi
  .RE
  .P
-@@ -100,7 +100,7 @@ different:
+@@ -89,7 +89,7 @@ different:
  .P
  .RS 2
  .nf
@@ -405,7 +400,7 @@ Index: node-v16.14.1/deps/npm/man/man1/npx.1
  .fi
  .RE
  .P
-@@ -116,11 +116,11 @@ $ foo@latest bar
+@@ -105,11 +105,11 @@ $ foo@latest bar
  .P
  The double\-hyphen character is recommended to explicitly tell npm to stop
  parsing command line options and switches\.  The following command would
@@ -419,7 +414,7 @@ Index: node-v16.14.1/deps/npm/man/man1/npx.1
  .fi
  .RE
  .SS Examples
-@@ -130,8 +130,8 @@ arguments:
+@@ -119,8 +119,8 @@ arguments:
  .P
  .RS 2
  .nf
@@ -430,7 +425,7 @@ Index: node-v16.14.1/deps/npm/man/man1/npx.1
  .fi
  .RE
  .P
-@@ -140,9 +140,9 @@ by specifying a \fB\-\-package\fP option
+@@ -129,9 +129,9 @@ by specifying a \fB\-\-package\fP option
  .P
  .RS 2
  .nf
@@ -442,7 +437,7 @@ Index: node-v16.14.1/deps/npm/man/man1/npx.1
  .fi
  .RE
  .P
-@@ -150,14 +150,14 @@ Run an arbitrary shell script, in the co
+@@ -139,14 +139,14 @@ Run an arbitrary shell script, in the co
  .P
  .RS 2
  .nf
@@ -461,7 +456,7 @@ Index: node-v16.14.1/deps/npm/man/man1/npx.1
  command instead of a separate argument parser and install process, with
  some affordances to maintain backwards compatibility with the arguments it
  accepted in previous versions\.
-@@ -165,10 +165,10 @@ accepted in previous versions\.
+@@ -154,10 +154,10 @@ accepted in previous versions\.
  This resulted in some shifts in its functionality:
  .RS 0
  .IP \(bu 2
@@ -474,7 +469,7 @@ Index: node-v16.14.1/deps/npm/man/man1/npx.1
  prompt with the \fB\-y\fP or \fB\-\-yes\fP option\.
  .IP \(bu 2
  The \fB\-\-no\-install\fP option is deprecated, and will be converted to \fB\-\-no\fP\|\.
-@@ -176,13 +176,13 @@ The \fB\-\-no\-install\fP option is depr
+@@ -165,13 +165,13 @@ The \fB\-\-no\-install\fP option is depr
  Shell fallback functionality is removed, as it is not advisable\.
  .IP \(bu 2
  The \fB\-p\fP argument is a shorthand for \fB\-\-parseable\fP in npm, but shorthand
@@ -490,7 +485,7 @@ Index: node-v16.14.1/deps/npm/man/man1/npx.1
  with\.
  .IP \(bu 2
  The \fB\-\-node\-arg\fP and \fB\-n\fP options are removed\.
-@@ -190,26 +190,26 @@ The \fB\-\-node\-arg\fP and \fB\-n\fP op
+@@ -179,26 +179,26 @@ The \fB\-\-node\-arg\fP and \fB\-n\fP op
  The \fB\-\-always\-spawn\fP option is redundant, and thus removed\.
  .IP \(bu 2
  The \fB\-\-shell\fP option is replaced with \fB\-\-script\-shell\fP, but maintained

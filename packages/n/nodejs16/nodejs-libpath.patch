@@ -1,7 +1,7 @@
-Index: node-v16.13.0/tools/install.py
+Index: node-v16.15.1/tools/install.py
 ===================================================================
---- node-v16.13.0.orig/tools/install.py
-+++ node-v16.13.0/tools/install.py
+--- node-v16.15.1.orig/tools/install.py
++++ node-v16.15.1/tools/install.py
 @@ -7,6 +7,8 @@ import errno
  import os
  import shutil
@@ -49,11 +49,11 @@ Index: node-v16.13.0/tools/install.py
  
    # behave similarly for systemtap
    action(['src/node.stp'], 'share/systemtap/tapset/')
-Index: node-v16.13.0/lib/internal/modules/cjs/loader.js
+Index: node-v16.15.1/lib/internal/modules/cjs/loader.js
 ===================================================================
---- node-v16.13.0.orig/lib/internal/modules/cjs/loader.js
-+++ node-v16.13.0/lib/internal/modules/cjs/loader.js
-@@ -1234,7 +1234,7 @@ Module._initPaths = function() {
+--- node-v16.15.1.orig/lib/internal/modules/cjs/loader.js
++++ node-v16.15.1/lib/internal/modules/cjs/loader.js
+@@ -1240,7 +1240,7 @@ Module._initPaths = function() {
      path.resolve(process.execPath, '..') :
      path.resolve(process.execPath, '..', '..');
  
