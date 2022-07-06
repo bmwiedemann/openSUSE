@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Wed Jul 06 01:23:51 UTC 2022 - jkowalczyk@suse.com
+
+- Initial package version 1.0.0:
+  * fix: Use md ext to trigger syntax highlighting (#400)
+  * dep: Upgrade cobra to 1.5 and viper to 1.12 (#399)
+  * dep: Upgrade AlecAivazis/survey + sync editor ext (#398)
+  * dep: Upgrade tview, tcell and testify (#397)
+  * ci: Fix/refactor workflow (#396)
+  * feat: Allow project filter in raw jql (#395)
+  * fix: Editing issue with custom field in non interactive mode (#391)
+  * ci: Upgrade golangci linter version (#394)
+  * ci: Add workflow to publish docker image to ghcr (#392)
+  * Add a Dockerfile (#387)
+  * fix: Subtask clone (#383)
+  * feat: Show subtasks in issue view (#382)
+  * feat: Jira init non-interactive (#381)
+  * fix: Issue with query param in user assignment (#380)
+  * doc: Change some wordings
+  * doc: Update contribution notice
+  * feat: Support custom fields on issue edit (#377)
+  * chore: Bump copyright year
+  * doc: Minor updates
+  * feat: Allow removing fixVersions on edit (#376)
+  * feat: Allow removing component on edit (#374)
+  * dep: Upgrade cobra to 1.4.0 (#373)
+  * fix: Support creating issues with custom subtask type (#372)
+  * feat: Allow removing labels on edit (#371)
+  * fix!: Append components on edit instead of overriding (#368)
+  * feat: Allow to edit release-info/fixVersions (#365)
+  * feat: Allow to set custom fields on epic create (#364)
+  * chore: Minor refactoring and doc update
+  * fix: Add additional check for total boards returned (#360)
+  * feat: Add issues unlink command (#347)
+  * fix!: Replace limit flag with paginate (#359)
+  * doc: Update some details related to API tokens
+  * feat: Add support for OS keyrings/-chains (#348)
+  * fix: Assign parent key as is on edit (#351)
+  * fix: OOM bug on issue view (#350)
+  * fix: Issue with assigning user (#321)
+  * doc: Add details for custom flag
+  * feat: Support custom fields on issue create (#319)
+  * ci: Upgrade linter
+  * feat: Ability to delete issue (#336)
+  * chore: Improve docs
+  * chore: Minor refactoring and fixes (#335)
+  * feat: Initial support for netrc (#329)
+  * feat: Support refresh for issues list (#325)
+  * fix: Panic on empty sub-list (#330)
+  * chore: Minor refactoring and fixes (#328)
+  * feat: Support auth with personal access tokens (#327)
+  * doc: Clarify help for sprint issues column flag (#320)
+  * fix: Jira wiki parser (#326)
+  * feat: Add search option for boards on jira init (#322)
+  * feat: Use md ext for tmp file to trigger syntax highlighting (#318)
+  * feat!: Append labels instead of overwritting on edit (#300)
+  * fix: Get subtask handle from config (#296)
+  * fix: Respect GLAMOUR_STYLE env on issue view (#317)
+  * refactor!: Move boards and project list to subcommand (#314)
+  * dep: Upgrade outdated packages (#311)
+  * dep: Upgrade rivo/tview to latest (#310)
+  * dep: Upgrade charmbracelet/glamour to 0.5.0 (#309)
+  * feat: Add --no-browser option to open cmd (#308)
+  * feat: Allow insecure TLS (#305)
+  * fix: Jira client should respect timeout opt (#304)
+  * chore: Change the logo color to be white for consitency (#299)
+  * doc: Add backers badge
+  * dev: Upgrade jira
+  * fix(cfg): Strip trailing slash on server name (#295)
+  * feat: Allow to set fixVersions on issue creation (#276)
+  * fix: Config generation issue (#275)
+  * doc: Add the FreeBSD and NetBSD badge. (#270)
+  * dev: Fix Makefile compatiblity with Make 3.81 (#252)

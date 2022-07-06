@@ -1,0 +1,13 @@
+<package name="jira-cli" project="openSUSE:Factory">
+  <title>JiraCLI CLI tool for Atlassian JIRA inspired by the Github CLI tool</title>
+  <description>
+JiraCLI is an interactive command line tool for Atlassian Jira that will help
+you avoid Jira UI to some extent. This tool is not yet considered complete but
+has all the essential features required to improve your workflow with Jira. The
+tool started with the idea of making issue search and navigation as
+straightforward as possible. The tool now includes all necessary features like
+issue creation, cloning, linking, ticket transition, and much more. The TUI is
+heavily inspired by the GitHub CLI.
+    </description>
+  <devel project="devel:languages:go" package="jira-cli"/>
+</package>
