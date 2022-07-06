@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  4 11:54:34 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- AY: Added missing route extrapara element to the networking
+  section (bsc#1201129)
+- 4.5.4
+
+-------------------------------------------------------------------
 Tue Jun  7 13:30:22 UTC 2022 - Martin Vidner <mvidner@suse.com>
 
 - Allow more than 6 domains in resolver search list (bsc#1200155).
