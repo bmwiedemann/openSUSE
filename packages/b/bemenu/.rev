@@ -222,4 +222,15 @@
   * Fix missed rendering regressions on Wayland (fixes --grab flag) #273</comment>
     <requestid>986755</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3728ab675b8816698835f6286b6ab917</srcmd5>
+    <version>0.6.10</version>
+    <time>1657114940</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.10:
+  * Add options to set cursor bg/fg color #278
+  * Don't alternate colors by default (let ALTERNATE color be
+    same as ITEM) #280</comment>
+    <requestid>987131</requestid>
+  </revision>
 </revisionlist>

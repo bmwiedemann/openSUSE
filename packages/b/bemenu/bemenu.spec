@@ -18,7 +18,7 @@
 
 %define bcond_with curses
 Name:           bemenu
-Version:        0.6.9
+Version:        0.6.10
 Release:        0
 Summary:        Dynamic menu library and client program inspired by dmenu
 License:        MIT
