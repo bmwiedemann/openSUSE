@@ -2,7 +2,6 @@
 # spec file for package Vc
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2018 Asterios Dramis <asterios.dramis@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +17,7 @@
 
 
 Name:           Vc
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        Collection of SIMD Vector Classes
 License:        BSD-3-Clause
@@ -91,13 +90,8 @@ cd ..
 %install
 %cmake_install
 
-# Install devel docs
-mkdir -p %{buildroot}%{_docdir}/%{name}-devel-doc/
-cp -a doc/html %{buildroot}%{_docdir}/%{name}-devel-doc/
-
 %files devel-doc
-%doc README.md
-%{_docdir}/%{name}-devel-doc/
+%doc README.md doc/html/
 
 %files devel
 %license LICENSE
