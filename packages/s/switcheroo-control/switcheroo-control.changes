@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  4 00:01:24 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.6:
+  * Remove the recently added support for setting the GPU for
+    Vulkan apps as this broke sandboxed Vulkan apps. 
+  * Fix for non-x86 platforms not having a default GPU.
+
+-------------------------------------------------------------------
 Sun May  1 17:31:06 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.5:
