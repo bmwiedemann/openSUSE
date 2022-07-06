@@ -1,7 +1,7 @@
 #
 # spec file for package openal-soft
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           openal-soft
 Version:        1.21.1
 Release:        0
 Summary:        Audio library with an OpenGL-resembling API
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND MIT
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://www.openal-soft.org/
 Source0:        https://www.openal-soft.org/openal-releases/openal-soft-%{version}.tar.bz2
@@ -137,10 +137,17 @@ rm -v alc/backends/opensl.cpp
 
 %build
 # jack backend doesn't work due to missing jack_error_callback
+#
+# ALSOFT_CPUEXT_SSE2 controls -msse2, the other configure flags do not seem
+# lead to -m. And everything else (i.e. in source) seems CPUID-guarded.
+#
 %cmake \
   -DCMAKE_BUILD_TYPE=Release \
   -DALSOFT_CONFIG=ON \
   -DALSOFT_DLOPEN=OFF \
+%ifarch %ix86
+  -DALSOFT_CPUEXT_SSE2:BOOL=OFF \
+%endif
   -Wno-dev
 %make_jobs
 gcc -Wall %{optflags} -fPIC -DPIC -Wl,-soname,libopenal.so.0 -shared -Wl,--no-as-needed -L. -lopenal -o libopenal.so.0 %{SOURCE1}

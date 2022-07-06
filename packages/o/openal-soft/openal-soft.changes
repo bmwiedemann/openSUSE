@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  4 22:43:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove -msse2 from the i586 gcc command lines.
+
+-------------------------------------------------------------------
 Wed Feb 17 15:49:21 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - fix gcc11 build (openal-soft-gcc11.diff)
