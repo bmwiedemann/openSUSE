@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul  4 00:21:50 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.14.7:
+  * Fixed that ComputeSensitivityMatrix() of sIpopt assumed that
+    there are no more than two parameters [gh#coin-or/Ipopt#578].
+  * For completeness_approximation to enable approximation of
+    gradient of objective function by finite differences. Do not
+    use. [gh#coin-or/Ipopt#573].
+  * Added function IPSETPROBLEMSCALING to Fortran interface to set
+    problem scaling [gh#coin-or/Ipopt#577].
+
+-------------------------------------------------------------------
 Fri May  6 17:23:16 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.14.6:
