@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 06 05:09:05 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220624.141144.bd1b7c5d+git50:
+  * wayland: add global active_surface_id to fix pasting
+  * docs: remove "bad" rgb spec from docs
+  * docs: changelog for https://github.com/wez/wezterm/issues/2204
+  * speculative fix for https://github.com/wez/wezterm/issues/2204
+  * meant to remove this as part of c6672246749a7f58e5bebf68c4fcf57e1ddb4f08
+  * ci: drop support for building on debian 9
+  * update harfbuzz to 4.4.1
+  * docs: clarify when set_environment_variables is consulted
+  * deps: tiny-skia -> 0.7
+  * build(deps): bump rstest from 0.14.0 to 0.15.0
+
+-------------------------------------------------------------------
 Mon Jun 27 01:56:50 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 20220624.141144.bd1b7c5d+git17:

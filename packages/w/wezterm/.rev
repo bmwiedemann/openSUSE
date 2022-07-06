@@ -89,4 +89,23 @@
     <comment></comment>
     <requestid>985191</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9c01cb4611acdbe014f4aecc19e7a71a</srcmd5>
+    <version>20220624.141144.bd1b7c5d+git50</version>
+    <time>1657114926</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220624.141144.bd1b7c5d+git50:
+  * wayland: add global active_surface_id to fix pasting
+  * docs: remove &quot;bad&quot; rgb spec from docs
+  * docs: changelog for https://github.com/wez/wezterm/issues/2204
+  * speculative fix for https://github.com/wez/wezterm/issues/2204
+  * meant to remove this as part of c6672246749a7f58e5bebf68c4fcf57e1ddb4f08
+  * ci: drop support for building on debian 9
+  * update harfbuzz to 4.4.1
+  * docs: clarify when set_environment_variables is consulted
+  * deps: tiny-skia -&gt; 0.7
+  * build(deps): bump rstest from 0.14.0 to 0.15.0
+</comment>
+    <requestid>986946</requestid>
+  </revision>
 </revisionlist>
