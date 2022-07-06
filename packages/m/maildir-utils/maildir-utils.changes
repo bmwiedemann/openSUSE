@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  6 06:54:08 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.5:
+  * some minor build updates
+  * add a lispdir option
+  * the 1.8.4 release & tag got mixed up, so we're going straight to 1.8.5
+
+-------------------------------------------------------------------
 Mon Jul  4 10:56:17 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.3:

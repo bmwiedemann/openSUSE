@@ -441,4 +441,15 @@
   * For performance testing, you can set the variable mu4e-headers-report-render-time to t and mu4e will report the search/rendering speed of each query operation.</comment>
     <requestid>986622</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>82f9f59cd8a14a3bb5d6409ca93e9617</srcmd5>
+    <version>1.8.5</version>
+    <time>1657114934</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.5:
+  * some minor build updates
+  * add a lispdir option
+  * the 1.8.4 release &amp; tag got mixed up, so we're going straight to 1.8.5</comment>
+    <requestid>986973</requestid>
+  </revision>
 </revisionlist>
