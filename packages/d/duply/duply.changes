@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul  6 06:28:27 UTC 2022 - hsk17@mail.de
+
+- Update to 2.4:
+  - bugfix #127: date_from_nsecs ignores format string
+  - bugfix #116: separators print date now too
+  - featreq #48: add purgeAuto command (see man page)
+  - replaced tab indents with 2spaces everywhere
+  - bugfix #129,131,132: duply stumbles over 'python -s' shebang,
+    python interpreter parse failed if duplicity is a snap app
+  - bugfix #130: duplicity version check failed "gpg: WARNING: ..."
+  - version output, always print PYTHONPATH, if interpreter was determined
+  - update python references to python3
+- Changes from 2.3.1:
+  - bugfix 123: symmetric encryption errs out, asks for '' private key
+- Changes from 2.3:
+  - don't import whole key pair anymore if only pub/sec is requested
+  - gpg import routine informs on missing key files in profile now
+  - add check/import needed secret key for decryption
+  - featreq 50: Disable GPG key backups, implemented/added settings
+    GPG_IMPORT/GPG_EXPORT='disabled' to conf template
+
+-------------------------------------------------------------------
 Tue Sep  1 08:36:27 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.2.2:

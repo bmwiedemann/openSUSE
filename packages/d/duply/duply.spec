@@ -18,7 +18,7 @@
 
 
 Name:           duply
-Version:        2.2.2
+Version:        2.4
 Release:        0
 Summary:        A frontend for the "duplicity" backup program
 License:        GPL-2.0-only
