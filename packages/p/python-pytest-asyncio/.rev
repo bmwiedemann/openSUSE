@@ -82,4 +82,27 @@ required by mycroft-core</comment>
     <comment></comment>
     <requestid>947748</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f979a448361b9bd972be406d2e659092</srcmd5>
+    <version>0.18.3</version>
+    <time>1657114901</time>
+    <user>dimstar_suse</user>
+    <comment>- Inject multibuild to defeat a build loop 
+
+- Update to 0.18.3
+  * Adds pytest-trio to the test dependencies
+  * Fixes a bug that caused pytest-asyncio to try to set up async
+    pytest_trio fixtures in strict mode. #298
+- Release 0.18.2
+  * Fix asyncio auto mode not marking static methods. #295
+  * Fix a compatibility issue with Hypothesis 6.39.0. #302
+- Release 0.18.1
+  * Fixes a regression that prevented async fixtures from working
+    in synchronous tests. #286
+- Release 0.18.0
+  * Raise a warning if @pytest.mark.asyncio is applied to non-async
+    function. #275
+  * Support parametrized event_loop fixture. #278</comment>
+    <requestid>986981</requestid>
+  </revision>
 </revisionlist>

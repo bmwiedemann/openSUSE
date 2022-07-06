@@ -1,5 +1,5 @@
 #
-# spec file for package python-pytest-asyncio
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,29 +16,39 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python3-%{**}}
-Name:           python-pytest-asyncio
-Version:        0.17.2
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-pytest-asyncio%{psuffix}
+Version:        0.18.3
 Release:        0
 Summary:        Pytest support for asyncio
 License:        Apache-2.0
 URL:            https://github.com/pytest-dev/pytest-asyncio
 Source:         https://github.com/pytest-dev/pytest-asyncio/archive/v%{version}.tar.gz#/pytest-asyncio-%{version}.tar.gz
-BuildRequires:  %{python_module async_generator >= 1.3}
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module flaky >= 3.5.0}
-BuildRequires:  %{python_module hypothesis >= 5.7.1}
-BuildRequires:  %{python_module pytest >= 6.1.0}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 6.1.0
-%if 0%{python_version_nodots} < 38
-Requires:       python-typing-extensions >= 4
+%if 0%{?python_version_nodots} < 38
+Requires:       python-typing-extensions >= 3.7.2
 %endif
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module async_generator >= 1.3}
+BuildRequires:  %{python_module flaky >= 3.5.0}
+BuildRequires:  %{python_module hypothesis >= 5.7.1}
+BuildRequires:  %{python_module pytest >= 6.1.0}
+BuildRequires:  %{python_module pytest-asyncio = %{version}}
+BuildRequires:  %{python_module pytest-trio >= 0.7}
+%endif
 %python_subpackages
 
 %description
@@ -55,18 +65,24 @@ provides useful fixtures and markers to make testing easier.
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %python_build
 
+%if !%{with test}
 %install
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/pytest_asyncio
 %{python_sitelib}/pytest_asyncio-%{version}*-info
+%endif
 
 %changelog
