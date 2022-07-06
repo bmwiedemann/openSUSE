@@ -22,7 +22,7 @@
 # Project upstream commit.
 %define commit 685f328
 Name:           kured
-Version:        1.9.1
+Version:        1.10.1
 Release:        0
 Summary:        Kubernetes daemonset to perform safe automatic node reboots
 License:        Apache-2.0
@@ -34,7 +34,7 @@ Patch:          systemctl-path.patch
 Patch1:         kured-imagePullPolicy.patch
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
-BuildRequires:  golang(API) = 1.16
+BuildRequires:  golang(API) >= 1.17
 ExcludeArch:    s390
 
 %description

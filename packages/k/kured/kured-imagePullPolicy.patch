@@ -12,8 +12,8 @@ diff --git a/kured-ds.yaml b/kured-ds.yaml
 index 15869c4..b226865 100644
 --- a/kured-ds.yaml
 +++ b/kured-ds.yaml
-@@ -32,7 +32,7 @@ spec:
-           image: docker.io/weaveworks/kured:1.9.1
+@@ -34,7 +34,7 @@
+           image: docker.io/weaveworks/kured:1.10.1
                   # If you find yourself here wondering why there is no
                   # :latest tag on Docker Hub,see the FAQ in the README
 -          imagePullPolicy: IfNotPresent
@@ -21,6 +21,3 @@ index 15869c4..b226865 100644
            securityContext:
              privileged: true # Give permission to nsenter /proc/1/ns/mnt
            env:
--- 
-2.34.1
-
