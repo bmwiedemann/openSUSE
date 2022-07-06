@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Jun  9 01:49:36 UTC 2022 - Timothy Brown <stimut@gmail.com>
+
+- Update to 5.7.0
+  * Significant number of changes and bug fixes
+  * Resolves 38 CVEs
+    - CVE-2022-0139 - https://bugzilla.opensuse.org/show_bug.cgi?id=1195713
+    - CVE-2022-0173
+    - CVE-2022-0419 - https://bugzilla.opensuse.org/show_bug.cgi?id=1195444
+    - CVE-2022-0476 - https://bugzilla.opensuse.org/show_bug.cgi?id=1196414
+    - CVE-2022-0518 - https://bugzilla.opensuse.org/show_bug.cgi?id=1195746
+    - CVE-2022-0519 - https://bugzilla.opensuse.org/show_bug.cgi?id=1195761
+    - CVE-2022-0520 - https://bugzilla.opensuse.org/show_bug.cgi?id=1195741
+    - CVE-2022-0521 - https://bugzilla.opensuse.org/show_bug.cgi?id=1195760
+    - CVE-2022-0522 - https://bugzilla.opensuse.org/show_bug.cgi?id=1195742
+    - CVE-2022-0523 - https://bugzilla.opensuse.org/show_bug.cgi?id=1195720
+    - CVE-2022-0559 - https://bugzilla.opensuse.org/show_bug.cgi?id=1196052
+    - CVE-2022-0676 - https://bugzilla.opensuse.org/show_bug.cgi?id=1196345
+    - CVE-2022-0695 - https://bugzilla.opensuse.org/show_bug.cgi?id=1196484
+    - CVE-2022-0712 - https://bugzilla.opensuse.org/show_bug.cgi?id=1196320
+    - CVE-2022-0713 - https://bugzilla.opensuse.org/show_bug.cgi?id=1196319
+    - CVE-2022-0849 - https://bugzilla.opensuse.org/show_bug.cgi?id=1196819
+    - CVE-2022-1031 - https://bugzilla.opensuse.org/show_bug.cgi?id=1197420
+    - CVE-2022-1052 - https://bugzilla.opensuse.org/show_bug.cgi?id=1197509
+    - CVE-2022-1061 - https://bugzilla.opensuse.org/show_bug.cgi?id=1197508
+    - CVE-2022-1207 - https://bugzilla.opensuse.org/show_bug.cgi?id=1197991
+    - CVE-2022-1237 - https://bugzilla.opensuse.org/show_bug.cgi?id=1198185
+    - CVE-2022-1238 - https://bugzilla.opensuse.org/show_bug.cgi?id=1198186
+    - CVE-2022-1240 - https://bugzilla.opensuse.org/show_bug.cgi?id=1198187
+    - CVE-2022-1244 - https://bugzilla.opensuse.org/show_bug.cgi?id=1198132
+    - CVE-2022-1283 - https://bugzilla.opensuse.org/show_bug.cgi?id=1198291
+    - CVE-2022-1284 - https://bugzilla.opensuse.org/show_bug.cgi?id=1198292
+    - CVE-2022-1296 - https://bugzilla.opensuse.org/show_bug.cgi?id=1198375
+    - CVE-2022-1297 - https://bugzilla.opensuse.org/show_bug.cgi?id=1198376
+    - CVE-2022-1382 - https://bugzilla.opensuse.org/show_bug.cgi?id=1198592
+    - CVE-2022-1383 - https://bugzilla.opensuse.org/show_bug.cgi?id=1198593
+    - CVE-2022-1437 - https://bugzilla.opensuse.org/show_bug.cgi?id=1198804
+    - CVE-2022-1444 - https://bugzilla.opensuse.org/show_bug.cgi?id=1198805
+    - CVE-2022-1451 - https://bugzilla.opensuse.org/show_bug.cgi?id=1198807
+    - CVE-2022-1452 - https://bugzilla.opensuse.org/show_bug.cgi?id=1198808
+    - CVE-2022-1649 - https://bugzilla.opensuse.org/show_bug.cgi?id=1199418
+    - CVE-2022-1714 - https://bugzilla.opensuse.org/show_bug.cgi?id=1199555
+    - CVE-2022-1809 - https://bugzilla.opensuse.org/show_bug.cgi?id=1199806
+    - CVE-2022-1899 - https://bugzilla.opensuse.org/show_bug.cgi?id=1199972
+- Remove unneeded libewf dependency
+
+-------------------------------------------------------------------
 Tue Feb  1 09:04:08 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.5.4:

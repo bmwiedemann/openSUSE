@@ -17,7 +17,7 @@
 
 
 Name:           radare2
-Version:        5.5.4
+Version:        5.7.0
 Release:        0
 Summary:        Reverse Engineering Framework
 License:        GPL-3.0-only AND LGPL-3.0-only
@@ -31,7 +31,6 @@ BuildRequires:  git-core
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(capstone)
-BuildRequires:  pkgconfig(libewf)
 BuildRequires:  pkgconfig(libuv)
 BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(libzip)
