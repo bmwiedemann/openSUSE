@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 19 17:02:50 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+feat: Add noto-fonts and noto-sans-cjk-fonts to fonts_opt pattern
+remove: efont-unicode-bitmap-fonts and google-droid-sans from fonts_opt pattern
+- efont-unicode-bitmap-fonts has not been updated since 2003
+  noto-fonts and noto-sans-cjk-fonts should be a drop-in replacement
+- Google itself states that google-droid-fonts are superseded by Noto Fonts
+  * https://github.com/googlefonts/noto-fonts/blob/main/FAQ.md#how-does-noto-relate-to-droid
+fix: rpmlintrc filter, no-binary is now an error rather than warning
+
+-------------------------------------------------------------------
 Fri Dec  7 13:14:03 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
 
 - Adjust icons to state of yast2-theme package

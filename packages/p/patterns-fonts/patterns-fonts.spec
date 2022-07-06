@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-fonts
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Patterns for Installation (Fonts)
 License:        MIT
 Group:          Metapackages
-Url:            https://github.com/openSUSE/patterns
+URL:            https://github.com/openSUSE/patterns
 Source0:        %{name}-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  patterns-rpm-macros
@@ -36,8 +36,9 @@ not make sense.
 
 This particular package contains the Fonts patterns.
 
-################################################################################
 
+
+################################################################################
 %package fonts
 %pattern_graphicalenvironments
 Summary:        Fonts
@@ -48,12 +49,12 @@ Provides:       pattern-order() = 1700
 Provides:       pattern-visible()
 Recommends:     pattern() = fonts_opt
 
-Recommends:     ghostscript-fonts-std
-Recommends:     xorg-x11-fonts-core
-Recommends:     google-roboto-fonts
 Recommends:     dejavu-fonts
+Recommends:     ghostscript-fonts-std
+Recommends:     google-roboto-fonts
 Recommends:     intlfonts-euro-bitmap-fonts
 Recommends:     liberation-fonts
+Recommends:     xorg-x11-fonts-core
 # needed for instsys
 Suggests:       ipa-gothic-fonts
 Suggests:       ipa-mincho-fonts
@@ -80,16 +81,15 @@ Provides:       pattern-extends() = fonts
 Provides:       pattern-icon() = pattern-x11
 Provides:       pattern-order() = 1720
 
-Recommends:     efont-unicode-bitmap-fonts
-Recommends:     ghostscript-fonts-other
-Recommends:     xorg-x11-fonts
-Recommends:     google-droid-fonts
-Recommends:     noto-sans-fonts
 Recommends:     adobe-sourcecodepro-fonts
 Recommends:     adobe-sourcesanspro-fonts
 Recommends:     adobe-sourceserifpro-fonts
+Recommends:     ghostscript-fonts-other
+Recommends:     noto-fonts
+Recommends:     noto-sans-cjk-fonts
 Recommends:     stix-fonts
 Recommends:     texlive-lm-fonts
+Recommends:     xorg-x11-fonts
 
 %description fonts_opt
 Base fonts and font configuration.
