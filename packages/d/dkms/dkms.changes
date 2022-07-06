@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  8 13:53:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.8.4
+  * New kernel_install.d_dkms and sign_helper.sh scripts under /etc
+  * Fix support for /etc/sysconfig/kernel directory.
+  * Improve test dkms.conf file.
+  * Add support for zstd compressed modules.
+  * Document NO_WEAK_MODULES in the man page.
+  * Be more verbose when failing due to missing module.
+
+-------------------------------------------------------------------
 Wed Jun 12 14:45:13 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

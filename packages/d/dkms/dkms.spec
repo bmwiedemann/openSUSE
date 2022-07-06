@@ -1,7 +1,7 @@
 #
 # spec file for package dkms
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           dkms
-Version:        2.6.1
+Version:        2.8.4
 Release:        0
 Summary:        Dynamic Kernel Module Support Framework
 License:        GPL-2.0-only
 Group:          System/Kernel
 URL:            https://github.com/dell/dkms
-Source0:        https://github.com/dell/dkms/archive/v%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        dkms.service
 Source2:        dkms.systemd
 Source3:        dkms.default
@@ -42,6 +42,7 @@ Requires:       mktemp
 Requires:       modutils
 Requires:       sed
 Requires:       tar
+Requires:       zstd
 BuildArch:      noarch
 %systemd_requires
 
@@ -56,13 +57,13 @@ module RPMS as originally developed by Dell.
 %build
 
 %install
-make install DESTDIR=%{buildroot} \
-    SBIN=%{buildroot}%{_sbindir} \
-    VAR=%{buildroot}%{_localstatedir}/lib/%{name} \
-    MAN=%{buildroot}%{_mandir}/man8 \
-    ETC=%{buildroot}%{_sysconfdir}/%{name} \
-    BASHDIR=%{buildroot}%{_datadir}/bash-completion/completions \
-    LIBDIR=%{buildroot}%{_libexecdir}/%{name}
+%make_install \
+  SBIN=%{buildroot}%{_sbindir} \
+  VAR=%{buildroot}%{_localstatedir}/lib/%{name} \
+  MAN=%{buildroot}%{_mandir}/man8 \
+  ETC=%{buildroot}%{_sysconfdir}/%{name} \
+  BASHDIR=%{buildroot}%{_datadir}/bash-completion/completions \
+  LIBDIR=%{buildroot}%{_libexecdir}/%{name}
 make install-doc DESTDIR=%{buildroot} \
     DOCDIR=%{buildroot}%{_docdir}/%{name}
 
