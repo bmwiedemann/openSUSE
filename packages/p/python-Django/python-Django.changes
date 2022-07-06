@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  5 08:04:12 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.0.6
+  + CVE-2022-34265: Potential SQL injection via Trunc(kind) and
+    Extract(lookup_name) arguments
+
+-------------------------------------------------------------------
 Thu Jun  2 07:34:17 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 4.0.5
