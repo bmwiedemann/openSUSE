@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 21 13:25:10 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix broken sentry_sdk import, add remove_unused_sentry_sdk.patch
+  (boo#1199506)
+
+-------------------------------------------------------------------
 Sun Feb  6 21:54:29 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 4.13.1
