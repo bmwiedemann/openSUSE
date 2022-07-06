@@ -1,6 +1,8 @@
---- ./scripts/find-debuginfo.in.orig	2019-09-09 07:56:53.377788842 +0000
-+++ ./scripts/find-debuginfo.in	2019-10-02 11:11:56.878979662 +0000
-@@ -348,12 +348,18 @@ trap 'rm -rf "$temp"' EXIT
+Index: scripts/find-debuginfo.in
+===================================================================
+--- scripts/find-debuginfo.in.orig
++++ scripts/find-debuginfo.in
+@@ -412,12 +412,18 @@ trap 'rm -rf "$temp"' EXIT
  
  # Build a list of unstripped ELF files and their hardlinks
  touch "$temp/primary"
@@ -24,7 +26,7 @@
    if [ $nlinks -gt 1 ]; then
      var=seen_$inum
      if test -n "${!var}"; then
-@@ -386,6 +392,8 @@ do_file()
+@@ -450,6 +456,8 @@ do_file()
    if [ "$no_recompute_build_id" = "true" ]; then
      no_recompute="-n"
    fi
@@ -33,7 +35,7 @@
    id=$(${install_dir}/debugedit -b "$debug_base_name" -d "$debug_dest_name" \
  			      $no_recompute -i \
  			      ${build_id_seed:+--build-id-seed="$build_id_seed"} \
-@@ -413,17 +421,30 @@ do_file()
+@@ -477,17 +485,30 @@ do_file()
    # just has its file names collected and adjusted.
    case "$dn" in
    /usr/lib/debug/*)
@@ -71,7 +73,7 @@
  
    # strip -g implies we have full symtab, don't add mini symtab in that case.
    # It only makes sense to add a minisymtab for executables and shared
-@@ -581,12 +602,14 @@ if [ -s "$SOURCEFILE" ]; then
+@@ -646,12 +667,14 @@ if [ -s "$SOURCEFILE" ]; then
    # and non-standard modes may be inherented from original directories, fixup
    find "${RPM_BUILD_ROOT}${debug_dest_name}" -type d -print0 |
    xargs --no-run-if-empty -0 chmod 0755

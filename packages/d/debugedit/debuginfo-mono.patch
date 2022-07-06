@@ -1,6 +1,8 @@
---- ./scripts/find-debuginfo.in.orig	2017-12-01 15:40:27.006764372 +0000
-+++ ./scripts/find-debuginfo.in	2017-12-01 15:41:17.270619182 +0000
-@@ -348,6 +348,16 @@ while read nlinks inum f; do
+Index: scripts/find-debuginfo.in
+===================================================================
+--- scripts/find-debuginfo.in.orig
++++ scripts/find-debuginfo.in
+@@ -434,6 +434,16 @@ while read nlinks inum f; do
        ;;
      *) continue ;;
    esac

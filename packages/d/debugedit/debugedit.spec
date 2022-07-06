@@ -1,7 +1,7 @@
 #
 # spec file for package debugedit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,12 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           debugedit
 Version:        5.0
 Release:        0
 Summary:        Debuginfo extraction
 License:        GPL-3.0-or-later
 Group:          System/Packages
+#Git-Clone:     https://sourceware.org/git/debugedit.git
 URL:            https://www.sourceware.org/debugedit
 Source0:        https://sourceware.org/ftp/%{name}/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://sourceware.org/ftp/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
@@ -34,15 +36,25 @@ Patch5:         remove-bad-shift.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  help2man
-BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libdw)
+BuildRequires:  pkgconfig(libelf)
+Requires:       /usr/bin/gdb-add-index
+Requires:       binutils
+Requires:       coreutils
+Requires:       dwz
+Requires:       elfutils
+Requires:       findutils
+Requires:       gawk
+Requires:       grep
+Requires:       sed
+Requires:       xz
 
 %description
 debugedit provides programs and scripts for creating debuginfo and source file distributions,
 collect build-ids and rewrite source paths in DWARF data for debugging, tracing and profiling.
 
 %prep
-%autosetup -p1
+%autosetup -p0
 
 %build
 autoreconf -fiv
@@ -51,7 +63,6 @@ autoreconf -fiv
 
 %install
 %make_install
-
 
 %files
 %license COPYING3

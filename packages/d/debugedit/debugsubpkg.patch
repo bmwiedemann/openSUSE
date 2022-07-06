@@ -1,6 +1,8 @@
---- ./scripts/find-debuginfo.in.orig	2017-12-01 15:35:59.023537837 +0000
-+++ ./scripts/find-debuginfo.in	2017-12-01 15:36:30.351447397 +0000
-@@ -548,19 +548,25 @@ if $run_dwz \
+Index: scripts/find-debuginfo.in
+===================================================================
+--- scripts/find-debuginfo.in.orig
++++ scripts/find-debuginfo.in
+@@ -643,19 +643,25 @@ if $run_dwz \
    fi
  fi
  
