@@ -80,4 +80,12 @@ Fixed plugin directory (problem mentioned in SR 342476).</comment>
     <comment></comment>
     <requestid>812037</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4fbcb963486a30cce5a6ae9b410c64dd</srcmd5>
+    <version>0.9.5</version>
+    <time>1657114941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987133</requestid>
+  </revision>
 </revisionlist>

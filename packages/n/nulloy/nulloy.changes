@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul  4 14:10:12 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Update to v0.9.5
+- Remove incorporated patch reproducible.patch
+- Remove unneeded patch nulloy-QPainterPath-patch
+- Upstream changes:
+  *Tag editor
+  *Notify about new version once
+  *Other minor bug fixes
+
+-------------------------------------------------------------------
 Sat Jun  6 07:48:43 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Update to snapshot 0.8.2.pre61qt5.9b036e and fix qt5.15 build
