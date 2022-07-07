@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul  3 06:29:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to add Qt 6 support:
+  * 0001-Add-build-system-support-for-Qt6.patch
+- Build packages as multibuild flavors: qt5, qt6
+
+-------------------------------------------------------------------
 Sat Jul 17 21:59:24 UTC 2021 - Christopher Yeleighton <giecrilj@stegny.2a.pl>
 
 - Fix package URL

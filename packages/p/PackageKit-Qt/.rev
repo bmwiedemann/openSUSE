@@ -193,4 +193,14 @@ Comment: something is rotten with the license. I don't believe it's
 - Rename devel to %{pkqt}-devel (forwarded request 908402 from yecril71pl)</comment>
     <requestid>908597</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>a52e72dc8f5067d4d2f7e4dc09ac68f4</srcmd5>
+    <version>1.0.2</version>
+    <time>1657191387</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch to add Qt 6 support:
+  * 0001-Add-build-system-support-for-Qt6.patch
+- Build packages as multibuild flavors: qt5, qt6</comment>
+    <requestid>987164</requestid>
+  </revision>
 </revisionlist>

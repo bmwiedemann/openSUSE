@@ -1,7 +1,7 @@
 #
-# spec file for package PackageKit-Qt
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,45 @@
 #
 
 
+%global pkqt_flavor @BUILD_FLAVOR@%{nil}
+%if "%{pkqt_flavor}" == ""
+%define pkg_suffix -Qt
+ExclusiveArch:  do_not_build
+%endif
+%if "%{pkqt_flavor}" == "qt6"
+%define qt6 1
+%define pkg_suffix -Qt6
+%define pkqt   packagekitqt6
+%endif
+%if "%{pkqt_flavor}" == "qt5"
+%define qt5 1
+%define pkg_suffix -Qt5
 %define pkqt   packagekitqt5
+%endif
 %define major 1
-Name:           PackageKit-Qt
+Name:           PackageKit%{?pkg_suffix}
 Version:        1.0.2
 Release:        0
 Summary:        Simple software installation management software
 License:        LGPL-2.1-or-later
 Group:          System/Daemons
 URL:            https://github.com/hughsie/PackageKit-Qt
-Source:         https://github.com/hughsie/PackageKit-Qt/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/hughsie/PackageKit-Qt/archive/v%{version}.tar.gz#/PackageKit-Qt-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM boo#1103678
-Patch4:         0001-Fix-PackageKit-not-emitting-network-state-changed-signal.patch
+Patch0:         0001-Fix-PackageKit-not-emitting-network-state-changed-signal.patch
+# PATCH-FIX-UPSTREAM -- Qt6 support
+Patch1:         0001-Add-build-system-support-for-Qt6.patch
 BuildRequires:  PackageKit-devel >= %{version}
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Sql)
+%if 0%{?qt5}
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+%endif
+%if 0%{?qt6}
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+%endif
 
 %description
 PackageKit is a system designed to make installing and updating
@@ -57,12 +78,14 @@ suck less.
 Summary:        Simple software installation management software
 Group:          Development/Libraries/C and C++
 Requires:       lib%{pkqt}-%{major} = %{version}
+%if 0%{?qt5}
 # PackageKit-Qt used to be Qt4 based until 0.9.6; then it turned into a Qt5 package (no more Qt4 support)
 # For this reason, we now have to obsolete the former 2nd spec file names
-Provides:       %{name}-devel = %{version}
-Obsoletes:      %{name}-devel < %{version}
-Provides:       %{name}5-devel = %{version}
-Obsoletes:      %{name}5-devel < %{version}
+Provides:       PackageKit-Qt-devel = %{version}
+Obsoletes:      PackageKit-Qt-devel < %{version}
+Provides:       PackageKit-Qt5-devel = %{version}
+Obsoletes:      PackageKit-Qt5-devel < %{version}
+%endif
 
 %description -n %{pkqt}-devel
 PackageKit is a system designed to make installing and updating
@@ -72,21 +95,26 @@ use some of the latest technology like PolicyKit to make the process
 suck less.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1 -n PackageKit-Qt-%{version}
 
 %build
-mkdir build
-cd build
-# FIXME: you should use %%cmake macros
-cmake \
-  -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-  ..
-%make_build
+%if 0%{?qt5}
+%cmake
+%cmake_build
+%endif
+
+%if 0%{?qt6}
+%cmake_qt6
+%{qt6_build}
+%endif
 
 %install
-cd build
-%make_install
+%if 0%{?qt5}
+%cmake_install
+%endif
+%if 0%{?qt6}
+%qt6_install
+%endif
 
 %post -n lib%{pkqt}-%{major} -p /sbin/ldconfig
 %postun -n lib%{pkqt}-%{major} -p /sbin/ldconfig
@@ -94,13 +122,13 @@ cd build
 %files -n lib%{pkqt}-%{major}
 %license COPYING
 %doc NEWS AUTHORS README.md
-%{_libdir}/libpackagekitqt5.so.*
+%{_libdir}/libpackagekitqt?.so.*
 
 %files -n %{pkqt}-devel
 %doc TODO MAINTAINERS
-%{_libdir}/libpackagekitqt5.so
-%{_libdir}/cmake/packagekitqt5/
-%{_libdir}/pkgconfig/packagekitqt5.pc
-%{_includedir}/packagekitqt5/
+%{_libdir}/libpackagekitqt?.so
+%{_libdir}/cmake/packagekitqt?/
+%{_libdir}/pkgconfig/packagekitqt?.pc
+%{_includedir}/packagekitqt?/
 
 %changelog
