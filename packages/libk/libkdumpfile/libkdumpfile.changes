@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  7 08:46:49 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
+
+- libkdumpfile-live-source-Xen-DomU-type-from-sysfs.patch:
+  Determine live source Xen DomU type from sysfs (fixes a GCC 12
+  build failure).
+
+-------------------------------------------------------------------
 Thu Nov  4 13:58:13 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
 
 - upgrade to libkdumpfile-0.4.1

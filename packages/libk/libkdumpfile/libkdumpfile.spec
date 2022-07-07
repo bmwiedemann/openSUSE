@@ -1,7 +1,7 @@
 #
 # spec file for package libkdumpfile
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,7 @@ Group:          Development/Languages/Python
 %endif
 URL:            https://github.com/ptesarik/libkdumpfile
 Source:         https://github.com/ptesarik/libkdumpfile/releases/download/v%{version}/%{name}-%{version}.tar.bz2
+Patch1:         %{name}-live-source-Xen-DomU-type-from-sysfs.patch
 BuildRequires:  lzo-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
@@ -172,6 +173,7 @@ to develop applications that require libaddrxlat.
 
 %prep
 %setup -q
+%autopatch -p1
 
 # Avoid autotools recheck after patching config*
 touch aclocal.m4 Makefile.in config.h.in configure

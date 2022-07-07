@@ -148,4 +148,15 @@
 </comment>
     <requestid>929696</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>264a59088df2a92a80064af285e60354</srcmd5>
+    <version>0.4.1</version>
+    <time>1657191463</time>
+    <user>dimstar_suse</user>
+    <comment>- libkdumpfile-live-source-Xen-DomU-type-from-sysfs.patch:
+  Determine live source Xen DomU type from sysfs (fixes a GCC 12
+  build failure).
+</comment>
+    <requestid>987382</requestid>
+  </revision>
 </revisionlist>
