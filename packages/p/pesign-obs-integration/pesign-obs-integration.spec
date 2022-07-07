@@ -26,6 +26,8 @@ Group:          Development/Tools/Other
 URL:            https://en.opensuse.org/openSUSE:UEFI_Image_File_Sign_Tools
 Source:         %{name}-%{version}.tar.gz
 Patch:          order.patch
+Patch1:         attr.patch
+Patch2:         lang.patch
 BuildRequires:  openssl
 Requires:       fipscheck
 Requires:       mozilla-nss-tools
