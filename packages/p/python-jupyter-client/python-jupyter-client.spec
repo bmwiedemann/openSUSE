@@ -27,16 +27,15 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-jupyter-client%{psuffix}
-Version:        7.3.1
+Version:        7.3.4
 Release:        0
 Summary:        Jupyter protocol implementation and client libraries
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/jupyter_client
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_client/jupyter_client-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         jupyter-client-fix787-kernelwarningsfilter.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-jupyter_client = %{version}
@@ -44,17 +43,18 @@ Requires:       python-entrypoints
 Requires:       python-jupyter-core >= 4.9.2
 Requires:       python-nest-asyncio >= 1.5.4
 Requires:       python-python-dateutil >= 2.8.2
-Requires:       python-pyzmq >= 22.3
+Requires:       python-pyzmq >= 23.0
 Requires:       python-tornado >= 6.0
 Requires:       python-traitlets
 Provides:       python-jupyter_client = %{version}
 Obsoletes:      python-jupyter_client < %{version}
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module ipykernel}
+# gh#jupyter/jupyter_client#787
+BuildRequires:  %{python_module ipykernel >= 6.13}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module jupyter-client = %{version}}
-BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-asyncio >= 0.18}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 # flaky is not an upstream dep, but for obs flakyness of parallel kernel test
@@ -91,13 +91,14 @@ This package provides the jupyter components.
 
 %prep
 %autosetup -p1 -n jupyter_client-%{version}
+sed -i 's/--color=yes//' pyproject.toml
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 

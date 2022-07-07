@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 28 18:51:36 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 7.3.4
+  * Revert latest changes to ThreadedZMQSocketChannel because they
+    break Qtconsole #803 (@ccordoba12)
+  * Add local-provisioner entry point to pyproject.toml Fixes #800
+    #801 (@utkonos)
+  * Correct Any type annotations. #791 (@joouha)
+  * Use hatch backend #789 (@blink1073)
+- Remove jupyter-client-fix787-kernelwarningsfilter.patch, we
+  updated the ipykernel instead.
+
+-------------------------------------------------------------------
 Wed May 25 23:15:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add jupyter-client-fix787-kernelwarningsfilter.patch
