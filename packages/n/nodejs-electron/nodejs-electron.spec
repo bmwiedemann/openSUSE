@@ -98,7 +98,11 @@ BuildArch:      i686
 %bcond_without system_freetype
 
 # requires 3.4 (not in factory yet)
+%if 0%{?fedora} >= 37
+%bcond_without system_aom
+%else
 %bcond_with system_aom
+%endif
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora_version}
 %bcond_without system_crc32c
@@ -123,7 +127,7 @@ BuildArch:      i686
 %bcond_with system_nvctrl
 %endif
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora} >= 37
 %bcond_without system_spirv
 %else
 %bcond_with system_spirv
@@ -145,8 +149,12 @@ BuildArch:      i686
 
 %if 0%{?fedora}
 %bcond_without system_jxl
+%bcond_without system_llhttp
+%bcond_without system_histogram
 %else
 %bcond_with system_jxl
+%bcond_with system_llhttp
+%bcond_with system_histogram
 %endif
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400 || 0%{?fedora}
@@ -166,11 +174,24 @@ BuildArch:      i686
 %bcond_with system_abseil
 %endif
 
+# We always ship the following bundled libraries as part of Electron despite a system version being available in either openSUSE or Fedora:
+# Name         | Path in tarball                   | Reason
+# -------------+-----------------------------------+---------------------------------------
+# boringssl    | third_party/boringssl             | The openSUSE package is unmaintained.
+# flatbuffers  | third_party/flatbuffers           | The static library is only used during build, only header code is present in the Chromium binary.
+# hunspell     | third_party/hunspell/src          | Fork.
+# leveldb      | third_party/leveldatabase/src     | Internal api use.
+# protobuf     | third_party/protobuf              | Fork.
+# rnnoise      | third_party/rnnoise               | Internal api use.
+# sqlite       | third_party/sqlite                | Fork.
+# srtp / srtp2 | third_party/libsrtp               | Api matches neither version 1 nor 2 of this library.
+# uv           | third_party/electron_node/deps/uv | Heavily modified version which is exposed as part of Electron's public ABI.
+# yuv          | third_party/libyuv                | Version in Fedora (0-0.43.20201024git19d71f6) is too old.
 
 
 
 Name:           nodejs-electron
-Version:        19.0.7
+Version:        19.0.8
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        MIT
@@ -313,6 +334,10 @@ Patch63:        system-libbsd.patch
 # https://salsa.debian.org/chromium-team/chromium/-/blob/456851fc808b2a5b5c762921699994e957645917/debian/patches/upstream/nested-nested-nested-nested-nested-nested-regex-patterns.patch
 Patch64:        nested-nested-nested-nested-nested-nested-regex-patterns.patch
 Patch65:        base-system-nspr.patch
+# PATCH-FIX-UPSTREAM — Fedora patch to fix build with python3.11
+Patch66:        chromium-103.0.5060.53-python3-do-not-use-deprecated-mode-U.patch
+# from https://sources.debian.org/patches/chromium/103.0.5060.53-1/disable/catapult.patch/
+Patch67:        disable-catapult.patch
 %if %{with clang}
 BuildRequires:  clang
 BuildRequires:  lld
@@ -336,11 +361,17 @@ BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  gn >= 0.1807
 BuildRequires:  gperf
+%if %{with system_histogram}
+BuildRequires:  HdrHistogram_c-devel
+%endif
 BuildRequires:  hicolor-icon-theme
 # Java used during build
 BuildRequires:  java-openjdk-headless
 %if 0%{?fedora}
 BuildRequires:  libatomic
+%endif
+%if %{with system_aom}
+BuildRequires:  libaom-devel >= 3.4
 %endif
 BuildRequires:  libbsd-devel
 BuildRequires:  libpng-devel
@@ -349,6 +380,9 @@ BuildRequires:  libtiff-devel
 %endif
 %if %{with system_nvctrl}
 BuildRequires:  libXNVCtrl-devel
+%endif
+%if %{with system_llhttp}
+BuildRequires:  llhttp-devel
 %endif
 %if %{with system_llvm}
 BuildRequires:  llvm-devel
@@ -367,7 +401,7 @@ BuildRequires:  nodejs >= 16.5.0
 BuildRequires:  npm
 %endif
 BuildRequires:  pkgconfig
-BuildRequires:  python3-html5lib
+BuildRequires:  python3-six
 BuildRequires:  rsync
 BuildRequires:  snappy-devel
 %if 0%{?suse_version}
@@ -412,9 +446,6 @@ BuildRequires:  pkgconfig(absl_type_traits)
 BuildRequires:  pkgconfig(absl_variant)
 %endif
 BuildRequires:  pkgconfig(alsa)
-%if %{with system_aom}
-BuildRequires:  pkgconfig(aom) >= 3.4
-%endif
 BuildRequires:  pkgconfig(cairo) >= 1.6
 %if %{with system_dav1d}
 BuildRequires:  pkgconfig(dav1d) >= 1
@@ -723,7 +754,7 @@ gn_system_libraries+=( libavif )
 %endif
 
 %if %{with system_crc32c}
-find third_party/libavif -name *.[ch] -delete
+find third_party/crc32c -name *.[ch] -delete
 gn_system_libraries+=( crc32c )
 %endif
 
@@ -800,6 +831,14 @@ find third_party/electron_node/deps/cares -name *.[ch] -delete
 
 %if %{with system_nghttp2}
 find third_party/electron_node/deps/nghttp2 -name *.[ch] -delete
+%endif
+
+%if %{with system_llhttp}
+find third_party/electron_node/deps/llhttp -name *.[ch] -delete
+%endif
+
+%if %{with system_histogram}
+find third_party/electron_node/deps/histogram -name *.[ch] -delete
 %endif
 
 %if %{with system_llvm}
@@ -897,6 +936,12 @@ myconf_gn+=" use_system_cares=true"
 %endif
 %if %{with system_nghttp2}
 myconf_gn+=" use_system_nghttp2=true"
+%endif
+%if %{with system_llhttp}
+myconf_gn+=" use_system_llhttp=true"
+%endif
+%if %{with system_histogram}
+myconf_gn+=" use_system_histogram=true"
 %endif
 %if %{with clang}
 myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"

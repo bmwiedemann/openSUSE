@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul  6 21:57:42 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 19.0.8
+  * Updated Chromium to 102.0.5005.148
+  * Fixed an issue where DataList bounds had part of the item text cut off vertically.
+- Add disable-catapult.patch
+  * This nukular solution from Debian avoids building telemetry code which was causing hangs during build on Rawhide.
+- Add chromium-103.0.5060.53-python3-do-not-use-deprecated-mode-U.patch
+  * Fixes build with python 3.11
+- Use system llhttp and HDR-Histogram on all Fedora versions
+- Additionally use system abseil, aom, dav1d, spirv on Fedora 37 Rawhide
+- Fix bundled crc32c headers incorrectly getting used instead of system ones.
+
+-------------------------------------------------------------------
 Sat Jul  2 09:16:30 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Update to 19.0.7:
   * Breaking change: nativeWindowOpen removed
