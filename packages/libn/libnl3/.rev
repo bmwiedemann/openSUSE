@@ -336,4 +336,12 @@ Dunno.</comment>
     <comment>- Update to release 3.6.0</comment>
     <requestid>970360</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>208a1bf9380dd6ed5624315142f80061</srcmd5>
+    <version>3.7.0</version>
+    <time>1657191363</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.7</comment>
+    <requestid>987268</requestid>
+  </revision>
 </revisionlist>

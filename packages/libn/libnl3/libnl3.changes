@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  6 15:41:36 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.7
+  * route/mdb: fix buffer overflow in mdb_msg_parser()
+  * route/act: add NAT action
+
+-------------------------------------------------------------------
 Fri Apr 15 09:42:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.6.0

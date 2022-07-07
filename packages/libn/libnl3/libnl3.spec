@@ -19,8 +19,8 @@
 Name:           libnl3
 %define lname	libnl3-200
 %define with_tools 1
-%define uver	3_6_0
-Version:        3.6.0
+%define uver	3_7_0
+Version:        3.7.0
 Release:        0
 Summary:        Convenience library for working with Netlink sockets
 License:        GPL-2.0-only AND LGPL-2.1-only
