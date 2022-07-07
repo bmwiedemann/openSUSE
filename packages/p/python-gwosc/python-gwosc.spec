@@ -17,7 +17,6 @@
 
 
 %define modname gwosc
-# Disable python2 until py2 tests are fixed
 %define         skip_python2 1
 Name:           python-gwosc
 Version:        0.6.1
@@ -25,8 +24,10 @@ Release:        0
 Summary:        Python interface to the Gravitational-Wave Open Data Center archive
 License:        MIT
 URL:            https://gwosc.readthedocs.io/en/latest/
-# Don't use sources directly from github, see https://github.com/gwpy/gwosc/issues/55
-Source:         https://pypi.io/packages/source/g/%{modname}/%{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/%{modname}/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gwosc-pytest-warns.patch -- part of https://git.ligo.org/gwosc/client/-/merge_requests/80
+Patch1:         https://git.ligo.org/gwosc/client/-/commit/e61e89ea23407d9ca92d19156289a86c00bc01ff.patch#/gwosc-pytest-warns.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -34,8 +35,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION For tests
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests >= 1.0.0}
 BuildRequires:  %{python_module requests-mock}
 # /SECTION
+Requires:       python-requests >= 1.0.0
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -44,7 +48,8 @@ releases hosted on https://gw-openscience.org from the GEO, LIGO, and
 Virgo gravitational-wave observatories.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
+sed -i 's/--color=yes//' pyproject.toml
 
 %build
 %python_build
@@ -55,8 +60,10 @@ Virgo gravitational-wave observatories.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/%{modname}/
 
 %check
-# requests_mock too old for 15.1
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150100
+# macro missing for <SLE-15-SP1, (is the science project still supporting that?)
+%{?!pytest:%define pytest py.test}
+# requests_mock too old for <= 15.1
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} <= 150100
 %pytest -k "not remote and not test_fetch_json_local"
 %else
 %pytest -k "not remote"
@@ -66,6 +73,6 @@ Virgo gravitational-wave observatories.
 %license LICENSE
 %doc README.md
 %{python_sitelib}/%{modname}
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{modname}-%{version}*-info/
 
 %changelog

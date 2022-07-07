@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul  3 18:55:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean up specfile
+- Add gwosc-pytest-warns.patch
+  * Fixes pytest.PytestRemovedIn8Warning errors with newer pytest
+  * part of https://git.ligo.org/gwosc/client/-/merge_requests/80
+- Update Source for canonical PyPI hosted URL
+- The setup.py just calls setuptools PEP517 style. Use up to date
+  pip instead of the vendored one by the Python interpreter.
+- Add missing runtime requirement on python-requests.
+
+-------------------------------------------------------------------
 Thu Jan 20 15:42:55 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.6.1: No changelog.
