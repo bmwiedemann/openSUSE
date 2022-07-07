@@ -124,4 +124,12 @@
       that sink, then the virtual sink presented by echo-cancel</comment>
     <requestid>976983</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d4c8bc60540bbbec83c4e47767c895e9</srcmd5>
+    <version>0.4.11</version>
+    <time>1657191394</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987251</requestid>
+  </revision>
 </revisionlist>

@@ -4,13 +4,13 @@ Subject: Reduce the minimum required meson version
 With this, we can build wireplumber in SLE 15 SP3/Leap 15.3
 which only have meson 0.54
 
-Index: wireplumber-0.4.10/meson.build
+Index: wireplumber-0.4.11/meson.build
 ===================================================================
---- wireplumber-0.4.10.orig/meson.build
-+++ wireplumber-0.4.10/meson.build
+--- wireplumber-0.4.11.orig/meson.build
++++ wireplumber-0.4.11/meson.build
 @@ -1,7 +1,7 @@
  project('wireplumber', ['c'],
-   version : '0.4.10',
+   version : '0.4.11',
    license : 'MIT',
 -  meson_version : '>= 0.59.0',
 +  meson_version : '>= 0.54.0',
@@ -18,7 +18,7 @@ Index: wireplumber-0.4.10/meson.build
      'warning_level=1',
      'buildtype=debugoptimized',
 @@ -42,7 +42,11 @@ spa_dep = dependency('libspa-0.2', versi
- pipewire_dep = dependency('libpipewire-0.3', version: '>= 0.3.48')
+ pipewire_dep = dependency('libpipewire-0.3', version: '>= 0.3.52')
  mathlib = cc.find_library('m')
  threads_dep = dependency('threads')
 -libintl_dep = dependency('intl')
