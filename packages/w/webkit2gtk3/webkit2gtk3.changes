@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul  5 15:16:48 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.36.4 (boo#1201221):
+  + Fix the new ATSPI accessibility implementation to add the missing
+    Collection interface for the loaded document.
+  + Fix the MediaSession implementation to make the MPRIS object
+    names more sandbox friendly, which plays better with Flatpak
+    and WebKit's own Bubblwrap-based sandboxing.
+  + Fix leaked Web Processes in some particular situations.
+  + Fix the build with media capture support enabled.
+  + Fix cross-compilation when targeting 64-bit ARM.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2022-22677, CVE-2022-26710.
+- Add webkit2gtk3-fix-build.patch: fix the build.
+
+-------------------------------------------------------------------
 Sun May 29 19:07:38 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.36.3 (boo#1200106):
@@ -75,7 +91,8 @@ Mon Mar 21 19:45:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
     schemes.
   + Make user interactive threads (event handler, scrolling, …)
     real time in linux.
-  + Security fixes: CVE-2022-22624, CVE-2022-22628, CVE-2022-22629.
+  + Security fixes: CVE-2022-22624, CVE-2022-22628, CVE-2022-22629,
+    CVE-2022-22662.
 
 -------------------------------------------------------------------
 Mon Feb 28 01:29:27 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
