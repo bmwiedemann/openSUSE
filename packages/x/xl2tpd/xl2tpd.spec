@@ -1,7 +1,7 @@
 #
 # spec file for package xl2tpd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define rundir /run
 %endif
 Name:           xl2tpd
-Version:        1.3.16
+Version:        1.3.17
 Release:        0
 Summary:        Layer 2 Tunnelling Protocol Daemon (RFC 2661)
 License:        GPL-2.0-only
