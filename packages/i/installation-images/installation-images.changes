@@ -1,4 +1,20 @@
 --------------------------------------------------------------------
+Thu Jul 7 07:52:35 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#601
+- add edid-write tool to create EDID data (bsc#1199020)
+- ensure /usr/lib/firmware directory is writable (and not on a
+  read-only file system)
+- 17.56
+
+--------------------------------------------------------------------
+Wed Jul 6 12:44:02 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#600
+- pam config moved to /usr/lib/pam.d
+- 17.55
+
+--------------------------------------------------------------------
 Wed Jun 8 09:36:55 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#597
