@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 07 03:22:55 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1657137732.c5622d5:
+  * Allow configuring results to collapse as parallel children on overview
+  * apparmor: Allow mktemp needed by git-call
+  * Clarify client documentation about --accept option
+  * Add custom live review resolution
+  * Add custom resolution to needle editor
+  * Display custom screenshot resolution in webUI
+
+-------------------------------------------------------------------
 Mon Jul 04 19:22:50 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1656945135.425b473:
