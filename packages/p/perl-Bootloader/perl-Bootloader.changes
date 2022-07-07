@@ -1,3 +1,9 @@
+-------------------------------------------------------------------
+Mon Jun 20 12:41:29 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d.
+
 --------------------------------------------------------------------
 Wed Apr 27 14:22:43 UTC 2022 - wfeldt@opensuse.org
 

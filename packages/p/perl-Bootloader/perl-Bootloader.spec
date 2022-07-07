@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Bootloader
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -52,7 +52,6 @@ Group:          System/Boot
 %description YAML
 A command line interface to perl-Bootloader using YAML files for input and output.
 
-
 %prep
 %setup -q
 
@@ -89,6 +88,11 @@ rm -f $RPM_BUILD_ROOT/%{perl_vendorlib}/Bootloader/Core/{LILO*,GRUB*,ZIPL*,Power
 sed -i '/ZIPL/D;/PowerLILO/D;/\/LILO/D;/GRUB/D;' $RPM_BUILD_ROOT/%{perl_vendorarch}/auto/Bootloader/.packlist
 %endif
 %endif
+# move logrotate files from /etc/logrotate.d to /usr/etc/logrotate.d
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/pbl %{buildroot}%{_distconfdir}/logrotate.d
+%endif
 
 %post
 echo -n >>/var/log/pbl.log
@@ -107,7 +111,11 @@ chmod 600 /var/log/pbl.log
 /sbin/pbl
 /usr/lib/bootloader
 /boot/boot.readme
-/etc/logrotate.d/pbl
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/pbl
+%else
+%config(noreplace) %{_sysconfdir}/logrotate.d/pbl
+%endif
 %dir %attr(0700,root,root) /var/log/YaST2
 %ghost %attr(0600,root,root) /var/log/pbl.log
 
