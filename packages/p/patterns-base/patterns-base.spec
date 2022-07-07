@@ -166,8 +166,12 @@ Suggests:       openssl-1_1
 Suggests:       postfix
 # We have two providers of psmisc, favour the regular one (not the busybox one)
 Suggests:       psmisc
-# we have two providers for 'pulseaudio' - prefer the real one for the time being
+# we have two providers for 'pulseaudio' - prefer pipewire or pipewire depending on suse_version
+%if 0%{?suse_version} > 1500
+Suggests:       pipewire-pulseaudio
+%else
 Suggests:       pulseaudio
+%endif
 # hint for aaa_base requiring /usr/bin/xz
 Suggests:       xz
 %{obsolete_legacy_pattern base}
