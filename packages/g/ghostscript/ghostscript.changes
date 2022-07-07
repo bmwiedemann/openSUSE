@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 13 11:12:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use system zlib (bsc#1198449) 
+
+-------------------------------------------------------------------
 Thu Apr  7 08:14:51 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Do no longer require apparmor-abstractions, it is not mandatory

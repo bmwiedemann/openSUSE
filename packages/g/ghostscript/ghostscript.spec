@@ -346,6 +346,7 @@ rm -rf freetype jpeg libpng tiff
 %if 0%{?suse_version} >= 1550
 rm -rf openjpeg
 %endif
+rm -rf zlib
 # In contrast to the above we use lcms2 from SUSE since Ghostscript 9.23rc1
 # because that is what Ghostscript upstream recommends according to
 # https://ghostscript.com/pipermail/gs-devel/2018-March/010061.html
@@ -413,6 +414,7 @@ export SUSE_ASNEEDED=0
             --enable-openjpeg \
             --enable-dynamic \
             --disable-compile-inits \
+	    --without-local-zlib \
             --with-ijs \
             --enable-cups \
             --with-drivers=ALL \
