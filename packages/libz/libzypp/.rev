@@ -3389,4 +3389,12 @@
     <comment>Softwarestack update</comment>
     <requestid>982788</requestid>
   </revision>
+  <revision rev="460" vrev="1">
+    <srcmd5>0382b84c6d43765e57203ea08a8e20e5</srcmd5>
+    <version>17.30.3</version>
+    <time>1657191412</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build failure for gcc12 package that is blocking a staging project.</comment>
+    <requestid>987363</requestid>
+  </revision>
 </revisionlist>
