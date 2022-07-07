@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 07 07:08:21 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.4.2:
+  * fix configmap filename file path (#2864) (#2900)
+  * fix github actions release script (#2865)
+
+-------------------------------------------------------------------
 Fri Jul 01 10:54:47 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.4.1:
