@@ -214,6 +214,10 @@ for i in api ext jcl jdk14 reload4j nop simple; do
   ln -sf ${i}.jar %{buildroot}%{_javadir}/%{name}/%{name}-${i}.jar
 done
 
+# Compatibility symlink
+ln -sf reload4j.jar %{buildroot}%{_javadir}/%{name}/log4j12.jar
+ln -sf reload4j.jar %{buildroot}%{_javadir}/%{name}/%{name}-log4j12.jar
+
 for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
   install -m 644 ${i}/target/${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/${i}.jar
 done
@@ -290,6 +294,7 @@ rm -rf target/site
 
 %files reload4j -f .mfiles-reload4j
 %{_javadir}/%{name}/%{name}-reload4j.jar
+%{_javadir}/%{name}/*log4j12.jar
 
 %files jcl -f .mfiles-jcl
 %{_javadir}/%{name}/%{name}-jcl.jar

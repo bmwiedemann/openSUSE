@@ -241,4 +241,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963010</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>2d80492a3444ae26bc6c2b4862c1e5ef</srcmd5>
+    <version>1.7.36</version>
+    <time>1657191389</time>
+    <user>dimstar_suse</user>
+    <comment>compatibility symlink</comment>
+    <requestid>987193</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  6 12:30:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Add symlink to reload4j -> log4j12 for applications that expect
+  that name.
+
+-------------------------------------------------------------------
 Sat Mar 19 08:06:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source/target levels 8
