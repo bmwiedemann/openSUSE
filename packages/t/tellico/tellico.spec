@@ -69,7 +69,8 @@ BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(poppler-qt5)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(yaz)
-Recommends:     %{name}-lang = %{version}
+# Needed to install/uninstall knewstuff downloads
+Requires:       /usr/bin/dbus-send
 # QWebEngine is not available on ppc
 %ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
 BuildRequires:  cmake(Qt5WebEngineWidgets)

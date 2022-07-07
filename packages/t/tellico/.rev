@@ -720,4 +720,12 @@
     <comment></comment>
     <requestid>955632</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>20c8345ba05409b37427ddee5b21a500</srcmd5>
+    <version>3.4.4</version>
+    <time>1657191429</time>
+    <user>dimstar_suse</user>
+    <comment>require/recommend dbus-send (forwarded request 986985 from cgiboudeaux)</comment>
+    <requestid>987207</requestid>
+  </revision>
 </revisionlist>

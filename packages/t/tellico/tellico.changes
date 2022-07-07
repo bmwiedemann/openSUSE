@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  6 06:22:18 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Require dbus-send. Needed to install/uninstall scripts
+  downloaded using knewstuff
+
+-------------------------------------------------------------------
 Thu Feb 17 12:41:53 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 3.4.4
