@@ -302,9 +302,17 @@ Recommends:     gpgme
 Recommends:     libgnomesu
 Recommends:     nautilus
 Recommends:     polkit-default-privs
+
+%if 0%{?suse_version} > 1500
+# Pipewire is the default sound server
+Recommends:     pipewire
+Recommends:     pipewire-pulseaudio
+%else
 # Pulseaudio is the default sound server
 Recommends:     pulseaudio-module-gsettings
 Recommends:     pulseaudio-module-x11
+%endif
+
 # #509829
 Recommends:     xdg-user-dirs-gtk
 Recommends:     yelp

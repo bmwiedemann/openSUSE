@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  5 09:38:43 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Replace pulseaudio with pipewire as the default audio server
+  in TW.
+
+-------------------------------------------------------------------
 Thu Apr 28 03:17:13 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
 
 - Enable bijiben for default installation on SLE as well
