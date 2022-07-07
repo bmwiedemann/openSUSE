@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul  4 15:45:06 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 20220609:
+  + Add fn decl needed for sphinxtrain, bio_fread_intv_3d.
+  + Update OpenAL header location.
+  + Silence warning about distutils deprecated in python 3.10.
+  + Make use of stdbool.h when generating Python interface.
+  + Change python req from 2.6 to 3.0.
+- Add explicit dep on libsphinxbase3 from -devel package: the
+  installed .so symlinks to the real library, which mandates the
+  dependency (fixes rpmlint warning).
+
+-------------------------------------------------------------------
 Thu Mar 26 10:05:32 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Changed version format to 5~git20200206.4ffc4b7 as that can be

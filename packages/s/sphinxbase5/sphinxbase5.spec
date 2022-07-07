@@ -1,7 +1,7 @@
 #
-# spec file for package sphinxbase
+# spec file for package sphinxbase5
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,14 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sover 3
 Name:           sphinxbase5
-Version:        5~git20200206.4ffc4b7
+Version:        5~git20220609.617e536
 Release:        0
 Summary:        Support library required by Pocketsphinx
 License:        BSD-2-Clause AND MIT
 Group:          Productivity/Office/Other
-Url:            http://cmusphinx.sourceforge.net/wiki/download/
+URL:            http://cmusphinx.sourceforge.net/wiki/download/
 Source:         sphinxbase-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM initialize some variables before usage
 Patch0:         sphinxbase-initialize-vars.patch
@@ -32,16 +33,16 @@ BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+BuildRequires:  lapack-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
-BuildRequires:  python3-Cython
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-Cython
+BuildRequires:  python3-devel
 BuildRequires:  swig
-BuildRequires:  lapack-devel
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description
 CMU Sphinx toolkit is a speech recognition tool and has a number of packages for
@@ -62,6 +63,7 @@ Requires:       %{name} = %{version}
 Requires:       alsa-devel
 Requires:       lapack-devel
 Requires:       libsndfile-devel
+Requires:       libsphinxbase%{sover} = %{version}
 Conflicts:      sphinxbase-devel
 
 %description devel
@@ -74,8 +76,8 @@ different tasks and applications.
 Summary:        Python bindings for sphinxbase required by python-pocketsphinx
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
-Conflicts:      python3-sphinxbase
 Conflicts:      python3-pocketsphinx-python <= 0.1.3
+Conflicts:      python3-sphinxbase
 
 %description -n python3-sphinxbase5
 Python3 bindings for %{name}-%{version}
