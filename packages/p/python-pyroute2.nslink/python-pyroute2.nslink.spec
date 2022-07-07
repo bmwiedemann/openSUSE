@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyroute2.nslink
-Version:        0.6.9
+Version:        0.6.13
 Release:        0
 Summary:        Python Netlink library: the nslink
 License:        Apache-2.0 OR GPL-2.0-or-later
