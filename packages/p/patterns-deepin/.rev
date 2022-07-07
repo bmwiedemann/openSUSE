@@ -59,4 +59,12 @@
   * Change Suggests tag to Recommends tag for deepin-feature-enable</comment>
     <requestid>980602</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a140baed892fb134ba3cc536135d5823</srcmd5>
+    <version>15.4.20220603</version>
+    <time>1657191416</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986980</requestid>
+  </revision>
 </revisionlist>

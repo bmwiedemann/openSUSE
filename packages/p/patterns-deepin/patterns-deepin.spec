@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-deepin
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Patterns for Installation (Deepin)
 License:        MIT
 Group:          Metapackages
-Url:            https://github.com/openSUSE/patterns
+URL:            https://github.com/openSUSE/patterns
 Source0:        %{name}-rpmlintrc
 BuildRequires:  patterns-rpm-macros
 
@@ -44,28 +44,28 @@ Provides:       pattern-icon() = pattern-deepin
 Provides:       pattern-order() = 1625
 Provides:       pattern-visible()
 Requires:       pattern() = deepin_basis
-Recommends:     pattern() = games
-Recommends:     pattern() = imaging
 Recommends:     pattern() = deepin_admin
 Recommends:     pattern() = deepin_internet
 Recommends:     pattern() = deepin_multimedia
-Recommends:     pattern() = office
 Recommends:     pattern() = deepin_office
+Recommends:     pattern() = games
+Recommends:     pattern() = imaging
+Recommends:     pattern() = office
 Suggests:       pattern() = deepin_utilities
 # The third part application
 Recommends:     blueberry
 Recommends:     brasero
 # Deepin application
 Recommends:     deepin-system-monitor
-Recommends:     deepin-turbo
-Recommends:     deepin-wallpapers
-Recommends:     deepin-terminal
 Recommends:     deepin-compressor
 Recommends:     deepin-editor
+Recommends:     deepin-terminal
+Recommends:     deepin-turbo
+Recommends:     deepin-wallpapers
 # Tool for advanced configuration of printers, instead of deepin-printer
 Recommends:     system-config-printer-applet
-Recommends:     system-config-printer
 Recommends:     deepin-manual
+Recommends:     system-config-printer
 Suggests:       deepin-wallpapers-community
 Suggests:       deepin-feature-enable
 Suggests:       deepin-system-monitor
@@ -93,9 +93,9 @@ Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 2060
 Requires:       pattern() = basesystem
 Requires:       pattern() = x11
-Recommends:     gnome-packagekit
-Recommends:     deepin-system-monitor
 Recommends:     deepin-clone
+Recommends:     deepin-system-monitor
+Recommends:     gnome-packagekit
 Recommends:     remmina
 # workaround wireless networks issue for deepin-control-center
 Suggests:       NetworkManager-applet
@@ -114,8 +114,6 @@ Group:          Metapackages
 Provides:       pattern() = deepin_basis
 Provides:       pattern-icon() = pattern-deepin
 Provides:       pattern-order() = 1620
-Requires:       pattern() = basesystem
-Requires:       pattern() = x11
 Requires:       deepin-account-faces
 Requires:       deepin-api
 Requires:       deepin-control-center
@@ -136,19 +134,21 @@ Requires:       deepin-pw-check
 Requires:       deepin-session-shell
 Requires:       deepin-session-ui
 Requires:       deepin-start
+Requires:       pattern() = basesystem
+Requires:       pattern() = x11
 # Requires:       libqt5-dwaylandplugin
 Requires:       libqt5-dxcbplugin
 # Requires:       libqt5-kwayland-shellplugin
 Requires:       qt5integration
-Recommends:     sddm
-Recommends:     deepin-api-dbus
-Recommends:     deepin-api-polkit
-Recommends:     deepin-daemon-dbus 
-Recommends:     deepin-daemon-polkit
-Recommends:     deepin-sound-theme
 Recommends:     NetworkManager
 Recommends:     dbus-1-x11
+Recommends:     deepin-api-dbus
+Recommends:     deepin-api-polkit
+Recommends:     deepin-daemon-dbus
+Recommends:     deepin-daemon-polkit
+Recommends:     deepin-sound-theme
 Recommends:     desktop-file-utils
+Recommends:     sddm
 # We want useful bug reports.
 Recommends:     gdb
 Recommends:     gpg2
@@ -161,9 +161,9 @@ Recommends:     susehelp
 #
 Recommends:     deepin-desktop-schemas-branding-openSUSE
 Recommends:     deepin-launcher-branding-openSUSE
-Recommends:     wallpaper-branding-openSUSE
-Recommends:     libsocialweb-branding-openSUSE
 Recommends:     desktop-branding
+Recommends:     libsocialweb-branding-openSUSE
+Recommends:     wallpaper-branding-openSUSE
 #
 # Now the real packages
 #
@@ -174,20 +174,25 @@ Recommends:     gnome-keyring
 Recommends:     shared-mime-info
 Recommends:     xkeyboard-config
 Recommends:     yelp
+%if 0%{suse_version} > 1500
+# Pipewire is the default sound server.
+Recommends:     pipewire-pulseaudio
+%else
 # PulseAudio is the default sound server.
 Recommends:     pulseaudio-module-bluetooth
 Recommends:     pulseaudio-module-lirc
 Recommends:     pulseaudio-module-x11
 Recommends:     pulseaudio-module-zeroconf
+%endif
 Recommends:     pulseaudio-utils
 # We need something for xdg-su.
 Recommends:     libgnomesu
-Recommends:     google-droid-fonts
 Recommends:     MozillaFirefox
-Recommends:     desktop-data-openSUSE
 Recommends:     avahi
-Recommends:     xdg-user-dirs
 Recommends:     deepin-feature-enable
+Recommends:     desktop-data-openSUSE
+Recommends:     google-droid-fonts
+Recommends:     xdg-user-dirs
 # metalink downloader
 Suggests:       aria2
 
@@ -206,15 +211,14 @@ Provides:       pattern() = deepin_internet
 Provides:       pattern-extends() = deepin
 Provides:       pattern-icon() = package_deepin
 Provides:       pattern-order() = 2431
-Recommends:     pidgin
 Recommends:     MozillaThunderbird
+Recommends:     NetworkManager-openconnect
 Recommends:     NetworkManager-openvpn
 Recommends:     NetworkManager-pptp
 Recommends:     NetworkManager-vpnc
-Recommends:     NetworkManager-openconnect
+Recommends:     pidgin
 Recommends:     uget
 Suggests:       linphone
-
 
 %description deepin_internet
 Deepin Internet Applications.
@@ -232,14 +236,14 @@ Provides:       pattern-extends() = multimedia
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 2270
 Supplements:    packageand(patterns-deepin:patterns-multimedia)
-Requires:       pattern() = deepin
 Requires:       vlc
+Requires:       pattern() = deepin
 Recommends:     deepin-image-viewer
-Recommends:     deepin-screen-recorder
-Recommends:     deepin-music-player
 Recommends:     deepin-movie
-Recommends:     osdlyrics
+Recommends:     deepin-music-player
+Recommends:     deepin-screen-recorder
 Recommends:     gimp
+Recommends:     osdlyrics
 Recommends:     patterns-desktop-multimedia
 Suggests:       deepin-draw
 
@@ -260,9 +264,9 @@ Provides:       pattern-icon() = pattern-deepin
 Provides:       pattern-order() = 2270
 Supplements:    packageand(patterns-deepin:patterns-office)
 Requires:       pattern() = deepin_basis
-Recommends:     pattern() = deepin_office_opt
-Recommends:     libreoffice-gtk3
 Recommends:     deepin-reader
+Recommends:     libreoffice-gtk3
+Recommends:     pattern() = deepin_office_opt
 
 %description deepin_office
 Deepin Office
@@ -281,10 +285,10 @@ Provides:       pattern-icon() = pattern-deepin
 Provides:       pattern-order() = 2271
 Supplements:    packageand(patterns-deepin:patterns-office)
 Requires:       pattern() = deepin_basis
-Recommends:     deepin-voice-note
-Recommends:     simple-scan
 Recommends:     deepin-calculator
 Recommends:     deepin-calendar
+Recommends:     deepin-voice-note
+Recommends:     simple-scan
 
 %description deepin_office_opt
 Deepin Office
@@ -302,9 +306,9 @@ Provides:       pattern-extends() = deepin
 Provides:       pattern-icon() = pattern-deepin
 Provides:       pattern-order() = 2310
 Requires:       pattern() = deepin_basis
-Recommends:     deepin-screen-recorder
-Recommends:     deepin-draw
 Recommends:     cheese
+Recommends:     deepin-draw
+Recommends:     deepin-screen-recorder
 
 %description deepin_utilities
 Deepin Utilities
@@ -328,4 +332,3 @@ for i in deepin deepin_admin deepin_basis deepin_multimedia deepin_internet \
 done
 
 %changelog
-
