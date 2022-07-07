@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  4 21:29:11 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 14.0.6.
+  * This release contains bug-fixes for the LLVM 14.0.0 release.
+    This release is API and ABI compatible with 14.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch. 
+
+-------------------------------------------------------------------
 Thu Jun 16 16:44:07 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 14.0.5.

@@ -95,4 +95,16 @@ disable the corresponding tests.
 </comment>
     <requestid>983702</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4b915b6c216855d5014c42dc50051c4f</srcmd5>
+    <version>14.0.6</version>
+    <time>1657191367</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 14.0.6.
+  * This release contains bug-fixes for the LLVM 14.0.0 release.
+    This release is API and ABI compatible with 14.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch. 
+</comment>
+    <requestid>986923</requestid>
+  </revision>
 </revisionlist>
