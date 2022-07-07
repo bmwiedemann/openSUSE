@@ -188,10 +188,10 @@ fi
 %dir %{_sysconfdir}/iscsi/ifaces
 %config %{_sysconfdir}/iscsi/ifaces/iface.example
 %{_sysconfdir}/iscsid.conf
-%{_unitdir}/iscsid.service
-%{_unitdir}/iscsid.socket
-%{_unitdir}/iscsi-init.service
-%{_unitdir}/iscsi.service
+%attr(0644,root,root) %{_unitdir}/iscsid.service
+%attr(0644,root,root) %{_unitdir}/iscsid.socket
+%attr(0644,root,root) %{_unitdir}/iscsi-init.service
+%attr(0644,root,root) %{_unitdir}/iscsi.service
 %{_systemdgeneratordir}/ibft-rule-generator
 %{_sbindir}/rciscsi
 %{_sbindir}/rciscsid
@@ -228,8 +228,8 @@ fi
 %else
 %config %{_sysconfdir}/logrotate.d/iscsiuio
 %endif
-%{_unitdir}/iscsiuio.service
-%{_unitdir}/iscsiuio.socket
+%attr(0644,root,root) %{_unitdir}/iscsiuio.service
+%attr(0644,root,root) %{_unitdir}/iscsiuio.socket
 %{_sbindir}/rciscsiuio
 
 %files devel

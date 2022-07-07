@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  6 20:13:21 UTC 2022 - Lee Duncan <lduncan@suse.com>
+
+- Modify SPEC file so systemd unit files are mode 644 (not 755)
+  (bsc#1200570)
+
+-------------------------------------------------------------------
 Fri Jun 17 16:06:29 UTC 2022 - Lee Duncan <lduncan@suse.com>
 
 - For Tumbleweed, moved logrotate files from user-specific
