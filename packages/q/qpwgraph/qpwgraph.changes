@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  6 18:17:35 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.3.3:
+  * Patchbay/Edit mode introduced: pinning and unpinning
+    connections to and from current patchbay is now implemented.
+  * Original Graph/Connect and Disconnect keyboard shortcuts, [Ins]
+    and [Del], are now added to the existing ones, respectively.
+
+-------------------------------------------------------------------
 Mon Jun 13 16:00:31 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.3.2:

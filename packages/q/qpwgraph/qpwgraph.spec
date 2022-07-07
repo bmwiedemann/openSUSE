@@ -17,7 +17,7 @@
 
 
 Name:           qpwgraph
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        PipeWire Graph Qt GUI Interface
 License:        GPL-2.0-or-later
@@ -48,7 +48,7 @@ Qt C++ framework, based and pretty much like the same of QjackCtl.
 
 %build
 %cmake \
- -DCONFIG_ALSA_MIDI=ON
+  -DCONFIG_ALSA_MIDI=ON
 %cmake_build
 
 %install
