@@ -2,6 +2,6 @@
 %_pam_moduledir  %{_libdir}/security
 %_pam_secconfdir %{_sysconfdir}/security
 %_pam_confdir    %{_sysconfdir}/pam.d
-%_pam_vendordir  %{_distconfdir}/pam.d
+%_pam_vendordir  %{_prefix}/lib/pam.d
 # legacy, to be retired
 %_pamdir         %{_pam_moduledir}

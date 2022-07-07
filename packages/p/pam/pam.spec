@@ -195,7 +195,7 @@ CFLAGS="$CFLAGS -DNDEBUG"
 	--pdfdir=%{_docdir}/pam/pdf \
 	--enable-isadir=../..%{_pam_moduledir} \
 	--enable-securedir=%{_pam_moduledir} \
-	--enable-vendordir=%{_distconfdir} \
+	--enable-vendordir=%{_prefix}/etc \
 %if %{with debug}
 	--enable-debug
 %endif
@@ -215,6 +215,8 @@ mkdir -p %{buildroot}%{_includedir}/security
 mkdir -p %{buildroot}%{_pam_moduledir}
 mkdir -p %{buildroot}/sbin
 mkdir -p -m 755 %{buildroot}%{_libdir}
+# For compat reasons
+mkdir -p %{buildroot}%{_distconfdir}/pam.d
 %make_install
 /sbin/ldconfig -n %{buildroot}%{libdir}
 # Install documentation
@@ -253,7 +255,7 @@ install -D -m 644 %{SOURCE2} %{buildroot}%{_rpmmacrodir}/macros.pam
 # /run/motd.d
 install -Dm0644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/pam.conf
 
-mkdir %{buildroot}%{_distconfdir}/security
+mkdir -p %{buildroot}%{_distconfdir}/security
 mv %{buildroot}%{_sysconfdir}/security/{limits.conf,faillock.conf,group.conf} %{buildroot}%{_distconfdir}/security/
 
 # Remove manual pages for main package
@@ -314,6 +316,8 @@ done
 %dir %{_pam_secconfdir}
 %dir %{_pam_secconfdir}/limits.d
 %dir %{_distconfdir}/security
+# /usr/etc/pam.d is for compat reasons
+%dir %{_distconfdir}/pam.d
 %dir %{_prefix}/lib/motd.d
 %if %{defined config_noreplace}
 %config(noreplace) %{_pam_confdir}/other

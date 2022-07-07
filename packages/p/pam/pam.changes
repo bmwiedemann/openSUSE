@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 17 15:26:20 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Keep old directory in filelist for migration
+
+-------------------------------------------------------------------
+Wed Jun  1 11:43:22 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Move PAM config files from /usr/etc/pam.d to /usr/lib/pam.d
+
+-------------------------------------------------------------------
 Fri Mar 11 11:25:35 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - pam-hostnames-in-access_conf.patch: update with upstream
