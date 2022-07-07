@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Jul  6 12:33:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.13:
+  * requests: IPv6 routes default priority
+  * requests: fix wrong family on empty IP targets
+  * ndb: fix NetlinkError escalation routine on apply
+
+-------------------------------------------------------------------
+Wed Jun 22 14:24:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- update to 0.6.12:
+  * ndb: allow dict as keys in __contains__
+  * ndb: fixed count() on nested views
+  * ndb: fix IPv6 addr removal: #926
+  * ifinfmsg: fixed IFLA_IPTUN_FLAGS: #924
+  * tc: fix tcm_info setting: #928
+- update to 0.6.11:
+  * ipdb: fix requests compatibility: #920
+  * ipdb: added deprecation warning
+- update to 0.6.10:
+  * ndb: fix DB reload on incomplete requests in the IPRoute API fallbacks: #890
+  * ndb: basic ipvlan support
+  * ndb: support ndb.schema.backup("filename") fro SQLite3 backend
+  * ndb: transactions, CheckProcess, PingAddress, see test_ndb/test_transaction.py and docs
+  * ndb: make snapshots only for commit() calls, no automatic snapshots for apply()
+  * netlink: filter out all the subsequent messages starting from the first error: #892
+  * protocols: fix arp module export
+  * iproute: deprecate positional arguments to IPRoute.rule()
+  * iproute, ndb: use pyroute2.requests to filter and transform API call arguments
+  * conntrack: fix exports: #900
+  * nftables: multiple fixes: #902
+  * tc: fix em_ipset crash: #905
+  * tests: integrated pre-commit, github actions and more
+  * tests: support basic OpenBSD tests
+  * pyroute2-cli: parser fixes
+
+-------------------------------------------------------------------
 Tue May 10 19:01:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.9:
