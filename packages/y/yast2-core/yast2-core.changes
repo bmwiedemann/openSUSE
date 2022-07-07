@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  4 13:46:48 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Fix building with GCC 13 and GCC 12.x (gh#yast/yast-core#156)
+- 4.5.2
+
+-------------------------------------------------------------------
 Wed May  4 08:42:31 UTC 2022 - Martin Vidner <mvidner@suse.com>
 
 - Add missing library dependencies (bsc#1197120)
