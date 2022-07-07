@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jul  6 12:37:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.13:
+  * requests: IPv6 routes default priority
+  * requests: fix wrong family on empty IP targets
+  * ndb: fix NetlinkError escalation routine on apply
+  * ndb: allow dict as keys in `__contains__`
+  * ndb: fixed `count()` on nested views
+  * ndb: fix IPv6 addr removal:
+  * ifinfmsg: fixed IFLA_IPTUN_FLAGS:
+  * tc: fix tcm_info setting:
+  * ipdb: fix requests compatibility:
+  * ipdb: added deprecation warning
+  * ndb: fix DB reload on incomplete requests in the IPRoute API fallbacks:
+  * ndb: basic ipvlan support
+  * ndb: support `ndb.schema.backup("filename")` fro SQLite3 backend
+  * ndb: transactions, CheckProcess, PingAddress, see `test_ndb/test_transaction.py` and docs
+  * ndb: make snapshots only for `commit()` calls, no automatic snapshots for `apply()`
+  * netlink: filter out all the subsequent messages starting from the first error:
+  * protocols: fix arp module export
+  * iproute: deprecate positional arguments to `IPRoute.rule()`
+  * iproute, ndb: use `pyroute2.requests` to filter and transform API call arguments
+  * conntrack: fix exports:
+  * nftables: multiple fixes:
+  * tc: fix em_ipset crash:
+  * tests: integrated pre-commit, github actions and more
+  * tests: support basic OpenBSD tests
+  * pyroute2-cli: parser fixes
+
+-------------------------------------------------------------------
 Thu May 19 06:53:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (0.6.9) 
