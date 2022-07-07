@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 07 06:35:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.11.11:
+  * Prepare for v0.11.11 release
+  * azure: fix BYOCNI install with Cilium >= 1.12
+  * build(deps): bump github.com/google/gops from 0.3.23 to 0.3.24
+  * clustermesh: Update cluster-name/cluster-id validation message
+  * Fix broken link in CONTRIBUTING.md
+  * connectivity: improve DNS validation
+  * make: update alpine to 3.16
+  * make: run release build as regular user
+
+-------------------------------------------------------------------
 Wed Jun 22 16:18:13 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.11.10:
