@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  6 16:40:48 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Extend vlc-lua-5.3.patch: match upstream commit 0e0b070c26.
+- Add 867.patch: support LUA 5.4 (boo#1200944).
+
+-------------------------------------------------------------------
 Mon May 23 10:14:07 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add vlc-dav1d-1.0.patch: Fix build with dav1d 1.0. Upstream

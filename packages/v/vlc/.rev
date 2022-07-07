@@ -1309,4 +1309,13 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>978683</requestid>
   </revision>
+  <revision rev="124" vrev="3">
+    <srcmd5>0729e84e54e00d2b9dd01b29407e24de</srcmd5>
+    <version>3.0.17.4</version>
+    <time>1657191398</time>
+    <user>dimstar_suse</user>
+    <comment>- Extend vlc-lua-5.3.patch: match upstream commit 0e0b070c26.
+- Add 867.patch: support LUA 5.4 (boo#1200944).</comment>
+    <requestid>987266</requestid>
+  </revision>
 </revisionlist>

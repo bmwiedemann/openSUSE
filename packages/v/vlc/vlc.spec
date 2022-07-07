@@ -49,10 +49,11 @@ Patch0:         vlc.a52.patch
 Patch1:         vlc-allow-deprecated-fribidi.patch
 # PATCH-FIX-UPSTREAM vlc-lua-5.3.patch dimstar@opensuse.org -- Replace lua_optlong with lua_optinteger
 Patch2:         vlc-lua-5.3.patch
+Patch3:         867.patch
 # PATCH-FIX-UPSTREAM fix-build-with-fdk-2.0.patch -- Fix building vlc with libfdk-aac v2
-Patch3:         fix-build-with-fdk-2.0.patch
+Patch4:         fix-build-with-fdk-2.0.patch
 # PATCH-FIX-UPSTREAM vlc-dav1d-1.0.patch -- Fix build with dav1d 1.0
-Patch4:         vlc-dav1d-1.0.patch
+Patch5:         vlc-dav1d-1.0.patch
 # PATCH-FEATURE-OPENSUSE vlc-projectM-qt5.patch -- Build against projectM-qt5; openSUSE provides projectM as -qt and -qt5 variant
 Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
@@ -311,7 +312,6 @@ Summary:        Translations for package %{name}
 # We do not want to require vlc, which is GUI based, but only vlc-noX
 Group:          System/Localization
 Requires:       %{name}-noX = %{version}
-Supplements:    packageand(bundle-lang-other:%{name}-noX)
 Provides:       %{name}-lang-all = %{version}
 BuildArch:      noarch
 
@@ -404,8 +404,8 @@ OpenCV based video filters and a face detection example.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch3 -p1
 %patch4 -p1
+%patch5 -p1
 %if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 %patch100 -p1
 %endif
@@ -419,9 +419,8 @@ fi
 
 ### And LUA 5.3.1 has some more API changes
 if pkg-config --atleast-version 5.3.1 lua; then
-  sed -i 's/luaL_checkint(/(int)luaL_checkinteger(/' \
-    modules/lua/{demux,libs/{configuration,dialog,net,osd,playlist,stream,variables,volume}}.c
 %patch2 -p1
+%patch3 -p1
 fi
 
 # We do not rely on contrib but make use of system libraries
