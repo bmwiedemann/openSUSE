@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 06 09:34:01 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Switch to use the git repo with obs_scm
+- Update to version 1.0+git0:
+  * Add Makefile for make install support
+  * Start sysroot-usr.mount as well
+  * Replace invalid use of ln_r in module-setup.sh
+
+-------------------------------------------------------------------
 Thu Mar 24 09:40:34 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Bump version to 0.3

@@ -17,19 +17,13 @@
 
 
 Name:           combustion
-Version:        0.3
+Version:        1.0+git0
 Release:        0
 Summary:        System for initial configuration of appliances
 License:        GPL-2.0-or-later
 Group:          System/Management
-URL:            https://en.opensuse.org/Portal:MicroOS/Combustion
-Source1:        LICENSE
-Source2:        README
-Source3:        module-setup.sh
-Source4:        combustion.service
-Source5:        combustion-prepare.service
-Source6:        combustion
-Source7:        combustion.rules
+URL:            https://github.com/openSUSE/combustion
+Source0:        %{name}-%{version}.tar.xz
 Requires:       ignition-dracut-grub2
 BuildArch:      noarch
 
@@ -44,18 +38,12 @@ new system snapshot. On success, the system will directly boot into that new
 snapshot, so that no reboot is needed.
 
 %prep
-cp %{SOURCE1} %{SOURCE2} .
+%autosetup -p1
 
 %build
 
 %install
-mkdir -p %{buildroot}%{_prefix}/lib/dracut/modules.d/35combustion
-cd %{buildroot}%{_prefix}/lib/dracut/modules.d/35combustion/
-install -m0644 %{SOURCE3} module-setup.sh
-install -m0644 %{SOURCE4} combustion.service
-install -m0644 %{SOURCE5} combustion-prepare.service
-install -m0755 %{SOURCE6} combustion
-install -m0644 %{SOURCE7} combustion.rules
+%make_install
 
 %post
 %{?regenerate_initrd_post}
@@ -65,7 +53,7 @@ install -m0644 %{SOURCE7} combustion.rules
 
 %files
 %license LICENSE
-%doc README
+%doc README.md
 %dir %{_prefix}/lib/dracut/
 %dir %{_prefix}/lib/dracut/modules.d/
 %{_prefix}/lib/dracut/modules.d/35combustion/
