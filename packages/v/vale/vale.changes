@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 05 23:31:58 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 2.20.0:
+  * chore: add workflow to bump pkgs
+  * fix: check `head` indexes before removing
+  * feat: support ignore patterns in Org
+  * chore: bump Go version
+  * test: add another Org case
+  * feat: add support for Org files
+
+-------------------------------------------------------------------
 Fri Jul 01 19:56:20 UTC 2022 - jkowalczyk@suse.com
 
 - Initial package version 2.19.0:

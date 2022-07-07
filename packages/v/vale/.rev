@@ -8,4 +8,18 @@
 - New package vale version 2.19.0:</comment>
     <requestid>986925</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8ffd639bb908154580d1d1be1751bff4</srcmd5>
+    <version>2.20.0</version>
+    <time>1657191434</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.20.0:
+  * chore: add workflow to bump pkgs
+  * fix: check `head` indexes before removing
+  * feat: support ignore patterns in Org
+  * chore: bump Go version
+  * test: add another Org case
+  * feat: add support for Org files (forwarded request 986929 from jfkw)</comment>
+    <requestid>987256</requestid>
+  </revision>
 </revisionlist>
