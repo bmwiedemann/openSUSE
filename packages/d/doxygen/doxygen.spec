@@ -22,7 +22,7 @@
 %endif
 
 Name:           doxygen
-Version:        1.9.3
+Version:        1.9.4
 Release:        0
 Summary:        Automated C, C++, and Java Documentation Generator
 # qtools are used for building and they are GPL-3.0 licensed
@@ -34,6 +34,9 @@ Source0:        https://www.doxygen.nl/files/doxygen-%{version}.src.tar.gz
 Patch0:         %{name}-modify_footer.patch
 # suse specific
 Patch1:         %{name}-no-lowercase-man-names.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         doxygen-gcc12.patch
+# The unified libclang-cpp library doesn't exist on older Leap / SLE
 Patch10:        doxygen-no-libclang-cpp.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
@@ -62,8 +65,10 @@ as well.
 
 %prep
 %setup -q
+# Leap 15 and SLE don't accept '%%autopatch -M'
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 %if %{with libclang}
 %if 0%{?sle_version} == 150100 || (0%{?sle_version} == 150200 && !0%{?is_opensuse})
 %patch10 -p1

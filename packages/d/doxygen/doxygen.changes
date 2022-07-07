@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 27 11:12:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.9.4. Check https://doxygen.nl/manual/changelog.html
+  for the complete changelog.
+  New features:
+  * Add CINDEX_NO_EXPORTS option when linking against static
+    libclang
+  * Introduce CREATE_SUBDIRS_LEVEL
+  * Add for the xml output also xml to the markdown image
+    representation.
+  * Adding Qt6 support
+  * Update Bulgarian translation
+  * Better translation for trPackageMembers
+  * Refer to chapter Grouping with GROUP_GRAPHS
+  * HTMLHELP warning on using svg as image format for graphs
+  * mention doxygen debugging flags on the web
+  * mention how to get additional usage flags
+- Add patch to fix build with GCC 12:
+  * doxygen-gcc12.patch
+
+-------------------------------------------------------------------
 Sun Feb 13 14:28:29 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.9.3:
