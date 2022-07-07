@@ -54,7 +54,11 @@ Supplements:    (plasma5-desktop and (pulseaudio or pipewire-pulseaudio))
 Recommends:     (pulseaudio-module-gsettings if pulseaudio)
 Requires:       kirigami2 >= %{kf5_version}
 Requires:       (pulseaudio-module-x11 or pipewire-pulseaudio)
+%if 0%{?suse_version} > 1500
+Suggests:       pipewire-pulseaudio
+%else
 Suggests:       pulseaudio-module-x11
+%endif
 Recommends:     %{name}-lang
 
 %description

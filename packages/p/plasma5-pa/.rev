@@ -1000,4 +1000,18 @@
     <comment>Plasma 5.25.2 (forwarded request 985627 from Vogtinator)</comment>
     <requestid>985903</requestid>
   </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>9311104bbf44d6b8ce0ba020d208fe9c</srcmd5>
+    <version>5.25.2</version>
+    <time>1657191405</time>
+    <user>dimstar_suse</user>
+    <comment>NOT TO BE ACCEPTED IN FACTORY YET
+
+I only submit this to keep it in a Staging project
+and test it with openQA
+
+- Suggests pipewire-pulseaudio on TW instead of
+  pulseaudio-module-x11 to make pipewire the default audio server. (forwarded request 986846 from alarrosa)</comment>
+    <requestid>987185</requestid>
+  </revision>
 </revisionlist>

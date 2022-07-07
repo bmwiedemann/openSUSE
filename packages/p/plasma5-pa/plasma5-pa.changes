@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  5 10:00:05 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Suggests pipewire-pulseaudio on TW instead of
+  pulseaudio-module-x11 to make pipewire the default audio server.
+
+-------------------------------------------------------------------
 Tue Jun 28 13:03:33 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.2
