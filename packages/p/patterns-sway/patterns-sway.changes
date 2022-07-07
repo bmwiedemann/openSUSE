@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  5 12:48:08 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use pipewire as default audio server in TW.
+
+-------------------------------------------------------------------
 Tue Sep 22 09:07:01 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Remove dmenu since wofi is already required

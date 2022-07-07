@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-sway
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,8 +36,8 @@ not make sense.
 
 This particular package contains the sway patterns.
 
-################################################################################
 
+################################################################################
 %package sway
 %pattern_graphicalenvironments
 Summary:        Sway Tiling Wayland Compositor and related tools
@@ -60,11 +60,15 @@ Requires:       waybar
 Requires:       wofi
 
 Recommends:     kanshi
+%if 0%{?suse_version} > 1500
+Recommends:     pipewire-pulseaudio
+%else
 Recommends:     pulseaudio
+%endif
 Recommends:     pulseaudio-utils
 
-Recommends:     system-config-printer
 Recommends:     desktop-data-openSUSE
+Recommends:     system-config-printer
 
 #upstream brandings for clean Sway experience
 Recommends:     sway-branding-upstream
