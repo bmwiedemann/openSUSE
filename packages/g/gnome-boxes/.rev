@@ -726,4 +726,16 @@
     <comment> (forwarded request 980045 from iznogood)</comment>
     <requestid>980068</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>1c21b660f3640433ddc64c015a2497e1</srcmd5>
+    <version>42.2</version>
+    <time>1657191454</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 42.2:
+  + Ensure spice graphics is specified in vm creation.
+  + Recommend openSUSE 15.4.
+- Disable RDP support: glgo#GNOME/gnome-boxes#820):
+  + Introduce bcond_with rdp to easily toggle the feature on/off. (forwarded request 987197 from dimstar)</comment>
+    <requestid>987358</requestid>
+  </revision>
 </revisionlist>

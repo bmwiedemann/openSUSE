@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  6 12:21:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.2:
+  + Ensure spice graphics is specified in vm creation.
+  + Recommend openSUSE 15.4.
+- Disable RDP support: glgo#GNOME/gnome-boxes#820):
+  + Introduce bcond_with rdp to easily toggle the feature on/off.
+
+-------------------------------------------------------------------
 Tue May 31 07:39:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.1:

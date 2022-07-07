@@ -17,12 +17,16 @@
 #
 
 
-%define govf_libver 0_1
+%bcond_with rdp
+%if %{with rdp}
 %define gfrdp_libver 0_1
-%define govf_sover 0.1
 %define gfrdp_sover 0.1
+%endif
+
+%define govf_libver 0_1
+%define govf_sover 0.1
 Name:           gnome-boxes
-Version:        42.1
+Version:        42.2
 Release:        0
 Summary:        A GNOME 3 application to access remote or virtual systems
 License:        LGPL-2.0-or-later
@@ -36,7 +40,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.36.0
 BuildRequires:  yelp-tools
+%if %{with rdp}
 BuildRequires:  pkgconfig(freerdp2)
+%endif
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.44.0
@@ -70,9 +76,11 @@ Requires:       tracker
 Recommends:     libvirt-client
 # Eliminate sub-packages with libraries in private space (no provides, nothing was supposed to use the pkgname)
 Obsoletes:      libgovf-0_1 <= 40.2
+%if %{with rdp}
 Obsoletes:      libgtk-frdp-0_1 <= 40.2
-Obsoletes:      typelib-1_0-Govf-0_1 <= 40.2
 Obsoletes:      typelib-1_0-GtkFrdp-0_1 <= 40.2
+%endif
+Obsoletes:      typelib-1_0-Govf-0_1 <= 40.2
 
 %description
 Boxes is an application to create, setup, access, and use: remote
@@ -109,7 +117,7 @@ License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 Requires:       %{name} = %{version}
 Requires:       gnome-shell
-Supplements:    packageand(%{name}:gnome-shell)
+Supplements:    (%{name} and gnome-shell)
 
 %description -n gnome-shell-search-provider-boxes
 Boxes is an application to create, setup, access, and use: remote
@@ -126,7 +134,11 @@ search results from Boxes.
 
 %build
 %meson \
+%if %{with rdp}
   -Drdp=true
+%else
+  -Drdp=false
+%endif
 %meson_build
 
 %check
@@ -157,9 +169,11 @@ search results from Boxes.
 %dir %{_libdir}/gnome-boxes/
 %dir %{_libdir}/gnome-boxes/girepository-1.0
 %{_libdir}/gnome-boxes/girepository-1.0/Govf-%{govf_sover}.typelib
+%if %{with rdp}
 %{_libdir}/gnome-boxes/girepository-1.0/GtkFrdp-%{gfrdp_sover}.typelib
-%{_libdir}/gnome-boxes/libgovf-%{govf_sover}.so
 %{_libdir}/gnome-boxes/libgtk-frdp-%{gfrdp_sover}.so
+%endif
+%{_libdir}/gnome-boxes/libgovf-%{govf_sover}.so
 
 %files -n libovf-glib-devel
 %dir %{_datadir}/gnome-boxes/
@@ -176,6 +190,7 @@ search results from Boxes.
 %{_includedir}/gnome-boxes/govf/govf-package.h
 %{_includedir}/gnome-boxes/govf/govf.h
 
+%if %{with rdp}
 %files -n gtk-frdp-devel
 %dir %{_datadir}/gnome-boxes/
 %dir %{_datadir}/gnome-boxes/gir-1.0/
@@ -191,6 +206,7 @@ search results from Boxes.
 %{_includedir}/gnome-boxes/gtk-frdp/frdp-session.h
 %{_includedir}/gnome-boxes/gtk-frdp/gtk-frdp.h
 %{_includedir}/gnome-boxes/gtk-frdp/gtk-frdp-version.h
+%endif
 
 %files -n gnome-shell-search-provider-boxes
 %{_datadir}/dbus-1/services/org.gnome.Boxes.SearchProvider.service
