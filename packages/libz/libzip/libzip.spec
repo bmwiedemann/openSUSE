@@ -1,7 +1,7 @@
 #
 # spec file for package libzip
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{!?make_build: %global make_build make %{?_smp_mflags}}
 %define sover 5
 Name:           libzip
-Version:        1.8.0
+Version:        1.9.2
 Release:        0
 Summary:        C library for reading, creating, and modifying zip archives
 License:        BSD-3-Clause
@@ -27,7 +27,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://libzip.org/
 Source0:        https://libzip.org/download/libzip-%{version}.tar.xz
 Source1:        baselibs.conf
-Source2:        %{name}-rpmlintrc
 BuildRequires:  cmake >= 3.0.2
 BuildRequires:  fdupes
 BuildRequires:  groff

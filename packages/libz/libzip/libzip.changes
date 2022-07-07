@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul  1 12:27:57 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- libzip 1.9.2:
+  * Fix version number in header file.
+  * Fix zip_file_is_seekable().
+  * Add zip_file_is_seekable().
+  * Improve compatibility with WinAES.
+  * Fix encoding handling in zip_name_locate().
+  * Add option to zipcmp to output summary of changes.
+  * Various bug fixes and documentation improvements.
+
+-------------------------------------------------------------------
 Sun Jun 20 18:27:59 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libzip 1.8.0:
