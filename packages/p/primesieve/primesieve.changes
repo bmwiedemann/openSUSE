@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu July 07 09:00:00 UTC 2022 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-8.0
+- Added multiarch support (POPCNT, BMI2, AVX512) for x64 CPUs
+- Generating an array (or vector) of primes is up to 20% faster
+- Main CMakeLists.txt has been split up into multiple modules
+- Improved documentation of C & C++ APIs
+
+-------------------------------------------------------------------
 Tue May 03 11:25:00 UTC 2022 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primesieve-7.9

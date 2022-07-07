@@ -17,7 +17,7 @@
 
 
 Name:           primesieve
-Version:        7.9
+Version:        8.0
 Release:        0
 Summary:        A prime number generator
 License:        BSD-2-Clause
@@ -25,10 +25,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/kimwalisch/primesieve
 Source0:        https://github.com/kimwalisch/primesieve/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.7
-BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  graphviz
 BuildRequires:  asciidoc
 BuildRequires:  pkgconfig
 
@@ -38,15 +36,15 @@ sieve of Eratosthenes algorithm. It can generate primes and prime
 k-tuplets (twin primes, prime triplets, ...) up to 2^64 and find the
 nth prime.
 
-%package -n libprimesieve9
+%package -n libprimesieve10
 Summary:        C/C++ library for generating prime numbers
 
-%description -n libprimesieve9
+%description -n libprimesieve10
 This package contains the shared runtime library for primesieve.
 
 %package -n libprimesieve-devel
 Summary:        Development files for the primesieve library
-Requires:       libprimesieve9 = %{version}
+Requires:       libprimesieve10 = %{version}
 
 %description -n libprimesieve-devel
 This package contains the C/C++ header files and the configuration
@@ -57,22 +55,17 @@ It also contains the API documentation of the library.
 %setup -q
 
 %build
-%cmake -DBUILD_DOC=ON \
-       -DBUILD_MANPAGE=ON \
+%cmake -DBUILD_MANPAGE=ON \
        -DBUILD_TESTS=ON \
        -DCMAKE_SKIP_RPATH:BOOL=OFF
 %cmake_build
-%cmake_build doc
-
-find doc/html -name '*.md5' -delete
-cp -rf doc/html ..
 
 %install
 %cmake_install
 %fdupes %{buildroot}/%{_prefix}
 
-%post -n libprimesieve9 -p /sbin/ldconfig
-%postun -n libprimesieve9 -p /sbin/ldconfig
+%post -n libprimesieve10 -p /sbin/ldconfig
+%postun -n libprimesieve10 -p /sbin/ldconfig
 
 %check
 %ctest
@@ -82,12 +75,12 @@ cp -rf doc/html ..
 %{_bindir}/primesieve
 %{_mandir}/man1/primesieve.1%{?ext_man}
 
-%files -n libprimesieve9
+%files -n libprimesieve10
 %license COPYING
 %{_libdir}/libprimesieve.so.*
 
 %files -n libprimesieve-devel
-%doc html examples
+%doc doc/C_API.md doc/CPP_API.md
 %{_libdir}/libprimesieve.so
 %{_includedir}/primesieve.h
 %{_includedir}/primesieve.hpp
