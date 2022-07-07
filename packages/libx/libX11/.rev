@@ -440,4 +440,12 @@ additions, including new UTF-8 compose sequences for:
     <user>dimstar_suse</user>
     <comment>osc copypac from project:openSUSE:Factory package:libX11 revision:36, using expand</comment>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>6c9633d26315ddbedecc4403ce013d76</srcmd5>
+    <version>1.8.1</version>
+    <time>1657191372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986983</requestid>
+  </revision>
 </revisionlist>
