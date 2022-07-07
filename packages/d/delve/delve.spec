@@ -22,7 +22,7 @@
 %define shortname dlv
 
 Name:           delve
-Version:        1.8.3
+Version:        1.9.0
 Release:        0
 Summary:        Static website generator written in Go
 License:        MIT
