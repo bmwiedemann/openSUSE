@@ -63,6 +63,8 @@ Source3:        octave.macros
 Patch0:         octave_tools_pie.patch
 # PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?54607
 Patch1:         0001-Disable-signal-handler-thread-avoid-duplicate-signal.patch
+# PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?func=detailitem&item_id=62436
+Patch2:         https://hg.savannah.gnu.org/hgweb/octave/raw-rev/6e91c61f626f#/fix_build_unlink_failed.patch
 BuildRequires:  arpack-ng-devel
 # Required for Patch0
 BuildRequires:  autoconf
@@ -217,8 +219,7 @@ This package contains documentation for Octave.
 
 %prep
 %setup -q -n %{name}-%{src_ver}
-%patch0 -p1
-%patch1 -p1
+%autopatch -p1
 
 %build
 
