@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul  6 12:34:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.13:
+  * iproute, ndb: use `pyroute2.requests` to filter and transform API call arguments
+  * conntrack: fix exports: <https://github.com/svinota/pyroute2/pull/900>
+  * nftables: multiple fixes: <https://github.com/svinota/pyroute2/pull/902>
+  * tc: fix em_ipset crash: <https://github.com/svinota/pyroute2/pull/905>
+  * tests: integrated pre-commit, github actions and more
+  * tests: support basic OpenBSD tests
+  * pyroute2-cli: parser fixes
+
+-------------------------------------------------------------------
 Thu May 19 06:53:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- Initial package (0.6.9) 
+- Initial package (0.6.9)

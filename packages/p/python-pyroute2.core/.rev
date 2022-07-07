@@ -7,4 +7,21 @@
     <comment></comment>
     <requestid>978058</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>99f7b7bbd5d25f6fe8d5823bbd46f409</srcmd5>
+    <version>0.6.13</version>
+    <time>1657191418</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.13:
+  * iproute, ndb: use `pyroute2.requests` to filter and transform API call arguments
+  * conntrack: fix exports: &lt;https://github.com/svinota/pyroute2/pull/900&gt;
+  * nftables: multiple fixes: &lt;https://github.com/svinota/pyroute2/pull/902&gt;
+  * tc: fix em_ipset crash: &lt;https://github.com/svinota/pyroute2/pull/905&gt;
+  * tests: integrated pre-commit, github actions and more
+  * tests: support basic OpenBSD tests
+  * pyroute2-cli: parser fixes
+
+- Initial package (0.6.9)</comment>
+    <requestid>987191</requestid>
+  </revision>
 </revisionlist>
