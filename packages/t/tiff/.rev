@@ -794,4 +794,16 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
   * tif_jpeg.c: do not emit progressive scans with mozjpeg. (#266)</comment>
     <requestid>979828</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>62e5dfe00de573393a25d53cf9b5320d</srcmd5>
+    <version>4.4.0</version>
+    <time>1657191377</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+  * CVE-2022-2056 [bsc#1201176]
+  * CVE-2022-2057 [bsc#1201175]
+  * CVE-2022-2058 [bsc#1201174]
+    + tiff-CVE-2022-2056,CVE-2022-2057,CVE-2022-2058.patch</comment>
+    <requestid>987003</requestid>
+  </revision>
 </revisionlist>
