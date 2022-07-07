@@ -21,7 +21,7 @@
 %define skip_python2 1
 
 Name:           python-rich
-Version:        11.0.0
+Version:        12.3.0
 Release:        0
 Summary:        A Python library for rich text and beautiful formatting in the terminal
 License:        MIT

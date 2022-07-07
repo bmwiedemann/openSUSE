@@ -143,4 +143,41 @@
     <comment></comment>
     <requestid>970999</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1d909bd8cd315ab85d9807b252027585</srcmd5>
+    <version>12.3.0</version>
+    <time>1657191470</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 12.3.0:
+  * Ability to change terminal window title
+  * Added show_speed parameter to progress.track which will show the speed when the total is not known
+  * Python blocks can now opt out from being rendered in tracebacks's frames,
+    by setting a `_rich_traceback_omit = True` in their local scope
+  * Fall back to `sys.__stderr__` on POSIX systems when trying to get the
+    terminal size (fix issues when Rich is piped to another process)
+  * Fixed markup escaping issue
+  * Safari - Box appearing around SVG export
+  * Fixed recursion error in Jupyter progress bars
+  * Complex numbers are now identified by the highlighter
+  * Fix crash on IDLE and forced is_terminal detection to False because IDLE
+    can't do escape codes
+  * Fixed missing blank line in traceback rendering
+  * Fixed running Rich with the current working dir was deleted
+  * Setting `total=None` on progress is now possible, and will display pulsing animation
+  * Micro-optimization for Segment.divide
+  * Bumped typing-extensions minimum to 4.0.0
+  * Bumped minimum Python version to 3.6.3
+  * Progress.open and Progress.wrap_file method to track the progress while
+    reading from a file or file-like object
+  * SVG export functionality
+  * Adding Indonesian translation
+  * Add missing `end` keyword argument to `Text.from_markup`
+  * Fallback to text lexer when no lexer guessed
+  * Fixed issue with decoding ANSI reset
+  * Improve performance of cell_length
+  * Improve performance of chop_cells
+  * Fix capturing stdout on legacy Windows
+  * Added options to TimeRemainingColumn to render a compact time format and</comment>
+    <requestid>987405</requestid>
+  </revision>
 </revisionlist>
