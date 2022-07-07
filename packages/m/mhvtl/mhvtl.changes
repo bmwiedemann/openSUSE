@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 08 22:12:53 UTC 2022 - lduncan@suse.com
+
+- Update to version 1.70_release+865.af13081a1ae5:
+  * Fix possible double define of HAVE_UNLOCKED_IOCTL
+    (fixing a build issue on some architectures)
+  * kernel: Handle removal of genhd.h from linux includes.
+  * Clean up the kernel Makefile.
+  This removed the patch (no longer needed):
+  mhvtl-fix-removal-of-genhd-h.patch
+  Also, updated SPEC file to avoid building s390x
+
+-------------------------------------------------------------------
 Fri Jun 03 16:46:44 UTC 2022 - lduncan@suse.com
 
 - Update to version 1.70_release+862.561d4d5b473f, to fix a build

@@ -16,7 +16,7 @@
 #
 
 
-%ifnarch ppc
+%ifnarch ppc s390x
 %define buildkmp 1
 %else
 %define buildkmp 0
@@ -26,12 +26,13 @@
 
 Name:           mhvtl
 URL:            http://sites.google.com/site/linuxvtl2/
-Version:        1.70_release+862.561d4d5b473f
+Version:        1.70_release+865.af13081a1ae5
 Release:        0
 Requires:       mhvtl-kmp
 Requires:       module-init-tools
 Requires:       sg3_utils
 %if 0%{buildkmp} == 1
+BuildRequires:  %kernel_module_package_buildreqs
 BuildRequires:  kernel-syms
 BuildRequires:  module-init-tools
 %endif
@@ -45,7 +46,6 @@ License:        GPL-2.0-only
 Group:          System/Daemons
 Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}.preamble
-Patch1:         %{name}-fix-removal-of-genhd-h.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
@@ -78,7 +78,6 @@ through to user-space daemons.
 
 %prep
 %setup -qn %{name}-%{version}
-%patch1 -p1
 
 %build
 make MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version} \
