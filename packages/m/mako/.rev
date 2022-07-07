@@ -65,4 +65,19 @@
   * Several small improvments and bugfixes:</comment>
     <requestid>905773</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1ccb93989c925063e4806acca56a6e89</srcmd5>
+    <version>1.7.1</version>
+    <time>1657191450</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.1:
+  * Fix inverted has_mode condition
+
+- Update to 1.7
+  * Support for multiple modes active at the same time.
+  * A new command to list currently active modes.
+  * Improved HiDPI support.
+  * A new outer-margin option.</comment>
+    <requestid>987311</requestid>
+  </revision>
 </revisionlist>

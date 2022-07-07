@@ -1,7 +1,7 @@
 #
 # spec file for package mako
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           mako
-Version:        1.6
+Version:        1.7.1
 Release:        0
 Summary:        A Wayland notification daemon
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://mako-project.org/
 Source:         https://github.com/emersion/mako/archive/v%{version}.tar.gz
-BuildRequires:  meson >= 0.43.0
+BuildRequires:  meson >= 0.60.0
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
 BuildRequires:  pkgconfig(cairo)
@@ -32,7 +32,8 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
+BuildRequires:  pkgconfig(wayland-cursor)
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.21
 
 %description
 A notification daemon for Wayland. Intended to be used with sway.

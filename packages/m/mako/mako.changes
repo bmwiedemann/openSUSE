@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul  7 05:16:33 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.1:
+  * Fix inverted has_mode condition
+
+-------------------------------------------------------------------
+Wed Jul  6 17:15:19 UTC 2022 - llyyr <gopalprasadgd@gmail.com>
+
+- Update to 1.7
+  * Support for multiple modes active at the same time.
+  * A new command to list currently active modes.
+  * Improved HiDPI support.
+  * A new outer-margin option.
+
+-------------------------------------------------------------------
 Mon Jul 12 07:10:54 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6:
