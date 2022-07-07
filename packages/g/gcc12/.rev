@@ -48,4 +48,19 @@ to release my review on the gcc package now.
   lines</comment>
     <requestid>975330</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6dbccd10e14516e19a1b84f2e5edc2eb</srcmd5>
+    <version>12.1.1+git215</version>
+    <time>1657191408</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-12 branch head, 7811663964aa7e31c3939b859bb, git215
+  * includes libgomp mold linker detection fix
+  * includes nvptx offload compiler build fix
+  * includes s390x tsan executable stack fix
+
+- Update to gcc-12 branch head, 325d82b08696da17fb26bd2e1b6b, git78
+
+- Enable PRU architecture for AM335x platforms</comment>
+    <requestid>985843</requestid>
+  </revision>
 </revisionlist>

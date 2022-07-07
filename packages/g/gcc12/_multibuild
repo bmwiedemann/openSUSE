@@ -7,6 +7,8 @@
 <flavor>cross-arm-gcc12</flavor>
 <flavor>cross-avr-gcc12-bootstrap</flavor>
 <flavor>cross-avr-gcc12</flavor>
+<flavor>cross-pru-gcc12-bootstrap</flavor>
+<flavor>cross-pru-gcc12</flavor>
 <flavor>cross-x86_64-gcc12</flavor>
 <flavor>cross-s390x-gcc12</flavor>
 <flavor>cross-sparc-gcc12</flavor>

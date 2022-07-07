@@ -63,7 +63,7 @@
 %define binutils_target sparc
 %endif
 %define canonical_target %(echo %{binutils_target} | sed -e "s/i.86/i586/;s/ppc/powerpc/;s/sparc64.*/sparc64/;s/sparcv.*/sparc/;")
-%if "%{binutils_target}" == "avr" || "%{binutils_target}" == "spu"
+%if "%{binutils_target}" == "avr" || "%{binutils_target}" == "spu" || "%{binutils_target}" == "pru"
 %define binutils_os %{canonical_target}
 %else
 %if "%{binutils_target}" == "epiphany" || "%{binutils_target}" == "nds32le" || "%{binutils_target}" == "rl78" || "%{binutils_target}" == "rx"
@@ -102,7 +102,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        12.1.0+git27
+Version:        12.1.1+git215
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')

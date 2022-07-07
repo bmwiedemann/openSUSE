@@ -186,7 +186,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        12.1.0+git27
+Version:        12.1.1+git215
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -1865,6 +1865,7 @@ Runtime library for the GNU D language.
 %package -n libgccjit%{libgccjit_sover}%{libgccjit_suffix}
 Summary:        The GNU Compiler Collection JIT library
 License:        GPL-3.0-or-later
+Group:          Development/Languages/C and C++
 Provides:       libgccjit%{libgccjit_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
@@ -1894,6 +1895,7 @@ Package contains header files and documentation for GCC JIT front-end.
 %package -n gcc12-testresults
 Summary:        Testsuite results
 License:        SUSE-Public-Domain
+Group:          Development/Languages/C and C++
 
 %description -n gcc12-testresults
 Results from running the gcc and target library testsuites.
@@ -3607,6 +3609,7 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc12-locale.lang
 %{_prefix}/%{_lib}/libgccjit.so.%{libgccjit_sover}*
 
 %files -n libgccjit%{libgccjit_sover}-devel%{libdevel_suffix}
+%defattr(-,root,root)
 %doc gcc/jit/docs/examples
 %{_prefix}/%{_lib}/libgccjit.so
 %{_prefix}/include/libgccjit.h

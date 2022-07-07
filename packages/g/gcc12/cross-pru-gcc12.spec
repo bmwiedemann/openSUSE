@@ -16,10 +16,10 @@
 #
 
 
-%define pkgname cross-riscv64-gcc12-bootstrap
-%define cross_arch riscv64
-%define gcc_target_arch riscv64-suse-linux
-%define gcc_libc_bootstrap 1
+%define pkgname cross-pru-gcc12
+%define cross_arch pru
+%define gcc_target_arch pru
+%define gcc_target_newlib 1
 # nospeccleaner
 
 %define build_cp 0%{!?gcc_accel:1}
@@ -250,7 +250,7 @@ ExclusiveArch:  do-not-build
 %endif
 %endif
 %if 0%{?gcc_icecream:1}%{?gcc_target_glibc:1}%{?gcc_libc_bootstrap:1}
-ExclusiveArch:  i586 ppc64le ppc64 x86_64 s390x aarch64
+ExclusiveArch:  i586 ppc64le ppc64 x86_64 s390x aarch64 riscv64
 %endif
 %define _binary_payload w.ufdio
 # Obsolete cross-ppc-gcc49 from cross-ppc64-gcc49 which has

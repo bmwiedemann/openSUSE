@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun 29 13:54:45 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-12 branch head, 7811663964aa7e31c3939b859bb, git215
+  * includes libgomp mold linker detection fix
+  * includes nvptx offload compiler build fix
+  * includes s390x tsan executable stack fix
+
+-------------------------------------------------------------------
+Tue May 17 07:03:41 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-12 branch head, 325d82b08696da17fb26bd2e1b6b, git78
+
+-------------------------------------------------------------------
+Tue May 10 11:23:12 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Enable PRU architecture for AM335x platforms
+
+-------------------------------------------------------------------
 Fri May  6 07:11:46 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Update to GCC 12.1 release, 1ea978e3066ac565a1ec28a96a4d61, git27
