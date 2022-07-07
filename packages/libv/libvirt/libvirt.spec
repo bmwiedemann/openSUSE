@@ -158,7 +158,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        8.4.0
+Version:        8.5.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -309,9 +309,7 @@ Patch150:       libvirt-power8-models.patch
 Patch151:       ppc64le-canonical-name.patch
 Patch152:       libxl-set-migration-constraints.patch
 Patch153:       libxl-set-cach-mode.patch
-Patch154:       0001-Extract-stats-functions-from-the-qemu-driver.patch
-Patch155:       0002-lxc-implement-connectGetAllDomainStats.patch
-Patch156:       0001-libxl-add-support-for-BlockResize-API.patch
+Patch154:       0001-libxl-add-support-for-BlockResize-API.patch
 # Our patches
 Patch200:       suse-libvirtd-disable-tls.patch
 Patch201:       suse-libvirt-guests-service.patch

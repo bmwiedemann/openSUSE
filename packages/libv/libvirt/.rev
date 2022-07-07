@@ -4095,4 +4095,12 @@ StandardGroups in rpmlint package.
     <comment></comment>
     <requestid>985352</requestid>
   </revision>
+  <revision rev="355" vrev="1">
+    <srcmd5>f6d02036047025147de3be1f90d047e6</srcmd5>
+    <version>8.5.0</version>
+    <time>1657191395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987261</requestid>
+  </revision>
 </revisionlist>

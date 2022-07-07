@@ -17,30 +17,30 @@ Signed-off-by: Martin Wilck <mwilck@suse.com>
  tests/networkxml2confdata/dhcp6host-routed-network.conf | 1 -
  2 files changed, 8 insertions(+), 2 deletions(-)
 
-Index: libvirt-8.4.0/src/network/bridge_driver.c
+Index: libvirt-8.5.0/src/network/bridge_driver.c
 ===================================================================
---- libvirt-8.4.0.orig/src/network/bridge_driver.c
-+++ libvirt-8.4.0/src/network/bridge_driver.c
-@@ -1334,7 +1334,14 @@ networkDnsmasqConfContents(virNetworkObj
-         if (VIR_SOCKET_ADDR_IS_FAMILY(&ipdef->address, AF_INET)) {
-             if (ipdef->nranges || ipdef->nhosts) {
-                 virBufferAddLit(&configbuf, "dhcp-no-override\n");
--                virBufferAddLit(&configbuf, "dhcp-authoritative\n");
-+		/*
-+                 * Use "dhcp-authoritative" only for dynamic DHCP.
-+                 * In a static-only network, it would cause dnsmasq
-+                 * to reply to requests from other hosts than those
-+                 * statically defined.
-+                 */
-+		if (ipdef->nranges || !ipdef->nhosts)
-+                    virBufferAddLit(&configbuf, "dhcp-authoritative\n");
-             }
+--- libvirt-8.5.0.orig/src/network/bridge_driver.c
++++ libvirt-8.5.0/src/network/bridge_driver.c
+@@ -1080,7 +1080,14 @@ networkDnsmasqConfDHCP(virBuffer *buf,
+     if (VIR_SOCKET_ADDR_IS_FAMILY(&ipdef->address, AF_INET)) {
+         if (ipdef->nranges || ipdef->nhosts) {
+             virBufferAddLit(buf, "dhcp-no-override\n");
+-            virBufferAddLit(buf, "dhcp-authoritative\n");
++            /*
++             * Use "dhcp-authoritative" only for dynamic DHCP.
++             * In a static-only network, it would cause dnsmasq
++             * to reply to requests from other hosts than those
++             * statically defined.
++             */
++            if (ipdef->nranges || !ipdef->nhosts)
++                virBufferAddLit(buf, "dhcp-authoritative\n");
+         }
  
-             if (ipdef->tftproot) {
-Index: libvirt-8.4.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
+         if (ipdef->bootfile) {
+Index: libvirt-8.5.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
 ===================================================================
---- libvirt-8.4.0.orig/tests/networkxml2confdata/dhcp6host-routed-network.conf
-+++ libvirt-8.4.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
+--- libvirt-8.5.0.orig/tests/networkxml2confdata/dhcp6host-routed-network.conf
++++ libvirt-8.5.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
 @@ -10,7 +10,6 @@ bind-dynamic
  interface=virbr1
  dhcp-range=192.168.122.1,static

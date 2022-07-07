@@ -1,8 +1,8 @@
-Index: libvirt-8.4.0/tools/virsh.c
+Index: libvirt-8.5.0/tools/virsh.c
 ===================================================================
---- libvirt-8.4.0.orig/tools/virsh.c
-+++ libvirt-8.4.0/tools/virsh.c
-@@ -552,6 +552,8 @@ virshShowVersion(vshControl *ctl G_GNUC_
+--- libvirt-8.5.0.orig/tools/virsh.c
++++ libvirt-8.5.0/tools/virsh.c
+@@ -545,6 +545,8 @@ virshShowVersion(vshControl *ctl G_GNUC_
      vshPrint(ctl, " Interface");
  # if defined(WITH_NETCF)
      vshPrint(ctl, " netcf");
@@ -11,10 +11,10 @@ Index: libvirt-8.4.0/tools/virsh.c
  # elif defined(WITH_UDEV)
      vshPrint(ctl, " udev");
  # endif
-Index: libvirt-8.4.0/src/interface/interface_backend_netcf.c
+Index: libvirt-8.5.0/src/interface/interface_backend_netcf.c
 ===================================================================
---- libvirt-8.4.0.orig/src/interface/interface_backend_netcf.c
-+++ libvirt-8.4.0/src/interface/interface_backend_netcf.c
+--- libvirt-8.5.0.orig/src/interface/interface_backend_netcf.c
++++ libvirt-8.5.0/src/interface/interface_backend_netcf.c
 @@ -21,7 +21,12 @@
  
  #include <config.h>
@@ -29,7 +29,7 @@ Index: libvirt-8.4.0/src/interface/interface_backend_netcf.c
  
  #include "virerror.h"
  #include "datatypes.h"
-@@ -72,6 +77,37 @@ VIR_ONCE_GLOBAL_INIT(virNetcfDriverState
+@@ -70,6 +75,37 @@ VIR_ONCE_GLOBAL_INIT(virNetcfDriverState
  
  static virNetcfDriverStatePtr driver;
  
@@ -67,7 +67,7 @@ Index: libvirt-8.4.0/src/interface/interface_backend_netcf.c
  
  static void
  virNetcfDriverStateDispose(void *obj)
-@@ -127,6 +163,10 @@ netcfStateInitialize(bool privileged,
+@@ -125,6 +161,10 @@ netcfStateInitialize(bool privileged,
           virPidFileAcquire(driver->stateDir, "driver", false, getpid())) < 0)
          goto error;
  
@@ -78,7 +78,7 @@ Index: libvirt-8.4.0/src/interface/interface_backend_netcf.c
      /* open netcf */
      if (ncf_init(&driver->netcf, NULL) != 0) {
          virReportError(VIR_ERR_INTERNAL_ERROR, "%s",
-@@ -1072,6 +1112,7 @@ static int netcfInterfaceIsActive(virInt
+@@ -1070,6 +1110,7 @@ static int netcfInterfaceIsActive(virInt
      return ret;
  }
  
@@ -86,7 +86,7 @@ Index: libvirt-8.4.0/src/interface/interface_backend_netcf.c
  static int netcfInterfaceChangeBegin(virConnectPtr conn, unsigned int flags)
  {
      int ret = -1;
-@@ -1143,6 +1184,7 @@ static int netcfInterfaceChangeRollback(
+@@ -1141,6 +1182,7 @@ static int netcfInterfaceChangeRollback(
  
      return ret;
  }
@@ -94,7 +94,7 @@ Index: libvirt-8.4.0/src/interface/interface_backend_netcf.c
  
  static virInterfaceDriver interfaceDriver = {
      .name = INTERFACE_DRIVER_NAME,
-@@ -1159,9 +1201,11 @@ static virInterfaceDriver interfaceDrive
+@@ -1157,9 +1199,11 @@ static virInterfaceDriver interfaceDrive
      .interfaceCreate = netcfInterfaceCreate, /* 0.7.0 */
      .interfaceDestroy = netcfInterfaceDestroy, /* 0.7.0 */
      .interfaceIsActive = netcfInterfaceIsActive, /* 0.7.3 */
@@ -106,7 +106,7 @@ Index: libvirt-8.4.0/src/interface/interface_backend_netcf.c
  };
  
  
-@@ -1192,6 +1236,19 @@ static virStateDriver interfaceStateDriv
+@@ -1190,6 +1234,19 @@ static virStateDriver interfaceStateDriv
  
  int netcfIfaceRegister(void)
  {
@@ -126,10 +126,10 @@ Index: libvirt-8.4.0/src/interface/interface_backend_netcf.c
      if (virRegisterConnectDriver(&interfaceConnectDriver, false) < 0)
          return -1;
      if (virSetSharedInterfaceDriver(&interfaceDriver) < 0)
-Index: libvirt-8.4.0/src/interface/interface_driver.c
+Index: libvirt-8.5.0/src/interface/interface_driver.c
 ===================================================================
---- libvirt-8.4.0.orig/src/interface/interface_driver.c
-+++ libvirt-8.4.0/src/interface/interface_driver.c
+--- libvirt-8.5.0.orig/src/interface/interface_driver.c
++++ libvirt-8.5.0/src/interface/interface_driver.c
 @@ -30,8 +30,15 @@ interfaceRegister(void)
      if (netcfIfaceRegister() == 0)
          return 0;
@@ -147,10 +147,10 @@ Index: libvirt-8.4.0/src/interface/interface_driver.c
      if (udevIfaceRegister() == 0)
          return 0;
  #endif /* WITH_UDEV */
-Index: libvirt-8.4.0/meson.build
+Index: libvirt-8.5.0/meson.build
 ===================================================================
---- libvirt-8.4.0.orig/meson.build
-+++ libvirt-8.4.0/meson.build
+--- libvirt-8.5.0.orig/meson.build
++++ libvirt-8.5.0/meson.build
 @@ -1073,6 +1073,12 @@ else
    netcf_dep = dependency('', required: false)
  endif
@@ -185,10 +185,10 @@ Index: libvirt-8.4.0/meson.build
    'NLS': have_gnu_gettext_tools,
    'numactl': numactl_dep.found(),
    'openwsman': openwsman_dep.found(),
-Index: libvirt-8.4.0/src/interface/meson.build
+Index: libvirt-8.5.0/src/interface/meson.build
 ===================================================================
---- libvirt-8.4.0.orig/src/interface/meson.build
-+++ libvirt-8.4.0/src/interface/meson.build
+--- libvirt-8.5.0.orig/src/interface/meson.build
++++ libvirt-8.5.0/src/interface/meson.build
 @@ -2,7 +2,7 @@ interface_driver_sources = [
    'interface_driver.c',
  ]
@@ -206,10 +206,10 @@ Index: libvirt-8.4.0/src/interface/meson.build
        udev_dep,
      ],
      'link_args': [
-Index: libvirt-8.4.0/meson_options.txt
+Index: libvirt-8.5.0/meson_options.txt
 ===================================================================
---- libvirt-8.4.0.orig/meson_options.txt
-+++ libvirt-8.4.0/meson_options.txt
+--- libvirt-8.5.0.orig/meson_options.txt
++++ libvirt-8.5.0/meson_options.txt
 @@ -29,6 +29,7 @@ option('libpcap', type: 'feature', value
  option('libssh', type: 'feature', value: 'auto', description: 'libssh support')
  option('libssh2', type: 'feature', value: 'auto', description: 'libssh2 support')

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul  5 20:25:19 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 8.5.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v8-5-0-2022-07-01
+  - Drop downstream-only lxc patches. They received little interest
+    upstream, are difficult to maintain, and are no longer required
+    by the requester (SLE):
+    0001-Extract-stats-functions-from-the-qemu-driver.patch,
+    0002-lxc-implement-connectGetAllDomainStats.patch
+
+-------------------------------------------------------------------
 Fri Jun 24 21:23:46 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - spec: Include aarch64 in the list of architectures that 'Require'
