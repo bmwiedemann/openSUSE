@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  6 07:49:28 UTC 2022 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add tracker-do-not-rebuild-non-existing-FTS-tables.patch: Prevent
+  SQL logic error when using tag manager of nautilus. (bsc#1201246,
+  glgo#GNOME/tracker!515)
+
+-------------------------------------------------------------------
 Wed Jun  1 09:00:30 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.3.1:
