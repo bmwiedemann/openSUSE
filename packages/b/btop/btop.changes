@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jun 29 17:02:08 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.2.8+git20220629.102b6db:
+  * v1.2.8 New features & themes
+  * use Shared::procPath, fix Logger error type
+  * Fixed kernel proc filter clearing issue + optimization
+  * Optimize away clear_kernel_cache() function
+  * Add tomorrow night theme
+  * fix identation
+  * Remove duplicate fstype setter
+  * Remove forgotten debug logger calls
+  * Added support for ZFS pool io stats monitoring
+  * Changed: Disable battery monitoring if it fails instead of exiting
+  * Add everforest-dark-hard.theme
+  * Changed spaces to tabs
+  * Finished kernel proc filtering.
+  * Added a check for filter kernel mode
+  * Added caching for kernel processes.
+  * More indentation
+  * Replaced my spaces with tabs
+  * Indentation fix.
+  * Woops that went unnoticed, didn't it?
+  * Fixed menu description
+  * Added linux label on the config option
+  * Fixed clang-format off labels
+  * Made kernel process filtering more efficient
+  * Replaced $*\s with tabs
+  * Fixed some formatting issues.
+  * Added TUI option for kernel proc filtering.
+  * Moved to correct version of the code
+
+-------------------------------------------------------------------
+Tue Jun 14 14:56:35 UTC 2022 - scott.bradnick@suse.com
+
+- Adjusting '/usr/bin' to '%{_bindir}'
+- Update to version 1.2.7+git20220603.83e9942:
+  * Update README.md
+  * Update btop.desktop
+
+-------------------------------------------------------------------
 Tue May 31 20:35:04 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Swapping out '%{_datarootdir}' for '%{_datadir}'.

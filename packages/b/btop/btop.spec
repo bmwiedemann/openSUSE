@@ -17,7 +17,7 @@
 
 
 Name:           btop
-Version:        1.2.7+git20220528.c3eb02f
+Version:        1.2.8+git20220629.102b6db
 Release:        0
 Summary:        Usage and stats for processor, memory, disks, network and processes
 License:        Apache-2.0
@@ -47,7 +47,7 @@ Resource monitor that shows usage and stats for processor, memory, disks, networ
 %make_install PREFIX=/usr
 
 %files
-/usr/bin/btop
+%{_bindir}/btop
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/themes
 %dir %{_datadir}/icons/hicolor
