@@ -268,4 +268,13 @@ This also handles TW properly. (forwarded request 653860 from lslezak)</comment>
     <comment>- Add missing recommends to the Qt5 devel pattern. (boo#1192133) (forwarded request 955279 from cgiboudeaux)</comment>
     <requestid>955281</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>257a4acf4dd7ae550c91cd8d528abde4</srcmd5>
+    <version>20220215</version>
+    <time>1657191403</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace pulseaudio with pipewire as the default audio server
+  in TW.</comment>
+    <requestid>987184</requestid>
+  </revision>
 </revisionlist>

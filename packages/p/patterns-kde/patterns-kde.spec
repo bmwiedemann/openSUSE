@@ -35,7 +35,6 @@ not make sense.
 
 This particular package contains the KDE patterns.
 
-
 ################################################################################
 %package devel_kde_frameworks
 %pattern_development
@@ -437,12 +436,19 @@ Recommends:     kio-extras5
 Recommends:     kwalletmanager5
 Recommends:     pinentry-qt5
 
+%if 0%{?suse_version} > 1500
+# pipewire
+Recommends:     pipewire
+Recommends:     pipewire-alsa
+Recommends:     pipewire-pulseaudio
+%else
 # pulseaudio
 Recommends:     pulseaudio
 Recommends:     alsa-plugins-pulse
 Recommends:     pulseaudio-module-x11
 Recommends:     pulseaudio-module-zeroconf
 Recommends:     pulseaudio-utils
+%endif
 
 # Thumbnailers
 Recommends:     ffmpegthumbs

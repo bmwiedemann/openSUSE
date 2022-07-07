@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  5 09:39:37 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Replace pulseaudio with pipewire as the default audio server
+  in TW.
+
+-------------------------------------------------------------------
 Wed Feb 16 10:45:02 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add missing recommends to the Qt5 devel pattern. (boo#1192133)
