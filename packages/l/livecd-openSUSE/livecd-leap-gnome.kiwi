@@ -439,6 +439,8 @@
     <package name="zip"/>
     <package name="aaa_base" replaces="ntp"/>
     <ignore name="ntp"/>
+    <package name="aaa_base" replaces="alsa-plugins-pulse"/>
+    <ignore name="alsa-plugins-pulse"/>
 
     <!-- list-gnome.sh -->
     <package name="aaa_base" replaces="libreoffice-calc"/>

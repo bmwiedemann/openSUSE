@@ -318,3 +318,6 @@ install zip
 
 # Workaround for bsc#1131492
 buildignore ntp
+
+# ignore alsa-plugins-pulse for noe
+buildignore alsa-plugins-pulse
