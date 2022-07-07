@@ -1,0 +1,28 @@
+From 118395dd551022faea75debac0dca30515f03949 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Wed, 22 Jun 2022 14:41:34 +0100
+Subject: [PATCH] Fix %attr issues
+
+1) Avoid assigning %attr's to symlinks which causes rpmbuild spam
+2) Change perms mask to 07777 to ensure SUID/SGID is copied over
+---
+ pesign-gen-repackage-spec | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/pesign-gen-repackage-spec b/pesign-gen-repackage-spec
+index 688c375..e5c961a 100755
+--- a/pesign-gen-repackage-spec
++++ b/pesign-gen-repackage-spec
+@@ -416,8 +416,10 @@ sub print_files {
+ 			$attrs .= "\%dir ";
+ 			utime($f->{mtime}, $f->{mtime}, $path);
+ 		}
+-		$attrs .= sprintf('%%attr(%04o, %s, %s) ', ($f->{mode} & 0777),
+-			$f->{owner}, $f->{group});
++		unless (-l "$path") {
++			$attrs .= sprintf('%%attr(%04o, %s, %s) ', ($f->{mode} & 07777),
++				$f->{owner}, $f->{group});
++		}
+ 		if ($f->{flags} & $filetypes{config}) {
+ 			$attrs .= "%config ";
+ 			my @cfg_attrs;

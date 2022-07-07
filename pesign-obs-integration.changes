@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 22 20:02:36 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add attr.patch to fix:
+  * Avoid assigning %attr's to symlinks which causes rpmbuild spam
+  * Change perms mask to 07777 to ensure SUID/SGID is copied over
+- Add lang.patch to support %lang
+
+-------------------------------------------------------------------
 Wed Jun 15 11:13:51 UTC 2022 - gmbr3@opensuse.org
 
 - Update to version 10.2+git20220504.8690743:
