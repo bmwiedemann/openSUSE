@@ -2504,6 +2504,9 @@ unsorted:
   - cross-ppc64le-gcc7-icecream-backend: [x86_64] 
   - cross-ppc64le-linux-glibc-devel 
   - cross-pru-binutils 
+  - cross-pru-gcc12 
+  - cross-pru-gcc12-bootstrap 
+  - cross-pru-newlib-devel 
   - cross-riscv64-binutils 
   - cross-riscv64-elf-gcc11 
   - cross-riscv64-elf-gcc11-bootstrap 
@@ -6449,7 +6452,6 @@ unsorted:
   - gtk-doc-manual 
   - gtk-doc-manual-lang 
   - gtk-doc-mkpdf 
-  - gtk-frdp-devel 
   - gtk-key-theme-ctrluftw 
   - gtk-layer-shell-devel 
   - gtk-sharp-beans 
@@ -12883,6 +12885,7 @@ unsorted:
   - libpackagekit-glib2-18-32bit: [x86_64] 
   - libpackagekit-glib2-devel 
   - libpackagekit-glib2-devel-32bit: [x86_64] 
+  - libpackagekitqt6-1 
   - libpagemaker-devel 
   - libpagemaker-devel-doc 
   - libpagemaker-tools 
@@ -13129,7 +13132,7 @@ unsorted:
   - libprimecount-devel 
   - libprimecount7 
   - libprimesieve-devel 
-  - libprimesieve9 
+  - libprimesieve10 
   - libprofiler0 
   - libproj22 
   - libpromises-devel 
@@ -18396,6 +18399,7 @@ unsorted:
   - packETH-cli 
   - package-translations 
   - packagekitqt5-devel 
+  - packagekitqt6-devel 
   - packit 
   - paexec 
   - paexec-examples 
@@ -20144,7 +20148,6 @@ unsorted:
   - perl-base-32bit: [x86_64] 
   - perl-biber 
   - perl-boolean 
-  - perl-checkbot 
   - perl-constant-boolean 
   - perl-constant-defer 
   - perl-curry 
@@ -20424,7 +20427,6 @@ unsorted:
   - pinta-lang 
   - pipenightdreams 
   - piper 
-  - pipewire-alsa: [i586] 
   - pipewire-alsa-32bit: [x86_64] 
   - pipewire-devel 
   - pipewire-doc 
