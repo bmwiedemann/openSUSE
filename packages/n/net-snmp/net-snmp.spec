@@ -30,7 +30,7 @@
 %define libname libsnmp40
 %bcond_without python2
 Name:           net-snmp
-Version:        5.9.1
+Version:        5.9.2
 Release:        0
 Summary:        SNMP Daemon
 License:        BSD-3-Clause AND MIT
@@ -50,7 +50,7 @@ Source98:       net-snmp-rpmlintrc
 Source99:       baselibs.conf
 Patch1:         net-snmp-5.9.1-socket-path.patch
 Patch2:         net-snmp-5.9.1-testing-empty-arptable.patch
-Patch3:         net-snmp-5.9.1-pie.patch
+Patch3:         net-snmp-5.9.2-pie.patch
 Patch4:         net-snmp-5.9.1-net-snmp-config-headercheck.patch
 Patch5:         net-snmp-5.9.1-perl-tk-warning.patch
 Patch6:         net-snmp-5.9.1-velocity-mib.patch
@@ -61,7 +61,7 @@ Patch10:        net-snmp-5.9.1-add-lustre-fs-support.patch
 Patch11:        net-snmp-5.9.1-harden_snmpd.service.patch
 Patch12:        net-snmp-5.9.1-harden_snmptrapd.service.patch
 Patch13:        net-snmp-5.9.1-suse-systemd-service-files.patch
-Patch14:        net-snmp-5.9.1-fix-create-v3-user-outfile.patch
+Patch14:        net-snmp-5.9.2-fix-create-v3-user-outfile.patch
 Patch15:        net-snmp-5.9.1-subagent-set-response.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}

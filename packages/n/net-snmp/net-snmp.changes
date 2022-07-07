@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jul  4 15:06:59 UTC 2022 - Alexander Bergmann <abergmann@suse.com>
+
+- update to 5.9.2 (bsc#1201103):
+  - security:
+    - These two CVEs can be exploited by a user with read-only credentials:
+      - CVE-2022-24805 A buffer overflow in the handling of the INDEX of
+        NET-SNMP-VACM-MIB can cause an out-of-bounds memory access.
+      - CVE-2022-24809 A malformed OID in a GET-NEXT to the nsVacmAccessTable
+        can cause a NULL pointer dereference.
+    - These CVEs can be exploited by a user with read-write credentials:
+      - CVE-2022-24806 Improper Input Validation when SETing malformed
+        OIDs in master agent and subagent simultaneously
+      - CVE-2022-24807 A malformed OID in a SET request to
+        SNMP-VIEW-BASED-ACM-MIB::vacmAccessTable can cause an
+        out-of-bounds memory access.
+      - CVE-2022-24808 A malformed OID in a SET request to
+        NET-SNMP-AGENT-MIB::nsLogTable can cause a NULL pointer dereference
+      - CVE-2022-24810 A malformed OID in a SET to the nsVacmAccessTable
+        can cause a NULL pointer dereference.
+- Refactor two patches to work with version number 5.9.2:
+  delete:
+  * net-snmp-5.9.1-pie.patch
+  * net-snmp-5.9.1-fix-create-v3-user-outfile.patch
+  add:
+  * net-snmp-5.9.2-pie.patch
+  * net-snmp-5.9.2-fix-create-v3-user-outfile.patch
+
+-------------------------------------------------------------------
 Wed Jun 29 11:21:07 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Moved logrotate files from user specific directory /etc/logrotate.d
