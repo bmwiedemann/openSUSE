@@ -1433,4 +1433,10 @@
     <user>dimstar_suse</user>
     <comment>- Ignore alsa-plugins-pulse for now: conflicts with pipewire.</comment>
   </revision>
+  <revision rev="177" vrev="177">
+    <srcmd5>6f50cd9c9381c410b86a5212b328410b</srcmd5>
+    <version>unknown</version>
+    <time>1657227863</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>

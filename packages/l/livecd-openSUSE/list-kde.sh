@@ -80,3 +80,5 @@ install alsa-firmware
 
 # From x11_enhanced, but that pattern can't be installed
 install opensuse-welcome
+
+buildignore bluedevil5
