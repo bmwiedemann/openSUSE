@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 06 08:14:35 UTC 2022 - kukuk@suse.com
+
+- Update to version 0.0+git20220706.2c928fe:
+  * Fix partly missing SELinux support (#5), call podman directly
+
+-------------------------------------------------------------------
 Tue Jun 28 09:16:00 UTC 2022 - kukuk@suse.com
 
 - Update to version 0.0+git20220628.ee9e63c:

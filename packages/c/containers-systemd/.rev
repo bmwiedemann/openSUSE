@@ -308,4 +308,13 @@
   * Add files to renew certificates with certbot</comment>
     <requestid>985537</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7447d28befafe76f0ca625be353d3be3</srcmd5>
+    <version>0.0+git20220706.2c928fe</version>
+    <time>1657191373</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20220706.2c928fe:
+  * Fix partly missing SELinux support (#5), call podman directly</comment>
+    <requestid>986984</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,7 @@ DISABLE_RESTART_ON_UPDATE=1 \
 %endif
 
 Name:           containers-systemd
-Version:        0.0+git20220628.ee9e63c
+Version:        0.0+git20220706.2c928fe
 Release:        0
 Summary:        Systemd service files and config files for openSUSE container
 License:        MIT
