@@ -311,4 +311,15 @@
     <comment></comment>
     <requestid>904218</requestid>
   </revision>
+  <revision rev="38" vrev="38">
+    <srcmd5>538f8f52065463784ba7fcc0259eb9f3</srcmd5>
+    <version>20170319</version>
+    <time>1657191406</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend instead of require xfce* and network_admin patterns on
+  the DVD: those patterns do not exist in staging.
+
+- Ensure pulseaudio is part of the DVD.</comment>
+    <requestid>987247</requestid>
+  </revision>
 </revisionlist>

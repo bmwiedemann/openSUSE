@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-media
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,8 +36,10 @@ This particular package contains patterns that determine the contents of media
 such as DVD's
 
 
-################################################################################
 
+
+
+################################################################################
 %package rest_cd_core
 %pattern_desktopfunctions
 Summary:        Remaining Software
@@ -536,7 +538,7 @@ Requires:       pattern() = lamp_server
 Requires:       pattern() = laptop
 Requires:       pattern() = mail_server
 Requires:       pattern() = multimedia
-Requires:       pattern() = network_admin
+Recommends:     pattern() = network_admin
 Requires:       pattern() = office
 Requires:       pattern() = print_server
 Requires:       pattern() = rest_cd_core
@@ -544,10 +546,10 @@ Requires:       pattern() = sw_management
 Requires:       pattern() = sw_management_gnome
 Requires:       pattern() = transactional_base
 Requires:       pattern() = x11
-Requires:       pattern() = xfce
-Requires:       pattern() = xfce_basis
-Requires:       pattern() = xfce_laptop
-Requires:       pattern() = xfce_office
+Recommends:     pattern() = xfce
+Recommends:     pattern() = xfce_basis
+Recommends:     pattern() = xfce_laptop
+Recommends:     pattern() = xfce_office
 Requires:       pattern() = yast2_basis
 Requires:       pattern() = yast2_install_wf
 # for now xen_server
@@ -805,6 +807,9 @@ Recommends:     pam_ldap-64bit
 # bnc#581144
 Recommends:     gtk2-32bit
 %endif
+# Ensure we have Pulseaudio on the DVD (for upgrade scenarios)
+Recommends:     pulseaudio
+Recommends:     pulseaudio-module-x11
 
 %description rest_dvd
 Packages that are on CD but not in other patterns.

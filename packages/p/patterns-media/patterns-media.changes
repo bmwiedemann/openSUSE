@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul  6 14:56:09 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Recommend instead of require xfce* and network_admin patterns on
+  the DVD: those patterns do not exist in staging.
+
+-------------------------------------------------------------------
+Wed Jul  6 14:12:16 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Ensure pulseaudio is part of the DVD.
+
+-------------------------------------------------------------------
 Fri Jun 25 16:45:28 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Replace pulling in yast2-python-bindings with yast2-python3-bindings.
