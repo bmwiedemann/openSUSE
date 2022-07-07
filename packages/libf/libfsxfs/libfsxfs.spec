@@ -18,7 +18,7 @@
 
 Name:           libfsxfs
 %define lname	libfsxfs1
-Version:        20220528
+Version:        20220706
 Release:        0
 Summary:        Library and tools for accessing the SGI X File System (XFS)
 License:        LGPL-3.0-or-later
@@ -44,12 +44,12 @@ BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfcache) >= 20220110
-BuildRequires:  pkgconfig(libfcrypto) >= 20200104
+BuildRequires:  pkgconfig(libfcrypto) >= 20210415
 BuildRequires:  pkgconfig(libfdata) >= 20211023
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libhmac) >= 20220425
-BuildRequires:  pkgconfig(libuna) >= 20220102
+BuildRequires:  pkgconfig(libuna) >= 20220611
 BuildRequires:  pkgconfig(python3)
 %python_subpackages
 
