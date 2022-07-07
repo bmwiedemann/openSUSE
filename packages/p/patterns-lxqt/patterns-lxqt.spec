@@ -36,8 +36,8 @@ not make sense.
 
 This particular package contains the LXQt patterns.
 
-################################################################################
 
+################################################################################
 %package lxqt
 %pattern_graphicalenvironments
 Summary:        LXQt Desktop Environment
@@ -63,55 +63,60 @@ Requires:       lxqt-sudo
 Requires:       lxqt-themes
 Requires:       oxygen5-icon-theme
 Requires:       pattern() = x11
-Recommends:     pattern() = multimedia
 Recommends:     xdg-desktop-portal-lxqt
+Recommends:     pattern() = multimedia
 # non core packages belonging to LXQt organization
 Recommends:     pcmanfm-qt
+Recommends:     featherpad
+Recommends:     lximage-qt
 Recommends:     lxqt-archiver
+Recommends:     obconf-qt
 Recommends:     pavucontrol-qt
 Recommends:     qterminal
-Recommends:     obconf-qt
-Recommends:     lximage-qt
-Recommends:     featherpad
 
 Suggests:       qps
 Suggests:       qlipper
 
+%if 0%{suse_version} > 1500
+# Pipewire is the default sound server.
+Recommends:     pipewire-pulseaudio
+%else
 # Pulseaudio is the default sound server
 Recommends:     pulseaudio-module-bluetooth
 Recommends:     pulseaudio-module-gconf
 Recommends:     pulseaudio-module-lirc
 Recommends:     pulseaudio-module-x11
 Recommends:     pulseaudio-module-zeroconf
+%endif
 Recommends:     pulseaudio-utils
 
-# 
+#
 Recommends:     openbox
+Recommends:     lightdm
 Recommends:     obconf
 Recommends:     qupzilla
-Recommends:     xdg-utils
 Recommends:     xdg-user-dirs
-Recommends:     xscreensaver
+Recommends:     xdg-utils
 Recommends:     xorg-x11-essentials
-Recommends:     lightdm
+Recommends:     xscreensaver
 # misc
 Recommends:     ark
 Recommends:     claws-mail
 
-Recommends:     pk-update-icon
 Recommends:     apper
+Recommends:     pk-update-icon
 
+Recommends:     NetworkManager
 Recommends:     avahi
 Recommends:     kdesu
-Recommends:     system-config-printer
-Recommends:     simple-scan
 Recommends:     libyui-qt-pkg
+Recommends:     simple-scan
+Recommends:     system-config-printer
 Recommends:     yast2-control-center-qt
-Recommends:     NetworkManager
 # at some point nm-tray might be better
 Recommends:     NetworkManager-applet
-Recommends:     google-droid-fonts
 Recommends:     desktop-data-openSUSE
+Recommends:     google-droid-fonts
 Recommends:     samba
 Suggests:       hplip
 

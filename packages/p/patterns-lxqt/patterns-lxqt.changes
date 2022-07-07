@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  5 12:23:48 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use pipewire as default audio server in TW.
+
+-------------------------------------------------------------------
 Fri Apr 29 07:14:26 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Recommend xdg-desktop-portal-lxqt (new with LXQt 1.1.0)
