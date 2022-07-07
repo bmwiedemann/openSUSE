@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  5 08:08:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add requires between baselibs
+
+-------------------------------------------------------------------
 Mon Apr 18 20:36:09 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Use nasm instead of yasm, the latter has not released any update 
