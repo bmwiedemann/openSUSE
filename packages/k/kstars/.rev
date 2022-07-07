@@ -1093,4 +1093,12 @@
     <comment></comment>
     <requestid>979343</requestid>
   </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>972c2d88ff124141b41346818510bf8c</srcmd5>
+    <version>3.5.9</version>
+    <time>1657191428</time>
+    <user>dimstar_suse</user>
+    <comment>require/recommend dbus-send (forwarded request 986985 from cgiboudeaux)</comment>
+    <requestid>987206</requestid>
+  </revision>
 </revisionlist>

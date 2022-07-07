@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  6 06:40:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Explicitly recommend dbus-send. The program is needed by the
+  scripting tool.
+
+-------------------------------------------------------------------
 Thu May 26 05:50:06 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.5.9:

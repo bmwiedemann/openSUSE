@@ -73,7 +73,7 @@ BuildRequires:  pkgconfig(libindi)
 BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(wcslib)
 Requires:       libqt5-qtquickcontrols
-Recommends:     %{name}-lang
+Recommends:     /usr/bin/dbus-send
 Recommends:     libindi
 Recommends:     xplanet
 
