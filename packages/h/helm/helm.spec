@@ -21,7 +21,7 @@
 %define git_dirty clean
 
 Name:           helm
-Version:        3.8.2
+Version:        3.9.0
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
@@ -30,7 +30,7 @@ URL:            https://github.com/helm/helm
 Source0:        https://github.com/helm/helm/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.17
+BuildRequires:  golang(API) = 1.18
 %{go_provides}
 
 %description

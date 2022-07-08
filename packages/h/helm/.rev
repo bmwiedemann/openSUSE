@@ -324,4 +324,16 @@ See changelog in:
   * feat(comp): Shell completion for OCI</comment>
     <requestid>975794</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a19efc0a52c3b2200f1b46f49d98d9e4</srcmd5>
+    <version>3.9.0</version>
+    <time>1657281794</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.9.0:
+  * Added a --quiet flag to helm lint
+  * Added a --post-renderer-args flag to support arguments being passed to the post renderer
+  * Added more checks during the signing process
+  * Updated to add Kubernetes 1.24 support</comment>
+    <requestid>987819</requestid>
+  </revision>
 </revisionlist>

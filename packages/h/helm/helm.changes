@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 08 07:19:35 UTC 2022 - dmueller@suse.com
+
+- Update to version 3.9.0:
+  * Added a --quiet flag to helm lint
+  * Added a --post-renderer-args flag to support arguments being passed to the post renderer
+  * Added more checks during the signing process
+  * Updated to add Kubernetes 1.24 support
+
+-------------------------------------------------------------------
 Mon May 09 11:20:29 UTC 2022 - dmueller@suse.com
 
 - Update to version 3.8.2:
