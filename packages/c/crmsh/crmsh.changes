@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul 05 01:54:44 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220705.bb8708eb:
+  * Dev: CI: trigger CI on push and pull request for all branches
+
+-------------------------------------------------------------------
+Fri Jun 24 03:12:49 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220624.7b89db34:
+  * Dev: log: Add replacement fields in str format
+
+-------------------------------------------------------------------
+Thu Jun 23 08:39:09 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220623.6b256b4b:
+  * Dev: behave: adjust functional test based on previous changes
+  * Dev: ui_cluster: Add examples for 'cluster init' and 'cluster join'
+
+-------------------------------------------------------------------
 Sun Jun 19 03:32:41 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.0+20220619.cc0a81a5:
