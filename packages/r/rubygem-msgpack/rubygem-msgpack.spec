@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-msgpack
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 %define mod_name msgpack
 %define mod_full_name %{mod_name}-%{version}

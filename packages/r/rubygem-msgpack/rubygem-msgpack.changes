@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul  8 08:38:30 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.5.3
+
+  * Fix deduplication of empty strings when using the `freeze: true` option.
+  * Use `rb_hash_new_capa` when available (Ruby 3.2) for improved performance when parsing large hashes.
+
+-------------------------------------------------------------------
 Mon Jun 13 17:04:57 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.5.2
