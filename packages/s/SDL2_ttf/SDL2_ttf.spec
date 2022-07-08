@@ -18,7 +18,7 @@
 
 Name:           SDL2_ttf
 %define lname	libSDL2_ttf-2_0-0
-Version:        2.0.18
+Version:        2.20.0
 Release:        0
 Summary:        Simple DirectMedia Layer 2 Truetype library
 License:        Zlib
@@ -29,7 +29,6 @@ URL:            https://github.com/libsdl-org/SDL_ttf
 Source:         https://github.com/libsdl-org/SDL_ttf/releases/download/release-%version/SDL2_ttf-%version.tar.gz
 Source2:        https://github.com/libsdl-org/SDL_ttf/releases/download/release-%version/SDL2_ttf-%version.tar.gz.sig
 Source8:        %name.keyring
-Source9:        baselibs.conf
 BuildRequires:  c++_compiler
 BuildRequires:  dos2unix
 BuildRequires:  pkg-config
@@ -75,7 +74,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%license COPYING.txt
+%license LICENSE.txt
 %_libdir/libSDL2_ttf-2*.so.*
 
 %files -n libSDL2_ttf-devel
@@ -83,5 +82,6 @@ rm -f "%buildroot/%_libdir"/*.la
 %_includedir/SDL2/
 %_libdir/libSDL2_ttf.so
 %_libdir/pkgconfig/SDL2_ttf.pc
+%_libdir/cmake/
 
 %changelog
