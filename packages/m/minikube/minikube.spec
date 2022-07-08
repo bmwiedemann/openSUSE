@@ -17,7 +17,7 @@
 
 
 Name:           minikube
-Version:        1.25.2
+Version:        1.26.0
 Release:        0
 Summary:        Tool to run Kubernetes locally
 License:        Apache-2.0

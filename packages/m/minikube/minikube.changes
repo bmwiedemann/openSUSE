@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Jul  7 08:59:48 UTC 2022 - Matthew Wilks <water261@outlook.com.au>
+
+- update to 1.26.0:
+  * Note: Using a minikube cluster created before 1.26.0, using the docker
+    container-runtime (default), and plan to upgrade the Kubernetes version to
+    v1.24+? After upgrading, you may need to delete & recreate it. none driver
+    users, cri-docker is now required to be installed, install instructions.
+    See issue #14410 for more info.
+  * Add headlamp addon #14315
+  * Add InAccel FPGA Operator addon #12995
+  * Only set highmem=off for darwin if qemu version is below 7.0 or memory is below 3GB #14291
+  * Define qemu as a qemu2 driver alias #14284
+  * Allow users to supply custom QEMU firmware path #14283
+  * Add eBPF related kernel options #14316
+  * Add bind address flag for minikube tunnel #14245
+  * Add active column for minikube profile list #14079
+  * Add documentation URL to the addon list table #14123
+  * minikube config defaults kubernetes-version lists all currently supported Kubernetes versions #13775
+  * Fix terminated commands not writing to audit log #13307
+  * Fix Podman port mapping publish on macOS #14290
+  * Fix minikube delete deleting networks from other profiles #14279
+  * Bump Kubernetes version default: v1.24.1 and latest: v1.24.1 #14197
+  * ISO: Upgrade Docker from 20.10.14 to 20.10.16 #14153
+  * ISO: Upgrade kernel from 4.19.235 to 5.10.57 #12707
+  * Upgrade Dashboard addon from v2.5.1 to v2.6.0 & MetricsScraper from v1.0.7 to v1.0.8 #14269
+  * Upgrade gcp-auth-webhook from v0.0.8 to v0.0.9 #14372
+  * Upgrade nginx image from v1.2.0 to v1.2.1 #14317
+  * Important Changes in Pre-Release Versions
+  * Add configure option to registry-aliases addon #13912
+  * Add support for building aarch64 ISO #13762
+  * Support rootless Podman driver (Usage: minikube config set rootless true) #13829
+  * QEMU:
+    * Add support for the QEMU driver #13639
+    * Fix qemu firmware path locations #14182
+    * Re-establish apiserver tunnel on restart #14183
+
+-------------------------------------------------------------------
 Sat Mar 26 14:23:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.25.2:
