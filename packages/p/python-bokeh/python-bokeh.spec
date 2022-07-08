@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-%define skip_python36 1
 %bcond_without  tests
 Name:           python-bokeh
 Version:        2.4.3
@@ -27,6 +26,8 @@ License:        BSD-3-Clause
 URL:            https://github.com/bokeh/bokeh/
 Source0:        https://files.pythonhosted.org/packages/source/b/bokeh/bokeh-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/bokeh/bokeh/%{version}/conftest.py
+#PATCH-FIX-UPSTREAM bokeh-pr12218-Pillow9.2.patch gh#bokeh/bokeh#12218
+Patch1:         https://github.com/bokeh/bokeh/pull/12218.patch#/bokeh-pr12218-Pillow9.2.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9}
 BuildRequires:  %{python_module Pillow >= 7.1.0}
 BuildRequires:  %{python_module PyYAML >= 3.10}
