@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul  7 19:19:21 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.4.6:
+  * Roster: Display show value in tooltip.
+  * ChatActionProcessor: Improve detection of emoji shortcode
+    start.
+  * Remote: Console scripts need a method as entry point.
+  * CodeWidget: Don’t default to python for highlighting.
+  * ContactInfo: Preserve groups when changing contact name.
+  * CodeWidget: Don't highlight matching brackets.
+  * StatusIcon: Don’t lose new message icon on state change.
+  * GtkStatusIcon: Always show when Gajim has not toplevel focus.
+  * GroupChatNickCompletion: Only process Tab press.
+  * Row name: Align label correctly.
+  * StatusIcon: Logic error on activate.
+
+-------------------------------------------------------------------
 Tue Jun 21 20:06:05 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.4.5:

@@ -28,7 +28,7 @@
 %define py3pkg_sitelib %{_prefix}/lib/python%{py3ver}/site-packages
 %endif
 Name:           gajim
-Version:        1.4.5
+Version:        1.4.6
 Release:        0
 Summary:        XMPP client written in Python and Gtk
 License:        GPL-3.0-only
