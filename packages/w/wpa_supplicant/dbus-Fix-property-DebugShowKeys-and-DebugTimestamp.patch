@@ -1,0 +1,46 @@
+From 903f0848ce7d67c99eb5a2569aa5c31bcd7adbc1 Mon Sep 17 00:00:00 2001
+From: Clemens Famulla-Conrad <cfamullaconrad@suse.de>
+Date: Tue, 5 Jul 2022 13:04:52 +0200
+Subject: [PATCH] dbus: Fix property DebugShowKeys and DebugTimestamp
+
+It is possible to specify -t or -K multiple times. With this the
+value isn't boolean anymore and we hit a assert in libdbus
+function `dbus_message_iter_append_basic()`, which expect 0 or 1
+for DBUS_TYPE_BOOLEAN.
+
+Signed-off-by: Clemens Famulla-Conrad <cfamullaconrad@suse.de>
+---
+ wpa_supplicant/dbus/dbus_new_handlers.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/wpa_supplicant/dbus/dbus_new_handlers.c b/wpa_supplicant/dbus/dbus_new_handlers.c
+index 0b1002bf1..de82930e8 100644
+--- a/wpa_supplicant/dbus/dbus_new_handlers.c
++++ b/wpa_supplicant/dbus/dbus_new_handlers.c
+@@ -908,8 +908,10 @@ dbus_bool_t wpas_dbus_getter_debug_timestamp(
+ 	const struct wpa_dbus_property_desc *property_desc,
+ 	DBusMessageIter *iter, DBusError *error, void *user_data)
+ {
++	dbus_bool_t b = wpa_debug_timestamp ? TRUE : FALSE;
++
+ 	return wpas_dbus_simple_property_getter(iter, DBUS_TYPE_BOOLEAN,
+-						&wpa_debug_timestamp, error);
++						&b, error);
+ 
+ }
+ 
+@@ -927,8 +929,10 @@ dbus_bool_t wpas_dbus_getter_debug_show_keys(
+ 	const struct wpa_dbus_property_desc *property_desc,
+ 	DBusMessageIter *iter, DBusError *error, void *user_data)
+ {
++	dbus_bool_t b = wpa_debug_timestamp ? TRUE : FALSE;
++
+ 	return wpas_dbus_simple_property_getter(iter, DBUS_TYPE_BOOLEAN,
+-						&wpa_debug_show_keys, error);
++						&b, error);
+ 
+ }
+ 
+-- 
+2.35.3
+

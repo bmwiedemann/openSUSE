@@ -38,7 +38,7 @@ Patch1:         wpa_supplicant-flush-debug-output.patch
 Patch2:         wpa_supplicant-sigusr1-changes-debuglevel.patch
 Patch3:         wpa_supplicant-alloc_size.patch
 Patch5:         wpa_supplicant-dump-certificate-as-PEM-in-debug-mode.diff
-Patch7:         Revert-DBus-Add-sae-to-interface-key_mgmt-capabilities.patch
+Patch6:         dbus-Fix-property-DebugShowKeys-and-DebugTimestamp.patch
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
@@ -83,15 +83,20 @@ install -m 0755 wpa_supplicant/wpa_cli %{buildroot}%{_sbindir}
 install -m 0755 wpa_supplicant/wpa_passphrase %{buildroot}%{_sbindir}
 install -m 0755 wpa_supplicant/wpa_supplicant %{buildroot}%{_sbindir}
 install -m 0755 wpa_supplicant/eapol_test %{buildroot}%{_sbindir}
-install -d %{buildroot}%{_sysconfdir}/dbus-1/system.d
-install -m 0644 wpa_supplicant/dbus/dbus-wpa_supplicant.conf %{buildroot}%{_sysconfdir}/dbus-1/system.d/wpa_supplicant.conf
+install -d %{buildroot}%{_datadir}/dbus-1/system.d
+install -m 0644 wpa_supplicant/dbus/dbus-wpa_supplicant.conf %{buildroot}%{_datadir}/dbus-1/system.d/wpa_supplicant.conf
 install -d %{buildroot}/%{_sysconfdir}/%{name}
 install -m 0600 %{SOURCE2} %{buildroot}/%{_sysconfdir}/%{name}
 install -d %{buildroot}/%{_datadir}/dbus-1/system-services
 install -m 0644 %{SOURCE3} %{buildroot}/%{_datadir}/dbus-1/system-services
 install -m 0644 %{SOURCE5} %{buildroot}/%{_datadir}/dbus-1/system-services
+%if 0%{?suse_version} > 1500
+install -d %{buildroot}/%{_distconfdir}/logrotate.d/
+install -m 644 %{SOURCE4} %{buildroot}/%{_distconfdir}/logrotate.d/wpa_supplicant
+%else
 install -d %{buildroot}/%{_sysconfdir}/logrotate.d/
 install -m 644 %{SOURCE4} %{buildroot}/%{_sysconfdir}/logrotate.d/wpa_supplicant
+%endif
 install -d %{buildroot}/%{_rundir}/%{name}
 install -d %{buildroot}%{_mandir}/man{5,8}
 install -m 0644 wpa_supplicant/doc/docbook/*.8 %{buildroot}%{_mandir}/man8
@@ -129,10 +134,14 @@ ln -s wpa_supplicant.service %{buildroot}%{_unitdir}/dbus-fi.w1.wpa_supplicant1.
 %{_sbindir}/wpa_cli
 %{_sbindir}/wpa_passphrase
 %{_sbindir}/wpa_supplicant
-%config %{_sysconfdir}/dbus-1/system.d/%{name}.conf
+%{_datadir}/dbus-1/system.d/%{name}.conf
 %{_datadir}/dbus-1/system-services
 %config %{_sysconfdir}/%{name}/%{name}.conf
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/wpa_supplicant
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/wpa_supplicant
+%endif
 %dir %{_rundir}/%{name}
 %ghost %{_rundir}/%{name}
 %{_unitdir}/wpa_supplicant.service
