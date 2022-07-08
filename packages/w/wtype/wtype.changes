@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  7 18:24:09 UTC 2022 - llyyr <llyyr.public@gmail.com>
+
+- Update to 0.4:
+  * Fix some unicode characters being converted to wrong keysyms (such as γ and other greek characters)
+  * Drop reallocarray (for musl builds)
+  * Do not parse the - stdin placeholder if it appears after --
+  * Document stdin input
+  * Add the -d switch to specify a delay between keystrokes
+
+-------------------------------------------------------------------
 Mon Nov 30 08:29:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.3:

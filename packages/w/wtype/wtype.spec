@@ -1,7 +1,7 @@
 #
 # spec file for package wtype
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wtype
-Version:        0.3
+Version:        0.4
 Release:        0
 Summary:        Xdotool type for Wayland
 License:        MIT
