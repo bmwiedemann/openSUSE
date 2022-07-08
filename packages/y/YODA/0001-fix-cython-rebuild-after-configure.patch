@@ -1,0 +1,25 @@
+From 9225f493bc45241f775f1a3f85eee5cd3d7cad2b Mon Sep 17 00:00:00 2001
+From: "max.knobbe" <max.knobbe@stud.uni-goettingen.de>
+Date: Wed, 8 Jun 2022 22:15:30 +0200
+Subject: [PATCH] fix cython rebuild after configure
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 3f31cc8..768efd6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -137,7 +137,7 @@ if test x$enable_pyext == xyes; then
+     if test x$CYTHON != x; then
+         AC_MSG_NOTICE([Cython >= 0.24 found at $CYTHON: Python extension source can be rebuilt (for developers)])
+         # Force rebuild since we have a sufficient Cython
+-        test -f pyext/yoda/core.pyx && touch pyext/yoda/core.pyx
++        test -f pyext/yoda/core.pyx && touch pyext/yoda/*.pyx
+     fi
+   fi
+ 
+-- 
+2.36.1
+

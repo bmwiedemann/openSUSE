@@ -18,20 +18,21 @@
 
 %define ver 1.9.5
 %define so_name lib%{name}-%(echo %{ver} | tr '.' '_')
-
 Name:           YODA
 Version:        %{ver}
 Release:        0
 Summary:        A small set of data analysis classes for MC event generator validation analyses
 License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
-URL:            http://yoda.hepforge.org/
+URL:            https://yoda.hepforge.org/
 Source:         http://www.hepforge.org/archive/yoda/%{name}-%{version}.tar.bz2
-Patch1:         sover.diff
+Patch0:         sover.diff
+# PATCH-FIX-UPSTREAM -- python 3.10 fix
+Patch1:         0001-fix-cython-rebuild-after-configure.patch
 BuildRequires:  bash-completion
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
@@ -40,7 +41,6 @@ BuildRequires:  python3-matplotlib
 BuildRequires:  python3-numpy
 # /SECTION
 BuildRequires:  pkgconfig(zlib)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 YODA is a small set of data analysis (specifically histogramming)
@@ -106,8 +106,7 @@ system for MC event generator validation analyses.
 This package provides the python binidings for %{name}.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 # USE PYTHON3 FOR HASHBANGS
 sed -Ei "1{s|/usr/bin/python|/usr/bin/python3|}" bin/*
@@ -124,27 +123,25 @@ sed -E -i "1{s|^#! /usr/bin/env python||}" pyext/yoda/search.py
 export PYTHON_VERSION=%{py3_ver}
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
-mv %{buildroot}/etc/bash_completion.d/* %{buildroot}%{_datadir}/bash-completion/completions/
-find %{buildroot}%{_libdir}/ -name "*.la" -delete
+mv %{buildroot}%{_sysconfdir}/bash_completion.d/* %{buildroot}%{_datadir}/bash-completion/completions/
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post   -n %{so_name} -p /sbin/ldconfig
 %postun -n %{so_name} -p /sbin/ldconfig
 
 %files -n %{so_name}
-%defattr(-,root,root)
 %{_libdir}/libYODA-*.so
 
 %files devel
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog
 %license COPYING
 %{_bindir}/yoda-config
@@ -153,7 +150,6 @@ make %{?_smp_mflags} check
 %{_includedir}/%{name}/
 
 %files -n python3-%{name}
-%defattr(-,root,root)
 %{python3_sitearch}/yoda/
 %{python3_sitearch}/yoda1/
 %{python3_sitearch}/yoda*.egg-info

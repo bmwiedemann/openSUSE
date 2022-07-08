@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  7 09:17:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with python 3.10:
+  * 0001-fix-cython-rebuild-after-configure.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sun May 29 12:47:31 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.9.5:
