@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 06 18:11:46 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.41.0:
+  * update syft to v0.50.0 (#818)
+  * Finalize v4 Grype schema (#803)
+  * docs: update to include rust (#814)
+  * feat: add diffing 2 databases to v3 store functionality (#789)
+  * fix: add support for partybus ui on `grype db update` cmd (#806)
+  * Added Docker example to Readme (#769)
+  * fix: add vex json & xml to listed formats (#802)
+  * docs: update php listing to be more clear that the `.json` file isn't indexed (#808)
+
+-------------------------------------------------------------------
 Mon Jun 27 13:20:36 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.40.1:
