@@ -175,8 +175,8 @@ make install-i18n DESTDIR=%{buildroot} PREFIX=%{_prefix} AWK=gawk COPTS=%{_copts
 install -d -m 755 %{buildroot}/%{_sysconfdir}/slp.reg.d
 install -m 644 dnsmasq.conf.example %{buildroot}/%{_sysconfdir}/dnsmasq.conf
 install -m 644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/slp.reg.d/
-install -d 755 %{buildroot}%{_sysconfdir}/dbus-1/system.d/
-install -m 644 dbus/dnsmasq.conf %{buildroot}%{_sysconfdir}/dbus-1/system.d/dnsmasq.conf
+install -d 755 %{buildroot}%{_datadir}/dbus-1/system.d/
+install -m 644 dbus/dnsmasq.conf %{buildroot}%{_datadir}/dbus-1/system.d/dnsmasq.conf
 install -D -m 0644 %{SOURCE4} %{buildroot}%{_unitdir}/dnsmasq.service
 %if %{without tftp_user_package}
 install -d -m 0755 %{buildroot}/srv/tftpboot
@@ -215,7 +215,7 @@ rm -rf contrib/MacOSX-launchd
 %dir %{_sysconfdir}/slp.reg.d/
 %config %attr(0644,root,root) /%{_sysconfdir}/slp.reg.d/dnsmasq.reg
 %{_mandir}/man8/dnsmasq.8%{?ext_man}
-%config(noreplace) %{_sysconfdir}/dbus-1/system.d/dnsmasq.conf
+%{_datadir}/dbus-1/system.d/dnsmasq.conf
 %{_unitdir}/dnsmasq.service
 %dir %{_sysconfdir}/dnsmasq.d
 %config(noreplace) %{_sysconfdir}/dnsmasq.d/trust-anchors.conf

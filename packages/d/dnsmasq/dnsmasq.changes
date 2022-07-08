@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  8 14:24:38 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move the dbus-1 system.d file to /usr (bsc#1200344)
+
+-------------------------------------------------------------------
 Tue Apr  5 07:16:18 UTC 2022 - Reinhard Max <max@suse.com>
 
 - bsc#1197872, CVE-2022-0934, dnsmasq-CVE-2022-0934.patch:
