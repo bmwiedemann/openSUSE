@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  8 07:56:16 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to release 5.1.45:
+  * fix gcc12 warnings
+  * fix doc generation
+
+-------------------------------------------------------------------
 Tue Jun  7 10:41:32 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.1.38
