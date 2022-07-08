@@ -28,7 +28,7 @@ Sat Oct 30 19:08:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Tue Oct 26 20:27:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- update to 21.0.0 (bsc#1200771):
+- update to 21.0.0 (bsc#1200771, jsc#SLE-24519):
   - The minimum ``cryptography`` version is now 3.3.
   - Drop support for Python 3.5
   - Raise an error when an invalid ALPN value is set.
