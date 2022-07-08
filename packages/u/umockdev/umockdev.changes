@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 24 09:31:11 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 0.17.13:
+  * preload: Wrap fstatfs(), to work with systemd 251 also with Python tests
+  * Fix tests in Gentoo sandbox build
+
+-------------------------------------------------------------------
 Sun May 29 14:30:55 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.17.12:
