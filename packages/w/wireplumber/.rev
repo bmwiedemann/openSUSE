@@ -132,4 +132,12 @@
     <comment></comment>
     <requestid>987251</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>27e9c1a4390d10da259159a06e8819c7</srcmd5>
+    <version>0.4.10</version>
+    <time>1657281729</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to 0.4.10</comment>
+    <requestid>987881</requestid>
+  </revision>
 </revisionlist>
