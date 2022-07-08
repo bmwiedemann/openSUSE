@@ -264,6 +264,7 @@ unsorted:
   - SimGear-devel 
   - SoQt-devel 
   - SoQt-doc 
+  - SpeedTest++ 
   - Srain 
   - Srain-lang 
   - ThePEG-devel: [x86_64] 
@@ -6452,6 +6453,7 @@ unsorted:
   - gtk-doc-manual 
   - gtk-doc-manual-lang 
   - gtk-doc-mkpdf 
+  - gtk-frdp-devel 
   - gtk-key-theme-ctrluftw 
   - gtk-layer-shell-devel 
   - gtk-sharp-beans 
@@ -7868,7 +7870,7 @@ unsorted:
   - jupyter-jupyter_latex_envs 
   - jupyter-jupyter_nbextensions_configurator 
   - jupyter-jupyterbgnotify 
-  - jupyter-jupyterlab 
+  - jupyter-jupyterlab: [i586] 
   - jupyter-jupyterlab-filesystem: [i586] 
   - jupyter-jupyterlab-ipyscales 
   - jupyter-jupyterlab-latex 
@@ -7878,7 +7880,7 @@ unsorted:
   - jupyter-matlab-kernel 
   - jupyter-matplotlib 
   - jupyter-matplotlib-jupyterlab 
-  - jupyter-nbclassic 
+  - jupyter-nbclassic: [i586] 
   - jupyter-nbconvert: [i586] 
   - jupyter-nbconvert-latex 
   - jupyter-nbdime 
@@ -7890,7 +7892,7 @@ unsorted:
   - jupyter-notebook-filesystem: [i586] 
   - jupyter-notebook-lang 
   - jupyter-notebook-latex 
-  - jupyter-notebook-shim 
+  - jupyter-notebook-shim: [i586] 
   - jupyter-octave-kernel 
   - jupyter-panel 
   - jupyter-plotly 
@@ -9361,9 +9363,7 @@ unsorted:
   - libSDL2_net-devel-32bit: [x86_64] 
   - libSDL2_sound2 
   - libSDL2_ttf-2_0-0 
-  - libSDL2_ttf-2_0-0-32bit: [x86_64] 
   - libSDL2_ttf-devel 
-  - libSDL2_ttf-devel-32bit: [x86_64] 
   - libSDL_Pango1 
   - libSDL_bgi-devel 
   - libSDL_bgi-suse8 
@@ -10738,7 +10738,7 @@ unsorted:
   - libfabric 
   - libfabric-devel 
   - libfabric-devel-32bit: [x86_64] 
-  - libfabric1: [i586] 
+  - libfabric1 
   - libfabric1-32bit: [x86_64] 
   - libfakekey-devel 
   - libfaketime 
@@ -11686,7 +11686,7 @@ unsorted:
   - libindicator7 
   - libindidriver1 
   - libindilx200-1 
-  - libinfinipath4: [i586] 
+  - libinfinipath4 
   - libinfinipath4-32bit: [x86_64] 
   - libinfinity-0_7-0 
   - libinfinity-devel 
@@ -13157,9 +13157,10 @@ unsorted:
   - libpskc-devel 
   - libpsl-devel 
   - libpsl5-32bit: [x86_64] 
+  - libpsm2-2: [x86_64] 
   - libpsm2-compat: [x86_64] 
-  - libpsm2-devel: [x86_64] # devel package of opensuse_microos_desktop:libpsm2-2 
-  - libpsm_infinipath1: [i586] 
+  - libpsm2-devel: [x86_64] 
+  - libpsm_infinipath1 
   - libpsm_infinipath1-32bit: [x86_64] 
   - libpspell15 
   - libpspell15-32bit: [x86_64] 
@@ -14356,12 +14357,16 @@ unsorted:
   - libuchardet0 
   - libuchardet0-32bit: [x86_64] 
   - libucl1 
-  - libucm-devel: [x86_64] # devel package of opensuse_microos_desktop:libuct0 
+  - libucm-devel: [x86_64] 
+  - libucm0: [x86_64] 
   - libucommon8 
-  - libucp-devel: [x86_64] # devel package of opensuse_microos_desktop:libuct0 
+  - libucp-devel: [x86_64] 
+  - libucp0: [x86_64] 
   - libucpp13 
-  - libucs-devel: [x86_64] # devel package of opensuse_microos_desktop:libuct0 
-  - libuct-devel: [x86_64] # devel package of opensuse_microos_desktop:libuct0 
+  - libucs-devel: [x86_64] 
+  - libucs0: [x86_64] 
+  - libuct-devel: [x86_64] 
+  - libuct0: [x86_64] 
   - libudev-mini1 
   - libudf0 
   - libudf0-32bit: [x86_64] 
@@ -16554,7 +16559,7 @@ unsorted:
   - mpg123-pulse-32bit: [x86_64] 
   - mpg123-sdl 
   - mpg123-sdl-32bit: [x86_64] 
-  - mpi-selector: [i586] 
+  - mpi-selector 
   - mpiP-gnu-mpich-hpc 
   - mpiP-gnu-mpich-hpc-devel 
   - mpiP-gnu-mpich-hpc-doc 
@@ -17552,7 +17557,6 @@ unsorted:
   - obs-service-refresh_patches 
   - obs-service-replace_using_env 
   - obs-service-replace_using_package_version 
-  - obs-service-rust2rpm 
   - obs-service-set_version 
   - obs-service-snapcraft 
   - obs-service-source_validator 
@@ -18095,8 +18099,8 @@ unsorted:
   - openmpi2-libs-32bit: [x86_64] 
   - openmpi2-macros-devel 
   - openmpi2-testsuite 
-  - openmpi3: [i586] 
-  - openmpi3-config: [i586] 
+  - openmpi3 
+  - openmpi3-config 
   - openmpi3-devel 
   - openmpi3-docs 
   - openmpi3-gnu-hpc 
@@ -18104,7 +18108,7 @@ unsorted:
   - openmpi3-gnu-hpc-devel-static 
   - openmpi3-gnu-hpc-docs 
   - openmpi3-gnu-hpc-macros-devel 
-  - openmpi3-libs: [i586] 
+  - openmpi3-libs 
   - openmpi3-libs-32bit: [x86_64] 
   - openmpi3-macros-devel 
   - openmpi3-testsuite 
@@ -23041,7 +23045,7 @@ unsorted:
   - python310-jschema-to-python 
   - python310-jsmin 
   - python310-json-rpc 
-  - python310-json5 
+  - python310-json5: [i586] 
   - python310-json_tricks 
   - python310-jsondate 
   - python310-jsondiff 
@@ -23062,12 +23066,12 @@ unsorted:
   - python310-jupyter: [i586] 
   - python310-jupyter-client: [i586] 
   - python310-jupyter-core: [i586] 
-  - python310-jupyter-jupyterlab-server 
+  - python310-jupyter-jupyterlab-server: [i586] 
   - python310-jupyter-jupyterlab-server-test 
   - python310-jupyter-kernel-test 
   - python310-jupyter-nbutils 
   - python310-jupyter-packaging 
-  - python310-jupyter-server 
+  - python310-jupyter-server: [i586] 
   - python310-jupyter-server-mathjax 
   - python310-jupyter-server-test 
   - python310-jupyter-sphinx 
@@ -23077,7 +23081,7 @@ unsorted:
   - python310-jupyter_highlight_selected_word 
   - python310-jupyter_latex_envs 
   - python310-jupyter_nbextensions_configurator 
-  - python310-jupyterlab 
+  - python310-jupyterlab: [i586] 
   - python310-jupyterlab-pygments: [i586] 
   - python310-jupyterlab-templates 
   - python310-jupyterlab-widgets: [i586] 
@@ -23299,7 +23303,7 @@ unsorted:
   - python310-moto 
   - python310-moto-all 
   - python310-moto-server 
-  - python310-mpi4py: [i586] 
+  - python310-mpi4py 
   - python310-mpi4py-devel 
   - python310-mpl-animators 
   - python310-mplcursors 
@@ -23341,7 +23345,7 @@ unsorted:
   - python310-natsort 
   - python310-nautilus 
   - python310-nautilus-devel 
-  - python310-nbclassic 
+  - python310-nbclassic: [i586] 
   - python310-nbclient: [i586] 
   - python310-nbconvert: [i586] 
   - python310-nbdime 
@@ -23376,7 +23380,7 @@ unsorted:
   - python310-nose2 
   - python310-notebook: [i586] 
   - python310-notebook-lang 
-  - python310-notebook-shim 
+  - python310-notebook-shim: [i586] 
   - python310-nox 
   - python310-npTDMS 
   - python310-nptyping 
@@ -24137,7 +24141,6 @@ unsorted:
   - python310-ruamel.yaml.convert 
   - python310-ruffus 
   - python310-runthis-sphinxext 
-  - python310-rustcfg 
   - python310-sadisplay 
   - python310-samplerate 
   - python310-sane 
@@ -24236,6 +24239,7 @@ unsorted:
   - python310-social-auth-core 
   - python310-socketpool 
   - python310-softlayer 
+  - python310-softlayer-zeep 
   - python310-sorl-thumbnail 
   - python310-sortedcollections 
   - python310-sortinghat 
@@ -24529,7 +24533,7 @@ unsorted:
   - python310-weblate-schemas 
   - python310-weblib 
   - python310-webruntime 
-  - python310-websocket-client 
+  - python310-websocket-client: [i586] 
   - python310-websockets 
   - python310-websockify 
   - python310-wfuzz 
@@ -27380,7 +27384,6 @@ unsorted:
   - python38-ruamel.yaml.convert 
   - python38-ruffus 
   - python38-runthis-sphinxext 
-  - python38-rustcfg 
   - python38-s3fs 
   - python38-s3transfer 
   - python38-sadisplay 
@@ -27493,6 +27496,7 @@ unsorted:
   - python38-social-auth-core 
   - python38-socketpool 
   - python38-softlayer 
+  - python38-softlayer-zeep 
   - python38-sorl-thumbnail 
   - python38-sortedcollections 
   - python38-sortedcontainers 
@@ -30663,7 +30667,6 @@ unsorted:
   - python39-ruamel.yaml.convert 
   - python39-ruffus 
   - python39-runthis-sphinxext 
-  - python39-rustcfg 
   - python39-s3fs 
   - python39-s3transfer 
   - python39-sadisplay 
@@ -30776,6 +30779,7 @@ unsorted:
   - python39-social-auth-core 
   - python39-socketpool 
   - python39-softlayer 
+  - python39-softlayer-zeep 
   - python39-sorl-thumbnail 
   - python39-sortedcollections 
   - python39-sortedcontainers 
