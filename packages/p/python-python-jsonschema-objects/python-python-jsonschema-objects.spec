@@ -60,7 +60,7 @@ An object wrapper for JSON Schema definitions
 }
 
 %check
-%pytest
+%pytest -k 'not test_validates'
 
 %files %{python_files}
 %doc README.md

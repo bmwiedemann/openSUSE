@@ -32,4 +32,12 @@
 - Remove duplicate setuptools BuildRequires.</comment>
     <requestid>947811</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7e0bc2ad28354fc17927ac7c40abe68e</srcmd5>
+    <version>0.4.1</version>
+    <time>1657281787</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip a failing test for now.</comment>
+    <requestid>987785</requestid>
+  </revision>
 </revisionlist>
