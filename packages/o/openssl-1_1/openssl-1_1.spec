@@ -41,7 +41,7 @@
 %define _rname  openssl
 Name:           openssl-1_1
 # Don't forget to update the version in the "openssl" package!
-Version:        1.1.1p
+Version:        1.1.1q
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        OpenSSL
@@ -62,6 +62,7 @@ Patch2:         openssl-truststore.patch
 Patch3:         openssl-pkgconfig.patch
 Patch4:         openssl-DEFAULT_SUSE_cipher.patch
 Patch5:         openssl-ppc64-config.patch
+Patch6:         openssl-riscv64-config.patch
 # PATCH-FIX-UPSTREAM jsc#SLE-6126 and jsc#SLE-6129
 Patch8:         0001-s390x-assembly-pack-perlasm-support.patch
 Patch9:         0002-crypto-chacha-asm-chacha-s390x.pl-add-vx-code-path.patch

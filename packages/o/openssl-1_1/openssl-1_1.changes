@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  7 02:17:23 UTC 2022 - Jason Sikes <jsikes@suse.com>
+
+- update to 1.1.1q:
+  * [CVE-2022-2097, bsc#1201099]
+  * Addresses situations where AES OCB fails to encrypt some bytes
+
+-------------------------------------------------------------------
+Tue Jun 28 14:19:34 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- openssl-riscv64-config.patch: backport of riscv64 config support
+
+-------------------------------------------------------------------
 Thu Jun 23 04:55:58 UTC 2022 - Jason Sikes <jsikes@suse.com>
 
 - Update to 1.1.1p:
