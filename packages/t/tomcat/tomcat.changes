@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul  7 15:35:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix bsc#1201081 by building with release=8 all files that can be
+  built this way. The one file remaining, build it with source=8 and
+  target=8
+- Modified patch:
+  * tomcat-9.0.43-java8compat.patch
+    + Do not cast ByteBuffer to Buffer to call the Java 8 compatible
+      methods. Build with release=8 instead
+
+-------------------------------------------------------------------
 Thu Apr  7 08:48:46 UTC 2022 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - Security hardening. Deprecate getResources() and always return null. (bsc#1198136)
