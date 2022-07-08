@@ -20,7 +20,7 @@
 %define revision 1
 
 Name:           icingaweb2
-Version:        2.11.0
+Version:        2.11.1
 Release:        %{revision}%{?dist}
 Summary:        Icinga Web 2
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT

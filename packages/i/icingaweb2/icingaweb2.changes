@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  7 11:53:35 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.11.1
+  This update's main focus is to solve the issue that all history
+  views didn't work correctly or showed invalid time and dates. (#4853)
+
+-------------------------------------------------------------------
 Fri Jul  1 05:59:19 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.11.0
