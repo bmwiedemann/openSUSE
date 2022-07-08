@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 08 07:31:17 UTC 2022 - dmueller@suse.com
+
+- Update to version 0.29.2:
+  * chore: skip Visual Studio Code project folder (#2379)
+  * fix(helm): handle charts with templated names (#2374)
+  * docs: redirect operator docs to trivy-operator repo (#2372)
+  * fix(secret): use secret result when determining Failed status (#2370)
+  * try removing libdb-dev
+  * run integration tests in fanal
+  * use same testing images in fanal
+  * feat(helm): add support for trivy dbRepository (#2345)
+  * fix: Fix failing test due to deref lint issue
+  * test: Fix broken test
+  * fix: Fix makefile when no previous named ref is visible in a shallow clone
+  * chore: Fix linting issues in fanal
+  * refactor: Fix fanal import paths and remove dotfiles
+  * chore: bump defsec version v0.68.1
+
+-------------------------------------------------------------------
 Wed Jun 22 11:15:35 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.29.1:
