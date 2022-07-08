@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul 06 18:12:23 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.50.0:
+  * feat: add new login cmd (#1068)
+  * update AltRpmDbGlob with comment and context (#1085)
+  * feat: add support for conan packages (C/C++) (#1083)
+  * add golang main module and pseudo-version (#916)
+  * fix: add glob to filter list to ensure rpm metadata files are matched… (#1079)
+  * remove pr automation until service account creation (#1080)
+  * fix: purl generation for pom.xml (#1078)
+  * Update Stereoscope to 5bd627c0f9ce7facbd63ed1f0cf894d97021aa5e (#1072)
+  * fix: add new languages found in cpes (#1069)
+  * fix: add php catalogers to all catalogers (#1065)
+  * feat: add use-all-catalogers flag (#1050)
+
+-------------------------------------------------------------------
 Mon Jun 27 13:20:51 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.49.0:
