@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul  7 18:13:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 8.4.1
+  * add support for Python 3.11
+- Release 8.4.0
+  * (%px) only skip redisplay of streamed errors if outputs are
+    complete
+  * Avoid use of recently deprecated asyncio/tornado APIs around
+    'current' event loops that are not running.
+  * Switch to hatch backend for packaging
+- Release 8.3.0
+  * Workaround SSL issues with recent builds of nodejs + webpack
+  * Build with flit, removing setup.py
+  * Remove remaining references to deprecated distutils package
+    (has surprising impact on process memory)
+  * Improve logging when engine registration times out
+- Release 8.2.1
+  * Fixes some compatibility issues with latest dask, ipykernel,
+    and setuptools, as well as some typos and improved
+    documentation.
+- Skip flaky tests
+- Fix non-rewritten obsoletes and remove incorrect provides in
+  jupyter extension package
+
+-------------------------------------------------------------------
 Sun Feb 27 01:08:20 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 8.2.0:

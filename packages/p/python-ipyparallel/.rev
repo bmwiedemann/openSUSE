@@ -246,4 +246,31 @@
     <comment></comment>
     <requestid>961415</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>011002adfcf1e239b233f45245589d07</srcmd5>
+    <version>8.4.1</version>
+    <time>1657281759</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.4.1
+  * add support for Python 3.11
+- Release 8.4.0
+  * (%px) only skip redisplay of streamed errors if outputs are
+    complete
+  * Avoid use of recently deprecated asyncio/tornado APIs around
+    'current' event loops that are not running.
+  * Switch to hatch backend for packaging
+- Release 8.3.0
+  * Workaround SSL issues with recent builds of nodejs + webpack
+  * Build with flit, removing setup.py
+  * Remove remaining references to deprecated distutils package
+    (has surprising impact on process memory)
+  * Improve logging when engine registration times out
+- Release 8.2.1
+  * Fixes some compatibility issues with latest dask, ipykernel,
+    and setuptools, as well as some typos and improved
+    documentation.
+- Fix non-rewritten obsoletes and remove incorrect provides in
+  jupyter extension package (forwarded request 987744 from bnavigator)</comment>
+    <requestid>987745</requestid>
+  </revision>
 </revisionlist>

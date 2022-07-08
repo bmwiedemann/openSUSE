@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-ipyparallel
-Version:        8.2.0
+Version:        8.4.1
 Release:        0
 Summary:        Interactive parallel computing library for IPython
 License:        BSD-3-Clause
@@ -27,21 +25,27 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipyparallel
 Source:         https://files.pythonhosted.org/packages/source/i/ipyparallel/ipyparallel-%{version}.tar.gz
 Source99:       python-ipyparallel-rpmlintrc
-BuildRequires:  %{python_module decorator}
+# SECTION build-syste requirements
+BuildRequires:  %{python_module hatchling >= 0.25}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module jupyterlab >= 3}
+BuildRequires:  %{python_module pip}
+BuildRequires:  fdupes
+BuildRequires:  jupyter-rpm-macros
+BuildRequires:  python-rpm-macros
+# /SECTION
+# SECTION runtime requirements
 BuildRequires:  %{python_module entrypoints}
+BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module ipykernel >= 4.4}
 BuildRequires:  %{python_module ipython >= 4}
 BuildRequires:  %{python_module jupyter-client}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
 BuildRequires:  %{python_module pyzmq >= 18}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado >= 5.1}
 BuildRequires:  %{python_module tqdm}
 BuildRequires:  %{python_module traitlets >= 4.3}
-BuildRequires:  fdupes
-BuildRequires:  jupyter-rpm-macros
-BuildRequires:  python-rpm-macros
 Requires:       python-decorator
 Requires:       python-entrypoints
 Requires:       python-ipykernel >= 4.4
@@ -53,19 +57,15 @@ Requires:       python-pyzmq >= 18
 Requires:       python-tornado >= 5.1
 Requires:       python-tqdm
 Requires:       python-traitlets >= 4.3
+# /SECTION
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     jupyter-ipyparallel = %{version}
-Recommends:     python-mpi4py
 Provides:       python-jupyter_ipyparallel = %{version}-%{release}
 Obsoletes:      python-jupyter_ipyparallel < %{version}-%{release}
 BuildArch:      noarch
-# SECTION test requirements, including ipython[test] (there is no iptest package anymore)
-BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module ipython >= 4}
-BuildRequires:  %{python_module matplotlib}
+# SECTION test requirements, including ipython[test]
 BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest-tornado}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}
 # /SECTION
@@ -80,10 +80,17 @@ This package provides the python interface.
 Summary:        Interactive parallel computing library for IPython
 Group:          Development/Languages/Python
 Requires:       jupyter-jupyter-core
+Requires:       jupyter-jupyter-server
+Requires:       jupyter-jupyterlab >= 3
 Requires:       jupyter-notebook
 Requires:       python3-ipyparallel = %{version}
-Provides:       python-jupyter_ipyparallel-nbextension = %{version}-%{release}
-Obsoletes:      python-jupyter_ipyparallel-nbextension < %{version}-%{release}
+Provides:       jupyter-ipyparallel-l = %{version}-%{release}
+Provides:       jupyter-ipyparallel-nbext = %{version}-%{release}
+Provides:       jupyter-ipyparallel-serverextension = %{version}-%{release}
+# the last pythonX-jupyter_ipyparallel-nbextension package was 2019 before the multiflavor era
+Obsoletes:      python-jupyter_ipyparallel-nbextension <= 6.2.3
+Obsoletes:      python2-jupyter_ipyparallel-nbextension <= 6.2.3
+Obsoletes:      python3-jupyter_ipyparallel-nbextension <= 6.2.3
 
 %description -n jupyter-ipyparallel
 Use multiple instances of IPython in parallel, interactively.
@@ -104,11 +111,11 @@ Documentation and help files for ipyparallel.
 %setup -q -n ipyparallel-%{version}
 
 %build
-%python_build
+%pyproject_wheel
+sed -i 's/--color=yes//' pyproject.toml
 
 %install
-%python_install
-%jupyter_move_config
+%pyproject_install
 
 # Prepare for update-alternatives
 %python_clone -a %{buildroot}%{_bindir}/ipcluster
@@ -132,8 +139,15 @@ popd
 
 %check
 # can't get a public IP
-# test_imap_infinite is flaky
-%pytest -k 'not (test_disambiguate_ip or test_imap_infinite)'
+donttest="test_disambiguate_ip"
+# flaky tests
+donttest+=" or test_imap_infinite"
+donttest+=" or test_execute_raises"
+donttest+=" or test_cellpx_keyboard_interrupt_signal_9"
+donttest+=" or test_cellpx_keyboard_interrupt_SIGKILL"
+donttest+=" or test_compositeerror_render_exception"
+donttest+=" or test_local_ip_true_doesnt_trigger_warning"
+%pytest -k "not ($donttest)"
 
 %post
 %python_install_alternative ipcluster ipcontroller ipengine
