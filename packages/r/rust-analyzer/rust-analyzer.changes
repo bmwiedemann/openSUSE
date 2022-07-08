@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jul 01 02:26:58 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 2022.06.27:
+  * Fix typo in build.rs
+  * Improve comments
+  * Improve proc macro errors a bit
+  * clarify comment and add autolink test case
+  * internal: Simplify
+  * fix: completes non exhaustive variant within the defining crate
+  * internal: Simplify some completions
+  * Fix test
+  * Reimplement auto-ref completions for fields
+  * Refactor a bit
+  * Remove pattern rendering hack
+  * Only apply `cfg(test)` for local crates
+  * fix: Fix auto-ref completions inserting into wrong locations
+  * fix: Don't trigger pattern completions when typing a wildcard pattern
+  * internal: Lift out IdentContext from CompletionContext
+  * internal: Remove `previous_token` field from `CompletionContext`
+  * Remove some usages of `Completions::add_resolution`
+  * Even more completion context filtering
+  * Lift out PathKind variant fields into structs
+  * Split remaining completion calls on the context kinds
+  * internal: Handle fractional release numbers in changelog naming
+  * Send a DidCancel event when restarting flychecks
+  * Polish
+  * internal: Bring back JodChild into flychecking for cancellation
+
+-------------------------------------------------------------------
 Fri Jun 24 05:08:38 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 2022.06.20:
