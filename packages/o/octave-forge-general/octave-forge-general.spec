@@ -27,6 +27,7 @@ URL:            https://octave.sourceforge.io
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
+BuildRequires:  libnettle-devel
 BuildRequires:  octave-devel
 Requires:       octave-cli >= 4.0.0
 
@@ -38,7 +39,7 @@ This is part of Octave-Forge project.
 %setup -q -c %{name}-%{version}
 %octave_pkg_src
 
-# COPY METAINFO FILE TO TOPLEVEL DIR FOR MANUAL INSTALLATION LATER
+# Save metainfo file, we only have tarballs later
 find ./ -name "*.metainfo.xml" -exec cp '{}' ./ \;
 
 %build
@@ -46,8 +47,7 @@ find ./ -name "*.metainfo.xml" -exec cp '{}' ./ \;
 
 %install
 %octave_pkg_install
-mkdir -p %{buildroot}%{_datadir}/metainfo
-install -m 644 octave-general.metainfo.xml %{buildroot}%{_datadir}/metainfo/
+install -Dm 644 -t %{buildroot}%{_datadir}/metainfo/ *.metainfo.xml
 
 %check
 %octave_pkg_test
