@@ -17,30 +17,30 @@
 
 
 Name:           fakeroot
-Version:        1.28
+Version:        1.29
 Release:        0
 Summary:        Wrapper that gives a fake root environment
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
-URL:            http://fakeroot.alioth.debian.org/
+URL:            https://tracker.debian.org/pkg/fakeroot
 Source0:        http://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.gz#/%{name}_%{version}.orig.tar.gz
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM fakeroot-1.21-fix-shell-in-fakeroot.patch (deb#828810)
 Patch0:         fakeroot-1.21-fix-shell-in-fakeroot
 #PATCH-FIX-UPSTREAM also-wrap-stat-library-call.patch (deb#1001961)
 Patch1:         also-wrap-stat-library-call.patch
+BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
 BuildRequires:  fdupes
+BuildRequires:  group(sys)
 # user(daemon)/group(sys) is required for t.tar testsuite
 BuildRequires:  intltool
-BuildRequires:  autoconf >= 2.71
 BuildRequires:  libacl-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
 BuildRequires:  libtool
 BuildRequires:  po4a
 BuildRequires:  sharutils
-BuildRequires:  group(sys)
 BuildRequires:  user(daemon)
 Requires(post): update-alternatives
 Requires(preun):update-alternatives

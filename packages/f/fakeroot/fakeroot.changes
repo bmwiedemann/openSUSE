@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul  7 19:23:17 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 1.29
+  * includes patch from Matthias Ellert to handle _STAT_VER on
+    ia64.  closes: #1011234.
+- Change url to a working one
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Wed Apr 27 06:06:06 UTC 2022 - olaf@aepfle.de
 
 - * autoconf 2.71 required
