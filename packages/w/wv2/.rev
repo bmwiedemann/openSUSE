@@ -152,4 +152,12 @@ directly included.&quot; (forwarded request 99495 from rudi_m)</comment>
     <comment>1</comment>
     <requestid>289775</requestid>
   </revision>
+  <revision rev="21" vrev="25">
+    <srcmd5>9894e07436a7b45e2f93eda1203427ef</srcmd5>
+    <version>0.4.2</version>
+    <time>1657281711</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to https urls</comment>
+    <requestid>987438</requestid>
+  </revision>
 </revisionlist>
