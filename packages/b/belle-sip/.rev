@@ -231,4 +231,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>982686</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>323d4a52c167277fb8636c21e77097c4</srcmd5>
+    <version>5.1.47</version>
+    <time>1657281795</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.47:
+  * Close the file before calling stop callback to let cb to do file modifications like renaming.
+  * Do not return belle_sip_source_t when scheduling task on the main loop.
+  * Fix double free during certificate generation.
+</comment>
+    <requestid>987829</requestid>
+  </revision>
 </revisionlist>
