@@ -16,10 +16,11 @@
 #
 
 
+%define pythons python3
 Name:           protonvpn-gui
-Version:        1.7.0
+Version:        1.10.0
 Release:        0
-Summary:        Official ProtonVPN GUI
+Summary:        Official Proton VPN GUI
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://github.com/ProtonVPN/linux-app
@@ -32,13 +33,13 @@ BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       gtk3
 Requires:       python3-gobject-Gdk
-Requires:       python3-protonvpn-nm-lib >= 3.7.0
+Requires:       python3-protonvpn-nm-lib >= 3.4.0
 Requires:       python3-psutil
 Provides:       protonvpn = %{version}
 BuildArch:      noarch
 
 %description
-The ProtonVPN GUI is intended for every ProtonVPN service user.
+The Proton VPN GUI is intended for every Proton VPN service user.
 
 %prep
 %setup -q -n linux-app-%{version}
@@ -55,7 +56,11 @@ mkdir -p %{buildroot}/%{_datadir}/applications
 cp rpmbuild/SOURCES/protonvpn-logo.png %{buildroot}/%{_datadir}/pixmaps/protonvpn.png
 cp rpmbuild/SOURCES/protonvpn.desktop %{buildroot}/%{_datadir}/applications/protonvpn.desktop
 
-%suse_update_desktop_file -c protonvpn ProtonVPN "ProtonVPN GUI Client" protonvpn protonvpn Network
+%suse_update_desktop_file -c protonvpn ProtonVPN "Proton VPN GUI Client" protonvpn protonvpn Network
+
+%check
+# It's only a placeholder test, but catch it for future upstream improvements
+%pytest
 
 %files
 %doc README.md
@@ -63,7 +68,7 @@ cp rpmbuild/SOURCES/protonvpn.desktop %{buildroot}/%{_datadir}/applications/prot
 %{_datadir}/applications/protonvpn.desktop
 %{_datadir}/pixmaps/protonvpn.png
 %{python3_sitelib}/protonvpn_gui
-%{python3_sitelib}/protonvpn_gui-*-py*.*-info
+%{python3_sitelib}/protonvpn_gui-%{version}*-info
 %{_bindir}/protonvpn
 
 %changelog

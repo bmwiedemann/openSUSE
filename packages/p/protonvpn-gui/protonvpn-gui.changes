@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul  1 18:05:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.10.0
+  * Fix: New brand dialog will now only appear once after the
+    dashboard has been loaded
+- Release 1.9.0-2
+  * Fix: Update taskbar icon
+- Release 1.9.0-1
+  * Introducing Proton's refreshed look. As we continue to make
+    privacy accessible to everyone, we've updated our apps to
+    provide you with an even better experience with our services.
+    Proton - Privacy by default
+- Release 1.8.0-2
+  * Improve: Display error message if link buttons at login can not
+    be reached
+- Enable (placeholder) testsuite
+- Lower requirements for protonvpn-nm-lib
+- Adjust summary and description according to upstream's spelling
+
+-------------------------------------------------------------------
 Thu Mar 03 10:44:25 UTC 2022 - alexandre.vicenzi@suse.com
 
 - Update to version 1.7.0:
