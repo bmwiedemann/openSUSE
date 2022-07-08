@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 29 13:50:03 UTC 2022 - Jason Record <jason.record@suse.com>
+
+- setup-sca checks for php8 (bsc#1201011)
+
+-------------------------------------------------------------------
 Tue Mar 16 15:53:48 UTC 2021 - jason.record@gmail.com
 
 - Correctly check for the web and scripting module (bsc#1183601)

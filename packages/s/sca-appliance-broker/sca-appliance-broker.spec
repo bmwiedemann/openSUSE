@@ -1,7 +1,7 @@
 #
 # spec file for package sca-appliance-broker
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,19 +21,19 @@
 %define sca_configdir %{_sysconfdir}/%{sca_common}
 
 Name:           sca-appliance-broker
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Supportconfig Analysis Appliance Broker
 License:        GPL-2.0-only
-Group:          System/Monitoring
 URL:            https://github.com/g23guy/sca-appliance-broker
+Group:          System/Monitoring
 Source:         %{name}-%{version}.tar.gz
 Requires:       sca-appliance-common
 BuildArch:      noarch
 
 %description
 Monitors inbound supportconfig archives and is responsible for
-assigning new and retry archives states for appropriate agent analysis. 
+assigning new and retry archives states for appropriate agent analysis.
 
 See %{_docdir}/sca-appliance-common/COPYING.GPLv2
 
