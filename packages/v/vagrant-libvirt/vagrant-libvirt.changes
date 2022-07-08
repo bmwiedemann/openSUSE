@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jul  7 15:38:10 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Remove patch merged upstream:
+  * 0001-Replace-tabs-with-spaces-in-domain_all_settings.xml.patch
+- New upstream release 0.9.0
+
+**Closed issues:**
+
+- Fedora 36 guest does not get static private network ip [\#1501](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1501)
+- Unable to install `vagrant-libvirt` on Ubuntu 22.04 \(Jammy Jellyfish\) [\#1498](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1498)
+- vagrant up fails to start some guests, --no-parallel succeeds [\#1495](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1495)
+- Destroy fails: cannot load such file -- rexml [\#1483](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1483)
+- Order of interfaces with pci passthrough [\#1475](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1475)
+
+**Merged pull requests:**
+
+- Add action to resolve disk settings [\#1502](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1502) ([electrofelix](https://github.com/electrofelix))
+- Only call destroy on active networks [\#1497](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1497) ([electrofelix](https://github.com/electrofelix))
+- Ensure updating loader tag supported [\#1494](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1494) ([electrofelix](https://github.com/electrofelix))
+- Support different rexml location for older vagrant [\#1493](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1493) ([electrofelix](https://github.com/electrofelix))
+- Switch to https from git for vagrant-spec [\#1492](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1492) ([electrofelix](https://github.com/electrofelix))
+- Use instance doubles for driver where possible [\#1491](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1491) ([electrofelix](https://github.com/electrofelix))
+- Replace tabs with spaces in domain\_all\_settings.xml [\#1489](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1489) ([dcermak](https://github.com/dcermak))
+- Update steps in the addtional notes [\#1486](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1486) ([r0x0d](https://github.com/r0x0d))
+- Fix destroying/undefining domains with NVRAM [\#1329](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1329) ([byonoy-dne](https://github.com/byonoy-dne))
+
+-------------------------------------------------------------------
 Thu May  5 06:21:51 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.8.2

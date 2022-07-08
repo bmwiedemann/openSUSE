@@ -21,7 +21,7 @@
 %global rb_ruby_suffix %rb_default_ruby_suffix
 
 Name:           vagrant-libvirt
-Version:        0.8.2
+Version:        0.9.0
 Release:        0
 %define mod_name vagrant-libvirt
 %define mod_full_name %{mod_name}-%{version}
@@ -79,8 +79,6 @@ BuildRequires:  kmod
 
 URL:            https://github.com/vagrant-libvirt/vagrant-libvirt
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-# https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1489
-Patch0:         0001-Replace-tabs-with-spaces-in-domain_all_settings.xml.patch
 
 Summary:        Vagrant provider for libvirt
 License:        MIT
@@ -100,7 +98,6 @@ This package contains the documentation for the Libvirt provider to Vagrant.
 
 %prep
 %gem_unpack
-%patch0 -p1
 
 %build
 %gem_build
