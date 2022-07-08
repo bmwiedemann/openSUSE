@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul  8 02:52:13 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Remove dependency on unmaintained rust-packaging
+
+-------------------------------------------------------------------
 Sat Jul  2 09:32:29 UTC 2022 - gmg 137 <gmg137@live.com>
 
 - Release version 2.0.1

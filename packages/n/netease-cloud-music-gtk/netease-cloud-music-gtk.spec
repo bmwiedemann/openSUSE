@@ -29,9 +29,9 @@ URL:            https://github.com/gmg137/netease-cloud-music-gtk
 Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 
+BuildRequires:  cargo-packaging
 BuildRequires:  git
 BuildRequires:  meson
-BuildRequires:  rust-packaging
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
