@@ -17,7 +17,7 @@
 
 
 Name:           power-profiles-daemon
-Version:        0.11.1
+Version:        0.12
 Release:        0
 Summary:        Power profiles handling over D-Bus
 License:        GPL-3.0-or-later
@@ -86,7 +86,7 @@ This package provides documentation for %{name}.
 %{_bindir}/powerprofilesctl
 %{_libexecdir}/%{name}
 %{_unitdir}/%{name}.service
-%config %{_sysconfdir}/dbus-1/system.d/net.hadess.PowerProfiles.conf
+%{_datadir}/dbus-1/system.d/net.hadess.PowerProfiles.conf
 %{_datadir}/dbus-1/system-services/net.hadess.PowerProfiles.service
 %{_datadir}/polkit-1/actions/net.hadess.PowerProfiles.policy
 %ghost %dir %{_localstatedir}/lib/%{name}

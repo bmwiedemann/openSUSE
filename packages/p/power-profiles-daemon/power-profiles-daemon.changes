@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul  3 23:56:23 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.12:
+  * Add support for the Intel "Energy Performance Bias" feature.
+- Adapt to change of installed dbus configuration file
+  [boo#1201125].
+
+-------------------------------------------------------------------
 Fri May 13 13:13:55 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.11.1:
