@@ -494,4 +494,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>982692</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>8a0ef53e206d45bfac241dc81fd3870e</srcmd5>
+    <version>5.1.45</version>
+    <time>1657281798</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.45:
+  * Make DTLS-SRTP to start immediately after the default candidate pair is verified by ICE.
+  * Prevent default sound device descriptor to use BUILTIN_AEC flags if AcousticEchoCanceler isn't available.
+  * Fix an issue where audio stops when trying to send a DTMF while no telephone-event payload types are configured in the session.
+  * Do not add audio devices detected as “UNKNOWN” type.
+  * Fix audio route change event size, which was too big and could create unexpected behaviours.
+</comment>
+    <requestid>987834</requestid>
+  </revision>
 </revisionlist>
