@@ -115,4 +115,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>982689</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>48aeb0619d51d6479e5200588b509dd6</srcmd5>
+    <version>5.1.45</version>
+    <time>1657281797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.45:
+  * Update CMakeLists.txt in order to add lime to Flexisip
+</comment>
+    <requestid>987832</requestid>
+  </revision>
 </revisionlist>
