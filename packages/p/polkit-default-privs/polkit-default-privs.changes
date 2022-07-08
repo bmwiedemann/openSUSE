@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 08 14:34:58 UTC 2022 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20220608.097448e:
+  * Whitelist new systemd methods (bsc#1200098)
+
+-------------------------------------------------------------------
 Tue May 24 08:37:09 UTC 2022 - wolfgang.frisch@suse.com
 
 - Update to version 1550+20220524.0345bd9:
