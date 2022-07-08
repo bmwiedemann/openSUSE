@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Jul 07 09:16:47 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220707.07c9067:
+  * Add temporary workaround for systemd package.
+  * dbus-services: adjust power-profiles-daemon to new path (bsc#1201125)
+
+-------------------------------------------------------------------
+Thu Jun 23 19:31:17 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220623.5aa24e0:
+  * checkbashism: fix stuck when run with Emacs
+  * Add test for shell var detection in rpm-buildroot-usage
+  * Fix rpm_buildroot_regex
+  * Remove obsolete check no-cleaning-of-buildroot
+  * Improve binary-or-shlib-defines-rpath error
+  * Add `--file` as an alias for `--rpmlintrc`
+  * Update shlib-policy-name-error score for openSUSE
+
+-------------------------------------------------------------------
+Wed Jun 15 09:03:44 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220615.aa4b7e2:
+  * Rework format reporting for shlib-policy-name-error.
+  * Increase badness for binary-or-shlib-defines-rpath.
+  * Revert "Use zypper for openSUSE."
+  * Update shlib-policy-name-error score for openSUSE
+
+-------------------------------------------------------------------
+Fri Jun 10 12:35:42 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 2.3.0+git20220610.33ea0cf:
+  * systemd-tmpfiles whitelisting: also ignore -mini variants of systemd and udev
+  * dbus-services: move wpa_supplicant.conf to /usr
+  * dbus-services: move dnsmasq.conf to /usr
+
+-------------------------------------------------------------------
+Thu Jun 09 08:19:37 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 2.3.0+git20220609.905726e:
+  * systemd-tmpfiles check: raise badness to 10000 for strict config
+  * systemd-tmpfiles: whitelist currenty set of affected packages
+  * SystemdTmpfilesCheck: compare normalized lines for whitelistings
+
+-------------------------------------------------------------------
 Wed May 25 19:42:19 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.3.0+git20220525.d213f48:

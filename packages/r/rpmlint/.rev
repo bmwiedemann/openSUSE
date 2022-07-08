@@ -3828,4 +3828,39 @@ oddjob-gpupdate isn't blocked)</comment>
 - Remove disable-SystemdTmpfilesCheck.patch.</comment>
     <requestid>979251</requestid>
   </revision>
+  <revision rev="402" vrev="1">
+    <srcmd5>b17eb572436b1727a63019a6d0f69894</srcmd5>
+    <version>2.3.0+git20220707.07c9067</version>
+    <time>1657281694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git20220707.07c9067:
+  * Add temporary workaround for systemd package.
+  * dbus-services: adjust power-profiles-daemon to new path (bsc#1201125)
+
+- Update to version 2.3.0+git20220623.5aa24e0:
+  * checkbashism: fix stuck when run with Emacs
+  * Add test for shell var detection in rpm-buildroot-usage
+  * Fix rpm_buildroot_regex
+  * Remove obsolete check no-cleaning-of-buildroot
+  * Improve binary-or-shlib-defines-rpath error
+  * Add `--file` as an alias for `--rpmlintrc`
+  * Update shlib-policy-name-error score for openSUSE
+
+- Update to version 2.3.0+git20220615.aa4b7e2:
+  * Rework format reporting for shlib-policy-name-error.
+  * Increase badness for binary-or-shlib-defines-rpath.
+  * Revert &quot;Use zypper for openSUSE.&quot;
+  * Update shlib-policy-name-error score for openSUSE
+
+- Update to version 2.3.0+git20220610.33ea0cf:
+  * systemd-tmpfiles whitelisting: also ignore -mini variants of systemd and udev
+  * dbus-services: move wpa_supplicant.conf to /usr
+  * dbus-services: move dnsmasq.conf to /usr
+
+- Update to version 2.3.0+git20220609.905726e:
+  * systemd-tmpfiles check: raise badness to 10000 for strict config
+  * systemd-tmpfiles: whitelist currenty set of affected packages
+  * SystemdTmpfilesCheck: compare normalized lines for whitelistings</comment>
+    <requestid>987395</requestid>
+  </revision>
 </revisionlist>
