@@ -11,6 +11,13 @@ if [ "$1" = "--scan-implibs" ]; then
   shift
 fi
 
+libs_to_exclude=
+if [ "$1" = "--exclude" ]; then
+  shift
+  libs_to_exclude="$1"
+  shift
+fi
+
 if [ -n "$1" ]; then
    package_name="$1"
 fi
@@ -21,7 +28,7 @@ fi
 
 filelist=`sed "s/['\"]/\\\&/g"`
 
-libs_to_exclude="
+libs_to_exclude+="
     advapi32
     cfgmgr32
     comctl32

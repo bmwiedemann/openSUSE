@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-filesystem
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %define _rpmmacrodir %{_sysconfdir}/rpm
 %endif
 Name:           mingw32-filesystem
-Version:        20220524
+Version:        20220620
 Release:        0
 Summary:        MinGW base filesystem and environment
 License:        GPL-2.0-or-later
@@ -64,8 +64,12 @@ Provides:       mingw32(uxtheme.dll)
 # needed by mingw32-libqt5-qtbase
 Provides:       mingw32(d2d1.dll)
 Provides:       mingw32(d3d11.dll)
+Provides:       mingw32(d3d12.dll)
+Provides:       mingw32(dcomp.dll)
 Provides:       mingw32(dwrite.dll)
+Provides:       mingw32(dxgi.dll)
 Provides:       mingw32(ncrypt.dll)
+Provides:       mingw32(wtsapi32.dll)
 Requires:       mingw32-cross-breakpad-tools
 Requires:       python3
 Requires:       rpm

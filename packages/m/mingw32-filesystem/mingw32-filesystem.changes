@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun  5 05:03:17 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to 20220620
+- Add more provides required by libqt5 related packages
+- Add optional support for excluding runtime DLL dependencies to avoid
+  rebuilding the whole project, see macro %_mingw32_find_requires_exclude
+  in macros.mingw32 for details
+
+-------------------------------------------------------------------
 Mon May 23 13:58:15 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to 20220524

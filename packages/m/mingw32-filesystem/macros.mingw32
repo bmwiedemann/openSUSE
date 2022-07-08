@@ -71,8 +71,16 @@
 #   %global _mingw32_find_requires_scan_implibs 1
 # to the related spec file
 #
+# To exclude project wide shared library requirements add this to project config 
+#   Macros:
+#   %_mingw32_find_requires_exclude "d3d12 ..."
+#   :Macros
+# for a single package add 
+#   %global _mingw32_find_requires_exclude "d3d12 ..."
+# to the related spec file
+# 
 %_mingw32_findprovides    /usr/lib/rpm/mingw32-find-provides.sh
-%_mingw32_findrequires    /usr/lib/rpm/mingw32-find-requires.sh %{?_mingw32_find_requires_scan_implibs:--scan-implibs}
+%_mingw32_findrequires    /usr/lib/rpm/mingw32-find-requires.sh %{?_mingw32_find_requires_exclude:--exclude "%_mingw32_find_requires_exclude"} %{?_mingw32_find_requires_scan_implibs:--scan-implibs}
 %_mingw32_install_post    /usr/lib/rpm/mingw32-install-post.sh
 %_mingw32_find_lang       /usr/lib/rpm/mingw32-find-lang.sh %{buildroot}
 
