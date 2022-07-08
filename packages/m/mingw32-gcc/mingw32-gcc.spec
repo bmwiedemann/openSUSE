@@ -19,7 +19,7 @@
 %define include_ada 0
 %_mingw32_package_header_debug
 Name:           mingw32-gcc
-Version:        10.3.0
+Version:        12.1.0
 Release:        0
 Summary:        MinGW Windows compiler (GCC) for C
 License:        GPL-3.0-or-later
@@ -327,7 +327,8 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_mingw32_mandir}/man7/gpl.7*
 %{_mingw32_infodir}/gcc*.info*
 %{_mingw32_libexecdir}/gcc/%{_mingw32_target}/%{version}/collect2.exe
-%{_mingw32_libexecdir}/gcc/%{_mingw32_target}/%{version}/liblto_plugin-0.dll
+%{_mingw32_libexecdir}/gcc/%{_mingw32_target}/%{version}/g++-mapper-server.exe
+%{_mingw32_libexecdir}/gcc/%{_mingw32_target}/%{version}/liblto_plugin.dll
 %{_mingw32_libexecdir}/gcc/%{_mingw32_target}/%{version}/liblto_plugin.dll.a
 %{_mingw32_libexecdir}/gcc/%{_mingw32_target}/%{version}/lto1.exe
 %{_mingw32_libexecdir}/gcc/%{_mingw32_target}/%{version}/lto-wrapper.exe

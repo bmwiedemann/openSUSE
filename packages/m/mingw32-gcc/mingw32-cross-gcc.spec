@@ -25,7 +25,7 @@
 %define __os_install_post %{_prefix}/lib/rpm/brp-compress %{nil}
 %define include_ada 0
 Name:           mingw32-cross-gcc
-Version:        10.3.0
+Version:        12.1.0
 Release:        0
 Summary:        MinGW Windows cross-compiler (GCC) for C
 License:        GPL-3.0-or-later
@@ -272,6 +272,7 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libsupc++.a
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libsupc++.la
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/cc1plus
+%{_libdir}/gcc/%{_mingw32_target}/%{version}/g++-mapper-server
 
 %files fortran
 %{_bindir}/%{_mingw32_target}-gfortran

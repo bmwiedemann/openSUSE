@@ -24,7 +24,7 @@
 
 %define __os_install_post %{_prefix}/lib/rpm/brp-compress %{nil}
 Name:           mingw32-cross-gcc-bootstrap
-Version:        10.3.0
+Version:        12.1.0
 Release:        0
 Summary:        MinGW Windows cross-compiler (GCC) for C
 License:        GPL-3.0-or-later
