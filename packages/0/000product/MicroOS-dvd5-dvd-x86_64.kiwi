@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20220707" schemaversion="4.1">
+<image name="OBS__MicroOS___20220708" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220707</productvar>
+      <productvar name="VERSION">20220708</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220707,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220708,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220707/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220708/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -632,12 +632,15 @@
       <repopackage name="jupyter-ipyparallel" arch="x86_64"/>
       <repopackage name="jupyter-jupyter-client" arch="x86_64"/>
       <repopackage name="jupyter-jupyter_core-filesystem" arch="x86_64"/>
+      <repopackage name="jupyter-jupyterlab" arch="x86_64"/>
       <repopackage name="jupyter-jupyterlab-filesystem" arch="x86_64"/>
       <repopackage name="jupyter-jupyterlab-widgets" arch="x86_64"/>
+      <repopackage name="jupyter-nbclassic" arch="x86_64"/>
       <repopackage name="jupyter-nbconvert" arch="x86_64"/>
       <repopackage name="jupyter-nbformat" arch="x86_64"/>
       <repopackage name="jupyter-notebook" arch="x86_64"/>
       <repopackage name="jupyter-notebook-filesystem" arch="x86_64"/>
+      <repopackage name="jupyter-notebook-shim" arch="x86_64"/>
       <repopackage name="jupyter-qtconsole" arch="x86_64"/>
       <repopackage name="jupyter-widgetsnbextension" arch="x86_64"/>
       <repopackage name="kaccounts-integration" arch="x86_64"/>
@@ -825,7 +828,6 @@
       <repopackage name="libatk-1_0-0"/>
       <repopackage name="libatk-bridge-2_0-0"/>
       <repopackage name="libatkmm-1_6-1" arch="x86_64"/>
-      <repopackage name="libatomic1" arch="x86_64"/>
       <repopackage name="libatopology2" arch="x86_64"/>
       <repopackage name="libatspi0"/>
       <repopackage name="libattr1"/>
@@ -976,7 +978,6 @@
       <repopackage name="libedataserverui-1_2-3" arch="x86_64"/>
       <repopackage name="libedit0"/>
       <repopackage name="libeditorconfig0" arch="x86_64"/>
-      <repopackage name="libefa1" arch="x86_64"/>
       <repopackage name="libefivar1" arch="x86_64"/>
       <repopackage name="libelf1"/>
       <repopackage name="libell0" arch="x86_64"/>
@@ -1004,7 +1005,6 @@
       <repopackage name="libexttextcat"/>
       <repopackage name="libexttextcat-2_0-0"/>
       <repopackage name="libfa1" arch="x86_64"/>
-      <repopackage name="libfabric1" arch="x86_64"/>
       <repopackage name="libfcitx-config4"/>
       <repopackage name="libfcitx-core0"/>
       <repopackage name="libfcitx-gclient1"/>
@@ -1168,8 +1168,6 @@
       <repopackage name="libhunspell-1_7-0"/>
       <repopackage name="libhyphen0"/>
       <repopackage name="libibus-1_0-5"/>
-      <repopackage name="libibverbs" arch="x86_64"/>
-      <repopackage name="libibverbs1" arch="x86_64"/>
       <repopackage name="libical-glib3" arch="x86_64"/>
       <repopackage name="libical3" arch="x86_64"/>
       <repopackage name="libICE6"/>
@@ -1186,7 +1184,6 @@
       <repopackage name="libImlib2-1" arch="x86_64"/>
       <repopackage name="libimobiledevice-1_0-6" arch="x86_64"/>
       <repopackage name="libimobiledevice-glue-1_0-0" arch="x86_64"/>
-      <repopackage name="libinfinipath4" arch="x86_64"/>
       <repopackage name="libini_config5" arch="x86_64"/>
       <repopackage name="libinih0"/>
       <repopackage name="libinotifytools0" arch="x86_64"/>
@@ -1379,8 +1376,6 @@
       <repopackage name="libmfx1" arch="x86_64"/>
       <repopackage name="libminizip1"/>
       <repopackage name="libmjpegutils-2_2-0"/>
-      <repopackage name="libmlx4-1" arch="x86_64"/>
-      <repopackage name="libmlx5-1" arch="x86_64"/>
       <repopackage name="libmm-glib0"/>
       <repopackage name="libmng2" arch="x86_64"/>
       <repopackage name="libmnl0"/>
@@ -1516,8 +1511,6 @@
       <repopackage name="libproxy1-networkmanager" arch="x86_64"/>
       <repopackage name="libproxy1-pacrunner-webkit" arch="x86_64"/>
       <repopackage name="libpsl5"/>
-      <repopackage name="libpsm2-2" arch="x86_64"/>
-      <repopackage name="libpsm_infinipath1" arch="x86_64"/>
       <repopackage name="libpulse-mainloop-glib0" arch="x86_64"/>
       <repopackage name="libpulse0"/>
       <repopackage name="libpwquality-lang"/>
@@ -1596,7 +1589,6 @@
       <repopackage name="libraw1394-11"/>
       <repopackage name="libraw20" arch="x86_64"/>
       <repopackage name="librdf0"/>
-      <repopackage name="librdmacm1" arch="x86_64"/>
       <repopackage name="libre2-9"/>
       <repopackage name="libreadline8"/>
       <repopackage name="libref_array1" arch="x86_64"/>
@@ -1747,10 +1739,6 @@
       <repopackage name="libtukit4" arch="x86_64"/>
       <repopackage name="libtwolame0"/>
       <repopackage name="libubsan1"/>
-      <repopackage name="libucm0" arch="x86_64"/>
-      <repopackage name="libucp0" arch="x86_64"/>
-      <repopackage name="libucs0" arch="x86_64"/>
-      <repopackage name="libuct0" arch="x86_64"/>
       <repopackage name="libudev1"/>
       <repopackage name="libudisks2-0"/>
       <repopackage name="libudisks2-0_btrfs"/>
@@ -1981,7 +1969,6 @@
       <repopackage name="MozillaFirefox-branding-openSUSE" arch="x86_64"/>
       <repopackage name="MozillaFirefox-translations-common" arch="x86_64"/>
       <repopackage name="mpg123-openal"/>
-      <repopackage name="mpi-selector" arch="x86_64"/>
       <repopackage name="mpt-status" arch="x86_64"/>
       <repopackage name="multipath-tools" arch="x86_64"/>
       <repopackage name="mutter" arch="x86_64"/>
@@ -2037,6 +2024,8 @@
       <repopackage name="nfs-client"/>
       <repopackage name="nftables" arch="x86_64"/>
       <repopackage name="nkf"/>
+      <repopackage name="nodejs-common" arch="x86_64"/>
+      <repopackage name="nodejs17" arch="x86_64"/>
       <repopackage name="notification-daemon"/>
       <repopackage name="notification-daemon-lang"/>
       <repopackage name="noto-arimo-fonts" arch="x86_64"/>
@@ -2287,6 +2276,7 @@
       <repopackage name="noto-serif-yezidi-fonts" arch="x86_64"/>
       <repopackage name="noto-tinos-fonts" arch="x86_64"/>
       <repopackage name="noto-traditionalnushu-fonts" arch="x86_64"/>
+      <repopackage name="npm17" arch="x86_64"/>
       <repopackage name="nscd" arch="x86_64"/>
       <repopackage name="nss-mdns" arch="x86_64"/>
       <repopackage name="ntfs-3g" arch="x86_64"/>
@@ -2302,9 +2292,6 @@
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openldap2-client" arch="x86_64"/>
-      <repopackage name="openmpi3" arch="x86_64"/>
-      <repopackage name="openmpi3-config" arch="x86_64"/>
-      <repopackage name="openmpi3-libs" arch="x86_64"/>
       <repopackage name="OpenPrintingPPDs" arch="x86_64"/>
       <repopackage name="OpenPrintingPPDs-ghostscript" arch="x86_64"/>
       <repopackage name="OpenPrintingPPDs-hpijs" arch="x86_64"/>
@@ -2647,13 +2634,17 @@
       <repopackage name="python310-ipywidgets" arch="x86_64"/>
       <repopackage name="python310-jedi" arch="x86_64"/>
       <repopackage name="python310-Jinja2" arch="x86_64"/>
+      <repopackage name="python310-json5" arch="x86_64"/>
       <repopackage name="python310-jsonpatch" arch="x86_64"/>
       <repopackage name="python310-jsonpointer" arch="x86_64"/>
       <repopackage name="python310-jsonschema" arch="x86_64"/>
       <repopackage name="python310-jupyter" arch="x86_64"/>
       <repopackage name="python310-jupyter-client" arch="x86_64"/>
       <repopackage name="python310-jupyter-core" arch="x86_64"/>
+      <repopackage name="python310-jupyter-jupyterlab-server" arch="x86_64"/>
+      <repopackage name="python310-jupyter-server" arch="x86_64"/>
       <repopackage name="python310-jupyter_console" arch="x86_64"/>
+      <repopackage name="python310-jupyterlab" arch="x86_64"/>
       <repopackage name="python310-jupyterlab-pygments" arch="x86_64"/>
       <repopackage name="python310-jupyterlab-widgets" arch="x86_64"/>
       <repopackage name="python310-keylime" arch="x86_64"/>
@@ -2668,10 +2659,10 @@
       <repopackage name="python310-matplotlib" arch="x86_64"/>
       <repopackage name="python310-matplotlib-inline" arch="x86_64"/>
       <repopackage name="python310-more-itertools" arch="x86_64"/>
-      <repopackage name="python310-mpi4py" arch="x86_64"/>
       <repopackage name="python310-mpmath" arch="x86_64"/>
       <repopackage name="python310-multidict" arch="x86_64"/>
       <repopackage name="python310-mypy_extensions" arch="x86_64"/>
+      <repopackage name="python310-nbclassic" arch="x86_64"/>
       <repopackage name="python310-nbclient" arch="x86_64"/>
       <repopackage name="python310-nbconvert" arch="x86_64"/>
       <repopackage name="python310-nbformat" arch="x86_64"/>
@@ -2679,6 +2670,7 @@
       <repopackage name="python310-netifaces" arch="x86_64"/>
       <repopackage name="python310-networkx" arch="x86_64"/>
       <repopackage name="python310-notebook" arch="x86_64"/>
+      <repopackage name="python310-notebook-shim" arch="x86_64"/>
       <repopackage name="python310-notify2" arch="x86_64"/>
       <repopackage name="python310-numexpr" arch="x86_64"/>
       <repopackage name="python310-numpy" arch="x86_64"/>
@@ -2774,6 +2766,7 @@
       <repopackage name="python310-urllib3" arch="x86_64"/>
       <repopackage name="python310-wcwidth" arch="x86_64"/>
       <repopackage name="python310-webencodings" arch="x86_64"/>
+      <repopackage name="python310-websocket-client" arch="x86_64"/>
       <repopackage name="python310-widgetsnbextension" arch="x86_64"/>
       <repopackage name="python310-wrapt" arch="x86_64"/>
       <repopackage name="python310-yarl" arch="x86_64"/>
@@ -2789,8 +2782,6 @@
       <repopackage name="QGnomePlatform" arch="x86_64"/>
       <repopackage name="qqc2-desktop-style" arch="x86_64"/>
       <repopackage name="qtdeclarative-imports-provides-qt5"/>
-      <repopackage name="rdma-core" arch="x86_64"/>
-      <repopackage name="rdma-ndd" arch="x86_64"/>
       <repopackage name="read-only-root-fs" arch="x86_64"/>
       <repopackage name="readline-doc" arch="x86_64"/>
       <repopackage name="rebootmgr" arch="x86_64"/>
