@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul  8 08:41:33 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.2.4
+
+  * Better support for lower case headers in `Rack::ETag` middleware. ([#1919](https://github.com/rack/rack/pull/1919), [@ioquatix](https://github.com/ioquatix))
+  * Use custom exception on params too deep error. ([#1838](https://github.com/rack/rack/pull/1838), [@simi](https://github.com/simi))
+
+-------------------------------------------------------------------
 Mon May 30 11:47:53 UTC 2022 - Hendrik Vogelsang <hvogel@suse.com>
 
 - updated to version 2.2.3.1
