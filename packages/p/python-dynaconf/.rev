@@ -96,4 +96,41 @@
     <comment></comment>
     <requestid>825355</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cb57bbe6d2b8439e1e6d3ecb93cacaf6</srcmd5>
+    <version>3.1.4</version>
+    <time>1657281787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.4: 
+  * Environment variables filtering #470 (#474)
+  * Test to ensure #467 is not an issue (#535)
+  * Fix #478 Make alias for environment -&gt; environments (#534)
+  * Fix #462 make DynaBox nested List to use DynaBox as default class (#533)
+  * Fix #511 allow user to specify loaders argument to execute_loaders (#531)
+  * Fix #449 - Django lazy templating Fix #449 (#528)
+  * Fix #482 - formatter case insensitive (#527)
+  * Allow Title case lookup and validation. (#526)
+  * Allow load_file to accept pathlib.Path (#525)
+  * Case insensitive envvar traversal (#524) [Bruno Rocha]
+  * Fix #521 - FlaskDynaconf should raise KeyError for non existing keys
+  * Fix docs regarding --django argument on cli (#477)
+  * Changed enabled_core_loaders elements to be upper case to fix #455 (#457)
+  * Fix merging hyperlink to fix  #454 (#458)
+  * Specify flask extension initializers by entry point object reference (#456)
+  * Fix #445 casting on dottet get. (#446)
+  * Fix #443 object merge with same value on same level keys (#444)
+  * Fix #434 setenv failing to unset LazyValues (#437)
+  * Fix colors and KEyError handling on cli.py (#429)
+  * Remove links to outdated issues from guidelines.
+  * Added full Dynaconf Diagram and few fizes. (#418) [Bruno Rocha]
+  * Fix #407 - add proper equality test for CombinedValidator (#413)
+  * HOTFIX: Logging instance has a `formatter` attribute (#410)
+  * Included example of custom SOPS loader to the docs.
+  * Add auth username and password for redis settings (#378)
+  * Test all names in Validator(&quot;foo&quot;, &quot;bar&quot;, must_exist=False) (#406)
+  * Fix #391 make box_settings optional, change vendoring strategy (#398)
+  * Fix test for versioned kv engine in latest vault. [Peng Yin]
+  * Read all secrets under a vault path. [Peng Yin]</comment>
+    <requestid>987787</requestid>
+  </revision>
 </revisionlist>

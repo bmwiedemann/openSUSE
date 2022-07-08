@@ -1,7 +1,7 @@
 #
 # spec file for package python-dynaconf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dynaconf
-Version:        3.0.0
+Version:        3.1.4
 Release:        0
 Summary:        The dynamic configurator for your Python Project
 License:        MIT
 URL:            https://github.com/rochacbruno/dynaconf
 Source:         https://github.com/rochacbruno/dynaconf/archive/%{version}.tar.gz#/dynaconf-%{version}.tar.gz
-Patch0:         redis-server-url.patch
 BuildRequires:  %{python_module setuptools >= 38.6.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -38,10 +37,12 @@ Requires:       python-python-dotenv
 Requires:       python-redis
 Requires:       python-setuptools
 Requires:       python-toml
+Suggests:       python-Django
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Flask >= 0.12}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module click}
@@ -61,13 +62,12 @@ BuildRequires:  redis
 The dynamic configurator for your Python Project
 
 %prep
-%setup -q -n dynaconf-%{version}
-%patch0 -p1
+%autosetup -p1 -n dynaconf-%{version}
 
 # require running docker with the server
 rm tests/test_vault.py
 
-rm -r dynaconf/vendor/
+rm -r dynaconf/vendor_src/
 
 %build
 %python_build
@@ -78,12 +78,12 @@ rm -r dynaconf/vendor/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-mkdir ~/bin
+mkdir -p ~/bin
 %python_expand cp -p %{buildroot}%{_bindir}/dynaconf-%{$python_bin_suffix} ~/bin/dynaconf
 export PATH=~/bin:$PATH
 export LANG=en_US.UTF-8
 /usr/sbin/redis-server &
-export REDIS_URL=http://127.0.0.1:6379
+export DYNACONF_TEST_REDIS_URL==http://127.0.0.1:6379
 %pytest tests/
 
 %post
