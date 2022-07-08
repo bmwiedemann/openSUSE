@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Jul  8 02:14:45 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 2.10.0
+  * Implement smart ReplayGain setting
+    (gh#cmus/cmus#1049)
+  * Start from end on player-prev with no current track
+  * Add reshuffle when current track has disappeared
+  * Make tracks hold shuffle info
+  * Use a direct album reference in AAA filter
+  * Add an album shuffle mode
+  * Add "player-next-album" and "player-prev-album" commands
+  * Rename "shuffle" command to "reshuffle"
+  * Reset position in shuffle list after a manual reshuffle
+  * Fixes channel map for multichannel flac files
+    (gh#cmus/cmus#1072)
+  * Replaces improper fcntl with ioctl in op/oss
+    (gh#cmus/cmus#1104)
+  * Initialize active to zero in print_editable
+    (gh#cmus/cmus#1093 gh#cmus/cmus#1094)
+  * Allow output plugins to have multiple mixer FD lists
+  * Preserve compatibility with ABI v1 output plugins
+  * Implement pause_on_output_change option
+    (gh#cmus/cmus#1139)
+  * Implement MIXER_FDS_OUTPUT for pulse
+    (gh#cmus/cmus#1139)
+  * Handle colors in active windows correctly
+    (gh#cmus/cmus#1120)
+  * Initialize window size in init_curses
+    (gh#cmus/cmus#1119)
+  * ip/ffmpeg.c: fix send/receive API usage
+    (gh#cmus/cmus#1080)
+  * Indicate elided text with "…" & related formatting tweaks
+    (gh#cmus/cmus#1051)
+  * Limit max draw width to 1023 columns
+    (gh#cmus/cmus#1065)
+  * spotify.theme
+    (gh#cmus/cmus#1123)
+  * A few typo/style fixes to the manpages
+    (gh#cmus/cmus#1150)
+
+-------------------------------------------------------------------
 Sun Jan 24 15:46:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.1:

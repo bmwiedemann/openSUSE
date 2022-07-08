@@ -181,4 +181,41 @@ The program’s features have stabilized and it receives mostly bugfixes and min
     <comment></comment>
     <requestid>866555</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>03f7b5193840bd3e1cc3909de4dd6af2</srcmd5>
+    <version>2.10.0</version>
+    <time>1657281780</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.10.0
+  * Implement smart ReplayGain setting
+    (gh#cmus/cmus#1049)
+  * Start from end on player-prev with no current track
+  * Add reshuffle when current track has disappeared
+  * Make tracks hold shuffle info
+  * Use a direct album reference in AAA filter
+  * Add an album shuffle mode
+  * Add &quot;player-next-album&quot; and &quot;player-prev-album&quot; commands
+  * Rename &quot;shuffle&quot; command to &quot;reshuffle&quot;
+  * Reset position in shuffle list after a manual reshuffle
+  * Fixes channel map for multichannel flac files
+    (gh#cmus/cmus#1072)
+  * Replaces improper fcntl with ioctl in op/oss
+    (gh#cmus/cmus#1104)
+  * Initialize active to zero in print_editable
+    (gh#cmus/cmus#1093 gh#cmus/cmus#1094)
+  * Allow output plugins to have multiple mixer FD lists
+  * Preserve compatibility with ABI v1 output plugins
+  * Implement pause_on_output_change option
+    (gh#cmus/cmus#1139)
+  * Implement MIXER_FDS_OUTPUT for pulse
+    (gh#cmus/cmus#1139)
+  * Handle colors in active windows correctly
+    (gh#cmus/cmus#1120)
+  * Initialize window size in init_curses
+    (gh#cmus/cmus#1119)
+  * ip/ffmpeg.c: fix send/receive API usage
+    (gh#cmus/cmus#1080)
+  * Indicate elided text with &quot;…&quot; &amp; related formatting tweaks</comment>
+    <requestid>987773</requestid>
+  </revision>
 </revisionlist>

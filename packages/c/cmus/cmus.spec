@@ -1,7 +1,7 @@
 #
 # spec file for package cmus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2007-2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,14 +19,13 @@
 
 %bcond_without sndio
 Name:           cmus
-Version:        2.9.1
+Version:        2.10.0
 Release:        0
 Summary:        Text-mode music player
 License:        GPL-2.0-only
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://cmus.github.io/
 Source:         https://github.com/cmus/cmus/archive/v%{version}.tar.gz
-BuildRequires:  git-core
 BuildRequires:  libmpcdec-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -221,7 +220,7 @@ This package pulls in all the plugins for the C* Music Player.
     USE_FALLBACK_IP=y \
     CFLAGS="%{optflags}"
 
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
