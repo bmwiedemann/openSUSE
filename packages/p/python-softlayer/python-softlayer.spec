@@ -19,31 +19,37 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-softlayer
-Version:        6.0.2
+Version:        6.1.0
 Release:        0
 Summary:        A set of Python libraries that assist in calling the SoftLayer API
 License:        MIT
 URL:            https://github.com/softlayer/softlayer-python
 Source:         https://github.com/softlayer/softlayer-python/archive/v%{version}.tar.gz
-BuildRequires:  %{python_module click >= 7}
-BuildRequires:  %{python_module prettytable >= 0.7.0}
+BuildRequires:  %{python_module click >= 8.0.4}
+BuildRequires:  %{python_module prettytable >= 2.5.0}
 BuildRequires:  %{python_module prompt_toolkit >= 2}
 BuildRequires:  %{python_module pygments >= 2.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.20.0}
+BuildRequires:  %{python_module rich >= 12.3.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.7.0}
+BuildRequires:  %{python_module softlayer-zeep >= 5.0.0}
 BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module urllib3 >= 1.24}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-click >= 7
-Requires:       python-prettytable >= 0.7.0
+Requires:       python-click >= 8.0.4
+Requires:       python-prettytable >= 2.5.0
 Requires:       python-prompt_toolkit >= 2
 Requires:       python-pygments >= 2.0.0
 Requires:       python-requests >= 2.20.0
+Requires:       python-rich >= 12.3.0
 Requires:       python-setuptools
 Requires:       python-six >= 1.7.0
+Requires:       python-softlayer-zeep >= 5.0.0
+Requires:       python-typing_extensions
 Requires:       python-urllib3 >= 1.24
 Conflicts:      sl
 Requires(post): update-alternatives
@@ -69,7 +75,7 @@ This library provides a simple Python client to interact with SoftLayer's XML-RP
 
 %check
 # We do not want TKinter
-%pytest -k 'not test_getpass_issues1436'
+%pytest -k 'not test_getpass_issues1436 and not TestSoapAPICall'
 
 %post
 %python_install_alternative slcli

@@ -162,4 +162,41 @@
     <comment></comment>
     <requestid>970763</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>70ea0a2fc8738601bda5d8aa54e412fc</srcmd5>
+    <version>6.1.0</version>
+    <time>1657281706</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1.0:
+  * [Rich](https://github.com/Textualize/rich) tables
+  * [Rich](https://github.com/Textualize/rich) Text support
+  * slcli licenses is missing the help text
+  * Add a warning if user orders in a POD that is being closed
+  * updated number of updates in the command account event-detail
+  * Add an orderBy filter to slcli vlan list
+  * Add options to print a specific table in command slcli account events
+  * Update global ip assign/unassign to use new API
+  * Ability to route/unroute subnets
+  * Improved successful response to command - slcli account cancel-item
+  * Improved successful response to command - slcli virtual edit
+  * Improved successful response to command - slcli vlan cancel
+  * Mishandling of domain and hostname data in `slcli account item-detail`
+  * Unable to get VSI details when last TXN is &quot;Software install is finis…
+  * new command on autoscale delete
+  * Incorrect table title is displayed when an Auto Scale Group is scaled to reduce members
+  * slcli autoscale create
+  * Soap transport
+  * fix issue on loadbal order command
+  * Policy is not added when an AutoScale Group is created
+  * When `slcli event-log` not return any event log the command display an error
+  * add new columns on vlan list(premium, tags)
+  * fixed documentation build issues
+  * Improved successful response to command - slcli licenses cancel
+  * update the firewall list
+  * Updated readme
+  * Update `slcli firewall detail` to handle multi vlan firewalls
+  * New command for getting duplicate convert status 
+  * Fixed TOX errors</comment>
+    <requestid>987411</requestid>
+  </revision>
 </revisionlist>
