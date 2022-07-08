@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul  8 02:40:04 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Remove dependency on unmaintained rust-packaging
+
+-------------------------------------------------------------------
 Mon May  2 14:05:20 UTC 2022 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to v1.11.1 (see CHANGELOG.md)

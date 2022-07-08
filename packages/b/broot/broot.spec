@@ -1,7 +1,7 @@
 #
 # spec file for package broot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           broot
 Version:        1.11.1
 Release:        0
@@ -24,7 +25,8 @@ URL:            https://dystroy.org/broot/
 Source0:        https://github.com/Canop/broot/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        %{name}.changes
-BuildRequires:  rust-packaging
+Source3:        cargo_config
+BuildRequires:  cargo-packaging
 
 %description
 A better way to navigate directories.
@@ -32,8 +34,8 @@ Tree-like commandline directory navigator written in Rust.
 
 %prep
 %setup -qa 1
-%define cargo_registry $(pwd)/vendor
-%cargo_prep
+mkdir .cargo
+cp %{SOURCE3} .cargo/config
 
 %build
 %cargo_build
@@ -43,7 +45,7 @@ Tree-like commandline directory navigator written in Rust.
 
 %install
 %cargo_install
-rm -rf %{buildroot}/%{_builddir}/%{name}-%{version}/vendor/ 
+rm -rf %{buildroot}/%{_builddir}/%{name}-%{version}/vendor/
 
 %files
 %license LICENSE
