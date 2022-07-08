@@ -738,4 +738,12 @@
   + Introduce bcond_with rdp to easily toggle the feature on/off. (forwarded request 987197 from dimstar)</comment>
     <requestid>987358</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>69a6a530f9abe8968bb1becc33ae8b99</srcmd5>
+    <version>42.3</version>
+    <time>1657281718</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 987419 from dimstar)</comment>
+    <requestid>987492</requestid>
+  </revision>
 </revisionlist>

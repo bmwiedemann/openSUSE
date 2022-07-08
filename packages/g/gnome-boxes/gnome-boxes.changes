@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  7 11:54:29 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.3:
+  + Include subproject directory in the tarball.
+- Re-enable RDP support: swich bcond_with rdp to bcond_without rdp.
+
+-------------------------------------------------------------------
 Wed Jul  6 12:21:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.2:

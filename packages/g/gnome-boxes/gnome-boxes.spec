@@ -17,7 +17,7 @@
 #
 
 
-%bcond_with rdp
+%bcond_without rdp
 %if %{with rdp}
 %define gfrdp_libver 0_1
 %define gfrdp_sover 0.1
@@ -26,7 +26,7 @@
 %define govf_libver 0_1
 %define govf_sover 0.1
 Name:           gnome-boxes
-Version:        42.2
+Version:        42.3
 Release:        0
 Summary:        A GNOME 3 application to access remote or virtual systems
 License:        LGPL-2.0-or-later
