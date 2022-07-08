@@ -70,6 +70,7 @@ BuildRequires:  %{python_module matplotlib-web}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest-tornasync}
+BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module voila = %{version}}
 %endif
@@ -133,7 +134,9 @@ sed -i 's|./jupyter.svg|jupyter.svg|' tests/notebooks/images.ipynb
 %check
 export JUPYTER_PATH=%{_jupyter_prefix}:$PWD/tests/test_template/share/jupyter:$PWD/tests/skip_template/share/jupyter/
 export VOILA_TEST_DEBUG=1
-%pytest tests
+# very flaky in obs environments
+donttest="test_kernel_death or test_request_with_query"
+%pytest tests -k "not ($donttest)" --reruns 2 --reruns-delay 1
 %endif
 
 %if !%{with test}

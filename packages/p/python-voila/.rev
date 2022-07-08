@@ -102,4 +102,13 @@
     <comment></comment>
     <requestid>982895</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>6ced2aed9727b989ccdf65c3ac2f6b38</srcmd5>
+    <version>0.3.5</version>
+    <time>1657281765</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip flaky tests, try a second time if more fail
+</comment>
+    <requestid>987758</requestid>
+  </revision>
 </revisionlist>
