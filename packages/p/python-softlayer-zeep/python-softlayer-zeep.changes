@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Fri Jul  8 07:47:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- make it provide/obsolete python-zeep as it is a fork of it 
+
+-------------------------------------------------------------------
+Thu Jul  7 10:48:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Initial package (5.0.0)
