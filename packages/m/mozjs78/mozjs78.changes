@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  7 07:07:46 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- added mozilla-python310.patch to build with Python 3.10
+
+-------------------------------------------------------------------
 Mon Dec  6 15:46:06 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 78.15.0esr.

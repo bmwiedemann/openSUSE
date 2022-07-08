@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,6 +66,7 @@ Patch17:        definitions_for_user_vfp.patch
 Patch18:        spidermonkey_style_check_disable_s390x.patch
 Patch19:        0001-Skip-failing-tests-on-ppc64-and-s390x.patch
 Patch20:        Add-riscv64-support.patch
+Patch21:        mozilla-python310.patch
 BuildRequires:  autoconf213
 BuildRequires:  cargo
 BuildRequires:  ccache
@@ -135,6 +136,7 @@ pushd ../..
 %patch14 -p1
 %patch15 -p1
 %patch20 -p1
+%patch21 -p1
 
 # Disable WASM_EMULATE_ARM_UNALIGNED_FP_ACCESS as it causes the compilation to fail
 # https://bugzilla.mozilla.org/show_bug.cgi?id=1526653

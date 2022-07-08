@@ -90,4 +90,12 @@
     <comment></comment>
     <requestid>936222</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>3ffebcf8db2faeadb542f9a1d44b1742</srcmd5>
+    <version>78.15.0</version>
+    <time>1657281767</time>
+    <user>dimstar_suse</user>
+    <comment>- added mozilla-python310.patch to build with Python 3.10</comment>
+    <requestid>987761</requestid>
+  </revision>
 </revisionlist>
