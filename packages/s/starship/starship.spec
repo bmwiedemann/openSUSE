@@ -16,7 +16,6 @@
 #
 
 
-%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           starship
 Version:        1.9.1
 Release:        0
@@ -26,7 +25,7 @@ URL:            https://starship.rs/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-BuildRequires:  rust-packaging
+BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(openssl)
 
 %description
@@ -44,13 +43,10 @@ mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
-RUSTFLAGS=%{rustflags} cargo build --release
+%{cargo_build}
 
 %install
-RUSTFLAGS=%{rustflags} cargo install --root=%{buildroot}%{_prefix} --path .
-# remove residue crate file
-rm %{buildroot}%{_prefix}/.crates.toml
-rm %{buildroot}%{_prefix}/.crates2.json
+%{cargo_install}
 
 %files
 %doc README.md

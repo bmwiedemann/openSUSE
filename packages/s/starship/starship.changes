@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul  8 02:51:04 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Remove dependency on unmaintained rust-packaging
+
+-------------------------------------------------------------------
 Tue Jun 28 03:06:50 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 1.9.1:
