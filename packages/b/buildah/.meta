@@ -9,5 +9,5 @@
 - Update the contents of a container's root filesystem
 - Delete a working container or an image
 </description>
-  <devel project="devel:kubic" package="buildah"/>
+  <devel project="devel:microos" package="buildah"/>
 </package>

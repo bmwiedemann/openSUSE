@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 07 09:00:47 UTC 2022 - dcermak@suse.com
+
+- Update to version 1.26.2:
+  * Bump to v1.26.2
+  * Bump github.com/containers/storage from v1.40.2 to v1.40.3
+  * buildah: add support for renaming a device in rootless setups
+
+-------------------------------------------------------------------
 Thu May 05 06:18:56 UTC 2022 - dcermak@suse.com
 
 - Update to version 1.26.1:
