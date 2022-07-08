@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 06 01:20:20 UTC 2022 - william.brown@suse.com
+
+- Update to version 2.2.2~git0.55e2c7ab3:
+  * Bump version to 2.2.2
+  * Issue 5221 - fix covscan (#5359)
+  * Issue 5294: Report Portal 5 is not processing an XML file with (#5358)
+  * Issue 5353 - CLI - dsconf backend export breaks with multiple backends
+  * Issue 5346 - New connection table fails with ASAN failures (#5350)
+  * Issue 5345 - BUG - openldap migration fails when ppolicy is active (#5347)
+  * Issue 5323 - BUG - improve skipping of monitor db (#5340)
+  * Issue 5329 - Improve replication extended op logging
+  * Issue 5343 - Various improvements to winsync
+  * Issue 4932 - CLI - add parser aliases to long arg names
+
+-------------------------------------------------------------------
 Mon May 30 00:06:08 UTC 2022 - william.brown@suse.com
 
 - bsc#1199889 - CVE-2022-1949 - full access control bypass with simple crafted query, resolved
