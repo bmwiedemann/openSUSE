@@ -57,6 +57,7 @@ Patch7:         compression_methods_switch.patch
 Patch9:         openssl-1.0.2a-default-paths.patch
 Patch10:        openssl-pkgconfig.patch
 Patch13:        openssl-1.0.2a-ipv6-apps.patch
+Patch14:        openssl-riscv64-config.patch
 # FIPS patches:
 Patch15:        openssl-1.0.2i-fips.patch
 Patch16:        openssl-1.0.2a-fips-ec.patch
@@ -100,6 +101,9 @@ Patch84:        openssl-DH.patch
 Patch85:        openssl-add_rfc3526_rfc7919.patch
 # OpenSSL Security Advisory [17 August 2021] bsc#1189521 CVE-2021-3712
 Patch86:        CVE-2021-3712-ASN1_STRING-issues.patch
+# OpenSSL Security Advisory bsc#1199166 CVE-2022-1292
+Patch87:        openssl-CVE-2022-1292.patch
+Patch88:        openssl-1_0_0-Fix-file-operations-in-c_rehash.patch
 # steam patches
 Patch100:       openssl-fix-cpuid_setup.patch
 # compat patches to build with soversion 10 (bsc#1175429)
@@ -223,6 +227,7 @@ testing framework and utilities.
 %patch9 -p1
 %patch10 -p1
 %patch13 -p1
+%patch14 -p1
 %patch15 -p1
 %patch16 -p1
 %patch17 -p1
@@ -263,6 +268,8 @@ testing framework and utilities.
 %patch84 -p1
 %patch85 -p1
 %patch86 -p1
+%patch87 -p1
+%patch88 -p1
 
 # clean up patching leftovers
 find . -name '*.orig' -delete

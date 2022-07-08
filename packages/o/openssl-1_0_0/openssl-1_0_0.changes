@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jun 28 14:26:53 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- openssl-riscv64-config.patch: backport of riscv64 config support
+
+-------------------------------------------------------------------
+Fri Jun 23 11:38:39 UTC 2022 - Jason Sikes <jsikes@suse.com>
+
+- Added	openssl-1_0_0-Fix-file-operations-in-c_rehash.patch
+  * bsc#1200550
+  * CVE-2022-2068
+  * Fixed more shell code injection issues in c_rehash
+
+-------------------------------------------------------------------
+Tue Jun 21 13:29:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Adjust rpmlintrc to apply to all arches.
+
+-------------------------------------------------------------------
+Mon May 30 09:16:49 UTC 2022 - Jason Sikes <jsikes@suse.com>
+
+- Security fix: [bsc#1199166, CVE-2022-1292]
+  * Added: openssl-CVE-2022-1292.patch
+  * properly sanitise shell metacharacters in c_rehash script.
+
+-------------------------------------------------------------------
 Fri May 13 08:57:02 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add an rpmlintrc for shlib-policy-name-error/multibuild case.
