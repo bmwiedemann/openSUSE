@@ -39,7 +39,7 @@
 %bcond_without python2
 %{!?_assemblies_dir: %global _assemblies_dir %(pkg-config cecil --variable=assemblies_dir)}
 Name:           libproxy%{?dash}%{?name_suffix}
-Version:        0.4.17
+Version:        0.4.18
 Release:        0
 Summary:        Automatic proxy configuration management for applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -47,8 +47,8 @@ Group:          Development/Libraries/C and C++
 URL:            http://libproxy.github.io/libproxy/
 Source:         https://github.com/libproxy/libproxy/releases/download/%{version}/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-OPENSUSE libproxy-python-310.patch dimstar@opensuse.org -- Detect python 3.10. upstream has more sophisticated changes already in the queue
-Patch0:         libproxy-python-310.patch
+# PATCH-FIX-UPSTREAM libproxy-perl-cflags.patch dimstar@opensuse.org -- perl: Use ccflags from %Config for libproxy module compilation
+Patch0:         libproxy-perl-cflags.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 # netcfg is needed for the test suite.
@@ -68,6 +68,7 @@ BuildRequires:  python3-devel
 %if %{with python2}
 BuildRequires:  python-devel
 %endif
+BuildRequires:  pkgconfig(duktape)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.26
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(javascriptcoregtk-4.0)
@@ -137,6 +138,7 @@ Provides:       libproxy-gnome = %{version}
 Obsoletes:      libproxy-gnome < %{version}
 %if 0%{?suse_version}
 Recommends:     libproxy1-pacrunner = %{version}
+Suggests:       libproxy1-pacrunner-duktape
 Supplements:    (libproxy1 and gnome-session-core)
 %else
 Requires:       libproxy1-pacrunner = %{version}
@@ -165,6 +167,7 @@ Requires:       libqt5-qttools
 %endif
 %if 0%{?suse_version}
 Recommends:     libproxy1-pacrunner = %{version}
+Suggests:       libproxy1-pacrunner-duktape
 Supplements:    (libproxy1 and libkde4)
 Supplements:    (libproxy1 and plasma5-session)
 %else
@@ -198,6 +201,22 @@ Supplements:    (libproxy1 and libmozjs185-1_0)
 %description -n libproxy1-pacrunner-mozjs
 A module to extend libproxy with capabilities to pass addresses to a
 WPAD/PAC script and have it find the correct proxy.
+
+%package -n libproxy1-pacrunner-duktape
+Summary:        Libproxy module to support WPAD/PAC parsing via the WebKit JavaScript Engine
+Group:          System/Libraries
+Requires:       libproxy1 = %{version}
+# A virtual symbol to identify that this is a pacrunner.
+Provides:       libproxy1-pacrunner = %{version}
+%if 0%{?suse_version}
+Supplements:    (libproxy1 and %(rpm --qf "%%{name}" -qf $(readlink -f %{_libdir}/libduktape.so)))
+%endif
+
+%description -n libproxy1-pacrunner-duktape
+A module to extend libproxy with capabilities to pass addresses to a
+WPAD/PAC script and have it find the correct proxy.
+
+Relies on tuktape to do the javascript parsing
 
 %package -n libproxy1-pacrunner-webkit
 Summary:        Libproxy module to support WPAD/PAC parsing via the WebKit JavaScript Engine
@@ -410,6 +429,10 @@ make test
 %files -n libproxy1-networkmanager
 %defattr(-, root, root)
 %{_libdir}/libproxy-%{version}/modules/network_networkmanager.so
+
+%files -n libproxy1-pacrunner-duktape
+%defattr(-, root, root)
+%{_libdir}/libproxy-%{version}/modules/pacrunner_duktape.so
 
 %files -n libproxy1-pacrunner-webkit
 %defattr(-, root, root)

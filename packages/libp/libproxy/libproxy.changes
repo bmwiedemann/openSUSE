@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jun 21 08:50:02 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libproxy-perl-cflags.patch: perl: Use ccflags from %Config
+  for libproxy module compilation; fixes perl test suite on i586.
+
+-------------------------------------------------------------------
+Mon Jun 20 14:01:59 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.4.18:
+  + build: Allow configuration of sysconfig module.
+  + config_envvar: Add environment variable for pacrunner
+    debugging.
+  + build: disable mozjs by default.
+  + python: Support Python 3.10 and above.
+  + Add Duktape pacrunner module.
+  + config_kde: Compute list of config file locations ourselves.
+  + cpmfog_gnome3: Add gnome-wayland to permitted DESKTOP_SESSION.
+- Drop libproxy-python-310.patch: fixed upstream.
+- Build duktape pacrunner module:
+  + Add pkgconfig(duktape): new dependency.
+  + Split new subpackage libproxy1-pacrunner-duktape.
+  + Suggest duktape pacrunner for config modules recommending a
+    pacrunner.
+
+-------------------------------------------------------------------
 Mon May 16 10:27:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add libproxy-python-310.patch: Detect python 3.10.
