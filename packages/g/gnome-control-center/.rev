@@ -1817,4 +1817,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment>GNOME 42.2 (forwarded request 979888 from dimstar)</comment>
     <requestid>980026</requestid>
   </revision>
+  <revision rev="215" vrev="1">
+    <srcmd5>f8dcbc24a51fa44e569edfa2b7fe625f</srcmd5>
+    <version>42.3</version>
+    <time>1657378756</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 987173 from dimstar)</comment>
+    <requestid>987348</requestid>
+  </revision>
 </revisionlist>

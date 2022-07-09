@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul  3 19:20:25 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Update to version 42.3:
+  + Display:
+    - Use virtual clone modes when mirroring.
+  + Network:
+    - Prevent crash bi disconnecting device.
+    - Fix Wi-fi network with "&" in name not appearing.
+    - Fix warning when panel closed.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon May 30 11:45:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.2:
