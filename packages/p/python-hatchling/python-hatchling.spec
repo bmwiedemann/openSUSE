@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hatchling
-Version:        1.3.1
+Version:        1.4.1
 Release:        0
 Summary:        Build backend used by Hatch
 License:        MIT
