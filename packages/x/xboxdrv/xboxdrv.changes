@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul  9 02:23:17 UTC 2022 - malcolmlewis@opensuse.org
+
+- Add support for Betop controller (0x11c0:0x5205).
+- Rebase xboxdrv-add-new-device.patch.
+
+-------------------------------------------------------------------
 Mon Mar  7 20:22:50 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Fix modprobe.d location for 15.3

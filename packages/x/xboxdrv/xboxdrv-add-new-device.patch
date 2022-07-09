@@ -1,7 +1,15 @@
 diff -Naur a/src/xpad_device.cpp b/src/xpad_device.cpp
 --- a/src/xpad_device.cpp	2015-11-09 04:19:35.000000000 -0600
-+++ b/src/xpad_device.cpp	2020-04-10 17:37:33.310924751 -0500
-@@ -111,6 +111,7 @@
++++ b/src/xpad_device.cpp	2022-07-08 16:19:21.525116652 -0500
+@@ -91,6 +91,7 @@
+   { GAMEPAD_XBOX360,          0x0e6f, 0x0213, "Afterglow Gamepad for Xbox 360" },
+   { GAMEPAD_XBOX360,          0x0e6f, 0x0401, "Logic3 Controller" },
+   { GAMEPAD_XBOX360,          0x0e6f, 0x0301, "Logic3 Controller" },
++  { GAMEPAD_XBOX360,          0x11c0, 0x5205, "Betop Controller" },
+   { GAMEPAD_XBOX360,          0x12ab, 0x0301, "PDP AFTERGLOW AX.1" },
+   { GAMEPAD_XBOX360_GUITAR,   0x1430, 0x4748, "RedOctane Guitar Hero X-plorer" },
+   { GAMEPAD_XBOX360,          0x146b, 0x0601, "BigBen Interactive XBOX 360 Controller" },
+@@ -111,6 +112,7 @@
    { GAMEPAD_XBOX360,          0x15e4, 0x3f00, "Power A Mini Pro Elite" },
    { GAMEPAD_XBOX360,          0x15e4, 0x3f10, "Batarang Xbox 360 controller" },
    { GAMEPAD_XBOX360_WIRELESS, 0x045e, 0x0291, "Xbox 360 Wireless Receiver (XBOX)" }, // RF Module from the Xbox360
