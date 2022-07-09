@@ -808,4 +808,18 @@ to have a hook to perform appstream-util install &lt;xml&gt; &lt;iconset&gt; and
 </comment>
     <requestid>961651</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>6cd405fbb03aa3205d7d8d24f7c2b1db</srcmd5>
+    <version>0.7.18+37</version>
+    <time>1657378764</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.18+37:
+  * Update fa.po
+  * trivial: Fix a tiny memory leak when mirroring screenshots
+  * trivial: Be explicit when ignoring return error values
+  * trivial: Fix a tiny memory leak on failure
+  * Add vcs-browser and contribute URL type
+  * update to spdx 3.16 (forwarded request 987190 from dimstar)</comment>
+    <requestid>987357</requestid>
+  </revision>
 </revisionlist>
