@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun 24 12:05:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.22.0:
+  + This is a major release. On the Braille tables side there is a
+    new table for German grade 2 with capitalization and there are
+    updates to the Dutch, German Hungarian, Punjabi, Russian, UK
+    Braille Computer Notation and Slovak tables.
+  + A new opcode to indicate the end of a number where the number
+    doesn't end at a space character
+  + A lot of work was put into checking for and fixing memory
+    problems.
+- Drop info file handling in post/postun of doc package: inf files
+  are handled by file triggers nowadays.
+- Also remove the install_info_prereq prereq (which was, for that
+  matter, even on the wrong package).
+- Drop liblouis-CVE-2022-26981.patch and
+  liblouis-CVE-2022-31783.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Thu Jun  2 17:49:07 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Add liblouis-CVE-2022-26981.patch: fix buffer overrun in
@@ -11,7 +30,7 @@ Sun Apr 10 12:48:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.21.0:
   * New table for German 6-dot computer braille thanks to the Swiss Library for
-    the Blind, Visually Impaired and Print Disabled 
+    the Blind, Visually Impaired and Print Disabled
   * see http://liblouis.org/liblouis/2022/03/07/liblouis-release-3.21.0.html
     for list of bugfixes
 

@@ -18,17 +18,13 @@
 
 %define sover 20
 Name:           liblouis
-Version:        3.21.0
+Version:        3.22.0
 Release:        0
 Summary:        Two-way braille translator
 License:        LGPL-3.0-or-later
 Group:          Productivity/Other
 URL:            http://liblouis.org/
 Source0:        https://github.com/liblouis/liblouis/releases/download/v%{version}/liblouis-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM liblouis-CVE-2022-26981.patch boo#1197085 mgorse@suse.com -- fix buffer overrun in compilePassOpcode.
-Patch0:         liblouis-CVE-2022-26981.patch
-# PATCH-FIX-UPSTREAM liblouis-CVE-2022-31783.patch boo#1200120 mgorse@suse.com -- prevent an invalid memory write in compileRule.
-Patch1:         liblouis-CVE-2022-31783.patch
 
 BuildRequires:  fdupes
 BuildRequires:  libyaml-devel
@@ -36,8 +32,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 Requires:       liblouis%{sover} = %{version}
-# FIXME: use proper Requires(pre/post/preun/...)
-PreReq:         %{install_info_prereq}
 
 %description
 liblouis is a translator from and to braille. It features support for
@@ -153,12 +147,6 @@ rm -f %{buildroot}%{_datadir}/doc/liblouis/liblouis.{html,txt}
 pushd python
 %python3_install
 popd
-
-%post doc
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
-%preun doc
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %post -n liblouis%{sover} -p /sbin/ldconfig
 %postun -n liblouis%{sover} -p /sbin/ldconfig
