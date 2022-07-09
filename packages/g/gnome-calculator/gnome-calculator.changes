@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul  3 18:53:25 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Update to version 42.2:
+  + Fixed incorrect history with bits toggling.
+  + Fixed crash when typing in variable popover.
+  + Fixed incorrect libxml usage.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon May 30 11:44:35 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.1:
