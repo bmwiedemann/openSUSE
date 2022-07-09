@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul  8 09:57:07 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.84.1
+
+- Update to 2.84.1
+  - Fix #454: Implement color for phrase/para
+  - Fix #470: Make "Report bug" links attached to titles
+
+-------------------------------------------------------------------
+Fri Jul  8 07:30:44 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.84.0
+
+- Update to 2.84.0:
+  - Fix #96: Remove SUSE address
+  - Fix #458: figure-label for fr-fr: remove stray letter "t"
+  - Fix #458: Add missing datetime format for zh_*
+  - Fix #465: Replace old SUSE logo for suse2013
+  - Fix #463: Use correct inline color for screen
+  - Add README for SUSE's SASS customization
+  https://github.com/openSUSE/suse-xsl/releases/tag/2.84.0
+
+-------------------------------------------------------------------
 Mon Feb 21 20:42:28 UTC 2022 - Stefan Knorr <sknorr@suse.com>
 
 - Beta release of the SUSE XSL stylesheets 2.83.0:
