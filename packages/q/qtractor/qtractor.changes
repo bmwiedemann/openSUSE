@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jul  8 15:15:58 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Update to 0.9.27
+- Upstream changes:
+  *CLAP plug-in host support introduced. (EXPERIMENTAL)
+  *Reviewed LV2 plug-in UI Touch feature/interface.
+  *Auto-unlink MIDI clips when pasted/placed with Ctrl+click/Enter.
+  *Fixed LV2 plug-ins UI X11 (native) initial size.
+  *Fixed implicit deactivation when a plugin is removed from chain.
+  *Fixed audio clip export, normalize and tempo-adjust when audio
+   file number of channels is disparately greater than respective
+   track's output bus count.
+  *Fixed one killer lurking in MIDI Controller... modeless dialog
+   instantiation.
+  *Fixed non-effective automation curve node editing.
+  *Track/Export Tracks... dialog ranges are not capped to current
+   session-end anymore.
+  *Fixed MIDI clip editor vertical-zooming when using the [Ctrl+]
+   mouse-wheel.
+  *Set auto-backward play-head location also when clicking on main
+   track-view header/time-ruler and on thumb-view.
+  *Fixed LV2 plug-in buffer-size initialization, esp. affecting the
+   ZynReverb LV2 playback.
+  *Export Tracks dialog last range selection is now remembered.
+
+-------------------------------------------------------------------
 Sat Jun 18 13:55:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.26:
