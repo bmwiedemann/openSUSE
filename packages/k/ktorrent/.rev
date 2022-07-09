@@ -1024,4 +1024,12 @@ This should fix the failures seen in Staging:E</comment>
     <comment>22.04.2</comment>
     <requestid>981892</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>2881abe6de9b6e618bd0908854e04590</srcmd5>
+    <version>22.04.3</version>
+    <time>1657378943</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.04.3</comment>
+    <requestid>987672</requestid>
+  </revision>
 </revisionlist>
