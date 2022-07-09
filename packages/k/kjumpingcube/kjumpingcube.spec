@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kjumpingcube
-Version:        22.04.2
+Version:        22.04.3
 Release:        0
 Summary:        Tactical board game
 License:        GPL-2.0-or-later
