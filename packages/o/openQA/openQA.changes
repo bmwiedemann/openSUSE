@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 09 11:22:57 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1657347231.a3994a3:
+  * Fix unstable `t/ui/23-audit-log.t` by implementing wait condition
+  * Ensure sequences are converted to bigint
+  * Avoid running out of database IDs - remaining tables
+
+-------------------------------------------------------------------
 Thu Jul 07 03:22:55 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1657137732.c5622d5:
