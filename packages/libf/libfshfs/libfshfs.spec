@@ -18,7 +18,7 @@
 
 %define lname	libfshfs1
 Name:           libfshfs
-Version:        20220426
+Version:        20220709
 Release:        0
 Summary:        Library and tools to access the Mac OS Hierarchical File System (HFS)
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -48,8 +48,8 @@ BuildRequires:  pkgconfig(libfcache) >= 20220110
 BuildRequires:  pkgconfig(libfdata) >= 20211023
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
-BuildRequires:  pkgconfig(libhmac) >= 20210419
-BuildRequires:  pkgconfig(libuna) >= 20220102
+BuildRequires:  pkgconfig(libhmac) >= 20220425
+BuildRequires:  pkgconfig(libuna) >= 20220601
 %python_subpackages
 
 %description
