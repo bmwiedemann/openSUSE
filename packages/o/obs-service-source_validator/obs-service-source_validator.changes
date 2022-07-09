@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 07 16:30:51 UTC 2022 - dmueller@suse.com
+
+- Update to version 0.24:
+  * Use ERROR for prefixing errors
+  * Split out GPG validation into own check and improve it
+
+-------------------------------------------------------------------
 Tue Mar 22 10:23:11 UTC 2022 - dmueller@suse.com
 
 - Update to version 0.23:

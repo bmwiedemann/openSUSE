@@ -21,7 +21,7 @@ Summary:        An OBS source service: running all the osc source-validator chec
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/obs-service-source_validator
-Version:        0.23
+Version:        0.24
 Release:        0
 # use osc service dr to update
 Source:         %{name}-%{version}.tar.bz2
@@ -31,7 +31,6 @@ Requires:       gpg2
 # Fedora
 Requires:       gnupg2
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 BuildRequires:  build
 Requires:       /usr/bin/xmllint
