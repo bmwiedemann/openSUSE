@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul  6 03:25:12 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to 2.15.0:
+  * Add: new display HW attribute to report PCI ID
+  * Add: sample depth related parameters for AV1e
+  * Add: refresh_frame_flags for AV1e
+  * Add: missing fields in va_TraceVAEncSequenceParameterBufferHEVC.
+  * Add: nvidia-drm to the drm driver map
+  * Add: type and buffer for delta qp per block
+  * Deprecation: remove the va_fool support
+  * Fix:Correct the version of meson build on master branch
+  * Fix:X11 DRI2: check if device is a render node
+  * Build:Use also strong stack protection if supported
+  * Trace:print the string for profile/entrypoint/configattrib
+
+-------------------------------------------------------------------
 Tue Mar  1 00:15:06 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to 2.14.0:
