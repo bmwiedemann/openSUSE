@@ -20,7 +20,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ktp-kded-module
-Version:        22.04.2
+Version:        22.04.3
 Release:        0
 Summary:        KDED module that manages the telepathy interactions with the KDE Desktop
 License:        LGPL-2.1-or-later
@@ -54,6 +54,7 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+Requires:       /usr/bin/dbus-send
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
