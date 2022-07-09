@@ -152,4 +152,21 @@
     <comment></comment>
     <requestid>958359</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>782ce10077cb64e72c996b984f791ee9</srcmd5>
+    <version>2.15.0</version>
+    <time>1657378988</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.15.0
+  * add: Added HDR10 Tone Mapping sample code including H2H and H2S config files.
+  *  add: Support lowpower for HEVC Encoding
+  *  fix: Set correct entrypoint for lowpower
+  *  fix: Components exceed the value specified by jpeg spec
+  *  fix: hdr local variable pointer access issue
+  *  fix: Fix issue incorrect color for EU based hevcencode
+  *  fix: exclude vgem node and invalid drm node in vainfo
+  *  ci:Disable travis build
+  *  meson: check the dependency of libdrm</comment>
+    <requestid>987904</requestid>
+  </revision>
 </revisionlist>

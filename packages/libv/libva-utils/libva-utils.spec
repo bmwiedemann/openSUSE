@@ -17,10 +17,10 @@
 
 
 Name:           libva-utils
-Version:        2.14.0
+Version:        2.15.0
 Release:        0
 Summary:        A collection of utilities and examples to exercise VA-API
-License:        MIT AND EPL-1.0
+License:        EPL-1.0 AND MIT
 Group:          Development/Tools/Other
 URL:            https://github.com/intel/libva-utils
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
