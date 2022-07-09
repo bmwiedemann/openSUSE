@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul  6 17:54:45 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- AppStream 0.15.4:
+  * validator: Check timestamp validity
+  * validator: Allow (limited) overriding of issue tag severities
+  * validator: Add strict mode
+  * ascli: validate: Allow simple overriding of issue tags
+  * validator: Check for exact relation item redefinitions
+  * Add vcs-browser URL to metainfo.xml
+  * compose: Improve media-baseurl sanity checks for icon/screenshot policies
+  * compose: Don't create bad data when localized screenshots exist
+  * compose: Sanitize prefix value and verify all units for results
+  * compose: Fail and not just warn if we couldn't open a unit
+  * compose: Make no-result detection a bit more robust
+  * compose: Properly handle localized screenshots
+  * compose: Ignore current locale when analyzing screencasts
+
+-------------------------------------------------------------------
 Mon Apr 25 17:47:50 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.15.3

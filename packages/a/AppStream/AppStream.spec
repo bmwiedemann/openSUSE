@@ -16,13 +16,13 @@
 #
 
 
+%define libappstream_sover 4
+%define libAppStreamQt_sover 2
 %if 0%{?sle_version} >= 150300 && 0%{?is_opensuse} || 0%{?suse_version} > 1500
 %bcond_without vala
 %endif
-%define libappstream_sover 4
-%define libAppStreamQt_sover 2
 Name:           AppStream
-Version:        0.15.3
+Version:        0.15.4
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later
@@ -47,10 +47,10 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(xmlb) >= 0.3.6
 BuildRequires:  pkgconfig(yaml-0.1)
+Recommends:     curl
 %if %{with vala}
 BuildRequires:  vala
 %endif
-Recommends:     curl
 
 %description
 AppStream-Core makes it easy to access application information from the
