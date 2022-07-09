@@ -4,6 +4,6 @@
 image policies (https://en.opensuse.org/Building_derived_containers).
 
 </description>
-  <devel project="devel:kubic" package="container-build-checks"/>
+  <devel project="devel:microos" package="container-build-checks"/>
   <url>https://build.opensuse.org</url>
 </package>
