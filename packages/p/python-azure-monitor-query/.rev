@@ -40,4 +40,15 @@
 - Remove temporary version override (forwarded request 930634 from glaubitz)</comment>
     <requestid>930651</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>af3cb1eb293ba407d117425b6fe29e1b</srcmd5>
+    <version>1.0.3</version>
+    <time>1657378993</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 987808 from glaubitz)</comment>
+    <requestid>987927</requestid>
+  </revision>
 </revisionlist>

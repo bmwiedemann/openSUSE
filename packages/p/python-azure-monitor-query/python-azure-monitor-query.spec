@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-monitor-query
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-monitor-query
-Version:        1.0.1
+Version:        1.0.3
 Release:        0
 Summary:        Microsoft Azure Azure Monitor Query Client Library for Python
 License:        MIT
