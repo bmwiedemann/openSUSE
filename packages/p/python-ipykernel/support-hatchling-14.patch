@@ -1,0 +1,71 @@
+From 694a01ee595efb29455a019dcc880746b5ab00b3 Mon Sep 17 00:00:00 2001
+From: Steven Silvester <steven.silvester@ieee.org>
+Date: Fri, 8 Jul 2022 05:30:41 -0500
+Subject: [PATCH 1/2] fix inclusion of launcher file and check in CI
+
+---
+ .github/workflows/ci.yml | 4 ++++
+ pyproject.toml           | 6 +++---
+ 2 files changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index 151dd3e9..4548c1a8 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -77,6 +77,10 @@ jobs:
+         run: |
+           codecov
+ 
++      - name: Check Launcher
++        run: cd $HOME
++          python -m ipykernel_launcher --help
++
+   pre-commit:
+     name: pre-commit
+     runs-on: ubuntu-latest
+diff --git a/pyproject.toml b/pyproject.toml
+index 3c6487ab..5de353fb 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["hatchling>=0.25", "jupyter_client>=6"]
++requires = ["hatchling>=1.4", "jupyter_client>=6"]
+ build-backend = "hatchling.build"
+ 
+ [project]
+@@ -54,8 +54,8 @@ test = [
+ [tool.hatch.build.targets.wheel.shared-data]
+ "data_kernelspec" = "share/jupyter/kernels/python3"
+ 
+-[tool.hatch.build]
+-artifacts = ["ipykernel_launcher.py"]
++[tool.hatch.build.force-include]
++"./ipykernel_launcher.py" = "ipykernel_launcher.py"
+ 
+ [tool.jupyter-releaser]
+ skip = ["check-links"]
+
+From b743712e07bf5ed2d9c019e3b593eb4cb009d76c Mon Sep 17 00:00:00 2001
+From: Steven Silvester <steven.silvester@ieee.org>
+Date: Fri, 8 Jul 2022 05:36:40 -0500
+Subject: [PATCH 2/2] fix workflow syntax
+
+---
+ .github/workflows/ci.yml | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index 4548c1a8..8464830c 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -78,7 +78,8 @@ jobs:
+           codecov
+ 
+       - name: Check Launcher
+-        run: cd $HOME
++        run: |
++          cd $HOME
+           python -m ipykernel_launcher --help
+ 
+   pre-commit:

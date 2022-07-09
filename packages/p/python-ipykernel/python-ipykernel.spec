@@ -26,9 +26,11 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipykernel
 Source:         https://files.pythonhosted.org/packages/source/i/ipykernel/ipykernel-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Support hatchling >= 1.4 gh#ipython/ipykernel#964
+Patch0:         support-hatchling-14.patch
 # SECTION build-system
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module hatchling >= 1.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyter_core-filesystem

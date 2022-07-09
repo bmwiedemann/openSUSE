@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  8 10:57:40 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-hatchling-14.patch:
+  * Support hatchling >= 1.4 
+
+-------------------------------------------------------------------
 Wed Jun 22 21:40:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update requirements and test suite setup
