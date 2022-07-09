@@ -268,4 +268,16 @@
 - Add directory where cleanup can archive unused certificates</comment>
     <requestid>882190</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>a228a7c19d50d20dd5ec433f19e68d34</srcmd5>
+    <version>0.7.0</version>
+    <time>1657378987</time>
+    <user>dimstar_suse</user>
+    <comment>- Target should not PartOf on itself.
+
+- Copy the changes entry into README.postrun-hooks to make it
+  easier for users to find the information how to restore the
+  postrun-hooks after the split.</comment>
+    <requestid>987893</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package dehydrated
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,6 +76,7 @@ Source16:       dehydrated@.timer
 Source17:       dehydrated.target
 Source18:       dehydrated-postrun-hooks.service
 Source19:       dehydrated-postrun-hooks@.service
+Source20:       README.postrun-hooks
 Patch:          more-examples.patch
 BuildRequires:  %{_apache}
 Requires:       coreutils
@@ -174,6 +175,7 @@ if [ -e %{_sysconfdir}/dehydrated/config.sh ]; then mv %{_sysconfdir}/dehydrated
 %patch -p1
 cp %{SOURCE9} .
 cp %{SOURCE10} .
+cp %{SOURCE20} .
 
 %build
 
@@ -275,6 +277,7 @@ diff -urN docs/examples/config %{buildroot}%{_home}/config ||:
 %if %{defined redhat}
 %doc README.Fedora
 %endif
+%doc README.postrun-hooks
 %if %{with systemd}
 %{_tmpfilesdir}/%{name}.conf
 %{_unitdir}/dehydrated*.service

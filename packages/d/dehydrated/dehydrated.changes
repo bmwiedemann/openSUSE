@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul  8 11:38:36 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Target should not PartOf on itself.
+
+-------------------------------------------------------------------
+Fri Jul  8 11:24:13 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Copy the changes entry into README.postrun-hooks to make it
+  easier for users to find the information how to restore the
+  postrun-hooks after the split.
+
+-------------------------------------------------------------------
 Tue Mar 30 14:20:42 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Enable instantiated services (boo#1184165)
