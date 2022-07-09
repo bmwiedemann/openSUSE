@@ -1203,4 +1203,12 @@ before the switch to 4.8 and the KR47 repo. (forwarded request 91020 from christ
     <comment>22.04.2</comment>
     <requestid>981862</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>a8f9a6d31f8d5519f34de2d7f3f324d5</srcmd5>
+    <version>22.04.3</version>
+    <time>1657378852</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.04.3</comment>
+    <requestid>987717</requestid>
+  </revision>
 </revisionlist>
