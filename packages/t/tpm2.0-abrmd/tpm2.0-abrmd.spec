@@ -29,15 +29,18 @@
 %bcond_with selinux
 %endif
 Name:           tpm2.0-abrmd
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Intel's TCG Software Stack Access Broker & Resource Manager for TPM 2.0 chips
 License:        BSD-2-Clause
 Group:          Productivity/Security
 URL:            https://github.com/tpm2-software/tpm2-abrmd
 Source0:        https://github.com/tpm2-software/tpm2-abrmd/releases/download/%{version}/tpm2-abrmd-%{version}.tar.gz
-Source1:        tpm2.0-abrmd.rpmlintrc
-Source2:        README.SUSE
+Source1:        https://github.com/tpm2-software/tpm2-abrmd/releases/download/%{version}/tpm2-abrmd-%{version}.tar.gz.asc
+# curl https://github.com/flihp.gpg > tpm2-abrmd.keyring
+Source2:        tpm2-abrmd.keyring
+Source3:        tpm2.0-abrmd.rpmlintrc
+Source4:        README.SUSE
 Patch0:         harden_tpm2-abrmd.service.patch
 Patch1:         dbus-access.patch
 BuildRequires:  autoconf-archive
@@ -122,7 +125,7 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rctpm2-abrmd
 # don't install the systemd preset, our presets are handled by
 # systemd-presets-* packages
 rm %{buildroot}%{_prefix}/lib*/systemd/system-preset/tpm2-abrmd.preset
-cp %{SOURCE2} .
+cp %{SOURCE4} .
 %if ! 0%{?install_dbus_files}
 rm %{buildroot}/%{_sysconfdir}/dbus-1/system.d/tpm2-abrmd.conf
 rm %{buildroot}/%{_datadir}/dbus-1/system-services/com.intel.tss2.Tabrmd.service

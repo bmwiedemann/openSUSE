@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul  8 08:43:16 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Version 2.4.1
+  + Added
+    Contributor Covenant Code of Conduct.
+  + Fixed
+    * superflous warning messages about tcti status.
+        WARNING **: 11:00:56.205: tcti_conf before: "(null)"
+        WARNING **: 11:00:56.205: tcti_conf after: "mssim"
+    * GCC 11 build error: error: argument 2 of __atomic_load’ discards
+      'volatile' qualifier
+    * Initialize gerror pointer variable to NULL to fix use of
+      unitialized memory and segfault.
+    * Updated missing defaults in manpage.
+    * Port CI to composite actions in tpm2-software/ci.
+  + Removed
+    Dependency on 'which' utility in configure.ac.
+    ubuntu-16.04 from CI.
+
+-------------------------------------------------------------------
 Mon Apr  4 10:45:24 UTC 2022 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - dbus-access.patch: restrict D-Bus access to tpm2-abrmd to members of the tss
@@ -11,7 +31,7 @@ Wed Dec  8 16:50:13 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 - Version 2.4.0
   + remover syslog deprecation warning (bsc#1185154)
   + cover update to 2.3.3 (jsc#SLE-17366)
-  + contains reload fix (bsc#1166936~
+  + contains reload fix (bsc#1166936)
   + fix tcti loading using short / long names (bsc#1159176)
 
 -------------------------------------------------------------------
