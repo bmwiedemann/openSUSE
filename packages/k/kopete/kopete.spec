@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kopete
-Version:        22.04.2
+Version:        22.04.3
 Release:        0
 Summary:        Instant Messenger
 License:        GPL-2.0-or-later

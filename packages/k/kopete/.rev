@@ -923,4 +923,12 @@ Please add to Staging:I project where giflib 5.1.0 is being tested.</comment>
     <comment>22.04.2 (forwarded request 981296 from cgiboudeaux)</comment>
     <requestid>981713</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>019ef96cfe29747a324824d99b43b870</srcmd5>
+    <version>22.04.3</version>
+    <time>1657378928</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.04.3</comment>
+    <requestid>987646</requestid>
+  </revision>
 </revisionlist>
