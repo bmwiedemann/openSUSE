@@ -622,4 +622,12 @@ a newer version not fitting</comment>
     <comment></comment>
     <requestid>964105</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>fb8d5f123fafc4b642285199d52bee38</srcmd5>
+    <version>2.72.1</version>
+    <time>1657378753</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 987170 from dimstar)</comment>
+    <requestid>987345</requestid>
+  </revision>
 </revisionlist>
