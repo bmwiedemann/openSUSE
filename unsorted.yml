@@ -3041,6 +3041,8 @@ unsorted:
   - doh 
   - dolly 
   - dolphin-devel 
+  - dolphin-emu: [x86_64] 
+  - dolphin-emu-lang: [x86_64] 
   - dolphin-plugins 
   - dolphin-plugins-lang 
   - dom2-core-tests 
@@ -13153,6 +13155,7 @@ unsorted:
   - libproxy1-config-kde-32bit: [x86_64] 
   - libproxy1-config-pacrunner 
   - libproxy1-networkmanager-32bit: [x86_64] 
+  - libproxy1-pacrunner-webkit 
   - libproxy1-pacrunner-webkit-32bit: [x86_64] 
   - libpskc-devel 
   - libpsl-devel 
@@ -17309,6 +17312,7 @@ unsorted:
   - nimbus-icon-theme 
   - nini 
   - ninja 
+  - nintendo-gamecube-wiimote-udev-rules: [x86_64] 
   - ninvaders 
   - nitrogen 
   - nitrogen-lang 
@@ -32522,6 +32526,7 @@ unsorted:
   - setroubleshoot-plugins-lang 
   - setroubleshoot-server 
   - sev-tool 
+  - sevctl: [x86_64] 
   - sfcgal 
   - sfcgal-devel 
   - sfftobmp 
