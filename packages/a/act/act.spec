@@ -1,5 +1,7 @@
+#
 # spec file for package act
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Orville Q. Song <orville@anislet.dev>
 #
 # All modifications and additions to the file contributed by third parties
@@ -14,26 +16,25 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global provider        github
 %global provider_tld    com
 %global project         nketos
 %global repo            act
 %global provider_prefix %{provider}.%{provider_tld}/%{project}
 %global import_path     %{provider_prefix}/%{repo}
-
 Name:           act
-Version:        0.2.25
+Version:        0.2.29
 Release:        0
 Summary:        Run your GitHub Actions locally
 License:        MIT
 Group:          Development/Tools/Other
 URL:            https://github.com/nektos/act
 Source0:        %{name}-%{version}.tar.xz
-Source1:        %{name}-vendor.tar.xz
+Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.16
 Requires:       docker
-
 %{go_nostrip}
 %{go_provides}
 
@@ -41,20 +42,19 @@ Requires:       docker
 act helps you run your Github Actions locally.
 
 %prep
-%setup -q -n %{name}-%{version}
-%setup -a1 %{SOURCE1}
+%setup -q
+%setup -q -a1 %{SOURCE1}
 
 %build
-%goprep .
+%{goprep} .
 mkdir -p vendor/%{provider_prefix}
 ln -s . vendor/%{import_path}
-%gobuild -ldflags "-s -w -X main.Version=v%{version}" .
+%{gobuild} -ldflags "-s -w -X main.Version=v%{version}" .
 
 %install
-%goinstall
+%{goinstall}
 
 %files
-%defattr(-,root,root)
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
