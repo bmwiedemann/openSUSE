@@ -1,7 +1,7 @@
 #
 # spec file for package cadabra2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without tests
 Name:           cadabra2
-Version:        2.3.6.8
+Version:        2.3.9.3
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
@@ -28,6 +28,8 @@ Source0:        https://github.com/kpeeters/cadabra2/archive/%{version}.tar.gz#/
 Source1:        %{name}-gtk.appdata.xml
 # PATCH-FIX-UPSTREAM cadabra2-disable-components-test.patch gh#kpeeters/cadabra2#212 badshah400@gmail.com -- Disable a test that crashes for unknown reasons
 Patch0:         cadabra2-disable-components-test.patch
+# PATCH-FIX-UPSTREAM cadabra2-link-python.patch badshah400@gmail.com -- Link against python shared lib explicitly
+Patch1:         cadabra2-link-python.patch
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -45,6 +47,7 @@ BuildRequires:  libuuid-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
+BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-ipykernel
 BuildRequires:  python3-matplotlib
 BuildRequires:  python3-sympy
@@ -187,6 +190,7 @@ popd
 %{_bindir}/cadabra2cadabra
 %{_bindir}/cadabra2latex
 %{_bindir}/cadabra-server
+%{_bindir}/cdb-nbtool
 %{_bindir}/%{name}
 %{_bindir}/%{name}-cli
 %{_bindir}/%{name}ipynb

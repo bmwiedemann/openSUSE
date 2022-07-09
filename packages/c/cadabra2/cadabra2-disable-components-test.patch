@@ -1,8 +1,8 @@
-Index: cadabra2-2.3.5/tests/CMakeLists.txt
+Index: cadabra2-2.3.9.3/tests/CMakeLists.txt
 ===================================================================
---- cadabra2-2.3.5.orig/tests/CMakeLists.txt
-+++ cadabra2-2.3.5/tests/CMakeLists.txt
-@@ -68,7 +68,6 @@ set(RTESTS
+--- cadabra2-2.3.9.3.orig/tests/CMakeLists.txt
++++ cadabra2-2.3.9.3/tests/CMakeLists.txt
+@@ -69,7 +69,6 @@ set(RTESTS
    trigonometric
    noncovariant
    algebra

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jul  4 14:23:29 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.3.9.3
+  * Several fixes to meld (Dominic).
+  * Make typesetting run in a separate thread to prevent the UI
+    from feeling sluggish.
+  * Some changes in the behaviour of list addition/multiplication,
+    to match Mathematica's behaviour.
+  * New nevaluate algorithm for fast numerical evaluation of
+    expressions (work-in-progress).
+  * Fix for Python 3.10.x.
+  * Fix for automatic cleanup of Diagonal objects.
+  * Fix crash with tab-completion.
+- Changes from version 2.3.8:
+  * Option to display negative powers as fractions (Dominic).
+  * New algorithm slot_asym to (anti-)symmetrise objects in
+    indices by giving index positions instead of names.
+  * New functionality to implement algorithms in Python (Dominic).
+  * Faster re-implementation of get_component using new C++
+    function modules (Dominic).
+  * New cdb.numeric.evaluate and cdb.numeric.integrate modules to
+    evaluate expressions numerically or integrate differential
+    equations numerically (Dominic).
+  * Updates to cdb.utils.indices and cdb.core.manip.
+  * Add warnings functionality to the kernel (Dominic).
+  * Add infrastructure to let algorithms display progress
+    information while running (Dominic).
+  * Add cell cursor position to status bar (Dominic).
+  * Fix bug in expand_delta when the delta occurs at top-level in
+    an expression.
+  * Many meld fixes and improvements (Dominic).
+  * Fix handling of auto-declare names (names with a '#'
+    character).
+  * Keep LaTeX log/aux files on error to aid debugging.
+  * Fix LaTeX code to avoid some global variable name clashes.
+  * Fix for compilation on Apple silicon.
+- Add cadabra2-link-python.patch: Link against python shared lib
+  where necessary to avoid linking failures.
+
+-------------------------------------------------------------------
 Sun Feb 14 01:09:07 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.3.6.8:
