@@ -1,7 +1,7 @@
 #
 # spec file for package aspell-en
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,8 @@ License:        MIT AND BSD-3-Clause
 Group:          Productivity/Text/Spell
 
 URL:            http://wordlist.aspell.net/
-Source0:        ftp://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-%{version}-0.tar.bz2
-Source1:        ftp://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-%{version}-0.tar.bz2.sig
+Source0:        https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-%{version}-0.tar.bz2
+Source1:        https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-%{version}-0.tar.bz2.sig
 # keyring from ftp://ftp.gnu.org/gnu/aspell/dict/0index.html
 #   http://aspell.net/dict-upload-key.txt + http://kevin.atkinson.dhs.org/public-key.txt
 Source2:        aspell-en.keyring

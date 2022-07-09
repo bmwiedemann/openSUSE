@@ -227,4 +227,12 @@ Use SPDX format (using same license form as Fedora for this package) (forwarded 
   * Bump irregardless, froward (+ derivatives) and perpend to level 70.</comment>
     <requestid>859012</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>fddcfe54d5f6c00d15c00fe004d07617</srcmd5>
+    <version>2020.12.07</version>
+    <time>1657378770</time>
+    <user>dimstar_suse</user>
+    <comment>- switch source url to https</comment>
+    <requestid>987431</requestid>
+  </revision>
 </revisionlist>
