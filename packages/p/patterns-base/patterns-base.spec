@@ -382,7 +382,6 @@ Recommends:     krb5
 Recommends:     less
 Recommends:     logrotate
 Recommends:     lsscsi
-Recommends:     mailx
 # man by default (#304687)
 Recommends:     man
 # needed for detecting software raid - required by yast2-storage too
@@ -507,6 +506,7 @@ Suggests:       groff
 Suggests:       hfsutils
 # bnc#388570
 Suggests:       kerneloops
+Suggests:       mailx
 Suggests:       man-pages
 Suggests:       man-pages-posix
 Suggests:       ocfs2-tools

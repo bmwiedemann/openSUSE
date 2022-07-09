@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  7 14:14:15 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Downgrade mailx to Suggests, most users don't even know what it is
+  and this avoids pulling in smtp_daemon.
+
+-------------------------------------------------------------------
 Tue Jul  5 12:04:59 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use pipewire as default audio server in TW.
