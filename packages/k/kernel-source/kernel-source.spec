@@ -33,7 +33,7 @@
 Name:           kernel-source
 Version:        5.18.9
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g0e67dc1
+Release:        <RELEASE>.ga7c5f9c
 %else
 Release:        0
 %endif
@@ -50,7 +50,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-0e67dc1e33ee02c2edff307e49d59bd4c73ce79f
+Provides:       %name-srchash-a7c5f9c7ea0c3909de5203a4e059cfa244f82641
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
