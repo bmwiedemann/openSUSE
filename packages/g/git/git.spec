@@ -36,7 +36,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.36.1
+Version:        2.37.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -53,8 +53,6 @@ Source8:        %{name}.keyring
 Source9:        %{name}-gui.desktop
 Source10:       %{name}-gui.png
 Source11:       git-daemon.conf
-# PATCH-FIX-SUSE: Default to builtin add -i mode to avoid perl dependency
-Patch2:         suse-use-builtin-add-interactive.patch
 Patch3:         completion-wordbreaks.diff
 # CVE-2011-2186, bnc#698456
 Patch4:         git-prevent_xss-default.diff
@@ -320,8 +318,7 @@ The apache2 configuration contained in this package installs a virtual
 directory /git/ that calls the cgi script.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 cat > .make <<'EOF'

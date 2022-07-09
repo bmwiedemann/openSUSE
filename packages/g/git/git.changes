@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  7 07:50:07 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update git to 2.37.0:
+  https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.37.0.txt
+- git add --interactive is now default upstream, remove suse patch:
+  * suse-use-builtin-add-interactive.patch
+
+-------------------------------------------------------------------
 Wed Jun 15 19:39:55 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Fix rpmlint errors/warnings about bash/zsh completion locations.
