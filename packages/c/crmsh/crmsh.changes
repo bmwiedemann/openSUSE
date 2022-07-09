@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 08 06:15:31 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220708.6ed6b56f:
+  * Fix: utils: use -o and -n to compare files instead of strings for crm_diff (bsc#1201312)
+
+-------------------------------------------------------------------
 Tue Jul 05 01:54:44 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.0+20220705.bb8708eb:
