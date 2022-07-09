@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Jul  7 08:50:16 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.3.54:
+  * Highlights
+    - Some critical bugs in the new audioconvert were fixed. The
+      old adapter had internal buffering that was abused in some
+      places.
+    - The bluetooth sources were rewritten using a ringbuffer to
+      make them more reliable to jitter and remove old audioconvert
+      behaviour.
+    - Many improvements to the audio converter.
+    - Native DSD128 and up is now supported by pw-dsdplay.
+  * tools
+    - Support DSD128 to DSD512 as well by scaling the amount of
+      samples to read per time slice.
+  * SPA
+    - Format conversion is now generated with macros to remove
+      duplication of code.
+    - 24bits conversions were rewritten to use the generic
+      conversion functions.
+    - Temporary buffers in audioconvert are now made large enough
+      in all cases.
+    - Fix draining in audioconvert. This fixes speaker-test.
+    - Fix the channel remapping.
+    - Audio conversion constants were tweaked to handle the maximum
+      ranges and provide lossless conversion between 24bits and
+      floats.
+    - Vector code and C code are aligned and the unit tests are
+      activated again. A new lossless conversion test was added.
+    - Fix an underrun case where the adapter would not ask for more
+      data.
+    - Fix PROP_INFO for audioconvert.
+    - Use the blackman window again for the resampler, the cosh
+      window has some bugs that can cause distortion in some cases.
+    - Add more unit tests for audioconvert. Add end-to-end
+      conversion tests.
+    - Don't leak memory in format converter.
+  * pulse-server
+    - Card properties are now also added to sinks and sources,
+      just like in pulseaudio.
+    - Increase the maxlength size to at least 4 times the fragsize
+      to avoid xruns.
+    - Fix a race when setting default devices.
+  * Bluetooth
+    - The source was rewritten to use a ringbuffer. This avoids
+      regressions caused by audioconvert. 
+- Drop patches already included upstream:
+  * 0001-audioconvert-ensure-temp-buffers-are-large-enough.patch
+- Rebase reduce-meson-dependency.patch.
+
+-------------------------------------------------------------------
 Fri Jul  1 14:25:49 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Add a patch from upstream to fix segmentation faults in MPV:
