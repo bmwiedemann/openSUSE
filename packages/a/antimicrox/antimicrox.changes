@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jun 24 10:43:40 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.2.4
+  - Implement modifier button threshold zone
+    This allows mapping the analog range of a stick to walk/run in
+    game without dedicated spring button.
+  - Fix mouse calculations for multiple mice
+  - Fix flickering JoyControlStickEditDialog layout
+  - Implement proper offset and gain stick calibration
+  - Increase minimum size of ButtonEditDialog
+  - Fixes in translation utulities
+    - Rename flag TRANS_KEEP_OBSOLETE to TRANS_REMOVE_OBSOLETE to
+      improve readability
+    - Fix wrong argument for utility deleting obsolete translations
+  - Update translations: Russian, Finnish, French, Chinese,
+    Portuguese   
+
+-------------------------------------------------------------------
 Mon Apr 25 04:35:29 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.2.3
