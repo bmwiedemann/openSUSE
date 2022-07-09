@@ -1625,4 +1625,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment>GNOME 42.2 (forwarded request 979901 from dimstar)</comment>
     <requestid>980037</requestid>
   </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>600f2a6180faed8b1d540460e1c4928b</srcmd5>
+    <version>42.3</version>
+    <time>1657378760</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 987178 from dimstar)</comment>
+    <requestid>987353</requestid>
+  </revision>
 </revisionlist>

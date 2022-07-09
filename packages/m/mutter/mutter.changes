@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  6 12:10:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.3:
+  + wayland: Fix rotation transform.
+  + Fix dma-buf screencast regression.
+  + Fix monitor mirroring in some cases.
+  + Fixed crash.
+  + Plugged leak.
+
+-------------------------------------------------------------------
 Mon May 30 11:35:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.2:
