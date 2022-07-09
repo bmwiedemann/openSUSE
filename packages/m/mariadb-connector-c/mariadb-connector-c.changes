@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  7 08:35:59 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 3.3.1:
+  https://mariadb.com/kb/en/mariadb-connector-c-331-release-notes/
+  https://mariadb.com/kb/en/mariadb-connector-c-331-changelog/
+  https://mariadb.com/kb/en/mariadb-connector-c-330-release-notes/
+  https://mariadb.com/kb/en/mariadb-connector-c-330-changelog/
+- Refresh private_library.patch
+
+-------------------------------------------------------------------
 Wed May 25 11:15:04 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add pkgconfig compatibility symlink for mysqlclient

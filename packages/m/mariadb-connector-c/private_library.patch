@@ -46,9 +46,9 @@ Index: mariadb-connector-c-3.2.6-src/libmariadb/CMakeLists.txt
 +INSTALL(TARGETS libmariadbprivate
 +        COMPONENT SharedLibraries
 +        DESTINATION ${INSTALL_LIBDIR})
+ ENDIF()
  
  IF(MSVC)
-    # On Windows, install PDB
 Index: mariadb-connector-c-3.2.6-src/mariadb_config/mariadb_config.c.in
 ===================================================================
 --- mariadb-connector-c-3.2.6-src.orig/mariadb_config/mariadb_config.c.in
