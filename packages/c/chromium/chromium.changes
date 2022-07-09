@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul  9 12:52:33 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 103.0.5060.114 (boo#1201216)
+  * CVE-2022-2294: Heap buffer overflow in WebRTC
+  * CVE-2022-2295: Type Confusion in V8
+  * CVE-2022-2296: Use after free in Chrome OS Shell
+
+-------------------------------------------------------------------
 Thu Jul  7 18:07:43 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 103.0.5060.66
