@@ -1,0 +1,35 @@
+From 9f0ac141731d635fbdc963c16c198d5de920f31d Mon Sep 17 00:00:00 2001
+From: Adrian Thurston <thurston@colm.net>
+Date: Sat, 6 Nov 2021 12:09:56 -0700
+Subject: [PATCH] C codegen: use the 'signed' prefix when specifying the size
+ of the signed types
+
+---
+ src/libfsm/common.cc | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/libfsm/common.cc b/src/libfsm/common.cc
+index 349d06f7..9a14a290 100644
+--- a/src/libfsm/common.cc
++++ b/src/libfsm/common.cc
+@@ -42,16 +42,16 @@ const char *defaultOutFnC( const char *inputFileName )
+ HostType hostTypesC[] =
+ {
+ 	{ "char",      0,      "char",    (CHAR_MIN != 0), true,  false,  SCHAR_MIN, SCHAR_MAX,  0, UCHAR_MAX,  sizeof(char) },
+-	{ "signed",   "char",  "char",    true,            true,  false,  SCHAR_MIN, SCHAR_MAX,  0, 0,          sizeof(char) },
++	{ "signed",   "char",  "char",    true,            true,  false,  SCHAR_MIN, SCHAR_MAX,  0, 0,          sizeof(signed char) },
+ 	{ "unsigned", "char",  "uchar",   false,           true,  false,  0, 0,                  0, UCHAR_MAX,  sizeof(unsigned char) },
+ 	{ "short",     0,      "short",   true,            true,  false,  SHRT_MIN,  SHRT_MAX,   0, 0,          sizeof(short) },
+-	{ "signed",   "short", "short",   true,            true,  false,  SHRT_MIN,  SHRT_MAX,   0, 0,          sizeof(short) },
++	{ "signed",   "short", "short",   true,            true,  false,  SHRT_MIN,  SHRT_MAX,   0, 0,          sizeof(signed short) },
+ 	{ "unsigned", "short", "ushort",  false,           true,  false,  0, 0,                  0, USHRT_MAX,  sizeof(unsigned short) },
+ 	{ "int",       0,      "int",     true,            true,  false,  INT_MIN,   INT_MAX,    0, 0,          sizeof(int) },
+-	{ "signed",   "int",   "int",     true,            true,  false,  INT_MIN,   INT_MAX,    0, 0,          sizeof(int) },
++	{ "signed",   "int",   "int",     true,            true,  false,  INT_MIN,   INT_MAX,    0, 0,          sizeof(signed int) },
+ 	{ "unsigned", "int",   "uint",    false,           true,  false,  0, 0,                  0, UINT_MAX,   sizeof(unsigned int) },
+ 	{ "long",      0,      "long",    true,            true,  false,  LONG_MIN,  LONG_MAX,   0, 0,          sizeof(long) },
+-	{ "signed",   "long",  "long",    true,            true,  false,  LONG_MIN,  LONG_MAX,   0, 0,          sizeof(long) },
++	{ "signed",   "long",  "long",    true,            true,  false,  LONG_MIN,  LONG_MAX,   0, 0,          sizeof(signed long) },
+ 	{ "unsigned", "long",  "ulong",   false,           true,  false,  0, 0,                  0, ULONG_MAX,  sizeof(unsigned long) },
+ };
+ 

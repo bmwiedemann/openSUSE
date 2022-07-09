@@ -64,4 +64,12 @@
     <comment>- Update to version 0.14.7</comment>
     <requestid>889328</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>99cc7f154376e3d65d9cf92530a1e8a0</srcmd5>
+    <version>0.14.7</version>
+    <time>1657379085</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport patches to fix signed/unsigned char usage on Arm:</comment>
+    <requestid>988029</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul  8 12:50:08 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport patches to fix signed/unsigned char usage on Arm:
+  * e1f1c598.patch
+  * 6895f7d1.patch
+  * 9f0ac141.patch
+
+-------------------------------------------------------------------
 Mon Apr 26 19:32:48 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.14.7

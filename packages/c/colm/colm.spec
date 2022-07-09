@@ -1,7 +1,7 @@
 #
 # spec file for package colm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,9 @@ URL:            https://www.colm.net/open-source/colm/
 Source:         https://www.colm.net/files/colm/%name-%version.tar.gz
 Patch1:         fix-library.patch
 Patch2:         reproducible.diff
+Patch3:         e1f1c598.patch
+Patch4:         6895f7d1.patch
+Patch5:         9f0ac141.patch
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
