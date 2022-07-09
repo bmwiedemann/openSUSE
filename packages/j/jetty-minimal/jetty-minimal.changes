@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jul  8 15:15:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 9.4.48.v20220622
+  * Fixes
+    + #8184 - All suffix globs except first fail to match if path
+      has "." character in prefix section
+    + #8145 - RegexPathSpec backport of optional group name/info
+      lookup if regex fails
+    + #8088 - Add option to configure exitVm on ShutdownMonitor from
+      System properties
+    + #8067 - Wall time usage in DoSFilter RateTracker results in
+      false positive alert
+    + #8014 - Review HttpRequest URI construction (Resolves
+      CVE-2022-2047, bsc#1201317)
+    + #7976 - Add TRANSFER_ENCODING violation for MultiPart RFC7578
+      parser
+    + #7947 - Improved PathSpec handling for servletName & pathInfo
+    + #7935 - Review HTTP/2 error handling (Resolves CVE-2022-2048,
+      bsc#1201316)
+    + #7918 - PathMappings.asPathSpec does not allow root
+      ServletPathSpec
+    + #7863 - Default servlet drops first accept-encoding header if
+      there is more than one.
+    + #7858 - GZipHandler does not play nice with other handlers in
+      HandlerCollection
+    + #7837 - Fix StatisticsHandler in the case a Handler throws
+      exception
+    + #7809 - Jetty 9.4.x 7801 duplicate set session cookies
+    + #7748 - Allow overriding of url-pattern mapping in
+      ServletContextHandler to allow for regex or uri-template
+      matching
+
+-------------------------------------------------------------------
 Tue Mar 29 14:13:33 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 9.4.46.v20220328

@@ -111,4 +111,12 @@
     <comment>9.4.46.v20220328</comment>
     <requestid>965688</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1bbd0fc5e9d58c65166b0e2450f1cf9d</srcmd5>
+    <version>9.4.48</version>
+    <time>1657379000</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1201316 and bsc#1201317</comment>
+    <requestid>987945</requestid>
+  </revision>
 </revisionlist>
