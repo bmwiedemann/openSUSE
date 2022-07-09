@@ -823,4 +823,12 @@ Should be copied to 12.2 if possible (it actually makes the bt stack work) (forw
   + Updated translations. (forwarded request 981567 from iznogood)</comment>
     <requestid>982034</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>6a3b8d571d01a24d84f9d33b43a27992</srcmd5>
+    <version>42.2</version>
+    <time>1657378776</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 987418 from dimstar)</comment>
+    <requestid>987491</requestid>
+  </revision>
 </revisionlist>

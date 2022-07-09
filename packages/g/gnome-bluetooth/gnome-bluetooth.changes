@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  7 11:53:10 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.2:
+  + This version fixes duplicate devices appearing when bluetoothd
+    restarts, as well as the discovery not being updated correctly
+    in that same situation.
+
+-------------------------------------------------------------------
 Thu Jun  9 18:35:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.1:
