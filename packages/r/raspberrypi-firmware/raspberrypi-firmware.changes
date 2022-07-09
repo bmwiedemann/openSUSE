@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Jul  8 07:50:38 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to df569e0 (2022-07-04):
+  * firmware: video_decode: Stop decode on a colourspace change
+    See: raspberrypi/linux#5059
+  * firmware: video_encode: Fix subsample image alignment assert
+  * firmware: tc358762_DSI: Don't start the PV and DSI before the HVS
+  * firmware: hello_pi: Fix some build issues
+    See: #1728
+  * firmware: arm_dt: camera_auto_detect cam0 flag needs to
+    look at Unicam instance, not port
+  * firmware: platform: over-voltage Zero 2 W by two pips
+    See: #1723
+  * firmware: arm_loader_dvfs: Only add clocks to boostable list
+    when they have been boosted
+    See: #1726
+  * firmware: arm_dt: Try upstream DTB files if downstream absent
+  * firmware: arm_loader: Delay the USB controller switchover
+  * firmware: Fix for vc_image YUYV family to YUV422 planar conversion function
+  * firmware: vcgencmd display_power and camera_auto_detect fixes
+  * firmware: variants: Add mjpg_encode to the standard firmware image
+  * firmware: arm_loader_dvfs: Support CLOCK_HDMI as boostable clock
+    See: raspberrypi/linux#5016
+  * firmware: dtblob: Use a cached alias to reduce boot time
+  * firmware: hdmi: Reduce the number of EDID retries if hotplug is not detected
+  * firmware: arm_loader: Support longer file paths
+    See: #1720
+  * firmware: arm_loader_dvfs: Make arm only see its own boosts,
+    fixed and min clocks
+  * firmware: dtoverlay: Fix path rebasing and exports
+  * firmware: dtoverlay: Fix clang warnings
+  * firmware: dtoverlay: Add support for string escape sequences
+    See: https://forums.raspberrypi.com/viewtopic.php?t=330792
+  * firmware: isp: R and B order must be swapped when reading
+    VC_IMAGE_RGBA32 into the ISP
+    See: http://git/vc4/vc4/-/merge_requests/1430
+
+-------------------------------------------------------------------
 Fri Mar  4 17:25:39 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Install modprobe.conf files to %_modprobedir (bsc#1196275, jsc#SLE-20639) 
