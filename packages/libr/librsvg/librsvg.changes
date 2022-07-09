@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul  8 02:52:20 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Replace dependency on unmaintained rust-packaging with
+  cargo-packaging.
+
+-------------------------------------------------------------------
+Mon Jun 20 03:27:28 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
 Fri Jun 17 20:34:27 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.54.4:

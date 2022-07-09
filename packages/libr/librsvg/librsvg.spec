@@ -33,11 +33,11 @@ Source2:        vendor.tar.xz
 Source3:        cargo_config
 Source99:       baselibs.conf
 
+BuildRequires:  cargo-packaging
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-docutils
-BuildRequires:  rust-packaging
 BuildRequires:  vala
 BuildRequires:  pkgconfig(cairo) >= 1.16.0
 BuildRequires:  pkgconfig(cairo-png) >= 1.2.0

@@ -1016,4 +1016,15 @@
     <comment>New stable release (forwarded request 983495 from iznogood)</comment>
     <requestid>983864</requestid>
   </revision>
+  <revision rev="125" vrev="2">
+    <srcmd5>f8ced0bdb851daab1d97983b194be547</srcmd5>
+    <version>2.54.4</version>
+    <time>1657378741</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace dependency on unmaintained rust-packaging with
+  cargo-packaging.
+
+- Automatic update of vendored dependencies</comment>
+    <requestid>987865</requestid>
+  </revision>
 </revisionlist>
