@@ -565,4 +565,15 @@ installing all /icons/hicolor/*/*/*   might have been only some png and a single
     <comment></comment>
     <requestid>981218</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>027fcbd9ddc3a1a2044ac63fd0e485e2</srcmd5>
+    <version>3.1.1</version>
+    <time>1657379007</time>
+    <user>dimstar_suse</user>
+    <comment>- Poedit 3.1.1:
+  * Fixed regression where recent files icons would sometimes be
+    broken (gh#vslavik/poedit#758).
+</comment>
+    <requestid>987963</requestid>
+  </revision>
 </revisionlist>

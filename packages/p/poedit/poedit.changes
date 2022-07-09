@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  8 15:05:19 UTC 2022 - Dingzhong Chen <wsxy162@gmail.com>
+
+- Poedit 3.1.1:
+  * Fixed regression where recent files icons would sometimes be
+    broken (gh#vslavik/poedit#758).
+
+-------------------------------------------------------------------
 Tue Jun  7 21:18:14 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Poedit 3.1:
