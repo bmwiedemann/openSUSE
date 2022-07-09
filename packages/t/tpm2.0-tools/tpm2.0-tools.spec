@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2.0-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,8 @@
 #
 
 
-%bcond_with test
+%define _lto_cflags %{nil}
+%bcond_with     test
 Name:           tpm2.0-tools
 Version:        5.2
 Release:        0
@@ -29,6 +30,8 @@ Source1:        https://github.com/tpm2-software/tpm2-tools/releases/download/%{
 # git show william-roberts-pub javier-martinez-pub joshua-lock-pub idesai-pub > tpm2-tools.keyring
 Source2:        tpm2-tools.keyring
 Patch0:         fix_bogus_warning.patch
+# PATCH-FIX-UPSTREAM 0001-tests-getekcertificate.sh-Skip-the-test-if-curl-is-n.patch -- based on PR#3041
+Patch1:         0001-tests-getekcertificate.sh-Skip-the-test-if-curl-is-n.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
 BuildRequires:  libopenssl-devel
@@ -52,8 +55,10 @@ BuildRequires:  pandoc
 %endif
 %if %{with test}
 # requirements for unit test suite (configure --enable-unit)
+BuildRequires:  dbus-1-daemon
 BuildRequires:  expect
 BuildRequires:  ibmswtpm2
+BuildRequires:  iproute2
 BuildRequires:  libcmocka-devel
 BuildRequires:  python3-PyYAML
 BuildRequires:  tpm2.0-abrmd
@@ -94,10 +99,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/bash-completion/completions/*
 
 %if %{with test}
-# the test suite does not currently work, because it conflicts with our LTO
-# linking (see bsc#1188085).
 %check
-%make_build check
+# Do the tests sequentially to kill all tpm_server instances
+# https://github.com/tpm2-software/tpm2-tools/issues/3042
+%make_build -j1 check
 %endif
 
 %changelog

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul  8 07:51:37 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add missing dependencies for testing.
+- Add patch to properly skip getekcertificate if curl is missing
+  0001-tests-getekcertificate.sh-Skip-the-test-if-curl-is-n.patch
+
+-------------------------------------------------------------------
+Thu Jul  7 15:14:37 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Disable LTO for 5.2, to fix tpm2_makecredential with "-T none"
+  (bsc#1201291)
+
+-------------------------------------------------------------------
 Wed Dec  8 16:37:28 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - The update to 5.2 fill also jsc#SLE-9515 (4.1) and jsc#SLE-17366 (4.3.0)
