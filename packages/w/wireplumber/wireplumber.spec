@@ -16,13 +16,13 @@
 #
 
 
-%define pipewire_minimum_version 0.3.48
+%define pipewire_minimum_version 0.3.52
 %define apiver 0.4
 %define apiver_str 0_4
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.4.10
+Version:        0.4.11
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -32,13 +32,19 @@ Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
 # PATCH-FIX-OPENSUSE reduce-meson-required-version.patch
 Patch0:         reduce-meson-required-version.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         fix-alsa.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
 # /docs
 BuildRequires:  cmake
 BuildRequires:  fdupes
+%if 0%{?sle_version} == 150300
 BuildRequires:  meson >= 0.54.0
+%else
+BuildRequires:  meson >= 0.59.0
+%endif
 BuildRequires:  pipewire >= %{pipewire_minimum_version}
 BuildRequires:  pipewire-spa-plugins-0_2 >= %{pipewire_minimum_version}
 BuildRequires:  pkgconfig
@@ -136,6 +142,7 @@ the wireplumber shared library.
 %if 0%{?sle_version} == 150300
 %patch0 -p1
 %endif
+%patch1 -p1
 
 pushd src/config/main.lua.d
 python3 %{SOURCE1}

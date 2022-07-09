@@ -2,22 +2,20 @@
 import hashlib
 import sys
 
-
-def md5FromData(data):
-    hash_md5 = hashlib.md5()
-    hash_md5.update(data)
-    return hash_md5.hexdigest()
-
+def sha256_from_data(data):
+    hash_sha256 = hashlib.sha256()
+    hash_sha256.update(data)
+    return hash_sha256.hexdigest()
 
 contents = open('90-enable-all.lua', 'r', encoding='utf-8').read()
 
-md5sum = md5FromData(contents.encode('utf-8'))
-expected_md5sum = '74b508b1be26ae58d3e851d3abebc009'
+sha256sum = sha256_from_data(contents.encode('utf-8'))
+expected_sha256sum = 'cb9f05eb3b4959b84e94a67867645130f2bc0aa761eb864d227890aea310ab74'
 
-if md5sum != expected_md5sum:
+if sha256sum != expected_sha256sum:
     print('The script has to be updated for new changes in 90-enable-all.lua')
-    print(f'File md5sum: {md5sum}')
-    print(f'expected md5sum: {expected_md5sum}')
+    print(f'File sha256sum: {sha256sum}')
+    print(f'expected sha256sum: {expected_sha256sum}')
     sys.exit(1)
 
 content_sections = contents.split('\n\n')
