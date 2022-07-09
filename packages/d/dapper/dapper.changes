@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 08 06:15:03 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.6.0:
+  * Added support form darwin-arm64.
+  * Removing all Windows 20H2 support since it is EOL August 9th.
+  * Update README.md
+
+-------------------------------------------------------------------
 Sun Jan  9 07:06:18 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - create new package dapper
