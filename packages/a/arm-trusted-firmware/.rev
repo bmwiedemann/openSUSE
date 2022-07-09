@@ -103,4 +103,14 @@
     <comment></comment>
     <requestid>978127</requestid>
   </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>ee5d8e67776f9ea471d32c86aa4b8aab</srcmd5>
+    <version>2.6</version>
+    <time>1657378997</time>
+    <user>dimstar_suse</user>
+    <comment>- rockchip: rk3399: Align default baudrate with u-boot (boo#1201096).
+  * rockchip-rk3399-Align-default-baudrate-with-u-boot.patch
+</comment>
+    <requestid>987935</requestid>
+  </revision>
 </revisionlist>

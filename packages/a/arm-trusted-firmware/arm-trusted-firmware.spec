@@ -70,6 +70,7 @@ Patch4:         0003-refactor-el3-runtime-change-Cortex-A76-implementatio.patch
 Patch5:         0004-fix-security-loop-workaround-for-CVE-2022-23960-for-.patch
 Patch6:         0005-fix-security-workaround-for-CVE-2022-23960-for-Corte.patch
 Patch7:         0006-fix-security-SMCCC_ARCH_WORKAROUND_3-mitigations-for.patch
+Patch8:         rockchip-rk3399-Align-default-baudrate-with-u-boot.patch
 # Workaround for GCC12 bug - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105523
 Patch100:       fix-mv-ddr-marvell-armada.patch
 # Fix build with GCC12 - https://github.com/MarvellEmbeddedProcessors/mv-ddr-marvell/issues/37
@@ -245,6 +246,7 @@ popd
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 export BUILD_MESSAGE_TIMESTAMP="\"$(date -d "$(head -n 2 %{_sourcedir}/arm-trusted-firmware.changes | tail -n 1 | cut -d- -f1 )" -u "+%%H:%%M:%%S, %%b %%e %%Y")\""

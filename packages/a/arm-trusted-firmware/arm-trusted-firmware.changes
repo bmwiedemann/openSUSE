@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  1 14:50:40 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- rockchip: rk3399: Align default baudrate with u-boot (boo#1201096).
+  * rockchip-rk3399-Align-default-baudrate-with-u-boot.patch
+
+-------------------------------------------------------------------
 Thu May 19 09:50:31 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add "--param=min-pagesize=0" to CFLAGS as a workaround for
