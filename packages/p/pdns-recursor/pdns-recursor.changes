@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul  8 10:07:40 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.7.1
+  * Improvements
+    - Allow generic format while parsing zone files for ZoneToCache.
+      References: #11724, #11726, pull request 11750
+    - Force gzip compression for debian packages (Zash). #11735, PR#11740
+  * Bug Fixes
+    - Run tasks from housekeeping thread in the proper way, causing queued 
+      DoT probes to run more promptly. #11692, PR#11748
+
+-------------------------------------------------------------------
 Mon May 30 17:15:50 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 4.7.0

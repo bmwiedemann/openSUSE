@@ -644,4 +644,19 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
     <comment></comment>
     <requestid>980065</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>50d93acb22ee703b620ac953a9465c4b</srcmd5>
+    <version>4.7.1</version>
+    <time>1657379002</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.7.1
+  * Improvements
+    - Allow generic format while parsing zone files for ZoneToCache.
+      References: #11724, #11726, pull request 11750
+    - Force gzip compression for debian packages (Zash). #11735, PR#11740
+  * Bug Fixes
+    - Run tasks from housekeeping thread in the proper way, causing queued 
+      DoT probes to run more promptly. #11692, PR#11748</comment>
+    <requestid>987946</requestid>
+  </revision>
 </revisionlist>
