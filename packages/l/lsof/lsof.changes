@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  4 13:53:11 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update remove-hostname.patch with the upstream version
+
+-------------------------------------------------------------------
 Fri May 20 09:55:56 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix hostname in reproducible builds, bsc#1199709

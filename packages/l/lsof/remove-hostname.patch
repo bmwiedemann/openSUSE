@@ -1,20 +1,68 @@
-commit 14c51131b961d9fe6a5f474f3171e4893982fc86
-Author: Danilo Spinella <danilo.spinella@suse.com>
-Date:   Fri May 20 11:13:52 2022 +0200
-Url: https://github.com/lsof-org/lsof/pull/217
+From 264aa7cd33038d4b46e54c320676ba694f3118e9 Mon Sep 17 00:00:00 2001
+From: Danilo Spinella <danilo.spinella@suse.com>
+Date: Mon, 23 May 2022 15:50:29 +0200
+Subject: [PATCH] linux: Make build reproducible by default
 
-    Allow setting hostname for reproducible builds
+Make build reproducible by checking SOURCE_DATE_EPOCH
+and considering LSOF_{HOST,LOGNAME,SYSINFO,USER} as "none" when
+it is set.
+---
+ 00DIST                  |  5 +++++
+ dialects/linux/Makefile | 22 +++++++++++++++++++---
+ 2 files changed, 24 insertions(+), 3 deletions(-)
 
-diff --git a/Configure b/Configure
-index 9abcc2d..ee94a93 100755
---- a/Configure
-+++ b/Configure
-@@ -1242,7 +1242,7 @@ case $LSOF_TGT in	# {
-     then
-       DU_SYSDIR=$LSOF_TMP1
-     fi	# }
--    LSOF_HOST=`uname -n`
-+    LSOF_HOST=${HOSTNAME:-`uname -n`}
-     if test "X$DU_CDIR" = "X"	# {
-     then
-       LSOF_CDIR=`expr $LSOF_HOST : '\([^\.]*\)\..*$'`
+diff --git a/dialects/linux/Makefile b/dialects/linux/Makefile
+index 108f7dc..176a4c2 100644
+--- a/dialects/linux/Makefile
++++ b/dialects/linux/Makefile
+@@ -89,7 +89,11 @@ version.h:	FRC
+ 	@echo '#define	LSOF_CCFLAGS	"'`echo ${CFLAGS} | sed 's/\\\\(/\\(/g' | sed 's/\\\\)/\\)/g' | sed 's/"/\\\\"/g'`'"' >> version.h
+ 	@echo '#define	LSOF_CINFO	"${CINFO}"' >> version.h
+ 	@if [ "X${LSOF_HOST}" = "X" ]; then \
+-	  echo '#define	LSOF_HOST	"'`uname -n`'"' >> version.h; \
++	  if [ "X${SOURCE_DATE_EPOCH}" = "X" ]; then \
++	    echo '#define	LSOF_HOST	"'`uname -n`'"' >> version.h; \
++	  else \
++	    echo '#define	LSOF_HOST	""' >> version.h; \
++	  fi \
+ 	else \
+ 	  if [ "${LSOF_HOST}" = "none" ]; then \
+ 	    echo '#define	LSOF_HOST	""' >> version.h; \
+@@ -99,7 +103,11 @@ version.h:	FRC
+ 	fi
+ 	@echo '#define	LSOF_LDFLAGS	"${CFGL}"' >> version.h
+ 	@if [ "X${LSOF_LOGNAME}" = "X" ]; then \
+-	  echo '#define	LSOF_LOGNAME	"${LOGNAME}"' >> version.h; \
++	  if [ "X${SOURCE_DATE_EPOCH}" = "X" ]; then \
++	    echo '#define	LSOF_LOGNAME	"${LOGNAME}"' >> version.h; \
++	  else \
++	    echo '#define	LSOF_LOGNAME	""' >> version.h; \
++	  fi \
+ 	else \
+ 	  if [ "${LSOF_LOGNAME}" = "none" ]; then \
+ 	    echo '#define	LSOF_LOGNAME	""' >> version.h; \
+@@ -108,7 +116,11 @@ version.h:	FRC
+ 	  fi; \
+ 	fi
+ 	@if [ "X${LSOF_SYSINFO}" = "X" ]; then \
++	  if [ "X${SOURCE_DATE_EPOCH}" = "X" ]; then \
+ 	    echo '#define	LSOF_SYSINFO	"'`uname -a`'"' >> version.h; \
++	  else \
++	    echo '#define	LSOF_SYSINFO	""' >> version.h; \
++	  fi \
+ 	else \
+ 	  if [ "${LSOF_SYSINFO}" = "none" ]; then \
+ 	    echo '#define	LSOF_SYSINFO	""' >> version.h; \
+@@ -117,7 +129,11 @@ version.h:	FRC
+ 	  fi \
+ 	fi
+ 	@if [ "X${LSOF_USER}" = "X" ]; then \
+-	  echo '#define	LSOF_USER	"${USER}"' >> version.h; \
++	  if [ "X${SOURCE_DATE_EPOCH}" = "X" ]; then \
++	    echo '#define	LSOF_USER	"${USER}"' >> version.h; \
++	  else \
++	    echo '#define	LSOF_USER	""' >> version.h; \
++	  fi \
+ 	else \
+ 	  if [ "${LSOF_USER}" = "none" ]; then \
+ 	    echo '#define	LSOF_USER	""' >> version.h; \

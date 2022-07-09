@@ -44,7 +44,7 @@ path.
 
 %build
 ./Configure -n linux
-%make_build DEBUG="%{optflags} -Wall -Wno-unused"
+%make_build
 
 %install
 install -m755 -d %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man8
