@@ -79,4 +79,12 @@
   Added: fix-use-python3.patch</comment>
     <requestid>830850</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>e2388b4578d4fa18808c23060f17bf9f</srcmd5>
+    <version>0.5</version>
+    <time>1657378990</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.5 (bsc#1201336)</comment>
+    <requestid>987928</requestid>
+  </revision>
 </revisionlist>

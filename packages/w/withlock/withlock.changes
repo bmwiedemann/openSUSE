@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Oct  3 08:54:21 UTC 2019 - munix9@googlemail.com
 
-- update to version 0.5
+- update to version 0.5 (bsc#1201336)
 - modernize for Python 2 and 3 compatibility
   thanks to Patch by Jan Beran jberan|redhat.com
   (2.7 or newer; 0.4 for Python 2.4+2.5 is archived in attic/)
