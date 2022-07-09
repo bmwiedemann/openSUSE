@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jul  6 12:11:54 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.3.1:
+  + Fix regression in ibus support.
+  + Make sure screenshot UI opens above dialogs.
+  + Misc. bug fixes and cleanups.
+- Changes from version 42.3:
+  + Fix feedback when turning on a11y features by keyboard.
+  + Fix OSD colors with light stylesheet.
+  + Only close messages via delete key if they can be closed.
+  + Fix screenshots when XDG directories are disabled.
+  + Do not create systemd scope for D-Bus activated apps.
+  + Improve high-contrast stylesheet.
+  + Hide overview after 'Show Details' from app context menu.
+  + Fix stylesheet papercuts.
+  + Respect IM hint for candidates list in on-screen keyboard.
+  + Fix edge case where windows stay dimmed after a modal is
+    closed.
+  + Improve Belgian on-screen keyboard layout.
+  + Fix fallback ibus-daemon launching.
+  + Misc. bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon May 30 11:37:42 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.2:
