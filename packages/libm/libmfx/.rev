@@ -198,4 +198,38 @@
         . mfxExtEncoderIPCMArea</comment>
     <requestid>934705</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3bb04b6352a09215e4974261b8060e61</srcmd5>
+    <version>22.4.4</version>
+    <time>1657378747</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.4.4
+  * Decode
+    + Fix VC1 Decode assertion failure when frame type is NONE_PICTURE
+  * Software requirements
+    + Libdrm 2.4.84 or later
+    + Kernel 4.14 or later (5.4 recommended, consult kernel support matrix
+      wiki page for details)
+  * Known issues
+    + Kernel 5.0 have known issue with endurance on Skylake see 
+      https://bugs.freedesktop.org/show_bug.cgi?id=110285 for details.
+  * Windows support
+    + Samples and dispatcher API 1.35 supported by Windows Intel(r) graphics
+      driver since 27.20.100.8935 version.
+  * Limited support on certain platforms:
+    + MPEG-2 encode is not supported on Apollo Lake
+    + H.264 Flexible Encode Infrastructure only supported on Broadwell and
+      Skylake
+    + Multi Frame Encode (MFE), HEVC Flexible Encode Infrastructure only
+      supported on Skylake
+    + VP9 decoder is supported starting from Kabylake platform
+    + VP9 encoder is supported starting from Icelake platform
+    + SW fallback is unsupported for all components but MJPEG
+    + Keem Bay requires a VPU runtime library
+    + The following features are supported by Keem Bay runtime and are not
+      supported by Gen graphics runtime:
+      * mfxExtInsertHeaders
+      * mfxExtEncoderIPCMArea</comment>
+    <requestid>987910</requestid>
+  </revision>
 </revisionlist>
