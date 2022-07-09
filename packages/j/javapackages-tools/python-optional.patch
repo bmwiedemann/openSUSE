@@ -19,12 +19,12 @@ Index: javapackages-5.2.0+git20180620.70fa2258/install
 -
 -exec >files-python
 -(cd ./python && "${pyinterpreter}" setup.py install -O1 --skip-build --prefix "${prefix}" --root "${DEST}") >&2
--echo "${prefix}/lib/python?.?/site-packages/javapackages"
--echo "${prefix}/lib/python?.?/site-packages/javapackages-*.egg-info"
+-echo "${prefix}/lib/python*/site-packages/javapackages"
+-echo "${prefix}/lib/python*/site-packages/javapackages-*.egg-info"
 Index: javapackages-5.2.0+git20180620.70fa2258/configure-base.sh
 ===================================================================
---- javapackages-5.2.0+git20180620.70fa2258.orig/configure-base.sh
-+++ javapackages-5.2.0+git20180620.70fa2258/configure-base.sh
+--- javapackages-5.2.0+git20180620.70fa2258.orig/configure
++++ javapackages-5.2.0+git20180620.70fa2258/configure
 @@ -57,7 +57,6 @@ test -z "${rpmconfigdir}" && rpmconfigdi
  test -z "${rpmmacrodir}" && rpmmacrodir="${rpmconfigdir}/macros.d"
  

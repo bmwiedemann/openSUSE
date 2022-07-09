@@ -30,7 +30,7 @@ Name:           javapackages-tools-%{flavor}
 %else
 Name:           javapackages-tools
 %endif
-Version:        5.3.1
+Version:        6.1.0
 Release:        0
 Summary:        Macros and scripts for Java packaging support
 License:        BSD-3-Clause
@@ -46,10 +46,7 @@ Patch1:         python-optional.patch
 #               Avoid generating unresolvable requires
 Patch2:         suse-no-epoch.patch
 #PATCH-FIX-SUSE: Let maven_depmap.py generate metadata with dependencies under certain circumstances
-Patch3:         0001-Let-maven_depmap.py-generate-metadata-with-dependenc.patch
-Patch4:         0002-Do-not-try-to-construct-POM-from-maven-coordinate-st.patch
-Patch5:         0003-Fix-tests-after-the-recent-maven_depmap.py-changes.patch
-Patch6:         0004-Remove-dependency-on-Six-compatibility-library.patch
+Patch3:         javapackages-%{version}-maven-depmap.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  perl
@@ -68,8 +65,6 @@ Obsoletes:      jpackage-utils < %{version}
 BuildRequires:  %{python_module lxml}
 %if 0%{?suse_version} > 1320
 BuildRequires:  %{python_module pytest}
-%else
-BuildRequires:  %{python_module six}
 %endif
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -124,9 +119,6 @@ allows artifact resolution using XMvn resolver.
 Summary:        Module for handling various files for Java packaging
 Group:          Development/Languages/Java
 Requires:       python-lxml
-%if 0%{?suse_version} <= 1320
-Requires:       python-six
-%endif
 
 %description -n python-javapackages
 Module for handling, querying and manipulating of various files for Java
@@ -140,9 +132,6 @@ Group:          Development/Languages/Java
 Requires:       python3-lxml
 Obsoletes:      python-javapackages < %{version}-%{release}
 Provides:       python-javapackages = %{version}-%{release}
-%if 0%{?suse_version} <= 1320
-Requires:       python3-six
-%endif
 
 %description -n python3-javapackages
 Module for handling, querying and manipulating of various files for Java
@@ -162,15 +151,7 @@ This package provides non-essential macros and scripts to support Java packaging
 
 %prep
 %setup -q -n javapackages-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%if 0%{?suse_version} > 1320
-%patch6 -p1
-%endif
+%autopatch -p1
 
 # The usr/lib is hardcoded in configuration files too
 new_dir=$(echo %{_libdir} | sed 's#/##')
@@ -264,7 +245,7 @@ popd
 
 %else
 
-%files -n javapackages-local -f files-local
+%files -n javapackages-local -f files-common -f files-extra -f files-compat -f files-generators
 %dir %{_datadir}/java-utils
 
 %files -n javapackages-gradle -f files-gradle

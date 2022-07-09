@@ -1,0 +1,4441 @@
+diff --git a/build b/build
+index 8e676f2d..e728aeaf 100755
+--- a/build
++++ b/build
+@@ -66,6 +66,7 @@ expand etc/java.conf
+ expand etc/eclipse.conf
+ expand macros.d/macros.jpackage
+ expand macros.d/macros.fjava
++expand macros.d/macros.javapackages-compat
+ expand java-utils/java-functions
+ expand depgenerators/maven.req
+ expand depgenerators/maven.prov
+diff --git a/install b/install
+index e80db4cf..52c714f4 100755
+--- a/install
++++ b/install
+@@ -187,6 +187,12 @@ inst_data target/pom_xpath_remove.7 "${mandir}/man7"
+ inst_data target/pom_xpath_replace.7 "${mandir}/man7"
+ inst_data target/pom_xpath_set.7 "${mandir}/man7"
+ 
++exec >files-compat
++
++inst_data java-utils/install_pom.py "${javadir}-utils"
++inst_data java-utils/maven_depmap.py "${javadir}-utils"
++
++inst_data target/macros.javapackages-compat "${rpmmacrodir}"
+ 
+ exec >files-extra
+ 
+diff --git a/java-utils/install_pom.py b/java-utils/install_pom.py
+new file mode 100644
+index 00000000..e0282773
+--- /dev/null
++++ b/java-utils/install_pom.py
+@@ -0,0 +1,261 @@
++#
++# Copyright (c) 2014-2016, Red Hat, Inc.
++# All rights reserved.
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions
++# are met:
++#
++# 1. Redistributions of source code must retain the above copyright
++#    notice, this list of conditions and the following disclaimer.
++# 2. Redistributions in binary form must reproduce the above copyright
++#    notice, this list of conditions and the following disclaimer in the
++#    documentation and/or other materials provided with the
++#    distribution.
++# 3. Neither the name of Red Hat nor the names of its
++#    contributors may be used to endorse or promote products derived
++#    from this software without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++#
++# Authors:  Michal Srb <msrb@redhat.com>
++
++from javapackages.maven.pom import POM, PomLoadingException
++
++from javapackages.xmvn.xmvn_resolve import (XMvnResolve, ResolutionRequest,
++                                            XMvnResolveException)
++from javapackages.common.exception import JavaPackagesToolsException
++
++import sys
++import os
++from xml.etree import ElementTree
++from optparse import OptionParser
++
++
++usage = "usage: %prog <Source POM> <Output POM>"
++epilog = """
++Resolves pom file from its parents and sanitizes its
++dependencies so that it includes only those that have
++compile or runtime scope.
++
++Source POM:
++Path where POM file is located.
++
++Output POM:
++Path where the sanitized POM file will be written to.
++"""
++
++
++def get_parent_pom(pom):
++
++    req = ResolutionRequest(pom.groupId, pom.artifactId,
++                            extension="pom", version=pom.version)
++    result = XMvnResolve.process_raw_request([req])[0]
++    if not result:
++        raise XMvnResolveException("Unable to resolve parent POM {g}:{a}:{e}:{v}"
++                                   .format(g=pom.groupId, a=pom.artifactId,
++                                           e="pom", v=pom.version))
++
++    return POM(result.artifactPath)
++
++
++def merge_sections(main, update):
++    for upd in update:
++        for curr in main:
++            if curr.compare_to(upd):
++                curr.merge_with(upd)
++                break
++        else:
++            main.append(upd)
++
++
++def get_model_variables(pom):
++    props = {}
++    if pom.groupId:
++        props["project.groupId"] = pom.groupId
++    if pom.artifactId:
++        props["project.artifactId"] = pom.artifactId
++    if pom.version:
++        props["project.version"] = pom.version
++    return props
++
++
++def expand_props(deps, props):
++    for d in deps:
++        d.interpolate(props)
++
++def gather_dependencies(pom_path):
++    pom = POM(pom_path)
++    pom_props = get_model_variables(pom)
++    deps, depm, props = _get_dependencies(pom)
++    # expand project model variables
++    expand_props(deps, pom_props)
++    expand_props(depm, pom_props)
++
++    curr_pom = pom
++    parent = pom.parent
++    while parent:
++        ppom = None
++        if hasattr(parent, "relativePath") and parent.relativePath != "":
++            try:
++                ppom_path = os.path.join(os.path.dirname(curr_pom._path),
++                                         parent.relativePath)
++                if os.path.isdir(ppom_path):
++                    ppom_path = os.path.join(ppom_path, 'pom.xml')
++                ppom = POM(ppom_path)
++            except PomLoadingException:
++                pass
++        else:
++            try:
++                ppom_path = os.path.join(os.path.dirname(curr_pom._path), '..')
++                if os.path.isdir(ppom_path):
++                    ppom_path = os.path.join(ppom_path, 'pom.xml')
++                ppom = POM(ppom_path)
++            except PomLoadingException:
++                pass
++
++        if not ppom:
++            try:
++                ppom = get_parent_pom(parent)
++            except XMvnResolveException:
++                break
++
++        parent = ppom.parent
++        pom_props = get_model_variables(ppom)
++        pdeps, pdepm, pprops = _get_dependencies(ppom)
++        expand_props(pdeps, pom_props)
++        expand_props(pdepm, pom_props)
++
++        # merge "dependencies" sections
++        merge_sections(deps, pdeps)
++        # merge "dependencyManagement" sections
++        merge_sections(depm, pdepm)
++
++        # merge "properties" sections
++        for pkey in pprops:
++            if pkey not in props:
++                props[pkey] = pprops[pkey]
++
++        curr_pom = ppom
++
++    for d in deps:
++        d.interpolate(props)
++
++    for dm in depm:
++        dm.interpolate(props)
++
++    # apply dependencyManagement on deps
++    for d in deps:
++        for dm in depm:
++            if d.compare_to(dm):
++                d.merge_with(dm)
++                break
++
++    # only deps with scope "compile" or "runtime" are interesting
++    deps = [x for x in deps if x.scope in ["", "compile", "runtime"]]
++
++    return deps
++
++
++def _get_dependencies(pom):
++    deps = []
++    depm = []
++    props = {}
++
++    for x in pom.dependencies:
++        if hasattr(x, "version") and x.version == "any":
++            x.version = None
++        deps.append(x)
++    depm.extend([x for x in pom.dependencyManagement])
++    props = pom.properties
++
++    return deps, depm, props
++
++
++def _main():
++    OptionParser.format_epilog = lambda self, formatter: self.epilog
++    parser = OptionParser(usage=usage,
++                        epilog=epilog)
++
++    (options, args) = parser.parse_args()
++    if len(args) != 2:
++        parser.error("2 argument2 are required")
++
++    if not os.path.exists(args[0]):
++        message = ("The first argument '{0}' doesn't point to an existing file ").format(args[0])
++        parser.error(message)
++
++    if not os.path.exists(os.path.dirname(os.path.abspath(args[1]))):
++        message = ("The path '{0}' doesn't exist ").format(os.path.dirname(args[1]))
++        parser.error(message)
++
++    if not os.path.isdir(os.path.dirname(os.path.abspath(args[1]))):
++        message = ("The path '{0}' is not a directory ").format(os.path.dirname(args[1]))
++        parser.error(message)
++
++    if os.path.exists(args[1]):
++        message = ("The path '{0}' exists. Refusing to overwrite ").format(args[1])
++        parser.error(message)
++
++    pom_path = args[0]
++    uart = POM(pom_path)
++
++    tree = None
++    ElementTree.register_namespace('',"http://maven.apache.org/POM/4.0.0")
++    if uart.packaging and uart.packaging.lower() == 'pom':
++        tree = ElementTree.parse(args[0])
++    else:
++        result_pom = "<?xml version='1.0' encoding='UTF-8'?>\n"
++        result_pom += "<project xmlns=\"http://maven.apache.org/POM/4.0.0\">\n"
++        result_pom += "  <modelVersion>4.0.0</modelVersion>\n"
++        result_pom += ("  <groupId>{0}</groupId>\n" ).format(uart.groupId)
++        result_pom += ("  <artifactId>{0}</artifactId>\n" ).format(uart.artifactId)
++        result_pom += ("  <version>{0}</version>\n").format(uart.version)
++
++        if hasattr(uart, "packaging") and uart.packaging != 'jar':
++            result_pom += ("  <packaging>{0}</packaging>\n").format(uart.packaging)
++        if hasattr(uart, "extension") and uart.extension != 'jar':
++            result_pom += ("  <extension>{0}</extension>\n").format(uart.extension)
++        if hasattr(uart, "classifier") and uart.classifiler != '':
++            result_pom += ("  <classifier>{0}</classifier>\n").format(uart.classifier)
++
++        mvn_deps = gather_dependencies(pom_path)
++        if mvn_deps:
++            result_pom += "  <dependencies>\n"
++            for d in mvn_deps:
++                result_pom += "    <dependency>\n"
++                result_pom += ("      <groupId>{0}</groupId>\n").format(d.groupId)
++                result_pom += ("      <artifactId>{0}</artifactId>\n" ).format(d.artifactId)
++                if hasattr(d, "version"):
++                    result_pom += ("      <version>{0}</version>\n" ).format(d.version)
++                if hasattr(d, "extension") and d.extension != 'jar':
++                    result_pom += ("      <extension>{0}</extension>\n").format(d.extension)
++                if hasattr(d, "classifier") and d.classifier != '':
++                    result_pom += ("      <classifier>{0}</classifier>\n").format(d.classifier)
++                if hasattr(d, "type") and d.type != '':
++                    result_pom += ("      <type>{0}</type>\n").format(d.type)
++                if hasattr(d, "optional") and d.optional.lower() == "true":
++                    result_pom += ("      <optional>{0}</optional>\n").format(d.optional.lower())
++                result_pom += "    </dependency>\n"
++            result_pom += "  </dependencies>\n"
++
++        result_pom += "</project>\n"
++        tree = ElementTree.ElementTree(ElementTree.XML(result_pom))
++    tree.write(args[1],encoding="UTF-8",xml_declaration=True)
++    os.chmod(args[1], 0o0644)
++
++if __name__ == "__main__":
++    try:
++        _main()
++    except JavaPackagesToolsException as e:
++        sys.exit(e)
+diff --git a/java-utils/maven_depmap.py b/java-utils/maven_depmap.py
+new file mode 100644
+index 00000000..6a0520fa
+--- /dev/null
++++ b/java-utils/maven_depmap.py
+@@ -0,0 +1,357 @@
++#
++# Copyright (c) 2014, Red Hat, Inc.
++# All rights reserved.
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions
++# are met:
++#
++# 1. Redistributions of source code must retain the above copyright
++#    notice, this list of conditions and the following disclaimer.
++# 2. Redistributions in binary form must reproduce the above copyright
++#    notice, this list of conditions and the following disclaimer in the
++#    documentation and/or other materials provided with the
++#    distribution.
++# 3. Neither the name of Red Hat nor the names of its
++#    contributors may be used to endorse or promote products derived
++#    from this software without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++#
++# Authors: Stanislav Ochotnicky <sochotnicky@redhat.com>
++#
++# this script is used by add_maven_depmap rpm macro to generate
++# mapping between maven groupId:artifactId and jar file in our local
++# filesystem (i.e. %{_javadir})
++# rpm macro expects to find this file as %{_javadir}-utils/maven_depmap.py
++
++
++from optparse import OptionParser
++import os
++import shutil
++import sys
++
++from os.path import basename, dirname
++import zipfile
++from time import gmtime, strftime
++from copy import deepcopy
++
++from javapackages.maven.pom import POM
++from javapackages.metadata.artifact import MetadataArtifact
++from javapackages.metadata.alias import MetadataAlias
++from javapackages.metadata.dependency import MetadataDependency
++from javapackages.metadata.metadata import Metadata
++
++from javapackages.common.exception import JavaPackagesToolsException
++
++
++class PackagingTypeMissingFile(JavaPackagesToolsException):
++    def __init__(self, pom_path):
++        self.args=("Packaging type is not 'pom' and no artifact path has been provided for POM %s" % pom_path,)
++
++class IncompatibleFilenames(JavaPackagesToolsException):
++    def __init__(self, pom_path, jar_path):
++        self.args=("Filenames of POM %s and JAR %s does not match properly. Check that JAR subdirectories matches '.' in pom name." % (pom_path, jar_path),)
++
++class ExtensionsDontMatch(JavaPackagesToolsException):
++    def __init__(self, coordinates_ext, file_ext):
++        self.args=("Extensions don't match: '%s' != '%s'" % (coordinates_ext, file_ext),)
++
++class MissingJarFile(JavaPackagesToolsException):
++    def __init__(self):
++        self.args=("JAR seems to be missing in standard directories. Make sure you have installed it",)
++
++class UnknownFileExtension(JavaPackagesToolsException):
++    def __init__(self, jar_path):
++        self.args=("Unknown file extension: %s" % (jar_path),)
++
++
++def _print_path_with_dirs(path, base):
++    print(path)
++    path = dirname(path)
++    while path != base and path != '/':
++        print("%dir " + path)
++        path = dirname(path)
++
++
++def _make_files_versioned(versions, pom_path, jar_path, pom_base, jar_base):
++    """Make pom and jar file versioned"""
++    versions = sorted(set(versions.split(',')))
++
++    vpom_path = pom_path
++    vjar_path = jar_path
++
++    ret_pom_path = pom_path
++    ret_jar_path = jar_path
++
++    # pom
++    if ':' not in vpom_path:
++        root, ext = os.path.splitext(vpom_path)
++        symlink = False
++        for ver in sorted(versions):
++            dest = "%s-%s%s" % (root, ver, ext)
++            if not symlink:
++                shutil.copy(os.path.realpath(vpom_path), dest)
++                symlink = True
++                vpom_path = dest
++                ret_pom_path = dest
++            else:
++                os.symlink(basename(vpom_path), dest)
++            # output file path for file lists
++            _print_path_with_dirs(dest, pom_base)
++        # remove unversioned pom
++        os.remove(pom_path)
++
++    # jar
++    if vjar_path:
++        root, ext = os.path.splitext(vjar_path)
++        symlink = False
++        for ver in sorted(versions):
++            dest = "%s-%s%s" % (root, ver, ext)
++            if not symlink:
++                shutil.copy(os.path.realpath(vjar_path), dest)
++                symlink = True
++                vjar_path = dest
++                ret_jar_path = dest
++            else:
++                os.symlink(basename(vjar_path), dest)
++            # output file path for file lists
++            _print_path_with_dirs(dest, jar_base)
++        # remove unversioned jar
++        os.remove(jar_path)
++
++    # return paths to versioned, but regular files (not symlinks)
++    return ret_pom_path, ret_jar_path
++
++def _resolve_deps(pom):
++    deps = []
++    depm = []
++    props = {}
++
++    deps.extend([x for x in pom.dependencies])
++    depm.extend([x for x in pom.dependencyManagement])
++    props = pom.properties
++    if pom.groupId:
++        props["project.groupId"] = pom.groupId
++    if pom.artifactId:
++        props["project.artifactId"] = pom.artifactId
++    if pom.version:
++        props["project.version"] = pom.version
++
++    for d in deps:
++        d.interpolate(props)
++
++    for dm in depm:
++        dm.interpolate(props)
++
++    # apply dependencyManagement on deps
++    for d in deps:
++        for dm in depm:
++            if d.compare_to(dm):
++                d.merge_with(dm)
++                break
++
++    # only deps with scope "compile" or "runtime" are interesting
++    deps = [x for x in deps if x.scope in ["", "compile", "runtime"]]
++
++    return deps
++
++# Add a file to a ZIP archive (or JAR, WAR, ...) unless the file
++# already exists in the archive.  Provided by Tomas Radej.
++def append_if_missing(archive_name, file_name, file_contents):
++    archive = zipfile.ZipFile(archive_name, 'a')
++    try:
++        if file_name not in archive.namelist():
++            archive.writestr(file_name, file_contents)
++    finally:
++        archive.close()
++
++
++# Inject pom.properties if JAR doesn't have one.  This is necessary to
++# identify the origin of JAR files that are present in the repository.
++def inject_pom_properties(jar_path, artifact):
++    if not zipfile.is_zipfile(jar_path):
++        return
++    props_path = "META-INF/maven/{a.groupId}/{a.artifactId}/pom.properties".format(a=artifact)
++    properties = """#Generated by Java Packages Tools
++version={a.version}
++groupId={a.groupId}
++artifactId={a.artifactId}
++""".format(a=artifact)
++
++    if artifact.extension:
++        properties = properties + \
++            "extension={ext}\n".format(ext=artifact.extension)
++    if artifact.classifier:
++        properties = properties + \
++            "classifier={clas}\n".format(clas=artifact.classifier)
++
++    append_if_missing(jar_path, props_path, properties)
++
++
++def add_compat_versions(artifact, versions):
++    if not versions:
++        return artifact
++
++    artifact.compatVersions = versions.split(',')
++    return artifact
++
++
++def add_aliases(artifact, additions):
++    if not additions:
++        return artifact
++
++    aliases = additions.split(',')
++    result = list()
++    for a in aliases:
++        alias = MetadataAlias.from_mvn_str(a)
++        alias.extension = artifact.extension
++        result.append(alias)
++
++    artifact.aliases = result
++    return artifact
++
++
++def write_metadata(metadata_file, artifacts):
++    if os.path.exists(metadata_file):
++        metadata = Metadata.create_from_file(metadata_file)
++    else:
++        metadata = Metadata()
++
++    # pylint:disable=E1103
++    metadata.artifacts += deepcopy(artifacts)
++
++    metadata.write_to_file(metadata_file)
++
++
++def _main():
++    usage="usage: %prog [options] metadata_path pom_path|<MVN spec> [jar_path]"
++    parser = OptionParser(usage=usage)
++    parser.add_option("-a","--append",type="str",
++                      help="Additional depmaps to add (gid:aid)  [default: %default]")
++    parser.add_option('-r', '--versions', type="str",
++                      help='Additional versions to add for each depmap')
++    parser.add_option('-n', '--namespace', type="str",
++                      help='Namespace to use for generated fragments', default="")
++    parser.add_option('--pom-base', type="str",
++                      help='Base path under which POM files are installed', default="")
++    parser.add_option('--jar-base', type="str",
++                      help='Base path under which JAR files are installed', default="")
++
++    parser.set_defaults(append=None)
++
++    (options, args) = parser.parse_args()
++    append_deps = options.append
++    add_versions = options.versions
++    namespace = options.namespace
++    pom_base = options.pom_base
++    jar_base = options.jar_base
++
++    if len(args) < 2:
++        parser.error("Incorrect number of arguments")
++    # These will fail when incorrect number of arguments is given.
++    metadata_path = args[0].strip()
++    pom_path = args[1].strip()
++    jar_path = None
++
++    artifact = None
++    have_pom = False
++
++    if len(args) == 3:
++        jar_path = args[2].strip()
++        if ':' in pom_path:
++            pom_str = pom_path.rsplit('/')[-1]
++            artifact = MetadataArtifact.from_mvn_str(pom_str)
++            artifact_ext = artifact.extension or "jar"
++            file_ext = os.path.splitext(jar_path)[1][1:]
++            if artifact_ext != file_ext:
++                raise ExtensionsDontMatch(artifact_ext, file_ext)
++
++            if artifact.extension == 'jar':
++                artifact.extension = ''
++
++            if not artifact.version:
++                parser.error("Artifact definition has to include version")
++        else:
++            artifact = MetadataArtifact.from_pom(pom_path)
++            ext = os.path.splitext(jar_path)[1][1:]
++            if ext != "jar":
++                artifact.extension = ext
++            have_pom = True
++        if artifact:
++            inject_pom_properties(jar_path, artifact)
++    else:
++        # looks like POM only artifact
++        if ':' not in pom_path:
++            artifact = MetadataArtifact.from_pom(pom_path)
++            have_pom = True
++
++            if POM(pom_path).packaging != "pom":
++                raise PackagingTypeMissingFile(pom_path)
++        else:
++            sys.exit("JAR file path must be specified when using artifact coordinates")
++
++
++    # output file path for file lists
++    print(metadata_path)
++
++    artifact = add_compat_versions(artifact, add_versions)
++    if add_versions:
++        pom_path, jar_path = _make_files_versioned(add_versions, pom_path, jar_path, pom_base, jar_base)
++
++    if namespace:
++        artifact.namespace = namespace
++
++    if have_pom:
++        pom = POM(pom_path)
++        if pom.parent or pom.packaging == "pom":
++            artifact.properties["xmvn.resolver.disableEffectivePom"] = "true"
++        else:
++            deps = []
++            for d in _resolve_deps(pom):
++                deps.append(MetadataDependency.from_mvn_dependency(d))
++            if deps:
++                artifact.dependencies = set(deps)
++
++
++    buildroot = os.environ.get('RPM_BUILD_ROOT')
++    am = []
++    if jar_path:
++        metadata_jar_path = os.path.abspath(jar_path)
++        artifact.path = metadata_jar_path.replace(buildroot, "") if buildroot else metadata_jar_path
++        artifact = add_aliases(artifact, append_deps)
++        if artifact.extension == "jar":
++            artifact.extension = ""
++        am.append(artifact.copy())
++        # output file path for file list (if it's not versioned)
++        if not add_versions:
++            _print_path_with_dirs(jar_path, jar_base)
++    if have_pom:
++        metadata_pom_path = os.path.abspath(pom_path)
++        artifact.path = metadata_pom_path.replace(buildroot, "") if buildroot else metadata_pom_path
++        artifact.extension = "pom"
++        artifact.aliases = None
++        artifact = add_aliases(artifact, append_deps)
++        am.append(artifact.copy())
++        # output file path for file list (if it's not versioned)
++        if not add_versions:
++            _print_path_with_dirs(pom_path, pom_base)
++
++    write_metadata(metadata_path, am)
++
++
++if __name__ == "__main__":
++    try:
++        _main()
++    except JavaPackagesToolsException as e:
++        sys.exit(e)
+diff --git a/javapackages-tools.spec b/javapackages-tools.spec
+index d2b6a235..65ac4e17 100644
+--- a/javapackages-tools.spec
++++ b/javapackages-tools.spec
+@@ -72,6 +72,14 @@ Provides:       %{?scl_prefix}eclipse-filesystem = %{version}-%{release}
+ This package provides some basic directories into which Java packages
+ install their content.
+ 
++%package -n %{?scl_prefix}javapackages-compat
++Summary:        Previously deprecated macros and scripts for Java packaging support
++Requires:       %{?scl_prefix}javapackages-local = %{version}-%{release}
++
++%description -n %{?scl_prefix}javapackages-compat
++This package provides previously deprecated macros and scripts to
++support Java packaging as well as some additions to them.
++
+ %package -n %{?scl_prefix}maven-local
+ Summary:        Macros and scripts for Maven packaging support
+ Requires:       %{name} = %{version}-%{release}
+@@ -173,6 +181,8 @@ rm -rf %{buildroot}%{_mandir}/man7/gradle_build.7
+ 
+ %files -n %{?scl_prefix}javapackages-filesystem -f files-filesystem
+ 
++%files -n %{?scl_prefix}javapackages-compat -f files-compat
++
+ %files -n %{?scl_prefix}javapackages-local -f files-local
+ 
+ %files -n %{?scl_prefix}maven-local
+diff --git a/macros.d/macros.javapackages-compat b/macros.d/macros.javapackages-compat
+new file mode 100644
+index 00000000..6570156e
+--- /dev/null
++++ b/macros.d/macros.javapackages-compat
+@@ -0,0 +1,95 @@
++# Copyright (c) 2012-2016, Red Hat, Inc
++# All rights reserved.
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions
++# are met:
++#
++# 1. Redistributions of source code must retain the above copyright
++#    notice, this list of conditions and the following disclaimer.
++# 2. Redistributions in binary form must reproduce the above copyright
++#    notice, this list of conditions and the following disclaimer in the
++#    documentation and/or other materials provided with the
++#    distribution.
++# 3. Neither the name of Red Hat nor the names of its
++#    contributors may be used to endorse or promote products derived
++#    from this software without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++#
++# Authors: Stanislav Ochotnicky <sochotnicky@redhat.com>
++#          Mikolaj Izdebski <mizdebsk@redhat.com>
++
++
++# %mvn_install_pom - Resolve the pom as much as possible and install it
++#
++# Usage: %mvn_install_pom <source pom> <output pom>
++#
++%mvn_install_pom @{pyinterpreter} @{javadir}-utils/install_pom.py
++
++#==============================================================================
++#
++# add_maven_depmap is simplified version of jpackage-style add_to_maven_depmap
++# -f addition to fragment name
++# -a is "g1:a1,g2:a2" formatted string with additional depmaps (groupId:artifactId,...)
++# -v is "v1,v2" formatted string with additional compatibility versions
++#    supposed to be provided (jar,pom will be renamed to -%{version} variants
++#    and additional symlinks optionally created)
++# %1 is the pom filename relative to mavenpomdir
++# %2 is the path to jar file (when omitted we deal with parent pom file without jar)
++#
++# add_maven_depmap automatically parses pom file and it will fail with incorrect pom
++# or jar filename
++#
++# in the end add_maven_depmap optionally moves jar and pom file to
++# -%{version} variant and can create additional versioned symlinks
++
++%add_maven_depmap(f:a:v:) \
++set -e \
++# default values \
++%if %# == 0 \
++   _pompart="JPP-%{name}.pom" \
++   _jarpart="%{name}.jar" \
++%else \
++   _pompart="%1" \
++   _jarpart="%2" \
++%endif \
++_filelist=".mfiles%{-f*:-%{-f*}}" \
++install -dm 755 %{buildroot}%{_datadir}/maven-metadata \
++_jbase= \
++_jpath= \
++for _dir in %{_jnidir} %{_javadir}; do \
++    if [ -f %{buildroot}$_dir/$_jarpart ]; then \
++	_jbase="%{buildroot}$_dir" \
++	_jpath="$_jbase/$_jarpart" \
++    fi \
++done \
++%if %# != 1 \
++    [ -z "$_jpath" ] && (echo "%0 error: $_jarpart - file not found" 1>&2; exit 1) \
++%endif \
++@{pyinterpreter} @{javadir}-utils/maven_depmap.py %{-a} %{-v*:-r %{-v*}} \\\
++                 --pom-base %{buildroot}%{_mavenpomdir} \\\
++                 --jar-base "$_jbase" \\\
++                 %{buildroot}%{_datadir}/maven-metadata/%{name}%{-f*:-%{-f*}}.xml \\\
++                 %{buildroot}%{_mavenpomdir}/$_pompart \\\
++%if %# == 2 \
++          "${_jpath}" \\\
++%endif \
++%if %# == 0 \
++          "${_jpath}" \\\
++%endif \
++        >> ${_filelist} \
++sed -i 's:%{buildroot}::' ${_filelist} \
++sort -u -o ${_filelist} ${_filelist} \
++\
++%{nil}
+diff --git a/test/data/install_pom/JPP-apache-commons-io.pom b/test/data/install_pom/JPP-apache-commons-io.pom
+new file mode 100644
+index 00000000..9349ebdd
+--- /dev/null
++++ b/test/data/install_pom/JPP-apache-commons-io.pom
+@@ -0,0 +1,22 @@
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++  <parent>
++    <groupId>org.apache.commons</groupId>
++    <artifactId>commons-parent</artifactId>
++    <version>17</version>
++  </parent>
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>commons-io</groupId>
++  <artifactId>commons-io</artifactId>
++  <version>2</version>
++  <name>Commons Lang</name>
++  <packaging>pom</packaging>
++
++  <dependencies>
++    <dependency>
++      <groupId>G</groupId>
++      <artifactId>G</artifactId>
++      <version>1000</version>
++    </dependency>
++  </dependencies>
++
++</project>
+diff --git a/test/data/install_pom/JPP-bndlib.pom b/test/data/install_pom/JPP-bndlib.pom
+new file mode 100644
+index 00000000..bf1efe5e
+--- /dev/null
++++ b/test/data/install_pom/JPP-bndlib.pom
+@@ -0,0 +1,72 @@
++
++<project xmlns='http://maven.apache.org/POM/4.0.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd'>
++  <modelVersion>
++    4.0.0
++  </modelVersion>
++  <groupId>
++    biz.aQute
++  </groupId>
++  <artifactId>
++    bndlib
++  </artifactId>
++  <version>
++    1.50.0
++  </version>
++  <description>
++    A Swiss Army Knife for OSGi
++  </description>
++  <name>
++    bnd - Bundle Tool
++  </name>
++  <url>
++    http://www.aQute.biz/Code/Bnd
++  </url>
++  <scm>
++    <url>
++      git://github.com/bndtools/bnd.git
++    </url>
++    <connection>
++      git://github.com/bndtools/bnd.git
++    </connection>
++    <developerConnection>
++      git://github.com/bndtools/bnd.git
++    </developerConnection>
++  </scm>
++  <organization>
++    <name>
++      aQute SARL
++    </name>
++    <url>
++      http://www.aQute.biz
++    </url>
++  </organization>
++  <developers>
++    <developer>
++      <id>
++        Peter.Kriens@aQute.biz
++      </id>
++      <name>
++        Peter.Kriens
++      </name>
++      <email>
++        Peter.Kriens@aQute.biz
++      </email>
++      <organization>
++        aQute
++      </organization>
++    </developer>
++  </developers>
++  <licenses>
++    <license>
++      <name>
++        Apache Software License 2.0
++      </name>
++      <url>
++        http://www.opensource.org/licenses/apache2.0.php
++      </url>
++      <distribution>
++        repo
++      </distribution>
++    </license>
++  </licenses>
++</project>
+\ No newline at end of file
+diff --git a/test/data/install_pom/JPP-noversion-pom.pom b/test/data/install_pom/JPP-noversion-pom.pom
+new file mode 100644
+index 00000000..a789d1b6
+--- /dev/null
++++ b/test/data/install_pom/JPP-noversion-pom.pom
+@@ -0,0 +1,9 @@
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>org.apache.commons</groupId>
++  <groupId>commons-io</groupId>
++  <artifactId>commons-io</artifactId>
++  <name>Commons Lang</name>
++  <packaging>pom</packaging>
++
++</project>
+diff --git a/test/data/install_pom/JPP-noversion.pom b/test/data/install_pom/JPP-noversion.pom
+new file mode 100644
+index 00000000..bd87edea
+--- /dev/null
++++ b/test/data/install_pom/JPP-noversion.pom
+@@ -0,0 +1,8 @@
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>org.apache.commons</groupId>
++  <groupId>commons-io</groupId>
++  <artifactId>commons-io</artifactId>
++  <name>Commons Lang</name>
++
++</project>
+diff --git a/test/data/install_pom/JPP-parent-version.pom b/test/data/install_pom/JPP-parent-version.pom
+new file mode 100644
+index 00000000..4e40fa2a
+--- /dev/null
++++ b/test/data/install_pom/JPP-parent-version.pom
+@@ -0,0 +1,9 @@
++<project>
++  <modelVersion>4.0.0</modelVersion>
++  <artifactId>a</artifactId>
++  <parent>
++    <groupId>g</groupId>
++    <artifactId>p</artifactId>
++    <version>1</version>
++  </parent>
++</project>
+diff --git a/test/data/install_pom/a_binary_file.pom b/test/data/install_pom/a_binary_file.pom
+new file mode 100644
+index 00000000..5b3a2335
+Binary files /dev/null and b/test/data/install_pom/a_binary_file.pom differ
+diff --git a/test/data/install_pom/cglib/cglib-integration-test/pom.xml b/test/data/install_pom/cglib/cglib-integration-test/pom.xml
+new file mode 100644
+index 00000000..1c717477
+--- /dev/null
++++ b/test/data/install_pom/cglib/cglib-integration-test/pom.xml
+@@ -0,0 +1,87 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++
++    <!-- ====================================================================== -->
++    <!-- P A R E N T  P R O J E C T  D E S C R I P T I O N -->
++    <!-- ====================================================================== -->
++    <parent>
++        <groupId>cglib</groupId>
++        <artifactId>cglib-parent</artifactId>
++        <version>3.3.0</version>
++    </parent>
++
++    <!-- ====================================================================== -->
++    <!-- P R O J E C T  D E S C R I P T I O N -->
++    <!-- ====================================================================== -->
++    <artifactId>cglib-integration-test</artifactId>
++    <packaging>jar</packaging>
++
++    <!-- ====================================================================== -->
++    <!-- B U I L D -->
++    <!-- ====================================================================== -->
++    <build>
++        <plugins>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-compiler-plugin</artifactId>
++            </plugin>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-surefire-plugin</artifactId>
++            </plugin>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-javadoc-plugin</artifactId>
++            </plugin>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-failsafe-plugin</artifactId>
++                <executions>
++                    <execution>
++                        <goals>
++                            <goal>integration-test</goal>
++                            <goal>verify</goal>
++                        </goals>
++                    </execution>
++                </executions>
++            </plugin>
++        </plugins>
++        
++        <resources>
++            <resource>
++                <directory>src/main/resources</directory>
++            </resource>
++            <resource>
++                <directory>${basedir}/..</directory>
++                <targetPath>META-INF</targetPath>
++                <includes>
++                    <include>LICENSE</include>
++                    <include>NOTICE</include>
++                    <include>README</include>
++                </includes>
++            </resource>
++        </resources>
++    </build>
++
++    <!-- ====================================================================== -->
++    <!-- D E P E N D E N C I E S -->
++    <!-- ====================================================================== -->
++    <dependencies>
++        <dependency>
++            <groupId>${project.groupId}</groupId>
++            <artifactId>cglib</artifactId>
++        </dependency>
++        <dependency>
++            <groupId>${project.groupId}</groupId>
++            <artifactId>cglib-sample</artifactId>
++        </dependency>
++
++        <dependency>
++            <groupId>junit</groupId>
++            <artifactId>junit</artifactId>
++        </dependency>
++    </dependencies>
++
++</project>
+diff --git a/test/data/install_pom/cglib/cglib/pom.xml b/test/data/install_pom/cglib/cglib/pom.xml
+new file mode 100644
+index 00000000..4563e67f
+--- /dev/null
++++ b/test/data/install_pom/cglib/cglib/pom.xml
+@@ -0,0 +1,76 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++
++    <!-- ====================================================================== -->
++    <!-- P A R E N T  P R O J E C T  D E S C R I P T I O N -->
++    <!-- ====================================================================== -->
++    <parent>
++        <groupId>cglib</groupId>
++        <artifactId>cglib-parent</artifactId>
++        <version>3.3.0</version>
++    </parent>
++
++    <!-- ====================================================================== -->
++    <!-- P R O J E C T  D E S C R I P T I O N -->
++    <!-- ====================================================================== -->
++    <artifactId>cglib</artifactId>
++    <packaging>jar</packaging>
++
++    <!-- ====================================================================== -->
++    <!-- B U I L D -->
++    <!-- ====================================================================== -->
++    <build>
++        <plugins>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-compiler-plugin</artifactId>
++            </plugin>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-surefire-plugin</artifactId>
++            </plugin>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-javadoc-plugin</artifactId>
++            </plugin>
++        </plugins>
++
++        <resources>
++            <resource>
++                <directory>src/main/resources</directory>
++            </resource>
++            <resource>
++                <directory>${basedir}/..</directory>
++                <targetPath>META-INF</targetPath>
++                <includes>
++                    <include>LICENSE</include>
++                    <include>NOTICE</include>
++                    <include>README</include>
++                </includes>
++            </resource>
++        </resources>
++    </build>
++
++    <!-- ====================================================================== -->
++    <!-- D E P E N D E N C I E S -->
++    <!-- ====================================================================== -->
++    <dependencies>
++        <dependency>
++            <groupId>org.ow2.asm</groupId>
++            <artifactId>asm</artifactId>
++        </dependency>
++        <dependency>
++            <groupId>org.apache.ant</groupId>
++            <artifactId>ant</artifactId>
++            <optional>true</optional>
++        </dependency>
++
++        <dependency>
++            <groupId>junit</groupId>
++            <artifactId>junit</artifactId>
++        </dependency>
++    </dependencies>
++
++</project>
+diff --git a/test/data/install_pom/cglib/pom.xml b/test/data/install_pom/cglib/pom.xml
+new file mode 100644
+index 00000000..b4468689
+--- /dev/null
++++ b/test/data/install_pom/cglib/pom.xml
+@@ -0,0 +1,246 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++    
++    <parent>
++      <groupId>org.sonatype.oss</groupId>
++      <artifactId>oss-parent</artifactId>
++      <version>7</version>
++    </parent>
++
++    <!-- ====================================================================== -->
++    <!-- P R O J E C T  D E S C R I P T I O N -->
++    <!-- ====================================================================== -->
++    <groupId>cglib</groupId>
++    <artifactId>cglib-parent</artifactId>
++    <version>3.3.0</version>
++    <packaging>pom</packaging>
++
++    <name>Code Generation Library</name>
++    <url>https://github.com/cglib/cglib</url>
++    <description>cglib is a powerful, high performance and quality Code Generation Library, It is used to extend JAVA classes and implements interfaces at runtime.</description>
++
++    <scm>
++        <connection>scm:git:git://github.com/cglib/cglib.git</connection>
++        <developerConnection>scm:git:ssh://git@github.com/cglib/cglib.git</developerConnection>
++        <url>https://github.com/cglib/cglib</url>
++    </scm>
++
++    <issueManagement>
++        <system>Github Issues</system>
++        <url>https://github.com/cglib/cglib/issues</url>
++    </issueManagement>
++
++    <ciManagement>
++        <system>Travis</system>
++        <url>https://travis-ci.org/cglib/cglib</url>
++    </ciManagement>
++
++    <licenses>
++        <license>
++            <name>ASF 2.0</name>
++            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
++            <distribution>repo</distribution>
++        </license>
++    </licenses>
++
++    <!-- ====================================================================== -->
++    <!-- P R O P E R T I E S -->
++    <!-- ====================================================================== -->
++    <properties>
++        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
++
++        <java.version.source>1.5</java.version.source>
++        <java.version.target>1.5</java.version.target>
++        <asm.version>7.1</asm.version>
++        <ant.version>1.10.3</ant.version>
++        <jmh.version>1.21</jmh.version>
++        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
++        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
++        <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
++        <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
++        <java.compiler.argument />
++
++        <java.test.compiler.argument>${java.compiler.argument}</java.test.compiler.argument>
++        <gpg.skip>true</gpg.skip>
++    </properties>
++
++    <!-- ====================================================================== -->
++    <!-- M O D U L E S -->
++    <!-- ====================================================================== -->
++    <modules>
++        <module>cglib</module>
++        <module>cglib-nodep</module>
++        <module>cglib-sample</module>
++        <module>cglib-integration-test</module>
++        <module>cglib-jmh</module>
++    </modules>
++
++    <!-- ====================================================================== -->
++    <!-- P R O F I L E S -->
++    <!-- ====================================================================== -->
++    <profiles>
++        <profile>
++            <id>java8</id>
++            <activation>
++                <jdk>[1.8,)</jdk>
++            </activation>
++            <properties>
++                <java.test.compiler.argument>-parameters</java.test.compiler.argument>
++            </properties>
++        </profile>
++        <profile>
++            <id>java9</id>
++            <activation>
++                <jdk>[1.9,)</jdk>
++            </activation>
++            <properties>
++                <java.version.source>1.6</java.version.source>
++                <java.version.target>1.6</java.version.target>
++                <java.test.compiler.argument>-parameters</java.test.compiler.argument>
++            </properties>
++        </profile>
++    </profiles>
++
++    <!-- ====================================================================== -->
++    <!-- B U I L D -->
++    <!-- ====================================================================== -->
++    <build>
++        <pluginManagement>
++            <plugins>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-compiler-plugin</artifactId>
++                    <version>${maven-compiler-plugin.version}</version>
++                    <configuration>
++                        <source>${java.version.source}</source>
++                        <target>${java.version.target}</target>
++                        <compilerArgument>${java.compiler.argument}</compilerArgument>
++                        <testSource>${java.specification.version}</testSource>
++                        <testTarget>${java.specification.version}</testTarget>
++                        <testCompilerArgument>${java.test.compiler.argument}</testCompilerArgument>
++                    </configuration>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-surefire-plugin</artifactId>
++                    <version>2.21.0</version>
++                    <configuration>
++                        <systemProperties>
++                            <property>
++                                <name>net.sf.cglib.test.stressHashCodes</name>
++                                <value>true</value>
++                            </property>
++                        </systemProperties>
++                    </configuration>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-failsafe-plugin</artifactId>
++                    <version>2.21.0</version>
++                    <configuration>
++                        <systemProperties>
++                            <property>
++                                <name>net.sf.cglib.test.stressHashCodes</name>
++                                <value>true</value>
++                            </property>
++                        </systemProperties>
++                    </configuration>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-javadoc-plugin</artifactId>
++                    <version>${maven-javadoc-plugin.version}</version>
++                    <configuration>
++                      <quiet>true</quiet>
++                      <detectLinks>false</detectLinks>
++                      <detectOfflineLinks>false</detectOfflineLinks>
++                      <!--<skip>${skipJavadoc}</skip>-->
++                      <use>false</use>
++                      <doclint>none</doclint>
++                      <additionalDependencies>
++                        <additionalDependency>
++                          <groupId>org.ow2.asm</groupId>
++                          <artifactId>asm</artifactId>
++                          <version>${asm.version}</version>
++                        </additionalDependency>
++                        <additionalDependency>
++                          <groupId>org.apache.ant</groupId>
++                          <artifactId>ant</artifactId>
++                          <version>${ant.version}</version>
++                        </additionalDependency>
++                      </additionalDependencies>
++                    </configuration>
++                    <executions>
++                      <execution>
++                        <id>attach-javadocs</id>
++                        <goals>
++                          <goal>jar</goal>
++                        </goals>
++                      </execution>
++                    </executions>
++                </plugin>
++                <plugin>
++                    <groupId>org.sonatype.plugins</groupId>
++                    <artifactId>jarjar-maven-plugin</artifactId>
++                    <version>1.9</version>
++                </plugin>
++            </plugins>
++        </pluginManagement>
++        <plugins>
++            <plugin>
++              <groupId>org.apache.maven.plugins</groupId>
++              <artifactId>maven-gpg-plugin</artifactId>
++              <version>1.6</version>
++              <executions>
++              <execution>
++                <id>sign-artifacts</id>
++                <phase>verify</phase>
++                <goals>
++                  <goal>sign</goal>
++                </goals>
++              </execution>
++            </executions>
++          </plugin>
++        </plugins>
++    </build>
++
++    <!-- ====================================================================== -->
++    <!-- D E P E N D E N C Y  M A N A G E M E N T -->
++    <!-- ====================================================================== -->
++    <dependencyManagement>
++        <dependencies>
++            <dependency>
++                <groupId>${project.groupId}</groupId>
++                <artifactId>cglib</artifactId>
++                <version>${project.version}</version>
++            </dependency>
++            <dependency>
++                <groupId>${project.groupId}</groupId>
++                <artifactId>cglib-sample</artifactId>
++                <version>${project.version}</version>
++            </dependency>
++
++            <dependency>
++                <groupId>org.ow2.asm</groupId>
++                <artifactId>asm</artifactId>
++                <version>${asm.version}</version>
++            </dependency>
++            <dependency>
++                <groupId>org.apache.ant</groupId>
++                <artifactId>ant</artifactId>
++                <version>${ant.version}</version>
++            </dependency>
++
++            <dependency>
++                <groupId>junit</groupId>
++                <artifactId>junit</artifactId>
++                <version>4.12</version>
++                <scope>test</scope>
++            </dependency>
++        </dependencies>
++    </dependencyManagement>
++
++</project>
+diff --git a/test/data/install_pom/fakedir b/test/data/install_pom/fakedir
+new file mode 100644
+index 00000000..e69de29b
+diff --git a/test/data/install_pom/languagetool/languagetool-language-modules/ja/pom.xml b/test/data/install_pom/languagetool/languagetool-language-modules/ja/pom.xml
+new file mode 100644
+index 00000000..1df2ead4
+--- /dev/null
++++ b/test/data/install_pom/languagetool/languagetool-language-modules/ja/pom.xml
+@@ -0,0 +1,104 @@
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++    
++    <parent>
++        <groupId>org.languagetool</groupId>
++        <artifactId>languagetool-parent</artifactId>
++        <version>4.8</version>
++        <relativePath>../../pom.xml</relativePath>
++    </parent>
++    
++    <artifactId>language-ja</artifactId>
++    <url>http://www.languagetool.org</url>
++    <name>Japanese module for LanguageTool</name>
++
++    <licenses>
++        <license>
++            <name>GNU Lesser General Public License</name>
++            <url>http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt</url>
++            <distribution>repo</distribution>
++            <comments>The license refers to the source code, resources may be under different licenses</comments>
++        </license>
++    </licenses>
++    
++    <packaging>jar</packaging>
++
++    <developers>
++        <developer>
++            <name>Daniel Naber</name>
++            <roles><role>Maintainer</role></roles>
++        </developer>
++        <developer>
++            <name>Marcin Miłkowski</name>
++            <roles><role>Maintainer</role></roles>
++        </developer>
++    </developers>
++    
++    <build>
++        <plugins>
++            <plugin>
++                <artifactId>maven-compiler-plugin</artifactId>
++            </plugin>
++            <plugin>
++                <artifactId>maven-surefire-plugin</artifactId>
++            </plugin>
++        </plugins>
++    </build>
++
++    <dependencies>
++        <dependency>
++            <groupId>org.languagetool</groupId>
++            <artifactId>languagetool-core</artifactId>
++            <version>${languagetool.version}</version>
++        </dependency>
++
++        <dependency>
++            <groupId>com.github.lucene-gosen</groupId>
++            <artifactId>lucene-gosen</artifactId>
++            <version>6.2.1</version>
++            <classifier>ipadic</classifier>
++            <exclusions>
++                <exclusion>
++                    <groupId>org.apache.lucene</groupId>
++                    <artifactId>lucene-core</artifactId>
++                </exclusion>
++                <exclusion>
++                    <groupId>org.apache.solr</groupId>
++                    <artifactId>solr-core</artifactId>
++                </exclusion>
++                <exclusion>
++                    <groupId>org.apache.solr</groupId>
++                    <artifactId>solr-solrj</artifactId>
++                </exclusion>
++                <exclusion>
++                    <groupId>org.apache.lucene</groupId>
++                    <artifactId>lucene-codecs</artifactId>
++                </exclusion>
++                <exclusion>
++                    <groupId>org.apache.lucene</groupId>
++                    <artifactId>lucene-analyzers</artifactId>
++                </exclusion>
++                <exclusion>
++                    <groupId>org.apache.lucene</groupId>
++                    <artifactId>lucene-analyzers-common</artifactId>
++                </exclusion>
++            </exclusions>
++        </dependency>
++        
++        <dependency>
++            <!-- see http://stackoverflow.com/questions/174560/sharing-test-code-in-maven#174670 -->
++            <groupId>org.languagetool</groupId>
++            <artifactId>languagetool-core</artifactId>
++            <version>${languagetool.version}</version>
++            <type>test-jar</type>
++            <scope>test</scope>
++        </dependency>
++        <dependency>
++            <groupId>junit</groupId>
++            <artifactId>junit</artifactId>
++            <version>${junit.version}</version>
++            <scope>test</scope>
++        </dependency>
++    </dependencies>
++
++</project>
+\ No newline at end of file
+diff --git a/test/data/install_pom/languagetool/languagetool-standalone/pom.xml b/test/data/install_pom/languagetool/languagetool-standalone/pom.xml
+new file mode 100644
+index 00000000..37c51753
+--- /dev/null
++++ b/test/data/install_pom/languagetool/languagetool-standalone/pom.xml
+@@ -0,0 +1,163 @@
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++    
++    <parent>
++        <groupId>org.languagetool</groupId>
++        <artifactId>languagetool-parent</artifactId>
++        <version>4.8</version>
++        <relativePath>../pom.xml</relativePath>
++    </parent>
++    
++    <artifactId>languagetool-standalone</artifactId>
++    <url>http://www.languagetool.org</url>
++    <name>LanguageTool stand-alone GUI</name>
++
++    <licenses>
++        <license>
++            <name>GNU Lesser General Public License</name>
++            <url>http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt</url>
++            <distribution>repo</distribution>
++        </license>
++    </licenses>
++    
++    <packaging>jar</packaging>
++
++    <build>
++        <resources>
++            <resource>
++                <directory>src/main/resources</directory>
++            </resource>
++            <resource>
++                <directory>${basedir}</directory>
++                <targetPath>META-INF</targetPath>
++                <includes>
++                    <include>CHANGES.txt</include>
++                    <include>COPYING.txt</include>
++                    <include>README.txt</include>
++                </includes>
++            </resource>
++        </resources>
++        <plugins>
++            <plugin>
++                <artifactId>maven-compiler-plugin</artifactId>
++            </plugin>
++            <plugin>
++                <artifactId>maven-surefire-plugin</artifactId>
++            </plugin>
++
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-jar-plugin</artifactId>
++                <version>${maven.jar.plugin}</version>
++                <configuration>
++                    <archive>
++                        <manifest>
++                            <addClasspath>true</addClasspath>
++                            <classpathLayoutType>custom</classpathLayoutType>
++                            <customClasspathLayout>libs/$${artifact.artifactId}$${dashClassifier?}.$${artifact.extension}</customClasspathLayout>
++                        </manifest>
++                        <manifestEntries>
++                            <!-- as we later unzip the language JARs (see zip.xml), we need to add the top directory to the classpath: -->
++                            <Class-Path>./ languagetool-server.jar</Class-Path>
++                            <Main-Class>org.languagetool.gui.Main</Main-Class>
++                            <ComponentVersion>${project.version}</ComponentVersion>
++                            <Implementation-Date>${maven.build.timestamp}</Implementation-Date>
++                        </manifestEntries>
++                    </archive>
++                </configuration>
++            </plugin>
++            <plugin>
++                <artifactId>maven-assembly-plugin</artifactId>
++                <version>${maven.assemby.plugin}</version>
++                <configuration>
++                    <descriptor>src/main/assembly/zip.xml</descriptor>
++                    <finalName>LanguageTool-${project.version}</finalName>
++                    <appendAssemblyId>false</appendAssemblyId>
++                    <archive>
++                        <manifest>
++                            <addClasspath>true</addClasspath>
++                            <addExtensions>false</addExtensions>
++                        </manifest>
++                    </archive>
++                </configuration>
++                <executions>
++                    <execution>
++                        <id>make-assembly</id>
++                        <phase>package</phase>
++                        <goals>
++                            <goal>single</goal>
++                        </goals>
++                    </execution>
++                </executions>
++            </plugin>
++            
++        </plugins>
++    </build>
++
++    <dependencies>
++        <dependency>
++            <groupId>org.languagetool</groupId>
++            <artifactId>languagetool-core</artifactId>
++            <version>${languagetool.version}</version>
++        </dependency>
++        <dependency>
++            <groupId>org.languagetool</groupId>
++            <artifactId>languagetool-gui-commons</artifactId>
++            <version>${languagetool.version}</version>
++        </dependency>
++        <dependency>
++            <groupId>org.languagetool</groupId>
++            <artifactId>languagetool-commandline</artifactId>
++            <version>${languagetool.version}</version>
++        </dependency>
++        <dependency>
++            <groupId>org.languagetool</groupId>
++            <artifactId>languagetool-server</artifactId>
++            <version>${languagetool.version}</version>
++        </dependency>
++
++        <dependency>
++            <groupId>org.languagetool</groupId>
++            <artifactId>language-all</artifactId>
++            <version>${languagetool.version}</version>
++        </dependency>
++
++        <dependency>
++            <groupId>org.languagetool</groupId>
++            <artifactId>languagetool-tools</artifactId>
++            <version>${languagetool.version}</version>
++        </dependency>
++
++        <dependency>
++            <groupId>org.apache.commons</groupId>
++            <artifactId>commons-collections4</artifactId>
++            <version>4.1</version>
++        </dependency>
++
++        <dependency>
++            <groupId>org.slf4j</groupId>
++            <artifactId>slf4j-api</artifactId>
++            <version>1.7.25</version>
++        </dependency>
++        <dependency>
++            <groupId>ch.qos.logback</groupId>
++            <artifactId>logback-classic</artifactId>
++            <version>1.2.3</version>
++        </dependency>
++
++        <dependency>
++            <!-- see http://stackoverflow.com/questions/174560/sharing-test-code-in-maven#174670 -->
++            <groupId>org.languagetool</groupId>
++            <artifactId>languagetool-core</artifactId>
++            <version>${languagetool.version}</version>
++            <type>test-jar</type>
++        </dependency>
++        <dependency>
++            <groupId>junit</groupId>
++            <artifactId>junit</artifactId>
++            <version>${junit.version}</version>
++            <!-- Some tests are used at runtime for rule developers, thus no 'test' scope here -->
++        </dependency>
++    </dependencies>
++
++</project>
+diff --git a/test/data/install_pom/languagetool/pom.xml b/test/data/install_pom/languagetool/pom.xml
+new file mode 100644
+index 00000000..a47b9b01
+--- /dev/null
++++ b/test/data/install_pom/languagetool/pom.xml
+@@ -0,0 +1,233 @@
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++
++  <prerequisites>
++    <maven>3.04</maven>
++  </prerequisites>
++    
++  <parent>
++    <groupId>org.sonatype.oss</groupId>
++    <artifactId>oss-parent</artifactId>
++    <version>7</version>
++  </parent>
++  
++  <scm>
++    <connection>scm:git:git@github.com:languagetool-org/languagetool.git</connection>
++    <developerConnection>scm:git:git@github.com:languagetool-org/languagetool.git</developerConnection>
++    <url>git@github.com:languagetool-org/languagetool.git</url>
++    <tag>HEAD</tag>
++  </scm>
++
++  <groupId>org.languagetool</groupId>
++  <artifactId>languagetool-parent</artifactId>
++  <version>4.8</version>
++  <packaging>pom</packaging>
++
++  <properties>
++      <languagetool.version>4.8</languagetool.version>
++      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++      <maven.compiler.source>1.8</maven.compiler.source>
++      <maven.compiler.target>1.8</maven.compiler.target>
++      <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
++      <maven.jar.plugin>2.6</maven.jar.plugin>  <!-- NOTE: don't update without testing OpenOffice, 3.0.2 caused "Got no data stream!" after add-on installation -->
++      <maven.assemby.plugin>2.6</maven.assemby.plugin>
++      <junit.version>4.12</junit.version>
++      <morfologik.version>2.1.6</morfologik.version>
++      <jackson.version>2.9.10</jackson.version>
++      <lucene.version>5.5.5</lucene.version>
++  </properties>
++  
++  <build>
++      
++      <extensions>
++		  <!-- needed to deploy to https://repository-languagetool.forge.cloudbees.com/snapshot/ -->
++          <extension>
++              <groupId>org.apache.maven.wagon</groupId>
++              <artifactId>wagon-webdav</artifactId>
++              <version>1.0-beta-2</version>
++          </extension>
++      </extensions>
++      
++      <pluginManagement>
++          <plugins>
++
++              <plugin>
++                  <!-- see https://github.com/languagetool-org/languagetool/issues/1745 -->
++                  <groupId>org.apache.maven.plugins</groupId>
++                  <artifactId>maven-enforcer-plugin</artifactId>
++                  <version>3.0.0-M2</version>
++                  <executions>
++                      <execution>
++                          <id>enforce</id>
++                          <configuration>
++                              <rules>
++                                  <dependencyConvergence/>
++                              </rules>
++                          </configuration>
++                          <goals>
++                              <goal>enforce</goal>
++                          </goals>
++                      </execution>
++                  </executions>
++              </plugin>
++              
++              <plugin>
++                  <groupId>pl.project13.maven</groupId>
++                  <artifactId>git-commit-id-plugin</artifactId>
++                  <version>2.2.6</version>
++                  <executions>
++                      <execution>
++                          <id>get-the-git-infos</id>
++                          <goals>
++                              <goal>revision</goal>
++                          </goals>
++                          <phase>initialize</phase>
++                      </execution>
++                  </executions>
++                  <configuration>
++                      <generateGitPropertiesFile>true</generateGitPropertiesFile>
++                      <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
++                  </configuration>
++              </plugin>
++              
++              <plugin>
++                  <artifactId>maven-compiler-plugin</artifactId>
++                  <version>3.8.0</version>
++                  <configuration>
++                      <!-- helps IntelliJ to not forget the configuration (https://stackoverflow.com/questions/29888592/): -->
++                      <source>${maven.compiler.source}</source>
++                      <target>${maven.compiler.target}</target>
++                  </configuration>
++              </plugin>
++
++              <plugin>
++                  <artifactId>maven-surefire-plugin</artifactId>
++                  <version>2.22.0</version>
++                  <configuration>
++                      <trimStackTrace>false</trimStackTrace>
++                      <argLine>-Xms256m -Xmx1550m</argLine>
++                      <runOrder>failedfirst</runOrder>
++                      <excludes>
++                          <exclude>**/*ConcurrencyTest.java</exclude>
++                          <exclude>**/Abstract*.java</exclude>
++                      </excludes>
++                      <useSystemClassLoader>false</useSystemClassLoader><!-- see https://stackoverflow.com/questions/53326285 -->
++                  </configuration>
++              </plugin>
++
++              <plugin>
++                  <groupId>org.apache.maven.plugins</groupId>
++                  <artifactId>maven-javadoc-plugin</artifactId>
++                  <version>3.0.1</version>
++                  <configuration>
++                      <bottom><![CDATA[&nbsp;]]></bottom>
++                      <excludePackageNames>org.languagetool.dev.conversion*</excludePackageNames>
++                      <!-- don't check javadoc <additionalJOption>-Xdoclint:none</additionalJOption> -->
++                  </configuration>
++              </plugin>
++
++              <plugin>
++                  <!-- License report: call `mvn license:third-party-report`, then see languagetool-standalone/target/site/third-party-report.html -->
++                  <groupId>org.codehaus.mojo</groupId>
++                  <artifactId>license-maven-plugin</artifactId>
++              </plugin>
++
++          </plugins>
++      </pluginManagement>
++  </build>
++
++  <distributionManagement>
++    <repository>
++      <id>community-release</id>
++      <url>dav:https://repository-languagetool.forge.cloudbees.com/release/</url>
++    </repository>
++    <snapshotRepository>
++      <id>community-snapshot</id>
++      <url>dav:https://repository-languagetool.forge.cloudbees.com/snapshot/</url>
++    </snapshotRepository>
++  </distributionManagement>
++
++  <profiles>
++    <!-- taken from https://docs.sonatype.org/display/Repository/How+To+Generate+PGP+Signatures+With+Maven -->
++    <profile>
++      <id>release-sign-artifacts</id>
++      <activation>
++        <property>
++          <name>performRelease</name>
++          <value>true</value>
++        </property>
++      </activation>
++      <build>
++        <plugins>
++          <plugin>
++            <groupId>org.apache.maven.plugins</groupId>
++            <artifactId>maven-gpg-plugin</artifactId>
++            <version>1.6</version>
++            <configuration>
++              <useAgent>true</useAgent>  
++            </configuration>
++            <executions>
++              <execution>
++                <id>sign-artifacts</id>
++                <phase>verify</phase>
++                <goals>
++                  <goal>sign</goal>
++                </goals>
++              </execution>
++            </executions>
++          </plugin>
++        </plugins>
++      </build>
++    </profile>
++  </profiles>
++    
++  <modules>
++    <module>languagetool-core</module>
++    <module>languagetool-language-modules/en</module>
++    <module>languagetool-language-modules/fa</module>
++    <module>languagetool-language-modules/fr</module>
++    <module>languagetool-language-modules/de</module>
++    <module>languagetool-language-modules/pl</module>
++    <module>languagetool-language-modules/ca</module>
++    <module>languagetool-language-modules/it</module>
++    <module>languagetool-language-modules/br</module>
++    <module>languagetool-language-modules/nl</module>
++    <module>languagetool-language-modules/pt</module>
++    <module>languagetool-language-modules/ru</module>
++    <module>languagetool-language-modules/ast</module>
++    <module>languagetool-language-modules/be</module>
++    <module>languagetool-language-modules/zh</module>
++    <module>languagetool-language-modules/da</module>
++    <module>languagetool-language-modules/eo</module>
++    <module>languagetool-language-modules/gl</module>
++    <module>languagetool-language-modules/el</module>
++    <module>languagetool-language-modules/is</module>
++    <module>languagetool-language-modules/ja</module>
++    <module>languagetool-language-modules/km</module>
++    <module>languagetool-language-modules/lt</module>
++    <module>languagetool-language-modules/ml</module>
++    <module>languagetool-language-modules/ro</module>
++    <module>languagetool-language-modules/sk</module>
++    <module>languagetool-language-modules/sl</module>
++    <!-- re-add when a maintainer is found: <module>languagetool-language-modules/sr</module>-->
++    <module>languagetool-language-modules/es</module>
++    <module>languagetool-language-modules/sv</module>
++    <module>languagetool-language-modules/ta</module>
++    <module>languagetool-language-modules/tl</module>
++    <module>languagetool-language-modules/uk</module>
++    <module>languagetool-language-modules/de-DE-x-simple-language</module>
++    <module>languagetool-language-modules/all</module>
++    <module>languagetool-gui-commons</module>
++    <module>languagetool-commandline</module>
++    <module>languagetool-standalone</module>
++    <module>languagetool-office-extension</module>
++    <module>languagetool-wikipedia</module>
++    <module>languagetool-server</module>
++    <module>languagetool-http-client</module>
++    <module>languagetool-tools</module>
++    <module>languagetool-dev</module>
++    <module>languagetool-rpm-package</module>
++    <!-- don't add languagetool-client-example here, it's built manually only -->
++  </modules>
++
++</project>
+diff --git a/test/data/install_pom/test_any_not_final-want.xml b/test/data/install_pom/test_any_not_final-want.xml
+new file mode 100644
+index 00000000..0e34c3f9
+--- /dev/null
++++ b/test/data/install_pom/test_any_not_final-want.xml
+@@ -0,0 +1,24 @@
++<?xml version='1.0' encoding='UTF-8'?>
++<project xmlns="http://maven.apache.org/POM/4.0.0">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>org.fedoraproject.xmvn</groupId>
++  <artifactId>xmvn-resolve</artifactId>
++  <version>4.0.0</version>
++  <dependencies>
++    <dependency>
++      <groupId>com.beust</groupId>
++      <artifactId>jcommander</artifactId>
++      <version>1.82</version>
++    </dependency>
++    <dependency>
++      <groupId>org.fedoraproject.xmvn</groupId>
++      <artifactId>xmvn-api</artifactId>
++      <version>4.0.0</version>
++    </dependency>
++    <dependency>
++      <groupId>org.fedoraproject.xmvn</groupId>
++      <artifactId>xmvn-core</artifactId>
++      <version>4.0.0</version>
++    </dependency>
++  </dependencies>
++</project>
+\ No newline at end of file
+diff --git a/test/data/install_pom/test_basic-want.xml b/test/data/install_pom/test_basic-want.xml
+new file mode 100644
+index 00000000..2b7ed5cd
+--- /dev/null
++++ b/test/data/install_pom/test_basic-want.xml
+@@ -0,0 +1,7 @@
++<?xml version='1.0' encoding='UTF-8'?>
++<project xmlns="http://maven.apache.org/POM/4.0.0">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>biz.aQute</groupId>
++  <artifactId>bndlib</artifactId>
++  <version>1.50.0</version>
++</project>
+\ No newline at end of file
+diff --git a/test/data/install_pom/test_dep_classifier-want.xml b/test/data/install_pom/test_dep_classifier-want.xml
+new file mode 100644
+index 00000000..e78f92e6
+--- /dev/null
++++ b/test/data/install_pom/test_dep_classifier-want.xml
+@@ -0,0 +1,20 @@
++<?xml version='1.0' encoding='UTF-8'?>
++<project xmlns="http://maven.apache.org/POM/4.0.0">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>org.languagetool</groupId>
++  <artifactId>language-ja</artifactId>
++  <version>4.8</version>
++  <dependencies>
++    <dependency>
++      <groupId>org.languagetool</groupId>
++      <artifactId>languagetool-core</artifactId>
++      <version>4.8</version>
++    </dependency>
++    <dependency>
++      <groupId>com.github.lucene-gosen</groupId>
++      <artifactId>lucene-gosen</artifactId>
++      <version>6.2.1</version>
++      <classifier>ipadic</classifier>
++    </dependency>
++  </dependencies>
++</project>
+\ No newline at end of file
+diff --git a/test/data/install_pom/test_dep_type-want.xml b/test/data/install_pom/test_dep_type-want.xml
+new file mode 100644
+index 00000000..0074c18b
+--- /dev/null
++++ b/test/data/install_pom/test_dep_type-want.xml
+@@ -0,0 +1,65 @@
++<?xml version='1.0' encoding='UTF-8'?>
++<project xmlns="http://maven.apache.org/POM/4.0.0">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>org.languagetool</groupId>
++  <artifactId>languagetool-standalone</artifactId>
++  <version>4.8</version>
++  <dependencies>
++    <dependency>
++      <groupId>org.languagetool</groupId>
++      <artifactId>languagetool-core</artifactId>
++      <version>4.8</version>
++    </dependency>
++    <dependency>
++      <groupId>org.languagetool</groupId>
++      <artifactId>languagetool-gui-commons</artifactId>
++      <version>4.8</version>
++    </dependency>
++    <dependency>
++      <groupId>org.languagetool</groupId>
++      <artifactId>languagetool-commandline</artifactId>
++      <version>4.8</version>
++    </dependency>
++    <dependency>
++      <groupId>org.languagetool</groupId>
++      <artifactId>languagetool-server</artifactId>
++      <version>4.8</version>
++    </dependency>
++    <dependency>
++      <groupId>org.languagetool</groupId>
++      <artifactId>language-all</artifactId>
++      <version>4.8</version>
++    </dependency>
++    <dependency>
++      <groupId>org.languagetool</groupId>
++      <artifactId>languagetool-tools</artifactId>
++      <version>4.8</version>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.commons</groupId>
++      <artifactId>commons-collections4</artifactId>
++      <version>4.1</version>
++    </dependency>
++    <dependency>
++      <groupId>org.slf4j</groupId>
++      <artifactId>slf4j-api</artifactId>
++      <version>1.7.25</version>
++    </dependency>
++    <dependency>
++      <groupId>ch.qos.logback</groupId>
++      <artifactId>logback-classic</artifactId>
++      <version>1.2.3</version>
++    </dependency>
++    <dependency>
++      <groupId>org.languagetool</groupId>
++      <artifactId>languagetool-core</artifactId>
++      <version>4.8</version>
++      <extension>test-jar</extension>
++    </dependency>
++    <dependency>
++      <groupId>junit</groupId>
++      <artifactId>junit</artifactId>
++      <version>4.12</version>
++    </dependency>
++  </dependencies>
++</project>
+\ No newline at end of file
+diff --git a/test/data/install_pom/test_interpolate_from_model-want.xml b/test/data/install_pom/test_interpolate_from_model-want.xml
+new file mode 100644
+index 00000000..7dd835c4
+--- /dev/null
++++ b/test/data/install_pom/test_interpolate_from_model-want.xml
+@@ -0,0 +1,19 @@
++<?xml version='1.0' encoding='UTF-8'?>
++<project xmlns="http://maven.apache.org/POM/4.0.0">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>cglib</groupId>
++  <artifactId>cglib-integration-test</artifactId>
++  <version>3.3.0</version>
++  <dependencies>
++    <dependency>
++      <groupId>cglib</groupId>
++      <artifactId>cglib</artifactId>
++      <version>3.3.0</version>
++    </dependency>
++    <dependency>
++      <groupId>cglib</groupId>
++      <artifactId>cglib-sample</artifactId>
++      <version>3.3.0</version>
++    </dependency>
++  </dependencies>
++</project>
+\ No newline at end of file
+diff --git a/test/data/install_pom/test_interpolate_from_parent-want.xml b/test/data/install_pom/test_interpolate_from_parent-want.xml
+new file mode 100644
+index 00000000..2f53c963
+--- /dev/null
++++ b/test/data/install_pom/test_interpolate_from_parent-want.xml
+@@ -0,0 +1,20 @@
++<?xml version='1.0' encoding='UTF-8'?>
++<project xmlns="http://maven.apache.org/POM/4.0.0">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>cglib</groupId>
++  <artifactId>cglib</artifactId>
++  <version>3.3.0</version>
++  <dependencies>
++    <dependency>
++      <groupId>org.ow2.asm</groupId>
++      <artifactId>asm</artifactId>
++      <version>7.1</version>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.ant</groupId>
++      <artifactId>ant</artifactId>
++      <version>1.10.3</version>
++      <optional>true</optional>
++    </dependency>
++  </dependencies>
++</project>
+\ No newline at end of file
+diff --git a/test/data/install_pom/test_packaging_pom-want.xml b/test/data/install_pom/test_packaging_pom-want.xml
+new file mode 100644
+index 00000000..79ad0972
+--- /dev/null
++++ b/test/data/install_pom/test_packaging_pom-want.xml
+@@ -0,0 +1,23 @@
++<?xml version='1.0' encoding='UTF-8'?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++  <parent>
++    <groupId>org.apache.commons</groupId>
++    <artifactId>commons-parent</artifactId>
++    <version>17</version>
++  </parent>
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>commons-io</groupId>
++  <artifactId>commons-io</artifactId>
++  <version>2</version>
++  <name>Commons Lang</name>
++  <packaging>pom</packaging>
++
++  <dependencies>
++    <dependency>
++      <groupId>G</groupId>
++      <artifactId>G</artifactId>
++      <version>1000</version>
++    </dependency>
++  </dependencies>
++
++</project>
+\ No newline at end of file
+diff --git a/test/data/install_pom/test_packaging_pom_missing_version-want.xml b/test/data/install_pom/test_packaging_pom_missing_version-want.xml
+new file mode 100644
+index 00000000..f3f66652
+--- /dev/null
++++ b/test/data/install_pom/test_packaging_pom_missing_version-want.xml
+@@ -0,0 +1,10 @@
++<?xml version='1.0' encoding='UTF-8'?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>org.apache.commons</groupId>
++  <groupId>commons-io</groupId>
++  <artifactId>commons-io</artifactId>
++  <name>Commons Lang</name>
++  <packaging>pom</packaging>
++
++</project>
+\ No newline at end of file
+diff --git a/test/data/install_pom/test_parent_chain-want.xml b/test/data/install_pom/test_parent_chain-want.xml
+new file mode 100644
+index 00000000..3fe9faf2
+--- /dev/null
++++ b/test/data/install_pom/test_parent_chain-want.xml
+@@ -0,0 +1,44 @@
++<?xml version='1.0' encoding='UTF-8'?>
++<project xmlns="http://maven.apache.org/POM/4.0.0">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>org.fedoraproject.xmvn</groupId>
++  <artifactId>xmvn-install</artifactId>
++  <version>4.0.0</version>
++  <dependencies>
++    <dependency>
++      <groupId>com.beust</groupId>
++      <artifactId>jcommander</artifactId>
++      <version>1.82</version>
++    </dependency>
++    <dependency>
++      <groupId>org.fedoraproject.xmvn</groupId>
++      <artifactId>xmvn-api</artifactId>
++      <version>4.0.0</version>
++    </dependency>
++    <dependency>
++      <groupId>org.fedoraproject.xmvn</groupId>
++      <artifactId>xmvn-core</artifactId>
++      <version>4.0.0</version>
++    </dependency>
++    <dependency>
++      <groupId>org.slf4j</groupId>
++      <artifactId>slf4j-api</artifactId>
++      <version>2.0.0-alpha7</version>
++    </dependency>
++    <dependency>
++      <groupId>org.slf4j</groupId>
++      <artifactId>slf4j-simple</artifactId>
++      <version>2.0.0-alpha7</version>
++    </dependency>
++    <dependency>
++      <groupId>org.ow2.asm</groupId>
++      <artifactId>asm</artifactId>
++      <version>9.3</version>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.commons</groupId>
++      <artifactId>commons-compress</artifactId>
++      <version>1.21</version>
++    </dependency>
++  </dependencies>
++</project>
+\ No newline at end of file
+diff --git a/test/data/install_pom/test_parent_install-want.xml b/test/data/install_pom/test_parent_install-want.xml
+new file mode 100644
+index 00000000..64931178
+--- /dev/null
++++ b/test/data/install_pom/test_parent_install-want.xml
+@@ -0,0 +1,245 @@
++<?xml version='1.0' encoding='UTF-8'?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++    
++    <parent>
++      <groupId>org.sonatype.oss</groupId>
++      <artifactId>oss-parent</artifactId>
++      <version>7</version>
++    </parent>
++
++    
++    
++    
++    <groupId>cglib</groupId>
++    <artifactId>cglib-parent</artifactId>
++    <version>3.3.0</version>
++    <packaging>pom</packaging>
++
++    <name>Code Generation Library</name>
++    <url>https://github.com/cglib/cglib</url>
++    <description>cglib is a powerful, high performance and quality Code Generation Library, It is used to extend JAVA classes and implements interfaces at runtime.</description>
++
++    <scm>
++        <connection>scm:git:git://github.com/cglib/cglib.git</connection>
++        <developerConnection>scm:git:ssh://git@github.com/cglib/cglib.git</developerConnection>
++        <url>https://github.com/cglib/cglib</url>
++    </scm>
++
++    <issueManagement>
++        <system>Github Issues</system>
++        <url>https://github.com/cglib/cglib/issues</url>
++    </issueManagement>
++
++    <ciManagement>
++        <system>Travis</system>
++        <url>https://travis-ci.org/cglib/cglib</url>
++    </ciManagement>
++
++    <licenses>
++        <license>
++            <name>ASF 2.0</name>
++            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
++            <distribution>repo</distribution>
++        </license>
++    </licenses>
++
++    
++    
++    
++    <properties>
++        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
++
++        <java.version.source>1.5</java.version.source>
++        <java.version.target>1.5</java.version.target>
++        <asm.version>7.1</asm.version>
++        <ant.version>1.10.3</ant.version>
++        <jmh.version>1.21</jmh.version>
++        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
++        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
++        <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
++        <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
++        <java.compiler.argument />
++
++        <java.test.compiler.argument>${java.compiler.argument}</java.test.compiler.argument>
++        <gpg.skip>true</gpg.skip>
++    </properties>
++
++    
++    
++    
++    <modules>
++        <module>cglib</module>
++        <module>cglib-nodep</module>
++        <module>cglib-sample</module>
++        <module>cglib-integration-test</module>
++        <module>cglib-jmh</module>
++    </modules>
++
++    
++    
++    
++    <profiles>
++        <profile>
++            <id>java8</id>
++            <activation>
++                <jdk>[1.8,)</jdk>
++            </activation>
++            <properties>
++                <java.test.compiler.argument>-parameters</java.test.compiler.argument>
++            </properties>
++        </profile>
++        <profile>
++            <id>java9</id>
++            <activation>
++                <jdk>[1.9,)</jdk>
++            </activation>
++            <properties>
++                <java.version.source>1.6</java.version.source>
++                <java.version.target>1.6</java.version.target>
++                <java.test.compiler.argument>-parameters</java.test.compiler.argument>
++            </properties>
++        </profile>
++    </profiles>
++
++    
++    
++    
++    <build>
++        <pluginManagement>
++            <plugins>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-compiler-plugin</artifactId>
++                    <version>${maven-compiler-plugin.version}</version>
++                    <configuration>
++                        <source>${java.version.source}</source>
++                        <target>${java.version.target}</target>
++                        <compilerArgument>${java.compiler.argument}</compilerArgument>
++                        <testSource>${java.specification.version}</testSource>
++                        <testTarget>${java.specification.version}</testTarget>
++                        <testCompilerArgument>${java.test.compiler.argument}</testCompilerArgument>
++                    </configuration>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-surefire-plugin</artifactId>
++                    <version>2.21.0</version>
++                    <configuration>
++                        <systemProperties>
++                            <property>
++                                <name>net.sf.cglib.test.stressHashCodes</name>
++                                <value>true</value>
++                            </property>
++                        </systemProperties>
++                    </configuration>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-failsafe-plugin</artifactId>
++                    <version>2.21.0</version>
++                    <configuration>
++                        <systemProperties>
++                            <property>
++                                <name>net.sf.cglib.test.stressHashCodes</name>
++                                <value>true</value>
++                            </property>
++                        </systemProperties>
++                    </configuration>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-javadoc-plugin</artifactId>
++                    <version>${maven-javadoc-plugin.version}</version>
++                    <configuration>
++                      <quiet>true</quiet>
++                      <detectLinks>false</detectLinks>
++                      <detectOfflineLinks>false</detectOfflineLinks>
++                      
++                      <use>false</use>
++                      <doclint>none</doclint>
++                      <additionalDependencies>
++                        <additionalDependency>
++                          <groupId>org.ow2.asm</groupId>
++                          <artifactId>asm</artifactId>
++                          <version>${asm.version}</version>
++                        </additionalDependency>
++                        <additionalDependency>
++                          <groupId>org.apache.ant</groupId>
++                          <artifactId>ant</artifactId>
++                          <version>${ant.version}</version>
++                        </additionalDependency>
++                      </additionalDependencies>
++                    </configuration>
++                    <executions>
++                      <execution>
++                        <id>attach-javadocs</id>
++                        <goals>
++                          <goal>jar</goal>
++                        </goals>
++                      </execution>
++                    </executions>
++                </plugin>
++                <plugin>
++                    <groupId>org.sonatype.plugins</groupId>
++                    <artifactId>jarjar-maven-plugin</artifactId>
++                    <version>1.9</version>
++                </plugin>
++            </plugins>
++        </pluginManagement>
++        <plugins>
++            <plugin>
++              <groupId>org.apache.maven.plugins</groupId>
++              <artifactId>maven-gpg-plugin</artifactId>
++              <version>1.6</version>
++              <executions>
++              <execution>
++                <id>sign-artifacts</id>
++                <phase>verify</phase>
++                <goals>
++                  <goal>sign</goal>
++                </goals>
++              </execution>
++            </executions>
++          </plugin>
++        </plugins>
++    </build>
++
++    
++    
++    
++    <dependencyManagement>
++        <dependencies>
++            <dependency>
++                <groupId>${project.groupId}</groupId>
++                <artifactId>cglib</artifactId>
++                <version>${project.version}</version>
++            </dependency>
++            <dependency>
++                <groupId>${project.groupId}</groupId>
++                <artifactId>cglib-sample</artifactId>
++                <version>${project.version}</version>
++            </dependency>
++
++            <dependency>
++                <groupId>org.ow2.asm</groupId>
++                <artifactId>asm</artifactId>
++                <version>${asm.version}</version>
++            </dependency>
++            <dependency>
++                <groupId>org.apache.ant</groupId>
++                <artifactId>ant</artifactId>
++                <version>${ant.version}</version>
++            </dependency>
++
++            <dependency>
++                <groupId>junit</groupId>
++                <artifactId>junit</artifactId>
++                <version>4.12</version>
++                <scope>test</scope>
++            </dependency>
++        </dependencies>
++    </dependencyManagement>
++
++</project>
+\ No newline at end of file
+diff --git a/test/data/install_pom/test_parent_relpath-want.xml b/test/data/install_pom/test_parent_relpath-want.xml
+new file mode 100644
+index 00000000..98a5c980
+--- /dev/null
++++ b/test/data/install_pom/test_parent_relpath-want.xml
+@@ -0,0 +1,25 @@
++<?xml version='1.0' encoding='UTF-8'?>
++<project xmlns="http://maven.apache.org/POM/4.0.0">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>org.fedoraproject.xmvn</groupId>
++  <artifactId>xmvn-mojo</artifactId>
++  <version>4.0.0</version>
++  <packaging>maven-plugin</packaging>
++  <dependencies>
++    <dependency>
++      <groupId>org.fedoraproject.xmvn</groupId>
++      <artifactId>xmvn-api</artifactId>
++      <version>4.0.0</version>
++    </dependency>
++    <dependency>
++      <groupId>org.fedoraproject.xmvn</groupId>
++      <artifactId>xmvn-core</artifactId>
++      <version>4.0.0</version>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.maven.resolver</groupId>
++      <artifactId>maven-resolver-util</artifactId>
++      <version>1.8.1</version>
++    </dependency>
++  </dependencies>
++</project>
+\ No newline at end of file
+diff --git a/test/data/install_pom/test_parent_version-want.xml b/test/data/install_pom/test_parent_version-want.xml
+new file mode 100644
+index 00000000..4f5734e6
+--- /dev/null
++++ b/test/data/install_pom/test_parent_version-want.xml
+@@ -0,0 +1,7 @@
++<?xml version='1.0' encoding='UTF-8'?>
++<project xmlns="http://maven.apache.org/POM/4.0.0">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>g</groupId>
++  <artifactId>a</artifactId>
++  <version>1</version>
++</project>
+\ No newline at end of file
+diff --git a/test/data/install_pom/xmvn/xmvn-mojo/pom.xml b/test/data/install_pom/xmvn/xmvn-mojo/pom.xml
+new file mode 100644
+index 00000000..c73f92a7
+--- /dev/null
++++ b/test/data/install_pom/xmvn/xmvn-mojo/pom.xml
+@@ -0,0 +1,113 @@
++<?xml version="1.0" encoding="US-ASCII"?>
++<!--
++ ! Copyright (c) 2012-2021 Red Hat, Inc.
++ !
++ ! Licensed under the Apache License, Version 2.0 (the "License");
++ ! you may not use this file except in compliance with the License.
++ ! You may obtain a copy of the License at
++ !
++ !     http://www.apache.org/licenses/LICENSE-2.0
++ !
++ ! Unless required by applicable law or agreed to in writing, software
++ ! distributed under the License is distributed on an "AS IS" BASIS,
++ ! WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ ! See the License for the specific language governing permissions and
++ ! limitations under the License.
++ `-->
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
++                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++  <parent>
++    <artifactId>xmvn-parent</artifactId>
++    <groupId>org.fedoraproject.xmvn</groupId>
++    <version>4.0.0</version>
++    <relativePath>../xmvn-parent</relativePath>
++  </parent>
++  <artifactId>xmvn-mojo</artifactId>
++  <packaging>maven-plugin</packaging>
++  <name>XMvn MOJO</name>
++  <description>
++    XMvn MOJO is a Maven plugin, which consists of several MOJOs.
++    Some goals of these MOJOs are intended to be attached to default
++    Maven lifecycle when building packages, others can be called
++    directly from Maven command line.
++  </description>
++  <dependencies>
++    <dependency>
++      <groupId>org.apache.maven</groupId>
++      <artifactId>maven-core</artifactId>
++      <scope>provided</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.maven</groupId>
++      <artifactId>maven-artifact</artifactId>
++      <scope>provided</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.maven</groupId>
++      <artifactId>maven-model</artifactId>
++      <scope>provided</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.maven</groupId>
++      <artifactId>maven-plugin-api</artifactId>
++      <scope>provided</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.plexus</groupId>
++      <artifactId>plexus-classworlds</artifactId>
++      <scope>provided</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.plexus</groupId>
++      <artifactId>plexus-utils</artifactId>
++      <scope>provided</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.maven.plugin-tools</groupId>
++      <artifactId>maven-plugin-annotations</artifactId>
++      <scope>provided</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.fedoraproject.xmvn</groupId>
++      <artifactId>xmvn-api</artifactId>
++    </dependency>
++    <dependency>
++      <groupId>org.fedoraproject.xmvn</groupId>
++      <artifactId>xmvn-core</artifactId>
++      <scope>runtime</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.plexus</groupId>
++      <artifactId>plexus-container-default</artifactId>
++      <scope>provided</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.maven.resolver</groupId>
++      <artifactId>maven-resolver-util</artifactId>
++    </dependency>
++  </dependencies>
++  <build>
++    <plugins>
++      <plugin>
++        <artifactId>maven-plugin-plugin</artifactId>
++        <executions>
++          <execution>
++            <id>mojo-descriptor</id>
++            <goals>
++              <goal>descriptor</goal>
++            </goals>
++          </execution>
++        </executions>
++        <configuration>
++          <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
++          <requirements>
++            <maven>3.0</maven>
++          </requirements>
++        </configuration>
++      </plugin>
++    </plugins>
++  </build>
++</project>
+diff --git a/test/data/install_pom/xmvn/xmvn-parent/pom.xml b/test/data/install_pom/xmvn/xmvn-parent/pom.xml
+new file mode 100644
+index 00000000..030923f9
+--- /dev/null
++++ b/test/data/install_pom/xmvn/xmvn-parent/pom.xml
+@@ -0,0 +1,585 @@
++<?xml version="1.0" encoding="US-ASCII"?>
++<!--
++ ! Copyright (c) 2012-2021 Red Hat, Inc.
++ !
++ ! Licensed under the Apache License, Version 2.0 (the "License");
++ ! you may not use this file except in compliance with the License.
++ ! You may obtain a copy of the License at
++ !
++ !     http://www.apache.org/licenses/LICENSE-2.0
++ !
++ ! Unless required by applicable law or agreed to in writing, software
++ ! distributed under the License is distributed on an "AS IS" BASIS,
++ ! WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ ! See the License for the specific language governing permissions and
++ ! limitations under the License.
++ `-->
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
++                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>org.fedoraproject.xmvn</groupId>
++  <artifactId>xmvn-parent</artifactId>
++  <version>4.0.0</version>
++  <packaging>pom</packaging>
++  <name>XMvn Parent</name>
++  <description>
++    XMvn Parent is project model from which all other XMvn modules are
++    inheriting.  It defines settings common to all XMvn modules.
++  </description>
++  <url>https://fedora-java.github.io/xmvn/</url>
++  <inceptionYear>2012</inceptionYear>
++  <organization>
++    <name>Red Hat, Inc.</name>
++    <url>http://www.redhat.com/</url>
++  </organization>
++  <licenses>
++    <license>
++      <name>Apache License Version 2.0</name>
++      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
++    </license>
++  </licenses>
++  <developers>
++    <developer>
++      <id>mizdebsk</id>
++      <name>Mikolaj Izdebski</name>
++      <email>mizdebsk@redhat.com</email>
++      <organization>Red Hat, Inc.</organization>
++      <organizationUrl>http://www.redhat.com/</organizationUrl>
++      <timezone>+1</timezone>
++    </developer>
++  </developers>
++  <mailingLists>
++    <mailingList>
++      <name>Fedora Java development List</name>
++      <post>java-devel@lists.fedoraproject.org</post>
++      <archive>http://lists.fedoraproject.org/pipermail/java-devel/</archive>
++      <subscribe>https://admin.fedoraproject.org/mailman/listinfo/java-devel</subscribe>
++      <unsubscribe>https://admin.fedoraproject.org/mailman/listinfo/java-devel</unsubscribe>
++    </mailingList>
++  </mailingLists>
++  <scm>
++    <url>https://github.com/fedora-java/xmvn</url>
++    <connection>scm:git:https://github.com/fedora-java/xmvn.git</connection>
++    <developerConnection>scm:git:git@github.com:fedora-java/xmvn.git</developerConnection>
++  </scm>
++  <issueManagement>
++    <system>Github</system>
++    <url>https://github.com/fedora-java/xmvn/issues/</url>
++  </issueManagement>
++  <distributionManagement>
++    <snapshotRepository>
++      <id>ossrh</id>
++      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
++    </snapshotRepository>
++  </distributionManagement>
++  <properties>
++    <project.build.sourceEncoding>US-ASCII</project.build.sourceEncoding>
++
++    <asmVersion>9.3</asmVersion>
++    <jcommanderVersion>1.82</jcommanderVersion>
++    <mavenInvokerVersion>3.2.0</mavenInvokerVersion>
++    <mavenResolverVersion>1.8.1</mavenResolverVersion>
++    <mavenVersion>3.8.6</mavenVersion>
++    <plexusClassworldsVersion>2.6.0</plexusClassworldsVersion>
++    <plexusUtilsVersion>3.4.2</plexusUtilsVersion>
++    <pluginToolsVersion>3.6.4</pluginToolsVersion>
++    <slf4jVersion>2.0.0-alpha7</slf4jVersion>
++    <commonsCompressVersion>1.21</commonsCompressVersion>
++
++    <!-- Build dependencies -->
++    <apivizVersion>1.3.2.GA</apivizVersion>
++    <assemblyPluginVersion>3.3.0</assemblyPluginVersion>
++    <buildHelperPluginVersion>3.3.0</buildHelperPluginVersion>
++    <checkstyleVersion>9.3</checkstyleVersion>
++    <checkstylePluginVersion>3.1.2</checkstylePluginVersion>
++    <cleanPluginVersion>3.2.0</cleanPluginVersion>
++    <compilerPluginVersion>3.10.1</compilerPluginVersion>
++    <dependencyPluginVersion>3.3.0</dependencyPluginVersion>
++    <deployPluginVersion>3.0.0-M2</deployPluginVersion>
++    <easymockVersion>4.3</easymockVersion>
++    <gpgPluginVersion>3.0.1</gpgPluginVersion>
++    <installPluginVersion>3.0.0-M1</installPluginVersion>
++    <jacocoVersion>0.8.8</jacocoVersion>
++    <jarPluginVersion>3.2.2</jarPluginVersion>
++    <javadocPluginVersion>3.4.0</javadocPluginVersion>
++    <junitVersion>5.8.2</junitVersion>
++    <jxrPluginVersion>2.3</jxrPluginVersion>
++    <mavenWagonVersion>1.0</mavenWagonVersion>
++    <modelloVersion>2.0.0</modelloVersion>
++    <nexusStagingPluginVersion>1.6.13</nexusStagingPluginVersion>
++    <pmdPluginVersion>3.0.1</pmdPluginVersion>
++    <projectInfoReportsPluginVersion>3.0.0</projectInfoReportsPluginVersion>
++    <plexusVersion>2.1.1</plexusVersion>
++    <ratPluginVersion>0.14</ratPluginVersion>
++    <resourcesPluginVersion>3.2.0</resourcesPluginVersion>
++    <sitePluginVersion>3.12.0</sitePluginVersion>
++    <sourcePluginVersion>3.2.1</sourcePluginVersion>
++    <surefireVersion>3.0.0-M7</surefireVersion>
++    <xmlunitVersion>2.9.0</xmlunitVersion>
++
++  </properties>
++  <dependencyManagement>
++    <dependencies>
++      <dependency>
++        <groupId>org.apache.maven</groupId>
++        <artifactId>maven-artifact</artifactId>
++        <version>${mavenVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.apache.maven</groupId>
++        <artifactId>maven-core</artifactId>
++        <version>${mavenVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.apache.maven</groupId>
++        <artifactId>maven-model</artifactId>
++        <version>${mavenVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.apache.maven</groupId>
++        <artifactId>maven-model-builder</artifactId>
++        <version>${mavenVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.apache.maven</groupId>
++        <artifactId>maven-plugin-api</artifactId>
++        <version>${mavenVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.apache.maven.resolver</groupId>
++        <artifactId>maven-resolver-api</artifactId>
++        <version>${mavenResolverVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.apache.maven.resolver</groupId>
++        <artifactId>maven-resolver-util</artifactId>
++        <version>${mavenResolverVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.apache.maven.plugin-tools</groupId>
++        <artifactId>maven-plugin-annotations</artifactId>
++        <version>${pluginToolsVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.codehaus.plexus</groupId>
++        <artifactId>plexus-classworlds</artifactId>
++        <version>${plexusClassworldsVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.codehaus.plexus</groupId>
++        <artifactId>plexus-utils</artifactId>
++        <version>${plexusUtilsVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.fedoraproject.xmvn</groupId>
++        <artifactId>xmvn-api</artifactId>
++        <version>${project.version}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.fedoraproject.xmvn</groupId>
++        <artifactId>xmvn-core</artifactId>
++        <version>${project.version}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.fedoraproject.xmvn</groupId>
++        <artifactId>xmvn-connector</artifactId>
++        <version>${project.version}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.fedoraproject.xmvn</groupId>
++        <artifactId>xmvn-install</artifactId>
++        <version>${project.version}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.fedoraproject.xmvn</groupId>
++        <artifactId>xmvn-resolve</artifactId>
++        <version>${project.version}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.fedoraproject.xmvn</groupId>
++        <artifactId>xmvn-subst</artifactId>
++        <version>${project.version}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.fedoraproject.xmvn</groupId>
++        <artifactId>xmvn-it</artifactId>
++        <version>${project.version}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.junit.jupiter</groupId>
++        <artifactId>junit-jupiter</artifactId>
++        <version>${junitVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.xmlunit</groupId>
++        <artifactId>xmlunit-assertj3</artifactId>
++        <version>${xmlunitVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.easymock</groupId>
++        <artifactId>easymock</artifactId>
++        <version>${easymockVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>com.beust</groupId>
++        <artifactId>jcommander</artifactId>
++        <version>${jcommanderVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.apache.maven.shared</groupId>
++        <artifactId>maven-invoker</artifactId>
++        <version>${mavenInvokerVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.slf4j</groupId>
++        <artifactId>slf4j-api</artifactId>
++        <version>${slf4jVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.slf4j</groupId>
++        <artifactId>slf4j-simple</artifactId>
++        <version>${slf4jVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.ow2.asm</groupId>
++        <artifactId>asm</artifactId>
++        <version>${asmVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.codehaus.plexus</groupId>
++        <artifactId>plexus-component-annotations</artifactId>
++        <version>${plexusVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.codehaus.plexus</groupId>
++        <artifactId>plexus-container-default</artifactId>
++        <version>${plexusVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.apache.commons</groupId>
++        <artifactId>commons-compress</artifactId>
++        <version>${commonsCompressVersion}</version>
++      </dependency>
++    </dependencies>
++  </dependencyManagement>
++  <dependencies>
++    <dependency>
++      <groupId>org.junit.jupiter</groupId>
++      <artifactId>junit-jupiter</artifactId>
++      <scope>test</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.xmlunit</groupId>
++      <artifactId>xmlunit-assertj3</artifactId>
++      <scope>test</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.easymock</groupId>
++      <artifactId>easymock</artifactId>
++      <scope>test</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.slf4j</groupId>
++      <artifactId>slf4j-simple</artifactId>
++      <scope>test</scope>
++    </dependency>
++  </dependencies>
++  <build>
++    <pluginManagement>
++      <plugins>
++        <plugin>
++          <groupId>org.codehaus.mojo</groupId>
++          <artifactId>build-helper-maven-plugin</artifactId>
++          <version>${buildHelperPluginVersion}</version>
++        </plugin>
++        <plugin>
++          <artifactId>maven-compiler-plugin</artifactId>
++          <version>${compilerPluginVersion}</version>
++          <configuration>
++            <source>1.8</source>
++            <target>1.8</target>
++          </configuration>
++        </plugin>
++        <plugin>
++          <artifactId>maven-site-plugin</artifactId>
++          <version>${sitePluginVersion}</version>
++        </plugin>
++        <plugin>
++          <artifactId>maven-dependency-plugin</artifactId>
++          <version>${dependencyPluginVersion}</version>
++        </plugin>
++        <plugin>
++          <artifactId>maven-plugin-plugin</artifactId>
++          <version>${pluginToolsVersion}</version>
++        </plugin>
++        <plugin>
++          <groupId>org.codehaus.modello</groupId>
++          <artifactId>modello-maven-plugin</artifactId>
++          <version>${modelloVersion}</version>
++        </plugin>
++        <plugin>
++          <artifactId>maven-assembly-plugin</artifactId>
++          <version>${assemblyPluginVersion}</version>
++        </plugin>
++        <plugin>
++          <artifactId>maven-clean-plugin</artifactId>
++          <version>${cleanPluginVersion}</version>
++        </plugin>
++        <plugin>
++          <artifactId>maven-deploy-plugin</artifactId>
++          <version>${deployPluginVersion}</version>
++        </plugin>
++        <plugin>
++          <artifactId>maven-install-plugin</artifactId>
++          <version>${installPluginVersion}</version>
++        </plugin>
++        <plugin>
++          <artifactId>maven-jar-plugin</artifactId>
++          <version>${jarPluginVersion}</version>
++          <configuration>
++            <skipIfEmpty>true</skipIfEmpty>
++          </configuration>
++        </plugin>
++        <plugin>
++          <artifactId>maven-resources-plugin</artifactId>
++          <version>${resourcesPluginVersion}</version>
++        </plugin>
++        <plugin>
++          <artifactId>maven-surefire-plugin</artifactId>
++          <version>${surefireVersion}</version>
++        </plugin>
++        <plugin>
++          <artifactId>maven-checkstyle-plugin</artifactId>
++          <version>${checkstylePluginVersion}</version>
++          <dependencies>
++            <dependency>
++              <groupId>com.puppycrawl.tools</groupId>
++              <artifactId>checkstyle</artifactId>
++              <version>${checkstyleVersion}</version>
++            </dependency>
++          </dependencies>
++          <configuration>
++            <sourceDirectories>
++              <sourceDirectory>src/main/java</sourceDirectory>
++            </sourceDirectories>
++            <includeTestSourceDirectory>true</includeTestSourceDirectory>
++            <configLocation>../aux/checkstyle.xml</configLocation>
++            <suppressionsLocation>../aux/checkstyle-suppressions.xml</suppressionsLocation>
++            <headerLocation>../aux/license-header.txt</headerLocation>
++            <excludes>**/package-info.java</excludes>
++            <logViolationCountToConsole>false</logViolationCountToConsole>
++          </configuration>
++        </plugin>
++        <plugin>
++          <groupId>org.apache.rat</groupId>
++          <artifactId>apache-rat-plugin</artifactId>
++          <version>${ratPluginVersion}</version>
++          <configuration>
++            <excludes>
++              <exclude>src/test/resources/**</exclude>
++            </excludes>
++          </configuration>
++        </plugin>
++        <plugin>
++          <artifactId>maven-javadoc-plugin</artifactId>
++          <version>${javadocPluginVersion}</version>
++          <configuration>
++            <!-- Code generated by Modello causes doclint errors -->
++            <doclint>none</doclint>
++          </configuration>
++        </plugin>
++        <plugin>
++          <artifactId>maven-source-plugin</artifactId>
++          <version>${sourcePluginVersion}</version>
++        </plugin>
++        <plugin>
++          <artifactId>maven-gpg-plugin</artifactId>
++          <version>${gpgPluginVersion}</version>
++        </plugin>
++        <plugin>
++          <groupId>org.sonatype.plugins</groupId>
++          <artifactId>nexus-staging-maven-plugin</artifactId>
++          <version>${nexusStagingPluginVersion}</version>
++          <configuration>
++            <serverId>ossrh</serverId>
++            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
++            <autoReleaseAfterClose>false</autoReleaseAfterClose>
++          </configuration>
++        </plugin>
++        <plugin>
++          <groupId>org.jacoco</groupId>
++          <artifactId>jacoco-maven-plugin</artifactId>
++          <version>${jacocoVersion}</version>
++        </plugin>
++        <plugin>
++          <groupId>org.codehaus.plexus</groupId>
++          <artifactId>plexus-component-metadata</artifactId>
++          <version>${plexusVersion}</version>
++          <executions>
++            <execution>
++              <goals>
++                <goal>generate-metadata</goal>
++              </goals>
++            </execution>
++          </executions>
++        </plugin>
++      </plugins>
++    </pluginManagement>
++  </build>
++  <profiles>
++    <profile>
++      <id>quality</id>
++      <activation>
++        <activeByDefault>true</activeByDefault>
++      </activation>
++      <build>
++        <plugins>
++          <plugin>
++            <artifactId>maven-checkstyle-plugin</artifactId>
++            <executions>
++              <execution>
++                <id>checkstyle-check</id>
++                <goals>
++                  <goal>check</goal>
++                </goals>
++              </execution>
++            </executions>
++          </plugin>
++          <plugin>
++            <groupId>org.jacoco</groupId>
++            <artifactId>jacoco-maven-plugin</artifactId>
++            <executions>
++              <execution>
++                <goals>
++                  <goal>prepare-agent</goal>
++                </goals>
++              </execution>
++              <execution>
++                <id>jacoco-report</id>
++                <phase>post-integration-test</phase>
++                <goals>
++                  <goal>report</goal>
++                </goals>
++              </execution>
++            </executions>
++          </plugin>
++        </plugins>
++      </build>
++    </profile>
++    <profile>
++      <id>release</id>
++      <build>
++        <plugins>
++          <plugin>
++            <artifactId>maven-assembly-plugin</artifactId>
++            <dependencies>
++              <dependency>
++                <groupId>org.apache.apache.resources</groupId>
++                <artifactId>apache-source-release-assembly-descriptor</artifactId>
++                <version>1.0.6</version>
++              </dependency>
++            </dependencies>
++            <executions>
++              <execution>
++                <id>source-release-assembly</id>
++                <phase>package</phase>
++                <goals>
++                  <goal>single</goal>
++                </goals>
++                <configuration>
++                  <runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
++                  <descriptorRefs>
++                    <descriptorRef>source-release</descriptorRef>
++                  </descriptorRefs>
++                  <tarLongFileMode>gnu</tarLongFileMode>
++                </configuration>
++              </execution>
++            </executions>
++          </plugin>
++          <plugin>
++            <artifactId>maven-javadoc-plugin</artifactId>
++            <executions>
++              <execution>
++                <id>attach-javadoc</id>
++                <goals>
++                  <goal>jar</goal>
++                </goals>
++              </execution>
++            </executions>
++          </plugin>
++          <plugin>
++            <artifactId>maven-source-plugin</artifactId>
++            <executions>
++              <execution>
++                <id>attach-sources</id>
++                <goals>
++                  <goal>jar-no-fork</goal>
++                </goals>
++              </execution>
++            </executions>
++          </plugin>
++          <plugin>
++            <artifactId>maven-gpg-plugin</artifactId>
++            <executions>
++              <execution>
++                <id>sign-artifacts</id>
++                <phase>package</phase>
++                <goals>
++                  <goal>sign</goal>
++                </goals>
++              </execution>
++            </executions>
++          </plugin>
++          <plugin>
++            <groupId>org.sonatype.plugins</groupId>
++            <artifactId>nexus-staging-maven-plugin</artifactId>
++            <extensions>true</extensions>
++          </plugin>
++          <plugin>
++            <groupId>org.apache.rat</groupId>
++            <artifactId>apache-rat-plugin</artifactId>
++            <executions>
++              <execution>
++                <id>rat-check</id>
++                <goals>
++                  <goal>check</goal>
++                </goals>
++              </execution>
++            </executions>
++          </plugin>
++          <plugin>
++            <artifactId>maven-site-plugin</artifactId>
++            <configuration>
++              <skip>true</skip>
++              <skipDeploy>true</skipDeploy>
++            </configuration>
++          </plugin>
++        </plugins>
++      </build>
++    </profile>
++    <profile>
++      <id>jdk9+</id>
++      <activation>
++        <jdk>[9,)</jdk>
++      </activation>
++      <build>
++        <plugins>
++          <plugin>
++            <artifactId>maven-compiler-plugin</artifactId>
++            <configuration>
++              <release>8</release>
++            </configuration>
++          </plugin>
++          <plugin>
++            <artifactId>maven-surefire-plugin</artifactId>
++            <configuration>
++              <argLine>--add-opens java.base/java.lang=ALL-UNNAMED</argLine>
++            </configuration>
++          </plugin>
++        </plugins>
++      </build>
++    </profile>
++  </profiles>
++</project>
+diff --git a/test/data/install_pom/xmvn/xmvn-tools/pom.xml b/test/data/install_pom/xmvn/xmvn-tools/pom.xml
+new file mode 100644
+index 00000000..43abc443
+--- /dev/null
++++ b/test/data/install_pom/xmvn/xmvn-tools/pom.xml
+@@ -0,0 +1,58 @@
++<?xml version="1.0" encoding="US-ASCII"?>
++<!--
++ ! Copyright (c) 2012-2021 Red Hat, Inc.
++ !
++ ! Licensed under the Apache License, Version 2.0 (the "License");
++ ! you may not use this file except in compliance with the License.
++ ! You may obtain a copy of the License at
++ !
++ !     http://www.apache.org/licenses/LICENSE-2.0
++ !
++ ! Unless required by applicable law or agreed to in writing, software
++ ! distributed under the License is distributed on an "AS IS" BASIS,
++ ! WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ ! See the License for the specific language governing permissions and
++ ! limitations under the License.
++ `-->
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
++                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++  <parent>
++    <artifactId>xmvn-parent</artifactId>
++    <groupId>org.fedoraproject.xmvn</groupId>
++    <version>4.0.0</version>
++    <relativePath>../xmvn-parent</relativePath>
++  </parent>
++  <artifactId>xmvn-tools</artifactId>
++  <packaging>pom</packaging>
++  <name>XMvn Tools</name>
++  <description>
++    XMvn Tools is parent POM for all XMvn tools.  It holds
++    configuration common to all XMvn tools.
++  </description>
++  <modules>
++    <module>xmvn-resolve</module>
++    <module>xmvn-subst</module>
++    <module>xmvn-install</module>
++  </modules>
++  <build>
++    <pluginManagement>
++      <plugins>
++        <plugin>
++          <artifactId>maven-jar-plugin</artifactId>
++          <version>${jarPluginVersion}</version>
++          <configuration>
++            <archive>
++              <manifest>
++                <addClasspath>true</addClasspath>
++                <mainClass>${mainClass}</mainClass>
++              </manifest>
++            </archive>
++          </configuration>
++        </plugin>
++      </plugins>
++    </pluginManagement>
++  </build>
++</project>
+diff --git a/test/data/install_pom/xmvn/xmvn-tools/xmvn-install/pom.xml b/test/data/install_pom/xmvn/xmvn-tools/xmvn-install/pom.xml
+new file mode 100644
+index 00000000..8c423069
+--- /dev/null
++++ b/test/data/install_pom/xmvn/xmvn-tools/xmvn-install/pom.xml
+@@ -0,0 +1,69 @@
++<?xml version="1.0" encoding="US-ASCII"?>
++<!--
++ ! Copyright (c) 2013-2021 Red Hat, Inc.
++ !
++ ! Licensed under the Apache License, Version 2.0 (the "License");
++ ! you may not use this file except in compliance with the License.
++ ! You may obtain a copy of the License at
++ !
++ !     http://www.apache.org/licenses/LICENSE-2.0
++ !
++ ! Unless required by applicable law or agreed to in writing, software
++ ! distributed under the License is distributed on an "AS IS" BASIS,
++ ! WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ ! See the License for the specific language governing permissions and
++ ! limitations under the License.
++ `-->
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
++                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++  <parent>
++    <groupId>org.fedoraproject.xmvn</groupId>
++    <artifactId>xmvn-tools</artifactId>
++    <version>4.0.0</version>
++  </parent>
++  <artifactId>xmvn-install</artifactId>
++  <name>XMvn Install</name>
++  <description>
++    XMvn Install is a command-line interface to XMvn installer.  The
++    installer reads reactor metadata and performs artifact
++    installation according to specified configuration.
++  </description>
++  <properties>
++    <mainClass>org.fedoraproject.xmvn.tools.install.cli.InstallerCli</mainClass>
++  </properties>
++  <dependencies>
++    <dependency>
++      <groupId>com.beust</groupId>
++      <artifactId>jcommander</artifactId>
++    </dependency>
++    <dependency>
++      <groupId>org.fedoraproject.xmvn</groupId>
++      <artifactId>xmvn-api</artifactId>
++    </dependency>
++    <dependency>
++      <groupId>org.fedoraproject.xmvn</groupId>
++      <artifactId>xmvn-core</artifactId>
++      <scope>runtime</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.slf4j</groupId>
++      <artifactId>slf4j-api</artifactId>
++    </dependency>
++    <dependency>
++      <groupId>org.slf4j</groupId>
++      <artifactId>slf4j-simple</artifactId>
++      <scope>runtime</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.ow2.asm</groupId>
++      <artifactId>asm</artifactId>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.commons</groupId>
++      <artifactId>commons-compress</artifactId>
++    </dependency>
++  </dependencies>
++</project>
+diff --git a/test/data/install_pom/xmvn/xmvn-tools/xmvn-resolve/pom.xml b/test/data/install_pom/xmvn/xmvn-tools/xmvn-resolve/pom.xml
+new file mode 100644
+index 00000000..8cabc13f
+--- /dev/null
++++ b/test/data/install_pom/xmvn/xmvn-tools/xmvn-resolve/pom.xml
+@@ -0,0 +1,51 @@
++<?xml version='1.0' encoding='US-ASCII'?>
++<!--
++ ! Copyright (c) 2012-2021 Red Hat, Inc.
++ !
++ ! Licensed under the Apache License, Version 2.0 (the "License");
++ ! you may not use this file except in compliance with the License.
++ ! You may obtain a copy of the License at
++ !
++ !     http://www.apache.org/licenses/LICENSE-2.0
++ !
++ ! Unless required by applicable law or agreed to in writing, software
++ ! distributed under the License is distributed on an "AS IS" BASIS,
++ ! WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ ! See the License for the specific language governing permissions and
++ ! limitations under the License.
++ `--><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++  <parent>
++    <artifactId>xmvn-tools</artifactId>
++    <groupId>org.fedoraproject.xmvn</groupId>
++    <version>4.0.0</version>
++    <relativePath>..</relativePath>
++  </parent>
++  <artifactId>xmvn-resolve</artifactId>
++  <name>XMvn Resolver</name>
++  <description>
++    XMvn Resolver is a very simple commald-line tool to resolve Maven
++    artifacts from system repositories.  Basically it's just an
++    interface to artifact resolution mechanism implemented by XMvn
++    Core.  The primary intended use case of XMvn Resolver is debugging
++    local artifact repositories.
++  </description>
++  <properties>
++    <mainClass>org.fedoraproject.xmvn.tools.resolve.ResolverCli</mainClass>
++  </properties>
++  <dependencies>
++    <dependency>
++      <groupId>com.beust</groupId>
++      <artifactId>jcommander</artifactId>
++    <version>any</version></dependency>
++    <dependency>
++      <groupId>org.fedoraproject.xmvn</groupId>
++      <artifactId>xmvn-api</artifactId>
++    <version>any</version></dependency>
++    <dependency>
++      <groupId>org.fedoraproject.xmvn</groupId>
++      <artifactId>xmvn-core</artifactId>
++      <scope>runtime</scope>
++    <version>any</version></dependency>
++  </dependencies>
++</project>
+diff --git a/test/data/maven_depmap/JPP-depmngmnt.pom b/test/data/maven_depmap/JPP-depmngmnt.pom
+new file mode 100644
+index 00000000..ec86bb3d
+--- /dev/null
++++ b/test/data/maven_depmap/JPP-depmngmnt.pom
+@@ -0,0 +1,33 @@
++<?xml version="1.0" encoding="US-ASCII"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
++                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>org.fedoraproject.xmvn</groupId>
++  <version>4.0.0</version>
++  <artifactId>xmvn-subst</artifactId>
++  <name>XMvn Subst</name>
++  <description>
++    XMvn Subst is a tool that can substitute Maven artifact files with
++    symbolic links to corresponding files in artifact repository.
++  </description>
++  <properties>
++    <jcommanderVersion>1.82</jcommanderVersion>
++  </properties>
++  <dependencyManagement>
++    <dependencies>
++      <dependency>
++        <groupId>com.beust</groupId>
++        <artifactId>jcommander</artifactId>
++        <version>${jcommanderVersion}</version>
++      </dependency>
++    </dependencies>
++  </dependencyManagement>
++  <dependencies>
++    <dependency>
++      <groupId>com.beust</groupId>
++      <artifactId>jcommander</artifactId>
++    </dependency>
++  </dependencies>
++</project>
+diff --git a/test/data/maven_depmap/JPP-modelexpansion.pom b/test/data/maven_depmap/JPP-modelexpansion.pom
+new file mode 100644
+index 00000000..3feced96
+--- /dev/null
++++ b/test/data/maven_depmap/JPP-modelexpansion.pom
+@@ -0,0 +1,33 @@
++<?xml version="1.0" encoding="US-ASCII"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
++                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>org.fedoraproject.xmvn</groupId>
++  <version>4.0.0</version>
++  <artifactId>xmvn-subst</artifactId>
++  <name>XMvn Subst</name>
++  <description>
++    XMvn Subst is a tool that can substitute Maven artifact files with
++    symbolic links to corresponding files in artifact repository.
++  </description>
++  <properties>
++    <jcommanderVersion>1.82</jcommanderVersion>
++  </properties>
++  <dependencyManagement>
++    <dependencies>
++      <dependency>
++        <groupId>org.fedoraproject.xmvn</groupId>
++        <artifactId>xmvn-api</artifactId>
++        <version>${project.version}</version>
++      </dependency>
++    </dependencies>
++  </dependencyManagement>
++  <dependencies>
++    <dependency>
++      <groupId>org.fedoraproject.xmvn</groupId>
++      <artifactId>xmvn-api</artifactId>
++    </dependency>
++  </dependencies>
++</project>
+diff --git a/test/data/maven_depmap/test_alias_extension-want.xml b/test/data/maven_depmap/test_alias_extension-want.xml
+index 6b0d1aee..d502fdf8 100644
+--- a/test/data/maven_depmap/test_alias_extension-want.xml
++++ b/test/data/maven_depmap/test_alias_extension-want.xml
+@@ -13,9 +13,6 @@
+              </ns1:alias>
+          </ns1:aliases>
+          <ns1:path>%s/usr/share/java/commons-io.jar</ns1:path>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+       <ns1:artifact>
+          <ns1:groupId>alias</ns1:groupId>
+@@ -30,9 +27,6 @@
+              </ns1:alias>
+          </ns1:aliases>
+          <ns1:path>%s/JPP-alias.pom</ns1:path>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/test_append-want.xml b/test/data/maven_depmap/test_append-want.xml
+index 65d420e6..0ca20911 100644
+--- a/test/data/maven_depmap/test_append-want.xml
++++ b/test/data/maven_depmap/test_append-want.xml
+@@ -12,9 +12,6 @@
+                <ns1:artifactId>y</ns1:artifactId>
+             </ns1:alias>
+          </ns1:aliases>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/test_append_and_namespace-want.xml b/test/data/maven_depmap/test_append_and_namespace-want.xml
+index 88b1f816..368863bf 100644
+--- a/test/data/maven_depmap/test_append_and_namespace-want.xml
++++ b/test/data/maven_depmap/test_append_and_namespace-want.xml
+@@ -13,9 +13,6 @@
+                <ns1:artifactId>y</ns1:artifactId>
+             </ns1:alias>
+          </ns1:aliases>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/test_basic-want.xml b/test/data/maven_depmap/test_basic-want.xml
+index 540f076a..200044bf 100644
+--- a/test/data/maven_depmap/test_basic-want.xml
++++ b/test/data/maven_depmap/test_basic-want.xml
+@@ -6,9 +6,6 @@
+          <ns1:artifactId>bndlib</ns1:artifactId>
+          <ns1:version>1.50.0</ns1:version>
+          <ns1:path>%s/usr/share/java/bndlib.jar</ns1:path>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+       <ns1:artifact>
+          <ns1:groupId>biz.aQute</ns1:groupId>
+@@ -16,9 +13,6 @@
+          <ns1:extension>pom</ns1:extension>
+          <ns1:version>1.50.0</ns1:version>
+          <ns1:path>%s/JPP-bndlib.pom</ns1:path>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/test_buildroot-want.xml b/test/data/maven_depmap/test_buildroot-want.xml
+index 604046a5..9fa588d4 100644
+--- a/test/data/maven_depmap/test_buildroot-want.xml
++++ b/test/data/maven_depmap/test_buildroot-want.xml
+@@ -7,9 +7,6 @@
+          <ns1:version>17</ns1:version>
+          <ns1:extension>war</ns1:extension>
+          <ns1:path>%s/usr/share/java/commons-war.war</ns1:path>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+       <ns1:artifact>
+          <ns1:groupId>commons</ns1:groupId>
+@@ -17,9 +14,6 @@
+          <ns1:version>17</ns1:version>
+          <ns1:extension>pom</ns1:extension>
+          <ns1:path>/usr/share/maven-poms/JPP-commons-war.pom</ns1:path>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/test_classifier-want.xml b/test/data/maven_depmap/test_classifier-want.xml
+index 6a6f74ae..8fa90b01 100644
+--- a/test/data/maven_depmap/test_classifier-want.xml
++++ b/test/data/maven_depmap/test_classifier-want.xml
+@@ -14,9 +14,6 @@
+                <ns1:classifier>c</ns1:classifier>
+             </ns1:alias>
+          </ns1:aliases>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/test_expansion-want.xml b/test/data/maven_depmap/test_expansion-want.xml
+new file mode 100644
+index 00000000..10c34449
+--- /dev/null
++++ b/test/data/maven_depmap/test_expansion-want.xml
+@@ -0,0 +1,35 @@
++<ns0:metadata xmlns:ns0="http://fedorahosted.org/xmvn/METADATA/2.3.0">
++  <ns0:artifacts>
++    <ns0:artifact>
++      <ns0:groupId>org.fedoraproject.xmvn</ns0:groupId>
++      <ns0:artifactId>xmvn-subst</ns0:artifactId>
++      <ns0:version>4.0.0</ns0:version>
++      <ns0:path>%s/usr/share/java/depmngmnt.jar</ns0:path>
++      <ns0:dependencies>
++        <ns0:dependency>
++          <ns0:groupId>com.beust</ns0:groupId>
++          <ns0:artifactId>jcommander</ns0:artifactId>
++          <ns0:extension>jar</ns0:extension>
++          <ns0:optional>false</ns0:optional>
++          <ns0:requestedVersion>1.82</ns0:requestedVersion>
++        </ns0:dependency>
++      </ns0:dependencies>
++    </ns0:artifact>
++    <ns0:artifact>
++      <ns0:groupId>org.fedoraproject.xmvn</ns0:groupId>
++      <ns0:artifactId>xmvn-subst</ns0:artifactId>
++      <ns0:extension>pom</ns0:extension>
++      <ns0:version>4.0.0</ns0:version>
++      <ns0:path>%s/JPP-depmngmnt.pom</ns0:path>
++      <ns0:dependencies>
++        <ns0:dependency>
++          <ns0:groupId>com.beust</ns0:groupId>
++          <ns0:artifactId>jcommander</ns0:artifactId>
++          <ns0:extension>jar</ns0:extension>
++          <ns0:optional>false</ns0:optional>
++          <ns0:requestedVersion>1.82</ns0:requestedVersion>
++        </ns0:dependency>
++      </ns0:dependencies>
++    </ns0:artifact>
++  </ns0:artifacts>
++</ns0:metadata>
+diff --git a/test/data/maven_depmap/test_expansion_model-want.xml b/test/data/maven_depmap/test_expansion_model-want.xml
+new file mode 100644
+index 00000000..6237358c
+--- /dev/null
++++ b/test/data/maven_depmap/test_expansion_model-want.xml
+@@ -0,0 +1,35 @@
++<ns0:metadata xmlns:ns0="http://fedorahosted.org/xmvn/METADATA/2.3.0">
++  <ns0:artifacts>
++    <ns0:artifact>
++      <ns0:groupId>org.fedoraproject.xmvn</ns0:groupId>
++      <ns0:artifactId>xmvn-subst</ns0:artifactId>
++      <ns0:version>4.0.0</ns0:version>
++      <ns0:path>%s/usr/share/java/depmngmnt.jar</ns0:path>
++      <ns0:dependencies>
++        <ns0:dependency>
++          <ns0:groupId>org.fedoraproject.xmvn</ns0:groupId>
++          <ns0:artifactId>xmvn-api</ns0:artifactId>
++          <ns0:extension>jar</ns0:extension>
++          <ns0:optional>false</ns0:optional>
++          <ns0:requestedVersion>4.0.0</ns0:requestedVersion>
++        </ns0:dependency>
++      </ns0:dependencies>
++    </ns0:artifact>
++    <ns0:artifact>
++      <ns0:groupId>org.fedoraproject.xmvn</ns0:groupId>
++      <ns0:artifactId>xmvn-subst</ns0:artifactId>
++      <ns0:extension>pom</ns0:extension>
++      <ns0:version>4.0.0</ns0:version>
++      <ns0:path>%s/JPP-modelexpansion.pom</ns0:path>
++      <ns0:dependencies>
++        <ns0:dependency>
++          <ns0:groupId>org.fedoraproject.xmvn</ns0:groupId>
++          <ns0:artifactId>xmvn-api</ns0:artifactId>
++          <ns0:extension>jar</ns0:extension>
++          <ns0:optional>false</ns0:optional>
++          <ns0:requestedVersion>4.0.0</ns0:requestedVersion>
++        </ns0:dependency>
++      </ns0:dependencies>
++    </ns0:artifact>
++  </ns0:artifacts>
++</ns0:metadata>
+diff --git a/test/data/maven_depmap/test_mvn_spec-want.xml b/test/data/maven_depmap/test_mvn_spec-want.xml
+index d2c03ec7..dd49eb83 100644
+--- a/test/data/maven_depmap/test_mvn_spec-want.xml
++++ b/test/data/maven_depmap/test_mvn_spec-want.xml
+@@ -6,9 +6,6 @@
+          <ns1:artifactId>b</ns1:artifactId>
+          <ns1:version>12</ns1:version>
+          <ns1:path>%s/usr/share/java/commons-io.jar</ns1:path>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/test_mvn_spec_buildroot-want.xml b/test/data/maven_depmap/test_mvn_spec_buildroot-want.xml
+index 0f7dcd5f..0efeddb8 100644
+--- a/test/data/maven_depmap/test_mvn_spec_buildroot-want.xml
++++ b/test/data/maven_depmap/test_mvn_spec_buildroot-want.xml
+@@ -7,9 +7,6 @@
+          <ns1:version>1</ns1:version>
+          <ns1:extension>war</ns1:extension>
+          <ns1:path>%s/usr/share/java/commons-war.war</ns1:path>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/test_mvn_spec_war-want.xml b/test/data/maven_depmap/test_mvn_spec_war-want.xml
+index deae16ff..1dde1a95 100644
+--- a/test/data/maven_depmap/test_mvn_spec_war-want.xml
++++ b/test/data/maven_depmap/test_mvn_spec_war-want.xml
+@@ -7,9 +7,6 @@
+          <ns1:extension>war</ns1:extension>
+          <ns1:version>1</ns1:version>
+          <ns1:path>%s/usr/share/java/commons-war.war</ns1:path>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/test_namespace-want.xml b/test/data/maven_depmap/test_namespace-want.xml
+index da36a475..adf5b2cc 100644
+--- a/test/data/maven_depmap/test_namespace-want.xml
++++ b/test/data/maven_depmap/test_namespace-want.xml
+@@ -7,9 +7,6 @@
+          <ns1:version>12</ns1:version>
+          <ns1:path>%s/usr/share/java/commons-io.jar</ns1:path>
+          <ns1:namespace>myns</ns1:namespace>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/test_version-want.xml b/test/data/maven_depmap/test_version-want.xml
+index 06e02bc8..297d0ca9 100644
+--- a/test/data/maven_depmap/test_version-want.xml
++++ b/test/data/maven_depmap/test_version-want.xml
+@@ -11,9 +11,6 @@
+             <ns1:version>2</ns1:version>
+             <ns1:version>3</ns1:version>
+          </ns1:compatVersions>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/test_version_append-want.xml b/test/data/maven_depmap/test_version_append-want.xml
+index 33e688cd..028ad54f 100644
+--- a/test/data/maven_depmap/test_version_append-want.xml
++++ b/test/data/maven_depmap/test_version_append-want.xml
+@@ -17,9 +17,6 @@
+                <ns1:artifactId>b</ns1:artifactId>
+             </ns1:alias>
+          </ns1:aliases>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/test_version_namespace-want.xml b/test/data/maven_depmap/test_version_namespace-want.xml
+index 65e331a5..958725d2 100644
+--- a/test/data/maven_depmap/test_version_namespace-want.xml
++++ b/test/data/maven_depmap/test_version_namespace-want.xml
+@@ -18,9 +18,6 @@
+                <ns1:artifactId>b</ns1:artifactId>
+             </ns1:alias>
+          </ns1:aliases>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/test_versioned-want.xml b/test/data/maven_depmap/test_versioned-want.xml
+index 8885ff1a..981ba85c 100644
+--- a/test/data/maven_depmap/test_versioned-want.xml
++++ b/test/data/maven_depmap/test_versioned-want.xml
+@@ -10,9 +10,6 @@
+             <ns1:version>2.0.0</ns1:version>
+         </ns1:compatVersions>
+          <ns1:path>%s/usr/share/java/versioned-2.0.0.war</ns1:path>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/test_versioned2-want.xml b/test/data/maven_depmap/test_versioned2-want.xml
+index ea1b24cf..e94fed23 100644
+--- a/test/data/maven_depmap/test_versioned2-want.xml
++++ b/test/data/maven_depmap/test_versioned2-want.xml
+@@ -9,9 +9,6 @@
+             <ns1:version>1.2</ns1:version>
+         </ns1:compatVersions>
+          <ns1:path>%s/usr/share/java/versioned2-1.2.jar</ns1:path>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/test_versioned_classifier-want.xml b/test/data/maven_depmap/test_versioned_classifier-want.xml
+index c3891caa..d2aca331 100644
+--- a/test/data/maven_depmap/test_versioned_classifier-want.xml
++++ b/test/data/maven_depmap/test_versioned_classifier-want.xml
+@@ -11,9 +11,6 @@
+             <ns1:version>1.2</ns1:version>
+          </ns1:compatVersions>
+          <ns1:path>%s/usr/share/java/versioned-3-tests-1.jar</ns1:path>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/test_versioned_with_pom-want.xml b/test/data/maven_depmap/test_versioned_with_pom-want.xml
+index c2b344e1..8d259ab9 100644
+--- a/test/data/maven_depmap/test_versioned_with_pom-want.xml
++++ b/test/data/maven_depmap/test_versioned_with_pom-want.xml
+@@ -9,9 +9,6 @@
+             <ns1:version>2013.10</ns1:version>
+          </ns1:compatVersions>
+          <ns1:path>%s/usr/share/java/testversioned-2013.10.jar</ns1:path>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+       <ns1:artifact>
+          <ns1:groupId>alias</ns1:groupId>
+@@ -22,9 +19,6 @@
+             <ns1:version>2013.10</ns1:version>
+          </ns1:compatVersions>
+          <ns1:path>%s/JPP-testversioned-2013.10.pom</ns1:path>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/test_war-want.xml b/test/data/maven_depmap/test_war-want.xml
+index cac27a84..e8e2e56b 100644
+--- a/test/data/maven_depmap/test_war-want.xml
++++ b/test/data/maven_depmap/test_war-want.xml
+@@ -7,9 +7,6 @@
+          <ns1:version>17</ns1:version>
+          <ns1:extension>war</ns1:extension>
+          <ns1:path>%s/usr/share/java/commons-war.war</ns1:path>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+       <ns1:artifact>
+          <ns1:groupId>commons</ns1:groupId>
+@@ -17,9 +14,6 @@
+          <ns1:extension>pom</ns1:extension>
+          <ns1:version>17</ns1:version>
+          <ns1:path>%s/JPP-commons-war.pom</ns1:path>
+-         <ns1:properties>
+-            <xmvn.resolver.disableEffectivePom>true</xmvn.resolver.disableEffectivePom>
+-         </ns1:properties>
+       </ns1:artifact>
+    </ns1:artifacts>
+ </ns1:metadata>
+diff --git a/test/data/maven_depmap/usr/share/java/depmngmnt.jar b/test/data/maven_depmap/usr/share/java/depmngmnt.jar
+new file mode 100644
+index 00000000..db960407
+Binary files /dev/null and b/test/data/maven_depmap/usr/share/java/depmngmnt.jar differ
+diff --git a/test/install_pom_test.py b/test/install_pom_test.py
+new file mode 100644
+index 00000000..c6acc644
+--- /dev/null
++++ b/test/install_pom_test.py
+@@ -0,0 +1,166 @@
++import inspect
++import os
++import unittest
++import shutil
++
++from test_common import (DIRPATH, install_pom, call_script, assertIn)
++
++from lxml import etree
++from xml_compare import compare_lxml_etree
++
++
++class TestInstallPom(unittest.TestCase):
++
++    maxDiff = 2048
++
++    def setUp(self):
++        try:
++            self.olddir = os.getcwd()
++            self.datadir = os.path.join(DIRPATH,
++                                        'data',
++                                        'install_pom')
++            self.workdir = os.path.realpath(os.path.join(self.datadir, "..",
++                                            "install_pom_workdir"))
++
++            shutil.copytree(self.datadir, self.workdir)
++            os.chdir(self.workdir)
++        except OSError:
++            pass
++
++    def tearDown(self):
++        try:
++            shutil.rmtree(self.workdir)
++            os.chdir(self.olddir)
++        except OSError:
++            pass
++
++    def check_result(self, test_name, result):
++        got = etree.parse(result).getroot()
++        want = etree.parse(os.path.join(self.workdir,
++                                        test_name+"-want.xml")).getroot()
++        report = compare_lxml_etree(got, want)
++        if report:
++            report = '\n' + report
++        return report
++
++    @install_pom('JPP-bndlib.pom')
++    def test_basic(self, stdout, stderr, return_value, result):
++        self.assertEqual(return_value, 0)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           result)
++        self.assertEqual(report, '', report)
++
++    @install_pom('JPP-apache-commons-io.pom')
++    def test_packaging_pom(self, stdout, stderr, return_value, result):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           result)
++        self.assertEqual(report, '', report)
++
++    @install_pom('JPP-noversion.pom')
++    def test_missing_version(self, stdout, stderr, return_value, result):
++        self.assertNotEqual(return_value, 0)
++
++    @install_pom('JPP-noversion-pom.pom')
++    def test_packaging_pom_missing_version(self, stdout, stderr, return_value, result):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           result)
++        self.assertEqual(report, '', report)
++
++    @install_pom('JPP-parent-version.pom')
++    def test_parent_version(self, stdout, stderr, return_value, result):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           result)
++        self.assertEqual(report, '', report)
++
++    @install_pom(os.path.join('cglib', 'pom.xml'))
++    def test_parent_install(self, stdout, stderr, return_value, result):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           result)
++        self.assertEqual(report, '', report)
++
++    @install_pom(os.path.join('cglib', 'cglib', 'pom.xml'))
++    def test_interpolate_from_parent(self, stdout, stderr, return_value, result):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           result)
++        self.assertEqual(report, '', report)
++
++    @install_pom(os.path.join('cglib', 'cglib-integration-test', 'pom.xml'))
++    def test_interpolate_from_model(self, stdout, stderr, return_value, result):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           result)
++        self.assertEqual(report, '', report)
++
++    @install_pom(os.path.join('xmvn', 'xmvn-mojo', 'pom.xml'))
++    def test_parent_relpath(self, stdout, stderr, return_value, result):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           result)
++        self.assertEqual(report, '', report)
++
++    @install_pom(os.path.join('xmvn', 'xmvn-tools', 'xmvn-install', 'pom.xml'))
++    def test_parent_chain(self, stdout, stderr, return_value, result):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           result)
++        self.assertEqual(report, '', report)
++
++    @install_pom(os.path.join('xmvn', 'xmvn-tools', 'xmvn-resolve', 'pom.xml'))
++    def test_any_not_final(self, stdout, stderr, return_value, result):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           result)
++        self.assertEqual(report, '', report)
++
++    @install_pom(os.path.join('languagetool', 'languagetool-standalone', 'pom.xml'))
++    def test_dep_type(self, stdout, stderr, return_value, result):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           result)
++        self.assertEqual(report, '', report)
++
++    @install_pom(os.path.join('languagetool', 'languagetool-language-modules', 'ja', 'pom.xml'))
++    def test_dep_classifier(self, stdout, stderr, return_value, result):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           result)
++        self.assertEqual(report, '', report)
++
++    @install_pom('a_binary_file.pom')
++    def test_not_pom(self, stdout, stderr, return_value, result):
++        self.assertNotEqual(return_value, 0)
++
++    @install_pom('a_file_that_does_not_exist.pom')
++    def test_no_pom(self, stdout, stderr, return_value, result):
++        self.assertNotEqual(return_value, 0)
++
++    def test_no_args(self):
++        stdout, stderr, return_value = call_script(os.path.join(DIRPATH, '..',
++            'java-utils', 'install_pom.py'), [])
++        self.assertNotEqual(return_value, 0)
++
++    def test_no_directory(self):
++        stdout, stderr, return_value = call_script(os.path.join(DIRPATH, '..',
++            'java-utils', 'install_pom.py'),
++                ['JPP-bndlib.pom', os.path.join('missingdir', 'JPP-bndlib.pom')])
++        self.assertNotEqual(return_value, 0)
++
++    def test_not_directory(self):
++        stdout, stderr, return_value = call_script(os.path.join(DIRPATH, '..',
++            'java-utils', 'install_pom.py'),
++                ['JPP-bndlib.pom', os.path.join('fakedir', 'JPP-bndlib.pom')])
++        self.assertNotEqual(return_value, 0)
++
++    def test_no_overwrite(self):
++        stdout, stderr, return_value = call_script(os.path.join(DIRPATH, '..',
++            'java-utils', 'install_pom.py'),
++                ['JPP-bndlib.pom', 'fakedir'])
++        self.assertNotEqual(return_value, 0)
++
++if __name__ == '__main__':
++    unittest.main()
+diff --git a/test/maven_depmap_test.py b/test/maven_depmap_test.py
+new file mode 100644
+index 00000000..41b2c014
+--- /dev/null
++++ b/test/maven_depmap_test.py
+@@ -0,0 +1,354 @@
++import inspect
++from zipfile import ZipFile
++import os
++import unittest
++import shutil
++from test_common import (DIRPATH, mvn_depmap, call_script,
++                         prepare_metadata, assertIn)
++from test_rpmbuild import Package
++
++from lxml import etree
++from xml_compare import compare_lxml_etree
++
++
++class TestMavenDepmap(unittest.TestCase):
++
++    maxDiff = 2048
++
++    def setUp(self):
++        try:
++            self.olddir = os.getcwd()
++            self.datadir = os.path.join(DIRPATH,
++                                        'data',
++                                        'maven_depmap')
++            self.workdir = os.path.realpath(os.path.join(self.datadir, "..",
++                                            "maven_depmap_workdir"))
++
++            shutil.copytree(self.datadir, self.workdir)
++            os.chdir(self.workdir)
++        except OSError:
++            pass
++
++        prepare_metadata(self.workdir)
++
++    def tearDown(self):
++        try:
++            shutil.rmtree(self.workdir)
++            os.chdir(self.olddir)
++        except OSError:
++            pass
++
++    def check_result(self, test_name, depmap):
++        got = etree.fromstring(depmap)
++        want = etree.parse(os.path.join(self.workdir,
++                                        test_name+"-want.xml")).getroot()
++        report = compare_lxml_etree(got, want, unordered=['artifact', 'maven'])
++        if report:
++            report = '\n' + report
++        return report
++
++    def check_archive(self, test_name, archive_path, keep_comments=False):
++        got = ZipFile(archive_path, 'r')
++        want = ZipFile('{name}-want.{ext}'.format(name=test_name,
++                       ext=archive_path.split('.')[-1]))
++        try:
++            if got.testzip() is not None:
++                return ("Not valid zip file", "")
++            got_mf = self.read_archive(got, keep_comments)
++            want_mf = self.read_archive(want, keep_comments)
++        finally:
++            got.close()
++            want.close()
++        return (got_mf, want_mf)
++
++    def read_archive(self, archive, keep_comments=False):
++        res = {}
++        for filename in archive.namelist():
++            mf_file = archive.open(filename)
++            try:
++                if (keep_comments):
++                    res[str(filename)] = mf_file.readlines()
++                else:
++                    res[str(filename)] = \
++                            [line for line in mf_file.readlines()
++                                    if not line.startswith(b'#')]
++            finally:
++                mf_file.close()
++        return res
++
++    @mvn_depmap('JPP-bndlib.pom', 'usr/share/java/bndlib.jar')
++    def test_basic(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    @mvn_depmap('JPP-commons-io.pom')
++    def test_missing_jar_arg(self, stdout, stderr, return_value, depmap):
++        self.assertNotEqual(return_value, 0)
++
++    @mvn_depmap('JPP-apache-commons-io.pom')
++    def test_packaging_pom_no_jar(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    @mvn_depmap('JPP-noversion.pom')
++    def test_missing_version(self, stdout, stderr, return_value, depmap):
++        self.assertNotEqual(return_value, 0)
++
++    @mvn_depmap('JPP-parent-version.pom')
++    def test_parent_version(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    @mvn_depmap('JPP-commons-war.pom', 'usr/share/java/commons-war.war')
++    def test_war(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    def test_not_pom(self):
++        stdout, stderr, return_value = call_script(os.path.join(DIRPATH, '..',
++            'java-utils', 'maven_depmap.py'),
++                ['.out', 'usr/share/java/commons-io.jar',
++                    'usr/share/java/commons-io.jar'])
++        self.assertNotEqual(return_value, 0)
++
++    def test_no_pom(self):
++        stdout, stderr, return_value = call_script(os.path.join(DIRPATH, '..',
++            'java-utils', 'maven_depmap.py'),
++                ['.out'])
++        self.assertNotEqual(return_value, 0)
++
++    def test_no_args(self):
++        stdout, stderr, return_value = call_script(os.path.join(DIRPATH, '..',
++            'java-utils', 'maven_depmap.py'),
++                [])
++        self.assertNotEqual(return_value, 0)
++
++    @mvn_depmap('a:b:12', 'usr/share/java/commons-io.jar')
++    def test_mvn_spec(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    @mvn_depmap('a:b:war::1', 'usr/share/java/commons-war.war')
++    def test_mvn_spec_war(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    @mvn_depmap('/builddir/build/BUILDROOT/pkg-2.5.2-2.fc21.x86_64/a:b:war::1',
++            'usr/share/java/commons-war.war')
++    def test_mvn_spec_buildroot(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    @mvn_depmap('builddir/build/BUILDROOT/usr/share/maven-poms/JPP-commons-war.pom',
++                'usr/share/java/commons-war.war')
++    def test_buildroot(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                   depmap)
++        self.assertEqual(report, '', report)
++
++    @mvn_depmap('a:b:12', 'usr/share/java/commons-io.jar', ['-a', 'x:y'])
++    def test_append(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    # FIXME: aliases cause trouble
++    #@mvn_depmap('a:b:12', 'usr/share/java/commons-io.jar', ['-a', 'x:y,z:w'])
++    #def test_append_multiple(self, stdout, stderr, return_value, depmap):
++    #    self.assertEqual(return_value, 0, stderr)
++    #    report = self.check_result(inspect.currentframe().f_code.co_name,
++    #                                       depmap)
++    #    self.assertEqual(report, '', report)
++
++    @mvn_depmap('a:b:12', 'usr/share/java/commons-io.jar', ['-n', 'myns'])
++    def test_namespace(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    @mvn_depmap('a:b:12', 'usr/share/java/commons-io.jar', ['--namespace=myns',
++        '--append=x:y'])
++    def test_append_and_namespace(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    @mvn_depmap('a:b:12', 'usr/foo/share/java/compare_jar.jar')
++    def test_compare_jar(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        got, want = self.check_archive(inspect.currentframe().f_code.co_name,
++                'usr/foo/share/java/compare_jar.jar')
++        self.assertEqual(got, want)
++
++    #test case for rhbz#1012982
++    @mvn_depmap('x:y:war:z:0.1', 'usr/foo/share/java/compare_jar_class_ext.war')
++    def test_compare_jar_class_ext(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        got, want = self.check_archive(inspect.currentframe().f_code.co_name,
++                'usr/foo/share/java/compare_jar_class_ext.war')
++        self.assertEqual(got, want)
++
++    @mvn_depmap('a:b:12', 'usr/share/java/already-has-pom-properties.jar')
++    def test_compare_jar_unmodified(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        got, want = self.check_archive(inspect.currentframe().f_code.co_name,
++                'usr/share/java/already-has-pom-properties.jar', keep_comments=True)
++        self.assertEqual(got, want)
++
++    @mvn_depmap('x:y:0.1', 'usr/share/java/already-has-pom-properties.jar')
++    def test_compare_jar_modified(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        got, want = self.check_archive(inspect.currentframe().f_code.co_name,
++                'usr/share/java/already-has-pom-properties.jar')
++        self.assertEqual(got, want)
++
++    @mvn_depmap('/builddir/build/BUILDROOT/pkg-2.5.2-2.fc21.x86_64/x:y:0.1',
++            'usr/share/java/already-has-pom-properties.jar')
++    def test_rhbz1012245(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        got, want = self.check_archive('test_compare_jar_modified',
++                'usr/share/java/already-has-pom-properties.jar')
++        self.assertEqual(got, want)
++
++    @mvn_depmap('x:y:jar:z:0.1', 'usr/share/java/commons-io-z.jar',
++            ['-a', 'a:b:jar:c:12'])
++    def test_classifier(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    @mvn_depmap('x:y:0.1', 'usr/share/java/commons-io.jar', ['-r', '1,2,3'])
++    def test_version(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    @mvn_depmap('JPP/x:y:0.1', 'usr/share/java/commons-io.jar',
++            ['--versions', '1,2,3'])
++    def test_version2(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result('test_version', depmap)
++        self.assertEqual(report, '', report)
++
++    @mvn_depmap('x:y:0.1', 'usr/share/java/commons-io.jar',
++            ['-r', '1,2,3', '-a', 'a:b:32'])
++    def test_version_append(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    @mvn_depmap('x:y:0.1', 'usr/share/java/commons-io.jar',
++            ['-r', '1,2,3', '-n', 'ns', '-a', 'a:b:32'])
++    def test_version_namespace(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    @mvn_depmap('x:y', 'usr/share/java/commons-io.jar')
++    def test_missing_version2(self, stdout, stderr, return_value, depmap):
++        self.assertNotEqual(return_value, 0)
++
++    @mvn_depmap('x:y:war:1', 'usr/share/java/commons-io.jar')
++    def test_incorrect_extension(self, stdout, stderr, return_value, depmap):
++        self.assertNotEqual(return_value, 0)
++
++    @mvn_depmap('evil:', 'usr/share/java/commons-io.jar')
++    def test_incorrect_artifact(self, stdout, stderr, return_value, depmap):
++        self.assertNotEqual(return_value, 0)
++
++    @mvn_depmap('JPP-cdata.pom')
++    def test_cdata(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    @mvn_depmap('g:a:war:1.2.3', 'usr/share/java/versioned.war', ['-r', '2.0.0'])
++    def test_versioned(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++        self.assertEqual(False, os.path.exists('usr/share/java/versioned.war'))
++        self.assertEqual(True, os.path.exists('usr/share/java/versioned-2.0.0.war'))
++
++    @mvn_depmap('g:a:1.2', 'usr/share/java/versioned2.jar', ['-r', '1.2'])
++    def test_versioned2(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++        self.assertEqual(False, os.path.exists('usr/share/java/versioned2.jar'))
++        self.assertEqual(True, os.path.exists('usr/share/java/versioned2-1.2.jar'))
++
++    @mvn_depmap('g:a:jar:tests:1', 'usr/share/java/versioned-3-tests.jar', ['-r', '1,1.2'])
++    def test_versioned_classifier(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++        self.assertEqual(False, os.path.exists('usr/share/java/versioned-3-tests.jar'))
++        self.assertEqual(True, os.path.exists('usr/share/java/versioned-3-tests-1.jar'))
++        self.assertEqual(True, os.path.exists('usr/share/java/versioned-3-tests-1.2.jar'))
++
++    @mvn_depmap('JPP-testversioned.pom', 'usr/share/java/testversioned.jar', ['-r', '2013.10'])
++    def test_versioned_with_pom(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++        self.assertEqual(False, os.path.exists('usr/share/java/testversioned.jar'))
++        self.assertEqual(True, os.path.exists('usr/share/java/testversioned-2013.10.jar'))
++
++    @mvn_depmap('JPP-alias.pom', 'usr/share/java/commons-io.jar', ['-a', 'a:b'])
++    def test_alias_extension(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    @mvn_depmap('JPP-depmngmnt.pom', 'usr/share/java/depmngmnt.jar')
++    def test_expansion(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    @mvn_depmap('JPP-modelexpansion.pom', 'usr/share/java/depmngmnt.jar')
++    def test_expansion_model(self, stdout, stderr, return_value, depmap):
++        self.assertEqual(return_value, 0, stderr)
++        report = self.check_result(inspect.currentframe().f_code.co_name,
++                                           depmap)
++        self.assertEqual(report, '', report)
++
++    def test_missing_jar(self):
++        p = Package('test')
++        p.append_to_prep("%add_maven_depmap g:a:1 this/file/doesnt/exist.jar")
++        _, stderr, return_value = p.run_prep()
++        self.assertEqual(1, return_value, 'bad return value')
++        assertIn(self, 'file not found', stderr)
++
++if __name__ == '__main__':
++    unittest.main()
+diff --git a/test/test_common.py b/test/test_common.py
+index d694046a..d3b699f2 100644
+--- a/test/test_common.py
++++ b/test/test_common.py
+@@ -266,6 +266,47 @@ def rpmgen_process_args(args, kwargs):
+     return args, kwargs
+ 
+ 
++def install_pom(pom):
++    def test_decorator(fun):
++        @wraps(fun)
++        def test_decorated(self):
++            os.chdir(self.workdir)
++            buildroot = os.path.join(self.workdir, "builddir/build/BUILDROOT")
++            env = {'RPM_BUILD_ROOT': buildroot}
++            scriptpath = path.join(DIRPATH, '..', 'java-utils', 'install_pom.py')
++            args = [pom, '.result_file']
++            (stdout, stderr, return_value) = call_script(scriptpath, args, extra_env=env)
++            res_file = None
++            if return_value == 0:
++                res_file = open('.result_file','r')
++            fun(self, stdout, stderr, return_value, result=res_file)
++            if res_file != None:
++                os.remove('.result_file')
++        return test_decorated
++    return test_decorator
++
++def mvn_depmap(pom, jar=None, fnargs=None):
++    def test_decorator(fun):
++        @wraps(fun)
++        def test_decorated(self):
++            os.chdir(self.workdir)
++            buildroot = os.path.join(self.workdir, "builddir/build/BUILDROOT")
++            env = {'RPM_BUILD_ROOT': buildroot}
++            scriptpath = path.join(DIRPATH, '..', 'java-utils', 'maven_depmap.py')
++            args = ['.fragment_data', pom]
++            if jar:
++                args.append(path.join(os.getcwd(), jar))
++            args.extend(fnargs or [])
++            (stdout, stderr, return_value) = call_script(scriptpath, args, extra_env=env)
++            frag = None
++            if return_value == 0:
++                with open('.fragment_data','r') as frag_file:
++                    frag = frag_file.read()
++                os.remove('.fragment_data')
++            fun(self, stdout, stderr, return_value, depmap=frag)
++        return test_decorated
++    return test_decorator
++
+ def mvn_artifact(pom, jar=None):
+     def test_decorator(fun):
+         @wraps(fun)

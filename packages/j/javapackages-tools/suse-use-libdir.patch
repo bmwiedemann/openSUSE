@@ -1,5 +1,5 @@
---- javapackages-5.3.1/configure-base.sh	2019-06-14 12:26:27.000000000 +0200
-+++ javapackages-5.3.1/configure-base.sh	2020-07-16 09:04:37.316453132 +0200
+--- javapackages-5.3.1/configure	2019-06-14 12:26:27.000000000 +0200
++++ javapackages-5.3.1/configure	2020-07-16 09:04:37.316453132 +0200
 @@ -14,6 +14,7 @@
  root_sysconfdir
  rpmconfigdir
@@ -44,7 +44,7 @@ diff -urEbwB javapackages-5.3.1/etc/eclipse.conf javapackages-5.3.1/etc/eclipse.
 --- javapackages-5.3.1/expand.sh	2019-06-14 12:26:27.000000000 +0200
 +++ javapackages-5.3.1/expand.sh	2020-07-16 09:04:37.316453132 +0200
 @@ -45,6 +45,7 @@
-         -e "s|@{scl_suffix}|${scl_suffix}|g" \
+     sed \
          -e "s|@{bindir}|${bindir}|g" \
          -e "s|@{datadir}|${datadir}|g" \
 +        -e "s|@{libdir}|${libdir}|g" \
@@ -111,22 +111,3 @@ diff -urEbwB javapackages-5.3.1/etc/eclipse.conf javapackages-5.3.1/etc/eclipse.
  
  #
  # Root directory where all javadoc is installed. Also already in RH macros.
---- javapackages-5.3.1/macros.d/macros.scl-java-template	2019-06-14 12:26:27.000000000 +0200
-+++ javapackages-5.3.1/macros.d/macros.scl-java-template	2020-07-16 09:04:37.320453154 +0200
-@@ -50,11 +50,11 @@
-     dir "%{_ivyxmldir}" \
-     dir "%{_sysconfdir}/ivy" \
-     dir "%{_datadir}/maven-metadata" \
--    dir "%{_prefix}/lib/eclipse" \
--    dir "%{_prefix}/lib/eclipse/features" \
--    dir "%{_prefix}/lib/eclipse/plugins" \
--    dir "%{_prefix}/lib/eclipse/dropins" \
--    dir "%{_prefix}/lib/eclipse/droplets" \
-+    dir "%{_libdir}/eclipse" \
-+    dir "%{_libdir}/eclipse/features" \
-+    dir "%{_libdir}/eclipse/plugins" \
-+    dir "%{_libdir}/eclipse/dropins" \
-+    dir "%{_libdir}/eclipse/droplets" \
-     dir "%{_datadir}/eclipse" \
-     dir "%{_datadir}/eclipse/dropins" \
-     dir "%{_datadir}/eclipse/droplets" \

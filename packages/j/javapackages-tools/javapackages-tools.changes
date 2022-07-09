@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu Jul  7 06:50:09 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 6.1.0
+  * Release version 6.1.0
+  * Introduce common and extra subpackages
+  * Update documentation
+  * Add lua interpreter to check and GH actions
+  * Remove license headers from wrapper scripts
+  * Make scripts compatible with rpmlua
+  * Add more tests, fix behaviour
+  * Implement separate simple class name matching
+  * Minor changes
+  * Modularize Lua scripts
+  * Add Lua scripts for removing annotations
+  * Update build status badge in README.md
+  * Migrate CI from TravisCI to GitHub Actions
+  * Fix running tests without coverage
+  * Update ivy-local-classpath
+  * Release version 6.0.0
+  * Fix extra XML handling of pom_change_dep
+  * Add reproducer for #82
+  * Respect %jpb_env RPM macro
+  * Add bootstrap metadata to XMvn resolver config
+  * Delete run_tests.py
+  * Replace nose by pytest
+  * [install] Make glob pattern work with Python 3.10
+  * Adding ppc64le architecture support on travis-ci
+  * Drop deprecated add_maven_depmap macro
+  * Drop SCL support
+  * Fix provides matching
+  * Fix builddep snippet generation
+  * [test] Add test for builddep snippet generation
+  * Add location of java binary used by the java-1.8.0-openjdk 
+    (JRE) package so that setting JAVA_HOME will work correctly
+  * Use XMvn Javadoc MOJO by default
+  * Remove explicit import of Python 3 features
+  * Remove dependency on Six compatibility library
+  * Fix invalid <skippedPlugins> in XMvn configuration
+  * [test] Don't try to kill PID 1 during tests
+  * [travis] Drop Python 2 from test matrix
+  * Add separate subpackage with RPM generators
+  * mvn_build: replace inline shell scriptlet with native python 
+    code
+  * [test] Don't use networking during tests
+  * Add apache-rat-plugin to skippedPlugins
+  * Skip execution of various Maven plugins
+  * Remove Python 3.5 from .travis.yml
+  * Make generated javadoc package noarch
+- Added patch:
+  * javapackages-6.1.0-maven-depmap.patch
+    + Bulk patch correspoding to our pull request
+      https://github.com/fedora-java/javapackages/pull/92 which
+      brings back some of the removed tools that we depend on
+      heavily
+- Modified patches:
+  * python-optional.patch
+  * suse-use-libdir.patch
+    + Rediff to changed context
+- Removed patches:
+  * 0001-Let-maven_depmap.py-generate-metadata-with-dependenc.patch
+  * 0002-Do-not-try-to-construct-POM-from-maven-coordinate-st.patch
+  * 0003-Fix-tests-after-the-recent-maven_depmap.py-changes.patch
+    + Already part of the above-mentioned bulk patch
+  * 0004-Remove-dependency-on-Six-compatibility-library.patch
+    + Upstream patch already integrated in the 6.x code-line
+
+-------------------------------------------------------------------
 Sun Jun  5 20:04:33 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix wrong conditioning of the python-six require.
