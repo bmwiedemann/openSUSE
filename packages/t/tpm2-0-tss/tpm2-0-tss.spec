@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2-0-tss
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,17 @@
 
 
 Name:           tpm2-0-tss
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Intel's TCG Software Stack access libraries for TPM 2.0 chips
 License:        BSD-2-Clause
 Group:          Productivity/Security
 URL:            https://github.com/tpm2-software/tpm2-tss
 Source0:        https://github.com/tpm2-software/tpm2-tss/releases/download/%{version}/tpm2-tss-%{version}.tar.gz
-Source2:        baselibs.conf
+Source1:        https://github.com/tpm2-software/tpm2-tss/releases/download/%{version}/tpm2-tss-%{version}.tar.gz.asc
+# curl https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xd6b4d8bac7e0cc97dcd4ac7272e88b53f7a95d84 > tpm2-tss.keyring
+Source2:        tpm2-tss.keyring
+Source3:        baselibs.conf
 BuildRequires:  /usr/sbin/groupadd
 BuildRequires:  acl
 BuildRequires:  doxygen
