@@ -133,4 +133,18 @@
     <comment></comment>
     <requestid>979181</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b544f3443509fd5a6d71216bdd2df6b4</srcmd5>
+    <version>5.4.0</version>
+    <time>1657378974</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.4.0 (CVE-2022-31116, bsc#1201255, CVE-2022-31117, bsc#1201254):
+  * Replace wchar_t string decoding implementation with a uint32_t-based one
+  * Fix handling of surrogates on decoding
+  * CVE-2022-31117: Potential double free of buffer during string decoding
+  * Fix memory leak on encoding errors when the buffer was resized
+  * Integer parsing: always detect overflows
+  * Fix handling of surrogates on encoding</comment>
+    <requestid>987903</requestid>
+  </revision>
 </revisionlist>

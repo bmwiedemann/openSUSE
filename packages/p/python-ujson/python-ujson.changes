@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul  8 11:55:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.0 (CVE-2022-31116, bsc#1201255, CVE-2022-31117, bsc#1201254):
+  * Replace wchar_t string decoding implementation with a uint32_t-based one
+  * Fix handling of surrogates on decoding
+  * CVE-2022-31117: Potential double free of buffer during string decoding
+  * Fix memory leak on encoding errors when the buffer was resized
+  * Integer parsing: always detect overflows
+  * Fix handling of surrogates on encoding
+
+-------------------------------------------------------------------
 Tue May 24 16:34:36 UTC 2022 - Gayane Osipyan <Gayane.Osipyan@suse.com>
 
 - update to version 5.3.0
