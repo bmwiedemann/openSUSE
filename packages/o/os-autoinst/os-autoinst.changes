@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 09 11:42:56 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1657278379.0bbf325:
+  * Prevent passwords leaked to log by redundant log-message
+  * t: Fix double slash in casedir path
+  * t: Add test for OpenQA::Isotovideo::Utils::_store_asset
+  * Fix error from stricter git permission checks
+  * Support .git-files as well
+  * Combine git version readout function
+  * Use proper SPDX-License header for crop
+
+-------------------------------------------------------------------
 Thu Jul 07 03:41:18 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1657110724.7ae418c:
