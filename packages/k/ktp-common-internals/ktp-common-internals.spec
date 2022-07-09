@@ -20,7 +20,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ktp-common-internals
-Version:        22.04.2
+Version:        22.04.3
 Release:        0
 Summary:        Telepathy common module
 License:        LGPL-2.1-or-later
