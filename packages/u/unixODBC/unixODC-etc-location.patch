@@ -1,0 +1,34 @@
+Index: unixODBC-2.3.11/man/odbc.ini.5
+===================================================================
+--- unixODBC-2.3.11.orig/man/odbc.ini.5
++++ unixODBC-2.3.11/man/odbc.ini.5
+@@ -1,10 +1,10 @@
+ .TH odbc.ini 5 "Sun 10 Jan 2021" "version 2.3.11" "unixODBC manual pages"
+ 
+ .SH NAME
+-/etc/odbc.ini, $HOME/.odbc.ini - unixODBC data source configuration files
++/etc/unixODBC/odbc.ini, $HOME/.odbc.ini - unixODBC data source configuration files
+ 
+ .SH DESCRIPTION
+-.B /etc/odbc.ini
++.B /etc/unixODBC/odbc.ini
+ is a system-wide configuration file for ODBC Data Source Names (DSNs).
+ 
+ .B $HOME/.odbc.ini
+Index: unixODBC-2.3.11/man/odbcinst.ini.5
+===================================================================
+--- unixODBC-2.3.11.orig/man/odbcinst.ini.5
++++ unixODBC-2.3.11/man/odbcinst.ini.5
+@@ -1,10 +1,10 @@
+ .TH odbcinst.ini 5 "Tue 12 Jan 2021" "version 2.3.11" "unixODBC manual pages"
+ 
+ .SH NAME
+-/etc/odbcinst.ini - unixODBC driver configuration file
++/etc/unixODBC/odbcinst.ini - unixODBC driver configuration file
+ 
+ .SH DESCRIPTION
+-\fB/etc/odbcinst.ini\fR is a configuration file for unixODBC drivers.
++\fB/etc/unixODBC/odbcinst.ini\fR is a configuration file for unixODBC drivers.
+ 
+ The file can be updated by using the \fB odbcinst\fR utility (recommended)
+ or edited by hand.

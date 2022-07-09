@@ -373,4 +373,15 @@
 - See https://github.com/lurcher/unixODBC/issues/107</comment>
     <requestid>974978</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>e2427a4ae8e39ef5b8bfc72cc30a29f1</srcmd5>
+    <version>2.3.11</version>
+    <time>1657378767</time>
+    <user>dimstar_suse</user>
+    <comment>- Add unixODC-etc-location.patch:
+  Correct location of odbc.ini and odbcinst.ini in man pages.
+  Since we pass --sysconfdir=%{_sysconfdir}/%{name} they are in
+  /etc/unixODBC not /etc</comment>
+    <requestid>987377</requestid>
+  </revision>
 </revisionlist>

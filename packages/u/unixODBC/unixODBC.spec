@@ -29,6 +29,7 @@ Source2:        unixODBC-rpmlintrc
 Patch0:         unixODBC-paths.patch
 Patch1:         unixODBC-gccwarnings.patch
 Patch2:         unixODBC-2.3.6-declarations.patch 
+Patch3:         unixODC-etc-location.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  gcc-c++
@@ -66,6 +67,7 @@ Includes for ODBC development (based on unixODBC).
 %patch0
 %patch1
 %patch2 -p1
+%patch3 -p1
 
 chmod -x NEWS README doc/*.html doc/*.gif Drivers/README
 

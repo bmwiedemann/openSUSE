@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  7 08:30:08 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Add unixODC-etc-location.patch:
+  Correct location of odbc.ini and odbcinst.ini in man pages.
+  Since we pass --sysconfdir=%{_sysconfdir}/%{name} they are in
+  /etc/unixODBC not /etc
+
+-------------------------------------------------------------------
 Wed May  4 17:16:26 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.3.11:
