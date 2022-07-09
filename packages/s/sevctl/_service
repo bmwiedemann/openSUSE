@@ -1,0 +1,29 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/virtee/sevctl.git</param>
+    <param name="scm">git</param>
+    <param name="filename">sevctl</param>
+    <param name="revision">d7af274c9cb7e3d1b31f77eb45d40596607b95de</param>
+    <param name="version">0.3.0</param>
+    <param name="versionformat">0.3.0+git.%h</param>
+  </service>
+
+  <service name="set_version" mode="disabled"/>
+
+  <service name="tar" mode="disabled"/>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+
+  <service name="cargo_audit" mode="disabled">
+    <param name="srcdir">sevctl</param>
+  </service>
+
+  <service name="cargo_vendor" mode="disabled">
+    <param name="srcdir">sevctl</param>
+    <param name="compression">xz</param>
+    <param name="update">true</param>
+  </service>
+</services>

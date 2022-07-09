@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Jul  7 17:15:42 UTC 2022 - Caleb Crane <caleb.crane@suse.com>
+
+- Disable obs_scm service by default
+- Use a commit hash as the checked out revision corresponding to crate version 0.3.0
+- Change version format to be clear we are using a git commit hash
+
+-------------------------------------------------------------------
+Thu Jul  7 04:13:20 UTC 2022 - Caleb Crane <caleb.crane@suse.com>
+
+- Build for x86_64 only
+
+-------------------------------------------------------------------
+Thu Jul  7 03:52:13 UTC 2022 - Caleb Crane <caleb.crane@suse.com>
+
+- Initial package for sevctl v0.3.0 (https://github.com/virtee/sevctl)
+- FIXME: Upstream has no tags so using HEAD revision
