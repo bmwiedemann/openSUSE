@@ -1167,4 +1167,12 @@
     <comment>22.04.2</comment>
     <requestid>981870</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>562bf7f4fe303ada26345cc50cde0147</srcmd5>
+    <version>22.04.3</version>
+    <time>1657378967</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.04.3</comment>
+    <requestid>987726</requestid>
+  </revision>
 </revisionlist>
