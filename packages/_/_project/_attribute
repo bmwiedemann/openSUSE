@@ -46,6 +46,8 @@
   boo#1201054: '20220708'
   boo#1201057: '20220706'
   boo#1201082: '20220708'
+  boo#1201348: '20220708'
+  boo#1201349: '20220708'
   bsc#1161276: '20220708'
   bsc#1191684: '20220708'
   bsc#1198101: '20220708'
@@ -130,7 +132,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20220708</value>
+    <value>20220709</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
