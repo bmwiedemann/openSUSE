@@ -1,7 +1,7 @@
 #
 # spec file for package kio-extras5
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio-extras5
-Version:        22.04.2
+Version:        22.04.3
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
@@ -32,15 +32,14 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-Source99:       %{name}-rpmlintrc
 # openEXR causes build issues for Leap 15.2 & 15.3
 %if 0%{?suse_version} > 1500
 BuildRequires:  OpenEXR-devel
 %endif
 BuildRequires:  flac-devel
 BuildRequires:  gperf
-BuildRequires:  kf5-filesystem
 BuildRequires:  kdsoap-devel
+BuildRequires:  kf5-filesystem
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmtp-devel
 BuildRequires:  libssh-devel
@@ -104,7 +103,6 @@ This is the development package for libkioarchive
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
-sed -i '/^add_subdirectory( doc )/d' CMakeLists.txt
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=share/locale/kf5
@@ -124,6 +122,7 @@ sed -i '/^add_subdirectory( doc )/d' CMakeLists.txt
 
 %files
 %license LICENSES/*
+%doc %lang(en) %{_datadir}/doc/HTML/en/kioslave5
 %{_kf5_configkcfgdir}/
 %{_kf5_debugdir}/kio-extras.categories
 %{_kf5_debugdir}/kio-extras.renamecategories

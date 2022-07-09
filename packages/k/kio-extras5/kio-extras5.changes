@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul  5 17:03:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.3/
+
+-------------------------------------------------------------------
+Sun Jun 19 06:40:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Build the documentation
+- Drop the unneeded rpmlintrc file
+
+-------------------------------------------------------------------
 Wed Jun  8 09:54:31 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 22.04.2
