@@ -21,15 +21,13 @@
 %define RPMTrackerAPI 3_0
 
 Name:           tracker
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker/3.3/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM tracker-do-not-rebuild-non-existing-FTS-tables.patch bsc#1201246 glgo#GNOME/tracker!515 alynx.zhou@suse.com -- Prevent rebuilding non-existing FTS tables
-Patch0:         tracker-do-not-rebuild-non-existing-FTS-tables.patch
 
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
