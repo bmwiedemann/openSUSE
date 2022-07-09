@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-storage-queue
-Version:        12.3.0
+Version:        12.4.0
 Release:        0
 Summary:        Microsoft Azure Storage Queue Client Library for Python
 License:        MIT
