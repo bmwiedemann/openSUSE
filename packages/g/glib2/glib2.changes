@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul  3 23:43:59 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Update to version 2.72.3
+  + Bugs fixed: glgo#GNOME/Glib!1941, glgo#GNOME/Glib!2597,
+    glgo#GNOME/Glib!2639, glgo#GNOME/Glib!2670,
+    glgo#GNOME/Glib!2703, glgo#GNOME/Glib!2709,
+    glgo#GNOME/Glib!2720, glgo#GNOME/Glib!2750,
+    glgo#GNOME/Glib!2687.
+
+-------------------------------------------------------------------
 Tue May 31 07:35:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.72.2:
@@ -15,7 +25,7 @@ Thu Apr 21 00:43:14 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
   + Fix building projects which use g_warning_once() with clang++.
   + Fix g_file_trash not deleting directories via portals backend.
   + A number more compiler warnings fixed for MSVC.
-  + Fix detection of broken poll function on macOS. 
+  + Fix detection of broken poll function on macOS.
   + Fix spawning subprocesses from GUI programs on Windows.
   + Bugs fixed:
     - #2312 gdbus-test-codegen tests leak GWeakRef objects.
@@ -29,25 +39,25 @@ Thu Apr 21 00:43:14 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
     - !2543 ci: Update the Fedora CI image to Fedora 34.
     - !2556 gdbusconnection: Use g_strv_contains().
     - !2557 gdbusmethodinvocation: Fix a leak on early return path.
-    - !2558 Move unit test on g_basename() function to 
+    - !2558 Move unit test on g_basename() function to
       glib/tests/fileutils.c.
     - !2559 Move tests/relation-test.c to glib/tests/relation.c.
-    - !2560 ci: Update Coverity, mingw and Android CI images 
+    - !2560 ci: Update Coverity, mingw and Android CI images
       to Fedora 34.
     - !2563 glib: Format GDateTime ISO8601 years as %C%y.
     - !2564 Move test files on slices from tests/ to glib/tests/.
     - !2566 tests: Add more tests for GResolver response parsing.
-    - !2573 Backport translation fixes and !2571 meson: Set 
+    - !2573 Backport translation fixes and !2571 meson: Set
       BROKEN_POLL in macOS builds to glib-2-72.
-    - !2574 Backport !2565 Revert meson: simplify lookup of python 
+    - !2574 Backport !2565 Revert meson: simplify lookup of python
       command to glib-2-72.
-    - !2587 Backport !2583 Fix trashing sandboxed directories to 
+    - !2587 Backport !2583 Fix trashing sandboxed directories to
       glib-2-72.
     - !2588 Backport !2582 glib/win32: fix spawn from GUI regression
       to glib-2-72.
-    - !2590 Backport !2589 tests: Don't exit gdbus-method-invocation 
+    - !2590 Backport !2589 tests: Don't exit gdbus-method-invocation
       test early on connection close to glib-2-72.
-    - !2593 Backport !2578 atomic: Add a C++ variant of 
+    - !2593 Backport !2578 atomic: Add a C++ variant of
       g_atomic_int_compare_and_exchange() to glib-2-72.
   + Translation updates.
 
@@ -55,7 +65,7 @@ Thu Apr 21 00:43:14 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 Fri Apr  1 08:17:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - remove provides/obsoletes on glib2-doc, it was split into
-  two packages again 
+  two packages again
 - spec-cleaner reorderings
 
 -------------------------------------------------------------------
