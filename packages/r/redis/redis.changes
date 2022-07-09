@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  4 09:41:49 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Use bundled jemalloc to fix active defragmentation, fixes bsc#1200913.
+- Remove patch:
+  * Add-support-for-USE_SYSTEM_JEMALLOC-flag.patch
+
+-------------------------------------------------------------------
 Wed Jun 29 10:54:08 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Moved logrotate files from user specific directory /etc/logrotate.d
