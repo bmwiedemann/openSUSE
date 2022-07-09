@@ -25,7 +25,7 @@
 %define bversion %{nsuffix}
 %endif
 Name:           budgie-desktop-branding
-Version:        20220627.1
+Version:        20220709.1
 Release:        0
 Summary:        Branding of the Budgie Desktop Environment
 License:        CC-BY-SA-3.0 AND GPL-2.0-only
