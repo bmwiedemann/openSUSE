@@ -643,4 +643,12 @@ Newer versions will have the correct headers.</comment>
     <comment>22.04.2 (forwarded request 981296 from cgiboudeaux)</comment>
     <requestid>981643</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>cfac7004acf1a6a8e759157ee0bde949</srcmd5>
+    <version>22.04.3</version>
+    <time>1657378808</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.04.3</comment>
+    <requestid>987575</requestid>
+  </revision>
 </revisionlist>
