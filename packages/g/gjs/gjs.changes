@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul  6 12:18:50 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.72.1:
+  + Compilation error: call to deleted function 'js_value_to_c'.
+  * jsapi-util-strings: Ignore locale to compute the upper case of
+    a char (i.e. fix implicit properties on Turkish locale).
+  * Fix memory leak when passing a "transfer none" GBytes parameter
+    to a native function.
+  * arg-cache: Do not leak an interface info structures on
+    Callbacks.
+  * test-ci: Ignore safe directory errors on CI.
+
+-------------------------------------------------------------------
 Sun Mar 20 08:15:21 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.72.0:
