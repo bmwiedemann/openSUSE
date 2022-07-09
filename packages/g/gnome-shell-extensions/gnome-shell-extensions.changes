@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  6 12:23:18 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.3:
+  + screenshot-window-sizer: Fix reported sizes on wayland.
+  + window-list: Improve touch support.
+
+-------------------------------------------------------------------
 Mon May 30 11:59:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.2:

@@ -2274,4 +2274,14 @@
     <comment>GNOME 42.2 (forwarded request 979894 from dimstar)</comment>
     <requestid>980032</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>56716773560f89249541b52ca18e5c73</srcmd5>
+    <version>42.3</version>
+    <time>1657378765</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 42.3:
+  + screenshot-window-sizer: Fix reported sizes on wayland.
+  + window-list: Improve touch support. (forwarded request 987252 from iznogood)</comment>
+    <requestid>987359</requestid>
+  </revision>
 </revisionlist>
