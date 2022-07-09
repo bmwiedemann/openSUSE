@@ -15,8 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define _version 1.20.0
+%define _version 1.21.0
 %if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1550
 %define eglversion 99~%_version
 %else
@@ -33,12 +32,10 @@ Group:          Development/Libraries/C and C++
 URL:            https://wayland.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/wayland/wayland
 #Git-Web:	http://cgit.freedesktop.org/wayland/wayland/
-Source:         https://wayland.freedesktop.org/releases/%name-%version.tar.xz
-Source2:        https://wayland.freedesktop.org/releases/%name-%version.tar.xz.sig
+Source:         https://gitlab.freedesktop.org/wayland/wayland/-/releases/%version/downloads/wayland-%version.tar.xz
+Source2:        https://gitlab.freedesktop.org/wayland/wayland/-/releases/%version/downloads/wayland-%version.tar.xz.sig
 Source3:        %name.keyring
 Source4:        baselibs.conf
-# PATCH-FIX-UPSTREAM wayland-shm-Close-file-descriptors-not-needed.patch bsc#1194190 alynx.zhou@suse.com -- Close file descriptors not needed to prevent Xwayland crash.
-Patch1:         wayland-shm-Close-file-descriptors-not-needed.patch
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  libxml2-tools
