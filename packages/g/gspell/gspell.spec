@@ -18,13 +18,13 @@
 
 %define shlib lib%{name}-1-2
 Name:           gspell
-Version:        1.10.0
+Version:        1.11.1
 Release:        0
 Summary:        A spell checker library for GTK+ applications
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/gspell
-Source0:        https://download.gnome.org/sources/gspell/1.10/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gspell/1.11/%{name}-%{version}.tar.xz
 
 BuildRequires:  gtk-doc >= 1.25
 BuildRequires:  pkgconfig
