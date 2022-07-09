@@ -1,7 +1,7 @@
 #
 # spec file for package aspell
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@ Summary:        A Spell Checker
 License:        GFDL-1.1-or-later AND LGPL-2.1-only AND HPND AND SUSE-BSD-Mark-Modifications
 Group:          Productivity/Text/Spell
 URL:            http://aspell.net/
-Source0:        ftp://ftp.gnu.org/gnu/aspell/%{name}-%{version}.tar.gz
-Source1:        ftp://ftp.gnu.org/gnu/aspell/%{name}-%{version}.tar.gz.sig
+Source0:        https://ftp.gnu.org/gnu/aspell/%{name}-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/gnu/aspell/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source100:      baselibs.conf
 # PATCH-FIX-OPENSUSE aspell-strict-aliasing.patch pnemec@suse.cz -- Fix gcc strict aliasing warnings

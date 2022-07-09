@@ -324,4 +324,12 @@
   + aspell-CVE-2019-25051.patch</comment>
     <requestid>909814</requestid>
   </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>4e9507b04f31270bf31310b7dab8ee1b</srcmd5>
+    <version>0.60.8</version>
+    <time>1657378771</time>
+    <user>dimstar_suse</user>
+    <comment>- switch source urls to https</comment>
+    <requestid>987432</requestid>
+  </revision>
 </revisionlist>
