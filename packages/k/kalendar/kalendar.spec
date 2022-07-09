@@ -19,7 +19,7 @@
 %define kf5_version 5.91.0
 %bcond_without released
 Name:           kalendar
-Version:        22.04.2
+Version:        22.04.3
 Release:        0
 Summary:        Calendar Application
 License:        GPL-3.0-only
