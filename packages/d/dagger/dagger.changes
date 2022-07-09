@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Jul 08 06:13:58 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.22:
+  * feat: support parsing and providing Pulumi outputs as secret (#2745)
+  * chore: Remove Revision from GoReleaser
+  * build(deps): bump clsx from 1.2.0 to 1.2.1 in /website (#2753)
+  * fix: remove useless GIT_REVISION (#2755)
+  * switch to strings.EqualFold for proxy env var
+  * test: adds test for exec with http proxy
+  * fix: prevent auth panic and handle auth race condition
+  * add missing changes from https://github.com/dagger/dagger/pull/2414
+  * chore: Bump Go to 1.18
+  * feat: add support for HTTP, HTTPS proxy
+  * Fix regression when printing 0.1 compat error msg
+  * docs: add example of docker daemon interaction with dind
+  * build(deps): bump clsx from 1.1.1 to 1.2.0 in /website
+  * website: remove deprecated algolia config file (#2736)
+  * Manually flush events in case of exiting without returning from function.
+  * docs: add Dagger Cloud CTA
+  * Add more permissive referrer header
+  * [Docs] Sidebar UX Improvement
+  * Send telemetry event when plan does not evaluate
+  * build(deps): bump github.com/stretchr/testify from 1.7.4 to 1.8.0
+  * docs: Fix Docker build argument name
+  * Use new Docsearch Algolia app
+  * docs: Migrate from docsearch-scraper to https://docsearch.algolia.com
+  * docs: Fix image source on Docker build
+  * fix: cue fmt
+  * docs: remove noreferrer from dagger cloud links
+  * (docs) Removed extra word `help` on `Contributing to Dagger` doc
+  * build(deps-dev): bump cypress from 10.2.0 to 10.3.0 in /website
+  * build(deps): bump github.com/hashicorp/go-version from 1.5.0 to 1.6.0
+  * refactor(codecov): drop unnecessary import
+  * build(deps): bump amplitude-js from 8.18.4 to 8.18.5 in /website
+  * feat(universe): add codecov uploader to alpha
+  * universe: bash: #RunSimple
+  * build(deps): bump google.golang.org/grpc from 1.46.2 to 1.47.0
+  * feat: restore doc generation for the whole library + index
+  * feat: restore code to generate docs from a package name
+  * feat: add python aws cdk package
+
+-------------------------------------------------------------------
 Tue Jun 28 18:14:48 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.21:
