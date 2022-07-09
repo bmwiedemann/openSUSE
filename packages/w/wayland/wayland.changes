@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 30 22:07:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.21
+  * This new release adds a new wl_pointer high-resolution scroll
+    event, adds a few new convenience functions, and contains a
+    collection of bug fixes.
+- Drop wayland-shm-Close-file-descriptors-not-needed.patch
+
+-------------------------------------------------------------------
 Tue May 24 19:27:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file
