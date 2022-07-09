@@ -57,7 +57,7 @@ Requires:       bluez-qt-udev >= %{version}
 # atop of the bluez itself, we also need bluez-obexd for kio_obexftp and both send/receive
 Requires:       bluez
 # for connecting A2DP profile
-Recommends:     pulseaudio-module-bluetooth
+Recommends:     (pulseaudio-module-bluetooth if pulseaudio)
 Recommends:     %{name}-lang
 Supplements:    packageand(bluez:plasma5-workspace)
 Conflicts:      bluedevil
