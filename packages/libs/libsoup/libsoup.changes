@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul  6 12:27:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.0.7:
+  + Fix leak in SoupAuthNTLM.
+  + Fix constructing SoupAuthNTLM objects.
+  + Disable mutual negotiation in SoupAuthNegotiate.
+  + http2:
+    - Do not advertise the `h2` protocool for proxy connections.
+    - Remove left-over headers when HTTP/1 redirects to HTTP/2.
+    - Handle HTTP_1_1_REQUIRED error.
+    - Read request bodies synchronously for sync requests.
+    - Properly handle server sending shut down GOAWAY.
+  + tests:
+     - Remove dependency on Apache's PHP module.
+     - Depend upon Apache's http2 module.
+
+-------------------------------------------------------------------
 Fri Apr  1 11:08:14 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.0.6:
