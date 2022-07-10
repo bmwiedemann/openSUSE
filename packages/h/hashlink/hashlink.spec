@@ -33,6 +33,8 @@ Patch03:        0001-Disable-the-JIT-tests-on-arm-architectures.patch
 Patch04:        0001-cmake-Don-t-build-the-interpreter-on-ARM.patch
 # PATCH-FIX-UPSTREAM
 Patch05:        0001-cmake-Don-t-run-the-version-test-if-the-interpreter-.patch
+# PATCH-FIX-OPENSUSE
+Patch06:        0001-fix-rpath.patch
 BuildRequires:  cmake
 BuildRequires:  haxe >= 4.0
 BuildRequires:  mbedtls-devel

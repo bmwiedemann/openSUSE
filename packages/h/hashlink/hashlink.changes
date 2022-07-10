@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 10 16:36:47 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add 0001-fix-rpath.patch: Fix the RPATH of the hl binary to comply with rpm validations
+
+-------------------------------------------------------------------
 Sat May 21 11:58:17 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add 0001-cmake-Don-t-build-the-interpreter-on-ARM.patch and

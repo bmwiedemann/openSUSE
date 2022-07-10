@@ -1,0 +1,13 @@
+Index: hashlink-1.12/CMakeLists.txt
+===================================================================
+--- hashlink-1.12.orig/CMakeLists.txt
++++ hashlink-1.12/CMakeLists.txt
+@@ -152,7 +152,7 @@ if(INTERPRETER_ENABLED)
+     )
+ 
+     if (UNIX AND NOT APPLE)
+-        set_target_properties(hl PROPERTIES INSTALL_RPATH "$ORIGIN;${CMAKE_INSTALL_PREFIX}/lib")
++        set_target_properties(hl PROPERTIES INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+     endif()
+ 
+     target_link_libraries(hl libhl)
