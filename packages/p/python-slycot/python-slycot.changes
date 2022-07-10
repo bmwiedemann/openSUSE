@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jul  9 12:04:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.0
+  * We've switched our Fortran SLICOT base from the older,
+    GPL-licensed version 5.0 to the now BSD-licensed version of
+    SLICOT hosted on Github. This specific version of Slycot is
+    based on SLICOT v5.8.
+  * Slycot itself remains GPL-licensed for the time being.
+  * We've added a wrapper for SLICOT AB13MD (#171), which computes
+    the upper bound for the structured singular value of a system
+    and given uncertainty structure.
+  * SB03OD used to raise an error if the Schur factor supplied in
+    array A was unstable; now, a warning is raised, and the
+    eigenvalues are still returned (via #176, which updates to
+    SLICOT v5.8).
+  * MB03RD correctly handles X=None, the default (#139).
+  * In SB03MD, the LDWORK value computed for discrete-time case was
+    corrected (#166).
+  * AG08BD testing was made more numerically robust.
+  * A test for XERBLA behaviour was fixed.
+- Switch to PEP517 build
+
+-------------------------------------------------------------------
 Thu Oct 28 20:16:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Use the correct alternative for f2py during build

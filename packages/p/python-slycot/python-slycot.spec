@@ -1,7 +1,7 @@
 #
 # spec file for package python-slycot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
-%define eggversion 0.4.0
+%define distversion 0.5.0
 Name:           python-slycot
-Version:        0.4.0.0
+Version:        0.5.0.0
 Release:        0
 Summary:        A wrapper for the SLICOT control and systems library
-License:        GPL-2.0-only
+License:        BSD-3-Clause AND GPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/python-control/Slycot
 Source:         https://files.pythonhosted.org/packages/source/s/slycot/slycot-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-build}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  blas-devel
 BuildRequires:  cmake >= 3.11
 BuildRequires:  fdupes
@@ -53,20 +52,15 @@ Slycot is a wrapper for the SLICOT control and systems library.
 %build
 export CFLAGS="%{optflags}"
 export FFLAGS="%{optflags}"
-# BLA_VENDOR="Generic":
+export CMAKE_GENERATOR="Unix Makefiles"
 # openblas-devel is pulled in by numpy-devel, but we link against the
 # generic BLAS/LAPACK binaries so that update-alternatives can choose
 # the implementation for runtime.
-%{python_expand  # find correct f2py flavor alternative (plain python_build does look at the arguments to exapand)
-   %{$python_build} \
-   --generator "Unix Makefiles" \
-   -DBLA_VENDOR="Generic" \
-   -DF2PY_EXECUTABLE=%{_bindir}/f2py-%{$python_bin_suffix}
-}
+export BLA_VENDOR="Generic"
+%pyproject_wheel
 
 %install
-# scikit-build installs into sitelib instead of platlib
-%python_expand %{$python_install} --install-lib %{$python_sitearch} --generator "Unix Makefiles"
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -80,6 +74,6 @@ export LANG="en_US.UTF-8"
 %doc README.rst
 %license COPYING
 %{python_sitearch}/slycot
-%{python_sitearch}/slycot-%{eggversion}*-info
+%{python_sitearch}/slycot-%{distversion}*-info
 
 %changelog
