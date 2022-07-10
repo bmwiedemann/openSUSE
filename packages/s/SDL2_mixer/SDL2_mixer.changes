@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Jul  9 13:14:16 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.0
+  * Added Mix_MasterVolume() for additional volume control over
+    all channels
+  * Update Mix_Init() return value to match documentation,
+    including MIXER_INIT_* flags for already-initialized modules
+  * Added Mix_HasMusicDecoder()
+  * Memory leak fixes and F32 format support to fluidsynth player
+  * Fixed distorted MIDI playback with FluidSynth if sample rate
+    is out of library's limits
+  * Added Mix_ModMusicJumpToOrder() for mod music formats
+  * Fixes to ogg playback on big-endian devices
+  * Added functions to get metadata information and loop point
+    information (Mix_GetMusic*)
+  * Extended support for WAV files
+  * Allow rmid files be opened by native midi
+  * Prevent clipping due to volume settings in modplug music
+  * Added looping support for Opus, FLAC files
+  * Improved OGG looping support
+- Switch from libmodplug to libxmp as backend for tracker files
+- Rename -devel subpackage based on SRPM name
+- Drop 0001-use-after-free-fluidsynth.patch (merged)
+- Drop baselibs.conf (no SDL2_ttf-dependent Tumbleweed packages
+  themselves have baselibs).
+
+-------------------------------------------------------------------
 Thu Jan 21 17:14:18 UTC 2021 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Add 0001-use-after-free-fluidsynth.patch to prevent

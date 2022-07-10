@@ -62,4 +62,12 @@
     <comment></comment>
     <requestid>865485</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>69bbd81183d51098f3ef698457b4bfde</srcmd5>
+    <version>2.6.0</version>
+    <time>1657487732</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.6.0</comment>
+    <requestid>988099</requestid>
+  </revision>
 </revisionlist>
