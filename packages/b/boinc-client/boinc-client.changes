@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul  3 16:51:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.20.1
+  * Manager: wxWidgets debug alert when switching between
+    advanced and simple view.
+  * BOINC did not gracefully handle capitalization discrepancies
+  * client: fix #2837 had removed a special use case
+    where idle was desired before work fetch, which was fixed
+  * Manager: Memory access error on closedown
+  * Manager: Search for skins to display on Simple View
+
+-------------------------------------------------------------------
 Tue Jun  7 21:04:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.20.0
