@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  8 19:37:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.14
+  * Fixed an issue where dependencies hashes could not be retrieved
+    when locking due to a breaking change on PyPI JSON API (#5973)
+
+-------------------------------------------------------------------
 Fri Mar 18 11:07:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.1.13

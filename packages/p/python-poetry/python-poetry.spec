@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-poetry
-Version:        1.1.13
+Version:        1.1.14
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT

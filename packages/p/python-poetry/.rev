@@ -128,4 +128,14 @@
 - Drop poetry-3544-py310.patch (forwarded request 962669 from bnavigator)</comment>
     <requestid>962670</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2e2f7157f0bba26dc13ed3a38b386927</srcmd5>
+    <version>1.1.14</version>
+    <time>1657487715</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.14
+  * Fixed an issue where dependencies hashes could not be retrieved
+    when locking due to a breaking change on PyPI JSON API (#5973) (forwarded request 987967 from bnavigator)</comment>
+    <requestid>987968</requestid>
+  </revision>
 </revisionlist>
