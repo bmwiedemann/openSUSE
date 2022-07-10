@@ -299,7 +299,7 @@ install xf86-video-sisusb
 install xf86-video-tdfx
 install xf86-video-v4l
 install xf86-video-vesa
-install xf86-video-voodoo
+#install xf86-video-voodoo
 install xz
 install yast2-trans-de
 if [ "$distro" = "leap" ]; then

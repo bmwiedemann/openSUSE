@@ -131,3 +131,4 @@ install xfce4-terminal
 install yast2-control-center-qt
 
 buildignore argyllcms
+
