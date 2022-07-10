@@ -103,7 +103,7 @@
 %endif
 
 Name:           darktable
-Version:        3.8.1
+Version:        4.0.0
 Release:        0
 %define pkg_name darktable
 %define pkg_version %{version}
