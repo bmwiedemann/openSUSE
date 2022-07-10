@@ -245,4 +245,12 @@
     <comment>- Update to release 4.5.0</comment>
     <requestid>899080</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>524aaec9c3823cbd67c6fd54c7a82430</srcmd5>
+    <version>4.5.0+g613.8e4a5e15</version>
+    <time>1657487731</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to git snapshot 4.5.0-613-g8e4a5e15</comment>
+    <requestid>988095</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libxmp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,18 @@
 
 Name:           libxmp
 %define lname	libxmp4
-Version:        4.5.0
+Version:        4.5.0+g613.8e4a5e15
 Release:        0
 Summary:        Module Player library for MOD, S3M, IT and others
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            http://xmp.sf.net/
 
-#Freshcode-URL:	https://freshcode.club/projects/libxmp
-#Git-Clone:	git://git.code.sf.net/p/xmp/libxmp
-Source:         https://github.com/libxmp/libxmp/releases/download/%name-%version/%name-%version.tar.gz
+#Git-Clone:	https://github.com/libxmp/libxmp
+#Source:         https://github.com/libxmp/libxmp/releases/download/%name-%version/%name-%version.tar.gz
+Source:         %name-%version.tar.xz
+BuildRequires:  c_compiler
+BuildRequires:  libtool
 BuildRequires:  pkg-config
 
 %description
@@ -64,7 +66,7 @@ libxmp.
 %autosetup -p1
 
 %build
-%global _lto_cflags %nil
+autoreconf -fi
 %configure
 %make_build
 
@@ -72,14 +74,13 @@ libxmp.
 b="%buildroot"
 %make_install
 mkdir -p "$b/%_mandir/man3" "$b/%_docdir/%name"
-install -pm0644 docs/Changelog docs/[a-z]* "$b/%_docdir/%name/"
+cp -av docs/Changelog docs/[a-z]* "$b/%_docdir/%name/"
 # Remove file due to bnc#808655, and because they are hardware-specific
 # and should not have much relevance for developers anyhow.
-rm -f "$b/%_docdir/%name"/{adlib*,ay*.txt}
-mv "$b/%_docdir/%name/libxmp.3" "$b/%_mandir/man3/"
+rm -fv "$b/%_docdir/%name"/{adlib*,ay*.txt}
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -92,7 +93,6 @@ make check %{?_smp_mflags}
 %_includedir/xmp.h
 %_libdir/libxmp.so
 %_libdir/pkgconfig/libxmp.pc
-%_mandir/man3/libxmp.3*
 %_docdir/%name/
 
 %changelog

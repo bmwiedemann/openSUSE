@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 10 09:05:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to git snapshot 4.5.0-613-g8e4a5e15
+  * Fix player crash caused by bad IT envelope sustain loop end
+    values. (See _also_ https://github.com/libxmp/libxmp/issues/590)
+
+-------------------------------------------------------------------
 Thu Jun 10 09:00:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.5.0

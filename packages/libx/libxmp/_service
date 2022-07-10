@@ -1,0 +1,15 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/libxmp/libxmp</param>
+		<param name="revision">master</param>
+		<param name="parent-tag">libxmp-4.5.0</param>
+		<param name="versionformat">4.5.0+g@TAG_OFFSET@.%h</param>
+		<param name="exclude">test-dev</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
