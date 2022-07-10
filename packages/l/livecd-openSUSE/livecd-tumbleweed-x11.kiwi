@@ -618,6 +618,8 @@
     <package name="xfce4-panel-plugin-xkb"/>
     <package name="xfce4-terminal"/>
     <package name="yast2-control-center-qt"/>
+    <package name="aaa_base" replaces="argyllcms"/>
+    <ignore name="argyllcms"/>
   </packages>
   <packages type="bootstrap">
     <package name="filesystem"/>

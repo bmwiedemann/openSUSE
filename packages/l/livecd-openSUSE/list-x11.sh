@@ -129,3 +129,5 @@ install NetworkManager-applet
 install xfce4-panel-plugin-xkb
 install xfce4-terminal
 install yast2-control-center-qt
+
+buildignore argyllcms
