@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Jul  9 13:22:48 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.17.0:
+  * New Features
+    + Make it possible to use Choropleth layer with data containing
+      NaNs #972
+    + Add Map panes #999
+    + Allow setting Map.dragging #1001
+    + Add visible attribute to GeoJSON layer #1002
+  * Deprecated API
+    + Deprecate LegendControl properties name, legends, positioning,
+      and positionning #979 and #1005. Update your code with the
+      following substitutions for a LegendControl legend:
+        legend.name -> legend.title
+        legend.legends -> legend.legend
+        legend.positioning -> legend.position
+        legend.positionnning -> legend.position
+     The name argument in creating a LegendControl is also deprecated,
+     please use the title argument instead: LegendControl({},
+     title='My Title').
+    + Deprecate layer and control-specific method names for Map and
+      LayerGroup, in favor of methods that work for both layers and
+      controls #982. Update your code with the following substitutions
+      for a Map map (or LayerGroup):
+        map.add_control(...) or map.add_layer(...) -> map.add(...)
+        map.remove_control(...) or map.remove_layer(...) -> map.remove(...)
+        map.substitute_control(...) or map.substitute_layer(...) -> map.substitute(...)
+        map.clear_controls(...) or map.clear_layers(...) -> map.clear(...)
+      The inline operators still continue to work as before, such as
+      map += control or map -= layer.
+  * Maintenance
+    + Compute the public path automatically #988
+  * Docs
+    + Document use of multiple basemaps #971
+    + Add a small introduction text #992
+
+-------------------------------------------------------------------
 Fri Jun 17 15:53:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - update to version 0.16.0: 

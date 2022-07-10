@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipyleaflet
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        A Jupyter widget for dynamic Leaflet maps
 License:        MIT
