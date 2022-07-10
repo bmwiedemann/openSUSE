@@ -1,0 +1,9 @@
+<package name="python-safe-netrc" project="openSUSE:Factory">
+  <title>Safe netrc file parser</title>
+  <description>This package provides a subclass of the Python standard library netrc.netrc
+class to add some custom behaviors.
+
+</description>
+  <devel project="science" package="python-safe-netrc"/>
+  <url>https://git.ligo.org/emfollow/safe-netrc</url>
+</package>
