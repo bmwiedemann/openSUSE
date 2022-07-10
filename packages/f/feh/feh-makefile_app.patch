@@ -1,8 +1,8 @@
-diff --git a/config.mk b/config.mk
-index b230e3d..e138658 100644
---- a/config.mk
-+++ b/config.mk
-@@ -17,7 +17,7 @@ ICON_PREFIX ?= ${DESTDIR}${PREFIX}/share/icons
+Index: feh-3.9/config.mk
+===================================================================
+--- feh-3.9.orig/config.mk
++++ feh-3.9/config.mk
+@@ -19,7 +19,7 @@ ICON_PREFIX ?= ${DESTDIR}${PREFIX}/share
  # generally supported. So ignore PREFIX and always install icons into
  # /usr/share/icons if the user wants to install feh on their local machine.
  ifeq (${app},1)

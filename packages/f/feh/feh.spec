@@ -17,7 +17,7 @@
 
 
 Name:           feh
-Version:        3.8
+Version:        3.9
 Release:        0
 Summary:        X11 image viewer
 License:        LGPL-2.0-or-later AND MIT
@@ -26,6 +26,7 @@ Source:         https://feh.finalrewind.org/%{name}-%{version}.tar.bz2
 Source1:        https://feh.finalrewind.org/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source3:        jpegexiforient.c
+Source4:        https://git.finalrewind.org/zsh/plain/etc/completions/_feh
 Source99:       feh-rpmlintrc
 # PATCH-FIX-OPENSUSE feh-makefile_optflags.patch https://github.com/derf/feh/issues/71 pascal.bleser@opensuse.org -- pass OPTFLAGS to make instead of hard-coded -O2 -g
 Patch1:         feh-makefile_optflags.patch
@@ -46,8 +47,8 @@ Requires:       imlib2-loaders
 Requires:       libjpeg-turbo
 Requires(post): desktop-file-utils
 Requires(post): hicolor-icon-theme
-Requires(postun):desktop-file-utils
-Requires(postun):hicolor-icon-theme
+Requires(postun): desktop-file-utils
+Requires(postun): hicolor-icon-theme
 
 %description
 feh is an X11 image viewer aimed mostly at console users. It does not
@@ -56,6 +57,14 @@ commandline arguments and configurable key/mouse actions. feh has
 multiple file modes using a slideshow or multiple windows. It
 supports the creation of montages as index prints with many
 user-configurable options.
+
+%package zsh-completion
+Summary:        ZSH Completion for %{name}
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+ZSH completion script for %{name} 3.
 
 %prep
 %autosetup -p1
@@ -84,6 +93,8 @@ rm -rf "%{buildroot}%{_datadir}/doc"
 
 install -D -m0755 jpegexiforient %{buildroot}%{_bindir}/jpegexiforient
 
+install -Dm0644 %{SOURCE4} %{buildroot}/%{_datadir}/zsh/site-functions/_%{name}
+
 %files
 %license COPYING
 %doc AUTHORS ChangeLog README.md TODO
@@ -95,5 +106,8 @@ install -D -m0755 jpegexiforient %{buildroot}%{_bindir}/jpegexiforient
 %{_datadir}/icons/hicolor/48x48/apps/%{name}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_mandir}/man1/feh.1%{?ext_man}
+
+%files zsh-completion
+%{_datadir}/zsh
 
 %changelog

@@ -2,10 +2,10 @@
  src/menu.c |   13 ++++++++-----
  1 file changed, 8 insertions(+), 5 deletions(-)
 
-Index: feh-2.17.1/src/menu.c
+Index: feh-3.9/src/menu.c
 ===================================================================
---- feh-2.17.1.orig/src/menu.c
-+++ feh-2.17.1/src/menu.c
+--- feh-3.9.orig/src/menu.c
++++ feh-3.9/src/menu.c
 @@ -24,6 +24,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE
  
  */
@@ -15,7 +15,7 @@ Index: feh-2.17.1/src/menu.c
  #include "feh.h"
  #include "thumbnail.h"
  #include "wallpaper.h"
-@@ -931,7 +933,8 @@ void feh_menu_init_main(void)
+@@ -938,7 +940,8 @@ void feh_menu_init_main(void)
  
  void feh_menu_init_common()
  {
@@ -25,7 +25,7 @@ Index: feh-2.17.1/src/menu.c
  	char buf[30];
  	feh_menu *m;
  
-@@ -977,7 +980,7 @@ void feh_menu_init_common()
+@@ -986,7 +989,7 @@ void feh_menu_init_common()
  		m = feh_menu_new();
  		m->name = estrdup("TILED");
  		for (i = 0; i < num_desks; i++) {
@@ -34,7 +34,7 @@ Index: feh-2.17.1/src/menu.c
  			if (opt.slideshow || opt.multiwindow)
  				feh_menu_add_entry(m, buf, NULL, CB_BG_TILED,
  						i, NULL);
-@@ -989,7 +992,7 @@ void feh_menu_init_common()
+@@ -998,7 +1001,7 @@ void feh_menu_init_common()
  		m = feh_menu_new();
  		m->name = estrdup("SCALED");
  		for (i = 0; i < num_desks; i++) {
@@ -43,7 +43,7 @@ Index: feh-2.17.1/src/menu.c
  
  			if (opt.slideshow || opt.multiwindow)
  				feh_menu_add_entry(m, buf, NULL, CB_BG_SCALED,
-@@ -1002,7 +1005,7 @@ void feh_menu_init_common()
+@@ -1011,7 +1014,7 @@ void feh_menu_init_common()
  		m = feh_menu_new();
  		m->name = estrdup("CENTERED");
  		for (i = 0; i < num_desks; i++) {
@@ -52,7 +52,7 @@ Index: feh-2.17.1/src/menu.c
  			if (opt.slideshow || opt.multiwindow)
  				feh_menu_add_entry(m, buf, NULL,
  						CB_BG_CENTERED, i, NULL);
-@@ -1014,7 +1017,7 @@ void feh_menu_init_common()
+@@ -1023,7 +1026,7 @@ void feh_menu_init_common()
  		m = feh_menu_new();
  		m->name = estrdup("FILLED");
  		for (i = 0; i < num_desks; i++) {

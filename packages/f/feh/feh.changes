@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul  4 07:12:43 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 3.9:
+  * Remove magic byte check before passing an image to Imlib2.
+    This check was introduced in feh 3.6 to work around an issue with
+    Imlib2 being slow to determine image loadability in some cases
+    <https://phab.enlightenment.org/T8739>. By now, an Imlib2 version
+    without this issue is availble.
+  * Fix crash (segmentation fault due to null pointer dereference)
+    when toggling fullscreen mode while moving the cursor.
+  * feh no longer supplies its own getopt_long function.
+    getopt_long is provided by a wide range of libc implementations,
+    so there is no need for feh to duplicate it.
+- Add zsh completion
+
+-------------------------------------------------------------------
 Thu May 12 12:38:27 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.8:
