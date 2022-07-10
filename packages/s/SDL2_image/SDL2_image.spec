@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2_image
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           SDL2_image
 %define lname	libSDL2_image-2_0-0
-Version:        2.0.5
+Version:        2.6.0
 Release:        0
 Summary:        Simple DirectMedia Layer 2 image loading library
 License:        Zlib
@@ -26,9 +26,7 @@ Group:          Development/Libraries/X11
 URL:            https://libsdl.org/projects/SDL_image/
 
 #Hg-Clone:	http://hg.libsdl.org/SDL_image/
-Source:         https://libsdl.org/projects/SDL_image/release/%name-%version.tar.gz
-Source2:        baselibs.conf
-Patch1:         CVE-2019-13616.patch
+Source:         https://github.com/libsdl-org/SDL_image/releases/download/release-%version/SDL2_image-%version.tar.gz
 BuildRequires:  dos2unix
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
@@ -52,13 +50,14 @@ This is a simple library to load images of various formats as SDL
 surfaces. This library supports the BMP, PPM, PCX, GIF, JPEG, PNG,
 TIFF and WEBP formats.
 
-%package -n libSDL2_image-devel
+%package devel
 Summary:        Development files for the SDL2 image loader library
 Group:          Development/Libraries/X11
 Requires:       %lname = %version
-Provides:       SDL2_image-devel = %version-%release
+Obsoletes:      libSDL2_image-devel < %version-%release
+Provides:       libSDL2_image-devel = %version-%release
 
-%description -n libSDL2_image-devel
+%description devel
 This is a simple library to load images of various formats as SDL
 surfaces. This library supports the BMP, PPM, PCX, GIF, JPEG, PNG,
 TIFF and WEBP formats.
@@ -69,9 +68,11 @@ dos2unix *.txt
 rm -rf external
 
 %build
-%configure --disable-png-shared --disable-jpg-shared --disable-tif-shared \
-	--disable-webp-shared --disable-static
-make %{?_smp_mflags}
+# --disable-*-shared: Link, rather than dlopen.
+#
+%configure --disable-stb-image --disable-png-shared --disable-jpg-shared \
+	--disable-tif-shared --disable-webp-shared --disable-static
+%make_build
 
 %install
 %make_install
@@ -81,13 +82,14 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%license COPYING.txt
+%license LICENSE.txt
 %_libdir/libSDL2_image-2*.so.*
 
-%files -n libSDL2_image-devel
+%files devel
 %doc CHANGES.txt README.txt
 %_includedir/SDL2/
 %_libdir/libSDL2_image.so
-%_libdir/pkgconfig/SDL2_image.pc
+%_libdir/cmake/
+%_libdir/pkgconfig/*.pc
 
 %changelog

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul  8 20:20:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.0
+  * Added stb_image as the default backend for JPG and PNG images loading.
+    To use libpng and libjpg instead, configure using --disable-stb-image
+  * Added IMG_LoadSizedSVG_RW()
+  * Added support for AVIF images (https://github.com/AOMediaCodec/libavif [github.com])
+  * Added IMG_ReadXPMFromArrayToRGB888()
+  * Added support for JXL images (https://jpegxl.info/ [jpegxl.info])
+  * Added support for QOI images (https://qoiformat.org/ [qoiformat.org])
+  * Fixed XCF regression introduced in 2.0.5
+  * Added support for loading animated GIFs
+  * LoadBMP() now loads files using SDL2
+  * Allow using libwebpdecoder instead libwebp
+- Remove CVE-2019-13616.patch (merged)
+- Rename -devel subpackage based on SRPM name
+- Drop baselibs.conf (no SDL2_ttf-dependent Tumbleweed packages
+  themselves have baselibs).
+
+-------------------------------------------------------------------
 Fri Aug 23 14:04:59 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Add CVE-2019-13616.patch: fix heap buffer overflow when reading

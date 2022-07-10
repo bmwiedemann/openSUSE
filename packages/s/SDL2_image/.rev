@@ -101,4 +101,12 @@
   * Fixed CVE-2019-12222 boo#1136101</comment>
     <requestid>725636</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a16ed2727bd2f52d26919dbc4d35330c</srcmd5>
+    <version>2.6.0</version>
+    <time>1657487730</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.6.0</comment>
+    <requestid>988088</requestid>
+  </revision>
 </revisionlist>
