@@ -57,6 +57,11 @@ export CMAKE_GENERATOR="Unix Makefiles"
 # generic BLAS/LAPACK binaries so that update-alternatives can choose
 # the implementation for runtime.
 export BLA_VENDOR="Generic"
+%{python_expand # give the pep517 build the correct f2py flavor
+mkdir -p build/buildbin
+ln -s %{_bindir}/f2py-%{$python_bin_suffix} build/buildbin/f2py3
+}
+export PATH=$PWD/build/buildbin:$PATH
 %pyproject_wheel
 
 %install
