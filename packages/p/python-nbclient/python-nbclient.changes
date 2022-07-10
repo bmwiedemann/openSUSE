@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul  9 13:26:33 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.6.6:
+  * Merged PRs
+    + Start new client if needed in blocking setup_kernel #241
+      (@davidbrochart)
+
+- changes from version 0.6.5:
+  * Merged PRs
+    + Start new client if needed #239 (@davidbrochart)
+
+-------------------------------------------------------------------
 Sun Jun  5 16:49:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix test requirements
