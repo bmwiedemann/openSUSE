@@ -95,7 +95,7 @@ export CXXFLAGS="$CXXFLAGS -I$PWD/extra_include"
 	-DINSTALL_DOCS_PATH="%_defaultdocdir/%name" \
 	-DINSTALL_PK3_PATH="%_datadir/doom" \
 	-DINSTALL_SOUNDFONT_PATH="%_datadir/doom" \
-	-DDYN_OPENAL=OFF
+	-DDYN_OPENAL=OFF -DINSTALL_RPATH:STRING="NO"
 %cmake_build
 
 %install
