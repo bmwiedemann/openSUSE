@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun 30 18:07:43 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 5.5.6: 
+  * bugfix: #1977796 rounding problem for euro minor in
+    deutsche mark
+  * bugfix: #1976138 split amount opposite sign don't work when
+    using + button
+  * bugfix: #1972078 inherit old xfer enable to post to
+    a closed account
+  * bugfix: #1970526 windows do not minimize independently; cannot
+    raise main window above others
+  * bugfix: #1970509 manage scheduled list column hscrollbar
+  * bugfix: #1970020 balance report - toggle detail show no txn
+  * bugfix: #1967708 csv export invalid with semicolon in text
+-  BuildRequires for glib2 changed to >= 2.68
+
+-------------------------------------------------------------------
 Mon Apr 25 16:30:28 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 5.5.5:
