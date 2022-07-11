@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul  3 11:56:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- Changes since 5.95.0:
+  * Fix QWhatsThis links not being clickable
+  * Allow to load rc file in kf6
+  * Fix typo in local variable name
+
+-------------------------------------------------------------------
 Fri Jun 10 14:12:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.95.0
