@@ -317,4 +317,13 @@
   * Fix partly missing SELinux support (#5), call podman directly</comment>
     <requestid>986984</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>6b3699c0f34b65199ea29f93092efd8a</srcmd5>
+    <version>0.0+git20220710.f290756</version>
+    <time>1657559276</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20220710.f290756:
+  * container-openldap: fix syntax error in ExecStart</comment>
+    <requestid>988065</requestid>
+  </revision>
 </revisionlist>

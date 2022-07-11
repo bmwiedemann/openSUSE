@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 10 05:21:07 UTC 2022 - kukuk@suse.com
+
+- Update to version 0.0+git20220710.f290756:
+  * container-openldap: fix syntax error in ExecStart
+
+-------------------------------------------------------------------
 Wed Jul 06 08:14:35 UTC 2022 - kukuk@suse.com
 
 - Update to version 0.0+git20220706.2c928fe:
