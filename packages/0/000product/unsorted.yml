@@ -1741,7 +1741,7 @@ unsorted:
   - calcurse 
   - calcurse-lang 
   - calendarsupport-devel 
-  - calibre 
+  - calibre: [x86_64] 
   - calligra 
   - calligra-devel 
   - calligra-doc 
@@ -10484,10 +10484,10 @@ unsorted:
   - libdde-network-utils1 
   - libdde-wayland-client0 
   - libdde-wayland-server0 
-  - libdeal_II9_3_3: [x86_64] 
-  - libdeal_II9_3_3-openmpi2: [x86_64] 
-  - libdeal_II9_3_3-openmpi3: [x86_64] 
-  - libdeal_II9_3_3-openmpi4: [x86_64] 
+  - libdeal_II9_4_0: [x86_64] 
+  - libdeal_II9_4_0-openmpi2: [x86_64] 
+  - libdeal_II9_4_0-openmpi3: [x86_64] 
+  - libdeal_II9_4_0-openmpi4: [x86_64] 
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
@@ -12153,7 +12153,7 @@ unsorted:
   - libmbus 
   - libmbus-devel 
   - libmbus0 
-  - libmca_common_dstore1: [x86_64] 
+  - libmca_common_dstore1 
   - libmcpp0 
   - libmd-devel 
   - libmdb3 
@@ -13042,7 +13042,7 @@ unsorted:
   - libpmempool-devel: [x86_64] # devel package of dvd:pmdk 
   - libpmempool1: [x86_64] 
   - libpmi0: [x86_64] 
-  - libpmix2: [x86_64] 
+  - libpmix2 
   - libpnetcdf-gnu-mpich-hpc: [x86_64] 
   - libpnetcdf-gnu-mvapich2-hpc: [x86_64] 
   - libpnetcdf-gnu-openmpi2-hpc: [x86_64] 
@@ -20076,6 +20076,7 @@ unsorted:
   - perl-URI-db 
   - perl-URI-ws 
   - perl-UUID 
+  - perl-UUID-Tiny 
   - perl-Unicode-Collate 
   - perl-Unicode-EastAsianWidth 
   - perl-Unicode-LineBreak 
@@ -20608,12 +20609,12 @@ unsorted:
   - pmemkv-devel: [x86_64] 
   - pmemkv-python: [x86_64] 
   - pmidi 
-  - pmix: [x86_64] 
-  - pmix-devel: [x86_64] 
-  - pmix-headers: [x86_64] 
-  - pmix-mca-params: [x86_64] 
-  - pmix-plugins: [x86_64] 
-  - pmix-test: [x86_64] 
+  - pmix 
+  - pmix-devel 
+  - pmix-headers 
+  - pmix-mca-params 
+  - pmix-plugins 
+  - pmix-test 
   - pnetcdf-devel-data: [x86_64] 
   - pnetcdf-doc: [x86_64] 
   - pnetcdf-gnu-mpich-hpc: [x86_64] 
@@ -22781,7 +22782,6 @@ unsorted:
   - python310-flask-jwt-extended 
   - python310-flask-oidc 
   - python310-flask-peewee 
-  - python310-flask-restplus 
   - python310-flask-restx 
   - python310-flatbuffers 
   - python310-flatdict 
@@ -23929,6 +23929,7 @@ unsorted:
   - python310-python-daemon 
   - python310-python-datamatrix 
   - python310-python-dbusmock 
+  - python310-python-debian 
   - python310-python-docs-theme 
   - python310-python-dotenv 
   - python310-python-editor 
@@ -25902,7 +25903,6 @@ unsorted:
   - python38-flask-jwt-extended 
   - python38-flask-oidc 
   - python38-flask-peewee 
-  - python38-flask-restplus 
   - python38-flask-restx 
   - python38-flatbuffers 
   - python38-flatdict 
@@ -27157,6 +27157,7 @@ unsorted:
   - python38-python-datamatrix 
   - python38-python-dateutil 
   - python38-python-dbusmock 
+  - python38-python-debian 
   - python38-python-docs-theme 
   - python38-python-dotenv 
   - python38-python-editor 
@@ -29189,7 +29190,6 @@ unsorted:
   - python39-flask-jwt-extended 
   - python39-flask-oidc 
   - python39-flask-peewee 
-  - python39-flask-restplus 
   - python39-flask-restx 
   - python39-flatbuffers 
   - python39-flatdict 
@@ -30444,6 +30444,7 @@ unsorted:
   - python39-python-datamatrix 
   - python39-python-dateutil 
   - python39-python-dbusmock 
+  - python39-python-debian 
   - python39-python-docs-theme 
   - python39-python-dotenv 
   - python39-python-editor 
@@ -43081,6 +43082,7 @@ unsorted:
   - woff2-devel 
   - wofi 
   - wofi-devel 
+  - wofi-pass 
   - wol-udev-rules 
   - woodstox-core 
   - woodstox-core-javadoc 
