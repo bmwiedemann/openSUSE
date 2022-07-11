@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Wed Jul  6 18:35:47 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Firefox 102.0.1:
+  * Fixed: Fixed bookmarks sidebar flashing white when opened in
+    dark mode (bmo#1776157)
+  * Fixed: Fixed multilingual spell checking not working with
+    content in both English and a non-Latin alphabet
+    (bmo#1773802)
+  * Fixed: Developer tools:  Fixed an issue where the console
+    output keep getting scrolled to the bottom when the last
+    visible message is an evaluation result (bmo#1776262)
+  * Fixed: Fixed *Delete cookies and site data when Firefox is
+    closed* checkbox getting disabled on startup (bmo#1777419)
+  * Fixed: Various stability fixes
+
+-------------------------------------------------------------------
+Sat Jun 25 12:51:46 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Firefox 102.0
+  * You can now disable automatic opening of the download panel
+    every time a new download starts
+  * Firefox now mitigates query parameter tracking when navigating
+    sites in ETP strict mode
+  * Improved security by moving audio decoding into a separate
+    process with stricter sandboxing, thus improving process isolation
+  * https://www.mozilla.org/en-US/firefox/102.0/releasenotes
+  MFSA 2022-24 (bsc#1200793)
+  * CVE-2022-34479 (bmo#1745595)
+    A popup window could be resized in a way to overlay the
+    address bar with web content
+  * CVE-2022-34470 (bmo#1765951)
+    Use-after-free in nsSHistory
+  * CVE-2022-34468 (bmo#1768537)
+    CSP sandbox header without `allow-scripts` can be bypassed
+    via retargeted javascript: URI
+  * CVE-2022-34482 (bmo#845880)
+    Drag and drop of malicious image could have led to malicious
+    executable and potential code execution
+  * CVE-2022-34483 (bmo#1335845)
+    Drag and drop of malicious image could have led to malicious
+    executable and potential code execution
+  * CVE-2022-34476 (bmo#1387919)
+    ASN.1 parser could have been tricked into accepting malformed ASN.1
+  * CVE-2022-34481 (bmo#1483699, bmo#1497246)
+    Potential integer overflow in ReplaceElementsAt
+  * CVE-2022-34474 (bmo#1677138)
+    Sandboxed iframes could redirect to external schemes
+  * CVE-2022-34469 (bmo#1721220)
+    TLS certificate errors on HSTS-protected domains could be
+    bypassed by the user on Firefox for Android
+  * CVE-2022-34471 (bmo#1766047)
+    Compromised server could trick a browser into an addon downgrade
+  * CVE-2022-34472 (bmo#1770123)
+    Unavailable PAC file resulted in OCSP requests being blocked
+  * CVE-2022-34478 (bmo#1773717)
+    Microsoft protocols can be attacked if a user accepts a prompt
+  * CVE-2022-2200 (bmo#1771381)
+    Undesired attributes could be set as part of prototype pollution
+  * CVE-2022-34480 (bmo#1454072)
+    Free of uninitialized pointer in lg_init
+  * CVE-2022-34477 (bmo#1731614)
+    MediaError message property leaked information on cross-
+    origin same-site pages
+  * CVE-2022-34475 (bmo#1757210)
+    HTML Sanitizer could have been bypassed via same-origin
+    script via use tags
+  * CVE-2022-34473 (bmo#1770888)
+    HTML Sanitizer could have been bypassed via use tags
+  * CVE-2022-34484 (bmo#1763634, bmo#1772651)
+    Memory safety bugs fixed in Firefox 102 and Firefox ESR 91.11
+  * CVE-2022-34485 (bmo#1768409, bmo#1768578)
+    Memory safety bugs fixed in Firefox 102
+- requires
+  NSPR >= 4.34
+  NSS >= 3.79
+  rust = 1.60
+- switch out skia-patches with webrender-patches for big endian
+  removed:
+  * mozilla-bmo1504834-part2.patch
+  * mozilla-bmo1504834-part4.patch
+  * mozilla-bmo1626236.patch
+  added:
+  * one_swizzle_to_rule_them_all.patch
+  * svg-rendering.patch
+- add some more returns to the no-return-patch
+
+-------------------------------------------------------------------
 Fri Jun 10 20:45:37 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 101.0.1:

@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  eeedc49c16aba3b50d1547315a88091a1c765904
+# Parent  edd7284c391b503b76bb5bb6321f24ab2f5f8bdf
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -165,7 +165,7 @@ diff --git a/toolkit/components/downloads/moz.build b/toolkit/components/downloa
 diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downloads/HelperAppDlg.jsm
 --- a/toolkit/mozapps/downloads/HelperAppDlg.jsm
 +++ b/toolkit/mozapps/downloads/HelperAppDlg.jsm
-@@ -1252,36 +1252,66 @@ nsUnknownContentTypeDialog.prototype = {
+@@ -1254,36 +1254,66 @@ nsUnknownContentTypeDialog.prototype = {
          params.handlerApp &&
          params.handlerApp.executable &&
          params.handlerApp.executable.isFile()
@@ -255,15 +255,15 @@ diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downlo
 diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
 --- a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
 +++ b/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
-@@ -13,16 +13,17 @@
- #include "nsPrintfCString.h"
- #include "nsNetCID.h"
+@@ -10,16 +10,17 @@
+ #include "prnetdb.h"
+ #include "prenv.h"
+ #include "nsInterfaceHashtable.h"
+ #include "nsHashtablesFwd.h"
+ #include "nsHashKeys.h"
  #include "nsNetUtil.h"
  #include "nsISupportsPrimitives.h"
  #include "nsIGSettingsService.h"
- #include "nsInterfaceHashtable.h"
- #include "mozilla/Attributes.h"
- #include "nsIURI.h"
 +#include "nsKDEUtils.h"
  
  using namespace mozilla;
@@ -273,7 +273,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
    NS_DECL_ISUPPORTS
    NS_DECL_NSISYSTEMPROXYSETTINGS
  
-@@ -36,16 +37,18 @@ class nsUnixSystemProxySettings final : 
+@@ -33,16 +34,18 @@ class nsUnixSystemProxySettings final : 
    nsCOMPtr<nsIGSettingsCollection> mProxySettings;
    nsInterfaceHashtable<nsCStringHashKey, nsIGSettingsCollection>
        mSchemeProxySettings;
@@ -292,7 +292,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
  nsUnixSystemProxySettings::GetMainThreadOnly(bool* aMainThreadOnly) {
    // dbus prevents us from being threadsafe, but this routine should not block
    // anyhow
-@@ -381,21 +384,50 @@ nsresult nsUnixSystemProxySettings::GetP
+@@ -378,21 +381,50 @@ nsresult nsUnixSystemProxySettings::GetP
    return NS_OK;
  }
  
@@ -786,25 +786,6 @@ diff --git a/uriloader/exthandler/HandlerServiceParent.cpp b/uriloader/exthandle
  
  /*
   * Check if a handler exists for the provided protocol. Check the datastore
-@@ -328,17 +328,17 @@ mozilla::ipc::IPCResult HandlerServicePa
-   nsCOMPtr<nsIExternalProtocolService> protoSvc =
-       do_GetService(NS_EXTERNALPROTOCOLSERVICE_CONTRACTID, &rv);
-   if (NS_WARN_IF(NS_FAILED(rv))) {
-     *aHandlerExists = false;
-     return IPC_OK();
-   }
-   rv = protoSvc->ExternalProtocolHandlerExists(aProtocolScheme.get(),
-                                                aHandlerExists);
--
-+##
-   if (NS_WARN_IF(NS_FAILED(rv))) {
-     *aHandlerExists = false;
-   }
- #else
-   MOZ_RELEASE_ASSERT(false, "No implementation on this platform.");
-   *aHandlerExists = false;
- #endif
-   return IPC_OK();
 diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
 --- a/uriloader/exthandler/moz.build
 +++ b/uriloader/exthandler/moz.build
@@ -1825,7 +1806,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
  #  include "prmem.h"
  #  include "plbase64.h"
  
-@@ -2071,20 +2072,29 @@ nsLocalFile::SetPersistentDescriptor(con
+@@ -2097,20 +2098,29 @@ nsLocalFile::SetPersistentDescriptor(con
  
  NS_IMETHODIMP
  nsLocalFile::Reveal() {
@@ -1857,7 +1838,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
      ::CFRelease(url);
      return rv;
    }
-@@ -2096,16 +2106,23 @@ nsLocalFile::Reveal() {
+@@ -2122,16 +2132,23 @@ nsLocalFile::Reveal() {
  
  NS_IMETHODIMP
  nsLocalFile::Launch() {

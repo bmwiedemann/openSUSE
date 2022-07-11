@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          101
+%define major          102
 %define mainver        %major.0.1
-%define orig_version   101.0.1
+%define orig_version   102.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -91,19 +91,23 @@ BuildRequires:  dbus-1-glib-devel
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  memory-constraints
-%if 0%{?suse_version} <= 1320
-BuildRequires:  gcc9-c++
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150400
+BuildRequires:  gcc11-c++
 %else
 BuildRequires:  gcc-c++
 %endif
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
-BuildRequires:  cargo >= 1.57
-BuildRequires:  rust >= 1.57
+BuildRequires:  cargo >= 1.59
+BuildRequires:  rust >= 1.59
 %else
 # Newer sle/leap/tw use parallel versioned rust releases which have
 # a different method for provides that we can use to request a
 # specific version
+# minimal requirement:
 BuildRequires:  rust+cargo >= 1.59
+# actually used upstream:
+BuildRequires:  cargo1.60
+BuildRequires:  rust1.60
 %endif
 %if 0%{useccache} != 0
 BuildRequires:  ccache
@@ -113,8 +117,8 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
-BuildRequires:  mozilla-nspr-devel >= 4.33
-BuildRequires:  mozilla-nss-devel >= 3.78.1
+BuildRequires:  mozilla-nspr-devel >= 4.34
+BuildRequires:  mozilla-nss-devel >= 3.79
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -178,7 +182,9 @@ Source1:        MozillaFirefox.desktop
 Source2:        MozillaFirefox-rpmlintrc
 Source3:        mozilla.sh.in
 Source4:        tar_stamps
+%if %{localize}
 Source7:        l10n-%{orig_version}%{orig_suffix}.tar.xz
+%endif
 Source8:        firefox-mimeinfo.xml
 Source9:        firefox.js
 Source11:       firefox.1
@@ -207,18 +213,17 @@ Patch8:         mozilla-reduce-rust-debuginfo.patch
 Patch9:         mozilla-bmo1005535.patch
 Patch10:        mozilla-bmo1568145.patch
 Patch11:        mozilla-bmo1504834-part1.patch
-Patch12:        mozilla-bmo1504834-part2.patch
 Patch13:        mozilla-bmo1504834-part3.patch
 Patch14:        mozilla-bmo1512162.patch
 Patch15:        mozilla-fix-top-level-asm.patch
-Patch16:        mozilla-bmo1504834-part4.patch
 Patch17:        mozilla-bmo849632.patch
 Patch18:        mozilla-bmo998749.patch
-Patch19:        mozilla-bmo1626236.patch
 Patch20:        mozilla-s390x-skia-gradient.patch
 Patch21:        mozilla-libavcodec58_91.patch
 Patch22:        mozilla-silence-no-return-type.patch
 Patch23:        mozilla-bmo531915.patch
+Patch25:        one_swizzle_to_rule_them_all.patch
+Patch26:        svg-rendering.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -341,22 +346,20 @@ sed -i "s/python3/python36/g" mach
 export PYTHON3=/usr/bin/python36
 %endif
 
-# Webrender does not support big endian yet, so we are forcing it off
-# see: https://bugzilla.mozilla.org/show_bug.cgi?id=1716707
-%ifarch s390x ppc64
-echo 'pref("gfx.webrender.force-disabled", true);' >> %{SOURCE9}
-%endif
-
 #
 kdehelperversion=$(cat toolkit/xre/nsKDEUtils.cpp | grep '#define KMOZILLAHELPER_VERSION' | cut -d ' ' -f 3)
 if test "$kdehelperversion" != %{kde_helper_version}; then
   echo fix kde helper version in the .spec file
   exit 1
 fi
-
-source %{SOURCE4}
+# When doing only_print_mozconfig, this file isn't necessarily available, so skip it
+cp %{SOURCE4} .obsenv.sh
+%else
+# We need to make sure its empty
+echo "" > .obsenv.sh
 %endif
 
+cat >> .obsenv.sh <<EOF
 export CARGO_HOME=${RPM_BUILD_DIR}/%{srcname}-%{orig_version}/.cargo
 export MOZ_SOURCE_CHANGESET=$RELEASE_TAG
 export SOURCE_REPO=$RELEASE_REPO
@@ -367,8 +370,8 @@ export MOZILLA_OFFICIAL=1
 export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 export MACH_USE_SYSTEM_PYTHON=1
-%if 0%{?suse_version} <= 1320
-export CC=gcc-9
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150400
+export CC=gcc-11
 %else
 %if 0%{?clang_build} == 0
 export CC=gcc
@@ -392,27 +395,12 @@ export CFLAGS="$CFLAGS -mminimal-toc"
 %endif
 export CXXFLAGS="$CFLAGS"
 export MOZCONFIG=$RPM_BUILD_DIR/mozconfig
-%if %{with only_print_mozconfig}
-echo "export CC=$CC"
-echo "export CXX=$CXX"
-echo "export CFLAGS=\"$CFLAGS\""
-echo "export CXXFLAGS=\"$CXXFLAGS\""
-echo "export LDFLAGS=\"$LDFLAGS\""
-echo "export RUSTFLAGS=\"$RUSTFLAGS\""
-echo "export CARGO_HOME=\"$CARGO_HOME\""
-echo "export PATH=\"$PATH\""
-echo "export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH\""
-echo "export PKG_CONFIG_PATH=\"$PKG_CONFIG_PATH\""
-echo "export MOZCONFIG=\"$MOZCONFIG\""
-echo "export MOZILLA_OFFICIAL=1"
-echo "export BUILD_OFFICIAL=1"
-echo "export MOZ_TELEMETRY_REPORTING=1"
-echo ""
-cat << EOF
-%else
-%limit_build -m 2560
+EOF
+# Done with env-variables.
+source ./.obsenv.sh
+
+# Generating mozconfig
 cat << EOF > $MOZCONFIG
-%endif
 mk_add_options MOZILLA_OFFICIAL=1
 mk_add_options BUILD_OFFICIAL=1
 mk_add_options MOZ_MAKE_FLAGS=%{?jobs:-j%jobs}
@@ -498,7 +486,15 @@ ac_add_options MOZ_PGO=1
 %endif
 %endif
 EOF
-%if !%{with only_print_mozconfig}
+
+%if %{with only_print_mozconfig}
+cat ./.obsenv.sh
+cat $MOZCONFIG
+%else
+%ifarch aarch64 %arm ppc64 ppc64le
+%limit_build -m 2000
+%endif
+
 %if 0%{useccache} != 0
 ccache -s
 %endif
