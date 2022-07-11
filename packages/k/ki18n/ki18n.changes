@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul  3 11:55:59 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- Changes since 5.95.0:
+  * Accept null strings from QML (kde#451807)
+  * Don't print debug message in double quotes
+  * Don't duplicate headers between cpp/.h files
+  * Use a struct instead of pair
+
+-------------------------------------------------------------------
 Fri Jun 10 14:12:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.95.0
