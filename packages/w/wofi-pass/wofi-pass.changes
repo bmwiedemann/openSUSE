@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Mon Jul 11 08:53:04 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file to make rpmlint happy.
+
+-------------------------------------------------------------------
+Sat May 28 23:50:22 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for the latest git snapshot of wofi-pass.
