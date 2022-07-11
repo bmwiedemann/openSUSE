@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul  3 11:56:18 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- Changes since 5.95.0:
+  * Require passing tests for the CI to pass
+  * iterate only over visible children in menu
+  * Avoid a crash with kscreenlocker_greet or any other QGuiApplication
+  * Make StackView obey the global animation speed setting (kde#395324)
+
+-------------------------------------------------------------------
 Fri Jun 10 14:12:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.95.0
