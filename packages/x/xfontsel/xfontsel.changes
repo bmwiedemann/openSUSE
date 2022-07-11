@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 11 12:44:35 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.0:
+  * This release adds two small new features - a "Reset" button to reset
+    all the selections back to the initial values, and when given the "-scaled"
+    option fetch the actual screen resolution and add that to the list of
+    available resolutions for the resX and resY menus.
+
+-------------------------------------------------------------------
 Wed Apr  4 16:00:26 UTC 2018 - sndirsch@suse.com
 
 - Update to version 1.0.6

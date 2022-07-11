@@ -66,4 +66,28 @@
     <comment></comment>
     <requestid>935484</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8a67da008d3e43019fc62ec33d404be4</srcmd5>
+    <version>1.1.0</version>
+    <time>1657559405</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0
+  * Standardize indentation in validate_visual()
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Use time_t instead of long with time() &amp; ctime()
+  * xpr.man: remove duplicate &quot;HP&quot; from PaintJet XL Color name
+  * xpr.man: show current version in footer instead of X11R6
+  * Remove support for Digital LA100 dot matrix printer
+  * Remove support for Digital LN03 laser printer
+  * gitlab CI: add a basic build test
+  * Fix spelling/wording issues
+  * gitlab CI: Use ci-fairy image template
+  * gitlab CI: enable Static Application Security Testing (SAST)
+  * Build xz tarballs instead of bzip2
+  * man pages: remove out-of-date COPYRIGHT section
+  * xdpr.man: minor corrections
+  * remove extra 3rd parameter to open()</comment>
+    <requestid>988381</requestid>
+  </revision>
 </revisionlist>

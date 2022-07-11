@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 11 13:29:49 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.6
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * Added case for window_name_size == 0
+
+-------------------------------------------------------------------
 Fri Dec  3 14:02:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file (move license to licensedir)

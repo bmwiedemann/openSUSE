@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 11 13:57:21 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * remove six dependency
+
+- update to version 0.38.3:
+  * Fixed double-quoted UUID's in sqlalchemy >= 1.4.30 (#581, pull
+    request courtesy of kurtmckee)
+  * Fixed create_database() and drop_database() crashing with
+    CockroachDB (#586, pull request courtesy of kurtmckee)
+  * Added mixed case support for pg composite (#584, pull request
+    courtesy of bamartin125)
+  * Support Python 3.10.
+  * Remove the dependency on the six package. (#605)
+  * Introduce sqlalchemy 2.0 compatibility. (#513)
+
+-------------------------------------------------------------------
 Wed Apr 20 08:53:17 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build

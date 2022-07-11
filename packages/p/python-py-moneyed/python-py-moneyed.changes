@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 11 14:44:13 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add 178_missing_currencies.patch to add two missing currencies
+  (gh#py-moneyed/py-moneyed#178).
+
+-------------------------------------------------------------------
+Mon Jul 11 12:44:54 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Skip test_all_babel_currencies (gh#py-moneyed/py-moneyed#178).
+
+-------------------------------------------------------------------
 Tue Feb  1 04:40:00 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.0:

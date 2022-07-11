@@ -1,7 +1,7 @@
 #
 # spec file for package python-Glymur
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,33 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-# NEP 29: NumPy dropped Python 3.6
-%define         skip_python36 1
 Name:           python-Glymur
-Version:        0.9.3
+Version:        0.10.1
 Release:        0
 Summary:        Tools for accessing JPEG2000 files
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/quintusdias/glymur
 Source:         https://github.com/quintusdias/glymur/archive/v%{version}.tar.gz#/Glymur-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM glymur-pr553-no-setuptools.patch gh#quintusdias/glymur#553 + gh#quintusdias/glymur#554
+Patch1:         glymur-pr553-no-setuptools.patch
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  procps
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.7.1
+Requires:       python-lxml
+Requires:       python-numpy
+Requires:       python-packaging
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Recommends:     python-lxml
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-# (importlib_resources for Leap's Python 3.6)
-BuildRequires:  %{python_module importlib_resources if %python-base < 3.7}
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module numpy >= 1.7.1}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-image}
 # /SECTION
@@ -51,24 +52,25 @@ BuildRequires:  %{python_module scikit-image}
 Python interface to the OpenJPEG library
 
 %prep
-%setup -q -n glymur-%{version}
+%autosetup -p1 -n glymur-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/jp2dump
-%{python_expand # don't install tests
-rm -rf %{buildroot}%{$python_sitelib}/tests
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_clone -a %{buildroot}%{_bindir}/tiff2jp2
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# test says: "SCENARIO:  the XDG_CONFIG_HOME environment variable is not present"
+# which is not true with our pytest macro
+donttest+="test_config_dir_on_windows"
+%pytest -k "not ($donttest)"
 
 %post
-%python_install_alternative jp2dump
+%python_install_alternative jp2dump tiff2jp2
 
 %postun
 %python_uninstall_alternative jp2dump
@@ -77,7 +79,8 @@ rm -rf %{buildroot}%{$python_sitelib}/tests
 %doc README.md CHANGES.txt
 %license LICENSE.txt
 %python_alternative %{_bindir}/jp2dump
-%{python_sitelib}/glymur*
+%python_alternative %{_bindir}/tiff2jp2
+%{python_sitelib}/glymur
 %{python_sitelib}/Glymur-%{version}*-info
 
 %changelog

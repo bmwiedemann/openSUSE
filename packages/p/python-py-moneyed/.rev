@@ -30,4 +30,15 @@
 - Switch to using the GitHub release URL.</comment>
     <requestid>950333</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>256c9c8e8f6a548c6f4ce8600583a2d0</srcmd5>
+    <version>2.0</version>
+    <time>1657559407</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 178_missing_currencies.patch to add two missing currencies
+  (gh#py-moneyed/py-moneyed#178).
+- Skip test_all_babel_currencies (gh#py-moneyed/py-moneyed#178).
+</comment>
+    <requestid>988413</requestid>
+  </revision>
 </revisionlist>

@@ -457,4 +457,12 @@
   * QEMU:</comment>
     <requestid>987498</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>cf9466f9f56a4294da814d8e898ad518</srcmd5>
+    <version>1.26.0</version>
+    <time>1657559402</time>
+    <user>dimstar_suse</user>
+    <comment>- build against go1.18 to fix arm64 build</comment>
+    <requestid>988383</requestid>
+  </revision>
 </revisionlist>

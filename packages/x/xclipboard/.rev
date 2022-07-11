@@ -43,4 +43,26 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a8716f8905908019addc81008847cf92</srcmd5>
+    <version>1.1.4</version>
+    <time>1657559397</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4:
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * Use _CONST_X_STRING to make libXt declare String as const char *
+  * Fix another -Wdiscarded-qualifiers warning
+  * Fix a -Wformat-truncation warning
+  * NewCurrentClipContents: fix a -Wnull-dereference warning
+  * NewClip: use calloc instead of manually setting values to 0 after malloc
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>988368</requestid>
+  </revision>
 </revisionlist>

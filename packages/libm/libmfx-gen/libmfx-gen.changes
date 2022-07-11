@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 11 09:15:33 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 22.4.4
+  * Decode:
+    + Fix VC1 Decode assertion failure when frame type is NONE_PICTURE
+    + Fix AV1 Decode hang issue in error clips that OBU info size is
+      larger than bitstream size.
+  * part of Intel oneVPL GPU Runtime 2022Q2 Release 22.4.4
+- supersedes U_Removed-proprietary-mentions-from-file-headers-1023.patch
+- filelist: added {_libdir}/libmfx-gen/enctools.so
+
+-------------------------------------------------------------------
 Tue Oct 12 08:15:05 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_Removed-proprietary-mentions-from-file-headers-1023.patch

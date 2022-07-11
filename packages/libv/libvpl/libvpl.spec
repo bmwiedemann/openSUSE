@@ -1,7 +1,7 @@
 #
 # spec file for package libvpl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,20 @@
 #
 
 
+%if 0%{?suse_version} < 1550
+  %define _distconfdir %{_prefix}%{_sysconfdir}
+%endif
+
 %global sover 2
 Name:           libvpl
 %define lname   libvpl%{sover}
-Version:        2021.6.0
+Version:        2022.1.5
 Release:        0
 Summary:        oneAPI Video Processing Library (oneVPL) dispatcher, tools, and examples
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/oneapi-src/oneVPL
-Source0:        oneVPL-2021.6.0.tar.gz
+Source0:        oneVPL-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -64,17 +68,9 @@ This package contains example applications for the oneAPI Video Processing Libra
 
 %prep
 %autosetup -p1 -n oneVPL-%{version}
-# When not building on Windows using Visual Studio, the Visual
-# Studio runtimes are not needed to be installed so we can remove
-# these licenses from being mentioned. On Linux we're using
-# cmake/make/gcc for building/installation and we don't have any
-# (need for) MS Visual Studio runtime. (oneapi-src/oneVPL issue#27)
-# --> https://github.com/oneapi-src/oneVPL/issues/27
-rm third-party-programs.txt
-touch third-party-programs.txt
 
 %build
-mkdir -p build 
+mkdir -p build
 pushd build
 cmake -DCMAKE_INSTALL_PREFIX="%{_prefix}" ..
 make %{?_smp_mflags}
@@ -84,7 +80,6 @@ popd
 pushd build
 %make_install
 popd
-rm %{buildroot}%{_datadir}/doc/oneVPL/{license.txt,third-party-programs.txt}
 
 %post -n %lname -p /sbin/ldconfig
 
@@ -94,7 +89,12 @@ rm %{buildroot}%{_datadir}/doc/oneVPL/{license.txt,third-party-programs.txt}
 %doc README.md third-party-programs.txt
 
 %files -n %lname
-%license LICENSE 
+%license LICENSE
+%dir %{_distconfdir}
+%dir %{_distconfdir}/modulefiles
+%dir %{_distconfdir}/vpl
+%{_distconfdir}/modulefiles/vpl
+%{_distconfdir}/vpl/vars.sh
 %{_libdir}/libvpl.so.%{sover}
 %{_libdir}/libvpl.so.%{sover}.*
 
@@ -102,11 +102,11 @@ rm %{buildroot}%{_datadir}/doc/oneVPL/{license.txt,third-party-programs.txt}
 %{_bindir}/*
 
 %files devel
-%doc 
+%doc
 %{_includedir}/vpl/
 %{_libdir}/libvpl.so
 %{_libdir}/pkgconfig/vpl.pc
 %{_libdir}/cmake/vpl/
-%{_datadir}/oneVPL/
+%{_datadir}/vpl/
 
 %changelog

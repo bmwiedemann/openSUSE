@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-binutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mingw32-binutils
-Version:        2.33.1
+Version:        2.38
 Release:        0
 Summary:        GNU Binutils
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -25,8 +25,6 @@ Group:          Development/Libraries
 URL:            http://www.gnu.org/software/binutils/
 Source:         http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz
 Source99:       mingw32-binutils-rpmlintrc
-Patch0:         0001-Fix-a-potential-infinite-loop-in-the-Windows-resourc.patch
-Patch1:         0001-Fix-the-windmc-program-to-conform-to-the-behaviour-o.patch
 #!BuildIgnore: post-build-checks
 BuildRequires:  bison
 BuildRequires:  flex
@@ -34,7 +32,6 @@ BuildRequires:  mingw32-cross-binutils
 BuildRequires:  mingw32-cross-gcc
 BuildRequires:  mingw32-filesystem
 BuildRequires:  texinfo
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %_mingw32_package_header_debug
 BuildArch:      noarch
 
@@ -52,9 +49,7 @@ libbfd, libiberty and libopcodes.a
 %_mingw32_debug_package
 
 %prep
-%setup -q -n binutils-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n binutils-%{version}
 
 %build
 mkdir -p build
@@ -67,26 +62,28 @@ cd build
   --disable-werror \
   --enable-install-libiberty
 
-make %{?_smp_mflags} || make
+%make_build || make
 
 %install
 cd build
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 rm -f %{buildroot}%{_mingw32_infodir}/dir
 
 %files
-%defattr(-,root,root)
 %{_mingw32_bindir}/*.exe
 %{_mingw32_prefix}/%{_mingw32_target}/bin/*.exe
 %{_mingw32_prefix}/%{_mingw32_target}/lib/ldscripts/
+%dir %{_mingw32_prefix}/lib/bfd-plugins
+%{_mingw32_prefix}/lib/bfd-plugins/libdep.dll
 %{_mingw32_mandir}/man1/*
 %{_mingw32_infodir}/*.info*
 
 %files devel
-%defattr(-,root,root)
 %{_mingw32_includedir}/
 %{_mingw32_libdir}/libbfd.a
+%{_mingw32_libdir}/libctf.a
+%{_mingw32_libdir}/libctf-nobfd.a
 %{_mingw32_libdir}/libopcodes.a
 # required by libbfd.a
 %{_mingw32_libdir}/libiberty.a

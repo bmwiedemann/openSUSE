@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul 11 06:18:00 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.0.0
+  * New Features
+    - For details on the major changes in calibre between
+      6.0 and 5.0, see https://calibre-ebook.com/new-in/fifteen
+    - Full text search: You can now search the entire text of all
+      books in your calibre library
+    - Support for new CPU architectures: Apple Silicon and ARM64 on
+      Linux. Support for 32bit CPUs has been dropped because Qt 6
+      does not support them
+    - Dark mode in calibre is now controlled via a setting in
+      Preferences->Look & feel rather than an environment variable
+    - Allow choosing different icon themes for light and dark mode
+      in Preferences->Look & feel
+    - Upgrade calibre to use Qt 6. This means that some no longer
+      maintained third party plugins may not work, though most
+      plugins have already been ported
+- Rebase calibre-python_test.patch.
+- Correct requires versions.
+- Add missing requires.
+
+-------------------------------------------------------------------
 Thu Jun 30 14:44:51 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix BuildRequires for pkgconfig(Qt5Sensors): also require that

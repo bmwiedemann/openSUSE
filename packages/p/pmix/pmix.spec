@@ -41,9 +41,6 @@ BuildRequires:  zlib-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       pmix-runtime-config
 Recommends:     pmix-mca-params
-%ifarch i586 %armv7
-ExclusiveArch:  do_not_build
-%endif
 
 %description
 The Process Management Interface (PMI) has been used for quite some time as a
@@ -139,9 +136,9 @@ make %{?_smp_mflags}
 %make_install
 # removed static libaries
 rm -v %{buildroot}/%{_libdir}/*.la %{buildroot}/%{_libdir}/pmix/*.la
-mkdir -p %{buildroot}/%{_prefix}/lib/pmix/test
+mkdir -p %{buildroot}/%{_libexecdir}/%{name}/test
 for i in pmix_test pmix_client pmix_regex; do
-    cp test/.libs/$i %{buildroot}/%{_prefix}/lib/pmix/test
+    cp test/.libs/$i %{buildroot}/%{_libexecdir}/%{name}/test
 done
 %fdupes %{buildroot}/%{_datadir}
 
@@ -190,7 +187,7 @@ make check
 %{_includedir}/pmix/*
 
 %files test
-%dir %{_prefix}/lib/pmix
-%{_prefix}/lib/pmix/*
+%dir %{_libexecdir}/%{name}
+%{_libexecdir}/%{name}/test
 
 %changelog

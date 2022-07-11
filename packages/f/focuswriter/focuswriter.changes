@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jul 11 08:14:29 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.1:
+  * Always write plain text as UTF-8.
+  * Always write RTF as codepage 1252.
+  * Replaced QTextCodec with ICU.
+  * Translation updates: Estonian, German.
+
+-------------------------------------------------------------------
+Mon Jul 11 08:13:52 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.0:
+  * FIXED: Lines were randomly duplicated in ODT.
+  * FIXED: Did not read text from lists in ODT.
+  * FIXED: Formatting was lost when restoring untitled documents from cache.
+  * FIXED: Loading headings caused document to shift vertically.
+  * FIXED: Timers did not show countdown in tooltip.
+  * FIXED: Sometimes could not remove dictionaries.
+  * Only restore changed files from cache.
+  * Refactored code.
+  * Removed XPM icon.
+  * Switched to Qt 6.
+  * Updated Unicode symbols database.
+  * Updated Windows dictionaries.
+  * Translation updates
+
+-------------------------------------------------------------------
 Wed Apr 22 06:18:45 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7.6:

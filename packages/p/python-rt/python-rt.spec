@@ -26,6 +26,7 @@ License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/CZ-NIC/python-rt
 Source:         https://files.pythonhosted.org/packages/source/r/rt/rt-%{version}.tar.gz
+Source1:        setup.cfg
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,6 +41,7 @@ Python implementation of Request Tracker (a ticketing system) REST API described
 
 %prep
 %setup -q -n rt-%{version}
+cp %{SOURCE1} setup.cfg
 
 %build
 %python_build

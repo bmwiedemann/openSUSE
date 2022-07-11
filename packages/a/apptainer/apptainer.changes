@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 11 09:38:45 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- Update to version 1.0.3:
+  * Process redirects that can come from sregistry with a library:// URL.
+  * Fix inspect --deffile and inspect --all to correctly show definition files
+    in sandbox container images instead of empty output. This has a side effect
+    of also fixing the storing of definition files in the metadata of sif files
+    built by Apptainer, because that metadata is constructed by doing inspect
+    --all.
+
+-------------------------------------------------------------------
 Wed May 18 12:07:59 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.0.2:

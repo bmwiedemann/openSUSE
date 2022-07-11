@@ -68,4 +68,16 @@
   * autogen.sh: use exec instead of waiting for configure to finish</comment>
     <requestid>593594</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d9cf25644972beb5a6204040aba8d368</srcmd5>
+    <version>1.1.0</version>
+    <time>1657559398</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0:
+  * This release adds two small new features - a &quot;Reset&quot; button to reset
+    all the selections back to the initial values, and when given the &quot;-scaled&quot;
+    option fetch the actual screen resolution and add that to the list of
+    available resolutions for the resX and resY menus.</comment>
+    <requestid>988373</requestid>
+  </revision>
 </revisionlist>

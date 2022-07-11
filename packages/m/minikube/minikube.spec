@@ -34,7 +34,7 @@ BuildRequires:  libvirt-devel >= 1.2.14
 BuildRequires:  pkgconfig
 BuildRequires:  python
 BuildRequires:  wget
-BuildRequires:  golang(API) = 1.17
+BuildRequires:  golang(API) = 1.18
 Recommends:     docker-machine-driver-kvm2
 Recommends:     kubernetes-client
 Recommends:     libvirt

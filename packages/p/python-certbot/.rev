@@ -379,4 +379,22 @@
     <comment>update to 1.28.0</comment>
     <requestid>984953</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>762368c15145047ed410f2ee374136c0</srcmd5>
+    <version>1.29.0</version>
+    <time>1657559419</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.29.0:
+  * --allow-subset-of-names will now additionally retry in cases where domains
+    are rejected while creating or finalizing orders. This requires subproblem
+    support from the ACME server
+  * The show_account subcommand now uses the &quot;newAccount&quot; ACME endpoint to
+    fetch the account data, so it doesn't rely on the locally stored account URL.
+    This fixes situations where Certbot
+    would use old ACMEv1 registration info with non-functional account URLs.
+  * The generated Certificate Signing Requests are now generated as version 1
+    instead of version 3. This resolves situations in where strict enforcement
+    of PKCS#10 meant that CSRs that were generated as version 3 were rejected</comment>
+    <requestid>988433</requestid>
+  </revision>
 </revisionlist>

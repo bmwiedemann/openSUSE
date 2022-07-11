@@ -64,4 +64,20 @@
     and either SO_PEERCRED or getpeerucred().</comment>
     <requestid>936254</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>30e891af4658a0e4a16f68b80086ce59</srcmd5>
+    <version>1.4.3</version>
+    <time>1657559408</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.3
+  * On OpenBSD SO_PEERCRED uses struct sockpeercred
+  * Remove/comment out unused variables.
+  * Match format strings with arguments.
+  * ifdef out unused static functions
+  * Use correct argument type for ctype(3) functions.
+  * Increase buffer length to avoid truncation.
+  * Add casts to fix signedness change warnings.
+  * Mark MainLoop as _X_NORETURN.</comment>
+    <requestid>988390</requestid>
+  </revision>
 </revisionlist>

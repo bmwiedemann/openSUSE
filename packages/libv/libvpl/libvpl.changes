@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 11 09:40:17 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2022.1.5
+  * oneVPL 2022.1.0 has been updated to include functional and
+    security updates.
+  * part of oneVPL GPU Runtime 2022Q2 Release - 22.4.4
+- third-party-programs.txt issue has been fixed; license.txt removed
+  as well
+- examples moved to /usr/share/vpl
+- packaged new config scripts /usr/etc/modulefiles/vpl and
+  /usr/etc/vpl/vars.sh
+
+-------------------------------------------------------------------
 Tue Nov  2 18:49:30 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - remove third-party-programs.txt during setup

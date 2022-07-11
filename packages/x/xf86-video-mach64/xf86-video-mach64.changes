@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 11 13:50:17 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.9.7
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Build xz tarballs instead of bzip2
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Fix compositing rotation
+  * Fix debugging traces
+  * Rename bool to boolean for OptionInfoRec.
+  * configure: Include xorg-server.h before exa.h
+- supersedes u_xorg-server-21.1.patch
+
+-------------------------------------------------------------------
 Fri Nov 12 14:02:46 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_xorg-server-21.1.patch

@@ -24,16 +24,23 @@ Summary:        Python currency and money classes
 License:        BSD-3-Clause
 URL:            https://github.com/limist/py-moneyed
 Source:         https://github.com/py-moneyed/py-moneyed/archive/refs/tags/v%{version}.tar.gz#/py-moneyed-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 178_missing_currencies.patch gh#py-moneyed/py-moneyed#178 mcepl@suse.com
+# Add two missing currencies
+Patch0:         178_missing_currencies.patch
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Babel >= 2.8.0
-Requires:       python-typing-extensions >= 3.7
+Requires:       python-typing-extensions >= 3.7.4.3
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 2.3.0}
+BuildRequires:  %{python_module mypy >= 0.812}
 BuildRequires:  %{python_module Babel >= 2.8.0}
-BuildRequires:  %{python_module typing-extensions >= 3.7}
+BuildRequires:  %{python_module pytest >= 2.3.0}
+BuildRequires:  %{python_module pytest >= 2.3.0}
+BuildRequires:  %{python_module tox >= 1.6.0}
+BuildRequires:  %{python_module typing-extensions >= 3.7.4.3}
 # /SECTION
 %python_subpackages
 
@@ -41,7 +48,7 @@ BuildRequires:  %{python_module typing-extensions >= 3.7}
 Provides Currency and Money classes for use in your Python code.
 
 %prep
-%setup -q -n py-moneyed-%{version}
+%autosetup -p1 -n py-moneyed-%{version}
 
 %build
 %python_build
@@ -56,6 +63,7 @@ Provides Currency and Money classes for use in your Python code.
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/moneyed
+%{python_sitelib}/py_moneyed-%{version}*-info
 
 %changelog

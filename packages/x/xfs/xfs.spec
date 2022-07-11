@@ -1,7 +1,7 @@
 #
 # spec file for package xfs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,14 @@
 %endif
 
 Name:           xfs
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        X font server
 License:        HPND
 Group:          System/X11/Utilities
 URL:            http://xorg.freedesktop.org/
 # http://xorg.freedesktop.org/releases/individual/app/
-Source0:        %{name}-%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.xz
 Source1:        xfs.config
 Source2:        xfs.init.d
 Source3:        xfs.service
@@ -78,7 +78,7 @@ install -D -m 0755 %{SOURCE2} %{buildroot}%{_sbindir}/rcxfs
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING README
+%doc ChangeLog COPYING README.md
 %dir %{_distconfdir}
 %dir %{_distconfdir}/X11
 %dir %{_distconfdir}/X11/fs

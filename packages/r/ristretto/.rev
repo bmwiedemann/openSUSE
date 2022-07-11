@@ -553,4 +553,12 @@
     <comment></comment>
     <requestid>947430</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>a59b93377a34e023724f97f033438cb6</srcmd5>
+    <version>0.12.3</version>
+    <time>1657559391</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 988203 from tux93)</comment>
+    <requestid>988333</requestid>
+  </revision>
 </revisionlist>

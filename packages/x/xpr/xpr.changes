@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul 11 13:03:34 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.0
+  * Standardize indentation in validate_visual()
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Use time_t instead of long with time() & ctime()
+  * xpr.man: remove duplicate "HP" from PaintJet XL Color name
+  * xpr.man: show current version in footer instead of X11R6
+  * Remove support for Digital LA100 dot matrix printer
+  * Remove support for Digital LN03 laser printer
+  * gitlab CI: add a basic build test
+  * Fix spelling/wording issues
+  * gitlab CI: Use ci-fairy image template
+  * gitlab CI: enable Static Application Security Testing (SAST)
+  * Build xz tarballs instead of bzip2
+  * man pages: remove out-of-date COPYRIGHT section
+  * xdpr.man: minor corrections
+  * remove extra 3rd parameter to open()
+
+-------------------------------------------------------------------
 Fri Dec  3 14:11:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec-cleaner (move license to licensedir)

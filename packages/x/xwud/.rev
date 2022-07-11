@@ -56,4 +56,17 @@
     <comment></comment>
     <requestid>935491</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a3028349be4515097a7859b9add42b6d</srcmd5>
+    <version>1.0.6</version>
+    <time>1657559409</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.6
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * Added case for window_name_size == 0</comment>
+    <requestid>988392</requestid>
+  </revision>
 </revisionlist>

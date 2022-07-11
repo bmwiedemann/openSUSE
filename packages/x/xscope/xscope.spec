@@ -1,7 +1,7 @@
 #
 # spec file for package xscope
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xscope
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        Utility to monitor X11/Client conversations
 License:        MIT
@@ -48,7 +48,8 @@ make %{?_smp_mflags}
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README.md
+%doc AUTHORS ChangeLog NEWS README.md
+%license COPYING
 %{_bindir}/xscope
 %{_mandir}/man1/xscope.1%{?ext_man}
 

@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define libname acme
 Name:           python-%{libname}
-Version:        1.28.0
+Version:        1.29.0
 Release:        0
 Summary:        Python library for the ACME protocol
 License:        Apache-2.0
@@ -30,7 +30,7 @@ Source1:        https://files.pythonhosted.org/packages/source/a/%{libname}/%{li
 Source2:        %{name}.keyring
 BuildRequires:  %{python_module cryptography >= 2.5.0}
 BuildRequires:  %{python_module josepy >= 1.13.0}
-BuildRequires:  %{python_module pyOpenSSL >= 17.3.0}
+BuildRequires:  %{python_module pyOpenSSL >= 17.5.0}
 BuildRequires:  %{python_module pyRFC3339}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz >= 2019.3}
@@ -41,7 +41,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 2.5.0
 Requires:       python-josepy >= 1.13.0
-Requires:       python-pyOpenSSL >= 17.3.0
+Requires:       python-pyOpenSSL >= 17.5.0
 Requires:       python-pyRFC3339
 Requires:       python-pytz >= 2019.3
 Requires:       python-requests >= 2.20.0

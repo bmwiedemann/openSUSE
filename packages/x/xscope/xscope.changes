@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 11 13:24:24 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.4.3
+  * On OpenBSD SO_PEERCRED uses struct sockpeercred
+  * Remove/comment out unused variables.
+  * Match format strings with arguments.
+  * ifdef out unused static functions
+  * Use correct argument type for ctype(3) functions.
+  * Increase buffer length to avoid truncation.
+  * Add casts to fix signedness change warnings.
+  * Mark MainLoop as _X_NORETURN.
+
+-------------------------------------------------------------------
 Tue Dec  7 12:49:49 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.4.2

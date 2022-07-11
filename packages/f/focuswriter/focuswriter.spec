@@ -1,7 +1,7 @@
 #
 # spec file for package focuswriter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015 Graeme Gott <graeme@gottcode.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,27 +18,33 @@
 
 
 Name:           focuswriter
-Version:        1.7.6
+Version:        1.8.1
 Release:        0
 Summary:        A fullscreen, distraction-free writing program
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Word Processor
-URL:            http://gottcode.org/focuswriter
+URL:            https://gottcode.org/focuswriter
 Source:         http://gottcode.org/focuswriter/%{name}-%{version}-src.tar.bz2
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-linguist-devel
+BuildRequires:  qt6-tools-linguist
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.9
-BuildRequires:  pkgconfig(Qt5Core) >= 5.9
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.9
-BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.9
-BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.9
-BuildRequires:  pkgconfig(Qt5UiTools) >= 5.9
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Multimedia)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6UiTools)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(hunspell)
+BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(icu-io)
+BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(zlib)
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
@@ -62,12 +68,11 @@ back in.
 %setup -q
 
 %build
-lrelease-qt5 %{name}.pro
-%qmake5 PREFIX=%{_prefix}
-%make_jobs
+%cmake -DCMAKE_INSTALL_PREFIX=%{_prefix}
+%make_build
 
 %install
-%qmake5_install
+%cmake_install
 %suse_update_desktop_file %{name}
 %find_lang %{name} --with-qt
 %fdupes -s %{buildroot}
@@ -89,13 +94,12 @@ lrelease-qt5 %{name}.pro
 %{_datadir}/%{name}/icons
 %{_datadir}/%{name}/sounds
 %{_datadir}/%{name}/themes
-%{_datadir}/focuswriter/symbols1000.dat
 %{_datadir}/metainfo
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/
-%{_datadir}/pixmaps/%{name}.xpm
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_datadir}/focuswriter/symbols1400.dat
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/%{name}

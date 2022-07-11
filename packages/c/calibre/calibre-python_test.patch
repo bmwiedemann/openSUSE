@@ -1,21 +1,21 @@
-Index: calibre-5.44.0/bypy/linux/__main__.py
+Index: calibre-6.0.0/bypy/linux/__main__.py
 ===================================================================
---- calibre-5.44.0.orig/bypy/linux/__main__.py
-+++ calibre-5.44.0/bypy/linux/__main__.py
-@@ -36,7 +36,7 @@ qt_get_dll_path = partial(get_dll_path,
+--- calibre-6.0.0.orig/bypy/linux/__main__.py
++++ calibre-6.0.0/bypy/linux/__main__.py
+@@ -38,7 +38,7 @@ qt_get_dll_path = partial(get_dll_path,
  
  def binary_includes():
      return [
--        j(PREFIX, 'bin', x) for x in ('pdftohtml', 'pdfinfo', 'pdftoppm', 'optipng', 'JxrDecApp')] + [
-+        j(PREFIX, 'bin', x) for x in ('pdftohtml', 'pdfinfo', 'pdftoppm', 'optipng')] + [
+-        j(PREFIX, 'bin', x) for x in ('pdftohtml', 'pdfinfo', 'pdftoppm', 'pdftotext', 'optipng', 'JxrDecApp')] + [
++        j(PREFIX, 'bin', x) for x in ('pdftohtml', 'pdfinfo', 'pdftoppm', 'pdftotext', 'optipng')] + [
  
          j(PREFIX, 'private', 'mozjpeg', 'bin', x) for x in ('jpegtran', 'cjpeg')] + [
          ] + list(map(
-Index: calibre-5.44.0/src/calibre/test_build.py
+Index: calibre-6.0.0/src/calibre/test_build.py
 ===================================================================
---- calibre-5.44.0.orig/src/calibre/test_build.py
-+++ calibre-5.44.0/src/calibre/test_build.py
-@@ -103,12 +103,13 @@ class BuildTest(unittest.TestCase):
+--- calibre-6.0.0.orig/src/calibre/test_build.py
++++ calibre-6.0.0/src/calibre/test_build.py
+@@ -107,12 +107,13 @@ class BuildTest(unittest.TestCase):
          from speechd.client import SSIPClient
          del SSIPClient
  
@@ -35,7 +35,7 @@ Index: calibre-5.44.0/src/calibre/test_build.py
  
      def test_plugins(self):
          exclusions = set()
-@@ -374,9 +375,10 @@ class BuildTest(unittest.TestCase):
+@@ -384,9 +385,10 @@ class BuildTest(unittest.TestCase):
          from calibre.gui2.win_file_dialogs import test
          test()
  

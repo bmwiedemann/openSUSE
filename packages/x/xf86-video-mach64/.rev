@@ -137,4 +137,22 @@ Fixes a crash in the mach64 driver (bnc#865607)
   * fixes build against xorg-server 21.1</comment>
     <requestid>931153</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d56b09ab4264946e3ec03487cc60f682</srcmd5>
+    <version>6.9.7</version>
+    <time>1657559410</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.7
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Build xz tarballs instead of bzip2
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Fix compositing rotation
+  * Fix debugging traces
+  * Rename bool to boolean for OptionInfoRec.
+  * configure: Include xorg-server.h before exa.h
+- supersedes u_xorg-server-21.1.patch</comment>
+    <requestid>988396</requestid>
+  </revision>
 </revisionlist>

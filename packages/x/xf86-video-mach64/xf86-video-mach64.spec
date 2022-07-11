@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-mach64
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           xf86-video-mach64
-Version:        6.9.6
+Version:        6.9.7
 Release:        0
 Summary:        ATI Mach64 series video driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
-Patch0:         u_xorg-server-21.1.patch
+Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz
 BuildRequires:  Mesa-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontsproto)
@@ -49,7 +48,6 @@ mach64 is an Xorg driver for ATI Mach64 series video cards.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure

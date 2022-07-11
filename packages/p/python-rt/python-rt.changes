@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  8 09:36:12 UTC 2022 - Duarte Pousa <pousaduarte@gmail.com>
+
+- fix regression in version 3.0.3:
+  - Temporary revert to setup.cfg from 3.0.2, due to: https://github.com/pypa/setuptools/issues/3269
+
+-------------------------------------------------------------------
 Tue Jun 21 08:49:07 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 3.0.3:

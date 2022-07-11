@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul 11 12:18:22 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.6
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * Fix -Wsign-compare warnings in PrintTableType1()
+  * Adopt X.Org standard coding style
+  * Remove unnecessary casts and make allocation failure checks more
+    consistent
+  * LoadSCCData: avoid leaking memory if we give up early
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
 Fri Apr 24 14:17:56 UTC 2015 - sndirsch@suse.com
 
 - Update to version 1.0.5:

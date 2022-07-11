@@ -1,7 +1,7 @@
 #
 # spec file for package libmfx-gen
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global sover 1_2
 Name:           libmfx-gen
 %define lname   libmfx-gen%{sover}
-Version:        21.3.4
+Version:        22.4.4
 Release:        0
 Summary:        Intel oneVPL GPU Runtime
 License:        MIT
@@ -28,7 +28,6 @@ URL:            https://github.com/oneapi-src/oneVPL-intel-gpu
 Source0:        intel-onevpl-%{version}.tar.gz
 Source1:        supplements.inc
 Source2:        generate-supplements.sh
-Patch0:         U_Removed-proprietary-mentions-from-file-headers-1023.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -63,7 +62,7 @@ the Intel oneVPL GPU Runtime.
 %autosetup -p1 -n oneVPL-intel-gpu-intel-onevpl-%{version}
 
 %build
-mkdir -p build 
+mkdir -p build
 pushd build
 cmake -DCMAKE_INSTALL_PREFIX="%{_prefix}" ..
 make %{?_smp_mflags}
@@ -82,8 +81,10 @@ popd
 %doc README.md
 
 %files -n %lname
-%license LICENSE 
+%license LICENSE
 %{_libdir}/libmfx-gen.so.1*
+%dir %{_libdir}/libmfx-gen
+%{_libdir}/libmfx-gen/enctools.so
 
 %files devel
 %{_libdir}/libmfx-gen.so

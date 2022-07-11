@@ -173,4 +173,21 @@ This is HPND, not MIT (absence of express sublicensing permission etc) (forwarde
     <comment></comment>
     <requestid>946706</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ddbceccc9e4923640bd8471042c96b26</srcmd5>
+    <version>1.2.1</version>
+    <time>1657559399</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.1
+  * doc/xfs-design.xml: Remove obsolete B16 tags in struct definition
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * Fix spelling/wording issues
+  * SetAlternateServers(): avoid memory leak on allocation failure
+  * Use memcpy() instead of memmove() when buffers are known not to overlap
+  * gitlab CI: stop requiring Signed-off-by in commits</comment>
+    <requestid>988376</requestid>
+  </revision>
 </revisionlist>

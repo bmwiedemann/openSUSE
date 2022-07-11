@@ -1,0 +1,21 @@
+Index: glymur-0.10.1/setup.cfg
+===================================================================
+--- glymur-0.10.1.orig/setup.cfg
++++ glymur-0.10.1/setup.cfg
+@@ -28,7 +28,6 @@ install_requires =
+     numpy
+     lxml
+     packaging
+-    setuptools
+ python_requires = >=3.7
+ include_package_data = True
+ zip_safe = False
+@@ -43,3 +42,8 @@ glymur =
+     data/*.jp2
+     data/*.jpx
+     data/*.j2k
++
++[options.packages.find]
++exclude =
++    tests
++    tests.*

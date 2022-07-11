@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 11 14:00:03 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.0.1
+  * Build xz tarballs instead of bzip2
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * configure.ac: fix cross-compilation
+  * Fix uninitialized read in MGAEnableSecondOutPut
+
+-------------------------------------------------------------------
 Fri Aug  2 14:40:40 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - adding to changelog, that 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 29 11:07:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to version 2.38
+- Drop 0001-Fix-a-potential-infinite-loop-in-the-Windows-resourc.patch,
+  0001-Fix-the-windmc-program-to-conform-to-the-behaviour-o.patch
+
+-------------------------------------------------------------------
 Wed Sep  9 21:02:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Revert the ExclusiveArch/BuildArch. Having

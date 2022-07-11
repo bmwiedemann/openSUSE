@@ -18,7 +18,7 @@
 
 %bcond_with git
 Name:           ristretto
-Version:        0.12.2
+Version:        0.12.3
 Release:        0lib
 Summary:        Image viewer for the Xfce Desktop Environment
 License:        GPL-2.0-or-later

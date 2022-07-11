@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 14 10:33:50 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Only build Python3 flavors for distributions 15 and greater

@@ -241,4 +241,17 @@
   * we disabled DRI(1) in the driver (no longer supported by Mesa)</comment>
     <requestid>720680</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c3381e5d01e58d65b8843b022091904f</srcmd5>
+    <version>2.0.1</version>
+    <time>1657559410</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.1
+  * Build xz tarballs instead of bzip2
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * configure.ac: fix cross-compilation
+  * Fix uninitialized read in MGAEnableSecondOutPut</comment>
+    <requestid>988399</requestid>
+  </revision>
 </revisionlist>

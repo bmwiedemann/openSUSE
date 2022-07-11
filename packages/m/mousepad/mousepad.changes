@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jul 10 17:29:42 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.5.10
+  * Consider unnamed files unchanged when empty 
+    (gxo#apps/mousepad#170, gxo#apps/mousepad!123)
+  * session-restore: Manage autosave ids through a GList
+    (gxo#apps/mousepad#165)
+  * Honor global "gtk-menu-images" setting for icon visibility
+  * search: Do not select first combo box entry when list does not
+    change
+  * Fix encoding conversion when saving
+  * Fix encoding conversion when opening (gxo#apps/mousepad#172)
+  * Update charset when a byte order mark is detected
+    (gxo#apps/mousepad#172)
+  * tests: Add plugin settings to the list
+  * build: Fix intltool lock file problem during make distcheck
+  * Fix a memory leak in menu item realignment
+    (gxo#apps/mousepad#164)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Apr  2 12:02:02 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.5.9

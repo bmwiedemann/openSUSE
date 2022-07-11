@@ -2460,4 +2460,31 @@ Fix regression in Kobo driver that caused the on device column to not be updated
     <comment></comment>
     <requestid>986099</requestid>
   </revision>
+  <revision rev="282" vrev="1">
+    <srcmd5>80a4f509bb4dac8cfdee0da008dd36af</srcmd5>
+    <version>6.0.0</version>
+    <time>1657559387</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.0
+  * New Features
+    - For details on the major changes in calibre between
+      6.0 and 5.0, see https://calibre-ebook.com/new-in/fifteen
+    - Full text search: You can now search the entire text of all
+      books in your calibre library
+    - Support for new CPU architectures: Apple Silicon and ARM64 on
+      Linux. Support for 32bit CPUs has been dropped because Qt 6
+      does not support them
+    - Dark mode in calibre is now controlled via a setting in
+      Preferences-&gt;Look &amp; feel rather than an environment variable
+    - Allow choosing different icon themes for light and dark mode
+      in Preferences-&gt;Look &amp; feel
+    - Upgrade calibre to use Qt 6. This means that some no longer
+      maintained third party plugins may not work, though most
+      plugins have already been ported
+- Rebase calibre-python_test.patch.
+- Correct requires versions.
+- Add missing requires.
+</comment>
+    <requestid>988374</requestid>
+  </revision>
 </revisionlist>

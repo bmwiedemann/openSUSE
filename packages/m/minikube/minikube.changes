@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 11 13:04:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- build against go1.18 to fix arm64 build 
+
+-------------------------------------------------------------------
 Thu Jul  7 08:59:48 UTC 2022 - Matthew Wilks <water261@outlook.com.au>
 
 - update to 1.26.0:

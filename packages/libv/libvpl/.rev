@@ -33,4 +33,20 @@
     --&gt; https://github.com/oneapi-src/oneVPL/issues/27</comment>
     <requestid>928847</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>036032e4e12d046493492be2f8acad4c</srcmd5>
+    <version>2022.1.5</version>
+    <time>1657559392</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2022.1.5
+  * oneVPL 2022.1.0 has been updated to include functional and
+    security updates.
+  * part of oneVPL GPU Runtime 2022Q2 Release - 22.4.4
+- third-party-programs.txt issue has been fixed; license.txt removed
+  as well
+- examples moved to /usr/share/vpl
+- packaged new config scripts /usr/etc/modulefiles/vpl and
+  /usr/etc/vpl/vars.sh</comment>
+    <requestid>988343</requestid>
+  </revision>
 </revisionlist>

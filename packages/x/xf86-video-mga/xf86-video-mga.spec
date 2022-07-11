@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-mga
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xf86-video-mga
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Matrox video driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Url:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
+URL:            http://xorg.freedesktop.org/
+Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz
 Patch0:         u_Change-shadow-fb-implementation-from-DDX-based-to-miext-damage-based.patch
 Patch1:         u_Fix-compiler-warnings.patch
 Patch4:         u_shadow-Calulate-the-shadow-buffer-size-correctly.patch

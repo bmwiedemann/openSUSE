@@ -17,16 +17,15 @@
 
 
 %{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-netCDF4
-Version:        1.5.8
+Version:        1.6.0
 Release:        0
 Summary:        Python interface to netCDF 3 and 4
 License:        HPND AND MIT
 URL:            https://github.com/Unidata/netcdf4-python
 Source:         https://files.pythonhosted.org/packages/source/n/netCDF4/netCDF4-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 0.21}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module cftime}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.10.0}

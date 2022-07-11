@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jul 10 17:19:40 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.12.3
+  * thumbnailer: Fall back on lower qualities in case of
+    unsupported flavor (gxo#apps/ristretto#81)
+  * Secure error handling when opening multiple files
+  * Use `G_FILE_MONITOR_WATCH_MOVES` for file monitoring
+  * Do not keep sticky state when current file is removed
+  * Fix management of transaction source id
+  * Correctly handle deletion when there is only one image
+    (gxo#apps/ristretto#89)
+  * Update iter list on insertion and deletion
+    (gxo#apps/ristretto#88)
+  * build: Fix intltool lock file problem during make distcheck
+  * Display error message on stderr
+  * i18n: Use `xfce_textdomain()` to initialize translations
+  * Ensure that an error is set if no pixbuf is available
+  * Fix some memory leaks
+  * flatpak: Some updates from Flathub
+  * Remove old icon files
+  * Remove TODO file
+  * Flatpak: Add libopenraw dependency
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon Jan 17 17:07:17 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.12.2

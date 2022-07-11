@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  6 08:48:43 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Enable build on i686 and armv7
+- Move test files to %{_libexecdir}/pmix/tests to avoid conflicts
+  on 32 bits systems
+
+-------------------------------------------------------------------
 Sat Jul  2 10:48:30 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Provide Pmix tests in a test package to give users the

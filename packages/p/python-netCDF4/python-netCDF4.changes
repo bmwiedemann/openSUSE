@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jul 11 03:01:26 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require python >= 3.7 (remove skip python 2 and 3.6 and replace with base >= 3.7)
+
+- update to version 1.6.0:
+  * add support for new quantization functionality in netcdf-c 4.9.0 via "signficant_digits"
+    and "quantize_mode" kwargs in Dataset.createVariable. Default quantization_mode is "BitGroom",
+    but alternate methods "BitRound" and GranularBitRound" also supported.
+  * opening a Dataset in append mode (mode = 'a' or 'r+') creates a Dataset
+    if one does not already exist (similar to python open builtin).  Issue #1144.
+    Added a mode='x' option (as in python open) which is the same as mode='w' with
+    clobber=False.
+  * allow createVariable to accept either Dimension instances or Dimension
+    names in "dimensions" tuple kwarg (issue #1145).
+  * remove all vestiges of python 2 in _netCDF4.pyx and set cython language_level
+    directive to 3 in setup.py.
+  * add 'compression' kwarg to createVariable to enable new compression
+    functionality in netcdf-c 4.9.0.  'None','zlib','szip','zstd','bzip2'
+    'blosc_lz','blosc_lz4','blosc_lz4hc','blosc_zlib' and 'blosc_zstd'
+    are currently supported. 'blosc_shuffle',
+    'szip_mask' and 'szip_pixels_per_block' kwargs also added.
+    compression='zlib' is equivalent to (the now deprecated) zlib=True.
+    If the environment variable NETCDF_PLUGIN_DIR is set to point to the
+    directory with the compression plugin lib__nc* files, then the compression plugins will
+    be installed within the package and be automatically available (the binary
+    wheels have this).  Otherwise, the environment variable HDF5_PLUGIN_PATH
+    needs to be set at runtime  to point to plugins in order to use the new compression
+    options.
+  * MFDataset did not aggregate 'name' variable attribute (issue #1153).
+  * issue warning instead of raising an exception if missing_value or
+    _FillValue can't be cast to the variable type when creating a
+    masked array (issue #1152).
+  * Define MPI_Session for compatibility with current mpi4py (PR #1156).
+
+-------------------------------------------------------------------
 Thu Feb 10 04:21:12 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

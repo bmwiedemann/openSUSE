@@ -78,4 +78,19 @@
   Leap 15.4</comment>
     <requestid>924811</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7d08f49a2b8562137b1ffe183d67b90b</srcmd5>
+    <version>22.4.4</version>
+    <time>1657559393</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.4.4
+  * Decode:
+    + Fix VC1 Decode assertion failure when frame type is NONE_PICTURE
+    + Fix AV1 Decode hang issue in error clips that OBU info size is
+      larger than bitstream size.
+  * part of Intel oneVPL GPU Runtime 2022Q2 Release 22.4.4
+- supersedes U_Removed-proprietary-mentions-from-file-headers-1023.patch
+- filelist: added {_libdir}/libmfx-gen/enctools.so</comment>
+    <requestid>988344</requestid>
+  </revision>
 </revisionlist>
