@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 10 08:56:59 UTC 2022 - Denys Kondratenko <stdden@opensuse.org>
+
+- adding fontawesome-fonts as we have waybar
+  See https://github.com/openSUSE/openSUSEway/issues/65
+
+-------------------------------------------------------------------
 Tue Jul  5 12:48:08 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use pipewire as default audio server in TW.

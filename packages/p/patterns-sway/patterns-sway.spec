@@ -57,6 +57,7 @@ Requires:       swaybg
 Requires:       swayidle
 Requires:       swaylock
 Requires:       waybar
+Requires:       fontawesome-fonts
 Requires:       wofi
 
 Recommends:     kanshi
