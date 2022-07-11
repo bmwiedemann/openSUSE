@@ -19,25 +19,24 @@
 %define skip_python2 1
 
 Name:           python-gwdatafind
-Version:        1.0.5
+Version:        1.1.1
 Release:        0
 License:        GPL-3.0-only
 Summary:        Client library for the LIGO Data Replicator (LDR) service
 URL:            https://gwdatafind.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/g/gwdatafind/gwdatafind-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module ligo-segments}
-BuildRequires:  %{python_module pyOpenSSL}
+BuildRequires:  %{python_module igwn-auth-utils-requests >= 0.2.0}
 BuildRequires:  %{python_module pytest >= 2.8.0}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module requests-mock}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       python-igwn-auth-utils-requests >= 0.2.0
 Requires:       python-ligo-segments
-Requires:       python-pyOpenSSL
-Requires:       python-six
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -53,6 +52,7 @@ gravitational-wave detectors
 
 %prep
 %setup -q -n gwdatafind-%{version}
+sed -i 's/--color=yes//' pyproject.toml
 
 %build
 %python_build
@@ -76,6 +76,7 @@ gravitational-wave detectors
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/gw_data_find
-%{python_sitelib}/*
+%{python_sitelib}/gwdatafind
+%{python_sitelib}/gwdatafind-%{version}*-info
 
 %changelog
