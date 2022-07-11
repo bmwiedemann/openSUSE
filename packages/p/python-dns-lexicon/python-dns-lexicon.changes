@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 11 02:21:58 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove BuildRequires/Recommends on zeep, due to softlayer-zeep.
+
+-------------------------------------------------------------------
 Wed Mar  9 02:45:22 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Update to Version 3.9.4

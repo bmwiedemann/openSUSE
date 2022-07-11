@@ -185,4 +185,12 @@
 - Drop remove-mock.patch, included upstream</comment>
     <requestid>960376</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>fa8a33866acf4cb12dc429f2024bcf46</srcmd5>
+    <version>3.9.4</version>
+    <time>1657559369</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove BuildRequires/Recommends on zeep, due to softlayer-zeep.</comment>
+    <requestid>988223</requestid>
+  </revision>
 </revisionlist>

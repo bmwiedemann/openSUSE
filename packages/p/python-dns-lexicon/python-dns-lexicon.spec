@@ -47,7 +47,6 @@ BuildRequires:  %{python_module localzone}
 BuildRequires:  %{python_module softlayer => 5}
 BuildRequires:  %{python_module transip >= 2}
 BuildRequires:  %{python_module xmltodict}
-BuildRequires:  %{python_module zeep}
 # /section
 # SECTION test dependencies
 BuildRequires:  %{python_module pytest >= 3.8.0}
@@ -68,7 +67,6 @@ Recommends:     python-localzone
 Recommends:     python-softlayer >= 5
 Recommends:     python-transip >= 2
 Recommends:     python-xmltodict
-Recommends:     python-zeep
 # Completely different pkg but same namespace
 Conflicts:      python-lexicon
 BuildArch:      noarch
