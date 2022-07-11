@@ -1,8 +1,8 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="version">1.2.0</param>
-    <param name="versionformat">1.2.0+git%cd.%h</param>
-    <param name="url">git://github.com/square/certstrap.git</param>
+    <param name="version">1.3.0</param>
+    <param name="versionformat">1.3.0+git%cd.%h</param>
+    <param name="url">https://github.com/square/certstrap.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">kukuk@suse.de</param>

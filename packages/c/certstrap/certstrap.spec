@@ -1,7 +1,7 @@
 #
 # spec file for package certstrap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           certstrap
-Version:        1.2.0+git20200507.7cda9d4
+Version:        1.3.0+git20220701.1377eab
 Release:        0
 Summary:        Tool for bootstrapping CAs, certificate requests, and signed certificates
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/square/certstrap
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  golang(API) >= 1.14
+BuildRequires:  golang(API) >= 1.18
 ExcludeArch:    s390
 
 %description

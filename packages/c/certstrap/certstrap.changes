@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 11 08:49:02 UTC 2022 - kukuk@suse.de
+
+- Update to version 1.3.0+git20220701.1377eab:
+  * Fix typo in release workflow (#163)
+  * Move to Go 1.18 (#162)
+  * Add support for setting `pathlen` on CA certificates and intermediate CA (#135)
+  * Fix docker file (#161)
+  * Expand on permissions error message. (#160)
+  * Bump go.step.sm/crypto from 0.15.2 to 0.16.2
+  * created test_tags and test_tags_windows since 600 permissions are not available in windows
+  * Update go.yml
+  * Update go.yml
+  * updated go version to 1.16
+
+-------------------------------------------------------------------
 Fri May 15 11:21:06 UTC 2020 - kukuk@suse.de
 
 - Update to version 1.2.0+git20200507.7cda9d4:
