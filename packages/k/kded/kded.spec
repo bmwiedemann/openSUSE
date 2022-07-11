@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.95
+%define _tar_path 5.96
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kded
-Version:        5.95.0
+Version:        5.96.0
 Release:        0
 Summary:        Central daemon of KDE workspaces
 License:        LGPL-2.1-or-later
@@ -34,8 +34,6 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-OPENSUSE (for now mostly to get openQA's opinion)
-Patch100:       0001-Decrease-the-delay-between-change-notification-and-s.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -88,7 +86,7 @@ Development files.
 %preun
 %systemd_user_preun plasma-kded.service
 
-%post 
+%post
 /sbin/ldconfig
 %systemd_user_post plasma-kded.service
 
