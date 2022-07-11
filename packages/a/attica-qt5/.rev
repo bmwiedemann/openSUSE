@@ -845,4 +845,12 @@ This sr depends on 222654 &amp; 222655</comment>
     <comment>KDE Frameworks 5.95</comment>
     <requestid>982232</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>225e8b5d84a6e9d3e03285e344c321a8</srcmd5>
+    <version>5.96.0</version>
+    <time>1657559295</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.96 (forwarded request 987972 from cgiboudeaux)</comment>
+    <requestid>988103</requestid>
+  </revision>
 </revisionlist>
