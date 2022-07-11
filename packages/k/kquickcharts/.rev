@@ -257,4 +257,12 @@ Another accidental omission in the KDE Frameworks update...</comment>
     <comment>KDE Frameworks 5.95</comment>
     <requestid>982289</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ab1ad66dc0a5737b5b3b0362718ac38c</srcmd5>
+    <version>5.96.0</version>
+    <time>1657559338</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.96 (forwarded request 987972 from cgiboudeaux)</comment>
+    <requestid>988162</requestid>
+  </revision>
 </revisionlist>
