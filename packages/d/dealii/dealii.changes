@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul 10 11:55:28 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use dealii-rpmlintrc file to suppress rpmlint false positives
+  about incorrect shlib naming for openmpi* flavours, where the
+  shlib guideline is not applicable.
+
+-------------------------------------------------------------------
+Mon Jul  4 00:35:48 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.4.0:
+  * Numerous changes; see here:
+    https://www.dealii.org/developer/doxygen/deal.II/changes_between_9_3_3_and_9_4_0.html
+
+-------------------------------------------------------------------
 Sat Feb  5 23:59:57 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 9.3.3:
