@@ -25,6 +25,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://openshot.org/
 Source:         openshot-qt-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE openshot-qt-disable-sending-metrics.patch -- disable sending anonymous metrics and errors by default to Google Analytics
+Patch0:         openshot-qt-disable-sending-metrics.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -55,6 +57,7 @@ edit videos and movies using many video, audio, and image formats.
 
 %prep
 %setup -q
+%patch0 -p1
 sed -e 's|pixmaps|icons/hicolor/scalable/apps|' \
     -e '/lib.mime.packages/d' \
     -i setup.py

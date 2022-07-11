@@ -7,4 +7,14 @@
     <comment>popular demand on the mailing list</comment>
     <requestid>928984</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8e4befedbd7f647105e4a2ac3726836c</srcmd5>
+    <version>2.6.1</version>
+    <time>1657559372</time>
+    <user>dimstar_suse</user>
+    <comment>- Add openshot-qt-disable-sending-metrics.patch: disable the use
+  of Google Analytics by default,
+  https://github.com/OpenShot/openshot-qt/issues/4735 (forwarded request 988094 from Kieltux)</comment>
+    <requestid>988280</requestid>
+  </revision>
 </revisionlist>

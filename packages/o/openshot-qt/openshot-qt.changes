@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 10 09:49:05 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add openshot-qt-disable-sending-metrics.patch: disable the use
+  of Google Analytics by default,
+  https://github.com/OpenShot/openshot-qt/issues/4735
+
+-------------------------------------------------------------------
 Mon Nov 01 13:41:42 UTC 2021 - code@bnavigator.de
 
 - Update to version 2.6.1:
