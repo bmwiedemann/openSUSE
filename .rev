@@ -15,4 +15,19 @@
     <comment></comment>
     <requestid>977939</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f422ca0aeab3dbcc28a255abb2821865</srcmd5>
+    <version>1.0.3</version>
+    <time>1657559389</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.3:
+  * Process redirects that can come from sregistry with a library:// URL.
+  * Fix inspect --deffile and inspect --all to correctly show definition files
+    in sandbox container images instead of empty output. This has a side effect
+    of also fixing the storing of definition files in the metadata of sif files
+    built by Apptainer, because that metadata is constructed by doing inspect
+    --all.
+</comment>
+    <requestid>988330</requestid>
+  </revision>
 </revisionlist>
