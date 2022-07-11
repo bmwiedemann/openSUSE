@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 11 06:49:06 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.5:
+  * Fixed: Relax PyYaml dependency
+
+-------------------------------------------------------------------
 Fri Dec 10 09:11:15 UTC 2021 - pgajdos@suse.com
 
 - pytest-runner is deprecated
