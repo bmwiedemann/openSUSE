@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jul  3 11:55:55 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- Changes since 5.95.0:
+  * catalog: Avoid needlessly copying a list to be returned.
+  * meinproc: Simplify loop building param list for libxml.
+  * meinproc: Fix usage of QString reference to temporary.
+  * meinproc: Remove old comment from porting.
+  * meinproc: Remove dead entry parsing code.
+  * allow build with nix package manager
+
+-------------------------------------------------------------------
 Fri Jun 10 14:12:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.95.0
