@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul  3 11:55:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- Changes since 5.95.0:
+  * Don't drop custom properties with non-text value types
+  * Add calendar loading state property
+  * Fix UTC offset timezone loading with latest Qt 5.15.x
+  * Change the xCalFormat classes to use a hierarchical dptr
+
+-------------------------------------------------------------------
 Fri Jun 10 14:12:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.95.0
