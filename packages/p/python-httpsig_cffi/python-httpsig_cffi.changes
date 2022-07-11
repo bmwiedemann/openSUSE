@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 11 07:41:08 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Fix build with new-cryptography.patch
+
+-------------------------------------------------------------------
 Mon May 31 07:36:02 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

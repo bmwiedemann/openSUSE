@@ -1,7 +1,7 @@
 #
 # spec file for package python-httpsig_cffi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hawkowl/httpsig_cffi
 Source:         https://files.pythonhosted.org/packages/source/h/httpsig_cffi/httpsig_cffi-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/hawkowl/httpsig_cffi/pull/2 Fix cryptography deprecation warnings and future warning in get_fingerprint
+Patch0:         new-cryptography.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -44,6 +46,7 @@ Secure HTTP request signing using the HTTP Signature draft specification
 
 %prep
 %setup -q -n httpsig_cffi-%{version}
+%autopatch -p1
 
 %build
 %python_build

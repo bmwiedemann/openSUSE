@@ -1,0 +1,64 @@
+From 87b4a3f9ead574a173bb42e7191fc8b2efad9637 Mon Sep 17 00:00:00 2001
+From: Art Hall III <art.hall.iii@oracle.com>
+Date: Wed, 24 Apr 2019 15:49:54 -0400
+Subject: [PATCH] Fix cryptography deprecation warnings (#1)
+
+* Fix deprecation warnings
+
+The signer and verifier methods have been deprecated in
+cryptography since version 2.0
+
+* Fix futurewarning in regular expression in get_fingerprint
+---
+ httpsig_cffi/sign.py   | 5 ++---
+ httpsig_cffi/utils.py  | 2 +-
+ httpsig_cffi/verify.py | 6 +-----
+ 3 files changed, 4 insertions(+), 9 deletions(-)
+
+diff --git a/httpsig_cffi/sign.py b/httpsig_cffi/sign.py
+index dd5726e..85b14b1 100644
+--- a/httpsig_cffi/sign.py
++++ b/httpsig_cffi/sign.py
+@@ -57,9 +57,8 @@ def algorithm(self):
+ 
+     def _sign_rsa(self, data):
+         if isinstance(data, six.string_types): data = data.encode("ascii")
+-        r = self._rsa_private.signer(padding.PKCS1v15(), self._rsahash())
+-        r.update(data)
+-        return r.finalize()
++        r = self._rsa_private.sign(data, padding.PKCS1v15(), self._rsahash())
++        return r
+ 
+     def _sign_hmac(self, data):
+         if isinstance(data, six.string_types): data = data.encode("ascii")
+diff --git a/httpsig_cffi/utils.py b/httpsig_cffi/utils.py
+index fc5de71..31ef53e 100644
+--- a/httpsig_cffi/utils.py
++++ b/httpsig_cffi/utils.py
+@@ -152,7 +152,7 @@ def get_fingerprint(key):
+     if key.startswith('ssh-rsa'):
+         key = key.split(' ')[1]
+     else:
+-        regex = r'\-{4,5}[\w|| ]+\-{4,5}'
++        regex = r'\-{4,5}[\w\|\| ]+\-{4,5}'
+         key = re.split(regex, key)[1]
+ 
+     key = key.replace('\n', '')
+diff --git a/httpsig_cffi/verify.py b/httpsig_cffi/verify.py
+index 1cd46b2..b6c3faf 100644
+--- a/httpsig_cffi/verify.py
++++ b/httpsig_cffi/verify.py
+@@ -32,12 +32,8 @@ def _verify(self, data, signature):
+ 
+         if self.sign_algorithm == 'rsa':
+ 
+-            h = self._rsa_public.verifier(b64decode(signature),
+-                                          padding.PKCS1v15(),
+-                                          self._rsahash())
+-            h.update(data)
+             try:
+-                h.verify()
++                h = self._rsa_public.verify(b64decode(signature), data, padding.PKCS1v15(), self._rsahash())
+                 return True
+             except InvalidSignature:
+                 return False
