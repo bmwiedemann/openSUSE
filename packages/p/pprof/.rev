@@ -7,4 +7,34 @@
     <comment>New package pprof-0.0.20210226 needed for gperftools</comment>
     <requestid>880788</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>47da1fea3e1678cc19348f7bab6a67ff</srcmd5>
+    <version>0.0.0+git20220520.d04f242</version>
+    <time>1657559292</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.0+git20220520.d04f242:
+  * Make config menu entries relative.
+  * Made flamegraph test less brittle.
+  * all: update dependencies
+  * Generalize the unit support in pprof a bit further.
+  * Split monolithic webhtml.go into multiple files.
+  * Update minimum Go version to 1.17 in go.mod.
+  * Fix doc comments format to become compatible with tip gofmt.
+  * allow rendering big flame graphs by avoiding stack overflow in JS parser
+  * Fix tagroot to properly format unitless numeric tags.
+  * Add Go 1.18 to testing, remove Go 1.16.
+  * third_party: fix typo
+  * internal/graph: Support comments with double quotes
+  * Handle either _text or _stext as the kernel relocation symbol.
+  * Parse and propagate the name of the kernel relocation symbol
+  * doc: clarify graph view docs to note negative values appear in profile comparison
+  * internal/elfexec: Fix typos in elfexec.go
+  * Log build ID in local symbolization error messages.
+  * Update d3-flame-graph from 2.0.0-alpha to 4.1.3
+  * Add badge link to Go API docs in pkg.go.dev
+  * Update instructions to use &quot;git clone&quot; instead of &quot;go get&quot;.
+  * proto/profile.proto: fix typo
+  * Update mapassign regex to match both call variants (forwarded request 988188 from gmbr3)</comment>
+    <requestid>988195</requestid>
+  </revision>
 </revisionlist>
