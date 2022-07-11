@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Mon Jul  4 13:49:00 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix Homepage
+- Rename package according to the Python packaging
+  guidelines (jsc#SLE-24672)
+
+-------------------------------------------------------------------
+Mon Jun 27 11:39:36 UTC 2022 - Julio González Gil <jgonzalez@suse.com>
+
+- Update to 0.1.44 (jsc#SLE-24672)
+  * Add support for zstd compression in .deb files 
+  * Use logging.warning rather than warnings for data problems.
+  * Support for finding files (including changelog.Debian.gz) that are beyond
+    a symlink within the package
+  * Update packaging for zstd compressed .deb code
+  * Annotate binutils build-dep with <!nocheck>
+  * Update Standards-Version to 4.6.1
+  * Various improvements to the round-trip-safe deb822 parser
+- Update to 0.1.43
+  * Support the Files-Included field in debian/copyright
+  * Fix URL for API documentation in README.rst
+  * RTS parser: minor documentation fixes
+  * Declare minimum Python version of 3.5 for most modules except the
+    RTS parser. Add CI testing with Python 3.5
+  * RTS parser: Handle leading tabs for setting values
+  * RTS parser: Preserve original field case
+  * RTS parser: Expose str type for keys in paragraphs
+- Update to 0.1.42
+  * Use logging for warnings about data that's being read, rather than
+    the warnings module
+  * Fix type checks for mypy 0.910
+  * Silence lintian complaint about touching the dpkg database in the
+    examples
+  * Update Standards-Version to 4.6.0
+  * Add RTS parser to setup.py so that it is installed.
+  * Add copyright attribution for RTS parser
+  * RTS parser: Accept tabs as continuation line marker
+  * Interpretation: Preserve tab as continuation line if used
+  * RTS parser: Make value interpretation tokenization consistent
+  * RTS parser: Add interpretation for Uploaders field
+- Update to 0.1.41
+  * Drop use of six
+  * Add contextmanager to DebFile
+  * Added format/comment preserving deb822 parser as debian._deb822_repro.
+  * Add Build-Depends-Arch, Build-Conflicts-Arch to list of relationship
+    fields
+- Update to 0.1.40
+  * In debian.changelog.get_maintainer, cope with unknown UIDs
+  * Fix examples in code
+  * Numerous enhancements to the deb822.BuildInfo class
+  * Include portability patch for pwd module on Windows
+  * Drop the deb822.BuildInfo.get_debian_suite function
+- Update to 0.1.39
+  * Move re.compile calls out of functions
+  * Revert unintended renaming of Changelog.get_version/set_version
+  * Add a type for .buildinfo files (deb822.BuildInfo)
+  * Add support for SHA1-Download and SHA256-* variants in PdiffIndex class
+    for .diff/Index files
+  * Permit single-character package names in dependency relationship
+    specifications
+  * Update Standards-Version to 4.5.1 (no changes required)
+  * Update to debhelper-compat (= 13)
+  * Update examples to use #!/usr/bin/python3
+  * Fix tabs vs spaces in examples.
+  * Provide accessor for source package version for binary packages
+  * Allow debian_support.PackageFile to accept StringIO as well as BytesIO
+  * Change handling of case-insensitive field names to allow Deb822 objects
+    to be serialised
+  * Update Standards-Version to 4.5.1 (no changes required)
+  * Update to debhelper-compat (= 13)
+  * Update examples to use #!/usr/bin/python3
+  * Fix tabs vs spaces in examples
+  * Provide accessor for source package version for binary packages
+- Update to 0.1.38
+  * Add SHA265 support to handling of pdiffs
+  * Add support for additional headers for merged pdiffs to PDiffIndex
+  * Allow debian_support.patches_from_ed_script to consume both bytes and str
+  * Add a debian.watch module for parsing watch files
+  * Prevent stripping of last newline in initial lines before changelog files
+  * Add a Copyright.files_excluded field
+  * Allow specifying allow_missing_author when reserializing changelog
+    entries
+- Update to 0.1.37
+  * Drop python2 support
+  * Update Standards-Version to 4.5.0 (no changes required)
+  * Add Rules-Requires-Root: no
+  * Parse Built-Using relationship fields
+
+-------------------------------------------------------------------
+Thu Sep  5 12:53:52 UTC 2019 - Carmen Bianca Bakker <carmen@carmenbianca.eu>
+
+- Update to 0.1.36
+  * Update Standards-Version to 4.4.0 (no changes required).
+  * Update to debhelper-compat 12.
+  * Extend Deb822 parser to allow underscores in the field name 
+  * Add accessors for Version objects from Deb822
+  * Miscellaneous bug fixes.
+
+-------------------------------------------------------------------
+Mon Nov  5 18:34:12 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Dec 19 10:50:04 UTC 2017 - carmen@carmenbianca.eu
+
+- Created package, version 0.1.31.
