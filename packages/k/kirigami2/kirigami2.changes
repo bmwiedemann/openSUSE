@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jul  3 11:56:02 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- Changes since 5.95.0:
+  * Tests: Fix failing autotest due to removed property
+  * Fix and improve template for KAppTemplate
+  * NavigationTabBar: Add recolorIcons property
+  * NavigationTabButton: Add recolorIcon property and some documentation
+  * Add missing files for android template
+  * Make JavaScript cleaner and stricter
+  * BannerImage: Fix `empty` property definition
+  * PagePoolAction: Fix typeof check
+  * SwipeListItem: warn users when they try to override the padding (kde#453959)
+  * template: add method to restore window geometry
+  * OverlaySheet: Check if isMobile to set footer extra margin
+  * OverlayDrawer: Make sure the handle is gone when it's hidden (kde#450902)
+  * Fix checkable labels
+  * ActionTextField: Fix RTL layout and actions rows
+  * ActionTextField: Add versioning documentation
+  * ActionTextField: Bump QML imports
+  * PasswordField: Sync code to PlasmaExtras
+  * Dont't change title color when page is not active
+  * Fix race: Object (m_item) is operated on before it is assigned.
+  * Use creationContext of the Component as the starting point
+  * Sync changes from PlasmaExtras PasswordField to disable Ctrl-Z
+  * Fix link to theme doc
+
+-------------------------------------------------------------------
 Fri Jun 10 14:12:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.95.0
