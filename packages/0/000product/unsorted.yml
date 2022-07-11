@@ -251,6 +251,8 @@ unsorted:
   - RigelEngine 
   - Rivet-devel 
   - Rivet-plugins 
+  - SDL2_image-devel 
+  - SDL2_mixer-devel 
   - SDL2_sound-devel 
   - SDL_Pango-devel 
   - SDL_sound-devel 
@@ -3670,6 +3672,7 @@ unsorted:
   - featherpad-lang 
   - fec-devel 
   - feh 
+  - feh-zsh-completion 
   - felix-bundlerepository 
   - felix-bundlerepository-javadoc 
   - felix-gogo-command 
@@ -9352,13 +9355,7 @@ unsorted:
   - libSDL2_gfx-devel 
   - libSDL2_gfx-devel-32bit: [x86_64] 
   - libSDL2_image-2_0-0 
-  - libSDL2_image-2_0-0-32bit: [x86_64] 
-  - libSDL2_image-devel 
-  - libSDL2_image-devel-32bit: [x86_64] 
   - libSDL2_mixer-2_0-0 
-  - libSDL2_mixer-2_0-0-32bit: [x86_64] 
-  - libSDL2_mixer-devel 
-  - libSDL2_mixer-devel-32bit: [x86_64] 
   - libSDL2_net-2_0-0 
   - libSDL2_net-2_0-0-32bit: [x86_64] 
   - libSDL2_net-devel 
@@ -22961,6 +22958,8 @@ unsorted:
   - python310-idna_ssl 
   - python310-ifaddr 
   - python310-ifconfig-parser 
+  - python310-igwn-auth-utils 
+  - python310-igwn-auth-utils-requests 
   - python310-ijson 
   - python310-imagecodecs 
   - python310-imageio 
@@ -24146,6 +24145,7 @@ unsorted:
   - python310-ruffus 
   - python310-runthis-sphinxext 
   - python310-sadisplay 
+  - python310-safe-netrc 
   - python310-samplerate 
   - python310-sane 
   - python310-sanlock 
@@ -26106,6 +26106,8 @@ unsorted:
   - python38-idna_ssl 
   - python38-ifaddr 
   - python38-ifconfig-parser 
+  - python38-igwn-auth-utils 
+  - python38-igwn-auth-utils-requests 
   - python38-ijson 
   - python38-imagecodecs 
   - python38-imageio 
@@ -27391,6 +27393,7 @@ unsorted:
   - python38-s3fs 
   - python38-s3transfer 
   - python38-sadisplay 
+  - python38-safe-netrc 
   - python38-samplerate 
   - python38-sane 
   - python38-sanlock 
@@ -29389,6 +29392,8 @@ unsorted:
   - python39-idna_ssl 
   - python39-ifaddr 
   - python39-ifconfig-parser 
+  - python39-igwn-auth-utils 
+  - python39-igwn-auth-utils-requests 
   - python39-ijson 
   - python39-imagecodecs 
   - python39-imageio 
@@ -30674,6 +30679,7 @@ unsorted:
   - python39-s3fs 
   - python39-s3transfer 
   - python39-sadisplay 
+  - python39-safe-netrc 
   - python39-samplerate 
   - python39-sane 
   - python39-sanlock 
