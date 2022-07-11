@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jul  3 11:56:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- Changes since 5.95.0:
+  * FrameItemNode: Remove unnecessary attribute
+  * Expose the edit mode to the applets
+  * Units: Fix sizeForLabels double-scaling icons with Plasma scaling (kde#454131)
+  * Remove extra ';'
+  * Update plugins.qmltypes for `org.kde.plasma.core`
+  * Skip test for old style theme metadata format when building without deprecations
+  * Revert "Use QT_FEATURE_foo to detect opengl* support, and TARGET for glesv2"
+  * wallpaperinterface: call `setSource` before `setContextProperty`
+  * breeze/widgets: Make analog clock follow colorscheme (kde#377935)
+- Drop patch. Fixed upstream:
+  * 0001-Revert-Use-QT_FEATURE_foo-to-detect-opengl-support-a.patch
+
+-------------------------------------------------------------------
 Tue Jun 14 13:46:45 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix window thumbnails on X11:
