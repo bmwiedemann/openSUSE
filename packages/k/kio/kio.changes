@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Jul  3 11:56:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- Changes since 5.95.0:
+  * Remove calls to no-op KNewFileMenu::setViewShowsHiddenFiles
+  * rename ioslave_defaults to ioworker_defaults
+  * Don't treat KJob::UserDefinedError as unknown error
+  * move global enum to worker nomenclature
+  * [webrunner] Add debian as new keyword for webrunner
+  * [knewfilemenu] Don't forcibly change file extension (kde#456091)
+  * [knewfilemenu] Write Name when creating Link files
+  * Pass JobUiDelegate's window to created dialogs
+  * [knewfilemenu] Always add .desktop suffix when creating link file
+  * Deprecated global file class code in KFileWidget
+  * KRecentDirs: Deprecate reading/writing to global file
+  * [kfileplacesmodel] Cache device display name
+  * PreviewJob: Add note about plugins being cached internally
+  * KRecentDocuments: Improve indentation in recentlyused.xbel (kde#456046)
+  * Add template for empty file (kde#297003)
+  * We need it when we build with strict compile
+  * Don't duplicate headers between cpp/.h files
+  * Don't leak the slave's worker thread
+  * filewidgets: update location text after selected files are renamed (kde#455327)
+  * Add "Get more Apps in Discover" button to kopenwithdialog
+  * new worker API
+  * Bump deprecation KF version in ecm_set_disabled_deprecation_versions
+  * KPropertiesDialog: fix saving changes when editing a .desktop file symlink (kde#450727)
+
+-------------------------------------------------------------------
 Fri Jun 10 14:12:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.95.0
