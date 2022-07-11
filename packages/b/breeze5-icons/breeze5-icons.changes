@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul  3 11:55:43 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- Changes since 5.95.0:
+  * Require passing tests for the CI to pass
+  * Create edit-image icon that's a symlink to tool_imageeffects
+  * Add new okular icon
+  * Create sidebar-show-symbolic symlink (kde#455247)
+  * applets/256: Add dark version of analogclock
+
+-------------------------------------------------------------------
 Fri Jun 10 14:12:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.95.0
