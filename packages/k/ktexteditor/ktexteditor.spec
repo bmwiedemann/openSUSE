@@ -20,10 +20,10 @@
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-%define _tar_path 5.95
+%define _tar_path 5.96
 %bcond_without released
 Name:           ktexteditor
-Version:        5.95.0
+Version:        5.96.0
 Release:        0
 Summary:        Embeddable text editor component
 License:        LGPL-2.1-or-later
@@ -34,8 +34,6 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-MISFEATURE-OPENSUSE - Disliked by the security team (boo#1033055)
-Patch1:         0001-Disable-KAuth-integration.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -85,7 +83,7 @@ This subpackage provides the header files.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DSYSCONF_INSTALL_DIR=%{_kf5_sysconfdir}
+%cmake_kf5 -d build -- -DSYSCONF_INSTALL_DIR=%{_kf5_sysconfdir} -DENABLE_KAUTH:BOOL=OFF
 %cmake_build
 
 %install

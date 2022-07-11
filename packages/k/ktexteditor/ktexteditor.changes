@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jul  3 11:56:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- Changes since 5.95.0:
+  * AppCommands: Do not quit application when last document or all documents are closed (kde#454924)
+  * Fix leak of KateCompletionWidget::m_argumentHintTree
+  * Allow to disable KAuth
+  * KateThemeConfig: when copying a scheme, put the current name in the line-edit
+  * Utilize ECMDeprecationSettings to manage deprecate Qt API
+  * avoid that saveAs uses filename as directory (kde#454648)
+  * allow to disable the autoreload if content is in git
+  * Fix occurence highlighting not working with custom line height
+- Drop 0001-Disable-KAuth-integration.patch. Replaced by a CMake
+  option (ENABLE_KAUTH)
+
+-------------------------------------------------------------------
 Fri Jun 10 14:12:43 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.95.0
