@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul  3 19:25:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.1.1
+  * [!72] fix critical issue with deprecated HTTPConnection
+    interface
+- Release 1.1.0
+  * [!38] the gwdatafind.http module and the classes therein have
+    been deprecated and replaced by the functional calls available
+    from the top-level gwdatafind module; gwdatafind.http will be
+    removed in GWDataFind 2.0.0.
+  * [!50] support for Python 3.5 has been dropped
+  * [!38] the library was refactored to use
+    igwn_auth_utils.requests for all HTTP access; this provides
+    support for authorized queries using SciTokens
+
+-------------------------------------------------------------------
 Mon Mar 21 13:37:00 UTC 2022 - pgajdos@suse.com
 
 - actually does not require python-mock for build
