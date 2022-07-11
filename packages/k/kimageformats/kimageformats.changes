@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jul  3 11:56:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- Changes since 5.95.0:
+  * PSD header checks according to specifications
+  * Improved detection of alpha channel on CMYK images
+  * Minor code optimization
+  * Minor code improvements (tested on all my MCYK PSD/PSB files)
+  * Fix Alpha + testcase images
+  * Fix regression
+  * Basic support to CMYK 8/16 bits (not fully tested)
+  * Require passing tests for the CI to pass
+  * jxl: support both old 0.6.1 and new 0.7.0 libjxl API
+  * Remove extra ';'
+  * avif: read performance improvements
+
+-------------------------------------------------------------------
 Mon Jun 13 13:18:42 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Enable AVIF plugin also on Leap 15.4
