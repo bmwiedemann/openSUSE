@@ -605,4 +605,12 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
     <comment></comment>
     <requestid>980911</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>19d58d86415f9562f6a08c211e7b006d</srcmd5>
+    <version>20.15.1</version>
+    <time>1657617131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988325</requestid>
+  </revision>
 </revisionlist>

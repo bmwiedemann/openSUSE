@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jul  9 14:09:31 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 20.15.1:
+  * Bugfixes
+    + Fix the incorrect operation when setuptools plugins output
+      something into stdout. (#2335)
+    + CPython3Windows creator ignores missing DLLs dir. (#2368)
+
+- changes from version 20.15.0:
+  * Features
+    + Support for Windows embeddable Python package: includes
+      python<VERSION>.zip in the creator sources - by
+      @reksarka. (#1774)
+  * Bugfixes
+    + Upgrade embedded setuptools to 62.3.3 from 62.6.0 and pip to
+      22.1.2 from 22.0.4 - by @gaborbernat. (#2348)
+    + Use shlex.quote instead of deprecated pipes.quote in Python 3 -
+      by @frenzymadness. (#2351)
+    + Fix Windows PyPy 3.6 - by @reksarka. (#2363)
+
+-------------------------------------------------------------------
 Sat Jun  4 20:43:42 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 20.14.1:
