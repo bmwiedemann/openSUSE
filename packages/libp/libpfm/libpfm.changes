@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  4 07:12:12 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- use https download url
+
+-------------------------------------------------------------------
 Thu Mar 25 16:27:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Can't assume non-existence of python38 macros in Leap.

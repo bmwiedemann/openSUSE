@@ -1,7 +1,7 @@
 #
 # spec file for package libpfm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Summary:        Library to encode performance events
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://perfmon2.sourceforge.net/
-Source:         http://downloads.sourceforge.net/project/perfmon2/libpfm4/%{name}-%{version}.tar.gz
+Source:         https://downloads.sourceforge.net/project/perfmon2/libpfm4/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 
 BuildRequires:  %{python_module devel}
