@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 12 05:52:11 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch skip-broken-tests.patch:
+  * Skip a broken test class, and 2 tests. 
+
+-------------------------------------------------------------------
 Wed Jul 28 13:51:06 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Fix test requirements

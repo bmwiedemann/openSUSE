@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Testing
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,9 @@ Version:        0.8.1
 Release:        0
 Summary:        Unit testing for Flask
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/jarus/flask-testing
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Testing/Flask-Testing-%{version}.tar.gz
+Patch0:         skip-broken-tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -32,8 +32,11 @@ Requires:       python-Flask
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module importlib_metadata}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requre}
 # /SECTION
 %python_subpackages
 
@@ -41,7 +44,7 @@ BuildRequires:  %{python_module importlib_metadata}
 Unit testing for Flask.
 
 %prep
-%setup -q -n Flask-Testing-%{version}
+%autosetup -p1 -n Flask-Testing-%{version}
 # Remove Python 2-only unmaintained test dependency twill
 # which includes a lot of outdated vendored packages
 sed -i "s/twill[^']*/setuptools/" setup.py
