@@ -6855,6 +6855,8 @@ unsorted:
   - highlight-common 
   - highlight-gui 
   - highlight-gui-lang 
+  - highway-devel 
+  - highway-devel-doc 
   - himeno 
   - hiredis 
   - hiredis-devel 
@@ -10126,11 +10128,11 @@ unsorted:
   - libcapstone4 
   - libcares2-32bit: [x86_64] 
   - libcaribou0 
-  - libcasacore6 
-  - libcasacore6-openmpi1 
-  - libcasacore6-openmpi2 
-  - libcasacore6-openmpi3 
-  - libcasacore6-openmpi4 
+  - libcasacore7 
+  - libcasacore7-openmpi1 
+  - libcasacore7-openmpi2 
+  - libcasacore7-openmpi3 
+  - libcasacore7-openmpi4 
   - libcblas3-32bit: [x86_64] 
   - libcbor-devel 
   - libcbor-doc 
@@ -11596,6 +11598,7 @@ unsorted:
   - libhugetlbfs-tests 
   - libhunspell-1_7-0-32bit: [x86_64] 
   - libhwloc15 
+  - libhwy0 
   - libhx509-5 
   - libhydrogen-core-devel 
   - libhydrogen-core1 
@@ -13137,13 +13140,13 @@ unsorted:
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
-  - libprotobuf-lite31-32bit: [x86_64] 
+  - libprotobuf-lite32-32bit: [x86_64] 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
   - libprotobuf-nanopb0 
-  - libprotobuf31-32bit: [x86_64] 
-  - libprotoc31 
-  - libprotoc31-32bit: [x86_64] 
+  - libprotobuf32-32bit: [x86_64] 
+  - libprotoc32 
+  - libprotoc32-32bit: [x86_64] 
   - libproxy-devel 
   - libproxy-sharp 
   - libproxy-tools 
@@ -17082,6 +17085,7 @@ unsorted:
   - nbdkit-devel 
   - nbdkit-example-plugins 
   - nbdkit-gzip-filter 
+  - nbdkit-linuxdisk-plugin 
   - nbdkit-nbd-plugin: [i586] 
   - nbdkit-python-plugin: [i586] 
   - nbdkit-server: [i586] 
@@ -20613,6 +20617,7 @@ unsorted:
   - pmix-devel 
   - pmix-headers 
   - pmix-mca-params 
+  - pmix-plugin-munge 
   - pmix-plugins 
   - pmix-test 
   - pnetcdf-devel-data: [x86_64] 
@@ -21452,6 +21457,7 @@ unsorted:
   - python3-libixion 
   - python3-libmodulemd 
   - python3-libmount 
+  - python3-libnbd 
   - python3-libnvme 
   - python3-liborcus 
   - python3-libpamtest 
@@ -22513,7 +22519,6 @@ unsorted:
   - python310-ddg3 
   - python310-ddt 
   - python310-deap 
-  - python310-debian 
   - python310-debugpy: [i586] 
   - python310-deepdiff 
   - python310-deepmerge 
@@ -25619,7 +25624,6 @@ unsorted:
   - python38-ddg3 
   - python38-ddt 
   - python38-deap 
-  - python38-debian 
   - python38-debugpy 
   - python38-decorator 
   - python38-deepdiff 
@@ -28907,7 +28911,6 @@ unsorted:
   - python39-ddg3 
   - python39-ddt 
   - python39-deap 
-  - python39-debian 
   - python39-debugpy 
   - python39-decorator 
   - python39-deepdiff 
