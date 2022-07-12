@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 11 12:35:35 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.8:
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * Use _CONST_X_STRING to make libXt declare String as const char *
+  * unifdef sgi
+  * Reduce scope of ttydev & ptydev
+  * gitlab CI: stop requiring Signed-off-by in commits
+
+-------------------------------------------------------------------
 Sat May  1 18:44:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec (move license to licensedir) 

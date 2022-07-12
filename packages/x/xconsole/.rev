@@ -73,4 +73,20 @@
     <comment></comment>
     <requestid>889860</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>150941d730d73abe1bf2c698aa3f24e6</srcmd5>
+    <version>1.0.8</version>
+    <time>1657617135</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.8:
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * Use _CONST_X_STRING to make libXt declare String as const char *
+  * unifdef sgi
+  * Reduce scope of ttydev &amp; ptydev
+  * gitlab CI: stop requiring Signed-off-by in commits</comment>
+    <requestid>988370</requestid>
+  </revision>
 </revisionlist>
