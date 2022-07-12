@@ -39,8 +39,8 @@ BuildRequires:  libtool
 BuildRequires:  munge-devel
 BuildRequires:  zlib-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Requires:       pmix-runtime-config
-Recommends:     pmix-mca-params
+Requires:       pmix-runtime-config = %version
+Recommends:     pmix-mca-params = %version
 
 %description
 The Process Management Interface (PMI) has been used for quite some time as a
@@ -55,7 +55,7 @@ This RPM contains all the tools necessary to compile and link against PMIx.
 %package -n libpmix2
 Summary:        PMI-X lib version 1
 Group:          System/Libraries
-Requires:       pmix-plugins
+Requires:       pmix-plugins = %version
 
 %description  -n libpmix2
 This package contains the shared library used by the PMI-X standard
@@ -63,12 +63,23 @@ This package contains the shared library used by the PMI-X standard
 %package plugins
 Summary:        PMI-X plugins version 1
 Group:          System/Libraries
-Requires:       libmca_common_dstore1
+Requires:       libmca_common_dstore1 = %version
+Recommends:     pmix-plugins-munge = %version
 # explicit requires for package libmca_common_dstore1
 # as other providers for libmca_common_dstore.so.1 exit
 
 %description  plugins
 This package contains plugins used by libpmix2.
+
+%package plugin-munge
+Summary:        PMI-X munge plugin version 1
+Group:          System/Libraries
+Requires:       libmca_common_dstore1 = %version
+# explicit requires for package libmca_common_dstore1
+# as other providers for libmca_common_dstore.so.1 exit
+
+%description  plugin-munge
+This package contains the munge plugin for libpmix2.
 
 %package -n libmca_common_dstore1
 Summary:        Communication library used by PMI-X
@@ -99,7 +110,7 @@ This Package contains necessary the headers for PMI-X.
 %package -n pmix-mca-params
 Summary:        Settings for the Module Component Architecure
 Group:          Development/Libraries/C and C++
-Provides:       pmix-runtime-config = %{version}
+Provides:       pmix-runtime-config
 Conflicts:      pmix-runtime-config
 BuildArch:      noarch
 
@@ -171,7 +182,11 @@ make check
 %{_libdir}/libpmix.so.*
 
 %files plugins
+%exclude %{_libdir}/pmix/mca_psec_munge.so
 %{_libdir}/pmix/mca_*.so
+
+%files plugin-munge
+%{_libdir}/pmix/mca_psec_munge.so
 
 %files -n libmca_common_dstore1
 %{_libdir}/libmca_common_dstore.so.*

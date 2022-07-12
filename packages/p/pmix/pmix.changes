@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 11 14:57:37 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Separate out psec munge plugin to avoid dependency creep.
+
+-------------------------------------------------------------------
 Wed Jul  6 08:48:43 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Enable build on i686 and armv7
