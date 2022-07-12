@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Jul  5 22:14:31 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.5.0:
+  * TaQL now supports copying columns to new columns (e.g. to make
+    a backup of the FLAG column)
+  * Non-zero coordinates in JPL frames, e.g. the SUN frame, are
+    now interpreted as an offset in right ascension and
+    declination. Previously, coordinates in a JPL coordinate frame
+    were ignored.
+  * The Dysco storage manager is now built by default as part of
+    casacore.
+  * General:
+    - Modernizations: remove Mutex (gh#casacore/casacore#1095,
+      gh#casacore/casacore#1127, gh#casacore/casacore#1128),
+      typing system (gh#casacore/casacore#1172,
+      gh#casacore/casacore#1176).
+    - Allow building with newer compilers
+      (gh#casacore/casacore#1134, gh#casacore/casacore#1137,
+      gh#casacore/casacore#1145, gh#casacore/casacore#1206,
+      gh#casacore/casacore#1208, gh#casacore/casacore#1210,
+      gh#casacore/casacore#1211).
+    - Build python3 by default, not python2
+      (gh#casacore/casacore#1209).
+  * MeasurementSet:
+    - Improve reading of DataDescriptionId
+      (gh#casacore/casacore#1103).
+    - Compute feed information (gh#casacore/casacore#1104) and
+      field attributes (gh#casacore/casacore#1109) on demand.
+    - UVFits improvements: support X-Y mounts
+      (gh#casacore/casacore#1115), allow large antenna numbers
+      (gh#casacore/casacore#1144), fix handling FITS-IDI
+      GAIN_CURVE (gh#casacore/casacore#1151).
+    - Fix precision in T+dT syntax (gh#casacore/casacore#1118).
+  * Measures Allow offsets to JPL coordinates
+    (gh#casacore/casacore#1160).
+  * Tables:
+    - Cache iteration boundaries while sorting tables
+      (gh#casacore/casacore#1106).
+    - Use RefTable for iteration (gh#casacore/casacore#1108).
+    - Adios2 related changes: gh#casacore/casacore#1110,
+      gh#casacore/casacore#1116, gh#casacore/casacore#1121,
+      gh#casacore/casacore#1148.
+    - Make Dysco part of casacore (gh#casacore/casacore#1117,
+      gh#casacore/casacore#1125, gh#casacore/casacore#1146,
+      gh#casacore/casacore#1166).
+    - Add TaQL commands LIKE, COPYCOLUMN and DROPTABLE
+      (gh#casacore/casacore#1154, gh#casacore/casacore#1169).
+    - Fix one bug in rownr_t migration for TiledDataStMan
+      (gh#casacore/casacore#1156).
+    - Improve documentation (gh#casacore/casacore#1192).
+  * Images:
+    - Support CARTA opening images with a custom handler
+      (gh#casacore/casacore#1158).
+    - Allow easier python handling of beams
+      (gh#casacore/casacore#1184).
+- Drop upstreamed patches:
+  * 1129.patch.
+  * casacore-link-math.patch.
+- New BuildRequires: gsl-devel and libboost_headers-devel.
+- Move installed pkgconfig file to correct arch dependent
+  location. 
+
+-------------------------------------------------------------------
 Fri Apr 29 11:57:45 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add casacore-link-math.patch: Explicitly link to math library
