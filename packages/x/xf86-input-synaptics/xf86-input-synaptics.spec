@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-input-synaptics
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           xf86-input-synaptics
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        Synaptics touchpad input driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
 URL:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
-Source1:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
+Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz
+Source1:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Patch0:         n_xf86-input-synaptics-wait.diff
 Patch2:         n_xf86-input-synaptics-xorg.conf.d_snippet.diff
@@ -96,7 +96,8 @@ udevadm trigger --subsystem-match=input --action=change || :
 
 %files
 %defattr(-,root,root)
-%doc COPYING README
+%doc README.md
+%license COPYING
 %dir %{_datadir}/X11/xorg.conf.d/
 %{_datadir}/X11/xorg.conf.d/70-synaptics.conf
 %dir %{_libdir}/xorg/modules/input

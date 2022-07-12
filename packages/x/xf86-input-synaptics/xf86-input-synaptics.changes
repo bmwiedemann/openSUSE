@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 11 13:39:13 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.9.2:
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Build xz tarballs instead of bzip2
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Convert remaining source files from ISO-8859-1 to UTF-8
+  * eventcomm: use 64-bit time safe accessors instead of timeval directly
+  * eventcomm: fix compile with pre-time64 kernels
+  * Use fabs() instead of abs() on double values.
+  * synclient: allow negative/large values for AreaLeftEdge etc.
+
+-------------------------------------------------------------------
 Thu May 28 09:08:26 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - devel package: removed requires to main package, since it's not

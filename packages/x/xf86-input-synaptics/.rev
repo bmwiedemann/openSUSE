@@ -369,4 +369,22 @@
   required at all for development (boo#1172153)</comment>
     <requestid>809879</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>483fbb99330052685e2dea63a7daab11</srcmd5>
+    <version>1.9.2</version>
+    <time>1657617139</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.2:
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Build xz tarballs instead of bzip2
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Convert remaining source files from ISO-8859-1 to UTF-8
+  * eventcomm: use 64-bit time safe accessors instead of timeval directly
+  * eventcomm: fix compile with pre-time64 kernels
+  * Use fabs() instead of abs() on double values.
+  * synclient: allow negative/large values for AreaLeftEdge etc.</comment>
+    <requestid>988394</requestid>
+  </revision>
 </revisionlist>
