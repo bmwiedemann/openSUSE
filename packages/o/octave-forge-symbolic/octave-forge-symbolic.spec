@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-symbolic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define octpkg  symbolic
 Name:           octave-forge-%{octpkg}
-Version:        2.9.0
+Version:        3.0.0
 Release:        0
 Summary:        Octave Symbolic Package using SymPy
 License:        GPL-3.0-or-later
@@ -27,9 +27,9 @@ URL:            https://octave.sourceforge.io
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  octave-devel
-BuildRequires:  python3-sympy >= 1.2
-Requires:       octave-cli >= 4.2
-Requires:       python3-sympy >= 1.2
+BuildRequires:  python3-sympy >= 1.4
+Requires:       octave-cli >= 5.1
+Requires:       python3-sympy >= 1.4
 
 %description
 Adds symbolic calculation features to GNU Octave.
