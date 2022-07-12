@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  8 08:12:43 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 82c39f3914 (2022-07-06):
+  * switch to 5.18 branch
+
+-------------------------------------------------------------------
 Wed Apr 27 13:17:53 UTC 2022 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Use last patch commit date instead patch creation date when creating
