@@ -18,7 +18,7 @@
 
 %define octpkg  strings
 Name:           octave-forge-%{octpkg}
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Additional manipulation functions for Octave
 License:        GPL-3.0-or-later AND BSD-2-Clause
