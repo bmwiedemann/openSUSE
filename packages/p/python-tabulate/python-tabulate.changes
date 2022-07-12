@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 11 02:56:59 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.8.10:
+  * Python 3.10 support.
+  * Bug fixes.
+  * Column width parameter.
+
+-------------------------------------------------------------------
 Wed Sep 29 03:01:31 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on nose. 
