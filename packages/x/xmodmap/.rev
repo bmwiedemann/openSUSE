@@ -87,4 +87,17 @@
     <comment></comment>
     <requestid>886351</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>53231245a2002c8292ce6ebd2089461c</srcmd5>
+    <version>1.0.11</version>
+    <time>1657617137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.11 
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * handle.c: avoid leaks when realloc() fails
+  * PrintModifierMapping: stop leaking the map returned by 
+    XGetKeyboardMapping Fix warning about number of mouse buttons</comment>
+    <requestid>988379</requestid>
+  </revision>
 </revisionlist>
