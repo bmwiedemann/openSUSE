@@ -34,4 +34,12 @@
 - Add upstream patch to fix build on 32-bit architectures: 1129.patch</comment>
     <requestid>974246</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0cedb89cca25ffca7da6e368eab50deb</srcmd5>
+    <version>3.5.0</version>
+    <time>1657617162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988497</requestid>
+  </revision>
 </revisionlist>

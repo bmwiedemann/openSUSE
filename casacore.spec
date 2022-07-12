@@ -26,7 +26,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define sover 6
+%define sover 7
 %global shlib lib%{name}%{sover}
 %define srcname casacore
 
@@ -80,7 +80,7 @@
 # /SECTION
 
 Name:           %{pname}
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        A suite of C++ libraries for radio astronomy data processing
 License:        LGPL-2.0-or-later
@@ -89,10 +89,6 @@ Source:         https://github.com/casacore/casacore/archive/v%{version}.tar.gz#
 Source99:       casacore-rpmlintrc
 # PATCH-FIX-UPSTREAM casacore-fitsio-header.patch badshah400@gmail.com -- Fix location of cfitsio headers used in sources
 Patch1:         casacore-fitsio-header.patch
-# PATCH-FIX-UPSTREAM - https://github.com/casacore/casacore/pull/1129
-Patch2:         1129.patch
-# PATCH-FIX-UPSTREAM casacore-link-math.patch badshah400@gmail.com -- Explicitly link to math library when building mirlab
-Patch3:         casacore-link-math.patch
 BuildRequires:  bison
 BuildRequires:  blas-devel
 BuildRequires:  cmake
@@ -102,6 +98,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  hdf5%{?my_suffix}-devel
 BuildRequires:  lapack-devel
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_python3-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
@@ -109,6 +106,7 @@ BuildRequires:  python3-numpy-devel
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(fftw3)
+BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(wcslib)
 BuildRequires:  pkgconfig(zlib)
@@ -135,6 +133,7 @@ This package provides the shared libraries for casacore.
 %package devel
 Summary:        Headers and sources for developing with casacore
 Requires:       %{shlib} = %{version}
+Requires:       gsl-devel
 Requires:       hdf5-devel
 Requires:       lapack-devel
 Requires:       libboost_python3-devel
@@ -182,6 +181,13 @@ export CXXFLAGS="%{optflags}"
 %install
 %cmake_install
 
+# Move pkgconfig file to arch-specific libdir
+if [ "%{_lib}" != "lib" ]
+then
+mkdir -p %{buildroot}%{my_libdir}/pkgconfig/
+mv %{buildroot}%{my_prefix}/lib/pkgconfig/*.pc %{buildroot}%{my_libdir}/pkgconfig/
+fi
+
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
 
@@ -195,6 +201,7 @@ export CXXFLAGS="%{optflags}"
 %license COPYING
 %doc CHANGES.md README.md
 %{my_libdir}/*.so
+%{my_libdir}/pkgconfig/*.pc
 %{my_incdir}/casacore/
 
 %changelog
