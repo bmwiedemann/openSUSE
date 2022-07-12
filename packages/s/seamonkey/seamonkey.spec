@@ -63,9 +63,9 @@ BuildRequires:  git
 BuildRequires:  nasm >= 2.13
 Provides:       web_browser
 Provides:       browser(npapi)
-Version:        2.53.12
+Version:        2.53.13
 Release:        0
-%define releasedate 20220504000000
+%define releasedate 20220711000000
 Summary:        An integrated web browser, composer, mail/news client, and IRC client
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
@@ -302,6 +302,12 @@ find . -regex ".*\.c\|.*\.cpp\|.*\.h" \
 %define _lto_cflags %{nil}
 %endif
 #
+# As of 2.53.13, Tumbleweed builds are failing due to the linker
+# issue <https://bugzilla.mozilla.org/show_bug.cgi?id=1778981>
+# so we disable LTO.
+%if 0%{?suse_version} > 1500
+%define _lto_cflags %{nil}
+%endif
 export SUSE_ASNEEDED=0
 export MOZ_BUILD_DATE=%{releasedate}
 export MOZILLA_OFFICIAL=1

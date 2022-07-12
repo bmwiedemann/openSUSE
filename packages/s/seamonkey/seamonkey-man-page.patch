@@ -1,5 +1,15 @@
+--- build/moz.configure/old.configure	2022-06-08 21:10:25.000000000 +0200
++++ build/moz.configure/old.configure	2022-07-11 14:04:06.231167162 +0200
+@@ -228,6 +228,7 @@
+     '--enable-zipwriter',
+     '--includedir',
+     '--libdir',
++    '--mandir',
+     '--prefix',
+     '--with-android-distribution-directory',
+     '--with-android-max-sdk',
 --- comm/suite/installer/Makefile.in	2021-08-08 15:29:32.000000000 +0200
-+++ comm/suite/installer/Makefile.in	2022-03-03 13:31:00.586849160 +0100
++++ comm/suite/installer/Makefile.in	2022-07-11 14:04:44.710104711 +0200
 @@ -145,6 +145,10 @@
  
  include $(topsrcdir)/toolkit/mozapps/installer/packager.mk
@@ -11,13 +21,3 @@
  ifeq (Darwin, $(OS_ARCH))
  BINPATH = $(_BINPATH)
  DEFINES += -DAPPNAME=$(_APPNAME)
---- build/moz.configure/old.configure	2022-01-24 23:04:14.000000000 +0100
-+++ build/moz.configure/old.configure	2022-03-03 13:30:58.166918412 +0100
-@@ -225,6 +225,7 @@
-     '--enable-zipwriter',
-     '--includedir',
-     '--libdir',
-+    '--mandir',
-     '--no-create',
-     '--prefix',
-     '--with-android-distribution-directory',

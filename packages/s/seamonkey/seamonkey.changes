@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul 11 11:43:54 UTC 2022 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.13
+  * Updates to devtools.
+  * Updates to build configuration.
+  * Starting the switch from Python 2 to Python 3 in the build system.
+  * Removal of array comprehensions, legacy iterators and generators
+    bug 1414340 and bug 1098412.
+  * Adding initial optional chaining and Promise.allSettled() support.
+  * SeaMonkey 2.53.13 uses the same backend as Firefox and contains
+    the relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.13 shares most parts of the mail and news code with
+    Thunderbird. Please read the Thunderbird 60.8.0 release notes for
+    specific security fixes in this release.
+  * Additional important security fixes up to Current Firefox 91.11
+    and Thunderbird 91.11 ESR plus many enhancements have been
+    backported. We will continue to enhance SeaMonkey security in
+    subsequent 2.53.x beta and release versions as fast as we are able
+    to.
+- adapt seamonkey-man-page.patch for SeaMonkey 2.53.13
+- disable LTO for Tumbleweed builds due to linker errors
+
+-------------------------------------------------------------------
 Tue Jun 14 12:09:28 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add --disable-elf-hack for aarch64 to fix build
