@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define sover 31
+%define sover 32
 %define tarname protobuf
 %define src_install_dir %{_prefix}/src/%{name}
 %define extra_java_flags -source 7 -target 7
@@ -27,7 +27,7 @@
 %bcond_without python2
 %bcond_without python3
 Name:           protobuf
-Version:        3.20.1
+Version:        21.2
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause
@@ -241,7 +241,6 @@ find %{buildroot}%{src_install_dir} -type f -name "*.sh" -exec sed -i 's|#!.*%{_
 find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!%{_bindir}/python2.4|#!%{_bindir}/python2.7|' "{}" +
 # Fix spurious-executable-perm rpmlint error
 chmod -x %{buildroot}%{src_install_dir}/src/google/protobuf/arenastring.h
-chmod -x %{buildroot}%{src_install_dir}/src/google/protobuf/compiler/js/js_generator.h
 chmod -x %{buildroot}%{src_install_dir}/src/google/protobuf/reflection.h
 # Fix version-control-internal-file rpmlint warning
 find %{buildroot}%{src_install_dir} -type f -name ".gitignore" -exec rm -f "{}" +
