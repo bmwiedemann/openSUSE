@@ -223,4 +223,15 @@
     <comment>- Update to release 0.50</comment>
     <requestid>972811</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0ce35291d73aba03636a8bbfa393073d</srcmd5>
+    <version>0.51</version>
+    <time>1657617126</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.51:
+  * Fix issue with handling bad prefixes per RFC4862
+  * Fix issue with handling DHCP retransmission timers
+  * Add support for DHCP override and static IP API</comment>
+    <requestid>988299</requestid>
+  </revision>
 </revisionlist>
