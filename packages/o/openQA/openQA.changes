@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 11 19:23:01 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1657537268.d9bba8e:
+  * apparmor: Allow grep needed by git-call
+
+-------------------------------------------------------------------
 Sat Jul 09 11:22:57 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1657347231.a3994a3:
