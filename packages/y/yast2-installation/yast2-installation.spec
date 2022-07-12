@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation
-Version:        4.5.2
+Version:        4.5.3
 Release:        0
 Summary:        YaST2 - Installation Parts
 License:        GPL-2.0-only
@@ -183,7 +183,7 @@ systemctl enable YaST2-Firstboot.service
 %service_del_preun YaST2-Second-Stage.service YaST2-Firstboot.service
 
 %postun
-%service_del_postun YaST2-Second-Stage.service YaST2-Firstboot.service
+%service_del_postun_without_restart YaST2-Second-Stage.service YaST2-Firstboot.service
 
 %files
 %license COPYING

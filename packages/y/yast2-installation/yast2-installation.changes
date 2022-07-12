@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 15 11:28:30 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not restart services when updating the package (bsc#1199480,
+  bsc#1200274)
+-4.5.3
+
+-------------------------------------------------------------------
 Mon May 23 15:42:10 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - AutoYaST Second Stage: Added a missing dependency to the service
