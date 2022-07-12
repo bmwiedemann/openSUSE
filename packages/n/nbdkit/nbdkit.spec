@@ -1,7 +1,7 @@
 #
 # spec file for package nbdkit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64
 
 Name:           nbdkit
-Version:        1.29.4
+Version:        1.30.7
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -36,14 +36,20 @@ Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  e2fsprogs
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  jq
 BuildRequires:  libtool
 BuildRequires:  openssh
 BuildRequires:  pkg-config
+BuildRequires:  qemu-tools
+BuildRequires:  socat
+BuildRequires:  xorriso
 BuildRequires:  perl(Pod::Man)
 BuildRequires:  perl(Pod::Simple)
 BuildRequires:  pkgconfig(bash-completion)
+BuildRequires:  pkgconfig(ext2fs)
 BuildRequires:  pkgconfig(gnutls) >= 3.3.0
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(liblzma)
@@ -169,8 +175,11 @@ This package contains example plugins for %{name}.
 
 
 
+
+
 # The plugins below have non-trivial dependencies are so are
 # packaged separately.
+
 %package cdi-plugin
 Summary:        Containerized Data Import plugin for %{name}
 
@@ -196,6 +205,16 @@ Requires:       %{name}-server = %{version}-%{release}
 
 %description guestfs-plugin
 This package is a libguestfs plugin for %{name}.
+
+%package linuxdisk-plugin
+Summary:        Virtual Linux disk plugin for %{name}
+
+Requires:       %{name}-server = %{version}-%{release}
+# for mke2fs
+Requires:       e2fsprogs
+
+%description linuxdisk-plugin
+This package is a virtual Linux disk plugin for %{name}.
 
 %package gzip-plugin
 Summary:        GZip plugin for %{name}
@@ -257,6 +276,7 @@ Summary:        Basic filters for %{name}
 
 Requires:       %{name}-server = %{version}-%{release}
 Provides:       %{name}-blocksize-filter = %{version}-%{release}
+Provides:       %{name}-blocksize-policy-filter = %{version}-%{release}
 Provides:       %{name}-cache-filter = %{version}-%{release}
 Provides:       %{name}-cacheextents-filter = %{version}-%{release}
 Provides:       %{name}-checkwrite-filter = %{version}-%{release}
@@ -280,6 +300,7 @@ Provides:       %{name}-nozero-filter = %{version}-%{release}
 Provides:       %{name}-offset-filter = %{version}-%{release}
 Provides:       %{name}-partition-filter = %{version}-%{release}
 Provides:       %{name}-pause-filter = %{version}-%{release}
+Provides:       %{name}-protect-filter = %{version}-%{release}
 Provides:       %{name}-rate-filter = %{version}-%{release}
 Provides:       %{name}-readahead-filter = %{version}-%{release}
 Provides:       %{name}-retry-filter = %{version}-%{release}
@@ -295,6 +316,8 @@ C libraries: glibc, gnutls.  Other filters for nbdkit with more
 complex dependencies are packaged separately.
 
 nbdkit-blocksize-filter     Adjusts block size of requests sent to plugins.
+
+nbdkit-blocksize-policy-filter  Set block size constraints and policy.
 
 nbdkit-cache-filter         Server-side cache.
 
@@ -343,6 +366,8 @@ nbdkit-offset-filter        Serves an offset and range.
 nbdkit-partition-filter     Serves a single partition.
 
 nbdkit-pause-filter         Pauses NBD requests.
+
+nbdkit-protect-filter      Write-protect parts of a plugin.
 
 nbdkit-rate-filter          Limits bandwidth by connection or server.
 
@@ -408,8 +433,6 @@ for %{name}.
 
 %prep
 %autosetup -p1
-# Disable webserver test which does not run on OBS
-sed -i "s/LIBNBD_TESTS += test-retry-request-mirror//" tests/Makefile.am
 
 %build
 autoreconf -fiv
@@ -425,6 +448,7 @@ autoreconf -i
 # need to be.  Most people would use them by copying the upstream
 # package into their vendor/ directory.
 export PYTHON=$(realink -f %{__python3})
+export PATH=/usr/sbin:$PATH
 %configure \
     --with-extra='%{name}-%{version}' \
     --disable-static \
@@ -490,6 +514,7 @@ truncate -s 0 tests/test-nbd-tls.sh tests/test-nbd-tls-psk.sh
 # Make sure we can see the debug messages (RHBZ#1230160).
 export LIBGUESTFS_DEBUG=1
 export LIBGUESTFS_TRACE=1
+export PATH=/usr/sbin:$PATH
 
 %make_build check || {
     cat tests/test-suite.log
@@ -567,6 +592,10 @@ export LIBGUESTFS_TRACE=1
 %{_mandir}/man1/nbdkit-guestfs-plugin.1*
 %endif
 
+%files linuxdisk-plugin
+%{_libdir}/%{name}/plugins/nbdkit-linuxdisk-plugin.so
+%{_mandir}/man1/nbdkit-linuxdisk-plugin.1*
+
 %files nbd-plugin
 %{_libdir}/%{name}/plugins/nbdkit-nbd-plugin.so
 %{_mandir}/man1/nbdkit-nbd-plugin.1*
@@ -591,6 +620,7 @@ export LIBGUESTFS_TRACE=1
 
 %files basic-filters
 %{_libdir}/%{name}/filters/nbdkit-blocksize-filter.so
+%{_libdir}/%{name}/filters/nbdkit-blocksize-policy-filter.so
 %{_libdir}/%{name}/filters/nbdkit-cache-filter.so
 %{_libdir}/%{name}/filters/nbdkit-cacheextents-filter.so
 %{_libdir}/%{name}/filters/nbdkit-checkwrite-filter.so
@@ -615,6 +645,7 @@ export LIBGUESTFS_TRACE=1
 %{_libdir}/%{name}/filters/nbdkit-offset-filter.so
 %{_libdir}/%{name}/filters/nbdkit-partition-filter.so
 %{_libdir}/%{name}/filters/nbdkit-pause-filter.so
+%{_libdir}/%{name}/filters/nbdkit-protect-filter.so
 %{_libdir}/%{name}/filters/nbdkit-rate-filter.so
 %{_libdir}/%{name}/filters/nbdkit-readahead-filter.so
 %{_libdir}/%{name}/filters/nbdkit-retry-filter.so
@@ -624,6 +655,7 @@ export LIBGUESTFS_TRACE=1
 %{_libdir}/%{name}/filters/nbdkit-tls-fallback-filter.so
 %{_libdir}/%{name}/filters/nbdkit-truncate-filter.so
 %{_mandir}/man1/nbdkit-blocksize-filter.1*
+%{_mandir}/man1/nbdkit-blocksize-policy-filter.1*
 %{_mandir}/man1/nbdkit-cache-filter.1*
 %{_mandir}/man1/nbdkit-cacheextents-filter.1*
 %{_mandir}/man1/nbdkit-checkwrite-filter.1*
@@ -648,6 +680,7 @@ export LIBGUESTFS_TRACE=1
 %{_mandir}/man1/nbdkit-offset-filter.1*
 %{_mandir}/man1/nbdkit-partition-filter.1*
 %{_mandir}/man1/nbdkit-pause-filter.1*
+%{_mandir}/man1/nbdkit-protect-filter.1*
 %{_mandir}/man1/nbdkit-rate-filter.1*
 %{_mandir}/man1/nbdkit-readahead-filter.1*
 %{_mandir}/man1/nbdkit-retry-filter.1*

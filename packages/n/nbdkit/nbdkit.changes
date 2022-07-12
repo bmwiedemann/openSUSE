@@ -1,4 +1,251 @@
 -------------------------------------------------------------------
+Sun Jul 10 22:10:54 UTC 2022 - jfehlig@suse.com
+
+- Update to version 1.30.7:
+  * Version 1.30.7.
+  * configure: Use printf to print $ISOPROG
+  * configure: Print the version of curl, libnbd and libssh
+  * configure: Make the 'feature' function print the dots
+  * tests/test-protect.c: Fix typo in previous commit
+  * tests/test-protect.c: Skip test if "disk" was not created
+  * common/include: Rename BUILD_BUG_ON_ZERO to something more meaningful
+  * common/include/test-array-size.c: Avoid Clang warning
+  * vddk: Demote another "phone home" error message to debug
+  * Use ARRAY_SIZE macro in various places in nbdkit
+  * common/include: Add ARRAY_SIZE macro
+  * tests/test-parallel-sh.sh: Skip test under valgrind + debuginfod
+  * tests/test-parallel-sh.sh: Small cleanups
+  * server: Work around incorrect include in gnutls/socket.h
+  * server: Display kTLS setting in debug output
+  * exitwhen: Check nbdkit doesn't exit before the pipe is closed
+  * valgrind: Update comment about valgrind bug affecting OCaml
+  * ocaml: Add further valgrind suppression
+  * ocaml: Add valgrind suppression for OCaml 4.14 bug
+  * perl: Move GCC diagnostic ignored earlier
+  * docs/nbdkit-protocol.pod: block size support was added in 1.30
+- Enable linuxdisk plugin
+
+-------------------------------------------------------------------
+Fri Jul 08 18:08:16 UTC 2022 - jfehlig@suse.com
+
+- Update to version 1.30.6:
+  * Version 1.30.6.
+  * exitwhen: Link to example of how to use exit-when-pipe-closed
+  * rate: Miscellaneous enhancements to comments and debug messages
+  * ext2: Improve comments
+  * eval: Provide default for .can_cache
+  * eval: Always end scripts in newline
+  * tests: Add regression test for NBDKIT_EMULATE_CACHE fix
+  * server: Fix NBDKIT_CACHE_EMULATE
+  * server: Fix NBDKIT_ZERO_EMULATE from filters
+  * tests: Give sensible name to test sockets
+  * linuxdisk: Add new subdir/.gitignore to EXTRA_DIST
+  * tests: Fix test-disk2data.sh use of $PYTHON
+  * blocksize: Test of aligned writes vs. RMW race
+  * blocksize: Avoid losing aligned writes to RMW race
+  * linuxdisk: Reduce size of test
+  * multi-conn: Fix test with newer libnbd
+  * data: Small clarification to the manual
+  * vddk: advise user on obscure thumbprint mismatch error condition
+  * configure: Fix incorrect comment about supported VDDK version
+  * Version 1.30.5.
+  * .gitignore: Ignore __pycache__ directory wherever it occurs
+  * vddk: Demote another useless phone-home error message to debug
+  * nbd: Hide some state machine debugging behind a debug flag
+  * Remove pointless 'global' declarations.
+  * Use RuntimeError instead of Exception
+  * Drop pointless error check.
+  * tests: Print a warning if nbdkit does not start after 30 seconds
+  * file: Fix leaked file descriptor on error path
+  * eval: Fix memory leak on error path
+  * multi-conn: Fix memory leak on error path
+  * Version 1.30.4.
+  * pause: Delete control socket on server shutdown
+  * rust: Use a local filename for the test socket
+  * Update to nix 0.24.1
+  * rust: Use correct char type for characters
+  * readahead: Simplify the test replacing use of sh plugin
+  * readahead: Simplify the test by inlining some files
+  * torrent: Don't attempt to rm -rf (null) on unload
+  * readahead: Minor whitespace changes
+  * ssh: Move and document thread model declaration
+  * docs/nbdkit-filter.pod: Fix invalid use of E<> in verbatim section
+  * Version 1.30.3.
+  * tests: ssh: Don't run unused sshd
+  * ocaml: Declare that we use caml_-namespaced symbols, for OCaml 4.14
+  * tests/test-cache-max-size.sh: Fix tests in locales with different date format
+  * common: Add hexdigit.h containing common functions for handling hex
+  * data: Fix typo in comment
+  * tests: web-server: Avoid rare race in shutdown
+  * server, tests: Prefix both uses of perror ("accept")
+  * data: Check failure from some <(...) scripts
+  * curl: scripts: Multiple fixes
+  * python: Also plug leak on error case
+  * tests/test-protect-ranges.sh: Don't try to use port 10809
+  * python: Avoid memory leak in .list_exports and .extents
+  * fuzzing: Recommend combining fuzzing with ASAN
+  * configure: Add --disable-linker-script flag
+  * configure: Disable linker script for server when using libfuzzer
+  * configure: Reorganise USE_LINKER_SCRIPT_FOR_SERVER conditional
+  * configure: Report --enable-libfuzzer flag in summary output
+  * Version 1.30.2.
+  * server: Improve error message for --dump-plugin when plugin name is missing
+  * docs: Use I<> to quote command line flag
+  * tests: Skip vsock tests unless the vsock_loopback module is loaded
+  * build: Fix GCC diagnostics for GCC 4.4 in RHEL 6
+  * podwrapper: Don't add the =encoding header for RHEL 6-era POD
+  * podwrapper: Verify that all man pages are valid UTF-8
+  * podwrapper: Add suggestion for debugging Perl scripts
+  * docs: Document how to write plugins/filters in C++
+  * vddk: Don't use uninitialized values when computing preferred block size
+  * Update Nix to 0.23.0
+  * Update Mockall to 0.11.0
+  * fuzzing: Document alternate method for AFL++ using clang-LTO
+  * server: Export __afl_* symbols for American Fuzzy Lop
+  * tests: Fix some failing tests in RHEL / CentOS / AlmaLinux 8
+  * tests: Generally prefer nbdinfo over qemu-img info
+  * tests: Remove unnecessary 'requires qemu-img --version'
+  * tests: Add regression test that nbdkit isn't linked to OpenSSL
+  * Version 1.30.1.
+  * ci: Add perl-dev back to Alpine
+  * ci: Regenerate CI files using latest libvirt-ci/lcitool
+  * ci/manifest.yml: Add PERL skip variables
+  * Use new string-vector and const-string-vector types
+  * common/utils: Add new string vector types
+  * common/utils/nbdkit-string.h: Rename header guards
+  * cc: Rename misnamed string_vector to params_vector
+  * ci: Rename centos-8 to almalinux-8
+  * ci: Remove fedora-34 tests
+  * plugins/sh: Add ENOEXEC fallback for inline scripts
+  * tests/functions.sh.in: Add comment about enabling vsock in tests
+  * ci: Skip perl on clang targets
+  * ci/build.sh: Combine mingw cases
+  * ci: alpine: Include perl-dev package to build perl plugin
+  * data: Remove bash-ism from <(...) script
+  * docs, tests: Remove bash-ism from --run parameter
+  * ci: Temporarily remove check-valgrind, dist tests
+  * ci: Install 'dnf-command(config-manager)' first
+  * ci: Use almalinux-8 instead of centos-8
+  * Add CI for GitLab
+  * tests: Check that /dev/loop-control is accessible when needed
+  * libssh: Check also for SSH_OPTIONS_DELAY
+  * test-sh-errors: Allow for more variation of error messages
+  * Fix libraries for mingw32 builds
+  * test-delay-shutdown: Do not assume 124 as timeout's exit code and rather probe for it
+  * test-exportname: Only check exportname.out contents if it exists
+  * tests: Explicitly run $(plugin) under sh in expect scripts
+  * test-swap: Only run with proper capability
+  * plugins/rust: Run more tests
+  * golang: Make sure used golang version supports modules
+  * Only use vsock if VMADDR_CID_ANY is defined
+  * Include sys/vsock.h only if it exists
+  * plugins/file: Include linux/fs.h only if it exists
+  * ocaml: Minor simplification of set_field function
+  * todo: Suggest new thread model numbering in API V3
+  * Version 1.30.0.
+  * docs: Final release notes for 1.30
+  * sh: Use new string type instead of reallocing return buffers
+  * common/utils: Add extensible string, based on vector
+  * todo: Drop item about minimum request size
+  * todo: Document possibility of extending .block_size in API v3
+  * blocksize: Default internal block size based on plugin
+  * blocksize: Defer per-handle initialization to .prepare
+  * blocksize: Refactor to per-handle constraints
+  * vddk: Use nested MAX macros
+  * common/include: Fix MIN and MAX macros so they can be nested
+  * common/include: Change unique-name macros to use __COUNTER__
+  * blocksize: Minor doc improvements
+  * windows: tests/test-foreground.sh: Skip this test
+  * windows: Skip some nbdkit-cow-filter tests
+  * windows: tests: Add requires_run for some tests
+  * windows: server/debug.c: Call close_memstream instead of fclose
+  * windows: server/debug.c: Don't crash if open_memstream fails
+  * windows: Add replacement posix_memalign function
+  * windows: Add replacement for sysconf() POSIX function
+  * swab: Implement .block_size callback
+  * windows: blocksize-policy: Don't use reserved word ERROR
+  * todo: Remove retry filter suggestion which was already implemented
+  * blocksize: Don't open-code is_power_of_2
+  * log: Implement .block_size callback
+  * docs: Fix typo & line too long in nbdkit-release-notes-1.30.pod
+  * docs: Update release notes for nbdkit 1.30
+  * blocksize: Export block size constraints
+  * cache, cow: Export block size constraints
+  * cc: Implement .block_size callback
+  * vddk: Export block size information for this plugin
+  * Version 1.29.16.
+  * blocksize-policy: Check the correct policy
+  * server/plugins.c: Simplify error handling of .block_size callback
+  * python: Implement .block_size callback
+  * ocaml: Implement .block_size callback
+  * nbd: In error messages, just display nbd_get_error()
+  * nbd: Implement .block_size callback
+  * New filter: nbdkit-blocksize-policy-filter
+  * nbd: Use lowercase in error message
+  * tests: Add a simple test for block size constraints
+  * eval, sh: Implement block_size method
+  * server: Add new plugin/filter .block_size callback
+  * tls-fallback: Enhance comments about required callbacks
+  * Version 1.29.15.
+  * vddk: Document our current thinking on VMware out of memory errors
+  * nbd: Opt in to libnbd pread_initialize speedup
+  * error: Tweak filter name for easier debugging
+  * zero: Fix doc typo
+  * plugins: python: Make threading model explicit
+  * plugins: python: Add error example
+  * common/allocators: Always align mlock buffer
+  * common/utils: Add vector_reserve_page_aligned
+  * tests: Use a larger buffer for mlock test
+  * common/allocators/malloc.c: Avoid calling munlock (NULL, ...)
+  * Rename top level directory bash -> bash-completion
+  * docs: Add preliminary outline release notes for 1.30
+  * docs: Add link to nbdkit-release-notes-1.28 to main manual page
+  * Version 1.29.14.
+  * server/sockets: get rid of AI_ADDRCONFIG
+  * server/sockets: supply trailing newline for gai_strerror() format string
+  * tests: Fix VDDK tests
+  * vddk: Allow create-hwversion to be specified as a number
+  * vddk: Fix documentation of new create flag
+  * vddk: Implement VMDK creation
+  * Version 1.29.13.
+  * ocaml: Pass count parameter of pread as OCaml int
+  * ocaml: Use int64 as the OCaml type for counts
+  * ocaml: Convert offset values correctly in several callbacks
+  * common/replacements/poll.h: Fix redefinition of poll
+  * common/replacements: Use _get_osfhandle correctly
+  * info: Add info_address=yes if mode=address is supported
+  * valgrind: Fix suppressions for dlopen
+  * info, ip: Make this plugin and filter work without inet_ntop/inet_pton
+  * gzip: Don't try calling set_cloexec on Windows
+  * exportname: Use replacement open_memstream
+  * exitwhen: Remove some Windows warnings
+  * cow: Include assert.h and call abort instead of assert (false)
+  * split: Remove some unused variables when compiling on Windows
+  * server/sockets.c: Remove variable-length array in Windows-only code
+  * server, common, filters: Include "strndup.h" in places which use strndup
+  * server: Remove some dead code when compiling on Windows
+  * server: Use replacement open_memstream function
+  * common/include/unique-name.h: Rename UNIQUE_NAME macro
+  * server: Use ATTRIBUTE_FORMAT_PRINTF instead of __attribute__((printf))
+  * include: Disable printf format warnings on platforms that don't support %m
+  * Version 1.29.12.
+  * ocaml: NBDKit.set_field should not be @@noalloc
+  * ocaml: Use magic_config_key in the example
+  * python: More precise Python parameter passing
+  * tests/test-python-plugin.py: Allow test to use large disks
+  * tests: python: Use Python unittest function descriptions consistently
+  * ocaml: Document the version string in the example
+  * plugins/python: Fix extents() count format string
+  * Version 1.29.11.
+  * tests: Add configure --disable-libguestfs-tests flag
+  * tests: Use mke2fs -d to create ext4 test image
+  * Version 1.29.10.
+  * windows: Link plugins/filters that use utils + pread/pwrite with libcompat
+  * windows: Use replacement pread and pwrite functions
+  * windows: Replace vector .size with .len in a few places
+  * file: Fix implementation of cache=none for writes
+
+-------------------------------------------------------------------
 Fri Nov 05 08:27:15 UTC 2021 - rpm@fthiessen.de
 
 - Update to version 1.29.4:
