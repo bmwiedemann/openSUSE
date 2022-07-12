@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul 10 12:06:26 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 2.10:
+  * Added debugallocator feature to use readable (PROT_READ) fence pages.
+  * fix for cmake detection of libunwind.
+  * fix for OSX Monterey support.
+  * support for returning memory back to OS by using mmap with MAP_FIXED and PROT_NONE
+  * basic support for LoongArch.
+
+-------------------------------------------------------------------
 Mon May  9 08:57:17 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Enable use of libunwind on riscv64
