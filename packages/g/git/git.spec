@@ -53,6 +53,7 @@ Source8:        %{name}.keyring
 Source9:        %{name}-gui.desktop
 Source10:       %{name}-gui.png
 Source11:       git-daemon.conf
+Source12:       git-prompt
 Patch3:         completion-wordbreaks.diff
 # CVE-2011-2186, bnc#698456
 Patch4:         git-prevent_xss-default.diff
@@ -399,6 +400,8 @@ find %{buildroot}/%{_mandir} -type f -exec chmod 644 "{}" "+"
 %endif
 install -m 644 -D contrib/completion/git-completion.bash %{buildroot}%{_datadir}/bash-completion/completions/git
 install -m 644 -D contrib/completion/git-prompt.sh %{buildroot}%{_datadir}/bash-completion/completions/git-prompt.sh
+mkdir -p %{buildroot}/%{_sysconfdir}/bash_completion.d/
+install -m 644 %{SOURCE12} %{buildroot}/%{_sysconfdir}/bash_completion.d/git-prompt
 # contrib/credential
 %if %{with git_gnome_keyring}
 install -m 755 -D contrib/credential/gnome-keyring/git-credential-gnome-keyring %{buildroot}/%{gitexecdir}/git-credential-gnome-keyring
@@ -569,6 +572,7 @@ fi
 %exclude %{gitexecdir}/git-add--interactive
 %{_bindir}/git-new-workdir
 %{_datadir}/bash-completion/completions/*
+%{_sysconfdir}/bash_completion.d/git-prompt
 %{_datadir}/tcsh
 %{_datadir}/zsh/site-functions/_git
 %{_sysconfdir}/profile.d/*.csh

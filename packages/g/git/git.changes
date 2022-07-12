@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul  8 09:00:10 UTC 2022 - Petr Vorel <pvorel@suse.cz>
+
+- Add /etc/bash_completion.d/git-prompt: checks for git-prompt.sh and source it
+  if available. Some users rely on the __git_ps1 function becoming available
+  when bash-completion is loaded.  Continue to load this library at
+  bash-completion startup for now, to ease the transition to a world order
+  where the prompt function is requested separately. Inspired by Debian.
+
+-------------------------------------------------------------------
 Thu Jul  7 07:50:07 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update git to 2.37.0:
