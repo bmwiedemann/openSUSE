@@ -2034,4 +2034,39 @@ let build start it or we will get libvirt errors.
   * make-sure-saltcacheloader-use-correct-fileclient-519.patch</comment>
     <requestid>984677</requestid>
   </revision>
+  <revision rev="130" vrev="8">
+    <srcmd5>d969d12df4f8767fbd3a5a22886a335c</srcmd5>
+    <version>3004</version>
+    <time>1657617133</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for gpgautoimport in zypperpkg module
+- Update Salt to work with Jinja &gt;= and &lt;= 3.1.0 (bsc#1198744)
+- Fix salt.states.file.managed() for follow_symlinks=True and test=True (bsc#1199372)
+- Make Salt 3004 compatible with pyzmq &gt;= 23.0.0 (bsc#1201082)
+- Added:
+  * fix-jinja2-contextfuntion-base-on-version-bsc-119874.patch
+  * add-support-for-gpgautoimport-539.patch
+  * fix-62092-catch-zmq.error.zmqerror-to-set-hwm-for-zm.patch
+  * fix-salt.states.file.managed-for-follow_symlinks-tru.patch
+
+- Add support for name, pkgs and diff_attr parameters to upgrade
+  function for zypper and yum (bsc#1198489)
+- Added:
+  * add-support-for-name-pkgs-and-diff_attr-parameters-t.patch
+
+- Fix ownership of salt thin directory when using the Salt Bundle
+- Set default target for pip from VENV_PIP_TARGET environment variable
+- Normalize package names once with pkg.installed/removed using yum (bsc#1195895)
+- Save log to logfile with docker.build
+- Use Salt Bundle in dockermod
+- Ignore erros on reading license files with dpkg_lowpkg (bsc#1197288)
+- Added:
+  * normalize-package-names-once-with-pkg.installed-remo.patch
+  * use-salt-bundle-in-dockermod.patch
+  * fix-ownership-of-salt-thin-directory-when-using-the-.patch
+  * ignore-erros-on-reading-license-files-with-dpkg_lowp.patch
+  * set-default-target-for-pip-from-venv_pip_target-envi.patch
+  * save-log-to-logfile-with-docker.build.patch</comment>
+    <requestid>988366</requestid>
+  </revision>
 </revisionlist>

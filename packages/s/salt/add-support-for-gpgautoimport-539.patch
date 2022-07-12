@@ -1,0 +1,369 @@
+From fbd5163bd0d5409a1823e9fb8e0cb623c22d6036 Mon Sep 17 00:00:00 2001
+From: Michael Calmer <mc@suse.de>
+Date: Fri, 8 Jul 2022 10:15:37 +0200
+Subject: [PATCH] add support for gpgautoimport (#539)
+
+* add support for gpgautoimport to refresh_db in the zypperpkg module
+
+* call refresh_db function from mod_repo
+
+* call refresh_db with kwargs where possible
+
+* ignore no repos defined exit code
+
+* fix zypperpkg test after adding more success return codes
+---
+ salt/modules/zypperpkg.py            |  47 +++++++---
+ tests/unit/modules/test_zypperpkg.py | 124 +++++++++++++++++++++++----
+ 2 files changed, 140 insertions(+), 31 deletions(-)
+
+diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
+index 39d26f0e93..b622105e15 100644
+--- a/salt/modules/zypperpkg.py
++++ b/salt/modules/zypperpkg.py
+@@ -591,7 +591,7 @@ def list_upgrades(refresh=True, root=None, **kwargs):
+         salt '*' pkg.list_upgrades
+     """
+     if refresh:
+-        refresh_db(root)
++        refresh_db(root, **kwargs)
+ 
+     ret = dict()
+     cmd = ["list-updates"]
+@@ -705,7 +705,7 @@ def info_available(*names, **kwargs):
+ 
+     # Refresh db before extracting the latest package
+     if kwargs.get("refresh", True):
+-        refresh_db(root)
++        refresh_db(root, **kwargs)
+ 
+     pkg_info = []
+     batch = names[:]
+@@ -1395,7 +1395,6 @@ def mod_repo(repo, **kwargs):
+         cmd_opt.append("--name='{}'".format(kwargs.get("humanname")))
+ 
+     if kwargs.get("gpgautoimport") is True:
+-        global_cmd_opt.append("--gpg-auto-import-keys")
+         call_refresh = True
+ 
+     if cmd_opt:
+@@ -1407,8 +1406,8 @@ def mod_repo(repo, **kwargs):
+         # when used with "zypper ar --refresh" or "zypper mr --refresh"
+         # --gpg-auto-import-keys is not doing anything
+         # so we need to specifically refresh here with --gpg-auto-import-keys
+-        refresh_opts = global_cmd_opt + ["refresh"] + [repo]
+-        __zypper__(root=root).xml.call(*refresh_opts)
++        kwargs.update({"repos": repo})
++        refresh_db(root=root, **kwargs)
+     elif not added and not cmd_opt:
+         comment = "Specified arguments did not result in modification of repo"
+ 
+@@ -1419,7 +1418,7 @@ def mod_repo(repo, **kwargs):
+     return repo
+ 
+ 
+-def refresh_db(force=None, root=None):
++def refresh_db(force=None, root=None, **kwargs):
+     """
+     Trigger a repository refresh by calling ``zypper refresh``. Refresh will run
+     with ``--force`` if the "force=True" flag is passed on the CLI or
+@@ -1430,6 +1429,17 @@ def refresh_db(force=None, root=None):
+ 
+         {'<database name>': Bool}
+ 
++    gpgautoimport : False
++        If set to True, automatically trust and import public GPG key for
++        the repository.
++
++        .. versionadded:: 3005
++
++    repos
++        Refresh just the specified repos
++
++        .. versionadded:: 3005
++
+     root
+         operate on a different root directory.
+ 
+@@ -1450,11 +1460,22 @@ def refresh_db(force=None, root=None):
+     salt.utils.pkg.clear_rtag(__opts__)
+     ret = {}
+     refresh_opts = ["refresh"]
++    global_opts = []
+     if force is None:
+         force = __pillar__.get("zypper", {}).get("refreshdb_force", True)
+     if force:
+         refresh_opts.append("--force")
+-    out = __zypper__(root=root).refreshable.call(*refresh_opts)
++    repos = kwargs.get("repos", [])
++    refresh_opts.extend([repos] if not isinstance(repos, list) else repos)
++
++    if kwargs.get("gpgautoimport", False):
++        global_opts.append("--gpg-auto-import-keys")
++
++    # We do the actual call to zypper refresh.
++    # We ignore retcode 6 which is returned when there are no repositories defined.
++    out = __zypper__(root=root).refreshable.call(
++        *global_opts, *refresh_opts, success_retcodes=[0, 6]
++    )
+ 
+     for line in out.splitlines():
+         if not line:
+@@ -1639,7 +1660,7 @@ def install(
+                 'arch': '<new-arch>'}}}
+     """
+     if refresh:
+-        refresh_db(root)
++        refresh_db(root, **kwargs)
+ 
+     try:
+         pkg_params, pkg_type = __salt__["pkg_resource.parse_targets"](
+@@ -1934,7 +1955,7 @@ def upgrade(
+         cmd_update.insert(0, "--no-gpg-checks")
+ 
+     if refresh:
+-        refresh_db(root)
++        refresh_db(root, **kwargs)
+ 
+     if dryrun:
+         cmd_update.append("--dry-run")
+@@ -2844,7 +2865,7 @@ def search(criteria, refresh=False, **kwargs):
+     root = kwargs.get("root", None)
+ 
+     if refresh:
+-        refresh_db(root)
++        refresh_db(root, **kwargs)
+ 
+     cmd = ["search"]
+     if kwargs.get("match") == "exact":
+@@ -2995,7 +3016,7 @@ def download(*packages, **kwargs):
+ 
+     refresh = kwargs.get("refresh", False)
+     if refresh:
+-        refresh_db(root)
++        refresh_db(root, **kwargs)
+ 
+     pkg_ret = {}
+     for dld_result in (
+@@ -3147,7 +3168,7 @@ def list_patches(refresh=False, root=None, **kwargs):
+         salt '*' pkg.list_patches
+     """
+     if refresh:
+-        refresh_db(root)
++        refresh_db(root, **kwargs)
+ 
+     return _get_patches(root=root)
+ 
+@@ -3241,7 +3262,7 @@ def resolve_capabilities(pkgs, refresh=False, root=None, **kwargs):
+         salt '*' pkg.resolve_capabilities resolve_capabilities=True w3m_ssl
+     """
+     if refresh:
+-        refresh_db(root)
++        refresh_db(root, **kwargs)
+ 
+     ret = list()
+     for pkg in pkgs:
+diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
+index fea6eeb004..3f1560a385 100644
+--- a/tests/unit/modules/test_zypperpkg.py
++++ b/tests/unit/modules/test_zypperpkg.py
+@@ -358,7 +358,12 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+         run_out = {"stderr": "", "stdout": "\n".join(ref_out), "retcode": 0}
+ 
+         zypper_mock = MagicMock(return_value=run_out)
+-        call_kwargs = {"output_loglevel": "trace", "python_shell": False, "env": {}}
++        call_kwargs = {
++            "output_loglevel": "trace",
++            "python_shell": False,
++            "env": {},
++            "success_retcodes": [0, 6],
++        }
+         with patch.dict(zypper.__salt__, {"cmd.run_all": zypper_mock}):
+             with patch.object(salt.utils.pkg, "clear_rtag", Mock()):
+                 result = zypper.refresh_db()
+@@ -376,6 +381,73 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+                 zypper_mock.assert_called_with(
+                     ["zypper", "--non-interactive", "refresh", "--force"], **call_kwargs
+                 )
++                zypper.refresh_db(gpgautoimport=True)
++                zypper_mock.assert_called_with(
++                    [
++                        "zypper",
++                        "--non-interactive",
++                        "--gpg-auto-import-keys",
++                        "refresh",
++                        "--force",
++                    ],
++                    **call_kwargs
++                )
++                zypper.refresh_db(gpgautoimport=True, force=True)
++                zypper_mock.assert_called_with(
++                    [
++                        "zypper",
++                        "--non-interactive",
++                        "--gpg-auto-import-keys",
++                        "refresh",
++                        "--force",
++                    ],
++                    **call_kwargs
++                )
++                zypper.refresh_db(gpgautoimport=True, force=False)
++                zypper_mock.assert_called_with(
++                    [
++                        "zypper",
++                        "--non-interactive",
++                        "--gpg-auto-import-keys",
++                        "refresh",
++                    ],
++                    **call_kwargs
++                )
++                zypper.refresh_db(
++                    gpgautoimport=True,
++                    refresh=True,
++                    repos="mock-repo-name",
++                    root=None,
++                    url="http://repo.url/some/path",
++                )
++                zypper_mock.assert_called_with(
++                    [
++                        "zypper",
++                        "--non-interactive",
++                        "--gpg-auto-import-keys",
++                        "refresh",
++                        "--force",
++                        "mock-repo-name",
++                    ],
++                    **call_kwargs
++                )
++                zypper.refresh_db(
++                    gpgautoimport=True,
++                    repos="mock-repo-name",
++                    root=None,
++                    url="http://repo.url/some/path",
++                )
++                zypper_mock.assert_called_with(
++                    [
++                        "zypper",
++                        "--non-interactive",
++                        "--gpg-auto-import-keys",
++                        "refresh",
++                        "--force",
++                        "mock-repo-name",
++                    ],
++                    **call_kwargs
++                )
+ 
+     def test_info_installed(self):
+         """
+@@ -1555,18 +1627,23 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+ 
+         url = self.new_repo_config["url"]
+         name = self.new_repo_config["name"]
+-        with zypper_patcher:
++        with zypper_patcher, patch.object(zypper, "refresh_db", Mock()) as refreshmock:
+             zypper.mod_repo(name, **{"url": url, "gpgautoimport": True})
+             self.assertEqual(
+                 zypper.__zypper__(root=None).xml.call.call_args_list,
+                 [
+                     call("ar", url, name),
+-                    call("--gpg-auto-import-keys", "refresh", name),
+                 ],
+             )
+             self.assertTrue(
+                 zypper.__zypper__(root=None).refreshable.xml.call.call_count == 0
+             )
++            refreshmock.assert_called_once_with(
++                gpgautoimport=True,
++                repos=name,
++                root=None,
++                url="http://repo.url/some/path",
++            )
+ 
+     def test_repo_noadd_nomod_ref(self):
+         """
+@@ -1585,15 +1662,17 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+             "salt.modules.zypperpkg", **self.zypper_patcher_config
+         )
+ 
+-        with zypper_patcher:
++        with zypper_patcher, patch.object(zypper, "refresh_db", Mock()) as refreshmock:
+             zypper.mod_repo(name, **{"url": url, "gpgautoimport": True})
+-            self.assertEqual(
+-                zypper.__zypper__(root=None).xml.call.call_args_list,
+-                [call("--gpg-auto-import-keys", "refresh", name)],
+-            )
+             self.assertTrue(
+                 zypper.__zypper__(root=None).refreshable.xml.call.call_count == 0
+             )
++            refreshmock.assert_called_once_with(
++                gpgautoimport=True,
++                repos=name,
++                root=None,
++                url="http://repo.url/some/path",
++            )
+ 
+     def test_repo_add_mod_ref(self):
+         """
+@@ -1606,10 +1685,10 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+         zypper_patcher = patch.multiple(
+             "salt.modules.zypperpkg", **self.zypper_patcher_config
+         )
+-
+         url = self.new_repo_config["url"]
+         name = self.new_repo_config["name"]
+-        with zypper_patcher:
++
++        with zypper_patcher, patch.object(zypper, "refresh_db", Mock()) as refreshmock:
+             zypper.mod_repo(
+                 name, **{"url": url, "refresh": True, "gpgautoimport": True}
+             )
+@@ -1617,11 +1696,17 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+                 zypper.__zypper__(root=None).xml.call.call_args_list,
+                 [
+                     call("ar", url, name),
+-                    call("--gpg-auto-import-keys", "refresh", name),
+                 ],
+             )
+             zypper.__zypper__(root=None).refreshable.xml.call.assert_called_once_with(
+-                "--gpg-auto-import-keys", "mr", "--refresh", name
++                "mr", "--refresh", name
++            )
++            refreshmock.assert_called_once_with(
++                gpgautoimport=True,
++                refresh=True,
++                repos=name,
++                root=None,
++                url="http://repo.url/some/path",
+             )
+ 
+     def test_repo_noadd_mod_ref(self):
+@@ -1641,16 +1726,19 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+             "salt.modules.zypperpkg", **self.zypper_patcher_config
+         )
+ 
+-        with zypper_patcher:
++        with zypper_patcher, patch.object(zypper, "refresh_db", Mock()) as refreshmock:
+             zypper.mod_repo(
+                 name, **{"url": url, "refresh": True, "gpgautoimport": True}
+             )
+-            self.assertEqual(
+-                zypper.__zypper__(root=None).xml.call.call_args_list,
+-                [call("--gpg-auto-import-keys", "refresh", name)],
+-            )
+             zypper.__zypper__(root=None).refreshable.xml.call.assert_called_once_with(
+-                "--gpg-auto-import-keys", "mr", "--refresh", name
++                "mr", "--refresh", name
++            )
++            refreshmock.assert_called_once_with(
++                gpgautoimport=True,
++                refresh=True,
++                repos=name,
++                root=None,
++                url="http://repo.url/some/path",
+             )
+ 
+     def test_wildcard_to_query_match_all(self):
+-- 
+2.36.1
+
+

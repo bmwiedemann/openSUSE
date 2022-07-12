@@ -308,7 +308,28 @@ Patch79:        fix-regression-with-depending-client.ssh-on-psutil-b.patch
 Patch80:        make-sure-saltcacheloader-use-correct-fileclient-519.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/e068a34ccb2e17ae7224f8016a24b727f726d4c8
 Patch81:        fix-for-cve-2022-22967-bsc-1200566.patch
-
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61827
+Patch82:        ignore-erros-on-reading-license-files-with-dpkg_lowp.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62109
+Patch83:        use-salt-bundle-in-dockermod.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61984
+Patch84:        save-log-to-logfile-with-docker.build.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62029
+Patch85:        normalize-package-names-once-with-pkg.installed-remo.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62089
+Patch86:        set-default-target-for-pip-from-venv_pip_target-envi.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/534
+Patch87:        fix-ownership-of-salt-thin-directory-when-using-the-.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62033
+Patch88:        add-support-for-name-pkgs-and-diff_attr-parameters-t.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62119
+Patch89:        fix-62092-catch-zmq.error.zmqerror-to-set-hwm-for-zm.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62067
+Patch90:        fix-salt.states.file.managed-for-follow_symlinks-tru.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61856
+Patch91:        fix-jinja2-contextfuntion-base-on-version-bsc-119874.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62209
+Patch92:        add-support-for-gpgautoimport-539.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  logrotate

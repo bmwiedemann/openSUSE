@@ -1,0 +1,50 @@
+From 34a81d88db3862bcc03cdda4974e576723af7643 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Mon, 27 Jun 2022 18:03:49 +0300
+Subject: [PATCH] Fix ownership of salt thin directory when using the
+ Salt Bundle
+
+---
+ salt/client/ssh/ssh_py_shim.py | 25 ++++++++++++++++++++++++-
+ 1 file changed, 24 insertions(+), 1 deletion(-)
+
+diff --git a/salt/client/ssh/ssh_py_shim.py b/salt/client/ssh/ssh_py_shim.py
+index 293ea1b7fa..95171f7aea 100644
+--- a/salt/client/ssh/ssh_py_shim.py
++++ b/salt/client/ssh/ssh_py_shim.py
+@@ -292,7 +292,30 @@ def main(argv):  # pylint: disable=W0613
+             os.makedirs(OPTIONS.saltdir)
+             cache_dir = os.path.join(OPTIONS.saltdir, "running_data", "var", "cache")
+             os.makedirs(os.path.join(cache_dir, "salt"))
+-            os.symlink("salt", os.path.relpath(os.path.join(cache_dir, "venv-salt-minion")))
++            os.symlink(
++                "salt", os.path.relpath(os.path.join(cache_dir, "venv-salt-minion"))
++            )
++        if os.path.exists(OPTIONS.saltdir) and (
++            "SUDO_UID" in os.environ or "SUDO_GID" in os.environ
++        ):
++            try:
++                sudo_uid = int(os.environ.get("SUDO_UID", -1))
++            except ValueError:
++                sudo_uid = -1
++            try:
++                sudo_gid = int(os.environ.get("SUDO_GID", -1))
++            except ValueError:
++                sudo_gid = -1
++            dstat = os.stat(OPTIONS.saltdir)
++            if (sudo_uid != -1 and dstat.st_uid != sudo_uid) or (
++                sudo_gid != -1 and dstat.st_gid != sudo_gid
++            ):
++                os.chown(OPTIONS.saltdir, sudo_uid, sudo_gid)
++                for dir_path, dir_names, file_names in os.walk(OPTIONS.saltdir):
++                    for dir_name in dir_names:
++                        os.lchown(os.path.join(dir_path, dir_name), sudo_uid, sudo_gid)
++                    for file_name in file_names:
++                        os.lchown(os.path.join(dir_path, file_name), sudo_uid, sudo_gid)
+ 
+     if venv_salt_call is None:
+         # Use Salt thin only if Salt Bundle (venv-salt-minion) is not available
+-- 
+2.36.1
+
+
