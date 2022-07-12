@@ -1,8 +1,8 @@
 <services>
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">svn</param>
-		<param name="url">https://svn.code.sf.net/p/healpix/code/branches/branch_v380r1183</param>
-		<param name="version">3.80</param>
+		<param name="url">https://svn.code.sf.net/p/healpix/code/branches/branch_v381r1201</param>
+		<param name="version">3.81</param>
 		<!-- Licensing problems with idl source codes -->
 		<param name="exclude">src/idl*</param>
 		<param name="filename">healpix</param>

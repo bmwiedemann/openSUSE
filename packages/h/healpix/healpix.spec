@@ -1,7 +1,7 @@
 #
 # spec file for package healpix
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,19 +21,18 @@
 %define cxxpkg healpix_cxx
 %define cxxlib lib%{cxxpkg}3
 Name:           healpix
-Version:        3.80
+Version:        3.81
 Release:        0
 Summary:        Data Analysis, Simulations and Visualization on the Sphere
 License:        GPL-2.0-or-later
 URL:            https://healpix.sourceforge.io
 Source:         %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM healpix-cfitsio-version-format-change.patch badshah400@gmail.com -- Adapt to new three-number version format of cfitsio
-Patch0:         healpix-cfitsio-version-format-change.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(libsharp)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 HEALPix is a Hierarchical, Equal Area, and iso-Latitude Pixelation of the
@@ -83,6 +82,7 @@ Summary:        Headers and devel files for healpix - C++ bindings
 Requires:       %{cxxlib} = %{version}
 Requires:       pkgconfig(cfitsio)
 Requires:       pkgconfig(libsharp)
+Requires:       pkgconfig(zlib)
 
 %description -n %{cxxpkg}-devel
 HEALPix is a Hierarchical, Equal Area, and iso-Latitude Pixelation of the

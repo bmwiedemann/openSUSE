@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 11 23:49:03 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.81:
+  * Cfitsio 4.0.0 (Jul 2021) and higher now properly supported.
+  * Introduced workarounds for some minor GDL and FL limitations.
+- New BuildRequires: pkgconfig(zlib) and also Requires for c++
+  devel package.
+- Drop healpix-cfitsio-version-format-change.patch: incorporated
+  upstream.
+
+-------------------------------------------------------------------
 Wed Aug 18 02:05:08 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.80:
