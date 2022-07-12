@@ -267,4 +267,18 @@
     <comment></comment>
     <requestid>976597</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>386efe38112627ee286a20bf5582167f</srcmd5>
+    <version>1.28</version>
+    <time>1657617146</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.28:
+  * Fix issue with handling invalid EAPoL frames.
+  * Fix issue with handling unexpectedly unencrypted EAP frames.
+  * Fix issue with handling AlwaysRandomizeAddress/AddressOverride.
+  * Fix issue with handling initial signal level notification.
+  * Fix issue with handling sorting of scan requests.
+  * Fix issue with handling frame type check in FT.</comment>
+    <requestid>988300</requestid>
+  </revision>
 </revisionlist>

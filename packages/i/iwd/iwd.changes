@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 11 08:15:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.28:
+  * Fix issue with handling invalid EAPoL frames.
+  * Fix issue with handling unexpectedly unencrypted EAP frames.
+  * Fix issue with handling AlwaysRandomizeAddress/AddressOverride.
+  * Fix issue with handling initial signal level notification.
+  * Fix issue with handling sorting of scan requests.
+  * Fix issue with handling frame type check in FT.
+
+-------------------------------------------------------------------
 Tue May 10 11:15:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.27:
