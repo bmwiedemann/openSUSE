@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lxml
-Version:        4.9.0
+Version:        4.9.1
 Release:        0
 Summary:        Pythonic XML processing library
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -88,10 +88,10 @@ export CFLAGS="%{optflags}"
 export LANG=en_US.UTF-8
 export PYTHONUNBUFFERED=x
 %if 0%{?have_python2}
-make %{?_smp_mflags} test
+%make_build test
 %endif
 %if 0%{?have_python3}
-make %{?_smp_mflags} test3
+%make_build test3
 %endif
 
 %install

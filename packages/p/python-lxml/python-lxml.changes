@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul  9 14:10:48 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.9.1:
+  * Bugs fixed
+    + A crash was resolved when using iterwalk() (or canonicalize())
+      after parsing certain incorrect input. Note that iterwalk() can
+      crash on valid input parsed with the same parser after failing
+      to parse the incorrect input.
+
+-------------------------------------------------------------------
 Tue Jun  7 21:14:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.9.0:
