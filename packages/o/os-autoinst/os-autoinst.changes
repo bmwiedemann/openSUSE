@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 11 19:40:15 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1657546751.7d61873:
+  * README: Fix origin story
+  * README: Add origin story of os-autoinst
+  * t: Increase timeout for scripts
+  * Increase timeout for local VNC connections to prevent incompletes
+  * Prevent passwords leaked to log by redundant log-message
+
+-------------------------------------------------------------------
 Sat Jul 09 11:42:56 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1657278379.0bbf325:
