@@ -16,10 +16,10 @@
 #
 
 
-%define tar_version 2.2.0-rc3
+%define tar_version 2.2.0-rc4
 
 Name:           librecad
-Version:        2.2.0~rc3
+Version:        2.2.0~rc4
 Release:        0
 Summary:        Computer-aided design (CAD) software package for 2D design and drafting
 License:        (Apache-2.0 OR SUSE-GPL-3.0+-with-font-exception) AND GPL-2.0-only
@@ -35,14 +35,11 @@ Source3:        https://wiki.librecad.org/images/7/70/Electronics3-LCAD.zip
 Source4:        https://wiki.librecad.org/images/9/9d/Electrical1-LCAD.zip
 Source10:       ttf2lff.1
 Source20:       %name-rpmlintrc
-Patch0:         0001-fixed-1488-getDirectoryList-failed-on-Linux-when-lib.patch
 Patch4:         librecad-no-date.diff
 Patch5:         librecad-use-system-libdxfrw.patch
 Patch6:         librecad-install.diff
 Patch7:         librecad-plugindir.diff
 Patch8:         librecad-use-system-shapelib.patch
-Patch9:         0001-Added-bounds-checking-to-CDataMoji-in-jww-parser.patch
-Patch10:        0001-Added-bounds-check-to-CDataList-in-JWW-parser.patch
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++ >= 4.7

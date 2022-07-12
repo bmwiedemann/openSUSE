@@ -259,4 +259,12 @@
 - Add 0001-Added-bounds-check-to-CDataList-in-JWW-parser.patch [boo#1195122] [CVE-2021-45342]</comment>
     <requestid>977618</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>eef88094ad04e07d3db4877524529919</srcmd5>
+    <version>2.2.0~rc4</version>
+    <time>1657617152</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988488</requestid>
+  </revision>
 </revisionlist>
