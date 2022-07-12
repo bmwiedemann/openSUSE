@@ -1,7 +1,7 @@
 #
 # spec file for package python-dash
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,8 @@
 
 # We can't test currenty, see below.
 %bcond_with test
-
 Name:           python-dash
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        Python framework for building reactive web-apps
 License:        MIT
@@ -48,14 +47,14 @@ Requires:       python-dash-table = 5.0.0
 Requires:       python-percy
 Requires:       python-plotly >= 5.0.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest-sugar}
 BuildRequires:  %{python_module pytest-rerunfailures}
+BuildRequires:  %{python_module pytest-sugar}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module selenium}
