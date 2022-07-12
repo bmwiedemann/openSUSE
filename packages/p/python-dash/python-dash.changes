@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jul 11 02:46:42 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 2.5.1:
+  * Fixed
+    + #2087 Fix bug #2086 in which using id as a key within a
+      component's id breaks the new callback context's args_grouping
+      function.
+    + #2084 In dash 2.5.0, a default viewport meta tag was added as
+      recommended for mobile-optimized sites by mdn This feature can
+      be disabled by providing an empty viewport meta tag. e.g. app =
+      Dash(meta_tags=[{"name": "viewport"}])
+    + #2090, #2092. Fixed bug where the path to the pages_folder was
+      incorrect on Windows.
+  * Removed
+    + #2087 Removed the undocumented callback context
+      args_grouping_values property which was incompatible with
+      pattern-matching callbacks.
+
+-------------------------------------------------------------------
 Tue Jun  7 19:53:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.5.0
