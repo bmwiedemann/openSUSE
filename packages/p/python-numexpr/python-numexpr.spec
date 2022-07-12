@@ -17,16 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
-%global skip_python36 1
 Name:           python-numexpr
-Version:        2.8.1
+Version:        2.8.3
 Release:        0
 Summary:        Numerical expression evaluator for NumPy
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pydata/numexpr/
 Source:         https://files.pythonhosted.org/packages/source/n/numexpr/numexpr-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.6}
 BuildRequires:  %{python_module setuptools}
