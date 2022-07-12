@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul  9 13:41:14 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.4.8:
+  * Add support for ndarrays with dtype=object (#46).
+
+-------------------------------------------------------------------
 Thu Feb 18 23:03:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 build (no numpy) 

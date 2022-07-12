@@ -41,4 +41,12 @@ required by python-intake</comment>
     <comment>- skip python 3.6 build (no numpy)</comment>
     <requestid>873579</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1b537932a6cf2bc92de41a758060b267</srcmd5>
+    <version>0.4.8</version>
+    <time>1657617145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988275</requestid>
+  </revision>
 </revisionlist>
