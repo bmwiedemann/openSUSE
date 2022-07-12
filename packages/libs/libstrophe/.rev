@@ -216,4 +216,13 @@
     but in a future release only passing via cert will be accepted.</comment>
     <requestid>986754</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>d83206266f264e2cf200330dfd22ab0b</srcmd5>
+    <version>0.12.1</version>
+    <time>1657617147</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libstrophe-0.12-stream-management-fix.patch:
+  To fix connection issues with Stream Management</comment>
+    <requestid>988565</requestid>
+  </revision>
 </revisionlist>

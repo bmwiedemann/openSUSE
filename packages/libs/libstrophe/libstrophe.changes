@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 11 11:47:49 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Add libstrophe-0.12-stream-management-fix.patch:
+  To fix connection issues with Stream Management
+
+-------------------------------------------------------------------
 Tue Jul  5 04:28:00 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.12.1:
