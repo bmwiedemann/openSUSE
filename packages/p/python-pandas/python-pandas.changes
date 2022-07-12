@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat Jul  9 13:43:53 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.4.3:
+  * Behavior of concat with empty or all-NA DataFrame columns
+    The behavior change in version 1.4.0 to stop ignoring the data
+    type of empty or all-NA columns with float or object dtype in
+    concat() (Ignoring dtypes in concat with empty or all-NA columns)
+    has been reverted (GH45637).
+  * Fixed regressions
+    + Fixed regression in DataFrame.replace() when the replacement value
+      was explicitly None when passed in a dictionary to to_replace also
+      casting other columns to object dtype even when there were no
+      values to replace (GH46634)
+    + Fixed regression in DataFrame.to_csv() raising error when
+      DataFrame contains extension dtype categorical column (GH46297,
+      GH46812)
+    + Fixed regression in representation of dtypes attribute of
+      MultiIndex (GH46900)
+    + Fixed regression when setting values with DataFrame.loc() updating
+      RangeIndex when index was set as new column and column was updated
+      afterwards (GH47128)
+    + Fixed regression in DataFrame.fillna() and DataFrame.update()
+      creating a copy when updating inplace (GH47188)
+    + Fixed regression in DataFrame.nsmallest() led to wrong results
+      when the sorting column has np.nan values (GH46589)
+    + Fixed regression in read_fwf() raising ValueError when widths was
+      specified with usecols (GH46580)
+    + Fixed regression in concat() not sorting columns for mixed column
+      names (GH47127)
+    + Fixed regression in Groupby.transform() and Groupby.agg() failing
+      with engine="numba" when the index was a MultiIndex (GH46867)
+    + Fixed regression in NaN comparison for Index operations where the
+      same object was compared (GH47105)
+    + Fixed regression is Styler.to_latex() and Styler.to_html() where
+      buf failed in combination with encoding (GH47053)
+    + Fixed regression in read_csv() with index_col=False identifying
+      first row as index names when header=None (GH46955)
+    + Fixed regression in DataFrameGroupBy.agg() when used with
+      list-likes or dict-likes and axis=1 that would give incorrect
+      results; now raises NotImplementedError (GH46995)
+    + Fixed regression in DataFrame.resample() and DataFrame.rolling()
+      when used with list-likes or dict-likes and axis=1 that would
+      raise an unintuitive error message; now raises NotImplementedError
+      (GH46904)
+    + Fixed regression in testing.assert_index_equal() when
+      check_order=False and Index has extension or object dtype
+      (GH47207)
+    + Fixed regression in read_excel() returning ints as floats on
+      certain input sheets (GH46988)
+    + Fixed regression in DataFrame.shift() when axis is columns and
+      fill_value is absent, freq is ignored (GH47039)
+    + Fixed regression in DataFrame.to_json() causing a segmentation
+      violation when DataFrame is created with an index parameter of the
+      type PeriodIndex (GH46683)
+  * Bug fixes
+    + Bug in pandas.eval(), DataFrame.eval() and DataFrame.query()
+      where passing empty local_dict or global_dict was treated as
+      passing None (GH47084)
+    + Most I/O methods no longer suppress OSError and ValueError when
+      closing file handles (GH47136)
+  * Other
+    + The minimum version of Cython needed to compile pandas is now
+      0.29.30 (GH41935)
+
+-------------------------------------------------------------------
 Tue Apr  5 13:40:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.4.2
