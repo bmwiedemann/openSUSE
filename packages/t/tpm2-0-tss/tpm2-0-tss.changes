@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 11 11:19:36 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Revert "Add version the configuration file tpm2-tss-fapi.conf"
+  This generate whitelist problems in rpmlint.
+
+-------------------------------------------------------------------
 Fri Jul  8 11:52:40 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 3.2.0

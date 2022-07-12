@@ -419,4 +419,12 @@ This should be handled together with sr#769061</comment>
     <comment></comment>
     <requestid>987923</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>a1c73c9e68fcc8e67f4bbae1e9379482</srcmd5>
+    <version>3.2.0</version>
+    <time>1657617132</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988349</requestid>
+  </revision>
 </revisionlist>

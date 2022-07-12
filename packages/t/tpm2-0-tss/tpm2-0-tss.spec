@@ -205,8 +205,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 mv %{buildroot}%{_udevrulesdir}/tpm-udev.rules %{buildroot}%{_udevrulesdir}/%{udev_rule_file}
 # Conflicts with system-users
 rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
-# Add version into the configuration tmpfiles.d configuration file
-mv %{buildroot}%{_tmpfilesdir}/tpm2-tss-fapi.conf %{buildroot}%{_tmpfilesdir}/tpm2-tss-fapi-%{version}.conf
 
 %post
 %{_bindir}/udevadm trigger -s tpm -s tpmrm || :
@@ -278,7 +276,7 @@ mv %{buildroot}%{_tmpfilesdir}/tpm2-tss-fapi.conf %{buildroot}%{_tmpfilesdir}/tp
 
 %files -n libtss2-fapi1
 %{_libdir}/libtss2-fapi.so.*
-%{_tmpfilesdir}/tpm2-tss-fapi-%{version}.conf
+%{_tmpfilesdir}/tpm2-tss-fapi.conf
 # this would fix "tmpfile-not-in-filelist" warnings but when adding these
 # entries then it complains about "directories not owned by a package:" for
 # /run/tpm2-0-tss & friends. When adding them as %%ghost, too, then Leap15.1
