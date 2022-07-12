@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 10 16:25:37 UTC 2022 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to 2.2.8:
+  * ALSA and WinMIDI drivers now pass system real-time messages on to user callback
+  * Fix FPU division by zero in `fluid_player_set_tempo()`
+  * Fix system-wide config file not loaded
+  * Pluseaudio driver now honors `audio.periods` setting
+
+-------------------------------------------------------------------
 Mon Apr 25 18:48:28 UTC 2022 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to 2.2.7
