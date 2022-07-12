@@ -923,4 +923,12 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>982126</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>b2a7989f6ffc8af3b0d6bc52a407fe01</srcmd5>
+    <version>1.4.39</version>
+    <time>1657617121</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988284</requestid>
+  </revision>
 </revisionlist>
