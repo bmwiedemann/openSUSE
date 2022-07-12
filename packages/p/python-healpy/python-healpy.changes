@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul 12 00:16:21 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.15.2:
+  * Update HEALPix C++ sources after update of ABI
+    (gh#healpy/healpy#746).
+- Changes from versions 1.15.1:
+  * New function hp.blm_gauss to generate alm of a gaussian beam
+    (gh#healpy/healpy#735).
+  * Implement rotation in the graticule of projview
+    (gh#healpy/healpy#732).
+  * Explain how to create a local datapath for pixel weights
+    (gh#healpy/healpy#720).
+  * Improvement on is_seq to avoid synalm breaking on JAX input
+    arrays, added unit tests (gh#healpy/healpy#716).
+  * Upgraded HEALPix C++ sources to HEALPix 3.8.1, fixing
+    incompatibility with CFITSIO 4 (gh#healpy/healpy#727) and
+    (gh#healpy/healpy#743).
+
+-------------------------------------------------------------------
 Wed Aug 18 12:35:01 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.15.0:
