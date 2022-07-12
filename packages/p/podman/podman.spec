@@ -128,7 +128,7 @@ make %{?_smp_mflags} docs
 # Updates must be tested manually.
 
 %install
-make DESTDIR=%{buildroot} PREFIX=/usr install install.completions install.docker
+make DESTDIR=%{buildroot} PREFIX=/usr LIBEXECDIR=%{_libexecdir} install install.completions install.docker
 
 # packaged in libcontainers-common
 rm %{buildroot}/usr/share/man/man5/oci-hooks.*

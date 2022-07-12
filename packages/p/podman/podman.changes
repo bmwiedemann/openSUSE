@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  1 11:08:05 UTC 2022 - Predrag Ivanović <predivan@mts.rs>
+
+- Fix build on Leap
+    Use libexec macro to set correct, per-distribution specific, directory. 
+
+-------------------------------------------------------------------
 Wed Jun 22 09:41:22 UTC 2022 - rbrown@suse.com
 
 - Update to version 4.1.1:
