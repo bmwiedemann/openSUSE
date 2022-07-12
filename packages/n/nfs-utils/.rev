@@ -1639,4 +1639,16 @@
   Update for latest autoconf</comment>
     <requestid>981442</requestid>
   </revision>
+  <revision rev="172" vrev="33">
+    <srcmd5>27309a6e1b051a58e8c655b5e962309a</srcmd5>
+    <version>unknown</version>
+    <time>1657617113</time>
+    <user>dimstar_suse</user>
+    <comment>- 0004-modprobe-protect-against-sysctl-errors.patch
+  0005-modprobe-avoid-error-messages-if-sbin-sysctl-fail.patch
+ Suppress any errors from /sbin/sysctl, if for example, it isn't
+ installed
+ (bsc#1200710)</comment>
+    <requestid>988230</requestid>
+  </revision>
 </revisionlist>

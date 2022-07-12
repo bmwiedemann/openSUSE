@@ -46,6 +46,8 @@ Patch1:         gcc12-fix.patch
 Patch2:         0001-systemd-Apply-all-sysctl-settings-when-NFS-related-m.patch
 Patch3:         0002-Update-autoconfig-files-to-work-with-v2.71.patch
 Patch4:         0003-autoconf-change-tirpc-to-check-for-a-file-not-for-an.patch
+Patch5:         0004-modprobe-protect-against-sysctl-errors.patch
+Patch6:         0005-modprobe-avoid-error-messages-if-sbin-sysctl-fail.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool

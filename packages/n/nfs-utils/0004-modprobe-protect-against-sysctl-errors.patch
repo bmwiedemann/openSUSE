@@ -1,0 +1,45 @@
+From 5e60e38aa4ba251ef66610514be5f45c41519e0f Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.de>
+Date: Mon, 27 Jun 2022 10:27:06 -0400
+Subject: [PATCH] modprobe: protect against sysctl errors
+
+If there is an error running sysctl, a modprobe of these modules will
+fail.  We probably don't want that - missing a sysctl is unlikely to be
+fatal.
+
+A real possibility is that /sbin/sysctl might not exist at all,
+such as in a initramfs.  In that case we definitely don't want modprobe
+to fail.
+
+So make the scriptlets safe.
+
+Signed-off-by: NeilBrown <neilb@suse.de>
+Signed-off-by: Steve Dickson <steved@redhat.com>
+---
+ systemd/50-nfs.conf |   10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+--- a/systemd/50-nfs.conf
++++ b/systemd/50-nfs.conf
+@@ -1,16 +1,16 @@
+ # Ensure all NFS systctl settings get applied when modules load
+ 
+ # sunrpc module supports "sunrpc.*" sysctls
+-install sunrpc /sbin/modprobe --ignore-install sunrpc $CMDLINE_OPTS && /sbin/sysctl -q --pattern sunrpc --system
++install sunrpc /sbin/modprobe --ignore-install sunrpc $CMDLINE_OPTS && { /sbin/sysctl -q --pattern sunrpc --system; exit 0; }
+ 
+ # rpcrdma module supports sunrpc.svc_rdma.*
+-install rpcrdma /sbin/modprobe --ignore-install rpcrdma $CMDLINE_OPTS && /sbin/sysctl -q --pattern sunrpc.svc_rdma --system
++install rpcrdma /sbin/modprobe --ignore-install rpcrdma $CMDLINE_OPTS && { /sbin/sysctl -q --pattern sunrpc.svc_rdma --system; exit 0; }
+ 
+ # lockd module supports "fs.nfs.nlm*" and "fs.nfs.nsm*" sysctls
+-install lockd /sbin/modprobe --ignore-install lockd $CMDLINE_OPTS && /sbin/sysctl -q --pattern fs.nfs.n[sl]m --system
++install lockd /sbin/modprobe --ignore-install lockd $CMDLINE_OPTS && { /sbin/sysctl -q --pattern fs.nfs.n[sl]m --system; exit 0; }
+ 
+ # nfsv4 module supports "fs.nfs.*" sysctls (nfs_callback_tcpport and idmap_cache_timeout)
+-install nfsv4 /sbin/modprobe --ignore-install nfsv4 $CMDLINE_OPTS && /sbin/sysctl -q --pattern 'fs.nfs.(nfs_callback_tcpport|idmap_cache_timeout)' --system
++install nfsv4 /sbin/modprobe --ignore-install nfsv4 $CMDLINE_OPTS && { /sbin/sysctl -q --pattern 'fs.nfs.(nfs_callback_tcpport|idmap_cache_timeout)' --system; exit 0; }
+ 
+ # nfs module supports "fs.nfs.*" sysctls
+-install nfs /sbin/modprobe --ignore-install nfs $CMDLINE_OPTS && /sbin/sysctl -q --pattern fs.nfs --system
++install nfs /sbin/modprobe --ignore-install nfs $CMDLINE_OPTS && { /sbin/sysctl -q --pattern fs.nfs --system; exit 0; }

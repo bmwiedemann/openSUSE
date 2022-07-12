@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 11 03:31:08 UTC 2022 - Neil Brown <nfbrown@suse.com>
+
+- 0004-modprobe-protect-against-sysctl-errors.patch
+  0005-modprobe-avoid-error-messages-if-sbin-sysctl-fail.patch
+ Suppress any errors from /sbin/sysctl, if for example, it isn't
+ installed
+ (bsc#1200710)
+
+-------------------------------------------------------------------
 Thu Jun  9 06:49:11 UTC 2022 - Neil Brown <nfbrown@suse.com>
 
 - 0001-systemd-Apply-all-sysctl-settings-when-NFS-related-m.patch
