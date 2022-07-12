@@ -1,7 +1,7 @@
 #
 # spec file for package hidapi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %define sover 0
-
 Name:           hidapi
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Simple library for communicating with USB and Bluetooth HID devices
 License:        BSD-3-Clause OR GPL-3.0-or-later
@@ -34,9 +33,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  make
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libudev)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 HIDAPI is a library which allows an application to interface with USB and Bluetooth HID-Class devices.
@@ -77,32 +75,28 @@ While it can be used to communicate with standard HID devices like keyboards, mi
 %build
 ./bootstrap
 %configure --disable-static --docdir=%{_defaultdocdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 make install DESTDIR=%{?buildroot}
-find %{buildroot}%{_libdir} -type f -name '*.la' -delete -print
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libhidapi-libusb%{sover} -p /sbin/ldconfig
 %post -n libhidapi-hidraw%{sover} -p /sbin/ldconfig
-
 %postun -n libhidapi-libusb%{sover} -p /sbin/ldconfig
 %postun -n libhidapi-hidraw%{sover} -p /sbin/ldconfig
 
 %files -n libhidapi-devel
-%defattr(-,root,root)
 %doc README.md AUTHORS.txt HACKING.txt
 %{_includedir}/hidapi
 %{_libdir}/pkgconfig/*
 %{_libdir}/libhidapi-*.so
 
 %files -n libhidapi-hidraw%{sover}
-%defattr(-,root,root)
 %license LICENSE*
 %{_libdir}/libhidapi-hidraw.so.%{sover}*
 
 %files -n libhidapi-libusb%{sover}
-%defattr(-,root,root)
 %license LICENSE*
 %{_libdir}/libhidapi-libusb.so.%{sover}*
 
