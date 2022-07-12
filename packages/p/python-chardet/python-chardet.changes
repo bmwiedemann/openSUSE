@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul  5 13:21:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to  5.0.0
+  * This release is the first release of chardet that no longer
+    supports Python < 3.6
+  * Added a prober for Johab Korean (#207, @grizlupo)
+  * Added a prober for UTF-16/32 BE/LE (#109, #206, @jpz)
+  * Added test data for Croatian, Czech, Hungarian, Polish, Slovak,
+    Slovene, Greek, and Turkish, which should help prevent future
+    errors with those languages
+  * Improved XML tag filtering, which should improve accuracy for
+    XML files (#208)
+  * Tweaked SingleByteCharSetProber confidence to match latest
+    uchardet (#209)
+  * Made detect_all return child prober confidences (#210)
+  * Updated examples in docs (#223, @domdfcoding)
+  * Documentation fixes (#212, #224, #225, #226, #220, #221, #244
+    from too many to mention)
+  * Minor performance improvements (#252, @deedy5)
+  * Add support for Python 3.10 when testing (#232, @jdufresne)
+  * Lots of little development cycle improvements, mostly thanks to
+    @jdufresne
+- Canonicalize alternatives creation
+
+-------------------------------------------------------------------
 Fri Dec 10 09:05:04 UTC 2021 - pgajdos@suse.com
 
 - pytest-runner is not required for build

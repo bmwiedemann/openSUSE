@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@
 %bcond_with libalternatives
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -31,8 +30,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-chardet%{psuffix}
-Version:        4.0.0
+Version:        5.0.0
 Release:        0
 Summary:        Universal encoding detector
 License:        LGPL-2.1-or-later
@@ -93,16 +95,16 @@ sed -i '1{/^#!/d}' chardet/lang*model.py chardet/metadata/languages.py
 
 %install
 %if !%{with test}
-%{python_expand %$python_install
-mv %{buildroot}%{_bindir}/chardetect %{buildroot}%{_bindir}/chardetect-%{$python_bin_suffix}
-%fdupes %{buildroot}%{$python_sitelib}
-}
-%prepare_alternative chardetect
+%python_install
+%python_clone -a %{buildroot}%{_bindir}/chardetect
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %check
 %if %{with test}
-%pytest test.py
+# https://github.com/chardet/chardet/issues/256
+donttest="test_detect_all_and_detect_one_should_agree"
+%pytest -k "not $donttest"
 %endif
 
 %if !%{with test}
@@ -120,7 +122,7 @@ mv %{buildroot}%{_bindir}/chardetect %{buildroot}%{_bindir}/chardetect-%{$python
 %doc README.rst
 %python_alternative %{_bindir}/chardetect
 %{python_sitelib}/chardet
-%{python_sitelib}/chardet-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/chardet-%{version}*-info
 %endif
 
 %changelog
