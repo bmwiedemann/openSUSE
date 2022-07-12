@@ -1,0 +1,28 @@
+From 41e6f6852d9cc746e1556bb15c660b1ccbf60d69 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 11 Jul 2022 23:08:51 +0200
+Subject: [PATCH] Add explicit <ctime> include required for clock()
+
+ctime is no longer implicitly included with recent
+toolchains/libraries.
+
+Fixes https://savannah.gnu.org/bugs/index.php?62750
+---
+ liboctave/numeric/randmtzig.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/liboctave/numeric/randmtzig.cc b/liboctave/numeric/randmtzig.cc
+index bfb893f..caed212 100644
+--- a/liboctave/numeric/randmtzig.cc
++++ b/liboctave/numeric/randmtzig.cc
+@@ -160,6 +160,7 @@
+ 
+ #include <cmath>
+ #include <cstdio>
++#include <ctime>
+ 
+ #include <algorithm>
+ #include <random>
+-- 
+2.36.1
+

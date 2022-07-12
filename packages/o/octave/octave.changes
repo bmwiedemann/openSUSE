@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 11 21:16:21 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with latest TW, add
+  0001-Add-explicit-ctime-include-required-for-clock.patch
+
+-------------------------------------------------------------------
 Wed Jul  6 23:44:18 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build of external packages when trying to unlink

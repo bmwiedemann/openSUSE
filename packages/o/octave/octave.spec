@@ -65,6 +65,8 @@ Patch0:         octave_tools_pie.patch
 Patch1:         0001-Disable-signal-handler-thread-avoid-duplicate-signal.patch
 # PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?func=detailitem&item_id=62436
 Patch2:         https://hg.savannah.gnu.org/hgweb/octave/raw-rev/6e91c61f626f#/fix_build_unlink_failed.patch
+# PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/index.php?62750
+Patch3:         0001-Add-explicit-ctime-include-required-for-clock.patch
 BuildRequires:  arpack-ng-devel
 # Required for Patch0
 BuildRequires:  autoconf
