@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 11 12:41:48 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220711.46e6323:
+  * systemd-tmpfiles: drop version from libtss2-fapi1 filename
+
+-------------------------------------------------------------------
 Thu Jul 07 09:16:47 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.3.0+git20220707.07c9067:

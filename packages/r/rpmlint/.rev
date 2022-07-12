@@ -3863,4 +3863,13 @@ oddjob-gpupdate isn't blocked)</comment>
   * SystemdTmpfilesCheck: compare normalized lines for whitelistings</comment>
     <requestid>987395</requestid>
   </revision>
+  <revision rev="403" vrev="1">
+    <srcmd5>30d812e78cf9d0385115c73d03ee9048</srcmd5>
+    <version>2.3.0+git20220711.46e6323</version>
+    <time>1657617136</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git20220711.46e6323:
+  * systemd-tmpfiles: drop version from libtss2-fapi1 filename</comment>
+    <requestid>988371</requestid>
+  </revision>
 </revisionlist>
