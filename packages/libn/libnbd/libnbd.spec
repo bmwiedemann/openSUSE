@@ -19,12 +19,12 @@
 %define sover 0
 
 Name:           libnbd
-Version:        1.12.2
+Version:        1.12.4
 Release:        0
 Summary:        NBD client library in userspace
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.com/nbdkit/libnbd
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -39,6 +39,7 @@ BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gnutls) >= 3.3.0
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(python3)
 Requires:       libnbd%{sover} = %{version}
 # Only for running the test suite.
 BuildRequires:  gcc-c++
@@ -82,6 +83,13 @@ Requires:       libnbd%{sover} = %{version}-%{release}
 %description devel
 This package contains development headers for %{name}.
 
+%package -n python3-%{name}
+Summary:        Python 3 bindings for %{name}
+Requires:       libnbd%{sover} = %{version}-%{release}
+
+%description -n python3-%{name}
+python3-%{name} contains Python 3 bindings for %{name}.
+
 %package -n nbdfuse
 Summary:        FUSE support for %{name}
 Requires:       libnbd%{sover} = %{version}-%{release}
@@ -109,7 +117,8 @@ autoreconf -fiv
     --with-tls-priority=@LIBNBD,SYSTEM \
     --enable-fuse \
     --disable-golang \
-    --disable-python \
+    PYTHON=%{__python3} \
+    --enable-python \
     --disable-static
 
 %make_build
@@ -176,6 +185,13 @@ done
 %{_mandir}/man1/libnbd-release-notes-1.*.1*
 %{_mandir}/man3/libnbd-security.3*
 %{_mandir}/man3/nbd_*.3*
+
+%files -n python3-%{name}
+%{python3_sitearch}/libnbdmod*.so
+%{python3_sitearch}/nbd.py
+%{python3_sitearch}/nbdsh.py
+%{_bindir}/nbdsh
+%{_mandir}/man1/nbdsh.1*
 
 %files -n nbdfuse
 %{_bindir}/nbdfuse

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul  8 17:59:24 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- Update to version 1.12.4:
+  * python: Correctly use PyGILState
+  * olang: aio_buffer.go: Explicit panic() on invalid usage
+  * python: Enhance tests of nbd.Buffer
+  * python: Plug uninit leak in nbd.Buffer.to_bytearray
+  * python: Avoid memleak on (unlikely) module failure
+  * python: Accept buffers in nbd.Buffer.from_bytearray()
+- Enable building python module and utilities
+
+-------------------------------------------------------------------
 Tue May 24 16:31:09 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - Adjust _service file to coincide with recent manual update to
