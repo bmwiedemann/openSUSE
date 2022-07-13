@@ -27,7 +27,7 @@
 %ifnarch s390 s390x
 %define netsnmp_with_sensors 1
 %endif
-%define libname libsnmp40
+%define libname libsnmp39
 %bcond_without python2
 Name:           net-snmp
 Version:        5.9.2
@@ -116,6 +116,8 @@ License:        BSD-3-Clause AND MIT
 Group:          System/Libraries
 Requires:       perl-base = %{perl_version}
 Requires:       snmp-mibs >= %{version}
+# Version 5.9.2 was wrongly packaging .so.39 in libsnmp40
+Conflicts:      libsnmp40 <= 5.9.2
 
 %description -n %{libname}
 Net-SNMP is a suite of applications used to implement SNMP v1, SNMP v2c
