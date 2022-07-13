@@ -1,7 +1,7 @@
 #
 # spec file for package python-argcomplete
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 Darin Perusich.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%global skip_python2 1
 Name:           python-argcomplete
-Version:        1.12.3
+Version:        2.0.0
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0

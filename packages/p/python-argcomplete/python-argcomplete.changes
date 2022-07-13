@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  6 10:04:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Truncate input after cursor.
+  * Support of path completion in fish
+  * Drop support for Python 2.7 and 3.5
+  * Add support for Python 3.10
+  * Test, documentation, and release infrastructure improvements
+
+-------------------------------------------------------------------
 Sun Jun  6 11:43:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.3:

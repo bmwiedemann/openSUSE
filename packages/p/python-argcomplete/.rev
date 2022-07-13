@@ -159,4 +159,12 @@
   * Test infrastructure improvements</comment>
     <requestid>897830</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7f19dc9e483247231a5b478e93ed0327</srcmd5>
+    <version>2.0.0</version>
+    <time>1657719606</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>988966</requestid>
+  </revision>
 </revisionlist>
