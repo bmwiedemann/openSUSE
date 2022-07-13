@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-starlette
-Version:        0.19.1
+Version:        0.20.4
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
@@ -45,8 +45,7 @@ BuildRequires:  %{python_module trio}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  (python3-aiocontextvars if python3-base < 3.7)
-BuildRequires:  (python36-aiocontextvars if python36-base)
+BuildRequires:  python3-base >= 3.7
 BuildArch:      noarch
 %python_subpackages
 
