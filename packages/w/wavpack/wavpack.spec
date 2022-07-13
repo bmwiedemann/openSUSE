@@ -18,16 +18,14 @@
 
 %define soname  1
 Name:           wavpack
-Version:        5.4.0
+Version:        5.5.0
 Release:        0
 Summary:        Hybrid Lossless Audio Compression Format
 License:        BSD-3-Clause
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
-URL:            http://www.wavpack.com/
-Source0:        http://www.wavpack.com/%{name}-%{version}.tar.bz2
+URL:            https://www.wavpack.com/
+Source0:        https://www.wavpack.com/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
-# CVE-2021-44269 [bsc#1197020], out of bounds read in processing .wav file
-Patch0:         wavpack-CVE-2021-44269.patch
 BuildRequires:  pkgconfig
 
 %description
@@ -50,7 +48,6 @@ Group:          System/Libraries
 %description -n libwavpack%{soname}
 WavPack is an open audio compression format providing lossless, high-quality
 lossy, and unique hybrid compression modes.
-
 Lossless mode is ideal for archiving audio material or any other situation
 where quality is paramount. The compression ratio depends on the source
 material, but generally is between 30%% and 70%%.
@@ -68,9 +65,20 @@ lossy, and unique hybrid compression modes.
 This subpackage contains libraries and header files for developing
 applications that want to make use of wavpack.
 
+%package doc
+Summary:        Documentation files for wavpack, an audio compression format
+Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
+
+%description doc
+WavPack is an open audio compression format providing lossless, high-quality
+lossy, and unique hybrid compression modes.
+
+This subpackage contains development documentation for applications that
+want to make use of wavpack.
+
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure --disable-static
@@ -80,6 +88,9 @@ applications that want to make use of wavpack.
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
+install -d -m 755 %{buildroot}%{_defaultdocdir}
+mv %{buildroot}/usr/share/doc/%name %{buildroot}%{_defaultdocdir}
+
 %check
 %make_build check
 
@@ -88,7 +99,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING
-%doc ChangeLog README.md
 %{_bindir}/wavpack
 %{_bindir}/wvgain
 %{_bindir}/wvunpack
@@ -103,5 +113,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/wavpack
 %{_libdir}/libwavpack.so
 %{_libdir}/pkgconfig/wavpack.pc
+
+%files doc
+%doc %_defaultdocdir/%name
 
 %changelog
