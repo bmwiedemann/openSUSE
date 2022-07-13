@@ -20,6 +20,7 @@ Mon Oct 18 21:28:05 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
 Mon Oct 18 12:05:38 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
 
 - Upgrade to eclipse 4.17 ecj
+  * No changelog was made available.
 - Removed patches:
   * ecj-encoding.patch
   * jdk10u-jdk8compat.patch
@@ -30,6 +31,7 @@ Mon Oct 18 12:05:38 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
 Wed Sep 25 12:22:02 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to eclipse 4.12 ecj
+  * No changelog was made available.
 - Removed patches:
   * ecj-include-props.patch,
   * eclipse-gcj-compat4.2.1.patch
