@@ -2,6 +2,31 @@
 Tue Mar 22 08:31:00 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.0.0
+  * Bug Fixes
+    + Resolving "target" dir via "${project.build.directory}", so
+      to make sure it can be resolved correctly within multi-module
+      builds and if another name than "target" has been configured
+      #124
+    + Ensure mojo descriptors are extracted after compilation #123
+    + Argument file for modulepath is generated wrongly when paths
+      contains spaces #115
+    + java.lang.String cannot be cast to
+      org.codehaus.mojo.exec.Modulepath #75
+  * Enhancement
+    + Resolves #152 - Adds option to redirect program output of
+      exec:exec to the maven logger. #153
+    + Program output can be difficult to trace and may be jumbled
+      with Maven logs when running Maven with multiple threads #152
+    + Fix type in Property.java #147
+    + Correct spelling and remove redundant "small" #142
+    + Fix typo #140
+    + <timeout> configuration parameter #128
+    + Methodhandles #119
+    + Introduce Mock Repository Manager #117
+    + Improved docs about <environmentVariables/> config of
+      exec:exec goal #104
+    + Add CodeTriage badge to mojohaus/exec-maven-plugin #96
+    + [Enhancement] Support for JPMS module path for exec:java #90
 - Removed patch:
   * exec-maven-plugin-1.6.0-Port-to-Maven-3.patch
     + not needed any more with this version
