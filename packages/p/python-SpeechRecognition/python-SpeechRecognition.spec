@@ -1,7 +1,7 @@
 #
 # spec file for package python-SpeechRecognition
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,12 @@ Summary:        Library for performing speech recognition, with support for seve
 License:        BSD-3-Clause
 URL:            https://github.com/Uberi/speech_recognition#readme
 Source:         https://github.com/Uberi/speech_recognition/archive/%{version}.tar.gz
+# Remove information about unbundled libraries.
 Patch0:         fix-readme.patch
+# PATCH-FIX-UPSTREAM 406-google-cloud-speech.patch gh#Uberi/speech_recognition#406 mcepl@suse.com
+# Switch dependency to google-cloud-speech from deprecated oauth2client and googleapiclient
+Patch1:         406-google-cloud-speech.patch
+BuildRequires:  %{python_module google-cloud-speech}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -63,8 +68,8 @@ This package contains the data for en-US language model to be used by
 pocketsphinx from python-SpeechRecognition.
 
 %prep
-%setup -q -n speech_recognition-%{version}
-%patch0 -p1
+%autosetup -p1 -n speech_recognition-%{version}
+
 rm -Rf third-party
 rm speech_recognition/flac-*
 rm LICENSE-FLAC.txt
