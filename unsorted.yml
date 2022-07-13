@@ -78,6 +78,7 @@ unsorted:
   - KEALib-devel 
   - LHAPDF-devel 
   - LHAPDF-doc 
+  - LaTeXML 
   - LiE 
   - LiE-doc 
   - LibVNCServer-devel 
@@ -2629,12 +2630,14 @@ unsorted:
   - cwstudio 
   - cxref 
   - cxxtools-devel 
+  - cyradm 
   - cyreal-alice-fonts 
   - cyreal-junge-fonts 
   - cyreal-lora-fonts 
   - cyreal-marko-horobchyk-fonts 
   - cyreal-marmelad-fonts 
   - cyreal-wire-fonts 
+  - cyrus-imapd 
   - cyrus-imapd-devel 
   - cyrus-imapd-snmp 
   - cyrus-imapd-snmp-mibs 
@@ -7489,6 +7492,14 @@ unsorted:
   - java-15-openjdk-javadoc 
   - java-15-openjdk-jmods 
   - java-15-openjdk-src 
+  - java-17-openj9: [x86_64] 
+  - java-17-openj9-accessibility: [x86_64] 
+  - java-17-openj9-demo: [x86_64] 
+  - java-17-openj9-devel: [x86_64] 
+  - java-17-openj9-headless: [x86_64] 
+  - java-17-openj9-javadoc: [x86_64] 
+  - java-17-openj9-jmods: [x86_64] 
+  - java-17-openj9-src: [x86_64] 
   - java-17-openjdk 
   - java-17-openjdk-accessibility 
   - java-17-openjdk-demo 
@@ -10849,6 +10860,8 @@ unsorted:
   - libfltk1_3-32bit: [x86_64] 
   - libfluidsynth3 
   - libfluidsynth3-32bit: [x86_64] 
+  - libflux-devel 
+  - libflux0_161_0 
   - libflxmlrpc1 
   - libfm 
   - libfm-devel 
@@ -13905,7 +13918,7 @@ unsorted:
   - libsndfile-progs 
   - libsndfile1-32bit: [x86_64] 
   - libsndio7_1 
-  - libsnmp40-32bit: [x86_64] 
+  - libsnmp39-32bit: [x86_64] 
   - libsoc-common 
   - libsoc-devel 
   - libsoc2 
@@ -17375,7 +17388,71 @@ unsorted:
   - notmuch-devel 
   - notmuch-doc 
   - notmuch-emacs 
-  - noto-sans-cjk-fonts: [i586] 
+  - noto-arimo-fonts 
+  - noto-cousine-fonts 
+  - noto-fonts 
+  - noto-kufiarabic-fonts 
+  - noto-loopedlao-fonts 
+  - noto-loopedlao-ui-fonts 
+  - noto-loopedthai-fonts 
+  - noto-loopedthai-ui-fonts 
+  - noto-music-fonts 
+  - noto-naskharabic-fonts 
+  - noto-naskharabic-ui-fonts 
+  - noto-nastaliqurdu-fonts 
+  - noto-rashihebrew-fonts 
+  - noto-sans-adlam-fonts 
+  - noto-sans-adlamunjoined-fonts 
+  - noto-sans-anatolianhieroglyphs-fonts 
+  - noto-sans-arabic-fonts 
+  - noto-sans-arabic-ui-fonts 
+  - noto-sans-armenian-fonts 
+  - noto-sans-avestan-fonts 
+  - noto-sans-balinese-fonts 
+  - noto-sans-bamum-fonts 
+  - noto-sans-bassavah-fonts 
+  - noto-sans-batak-fonts 
+  - noto-sans-bengali-fonts 
+  - noto-sans-bengali-ui-fonts 
+  - noto-sans-bhaiksuki-fonts 
+  - noto-sans-brahmi-fonts 
+  - noto-sans-buginese-fonts 
+  - noto-sans-buhid-fonts 
+  - noto-sans-canadianaboriginal-fonts 
+  - noto-sans-carian-fonts 
+  - noto-sans-caucasianalbanian-fonts 
+  - noto-sans-chakma-fonts 
+  - noto-sans-cham-fonts 
+  - noto-sans-cherokee-fonts 
+  - noto-sans-chorasmian-fonts 
+  - noto-sans-cjk-fonts 
+  - noto-sans-coptic-fonts 
+  - noto-sans-cuneiform-fonts 
+  - noto-sans-cypriot-fonts 
+  - noto-sans-cyprominoan-fonts 
+  - noto-sans-deseret-fonts 
+  - noto-sans-devanagari-fonts 
+  - noto-sans-devanagari-ui-fonts 
+  - noto-sans-duployan-fonts 
+  - noto-sans-egyptianhieroglyphs-fonts 
+  - noto-sans-elbasan-fonts 
+  - noto-sans-elymaic-fonts 
+  - noto-sans-ethiopic-fonts 
+  - noto-sans-georgian-fonts 
+  - noto-sans-glagolitic-fonts 
+  - noto-sans-gothic-fonts 
+  - noto-sans-grantha-fonts 
+  - noto-sans-gujarati-fonts 
+  - noto-sans-gujarati-ui-fonts 
+  - noto-sans-gunjalagondi-fonts 
+  - noto-sans-gurmukhi-fonts 
+  - noto-sans-gurmukhi-ui-fonts 
+  - noto-sans-hanifirohingya-fonts 
+  - noto-sans-hanunoo-fonts 
+  - noto-sans-hatran-fonts 
+  - noto-sans-hebrew-fonts 
+  - noto-sans-hebrewdroid-fonts 
+  - noto-sans-hebrewnew-fonts 
   - noto-sans-hk-black-fonts 
   - noto-sans-hk-bold-fonts 
   - noto-sans-hk-demilight-fonts 
@@ -17386,6 +17463,11 @@ unsorted:
   - noto-sans-hk-mono-fonts 
   - noto-sans-hk-regular-fonts 
   - noto-sans-hk-thin-fonts 
+  - noto-sans-imperialaramaic-fonts 
+  - noto-sans-indicsiyaqnumbers-fonts 
+  - noto-sans-inscriptionalpahlavi-fonts 
+  - noto-sans-inscriptionalparthian-fonts 
+  - noto-sans-javanese-fonts 
   - noto-sans-jp-black-fonts 
   - noto-sans-jp-demilight-fonts 
   - noto-sans-jp-fonts-full 
@@ -17393,16 +17475,85 @@ unsorted:
   - noto-sans-jp-medium-fonts 
   - noto-sans-jp-mono-fonts 
   - noto-sans-jp-thin-fonts 
+  - noto-sans-kaithi-fonts 
+  - noto-sans-kannada-fonts 
+  - noto-sans-kannada-ui-fonts 
+  - noto-sans-kayahli-fonts 
+  - noto-sans-kharoshthi-fonts 
+  - noto-sans-khmer-fonts 
+  - noto-sans-khmer-ui-fonts 
+  - noto-sans-khojki-fonts 
+  - noto-sans-khudawadi-fonts 
   - noto-sans-kr-black-fonts 
-  - noto-sans-kr-bold-fonts: [i586] 
+  - noto-sans-kr-bold-fonts 
   - noto-sans-kr-demilight-fonts 
-  - noto-sans-kr-fonts: [i586] 
+  - noto-sans-kr-fonts 
   - noto-sans-kr-fonts-full 
   - noto-sans-kr-light-fonts 
   - noto-sans-kr-medium-fonts 
   - noto-sans-kr-mono-fonts 
-  - noto-sans-kr-regular-fonts: [i586] 
+  - noto-sans-kr-regular-fonts 
   - noto-sans-kr-thin-fonts 
+  - noto-sans-lao-fonts 
+  - noto-sans-lao-ui-fonts 
+  - noto-sans-lepcha-fonts 
+  - noto-sans-limbu-fonts 
+  - noto-sans-lineara-fonts 
+  - noto-sans-linearb-fonts 
+  - noto-sans-lisu-fonts 
+  - noto-sans-lycian-fonts 
+  - noto-sans-lydian-fonts 
+  - noto-sans-mahajani-fonts 
+  - noto-sans-malayalam-fonts 
+  - noto-sans-malayalam-ui-fonts 
+  - noto-sans-mandaic-fonts 
+  - noto-sans-manichaean-fonts 
+  - noto-sans-marchen-fonts 
+  - noto-sans-masaramgondi-fonts 
+  - noto-sans-math-fonts 
+  - noto-sans-mayannumerals-fonts 
+  - noto-sans-medefaidrin-fonts 
+  - noto-sans-meeteimayek-fonts 
+  - noto-sans-mendekikakui-fonts 
+  - noto-sans-meroitic-fonts 
+  - noto-sans-miao-fonts 
+  - noto-sans-modi-fonts 
+  - noto-sans-mongolian-fonts 
+  - noto-sans-mono-fonts 
+  - noto-sans-mro-fonts 
+  - noto-sans-multani-fonts 
+  - noto-sans-myanmar-fonts 
+  - noto-sans-myanmar-ui-fonts 
+  - noto-sans-nabataean-fonts 
+  - noto-sans-nandinagari-fonts 
+  - noto-sans-newa-fonts 
+  - noto-sans-newtailue-fonts 
+  - noto-sans-nko-fonts 
+  - noto-sans-nushu-fonts 
+  - noto-sans-ogham-fonts 
+  - noto-sans-olchiki-fonts 
+  - noto-sans-oldhungarian-fonts 
+  - noto-sans-olditalic-fonts 
+  - noto-sans-oldnortharabian-fonts 
+  - noto-sans-oldpermic-fonts 
+  - noto-sans-oldpersian-fonts 
+  - noto-sans-oldsogdian-fonts 
+  - noto-sans-oldsoutharabian-fonts 
+  - noto-sans-oldturkic-fonts 
+  - noto-sans-oriya-fonts 
+  - noto-sans-oriya-ui-fonts 
+  - noto-sans-osage-fonts 
+  - noto-sans-osmanya-fonts 
+  - noto-sans-pahawhhmong-fonts 
+  - noto-sans-palmyrene-fonts 
+  - noto-sans-paucinhau-fonts 
+  - noto-sans-phagspa-fonts 
+  - noto-sans-phoenician-fonts 
+  - noto-sans-psalterpahlavi-fonts 
+  - noto-sans-rejang-fonts 
+  - noto-sans-runic-fonts 
+  - noto-sans-samaritan-fonts 
+  - noto-sans-saurashtra-fonts 
   - noto-sans-sc-black-fonts 
   - noto-sans-sc-demilight-fonts 
   - noto-sans-sc-fonts-full 
@@ -17410,6 +17561,30 @@ unsorted:
   - noto-sans-sc-medium-fonts 
   - noto-sans-sc-mono-fonts 
   - noto-sans-sc-thin-fonts 
+  - noto-sans-sharada-fonts 
+  - noto-sans-shavian-fonts 
+  - noto-sans-siddham-fonts 
+  - noto-sans-signwriting-fonts 
+  - noto-sans-sinhala-fonts 
+  - noto-sans-sinhala-ui-fonts 
+  - noto-sans-sogdian-fonts 
+  - noto-sans-sorasompeng-fonts 
+  - noto-sans-soyombo-fonts 
+  - noto-sans-sundanese-fonts 
+  - noto-sans-sylotinagri-fonts 
+  - noto-sans-symbols-fonts 
+  - noto-sans-symbols2-fonts 
+  - noto-sans-syriac-fonts 
+  - noto-sans-tagalog-fonts 
+  - noto-sans-tagbanwa-fonts 
+  - noto-sans-taile-fonts 
+  - noto-sans-taitham-fonts 
+  - noto-sans-taiviet-fonts 
+  - noto-sans-takri-fonts 
+  - noto-sans-tamil-fonts 
+  - noto-sans-tamil-ui-fonts 
+  - noto-sans-tamilsupplement-fonts 
+  - noto-sans-tangsa-fonts 
   - noto-sans-tc-black-fonts 
   - noto-sans-tc-demilight-fonts 
   - noto-sans-tc-fonts-full 
@@ -17417,12 +17592,55 @@ unsorted:
   - noto-sans-tc-medium-fonts 
   - noto-sans-tc-mono-fonts 
   - noto-sans-tc-thin-fonts 
+  - noto-sans-telugu-fonts 
+  - noto-sans-telugu-ui-fonts 
+  - noto-sans-thaana-fonts 
+  - noto-sans-thai-fonts 
+  - noto-sans-thai-ui-fonts 
+  - noto-sans-tifinagh-fonts 
+  - noto-sans-tifinaghadrar-fonts 
+  - noto-sans-tifinaghagrawimazighen-fonts 
+  - noto-sans-tifinaghahaggar-fonts 
+  - noto-sans-tifinaghair-fonts 
+  - noto-sans-tifinaghapt-fonts 
+  - noto-sans-tifinaghazawagh-fonts 
+  - noto-sans-tifinaghghat-fonts 
+  - noto-sans-tifinaghhawad-fonts 
+  - noto-sans-tifinaghrhissaixa-fonts 
+  - noto-sans-tifinaghsil-fonts 
+  - noto-sans-tifinaghtawellemmet-fonts 
+  - noto-sans-tirhuta-fonts 
+  - noto-sans-ugaritic-fonts 
+  - noto-sans-vai-fonts 
+  - noto-sans-vithkuqi-fonts 
+  - noto-sans-wancho-fonts 
+  - noto-sans-warangciti-fonts 
+  - noto-sans-yi-fonts 
+  - noto-sans-zanabazarsquare-fonts 
+  - noto-serif-ahom-fonts 
+  - noto-serif-armenian-fonts 
+  - noto-serif-balinese-fonts 
+  - noto-serif-bengali-fonts 
+  - noto-serif-devanagari-fonts 
+  - noto-serif-display-fonts 
+  - noto-serif-divesakuru-fonts 
+  - noto-serif-dogra-fonts 
+  - noto-serif-ethiopic-fonts 
+  - noto-serif-fonts 
+  - noto-serif-georgian-fonts 
+  - noto-serif-grantha-fonts 
+  - noto-serif-gujarati-fonts 
+  - noto-serif-gurmukhi-fonts 
+  - noto-serif-hebrew-fonts 
   - noto-serif-jp-black-fonts 
   - noto-serif-jp-extralight-fonts 
   - noto-serif-jp-fonts-full 
   - noto-serif-jp-light-fonts 
   - noto-serif-jp-medium-fonts 
   - noto-serif-jp-semibold-fonts 
+  - noto-serif-kannada-fonts 
+  - noto-serif-khmer-fonts 
+  - noto-serif-khojki-fonts 
   - noto-serif-kr-black-fonts 
   - noto-serif-kr-bold-fonts 
   - noto-serif-kr-extralight-fonts 
@@ -17432,18 +17650,37 @@ unsorted:
   - noto-serif-kr-medium-fonts 
   - noto-serif-kr-regular-fonts 
   - noto-serif-kr-semibold-fonts 
+  - noto-serif-lao-fonts 
+  - noto-serif-makasar-fonts 
+  - noto-serif-malayalam-fonts 
+  - noto-serif-myanmar-fonts 
+  - noto-serif-nyiakengpuachuehmong-fonts 
+  - noto-serif-olduyghur-fonts 
+  - noto-serif-oriya-fonts 
   - noto-serif-sc-black-fonts 
   - noto-serif-sc-extralight-fonts 
   - noto-serif-sc-fonts-full 
   - noto-serif-sc-light-fonts 
   - noto-serif-sc-medium-fonts 
   - noto-serif-sc-semibold-fonts 
+  - noto-serif-sinhala-fonts 
+  - noto-serif-tamil-fonts 
+  - noto-serif-tamilslanted-fonts 
+  - noto-serif-tangut-fonts 
   - noto-serif-tc-black-fonts 
   - noto-serif-tc-extralight-fonts 
   - noto-serif-tc-fonts-full 
   - noto-serif-tc-light-fonts 
   - noto-serif-tc-medium-fonts 
   - noto-serif-tc-semibold-fonts 
+  - noto-serif-telugu-fonts 
+  - noto-serif-thai-fonts 
+  - noto-serif-tibetan-fonts 
+  - noto-serif-toto-fonts 
+  - noto-serif-vithkuqi-fonts 
+  - noto-serif-yezidi-fonts 
+  - noto-tinos-fonts 
+  - noto-traditionalnushu-fonts 
   - nova 
   - novdoc 
   - novnc 
@@ -19067,6 +19304,8 @@ unsorted:
   - perl-Curses 
   - perl-CursesWidgets 
   - perl-Cwd-Guard 
+  - perl-Cyrus-IMAP 
+  - perl-Cyrus-SIEVE-managesieve 
   - perl-DBD-CSV 
   - perl-DBD-MariaDB 
   - perl-DBD-ODBC 
@@ -19409,6 +19648,7 @@ unsorted:
   - perl-JavaScript-Minifier-XS 
   - perl-LWP-ConsoleLogger 
   - perl-LWP-Online 
+  - perl-LaTeXML 
   - perl-Lexical-Persistence 
   - perl-Lexical-SealRequireHints 
   - perl-Lingua-EN-FindNumber 
@@ -19901,6 +20141,7 @@ unsorted:
   - perl-Template-Toolkit 
   - perl-Term-Encoding 
   - perl-Term-ProgressBar 
+  - perl-Term-ReadLine-Gnu 
   - perl-Term-ReadPassword 
   - perl-Term-Size-Any 
   - perl-Term-Size-Perl 
@@ -19970,7 +20211,6 @@ unsorted:
   - perl-Test-Object 
   - perl-Test-Output 
   - perl-Test-Perl-Critic 
-  - perl-Test-PerlTidy 
   - perl-Test-Pod 
   - perl-Test-Pod-Coverage 
   - perl-Test-Refcount 
@@ -21599,6 +21839,7 @@ unsorted:
   - python3-tdb-32bit: [x86_64] 
   - python3-tevent-32bit: [x86_64] 
   - python3-tooz 
+  - python3-tpm2-pytss 
   - python3-tvtk 
   - python3-tvtk-doc 
   - python3-uhd 
@@ -21848,7 +22089,7 @@ unsorted:
   - python310-acefile 
   - python310-acitoolkit 
   - python310-acme 
-  - python310-acoular 
+  - python310-acoular: [x86_64] 
   - python310-actdiag 
   - python310-adal 
   - python310-adapt-parser 
@@ -24904,7 +25145,7 @@ unsorted:
   - python38-acefile 
   - python38-acitoolkit 
   - python38-acme 
-  - python38-acoular 
+  - python38-acoular: [x86_64] 
   - python38-actdiag 
   - python38-adal 
   - python38-adapt-parser 
@@ -28192,7 +28433,7 @@ unsorted:
   - python39-acefile 
   - python39-acitoolkit 
   - python39-acme 
-  - python39-acoular 
+  - python39-acoular: [x86_64] 
   - python39-actdiag 
   - python39-adal 
   - python39-adapt-parser 
@@ -32701,6 +32942,7 @@ unsorted:
   - slurm-slurmdbd: [x86_64] 
   - slurm-sql: [x86_64] 
   - slurm-sview: [x86_64] 
+  - slurm-testsuite: [x86_64] 
   - slurm-torque: [x86_64] 
   - slurm-webdoc: [x86_64] 
   - slurp 
@@ -42965,6 +43207,7 @@ unsorted:
   - wavemon 
   - wavpack 
   - wavpack-devel 
+  - wavpack-doc 
   - waybar 
   - waybar-branding-openSUSE 
   - waybar-branding-upstream 
