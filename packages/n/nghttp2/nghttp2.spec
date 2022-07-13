@@ -16,10 +16,10 @@
 #
 
 
-%define soname  libnghttp2
-%define sover   14
-%define soname_asio libnghttp2_asio
-%define sover_asio 1
+%global soname  libnghttp2
+%global sover   14
+%global soname_asio libnghttp2_asio
+%global sover_asio 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "python"
 %define psuffix -python
@@ -29,7 +29,7 @@
 %bcond_with python
 %endif
 Name:           nghttp2%{psuffix}
-Version:        1.47.0
+Version:        1.48.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT
