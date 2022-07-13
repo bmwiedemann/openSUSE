@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jul 11 19:43:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.48.0:
+  * lib: Allow server to override RFC 9218 stream priority
+  * lib: Add a server option to fallback to RFC 7540 priorities
+  * lib: Add PRIORITY_UPDATE frame support
+  * lib: Implement RFC 9218 extensible prioritization scheme
+  * lib: Do not verify host field specific characters for response field
+  * lib: No rfc7540 priorities
+  * lib: Fix stream stall when initial window size is decreased
+  * doc: Document how to change stream prioritization scheme
+  * build: Compile with libressl 3.5
+  * build: EXTRA_DIST: List mruby files explicitly
+  * build: Bump ngtcp2 and nghttp3
+  * build: Do not check application libraries if --enable-lib-only is given
+  * src: Update default TLS cipher suites
+  * nghttpx, h2load: Better pack UDP packets in one GSO write
+  * nghttpx, h2load: Quic error handling
+  * nghttpx, h2load: Fix QUIC performance regression
+  * nghttp, nghttpd, nghttpx: Add ktls support
+  * h2load: Send more packets without GSO per event loop
+  * h2load: Add ktls support
+  * nghttpd: Fix TLS read stall
+  * nghttpx: Disable RFC 7540 priorities
+  * nghttpx: Client always uses simpler TLS handshake
+  * nghttpx: Add affinity-cookie-stickiness backend parameter
+  * nghttpx: Fix broken session affinity
+  * nghttpx: Limit CONNECTION_CLOSE and Retry under server amplification limit
+  * integration: Go update
+  * integration: Add go.mod
+  * third-party: Bump llhttp to 75b45129db961e1fb3c56044e1b8f7721bfaee5d
+  * third-party: Bump libbpf to v0.8.0
+  * third-party: Bump mruby to 3.1.0
+  * third-party: Bump neverbleed based on the latest head (GH-1708) 
+
+-------------------------------------------------------------------
 Sun Mar 20 21:13:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.47.0:
