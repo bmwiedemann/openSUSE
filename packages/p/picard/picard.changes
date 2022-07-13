@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jul 13 07:25:27 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.8.2:
+  * Bugfixes
+    - PICARD-2480 - Lookup CD from EAC log generates incorrect Disc
+      ID from Enhanced CDs
+    - PICARD-2498 - Except for the description no HTML should be
+      allowed in plugin metadata
+    - PICARD-2505 - Cover art type "matrix/runout" causes a folder
+      "matrix" being created when saving cover art
+    - PICARD-2506 - fpcalc errors out with paths > 259 characters
+    - PICARD-2507 - CD pregap track not included in totaltracks
+    - PICARD-2508 - Scripts being run repeatedly when script editor
+      is open, can result in data duplication for scripts appending
+      to existing tags
+    - PICARD-2515 - macOS: Swatches not coloured in Options >
+      User Interface > Colours
+    - PICARD-2518 - Keyboard shortcuts not working in Italian localization
+  * Improvements
+    - PICARD-2504 - Increase default query limit and make it configurable
+    - PICARD-2516 - Support CAA cover art types "Top" and "Bottom"
+    - PICARD-2517 - Support media type "Mixed Mode CD"
+
+-------------------------------------------------------------------
 Tue Jun 14 11:34:21 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 2.8.1:
