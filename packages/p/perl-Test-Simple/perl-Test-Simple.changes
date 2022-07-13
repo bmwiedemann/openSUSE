@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 10 03:08:26 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302191
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302191  2022-07-09 10:48:09-07:00 America/Los_Angeles
+
+      - CI Fixes
+      - avoid failing when printing diagnostic info comparing partial overload objects
+
+-------------------------------------------------------------------
 Sat Mar  5 03:10:36 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302190
