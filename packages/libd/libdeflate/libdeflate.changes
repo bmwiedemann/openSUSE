@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul 12 15:21:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12:
+  * Improved CRC-32 performance on short inputs on x86 and ARM.
+  * Improved CRC-32 performance on Apple Silicon Macs by using a 12-way pmull
+    implementation.   Performance on large inputs on M1 is now about 67 GB/s,
+    compared to 8 GB/s before, or 31 GB/s with the Apple-provided zlib.
+  * Improved CRC-32 performance on some other ARM CPUs by reworking the code so
+    that multiple crc32 instructions can be issued in parallel.
+  * Improved CRC-32 performance on some x86 CPUs by increasing the stride length
+    of the pclmul implementation.
+  * Improved Adler-32 performance on some x86 CPUs by optimizing the AVX-2
+    implementation.  E.g., performance on Zen 1 improved from 19 to 30 GB/s, and
+    on Ice Lake from 35 to 41 GB/s (if the AVX-512 implementation is excluded).
+  * Removed the AVX-512 implementation of Adler-32 to avoid CPU frequency
+    downclocking, and because the AVX-2 implementation was made faster.
+  * Improved Adler-32 performance on some ARM CPUs by optimizing the NEON
+  * Improved compression performance slightly.
+  * Detect arm64 CPU features on Apple platforms, which should improve
+    performance in some areas such as CRC-32 computation.
+  * The included `gzip` and `gunzip` programs now support the `-q` option.
+  * The included `gunzip` program now passes through non-gzip data when both
+    the `-f` and `-c` options are used.
+
+-------------------------------------------------------------------
 Mon Feb 14 23:14:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10:
