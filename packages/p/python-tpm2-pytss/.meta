@@ -1,0 +1,5 @@
+<package name="python-tpm2-pytss" project="openSUSE:Factory">
+  <title>Python bindings for TSS</title>
+  <description>TPM2 TSS Python bindings for Enhanced System API (ESYS), Feature API (FAPI), Marshaling (MU), TCTI Loader (TCTILdr) and RC Decoding (rcdecode) libraries.</description>
+  <devel project="devel:languages:python" package="python-tpm2-pytss"/>
+</package>
