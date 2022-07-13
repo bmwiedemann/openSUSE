@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 11 14:56:15 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Add Fix-maes-msse41-leaking-into-pkgconfig.patch
+  * Do not make programs compiled with abseil require new-ish CPUs.
+
+-------------------------------------------------------------------
 Sun Jul  3 21:25:15 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 20220623.0

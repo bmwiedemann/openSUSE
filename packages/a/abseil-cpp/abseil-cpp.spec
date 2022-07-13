@@ -34,6 +34,8 @@ Patch0:         options-old.patch
 %else
 Patch0:         options-cxx17.patch
 %endif
+# PATCH-FIX-UPSTREAM Fix-maes-msse41-leaking-into-pkgconfig.patch
+Patch1:         Fix-maes-msse41-leaking-into-pkgconfig.patch
 
 %description
 Abseil is a collection of C++11 libraries which augment the C++
