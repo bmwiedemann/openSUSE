@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul 13 02:40:44 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.2.4:
+  * The default set of languages imported and visible in menus now
+    includes Markdown and PowerShell. Ada, Caml, D, and Fortran
+    were excluded but can be reenabled by users setting the
+    `imports.exclude' property.
+  * On GTK, path bar text can be selected. Feature #1439.
+
+-------------------------------------------------------------------
+Wed Jun 22 01:10:32 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.2.3:
+  * Fix crash on Windows after opening a file with File Open
+    dialog when open.filter empty. Bug #2325.
+  * Fix hang on Windows with file on UNC share. Bug #2326.
+  * Fix display of replacement field in replace strip on Windows
+    with 250% scaling. Bug #2331.
+  * Fix localisation for text that start with "match". Bug #2327.
+- Update scite-use-system-scintilla.patch to drop rpath $ORIGIN
+  usage that causes build failures on 15.4.
+
+-------------------------------------------------------------------
 Mon May  2 14:32:31 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Require libscintilla-devel >= 5.2.2 for building.
