@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 11 19:33:02 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- version update to 3.5.0
+  * A new path builtin command to filter and transform paths (#7659, #8958).
+  * Tab (or any key bound to complete) now expands wildcards instead of
+    invoking completions, if there is a wildcard in the path component under
+    the cursor (#954, #8593).
+  * Scripts can now catch and handle the SIGINT and SIGTERM signals, either via
+    function --on-signal or with trap (#6649).
+  * see https://github.com/fish-shell/fish-shell/releases/tag/3.5.0
+    for more details
+
+-------------------------------------------------------------------
 Wed Apr  6 20:13:28 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - version update to 3.4.1
