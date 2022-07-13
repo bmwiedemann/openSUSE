@@ -18,7 +18,7 @@
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 38
-%define ver 22.05.0
+%define ver 22.05.2
 %define _ver _22_05
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
@@ -28,6 +28,8 @@
 %define ver_major %(ver=%{version}; echo ${ver%.*})
 
 %define pname slurm
+
+%define slurm_testsuite 1
 
 %ifarch i586 %arm s390
 ExclusiveArch:  do_not_build
@@ -49,7 +51,7 @@ ExclusiveArch:  do_not_build
 %if 0%{?sle_version} == 150200
 %define base_ver 2002
 %endif
-%if 0%{?sle_version} == 150300
+%if 0%{?sle_version} == 150300 || 0%{?sle_version} == 150400
 %define base_ver 2011
 %endif
 
@@ -87,6 +89,7 @@ ExclusiveArch:  do_not_build
 %define have_http_parser 1
 %endif
 
+# it seems as disabling slurmrestd has no effect on 22.05
 %if 0%{?have_http_parser} && 0%{?have_json_c}
 %define build_slurmrestd 1
 %endif
@@ -124,7 +127,7 @@ ExclusiveArch:  do_not_build
  %define slurm_g root
 %endif
 %define slurm_uid 120
-%define slurmdir %{_sysconfdir}/slurm
+%define slurmdir %{_rundir}/slurm
 %define slurmdescr "SLURM workload manager"
 
 %define libslurm libslurm%{so_version}
@@ -132,6 +135,9 @@ ExclusiveArch:  do_not_build
 
 %if !0%{?_pam_moduledir:1}
 %define _pam_moduledir /%_lib
+%endif
+%if !0%{?%_pam_secconfdir:1}
+%define _pam_secconfdir %_sysconfdir/security
 %endif
 
 Name:           %{pname}%{?upgrade:%{_ver}}
@@ -146,8 +152,17 @@ Source1:        slurm-rpmlintrc
 Source10:       https://raw.githubusercontent.com/openSUSE/hpc/10c105e/files/slurm/slurmd.xml
 Source11:       https://raw.githubusercontent.com/openSUSE/hpc/10c105e/files/slurm/slurmctld.xml
 Source12:       https://raw.githubusercontent.com/openSUSE/hpc/10c105e/files/slurm/slurmdbd.xml
+# create: tar --owner=nobody --group=nogroup -cvzf test_setup.tar.gz test_setup
+Source20:       test_setup.tar.gz
+Source21:       README_Testsuite.md
 Patch0:         Remove-rpath-from-build.patch
 Patch2:         pam_slurm-Initialize-arrays-and-pass-sizes.patch
+Patch10:        Fix-test-21.41.patch
+Patch11:        Fix-test-38.11.patch
+Patch12:        Fix-test-32.8.patch
+Patch13:        Fix-test-3.13.patch
+Patch14:        Keep-logs-of-skipped-test-when-running-test-cases-sequentially.patch
+Patch15:        Fix-test7.2-to-find-libpmix-under-lib64-as-well.patch
 
 %{?upgrade:Provides: %{pname} = %{version}}
 %{?upgrade:Conflicts: %{pname}}
@@ -229,12 +244,14 @@ management, scheduling and accounting modules.
 %package doc
 Summary:        Documentation for SLURM
 Group:          Documentation/HTML
+BuildArch:      noarch
 %{?upgrade:Provides: %{pname}-doc = %{version}}
 %{?upgrade:Conflicts: %{pname}-doc}
 
 %package webdoc
 Summary:        Set up SLURM Documentation Server
 Group:          Productivity/Clustering/Computing
+BuildArch:      noarch
 %if 0%{?have_apache_rpm_macros}
 BuildRequires:  apache-rpm-macros
 %else
@@ -500,6 +517,7 @@ Recommends:     (%{name}-munge = %version if munge)
 %else
 Recommends:     %{name}-munge = %version
 %endif
+%{?with_pmix:Recommends:     pmix-devel}
 %if 0%{?with_systemd}
 %{?systemd_ordering}
 %else
@@ -515,6 +533,7 @@ This package contains just the minmal code to run a compute node.
 Summary:        Config files and directories for slurm services
 Group:          Productivity/Clustering/Computing
 Requires:       logrotate
+BuildArch:      noarch
 %if 0%{?suse_version} <= 1140
 Requires(pre):  pwdutils
 %else
@@ -533,6 +552,7 @@ for the slurm daemons.
 %package config-man
 Summary:        Config files and directories for slurm services
 Group:          Documentation/Man
+BuildArch:      noarch
 %{?upgrade:Provides: %{pname}-config-man = %{version}}
 %{?upgrade:Conflicts: %{pname}-config-man}
 
@@ -556,12 +576,61 @@ Group:          Productivity/Clustering/Computing
 Plugins for specific cray hardware, includes power and knl node management.
 Contains also cray specific documentation.
 
+%package testsuite
+Summary:        Regression tests from Slurm sources
+Group:          Productivity/Clustering/Computing
+Requires:       %{name} = %version
+Requires:       %{name}-auth-none = %version
+Requires:       %{name}-cray = %version
+Requires:       %{name}-devel = %version
+Requires:       %{name}-hdf5 = %version
+Requires:       %{name}-lua = %version
+Requires:       %{name}-munge = %version
+Requires:       %{name}-node = %version
+Requires:       %{name}-openlava = %version
+Requires:       %{name}-rest = %version
+Requires:       %{name}-seff = %version
+Requires:       %{name}-sjstat = %version
+Requires:       %{name}-slurmdbd = %version
+Requires:       %{name}-sql = %version
+Requires:       %{name}-torque = %version
+Requires:       mariadb
+%{?with_pmix:Requires:       pmix-devel}
+Requires:       bzip2
+Requires:       expect
+Requires:       gcc-c++
+Requires:       libnuma-devel
+Requires:       openmpi4-gnu-hpc-devel
+Requires:       pdsh
+Requires:       perl-%{name} = %version
+Requires:       sudo
+Requires:       tar
+BuildRequires:  sudo
+
+%description testsuite
+NOTE: THIS PACKAGE IS FOR TESTING PURPOSES ONLY. IT REQUIRES A
+DEDICATED TESTING ENVIRONMENT.
+
+DO NOT INSTALL ON A PRODUCTION SYSTEM!
+
+Slurm provides a test set implemented as 'expect' scripts.
+Not all of the tests are expected to pass, some require a modified
+configuration. This test package is meant for internal purposes.
+Do not run test suite and file bug reports for each failed test!
+
 %prep
 %setup -q -n %{pname}-%{dl_ver}
 %patch0 -p1
 #%%patch1 -p1
 %patch2 -p1
 #%%patch3 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+
 %if 0%{?python_ver} < 3
 # Workaround for wrongly flagged python3 to keep SLE-11-SP4 building
 mkdir -p mybin; ln -s /usr/bin/python2 mybin/python3
@@ -579,9 +648,9 @@ autoreconf
            --without-datawarp \
            --with-shared-libslurm \
            --with-pam_dir=%_pam_moduledir \
-           %{?with_pmix:--with-pmix=/usr/} \
-%if 0%{?build_slurmrestd}
-           --enable-slurmrestd \
+           %{?with_pmix:--with-pmix=%_prefix/} \
+%if 0%{!?build_slurmrestd:1}
+           --disable-slurmrestd \
 %endif
 	   --with-yaml \
 %{!?have_netloc:--without-netloc} \
@@ -620,7 +689,6 @@ mkdir -p %{buildroot}%{_localstatedir}/spool/slurm
 install -D -m644 etc/cgroup.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/cgroup.conf
 install -D -m644 etc/slurm.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf.example
 install -D -m600 etc/slurmdbd.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/slurmdbd.conf
-install -D -m600 etc/slurmdbd.conf.example %{buildroot}%{_sysconfdir}/%{pname}/slurmdbd.conf.example
 install -D -m755 contribs/sjstat %{buildroot}%{_bindir}/sjstat
 install -D -m755 contribs/sgather/sgather %{buildroot}%{_bindir}/sgather
 %if 0%{?have_firewalld}
@@ -677,7 +745,8 @@ sed -i -e "s@PIDFile=.*@PIDFile=%{_localstatedir}/run/slurm/slurmdbd.pid@" \
        -e 's@After=\(.*\)@After=\1 mariadb.service@' \
  %{buildroot}/%{_unitdir}/slurmdbd.service
 %if 0%{?have_sysuser}
-echo "u %slurm_u %{slurm_uid} \"%slurmdescr\" %{slurmdir}\n" > system-user-%{pname}.conf
+[ -e /usr/bin/bash ] && BASH_BIN=/usr/bin/bash || BASH_BIN=/bin/bash
+echo "u %slurm_u %{slurm_uid} \"%slurmdescr\" %{slurmdir} ${BASH_BIN}" > system-user-%{pname}.conf
 %sysusers_generate_pre system-user-%{pname}.conf %{pname} system-user-%{pname}.conf
 install -D -m 644 system-user-%{pname}.conf %{buildroot}%{_sysusersdir}/system-user-%{pname}.conf
 %endif
@@ -763,10 +832,84 @@ cat > %{buildroot}/%{_sysconfdir}/%{pname}/nss_slurm.conf <<EOF
 ## Specify if does not match hostname
 # NodeName myname
 EOF
+
+# Install testsuite
+%if 0%{?slurm_testsuite}
+# bug in testsuite
+ln -sf /usr/lib64/libslurm.so %{buildroot}/usr/lib64/slurm/libslurm.so
+
+mkdir -p %{buildroot}/srv/slurm-testsuite
+cd testsuite/expect
+filelist="$(grep '#include' *.c | sed -ne 's/.*:#include *\"\([^\"]*\)\".*/\1/p' | sort | uniq)"
+while true; do
+    oldfilelist=$filelist; tlist=""
+    for i in $filelist; do
+        nlist=" $(grep '#include' ../../$i | sed -ne 's/#include *\"\([^\"]*\)\".*/\1/p')"
+        tlist+=" $(for j in $nlist; do [ -e ../../$j ] && echo $j || true; done)"
+    done
+    filelist="$(for i in $filelist $tlist; do echo $i; done | sort | uniq)"
+    [ "$filelist" = "$oldfilelist" ] && break
+done
+filelist+=" $(grep -r "build_dir.*\.[oa]" | sed -e 's@.*[^ ]*{build_dir}/\([^\]*\.o\).*@\1@' | sort | uniq)"
+cd -
+newlist=""
+for i in $filelist; do
+    dir=$(dirname $i)
+    [ -d %{buildroot}/srv/slurm-testsuite/$dir ] || mkdir -p %{buildroot}/srv/slurm-testsuite/$dir
+    cp -a $i %{buildroot}/srv/slurm-testsuite/$dir/
+done
+mkdir -p %{buildroot}/srv/slurm-testsuite/testsuite/expect
+cp -ax testsuite/expect %{buildroot}/srv/slurm-testsuite/testsuite/
+cat > %{buildroot}/srv/slurm-testsuite/testsuite/expect/globals.local <<EOF
+set slurm_dir "/usr"
+set build_dir "/srv/slurm-testsuite"
+set src_dir "/srv/slurm-testsuite"
+set mpicc   [ exec which mpicc ]
+set testsuite_user "auser"
+#set testsuite_cleanup_on_failure false
+EOF
+mkdir -p %{buildroot}/srv/slurm-testsuite/shared
+mkdir -p %{buildroot}%_localstatedir/lib/slurm/shared
+cd %{buildroot}/srv/slurm-testsuite
+tar --group=%slurm_g --owner=%slurm_u -cjf /tmp/slurmtest.tar.bz2 *
+cd -
+rm -rf %{buildroot}/srv/slurm-testsuite
+mkdir -p %{buildroot}/srv/slurm-testsuite
+mv /tmp/slurmtest.tar.bz2 %{buildroot}/srv/slurm-testsuite
+
+mkdir -p %{buildroot}/etc/sudoers.d
+echo "slurm ALL=(auser) NOPASSWD:ALL" > %{buildroot}/etc/sudoers.d/slurm
+chmod 0440 %{buildroot}/etc/sudoers.d/slurm
+
+SLURMD_SERVICE=%{buildroot}%_sysconfdir/systemd/system/slurmd.service
+mkdir -p `dirname $SLURMD_SERVICE`
+cp %{buildroot}/%_unitdir/slurmd.service  $SLURMD_SERVICE
+if grep -qE "^LimitNPROC" $SLURMD_SERVICE; then
+    sed -i -e '/LimitNPROC/s@=.*@=infinity@' $SLURMD_SERVICE
+else
+    sed -i -e '/LimitSTACK/aLimitNPROC=infinity' $SLURMD_SERVICE
+fi
+sed -i -e '/ExecStart/aExecStartPre=/bin/bash -c "for i in 0 1 2 3; do test -e /dev/nvidia$i || mknod /dev/nvidia$i c 10 $((i+2)); done"' $SLURMD_SERVICE
+
+tar -xzf %{S:20}
+mkdir -p %{buildroot}%{_pam_secconfdir}/limits.d
+mv test_setup/slurm.conf.limits %{buildroot}%_pam_secconfdir/limits.d/slurm.conf
+
+mkdir -p %{buildroot}/root
+mv test_setup/setup-testsuite.sh %{buildroot}/root
+
+mkdir -p %{buildroot}/srv/slurm-testsuite/config/plugstack.conf.d
+mv test_setup/* %{buildroot}/srv/slurm-testsuite/config
+cp %{S:21} .
+%endif
+
 %fdupes -s %{buildroot}
+
 # Temporary - remove when build is fixed upstream.
 %if !0%{?build_slurmrestd}
-rm -f %{buildroot}/%{_mandir}/man8/slurmrestd.*
+rm -f %{buildroot}%{_mandir}/man8/slurmrestd.*
+rm -f %{buildroot}%{_libdir}/slurm/openapi_*.so
+rm -f %{buildroot}%{_libdir}/slurm/rest_auth_*.so
 %endif
 
 %check
@@ -861,7 +1004,7 @@ rm -f %{buildroot}/%{_mandir}/man8/slurmrestd.*
 %pre config %{?have_sysuser:-f %{pname}.pre}
 %if 0%{!?have_sysuser:1}
 getent group %slurm_g >/dev/null || groupadd -r %slurm_g
-getent passwd %slurm_u >/dev/null || useradd -r -g %slurm_g -d %slurmdir -s /bin/false -c %{slurmdescr} %slurm_u
+getent passwd %slurm_u >/dev/null || useradd -r -g %slurm_g -d %slurmdir -s /bin/bash -c %{slurmdescr} %slurm_u
 [ -d %{_localstatedir}/spool/slurm ] && /bin/chown -h %slurm_u:%slurm_g %{_localstatedir}/spool/slurm
 exit 0
 %endif
@@ -883,6 +1026,13 @@ exit 0
 
 %post -n libnss_%{pname}%{nss_so}%{?upgrade:%{_ver}} -p /sbin/ldconfig
 %postun -n libnss_%{pname}%{nss_so}%{?upgrade:%{_ver}} -p /sbin/ldconfig
+
+%post testsuite
+rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite /srv/slurm-testsuite/config.h
+tar --same-owner -C /srv/slurm-testsuite -xjf /srv/slurm-testsuite/slurmtest.tar.bz2
+
+%preun testsuite
+rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite /srv/slurm-testsuite/config.h
 
 %{!?nil:
 # On update the %%postun code of the old package restarts the
@@ -1015,7 +1165,7 @@ exit 0
 
 %files webdoc
 %{?comp_at}
-%{apache_sysconfdir}/conf.d/slurm.conf
+%config %{apache_sysconfdir}/conf.d/slurm.conf
 
 %files -n %{libslurm}
 %{?comp_at}
@@ -1069,7 +1219,6 @@ exit 0
 %{_mandir}/man5/slurmdbd.*
 %{_mandir}/man8/slurmdbd.*
 %config(noreplace) %attr(0600,%slurm_u,%slurm_g) %{_sysconfdir}/%{pname}/slurmdbd.conf
-%attr(0600,%slurm_u,%slurm_g) %{_sysconfdir}/%{pname}/slurmdbd.conf.example
 %if 0%{?with_systemd}
 %{_unitdir}/slurmdbd.service
 %else
@@ -1105,7 +1254,9 @@ exit 0
 %{_libdir}/slurm/burst_buffer_lua.so
 %{?have_json_c:%{_libdir}/slurm/burst_buffer_datawarp.so}
 %{_libdir}/slurm/cgroup_v1.so
+%if 0%{?suse_version} >= 1500
 %{_libdir}/slurm/cgroup_v2.so
+%endif
 %{_libdir}/slurm/core_spec_none.so
 %{_libdir}/slurm/cli_filter_none.so
 %{_libdir}/slurm/cli_filter_lua.so
@@ -1308,6 +1459,25 @@ exit 0
 %if 0%{?have_json_c}
 %{_libdir}/slurm/node_features_knl_cray.so
 %{_libdir}/slurm/power_cray_aries.so
+%endif
+
+%if 0%{?slurm_testsuite}
+%files testsuite
+%defattr(-, %slurm_u, %slurm_u, -)
+%dir %attr(-, %slurm_u, %slurm_u) /srv/slurm-testsuite
+%if 0%{?sle_version} == 120200
+%dir %{_pam_secconfdir}/limits.d
+%endif
+%doc testsuite/expect/README
+%doc %{basename: %{S:21}}
+%config %attr( -, root, root) %{_sysconfdir}/systemd/system/slurmd.service
+%config %attr(0440, root, root) %{_sysconfdir}/sudoers.d/slurm
+%config %attr( -, root, root) %{_pam_secconfdir}/limits.d/slurm.conf
+%{_libdir}/slurm/libslurm.so
+%attr(0600, %slurm_u, %slurm_g) /srv/slurm-testsuite/config/slurmdbd.conf
+/srv/slurm-testsuite/*
+%dir %attr(-, %slurm_u, %slurm_g) %_localstatedir/lib/slurm/shared
+%attr( -, root, root) /root/setup-testsuite.sh
 %endif
 
 %changelog

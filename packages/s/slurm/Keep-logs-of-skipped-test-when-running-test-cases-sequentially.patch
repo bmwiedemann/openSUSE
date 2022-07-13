@@ -1,0 +1,27 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Jun 22 16:32:35 2022 +0200
+Subject: Keep logs of skipped test when running test cases sequentially.
+Patch-mainline: Not yet
+Git-repo: https://github.com/SchedMD/slurm
+Git-commit: 457a53ca97b50530bb2fafda72d465507c434960
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ testsuite/expect/regression.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+diff --git a/testsuite/expect/regression.py b/testsuite/expect/regression.py
+index bcccaadbf5..b39af0c4e2 100755
+--- a/testsuite/expect/regression.py
++++ b/testsuite/expect/regression.py
+@@ -199,7 +199,8 @@ def main(argv=None):
+             sys.stdout.write('SKIPPED\n')
+             if not options.keep_logs:
+                 try:
+-                    os.remove(testlog_name)
++#                    os.remove(testlog_name)
++                     os.rename(testlog_name, testlog_name+'.skipped')
+                 except IOError as e:
+                     print('ERROR failed to close %s %s' % (testlog_name, e),
+                             file=sys.stederr);

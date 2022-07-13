@@ -892,4 +892,23 @@
     <comment></comment>
     <requestid>980097</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>4d40024f74d377a483fa71e6028105e0</srcmd5>
+    <version>22.05.2</version>
+    <time>1657712723</time>
+    <user>dimstar_suse</user>
+    <comment>- Package the Slurm testsuite for QA purposes.
+  * Fixes for test suite:
+    Keep-logs-of-skipped-test-when-running-test-cases-sequentially.patch
+    Fix-test-21.41.patch
+    Fix-test-38.11.patch
+    Fix-test-32.8.patch
+    Fix-test-3.13.patch
+    Fix-test7.2-to-find-libpmix-under-lib64-as-well.patch
+  * Add documentation:
+    README_Testsuite.md
+- Allow log in as user 'slurm'. This allows admins to run certain
+  priviledged commands more easily without becoming root. (forwarded request 988732 from eeich)</comment>
+    <requestid>988733</requestid>
+  </revision>
 </revisionlist>

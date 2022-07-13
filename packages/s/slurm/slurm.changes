@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jun 20 09:23:17 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- update to 22.05.2 with following fixes:
+  * Fix regression which allowed the oversubscription of licenses.
+  * Fix a segfault in slurmctld when requesting gres in job arrays.
+
+-------------------------------------------------------------------
+Wed Jun  8 13:15:24 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Package the Slurm testsuite for QA purposes.
+  NOTE: This package is not meant to be used for testing by the
+  user but rather for testing by the maintainers to ensure the
+  package is working properly.
+  DO NOT report test suite failures unless you are able to confirm
+  that the failure is really a bug.
+  * Fixes for test suite:
+    Keep-logs-of-skipped-test-when-running-test-cases-sequentially.patch
+    Fix-test-21.41.patch
+    Fix-test-38.11.patch
+    Fix-test-32.8.patch
+    Fix-test-3.13.patch
+    Fix-test7.2-to-find-libpmix-under-lib64-as-well.patch
+  * Add documentation:
+    README_Testsuite.md
+- Allow log in as user 'slurm'. This allows admins to run certain
+  priviledged commands more easily without becoming root.
+
+-------------------------------------------------------------------
 Tue May 31 12:56:05 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 - update to 22.05.0 with following changes:

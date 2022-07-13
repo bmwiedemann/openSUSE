@@ -2,17 +2,49 @@ addFilter(".*obsolete-not-provided slurm-sched-wiki.*")
 addFilter(".*obsolete-not-provided slurmdb-direct.*")
 
 # libslurm provides an ABI and a wire protocol. The wire protocol may change
-# with any SLURM version in an incompatible way. Therefore, multiple versions
-# of libslurm should not be installed on the same system.
-# Thus, libraries depending on libslurm need to match the installed SLURM
+# with any Slurm version in an incompatible way. The wire protocol is
+# implemented in the library libslurm.
+# Therefore, multiple versions of libslurm should not be installed on the
+# same system.
+# Thus, libraries depending on libslurm need to match the installed Slurm
 # version - independent of their major versions.
-# To host multiple SLURM versions in the same repository we add the version
+# To host multiple Slurm versions in the same repository we add the version
 # string to package names for none-base versions - even to library packages.
 # This mainly applies to upgrade packages for Leap and SLE in the maintenance
 # channel.
-addFilter("libnss_slurm\d_\d{2}_\d{2}.*: .* shlib-policy-name-error.*")
+addFilter("libnss_slurm\d_\d{2}_\d{2}.*: E: shlib-policy-name-error.*")
 
-# slurms uses shared libraries for its plugins, so these plugins can have 
+# slurms uses shared libraries for its plugins, so these plugins can have
 # no dependency information
 
 addFilter(".*shared-library-without-dependency-information /usr/lib64/slurm/.*so")
+# Our logrotate file names are derived from the service name.
+addFilter(".* E: incoherent-logrotate-file /etc/logrotate.d/slurm.*\.conf")
+
+# ? Why should we package the log dir?
+addFilter(".*: E: logrotate-log-dir-not-packaged /var/log")
+# these packages contain %service_del_postun_without_restart -
+# which we define if it is not defined. This needs to be kept
+# as long as we need to support the HPC module for SLE-12.
+addFilter("slurm(|-node|-slurmdbd)\..*: systemd-service-without-service_del_postun .*")
+
+# Testsuite is not meant to be installed on a user system.
+# The idea is to place the test suite into a package mostly unaltered
+# to place it to a test rig without requiring to install the full Slurm
+# sources.
+# ... and in the same vein
+addFilter("slurm(|_.*)-testsuite.*: E: filelist-forbidden-opt /opt/slurmtest")
+# This is by intention - the test suite requires a test suite specific
+# systemd unit file.
+addFilter("slurm(|_.*)-testsuite.*: E: filelist-forbidden-systemd-userdirs")
+# It is not a devel package but a test suite. The test suite is designed to
+# build test binaries when it is executed.
+addFilter("slurm(|_.*)-testsuite.*: E: devel-file-in-non-devel-package")
+# We want to give root a script to set up the test system
+addFilter("slurm(|_.*)-testsuite.*: E: filelist-forbidden-fhs23 /root")
+# Testsuite needs this as it builds test binaries.
+addFilter("slurm(|_.*)-testsuite.*: devel-dependency libnuma-devel")
+addFilter("slurm(|_.*)-testsuite.*: E: explicit-lib-dependency libnuma-devel")
+# To reduce the amount of preparation, the test suite supplies all required
+# settings.
+addFilter("slurm(|_.*)-testsuite.*: sudoers-file-unauthorized .*")

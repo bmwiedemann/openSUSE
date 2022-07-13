@@ -1,0 +1,35 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Jun 15 08:40:50 2022 +0200
+Subject: - Fix test 3.13
+Patch-mainline: Not yet
+Git-repo: https://github.com/SchedMD/slurm
+Git-commit: cc82d21d77ccd4753ed56f80e14cfa13acd3643d
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ testsuite/expect/test3.13 | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+diff --git a/testsuite/expect/test3.13 b/testsuite/expect/test3.13
+index bcce201215..9781ffcff9 100755
+--- a/testsuite/expect/test3.13
++++ b/testsuite/expect/test3.13
+@@ -109,7 +109,7 @@ log_info "Test 1"
+ set no_jobs 0
+ spawn $scontrol update JobName=$script_name UserID=1 Priority=$new_prio
+ expect {
+-	-re "No jobs with" {
++	-re "Invalid UserID" {
+ 		set no_jobs 1
+ 		exp_continue
+ 	}
+@@ -130,7 +130,7 @@ set no_jobs 0
+ set my_uid  [get_my_uid]
+ spawn $scontrol update JobName=$script_name UserID=$my_uid Priority=$new_prio
+ expect {
+-	-re "No jobs with" {
++	-re "Invalid UserID" {
+ 		set no_jobs 1
+ 		exp_continue
+ 	}
