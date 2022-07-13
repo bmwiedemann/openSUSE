@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 11 07:19:55 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Require correct perl(Biber) version 
+
+-------------------------------------------------------------------
+Sun Jul  3 16:01:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add biber-missing-semicolon.patch
+  * supports perl 5.36
+- use biber version number
+- use https for urls
+- reference full download url for biber for source verification
+- use negative listing approach for luajit determination
+
+-------------------------------------------------------------------
 Tue Jun 21 08:26:38 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Support gcc-g++13

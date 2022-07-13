@@ -19,8 +19,9 @@
 %define texlive_version  2022
 %define texlive_previous 2021
 %define texlive_release  20220321
-%define texlive_noarch   190
+%define texlive_noarch   196
 %define texlive_source   texlive-20220321-source
+%define biber_version    2.17
 
 %define __perl_requires		%{nil}
 %define __os_install_post	/usr/lib/rpm/brp-compress \\\
@@ -37,7 +38,7 @@
 #                                          https://github.com/LuaJIT/LuaJIT/issues/42
 #	    Compare with libs/luajit/LuaJIT-<version>/src/lj_arch.h
 #
-%ifarch %ix86 x86_64 %arml aarch64 mips
+%ifnarch s390 s390x ppc64le
 %global         with_LuaJIT 1
 %endif
 %bcond_with	LuaJIT
@@ -65,7 +66,7 @@ Release:        0
 Summary:        The TeXLive Formatting System
 License:        Apache-2.0 AND Artistic-1.0 AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND LPPL-1.3c AND LPPL-1.0 AND MIT AND BSD-3-Clause AND SUSE-TeX AND SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 PreReq:         %{name}-filesystem >= %{texlive_version}
 PreReq:         %{name}-kpathsea >= %{texlive_version}
 PreReq:         %{name}-kpathsea-bin >= %{texlive_version}
@@ -205,7 +206,7 @@ BuildRequires:  perl(List::AllUtils)
 BuildRequires:  perl(List::MoreUtils) >= 0.407
 BuildRequires:  perl(List::MoreUtils::XS)
 BuildRequires:  perl(Log::Log4perl)
-BuildRequires:  perl(Module::Build) => 0.38
+BuildRequires:  perl(Module::Build) >= 0.38
 BuildRequires:  perl(Package::DeprecationManager)
 BuildRequires:  perl(Params::Util)
 BuildRequires:  perl(Parse::RecDescent)
@@ -233,7 +234,7 @@ BuildRequires:  perl(XML::Writer::String)
 %endif
 # Download at ftp://tug.org/texlive/historic/%{texlive_version}/
 Source0:        %{texlive_source}.tar.xz
-Source3:        biber-2.17.tar.xz
+Source3:        https://github.com/plk/biber/archive/refs/tags/v%{biber_version}.tar.gz#/biber-%{biber_version}.tar.gz
 Source4:        cnf-to-paths.awk
 Source30:       texlive-rpmlintrc
 Source50:       public.c
@@ -256,6 +257,8 @@ Patch21:        source-ppc64.dif
 Patch42:        biblatex-encoding.dif
 # PATCH-FIX-SUSE Old problem back: we do not use internal Certs!
 Patch44:        biber-certs.dif
+# PATCH-FIX-UPSTREAM: from 5.18, fixes syntax error discovered by newer perl
+Patch45:        biber-missing-semicolon.patch
 # PATCH-FIX-SUSE Make biber work with perl 5.18.2
 Patch47:        biber-perl-5.18.2.dif
 # PATCH-FIX-SUSE Let it build even without ls-R files around
@@ -338,7 +341,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of a2ping
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-a2ping >= %{texlive_version}
 #!BuildIgnore:  texlive-a2ping
 Prefix:         %{_bindir}
@@ -352,7 +355,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of accfonts
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-accfonts >= %{texlive_version}
 #!BuildIgnore:  texlive-accfonts
 Prefix:         %{_bindir}
@@ -366,7 +369,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of adhocfilelist
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-adhocfilelist >= %{texlive_version}
 #!BuildIgnore:  texlive-adhocfilelist
 Prefix:         %{_bindir}
@@ -380,7 +383,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of afm2pl
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-afm2pl >= %{texlive_version}
 #!BuildIgnore:  texlive-afm2pl
 Prefix:         %{_bindir}
@@ -394,7 +397,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of albatross
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-albatross >= %{texlive_version}
 #!BuildIgnore:  texlive-albatross
 Prefix:         %{_bindir}
@@ -408,7 +411,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of aleph
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-aleph >= %{texlive_version}
 #!BuildIgnore:  texlive-aleph
 Prefix:         %{_bindir}
@@ -422,7 +425,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of amstex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-amstex >= %{texlive_version}
 #!BuildIgnore:  texlive-amstex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -439,7 +442,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of arara
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-arara >= %{texlive_version}
 #!BuildIgnore:  texlive-arara
 Prefix:         %{_bindir}
@@ -453,7 +456,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of asymptote
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-asymptote >= %{texlive_version}
 #!BuildIgnore:  texlive-asymptote
 Prefix:         %{_bindir}
@@ -467,7 +470,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of attachfile2
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-attachfile2 >= %{texlive_version}
 #!BuildIgnore:  texlive-attachfile2
 Conflicts:      texlive-pdftools-bin
@@ -483,7 +486,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of authorindex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-authorindex >= %{texlive_version}
 #!BuildIgnore:  texlive-authorindex
 Prefix:         %{_bindir}
@@ -497,7 +500,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of autosp
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-autosp >= %{texlive_version}
 #!BuildIgnore:  texlive-autosp
 Prefix:         %{_bindir}
@@ -511,7 +514,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of axodraw2
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-axodraw2 >= %{texlive_version}
 #!BuildIgnore:  texlive-axodraw2
 Prefix:         %{_bindir}
@@ -525,7 +528,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of bib2gls
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-bib2gls >= %{texlive_version}
 #!BuildIgnore:  texlive-bib2gls
 Prefix:         %{_bindir}
@@ -539,13 +542,13 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of biber
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 %if %{with buildbiber}
 Requires:       perl = %{perl_version}
 Recommends:     ca-certificates
 Recommends:     ca-certificates-mozilla
 %if 0%{?suse_version} > 1230
-Requires:       perl(Biber) >= %{texlive_version}.%{texlive_release}
+Requires:       perl(Biber) == %{biber_version}
 %endif
 Requires:       perl(LWP::UserAgent)
 Requires:       perl(Text::BibTeX)
@@ -565,7 +568,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of bibexport
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-bibexport >= %{texlive_version}
 #!BuildIgnore:  texlive-bibexport
 Prefix:         %{_bindir}
@@ -579,7 +582,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of bibtex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-bibtex >= %{texlive_version}
 #!BuildIgnore:  texlive-bibtex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -596,7 +599,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of bibtex8
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-bibtex8 >= %{texlive_version}
 #!BuildIgnore:  texlive-bibtex8
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -613,7 +616,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of bibtexu
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-bibtexu >= %{texlive_version}
 #!BuildIgnore:  texlive-bibtexu
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -630,7 +633,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of bundledoc
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-bundledoc >= %{texlive_version}
 #!BuildIgnore:  texlive-bundledoc
 Prefix:         %{_bindir}
@@ -644,7 +647,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of cachepic
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-cachepic >= %{texlive_version}
 #!BuildIgnore:  texlive-cachepic
 Prefix:         %{_bindir}
@@ -658,7 +661,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of checkcites
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-checkcites >= %{texlive_version}
 #!BuildIgnore:  texlive-checkcites
 Prefix:         %{_bindir}
@@ -672,7 +675,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of checklistings
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-checklistings >= %{texlive_version}
 #!BuildIgnore:  texlive-checklistings
 Prefix:         %{_bindir}
@@ -686,7 +689,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of chklref
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-chklref >= %{texlive_version}
 #!BuildIgnore:  texlive-chklref
 Prefix:         %{_bindir}
@@ -700,7 +703,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of chktex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-chktex >= %{texlive_version}
 #!BuildIgnore:  texlive-chktex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -717,7 +720,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of citation-style-language
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-citation-style-language >= %{texlive_version}
 #!BuildIgnore:  texlive-citation-style-language
 Prefix:         %{_bindir}
@@ -731,7 +734,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of cjk-gs-integrate
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-cjk-gs-integrate >= %{texlive_version}
 #!BuildIgnore:  texlive-cjk-gs-integrate
 Prefix:         %{_bindir}
@@ -745,7 +748,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of cjkutils
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-bin-cjk <= %{texlive_previous}
 Requires(pre):  texlive-cjkutils >= %{texlive_version}
 #!BuildIgnore:  texlive-cjkutils
@@ -760,7 +763,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of clojure-pamphlet
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-clojure-pamphlet >= %{texlive_version}
 #!BuildIgnore:  texlive-clojure-pamphlet
 Prefix:         %{_bindir}
@@ -774,7 +777,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of cluttex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-cluttex >= %{texlive_version}
 #!BuildIgnore:  texlive-cluttex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -791,7 +794,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of context
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-context >= %{texlive_version}
 #!BuildIgnore:  texlive-context
 Recommends:     texlive-collection-context >= %{texlive_version}
@@ -808,7 +811,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of convbkmk
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-convbkmk >= %{texlive_version}
 #!BuildIgnore:  texlive-convbkmk
 Prefix:         %{_bindir}
@@ -822,7 +825,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of crossrefware
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-crossrefware >= %{texlive_version}
 #!BuildIgnore:  texlive-crossrefware
 Prefix:         %{_bindir}
@@ -836,7 +839,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of cslatex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-cslatex >= %{texlive_version}
 #!BuildIgnore:  texlive-cslatex
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -853,7 +856,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of csplain
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-csplain >= %{texlive_version}
 #!BuildIgnore:  texlive-csplain
 Prefix:         %{_bindir}
@@ -867,7 +870,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ctan-o-mat
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-ctan-o-mat >= %{texlive_version}
 #!BuildIgnore:  texlive-ctan-o-mat
 Prefix:         %{_bindir}
@@ -881,7 +884,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ctanbib
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-ctanbib >= %{texlive_version}
 #!BuildIgnore:  texlive-ctanbib
 Prefix:         %{_bindir}
@@ -895,7 +898,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ctanify
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-ctanify >= %{texlive_version}
 #!BuildIgnore:  texlive-ctanify
 Prefix:         %{_bindir}
@@ -909,7 +912,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ctanupload
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-ctanupload >= %{texlive_version}
 #!BuildIgnore:  texlive-ctanupload
 Prefix:         %{_bindir}
@@ -923,7 +926,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ctie
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-ctie >= %{texlive_version}
 #!BuildIgnore:  texlive-ctie
 Prefix:         %{_bindir}
@@ -937,7 +940,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of cweb
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-cweb >= %{texlive_version}
 #!BuildIgnore:  texlive-cweb
 Prefix:         %{_bindir}
@@ -951,7 +954,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of cyrillic-bin
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-cyrillic-bin >= %{texlive_version}
 #!BuildIgnore:  texlive-cyrillic-bin
 Prefix:         %{_bindir}
@@ -965,7 +968,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of de-macro
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-de-macro >= %{texlive_version}
 #!BuildIgnore:  texlive-de-macro
 Prefix:         %{_bindir}
@@ -979,7 +982,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of detex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-detex >= %{texlive_version}
 #!BuildIgnore:  texlive-detex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -996,7 +999,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of diadia
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 BuildArch:      noarch
 Requires(pre):  texlive-diadia >= %{texlive_version}
 #!BuildIgnore:  texlive-diadia
@@ -1011,7 +1014,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dosepsbin
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-dosepsbin >= %{texlive_version}
 #!BuildIgnore:  texlive-dosepsbin
 Prefix:         %{_bindir}
@@ -1025,7 +1028,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dtl
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-dtl >= %{texlive_version}
 #!BuildIgnore:  texlive-dtl
 Prefix:         %{_bindir}
@@ -1039,7 +1042,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dtxgen
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-dtxgen >= %{texlive_version}
 #!BuildIgnore:  texlive-dtxgen
 Prefix:         %{_bindir}
@@ -1053,7 +1056,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dviasm
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-dviasm >= %{texlive_version}
 #!BuildIgnore:  texlive-dviasm
 Prefix:         %{_bindir}
@@ -1067,7 +1070,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dvicopy
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-dvicopy >= %{texlive_version}
 #!BuildIgnore:  texlive-dvicopy
 Prefix:         %{_bindir}
@@ -1081,7 +1084,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dvidvi
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-dvidvi >= %{texlive_version}
 #!BuildIgnore:  texlive-dvidvi
 Prefix:         %{_bindir}
@@ -1095,7 +1098,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dviinfox
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-dviinfox >= %{texlive_version}
 #!BuildIgnore:  texlive-dviinfox
 Prefix:         %{_bindir}
@@ -1109,7 +1112,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dviljk
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-bin-dvilj <= %{texlive_previous}
 Provides:       texlive-bin-dvilj   = %{texlive_version}
 Requires(pre):  texlive-dviljk >= %{texlive_version}
@@ -1125,7 +1128,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dviout-util
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-dviout-util >= %{texlive_version}
 #!BuildIgnore:  texlive-dviout-util
 Prefix:         %{_bindir}
@@ -1139,7 +1142,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dvipdfmx
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-dvipdfm-bin < 2013
 Provides:       texlive-dvipdfm-bin = %{texlive_version}
 Requires:       texlive-scripts >= %{texlive_version}
@@ -1157,7 +1160,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dvipng
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-dvipng >= %{texlive_version}
 #!BuildIgnore:  texlive-dvipng
 Prefix:         %{_bindir}
@@ -1171,7 +1174,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dvipos
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-dvipos >= %{texlive_version}
 #!BuildIgnore:  texlive-dvipos
 Prefix:         %{_bindir}
@@ -1185,7 +1188,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dvips
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-dvips >= %{texlive_version}
 #!BuildIgnore:  texlive-dvips
 Prefix:         %{_bindir}
@@ -1199,7 +1202,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dvisvgm
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-dvisvgm >= %{texlive_version}
 #!BuildIgnore:  texlive-dvisvgm
 Prefix:         %{_bindir}
@@ -1213,7 +1216,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of eplain
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-eplain >= %{texlive_version}
 #!BuildIgnore:  texlive-eplain
 Prefix:         %{_bindir}
@@ -1227,7 +1230,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of epspdf
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-epspdf >= %{texlive_version}
 #!BuildIgnore:  texlive-epspdf
 Prefix:         %{_bindir}
@@ -1241,7 +1244,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of epstopdf
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-epstopdf >= %{texlive_version}
 #!BuildIgnore:  texlive-epstopdf
 Prefix:         %{_bindir}
@@ -1255,7 +1258,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of exceltex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-exceltex >= %{texlive_version}
 #!BuildIgnore:  texlive-exceltex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -1272,7 +1275,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of fig4latex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-fig4latex >= %{texlive_version}
 #!BuildIgnore:  texlive-fig4latex
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -1289,7 +1292,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of findhyph
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-findhyph >= %{texlive_version}
 #!BuildIgnore:  texlive-findhyph
 Prefix:         %{_bindir}
@@ -1303,7 +1306,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of fontinst
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-fontinst >= %{texlive_version}
 #!BuildIgnore:  texlive-fontinst
 Prefix:         %{_bindir}
@@ -1317,7 +1320,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of fontools
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-fontools >= %{texlive_version}
 #!BuildIgnore:  texlive-fontools
 Prefix:         %{_bindir}
@@ -1331,7 +1334,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of fontware
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-fontware >= %{texlive_version}
 #!BuildIgnore:  texlive-fontware
 Prefix:         %{_bindir}
@@ -1345,7 +1348,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of fragmaster
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-fragmaster >= %{texlive_version}
 #!BuildIgnore:  texlive-fragmaster
 Prefix:         %{_bindir}
@@ -1359,7 +1362,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of getmap
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-getmap >= %{texlive_version}
 #!BuildIgnore:  texlive-getmap
 Prefix:         %{_bindir}
@@ -1373,7 +1376,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of git-latexdiff
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-git-latexdiff >= %{texlive_version}
 #!BuildIgnore:  texlive-git-latexdiff
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -1390,7 +1393,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of glossaries
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-glossaries >= %{texlive_version}
 #!BuildIgnore:  texlive-glossaries
 Prefix:         %{_bindir}
@@ -1404,7 +1407,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of gregoriotex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-gregoriotex >= %{texlive_version}
 #!BuildIgnore:  texlive-gregoriotex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -1421,7 +1424,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of gsftopk
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-gsftopk >= %{texlive_version}
 #!BuildIgnore:  texlive-gsftopk
 Prefix:         %{_bindir}
@@ -1435,7 +1438,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of hitex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-hitex >= %{texlive_version}
 #!BuildIgnore:  texlive-hitex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -1452,7 +1455,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of hyperxmp
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-hyperxmp >= %{texlive_version}
 #!BuildIgnore:  texlive-hyperxmp
 Prefix:         %{_bindir}
@@ -1466,7 +1469,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of jadetex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-bin-jadetex <= %{texlive_previous}
 Requires(pre):  texlive-jadetex >= %{texlive_version}
 #!BuildIgnore:  texlive-jadetex
@@ -1484,7 +1487,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of jfmutil
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-jfmutil >= %{texlive_version}
 #!BuildIgnore:  texlive-jfmutil
 Prefix:         %{_bindir}
@@ -1498,7 +1501,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ketcindy
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-ketcindy >= %{texlive_version}
 #!BuildIgnore:  texlive-ketcindy
 Prefix:         %{_bindir}
@@ -1512,7 +1515,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of kotex-utils
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-kotex-utils >= %{texlive_version}
 #!BuildIgnore:  texlive-kotex-utils
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -1529,7 +1532,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of kpathsea
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  %{name}-filesystem >= %{texlive_version}
 Requires(pre):  user(mktex)
 Requires(pre):  group(mktex)
@@ -1552,7 +1555,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of l3build
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-l3build >= %{texlive_version}
 #!BuildIgnore:  texlive-l3build
 Prefix:         %{_bindir}
@@ -1566,7 +1569,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of lacheck
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-lacheck >= %{texlive_version}
 #!BuildIgnore:  texlive-lacheck
 Prefix:         %{_bindir}
@@ -1580,7 +1583,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of latex-bin-dev
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-latex-bin-dev >= %{texlive_version}
 #!BuildIgnore:  texlive-latex-bin-dev
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -1597,7 +1600,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of latex-bin
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-latex-bin >= %{texlive_version}
 #!BuildIgnore:  texlive-latex-bin
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -1614,7 +1617,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of latex-git-log
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-latex-git-log >= %{texlive_version}
 #!BuildIgnore:  texlive-latex-git-log
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -1631,7 +1634,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of latex-papersize
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-latex-papersize >= %{texlive_version}
 #!BuildIgnore:  texlive-latex-papersize
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -1648,7 +1651,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of latex2man
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-latex2man >= %{texlive_version}
 #!BuildIgnore:  texlive-latex2man
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -1665,7 +1668,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of latex2nemeth
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-latex2nemeth >= %{texlive_version}
 #!BuildIgnore:  texlive-latex2nemeth
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -1682,7 +1685,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of latexdiff
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-latexdiff >= %{texlive_version}
 #!BuildIgnore:  texlive-latexdiff
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -1699,7 +1702,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of latexfileversion
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-latexfileversion >= %{texlive_version}
 #!BuildIgnore:  texlive-latexfileversion
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -1716,7 +1719,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of latexindent
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-latexindent >= %{texlive_version}
 #!BuildIgnore:  texlive-latexindent
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -1733,7 +1736,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of latexmk
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-latexmk >= %{texlive_version}
 #!BuildIgnore:  texlive-latexmk
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -1750,7 +1753,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of latexpand
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-latexpand >= %{texlive_version}
 #!BuildIgnore:  texlive-latexpand
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -1767,7 +1770,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of lcdftypetools
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 %if %{with lcdf_typetools}
 Conflicts:      lcdf-typetools
 %else
@@ -1786,7 +1789,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of light-latex-make
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-light-latex-make >= %{texlive_version}
 #!BuildIgnore:  texlive-light-latex-make
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -1803,7 +1806,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of lilyglyphs
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-lilyglyphs >= %{texlive_version}
 #!BuildIgnore:  texlive-lilyglyphs
 Prefix:         %{_bindir}
@@ -1817,7 +1820,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of listbib
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-listbib >= %{texlive_version}
 #!BuildIgnore:  texlive-listbib
 Prefix:         %{_bindir}
@@ -1831,7 +1834,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of listings-ext
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-listings-ext >= %{texlive_version}
 #!BuildIgnore:  texlive-listings-ext
 Prefix:         %{_bindir}
@@ -1845,7 +1848,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of lollipop
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-lollipop >= %{texlive_version}
 #!BuildIgnore:  texlive-lollipop
 Prefix:         %{_bindir}
@@ -1859,7 +1862,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ltxfileinfo
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-ltxfileinfo >= %{texlive_version}
 #!BuildIgnore:  texlive-ltxfileinfo
 Prefix:         %{_bindir}
@@ -1873,7 +1876,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ltximg
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-ltximg >= %{texlive_version}
 #!BuildIgnore:  texlive-ltximg
 Prefix:         %{_bindir}
@@ -1887,7 +1890,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of luafindfont
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-luafindfont >= %{texlive_version}
 #!BuildIgnore:  texlive-luafindfont
 Prefix:         %{_bindir}
@@ -1901,7 +1904,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of luahbtex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-luahbtex >= %{texlive_version}
 #!BuildIgnore:  texlive-luahbtex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -1918,7 +1921,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of luajittex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-luajittex >= %{texlive_version}
 #!BuildIgnore:  texlive-luajittex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -1935,7 +1938,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of luaotfload
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-luaotfload >= %{texlive_version}
 #!BuildIgnore:  texlive-luaotfload
 Prefix:         %{_bindir}
@@ -1949,7 +1952,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of luatex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-luatex >= %{texlive_version}
 #!BuildIgnore:  texlive-luatex
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -1966,7 +1969,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of lwarp
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-lwarp >= %{texlive_version}
 #!BuildIgnore:  texlive-lwarp
 Prefix:         %{_bindir}
@@ -1980,7 +1983,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of m-tx
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-m-tx >= %{texlive_version}
 #!BuildIgnore:  texlive-m-tx
 Prefix:         %{_bindir}
@@ -1994,7 +1997,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of make4ht
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-make4ht >= %{texlive_version}
 #!BuildIgnore:  texlive-make4ht
 Prefix:         %{_bindir}
@@ -2008,7 +2011,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of makedtx
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-makedtx >= %{texlive_version}
 #!BuildIgnore:  texlive-makedtx
 Prefix:         %{_bindir}
@@ -2022,7 +2025,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of makeindex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-makeindex >= %{texlive_version}
 #!BuildIgnore:  texlive-makeindex
 Prefix:         %{_bindir}
@@ -2036,7 +2039,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of match_parens
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-match_parens >= %{texlive_version}
 #!BuildIgnore:  texlive-match_parens
 Prefix:         %{_bindir}
@@ -2050,7 +2053,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of mathspic
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-mathspic >= %{texlive_version}
 #!BuildIgnore:  texlive-mathspic
 Prefix:         %{_bindir}
@@ -2064,7 +2067,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of metafont
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-metafont >= %{texlive_version}
 #!BuildIgnore:  texlive-metafont
 Prefix:         %{_bindir}
@@ -2078,7 +2081,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of metapost
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-bin-metapost <= %{texlive_previous}
 Requires(pre):  texlive-metapost >= %{texlive_version}
 #!BuildIgnore:  texlive-metapost
@@ -2093,7 +2096,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of mex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-mex >= %{texlive_version}
 #!BuildIgnore:  texlive-mex
 Prefix:         %{_bindir}
@@ -2107,7 +2110,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of mf2pt1
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-mf2pt1 >= %{texlive_version}
 #!BuildIgnore:  texlive-mf2pt1
 Prefix:         %{_bindir}
@@ -2121,7 +2124,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of mflua
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-mflua >= %{texlive_version}
 #!BuildIgnore:  texlive-mflua
 Prefix:         %{_bindir}
@@ -2135,7 +2138,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of mfware
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-mfware >= %{texlive_version}
 #!BuildIgnore:  texlive-mfware
 Prefix:         %{_bindir}
@@ -2149,7 +2152,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of mkgrkindex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-mkgrkindex >= %{texlive_version}
 #!BuildIgnore:  texlive-mkgrkindex
 Prefix:         %{_bindir}
@@ -2163,7 +2166,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of mkjobtexmf
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-mkjobtexmf >= %{texlive_version}
 #!BuildIgnore:  texlive-mkjobtexmf
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2180,7 +2183,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of mkpic
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-mkpic >= %{texlive_version}
 #!BuildIgnore:  texlive-mkpic
 Prefix:         %{_bindir}
@@ -2194,7 +2197,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of mltex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-mltex >= %{texlive_version}
 #!BuildIgnore:  texlive-mltex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2211,7 +2214,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of mptopdf
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-mptopdf >= %{texlive_version}
 #!BuildIgnore:  texlive-mptopdf
 Prefix:         %{_bindir}
@@ -2225,7 +2228,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of multibibliography
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-multibibliography >= %{texlive_version}
 #!BuildIgnore:  texlive-multibibliography
 Prefix:         %{_bindir}
@@ -2239,7 +2242,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of musixtex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-bin-musictex <= %{texlive_previous}
 Requires:       texlive-m-tx-bin >= %{texlive_version}
 Requires:       texlive-pmx-bin >= %{texlive_version}
@@ -2259,7 +2262,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of musixtnt
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-musixtnt >= %{texlive_version}
 #!BuildIgnore:  texlive-musixtnt
 Prefix:         %{_bindir}
@@ -2273,7 +2276,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of omegaware
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-bin-omega <= %{texlive_previous}
 Requires:       texlive-uptex-bin >= %{texlive_version}
 Requires(pre):  texlive-omegaware >= %{texlive_version}
@@ -2292,7 +2295,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of optex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-optex >= %{texlive_version}
 #!BuildIgnore:  texlive-optex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2309,7 +2312,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of optexcount
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-optexcount >= %{texlive_version}
 #!BuildIgnore:  texlive-optexcount
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2326,7 +2329,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of patgen
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-patgen >= %{texlive_version}
 #!BuildIgnore:  texlive-patgen
 Prefix:         %{_bindir}
@@ -2340,7 +2343,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pax
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pax >= %{texlive_version}
 #!BuildIgnore:  texlive-pax
 Prefix:         %{_bindir}
@@ -2354,7 +2357,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pdfbook2
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pdfbook2 >= %{texlive_version}
 #!BuildIgnore:  texlive-pdfbook2
 Prefix:         %{_bindir}
@@ -2368,7 +2371,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pdfcrop
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pdfcrop >= %{texlive_version}
 #!BuildIgnore:  texlive-pdfcrop
 Prefix:         %{_bindir}
@@ -2382,7 +2385,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pdfjam
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pdfjam >= %{texlive_version}
 #!BuildIgnore:  texlive-pdfjam
 Prefix:         %{_bindir}
@@ -2396,7 +2399,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pdflatexpicscale
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pdflatexpicscale >= %{texlive_version}
 #!BuildIgnore:  texlive-pdflatexpicscale
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -2413,7 +2416,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pdftex-quiet
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pdftex-quiet >= %{texlive_version}
 #!BuildIgnore:  texlive-pdftex-quiet
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2430,7 +2433,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pdftex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pdftex >= %{texlive_version}
 #!BuildIgnore:  texlive-pdftex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2447,7 +2450,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pdftosrc
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pdftosrc >= %{texlive_version}
 #!BuildIgnore:  texlive-pdftosrc
 Conflicts:      texlive-pdftools-bin
@@ -2463,7 +2466,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pdfxup
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pdfxup >= %{texlive_version}
 #!BuildIgnore:  texlive-pdfxup
 Prefix:         %{_bindir}
@@ -2477,7 +2480,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pedigree-perl
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pedigree-perl >= %{texlive_version}
 #!BuildIgnore:  texlive-pedigree-perl
 Prefix:         %{_bindir}
@@ -2491,7 +2494,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of perltex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-perltex >= %{texlive_version}
 #!BuildIgnore:  texlive-perltex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2508,7 +2511,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of petri-nets
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-petri-nets >= %{texlive_version}
 #!BuildIgnore:  texlive-petri-nets
 Prefix:         %{_bindir}
@@ -2522,7 +2525,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pfarrei
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pfarrei >= %{texlive_version}
 #!BuildIgnore:  texlive-pfarrei
 Prefix:         %{_bindir}
@@ -2536,7 +2539,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pkfix-helper
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pkfix-helper >= %{texlive_version}
 #!BuildIgnore:  texlive-pkfix-helper
 Prefix:         %{_bindir}
@@ -2550,7 +2553,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pkfix
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pkfix >= %{texlive_version}
 #!BuildIgnore:  texlive-pkfix
 Prefix:         %{_bindir}
@@ -2564,7 +2567,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of platex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-platex >= %{texlive_version}
 #!BuildIgnore:  texlive-platex
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -2581,7 +2584,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pmx
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pmx >= %{texlive_version}
 #!BuildIgnore:  texlive-pmx
 Prefix:         %{_bindir}
@@ -2595,7 +2598,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pmxchords
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pmxchords >= %{texlive_version}
 #!BuildIgnore:  texlive-pmxchords
 Prefix:         %{_bindir}
@@ -2609,7 +2612,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ps2eps
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-ps2eps >= %{texlive_version}
 #!BuildIgnore:  texlive-ps2eps
 Conflicts:      texlive-pstools-bin
@@ -2626,7 +2629,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ps2pk
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-ps2pkm-bin < 2015
 Requires(pre):  texlive-ps2pk >= %{texlive_version}
 #!BuildIgnore:  texlive-ps2pk
@@ -2641,7 +2644,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pst-pdf
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pst-pdf >= %{texlive_version}
 #!BuildIgnore:  texlive-pst-pdf
 Prefix:         %{_bindir}
@@ -2655,7 +2658,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pst2pdf
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pst2pdf >= %{texlive_version}
 #!BuildIgnore:  texlive-pst2pdf
 Prefix:         %{_bindir}
@@ -2669,7 +2672,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ptex-fontmaps
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-ptex-fontmaps >= %{texlive_version}
 #!BuildIgnore:  texlive-ptex-fontmaps
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2686,7 +2689,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ptex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-ptex >= %{texlive_version}
 #!BuildIgnore:  texlive-ptex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2703,7 +2706,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ptex2pdf
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-ptex2pdf >= %{texlive_version}
 #!BuildIgnore:  texlive-ptex2pdf
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2720,7 +2723,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of purifyeps
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-purifyeps >= %{texlive_version}
 #!BuildIgnore:  texlive-purifyeps
 Prefix:         %{_bindir}
@@ -2734,7 +2737,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pygmentex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pygmentex >= %{texlive_version}
 #!BuildIgnore:  texlive-pygmentex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2751,7 +2754,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pythontex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-pythontex >= %{texlive_version}
 #!BuildIgnore:  texlive-pythontex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2768,7 +2771,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of rubik
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-rubik >= %{texlive_version}
 #!BuildIgnore:  texlive-rubik
 Prefix:         %{_bindir}
@@ -2782,7 +2785,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of seetexk
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-seetexk >= %{texlive_version}
 #!BuildIgnore:  texlive-seetexk
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2799,7 +2802,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of spix
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-spix >= %{texlive_version}
 #!BuildIgnore:  texlive-spix
 Prefix:         %{_bindir}
@@ -2813,7 +2816,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of splitindex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-splitindex >= %{texlive_version}
 #!BuildIgnore:  texlive-splitindex
 Prefix:         %{_bindir}
@@ -2827,7 +2830,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of srcredact
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-srcredact >= %{texlive_version}
 #!BuildIgnore:  texlive-srcredact
 Prefix:         %{_bindir}
@@ -2841,7 +2844,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of sty2dtx
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-sty2dtx >= %{texlive_version}
 #!BuildIgnore:  texlive-sty2dtx
 Prefix:         %{_bindir}
@@ -2855,7 +2858,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of svn-multi
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-svn-multi >= %{texlive_version}
 #!BuildIgnore:  texlive-svn-multi
 Prefix:         %{_bindir}
@@ -2869,7 +2872,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of synctex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-synctex >= %{texlive_version}
 #!BuildIgnore:  texlive-synctex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2886,7 +2889,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of tex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-tex >= %{texlive_version}
 #!BuildIgnore:  texlive-tex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2903,7 +2906,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of tex4ebook
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-tex4ebook >= %{texlive_version}
 #!BuildIgnore:  texlive-tex4ebook
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2920,7 +2923,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of tex4ht
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-bin-tex4ht <= %{texlive_previous}
 Conflicts:      ht
 Requires(pre):  texlive-tex4ht >= %{texlive_version}
@@ -2939,7 +2942,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texcount
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-texcount >= %{texlive_version}
 #!BuildIgnore:  texlive-texcount
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2956,7 +2959,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texdef
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-texdef >= %{texlive_version}
 #!BuildIgnore:  texlive-texdef
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2973,7 +2976,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texdiff
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-texdiff >= %{texlive_version}
 #!BuildIgnore:  texlive-texdiff
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2990,7 +2993,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texdirflatten
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-texdirflatten >= %{texlive_version}
 #!BuildIgnore:  texlive-texdirflatten
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -3007,7 +3010,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texdoc
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-texdoc >= %{texlive_version}
 #!BuildIgnore:  texlive-texdoc
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -3024,7 +3027,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texdoctk
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-texdoctk >= %{texlive_version}
 #!BuildIgnore:  texlive-texdoctk
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -3041,7 +3044,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texfot
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-texfot >= %{texlive_version}
 #!BuildIgnore:  texlive-texfot
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -3058,7 +3061,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texlive-scripts-extra
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-scripts-extra >= %{texlive_version}
 #!BuildIgnore:  texlive-scripts-extra
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -3090,7 +3093,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texlive-scripts
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-tetex-bin <= %{texlive_previous}
 Obsoletes:      tlshell-bin <= %{texlive_previous}
 Requires(pre):  texlive-scripts >= %{texlive_version}
@@ -3109,7 +3112,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texliveonfly
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-texliveonfly >= %{texlive_version}
 #!BuildIgnore:  texlive-texliveonfly
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -3126,7 +3129,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texloganalyser
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-texloganalyser >= %{texlive_version}
 #!BuildIgnore:  texlive-texloganalyser
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -3143,7 +3146,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texlogfilter
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-texlogfilter >= %{texlive_version}
 #!BuildIgnore:  texlive-texlogfilter
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -3160,7 +3163,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texlogsieve
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-texlogsieve >= %{texlive_version}
 #!BuildIgnore:  texlive-texlogsieve
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -3177,7 +3180,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texosquery
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-texosquery >= %{texlive_version}
 #!BuildIgnore:  texlive-texosquery
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -3194,7 +3197,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texplate
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-texplate >= %{texlive_version}
 #!BuildIgnore:  texlive-texplate
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -3211,7 +3214,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texsis
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-texsis >= %{texlive_version}
 #!BuildIgnore:  texlive-texsis
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -3228,7 +3231,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texware
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-texware >= %{texlive_version}
 #!BuildIgnore:  texlive-texware
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -3245,7 +3248,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of thumbpdf
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-thumbpdf >= %{texlive_version}
 #!BuildIgnore:  texlive-thumbpdf
 Prefix:         %{_bindir}
@@ -3259,7 +3262,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of tie
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-tie >= %{texlive_version}
 #!BuildIgnore:  texlive-tie
 Prefix:         %{_bindir}
@@ -3273,7 +3276,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of tikztosvg
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-tikztosvg >= %{texlive_version}
 #!BuildIgnore:  texlive-tikztosvg
 Prefix:         %{_bindir}
@@ -3287,7 +3290,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of tpic2pdftex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-tpic2pdftex >= %{texlive_version}
 #!BuildIgnore:  texlive-tpic2pdftex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -3304,7 +3307,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ttfutils
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-ttfutils >= %{texlive_version}
 #!BuildIgnore:  texlive-ttfutils
 Prefix:         %{_bindir}
@@ -3318,7 +3321,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of typeoutfileinfo
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-typeoutfileinfo >= %{texlive_version}
 #!BuildIgnore:  texlive-typeoutfileinfo
 Prefix:         %{_bindir}
@@ -3332,7 +3335,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ulqda
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-ulqda >= %{texlive_version}
 #!BuildIgnore:  texlive-ulqda
 Prefix:         %{_bindir}
@@ -3346,7 +3349,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of uplatex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-uplatex >= %{texlive_version}
 #!BuildIgnore:  texlive-uplatex
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -3363,7 +3366,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of uptex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-uptex >= %{texlive_version}
 #!BuildIgnore:  texlive-uptex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -3380,7 +3383,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of urlbst
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-urlbst >= %{texlive_version}
 #!BuildIgnore:  texlive-urlbst
 Prefix:         %{_bindir}
@@ -3394,7 +3397,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of velthuis
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-velthuis >= %{texlive_version}
 #!BuildIgnore:  texlive-velthuis
 Prefix:         %{_bindir}
@@ -3408,7 +3411,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of vlna
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-vlna >= %{texlive_version}
 #!BuildIgnore:  texlive-vlna
 Prefix:         %{_bindir}
@@ -3422,7 +3425,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of vpe
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-vpe >= %{texlive_version}
 #!BuildIgnore:  texlive-vpe
 Prefix:         %{_bindir}
@@ -3436,7 +3439,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of web
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-web >= %{texlive_version}
 #!BuildIgnore:  texlive-web
 Prefix:         %{_bindir}
@@ -3450,7 +3453,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of webquiz
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-webquiz >= %{texlive_version}
 #!BuildIgnore:  texlive-webquiz
 Prefix:         %{_bindir}
@@ -3464,7 +3467,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of wordcount
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-wordcount >= %{texlive_version}
 #!BuildIgnore:  texlive-wordcount
 Prefix:         %{_bindir}
@@ -3478,7 +3481,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of xdvi
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-xdvi >= %{texlive_version}
 #!BuildIgnore:  texlive-xdvi
 Prefix:         %{_bindir}
@@ -3492,7 +3495,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of xelatex-dev
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-xelatex-dev >= %{texlive_version}
 #!BuildIgnore:  texlive-xelatex-dev
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -3509,7 +3512,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of xetex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-bin-xetex <= %{texlive_previous}
 Requires(pre):  texlive-xetex >= %{texlive_version}
 #!BuildIgnore:  texlive-xetex
@@ -3527,7 +3530,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of xindex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-xindex >= %{texlive_version}
 #!BuildIgnore:  texlive-xindex
 Prefix:         %{_bindir}
@@ -3541,7 +3544,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of xml2pmx
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-xml2pmx >= %{texlive_version}
 #!BuildIgnore:  texlive-xml2pmx
 Prefix:         %{_bindir}
@@ -3555,7 +3558,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of xmltex
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-bin-xmltex <= %{texlive_previous}
 Requires(pre):  texlive-xmltex >= %{texlive_version}
 #!BuildIgnore:  texlive-xmltex
@@ -3573,7 +3576,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of xpdfopen
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-pdftools-bin < 2020
 Requires(pre):  texlive-xpdfopen >= %{texlive_version}
 #!BuildIgnore:  texlive-xpdfopen
@@ -3588,7 +3591,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of yplan
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-yplan >= %{texlive_version}
 #!BuildIgnore:  texlive-yplan
 Prefix:         %{_bindir}
@@ -3602,7 +3605,7 @@ Release:        0
 Summary:        Path searching library for TeX-related files
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Prefix:         %{_libdir}
 
 %description -n libkpathsea6
@@ -3619,7 +3622,7 @@ Release:        0
 Summary:        Path searching library for TeX-related files
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       libkpathsea6 = 6.3.4
 
 %description -n %{name}-kpathsea-devel
@@ -3636,7 +3639,7 @@ Release:        0
 Summary:        Libraries of Kanji code convert library for pTeX
 License:        BSD-3-Clause
 Group:          System/Libraries
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Prefix:         %{_libdir}
 
 %description -n libptexenc1
@@ -3650,7 +3653,7 @@ Release:        0
 Summary:        Libraries of Kanji code convert library for pTeX
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       libptexenc1 = 1.4.0
 
 %description -n %{name}-ptexenc-devel
@@ -3665,7 +3668,7 @@ Release:        0
 Summary:        Libraries of The Synchronization TeXnology
 License:        MIT
 Group:          System/Libraries
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Prefix:         %{_libdir}
 
 %description -n libsynctex2
@@ -3680,7 +3683,7 @@ Release:        0
 Summary:        Libraries of The Synchronization TeXnology
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       libsynctex2 = 1.21
 
 %description -n %{name}-synctex-devel
@@ -3696,7 +3699,7 @@ Release:        0
 Summary:        Libraries of an extended version of pdfTeX using Lua
 License:        MIT
 Group:          System/Libraries
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Prefix:         %{_libdir}
 
 %description -n libtexlua53-5
@@ -3709,7 +3712,7 @@ Release:        0
 Summary:        Libraries of an extended version of pdfTeX using Lua
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       libtexlua53-5 = 5.3.6
 
 %description -n %{name}-texlua-devel
@@ -3724,7 +3727,7 @@ Release:        0
 Summary:        Libraries of Just-In-Time compiler for Lua
 License:        MIT
 Group:          System/Libraries
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Prefix:         %{_libdir}
 
 %description -n libtexluajit2
@@ -3736,7 +3739,7 @@ Release:        0
 Summary:        Libraries of Just-In-Time compiler for Lua
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       libtexlua53-5 = 5.3.6
 
 %description -n %{name}-texluajit-devel
@@ -3750,7 +3753,7 @@ Release:        0
 Summary:        Basic development packages for TeXLive
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND SUSE-TeX
 Group:          Development/Languages/Other
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       libkpathsea6 = 6.3.4
 Requires:       libptexenc1 = 1.4.0
 Requires:       libsynctex2 = 1.21
@@ -3767,12 +3770,12 @@ development packages for TeXLive.
 
 %if %{with buildbiber}
 %package -n perl-biber
-Version:        %{texlive_version}.%{texlive_release}.svn30357
+Version:        %{biber_version}
 Release:        0
 Summary:        Library files of Biber a BibTeX replacement
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://biblatex-biber.sourceforge.net/
+URL:            https://biblatex-biber.sourceforge.net/
 Recommends:     perl(Readonly::XS)
 Requires:       perl-base = %{perl_version}
 Requires:       perl(Business::ISBN) >= 3.005
@@ -3806,7 +3809,7 @@ Requires:       perl(Text::BibTeX) >= 0.88
 Requires:       perl(Text::CSV)
 Requires:       perl(Text::Roman)
 Requires:       perl(URI)
-Requires:       perl(Unicode::Collate) => 1.29
+Requires:       perl(Unicode::Collate) >= 1.29
 Requires:       perl(Unicode::GCString)
 Requires:       perl(XML::LibXML) >= 1.70
 Requires:       perl(XML::LibXML::Simple)
@@ -3955,10 +3958,10 @@ This package is required by the package texlive-biber-bin.
 
 %setup -c -q -n texlive -T
 
-    tar --use-compress-program=xz --strip-components=1 -xf %{S:0}
+    tar --strip-components=1 -xf %{SOURCE0}
 %if %{with buildbiber}
     pushd ../
-	tar --use-compress-program=xz -xf %{S:3}
+	tar xf %{SOURCE3}
     popd
 %endif
 
@@ -3985,6 +3988,7 @@ pushd ../*biber-*/
 /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
 %patch42 -p0 -b .en
 %patch44 -p0 -b .noica
+%patch45 -p1 -b .perlfix
 %if 0%{perl_versnum} < 5200
 %patch47 -p0 -b .518
 %endif
