@@ -19,6 +19,9 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define plainpython python
+# upper bound is exclusive: min-numpy_ver <= numpy < max_numpy_ver
+%define min_numpy_ver 1.18
+%define max_numpy_ver 1.23
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -28,7 +31,7 @@
 %bcond_with test
 %endif
 Name:           python-numba%{psuffix}
-Version:        0.55.1
+Version:        0.55.2
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
@@ -39,16 +42,16 @@ Patch0:         fix-max-name-size.patch
 # PATCH-FIX-OPENSUSE skip tests failing due to OBS specifics
 Patch3:         skip-failing-tests.patch
 BuildRequires:  %{python_module devel >= 3.7}
-BuildRequires:  %{python_module numpy-devel >= 1.18 with %python-numpy-devel < 1.22}
+BuildRequires:  %{python_module numpy-devel >= %{min_numpy_ver} with %python-numpy-devel < %{max_numpy_ver}}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-BuildRequires:  tbb-devel >= 2021
+BuildRequires:  (tbb-devel >= 2021 with tbb-devel < 2021.6)
 Requires:       (python-llvmlite >= 0.38 with python-llvmlite < 0.39)
-Requires:       (python-numpy >= 1.18 with python-numpy < 1.22)
+Requires:       (python-numpy >= %{min_numpy_ver} with python-numpy < %{max_numpy_ver})
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-Jinja2
 Recommends:     python-Pygments
 Recommends:     python-cffi
@@ -60,8 +63,8 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module numba >= %{version}}
-BuildRequires:  %{python_module numba-devel >= %{version}}
+BuildRequires:  %{python_module numba = %{version}}
+BuildRequires:  %{python_module numba-devel = %{version}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
@@ -94,8 +97,8 @@ data structures such as those that exist in NumPy.
 Summary:        Development files for numba applications
 Requires:       %{name} = %{version}
 Requires:       python-devel
-Requires:       python-numpy-devel >= 1.11
 Requires:       %{plainpython}(abi) = %{python_version}
+Requires:       (python-numpy-devel >= %{min_numpy_ver} with python-numpy-devel < %{max_numpy_ver})
 
 %description    devel
 This package contains files for developing applications using numba.
@@ -143,7 +146,7 @@ popd
 
 %if !%{with test}
 %post
-%{python_install_alternative numba pycc}
+%python_install_alternative numba pycc
 
 %postun
 %python_uninstall_alternative numba

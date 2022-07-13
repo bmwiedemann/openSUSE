@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 11 16:05:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.55.2
+  * This is a maintenance release to support NumPy 1.22 and Apple
+    M1.
+  * Backport #8027: Support for NumPy 1.22
+  * update max NumPy for 0.55.2
+  * Backport #8052 Ensure pthread is linked in when building for
+    ppc64le.
+  * Backport #8102 to fix numpy requirements
+  * Backport #8109 Pin TBB support with respect to incompatible
+    2021.6 API.
+
+-------------------------------------------------------------------
 Sat Jan 29 13:23:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.55.1
