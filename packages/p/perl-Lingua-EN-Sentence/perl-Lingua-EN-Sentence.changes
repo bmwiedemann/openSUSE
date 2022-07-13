@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul  5 03:06:22 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.33
+   see /usr/share/doc/packages/perl-Lingua-EN-Sentence/Changes
+
+  0.32 July 2022
+  	fixed bug causing abbreviation followed by '(' to break sentnece, reported in github
+  	dot following an abbreviation now explicitly marked up
+  	added more acronyms
+  	improved documentation
+  	improved tests
+  	added verbose moe for debugging
+
+-------------------------------------------------------------------
 Mon Aug 20 05:37:18 UTC 2018 - coolo@suse.com
 
 - updated to 0.31
