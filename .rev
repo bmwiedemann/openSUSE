@@ -950,4 +950,59 @@
 </comment>
     <requestid>974505</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>7976e43db1f8faa32f0f149ea5571972</srcmd5>
+    <version>4.14.0</version>
+    <time>1657712731</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.14.0:
+  - Update translations.
+  - adapter_fictionhuntcom: Fix for changes to chapter list.
+  - Restore &amp; &gt; &lt; entities in chapter titles. Closes #863
+  - Update translations
+  - Better handling for fail of an existing anthology book on
+    update. Closes #860
+  - adapter_fictionhuntcom: Update for site changes.
+  - Fix for problem with remove_tags refactor.
+  - Refactor code to remove empty tags to also remove now-empty
+    parents by making another pass.
+  - Collect rating for adapter_libraryofmoriacom, refactor rating
+    from TOC in base_efiction. Closes #859
+  - adapter_themasquenet: Switch to https, closes #854
+  - PI: Ctrl-Return/Enter on personal.ini editbox equivalent to
+    clicking OK button.
+  - base_xenforoforum_adapter(QQ): Allow for guest/deleted author
+    w/o a link. Closes #852
+  - adapter_readonlymindcom: Add include_author_notes setting -
+    See #850, thanks FayeGray!
+  - adapter_mcstoriescom Allow multiple authors. Closes #847
+- Update to 4.13.0:
+  - Update translations.
+  - adapter_chosentwofanficcom: http-&gt;https
+  - adapter_mediaminerorg: More story URL forms. #845
+  - Don't set marked in Calibre when book_id is None #833
+  - adapter_quotevcom: Update collection of searchtags
+  - Add config check parsing for custom_columns_settings on
+    personal.ini save.
+  - Refactor img code in story.py to fix a problem when cover
+    image also in story.
+  - fastnovel.net -&gt; fastnovels.net - Rename
+    adapter_fastnovelsnet - Fixes for site changes
+  - fix storiesonline login (again) - parameter name was changed
+    back to &quot;email&quot; (#840) - Thanks mvlcek!
+  - adapter_webnovelcom: Not all paragraphs starting with '&lt;' are
+    HTML. #841
+  - Lighten color highlighting for storyUrls sections in dark
+    mode.
+  - fix storiesonline login - thanks, mvlcek!
+  - adapter_ficbooknet: Fix for site change.
+  - adapter_wwwutopiastoriescom: Fixes for site changes.
+  - adapter_fanficsme: Fix for changed 'words' metadata.
+  - Remove site tomparisdorm.com - Moved to AO3
+  - Remove site: bloodties-fans.com - Moved to AO3.
+  - Remove site wuxiaworld.com Closes #796
+  - Remove site wuxiaworld.site Closes #758
+</comment>
+    <requestid>988869</requestid>
+  </revision>
 </revisionlist>
