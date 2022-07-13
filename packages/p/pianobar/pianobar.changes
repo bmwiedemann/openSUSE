@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 12 20:50:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2022.04.01:
+  * Fix compilation with ffmpeg 5.0 and replace deprecated function
+  * Improved retry handling with unreliable HTTP proxies
+  * Minor UI improvements
+- Update source url to main site.
+
+-------------------------------------------------------------------
 Tue Apr 13 12:37:17 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2020.11.28
