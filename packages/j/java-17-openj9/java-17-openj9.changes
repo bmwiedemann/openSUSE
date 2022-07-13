@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Tue Jul 12 07:30:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of OpenJDK 17.0.3 with OpenJ9 0.32.0 virtual
+  machine
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.32
