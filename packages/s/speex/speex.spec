@@ -1,7 +1,7 @@
 #
 # spec file for package speex
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,20 @@
 #
 
 
-%define upstream_version 1.2.0
 %define libname libspeex1
 Name:           speex
-Version:        1.2
+Version:        1.2.1
 Release:        0
 Summary:        An Open Source, Patent Free Speech Codec
 License:        BSD-3-Clause
 Group:          System/Libraries
-URL:            http://www.speex.org/
-Source0:        http://downloads.xiph.org/releases/speex/%{name}-%{upstream_version}.tar.gz
+URL:            https://www.speex.org/
+Source0:        https://downloads.xiph.org/releases/speex/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         speex-no-build-date.patch
-Patch1:         speex-CVE-2020-23903.patch
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(speexdsp)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Speex is a patent free audio codec designed especially for voice
@@ -65,19 +62,18 @@ This package contains the files needed to compile programs that use the
 SpeeX library.
 
 %prep
-%setup -q -n %{name}-%{upstream_version}
-%patch0 
-%patch1 -p1
+%setup -q
+%patch0
 
 %build
 %configure \
 	--enable-binaries \
-	--disable-static 
+	--disable-static
 
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 # remove duped documents
 rm -rf %{buildroot}%{_datadir}/doc/speex*
 # remove unneeded *.la files
@@ -85,21 +81,18 @@ find %{buildroot} -type f -name "*.la" -delete -print
 rm -f %{buildroot}%{_libdir}/*.a
 
 %post -n %{libname} -p /sbin/ldconfig
-
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README TODO
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README TODO
 %{_bindir}/speex*
 %{_mandir}/man?/*
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/libspeex.so.*
 
 %files devel
-%defattr(-,root,root)
 %doc doc/manual.pdf
 %{_includedir}/*
 %{_libdir}/lib*.so

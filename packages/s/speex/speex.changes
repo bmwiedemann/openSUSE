@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 11 16:31:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * Check for _WIN32 instead of WIN32 in preprocessor checks
+  * wav_io: check for EOF when seeking in wav (fixes hang discovered by fuzzing)
+  * CI: add gitlab CI integration
+  * fixed-point: make left shift macros use unsigned to avoid undefined behaviour
+  * math_approx: use unsigned int for LCG pseudorandom generator (avoids integer overflow)
+  * oss-fuzz: add integration and fuzzing target
+  * speexenc: guard against invalid channel numbers)
+  * speexdec: make left shift macros use unsigned to avoid undefined behaviour
+  * autotools: do not use deprecated macros 
+- drop speex-CVE-2020-23903.patch (upstream) 
+
+-------------------------------------------------------------------
 Thu Nov 11 13:18:22 CET 2021 - tiwai@suse.de
 
 - Fix zero division error in read_samples (CVE-2020-23903 bsc#1192580)

@@ -1,8 +1,8 @@
 Index: src/speexdec.c
 ===================================================================
---- src/speexdec.c.orig	2008-05-30 09:34:16.000000000 +0200
-+++ src/speexdec.c	2010-09-04 01:48:51.580370000 +0200
-@@ -292,7 +292,7 @@ void version()
+--- src/speexdec.c.orig
++++ src/speexdec.c
+@@ -291,7 +291,7 @@ void version()
  {
     const char* speex_version;
     speex_lib_ctl(SPEEX_LIB_GET_VERSION_STRING, (void*)&speex_version);
@@ -13,9 +13,9 @@ Index: src/speexdec.c
  
 Index: src/speexenc.c
 ===================================================================
---- src/speexenc.c.orig	2010-09-04 01:48:13.000000000 +0200
-+++ src/speexenc.c	2010-09-04 01:49:30.654133000 +0200
-@@ -185,7 +185,7 @@ void version()
+--- src/speexenc.c.orig
++++ src/speexenc.c
+@@ -203,7 +203,7 @@ void version()
  {
     const char* speex_version;
     speex_lib_ctl(SPEEX_LIB_GET_VERSION_STRING, (void*)&speex_version);
@@ -23,3 +23,4 @@ Index: src/speexenc.c
 +   printf ("speexenc (Speex encoder) version %s\n", speex_version);
     printf ("Copyright (C) 2002-2006 Jean-Marc Valin\n");
  }
+ 
