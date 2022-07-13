@@ -29,6 +29,8 @@ URL:            https://github.com/melizalab/arf
 Source:         https://files.pythonhosted.org/packages/source/a/arf/arf-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM arf-pr10-h5py-open.patch -- gh#melizalab/arf#10
 Patch0:         arf-pr10-h5py-open.patch
+# PATCH-FIX-UPSTREAM h5py-fixup.patch -- gh#melizalab/arf#12
+Patch1:         h5py-fixup.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

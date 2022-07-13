@@ -1,0 +1,16 @@
+Index: arf-2.6.1/arf.py
+===================================================================
+--- arf-2.6.1.orig/arf.py
++++ arf-2.6.1/arf.py
+@@ -77,6 +77,11 @@ def open_file(name, mode=None, driver=No
+             posargs += ['rdcc_nslots', 'rdcc_nbytes', 'rdcc_w0']
+         if StrictVersion(h5py_version) >= StrictVersion('3.5'):
+             posargs += ['locking', 'page_buf_size', 'min_meta_keep', 'min_raw_keep']
++        if StrictVersion(h5py_version) >= StrictVersion('3.7'):
++            # integer is needed
++            kwargs.update({arg: kwargs.get(arg, 1) for arg in ['alignment_threshold', 'alignment_interval']})
++        if StrictVersion(h5py_version) >= StrictVersion('3.8'):
++            posargs += ['meta_block_size']
+         kwargs.update({arg: kwargs.get(arg, None) for arg in posargs})
+         fapl = _files.make_fapl(driver, libver, **kwargs)
+         fid = _files.make_fid(name, mode, userblock_size, fapl, fcpl=fcpl,

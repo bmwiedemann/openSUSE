@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 12 08:34:10 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Add h5py-fixup.patch -- gh#melizalab/arf#12
+
+-------------------------------------------------------------------
 Sun Apr  3 12:44:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add arf-pr10-h5py-open.patch -- gh#melizalab/arf#10
