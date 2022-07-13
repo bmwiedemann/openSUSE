@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20220712" schemaversion="4.1">
+<image name="OBS__MicroOS___20220713" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220712</productvar>
+      <productvar name="VERSION">20220713</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220712,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220713,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220712/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220713/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1669,7 +1669,7 @@
       <repopackage name="libsnapper6" arch="x86_64"/>
       <repopackage name="libsnappy1"/>
       <repopackage name="libsndfile1"/>
-      <repopackage name="libsnmp40" arch="x86_64"/>
+      <repopackage name="libsnmp39" arch="x86_64"/>
       <repopackage name="libsodium23"/>
       <repopackage name="libsoftokn3"/>
       <repopackage name="libsoftokn3-hmac"/>
@@ -2028,254 +2028,26 @@
       <repopackage name="nodejs17" arch="x86_64"/>
       <repopackage name="notification-daemon"/>
       <repopackage name="notification-daemon-lang"/>
-      <repopackage name="noto-arimo-fonts" arch="x86_64"/>
       <repopackage name="noto-coloremoji-fonts" arch="x86_64"/>
-      <repopackage name="noto-cousine-fonts" arch="x86_64"/>
-      <repopackage name="noto-fonts" arch="x86_64"/>
-      <repopackage name="noto-kufiarabic-fonts" arch="x86_64"/>
-      <repopackage name="noto-loopedlao-fonts" arch="x86_64"/>
-      <repopackage name="noto-loopedlao-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-loopedthai-fonts" arch="x86_64"/>
-      <repopackage name="noto-loopedthai-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-music-fonts" arch="x86_64"/>
-      <repopackage name="noto-naskharabic-fonts" arch="x86_64"/>
-      <repopackage name="noto-naskharabic-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-nastaliqurdu-fonts" arch="x86_64"/>
-      <repopackage name="noto-rashihebrew-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-adlam-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-adlamunjoined-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-anatolianhieroglyphs-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-arabic-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-arabic-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-armenian-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-avestan-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-balinese-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-bamum-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-bassavah-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-batak-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-bengali-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-bengali-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-bhaiksuki-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-brahmi-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-buginese-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-buhid-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-canadianaboriginal-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-carian-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-caucasianalbanian-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-chakma-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-cham-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-cherokee-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-chorasmian-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-cjk-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-coptic-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-cuneiform-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-cypriot-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-cyprominoan-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-deseret-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-devanagari-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-devanagari-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-duployan-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-egyptianhieroglyphs-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-elbasan-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-elymaic-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-ethiopic-fonts" arch="x86_64"/>
       <repopackage name="noto-sans-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-georgian-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-glagolitic-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-gothic-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-grantha-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-gujarati-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-gujarati-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-gunjalagondi-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-gurmukhi-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-gurmukhi-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-hanifirohingya-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-hanunoo-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-hatran-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-hebrew-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-hebrewdroid-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-hebrewnew-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-imperialaramaic-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-indicsiyaqnumbers-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-inscriptionalpahlavi-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-inscriptionalparthian-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-javanese-fonts" arch="x86_64"/>
       <repopackage name="noto-sans-jp-bold-fonts"/>
       <repopackage name="noto-sans-jp-fonts"/>
       <repopackage name="noto-sans-jp-regular-fonts"/>
-      <repopackage name="noto-sans-kaithi-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-kannada-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-kannada-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-kayahli-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-kharoshthi-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-khmer-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-khmer-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-khojki-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-khudawadi-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-kr-bold-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-kr-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-kr-regular-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-lao-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-lao-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-lepcha-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-limbu-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-lineara-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-linearb-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-lisu-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-lycian-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-lydian-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-mahajani-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-malayalam-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-malayalam-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-mandaic-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-manichaean-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-marchen-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-masaramgondi-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-math-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-mayannumerals-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-medefaidrin-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-meeteimayek-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-mendekikakui-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-meroitic-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-miao-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-modi-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-mongolian-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-mono-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-mro-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-multani-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-myanmar-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-myanmar-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-nabataean-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-nandinagari-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-newa-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-newtailue-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-nko-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-nushu-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-ogham-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-olchiki-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-oldhungarian-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-olditalic-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-oldnortharabian-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-oldpermic-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-oldpersian-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-oldsogdian-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-oldsoutharabian-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-oldturkic-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-oriya-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-oriya-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-osage-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-osmanya-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-pahawhhmong-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-palmyrene-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-paucinhau-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-phagspa-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-phoenician-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-psalterpahlavi-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-rejang-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-runic-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-samaritan-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-saurashtra-fonts" arch="x86_64"/>
       <repopackage name="noto-sans-sc-bold-fonts"/>
       <repopackage name="noto-sans-sc-fonts"/>
       <repopackage name="noto-sans-sc-regular-fonts"/>
-      <repopackage name="noto-sans-sharada-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-shavian-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-siddham-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-signwriting-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-sinhala-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-sinhala-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-sogdian-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-sorasompeng-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-soyombo-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-sundanese-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-sylotinagri-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-symbols-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-symbols2-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-syriac-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tagalog-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tagbanwa-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-taile-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-taitham-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-taiviet-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-takri-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tamil-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tamil-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tamilsupplement-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tangsa-fonts" arch="x86_64"/>
       <repopackage name="noto-sans-tc-bold-fonts"/>
       <repopackage name="noto-sans-tc-fonts"/>
       <repopackage name="noto-sans-tc-regular-fonts"/>
-      <repopackage name="noto-sans-telugu-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-telugu-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-thaana-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-thai-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-thai-ui-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tifinagh-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tifinaghadrar-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tifinaghagrawimazighen-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tifinaghahaggar-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tifinaghair-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tifinaghapt-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tifinaghazawagh-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tifinaghghat-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tifinaghhawad-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tifinaghrhissaixa-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tifinaghsil-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tifinaghtawellemmet-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-tirhuta-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-ugaritic-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-vai-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-vithkuqi-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-wancho-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-warangciti-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-yi-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-zanabazarsquare-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-ahom-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-armenian-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-balinese-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-bengali-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-devanagari-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-display-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-divesakuru-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-dogra-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-ethiopic-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-georgian-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-grantha-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-gujarati-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-gurmukhi-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-hebrew-fonts" arch="x86_64"/>
       <repopackage name="noto-serif-jp-bold-fonts"/>
       <repopackage name="noto-serif-jp-fonts"/>
       <repopackage name="noto-serif-jp-regular-fonts"/>
-      <repopackage name="noto-serif-kannada-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-khmer-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-khojki-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-lao-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-makasar-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-malayalam-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-myanmar-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-nyiakengpuachuehmong-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-olduyghur-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-oriya-fonts" arch="x86_64"/>
       <repopackage name="noto-serif-sc-bold-fonts"/>
       <repopackage name="noto-serif-sc-fonts"/>
       <repopackage name="noto-serif-sc-regular-fonts"/>
-      <repopackage name="noto-serif-sinhala-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-tamil-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-tamilslanted-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-tangut-fonts" arch="x86_64"/>
       <repopackage name="noto-serif-tc-bold-fonts"/>
       <repopackage name="noto-serif-tc-fonts"/>
       <repopackage name="noto-serif-tc-regular-fonts"/>
-      <repopackage name="noto-serif-telugu-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-thai-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-tibetan-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-toto-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-vithkuqi-fonts" arch="x86_64"/>
-      <repopackage name="noto-serif-yezidi-fonts" arch="x86_64"/>
-      <repopackage name="noto-tinos-fonts" arch="x86_64"/>
-      <repopackage name="noto-traditionalnushu-fonts" arch="x86_64"/>
       <repopackage name="npm17" arch="x86_64"/>
       <repopackage name="nscd" arch="x86_64"/>
       <repopackage name="nss-mdns" arch="x86_64"/>
