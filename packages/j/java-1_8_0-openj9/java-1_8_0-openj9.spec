@@ -26,18 +26,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       322
-%global buildver        b04
+%global updatever       332
+%global buildver        b09
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   c1d9a7af7c130f57867717a12ee9dfdbad4ecc10
-%global root_branch     v0.30.0-release
+%global root_revision   0b8b8af39a5f1f2fe0629050343adeed2f48bfd7
+%global root_branch     v0.32.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    dac962a283adbd3508fa1af3ae892e10903f0ef1
-%global omr_branch      v0.30.0-release
+%global omr_revision    ab24b6666596140516d3f240486aa1c84a726775
+%global omr_branch      v0.32.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 9dccbe076db9055f4020bae78513f52c02572ba4
-%global openj9_branch   v0.30.0-release
-%global openj9_tag      openj9-0.30.0
+%global openj9_revision 9a84ec34ed321967cdbe67b29ddcd732b591d051
+%global openj9_branch   v0.32.0-release
+%global openj9_tag      openj9-0.32.0
 %global freemarker_version 2.3.29
 # priority must be 6 digits in total
 %global priority        1801
@@ -107,6 +107,7 @@ Source13:       nss.cfg
 # Ensure we aren't using the limited crypto policy
 Source14:       TestCryptoLevel.java
 Source100:      openj9-nogit.patch.in
+Source1000:     %{name}-rpmlintrc
 # RPM/distribution specific patches
 # Restrict access to java-atk-wrapper classes
 Patch1:         java-atk-wrapper-security.patch
@@ -196,7 +197,7 @@ Provides:       jre1.6.x
 Provides:       jre1.7.x
 Provides:       jre1.8.x
 ExclusiveArch:  x86_64 ppc64le s390x aarch64
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} < 1500
 BuildRequires:  gcc7
 BuildRequires:  gcc7-c++
 %else
@@ -393,12 +394,14 @@ EXTRA_CFLAGS="$EXTRA_CFLAGS -fno-strict-aliasing"
 %endif
 
 bash configure \
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} < 1500
     CPP=cpp-7 \
     CXX=g++-7 \
     CC=gcc-7 \
     NM=gcc-nm-7 \
 %endif
+    --disable-warnings-as-errors-omr \
+    --disable-warnings-as-errors-openj9 \
     --enable-demos \
     --disable-zip-debug-info \
     --with-milestone="fcs" \

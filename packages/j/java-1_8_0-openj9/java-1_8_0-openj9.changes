@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 12 07:06:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 8u332 build 09 with OpenJ9 0.32.0 virtual
+  machine
+  * Fixes bsc#1198935, CVE-2021-41041: unverified methods can be
+    invoked using MethodHandles
+  * Including Oracle April 2022 CPU fixes
+    CVE-2022-21426 (bsc#1198672), CVE-2022-21434 (bsc#1198674),
+    CVE-2022-21443 (bsc#1198675), CVE-2022-21476 (bsc#1198671),
+    CVE-2022-21496 (bsc#1198673)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.32
+
+-------------------------------------------------------------------
 Mon Feb 28 09:47:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 8u322 build 04 with OpenJ9 0.30.0 virtual

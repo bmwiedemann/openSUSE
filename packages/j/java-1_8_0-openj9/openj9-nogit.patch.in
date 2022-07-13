@@ -1,52 +1,52 @@
 diff --git a/closed/OpenJ9.gmk b/closed/OpenJ9.gmk
-index 27dcc77dd3..163077bb7d 100644
+index 0fc7435813..b461bbcbe0 100644
 --- a/closed/OpenJ9.gmk
 +++ b/closed/OpenJ9.gmk
 @@ -30,20 +30,20 @@ ifeq (,$(BUILD_ID))
    BUILD_ID := 000000
  endif
  
--OPENJDK_SHA := $(shell git -C $(TOPDIR) rev-parse --short HEAD)
+-OPENJDK_SHA := $(shell $(GIT) -C $(TOPDIR) rev-parse --short HEAD)
 +OPENJDK_SHA := @OPENJDK_SHA@
  ifeq (,$(OPENJDK_SHA))
    $(error Could not determine OpenJDK SHA)
  endif
  
--OPENJ9_SHA := $(shell git -C $(OPENJ9_TOPDIR) rev-parse --short HEAD)
+-OPENJ9_SHA := $(shell $(GIT) -C $(OPENJ9_TOPDIR) rev-parse --short HEAD)
 +OPENJ9_SHA := @OPENJ9_SHA@
  ifeq (,$(OPENJ9_SHA))
    $(error Could not determine OpenJ9 SHA)
  endif
  
  # Find OpenJ9 tag associated with current commit (suppressing stderr in case there is no such tag).
--OPENJ9_TAG := $(shell git -C $(OPENJ9_TOPDIR) describe --exact-match HEAD 2>/dev/null)
+-OPENJ9_TAG := $(shell $(GIT) -C $(OPENJ9_TOPDIR) describe --exact-match HEAD 2>/dev/null)
 +OPENJ9_TAG := @OPENJ9_TAG@
  ifeq (,$(OPENJ9_TAG))
--  OPENJ9_BRANCH := $(shell git -C $(OPENJ9_TOPDIR) rev-parse --abbrev-ref HEAD)
+-  OPENJ9_BRANCH := $(shell $(GIT) -C $(OPENJ9_TOPDIR) rev-parse --abbrev-ref HEAD)
 +  OPENJ9_BRANCH := @OPENJ9_BRANCH@
    ifeq (,$(OPENJ9_BRANCH))
      $(error Could not determine OpenJ9 branch)
    endif
-@@ -52,7 +52,7 @@ else
+@@ -52,7 +51,7 @@ else
    OPENJ9_VERSION_STRING := $(OPENJ9_TAG)
  endif
  
--OPENJ9OMR_SHA := $(shell git -C $(OPENJ9OMR_TOPDIR) rev-parse --short HEAD)
+-OPENJ9OMR_SHA := $(shell $(GIT) -C $(OPENJ9OMR_TOPDIR) rev-parse --short HEAD)
 +OPENJ9OMR_SHA := @OPENJ9OMR_SHA@
  ifeq (,$(OPENJ9OMR_SHA))
    $(error Could not determine OMR SHA)
  endif
 diff --git a/closed/make/Main.gmk b/closed/make/Main.gmk
-index ab2310f3b0..1c7386d939 100644
+index d73fff3230..d17eea56b8 100644
 --- a/closed/make/Main.gmk
 +++ b/closed/make/Main.gmk
 @@ -35,9 +35,9 @@ clean-j9vm :
  # Override definition from MakeBase.gmk for OpenJ9.
  define GetSourceTips
  	$(PRINTF) "%s:%s\n" \
--		OpenJDK "$(shell git -C $(TOPDIR) rev-parse --short HEAD)" \
--		OpenJ9  "$(shell git -C $(OPENJ9_TOPDIR) rev-parse --short HEAD)" \
--		OMR     "$(shell git -C $(OPENJ9OMR_TOPDIR) rev-parse --short HEAD)" \
+-		OpenJDK "$(shell $(GIT) -C $(TOPDIR) rev-parse --short HEAD)" \
+-		OpenJ9  "$(shell $(GIT) -C $(OPENJ9_TOPDIR) rev-parse --short HEAD)" \
+-		OMR     "$(shell $(GIT) -C $(OPENJ9OMR_TOPDIR) rev-parse --short HEAD)" \
 +		OpenJDK "@OPENJDK_SHA@" \
 +		OpenJ9  "@OPENJ9_SHA@" \
 +		OMR     "@OPENJ9OMR_SHA@" \
