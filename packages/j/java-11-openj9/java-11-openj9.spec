@@ -18,7 +18,11 @@
 
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global debug 0
+%if 0%{?suse_version} > 1500
+%global add_back_javaee_modules 0
+%else
 %global add_back_javaee_modules 1
+%endif
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
 # it will resolve properly within chrooted installations.
@@ -29,20 +33,20 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       14
-%global patchver        1
-%global datever         2022-02-08
-%global buildver        1
+%global updatever       15
+%global patchver        0
+%global datever         2022-04-19
+%global buildver        10
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk11/archive
-%global root_revision   5c423dacd0765ed9fdbef0133193e10119f0d240
-%global root_branch     v0.30.1-release
+%global root_revision   b7b5b42ea6d2e5b9db86bbe51de5d61a64d0e49d
+%global root_branch     v0.32.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    56c3376ba057f905dc2ccd38fb4056d33f9e1f7c
-%global omr_branch      v0.30.1-release
+%global omr_revision    ab24b6666596140516d3f240486aa1c84a726775
+%global omr_branch      v0.32.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 9dccbe076db9055f4020bae78513f52c02572ba4
-%global openj9_branch   v0.30.1-release
-%global openj9_tag      openj9-0.30.1
+%global openj9_revision 9a84ec34ed321967cdbe67b29ddcd732b591d051
+%global openj9_branch   v0.32.0-release
+%global openj9_tag      openj9-0.32.0
 %global freemarker_version 2.3.29
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -141,6 +145,7 @@ Source27:       %{com_sun_istack_runtime_repository}-%{com_sun_istack_runtime_ta
 # https://codeload.github.com/javaee/%{jaxb_ri_repository}/tar.gz/%{jaxb_ri_tag}
 Source28:       %{jaxb_ri_repository}-%{jaxb_ri_tag}.tar.gz
 Source100:      openj9-nogit.patch.in
+Source1000:     %{name}-rpmlintrc
 # Restrict access to java-atk-wrapper classes
 Patch3:         java-atk-wrapper-security.patch
 # Allow building with newer libdwarf
@@ -255,7 +260,7 @@ Provides:       jre1.7.x
 Provides:       jre1.8.x
 Provides:       jre1.9.x
 ExclusiveArch:  x86_64 ppc64le s390x aarch64
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} < 1500
 BuildRequires:  gcc7
 BuildRequires:  gcc7-c++
 %else
@@ -480,7 +485,7 @@ EXTRA_CFLAGS="$EXTRA_CFLAGS -fno-strict-aliasing"
 %endif
 
 bash configure \
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} < 1500
     CPP=cpp-7 \
     CXX=g++-7 \
     CC=gcc-7 \
