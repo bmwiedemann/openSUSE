@@ -365,4 +365,41 @@
     <comment>- Make shared libraries executable (forwarded request 982825 from gmbr3)</comment>
     <requestid>982832</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>e9b89108e4311394868ba7d10ef11d80</srcmd5>
+    <version>3.8</version>
+    <time>1657715511</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.8:
+  This release includes a couple of new features, and many
+  performance improvements. It adds assembly code for two more
+  architectures: ARM64 and S390x.
+  The new version is intended to be fully source and binary
+  compatible with Nettle-3.6. The shared library names are
+  libnettle.so.8.5 and libhogweed.so.6.5, with sonames
+  libnettle.so.8 and libhogweed.so.6.
+  New features:
+  * AES keywrap (RFC 3394), contributed by Nicolas Mora.
+  * SM3 hash function, contributed by Tianjia Zhang.
+  * New functions cbc_aes128_encrypt, cbc_aes192_encrypt,
+    cbc_aes256_encrypt.
+    On processors where AES is fast enough, e.g., x86_64 with
+    aesni instructions, the overhead of using Nettle's general
+    cbc_encrypt can be significant. The new functions can be
+    implemented in assembly, to do multiple blocks with reduced
+    per-block overhead.
+    Note that there's no corresponding new decrypt functions,
+    since the general cbc_decrypt doesn't suffer from the same
+    performance problem.
+  Bug fixes:
+  * Fix fat builds for x86_64 windows, these appear to never
+    have worked.
+  Optimizations:
+  * New ARM64 implementation of AES, GCM, Chacha, SHA1 and
+    SHA256, for processors supporting crypto extensions. Great
+    speedups, and fat builds are supported. Contributed by
+    Mamone Tarsha.
+  * New s390x implementation of AES, GCM, Chacha, memxor, SHA1,</comment>
+    <requestid>988627</requestid>
+  </revision>
 </revisionlist>

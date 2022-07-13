@@ -19,7 +19,7 @@
 %define soname 8
 %define hogweed_soname 6
 Name:           libnettle
-Version:        3.7.3
+Version:        3.8
 Release:        0
 Summary:        Cryptographic Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -30,8 +30,6 @@ Source1:        https://ftp.gnu.org/gnu/nettle/nettle-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Source4:        %{name}-rpmlintrc
-#PATCH-FIX-UPSTREAM Provide s390x CPACF/SHA/AES Support for Crypto Libraries [jsc#SLE-20733]
-Patch0:         libnettle-s390x-CPACF-SHA-AES-support.patch
 BuildRequires:  autoconf
 BuildRequires:  fipscheck
 BuildRequires:  gmp-devel >= 6.1.0
