@@ -24,6 +24,7 @@ PIDFile=/run/ddclient/ddclient.pid
 EnvironmentFile=-/etc/sysconfig/ddclient
 ExecStartPre=/bin/touch /var/cache/ddclient/ddclient.cache
 ExecStart=/usr/sbin/ddclient $DDCLIENT_OPTIONS
+SupplementaryGroups=maildrop
 
 [Install]
 WantedBy=multi-user.target

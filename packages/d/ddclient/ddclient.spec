@@ -1,7 +1,7 @@
 #
 # spec file for package ddclient
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -23,11 +23,11 @@ Summary:        A Perl Client to Update Dynamic DNS Entries
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/DNS/Utilities
 URL:            https://github.com/ddclient/ddclient
-Source0:        https://github.com/ddclient/ddclient/archive/v%{version}.tar.gz
+Source0:        https://github.com/ddclient/ddclient/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.service
 Source2:        %{name}.sysconfig
 Source3:        %{name}-tmpfiles.conf
-Patch0:         %{name}-3.8.1-config.patch
+Patch0:         %{name}-config.patch
 Patch1:         %{name}-delay-main-process-for-systemd.patch
 Requires:       perl >= 5.004
 Requires:       perl-Data-Validate-IP
@@ -52,7 +52,7 @@ cron.
 %prep
 %setup -q
 %patch0
-%patch1 -p1
+%patch1
 rm -f sample-etc_ddclient.conf.orig
 chmod a-x sample-*
 mkdir examples

@@ -2,7 +2,7 @@ Index: sample-etc_ddclient.conf
 ===================================================================
 --- sample-etc_ddclient.conf.orig
 +++ sample-etc_ddclient.conf
-@@ -18,12 +18,16 @@
+@@ -16,12 +16,16 @@
  ##          are mentioned here.
  ##
  ######################################################################
@@ -15,13 +15,14 @@ Index: sample-etc_ddclient.conf
 -mail=root				# mail all msgs to root
 +#mail=root				# mail all msgs to root
  mail-failure=root			# mail failed update msgs to root
- pid=/var/run/ddclient.pid		# record PID in file.
+-pid=/var/run/ddclient.pid		# record PID in file.
 -ssl=yes					# use ssl-support.  Works with
++pid=/run/ddclient/ddclient.pid		# record PID in file.
 +ssl=no					# use ssl-support.  Works with
  					# ssl-library
  # postscript=script			# run script after updating.  The
  					# new IP is added as argument.
-@@ -56,10 +60,18 @@ ssl=yes					# use ssl-support.  Works wi
+@@ -54,10 +58,18 @@ ssl=yes					# use ssl-support.  Works wi
  ## get banned from their service.
  #use=web, web=checkip.dyndns.org/, web-skip='IP Address' # found after IP Address
  #
@@ -40,7 +41,7 @@ Index: sample-etc_ddclient.conf
  #protocol=dyndns2				# default protocol
  #proxy=fasthttp.sympatico.ca:80			# default proxy
  #server=members.dyndns.org			# default server
-@@ -72,6 +84,16 @@ ssl=yes					# use ssl-support.  Works wi
+@@ -70,6 +82,16 @@ ssl=yes					# use ssl-support.  Works wi
  #wildcard=yes|no				# add wildcard CNAME?
  
  ##
@@ -61,7 +62,7 @@ Index: ddclient
 ===================================================================
 --- ddclient.orig
 +++ ddclient
-@@ -29,7 +29,7 @@ my $program   = $programd;
+@@ -33,7 +33,7 @@ my $program   = $programd;
  $program  =~ s/d$//;
  my $now       = time;
  my $hostname  = hostname();

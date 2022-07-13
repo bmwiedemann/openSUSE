@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 12 16:08:36 UTC 2022 - chris@computersalat.de
+
+- fix for boo#1191885
+  add SupplementaryGroups=maildrop to service file
+- rename ddclient-3.8.1-config.patch to ddclient-config.patch
+- rebase patch
+  * ddclient-delay-main-process-for-systemd.patch (p0)
+- update ddclient-config.patch
+  * fix PID file path
+- merge ddclient-replace-varrun-with-run.patch into
+  ddclient-config.patc
+- merge changes file with SLES Maintained pkg
+- update Source to %{name}-%{version}
+
+-------------------------------------------------------------------
 Fri Dec 24 07:56:20 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Modify the systemd service file so ddclient is run After
@@ -22,6 +37,23 @@ Tue May 18 14:43:16 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
   This gets rid of an annoying warning message in "systemctl
   status".
   [ddclient, ddclient-delay-main-process-for-systemd.patch]
+
+-------------------------------------------------------------------
+Wed May 12 15:09:21 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+  
+- Use an extended regular expression in sed to change (/var)?/run.
+
+-------------------------------------------------------------------
+Thu Apr 22 06:12:24 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- In the (sample) /etc/ddclient.conf, also replace /var/run with /run.
+  [ddclient-replace-varrun-with-run.patch, bsc#1185069]
+
+-------------------------------------------------------------------
+Wed Apr 21 12:20:55 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- /var/run is deprecated, replaced by /run in ddclient-tmpfiles.conf
+  [ddclient-tmpfiles.conf, bsc#1185069]
 
 -------------------------------------------------------------------
 Wed Aug 19 09:56:26 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>

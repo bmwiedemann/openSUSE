@@ -1,7 +1,7 @@
-Index: ddclient-3.9.1/ddclient
+Index: ddclient
 ===================================================================
---- ddclient-3.9.1.orig/ddclient
-+++ ddclient-3.9.1/ddclient
+--- ddclient.orig
++++ ddclient
 @@ -847,6 +847,7 @@ if (opt('foreground') || opt('force')) {
  	print STDERR "${program}: can not fork ($!)\n";
  	exit -1;
