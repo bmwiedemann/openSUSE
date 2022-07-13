@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun  9 15:22:56 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 1.9.7.
+  * Many bugfixes: https://dl.influxdata.com/platform/nightlies/1.9/CHANGELOG.md
+  * influx_stress has been removed
+- Add 0001-fix-executor-do-not-assume-ints-are-64bits-4652.patch:
+  fix build on 32-bit architectures
+
+-------------------------------------------------------------------
 Wed Oct 27 21:28:51 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Version 1.8.10

@@ -1,0 +1,27 @@
+From e2371476454022b1ef9f8b8e53b8dc21b1f2b535 Mon Sep 17 00:00:00 2001
+From: Alfonso Acosta <fons@syntacticsugar.consulting>
+Date: Tue, 12 Apr 2022 20:18:56 +0200
+Subject: [PATCH] fix(executor): do not assume ints are 64bits (#4652)
+
+`getResourceLimits(int64, int)` tries to `return 0, math.MaxInt64` which,
+in 32-bit architectures causes an overflow.
+---
+ execute/executor.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/execute/executor.go b/execute/executor.go
+index 9da4af71..26f4ec68 100644
+--- a/vendor/github.com/influxdata/flux/execute/executor.go
++++ b/vendor/github.com/influxdata/flux/execute/executor.go
+@@ -366,7 +366,7 @@ func (es *executionState) validate() error {
+ func getResourceLimits(ctx context.Context) (int64, int) {
+ 	// Initialize resources from the execution dependencies and/or properties of the plan.
+ 	if !HaveExecutionDependencies(ctx) {
+-		return 0, math.MaxInt64
++		return 0, math.MaxInt
+ 	}
+ 
+ 	execOptions := GetExecutionDependencies(ctx).ExecutionOptions
+-- 
+2.36.0
+

@@ -1,7 +1,7 @@
 #
 # spec file for package influxdb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Name:           influxdb
 Summary:        Scalable datastore for metrics, events, and real-time analytics
 License:        MIT
 Group:          Productivity/Databases/Servers
-Version:        1.8.10
+Version:        1.9.7
 Release:        0
 URL:            https://github.com/influxdata/influxdb
 Source:         %{name}-%{version}.tar.gz
@@ -36,12 +36,14 @@ Source3:        influxdb.tmpfiles
 Source4:        influxdb.init
 Source5:        Compability_note.txt
 Patch0:         harden_influxdb.service.patch
+Patch1:         0001-fix-executor-do-not-assume-ints-are-64bits-4652.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  go >= 1.13
 BuildRequires:  golang-packaging >= 15.0.8
 BuildRequires:  xmlto
+BuildRequires:  pkgconfig(flux) >= 0.161.0
 %if %{with systemd}
 BuildRequires:  systemd-rpm-macros
 %{!?_tmpfilesdir:%global _tmpfilesdir /usr/lib/tmpfiles.d}
@@ -73,6 +75,7 @@ Go sources and other development files for InfluxDB
 %setup -q -n %{name}-%{version}
 %setup -q -T -D -a 1 -n %{name}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 # Disable phone-home to usage.influxdata.com
@@ -151,7 +154,6 @@ getent passwd influxdb >/dev/null || useradd -r -g influxdb \
 %{_bindir}/influx
 %{_bindir}/influx_inspect
 %{_bindir}/influxd
-%{_bindir}/influx_stress
 %{_bindir}/influx_tools
 %{_sbindir}/rcinfluxdb
 %if %{with systemd}
@@ -170,7 +172,6 @@ getent passwd influxdb >/dev/null || useradd -r -g influxdb \
 %attr(0700, influxdb, influxdb) %dir %{_localstatedir}/lib/influxdb/wal
 %{_mandir}/man1/influx.1.gz
 %{_mandir}/man1/influx_inspect.1.gz
-%{_mandir}/man1/influx_stress.1.gz
 %{_mandir}/man1/influxd-backup.1.gz
 %{_mandir}/man1/influxd-config.1.gz
 %{_mandir}/man1/influxd-restore.1.gz
