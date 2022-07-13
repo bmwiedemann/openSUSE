@@ -1340,4 +1340,12 @@
     <comment>Update to 42.2 (forwarded request 980618 from dimstar)</comment>
     <requestid>981305</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>712d477d983336832449e972215d122b</srcmd5>
+    <version>42.3</version>
+    <time>1657715513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988642</requestid>
+  </revision>
 </revisionlist>
