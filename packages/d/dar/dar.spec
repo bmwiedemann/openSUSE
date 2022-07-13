@@ -1,7 +1,7 @@
 #
 # spec file for package dar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   6000
 Name:           dar
-Version:        2.6.15
+Version:        2.7.6
 Release:        0
 Summary:        Backup and Restore Application
 License:        SUSE-GPL-2.0+-with-openssl-exception
