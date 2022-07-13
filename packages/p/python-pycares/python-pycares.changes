@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jul 11 13:59:59 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 4.2.1:
+  * core: add flexible member to ares_addrinfo to fix c-ares 1.18
+
+- changes from version 4.2.0:
+  * tests: ignoring 2 tests due to dead servers
+  * tests: updated google TXT records for an outdated test
+  * deps: update bundled c-ares
+
+- changes from version 4.1.2:
+  * build: add PYPIREADME.rst to manifest
+
+- changes from version 4.1.1:
+  * misc: add PyPI README without images
+  * misc: update c-ares URL
+
+- changes from version 4.1.0:
+  * ci: use stable 3.10, rather than dev
+  * core: add support for Python 3.10
+  * doc: fix typo in README
+  * doc: updatee changelog
+  * doc: uppdate README
+  * core: add support for CAA queries
+  * core: add support for getaddrinfo()
+  * doc: update README
+  * core: add ability to use the system installed c-ares
+
+-------------------------------------------------------------------
 Mon May 31 11:54:19 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - update to 4.0.0
