@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 12 20:03:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add ffmpeg5.patch: Fix build with ffmpeg5, patch from gentoo
+  https://gitweb.gentoo.org/repo/gentoo.git/plain/media-libs/wxsvg/files/ffmpeg5.patch?id=d6fd9cfb26299c76be7483cac4451a226ab8e37f
+
+-------------------------------------------------------------------
 Thu Apr 14 12:34:37 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.5.23

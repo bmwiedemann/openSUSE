@@ -26,6 +26,7 @@ Summary:        Library to create, manipulate and render SVG files
 License:        LGPL-2.1-or-later WITH WxWindows-exception-3.1
 URL:            http://wxsvg.sourceforge.net/
 Source:         https://prdownloads.sourceforge.net/wxsvg/%{name}-%{version}.tar.bz2
+Patch:          ffmpeg5.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  wxWidgets-3_0-devel
@@ -61,6 +62,7 @@ Include files for developing programs based on %{name}.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
 %configure --disable-static
