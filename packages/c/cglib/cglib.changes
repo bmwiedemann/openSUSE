@@ -14,6 +14,20 @@ Wed Dec 29 14:35:14 UTC 2021 - David Anes <david.anes@suse.com>
 Mon Dec 27 14:36:52 UTC 2021 - David Anes <david.anes@suse.com>
 
 - Update to upstream 3.3.0
+  * emits code compatible with java 1.8, so we can call static
+    interface methods.
+  * minor fix for allowing a fastclass to call static interface
+    methods.
+  * update to asm 7.1
+  * make ant dependency optional
+  * add Automatic Module Names
+  * Expose non-bridge methods more frequently.
+  * Drop support for Java6. (It may continue to work, but continuous
+    integration tests will no longer validate it does.)
+  * Fix #115: Release resources eagerly.
+  * Deprecated TinyBitSet.
+  * Add workarounds for changes coming from Jigsaw.
+  * Fix #89 / #90 (generated incorrect code for bridge methods sometimes)
 - Update project url to new github site (old one redirects there)
 
 -------------------------------------------------------------------
