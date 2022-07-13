@@ -1,0 +1,8 @@
+<package name="LaTeXML" project="openSUSE:Factory">
+  <title>TeX and LaTeX to XML translator</title>
+  <description>LaTeXML is a TeX &amp; LaTeX to XML, HTML, MathML, ePub, JATS, ... converter.
+
+</description>
+  <devel project="Publishing" package="LaTeXML"/>
+  <url>http://dlmf.nist.gov/LaTeXML/</url>
+</package>

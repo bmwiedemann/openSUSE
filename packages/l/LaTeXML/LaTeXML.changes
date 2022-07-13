@@ -1,0 +1,130 @@
+-------------------------------------------------------------------
+Tue Jul 12 15:10:24 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add depndency on perl(UUID::Tiny)
+- Recommend instead of requiring ImageMagick and texlive
+
+-------------------------------------------------------------------
+Fri Jun 17 20:33:06 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Remove the _service file
+- Simplify call to sed
+
+-------------------------------------------------------------------
+Thu Oct 21 20:19:40 UTC 2021 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 0.8.6:
+  * This release addresses a large variety of usability, fidelity, robustness,
+    portability and output-quality issues.
+  * The Error handling system now produces both a log file (with details) and
+    a brief term-styled output on STDERR.
+  * Even when Fatal errors are encountered, the document "so far" is returned.
+  * Many improvesments were made to mimicing more closely TeX's commands
+    and LaTeX internals, along with more testcases to detect regressions.
+  * Major revision of Alignments (\halign, tabular, etc) to be more TeX-like,
+    with respect to the timing of expansion.
+  * Many Errors and Fatals are now fixed or avoided.
+    The Windows platform is much better supported.
+  * Ouput to HTML, CSS, JATS, TEI have been updated, modernized and validated.
+    tikz/pgf and picture environment output is improved.
+  * new bindings: actuarialangle.sty, adjustbox.sty, diagbox.sty, elsart_support_core.sty,
+    espcrc.sty, fancybox.sty, filehook.sty, hepunits.sty, hypcap.sty, ifplatform.sty,
+    mathabx.sty, minimal.cls, pgfplotstable.sty, prettyref.sty, proof.sty, proofwiki.sty,
+    psfrag.sty, SIunits.sty, slashbox.sty, standalone.cls, standalone.sty, xfrac.sty
+
+-------------------------------------------------------------------
+Sun Dec 13 14:57:06 UTC 2020 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 0.8.5:
+  * Acknowledging his many contributions to LaTeXML,
+    Deyan Ginev is recognized as a co-developer.
+  * A large variety of robustness, fidelity and portability patches:
+    reduced errors & warnings, more consistent ids, formatting,
+  * Improved TeX fidelity, including l3kernel simulation,
+    while maintaining backwards compatibility (latex2, 2e).
+  * Enhanced declaration & preservation of math semantics,
+    improved tools for parallel markup
+    Enhanced semantics of siunitx, physics
+  * improved support for lists (enumitem), theorems, cleveref, listings, nicefrac,
+    multiple bibliographies, tikz/pgf, multiple bibliographies, JATS,
+    multi-document site generation; including supporting more options.
+  * "Raw" style files now processed by default when in source document's directory
+  * new bindings: aastex63.cls, aipproc.sty, physics.sty,
+    pgfmathcalc.code.tex, pgfutil-common.tex
+  * Experimental features:
+    * math lexemes: exports math as non-semantic tokens for data mining experiments;
+      simplfied format avoid introducing inferred semantics
+    * accessibility annotations
+
+-------------------------------------------------------------------
+Sun Nov 15 10:24:44 UTC 2020 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add dependency on Pod::Find
+
+-------------------------------------------------------------------
+Sat Jun 29 09:38:51 UTC 2019 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 0.8.4:
+  * Various fidelity and robustness improvements, along with more test cases
+  * Improved source locators for debugging and other purposes.
+  * More flexible backmatter, allowing multiple bibliographies, indices, etc.
+  * Improvements to math lexer
+  * Support for Chocolatey package manager
+  * More generalized support for lists of (contents, tables, figures, etc)
+  * New bindings: aipcheck.tex, aipproc.cls, bibunits.sty, blindtext.sty,
+    calrsfs.sty, chapterbib.sty, chngcntr.sty, csquotes.def, csquotes.sty,
+    fancyheadings.sty, footnote.sty, mathdots.sty, nopageno.sty, PoS.cls,
+    quantumarticle.cls, remreset.sty, sidecap.sty, subfiles.(cls|sty),
+    tcilatex.tex, thm-restate.sty, twoopt.sty, underscore.sty, undertilde.sty,
+    varioref.sty, varwidth. styvmargin.sty
+
+1de821d0df8c88041ee10820188f33feac77d5618de4c0798a296a425f4e2637-------------------------------------------------------------------
+Sun Dec  9 09:38:35 UTC 2018 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add requires for the perl package
+
+-------------------------------------------------------------------
+Sun Dec  9 09:34:43 UTC 2018 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Don't use "/usr/bin/env perl" in shebang
+
+-------------------------------------------------------------------
+Thu Dec  6 11:08:21 UTC 2018 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add group
+
+-------------------------------------------------------------------
+Thu Dec  6 10:56:28 UTC 2018 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add perl-LaTeXML subpackage
+
+-------------------------------------------------------------------
+Wed Dec  5 21:39:22 UTC 2018 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Use _service
+
+-------------------------------------------------------------------
+Wed Aug 15 17:03:04 UTC 2018 - jaime.marquinez.ferrandiz@fastmail.net
+
+- Update to version 0.8.3:
+  - Way too long between releases...
+  - Too many bug fixes, fidelity improvements and enhancements to list.
+  - (nominal) support for TEI format 
+  - New Bindings: aastex61.cls, aastex6.cls, accents.sty, acmart.cls,
+    aecompl.sty, algorithm2e.sty, appendix.sty, cases.sty,
+    cleveref.sty, csquotes.sty, empheq.sty, endnotes.sty, enumitem.sty,
+    etex.sty, etoolbox.sty, flowchart.sty, flushend.sty,
+    french.ldf, gensymb.sty, icml2018.sty (& others), ieeeconf.cls, IEEEtran.cls,
+    jheppub.sty, lastpage.sty, lipsum.sty, makecell.sty,
+    microtype.sty, mleftright.sty, mnras.cls, moderncv.cls,
+    newfloat.sty, newtxmath.sty, newtxtext.sty, pdfpages.sty,
+    pgfmath.code.tex, pzd.fontmap, ragged2e.sty, revtex4-1.cls,
+    sectsty.sty, siunitx.sty, siunitx.sty.bak, stfloats.sty,
+    subcaption.sty, svjour3.cls, tablefootnote.sty, textcase.sty,
+    thmtools.sty, titlesec.sty, titling.sty, todonotes.sty,
+    tracefnt.sty, turing.sty, utf8x.def, wiki.sty, xkeyval.sty,
+    xkvview.sty
+  - 2 Experimental features:
+      * xpath source locators: for locating the origin of the XML in the TeX sources.
+      * math lexemes: textual encoding of mathematics for data mining studies.
+      Please consult the mailing list for more information.
