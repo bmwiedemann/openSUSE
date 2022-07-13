@@ -16,34 +16,35 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-metakernel
-Version:        0.28.2
+Version:        0.29.0
 Release:        0
 Summary:        Metakernel for Jupyter
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/Calysto/metakernel
 Source:         https://files.pythonhosted.org/packages/source/m/metakernel/metakernel-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-ipykernel
-Requires:       python-jupyter-core
-Requires:       python-pexpect >= 4.2
+Requires:       python-ipykernel >= 5.5.6
+Requires:       python-jedi >= 0.18
+Requires:       python-jupyter-core >= 4.9.2
+Requires:       python-pexpect >= 4.8
+Recommends:     python-ipyparallel
 Provides:       python-jupyter_metakernel = %{version}
 Obsoletes:      python-jupyter_metakernel < %{version}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module ipykernel}
-BuildRequires:  %{python_module jupyter-core}
-BuildRequires:  %{python_module pexpect >= 4.2}
+BuildRequires:  %{python_module ipykernel >= 5.5.6}
+BuildRequires:  %{python_module jupyter-core >= 4.9.2}
+BuildRequires:  %{python_module pexpect >= 4.8}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  coreutils-doc
 BuildRequires:  man
 # /SECTION
-Recommends:     python-ipyparallel
 %if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-metakernel = %{version}
 %endif
@@ -57,6 +58,7 @@ distributed processing, downloads, and much more).
 %prep
 %setup -q -n metakernel-%{version}
 touch ~/.bashrc
+sed -i s'/--color=yes//' pyproject.toml
 
 %build
 %python_build
@@ -74,6 +76,6 @@ touch ~/.bashrc
 %doc CONTRIBUTORS.rst CHANGELOG.md README.rst RELEASE.md
 %license LICENSE.txt
 %{python_sitelib}/metakernel
-%{python_sitelib}/metakernel-%{version}-py*.egg-info
+%{python_sitelib}/metakernel-%{version}*-info
 
 %changelog

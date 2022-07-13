@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 13 08:51:45 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean specfile
+- Remove color from pytest call, clean test requirmement on cov
+
+-------------------------------------------------------------------
+Sun Jun  5 13:47:57 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * updated requirements
+
+- update to version 0.29.0:
+  * Clean up testing and add more CI #244 (@blink1073)
+  * Fix macos tests #243 (@blink1073)
+  * Clean up CI and bump supported pythons #242 (@blink1073)
+
+-------------------------------------------------------------------
 Sat Feb 19 03:16:48 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
