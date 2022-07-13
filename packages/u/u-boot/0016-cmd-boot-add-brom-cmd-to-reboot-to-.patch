@@ -1,0 +1,149 @@
+From 2956d6fc64be6da6236f93849b55f530dcb8fe37 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Sun, 3 Jul 2022 18:25:39 +0200
+Subject: [PATCH] cmd: boot: add brom cmd to reboot to FEL mode
+
+p-boot uses RTC GPR 1 value 0xb0010fe1 to flag FEL boot on A64
+
+Default to the same.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ arch/arm/include/asm/arch-sunxi/cpu.h | 11 +++++++++++
+ arch/arm/mach-sunxi/Kconfig           | 16 ++++++++++++++++
+ arch/arm/mach-sunxi/board.c           | 24 ++++++++++++++++++++++++
+ cmd/boot.c                            | 17 ++++++++++++++++-
+ 4 files changed, 67 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/include/asm/arch-sunxi/cpu.h b/arch/arm/include/asm/arch-sunxi/cpu.h
+index b08f202374..36e7697b1c 100644
+--- a/arch/arm/include/asm/arch-sunxi/cpu.h
++++ b/arch/arm/include/asm/arch-sunxi/cpu.h
+@@ -20,4 +20,15 @@
+ #define SOCID_H5	0x1718
+ #define SOCID_R40	0x1701
+ 
++#if defined(CONFIG_SUNXI_RTC_FEL_ENTRY_GPR) && (CONFIG_SUNXI_RTC_FEL_ENTRY_GPR >= 0)
++#ifdef CONFIG_MACH_SUN8I_H3
++#define SUNXI_FEL_ENTRY_ADDRESS 0xffff0020
++#define SUNXI_RTC_GPR_OFFSET 0x100
++#define SUNXI_FEL_REG  (SUNXI_RTC_BASE + SUNXI_RTC_GPR_OFFSET + CONFIG_SUNXI_RTC_FEL_ENTRY_GPR * 4)
++#endif
++#endif
++#ifndef __ASSEMBLY__
++void set_rtc_fel_flag(void);
++#endif
++
+ #endif /* _SUNXI_CPU_H */
+diff --git a/arch/arm/mach-sunxi/Kconfig b/arch/arm/mach-sunxi/Kconfig
+index e712a89534..c623b4403e 100644
+--- a/arch/arm/mach-sunxi/Kconfig
++++ b/arch/arm/mach-sunxi/Kconfig
+@@ -1048,6 +1048,22 @@ source "board/sunxi/Kconfig"
+ 
+ endif
+ 
++config SUNXI_RTC_FEL_ENTRY_GPR
++	int "Use a RTC GPR to enter FEL"
++	depends on MACH_SUN8I_H3
++	range -1 7
++	default 1
++	help
++	  Add rbrom command to set a RTC general purpose register before reboot.
++	  Check the GPR value in SPL and jump to FEL if set.
++	  Value -1 disables the feature.
++
++config SUNXI_RTC_FEL_ENTRY_VALUE
++	hex "Value to set in the RTC GPR"
++	depends on SUNXI_RTC_FEL_ENTRY_GPR >= 0
++	range 0x1 0xffffffff
++	default 0xb0010fe1
++
+ config CHIP_DIP_SCAN
+ 	bool "Enable DIPs detection for CHIP board"
+ 	select SUPPORT_EXTENSION_SCAN
+diff --git a/arch/arm/mach-sunxi/board.c b/arch/arm/mach-sunxi/board.c
+index 8f7c894286..91866a3be6 100644
+--- a/arch/arm/mach-sunxi/board.c
++++ b/arch/arm/mach-sunxi/board.c
+@@ -297,7 +297,30 @@ uint32_t sunxi_get_boot_device(void)
+ 	return -1;		/* Never reached */
+ }
+ 
++void set_rtc_fel_flag(void)
++{
++#ifdef SUNXI_FEL_REG
++	volatile long *check_reg = (void *)SUNXI_FEL_REG;
++
++	*check_reg = CONFIG_SUNXI_RTC_FEL_ENTRY_VALUE;
++#endif
++}
++
+ #ifdef CONFIG_SPL_BUILD
++
++void check_rtc_fel_flag(void)
++{
++#ifdef SUNXI_FEL_REG
++	volatile long *check_reg = (void *)SUNXI_FEL_REG;
++	void (*entry)(void) = (void*)SUNXI_FEL_ENTRY_ADDRESS;
++
++	if (*check_reg == CONFIG_SUNXI_RTC_FEL_ENTRY_VALUE) {
++		*check_reg = 0;
++		return entry();
++	}
++#endif
++}
++
+ uint32_t sunxi_get_spl_size(void)
+ {
+ 	struct boot_file_head *egon_head = (void *)SPL_ADDR;
+@@ -432,6 +455,7 @@ u32 spl_mmc_boot_mode(struct mmc *mmc, const u32 boot_device)
+ 
+ void board_init_f(ulong dummy)
+ {
++	check_rtc_fel_flag();
+ 	sunxi_sram_init();
+ 
+ #if defined CONFIG_MACH_SUN6I || defined CONFIG_MACH_SUN8I_H3
+diff --git a/cmd/boot.c b/cmd/boot.c
+index d48c0bf1b3..c870e6a217 100644
+--- a/cmd/boot.c
++++ b/cmd/boot.c
+@@ -46,6 +46,7 @@ static int do_go(struct cmd_tbl *cmdtp, int flag, int argc, char *const argv[])
+ #endif
+ 
+ #if defined(CONFIG_ROCKCHIP_BOOT_MODE_REG) && CONFIG_ROCKCHIP_BOOT_MODE_REG
++#define RBROM
+ #include <asm/arch-rockchip/boot_mode.h>
+ static int do_reboot_brom(struct cmd_tbl *cmdtp, int flag, int argc, char * const argv[])
+ {
+@@ -56,6 +57,20 @@ static int do_reboot_brom(struct cmd_tbl *cmdtp, int flag, int argc, char * cons
+ }
+ #endif
+ 
++#ifdef CONFIG_ARCH_SUNXI
++#include <asm/arch-sunxi/cpu.h>
++#ifdef SUNXI_FEL_REG
++#define RBROM
++static int do_reboot_brom(struct cmd_tbl *cmdtp, int flag, int argc, char * const argv[])
++{
++	set_rtc_fel_flag();
++	do_reset(NULL, 0, 0, NULL);
++
++	return 0;
++}
++#endif
++#endif
++
+ /* -------------------------------------------------------------------- */
+ 
+ #ifdef CONFIG_CMD_GO
+@@ -67,7 +82,7 @@ U_BOOT_CMD(
+ );
+ #endif
+ 
+-#if defined(CONFIG_ROCKCHIP_BOOT_MODE_REG) && CONFIG_ROCKCHIP_BOOT_MODE_REG
++#ifdef RBROM
+ U_BOOT_CMD(
+ 	rbrom, 1, 0,	do_reboot_brom,
+ 	"Perform RESET of the CPU and enter boot rom",

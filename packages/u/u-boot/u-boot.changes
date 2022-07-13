@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 11 14:15:49 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2022.07 
+
+-------------------------------------------------------------------
+Sun Jul  3 13:54:10 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to 2022.07-rc6
+  - Drop obsolete 0015-mx6qsabrelite-Enable-DM_ETH-to-re-e.patch
+- Add rbrom command to enter mask rom on Rockchip devices
+  + 0015-cmd-boot-add-brom-cmd-to-reboot-to-.patch
+- Add rbrom command to enter mask rom on Allwinner devices
+  + 0016-cmd-boot-add-brom-cmd-to-reboot-to-.patch
+- ATF is required to boot rk3399. Do not build without it (boo#1201120).
+
+-------------------------------------------------------------------
 Mon May 16 11:04:46 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Remove build dependency on SDL, none of the installed tools need that

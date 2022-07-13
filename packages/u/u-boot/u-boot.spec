@@ -175,7 +175,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2022.04
+%define archive_version 2022.07
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -205,13 +205,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
-%if 0%{?suse_version} > 1500
-# arm-trusted-firmware is only in Tumbleweed
-%bcond_without uboot_atf
-%else
-%bcond_with uboot_atf
-%endif
-Version:        2022.04
+Version:        2022.07
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -237,7 +231,8 @@ Patch0011:      0011-smbios-Fix-table-when-no-string-is-.patch
 Patch0012:      0012-riscv-enable-CMD_BTRFS.patch
 Patch0013:      0013-Disable-timer-check-in-file-loading.patch
 Patch0014:      0014-Enable-EFI-and-ISO-partitions-suppo.patch
-Patch0015:      0015-mx6qsabrelite-Enable-DM_ETH-to-re-e.patch
+Patch0015:      0015-cmd-boot-add-brom-cmd-to-reboot-to-.patch
+Patch0016:      0016-cmd-boot-add-brom-cmd-to-reboot-to-.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
@@ -285,20 +280,20 @@ Name:           u-boot
 %else
 Name:           u-boot-%target
 %endif
-%if 0%{?is_rk3328} && %{with uboot_atf}
+%if 0%{?is_rk3328}
 BuildRequires:  arm-trusted-firmware-rk3328
 # make_fit_atf.py
 BuildRequires:  python3-pyelftools
 %endif
-%if 0%{?is_rk3399} && %{with uboot_atf}
+%if 0%{?is_rk3399}
 BuildRequires:  arm-trusted-firmware-rk3399
 # make_fit_atf.py
 BuildRequires:  python3-pyelftools
 %endif
-%if (0%{?is_a64} || 0%{?is_h5}) && %{with uboot_atf}
+%if (0%{?is_a64} || 0%{?is_h5})
 BuildRequires:  arm-trusted-firmware-sun50i_a64
 %endif
-%if 0%{?is_h6} && %{with uboot_atf}
+%if 0%{?is_h6}
 BuildRequires:  arm-trusted-firmware-sun50i_h6
 %endif
 %if "%target" == "tools" || "%target" == "avnetultra96rev1" || "%target" == "clearfog" || "%target" == "mvebudb-88f3720" || "%target" == "mvebudbarmada8k" || "%target" == "mvebudbarmada8k3" || "%target" == "mvebuespressobin-88f3720" || "%target" == "mvebumcbin-88f8040" || "%target" == "turrisomnia"
@@ -394,28 +389,22 @@ make %{?_smp_mflags} CFLAGS="%{optflags}" tools-only NO_SDL=y
 
 %else
 %if 0%{?is_a64} || 0%{?is_h5}
-%if %{with uboot_atf}
 export BL31=%{_datadir}/arm-trusted-firmware-sun50i_a64/bl31.bin
-%endif
 export SCP=/dev/null
 %endif
 %if 0%{?is_h6}
-%if %{with uboot_atf}
 export BL31=%{_datadir}/arm-trusted-firmware-sun50i_h6/bl31.bin
-%endif
 export SCP=/dev/null
 %endif
 %if "%{name}" == "u-boot-sifiveunleashed" || "%{name}" == "u-boot-sifiveunmatched"
 export OPENSBI=%{_datadir}/opensbi/opensbi.bin
 %endif
 
-%if %{with uboot_atf}
 %if 0%{?is_rk3328}
 cp %{_datadir}/arm-trusted-firmware-rk3328/bl31.elf .
 %endif
 %if 0%{?is_rk3399}
 cp %{_datadir}/arm-trusted-firmware-rk3399/bl31.elf .
-%endif
 %endif
 
 %if %{is_zynq}
@@ -525,7 +514,7 @@ for f in u-boot u-boot.bin u-boot.dtb u-boot-dtb.bin; do
 done
 %else
 install -D -m 0644 u-boot%{binext} %{buildroot}%{uboot_dir}/u-boot%{binext}
-%if 0%{?rockchip_spl} && %{with uboot_atf}
+%if 0%{?rockchip_spl}
 install -D -m 0644 u-boot.itb %{buildroot}%{uboot_dir}/u-boot.itb
 %endif
 %if "%{name}" == "u-boot-qemu-ppce500"
