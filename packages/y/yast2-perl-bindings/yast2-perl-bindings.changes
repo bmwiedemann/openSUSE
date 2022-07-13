@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 12 12:20:50 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Adapted to new Perl-5.36.0 API (bsc#1200990)
+  Details: https://github.com/yast/yast-perl-bindings/pull/30
+- 4.5.1
+
+-------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.5.0 (bsc#1198109)
