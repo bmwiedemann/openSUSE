@@ -51,4 +51,19 @@
     <comment></comment>
     <requestid>874337</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a238e200266313d58a5fc65118ed223a</srcmd5>
+    <version>0.10.0</version>
+    <time>1657712742</time>
+    <user>dimstar_suse</user>
+    <comment>- Tighten %%files.
+- specfile:
+  * README.rst -&gt; README.md
+- update to version 0.10.0:
+  * Fixed Yahoo readers which now require headers
+  * Fixed other reader
+  * Improved compatibility with pandas
+</comment>
+    <requestid>988959</requestid>
+  </revision>
 </revisionlist>

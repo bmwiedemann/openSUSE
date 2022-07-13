@@ -1,7 +1,7 @@
 #
 # spec file for package python-pandas-datareader
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 # ONLINE tests only, disable by default
 %bcond_with test
 Name:           python-pandas-datareader
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        Data readers extracted from the pandas codebase
 License:        BSD-3-Clause
@@ -34,16 +34,16 @@ BuildRequires:  %{python_module pandas >= 0.23}
 BuildRequires:  %{python_module requests >= 2.19.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module versioneer}
-%if %{with test}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module wrapt}
-%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml
 Requires:       python-pandas >= 0.23
 Requires:       python-requests >= 2.19.0
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wrapt}
+%endif
 %python_subpackages
 
 %description
@@ -66,14 +66,13 @@ Remote data access for pandas. Works for multiple versions of pandas.
 %else
 pushd ..
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -c 'import pandas_datareader'
-popd 
+popd
 %endif
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE.md
-%dir %{python_sitelib}/pandas_datareader
-%{python_sitelib}/pandas_datareader/*
-%{python_sitelib}/pandas_datareader-%{version}-py*.egg-info/
+%{python_sitelib}/pandas_datareader
+%{python_sitelib}/pandas_datareader-%{version}*-info/
 
 %changelog
