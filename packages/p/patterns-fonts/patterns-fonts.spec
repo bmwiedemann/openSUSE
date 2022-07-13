@@ -39,6 +39,7 @@ This particular package contains the Fonts patterns.
 
 
 ################################################################################
+
 %package fonts
 %pattern_graphicalenvironments
 Summary:        Fonts
@@ -85,8 +86,8 @@ Recommends:     adobe-sourcecodepro-fonts
 Recommends:     adobe-sourcesanspro-fonts
 Recommends:     adobe-sourceserifpro-fonts
 Recommends:     ghostscript-fonts-other
-Recommends:     noto-fonts
-Recommends:     noto-sans-cjk-fonts
+# noto-sans and noto-sans-cjk-fonts pull in too much (>500MiB!)
+Recommends:     noto-sans-fonts
 Recommends:     stix-fonts
 Recommends:     texlive-lm-fonts
 Recommends:     xorg-x11-fonts

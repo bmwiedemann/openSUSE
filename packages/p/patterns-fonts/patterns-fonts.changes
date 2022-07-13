@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 11 09:24:47 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Revert to recommend noto-sans-fonts only, noto-fonts and
+  noto-sans-cjk-fonts are too much.
+
+-------------------------------------------------------------------
 Sun Jun 19 17:02:50 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 feat: Add noto-fonts and noto-sans-cjk-fonts to fonts_opt pattern
