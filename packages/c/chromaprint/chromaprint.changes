@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 11 18:31:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.1:
+  * No functional source code changes.
+  * Fixed some compiler warnings.
+  * Rebuilt the fpcalc binaries with FFmpeg 4.4.1.
+  * Added support for fat binaries on macOS, with support for both Intel and Apple silicon.
+
+-------------------------------------------------------------------
 Mon Jul 27 20:37:40 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 1.5.0:

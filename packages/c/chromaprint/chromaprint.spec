@@ -1,7 +1,7 @@
 #
 # spec file for package chromaprint
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,10 +19,10 @@
 
 %define soname      1
 Name:           chromaprint
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Audio Fingerprinting Library
-License:        MIT AND LGPL-2.1-only
+License:        LGPL-2.1-only AND MIT
 URL:            https://acoustid.org/chromaprint
 Source0:        https://github.com/acoustid/chromaprint/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
@@ -77,14 +77,14 @@ This package contains fpcalc, a command-line tool to perform Chromaprint
 fingerprinting.
 
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup -p1
 
 %build
 %cmake \
     -DCMAKE_SKIP_RPATH=TRUE \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=FALSE \
     -DUSE_AVFFT=ON \
-    -DBUILD_TOOLS=ON
+    -DBUILD_TESTS=OFF -DBUILD_TOOLS=ON
 
 %make_build
 
