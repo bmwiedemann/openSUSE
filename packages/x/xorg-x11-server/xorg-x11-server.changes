@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul  6 12:21:11 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_boo1194181-001-xkb-swap-XkbSetDeviceInfo-and-XkbSetDeviceInfoCheck.patch
+  * Out-Of-Bounds Access in CheckSetDeviceIndicators()
+    (CVE-2022-2320, ZDI-CAN-16070, bsc#1194181)
+- U_boo1194179-001-xkb-rename-xkb_h-to-xkb-procs_h.patch,
+  U_boo1194179-002-xkb-add-request-length-validation-for-XkbSetGeometry.patch
+  * Out-Of-Bounds Access in _CheckSetSections() 
+    (CVE-2022-2319, ZDI-CAN-16062, bsc#1194179)
+
+-------------------------------------------------------------------
 Tue May 10 13:04:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add n_raise_default_clients.patch 

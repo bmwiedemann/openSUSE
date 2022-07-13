@@ -3765,4 +3765,18 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     <comment></comment>
     <requestid>976070</requestid>
   </revision>
+  <revision rev="408" vrev="8">
+    <srcmd5>cab850f7231881525489e46098461f85</srcmd5>
+    <version>21.1.3</version>
+    <time>1657715513</time>
+    <user>dimstar_suse</user>
+    <comment>- U_boo1194181-001-xkb-swap-XkbSetDeviceInfo-and-XkbSetDeviceInfoCheck.patch
+  * Out-Of-Bounds Access in CheckSetDeviceIndicators()
+    (CVE-2022-2320, ZDI-CAN-16070, bsc#1194181)
+- U_boo1194179-001-xkb-rename-xkb_h-to-xkb-procs_h.patch,
+  U_boo1194179-002-xkb-add-request-length-validation-for-XkbSetGeometry.patch
+  * Out-Of-Bounds Access in _CheckSetSections() 
+    (CVE-2022-2319, ZDI-CAN-16062, bsc#1194179)</comment>
+    <requestid>988635</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,155 @@
+From 04a2689e96b42330718517b2a3950aa2bb1ca017 Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Mon, 4 Jul 2022 09:42:53 +1000
+Subject: [PATCH] xkb: rename xkb.h to xkb-procs.h
+
+This header merely defines the various protocol request handlers, so
+let's rename it to something less generic and remove its include from
+all the files that don't actually need it (which is almost all of them).
+
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+Reviewed-by: Olivier Fourdan <ofourdan@redhat.com>
+---
+ test/test_xkb.c            | 1 -
+ xkb/ddxLoad.c              | 1 -
+ xkb/{xkb.h => xkb-procs.h} | 0
+ xkb/xkb.c                  | 2 +-
+ xkb/xkbActions.c           | 1 -
+ xkb/xkbEvents.c            | 1 -
+ xkb/xkbInit.c              | 1 -
+ xkb/xkbLEDs.c              | 1 -
+ xkb/xkbSwap.c              | 2 +-
+ xkb/xkbUtils.c             | 1 -
+ xkb/xkbfmisc.c             | 1 -
+ 11 files changed, 2 insertions(+), 10 deletions(-)
+ rename xkb/{xkb.h => xkb-procs.h} (100%)
+
+diff --git a/test/test_xkb.c b/test/test_xkb.c
+index f81a7ed65..a13107390 100644
+--- a/test/test_xkb.c
++++ b/test/test_xkb.c
+@@ -48,7 +48,6 @@
+ #include "../xkb/xkbgeom.h"
+ #include <X11/extensions/XKMformat.h>
+ #include "xkbfile.h"
+-#include "../xkb/xkb.h"
+ #include <assert.h>
+ 
+ #include "tests-common.h"
+diff --git a/xkb/ddxLoad.c b/xkb/ddxLoad.c
+index f9b7b06d9..2d203ce11 100644
+--- a/xkb/ddxLoad.c
++++ b/xkb/ddxLoad.c
+@@ -43,7 +43,6 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #define	XKBSRV_NEED_FILE_FUNCS
+ #include <xkbsrv.h>
+ #include <X11/extensions/XI.h>
+-#include "xkb.h"
+ 
+ #define	PRE_ERROR_MSG "\"The XKEYBOARD keymap compiler (xkbcomp) reports:\""
+ #define	ERROR_PREFIX	"\"> \""
+diff --git a/xkb/xkb.h b/xkb/xkb-procs.h
+similarity index 100%
+rename from xkb/xkb.h
+rename to xkb/xkb-procs.h
+diff --git a/xkb/xkb.c b/xkb/xkb.c
+index 820cd7166..21c046913 100644
+--- a/xkb/xkb.c
++++ b/xkb/xkb.c
+@@ -38,7 +38,7 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #include "extnsionst.h"
+ #include "extinit.h"
+ #include "xace.h"
+-#include "xkb.h"
++#include "xkb-procs.h"
+ #include "protocol-versions.h"
+ 
+ #include <X11/extensions/XI.h>
+diff --git a/xkb/xkbActions.c b/xkb/xkbActions.c
+index db29091e7..5e9a6b6d6 100644
+--- a/xkb/xkbActions.c
++++ b/xkb/xkbActions.c
+@@ -38,7 +38,6 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #include "exevents.h"
+ #include "eventstr.h"
+ #include <xkbsrv.h>
+-#include "xkb.h"
+ #include <ctype.h>
+ #include "mi.h"
+ #include "mipointer.h"
+diff --git a/xkb/xkbEvents.c b/xkb/xkbEvents.c
+index 0bbd66186..f8f65d4a7 100644
+--- a/xkb/xkbEvents.c
++++ b/xkb/xkbEvents.c
+@@ -39,7 +39,6 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #include "exglobals.h"
+ #include "windowstr.h"
+ #include <xkbsrv.h>
+-#include "xkb.h"
+ 
+ /***====================================================================***/
+ 
+diff --git a/xkb/xkbInit.c b/xkb/xkbInit.c
+index 4108e1b26..de1dd3fe3 100644
+--- a/xkb/xkbInit.c
++++ b/xkb/xkbInit.c
+@@ -49,7 +49,6 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #include "xkbgeom.h"
+ #include <X11/extensions/XKMformat.h>
+ #include "xkbfile.h"
+-#include "xkb.h"
+ 
+ #define	CREATE_ATOM(s)	MakeAtom(s,sizeof(s)-1,1)
+ 
+diff --git a/xkb/xkbLEDs.c b/xkb/xkbLEDs.c
+index 5792d9fb7..d4690dad9 100644
+--- a/xkb/xkbLEDs.c
++++ b/xkb/xkbLEDs.c
+@@ -38,7 +38,6 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ 
+ #include <X11/extensions/XI.h>
+ #include <xkbsrv.h>
+-#include "xkb.h"
+ 
+ /***====================================================================***/
+ 
+diff --git a/xkb/xkbSwap.c b/xkb/xkbSwap.c
+index 50cabb90e..efbdb81c1 100644
+--- a/xkb/xkbSwap.c
++++ b/xkb/xkbSwap.c
+@@ -36,7 +36,7 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #include <xkbsrv.h>
+ #include "xkbstr.h"
+ #include "extnsionst.h"
+-#include "xkb.h"
++#include "xkb-procs.h"
+ 
+         /*
+          * REQUEST SWAPPING
+diff --git a/xkb/xkbUtils.c b/xkb/xkbUtils.c
+index 8975ade8d..dd089c204 100644
+--- a/xkb/xkbUtils.c
++++ b/xkb/xkbUtils.c
+@@ -67,7 +67,6 @@ DEALINGS IN THE SOFTWARE.
+ #define	XKBSRV_NEED_FILE_FUNCS
+ #include <xkbsrv.h>
+ #include "xkbgeom.h"
+-#include "xkb.h"
+ 
+ /***====================================================================***/
+ 
+diff --git a/xkb/xkbfmisc.c b/xkb/xkbfmisc.c
+index 2ecdcd555..fc9197f2d 100644
+--- a/xkb/xkbfmisc.c
++++ b/xkb/xkbfmisc.c
+@@ -46,7 +46,6 @@
+ #define XKBSRV_NEED_FILE_FUNCS	1
+ #include <xkbsrv.h>
+ #include "xkbgeom.h"
+-#include "xkb.h"
+ 
+ unsigned
+ _XkbKSCheckCase(KeySym ks)
+-- 
+GitLab
+
