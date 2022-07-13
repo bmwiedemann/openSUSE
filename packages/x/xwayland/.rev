@@ -120,4 +120,20 @@
   * xwayland: Fix invalid pointer access in drm_lease_device_handle_released.</comment>
     <requestid>979155</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>17afbe525141f7187397aa8b73fd8fe0</srcmd5>
+    <version>22.1.3</version>
+    <time>1657712683</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.1.3
+  * os: print &lt;signal handler called&gt; if unw_is_signal_frame()
+  * os: print registers in the libunwind version of xorg_backtrace()
+  * xwayland/present: Do not send two idle notify events for flip pixmaps
+  * xwayland: Fix check logic in sprite_check_lost_focus()
+  * xwayland: Change randr_output status when call xwl_output_remove()
+  * xkb: switch to array index loops to moving pointers
+  * xkb: swap XkbSetDeviceInfo and XkbSetDeviceInfoCheck
+  * xkb: add request length validation for XkbSetGeometry</comment>
+    <requestid>988657</requestid>
+  </revision>
 </revisionlist>
