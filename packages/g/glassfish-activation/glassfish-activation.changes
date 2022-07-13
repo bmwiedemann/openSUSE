@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 12 09:28:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Add symlinks to jaf.jar and activation.jar which were part
+  of the obsoleted gnu-jaf
+
+-------------------------------------------------------------------
 Fri Mar 18 16:49:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source/target levels 8

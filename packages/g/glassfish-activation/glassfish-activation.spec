@@ -28,7 +28,7 @@ Source1:        activation-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
-Obsoletes:      gnu-jaf
+Obsoletes:      gnu-jaf < %{version}
 Obsoletes:      jaf
 BuildArch:      noarch
 
@@ -41,7 +41,8 @@ bean to perform the operation(s).
 
 %package api
 Summary:        JavaBeans Activation Framework API jar
-Obsoletes:      gnu-jaf
+Provides:       gnu-jaf = %{version}
+Obsoletes:      gnu-jaf < %{version}
 Obsoletes:      jaf
 
 %description api
@@ -90,6 +91,8 @@ popd
 install -d -m 755 %{buildroot}%{_javadir}/
 install -m 644 activation/target/javax.activation-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 install -m 644 activation/target/javax.activation-api-%{version}.jar %{buildroot}%{_javadir}/%{name}-api.jar
+ln -sf %{name}-api.jar %{buildroot}%{_javadir}/activation.jar
+ln -sf %{name}-api.jar %{buildroot}%{_javadir}/jaf.jar
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}/%{name}
@@ -108,6 +111,8 @@ cp -r activation/target/site/apidocs/* %{buildroot}/%{_javadocdir}/%{name}
 %doc README.md
 
 %files api -f .mfiles-api
+%{_javadir}/activation.jar
+%{_javadir}/jaf.jar
 %license LICENSE.txt
 
 %files javadoc
