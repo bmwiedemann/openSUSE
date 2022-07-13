@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 13 02:35:24 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.2.4:
+  * Fix hiding selection when selection layer is
+    SC_LAYER_UNDER_TEXT. Bug #2334.
+  * Fix bad background colour for additional, secondary, and
+    inactive selections when printing. Bug #2335.
+  * Fix failures on GTK with non-UTF-8 text when multi-threading
+    due to character set conversion code that was not thread-safe.
+  * Fix crash when printing on Win32 in bidirectional mode with a
+    non-empty selection. 
+
+-------------------------------------------------------------------
 Wed Jun 22 01:03:00 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.2.3:
