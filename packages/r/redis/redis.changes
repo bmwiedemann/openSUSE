@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Jul 11 15:02:24 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 7.0.3
+  * Performance and resource utilization improvements
+    - Optimize zset conversion on large ZRANGESTORE (#10789)
+    - Optimize the performance of sending PING on large clusters (#10624)
+    - Allow for faster restart of Redis in cluster mode (#10912)
+  * INFO fields and introspection changes
+    - Add missing sharded pubsub keychannel count to CLIENT LIST (#10895)
+    - Add missing pubsubshard_channels field in INFO STATS (#10929)
+  * Module API changes
+    - Add RM_StringToULongLong and RM_CreateStringFromULongLong (#10889)
+    - Add RM_SetClientNameById and RM_GetClientNameById (#10839)
+  * Changes in CLI tools
+    - Add missing cluster-port support to redis-cli --cluster (#10344)
+  * Other General Improvements
+    - Account sharded pubsub channels memory consumption (#10925)
+    - Allow ECHO in loading and stale modes (#10853)
+    - Cluster: Throw -TRYAGAIN instead of -ASK on migrating nodes for multi-key
+    - commands when the node only has some of the keys (#9526)
+  * Bug Fixes
+    - TLS: Notify clients on connection shutdown (#10931)
+    - Fsync directory while persisting AOF manifest, RDB file, and config file (#10737)
+    - Script that made modification will not break with unexpected NOREPLICAS error (#10855)
+    - Cluster: Fix a bug where nodes may not acknowledge a CLUSTER FAILOVER TAKEOVER
+    - after a replica reboots (#10798)
+    - Cluster: Fix crash during handshake and cluster shards call (#10942)
+  * Fixes for issues in previous releases of Redis 7.0
+    - TLS: Fix issues with large replies (#10909)
+    - Correctly report the startup warning for vm.overcommit_memory (#10841)
+    - redis-server command line allow passing config name and value in the same argument (#10866)
+    - Support --save command line argument with no value for backwards compatibility (#10866)
+    - Fix CLUSTER RESET command regression requiring an argument (#10898)
+
+-------------------------------------------------------------------
 Mon Jul  4 09:41:49 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Use bundled jemalloc to fix active defragmentation, fixes bsc#1200913.

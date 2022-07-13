@@ -20,7 +20,7 @@
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
 Name:           redis
-Version:        7.0.2
+Version:        7.0.3
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
@@ -145,7 +145,7 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 
 %files
 %license COPYING
-%doc 00-RELEASENOTES BUGS CONTRIBUTING README.md
+%doc 00-RELEASENOTES BUGS README.md
 %if 0%{?suse_version} > 1500
 %{_distconfdir}/logrotate.d/%{name}
 %else
