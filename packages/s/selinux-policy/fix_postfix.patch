@@ -1,8 +1,8 @@
-Index: fedora-policy/policy/modules/contrib/postfix.fc
+Index: fedora-policy-20220624/policy/modules/contrib/postfix.fc
 ===================================================================
---- fedora-policy.orig/policy/modules/contrib/postfix.fc
-+++ fedora-policy/policy/modules/contrib/postfix.fc
-@@ -1,37 +1,20 @@
+--- fedora-policy-20220624.orig/policy/modules/contrib/postfix.fc
++++ fedora-policy-20220624/policy/modules/contrib/postfix.fc
+@@ -1,37 +1,21 @@
  # postfix
 -/etc/rc\.d/init\.d/postfix    --  gen_context(system_u:object_r:postfix_initrc_exec_t,s0)
 -/etc/postfix.*		      	gen_context(system_u:object_r:postfix_etc_t,s0)
@@ -41,6 +41,7 @@ Index: fedora-policy/policy/modules/contrib/postfix.fc
 +/etc/postfix.*		      		gen_context(system_u:object_r:postfix_etc_t,s0)
 +/etc/postfix/chroot-update 	--	gen_context(system_u:object_r:postfix_exec_t,s0)
 +/usr/lib/postfix/bin/.*		--	gen_context(system_u:object_r:postfix_exec_t,s0)
++/usr/lib/postfix/systemd/.*	--	gen_context(system_u:object_r:postfix_exec_t,s0)
 +/usr/lib/postfix/bin/cleanup 	--	gen_context(system_u:object_r:postfix_cleanup_exec_t,s0)
 +/usr/lib/postfix/bin/local	--	gen_context(system_u:object_r:postfix_local_exec_t,s0)
 +/usr/lib/postfix/bin/master	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
@@ -56,7 +57,7 @@ Index: fedora-policy/policy/modules/contrib/postfix.fc
  /etc/postfix/postfix-script.* -- gen_context(system_u:object_r:postfix_exec_t,s0)
  /etc/postfix/prng_exch	--	gen_context(system_u:object_r:postfix_prng_t,s0)
  /usr/sbin/postalias	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
-@@ -45,6 +28,9 @@ ifdef(`distro_redhat', `
+@@ -45,13 +29,16 @@ ifdef(`distro_redhat', `
  /usr/sbin/postqueue	--	gen_context(system_u:object_r:postfix_postqueue_exec_t,s0)
  /usr/sbin/postsuper	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
  
@@ -66,10 +67,18 @@ Index: fedora-policy/policy/modules/contrib/postfix.fc
  /var/lib/postfix.*		gen_context(system_u:object_r:postfix_data_t,s0)
  
  /var/spool/postfix.*		gen_context(system_u:object_r:postfix_spool_t,s0)
-Index: fedora-policy/policy/modules/contrib/postfix.te
+ /var/spool/postfix/deferred(/.*)? gen_context(system_u:object_r:postfix_spool_t,s0)
+ /var/spool/postfix/defer(/.*)? 	  gen_context(system_u:object_r:postfix_spool_t,s0)
+ /var/spool/postfix/maildrop(/.*)? gen_context(system_u:object_r:postfix_spool_t,s0)
+-/var/spool/postfix/pid/.*	gen_context(system_u:object_r:postfix_var_run_t,s0)
++/var/spool/postfix/pid(/.*)?	gen_context(system_u:object_r:postfix_var_run_t,s0)
+ /var/spool/postfix/private(/.*)? gen_context(system_u:object_r:postfix_private_t,s0)
+ /var/spool/postfix/public(/.*)? gen_context(system_u:object_r:postfix_public_t,s0)
+ /var/spool/postfix/bounce(/.*)? gen_context(system_u:object_r:postfix_spool_bounce_t,s0)
+Index: fedora-policy-20220624/policy/modules/contrib/postfix.te
 ===================================================================
---- fedora-policy.orig/policy/modules/contrib/postfix.te
-+++ fedora-policy/policy/modules/contrib/postfix.te
+--- fedora-policy-20220624.orig/policy/modules/contrib/postfix.te
++++ fedora-policy-20220624/policy/modules/contrib/postfix.te
 @@ -447,6 +447,14 @@ logging_send_syslog_msg(postfix_map_t)
  
  userdom_use_inherited_user_ptys(postfix_map_t)

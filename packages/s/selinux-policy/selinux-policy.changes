@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul 13 07:48:41 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Update fix_systemd.patch to add cap sys_admin and kernel_dgram_send for
+  systemd_gpt_generator_t (bsc#1200911)
+
+-------------------------------------------------------------------
+Mon Jul 11 13:45:04 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- postfix: Label PID files and some helpers correctly (bsc#1197242)
+
+-------------------------------------------------------------------
+Fri Jun 24 12:51:40 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Add fix_userdomain.patch to dontaudit UDP rpc ports (bsc#1193984)
+
+-------------------------------------------------------------------
 Fri Jun 24 06:32:55 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 20220624. Refreshed:
