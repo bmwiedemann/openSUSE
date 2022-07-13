@@ -1053,4 +1053,12 @@ e.g. https://build.opensuse.org/package/show/devel:languages:perl/perl-Pod-Parse
 I hope I got it right now. It export both 5.34.0 and 5.34.1 COMPAT. That should be correct.</comment>
     <requestid>976985</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>ba04a54f08eea7d535ec5f7007d47b60</srcmd5>
+    <version>5.36.0</version>
+    <time>1657712676</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.36.0</comment>
+    <requestid>985249</requestid>
+  </revision>
 </revisionlist>

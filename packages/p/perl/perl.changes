@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 23 13:54:51 CEST 2022 - mls@suse.de
+
+- Update to 5.36.0
+  * the signatures and isa features are no longer experimental and
+    part of the v5.36 feature bundle
+  * the v5.36 bundle also enables warnings
+  * new '-g' command line flag (alias for -0777)
+  * support for unicode 14.0
+  * regex sets are no longer considered experimental
+  * experimental iterating over multiple values at a time
+  * experimental new builtin module
+  * experimental defer blocks
+  * try/catch can now have a finally block
+  * experimental non-ASCII delimiters for quote-like operators
+  * a physically empty sort is now a compile-time error
+- Rebase perl-5.34.0.dif to perl-5.36.0.diff
+- Refresh perl-5.18.2-overflow.diff
+
+-------------------------------------------------------------------
 Wed May  4 06:41:37 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Update to 5.34.1 - maintenance release

@@ -17,15 +17,17 @@
 
 
 %define flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" != ""
+%if "%{?flavor}" != "" && "%{?flavor}" != ("@BUILD_" + "FLAVOR@")
 %define name_suffix -%{flavor}
+%else
+%define name_suffix %{nil}
 %endif
 
-%define pversion 5.34.1
-# set to %nil when equal to pversion
-%global versionlist 5.34.0
+%define pversion 5.36.0
+# set to nil when equal to pversion
+%global versionlist %{nil}
 Name:           perl%{?name_suffix}
-Version:        5.34.1
+Version:        5.36.0
 Release:        0
 Summary:        The Perl interpreter
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -36,7 +38,7 @@ Source1:        perl-rpmlintrc
 Source2:        macros.perl
 Source3:        README.macros
 Source4:        baselibs.conf
-Patch0:         perl-5.34.0.dif
+Patch0:         perl-5.36.0.diff
 Patch3:         perl-nroff.diff
 Patch4:         perl-netcmdutf8.diff
 Patch5:         perl-HiRes.t-timeout.diff
@@ -63,64 +65,64 @@ BuildRequires:  zlib-devel
 Requires:       perl-base = %{version}
 Suggests:       perl-doc = %{version}
 Provides:       perl-500
-Provides:       perl-Archive-Tar = 2.38
+Provides:       perl-Archive-Tar = 2.40
 Provides:       perl(:MODULE_COMPAT_%{pversion})
 %if "%{versionlist}" != ""
 Provides:       perl(:MODULE_COMPAT_%{versionlist})
 %endif
-Obsoletes:      perl-Archive-Tar <= 2.38
+Obsoletes:      perl-Archive-Tar <= 2.40
 Provides:       perl-autodie = 2.34
 Obsoletes:      perl-autodie <= 2.34
-Provides:       perl-Compress-Raw-Zlib = 2.101
-Obsoletes:      perl-Compress-Raw-Zlib <= 2.101
-Provides:       perl-Compress-Zlib = 2.101
-Obsoletes:      perl-Compress-Zlib <= 2.101
+Provides:       perl-Compress-Raw-Zlib = 2.105
+Obsoletes:      perl-Compress-Raw-Zlib <= 2.105
+Provides:       perl-Compress-Zlib = 2.106
+Obsoletes:      perl-Compress-Zlib <= 2.106
 Provides:       perl-CPAN-Meta = 2.150010
 Obsoletes:      perl-CPAN-Meta <= 2.150010
 Provides:       perl-CPAN-Meta-YAML = 0.018
 Obsoletes:      perl-CPAN-Meta-YAML <= 0.018
 Provides:       perl-ExtUtils-CBuilder = 0.280236
 Obsoletes:      perl-ExtUtils-CBuilder <= 0.280236
-Provides:       perl-ExtUtils-ParseXS = 3.43
-Obsoletes:      perl-ExtUtils-ParseXS <= 3.43
+Provides:       perl-ExtUtils-ParseXS = 3.45
+Obsoletes:      perl-ExtUtils-ParseXS <= 3.45
 Provides:       perl-Filter-Simple = 0.96
 Obsoletes:      perl-Filter-Simple <= 0.96
-Provides:       perl-I18N-LangTags = 0.44
-Obsoletes:      perl-I18N-LangTags <= 0.44
-Provides:       perl-IO-Compress-Base = 2.102
-Obsoletes:      perl-IO-Compress-Base <= 2.102
-Provides:       perl-IO-Compress-Zlib = 2.102
-Obsoletes:      perl-IO-Compress-Zlib <= 2.102
+Provides:       perl-I18N-LangTags = 0.45
+Obsoletes:      perl-I18N-LangTags <= 0.45
+Provides:       perl-IO-Compress-Base = 2.106
+Obsoletes:      perl-IO-Compress-Base <= 2.106
+Provides:       perl-IO-Compress-Zlib = 2.106
+Obsoletes:      perl-IO-Compress-Zlib <= 2.106
 Provides:       perl-IO-Socket-IP = 0.41
 Obsoletes:      perl-IO-Socket-IP <= 0.41
 Provides:       perl-IO-Zlib = 1.11
 Obsoletes:      perl-IO-Zlib <= 1.11
-Provides:       perl-libnet = 3.11
-Obsoletes:      perl-libnet <= 3.11
+Provides:       perl-libnet = 3.14
+Obsoletes:      perl-libnet <= 3.14
 Provides:       perl-Locale-Maketext-Simple = 0.21
 Obsoletes:      perl-Locale-Maketext-Simple <= 0.21
-Provides:       perl-MIME-Base64 = 3.15
-Obsoletes:      perl-MIME-Base64 <= 3.15
+Provides:       perl-MIME-Base64 = 3.16
+Obsoletes:      perl-MIME-Base64 <= 3.16
 Provides:       perl-Parse-CPAN-Meta = 2.150010
 Obsoletes:      perl-Parse-CPAN-Meta <= 2.150010
-Provides:       perl-PathTools = 3.75
-Obsoletes:      perl-PathTools <= 3.75
+Provides:       perl-PathTools = 3.84
+Obsoletes:      perl-PathTools <= 3.84
 Provides:       perl-Pod-Escapes = 1.07
 Obsoletes:      perl-Pod-Escapes <= 1.07
-Provides:       perl-Pod-Simple = 3.42
-Obsoletes:      perl-Pod-Simple <= 3.42
-Provides:       perl-Storable = 3.23
-Obsoletes:      perl-Storable <= 3.23
-Provides:       perl-Test-Harness = 3.43
-Obsoletes:      perl-Test-Harness <= 3.43
-Provides:       perl-Test-Simple = 1.302183
-Obsoletes:      perl-Test-Simple <= 1.302183
+Provides:       perl-Pod-Simple = 3.43
+Obsoletes:      perl-Pod-Simple <= 3.43
+Provides:       perl-Storable = 3.26
+Obsoletes:      perl-Storable <= 3.26
+Provides:       perl-Test-Harness = 3.44
+Obsoletes:      perl-Test-Harness <= 3.44
+Provides:       perl-Test-Simple = 1.302190
+Obsoletes:      perl-Test-Simple <= 1.302190
 Provides:       perl-Text-Balanced = 2.04
 Obsoletes:      perl-Text-Balanced <= 2.04
-Provides:       perl-Time-HiRes = 1.9767
-Obsoletes:      perl-Time-HiRes <= 1.9767
-Provides:       perl-version = 0.9928
-Obsoletes:      perl-version <= 0.9928
+Provides:       perl-Time-HiRes = 1.9770
+Obsoletes:      perl-Time-HiRes <= 1.9770
+Provides:       perl-version = 0.9929
+Obsoletes:      perl-version <= 0.9929
 %if "%{version}" != "%{pversion}"
 Provides:       perl = %{pversion}-%{release}
 %endif
@@ -174,7 +176,7 @@ Perl man pages and pod files.
 %prep
 %setup -q -n perl-%{pversion}
 cp -p %{SOURCE3} .
-%patch0 -p1
+%patch0
 %patch3
 %patch4
 %patch5
