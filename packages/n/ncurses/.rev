@@ -3704,4 +3704,34 @@
     att620, att730 -TD</comment>
     <requestid>983972</requestid>
   </revision>
+  <revision rev="219" vrev="23">
+    <srcmd5>d033d9f5db113c3b345094647d63dd7b</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1657712682</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20220709
+  + lock the prescreen data consistently in newterm, etc., for the
+    pthreads configuration (report by Tom de Vries).
+
+- Add ncurses patch 20220703
+  + add consistency check in tic for u6/u7/u8/u9 and NQ capabilities.
+  + use NQ to flag entries where the terminal does not support query and
+    response -TD
+  + use ansi+enq and decid+cpr in cases where the terminal probably
+    supported the u6-u9 extension -TD
+  + add/use apollo+vt132, xterm+alt47 -TD
+- Correct offsets of patches
+  * ncurses-5.9-ibm327x.dif
+  * ncurses-6.3.dif
+
+- Add ncurses patch 20220625
+  + improve man/curs_bkgd.3x, explaining that bkgdset can affect results
+    for bkgd (report by Anton Vidovic).
+  + correct dsl in dec+sl (report by Rajeev Pillai) -TD
+  + add/use ansi+cpr, decid+cpr -TD
+- Correct offsets of patches
+  * ncurses-5.9-ibm327x.dif
+  * ncurses-6.3.dif</comment>
+    <requestid>988345</requestid>
+  </revision>
 </revisionlist>
