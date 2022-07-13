@@ -143,4 +143,12 @@
     <comment>Build against hamcrest 2.2</comment>
     <requestid>982406</requestid>
   </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>31efa8073ba090cad0849da6fa4ff603</srcmd5>
+    <version>4.15</version>
+    <time>1657712711</time>
+    <user>dimstar_suse</user>
+    <comment>appease darix</comment>
+    <requestid>988596</requestid>
+  </revision>
 </revisionlist>

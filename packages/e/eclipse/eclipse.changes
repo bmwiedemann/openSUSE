@@ -54,6 +54,7 @@ Thu Jul 16 23:57:01 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 Mon Jul  6 04:53:01 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 4.15
+  * No changelog was made available.
 - Build only on 64-bit architectures, since 32-bit support was
   dropped upstream
 - Modified patches:
