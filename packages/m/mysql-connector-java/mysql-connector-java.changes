@@ -98,7 +98,7 @@ Fri Feb 25 20:40:59 UTC 2022 - David Anes <david.anes@suse.com>
   packaged:
   * Add mysql-connector-java-remove-oci-support.patch
 
-- Update to 8.0.28 (CVE-2021-2471, bsc#1195557):
+- Update to 8.0.28 (CVE-2021-2471, bsc#1195557, jsc#PM-3307):
   Changes in 8.0.28:
     * Fix for Bug#99260 (31189960), statement.setQueryTimeout,creates a database connection and does not close.
     * Fix for Bug#103324 (32770013), X DevAPI Collection.replaceOne() missing matching _id check.

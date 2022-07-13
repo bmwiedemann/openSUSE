@@ -327,4 +327,12 @@
     <comment>8.0.29</comment>
     <requestid>976412</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>98a0de34a66a02db63fcd12196cd2622</srcmd5>
+    <version>8.0.29</version>
+    <time>1657712727</time>
+    <user>dimstar_suse</user>
+    <comment>appease darix</comment>
+    <requestid>988612</requestid>
+  </revision>
 </revisionlist>
