@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul  9 09:50:53 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.3:
+  + Fix crash when deleting all passwords.
+  + Fix memory corruption caused by Sync failure.
+
+-------------------------------------------------------------------
 Sat May  7 07:36:51 UTC 2022 - Ilgaz Öcal <ilgaz.nsa@gmail.com>
 
 - Added Recommends: gnome-keyring since very critical functionality

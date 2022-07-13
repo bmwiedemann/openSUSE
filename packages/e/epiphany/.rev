@@ -1528,4 +1528,12 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
   + Fix blurry favicons in bookmarks popover.</comment>
     <requestid>975725</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>871b1f72794b43f9df60c55a5119c07d</srcmd5>
+    <version>42.3</version>
+    <time>1657712712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988643</requestid>
+  </revision>
 </revisionlist>
