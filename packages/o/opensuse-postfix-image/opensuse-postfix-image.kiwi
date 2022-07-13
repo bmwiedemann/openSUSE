@@ -23,6 +23,7 @@
         </subcommand>
 	<expose>
 	  <port number='25'/>
+	  <port number='465'/>
           <port number='587'/>
 	</expose>
         <volumes>
@@ -63,6 +64,7 @@
     <package name="ca-certificates-mozilla"/>
     <package name="spamassassin-spamc"/>
     <package name="spamass-milter"/>
+    <package name="timezone"/>
     <package name="-busybox-man"/>
     <package name="-busybox-sendmail"/>
     <package name="-busybox-iproute2"/>

@@ -1,13 +1,18 @@
 <services>
     <service name="obs_scm" mode="disabled">
-        <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
         <param name="scm">git</param>
-        <param name="extract">LICENSE</param>
-        <param name="extract">postfix/README.md</param>
-        <param name="extract">postfix/opensuse-postfix-image.kiwi</param>
-        <param name="extract">postfix/opensuse-postfix-image.changes</param>
+        <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
         <param name="revision">master</param>
         <param name="versionformat">%cd.%h</param>
+	<param name="subdir">postfix</param>
+        <param name="extract">README.md</param>
+        <param name="extract">opensuse-postfix-image.kiwi</param>
+        <param name="changesgenerate">enable</param>
+    </service>
+    <service name="obs_scm" mode="disabled">
+        <param name="scm">git</param>
+        <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
+        <param name="extract">LICENSE</param>
     </service>
     <service name="tar" mode="disabled">
         <param name="subdir">postfix</param>

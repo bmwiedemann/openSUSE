@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 13 07:01:43 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220713.c55a107:
+  * Document ENABLE_SUBMISSIONS variable
+  * Add smtps port
+  * Add support for smtps
+  * Add support for submission port 587
+
+-------------------------------------------------------------------
 Mon Aug  2 10:07:36 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Re-add busybox-findutils
