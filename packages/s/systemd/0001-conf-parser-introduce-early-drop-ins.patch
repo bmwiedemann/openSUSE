@@ -1,7 +1,7 @@
-From 079a6f89f9e42517cd14b488320b6302746bcf9b Mon Sep 17 00:00:00 2001
+From a1c88ab7f5e5ad127833168bbb38340d1b582a88 Mon Sep 17 00:00:00 2001
 From: Franck Bui <fbui@suse.com>
 Date: Fri, 22 Jan 2021 14:57:08 +0100
-Subject: [PATCH 01/11] conf-parser: introduce 'early' drop-ins
+Subject: [PATCH 1/1] conf-parser: introduce 'early' drop-ins
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -61,15 +61,15 @@ drop this feature at any time.
 
 Fixes: #2121
 ---
- src/shared/conf-parser.c    |  48 +++++++++--
- src/test/test-conf-parser.c | 154 ++++++++++++++++++++++++++++++++++++
- 2 files changed, 197 insertions(+), 5 deletions(-)
+ src/shared/conf-parser.c    |  54 +++++++++++-
+ src/test/test-conf-parser.c | 163 ++++++++++++++++++++++++++++++++++++
+ 2 files changed, 213 insertions(+), 4 deletions(-)
 
 diff --git a/src/shared/conf-parser.c b/src/shared/conf-parser.c
-index 1e1967d7ea..eb81732dfa 100644
+index 6bd3ab38db..1722b90ca0 100644
 --- a/src/shared/conf-parser.c
 +++ b/src/shared/conf-parser.c
-@@ -464,6 +464,7 @@ static int hashmap_put_stats_by_path(Hashmap **stats_by_path, const char *path,
+@@ -478,6 +478,7 @@ static int hashmap_put_stats_by_path(Hashmap **stats_by_path, const char *path,
  
  static int config_parse_many_files(
                  const char* const* conf_files,
@@ -77,25 +77,32 @@ index 1e1967d7ea..eb81732dfa 100644
                  char **files,
                  const char *sections,
                  ConfigItemLookup lookup,
-@@ -481,6 +482,12 @@ static int config_parse_many_files(
-                 stats_by_path = hashmap_new(&path_hash_ops_free_free);
-                 if (!stats_by_path)
+@@ -496,6 +497,20 @@ static int config_parse_many_files(
                          return -ENOMEM;
-+        } 
-+
+         }
+ 
 +        STRV_FOREACH(fn, early_files) {
 +                r = config_parse(NULL, *fn, NULL, sections, lookup, table, flags, userdata, &st);
 +                if (r < 0)
 +                        return r;
-         }
- 
++                if (r == 0)
++                        continue;
++
++                if (ret_stats_by_path) {
++                        r = hashmap_put_stats_by_path(&stats_by_path, *fn, &st);
++                        if (r < 0)
++                                return r;
++                }
++        }
++
          /* First read the first found main config file. */
-@@ -521,6 +528,28 @@ static int config_parse_many_files(
+         STRV_FOREACH(fn, conf_files) {
+                 r = config_parse(NULL, *fn, NULL, sections, lookup, table, flags, userdata, &st);
+@@ -534,6 +549,27 @@ static int config_parse_many_files(
          return 0;
  }
  
 +static int config_parse_split_conf_files(char **files, char ***early_files, char ***late_files) {
-+        char **f;
 +
 +        assert(files);
 +        assert(early_files);
@@ -119,7 +126,7 @@ index 1e1967d7ea..eb81732dfa 100644
  /* Parse each config file in the directories specified as nulstr. */
  int config_parse_many_nulstr(
                  const char *conf_file,
-@@ -532,15 +561,19 @@ int config_parse_many_nulstr(
+@@ -545,15 +581,19 @@ int config_parse_many_nulstr(
                  void *userdata,
                  Hashmap **ret_stats_by_path) {
  
@@ -142,17 +149,15 @@ index 1e1967d7ea..eb81732dfa 100644
                                         ret_stats_by_path);
  }
  
-@@ -556,8 +589,8 @@ int config_parse_many(
+@@ -590,6 +630,7 @@ int config_parse_many(
                  void *userdata,
                  Hashmap **ret_stats_by_path) {
  
-+        _cleanup_strv_free_ char **files = NULL, **early_files = NULL, **late_files = NULL;
-         _cleanup_strv_free_ char **dropin_dirs = NULL;
--        _cleanup_strv_free_ char **files = NULL;
-         const char *suffix;
++        _cleanup_strv_free_ char **early_files = NULL, **late_files = NULL;
+         _cleanup_strv_free_ char **files = NULL;
          int r;
  
-@@ -570,7 +603,12 @@ int config_parse_many(
+@@ -602,7 +643,12 @@ int config_parse_many(
          if (r < 0)
                  return r;
  
@@ -165,9 +170,9 @@ index 1e1967d7ea..eb81732dfa 100644
 +                                       sections, lookup, table, flags, userdata, ret_stats_by_path);
  }
  
- #define DEFINE_PARSER(type, vartype, conv_func)                         \
+ static int config_get_stats_by_path_one(
 diff --git a/src/test/test-conf-parser.c b/src/test/test-conf-parser.c
-index e61932ab16..de408272f0 100644
+index e61932ab16..5a5c0d73ff 100644
 --- a/src/test/test-conf-parser.c
 +++ b/src/test/test-conf-parser.c
 @@ -5,6 +5,9 @@
@@ -180,12 +185,11 @@ index e61932ab16..de408272f0 100644
  #include "string-util.h"
  #include "strv.h"
  #include "tests.h"
-@@ -391,4 +394,155 @@ TEST(config_parse) {
+@@ -391,4 +394,164 @@ TEST(config_parse) {
                  test_config_parse_one(i, config_file[i]);
  }
  
 +static void setup_conf_files(const char *root, bool is_main, char **conf_files, char ***ret_conf_dirs) {
-+        char **path;
 +
 +        /* If 'is_main' is true then 'conf_files' should only contain an entry
 +         * for the main conf file. */
@@ -264,8 +268,12 @@ index e61932ab16..de408272f0 100644
 +                                             NULL,
 +                                             NULL);
 +        } else {
++                /* sigh... since commit bdb2d3c6889408c7f26c2eeddbe9021ac53f962c,
++                 * 'conf_file_dirs' parameter can't be NULL. */
++
 +                r = config_parse_many(STRV_MAKE_CONST(conf_file),
-+                                      (const char * const*) conf_dirs, "",
++                                      (const char * const*)(conf_dirs ?: STRV_MAKE_EMPTY),
++                                      "",
 +                                      "Section\0",
 +                                      config_item_table_lookup, items,
 +                                      CONFIG_PARSE_WARN,
@@ -274,9 +282,15 @@ index e61932ab16..de408272f0 100644
 +        }
 +
 +        assert_se(r == 0);
-+        assert_se((!name && !parsed_name) || streq(name, parsed_name));
-+        assert_se((!late && !parsed_late) || streq(late, parsed_late));
-+        assert_se((!early && !parsed_early) || streq(early, parsed_early));
++
++        assert_se((!!name == !!parsed_name));
++        assert_se(!name || streq(name, parsed_name));
++
++        assert_se((!!late == !!parsed_late));
++        assert_se(!late || streq(late, parsed_late));
++
++        assert_se((!!early == !!parsed_early));
++        assert_se(!early || streq(early, parsed_early));
 +
 +        assert_se(rm_rf(tmp_dir, REMOVE_ROOT|REMOVE_PHYSICAL) == 0);
 +}
@@ -337,5 +351,5 @@ index e61932ab16..de408272f0 100644
 +
  DEFINE_TEST_MAIN(LOG_INFO);
 -- 
-2.34.1
+2.35.3
 

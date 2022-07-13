@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Jun 21 14:09:51 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- pstore is no more considered as an experimental feature: move it to udev
+  package (bsc#1197802)
+
+-------------------------------------------------------------------
+Tue Jun 21 13:20:39 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Adjust rpmlintrc for shlib-policy-name-error/multibuild case so that it's not
+  only for x86_64.
+
+-------------------------------------------------------------------
+Tue Jun 21 13:15:12 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- spec: %suse_version rpm macro is already reserved and has a special meaning in
+  openSUSE distros so rename it to %archive_version instead.
+
+-------------------------------------------------------------------
+Wed Jun  8 10:11:12 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit e9fc337d97539fcab23078ab3e06f6b2ce3a3c8d
+
+  ca0b29521f sha256: fix compilation on efi-ia32
+  1bbbac6a7e test: enable virtio-rng device for QEMU guests
+
+-------------------------------------------------------------------
+Wed Jun  1 07:20:05 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v251.2 (commit 949d6bb7201dd48167ee9716ed6278764d1f4c0f)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v251/NEWS for
+  details. 
+
+  This includes the following bug fixes:
+
+    - upstream commit e6b169418369abbc88c8f622e02e1d704a23d4ef (bsc#1137373 bsc#1181658 bsc#1194708 bsc#1195157 bsc#1197570)
+
+  * Rebased 0001-conf-parser-introduce-early-drop-ins.patch
+
+  * systemd-testsuite now requires python3-pexpect due to TEST-69-SHUTDOWN
+    relying on this module.
+
+  * sysusers.d/systemd-network.conf has been moved to systemd-network
+    sub-package since the tmpfiles configuration snippets for networkd has also
+    been moved to this sub-package.
+
+-------------------------------------------------------------------
 Tue May 31 13:26:38 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Import commit 4dbc543953eabd4c578da67ce6e2970d6f96c406 (merge of v250.6)
@@ -25,6 +72,11 @@ Fri Apr 29 12:37:00 UTC 2022 - Franck Bui <fbui@suse.com>
 - Call pam_loginuid when creating user@.service (bsc#1198507)
 
   It's a backport of upstream commit 1000522a60ceade446773c67031b47a566d4a70d.
+
+-------------------------------------------------------------------
+Wed Apr 20 08:25:27 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- spec: add sbat (boo#1198589)
 
 -------------------------------------------------------------------
 Wed Apr 20 07:59:23 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
@@ -1065,6 +1117,7 @@ Mon Apr 26 16:25:38 UTC 2021 - Franck Bui <fbui@suse.com>
 
     - upstream commit 4327574fc1093513badc2177f71cede2fc88c13c (bsc#1166028)
     - upstream commit 3573e032f26724949e86626eace058d006b8bf70 (bsc#1186411)
+    - upstream commit 30927a24848c4d727f7619cc74b878f098cdd724 (bsc#1200170)
 
   - A couple runtime dependencies on libraries are now tracked
     manually (with Recommends:) due to the fact that some symbols of

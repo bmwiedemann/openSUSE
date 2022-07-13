@@ -1,6 +1,7 @@
 #
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
+%config(noreplace) %{_sysconfdir}/systemd/pstore.conf
 %config(noreplace) %{_sysconfdir}/udev/udev.conf
 %if %{without bootstrap}
 # %%dir %{_libdir}/cryptsetup
@@ -40,6 +41,8 @@
 %{_mandir}/man5/crypttab.5.gz
 %{_mandir}/man5/integritytab.5.gz
 %{_mandir}/man5/modules-load.d.5.gz
+%{_mandir}/man5/pstore.conf.5.gz
+%{_mandir}/man5/pstore.conf.d.5.gz
 %{_mandir}/man5/udev.conf.5.gz
 %{_mandir}/man5/veritytab.5.gz
 %{_mandir}/man7/hwdb.7.gz
@@ -63,6 +66,8 @@
 %{_mandir}/man8/systemd-modules-load.service.8.gz
 %{_mandir}/man8/systemd-network-generator.8.gz
 %{_mandir}/man8/systemd-network-generator.service.8.gz
+%{_mandir}/man8/systemd-pstore.8.gz
+%{_mandir}/man8/systemd-pstore.service.8.gz
 %{_mandir}/man8/systemd-rfkill.8.gz
 %{_mandir}/man8/systemd-rfkill.service.8.gz
 %{_mandir}/man8/systemd-rfkill.socket.8.gz
@@ -104,6 +109,7 @@
 %{_systemd_util_dir}/systemd-modules-load
 %endif
 %{_systemd_util_dir}/systemd-network-generator
+%{_systemd_util_dir}/systemd-pstore
 %{_systemd_util_dir}/systemd-rfkill
 %{_systemd_util_dir}/systemd-udevd
 %if %{without bootstrap}
@@ -120,6 +126,7 @@
 %{_systemdgeneratordir}/systemd-veritysetup-generator
 %endif
 %{_tmpfilesdir}/static-nodes-permissions.conf
+%{_tmpfilesdir}/systemd-pstore.conf
 %{_udevhwdbdir}/20-OUI.hwdb
 %{_udevhwdbdir}/20-acpi-vendor.hwdb
 %{_udevhwdbdir}/20-bluetooth-vendor-product.hwdb
@@ -145,6 +152,7 @@
 %{_udevhwdbdir}/70-cameras.hwdb
 %{_udevhwdbdir}/70-joystick.hwdb
 %{_udevhwdbdir}/70-mouse.hwdb
+%{_udevhwdbdir}/70-pda.hwdb
 %{_udevhwdbdir}/70-pointingstick.hwdb
 %{_udevhwdbdir}/70-touchpad.hwdb
 %{_udevhwdbdir}/80-ieee1394-unit-function.hwdb
@@ -220,6 +228,7 @@
 %{_unitdir}/systemd-modules-load.service
 %endif
 %{_unitdir}/systemd-network-generator.service
+%{_unitdir}/systemd-pstore.service
 %{_unitdir}/systemd-rfkill.service
 %{_unitdir}/systemd-rfkill.socket
 %{_unitdir}/systemd-tmpfiles-setup-dev.service

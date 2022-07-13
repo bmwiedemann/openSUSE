@@ -19,6 +19,7 @@
 %{_mandir}/man7/linuxia32.efi.stub.7.gz
 %{_mandir}/man7/linuxx64.efi.stub.7.gz
 %{_mandir}/man7/sd-boot.7.gz
+%{_mandir}/man7/sd-stub.7.gz
 %{_mandir}/man7/systemd-boot.7.gz
 %{_mandir}/man7/systemd-stub.7.gz
 %{_mandir}/man8/kernel-install.8.gz

@@ -183,6 +183,7 @@
 %{_datadir}/polkit-1/actions/org.freedesktop.login1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.systemd1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.timedate1.policy
+%{_datadir}/polkit-1/actions/org.freedesktop.timesync1.policy
 %{_datadir}/systemd/kbd-model-map
 %{_datadir}/systemd/language-fallback-map
 %if %{without bootstrap}
@@ -301,6 +302,7 @@
 %{_mandir}/man5/systemd.target.5.gz
 %{_mandir}/man5/systemd.timer.5.gz
 %{_mandir}/man5/systemd.unit.5.gz
+%{_mandir}/man5/sysupdate.d.5.gz
 %{_mandir}/man5/sysusers.d.5.gz
 %{_mandir}/man5/timesyncd.conf.5.gz
 %{_mandir}/man5/timesyncd.conf.d.5.gz
@@ -386,6 +388,11 @@
 %{_mandir}/man8/systemd-sysext.8.gz
 %{_mandir}/man8/systemd-sysext.service.8.gz
 %{_mandir}/man8/systemd-system-update-generator.8.gz
+%{_mandir}/man8/systemd-sysupdate-reboot.service.8.gz
+%{_mandir}/man8/systemd-sysupdate-reboot.timer.8.gz
+%{_mandir}/man8/systemd-sysupdate.8.gz
+%{_mandir}/man8/systemd-sysupdate.service.8.gz
+%{_mandir}/man8/systemd-sysupdate.timer.8.gz
 %{_mandir}/man8/systemd-sysusers.8.gz
 %{_mandir}/man8/systemd-sysusers.service.8.gz
 %{_mandir}/man8/systemd-time-wait-sync.8.gz
@@ -419,7 +426,8 @@
 %{_sysconfdir}/xdg/systemd/user
 %{_sysctldir}/99-sysctl.conf
 %{_systemd_user_env_generator_dir}/30-systemd-environment-d-generator
-%{_systemd_util_dir}/libsystemd-shared-250.so
+%{_systemd_util_dir}/libsystemd-core-251.so
+%{_systemd_util_dir}/libsystemd-shared-251.so
 %{_systemd_util_dir}/ntp-units.d/80-systemd-timesync.list
 %{_systemd_util_dir}/scripts/migrate-sysconfig-i18n.sh
 %{_systemd_util_dir}/scripts/upgrade-from-pre-210.sh
@@ -444,6 +452,9 @@
 %{_systemd_util_dir}/systemd-socket-proxyd
 %{_systemd_util_dir}/systemd-sulogin-shell
 %{_systemd_util_dir}/systemd-sysctl
+%if %{without bootstrap}
+%{_systemd_util_dir}/systemd-sysupdate
+%endif
 %{_systemd_util_dir}/systemd-time-wait-sync
 %{_systemd_util_dir}/systemd-timedated
 %{_systemd_util_dir}/systemd-timesyncd
@@ -483,11 +494,6 @@
 %{_systemdgeneratordir}/systemd-run-generator
 %{_systemdgeneratordir}/systemd-system-update-generator
 %{_sysusersdir}/systemd-journal.conf
-%if %{with networkd}
-# Yes, systemd-network.conf really belongs here, see
-# https://github.com/systemd/systemd/pull/22416#issuecomment-1029828592
-%{_sysusersdir}/systemd-network.conf
-%endif
 %{_sysusersdir}/systemd-timesync.conf
 %{_tmpfilesdir}/journal-nocow.conf
 %{_tmpfilesdir}/suse.conf
@@ -643,6 +649,12 @@
 %{_unitdir}/systemd-suspend.service
 %{_unitdir}/systemd-sysctl.service
 %{_unitdir}/systemd-sysext.service
+%if %{without bootstrap}
+%{_unitdir}/systemd-sysupdate-reboot.service
+%{_unitdir}/systemd-sysupdate-reboot.timer
+%{_unitdir}/systemd-sysupdate.service
+%{_unitdir}/systemd-sysupdate.timer
+%endif
 %{_unitdir}/systemd-sysusers.service
 %{_unitdir}/systemd-time-wait-sync.service
 %{_unitdir}/systemd-timedated.service

@@ -11,4 +11,4 @@ addFilter(".*explicit-lib-dependency .*")
 addFilter(".*tmpfile-not-in-filelist .*")
 
 # shlib policy does not cover multibuilds
-addFilter("libsystemd0-mini.x86_64: E: shlib-policy-name-error SONAME: libsystemd.so.0.*")
+addFilter("libsystemd0-mini\..*: E: shlib-policy-name-error SONAME: libsystemd.so.0.*")

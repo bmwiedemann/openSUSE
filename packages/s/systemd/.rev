@@ -6037,4 +6037,12 @@ handle manual pages that consist only of a .so directive such as
   https://github.com/openSUSE/systemd/compare/0d950479e58dd3af007eb3780d600a5446aac519...4dbc543953eabd4c578da67ce6e2970d6f96c406</comment>
     <requestid>980104</requestid>
   </revision>
+  <revision rev="361" vrev="1">
+    <srcmd5>cf3eaf8cc4b52b129a08612739796aa1</srcmd5>
+    <version>251.2</version>
+    <time>1657716953</time>
+    <user>dimstar_suse</user>
+    <comment>Speaking with Dimstar, it should be safe doing one more SR which will be needed in Staging:I where we need rpmlintrc adjustement.</comment>
+    <requestid>985448</requestid>
+  </revision>
 </revisionlist>

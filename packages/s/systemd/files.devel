@@ -87,7 +87,9 @@
 %{_mandir}/man3/SD_ID128_NULL.3.gz
 %{_mandir}/man3/SD_ID128_STRING_MAX.3.gz
 %{_mandir}/man3/SD_ID128_TO_STRING.3.gz
+%{_mandir}/man3/SD_ID128_TO_UUID_STRING.3.gz
 %{_mandir}/man3/SD_ID128_UUID_FORMAT_STR.3.gz
+%{_mandir}/man3/SD_ID128_UUID_STRING_MAX.3.gz
 %{_mandir}/man3/SD_INFO.3.gz
 %{_mandir}/man3/SD_JOURNAL_ALL_NAMESPACES.3.gz
 %{_mandir}/man3/SD_JOURNAL_APPEND.3.gz
@@ -112,6 +114,7 @@
 %{_mandir}/man3/sd-bus-errors.3.gz
 %{_mandir}/man3/sd-bus.3.gz
 %{_mandir}/man3/sd-daemon.3.gz
+%{_mandir}/man3/sd-device.3.gz
 %{_mandir}/man3/sd-event.3.gz
 %{_mandir}/man3/sd-hwdb.3.gz
 %{_mandir}/man3/sd-id128.3.gz
@@ -423,6 +426,20 @@
 %{_mandir}/man3/sd_bus_unref.3.gz
 %{_mandir}/man3/sd_bus_unrefp.3.gz
 %{_mandir}/man3/sd_bus_wait.3.gz
+%{_mandir}/man3/sd_device_get_devname.3.gz
+%{_mandir}/man3/sd_device_get_devnum.3.gz
+%{_mandir}/man3/sd_device_get_devpath.3.gz
+%{_mandir}/man3/sd_device_get_devtype.3.gz
+%{_mandir}/man3/sd_device_get_diskseq.3.gz
+%{_mandir}/man3/sd_device_get_driver.3.gz
+%{_mandir}/man3/sd_device_get_ifindex.3.gz
+%{_mandir}/man3/sd_device_get_subsystem.3.gz
+%{_mandir}/man3/sd_device_get_sysname.3.gz
+%{_mandir}/man3/sd_device_get_sysnum.3.gz
+%{_mandir}/man3/sd_device_get_syspath.3.gz
+%{_mandir}/man3/sd_device_ref.3.gz
+%{_mandir}/man3/sd_device_unref.3.gz
+%{_mandir}/man3/sd_device_unrefp.3.gz
 %{_mandir}/man3/sd_event.3.gz
 %{_mandir}/man3/sd_event_add_child.3.gz
 %{_mandir}/man3/sd_event_add_child_pidfd.3.gz
@@ -535,6 +552,7 @@
 %{_mandir}/man3/sd_id128_randomize.3.gz
 %{_mandir}/man3/sd_id128_t.3.gz
 %{_mandir}/man3/sd_id128_to_string.3.gz
+%{_mandir}/man3/sd_id128_to_uuid_string.3.gz
 %{_mandir}/man3/sd_is_fifo.3.gz
 %{_mandir}/man3/sd_is_mq.3.gz
 %{_mandir}/man3/sd_is_socket.3.gz
