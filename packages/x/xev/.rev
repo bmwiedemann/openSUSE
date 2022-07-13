@@ -93,4 +93,16 @@
 - refreshed u_Add-event-filter-for-motion-and-button-events.patch</comment>
     <requestid>821629</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8425d9d97edc5e5ab84279f52636b775</srcmd5>
+    <version>1.2.5</version>
+    <time>1657712726</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.5
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * man page: remove out-of-date reference to X(7)
+  * xev: fix KeymapNotify event printing</comment>
+    <requestid>988760</requestid>
+  </revision>
 </revisionlist>

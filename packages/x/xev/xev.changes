@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 12 22:06:52 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.5
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * man page: remove out-of-date reference to X(7)
+  * xev: fix KeymapNotify event printing
+
+-------------------------------------------------------------------
 Sat Jul 18 09:36:06 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to version 1.2.4
