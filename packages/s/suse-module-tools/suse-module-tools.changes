@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  7 08:10:08 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.21:
+  * kernel-scriptlets: don't pass flags to weak-modules2 (bsc#1195391)
+
+-------------------------------------------------------------------
 Thu Jun  2 10:55:37 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.20:

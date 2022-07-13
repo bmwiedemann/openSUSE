@@ -571,4 +571,13 @@ source service setup which messed up my spec file.
   * spec file: use &quot;install -p&quot; consistently (forwarded request 980500 from mwilck)</comment>
     <requestid>980502</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>3aeabf763f0ce525ff0a382e769bc5ed</srcmd5>
+    <version>16.0.21</version>
+    <time>1657712688</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.21:
+  * kernel-scriptlets: don't pass flags to weak-modules2 (bsc#1195391)</comment>
+    <requestid>988728</requestid>
+  </revision>
 </revisionlist>
