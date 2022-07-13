@@ -8,6 +8,7 @@ Tue Mar 29 14:06:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 Fri Jul 30 12:24:56 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 5.11.0
+  * No changelog was made available.
   * fixes build against apache-sshd 2.7.0
 - Modified patches:
   * 0001-Ensure-the-correct-classpath-is-set-for-the-jgit-com.patch
@@ -38,6 +39,7 @@ Thu Jul 16 21:23:15 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 Fri Jul  3 09:55:53 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 5.8.0
+  * No changelog was made available.
 - Removed patches:
   * fix_jgit_sh.patch
   * jgit-feature-deps.patch
