@@ -2,6 +2,7 @@
 Mon Apr  4 04:30:33 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upsteam release 2.0.2
+  * No changelog was made available.
 - Added patch:
   * 0001-Remove-dependency-on-glassfish-el.patch
     + patch out the two el wrapper functions that are unused
