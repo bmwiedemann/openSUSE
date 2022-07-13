@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 11 15:54:15 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Run the registration step early only on the Online installation
+  medium which does not provide any packages. On the other media
+  run the registration step later.
+  Fixes crash in the SLE Micro when the AutoYaST profile enables
+  the registration step. (bsc#1200803)
+- 4.5.2
+
+-------------------------------------------------------------------
 Tue May  3 15:00:22 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix detection disk serial and size in the "disks" ERB helper
