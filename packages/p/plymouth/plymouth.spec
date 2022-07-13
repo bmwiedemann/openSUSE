@@ -55,11 +55,13 @@ Patch10:        plymouth-log-on-default.patch
 # PATCH-FIX-OPENSUSE plymouth-keep-KillMode-none.patch bsc#1177082 bsc#1184087 boo#1182145 qzhao@suse.com -- Keep the plymouth-start.service KillMode=none.
 Patch11:        plymouth-keep-KillMode-none.patch
 # PATCH-FIX-UPSTREAM 0001-Add-label-ft-plugin.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
-Patch1000:      0001-Add-label-ft-plugin.patch
+Patch1001:      0001-Add-label-ft-plugin.patch
 # PATCH-FIX-UPSTREAM 0002-Install-label-ft-plugin-into-initrd-if-available.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
-Patch1001:      0002-Install-label-ft-plugin-into-initrd-if-available.patch
+Patch1002:      0002-Install-label-ft-plugin-into-initrd-if-available.patch
 # PATCH-FIX-UPSTREAM 0003-fix_null_deref.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
-Patch1002:      0003-fix_null_deref.patch
+Patch1003:      0003-fix_null_deref.patch
+# PATCH-FIX-UPSTREAM 0004-label-ft-fix-alignment.patch boo#959986 fvogt@suse.com -- fix alignment for label-ft
+Patch1004:      0004-label-ft-fix-alignment.patch
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc

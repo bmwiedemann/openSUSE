@@ -1,0 +1,21 @@
+From: Alfonso Sanchez-Beato <alfonso.sanchez-beato@canonical.com>
+Subject: fix alignment for label-ft
+
+label->width is used to calculate wrapping of lines and it is by
+default -1. We need to use label->area.width instead when aligning a
+line, as label->width might not have been set.
+
+--- plymouth-0.9.5+git20211018.orig/src/plugins/controls/label-ft/plugin.c
++++ plymouth-0.9.5+git20211018/src/plugins/controls/label-ft/plugin.c
+@@ -324,9 +324,9 @@ draw_control (ply_label_plugin_control_t
+ 
+                 /* Start at start position (alignment) */
+                 if(label->alignment == PLY_LABEL_ALIGN_CENTER)
+-                    pen.x += (label->width - width_of_line(label, cur_c)) << 5;
++                    pen.x += (label->area.width - width_of_line(label, cur_c)) << 5;
+                 else if(label->alignment == PLY_LABEL_ALIGN_RIGHT)
+-                    pen.x += (label->width - width_of_line(label, cur_c)) << 6;
++                    pen.x += (label->area.width - width_of_line(label, cur_c)) << 6;
+ 
+                 while(*cur_c && *cur_c != '\n')
+                 {
