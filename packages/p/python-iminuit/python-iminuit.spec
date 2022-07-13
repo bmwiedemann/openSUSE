@@ -22,7 +22,7 @@
 %define skip_python36 1
 %define modname iminuit
 Name:           python-%{modname}
-Version:        2.12.0
+Version:        2.12.1
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
@@ -32,8 +32,8 @@ BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy >= 1.11.3}
 BuildRequires:  %{python_module numpy-devel}
-BuildRequires:  %{python_module pybind11-devel}
 BuildRequires:  %{python_module pybind11 >= 2.9.0}
+BuildRequires:  %{python_module pybind11-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes

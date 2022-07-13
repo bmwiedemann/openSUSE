@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  4 15:34:09 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.12.1:
+  * cost.BarlowBeestonLite: method “hpd” has been modified to fix
+    performance in cases where bins are not dominated by a single
+    template.
+
+-------------------------------------------------------------------
 Wed Jun 22 00:09:52 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.12.0:
