@@ -1,7 +1,7 @@
 #
 # spec file for package libaio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %define lname	libaio1
 Name:           libaio
-Version:        0.3.112+29.696a5e6483ba
+Version:        0.3.113
 Release:        0
 Summary:        Linux-Native Asynchronous I/O Access Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://pagure.io/libaio
-Source:         libaio-%{version}.tar.xz
+Source:         https://pagure.io/libaio/archive/libaio-%{version}/libaio-libaio-%{version}.tar.gz
 Source2:        baselibs.conf
+Patch1:         fix-splice-signature.patch
 
 %description
 The Linux-native asynchronous I/O facility ("async I/O", or "aio") has
@@ -61,17 +62,18 @@ with, for the Linux-native asynchronous I/O facility ("async I/O", or
 "aio").
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{name}-%{version}
+%patch1 -p1
 
 %build
-make %{?_smp_mflags} OPTFLAGS="%{optflags}"
+%make_build OPTFLAGS="%{optflags}"
 
 %install
 %make_install libdir=%{_libdir}
 rm %{buildroot}%{_libdir}/*.a
 
 %check
-make %{?_smp_mflags} partcheck
+%make_build OPTFLAGS="%{optflags}" partcheck
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig

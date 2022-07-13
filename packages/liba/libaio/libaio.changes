@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 12 15:18:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add fix-splice-signature.patch to fix build on 32bit
+
+-------------------------------------------------------------------
+Thu Apr 28 21:17:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.113:
+  * cases/16.t: loongarch only supports eventfd2
+  * Add loongarch to supported architectures in libaio.spec
+  * Add endian detection and bit width detection for loongarch
+  * Use generic syscall number schema for loongarch 
+  * Fix struct io_iocb_vector padding for 32bit architectures
+  * struct io_iocb_sockaddr padding for 32bit architectures
+  * Verify structure padding is correct at build time
+  * harness: add test for aio poll missed events
+
+-------------------------------------------------------------------
 Mon Feb 15 18:16:26 UTC 2021 - lduncan@suse.com
 
 - Update to version libaio0.3.112+29.696a5e6483ba:
