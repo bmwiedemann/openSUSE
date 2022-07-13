@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 12 22:24:14 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- raft 0.14.0:
+  * Support for automated recovery of corrupt segments upon startup
+  * Bug fixes and developer visible changes
+
+-------------------------------------------------------------------
 Tue Apr 19 09:44:17 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - raft 0.13.0:
