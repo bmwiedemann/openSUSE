@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 10 15:30:14 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.3:
+  + Remove a non-existent property mention from HdyDeck docs.
+  + Remove a leftover debug message from HdySettings.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Apr 24 20:14:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 1.6.2:
