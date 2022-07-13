@@ -31,6 +31,7 @@ License:        MIT
 Group:          System/GUI/Other
 URL:            https://gitlab.freedesktop.org/wlroots/wlroots
 Source0:        https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/%{version}/downloads/%{name}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         https://gitlab.freedesktop.org/wlroots/wlroots/-/merge_requests/3456.patch
 BuildRequires:  glslang-devel
 BuildRequires:  meson >= 0.58.1
 BuildRequires:  pkgconfig
@@ -90,7 +91,7 @@ Group:          System/Libraries
 Pluggable, composable modules for building a Wayland compositor.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
