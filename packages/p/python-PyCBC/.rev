@@ -126,4 +126,20 @@
     <comment></comment>
     <requestid>960208</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2f349a7f0bc6bad25d43cf2bc42d7105</srcmd5>
+    <version>2.0.4</version>
+    <time>1657712724</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.4
+  * Add Multisignal models and fix issue where loading MKLblibs
+    before FFTW can in some cases cause a segfault.
+- Release 2.0.3
+  * Adds support for hierarchical inference models and astropy 5.1
+    release.
+- Update requirements
+- Test in multibuild flavor in order to verify requirements.
+</comment>
+    <requestid>988738</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul  1 11:22:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.0.4
+  * Add Multisignal models and fix issue where loading MKLblibs
+    before FFTW can in some cases cause a segfault.
+- Release 2.0.3
+  * Adds support for hierarchical inference models and astropy 5.1
+    release.
+- Update requirements
+- Test in multibuild flavor in order to verify requirements.
+
+-------------------------------------------------------------------
 Mon Mar  7 22:43:17 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.0.2:

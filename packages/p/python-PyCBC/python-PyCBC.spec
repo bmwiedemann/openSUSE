@@ -16,68 +16,66 @@
 #
 
 
-%bcond_without tests
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 
 # Python2 no longer supported by PyCBC
 %define skip_python2 1
 
 %define modname PyCBC
-Name:           python-PyCBC
-Version:        2.0.2
+Name:           python-PyCBC%{psuffix}
+Version:        2.0.4
 Release:        0
 Summary:        Core library to analyze gravitational-wave data
 License:        GPL-3.0-or-later
 URL:            http://www.pycbc.org/
 Source0:        https://github.com/gwastro/pycbc/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython >= 0.29}
 BuildRequires:  %{python_module devel >= 3.7}
-BuildRequires:  %{python_module numpy-devel}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy-devel >= 1.16.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-astropy
-Requires:       python-beautifulsoup4
-Requires:       python-decorator
-Requires:       python-h5py
+# Note: The definitive specification is setup.py, not requirements.txt!
+Requires:       python-Cython >= 0.29
+Requires:       python-Jinja2
+Requires:       python-Mako >= 1.0.1
+Requires:       python-Pillow
+Requires:       python-astropy >= 2.0.3
+Requires:       python-beautifulsoup4 >= 4.6.0
+Requires:       python-gwdatafind
+Requires:       python-h5py >= 3.0
+# SECTION lalsuite, see below
 Requires:       python-lal
 Requires:       python-lalframe
 Requires:       python-lalpulsar
 Requires:       python-lalsimulation
-Requires:       python-ligo-lw
+# /SECTION
+Requires:       python-ligo-lw >= 1.7.0
 Requires:       python-ligo-segments
 Requires:       python-lscsoft-glue
-Requires:       python-numpy
-Requires:       python-requests
-Requires:       python-scipy
+Requires:       python-matplotlib >= 1.5.1
+Requires:       python-mpld3 >= 0.3
+Requires:       python-numpy >= 1.16.0
+Requires:       python-pegasus-wms.api >= 5.0.1
+Requires:       python-scipy >= 0.16
 Requires:       python-tqdm
-Recommends:     python-gwdatafind
-Recommends:     python-ligo-segments
+Conflicts:      python-astropy = 4.0.5
+Conflicts:      python-astropy = 4.2.1
+Conflicts:      python-lal = 7.2
+Conflicts:      python-numpy = 1.19.0
 ExclusiveArch:  x86_64
-%if %{with tests}
-# SECTION Test Requirements
-BuildRequires:  %{python_module Mako}
-BuildRequires:  %{python_module astropy}
-BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module decorator}
-BuildRequires:  %{python_module gwdatafind}
-BuildRequires:  %{python_module h5py}
-BuildRequires:  %{python_module lalframe}
-BuildRequires:  %{python_module lalpulsar}
-BuildRequires:  %{python_module lalsimulation}
-BuildRequires:  %{python_module lal}
-BuildRequires:  %{python_module ligo-lw}
-BuildRequires:  %{python_module ligo-segments}
-BuildRequires:  %{python_module lscsoft-glue}
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module mpld3}
+%if %{with test}
+BuildRequires:  %{python_module PyCBC = %{version}}
 BuildRequires:  %{python_module pyFFTW}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module testsuite}
-BuildRequires:  %{python_module tqdm}
-# /SECTION
 %endif
 %python_subpackages
 
@@ -92,6 +90,7 @@ of detected sources.
 Summary:        PyCBC utilities to analyze gravitational-wave data
 Requires:       python3-PyCBC = %{version}
 Obsoletes:      python3-%{modname} <= 1.18.0
+BuildArch:      noarch
 
 %description -n %{modname}-utils
 PyCBC is a software package used to explore astrophysical sources of
@@ -105,10 +104,10 @@ the default python3 flavour.
 
 %prep
 %autosetup -p1 -n pycbc-%{version}
-sed -i "/emcee==/d" setup.py
-sed -i "s/,<1.19//" setup.py
+# there is no python metadata in the distribution to provide "lalsuite"
+sed -i '/lalsuite/d' setup.py
 
-# FOR REAL BINARIES SET HASHBANG TO PYTHON3 DIRECTLY
+# FOR REAL EXECUTABLES SET HASHBANG TO PYTHON3 DIRECTLY
 sed -E -i "1{s|^#\!\s*/usr/bin/env python|#\!%{_bindir}/python3|}" \
   bin/pycbc_* \
   bin/*/pycbc_*
@@ -121,43 +120,47 @@ sed -E -i "1{/^#\!\s*\/usr\/bin/d}" \
   pycbc/results/*.py
 
 %build
+%if !%{with test}
 %python_build
+%endif
 
 %install
+%if !%{with test}
 %python_install
 sed -E -i "1 s|^#\!\s*/usr/bin/env\s*bash|#\!/bin/bash|" %{buildroot}%{_bindir}/run_pycbc_inference
 
 %python_expand chmod -x %{buildroot}%{$python_sitearch}/pycbc/results/static/js/fancybox/2.1.5/jquery.fancybox*.js
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-
-%if %{with tests}
-%check
-# Tests that either require network or don't work due to unpackaged modules
-rm -fr \
-   examples/workflow/data_checker/daily_test.py \
-   test/test_calibration.py \
-   test/test_chisq.py \
-   test/test_distributions.py \
-   test/test_dq.py \
-   test/test_fft*.py \
-   test/test_frame.py \
-   test/test_frequencyseries.py \
-   test/test_infmodel.py
-
-%{python_expand pushd test # for tests
-export PYTHONPATH=%{buildroot}%{$python_sitearch}
-export PYTHONDONTWRITEBYTECODE=1
-pytest-%{$python_version}
-popd
-}
 %endif
 
+%if %{with test}
+%check
+# Tests that either require network or don't work due to unpackaged modules
+# can't use pytest --ignore because of a special arg parser in test/utils.py
+rm -r \
+   test/test_infmodel.py \
+   test/test_fft_mkl_threaded.py \
+   test/test_fftw_openmp.py \
+   test/test_dq.py \
+   test/test_chisq.py
+
+pushd test
+%{python_expand # can't use the macro because of a special arg parser in test/utils.py
+export PYTHONDONTWRITEBYTECODE=1
+pytest-%{$python_bin_suffix}
+}
+popd
+%endif
+
+%if !%{with test}
 %files -n %{modname}-utils
-%{_bindir}/*
+%{_bindir}/pycbc_*
+%{_bindir}/run_pycbc_inference
 
 %files %{python_files}
-%{python_sitearch}/pycbc/
-%{python_sitearch}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitearch}/pycbc
+%{python_sitearch}/%{modname}-%{version}*-info
+%endif
 
 %changelog
