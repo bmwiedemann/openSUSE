@@ -1,7 +1,7 @@
 #
 # spec file for package subtitlecomposer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source2:        subtitlecomposer.keyring
 Patch0:         subtitlecomposer-ARM_GLES.patch
 # PATCH-FIX-UPSTREAM subtitlecomposer-fix_empty_lines_crash.patch
 Patch1:         subtitlecomposer-fix_empty_lines_crash.patch
+# PATCH-FIX-UPSTREAM 4f4f560e40ba0b760cf688eb024be3cc734ca347.patch - Fix build with ffmpeg 5
+Patch2:         https://invent.kde.org/multimedia/subtitlecomposer/-/commit/4f4f560e40ba0b760cf688eb024be3cc734ca347.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libQt5Widgets-private-headers-devel
@@ -63,7 +65,6 @@ BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(pocketsphinx) >= 5
 %endif
 %endif
-Recommends:     %{name}-lang = %{version}
 
 %description
 A text-based subtitles editor that supports basic operations. It supports

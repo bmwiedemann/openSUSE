@@ -87,4 +87,14 @@
     <comment></comment>
     <requestid>929552</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>7f9168e6fc776531e5cdc629be16bbda</srcmd5>
+    <version>0.7.1</version>
+    <time>1657712740</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 4f4f560e40ba0b760cf688eb024be3cc734ca347.patch: Fix build
+  with ffmpeg 5, patch from upstream git.
+</comment>
+    <requestid>988947</requestid>
+  </revision>
 </revisionlist>

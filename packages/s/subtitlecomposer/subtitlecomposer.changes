@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 12 20:38:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 4f4f560e40ba0b760cf688eb024be3cc734ca347.patch: Fix build
+  with ffmpeg 5, patch from upstream git.
+
+-------------------------------------------------------------------
 Thu Nov  4 10:48:42 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add subtitlecomposer-fix_empty_lines_crash.patch
