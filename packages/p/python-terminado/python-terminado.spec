@@ -17,11 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 # Disable tests until random testing race condition fixed, see: https://github.com/jupyter/terminado/issues/21
 %bcond_with     tests
 Name:           python-terminado
-Version:        0.13.3
+Version:        0.15.0
 Release:        0
 Summary:        Terminals served to termjs using Tornado websockets
 License:        BSD-2-Clause
@@ -29,8 +28,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/terminado
 Source:         https://files.pythonhosted.org/packages/source/t/terminado/terminado-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatchling >= 0.25}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ptyprocess}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado >= 4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,6 +39,7 @@ Requires:       python-tornado >= 4
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-timeout}
 # /SECTION
 %python_subpackages
 
@@ -54,10 +55,10 @@ of QWeb).
 %setup -q -n terminado-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

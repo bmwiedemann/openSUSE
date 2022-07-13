@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul 13 08:47:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update build and test requirements
+
+-------------------------------------------------------------------
+Sat Jun  4 23:16:57 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require pip, hatchling, swtich to pyproject build
+
+- update to version 0.15.0:
+  * no changelog available
+
+- changes from version 0.14.0:
+  * Add pre-commit
+  * add mypy support
+  * Switch to flit build backend
+  * Switch to hatch backend
+
+-------------------------------------------------------------------
 Wed Mar  9 16:47:14 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.13.3:
