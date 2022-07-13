@@ -39,12 +39,11 @@
 %if "%{flavor}" == ""
 %bcond_with test
 %endif
-
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2022.6.1
+Version:        2022.7.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
