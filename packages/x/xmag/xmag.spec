@@ -1,7 +1,7 @@
 #
 # spec file for package xmag
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xmag
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Screen magnifier
 License:        X11
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 Source1:        xmag.desktop
 Source2:        xmag.png
 BuildRequires:  pkgconfig
@@ -53,7 +53,7 @@ install -m0644 -D %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/xmag.png
 
 %files
 %license COPYING
-%doc ChangeLog README
+%doc ChangeLog README.md
 %{_bindir}/xmag
 %{_datadir}/applications/xmag.desktop
 %{_datadir}/pixmaps/xmag.png

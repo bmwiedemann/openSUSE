@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 12 22:50:55 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.7
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * Use _CONST_X_STRING to make libXt declare String as const char *
+
+-------------------------------------------------------------------
 Fri Mar 12 21:55:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - refresh spec file (move license file) 

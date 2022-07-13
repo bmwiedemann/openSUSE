@@ -73,4 +73,18 @@
     <comment></comment>
     <requestid>878733</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2a3fbef0dda1acf73d9e2cba093f4e73</srcmd5>
+    <version>1.0.7</version>
+    <time>1657712728</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.7
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * Use _CONST_X_STRING to make libXt declare String as const char *</comment>
+    <requestid>988772</requestid>
+  </revision>
 </revisionlist>
