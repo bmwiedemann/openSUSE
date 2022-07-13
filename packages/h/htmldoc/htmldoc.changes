@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 11 08:00:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.16:
+  * Added support for $DATE(format) and $TIME(format) header/footer strings
+  * (Issue #472)
+  * Fixed a potential image overflow bug with JPEG and PNG images (htmldoc-CVE-2022-27114.patch)
+  * Fixed potential heap overflow bugs with pages (CVE-2022-28085)
+  * Fixed potential use-after-free in blocks (Issue #484)
+  * Updated the GNU TLS HTTPS support code to use a faster connection shutdown
+  * mode (Issue #487)
+  * Fixed some minor Coverity warnings.
+- drop htmldoc-CVE-2022-27114.patch, htmldoc-CVE-2022-28085.patch (upstream)
+
+-------------------------------------------------------------------
 Wed May 11 07:35:17 UTC 2022 - pgajdos@suse.com
 
 - security update

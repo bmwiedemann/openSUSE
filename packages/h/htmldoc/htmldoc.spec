@@ -17,17 +17,13 @@
 
 
 Name:           htmldoc
-Version:        1.9.15
+Version:        1.9.16
 Release:        0
 Summary:        HTML Processor that Generates HTML, PostScript, and PDF Files
 License:        LGPL-2.1-or-later
 Group:          Productivity/Publishing/HTML/Tools
 URL:            https://michaelrsweet.github.io/htmldoc/index.html
 Source:         https://github.com/michaelrsweet/htmldoc/releases/download/v%{version}/htmldoc-%{version}-source.tar.gz
-# CVE-2022-28085 [bsc#1198933], Heap buffer overflow in function pdf_write_names in ps-pdf.cxx
-Patch0:         htmldoc-CVE-2022-28085.patch
-# CVE-2022-27114 [bsc#1199370], image_load_jpeg can cause integer overflow
-Patch1:         htmldoc-CVE-2022-27114.patch
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
