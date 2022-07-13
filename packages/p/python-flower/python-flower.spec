@@ -16,25 +16,22 @@
 #
 
 
-%bcond_without python2
 Name:           python-flower
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        A web frontend for monitoring and administrating Celery clusters
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/mher/flower
 Source:         https://files.pythonhosted.org/packages/source/f/flower/flower-%{version}.tar.gz
 # Tornado 5+ update blocked by salt, so backport the missing piece
 Patch0:         backport_run_in_executor.patch
-# https://github.com/mher/flower/commit/70b1ae40b467a3febab9abef3ef52dea56ca6f12
-Patch1:         python-flower-new-humanize.patch
+# PATCH-FIX-UPSTREAM gh#mher/flower#1228
+Patch1:         remove-mock.patch
 BuildRequires:  %{python_module Babel >= 1.0}
 BuildRequires:  %{python_module celery >= 5.0.0}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module humanize}
 BuildRequires:  %{python_module kombu}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module prometheus_client >= 0.8.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
@@ -52,12 +49,6 @@ Requires:       python-tornado >= 5.0.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-futures
-%endif
-%ifpython2
-Requires:       python-futures
-%endif
 %python_subpackages
 
 %description

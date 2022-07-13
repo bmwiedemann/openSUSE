@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul 13 01:41:44 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.1.0:
+  * Disable authentication of /metrics endpoint. (#1129)
+  * read custom histogram latency buckets from env (#1134)
+  * making PrometheusMetrics class singleton (#1149)
+  * Fix attribute error caused by newest humanize package. (#1156)
+  * pass sentinel_kwargs to Sentinel() broker (#1208)
+  * Fixing CORS support (#1200)
+  * Encode worker and task names in URL (#1204)
+  * Add compatibility with older humanize versions (#1196)
+  * Diable API if auth is enabled (#1225)
+- Remove patch python-flower-new-humanize.patch:
+  * Included upstream.
+- Add patch remove-mock.patch:
+  * Remove dependency on mock.
+- Remove python-mock from BuildRequires
+- Clean up python 2 bcond, it is no longer supported.
+
+-------------------------------------------------------------------
 Tue May 17 12:28:23 UTC 2022 - pgajdos@suse.com
 
 - version update to 1.0.0

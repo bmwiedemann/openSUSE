@@ -1,0 +1,124 @@
+Index: flower-1.1.0/tests/unit/__init__.py
+===================================================================
+--- flower-1.1.0.orig/tests/unit/__init__.py
++++ flower-1.1.0/tests/unit/__init__.py
+@@ -1,3 +1,4 @@
++from unittest import mock
+ from urllib.parse import urlencode
+ 
+ import tornado.testing
+@@ -6,7 +7,6 @@ from tornado.options import options
+ from tornado.concurrent import Future
+ 
+ import celery
+-import mock
+ 
+ from flower.app import Flower
+ from flower.urls import handlers
+Index: flower-1.1.0/tests/unit/api/test_control.py
+===================================================================
+--- flower-1.1.0.orig/tests/unit/api/test_control.py
++++ flower-1.1.0/tests/unit/api/test_control.py
+@@ -1,5 +1,4 @@
+-from mock import MagicMock
+-import mock
++from unittest.mock import MagicMock, patch
+ from flower.api.control import ControlHandler
+ 
+ from tests.unit import AsyncHTTPTestCase
+@@ -174,7 +173,7 @@ class TaskControlTests(AsyncHTTPTestCase
+ 
+ class ControlAuthTests(WorkerControlTests):
+     def test_auth(self):
+-        with mock.patch.object(options.mockable(), 'basic_auth', ['user1:password1']):
++        with patch.object(options.mockable(), 'basic_auth', ['user1:password1']):
+             app = self._app.capp
+             app.control.broadcast = MagicMock()
+             r = self.post('/api/worker/shutdown/test', body={})
+Index: flower-1.1.0/tests/unit/api/test_workers.py
+===================================================================
+--- flower-1.1.0.orig/tests/unit/api/test_workers.py
++++ flower-1.1.0/tests/unit/api/test_workers.py
+@@ -1,6 +1,6 @@
+ import json
+ 
+-import mock
++from unittest import mock
+ 
+ from flower.api.control import ControlHandler
+ from flower.inspector import Inspector
+Index: flower-1.1.0/tests/unit/test_command.py
+===================================================================
+--- flower-1.1.0.orig/tests/unit/test_command.py
++++ flower-1.1.0/tests/unit/test_command.py
+@@ -5,7 +5,6 @@ import unittest
+ import subprocess
+ from unittest.mock import Mock, patch
+ 
+-import mock
+ from prometheus_client import Histogram
+ 
+ from flower.command import apply_options, warn_about_celery_args_used_in_flower_command, apply_env_options
+@@ -49,7 +48,7 @@ class TestFlowerCommand(AsyncHTTPTestCas
+         - create flower command
+         """
+         celery_app = self._get_celery_app()
+-        with mock.patch.object(celery_app, '_autodiscover_tasks') as autodiscover:
++        with patch.object(celery_app, '_autodiscover_tasks') as autodiscover:
+             celery_app.autodiscover_tasks()
+ 
+             self.get_app(capp=celery_app)
+Index: flower-1.1.0/tests/unit/api/test_tasks.py
+===================================================================
+--- flower-1.1.0.orig/tests/unit/api/test_tasks.py
++++ flower-1.1.0/tests/unit/api/test_tasks.py
+@@ -1,4 +1,4 @@
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ from datetime import datetime, timedelta
+ 
+ from celery.result import AsyncResult
+@@ -16,7 +16,7 @@ from collections import OrderedDict
+ 
+ class ApplyTests(AsyncHTTPTestCase):
+     def test_apply(self):
+-        from mock import patch, PropertyMock
++        from unittest.mock import patch, PropertyMock
+         import json
+ 
+         result = 'result'
+Index: flower-1.1.0/tests/unit/utils/test_broker.py
+===================================================================
+--- flower-1.1.0.orig/tests/unit/utils/test_broker.py
++++ flower-1.1.0/tests/unit/utils/test_broker.py
+@@ -1,6 +1,6 @@
+ import unittest
+ 
+-from mock import MagicMock
++from unittest.mock import MagicMock
+ 
+ from flower.utils import broker
+ from flower.utils.broker import RabbitMQ, Redis, RedisBase, RedisSocket, Broker, RedisSentinel
+Index: flower-1.1.0/tests/unit/views/test_dashboard.py
+===================================================================
+--- flower-1.1.0.orig/tests/unit/views/test_dashboard.py
++++ flower-1.1.0/tests/unit/views/test_dashboard.py
+@@ -1,17 +1,11 @@
+ import time
+ import unittest
+-import sys
++from unittest.mock import patch
+ 
+ from tests.unit import AsyncHTTPTestCase
+ from tests.unit.utils import task_succeeded_events, task_failed_events
+ from tests.unit.utils import HtmlTableParser
+ 
+-if sys.version_info >= (2, 7):
+-    from mock import patch
+-else:
+-    from unittest.mock import patch
+-
+-
+ from celery.events import Event
+ from celery.utils import uuid
+ 
