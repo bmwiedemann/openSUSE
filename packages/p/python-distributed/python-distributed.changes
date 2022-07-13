@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Tue Jul 12 18:25:16 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix runtime requirement with tornado <6.2
+- Move one more test to notparallel
+- Skip failing test on Python 3.10 i586 gh#dask/distributed#6718
+
+-------------------------------------------------------------------
+Mon Jul 11 02:50:03 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2022.7.0:
+  * Enhancements
+    + Use a tempdir path by default instead of cwd for the worker
+      scratch dir (GH#6658) Florian Jetter
+    + Add WorkerState.all_running_tasks (GH#6690) Hendrik Makait
+    + Scheduler.reschedule() works only by accident (GH#6339)
+      crusaderky
+    + Remove spurious UnpauseEvent at worker start (GH#6652)
+      crusaderky
+    + Log if closing an executor is not possible in thread (GH#6644)
+      Florian Jetter
+    + Cloudpickle register by value (GH#6466) Ian Rose
+    + Adding replicas to a task in fetch now sends it to flight
+      immediately (GH#6594) crusaderky
+  * Bug Fixes
+    + Fix dump output of parameter-less events (GH#6695) crusaderky
+    + Set MALLOC_TRIM_THRESHOLD_ before interpreter start (GH#6681)
+      crusaderky
+    + Fix deadlocks around rescheduled and resumed states (GH#6673)
+      crusaderky
+    + has_arg returns True for keyword-only arguments (GH#6648)
+      Lawrence Mitchell
+    + Transitions caused by worker death use old ‘worker-connect’
+      stimulus_id (GH#6657) crusaderky
+    + A key is forgotten while acquire-replicas is running (GH#6638)
+      crusaderky
+  * Maintenance
+    + Revisit WorkerState.long_running set (GH#6697) crusaderky
+    + WorkerState unit tests for resumed state (GH#6688) crusaderky
+    + Bump version of pandas-stubs (GH#6691) crusaderky
+    + Add dummy factory methods for ExecuteSuccessEvent and
+      ExecuteFailureEvent (GH#6687) Hendrik Makait
+    + Pin tornado<6.2 in nightly conda recipes (GH#6675) Peter Andreas
+      Entschev
+    + Refactor resource restriction handling in WorkerState (GH#6672)
+      Hendrik Makait
+    + test_signal and test_terminate occasionally return SIGKILL on
+      MacOS (GH#6671) crusaderky
+    + Use the loop fixture in even more tests (GH#6674) Thomas
+      Grainger
+    + Inconditionally import ssl (GH#6670) Thomas Grainger
+    + Use the loop fixture in more tests (GH#6642) Thomas Grainger
+    + Pin tornado to <6.2 (GH#6668) Florian Jetter
+    + Handle AsyncTaskGroupClosedError (GH#6664) Hendrik Makait
+    + Replace occurences of large delay slowinc with locks (GH#6656)
+      Florian Jetter
+    + Merge extend-ignore and ignore values for flake8 (GH#6660)
+      Hendrik Makait
+    + Remove server close background task grace period (GH#6633)
+      Thomas Grainger
+    + Do not use tempfile in utils_test (GH#6651) Florian Jetter
+    + close_worker cleanup (GH#6650) crusaderky
+    + Rewrite test_cancelled_resumed_after_flight_with_dependencies
+      using WorkerState (GH#6645) crusaderky
+    + Log the actual duration to create a directory (GH#6647) Florian
+      Jetter
+    + pandas type stubs (GH#6635) crusaderky
+    + Remove unused __started Event in Server (GH#6615) Florian Jetter
+    + Use safe temp directory in gen_cluster (GH#6628) Florian Jetter
+    + Print CI host info (GH#6629) crusaderky
+    + Deduplicate data_needed (GH#6587) crusaderky
+    + Remove EnsureCommunicatingAfterTransitions (GH#6462) crusaderky
+    + Pickle WorkerState (GH#6623) crusaderky
+    + Harden vs. TaskState collisions (GH#6593) crusaderky
+    + Do not interact with the event loop when the cluster is garbage
+      collected (GH#6627) Thomas Grainger
+
+-------------------------------------------------------------------
 Fri Jun 24 20:21:16 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2022.6.1 

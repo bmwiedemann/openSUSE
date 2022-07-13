@@ -39,15 +39,13 @@
 %if "%{flavor}" == ""
 %bcond_with test
 %endif
-
-# use this to run tests with xdist in parallel, unfortunately fails server side
-%bcond_with paralleltests
-
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
+# use this to run tests with xdist in parallel, unfortunately fails server side
+%bcond_with paralleltests
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2022.6.1
+Version:        2022.7.0
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -74,11 +72,12 @@ Requires:       python-psutil >= 5.0
 Requires:       python-sortedcontainers
 Requires:       python-tblib
 Requires:       python-toolz >= 0.8.2
-Requires:       python-tornado >= 6.0.3
 Requires:       python-urllib3
 Requires:       python-zict >= 0.1.3
+Requires:       (python-tornado >= 6.0.3 with python-tornado < 6.2)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module bokeh}
 BuildRequires:  %{python_module dask-all = %{version}}
@@ -96,7 +95,6 @@ BuildRequires:  %{python_module sparse}
 BuildRequires:  %{python_module pytest-xdist}
 %endif
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -166,6 +164,8 @@ if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   donttest+=" or test_ensure_spilled_immediately"
   donttest+=" or test_value_raises_during_spilling"
   donttest+=" or test_fail_to_pickle_target_1"
+  # https://github.com/dask/distributed/issues/6718
+  python310_donttest+=" or (test_profile and test_basic)"
 fi
 
 %if %{with paralleltests}
@@ -183,6 +183,7 @@ notparallel+=" or test_close_properly"
 notparallel+=" or test_popen_timeout"
 notparallel+=" or test_plugin_internal_exception"
 notparallel+=" or test_runspec_regression_sync"
+notparallel+=" or test_client_async_before_loop_starts"
 
 %pytest distributed/tests -m "not avoid_ci" -n auto -k "not ($notparallel or $donttest ${$python_donttest})"
 %pytest distributed/tests -m "not avoid_ci" -k "($notparallel) and not ($donttest ${$python_donttest})"
