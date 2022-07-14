@@ -18,7 +18,7 @@
 
 %define cpan_name Mac-PropertyList
 Name:           perl-Mac-PropertyList
-Version:        1.503
+Version:        1.504
 Release:        0
 License:        Artistic-2.0
 Summary:        Work with Mac plists at a low level
@@ -73,7 +73,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes examples
+%doc Changes CITATION.cff examples
 %license LICENSE
 
 %changelog

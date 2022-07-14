@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul  9 03:07:07 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.504
+   see /usr/share/doc/packages/perl-Mac-PropertyList/Changes
+
+  1.504 2022-07-08T03:16:18Z
+  	* @trwyant fixed some stray debugging output (#14 and #15)
+
+-------------------------------------------------------------------
 Fri Jul  1 03:06:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.503
