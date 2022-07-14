@@ -19,16 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python39 1
 Name:           python-matrix_common
-Version:        1.1.0
+Version:        1.2.1
 Release:        0
 Summary:        Common utilities for Synapse, Sydent and Sygnal
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/matrix-org/matrix-python-common
 Source:         https://files.pythonhosted.org/packages/source/m/matrix_common/matrix_common-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
