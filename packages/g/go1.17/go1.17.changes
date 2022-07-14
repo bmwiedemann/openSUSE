@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jul 12 20:28:01 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.17.12 (released 2022-07-12) includes security fixes to the
+  compress/gzip, encoding/gob, encoding/xml, go/parser, io/fs,
+  net/http, and path/filepath packages, as well as bug fixes to the
+  compiler, the go command, the runtime, and the runtime/metrics
+  package.
+  Refs boo#1190649 go1.17 release tracking
+  CVE-2022-1705 CVE-2022-32148 CVE-2022-30631 CVE-2022-30633 CVE-2022-28131 CVE-2022-30635 CVE-2022-30632 CVE-2022-30630 CVE-2022-1962
+  * boo#1201434 CVE-2022-1705 go#53188
+  * go#53432 net/http: improper sanitization of Transfer-Encoding header
+  * boo#1201436 CVE-2022-32148 go#53423
+  * go#53620 net/http/httputil: NewSingleHostReverseProxy - omit X-Forwarded-For not working
+  * boo#1201437 CVE-2022-30631 go#53168
+  * go#53717 compress/gzip: stack exhaustion in Reader.Read (CVE-2022-30631)
+  * boo#1201440 CVE-2022-30633 go#53611
+  * go#53715 encoding/xml: stack exhaustion in Unmarshal (CVE-2022-30633)
+  * boo#1201443 CVE-2022-28131 go#53614
+  * go#53711 encoding/xml: stack exhaustion in Decoder.Skip (CVE-2022-28131)
+  * boo#1201444 CVE-2022-30635 go#53615
+  * go#53709 encoding/gob: stack exhaustion in Decoder.Decode (CVE-2022-30635)
+  * boo#1201445 CVE-2022-30632 go#53416
+  * go#53713 path/filepath: stack exhaustion in Glob (CVE-2022-30632)
+  * boo#1201447 CVE-2022-30630 go#53415
+  * go#53719 io/fs: stack exhaustion in Glob (CVE-2022-30630)
+  * boo#1201448 CVE-2022-1962 go#53616
+  * go#53707 go/parser: stack exhaustion in all Parse* functions (CVE-2022-1962)
+  * go#53612 syscall: NewCallback triggers data race on Windows when used from different goroutine
+  * go#53589 runtime/metrics: data race detected in Read
+  * go#53470 cmd/compile: internal compiler error: width not calculated: int128
+  * go#53050 misc/cgo/test: failure with gcc 10
+  * go#52688 runtime: total allocation stats are managed in a uintptr which can quickly wrap around on 32-bit architectures
+  * go#51351 cmd/go: "v1.x.y is not a tag" when .gitconfig sets log.decorate to full
+
+-------------------------------------------------------------------
 Wed Jun  1 17:51:26 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.17.11 (released 2022-06-01) includes security fixes to the
