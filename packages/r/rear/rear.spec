@@ -1,7 +1,7 @@
 #
 # spec file for package rear
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,11 @@
 
 Name:           rear
 # When there are SUSE specific patches, add a trailing letter 'a' 'b' 'c' ...
-# to the rear upstrea, version (e.g. "Version: 1.18.a"
+# to the rear upstrea, version (e.g. "Version: 1.18.a")
 # see https://github.com/rear/rear/issues/666
-Version:        2.6
+Version:        2.7
 Release:        0
-%define upstream_version 2.6
+%define upstream_version 2.7
 # Automatic version upgrades are not possible in practice.
 # The user must explicitly specify his intended version.
 # When users have a working disaster recovery procedure, they should not upgrade

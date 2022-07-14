@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Jul 14 12:55:28 CEST 2022 - jsmeix@suse.de
+
+- Version upgrade to 2.7
+  New features, bigger enhancements,
+  and possibly backward incompatible changes:
+  * ReaR’s default TMPDIR is now /var/tmp (it was /tmp before)
+  * Stop ReaR from possibly overwriting its own disk and
+    backup drives for OUTPUT=USB and OUTPUT=RAWDISK
+    via new WRITE_PROTECTED_... config variables.
+  * Added initial LUKS2 support.
+  * Overhauled RAID code with changed RAID related entries
+    in /var/lib/rear/layout/disklayout.conf
+  * Initial preliminary basic support to automatically resize an
+    active last partition on RAID0 and RAID1 disks to be able to
+    automatically resize RAID0 and RAID1 arrays.
+  * Automatically shrink LVs if needed during "rear recover"
+    on a bit smaller replacement disk.
+  * Support to wipe disks before recreating
+    partitions/volumes/filesystems/...
+    see the new DISKS_TO_BE_WIPED in
+    /usr/share/rear/conf/default.conf
+  * Error out when files greater or equal ISO_FILE_SIZE_LIMIT
+    should be included in the ISO.
+  * Rsync OUTPUT_URLs are now properly supported with BACKUP=RSYNC.
+    The special handling of an rsync OUTPUT_URL with OUTPUT=PXE
+    is removed and the URL is interpreted as in all other cases.
+  * RAWDISK: Add local rescue partition installation capability.
+  * Allow setting a PBA-specific firmware configuration via the
+    new OPAL_PBA_FIRMWARE_FILES configuration variable.
+  * Support OPAL 2 self-encrypting NVMe disk drives.
+  * OPALPBA: Provide a permanent unlocking mode via
+    OPAL_PBA_UNLOCK_MODE (see default.conf).
+  * POWER architecture (ppc64) support for BACKUP=DP.
+  * NSR enhancement for point-in-time recovery with
+    EMC Networker client.
+  * BACKUP=NBKDC: Enhanced ReaR backup and restore to also work
+    with NovaStor DataCenter 8.0 and higher.
+  * Support for systemd and parallel restore with
+    Data Protector BACKUP=DP.
+  * Now “rear format” has in addition to the ‘–efi’ switch
+    a ‘–bios’ switch. If none is given (i.e. by default)
+    it will now do hybrid formatting.
+  * Overhauled serial console support code via SERIAL_CONSOLE_...
+    config variables (see default.conf for details).
+  * Support for HTTP sources when using PXE via new PXE_HTTP_URL
+  * In /usr/share/rear/conf/default.conf changed ISO_VOLID from
+    "RELAXRECOVER" to "REAR-ISO" and accordingly ‘RELAXRECOVER’
+    in variable names was replaced. In particular
+    USER_INPUT_RELAXRECOVER_SYMLINK_TARGET was renamed as
+    USER_INPUT_ISO_SYMLINK_TARGET so only the new name will work.
+  A detailed list can be found in the rear-release-notes.txt file.
+
+-------------------------------------------------------------------
 Tue Jun 23 13:10:19 CEST 2020 - jsmeix@suse.de
 
 - Using rear-2.6.tar.gz tarball from sourceforge to match Source0:

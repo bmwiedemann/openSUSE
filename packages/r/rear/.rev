@@ -278,4 +278,12 @@
     <comment>ReaR version upgrade to 2.6</comment>
     <requestid>816563</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5501ba8cba9bf92b20baa2636f229691</srcmd5>
+    <version>2.7</version>
+    <time>1657809280</time>
+    <user>dimstar_suse</user>
+    <comment>rear update to ReaR 2.7 release (forwarded request 989145 from jsmeix)</comment>
+    <requestid>989146</requestid>
+  </revision>
 </revisionlist>
