@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 14 07:50:32 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.6:
+  * Fix the the minimized main menu
+  * Be less picky with maildirs with trailing /
+  * Add mu4e-copy-thing-at-point, bind to c in view
+  * Add more matching tests
+
+-------------------------------------------------------------------
 Wed Jul  6 06:54:08 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.5:

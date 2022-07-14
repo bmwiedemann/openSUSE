@@ -452,4 +452,16 @@
   * the 1.8.4 release &amp; tag got mixed up, so we're going straight to 1.8.5</comment>
     <requestid>986973</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1e134c188a4ccbaf7ecdece8af4e3c68</srcmd5>
+    <version>1.8.6</version>
+    <time>1657809272</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.6:
+  * Fix the the minimized main menu
+  * Be less picky with maildirs with trailing /
+  * Add mu4e-copy-thing-at-point, bind to c in view
+  * Add more matching tests</comment>
+    <requestid>989100</requestid>
+  </revision>
 </revisionlist>
