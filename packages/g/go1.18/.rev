@@ -205,4 +205,18 @@
   * go#53115 misc/cgo/testsanitizers: deadlock in TestTSAN/tsan11 (forwarded request 980418 from jfkw)</comment>
     <requestid>980420</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4b3b62f70bd1f77e04159f2c59700e13</srcmd5>
+    <version>1.18.4</version>
+    <time>1657809193</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.18.4 (released 2022-07-12) includes security fixes to the
+  compress/gzip, encoding/gob, encoding/xml, go/parser, io/fs,
+  net/http, and path/filepath packages, as well as bug fixes to the
+  compiler, the go command, the linker, the runtime, and the
+  runtime/metrics package.
+  Refs boo#1193742 go1.18 release tracking
+  CVE-2022-1705 CVE-2022-32148 CVE-2022-30631 CVE-2022-30633 CVE-2022-28131 CVE-2022-30635 CVE-2022-30632 CVE-2022-30630 CVE-2022-1962 (forwarded request 988807 from jfkw)</comment>
+    <requestid>988809</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Jul 12 20:28:01 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.18.4 (released 2022-07-12) includes security fixes to the
+  compress/gzip, encoding/gob, encoding/xml, go/parser, io/fs,
+  net/http, and path/filepath packages, as well as bug fixes to the
+  compiler, the go command, the linker, the runtime, and the
+  runtime/metrics package.
+  Refs boo#1193742 go1.18 release tracking
+  CVE-2022-1705 CVE-2022-32148 CVE-2022-30631 CVE-2022-30633 CVE-2022-28131 CVE-2022-30635 CVE-2022-30632 CVE-2022-30630 CVE-2022-1962
+  * boo#1201434 CVE-2022-1705 go#53188
+  * go#53433 net/http: improper sanitization of Transfer-Encoding header
+  * boo#1201436 CVE-2022-32148 go#53423
+  * go#53621 net/http/httputil: NewSingleHostReverseProxy - omit X-Forwarded-For not working
+  * boo#1201437 CVE-2022-30631 go#53168
+  * go#53718 compress/gzip: stack exhaustion in Reader.Read (CVE-2022-30631)
+  * boo#1201440 CVE-2022-30633 go#53611
+  * go#53716 encoding/xml: stack exhaustion in Unmarshal (CVE-2022-30633)
+  * boo#1201443 CVE-2022-28131 go#53614
+  * go#53712 encoding/xml: stack exhaustion in Decoder.Skip (CVE-2022-28131)
+  * boo#1201444 CVE-2022-30635 go#53615
+  * go#53710 encoding/gob: stack exhaustion in Decoder.Decode (CVE-2022-30635)
+  * boo#1201445 CVE-2022-30632 go#53416
+  * go#53714 path/filepath: stack exhaustion in Glob (CVE-2022-30632)
+  * boo#1201447 CVE-2022-30630 go#53415
+  * go#53720 io/fs: stack exhaustion in Glob (CVE-2022-30630)
+  * boo#1201448 CVE-2022-1962 go#53616
+  * go#53708 go/parser: stack exhaustion in all Parse* functions (CVE-2022-1962)
+  * go#53723 cmd/compile: ambiguous selector with generic interface & embedded types
+  * go#53618 cmd/compile: condition in for loop body is incorrectly optimised away
+  * go#53613 syscall: NewCallback triggers data race on Windows when used from different goroutine
+  * go#53590 runtime/metrics: data race detected in Read
+  * go#53588 cmd/go: "v1.x.y is not a tag" when .gitconfig sets log.decorate to full
+  * go#53587 cmd/compile: miscompilation of value switch involving generic interface types
+  * go#53471 cmd/compile: internal compiler error: width not calculated: int128
+  * go#53357 cmd/compile: type assertion on generic type fails incorrectly
+  * go#53159 cmd/compile: unsafe.Offsetof returns incorrect value in embedded struct with type parameters
+  * go#53107 cmd/link: unexpected trampoline error on ppc64le musl with -buildmode=pie
+  * go#52689 runtime: total allocation stats are managed in a uintptr which can quickly wrap around on 32-bit architectures
+
+-------------------------------------------------------------------
 Wed Jun  1 17:51:26 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.18.3 (released 2022-06-01) includes security fixes to the
