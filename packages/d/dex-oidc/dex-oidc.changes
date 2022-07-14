@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Mon Jul 11 08:14:11 UTC 2022 - michael@stroeder.com
+
+- Update to version 2.32.0:
+  * Enhancements
+    - Add support for RefreshConnector for openshift connector. by @dhaus67 in #2342
+    - Allow configuration of returned groups via authproxy connector by @seuf in #2371
+    - Add acr_values support for OIDC by @dirien in #2418
+    - fix: Implicit Grant discovery by @nabokihms in #2433
+    - fix: log only errors on refreshing by @nabokihms in #2470
+    - Create setting to allow to trust the system root CAs by @dhaus67 in #2430
+    - Add numeric user ID support for oauth connector by @tsl0922 in #2483
+    - Remove google specific hd / hosted domain claim config from oidc connector by @Blorpy in #2511
+    - OIDC connector: Support cases where there is no id_token when using a refresh_token grant by @Blorpy in #2522
+    - feat: add enhancement template by @nabokihms in #2486
+    - Release note configuration by @sagikazarmark in #2463
+    - fix: add notification about groups access to the Grant Access page by @nabokihms in #2533
+    - feat: enable profiling endpoints by @nabokihms in #2482
+  * Bug Fixes
+    - Build multi-platform images in a single build job by @sagikazarmark in #2487
+    - Fixes #2537 by @ShivanshVij in #2538
+    - correctly handle path escaping for connector IDs by @bobcallaway in #2290
+  * Dependency Updates
+    - build(deps): bump golang from 1.17.6-alpine3.14 to 1.17.7-alpine3.14 by @dependabot in #2411
+    - build(deps): bump google.golang.org/api from 0.68.0 to 0.69.0 by @dependabot in #2415
+    - build(deps): bump github.com/go-ldap/ldap/v3 from 3.4.1 to 3.4.2 by @dependabot in #2416
+    - build(deps): bump google.golang.org/api from 0.69.0 to 0.70.0 by @dependabot in #2419
+    - build(deps): bump actions/checkout from 2 to 3 by @dependabot in #2422
+    - build(deps): bump github.com/russellhaering/goxmldsig from 1.1.1 to 1.2.0 by @dependabot in #2424
+    - build(deps): bump golang from 1.17.7-alpine3.14 to 1.17.8-alpine3.14 by @dependabot in #2426
+    - build(deps): bump github.com/spf13/cobra from 1.3.0 to 1.4.0 by @dependabot in #2437
+    - build(deps): bump github.com/stretchr/testify from 1.7.0 to 1.7.1 by @dependabot in #2440
+    - build(deps): bump alpine from 3.15.0 to 3.15.1 by @dependabot in #2444
+    - build(deps): bump alpine from 3.15.1 to 3.15.3 by @dependabot in #2456
+    - build(deps): bump alpine from 3.15.3 to 3.15.4 by @dependabot in #2461
+    - build(deps): bump google.golang.org/api from 0.70.0 to 0.74.0 by @dependabot in #2458
+    - build(deps): bump google.golang.org/protobuf from 1.27.1 to 1.28.0 by @dependabot in #2451
+    - Update ent by @sagikazarmark in #2428
+    - build(deps): bump aquasecurity/trivy-action from 0.2.2 to 0.2.3 by @dependabot in #2466
+    - build(deps): bump actions/setup-go from 2 to 3 by @dependabot in #2467
+    - Bump Alpine to latest version by @MattiasGees in #2471
+    - build(deps): bump aquasecurity/trivy-action from 0.2.4 to 0.2.5 by @dependabot in #2481
+    - build(deps): bump github/codeql-action from 1 to 2 by @dependabot in #2494
+    - build(deps): bump docker/build-push-action from 2 to 3 by @dependabot in #2510
+    - build(deps): bump docker/metadata-action from 3 to 4 by @dependabot in #2509
+    - build(deps): bump docker/login-action from 1 to 2 by @dependabot in #2507
+    - build(deps): bump docker/setup-qemu-action from 1 to 2 by @dependabot in #2508
+    - build(deps): bump docker/setup-buildx-action from 1 to 2 by @dependabot in #2506
+    - build(deps): bump aquasecurity/trivy-action from 0.2.5 to 0.3.0 by @dependabot in #2525
+    - chore: Go mod update 1.17 by @nabokihms in #2532
+    - build(deps): bump alpine from 3.15.4 to 3.16.0 by @dependabot in #2531
+    - build(deps): bump go.etcd.io/etcd/client/v3 from 3.5.2 to 3.5.4 by @dependabot in #2491
+    - build(deps): bump github.com/coreos/go-oidc/v3 from 3.1.0 to 3.2.0 by @dependabot in #2528
+    - build(deps): bump google.golang.org/grpc from 1.45.0 to 1.46.2 by @dependabot in #2526
+    - build(deps): bump github.com/prometheus/client_golang from 1.12.1 to 1.12.2 by @dependabot in #2529
+    - build(deps): bump github.com/felixge/httpsnoop from 1.0.2 to 1.0.3 by @dependabot in #2527
+    - build(deps): bump google.golang.org/api from 0.74.0 to 0.81.0 by @dependabot in #2534
+    - build(deps): bump google.golang.org/grpc from 1.44.0 to 1.46.2 in /api/v2 by @dependabot in #2517
+    - build(deps): bump google.golang.org/protobuf from 1.27.1 to 1.28.0 in /api/v2 by @dependabot in #2452
+    - feat: upgrade Go to 1.18 by @sagikazarmark in #2441
+    - build(deps): bump golang from 1.18.0-alpine3.15 to 1.18.2-alpine3.15 by @dependabot in #2535
+    - build(deps): bump google.golang.org/api from 0.81.0 to 0.82.0 by @dependabot in #2549
+    - build(deps): bump google.golang.org/grpc from 1.46.2 to 1.47.0 by @dependabot in #2543
+    - build(deps): bump golang from 1.18.2-alpine3.15 to 1.18.3-alpine3.15 by @dependabot in #2548
+    - build(deps): bump github.com/stretchr/testify from 1.7.1 to 1.7.2 by @dependabot in #2550
+    - chore(deps): update grpc by @sagikazarmark in #2551
+  * Other Changes
+    - Update alpine version by @sagikazarmark in #2446
+    - New docker image build by @sagikazarmark in #2474
+    - Qemu tweaks by @sagikazarmark in #2480
+    - Add docker metadata action by @sagikazarmark in #2488
+    - ci: use docker metadata for build input by @sagikazarmark in #2489
+    - chore: do not use caching for docker build by @nabokihms in #2516
+    - Bump lint timeout to reduce the number of failed executions by @nabokihms in #2523
+
+-------------------------------------------------------------------
 Thu Mar 24 18:02:47 UTC 2022 - michael@stroeder.com
 
 - Update to version 2.31.1:
