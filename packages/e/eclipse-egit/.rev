@@ -31,4 +31,12 @@
     <comment>Force build with java 11</comment>
     <requestid>965676</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ab09dd0c997ff3f34bd5566f63b2d4c6</srcmd5>
+    <version>5.11.0</version>
+    <time>1657809261</time>
+    <user>dimstar_suse</user>
+    <comment>appease darix</comment>
+    <requestid>989034</requestid>
+  </revision>
 </revisionlist>
