@@ -326,4 +326,13 @@
   * container-openldap: fix syntax error in ExecStart</comment>
     <requestid>988065</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c06fe590936f2a2f45fc00cec647212f</srcmd5>
+    <version>0.0+git20220713.967c6f4</version>
+    <time>1657809205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20220713.967c6f4:
+  * Add submission/smtps support for postfix</comment>
+    <requestid>988999</requestid>
+  </revision>
 </revisionlist>
