@@ -1,6 +1,8 @@
---- a/sure/core.py
-+++ b/sure/core.py
-@@ -21,7 +21,10 @@
+Index: sure-2.0.0/sure/core.py
+===================================================================
+--- sure-2.0.0.orig/sure/core.py
++++ sure-2.0.0/sure/core.py
+@@ -21,7 +21,10 @@ import os
  try:
      from mock import _CallList
  except ImportError:
@@ -20,4 +22,16 @@
  anything = Anything()
  
  
-
+Index: sure-2.0.0/tests/test_assertion_builder.py
+===================================================================
+--- sure-2.0.0.orig/tests/test_assertion_builder.py
++++ sure-2.0.0/tests/test_assertion_builder.py
+@@ -17,7 +17,7 @@
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ from __future__ import unicode_literals
+ import re
+-import mock
++from unittest import mock
+ from collections import OrderedDict
+ 
+ from datetime import datetime, timedelta

@@ -22,12 +22,10 @@ Version:        2.0.0
 Release:        0
 Summary:        Utility belt for automated testing in python for python
 License:        GPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/gabrielfalcao/sure
 Source:         https://files.pythonhosted.org/packages/source/s/sure/sure-%{version}.tar.gz
-# https://github.com/gabrielfalcao/sure/pull/161
+# Based on https://github.com/gabrielfalcao/sure/pull/161
 Patch0:         python-sure-no-mock.patch
-BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10.0}
@@ -44,8 +42,7 @@ A testing library for python with powerful and flexible assertions. Sure is
 heavily inspired by should.js
 
 %prep
-%setup -q -n sure-%{version}
-%patch0 -p1
+%autosetup -p1 -n sure-%{version}
 sed -i '/^#!/d' sure/*.py
 sed -i 's/--cov=sure//' setup.cfg
 

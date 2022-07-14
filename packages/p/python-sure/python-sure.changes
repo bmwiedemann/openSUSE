@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 13 04:37:13 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove mock from BuildRequires.
+- Rebase python-sure-no-mock.patch to remove one missed import. 
+
+-------------------------------------------------------------------
 Wed May  4 08:38:45 UTC 2022 - pgajdos@suse.com
 
 - do not require mock for build nor runtime
