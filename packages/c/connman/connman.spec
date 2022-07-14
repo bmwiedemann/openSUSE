@@ -50,8 +50,8 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.28
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(libiptc)
 BuildRequires:  pkgconfig(libmnl)
+BuildRequires:  pkgconfig(libnftnl)
 BuildRequires:  pkgconfig(polkit-agent-1)
-BuildRequires:  pkgconfig(xtables)
 Requires:       bluez
 Requires:       dhcp >= 3.0.2
 Requires:       iptables
@@ -232,6 +232,7 @@ export FFLAGS
            --with-systemdunitdir=%{_unitdir} \
            --disable-debug \
            --enable-pie \
+           --with-firewall=nftables \
 %if %{hh2serial_working}
            --enable-hh2serial-gps \
 %endif
