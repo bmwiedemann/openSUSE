@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 14 09:11:27 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.5.2:
+  - Update dependencies (switch to poetry and pyxdg)
+- Remove upstreamed patch 0001-Switch-from-xdg-to-pyxdg.patch
+
+-------------------------------------------------------------------
 Mon Mar 22 15:02:02 UTC 2021 - Jan Baier <jbaier@suse.com>
 
 - Add 0001-Switch-from-xdg-to-pyxdg.patch to solve issue 96
