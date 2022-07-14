@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. /usr/libexec/tomcat/functions
+. @LIBEXECDIR@/tomcat/functions
 
 # Get the tomcat config (use this for environment specific settings)
 

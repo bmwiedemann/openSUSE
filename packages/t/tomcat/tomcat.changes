@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 13 13:41:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not hardcode /usr/libexec but use %%_libexecdir during the
+  build
+  * Fixes for platforms, where /usr/libexec and %%_libexecdir are
+    different
+
+-------------------------------------------------------------------
 Thu Jul  7 15:35:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix bsc#1201081 by building with release=8 all files that can be

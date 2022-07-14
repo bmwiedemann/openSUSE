@@ -813,4 +813,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>bsc#1201081</comment>
     <requestid>987800</requestid>
   </revision>
+  <revision rev="86" vrev="10">
+    <srcmd5>d53ae636a7758cb02653ff40bcd2cff5</srcmd5>
+    <version>9.0.43</version>
+    <time>1657809262</time>
+    <user>dimstar_suse</user>
+    <comment>do not hardcode /usr/libexecdir, but use %_libexecdir instead</comment>
+    <requestid>989036</requestid>
+  </revision>
 </revisionlist>

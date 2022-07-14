@@ -385,12 +385,12 @@ sed -e "s|\@\@\@TCHOME\@\@\@|%{homedir}|g" \
    -e "s|\@\@\@TCTEMP\@\@\@|%{tempdir}|g" \
    -e "s|\@\@\@LIBDIR\@\@\@|%{_libdir}|g" %{SOURCE3} \
     > %{buildroot}%{_fillupdir}/sysconfig.%{name}
-install -m 0644 %{SOURCE4} \
-    %{buildroot}%{_sbindir}/%{name}
-install -m 0644 %{SOURCE11} \
-    %{buildroot}%{_unitdir}/%{name}.service
-install -m 0644 %{SOURCE20} \
-    %{buildroot}%{_unitdir}/%{name}-jsvc.service
+sed -e "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE4} \
+    > %{buildroot}%{_sbindir}/%{name}
+sed -e "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE11} \
+    > %{buildroot}%{_unitdir}/%{name}.service
+sed -e "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE20} \
+    > %{buildroot}%{_unitdir}/%{name}-jsvc.service
 sed -e "s|\@\@\@TCLOG\@\@\@|%{logdir}|g" %{SOURCE5} \
     > %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 sed -e "s|\@\@\@TCHOME\@\@\@|%{homedir}|g" \
@@ -402,14 +402,16 @@ sed -e "s|\@\@\@TCHOME\@\@\@|%{homedir}|g" \
    -e "s|\@\@\@LIBDIR\@\@\@|%{_libdir}|g" %{SOURCE7} \
     > %{buildroot}%{_bindir}/%{name}-tool-wrapper
 
-install -m 0644 %{SOURCE21} \
-    %{buildroot}%{_libexecdir}/%{name}/functions
-install -m 0755 %{SOURCE30} \
-    %{buildroot}%{_libexecdir}/%{name}/preamble
-install -m 0755 %{SOURCE31} \
-    %{buildroot}%{_libexecdir}/%{name}/server
-install -m 0644 %{SOURCE32} \
-    %{buildroot}%{_unitdir}/%{name}@.service
+sed -e "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE21} \
+    > %{buildroot}%{_libexecdir}/%{name}/functions
+sed -e "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE30} \
+    > %{buildroot}%{_libexecdir}/%{name}/preamble
+chmod 0755 %{buildroot}%{_libexecdir}/%{name}/preamble
+sed -e "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE31} \
+    > %{buildroot}%{_libexecdir}/%{name}/server
+chmod 0755 %{buildroot}%{_libexecdir}/%{name}/server
+sed -e "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE32} \
+    > %{buildroot}%{_unitdir}/%{name}@.service
 
 ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
 ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}-jsvc

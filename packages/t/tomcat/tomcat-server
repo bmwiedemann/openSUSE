@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. /usr/libexec/tomcat/preamble
+. @LIBEXECDIR@/tomcat/preamble
 
 MAIN_CLASS=org.apache.catalina.startup.Bootstrap
 

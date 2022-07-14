@@ -14,8 +14,8 @@ Type=simple
 EnvironmentFile=/etc/tomcat/tomcat.conf
 Environment="NAME="
 EnvironmentFile=-/etc/sysconfig/tomcat
-ExecStart=/usr/libexec/tomcat/server start
-ExecStop=/usr/libexec/tomcat/server stop
+ExecStart=@LIBEXECDIR@/tomcat/server start
+ExecStop=@LIBEXECDIR@/tomcat/server stop
 SuccessExitStatus=143
 User=tomcat
 Group=tomcat
