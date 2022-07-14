@@ -9096,9 +9096,11 @@ unsorted:
   - libQCoro5Core0 
   - libQCoro5DBus0 
   - libQCoro5Network0 
+  - libQCoro5WebSockets0 
   - libQCoro6Core0 
   - libQCoro6DBus0 
   - libQCoro6Network0 
+  - libQCoro6WebSockets0 
   - libQMatrixClient0_5_3 
   - libQgpsmm29 
   - libQt53DAnimation-devel 
@@ -22194,6 +22196,7 @@ unsorted:
   - python310-audioread 
   - python310-augeas 
   - python310-autobahn 
+  - python310-autocommand 
   - python310-autodoc 
   - python310-autodocsumm 
   - python310-autoflake 
@@ -23784,6 +23787,7 @@ unsorted:
   - python310-pingparsing 
   - python310-pip-api 
   - python310-pip-licenses 
+  - python310-pip-run 
   - python310-pip-shims 
   - python310-pip-test 
   - python310-pip-tools 
@@ -25271,6 +25275,7 @@ unsorted:
   - python38-authheaders 
   - python38-authres 
   - python38-autobahn 
+  - python38-autocommand 
   - python38-autodoc 
   - python38-autodocsumm 
   - python38-autoflake 
@@ -26976,6 +26981,7 @@ unsorted:
   - python38-pip 
   - python38-pip-api 
   - python38-pip-licenses 
+  - python38-pip-run 
   - python38-pip-shims 
   - python38-pip-test 
   - python38-pip-tools 
@@ -28559,6 +28565,7 @@ unsorted:
   - python39-authheaders 
   - python39-authres 
   - python39-autobahn 
+  - python39-autocommand 
   - python39-autodoc 
   - python39-autodocsumm 
   - python39-autoflake 
@@ -30262,6 +30269,7 @@ unsorted:
   - python39-pip 
   - python39-pip-api 
   - python39-pip-licenses 
+  - python39-pip-run 
   - python39-pip-shims 
   - python39-pip-test 
   - python39-pip-tools 
@@ -42174,6 +42182,8 @@ unsorted:
   - tidy-doc 
   - tidyp 
   - tig 
+  - tig-bash-completion 
+  - tig-zsh-completion 
   - tiger-types 
   - tiger-types-javadoc 
   - tigervnc-x11vnc 
