@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 14 09:49:39 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Disable tests in some architectures (ppc, ppc64, s390x)
+
+-------------------------------------------------------------------
+Wed Jul 13 11:50:11 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add patch to fix leakage of TPM simulator process
+  add_missing_shut_down_call_on_cleanup.patch
+- Add patch to fix fapi-quote-verify[_ecc].sh test
+  fix_check_of_qualifying_data.patch
+- Enable test execution by default
+
+-------------------------------------------------------------------
 Fri Jul  8 07:51:37 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add missing dependencies for testing.

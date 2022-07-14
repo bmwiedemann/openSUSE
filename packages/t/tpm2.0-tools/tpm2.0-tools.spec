@@ -17,7 +17,12 @@
 
 
 %define _lto_cflags %{nil}
+%ifarch %{ix86} x86_64 aarch64 %{arm} ppc64le
+%bcond_without  test
+%else
+# ppc ppc64 s390x
 %bcond_with     test
+%endif
 Name:           tpm2.0-tools
 Version:        5.2
 Release:        0
@@ -32,6 +37,10 @@ Source2:        tpm2-tools.keyring
 Patch0:         fix_bogus_warning.patch
 # PATCH-FIX-UPSTREAM 0001-tests-getekcertificate.sh-Skip-the-test-if-curl-is-n.patch -- based on PR#3041
 Patch1:         0001-tests-getekcertificate.sh-Skip-the-test-if-curl-is-n.patch
+# PATCH-FIX-UPSTREAM add_missing_shut_down_call_on_cleanup.patch -- based on PR#3047
+Patch2:         add_missing_shut_down_call_on_cleanup.patch
+# PATCH-FIX-UPSTREAM fix_check_of_qualifying_data.patch -- already merged
+Patch3:         fix_check_of_qualifying_data.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
 BuildRequires:  libopenssl-devel
@@ -102,7 +111,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %check
 # Do the tests sequentially to kill all tpm_server instances
 # https://github.com/tpm2-software/tpm2-tools/issues/3042
-%make_build -j1 check
+%make_build check
 %endif
 
 %changelog
