@@ -438,4 +438,26 @@
     <comment></comment>
     <requestid>910324</requestid>
   </revision>
+  <revision rev="56" vrev="43">
+    <srcmd5>63bbc6c47ca33181de0aa16e70cb7d22</srcmd5>
+    <version>7.6</version>
+    <time>1657809190</time>
+    <user>dimstar_suse</user>
+    <comment>- encodings 1.0.6
+   gitlab CI: add a basic build test
+   Build xz tarballs instead of bzip2
+   adjust descriptions for the Unicode mapping to match the Unicode.org data file.
+   add mapping for 0x80-0x9f, as per Unicode.org data files.
+   use descriptions from UnicodeData.txt except for two obsolete or incorrect maps
+   correct a typo (in original), and use appropriate description
+   use Armenian eternity symbol from Unicode 6.
+   whitespace-only changes for consistency, using luit's annotate-enc script
+   add descriptions from UnicodeData.txt, using annotate-enc
+   add descriptions from UnicodeData.txt, using annotate-enc
+   add descriptions from UnicodeData.txt, using annotate-enc
+   add descriptions from UnicodeData.txt, with annotate-enc
+   add descriptions from UnicodeData.txt, with annotate-enc
+   whitespace-only, reformat with annotate-enc</comment>
+    <requestid>988770</requestid>
+  </revision>
 </revisionlist>

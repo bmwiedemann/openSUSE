@@ -1,7 +1,7 @@
 #
-# spec file for package xorg-x11-fonts
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,7 +64,7 @@ Source28:       http://xorg.freedesktop.org/archive/individual/font/font-sony-mi
 Source29:       http://xorg.freedesktop.org/archive/individual/font/font-sun-misc-1.0.3.tar.bz2
 Source30:       http://xorg.freedesktop.org/archive/individual/font/font-winitzki-cyrillic-1.0.3.tar.bz2
 Source31:       http://xorg.freedesktop.org/archive/individual/font/font-xfree86-type1-1.0.4.tar.bz2
-Source32:       http://xorg.freedesktop.org/archive/individual/font/encodings-1.0.5.tar.bz2
+Source32:       http://xorg.freedesktop.org/archive/individual/font/encodings-1.0.6.tar.xz
 Source33:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-100dpi-1.0.4.tar.bz2
 Source34:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-75dpi-1.0.4.tar.bz2
 Source35:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-type1-1.0.4.tar.bz2
@@ -141,7 +141,7 @@ to truetype format in the xorg-x11-fonts-converted package
 %setup -n . -T -D
 %if "%{flavor}" != "converted"
 rm -rf $RPM_BUILD_DIR/*
-for i in $RPM_SOURCE_DIR/*.tar.bz2; do tar xjf $i; done
+for i in $RPM_SOURCE_DIR/*.tar.{bz2,xz}; do tar xf $i; done
 %else
 cp %{SOURCE100} .
 tar xjf %{SOURCE0}

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul 12 22:29:12 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- encodings 1.0.6
+   gitlab CI: add a basic build test
+   Build xz tarballs instead of bzip2
+   adjust descriptions for the Unicode mapping to match the Unicode.org data file.
+   add mapping for 0x80-0x9f, as per Unicode.org data files.
+   use descriptions from UnicodeData.txt except for two obsolete or incorrect maps
+   correct a typo (in original), and use appropriate description
+   use Armenian eternity symbol from Unicode 6.
+   whitespace-only changes for consistency, using luit's annotate-enc script
+   add descriptions from UnicodeData.txt, using annotate-enc
+   add descriptions from UnicodeData.txt, using annotate-enc
+   add descriptions from UnicodeData.txt, using annotate-enc
+   add descriptions from UnicodeData.txt, with annotate-enc
+   add descriptions from UnicodeData.txt, with annotate-enc
+   whitespace-only, reformat with annotate-enc
+
+-------------------------------------------------------------------
 Tue Aug  3 13:43:12 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Convert the helv*.otb and cour*.otb files in a different way,
