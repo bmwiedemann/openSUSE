@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 11 03:06:59 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.12
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  5.12      2022-07-10 23:48:50Z
+      - Fix an issue where i.e. 'file:///tmp/###' was not properly escaped.
+        A non-existing authority part was accidentally processed.
+        Details: https://github.com/libwww-perl/URI/issues/102
+        (GH#102) (Perlbotics)
+      - Reverts to previous behavior (5.10) for 'mailto:' scheme for
+        escaping square brackets.
+
+  5.11      2022-07-04 20:53:38Z
+      - Fix some typos in URI::file (GH#94) (Olaf Alders)
+      - Escape square brackets in path (GH#100) (Perlbotics)
+      - Fix storable.t (GH#97) (Shoichi Kaji)
+
+-------------------------------------------------------------------
 Tue Oct 26 03:07:25 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.10
