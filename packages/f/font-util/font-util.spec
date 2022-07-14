@@ -1,7 +1,7 @@
 #
 # spec file for package font-util
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           font-util
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        X.Org font package creation/installation utilities
 License:        MIT
 Group:          System/X11/Fonts
 URL:            https://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/archive/individual/font/%{name}-%{version}.tar.bz2
-Source1:        http://xorg.freedesktop.org/archive/individual/font/%{name}-%{version}.tar.bz2.sig
+Source0:        http://xorg.freedesktop.org/archive/individual/font/%{name}-%{version}.tar.xz
+Source1:        http://xorg.freedesktop.org/archive/individual/font/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Source3:        http://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WINDOWS/CP932.TXT
 BuildRequires:  pkgconfig
