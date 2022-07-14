@@ -32,4 +32,31 @@
     <comment></comment>
     <requestid>974369</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>44759f4a1d75fce67ae5ff8e4420a1bb</srcmd5>
+    <version>0.6.0</version>
+    <time>1657809254</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable tests again. Random timeouts were seen.
+
+- Update to 0.6.0
+  * Fix build with gcc 11.3.0
+  * Fix ODR violation when LTO is enabled
+  * Export QCoro wrapper classes
+  * Enable &quot;modern Qt&quot; compiler definitions
+  * Introduce Generator and AsyncGenerator coroutine return types
+  * Fix installing export header
+  * Deprecate task.h in favor of qcorotask.h
+  * QtWebSockets support
+  * Document -DQCORO_WITH_QTWEBSOCKETS
+  * Fix the build by #include'ing
+  * QCoroTask: fixup a template type parameter name
+  * Add support for clang-cl
+  * Fix possible race in TestWsServer
+  * WebSocket bugfixes &amp; documentation
+  * Explicitly enable exception support for clang-cl
+- Add patch to avoid using -Werror on non-debug builds:
+  * qcoro_no_Werror.patch</comment>
+    <requestid>989033</requestid>
+  </revision>
 </revisionlist>

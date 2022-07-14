@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jul 13 18:10:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Disable tests again. Random timeouts were seen.
+
+-------------------------------------------------------------------
+Wed Jul 13 11:45:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.6.0
+  * Fix build with gcc 11.3.0
+  * Fix ODR violation when LTO is enabled
+  * Export QCoro wrapper classes
+  * Enable "modern Qt" compiler definitions
+  * Introduce Generator and AsyncGenerator coroutine return types
+  * Fix installing export header
+  * Deprecate task.h in favor of qcorotask.h
+  * QtWebSockets support
+  * Document -DQCORO_WITH_QTWEBSOCKETS
+  * Fix the build by #include'ing
+  * QCoroTask: fixup a template type parameter name
+  * Add support for clang-cl
+  * Fix possible race in TestWsServer
+  * WebSocket bugfixes & documentation
+  * Explicitly enable exception support for clang-cl
+- Add patch to avoid using -Werror on non-debug builds:
+  * qcoro_no_Werror.patch
+
+-------------------------------------------------------------------
 Wed Apr 27 15:02:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.5.1

@@ -31,17 +31,19 @@ ExclusiveArch:  do_not_build
 %endif
 %if "%{flavor}" == "qt6"
 %define qt6 1
-%define qt_min_version 6.1.2
+%define qt_min_version 6.2.0
 %define _qt_suffix 6
 %endif
 #
 Name:           qcoro%{?_pkg_name_suffix}
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        Coroutines for Qt
 License:        MIT
 URL:            https://github.com/danvratil/qcoro
 Source:         https://github.com/danvratil/qcoro/archive/refs/tags/v%{version}.tar.gz#/qcoro-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         qcoro_no_Werror.patch
 BuildRequires:  cmake >= 3.19.0
 BuildRequires:  dbus-1
 BuildRequires:  cmake(Qt%{_qt_suffix}Concurrent) >= %{qt_min_version}
@@ -49,6 +51,7 @@ BuildRequires:  cmake(Qt%{_qt_suffix}Core) >= %{qt_min_version}
 BuildRequires:  cmake(Qt%{_qt_suffix}DBus) >= %{qt_min_version}
 BuildRequires:  cmake(Qt%{_qt_suffix}Network) >= %{qt_min_version}
 BuildRequires:  cmake(Qt%{_qt_suffix}Test) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{_qt_suffix}WebSockets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt%{_qt_suffix}Widgets) >= %{qt_min_version}
 # C++-20 support is needed. Qt6 already requires gcc10
 %if 0%{?qt5} && 0%{?suse_version} == 1500
@@ -83,11 +86,20 @@ The QCoro library provides set of tools to make use of the C++20
 coroutines in connection with certain asynchronous Qt actions. This package
 provides a library for network operations support.
 
+%package -n libQCoro%{_qt_suffix}WebSockets%{sonum}
+Summary:        WebSockets support library for qcoro, a library providing coroutines for Qt
+
+%description -n libQCoro%{_qt_suffix}WebSockets%{sonum}
+The QCoro library provides set of tools to make use of the C++20
+coroutines in connection with certain asynchronous Qt actions. This package
+provides a library for websockets support.
+
 %package -n %{name}-devel
 Summary:        Development files for qcoro
 Requires:       libQCoro%{_qt_suffix}Core%{sonum} = %{version}
 Requires:       libQCoro%{_qt_suffix}DBus%{sonum} = %{version}
 Requires:       libQCoro%{_qt_suffix}Network%{sonum} = %{version}
+Requires:       libQCoro%{_qt_suffix}WebSockets%{sonum} = %{version}
 
 %description -n %{name}-devel
 The QCoro library provides set of tools to make use of the C++20 coroutines
@@ -126,15 +138,17 @@ applications.
 %endif
 
 %check
-# Tests timeout randomly, currently unfixed (https://github.com/danvratil/qcoro/issues/41)
-# %%ctest
+# 20220713: tests still randomly fail, mostly on arm
+#%%ctest
 
 %post -n libQCoro%{_qt_suffix}Core%{sonum}  -p /sbin/ldconfig
 %post -n libQCoro%{_qt_suffix}DBus%{sonum}  -p /sbin/ldconfig
 %post -n libQCoro%{_qt_suffix}Network%{sonum}  -p /sbin/ldconfig
+%post -n libQCoro%{_qt_suffix}WebSockets%{sonum}  -p /sbin/ldconfig
 %postun -n libQCoro%{_qt_suffix}Core%{sonum}  -p /sbin/ldconfig
 %postun -n libQCoro%{_qt_suffix}DBus%{sonum}  -p /sbin/ldconfig
 %postun -n libQCoro%{_qt_suffix}Network%{sonum}  -p /sbin/ldconfig
+%postun -n libQCoro%{_qt_suffix}WebSockets%{sonum}  -p /sbin/ldconfig
 
 %files -n libQCoro%{_qt_suffix}Core%{sonum}
 %license LICENSES/*
@@ -150,6 +164,10 @@ applications.
 %{_libdir}/libQCoro%{_qt_suffix}Network.so.%{sonum}
 %{_libdir}/libQCoro%{_qt_suffix}Network.so.%{sonum}.*
 
+%files -n libQCoro%{_qt_suffix}WebSockets%{sonum}
+%{_libdir}/libQCoro%{_qt_suffix}WebSockets.so.%{sonum}
+%{_libdir}/libQCoro%{_qt_suffix}WebSockets.so.%{sonum}.*
+
 %files devel
 %{_includedir}/qcoro%{_qt_suffix}/
 %{_libdir}/cmake/QCoro%{_qt_suffix}/
@@ -157,9 +175,11 @@ applications.
 %{_libdir}/cmake/QCoro%{_qt_suffix}Coro/
 %{_libdir}/cmake/QCoro%{_qt_suffix}DBus/
 %{_libdir}/cmake/QCoro%{_qt_suffix}Network/
+%{_libdir}/cmake/QCoro%{_qt_suffix}WebSockets/
 %{_libdir}/libQCoro%{_qt_suffix}Core.so
 %{_libdir}/libQCoro%{_qt_suffix}DBus.so
 %{_libdir}/libQCoro%{_qt_suffix}Network.so
+%{_libdir}/libQCoro%{_qt_suffix}WebSockets.so
 %{_libdir}/qt%{_qt_suffix}/mkspecs/modules/*.pri
 
 %changelog
