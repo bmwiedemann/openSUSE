@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 12 22:18:47 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.6
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * Stop casting arguments to free()
+  * Stop casting function return values to void
+  * gitlab CI: stop requiring Signed-off-by in commits
+
+-------------------------------------------------------------------
 Sat Apr 17 16:40:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file (move license to licensedir) 

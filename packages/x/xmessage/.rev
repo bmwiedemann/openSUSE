@@ -65,4 +65,18 @@
     <comment></comment>
     <requestid>886352</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>71deb122c8c94770890b2cef56c0a9d9</srcmd5>
+    <version>1.0.6</version>
+    <time>1657809189</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.6
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * Stop casting arguments to free()
+  * Stop casting function return values to void
+  * gitlab CI: stop requiring Signed-off-by in commits</comment>
+    <requestid>988765</requestid>
+  </revision>
 </revisionlist>
