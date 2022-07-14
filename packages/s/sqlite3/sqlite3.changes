@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jul  1 21:10:07 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.39.0:
+  * Add (long overdue) support for RIGHT and FULL OUTER JOIN
+  * Add new binary comparison operators IS NOT DISTINCT FROM and 
+    IS DISTINCT FROM that are equivalent to IS and IS NOT, 
+    respective, for compatibility with PostgreSQL and SQL standards
+  * Add a new return code (value "3") from the sqlite3_vtab_distinct()
+    interface that indicates a query that has both DISTINCT and 
+    ORDER BY clauses
+  * Added the sqlite3_db_name() interface
+  * The unix os interface resolves all symbolic links in database
+    filenames to create a canonical name for the database before
+    the file is opened
+  * Defer materializing views until the materialization is actually
+    needed, thus avoiding unnecessary work if the materialization
+    turns out to never be used
+  * The HAVING clause of a SELECT statement is now allowed on any
+    aggregate query, even queries that do not have a GROUP BY
+    clause
+  * Many microoptimizations collectively reduce CPU cycles by about
+    2.3%. 
+- drop sqlite-src-3380100-atof1.patch, included upstream
+- add sqlite-src-3390000-func7-pg-181.patch to skip float precision
+  related test failures on 32 bit
+
+-------------------------------------------------------------------
 Sun May  8 10:00:51 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.38.5:
