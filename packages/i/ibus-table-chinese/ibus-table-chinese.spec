@@ -17,7 +17,7 @@
 
 
 Name:           ibus-table-chinese
-Version:        1.8.8
+Version:        1.8.9
 Release:        0
 Summary:        Various Chinese input method table for the IBus framework
 License:        GPL-3.0-or-later
@@ -204,7 +204,7 @@ YongMa input method.
 export PYTHON=python3
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DDATA_DIR=%{_datadir} \
-      -DPRJ_DOC_DIR=%{_docdir}/%{name}
+      -DPRJ_DOC_DIR=%{_docdir}/%{name} .
 make -j1 V=1
 
 %install
