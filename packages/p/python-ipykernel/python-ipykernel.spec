@@ -19,54 +19,13 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipykernel
-Version:        6.15.0
+Version:        6.15.1
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipykernel
 Source:         https://files.pythonhosted.org/packages/source/i/ipykernel/ipykernel-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Support hatchling >= 1.4 gh#ipython/ipykernel#964
-Patch0:         support-hatchling-14.patch
-# SECTION build-system
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module hatchling >= 1.4}
-BuildRequires:  %{python_module pip}
-BuildRequires:  fdupes
-BuildRequires:  jupyter-jupyter_core-filesystem
-BuildRequires:  python-rpm-macros
-# /SECTION
-# SECTION dependencies
-Requires:       python-debugpy >= 1.0
-Requires:       python-ipython >= 7.23.1
-Requires:       python-jupyter-client >= 6.1.12
-Requires:       python-matplotlib-inline >= 0.1
-Requires:       python-nest-asyncio
-Requires:       python-packaging
-Requires:       python-psutil
-Requires:       python-pyzmq >= 17
-Requires:       python-tornado >= 6.1
-Requires:       python-traitlets >= 5.1.0
-BuildRequires:  %{python_module debugpy >= 1.0}
-BuildRequires:  %{python_module ipython >= 7.23.1}
-BuildRequires:  %{python_module jupyter-client >= 6.1.12}
-BuildRequires:  %{python_module matplotlib-inline >= 0.1}
-BuildRequires:  %{python_module nest-asyncio}
-BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pyzmq >= 17}
-BuildRequires:  %{python_module tornado >= 6.1}
-BuildRequires:  %{python_module traitlets >= 5.1.0}
-# /SECTION
-# SECTION test requirements
-BuildRequires:  %{python_module pytest >= 6.0}
-BuildRequires:  %{python_module curio}
-BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module trio}
-# we don't want ipyparallel and its dependencies in Ring1, see below
-#BuildRequires:  #{python_module ipyparallel}
-# /SECTION
 Requires:       jupyter-jupyter-client >= 6.1.12
 Provides:       python-jupyter_ipykernel = %{version}
 Obsoletes:      python-jupyter_ipykernel < %{version}
@@ -77,6 +36,45 @@ Obsoletes:      %{python_module jupyter_ipykernel-doc < %{version}}
 Provides:       %{python_module jupyter-ipykernel-doc = %{version}}
 Obsoletes:      %{python_module jupyter-ipykernel-doc < %{version}}
 BuildArch:      noarch
+# SECTION build-system
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatchling >= 1.4}
+BuildRequires:  %{python_module pip}
+BuildRequires:  fdupes
+BuildRequires:  jupyter-jupyter_core-filesystem
+BuildRequires:  python-rpm-macros
+# /SECTION
+# SECTION dependencies
+BuildRequires:  %{python_module debugpy >= 1.0}
+BuildRequires:  %{python_module ipython >= 7.23.1}
+BuildRequires:  %{python_module jupyter-client >= 6.1.12}
+BuildRequires:  %{python_module matplotlib-inline >= 0.1}
+BuildRequires:  %{python_module nest-asyncio}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pyzmq >= 17}
+BuildRequires:  %{python_module tornado >= 6.1}
+BuildRequires:  %{python_module traitlets >= 5.1.0}
+Requires:       python-debugpy >= 1.0
+Requires:       python-ipython >= 7.23.1
+Requires:       python-jupyter-client >= 6.1.12
+Requires:       python-matplotlib-inline >= 0.1
+Requires:       python-nest-asyncio
+Requires:       python-packaging
+Requires:       python-psutil
+Requires:       python-pyzmq >= 17
+Requires:       python-tornado >= 6.1
+Requires:       python-traitlets >= 5.1.0
+# /SECTION
+# SECTION test requirements
+BuildRequires:  %{python_module curio}
+BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module pytest >= 6.0}
+BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module trio}
+# we don't want ipyparallel and its dependencies in Ring1, see below
+#BuildRequires:  #{python_module ipyparallel}
+# /SECTION
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       jupyter-ipykernel = %{version}-%{release}
 Obsoletes:      jupyter-ipykernel < %{version}-%{release}

@@ -273,4 +273,12 @@
   * Support hatchling &gt;= 1.4</comment>
     <requestid>987883</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9be8251af4448ab6154d18583f8b637b</srcmd5>
+    <version>6.15.1</version>
+    <time>1657809201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988928</requestid>
+  </revision>
 </revisionlist>

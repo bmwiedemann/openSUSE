@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jul  9 13:30:40 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * remove patch support-hatchling-14.patch (included upstream)
+
+- update to version 6.15.1:
+  * Bugs fixed
+    + Fix inclusion of launcher file and check in CI #964 (@blink1073)
+  * Maintenance and upkeep improvements
+    + [pre-commit.ci] pre-commit autoupdate #962 (@pre-commit-ci)
+    + [pre-commit.ci] pre-commit autoupdate #961 (@pre-commit-ci)
+    + [pre-commit.ci] pre-commit autoupdate #960 (@pre-commit-ci)
+
+-------------------------------------------------------------------
 Fri Jul  8 10:57:40 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-hatchling-14.patch:
