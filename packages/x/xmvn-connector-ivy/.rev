@@ -7,4 +7,12 @@
     <comment>new package for Staging:adi:48</comment>
     <requestid>976178</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1d4cca270c8a05076a73b8146d5a09dc</srcmd5>
+    <version>4.0.0~20220302.6a60be3</version>
+    <time>1657809219</time>
+    <user>dimstar_suse</user>
+    <comment>appease darix</comment>
+    <requestid>989089</requestid>
+  </revision>
 </revisionlist>

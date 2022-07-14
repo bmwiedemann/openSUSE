@@ -2,12 +2,18 @@
 Tue May 10 12:50:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to a git checkout of unreleased upcoming 4.0.0
+  * Allow building with Java 8
+  * 'argLine' should not be a global property
+  * Enable access to non-public elements of java.lang
+  * Remove dependency on xmvn-parent POM
+  * Import xmvn-connector-ivy sources from xmvn
 - Become a standalone package independent of xmvn sources
 
 -------------------------------------------------------------------
 Thu Nov 21 14:24:55 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.1.0
+  * Remove unused IvyLoggerAdapter
 - Removed patches:
   * 0001-Fix-installer-plugin-loading.patch
   * 0001-Port-to-Gradle-4.2.patch
