@@ -1,13 +1,35 @@
-From: Matthias Gerstner <matthias.gerstner@suse.com>
-Date: Mon Jan 31 08:53:38 UTC 2022
+From: Matthias Gerstner <matthias.gerstner@suse.com>, Jan Engelhardt <jengelh@inai.de>
+Date: 2022-07-07 02:02:57.803429599 +0200
+References: https://github.com/facebook/folly/pull/1814
 
-Add unconditional section markers to assembler units to avoid the library
-getting an executable stack.
+If any .o file participates in a link that is missing the gnu-stack section,
+the link result will have execstack enabled.
+
+memcpy.S: the missing gnu-stack note was completely missing.
+
+memset.S: the gnu-stack note was dependent upon AVX2, so was missing in some
+builds.
 
 ---
+ folly/memcpy.S |    4 ++--
  folly/memset.S |    4 ++++
- 1 file changed, 4 insertions(+)
+ 2 files changed, 6 insertions(+), 2 deletions(-)
 
+Index: folly-2022.05.23.00/folly/memcpy.S
+===================================================================
+--- folly-2022.05.23.00.orig/folly/memcpy.S
++++ folly-2022.05.23.00/folly/memcpy.S
+@@ -458,8 +458,8 @@ __folly_memcpy:
+ #endif
+ 
+         .ident "GCC: (GNU) 4.8.2"
++
++#endif
+ #ifdef __linux__
+         .section .note.GNU-stack,"",@progbits
+ #endif
+-
+-#endif
 Index: folly-2022.05.23.00/folly/memset.S
 ===================================================================
 --- folly-2022.05.23.00.orig/folly/memset.S

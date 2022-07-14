@@ -15,4 +15,12 @@
     <comment>- Update to release 2022.05.23</comment>
     <requestid>978797</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>21d8b25046da95cd72b254c8c4ba6c54</srcmd5>
+    <version>2022.05.23.00</version>
+    <time>1657809268</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>989064</requestid>
+  </revision>
 </revisionlist>
