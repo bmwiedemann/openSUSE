@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 12 11:29:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.3
+- Changes since 5.25.2:
+  * wallpapers/potd: only pass 1920x1080 or 3840x2160 to bing provider
+  * switchers/thumbnails: Fix icon cropped when text is large enough (kde#451997)
+  * switchers/compact: Fix dialog sizes not getting updated (kde#422447)
+  * switchers/thumbnailgrid: Fix layout when window count changes (kde#441241)
+
+-------------------------------------------------------------------
 Tue Jun 28 13:03:32 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.2
