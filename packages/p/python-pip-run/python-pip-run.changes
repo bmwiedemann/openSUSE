@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Wed Jul 13 14:27:22 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v8.8.1
+- Required by setuptools 63 test suite
+- Tests use wheels for path and path.py for testing -- not packaged
