@@ -876,4 +876,12 @@ This version removes the unneeded ldconfig call.</comment>
     <comment>Plasma 5.25.2 (forwarded request 985627 from Vogtinator)</comment>
     <requestid>985898</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>ba844746a5e17da13a80416769e981c1</srcmd5>
+    <version>5.25.3</version>
+    <time>1657809236</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.3, with fixed lockscreen (forwarded request 988718 from Vogtinator)</comment>
+    <requestid>988844</requestid>
+  </revision>
 </revisionlist>
