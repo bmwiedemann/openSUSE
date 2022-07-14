@@ -42,4 +42,22 @@
     <comment></comment>
     <requestid>961189</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>44036560cfa19bf33122afdb5ef941de</srcmd5>
+    <version>5.0.18</version>
+    <time>1657809267</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.18
+  * Support for plasma themes in classicui
+  * Fix client cursor disappears when using qt text-input-v2
+  * Fix clear text when ctrl+c when using gtk text-input-v3
+  * Fix a rare wayland protocol error on sway
+- Fix build by removing unused headers (gh#fcitx/fcitx5#538)
+  * 0001-Remove-unused-xkbcommon-headers.patch
+- Replace raw package name with pkgconfig()
+- Remove &quot;ENABLE_PRESAGE&quot;, it's not used anywhere
+  (https://github.com/fcitx/fcitx5/commit/e7348f0f972d7f4934f3a1dd1258a51d7d057ac4)
+</comment>
+    <requestid>989063</requestid>
+  </revision>
 </revisionlist>

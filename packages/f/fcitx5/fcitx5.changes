@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul  5 11:29:25 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.18
+  * Support for plasma themes in classicui
+  * Fix client cursor disappears when using qt text-input-v2
+  * Fix clear text when ctrl+c when using gtk text-input-v3
+  * Fix a rare wayland protocol error on sway
+- Fix build by removing unused headers (gh#fcitx/fcitx5#538)
+  * 0001-Remove-unused-xkbcommon-headers.patch
+- Replace raw package name with pkgconfig()
+- Remove "ENABLE_PRESAGE", it's not used anywhere
+  (https://github.com/fcitx/fcitx5/commit/e7348f0f972d7f4934f3a1dd1258a51d7d057ac4)
+
+-------------------------------------------------------------------
 Sat Mar 12 08:17:03 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 5.0.15

@@ -1,0 +1,26 @@
+From 8ab4581ca7142636cb8178cfa1ecf97d5a73afc6 Mon Sep 17 00:00:00 2001
+From: Weng Xuetian <wengxt@gmail.com>
+Date: Tue, 5 Jul 2022 07:52:50 -0700
+Subject: [PATCH] Remove unused xkbcommon headers.
+
+Fix #538
+---
+ src/im/keyboard/keyboard.h | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/im/keyboard/keyboard.h b/src/im/keyboard/keyboard.h
+index 9a4d2f3..e16db96 100644
+--- a/src/im/keyboard/keyboard.h
++++ b/src/im/keyboard/keyboard.h
+@@ -7,8 +7,6 @@
+ #ifndef _FCITX_IM_KEYBOARD_KEYBOARD_H_
+ #define _FCITX_IM_KEYBOARD_KEYBOARD_H_
+ 
+-#include <xkbcommon/xkbcommon-compose.h>
+-#include <xkbcommon/xkbcommon.h>
+ #include "fcitx-config/configuration.h"
+ #include "fcitx-config/iniparser.h"
+ #include "fcitx-utils/event.h"
+-- 
+2.36.1
+

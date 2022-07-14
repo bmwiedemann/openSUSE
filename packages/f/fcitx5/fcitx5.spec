@@ -25,7 +25,7 @@
 %endif
 
 Name:           fcitx5
-Version:        5.0.15
+Version:        5.0.18
 Release:        0
 Summary:        Next generation of fcitx
 License:        LGPL-2.1-or-later
@@ -40,40 +40,43 @@ Source102:      fcitx5.service
 Patch0:         fcitx5-no-download.patch
 Patch1:         fcitx5-gcc7.patch
 Patch2:         fcitx5-5.0.13-memfd.patch
-BuildRequires:  Mesa-libEGL-devel
-BuildRequires:  cairo-devel
-BuildRequires:  cldr-emoji-annotation-devel
+# PATCH-FIX-UPSTREAM gh#fcitx/fcitx5#538
+Patch3:         0001-Remove-unused-xkbcommon-headers.patch
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
-BuildRequires:  enchant-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  fmt-devel
+BuildRequires:  ninja
 %if 0%{?suse_version} >= 1550
 BuildRequires:  gcc-c++
 %else
 BuildRequires:  gcc8-c++
 %endif
-BuildRequires:  gdk-pixbuf-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  iso-codes-devel
-BuildRequires:  libevent-devel
-BuildRequires:  libexpat-devel
-BuildRequires:  libjson-c-devel
-BuildRequires:  libpresage-devel
-BuildRequires:  libuuid-devel
-BuildRequires:  libxkbcommon-devel
-BuildRequires:  libxkbcommon-x11-devel
-BuildRequires:  libxkbfile-devel
-BuildRequires:  pango-devel
-BuildRequires:  systemd-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  wayland-devel
-BuildRequires:  wayland-protocols-devel
-BuildRequires:  xcb-imdkit-devel
-BuildRequires:  xcb-util-keysyms-devel
 BuildRequires:  xcb-util-wm-devel
 BuildRequires:  xkeyboard-config
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(cldr-emoji-annotation)
+BuildRequires:  pkgconfig(enchant)
+BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(fmt)
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
+BuildRequires:  pkgconfig(iso-codes)
+BuildRequires:  pkgconfig(json-c)
+BuildRequires:  pkgconfig(libevent)
+BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(uuid)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-egl)
+BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(xcb)
+BuildRequires:  pkgconfig(xcb-imdkit)
+BuildRequires:  pkgconfig(xcb-keysyms)
+BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xkbcommon-x11)
+BuildRequires:  pkgconfig(xkbfile)
 %if 0%{?suse_version} <= 1520
 BuildRequires:  appstream-glib-devel
 %endif
@@ -108,7 +111,6 @@ Summary:        Configuration library for fcitx5
 Group:          System/Libraries
 Provides:       libFcitx5Config5 = %{version}
 Obsoletes:      libFcitx5Config5 < %{version}
-Provides:       libfcitx-config4 = %{verson}
 Obsoletes:      libfcitx-config4 <= 4.2.9.8
 
 %description -n libFcitx5Config6
@@ -139,10 +141,7 @@ Obsoletes:      libfcitx-utils0 <= 4.2.9.8
 This package provides utility libraries for fcitx5.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 cp -r %{SOURCE1} src/modules/spell/dict/
 
 %build
@@ -150,8 +149,8 @@ cp -r %{SOURCE1} src/modules/spell/dict/
 export CC=%{_bindir}/gcc-8
 export CXX=%{_bindir}/g++-8
 %endif
-%cmake -DENABLE_PRESAGE=On -DCMAKE_SKIP_RPATH=OFF -DCMAKE_INSTALL_SYSCONFDIR=%{_sysconfdir}
-%make_build
+%cmake -DCMAKE_SKIP_RPATH=OFF -DCMAKE_INSTALL_SYSCONFDIR=%{_sysconfdir}
+%cmake_build
 
 %install
 %cmake_install
