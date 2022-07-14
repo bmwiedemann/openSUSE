@@ -49,9 +49,9 @@ Name:           arm-trusted-firmware
 %else
 Name:           arm-trusted-firmware-%{platform}
 %endif
-Version:        2.6
+Version:        2.7
 Release:        0
-%define srcversion 2.6
+%define srcversion 2.7
 %define mv_ddr_ver armada-atf-master
 %define mv_bin_ver 10.0.1.0
 %define a3700_utils_ver master
@@ -64,13 +64,7 @@ Source1:        mv-ddr-marvell-%{mv_ddr_ver}.tar.gz
 Source2:        A3700-utils-marvell-%{a3700_utils_ver}.tar.gz
 Source3:        binaries-marvell-%{mv_bin_ver}.tar.gz
 Patch1:         atf-allow-non-git-dir.patch
-Patch2:         0001-docs-security-security-advisory-for-CVE-2022-23960.patch
-Patch3:         0002-fix-security-workaround-for-CVE-2022-23960.patch
-Patch4:         0003-refactor-el3-runtime-change-Cortex-A76-implementatio.patch
-Patch5:         0004-fix-security-loop-workaround-for-CVE-2022-23960-for-.patch
-Patch6:         0005-fix-security-workaround-for-CVE-2022-23960-for-Corte.patch
-Patch7:         0006-fix-security-SMCCC_ARCH_WORKAROUND_3-mitigations-for.patch
-Patch8:         rockchip-rk3399-Align-default-baudrate-with-u-boot.patch
+Patch2:         rockchip-rk3399-Align-default-baudrate-with-u-boot.patch
 # Workaround for GCC12 bug - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105523
 Patch100:       fix-mv-ddr-marvell-armada.patch
 # Fix build with GCC12 - https://github.com/MarvellEmbeddedProcessors/mv-ddr-marvell/issues/37
@@ -241,12 +235,10 @@ popd
 %endif
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
+%if %{suse_version} <= 1500
+# GCC7 does not support -mbranch-protection option
+sed -i -e "s/TF_CFLAGS_aarch64	+=	-mbranch-protection=none//" plat/xilinx/zynqmp/platform.mk
+%endif
 
 %build
 export BUILD_MESSAGE_TIMESTAMP="\"$(date -d "$(head -n 2 %{_sourcedir}/arm-trusted-firmware.changes | tail -n 1 | cut -d- -f1 )" -u "+%%H:%%M:%%S, %%b %%e %%Y")\""
