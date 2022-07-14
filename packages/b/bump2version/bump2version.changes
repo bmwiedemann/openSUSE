@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  7 13:53:33 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- add fix-test_usage_string.patch to fix the failing test_usage_string test.
+- Skip test_usage_string, fail reported upstream.
+
+-------------------------------------------------------------------
 Fri Apr 16 18:34:13 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.0.1

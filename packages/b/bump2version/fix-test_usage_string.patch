@@ -1,0 +1,31 @@
+From 1c4f04b6ab90f6d432b6c4117e0de38b006a5de5 Mon Sep 17 00:00:00 2001
+From: Nicolas Benes <nbenes.gh@xandea.de>
+Date: Fri, 14 Jan 2022 18:43:11 +0100
+Subject: [PATCH] Fix expected usage string for tests
+
+---
+ tests/test_cli.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index 1589da0..ec5e9e4 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -117,7 +117,7 @@ def _mock_calls_to_string(called_mock):
+ [--tag-message TAG_MESSAGE]
+ [--message COMMIT_MSG]
+ part
+-[file [file ...]]
++[file ...]
+ """.strip().splitlines()
+ 
+ EXPECTED_USAGE = (r"""
+@@ -247,7 +247,7 @@ def test_defaults_in_usage_with_config(tmpdir, capsys):
+     assert "New version that should be in the files (default: 19)" in out
+     assert "[--current-version VERSION]" in out
+     assert "[--new-version VERSION]" in out
+-    assert "[file [file ...]]" in out
++    assert "[file ...]" in out
+ 
+ 
+ def test_missing_explicit_config_file(tmpdir):

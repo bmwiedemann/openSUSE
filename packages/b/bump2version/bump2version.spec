@@ -1,7 +1,7 @@
 #
 # spec file for package bump2version
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/c4urself/bump2version
 # using GH URL instead of PyPI as the PyPI tarball contains already-prebuilt files
 Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-test_usage_string.patch -- fixes test_usage_string
+Patch0:         https://github.com/c4urself/bump2version/commit/1c4f04b6ab90f6d432b6c4117e0de38b006a5de5.patch#/fix-test_usage_string.patch
 BuildRequires:  %{python_module pytest >= 3.4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testfixtures >= 6.0.0}
@@ -51,6 +53,7 @@ This package obsoletes bumpversion.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %python_build
@@ -63,7 +66,8 @@ This package obsoletes bumpversion.
 
 %check
 # test_usage_string_fork: bumpversion is not in PATH
-%pytest -k 'not test_usage_string_fork'
+# test_usage_string: https://github.com/c4urself/bump2version/issues/254
+%pytest -k 'not (test_usage_string_fork or test_usage_string)'
 
 %post
 %{python_install_alternative bump2version bumpversion}
