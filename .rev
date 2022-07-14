@@ -1318,4 +1318,12 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
 - Add 867.patch: support LUA 5.4 (boo#1200944).</comment>
     <requestid>987266</requestid>
   </revision>
+  <revision rev="125" vrev="4">
+    <srcmd5>b574bf182916b1a042898c977673c7cb</srcmd5>
+    <version>3.0.17.4</version>
+    <time>1657809200</time>
+    <user>dimstar_suse</user>
+    <comment>- Limit to Lua &lt; 5.4 (boo#1200944).</comment>
+    <requestid>988920</requestid>
+  </revision>
 </revisionlist>

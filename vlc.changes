@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 13 07:37:44 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Limit to Lua < 5.4 (boo#1200944).
+
+-------------------------------------------------------------------
 Wed Jul  6 16:40:48 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Extend vlc-lua-5.3.patch: match upstream commit 0e0b070c26.
