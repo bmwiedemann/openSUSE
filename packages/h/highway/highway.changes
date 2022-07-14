@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 13 10:09:10 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use GCC11 instead of default GCC12 to build on aarch64 Tumbleweed
+  until fixed upstream - https://github.com/google/highway/issues/776
+
+-------------------------------------------------------------------
 Sat Jul  9 12:19:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 0.17.0) for build.opensuse.org

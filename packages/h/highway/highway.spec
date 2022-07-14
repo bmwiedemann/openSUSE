@@ -27,7 +27,16 @@ License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/highway
 Source:         https://github.com/google/highway/archive/refs/tags/%version.tar.gz
+# https://github.com/google/highway/issues/776
+%if 0%{?suse_version} > 1550
+%ifarch aarch64
+BuildRequires:  gcc11-c++
+%else
 BuildRequires:  c++_compiler
+%endif
+%else
+BuildRequires:  c++_compiler
+%endif
 BuildRequires:  cmake
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(gtest)
@@ -68,6 +77,11 @@ Documentation for Highway development.
 %build
 export CFLAGS="%optflags -DHWY_COMPILE_ALL_ATTAINABLE"
 export CXXFLAGS="$CFLAGS"
+%if 0%{?suse_version} > 1550
+%ifarch aarch64
+export CXX=g++-11
+%endif
+%endif
 
 %cmake \
 	-DCMAKE_SKIP_RPATH=OFF		\
