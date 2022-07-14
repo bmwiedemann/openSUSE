@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jul 13 10:52:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.2:
+  * gui.c:
+    + changed in 'cff_gui_dialog_progress_callback'
+      Gui_PRIORITY_REDRAW to G_PRIORITY_HIGH_IDLE
+    + changed in 'cff_gui_logwindow_add_timeout'
+      G_PRIORITY_HIGH to GTK_TEXT_VIEW_PRIORITY_VALIDATE
+    + if the first character of the log string is '\r',
+      the last line will be overwritten (Last message
+      repeated x times). See 'cff_gui_logwindow_mainthread'
+      and 'cff_gui_logwindow_cb'
+  * ffmpeg.c:
+    + works with FFmpeg version 5.0.1
+    + in 'cff_ffmpeg_get_image_format_names' looking
+      for the codec_id (TIFF, GIF ...) if the encoder
+      has not the mime type 'image'
+    + test in 'cff_ffmpeg_get_encoder_names' whether
+      the encoder supports the pixel format of the input
+    + removed in 'cff_ffmpeg_encoder_new' the options
+      for 'b-frames', 'gop' and 'sc_threshold'
+    + in 'cff_ffmpeg_copy_softcut' forgot to free the
+      frame if packet allocation fails
+    + 'level &= 0x00FF' in 'cff_ffmpeg_log_callback'
+    + get the parent class in 'cff_ffmpeg_log_callback'
+      with 'avr' may crash. Right way is using 'ptr'
+    + 'skip_prefix' in 'cff_ffmpeg_log_callback' to
+      append the next string to the current
+    + compare the string in 'cff_ffmpeg_log_callback'
+      to the previous one. If equal throw the message
+      "Last message repeated x times"
+    + some improvements in'cff_ffmpeg_get_frame' for
+      proper decoding. Sometimes a frame may report a
+      wrong picture type, or a key frame which is not
+      at this position, or the frame is not correct
+      displayed.
+  * ffmpeg.h: including 'libavcodec/bsf.h' (FFmpeg 5.0.1)
+- Drop lang package Recommends, no longer needed, nor wanted.
+
+-------------------------------------------------------------------
 Thu Sep 09 19:19:31 UTC 2021 - enzokiel@kabelmail.de
 
 - Update to version 1.0.1

@@ -1,7 +1,7 @@
 #
 # spec file for package cutterff
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 Name:           cutterff
 Summary:        Video cutter that uses FFmpeg and GTK+
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 URL:            https://cutterff.sourceforge.io/
 Source0:        %{name}-%{version}-src.tar.bz2
 Source1:        %{name}.desktop
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-Recommends:     %{name}-lang = %{version}-%{release}
+
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libavcodec)
