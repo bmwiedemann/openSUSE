@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 13 04:15:32 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Gama 2.21:
+  * New algorithm ICGS in the class AdjGSO replaced the former
+    algorithm MGS.
+
+-------------------------------------------------------------------
 Fri Apr 29 05:39:28 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Gama 2.19:
