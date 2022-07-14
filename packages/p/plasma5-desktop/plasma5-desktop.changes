@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul 12 11:29:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.3
+- Changes since 5.25.2:
+  * [applets/pager] Round displayed window geometry to avoid size "jumps" (kde#456488)
+  * [applets/pager] Fix switching desktops on drag & hover (kde#416878)
+  * applets/kicker: check model count before porting old favorite items (kde#456411)
+  * applets/kickoff: remove highlight visibility conditions (kde#448526)
+  * Fix translation domain for KRunner KCM (kde#455624)
+  * desktoppackage: add `Accessible.name` to email button
+  * [kcms/componentchooser] Pass parent window to ksycoca progress dialog
+  * applets/kickoff: fix grid delegate tooltips not appearing on hover
+  * [kcms/tablet] Fix crash when opening KCM for the second time (kde#451233)
+  * applets/kickoff: Prevent empty menu from opening (kde#455927)
+  * applets/taskmanager: press space to activate task
+  * Fixup bf55b39: change Kirigami import version to 2.19
+  * panel: import version of Kirigami that supports InputMethod.willShowOnActive
+  * Make the Keyboard KCM config spare layout spinbox enable the Save button (Fixes #36)
+
+-------------------------------------------------------------------
 Tue Jun 28 13:03:33 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.2
