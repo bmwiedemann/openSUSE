@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 12 11:29:00 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.3
+- Changes since 5.25.2:
+  * Fix DBus name for KPluginMetaData based KCMs (kde#455943)
+
+-------------------------------------------------------------------
 Tue Jun 28 13:03:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.2
