@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 12 19:28:19 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.3.3:
+  * Upgrade IDNA Tables from Unicode 11 to 12
+  * Upgrade TR46 Tables from Unicode 13 to 14
+  * Updated gnulib files and various build fixes
+  * Add self-check for the idn2 command line tool
+
+-------------------------------------------------------------------
 Tue May 24 14:11:38 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Refresh libidn2.keyring
