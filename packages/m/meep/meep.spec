@@ -108,11 +108,9 @@ autoreconf
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-%ifarch x86_64
 grep -E "flags|model name"  /proc/cpuinfo | head -n2
 # https://github.com/NanoComp/meep/issues/727
 make check TESTS=2D_convergence || export xfail=2D_convergence
-%endif
 make %{_smp_mflags} check XFAIL_TESTS=${xfail}
 cat tests/test-suite.log
 
