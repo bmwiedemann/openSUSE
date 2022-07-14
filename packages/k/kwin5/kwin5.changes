@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jul 12 11:29:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.3
+- Changes since 5.25.2:
+  * [kcm/kwindesktop] Emit rowsChanged signal to fix default state highlighting
+  * backends/drm: also check for properties in DrmPipeline::needsModeset (kde#455814)
+  * backends/drm: handle disconnected but not removed connector objects properly
+  * windowview: handle windows from other virtual desktops better
+  * Map XdgSurface to XdgWMBase instances properly (kde#456349)
+  * Fix flickering in slide effect with multi screen
+  * backends/drm: don't create a new output every time
+  * wayland: Send drm-lease-device::done event to the correct resource
+  * backends/drm: don't remove connectors the kernel doesn't consider removed (kde#456298)
+  * xdgactivation: Properly prevent disabled activation notifications (kde#454937)
+  * TabBox: Do not highlight selected window for fullscreen switchers (kde#449180)
+  * Ship kconf update script to clean animation factor from kwinrc
+  * Fix apply button with animation slider speed
+  * Write animation speed to kdeglobals (kde#431259)
+  * xdgactivation: Do not notify when applications try to activate themselves
+  * Set all timestamps for all touch events (kde#456133)
+  * backends/drm: fix common mode generation (kde#455477)
+  * screencast: Do not send events when moving the cursor outside the viewport
+  * screencasting: Have cursor move frames also send damage information
+  * screencast: Also send the header when we just send the cursor update
+  * backends/drm: suppress logging for direct scanout (kde#456089)
+
+-------------------------------------------------------------------
 Tue Jun 28 13:03:31 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.2
