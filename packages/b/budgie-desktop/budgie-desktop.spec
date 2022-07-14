@@ -22,7 +22,7 @@
 %define _distconfdir %{_sysconfdir}
 %endif
 Name:           budgie-desktop
-Version:        10.6.1+0
+Version:        10.6.2+0
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -63,7 +63,7 @@ Conflicts:      gnome-shell
 #
 # rebrand and gnome porting
 Requires:       budgie-desktop-view >= 1.2+0
-Requires:       budgie-screensaver >= 5.0.1+0
+Requires:       budgie-screensaver >= 5.0.2+0
 Requires:       typelib-1_0-Budgie-1_0 >= %{version}
 Requires:       budgie-desktop-branding >= 20220627.1
 Requires:       budgie-control-center >= 1.0.2+0

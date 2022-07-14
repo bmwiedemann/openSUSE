@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jul 14 13:20:52 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 10.6.2+0:
+  * Bump to 10.6.2
+  * Reset ITL buttons if group updated while pinned
+  * Disconnect from the allocation changed signal to avoid having
+    notification popups move unexpectedly
+  * Fix math for calculating right panel strut
+  * fix broken C std for gvc subproject
+  * Set notif popup position after size allocation
+  * Rewrite initial applet layout to prevent position desync
+  * ITL: Prevent segfault when attempting to swap buttons
+  * Workspace item size now independent of workspace width
+  * Attempt re-adding nameless windows on name change.
+  * Set a mininum expiry timeout for notification popups
+  * Drop unnecessary Comment in daemon desktop that produces warning.
+  * Fixes spec compliance for closing notifications
+  * Reset ITL button's first_app and class group app on swap
+  * IconTasklist: Swap button key in hashtable when first_app changes
+  * Fix various compile-time warnings in Vala code
+  * Workspaces: Adjust app spacing and align with panel edges
+  * Increase size and density of workspaces in workspace applet
+  * Use a Mutex for Raven threading
+  * Remove gtk3 from lib_applet_budgiemenu_resources deps
+  * Compile some gresources into intermediate static libraries
+  * Use meson warning_level instead of global warning flags
+  * Fix deprecations in vapi and ClockApplet
+  * Use simple selectors in _widgets.scss to resolve warning
+  * Mark [GtkChild] properties as unowned to resolve compiler warnings
+  * Regenerate vapi for mutter 10 This commit updates the vapi for
+    mutter 10/clutter et al since the stable release of GNOME 42.
+    This also fixes an existing issue with our generation of
+    CursorTracker.get_pointer where params both return values.
+
+-------------------------------------------------------------------
 Wed Jun 22 09:21:53 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Enforce update to latest budgie-desktop-branding 20220627.1 
