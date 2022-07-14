@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 13 10:59:37 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 4.6.3
+  * fix deleteDomain() in lmdb backend (Kees Monshouwer) PR#11765
+  * RFC2136: match autosplit TXT correctly PR#11746
+
+-------------------------------------------------------------------
 Tue Apr 12 13:01:19 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 4.6.2
