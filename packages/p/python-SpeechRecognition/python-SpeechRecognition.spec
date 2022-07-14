@@ -40,8 +40,7 @@ BuildRequires:  python-rpm-macros
 Requires:       %{justpython}-SpeechRecognition-common-en-US
 Requires:       flac
 Requires:       python-PyAudio
-Requires:       python-oauth2client
-Recommends:     python-google-api-python-client
+Requires:       python-google-cloud-speech
 Recommends:     python-pocketsphinx-python
 BuildArch:      noarch
 %python_subpackages

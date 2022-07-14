@@ -35,4 +35,12 @@
 </comment>
     <requestid>988736</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>1d894200728fca5f4b1d2664d6b25edd</srcmd5>
+    <version>3.8.1</version>
+    <time>1657809273</time>
+    <user>dimstar_suse</user>
+    <comment>- Actually do what you have promised in changelog.</comment>
+    <requestid>989112</requestid>
+  </revision>
 </revisionlist>
