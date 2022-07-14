@@ -2222,7 +2222,7 @@
     <package name="liblqr-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblrdf2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libltdl7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="liblua5_3-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="liblua5_3-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="liblua5_4-5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libluajit-5_1-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblunar-calendar-3_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
