@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jul  9 03:06:13 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.33
+   see /usr/share/doc/packages/perl-Crypt-OpenSSL-RSA/Changes
+
+  0.33 July 7 2022
+      - Update for windows github CI
+      - Remove duplicit 'LICENSE' key
+      - Remove EUMM Remove version check
+      - #31 by removing reference to RSA_SSLV23_PADDING (removed from OpenSSL starting from v3.0.0)
+      - support passphase protected private key load
+      - fix 'unsupported encryption' error on old library versions
+      - Clarify croak message for missing passphrase on older cyphers
+      - More structs opaqued in LibreSSL 3.5
+      - Use a macro for dealing with older SSL lacking macros
+      - more CI fixups. Drop testing for 5.10 and 5.8. Something is broken upstream.
+
+-------------------------------------------------------------------
 Thu Oct  7 17:40:02 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - updated to 0.32
