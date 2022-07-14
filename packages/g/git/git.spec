@@ -36,7 +36,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.37.0
+Version:        2.37.1
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -248,7 +248,7 @@ Requires:       git-core = %{version}
 Requires(pre):  %fillup_prereq
 %if 0%{?suse_version} >= 1500
 Requires(pre):  group(nogroup)
-%sysusers_requires
+%{?sysusers_requires}
 %{?systemd_requires}
 %else
 Requires(pre):  %{_sbindir}/useradd

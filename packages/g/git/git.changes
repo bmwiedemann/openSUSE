@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 12 18:35:14 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.37.1:
+  * Rewrite of "git add -i" in C that appeared in Git 2.25 didn't
+    correctly record a removed file to the index, which is an old
+    regression but has become widely known because the C version has
+    become the default in the latest release.
+  * Fix for CVE-2022-29187 [boo#1201431]:
+    The safety check that verifies a safe ownership of the Git
+    worktree is now extended to also cover the ownership of the Git
+    directory (and the `.git` file, if there is any).
+
+-------------------------------------------------------------------
+Tue Jul 11 11:11:11 UTC 2022 - olaf@aepfle.de
+
+- Usage of sysusers_requires is optional, like during quilt setup
+
+-------------------------------------------------------------------
 Fri Jul  8 09:00:10 UTC 2022 - Petr Vorel <pvorel@suse.cz>
 
 - Add /etc/bash_completion.d/git-prompt: checks for git-prompt.sh and source it
