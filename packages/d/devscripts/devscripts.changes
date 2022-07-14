@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Tue Jul 12 09:38:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.22.2:
+  * who-permits-upload:
+    + Fix fingerprint lookup, so it actually finds the user id
+  * debsnap:
+    + Add a -l option as the short version of --list.  Closes: #1006904
+  * sadt:
+    + Run autodep8 when looking for autopkgtests to run.
+  * deprepro:
+    + Add new options, to make it easier to debrepro against arbitrary source
+      directories (i.e. not Debian packages):
+      - -B, --build-command: specify custom build command
+      - -a, --artifact-pattern: specify custom artifacts to be compared
+        across builds
+      - --no-copy: run commands against the source tree directly, i.e. don't
+        copy it to a temporary build directory.
+  * mk-origtargz:
+    + Apply patch from Vasyl Gello to make Files-Included-<component> work.
+  * Include the updated Portuguese translation.  Closes: #1011316
+    Thanks to Américo Monteiro <a_monteiro@gmx.com>.
+  * Run perltidy with the newer 20220217.
+  * Bump Standards-Version to 4.6.1, no changes needed.
+  * mk-origtargz:
+    + Display compression/tar errors
+  * wrap-and-sort:
+    + Introduce an experimental mode using the RTS parser available with
+      python-debian >= 0.1.43.  This will let wrap-and-sort retain comments.
+      This feature is opt-in with a new flag.  MR: !237
+    + Futher improvements to the RTS mode, now also supporting short indent
+      (-s) among others.  MR: !263
+  * deb-janitor:
+    + Add a new 'review' subcommand.  MR: !261
+  * wnpp-check:
+    + Replace HTTP URLs with HTTPS.  Closes: #1002311, #902242; MR: !256
+  * rc-alert, wnpp-alert, wnpp-check:
+    + Allow curl to follow HTTP redirections.  MR: !257
+  * wnpp-check:
+    + Document -e,--exact in the --help output.  Closes: #1003254
+  * Make pristine-tar a Suggests in Ubuntu, as it's not in main so it can't be
+    a Recommends.  LP: #1885766
+  * Don't build-depend on subversion on i386, skipping the test_uscan_svn
+    test; this is to avoid a delta with Ubuntu, that doesn't have svn on i386.
+  * debrebuild:
+    + Use the new field_parse_binary_source() from libdpkg-perl >= 1.21.0
+      if available.  MR: !249
+  * test_uscan_mangle:
+    + Use MGZREPACK to specify the expected file extension when necessary;
+      otherwise, use the default file extension.
+    + Add a workaround for testWatch4WebNonNativeMUT0(). MR: !258
+    + Test use of filenamemangle with single and multiple upstream tarballs.
+    + Modify helperWatch() to accept filenamemangled filenames.
+    + Allow filenamemangling with multiple upstream tarballs.
+  * Fix some spelling errors in code comments.  MR: !243
+  * hardening-check:
+    + Handle emtpy symble table by returning an unknown result for the
+      stack-protector check.  MR: !223
+  * salsa:
+    + Add a new last_ci_status subcommand.  MR: !226
+- drop devscripts-checkbashisms-early-fail.patch (upstream)
+
+-------------------------------------------------------------------
+Mon May  2 11:42:50 UTC 2022 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- Add missing uscan dependencies perl-{File-HomeDir,IPC-Run,Moo}
+
+-------------------------------------------------------------------
 Mon Nov 23 17:53:12 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add backport from master devscripts-checkbashisms-early-fail.patch.

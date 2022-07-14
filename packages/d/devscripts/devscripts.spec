@@ -1,7 +1,7 @@
 #
 # spec file for package devscripts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define _xsl_stylesheet %{_datadir}/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl
 Name:           devscripts
-Version:        2.19.5
+Version:        2.22.2
 Release:        0
 Summary:        Scripts to make the life of a Debian Package maintainer easier
-License:        GPL-2.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later AND GPL-3.0-only AND Artistic-2.0 AND (GPL-1.0-or-later OR Artistic-1.0) AND SUSE-Public-Domain AND ISC
+License:        (Artistic-1.0 OR GPL-1.0-or-later) AND Artistic-2.0 AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-or-later AND GPL-3.0-only AND SUSE-Public-Domain AND ISC
 Group:          Development/Tools/Building
 URL:            https://salsa.debian.org/debian/devscripts
 Source:         https://salsa.debian.org/debian/devscripts/-/archive/v%{version}/devscripts-v%{version}.tar.bz2
@@ -31,7 +31,6 @@ Patch0:         devscripts-fix-build.patch
 Patch1:         devscripts-fix-python-install-layout.patch
 # PATCH-FEATURE-OPENSUSE devscripts-debcommit-hg16.patch -- Mercurial cannot commit empty, fix it.
 Patch2:         devscripts-debcommit-hg16.patch
-Patch3:         devscripts-checkbashisms-early-fail.patch
 BuildRequires:  bash-completion-devel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  dpkg-devel >= 1.18.19
@@ -47,6 +46,9 @@ BuildRequires:  zlib-devel
 Requires:       checkbashisms >= %{version}
 Requires:       dpkg
 Requires:       html2text
+Requires:       perl-File-HomeDir
+Requires:       perl-IPC-Run
+Requires:       perl-Moo
 # provides same %_bindir/hardening-check binary
 Conflicts:      hardening-check
 Provides:       deb:%{_bindir}/debchange
@@ -90,7 +92,6 @@ bashisms are detected.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 make %{?_smp_mflags} V=1 \
