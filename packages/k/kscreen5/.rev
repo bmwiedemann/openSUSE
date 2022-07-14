@@ -1075,4 +1075,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>Plasma 5.25.2 (forwarded request 985627 from Vogtinator)</comment>
     <requestid>985885</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>8c168632e6e836f1f1606b64da069a82</srcmd5>
+    <version>5.25.3</version>
+    <time>1657809217</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.3, with fixed lockscreen (forwarded request 988718 from Vogtinator)</comment>
+    <requestid>988831</requestid>
+  </revision>
 </revisionlist>
