@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 12 11:29:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.3
+- Changes since 5.25.2:
+  * Remove root Messages.sh there's no "kinfocenter" app anymore
+
+-------------------------------------------------------------------
 Tue Jun 28 13:03:30 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.2
