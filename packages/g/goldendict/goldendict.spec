@@ -28,6 +28,8 @@ URL:            http://goldendict.org/
 Version:        1.5.0~rc2+git.20220215T203220
 Release:        0
 Source0:        goldendict-%{version}.tar.xz
+Patch1:         https://github.com/goldendict/goldendict/commit/8acb288c9e9bdb3c6bf2e803954dd3b6ac273c05.patch
+Patch2:         https://github.com/goldendict/goldendict/commit/7fa7ad6e529a58173d0f3f2b0b73f12a316b5cc8.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
@@ -85,7 +87,7 @@ Feature-rich dictionary lookup program.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 git init
 %if 0%{?suse_version} < 1550
   # For Qt5.12 compatibility in openSUSE Leap 15.3

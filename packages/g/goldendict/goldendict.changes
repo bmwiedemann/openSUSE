@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 13 10:11:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 8acb288c9e9bdb3c6bf2e803954dd3b6ac273c05.patch and
+  7fa7ad6e529a58173d0f3f2b0b73f12a316b5cc8.patch: 
+  Fix build with ffmpeg 5, patches from upstream git.
+
+-------------------------------------------------------------------
 Wed Feb 16 08:10:33 UTC 2022 - <opensuse.lietuviu.kalba@gmail.com>
 
 - Add _service file.

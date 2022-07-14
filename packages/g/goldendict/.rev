@@ -50,4 +50,15 @@
     <comment></comment>
     <requestid>955175</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>df310f4998bc8f22f7ecc2452b8588e8</srcmd5>
+    <version>1.5.0~rc2+git.20220215T203220</version>
+    <time>1657809258</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 8acb288c9e9bdb3c6bf2e803954dd3b6ac273c05.patch and
+  7fa7ad6e529a58173d0f3f2b0b73f12a316b5cc8.patch: 
+  Fix build with ffmpeg 5, patches from upstream git.
+</comment>
+    <requestid>989024</requestid>
+  </revision>
 </revisionlist>
