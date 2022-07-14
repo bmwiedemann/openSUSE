@@ -27,6 +27,10 @@ Group:          Development/Languages/Python
 URL:            https://gitlab.com/m2crypto/m2crypto
 Source0:        https://files.pythonhosted.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
 Source1:        https://files.pythonhosted.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz.asc
+Source99:       python-M2Crypto.keyring
+# PATCH-FIX-UPSTREAM CVE-2020-25657-Bleichenbacher-attack.patch bsc#1178829 mcepl@suse.com
+# Mitigate the Bleichenbacher timing attacks in the RSA decryption API
+Patch0:         CVE-2020-25657-Bleichenbacher-attack.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pytest}

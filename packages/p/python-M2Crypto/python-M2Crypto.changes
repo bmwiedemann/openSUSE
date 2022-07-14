@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 12 20:49:47 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2020-25657-Bleichenbacher-attack.patch (CVE-2020-25657,
+  bsc#1178829), which mitigates the Bleichenbacher timing attacks
+  in the RSA decryption API.
+- Add python-M2Crypto.keyring to verify GPG signature of tarball.
+
+-------------------------------------------------------------------
 Thu Apr  7 15:45:07 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add missing bug references to this changelog.

@@ -674,4 +674,16 @@ Update to 0.36.0:
 </comment>
     <requestid>967536</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>71f774203275740438078ae486f04b65</srcmd5>
+    <version>0.38.0</version>
+    <time>1657809195</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2020-25657-Bleichenbacher-attack.patch (CVE-2020-25657,
+  bsc#1178829), which mitigates the Bleichenbacher timing attacks
+  in the RSA decryption API.
+- Add python-M2Crypto.keyring to verify GPG signature of tarball.
+</comment>
+    <requestid>988816</requestid>
+  </revision>
 </revisionlist>
