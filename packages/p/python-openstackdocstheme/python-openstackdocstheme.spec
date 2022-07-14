@@ -58,7 +58,7 @@ sed -i '/^pre-commit.*/d' test-requirements.txt
 %py3_install
 
 %check
-python3 setup.py test
+PYTHONPATH=. sphinx-build -a -E -j auto -d doc/build/doctrees -b html doc/source doc/build/htm
 
 %files -n python3-openstackdocstheme
 %license LICENSE
