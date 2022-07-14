@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul  2 15:56:26 UTC 2022 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- added monitoring-plugins-2.3.1-check_by_ssh.patch
+  Adds "-U" flag, which causes a 255 exit value from ssh(1), which
+  indicates a connection failure, to return UNKNOWN instead of CRITICAL.
+  (issue #1123)
+
+-------------------------------------------------------------------
 Tue Mar 22 09:58:05 UTC 2022 - Stefan Seifert <nine@detonation.org>
 
 - added monitoring-plugins-2.3.1-check_disk_on_btrfs.patch
