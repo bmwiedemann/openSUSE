@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul 13 11:24:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.8.0
+  * Accept `os.PathLike[str]` in addition to `str` for paths in
+    public API (PR #392, Fixes #372)
+  * Add schema validation for `build-system` table to check
+    conformity with PEP 517 and PEP 518 (PR #365, Fixes #364)
+  * Better support for Python 3.11 (sysconfig schemes PR #434, PR
+    #463, tomllib PR #443, warnings PR #420)
+  * Improved error printouts (PR #442)
+  * Avoid importing packaging unless needed (PR #395, Fixes #393)
+  * Failure to create a virtual environment in the `build.env`
+    module now raises `build.FailedProcessError` (PR #442)
+- Rework test suite: provide wheels for testing
+
+-------------------------------------------------------------------
 Sat Oct 16 12:24:15 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v0.7.0

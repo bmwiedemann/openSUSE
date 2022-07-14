@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,17 +27,22 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-build%{psuffix}
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Simple PEP517 package builder
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pypa/build
 Source0:        https://github.com/pypa/build/archive/%{version}.tar.gz#/build-%{version}.tar.gz
+# Needs the wheels for wheel, flit-core (<3), pytoml, and tomli for testing
+Source10:       https://files.pythonhosted.org/packages/py2.py3/w/wheel/wheel-0.37.1-py2.py3-none-any.whl
+Source11:       https://files.pythonhosted.org/packages/py2.py3/f/flit-core/flit_core-2.3.0-py2.py3-none-any.whl
+Source12:       https://files.pythonhosted.org/packages/py2.py3/p/pytoml/pytoml-0.1.21-py2.py3-none-any.whl
+Source13:       https://files.pythonhosted.org/packages/py3/t/tomli/tomli-2.0.1-py3-none-any.whl
 BuildRequires:  %{python_module importlib-metadata >= 0.22 if %python-base < 3.8}
 BuildRequires:  %{python_module packaging >= 19.0}
 BuildRequires:  %{python_module pep517 >= 0.9.1}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module tomli >= 1.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,12 +57,13 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module build = %{version}}
 BuildRequires:  %{python_module filelock >= 3}
+BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module pytest-mock >= 2}
 BuildRequires:  %{python_module pytest-rerunfailures >= 9.1}
 BuildRequires:  %{python_module pytest-xdist >= 1.34}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module toml >= 0.10.0}
 BuildRequires:  %{python_module wheel >= 0.36}
+BuildRequires:  python3-setuptools-wheel
 %endif
 %python_subpackages
 
@@ -68,10 +74,10 @@ It is a simple build tool and does not perform any dependency management.
 %prep
 %autosetup -p1 -n build-%{version}
 
+%if !%{with test}
 %build
 %python_build
 
-%if !%{with test}
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/pyproject-build
@@ -80,13 +86,10 @@ It is a simple build tool and does not perform any dependency management.
 
 %if %{with test}
 %check
-# obs can't download packages into "isolated" envs
-donttest="test_build_package"
-donttest+=" or (test_wheel_metadata and True)"
-donttest+=" or test_with_get_requires"
-donttest+=" or test_wheel_metadata_isolation"
-donttest+=" or test_output and (via-sdist-isolation or wheel-direct-isolation)"
-%pytest tests -n auto -k "not ($donttest)"
+mkdir -p wheels
+cp %{SOURCE10} %{SOURCE11} %{SOURCE12} %{SOURCE13} wheels/
+export PIP_FIND_LINKS="%{python3_sitelib}/../wheels $PWD/wheels"
+%pytest tests -n auto
 %endif
 
 %if !%{with test}
