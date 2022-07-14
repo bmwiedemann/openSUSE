@@ -2,6 +2,42 @@
 Thu Apr 28 11:53:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.2.0
+  * Bug
+    + [MSHARED-417] - Infinite loop when loading self-referencing
+      properties
+    + [MSHARED-599] - Escaping the escape string produces incorrect
+      output.
+    + [MSHARED-829] - MavenResourcesExecution.copyOf() returns
+      newinstance without properties set
+  * New Feature
+    + [MSHARED-934] - Allow using a different encoding when
+      filtering properties files
+  * Improvement
+    + [MSHARED-646] - Removed prerequisites for none maven-plugin
+      project
+    + [MSHARED-664] - Add ico files to default non-filtered
+      extensions
+    + [MSHARED-830] - Require Java 7
+    + [MSHARED-879] - make build Reproducible
+    + [MSHARED-884] - Only overwrite filtered resources when
+      contents differ
+    + [MSHARED-946] - Update to maven-shared-utils 3.3.3
+  * Dependency upgrade
+    + [MSHARED-575] - Upgrade maven-shared-utils to 3.1.0
+    + [MSHARED-600] - Upgrade of plexus-interpolation to 1.24.
+    + [MSHARED-645] - Upgrade to maven-shared-utils 3.2.0
+    + [MSHARED-667] - plexus-utils 3.0.24 to 3.1.0
+    + [MSHARED-711] - Upgrade parent to 31
+    + [MSHARED-712] - Upgrade maven-surefire/failsafe-plugin
+      2.21.0 for JDK 10
+    + [MSHARED-755] - Upgrade parent to version 32.
+    + [MSHARED-756] - Upgrade plexus-interpolation to 1.25
+    + [MSHARED-757] - Upgrade maven-shared-utils to 3.2.1
+    + [MSHARED-758] - Upgrade JUnit to 4.12
+    + [MSHARED-789] - Upgrade maven-shared-components parent
+      to 33
+    + [MSHARED-790] - Upgrade plexus-utils 3.1.1
+    + [MSHARED-809] - Upgrade plexus-utils 3.2.0
   * needed by maven-resources-plugin 3.2.0
 
 -------------------------------------------------------------------
