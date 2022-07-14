@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 13 21:17:04 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add e6c644683fbb34ac4ceb31150ef20a2536512149.patch -- Disable HW
+  acceleration to prevent blank pages (glgo#GNOME/devhelp#60).
+
+-------------------------------------------------------------------
 Wed Feb  2 08:54:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 281bade14c1925cf9e7329fa8e9cf2d82512c66f.patch and
