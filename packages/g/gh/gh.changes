@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jul 13 08:19:26 UTC 2022 - chris@computersalat.de
+
+- Update to 2.14.1
+  https://github.com/cli/cli/releases
+  * What's Changed
+    - auth login/refresh: Fix auth token not being present in login and refresh flows @samcoe in #5928
+- fix spec
+  * add missing Group
+
+-------------------------------------------------------------------
+Mon Jul 11 13:16:36 UTC 2022 - chris@computersalat.de
+
+- Update to 2.13.0
+  https://github.com/cli/cli/releases
+  * What's New
+    - Add pr merge --match-head-commit flag by @ffalor in #5692
+    - Add codespace create --retention-period flag by @gdomingu in #5825
+    - Add codespace list/stop/delete --org management capabilities for organization administrators by @greggroth and @8Gitbrix in #5807 #5812 #5827
+    - codespace ssh: automatically generate SSH keys by @cmbrose in #5752
+    - codespace create: notify user when codespace usage is covered by an organization by @jshorty in #5816
+    - secret set: allow setting Codespace repository secrets by @greggroth in #5802
+    - Add Windows ARM precompiled binary and support arm64 extensions by @azchohfi in #5715
+  * What's Changed
+    - Improve gh auth help message based on CI environment by @spenserblack in #5781
+    - Fix determining the path to the gh executable under Homebrew by @mislav in #5822
+    - pr create: clear filter when selecting from a list in interactive mode by @wilhelmeek in #5841
+    - repo fork: raise error if attempting to fork own repository by @jf-delineate in #5794
+    - Simplify codespace picker by @greggroth in #5826
+    - Bump github.com/stretchr/testify from 1.7.3 to 1.7.4 by @dependabot in #5833
+
+-------------------------------------------------------------------
 Thu May 26 07:01:46 UTC 2022 - stimut@gmail.com
 
 - Update to version 2.11.3:
