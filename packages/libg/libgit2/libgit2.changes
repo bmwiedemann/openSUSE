@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 12 18:50:16 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.4:
+  * Compatibility with git's changes to address CVE 2022-29187. As
+    a follow up to CVE 2022-24765, now not only is the working
+    directory of a non-bare repository examined for its ownership,
+    but the .git directory and the .git file (if present) are also
+    examined for their ownership [boo#1201431]
+  * A fix for compatibility with git's (new) behavior for
+    CVE 2022-24765 allows users on POSIX systems to access a git
+    repository that is owned by them when they are running in sudo
+- enable reproducible builds
+
+-------------------------------------------------------------------
 Wed Apr 13 17:53:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.3:
