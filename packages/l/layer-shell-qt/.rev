@@ -167,4 +167,12 @@
     <comment>Plasma 5.25.2 (forwarded request 985627 from Vogtinator)</comment>
     <requestid>985892</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>eb728828cd2f09defd20a2cfcbbf2229</srcmd5>
+    <version>5.25.3</version>
+    <time>1657809222</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.3, with fixed lockscreen (forwarded request 988718 from Vogtinator)</comment>
+    <requestid>988838</requestid>
+  </revision>
 </revisionlist>
