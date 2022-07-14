@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 13 14:15:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove pytest-randomly from requirements for easier inclusion
+  into Ring1
+
+-------------------------------------------------------------------
 Fri Feb 25 11:48:21 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.0.0

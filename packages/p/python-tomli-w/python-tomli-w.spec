@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-tomli-w
 Version:        1.0.0
 Release:        0
@@ -26,9 +24,9 @@ License:        MIT
 URL:            https://github.com/hukkin/tomli-w
 # prefer github archive over pypi sdist for pacakged tests
 Source:         https://github.com/hukkin/tomli-w/archive/refs/tags/%{version}.tar.gz#/tomli-w-%{version}-gh.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest-randomly}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tomli}
 BuildRequires:  fdupes
