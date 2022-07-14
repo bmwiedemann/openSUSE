@@ -1,7 +1,7 @@
 #
 # spec file for package azure-cli-nspkg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,11 @@ Release:        0
 Summary:        Microsoft Azure CLI Namespace Package
 License:        MIT
 Group:          System/Management
-Url:            https://github.com/Azure/azure-cli
+URL:            https://github.com/Azure/azure-cli
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cli-nspkg/azure-cli-nspkg-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-azure-nspkg >= 3.0.0
 BuildRequires:  python3-setuptools
 Requires:       python3-azure-nspkg >= 3.0.0
