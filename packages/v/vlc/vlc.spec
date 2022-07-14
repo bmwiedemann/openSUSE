@@ -103,11 +103,11 @@ BuildRequires:  libvpx-devel >= 1.5.0
 BuildRequires:  libxml2-devel >= 2.5
 BuildRequires:  lirc-devel
 BuildRequires:  live555-devel >= 2015.01.27
-BuildRequires:  lua-devel >= 5.1
 BuildRequires:  mpg123-devel
 BuildRequires:  pkgconfig
 BuildRequires:  posix_cc
 BuildRequires:  schroedinger-devel >= 1.0.10
+BuildRequires:  (lua-devel >= 5.1 with lua-devel < 5.4)
 BuildRequires:  pkgconfig(libudev) >= 142
 BuildRequires:  pkgconfig(smbclient)
 %if 0%{?is_opensuse}
