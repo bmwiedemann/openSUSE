@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul 12 18:17:00 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix the lock screen (kde#456639):
+  * 0001-Fix-non-functional-lockscreen-due-to-bad-cherry-pick.patch
+
+-------------------------------------------------------------------
+Tue Jul 12 11:29:05 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.3
+- Changes since 5.25.2:
+  * Guard against cursor theme changing in animation timer (kde#456526)
+  * Fix "PanelSpacer::containmentGraphicObject()" plasmashell segfault (kde#450663)
+  * Fix StatusNotifierItem MidClick (kde#456466)
+  * kcms/lookandfeel: Set all defaults when saving the default package (kde#456275)
+  * kcms/colors: Properly apply tinting to the window titlebar (kde#455395,kde#454047)
+  * [kcms/icons] Pass parent window to ksycoca progress dialog
+  * applets/kicker: Get rid of a separator just above title menu item (kde#449132)
+  * Fix password field in lock screen not clearing after failed login attempt (kde#455227)
+
+-------------------------------------------------------------------
 Tue Jun 28 13:03:35 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.2

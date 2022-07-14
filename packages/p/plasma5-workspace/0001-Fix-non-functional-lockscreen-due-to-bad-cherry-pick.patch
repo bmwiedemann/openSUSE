@@ -1,0 +1,36 @@
+From bfb47cb202784733618e53e1088e8676c2815456 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 12 Jul 2022 20:11:15 +0200
+Subject: [PATCH] Fix non-functional lockscreen due to bad cherry-pick
+
+The cherry-pick of 923ce7e5887d
+("Fix password field in lock screen not clearing after failed login attempt")
+introduced two assignments to properties which don't exist in 5.25 yet. This
+causes execution of those blocks to abort early, resulting in a bad state,
+like hadPrompt never getting set to true.
+
+BUG: 456639
+---
+ lookandfeel/contents/lockscreen/LockScreenUi.qml | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/lookandfeel/contents/lockscreen/LockScreenUi.qml b/lookandfeel/contents/lockscreen/LockScreenUi.qml
+index 50f4ccd85..2b638f8fa 100644
+--- a/lookandfeel/contents/lockscreen/LockScreenUi.qml
++++ b/lookandfeel/contents/lockscreen/LockScreenUi.qml
+@@ -67,12 +67,10 @@ PlasmaCore.ColorScope {
+ 
+         function onPrompt(msg) {
+             root.notification = msg;
+-            mainBlock.showPassword = true;
+             mainBlock.mainPasswordBox.forceActiveFocus();
+             lockScreenUi.hadPrompt = true;
+         }
+         function onPromptForSecret(msg) {
+-            mainBlock.showPassword = false;
+             mainBlock.mainPasswordBox.forceActiveFocus();
+             lockScreenUi.hadPrompt = true;
+         }
+-- 
+2.36.1
+

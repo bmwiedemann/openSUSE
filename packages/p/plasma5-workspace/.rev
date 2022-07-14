@@ -1927,4 +1927,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.25.2 (forwarded request 985627 from Vogtinator)</comment>
     <requestid>985906</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>2027fcdab8000f700d625bfb6931d9ac</srcmd5>
+    <version>5.25.3</version>
+    <time>1657809229</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.3, with fixed lockscreen (forwarded request 988718 from Vogtinator)</comment>
+    <requestid>988852</requestid>
+  </revision>
 </revisionlist>
