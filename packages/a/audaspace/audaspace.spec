@@ -1,7 +1,7 @@
 #
 # spec file for package audaspace
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Release:        0
 Summary:        A High-Level Audio Library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/audaspace/audaspace/releases/tag/v%{version}
+URL:            https://github.com/audaspace/audaspace/releases/tag/v%{version}
 Source0:        audaspace-%{version}.tar.gz
 #PATCH-FIX-UPSTREAM audaspace-gcc7.patch davejplater@gmail.com -- add missing "#include <functional>" picked up by gcc7
 Patch0:         audaspace-gcc7.patch
@@ -36,6 +36,8 @@ Patch0:         audaspace-gcc7.patch
 Patch1:         audaspace-plugin-build-options.patch
 # PATCH-FIX-UPSTREAM audaspace-support-ffmpeg4.patch -- Support ffmpeg v4
 Patch2:         audaspace-support-ffmpeg4.patch
+# PATCH-FIX-UPSTREAM 034645c883a51dfc8897dccce15aa8ee4a9d5c8c.patch -- Support ffmpeg v5
+Patch3:         https://github.com/audaspace/audaspace/commit/034645c883a51dfc8897dccce15aa8ee4a9d5c8c.patch
 BuildRequires:  cmake > 3
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -133,6 +135,7 @@ developing applications that use %{name}.
 %patch0
 %patch1
 %patch2 -p1
+%patch3 -p1
 
 %build
 tmpflags="%{optflags}"

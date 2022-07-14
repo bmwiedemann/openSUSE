@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 13 09:36:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 034645c883a51dfc8897dccce15aa8ee4a9d5c8c.patch: Support
+  ffmpeg v5, patch from upstream git.
+
+-------------------------------------------------------------------
 Mon Nov 18 23:15:31 UTC 2019 - Simon Lees <sflees@suse.de>
 
 - %make_jobs is depricated replaced by %cmake_build
