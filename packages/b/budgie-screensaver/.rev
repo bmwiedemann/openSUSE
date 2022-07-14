@@ -128,4 +128,17 @@
 </comment>
     <requestid>979497</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>391bcac23b9306ea326e460af75d56f8</srcmd5>
+    <version>5.0.2+0</version>
+    <time>1657809283</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.2+0:
+  * Bump version
+  * Clarify that Meson is used, not Autotools
+  * Add libgnomekbd-dev to Actions workflow
+  * Re-add build option to disable keyboard layout indicator
+</comment>
+    <requestid>989177</requestid>
+  </revision>
 </revisionlist>
