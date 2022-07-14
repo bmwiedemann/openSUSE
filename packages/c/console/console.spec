@@ -1,7 +1,7 @@
 #
 # spec file for package console
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           console
-Version:        42.beta
+Version:        42.2
 Release:        0
 Summary:        A simple user-friendly terminal emulator for the GNOME desktop
 License:        GPL-3.0-only
@@ -25,8 +25,8 @@ URL:            https://gitlab.gnome.org/GNOME/console
 Source:         %{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
-BuildRequires:  c_compiler
 BuildRequires:  c++_compiler
+BuildRequires:  c_compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  libxml2-tools
 BuildRequires:  meson >= 0.59.0
@@ -37,11 +37,12 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
 # Disabled for now
 #BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libhandy-1) >= 1.5
-BuildRequires:  pkgconfig(vte-2.91) >= 0.67
-BuildRequires:  pkgconfig(libgtop-2.0)
-BuildRequires:  pkgconfig(gsettings-desktop-schemas)
-BuildRequires:  pkgconfig(libnautilus-extension)
 BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(gsettings-desktop-schemas)
+BuildRequires:  pkgconfig(libgtop-2.0)
+BuildRequires:  pkgconfig(libnautilus-extension)
+BuildRequires:  pkgconfig(libpcre2-8) >= 10.32
+BuildRequires:  pkgconfig(vte-2.91) >= 0.67
 
 %description
 A simple user-friendly terminal emulator for the GNOME desktop.
@@ -90,4 +91,3 @@ arbitrary folders.
 %files lang -f %{name}.lang
 
 %changelog
-

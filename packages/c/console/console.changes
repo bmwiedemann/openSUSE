@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 14 08:38:11 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.2:
+  + Fix GCC warning.
+  + Check for pcre2 during configure.
+- Changes from version 42.1:
+  + Fixed release notes in metainfo.
+- Add explicit pkgconfig(libpcre2-8) BuildRequires, meson checks
+  for it.
+
+-------------------------------------------------------------------
+Wed Jul 13 18:43:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + Drop unneeded custom RPATH.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Feb 15 21:33:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.beta:
