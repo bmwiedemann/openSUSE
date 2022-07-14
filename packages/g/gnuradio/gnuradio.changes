@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul  1 16:35:32 UTC 2022 - Mikhail Paulyshka <me@mixaill.net>
+
+- added python3-SoapySDR to the runtime dependendcies (required by gr-soapy)
+
+-------------------------------------------------------------------
 Wed Jun 22 13:08:40 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 3.10.3.0

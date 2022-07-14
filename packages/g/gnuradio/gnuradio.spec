@@ -103,6 +103,8 @@ Requires:       python3-scipy
 Requires:       python3-pyqtgraph
 # gr_network dependencies
 Requires:       python3-pyzmq
+# gr_soapy dependencies
+Requires:       python3-SoapySDR
 %if %{with docs}
 BuildRequires:  doxygen
 BuildRequires:  mathjax
