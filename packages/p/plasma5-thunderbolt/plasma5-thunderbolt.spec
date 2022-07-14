@@ -23,7 +23,7 @@
 %define qt5_version 5.10.0
 %bcond_without released
 Name:           plasma5-thunderbolt
-Version:        5.25.2
+Version:        5.25.3
 Release:        0
 Summary:        Plasma frontend for Thunderbolt 3 security levels
 License:        GPL-2.0-or-later
