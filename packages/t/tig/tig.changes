@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Jul 13 20:31:12 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tig 2.5.5 added pcre2 support. Actually build with it.
+- fix bash and zsh completion packaging for Factory
+
+-------------------------------------------------------------------
+Wed Jul 13 07:15:57 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.6:
+  * Fix :goto <tag>. (#1178)
+  * Fix typo in ui.c.
+  * Revert terminal hacks and workarounds. (#748, #943, #1180, #1182)
+  * Fix opening of an ambiguous ref in refs view.
+  * Fix search when view is loading.
+  * Use the full width for diffstat in the stage view.
+  * Improve escaping of variables in external commands.
+  * Fix cursor behaviour during staging. (#842, #1028)
+  * Fix navigation in split tree view.
+  * Enable textconv in the stage view.
+  * Enable textconv in the blame view and fix blame -L. (#978, #1189)
+  * Update lineno for untracked files. (#1192)
+  * Fix alignment of transliterated text. (#1195)
+  * Fix word diff in the stage, stash and blame views. (#1207)
+  * Fix reading the value of status.showUntrackedFiles. (#1211)
+  * Honor commit_title:no in view settings.
+  * Fix segfault with PCRE.
+
+-------------------------------------------------------------------
+Sun Jun 26 13:18:06 UTC 2022 - Timothy Brown <stimut@gmail.com>
+
+- Split out tig-bash-completion package
+  * Removes dependency on bash-completion from main tig package
+- Add tig-zsh-completion package
+
+-------------------------------------------------------------------
 Thu Jan 13 13:59:25 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.5.5:
