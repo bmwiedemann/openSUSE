@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Inline-Python
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
-Name:           perl-Inline-Python
-Version:        0.56
-Release:        0
 %define cpan_name Inline-Python
-Summary:        Write Perl subs and classes in Python
+Name:           perl-Inline-Python
+Version:        0.56.5d4b1ff
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Write Perl subs and classes in Python
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/N/NI/NINE/%{cpan_name}-%{version}.tar.gz
+#Source0:        https://cpan.metacpan.org/authors/id/N/NI/NINE/%{cpan_name}-%{version}.tar.gz
+Source0:        %{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Digest::MD5) >= 2.5
@@ -55,7 +54,7 @@ also gives you instructions on how to use 'perlmodule', the Python package
 which gives you access to the Perl interpreter.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 export INLINE_PYTHON_EXECUTABLE=/usr/bin/python3
@@ -71,7 +70,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README TESTED ToDo
 
 %changelog

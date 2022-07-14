@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 14 09:21:11 UTC 2022 - Oliver Kurz <okurz@suse.com>
+
+- updated to 0.56.5d4b1ff
+   see /usr/share/doc/packages/perl-Inline-Python/Changes
+
+  Switch to git commit 5d4b1ff to fix build for Python3.10
+
+-------------------------------------------------------------------
+Thu Jun 23 07:10:16 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- refresh spec file
+
+-------------------------------------------------------------------
 Fri Nov 13 20:42:04 UTC 2020 - Oliver Kurz <okurz@suse.com>
 
 - Switch to python3 as python2 is considered obsolete
