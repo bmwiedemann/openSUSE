@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul  5 03:08:38 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.10
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+
+  2.10      2022-07-04 21:06:13Z
+
+      [ENHANCEMENTS]
+      - Added form_action($action) to look up forms by regex matching $action (GH#19)
+        (Mark Leighton Fisher and Julien Fiegehenn)
+
+      [DOCUMENTATION]
+      - Explain that file URIs need url encoding (GH#329) (Julien Fiegehenn and
+        積丹尼 Dan Jacobson)
+
+-------------------------------------------------------------------
 Wed Jun 15 03:10:13 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.09
