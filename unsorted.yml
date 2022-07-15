@@ -5951,11 +5951,11 @@ unsorted:
   - gnome-font-viewer-lang 
   - gnome-games-scripts 
   - gnome-genius 
-  - gnome-getting-started-docs 
+  - gnome-getting-started-docs: [i586] 
   - gnome-getting-started-docs-lang 
   - gnome-info-collect 
-  - gnome-initial-setup 
-  - gnome-initial-setup-lang 
+  - gnome-initial-setup: [i586] 
+  - gnome-initial-setup-lang: [i586] 
   - gnome-keyring-sharp 
   - gnome-keyring-sharp-devel 
   - gnome-keysign 
@@ -21879,6 +21879,7 @@ unsorted:
   - python310-CherryPy 
   - python310-CommonMark 
   - python310-ConfigArgParse 
+  - python310-ConfigUpdater 
   - python310-Cython 
   - python310-DataProperty 
   - python310-DataShape 
@@ -22574,6 +22575,7 @@ unsorted:
   - python310-calmjs 
   - python310-calmjs.parse 
   - python310-calmjs.types 
+  - python310-calver 
   - python310-calysto 
   - python310-cangjie 
   - python310-canonicaljson 
@@ -24077,6 +24079,7 @@ unsorted:
   - python310-pytest-bdd 
   - python310-pytest-benchmark 
   - python310-pytest-black 
+  - python310-pytest-check 
   - python310-pytest-check-links 
   - python310-pytest-click 
   - python310-pytest-console-scripts 
@@ -24679,6 +24682,7 @@ unsorted:
   - python310-treq 
   - python310-tri.declarative 
   - python310-tri.struct 
+  - python310-trove-classifiers 
   - python310-trustme 
   - python310-tsk 
   - python310-tweepy 
@@ -24730,6 +24734,7 @@ unsorted:
   - python310-userpath 
   - python310-uvicorn 
   - python310-uvloop 
+  - python310-validate-pyproject 
   - python310-validate_email 
   - python310-validators 
   - python310-varint 
@@ -24825,6 +24830,7 @@ unsorted:
   - python310-xdoctest 
   - python310-xerox 
   - python310-xhtml2pdf 
+  - python310-xkbcommon 
   - python310-xkbgroup 
   - python310-xkcdpass 
   - python310-xmldiff 
@@ -24918,6 +24924,7 @@ unsorted:
   - python38-CherryPy 
   - python38-CommonMark 
   - python38-ConfigArgParse 
+  - python38-ConfigUpdater 
   - python38-Cycler 
   - python38-Cython 
   - python38-DataProperty 
@@ -25664,6 +25671,7 @@ unsorted:
   - python38-calmjs 
   - python38-calmjs.parse 
   - python38-calmjs.types 
+  - python38-calver 
   - python38-calysto 
   - python38-cangjie 
   - python38-canonicaljson 
@@ -27305,6 +27313,7 @@ unsorted:
   - python38-pytest-bdd 
   - python38-pytest-benchmark 
   - python38-pytest-black 
+  - python38-pytest-check 
   - python38-pytest-check-links 
   - python38-pytest-click 
   - python38-pytest-console-scripts 
@@ -27955,6 +27964,7 @@ unsorted:
   - python38-tri.declarative 
   - python38-tri.struct 
   - python38-trio 
+  - python38-trove-classifiers 
   - python38-trustme 
   - python38-tsk 
   - python38-tvm: [x86_64] 
@@ -28012,6 +28022,7 @@ unsorted:
   - python38-userpath 
   - python38-uvicorn 
   - python38-uvloop 
+  - python38-validate-pyproject 
   - python38-validate_email 
   - python38-validators 
   - python38-varint 
@@ -28113,6 +28124,7 @@ unsorted:
   - python38-xdoctest 
   - python38-xerox 
   - python38-xhtml2pdf 
+  - python38-xkbcommon 
   - python38-xkbgroup 
   - python38-xkcdpass 
   - python38-xlrd 
@@ -28208,6 +28220,7 @@ unsorted:
   - python39-CherryPy 
   - python39-CommonMark 
   - python39-ConfigArgParse 
+  - python39-ConfigUpdater 
   - python39-Cycler 
   - python39-Cython 
   - python39-DataProperty 
@@ -28953,6 +28966,7 @@ unsorted:
   - python39-calmjs 
   - python39-calmjs.parse 
   - python39-calmjs.types 
+  - python39-calver 
   - python39-calysto 
   - python39-cangjie 
   - python39-canonicaljson 
@@ -30593,6 +30607,7 @@ unsorted:
   - python39-pytest-bdd 
   - python39-pytest-benchmark 
   - python39-pytest-black 
+  - python39-pytest-check 
   - python39-pytest-check-links 
   - python39-pytest-click 
   - python39-pytest-console-scripts 
@@ -31242,6 +31257,7 @@ unsorted:
   - python39-tri.declarative 
   - python39-tri.struct 
   - python39-trio 
+  - python39-trove-classifiers 
   - python39-trustme 
   - python39-tsk 
   - python39-tweepy 
@@ -31298,6 +31314,7 @@ unsorted:
   - python39-userpath 
   - python39-uvicorn 
   - python39-uvloop 
+  - python39-validate-pyproject 
   - python39-validate_email 
   - python39-validators 
   - python39-varint 
@@ -31398,6 +31415,7 @@ unsorted:
   - python39-xdoctest 
   - python39-xerox 
   - python39-xhtml2pdf 
+  - python39-xkbcommon 
   - python39-xkbgroup 
   - python39-xkcdpass 
   - python39-xlrd 
@@ -33562,6 +33580,7 @@ unsorted:
   - tecla 
   - tecla-devel 
   - tecnoballz 
+  - tectonic 
   - teeworlds 
   - tei-roma 
   - tei-xsl-stylesheets 
@@ -43286,6 +43305,8 @@ unsorted:
   - whfc 
   - whipper 
   - whohas 
+  - wicked: [i586] 
+  - wicked-service: [i586] 
   - widelands 
   - widelands-data 
   - widelands-debug 
