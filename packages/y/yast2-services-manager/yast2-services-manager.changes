@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  7 09:44:23 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Explicitly pull in systemctl for buildtime tests (jsc#SMO-84)
+- 4.5.1
+
+-------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.5.0 (bsc#1198109)

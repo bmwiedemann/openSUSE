@@ -24,7 +24,7 @@
 ######################################################################
 
 Name:           yast2-services-manager
-Version:        4.5.0
+Version:        4.5.1
 Release:        0
 Summary:        YaST2 - Services Manager
 License:        GPL-2.0-or-later
@@ -44,6 +44,8 @@ BuildRequires:  yast2-journal >= 4.1.1
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake) >= 0.1.7
+# The tests need systemctl
+BuildRequires:  pkgconfig(systemd)
 
 Requires:       ruby
  # 'target' argument for Installation::AutoClient#export method
