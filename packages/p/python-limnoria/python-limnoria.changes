@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 14 13:53:25 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2022-07-03:
+  * PluginDownloader: replace automatic 2to3 step with a simple
+    warning.
+
+-------------------------------------------------------------------
 Thu Apr 21 02:10:14 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - feedparser is now available on Python 3.10, remove the skip.

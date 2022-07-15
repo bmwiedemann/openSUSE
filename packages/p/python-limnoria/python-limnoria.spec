@@ -18,9 +18,9 @@
 
 %define skip_python2 1
 %define appname limnoria
-%define srcver 2022-03-19
+%define srcver 2022-07-03
 Name:           python-limnoria
-Version:        2022.03.19
+Version:        2022.07.03
 Release:        0
 Summary:        A modified version of Supybot (an IRC bot and framework)
 License:        BSD-3-Clause
@@ -87,6 +87,7 @@ chmod -x supybot/plugins/*/locales/fi.po
 %python_clone -a %{buildroot}%{_mandir}/man1/supybot-plugin-doc.1
 %python_clone -a %{buildroot}%{_mandir}/man1/supybot-test.1
 %python_clone -a %{buildroot}%{_mandir}/man1/supybot-wizard.1
+%python_clone -a %{buildroot}%{_mandir}/man1/supybot-reset-password.1
 %python_clone -a %{buildroot}%{_bindir}/supybot
 %python_clone -a %{buildroot}%{_bindir}/supybot-adduser
 %python_clone -a %{buildroot}%{_bindir}/supybot-botchk
@@ -107,7 +108,7 @@ export PYTHONPATH=%{buildroot}%{$python_sitelib}/
 %{python_install_alternative supybot supybot-adduser supybot-botchk
   supybot-plugin-create supybot-plugin-doc supybot-reset-password supybot-test supybot-wizard
   supybot.1 supybot-adduser.1 supybot-botchk.1 supybot-plugin-create.1
-  supybot-plugin-doc.1 supybot-test.1 supybot-wizard.1
+  supybot-plugin-doc.1 supybot-reset-password.1 supybot-test.1 supybot-wizard.1
 }
 
 %postun
@@ -131,6 +132,7 @@ export PYTHONPATH=%{buildroot}%{$python_sitelib}/
 %python_alternative %{_mandir}/man1/supybot-botchk.1
 %python_alternative %{_mandir}/man1/supybot-plugin-create.1
 %python_alternative %{_mandir}/man1/supybot-plugin-doc.1
+%python_alternative %{_mandir}/man1/supybot-reset-password.1
 %python_alternative %{_mandir}/man1/supybot-test.1
 %python_alternative %{_mandir}/man1/supybot-wizard.1
 
