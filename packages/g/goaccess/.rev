@@ -655,4 +655,17 @@
     `Cygwin`.</comment>
     <requestid>986593</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e73087605915f92d44ae1c7c18de560b</srcmd5>
+    <version>1.6.2</version>
+    <time>1657885972</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.2:
+  * Added `Android 12` to the list of OSs.
+  * Added `macOS 12 Ventura` to the list of OSs.
+  * Fixed implicit declaration build issue due to `timegm(3)` on `BSDs` and `macOS`.
+  * Fixed issue where timezone conversion would be performed twice on a given
+    date.</comment>
+    <requestid>989347</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 15 07:30:15 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.2:
+  * Added `Android 12` to the list of OSs.
+  * Added `macOS 12 Ventura` to the list of OSs.
+  * Fixed implicit declaration build issue due to `timegm(3)` on `BSDs` and `macOS`.
+  * Fixed issue where timezone conversion would be performed twice on a given
+    date.
+
+-------------------------------------------------------------------
 Mon Jul  4 09:22:38 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.1:
