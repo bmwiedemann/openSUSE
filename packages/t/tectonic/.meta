@@ -1,0 +1,5 @@
+<package name="tectonic" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Publishing:TeXLive" package="tectonic"/>
+</package>
