@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jul 13 20:21:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.2:
+  * New and improved features:
+    - Add a built-in dark theme using Qt's Fusion style (default on
+      Windows)
+    - Add a dark theme-friendly variant of the built-in fallback
+      icons, and make both built-in icon sets user-selectable
+    - Add partial support for Ogg FLAC streams
+    - Preselect the filename of an imported playlist when exporting
+      it again
+    - Automatically set the title of an imported playlist based on
+      the filename
+    - Add a Search and Select dialog to the Winamp interface in Qt
+      mode
+    - Add a Jump to Song dialog to the Winamp interface in Qt mode
+    - Add formatter syntax to allow truncating title strings
+  * Bugs fixed since 4.1:
+    - Fix some fluidsynth settings not working
+    - Add checks to prevent Open Containing Folder from being
+      abused to open other types of file
+    - Fix a crash in the bundled Game_Music_Emu library's SNES
+      emulation
+    - Fix the Winamp interface not minimizing from the Windows
+      taskbar
+    - Fix .mkv files being skipped when opening a folder
+    - Prevent the Qt interface from popping up multiple error
+      dialogs
+  * Bugs fixed since 4.2-beta1:
+    - Don't switch to FileWriter output when no other outputs are
+      available
+    - Update for compatibility with FFmpeg 5.0
+    - Fix hang when reaching the end of some files using FFmpeg
+    - Fix playlist unexpectedly scrolling in Winamp interface
+    - Prevent crash in 3rd-party QtPBFImagePlugin when using Winamp
+      interface
+
+-------------------------------------------------------------------
 Tue Feb 22 08:57:04 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Fix build with faad again

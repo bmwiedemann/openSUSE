@@ -1,7 +1,7 @@
 #
 # spec file for package audacious-plugins
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %define __provides_exclude_from ^%{_libdir}/audacious/*/.*.so$
-%define aud_ver_min 4.1
-%define aud_ver_max 4.1.99
+%define aud_ver_min 4.2
+%define aud_ver_max 4.2.99
 %bcond_with faad
 Name:           audacious-plugins
-Version:        4.1
+Version:        4.2
 Release:        0
 Summary:        Plugins for Audacious
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only AND MIT AND BSD-2-Clause
+License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only AND MIT
 URL:            https://audacious-media-player.org/
 Source:         https://distfiles.audacious-media-player.org/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE fix-linking-mpg123.patch boo#1187525
@@ -92,7 +92,7 @@ Plugins for the Audacious audio player.
 
 %package extra
 Summary:        Extra plugins for Audacious
-License:        GPL-2.0-or-later AND MIT AND BSD-2-Clause
+License:        BSD-2-Clause AND GPL-2.0-or-later AND MIT
 Requires:       %{name} = %{version}
 
 %description extra
