@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Sun Jul 03 09:28:47 UTC 2022 - matwey.kornilov@gmail.com
+
+- Changes for 25.0.2:
+  * ssl: Improved handling of unexpected messages during the
+    handshake, taking the right action for unexpected messages.
+  * erts: On computers with the ARM64 (AArch64) architecture (such
+    as Apple Silicon Macs) a rem expression followed by a div
+    expression with the same operands could evaluate to the wrong
+    result if the result of the rem expression was unused.
+- Changes for 25.0.1:
+  * ssl: When a TLS-1.3 enabled client tried to talk to a TLS-1.2
+    server that coalesces TLS-1.2 handshake message over one TLS
+    record, the connection could fail due to some message being
+    handled in the wrong state, this has been fixed.
+  * ssl: Correctly handles supported protocol version change from
+    default to something else by sni_fun supplied to
+    ssl:handshake/[2,3] together with a TCP-socket (so called
+    upgrade).
+  * ssl: Also, TLS-1.3 should respond with a protocol version alert
+    if previous versions, that are supported but not configured,
+    are attempted.
+  * kernel: The DNS resolver inet_res has been fixed to ignore
+    trailing dot difference in the request domain between the sent
+    request and the received response, when validating a response.
+  * kernel: A bug in inet_res has been fixed where a missing
+    internal {ok,_} wrapper caused inet_res:resolve/* to return a
+    calculated host name instead of an `{ok,Msg} tuple, when
+    resolving an IP address or a host name that is an IP address
+    string.
+  * kernel: The erlang:is_alive() BIF could return true before
+    configured distribution service was available. This bug was
+    introduced in OTP 25.0 ERTS version 13.0. The
+    erlang:monitor_node() and erlang:monitor() BIFs could
+    erroneously fail even though configured distribution service
+    was available. This occurred if these BIFs were called after
+    the distribution had been started using dynamic node name
+    assignment but before the name had been assigned.
+  * kernel: Added the missing mandatory address/0 callback in the
+    gen_tcp_dist example.
+  * erts: A spawn_reply signal from a remote node could be delayed
+    and be delivered after other signals from the newly spawned
+    process. When this bug triggered, the connection to the node
+    where the process was spawned sometimes could be taken down due
+    to the bug. The following error message would then be logged if
+    this happened: Missing 'spawn_reply' signal from the node
+    <RemoteNode> detected by <Pid> on the node <LocalNode>. The
+    node <RemoteNode> probably suffers from the bug with ticket id
+    OTP-17737. This bug only affected processes which had enabled
+    off_heap message_queue_data and parallel reception of signals
+    had been automatically enabled. This bug was introduced in OTP
+    25.0, ERTS version 13.0.
+  * erts: Fixed type spec of erlang:system_info(dist_ctrl).
+  * erts: The zlib built in to the runtime system has been updated
+    to version 1.2.12. (Note that on most platforms, the platform's
+    own zlib is used.)
+  * erts: The erlang:is_alive() BIF could return true before
+    configured distribution service was available. This bug was
+    introduced in OTP 25.0 ERTS version 13.0. The
+    erlang:monitor_node() and erlang:monitor() BIFs could
+    erroneously fail even though configured distribution service
+    was available. This occurred if these BIFs were called after
+    the distribution had been started using dynamic node name
+    assignment but before the name had been assigned.
+  * crypto: Note in the documentation that MODP (rfc3526) groups
+    and OpenSSL 3.0 can give an error if a call to
+    crypto:generate_key/2 specifies a key length, and that length
+    is to small.
+  * crypto: The cmac now uses only the 3.0 API
+  * crypto: Documentation is now updated with which OpenSSL
+    cryptolib versions that OTP currently is tested.
+  * dialyzer: Fixed the documentation for the missing_return and
+    extra_return options.
+  * mnesia: Fixed add_table_copy which could leave a table lock if
+    the receiving node went down during the operation.
+  * ssh: Binaries can be limited in logs with the parameter
+    max_log_item_len. The default value is 500 bytes.
+  * stdlib: In the initial release of Erlang/OTP 25, the expression
+    bound to the _ pseudo-field in a record initialization would
+    always be evaluated once, even if all other fields in the
+    record were explicitly initialized. That would break the use
+    case of binding the expression error(...) to _ in order to get
+    an exception if not all fields were initialized. The behavior
+    of binding to _ has been reverted to the pre-OTP 25 behavior,
+    that is, to not evaluate the expression if all fields have been
+    bound to explicit values.
+
+-------------------------------------------------------------------
 Sun May 22 11:19:11 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Version 25.0:
