@@ -77,4 +77,12 @@
 - Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>886565</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>93472d68c1b24c787339b2cad7c5d796</srcmd5>
+    <version>3.15.5</version>
+    <time>1657885966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>989340</requestid>
+  </revision>
 </revisionlist>
