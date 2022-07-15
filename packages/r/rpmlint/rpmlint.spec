@@ -23,13 +23,14 @@
 %define name_suffix -%{flavor}
 %endif
 Name:           rpmlint%{name_suffix}
-Version:        2.3.0+git20220711.46e6323
+Version:        2.3.0+git20220712.761ddf0
 Release:        0
 Summary:        RPM file correctness checker
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/rpmlint
 Source0:        rpmlint-%{version}.tar.xz
 Patch0:         disable-flake.patch
+Patch1:         skip-rpmlint-for-rpmlint.patch
 BuildRequires:  fdupes
 BuildRequires:  python3-setuptools
 BuildArch:      noarch

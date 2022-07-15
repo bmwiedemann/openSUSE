@@ -3,7 +3,7 @@
     <param name="versionformat">2.3.0+git%cd.%h</param>
     <param name="url">https://github.com/rpm-software-management/rpmlint.git</param>
     <param name="scm">git</param>
-    <param name="revision">opensuse</param>
+    <param name="revision">761ddf0910eaed2614433c57fc1a7c14b1983ee8</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">

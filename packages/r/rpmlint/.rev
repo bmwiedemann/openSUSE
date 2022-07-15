@@ -3872,4 +3872,15 @@ oddjob-gpupdate isn't blocked)</comment>
   * systemd-tmpfiles: drop version from libtss2-fapi1 filename</comment>
     <requestid>988371</requestid>
   </revision>
+  <revision rev="404" vrev="1">
+    <srcmd5>cabeee134242b7c916dad01509945d0a</srcmd5>
+    <version>2.3.0+git20220712.761ddf0</version>
+    <time>1657885932</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git20220712.761ddf0:
+  * Improve syntax validation for digests.
+- Add skip-rpmlint-for-rpmlint.patch patch that skip linter
+  this package.</comment>
+    <requestid>989092</requestid>
+  </revision>
 </revisionlist>

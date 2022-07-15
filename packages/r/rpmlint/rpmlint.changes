@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 12 20:38:18 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 2.3.0+git20220712.761ddf0:
+  * Improve syntax validation for digests.
+- Add skip-rpmlint-for-rpmlint.patch patch that skip linter
+  this package.
+
+-------------------------------------------------------------------
 Mon Jul 11 12:41:48 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.3.0+git20220711.46e6323:
