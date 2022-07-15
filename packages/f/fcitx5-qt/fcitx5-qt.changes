@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul  5 11:29:17 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.14
+  * Avoid to display size 0 input panel window
+- Install org.fcitx.fcitx5-qt5-gui-wrapper.desktop to applications
+  folder
+
+-------------------------------------------------------------------
 Sat Mar 12 08:44:23 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 5.0.11

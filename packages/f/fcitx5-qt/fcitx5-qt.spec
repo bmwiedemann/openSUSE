@@ -29,7 +29,7 @@
 %endif
 
 Name:           fcitx5-qt
-Version:        5.0.11
+Version:        5.0.14
 Release:        0
 Summary:        Qt library and IM module for fcitx5
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -173,6 +173,7 @@ make %{?_smp_mflags}
 %doc README.md
 %license LICENSES
 %{_libexecdir}/fcitx5-qt5-gui-wrapper
+%{_datadir}/applications/org.fcitx.fcitx5-qt5-gui-wrapper.desktop
 %{_fcitx5_qt5dir}/libfcitx-quickphrase-editor5.so
 %{_libdir}/qt5/plugins/platforminputcontexts/libfcitx5platforminputcontextplugin.so
 
