@@ -486,4 +486,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment>- Remove tallow, doesn't work with firewalld using nft anymore (forwarded request 984008 from kukuk)</comment>
     <requestid>984009</requestid>
   </revision>
+  <revision rev="51" vrev="51">
+    <srcmd5>afd34e0409f18f51cd0e6e765fd07a11</srcmd5>
+    <version>5.0</version>
+    <time>1657885934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986173</requestid>
+  </revision>
 </revisionlist>

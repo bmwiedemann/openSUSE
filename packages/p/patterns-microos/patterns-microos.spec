@@ -408,9 +408,13 @@ Provides:       pattern-order() = 9100
 Provides:       pattern-visible()
 Requires:       gdm-branding-MicroOS
 Requires:       pattern() = gnome_basic
+Requires:       pattern() = microos_base_zypper
 Requires:       pattern() = microos_desktop_common
-# Pull in PackageKit
-Requires:       pattern() = microos_base_packagekit
+# gnome-initial-setup requirements
+Requires:       gnome-initial-setup
+Requires:       gjs
+Requires:       gnome-menus-branding-openSUSE
+Requires:       system-group-wheel
 # from data/COMMON-DESKTOP
 Requires:       desktop-data
 Requires:       desktop-file-utils
@@ -581,6 +585,7 @@ Requires:       apparmor-utils
 Requires:       bcache-tools
 Requires:       crda
 Requires:       cryptsetup
+Requires:       firewalld
 Requires:       iscsiuio
 #extra items for DVD, not every install
 Requires:       ModemManager

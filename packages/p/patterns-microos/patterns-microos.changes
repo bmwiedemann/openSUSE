@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 30 16:24:11 UTC 2022 - Richard Brown <rbrown@suse.com>
+
+- Use gnome-initial-setup for configuring user on firstboot of MicroOS Desktop 
+
+-------------------------------------------------------------------
+Tue Jun 21 14:10:02 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add firewalld to the DVD pattern as YaST can be used to configure it
+  during installation (boo#1200741)
+
+-------------------------------------------------------------------
 Mon Jun 20 15:38:03 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove tallow, doesn't work with firewalld using nft anymore
