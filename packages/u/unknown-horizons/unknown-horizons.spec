@@ -1,7 +1,7 @@
 #
 # spec file for package unknown-horizons
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 Nelson Marques <nmarques@opensuse.org>
 # Copyright (c) Unknown Horizons, http://www.unknown-horizons.org
 #
@@ -47,7 +47,6 @@ BuildRequires:  python3-Cython
 BuildRequires:  python3-Pillow
 BuildRequires:  python3-distro
 BuildRequires:  python3-distutils-extra
-BuildRequires:  python3-pathlib
 BuildRequires:  python3-typing
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libexslt)

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 14 21:16:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove python3-pathlib dependency. It is part of the Python
+  stdlib since Python 3.4 and the legacy extra package needs to
+  be removed from Tumbleweed.
+
+-------------------------------------------------------------------
 Sun Jul 19 11:33:17 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
 
 - add appdata.patch https://en.opensuse.org/openSUSE:AppStore metadata
