@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 27 11:33:50 UTC 2022 - Marius Tomaschewski <mt@suse.com>
+
+- version 0.90.0
+- sysconfig: cleanup network and wicked dependencies
+- ppp: move /etc/ppp/ip-up to libexec directory
+- spec: move further executables/scripts to /usr
+- spec: revert to recommend wicked-service on <= 15.4
+- spec: install scripts except of ip-up bellow of /usr
+- spec: drop (sle11) legacy migration and rpm-utils
+- ifuser: drop the artefact utility on >= 15.5
+- netconfig/dns-resolver: remove search limit of 6 domains (bsc#1199093)
+- netconfig: cleanup /var/run leftovers (bsc#1194557)
+- netconfig: update ntp man page documentation, fix typos
+- netconfig: move scripts to a FHS conform libexec
+
+-------------------------------------------------------------------
 Mon Nov  8 17:09:26 UTC 2021 - Marius Tomaschewski <mt@suse.com>
 
 - version 0.85.8

@@ -1,7 +1,7 @@
 #
 # spec file for package sysconfig
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,11 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
+%if 0%{?suse_version} >= 1550
+%bcond_with     ifuser
+%else
+%bcond_without  ifuser
+%endif
 %if 0%{?suse_version} >= 1230
 %define         udevdir	%{_prefix}/lib/udev
 BuildRequires:  pkgconfig(systemd)
@@ -38,7 +43,7 @@ BuildRequires:  pkgconfig(systemd)
 %define         udevdir	/lib/udev
 %endif
 Name:           sysconfig
-Version:        0.85.8
+Version:        0.90.0
 Release:        0
 Summary:        The sysconfig scheme for traditional network scripts
 License:        GPL-2.0-or-later
@@ -47,12 +52,14 @@ URL:            https://github.com/openSUSE/sysconfig
 Source:         %{name}-%{version}.tar.bz2
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-Requires:       /sbin/netconfig
-Requires:       (sysvinit(network) or service(network))
 Requires(post): %fillup_prereq
 Requires(post): /usr/bin/grep
 Requires(post): /usr/bin/chmod /usr/bin/mkdir /usr/bin/touch
-Suggests:       wicked-service
+%if 0%{?suse_version} < 1550
+Requires:       /sbin/netconfig
+Requires:       (sysvinit(network) or service(network))
+Recommends:     wicked-service
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -64,7 +71,6 @@ Summary:        Script to apply network provided settings
 Group:          System/Base
 Requires:       /bin/gawk
 Requires:       /bin/logger
-Requires:       /usr/bin/sed
 Requires(pre):  sysconfig = %{version}
 Provides:       /sbin/netconfig
 
@@ -79,9 +85,10 @@ provided settings like DNS or NIS into system files.
 autoreconf -fvi
 CFLAGS="%{optflags} -fPIC" LDFLAGS="-pie" \
 %configure --prefix=/ \
-            --sbindir=/sbin \
-            --libdir=/%{_lib} \
+            --sbindir=%{_sbindir} \
+            --libdir=%{_libdir} \
             --sysconfdir=%{_sysconfdir} \
+            --libexecdir=%{_libexecdir} \
             --mandir=%{_mandir} \
             --with-unitdir=%{_unitdir} \
             --with-udevdir=%{udevdir} \
@@ -95,9 +102,18 @@ make %{?_smp_mflags} check
 %make_install
 touch %{buildroot}%{_sysconfdir}/sysconfig/network/config
 touch %{buildroot}%{_sysconfdir}/sysconfig/network/dhcp
+mkdir -p %{buildroot}%{_sysconfdir}/sysconfig/network/scripts
+ln -s %{_libexecdir}/netconfig/functions.netconfig \
+      %{buildroot}%{_sysconfdir}/sysconfig/network/scripts
+%if !0%{?usrmerged}
 mkdir -p %{buildroot}/sbin
-ln -s /sbin/service %{buildroot}/sbin/rcnetwork
+ln -s %{_sbindir}/netconfig %{buildroot}/sbin/netconfig
+%endif
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcnetwork
 rm -f %{buildroot}%{_docdir}/sysconfig/COPYING
+%if %{without ifuser}
+rm -f %{buildroot}%{_sbindir}/ifuser
+%endif
 
 mkdir -p %{buildroot}%{_tmpfilesdir}
 cat >%{buildroot}%{_tmpfilesdir}/netconfig.conf <<-EOF
@@ -111,43 +127,62 @@ EOF
 %files
 %defattr(-,root,root)
 %license doc/COPYING
+%dir %{_sysconfdir}/sysconfig/network
 %config %{_sysconfdir}/sysconfig/network/ifcfg.template
 %ghost %{_sysconfdir}/sysconfig/network/config
 %ghost %{_sysconfdir}/sysconfig/network/dhcp
 %dir %{_docdir}/sysconfig
 %doc %{_docdir}/sysconfig/Contents
-%{_sysconfdir}/sysconfig/network/scripts/functions.rpm-utils
 %{_fillupdir}/sysconfig.dhcp-network
 %{_fillupdir}/sysconfig.config-network
-/sbin/rcnetwork
-/sbin/ifuser
+%{_sbindir}/rcnetwork
+%if %{with ifuser}
+%{_sbindir}/ifuser
+%endif
+%dir %attr(0750,root,root) %{_libexecdir}/ppp
+%dir %{_libexecdir}/ppp/ip-up.d
+%dir %{_libexecdir}/ppp/ip-down.d
+%dir %{_libexecdir}/ppp/ipv6-up.d
+%dir %{_libexecdir}/ppp/ipv6-down.d
+%dir %{_libexecdir}/ppp/ip-pre-up.d
+%dir %{_libexecdir}/ppp/pre-start.d
+%dir %{_libexecdir}/ppp/post-stop.d
+%{_libexecdir}/ppp/ip-up
 %dir %attr(0750,root,root) %{_sysconfdir}/ppp
 %dir %{_sysconfdir}/ppp/ip-up.d
 %dir %{_sysconfdir}/ppp/ip-down.d
 %dir %{_sysconfdir}/ppp/ipv6-up.d
 %dir %{_sysconfdir}/ppp/ipv6-down.d
+%dir %{_sysconfdir}/ppp/ip-pre-up.d
 %dir %{_sysconfdir}/ppp/pre-start.d
 %dir %{_sysconfdir}/ppp/post-stop.d
 %{_sysconfdir}/ppp/ip-up
 %{_sysconfdir}/ppp/ip-down
 %{_sysconfdir}/ppp/ipv6-up
 %{_sysconfdir}/ppp/ipv6-down
+%{_sysconfdir}/ppp/ip-pre-up
 %{_sysconfdir}/ppp/post-stop
 %{_sysconfdir}/ppp/pre-start
 
 %files netconfig
 %defattr(-,root,root)
-%dir %{_sysconfdir}/netconfig.d
-%{_sysconfdir}/netconfig.d/*
+%dir %{_libexecdir}/netconfig
+%dir %{_libexecdir}/netconfig/ppp
+%dir %{_libexecdir}/netconfig/netconfig.d
+%{_libexecdir}/netconfig/netconfig.d/*
+%{_libexecdir}/netconfig/functions.netconfig
 %{_sysconfdir}/sysconfig/network/scripts/functions.netconfig
+%{_sbindir}/netconfig
+%if !0%{?usrmerged}
 /sbin/netconfig
+%endif
 %{_mandir}/man8/netconfig.8%{ext_man}
 %doc %{_docdir}/sysconfig/netconfig.png
-%{_sysconfdir}/ppp/netconfig
-%{_sysconfdir}/ppp/ip-up.d/10-netconfig
-%{_sysconfdir}/ppp/ip-down.d/90-netconfig
-%{_sysconfdir}/ppp/pre-start.d/10-netconfig
-%{_sysconfdir}/ppp/post-stop.d/90-netconfig
+%{_libexecdir}/netconfig/ppp/ip-up
+%{_libexecdir}/ppp/ip-up.d/10-netconfig
+%{_libexecdir}/ppp/ip-down.d/90-netconfig
+%{_libexecdir}/ppp/pre-start.d/10-netconfig
+%{_libexecdir}/ppp/post-stop.d/90-netconfig
 %{_tmpfilesdir}/netconfig.conf
 %ghost %dir /run/netconfig
 %ghost /run/netconfig/resolv.conf
@@ -156,50 +191,9 @@ EOF
 %ghost %config(noreplace) %{_sysconfdir}/yp.conf
 
 %post -p /bin/bash
-#
-## we provide own, improved variant of the remove_and_set suse
-## rpm macro that is able to handle files in subdirs, and more
-. etc/sysconfig/network/scripts/functions.rpm-utils
-#
-# remove obsolete sysconfig-network specific variables
-sysconfig_remove_and_set network/config NOZEROCONF
-sysconfig_remove_and_set network/config LINKLOCAL_INTERFACES
-sysconfig_remove_and_set network/config IFPLUGD_OPTIONS
-sysconfig_remove_and_set network/config DEFAULT_BROADCAST
-sysconfig_remove_and_set network/config FORCE_PERSISTENT_NAMES
-sysconfig_remove_and_set network/config MANDATORY_DEVICES
-sysconfig_remove_and_set network/config USE_SYSLOG
-sysconfig_remove_and_set network/dhcp   DHCLIENT_BIN
-sysconfig_remove_and_set network/dhcp   DHCLIENT6_BIN
-sysconfig_remove_and_set network/dhcp   DHCLIENT_DEBUG
-sysconfig_remove_and_set network/dhcp   DHCLIENT_WAIT_LINK
-sysconfig_remove_and_set network/dhcp   DHCLIENT_USER_OPTIONS
-sysconfig_remove_and_set network/dhcp   DHCLIENT_PRIMARY_DEVICE
-sysconfig_remove_and_set network/dhcp   DHCLIENT6_USER_OPTIONS
-sysconfig_remove_and_set network/dhcp   DHCPCD_USER_OPTIONS
-sysconfig_remove_and_set network/dhcp   DHCP6C_USER_OPTIONS
-##
 %{fillup_only -dns dhcp network network}
 %{fillup_only -dns config network network}
 /sbin/ldconfig
-# remove obsolete dhcp and per interface variables
-_umask=`umask`
-for file in etc/sysconfig/network/dhcp etc/sysconfig/network/ifcfg-* ; do
-	name="${file##*\/ifcfg-}"
-	case $name in
-	(lo|""|*" "*|*~|*.old|*.rpmnew|*.rpmsave|*.scpmbackup) continue ;;
-	esac
-	case $file in
-		(*/ifcfg-*) umask 0177 ;;
-	esac
-	sysconfig_remove_and_set -b "" $file \
-		DHCLIENT_MODIFY_NTP_CONF     \
-		DHCLIENT_ADDITIONAL_OPTIONS  \
-		DHCLIENT_SCRIPT_EXE
-	umask $_umask
-done
-# be a little bit paranoid and set the correct mode even we set umask
-chmod 0600 etc/sysconfig/network/ifcfg-* 2>/dev/null || :
 
 %postun -p /sbin/ldconfig
 

@@ -1750,4 +1750,23 @@ also obs request: #660553
   have to deliver their settings to apply them.</comment>
     <requestid>930219</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>e5881aa4aa1cce602572fa50cf71cce5</srcmd5>
+    <version>0.90.0</version>
+    <time>1657885935</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.90.0
+- sysconfig: cleanup network and wicked dependencies
+- ppp: move /etc/ppp/ip-up to libexec directory
+- spec: move further executables/scripts to /usr
+- spec: revert to recommend wicked-service on &lt;= 15.4
+- spec: install scripts except of ip-up bellow of /usr
+- spec: drop (sle11) legacy migration and rpm-utils
+- ifuser: drop the artefact utility on &gt;= 15.5
+- netconfig/dns-resolver: remove search limit of 6 domains (bsc#1199093)
+- netconfig: cleanup /var/run leftovers (bsc#1194557)
+- netconfig: update ntp man page documentation, fix typos
+- netconfig: move scripts to a FHS conform libexec</comment>
+    <requestid>985326</requestid>
+  </revision>
 </revisionlist>
