@@ -64,4 +64,12 @@
   * Add support for Pillow&gt;=8.0.0.</comment>
     <requestid>843978</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4bb74bdbd5096ad3fb687fce31220f2b</srcmd5>
+    <version>0.14.0</version>
+    <time>1657885965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>989337</requestid>
+  </revision>
 </revisionlist>

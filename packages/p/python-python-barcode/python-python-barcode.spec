@@ -1,7 +1,7 @@
 #
-# spec file for package python-python-barcode
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,14 +21,13 @@
 %define skip_python2 1
 %define base_name python-barcode
 Name:           python-%{base_name}
-Version:        0.13.1
+Version:        0.14.0
 Release:        0
 Summary:        Library to create Barcodes with Python
 License:        MIT
 URL:            https://github.com/WhyNotHugo/python-barcode
 Source:         https://files.pythonhosted.org/packages/source/p/%{base_name}/%{base_name}-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module pathlib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -37,9 +36,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       dejavu-fonts
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Provides:       python-pyBarcode
-Obsoletes:      python-pyBarcode
+Requires(postun):update-alternatives
+Provides:       python-pyBarcode = %{version}-%{release}
+Obsoletes:      python-pyBarcode < %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,11 +58,15 @@ rm docs/Makefile
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/python-barcode
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 find %{buildroot} -type f -name "*.ttf" | while read i; do
 	ln -fs "%{_datadir}/fonts/truetype/${i##*/}" "$i"
 done
+%{python_expand # copy docs for deduplication
+mkdir -p %{buildroot}%{_docdir}
+cp -r docs %{buildroot}%{_docdir}/$python-python-barcode
+%fdupes %{buildroot}%{_docdir}/$python-python-barcode
+}
 
 %check
 sed -i '/cov/d' setup.cfg
@@ -76,9 +79,10 @@ sed -i '/cov/d' setup.cfg
 %python_uninstall_alternative python-barcode
 
 %files %{python_files}
-%doc docs/*
 %license LICENCE
-%{python_sitelib}/*
+%doc %{_docdir}/%{python_flavor}-python-barcode
+%{python_sitelib}/barcode
+%{python_sitelib}/python_barcode-%{version}*-info
 %python_alternative %{_bindir}/python-barcode
 
 %changelog
