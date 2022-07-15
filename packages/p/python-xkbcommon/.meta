@@ -1,0 +1,5 @@
+<package name="python-xkbcommon" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:XOrg" package="python-xkbcommon"/>
+</package>

@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Wed Jul 13 08:13:21 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rename the package to python-xkbcommon and make it python single
+  spec, building for all current python flavors.
+
+-------------------------------------------------------------------
+Tue Jul 12 13:34:25 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for python3-xkbcommon 0.4
+- add fix-xkbcommon-paths.patch
+  * python-cffi cannot use pkg-config to determine
+  paths of headers and devel files so we need to hardcode it
