@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 14 12:07:13 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Pass CMAKE_SKIP_INSTALL_RPATH=ON for openSUSE > 1500 as well
+  to enure no left-over rpaths in binaries; this fixes build
+  failures in Factory.
+
+-------------------------------------------------------------------
 Sun Apr 10 13:40:48 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Revert gl2ps change. TW and 15.4 have a recent gl2ps, and the

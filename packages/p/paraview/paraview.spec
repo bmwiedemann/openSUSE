@@ -193,8 +193,8 @@ sed -Ei "1{s|#!/usr/bin/env python3|#!/usr/bin/python3|}" Clients/CommandLineExe
        -DPARAVIEW_BUILD_SHARED_LIBS:BOOL=ON \
 %if 0%{?suse_version} <= 1500
        -DCMAKE_SKIP_RPATH:BOOL=OFF \
-       -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
 %endif
+       -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
        -DPARAVIEW_USE_VTKM:BOOL=OFF \
        -DPARAVIEW_USE_QT:BOOL=ON \
        -DPARAVIEW_USE_PYTHON:BOOL=ON \
