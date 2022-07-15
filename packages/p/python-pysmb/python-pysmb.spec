@@ -17,15 +17,13 @@
 
 
 Name:           python-pysmb
-Version:        1.2.7
+Version:        1.2.8
 Release:        0
 Summary:        SMB/CIFS library to support file sharing between Windows and Linux machines
 License:        Zlib
 Group:          Development/Languages/Python
 URL:            https://miketeo.net/projects/pysmb
 Source:         https://files.pythonhosted.org/packages/source/p/pysmb/pysmb-%{version}.zip
-# PATCH-FIX-UPSTREAM gh#miketeo/pysmb#189
-Patch0:         fix-smbconnection-tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -59,6 +57,7 @@ sed -Ei "1{/^#!\/usr\/bin\/python/d}" python*/smb/*/sha256.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+rm python3/tests/SMBConnectionTests/test_SMBHandler.py
 %{python_expand # Run only the tests that can work without network (and only from the right python[2,3] dir)
 python_testdir_str=$python
 python_testdir=${python_testdir_str:0:7}
@@ -70,6 +69,8 @@ pytest-%{$python_bin_suffix} ${python_testdir} -k 'not (SMB or test_broadcast)'
 %files %{python_files}
 %doc CHANGELOG README.txt
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/smb/
+%{python_sitelib}/nmb/
+%{python_sitelib}/pysmb-%{version}-py%{python_version}.egg-info/
 
 %changelog

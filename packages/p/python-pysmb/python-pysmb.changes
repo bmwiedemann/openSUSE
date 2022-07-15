@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 22 00:41:45 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.8:
+  * Fix issue with listPath based on recommendation.
+  * Fix embedded MD4 algorithm.
+  * Add SMB UTF-16 surrogate exception workaround policy. 
+- Drop fix-smbconnection-tests.patch: incorporated upstream.
+- Delete a test file that has incorrect imports and is not needed.
+
+-------------------------------------------------------------------
 Fri Feb  4 00:24:09 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Fix testing on older Leap versions.
