@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Jul 14 15:37:35 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.11.0b4:
+- Fixes many bugs and adds following more significant changes
+- Security
+  - gh-68966: The deprecated mailcap module now refuses to inject
+    Coreunsafe text (filenames, MIME types, parameters) into
+    shell Corecommands. Instead of using such text, it will
+    warn and act Coreas if a match was not found (or for test
+    commands, as if the Coretest failed). and Builtins
+  - gh-93516: Lazily create a table mapping bytecode offsets to
+    line numbers to speed up calculation of line numbers when
+    tracing.
+  - gh-93461: importlib.invalidate_caches() now drops entries
+    from sys.path_importer_cache with a relative path as
+    name. This solves a caching issue when a process changes its
+    current working directory.
+  - FileFinder no longer inserts a dot in the path, e.g.
+    /egg/./spam is now /egg/spam.
+Library
+  - gh-93896: Fix asyncio.run() and
+    unittest.IsolatedAsyncioTestCase to always the set event loop
+    as it was done in Python 3.10 and earlier. Patch by Kumar
+    Aditya.
+  - gh-94101: Manual instantiation of ssl.SSLSession objects is
+    no longer allowed as it lead to misconfigured instances that
+    crashed the interpreter when attributes where accessed on
+    them.
+  - gh-83658: Make multiprocessing.Pool raise an exception if
+    maxtasksperchild is not None or a positive int.
+  - gh-61162: Clarify sqlite3 behavior when Using the connection
+    as a context manager.
+Tools/Demos
+  - gh-94538: Fix Argument Clinic output to custom file
+    destinations. Patch by Erlend E. Aasland.
+C API
+  - gh-93937: The following frame functions and type are now
+    directly available with #include <Python.h>, it’s no longer
+    needed to add #include <frameobject.h>:
+        PyFrame_Check()
+        PyFrame_GetBack()
+        PyFrame_GetBuiltins()
+        PyFrame_GetGenerator()
+        PyFrame_GetGlobals()
+        PyFrame_GetLasti()
+        PyFrame_GetLocals()
+        PyFrame_Type
+
+-------------------------------------------------------------------
 Tue May 31 20:54:36 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.11.0b2:

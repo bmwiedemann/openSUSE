@@ -4,7 +4,7 @@
 
 --- a/Lib/test/test_capi.py
 +++ b/Lib/test/test_capi.py
-@@ -1014,6 +1014,7 @@ class PyMemDebugTests(unittest.TestCase)
+@@ -1016,6 +1016,7 @@ class PyMemDebugTests(unittest.TestCase)
      def test_pyobject_forbidden_bytes_is_freed(self):
          self.check_pyobject_is_freed('check_pyobject_forbidden_bytes_is_freed')
  

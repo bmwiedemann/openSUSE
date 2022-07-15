@@ -1,21 +1,9 @@
 only in patch2:
 unchanged:
 ---
- Doc/conf.py            |    2 -
  Doc/library/turtle.rst |   82 -------------------------------------------------
- 2 files changed, 1 insertion(+), 83 deletions(-)
+ 1 file changed, 82 deletions(-)
 
---- a/Doc/conf.py
-+++ b/Doc/conf.py
-@@ -45,7 +45,7 @@ today_fmt = '%B %d, %Y'
- highlight_language = 'python3'
- 
- # Minimum version of sphinx required
--needs_sphinx = '1.8'
-+needs_sphinx = '1.7.6'
- 
- # Ignore any .rst files in the venv/ directory.
- exclude_patterns = ['venv/*', 'README.rst']
 --- a/Doc/library/turtle.rst
 +++ b/Doc/library/turtle.rst
 @@ -250,7 +250,6 @@ Turtle motion
