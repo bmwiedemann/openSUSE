@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 14 15:41:56 UTC 2022 - chris@computersalat.de
+
+- Fix for boo#1162794 (CVE-2019-10784)
+  * add csrf-samesite-fix.patch
+    taken from here:
+    https://github.com/phppgadmin/phppgadmin/issues/94
+    https://github.com/phppgadmin/phppgadmin/pull/99
+
+-------------------------------------------------------------------
 Mon Dec 14 12:13:12 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 7.13.0

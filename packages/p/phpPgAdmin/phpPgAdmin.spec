@@ -1,7 +1,7 @@
 #
 # spec file for package phpPgAdmin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Source0:        https://github.com/%{lc_name}/%{lc_name}/releases/download/%{rel
 Source1:        %{name}.http
 Source2:        %{name}.http.inc
 Patch0:         %{name}-config.inc.patch
+Patch100:       csrf-samesite-fix.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  apache-rpm-macros
@@ -83,6 +84,7 @@ This subpackage contains the Apache configuration files
 %prep
 %setup -q
 %patch0
+%patch100
 
 ### remove not needed files
 pushd lang
