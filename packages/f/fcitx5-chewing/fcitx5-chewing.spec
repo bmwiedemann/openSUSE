@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-chewing
-Version:        5.0.10
+Version:        5.0.12
 Release:        0
 Summary:        Chewing Wrapper for Fcitx5
 License:        GPL-2.0-or-later
@@ -34,7 +34,7 @@ Requires:       chewing-data
 Requires:       chewing-utils
 Requires:       fcitx5
 Provides:       fcitx-chewing = %{version}
-Obsoletes:      fcitx-chewing >= 0.2.3
+Obsoletes:      fcitx-chewing < %{version}
 %if 0%{?suse_version} <= 1520
 BuildRequires:  appstream-glib-devel
 %endif
@@ -56,7 +56,7 @@ Chewing Wrapper for Fcitx5.
 %files -f %{name}.lang
 %license LICENSES
 %doc README.md
-%{_fcitx5_libdir}/chewing.so
+%{_fcitx5_libdir}/libchewing.so
 %{_fcitx5_addondir}/chewing.conf
 %{_fcitx5_imconfdir}/chewing.conf
 %{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx-chewing*
