@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Jul 08 07:02:53 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 2022.07.04:
+  * Bump the rest of the deps
+  * Bump chalk
+  * Bump object
+  * Bump tracing-subscriber
+  * Bump arbitrary and derive_arbitrary
+  * Bump cargo_metadata
+  * Bump semver
+  * Bump indexmap
+  * Bump serde_json
+  * Bump serde
+  * Bump smallvec
+  * Bump pulldown-cmark-to-cmark
+  * Bump either
+  * Bump quote
+  * Bump anyhow
+  * Bump crossbeam-channel
+  * fix: Extract Function produces duplicate fn names
+  * fix: report type mismatch on identifier in destructuring assignments
+  * fix: infer lhs first on ordinary assignment expressions
+  * fix: typos in hir-ty
+  * fix: Trigger flyimport completions in item lists again
+  * fix: escape for enum variant
+  * fix: variants rendering in pattern path
+  * Fix case of ignored/broken proc macro
+  * Add tests for #12669
+  * Fix blocks not considering stmt without semi as tails
+  * fix: Fix attribute macros on assoc items being discarded with disabled proc macros
+  * Fix Expr::MacroStmts using wrong scopes
+  * Update hir-ty test outputs
+  * fix: Simplify macro statement expansion handling
+  * fix: Fix flycheck sending cancel progress with no running process
+  * Add static assertions for some unreachble paths
+  * Correct wording
+  * Ignore the `bin` artifact for `bench` targets
+  * fix: improve whitespace insertion in pretty printer
+  * fix: Report proc macro errors in expressions correctly as well
+  * fix: Fix completions for locals not working properly inside macro calls
+  * fix: deduplicate cfg completions
+  * Udate unit tests
+  * complete raw identifier with "r#" prefix
+  * Correct target_feature completion
+  * Reduce intermediate allocations while printing witnesses
+  * Try to publish releases to OpenVSX
+  * fix: trailing ':' on empty inactive reasons
+  * Display witnesses of non-exhaustive match
+  * Implement type inference for assignee expressions
+  * Generalize some inference functions for patterns
+  * Add `Expr::Underscore`
+
+-------------------------------------------------------------------
 Fri Jul 01 02:26:58 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 2022.06.27:
