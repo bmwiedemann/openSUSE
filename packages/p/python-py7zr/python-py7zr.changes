@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 14 18:23:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove ancient python-pathlib from the build requirements but
+  leave the version as is. An update to the latest version 0.19.0
+  would require to package many more dependencies.
+- Clean up the spec-file a little bit
+- Use pytest. No pure python package should ever be untested.
+
+-------------------------------------------------------------------
 Sat Apr  3 12:20:11 UTC 2021 - Ismail Dönmez <idonmez@suse.com>
 
 - Fix sed line to use python3 and add a replacement for /usr/bin/python

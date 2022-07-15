@@ -1,7 +1,7 @@
 #
 # spec file for package python-py7zr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,27 +26,27 @@ License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/miurahr/py7zr
 Source0:        https://files.pythonhosted.org/packages/source/p/py7zr/py7zr-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pep517}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
-# begin test
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module pathlib}
+BuildRequires:  %{python_module pyannotate}
 BuildRequires:  %{python_module pycryptodome}
 BuildRequires:  %{python_module pylzma}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module texttable}
 BuildRequires:  %{python_module toml}
-# end test
+BuildRequires:  %{python_module wheel}
+# SECTION test requirements
+BuildRequires:  %{python_module pytest-remotedata}
+BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pycryptodome
 Requires:       python-texttable
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-#BuildArch:      noarch
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -60,10 +60,9 @@ find . -type f -name "*.py" -exec sed -i \
        {} \;
 
 sed -i -e 's|setuptools-scm>=3.5.0|setuptools-scm|g' setup.cfg
+sed -i -e '/addopts/d' tox.ini
 
 %build
-# Remove export CFLAGS=... for noarch packages (unneeded)
-export CFLAGS="%{optflags}"
 %python_build
 
 %install
@@ -81,13 +80,15 @@ done
 %python_uninstall_alternative py7zr
 
 %check
-#%%python_expand $python setup.py test
+# different format of argparse in python3.10
+python310_donttest=("-k" "not (test_cli_help or test_cli_no_subcommand)")
+%pytest -m "not benchmark" "${$python_donttest[@]}"
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst Changelog.rst
-%{python_sitelib}/*
-%pycache_only %{python_sitelib}/py7zr/__pycache__
+%{python_sitelib}/py7zr
+%{python_sitelib}/py7zr-%{version}*-info
 %python_alternative %{_bindir}/py7zr
 
 %changelog
