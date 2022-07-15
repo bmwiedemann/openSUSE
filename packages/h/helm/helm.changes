@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 15 07:25:55 UTC 2022 - dmueller@suse.com
+
+- Update to version 3.9.1:
+  * Upgrading to Kubernetes 1.24.2
+  * fix: improve logging & safety of statefulSetReady
+  * make token caching an opt in feature
+  * chore(deps): bump github.com/lib/pq from 1.10.5 to 1.10.6
+  * Upgrading to Kubernetes 1.24.1 packages
+  * chore(deps): bump github.com/Masterminds/squirrel from 1.5.2 to 1.5.3
+
+-------------------------------------------------------------------
 Fri Jul 08 07:19:35 UTC 2022 - dmueller@suse.com
 
 - Update to version 3.9.0:

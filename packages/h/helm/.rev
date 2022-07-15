@@ -336,4 +336,18 @@ See changelog in:
   * Updated to add Kubernetes 1.24 support</comment>
     <requestid>987819</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a002467f3f8610f2482f8e38d394a988</srcmd5>
+    <version>3.9.1</version>
+    <time>1657885970</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.9.1:
+  * Upgrading to Kubernetes 1.24.2
+  * fix: improve logging &amp; safety of statefulSetReady
+  * make token caching an opt in feature
+  * chore(deps): bump github.com/lib/pq from 1.10.5 to 1.10.6
+  * Upgrading to Kubernetes 1.24.1 packages
+  * chore(deps): bump github.com/Masterminds/squirrel from 1.5.2 to 1.5.3</comment>
+    <requestid>989346</requestid>
+  </revision>
 </revisionlist>
