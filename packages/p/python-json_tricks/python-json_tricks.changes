@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 14 17:58:22 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove ancient pathlib requirement for python3. It is part of the
+  stdlib since Python 3.4
+
+-------------------------------------------------------------------
 Mon Apr 19 06:34:11 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.15.5:

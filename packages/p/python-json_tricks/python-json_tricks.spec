@@ -1,7 +1,7 @@
 #
 # spec file for package python-json_tricks
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,6 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
-%define skip_python36 1
 Name:           python-json_tricks
 Version:        3.15.5
 Release:        0
@@ -31,20 +30,20 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-numpy
 Recommends:     python-pandas
-Recommends:     python-pathlib
 Recommends:     python-pytz
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module pathlib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 %if %{with python2}
 BuildRequires:  python-enum34
+BuildRequires:  python-pathlib
 %endif
 # /SECTION
 %ifpython2
+Requires:       python-pathlib
 Recommends:     python-enum34
 %endif
 %python_subpackages
@@ -78,6 +77,7 @@ As well as compression and disallowing duplicate keys.
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/json_tricks
+%{python_sitelib}/json_tricks-%{version}*-info
 
 %changelog
