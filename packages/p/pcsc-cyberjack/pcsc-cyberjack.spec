@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-cyberjack
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,13 @@
 %endif
 
 Name:           pcsc-cyberjack
-Version:        3.99.5final.SP14
+Version:        3.99.5final.SP15
 Release:        0
 URL:            https://www.reiner-sct.com/support/support-anfrage/?productGroup=77304735&product=77304820&q=driver&os=Linux#choice5
 Summary:        PC/SC IFD Handler for the Reiner SCT Cyberjack USB-SmartCard Readers
 License:        LGPL-2.1-or-later
 Group:          Productivity/Security
-Source:         https://support.reiner-sct.de/downloads/LINUX/V3.99.5_SP14/%{name}_%{version}.tar.gz
+Source:         https://support.reiner-sct.de/downloads/LINUX/V3.99.5_SP15/%{name}_%{version}.tar.bz2
 Source1:        %{name}-README.SUSE
 Source2:        40-cyberjack.rules
 Patch1:         ctapi-cyberjack-configure.patch
@@ -52,7 +52,6 @@ BuildRequires:  pkgconfig(udev)
 BuildRequires:  hal-devel
 BuildRequires:  libusb-devel
 %endif
-Supplements:    modalias(usb:v0C4Bp0100d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v0C4Bp0300d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v0C4Bp0400d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v0C4Bp0401d*dc*dsc*dp*ic*isc*ip*)
@@ -67,10 +66,13 @@ Supplements:    modalias(usb:v0C4Bp0505d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v0C4Bp0506d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v0C4Bp0507d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v0C4Bp0525d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v0C4Bp0527d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v0C4Bp0535d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v0C4Bp0551d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v0C4Bp0580d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v0C4Bp2000d*dc*dsc*dp*ic*isc*ip*)
-Supplements:    modalias(usb:v0C4Bp0551d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v0C4Bp2002d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v0C4Bp2007d*dc*dsc*dp*ic*isc*ip*)
 Requires:       pcsc-lite
 
 %description
@@ -79,7 +81,6 @@ Cyberjack pinpad/e-com/RFID USB chipcard readers.
 
 This driver is meant to be used with the PCSC-Lite daemon from the
 pcsc-lite package.
-
 
 %prep
 %setup -q
