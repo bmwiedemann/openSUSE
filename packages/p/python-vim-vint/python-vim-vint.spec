@@ -1,7 +1,7 @@
 #
 # spec file for package python-vim-vint
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,10 +30,7 @@ Patch0:         test-sys-executable.patch
 BuildRequires:  %{python_module PyYAML >= 3.11}
 BuildRequires:  %{python_module ansicolor >= 0.2.4}
 BuildRequires:  %{python_module chardet >= 2.3.0}
-BuildRequires:  %{python_module coverage >= 3.7.1}
-BuildRequires:  %{python_module pathlib}
 BuildRequires:  %{python_module pytest >= 2.6.4}
-BuildRequires:  %{python_module pytest-cov >= 1.8.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,6 +43,7 @@ BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-enum34 >= 1.0.4
 BuildRequires:  python-mock >= 1.0.1
+BuildRequires:  python-pathlib
 BuildRequires:  python-typing >= 3.6.2
 %endif
 %ifpython2
@@ -92,6 +90,7 @@ rm ./test/acceptance/test_cli.py
 %license LICENSE.txt
 %doc README.rst
 %python_alternative %{_bindir}/vint
-%{python_sitelib}/*
+%{python_sitelib}/vint
+%{python_sitelib}/vim_vint-%{version}*-info
 
 %changelog
