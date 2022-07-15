@@ -1,7 +1,7 @@
 #
 # spec file for package python-sparse
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-sparse
 Version:        0.13.0
@@ -26,10 +26,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pydata/sparse
 Source:         https://files.pythonhosted.org/packages/source/s/sparse/sparse-%{version}.tar.gz
-BuildRequires:  %{python_module pathlib}
 BuildRequires:  %{python_module setuptools}
 # SECTION test requirements
-BuildRequires:  %{python_module dask-array if %python-base < 3.10}
+BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module numba >= 0.49}
 BuildRequires:  %{python_module numpy >= 1.17}
 BuildRequires:  %{python_module pytest}
@@ -64,9 +63,7 @@ intended for somewhat general use.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# dask is not available for python310 yet
-python310_flags="--ignore sparse/tests/test_dask_interop.py"
-%pytest ${$python_flags}
+%pytest
 
 %files %{python_files}
 %doc README.rst docs/*.rst
