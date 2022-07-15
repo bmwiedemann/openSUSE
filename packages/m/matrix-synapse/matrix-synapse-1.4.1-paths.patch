@@ -24,20 +24,20 @@ Index: synapse/synapse/config/key.py
                  )
  
              self.signing_key = self.read_signing_keys(signing_key_path, "signing_key")
-@@ -181,7 +181,7 @@ class KeyConfig(Config):
+@@ -183,7 +183,7 @@ class KeyConfig(Config):
          generate_secrets: bool = False,
          **kwargs: Any,
      ) -> str:
 -        base_key_name = os.path.join(config_dir_path, server_name)
 +        base_key_name = os.path.join('/etc/matrix-synapse/keys.d', server_name)
+         macaroon_secret_key = ""
+         form_secret = ""
  
-         if generate_secrets:
-             macaroon_secret_key = 'macaroon_secret_key: "%s"' % (
 Index: synapse/synapse/config/logger.py
 ===================================================================
 --- synapse.orig/synapse/config/logger.py
 +++ synapse/synapse/config/logger.py
-@@ -157,7 +157,7 @@ class LoggingConfig(Config):
+@@ -150,7 +150,7 @@ class LoggingConfig(Config):
      def generate_config_section(
          self, config_dir_path: str, server_name: str, **kwargs: Any
      ) -> str:
@@ -45,30 +45,17 @@ Index: synapse/synapse/config/logger.py
 +        log_config = os.path.join('/etc/matrix-synapse/', server_name + ".log.config")
          return (
              """\
-         ## Logging ##
+         log_config: "%(log_config)s"
 Index: synapse/synapse/config/server.py
 ===================================================================
 --- synapse.orig/synapse/config/server.py
 +++ synapse/synapse/config/server.py
-@@ -707,7 +707,7 @@ class ServerConfig(Config):
+@@ -729,7 +729,7 @@ class ServerConfig(Config):
              bind_port = 8448
              unsecure_port = 8008
  
 -        pid_file = os.path.join(data_dir_path, "homeserver.pid")
 +        pid_file = os.path.join("/run/matrix-synapse", "homeserver.pid")
  
-         # Bring DEFAULT_ROOM_VERSION into the local-scope for use in the
-         # default config string
-Index: synapse/synapse/config/tls.py
-===================================================================
---- synapse.orig/synapse/config/tls.py
-+++ synapse/synapse/config/tls.py
-@@ -153,7 +153,7 @@ class TlsConfig(Config):
-         """If the TLS paths are not specified the default will be certs in the
-         config directory"""
- 
--        base_key_name = os.path.join(config_dir_path, server_name)
-+        base_key_name = os.path.join('/etc/matrix-synapse/keys.d', server_name)
- 
-         if bool(tls_certificate_path) != bool(tls_private_key_path):
-             raise ConfigError(
+         secure_listeners = []
+         unsecure_listeners = []

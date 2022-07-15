@@ -2,7 +2,7 @@ Index: synapse/pyproject.toml
 ===================================================================
 --- synapse.orig/pyproject.toml
 +++ synapse/pyproject.toml
-@@ -132,7 +132,7 @@ pymacaroons = ">=0.13.0"
+@@ -131,7 +131,7 @@ pymacaroons = ">=0.13.0"
  msgpack = ">=0.5.2"
  phonenumbers = ">=8.2.0"
  # we use GaugeHistogramMetric, which was added in prom-client 0.4.0.

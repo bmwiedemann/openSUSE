@@ -28,12 +28,14 @@
 %global bcrypt_version                3.2.0
 %global bleach_version                3.3.0
 %global canonicaljson_version         1.6.0
+%global canonicaljson_max_version     2
 %global cryptography_version          36.0.1
 %global frozendict_version            2.3.0
 %global idna_version                  3.3
 %global ijson_version                 3.1.4
 %global jsonschema_version            4.4.6
-%global matrix_common_version         1.1.0
+%global matrix_common_version         1.2.1
+%global matrix_common_max_version     2
 %global msgpack_version               1.0.3
 %global netaddr_version               0.8.0
 %global phonenumbers_version          8.12.44
@@ -45,13 +47,14 @@
 %global pymacaroons_version           0.13.0
 %global service_identity_version      21.1.0
 %global signedjson_version            1.1.4
+%global signedjson_max_version        2
 %global six_version                   1.16.0
 %global sortedcontainers_version      2.4.0
 %global systemd_version               234
 %global typing_extensions_version     4.1.1
 %global treq_version                  22.2.0
 %global unpaddedbase64_version        2.1.0
-%global matrix_synapse_ldap3_version  0.2.0
+%global matrix_synapse_ldap3_version  0.2.1
 %global packaging_version             21.3
 %global psycopg2_version              2.9.3
 %global pysaml2_version               7.1.2
@@ -74,12 +77,14 @@
 %global bcrypt_version                3.1.0
 %global bleach_version                1.4.3
 %global canonicaljson_version         1.4.0
+%global canonicaljson_max_version     2
 %global cryptography_version          3.4.7
 %global frozendict_version            2.1.3
 %global idna_version                  2.5
 %global ijson_version                 3.1.4
 %global jsonschema_version            3.0.0
-%global matrix_common_version         1.1.0
+%global matrix_common_version         1.2.1
+%global matrix_common_max_version     2
 %global msgpack_version               0.5.2
 %global netaddr_version               0.7.18
 %global phonenumbers_version          8.2.0
@@ -91,13 +96,14 @@
 %global pymacaroons_version           0.13.0
 %global service_identity_version      18.1.0
 %global signedjson_version            1.1.0
+%global signedjson_max_version        2
 %global six_version                   1.16.0
 %global sortedcontainers_version      1.4.4
 %global systemd_version               231
 %global typing_extensions_version     3.10.0
 %global treq_version                  15.1
 %global unpaddedbase64_version        2.1.0
-%global matrix_synapse_ldap3_version  0.1.0
+%global matrix_synapse_ldap3_version  0.2.1
 %global packaging_version             16.1
 %global psycopg2_version              2.8
 %global pysaml2_version               4.5.0
@@ -147,7 +153,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.61.1
+Version:        1.62.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -198,7 +204,7 @@ BuildRequires:  %{use_python}-bcrypt >= %{bcrypt_version}
 %requires_peq   %{use_python}-bcrypt
 BuildRequires:  %{use_python}-bleach >= %{bleach_version}
 %requires_peq   %{use_python}-bleach
-BuildRequires:  %{use_python}-canonicaljson >= %{canonicaljson_version}
+BuildRequires:  (%{use_python}-canonicaljson >= %{canonicaljson_version} with %{use_python}-canonicaljson <  %{canonicaljson_max_version})
 %requires_peq   %{use_python}-canonicaljson
 BuildRequires:  %{use_python}-cryptography >= %{cryptography_version}
 %requires_peq   %{use_python}-cryptography
@@ -210,7 +216,7 @@ BuildRequires:  %{use_python}-ijson >= %{ijson_version}
 %requires_peq   %{use_python}-ijson
 BuildRequires:  %{use_python}-jsonschema >= %{jsonschema_version}
 %requires_peq   %{use_python}-jsonschema
-BuildRequires:  %{use_python}-matrix_common >= %{matrix_common_version}
+BuildRequires:  (%{use_python}-matrix_common >= %{matrix_common_version} with %{use_python}-matrix_common <  %{matrix_common_max_version})
 %requires_peq   %{use_python}-matrix_common
 BuildRequires:  %{use_python}-msgpack >= %{msgpack_version}
 %requires_peq   %{use_python}-msgpack
@@ -232,7 +238,7 @@ BuildRequires:  %{use_python}-pymacaroons >= %{pymacaroons_version}
 %requires_peq   %{use_python}-pymacaroons
 BuildRequires:  %{use_python}-service_identity >= %{service_identity_version}
 %requires_peq   %{use_python}-service_identity
-BuildRequires:  %{use_python}-signedjson >= %{signedjson_version}
+BuildRequires:  (%{use_python}-signedjson >= %{signedjson_version} with %{use_python}-signedjson < %{signedjson_max_version})
 %requires_peq   %{use_python}-signedjson
 BuildRequires:  %{use_python}-six >= %{six_version}
 %requires_peq   %{use_python}-six
@@ -268,8 +274,6 @@ BuildRequires:  %{use_python}-lxml >= %{lxml_version}
 BuildRequires:  %{use_python}-sentry-sdk >= %{sentry_sdk_version}
 %requires_peq   %{use_python}-sentry-sdk
 %endif
-BuildRequires:  %{use_python}-PyJWT >= %{PyJWT_version}
-%requires_peq   %{use_python}-PyJWT
 %if %{with synapse_opentracing}
 BuildRequires:  %{use_python}-jaeger-client >= %{jaeger_client_version}
 %requires_peq   %{use_python}-jaeger-client
