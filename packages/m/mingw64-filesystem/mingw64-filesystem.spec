@@ -31,7 +31,7 @@
 %define _rpmmacrodir %{_sysconfdir}/rpm
 %endif
 Name:           mingw64-filesystem
-Version:        20220524
+Version:        20220620
 Release:        0
 Summary:        MinGW base filesystem and environment
 License:        GPL-2.0-or-later
@@ -64,8 +64,12 @@ Provides:       mingw64(uxtheme.dll)
 # needed by mingw64-libqt5-qtbase
 Provides:       mingw64(d2d1.dll)
 Provides:       mingw64(d3d11.dll)
+Provides:       mingw64(d3d12.dll)
+Provides:       mingw64(dcomp.dll)
 Provides:       mingw64(dwrite.dll)
+Provides:       mingw64(dxgi.dll)
 Provides:       mingw64(ncrypt.dll)
+Provides:       mingw64(wtsapi32.dll)
 Requires:       mingw64-cross-breakpad-tools
 Requires:       python3
 Requires:       rpm

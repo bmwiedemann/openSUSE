@@ -71,8 +71,16 @@
 #   %global _mingw64_find_requires_scan_implibs 1
 # to the related spec file
 #
+# To exclude project wide shared library requirements add this to project config 
+#   Macros:
+#   %_mingw64_find_requires_exclude "d3d12 ..."
+#   :Macros
+# for a single package add 
+#   %global _mingw64_find_requires_exclude "d3d12 ..."
+# to the related spec file
+# 
 %_mingw64_findprovides    /usr/lib/rpm/mingw64-find-provides.sh
-%_mingw64_findrequires    /usr/lib/rpm/mingw64-find-requires.sh %{?_mingw64_find_requires_scan_implibs:--scan-implibs}
+%_mingw64_findrequires    /usr/lib/rpm/mingw64-find-requires.sh %{?_mingw64_find_requires_exclude:--exclude "%_mingw64_find_requires_exclude"} %{?_mingw64_find_requires_scan_implibs:--scan-implibs}
 %_mingw64_install_post    /usr/lib/rpm/mingw64-install-post.sh
 %_mingw64_find_lang       /usr/lib/rpm/mingw64-find-lang.sh %{buildroot}
 
