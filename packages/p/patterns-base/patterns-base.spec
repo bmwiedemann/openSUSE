@@ -149,6 +149,7 @@ Recommends:     terminfo
 Recommends:     terminfo-iterm
 Recommends:     terminfo-screen
 Recommends:     timezone
+Recommends:     service(network)
 # We don't necessarily want zypper in specific minimal environments
 # e.g. buildroots and locked down appliance environments
 Recommends:     zypper
@@ -167,10 +168,13 @@ Suggests:       postfix
 # We have two providers of psmisc, favour the regular one (not the busybox one)
 Suggests:       psmisc
 # we have two providers for 'pulseaudio' - prefer pipewire or pipewire depending on suse_version
+# we have two providers for 'service(network)' - prefer NM or wicked depending on suse_version
 %if 0%{?suse_version} > 1500
 Suggests:       pipewire-pulseaudio
+Suggests:       NetworkManager
 %else
 Suggests:       pulseaudio
+Suggests:       wicked
 %endif
 # hint for aaa_base requiring /usr/bin/xz
 Suggests:       xz

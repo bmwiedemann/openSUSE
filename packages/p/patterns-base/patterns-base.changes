@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 14 15:18:00 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Have the base pattern recommend service(network) 
+
+-------------------------------------------------------------------
 Thu Jul  7 14:14:15 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Downgrade mailx to Suggests, most users don't even know what it is
