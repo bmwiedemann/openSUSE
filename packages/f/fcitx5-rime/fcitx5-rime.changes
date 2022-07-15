@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul  5 11:29:20 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.14
+  * Status change notification now uses its own notification id, so you
+    can hide them individually. Previously they were using the same id of
+    the notification of deployment.
+
+-------------------------------------------------------------------
 Sat Mar 12 11:10:26 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 5.0.12
