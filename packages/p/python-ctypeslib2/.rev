@@ -55,4 +55,13 @@
     <comment></comment>
     <requestid>982775</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>bad93204f618b84f461b1719310cef60</srcmd5>
+    <version>2.3.2</version>
+    <time>1657885951</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid install error with updated setuptools
+  * gh#trolldbois/ctypeslib#94 (forwarded request 989222 from bnavigator)</comment>
+    <requestid>989223</requestid>
+  </revision>
 </revisionlist>

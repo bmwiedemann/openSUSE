@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 14 16:14:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Avoid install error with updated setuptools
+  * gh#trolldbois/ctypeslib#94
+
+-------------------------------------------------------------------
 Wed Jun 15 11:17:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add ctypeslib-pr113-clang2py-h.patch

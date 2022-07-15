@@ -59,8 +59,11 @@ Python FFI toolkit using clang.
 %autosetup -p1 -n ctypeslib2-%{version}
 sed -i '1{/^#!/d}' ctypeslib/clang2py.py
 
-# avoid pkg_resources errors because python3-clang does not provide an egg-info (even upstream does not)
+# avoid pkg_resources/importlib errors because python3-clang does not provide an egg-info (even upstream does not)
 sed -i '/clang>=/ d' setup.py
+
+# avoid toml error: gh#trolldbois/ctypeslib#94
+sed -i 's/True/true/' pyproject.toml
 
 %build
 %python_build
