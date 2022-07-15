@@ -45,6 +45,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Clients
 URL:            https://www.claws-mail.org/
 Source:         https://www.claws-mail.org/download.php?file=releases/%{name}-%{version}.tar.xz
+Patch0:         5fee50c54a370fdfb5241bd4c4c16281a741762e.patch
 BuildRequires:  compface-devel
 BuildRequires:  db-devel
 BuildRequires:  docbook-utils
@@ -156,7 +157,7 @@ This package contains header files for building plugins.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/python/' tools/*.py
 sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/*.sh
 sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/kdeservicemenu/install.sh

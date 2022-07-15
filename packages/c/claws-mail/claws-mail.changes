@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 14 23:20:29 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Backport 5fee50c54a370fdfb5241bd4c4c16281a741762e.patch:
+  This fixes building with newer perl.
+- Switch package to autosetup.
+
+-------------------------------------------------------------------
 Thu Jun 23 20:43:56 UTC 2022 - <d_werner@gmx.net>
 
 - claws-mail 4.x.x with GTK 3 ignores the plugin setting in the 

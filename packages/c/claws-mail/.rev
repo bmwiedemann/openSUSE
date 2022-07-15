@@ -930,4 +930,14 @@ No changes entry, as it's just a correction of the last changes entry.</comment>
   [Plugins_GTK3] in the skel/.claws-mail/clawsrc file (bnc#1200880)</comment>
     <requestid>984852</requestid>
   </revision>
+  <revision rev="106" vrev="3">
+    <srcmd5>3c33db7b07009dd60c8e464b6eb73025</srcmd5>
+    <version>4.1.0</version>
+    <time>1657885954</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport 5fee50c54a370fdfb5241bd4c4c16281a741762e.patch:
+  This fixes building with newer perl.
+- Switch package to autosetup.</comment>
+    <requestid>989274</requestid>
+  </revision>
 </revisionlist>
