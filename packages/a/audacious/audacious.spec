@@ -1,7 +1,7 @@
 #
 # spec file for package audacious
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define aud_plugin_ver_min 4.1
-%define aud_plugin_ver_max 4.1.99
+%define aud_plugin_ver_min 4.2
+%define aud_plugin_ver_max 4.2.99
 %define core_soname 5
 %define qt_soname 2
 %define gtk_soname 5
 %define tag_soname 3
 Name:           audacious
-Version:        4.1
+Version:        4.2
 Release:        0
 Summary:        Audio player with graphical UI and library functionality
 License:        BSD-2-Clause
@@ -82,8 +82,8 @@ Library from the Audacious audio player.
 %package devel
 Summary:        Development files for Audacious
 Requires:       libaudcore%{core_soname} = %{version}
-Requires:       libaudqt%{qt_soname} = %{version}
 Requires:       libaudgui%{gtk_soname} = %{version}
+Requires:       libaudqt%{qt_soname} = %{version}
 Requires:       libaudtag%{tag_soname} = %{version}
 
 %description devel
