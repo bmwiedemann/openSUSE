@@ -6,7 +6,7 @@ oldwd="$(pwd)"
 tmpdir="$(mktemp -d)"
 
 version=$(grep "Version:" element-web.spec | awk '{print $2}')
-osc rm element-web-*.tar.gz
+osc rm --force element-web-*.tar.gz || :
 wget -c https://github.com/vector-im/element-web/archive/v${version}.tar.gz -O element-web-${version}.tar.gz
 wget https://meet.element.io/libs/external_api.min.js -O jitsi_external_api.min.js
 osc add element-web-*.tar.gz
@@ -25,8 +25,8 @@ rm -rf node_modules/
 yarn install --pure-lockfile || : # this will download tha packages into the offline cache
 
 # download some additional dependencie that slips through this earlier method
-wget -O ./npm-packages-offline-cache/matrix-analytics-events-0.0.1.tgz $(grep -m1 -A2 "matrix-analytics-events" yarn.lock | grep resolved | awk '{print $NF}' | tr -d '"')
 cd ./npm-packages-offline-cache/
+wget -O matrix-analytics-events-0.0.1.tgz $(grep -m1 -A2 "@matrix.org/analytics-events" ../yarn.lock | grep resolved | awk '{print $NF}' | tr -d '"')
 mkdir package
 tar xvf matrix-analytics-events-0.0.1.tgz --strip-components=1 -C package/
 tar czf matrix-analytics-events-0.0.1.tgz package/
