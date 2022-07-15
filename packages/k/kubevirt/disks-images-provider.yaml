@@ -19,7 +19,7 @@ spec:
       serviceAccountName: kubevirt-testing
       containers:
         - name: target
-          image: quay.io/kubevirt/disks-images-provider:v0.54.0
+          image: quay.io/kubevirt/disks-images-provider:v0.55.0
           imagePullPolicy: Always
           lifecycle:
             preStop:
