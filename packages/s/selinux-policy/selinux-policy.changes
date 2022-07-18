@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 14 08:44:12 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 20220714. Refreshed:
+  * fix_init.patch
+  * fix_systemd_watch.patch
+
+-------------------------------------------------------------------
 Wed Jul 13 07:48:41 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Update fix_systemd.patch to add cap sys_admin and kernel_dgram_send for
