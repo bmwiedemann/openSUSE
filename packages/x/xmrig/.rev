@@ -453,4 +453,31 @@
   * v6.16.5-dev</comment>
     <requestid>967848</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9b7e49f4ed11a9f7bd37376bb6df3898</srcmd5>
+    <version>6.18.0</version>
+    <time>1658162082</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 6.18.0:
+  * v6.18.0
+  * v6.18.0-dev
+  * Update hwloc for msvc.
+  * Update deps.
+  * Better fix for daemon solo mining with ZMQ
+  * Improved daemon ZMQ mining stability
+  * Fixed ZMQ debug log
+  * Monero v15 network upgrade support
+  * Fixed debug GhostRider build
+  * Removed deprecated AstroBWTv1 and v2
+  * Fixes for 32-bit ARM
+  * Fixed unaligned memory read in DMI
+  * Fixed being unable to resume from pause-on-battery
+  * Fixed --cpu-priority not working sometimes
+  * Removed old AstroBWT algorithm
+  * v6.17.1-dev
+
+- Update to version 6.17.0:
+  * Add armv7 to supported architectures</comment>
+    <requestid>989992</requestid>
+  </revision>
 </revisionlist>
