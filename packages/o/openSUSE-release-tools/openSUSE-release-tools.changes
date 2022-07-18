@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 15 11:37:46 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220715.4fd15522:
+  * rabbit-openqa: If OSRT:OpenQAMapping contains garbage, just continue
+
+-------------------------------------------------------------------
 Thu Jul 14 14:13:31 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220714.70a1c647:
