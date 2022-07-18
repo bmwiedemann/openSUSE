@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 16 19:00:16 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.42.0:
+  * bump syft version to v0.51.0 (#822)
+  * feat: implement `grype db diff` command (#812)
+  * fix typo in log message (#819)
+
+-------------------------------------------------------------------
 Wed Jul 06 18:11:46 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.41.0:
