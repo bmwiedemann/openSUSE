@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jul 16 18:26:53 UTC 2022 - Ailin Nemui <ailin.nemui@gmail.com>
+
+- drop patches; upstreamed
+  - drop use-isystem-for-include.patch, upstreamed
+  - drop fix-textbuffer-view.patch, upstreamed
+  - drop default-hash-chan.patch, upstreamed
+- update to 1.4.2
+  * Add irssimoduledir to irssi-1.pc in the Meson build (#1383,
+    #1378)
+  - Use -isystem includes, limiting warnings to Irssi
+    code. Fixes compilation with Perl 5.36 (#1381,
+    gentoo#851522, #1384)
+  - Fix missing lines when changing dynamic textbuffer contents
+    (#1382, #1387). Reported by externalserver15
+  - Fix Perl cross compilation with Meson 0.60.0 (#1377)
+  - Fix default channel prefix used for /JOIN to default to `#'
+    (#1385, #1388)
+  - Fix crash in /LASTLOG by getting line texts before printing
+    (#1367, #1398)
+
+-------------------------------------------------------------------
 Tue Jun 14 14:52:59 UTC 2022 - Ailin Nemui <ailin.nemui@gmail.com>
 
 - backport first set of fixes:
