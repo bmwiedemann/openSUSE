@@ -1,7 +1,7 @@
 #
 # spec file for package ovmf
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # needssslcertforbuild
 
@@ -27,7 +27,7 @@ Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
 Group:          System/Emulators/PC
-Url:            https://github.com/tianocore/edk2
+URL:            https://github.com/tianocore/edk2
 Source0:        edk2-edk2-stable%{version}.tar.gz
 Source1:        https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz
 Source111:      https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz.asc
@@ -53,6 +53,7 @@ Patch5:         %{name}-set-fixed-enroll-time.patch
 Patch6:         %{name}-disable-brotli.patch
 Patch7:         %{name}-bsc1196879-sev-fix.patch
 Patch8:         %{name}-ignore-spurious-GCC-12-warning.patch
+Patch9:         %{name}-tools_def-add-fno-omit-frame-pointer-to-GCC48_-IA32-.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -170,6 +171,7 @@ rm -rf $PKG_TO_REMOVE
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 21 07:46:23 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- add ovmf-tools_def-add-fno-omit-frame-pointer-to-GCC48_-IA32-.patch.
+  It fixes crashes when linked using gcc 12 (bsc#1199597).
+
+-------------------------------------------------------------------
 Mon May  2 09:51:21 UTC 2022 - jlee@suse.com
 
 - Respin amd-sev and amd-sev-es features
