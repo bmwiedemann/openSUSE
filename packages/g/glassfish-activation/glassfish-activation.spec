@@ -106,6 +106,15 @@ install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
 cp -r activation/target/site/apidocs/* %{buildroot}/%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 
+%triggerpostun api -- gnu-jaf
+if [ -f %{_javadir}/%{name}-api.jar ] ; then
+    if [ -f %{_javadir}/jaf.jar ] ; then
+        rm -f %{_javadir}/jaf.jar
+    fi
+    ln -sf %{name}-api.jar %{_javadir}/jaf.jar
+fi
+exit 0
+
 %files -f .mfiles
 %license LICENSE.txt
 %doc README.md

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 13 14:11:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Avoid missing symlink %_javadir/jaf.jar, by recreating it when
+  gnu-jaf is uninstalled
+
+-------------------------------------------------------------------
 Tue Jul 12 09:28:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Add symlinks to jaf.jar and activation.jar which were part

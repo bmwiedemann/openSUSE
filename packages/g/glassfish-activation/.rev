@@ -23,4 +23,12 @@
     <comment>Add symlinks to jaf.jar and activation.jar which were part of the obsoleted gnu-jaf</comment>
     <requestid>988579</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9300ae968518b6ff1d793112c3120920</srcmd5>
+    <version>1.2.0</version>
+    <time>1658161975</time>
+    <user>RBrownFactory</user>
+    <comment>Try to make the upgrade which removed gnu-jaf as smooth as possible</comment>
+    <requestid>989128</requestid>
+  </revision>
 </revisionlist>
