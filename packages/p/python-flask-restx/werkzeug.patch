@@ -1,0 +1,290 @@
+From bb72a51860ea8a42c928f69bdd44ad20b1f9ee7e Mon Sep 17 00:00:00 2001
+From: "Stacy W. Smith" <stacys@netflix.com>
+Date: Mon, 28 Mar 2022 17:48:36 -0600
+Subject: [PATCH 1/2] Handle Werkzeug 2.1.0 change to `Request.get_json()`.
+
+pallets/werkzeug#2339 changed the behavior of `Request.get_json()`
+and the `Request.json` property to raise a `BadRequest` if `Request.get_json()`
+is called without `silent=True`, or the `Request.json` property is accessed,
+and the content type is not `"application/json"`.
+
+Argument parsing allows parsing from multiple locations, and defaults to
+`["json", "values"]`, but if the locations include `"json"` and the content
+type is not `"application/json"`, a `BadRequest` is now raised with Werkzeug >= 2.1.0.
+
+Invoking `Request.get_json()` with the `silent=True` parameter now handles
+the situation where `"json"` is included in the locations, but the content type
+is not `"application/json"`.
+---
+ flask_restx/reqparse.py | 10 ++++++++--
+ tests/test_reqparse.py  | 18 +++++++++++-------
+ 2 files changed, 19 insertions(+), 9 deletions(-)
+
+diff --git a/flask_restx/reqparse.py b/flask_restx/reqparse.py
+index 63260660..6fc327b9 100644
+--- a/flask_restx/reqparse.py
++++ b/flask_restx/reqparse.py
+@@ -138,7 +138,10 @@ def source(self, request):
+         :param request: The flask request object to parse arguments from
+         """
+         if isinstance(self.location, six.string_types):
+-            value = getattr(request, self.location, MultiDict())
++            if self.location in {"json", "get_json"}:
++                value = request.get_json(silent=True)
++            else:
++                value = getattr(request, self.location, MultiDict())
+             if callable(value):
+                 value = value()
+             if value is not None:
+@@ -146,7 +149,10 @@ def source(self, request):
+         else:
+             values = MultiDict()
+             for l in self.location:
+-                value = getattr(request, l, None)
++                if l in {"json", "get_json"}:
++                    value = request.get_json(silent=True)
++                else:
++                    value = getattr(request, l, None)
+                 if callable(value):
+                     value = value()
+                 if value is not None:
+diff --git a/tests/test_reqparse.py b/tests/test_reqparse.py
+index 18710f3b..174f2988 100644
+--- a/tests/test_reqparse.py
++++ b/tests/test_reqparse.py
+@@ -41,8 +41,9 @@ def test_help(self, app, mocker):
+         )
+         parser = RequestParser()
+         parser.add_argument("foo", choices=("one", "two"), help="Bad choice.")
+-        req = mocker.Mock(["values"])
++        req = mocker.Mock(["values", "get_json"])
+         req.values = MultiDict([("foo", "three")])
++        req.get_json.return_value = None
+         with pytest.raises(BadRequest):
+             parser.parse_args(req)
+         expected = {
+@@ -58,7 +59,8 @@ def test_no_help(self, app, mocker):
+         )
+         parser = RequestParser()
+         parser.add_argument("foo", choices=["one", "two"])
+-        req = mocker.Mock(["values"])
++        req = mocker.Mock(["values", "get_json"])
++        req.get_json.return_value = None
+         req.values = MultiDict([("foo", "three")])
+         with pytest.raises(BadRequest):
+             parser.parse_args(req)
+@@ -76,9 +78,9 @@ def test_viewargs(self, mocker):
+         args = parser.parse_args(req)
+         assert args["foo"] == "bar"
+ 
+-        req = mocker.Mock()
++        req = mocker.Mock(["get_json"])
+         req.values = ()
+-        req.json = None
++        req.get_json.return_value = None
+         req.view_args = {"foo": "bar"}
+         parser = RequestParser()
+         parser.add_argument("foo", store_missing=True)
+@@ -101,11 +103,12 @@ def test_parse_unicode_app(self, app):
+             args = parser.parse_args()
+             assert args["foo"] == "barß"
+ 
+-    @pytest.mark.request_context("/bubble", method="post")
++    @pytest.mark.request_context(
++        "/bubble", method="post", content_type="application/json"
++    )
+     def test_json_location(self):
+         parser = RequestParser()
+         parser.add_argument("foo", location="json", store_missing=True)
+-
+         args = parser.parse_args()
+         assert args["foo"] is None
+ 
+@@ -856,7 +859,8 @@ def test_source_bad_location(self, mocker):
+         assert len(arg.source(req)) == 0  # yes, basically you don't find it
+ 
+     def test_source_default_location(self, mocker):
+-        req = mocker.Mock(["values"])
++        req = mocker.Mock(["values", "get_json"])
++        req.get_json.return_value = None
+         req._get_child_mock = lambda **kwargs: MultiDict()
+         arg = Argument("foo")
+         assert arg.source(req) == req.values
+
+From 57c5beb313e2b297c10ec3fb305c37c0760e9209 Mon Sep 17 00:00:00 2001
+From: "Stacy W. Smith" <stacy@acm.org>
+Date: Fri, 1 Apr 2022 15:04:45 -0600
+Subject: [PATCH 2/2] Black formatting changes in modified files which are
+ unrelated to the PR change.
+
+---
+ flask_restx/reqparse.py |  5 ++-
+ tests/test_reqparse.py  | 84 ++++++++++++++++++++++++++++++++++-------
+ 2 files changed, 75 insertions(+), 14 deletions(-)
+
+diff --git a/flask_restx/reqparse.py b/flask_restx/reqparse.py
+index 6fc327b9..18ce6cf9 100644
+--- a/flask_restx/reqparse.py
++++ b/flask_restx/reqparse.py
+@@ -106,7 +106,10 @@ def __init__(
+         required=False,
+         ignore=False,
+         type=text_type,
+-        location=("json", "values",),
++        location=(
++            "json",
++            "values",
++        ),
+         choices=(),
+         action="store",
+         help=None,
+diff --git a/tests/test_reqparse.py b/tests/test_reqparse.py
+index 174f2988..3ac89a7a 100644
+--- a/tests/test_reqparse.py
++++ b/tests/test_reqparse.py
+@@ -914,28 +914,47 @@ def test_unknown_type(self):
+         parser = RequestParser()
+         parser.add_argument("unknown", type=lambda v: v)
+         assert parser.__schema__ == [
+-            {"name": "unknown", "type": "string", "in": "query",}
++            {
++                "name": "unknown",
++                "type": "string",
++                "in": "query",
++            }
+         ]
+ 
+     def test_required(self):
+         parser = RequestParser()
+         parser.add_argument("int", type=int, required=True)
+         assert parser.__schema__ == [
+-            {"name": "int", "type": "integer", "in": "query", "required": True,}
++            {
++                "name": "int",
++                "type": "integer",
++                "in": "query",
++                "required": True,
++            }
+         ]
+ 
+     def test_default(self):
+         parser = RequestParser()
+         parser.add_argument("int", type=int, default=5)
+         assert parser.__schema__ == [
+-            {"name": "int", "type": "integer", "in": "query", "default": 5,}
++            {
++                "name": "int",
++                "type": "integer",
++                "in": "query",
++                "default": 5,
++            }
+         ]
+ 
+     def test_default_as_false(self):
+         parser = RequestParser()
+         parser.add_argument("bool", type=inputs.boolean, default=False)
+         assert parser.__schema__ == [
+-            {"name": "bool", "type": "boolean", "in": "query", "default": False,}
++            {
++                "name": "bool",
++                "type": "boolean",
++                "in": "query",
++                "default": False,
++            }
+         ]
+ 
+     def test_choices(self):
+@@ -958,31 +977,59 @@ def test_location(self):
+         parser.add_argument("in_headers", type=int, location="headers")
+         parser.add_argument("in_cookie", type=int, location="cookie")
+         assert parser.__schema__ == [
+-            {"name": "default", "type": "integer", "in": "query",},
+-            {"name": "in_values", "type": "integer", "in": "query",},
+-            {"name": "in_query", "type": "integer", "in": "query",},
+-            {"name": "in_headers", "type": "integer", "in": "header",},
++            {
++                "name": "default",
++                "type": "integer",
++                "in": "query",
++            },
++            {
++                "name": "in_values",
++                "type": "integer",
++                "in": "query",
++            },
++            {
++                "name": "in_query",
++                "type": "integer",
++                "in": "query",
++            },
++            {
++                "name": "in_headers",
++                "type": "integer",
++                "in": "header",
++            },
+         ]
+ 
+     def test_location_json(self):
+         parser = RequestParser()
+         parser.add_argument("in_json", type=str, location="json")
+         assert parser.__schema__ == [
+-            {"name": "in_json", "type": "string", "in": "body",}
++            {
++                "name": "in_json",
++                "type": "string",
++                "in": "body",
++            }
+         ]
+ 
+     def test_location_form(self):
+         parser = RequestParser()
+         parser.add_argument("in_form", type=int, location="form")
+         assert parser.__schema__ == [
+-            {"name": "in_form", "type": "integer", "in": "formData",}
++            {
++                "name": "in_form",
++                "type": "integer",
++                "in": "formData",
++            }
+         ]
+ 
+     def test_location_files(self):
+         parser = RequestParser()
+         parser.add_argument("in_files", type=FileStorage, location="files")
+         assert parser.__schema__ == [
+-            {"name": "in_files", "type": "file", "in": "formData",}
++            {
++                "name": "in_files",
++                "type": "file",
++                "in": "formData",
++            }
+         ]
+ 
+     def test_form_and_body_location(self):
+@@ -1012,7 +1059,13 @@ def test_models(self):
+         )
+         parser = RequestParser()
+         parser.add_argument("todo", type=todo_fields)
+-        assert parser.__schema__ == [{"name": "todo", "type": "Todo", "in": "body",}]
++        assert parser.__schema__ == [
++            {
++                "name": "todo",
++                "type": "Todo",
++                "in": "body",
++            }
++        ]
+ 
+     def test_lists(self):
+         parser = RequestParser()
+@@ -1065,5 +1118,10 @@ def test_callable_default(self):
+         parser = RequestParser()
+         parser.add_argument("int", type=int, default=lambda: 5)
+         assert parser.__schema__ == [
+-            {"name": "int", "type": "integer", "in": "query", "default": 5,}
++            {
++                "name": "int",
++                "type": "integer",
++                "in": "query",
++                "default": 5,
++            }
+         ]

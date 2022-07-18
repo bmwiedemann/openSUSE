@@ -1,0 +1,41 @@
+From bb3e9dd83b9d4c0d0fa0de7d7ff713fae71eccee Mon Sep 17 00:00:00 2001
+From: "Stacy W. Smith" <stacy@acm.org>
+Date: Sat, 2 Apr 2022 08:25:55 -0600
+Subject: [PATCH] Handle Werkzeug 2.1.0 change to
+ Response.autocorrect_location_header.
+
+Fixes #426
+
+pallets/werkzeug#2352 changed the default value of Response.autocorrect_location_header from True to False in Werkzeug >= 2.1.0.
+
+tests/legacy/test_api_legacy.py::APITest::test_redirect depended upon Response.autocorrect_location_header being True.
+
+Change `test_redirect()` to explicitly set `Response.autocorrect_location_header` to `False`, for backwards compatibility, and change the expected result for the test from an absolute URL to the relative URL.
+---
+ tests/legacy/test_api_legacy.py | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/tests/legacy/test_api_legacy.py b/tests/legacy/test_api_legacy.py
+index 5d6649c8..24d7586b 100644
+--- a/tests/legacy/test_api_legacy.py
++++ b/tests/legacy/test_api_legacy.py
+@@ -373,13 +373,17 @@ def get(self):
+     def test_redirect(self, api, client):
+         class FooResource(restx.Resource):
+             def get(self):
+-                return redirect("/")
++                response = redirect("/")
++                # Response.autocorrect_location_header = False is now the default in Werkzeug >= 2.1
++                # It is explicitly set here so the test remains backwards compatible with previous versions of Werkzeug.
++                response.autocorrect_location_header = False
++                return response
+ 
+         api.add_resource(FooResource, "/api")
+ 
+         resp = client.get("/api")
+         assert resp.status_code == 302
+-        assert resp.headers["Location"] == "http://localhost/"
++        assert resp.headers["Location"] == "/"
+ 
+     def test_calling_owns_endpoint_before_api_init(self):
+         api = restx.Api()

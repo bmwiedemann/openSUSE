@@ -24,6 +24,10 @@ Release:        0
 Summary:        Framework for fast, easy and documented API development with Flask
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
+#PATCH-FIX-UPSTREAM https://github.com/python-restx/flask-restx/pull/423 Handle change to Werkzeug 2.1.0 change to Request.get_json().
+Patch0:         werkzeug.patch
+#PATCH-FIX-UPSTREAM https://github.com/python-restx/flask-restx/pull/427 Handle Werkzeug 2.1.0 change to Response.autocorrect_location_header.
+Patch1:         redirect.patch
 URL:            https://github.com/python-restx/flask-restx
 Source:         https://github.com/python-restx/flask-restx/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Faker}
@@ -62,6 +66,7 @@ its documentation properly using Swagger.
 
 %prep
 %setup -q -n flask-restx-%{version}
+%autopatch -p1
 
 %build
 %python_build
