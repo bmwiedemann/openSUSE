@@ -30,7 +30,6 @@ Patch0:         pytest6.patch
 Patch1:         python-html5lib-no-mock.patch
 BuildRequires:  %{python_module Genshi}
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module pytest-expect}
 BuildRequires:  %{python_module setuptools >= 18.5}

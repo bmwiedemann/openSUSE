@@ -197,4 +197,12 @@
     <comment></comment>
     <requestid>964384</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>04b1277f9a4a916fb9dd9f188da97e7e</srcmd5>
+    <version>1.1</version>
+    <time>1658161968</time>
+    <user>RBrownFactory</user>
+    <comment>- Remove BuildRequires on mock.</comment>
+    <requestid>989067</requestid>
+  </revision>
 </revisionlist>
