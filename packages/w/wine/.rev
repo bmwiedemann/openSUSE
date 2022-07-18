@@ -4490,4 +4490,19 @@
 - update staging to 7.12 release</comment>
     <requestid>986338</requestid>
   </revision>
+  <revision rev="382" vrev="1">
+    <srcmd5>2a9a4a510dbaefc98575f327dd1c451a</srcmd5>
+    <version>7.13</version>
+    <time>1658162009</time>
+    <user>RBrownFactory</user>
+    <comment>- updated to 7.13 development release
+  - Gecko engine updated to version 2.47.3.
+  - USB driver converted to PE.
+  - Some theming improvements.
+  - Various bug fixes.
+- update staging to 7.13 release
+
+- libcapi20-devel currently only for tumbleweed</comment>
+    <requestid>989582</requestid>
+  </revision>
 </revisionlist>

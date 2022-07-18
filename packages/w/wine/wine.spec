@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 7.12
-Version:        7.12
+%define realver 7.13
+Version:        7.13
 Release:        0
 
 %if "%{flavor}" != ""
@@ -50,6 +50,7 @@ BuildRequires:  llvm
 %endif
 BuildRequires:  cups-devel
 %if 0%{?suse_version} >= 1550
+BuildRequires:  libcapi20-devel
 BuildRequires:  vkd3d-devel
 %endif
 BuildRequires:  FAudio-devel
@@ -64,7 +65,6 @@ BuildRequires:  giflib-devel
 BuildRequires:  glib2-devel
 BuildRequires:  gstreamer-plugins-base-devel
 BuildRequires:  krb5-devel
-BuildRequires:  libcapi20-devel
 BuildRequires:  libgnutls-devel
 BuildRequires:  libgphoto2-devel
 BuildRequires:  libgsm-devel
@@ -146,8 +146,8 @@ Source7:        baselibs.conf
 Source8:        wine-rpmlintrc
 # SUSE specific patches
 # - currently none, but add them here
-Recommends:     wine-gecko >= 2.47.2
-Conflicts:      wine-gecko < 2.47.2
+Recommends:     wine-gecko >= 2.47.3
+Conflicts:      wine-gecko < 2.47.3
 Recommends:     wine-mono >= 7.2.0
 Conflicts:      wine-mono < 7.2.0
 # not packaged in distro...
@@ -164,7 +164,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 7.12
+%define staging_version 7.13
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
@@ -317,7 +317,8 @@ echo " conflicts \"otherproviders(wine-devel-<targettype>)\""		>> %SOURCE7
 
 cat %SOURCE7
 %endif
-make %{?_smp_mflags} all
+# parallel make currently broken in 7.13
+make all # %{?_smp_mflags} all
 
 %install
 make install DESTDIR=%{buildroot}

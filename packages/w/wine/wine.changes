@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jul 16 07:09:00 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.13 development release
+  - Gecko engine updated to version 2.47.3.
+  - USB driver converted to PE.
+  - Some theming improvements.
+  - Various bug fixes.
+- update staging to 7.13 release
+
+-------------------------------------------------------------------
+Wed Jul  6 11:11:33 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- libcapi20-devel currently only for tumbleweed
+
+-------------------------------------------------------------------
 Sat Jul  2 07:34:13 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.12 development release
