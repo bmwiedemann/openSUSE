@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 16 19:11:52 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.2.5:
+  * BUG FIXES:
+    - Report correct error message when a prerelease field is included in the required_version global constraint. (#31331)
+    - Fix case when extra blank lines were inserted into the plan for unchanged blocks. (#31330)
+
+-------------------------------------------------------------------
 Wed Jun 29 18:23:23 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - Update to 1.2.4:
