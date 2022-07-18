@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul  7 12:16:45 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Fixed initrd check in selinux-ready (bnc#1186127)
+
+-------------------------------------------------------------------
+Tue May 31 15:10:26 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Added restorecon_pin_file.patch. Fixes issus when running 
+  fixfiles/restorecon
+
+-------------------------------------------------------------------
 Mon May  9 10:23:32 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.4:

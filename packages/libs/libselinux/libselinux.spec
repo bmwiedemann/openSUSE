@@ -32,6 +32,7 @@ Source4:        baselibs.conf
 # PATCH-FIX-UPSTREAM Include <sys/uio.h> for readv prototype
 Patch4:         readv-proto.patch
 Patch5:         skip_cycles.patch
+Patch7:         restorecon_pin_file.patch
 BuildRequires:  fdupes
 BuildRequires:  libsepol-devel >= %{libsepol_ver}
 BuildRequires:  pkgconfig
@@ -101,6 +102,7 @@ necessary to develop your own software using libselinux.
 %setup -q -n libselinux-%{version}
 %patch4 -p1
 %patch5 -p1
+%patch7 -p1
 
 %build
 %define _lto_cflags %{nil}

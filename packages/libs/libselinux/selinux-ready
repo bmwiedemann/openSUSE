@@ -67,54 +67,47 @@ check_boot()
 
 check_mkinitrd()
 {
-	if [ "$INITRD" == "unknown" ]; then
-		return 1
-	fi
 	MCMD="mount.*/root/proc.*"
 
-	if ! [ -f "/boot/$INITRD" ];then
-		printf "\tcheck_mkinitrd: ERR. Unable to locate '/boot/$INITRD'\n"
+	if ! [ -f "/boot/initrd" ];then
+		printf "\tcheck_mkinitrd: ERR. Unable to locate '/boot/initrd'\n"
 		return 2
 	fi
 
-	cp /boot/$INITRD $TD/ 2>/dev/null
-
-	if ! [ -f "$TD/$INITRD" ];then
-		printf "\tcheck_mkinitrd: ERR. Error while copying initrd file.'\n"
-		return 2
-	fi
-
+	cp /boot/initrd $TD/ 2>/dev/null
 
 	pushd . 2>&1>/dev/null
 	cd $TD
 	mkdir initrd-extracted
 	cd initrd-extracted
-	INITRD_FORMAT=$(file $TD/$INITRD | awk -F' ' '{print $2}')
-  case $INITRD_FORMAT in
-  'XZ' )
-    xz -d -c $TD/$INITRD | cpio -i --force-local --no-absolute-filenames 2>/dev/null ;;
-  'ASCII' )
-    /usr/lib/dracut/skipcpio $TD/$INITRD | xz -d | cpio -i --force-local --no-absolute-filenames 2>/dev/null ;;
-  'gzip' )
-    gzip -d -c $TD/$INITRD | cpio -i --force-local --no-absolute-filenames 2>/dev/null ;;
-  * )
-		printf "\tcheck_mkinitrd: ERR. Error while extracting initrd file.'\n"
-    return 2
-  esac
-  if [ -d boot ]; then 
-    grep -E -- $MCMD boot/* 2>&1 >/dev/null
-    FLG1=$?
-    grep -E -- load_policy boot/* 2>&1 >/dev/null
-    FLG2=$?
-  else
-    # looks like we're using dracut/systemd. We can only check if libselinux1
-    # exists
-    if [ -f lib64/libselinux.so.1 ]; then
-      # if this exists 
-      FLG1=0
-      FLG2=0
-    fi
-  fi
+	INITRD_FORMAT=$(file $TD/initrd | awk -F' ' '{print $2}')
+	case $INITRD_FORMAT in
+	  'XZ' )
+	     xz -d -c $TD/initrd | cpio -i --force-local --no-absolute-filenames 2>/dev/null ;;
+	  'ASCII' )
+	    /usr/lib/dracut/skipcpio $TD/initrd | zstd -d | cpio -i --force-local --no-absolute-filenames 2>/dev/null ;;
+	  'gzip' )
+	    gzip -d -c $TD/initrd | cpio -i --force-local --no-absolute-filenames 2>/dev/null ;;
+          'Zstandard' )
+            zstd -d -c $TD/initrd | cpio -i --force-local --no-absolute-filenames 2>/dev/null ;;
+	  * )
+	    printf "\tcheck_mkinitrd: ERR. Error while extracting initrd file.'\n"
+	    return 2
+	esac
+	if [ -d boot ]; then 
+	  grep -E -- $MCMD boot/* 2>&1 >/dev/null
+	  FLG1=$?
+	  grep -E -- load_policy boot/* 2>&1 >/dev/null
+	  FLG2=$?
+	else
+	  # looks like we're using dracut/systemd. We can only check if libselinux1
+	  # exists
+	  if [ -f lib64/libselinux.so.1 ]; then
+	    # if this exists 
+	    FLG1=0
+	    FLG2=0
+	  fi
+	fi
 	popd 2>&1>/dev/null
 
 	if [ $FLG1 == 0 -a $FLG2 == 0 ];then

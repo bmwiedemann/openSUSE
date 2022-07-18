@@ -36,6 +36,7 @@ Patch4:         readv-proto.patch
 # Make linking working even when default pkg-config doesn’t provide -lpython<ver>
 Patch5:         python3.8-compat.patch
 Patch6:         swig4_moduleimport.patch
+Patch7:         restorecon_pin_file.patch
 BuildRequires:  libsepol-devel-static >= %{libsepol_ver}
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
