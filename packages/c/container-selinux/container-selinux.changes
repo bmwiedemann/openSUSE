@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 14 08:37:48 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 2.188.0:
+  * Allow confined containers to mount overlay filesystems
+  Fixed bsc#1201348
+
+-------------------------------------------------------------------
 Wed Jun 22 13:17:49 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to version 2.187.0:

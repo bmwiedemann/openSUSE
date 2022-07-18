@@ -107,4 +107,12 @@
     <user>dimstar_suse</user>
     <comment>osc copypac from project:home:fcrozat:branches:security:SELinux package:container-selinux revision:2, using expand</comment>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>402c6b1b54e4f4f26e2490ec6c07b62d</srcmd5>
+    <version>2.188.0</version>
+    <time>1658161964</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>989144</requestid>
+  </revision>
 </revisionlist>
