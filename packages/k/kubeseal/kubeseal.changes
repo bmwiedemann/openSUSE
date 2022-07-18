@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jul 16 19:16:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.18.1:
+  * New v0.18.1 release (#884)
+  * Add flagenv and pflagenv to the project (#882)
+  * Fixed typo in the CODEOWNERS file (#883)
+  * Static documentation site for Sealed Secrets (#877)
+  * feat: override rate limit (#873)
+  * add deploymentAnnotations field in helm chart (#864)
+  * Add Nixpkgs to installation options in README.md (#849)
+  * Updated CODEOWNERS and created maintainers file (#867)
+  * Release chart v2.2.0 (#856)
+
+-------------------------------------------------------------------
 Sat Jun 04 18:56:53 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.18.0:
