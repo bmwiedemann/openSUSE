@@ -1,7 +1,7 @@
 #
 # spec file for package CorsixTH
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           CorsixTH
-Version:        0.65.1
+Version:        0.66
 Release:        0
 Summary:        Theme Hospital clone
 License:        MIT
@@ -40,8 +40,8 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
-BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(lua)
+BuildRequires:  pkgconfig(sdl2)
 Requires:       lua-lpeg
 Requires:       lua-luafilesystem
 Recommends:     timidity
