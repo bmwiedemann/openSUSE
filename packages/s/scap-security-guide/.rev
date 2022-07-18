@@ -205,4 +205,12 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
     <comment>- Fix the build for RHEL 9 and clones</comment>
     <requestid>987136</requestid>
   </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>88a13c5866492aa599d8690565b7c0f0</srcmd5>
+    <version>0.1.62</version>
+    <time>1658161990</time>
+    <user>RBrownFactory</user>
+    <comment>- Fix the build for RHEL 7 and clones (python-setuptools is used) (forwarded request 989423 from juliogonzalezgil)</comment>
+    <requestid>989425</requestid>
+  </revision>
 </revisionlist>

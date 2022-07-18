@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 15 11:57:43 UTC 2022 - Julio González Gil <jgonzalez@suse.com>
+
+- Fix the build for RHEL 7 and clones (python-setuptools is used) 
+
+-------------------------------------------------------------------
 Wed Jul  6 09:26:15 UTC 2022 - Julio González Gil <jgonzalez@suse.com>
 
 - Fix the build for RHEL 9 and clones
