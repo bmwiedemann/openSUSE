@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.envs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,21 +20,30 @@
 # requires python-path
 %define skip_python2 1
 Name:           python-jaraco.envs
-Version:        2.0.0
+Version:        2.4.0
 Release:        0
 Summary:        Classes for Python Virtual Environments
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/jaraco.envs
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.envs/jaraco.envs-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module tomli}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-path
 Requires:       python-virtualenv
+Recommends:     python-tox
 BuildArch:      noarch
+# SECTION test
+BuildRequires:  %{python_module pytest >= 6}
+BuildRequires:  %{python_module path}
+BuildRequires:  %{python_module virtualenv}
+# /SECTION
 %python_subpackages
 
 %description
@@ -42,25 +51,23 @@ Classes for orchestrating Python (virtual) environments.
 
 %prep
 %setup -q -n jaraco.envs-%{version}
-sed -i 's/--flake8 --black --cov//' pytest.ini
+# Avoid tox in openSUSE:Factory:Rings:1-MinimalX
+sed -i '/tox/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%{python_expand rm -f %{buildroot}%{$python_sitelib}/jaraco/__init__.py* \
-  %{buildroot}%{$python_sitelib}/jaraco/__pycache__/__init__.*
-  %fdupes %{buildroot}%{$python_sitelib}
-}
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# no upstream tests
+%pytest
 
 %files %{python_files}
 %license LICENSE
 %doc docs/*.rst README.rst CHANGES.rst
-%{python_sitelib}/jaraco.envs-*-py*.egg-info
-%{python_sitelib}/jaraco*
+%{python_sitelib}/jaraco.envs-%{version}*info
+%{python_sitelib}/jaraco
 
 %changelog

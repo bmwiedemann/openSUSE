@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul 13 09:59:20 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.4.0
+  * Made VEnv non-experimental.
+- Release v2.3.0
+  * #4: Added some tests capturing expectations around object types
+    for input (use path.Path object for root property for maximum
+    compatibility).
+  * Require Python 3.7 or later.
+  * VirtualEnv classes now expose clean_opts for easy reference in
+    creating clean environments.
+- Release v2.2.0
+  * VirtualEnv now allows a create_opts attribute to affect the
+    creation (passed to virtualenv).
+- Release v2.1.1
+  * Rely on PEP 420 for namespace packages.
+- Release v2.1.0
+  * #1: Rely on pure tox without tox-venv. 
+
+-------------------------------------------------------------------
 Sun Apr 19 23:18:32 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - fix egg info path 
