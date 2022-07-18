@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 12 07:18:39 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fix finding qm files for KDE Frameworks >= 5.76 (taken from rpm-4.14.1)
+
+-------------------------------------------------------------------
 Sun Jun  5 05:03:17 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to 20220620
