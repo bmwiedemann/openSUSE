@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 18 10:30:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20220701:
+ * Unicode 15.0_Beta (Nameslist.txt 15_Beta for review until Jul12).
+ * Biswapriyo Nath added Windows MSYS2 build (used by github tests),
+   this also helped identify some more nameslist-dll.h clang fixes.
+ * orbea fixed Makefile.am bug fixing Gentoo Bugs 779670 and 792474. 
+
+-------------------------------------------------------------------
 Sat Nov 27 12:45:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 20211114:

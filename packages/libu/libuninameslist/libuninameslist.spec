@@ -1,7 +1,7 @@
 #
 # spec file for package libuninameslist
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define somajor 1
 Name:           libuninameslist
-Version:        20211114
+Version:        20220701
 Release:        0
 Summary:        A library providing Unicode character names and annotations
 License:        BSD-3-Clause
