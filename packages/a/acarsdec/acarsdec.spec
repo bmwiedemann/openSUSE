@@ -1,8 +1,8 @@
 #
 # spec file for package acarsdec
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2017-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,20 @@
 
 
 Name:           acarsdec
-Version:        3.4
+Version:        3.6
 Release:        0
-Summary:        ACARS SDR decoder 
+Summary:        ACARS SDR decoder
 License:        GPL-2.0-or-later
-Url:            https://github.com/TLeconte/acarsdec
+URL:            https://github.com/TLeconte/acarsdec
 #Git-Clone:     https://github.com/TLeconte/acarsdec.git
 Source:         https://github.com/TLeconte/%{name}/archive/%{name}-%{version}.tar.gz
-Patch0:         acarsdec-fix-makefile.diff
-#BuildRequires:  pkgconfig(libairspy)
-BuildRequires:  pkgconfig(alsa)
+BuildRequires:  cmake
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libacars-2) >= 2.0.0
+BuildRequires:  pkgconfig(libairspy)
 BuildRequires:  pkgconfig(librtlsdr)
-BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(sndfile)
-BuildRequires:  pkgconfig(sqlite3)
+Provides:       bundled(cJSON)
 
 %description
 A multi-channels acars decoder with built-in rtl_sdr front end.
@@ -39,20 +39,19 @@ It comes with a database backend : acarsserv to store receved acars messages.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch0 -p1
 
 %build
-export CFLAGS='%{optflags}'
-make acarsdec acarsserv %{?_smp_mflags}
+%cmake \
+  -DLIBRTL=1 \
+  -DLIBAIR=1 \
+  -DMQTT=0
+%make_build
 
 %install
-install -Dpm 0755 acarsdec %{buildroot}/%{_bindir}/acarsdec
-install -Dpm 0755 acarsserv %{buildroot}/%{_bindir}/acarsserv
+%cmake_install
 
 %files
-%defattr(-,root,root)
-%doc README.md docs/index.md
+%doc README.md
 %{_bindir}/acarsdec
-%{_bindir}/acarsserv
 
 %changelog
