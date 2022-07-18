@@ -16,9 +16,9 @@
 #
 
 
-%define uver	3_10_3
+%define uver	3_11_0
 Name:           geos
-Version:        3.10.3
+Version:        3.11.0
 Release:        0
 Summary:        Geometry Engine - Open Source
 License:        LGPL-2.1-only
@@ -109,7 +109,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 
 %files devel
 %license COPYING
-%doc AUTHORS NEWS README.md
+%doc NEWS.md README.md
 %{_bindir}/geos-config
 %{_includedir}/*
 %{_libdir}/pkgconfig/%{name}.pc

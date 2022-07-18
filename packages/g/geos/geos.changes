@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jul 18 09:25:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11.0:
+  - OffsetCurve
+  - ConcaveHull
+  - PolygonHull
+  - LineMerger directed option
+  - CAPI: GEOSHilbertCode
+  - CAPI: GEOSGeom_createRectangle
+  - CAPI: GEOSGeom_transformXY
+  - CAPI: GEOSRemoveRepeatedPoints
+  - CAPI: GEOSLineMergeDirected
+  - CAPI: setFixStructure for WKB/WKT readers to automatically repair
+    structural errors in the input
+  - Fix unaryUnion to avoid segfault with empty polygon
+  - Fix SnapRoundingNoder to use tolerance in noding; also fixes GeometryPrecisionReducer
+  - Allow direct setting of grid size
+  - Allow GEOS to be used as a CMake subproject
+  - Remove .inl inline files in favour of header declaration
+  - Add SnappingNoder seeding
+  - Add OverlayNG area check heuristic
+  - Fix RelateOp
+  - Fix IsValidOp to handle repeated node points
+  - Fix IsSimpleOp to handle closed LineStrings with repeated endpoints
+  - Fix LengthIndexedLine
+  - Fix PolygonHoleJoiner
+  - Improve `test_geos_unit` application error checking and reporting
+  - Fix MinimumDiameter getMinimumRectangle for flat input
+  - Fix BufferOp inverted ring check
+  - Fix OverlayNG geomunion to avoid lines in result
+
+-------------------------------------------------------------------
 Fri Jun 17 09:04:36 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Rectify conflict dependencies (shlib transition from Nov 9 2015)
