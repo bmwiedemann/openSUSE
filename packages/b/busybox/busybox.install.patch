@@ -1,5 +1,5 @@
---- applets/install.sh
-+++ applets/install.sh	2019/03/29 09:03:34
+--- a/applets/install.sh
++++ b/applets/install.sh	2019/03/29 09:03:34
 @@ -1,11 +1,11 @@
 -#!/bin/sh
 +#!/usr/bin/busybox sh

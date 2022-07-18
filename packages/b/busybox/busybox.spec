@@ -16,6 +16,13 @@
 #
 
 
+%ifarch x86_64 aarch64 i586
+%bcond_without  ww3
+%else
+%bcond_with     ww3
+%endif
+%bcond_without  static
+
 Name:           busybox
 Version:        1.35.0
 Release:        0
@@ -24,7 +31,6 @@ License:        GPL-2.0-or-later
 Group:          System/Base
 URL:            https://www.busybox.net/
 Source:         https://busybox.net/downloads/%{name}-%{version}.tar.bz2
-Source1:        BusyBox.1
 Source2:        busybox.config
 # Make sure busybox-static.config stays in sync with busybox.config -
 # exception: SELinux commands - these do not build statically.
@@ -44,10 +50,6 @@ BuildRequires:  hostname
 BuildRequires:  pkgconfig(libselinux)
 # for test suite
 BuildRequires:  zip
-
-%ifarch x86_64 aarch64 i586
-%define build_ww3 1
-%endif
 
 %description
 BusyBox combines tiny versions of many common UNIX utilities into a
@@ -90,28 +92,24 @@ cd /usr/share/busybox/testsuite
 PATH=/usr/share/busybox:$PATH SKIP_KNOWN_BUGS=1 ./runtest
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch100 -p0
-cp -a %{SOURCE1} docs/
+%autosetup -p1
 find "(" -name CVS -o -name .cvsignore -o -name .svn -o -name .gitignore ")" \
 	-exec rm -Rf {} +
 
 %build
 export KCONFIG_NOTIMESTAMP=KCONFIG_NOTIMESTAMP
-export VERBOSE=-v
-export BUILD_VERBOSE=2
-export CFLAGS="%{optflags} -fno-strict-aliasing -I/usr/include/tirpc"
+export KBUILD_VERBOSE=1
+export CFLAGS="%{optflags} -fPIC -fno-strict-aliasing -I/usr/include/tirpc"
 export CC="gcc"
 export HOSTCC=gcc
+%if %{with static}
 cat %{SOURCE3} %{SOURCE2} > .config
 make %{?_smp_mflags} -e oldconfig
 make -e %{?_smp_mflags}
 mv busybox busybox-static
+%endif
 
-%if 0%{?build_ww3}
+%if 0%{with ww3}
 make -e %{?_smp_mflags} clean
 cat %{SOURCE7} %{SOURCE3} %{SOURCE2} > .config
 make %{?_smp_mflags} -e oldconfig
@@ -129,7 +127,7 @@ make -e
 make -e doc busybox.links %{?_smp_mflags}
 
 %if 0%{?usrmerged}
-for i in busybox.links %{?build_ww3:busybox-warewulf3.links}; do
+for i in busybox.links %{?with_ww3:busybox-warewulf3.links}; do
     sed -i -e 's,^/\(s\?bin\)/,/usr/\1/,' $i
 done
 %endif
@@ -140,12 +138,14 @@ install -d %{buildroot}/%{_datadir}/busybox
 install -m 0644 busybox.links %{buildroot}%{_datadir}/busybox
 install applets/install.sh %{buildroot}%{_bindir}/busybox.install
 install -m 0755 busybox %{buildroot}%{_bindir}
+%if %{with static}
 install -m 0755 busybox-static %{buildroot}%{_bindir}
+%endif
 install -d %{buildroot}%{_sysconfdir}
 install -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/
 install -d %{buildroot}%{_mandir}/man1
-install -m 644 docs/BusyBox.1 %{buildroot}%{_mandir}/man1
-%if 0%{?build_ww3}
+install -m 644 docs/busybox.1 %{buildroot}%{_mandir}/man1
+%if %{with ww3}
 install -m 0644 busybox-warewulf3.links %{buildroot}%{_datadir}/busybox
 install -m 0755 busybox-warewulf3 %{buildroot}%{_bindir}
 %endif
@@ -155,8 +155,8 @@ cp -a testsuite %{buildroot}%{_datadir}/busybox/testsuite
 
 %check
 export KCONFIG_NOTIMESTAMP=KCONFIG_NOTIMESTAMP
-export BUILD_VERBOSE=2
-export CFLAGS="%{optflags} -fno-strict-aliasing -I/usr/include/tirpc"
+export KBUILD_VERBOSE=1
+export CFLAGS="%{optflags} -fPIC -fno-strict-aliasing -I/usr/include/tirpc"
 export CC="gcc"
 export HOSTCC=gcc
 export SKIP_KNOWN_BUGS=1
@@ -167,7 +167,7 @@ make -e %{?_smp_mflags} test
 %license LICENSE
 %doc docs/mdev.txt
 %config %{_sysconfdir}/man.conf
-%doc %{_mandir}/man1/BusyBox.1.gz
+%doc %{_mandir}/man1/busybox.1.gz
 %{_bindir}/busybox
 %{_bindir}/busybox.install
 %dir %{_datadir}/busybox
@@ -178,11 +178,13 @@ make -e %{?_smp_mflags} test
 %{_datadir}/busybox/.config
 %{_datadir}/busybox/testsuite
 
+%if %{with static}
 %files static
 %license LICENSE
 %{_bindir}/busybox-static
+%endif
 
-%if 0%{?build_ww3}
+%if %{with ww3}
 %files warewulf3
 %license LICENSE
 %{_bindir}/busybox-warewulf3

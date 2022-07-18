@@ -762,4 +762,14 @@
     <comment></comment>
     <requestid>982568</requestid>
   </revision>
+  <revision rev="76" vrev="5">
+    <srcmd5>3f57583630ea6c86ccb9935ffd1292fa</srcmd5>
+    <version>1.35.0</version>
+    <time>1658161975</time>
+    <user>RBrownFactory</user>
+    <comment>- prepare spec file for rpmbuild --build-in-place --noprep
+- use bcond for static and ww3 subpackages
+- fix verbose flag</comment>
+    <requestid>989153</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 30 08:30:05 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare spec file for rpmbuild --build-in-place --noprep
+- use bcond for static and ww3 subpackages
+- fix verbose flag
+
+-------------------------------------------------------------------
 Fri Jun 10 17:52:27 UTC 2022 - Marcos de Souza <mpdesouza@suse.com>
 
 - Enable switch_root
