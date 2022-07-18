@@ -17,9 +17,9 @@
 
 
 Name:           s3backer
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
-Summary:        FUSE-based single file backing store via Amazon S3
+Summary:        FUSE and NBD single file backing store via Amazon S3
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://github.com/archiecobbs/%{name}
@@ -28,8 +28,15 @@ BuildRequires:  fuse-devel >= 2.5
 BuildRequires:  libcurl-devel >= 7.16.2
 BuildRequires:  libexpat-devel
 BuildRequires:  libopenssl-devel
+%if 0%{?sle_version} >= 150000
+BuildRequires:  libzstd-devel
+%endif
 %if 0%{?sle_version} >= 150300
+BuildRequires:  nbd
 BuildRequires:  nbdkit-devel
+BuildRequires:  nbdkit-server
+Requires:       nbd
+Requires:       nbdkit-server
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
@@ -54,6 +61,10 @@ s3backer can also function as a Network Block Device (NBD) plug-in.
 
 %build
 export SUSE_ASNEEDED=0
+
+# This is needed so /usr/sbin/nbdkit, etc. will be found by AC_PATH_PROGS
+export PATH="${PATH}:%{_sbindir}"
+
 %configure
 %make_build
 

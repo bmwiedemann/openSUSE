@@ -236,4 +236,17 @@
   + Treat 3xx HTTP response codes as errors</comment>
     <requestid>980807</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>fa68a159f31e909579b7c35971e1f745</srcmd5>
+    <version>2.0.2</version>
+    <time>1658162058</time>
+    <user>RBrownFactory</user>
+    <comment>- Fix build on older systems that don't have libzstd. 
+
+- Upgrade to release 2.0.2
+  + Fixed bugs with the --nbd flag when not also using -f flag (issue #188)
+  + Fixed free() of invalid pointer bug in zero_cache.c (issue #191)
+  + Added support for zstd compression (pr #187)</comment>
+    <requestid>989756</requestid>
+  </revision>
 </revisionlist>
