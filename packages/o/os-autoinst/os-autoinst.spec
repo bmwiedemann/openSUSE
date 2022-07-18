@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1657546751.7d61873
+Version:        4.6.1657896031.dcf12d0
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -25,8 +25,8 @@ Group:          Development/Tools/Other
 URL:            https://github.com/os-autoinst/os-autoinst
 Source0:        %{name}-%{version}.tar.xz
 %{perl_requires}
-%if 0%{?suse_version} > 1500
-# openSUSE Tumbleweed
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+# openSUSE Tumbleweed and Leap 15.4
 %define opencv_require pkgconfig(opencv4)
 %else
 %define opencv_require pkgconfig(opencv)
