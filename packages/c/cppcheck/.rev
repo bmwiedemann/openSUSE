@@ -266,4 +266,15 @@
   * Extended library format to exclude specific function argument values</comment>
     <requestid>981215</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>66770dff32ff064f0e70e1fd52858385</srcmd5>
+    <version>2.8.2</version>
+    <time>1658162056</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 2.8.2:
+  * do not allocate std::string when column is -1
+  * catch internal error during whole program analysis
+  * fix whole program analysis</comment>
+    <requestid>989720</requestid>
+  </revision>
 </revisionlist>

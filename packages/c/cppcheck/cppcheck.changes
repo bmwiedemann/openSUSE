@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 17 16:14:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.2:
+  * do not allocate std::string when column is -1
+  * catch internal error during whole program analysis
+  * fix whole program analysis 
+
+-------------------------------------------------------------------
 Tue Jun  7 21:17:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8:
