@@ -17,7 +17,7 @@
 
 
 Name:           k9s
-Version:        0.25.21
+Version:        0.26.0
 Release:        0
 Summary:        Curses based terminal UI for Kubernetes clusters
 License:        Apache-2.0

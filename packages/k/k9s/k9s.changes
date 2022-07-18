@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 18 05:44:25 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.26.0:
+  * cleaning up deprecation
+  * K9s/rel v0.26.0 (#1660)
+  * Fix PF and RS colors (#1656)
+  * Fix #1636: can't switch context with --kubeconfig flag (#1638)
+
+-------------------------------------------------------------------
 Fri Jul 01 10:54:11 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.25.21:
