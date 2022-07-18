@@ -1,4 +1,16 @@
 --------------------------------------------------------------------
+Thu Jul 14 07:19:37 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#888
+- handle rootprefix when combining information from /etc/fstab and
+  /proc/mounts
+- added unit tests
+- avoid deprecated fuunctions
+- coding style
+- typo fix and documentation update
+- 4.5.28
+
+--------------------------------------------------------------------
 Mon Jul 11 10:27:50 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#887
