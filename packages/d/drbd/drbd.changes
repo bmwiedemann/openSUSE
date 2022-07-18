@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Jul 08 12:47:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
+
+- drbd: build error against kernel v5.18 (bsc#1201335)
+  - remove patch:
+    + move_bdi_from_request_queue_to_gendisk.patch
+  - change exist patches name from bsc#1192929:
+    old name:
+      make_block_holder_optional.patch
+      move_kvmalloc_related_to_slab.patch
+      polling_to_bio_base.patch
+      pass_gend_to_blk_queue_update_readahead.patch
+      dax_support.patch
+      add_disk_error_handle.patch
+      have_void_drbd_submit_bio.patch
+      remove_bdgrab.patch
+    new name:
+      bsc-1192929_01-make_block_holder_optional.patch
+      bsc-1192929_02-move_kvmalloc_related_to_slab.patch
+      bsc-1192929_03-polling_to_bio_base.patch
+      bsc-1192929_04-pass_gend_to_blk_queue_update_readahead.patch
+      bsc-1192929_06-dax_support.patch
+      bsc-1192929_07-add_disk_error_handle.patch
+      bsc-1192929_08-have_void_drbd_submit_bio.patch
+      bsc-1192929_09-remove_bdgrab.patch
+  - add patch:
+    + bsc-1201335_01-compat-test-and-cocci-patch-for-bdi-in-gendisk.patch
+    + bsc-1201335_02-compat-only-apply-bdi-pointer-patch-if-bdi-is-in-req.patch
+    + bsc-1201335_03-genhd.patch
+    + bsc-1201335_04-bio_alloc_bioset.patch
+    + bsc-1201335_05-bio_alloc.patch
+    + bsc-1201335_06-bdi.patch
+    + bsc-1201335_07-write-same.patch
+    + bsc-1201335_08-bio_clone_fast.patch
+
+-------------------------------------------------------------------
 Mon Nov 22 04:38:30 UTC 2021 - nick wang <nwang@suse.com>
 
 - bsc#1192929, compat to kernel v5.15

@@ -1,0 +1,117 @@
+/* this patch is related with following 3 upstream kernel commits */
+
+commit 8fd6533ef3f7729e4aa29ead83844c042688615a
+Author: Haowen Bai <baihaowen@meizu.com>
+Date:   Wed Apr 6 21:07:15 2022 +0200
+
+    drbd: Return true/false (not 1/0) from bool functions
+
+    Return boolean values ("true" or "false") instead of 1 or 0 from bool
+    functions.  This fixes the following warnings from coccicheck:
+
+    ./drivers/block/drbd/drbd_req.c:912:9-10: WARNING: return of 0/1 in
+    function 'remote_due_to_read_balancing' with return type bool
+
+    Signed-off-by: Haowen Bai <baihaowen@meizu.com>
+    Reviewed-by: Christoph Böhmwalder <christoph.boehmwalder@linbit.com>
+    Link: https://lore.kernel.org/r/20220406190715.1938174-8-christoph.boehmwalder@linbit.com
+    Signed-off-by: Jens Axboe <axboe@kernel.dk>
+
+---
+commit b9b1335e640308acc1b8f26c739b804c80a6c147
+Author: NeilBrown <neilb@suse.de>
+Date:   Tue Mar 22 14:39:10 2022 -0700
+
+    remove bdi_congested() and wb_congested() and related functions
+
+    These functions are no longer useful as no BDIs report congestions any
+    more.
+
+    Removing the test on bdi_write_contested() in current_may_throttle()
+    could cause a small change in behaviour, but only when PF_LOCAL_THROTTLE
+    is set.
+
+    So replace the calls by 'false' and simplify the code - and remove the
+    functions.
+
+    [akpm@linux-foundation.org: fix build]
+
+    Link: https://lkml.kernel.org/r/164549983742.9187.2570198746005819592.stgit@noble.brown
+    Signed-off-by: NeilBrown <neilb@suse.de>
+    Acked-by: Ryusuke Konishi <konishi.ryusuke@gmail.com>   [nilfs]
+    Cc: Anna Schumaker <Anna.Schumaker@Netapp.com>
+    Cc: Chao Yu <chao@kernel.org>
+    Cc: Darrick J. Wong <djwong@kernel.org>
+    Cc: Ilya Dryomov <idryomov@gmail.com>
+    Cc: Jaegeuk Kim <jaegeuk@kernel.org>
+    Cc: Jan Kara <jack@suse.cz>
+    Cc: Jeff Layton <jlayton@kernel.org>
+    Cc: Jens Axboe <axboe@kernel.dk>
+    Cc: Lars Ellenberg <lars.ellenberg@linbit.com>
+    Cc: Miklos Szeredi <miklos@szeredi.hu>
+    Cc: Paolo Valente <paolo.valente@linaro.org>
+    Cc: Philipp Reisner <philipp.reisner@linbit.com>
+    Cc: Trond Myklebust <trond.myklebust@hammerspace.com>
+    Cc: Wu Fengguang <fengguang.wu@intel.com>
+    Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
+    Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
+
+---
+commit edb0872f44ec9976ea6d052cb4b93cd2d23ac2ba
+Author: Christoph Hellwig <hch@lst.de>
+Date:   Mon Aug 9 16:17:43 2021 +0200
+
+    block: move the bdi from the request_queue to the gendisk
+
+    The backing device information only makes sense for file system I/O,
+    and thus belongs into the gendisk and not the lower level request_queue
+    structure.  Move it there.
+
+    Signed-off-by: Christoph Hellwig <hch@lst.de>
+    Reviewed-by: Johannes Thumshirn <johannes.thumshirn@wdc.com>
+    Link: https://lore.kernel.org/r/20210809141744.1203023-5-hch@lst.de
+    Signed-off-by: Jens Axboe <axboe@kernel.dk>
+
+---
+
+diff -Nupr a/drbd/drbd_req.c b/drbd/drbd_req.c
+--- a/drbd/drbd_req.c	2022-07-08 18:08:35.075249173 +0800
++++ b/drbd/drbd_req.c	2022-07-08 07:50:00.750419154 +0800
+@@ -1148,13 +1148,11 @@ static bool remote_due_to_read_balancing
+ 		struct drbd_peer_device *peer_device, sector_t sector,
+ 		enum drbd_read_balancing rbm)
+ {
+-	struct backing_dev_info *bdi;
+ 	int stripe_shift;
+ 
+ 	switch (rbm) {
+ 	case RB_CONGESTED_REMOTE:
+-		bdi = device->ldev->backing_bdev->bd_disk->queue->backing_dev_info;
+-		return bdi_read_congested(bdi);
++		return false;
+ 	case RB_LEAST_PENDING:
+ 		return atomic_read(&device->local_cnt) >
+ 			atomic_read(&peer_device->ap_pending_cnt) + atomic_read(&peer_device->rs_pending_cnt);
+diff -Nupr a/drbd/drbd_nl.c b/drbd/drbd_nl.c
+--- a/drbd/drbd_nl.c	2022-07-08 08:50:52.751580529 +0800
++++ b/drbd/drbd_nl.c	2022-07-08 08:51:20.971464720 +0800
+@@ -5593,7 +5593,6 @@ static void device_to_statistics(struct
+ 	if (get_ldev(device)) {
+ 		struct drbd_md *md = &device->ldev->md;
+ 		u64 *history_uuids = (u64 *)s->history_uuids;
+-		struct request_queue *q;
+ 		int n;
+ 
+ 		spin_lock_irq(&md->uuid_lock);
+@@ -5605,11 +5604,6 @@ static void device_to_statistics(struct
+ 		spin_unlock_irq(&md->uuid_lock);
+ 
+ 		s->dev_disk_flags = md->flags;
+-		q = bdev_get_queue(device->ldev->backing_bdev);
+-		s->dev_lower_blocked =
+-			bdi_congested(q->backing_dev_info,
+-				      (1 << WB_async_congested) |
+-				      (1 << WB_sync_congested));
+ 		put_ldev(device);
+ 	}
+ 	s->dev_size = get_capacity(device->vdisk);

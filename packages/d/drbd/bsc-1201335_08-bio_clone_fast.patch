@@ -1,0 +1,30 @@
+/* this patch is related with following upstream kernel commit */
+
+commit abfc426d1b2fb2176df59851a64223b58ddae7e7
+Author: Christoph Hellwig <hch@lst.de>
+Date:   Wed Feb 2 17:01:09 2022 +0100
+
+    block: pass a block_device to bio_clone_fast
+    
+    Pass a block_device to bio_clone_fast and __bio_clone_fast and give
+    the functions more suitable names.
+    
+    Signed-off-by: Christoph Hellwig <hch@lst.de>
+    Reviewed-by: Mike Snitzer <snitzer@redhat.com>
+    Link: https://lore.kernel.org/r/20220202160109.108149-14-hch@lst.de
+    Signed-off-by: Jens Axboe <axboe@kernel.dk>
+---
+
+diff -Nupr a/drbd/drbd_req.c b/drbd/drbd_req.c
+--- a/drbd/drbd_req.c	2022-07-08 08:00:58.007783979 +0800
++++ b/drbd/drbd_req.c	2022-07-08 08:09:29.157733345 +0800
+@@ -1543,7 +1543,8 @@ drbd_request_prepare(struct drbd_device
+ 	req->start_jif = bio_start_io_acct(req->master_bio);
+ 
+ 	if (get_ldev(device)) {
+-		req->private_bio  = bio_clone_fast(bio, GFP_NOIO, &drbd_io_bio_set);
++		req->private_bio  = bio_alloc_clone(device->ldev->backing_bdev, bio,
++							GFP_NOIO, &drbd_io_bio_set);
+ 		req->private_bio->bi_private = req;
+ 		req->private_bio->bi_end_io = drbd_request_endio;
+ 	}

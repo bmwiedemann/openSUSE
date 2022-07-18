@@ -1,0 +1,55 @@
+From 25592a4a902415cf1a353a1e26ba11b4ccc0eca7 Mon Sep 17 00:00:00 2001
+From: <christoph.boehmwalder@linbit.com>
+Date: Wed, 6 Apr 2022 12:27:36 +0200
+Subject: [PATCH] compat: test and cocci patch for bdi in gendisk
+
+---
+ .../cocci/struct_gendisk__no_has_backing_dev_info.cocci   | 6 ++++++
+ drbd/drbd-kernel-compat/gen_patch_names.c                 | 3 +++
+ .../tests/struct_gendisk_has_backing_dev_info.c           | 8 ++++++++
+ 3 files changed, 17 insertions(+)
+ create mode 100644 drbd/drbd-kernel-compat/cocci/struct_gendisk__no_has_backing_dev_info.cocci
+ create mode 100644 drbd/drbd-kernel-compat/tests/struct_gendisk_has_backing_dev_info.c
+
+diff --git a/drbd/drbd-kernel-compat/cocci/struct_gendisk__no_has_backing_dev_info.cocci b/drbd/drbd-kernel-compat/cocci/struct_gendisk__no_has_backing_dev_info.cocci
+new file mode 100644
+index 000000000000..b3d290710ee8
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/cocci/struct_gendisk__no_has_backing_dev_info.cocci
+@@ -0,0 +1,6 @@
++@@
++struct drbd_device *d;
++@@
++d->ldev->backing_bdev->
++- bd_disk->bdi
+++ bd_disk->queue->backing_dev_info
+diff -Nupr a/drbd/drbd-kernel-compat/gen_patch_names.c b/drbd/drbd-kernel-compat/gen_patch_names.c
+--- a/drbd/drbd-kernel-compat/gen_patch_names.c	2022-07-08 19:43:37.106735503 +0800
++++ b/drbd/drbd-kernel-compat/gen_patch_names.c	2022-07-08 19:45:17.570310319 +0800
+@@ -396,6 +396,9 @@ int main(int argc, char **argv)
+ 	      COMPAT_HAVE_BLK_QUEUE_UPDATE_READAHEAD, "present");
+ #endif
+ 
++	patch(1, "struct_gendisk", true, false,
++	      COMPAT_STRUCT_GENDISK_HAS_BACKING_DEV_INFO, "has_backing_dev_info");
++
+ 	patch(1, "backing_dev_info", true, false,
+ 	      COMPAT_HAVE_POINTER_BACKING_DEV_INFO, "is_pointer");
+ 
+diff --git a/drbd/drbd-kernel-compat/tests/struct_gendisk_has_backing_dev_info.c b/drbd/drbd-kernel-compat/tests/struct_gendisk_has_backing_dev_info.c
+new file mode 100644
+index 000000000000..cd40214a564c
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/tests/struct_gendisk_has_backing_dev_info.c
+@@ -0,0 +1,8 @@
++/* { "version": "v5.15-rc1", "commit": "21cf866145047f8bfecb38ec8d2fed64464c074f", "comment": "The backing_dev_info was moved from request_queue to backing_dev_info", "author": "Christoph Hellwig <hch@lst.de>", "date": "Wed Jul 1 11:06:22 2020 +0200" } */
++
++#include <linux/blkdev.h>
++
++struct backing_dev_info *foo(struct gendisk *d)
++{
++	return d->bdi;
++}
+-- 
+2.34.1
+

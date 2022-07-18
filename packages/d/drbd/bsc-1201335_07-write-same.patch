@@ -1,0 +1,28 @@
+/* this patch is related with following upstream kernel commit */
+
+commit a34592ff6b78e84e11b19183b60cd240737f76f9
+Author: Christoph Hellwig <hch@lst.de>
+Date:   Wed Feb 9 09:28:23 2022 +0100
+
+    scsi: drbd: Remove WRITE_SAME support
+    
+    REQ_OP_WRITE_SAME was only ever submitted by the legacy Linux zeroing code,
+    which has switched to use REQ_OP_WRITE_ZEROES long ago.
+    
+    Link: https://lore.kernel.org/r/20220209082828.2629273-3-hch@lst.de
+    Signed-off-by: Christoph Hellwig <hch@lst.de>
+    Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
+---
+
+diff -Nupr a/drbd/drbd_receiver.c b/drbd/drbd_receiver.c
+--- a/drbd/drbd_receiver.c	2022-07-08 07:14:26.331017361 +0800
++++ b/drbd/drbd_receiver.c	2022-07-08 07:14:57.750893198 +0800
+@@ -2737,8 +2737,6 @@ static unsigned long wire_flags_to_bio_o
+ 		return REQ_OP_WRITE_ZEROES;
+ 	if (dpf & DP_DISCARD)
+ 		return REQ_OP_DISCARD;
+-	if (dpf & DP_WSAME)
+-		return REQ_OP_WRITE_SAME;
+ 	else
+ 		return REQ_OP_WRITE;
+ }

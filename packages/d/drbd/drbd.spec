@@ -35,15 +35,23 @@ Source1:        preamble
 Source2:        Module.supported
 Source3:        drbd_git_revision
 Patch1:         fix-resync-finished-with-syncs-have-bits-set.patch
-Patch2:         make_block_holder_optional.patch
-Patch3:         move_kvmalloc_related_to_slab.patch
-Patch4:         polling_to_bio_base.patch
-Patch5:         pass_gend_to_blk_queue_update_readahead.patch
-Patch6:         move_bdi_from_request_queue_to_gendisk.patch
-Patch7:         dax_support.patch
-Patch8:         add_disk_error_handle.patch
-Patch9:         have_void_drbd_submit_bio.patch
-Patch10:        remove_bdgrab.patch
+Patch2:         bsc-1192929_01-make_block_holder_optional.patch
+Patch3:         bsc-1192929_02-move_kvmalloc_related_to_slab.patch
+Patch4:         bsc-1192929_03-polling_to_bio_base.patch
+Patch5:         bsc-1192929_04-pass_gend_to_blk_queue_update_readahead.patch
+#Patch6:         bsc-1192929_05-move_bdi_from_request_queue_to_gendisk
+Patch7:         bsc-1192929_06-dax_support.patch
+Patch8:         bsc-1192929_07-add_disk_error_handle.patch
+Patch9:         bsc-1192929_08-have_void_drbd_submit_bio.patch
+Patch10:        bsc-1192929_09-remove_bdgrab.patch
+Patch11:        bsc-1201335_01-compat-test-and-cocci-patch-for-bdi-in-gendisk.patch
+Patch12:        bsc-1201335_02-compat-only-apply-bdi-pointer-patch-if-bdi-is-in-req.patch
+Patch13:        bsc-1201335_03-genhd.patch
+Patch14:        bsc-1201335_04-bio_alloc_bioset.patch
+Patch15:        bsc-1201335_05-bio_alloc.patch
+Patch16:        bsc-1201335_06-bdi.patch
+Patch17:        bsc-1201335_07-write-same.patch
+Patch18:        bsc-1201335_08-bio_clone_fast.patch
 Patch99:        suse-coccinelle.patch
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
 BuildRequires:  coccinelle >= 1.0.8
@@ -82,11 +90,19 @@ installed kernel.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
+#%patch6 -p1
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
 %patch99 -p1
 
 mkdir source

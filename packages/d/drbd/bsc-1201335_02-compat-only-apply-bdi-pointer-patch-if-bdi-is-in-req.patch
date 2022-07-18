@@ -1,0 +1,37 @@
+From eacd74206a8f48c3861de2096215790426331237 Mon Sep 17 00:00:00 2001
+From: <christoph.boehmwalder@linbit.com>
+Date: Wed, 6 Apr 2022 13:36:08 +0200
+Subject: [PATCH] compat: only apply bdi pointer patch if bdi is in
+ request_queue
+
+The history is as follows:
+
+1. In the beginning, request_queue.backing_dev_info was a regular member
+2. Then, backing_dev_info became a pointer
+3. Now the backing_dev_info pointer has moved to gendisk.bdi
+
+So there is never a case where gendisk has a non-pointer
+backing_dev_info. Thus, we only want to apply the pointer patch for old
+kernels where backing_dev_info was still in request_queue.
+---
+ drbd/drbd-kernel-compat/gen_patch_names.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drbd/drbd-kernel-compat/gen_patch_names.c b/drbd/drbd-kernel-compat/gen_patch_names.c
+index 9210d2c2eeb9..763652a8908b 100644
+--- a/drbd/drbd-kernel-compat/gen_patch_names.c
++++ b/drbd/drbd-kernel-compat/gen_patch_names.c
+@@ -400,8 +400,10 @@ int main(int argc, char **argv)
+ 	patch(1, "struct_gendisk", true, false,
+ 	      COMPAT_STRUCT_GENDISK_HAS_BACKING_DEV_INFO, "has_backing_dev_info");
+ 
++#if !defined(COMPAT_STRUCT_GENDISK_HAS_BACKING_DEV_INFO)
+ 	patch(1, "backing_dev_info", true, false,
+ 	      COMPAT_HAVE_POINTER_BACKING_DEV_INFO, "is_pointer");
++#endif
+ 
+ 	patch(1, "sendpage_ok", true, false,
+ 	      COMPAT_HAVE_SENDPAGE_OK, "present");
+-- 
+2.34.1
+
