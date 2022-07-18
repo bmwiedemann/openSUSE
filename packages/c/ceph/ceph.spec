@@ -30,7 +30,11 @@
 %else
 %bcond_without tcmalloc
 %endif
+%if 0%{?rhel} >= 9
+%bcond_without system_pmdk
+%else
 %bcond_with system_pmdk
+%endif
 %if 0%{?fedora} || 0%{?rhel}
 %bcond_without selinux
 %ifarch x86_64 ppc64le
@@ -121,11 +125,18 @@
 # disable dwz which compresses the debuginfo
 %global _find_debuginfo_dwz_opts %{nil}
 
+%if 0%{with seastar}
+# disable -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1, as gcc-toolset-{9,10}-annobin
+# do not provide gcc-annobin.so anymore, despite that they provide annobin.so. but
+# redhat-rpm-config still passes -fplugin=gcc-annobin to the compiler.
+%undefine _annotated_build
+%endif
+
 #################################################################################
 # main package definition
 #################################################################################
 Name:		ceph
-Version:	16.2.9.158+gd93952c7eea
+Version:	16.2.9.536+g41a9f9a5573
 Release:	0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch:		2
@@ -141,7 +152,7 @@ License:	LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group:		System/Filesystems
 %endif
 URL:		http://ceph.com/
-Source0:	%{?_remote_tarball_prefix}ceph-16.2.9-158-gd93952c7eea.tar.bz2
+Source0:	%{?_remote_tarball_prefix}ceph-16.2.9-536-g41a9f9a5573.tar.bz2
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
@@ -1197,7 +1208,7 @@ This package provides Ceph default alerts for Prometheus.
 # common
 #################################################################################
 %prep
-%autosetup -p1 -n ceph-16.2.9-158-gd93952c7eea
+%autosetup -p1 -n ceph-16.2.9-536-g41a9f9a5573
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:

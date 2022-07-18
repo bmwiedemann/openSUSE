@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 13 07:18:02 UTC 2022 - Tim Serong <tserong@suse.com>
+
+- Update to 16.2.9-536-g41a9f9a5573:
+  + (bsc#1195359, bsc#1200553) rgw: check bucket shard init status in RGWRadosBILogTrimCR 
+  + (bsc#1194131) ceph-volume: honour osd_dmcrypt_key_size option (CVE-2021-3979)
+
+-------------------------------------------------------------------
 Thu Jun  9 23:37:24 UTC 2022 - Tim Serong <tserong@suse.com>
 
 - Update to 16.2.9-158-gd93952c7eea:
@@ -23,6 +30,7 @@ Mon May 23 23:56:57 UTC 2022 - Michael Fritch <michael.fritch@suse.com>
 Tue Apr 19 21:15:33 UTC 2022 - Michael Fritch <michael.fritch@suse.com>
 
 - Update to 16.2.7-969-g6195a460d89
+  + (jsc#SES-2515) High-availability NFS export 
 
 -------------------------------------------------------------------
 Thu Mar 31 17:09:16 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
