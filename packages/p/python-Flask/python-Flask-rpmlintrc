@@ -1,0 +1,2 @@
+addFilter("files-duplicate /usr/share/doc/packages")
+addFilter("version-control-internal-file /usr/share/doc/packages/.*\.gitignore")
