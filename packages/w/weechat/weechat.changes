@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jul 17 16:10:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6:
+  * core: add command `/item` to create custom bar items (issue #808)
+  * core: add bar item "spacer" (issue #1700)
+  * core: add case conversion in evaluation of expressions with `lower:string` and `upper:string` (issue #1778)
+  * core: move detailed list of hooks from command `/plugin listfull` to `/debug hooks <plugin>`
+  * core: allow to remove multiple filters at once with command `/filter del`
+  * api: allow to catch multiple signals in functions hook_signal and hook_hsignal (issue #1780)
+  * irc: rename option `save` to `apply` in command `/autojoin`
+  * irc: add support of RPL_HELPSTART, RPL_HELPTXT and RPL_ENDOFHELP (messages 524, 704, 705, 706) (issue #1772)
+  * php: add support of PHP 8.2 (issue #1787)
+  * core: fix bad window size on startup with some terminals like https://github.com/kovidgoyal/kitty[kitty] (issue #1769)
+  * api: run hook_print callback also on empty messages
+  * buflist: fix memory leak when reading config and changing option buflist.look.sort
+  * irc: remove channel from autojoin option when manually closing a buffer with `/buffer close` or `/close`
+  * irc: fix add of channel to autojoin option when joining a channel with a buffer still opened
+  * relay: fix save of channels in autojoin option when JOIN and PART commands are received from an IRC relay client (issue #1771)
+  * trigger: add `${buffer.notify} > 0` in conditions of default trigger "beep"
+  * trigger: fix completion of command `/trigger add` when there are spaces in the following arguments
+  * trigger: fix memory leak in command `/trigger addinput`
+
+-------------------------------------------------------------------
 Sun Mar 27 19:22:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5:
