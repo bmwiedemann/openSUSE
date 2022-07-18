@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Jul 15 08:31:50 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Replace python-gpg requirement
+- Fix consolidation for _distconfdir and _sysconfdir macro
+
+-------------------------------------------------------------------
+Wed Jul 13 13:43:12 UTC 2022 - aplanas@suse.com
+
+- Update to version v6.4.2:
+  * Bump version # to 6.4.2
+  * Use python3-gpg instead of python3-gnupg
+  * Update Packit CI tests to test both agent and zeromq revocation notifiers
+  * ima_ast: Make entry parsing stricter
+  * ima_ast: Calculate length of "n" and "n-ng" in bytes
+  * Fix broken URLs in README (Additional Reading)
+  * Remove CFSSL leftovers
+  * signing: move exception handing to verify_signature()
+  * Set revocation_notifiers = agent as default in keylime.conf
+  * cloud_verifier: Support /notifications/revocation REST API
+  * keylime_agent: Support /notifications/revocation REST method
+  * revocation_notifier: Factor out revocation message processing
+  * keylime: initialize supplementary groups when dropping privileges
+  * Refactor allowlist processing to enable verifier-side signature checks
+  * Full removal of the tenant WebApp
+  * update roadmap for 2022 and 2023
+  * docs: make Python requirements less strict
+  * docs: update API documentation for 2.1, add missing fields for agent quote
+  * Add python3-alembic to distros
+  * Update fmf plans to run test with IMA policy
+  * Drop SPDX-License-Identifier header
+  * Adjust CI test name according to keylime-tests PR#125
+  * ci: Run lint with Python 3.6 as well
+  * [trivial]: fix style of recently added docs files
+  * Improve error handling when doing signature verification
+  * Fix coverage file paths in submit-HEAD-coverage workflow
+  * Adding files from keylime-docs into main repo
+- Fix keylime service home directory
+- Adjust the directory for the TPM certificates
+
+-------------------------------------------------------------------
 Wed Jun 29 11:05:08 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Conflict also rust-keylime for all the subpackages

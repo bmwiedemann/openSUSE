@@ -1,7 +1,7 @@
-Index: keylime-v6.4.1/keylime.conf
+Index: keylime-v6.4.2/keylime.conf
 ===================================================================
---- keylime-v6.4.1.orig/keylime.conf
-+++ keylime-v6.4.1/keylime.conf
+--- keylime-v6.4.2.orig/keylime.conf
++++ keylime-v6.4.2/keylime.conf
 @@ -7,7 +7,8 @@ enable_tls = True
  
  # The address and port of the revocation notifier service on the verifier from
@@ -72,7 +72,7 @@ Index: keylime-v6.4.1/keylime.conf
  cloudverifier_port = 8881
  
  # The address and port of registrar server that verifier communicates with
-@@ -276,7 +283,8 @@ revocation_notifier = True
+@@ -288,7 +295,8 @@ revocation_notifiers = agent
  # The binding address and port of the revocation notifier service.
  # If the 'revocation_notifier' option is set to "true", then the verifier
  # automatically starts the revocation service.
@@ -81,8 +81,8 @@ Index: keylime-v6.4.1/keylime.conf
 +revocation_notifier_ip = 0.0.0.0
  revocation_notifier_port = 8992
  
- # Enable revocation notifications via webhook. This can be used to notify other
-@@ -413,7 +421,8 @@ max_payload_size = 1048576
+ # Webhook url for revocation notifications.
+@@ -426,7 +434,8 @@ max_payload_size = 1048576
  # and SHA-512).
  # Note that you can't set a policy on PCR10 and PCR16 because Keylime uses
  # them internally.
@@ -92,7 +92,7 @@ Index: keylime-v6.4.1/keylime.conf
  
  # Specify the file containing allowlists for processing Linux IMA measurements
  # this file is used if tenant provides "default" as the allowlist file
-@@ -465,7 +474,8 @@ max_retries = 5
+@@ -478,7 +487,8 @@ max_retries = 5
  # might provide a signed list of EK public key hashes.  Then you could write
  # an ek_check_script that checks the signature of the allowlist and then
  # compares the hash of the given EK with the allowlist.
@@ -102,7 +102,7 @@ Index: keylime-v6.4.1/keylime.conf
  
  # Optional script to execute to check the EK and/or EK certificate against a
  # allowlist or any other additional EK processing you want to do. Runs in
-@@ -491,7 +501,8 @@ ek_check_script=
+@@ -504,7 +514,8 @@ ek_check_script=
  
  # The registrar's IP address and port used to communicate with other services
  # as well as the bind address for the registrar server.

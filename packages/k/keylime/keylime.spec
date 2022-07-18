@@ -27,7 +27,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           keylime
-Version:        6.4.1
+Version:        6.4.2
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT
@@ -52,9 +52,9 @@ Requires:       python-PyYAML
 Requires:       python-SQLAlchemy
 Requires:       python-alembic
 Requires:       python-cryptography
+Requires:       python-gpg
 Requires:       python-lark-parser
 Requires:       python-psutil
-Requires:       python-python-gnupg
 Requires:       python-pyzmq
 Requires:       python-requests
 Requires:       python-simplejson
@@ -153,8 +153,6 @@ Subpacakge of %{name} for logrotate for Keylime services
 export VERSION=%{version}
 %python_install
 
-cp -r %{srcname}/static %{buildroot}%{python_sitelib}/%{srcname}
-
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_verifier
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_registrar
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_agent
@@ -163,7 +161,6 @@ cp -r %{srcname}/static %{buildroot}%{python_sitelib}/%{srcname}
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_migrations_apply
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_userdata_encrypt
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_ima_emulator
-%python_clone -a %{buildroot}%{_bindir}/%{srcname}_webapp
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -179,9 +176,9 @@ install -Dpm 0644 %{SOURCE3} %{buildroot}%{_distconfdir}/logrotate.d/%{name}
 install -Dpm 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 install -d %{buildroot}%{_localstatedir}/log/%{name}
 
-mkdir -p %{buildroot}/%{_localstatedir}/%{srcname}
-cp -r ./tpm_cert_store %{buildroot}%{_localstatedir}/%{srcname}/
-%fdupes %{buildroot}%{_localstatedir}/%{srcname}/
+mkdir -p %{buildroot}/%{_sharedstatedir}/%{srcname}
+cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
+%fdupes %{buildroot}%{_sharedstatedir}/%{srcname}/
 
 # %%check
 # %%pyunittest -v
@@ -195,7 +192,6 @@ cp -r ./tpm_cert_store %{buildroot}%{_localstatedir}/%{srcname}/
 %python_install_alternative %{srcname}_migrations_apply
 %python_install_alternative %{srcname}_userdata_encrypt
 %python_install_alternative %{srcname}_ima_emulator
-%python_install_alternative %{srcname}_webapp
 
 %postun
 %python_uninstall_alternative %{srcname}_verifier
@@ -206,7 +202,6 @@ cp -r ./tpm_cert_store %{buildroot}%{_localstatedir}/%{srcname}/
 %python_uninstall_alternative %{srcname}_migrations_apply
 %python_uninstall_alternative %{srcname}_userdata_encrypt
 %python_uninstall_alternative %{srcname}_ima_emulator
-%python_uninstall_alternative %{srcname}_webapp
 
 %post -n %{srcname}-firewalld
 %firewalld_reload
@@ -258,7 +253,7 @@ cp -r ./tpm_cert_store %{buildroot}%{_localstatedir}/%{srcname}/
 
 %files %{python_files}
 %doc README.md
-%license LICENSE keylime/static/icons/ICON-LICENSE
+%license LICENSE
 %python_alternative %{_bindir}/%{srcname}_verifier
 %python_alternative %{_bindir}/%{srcname}_registrar
 %python_alternative %{_bindir}/%{srcname}_agent
@@ -267,11 +262,10 @@ cp -r ./tpm_cert_store %{buildroot}%{_localstatedir}/%{srcname}/
 %python_alternative %{_bindir}/%{srcname}_migrations_apply
 %python_alternative %{_bindir}/%{srcname}_userdata_encrypt
 %python_alternative %{_bindir}/%{srcname}_ima_emulator
-%python_alternative %{_bindir}/%{srcname}_webapp
 %{python_sitelib}/*
 
 %files -n %{srcname}-config
-%{_config_norepl} %attr (600,keylime,tss) %{_distconfdir}/%{srcname}.conf
+%_config_norepl %attr (0600,keylime,tss) %{_distconfdir}/%{srcname}.conf
 
 %files -n %{srcname}-firewalld
 %dir %{_prefix}/lib/firewalld
@@ -279,11 +273,11 @@ cp -r ./tpm_cert_store %{buildroot}%{_localstatedir}/%{srcname}/
 %{_prefix}/lib/firewalld/services/%{srcname}.xml
 
 %files -n %{srcname}-tpm_cert_store
-%dir %{_localstatedir}/%{srcname}/tpm_cert_store
-%{_localstatedir}/%{srcname}/tpm_cert_store/*
+%dir %attr(0700,keylime,tss) %{_sharedstatedir}/%{srcname}
+%dir %{_sharedstatedir}/%{srcname}/tpm_cert_store
+%{_sharedstatedir}/%{srcname}/tpm_cert_store/*
 # We use this subpackage to store other unrelated things, as far as is
 # required by all the services
-%dir %attr(0700,keylime,tss) %{_localstatedir}/%{srcname}
 %{_sysusersdir}/%{srcname}-user.conf
 %ghost %dir %attr(0700,keylime,tss) %{_rundir}/%{srcname}
 %{_tmpfilesdir}/%{srcname}.conf
@@ -299,7 +293,7 @@ cp -r ./tpm_cert_store %{buildroot}%{_localstatedir}/%{srcname}/
 %{_unitdir}/%{srcname}_verifier.service
 
 %files -n %{srcname}-logrotate
-%{_config_norepl} %{_distconfdir}/logrotate.d/%{srcname}
-%dir %attr(750,keylime,tss) %{_localstatedir}/log/%{srcname}
+%_config_norepl %{_distconfdir}/logrotate.d/%{srcname}
+%dir %attr(0750,keylime,tss) %{_localstatedir}/log/%{srcname}
 
 %changelog
