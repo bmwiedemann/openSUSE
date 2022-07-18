@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
@@ -28,7 +28,11 @@ Source:         https://files.strawberrymusicplayer.org/%{name}-%{version}.tar.x
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
+%if 0%{?sle_version} == 150400
+BuildRequires:  gcc11-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  gettext
 BuildRequires:  git
 BuildRequires:  hicolor-icon-theme
@@ -36,7 +40,7 @@ BuildRequires:  libboost_headers-devel
 BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-%if 0%{?suse_version} > 1530
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
@@ -82,7 +86,7 @@ BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(sqlite3) >= 3.9
 BuildRequires:  pkgconfig(taglib) >= 1.11.1
 
-%if 0%{?suse_version} > 1530
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 Requires:       qt6-sql-sqlite
 %else
 Requires:       libQt5Sql5-sqlite
@@ -115,10 +119,14 @@ Features:
 %setup -q
 
 %build
+%if 0%{?sle_version} == 150400
+export CC="gcc-11"
+export CXX="g++-11"
+%endif
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
 %cmake -DBUILD_WERROR=OFF \
-%if 0%{?suse_version} > 1530
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
        -DQT_MAJOR_VERSION=6
 %else
        -DQT_MAJOR_VERSION=5
