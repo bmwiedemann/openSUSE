@@ -18,7 +18,7 @@
 
 %define         short_name openQA-client
 Name:           %{short_name}-test
-Version:        4.6.1657537268.d9bba8e
+Version:        4.6.1657915260.7ecfb9e
 Release:        0
 Summary:        Test package for %{short_name}
 License:        GPL-2.0-or-later

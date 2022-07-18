@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 15 20:01:07 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1657915260.7ecfb9e:
+  * worker: Retry registration on timestamp mismatch
+  * Dependency cron 2022-07-15
+  * Switch development base to current openSUSE Leap 15.4
+  * container: Update CI base to Leap 15.4
+  * Render multi-URLs in job settings correctly
+
+-------------------------------------------------------------------
 Mon Jul 11 19:23:01 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1657537268.d9bba8e:
