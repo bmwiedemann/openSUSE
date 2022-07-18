@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jul 16 19:27:30 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 7.0.1:
+  * update changelog and docs (#800)
+  * Update fairwinds-insights.yaml (#799)
+
+-------------------------------------------------------------------
+Sat Jul 16 19:24:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 7.0.0:
+  * add docs for mutation (#792)
+  * Enable pullPolicyNotAlways (#795)
+  * Add `checks` flag  to fix specific checks (#797)
+  * fix webhook test (#798)
+  * Add flag to enable mutations in webhook (#794)
+  * Use orb to publish docs (#791)
+  *  ensure path exists when adding mutations (#789)
+  * Expose GetValidateResults function to be used in the polaris package (#763)
+  * update dependencies (#777)
+  * skip incomplete or broken YAML - warn user (#678)
+  * Change `target: Pod` to `target: PodSpec` (#726)
+  * Bump alpine from 3.15.4 to 3.16.0 (#773)
+  * fix issue when the files-path is actual file path instead of directory (#761)
+
+-------------------------------------------------------------------
 Fri May  6 06:09:30 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - BuildRequire go1.17
