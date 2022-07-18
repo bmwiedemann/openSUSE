@@ -1,7 +1,7 @@
 #
 # spec file for package stdman
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           stdman
-Version:        2021.12.21
+Version:        2022.02.01
 Release:        0
 Summary:        C++ stdlib man pages
 License:        MIT
