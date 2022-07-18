@@ -1,7 +1,7 @@
 #
 # spec file for package python-vega
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-vega
-Version:        3.4.0
+Version:        3.6.0
 Release:        0
 Summary:        An IPython/Jupyter widget for Vega 3 and Vega-Lite 2
 License:        BSD-3-Clause
@@ -39,12 +39,12 @@ Requires:       python-jupyter-client >= 4.2
 Recommends:     python-ipywidgets
 Provides:       python-jupyter_vega = %{version}-%{release}
 Obsoletes:      python-jupyter_vega < %{version}-%{release}
+BuildArch:      noarch
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 # notebook >= 5.3 does not need to install a separate nbextension
 Provides:       jupyter-vega = %{version}-%{release}
 Obsoletes:      jupyter-vega < %{version}-%{release}
 %endif
-BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module altair >= 4.0.1}
 BuildRequires:  %{python_module pytest}
@@ -55,7 +55,6 @@ BuildRequires:  %{python_module pytest}
 IPython/Jupyter notebook module for Vega and Vega-Lite,
 Polestar, and Voyager. Notebooks with embedded visualizations
 can be viewed on github and nbviewer.
-
 
 %prep
 %setup -q -n vega-%{version}

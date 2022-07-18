@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jul 16 15:10:14 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 3.6.0:
+  * Formally define the DOMWidgetModel <-> DOMWidgetView relationship
+    (#397)
+  * Bump version and use template literals
+  * Don't define/require under nbextension prefix
+
+- changes from version 3.5.0:
+  * fix: remove data before inserting in widget
+  * Consistent widget style
+
+-------------------------------------------------------------------
 Fri Feb 19 15:03:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip python36 build: With NumPy 1.20, Tumbleweed no longer
