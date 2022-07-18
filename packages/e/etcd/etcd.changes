@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 18 05:47:16 UTC 2022 - dmueller@suse.com
+
+- Update to version 3.5.4:
+  * version: bump up to 3.5.4
+  * Update conssitent_index when applying fails
+  * Add unit test for canonical SRV records
+  * Revert "trim the suffix dot from the srv.Target for etcd-client DNS lookup"
+
+-------------------------------------------------------------------
 Thu Apr 28 13:35:37 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - add variable ETCD_OPTIONS to both service unit and configuration file
