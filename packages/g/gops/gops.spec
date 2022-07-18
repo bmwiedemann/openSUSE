@@ -1,7 +1,7 @@
 #
 # spec file for package gops
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,15 @@
 %global import_path     %{provider_prefix}
 
 Name:           gops
-Version:        0.3.20
+Version:        0.3.25
 Release:        0
 Summary:        A tool to list and diagnose Go processes currently running on your system
 License:        BSD-3-Clause-Clear
 Group:          System/Monitoring
 URL:            https://%{provider_prefix}
-Source0:        https://%{provider_prefix}/archive/v%{version}.tar.gz#/%{repo}-%{version}.tar.gz
-BuildRequires:  golang-packaging
-%{go_provides}
+Source:         %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
+BuildRequires:  golang(API) >= 1.13
 
 %description
 gops is a command to list and diagnose Go processes currently running on your
@@ -41,10 +41,9 @@ additional information such as the current stack trace, Go version, memory stats
 etc. It is possible to use gops tool both in local and remote mode.
 
 %prep
-%setup -q -n %{repo}-%{version}
+%autosetup -a 1
 
 %build
-%goprep %{provider_prefix}
 go build \
    -mod=vendor \
    -v -p 4 -x \

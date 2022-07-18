@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Jul 08 19:46:17 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.3.25:
+  * Only report CPU percentage per period if period is > 0
+  * ci: run tests with -race
+  * agent: fix data race in Listen
+
+-------------------------------------------------------------------
+Mon Jun 27 16:37:26 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Remove usage of obsolete macro golang-packaging macro %goprovides
+  and %goprep
+- Use BuildRequires: golang(API) >= 1.13 formerly golang-packaging.
+  Alternatively could use BuildRequires: go
+- Use tar_scm for changelog automation and tarball generation
+- Use OBS Source Service obs-service-go_modules for vendoring.
+  Upstream commits vendor dir but this is not best practice and
+  contents can skew. Treat go.mod as the single source of truth.
+
+-------------------------------------------------------------------
+Mon Jun 27 16:09:58 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.3.24:
+  * internal: inline getOSUserConfigDir
+  * Sort tree output by PPID
+  * internal: remove getOSUserConfigDir fallback for Go <= 1.13 (#170)
+  * go.mod, vendor: update dependencies
+  * Bump minimum Go version to 1.13 (#169)
+
+-------------------------------------------------------------------
+Mon Jun 27 16:09:47 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.3.23:
+  * Remove CircleCI
+  * goprocess: use debug/buildinfo on Go 1.18 and newer
+  * Update CI to Go 1.18
+  * Fix minor white space issue in README.md (#162)
+  * Fix minor typo in README.md (#161)
+  * Error out when the given duration is negative (#155)
+
+-------------------------------------------------------------------
+Mon Jun 27 16:09:35 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.3.22:
+  * agent: rename setsockoptReuseAddrAndPort to setReuseAddrAndPortSockopts
+  * agent: fix solaris build
+
+-------------------------------------------------------------------
+Mon Jun 27 16:08:59 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.3.21:
+  * go.mod, vendor: update gopsutil and go-ole to fix windows/arm64 build
+
+-------------------------------------------------------------------
 Fri Oct  8 12:11:46 UTC 2021 - Michał Rostecki <mrostecki@suse.com>
 
 - Update to 0.3.20
@@ -12,7 +66,7 @@ Thu Jun 10 14:17:22 UTC 2021 - Michał Rostecki <mrostecki@suse.com>
   * Support for reporting the percent of CPU time usage within
     given time
   * agent: mention SO_REUSEPORT in Options.ReuseSocketAddrAndPort
-    godoc 
+    godoc
 
 -------------------------------------------------------------------
 Tue Jul 10 15:37:23 UTC 2018 - mrostecki@suse.com

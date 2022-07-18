@@ -32,4 +32,15 @@
     <comment></comment>
     <requestid>924226</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>03b700c67a45ea248f6d67a0e918ca84</srcmd5>
+    <version>0.3.25</version>
+    <time>1658162044</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 0.3.25:
+  * Only report CPU percentage per period if period is &gt; 0
+  * ci: run tests with -race
+  * agent: fix data race in Listen (forwarded request 987969 from jfkw)</comment>
+    <requestid>989506</requestid>
+  </revision>
 </revisionlist>
