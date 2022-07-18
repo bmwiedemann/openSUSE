@@ -275,4 +275,26 @@
     <comment>- add fix-CVE-2022-32200.patch (bsc#1200291, CVE-2022-32200)</comment>
     <requestid>981183</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>eac9bd2a7706cde1d5b80a9b64bc71d5</srcmd5>
+    <version>0.4.1</version>
+    <time>1658162055</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 0.4.1:
+  * Two places where a carefully corrupted object file
+    could result in libdwarf crashing a caller due to
+    referencing memory outside the intended read area
+    have been fixed (DW202205-001 and DW202206-001).
+    One related to DW_FORM_ref_sig8, the other to
+    the .debug_pubnames section.
+  * The library now accepts DW_AT_entry_pc in a CU DIE as a base address
+    when DW_AT_low_pc is missing (an extension used by
+    a current compiler).
+  * Added function dwarf_suppress_debuglink_crc() to allow
+    callers to turn off doing a CRC calculation
+    reading GNU debuglink data (saves time for library
+    users accessing near-identical builds). 
+- drop fix-CVE-2022-32200.patch (upstream)</comment>
+    <requestid>989491</requestid>
+  </revision>
 </revisionlist>
