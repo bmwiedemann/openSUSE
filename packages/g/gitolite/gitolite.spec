@@ -1,7 +1,7 @@
 #
 # spec file for package gitolite
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Conflicts:      gitosis
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1330
 Requires(pre):  user(wwwrun)
+Requires(pre):  user(nginx)
 %endif
 %if 0%{?suse_version} > 1110
 %{perl_requires}
@@ -81,6 +82,10 @@ getent passwd %{git_user} >/dev/null || \
 # if apache user is not in git group, add it
 getent passwd wwwrun >/dev/null &&
 	%{_sbindir}/usermod -a -G git wwwrun
+
+# if nginx user is not in git group, add it
+getent passwd nginx >/dev/null &&
+	%{_sbindir}/usermod -a -G git nginx
 
 %files
 %license COPYING

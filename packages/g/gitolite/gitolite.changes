@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  3 22:20:34 UTC 2021 - chris@computersalat.de
+
+- fix for boo#1181130
+  * add nginx to group git
+
+-------------------------------------------------------------------
 Sun Dec 20 12:43:00 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.12:
