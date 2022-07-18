@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 16 19:29:23 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220711T161612Z:
+  * add mc ping command (#4074)
+  * update minio-go to v7.0.31
+  * fix: tier-add help (#4148)
+
+-------------------------------------------------------------------
 Thu Jul 07 06:40:09 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20220706T145436Z:
