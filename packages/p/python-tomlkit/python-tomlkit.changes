@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Jul 13 15:36:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.11.1
+  * Keep consistent line endings when changing files. (#201)
+  * Make KeyAlreadyPresent and InvalidStringError subclasses of
+    ParseError. (#202)
+  * Remove empty table from OutOfOrderTableProxy when deleting
+    items. (#204)
+  * Raise errors when trying to access unsupported methods on
+    OutOfOrderTableProxy. (#205)
+  * Fix unwrap() for String values to remove the quotes. (#199)
+- Release 0.11.0
+  * Add unwrap method to recursive convert to plain old python
+    objects by @syntapy in #187
+  * Remove the is_tomlkit check by @frostming in #195
+- Release 0.10.2
+  * Use the plain python string representation of Key in
+    KeyAlreadyPresent error message. (#185)
+  * Fix the astimezone() and replace() methods of datetime objects.
+    (#188)
+  * Add type definitions for items() function. (#190)
+- Release 0.10.1
+  * Preserve the newlines before super tables when rendering.
+    (#178)
+  * Fix the bug that comments are appended with comma when
+    rendering a multiline array. (#181)
+- Release 0.10.0
+  * Fix the only child detection when creating tables. (#175)
+  * Include the docs/ directory and CHANGELOG.md in sdist tarball.
+    (#176)
+  * Add keyword arguments to string API to allow selecting the
+    representation type. (#177)
+- Release 0.9.2
+  * When a table's only child is a table or array of table, it is
+    created as a super table. (#175)
+- Release 0.9.1
+  * Fix a bug of separators not being kept when replacing the
+    value. (#170)
+  * Tuples should be dumped as TOML arrays. (#171)
+- Release 0.9.0
+  * Add an argument to allow table to be super table by @frostming
+    in #159
+  * Support adding item with dotted key by @frostming in #162
+  * Initialize Sphinx docs by @frostming in #163
+  * Fix values similar to booleans being incorrectly parsed to
+    booleans by @MrGreenTea in #168
+
+-------------------------------------------------------------------
 Thu Jan 20 22:45:49 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to version 0.8.0:
