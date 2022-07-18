@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul 16 11:29:12 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated for wine 7.13.
+
+-------------------------------------------------------------------
 Mon Dec 28 15:48:29 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - the MSI files are not needed if we have the unpacked tree, save
