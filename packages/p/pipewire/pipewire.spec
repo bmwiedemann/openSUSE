@@ -54,7 +54,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.54
+Version:        0.3.55
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -64,6 +64,10 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
+# PATCH-FIX-UPSTREAM 0001-jack-only-mix-when-we-have-input-to-mix.patch
+Patch1:         0001-jack-only-mix-when-we-have-input-to-mix.patch
+# PATCH-FIX-UPSTREAM 0002-spa-alsa-udev-Check-accessibility-of-pcm-devices-as-well.patch -- https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/1319
+Patch2:         0002-spa-alsa-udev-Check-accessibility-of-pcm-devices-as-well.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -334,6 +338,7 @@ This package provides a PulseAudio implementation based on PipeWire
 %if 0%{?sle_version} == 150300
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
@@ -522,6 +527,7 @@ fi
 %{_mandir}/man5/pipewire.conf.5%{?ext_man}
 %dir %{_datadir}/pipewire/
 %{_datadir}/pipewire/pipewire.conf
+%{_datadir}/pipewire/filter-chain.conf
 %dir %{_datadir}/pipewire/filter-chain/
 %{_datadir}/pipewire/filter-chain/*.conf
 %ghost %dir %{_localstatedir}/lib/pipewire/
