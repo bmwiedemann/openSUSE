@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  5 11:29:29 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.14
+  * Support for plasma themes in classicui
+- BuildRequires cmake(KF5IconThemes) and cmake(KF5Plasma)
+- Add new file fcitx5-plasma-theme-generator
+- Use cmake() and pkgconfig() in BuildRequires
+
+-------------------------------------------------------------------
 Sat Mar 12 11:02:55 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 5.0.12

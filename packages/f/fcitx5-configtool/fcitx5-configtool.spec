@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-configtool
-Version:        5.0.12
+Version:        5.0.14
 Release:        0
 Summary:        Configuration tool for fcitx5
 License:        GPL-2.0-or-later
@@ -31,24 +31,23 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
 BuildRequires:  fcitx5-qt-devel
 BuildRequires:  gcc-c++
-BuildRequires:  iso-codes-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kdeclarative-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kirigami2-devel
-BuildRequires:  kitemviews-devel
-BuildRequires:  kpackage-devel
-BuildRequires:  kwidgetsaddons-devel
 BuildRequires:  libQt5QuickControls2-devel
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libqt5-qtx11extras-devel
-BuildRequires:  libxkbcommon-devel
-BuildRequires:  libxkbfile-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-%if 0%{?sle_version} == 150100
-BuildRequires:  kitemmodels-devel
-%endif
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5Kirigami2)
+BuildRequires:  cmake(KF5Package)
+BuildRequires:  cmake(KF5Plasma)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  pkgconfig(iso-codes)
+BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xkbfile)
 Supplements:    fcitx5
 Provides:       fcitx-config-gtk3 = %{version}
 Obsoletes:      fcitx-config-gtk3 <= 0.4.10
@@ -108,6 +107,7 @@ Configuration module for fcitx5
 
 %if 0%{?sle_version} > 150100 || 0%{?suse_version} >= 1550
 %files -n kcm_fcitx5 -f org.fcitx.fcitx5.kcm.lang
+%{_bindir}/fcitx5-plasma-theme-generator
 %dir %{_libdir}/qt5/plugins/kcms
 %dir %{_datadir}/kpackage
 %dir %{_datadir}/kpackage/kcms
