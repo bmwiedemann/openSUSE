@@ -1,0 +1,23 @@
+From 4242c0d03e3fc790b17a1d88ce5a4140633c6b6f Mon Sep 17 00:00:00 2001
+From: Gensollen <nicolas.gensollen@gmail.com>
+Date: Sat, 14 May 2022 08:52:49 +0200
+Subject: [PATCH] fix test decoder (#3252)
+
+---
+ nilearn/decoding/tests/test_decoder.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/nilearn/decoding/tests/test_decoder.py b/nilearn/decoding/tests/test_decoder.py
+index e34aa39042..cd6bea2aab 100644
+--- a/nilearn/decoding/tests/test_decoder.py
++++ b/nilearn/decoding/tests/test_decoder.py
+@@ -290,7 +290,8 @@ def test_decoder_dummy_classifier():
+                     scoring=None)
+     assert model.scoring is None
+     model.fit(X, y)
+-    assert model.scorer_ == get_scorer("accuracy")
++    assert model.scorer_._score_func == get_scorer("accuracy")._score_func
++    assert model.scorer_._sign == get_scorer("accuracy")._sign
+     assert model.score(X, y) > 0.5
+ 
+ 

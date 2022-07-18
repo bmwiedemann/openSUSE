@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jul 12 14:02:31 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.9.1
+  * Python 3.6 is deprecated and will be removed in release 0.10
+  * Nibabel 2.x is no longer supported
+  * Surface plotting functions can now produce interactive plots 
+    with Plotly
+  * New module nilearn.interfaces to implement loading and saving 
+    utilities with various interfaces
+  * New functions load_confounds and load_confounds_strategy to 
+    load confound variables easily from fMRIPrep outputs
+  * New class HierarchicalKMeans which yields more balanced 
+    clusters than KMeans. It is also callable through Parcellations 
+    using method=hierarchical_kmeans
+  * Masker objects like NiftiMasker now belong to the new module 
+    nilearn.maskers. The old import style, through the module 
+    input_data, still works but has been deprecated
+  * Class NiftiMapsMasker can now generate HTML reports in the same 
+    way as NiftiMasker and NiftiLabelsMasker
+  * The contributing documentation and maintenance pages were improved
+  * many more changes, see upstream changelog
+- Add upstream patch fix-test-decoder.patch
+- Delete upstreamed patches:
+  * nilearn-pr3136-pythoncall.patch 
+  * nilearn-pr3094-py310.patch 
+
+-------------------------------------------------------------------
 Thu Jan 20 21:17:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.8.1
