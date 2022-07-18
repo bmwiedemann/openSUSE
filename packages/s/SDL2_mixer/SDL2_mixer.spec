@@ -18,7 +18,7 @@
 
 Name:           SDL2_mixer
 %define lname	libSDL2_mixer-2_0-0
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        SDL2 sound mixer library
 License:        Zlib
