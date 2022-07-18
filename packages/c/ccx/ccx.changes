@@ -1,0 +1,148 @@
+-------------------------------------------------------------------
+Thu Jul 14 16:22:01 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix bad calling convention found by recent GFortran:
+  0001-Pass-rank-1-dummy-for-auxiliary-array-in-isortii.patch
+
+-------------------------------------------------------------------
+Sun Jan 30 19:11:16 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 2.19:
+  Too many changes to list, a full list of changes is available in
+  the included LOGFILE.
+- Add 0001-Fix-wrong-parameter-passed-to-us3_materialdata_me.patch
+- Add 0001-Fix-wrong-scalar-declaration-for-2x2-inverse-Jacobia.patch
+- Disable beamfsh1 test on aarch64 and i586
+
+-------------------------------------------------------------------
+Tue Feb 23 11:23:36 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 2.17:
+  Too many changes to list, a full list of changes is
+  available in the included LOGFILE.
+- Rebase patches, renamed ccx-2.16-spooles-dynamic.patch
+  -> 0001-Fixup-spooles-include-dir.patch
+- Add 0001-Add-missing-argument-for-inputerror-function-call.patch
+- Add 0001-Use-interface-for-cubtri-callback-function.patch
+- Enable check section
+
+-------------------------------------------------------------------
+Thu Nov 28 13:07:58 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 2.16:
+  Too many changes to list, a full list of changes is
+  available in the included LOGFILE.
+  (boo#1146243).
+- Examples/tests are now packages in the ccx-examples package
+- Move docs to separate source package
+- Update patches:
+  * Drop (not applied) ccx-2.8-no-local-compare.patch
+  * Drop ccx-1.2-doc-Makefile.patch
+  * ccx-2.8-build.patch -> ccx-2.16-build.patch, foo.patch
+  * ccx-2.5-abaqus-shell-heat-transfer-elements-read.patch ->
+    ccx-2.16-abaqus-shell-heat-transfer-elements-read.patch
+  * ccx-2.8-spooles-dynamic.patch -> ccx-2.16-spooles-dynamic.patch
+
+-------------------------------------------------------------------
+Wed Jul 19 23:23:47 UTC 2017 - adrian@suse.de
+
+- update to 2.12
+
+-------------------------------------------------------------------
+Sun May 31 16:27:13 UTC 2015 - avvissu@yandex.ru
+
+- Update to 2.8p2:
+- Procedures:
+  * computational Fluid Dynamics based on finite volumes works for 
+    laminar incompressible flow
+  * for frequency calculations participation factors and relative 
+    effective modal masses are calculated and stored in the .dat
+  * rayleigh damping (*DAMPING), contact damping and dashpots were 
+    implemented for nonlinear dynamic calculations (*DYNAMIC) 
+  * magnetostatic and inductive heating calculations are available 
+    with the *ELECTROMAGNETICS keyword
+  * surfaces tied by cyclic symmetry conditions can now also be 
+    face-based
+  * stiffness of a substructure (= superelement) can be calculated 
+    and stored using the *SUBSTRUCTURE GENERATE and *SUBSTRUCTURE 
+    MATRIX OUTPUT cards 
+- Elements:
+  * beams with a pipe section were implemented (= square cross 
+    section with special integration scheme) 
+  * replaced the expandable rigid bodies by mean rotations MPC's 
+    for the app of rotations and/or moments to beams and shells
+- Materials:
+  * a linear elastoplastic material was implemented (additive 
+    decomposition of the total strain)
+  * a Ciarlet type elastic model for large deformations was 
+    implemented
+  * a single crystal creep model was implemented
+- Output:
+  * the text underneath *HEADING is stored in the frd-file 
+  * POT, ECD, EMFE and EMFB labels for the output of the electric 
+    potential, electric current density, electric field and 
+    magnetic field into the .frd-file
+- Update patches:
+  * ccx-2.6-build.patch -> ccx-2.8-build.patch
+  * ccx-2.6-no-local-compare.patch -> ccx-2.8-no-local-compare.patch
+  * ccx-2.0-spooles-dynamic.patch -> ccx-2.8-spooles-dynamic.patch
+
+-------------------------------------------------------------------
+Tue Oct 28 17:49:48 UTC 2014 - avvissu@yandex.ru
+
+- Fix build error on openSUSE > 12.3:
+  * add BuildRequires: tex(pst-tools.tex)
+
+-------------------------------------------------------------------
+Thu Jul 11 20:29:28 UTC 2013 - scorot@free.fr
+
+- version 2.6
+ * See http://www.dhondt.de/new_calc.htm for details 
+
+-------------------------------------------------------------------
+Mon Mar 18 21:59:06 UTC 2013 - scorot@free.fr
+
+- fix latex requirements on 12.3 and Factory 
+
+-------------------------------------------------------------------
+Tue Oct  9 18:58:37 UTC 2012 - scorot@free.fr
+
+- version 2.5
+ * See http://www.dhondt.de/new_calc.htm for details
+- spec file cleanup and reformating
+- update patches 
+
+-------------------------------------------------------------------
+Tue Jul  3 20:08:04 UTC 2012 - scorot@free.fr
+
+- add patch from Guido Dhondt to fix compiler warnings 
+
+-------------------------------------------------------------------
+Thu Jun  7 20:27:07 UTC 2012 - scorot@free.fr
+
+- do not link against openblas since arpack is linked against
+  reference blas and lapack 
+
+-------------------------------------------------------------------
+Sun May  6 20:53:51 UTC 2012 - scorot@free.fr
+
+- spec file cleanup 
+
+-------------------------------------------------------------------
+Wed Mar 21 21:50:49 UTC 2012 - scorot@free.fr
+
+- version 2.4
+- fix documentation build on recent texlive
+- change package group
+- doc package is noarch for 11.3 and higher 
+
+-------------------------------------------------------------------
+Fri Mar 16 22:20:23 UTC 2012 - scorot@free.fr
+
+- update patch0 to use openblas 
+
+-------------------------------------------------------------------
+Mon Mar 12 21:24:57 UTC 2012 - scorot@free.fr
+
+- use arpack-ng instead of arpack 
+

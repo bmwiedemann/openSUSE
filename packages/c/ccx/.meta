@@ -1,0 +1,5 @@
+<package name="ccx" project="openSUSE:Factory">
+  <title>An open source finite element package</title>
+  <description>CalculiX is a package designed to solve field problems. The method used is the finite element method. So far only structural problems can be solved but it is planned to extend the capabilities.</description>
+  <devel project="science" package="ccx"/>
+</package>

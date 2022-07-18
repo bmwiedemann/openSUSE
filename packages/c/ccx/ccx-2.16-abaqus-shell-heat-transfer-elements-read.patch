@@ -1,0 +1,23 @@
+From 9b5e1f4bc119409a9b3edc72b1b7114d5b0b5141 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 12 Nov 2020 04:01:21 +0100
+Subject: [PATCH] Abaqus shell heat transfer elements read
+
+---
+ src/elements.f | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/elements.f b/src/elements.f
+index fa4c25a..1c587f4 100644
+--- a/src/elements.f
++++ b/src/elements.f
+@@ -137,7 +137,8 @@ c      endif
+ !     
+ !     removing the ABAQUS label for heat transfer elements
+ !     
+-        if((label(1:2).eq.'DC').and.(label(1:7).ne.'DCOUP3D')) then
++        if((label(1:2).eq.'DC').or.(label(1:2).eq.'DS').and.
++     &    (label(1:7).ne.'DCOUP3D')) then
+           label(1:7)=label(2:8)
+           label(8:8)=' '
+ !     

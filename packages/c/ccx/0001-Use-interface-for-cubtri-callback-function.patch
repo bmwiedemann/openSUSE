@@ -1,0 +1,76 @@
+From 0f4753160768a89677d8df14b0759a4edce9a966 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 23 Feb 2021 12:19:31 +0100
+Subject: [PATCH] Use interface for cubtri callback function
+
+Non-legacy gfortran refuses to compile with an implicit interface for
+the callback function.
+---
+ src/calcview.f | 17 +++++++++++++----
+ src/cubtri.f   |  9 ++++++++-
+ 2 files changed, 21 insertions(+), 5 deletions(-)
+
+diff --git a/src/calcview.f b/src/calcview.f
+index 531dbc6..f138bbb 100644
+--- a/src/calcview.f
++++ b/src/calcview.f
+@@ -47,12 +47,18 @@
+      &     xxmid,xqmax,dummy,a(3,3),b(3,3),c(3,3),ddd(3),p31(3),
+      &     xq(3),yq(3),ftij,adview(*),auview(*),dint,dir(3),
+      &     dirloc(3),dist(*),area(*),dd,p21(3),sidemean,r(3,3),
+-     &     fform,pl(2,3),epsabs,epsrel,abserr,q(3,3),
++     &     pl(2,3),epsabs,epsrel,abserr,q(3,3),
+      &     rdata(21),factor,argument
+ !
+ c      real*8 vertex(3,3),vertexl(2,3),unitvec(3,3)
+ !
+-      external fform
++      interface
++         function fform(x,y,idata,rdata)
++         real*8 :: x,y,rdata(:)
++         integer :: idata(:)
++         real*8 :: fform
++         end function fform
++      end interface
+ !     
+       nzsradv(3)=nzsrad
+ !     
+@@ -505,10 +511,13 @@ c     &                 (ddd(k)*ddd(l))
+ !
+       implicit none
+ !     
+-      integer k,l,idata(1)
++      real*8 :: x,y,rdata(:)
++      integer :: idata(:)
++!
++      integer k,l
+ !     
+       real*8 pint(3),ddd(3),xn(3),q(3,3),
+-     &   unitvec(3,3),r(3,3),xxn,x,y,porigin(3),rdata(21)
++     &   unitvec(3,3),r(3,3),xxn,porigin(3)
+ !
+ !     retrieving common data from field rdata
+ !
+diff --git a/src/cubtri.f b/src/cubtri.f
+index c13aa5b..fc654c7 100644
+--- a/src/cubtri.f
++++ b/src/cubtri.f
+@@ -72,7 +72,14 @@ C       ERROR TEST BY REMOVING THE IF STATEMENT SHORTLY AFTER STATEMENT
+ C       NUMBER 70.
+ C
+       implicit none
+-      EXTERNAL F,rnderr
++      EXTERNAL rnderr
++      interface
++         real*8 function f(x,y,idata,rdata)
++         real*8 :: x,y,rdata(21)
++         integer :: idata(1)
++         end function f
++      end interface
++
+       INTEGER IDATA(1), IER, MCALLS, NCALLS, NW,jkp,i,j,k,l,maxc,maxk,
+      &  mw,nfe
+       REAL*8 ALFA, ANS, ANSKP, AREA, EPS, ERR, ERRMAX, H, Q1, Q2, R1,R2,
+-- 
+2.30.1
+

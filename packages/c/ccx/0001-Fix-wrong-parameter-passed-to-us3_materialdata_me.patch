@@ -1,0 +1,35 @@
+From 59b0a4eca5ea6efd138a708fc5ba4b98a499b2d4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 30 Jan 2022 17:37:38 +0100
+Subject: [PATCH] Fix wrong parameter passed to us3_materialdata_me
+
+GCC 11.2 errors out as the last parameter is syntactically wrong, and
+apparently also semantically:
+
+resultsmech_us3.f:465:18:
+   353 |      &           xstiff,ncmat_)
+       |                        2
+ ......
+   465 |      &     xstiff,alcon)
+       |                  1
+Error: Type mismatch between actual argument at (1) and actual argument at (2) (REAL(8)/INTEGER(4)).
+---
+ src/resultsmech_us3.f | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/resultsmech_us3.f b/src/resultsmech_us3.f
+index bf1757b..78c8f17 100644
+--- a/src/resultsmech_us3.f
++++ b/src/resultsmech_us3.f
+@@ -462,7 +462,7 @@
+      &     ihyper,istiff,elconloc,eth,kode,plicon,
+      &     nplicon,plkcon,nplkcon,npmat_,
+      &     plconloc,mi(1),dtime,k,
+-     &     xstiff,alcon)
++     &     xstiff,ncmat_)
+           e     = elas(1)
+           un    = elas(2)
+           rho   = rhcon(1,1,imat)        
+-- 
+2.34.1
+

@@ -1,0 +1,68 @@
+From e551c655e45c8aa84b60a2540a35eecfd4d9cc5f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 12 Nov 2020 03:59:31 +0100
+Subject: [PATCH] Fixup spooles include dir
+
+---
+ src/cascade.c    | 6 +++---
+ src/cascadefem.c | 6 +++---
+ src/spooles.h    | 8 ++++----
+ 3 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/src/cascade.c b/src/cascade.c
+index 796d5cf..c996f12 100644
+--- a/src/cascade.c
++++ b/src/cascade.c
+@@ -21,9 +21,9 @@
+ #include <string.h>
+ 
+ #ifdef SPOOLES
+-#include <misc.h>
+-#include <FrontMtx.h>
+-#include <SymbFac.h>
++#include <spooles/misc.h>
++#include <spooles/FrontMtx.h>
++#include <spooles/SymbFac.h>
+ #endif
+ 
+ #include "CalculiX.h"
+diff --git a/src/cascadefem.c b/src/cascadefem.c
+index 308960c..578d4e3 100755
+--- a/src/cascadefem.c
++++ b/src/cascadefem.c
+@@ -21,9 +21,9 @@
+ #include <string.h>
+ 
+ #ifdef SPOOLES
+-#include <misc.h>
+-#include <FrontMtx.h>
+-#include <SymbFac.h>
++#include <spooles/misc.h>
++#include <spooles/FrontMtx.h>
++#include <spooles/SymbFac.h>
+ #endif
+ 
+ #include "CalculiX.h"
+diff --git a/src/spooles.h b/src/spooles.h
+index 388f1ff..6966215 100755
+--- a/src/spooles.h
++++ b/src/spooles.h
+@@ -23,11 +23,11 @@
+  */
+ 
+ #include <pthread.h>
+-#include <misc.h>
+-#include <FrontMtx.h>
+-#include <SymbFac.h>
++#include <spooles/misc.h>
++#include <spooles/FrontMtx.h>
++#include <spooles/SymbFac.h>
+ #if USE_MT
+-#include <MT/spoolesMT.h>
++#include <spooles/MT/spoolesMT.h>
+ #endif
+ 
+ /* increase this for debugging */
+-- 
+2.30.1
+

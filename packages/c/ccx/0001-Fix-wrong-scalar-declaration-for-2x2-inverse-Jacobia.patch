@@ -1,0 +1,29 @@
+From 5b272a99dfd8726be69f8515c8406a5423019f5d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 30 Jan 2022 17:48:27 +0100
+Subject: [PATCH] Fix wrong scalar declaration for 2x2 inverse Jacobian
+
+us4_sub.f:494:42:
+  494 |         call us4_Ni(ri,si,X,Nrs,dNr,dNs,Jm,invJm,detJm,detinvJm,dNx,dNy) ! s4 interpolation
+      |                                           1
+Error: Rank mismatch in argument 'invjm' at (1) (rank-2 and scalar)
+---
+ src/us4_sub.f | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/us4_sub.f b/src/us4_sub.f
+index 7305d6b..36d77f7 100644
+--- a/src/us4_sub.f
++++ b/src/us4_sub.f
+@@ -454,7 +454,7 @@
+       REAL*8, INTENT(IN)  :: X(4,3),rho,h             
+       REAL*8, INTENT(OUT) :: M(24,24) 
+       REAL*8 :: ri,si,Nrs(4),dNr(4),dNs(4),Jm(2,2)
+-      REAL*8 :: invJm,detJm,detinvJm,dNx(4),dNy(4),q1
++      REAL*8 :: invJm(2,2),detJm,detinvJm,dNx(4),dNy(4),q1
+       REAL*8 :: m_3t(6,6), N_u(6,24),g_p(4,3)
+       INTEGER :: k,j
+       !
+-- 
+2.34.1
+

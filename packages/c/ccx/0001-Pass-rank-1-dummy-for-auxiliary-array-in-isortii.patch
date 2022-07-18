@@ -1,0 +1,27 @@
+From 1a7801c596a2649a198779ff513627f3007b38bf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 14 Jul 2022 18:19:33 +0200
+Subject: [PATCH] Pass rank-1 dummy for auxiliary array in isortii
+
+Passing an scalar in place of a (dummy) rank-1 array is invalid
+according to the Fortran standard.
+---
+ src/gencontelem_n2f.f | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gencontelem_n2f.f b/src/gencontelem_n2f.f
+index eef6205..280b495 100644
+--- a/src/gencontelem_n2f.f
++++ b/src/gencontelem_n2f.f
+@@ -37,7 +37,7 @@
+ !
+       integer ntie,ifree,nasym,icutb,ne0,mortar,jqw(*),iroww(*),
+      &  itietri(2,ntie),ipkon(*),kon(*),koncont(4,*),ne,node,
+-     &  neigh(1),iflag,kneigh,i,j,k,l,isol,iset,idummy,
++     &  neigh(1),iflag,kneigh,i,j,k,l,isol,iset,idummy(1),
+      &  itri,ll,kflag,n,nx(*),ny(*),istep,iinc,mi(*),nzsw,
+      &  nz(*),nstart,ielmat(mi(3),*),imat,ifaceq(8,6),ifacet(6,4),
+      &  ifacew1(4,5),ifacew2(8,5),nelem,jface,indexe,iit,
+-- 
+2.37.0
+

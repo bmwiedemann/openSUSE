@@ -1,0 +1,25 @@
+From d72c6c52d1a4535bb04e24b09f02bf52a990eb39 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 30 Jan 2022 16:06:47 +0100
+Subject: [PATCH] Add missing argument for inputerror function call
+
+---
+ src/crackpropagations.f | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/crackpropagations.f b/src/crackpropagations.f
+index 5b1dfbe..e5a03c5 100644
+--- a/src/crackpropagations.f
++++ b/src/crackpropagations.f
+@@ -120,7 +120,7 @@
+         write(*,*) '         ',
+      &       textpart(i)(1:index(textpart(i),' ')-1)
+         call inputerror(inpc,ipoinpc,iline,
+-     &       "*CRACK PROPAGATION%")
++     &       "*CRACK PROPAGATION%",ier)
+       endif
+ !
+ !     check for the existence of the material
+-- 
+2.34.1
+
