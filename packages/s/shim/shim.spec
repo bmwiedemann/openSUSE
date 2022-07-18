@@ -35,6 +35,13 @@
 %endif
 %endif
 
+%if %{defined sbat_distro}
+# SBAT metadata
+%define sbat_generation 1
+%else
+%{error please define sbat_distro, sbat_distro_summary and sbat_distro_url}
+%endif
+
 Name:           shim
 Version:        15.6
 Release:        0
@@ -127,17 +134,10 @@ The source code of UEFI shim loader
 %patch100 -p1
 
 %build
+%if 0%{?sbat_generation}
 # generate the vendor SBAT metadata
-%if 0%{?is_opensuse} == 1 || 0%{?sle_version} == 0
-distro_id="opensuse"
-distro_name="The openSUSE project"
-%else
-distro_id="sle"
-distro_name="SUSE Linux Enterprise"
+echo "shim.%{sbat_distro},%{sbat_generation},%{sbat_distro_summary},%{name},%{version},%{sbat_distro_url}" > data/sbat.vendor.csv
 %endif
-distro_sbat=1
-sbat="shim.${distro_id},${distro_sbat},${distro_name},%{name},%{version},mail:security-team@suse.de"
-echo "${sbat}" > data/sbat.vendor.csv
 
 # first, build MokManager and fallback as they don't depend on a
 # specific certificate

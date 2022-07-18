@@ -155,6 +155,11 @@ Tue Jun 28 04:03:45 UTC 2022 - Joey Lee <jlee@suse.com>
       file which includes all .der for testing environment.
 
 -------------------------------------------------------------------
+Tue Apr 12 06:35:16 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- use common SBAT values (boo#1193282)
+
+-------------------------------------------------------------------
 Thu Jul  1 04:07:03 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add shim-bsc1187696-avoid-deleting-rt-variables.patch to avoid
