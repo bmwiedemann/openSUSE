@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 16 18:59:43 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.22.2:
+  * Fix a bug that prevented line breaks from being output in docs when multiple parameters were specified (#311)
+  * Bump github.com/open-policy-agent/opa from 0.42.1 to 0.42.2 (#310)
+  * Bump k8s.io/apimachinery from 0.24.2 to 0.24.3 (#312)
+  * Add Darwin arm64 build to release target
+
+-------------------------------------------------------------------
 Mon Jul 11 13:56:42 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.22.1:
