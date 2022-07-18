@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 16 19:00:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.51.0:
+  * feat: add support for cocoapods (Swift/Objective-C) (#1081)
+  * Fix package url for Go modules with no / (#1092)
+  * Update Stereoscope to 777471f38c5b2f15c19d6cffe093ce6392d8040c (#1090)
+  * feat: output attestation to file (#1087)
+  * Update Stereoscope to cfbd966e5a8d11d73cd17adc8b8ab8468a086f1e (#1089)
+  * Add portage support for Gentoo Linux (#1076)
+  * Add PR action back to workflow with new token (#1086)
+
+-------------------------------------------------------------------
 Wed Jul 06 18:12:23 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.50.0:
