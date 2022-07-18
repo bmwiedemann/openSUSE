@@ -1061,4 +1061,14 @@ I hope I got it right now. It export both 5.34.0 and 5.34.1 COMPAT. That should 
     <comment>- Update to 5.36.0</comment>
     <requestid>985249</requestid>
   </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>c5724692316ff9786a78246baba3168c</srcmd5>
+    <version>5.36.0</version>
+    <time>1658161987</time>
+    <user>RBrownFactory</user>
+    <comment>- move builtin.pm to perl-base as File::Copy relies on it since last
+  update.
+  This fixes execution of builtime source services in OBS. (forwarded request 989343 from adrianSuSE)</comment>
+    <requestid>989358</requestid>
+  </revision>
 </revisionlist>

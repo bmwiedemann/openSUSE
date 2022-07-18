@@ -297,6 +297,7 @@ cat << EOF > perl-base-filelist
 /usr/lib/perl5/%{pversion}/SelectSaver.pm
 /usr/lib/perl5/%{pversion}/Symbol.pm
 /usr/lib/perl5/%{pversion}/base.pm
+/usr/lib/perl5/%{pversion}/builtin.pm
 /usr/lib/perl5/%{pversion}/bytes.pm
 /usr/lib/perl5/%{pversion}/bytes_heavy.pl
 /usr/lib/perl5/%{pversion}/constant.pm

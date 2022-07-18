@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 15 07:14:54 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- move builtin.pm to perl-base as File::Copy relies on it since last
+  update.
+  This fixes execution of builtime source services in OBS.
+
+-------------------------------------------------------------------
 Thu Jun 23 13:54:51 CEST 2022 - mls@suse.de
 
 - Update to 5.36.0
