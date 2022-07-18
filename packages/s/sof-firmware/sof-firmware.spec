@@ -24,7 +24,7 @@ Name:           sof-firmware
 Summary:        Firmware Data Files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        2.1.1
+Version:        2.2
 Release:        0
 URL:            https://github.com/thesofproject/sof-bin
 BuildRequires:  fdupes

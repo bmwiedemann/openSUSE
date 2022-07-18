@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 17 04:40:36 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to version 2.2:
+  * New up mix and down mix module added with support for HiFi4
+    that can up/down mix the number of channels in a stream.
+  * Zephyr, more native APIs added now for logging, delays, sleeping.
+  * Codec adapter becomes the module adapter and it's API reflects the 
+    same API used by the Windows processing modules
+  * See details in https://github.com/thesofproject/sof/releases/tag/v2.2
+
+-------------------------------------------------------------------
 Wed Apr 20 08:20:08 CEST 2022 - tiwai@suse.de
 
 - Update to version 2.1:
