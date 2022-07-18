@@ -44,7 +44,7 @@ BuildRequires:  python3-novaclient
 %if 0%{suse_version} >= 1550
 BuildRequires:  python3-oauth2
 %else
-BuildRequires:  python3-oauth2client
+BuildRequires:  python3-google-auth-oauthlib
 %endif
 BuildRequires:  python3-openwsman
 BuildRequires:  python3-pexpect
@@ -53,9 +53,9 @@ BuildRequires:  python3-requests
 BuildRequires:  python3-xml
 %else
 BuildRequires:  python-google-api-python-client
+BuildRequires:  python-google-auth-oauthlib
 BuildRequires:  python-keystoneclient
 BuildRequires:  python-novaclient
-BuildRequires:  python-oauth2client
 BuildRequires:  python-pexpect
 BuildRequires:  python-pycurl
 BuildRequires:  python-requests

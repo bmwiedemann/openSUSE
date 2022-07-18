@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 14 12:51:31 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Don’t use python-oauth2client, which is deprecated
+  (gh#ClusterLabs/fence-agents#495).
+
+-------------------------------------------------------------------
 Thu May 19 05:06:43 UTC 2022 - varkoly@suse.com
 
 - Update to version 4.11.0+git.1652860746.11107cb7:
