@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 18 08:26:23 UTC 2022 - David Anes <david.anes@suse.com>
+
+- update to 6.4.31
+  * Bugfixes:
+    - Try to fix ./configure --with-ssl=... for systems that have 
+      multiple OpenSSL versions installed.  Issues reported by 
+      Dennis Putnam.
+    - The netrc parser now reports its errors to syslog or logfile 
+      when appropriate, previously it would always log to stderr.
+    - Add error checking to .netrc parser.
+  * Changes:
+    - manpage: use .UR/.UE macros instead of .URL for URIs.
+    - manpage: fix contractions. Found with FreeBSD's igor tool.
+    - manpage: HTML now built with pandoc -> python-docutils
+      (manServer.pl was dropped)
+
+-------------------------------------------------------------------
 Tue Jun 21 13:43:53 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Moved logrotate files from user specific directory /etc/logrotate.d
