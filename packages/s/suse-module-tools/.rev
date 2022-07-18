@@ -580,4 +580,14 @@ source service setup which messed up my spec file.
   * kernel-scriptlets: don't pass flags to weak-modules2 (bsc#1195391)</comment>
     <requestid>988728</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>9e58efeb994d238bb511970b4d2772e3</srcmd5>
+    <version>16.0.22</version>
+    <time>1658161973</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 16.0.22:
+  * weak-modules2: only use kernel version under /run/regenerate-initrd
+  (boo#1201387) (forwarded request 989122 from mwilck)</comment>
+    <requestid>989123</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 14 09:54:09 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.22:
+  * weak-modules2: only use kernel version under /run/regenerate-initrd
+  (boo#1201387)
+
+-------------------------------------------------------------------
 Thu Jul  7 08:10:08 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.21:
