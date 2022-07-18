@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 12 16:32:19 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix editing imported SSH hosts (kde#455290):
+  * 0001-Fix-error-when-trying-to-edit-the-editable-parts-of-.patch
+
+-------------------------------------------------------------------
 Tue Jul  5 17:03:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 22.04.3

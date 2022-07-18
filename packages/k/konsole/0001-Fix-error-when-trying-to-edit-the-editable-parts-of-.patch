@@ -1,0 +1,47 @@
+From 0d955a6c4af1f7e1c60eda4704844c56dbcac5d9 Mon Sep 17 00:00:00 2001
+From: Al Williams <al.williams@awce.com>
+Date: Fri, 17 Jun 2022 16:37:13 -0500
+Subject: [PATCH] Fix error when trying to edit the editable parts of an
+ imported ssh host with a user name/key.
+
+BUG:455290
+(cherry picked from commit 4276bd33e2f4239dfcd4b4551104b4ac83daa73a)
+---
+ src/plugins/SSHManager/sshmanagerpluginwidget.cpp | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/plugins/SSHManager/sshmanagerpluginwidget.cpp b/src/plugins/SSHManager/sshmanagerpluginwidget.cpp
+index 97e2bb32..25bd60b2 100644
+--- a/src/plugins/SSHManager/sshmanagerpluginwidget.cpp
++++ b/src/plugins/SSHManager/sshmanagerpluginwidget.cpp
+@@ -148,7 +148,7 @@ void SSHManagerTreeWidget::addSshInfo()
+ 
+ void SSHManagerTreeWidget::saveEdit()
+ {
+-    SSHConfigurationData data;
++  //    SSHConfigurationData data; (not used?)
+     auto [error, errorString] = checkFields();
+     if (error) {
+         ui->errorPanel->setText(errorString);
+@@ -178,6 +178,8 @@ SSHConfigurationData SSHManagerTreeWidget::info() const
+     data.profileName = ui->profile->currentText().trimmed();
+     data.username = ui->username->text().trimmed();
+     data.useSshConfig = ui->useSshConfig->checkState() == Qt::Checked;
++    // if ui->username is enabled then we were not imported!
++    data.importedFromSshConfig=!ui->username->isEnabled();
+     return data;
+ }
+ 
+@@ -352,7 +354,8 @@ std::pair<bool, QString> SSHManagerTreeWidget::checkFields() const
+     }
+ 
+     if (ui->useSshConfig->checkState() == Qt::Checked) {
+-        if (ui->sshkey->text().count() || ui->username->text().count()) {
++      // If ui->username is not enabled then this was an autopopulated entry and we should not complain
++      if (ui->username->isEnabled() && (ui->sshkey->text().count() || ui->username->text().count())) {
+             error = true;
+             errorString += li + i18n("If Use Ssh Config is set, do not specify sshkey or username.") + il;
+         }
+-- 
+2.36.1
+
