@@ -19,7 +19,7 @@
 %global qt_version %(qtpaths --qt-version | awk -F. '{ printf "%02d%02d%02d", $1, $2, $3 }')
 
 Name:           stellarium
-Version:        0.22.1
+Version:        0.22.2
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later

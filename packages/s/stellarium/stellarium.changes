@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul  7 19:51:03 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 0.22.2:
+  * Added recognition licenses for skycultures
+  * Many improvements in the Satellites plugin, esp. display of earth
+    shadow and filtering
+  * Improvements in AstroCalc: graphs, eclipses, transits
+  * Improvements in Meteor Showers, Exoplanets and the Navigational
+  * Stars plugins
+  * Updated DSO catalog
+  * Fixed ANGLE mode for some rare cases
+  * A large number of bug fixes and closed feature requests and
+    enhancements
+
+-------------------------------------------------------------------
 Sun Apr 17 18:41:38 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 0.22.1:
