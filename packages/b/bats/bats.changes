@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jun 15 18:28:08 UTC 2022 - Olav Reinert <seroton10@gmail.com>
+
+- Update to version 1.7.0:
+  * Pretty formatter print filename when entering file (#561)
+  * BATS_TEST_NAME_PREFIX allows prefixing test names on stdout and in reports (#561)
+  * setup_suite and teardown_suite (#571, #585)
+  * out-of-band warning infrastructure, with following warnings:
+    * BW01: run command not found (exit code 127)  (#586)
+    * BW02: run uses flags without proper `bats_require_minimum_version` guard (#587)
+  * `bats_require_minimum_version` to guard code that would not run on older
+    versions (#587)
+  * unbound variable errors in formatters when using `SHELLOPTS=nounset` (`-u`) (#558)
+  * don't require `flock` *and* `shlock` for parallel mode test (#554)
+  * print name of failing test when using TAP13 with timing information (#559, #555)
+  * removed broken symlink, added regression test (#560)
+  * don't show empty lines as `#` with pretty formatter  (#561)
+  * prevent `teardown`, `teardown_file`, and `teardown_suite` from overriding bats'
+    exit code by setting `$status` (e.g. via calling `run`) (#581, #575)
+    * **CRITICAL**: this can return exit code 0 despite failed tests, thus preventing
+      your CI from reporting test failures! The regression happened in version 1.6.0.
+  * `run --keep-empty-lines` now reports 0 lines on empty `$output` (#583)
+
+-------------------------------------------------------------------
 Wed Jun  8 19:11:07 UTC 2022 - Olav Reinert <seroton10@gmail.com>
 
 - Update to version 1.6.1:
