@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jul 18 13:59:13 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 5.65:
+  * Security bugfixes
+    - OpenSSL DLLs updated to version 3.0.5.
+  * Bugfixes
+    - Fixed handling globally enabled FIPS.
+    - Fixed openssl.cnf processing in WIN32 GUI.
+    - Fixed a number of compiler warnings.
+    - Fixed tests on older versions of OpenSSL.
+
+-------------------------------------------------------------------
+Fri Jun  3 10:02:00 UTC 2022 - pgajdos@suse.com
+
+- adding missing bug, CVE and fate references:
+  * CVE-2015-3644 [bsc#931517], one of previous version updates
+    (https://bugzilla.suse.com/show_bug.cgi?id=931517#c0)
+  * [bsc#990797], see stunnel.service.in
+  * [bsc#862294], README.SUSE not shipped
+  * CVE-2013-1762 [bsc#807440], one of previous version updates
+    (https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1762)
+  * [bsc#776756] and [bsc#775262] not applicable (openssl versions)
+  * [fate#307180], adding to 11sp1
+  * [fate#311400], updating to new version
+  * [fate#314256], updating to new version
+
+-------------------------------------------------------------------
 Sat May  7 13:54:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.64:
