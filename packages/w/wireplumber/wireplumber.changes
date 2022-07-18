@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 14 08:35:10 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix crash on session end:
+  * 0001-dbus-fix-crash-when-trying-to-reconnect.patch
+
+-------------------------------------------------------------------
 Fri Jul  8 11:02:44 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix alsa device creation:

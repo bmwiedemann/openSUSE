@@ -34,6 +34,7 @@ Source1:        split-config-file.py
 Patch0:         reduce-meson-required-version.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         fix-alsa.patch
+Patch2:         0001-dbus-fix-crash-when-trying-to-reconnect.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
@@ -143,6 +144,7 @@ the wireplumber shared library.
 %patch0 -p1
 %endif
 %patch1 -p1
+%patch2 -p1
 
 pushd src/config/main.lua.d
 python3 %{SOURCE1}
