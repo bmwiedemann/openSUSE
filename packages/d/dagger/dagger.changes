@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Jul 16 18:59:32 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.23:
+  * ci: fix some linting
+  * feat: use glamour in doc markdown rendering
+  * build(deps): bump go.opentelemetry.io/otel from 1.4.1 to 1.8.0 (#2768)
+  * website: Fix an error that was making docusaurus crashing when building
+  * Update docusaurus theme on top of corex
+  * Allow sending to DC invalid dagger plans that don't evaluate.
+  * build(deps): bump @docusaurus/core in /website
+  * docs: Move "vs" page to Core Concepts
+  * Put the cue doc back to how it was as it seems to be the way cue wants it formatted
+  * Small correction to make the cue valid
+  * Grammer and little bit of key info missed
+  * redirect user to the success page after authenticating
+  * chore: Move Dagger comparison docs
+  * Made the full pipeline a sub header to summary
+  * Added header for full pipeline to make it easier to see in the the right sidebar
+  * Added to sidebar and turned code snippets into files
+  * Added 0.2 sidebar
+  * Fixed lint issue
+  * Spelling & grammer
+  * Removed Gitleaks and completed rough outline
+  * Rebased
+  * refactor: apply coding style
+  * refactor: add comments and clean code
+  * clean: move azure package into x package
+  * Add serverless package for azure
+
+-------------------------------------------------------------------
 Fri Jul 08 06:13:58 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.22:
