@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jul 12 09:20:39 UTC 2022 - aplanas@suse.com
+
+- Update to version 0.1.0+git.1657303637.5b9072a:
+  * keys_handler: Use scopes to drop mutexes before await
+  * Enable usage of Rust IMA emulator in E2E tests.
+  * ima_emulator: Support PCR hash algorithms other than SHA-1
+  * ima_entry: add IMA entry parser ported from Python Keylime
+  * algorithms: Add conversion between our hash algorithms and OpenSSL's
+  * Remove unused functions revocation_ip_get and revocation_port_get. Change String to &str.
+  * Adjust function usage comments to account for new parameters.
+  * Load config file less at startup in src/common.rs
+  * GNUmakefile: Make target dependencies explicit
+  * permissions: Set supplementary groups when dropping privileges
+  * main: Use more descriptive message for missing files error
+  * Show path when fail to load the certificate
+  * tpm: Add serialization functions for structures in quotes
+- Requires tpm2.0-abrmd dependency, as the kernel resource manager
+  could be not enough
+- Downgrade /var/run/keylime permissions
+- Set "run_as" parameter to "keylime:tss"
+- Create the keylime user via systemd
+- Fix keylime service home directory
+- Add 0001-main-die-when-cannot-drop-privileges.patch to avoid the
+  execution as root when the run_as user is missing in the system
+
+-------------------------------------------------------------------
 Wed Jun 22 08:45:20 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 0.1.0+git.1655384301.b834667:

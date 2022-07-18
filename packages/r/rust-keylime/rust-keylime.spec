@@ -17,8 +17,15 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
+# Consolidate _distconfdir and _sysconfdir
+%if 0%{?_distconfdir:1}
+  %define _config_norepl %{nil}
+%else
+  %define _distconfdir   %{_sysconfdir}
+  %define _config_norepl %config(noreplace)
+%endif
 Name:           rust-keylime
-Version:        0.1.0+git.1655384301.b834667
+Version:        0.1.0+git.1657303637.5b9072a
 Release:        0
 Summary:        Rust implementation of the keylime agent
 License:        Apache-2.0 AND MIT
@@ -26,19 +33,23 @@ URL:            https://github.com/keylime/rust-keylime
 Source:         rust-keylime-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-Source3:        keylime_agent.service
-Source4:        keylime.xml
-Source5:        logrotate.keylime
+Source3:        keylime.xml
+Source4:        keylime-user.conf
+Source5:        tmpfiles.keylime
 # PATCH-FIX-OPENSUSE keylime.conf.diff
 Patch1:         keylime.conf.diff
+# PATCH-FIX-UPSTREAM 0001-main-die-when-cannot-drop-privileges.patch -- based on PR 423
+Patch2:         0001-main-die-when-cannot-drop-privileges.patch
 BuildRequires:  cargo
 BuildRequires:  firewall-macros
 BuildRequires:  libarchive-devel
 BuildRequires:  rust
+BuildRequires:  sysuser-tools
 BuildRequires:  tpm2-0-tss-devel
 BuildRequires:  zeromq-devel
 Requires:       libtss2-tcti-device0
 Requires:       logrotate
+Requires:       tpm2.0-abrmd
 ExcludeArch:    %{ix86} s390x ppc64 ppc64le armhfp armv7hl
 
 %description
@@ -52,47 +63,61 @@ cp %{SOURCE2} .cargo/config
 
 %build
 RUSTFLAGS=%{rustflags} cargo build --release --no-default-features --features "with-zmq"
+%sysusers_generate_pre %{SOURCE4} keylime keylime-user.conf
 
 %install
 RUSTFLAGS=%{rustflags} cargo install --frozen --no-default-features --features "with-zmq" --root=%{buildroot}%{_prefix} --path .
 
-install -Dpm 644 keylime.conf %{buildroot}%{_sysconfdir}/keylime.conf
-install -Dpm 644 %{SOURCE3} %{buildroot}%{_unitdir}/keylime_agent.service
-install -Dpm 644 %{SOURCE4} %{buildroot}%{_prefix}/lib/firewalld/services/keylime.xml
-install -Dpm 644 %{SOURCE5} %{buildroot}%{_distconfdir}/logrotate.d/keylime
+# TODO: move the configuration file into _distconfdir
+install -Dpm 0600 keylime.conf %{buildroot}%{_sysconfdir}/keylime.conf
+install -Dpm 0644 ./dist/systemd/system/keylime_agent.service %{buildroot}%{_unitdir}/keylime_agent.service
+install -Dpm 0644 ./dist/systemd/system/var-lib-keylime-secure.mount %{buildroot}%{_unitdir}/var-lib-keylime-secure.mount
+
+install -Dpm 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/firewalld/services/keylime.xml
+install -Dpm 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/keylime-user.conf
+install -Dpm 0644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/keylime.conf
 install -d %{buildroot}%{_localstatedir}/log/keylime
+install -d %{buildroot}%{_libexecdir}/keylime
 
 # Create work directory
-mkdir -p %{buildroot}%{_localstatedir}/keylime
+mkdir -p %{buildroot}%{_sharedstatedir}/keylime
 
 rm %{buildroot}%{_prefix}/.crates.toml
 rm %{buildroot}%{_prefix}/.crates2.json
 
 %pre
 %service_add_pre keylime_agent.service
+%service_add_pre var-lib-keylime-secure.mount
 
 %post
 %firewalld_reload
+%tmpfiles_create keylime.conf
 %service_add_post keylime_agent.service
+%service_add_post var-lib-keylime-secure.mount
 
 %preun
 %service_del_preun keylime_agent.service
+%service_del_preun var-lib-keylime-secure.mount
 
 %postun
 %service_del_postun keylime_agent.service
+%service_del_postun var-lib-keylime-secure.mount
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/keylime_agent
 %{_bindir}/keylime_ima_emulator
-%config(noreplace) %{_sysconfdir}/keylime.conf
-%dir %attr(0700,root,root) %{_localstatedir}/keylime
+%config(noreplace) %attr (0600,keylime,tss) %{_sysconfdir}/keylime.conf
+%{_unitdir}/keylime_agent.service
+%{_unitdir}/var-lib-keylime-secure.mount
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services
 %{_prefix}/lib/firewalld/services/keylime.xml
-%{_unitdir}/keylime_agent.service
-%{_distconfdir}/logrotate.d/keylime
-%dir %attr(750,keylime,tss) %{_localstatedir}/log/keylime
+%{_sysusersdir}/keylime-user.conf
+%{_tmpfilesdir}/keylime.conf
+%dir %attr(0750,keylime,tss) %{_localstatedir}/log/keylime
+%dir %attr(0750,keylime,tss) %{_libexecdir}/keylime
+%dir %attr(0700,keylime,tss) %{_sharedstatedir}/keylime
 
 %changelog

@@ -1,7 +1,7 @@
-Index: rust-keylime-0.1.0+git.1655143451.7c4121e/keylime.conf
+Index: rust-keylime-0.1.0+git.1657303637.5b9072a/keylime.conf
 ===================================================================
---- rust-keylime-0.1.0+git.1655143451.7c4121e.orig/keylime.conf
-+++ rust-keylime-0.1.0+git.1655143451.7c4121e/keylime.conf
+--- rust-keylime-0.1.0+git.1657303637.5b9072a.orig/keylime.conf
++++ rust-keylime-0.1.0+git.1657303637.5b9072a/keylime.conf
 @@ -4,7 +4,8 @@
  
  # Revocation IP & Port used by either the cloud_agent or keylime_ca to receive
@@ -32,3 +32,25 @@ Index: rust-keylime-0.1.0+git.1655143451.7c4121e/keylime.conf
  registrar_port = 8890
  
  # The keylime working directory.  Can be overriden by setting the KEYLIME_DIR
+@@ -127,3 +130,21 @@ tpm_signing_alg = rsassa
+ # handle (e.g. "0x81000000"). The Keylime agent will then not attempt to
+ # create a new EK upon startup, and neither will it flush the EK upon exit.
+ ek_handle = generate
++
++# The user account to switch to to drop privileges when started as root
++# If left empty, the agent will keep running with high privileges.
++# The user and group specified here must allow the user to access the
++# WORK_DIR (typically /var/lib/keylime) and /dev/tpmrm0. Therefore,
++# suggested value for the run_as parameter is keylime:tss.
++# The following commands should be used to set ownership before running the
++# agent:
++# chown keylime /var/lib/keylime
++#
++# If agent_data.json already exists:
++# chown keylime /var/lib/keylime/agent_data.json
++#
++# If cv_ca directory exists:
++# chown keylime /var/lib/keylime/cv_ca
++# chown keylime /var/lib/keylime/cv_ca/cacert.crt
++#
++run_as = keylime:tss

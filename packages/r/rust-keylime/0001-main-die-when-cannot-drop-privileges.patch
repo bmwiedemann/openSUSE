@@ -1,0 +1,39 @@
+From e34692c33914f7c9598c1bc9030bf94ef525d5eb Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Tue, 12 Jul 2022 14:09:24 +0200
+Subject: [PATCH 2/2] main: die when cannot drop privileges
+
+If `run_as` parameter is set but the user is missing in the system,
+keylime will log an ERROR when trying to drop privileges, but continue
+the execution as the current user (usually `root`).  This can be a
+security issue, as the agent is running "silently" as a privileged user.
+
+This commit stop the execution if an error is found when dropping
+privileges for the agent service, and present an `info!` message with
+the current user and group.
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/main.rs | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/main.rs b/src/main.rs
+index ef29eb2..d646d09 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -407,8 +407,10 @@ async fn main() -> Result<()> {
+ 
+     // Drop privileges
+     if let Some(user_group) = &config.run_as {
+-        permissions::chown(user_group, &mount);
+-        permissions::run_as(user_group);
++        permissions::chown(user_group, &mount)
++            .expect("Error when changing directory ownership");
++        permissions::run_as(user_group).expect("Error dropping privileges");
++        info!("Running the service as {}...", user_group);
+     }
+ 
+     info!("Starting server with API version {}...", API_VERSION);
+-- 
+2.37.0
+
