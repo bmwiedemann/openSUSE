@@ -218,4 +218,13 @@
   * Fix a minor build issue (#328).</comment>
     <requestid>984730</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0ddad7571b7ad133429db192775bf43f</srcmd5>
+    <version>3.0.6</version>
+    <time>1658161970</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 3.0.6:
+  * Fix bug in manual deployment script.</comment>
+    <requestid>989093</requestid>
+  </revision>
 </revisionlist>
