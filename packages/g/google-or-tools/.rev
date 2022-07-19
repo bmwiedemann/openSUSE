@@ -7,4 +7,15 @@
     <comment>New package, dependency for FlatCam (hard) and minizinc (optional, runtime)</comment>
     <requestid>979677</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b5a30f95d41e22b6f13f468a73c8b1fa</srcmd5>
+    <version>9.3</version>
+    <time>1658243961</time>
+    <user>RBrownFactory</user>
+    <comment>- Fix failing builds due to stricter RUNPATH checks, add
+  * 0001-Only-add-relevant-directories-to-sample-RUNPATHs.patch
+  * 0002-Only-add-relevant-directories-to-flatzinc-library-ex.patch
+</comment>
+    <requestid>990006</requestid>
+  </revision>
 </revisionlist>

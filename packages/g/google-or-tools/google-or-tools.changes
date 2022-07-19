@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 15 12:31:32 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix failing builds due to stricter RUNPATH checks, add
+  * 0001-Only-add-relevant-directories-to-sample-RUNPATHs.patch
+  * 0002-Only-add-relevant-directories-to-flatzinc-library-ex.patch
+
+-------------------------------------------------------------------
 Sun May 29 14:28:49 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix failing build with GCC 12, add fix_malformed_Cpp.patch

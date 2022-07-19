@@ -13,6 +13,7 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %define sonum 9
@@ -36,6 +37,9 @@ Patch2:         0001-Do-not-try-to-download-ortools-wheel.patch
 Patch3:         https://github.com/google/or-tools/commit/672303cc2f2396c4bd5fbed8430208308815bd54.patch#/fix_malformed_Cpp.patch
 # PATCH-FIX-UPSTREAM - allow build on i586/armv7
 Patch4:         0001-Set-SWIGWORDSIZE-dependent-on-architecture-bitness.patch
+# PATCH-FIX-UPSTREAM - remove bad entries from RUNPATHs
+Patch5:         0001-Only-add-relevant-directories-to-sample-RUNPATHs.patch
+Patch6:         0002-Only-add-relevant-directories-to-flatzinc-library-ex.patch
 BuildRequires:  abseil-cpp-devel
 BuildRequires:  cmake >= 3.18
 BuildRequires:  fdupes
@@ -94,8 +98,8 @@ OR-Tools is an open source software suite for optimization.
 %package devel
 Summary:        Suite for solving combinatorial optimization problems
 Group:          Development/Languages/C++
-Requires:       libortools%{sonum} = %{version}
 Requires:       libflatzinc%{sonum} = %{version}
+Requires:       libortools%{sonum} = %{version}
 
 %description devel
 Development files (C/C++) for the OR-Tools suite.
@@ -125,7 +129,6 @@ rmdir %{buildroot}/%{python3_sitearch}/ortools/.libs
 %postun -n libortools%{sonum} -p /sbin/ldconfig
 %post -n libflatzinc%{sonum} -p /sbin/ldconfig
 %postun -n libflatzinc%{sonum} -p /sbin/ldconfig
-
 
 %check
 # Test using e.g. SCIP are not skipped, exclude

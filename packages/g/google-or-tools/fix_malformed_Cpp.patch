@@ -9,7 +9,7 @@ note: spotted by gcc 12 and clang 14
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/ortools/graph/topologicalsorter.h b/ortools/graph/topologicalsorter.h
-index 2013d1faa1..2b7c09b681 100644
+index 2013d1faa14..2b7c09b6815 100644
 --- a/ortools/graph/topologicalsorter.h
 +++ b/ortools/graph/topologicalsorter.h
 @@ -77,12 +77,12 @@ namespace util {
