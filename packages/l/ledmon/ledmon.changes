@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 18 15:09:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
+
+- Update to version 0.96: (PED-85)
+  * Manual updates, clarify --listed-only option
+  * Fix cache indexing of ATA port
+  * Fixes in regard to macros
+  * Fix memory leak in amd_ipmi.c
+  * Fix NULL pointer dereferences in sysfs.c
+  * Make messages appear in service log immediately
+- add patches after 0.96:
+  + 0001-Ledctl-slots-management-94.patch
+  + 0002-add-Dell-15G-servers.patch
+
+-------------------------------------------------------------------
 Fri Oct 15 07:28:48 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

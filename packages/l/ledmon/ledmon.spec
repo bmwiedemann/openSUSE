@@ -1,7 +1,7 @@
 #
 # spec file for package ledmon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 Name:           ledmon
-Version:        0.95
+Version:        0.96
 Release:        0
 Summary:        Enclosure LED Utilities
 License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            https://github.com/intel/ledmon/
 Source0:        https://github.com/intel/ledmon/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:	harden_ledmon.service.patch
+Patch0:         harden_ledmon.service.patch
+Patch1:         0001-Ledctl-slots-management-94.patch
+Patch2:         0002-add-Dell-15G-servers.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libsgutils-devel
