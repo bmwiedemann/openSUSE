@@ -1,8 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 19 11:27:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.1:
+  * Python 3.10 support
+  * Add glyphSet argument in _stampLayerInfoDataState
+  * when guideline.name is set to None remove the name key
+  * add eq and hash to FuzzyNumber
+
+-------------------------------------------------------------------
 Sun Jan 23 16:18:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.0:
-  * drop python 3.6 support 
+  * drop python 3.6 support
 
 -------------------------------------------------------------------
 Thu Dec 16 10:22:57 UTC 2021 - Ben Greiner <code@bnavigator.de>
