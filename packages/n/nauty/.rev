@@ -55,4 +55,12 @@
     <comment>Disable lzcnt instruction to make build reproducible (boo#1100677) (forwarded request 838119 from bmwiedemann)</comment>
     <requestid>839307</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2cd82da21913391649c7e9f00c0c1d08</srcmd5>
+    <version>2.7.4</version>
+    <time>1658243960</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to release 2.7.4</comment>
+    <requestid>989680</requestid>
+  </revision>
 </revisionlist>

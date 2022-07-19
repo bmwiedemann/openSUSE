@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 16 22:20:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.7.4
+  * Fixed an obscure bug in multig that might occur if the input
+    graph has loops. No example of incorrect behaviour is known.
+
+-------------------------------------------------------------------
 Sun Sep 27 19:34:39 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Disable lzcnt instruction to make build reproducible (boo#1100677)

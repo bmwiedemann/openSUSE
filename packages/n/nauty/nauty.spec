@@ -1,7 +1,7 @@
 #
 # spec file for package nauty
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           nauty
-%define lname   libnauty-2_7_1
-%define fuv      27r1
-Version:        2.7.1
+%define lname   libnauty-2_7_4
+%define fuv      27r4
+Version:        2.7.4
 Release:        0
 Summary:        Tools for computing automorphism groups of graphs
 License:        Apache-2.0
@@ -57,7 +57,7 @@ graphs and digraphs. They can also produce a canonical label.
 %package devel
 Summary:        Development files for nauty, a math library
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %version
+Requires:       %lname = %version-%release
 
 %description devel
 nauty and Traces are programs for computing automorphism groups of
@@ -89,7 +89,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %license COPYRIGHT
 
 %files -n %lname
-%_libdir/libnauty*-2.7.1.so
+%_libdir/libnauty*-2.7.4.so
 
 %files devel
 %_includedir/nauty/
