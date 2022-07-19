@@ -1,7 +1,7 @@
 #
 # spec file for package cmh
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            http://www.multiprecision.org/cmh/
 Source:         http://www.multiprecision.org/downloads/%name-%version.tar.gz
 #Source2:        http://www.multiprecision.org/downloads/name-version.tar.gz.asc http 500
 Source3:        %name.keyring
+Patch0:         patch-src_lll_cpp.patch
 BuildRequires:  automake
 BuildRequires:  fplll-devel >= 4
 BuildRequires:  gcc-c++

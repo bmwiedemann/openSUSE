@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  7 09:01:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Apply patch from FreeBSD to fix build:
+  * patch-src_lll_cpp.patch
+
+-------------------------------------------------------------------
 Sun Feb 28 09:56:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1

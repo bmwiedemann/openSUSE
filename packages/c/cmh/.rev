@@ -15,4 +15,13 @@
     <comment>- Update to release 1.1</comment>
     <requestid>875754</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bf33da03f79e4b5d78cf1780f456a613</srcmd5>
+    <version>1.1.0</version>
+    <time>1658243959</time>
+    <user>RBrownFactory</user>
+    <comment>- Apply patch from FreeBSD to fix build:
+  * patch-src_lll_cpp.patch</comment>
+    <requestid>989677</requestid>
+  </revision>
 </revisionlist>
