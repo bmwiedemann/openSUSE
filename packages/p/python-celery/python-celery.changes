@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon May  2 10:19:23 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 5.2.7
+  * Depend on the maintained python-consul2 library. (#6544).
+  * Use result_chord_join_timeout instead of hardcoded default value.
+  * Upgrade AzureBlockBlob storage backend to use Azure blob storage
+    library v12 (#6580).
+  * Exit celery with non zero exit value if failing (#6602).
+  * Raise BackendStoreError when set value is too large for Redis.
+  * Trace task optimizations are now set via Celery app instance.
+  * Add store_eager_result setting so eager tasks can store result on
+    the result backend (#6614).
+  * Allow heartbeats to be sent in tests (#6632).
+  * Simulate more exhaustive delivery info in apply().
+  * Start chord header tasks as soon as possible (#6576).
+  * --quiet flag now actually makes celery avoid producing logs
+    (#6599).
+  * Update platforms.py "superuser privileges" check (#6600).
+  * fnmatch.translate() already translates globs for us. (#6668).
+  * Upgrade some syntax to Python 3.6+.
+  * Fix checking expiration of X.509 certificates (#6678).
+  * Fix JSON decoding errors when using MongoDB as backend (#6675).
+  * Allow configuration of RedisBackend's health_check_interval
+    (#6666).
+  * Tasks can now have required kwargs at any order (#6699).
+  * Initial support of python 3.9 added.
+  * Add Python 3.10 support (#6807).
+  * Fix docstring for Signal.send to match code (#6835).
+  * Chords get body_type independently to handle cases where body.type
+    does not exist (#6847).
+  * Fix multithreaded backend usage (#6851).
+  * Fix Open Collective donate button (#6848).
+  * Make ResultSet.on_ready promise hold a weakref to self (#6784).
+  * Amend IRC network link to Libera (#6837).
+  * The Consul backend must correctly associate requests and responses
+    (#6823).
+- Drop upstreamed relax-click.patch
+- Add upstream tests.patch
+
+-------------------------------------------------------------------
 Fri Aug 20 13:00:14 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Add relax-click.patch to fix requirements (boo#1189286)

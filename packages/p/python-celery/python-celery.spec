@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,25 +28,25 @@
 %endif
 %bcond_with ringdisabled
 Name:           python-celery%{psuffix}
-Version:        5.0.5
+Version:        5.2.7
 Release:        0
 Summary:        Distributed Task Queue module for Python
 License:        BSD-3-Clause
 URL:            http://celeryproject.org
 Source:         https://files.pythonhosted.org/packages/source/c/celery/celery-%{version}.tar.gz
 Patch0:         move-pytest-configuration-to-conftest.patch
-Patch1:         relax-click.patch
+Patch1:         tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
-Requires:       python-billiard >= 3.6.3.0
-Requires:       python-click >= 8.0
+Requires:       python-billiard >= 3.6.4
+Requires:       python-click >= 8.0.3
 Requires:       python-click-didyoumean >= 0.0.3
 Requires:       python-click-plugins >= 1.1.1
 Requires:       python-click-repl >= 0.2.0
-Requires:       python-kombu >= 5.0.0
-Requires:       python-pytz >= 2016.7
+Requires:       python-kombu >= 5.2.3
+Requires:       python-pytz >= 2021.3
 Requires:       python-vine >= 5.0.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -59,17 +59,17 @@ Suggests:       python-python-daemon
 Suggests:       python-pytyrant
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module boto3 >= 1.9.178}
 BuildRequires:  %{python_module case >= 1.3.1}
 BuildRequires:  %{python_module celery = %{version}}
-BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module eventlet >= 0.26.1}
+BuildRequires:  %{python_module cryptography >= 36.0.2}
+BuildRequires:  %{python_module eventlet >= 0.32.0}
 BuildRequires:  %{python_module gevent}
-BuildRequires:  %{python_module moto >= 1.3.7}
+BuildRequires:  %{python_module moto >= 2.2.6}
 BuildRequires:  %{python_module msgpack}
-BuildRequires:  %{python_module pymongo >= 3.3.0}
+BuildRequires:  %{python_module pymongo >= 4.0.2}
 BuildRequires:  %{python_module pytest >= 4.5.0}
 BuildRequires:  %{python_module pytest-subtests}
 %if %{with ringdisabled}
@@ -86,8 +86,6 @@ scheduling as well.
 %prep
 %setup -q -n celery-%{version}
 %autopatch -p1
-# do not hardcode versions
-sed -i -e 's:==:>=:g' requirements/*.txt
 
 %build
 %if !%{with test}
@@ -103,8 +101,8 @@ sed -i -e 's:==:>=:g' requirements/*.txt
 
 %check
 %if %{with test}
-# test_init_mongodb_dns_seedlist - does not work with new pymongo, will be fixed in 5.1
-%pytest -k 'not test_init_mongodb_dns_seedlist'
+# test_check_privileges_no_fchown - first it deletes fchown from the system, so it needs root privileges, and then it runs the worker and complains about root privileges
+%pytest -k "not test_check_privileges_no_fchown"
 %endif
 
 %if !%{with test}

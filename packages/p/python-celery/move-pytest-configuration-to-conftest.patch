@@ -1,15 +1,15 @@
-Index: celery-5.0.2/celery/contrib/pytest.py
+Index: celery-5.2.6/celery/contrib/pytest.py
 ===================================================================
---- celery-5.0.2.orig/celery/contrib/pytest.py
-+++ celery-5.0.2/celery/contrib/pytest.py
-@@ -13,16 +13,6 @@ NO_WORKER = os.environ.get('NO_WORKER')
+--- celery-5.2.6.orig/celery/contrib/pytest.py
++++ celery-5.2.6/celery/contrib/pytest.py
+@@ -19,16 +19,6 @@ NO_WORKER = os.environ.get('NO_WORKER')
  # Well, they're called fixtures....
  
  
 -def pytest_configure(config):
 -    """Register additional pytest configuration."""
 -    # add the pytest.mark.celery() marker registration to the pytest.ini [markers] section
--    # this prevents pytest 4.5 and newer from issueing a warning about an unknown marker
+-    # this prevents pytest 4.5 and newer from issuing a warning about an unknown marker
 -    # and shows helpful marker documentation when running pytest --markers.
 -    config.addinivalue_line(
 -        "markers", "celery(**overrides): override celery configuration for a test case"
@@ -19,12 +19,12 @@ Index: celery-5.0.2/celery/contrib/pytest.py
  @contextmanager
  def _create_app(enable_logging=False,
                  use_trap=False,
-Index: celery-5.0.2/t/unit/conftest.py
+Index: celery-5.2.6/t/unit/conftest.py
 ===================================================================
---- celery-5.0.2.orig/t/unit/conftest.py
-+++ celery-5.0.2/t/unit/conftest.py
-@@ -40,6 +40,16 @@ CASE_LOG_LEVEL_EFFECT = 'Test {0} modifi
- CASE_LOG_HANDLER_EFFECT = 'Test {0} modified handlers for the root logger'
+--- celery-5.2.6.orig/t/unit/conftest.py
++++ celery-5.2.6/t/unit/conftest.py
+@@ -64,6 +64,16 @@ class WhateverIO(io.StringIO):
+         _SIO_write(self, data.decode() if isinstance(data, bytes) else data)
  
  
 +def pytest_configure(config):
