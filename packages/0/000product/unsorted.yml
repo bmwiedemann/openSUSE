@@ -1788,6 +1788,7 @@ unsorted:
   - cargo-packaging 
   - cargo1.60 
   - cargo1.61 
+  - cargo1.62 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -9055,7 +9056,7 @@ unsorted:
   - libOpenCOLLADAFramework0_3 
   - libOpenCOLLADASaxFrameworkLoader0_3 
   - libOpenCOLLADAStreamWriter0_3 
-  - libOpenColorIO2_0 
+  - libOpenColorIO2_1 
   - libOpenEXR-3_1-30-32bit: [x86_64] 
   - libOpenEXRCore-3_1-30 
   - libOpenEXRCore-3_1-30-32bit: [x86_64] 
@@ -9551,7 +9552,7 @@ unsorted:
   - libXxf86vm-devel 
   - libXxf86vm-devel-32bit: [x86_64] 
   - libXxf86vm1-32bit: [x86_64] 
-  - libYODA-1_9_5 
+  - libYODA-1_9_6 
   - libZXing1-32bit: [x86_64] 
   - liba2ps1 
   - liba52-0-32bit: [x86_64] 
@@ -12410,7 +12411,7 @@ unsorted:
   - libmysqlcppconn8-devel 
   - libmysqlcppconn9 
   - libnanomsg5 
-  - libnauty-2_7_1 
+  - libnauty-2_7_4 
   - libnbcompat-devel 
   - libnbcompat0 
   - libnbd 
@@ -12652,7 +12653,8 @@ unsorted:
   - libolecf-tools 
   - libolecf1 
   - libolm3 
-  - libomniORB4 
+  - libomniORB4-3 
+  - libomnithread4 
   - libomp11-devel 
   - libomp12-devel 
   - libomp13-devel 
@@ -15034,7 +15036,7 @@ unsorted:
   - libyang-doc 
   - libyang2 
   - libyara-devel 
-  - libyara8 
+  - libyara9 
   - libyate6_4_0 
   - libyaz-devel 
   - libyaz5 
@@ -21455,7 +21457,6 @@ unsorted:
   - python-keystoneauth1-doc 
   - python-keystoneclient-doc 
   - python-keystonemiddleware-doc 
-  - python-ktoblzcheck 
   - python-lammps 
   - python-libcomps-doc 
   - python-logutils-doc 
@@ -21683,6 +21684,7 @@ unsorted:
   - python3-keystoneclient 
   - python3-keystonemiddleware 
   - python3-kiwi 
+  - python3-ktoblzcheck 
   - python3-lash 
   - python3-lasso 
   - python3-ldb-32bit: [x86_64] 
@@ -22792,6 +22794,7 @@ unsorted:
   - python310-diffimg 
   - python310-digitalocean 
   - python310-dill 
+  - python310-dirty-equals 
   - python310-dirtyjson 
   - python310-discid 
   - python310-discogs-client 
@@ -22997,6 +23000,7 @@ unsorted:
   - python310-fastcluster 
   - python310-fasteners 
   - python310-fastimport 
+  - python310-fastjsonschema 
   - python310-fastnumbers 
   - python310-fastremap 
   - python310-fasttext 
@@ -23206,6 +23210,7 @@ unsorted:
   - python310-hypothesmith 
   - python310-i3ipc 
   - python310-icalendar 
+  - python310-icoextract 
   - python310-identify 
   - python310-idle 
   - python310-idna_ssl 
@@ -23776,6 +23781,7 @@ unsorted:
   - python310-pep8-naming 
   - python310-peppercorn 
   - python310-percy 
+  - python310-perky 
   - python310-persistent 
   - python310-persistent-devel 
   - python310-petact 
@@ -25912,6 +25918,7 @@ unsorted:
   - python38-diffimg 
   - python38-digitalocean 
   - python38-dill 
+  - python38-dirty-equals 
   - python38-dirtyjson 
   - python38-discid 
   - python38-discogs-client 
@@ -26127,6 +26134,7 @@ unsorted:
   - python38-fastcluster 
   - python38-fasteners 
   - python38-fastimport 
+  - python38-fastjsonschema 
   - python38-fastnumbers 
   - python38-fastparquet 
   - python38-fastremap 
@@ -26365,6 +26373,7 @@ unsorted:
   - python38-hypothesmith 
   - python38-i3ipc 
   - python38-icalendar 
+  - python38-icoextract 
   - python38-identify 
   - python38-idle 
   - python38-idna 
@@ -26978,6 +26987,7 @@ unsorted:
   - python38-pep8-naming 
   - python38-peppercorn 
   - python38-percy 
+  - python38-perky 
   - python38-persistent 
   - python38-persistent-devel 
   - python38-petact 
@@ -29212,6 +29222,7 @@ unsorted:
   - python39-diffimg 
   - python39-digitalocean 
   - python39-dill 
+  - python39-dirty-equals 
   - python39-dirtyjson 
   - python39-discid 
   - python39-discogs-client 
@@ -29426,6 +29437,7 @@ unsorted:
   - python39-fastcluster 
   - python39-fasteners 
   - python39-fastimport 
+  - python39-fastjsonschema 
   - python39-fastnumbers 
   - python39-fastparquet 
   - python39-fastremap 
@@ -29663,6 +29675,7 @@ unsorted:
   - python39-hypothesmith 
   - python39-i3ipc 
   - python39-icalendar 
+  - python39-icoextract 
   - python39-identify 
   - python39-idle 
   - python39-idna 
@@ -30277,6 +30290,7 @@ unsorted:
   - python39-pep8-naming 
   - python39-peppercorn 
   - python39-percy 
+  - python39-perky 
   - python39-persistent 
   - python39-persistent-devel 
   - python39-petact 
@@ -32501,6 +32515,7 @@ unsorted:
   - rust-srpm-macros 
   - rust1.60 
   - rust1.61 
+  - rust1.62 
   - rustscan 
   - rustup: [x86_64] 
   - rxp 
@@ -32853,6 +32868,7 @@ unsorted:
   - shelltestrunner: [x86_64] 
   - shepherd 
   - shepherd-bins 
+  - shfmt 
   - shibboleth-sp 
   - shibboleth-sp-devel 
   - shigofumi 
