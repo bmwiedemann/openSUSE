@@ -1,7 +1,7 @@
 #
 # spec file for package python-attr
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-attr
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        Python module for setting attributes of target functions or classes
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/denis-ryzhkov/attr
+URL:            https://github.com/denis-ryzhkov/attr
 Source:         https://files.pythonhosted.org/packages/source/a/attr/attr-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -45,10 +45,11 @@ A decorator to set attributes of target function or class in a DRY way.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%check 
+%check
 %python_exec dry_attr.py
 
 %files %{python_files}
+%license LICENSE
 %doc README.md
 %{python_sitelib}/*
 
