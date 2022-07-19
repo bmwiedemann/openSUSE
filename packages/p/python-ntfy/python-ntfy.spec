@@ -28,9 +28,11 @@ URL:            https://github.com/dschep/ntfy
 Source:         ntfy-%{version}.tar.xz
 # https://github.com/dschep/ntfy/issues/247
 Patch0:         python-ntfy-no-mock.patch
+Patch1:         emoji-2.0-compatibility.patch
+Patch2:         drop-misleading-shebangs.patch
 BuildRequires:  %{python_module appdirs}
 # test requirements
-BuildRequires:  %{python_module emoji}
+BuildRequires:  %{python_module emoji >= 1.6.2}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
@@ -42,9 +44,9 @@ Requires:       python-appdirs
 Requires:       python-requests
 Requires:       python-ruamel.yaml
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-dnspython3
-Suggests:       python-emoji
+Suggests:       python-emoji >= 1.6.2
 Suggests:       python-instapush
 Suggests:       python-psutil
 Suggests:       python-rocketchat-API

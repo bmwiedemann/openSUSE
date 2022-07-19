@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 18 19:00:39 UTC 2022 - Matthias Bach <marix@marix.org> - 2.7.0
+
+- Add emoji-2.0-compatibility.patch to allow upgrade of
+  python-ntfy to version 2.0.
+- Add drop-misleading-shebangs.patch.
+
+-------------------------------------------------------------------
 Tue May  3 12:39:50 UTC 2022 - pgajdos@suse.com
 
 - added patches

@@ -77,4 +77,14 @@
     <comment></comment>
     <requestid>974775</requestid>
   </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>3887d6bdad61b3c97ce47d6e07221ca7</srcmd5>
+    <version>2.7.0</version>
+    <time>1658243989</time>
+    <user>RBrownFactory</user>
+    <comment>- Add emoji-2.0-compatibility.patch to allow upgrade of
+  python-ntfy to version 2.0.
+- Add drop-misleading-shebangs.patch.</comment>
+    <requestid>990081</requestid>
+  </revision>
 </revisionlist>
