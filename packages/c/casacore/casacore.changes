@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 19 07:51:15 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Avoid compile-time CPU-detection (boo#1100677)
+
+-------------------------------------------------------------------
 Tue Jul  5 22:14:31 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.5.0:
