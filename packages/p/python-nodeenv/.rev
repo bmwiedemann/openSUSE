@@ -58,4 +58,14 @@
     <comment></comment>
     <requestid>964659</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5f4e8af09d1e0cd2a8932302b6c1f7e7</srcmd5>
+    <version>1.7.0</version>
+    <time>1658244000</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 1.7.0:
+  * improved m1 support
+  * drop python 3.4-3.6</comment>
+    <requestid>990226</requestid>
+  </revision>
 </revisionlist>

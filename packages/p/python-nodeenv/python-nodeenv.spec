@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-nodeenv
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Nodejs virtual environment builder
 License:        BSD-2-Clause
