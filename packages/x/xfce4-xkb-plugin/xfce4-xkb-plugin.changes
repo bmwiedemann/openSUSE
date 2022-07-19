@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jul 17 15:06:55 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.8.3
+  * Add optional notification support
+    (gxo#panel-plugins/xfce4-xkb-plugin#48)
+  * Disable notifications by default
+  * Use symbolic icon for notification
+  * Add new plugin icon
+  * Use Xfce's icon name
+  * Fix make distcheck
+  * build: Fix intltool lock file problem during make distcheck
+  * Fix compilation warnings
+  * autoconf: Some updates
+  * Update `.gitignore`
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Dec 25 20:19:13 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.8.2

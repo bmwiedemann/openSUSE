@@ -15,4 +15,24 @@
     <comment>Upgrade to Xfce 4.16</comment>
     <requestid>860894</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>886b3e03ff566d5e9a947ac706bb9ebb</srcmd5>
+    <version>0.8.3</version>
+    <time>1658243995</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 0.8.3
+  * Add optional notification support
+    (gxo#panel-plugins/xfce4-xkb-plugin#48)
+  * Disable notifications by default
+  * Use symbolic icon for notification
+  * Add new plugin icon
+  * Use Xfce's icon name
+  * Fix make distcheck
+  * build: Fix intltool lock file problem during make distcheck
+  * Fix compilation warnings
+  * autoconf: Some updates
+  * Update `.gitignore`
+  * Translation Updates (forwarded request 989715 from tux93)</comment>
+    <requestid>990113</requestid>
+  </revision>
 </revisionlist>

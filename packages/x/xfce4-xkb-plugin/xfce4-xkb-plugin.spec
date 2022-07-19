@@ -1,7 +1,7 @@
 #
-# spec file for package xfce4-xkb-plugin
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define plugin xkb
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        XKB Layout Switcher Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
@@ -67,7 +67,6 @@ BuildArch:      noarch
 %description lang
 Provides translations for the "%{name}" package.
 
-
 %prep
 %autosetup -p1
 
@@ -93,12 +92,13 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %license COPYING
 %{_libdir}/xfce4/panel/plugins/libxkb.so
 %{_datadir}/xfce4/panel/plugins/xkb.desktop
 %dir %{_datadir}/xfce4/xkb
 %{_datadir}/xfce4/xkb/*
+%{_datadir}/icons/hicolor/*/apps/org.xfce.panel.xkb.*
 
 %files lang -f %{name}.lang
 
