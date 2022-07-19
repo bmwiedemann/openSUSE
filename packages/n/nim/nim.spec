@@ -30,6 +30,11 @@ Patch0:         nim-nim-gdb_fix_interpreter.patch
 Patch1:         nim-fix-tests-certificate-key-too-small.patch
 # UPSTREAM FIX: https://github.com/nim-lang/Nim/commit/2c73e84436a11cae1676c7da0228158ba1a885cc
 Patch2:         nim-fix-tests-ip-protocol-missing.patch
+Patch3:         nim-fix-gcc-major-version-detection.patch
+
+# pull in a C compiler (required to build Nim programs)
+Requires:       gcc
+Recommends:     clang
 
 BuildRequires:  binutils-devel
 
@@ -53,6 +58,7 @@ BuildRequires:  gcc-c++ >= 6.2
 # skip it and run tests without this compiler target afterwards)
 %if 0%{?suse_version} >= 150100 || 0%{?is_backports}
 BuildRequires:  nodejs >= 12
+Recommends:     nodejs
 %endif
 
 %if 0%{?is_opensuse} || 0%{?is_backports}
@@ -235,7 +241,6 @@ mv $TARGET/nim/bin %{buildroot}%{_libdir}/nim/
 strip --strip-all %{buildroot}%{_libdir}/nim/bin/nim
 strip --strip-all %{buildroot}%{_libdir}/nim/bin/nimble
 strip --strip-all %{buildroot}%{_libdir}/nim/bin/nim_dbg
-strip --strip-all %{buildroot}%{_libdir}/nim/bin/nimble
 strip --strip-all %{buildroot}%{_libdir}/nim/bin/nimgrep
 strip --strip-all %{buildroot}%{_libdir}/nim/bin/nimpretty
 strip --strip-all %{buildroot}%{_libdir}/nim/bin/nimsuggest

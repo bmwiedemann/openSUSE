@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 14 14:15:04 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Remove duplicated strip for nimble.
+- Require (at least) a C compiler. 
+- Addded _constraints file to require more RAM on build nodes.
+- Add patch to correctly detect GCC version, so it builds in i586
+  and arm:
+  * nim-fix-gcc-major-version-detection.patch
+  
+-------------------------------------------------------------------
 Wed May  4 16:57:06 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Reworked whole package.
