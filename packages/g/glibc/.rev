@@ -2657,4 +2657,14 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   (bsc#1200688) (forwarded request 985277 from Andreas_Schwab)</comment>
     <requestid>985279</requestid>
   </revision>
+  <revision rev="262" vrev="6">
+    <srcmd5>4bd040bf9b8e63a5fdcfe34e2c3b0b3b</srcmd5>
+    <version>2.35</version>
+    <time>1658243933</time>
+    <user>RBrownFactory</user>
+    <comment>- nptl-cleanup-async-restore-2.patch: nptl: Fix
+  ___pthread_unregister_cancel_restore asynchronous restore (bsc#1200093,
+  BZ #29214) (forwarded request 989181 from Andreas_Schwab)</comment>
+    <requestid>989182</requestid>
+  </revision>
 </revisionlist>

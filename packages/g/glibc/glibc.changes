@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 14 11:21:34 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- nptl-cleanup-async-restore-2.patch: nptl: Fix
+  ___pthread_unregister_cancel_restore asynchronous restore (bsc#1200093,
+  BZ #29214)
+
+-------------------------------------------------------------------
 Thu Jun 23 09:46:45 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - read-chk-cancel.patch: debug: make __read_chk a cancellation point

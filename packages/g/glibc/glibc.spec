@@ -303,6 +303,8 @@ Patch1007:      nptl-cleanup-async-restore.patch
 Patch1008:      read-chk-cancel.patch
 # PATCH-FIX-UPSTREAM wcrtomb: Make behavior POSIX compliant
 Patch1009:      wcrtomb-fortify.patch
+# PATCH-FIX-UPSTREAM nptl: Fix ___pthread_unregister_cancel_restore asynchronous restore (BZ #29214)
+Patch1010:      nptl-cleanup-async-restore-2.patch
 
 ###
 # Patches awaiting upstream approval
@@ -536,6 +538,7 @@ library in a cross compilation setting.
 %patch1007 -p1
 %patch1008 -p1
 %patch1009 -p1
+%patch1010 -p1
 
 %patch2000 -p1
 %patch2001 -p1
