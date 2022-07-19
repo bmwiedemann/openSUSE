@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May  6 18:14:43 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.4.2:
+  * The compiled functions have been made compatible with recent
+    changes in the development version of Octave.
+  * Minor bug fixes and documentation improvements have been made
+    to the following functions: cplxreal, cheb2ap, buffer,
+    data2fun, ss2zp, clustersegmen ncauer, cohere, csd, pburg,
+    pwelch, pyulear, tfe, invfreq, invfreqs, invfreqz, upfirdn.
+  * The following new functions have been added to the signal
+    package: sos2ss.
+
+-------------------------------------------------------------------
 Wed Nov 27 11:52:59 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.4.1:
