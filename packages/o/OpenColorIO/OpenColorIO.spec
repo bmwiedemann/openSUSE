@@ -25,7 +25,7 @@
 # Ensure that libyaml-cpp version is the one that is built against
 # See boo#1160171
 %define yamlrequires %(rpm -q --requires yaml-cpp-devel | grep libyaml || echo aaa_base)
-%define so_ver 2_0
+%define so_ver 2_1
 %define pkg_name OpenColorIO
 %if %{without ocio_tools}
 Name:           OpenColorIO
@@ -55,6 +55,8 @@ BuildRequires:  python3-pybind11-devel
 BuildRequires:  yaml-cpp-devel >= 0.6.3
 Recommends:     %{pkg_name}-doc = %{version}
 %if %{with ocio_tools}
+# This BuildIgnore should be removed, when libOCIO2_0 disappeares from repos
+#!BuildIgnore: libOpenColorIO2_0
 BuildRequires:  OpenImageIO >= 2.1.9
 BuildRequires:  OpenImageIO-devel >= 2.1.9
 BuildRequires:  python3-MarkupSafe
@@ -65,6 +67,9 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-sphinx-tabs
 BuildRequires:  python3-sphinx_press_theme
 BuildRequires:  python3-testresources
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(glut)
 %endif
 
 %description
@@ -96,6 +101,9 @@ This package contains documentation for OpenColorIO.
 Summary:        Complete Color Management Solution Geared Towards Motion Picture Production
 Group:          System/Libraries
 Requires:       %{yamlrequires}
+# this is unfortunate and a fallout of properly naming the lib after fixing so_ver
+Conflicts:      libOpenColorIO2_0 = 2.1.1
+Conflicts:      libOpenColorIO2_0 = 2.1.2
 
 %description -n libOpenColorIO%{so_ver}
 OpenColorIO (OCIO) is a color management solution geared towards motion picture
@@ -123,12 +131,15 @@ sed -i 's|DESTINATION lib|DESTINATION %{_lib}|' src/OpenColorIO/CMakeLists.txt
 
 %build
 %cmake \
+    -DCMAKE_CXX_STANDARD=17 \
+    -DCMAKE_SKIP_RPATH=ON \
 %ifnarch x86_64
     -DOCIO_USE_SSE=OFF \
 %endif
 %if %{with ocio_tools}
     -DOCIO_BUILD_DOCS=ON
 %else
+    -DOCIO_BUILD_APPS=OFF \
     -DOCIO_BUILD_DOCS=OFF
 %endif
 %cmake_build
@@ -136,8 +147,8 @@ sed -i 's|DESTINATION lib|DESTINATION %{_lib}|' src/OpenColorIO/CMakeLists.txt
 %install
 %cmake_install
 
-# Remove stray static lib
-rm -f %{buildroot}%{_prefix}/lib/libOpenColorIOoiiohelpers.a
+# Remove stray static libs
+rm -f %{buildroot}%{_libdir}/*.a
 
 # Move documentation to the right location
 mkdir -p %{buildroot}%{_docdir}/%{pkg_name}
@@ -147,11 +158,12 @@ cp *.md  %{buildroot}%{_docdir}/%{pkg_name}
 rm %{buildroot}%{_datadir}/ocio/setup_ocio.sh
 
 %if %{without ocio_tools}
-rm -rv %{buildroot}%{_docdir}/%{pkg_name}/ %{buildroot}%{_bindir}
+rm -rf %{buildroot}%{_docdir}/%{pkg_name}/
 %else
 mv %{buildroot}%{_datadir}/doc/OpenColorIO/html/ %{buildroot}%{_docdir}/%{pkg_name}/
 rmdir %{buildroot}%{_datadir}/doc/OpenColorIO
-rm -rv %{buildroot}%{_libdir} %{buildroot}%{_includedir}
+rm -rf %{buildroot}%{_libdir}
+rm -rf %{buildroot}%{_includedir}
 %endif
 
 %post -n libOpenColorIO%{so_ver} -p /sbin/ldconfig

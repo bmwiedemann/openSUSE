@@ -143,4 +143,19 @@
     <comment></comment>
     <requestid>981038</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>42a782e7f7a94622f71b92ab9daef932</srcmd5>
+    <version>2.1.2</version>
+    <time>1658243954</time>
+    <user>RBrownFactory</user>
+    <comment>- explicitly conflict the wrongly named libs
+- don't build tools in basic build stage
+- raise c++ standard to 17
+- disable rpath, resulting in a hard build failure now
+- add opengl deps for gpu support
+- broaden stray static libs removal (due to gpu enablement)
+- fix so version pkg naming
+</comment>
+    <requestid>990051</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 18 15:52:09 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- explicitly conflict the wrongly named libs
+- don't build tools in basic build stage
+
+-------------------------------------------------------------------
+Sun Jul 17 06:12:06 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- raise c++ standard to 17
+- disable rpath, resulting in a hard build failure now
+- add opengl deps for gpu support
+- broaden stray static libs removal (due to gpu enablement)
+
+-------------------------------------------------------------------
+Sat Jul 16 19:12:50 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- fix so version pkg naming
+
+-------------------------------------------------------------------
 Sat Jun  4 08:09:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.2:
