@@ -12,27 +12,25 @@ See https://reproducible-builds.org/ for why this is good.
  configure.ac |    2 ++
  2 files changed, 4 insertions(+)
 
-Index: librsb-1.3.0.0/configure
+Index: librsb-1.3.0.1/configure
 ===================================================================
---- librsb-1.3.0.0.orig/configure
-+++ librsb-1.3.0.0/configure
-@@ -25647,9 +25647,11 @@ cat >>confdefs.h <<_ACEOF
- _ACEOF
+--- librsb-1.3.0.1.orig/configure
++++ librsb-1.3.0.1/configure
+@@ -27208,7 +27208,9 @@ printf "%s\n" "#define RSB_WANT_IO_LEVEL
+ printf "%s\n" "#define RSB_USER_SET_MEM_HIERARCHY_INFO \"$RSB_USER_SET_MEM_HIERARCHY_INFO\"" >>confdefs.h
  
  
 +if test "x$memhinfo" = x; then
- cat >>confdefs.h <<_ACEOF
- #define RSB_DETECTED_MEM_HIERARCHY_INFO "$RSB_DETECTED_MEM_HIERARCHY_INFO"
- _ACEOF
+ printf "%s\n" "#define RSB_DETECTED_MEM_HIERARCHY_INFO \"$RSB_DETECTED_MEM_HIERARCHY_INFO\"" >>confdefs.h
 +fi
  
  
- cat >>confdefs.h <<_ACEOF
-Index: librsb-1.3.0.0/configure.ac
+ printf "%s\n" "#define RSB_CONST_MAX_SUPPORTED_THREADS $RSB_CONST_MAX_SUPPORTED_THREADS" >>confdefs.h
+Index: librsb-1.3.0.1/configure.ac
 ===================================================================
---- librsb-1.3.0.0.orig/configure.ac
-+++ librsb-1.3.0.0/configure.ac
-@@ -538,7 +538,9 @@ if test "x${detected_memhinfo}" = x -a "
+--- librsb-1.3.0.1.orig/configure.ac
++++ librsb-1.3.0.1/configure.ac
+@@ -627,7 +627,9 @@ if test "x${detected_memhinfo}" = x -a "
    memhinfo="${FALLBACK_MEM_HIERARCHY_INFO}"
  fi
  AC_SUBST([RSB_USER_SET_MEM_HIERARCHY_INFO],"${memhinfo}")
