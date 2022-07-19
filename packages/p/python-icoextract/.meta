@@ -1,0 +1,8 @@
+<package name="python-icoextract" project="openSUSE:Factory">
+  <title>icoextract</title>
+  <description>icoextract is an icon extractor for Windows PE files (.exe/.dll), written in
+Python. It also includes a thumbnailer script (exe-thumbnailer) for Linux
+desktops.</description>
+  <devel project="devel:languages:python" package="python-icoextract"/>
+  <url>https://github.com/jlu5/icoextract</url>
+</package>

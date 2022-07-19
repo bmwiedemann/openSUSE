@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Sat Jul 16 11:15:56 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Cleanup the SPEC file.
+
+-------------------------------------------------------------------
+Sat Jul 16 05:20:53 UTC 2022 - Imo Hester <vortex@z-ray.de>
+
+- Clean spec file
+
+-------------------------------------------------------------------
+Sat Jul 16 05:18:36 UTC 2022 - Imo Hester <vortex@z-ray.de>
+
+- Fixed multi version support for exe-thumbnailer.thumbnailer
+
+-------------------------------------------------------------------
+Sat Jul 16 04:29:14 UTC 2022 - Imo Hester <vortex@z-ray.de>
+
+- Added %check for provided test files
+
+-------------------------------------------------------------------
+Fri Jul 15 21:07:48 UTC 2022 - Imo Hester <vortex@z-ray.de>
+
+- Removed %global module_name icoextract
+- Ran spec-cleaner
+
+-------------------------------------------------------------------
+Fri Jul 15 20:22:50 UTC 2022 - Imo Hester <vortex@z-ray.de>
+
+- Added pefile to runtime requirements
+
+-------------------------------------------------------------------
+Fri Jul 15 20:11:44 UTC 2022 - Imo Hester <vortex@z-ray.de>
+
+- Removed min required python-devel version
+
+-------------------------------------------------------------------
+Fri Jul 15 20:10:02 UTC 2022 - Imo Hester <vortex@z-ray.de>
+
+- Proper python sitelib support
+
+-------------------------------------------------------------------
+Thu Jul 14 11:46:05 UTC 2022 - Imo Hester <vortex@z-ray.de>
+
+- Update to version 0.1.3
+  * setup.py: exclude tests from installed packages
+  * More verbose install notes
+  * CI: run tests on bullseye
+  * More tests for thumbnailers on various sizes
+  * tests: cleanup Makefile
+  * thumbnailer: use native 128x128 icons when available 
+  * Update supported Python versions
+  * Move version check and metadata fields to setup.cfg
+  * README: probably better to install icoextract[thumbnailer]
+  * Add changelog
+
+-------------------------------------------------------------------
+Sun Oct 17 02:00:15 UTC 2021 - Antônio Vinícius Menezes Medeiros <linuxkamarada@gmail.com> - 0.1.2
+
+- Update to v0.1.2
+
+-------------------------------------------------------------------
+Sun Jul  5 01:45:00 UTC 2020 - Antônio Vinícius Menezes Medeiros <linuxkamarada@gmail.com> - 0.1.1
+
+- Update to v0.1.1
+
+-------------------------------------------------------------------
+Tue Feb  4 19:30:00 UTC 2020 - Antônio Vinícius Menezes Medeiros <linuxkamarada@gmail.com> - 0.1.0
+
+- First icoextract package
