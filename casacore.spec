@@ -167,6 +167,7 @@ export CXXFLAGS="%{optflags}"
   -DCMAKE_INSTALL_PREFIX:PATH=%{my_prefix} \
   -DUSE_FFTW3:BOOL=ON \
   -DDATA_DIR:PATH=%{my_datadir}/casacore/data \
+  -DPORTABLE:BOOL=ON \
   -DUSE_OPENMP:BOOL=ON \
   -DUSE_MPI:BOOL=%{?with_mpi:ON}%{!?with_mpi:OFF} \
   -DUSE_HDF5:BOOL=ON \
