@@ -53,4 +53,20 @@
 </comment>
     <requestid>927363</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a07b14538589282b2617329b70b050d3</srcmd5>
+    <version>1.5.0</version>
+    <time>1658243944</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 1.5.0:
+  * Added an environment variable `PANDOCFILTER_CLEANUP` that when
+    `get_filename4code` is used, temporary directory will be cleaned up
+     automatically.
+  * `examples/` is no longer included in the distribution (i.e. source
+    distribution or binary wheels found on PyPI.) This should be a backward
+    incompatible change as `examples/` is never exposed as a Python module, nor
+    entry points.
+  * Added a couple of examples.</comment>
+    <requestid>989683</requestid>
+  </revision>
 </revisionlist>
