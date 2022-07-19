@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 18 19:23:16 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1658158082.102b55e:
+  * Remove deprecated specifier
+  * container: Fix missing 'useradd' in newer distributions
+  * Stop showing ipmi password in error ouput
+  * container: Add testing dedicated privilege-drop user
+  * Document testing svirt/VMWare using local virsh client
+
+-------------------------------------------------------------------
 Sat Jul 16 11:36:14 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1657896031.dcf12d0:
