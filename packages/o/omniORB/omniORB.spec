@@ -17,7 +17,8 @@
 #
 
 
-%define libname libomniORB4
+%define libname libomniORB4-3
+%define libname_omnithread libomnithread4
 
 Name:           omniORB
 Summary:        A robust high performance CORBA ORB for C++ and Python
@@ -44,6 +45,7 @@ interoperable with other CORBA ORBs.
 %package devel
 Group:          Development/Libraries/C and C++
 Summary:        Development libraries, header files and utilities for omniORB
+Requires:       %{libname_omnithread} = %{version}
 Requires:       %{libname} = %{version}
 Requires:       %{name} = %{version}
 
@@ -54,9 +56,18 @@ files are needed to develop applications based on omniORB.
 %package -n %{libname}
 Group:          System/Libraries
 Summary:        omniORB libraries
+Conflicts:      libomniORB4 <= 4.3.0
 
 %description -n %{libname}
 Shared libraries providing the omniORB CORBA implementation.
+
+%package -n %{libname_omnithread}
+Group:          System/Libraries
+Summary:        omniORB thread library
+Conflicts:      libomniORB4 <= 4.3.0
+
+%description -n %{libname_omnithread}
+Thread support library for omniORB.
 
 %prep
 %setup -q
@@ -72,13 +83,20 @@ find . -iname \*\.py -exec sed -ie '1 s@env python@python3@' '{}' \;
 %make_install
 mkdir -p %{buildroot}%{_var}/log/omninames
 chmod +x %{buildroot}%{python3_sitelib}/omniidl/main.py
+chmod +x %{buildroot}%{_libdir}/lib*.so.*
 
 %post -n %{libname} -p /sbin/ldconfig
+%post -n %{libname_omnithread} -p /sbin/ldconfig
 
 %postun -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname_omnithread} -p /sbin/ldconfig
 
 %files -n %{libname}
-%{_libdir}/*.so.*
+%{_libdir}/lib*.so.*
+%exclude %{_libdir}/libomnithread.so.*
+
+%files -n %{libname_omnithread}
+%{_libdir}/libomnithread.so.*
 
 %files
 %license COPYING*
