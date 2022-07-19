@@ -1,7 +1,7 @@
 #
 # spec file for package lrslib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define dullver	071b
-%define dullver2 071
+%define dullver	072
+%define dullver2 072
 %define lname   liblrs1
 Name:           lrslib
-Version:        7.1b
+Version:        7.2
 Release:        0
 Summary:        Reverse Search Vertex Enumeration program
 License:        GPL-2.0-or-later

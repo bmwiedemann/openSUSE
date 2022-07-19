@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 16 20:21:34 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.2
+  * Projecting a polyhedron to a subset of its variables (Fourier
+    elimination)
+  * Determining if an inequality is redundant in computing the
+    projection to a subset of its variables (uses SMT solver)
+
+-------------------------------------------------------------------
 Fri Jun 25 14:53:50 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.1b
