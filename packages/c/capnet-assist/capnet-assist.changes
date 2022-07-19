@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jun 25 19:02:55 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 2.4.2:
+  * Update to elementary runtime 7
+  * Updated translations
+- Changes from 2.4.1:
+  * Update to elementary runtime 6.1
+  * Updated translation
+- Changes from 2.4.0:
+  * New icon
+  * Updated translations
+- Changes from 2.3.0:
+  * Dark style support
+  * Updated translations
+- New build dependency: pkgconfig(libhandy-1)
+
+-------------------------------------------------------------------
 Sun Nov  1 10:09:21 UTC 2020 - Manu Maier <mmanu84@outlook.de>
 
 - Update to 2.2.5:

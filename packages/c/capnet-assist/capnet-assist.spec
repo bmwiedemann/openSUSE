@@ -1,7 +1,7 @@
 #
 # spec file for package capnet-assist
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           capnet-assist
-Version:        2.2.5
+Version:        2.4.2
 Release:        0
 Summary:        Captive Portal Assistant
 License:        GPL-3.0-only
@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(granite)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
 Requires:       NetworkManager
 Recommends:     %{name}-lang
@@ -63,7 +64,7 @@ in Vala and using WebkitGtk+.
 %meson_install
 %suse_update_desktop_file io.elementary.capnet-assist
 %find_lang io.elementary.capnet-assist %{name}.lang
-%fdupes %{buildroot}%{_datadir}/locale
+%fdupes %{buildroot}%{_datadir}/icons
 
 %files
 %license COPYING
@@ -71,10 +72,20 @@ in Vala and using WebkitGtk+.
 %{_bindir}/io.elementary.capnet-assist
 %{_datadir}/applications/io.elementary.capnet-assist.desktop
 %{_datadir}/glib-2.0/schemas/io.elementary.capnet-assist.gschema.xml
+%dir %{_datadir}/icons/hicolor/128x128@2
+%dir %{_datadir}/icons/hicolor/128x128@2/apps
+%dir %{_datadir}/icons/hicolor/16x16@2
+%dir %{_datadir}/icons/hicolor/16x16@2/apps
+%dir %{_datadir}/icons/hicolor/24x24@2
+%dir %{_datadir}/icons/hicolor/24x24@2/apps
+%dir %{_datadir}/icons/hicolor/32x32@2
+%dir %{_datadir}/icons/hicolor/32x32@2/apps
+%dir %{_datadir}/icons/hicolor/48x48@2
+%dir %{_datadir}/icons/hicolor/48x48@2/apps
+%dir %{_datadir}/icons/hicolor/64x64@2
+%dir %{_datadir}/icons/hicolor/64x64@2/apps
+%{_datadir}/icons/hicolor/*/apps/io.elementary.capnet-assist.svg
 %{_datadir}/metainfo/io.elementary.capnet-assist.appdata.xml
-%dir %{_sysconfdir}/NetworkManager
-%dir %{_sysconfdir}/NetworkManager/dispatcher.d
-%{_sysconfdir}/NetworkManager/dispatcher.d/90captive_portal_test
 
 %files lang -f %{name}.lang
 
