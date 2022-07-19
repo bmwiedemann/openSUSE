@@ -23,6 +23,8 @@ Release:        0
 License:        LGPL-2.1-or-later
 URL:            https://github.com/flatpak/flatpak-xdg-utils
 Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 264052bbf52899410421454150c493264bd1a696.patch -- flatpak-spawn: Fix memory leak when receiving NameOwnerChanged
+Patch:          %{url}/commit/264052bbf52899410421454150c493264bd1a696.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  meson
@@ -44,7 +46,7 @@ This package contains a number of command-line utilities for use inside
 Flatpak sandboxes. They work by talking to portals.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson
