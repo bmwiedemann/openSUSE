@@ -16,7 +16,7 @@
 #
 
 
-%define ver 1.9.5
+%define ver 1.9.6
 %define so_name lib%{name}-%(echo %{ver} | tr '.' '_')
 Name:           YODA
 Version:        %{ver}
@@ -27,8 +27,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://yoda.hepforge.org/
 Source:         http://www.hepforge.org/archive/yoda/%{name}-%{version}.tar.bz2
 Patch0:         sover.diff
-# PATCH-FIX-UPSTREAM -- python 3.10 fix
-Patch1:         0001-fix-cython-rebuild-after-configure.patch
 BuildRequires:  bash-completion
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
