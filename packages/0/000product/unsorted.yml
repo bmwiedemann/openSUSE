@@ -1830,6 +1830,8 @@ unsorted:
   - ccls 
   - ccrtp-devel 
   - ccrtp-doc 
+  - ccx 
+  - ccx-examples 
   - ccze 
   - ccze-devel 
   - cd-paranoia 
@@ -3102,7 +3104,6 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
-  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -11080,7 +11081,7 @@ unsorted:
   - libgensiocpp1 
   - libgeocode-glib-2-0 
   - libgeocode-glib0-32bit: [x86_64] 
-  - libgeos3_10_3 
+  - libgeos3_11_0 
   - libgeos_c1 
   - libgeotiff5 
   - libgepub-devel 
@@ -22469,6 +22470,7 @@ unsorted:
   - python310-azure-mixedreality-authentication 
   - python310-azure-mixedreality-nspkg 
   - python310-azure-monitor 
+  - python310-azure-monitor-ingestion 
   - python310-azure-monitor-nspkg 
   - python310-azure-monitor-query 
   - python310-azure-multiapi-storage 
@@ -23119,7 +23121,7 @@ unsorted:
   - python310-google-resumable-media 
   - python310-googleapis-common-protos 
   - python310-googlemaps 
-  - python310-gpg 
+  - python310-gpg: [i586] 
   - python310-gpgme 
   - python310-gphoto2 
   - python310-gprof2dot 
@@ -23227,6 +23229,10 @@ unsorted:
   - python310-inflect 
   - python310-inflection 
   - python310-influxdb 
+  - python310-ini2toml 
+  - python310-ini2toml-all 
+  - python310-ini2toml-full 
+  - python310-ini2toml-lite 
   - python310-inifile 
   - python310-iniparse 
   - python310-injector 
@@ -24192,7 +24198,7 @@ unsorted:
   - python310-python-gammu 
   - python310-python-gflags 
   - python310-python-gitlab 
-  - python310-python-gnupg: [i586] 
+  - python310-python-gnupg 
   - python310-python-gvm 
   - python310-python-jenkins 
   - python310-python-jose 
@@ -25554,6 +25560,7 @@ unsorted:
   - python38-azure-mixedreality-authentication 
   - python38-azure-mixedreality-nspkg 
   - python38-azure-monitor 
+  - python38-azure-monitor-ingestion 
   - python38-azure-monitor-nspkg 
   - python38-azure-monitor-query 
   - python38-azure-multiapi-storage 
@@ -26386,6 +26393,10 @@ unsorted:
   - python38-inflect 
   - python38-inflection 
   - python38-influxdb 
+  - python38-ini2toml 
+  - python38-ini2toml-all 
+  - python38-ini2toml-full 
+  - python38-ini2toml-lite 
   - python38-iniconfig 
   - python38-inifile 
   - python38-iniparse 
@@ -28850,6 +28861,7 @@ unsorted:
   - python39-azure-mixedreality-authentication 
   - python39-azure-mixedreality-nspkg 
   - python39-azure-monitor 
+  - python39-azure-monitor-ingestion 
   - python39-azure-monitor-nspkg 
   - python39-azure-monitor-query 
   - python39-azure-multiapi-storage 
@@ -29679,6 +29691,10 @@ unsorted:
   - python39-inflect 
   - python39-inflection 
   - python39-influxdb 
+  - python39-ini2toml 
+  - python39-ini2toml-all 
+  - python39-ini2toml-full 
+  - python39-ini2toml-lite 
   - python39-iniconfig 
   - python39-inifile 
   - python39-iniparse 
