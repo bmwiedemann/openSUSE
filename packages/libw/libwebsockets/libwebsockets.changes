@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jul 18 13:38:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.2:
+  * http: lws_add_http_header_by_name: add colon if needed
+  * logs: openssl session: improve detection of INFO enabled 
+  * logs: lock log context refcount changes
+  * route: fix nl groups and local ipv6 ads
+  * ss: mqtt: fix wrong QoS value on Birth message
+  * ss: http: ensure SS points to wsi when using wsi pointing to SS
+  * ss: reject direct protocol metadata if NULL ss wsi
+  * h1: deal with WAITING_CONNECT in ops-h1 
+  * route: extend lws_route_uidx_t from 1 byte to 2 bytes
+  * gcc12: fix potential test app string overflow
+  * h1: remove assert on unexpected POLLIN state just hangup
+  * sul: add clear advice for zombie suls
+  * logs: use finegrained level test on unix-sockets.c
+  * acme: update for v2 
+  * threadpool: improve relationship with LWS_HAVE_PTHREAD_H 
+  * h2: access log: POST: prepare log 
+  * mqtt: fix wrong awsiot field set on SUBSCRIBE
+
+-------------------------------------------------------------------
 Fri Jan 28 23:03:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.1:

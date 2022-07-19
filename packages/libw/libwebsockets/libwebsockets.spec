@@ -18,7 +18,7 @@
 
 %define sover 19
 Name:           libwebsockets
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        A WebSockets library written in C
 # base64-decode.c and ssl-http2.c is under MIT license with FPC exception.
