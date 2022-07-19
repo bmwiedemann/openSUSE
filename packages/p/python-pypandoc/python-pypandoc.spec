@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypandoc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  pandoc
 BuildRequires:  python-rpm-macros
 BuildRequires:  texlive-latex-bin
+BuildRequires:  texlive-xcolor
 Requires:       pandoc
 Requires:       python-pip
 Requires:       python-wheel
