@@ -29,18 +29,18 @@ Summary:        Automatic conversion of .ini/cfg files to TOML equivalents
 License:        MPL-2.0
 URL:            https://github.com/abravalheri/ini2toml/
 Source:         https://files.pythonhosted.org/packages/source/i/ini2toml/ini2toml-0.11.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 20.7
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # SECTION test requirements
 BuildRequires:  %{python_module packaging >= 20.7}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tomlkit >= 0.10 with %python-tomlkit < 2}
-BuildRequires:  %{python_module tomli-w >= 0.4.0 with %python-tomli-w < 2}
 BuildRequires:  %{python_module configupdater >= 3.0.1 with %python-configupdater < 4}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module tomli-w >= 0.4.0 with %python-tomli-w < 2}
+BuildRequires:  %{python_module tomlkit >= 0.10 with %python-tomlkit < 2}
 BuildRequires:  %{python_module validate-pyproject >= 0.6}
 %if %{with experimental}
 BuildRequires:  %{python_module pyproject-fmt >= 0.32}
@@ -57,9 +57,9 @@ file to TOML.
 
 %if %{with lite}
 %package lite
-Summary:  Python ini2toml[lite] extra requirement
-Requires: python-ini2toml = %{version}
-Requires: (python-tomli-w >= 0.4.0 with python-tomli-w < 2)
+Summary:        Python ini2toml[lite] extra requirement
+Requires:       python-ini2toml = %{version}
+Requires:       (python-tomli-w >= 0.4.0 with python-tomli-w < 2)
 
 %description lite
 The ini2toml[lite] extra requirements for %{python_flavor}-ini2toml
@@ -67,10 +67,10 @@ The ini2toml[lite] extra requirements for %{python_flavor}-ini2toml
 
 %if %{with full}
 %package full
-Summary:  Python ini2toml[full] extra requirement
-Requires: python-ini2toml = %{version}
-Requires: (python-configupdater >= 3.0.1 with python-configupdater < 4)
-Requires: (python-tomlkit >= 0.10 with python-tomlkit < 2)
+Summary:        Python ini2toml[full] extra requirement
+Requires:       python-ini2toml = %{version}
+Requires:       (python-configupdater >= 3.0.1 with python-configupdater < 4)
+Requires:       (python-tomlkit >= 0.10 with python-tomlkit < 2)
 
 %description full
 The ini2toml[full] extra requirements for %{python_flavor}-ini2toml
@@ -78,10 +78,10 @@ The ini2toml[full] extra requirements for %{python_flavor}-ini2toml
 
 %if %{with all}
 %package all
-Summary:  Python ini2toml[all] extra requirement
-Requires: python-ini2toml = %{version}
-Requires: (python-configupdater >= 3.0.1 with python-configupdater < 4)
-Requires: (python-tomlkit >= 0.10 with python-tomlkit < 2)
+Summary:        Python ini2toml[all] extra requirement
+Requires:       python-ini2toml = %{version}
+Requires:       (python-configupdater >= 3.0.1 with python-configupdater < 4)
+Requires:       (python-tomlkit >= 0.10 with python-tomlkit < 2)
 
 %description all
 The ini2toml[all] extra requirements for %{python_flavor}-ini2toml
@@ -89,9 +89,9 @@ The ini2toml[all] extra requirements for %{python_flavor}-ini2toml
 
 %if %{with experimental}
 %package experimental
-Summary:  Python ini2toml[experimental] extra requirement
-Requires: python-ini2toml = %{version}
-Requires: python-pyproject-fmt >= 0.32
+Summary:        Python ini2toml[experimental] extra requirement
+Requires:       python-ini2toml = %{version}
+Requires:       python-pyproject-fmt >= 0.32
 
 %description experimental
 The ini2toml[experimental] extra requirements for %{python_flavor}-ini2toml
@@ -149,4 +149,3 @@ donttest=(-k "not test_auto_formatting")
 %endif
 
 %changelog
-
