@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Mon Jul 18 13:11:48 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Cleanup the SPEC file.
+
+-------------------------------------------------------------------
+Sat Jul 16 15:33:14 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright
+
+- update to version 2.15.3:
+  * Fix swapping handlers
+  * Fix tests
+  * Readable regexps in generated code
+
+- changes from version 2.15.2:
+  * Fix nested oneOf and anyOf
+  * Fix if-else block in anyOf block
+  * Fix uniqueItems including lists or dicts
+  * Add option to pass custom formats in generated code
+
+- changes from version 2.15.1:
+  * Fix parsing date-time with +hhmm format
+  * Fix generating code with custom regular expressions
+
+- changes from version 2.15.0:
+  * Fix additional property equal to empty object is the same as True
+  * Fix const with "
+  * Add const to error message
+  * Add JsonSchemaValueException (replacement for JsonSchemaException)
+    + JsonSchemaException is base exception
+    + JsonSchemaDefinitionException no longer inherits from
+      JsonSchemaValueException
+  * New option `use_default` to have option turn off default feature
+    (`True` by default to be compatible)
+
+- changes from version 2.14.5:
+  * Fix missing dependencies
+  * Fix schema cache
+
+-------------------------------------------------------------------
+Fri Jun 12 04:52:10 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v2.14.4
