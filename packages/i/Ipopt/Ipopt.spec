@@ -19,7 +19,7 @@
 %define sover 3
 %define shlib libipopt%{sover}
 Name:           Ipopt
-Version:        3.14.7
+Version:        3.14.8
 Release:        0
 Summary:        A software package for large-scale nonlinear optimization methods
 License:        EPL-2.0
