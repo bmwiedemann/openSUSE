@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>983477</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b5cf75b28d6ef5d7624aa963f3c94ec3</srcmd5>
+    <version>10.5.2</version>
+    <time>1658244005</time>
+    <user>RBrownFactory</user>
+    <comment>Update to version 10.5.2 (forwarded request 990251 from develop7)</comment>
+    <requestid>990252</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 19 12:34:38 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 10.5.2
+  Changelog: https://foss.heptapod.net/mercurial/evolve/-/blob/10.5.2/CHANGELOG
+
+-------------------------------------------------------------------
 Fri Jun 17 17:21:32 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Blacklist test that fails due to distutils deprecation warning.
