@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 18 13:29:03 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220718.1fe31ebf:
+  * gocd: Fix previous change - comments don't work in scripts
+  * gocd: Don't run staging-bot for SP5 (for now)
+
+-------------------------------------------------------------------
 Fri Jul 15 11:37:46 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220715.4fd15522:
