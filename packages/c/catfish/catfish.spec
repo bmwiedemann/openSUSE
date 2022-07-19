@@ -1,7 +1,7 @@
 #
 # spec file for package catfish
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with git
 %define series 4.16
 Name:           catfish
-Version:        4.16.3
+Version:        4.16.4
 Release:        0
 Summary:        Versatile File Searching Tool
 License:        GPL-2.0-or-later

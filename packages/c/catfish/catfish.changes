@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Jul 17 21:37:42 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.16.4
+  * Add "Open with" right click item and dialog
+    (gxo#apps/catfish#12)
+  * Add a command-line option for setting default sort method
+  * Add Ctrl+A accelerator for the treeview (gxo#apps/catfish#64)
+  * Add option to show file size in binary or decimal
+  * Cosmetic changes for search entry and delete dialog
+  * Fix Ctrl+H not always toggling hidden files
+  * Fix DE detection when launched from Electron apps
+  * Fix exo file manager lookup for non-existent keys
+    (gxo#apps/catfish#64)
+  * Fix file manager lookup outside of Xfce
+  * Fix GNOME DE detection in Ubuntu
+  * Improve application menu appearance
+  * Improve default width for the sidebar
+  * Prepend the project root directory to sys.path
+  * Support running without Xfconf (no preference saving)
+  * Switch to using the super() method
+  * Use correct executable for elementary Files
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Sep 26 19:29:32 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.16.3
