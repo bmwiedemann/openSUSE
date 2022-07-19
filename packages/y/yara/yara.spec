@@ -1,7 +1,7 @@
 #
 # spec file for package yara
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define soname 8
+%global soname 9
 Name:           yara
-Version:        4.1.3
+Version:        4.2.2
 Release:        0
 Summary:        A malware identification and classification tool
 License:        BSD-3-Clause
@@ -98,7 +98,7 @@ rm -vf %{buildroot}%{_libdir}/libyara.a
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-%make_build check
+/usr/bin/make check
 
 %post   -n libyara%{soname} -p /sbin/ldconfig
 %postun -n libyara%{soname} -p /sbin/ldconfig

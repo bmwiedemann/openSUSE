@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Jul 11 19:36:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.2:
+  * BUGFIX: Fix buffer overrun en "dex" module
+  * BUGFIX: Wrong offset used when checking Version string of .net metadata
+  * BUGFIX: YARA doesn't compile if --with-debug-verbose flag is enabled
+  * BUGFIX: Null-pointer dereferences while loading corrupted compiled rules
+  * Implement the --skip-larger command-line option in Windows.
+  * BUGFIX: Error while scanning process memory in Linux (#1662). Thanks to @hillu.
+  * BUGFIX: Issue in "magic" module leading to wrong matches
+  * BUGFIX: Multiple issues triggered in low-memory conditions (#1671, #1673, #1674, #1675). Reported by @1ndahous3.
+  * BUGFIX: Incorrect parsing of character classes in some regular expressions (#1690). Reported by @Sevaarcen.
+  * BUGFIX: Heap overflow in ARM. Reported by @briangreenery.
+  * New syntax for counting string occurrences within a range of offsets. Example: #a in
+  * New syntax for checking if a set of strings are found within a range of offsets all of them in
+  * of operator now accepts sets of rules, Examples: 2 of (rule1, rule2, rule3), 2 of (rule*)
+  * New syntactic sugar allows writing 0 of
+  * New operator % for string sets. Example: 20% of them
+  * New operator defined
+  * New operator iequals
+  * Added functions abs, count, percentage and mode to math module
+  * The dotnet module is now built into YARA by default.
+  * Added the is_dotnet field to dotnet module
+  * Added new console module
+  * Added support of delayed imports to pe module
+  * Reduce memory pressure when scanning process memory in Linux
+  * Improve performance while matching certain hex strings
+  * Implement support for unicode file names in Windows
+  * Add new API functions yr_get_configuration_uintXX and yr_set_configuration_uintXX
+  * Add --max-process-memory-chunk option for controlling the size of the chunks while scanning a process memory
+  * Add --skip-larger option for skipping files larger than a certain size while scanning directories.
+  * Improve scanning performance with better atom extraction
+  * BUGFIX: fullword modifier not working properly under all locales
+  * BUGFIX: Fix edge case when files have a numeric name that was interpreted as a PID number
+  * BUGFIX: Fix memory leaks in magic module.
+  * BUGFIX: Fix integer overflow while scanning files larger than 2GB
+
+-------------------------------------------------------------------
 Fri Nov  5 17:45:44 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 4.1.3:
