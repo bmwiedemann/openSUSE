@@ -229,4 +229,39 @@
     <comment>1</comment>
     <requestid>471147</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>da77fd10bc941dcf4697240dcd35a18f</srcmd5>
+    <version>1.53</version>
+    <time>1658243984</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.53:
+  * Update bankdata files
+  * ibanchk: add '--file' command line option
+  * Add python 3 support
+  * Add link to german bank data description
+  * Add manual page for ibanchk
+  * Install ibanchk executable 
+- Rename python-ktoblzcheck package to python3-ktoblzcheck.
+- update to 1.51
+  * Add fetching of sepa providers and install them as csv file
+  * Add supported short options to ktoblzcheck usage output
+  * Fix finding files on windows
+  * Fix bug not finding default bank data file when XDG_DATA_DIRS is not set (sf/ktoblzcheck#2)
+- update to 1.50
+  * Add cmake option to install the raw bankdata file
+  * Add german iban check
+  * Add support for environment variable XDG_DATA_DIRS also on Windows required by test cases
+  * Add support for running cross compiled applications on linux
+  * Completed cmake support on Linux and Windows
+  * Dropped autotools build system
+  * Fix structure documentation in ibandata.txt
+  * Fix test cases
+  * Merge text from README*, INSTALL* into README.md
+  * New bank data file added
+  * Replaced perl scripts by python scripts to reduce the number of requirements
+  * Update doxygen config file to version 1.8.14
+  * Use README.md as main page for doxygen
+</comment>
+    <requestid>989630</requestid>
+  </revision>
 </revisionlist>
