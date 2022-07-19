@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 18 16:46:08 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.27.1
+  * Fix failing test on key-duplicates for old PyYAML versions
+- Release
+  * Add support for Python 3.10, drop Python 3.5
+  * Refactor --format=auto logic
+  * Rule comments: allow whitespace after the shebang marker
+  * Attempt to clarify configuration file location in documentation
+  * Rule key-duplicates: don't crash on redundant closing brackets
+    or braces
+  * Remove UTF-8 headers in Python files, since Python 2 isn't
+    supported
+  * Rule octal-values: pre-compile regex for performance
+  * Rule new-lines: add the type: platform config option
+  * Add the new rule float-values
+- Fix boo#1151703 on older stuff and ignore on Python >= 3.8
+
+-------------------------------------------------------------------
 Sun Apr 10 11:26:51 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 1.26.3:

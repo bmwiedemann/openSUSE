@@ -16,20 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-yamllint
-Version:        1.26.3
+Version:        1.27.1
 Release:        0
 Summary:        A linter for YAML files
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/adrienverge/yamllint
 Source:         https://files.pythonhosted.org/packages/source/y/yamllint/yamllint-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-pathspec >= 0.5.3
+%if 0%{python_version_nodots} < 38
+# boo#1151703, See below
+Requires:       python-setuptools
+%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -48,6 +54,8 @@ indentation, etc.
 
 %prep
 %setup -q -n yamllint-%{version}
+# override gh#adrienverge/yamllint#401, boo#1151703 fixed by importlib.resources in python >= 3.8 and a recent setuptools
+sed 's/  setuptools/  setuptools; python_version < "3.8"/' setup.cfg
 
 %build
 %python_build
@@ -59,7 +67,9 @@ indentation, etc.
 
 %check
 export LANG="en_US.UTF8"
-%python_exec -m unittest discover -v
+# skip test_run_with_user_global_config_file, probably same reason as upstreams GHA skip: '$HOME not overridable'
+export GITHUB_RUN_ID=1
+%pyunittest -v
 
 %post
 %python_install_alternative yamllint
@@ -71,6 +81,7 @@ export LANG="en_US.UTF8"
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/yamllint
-%{python_sitelib}/*
+%{python_sitelib}/yamllint
+%{python_sitelib}/yamllint-%{version}*-info
 
 %changelog
