@@ -138,7 +138,22 @@ $ chacl -l /dev/nvidia*
 /dev/nvidia-modeset [u::rw-,u:<userid>:rw-,g::rw-,m::rw-,o::---]
 /dev/nvidia-uvm [u::rw-,u:<userid>:rw-,g::rw-,m::rw-,o::---]
 
-At this point, the CUDA devices should be available in Blender.
+Problem: gcc 12 unsupported
+
+If blender shows an error during initial compilation of the cuda kernel similar to:
+#error -- unsupported GNU version! gcc versions later than 11 are not supported! 
+The nvcc flag '-allow-unsupported-compiler' can be used to override this version check; 
+however, using an unsupported host compiler may cause compilation failure or incorrect 
+run time execution. Use at your own risk.
+
+Solution: 
+$ zypper in gcc11{,-c++}
+$ cd /usr/local/cuda/bin/
+$ ln -s ../../../bin/gcc-11 gcc
+$ ln -s ../../../bin/g++-11 g++
+
+At this point, the CUDA kernel should build properly, and CUDA devices should be 
+available.
 
 Remember: Blender needs a CUDA "Compute Capability" of 3.0 at least.
 

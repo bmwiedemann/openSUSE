@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Fri Jul 15 23:23:04 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.2.1:
+  + Anchored mode not working for sculpt smear brush. T98745
+  + Assets dropped upside down when looking through camera. T96776
+  + Avoid console warnings when no Sculpt brush selected. T98904
+  + Avoid unnecessary mesh copy. T98796
+  + Baking to active color attribute uses wrong layer. T98960
+  + Boolean modifier creates invalid material indices. T99191
+  + Broken vertex paint mode operators. T98975
+  + Color attribute fill API didn't support editmode. T98673
+  + Console warning using search (F3) in grease pencil draw mode.
+    T99178
+  + Crash after running view_all operator in VSE. T99110
+  + Crash deleting file output node with color management override.
+    T99028
+  + Crash drag-dropping collection from outliner to ID property.
+    T98715
+  + Crash in Volume to Mesh with 0 voxels. T94969
+  + Crash on startup - OpenGL4.2 without conservative depth. T98708
+  + Crash removing some builtin attributes. T98956
+  + Crash when dragging file to VSE from file browser. T99266
+  + Crash when moving grease pencil object has any invisible….
+    T98853
+  + Crash when recursively nesting NLA meta strips. T98700
+  + Crash with GPU subdivision in edit mode and instanced geometry.
+    T98813
+  + Crash: Curve to Mesh node crashes blender if there is a single
+    vertice curve. T98917
+  + Crash: GPU subdivision crash in edit mode with loose geometry.
+    T98866
+  + Crash: Grease Pencil: Fix crash when using time offset
+    modifier. rB54cfeacf
+  + Curve Pen NURBS extrusion creates duplicates. T98624
+  + Division by zero in smear code when strength is zero. T98698
+  + Dynamic Paint does not update normals. T98727
+  + Editor panels are broken. T98925
+  + EEVEE Bloom Pass Outputs Final Image Instead of Bloom. T98972
+  + EEVEE compilation error cryptomatte shaders. T98663
+  + EEVEE unlinked aov output nodes don't render. T98919
+  + EEVEE: Buffer overflow in sample name buffer. T98825
+  + EEVEE: Crash when using Light Output in Materials. T99104
+  + EEVEE: Missing custom property from volumetrics. T98697
+  + EEVEE: Pixelated Environment Texture. T99128
+  + EEVEE: Specular BSDF apply specular color input twice. T99018
+  + EEVEE: Specular BSDF does not apply occlusion. T99019
+  + EEVEE: World volume shader incorrect texture coords. T99138
+  + Face dot colors in UV editor was using wrong color from theme.
+    T98699
+  + Face Is Planar Node Not handling Certain Conditions. T98718
+  + Fix armatures not visible in VR. rBa7c923c6
+  + Fix artefacts with GPU subdivision and weight paint face
+    selection. rB85db51cd
+  + Fix color attribute interpolation with GPU subdivision.
+    rBc1454419
+  + Fix edge case crashes in gpu subdiv cache code T98884
+  + Fix uninitialized memory use in key-down events on window
+    activation. rB45763272
+  + Freeze when changing strip source with thumbnails enabled.
+    T99091
+  + Geometry nodes ignore if subdivision surface modifier is
+    disabled. T99058
+  + glTF exporter: export driven SK when mesh parented to bone.
+    T98912
+  + glTF exporter: Fix camera & light export when Yup is off T99306
+  + glTF exporter: Make sure to not modify virtual tree rBA9b0f1db
+  + GPU Subdivision artifacts in weight paint with smooth shading.
+    T99016
+  + GPU Subdivision displays normals for all elements. T98735
+  + GPU Subdivision: "Show Wire" overlay glitch. T98913
+  + Grease Pencil: Gradient colors in a Grease Pencil material
+    change depending on the visibility of other objects. T98882
+  + Grease Pencil: sculpt brushes break after you delete a brush.
+    T98904
+  + Grease Pencil: Sculpt Grab/Push don't work with one point.
+    T99248
+  + Grease Pencil: Set Vertex Color Attribute does not color
+    unpainted. T98756
+  + Install_deps: Fix several issues with TBB. rB6b15369e
+  + Issue with subdivision subsurface modifier and >= 8 levels.
+    T98693
+  + Missing null check in versioning code. T98847
+  + OBJ (new importer): Fixed scene stats info not updated after
+    import. T98293
+  + OBJ (new importer): Fixed wrong sharp edges in some cases.
+    T97820
+  + OBJ (new importer): Got an option to import vertex groups.
+    T98874
+  + OBJ (new importer): Ignore face normal indices if no normals
+    are present. T98782
+  + OBJ (new importer): Use filename as the default object name.
+    rB581604d1
+  + Outliner Unlink material in Blender File mode crashes. T98753
+  + PBVH_GRIDS ignores face smooth flag on first gpu build. T98886
+  + PyAPI: Expose event.type_prev, value_prev. T99102
+  + Remesh modifier frees sculpt masking attributes. T99209
+  + Remove unused BRUSH_PAINT icon definition. T98565
+  + Sculpt: Fix backwards normals in PBVH_GRIDS raycasting.
+    rBe0dd51fc
+  + Touch typing in text fields results in dropped key presses.
+    T99027
+  + Unable to select mask points in clip editor. T98765
+  + Video sequencer screen corruption occurs when resizing. T98620
+  + Wrong anchored mode test for smear brush. T99231
+
+-------------------------------------------------------------------
+Sat Jul  2 15:29:27 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Provide solution for unsupported gcc 12 version for nvcc (cuda)
+  in SUSE-NVIDIA-GPU-rendering.txt
+
+-------------------------------------------------------------------
 Thu Jun 16 08:44:26 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Increase required memory to avoid OOM seen on Tumbleweed aarch64
