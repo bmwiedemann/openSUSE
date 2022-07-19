@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 19 08:19:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.43.0:
+  * Add new matcher files for golang => remove main module FP matches (#829)
+  * Fix a cyclonedxvex typo and fix the schema document from (#830)
+  * feat: add --only-notfixed flag (#828)
+  * add DBCloser. Clients can aviod db connection leak if vulnerability db is loaded many times (#825)
+
+-------------------------------------------------------------------
 Sat Jul 16 19:00:16 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.42.0:
