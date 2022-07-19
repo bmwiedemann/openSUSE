@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 16 21:50:27 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.6.4
+  https://github.com/MiniZinc/libminizinc/blob/2.6.4/changes.rst
+- Drop upstream patches:
+  * 0001-Fix-missing-return-in-non-void-function.patch
+  * 0001-Add-memory-include-required-for-unique_ptr.patch
+
+-------------------------------------------------------------------
 Sat May 21 10:47:50 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.6.3
