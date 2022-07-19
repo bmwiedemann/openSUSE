@@ -36,4 +36,23 @@
   * various python 3 compat fixes</comment>
     <requestid>729877</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5f67c832fc1868c6acb1324eb1148c41</srcmd5>
+    <version>2.1.1</version>
+    <time>1658243997</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 2.1.1:
+  * VERSION.py: Get ready for release 2.1.1
+  * test/test-cdtext.py: Test tweak
+  * example/iso1.py, example/iso2.py: Imprive iso2.py when there is an
+    error iso1.py: don't translate filenames in ISO9660
+  * example/iso2.py: Wrong file name in iso2.py example Case matters.  Fixes #1
+  * Makefile, cdio.py, example/Makefile, iso9660.py,
+    test/test-cdtext.py: Remove legacy 0.8{2,3} libcdio code libcdio before 2.0.0 really doesn't exist anymore
+  * VERSION.py: Bump version number to dev
+  * cdio.py, swig/track.swg: Black and update copyright
+  * admin-tools/unixccompiler.py, setup.py: In 2021, Python3 is the
+    rule not the exception</comment>
+    <requestid>990217</requestid>
+  </revision>
 </revisionlist>
