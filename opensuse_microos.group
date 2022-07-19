@@ -2452,6 +2452,7 @@
     <package name="python310-fs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-gevent" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-gmpy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-gpg" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="python310-greenlet" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-h11" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-h2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
@@ -2551,7 +2552,6 @@
     <package name="python310-pysmbc" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="python310-pytest" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-python-dateutil" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-python-gnupg" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="python310-python-memcached" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="python310-pytz" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-pyudev" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->

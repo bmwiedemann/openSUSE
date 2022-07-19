@@ -5052,6 +5052,7 @@
     <package name="crash-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="dpdk-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="exim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
