@@ -23,7 +23,7 @@ Release:        0
 Summary:        Python implementation of the patiencediff algorithm
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
-URL:            https://www.breezy-vcs.org/
+URL:            https://github.com/breezy-team/patiencediff
 Source:         https://files.pythonhosted.org/packages/source/p/patiencediff/patiencediff-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
