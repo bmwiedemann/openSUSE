@@ -1,0 +1,6 @@
+<package name="python-perky" project="openSUSE:Factory">
+  <title>perky</title>
+  <description>A friendly, easy, Pythonic text file format</description>
+  <devel project="devel:languages:python" package="python-perky"/>
+  <url>https://pypi.org/project/perky/</url>
+</package>

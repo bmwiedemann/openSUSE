@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e940a81afba1d24ca535cfba88179c0d</srcmd5>
+    <version>0.5.5</version>
+    <time>1658243982</time>
+    <user>RBrownFactory</user>
+    <comment>Needed as build dependency for the Ansible antsibull* packages</comment>
+    <requestid>990035</requestid>
+  </revision>
+</revisionlist>
