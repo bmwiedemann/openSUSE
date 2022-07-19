@@ -32,7 +32,7 @@
 %define skip_python2 1
 %bcond_with     pytest_helpers
 Name:           python-pyglet
-Version:        1.5.23
+Version:        1.5.26
 Release:        0
 Summary:        Windowing and multimedia library
 License:        BSD-3-Clause AND MIT

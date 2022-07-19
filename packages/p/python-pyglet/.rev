@@ -107,4 +107,20 @@
     <comment></comment>
     <requestid>967317</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>eea64e15356c8d5a267eb5c689938403</srcmd5>
+    <version>1.5.26</version>
+    <time>1658243949</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 1.5.26:
+  * Windows - Backport WIC codec changes from 2.0
+  * Fix library loading when passing multiple library names.
+  * Windows - Prevent ImportError when attempting to load more than one DLL version.
+  * Add initial support for FFmpeg 5.0
+  * Windows - The GDI font renderer now supports Unicode font names.
+  * Windows - Fix `on_resize` event not dispatched when `set_size` is called.
+  * Documentation updates, fixed links, and corrections.
+  * Windows - Fix crash when font characters are more than one codepoint in length.</comment>
+    <requestid>989684</requestid>
+  </revision>
 </revisionlist>
