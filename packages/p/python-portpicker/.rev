@@ -53,4 +53,16 @@
     <comment></comment>
     <requestid>967390</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>586357032007704f2e999ee82fd4e910</srcmd5>
+    <version>1.5.2</version>
+    <time>1658243997</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 1.5.2:
+  * Do not re-pick a known used (not-yet-returned) port when running stand alone
+    without a portserver.
+  * When not using a portserver *(you really should)*, try the `bind(0)`
+    approach before hunting for random unused ports. More reliable per</comment>
+    <requestid>990215</requestid>
+  </revision>
 </revisionlist>

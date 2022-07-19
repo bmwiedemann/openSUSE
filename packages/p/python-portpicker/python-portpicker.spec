@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-portpicker
-Version:        1.5.0
+Version:        1.5.2
 Release:        0
 Summary:        A library to choose unique available network ports
 License:        Apache-2.0

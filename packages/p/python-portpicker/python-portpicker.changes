@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 19 11:16:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.2:
+  * Do not re-pick a known used (not-yet-returned) port when running stand alone
+    without a portserver.
+  * When not using a portserver *(you really should)*, try the `bind(0)`
+    approach before hunting for random unused ports. More reliable per
+
+-------------------------------------------------------------------
 Wed Apr  6 13:22:11 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build
