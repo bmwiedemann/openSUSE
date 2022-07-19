@@ -61,4 +61,17 @@
   * ``find_matches()`` now may return a ``Callable[[], Iterator[Candidate]]`` to</comment>
     <requestid>930003</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>abcf3ed263e4024122d15fd52f658387</srcmd5>
+    <version>0.8.1</version>
+    <time>1658243950</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 0.8.1:
+  * A new reporter hook ``resolving_conflicts`` is added. The resolver triggers
+  * this hook when it detects conflicts in the dependency tree, and before it
+  * attempts to fix them. The hook accepts one single argument ``causes``, which
+  * is a list of ``(requirement, parent)`` 2-tuples that represents all the
+  * edges that lead to the detected conflicts.</comment>
+    <requestid>989686</requestid>
+  </revision>
 </revisionlist>
