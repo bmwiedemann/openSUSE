@@ -3,4 +3,5 @@
   <description>Build command-suite CLI apps that are awesome.  Bootstrap your app, add
 commands, options and documentation while maintaining a well-tested idiomatic
 command-line app</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-gli"/>
 </package>
