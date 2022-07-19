@@ -19,7 +19,7 @@
 %define project github.com/caddyserver/caddy
 
 Name:           caddy
-Version:        2.5.1
+Version:        2.5.2
 Release:        0
 Summary:        Fast, multi-platform web server with automatic HTTPS
 License:        Apache-2.0

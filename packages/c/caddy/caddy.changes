@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Jul 15 19:01:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 2.5.2:
+  * admin: expect quoted ETags (#4879)
+  * headers: Only replace known placeholders (#4880)
+  * reverseproxy: Err 503 if all upstreams unavailable
+  * reverseproxy: Adjust new TLS Caddyfile directive names (#4872)
+  * fileserver: Use safe redirects in file browser
+  * admin: support ETag on config endpoints (#4579)
+  * go.mod: Bump up quic-go to v0.28.0, fixes for BC breaks (#4867)
+  * caddytls: Reuse issuer between PreCheck and Issue (#4866)
+  * admin: Implement /adapt endpoint (close #4465) (#4846)
+  * forwardauth: Fix case when `copy_headers` is omitted (#4856)
+  * Expose several Caddy HTTP Matchers to the CEL Matcher (#4715)
+  * reverseproxy: Fix double headers in response handlers (#4847)
+  * reverseproxy: Fix panic when TLS is not configured (#4848)
+  * reverseproxy: Skip TLS for certain configured ports (#4843)
+  * go.mod: Update some dependencies
+  * forwardauth: Support renaming copied headers, block support (#4783)
+  * Add comment about xcaddy to main
+  * headers: Support wildcards for delete ops (close #4830) (#4831)
+  * reverseproxy: Dynamic ServerName for TLS upstreams (#4836)
+  * reverseproxy: Make TLS renegotiation optional
+  * reverseproxy: Add renegotiation param in TLS client (#4784)
+  * caddyhttp: Log error from CEL evaluation (fix #4832)
+  * reverseproxy: Correct the `tls_server_name` docs (#4827)
+  * reverseproxy: HTTP 504 for upstream timeouts (#4824)
+  * caddytls: Make peer certificate verification pluggable (#4389)
+  * reverseproxy: api: Remove misleading 'healthy' value
+  * go.mod: Update go-yaml to v3
+  * Fix #4822 and fix #4779
+  * reverseproxy: Add --internal-certs CLI flag #3589 (#4817)
+  * ci: Fix build caching on Windows (#4811)
+  * templates: Add `humanize` function (#4767)
+  * core: Micro-optim in run() (#4810)
+  * go.mod: Upgrade some dependencies
+  * httpcaddyfile: Add `{err.*}` placeholder shortcut (#4798)
+  * templates: Documentation consistency (#4796)
+  * chore: Bump quic-go to v0.27.0 (#4782)
+  * reverseproxy: Support http1.1>h2c (close #4777) (#4778)
+  * rewrite: Handle fragment before query (fix #4775)
+  * httpcaddyfile: Support multiple values for `default_bind` (#4774)
+
+-------------------------------------------------------------------
 Mon May 23 07:48:15 UTC 2022 - alexandre.vicenzi@suse.com
 
 - Update to version 2.5.1:
