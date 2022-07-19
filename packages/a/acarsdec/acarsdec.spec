@@ -25,6 +25,7 @@ License:        GPL-2.0-or-later
 URL:            https://github.com/TLeconte/acarsdec
 #Git-Clone:     https://github.com/TLeconte/acarsdec.git
 Source:         https://github.com/TLeconte/%{name}/archive/%{name}-%{version}.tar.gz
+Patch0:         reproducible.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libacars-2) >= 2.0.0
@@ -39,6 +40,7 @@ It comes with a database backend : acarsserv to store receved acars messages.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+%patch0 -p1
 
 %build
 %cmake \
