@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 20 09:13:34 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- list-x11: Ignore bind-utils
+
+-------------------------------------------------------------------
 Thu Jul  7 20:56:36 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Ignore alsa-plugins-pulse for now: conflicts with pipewire. 

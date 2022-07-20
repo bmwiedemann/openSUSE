@@ -576,6 +576,8 @@
     <ignore name="plymouth"/>
     <package name="aaa_base" replaces="7zip"/>
     <ignore name="7zip"/>
+    <package name="aaa_base" replaces="bind-utils"/>
+    <ignore name="bind-utils"/>
     <package name="aaa_base" replaces="tumbler"/>
     <ignore name="tumbler"/>
     <package name="aaa_base" replaces="ristretto"/>
