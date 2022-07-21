@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Wed Jul 20 11:44:34 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Cleanup spec file even more
+- Fix requirements: prevent setuptools_scm 7 update
+- Provide the canonical PyPI name
+
+-------------------------------------------------------------------
+Tue Jul 19 14:22:34 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Cleanup the SPEC file.
+
+-------------------------------------------------------------------
+Tue Jul 19 09:27:06 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package python-hatch_vcs
