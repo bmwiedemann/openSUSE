@@ -19,13 +19,17 @@
 %define pyenv_dir      %{_libexecdir}/pyenv
 #
 Name:           pyenv
-Version:        2.3.0
+Version:        2.3.2
 Release:        0
 Summary:        Python Version Management
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pyenv/pyenv
 Source:         https://github.com/pyenv/pyenv/archive/refs/tags/v%{version}.tar.gz#/pyenv-%{version}.tar.gz
+#
+# PATCH-FIX-OPENSUSE
+# https://github.com/pyenv/pyenv/commit/22fa6835.patch
+Patch0:         %{name}-CVE-2022-35861.patch
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  fish

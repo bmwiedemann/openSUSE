@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 18 09:35:05 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.2
+
+- Update to 2.3.2
+  - Add CPython 3.11.0b2 by @saaketp in #2380
+  - Honor CFLAGS_EXTRA for MicroPython #2006 by @yggdr in #2007
+  - Add post-install checks for curses, ctypes, lzma, and tkinter
+    by @aphedges in #2353
+  - Add CPython 3.11.0b3 by @edgarrmondragon in #2382
+  - Add flags for Homebrew into python-config --ldflags by @native-api
+    in #2384
+  - Add CPython 3.10.5 by @illia-v in #2386
+  - Add Anaconda 2019.10, 2021.04, 2022.05; support Anaconda in
+    add_miniconda.py by @native-api in #2385
+  - Add Pyston-2.3.4 by @dand-oss in #2390
+  - Update Anaconda3-2022.05 MacOSX arm64 md5 by @bkbncn in #2391
+- Fix bsc#1201582 to fix CVE-2022-35861 (from commit 22fa683, file
+  pyenv-CVE-2022-35861.patch)
+
+-------------------------------------------------------------------
 Wed May  4 15:43:51 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.0
 
 - Update to 2.3.0
