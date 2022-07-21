@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 18 17:16:56 UTC 2022 - Matthias Bach <marix@marix.org> - 2.0.0
+
+- Update to 2.0.0
+  * Removed the old dicts EMOJI_UNICODE_, UNICODE_EMOJI_
+  * Removed unused language=None parameters
+  * Removed use_alias parameter
+  * Removed the get_regexp method
+  * Removed emoji_lis
+  * Removed distinct_emoji_lis
+  * Made the list of languages public:
+    emoji.LANGUAGES = ['en','es','pt','it','fr','de']
+- Run all tests during packaging
+
+-------------------------------------------------------------------
 Fri Mar 11 10:28:54 UTC 2022 - Matthias Bach <marix@marix.org> - 1.7.0
 
 - Update to 1.7.0
