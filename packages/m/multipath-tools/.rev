@@ -1659,4 +1659,31 @@ see https://github.com/opensvc/multipath-tools/compare/2bdd3a14..79c3556f</comme
   * Fix handling of path addition in read-only arrays on NVMe</comment>
     <requestid>976432</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>a597a71d559cabf642a586ebb6712367</srcmd5>
+    <version>0.9.0+39+suse.51a2ab1</version>
+    <time>1658395971</time>
+    <user>RBrownFactory</user>
+    <comment>Fix revision in _service file
+
+- Update to version 0.9.0+39+suse.51a2ab1:
+  Upstream bug fixes:
+  * libmultipath: fix find_multipaths_timeout for unknown hardware
+  (boo#1201483)
+  * multipath-tools: fix &quot;multipath -ll&quot; for Native NVME Multipath devices
+  (boo#1201483)
+
+- Update to version 0.9.0+33+suse.fdc6686
+  * multipath.conf: add support for &quot;protocol&quot; subsection in 
+    &quot;overrides&quot; section to set certain config options by protocol.
+  * Removed the previously deprecated options getuid_callout,
+    config_dir, multipath_dir, pg_timeout
+  * hwable fixes and additions
+  * multipath.conf(5): add disclaimer about vendor support
+  * libmultipath, kpartx: fix callers of dm_get_next_target()
+  * Change built-in defaults for NVMe: group by prio, and immediate
+    failback
+  * Allow compilation with -D_FORTIFY_SOURCE=3</comment>
+    <requestid>989504</requestid>
+  </revision>
 </revisionlist>
