@@ -45,7 +45,6 @@ Patterntype: rpm-md ymp
   %ifarch x86_64
     BuildFlags: dockerarg:TARGETARCH=amd64
   %endif
-  VMinstall: perl
 %endif
 
 %if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:NonFree" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:zSystems"
@@ -1354,6 +1353,8 @@ Macros:
 # pseudo-undefine for obs: reset for the next expansion within the next call of python_module
 %python_module_iter_STOP %global python %%%%python
 %python_module() %{?!python_module_lua:%{expand:%%define args %{**}} %{expand:%%{python_module_iter -a %{pythons} STOP}}}%{?python_module_lua:%python_module_lua %{**}}
+# gh#openSUSE/python-rpm-macros#127 ... define our current primary Python interpreter
+%primary_python python310
 ## PYTHON MACROS END
 :Macros
 
