@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul 20 05:47:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 10.0.2:
+  * Release 10.0.2 (#14613)
+  * [v10] Replace `ssh proxy` execution with `crypto/ssh` call (#14522)
+  * [v10] Add Kubernetes Access support to Machine ID (#14269) (#14550)
+  * [v10] Deflake TestOpenExecSessionSetsSession (#14588)
+  * [v10] Fix broken links (#14532)
+  * [v10] Update error message returned when user is not allowed to sign db certs (#14426)
+  * [v10] tsh: Suppress PPK deletion error when file doesn't exist (#14572)
+  * Fix TestProxyTunnelStrategyAgentMesh flakiness (#14398) (#14474)
+  * [v10] Expand the edition comparison table (#14255)
+  * [v10] Add RBAC instructions for Kubernetes Access (#14258)
+  * [v10] Display helpful error when joining with invalid host ID for EC2 join method (#14494)
+  * [v10] Bundle `tbot` into the built docker images (#14462)
+  * [v10] Fail `app_service` start on invalid configuration (#14325) (#14478)
+  * [v10] Add check that roles in given user exist (#14459)
+
+-------------------------------------------------------------------
 Mon Jul 18 05:57:27 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 10.0.1:
