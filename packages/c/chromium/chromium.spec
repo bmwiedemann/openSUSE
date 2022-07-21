@@ -54,7 +54,7 @@
 # Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
 %bcond_with lto
 Name:           chromium
-Version:        103.0.5060.114
+Version:        103.0.5060.134
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later

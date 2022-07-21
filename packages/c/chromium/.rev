@@ -4171,4 +4171,20 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   * CVE-2022-2296: Use after free in Chrome OS Shell (forwarded request 988023 from AndreasStieger)</comment>
     <requestid>988024</requestid>
   </revision>
+  <revision rev="344" vrev="1">
+    <srcmd5>79daec3be81e68f2dcd711a259d89f39</srcmd5>
+    <version>103.0.5060.134</version>
+    <time>1658396063</time>
+    <user>RBrownFactory</user>
+    <comment>- Chromium 103.0.5060.134 (boo#1201679):
+  * CVE-2022-2477 : Use after free in Guest View
+  * CVE-2022-2478 : Use after free in PDF
+  * CVE-2022-2479 : Insufficient validation of untrusted input in File
+  * CVE-2022-2480 : Use after free in Service Worker API
+  * CVE-2022-2481: Use after free in Views
+  * CVE-2022-2163: Use after free in Cast UI and Toolbar
+  * Various fixes from internal audits, fuzzing and other initiatives
+</comment>
+    <requestid>990359</requestid>
+  </revision>
 </revisionlist>

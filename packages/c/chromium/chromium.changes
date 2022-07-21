@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 20 08:05:57 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 103.0.5060.134 (boo#1201679):
+  * CVE-2022-2477 : Use after free in Guest View
+  * CVE-2022-2478 : Use after free in PDF
+  * CVE-2022-2479 : Insufficient validation of untrusted input in File
+  * CVE-2022-2480 : Use after free in Service Worker API
+  * CVE-2022-2481: Use after free in Views
+  * CVE-2022-2163: Use after free in Cast UI and Toolbar
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Sat Jul  9 12:52:33 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 103.0.5060.114 (boo#1201216)
