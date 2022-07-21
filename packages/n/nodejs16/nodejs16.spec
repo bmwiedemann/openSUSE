@@ -21,7 +21,7 @@
 %endif
 
 Name:           nodejs16
-Version:        16.15.1
+Version:        16.16.0
 Release:        0
 
 # Double DWZ memory limits
@@ -273,7 +273,7 @@ BuildRequires:  openssl >= %{openssl_req_ver}
 
 %else
 %if %node_version_number <= 12 && 0%{?suse_version} == 1315 && 0%{?sle_version} < 120400
-Provides:       bundled(openssl) = 1.1.1o
+Provides:       bundled(openssl) = 1.1.1q
 %else
 BuildRequires:  bundled_openssl_should_not_be_required
 %endif
@@ -352,7 +352,7 @@ Provides:       bundled(brotli) = 1.0.9
 BuildRequires:  pkgconfig(libbrotlidec)
 %endif
 
-Provides:       bundled(llhttp) = 6.0.4
+Provides:       bundled(llhttp) = 6.0.7
 Provides:       bundled(ngtcp2) = 0.1.0-DEV
 
 Provides:       bundled(node-acorn) = 8.6.0
@@ -640,7 +640,7 @@ tar Jxf %{SOURCE11}
 %endif
 %patch200 -p1
 
-%if %{node_version_number} <= 14
+%if %{node_version_number} <= 12
 # minimist security update - patch50
 rm -r deps/npm/node_modules/mkdirp/node_modules/minimist
 rmdir ./deps/npm/node_modules/mkdirp/node_modules
