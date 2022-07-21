@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation
-Version:        4.5.3
+Version:        4.5.4
 Release:        0
 Summary:        YaST2 - Installation Parts
 License:        GPL-2.0-only
@@ -70,8 +70,8 @@ Requires:       iproute2
 Requires:       pciutils
 # tar-gzip some system files and untar-ungzip them after the installation (FATE #300421, #120103)
 Requires:       tar
-# xrdb is used to set Xft.dpi in YaST2.call
-Requires:       xrdb
+# /usr/lib/YaST2/bin/xftdpi, install only when the GUI is installed
+Requires:       (yast2-x11 >= 4.5.1 if libyui-qt)
 # Y2Packager::NewRepositorySetup
 Requires:       yast2 >= 4.4.42
 # CIOIgnore
