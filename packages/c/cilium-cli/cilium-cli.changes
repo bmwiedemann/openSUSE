@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jul 19 16:09:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.0:
+  * Prepare for v0.12.0 release
+  * defaults: update default Cilium version to v1.12.0
+  * go.mod, vendor: pull in latest cilium charts for v1.12.0, v1.11.7, v1.10.3, v1.9.18
+  * go.mod, vendor: update cilium to v1.12.0
+  * Dockerfile: update cilium-builder image for Go 1.18.4
+  * build(deps): bump github.com/go-openapi/strfmt from 0.21.2 to 0.21.3
+  * [connectivity] Support private coredns image locations
+  * build(deps): bump helm.sh/helm/v3 from 3.9.0 to 3.9.1
+  * [connectivity tests] Support custom agent daemonset name
+  * sysdump: run bugtool even when cilium agent is not running
+  * sysdump: have bugtool gzip directly
+  * build(deps): bump google.golang.org/grpc from 1.47.0 to 1.48.0
+  * Update Go to 1.18.4
+  * ci: switch to OIDC authentication for az CLI
+  * internal/helm: pass cilium version as semver.Version instead of string
+  * build(deps): bump actions/setup-go from 3.2.0 to 3.2.1
+  * hubble: fix issue for not create metrics service
+  * ci: explicitly wait for cilium status after enabling Hubble relay on AKS
+  * connectivity: test L7 ingress policy with HTTP headers
+  * connectivity: unify WithExpectations block formatting
+  * connectivity: remove unused test scenario name parameter
+  * connectivity/check: report deployment/service name from constant in log message
+  * connectivity/check: unexport constants
+  * connectivity/check: report test namespace name in log message
+  * hubble port-forward: Remove dependency on `cilium-cli-helm-values` secret
+  * connectivity: Update coredns image for arm64
+  * build(deps): bump github.com/google/gops from 0.3.24 to 0.3.25
+  * test: Move HTTP validation to a separate flow requirement
+  * filters: Only fix wildcarded ephemeral port on the first SYN
+  * test: Avoid duplicate port filters
+
+-------------------------------------------------------------------
 Thu Jul 07 06:35:48 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.11.11:
