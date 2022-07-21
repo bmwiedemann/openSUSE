@@ -1,0 +1,7 @@
+<package name="app-builder" project="openSUSE:Factory">
+  <title></title>
+  <description>Generic helper tool to build app in a distributable formats.
+Used by electron-builder but applicable not only for building Electron applications.</description>
+  <devel project="devel:languages:nodejs" package="app-builder"/>
+  <url>https://github.com/develar/app-builder</url>
+</package>

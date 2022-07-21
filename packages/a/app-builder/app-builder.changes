@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Wed Jul 20 18:48:51 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Use system golang libraries instead of vendored copies wherever possible
+
+-------------------------------------------------------------------
+Sun Jul 10 18:56:45 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Initial packaging
+
