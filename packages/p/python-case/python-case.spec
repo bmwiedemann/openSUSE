@@ -1,7 +1,7 @@
 #
 # spec file for package python-case
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ Patch2:         remove-nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-mock >= 2.0
 Requires:       python-pytest
 Requires:       python-setuptools
 Requires:       python-six

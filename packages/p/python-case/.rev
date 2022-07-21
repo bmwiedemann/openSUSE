@@ -42,4 +42,12 @@ Add remove_unittest2.patch to facilitate that</comment>
 - Adjust Requires from python-nose to python-pytest.</comment>
     <requestid>919029</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>6ea7990d3606eb3774e32985caf66044</srcmd5>
+    <version>1.5.3</version>
+    <time>1658396115</time>
+    <user>RBrownFactory</user>
+    <comment>- Remove unneeded Requires on python-mock.</comment>
+    <requestid>990434</requestid>
+  </revision>
 </revisionlist>

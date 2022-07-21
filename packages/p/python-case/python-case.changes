@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 20 16:23:58 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded Requires on python-mock. 
+
+-------------------------------------------------------------------
 Wed Sep 15 04:38:57 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add remove-nose.patch:
