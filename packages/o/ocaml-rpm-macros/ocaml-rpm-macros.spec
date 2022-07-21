@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-rpm-macros
-Version:        20220409
+Version:        20220707
 Release:        0
 Summary:        RPM macros for building OCaml source packages
 License:        GPL-2.0-only

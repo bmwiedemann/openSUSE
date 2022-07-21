@@ -189,4 +189,12 @@ trim changes file</comment>
 - process content of ocaml_standard_library only if it exists in buildroot</comment>
     <requestid>968054</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8f21d7b60d253ce25da5f937fbc05c02</srcmd5>
+    <version>20220707</version>
+    <time>1658395965</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>989365</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  7 07:07:07 UTC 2022 - ohering@suse.de
+
+- Handle plain ^ and + as values for directory= in findlib META files
+  They stand for the OCaml standard library directory.
+
+-------------------------------------------------------------------
 Sat Apr  9 12:34:56 UTC 2022 - ohering@suse.de
 
 - remove unused ocaml_dune_bootstrap_directory

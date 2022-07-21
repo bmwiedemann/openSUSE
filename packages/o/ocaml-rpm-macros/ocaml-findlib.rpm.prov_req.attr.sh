@@ -56,6 +56,12 @@ do_work() {
           if ( a[2] ) {
             candidate = a[2];
             if(dbg) printf "dir: %s %s\n", x, candidate > "/dev/stderr" ;
+            if (candidate == "^") {
+              next
+            }
+            if (candidate == "+") {
+              next
+            }
             if (candidate ~ /^\^/) {
               next
             }
