@@ -163,4 +163,12 @@
     <comment></comment>
     <requestid>960518</requestid>
   </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>8fcbe4c61b212c7f1dec40271cc88b48</srcmd5>
+    <version>1.0.4</version>
+    <time>1658395972</time>
+    <user>RBrownFactory</user>
+    <comment>- Add curl (jsc#SLE-23748) and timezone (bsc#1201537)</comment>
+    <requestid>990400</requestid>
+  </revision>
 </revisionlist>

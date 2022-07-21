@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 20 12:41:11 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add curl (jsc#SLE-23748) and timezone (bsc#1201537)
+
+-------------------------------------------------------------------
 Wed Mar  9 15:17:10 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Add org.opencontainers.image.source label
