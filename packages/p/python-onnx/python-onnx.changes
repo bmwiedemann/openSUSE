@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 20 12:30:00 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 1.12.0: https://github.com/onnx/onnx/releases/tag/v1.12.0
+- Drop upstream patch:
+  * 3734-enable-python310.patch
+
+-------------------------------------------------------------------
 Tue May  3 09:55:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add 3734-enable-python310.patch to make the package Python 3.10

@@ -21,16 +21,13 @@
 # Tumbleweed does not have a python36-numpy anymore: NEP 29 dropped Python 3.6 for NumPy 1.20
 %define skip_python36 1
 Name:           python-onnx
-Version:        1.10.2
+Version:        1.12.0
 Release:        0
 Summary:        Open Neural Network eXchange
 License:        MIT
 URL:            https://onnx.ai/
 Source0:        https://github.com/onnx/onnx/archive/v%{version}.tar.gz#/onnx-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM 3734-enable-python310.patch gh#onnx/onnx#3734 mcepl@suse.com
-# Make the package Python 3.10 compatible
-Patch0:         3734-enable-python310.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module protobuf}
