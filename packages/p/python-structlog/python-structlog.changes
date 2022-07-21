@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Jul 21 07:12:29 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 22.1.0:
+  Removed:
+  * Python 3.6 is not supported anymore.
+  * Pickling is now only possible with protocol version 3 and newer.
+  Deprecated:
+  * The entire structlog.threadlocal module is deprecated. Please use the
+    primitives from structlog.contextvars instead.
+  * If you're using the modern APIs (bind_threadlocal() / merge_threadlocal())
+    it's enough to replace them 1:1 with their contextvars counterparts. The old
+    approach around wrap_dict() has been discouraged for a while.
+  * Currently there are no concrete plans to remove the module, but no patches
+    against it will be accepted from now on. #409
+  Added:
+  * structlog.processors.StackInfoRenderer now has an additional_ignores
+    parameter that allows you to filter out your own logging layer. #396
+  * Added structlog.WriteLogger, a faster – but more low-level – alternative to
+    structlog.PrintLogger. It works the way PrintLogger used to work in previous
+    versions. #403 #404
+  * structlog.make_filtering_bound_logger()-returned loggers now also have a
+    log() method to match the structlog.stdlib.BoundLogger signature closer. #413
+  * Added structured logging of tracebacks via the structlog.tracebacks module,
+    and most notably the structlog.tracebacks.ExceptionDictTransformer which can be
+    used with the new structlog.processors.ExceptionRenderer to render JSON
+    tracebacks. #407
+  * structlog.stdlib.recreate_defaults(log_level=logging.NOTSET) that recreates
+    structlog's defaults on top of standard library's logging. It optionally also
+    configures logging to log to standard out at the passed log level. #428
+  * structlog.processors.EventRenamer allows you to rename the hitherto
+    hard-coded event dict key event to something else. Optionally, you can rename
+    another key to event at the same time, too. So adding EventRenamer(to="msg",
+    replace_by="_event") to your processor pipeline will rename the standard event
+    key to msg and then rename the _event key to event. This allows you to use the
+    event key in your own log files and to have consistent log message keys across
+    languages.
+  * structlog.dev.ConsoleRenderer(event_key="event") now allows to customize
+    the name of the key that is used for the log message.
+  Changed:
+  * structlog.make_filtering_bound_logger() now returns a method with the same
+    signature for all log levels, whether they are active or not. This ensures that
+    invalid calls to inactive log levels are caught immediately and don't explode
+    once the log level changes. #401
+  * structlog.PrintLogger – that is used by default – now uses print() for
+    printing, making it a better citizen for interactive terminal applications. #399
+  * structlog.testing.capture_logs now works for already initialized bound loggers. #408
+  * structlog.processors.format_exc_info() is no longer a function, but an
+    instance of structlog.processors.ExceptionRenderer. Its behavior has not
+    changed. #407
+  * The default configuration now includes the
+    structlog.contextvars.merge_contextvars processor. That means you can use
+    structlog.contextvars features without configuring structlog.
+  Fixed:
+  * Overloaded the bind, unbind, try_unbind and new methods in the
+    FilteringBoundLogger Protocol. This makes it easier to use objects of type
+    FilteringBoundLogger in a typed context. #392
+  * Monkeypatched sys.stdouts are now handled more gracefully by
+    ConsoleRenderer (that's used by default). #404
+  * structlog.stdlib.render_to_log_kwargs() now correctly handles the presence
+    of exc_info, stack_info, and stackLevel in the event dictionary. They are
+    transformed into proper keyword arguments instead of putting them into the
+    extra dictionary. #424, #427
+
+-------------------------------------------------------------------
 Tue Mar  1 10:55:24 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 21.5.0:
