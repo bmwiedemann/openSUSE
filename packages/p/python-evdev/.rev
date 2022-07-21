@@ -97,4 +97,14 @@
     <comment></comment>
     <requestid>965009</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>11541c65c6aee0443d89fe3b5b8bd68b</srcmd5>
+    <version>1.6.0</version>
+    <time>1658396120</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.6.0
+  * Fix Python 3.11 compatibility
+- Drop packaging for Python 2</comment>
+    <requestid>990453</requestid>
+  </revision>
 </revisionlist>
