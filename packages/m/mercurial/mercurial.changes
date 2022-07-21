@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Tue Jul 19 10:12:34 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.2
+  Regularly scheduled major release. This is the first Python 3 only version. 
+  + New Features
+    * Introduce a way to auto-upgrade a repo for certain requirements 
+      (see `hg help config.format`)
+    * filemerge: add support for partial conflict resolution by external tool
+    * contrib: add a partial-merge tool for sorted lists 
+      (such as Python imports)
+    * revlog: reorder p1 and p2 when p1 is null and p2 is not while 
+      respecting issue6528
+    * rhg: add support for ignoring all extensions
+    * completion: install completers to conventional locations
+    * revert: ask user to confirm before tracking new file when interactive
+    * Rust implementation now uses the new dirstate API
+    * sslutil: be less strict about which ciphers are allowed 
+      when using --insecure
+    * sslutil: support TLSV1_ALERT_PROTOCOL_VERSION reason code
+    * absorb: make `--edit-lines` imply `--apply-changes`
+    * diff: add help text to highlight the ability to do merge diffs
+    * censor: make rhg fall back to python when encountering a censored node
+    * clone: use better names for temp files
+    * debuglock: make the command more useful in non-interactive mode
+    * debugdeltachain: distinct between snapshot and other diffs
+    * debugindex: rename to debugindex debug-revlog-index
+    * Make debug-revlog-index give out more information
+    * sparse: use the rust code even when sparse is present
+
+  + Bug Fixes
+    * Python 3 bugfixes
+    * Windows bugfixes
+    * templates: make `firstline` filter not keep '\v', '\f' and similar
+    * rhg: sort unsupported extensions in error message
+    * Improve performance of all functions that extract the first 
+      line of a text
+    * crecord: avoid duplicating lines when reverting noeol->eol change
+    * Some config.path options are now discoverable via config
+    * mail: don't complain about a multi-word email.method
+    * bundlespec: do not overwrite bundlespec value with the config one
+    * bundlespec: do not check for `-` in the params portion of the bundlespec
+    * bundlespec: handle the presence of obsmarker part
+    * sparse: start moving away from the global variable for detection of usage
+    * rust-changelog: don't skip empty lines when iterating 
+      over changeset lines
+    * narrow: support debugupgraderepo
+    * bundle: quick fix to ludicrous performance penalty
+    * followlines: don't put Unicode directly into the .js file (issue6559)
+    * manifest: improve error message in case for tree manifest
+    * revlog: use %d to format int instead of %lu (issue6565)
+    * revlog: use appropriate format char for int ("i" instead of I")
+    * worker: stop relying on garbage collection to release memoryview
+    * worker: implement _blockingreader.readinto() (issue6444)
+    * worker: avoid potential partial write of pickled data
+
+  + Backwards Compatibility Changes
+    * Removed Python 2 support: this includes a lot of cleanup in our codebase, 
+      automation, testing, etc.
+    * debugindex: rename to debugindex debug-revlog-index
+
+  + Miscellaneous
+    * Fix typos and add missing items from documentation
+    * dirstate-tree: optimize HashMap lookups with raw_entry_mut
+    * Rust dependencies have been upgraded
+    * revlog: rank computation is done by Rust when available
+    * Improve discovery test tooling
+    * Audit the number of queries done in discovery
+    * Improved .hgignore of the mercurial-devel repository itself
+    * Improve test coverage of dirstate-v2
+    * rust-requirements: allow loading repos with `bookmarksinstore` 
+      requirement
+    * Various Rust refactorings to help with revlog management
+    * Improve debugability of Rust structs
+    * Improve unit testing of the Rust dirstatemap
+    * Improve robustness of the Rust dirstatemap to corruption
+    * Improve changelog-v2 upgrade system
+
+-------------------------------------------------------------------
 Fri Jun 17 10:39:16 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.1.4
