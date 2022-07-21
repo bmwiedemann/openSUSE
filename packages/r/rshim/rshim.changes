@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul 14 14:16:25 UTC 2022 - Matthias Brugger <mbrugger@suse.com>
+
+- update to 2.0.6.11.5
+  * Fix a possible crash on PCIe for BF1/2
+  * Fix possible race condition when several rshim devices are present
+  * Fix a kernel crash when undbinding from uio
+  * Detect new USB/rshim hot plug
+
+-------------------------------------------------------------------
+Fri Nov 19 12:40:52 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- update to 2.0.6.2.2
+  * bfb-install: Handle new indications for installation completion
+  * Make USB reset configurable and set to 3 seconds
+  * Move USB reset to USB up event
+
+-------------------------------------------------------------------
 Wed Sep 29 06:21:09 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
 
 - update to 2.0.6.1.5
