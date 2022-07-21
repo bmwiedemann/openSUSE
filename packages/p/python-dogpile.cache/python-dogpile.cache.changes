@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 19 12:05:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.8:
+  * Moved the MemcacheArgs.dead_retry argument and the
+    MemcacheArgs.socket_timeout argument which were erroneously added to the
+    “set_parameters”, where they have no effect, to be part of the Memcached
+    connection arguments MemcachedBackend.dead_retry,
+    MemcachedBackend.socket_timeout.
+  * Added MemcacheArgs.dead_retry and MemcacheArgs.socket_timeout to the
+    dictionary of additional keyword arguments that will be passed directly to
+    GenericMemcachedBackend().
+  * Added RedisBackend.connection_kwargs parameter, which is a dictionary of
+    additional keyword arguments that will be passed directly to StrictRedis() or
+    StrictRedis.from_url(), in the same way that this parameter works with the
+    RedisSentinelBackend already
+
+-------------------------------------------------------------------
 Wed Mar 30 09:37:29 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.1.5
