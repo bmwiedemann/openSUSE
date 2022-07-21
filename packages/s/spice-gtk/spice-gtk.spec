@@ -18,7 +18,7 @@
 
 
 Name:           spice-gtk
-Version:        0.40
+Version:        0.41
 Release:        0
 Summary:        Gtk client and libraries for SPICE remote desktop servers
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

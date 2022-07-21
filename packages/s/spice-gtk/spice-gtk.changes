@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 12 05:33:53 MDT 2022 - carnold@suse.com
+
+- Update to version 0.41. Features and Issues addressed:
+  * !100 - meson: move cairo dependency to GTK build only
+  * !102 - coroutine: add support for libucontext
+  * !105 - build against phodav-3.0/soup-3.0
+  * fix openssl 3.0 warnings
+  * meson: fix invalid use of subproject()
+
+-------------------------------------------------------------------
 Fri Feb 11 11:13:01 MST 2022 - carnold@suse.com
 
 - Update to version 0.40. Features and Issues addressed:
