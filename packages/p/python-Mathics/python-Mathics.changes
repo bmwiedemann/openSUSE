@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 17 00:51:00 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add python-Mathics-relax-sympy-versions.patch -- Relax required
+  sympy versions, to enable tests to run on openSUSE >= 1550 where
+  python-sympy is at version 1.10.x already.
+
+-------------------------------------------------------------------
 Tue Mar 22 19:41:00 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Refresh sources: 41dee8c9dd7b979a4d77d38a1e8fe8dc75b7638c.patch

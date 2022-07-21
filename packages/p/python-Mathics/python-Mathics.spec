@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-Mathics
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -40,6 +40,8 @@ URL:            https://mathics.github.io/
 Source:         https://github.com/mathics/Mathics/archive/%{version}/%{pyname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Revert version jump to dev branch
 Patch0:         https://github.com/Mathics3/mathics-core/commit/41dee8c9dd7b979a4d77d38a1e8fe8dc75b7638c.patch
+# PATCH-FIX-UPSTREAM python-Mathics-relax-sympy-versions.patch badshah400@gmail.com -- Relax required sympy versions, to enable tests to run on openSUSE >= 1550 where sympy is at version 1.10.x already
+Patch1:         python-Mathics-relax-sympy-versions.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Django >= 1.8}
 BuildRequires:  %{python_module colorama}
@@ -86,6 +88,7 @@ Mathics is a general-purpose computer algebra system (CAS). It is meant to be a 
 %prep
 %setup -q -n Mathics-%{version}
 %patch0 -p1 -R
+%patch1 -p1
 
 # FIX SPURIOUS EXEC PERMISSIONS
 chmod -x ./mathics/data/ExampleData/{numberdata.csv,InventionNo1.xml}
