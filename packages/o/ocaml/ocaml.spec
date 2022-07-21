@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010 Andrew Psaltis <ampsaltis at gmail dot com>
 # Copyright (c) 2011 Andrew Psaltis <ampsaltis at gmail dot com>
 #
@@ -59,7 +59,7 @@ Patch0:         ocaml-configure-Allow-user-defined-C-compiler-flags.patch
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
-BuildRequires:  ocaml-rpm-macros >= 20210911
+BuildRequires:  ocaml-rpm-macros >= 20220707
 BuildRequires:  pkgconfig
 Requires:       ncurses-devel
 Requires:       ocaml(runtime) = %version-%release
@@ -252,7 +252,6 @@ tee compiler-libs <<_META_
 requires = ""
 version = "%version"
 description = "compiler-libs support library"
-directory= "+compiler-libs"
 
 package "common" (
   requires = "compiler-libs"
@@ -302,7 +301,6 @@ tee ocamldoc <<_META_
 requires = "compiler-libs"
 version = "%version"
 description = "ocamldoc plugin interface"
-directory= "^ocamldoc"
 _META_
 #
 tee raw_spacetime <<_META_
