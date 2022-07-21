@@ -17,7 +17,7 @@
 
 
 Name:           yast2-x11
-Version:        4.5.0
+Version:        4.5.1
 Release:        0
 Summary:        YaST2 - X11 support
 License:        GPL-2.0-only
@@ -53,6 +53,7 @@ This package contains the programs and files for YaST2 X11 support.
 %{yast_ybindir}/active_window
 %{yast_ybindir}/testX
 %{yast_ybindir}/set_videomode
+%{yast_ybindir}/xftdpi
 %{_sbindir}/xkbctrl
 %{_sysconfdir}/icewm
 %{_mandir}/man1/xkbctrl.1*

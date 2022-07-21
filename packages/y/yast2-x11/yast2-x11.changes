@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 18 14:22:50 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added "xftdpi" tool to not depend on xrdb (which requires
+  the C pre-processor), this decreases the installed size
+  (bsc#1201532) 
+- 4.5.1
+
+-------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.5.0 (bsc#1198109)
