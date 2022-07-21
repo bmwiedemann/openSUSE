@@ -7,4 +7,16 @@
     <comment>jfkw is now in charge :)</comment>
     <requestid>982779</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2e5f5796bd47446f15a9d7d30546c76f</srcmd5>
+    <version>1.24.3</version>
+    <time>1658396110</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 1.24.3:
+- Require only BuildRequires: golang(API) = 1.18 pinned Go major version.
+  Remove potentially conflicting BuildRequires: go &gt;= x.y.z.
+  The plan for future updates is BuildRequires: golang(API) &gt;= 1.18
+  minimum Go major version. (forwarded request 990344 from jfkw)</comment>
+    <requestid>990408</requestid>
+  </revision>
 </revisionlist>

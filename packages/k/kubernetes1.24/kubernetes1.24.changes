@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Tue Jul 19 01:53:28 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 1.24.3:
+  * Do not skip job requeue in conflict error
+  * kubeadm: fix the bug that configurable KubernetesVersion not respected during kubeadm join
+  * endpointslices: node missing on Pod scenario
+  * fix metrics for placeholder slice
+  * fix a bug on endpointslices tests comparing the wrong metrics
+  * kubeadm: fix the bug that configurable KubernetesVersion not respected during kubeadm join
+  * GIT-110239: fix activeDeadlineSeconds enforcement bug
+  * kubeadm: handle dup unix:// prefix in node annotaiton
+  * fix: --chunk-size with selector returns missing result
+  * Fix unnecessary recreation of placeholder EndpointSlice
+  * kubeadm: fix error adding extra prefix unix://
+  * e2e: add storage capability for offline volume expansion
+  * add missing error handling steps
+  * Update CHANGELOG/CHANGELOG-1.24.md for v1.24.2
+  * apiserver: printers should use int64
+  * fix image pulling failure when IMDS is unavailalbe in kubelet startup
+  * e2e: ensure single image for populator containers
+  * fix: exclude non-ready nodes and deleted nodes from azure load balancers
+- Require only BuildRequires: golang(API) = 1.18 pinned Go major version.
+  Remove potentially conflicting BuildRequires: go >= x.y.z.
+  The plan for future updates is BuildRequires: golang(API) >= 1.18
+  minimum Go major version.
+
+-------------------------------------------------------------------
+Wed Jun 22 01:44:55 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 1.24.2:
+  * move the ignore logic higher up to the reconciler
+  * Ignore EndpointSlices that are already marked for deletion
+  * test: update graceful node shutdown e2e with watch
+  * kubelet: Mark ready condition as false explicitly for terminal pods
+  * agnhost: bump version 2.39
+  * Update Go to 1.18.3
+  * add service e2e tests
+  * kubelet: add e2e test to verify probe readiness
+  * kubelet: only shutdown probes for pods that are terminated
+  * kubelet: Pod probes should be handled by pod worker
+  * cpu manager policy set to none, no one remove container id from container map, lead memory leak
+  * fix audit union loop variables in closures
+  * Updating e2e test to check EndpointSlices and Endpoints as well
+  * e2e: services with evicted pods doesn't have endpoints
+  * e2e test for evicted pods
+  * endpoints controller: don't consider terminal endpoints
+  * endpointslices: terminal pods doesn't receive enpoints
+  * add pod util to verify pod is terminal
+  * Update CHANGELOG/CHANGELOG-1.24.md for v1.24.1
+  * Add test for checking ephemeral volume expansion
+  * Fix resizing of ephemeral volumes
+  * Winkernel proxier cache HNS data to improve syncProxyRules performance
+  * GCE Windows: Copy the CNI binaries from the right folder
+
+-------------------------------------------------------------------
+Tue Jun 21 22:17:54 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 1.24.1:
+  * kubeadm: remove checking legacy taint for kubeadm-kinder-latest-on-1-24
+  * Fix requests scope classification
+  * Update Go to 1.18.2
+  * Integration test for openapi scale & status
+  * Remove warning log for merging meta and scale type
+  * authn: fix cache mutation by AuthenticatedGroupAdder
+  * GCE: skip updating and deleting external loadbalancers if service is managed outside of service controller
+  * Wait for cache to sync in job's TestWatchOrphanPods
+  * Fix ServiceIPStaticSubrange assigns duplicate IP addresses
+  * Fix OpenAPI loading error caused by empty APIService
+  * kubeadm: only taint CP nodes when the legacy "master" taint is present
+  * Test Foreground deletion in job integration
+  * Fix removing finalizer from finished jobs
+  * Don't mark job as failed until expectations are satisfied
+  * Integration test for backoff limit and finalizers
+  * Update CHANGELOG/CHANGELOG-1.24.md for v1.24.0
+  * Do not wrap lines if we can't read term size
+
+-------------------------------------------------------------------
 Thu May  5 23:57:02 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Initial package
