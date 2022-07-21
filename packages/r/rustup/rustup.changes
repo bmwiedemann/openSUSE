@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 20 02:13:49 UTC 2022 - william.brown@suse.com
+
+- Update to version 1.25.1~0:
+  * (docker): Update freebsd dockerfile to expect 12 not 11
+  * (changelog): Add 1.25.1
+  * (rustup-init.sh): Update version to match 1.25.1 release
+  * (Cargo): Update to 1.25.1
+  * Revert "Set RUSTC and RUSTDOC env for child processes run through the proxy"
+  * (changelog): Fix typo
+  * Make `report_error` not be `#[cfg(windows)]`
+  * fix just one doc typo
+
+-------------------------------------------------------------------
 Mon Jun 20 03:33:05 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies

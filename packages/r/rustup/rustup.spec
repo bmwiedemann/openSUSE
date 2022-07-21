@@ -29,7 +29,7 @@ Obsoletes:      %{1}1.52%{?2:-%{2}} < %{rust_version} \
 Obsoletes:      %{1}1.51%{?2:-%{2}} < %{rust_version}
 
 Name:           rustup
-Version:        1.24.3~0
+Version:        1.25.1~0
 Release:        0
 Summary:        A tool for managing user Rust toolchains
 License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT
@@ -87,7 +87,8 @@ install -m 0755 %{_builddir}/%{name}-%{version}/target/release/rustup-init %{bui
 # modifying .bashrc etc. It's supposed to be called only once.
 # rustup doesn't perform those steps and it only manages toolchains. It
 # can be used the entire time.
-# ln -sf rustup %{buildroot}%{_bindir}/rustup-init
+#
+# https://github.com/rust-lang/rustup/blob/master/src/lib.rs#L21
 ln -sf rustup %{buildroot}%{_bindir}/rustc
 ln -sf rustup %{buildroot}%{_bindir}/rustdoc
 ln -sf rustup %{buildroot}%{_bindir}/cargo

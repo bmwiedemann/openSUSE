@@ -1,11 +1,9 @@
 <services>
   <service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/rust-lang/rustup.git</param>
-    <!-- <param name="url">https://github.com/Firstyear/rustup.git</param> -->
     <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">1.24.3</param>
-    <!-- <param name="revision">1.24.3-patch-symlink-no-self-update</param> -->
+    <param name="revision">1.25.1</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
