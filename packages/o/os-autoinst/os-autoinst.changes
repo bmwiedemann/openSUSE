@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 21 03:49:01 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1658311695.1bd05bc:
+  * Allow insecure VNC over WebSockets connections only if configured
+  * Add test for `vnctest` script
+  * Fix race condition in dewebsockify test
+  * Adapt spec file to include new scripts for VNC over WebSockets
+  * Test further code paths of VMWare/WebSockets related code
+  * Fix error handling when launching VNC server to eventually die
+  * Enable VNC over WebSockets only for the connection to the virsh guest
+  * Add basic unit test for dewebsockify
+  * Deduce URL for VMWare VNC over WebSockets from test variables
+
+-------------------------------------------------------------------
 Mon Jul 18 19:23:16 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1658158082.102b55e:
