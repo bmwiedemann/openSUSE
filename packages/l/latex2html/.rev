@@ -434,4 +434,21 @@ A    latex2html-share-dir.diff</comment>
   perl 5.18 not used in any supported openSUSE version anymore. (forwarded request 971943 from susnux)</comment>
     <requestid>971973</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>88e3b76551a66a629b2f156705ca2c85</srcmd5>
+    <version>2022.2</version>
+    <time>1658395982</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 2022.2:
+  * spacing of eqnarray and align
+  * check for preview.sty in config.pl
+  * check for failure of pdflatex run
+  * newline after footnote should give space
+  * fix ref to label inside float
+  * add sidewaysfigure, sidewaystable
+  * fix eqnarray*
+- drop latex2html-binmode.diff.
+  latex2html-dest-dir.diff, latex2html-perl-bindir.diff (forwarded request 989493 from dirkmueller)</comment>
+    <requestid>989993</requestid>
+  </revision>
 </revisionlist>

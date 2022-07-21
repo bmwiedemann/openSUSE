@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 15 19:21:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.2:
+  * spacing of eqnarray and align
+  * check for preview.sty in config.pl
+  * check for failure of pdflatex run
+  * newline after footnote should give space
+  * fix ref to label inside float
+  * add sidewaysfigure, sidewaystable
+  * fix eqnarray*
+- drop latex2html-binmode.diff.
+  latex2html-dest-dir.diff, latex2html-perl-bindir.diff 
+
+-------------------------------------------------------------------
 Thu Apr 21 22:13:32 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2022

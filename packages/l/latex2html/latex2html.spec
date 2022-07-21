@@ -19,7 +19,7 @@
 %define share_dir %{_datadir}/latex2html
 %define _texmfmaindir   %{_datadir}/texmf
 Name:           latex2html
-Version:        2022
+Version:        2022.2
 Release:        0
 Summary:        LaTeX to HTML Converter
 License:        GPL-2.0-or-later
@@ -28,12 +28,6 @@ URL:            https://github.com/latex2html/latex2html/
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE latex2html-share-dir.diff -- Fix latex2html share dir location, use /usr/share not /usr/share/lib
 Patch0:         latex2html-share-dir.diff
-# PATCH-FIX-UPSTREAM latex2html-perl-bindir.diff -- Fix shbang to use /usr/bin not /usr/local/bin
-Patch1:         latex2html-perl-bindir.diff
-# PATCH-FEATURE-UPSTREAM latex2html-dest-dir.diff -- Support DESTDIR variable while installing
-Patch2:         latex2html-dest-dir.diff
-# PATCH-FIX-UPSTREAM latex2html-binmode.diff -- Open files in binary mode, required for UTF-8 files
-Patch3:         latex2html-binmode.diff
 BuildRequires:  fdupes
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  ghostscript-x11
@@ -74,9 +68,6 @@ This subpackage contains the documentation for the Latex2HTML converter.
 %prep
 %setup -q
 %patch0
-%patch1
-%patch2
-%patch3
 
 %build
 # Not autotools based configure
