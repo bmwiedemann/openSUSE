@@ -102,7 +102,10 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%flavor" == "LeapMicro"
+# build only on Leap
+%if 0%{?is_opensuse} && 0%{?sle_version}
 %define theme LeapMicro
+%endif
 %endif
 
 %if "%flavor" == "MicroOS"
@@ -183,7 +186,7 @@ BuildRequires:  distribution-logos-openSUSE-LeapMicro
 %define branding_grub2    openSUSE
 %define branding_gfxboot  openSUSE
 %else
-BuildRequires:  SUSE-MicroOS-release
+BuildRequires:  SLE-Micro-release
 %define branding_plymouth SLE
 %define branding_grub2    SLE
 %define branding_gfxboot  SLE
@@ -668,7 +671,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.56
+Version:        17.59
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

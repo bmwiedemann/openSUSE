@@ -1,4 +1,25 @@
 --------------------------------------------------------------------
+Fri Jul 15 14:16:29 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#604
+- limit LeapMicro building
+- 17.59
+
+--------------------------------------------------------------------
+Fri Jul 15 12:33:04 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#603
+- Add LeapMicro to _multibuild (jsc#SMO-126)
+- 17.58
+
+--------------------------------------------------------------------
+Fri Jul 15 10:53:10 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#595
+- rename the -release package of SLE Micro
+- 17.57
+
+--------------------------------------------------------------------
 Thu Jul 7 07:52:35 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#601
