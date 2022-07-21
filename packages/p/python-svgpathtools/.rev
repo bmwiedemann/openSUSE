@@ -60,4 +60,29 @@
   * Hashable Path objects, and more.</comment>
     <requestid>942186</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9bda5a2d98d2d40ab51322ef68937656</srcmd5>
+    <version>1.5.1</version>
+    <time>1658396121</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.5.1
+  * Fix float rounding error in elliptic arc radius check
+    (#gh/mathandy/svgpathtools#171)
+- Disable test suite because it can only work on specific CPU
+  (micro-)architectures.
+  (#gh/mathandy/svgpathtools#183)
+- Update to 1.5.0
+  * Fix implementation of points()
+    (#gh/mathandy/svgpathtools#155)
+  * Add support for rounded rectangles
+    (#gh/mathandy/svgpathtools#161)
+  * Fix Document.add_path for empty groups
+    (#gh/mathandy/svgpathtools#170)
+  * Allow file-like object as input to Documents ctor and
+    svg2paths function
+  * Add convenience functions for converting svgs contained in a
+    string to paths
+</comment>
+    <requestid>990460</requestid>
+  </revision>
 </revisionlist>
