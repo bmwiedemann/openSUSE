@@ -153,4 +153,12 @@ https://fate.suse.com/318486</comment>
     <comment>submit new version 4.5.0</comment>
     <requestid>969658</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>08f146fd7160f2c8fa1ed448af04554a</srcmd5>
+    <version>4.5.1</version>
+    <time>1658395955</time>
+    <user>RBrownFactory</user>
+    <comment>submit new version 4.5.1</comment>
+    <requestid>990110</requestid>
+  </revision>
 </revisionlist>
