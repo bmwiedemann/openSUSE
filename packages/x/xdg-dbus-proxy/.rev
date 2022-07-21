@@ -24,4 +24,12 @@ Needed for future versions of flatpak, previously a part of flatpak itself. Resu
     <comment></comment>
     <requestid>953946</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4bc2426fc0a7d7c1c9258322dcb692a1</srcmd5>
+    <version>0.1.4</version>
+    <time>1658395960</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990255</requestid>
+  </revision>
 </revisionlist>
