@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 19 09:52:49 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.1.2
+  * make xrandr report 1366x768 instead of 1360x768
+  * meson: Add initial darwin_versions 
+
+-------------------------------------------------------------------
 Thu Oct 28 19:03:25 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Use full URL for source tarball.

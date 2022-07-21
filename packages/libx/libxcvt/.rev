@@ -18,4 +18,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>930985</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>883e306d43a194186bebf24e63822923</srcmd5>
+    <version>0.1.2</version>
+    <time>1658395956</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 0.1.2
+  * make xrandr report 1366x768 instead of 1360x768
+  * meson: Add initial darwin_versions</comment>
+    <requestid>990112</requestid>
+  </revision>
 </revisionlist>

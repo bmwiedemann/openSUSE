@@ -1,7 +1,7 @@
 #
 # spec file for package libxcvt
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           libxcvt
 %define lname   libxcvt0
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 Summary:        CVT standard timing modeline generator
 License:        MIT
