@@ -47,4 +47,12 @@
     <comment>Fix for bsc#1201064 VUL-0: CVE-2022-2211: Libguestfs: Buffer overflow in get_keys leads to DOS</comment>
     <requestid>986264</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1eb23ba086b2925005a7c9d5b853dd71</srcmd5>
+    <version>2.0.7</version>
+    <time>1658396001</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>990311</requestid>
+  </revision>
 </revisionlist>

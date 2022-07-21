@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 12 16:03:38 MDT 2022 - carnold@suse.com
+
+- Update to version 2.0.7
+  * This is a bug fix release
+- Drop patch contained in new tarball
+  CVE-2022-2211-options-fix-buffer-overflow-in-get_keys.patch
+
+-------------------------------------------------------------------
 Wed Jun 29 09:51:03 MDT 2022 - carnold@suse.com
 
 - bsc#1201064 - Libguestfs: Buffer overflow in get_keys leads

@@ -22,7 +22,7 @@
 # The source directory.
 %global source_directory 2.0-stable
 Name:           virt-v2v
-Version:        2.0.6
+Version:        2.0.7
 Release:        0
 Summary:        Tools to convert a virtual machine to run on KVM
 License:        GPL-2.0-or-later
@@ -30,7 +30,7 @@ Group:          System/Management
 URL:            https://github.com/libguestfs/virt-v2v
 Source0:        https://download.libguestfs.org/virt-v2v/%{source_directory}/%{name}-%{version}.tar.gz
 Source1:        https://download.libguestfs.org/virt-v2v/%{source_directory}/%{name}-%{version}.tar.gz.sig
-Patch1:         CVE-2022-2211-options-fix-buffer-overflow-in-get_keys.patch
+
 BuildRequires:  augeas-devel
 BuildRequires:  file-devel
 #BuildRequires: /usr/bin/pod2man
