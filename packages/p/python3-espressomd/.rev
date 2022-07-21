@@ -241,4 +241,77 @@
     <comment></comment>
     <requestid>973778</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a71d07e9b54fb15b0dc48a83ce543f4b</srcmd5>
+    <version>4.2.0</version>
+    <time>1658396131</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 4.2.0:
+    This is a feature release, i.e., new functionality is added
+    to ESPResSo.  New thermostats, cell systems and boundary
+    conditions have been introduced to simulate systems with
+    Stokesian Dynamics, Brownian Dynamics, strongly inhomogeneous
+    particle sizes or translation-invariant shear flow. The
+    interface underwent (non-silent) changes, therefore scripts
+    will have to be slightly adapted. Most notably, particle
+    access by id and particle slices have a new syntax, and
+    electrostatic/magnetostatic layer correction and reaction
+    methods have a different setup. All errors are also now
+    emitted as Python exceptions and are recoverable with minimal
+    effort.  An additional focus of this release is the
+    simplification of both the C++ core and the Python script
+    interface to facilitate future extensions of ESPResSo.  The
+    testing of ESPResSo's functionality has been extended
+    considerably. We recommend that this release be used for all
+    production simulations. No further bug fix releases will be
+    provided for the 4.1 line, and not all fixes are present in
+    ESPResSo 4.1.4.
+   Added functionality
+   -------------------
+   
+   * `P3MGPU` now supports energy and pressure calculation via
+     the CPU kernels (#4506).
+   * `ELC` now works with `P3MGPU` (#4506).
+   * The LB grid now supports slicing operations (#4195) and LB
+     slices are equality comparable (#4268).
+   * Lees-Edwards boundary conditions can be used for
+     particle-based simulations (#4457). Lattice-Boltzmann
+     support will be added in the 4.3.0 release.
+   * The non-bonded energy of a single particle can be calculated
+     (#4401).
+   * The list of close neighbors of a single particle can be
+     extracted (#4401).
+   * Brownian Dynamics simulations can be carried out with the
+     newly added Brownian integrator and Brownian thermostat
+     (#1842).
+   * Stokesian Dynamics simulations can be carried out with the
+     newly added Stokesian integrator and Stokesian thermostat
+     (#3790, #3987).
+   * Bonded interactions can now be automatically broken when the
+     bond length exceeds a critical value (#4456). This feature
+     can be combined with collision detection to model reversible
+     bonds (#4464).
+   * A new cell system `HybridDecomposition` was introduced to
+     speed up simulations with inhomogeneous particle interaction
+     ranges (#4373).
+   * Shapes can be merged into meta-shapes (#3493, #3538).
+   * The `HollowConicalFrustum` can now be sliced open, made
+     thick and rotated to model quarter pipes in any orientation
+     (#4179). The main application is in the construction of
+     complex microchannel geometries via `LBBoundaries`.
+   * A parametric weight function was added to the DPD
+     interaction (#3570).
+   * H5MD output files now support a unit system (#3751).
+   * H5MD output files now support custom specifications to
+     control which particle and box properties to write to disk
+     (#4480).
+   * The `H5md` class is now checkpointable and usable in an
+     interactive Python session (#3751).
+   * MDAnalysis integration now provides bond information
+     (#3801).
+- Give up on building on 32bit architectures (gh#espressomd/espresso#4537).
+- Fix rpath in provided libraries and shebang in pypresso.
+</comment>
+    <requestid>990492</requestid>
+  </revision>
 </revisionlist>

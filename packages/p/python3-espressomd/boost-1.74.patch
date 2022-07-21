@@ -10,14 +10,16 @@ including <boost/serialization/optional.hpp>. More details in tickets:
 https://github.com/boostorg/serialization/issues/210
 https://github.com/boostorg/serialization/issues/217
 
-diff --git a/src/core/grid_based_algorithms/lb_particle_coupling.hpp b/src/core/grid_based_algorithms/lb_particle_coupling.hpp
-index de12cb4..13111ab 100644
+---
+ src/core/grid_based_algorithms/lb_particle_coupling.hpp |    9 +++++++++
+ 1 file changed, 9 insertions(+)
+
 --- a/src/core/grid_based_algorithms/lb_particle_coupling.hpp
 +++ b/src/core/grid_based_algorithms/lb_particle_coupling.hpp
-@@ -21,6 +21,15 @@
-
- #include "ParticleRange.hpp"
-
+@@ -25,6 +25,15 @@
+ 
+ #include <boost/serialization/access.hpp>
+ 
 +/* This <boost/serialization/version.hpp> include guards against an issue
 + * in boost::serialization from boost 1.74.0 that leads to compiler error
 + * "explicit specialization of undeclared template struct 'version'" when
@@ -27,6 +29,6 @@ index de12cb4..13111ab 100644
 + */
 +#include <boost/serialization/version.hpp>
 +
- #include <boost/serialization/optional.hpp>
-
- #include "ParticleRange.hpp"
+ #include <cstdint>
+ #include <unordered_set>
+ 

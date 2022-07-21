@@ -35,7 +35,7 @@
 %define pkgname espresso
 %define modname %{pkgname}md
 Name:           python3-%{modname}
-Version:        4.1.4
+Version:        4.2.0
 Release:        0
 Summary:        Parallel simulation software for soft matter research
 License:        GPL-3.0-or-later
@@ -50,16 +50,21 @@ Patch1:         missing_size_t.patch
 Patch2:         hdf5.patch
 # PATCH-FIX-OPENSUSE rpath.patch boo#1198352
 Patch3:         rpath.patch
+# According to gh#espressomd/espresso#4537 32bit architectures are not supported any more
+ExcludeArch:    %{ix86}
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
 # Currently libboost_mpi-devel and hdf5 use different mpi versions
 # BuildRequires:  hdf5-devel
 BuildRequires:  %{mpiver}-devel
+BuildRequires:  chrpath
 BuildRequires:  gsl-devel
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
+BuildRequires:  python3-scipy
+BuildRequires:  python3-setuptools
 %if 0%{?suse_version} > 1325
 BuildRequires:  hdf5-%{mpiver}-devel
 BuildRequires:  libboost_filesystem-devel
@@ -71,6 +76,7 @@ BuildRequires:  zlib-devel
 %else
 BuildRequires:  boost-devel
 %endif
+Provides:       libEspresso4 = %{version}-%{release}
 Obsoletes:      libEspresso4 < 4.1
 Requires:       python3-h5py
 Requires:       python3-numpy
@@ -86,11 +92,10 @@ such as polymers, liquid crystals, colloids, ferrofluids and biological
 systems, for example DNA and lipid membranes.
 
 %prep
-%setup -q -n %{pkgname}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n %{pkgname}
+
+# Fix shebang line for pypresso
+sed -i -E '1s@^#!/usr/bin/env[[:blank:]]+sh@#!/bin/sh@' src/python/pypresso.cmakein
 
 %build
 source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
@@ -103,16 +108,16 @@ export HDF5_USE_SHLIB=yes
 # we don't install {i,}pypresso scripts as they aren't needed when installing in /usr
 %cmake \
   -DCMAKE_SHARED_LINKER_FLAGS='-Wl,--as-needed -Wl,-z,now' \
-  -DLIBDIR=%{_lib} \
+  -DLIBDIR=%{_libdir} \
   -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
-  -DINSTALL_PYPRESSO=OFF
+  -DPYTHON_INSTDIR=%{python3_sitearch} \
+  -DINSTALL_PYPRESSO=ON
 %make_jobs
 
 %install
 %cmake_install
-
-# no devel package
-rm -f %{buildroot}%{_libdir}/lib*.so
+find %{buildroot}%{python3_sitearch} -name \*.so \
+    -exec chrpath -r %{python3_sitearch} '{}' \;
 
 %check
 # gh#espressomd/espresso#3315
@@ -123,7 +128,8 @@ LD_LIBRARY_PATH='%{buildroot}/%{python3_sitearch}/espressomd::%{_libdir}/mpi/gcc
 
 %files
 %license COPYING
-%doc README AUTHORS NEWS ChangeLog
+%doc Readme.md AUTHORS NEWS ChangeLog
+%{_bindir}/pypresso
 %{python3_sitearch}/espressomd
 
 %changelog

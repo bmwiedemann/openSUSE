@@ -1,5 +1,7 @@
-diff --git a/src/config/config.hpp b/src/config/config.hpp
-index 78ec14b78..139c1f97a 100644
+---
+ src/config/config.hpp |    2 ++
+ 1 file changed, 2 insertions(+)
+
 --- a/src/config/config.hpp
 +++ b/src/config/config.hpp
 @@ -37,6 +37,8 @@
@@ -10,16 +12,4 @@ index 78ec14b78..139c1f97a 100644
 +
  #include "config-features.hpp"
  
- /** P3M: Default for number of interpolation points of the charge
-diff --git a/src/utils/include/utils/NumeratedContainer.hpp b/src/utils/include/utils/NumeratedContainer.hpp
-index 1d99098f0..36602b203 100644
---- a/src/utils/include/utils/NumeratedContainer.hpp
-+++ b/src/utils/include/utils/NumeratedContainer.hpp
-@@ -25,6 +25,7 @@
-  */
- 
- #include <cassert>
-+#include <cstddef>
- #include <set>
- #include <unordered_map>
- 
+ /** P3M: Default for offset of first mesh point from the origin (left
