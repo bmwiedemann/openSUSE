@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymongo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-pymongo
-Version:        3.11.4
+Version:        4.1.1
 Release:        0
 Summary:        Python driver for MongoDB
 License:        Apache-2.0
@@ -34,6 +35,8 @@ BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Suggests:       mongodb
 %endif
+# Same namespace, different implementation (https://github.com/py-bson/bson)
+Conflicts:      python-bson
 %python_subpackages
 
 %description
@@ -61,6 +64,9 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitearch}/*
+%{python_sitearch}/pymongo
+%{python_sitearch}/pymongo-%{version}*-info
+%{python_sitearch}/bson
+%{python_sitearch}/gridfs
 
 %changelog

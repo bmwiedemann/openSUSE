@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jul 20 10:58:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Conflict on python-bson
+  * Same namespace
+  * Different implementation (https://github.com/py-bson/bson)
+- Do not wildcard collect files
+
+-------------------------------------------------------------------
+Sat Jul 16 18:05:53 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.1.1
+  * PyMongo 4.0 drops support for Python 2.7, 3.4, and 3.5.
+  * PyMongo 4.1 drops support for Python 3.6.0 and 3.6.1, Python 3.6.2+ is now required.
+  * PyMongo 4.0 drops support for MongoDB 2.6, 3.0, 3.2, and 3.4.
+  * The default uuid_representation for CodecOptions, JSONOptions, 
+    and MongoClient has been changed from bson.binary.UuidRepresentation.PYTHON_LEGACY 
+    to bson.binary.UuidRepresentation.UNSPECIFIED. Attempting to 
+    encode a uuid.UUID instance to BSON or JSON now produces an 
+    error by default. See Handling UUID Data for details.
+  * Removed some arguments and functions mostly from:
+    * pymongo.mongo_client.MongoClient
+    * pymongo.database.Database
+    * pymongo.collection.Collection
+    * pymongo.mongo_client.MongoClient
+    * pymongo.son_manipulator
+  * directConnection URI option and keyword argument to MongoClient 
+    defaults to False instead of None
+  * tz_aware, an argument for JSONOptions, now defaults to False instead of True.
+  * items() now returns a dict_items object rather than a list.
+  * The hint option is now required when using min or max queries with find().
+  * MongoClient` now raises an InvalidURI exception when it encounters 
+    unescaped percent signs in username and password when parsing MongoDB URIs.
+  * Enhanced connection pooling to create connections more efficiently 
+    and avoid connection storms.
+  * MongoClient now accepts a URI and keyword argument srvMaxHosts 
+    that limits the number of mongos-like hosts a client will connect to.
+  * Support for the “kmip” KMS provider for client side field level encryption.
+  * Many more changes, seet the upstream changelog for details
+
+-------------------------------------------------------------------
 Fri May 28 07:38:51 UTC 2021 - pgajdos@suse.com
 
 - version update to 3.11.4
