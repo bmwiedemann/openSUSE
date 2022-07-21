@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 14 09:07:58 UTC 2022 - Thomas Renninger <trenn@suse.de>
+
+- Also remove ipset, ebtables and iptables from the BuildRequires
+  list (compare with change from 2022-03-03 - Thorsten Kukuk <kukuk@suse.com>)
+
+-------------------------------------------------------------------
 Mon Jul  4 11:05:13 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to 1.2.0:

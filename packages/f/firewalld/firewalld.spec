@@ -42,15 +42,12 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 # Adding tools to BuildRequires as well so they can be autodetected
 # Else the configure tool will set them to /bin/false
-BuildRequires:  ebtables
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  glib2-devel
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
-BuildRequires:  ipset
-BuildRequires:  iptables
 BuildRequires:  libxslt-tools
 BuildRequires:  python3-devel
 BuildRequires:  systemd-rpm-macros
