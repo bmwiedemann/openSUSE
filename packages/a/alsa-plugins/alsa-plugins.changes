@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 18 12:38:01 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Fix dependency of pulse plugin; now pulseaudio-daemon is required
+  (bsc#1201409)
+
+-------------------------------------------------------------------
 Mon Jun 20 08:17:03 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 1.2.7.1:

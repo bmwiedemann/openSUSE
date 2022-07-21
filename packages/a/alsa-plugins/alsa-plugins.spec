@@ -117,7 +117,7 @@ for ALSA library.
 Summary:        Pulseaudio Plug-In for ALSA Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
-Requires:       pulseaudio
+Requires:       pulseaudio-daemon
 %ifarch s390x
 Recommends:     %{name}-pulse-32bit = %{version}
 %endif
