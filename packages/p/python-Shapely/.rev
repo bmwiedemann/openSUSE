@@ -178,4 +178,13 @@
     <comment></comment>
     <requestid>983964</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>7b9ea300d4ebc5b028135f8135fe6b8f</srcmd5>
+    <version>1.8.2</version>
+    <time>1658395996</time>
+    <user>RBrownFactory</user>
+    <comment>- Add Shapely-issue1436-ef380ba-geos311.patch
+  * gh#shapely/shapely#1436 -- work around issue with geos 3.11.0 (forwarded request 990299 from bnavigator)</comment>
+    <requestid>990300</requestid>
+  </revision>
 </revisionlist>

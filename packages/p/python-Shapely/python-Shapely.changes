@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 19 20:10:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add Shapely-issue1436-ef380ba-geos311.patch
+  * gh#shapely/shapely#1436 -- work around issue with geos 3.11.0
+
+-------------------------------------------------------------------
 Mon Jun 20 10:48:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.8.2

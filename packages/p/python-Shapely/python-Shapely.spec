@@ -26,6 +26,8 @@ Summary:        Geospatial geometries, predicates, and operations
 License:        BSD-3-Clause
 URL:            https://github.com/shapely/shapely
 Source:         https://files.pythonhosted.org/packages/source/S/Shapely/Shapely-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Shapely-issue1436-ef380ba-geos311.patch gh#shapely/shapely#1436 -- work around issue with geos 3.11.0
+Patch1:         Shapely-issue1436-ef380ba-geos311.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module numpy-devel}
