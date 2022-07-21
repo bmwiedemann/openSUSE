@@ -1,4 +1,159 @@
 -------------------------------------------------------------------
+Tue Jul 19 05:05:54 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 1.23.9:
+  * Do not skip job requeue in conflict error
+  * kubeadm: fix the bug that configurable KubernetesVersion not respected during kubeadm join
+  * Bump cAdvisor to v0.43.1
+  * Fix: filter out unsatisfied nodes when calling AddPod in PodTopologySpread
+  * kubeadm: fix the bug that configurable KubernetesVersion not respected during kubeadm join
+  * GIT-110239: fix activeDeadlineSeconds enforcement bug
+  * fix: --chunk-size with selector returns missing result
+  * Fixed winkernel proxy failing to query v1 endpoints created by dockershim CNIs
+  * Winkernel proxier cache HNS data to improve syncProxyRules performance
+  * Update CHANGELOG/CHANGELOG-1.23.md for v1.23.8
+  * apiserver: printers should use int64
+  * add missing error handling steps
+  * add missing error handling steps
+  * fix image pulling failure when IMDS is unavailalbe in kubelet startup
+  * fix: exclude non-ready nodes and deleted nodes from azure load balancers
+  * Avoid updating Services with stale specs Fix the bug that service specs in servicesToUpdate may have been updated by clients.
+- Require only BuildRequires: golang(API) = 1.17 pinned Go major version.
+  Remove potentially conflicting BuildRequires: go >= x.y.z.
+  The plan for future updates is BuildRequires: golang(API) >= 1.17
+  minimum Go major version.
+
+-------------------------------------------------------------------
+Tue Jul 19 04:39:46 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 1.23.8:
+  * Revert "Automated cherry pick of #109124: Winkernel proxier cache HNS data to improve syncProxyRules"
+  * test: update graceful node shutdown e2e with watch
+  * move the ignore logic higher up to the reconciler
+  * Ignore EndpointSlices that are already marked for deletion
+  * kubelet: Mark ready condition as false explicitly for terminal pods
+  * agnhost: bump version 2.39
+  * Update Go to 1.17.11
+  * add service e2e tests
+  * kubelet: add e2e test to verify probe readiness
+  * kubelet: only shutdown probes for pods that are terminated
+  * kubelet: Pod probes should be handled by pod worker
+  * Enable resize feature
+  * Reject proxy requests to 0.0.0.0 as well
+  * ipvs: fix prevent concurrent map read and map write for 1.23
+  * cpu manager policy set to none, no one remove container id from container map, lead memory leak
+  * fix audit union loop variables in closures
+  * Updating e2e test to check EndpointSlices and Endpoints as well
+  * e2e: services with evicted pods doesn't have endpoints
+  * e2e test for evicted pods
+  * endpoints controller: don't consider terminal endpoints
+  * endpointslices: terminal pods doesn't receive enpoints
+  * add pod util to verify pod is terminal
+  * Update CHANGELOG/CHANGELOG-1.23.md for v1.23.7
+  * Add test for checking ephemeral volume expansion
+  * Fix resizing of ephemeral volumes
+  * untangle fix with healthCheck feature
+  * Winkernel proxier cache HNS data to improve syncProxyRules performance
+  * Skip updating Endpoints and EndpointSlice if no relevant fields change
+
+-------------------------------------------------------------------
+Tue Jul 19 03:51:42 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 1.23.7:
+  * Fix requests scope classification
+  * Update Go to 1.17.10
+  * authn: fix cache mutation by AuthenticatedGroupAdder
+  * GCE: skip updating and deleting external loadbalancers if service is managed outside of service controller
+  * Wait for cache to sync in job's TestWatchOrphanPods
+  * Fix OpenAPI loading error caused by empty APIService
+  * Test Foreground deletion in job integration
+  * Fix removing finalizer from finished jobs
+  * Don't mark job as failed until expectations are satisfied
+  * Integration test for backoff limit and finalizers
+  * component-base: replace url in rest client metrics
+  * fix broken find command
+  * Allow KUBE_TEST_REPO_LIST to be a remote url as well
+  * Disable JobTrackingWithFinalizers due to unresolved bug
+  * Update CHANGELOG/CHANGELOG-1.23.md for v1.23.6
+  * Correct event registration for multiple scheduler plugins.
+  * kubelet: rename closeAllConns to onHeartbeatFailure
+  * kubelet apiserver: be gentle closing connections on heartbeat failures
+  * fix: race detected in TestErrConnKilled
+  * Replace hardcoded kubectl with kubectl.Name()
+  * kubectl: fix hard-coded value in zsh completion
+  * kubeadm: add etcd flag for member data consistency
+  * Fix a bug that out-of-tree plugin is misplaced when using scheduler v1beta3 config
+  * ipvs: remove port opener
+  * iptables: remove port opener
+  * azure_file: try to get secret namespace from ClaimRef
+  * azure_file: add namespace tests for InTree to CSI conversion
+
+-------------------------------------------------------------------
+Tue Jul 19 02:20:39 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 1.23.6:
+  * Update Go to 1.17.9
+  * Fix: abort nominating a pod that was already scheduled to a node
+  * Fix the overestimated cost of deletaged API requests in P&F
+  * omit enums from static openapi snapshots used to generate clients
+  * Drop enum tag from certificate request condition
+  * Addresses the issue which caused #109115
+  * Add test for indexer with multiple values
+  * Reduce number of pods in Job+GC tests
+  * Adjust validation checks to pass for both client-side and server-side validation
+  * Remove finalizer when orphaned
+  * Fix: Clean job tracking finalizer from orphan pods
+  * Add test for Background delete propagation
+  * Add integration test for orphan pods when there is GC
+  * Copy request in timeout handler
+  * kube-up: use registry.k8s.io for containerd-related jobs
+  * kubelet: If the container status is created, we are waiting
+  * e2e: Wait only for the service account
+  * e2e: Wait for kube-root-ca.crt to be created
+  * client-go: update generated
+  * default kubernetes agent for generated clients
+  * Include pod UID in secret/configmap cache key
+  * Move kubelet secret and configmap manager calls to sync_Pod functions
+  * test: Verify that nodes do not transition to Failed while ready
+  * test: Add E2E for job completions with cpu reservation
+  * test: Add E2E for init container pod deletion
+  * kubelet: Delay writing a terminal phase until the pod is terminated
+  * Update CHANGELOG/CHANGELOG-1.23.md for v1.23.5
+  * generated: make update
+  * polish comments of non-enum values.
+  * unmark non-validated types as enums.
+
+-------------------------------------------------------------------
+Tue Jul 19 01:41:18 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 1.23.5:
+  * Remove apf_fd from httplog
+  * Update Go to 1.17.8
+  * cluster/gce: update konnectivity image tags to v0.0.30
+  * bump sigs.k8s.io/apiserver-network-proxy/konnectivity-client@v0.0.30
+  * fix dryrun when ca file exists
+  * fix regression introduced by PR 100320
+  * Add unit tests
+  * Fix nodes volumesAttached status not updated
+  * Fix default config flags
+  * test/e2e/framework: include the new control plane taint
+  * kubelet: Clean up a static pod that has been terminated before starting
+  * Add an e2e test for updating a static pod while it restarts
+  * cronjob_controllerv2: do not filter jobs to be reconciled by labels
+  * kube-proxy: fix duplicate port opening
+  * increase Azure ACR credential provider timeout
+  * Updating EndpointSlice strategy to retain node name in topology until field is set
+  * fix: do not return early in the node informer when there is no change of the topology label.
+  * /test/e2e_kubeadm: adjust label checks for 1.23
+  * Ignore container notfound error while getPodstatuses
+  * Update CHANGELOG/CHANGELOG-1.23.md for v1.23.4
+  * Add PDB selector patch integration test
+  * Revert v1beta1 PodDisruptionBudget select patchStrategy
+  * test/e2e_kubeadm: fix matching UnversionedKubeletConfigMap defaults
+  * kubeadm: fix the bug that 'kubeadm init --dry-run --upload-certs' command failed with 'secret not found' error
+  * wrap error from RunCordonOrUncordon
+
+-------------------------------------------------------------------
 Wed Mar 16 12:29:58 UTC 2022 - rbrown@suse.com
 
 - Update to version 1.23.4:
