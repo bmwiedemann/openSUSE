@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jul 17 09:20:06 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 0.24
+  * CMake: Bump version to v0.24
+  * CI:add new YAML VM Images
+  * Remove package install for ARM as they are already in containers
+  * Update ARM builds to use --platform flag
+  * iiod-client: Use iiod_client_write_all() when sending commands
+  * mdns: Fix/Update Windows mdns code
+  * CMakeLists.txt: Do not use /usr as the default install location on MacOS.
+  * CMakeLists.txt: Add the option OSX_FRAMEWORK to control OSX builds.
+  * CI:fix ARM builds
+  * CI:add set -e for Azure build to fail on errors
+
+-------------------------------------------------------------------
 Tue Jun 28 13:58:08 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Python subpackage is python3-pylibiio now, in accordance with PyPi.

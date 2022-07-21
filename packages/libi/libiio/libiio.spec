@@ -18,7 +18,7 @@
 
 %define so_ver  0
 Name:           libiio
-Version:        0.23
+Version:        0.24
 Release:        0
 Summary:        Industrial I/O tools
 License:        LGPL-2.1-or-later
