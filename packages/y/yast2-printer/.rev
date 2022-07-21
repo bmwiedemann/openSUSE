@@ -1024,4 +1024,12 @@ SPDX format (forwarded request 135149 from &amp;lt;bound method Request.get_crea
     <comment>submit new version 4.5.0</comment>
     <requestid>969592</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>aa391d190efc13c60ad967b486d3e426</srcmd5>
+    <version>4.5.1</version>
+    <time>1658395958</time>
+    <user>RBrownFactory</user>
+    <comment>submit new version 4.5.1</comment>
+    <requestid>990247</requestid>
+  </revision>
 </revisionlist>

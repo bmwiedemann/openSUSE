@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 19 11:03:57 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Removed the libX11 dependency (bsc#1201641)
+  (the old mechanism for that did not work anymore, use
+  %__requires_exclude_from)
+- 4.5.1
+
+-------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.5.0 (bsc#1198109)
