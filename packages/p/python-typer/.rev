@@ -38,4 +38,21 @@
     <comment></comment>
     <requestid>984951</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>51ddea2b3b93e715d356fc5a33b50846</srcmd5>
+    <version>0.6.1</version>
+    <time>1658395984</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to upstream version 0.6.1
+  * Adds deep integrations with Rich. If Rich is available, it will
+    be used to show the content from --help options, validation
+    errors, and even errors in apps.
+  * Support for Rich Markup and Markdown in docstrings, CLI
+    parameters, help, and epilog.
+  * Fix type conversion for List and Tuple.
+  * Fix context_settings for a Typer apps with a single command.
+  * Fix setting FORCE_TERMINAL with colors.
+- Refreshed patches</comment>
+    <requestid>989858</requestid>
+  </revision>
 </revisionlist>

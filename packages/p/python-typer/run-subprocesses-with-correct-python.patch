@@ -139,7 +139,7 @@ all of them.
  117 files changed, 336 insertions(+), 156 deletions(-)
 
 diff --git a/tests/test_compat/test_option_get_help.py b/tests/test_compat/test_option_get_help.py
-index e8e1eac..60ae5fe 100644
+index fb01a6d..41a9d52 100644
 --- a/tests/test_compat/test_option_get_help.py
 +++ b/tests/test_compat/test_option_get_help.py
 @@ -1,5 +1,6 @@
@@ -147,9 +147,9 @@ index e8e1eac..60ae5fe 100644
  import subprocess
 +import sys
  
+ import typer.core
  from typer.testing import CliRunner
- 
-@@ -26,7 +27,7 @@ def test_coverage_call():
+@@ -40,7 +41,7 @@ def test_coverage_call():
  
  def test_completion():
      result = subprocess.run(
@@ -381,7 +381,7 @@ index c221b69..bf5762c 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_completion/test_completion_install.py b/tests/test_completion/test_completion_install.py
-index 057bb89..b0027e8 100644
+index 7862fb6..20cc966 100644
 --- a/tests/test_completion/test_completion_install.py
 +++ b/tests/test_completion/test_completion_install.py
 @@ -1,5 +1,6 @@
@@ -452,7 +452,7 @@ index 057bb89..b0027e8 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_completion/test_completion_show.py b/tests/test_completion/test_completion_show.py
-index 2efb6d8..6dab1df 100644
+index 669815d..374dd34 100644
 --- a/tests/test_completion/test_completion_show.py
 +++ b/tests/test_completion/test_completion_show.py
 @@ -1,12 +1,13 @@
@@ -556,7 +556,7 @@ index 2efb6d8..6dab1df 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_others.py b/tests/test_others.py
-index 2060a86..262e4e3 100644
+index 689e1d2..fb41bdc 100644
 --- a/tests/test_others.py
 +++ b/tests/test_others.py
 @@ -1,5 +1,6 @@
@@ -564,9 +564,9 @@ index 2060a86..262e4e3 100644
  import subprocess
 +import sys
  from pathlib import Path
- from typing import Optional
  from unittest import mock
-@@ -129,7 +130,7 @@ def test_callback_3_untyped_parameters():
+ 
+@@ -97,7 +98,7 @@ def test_callback_3_untyped_parameters():
  def test_completion_untyped_parameters():
      file_path = Path(__file__).parent / "assets/completion_no_types.py"
      result = subprocess.run(
@@ -575,7 +575,7 @@ index 2060a86..262e4e3 100644
          stdout=subprocess.PIPE,
          stderr=subprocess.PIPE,
          encoding="utf-8",
-@@ -151,7 +152,7 @@ def test_completion_untyped_parameters():
+@@ -119,7 +120,7 @@ def test_completion_untyped_parameters():
      assert '"Carlos":"The writer of scripts."' in result.stdout
  
      result = subprocess.run(
@@ -584,7 +584,7 @@ index 2060a86..262e4e3 100644
          stdout=subprocess.PIPE,
          stderr=subprocess.PIPE,
          encoding="utf-8",
-@@ -162,7 +163,7 @@ def test_completion_untyped_parameters():
+@@ -130,7 +131,7 @@ def test_completion_untyped_parameters():
  def test_completion_untyped_parameters_different_order_correct_names():
      file_path = Path(__file__).parent / "assets/completion_no_types_order.py"
      result = subprocess.run(
@@ -593,7 +593,7 @@ index 2060a86..262e4e3 100644
          stdout=subprocess.PIPE,
          stderr=subprocess.PIPE,
          encoding="utf-8",
-@@ -184,7 +185,7 @@ def test_completion_untyped_parameters_different_order_correct_names():
+@@ -152,7 +153,7 @@ def test_completion_untyped_parameters_different_order_correct_names():
      assert '"Carlos":"The writer of scripts."' in result.stdout
  
      result = subprocess.run(
@@ -621,7 +621,7 @@ index 06dd8c8..58626c7 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_arguments/test_default/test_tutorial001.py b/tests/test_tutorial/test_arguments/test_default/test_tutorial001.py
-index 63e8414..fa78495 100644
+index 0cb1809..00e5734 100644
 --- a/tests/test_tutorial/test_arguments/test_default/test_tutorial001.py
 +++ b/tests/test_tutorial/test_arguments/test_default/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -640,7 +640,7 @@ index 63e8414..fa78495 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_arguments/test_default/test_tutorial002.py b/tests/test_tutorial/test_arguments/test_default/test_tutorial002.py
-index b78d1c1..5abd249 100644
+index c1b9e7d..11b096b 100644
 --- a/tests/test_tutorial/test_arguments/test_default/test_tutorial002.py
 +++ b/tests/test_tutorial/test_arguments/test_default/test_tutorial002.py
 @@ -1,4 +1,5 @@
@@ -659,7 +659,7 @@ index b78d1c1..5abd249 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_arguments/test_envvar/test_tutorial001.py b/tests/test_tutorial/test_arguments/test_envvar/test_tutorial001.py
-index 92ef84f..62214d4 100644
+index f166602..1567e12 100644
 --- a/tests/test_tutorial/test_arguments/test_envvar/test_tutorial001.py
 +++ b/tests/test_tutorial/test_arguments/test_envvar/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -667,8 +667,8 @@ index 92ef84f..62214d4 100644
 +import sys
  
  import typer
- from typer.testing import CliRunner
-@@ -39,7 +40,7 @@ def test_call_env_var_arg():
+ import typer.core
+@@ -53,7 +54,7 @@ def test_call_env_var_arg():
  
  def test_script():
      result = subprocess.run(
@@ -678,7 +678,7 @@ index 92ef84f..62214d4 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_arguments/test_envvar/test_tutorial002.py b/tests/test_tutorial/test_arguments/test_envvar/test_tutorial002.py
-index f9e23f8..e098a15 100644
+index b9f938a..ce960f4 100644
 --- a/tests/test_tutorial/test_arguments/test_envvar/test_tutorial002.py
 +++ b/tests/test_tutorial/test_arguments/test_envvar/test_tutorial002.py
 @@ -1,4 +1,5 @@
@@ -687,7 +687,7 @@ index f9e23f8..e098a15 100644
  
  import typer
  from typer.testing import CliRunner
-@@ -39,7 +40,7 @@ def test_call_env_var2():
+@@ -40,7 +41,7 @@ def test_call_env_var2():
  
  def test_script():
      result = subprocess.run(
@@ -697,7 +697,7 @@ index f9e23f8..e098a15 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_arguments/test_envvar/test_tutorial003.py b/tests/test_tutorial/test_arguments/test_envvar/test_tutorial003.py
-index 3a98fc5..59183f3 100644
+index 1b56c61..396ebf2 100644
 --- a/tests/test_tutorial/test_arguments/test_envvar/test_tutorial003.py
 +++ b/tests/test_tutorial/test_arguments/test_envvar/test_tutorial003.py
 @@ -1,4 +1,5 @@
@@ -716,7 +716,7 @@ index 3a98fc5..59183f3 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_arguments/test_help/test_tutorial001.py b/tests/test_tutorial/test_arguments/test_help/test_tutorial001.py
-index ad448ce..fd64a89 100644
+index af90d3b..1822f62 100644
 --- a/tests/test_tutorial/test_arguments/test_help/test_tutorial001.py
 +++ b/tests/test_tutorial/test_arguments/test_help/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -724,8 +724,8 @@ index ad448ce..fd64a89 100644
 +import sys
  
  import typer
- from typer.testing import CliRunner
-@@ -29,7 +30,7 @@ def test_call_arg():
+ import typer.core
+@@ -43,7 +44,7 @@ def test_call_arg():
  
  def test_script():
      result = subprocess.run(
@@ -735,7 +735,7 @@ index ad448ce..fd64a89 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_arguments/test_help/test_tutorial002.py b/tests/test_tutorial/test_arguments/test_help/test_tutorial002.py
-index 8f2f079..8f8778b 100644
+index 6434eea..30a183e 100644
 --- a/tests/test_tutorial/test_arguments/test_help/test_tutorial002.py
 +++ b/tests/test_tutorial/test_arguments/test_help/test_tutorial002.py
 @@ -1,4 +1,5 @@
@@ -754,7 +754,7 @@ index 8f2f079..8f8778b 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_arguments/test_help/test_tutorial003.py b/tests/test_tutorial/test_arguments/test_help/test_tutorial003.py
-index db6ab45..6a982bf 100644
+index 64e4f51..9a1b8d1 100644
 --- a/tests/test_tutorial/test_arguments/test_help/test_tutorial003.py
 +++ b/tests/test_tutorial/test_arguments/test_help/test_tutorial003.py
 @@ -1,4 +1,5 @@
@@ -773,7 +773,7 @@ index db6ab45..6a982bf 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_arguments/test_help/test_tutorial004.py b/tests/test_tutorial/test_arguments/test_help/test_tutorial004.py
-index 46eb0b3..94c76e8 100644
+index bb9ddbb..771fbaf 100644
 --- a/tests/test_tutorial/test_arguments/test_help/test_tutorial004.py
 +++ b/tests/test_tutorial/test_arguments/test_help/test_tutorial004.py
 @@ -1,4 +1,5 @@
@@ -792,7 +792,7 @@ index 46eb0b3..94c76e8 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_arguments/test_help/test_tutorial005.py b/tests/test_tutorial/test_arguments/test_help/test_tutorial005.py
-index 5405b4c..737a5b1 100644
+index 0b527e0..cf962bb 100644
 --- a/tests/test_tutorial/test_arguments/test_help/test_tutorial005.py
 +++ b/tests/test_tutorial/test_arguments/test_help/test_tutorial005.py
 @@ -1,4 +1,5 @@
@@ -811,7 +811,7 @@ index 5405b4c..737a5b1 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_arguments/test_help/test_tutorial006.py b/tests/test_tutorial/test_arguments/test_help/test_tutorial006.py
-index 89acf99..201dc9d 100644
+index e1a1b1e..1b4229e 100644
 --- a/tests/test_tutorial/test_arguments/test_help/test_tutorial006.py
 +++ b/tests/test_tutorial/test_arguments/test_help/test_tutorial006.py
 @@ -1,4 +1,5 @@
@@ -830,7 +830,7 @@ index 89acf99..201dc9d 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_arguments/test_help/test_tutorial007.py b/tests/test_tutorial/test_arguments/test_help/test_tutorial007.py
-index 3b86dc2..00f6d96 100644
+index 2fb6444..3c6eddd 100644
 --- a/tests/test_tutorial/test_arguments/test_help/test_tutorial007.py
 +++ b/tests/test_tutorial/test_arguments/test_help/test_tutorial007.py
 @@ -1,4 +1,5 @@
@@ -838,7 +838,7 @@ index 3b86dc2..00f6d96 100644
 +import sys
  
  import typer
- from typer.testing import CliRunner
+ import typer.core
 @@ -28,7 +29,7 @@ def test_call_arg():
  
  def test_script():
@@ -849,7 +849,7 @@ index 3b86dc2..00f6d96 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_arguments/test_optional/test_tutorial001.py b/tests/test_tutorial/test_arguments/test_optional/test_tutorial001.py
-index 0b776bd..bb016f6 100644
+index f6fb561..efcf8a1 100644
 --- a/tests/test_tutorial/test_arguments/test_optional/test_tutorial001.py
 +++ b/tests/test_tutorial/test_arguments/test_optional/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -857,8 +857,8 @@ index 0b776bd..bb016f6 100644
 +import sys
  
  import typer
- from typer.testing import CliRunner
-@@ -25,7 +26,7 @@ def test_call_arg():
+ import typer.core
+@@ -42,7 +43,7 @@ def test_call_arg():
  
  def test_script():
      result = subprocess.run(
@@ -906,16 +906,16 @@ index a5615a0..f515669 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_commands/test_callback/test_tutorial001.py b/tests/test_tutorial/test_commands/test_callback/test_tutorial001.py
-index 6d4dc1f..91e68b7 100644
+index 52721f3..8bda783 100644
 --- a/tests/test_tutorial/test_commands/test_callback/test_tutorial001.py
 +++ b/tests/test_tutorial/test_commands/test_callback/test_tutorial001.py
 @@ -1,4 +1,5 @@
  import subprocess
 +import sys
  
+ import typer.core
  from typer.testing import CliRunner
- 
-@@ -58,7 +59,7 @@ def test_wrong_verbose():
+@@ -71,7 +72,7 @@ def test_wrong_verbose():
  
  def test_script():
      result = subprocess.run(
@@ -1058,7 +1058,7 @@ index 3546cc3..8ce5997 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_commands/test_help/test_tutorial001.py b/tests/test_tutorial/test_commands/test_help/test_tutorial001.py
-index 232369c..fbca4e7 100644
+index 339bd55..bad756c 100644
 --- a/tests/test_tutorial/test_commands/test_help/test_tutorial001.py
 +++ b/tests/test_tutorial/test_commands/test_help/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -1067,7 +1067,7 @@ index 232369c..fbca4e7 100644
  
  from typer.testing import CliRunner
  
-@@ -115,7 +116,7 @@ def test_init():
+@@ -117,7 +118,7 @@ def test_init():
  
  def test_script():
      result = subprocess.run(
@@ -1096,7 +1096,7 @@ index dcadf53..f53b5fe 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_commands/test_index/test_tutorial001.py b/tests/test_tutorial/test_commands/test_index/test_tutorial001.py
-index 18abc77..b9f40b1 100644
+index ddebe83..fee5e76 100644
 --- a/tests/test_tutorial/test_commands/test_index/test_tutorial001.py
 +++ b/tests/test_tutorial/test_commands/test_index/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -1115,7 +1115,7 @@ index 18abc77..b9f40b1 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_commands/test_index/test_tutorial002.py b/tests/test_tutorial/test_commands/test_index/test_tutorial002.py
-index 27421dc..db209aa 100644
+index 54e3451..b49e38b 100644
 --- a/tests/test_tutorial/test_commands/test_index/test_tutorial002.py
 +++ b/tests/test_tutorial/test_commands/test_index/test_tutorial002.py
 @@ -1,4 +1,5 @@
@@ -1134,7 +1134,7 @@ index 27421dc..db209aa 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_commands/test_name/test_tutorial001.py b/tests/test_tutorial/test_commands/test_name/test_tutorial001.py
-index f7c44e3..c06aeaf 100644
+index e66adf8..0dae24f 100644
 --- a/tests/test_tutorial/test_commands/test_name/test_tutorial001.py
 +++ b/tests/test_tutorial/test_commands/test_name/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -1153,7 +1153,7 @@ index f7c44e3..c06aeaf 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_commands/test_one_or_multiple/test_tutorial001.py b/tests/test_tutorial/test_commands/test_one_or_multiple/test_tutorial001.py
-index e6afb1f..d833bbd 100644
+index 7ecc907..5e76dd9 100644
 --- a/tests/test_tutorial/test_commands/test_one_or_multiple/test_tutorial001.py
 +++ b/tests/test_tutorial/test_commands/test_one_or_multiple/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -1172,7 +1172,7 @@ index e6afb1f..d833bbd 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_commands/test_one_or_multiple/test_tutorial002.py b/tests/test_tutorial/test_commands/test_one_or_multiple/test_tutorial002.py
-index c4ffe59..d4687b9 100644
+index eeb4bf3..8af2daf 100644
 --- a/tests/test_tutorial/test_commands/test_one_or_multiple/test_tutorial002.py
 +++ b/tests/test_tutorial/test_commands/test_one_or_multiple/test_tutorial002.py
 @@ -1,4 +1,5 @@
@@ -1191,7 +1191,7 @@ index c4ffe59..d4687b9 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_commands/test_options/test_tutorial001.py b/tests/test_tutorial/test_commands/test_options/test_tutorial001.py
-index 3b8b5ca..1e8ee28 100644
+index d77ad3a..ce3307e 100644
 --- a/tests/test_tutorial/test_commands/test_options/test_tutorial001.py
 +++ b/tests/test_tutorial/test_commands/test_options/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -1229,7 +1229,7 @@ index 8c54385..4a465db 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_first_steps/test_tutorial002.py b/tests/test_tutorial/test_first_steps/test_tutorial002.py
-index fc2026f..d827fc6 100644
+index da66066..7192545 100644
 --- a/tests/test_tutorial/test_first_steps/test_tutorial002.py
 +++ b/tests/test_tutorial/test_first_steps/test_tutorial002.py
 @@ -1,4 +1,5 @@
@@ -1248,7 +1248,7 @@ index fc2026f..d827fc6 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_first_steps/test_tutorial003.py b/tests/test_tutorial/test_first_steps/test_tutorial003.py
-index a9e57da..05c7e49 100644
+index 4006362..6c39d84 100644
 --- a/tests/test_tutorial/test_first_steps/test_tutorial003.py
 +++ b/tests/test_tutorial/test_first_steps/test_tutorial003.py
 @@ -1,4 +1,5 @@
@@ -1267,7 +1267,7 @@ index a9e57da..05c7e49 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_first_steps/test_tutorial004.py b/tests/test_tutorial/test_first_steps/test_tutorial004.py
-index 1a3bf3d..76f60dc 100644
+index 9d8158c..c419bb9 100644
 --- a/tests/test_tutorial/test_first_steps/test_tutorial004.py
 +++ b/tests/test_tutorial/test_first_steps/test_tutorial004.py
 @@ -1,4 +1,5 @@
@@ -1276,7 +1276,7 @@ index 1a3bf3d..76f60dc 100644
  
  import typer
  from typer.testing import CliRunner
-@@ -46,7 +47,7 @@ def test_formal_3():
+@@ -49,7 +50,7 @@ def test_formal_3():
  
  def test_script():
      result = subprocess.run(
@@ -1286,7 +1286,7 @@ index 1a3bf3d..76f60dc 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_first_steps/test_tutorial005.py b/tests/test_tutorial/test_first_steps/test_tutorial005.py
-index c087b01..d2326ce 100644
+index 9c9090b..816ab0c 100644
 --- a/tests/test_tutorial/test_first_steps/test_tutorial005.py
 +++ b/tests/test_tutorial/test_first_steps/test_tutorial005.py
 @@ -1,4 +1,5 @@
@@ -1295,7 +1295,7 @@ index c087b01..d2326ce 100644
  
  import typer
  from typer.testing import CliRunner
-@@ -46,7 +47,7 @@ def test_formal_1():
+@@ -49,7 +50,7 @@ def test_formal_1():
  
  def test_script():
      result = subprocess.run(
@@ -1343,7 +1343,7 @@ index d4effbc..315000b 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_multiple_values/test_arguments_with_multiple_values/test_tutorial002.py b/tests/test_tutorial/test_multiple_values/test_arguments_with_multiple_values/test_tutorial002.py
-index d97a744..4b19040 100644
+index 7894511..88e2dfe 100644
 --- a/tests/test_tutorial/test_multiple_values/test_arguments_with_multiple_values/test_tutorial002.py
 +++ b/tests/test_tutorial/test_multiple_values/test_arguments_with_multiple_values/test_tutorial002.py
 @@ -1,4 +1,5 @@
@@ -1362,7 +1362,7 @@ index d97a744..4b19040 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_multiple_values/test_multiple_options/test_tutorial001.py b/tests/test_tutorial/test_multiple_values/test_multiple_options/test_tutorial001.py
-index fd0a102..82beb31 100644
+index 7b73c44..3c57bfd 100644
 --- a/tests/test_tutorial/test_multiple_values/test_multiple_options/test_tutorial001.py
 +++ b/tests/test_tutorial/test_multiple_values/test_multiple_options/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -1400,7 +1400,7 @@ index 8c4df70..d30357e 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_multiple_values/test_options_with_multiple_values/test_tutorial001.py b/tests/test_tutorial/test_multiple_values/test_options_with_multiple_values/test_tutorial001.py
-index a6862f6..6422bdd 100644
+index 0e008d3..fcb2165 100644
 --- a/tests/test_tutorial/test_multiple_values/test_options_with_multiple_values/test_tutorial001.py
 +++ b/tests/test_tutorial/test_multiple_values/test_options_with_multiple_values/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -1419,7 +1419,7 @@ index a6862f6..6422bdd 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_options/test_callback/test_tutorial001.py b/tests/test_tutorial/test_options/test_callback/test_tutorial001.py
-index 71d2dc8..e6a142b 100644
+index a319f11..f5a43d0 100644
 --- a/tests/test_tutorial/test_options/test_callback/test_tutorial001.py
 +++ b/tests/test_tutorial/test_options/test_callback/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -1438,7 +1438,7 @@ index 71d2dc8..e6a142b 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_options/test_callback/test_tutorial003.py b/tests/test_tutorial/test_options/test_callback/test_tutorial003.py
-index d4dac97..3adadf5 100644
+index ea8a817..7726997 100644
 --- a/tests/test_tutorial/test_options/test_callback/test_tutorial003.py
 +++ b/tests/test_tutorial/test_options/test_callback/test_tutorial003.py
 @@ -1,5 +1,6 @@
@@ -1467,7 +1467,7 @@ index d4dac97..3adadf5 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_options/test_callback/test_tutorial004.py b/tests/test_tutorial/test_options/test_callback/test_tutorial004.py
-index 447c262..d5685d7 100644
+index d41bcc9..473cd9d 100644
 --- a/tests/test_tutorial/test_options/test_callback/test_tutorial004.py
 +++ b/tests/test_tutorial/test_options/test_callback/test_tutorial004.py
 @@ -1,5 +1,6 @@
@@ -1689,7 +1689,7 @@ index f9f7d22..3e89d55 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_options/test_help/test_tutorial002.py b/tests/test_tutorial/test_options/test_help/test_tutorial002.py
-index 501d5d2..094f2d4 100644
+index e3d4b89..260d645 100644
 --- a/tests/test_tutorial/test_options/test_help/test_tutorial002.py
 +++ b/tests/test_tutorial/test_options/test_help/test_tutorial002.py
 @@ -1,4 +1,5 @@
@@ -1698,7 +1698,7 @@ index 501d5d2..094f2d4 100644
  
  import typer
  from typer.testing import CliRunner
-@@ -26,7 +27,7 @@ def test_help():
+@@ -36,7 +37,7 @@ def test_help():
  
  def test_script():
      result = subprocess.run(
@@ -1708,47 +1708,9 @@ index 501d5d2..094f2d4 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_options/test_name/test_tutorial001.py b/tests/test_tutorial/test_options/test_name/test_tutorial001.py
-index 4db89bc..c4b2ccc 100644
+index 6122ccb..2690ff2 100644
 --- a/tests/test_tutorial/test_options/test_name/test_tutorial001.py
 +++ b/tests/test_tutorial/test_options/test_name/test_tutorial001.py
-@@ -1,4 +1,5 @@
- import subprocess
-+import sys
- 
- import typer
- from typer.testing import CliRunner
-@@ -26,7 +27,7 @@ def test_call():
- 
- def test_script():
-     result = subprocess.run(
--        ["coverage", "run", mod.__file__, "--help"],
-+        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
-         stdout=subprocess.PIPE,
-         stderr=subprocess.PIPE,
-         encoding="utf-8",
-diff --git a/tests/test_tutorial/test_options/test_name/test_tutorial002.py b/tests/test_tutorial/test_options/test_name/test_tutorial002.py
-index 0426bc0..1d5683e 100644
---- a/tests/test_tutorial/test_options/test_name/test_tutorial002.py
-+++ b/tests/test_tutorial/test_options/test_name/test_tutorial002.py
-@@ -1,4 +1,5 @@
- import subprocess
-+import sys
- 
- import typer
- from typer.testing import CliRunner
-@@ -32,7 +33,7 @@ def test_call_long():
- 
- def test_script():
-     result = subprocess.run(
--        ["coverage", "run", mod.__file__, "--help"],
-+        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
-         stdout=subprocess.PIPE,
-         stderr=subprocess.PIPE,
-         encoding="utf-8",
-diff --git a/tests/test_tutorial/test_options/test_name/test_tutorial003.py b/tests/test_tutorial/test_options/test_name/test_tutorial003.py
-index 98ae253..aa620c7 100644
---- a/tests/test_tutorial/test_options/test_name/test_tutorial003.py
-+++ b/tests/test_tutorial/test_options/test_name/test_tutorial003.py
 @@ -1,4 +1,5 @@
  import subprocess
 +import sys
@@ -1764,8 +1726,46 @@ index 98ae253..aa620c7 100644
          stdout=subprocess.PIPE,
          stderr=subprocess.PIPE,
          encoding="utf-8",
+diff --git a/tests/test_tutorial/test_options/test_name/test_tutorial002.py b/tests/test_tutorial/test_options/test_name/test_tutorial002.py
+index 3bf243a..5d50e67 100644
+--- a/tests/test_tutorial/test_options/test_name/test_tutorial002.py
++++ b/tests/test_tutorial/test_options/test_name/test_tutorial002.py
+@@ -1,4 +1,5 @@
+ import subprocess
++import sys
+ 
+ import typer
+ from typer.testing import CliRunner
+@@ -34,7 +35,7 @@ def test_call_long():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_options/test_name/test_tutorial003.py b/tests/test_tutorial/test_options/test_name/test_tutorial003.py
+index 3da9985..7294709 100644
+--- a/tests/test_tutorial/test_options/test_name/test_tutorial003.py
++++ b/tests/test_tutorial/test_options/test_name/test_tutorial003.py
+@@ -1,4 +1,5 @@
+ import subprocess
++import sys
+ 
+ import typer
+ from typer.testing import CliRunner
+@@ -28,7 +29,7 @@ def test_call():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
 diff --git a/tests/test_tutorial/test_options/test_name/test_tutorial004.py b/tests/test_tutorial/test_options/test_name/test_tutorial004.py
-index aa327cc..c6cf1b8 100644
+index b6621c5..b0f4b5c 100644
 --- a/tests/test_tutorial/test_options/test_name/test_tutorial004.py
 +++ b/tests/test_tutorial/test_options/test_name/test_tutorial004.py
 @@ -1,4 +1,5 @@
@@ -1774,7 +1774,7 @@ index aa327cc..c6cf1b8 100644
  
  import typer
  from typer.testing import CliRunner
-@@ -32,7 +33,7 @@ def test_call_long():
+@@ -34,7 +35,7 @@ def test_call_long():
  
  def test_script():
      result = subprocess.run(
@@ -1784,7 +1784,7 @@ index aa327cc..c6cf1b8 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_options/test_name/test_tutorial005.py b/tests/test_tutorial/test_options/test_name/test_tutorial005.py
-index 1a372b4..da656b5 100644
+index 565e537..440c036 100644
 --- a/tests/test_tutorial/test_options/test_name/test_tutorial005.py
 +++ b/tests/test_tutorial/test_options/test_name/test_tutorial005.py
 @@ -1,4 +1,5 @@
@@ -1793,7 +1793,7 @@ index 1a372b4..da656b5 100644
  
  import typer
  from typer.testing import CliRunner
-@@ -43,7 +44,7 @@ def test_call_condensed_wrong_order():
+@@ -46,7 +47,7 @@ def test_call_condensed_wrong_order():
  
  def test_script():
      result = subprocess.run(
@@ -1803,7 +1803,7 @@ index 1a372b4..da656b5 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_options/test_prompt/test_tutorial001.py b/tests/test_tutorial/test_options/test_prompt/test_tutorial001.py
-index 8292942..bc981af 100644
+index e4b3321..588bc97 100644
 --- a/tests/test_tutorial/test_options/test_prompt/test_tutorial001.py
 +++ b/tests/test_tutorial/test_options/test_prompt/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -1812,7 +1812,7 @@ index 8292942..bc981af 100644
  
  import typer
  from typer.testing import CliRunner
-@@ -33,7 +34,7 @@ def test_help():
+@@ -34,7 +35,7 @@ def test_help():
  
  def test_script():
      result = subprocess.run(
@@ -1822,7 +1822,7 @@ index 8292942..bc981af 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_options/test_prompt/test_tutorial002.py b/tests/test_tutorial/test_options/test_prompt/test_tutorial002.py
-index 89428e5..4d49aad 100644
+index 36babc8..fd2048f 100644
 --- a/tests/test_tutorial/test_options/test_prompt/test_tutorial002.py
 +++ b/tests/test_tutorial/test_options/test_prompt/test_tutorial002.py
 @@ -1,4 +1,5 @@
@@ -1831,7 +1831,7 @@ index 89428e5..4d49aad 100644
  
  import typer
  from typer.testing import CliRunner
-@@ -33,7 +34,7 @@ def test_help():
+@@ -34,7 +35,7 @@ def test_help():
  
  def test_script():
      result = subprocess.run(
@@ -1841,7 +1841,7 @@ index 89428e5..4d49aad 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_options/test_prompt/test_tutorial003.py b/tests/test_tutorial/test_options/test_prompt/test_tutorial003.py
-index 7ef29de..358a1c4 100644
+index 73ff1c2..ba3204a 100644
 --- a/tests/test_tutorial/test_options/test_prompt/test_tutorial003.py
 +++ b/tests/test_tutorial/test_options/test_prompt/test_tutorial003.py
 @@ -1,4 +1,5 @@
@@ -1850,7 +1850,7 @@ index 7ef29de..358a1c4 100644
  
  import typer
  from typer.testing import CliRunner
-@@ -47,7 +48,7 @@ def test_help():
+@@ -48,7 +49,7 @@ def test_help():
  
  def test_script():
      result = subprocess.run(
@@ -1860,7 +1860,7 @@ index 7ef29de..358a1c4 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_options/test_required/test_tutorial002.py b/tests/test_tutorial/test_options/test_required/test_tutorial002.py
-index d2e8bbc..c020575 100644
+index 7c6957b..2e14a9f 100644
 --- a/tests/test_tutorial/test_options/test_required/test_tutorial002.py
 +++ b/tests/test_tutorial/test_options/test_required/test_tutorial002.py
 @@ -1,4 +1,5 @@
@@ -1868,8 +1868,8 @@ index d2e8bbc..c020575 100644
 +import sys
  
  import typer
- from typer.testing import CliRunner
-@@ -32,7 +33,7 @@ def test_help():
+ import typer.core
+@@ -45,7 +46,7 @@ def test_help_no_rich():
  
  def test_script():
      result = subprocess.run(
@@ -1879,7 +1879,7 @@ index d2e8bbc..c020575 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_options/test_version/test_tutorial003.py b/tests/test_tutorial/test_options/test_version/test_tutorial003.py
-index d3f80a9..9112018 100644
+index cb5c62e..a5a7060 100644
 --- a/tests/test_tutorial/test_options/test_version/test_tutorial003.py
 +++ b/tests/test_tutorial/test_options/test_version/test_tutorial003.py
 @@ -1,5 +1,6 @@
@@ -1908,7 +1908,7 @@ index d3f80a9..9112018 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_parameter_types/test_bool/test_tutorial001.py b/tests/test_tutorial/test_parameter_types/test_bool/test_tutorial001.py
-index 344d650..2a9d377 100644
+index 6a526b7..cc4b454 100644
 --- a/tests/test_tutorial/test_parameter_types/test_bool/test_tutorial001.py
 +++ b/tests/test_tutorial/test_parameter_types/test_bool/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -1927,7 +1927,7 @@ index 344d650..2a9d377 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_parameter_types/test_bool/test_tutorial002.py b/tests/test_tutorial/test_parameter_types/test_bool/test_tutorial002.py
-index 098b196..69a8146 100644
+index 1ce4ca6..339ebce 100644
 --- a/tests/test_tutorial/test_parameter_types/test_bool/test_tutorial002.py
 +++ b/tests/test_tutorial/test_parameter_types/test_bool/test_tutorial002.py
 @@ -1,4 +1,5 @@
@@ -1935,8 +1935,8 @@ index 098b196..69a8146 100644
 +import sys
  
  import typer
- from typer.testing import CliRunner
-@@ -49,7 +50,7 @@ def test_invalid_no_accept():
+ import typer.core
+@@ -62,7 +63,7 @@ def test_invalid_no_accept():
  
  def test_script():
      result = subprocess.run(
@@ -1946,7 +1946,7 @@ index 098b196..69a8146 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_parameter_types/test_bool/test_tutorial003.py b/tests/test_tutorial/test_parameter_types/test_bool/test_tutorial003.py
-index 923c6e8..33bdd94 100644
+index bfa0599..83226bd 100644
 --- a/tests/test_tutorial/test_parameter_types/test_bool/test_tutorial003.py
 +++ b/tests/test_tutorial/test_parameter_types/test_bool/test_tutorial003.py
 @@ -1,4 +1,5 @@
@@ -1955,7 +1955,7 @@ index 923c6e8..33bdd94 100644
  
  import typer
  from typer.testing import CliRunner
-@@ -31,7 +32,7 @@ def test_no_force():
+@@ -34,7 +35,7 @@ def test_no_force():
  
  def test_script():
      result = subprocess.run(
@@ -1965,7 +1965,7 @@ index 923c6e8..33bdd94 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_parameter_types/test_bool/test_tutorial004.py b/tests/test_tutorial/test_parameter_types/test_bool/test_tutorial004.py
-index e4e7935..de08f7f 100644
+index fcc994a..a01034d 100644
 --- a/tests/test_tutorial/test_parameter_types/test_bool/test_tutorial004.py
 +++ b/tests/test_tutorial/test_parameter_types/test_bool/test_tutorial004.py
 @@ -1,4 +1,5 @@
@@ -1974,7 +1974,7 @@ index e4e7935..de08f7f 100644
  
  import typer
  from typer.testing import CliRunner
-@@ -37,7 +38,7 @@ def test_short_demo():
+@@ -38,7 +39,7 @@ def test_short_demo():
  
  def test_script():
      result = subprocess.run(
@@ -1984,7 +1984,7 @@ index e4e7935..de08f7f 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_parameter_types/test_datetime/test_tutorial001.py b/tests/test_tutorial/test_parameter_types/test_datetime/test_tutorial001.py
-index 60b69ef..7a4b4c9 100644
+index 9fad723..f6be63e 100644
 --- a/tests/test_tutorial/test_parameter_types/test_datetime/test_tutorial001.py
 +++ b/tests/test_tutorial/test_parameter_types/test_datetime/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -1993,7 +1993,7 @@ index 60b69ef..7a4b4c9 100644
  
  import typer
  from typer.testing import CliRunner
-@@ -38,7 +39,7 @@ def test_invalid():
+@@ -43,7 +44,7 @@ def test_invalid():
  
  def test_script():
      result = subprocess.run(
@@ -2022,7 +2022,7 @@ index 38ebd3c..ec8fc71 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_parameter_types/test_enum/test_tutorial001.py b/tests/test_tutorial/test_parameter_types/test_enum/test_tutorial001.py
-index 9944da5..0381ab6 100644
+index f79acc1..584b71a 100644
 --- a/tests/test_tutorial/test_parameter_types/test_enum/test_tutorial001.py
 +++ b/tests/test_tutorial/test_parameter_types/test_enum/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -2031,7 +2031,7 @@ index 9944da5..0381ab6 100644
  
  import typer
  from typer.testing import CliRunner
-@@ -38,7 +39,7 @@ def test_invalid():
+@@ -41,7 +42,7 @@ def test_invalid():
  
  def test_script():
      result = subprocess.run(
@@ -2155,7 +2155,7 @@ index 841df52..7f79fd4 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_parameter_types/test_index/test_tutorial001.py b/tests/test_tutorial/test_parameter_types/test_index/test_tutorial001.py
-index 2e1a300..7ee1652 100644
+index 14affe2..62d16a6 100644
 --- a/tests/test_tutorial/test_parameter_types/test_index/test_tutorial001.py
 +++ b/tests/test_tutorial/test_parameter_types/test_index/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -2174,7 +2174,7 @@ index 2e1a300..7ee1652 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_parameter_types/test_number/test_tutorial001.py b/tests/test_tutorial/test_parameter_types/test_number/test_tutorial001.py
-index 64d2f2a..c8bd4d4 100644
+index de1dec5..1e08f0d 100644
 --- a/tests/test_tutorial/test_parameter_types/test_number/test_tutorial001.py
 +++ b/tests/test_tutorial/test_parameter_types/test_number/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -2182,8 +2182,8 @@ index 64d2f2a..c8bd4d4 100644
 +import sys
  
  import typer
- from typer.testing import CliRunner
-@@ -76,7 +77,7 @@ def test_negative_score():
+ import typer.core
+@@ -90,7 +91,7 @@ def test_negative_score():
  
  def test_script():
      result = subprocess.run(
@@ -2193,7 +2193,7 @@ index 64d2f2a..c8bd4d4 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_parameter_types/test_number/test_tutorial002.py b/tests/test_tutorial/test_parameter_types/test_number/test_tutorial002.py
-index c0bc226..1f7fcb8 100644
+index 8827cdf..2e33f2e 100644
 --- a/tests/test_tutorial/test_parameter_types/test_number/test_tutorial002.py
 +++ b/tests/test_tutorial/test_parameter_types/test_number/test_tutorial002.py
 @@ -1,4 +1,5 @@
@@ -2202,7 +2202,7 @@ index c0bc226..1f7fcb8 100644
  
  import typer
  from typer.testing import CliRunner
-@@ -34,7 +35,7 @@ def test_clamped():
+@@ -33,7 +34,7 @@ def test_clamped():
  
  def test_script():
      result = subprocess.run(
@@ -2231,7 +2231,7 @@ index 904b8b0..3d0a741 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_parameter_types/test_path/test_tutorial001.py b/tests/test_tutorial/test_parameter_types/test_path/test_tutorial001.py
-index 740b92f..2405805 100644
+index 0617b57..a616d8f 100644
 --- a/tests/test_tutorial/test_parameter_types/test_path/test_tutorial001.py
 +++ b/tests/test_tutorial/test_parameter_types/test_path/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -2250,7 +2250,7 @@ index 740b92f..2405805 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_parameter_types/test_path/test_tutorial002.py b/tests/test_tutorial/test_parameter_types/test_path/test_tutorial002.py
-index 6bd48ed..7ec71d8 100644
+index 24499fa..97c7b7f 100644
 --- a/tests/test_tutorial/test_parameter_types/test_path/test_tutorial002.py
 +++ b/tests/test_tutorial/test_parameter_types/test_path/test_tutorial002.py
 @@ -1,4 +1,5 @@
@@ -2259,7 +2259,7 @@ index 6bd48ed..7ec71d8 100644
  from pathlib import Path
  
  import typer
-@@ -42,7 +43,7 @@ def test_dir():
+@@ -39,7 +40,7 @@ def test_dir():
  
  def test_script():
      result = subprocess.run(
@@ -2269,7 +2269,7 @@ index 6bd48ed..7ec71d8 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_parameter_types/test_uuid/test_tutorial001.py b/tests/test_tutorial/test_parameter_types/test_uuid/test_tutorial001.py
-index dff3244..280363d 100644
+index 5bf406c..b22ad12 100644
 --- a/tests/test_tutorial/test_parameter_types/test_uuid/test_tutorial001.py
 +++ b/tests/test_tutorial/test_parameter_types/test_uuid/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -2307,7 +2307,7 @@ index 42cbdfc..00c9061 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_prompt/test_tutorial002.py b/tests/test_tutorial/test_prompt/test_tutorial002.py
-index 9ac170e..069bb88 100644
+index c8a4f3d..1d3aa91 100644
 --- a/tests/test_tutorial/test_prompt/test_tutorial002.py
 +++ b/tests/test_tutorial/test_prompt/test_tutorial002.py
 @@ -1,4 +1,5 @@
@@ -2326,7 +2326,7 @@ index 9ac170e..069bb88 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_prompt/test_tutorial003.py b/tests/test_tutorial/test_prompt/test_tutorial003.py
-index 3e66958..0299158 100644
+index 186f1fb..b34d823 100644
 --- a/tests/test_tutorial/test_prompt/test_tutorial003.py
 +++ b/tests/test_tutorial/test_prompt/test_tutorial003.py
 @@ -1,4 +1,5 @@
@@ -2421,7 +2421,7 @@ index fb4b062..e2d23d0 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial001.py b/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial001.py
-index b8cc33e..a332a0d 100644
+index f8bc9bf..dfdb9f4 100644
 --- a/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial001.py
 +++ b/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -2440,7 +2440,7 @@ index b8cc33e..a332a0d 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial002.py b/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial002.py
-index 244fc84..dc59144 100644
+index dd9a9e8..dc81bd9 100644
 --- a/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial002.py
 +++ b/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial002.py
 @@ -1,4 +1,5 @@
@@ -2459,7 +2459,7 @@ index 244fc84..dc59144 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial003.py b/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial003.py
-index 34d27c5..fc72285 100644
+index 6d86e0f..af60a9e 100644
 --- a/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial003.py
 +++ b/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial003.py
 @@ -1,4 +1,5 @@
@@ -2478,7 +2478,7 @@ index 34d27c5..fc72285 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial004.py b/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial004.py
-index 1b29604..5e7cc61 100644
+index db1ff39..75e3ce4 100644
 --- a/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial004.py
 +++ b/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial004.py
 @@ -1,4 +1,5 @@
@@ -2497,7 +2497,7 @@ index 1b29604..5e7cc61 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial005.py b/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial005.py
-index ae90da7..419123f 100644
+index b122408..5b56974 100644
 --- a/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial005.py
 +++ b/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial005.py
 @@ -1,4 +1,5 @@
@@ -2516,7 +2516,7 @@ index ae90da7..419123f 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial006.py b/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial006.py
-index bb4328b..519571a 100644
+index e9e06bf..4b0b916 100644
 --- a/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial006.py
 +++ b/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial006.py
 @@ -1,4 +1,5 @@
@@ -2535,7 +2535,7 @@ index bb4328b..519571a 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial007.py b/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial007.py
-index 3251706..4946085 100644
+index 3371372..faffc70 100644
 --- a/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial007.py
 +++ b/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial007.py
 @@ -1,4 +1,5 @@
@@ -2554,7 +2554,7 @@ index 3251706..4946085 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial008.py b/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial008.py
-index 121b4c4..5f74898 100644
+index caec261..6a4d238 100644
 --- a/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial008.py
 +++ b/tests/test_tutorial/test_subcommands/test_name_help/test_tutorial008.py
 @@ -1,4 +1,5 @@
@@ -2573,7 +2573,7 @@ index 121b4c4..5f74898 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_subcommands/test_tutorial001.py b/tests/test_tutorial/test_subcommands/test_tutorial001.py
-index 5cd0bd6..1b8b60e 100644
+index 5e1d1b4..c4fca5b 100644
 --- a/tests/test_tutorial/test_subcommands/test_tutorial001.py
 +++ b/tests/test_tutorial/test_subcommands/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -2592,7 +2592,7 @@ index 5cd0bd6..1b8b60e 100644
              stderr=subprocess.PIPE,
              encoding="utf-8",
 diff --git a/tests/test_tutorial/test_subcommands/test_tutorial002.py b/tests/test_tutorial/test_subcommands/test_tutorial002.py
-index 600b03e..c5309d8 100644
+index d6f32f3..3e1607d 100644
 --- a/tests/test_tutorial/test_subcommands/test_tutorial002.py
 +++ b/tests/test_tutorial/test_subcommands/test_tutorial002.py
 @@ -1,4 +1,5 @@
@@ -2611,7 +2611,7 @@ index 600b03e..c5309d8 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_subcommands/test_tutorial003.py b/tests/test_tutorial/test_subcommands/test_tutorial003.py
-index 6f0be05..57f1174 100644
+index 3b3aeb7..4db168b 100644
 --- a/tests/test_tutorial/test_subcommands/test_tutorial003.py
 +++ b/tests/test_tutorial/test_subcommands/test_tutorial003.py
 @@ -1,4 +1,5 @@
@@ -2630,7 +2630,7 @@ index 6f0be05..57f1174 100644
              stderr=subprocess.PIPE,
              encoding="utf-8",
 diff --git a/tests/test_tutorial/test_terminating/test_tutorial001.py b/tests/test_tutorial/test_terminating/test_tutorial001.py
-index 6df8333..8c9134a 100644
+index 1030c8b..f6651eb 100644
 --- a/tests/test_tutorial/test_terminating/test_tutorial001.py
 +++ b/tests/test_tutorial/test_terminating/test_tutorial001.py
 @@ -1,4 +1,5 @@
@@ -2639,7 +2639,7 @@ index 6df8333..8c9134a 100644
  
  import typer
  from typer.testing import CliRunner
-@@ -27,7 +28,7 @@ def test_existing():
+@@ -35,7 +36,7 @@ def test_existing_no_standalone():
  
  def test_script():
      result = subprocess.run(
@@ -2668,7 +2668,7 @@ index dd5b5e1..8c599fe 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_terminating/test_tutorial003.py b/tests/test_tutorial/test_terminating/test_tutorial003.py
-index 026f630..e571ade 100644
+index da6ef4c..7a1909a 100644
 --- a/tests/test_tutorial/test_terminating/test_tutorial003.py
 +++ b/tests/test_tutorial/test_terminating/test_tutorial003.py
 @@ -1,4 +1,5 @@
@@ -2676,8 +2676,8 @@ index 026f630..e571ade 100644
 +import sys
  
  import typer
- from typer.testing import CliRunner
-@@ -26,7 +27,7 @@ def test_root():
+ import typer.core
+@@ -44,7 +45,7 @@ def test_root_no_rich():
  
  def test_script():
      result = subprocess.run(
@@ -2744,7 +2744,7 @@ index b8cecd9..aea281d 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_using_click/test_tutorial003.py b/tests/test_tutorial/test_using_click/test_tutorial003.py
-index eadd93e..12a8d49 100644
+index c3f33e2..6bc9bdf 100644
 --- a/tests/test_tutorial/test_using_click/test_tutorial003.py
 +++ b/tests/test_tutorial/test_using_click/test_tutorial003.py
 @@ -1,4 +1,5 @@

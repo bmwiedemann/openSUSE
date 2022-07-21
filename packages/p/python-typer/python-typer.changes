@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 18 10:22:12 UTC 2022 - Matthias Bach <marix@marix.org> - 0.6.1
+
+- Update to upstream version 0.6.1
+  * Adds deep integrations with Rich. If Rich is available, it will
+    be used to show the content from --help options, validation
+    errors, and even errors in apps.
+  * Support for Rich Markup and Markdown in docstrings, CLI
+    parameters, help, and epilog.
+  * Fix type conversion for List and Tuple.
+  * Fix context_settings for a Typer apps with a single command.
+  * Fix setting FORCE_TERMINAL with colors.
+- Refreshed patches
+
+-------------------------------------------------------------------
 Fri Jun 24 18:20:30 UTC 2022 - Matthias Bach <marix@marix.org> - 0.4.1
 
 - Add run-subprocesses-with-correct-python.patch to ensure tests
