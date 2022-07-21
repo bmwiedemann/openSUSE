@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Thu Jul 21 07:31:12 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Tighten %%files.
+
+-------------------------------------------------------------------
+Tue Jul 19 11:28:23 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Initial packaging (v1.1.0), needed by python-napalm
