@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Jul  9 18:31:27 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.3.2:
+  * Make doxygen docs reproducible by @mr-c in #740
+  * Add CMake options for building doc and sandbox by @AzothAmmo in #751
+  * Correct patch version for 1.3.2 by @AzothAmmo in #750
+- Changes from version 1.3.1:
+  * Github actions in place of Travis CI (thanks to @isuruf, #727)
+  * Doctest updates (and upstream patches!) to support all targeted compilers (#714, #736)
+  * Cmake modernization (thanks to @ClausKlein, #659)
+  * Fix typo in docs by @tankorsmash in #597
+  * Add MSVC 2019 to build, default ctor for static object by @AzothAmmo in #593
+  * Fix json.hpp compilation issue when int32_t is a long by @bblackham in #621
+  * [cpp20] explicitly capture 'this' as copy by @lukaszgemborowski in #640
+  * Fix rapidjson for Clang 10 by @groscoe2 in #645
+  * Fixes to prevent clang-diagnostic errors by @johngladp in #643
+  * cleanup cmake files to be a little more moderen by @ClausKlein in #659
+  * CVE-2020-11105: Store a copy of each serialized shared_ptr within the archive to prevent the shared_ptr to be freed to early. by @serpedon in #667
+  * add license files for components of cereal by @miartad in #676
+  * Catch short documents in JSON input by @johnkeeping in #677
+  * C++17: use inline globals for StaticObjects by @InBetweenNames in #657
+  * Use std::variant::emplace when loading by @kepler-5 in #699
+  * Use std::optional::emplace() when loading non-empty optional by @kepler-5 in #698
+  * Fix itsNextName not clearing when not found + style change by @AzothAmmo in #715
+  * Update doctest to 2.4.6 + local fixes slated for upstream by @AzothAmmo in #716
+  * Fixed loading of std::vector by @Darred in #732
+  * Update license to match BSD template by @AzothAmmo in #735
+  * Update doctest to 2.4.7 by @AzothAmmo in #736
+  * Use GNUInstallDirs instead of hard wiring install directories by @antonblanchard in #710
+- Remove d7b68df.patch: Fixed upstream.
+- Refresh spec file:
+  * Use more cmake macros.
+  * Drop obsolete conditionals.
+
+-------------------------------------------------------------------
 Mon Oct  4 15:35:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with glibc 2.34:

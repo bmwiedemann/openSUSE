@@ -1,7 +1,7 @@
 #
 # spec file for package cereal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2016 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,23 +18,17 @@
 
 
 Name:           cereal
-Version:        1.3.0
+Version:        1.3.2
 Release:        0
 Summary:        A header-only C++11 serialization library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://uscilab.github.io/cereal/
-Source0:        https://github.com/USCiLab/cereal/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- https://github.com/USCiLab/cereal/pull/714
-Patch0:         d7b68df.patch
+Source0:        https://github.com/USCiLab/cereal/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-%if 0%{?suse_version} > 1325
 BuildRequires:  libboost_serialization-devel
 BuildRequires:  libboost_test-devel
-%else
-BuildRequires:  boost-devel
-%endif
 
 %description
 cereal is a header-only C++11 serialization library. cereal takes arbitrary
@@ -46,7 +40,6 @@ easily bundled with other code or used standalone.
 %package devel
 Summary:        Development headers and libraries for cereal library
 Group:          Development/Libraries/C and C++
-BuildArch:      noarch
 
 %description devel
 cereal is a header-only C++11 serialization library. cereal takes arbitrary
@@ -62,18 +55,18 @@ This package contains development headers and libraries for the cereal library
 
 %build
 %cmake -DSKIP_PORTABILITY_TEST=ON -DWITH_WERROR=OFF
-%make_build
+%cmake_build
 
 %install
-make -C build install DESTDIR=%{buildroot}
+%cmake_install
 
 %check
-%make_build -C build test
+%ctest
 
 %files devel
 %license LICENSE
 %doc README.md
 %{_includedir}/cereal
-%{_datadir}/cmake/cereal
+%{_libdir}/cmake/cereal
 
 %changelog
