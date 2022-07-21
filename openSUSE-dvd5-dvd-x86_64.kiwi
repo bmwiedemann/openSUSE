@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220719" schemaversion="4.1">
+<image name="OBS__openSUSE___20220721" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220719</productvar>
+      <productvar name="VERSION">20220721</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220719,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220721,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220719/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220721/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -429,6 +429,7 @@
       <repopackage name="edict2"/>
       <repopackage name="eekboard"/>
       <repopackage name="efibootmgr" arch="x86_64"/>
+      <repopackage name="efont-unicode-bitmap-fonts"/>
       <repopackage name="elfutils"/>
       <repopackage name="elfutils-lang"/>
       <repopackage name="elilo"/>
@@ -729,6 +730,7 @@
       <repopackage name="gnu-unifont-bitmap-fonts"/>
       <repopackage name="gnutls"/>
       <repopackage name="google-carlito-fonts"/>
+      <repopackage name="google-noto-coloremoji-fonts"/>
       <repopackage name="google-opensans-fonts"/>
       <repopackage name="google-poppins-fonts"/>
       <repopackage name="google-roboto-fonts"/>
@@ -1765,7 +1767,6 @@
       <repopackage name="libgio-2_0-0-32bit" arch="x86_64"/>
       <repopackage name="libgiomm-2_4-1"/>
       <repopackage name="libgirepository-1_0-1"/>
-      <repopackage name="libgit2-1_4"/>
       <repopackage name="libgjs0"/>
       <repopackage name="libglade-2_0-0"/>
       <repopackage name="libgle3"/>
@@ -2464,7 +2465,7 @@
       <repopackage name="libpixman-1-0-devel" arch="x86_64"/>
       <repopackage name="libpkcs11-helper1"/>
       <repopackage name="libpkgconf3"/>
-      <repopackage name="libplacebo192"/>
+      <repopackage name="libplacebo208"/>
       <repopackage name="libplist-2_0-3"/>
       <repopackage name="libply-splash-core5"/>
       <repopackage name="libply-splash-graphics5"/>
@@ -3387,7 +3388,6 @@
       <repopackage name="nodejs17"/>
       <repopackage name="notification-daemon"/>
       <repopackage name="notification-daemon-lang"/>
-      <repopackage name="noto-coloremoji-fonts"/>
       <repopackage name="noto-sans-fonts"/>
       <repopackage name="noto-serif-jp-bold-fonts"/>
       <repopackage name="noto-serif-jp-fonts"/>
@@ -4056,7 +4056,6 @@
       <repopackage name="python310-pycurl"/>
       <repopackage name="python310-pydot"/>
       <repopackage name="python310-pyftpdlib"/>
-      <repopackage name="python310-pygit2"/>
       <repopackage name="python310-Pygments"/>
       <repopackage name="python310-pygraphviz"/>
       <repopackage name="python310-pyinotify"/>
