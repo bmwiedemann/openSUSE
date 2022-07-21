@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 18 06:11:24 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220716
+  + build-fix for test_mouse.c, for non-standard cfmakeraw.
+  + improve shell-scripts with shellcheck
+  + fix typo in run_tic.in (report/patch by Jan Starke).
+
+-------------------------------------------------------------------
 Mon Jul 11 06:12:27 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20220709

@@ -811,7 +811,7 @@
  
 --- test/test.priv.h
 +++ test/test.priv.h	2022-02-21 08:55:21.212338812 +0000
-@@ -1045,12 +1045,12 @@ extern char *_nc_strstr(const char *, co
+@@ -1061,12 +1061,12 @@ extern char *_nc_strstr(const char *, co
  #endif
  
  /* out-of-band values for representing absent capabilities */

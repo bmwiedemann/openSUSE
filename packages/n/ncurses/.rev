@@ -3734,4 +3734,15 @@
   * ncurses-6.3.dif</comment>
     <requestid>988345</requestid>
   </revision>
+  <revision rev="220" vrev="24">
+    <srcmd5>7693f5af4d52381bf15855fe421642a1</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1658395952</time>
+    <user>RBrownFactory</user>
+    <comment>- Add ncurses patch 20220716
+  + build-fix for test_mouse.c, for non-standard cfmakeraw.
+  + improve shell-scripts with shellcheck
+  + fix typo in run_tic.in (report/patch by Jan Starke).</comment>
+    <requestid>989812</requestid>
+  </revision>
 </revisionlist>
