@@ -19,33 +19,32 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-
+# https://github.com/Textualize/rich/issues/2410
+%define commit cde23ed0a1ecad8c63436148c7e1fb6f0073fca8
 Name:           python-rich
-Version:        12.3.0
+Version:        12.5.1
 Release:        0
 Summary:        A Python library for rich text and beautiful formatting in the terminal
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/willmcgugan/rich
-Source:         https://github.com/willmcgugan/rich/archive/v%{version}.tar.gz#/rich-%{version}.tar.gz
-BuildRequires:  %{python_module colorama >= 0.4.3}
-BuildRequires:  %{python_module commonmark >= 0.9.1}
+Source:         https://github.com/willmcgugan/rich/archive/%{commit}.tar.gz#/rich-%{version}.tar.gz
+BuildRequires:  %{python_module commonmark >= 0.9.0}
 BuildRequires:  %{python_module dataclasses >= 0.7 if %python-base < 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pygments >= 2.6.0}
-BuildRequires:  %{python_module typing_extensions >= 3.7.4 if %python-base < 3.8}
+BuildRequires:  %{python_module typing_extensions >= 4.0.0 if %python-base < 3.9}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-colorama >= 0.4.3
-Requires:       python-commonmark >= 0.9.1
+Requires:       python-commonmark >= 0.9.0
 Requires:       python-pygments >= 2.6.0
-Suggests:       python-ipywidgets
-%if 0%{?python_version_nodots} < 38
-Requires:       python-typing_extensions >= 3.7.4
+Suggests:       python-ipywidgets >= 7.5.1
+%if 0%{?python_version_nodots} < 39
+Requires:       python-typing_extensions >= 4.0.0
 %endif
 %if 0%{?python_version_nodots} < 37
 Requires:       python-dataclasses >= 0.7
@@ -58,7 +57,7 @@ Render rich text, tables, progress bars, syntax highlighting,
 markdown and more to the terminal.
 
 %prep
-%setup -q -n rich-%{version}
+%setup -q -n rich-%{commit}
 
 %build
 %pyproject_wheel
@@ -68,9 +67,7 @@ markdown and more to the terminal.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%if "%{python_flavor}" >= "python362"
 %pytest -k 'not test_log'
-%endif
 
 %files %{python_files}
 %license LICENSE

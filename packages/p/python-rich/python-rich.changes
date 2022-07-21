@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Jul 20 20:30:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 12.5.1
+  * Fixed missing typing extensions dependency on 3.9 #2386
+- Release
+  * Environment variables JUPYTER_COLUMNS and JUPYTER_LINES to
+    control width and height of console in Jupyter
+  * Markdown friendly Box style, MARKDOWN, for rendering tables
+    ready to copy into markdown files
+  * inspect will prefix coroutine functions with async def
+  * Default width of Jupyter console size is increased to 115
+  * Optimized Segment.divide
+  * Style.__add__ will no longer return NotImplemented
+  * Remove rich._lru_cache
+  * Fix Rich clobbering cursor style on Windows #2339
+  * Fix text wrapping edge case #2296
+  * Allow exceptions that are raised while a Live is rendered to be
+    displayed and/or processed #2305
+  * Fix crashes that can happen with inspect when docstrings
+    contain some special control codes #2294
+  * Fix edges used in first row of tables when show_header=False
+    #2330
+  * Fix interaction between Capture contexts and
+    Console(record=True) #2343
+  * Fixed hash issue in Styles class #2346
+  * Fixed bug in Segment.split_and_crop_lines
+- Release 12.4.4
+  * Added clipping per line to SVG output to avoid box characters
+    overlapping
+  * Optimized SVG output
+- Release 12.4.3
+  * Further tweaks to SVG character matrix
+  * Added clip rect to SVG to prevent box characters overlapping
+    bottom of terminal
+- Release 12.4.2
+  * Fix for SVG on Firefox
+  * Removed excess margin from SVG, tweaked cell sizes to better
+    render block characters
+- Release 12.4.1
+  * Fix for default background color in SVG export #2260
+  * Changed
+  * Added a keyline around SVG terminals which is visible on dark
+    backgrounds
+- Release 12.4.0
+  * Rebuilt SVG export to create a simpler SVG that is more
+    portable
+  * Fix render_lines crash when render height was negative #2246
+  * Add padding to Syntax constructor #2247
+- Remove nonsensical python362 conditional for tests
+- Fix requirements (missing typing_extensions in python38 broke
+  httpx -- gh#encode/httpx#2316)
+
+-------------------------------------------------------------------
 Thu Jul  7 10:34:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 12.3.0:
