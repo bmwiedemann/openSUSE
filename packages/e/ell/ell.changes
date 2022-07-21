@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 18 09:34:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.52:
+  * Fix issue with using PTRDIFF_MAX constant.
+  * Fix issue with accepting FD 0 as epoll_fd.
+  * Fix issue with setting bound time before emitting event.
+  * Fix issue with starting ACD before committing static IPv4.
+  * Fix issue with waiting for link-local address before DHCPv6. 
+
+-------------------------------------------------------------------
 Mon Jul 11 08:08:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.51:
