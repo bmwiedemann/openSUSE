@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 19 12:01:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.0:
+  * Added an option to include IP-less adapters, thanks to memory
+  * Fixed a bug where an interface's name was `bytes`, not `str`, on Windows
+  * Added an implementation of `netifaces.interfaces()` (available through
+    `ifaddr.netifaces.interfaces()`)
+  * Added type hints
+  * Dropped Python 3.6 support
+
+-------------------------------------------------------------------
 Sun Jun 14 09:23:55 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.1.7:

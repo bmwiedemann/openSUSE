@@ -46,4 +46,18 @@
   * Set up universal wheels, ifaddr will have both source and wheel distributions on PyPI from now on</comment>
     <requestid>814551</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2f5c911d5037e0193f2bf6f44a499e5a</srcmd5>
+    <version>0.2.0</version>
+    <time>1658395991</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 0.2.0:
+  * Added an option to include IP-less adapters, thanks to memory
+  * Fixed a bug where an interface's name was `bytes`, not `str`, on Windows
+  * Added an implementation of `netifaces.interfaces()` (available through
+    `ifaddr.netifaces.interfaces()`)
+  * Added type hints
+  * Dropped Python 3.6 support</comment>
+    <requestid>990233</requestid>
+  </revision>
 </revisionlist>
