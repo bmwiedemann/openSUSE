@@ -24,12 +24,12 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%define drvver  16.0
+%define drvver  16.1
 %define soname  0
 %define _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d
 %define _bashcompletionsdir %{_datadir}/bash-completion/completions
 Name:           pulseaudio
-Version:        16.0
+Version:        16.1
 Release:        0
 Summary:        A Networked Sound Server
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

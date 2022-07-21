@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 18 12:17:39 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Update to 16.1 (bsc#1201331):
+ * Fix parsing of percentage volumes with decimal points in pactl
+ * Fix crash with the "pacmd play-file" command when reads from the
+   disk aren't frame-aligned
+ * Fix module-rtp-recv sometimes thinking it's receiving an Opus
+   stream when it's not
+ * Fix frequent crashing in module-combine-sink, regression in 16.0
+ * Fix crashing on 32-bit architectures when using the GStreamer
+   codecs for LDAC and AptX
+
+-------------------------------------------------------------------
 Tue May 31 02:37:04 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - update to 16.0:
