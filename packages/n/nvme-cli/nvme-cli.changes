@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 14 14:37:05 UTC 2022 - daniel.wagner@suse.com
+
+- Update to version v2.1~rc0:
+  * build and install fixes/improvements
+  * documentation fixes
+  * version reporting includes library version
+  * various fixes reported by coverity
+  * new solidigm plugin
+
+-------------------------------------------------------------------
 Fri Apr 08 17:07:11 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 2.0:

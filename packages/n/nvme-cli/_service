@@ -4,9 +4,9 @@
     <param name="url">https://github.com/linux-nvme/nvme-cli.git</param>
     <param name="filename">nvme-cli</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v2.0</param>
-    <param name="versionrewrite-pattern">v(\d+.\d+)</param>
-    <param name="versionrewrite-replacement">\1</param>
+    <param name="revision">v2.1-rc0</param>
+    <param name="versionrewrite-pattern">v(\d+.\d+)-rc(\d+)</param>
+    <param name="versionrewrite-replacement">\1~rc\2</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual">

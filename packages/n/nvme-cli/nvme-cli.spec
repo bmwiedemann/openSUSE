@@ -17,7 +17,7 @@
 
 
 Name:           nvme-cli
-Version:        2.0
+Version:        2.1~rc0
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
@@ -31,7 +31,7 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libhugetlbfs-devel
 BuildRequires:  libjson-c-devel
-BuildRequires:  libnvme-devel >= 1.0
+BuildRequires:  libnvme-devel >= 1.1~rc0
 BuildRequires:  libuuid-devel
 BuildRequires:  make
 BuildRequires:  meson >= 0.47.0
