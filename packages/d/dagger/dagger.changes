@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jul 20 05:46:55 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.24:
+  * fix: broken CI due to alpha/aws/cdk test
+  * Uploads evaluated plan to DC when validation fails.
+  * ci: Use go.mod replaced CUE version for integration tests (#2801)
+  * [Docs] Redirect deprecated Dagger Cloud page
+  * build(deps): bump golang from 1.18.3-alpine to 1.18.4-alpine (#2792)
+  * build(deps): bump google.golang.org/grpc from 1.47.0 to 1.48.0 (#2793)
+  * universe: add uffizzi to dagger universe 🥳 (#2697)
+  * docs: Improve “Project file organization” guide (#2773)
+  * chore: Don’t create `cue.mod/usr` on init (#2787)
+  * universe(x/kubectl): update kustomize with latest version (#2581)
+  * Log core.Start output.  (#2561)
+  * docs: Fix conflicting slug in docs (#2784)
+  * fix: Use `bash.#Image` convention (#2775)
+  * feat(universe): add goreleaser to alpha (#2758)
+  * docs: Add Dagger Cloud discussion link in CTA
+  * docs: Minor Dagger Cloud page rewords
+  * docs: Remove tip dupe from Dagger Cloud docs
+  * docs: Add how to disconnect the CLI from Cloud
+  * docs: Fix Dagger Cloud CTA link
+  * docs(install): fix windows path (#2780)
+  * [Docs] Dagger Cloud CTA Routing Fix
+
+-------------------------------------------------------------------
 Sat Jul 16 18:59:32 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.23:
