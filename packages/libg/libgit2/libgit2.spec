@@ -17,9 +17,9 @@
 #
 
 
-%define sover 1_4
+%define sover 1_5
 Name:           libgit2
-Version:        1.4.4
+Version:        1.5.0
 Release:        0
 Summary:        C git library
 License:        GPL-2.0-only WITH GCC-exception-2.0
@@ -55,11 +55,17 @@ with bindings.
 Summary:        C git library
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-%{sover} >= %{version}
-Requires:       pkgconfig(libssh2)
 
 %description devel
 This package contains all necessary include files and libraries needed
 to compile and develop applications that use libgit2.
+
+%package tools
+Summary:        A Git command-line interface based on libgit2
+Group:          Development/Tools/Version Control
+
+%description tools
+This package contains a git cli based on libgit2.
 
 %prep
 %autosetup -p1
@@ -69,7 +75,7 @@ find examples -type f -name ".gitignore" -print -delete
 %cmake \
 	-DUSE_SSH:BOOL=ON \
 	-DREGEX_BACKEND=pcre2 \
-	-DENABLE_REPRODUCIBLE_BUILDS=ON \
+	-DENABLE_REPRODUCIBLE_BUILDS:BOOL=ON \
 	%{nil}
 %cmake_build
 
@@ -90,5 +96,9 @@ find examples -type f -name ".gitignore" -print -delete
 %{_libdir}/%{name}.so
 %{_includedir}/git2*
 %{_libdir}/pkgconfig/libgit2.pc
+
+%files
+%license COPYING
+%{_bindir}/*
 
 %changelog
