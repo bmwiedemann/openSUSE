@@ -1,0 +1,9 @@
+--- ./setup.py.orig	2022-07-12 22:44:49.776811649 +0800
++++ ./setup.py	2022-07-12 22:45:13.360596245 +0800
+@@ -170,5 +170,6 @@
+     long_description=long_description,
+     long_description_content_type="text/x-rst",
+     cmdclass=cmdclass,
++    include_dirs=["/usr/include/wayland"],
+     cffi_modules=["pywayland/ffi_build.py:ffi_builder"],
+ )

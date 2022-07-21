@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Tue Jul 19 02:35:31 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix URL
+
+-------------------------------------------------------------------
+Wed Jul 13 09:13:39 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Rename the package to python-pywayland and make it single spec.
+  This is to enable building for all python flavors.
+
+-------------------------------------------------------------------
+Tue Jul 12 14:45:56 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- add fix-wayland-paths.patch
+- remove 0001-fix-path-to-wayland-files-for-tests.patch
+- remove 0000-fix-code-path-to-wayland-files.patch
+- reenabled tests
+
+-------------------------------------------------------------------
+Thu Jul  7 06:07:12 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for python3-pywayland 0.4.13
+- add 0001-fix-path-to-wayland-files-for-tests.patch:
+  * python-cffi cannot use pkg-config to check where
+    wayland devel files and headers are
+- add 0000-fix-code-path-to-wayland-files.patch
+  * python-cffi cannot use pkg-config to check where
+    wayland devel files and headers are
+- disabling tests. not compatible with OBS
