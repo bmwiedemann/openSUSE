@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 13 11:57:00 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 8.0.8 (no changelog)
+- Rebase 01-fix-no-return-in-nonvoid.patch
+
+-------------------------------------------------------------------
 Mon May  9 12:19:30 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 8.0.7 (no changelog)
