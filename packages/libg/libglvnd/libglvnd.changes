@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 14 12:09:50 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- let libglvnd require Mesa-dri so GL drivers are available on
+  Wayland-only desktop installations (boo#1201474)
+
+-------------------------------------------------------------------
 Thu Mar  3 11:29:34 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - provide/obsolete Mesa-libGLESv1_CM1 and Mesa-libGLESv2-2 packages

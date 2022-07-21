@@ -311,4 +311,13 @@
   (bsc#1196576)</comment>
     <requestid>959392</requestid>
   </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>693e3ae63e496b0d7abeee4dff801a59</srcmd5>
+    <version>1.4.0</version>
+    <time>1658395961</time>
+    <user>RBrownFactory</user>
+    <comment>- let libglvnd require Mesa-dri so GL drivers are available on
+  Wayland-only desktop installations (boo#1201474)</comment>
+    <requestid>989149</requestid>
+  </revision>
 </revisionlist>
