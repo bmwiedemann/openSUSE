@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 20 06:30:09 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.6.3:
+  * Fix ternary operator logic when setting the google_migration flag.
+
+-------------------------------------------------------------------
 Wed Jul  6 06:53:14 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.6.2:
