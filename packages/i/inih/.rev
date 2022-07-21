@@ -46,4 +46,14 @@ war rightfully raised in my previous one.</comment>
     <comment></comment>
     <requestid>964954</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0428efdf98469d58f33cf4bacdb94dca</srcmd5>
+    <version>56</version>
+    <time>1658395975</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 55
+  * Fix redundant cast-to-int when INI_USE_STACK!=0
+  * Make inline comments work on subsequent lines of multiline values</comment>
+    <requestid>989548</requestid>
+  </revision>
 </revisionlist>

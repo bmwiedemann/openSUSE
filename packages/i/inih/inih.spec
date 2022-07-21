@@ -18,7 +18,7 @@
 
 
 Name:           inih
-Version:        55
+Version:        56
 Release:        0
 Summary:        Simple .INI file parser in C, good for embedded systems
 License:        BSD-3-Clause
