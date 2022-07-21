@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul 20 08:49:57 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.6.5: Enhanced dependency management
+  * Removed `responses` as requirement
+  * Use `cached_property` instead of `backports.cached_property` 
+    (which is not in the openSUSE repos)
+  * Only install `cached_property` as requirement for Py3.7 and earlier
+
+-------------------------------------------------------------------
+Tue Jul 19 07:01:51 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.6.4
+  * Handle 40x (x!=1) responses properly in `HttpSignatureAuth`
+
+-------------------------------------------------------------------
+Mon Jul 18 07:55:16 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.6.3
+  * Do not assume that `oscrc` contains the SSH passphrase
+  * Handle absence of `sshkey` in `.oscrc` gracefully 
+
+-------------------------------------------------------------------
 Thu Jun 30 08:48:29 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.6.2

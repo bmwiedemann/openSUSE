@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-osc-tiny
-Version:        0.6.2
+Version:        0.6.5
 Release:        0
 Summary:        Client API for openSUSE BuildService
 License:        MIT
@@ -27,7 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/crazyscientist/osc-tiny
 Source:         https://files.pythonhosted.org/packages/source/o/osc-tiny/osc-tiny-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest}
@@ -39,11 +38,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
-Requires:       python-cached-property
 Requires:       python-lxml
 Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires:       python-requests
+%if %python_version_nodots < 38
+BuildRequires:  python3-cached-property
+Requires:       python-cached-property
+%endif
 Suggests:       openssh
 BuildArch:      noarch
 %python_subpackages
