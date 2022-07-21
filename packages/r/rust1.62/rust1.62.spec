@@ -18,7 +18,7 @@
 
 
 %global version_suffix 1.62
-%global version_current 1.62.0
+%global version_current 1.62.1
 %global version_previous 1.61.0
 # This has to be kept lock step to the rust version.
 %global llvm_version 14
@@ -150,8 +150,6 @@ ExcludeArch:    armv6hl
 %bcond_with wasm32
 %bcond_with wasi
 %endif
-
-
 
 # Test is done in a different multibuild package (rustXXX-test).  This
 # package will replace the local-rust-root and use the systems's one
