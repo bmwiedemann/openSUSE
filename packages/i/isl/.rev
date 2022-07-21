@@ -217,4 +217,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>893479</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>13e92afed96203360c8246e135ddc024</srcmd5>
+    <version>0.25</version>
+    <time>1658395952</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 0.25:
+  * support (type safe) user object on id in bindings
+  * more exports to (templated C++) bindings
+  * add some convenience functions (forwarded request 990048 from dirkmueller)</comment>
+    <requestid>990099</requestid>
+  </revision>
 </revisionlist>

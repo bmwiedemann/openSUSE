@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 18 20:16:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.25:
+  * support (type safe) user object on id in bindings
+  * more exports to (templated C++) bindings
+  * add some convenience functions
+
+-------------------------------------------------------------------
 Sun May  9 14:05:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.24:

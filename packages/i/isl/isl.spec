@@ -1,7 +1,7 @@
 #
 # spec file for package isl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define islsover 23
 Name:           isl
-Version:        0.24
+Version:        0.25
 Release:        0
 Summary:        Integer Set Library
 License:        MIT
 Group:          Development/Languages/C and C++
-URL:            https://isl.gforge.inria.fr/
-Source:         http://isl.gforge.inria.fr/isl-%{version}.tar.xz
+URL:            https://libisl.sourceforge.io/
+Source:         https://libisl.sourceforge.io/isl-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  gmp-devel
 BuildRequires:  pkgconfig
