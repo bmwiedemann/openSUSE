@@ -18,7 +18,7 @@
 
 Name:           libguestfs
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64
-Version:        1.48.3
+Version:        1.48.4
 Release:        0
 Summary:        Access and modify virtual machine disk images
 License:        GPL-2.0-or-later
@@ -32,8 +32,6 @@ Source100:      mount-rootfs-and-chroot.sh
 Source101:      README
 
 # Patches
-Patch1:         CVE-2022-2211-options-fix-buffer-overflow-in-get_keys.patch
-Patch2:         CVE-2022-2211-docs-guestfs-security-document.patch
 
 BuildRequires:  bison
 BuildRequires:  file-devel
