@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           libnvme
-Version:        1.0
+Version:        1.1~rc0
 Release:        0
 Summary:        Linux-native nvme device management library
 License:        LGPL-2.1-or-later
@@ -49,12 +49,20 @@ system.
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name}%{sover} = %{version}
+Requires:       %{name}-mi%{sover} = %{version}
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
-%package -n	python3-libnvme
+%package        mi%{sover}
+Summary:        NVMe Managament Interface library for %{name}
+
+%description    mi%{sover}
+Provides library functions for managing NVMe devices via the NVMe
+Managament Interface.
+
+%package -n     python3-libnvme
 Summary:        Python binding for %{name}
 
 %description -n python3-libnvme
@@ -77,6 +85,9 @@ Python binding part.
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
+%post -n %{name}-mi%{sover} -p /sbin/ldconfig
+%postun -n %{name}-mi%{sover} -p /sbin/ldconfig
+
 %files -n %{name}%{sover}
 %license COPYING
 %doc README.md
@@ -87,7 +98,13 @@ Python binding part.
 %{_includedir}/*
 %{_libdir}/%{name}*.so
 %{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/pkgconfig/%{name}-mi.pc
 %{_mandir}/*/*
+
+%files -n %{name}-mi%{sover}
+%license COPYING
+%doc README.md
+%{_libdir}/%{name}-mi.so.%{sover}*
 
 %files -n python3-libnvme
 %{python3_sitearch}/libnvme

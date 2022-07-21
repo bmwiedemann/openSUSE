@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 14 14:00:41 UTC 2022 - daniel.wagner@suse.com
+
+- Update to version v1.1-rc0:
+  * update/cleanup of documentation
+  * various build fixes
+  * various fixes reported by coverity
+  * 64-bit Reference Tags and TP-4068 changes
+  * libnvme-mi: Introduce NVMe Managament Interface library
+
+-------------------------------------------------------------------
 Fri Apr 08 17:04:22 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 1.0:
