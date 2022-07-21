@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 19 11:58:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.4:
+  * Update type hints for pyright
+
+-------------------------------------------------------------------
 Tue Feb 22 09:22:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.3:

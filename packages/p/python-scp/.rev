@@ -104,4 +104,13 @@
   * Add type hints</comment>
     <requestid>956646</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0148700ed52d60d8a9922e9224894e25</srcmd5>
+    <version>0.14.4</version>
+    <time>1658395990</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 0.14.4:
+  * Update type hints for pyright</comment>
+    <requestid>990229</requestid>
+  </revision>
 </revisionlist>
