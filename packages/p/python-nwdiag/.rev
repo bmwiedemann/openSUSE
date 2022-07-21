@@ -42,4 +42,15 @@
     <comment></comment>
     <requestid>808047</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bac7be4fbd8e25ff6c0d04156a2defb9</srcmd5>
+    <version>3.0.0</version>
+    <time>1658395993</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 3.0.0:
+  * Drop python3.6 support
+  * Use funcparserlib-1.0.0a0 or newer to support new python versions
+  * Allow to write multiline string via triple quotes (&quot;&quot;&quot; ... &quot;&quot;&quot;)</comment>
+    <requestid>990240</requestid>
+  </revision>
 </revisionlist>
