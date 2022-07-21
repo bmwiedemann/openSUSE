@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 13 22:01:34 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+fix: reintroduce efont-unicode-bitmap-fonts so that there is a fallback
+for CJK
+
+-------------------------------------------------------------------
 Mon Jul 11 09:24:47 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Revert to recommend noto-sans-fonts only, noto-fonts and

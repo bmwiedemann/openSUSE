@@ -38,6 +38,7 @@ This particular package contains the Fonts patterns.
 
 
 
+
 ################################################################################
 
 %package fonts
@@ -86,7 +87,8 @@ Recommends:     adobe-sourcecodepro-fonts
 Recommends:     adobe-sourcesanspro-fonts
 Recommends:     adobe-sourceserifpro-fonts
 Recommends:     ghostscript-fonts-other
-# noto-sans and noto-sans-cjk-fonts pull in too much (>500MiB!)
+# noto-sans and noto-sans-cjk pulls in too much (>500MiB!)
+Recommends:     efont-unicode-bitmap-fonts
 Recommends:     noto-sans-fonts
 Recommends:     stix-fonts
 Recommends:     texlive-lm-fonts
