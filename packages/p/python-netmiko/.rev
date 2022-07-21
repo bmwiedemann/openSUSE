@@ -148,4 +148,27 @@
     <comment></comment>
     <requestid>973262</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b2fb303cea3e1954cc20c1e212864bc2</srcmd5>
+    <version>4.1.1</version>
+    <time>1658395992</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 4.1.1:
+  * add Nokia SRLinux Support
+  * Add Mikrotik File Transfer Support
+  * Performance Improvements
+  * Performance Improvements for Linux Driver
+  * Improve Performance Graphs
+  * Bug Fixes / Improvements
+  * Better Error Messages for Incompatible Python Versions
+  * Improve Huawei Driver
+  * Improve Huawei VRPv8 Driver
+  * Improve HPE ProCurve Driver
+  * Improving Junos context stripping patterns
+  * Improve MikroTik Driver
+  * Fix for Extreme ERS login issues
+  * Minor update to threading calls in Netmiko Tools
+  * Increase save_config default timeout for Cisco-based platforms</comment>
+    <requestid>990235</requestid>
+  </revision>
 </revisionlist>
