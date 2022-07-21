@@ -133,6 +133,9 @@ This package provides the API documentation for OpenImageIO.
 %package -n libOpenImageIO%{so_ver}
 Summary:        Library for Reading and Writing Images
 Group:          System/Libraries
+# this is unfortunate and a fallout of properly naming the lib after fixing so_ver
+Conflicts:      libOpenColorIO2_0 = 2.1.1
+Conflicts:      libOpenColorIO2_0 = 2.1.2
 
 %description -n libOpenImageIO%{so_ver}
 OpenImageIO is a library for reading and writing images, and a bunch of related
