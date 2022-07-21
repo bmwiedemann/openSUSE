@@ -16,6 +16,8 @@
 #
 
 
+#!BuildIgnore: Mesa-dri
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "drivers"
 %global psuffix -drivers

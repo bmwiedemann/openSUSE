@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 15 13:00:57 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- let Mesa ignore Mesa-dri as dep to resolve a build cycle
+  (related to boo#1201474
+
+-------------------------------------------------------------------
 Sun Jul  3 07:59:22 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 22.1.3

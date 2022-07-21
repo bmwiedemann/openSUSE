@@ -4939,4 +4939,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     performance fixes for wsi/x11.</comment>
     <requestid>986449</requestid>
   </revision>
+  <revision rev="446" vrev="318">
+    <srcmd5>4844a86f3c73f9fa7dcbc855e893249d</srcmd5>
+    <version>unknown</version>
+    <time>1658395968</time>
+    <user>RBrownFactory</user>
+    <comment>- let Mesa ignore Mesa-dri as dep to resolve a build cycle
+  (related to boo#1201474</comment>
+    <requestid>989448</requestid>
+  </revision>
 </revisionlist>
