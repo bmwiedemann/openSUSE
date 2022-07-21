@@ -16,9 +16,9 @@
 #
 
 
-%define sover 192
+%define sover 208
 Name:           libplacebo
-Version:        4.192.1
+Version:        4.208.0
 Release:        0
 Summary:        Library for GPU-accelerated video/image rendering primitives
 License:        LGPL-2.1-or-later
