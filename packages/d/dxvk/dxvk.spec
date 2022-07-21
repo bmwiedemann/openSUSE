@@ -17,7 +17,7 @@
 
 
 Name:           dxvk
-Version:        1.10
+Version:        1.10.2
 Release:        0
 Summary:        Vulkan-based D3D11 implementation for Linux / Wine
 License:        zlib-acknowledgement

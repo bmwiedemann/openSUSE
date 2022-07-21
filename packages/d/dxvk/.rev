@@ -106,4 +106,12 @@
   - **God of War**: Enabled performance optimizations and DLSS support. *Note that these changes are already included in Proton Experimental.* (forwarded request 959619 from msmeissn)</comment>
     <requestid>959620</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>405357026d40e12f8dcc600a327916c4</srcmd5>
+    <version>1.10.2</version>
+    <time>1658396114</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>990433</requestid>
+  </revision>
 </revisionlist>

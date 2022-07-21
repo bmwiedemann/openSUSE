@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Jul 13 15:18:04 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 1.10.2
+  - Implemented non-seamless cube maps for D3D9 using the `VK_EXT_non_seamless_cube_map` extension if supported by the driver
+  - FIxed an issue with current versions of the Nvidia Vulkan developer driver not using its on-disk shader cache with DXVK
+  - Fixed an issue which would cause the state cache file to not be written properly
+  - Fixed an issue where incorrect barriers would be emitted for UAV rendering (#2696)
+  - Fixed an issue where the `d3d11.samplerAnisotropy` option would apply to the wrong kind of samplers
+  - Fixed potential issues when using state caches that were created on a driver with a different feature set
+  - Fixed broken stencil resolves in D3D9
+  - Fixed build issues on GCC 12.1
+  - Optimized UAV clears in D3D11 to allow drivers to use image compression more frequently
+  - Optimized performance of in-memory compression for SPIR-V shader code
+  - **Beyond Good and Evil**: Work around missing light shafts (#2680)
+  - **Day Z**: Enabled `d3d11.cachedDynamicResources` option to work around performance issues (PR #2709)
+  - **Dead Space**: Fixed shadow rendering and added 60 FPS lock to work around game bugs (#2704)
+  - **Dirt Rally**: Fixed potential GPU hang due to game bugs in a shader
+  - **Godfather**: Fixed crash on systems that don't support 16x MSAA (#2590)
+  - **Limbo**: Enable 60 FPS limit to work around game bugs (PR #2566)
+  - **Majesty 2**: Work around game bugs causing issues on integrated GPUs and systems with more than 2GB of VRAM (#1542, #PR 2612)
+  - **Myst V**: Work around an issue when the word "Radeon" is not part of the device name on AMD GPUs (#2661)
+  - **Onechanbara Z2: Chaos**: Fixed particle effects and UI elements not displaying properly (#2701)
+  - **Planetary Annihilation: TITANS**: Fixed crash when creating swap chain on a NULL window (PR #2665), as well as a crash due to creating too many internal worker threads (#2670).
+  - **Plants vs. Zombies Garden Warfare 2**: Work around crash when the game detects an AMD GPU (PR #2700)
+  - **Return of Reckoning**: Work around launcher issues (#2568, PR #2579)
+  - **Scrapland Remastered**: Work around black screen issues (#2398, PR #2574)
+  - **Small Radios Big Televisions**: Work around black screen issue (PR #2646)
+  - **Sonic Adventure 2**: Fixed missing particle effects (#2672, PR #2677)
+  - **SpellForce Platinum Edition**: Fixed crash (#2710, PR #2711)
+  - **Supreme Commander**: Fixed missing particle effects (#2638, PR #2682, PR #2684)
+  - **Star Wars: The Force Unleashed II**: Fixed some particle effects not rencering correctly (PR #2584)
+  - **Star Wars: The Old Republic**: Fixed rendering issues (#2676, PR #2681)
+- updated to 1.10.1
+  Features
+
+  Implemented initial support for shared resources (PR #2516). This
+  fixes video playback in a number of Koei Tecmo games (Atelier series,
+  Nioh 2), as well as the D3D11-based UI in the Windows version of Black
+  Mesa. The required wine patches are currently only available in Proton
+  Experimental. This feature will not be supported on Windows systems.
+
+  This feature is still experimental and has not been thoroughly tested
+  on all graphics drivers, so issues are to be expected. Currently,
+  only basic 2D texture sharing between D3D9 and D3D11 is supported
+  when using DXVK for both APIs. API features that are currently not
+  supported include:
+
+  - IDXGIKeyedMutex. Documentation is very poor and it's not clear how an implementation is supposed to behave.
+  - Resource sharing with D3D12 applications under vkd3d-proton. This may be added in the future.
+  - Resource sharing with Vulkan applications.
+
+  Note: The Black Mesa UI flickers heavily when the game is not
+  GPU-bound. This also happens on Windows to some degree and is a
+  game bug.
+
+  Bug fixes and Improvements
+
+  - Added an environment variable DXVK_ENABLE_NVAPI to bypass the vendor ID override. Setting it to 1 behaves exactly the same as setting dxvk.nvapiHack = False in the config file, but may allow for better integration into Lutris or the Proton launch script. (#2544)
+  - Improved shader code generation when local arrays are used. This may improve performance on Nvidia drivers in some D3D11 games.
+  - Fixed shader code generation when switch-case fallthrough is used in Shader Model 4.0 (#2556). Current FXC versions no longer generate such code.
+  - Potentially improved performance when rendering to DXGI_FORMAT_R11G11B10_FLOAT images that can also be used with unordered access views.
+  - Fixed various D3D9 issues related to texture uploads (#2559, #2541, #2535).
+  - Assassin's Creed 3, Black Flag: Enabled d3d11.cachedDynamicResources = a to work around severe performance issues.
+  - Frostpunk: Enabled d3d11.cachedDynamicResources = c to work around low CPU-bound performance.
+  - God of War: Fixed some issues that started with game patch 1.0.9:
+    -   Extremely inconsistent frame pacing when the game detects an AMD GPU, dxgi.maxFrameLatency = 1 is now set by default to work around this issue.
+    -   Heavy flickering of some lights. Apparently this was also fixed in the game in patch 1.0.11.
+  - GTA: San Andreas: Fixed UI rendering issues (#2560)
+  - Rayman Origins: Fixed rendering issues (#2545)
+
+-------------------------------------------------------------------
 Sat Mar  5 14:19:05 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 1.10
@@ -15,7 +86,7 @@ Sat Mar  5 14:19:05 UTC 2022 - Marcus Meissner <meissner@suse.com>
   - Version numbers for Intel's Windows driver should now be reported properly.
   **Note** that using DXVK on this driver is highly discouraged and will likely not work.
   - **ArmA 2**: Fixed texture-related issues (PR #2477).
-  - **Black Mesa**: Fixed 
+  - **Black Mesa**: Fixed
   - **Resident Evil 0**, **5**, **6**, **Resident Evil: Revelations 2**: Improved performance (PR #2466).
   - **Total War: Warhammer III**: Significantly improved GPU-bound performance on setups with a dedicated GPU.
 
