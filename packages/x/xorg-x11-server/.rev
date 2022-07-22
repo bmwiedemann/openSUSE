@@ -3779,4 +3779,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     (CVE-2022-2319, ZDI-CAN-16062, bsc#1194179)</comment>
     <requestid>988635</requestid>
   </revision>
+  <revision rev="409" vrev="1">
+    <srcmd5>a52c9dacc383e7b3b56b1cd448e6a1f2</srcmd5>
+    <version>21.1.4</version>
+    <time>1658510424</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>990429</requestid>
+  </revision>
 </revisionlist>

@@ -36,7 +36,7 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        21.1.3
+Version:        21.1.4
 Release:        0
 URL:            http://xorg.freedesktop.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -245,15 +245,7 @@ Patch1930:      u_xfree86-activate-GPU-screens-on-autobind.patch
 
 Patch1940:      U_xephyr-Don-t-check-for-SeatId-anymore.patch
 
-Patch1950:      U_Fix-build-with-gcc-12.patch
-
-Patch1960:      u_sync-pci-ids-with-Mesa-22.0.0.patch
-
-#CVE-2022-2320, ZDI-CAN-16070, bsc#1194181
-Patch2001:      U_boo1194181-001-xkb-swap-XkbSetDeviceInfo-and-XkbSetDeviceInfoCheck.patch
-#CVE-2022-2319, ZDI-CAN-16062, bsc#1194179
-Patch2101:      U_boo1194179-001-xkb-rename-xkb_h-to-xkb-procs_h.patch
-Patch2102:      U_boo1194179-002-xkb-add-request-length-validation-for-XkbSetGeometry.patch
+Patch1960:      u_sync-pci-ids-with-Mesa.patch
 
 %description
 This package contains the X.Org Server.
@@ -411,11 +403,7 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1920 -p1
 %patch1930 -p1
 %patch1940 -p1
-%patch1950 -p1
 %patch1960 -p1
-%patch2001 -p1
-%patch2101 -p1
-%patch2102 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):

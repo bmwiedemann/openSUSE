@@ -1,8 +1,7 @@
-diff --git a/hw/xfree86/dri2/pci_ids/crocus_pci_ids.h b/hw/xfree86/dri2/pci_ids/crocus_pci_ids.h
-new file mode 100644
-index 000000000..9c9b6cd17
+Index: xorg-server-21.1.4/hw/xfree86/dri2/pci_ids/crocus_pci_ids.h
+===================================================================
 --- /dev/null
-+++ b/hw/xfree86/dri2/pci_ids/crocus_pci_ids.h
++++ xorg-server-21.1.4/hw/xfree86/dri2/pci_ids/crocus_pci_ids.h
 @@ -0,0 +1,104 @@
 +CHIPSET(0x29A2, i965,    "BW",      "Intel(R) 965G")
 +CHIPSET(0x2992, i965,    "BW",      "Intel(R) 965Q")
@@ -108,20 +107,19 @@ index 000000000..9c9b6cd17
 +CHIPSET(0x22B1, chv,     "BSW",     "Intel(R) HD Graphics XXX") /* Overridden in brw_get_renderer_string */
 +CHIPSET(0x22B2, chv,     "CHV",     "Intel(R) HD Graphics")
 +CHIPSET(0x22B3, chv,     "CHV",     "Intel(R) HD Graphics")
-diff --git a/hw/xfree86/dri2/pci_ids/i810_pci_ids.h b/hw/xfree86/dri2/pci_ids/i810_pci_ids.h
-deleted file mode 100644
-index 7f681925d..000000000
---- a/hw/xfree86/dri2/pci_ids/i810_pci_ids.h
+Index: xorg-server-21.1.4/hw/xfree86/dri2/pci_ids/i810_pci_ids.h
+===================================================================
+--- xorg-server-21.1.4.orig/hw/xfree86/dri2/pci_ids/i810_pci_ids.h
 +++ /dev/null
 @@ -1,4 +0,0 @@
 -CHIPSET(0x7121, I810, i8xx)
 -CHIPSET(0x7123, I810_DC100, i8xx)
 -CHIPSET(0x7125, I810_E, i8xx)
 -CHIPSET(0x1132, I815, i8xx)
-diff --git a/hw/xfree86/dri2/pci_ids/i915_pci_ids.h b/hw/xfree86/dri2/pci_ids/i915_pci_ids.h
-index 1c43c8ec7..4cd1faf74 100644
---- a/hw/xfree86/dri2/pci_ids/i915_pci_ids.h
-+++ b/hw/xfree86/dri2/pci_ids/i915_pci_ids.h
+Index: xorg-server-21.1.4/hw/xfree86/dri2/pci_ids/i915_pci_ids.h
+===================================================================
+--- xorg-server-21.1.4.orig/hw/xfree86/dri2/pci_ids/i915_pci_ids.h
++++ xorg-server-21.1.4/hw/xfree86/dri2/pci_ids/i915_pci_ids.h
 @@ -1,7 +1,3 @@
 -CHIPSET(0x3577, I830_M,   "Intel(R) 830M")
 -CHIPSET(0x2562, 845_G,    "Intel(R) 845G")
@@ -130,10 +128,9 @@ index 1c43c8ec7..4cd1faf74 100644
  CHIPSET(0x2582, I915_G,   "Intel(R) 915G")
  CHIPSET(0x258A, E7221_G,  "Intel(R) E7221G (i915)")
  CHIPSET(0x2592, I915_GM,  "Intel(R) 915GM")
-diff --git a/hw/xfree86/dri2/pci_ids/i965_pci_ids.h b/hw/xfree86/dri2/pci_ids/i965_pci_ids.h
-deleted file mode 100644
-index c4072e2ee..000000000
---- a/hw/xfree86/dri2/pci_ids/i965_pci_ids.h
+Index: xorg-server-21.1.4/hw/xfree86/dri2/pci_ids/i965_pci_ids.h
+===================================================================
+--- xorg-server-21.1.4.orig/hw/xfree86/dri2/pci_ids/i965_pci_ids.h
 +++ /dev/null
 @@ -1,252 +0,0 @@
 -#ifndef IRIS
@@ -388,10 +385,10 @@ index c4072e2ee..000000000
 -CHIPSET(0x9AC9, tg1_1x2x16, "Intel(R) HD Graphics (Tigerlake 1x2x16 GT2)")
 -CHIPSET(0x9AD9, tgl_1x2x16, "Intel(R) HD Graphics (Tigerlake 1x2x16 GT2)")
 -CHIPSET(0x9AF8, tgl_1x2x16, "Intel(R) HD Graphics (Tigerlake 1X2X16 GT2)")
-diff --git a/hw/xfree86/dri2/pci_ids/pci_id_driver_map.h b/hw/xfree86/dri2/pci_ids/pci_id_driver_map.h
-index 04f372279..6077d2641 100644
---- a/hw/xfree86/dri2/pci_ids/pci_id_driver_map.h
-+++ b/hw/xfree86/dri2/pci_ids/pci_id_driver_map.h
+Index: xorg-server-21.1.4/hw/xfree86/dri2/pci_ids/pci_id_driver_map.h
+===================================================================
+--- xorg-server-21.1.4.orig/hw/xfree86/dri2/pci_ids/pci_id_driver_map.h
++++ xorg-server-21.1.4/hw/xfree86/dri2/pci_ids/pci_id_driver_map.h
 @@ -8,31 +8,17 @@
  #endif
  
@@ -443,10 +440,9 @@ index 04f372279..6077d2641 100644
     { 0x1002, "r300", r300_chip_ids, ARRAY_SIZE(r300_chip_ids) },
     { 0x1002, "r600", r600_chip_ids, ARRAY_SIZE(r600_chip_ids) },
     { 0x1002, "radeonsi", NULL, -1 },
-diff --git a/hw/xfree86/dri2/pci_ids/r200_pci_ids.h b/hw/xfree86/dri2/pci_ids/r200_pci_ids.h
-deleted file mode 100644
-index f857ca704..000000000
---- a/hw/xfree86/dri2/pci_ids/r200_pci_ids.h
+Index: xorg-server-21.1.4/hw/xfree86/dri2/pci_ids/r200_pci_ids.h
+===================================================================
+--- xorg-server-21.1.4.orig/hw/xfree86/dri2/pci_ids/r200_pci_ids.h
 +++ /dev/null
 @@ -1,24 +0,0 @@
 -CHIPSET(0x5148, R200_QH, R200)
@@ -473,10 +469,9 @@ index f857ca704..000000000
 -CHIPSET(0x5835, RS300_5835, RS300)
 -CHIPSET(0x7834, RS350_7834, RS300)
 -CHIPSET(0x7835, RS350_7835, RS300)
-diff --git a/hw/xfree86/dri2/pci_ids/radeon_pci_ids.h b/hw/xfree86/dri2/pci_ids/radeon_pci_ids.h
-deleted file mode 100644
-index a9efc767d..000000000
---- a/hw/xfree86/dri2/pci_ids/radeon_pci_ids.h
+Index: xorg-server-21.1.4/hw/xfree86/dri2/pci_ids/radeon_pci_ids.h
+===================================================================
+--- xorg-server-21.1.4.orig/hw/xfree86/dri2/pci_ids/radeon_pci_ids.h
 +++ /dev/null
 @@ -1,23 +0,0 @@
 -CHIPSET(0x4C57, RADEON_LW, RV200)
@@ -502,10 +497,9 @@ index a9efc767d..000000000
 -CHIPSET(0x4337, RS200_4337, RS200)
 -CHIPSET(0x4237, RS250_4237, RS200)
 -CHIPSET(0x4437, RS250_4437, RS200)
-diff --git a/hw/xfree86/dri2/pci_ids/radeonsi_pci_ids.h b/hw/xfree86/dri2/pci_ids/radeonsi_pci_ids.h
-deleted file mode 100644
-index 2ec8a1e24..000000000
---- a/hw/xfree86/dri2/pci_ids/radeonsi_pci_ids.h
+Index: xorg-server-21.1.4/hw/xfree86/dri2/pci_ids/radeonsi_pci_ids.h
+===================================================================
+--- xorg-server-21.1.4.orig/hw/xfree86/dri2/pci_ids/radeonsi_pci_ids.h
 +++ /dev/null
 @@ -1,237 +0,0 @@
 -CHIPSET(0x6780, TAHITI_6780, TAHITI)
@@ -745,3 +739,10 @@ index 2ec8a1e24..000000000
 -CHIPSET(0x69AF, VEGA12_, VEGA12)
 -
 -CHIPSET(0x15DD, RAVEN_, RAVEN)
+Index: xorg-server-21.1.4/hw/xfree86/dri2/pci_ids/vmwgfx_pci_ids.h
+===================================================================
+--- xorg-server-21.1.4.orig/hw/xfree86/dri2/pci_ids/vmwgfx_pci_ids.h
++++ xorg-server-21.1.4/hw/xfree86/dri2/pci_ids/vmwgfx_pci_ids.h
+@@ -1 +1,2 @@
+ CHIPSET(0x0405, SVGAII, SVGAII)
++CHIPSET(0x0406, SVGAv3, SVGAv3)

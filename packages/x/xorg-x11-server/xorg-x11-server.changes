@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jul 13 14:02:51 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- rename u_sync-pci-ids-with-Mesa-22.0.0.patch to 
+  u_sync-pci-ids-with-Mesa.patch (currently synced with Mesa 22.1.3)
+
+-------------------------------------------------------------------
+Wed Jul 13 13:52:38 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_sync-pci-ids-with-Mesa-22.0.0.patch
+  * synced with Mesa 22.1.3; just adding a PCI ID for vmware was
+    needed
+
+-------------------------------------------------------------------
+Wed Jul 13 12:38:05 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 21.1
+  * This release fixes 2 recently reported security vulnerabilities
+    in xkb, several regressions since 1.20.x and a number of
+    miscellaneous bugs.
+- supersedes the following security patches
+  * U_boo1194181-001-xkb-swap-XkbSetDeviceInfo-and-XkbSetDeviceInfoCheck.patch
+  * U_boo1194179-001-xkb-rename-xkb_h-to-xkb-procs_h.patch
+  * U_boo1194179-002-xkb-add-request-length-validation-for-XkbSetGeometry.patch
+- supersedes U_Fix-build-with-gcc-12.patch
+
+-------------------------------------------------------------------
 Wed Jul  6 12:21:11 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_boo1194181-001-xkb-swap-XkbSetDeviceInfo-and-XkbSetDeviceInfoCheck.patch
