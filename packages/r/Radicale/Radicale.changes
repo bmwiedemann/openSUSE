@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 14 22:11:43 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
+
+- Update to 3.1.8
+  * Fix setuptools requirement if installing wheel
+  * Tests: Switch from python setup.py test to tox
+  * Small changes to build system configuration and tests
+
+-------------------------------------------------------------------
 Wed Jun 22 18:47:02 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
 
 - Add python passlib as a recommendation as it is needed for

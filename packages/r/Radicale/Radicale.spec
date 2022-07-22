@@ -26,7 +26,7 @@
 %define vo_min_ver 0.9.6
 %define du_min_ver 2.7.3
 Name:           Radicale
-Version:        3.1.7
+Version:        3.1.8
 Release:        0
 Summary:        A CalDAV calendar and CardDav contact server
 License:        GPL-3.0-or-later
@@ -110,7 +110,7 @@ test -e %{pkg_config}/users  || touch %{pkg_config}/users
 %service_del_postun %{pkg_name}.service
 
 %files
-%license COPYING
+%license COPYING.md
 %doc CHANGELOG.md DOCUMENTATION.md README.md
 %{_bindir}/%{pkg_name}
 %{python3_sitelib}/%{name}-%{version}-py*.egg-info
