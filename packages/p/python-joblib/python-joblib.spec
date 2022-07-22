@@ -1,7 +1,7 @@
 #
 # spec file for package python-joblib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,17 +23,17 @@ Version:        1.1.0
 Release:        0
 Summary:        Module for using Python functions as pipeline jobs
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/joblib/joblib
 Source:         https://files.pythonhosted.org/packages/source/j/joblib/joblib-%{version}.tar.gz
+Patch0:         support-setuptools-62.patch
 BuildRequires:  %{python_module lz4}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module threadpoolctl}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 Recommends:     python-lz4
 Recommends:     python-numpy
 Recommends:     python-psutil
@@ -55,7 +55,7 @@ Python. In particular, joblib offers:
 Joblib can handle large data and has specific optimizations for `numpy` arrays.
 
 %prep
-%setup -q -n joblib-%{version}
+%autosetup -p1 -n joblib-%{version}
 
 %build
 %python_build

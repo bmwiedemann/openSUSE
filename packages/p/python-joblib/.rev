@@ -220,4 +220,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>927139</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>d9db5e76b2f7a8cf54791e1510067219</srcmd5>
+    <version>1.1.0</version>
+    <time>1658510421</time>
+    <user>RBrownFactory</user>
+    <comment>- Add patch support-setuptools-62.patch:
+  * Support setuptools &gt;= 62 by handling more than one warning in a test
+    case.</comment>
+    <requestid>990387</requestid>
+  </revision>
 </revisionlist>

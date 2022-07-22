@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 20 11:00:18 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-setuptools-62.patch:
+  * Support setuptools >= 62 by handling more than one warning in a test
+    case. 
+
+-------------------------------------------------------------------
 Sat Oct 16 21:31:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:
