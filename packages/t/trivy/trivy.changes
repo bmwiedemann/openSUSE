@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jul 21 13:21:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.30.2:
+  * fix(report): show the summary without results (#2548)
+  * fix(cli): replace '-' to '_' for env vars (#2561)
+
+-------------------------------------------------------------------
+Wed Jul 20 12:20:52 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.30.1:
+  * chore: remove a test repository (#2551)
+  * fix(license): lazy loading of classifiers (#2547)
+  * fix: CVE-2022-1996 in Trivy (#2499)
+  * docs(sbom): add sbom attestation (#2527)
+  * feat(rocky): set Rocky Linux 9 EOL (#2543)
+  * docs: add attributes to the video tag to autoplay demo videos (#2538)
+  * fix: yaml files with non-string chart name (#2534)
+  * fix: skip dirs (#2530)
+  * feat(repo): add support for branch, commit, & tag (#2494)
+  * fix: remove auto configure environment variables via viper (#2526)
+
+-------------------------------------------------------------------
 Sat Jul 16 19:28:03 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.30.0:
