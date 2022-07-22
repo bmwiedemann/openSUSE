@@ -207,7 +207,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        11.2.1+git1635
+Version:        11.3.1+git1902
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -391,6 +391,7 @@ Patch100:       newlib-4.1.0-aligned_alloc.patch
 
 Summary:        Testsuite results
 License:        SUSE-Public-Domain
+Group:          Development/Languages/C and C++
 
 %description
 Results from running the gcc and target library testsuites.

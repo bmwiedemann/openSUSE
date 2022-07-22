@@ -257,4 +257,16 @@ The compiler is NOT used by default.</comment>
   * includes fix for Firefox ICE  [gcc#105256]</comment>
     <requestid>970979</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>15f07d7d18e6ffdda7dd15edac0558f9</srcmd5>
+    <version>11.3.1+git1902</version>
+    <time>1658510482</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to gcc-11 branch head (a55184ada8e2887ca94c0ab070, git1902
+  * includes build fixes when building against glibc 2.33.
+
+- Update to the GCC 11.3.0 release.
+  * includes SLS hardening backport on x86_64.  [bsc#1195283]</comment>
+    <requestid>990640</requestid>
+  </revision>
 </revisionlist>

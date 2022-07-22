@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 21 13:44:44 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-11 branch head (a55184ada8e2887ca94c0ab070, git1902
+  * includes build fixes when building against glibc 2.33.
+
+-------------------------------------------------------------------
+Thu Apr 21 08:22:12 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to the GCC 11.3.0 release.
+  * includes SLS hardening backport on x86_64.  [bsc#1195283]
+
+-------------------------------------------------------------------
 Wed Apr 20 07:01:09 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-11 branch head (691af15031e00227ba6d5935c), git1635
