@@ -257,4 +257,16 @@
     CHANGELOG.md file provided with this package (forwarded request 982029 from glaubitz)</comment>
     <requestid>982460</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>bec3f98a7efe0f16e848d4b6342cb296</srcmd5>
+    <version>20.1.0</version>
+    <time>1658510435</time>
+    <user>RBrownFactory</user>
+    <comment>- New upstream release
+  + Version 20.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 990508 from glaubitz)</comment>
+    <requestid>990538</requestid>
+  </revision>
 </revisionlist>
