@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 21 14:15:00 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.6.6
+  * Workaround for credential mangers of `osc` having different return types
+
+-------------------------------------------------------------------
 Wed Jul 20 08:49:57 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.6.5: Enhanced dependency management
