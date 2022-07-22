@@ -1,0 +1,92 @@
+From 3a778c03b319188e71e8a6bcfd36e3dbadebac0c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 18 Jul 2022 18:57:14 +0200
+Subject: [PATCH] Improve udev rules, add uaccess support
+
+---
+ cmake/50-mustang.rules         | 28 ++++++++++++++++------------
+ cmake/70-mustang-plugdev.rules |  6 ++++++
+ cmake/70-mustang-uaccess.rules |  5 +++++
+ cmake/Install.cmake            |  5 ++++-
+ 4 files changed, 31 insertions(+), 13 deletions(-)
+ create mode 100644 cmake/70-mustang-plugdev.rules
+ create mode 100644 cmake/70-mustang-uaccess.rules
+
+diff --git a/cmake/50-mustang.rules b/cmake/50-mustang.rules
+index 7c94d7b..3d43ac2 100644
+--- a/cmake/50-mustang.rules
++++ b/cmake/50-mustang.rules
+@@ -1,15 +1,19 @@
+ # udev rules for Fender Mustang Amps. Used by Plug.
+ 
+-SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0004", GROUP="plugdev"
+-SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0005", GROUP="plugdev"
+-SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0006", GROUP="plugdev"
+-SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0007", GROUP="plugdev"
+-SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0010", GROUP="plugdev"
+-SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0011", GROUP="plugdev"
+-SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0012", GROUP="plugdev"
+-SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0013", GROUP="plugdev"
+-SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0014", GROUP="plugdev"
+-SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0015", GROUP="plugdev"
+-SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0016", GROUP="plugdev"
+-SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0017", GROUP="plugdev"
++ACTION!="add|bind", GOTO="mustang_plug_rules_end"
++SUBSYSTEM!="usb", GOTO="mustang_plug_rules_end"
+ 
++ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0004", ENV{ID_MUSTANG_AMP}="1"
++ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0005", ENV{ID_MUSTANG_AMP}="1"
++ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0006", ENV{ID_MUSTANG_AMP}="1"
++ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0007", ENV{ID_MUSTANG_AMP}="1"
++ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0010", ENV{ID_MUSTANG_AMP}="1"
++ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0011", ENV{ID_MUSTANG_AMP}="1"
++ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0012", ENV{ID_MUSTANG_AMP}="1"
++ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0013", ENV{ID_MUSTANG_AMP}="1"
++ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0014", ENV{ID_MUSTANG_AMP}="1"
++ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0015", ENV{ID_MUSTANG_AMP}="1"
++ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0016", ENV{ID_MUSTANG_AMP}="1"
++ATTRS{idVendor}=="1ed8", ATTRS{idProduct}=="0017", ENV{ID_MUSTANG_AMP}="1"
++
++LABEL="mustang_plug_rules_end"
+diff --git a/cmake/70-mustang-plugdev.rules b/cmake/70-mustang-plugdev.rules
+new file mode 100644
+index 0000000..ce270c2
+--- /dev/null
++++ b/cmake/70-mustang-plugdev.rules
+@@ -0,0 +1,6 @@
++ACTION!="add|bind", GOTO="mustang_plug_plugdev_end"
++
++ENV{ID_MUSTANG_AMP}=="?*", GROUP="plugdev"
++
++LABEL="mustang_plug_plugdev_end"
++
+diff --git a/cmake/70-mustang-uaccess.rules b/cmake/70-mustang-uaccess.rules
+new file mode 100644
+index 0000000..56d7ec5
+--- /dev/null
++++ b/cmake/70-mustang-uaccess.rules
+@@ -0,0 +1,5 @@
++ACTION!="add|bind", GOTO="mustang_plug_uaccess_end"
++
++ENV{ID_MUSTANG_AMP}=="?*", TAG+="uaccess"
++
++LABEL="mustang_plug_uaccess_end"
+diff --git a/cmake/Install.cmake b/cmake/Install.cmake
+index dbf05da..714c9a8 100644
+--- a/cmake/Install.cmake
++++ b/cmake/Install.cmake
+@@ -1,7 +1,10 @@
+ set(PLUG_UDEV_RULE_PATH "/lib/udev/rules.d" CACHE PATH "Udev rules directory.")
+ set(PLUG_DESKTOP_PATH "/lib/share/applications" CACHE PATH "Desktop file directory.")
+ 
+-install(FILES ${CMAKE_SOURCE_DIR}/cmake/50-mustang.rules
++install(FILES
++        ${CMAKE_SOURCE_DIR}/cmake/50-mustang.rules
++        ${CMAKE_SOURCE_DIR}/cmake/70-mustang-uaccess.rules
++        ${CMAKE_SOURCE_DIR}/cmake/70-mustang-plugdev.rules
+         DESTINATION ${PLUG_UDEV_RULE_PATH}
+         )
+ install(FILES ${CMAKE_SOURCE_DIR}/cmake/plug.desktop
+-- 
+2.37.0
+

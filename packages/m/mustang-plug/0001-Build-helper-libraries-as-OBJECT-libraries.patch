@@ -1,0 +1,65 @@
+From b1981342d58c9da1b71100f34967a90378f75cb2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 18 Jul 2022 18:23:37 +0200
+Subject: [PATCH] Build helper libraries as OBJECT libraries
+
+---
+ cmake/Template.cmake   |  2 +-
+ src/com/CMakeLists.txt | 10 +++++-----
+ src/ui/CMakeLists.txt  |  3 ++-
+ 3 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/cmake/Template.cmake b/cmake/Template.cmake
+index e7cfc25..6d04608 100644
+--- a/cmake/Template.cmake
++++ b/cmake/Template.cmake
+@@ -8,4 +8,4 @@ configure_file(${TEMPLATE_DIR}/Version.cpp.in
+                 @ONLY
+                 )
+ 
+-add_library(plug-version ${GENERATED_DIR}/Version.cpp)
++add_library(plug-version OBJECT ${GENERATED_DIR}/Version.cpp)
+diff --git a/src/com/CMakeLists.txt b/src/com/CMakeLists.txt
+index 54e7b1e..1ea814b 100644
+--- a/src/com/CMakeLists.txt
++++ b/src/com/CMakeLists.txt
+@@ -1,17 +1,17 @@
+ 
+-add_library(plug-mustang Mustang.cpp PacketSerializer.cpp Packet.cpp)
+-add_library(plug-communication
++add_library(plug-mustang OBJECT Mustang.cpp PacketSerializer.cpp Packet.cpp)
++add_library(plug-communication OBJECT
+     UsbComm.cpp
+     ConnectionFactory.cpp
+     )
+ 
+-add_library(plug-communication-usb
++add_library(plug-communication-usb OBJECT
+     UsbContext.cpp
+     UsbException.cpp
+     UsbDevice.cpp
+     )
+ 
+-add_library(plug-libusb LibUsbCompat.cpp)
++add_library(plug-libusb OBJECT LibUsbCompat.cpp)
+ target_link_libraries(plug-libusb PUBLIC libusb-1.0::libusb-1.0)
+ 
+-add_library(plug-updater MustangUpdater.cpp)
++add_library(plug-updater OBJECT MustangUpdater.cpp)
+diff --git a/src/ui/CMakeLists.txt b/src/ui/CMakeLists.txt
+index 5baab0c..1680247 100644
+--- a/src/ui/CMakeLists.txt
++++ b/src/ui/CMakeLists.txt
+@@ -2,7 +2,8 @@ set(CMAKE_AUTOMOC ON)
+ set(CMAKE_AUTOUIC ON)
+ set(CMAKE_AUTORCC ON)
+ 
+-add_library(plug-ui amp_advanced.cpp
++add_library(plug-ui OBJECT
++                    amp_advanced.cpp
+                     amplifier.cpp
+                     defaulteffects.cpp
+                     effect.cpp
+-- 
+2.37.0
+
