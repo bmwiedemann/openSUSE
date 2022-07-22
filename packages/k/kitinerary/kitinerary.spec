@@ -1,7 +1,7 @@
 #
 # spec file for package kitinerary
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,13 +29,15 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Support-ZXing-1.4.0.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libopenssl-devel
 BuildRequires:  libpoppler-qt5-devel
+BuildRequires:  libqt5-qtdeclarative-private-headers-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  zlib-devel
-BuildRequires:  libqt5-qtdeclarative-private-headers-devel
 BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5I18n)
@@ -69,12 +71,12 @@ This package contains the library itself.
 Summary:        Development files for kitinerary
 Group:          Development/Libraries/KDE
 Requires:       libKPimItinerary5 = %{version}
+Requires:       libqt5-qtdeclarative-private-headers-devel
 Requires:       cmake(KF5CalendarCore)
 Requires:       cmake(KF5Contacts)
 Requires:       cmake(KF5Mime)
 Requires:       cmake(KPimPkPass)
 Requires:       cmake(Qt5Gui)
-Requires:       libqt5-qtdeclarative-private-headers-devel
 
 %description devel
 This package contains all necessary include files and libraries needed

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 20 16:24:51 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix build with ZXing 1.4.0:
+  * 0001-Support-ZXing-1.4.0.patch
+
+-------------------------------------------------------------------
 Tue Jul  5 17:03:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 22.04.3
