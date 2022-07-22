@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 21 08:10:23 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to 2.5:
+  * Support of new thermal table for Alder Lake
+  * Add Raptor Lake in the list
+
+-------------------------------------------------------------------
 Tue Mar 29 07:27:03 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Update to 2.4.9:
