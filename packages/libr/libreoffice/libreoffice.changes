@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 18 14:23:35 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Use system jars by specifying the path for each jar. Fixes bsc#1195634
+
+-------------------------------------------------------------------
 Wed Jun 15 13:35:15 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Use bundled openjpeg2 on SLE-12-SP5

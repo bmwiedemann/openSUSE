@@ -1198,7 +1198,17 @@ export NOCONFIGURE=yes
         --enable-symbols \
         --with-gdrive-client-secret="${google_default_client_secret}" \
         --with-gdrive-client-id="${google_default_client_id}" \
-        --enable-skia
+        --enable-skia \
+        --with-libbase-jar=/usr/share/java/libbase.jar \
+        --with-libxml-jar=/usr/share/java/libxml.jar \
+        --with-flute-jar=/usr/share/java/flute.jar \
+        --with-jfreereport-jar=/usr/share/java/flow-engine.jar \
+        --with-liblayout-jar=/usr/share/java/liblayout.jar \
+        --with-libloader-jar=/usr/share/java/libloader.jar \
+        --with-libformula-jar=/usr/share/java/libformula.jar \
+        --with-librepository-jar=/usr/share/java/librepository.jar \
+        --with-libfonts-jar=/usr/share/java/libfonts.jar \
+        --with-libserializer-jar=/usr/share/java/libserializer.jar
 # no coinormp packages for coinmp
 
 # just call make here as we added the jobs in configure

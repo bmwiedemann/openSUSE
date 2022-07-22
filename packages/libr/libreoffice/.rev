@@ -3247,4 +3247,12 @@ Petr</comment>
     <comment></comment>
     <requestid>982812</requestid>
   </revision>
+  <revision rev="257" vrev="2">
+    <srcmd5>969fccc846193dfd314d8e2b6c7f371b</srcmd5>
+    <version>7.3.4.2</version>
+    <time>1658510394</time>
+    <user>RBrownFactory</user>
+    <comment>- Use system jars by specifying the path for each jar. Fixes bsc#1195634</comment>
+    <requestid>990413</requestid>
+  </revision>
 </revisionlist>
