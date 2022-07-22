@@ -907,4 +907,21 @@
     line enabled caching.</comment>
     <requestid>984278</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>445f269fff84a9178b28b08f6ebca4b5</srcmd5>
+    <version>1.23.1</version>
+    <time>1658510412</time>
+    <user>RBrownFactory</user>
+    <comment>- Updated to 1.23.1
+  * Feature: memory usage optimization in configurations with SSL proxying.
+  * Feature: looking up of IPv4 addresses while resolving now can be
+    disabled with the &quot;ipv4=off&quot; parameter of the &quot;resolver&quot; directive.
+  * Change: the logging level of the &quot;bad key share&quot;, &quot;bad extension&quot;,
+    &quot;bad cipher&quot;, and &quot;bad ecpoint&quot; SSL errors has been lowered from &quot;crit&quot; to &quot;info&quot;.
+  * Bugfix: while returning byte ranges nginx did not remove the
+    &quot;Content-Range&quot; header line if it was present in the original backend response.
+  * Bugfix: a proxied response might be truncated during reconfiguration
+    on Linux; the bug had appeared in 1.17.5.</comment>
+    <requestid>990292</requestid>
+  </revision>
 </revisionlist>

@@ -23,7 +23,7 @@
 %bcond_with    ngx_google_perftools
 #
 Name:           nginx
-Version:        1.23.0
+Version:        1.23.1
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause
@@ -46,9 +46,9 @@ Patch2:         %{name}-1.2.4-perl_vendor_install.patch
 Patch3:         %{name}-1.6.1-default_config.patch
 # PATCH-FIX-UPSTREAM nginx-aio.patch fix support for Linux AIO
 Patch4:         %{name}-aio.patch
+BuildRequires:  %{name}-macros
 BuildRequires:  gcc-c++
 BuildRequires:  libatomic-ops-devel
-BuildRequires:  %{name}-macros
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
@@ -60,11 +60,11 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
 %requires_eq    perl
-Recommends:     logrotate
 Recommends:     %{name}-module-fancyindex
 Recommends:     %{name}-module-geoip2
 Recommends:     %{name}-module-headers-more
 Recommends:     %{name}-module-http-flv
+Recommends:     logrotate
 Provides:       http_daemon
 Provides:       httpd
 %{?systemd_ordering}
