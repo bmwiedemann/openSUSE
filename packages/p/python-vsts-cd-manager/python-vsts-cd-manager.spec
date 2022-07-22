@@ -36,7 +36,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module msrest >= 0.2.0}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-mock
 Requires:       python-msrest >= 0.2.0
 BuildArch:      noarch
 

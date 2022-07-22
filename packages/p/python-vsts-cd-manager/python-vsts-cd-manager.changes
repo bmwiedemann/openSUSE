@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 15 07:50:11 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Remove unnecessary python-mock dependency from Requires
+
+-------------------------------------------------------------------
 Thu Apr 14 10:33:50 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build
