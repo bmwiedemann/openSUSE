@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-ai-language-questionanswering
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,20 @@
 #
 
 
+%define realversion 1.0.0
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-ai-language-questionanswering
-Version:        1.0.0b2
+Version:        1.0.0.0
 Release:        0
 Summary:        Microsoft Azure Question Answering Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-ai-language-questionanswering/azure-ai-language-questionanswering-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-ai-language-questionanswering/azure-ai-language-questionanswering-%{realversion}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-ai-language-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-ai-nspkg >= 1.0.0}
@@ -38,7 +40,7 @@ BuildRequires:  unzip
 Requires:       python-azure-ai-language-nspkg >= 1.0.0
 Requires:       python-azure-ai-nspkg >= 1.0.0
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.19.0
+Requires:       python-azure-core >= 1.19.1
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 %python_subpackages
@@ -52,10 +54,10 @@ in your knowledge base—automatically. Your knowledge base gets smarter, too, a
 continually learns from users' behavior.
 
 %prep
-%setup -q -n azure-ai-language-questionanswering-%{version}
+%setup -q -n azure-ai-language-questionanswering-%{realversion}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-ai-language-questionanswering-%{version}
+install -m 644 %{SOURCE1} %{_builddir}/azure-ai-language-questionanswering-%{realversion}
 %python_build
 
 %install
