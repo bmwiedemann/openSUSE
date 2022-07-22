@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-confidentialledger
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,31 @@
 #
 
 
+%define realversion 1.0.0
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-confidentialledger
-Version:        1.0.0b1
+Version:        1.0.0.0
 Release:        0
 Summary:        Microsoft Azure Confidential Ledger client library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-confidentialledger/azure-confidentialledger-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-confidentialledger/azure-confidentialledger-%{realversion}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-azure-common >= 1.1
-Requires:       python-azure-common < 2.0
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.2.2
+Requires:       python-azure-core >= 1.24.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.5.0
+Requires:       python-isodate < 1.0.0
+Requires:       python-isodate >= 0.6.1
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
@@ -53,10 +54,10 @@ runs in secure, hardware-based trusted execution environments, also known as enc
 It is built on Microsoft Research's Confidential Consortium Framework.
 
 %prep
-%setup -q -n azure-confidentialledger-%{version}
+%setup -q -n azure-confidentialledger-%{realversion}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-confidentialledger-%{version}
+install -m 644 %{SOURCE1} %{_builddir}/azure-confidentialledger-%{realversion}
 %python_build
 
 %install
