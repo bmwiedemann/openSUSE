@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 20 06:41:54 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 057+suse.303.gc4ea1bea:
+  * fix(network-legacy): add auto timeout to wicked DHCP test (bsc#1198709)
+  * fix(network-legacy): check if dhclient has --timeout option
+  * fix(man): correct typo
+  * fix(network-legacy): properly install dhclient
+  * fix(fips): add missing bash dependency
+
+-------------------------------------------------------------------
 Mon Jul 04 12:43:36 UTC 2022 - antonio.feijoo@suse.com
 
 - Update to version 057+suse.294.gaa9ea2d2:
