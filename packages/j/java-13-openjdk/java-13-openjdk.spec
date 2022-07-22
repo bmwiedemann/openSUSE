@@ -32,8 +32,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      13
 %global interimver      0
-%global updatever       11
-%global datever         2022-04-19
+%global updatever       12
+%global datever         2022-07-19
 %global buildver        4
 %global openjdk_repo    jdk13u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
@@ -169,8 +169,6 @@ Patch16:        missing-return.patch
 Patch17:        openjdk-glibc234.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
-#
-Patch32:        gcc-fno-common-fix.patch
 #
 # OpenJDK specific patches
 #
@@ -429,8 +427,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch17 -p1
 
 %patch20 -p1
-
-%patch32 -p1
 
 # s390 build fixes
 
