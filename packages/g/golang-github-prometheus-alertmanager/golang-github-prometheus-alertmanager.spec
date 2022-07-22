@@ -61,7 +61,6 @@ GOPATH=%{_builddir}/go promu build
 %goinstall
 install -D -m0755 %{_builddir}/alertmanager-%{version}/alertmanager %{buildroot}/%{_bindir}/alertmanager
 install -D -m0755 %{_builddir}/alertmanager-%{version}/amtool %{buildroot}/%{_bindir}/amtool
-%gosrc
 mv %{buildroot}%{_bindir}/alertmanager %{buildroot}%{_bindir}/prometheus-alertmanager
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/prometheus-alertmanager.service
 install -Dd -m 0755 %{buildroot}%{_sbindir}
@@ -70,7 +69,6 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/prometheus/alertmanager
 install -Dd -m 0755 %{buildroot}%{_sysconfdir}/prometheus/alertmanager_templates
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/alertmanager
-%gofilelist
 %fdupes %{buildroot}/%{_prefix}
 
 %pre
@@ -85,7 +83,7 @@ install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/alertmanager
 %postun
 %service_del_postun prometheus-alertmanager.service
 
-%files -f file.lst
+%files
 %doc README.md
 %license LICENSE
 %{_bindir}/prometheus-alertmanager

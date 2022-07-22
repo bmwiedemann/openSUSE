@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 19 08:10:44 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Do not include sources (bsc#1200725)
+
+-------------------------------------------------------------------
 Fri Apr  8 11:54:29 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update required Go version to 1.16
