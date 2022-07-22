@@ -1,7 +1,7 @@
 #
 # spec file for package libconfini
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libconfini
-Version:        1.16.3
+Version:        1.16.4
 Release:        0
 Summary:        INI file parser libarary
 License:        GPL-3.0-or-later

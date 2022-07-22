@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 21 22:57:17 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libconfini 1.16.4:
+  * load_ini_path(): fclose() was not invoked in case of errors
+
+-------------------------------------------------------------------
 Thu Nov 11 21:50:02 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libconfini 1.16.3:
