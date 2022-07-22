@@ -281,4 +281,12 @@
   message upon package removal boo#1036208 (forwarded request 986395 from AndreasStieger)</comment>
     <requestid>986580</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>5614dc57f33bf4f3639a5fd8eee0bd97</srcmd5>
+    <version>2021.6</version>
+    <time>1658510410</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990414</requestid>
+  </revision>
 </revisionlist>

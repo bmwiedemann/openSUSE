@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 16 16:25:07 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix packaging warnings from missing systemd service macros
+  for pre/post/preun/postun scripts for ostree-finalize-staged
+
+-------------------------------------------------------------------
 Sat Jul  2 20:32:48 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix incorrect preun scriptlet leading to ostree-remount.service

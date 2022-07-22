@@ -140,19 +140,27 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 %pre
 %service_add_pre ostree-prepare-root.service
 %service_add_pre ostree-remount.service
+%service_add_pre ostree-finalize-staged.service
+%service_add_pre ostree-finalize-staged.path
 
 %preun
 %service_del_preun ostree-prepare-root.service
 %service_del_preun ostree-remount.service
+%service_del_preun ostree-finalize-staged.service
+%service_del_preun ostree-finalize-staged.path
 
 %post
 %service_add_post ostree-prepare-root.service
 %service_add_post ostree-remount.service
+%service_add_post ostree-finalize-staged.service
+%service_add_post ostree-finalize-staged.path
 %tmpfiles_create %{_tmpfilesdir}/ostree-tmpfiles.conf
 
 %postun
 %service_del_postun ostree-prepare-root.service
 %service_del_postun ostree-remount.service
+%service_del_postun ostree-finalize-staged.service
+%service_del_postun ostree-finalize-staged.path
 
 %files
 %license COPYING
