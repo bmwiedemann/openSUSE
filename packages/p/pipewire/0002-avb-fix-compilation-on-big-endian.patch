@@ -1,0 +1,25 @@
+From 1a5ec4452fa21592eaeeb823ad95a1db6eb60376 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Tue, 19 Jul 2022 13:49:42 +0200
+Subject: [PATCH 2/3] avb: fix compilation on big endian
+
+---
+ src/modules/module-avb/aaf.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/modules/module-avb/aaf.h b/src/modules/module-avb/aaf.h
+index cb4871ca6..b444ce251 100644
+--- a/src/modules/module-avb/aaf.h
++++ b/src/modules/module-avb/aaf.h
+@@ -35,7 +35,7 @@ struct avb_packet_aaf {
+ 	unsigned gv:1;
+ 	unsigned tv:1;
+ 
+-	uint8_t seq_number;
++	uint8_t seq_num;
+ 
+ 	unsigned _r2:7;
+ 	unsigned tu:1;
+-- 
+2.37.1
+

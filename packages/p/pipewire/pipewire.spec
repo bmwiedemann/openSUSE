@@ -54,7 +54,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.55
+Version:        0.3.56
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -64,10 +64,12 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
-# PATCH-FIX-UPSTREAM 0001-jack-only-mix-when-we-have-input-to-mix.patch
-Patch1:         0001-jack-only-mix-when-we-have-input-to-mix.patch
-# PATCH-FIX-UPSTREAM 0002-spa-alsa-udev-Check-accessibility-of-pcm-devices-as-well.patch -- https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/1319
-Patch2:         0002-spa-alsa-udev-Check-accessibility-of-pcm-devices-as-well.patch
+# PATCH-FIX-UPSTREAM 0001-avb-fix-compilation-on-big-endian.patch
+Patch1:         0001-avb-fix-compilation-on-big-endian.patch
+# PATCH-FIX-UPSTREAM 0002-avb-fix-compilation-on-big-endian.patch
+Patch2:         0002-avb-fix-compilation-on-big-endian.patch
+# PATCH-FIX-UPSTREAM 0003-avb-fix-compilation-on-big-endian.patch
+Patch3:         0003-avb-fix-compilation-on-big-endian.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -77,7 +79,7 @@ BuildRequires:  gcc9
 BuildRequires:  gcc9-c++
 %endif
 BuildRequires:  graphviz
-%if 0%{?sle_version} == 150300
+%if 0%{?sle_version} <= 150300
 BuildRequires:  meson >= 0.54.0
 %else
 BuildRequires:  meson >= 0.59.0
@@ -335,10 +337,12 @@ This package provides a PulseAudio implementation based on PipeWire
 
 %prep
 %autosetup -N
-%if 0%{?sle_version} == 150300
+%if 0%{?sle_version} <= 150300
 %patch0 -p1
 %endif
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
@@ -521,6 +525,7 @@ fi
 %license LICENSE COPYING
 %doc README.md
 %{_bindir}/pipewire
+%{_bindir}/pipewire-avb
 %{_userunitdir}/pipewire.service
 %{_userunitdir}/pipewire.socket
 %{_mandir}/man1/pipewire.1%{?ext_man}
@@ -530,6 +535,7 @@ fi
 %{_datadir}/pipewire/filter-chain.conf
 %dir %{_datadir}/pipewire/filter-chain/
 %{_datadir}/pipewire/filter-chain/*.conf
+%{_datadir}/pipewire/pipewire-avb.conf
 %ghost %dir %{_localstatedir}/lib/pipewire/
 %ghost %{_localstatedir}/lib/pipewire/pipewire_post_workaround
 
@@ -558,6 +564,7 @@ fi
 %{_libdir}/spa-%{spa_ver}/alsa/
 %{_libdir}/spa-%{spa_ver}/audioconvert/
 %{_libdir}/spa-%{spa_ver}/audiomixer/
+%{_libdir}/spa-%{spa_ver}/avb/
 %{_libdir}/spa-%{spa_ver}/bluez5/
 %{_libdir}/spa-%{spa_ver}/control/
 %{_libdir}/spa-%{spa_ver}/volume/
