@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 22 12:14:30 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Drop fcoe-utils
+- list-x11: Ignore gstreamer-plugins-bad
+
+-------------------------------------------------------------------
+Wed Jul 20 09:40:43 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- list-x11: Don't block bind-utils on Leap
+
+-------------------------------------------------------------------
 Wed Jul 20 09:13:34 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - list-x11: Ignore bind-utils

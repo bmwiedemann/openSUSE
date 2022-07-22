@@ -245,7 +245,6 @@ install dmraid
 install dosfstools
 install e2fsprogs
 install exfatprogs
-install fcoe-utils
 install jfsutils
 install mdadm
 install multipath-tools

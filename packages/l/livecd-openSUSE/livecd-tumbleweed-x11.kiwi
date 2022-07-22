@@ -374,7 +374,6 @@
     <package name="dosfstools"/>
     <package name="e2fsprogs"/>
     <package name="exfatprogs"/>
-    <package name="fcoe-utils"/>
     <package name="jfsutils"/>
     <package name="mdadm"/>
     <package name="multipath-tools"/>
@@ -584,6 +583,8 @@
     <ignore name="Mesa-dri-nouveau"/>
     <package name="aaa_base" replaces="libvdpau_nouveau"/>
     <ignore name="libvdpau_nouveau"/>
+    <package name="aaa_base" replaces="gstreamer-plugins-bad"/>
+    <ignore name="gstreamer-plugins-bad"/>
     <package name="patterns-xfce-xfce_basis"/>
     <namedCollection name="xfce_basis"/>
     <package name="evince"/>

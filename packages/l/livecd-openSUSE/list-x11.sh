@@ -74,7 +74,11 @@ buildignore groff
 buildignore libqt5-qttranslations
 buildignore plymouth
 buildignore 7zip
-buildignore bind-utils
+# On Leap it's a hard dep of dhcp-client, needed by NM.
+# On TW, NM uses the builtin DHCP client instead.
+if [ "$distro" = "tumbleweed" ]; then
+	buildignore bind-utils
+fi
 
 # tumbler -> libgepup uses libwebkit2gtk-4_0-37, while epiphany uses libwebkit2gtk-4_1-0.
 # We can't have both, too big.
@@ -91,6 +95,9 @@ buildignore deltarpm
 # Too big and not really useful here
 buildignore Mesa-dri-nouveau
 buildignore libvdpau_nouveau
+
+# Pulls in a lot of libs, only used by libwebkit2gtk/epiphany anyway
+buildignore gstreamer-plugins-bad
 
 # Previously required by rest_cd_x11
 install patterns-xfce-xfce_basis

@@ -1477,4 +1477,13 @@
     <comment></comment>
     <requestid>990373</requestid>
   </revision>
+  <revision rev="184" vrev="184">
+    <srcmd5>d07a93805c91d0929ecd9d77801df9eb</srcmd5>
+    <version>unknown</version>
+    <time>1658493572</time>
+    <user>RBrownFactory</user>
+    <comment>- list-common: Drop fcoe-utils
+- list-x11: Ignore gstreamer-plugins-bad (forwarded request 990678 from favogt)</comment>
+    <requestid>990679</requestid>
+  </revision>
 </revisionlist>
