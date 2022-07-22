@@ -1247,4 +1247,12 @@ D fixes-a-template-rendering-error.patch
     <comment></comment>
     <requestid>980623</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>2c1dd1c2ac6e610d1af3e7219e74fdeb</srcmd5>
+    <version>3.3.3.0+git.5c498dbf</version>
+    <time>1658510475</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990580</requestid>
+  </revision>
 </revisionlist>

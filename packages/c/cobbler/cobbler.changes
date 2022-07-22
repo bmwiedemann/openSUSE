@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 21 08:52:17 UTC 2022 - Enno Gotthold <egotthold@suse.com>
+
+- Fix issue that a custom kernel with the extension ".kernel" is not
+  accepted by "cobbler distro add"
+- Fix issue with "get_item_resolved_value" that prevented it from
+  returning in cases where a complex object would have been returned
+- Fix issue where the logs would have been spammed with "grab_tree"
+  messages that are meant for debugging
+- Added:
+  * backport_complex_xmlrpc_objects_and_logger_spam.patch
+  * backport_kernel_regex_error_message.patch 
+
+-------------------------------------------------------------------
 Fri Jun  3 10:51:18 UTC 2022 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Update to version 3.3.3

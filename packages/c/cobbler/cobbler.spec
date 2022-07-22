@@ -168,6 +168,11 @@ Group:          Development/System
 
 License:        GPL-2.0-or-later
 Source:         %{name}-%{version}.tar.gz
+####################
+# Already merged upstream
+Patch0:         backport_complex_xmlrpc_objects_and_logger_spam.patch
+# Already merged upstream
+Patch1:         backport_kernel_regex_error_message.patch
 BuildArch:      noarch
 
 BuildRequires:  git-core
@@ -281,6 +286,7 @@ Unit test files from the Cobbler project
 
 %prep
 %setup
+%autopatch -p1
 
 %if 0%{?suse_version}
 # Set tftpboot location correctly for SUSE distributions
