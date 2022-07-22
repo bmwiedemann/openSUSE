@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 14 15:20:46 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Improve check for mpicc in testsuite package: if binary isn't
+  found, don't crash.
+- Fix a typo which prevented the nproc limit for slurmd to be
+  up-ed for the test suite.
+
+-------------------------------------------------------------------
 Mon Jun 20 09:23:17 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 - update to 22.05.2 with following fixes:

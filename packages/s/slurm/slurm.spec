@@ -864,7 +864,9 @@ cat > %{buildroot}/srv/slurm-testsuite/testsuite/expect/globals.local <<EOF
 set slurm_dir "/usr"
 set build_dir "/srv/slurm-testsuite"
 set src_dir "/srv/slurm-testsuite"
-set mpicc   [ exec which mpicc ]
+if {[ catch { set mpicc [ exec which mpicc 2>/dev/null ]}]} {
+  set mpicc ""
+}
 set testsuite_user "auser"
 #set testsuite_cleanup_on_failure false
 EOF
@@ -887,7 +889,7 @@ cp %{buildroot}/%_unitdir/slurmd.service  $SLURMD_SERVICE
 if grep -qE "^LimitNPROC" $SLURMD_SERVICE; then
     sed -i -e '/LimitNPROC/s@=.*@=infinity@' $SLURMD_SERVICE
 else
-    sed -i -e '/LimitSTACK/aLimitNPROC=infinity' $SLURMD_SERVICE
+    sed -i -e '/LimitNPROC/aLimitNPROC=infinity' $SLURMD_SERVICE
 fi
 sed -i -e '/ExecStart/aExecStartPre=/bin/bash -c "for i in 0 1 2 3; do test -e /dev/nvidia$i || mknod /dev/nvidia$i c 10 $((i+2)); done"' $SLURMD_SERVICE
 

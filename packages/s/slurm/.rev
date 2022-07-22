@@ -911,4 +911,12 @@
   priviledged commands more easily without becoming root. (forwarded request 988732 from eeich)</comment>
     <requestid>988733</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>07f2f6f974861cc9c8c0e9e2ae3d830c</srcmd5>
+    <version>22.05.2</version>
+    <time>1658510485</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>990643</requestid>
+  </revision>
 </revisionlist>
