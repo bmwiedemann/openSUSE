@@ -33,6 +33,7 @@ Source2:        virt-install.desktop
 Source3:        virt-manager-supportconfig
 # Upstream Patches
 Patch1:         revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case-too.patch
+Patch2:         d51541e1-Fix-UI-rename-with-firmware-efi.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -157,57 +158,7 @@ Package includes several command line utilities, including virt-install
 machine).
 
 %prep
-%setup -q
-# Upstream Patches
-%patch1 -p1
-# SUSE Only
-%patch70 -p1
-%patch71 -p1
-%patch72 -p1
-%patch73 -p1
-%patch74 -p1
-%patch75 -p1
-%patch76 -p1
-# Enhancements
-%patch103 -p1
-%patch104 -p1
-%patch105 -p1
-%patch106 -p1
-%patch120 -p1
-%patch121 -p1
-%patch122 -p1
-%patch123 -p1
-%patch124 -p1
-%patch125 -p1
-%patch126 -p1
-%patch127 -p1
-%patch128 -p1
-# Bug Fixes
-%patch151 -p1
-%patch152 -p1
-%patch153 -p1
-%patch154 -p1
-%patch155 -p1
-%patch156 -p1
-%patch157 -p1
-%patch158 -p1
-%patch159 -p1
-%patch160 -p1
-%patch170 -p1
-%patch171 -p1
-%patch172 -p1
-%patch173 -p1
-%patch174 -p1
-%patch175 -p1
-%patch176 -p1
-%patch177 -p1
-%patch178 -p1
-%patch179 -p1
-%patch180 -p1
-%patch181 -p1
-%patch182 -p1
-%patch183 -p1
-%patch184 -p1
+%autosetup -p1
 
 %build
 %if %{default_hvs}

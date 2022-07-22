@@ -1846,4 +1846,12 @@
     <comment>Fixes bsc#1200691 by reverting the requirement to use the --osinfo flag on non-x86 hardware like s390x.</comment>
     <requestid>984601</requestid>
   </revision>
+  <revision rev="234" vrev="5">
+    <srcmd5>1305b528cb415cfd3d386361b8bc1077</srcmd5>
+    <version>4.0.0</version>
+    <time>1658510414</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>990302</requestid>
+  </revision>
 </revisionlist>

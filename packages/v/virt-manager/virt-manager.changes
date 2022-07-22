@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 12 14:41:21 MDT 2022 - carnold@suse.com
+
+- Upstream bug fix (bsc#1027942)
+  d51541e1-Fix-UI-rename-with-firmware-efi.patch
+- Use autosetup in spec file
+
+-------------------------------------------------------------------
 Wed Jun 22 13:54:26 MDT 2022 - carnold@suse.com
 
 - bsc#1200691 - SLES 15 SP4 GMC --os-variant tag shouldn't be
