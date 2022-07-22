@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Tue Jul 19 02:43:03 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add runtime dependencies python-pywayland & python-xkbcommon
+
+-------------------------------------------------------------------
+Wed Jul 13 10:54:25 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Rename to python-pywlroots. Enables builds for all available python flavors.
+
+-------------------------------------------------------------------
+Thu Jul  7 04:32:07 UTC 2022 - Soc Virnyl S. Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for python-pywlroots version 0.15.18
+- add python-pywlroots-rpmlintrc:
+  * addFilter("devel-file-in-non-devel-package") since it is actually
+    part of the library
+- add fix-include-paths.patch
