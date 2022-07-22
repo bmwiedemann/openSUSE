@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 22 09:15:35 UTC 2022 - Richard Brown <rbrown@suse.com>
+
+- Bump kubernetes-* to 1.24.3, *-minus1 to 1.23.9
+
+-------------------------------------------------------------------
 Thu May 12 16:43:18 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Bump kubernetes-* to 1.24.0, *-minus1 to 1.23.4 and etcd to 3.5.3

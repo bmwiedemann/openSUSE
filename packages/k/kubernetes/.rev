@@ -786,4 +786,12 @@
     <comment></comment>
     <requestid>982778</requestid>
   </revision>
+  <revision rev="85" vrev="25">
+    <srcmd5>4ae2960a8f86a0e0895cd397843a6400</srcmd5>
+    <version>unknown</version>
+    <time>1658481528</time>
+    <user>RBrownFactory</user>
+    <comment>- Bump kubernetes-* to 1.24.3, *-minus1 to 1.23.9</comment>
+    <requestid>990651</requestid>
+  </revision>
 </revisionlist>
