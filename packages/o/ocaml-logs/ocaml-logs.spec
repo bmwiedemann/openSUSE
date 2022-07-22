@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-logs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+%bcond_with     ocaml_lwt
+
 Name:           ocaml-logs
 Version:        0.7.0
 Release:        0
@@ -24,16 +26,19 @@ Summary:        Logging infrastructure for OCaml
 License:        ISC
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/logs
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %name-%version.tar.xz
 Patch0:         ocaml-logs.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210911
+BuildRequires:  ocaml-rpm-macros >= 20220707
 BuildRequires:  ocamlfind(cmdliner)
 BuildRequires:  ocamlfind(compiler-libs.toplevel)
 BuildRequires:  ocamlfind(fmt)
 BuildRequires:  ocamlfind(result)
 BuildRequires:  ocamlfind(threads)
+%if %{with ocaml_lwt}
+BuildRequires:  ocamlfind(lwt)
+%endif
 
 %description
 Logs provides a logging infrastructure for OCaml. Logging is performed on sources whose reporting level can be set independently. Log message report is decoupled from logging and is handled by a reporter.
@@ -41,13 +46,13 @@ Logs provides a logging infrastructure for OCaml. Logging is performed on source
 A few optional log reporters are distributed with the base library and the API easily allows to implement your own.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
@@ -64,8 +69,8 @@ dune_release_pkgs='logs'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  7 07:07:07 UTC 2022 - ohering@suse.de
+
+- Add conditional for lwt
+
+-------------------------------------------------------------------
 Sat Sep 11 12:34:56 UTC 2021 - ohering@suse.de
 
 - Require current ocaml-rpm-macros
