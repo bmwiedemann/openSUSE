@@ -17,4 +17,12 @@
   * typing stubs (thanks @bluetech)</comment>
     <requestid>847414</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9cff58ab3e0bbee01698ae4499051f96</srcmd5>
+    <version>1.1.1</version>
+    <time>1658510421</time>
+    <user>RBrownFactory</user>
+    <comment>- BuildRequire itself when building test flavour.</comment>
+    <requestid>990394</requestid>
+  </revision>
 </revisionlist>

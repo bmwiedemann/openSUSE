@@ -1,7 +1,7 @@
 #
-# spec file for package python
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module iniconfig}
 BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 20 12:01:45 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- BuildRequire itself when building test flavour. 
+
+-------------------------------------------------------------------
 Tue Nov 10 08:00:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.1.1:
