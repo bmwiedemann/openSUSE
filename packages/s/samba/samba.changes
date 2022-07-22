@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jul 12 10:48:47 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Update spec file to fix the optional Heimdal DC build
+- Fix external trusts with MIT Kerberos 1.20
+- Add missing samba-client requirement to samba-winbind package;
+  (bsc#1198255);
+- Move pdb backends from package samba-libs to package
+  samba-client-libs and remove samba-libs requirement from
+  samba-winbind; (bsc#1200964); (bsc#1198255);
+- Add sysuser-shadow requirement for packages using
+  systemd-sysusers
+- Use the canonical realm name to refresh the Kerberos tickets;
+  (bsc#1196224); (bso#14979);
+
+-------------------------------------------------------------------
+Tue Jun 21 14:29:52 UTC 2022 - Stefan Schubert <schubi@suse.de>
+
+- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d.
+
+-------------------------------------------------------------------
 Mon Jun 13 13:32:24 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 4.16.2

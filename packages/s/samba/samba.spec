@@ -130,11 +130,14 @@ BuildRequires:  krb5-devel
 %if ! %{with_mitkrb5}
 BuildRequires:  bison
 BuildRequires:  flex
+BuildRequires:  perl-JSON
 %endif
 %if %{with_mscat}
 BuildRequires:  libgnutls-devel >= 3.5.6
 BuildRequires:  libtasn1-devel >= 3.8
+%if 0%{?suse_version} > 1500
 BuildRequires:  libtasn1-tools
+%endif
 %endif
 # liburing not yet available for all Factory architectures
 %ifnarch ppc armv6l armv7l
@@ -142,7 +145,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.16.2+git.262.6acc6531bc7
+Version:        4.16.2+git.288.4d64e4651f0
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -160,6 +163,7 @@ Requires:       coreutils
 Requires:       system-user-nobody
 Requires:       %{fillup_prereq}
 Requires:       samba-client >= %{version}
+Requires:       sysuser-shadow
 Provides:       group(ntadmin)
 
 %{?systemd_ordering}
@@ -177,7 +181,7 @@ Provides:       group(ntadmin)
 %define	NET_CFGDIR network
 %define	auth_modules auth_unix,auth_wbc,auth_server,auth_netlogond,auth_script,auth_samba4
 %define	idmap_modules idmap_ad,idmap_adex,idmap_hash,idmap_ldap,idmap_rfc2307,idmap_rid,idmap_tdb2
-%define	pdb_modules pdb_tdbsam,pdb_ldap,pdb_ads,pdb_smbpasswd,pdb_wbc_sam,pdb_samba4
+%define	pdb_modules pdb_tdbsam,pdb_ldapsam,pdb_smbpasswd,pdb_samba_dsdb
 %define	vfs_modules vfs_cacheprime,vfs_readahead
 %define	VENDOR SUSE
 %define cups_lib_dir %{_prefix}/lib/cups
@@ -431,8 +435,10 @@ Recommends:     /usr/sbin/nscd
 Recommends:     cron
 Recommends:     logrotate
 Requires:       coreutils
+Requires:       samba-client = %{version}
 Requires:       samba-winbind-libs = %{version}
 Recommends:     samba-gpupdate = %{version}
+Requires:       sysuser-shadow
 
 Requires(post): /sbin/ldconfig
 Requires(postun):/sbin/ldconfig
@@ -823,12 +829,20 @@ for script in ${NETWORK_LINKS}; do
 done
 
 # Add logrotate settings for nmbd and smbd only on systems newer than 8.1.
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+%endif
 LOGROTATE_FILES="samba samba-winbind"
 for file in ${LOGROTATE_FILES}; do
-	install -m 0644 logrotate/${file} %{buildroot}/%{_sysconfdir}/logrotate.d/${file}
 	rm -f "%{_builddir}/samba-%{version}/filelist-${file}"
 	touch "%{_builddir}/samba-%{version}/filelist-${file}"
+%if 0%{?suse_version} > 1500
+        install -m 0644 logrotate/${file} %{buildroot}/%{_distconfdir}/logrotate.d/${file}
+        echo "%{_distconfdir}/logrotate.d/${file}" >>%{_builddir}/samba-%{version}/filelist-${file}
+%else
+        install -m 0644 logrotate/${file} %{buildroot}/%{_sysconfdir}/logrotate.d/${file}
 	echo "%config(noreplace) %{_sysconfdir}/logrotate.d/${file}" >>%{_builddir}/samba-%{version}/filelist-${file}
+%endif
 done
 install -m 0644 docu/README.SUSE %{buildroot}/%{DOCDIR}/
 # SUSEhelp files
@@ -1449,6 +1463,10 @@ exit 0
 %if %{with_dc}
 %{_libdir}/samba/libdfs-server-ad-samba4.so
 %endif
+%dir %{_libdir}/samba/pdb
+%{_libdir}/samba/pdb/ldapsam.so
+%{_libdir}/samba/pdb/smbpasswd.so
+%{_libdir}/samba/pdb/tdbsam.so
 
 %files libs
 %defattr(-,root,root)
@@ -1471,23 +1489,20 @@ exit 0
 %{_libdir}/samba/libREG-FULL-samba4.so
 %{_libdir}/samba/libRPC-SERVER-LOOP-samba4.so
 %{_libdir}/samba/libRPC-WORKER-samba4.so
-%dir %{_libdir}/samba/pdb
-%{_libdir}/samba/pdb/ldapsam.so
-%{_libdir}/samba/pdb/smbpasswd.so
-%{_libdir}/samba/pdb/tdbsam.so
 %if ! %{with_mitkrb5}
-%{_libdir}/samba/libasn1-samba4.so.*
-%{_libdir}/samba/libcom_err-samba4.so.*
-%{_libdir}/samba/libgssapi-samba4.so.*
-%{_libdir}/samba/libhcrypto-samba4.so.*
-%{_libdir}/samba/libhdb-samba4.so.*
-%{_libdir}/samba/libheimbase-samba4.so.*
-%{_libdir}/samba/libheimntlm-samba4.so.*
-%{_libdir}/samba/libhx509-samba4.so.*
-%{_libdir}/samba/libkdc-samba4.so.*
-%{_libdir}/samba/libkrb5-samba4.so.*
-%{_libdir}/samba/libroken-samba4.so.*
-%{_libdir}/samba/libwind-samba4.so.*
+%{_libdir}/samba/libasn1-samba4.so
+%{_libdir}/samba/libcom-err-samba4.so
+%{_libdir}/samba/libgss-preauth-samba4.so
+%{_libdir}/samba/libgssapi-samba4.so
+%{_libdir}/samba/libhcrypto-samba4.so
+%{_libdir}/samba/libhdb-samba4.so
+%{_libdir}/samba/libheimbase-samba4.so
+%{_libdir}/samba/libheimntlm-samba4.so
+%{_libdir}/samba/libhx509-samba4.so
+%{_libdir}/samba/libkdc-samba4.so
+%{_libdir}/samba/libkrb5-samba4.so
+%{_libdir}/samba/libroken-samba4.so
+%{_libdir}/samba/libwind-samba4.so
 %endif
 
 %files libs-python3
@@ -1838,6 +1853,7 @@ exit 0
 %{_libdir}/samba/service/winbindd.so
 %{_libdir}/samba/service/wrepl.so
 %{_libdir}/libdcerpc-server.so.*
+%{_libdir}/samba/pdb/samba_dsdb.so
 %if %{with_mit_dc}
 %{_libdir}/krb5/plugins/kdb/samba.so
 %else
