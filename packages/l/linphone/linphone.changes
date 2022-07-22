@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 15 14:09:04 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 5.1.48.
+  * Improved how device ringtone is obtained
+  * Fixed DNS servers list not updated when network changes
+  * Set ConferenceId also if conference event package is not enabled
+  * Make DTLS-SRTP to start immediately after the default candidate pair is verified by ICE.
+  * increase tests timeout
+  * Fixed audio echo canceller calibration not being done using speaker on Android
+  * Fixed audio focus not taken when doing echo canceller calibration if it is disabled for calls
+  * Fix accepting an sdp with mid but no correponding extmap attribute when it shouldn't
+- Use rpmlintrc to ignore RPATH because the environment variable does not work anymore on TW.
+- Remove fix that doesn’t seem to be necessary anymore.
+
+-------------------------------------------------------------------
 Wed Jun  8 03:07:55 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.1.42
 
 - Update to version 5.1.42:

@@ -26,7 +26,7 @@
 %endif
 %define sover   10
 Name:           linphone
-Version:        5.1.42
+Version:        5.1.48
 Release:        0
 Summary:        Web Phone
 License:        GPL-3.0-or-later
@@ -35,6 +35,7 @@ URL:            https://linphone.org/technical-corner/liblinphone/
 Source:         https://gitlab.linphone.org/BC/public/liblinphone/-/archive/%{version}/liblinphone-%{version}.tar.bz2
 Source1:        %{name}-manual.tar.bz2
 Source3:        https://gitlab.linphone.org/BC/public/external/openldap/-/archive/bc/openldap-bc.tar.bz2
+Source4:        linphone-rpmlintrc
 # PATCH-FIX-OPENSUSE linphone-fix-pkgconfig.patch sor.alexei@meowr.ru -- Install linphone.pc.
 Patch0:         linphone-fix-pkgconfig.patch
 # PATCH-FEATURE-OPENSUSE linphone-build-readline.patch sor.alexei@meowr.ru -- Add the ability to compile with readline to the build system.
@@ -251,8 +252,6 @@ sed -i "/OPENLDAP_INCLUDE_DIRS/,/LDAP_LIB/s@\${CMAKE_INSTALL_PREFIX}@$PWD/aux@;s
   -DENABLE_STATIC=OFF          \
   -DCMAKE_LINK_WHAT_YOU_USE=ON
 
-#5.1.42: fix error: return-statement with a value, in function returning 'void'
-sed -i '/void CorePrivate::doLater/,/^}/s@return @@' ../src/core/core.cpp
 %cmake_build
 
 %install

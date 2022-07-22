@@ -1,0 +1,2 @@
+# Prevent rpmlint from complaining about rpath.
+addFilter("binary-or-shlib-defines-rpath")
