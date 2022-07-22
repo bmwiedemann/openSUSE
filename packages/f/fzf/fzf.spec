@@ -17,7 +17,7 @@
 
 
 Name:           fzf
-Version:        0.30.0
+Version:        0.31.0
 Release:        0
 Summary:        A command-line fuzzy finder
 License:        MIT

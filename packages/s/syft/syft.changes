@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 21 15:12:29 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.52.0:
+  * Update sigstore/rekor dependency (#1112)
+  * Added ppc64le support (#1099)
+  * patch-distroless-ghcr (#1110)
+  * add distroless debug image to published release (#1106)
+  * update help formatting (#1105)
+  * feat: implement haskell support (#1096)
+  * Add the -r argument for gnu xargs (#1103)
+  * fix: -o output option to include formats (#1102)
+  * moves go-rpmdb to latest; libc => v1.16.7 (#1098)
+
+-------------------------------------------------------------------
 Sat Jul 16 19:00:04 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.51.0:

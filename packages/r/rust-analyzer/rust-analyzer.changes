@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jul 15 13:57:57 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 2022.07.11:
+  * Bump transitive npm deps
+  * Bump @vscode/test-electron
+  * Bump @types/node to 16
+  * Bump typescript and tslib
+  * Bump prettier
+  * Bump @typescript-eslint
+  * Bump vsce
+  * Bump eslint
+  * Bump esbuild
+  * Bump d3 and d3-graphviz
+  * Bump vscode-languageclient
+  * fix: Improve suggested names for extracted variables
+  * fix: Extract Function misses locals used in closures
+  * Update remaining GitHub URLs
+  * Remove unnecessary unsafe from format_args expansion
+  * publish workflow: Fix names for existing crates
+  * fix default type param value position
+  * Use `SmallVec` to slightly shrink `ModPath` size
+  * check arg_idx >= n_params only if arg_idx >= n_required_params
+  * Handle generic args per arg index Add more test cases for generic args
+  * Code: use different schemes for the custom views
+  * Show only assoc type args in the correct arg pos
+  * Complete associated type only in trait generic arg Fix tidy check does not work for marks in multiline
+  * Fix project root assert
+  * Remove useless bors.toml
+  * internal: Update inert attribute list
+  * Add back restartServerOnConfigChange option
+  * Improve documentation for buildScripts.overrideCommand / checkOnSave.overrideCommand
+  * fix: Extract function from trait impl
+
+-------------------------------------------------------------------
 Fri Jul 08 07:02:53 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 2022.07.04:

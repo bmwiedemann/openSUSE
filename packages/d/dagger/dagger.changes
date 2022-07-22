@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 21 13:21:22 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.25:
+  * fix: Use included wget instead of curl
+  * Get telemetry pushing final states and action logs
+  * build(deps): bump github.com/sirupsen/logrus from 1.8.1 to 1.9.0 (#2816)
+  * feat: Add global auth env variables to `core.#Pull`
+  * ci: print cue lint feedback for unformatted files
+  * Mark runs failed when action cannot be found in plan
+  * fix: Validator not detecting an edge case with valid FS reference
+  * Keep go.opentelemetry.io/otel versions in sync with BuildKit
+
+-------------------------------------------------------------------
 Wed Jul 20 05:46:55 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.24:

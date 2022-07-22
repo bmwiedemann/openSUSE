@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 21 08:41:45 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to update argcomplete dependency
+  + acc_update-argcomplete.patch
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Jul  5 07:58:43 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

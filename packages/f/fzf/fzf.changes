@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul 21 16:17:24 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.31.0:
+  - Added support for an alternative preview window layout that
+    is activated when the size of the preview window is smaller
+    than a certain threshold.
+
+    # If the width of the preview window is smaller than 50 columns,
+    # it will be displayed above the search window.
+    fzf --preview 'cat {}' --preview-window 'right,50%,border-left,<50(up,30%,border-bottom)'
+
+    # Or you can just hide it like so
+    fzf --preview 'cat {}' --preview-window '<50(hidden)'
+
+  - fzf now uses SGR mouse mode to properly support mouse on
+    larger terminals
+  - You can now use characters that do not satisfy
+    unicode.IsGraphic constraint for --marker, --pointer, and
+    --ellipsis. Allows Nerd Fonts and stuff.
+    Use at your own risk.
+  - Bug fixes and improvements
+  - Shell extension
+      kill completion now requires trigger sequence (**) for
+      consistency
+
+-------------------------------------------------------------------
 Wed Jun 22 11:08:05 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Supplement fzf-bash-completion against bash-completion, not bash.

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jul 21 19:26:38 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 4.8.0
+  * New features:
+    - Support any weekday as first day of week; previously, only Sunday and
+      Monday were allowed.
+    - Configuration of the format in which appointment time is displayed.
+    - Actions without key bindings.
+    - generic-prev-view key binding to cycle backwards through windows.
+    - Support for Home/End keys in text input mode.
+  * Bug fixes:
+    - Support compilation on big-endian systems.
+    - Fixed --docdir support.
+    - Allow newlines in iCal SUMMARY by replacing them with blanks.
+    - Fixed sidebar configuration sometimes not increasing width.
+    - Layout change recognizes changed appointment space; before this change,
+      a layout change did not update the maximum number of appointments visible
+      until the config menu was left.
+  * calcurse-caldav bug fixes:
+    - Fixed InsecureSSL support.
+
+-------------------------------------------------------------------
 Wed Apr 14 13:38:03 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 4.7.1 

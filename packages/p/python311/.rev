@@ -71,4 +71,14 @@ C API
 </comment>
     <requestid>989232</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ead8fc1837abf793205925b1cf5fce63</srcmd5>
+    <version>3.11.0b4</version>
+    <time>1658510493</time>
+    <user>RBrownFactory</user>
+    <comment>- Switch from %primary_interpreter to prjconf-defined
+  %primary_python (gh#openSUSE/python-rpm-macros#127).
+</comment>
+    <requestid>990681</requestid>
+  </revision>
 </revisionlist>

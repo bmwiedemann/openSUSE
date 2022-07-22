@@ -68,6 +68,22 @@ Group:          System/Packages
 %description    virt-controller
 The virt-controller package provides a controller for kubevirt
 
+%package        virt-exportproxy
+Summary:        Export proxy for kubevirt
+Group:          System/Packages
+
+%description    virt-exportproxy
+The virt-exportproxy package provides a proxy for kubevirt to pass
+requests to virt-exportserver
+
+%package        virt-exportserver
+Summary:        Export server for kubevirt
+Group:          System/Packages
+
+%description    virt-exportserver
+The virt-exportserver package provides an http server for kubevirt to
+serve the data of VirtualMachineExport resource in different formats
+
 %package        virt-handler
 Summary:        Handler component for kubevirt
 Group:          System/Packages
@@ -188,6 +204,8 @@ build_tests="true" \
     cmd/virt-api \
     cmd/virt-chroot \
     cmd/virt-controller \
+    cmd/virt-exportproxy \
+    cmd/virt-exportserver \
     cmd/virt-freezer \
     cmd/virt-handler \
     cmd/virt-launcher \
@@ -207,6 +225,8 @@ install -p -m 0755 _out/cmd/virtctl/virtctl %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-api/virt-api %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-controller/virt-controller %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-chroot/virt-chroot %{buildroot}%{_bindir}/
+install -p -m 0755 _out/cmd/virt-exportproxy/virt-exportproxy %{buildroot}%{_bindir}/
+install -p -m 0755 _out/cmd/virt-exportserver/virt-exportserver %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-handler/virt-handler %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-launcher/virt-launcher %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-launcher-monitor/virt-launcher-monitor %{buildroot}%{_bindir}/
@@ -262,6 +282,16 @@ install -m 0644 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
 %license LICENSE
 %doc README.md
 %{_bindir}/virt-controller
+
+%files virt-exportproxy
+%license LICENSE
+%doc README.md
+%{_bindir}/virt-exportproxy
+
+%files virt-exportserver
+%license LICENSE
+%doc README.md
+%{_bindir}/virt-exportserver
 
 %files virt-handler
 %license LICENSE

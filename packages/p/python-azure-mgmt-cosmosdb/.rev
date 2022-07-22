@@ -189,4 +189,18 @@
 - Update Requires from setup.py (forwarded request 978678 from glaubitz)</comment>
     <requestid>978690</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>03cf0ca060d7fd0b9d987390f096ca29</srcmd5>
+    <version>7.0.0.0</version>
+    <time>1658510494</time>
+    <user>RBrownFactory</user>
+    <comment>- New upstream release
+  + Version 7.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 7.0.0.0 to ensure
+  proper upgrade from previous version 7.0.0b6
+- Update Requires from setup.py (forwarded request 990641 from glaubitz)</comment>
+    <requestid>990682</requestid>
+  </revision>
 </revisionlist>

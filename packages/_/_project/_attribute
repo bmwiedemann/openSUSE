@@ -4,10 +4,10 @@
   <attribute namespace="OBS" name="ApprovedRequestSource"/>
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
-  boo#1094987: '20220719'
+  boo#1094987: '20220721'
   boo#1172073: '20220614'
-  boo#1183454: '20220719'
-  boo#1190434: '20220719'
+  boo#1183454: '20220721'
+  boo#1190434: '20220721'
   boo#1190823: '20220409'
   boo#1196201: '20220525'
   boo#1196335: '20220524'
@@ -29,20 +29,20 @@
   boo#1198418: '20220518'
   boo#1199498: '20220512'
   boo#1199535: '20220516'
-  boo#1199881: '20220719'
+  boo#1199881: '20220721'
   boo#1199885: '20220606'
   boo#1199924: '20220601'
   boo#1199925: '20220601'
   boo#1200275: '20220714'
-  boo#1200403: '20220719'
+  boo#1200403: '20220721'
   boo#1200595: '20220614'
   boo#1200600: '20220614'
   boo#1200615: '20220627'
   boo#1200616: '20220628'
   boo#1200682: '20220628'
-  boo#1200753: '20220715'
+  boo#1200753: '20220721'
   boo#1200893: '20220718'
-  boo#1200894: '20220719'
+  boo#1200894: '20220721'
   boo#1201054: '20220711'
   boo#1201057: '20220718'
   boo#1201082: '20220711'
@@ -50,9 +50,9 @@
   boo#1201349: '20220719'
   boo#1201504: '20220719'
   boo#1201538: '20220718'
-  bsc#1161276: '20220719'
-  bsc#1191684: '20220719'
-  bsc#1198101: '20220719'
+  bsc#1161276: '20220721'
+  bsc#1191684: '20220721'
+  bsc#1198101: '20220721'
   bsc#1198235: '20220503'
   gh#os-autoinst/os-autoinst-distri-opensuse#15257: '20220719'
   poo#105295: '20220518'
@@ -73,7 +73,7 @@
   poo#110872: '20220517'
   poo#111036: '20220612'
   poo#111069: '20220530'
-  poo#111266: '20220719'
+  poo#111266: '20220721'
   poo#111416: '20220525'
   poo#111479: '20220622'
   poo#111485: '20220523'
@@ -88,7 +88,7 @@
   poo#112700: '20220622'
   poo#112982: '20220623'
   poo#113051: '20220703'
-  poo#113075: '20220719'
+  poo#113075: '20220721'
   poo#113114: '20220628'
   poo#113360: '20220712'
   poo#113492: '20220719'
@@ -137,7 +137,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20220721</value>
+    <value>20220722</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -443,10 +443,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20220721'
 published: '20220719'
 publishing: '20220719'
-testing: '20220719'
+testing: '20220721'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">

@@ -1,26 +1,25 @@
-diff -Nru oci-python-sdk-2.64.0.orig/requirements.txt oci-python-sdk-2.64.0/requirements.txt
---- oci-python-sdk-2.64.0.orig/requirements.txt	2022-04-19 19:16:40.000000000 +0200
-+++ oci-python-sdk-2.64.0/requirements.txt	2022-04-26 11:09:17.304558121 +0200
+diff -Nru oci-python-sdk-2.75.1.orig/requirements.txt oci-python-sdk-2.75.1/requirements.txt
+--- oci-python-sdk-2.75.1.orig/requirements.txt	2022-07-19 19:14:53.000000000 +0200
++++ oci-python-sdk-2.75.1/requirements.txt	2022-07-22 12:00:07.839558705 +0200
 @@ -1,21 +1,21 @@
 -autodocsumm==0.1.11
 +autodocsumm>=0.1.11
  certifi
 -configparser==4.0.2; python_version < '3'
 -coverage==4.5.2
--cryptography>=3.2.1,<=3.4.7
--flake8==3.6.0
+-cryptography>=3.2.1,<=37.0.2
++configparser>=4.0.2
++coverage>=4.5.2
++cryptography>=3.2.1
+ flake8>=3.6.0
 -mock==2.0.0
--pyOpenSSL==19.1.0
+-pyOpenSSL>=17.5.0,<=22.0.0
 -pytest==4.1.0
 -pytest-cov==2.6.1
 -attrs==19.1.0
 -python-dateutil>=2.5.3,<=2.7.3
-+configparser>=4.0.2; python_version < '3'
-+coverage>=4.5.2
-+cryptography>=3.2.1
-+flake8>=3.6.0
 +mock>=2.0.0
-+pyOpenSSL>=19.1.0
++pyOpenSSL>=17.5.0
 +pytest>=4.1.0
 +pytest-cov>=2.6.1
 +attrs>=19.1.0
@@ -42,18 +41,18 @@ diff -Nru oci-python-sdk-2.64.0.orig/requirements.txt oci-python-sdk-2.64.0/requ
 -Jinja2<3.1
 \ No newline at end of file
 +Jinja2<3.1
-diff -Nru oci-python-sdk-2.64.0.orig/setup.py oci-python-sdk-2.64.0/setup.py
---- oci-python-sdk-2.64.0.orig/setup.py	2022-04-19 19:16:40.000000000 +0200
-+++ oci-python-sdk-2.64.0/setup.py	2022-04-26 11:08:21.691516296 +0200
+diff -Nru oci-python-sdk-2.75.1.orig/setup.py oci-python-sdk-2.75.1/setup.py
+--- oci-python-sdk-2.75.1.orig/setup.py	2022-07-19 19:14:53.000000000 +0200
++++ oci-python-sdk-2.75.1/setup.py	2022-07-22 11:59:32.218128700 +0200
 @@ -31,12 +31,12 @@
  
  requires = [
      "certifi",
 -    "configparser==4.0.2 ; python_version < '3'",
--    "cryptography>=3.2.1,<=3.4.7",
--    "pyOpenSSL>=17.5.0,<=19.1.0",
+-    "cryptography>=3.2.1,<=37.0.2",
+-    "pyOpenSSL>=17.5.0,<=22.0.0",
 -    "python-dateutil>=2.5.3,<3.0.0",
-+    "configparser>=4.0.2 ; python_version < '3'",
++    "configparser>=4.0.2",
 +    "cryptography>=3.2.1",
 +    "pyOpenSSL>=17.5.0",
 +    "python-dateutil>=2.5.3",
