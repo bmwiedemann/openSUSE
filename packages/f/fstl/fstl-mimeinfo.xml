@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="model/x.stl-binary">
+    <comment>STL 3D model (binary)</comment>
+    <comment xml:lang="ca">model 3D STL (binari)</comment>
+    <comment xml:lang="cs">model STL 3D (binární)</comment>
+    <comment xml:lang="de">STL 3D-Modell (binär)</comment>
+    <comment xml:lang="es">modelo 3D STL (binario)</comment>
+    <comment xml:lang="eu">STL 3D modeloa (binarioa)</comment>
+    <comment xml:lang="fr">modèle (binaire) STL 3D</comment>
+    <comment xml:lang="ga">samhail 3T STL (dénártha)</comment>
+    <comment xml:lang="hr">STL 3D model (binarna datoteka)</comment>
+    <comment xml:lang="hu">STL 3D modell (bináris)</comment>
+    <comment xml:lang="id">model STL 3D (biner)</comment>
+    <comment xml:lang="it">Modello 3D STL (binario)</comment>
+    <comment xml:lang="kk">STL 3D моделі (екілік)</comment>
+    <comment xml:lang="ko">STL 3D 모델(바이너리)</comment>
+    <comment xml:lang="pl">Model 3D STL (binarny)</comment>
+    <comment xml:lang="pt_BR">Modelo 3D STL (binário)</comment>
+    <comment xml:lang="ru">3D модель STL (бинарная)</comment>
+    <comment xml:lang="sk">STL 3D model (binárny)</comment>
+    <comment xml:lang="sr">СТЛ 3Д модел (извршна)</comment>
+    <comment xml:lang="sv">STL 3D-modell (binär)</comment>
+    <comment xml:lang="tr">STL 3D modeli (ikili)</comment>
+    <comment xml:lang="uk">просторова модель STL (бінарна)</comment>
+    <comment xml:lang="zh_CN">STL 3D 模型（二进制）</comment>
+    <comment xml:lang="zh_TW">STL 3D 模型 (二進位)</comment>
+    <magic priority="10">
+      <match value="0x0" type="byte" offset="134" mask="0xFFFF">
+        <match value="0x0" type="byte" offset="184" mask="0xFFFF">
+          <match value="0x0" type="byte" offset="234" mask="0xFFFF"/>
+        </match>
+      </match>
+    </magic>
+    <glob pattern="*.stl"/>
+  </mime-type>
+
+  <mime-type type="model/x.stl-ascii">
+    <comment>STL 3D model (ASCII)</comment>
+    <comment xml:lang="ca">model 3D STL (ASCII)</comment>
+    <comment xml:lang="cs">model STL 3D (ASCII)</comment>
+    <comment xml:lang="de">STL 3D-Modell (ASCII)</comment>
+    <comment xml:lang="es">modelo 3D STL (ASCII)</comment>
+    <comment xml:lang="eu">STL 3D modeloa (ASCII)</comment>
+    <comment xml:lang="fr">modèle (ASCII) STL 3D</comment>
+    <comment xml:lang="ga">samhail 3T STL (ASCII)</comment>
+    <comment xml:lang="hr">STL 3D model (ASCII)</comment>
+    <comment xml:lang="hu">STL 3D modell (ASCII)</comment>
+    <comment xml:lang="id">model STL 3D (ASCII)</comment>
+    <comment xml:lang="it">Modello 3D STL (ASCII)</comment>
+    <comment xml:lang="kk">STL 3D моделі (ASCII)</comment>
+    <comment xml:lang="ko">STL 3D 모델(아스키)</comment>
+    <comment xml:lang="pl">Model 3D STL (ASCII)</comment>
+    <comment xml:lang="pt_BR">Modelo 3D STL (ASCII)</comment>
+    <comment xml:lang="ru">3D модель STL (ASCII)</comment>
+    <comment xml:lang="sk">STL 3D model (ASCII)</comment>
+    <comment xml:lang="sr">СТЛ 3Д модел (АСКРИ)</comment>
+    <comment xml:lang="sv">STL 3D-modell (ASCII)</comment>
+    <comment xml:lang="tr">STL 3D modeli (ASCII)</comment>
+    <comment xml:lang="uk">просторова модель STL (ASCII)</comment>
+    <comment xml:lang="zh_CN">STL 3D 模型 (ASCII)</comment>
+    <comment xml:lang="zh_TW">STL 3D 模型 (ASCII)</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="text-x-generic"/>
+    <magic priority="50">
+      <match value="solid" type="string" offset="0"/>
+      <match value="SOLID" type="string" offset="0"/>
+    </magic>
+    <glob pattern="*.stl"/>
+  </mime-type>
+
+  <mime-type type="text/x.gcode">
+    <comment>G-code file</comment>
+    <comment xml:lang="ca">fitxer G-code</comment>
+    <comment xml:lang="cs">soubor G-code</comment>
+    <comment xml:lang="de">G-Code-Datei</comment>
+    <comment xml:lang="es">archivo G-code</comment>
+    <comment xml:lang="eu">G-code fitxategia</comment>
+    <comment xml:lang="fi">G-code-tiedosto</comment>
+    <comment xml:lang="fr">fichier G-code</comment>
+    <comment xml:lang="ga">comhad G-code</comment>
+    <comment xml:lang="hr">G-kôd datoteka</comment>
+    <comment xml:lang="hu">G-code fájl</comment>
+    <comment xml:lang="id">berkas G-code</comment>
+    <comment xml:lang="it">File G-code</comment>
+    <comment xml:lang="kk">G-code файлы</comment>
+    <comment xml:lang="ko">지-코드 파일</comment>
+    <comment xml:lang="pl">Plik G-code</comment>
+    <comment xml:lang="pt_BR">Arquivo G-code</comment>
+    <comment xml:lang="ru">Файл G-code</comment>
+    <comment xml:lang="sk">Súbor G-code</comment>
+    <comment xml:lang="sr">датотека Г-ко̂да</comment>
+    <comment xml:lang="sv">G-code-fil</comment>
+    <comment xml:lang="tr">G-code dosyası</comment>
+    <comment xml:lang="uk">файл G-code</comment>
+    <comment xml:lang="zh_CN">G-code 文件</comment>
+    <comment xml:lang="zh_TW">G-code 檔案</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="text-x-generic"/>
+    <glob pattern="*.gcode"/>
+  </mime-type>
+</mime-info>

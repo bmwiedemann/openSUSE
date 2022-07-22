@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Thu Jul 21 08:47:28 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.0:
+  * Added README section for setting fstl as default viewer #52
+  * Fix initial settings #54
+  * Show 3D axes in viewer #55
+  * Allow uppercase file suffixes as well #60
+  * Implement an Invert Zoom option #61
+  * Remove Legacy Qt Build Option scholl in #62
+  * Added "Surface Angle" draw mode based on github stl viewer #66
+  * Versioning in app, other small changes #64
+  * Fix several Qt deprecation warnings #67
+  * Remember application settings #78
+  * Implement compact and fullscreen view #81
+
+-------------------------------------------------------------------
+Thu Jul 21 08:46:11 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Copy version 0.9.4 from home:mrbadguy/fstl
+- Run spec-cleaner
+- Remove camera-pos.patch
+- Remove _service and use regular tarball
+- Remove calls to %mime_database_post, %desktop_database_post,
+  %icon_theme_cache_post since since they are run via rpm file
+  triggers now

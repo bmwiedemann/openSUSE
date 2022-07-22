@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=fstl
+Categories=Qt;Graphics;3DGraphics;Viewer
+Comment=
+Exec=fstl %F
+GenericName=Fast STL viewer
+Icon=fstl
+MimeType=model/x.stl-binary;model/x.stl-ascii
+StartupNotify=true
+Terminal=false
+Type=Application
