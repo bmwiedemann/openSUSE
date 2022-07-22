@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat Jul 09 20:13:15 UTC 2022 - elimat@opensuse.org
+
+- Update to version 2.6.1+git0.f6ca66d44:
+  * [RELEASE] Released version 2.6.1
+  * REGTESTS: ssl: add the same cert for client/server
+  * BUG/MEDIUM: mworker: use default maxconn in wait mode
+  * BUG/MINOR: quic: Acknowledgement must be forced during handshake
+  * BUG/MEDIUM: ssl/cli: crash when crt inserted into a crt-list
+  * BUG/MINOR: quic: free rejected Rx packets
+  * BUG/MINOR: quic: purge conn Rx packet list on release
+  * BUG/MINOR: quic_stats: Duplicate "quic_streams_data_blocked_bidi" field name
+  * BUG/MINOR: quic: Unexpected half open connection counter wrapping
+  * BUG/MINOR: log: Properly test connection retries to fix dontlog-normal option
+  * MINOR: stream: Rely on stconn flags to abort stream destructive upgrade
+  * BUG/MEDIUM: stream: Properly handle destructive client connection upgrades
+  * BUG/MINOR: task: fix thread assignment in tasklet_kill()
+  * BUG/MINOR: quic: Wrong PTO calculation
+  * BUG/MINOR: quic: Stop hardcoding Retry packet Version field
+  * BUG/BUILD: h3: fix wrong label name
+  * BUG/MINOR: h3/qpack: deal with too many headers
+  * MINOR: qpack: add comments and remove a useless trace
+  * BUG/MINOR: qpack: support header litteral name decoding
+  * BUG/MEDIUM: mux-quic: fix segfault on flow-control frame cleanup
+  * BUG/MEDIUM: cli: Notify cli applet won't consume data during request processing
+  * BUG/MEDIUM: stconn: Don't wakeup applet for send if it won't consume data
+  * BUG/MINOR: tcp-rules: Make action call final on read error and delay expiration
+  * BUG/MINOR: mux-quic: fix memleak on frames rejected by transport
+  * BUG/MEDIUM: mux-quic: fix flow control connection Tx level
+  * BUG/MINOR: cli/stats: add missing trailing LF after "show info json"
+  * BUG/MINOR: server: do not enable DNS resolution on disabled proxies
+  * BUG/MINOR: cli/stats: add missing trailing LF after JSON outputs
+  * BUG/MINOR: h3: fix frame type definition
+  * REGTESTS: healthcheckmail: Relax health-check failure condition
+  * REGTESTS: healthcheckmail: Update the test to be functionnal again
+  * BUG/MINOR: checks: Properly handle email alerts in trace messages
+  * BUG/MINOR: trace: Test server existence for health-checks to get proxy
+  * BUG/MEDIUM: mailers: Set the object type for check attached to an email alert
+  * BUILD: compiler: implement unreachable for older compilers too
+  * REGTESTS: restrict_req_hdr_names: Extend supported versions
+  * REGTESTS: http_abortonclose: Extend supported versions
+  * BUG/MINOR: ssl_ckch: Fix possible uninitialized value in show_crlfile I/O handler
+  * BUG/MINOR: ssl_ckch: Fix possible uninitialized value in show_cafile I/O handler
+  * BUG/MINOR: ssl_ckch: Fix possible uninitialized value in show_cert I/O handler
+  * BUG/MINOR: ssl_ckch: Init right field when parsing "commit ssl crl-file" cmd
+  * BUG/MINOR: ssl_ckch: Dump cert transaction only once if show command yield
+  * BUG/MINOR: ssl_ckch: Dump CA transaction only once if show command yield
+  * BUG/MINOR: ssl_ckch: Dump CRL transaction only once if show command yield
+  * BUG/MINOR: ssl_ckch: Use right type for old entry in show_crlfile_ctx
+  * REGTESTS: http_request_buffer: Increase client timeout to wait "slow" clients
+  * REGTESTS: abortonclose: Add a barrier to not mix up log messages
+  * MEDIUM: httpclient: Don't close CLI applet at the end of a response
+  * MEDIUM: http-ana: Always report rewrite failures as PRXCOND in logs
+  * BUG/MEDIUM: httpclient: Rework CLI I/O handler to handle full buffer cases
+  * BUG/MEDIUM: httpclient: Don't remove HTX header blocks before duplicating them
+  * BUG/MEDIUM: ssl/crt-list: Rework 'add ssl crt-list' to handle full buffer cases
+  * BUG/MEDIUM: ssl_ckch: Rework 'commit ssl ca-file' to handle full buffer cases
+  * BUG/MEDIUM: ssl_ckch: Rework 'commit ssl cert' to handle full buffer cases
+  * BUG/MINOR: ssl_ckch: Don't duplicate path when replacing a CA/CRL entry
+  * BUG/MINOR: ssl_ckch: Don't duplicate path when replacing a cert entry
+  * BUG/MEDIUM: ssl_ckch: Don't delete CA/CRL entry if it is being modified
+  * BUG/MEDIUM: ssl_ckch: Don't delete a cert entry if it is being modified
+  * BUG/MINOR: ssl_ckch: Free error msg if commit changes on a CA/CRL entry fails
+  * BUG/MINOR: ssl_ckch: Free error msg if commit changes on a cert entry fails
+
+-------------------------------------------------------------------
 Tue May 31 15:54:35 UTC 2022 - mrueckert@suse.de
 
 - Update to version 2.6.0+git0.a1efc048b:

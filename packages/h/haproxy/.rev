@@ -1192,4 +1192,12 @@
   - lua54.patch</comment>
     <requestid>980119</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>32dcb011d6700c2c476d5b1a1b72fb66</srcmd5>
+    <version>2.6.1+git0.f6ca66d44</version>
+    <time>1658510393</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 2.6.1+git0.f6ca66d44:</comment>
+    <requestid>990410</requestid>
+  </revision>
 </revisionlist>
