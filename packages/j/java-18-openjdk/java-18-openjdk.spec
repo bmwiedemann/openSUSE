@@ -32,9 +32,9 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      18
 %global interimver      0
-%global updatever       1
-%global datever         2022-04-19
-%global buildver        10
+%global updatever       2
+%global datever         2022-07-19
+%global buildver        9
 %global openjdk_repo    jdk18u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
@@ -178,7 +178,6 @@ Patch20:        loadAssistiveTechnologies.patch
 Patch200:       ppc_stack_overflow_fix.patch
 #
 Patch300:       JDK-8282944.patch
-Patch301:       JDK-8282004.patch
 Patch302:       disable-doclint-by-default.patch
 Patch303:       alternative-tzdb_dat.patch
 #
@@ -446,7 +445,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch200 -p1
 
 %patch300 -p1
-%patch301 -p1
 %patch302 -p1
 %patch303 -p1
 
@@ -930,7 +928,11 @@ fi
 %dir %{_jvmdir}/%{sdkdir}/bin
 %dir %{_jvmdir}/%{sdkdir}/lib
 %dir %{_jvmdir}/%{sdkdir}/lib/jfr
+%if %{with zero}
+%dir %{_jvmdir}/%{sdkdir}/lib/zero
+%else
 %dir %{_jvmdir}/%{sdkdir}/lib/server
+%endif
 %dir %{_jvmdir}/%{sdkdir}/lib/desktop
 %dir %{_jvmdir}/%{sdkdir}/lib/security
 
