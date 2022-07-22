@@ -2386,4 +2386,14 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   (poo#113108) (forwarded request 985681 from cboltz)</comment>
     <requestid>985682</requestid>
   </revision>
+  <revision rev="176" vrev="13">
+    <srcmd5>b7f20de924091aed9edc397b78f1d7e4</srcmd5>
+    <version>3.0.4</version>
+    <time>1658510413</time>
+    <user>RBrownFactory</user>
+    <comment>- Add apparmor-setuptools61-mr897.patch
+  https://gitlab.com/apparmor/apparmor/-/merge_requests/897
+- Add buildtime dependencies on python-rpm-macros and setuptools</comment>
+    <requestid>990296</requestid>
+  </revision>
 </revisionlist>

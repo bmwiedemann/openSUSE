@@ -111,6 +111,9 @@ Patch13:        python310-help-mr848.patch
 # extend dovecot profiles for latest dovecot (boo 1199535, submitted upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/881)
 Patch14:        dovecot-profiles-boo1199535-mr881.diff
 
+# https://gitlab.com/apparmor/apparmor/-/merge_requests/897
+Patch15:        apparmor-setuptools61-mr897.patch
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
@@ -127,9 +130,11 @@ BuildRequires:  perl(Locale::gettext)
 BuildRequires:  swig
 
 %if %{with python3}
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  python3-notify2
 BuildRequires:  python3-psutil
+BuildRequires:  python3-setuptools
 %endif
 
 %if %{with ruby}
@@ -383,6 +388,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
+%patch15 -p1
 
 %build
 %define _lto_cflags %{nil}
