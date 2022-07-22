@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 17 15:50:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.5:
+  * https://xonotic.org/posts/2022/xonotic-0-8-5-release/ 
+- drop gcc11-typedef-alignment.patch (obsolete)
+
+-------------------------------------------------------------------
 Sun Jul 11 16:45:49 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add gcc11-typedef-alignment.patch to fix build with GCC 11.

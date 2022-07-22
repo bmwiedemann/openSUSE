@@ -1,7 +1,7 @@
 #
 # spec file for package xonotic
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without systemd
 Name:           xonotic
-Version:        0.8.2
+Version:        0.8.5
 Release:        0
 Summary:        Fast-paced first person shooter
 License:        GPL-2.0-or-later
@@ -30,8 +30,6 @@ Source2:        xonotic.service
 Source3:        xonotic.init
 Source4:        %{name}.changes
 Source100:      xonotic.appdata.xml
-# PATCH-FIX-UPSTREAM gcc11-typedef-alignment.patch -- Fix build with GCC 11 on x86_64: https://gitlab.com/xonotic/darkplaces/-/issues/361
-Patch1:         gcc11-typedef-alignment.patch
 BuildRequires:  SDL2-devel
 BuildRequires:  alsa-devel
 BuildRequires:  d0_blind_id-devel
@@ -81,9 +79,6 @@ Data (textures, maps, sounds and models) required to play xonotic.
 
 %prep
 %setup -q -n Xonotic
-pushd source/darkplaces
-%patch1 -p1
-popd
 rm -rf misc/buildfiles/ # use system libs
 sed -i \
 		-e "/^EXE_/s:darkplaces:%{name}-%{version}:" \
@@ -126,7 +121,6 @@ rm -rf %{buildroot}%{_datadir}/%{name}/server/.gitattributes
 rm -rf %{buildroot}%{_datadir}/%{name}/server/readme.txt
 rm -rf %{buildroot}%{_datadir}/%{name}/server/server_windows.bat
 rm -rf %{buildroot}%{_datadir}/%{name}/server/server.cfg
-rm -rf %{buildroot}%{_datadir}/%{name}/server/help.cfg
 
 mkdir -p  %{buildroot}%{_localstatedir}/lib/%{name}
 
@@ -214,6 +208,6 @@ getent passwd %{name} >/dev/null || useradd -r -g %{name} -d %{_localstatedir}/l
 %attr(755,root,root) %{_datadir}/%{name}/server/server_mac.sh
 %{_datadir}/%{name}/key_0.d0pk
 %license COPYING GPL-2 GPL-3
-%doc server/server.cfg server/help.cfg
+%doc server/server.cfg
 
 %changelog
