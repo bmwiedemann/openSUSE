@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 19 16:15:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add disable-newpdf-renderer.patch (bsc#1201642)
+
+-------------------------------------------------------------------
 Sun Mar 20 20:56:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.6.3:

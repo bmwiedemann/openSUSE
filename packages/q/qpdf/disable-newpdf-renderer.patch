@@ -1,0 +1,22 @@
+Index: qpdf-10.6.3/qpdf/qtest/qpdf.test
+===================================================================
+--- qpdf-10.6.3.orig/qpdf/qtest/qpdf.test
++++ qpdf-10.6.3/qpdf/qtest/qpdf.test
+@@ -5663,7 +5663,7 @@ sub compare_pdfs
+         $td->runtest("convert original file to image",
+                      {$td->COMMAND =>
+                           "(cd tif1;" .
+-                          " gs 2>$devNull -q -dNOPAUSE -sDEVICE=tiff24nc" .
++                          " gs 2>$devNull -q -dNEWPDF=false -dNOPAUSE -sDEVICE=tiff24nc" .
+                           " -sOutputFile=a.tif - < ../$f1)"},
+                      {$td->STRING => "",
+                       $td->EXIT_STATUS => 0});
+@@ -5682,7 +5682,7 @@ sub compare_pdfs
+         $td->runtest("convert new file to image",
+                      {$td->COMMAND =>
+                           "(cd tif2;" .
+-                          " gs 2>$devNull -q -dNOPAUSE -sDEVICE=tiff24nc" .
++                          " gs 2>$devNull -q -dNEWPDF=false -dNOPAUSE -sDEVICE=tiff24nc" .
+                           " -sOutputFile=a.tif - < ../$f2)"},
+                      {$td->STRING => "",
+                       $td->EXIT_STATUS => 0});
