@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 21 13:12:51 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+ - Rebase more-features-exposed.patch to catch another test failure.
+
+-------------------------------------------------------------------
 Mon May 30 09:50:41 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.12.0:

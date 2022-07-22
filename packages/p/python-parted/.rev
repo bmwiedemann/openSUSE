@@ -89,4 +89,12 @@
   * msdos and GPT seem to expose more features, include them when checking.</comment>
     <requestid>979832</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>138d2e39fe596fd4e6ebc6afe1210bac</srcmd5>
+    <version>3.12.0</version>
+    <time>1658510439</time>
+    <user>RBrownFactory</user>
+    <comment> - Rebase more-features-exposed.patch to catch another test failure.</comment>
+    <requestid>990552</requestid>
+  </revision>
 </revisionlist>

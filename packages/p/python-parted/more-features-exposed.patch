@@ -16,3 +16,16 @@ Index: pyparted-3.12.0/tests/test__ped_disktype.py
          self.assertEqual(str(self.disktype['mac']), '_ped.DiskType instance --\n  name: mac  features: 6')
          self.assertEqual(str(self.disktype['bsd']), '_ped.DiskType instance --\n  name: bsd  features: 0')
          self.assertEqual(str(self.disktype['pc98']), '_ped.DiskType instance --\n  name: pc98  features: 2')
+Index: pyparted-3.12.0/tests/test_parted_partition.py
+===================================================================
+--- pyparted-3.12.0.orig/tests/test_parted_partition.py
++++ pyparted-3.12.0/tests/test_parted_partition.py
+@@ -217,7 +217,7 @@ class PartitionGetFlagsAsStringTestCase(
+         as comma separated list.
+     '''
+     def runTest(self):
+-        self.assertEqual(self.part.getFlagsAsString(), 'boot, raid, type')
++        self.assertEqual(self.part.getFlagsAsString(), 'boot, raid')
+ 
+ @unittest.skip("Unimplemented test case.")
+ class PartitionGetMaxGeometryTestCase(unittest.TestCase):
