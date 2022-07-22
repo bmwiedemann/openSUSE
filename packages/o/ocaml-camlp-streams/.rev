@@ -7,4 +7,12 @@
     <comment>new BuildRequires for ocaml-camlp5</comment>
     <requestid>950129</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>89071c822e74431ce0742298e0026e02</srcmd5>
+    <version>5.0.1</version>
+    <time>1658510427</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>989355</requestid>
+  </revision>
 </revisionlist>

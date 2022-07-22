@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-camlp-streams
-Version:        5.0
+Version:        5.0.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Stream and Genlex libraries for use with Camlp5
@@ -26,8 +26,8 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/camlp-streams
 Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune >= 2.5
-BuildRequires:  ocaml-rpm-macros >= 20211027
+BuildRequires:  ocaml-dune >= 2.7
+BuildRequires:  ocaml-rpm-macros >= 20220707
 
 %description
 The camlp-streams package provides two library modules:
@@ -46,13 +46,13 @@ The Stream and Genlex modules have been part of the OCaml standard library for a
 
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 
 %prep
@@ -70,8 +70,8 @@ dune_release_pkgs='camlp-streams'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog
