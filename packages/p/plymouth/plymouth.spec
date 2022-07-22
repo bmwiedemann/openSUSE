@@ -23,7 +23,7 @@
 %global soversion 5
 
 Name:           plymouth
-Version:        0.9.5~git20220412.e960111
+Version:        0.9.5~git20220719.9e72df3
 Release:        0
 Summary:        Graphical Boot Animation and Logger
 License:        GPL-2.0-or-later
@@ -389,7 +389,7 @@ autoreconf -ivf
            --with-background-start-color-stop=0x1A3D1F           \
            --with-background-end-color-stop=0x4EA65C             \
            --with-background-color=0x3391cd                      \
-           --with-runtimedir=/run                                \
+           --runstatedir=/run                                    \
            --without-rhgb-compat-link                            \
            --without-system-root-install
 
