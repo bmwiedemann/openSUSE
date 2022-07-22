@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Thu Jul 21 10:49:56 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-15.0.8+4 (July 2022 CPU)
+  * Security fixes:
+    + JDK-8272243: Improve DER parsing
+    + JDK-8272249: Better properties of loaded Properties
+    + JDK-8277608: Address IP Addressing
+    + JDK-8281859, CVE-2022-21540, bsc#1201694: Improve class
+      compilation
+    + JDK-8281866, CVE-2022-21541, bsc#1201692: Enhance
+      MethodHandle invocations
+    + JDK-8283190: Improve MIDI processing
+    + JDK-8284370: Improve zlib usage
+    + JDK-8285407, CVE-2022-34169, bsc#1201684: Improve Xalan
+      supports
+  * Other changes:
+    + JDK-8172065: javax/swing/JTree/4908142/bug4908142.java The
+      selected index should be "aad"
+    + JDK-8193682: Infinite loop in ZipOutputStream.close()
+    + JDK-8225122: Test AncestorResized.java fails when Windows
+      desktop is scaled.
+    + JDK-8244602: Add JTREG_REPEAT_COUNT to repeat execution of a
+      test
+    + JDK-8250863: Build error with GCC 10 in NetworkInterface.c
+      and k_standard.c
+    + JDK-8252401: Introduce Utils.TEST_NATIVE_PATH
+    + JDK-8255035: Update BCEL to Version 6.5.0
+    + JDK-8255266: Update Public Suffix List to 3c213aa
+    + JDK-8257794: Zero: assert(istate->_stack_limit ==
+      istate->_thread->last_Java_sp() + 1) failed: wrong on
+      Linux/x86_32
+    + JDK-8258077: Using -Xcheck:jni can lead to a double-free
+      after JDK-8193234
+    + JDK-8258471: "search codecache" clhsdb command does not work
+    + JDK-8258795: Update IANA Language Subtag Registry to Version
+      2021-05-11
+    + JDK-8270886: Crash in
+      PhaseIdealLoop::verify_strip_mined_scheduling
+    + JDK-8272574: C2: assert(false) failed: Bad graph detected in
+      build_loop_late
+    + JDK-8273655: content-types.properties files are missing some
+      common types
+    + JDK-8273682: Upgrade Jline to 3.20.0
+    + JDK-8273935: (zipfs) Files.getFileAttributeView() throws UOE
+      instead of returning null when view not supported
+    + JDK-8274735: javax.imageio.IIOException: Unsupported Image
+      Type  while processing a valid JPEG image
+    + JDK-8274751: Drag And Drop hangs on Windows
+    + JDK-8275703: System.loadLibrary fails on Big Sur for
+      libraries hidden from filesystem
+    + JDK-8276657: XSLT compiler tries to define a class with empty
+      name
+    + JDK-8277087: ZipException: zip END header not found at
+      ZipFile#Source.findEND
+    + JDK-8278794: Infinite loop in DeflaterOutputStream.finish()
+    + JDK-8278851: Correct signer logic for jars signed with
+      multiple digest algorithms
+    + JDK-8279505: Update documentation for RETRY_COUNT and
+      REPEAT_COUNT
+    + JDK-8281275: Upgrading from 8 to 11 no longer accepts '/' as
+      filepath separator in gc paths
+    + JDK-8282231: x86-32: runtime call to SharedRuntime::ldiv
+      corrupts registers
+    + JDK-8282538: PKCS11 tests fail on CentOS Stream 9
+    + JDK-8282583: Update BCEL md to include the copyright notice
+    + JDK-8282929: Localized monetary symbols are not reflected in
+      'toLocalizedPattern' return value
+    + JDK-8283350: (tz) Update Timezone Data to 2022a
+    + JDK-8283443: Bump update version for OpenJDK: jdk-15.0.8
+    + JDK-8285445: cannot open file "NUL:"
+    + JDK-8285523: Improve test
+      java/io/FileOutputStream/OpenNUL.java
+    + JDK-8285686: Update FreeType to 2.12.0
+    + JDK-8285726: [11u, 17u] Unify fix for JDK-8284548 with
+      version from head
+    + JDK-8285727: [11u, 17u] Unify fix for JDK-8284920 with
+      version from head
+    + JDK-8287109: Distrust.java failed with
+      CertificateExpiredException
+
+-------------------------------------------------------------------
 Wed Apr 20 12:36:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-15.0.7+4 (April 2022 CPU)
