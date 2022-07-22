@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 18 09:29:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.29:
+  * Fix issue with handling EAP-Success message.
+  * Fix issue with handling secure setting and EAPoL.
+  * Add support for DeviceProvisioning API properties.
+
+-------------------------------------------------------------------
 Mon Jul 11 08:15:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.28:
