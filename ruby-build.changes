@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 21 16:22:26 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20220721.
+  Changelog: //github.com/rbenv/ruby-build/releases/tag/v20220721
+  * For Ruby 3.2.0-dev, install YJIT by default if rustc 1.60+ is available
+  * Don't auto-enable YJIT except on x86_64
+  * Restructure build_package_enable_yjit to be cleaner and to exit before later checks if possible.
+  * Apply patch for implicitly declaration error of OpenSSL 1.1.1q
+  * Use inline patch instead of curl download
+
+-------------------------------------------------------------------
 Thu Jul 14 11:26:59 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20220713.
