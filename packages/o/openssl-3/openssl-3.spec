@@ -21,7 +21,7 @@
 %define _rname  openssl
 Name:           openssl-3
 # Don't forget to update the version in the "openssl" package!
-Version:        3.0.2
+Version:        3.0.5
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        Apache-2.0
