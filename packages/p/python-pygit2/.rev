@@ -270,4 +270,18 @@
   - CI: various fixes after migration to libgit2 v1.4</comment>
     <requestid>965070</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b2bb447b5a04275253a131a5364efebc</srcmd5>
+    <version>1.9.2</version>
+    <time>1658510473</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.9.2:
+  * New Repository.create_commit_string(...) and
+    Repository.create_commit_with_signature(...) #1142
+  * Linux and macOS wheels updated to libgit2 v1.4.3
+  * Remove redundant line #1139 
+- Add patch support-libgit-1.5.patch:
+  * Suppot libgit 1.5.0</comment>
+    <requestid>990575</requestid>
+  </revision>
 </revisionlist>

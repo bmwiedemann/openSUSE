@@ -20,12 +20,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pygit2
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        Python bindings for libgit2
 License:        GPL-2.0-only
 URL:            https://github.com/libgit2/pygit2
 Source:         https://files.pythonhosted.org/packages/source/p/pygit2/pygit2-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM based on gh#libgit2/pygit2#14b1df84060ea4ab085202382e80672ec1a104e3
+Patch0:         support-libgit-1.5.patch
 BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module cffi >= 1.4.0}
 BuildRequires:  %{python_module devel}

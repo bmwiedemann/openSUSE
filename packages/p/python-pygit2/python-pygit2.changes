@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 21 14:44:55 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.9.2:
+  * New Repository.create_commit_string(...) and
+    Repository.create_commit_with_signature(...) #1142
+  * Linux and macOS wheels updated to libgit2 v1.4.3
+  * Remove redundant line #1139 
+- Add patch support-libgit-1.5.patch:
+  * Suppot libgit 1.5.0
+
+-------------------------------------------------------------------
 Sat Mar 26 18:51:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.1:

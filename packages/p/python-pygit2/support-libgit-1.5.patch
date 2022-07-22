@@ -1,0 +1,15 @@
+diff --git a/src/types.h b/src/types.h
+index 78023e28..e851eacb 100644
+--- a/src/types.h
++++ b/src/types.h
+@@ -32,8 +32,8 @@
+ #include <Python.h>
+ #include <git2.h>
+ 
+-#if !(LIBGIT2_VER_MAJOR == 1 && LIBGIT2_VER_MINOR == 4)
+-#error You need a compatible libgit2 version (1.4.x)
++#if !(LIBGIT2_VER_MAJOR == 1 && LIBGIT2_VER_MINOR >= 4 && LIBGIT2_VER_MINOR <= 5)
++#error You need a compatible libgit2 version (1.4.x or 1.5.x)
+ #endif
+ 
+ /*
