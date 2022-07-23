@@ -4027,6 +4027,7 @@ unsorted:
   - fsarchiver 
   - fscrypt 
   - fslsfonts 
+  - fstl 
   - fstobdf 
   - fstrcmp 
   - fstrcmp-devel 
@@ -8542,6 +8543,8 @@ unsorted:
   - kubevirt-tests: [x86_64] 
   - kubevirt-virt-api: [x86_64] 
   - kubevirt-virt-controller: [x86_64] 
+  - kubevirt-virt-exportproxy: [x86_64] 
+  - kubevirt-virt-exportserver: [x86_64] 
   - kubevirt-virt-handler: [x86_64] 
   - kubevirt-virt-launcher: [x86_64] 
   - kubevirt-virt-operator: [x86_64] 
@@ -11115,7 +11118,6 @@ unsorted:
   - libgirara-gtk3-3 
   - libgirepository-1_0-1-32bit: [x86_64] 
   - libgit2 
-  - libgit2-1_5 
   - libgit2-1_5-32bit: [x86_64] 
   - libgit2-devel 
   - libgit2-glib-1_0-0 
@@ -16847,6 +16849,8 @@ unsorted:
   - musescore-fonts 
   - musique 
   - musique-lang 
+  - mustang-plug 
+  - mustang-plug-udev-rules 
   - mutter-devel 
   - mvapich2 
   - mvapich2-devel 
@@ -18279,7 +18283,6 @@ unsorted:
   - opencv3-devel 
   - opencv3-doc 
   - opencv4-cascades-data 
-  - opendchub 
   - opendkim 
   - opendkim-devel 
   - openexr 
@@ -23972,7 +23975,6 @@ unsorted:
   - python310-pygame 
   - python310-pygame-devel 
   - python310-pygerrit2 
-  - python310-pygit2 
   - python310-pyglet 
   - python310-pygments-ansi-color 
   - python310-pygments-pytest 
@@ -24292,6 +24294,7 @@ unsorted:
   - python310-pywbemtools 
   - python310-pywebpush 
   - python310-pywinrm 
+  - python310-pywlroots 
   - python310-pyxattr 
   - python310-pyxdg 
   - python310-pyyaml_env_tag 
@@ -27547,6 +27550,7 @@ unsorted:
   - python38-pywbemtools 
   - python38-pywebpush 
   - python38-pywinrm 
+  - python38-pywlroots 
   - python38-pyxattr 
   - python38-pyxdg 
   - python38-pyyaml_env_tag 
@@ -30854,6 +30858,7 @@ unsorted:
   - python39-pywbemtools 
   - python39-pywebpush 
   - python39-pywinrm 
+  - python39-pywlroots 
   - python39-pyxattr 
   - python39-pyxdg 
   - python39-pyyaml_env_tag 
