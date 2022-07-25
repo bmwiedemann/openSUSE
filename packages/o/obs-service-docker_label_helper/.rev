@@ -24,4 +24,13 @@
 - Mention bsc#1193429 in this changelog</comment>
     <requestid>940750</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a3e5b9ca23ce7d205627c7869ef1d8d9</srcmd5>
+    <version>0.0</version>
+    <time>1658761188</time>
+    <user>favogt_factory</user>
+    <comment>- Avoid mangling whitespace by using gsub instead of assigning to
+  fields</comment>
+    <requestid>990549</requestid>
+  </revision>
 </revisionlist>
