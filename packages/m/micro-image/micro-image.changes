@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Fri Jul 15 11:09:11 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Increase compatibility with openSUSE
+
+-------------------------------------------------------------------
+Tue Jul 12 15:13:51 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Convert SLE specific parts to openSUSE
+
+-------------------------------------------------------------------
+Thu Apr 28 10:15:38 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Ensure that /var/log/zypp is not present in the image
