@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+
+<!-- OBS-AddTag: bci/bci-minimal:%OS_VERSION_ID_SP% bci/bci-minimal:%OS_VERSION_ID_SP%.%RELEASE% bci/bci-minimal:latest -->
+<!-- OBS-Imagerepo: obsrepositories:/ -->
+
+<image schemaversion="6.5" name="minimal-image" xmlns:suse_label_helper="com.suse.label_helper">
+  <description type="system">
+    <author>openSUSE Project</author>
+    <contact>https://www.suse.com/</contact>
+    <specification>openSUSE Tumbleweed BCI %OS_VERSION% Minimal Container Image</specification>
+  </description>
+  <preferences>
+    <type image="docker" derived_from="obsrepositories:/bci/bci-micro#latest">
+      <containerconfig
+          name="bci/bci-minimal"
+          tag="%OS_VERSION_ID_SP%"
+          maintainer="openSUSE (https://www.opensuse.org/)"
+          additionaltags="%OS_VERSION_ID_SP%.%RELEASE%,latest">
+        <labels>
+          <!-- See https://en.opensuse.org/Building_derived_containers#Labels -->
+          <suse_label_helper:add_prefix prefix="org.opensuse.bci.minimal">
+            <label name="org.opencontainers.image.title" value="openSUSE Tumbleweed BCI %OS_VERSION% Minimal Container Image"/>
+            <label name="org.opencontainers.image.description" value="A minimal environment for containers based on the SLE Base Container Image."/>
+            <label name="org.opencontainers.image.version" value="%OS_VERSION_ID_SP%.%RELEASE%"/>
+            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+            <label name="org.opencontainers.image.vendor" value="openSUSE Project"/>
+            <label name="org.opencontainers.image.url" value="https://www.opensuse.org"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/bci/bci-minimal:%OS_VERSION_ID_SP%.%RELEASE%"/>
+            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+
+            <label name="com.suse.release-stage" value="released"/>
+
+          </suse_label_helper:add_prefix>
+        </labels>
+
+
+
+      </containerconfig>
+    </type>
+    <version>15.Tumbleweed.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <rpm-excludedocs>true</rpm-excludedocs>
+  </preferences>
+  <repository type="rpm-md">
+    <source path="obsrepositories:/"/>
+  </repository>
+  <packages type="delete">
+    <package name="grep"/>
+    <package name="diffutils"/>
+    <package name="info"/>
+    <package name="fillup"/>
+    <package name="libzio1"/>
+  </packages>
+  <packages type="bootstrap">
+    <package name="rpm"/>
+    <package name="perl-base"/>
+    <package name="distribution-release"/>
+  </packages>
+
+</image>
