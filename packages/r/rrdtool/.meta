@@ -4,5 +4,5 @@
 The data analysis part of RRDtool is based on the ability to quickly
 generate graphical representations of the data values collected over a
 definable time period.</description>
-  <devel project="devel:languages:python" package="rrdtool"/>
+  <devel project="server:database" package="rrdtool"/>
 </package>

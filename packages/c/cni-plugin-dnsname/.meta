@@ -1,5 +1,5 @@
 <package name="cni-plugin-dnsname" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="devel:kubic" package="cni-plugin-dnsname"/>
+  <devel project="devel:microos" package="cni-plugin-dnsname"/>
 </package>

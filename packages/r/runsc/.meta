@@ -5,6 +5,6 @@
 Do aware this package:
   - Only support x86_64 and aarch64.
   - Do not have Podman support yet.</description>
-  <devel project="devel:kubic" package="runsc"/>
+  <devel project="devel:microos" package="runsc"/>
   <url>https://github.com/google/gvisor</url>
 </package>

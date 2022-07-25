@@ -1,5 +1,5 @@
 <package name="libeconf" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="devel:kubic" package="libeconf"/>
+  <devel project="devel:microos" package="libeconf"/>
 </package>

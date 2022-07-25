@@ -5,6 +5,6 @@ system after zypper has been run. This reduces the total size of the final
 container image.
 
 </description>
-  <devel project="devel:kubic" package="container-build-helpers"/>
+  <devel project="devel:microos" package="container-build-helpers"/>
   <url>https://build.opensuse.org</url>
 </package>

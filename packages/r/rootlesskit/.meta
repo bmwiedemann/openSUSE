@@ -1,5 +1,5 @@
 <package name="rootlesskit" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="devel:kubic" package="rootlesskit"/>
+  <devel project="devel:microos" package="rootlesskit"/>
 </package>

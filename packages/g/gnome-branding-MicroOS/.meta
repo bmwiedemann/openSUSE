@@ -3,5 +3,5 @@
   <description>This branding-style package sets default applications in GNOME in
 MicroOS Desktop
 </description>
-  <devel project="devel:kubic" package="gnome-branding-MicroOS"/>
+  <devel project="devel:microos" package="gnome-branding-MicroOS"/>
 </package>

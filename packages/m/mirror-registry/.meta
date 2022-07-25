@@ -1,5 +1,5 @@
 <package name="mirror-registry" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="devel:kubic" package="mirror-registry"/>
+  <devel project="devel:microos" package="mirror-registry"/>
 </package>
