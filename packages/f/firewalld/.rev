@@ -1183,4 +1183,11 @@ This is a bug fix only release.
     <comment></comment>
     <requestid>989313</requestid>
   </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>c4c52b9e8f3ae192ec568f9b95d21cae</srcmd5>
+    <version>1.2.0</version>
+    <time>1658754422</time>
+    <user>favogt_factory</user>
+    <comment>Revert for boo#1201836</comment>
+  </revision>
 </revisionlist>
