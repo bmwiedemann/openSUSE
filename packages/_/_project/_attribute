@@ -6,7 +6,7 @@
     <value>last_seen:
   boo#1094987: '20220721'
   boo#1172073: '20220614'
-  boo#1183454: '20220721'
+  boo#1183454: '20220722'
   boo#1190434: '20220721'
   boo#1190823: '20220409'
   boo#1196201: '20220525'
@@ -29,7 +29,7 @@
   boo#1198418: '20220518'
   boo#1199498: '20220512'
   boo#1199535: '20220516'
-  boo#1199881: '20220721'
+  boo#1199881: '20220722'
   boo#1199885: '20220606'
   boo#1199924: '20220601'
   boo#1199925: '20220601'
@@ -40,7 +40,7 @@
   boo#1200615: '20220627'
   boo#1200616: '20220628'
   boo#1200682: '20220628'
-  boo#1200753: '20220721'
+  boo#1200753: '20220722'
   boo#1200893: '20220718'
   boo#1200894: '20220721'
   boo#1201054: '20220711'
@@ -50,7 +50,7 @@
   boo#1201349: '20220719'
   boo#1201504: '20220719'
   boo#1201538: '20220721'
-  bsc#1161276: '20220721'
+  bsc#1161276: '20220722'
   bsc#1191684: '20220721'
   bsc#1198101: '20220721'
   bsc#1198235: '20220503'
@@ -343,6 +343,10 @@ products:
   - virt-vmdp-container:
     - i586
     - x86_64
+  - virt-exportproxy-container:
+    - x86_64
+  - virt-exportserver-container:
+    - x86_64
   ftp:
   - 000product:openSUSE-ftp-ftp-i586_x86_64
   - 000product:openSUSE-Addon-NonOss-ftp-ftp-i586_x86_64
@@ -443,10 +447,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20220721'
+    <value>failed: '20220722'
 published: '20220719'
 publishing: '20220719'
-testing: '20220721'
+testing: '20220722'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
