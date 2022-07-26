@@ -518,4 +518,19 @@ please add to Staging:E, should fix the tox failure</comment>
     <comment></comment>
     <requestid>942714</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f8aafe55ca89b0c5af6df9fe293c9fb5</srcmd5>
+    <version>3.25.1</version>
+    <time>1658857438</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 3.25.1:
+  * ``sitepackages = true`` will add user's site-package to the python path on Windows as expected
+  * Avoid importing ``pipes`` on Python 3.3+ to avoid ``DeprecationWarning`` on Python 3.11
+  * Fix ``isolated_build`` when the build process produces stderr at exit.
+  * Fixed failing isolated_build because setuptools warning was captured
+    in ``build_requires``.
+  * Avoid potential 30s delay caused by socket.getfqdn().
+  * Ignore missing commands if they are prefixed by ``-``</comment>
+    <requestid>990866</requestid>
+  </revision>
 </revisionlist>

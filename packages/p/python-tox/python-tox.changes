@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul 24 08:05:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.25.1:
+  * ``sitepackages = true`` will add user's site-package to the python path on Windows as expected
+  * Avoid importing ``pipes`` on Python 3.3+ to avoid ``DeprecationWarning`` on Python 3.11
+  * Fix ``isolated_build`` when the build process produces stderr at exit.
+  * Fixed failing isolated_build because setuptools warning was captured
+    in ``build_requires``.
+  * Avoid potential 30s delay caused by socket.getfqdn().
+  * Ignore missing commands if they are prefixed by ``-``
+
+-------------------------------------------------------------------
 Thu Dec 23 09:17:44 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop definition of python-tox-doc: this subpackage is not being
