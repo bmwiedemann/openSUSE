@@ -1,0 +1,47 @@
+From: Marc Schink <dev@zapb.de>
+Date: Tue, 8 Dec 2020 22:20:50 +0100
+Subject: [PATCH] meson: Add missing config option for J-Link SPI
+
+Signed-off-by: Marc Schink <dev@zapb.de>
+Change-Id: I476c649f9db7342688560aac9ee5df056517a028
+Reviewed-on: https://review.coreboot.org/c/flashrom/+/48478
+Tested-by: build bot (Jenkins) <no-reply@coreboot.org>
+Reviewed-by: Angel Pons <th3fanbus@gmail.com>
+Reviewed-by: Edward O'Callaghan <quasisec@chromium.org>
+
+diff --git a/meson.build b/meson.build
+index cf91ef4..878cac3 100644
+--- a/meson.build
++++ b/meson.build
+@@ -38,6 +38,7 @@ config_ch341a_spi = get_option('config_ch341a_spi')
+ config_dediprog = get_option('config_dediprog')
+ config_developerbox_spi = get_option('config_developerbox_spi')
+ config_digilent_spi = get_option('config_digilent_spi')
++config_jlink_spi = get_option('config_jlink_spi')
+ config_drkaiser = get_option('config_drkaiser')
+ config_dummy = get_option('config_dummy')
+ config_ft2232_spi = get_option('config_ft2232_spi')
+@@ -152,6 +153,11 @@ if config_digilent_spi
+   srcs += 'digilent_spi.c'
+   cargs += '-DCONFIG_DIGILENT_SPI=1'
+ endif
++if config_jlink_spi
++  srcs += 'jlink_spi.c'
++  cargs += '-DCONFIG_JLINK_SPI=1'
++  deps += dependency('libjaylink')
++endif
+ if config_drkaiser
+   srcs += 'drkaiser.c'
+   cargs += '-DCONFIG_DRKAISER=1'
+diff --git a/meson_options.txt b/meson_options.txt
+index ea87311..f253f26 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -9,6 +9,7 @@ option('config_ch341a_spi', type : 'boolean', value : true, description : 'Winch
+ option('config_dediprog', type : 'boolean', value : true, description : 'Dediprog SF100')
+ option('config_developerbox_spi', type : 'boolean', value : true, description : 'Developerbox emergency recovery')
+ option('config_digilent_spi', type : 'boolean', value : true, description : 'Digilent Development board JTAG')
++option('config_jlink_spi', type : 'boolean', value : false, description : 'SEGGER J-Link and compatible devices')
+ option('config_drkaiser', type : 'boolean', value : true, description : 'Dr. Kaiser')
+ option('config_dummy', type : 'boolean', value : true, description : 'dummy tracing')
+ option('config_ft2232_spi', type : 'boolean', value : true, description : 'FT2232 SPI dongles')

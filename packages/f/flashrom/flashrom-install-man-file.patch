@@ -1,0 +1,43 @@
+From b820207aeff98b5ccf21649036259333fd0e0175 Mon Sep 17 00:00:00 2001
+From: Richard Hughes <richard@hughsie.com>
+Date: Mon, 17 Feb 2020 09:57:01 +0000
+Subject: [PATCH] Install the man file when using meson as a buildsystem
+
+This fixes a regression with the Fedora package.
+
+Change-Id: I881bd5002a842072ce9dadea033c51a2668f9e7c
+Signed-off-by: Richard Hughes <richard@hughsie.com>
+---
+ meson.build | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/meson.build b/meson.build
+index 375089c3..df39290b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -299,6 +299,7 @@ endif
+ prefix = get_option('prefix')
+ sbindir = join_paths(prefix, get_option('sbindir'))
+ libdir = join_paths(prefix, get_option('libdir'))
++mandir = join_paths(prefix, get_option('mandir'))
+ 
+ install_headers([
+     'libflashrom.h',
+@@ -372,6 +373,14 @@ pkgg.generate(
+   description : 'library to interact with flashrom',
+ )
+ 
++configure_file(
++  input : 'flashrom.8.tmpl',
++  output : 'flashrom.8',
++  copy: true,
++  install: true,
++  install_dir: join_paths(mandir, 'man8'),
++)
++
+ flashrom_dep = declare_dependency(
+   link_with : flashrom,
+   include_directories : include_directories('.'),
+-- 
+2.24.1
+
