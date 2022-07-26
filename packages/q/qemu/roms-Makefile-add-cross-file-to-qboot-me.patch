@@ -13,10 +13,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/roms/Makefile b/roms/Makefile
-index 6ea8edd9fcf6bb0cdc1f1602f241..df969e3ec33ab07fe3fcb489e0df 100644
+index c7c6e973db59572e8b8bee74e969..6f979016c273246ce91432ee0ace 100644
 --- a/roms/Makefile
 +++ b/roms/Makefile
-@@ -199,7 +199,7 @@ MESON = meson
+@@ -197,7 +197,7 @@ MESON = meson
  NINJA = ninja
  qboot:
  	mkdir -p qboot/build

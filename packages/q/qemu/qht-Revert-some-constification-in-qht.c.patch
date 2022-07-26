@@ -34,10 +34,10 @@ index 2e2d6bca932c83bea993850b60f8..6484837487b012cbfc63b6c6e39e 100644
  /**
   * qht_remove - remove a pointer from the hash table
 diff --git a/util/qht.c b/util/qht.c
-index cfc2c60639af8f7905aae51c53bb..152b8d74f0b12cf4ed75e543575f 100644
+index 0803c194d10b5cdafdc8b18ec083..24fdd3e0e23447b2ca67c0a1bc3a 100644
 --- a/util/qht.c
 +++ b/util/qht.c
-@@ -485,10 +485,10 @@ bool qht_reset_size(struct qht *ht, size_t n_elems)
+@@ -486,10 +486,10 @@ bool qht_reset_size(struct qht *ht, size_t n_elems)
  }
  
  static inline
@@ -50,7 +50,7 @@ index cfc2c60639af8f7905aae51c53bb..152b8d74f0b12cf4ed75e543575f 100644
      int i;
  
      do {
-@@ -512,7 +512,7 @@ void *qht_do_lookup(const struct qht_bucket *head, qht_lookup_func_t func,
+@@ -513,7 +513,7 @@ void *qht_do_lookup(const struct qht_bucket *head, qht_lookup_func_t func,
  }
  
  static __attribute__((noinline))
@@ -59,7 +59,7 @@ index cfc2c60639af8f7905aae51c53bb..152b8d74f0b12cf4ed75e543575f 100644
                             const void *userp, uint32_t hash)
  {
      unsigned int version;
-@@ -525,10 +525,10 @@ void *qht_lookup__slowpath(const struct qht_bucket *b, qht_lookup_func_t func,
+@@ -526,10 +526,10 @@ void *qht_lookup__slowpath(const struct qht_bucket *b, qht_lookup_func_t func,
      return ret;
  }
  
@@ -72,7 +72,7 @@ index cfc2c60639af8f7905aae51c53bb..152b8d74f0b12cf4ed75e543575f 100644
      const struct qht_map *map;
      unsigned int version;
      void *ret;
-@@ -548,7 +548,7 @@ void *qht_lookup_custom(const struct qht *ht, const void *userp, uint32_t hash,
+@@ -549,7 +549,7 @@ void *qht_lookup_custom(const struct qht *ht, const void *userp, uint32_t hash,
      return qht_lookup__slowpath(b, func, userp, hash);
  }
  

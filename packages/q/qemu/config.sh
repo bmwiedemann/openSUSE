@@ -18,12 +18,12 @@ UPSTREAM_GIT_REPO=https://gitlab.com/qemu-project/qemu.git
 # The following specifies the upstream tag or commit upon which our patchqueue
 # gets rebased. The special value LATEST may be used to "automatically" track
 # the upstream development tree in the master branch
-GIT_UPSTREAM_COMMIT_ISH=v6.2.0
+GIT_UPSTREAM_COMMIT_ISH=v7.0.0
 # WARNING: If transitioning from using LATEST to not, MANUALLY re-set the
 # tarball present. If transitioning TO LATEST, make sure that
 # NEXT_RELEASE_IS_MAJOR is set correctly
 # This is used to choose the version number when LATEST processing is active
-NEXT_RELEASE_IS_MAJOR=1
+NEXT_RELEASE_IS_MAJOR=0
 
 # Unfortunately, SeaBIOS doesn't always follow an "always increasing" version
 # model, so there may be times we should overide the automated version setting.
@@ -37,6 +37,11 @@ PATCH_RANGE=1000
 
 # For compatibility with old packages, we include this option
 OVERRIDE_FIVE_DIGIT_NUMBERING=0
+
+# Path to be used for temporary files, directories, repositories, etc.
+# Default is /dev/shm. An alternative could be /tmp (e.g., when building
+# in containers, or whatever).
+TMPDIR=/dev/shm
 
 # This array tracks all git submodule paths within the superproject (1st entry)
 PATCH_PATH_MAP=(
@@ -63,6 +68,7 @@ PATCH_PATH_MAP=(
     "meson/"
     "tests/fp/berkeley-softfloat-3/"
     "tests/fp/berkeley-testfloat-3/"
+    "tests/lcitool/libvirt-ci"
     "roms/edk2/ArmPkg/Library/ArmSoftFloatLib/berkeley-softfloat-3/"
     "roms/edk2/CryptoPkg/Library/OpensslLib/openssl/boringssl/"
     "roms/edk2/CryptoPkg/Library/OpensslLib/openssl/krb5/"
@@ -72,10 +78,7 @@ PATCH_PATH_MAP=(
     "roms/edk2/MdeModulePkg/Universal/RegularExpressionDxe/oniguruma/"
     "roms/edk2/UnitTestFrameworkPkg/Library/CmockaLib/cmocka/"
     "roms/vbootrom/"
-    "roms/edk2/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli/research/esaxx/"
-    "roms/edk2/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli/research/libdivsufsort/"
-    "roms/edk2/MdeModulePkg/Library/BrotliCompress/brotli/research/esaxx/"
-    "roms/edk2/MdeModulePkg/Library/BrotliCompress/brotli/research/libdivsufsort/"
+    "roms/edk2/RedfishPkg/Library/JsonLib/jansson"
 )
 
 # (order and count must correspond to PATCH_PATH_MAP)
@@ -103,6 +106,7 @@ LOCAL_REPO_MAP=(
     ~/git/qemu-meson
     ~/git/qemu-tests-berkeley-softfloat-3
     ~/git/qemu-tests-berkeley-testfloat-3
+    ~/git/qemu-tests-lcitool-libvirt-ci
     ~/git/qemu-edk2-berkeley-softfloat-3
     ~/git/qemu-edk2-openssl-boringssl
     ~/git/qemu-edk2-openssl-krb5
@@ -112,8 +116,5 @@ LOCAL_REPO_MAP=(
     ~/git/qemu-edk2-oniguruma
     ~/git/qemu-edk2-cmocka
     ~/git/qemu-vbootrom
-    ~/git/qemu-edk2-BrotliCustomDecompressLib-brotli-research-esaxx
-    ~/git/qemu-edk2-BrotliCustomDecompressLib-brotli-research-libdivsufsort
-    ~/git/qemu-edk2-BrotliCompress-brotli-research-esaxx
-    ~/git/qemu-edk2-BrotliCompress-brotli-research-libdivsufsort
+    ~/git/qemu-edk2-jansson
 )

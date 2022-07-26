@@ -71,10 +71,10 @@ Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
  1 file changed, 9 insertions(+), 9 deletions(-)
 
 diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index e5993c1ef52b7c9e39faa7de4020..87c419836b3c990ee862f623fd89 100644
+index dae9119bfe5fe45a15e31985151e..c69b412434775df1368beb67984c 100644
 --- a/hw/pci/pci.c
 +++ b/hw/pci/pci.c
-@@ -2576,15 +2576,15 @@ static char *pci_dev_fw_name(DeviceState *dev, char *buf, int len)
+@@ -2625,15 +2625,15 @@ static char *pci_dev_fw_name(DeviceState *dev, char *buf, int len)
  static char *pcibus_get_fw_dev_path(DeviceState *dev)
  {
      PCIDevice *d = (PCIDevice *)dev;

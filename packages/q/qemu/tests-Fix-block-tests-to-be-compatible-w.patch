@@ -60,7 +60,7 @@ index e45285ccc311522481ac1b27ba99..7168bdf70c3eb32d4de0d28bb947 100644
  file format: IMGFMT
  virtual size: 64 MiB (67108864 bytes)
 diff --git a/tests/qemu-iotests/153 b/tests/qemu-iotests/153
-index 607af590918aaccd12490493b42a..987158ca49a88cef0815ea86f39e 100755
+index 9bc3be8f75c5a791331868d51136..9875eaf25981d557e403c3471633 100755
 --- a/tests/qemu-iotests/153
 +++ b/tests/qemu-iotests/153
 @@ -202,7 +202,8 @@ _send_qemu_cmd $QEMU_HANDLE \

@@ -1,0 +1,137 @@
+From: "Jose R. Ziviani" <jziviani@suse.de>
+Date: Tue, 28 Sep 2021 17:46:28 -0300
+Subject: modules: generates per-target modinfo
+
+Git-commit: 05d6814c3eb16524e992bb7048d3385f8e99dd6a
+References: bsc#1199015
+
+This patch changes the way modinfo is generated and built. Instead of
+one modinfo.c it generates one modinfo-<target>-softmmu.c per target. It
+aims a fine-tune control of modules by configuring Kconfig.
+
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+Message-Id: <165369003038.5857.13084289285185196779.stgit@work>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ meson.build                 | 25 +++++++++++++++-------
+ scripts/modinfo-generate.py | 42 ++++++++++++++++++++++---------------
+ 2 files changed, 42 insertions(+), 25 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 05740dd14228fb700ecf6b793cfc..eeaa045c90402cee5ba946f321c1 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2999,14 +2999,23 @@ foreach d, list : target_modules
+ endforeach
+ 
+ if enable_modules
+-  modinfo_src = custom_target('modinfo.c',
+-                              output: 'modinfo.c',
+-                              input: modinfo_files,
+-                              command: [modinfo_generate, '@INPUT@'],
+-                              capture: true)
+-  modinfo_lib = static_library('modinfo', modinfo_src)
+-  modinfo_dep = declare_dependency(link_whole: modinfo_lib)
+-  softmmu_ss.add(modinfo_dep)
++  foreach target : target_dirs
++    if target.endswith('-softmmu')
++      config_target = config_target_mak[target]
++      config_devices_mak = target + '-config-devices.mak'
++      modinfo_src = custom_target('modinfo-' + target + '.c',
++                                  output: 'modinfo-' + target + '.c',
++                                  input: modinfo_files,
++                                  command: [modinfo_generate, '--devices', config_devices_mak, '@INPUT@'],
++                                  capture: true)
++
++      modinfo_lib = static_library('modinfo-' + target + '.c', modinfo_src)
++      modinfo_dep = declare_dependency(link_with: modinfo_lib)
++
++      arch = config_target['TARGET_NAME'] == 'sparc64' ? 'sparc64' : config_target['TARGET_BASE_ARCH']
++      hw_arch[arch].add(modinfo_dep)
++    endif
++  endforeach
+ endif
+ 
+ nm = find_program('nm')
+diff --git a/scripts/modinfo-generate.py b/scripts/modinfo-generate.py
+index 689f33c0f2919508341712a1cde4..a0c09edae1009bc77964e95d585f 100755
+--- a/scripts/modinfo-generate.py
++++ b/scripts/modinfo-generate.py
+@@ -32,7 +32,7 @@ def parse_line(line):
+             continue
+     return (kind, data)
+ 
+-def generate(name, lines):
++def generate(name, lines, core_modules):
+     arch = ""
+     objs = []
+     deps = []
+@@ -49,7 +49,13 @@ def generate(name, lines):
+             elif kind == 'arch':
+                 arch = data;
+             elif kind == 'kconfig':
+-                pass # ignore
++                # don't add a module which dependency is not enabled
++                # in kconfig
++                if data.strip() not in core_modules:
++                    print("    /* module {} isn't enabled in Kconfig. */"
++                          .format(data.strip()))
++                    print("/* },{ */")
++                    return []
+             else:
+                 print("unknown:", kind)
+                 exit(1)
+@@ -60,7 +66,7 @@ def generate(name, lines):
+     print_array("objs", objs)
+     print_array("deps", deps)
+     print_array("opts", opts)
+-    print("},{");
++    print("},{")
+     return deps
+ 
+ def print_pre():
+@@ -74,26 +80,28 @@ def print_post():
+     print("}};")
+ 
+ def main(args):
++    if len(args) < 3 or args[0] != '--devices':
++        print('Expected: modinfo-generate.py --devices '
++              'config-device.mak [modinfo files]', file=sys.stderr)
++        exit(1)
++
++    # get all devices enabled in kconfig, from *-config-device.mak
++    enabled_core_modules = set()
++    with open(args[1]) as file:
++        for line in file.readlines():
++            config = line.split('=')
++            if config[1].rstrip() == 'y':
++                enabled_core_modules.add(config[0][7:]) # remove CONFIG_
++
+     deps = {}
+     print_pre()
+-    for modinfo in args:
++    for modinfo in args[2:]:
+         with open(modinfo) as f:
+             lines = f.readlines()
+         print("    /* %s */" % modinfo)
+-        (basename, ext) = os.path.splitext(modinfo)
+-        deps[basename] = generate(basename, lines)
++        (basename, _) = os.path.splitext(modinfo)
++        deps[basename] = generate(basename, lines, enabled_core_modules)
+     print_post()
+ 
+-    flattened_deps = {flat.strip('" ') for dep in deps.values() for flat in dep}
+-    error = False
+-    for dep in flattened_deps:
+-        if dep not in deps.keys():
+-            print("Dependency {} cannot be satisfied".format(dep),
+-                  file=sys.stderr)
+-            error = True
+-
+-    if error:
+-        exit(1)
+-
+ if __name__ == "__main__":
+     main(sys.argv[1:])

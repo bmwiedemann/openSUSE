@@ -1,0 +1,170 @@
+From: Thomas Huth <thuth@redhat.com>
+Date: Thu, 14 Apr 2022 15:01:27 +0200
+Subject: tests/qtest: Move the fuzz tests to x86 only
+
+Git-commit: b911c30c566dee48a27bc1bfa1ee6df3a729cbbb
+
+The fuzz tests are currently scheduled for all targets, but their setup
+code limits the run to "i386", so that these tests always show "SKIP"
+on other targets. Move it to the right x86 list in meson.build, then
+we can drop the architecture check during runtime, too.
+
+Message-Id: <20220414130127.719528-1-thuth@redhat.com>
+Reviewed-by: Laurent Vivier <lvivier@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ tests/qtest/fuzz-lsi53c895a-test.c  |  8 ++------
+ tests/qtest/fuzz-megasas-test.c     | 12 ++++--------
+ tests/qtest/fuzz-sb16-test.c        | 12 ++++--------
+ tests/qtest/fuzz-sdcard-test.c      | 12 ++++--------
+ tests/qtest/fuzz-virtio-scsi-test.c |  8 ++------
+ tests/qtest/meson.build             | 13 ++++++-------
+ 6 files changed, 22 insertions(+), 43 deletions(-)
+
+diff --git a/tests/qtest/fuzz-lsi53c895a-test.c b/tests/qtest/fuzz-lsi53c895a-test.c
+index c1af0ab1ce62350b7455b953cf83..df019114d31b10dc1e7768534a0a 100644
+--- a/tests/qtest/fuzz-lsi53c895a-test.c
++++ b/tests/qtest/fuzz-lsi53c895a-test.c
+@@ -112,14 +112,10 @@ static void test_lsi_do_dma_empty_queue(void)
+ 
+ int main(int argc, char **argv)
+ {
+-    const char *arch = qtest_get_arch();
+-
+     g_test_init(&argc, &argv, NULL);
+ 
+-    if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
+-        qtest_add_func("fuzz/lsi53c895a/lsi_do_dma_empty_queue",
+-                       test_lsi_do_dma_empty_queue);
+-    }
++    qtest_add_func("fuzz/lsi53c895a/lsi_do_dma_empty_queue",
++                   test_lsi_do_dma_empty_queue);
+ 
+     qtest_add_func("fuzz/lsi53c895a/lsi_do_msgout_cancel_req",
+                    test_lsi_do_msgout_cancel_req);
+diff --git a/tests/qtest/fuzz-megasas-test.c b/tests/qtest/fuzz-megasas-test.c
+index e1141c58a4ec77d50279d1a53443..129b182f830c1e73b9a994bbeae9 100644
+--- a/tests/qtest/fuzz-megasas-test.c
++++ b/tests/qtest/fuzz-megasas-test.c
+@@ -64,16 +64,12 @@ static void test_gitlab_issue521_megasas_sgl_ovf(void)
+ 
+ int main(int argc, char **argv)
+ {
+-    const char *arch = qtest_get_arch();
+-
+     g_test_init(&argc, &argv, NULL);
+ 
+-    if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
+-        qtest_add_func("fuzz/test_lp1878263_megasas_zero_iov_cnt",
+-                       test_lp1878263_megasas_zero_iov_cnt);
+-        qtest_add_func("fuzz/gitlab_issue521_megasas_sgl_ovf",
+-                       test_gitlab_issue521_megasas_sgl_ovf);
+-    }
++    qtest_add_func("fuzz/test_lp1878263_megasas_zero_iov_cnt",
++                   test_lp1878263_megasas_zero_iov_cnt);
++    qtest_add_func("fuzz/gitlab_issue521_megasas_sgl_ovf",
++                   test_gitlab_issue521_megasas_sgl_ovf);
+ 
+     return g_test_run();
+ }
+diff --git a/tests/qtest/fuzz-sb16-test.c b/tests/qtest/fuzz-sb16-test.c
+index f47a8bcdbd91eece6aee03f66070..91fdcd1e8a0f8b4095f8374a3750 100644
+--- a/tests/qtest/fuzz-sb16-test.c
++++ b/tests/qtest/fuzz-sb16-test.c
+@@ -55,15 +55,11 @@ static void test_fuzz_sb16_0xd4(void)
+ 
+ int main(int argc, char **argv)
+ {
+-    const char *arch = qtest_get_arch();
+-
+     g_test_init(&argc, &argv, NULL);
+ 
+-   if (strcmp(arch, "i386") == 0) {
+-        qtest_add_func("fuzz/test_fuzz_sb16/1c", test_fuzz_sb16_0x1c);
+-        qtest_add_func("fuzz/test_fuzz_sb16/91", test_fuzz_sb16_0x91);
+-        qtest_add_func("fuzz/test_fuzz_sb16/d4", test_fuzz_sb16_0xd4);
+-   }
++    qtest_add_func("fuzz/test_fuzz_sb16/1c", test_fuzz_sb16_0x1c);
++    qtest_add_func("fuzz/test_fuzz_sb16/91", test_fuzz_sb16_0x91);
++    qtest_add_func("fuzz/test_fuzz_sb16/d4", test_fuzz_sb16_0xd4);
+ 
+-   return g_test_run();
++    return g_test_run();
+ }
+diff --git a/tests/qtest/fuzz-sdcard-test.c b/tests/qtest/fuzz-sdcard-test.c
+index 0f94965a66e77cc52ed3a33fd93b..d0f4e0e93c0b0e23894b1f6a8095 100644
+--- a/tests/qtest/fuzz-sdcard-test.c
++++ b/tests/qtest/fuzz-sdcard-test.c
+@@ -164,15 +164,11 @@ static void oss_fuzz_36391(void)
+ 
+ int main(int argc, char **argv)
+ {
+-    const char *arch = qtest_get_arch();
+-
+     g_test_init(&argc, &argv, NULL);
+ 
+-   if (strcmp(arch, "i386") == 0) {
+-        qtest_add_func("fuzz/sdcard/oss_fuzz_29225", oss_fuzz_29225);
+-        qtest_add_func("fuzz/sdcard/oss_fuzz_36217", oss_fuzz_36217);
+-        qtest_add_func("fuzz/sdcard/oss_fuzz_36391", oss_fuzz_36391);
+-   }
++    qtest_add_func("fuzz/sdcard/oss_fuzz_29225", oss_fuzz_29225);
++    qtest_add_func("fuzz/sdcard/oss_fuzz_36217", oss_fuzz_36217);
++    qtest_add_func("fuzz/sdcard/oss_fuzz_36391", oss_fuzz_36391);
+ 
+-   return g_test_run();
++    return g_test_run();
+ }
+diff --git a/tests/qtest/fuzz-virtio-scsi-test.c b/tests/qtest/fuzz-virtio-scsi-test.c
+index aaf6d10e189d40ffd4b40c4f144e..c9b6fe21231d618cbaf336cada20 100644
+--- a/tests/qtest/fuzz-virtio-scsi-test.c
++++ b/tests/qtest/fuzz-virtio-scsi-test.c
+@@ -62,14 +62,10 @@ static void test_mmio_oob_from_memory_region_cache(void)
+ 
+ int main(int argc, char **argv)
+ {
+-    const char *arch = qtest_get_arch();
+-
+     g_test_init(&argc, &argv, NULL);
+ 
+-    if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
+-        qtest_add_func("fuzz/test_mmio_oob_from_memory_region_cache",
+-                       test_mmio_oob_from_memory_region_cache);
+-    }
++    qtest_add_func("fuzz/test_mmio_oob_from_memory_region_cache",
++                   test_mmio_oob_from_memory_region_cache);
+ 
+     return g_test_run();
+ }
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index d25f82bb5ac0be9befb3e98de169..e860b0edf275cd68cd24516cb1ca 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -17,13 +17,7 @@ slow_qtests = {
+   'test-hmp' : 120,
+ }
+ 
+-qtests_generic = \
+-  (config_all_devices.has_key('CONFIG_MEGASAS_SCSI_PCI') ? ['fuzz-megasas-test'] : []) + \
+-  (config_all_devices.has_key('CONFIG_LSI_SCSI_PCI') ? ['fuzz-lsi53c895a-test'] : []) + \
+-  (config_all_devices.has_key('CONFIG_VIRTIO_SCSI') ? ['fuzz-virtio-scsi-test'] : []) + \
+-  (config_all_devices.has_key('CONFIG_SB16') ? ['fuzz-sb16-test'] : []) + \
+-  (config_all_devices.has_key('CONFIG_SDHCI_PCI') ? ['fuzz-sdcard-test'] : []) + \
+-  [
++qtests_generic = [
+   'cdrom-test',
+   'device-introspect-test',
+   'machine-none-test',
+@@ -67,6 +61,11 @@ qtests_i386 = \
+   (config_all_devices.has_key('CONFIG_TPM_TIS_ISA') ? ['tpm-tis-swtpm-test'] : []) +        \
+   (config_all_devices.has_key('CONFIG_RTL8139_PCI') ? ['rtl8139-test'] : []) +              \
+   (config_all_devices.has_key('CONFIG_E1000E_PCI_EXPRESS') ? ['fuzz-e1000e-test'] : []) +   \
++  (config_all_devices.has_key('CONFIG_MEGASAS_SCSI_PCI') ? ['fuzz-megasas-test'] : []) +    \
++  (config_all_devices.has_key('CONFIG_LSI_SCSI_PCI') ? ['fuzz-lsi53c895a-test'] : []) +     \
++  (config_all_devices.has_key('CONFIG_VIRTIO_SCSI') ? ['fuzz-virtio-scsi-test'] : []) +     \
++  (config_all_devices.has_key('CONFIG_SB16') ? ['fuzz-sb16-test'] : []) +                   \
++  (config_all_devices.has_key('CONFIG_SDHCI_PCI') ? ['fuzz-sdcard-test'] : []) +            \
+   (config_all_devices.has_key('CONFIG_ESP_PCI') ? ['am53c974-test'] : []) +                 \
+   (config_all_devices.has_key('CONFIG_ACPI_ERST') ? ['erst-test'] : []) +                        \
+   (config_all_devices.has_key('CONFIG_VIRTIO_NET') and                                      \

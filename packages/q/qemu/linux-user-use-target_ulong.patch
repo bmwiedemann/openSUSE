@@ -12,16 +12,29 @@ Pass syscall arguments as ulong always.
 Signed-off-by: Alexander Graf <agraf@suse.de>
 [JRZ: changes from linux-user/qemu.h wass moved to linux-user/user-internals.h]
 Signed-off-by: Jose R Ziviani <jziviani@suse.de>
+[DF: Forward port, i.e., use ulong for do_prctl too]
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
 ---
- linux-user/syscall.c        | 18 +++++++++---------
+ linux-user/syscall.c        | 20 ++++++++++----------
  linux-user/user-internals.h |  8 ++++----
- 2 files changed, 13 insertions(+), 13 deletions(-)
+ 2 files changed, 14 insertions(+), 14 deletions(-)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index d4f3295b9d1837126f35d8357e80..381066e788eb36c1d6ca5b872353 100644
+index 8de1bb8d48eeb867a1047d986299..5096b1258f6d631b80fb6cca6011 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -8346,10 +8346,10 @@ _syscall2(int, pivot_root, const char *, new_root, const char *, put_old)
+@@ -6406,8 +6406,8 @@ static abi_long do_prctl_inval1(CPUArchState *env, abi_long arg2)
+ #define do_prctl_set_unalign do_prctl_inval1
+ #endif
+ 
+-static abi_long do_prctl(CPUArchState *env, abi_long option, abi_long arg2,
+-                         abi_long arg3, abi_long arg4, abi_long arg5)
++static abi_long do_prctl(CPUArchState *env, abi_ulong option, abi_ulong arg2,
++                         abi_ulong arg3, abi_ulong arg4, abi_ulong arg5)
+ {
+     abi_long ret;
+ 
+@@ -8574,10 +8574,10 @@ _syscall2(int, pivot_root, const char *, new_root, const char *, put_old)
   * of syscall results, can be performed.
   * All errnos that do_syscall() returns must be -TARGET_<errcode>.
   */
@@ -36,16 +49,7 @@ index d4f3295b9d1837126f35d8357e80..381066e788eb36c1d6ca5b872353 100644
  {
      CPUState *cpu = env_cpu(cpu_env);
      abi_long ret;
-@@ -10807,7 +10807,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
-              */
-             ret = -TARGET_EINVAL;
-             if (cpu_isar_feature(aa64_sve, env_archcpu(cpu_env))
--                && arg2 >= 0 && arg2 <= 512 * 16 && !(arg2 & 15)) {
-+                && arg2 <= 512 * 16 && !(arg2 & 15)) {
-                 CPUARMState *env = cpu_env;
-                 ARMCPU *cpu = env_archcpu(env);
-                 uint32_t vq, old_vq;
-@@ -13176,10 +13176,10 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+@@ -13201,10 +13201,10 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
      return ret;
  }
  
@@ -61,10 +65,10 @@ index d4f3295b9d1837126f35d8357e80..381066e788eb36c1d6ca5b872353 100644
      CPUState *cpu = env_cpu(cpu_env);
      abi_long ret;
 diff --git a/linux-user/user-internals.h b/linux-user/user-internals.h
-index 661612a088b5c4e37f8f9fbcb6af..db24553432003b2faa3957d63c3d 100644
+index ee152ccfaa8fdfa33b1e6d36b8ab..7117d8b2c583a16311ef82a0eb60 100644
 --- a/linux-user/user-internals.h
 +++ b/linux-user/user-internals.h
-@@ -60,10 +60,10 @@ int info_is_fdpic(struct image_info *info);
+@@ -59,10 +59,10 @@ int info_is_fdpic(struct image_info *info);
  
  void target_set_brk(abi_ulong new_brk);
  void syscall_init(void);
@@ -77,5 +81,5 @@ index 661612a088b5c4e37f8f9fbcb6af..db24553432003b2faa3957d63c3d 100644
 +                    abi_ulong arg5, abi_ulong arg6, abi_ulong arg7,
 +                    abi_ulong arg8);
  extern __thread CPUState *thread_cpu;
- void cpu_loop(CPUArchState *env);
+ void QEMU_NORETURN cpu_loop(CPUArchState *env);
  const char *target_strerror(int err);

@@ -15,7 +15,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  2 files changed, 3 deletions(-)
 
 diff --git a/roms/Makefile b/roms/Makefile
-index 66d06f5831303c3d41e943290389..6ea8edd9fcf6bb0cdc1f1602f241 100644
+index 3d53bd528666b594ab3d6b631450..c7c6e973db59572e8b8bee74e969 100644
 --- a/roms/Makefile
 +++ b/roms/Makefile
 @@ -151,8 +151,6 @@ build-efi-roms: build-pxe-roms

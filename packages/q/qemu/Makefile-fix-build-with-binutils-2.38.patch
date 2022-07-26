@@ -29,20 +29,20 @@ Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
  1 file changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/roms/opensbi/Makefile b/roms/opensbi/Makefile
-index d6f097d30af78c0fba92eeeec523..a294f46fa8e16caec64d5a88c2a2 100644
+index 062883e9695fb4447d2e61d7f282..fc1ea13e519a702e8b09d9006a2c 100644
 --- a/roms/opensbi/Makefile
 +++ b/roms/opensbi/Makefile
-@@ -106,6 +106,9 @@ ifndef PLATFORM_RISCV_XLEN
-   endif
- endif
+@@ -153,6 +153,9 @@ OPENSBI_LD_PIE := $(shell $(CC) $(CLANG_TARGET) $(RELAX_FLAG) $(USE_LD_FLAG) -fP
+ # Check whether the compiler supports -m(no-)save-restore
+ CC_SUPPORT_SAVE_RESTORE := $(shell $(CC) $(CLANG_TARGET) $(RELAX_FLAG) -nostdlib -mno-save-restore -x c /dev/null -o /dev/null 2>&1 | grep "\-save\-restore" >/dev/null && echo n || echo y)
  
 +# Check whether the assembler and the compiler support the Zicsr and Zifencei extensions
 +CC_SUPPORT_ZICSR_ZIFENCEI := $(shell $(CC) $(CLANG_TARGET) $(RELAX_FLAG) -nostdlib -march=rv$(OPENSBI_CC_XLEN)imafd_zicsr_zifencei -x c /dev/null -o /dev/null 2>&1 | grep "zicsr\|zifencei" > /dev/null && echo n || echo y)
 +
- # Setup list of objects.mk files
- ifdef PLATFORM
- platform-object-mks=$(shell if [ -d $(platform_src_dir)/ ]; then find $(platform_src_dir) -iname "objects.mk" | sort -r; fi)
-@@ -157,7 +160,11 @@ ifndef PLATFORM_RISCV_ABI
+ # Build Info:
+ # OPENSBI_BUILD_TIME_STAMP -- the compilation time stamp
+ # OPENSBI_BUILD_COMPILER_VERSION -- the compiler version info
+@@ -223,7 +226,11 @@ ifndef PLATFORM_RISCV_ABI
  endif
  ifndef PLATFORM_RISCV_ISA
    ifneq ($(PLATFORM_RISCV_TOOLCHAIN_DEFAULT), 1)

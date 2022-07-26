@@ -1,7 +1,6 @@
-From e4ad2b63e748643e12306d61aea7aaf5a41a0d3c Mon Sep 17 00:00:00 2001
 From: Arnout Engelen <arnout@bzzt.net>
 Date: Sun, 8 May 2022 17:32:22 +0200
-Subject: [PATCH] hw/usb/hcd-ehci: fix writeback order
+Subject: hw/usb/hcd-ehci: fix writeback order
 
 Git-commit: f471e8b060798f26a7fc339c6152f82f22a7b33d
 References: bsc#1192115
@@ -37,17 +36,17 @@ https://github.com/NixOS/nixpkgs/issues/170803
 
 Signed-off-by: Arnout Engelen <arnout@bzzt.net>
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-(cherry picked from commit f471e8b060798f26a7fc339c6152f82f22a7b33d)
 Signed-off-by: Lin Ma <lma@suse.com>
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
 ---
  hw/usb/hcd-ehci.c | 5 ++++-
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
-index 6caa7ac6c2..3464b2406e 100644
+index 33a8a377bd9503cf0ac1e6bd97e6..d4da8dcb8d15e3f1dcb8b6cfddf7 100644
 --- a/hw/usb/hcd-ehci.c
 +++ b/hw/usb/hcd-ehci.c
-@@ -2009,7 +2009,10 @@ static int ehci_state_writeback(EHCIQueue *q)
+@@ -2011,7 +2011,10 @@ static int ehci_state_writeback(EHCIQueue *q)
      ehci_trace_qtd(q, NLPTR_GET(p->qtdaddr), (EHCIqtd *) &q->qh.next_qtd);
      qtd = (uint32_t *) &q->qh.next_qtd;
      addr = NLPTR_GET(p->qtdaddr);
@@ -59,6 +58,3 @@ index 6caa7ac6c2..3464b2406e 100644
      ehci_free_packet(p);
  
      /*
--- 
-2.34.1
-

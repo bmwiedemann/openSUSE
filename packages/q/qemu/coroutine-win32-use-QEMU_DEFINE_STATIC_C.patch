@@ -1,0 +1,89 @@
+From: Stefan Hajnoczi <stefanha@redhat.com>
+Date: Mon, 7 Mar 2022 15:38:53 +0000
+Subject: coroutine-win32: use QEMU_DEFINE_STATIC_CO_TLS()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: c1fe694357a328c807ae3cc6961c19e923448fcc
+
+Thread-Local Storage variables cannot be used directly from coroutine
+code because the compiler may optimize TLS variable accesses across
+qemu_coroutine_yield() calls. When the coroutine is re-entered from
+another thread the TLS variables from the old thread must no longer be
+used.
+
+Use QEMU_DEFINE_STATIC_CO_TLS() for the current and leader variables.
+
+I think coroutine-win32.c could get away with __thread because the
+variables are only used in situations where either the stale value is
+correct (current) or outside coroutine context (loading leader when
+current is NULL). Due to the difficulty of being sure that this is
+really safe in all scenarios it seems worth converting it anyway.
+
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+Message-Id: <20220307153853.602859-4-stefanha@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+[DF: see: https://bugzilla.redhat.com/show_bug.cgi?id=1952483]
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ util/coroutine-win32.c | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/util/coroutine-win32.c b/util/coroutine-win32.c
+index de6bd4fd3e4e9747b08348e2a5f7..c02a62c896908162160440cbc8ba 100644
+--- a/util/coroutine-win32.c
++++ b/util/coroutine-win32.c
+@@ -25,6 +25,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu-common.h"
+ #include "qemu/coroutine_int.h"
++#include "qemu/coroutine-tls.h"
+ 
+ typedef struct
+ {
+@@ -34,8 +35,8 @@ typedef struct
+     CoroutineAction action;
+ } CoroutineWin32;
+ 
+-static __thread CoroutineWin32 leader;
+-static __thread Coroutine *current;
++QEMU_DEFINE_STATIC_CO_TLS(CoroutineWin32, leader);
++QEMU_DEFINE_STATIC_CO_TLS(Coroutine *, current);
+ 
+ /* This function is marked noinline to prevent GCC from inlining it
+  * into coroutine_trampoline(). If we allow it to do that then it
+@@ -52,7 +53,7 @@ qemu_coroutine_switch(Coroutine *from_, Coroutine *to_,
+     CoroutineWin32 *from = DO_UPCAST(CoroutineWin32, base, from_);
+     CoroutineWin32 *to = DO_UPCAST(CoroutineWin32, base, to_);
+ 
+-    current = to_;
++    set_current(to_);
+ 
+     to->action = action;
+     SwitchToFiber(to->fiber);
+@@ -89,14 +90,21 @@ void qemu_coroutine_delete(Coroutine *co_)
+ 
+ Coroutine *qemu_coroutine_self(void)
+ {
++    Coroutine *current = get_current();
++
+     if (!current) {
+-        current = &leader.base;
+-        leader.fiber = ConvertThreadToFiber(NULL);
++        CoroutineWin32 *leader = get_ptr_leader();
++
++        current = &leader->base;
++        set_current(current);
++        leader->fiber = ConvertThreadToFiber(NULL);
+     }
+     return current;
+ }
+ 
+ bool qemu_in_coroutine(void)
+ {
++    Coroutine *current = get_current();
++
+     return current && current->caller;
+ }

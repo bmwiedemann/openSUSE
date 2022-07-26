@@ -16,10 +16,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 12 insertions(+)
 
 diff --git a/softmmu/vl.c b/softmmu/vl.c
-index 620a1f1367e2b033bfec541619d3..527e1d91859b19351d397ef64930 100644
+index 6f646531a0aeb6ff2dd3fc8a5cd8..f0f2f190a4a84af95ccaac353bb1 100644
 --- a/softmmu/vl.c
 +++ b/softmmu/vl.c
-@@ -40,6 +40,7 @@
+@@ -41,6 +41,7 @@
  #include "sysemu/reset.h"
  #include "sysemu/runstate.h"
  #include "sysemu/runstate-action.h"
@@ -27,7 +27,7 @@ index 620a1f1367e2b033bfec541619d3..527e1d91859b19351d397ef64930 100644
  #include "sysemu/seccomp.h"
  #include "sysemu/tcg.h"
  #include "sysemu/xen.h"
-@@ -2772,6 +2773,17 @@ void qemu_init(int argc, char **argv, char **envp)
+@@ -2778,6 +2779,17 @@ void qemu_init(int argc, char **argv, char **envp)
      MachineClass *machine_class;
      bool userconfig = true;
      FILE *vmstate_dump_file = NULL;

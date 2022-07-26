@@ -1,4 +1,187 @@
 -------------------------------------------------------------------
+Thu Jul 21 12:14:28 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Substantial rework of the spec file: 
+  * the 'make check' testsuite now runs in the %check section of
+    the main package, not in a subpackage
+  * switched from %setup to %autosetup
+  * rearranged the content in order to minimize the use of %if,
+    %ifarch, etc
+
+-------------------------------------------------------------------
+Thu Jul 21 12:12:50 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Properly fix bsc#1198038, CVE-2022-0216
+* Patches added:
+  scsi-lsi53c895a-really-fix-use-after-fre.patch
+  tests-qtest-Move-the-fuzz-tests-to-x86-o.patch
+
+-------------------------------------------------------------------
+Thu Jul 21 06:14:03 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Make temp dir (for update_git.sh) configurable
+- Added new subpackages (audio-dbus, ui-dbus)
+- bsc#1199018 was never fixed in Factory's QEMU 6.2. It is
+  now (since the patches are already in SeaBIOS 1.16.0)
+- Some tests are having issues when run in OBS. They seem to be
+  due to race conditions, triggered by resource constraints of
+  OBS workers. Let's disable them for now, while looking for a fix
+- Update to v7.0.0. For full release notese, see:
+  * https://wiki.qemu.org/ChangeLog/7.0
+  Be sure to also check the following pages:
+  * https://qemu-project.gitlab.io/qemu/about/removed-features.html
+  * https://qemu-project.gitlab.io/qemu/about/deprecated.html
+  Some notable changes:
+  * [ARM] The virt board has gained a new control knob to disable passing a RNG seed in the DTB (dtb-kaslr-seed)
+  * [ARM] The AST2600 SoC now supports a dummy version of the i3c device
+  * [ARM] The virt board can now run guests with KVM on hosts with restricted IPA ranges
+  * [ARM] The virt board now supports virtio-mem-pci
+  * [ARM] The virt board now supports specifying the guest CPU topology
+  * [ARM] On the virt board, we now enable PAuth when using KVM or hvf and the host CPU supports it
+  * [RISC-V] Add support for ratified 1.0 Vector extension
+  * [RISC-V] Support for the Zve64f and Zve32f extensions
+  * [RISC-V] Drop support for draft 0.7.1 Vector extension
+  * [RISC-V] Support Zfhmin and Zfh extensions
+  * [RISC-V] RISC-V KVM support
+  * [RISC-V] Mark Hypervisor extension as non experimental
+  * [RISC-V] Enable Hypervisor extension by default
+  * [x86] Support for Intel AMX.
+  * [PCI/PCIe] Q35: fix PCIe device becoming disabled after migration when ACPI based PCI hotplug is used (6b0969f1ec)
+  * [PCI/PCIe] initial bits of SR/IOV support (250346169)
+  * [PCI/PCIe] arm/virt: fixed PXB interrupt routing (e609301b45)
+  * [PCI/PCIe] arm/virt: support for virtio-mem-pci (b1b87327a9)
+  * [virtiofs] Fix for CVE-2022-0358 - behaviour with supplementary groups and SGID directories
+  * [virtiofs] Improved security label support
+  * [virtiofs] The virtiofsd in qemu is now starting to be deprecated; please start using and contributing to Rust virtiofsd
+* Patches dropped:
+  acpi-validate-hotplug-selector-on-access.patch
+  block-backend-Retain-permissions-after-m.patch
+  block-qdict-Fix-Werror-maybe-uninitializ.patch
+  brotli-fix-actual-variable-array-paramet.patch
+  display-qxl-render-fix-race-condition-in.patch
+  doc-Add-the-SGX-numa-description.patch
+  hw-i386-amd_iommu-Fix-maybe-uninitialize.patch
+  hw-intc-exynos4210_gic-provide-more-room.patch
+  hw-nvme-fix-CVE-2021-3929.patch
+  hw-nvram-at24-return-0xff-if-1-byte-addr.patch
+  iotest-065-explicit-compression-type.patch
+  iotest-214-explicit-compression-type.patch
+  iotest-302-use-img_info_log-helper.patch
+  iotest-303-explicit-compression-type.patch
+  iotest-39-use-_qcow2_dump_header.patch
+  iotests-60-more-accurate-set-dirty-bit-i.patch
+  iotests-bash-tests-filter-compression-ty.patch
+  iotests-common.rc-introduce-_qcow2_dump_.patch
+  iotests-declare-lack-of-support-for-comp.patch
+  iotests-drop-qemu_img_verbose-helper.patch
+  iotests-massive-use-_qcow2_dump_header.patch
+  iotests-MRCE-Write-data-to-source.patch
+  iotests.py-filter-out-successful-output-.patch
+  iotests.py-img_info_log-rename-imgopts-a.patch
+  iotests.py-implement-unsupported_imgopts.patch
+  iotests.py-qemu_img-create-support-IMGOP.patch
+  iotests.py-rewrite-default-luks-support-.patch
+  iotests-specify-some-unsupported_imgopts.patch
+  meson-build-all-modules-by-default.patch
+  numa-Enable-numa-for-SGX-EPC-sections.patch
+  numa-Support-SGX-numa-in-the-monitor-and.patch
+  python-aqmp-add-__del__-method-to-legacy.patch
+  python-aqmp-add-_session_guard.patch
+  python-aqmp-add-SocketAddrT-to-package-r.patch
+  python-aqmp-add-socket-bind-step-to-lega.patch
+  python-aqmp-add-start_server-and-accept-.patch
+  python-aqmp-copy-type-definitions-from-q.patch
+  python-aqmp-drop-_bind_hack.patch
+  python-aqmp-fix-docstring-typo.patch
+  python-aqmp-Fix-negotiation-with-pre-oob.patch
+  python-aqmp-fix-race-condition-in-legacy.patch
+  Python-aqmp-fix-type-definitions-for-myp.patch
+  python-aqmp-handle-asyncio.TimeoutError-.patch
+  python-aqmp-refactor-_do_accept-into-two.patch
+  python-aqmp-remove-_new_session-and-_est.patch
+  python-aqmp-rename-accept-to-start_serve.patch
+  python-aqmp-rename-AQMPError-to-QMPError.patch
+  python-aqmp-split-_client_connected_cb-o.patch
+  python-aqmp-squelch-pylint-warning-for-t.patch
+  python-aqmp-stop-the-server-during-disco.patch
+  python-introduce-qmp-shell-wrap-convenie.patch
+  python-machine-raise-VMLaunchFailure-exc.patch
+  python-move-qmp-shell-under-the-AQMP-pac.patch
+  python-move-qmp-utilities-to-python-qemu.patch
+  python-qmp-switch-qmp-shell-to-AQMP.patch
+  python-support-recording-QMP-session-to-.patch
+  python-upgrade-mypy-to-0.780.patch
+  qcow2-simple-case-support-for-downgradin.patch
+  qemu-binfmt-conf.sh-should-use-F-as-shor.patch
+  tests-qemu-iotests-040-Skip-TestCommitWi.patch
+  tests-qemu-iotests-Fix-051-for-binaries-.patch
+  tests-qemu-iotests-testrunner-Quote-case.patch
+  tools-virtiofsd-Add-rseq-syscall-to-the-.patch
+  ui-cursor-fix-integer-overflow-in-cursor.patch
+  vhost-vsock-detach-the-virqueue-element-.patch
+  virtiofsd-Drop-membership-of-all-supplem.patch
+  virtio-net-fix-map-leaking-on-error-duri.patch
+  Disable-some-tests-that-have-problems-in.patch
+* Patches added:
+  intc-exynos4210_gic-replace-snprintf-wit.patch
+  Revert-8dcb404bff6d9147765d7dd3e9c849337.patch
+
+------------------------------------------------------------------
+Wed Jul 20 02:07:53 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix bsc#1197084
+* Patches added:
+  hostmem-default-the-amount-of-prealloc-t.patch
+
+-------------------------------------------------------------------
+Sun Jul 17 07:33:40 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Get rid of downstream patches breaking s390 modules. Replace
+  them with the upstream proposed and Acked (but never committed)
+  solution (bsc#1199015)
+* Patches added:
+  modules-generates-per-target-modinfo.patch
+  modules-introduces-module_kconfig-direct.patch
+* Patches dropped:
+  Fix-the-module-building-problem-for-s390.patch
+  modules-quick-fix-a-fundamental-error-in.patch
+
+-------------------------------------------------------------------
+Sat Jul 16 16:30:12 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- backport patches for having coroutine work well when LTO is used
+* Patches added:
+  coroutine-ucontext-use-QEMU_DEFINE_STATI.patch
+  coroutine-use-QEMU_DEFINE_STATIC_CO_TLS.patch
+  coroutine-win32-use-QEMU_DEFINE_STATIC_C.patch
+
+-------------------------------------------------------------------
+Sat Jul 16 14:02:04 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- seabios: drop patch that changes python in python2.
+  Just go to python3 directly.
+* Patches dropped:
+  seabios-use-python2-explicitly-as-needed.patch
+
+-------------------------------------------------------------------
+Fri Jul 15 09:08:06 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix the following bugs:
+  - bsc#1198037, CVE-2021-4207
+  - bsc#1198038, CVE-2022-0216
+  - bsc#1201367, CVE-2022-35414
+  - bsc#1198035, CVE-2021-4206
+  - bsc#1198712, CVE-2022-26354
+  - bsc#1198711, CVE-2022-26353
+* Patches added:
+  display-qxl-render-fix-race-condition-in.patch
+  scsi-lsi53c895a-fix-use-after-free-in-ls.patch
+  softmmu-Always-initialize-xlat-in-addres.patch
+  ui-cursor-fix-integer-overflow-in-cursor.patch
+  vhost-vsock-detach-the-virqueue-element-.patch
+  virtio-net-fix-map-leaking-on-error-duri.patch
+
+-------------------------------------------------------------------
 Fri Jul  1 11:46:41 UTC 2022 - Lin Ma <lma@suse.com>
 
 - Fix usb ehci boot failure (bsc#1192115)

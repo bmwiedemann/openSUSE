@@ -13,7 +13,7 @@ Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index 74c5b46d38b501f9dd25f447ed08..87ae3ba6efe74e6c48d2a6db970f 100644
+index e5fd1ebdf6199c4cb15780e90236..e5881a951fc05d479b032c0b56d8 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -87,7 +87,7 @@ x := $(shell rm -rf meson-private meson-info meson-logs)

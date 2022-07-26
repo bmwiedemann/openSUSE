@@ -2,6 +2,8 @@ From: Bruce Rogers <brogers@suse.com>
 Date: Fri, 29 Jan 2021 20:06:16 -0700
 Subject: doc: add our support doc to the main project doc for x86 and s390x
 
+Git-commit: 0000000000000000000000000000000000000000
+
 Include-If: %if %{legacy_qemu_kvm}
 
 Signed-off-by: Bruce Rogers <brogers@suse.com>

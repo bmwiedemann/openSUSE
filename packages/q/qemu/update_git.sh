@@ -47,9 +47,9 @@ check_requirements() {
         RC=1
     fi
     ONE_GIG_IN_1K_BLOCKS=1048576
-    AVAIL=$(df --output=avail /dev/shm | tail -1)
+    AVAIL=$(df --output=avail $TMPDIR | tail -1)
     if [[ $AVAIL -lt $ONE_GIG_IN_1K_BLOCKS ]]; then
-        echo "ERROR: Please provide at least 1GB available space in /dev/shm"
+        echo "ERROR: Please provide at least 1GB available space in $TMPDIR"
         RC=1
     fi
     if [[ "$RC" = "1" ]]; then
@@ -327,7 +327,7 @@ redo_tarball_and_rebase_patches() {
 # TODO: WHAT IS THIS NEXT LINE EVEN DOING FOR US?? (OK, it's initing a repo, what do we rely on there?)
 # Here, the branch doesn't really matter, and we're not relying on a master branch - we're just making sure we are grabbing latest from upstream
 # (while using a clone of "something close" as a way to quickly get most objects available as quickly as possible)
-git clone -ls ${LOCAL_REPO_MAP[0]} -b $GIT_BRANCH --single-branch $GIT_DIR &>/dev/null
+git clone -ls ${LOCAL_REPO_MAP[0]} -b $GIT_BRANCH --single-branch $GIT_DIR #&>/dev/null
 echo "Please wait..."
 (cd $GIT_DIR && git remote add upstream \
 $UPSTREAM_GIT_REPO &>/dev/null)
@@ -840,13 +840,13 @@ fi
 #==============================================================================
 
 # cleanup directories from any previous failed run:
-rm -rf /dev/shm/qemu-???????-git-dir
-rm -rf /dev/shm/qemu-???????-cmp-dir
-rm -rf /dev/shm/qemu-???????-bun-dir
+rm -rf ${TMPDIR}/qemu-???????-git-dir
+rm -rf ${TMPDIR}/qemu-???????-cmp-dir
+rm -rf ${TMPDIR}/qemu-???????-bun-dir
 # Temporary directories used in this script
-GIT_DIR=$(mktemp -d /dev/shm/qemu-XXXXXXX-git-dir)
-CMP_DIR=$(mktemp -d /dev/shm/qemu-XXXXXXX-cmp-dir)
-BUN_DIR=$(mktemp -d /dev/shm/qemu-XXXXXXX-bun-dir)
+GIT_DIR=$(mktemp -d ${TMPDIR}/qemu-XXXXXXX-git-dir)
+CMP_DIR=$(mktemp -d ${TMPDIR}/qemu-XXXXXXX-cmp-dir)
+BUN_DIR=$(mktemp -d ${TMPDIR}/qemu-XXXXXXX-bun-dir)
 
 if [[ ! -e $(readlink -f ${LOCAL_REPO_MAP[0]}) ]]; then
     echo "No local repo found at ${LOCAL_REPO_MAP[0]}"

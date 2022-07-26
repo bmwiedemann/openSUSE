@@ -13,7 +13,7 @@ Signed-off-by: Andreas Färber <afaerber@suse.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/scripts/qemu-binfmt-conf.sh b/scripts/qemu-binfmt-conf.sh
-index 7de996d536eaf9c41255ae9695a5..cb06245a834f9e8f2bb0464a25ce 100755
+index 9cb723f44355c55d21eeeb2c1b7b..02eedc7c92d788637385ef3eba19 100755
 --- a/scripts/qemu-binfmt-conf.sh
 +++ b/scripts/qemu-binfmt-conf.sh
 @@ -334,7 +334,7 @@ BINFMT_SET=qemu_register_interpreter

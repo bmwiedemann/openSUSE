@@ -1,0 +1,44 @@
+From: Jaroslav Jindrak <dzejrou@gmail.com>
+Date: Tue, 17 May 2022 14:38:58 +0200
+Subject: hostmem: default the amount of prealloc-threads to smp-cpus
+
+Git-commit: f8d426a6852c560fdd8648ae961c8189909a4b82
+References: bsc#1197084
+
+Prior to the introduction of the prealloc-threads property, the amount
+of threads used to preallocate memory was derived from the value of
+smp-cpus passed to qemu, the amount of physical cpus of the host
+and a hardcoded maximum value. When the prealloc-threads property
+was introduced, it included a default of 1 in backends/hostmem.c and
+a default of smp-cpus using the sugar API for the property itself. The
+latter default is not used when the property is not specified on qemu's
+command line, so guests that were not adjusted for this change suddenly
+started to use the default of 1 thread to preallocate memory, which
+resulted in observable slowdowns in guest boots for guests with large
+memory (e.g. when using libvirt <8.2.0 or managing guests manually).
+
+This commit restores the original behavior for these cases while not
+impacting guests started with the prealloc-threads property in any way.
+
+Fixes: 220c1fd864e9d ("hostmem: introduce "prealloc-threads" property")
+Signed-off-by: Jaroslav Jindrak <dzejrou@gmail.com>
+Message-Id: <20220517123858.7933-1-dzejrou@gmail.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ backends/hostmem.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/backends/hostmem.c b/backends/hostmem.c
+index b2a5e905e866cd52f2f3e84f7d91..e4062a1c34920b5302fe57b8fdac 100644
+--- a/backends/hostmem.c
++++ b/backends/hostmem.c
+@@ -274,7 +274,7 @@ static void host_memory_backend_init(Object *obj)
+     backend->merge = machine_mem_merge(machine);
+     backend->dump = machine_dump_guest_core(machine);
+     backend->reserve = true;
+-    backend->prealloc_threads = 1;
++    backend->prealloc_threads = machine->smp.cpus;
+ }
+ 
+ static void host_memory_backend_post_init(Object *obj)

@@ -51,7 +51,7 @@ index 2ffefa8ceeeff9a1d0504ad71918..c9fb4329843a8fc34e596b506571 100644
  // Template for an end-of-device path node.
  //
 diff --git a/roms/edk2/BaseTools/Source/C/GenFfs/GenFfs.c b/roms/edk2/BaseTools/Source/C/GenFfs/GenFfs.c
-index fcb911f4fc34e560fd06001f91dd..589ffe94982ccfa3651216d0571f 100644
+index 949025c333251bc5776159a6c535..be55a529743494677f8515906c6c 100644
 --- a/roms/edk2/BaseTools/Source/C/GenFfs/GenFfs.c
 +++ b/roms/edk2/BaseTools/Source/C/GenFfs/GenFfs.c
 @@ -36,6 +36,10 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
@@ -81,12 +81,12 @@ index d54a4f9e0a7d67b7c8494ab37011..fb40ad36584c1cd53cc7ca4a9d4f 100644
    NULL,                                 // 0x00 - reserved
    "EFI_SECTION_COMPRESSION",            // 0x01
 diff --git a/roms/edk2/BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c b/roms/edk2/BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c
-index e281716fee1bfb5eb236c9e38dbd..773114584add6e1f0f6e966e26e5 100644
+index 4e9b499f8d80dc4d6bc13515e794..ab9b7cc34f69bceb74c454ce5032 100644
 --- a/roms/edk2/BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c
 +++ b/roms/edk2/BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c
-@@ -38,6 +38,10 @@ static unsigned g_STAT_OFFSET = 0;
- #define kNumBitPriceShiftBits 4
- #define kBitPrice (1 << kNumBitPriceShiftBits)
+@@ -40,6 +40,10 @@ static unsigned g_STAT_OFFSET = 0;
+ 
+ #define REP_LEN_COUNT 64
  
 +#if __GNUC__ >= 12
 +#  pragma GCC diagnostic ignored "-Wdangling-pointer"

@@ -2,6 +2,7 @@ From: Hannes Reinecke <hare@suse.de>
 Date: Fri, 25 Mar 2022 18:41:52 +0100
 Subject: scsi-generic: check for additional SG_IO status on completion
 
+Git-commit: 0000000000000000000000000000000000000000
 References: bsc#1178049
 
 SG_IO may return additional status in the 'status', 'driver_status',

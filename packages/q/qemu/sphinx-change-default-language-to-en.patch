@@ -1,8 +1,8 @@
 From: =?UTF-8?q?Martin=20Li=C5=A1ka?= <mliska@suse.cz>
-Date: Fri, 17 Jun 2022 16:02:56 +0200
+Date: Fri, 24 Jun 2022 15:42:55 +0100
 Subject: sphinx: change default language to 'en'
 
-Git-commit: 0000000000000000000000000000000000000000
+Git-commit: ba1a6723f58640ba281bc952abc255e97c70bad5
 References: bsc#1200557
 
 Fixes the following Sphinx warning (treated as error) starting
@@ -12,17 +12,19 @@ Warning, treated as error:
 Invalid configuration value found: 'language = None'. Update your configuration to a valid langauge code. Falling back to 'en' (English).
 
 Signed-off-by: Martin Liska <mliska@suse.cz>
+Message-id: e91e51ee-48ac-437e-6467-98b56ee40042@suse.cz
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Acked-by: Dario Faggioli <dfaggioli@suse.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
 ---
  docs/conf.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/docs/conf.py b/docs/conf.py
-index 763e7d2434487bb558111d34f07f..84b593e12af8a17412b731ef4366 100644
+index 49dab44cca5a72637b4f892d7612..e33cf3d381211eacbf0114b194cb 100644
 --- a/docs/conf.py
 +++ b/docs/conf.py
-@@ -120,7 +120,7 @@ finally:
+@@ -126,7 +126,7 @@ finally:
  #
  # This is also used if you do content translation via gettext catalogs.
  # Usually you set "language" from the command line for these cases.

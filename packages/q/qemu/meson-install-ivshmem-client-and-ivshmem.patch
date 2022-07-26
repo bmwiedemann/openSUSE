@@ -11,21 +11,21 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/contrib/ivshmem-client/meson.build b/contrib/ivshmem-client/meson.build
-index 1b171efb4f536f608191cd4cba1b..83a559117fd1a2c99f34a43fa38d 100644
+index ce8dcca84ddb23de1d8eaa813f5a..bc77336258302e0f7a962ef47ed6 100644
 --- a/contrib/ivshmem-client/meson.build
 +++ b/contrib/ivshmem-client/meson.build
 @@ -1,4 +1,4 @@
- executable('ivshmem-client', files('ivshmem-client.c', 'main.c'),
+ executable('ivshmem-client', files('ivshmem-client.c', 'main.c'), genh,
             dependencies: glib,
             build_by_default: targetos == 'linux',
 -           install: false)
 +           install: true)
 diff --git a/contrib/ivshmem-server/meson.build b/contrib/ivshmem-server/meson.build
-index 3a539422017e6dc342e098c3e9c8..a1c39aa3b30e9c56941cbc394f86 100644
+index c6c3c82e89f363e1929bfa08e318..185879a0c6ce71b1272a7ef6ce4d 100644
 --- a/contrib/ivshmem-server/meson.build
 +++ b/contrib/ivshmem-server/meson.build
 @@ -1,4 +1,4 @@
- executable('ivshmem-server', files('ivshmem-server.c', 'main.c'),
+ executable('ivshmem-server', files('ivshmem-server.c', 'main.c'), genh,
             dependencies: [qemuutil, rt],
             build_by_default: targetos == 'linux',
 -           install: false)

@@ -20,7 +20,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 12 insertions(+), 2 deletions(-)
 
 diff --git a/roms/Makefile b/roms/Makefile
-index b967b53bb76ee8a94fc9b37e4460..66d06f5831303c3d41e943290389 100644
+index 5e44d9789001979a0e9ef3183f90..3d53bd528666b594ab3d6b631450 100644
 --- a/roms/Makefile
 +++ b/roms/Makefile
 @@ -52,6 +52,12 @@ SEABIOS_EXTRAVERSION="-prebuilt.qemu.org"

@@ -2,6 +2,8 @@ From: Bruce Rogers <brogers@suse.com>
 Date: Thu, 3 Dec 2020 16:48:13 -0700
 Subject: usb: Help compiler out to avoid a warning on x86 compilation
 
+Git-commit: 0000000000000000000000000000000000000000
+
 Include-If: %ifarch %arm %ix86 ppc
 
 There is an assert present which already should give the compiler
@@ -18,10 +20,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
-index e01700039b13d1404d3dc66eb3d3..395f0923f7633c03f2359d503fbd 100644
+index 0cd0a5e540272a4183176ce8426d..2af21f0af68da3cd9d10f0e41f84 100644
 --- a/hw/usb/hcd-xhci.c
 +++ b/hw/usb/hcd-xhci.c
-@@ -3310,7 +3310,7 @@ static void usb_xhci_init(XHCIState *xhci)
+@@ -3314,7 +3314,7 @@ static void usb_xhci_init(XHCIState *xhci)
                  USB_SPEED_MASK_FULL |
                  USB_SPEED_MASK_HIGH;
              assert(i < XHCI_MAXPORTS);
@@ -30,7 +32,7 @@ index e01700039b13d1404d3dc66eb3d3..395f0923f7633c03f2359d503fbd 100644
              speedmask |= port->speedmask;
          }
          if (i < xhci->numports_3) {
-@@ -3324,7 +3324,7 @@ static void usb_xhci_init(XHCIState *xhci)
+@@ -3328,7 +3328,7 @@ static void usb_xhci_init(XHCIState *xhci)
              port->uport = &xhci->uports[i];
              port->speedmask = USB_SPEED_MASK_SUPER;
              assert(i < XHCI_MAXPORTS);

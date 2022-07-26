@@ -1,0 +1,269 @@
+From: "Jose R. Ziviani" <jziviani@suse.de>
+Date: Tue, 28 Sep 2021 17:46:27 -0300
+Subject: modules: introduces module_kconfig directive
+
+Git-commit: 24ce7aa77dd1a3095d994bf53d60cce6e672cf4d
+References: bsc#1199015
+
+module_kconfig is a new directive that should be used with module_obj
+whenever that module depends on the Kconfig to be enabled.
+
+When the module is enabled in Kconfig we are sure that its dependencies
+will be enabled as well, thus the module will be loaded without any
+problem.
+
+The correct way to use module_kconfig is by passing the Kconfig option
+to module_kconfig (or the *config-devices.mak without CONFIG_).
+
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+Message-Id: <165369002370.5857.12150544416563557322.stgit@work>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ hw/display/qxl.c                |  1 +
+ hw/display/vhost-user-gpu-pci.c |  1 +
+ hw/display/vhost-user-gpu.c     |  1 +
+ hw/display/vhost-user-vga.c     |  1 +
+ hw/display/virtio-gpu-base.c    |  1 +
+ hw/display/virtio-gpu-gl.c      |  1 +
+ hw/display/virtio-gpu-pci-gl.c  |  1 +
+ hw/display/virtio-gpu-pci.c     |  1 +
+ hw/display/virtio-gpu.c         |  1 +
+ hw/display/virtio-vga-gl.c      |  1 +
+ hw/display/virtio-vga.c         |  1 +
+ hw/s390x/virtio-ccw-gpu.c       |  1 +
+ hw/usb/ccid-card-emulated.c     |  1 +
+ hw/usb/ccid-card-passthru.c     |  1 +
+ hw/usb/host-libusb.c            |  1 +
+ hw/usb/redirect.c               |  1 +
+ include/qemu/module.h           | 10 ++++++++++
+ scripts/modinfo-generate.py     |  2 ++
+ 18 files changed, 28 insertions(+)
+
+diff --git a/hw/display/qxl.c b/hw/display/qxl.c
+index adbdbcaeb6121106bfcaee288d4c..092fb36b3a928b062067207d7518 100644
+--- a/hw/display/qxl.c
++++ b/hw/display/qxl.c
+@@ -2515,6 +2515,7 @@ static const TypeInfo qxl_primary_info = {
+     .class_init    = qxl_primary_class_init,
+ };
+ module_obj("qxl-vga");
++module_kconfig(QXL);
+ 
+ static void qxl_secondary_class_init(ObjectClass *klass, void *data)
+ {
+diff --git a/hw/display/vhost-user-gpu-pci.c b/hw/display/vhost-user-gpu-pci.c
+index daefcf7101590cbd3b3681ac6fa9..d119bcae45d48e6eb14afe7d26e6 100644
+--- a/hw/display/vhost-user-gpu-pci.c
++++ b/hw/display/vhost-user-gpu-pci.c
+@@ -44,6 +44,7 @@ static const VirtioPCIDeviceTypeInfo vhost_user_gpu_pci_info = {
+     .instance_init = vhost_user_gpu_pci_initfn,
+ };
+ module_obj(TYPE_VHOST_USER_GPU_PCI);
++module_kconfig(VHOST_USER_GPU);
+ 
+ static void vhost_user_gpu_pci_register_types(void)
+ {
+diff --git a/hw/display/vhost-user-gpu.c b/hw/display/vhost-user-gpu.c
+index 09818231bd24a9f8acd7ee3c2e15..5fc192022346dfc7ad5646db069d 100644
+--- a/hw/display/vhost-user-gpu.c
++++ b/hw/display/vhost-user-gpu.c
+@@ -599,6 +599,7 @@ static const TypeInfo vhost_user_gpu_info = {
+     .class_init = vhost_user_gpu_class_init,
+ };
+ module_obj(TYPE_VHOST_USER_GPU);
++module_kconfig(VHOST_USER_GPU);
+ 
+ static void vhost_user_gpu_register_types(void)
+ {
+diff --git a/hw/display/vhost-user-vga.c b/hw/display/vhost-user-vga.c
+index 072c9c65bc754f399bc49a3dbb88..0c146080fd2c15ff9fd86338164e 100644
+--- a/hw/display/vhost-user-vga.c
++++ b/hw/display/vhost-user-vga.c
+@@ -45,6 +45,7 @@ static const VirtioPCIDeviceTypeInfo vhost_user_vga_info = {
+     .instance_init = vhost_user_vga_inst_initfn,
+ };
+ module_obj(TYPE_VHOST_USER_VGA);
++module_kconfig(VHOST_USER_VGA);
+ 
+ static void vhost_user_vga_register_types(void)
+ {
+diff --git a/hw/display/virtio-gpu-base.c b/hw/display/virtio-gpu-base.c
+index fff0fb4a828a0814ab5290a17f78..a8a5a8812f331fa56e3ef6a18821 100644
+--- a/hw/display/virtio-gpu-base.c
++++ b/hw/display/virtio-gpu-base.c
+@@ -260,6 +260,7 @@ static const TypeInfo virtio_gpu_base_info = {
+     .abstract = true
+ };
+ module_obj(TYPE_VIRTIO_GPU_BASE);
++module_kconfig(VIRTIO_GPU);
+ 
+ static void
+ virtio_register_types(void)
+diff --git a/hw/display/virtio-gpu-gl.c b/hw/display/virtio-gpu-gl.c
+index 6cc4313b1af2c3fac0011d6b39aa..f7837cc44dc41c665b703d12c79f 100644
+--- a/hw/display/virtio-gpu-gl.c
++++ b/hw/display/virtio-gpu-gl.c
+@@ -160,6 +160,7 @@ static const TypeInfo virtio_gpu_gl_info = {
+     .class_init = virtio_gpu_gl_class_init,
+ };
+ module_obj(TYPE_VIRTIO_GPU_GL);
++module_kconfig(VIRTIO_GPU);
+ 
+ static void virtio_register_types(void)
+ {
+diff --git a/hw/display/virtio-gpu-pci-gl.c b/hw/display/virtio-gpu-pci-gl.c
+index 99b14a07185ea6b3a2a2f99f167f..a2819e1ca93f98022a81b5a14d18 100644
+--- a/hw/display/virtio-gpu-pci-gl.c
++++ b/hw/display/virtio-gpu-pci-gl.c
+@@ -47,6 +47,7 @@ static const VirtioPCIDeviceTypeInfo virtio_gpu_gl_pci_info = {
+     .instance_init = virtio_gpu_gl_initfn,
+ };
+ module_obj(TYPE_VIRTIO_GPU_GL_PCI);
++module_kconfig(VIRTIO_PCI);
+ 
+ static void virtio_gpu_gl_pci_register_types(void)
+ {
+diff --git a/hw/display/virtio-gpu-pci.c b/hw/display/virtio-gpu-pci.c
+index e36eee0c409bb8d3bf7cbec85278..93f214ff58127452d0d56a19c361 100644
+--- a/hw/display/virtio-gpu-pci.c
++++ b/hw/display/virtio-gpu-pci.c
+@@ -65,6 +65,7 @@ static const TypeInfo virtio_gpu_pci_base_info = {
+     .abstract = true
+ };
+ module_obj(TYPE_VIRTIO_GPU_PCI_BASE);
++module_kconfig(VIRTIO_PCI);
+ 
+ #define TYPE_VIRTIO_GPU_PCI "virtio-gpu-pci"
+ typedef struct VirtIOGPUPCI VirtIOGPUPCI;
+diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
+index 529b5246b2b55da16445712e4173..cd4a56056fd9407a904470878318 100644
+--- a/hw/display/virtio-gpu.c
++++ b/hw/display/virtio-gpu.c
+@@ -1452,6 +1452,7 @@ static const TypeInfo virtio_gpu_info = {
+     .class_init = virtio_gpu_class_init,
+ };
+ module_obj(TYPE_VIRTIO_GPU);
++module_kconfig(VIRTIO_GPU);
+ 
+ static void virtio_register_types(void)
+ {
+diff --git a/hw/display/virtio-vga-gl.c b/hw/display/virtio-vga-gl.c
+index f22549097c5e8bb070da6d1c28d4..984faa6b39a80bc786e31ec3d393 100644
+--- a/hw/display/virtio-vga-gl.c
++++ b/hw/display/virtio-vga-gl.c
+@@ -37,6 +37,7 @@ static VirtioPCIDeviceTypeInfo virtio_vga_gl_info = {
+     .instance_init = virtio_vga_gl_inst_initfn,
+ };
+ module_obj(TYPE_VIRTIO_VGA_GL);
++module_kconfig(VIRTIO_VGA);
+ 
+ static void virtio_vga_register_types(void)
+ {
+diff --git a/hw/display/virtio-vga.c b/hw/display/virtio-vga.c
+index 7b55c8d0e72390b430fc4ad30f9f..c206b5da384bcc18dd14d3fcf62a 100644
+--- a/hw/display/virtio-vga.c
++++ b/hw/display/virtio-vga.c
+@@ -231,6 +231,7 @@ static const TypeInfo virtio_vga_base_info = {
+     .abstract      = true,
+ };
+ module_obj(TYPE_VIRTIO_VGA_BASE);
++module_kconfig(VIRTIO_VGA);
+ 
+ #define TYPE_VIRTIO_VGA "virtio-vga"
+ 
+diff --git a/hw/s390x/virtio-ccw-gpu.c b/hw/s390x/virtio-ccw-gpu.c
+index 5868a2a07093f163f93690b9b87b..024e8990f499b0b95f8912da86d5 100644
+--- a/hw/s390x/virtio-ccw-gpu.c
++++ b/hw/s390x/virtio-ccw-gpu.c
+@@ -60,6 +60,7 @@ static const TypeInfo virtio_ccw_gpu = {
+     .class_init    = virtio_ccw_gpu_class_init,
+ };
+ module_obj(TYPE_VIRTIO_GPU_CCW);
++module_kconfig(VIRTIO_CCW);
+ 
+ static void virtio_ccw_gpu_register(void)
+ {
+diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
+index 6c8c0355e099c94a84fdf3b4ab12..1ddf7297f6125d59eae04a2ef5c4 100644
+--- a/hw/usb/ccid-card-emulated.c
++++ b/hw/usb/ccid-card-emulated.c
+@@ -613,6 +613,7 @@ static const TypeInfo emulated_card_info = {
+     .class_init    = emulated_class_initfn,
+ };
+ module_obj(TYPE_EMULATED_CCID);
++module_kconfig(USB);
+ 
+ static void ccid_card_emulated_register_types(void)
+ {
+diff --git a/hw/usb/ccid-card-passthru.c b/hw/usb/ccid-card-passthru.c
+index fa3040fb7154419ce9767d55e4ed..748544d170835ca5a1ef99c1faac 100644
+--- a/hw/usb/ccid-card-passthru.c
++++ b/hw/usb/ccid-card-passthru.c
+@@ -415,6 +415,7 @@ static const TypeInfo passthru_card_info = {
+     .class_init    = passthru_class_initfn,
+ };
+ module_obj(TYPE_CCID_PASSTHRU);
++module_kconfig(USB);
+ 
+ static void ccid_card_passthru_register_types(void)
+ {
+diff --git a/hw/usb/host-libusb.c b/hw/usb/host-libusb.c
+index 2b35cb6cdd3933f2cf98307bcc4e..28f8af8941ff6db20283fcd85d23 100644
+--- a/hw/usb/host-libusb.c
++++ b/hw/usb/host-libusb.c
+@@ -1809,6 +1809,7 @@ static const TypeInfo usb_host_dev_info = {
+     .instance_init = usb_host_instance_init,
+ };
+ module_obj(TYPE_USB_HOST_DEVICE);
++module_kconfig(USB);
+ 
+ static void usb_host_register_types(void)
+ {
+diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
+index 8692ea256109532acf791bb590bd..b384ad7e73fbea58655324a65fb8 100644
+--- a/hw/usb/redirect.c
++++ b/hw/usb/redirect.c
+@@ -2620,6 +2620,7 @@ static const TypeInfo usbredir_dev_info = {
+     .instance_init = usbredir_instance_init,
+ };
+ module_obj(TYPE_USB_REDIR);
++module_kconfig(USB);
+ 
+ static void usbredir_register_types(void)
+ {
+diff --git a/include/qemu/module.h b/include/qemu/module.h
+index 5fcc323b2a79d5adfdf27fa19bf7..bd73607104c951a34512a156cff0 100644
+--- a/include/qemu/module.h
++++ b/include/qemu/module.h
+@@ -135,6 +135,16 @@ void module_allow_arch(const char *arch);
+  */
+ #define module_opts(name) modinfo(opts, name)
+ 
++/**
++ * module_kconfig
++ *
++ * @name: Kconfig requirement necessary to load the module
++ *
++ * This module requires a core module that should be implemented and
++ * enabled in Kconfig.
++ */
++#define module_kconfig(name) modinfo(kconfig, name)
++
+ /*
+  * module info database
+  *
+diff --git a/scripts/modinfo-generate.py b/scripts/modinfo-generate.py
+index f559eed0077a22bfd25a26a79c01..689f33c0f2919508341712a1cde4 100755
+--- a/scripts/modinfo-generate.py
++++ b/scripts/modinfo-generate.py
+@@ -48,6 +48,8 @@ def generate(name, lines):
+                 opts.append(data)
+             elif kind == 'arch':
+                 arch = data;
++            elif kind == 'kconfig':
++                pass # ignore
+             else:
+                 print("unknown:", kind)
+                 exit(1)

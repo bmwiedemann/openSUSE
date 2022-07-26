@@ -3102,4 +3102,41 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
     <comment></comment>
     <requestid>986230</requestid>
   </revision>
+  <revision rev="233" vrev="53">
+    <srcmd5>15d6310f7366b7903a47b5463d6e900b</srcmd5>
+    <version>7.0.0</version>
+    <time>1658857387</time>
+    <user>RBrownFactory</user>
+    <comment>- Substantial rework of the spec file: 
+  * the 'make check' testsuite now runs in the %check section of
+    the main package, not in a subpackage
+  * switched from %setup to %autosetup
+  * rearranged the content in order to minimize the use of %if,
+    %ifarch, etc
+
+- Properly fix bsc#1198038, CVE-2022-0216
+* Patches added:
+  scsi-lsi53c895a-really-fix-use-after-fre.patch
+  tests-qtest-Move-the-fuzz-tests-to-x86-o.patch
+
+- Make temp dir (for update_git.sh) configurable
+- Added new subpackages (audio-dbus, ui-dbus)
+- bsc#1199018 was never fixed in Factory's QEMU 6.2. It is
+  now (since the patches are already in SeaBIOS 1.16.0)
+- Some tests are having issues when run in OBS. They seem to be
+  due to race conditions, triggered by resource constraints of
+  OBS workers. Let's disable them for now, while looking for a fix
+- Update to v7.0.0. For full release notese, see:
+  * https://wiki.qemu.org/ChangeLog/7.0
+  Be sure to also check the following pages:
+  * https://qemu-project.gitlab.io/qemu/about/removed-features.html
+  * https://qemu-project.gitlab.io/qemu/about/deprecated.html
+  Some notable changes:
+  * [ARM] The virt board has gained a new control knob to disable passing a RNG seed in the DTB (dtb-kaslr-seed)
+  * [ARM] The AST2600 SoC now supports a dummy version of the i3c device
+  * [ARM] The virt board can now run guests with KVM on hosts with restricted IPA ranges
+  * [ARM] The virt board now supports virtio-mem-pci
+  * [ARM] The virt board now supports specifying the guest CPU topology</comment>
+    <requestid>990725</requestid>
+  </revision>
 </revisionlist>
