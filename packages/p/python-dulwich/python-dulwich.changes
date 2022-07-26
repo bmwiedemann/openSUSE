@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 25 20:57:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.45:
+ * Add basic ``dulwich.porcelain.submodule_list`` and ``dulwich.porcelain.submodule_add``
+ * Fix reading of chunks in server. (Jelmer Vernooĳ, #977)
+ * Support applying of URL rewriting using ``insteadOf`` / ``pushInsteadOf``.
+
+-------------------------------------------------------------------
 Sun Jun 19 18:33:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.43:

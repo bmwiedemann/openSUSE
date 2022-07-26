@@ -601,4 +601,15 @@
   * Drop caching of full HTTP response. Attempt #2.</comment>
     <requestid>983774</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>f013dbfeabb2faf18599455a9161364b</srcmd5>
+    <version>0.20.45</version>
+    <time>1658857329</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 0.20.45:
+ * Add basic ``dulwich.porcelain.submodule_list`` and ``dulwich.porcelain.submodule_add``
+ * Fix reading of chunks in server. (Jelmer Vernooĳ, #977)
+ * Support applying of URL rewriting using ``insteadOf`` / ``pushInsteadOf``.</comment>
+    <requestid>991149</requestid>
+  </revision>
 </revisionlist>
