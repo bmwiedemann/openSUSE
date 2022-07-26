@@ -166,4 +166,21 @@
     and DEBUG levels</comment>
     <requestid>954654</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>28e9650d1827c42812e74c3cd7b83f5b</srcmd5>
+    <version>2.1.0</version>
+    <time>1658857329</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 2.1.0:
+  * Output the Unicode table version when running the CLI with `--version`
+  * Re-use decoded buffer for single byte character sets
+  * Fixing some performance bottlenecks
+  * Workaround potential bug in cpython with Zero Width No-Break Space located
+  * in Arabic Presentation Forms-B, Unicode 1.1 not acknowledged as space
+  * CLI default threshold aligned with the API threshold from
+  * Support for Python 3.5 (PR #192)
+  * Use of backport unicodedata from `unicodedata2` as Python is quickly
+    catching up, scheduled for removal in 3.0</comment>
+    <requestid>991152</requestid>
+  </revision>
 </revisionlist>
