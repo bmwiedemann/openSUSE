@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 25 12:03:34 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 4.4.8:
+  * Set version checker to linphone.org instead of download.linphone.org
+  * Change priority on display name display based on caller address (instead of call logs)
+  * Update SDK
+  * Display terminated chat rooms and hide empty conferences.
+  * Version checker : fix on synchronization between version type and url.
+  * Update Changelog  Update SDK to prepare video conference and improve DTLS handshakes.
+  * Avoid openning a conversation on sip url and copy the URL into the smartsearchbar.
+  * Remove fallback displayname on logs and chat rooms.
+  * Fix running application detection for uninstalling.
+  * Update download state on automatic/manual file downloads.
+  * Fix premission denied when downloading file in secure chat room (SDK fix).
+- Fix some rpmlint failures.
+  * Create devel package for devel files.
+  * Remove RUNPATH settings from binaries.
+
+-------------------------------------------------------------------
 Wed Jun  8 03:08:22 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 4.4.5
 
 - Update to version 4.4.5:

@@ -18,7 +18,7 @@
 
 %define _name   linphone
 Name:           linphoneqt
-Version:        4.4.5
+Version:        4.4.8
 Release:        0
 Summary:        Qt interface for Linphone
 License:        GPL-3.0-or-later
@@ -31,6 +31,7 @@ Patch0:         linphoneqt-fix-no-git.patch
 # PATCH-FIX-OPENSUSE https://aur.archlinux.org/cgit/aur.git/plain/0002-remove-bc_compute_full_version-usage.patch?h=linphone-desktop
 Patch1:         linphoneqt-0002-remove-bc_compute_full_version-usage.patch
 BuildRequires:  Mesa-libGLESv2-devel
+BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -73,6 +74,14 @@ Protocol) to make calls, so it should be able to communicate with other
 SIP-based Web phones. With several codecs available, it can be used
 with high speed connections as well as 28k modems.
 
+%package -n %{_name}-devel
+Summary:        Web Phone
+Group:          Productivity/Telephony/SIP/Clients
+BuildArch:      noarch
+
+%description -n %{_name}-devel
+Devel package for %{_name}.
+
 %prep
 %autosetup -n %{_name}-desktop-%{version} -p1
 cp %{SOURCE1} linphone.appdata.xml
@@ -107,6 +116,8 @@ install -Dpm 0644 linphone.appdata.xml \
 rm %{buildroot}%{_bindir}/qt.conf
 chmod a-x %{buildroot}%{_datadir}/applications/linphone.desktop
 
+chrpath -d %{buildroot}%{_bindir}/linphone %{buildroot}%{_libdir}/libapp-plugin.so
+
 %files -n %{_name}
 %license LICENSE.txt
 %doc CHANGELOG.md README.md
@@ -117,6 +128,8 @@ chmod a-x %{buildroot}%{_datadir}/applications/linphone.desktop
 %{_datadir}/icons/hicolor/*/apps/linphone.*
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/org.linphone.appdata.xml
+
+%files -n %{_name}-devel
 %{_includedir}/LinphoneApp/
 
 %changelog
