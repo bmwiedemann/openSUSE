@@ -1,0 +1,73 @@
+From 898bd798e823e7708e4dbeb07955ae2ee17f925a Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Tue, 12 Jul 2022 17:10:18 +0200
+Subject: [PATCH] Drop wayland-client.h include
+Upstream: not sent
+References: https://build.opensuse.org/package/show/X11:Wayland/vulkan-loader comment from 2022-07-12
+
+wayland-client may be located outside the default search paths of the compiler
+toolchain. In other words, *any* user of wayland-client must use `pkg-config
+wayland-client --cflags` for compilation, and, later, `pkg-config
+wayland-client --libs` for linking.
+
+A Vulkan program that defines -DVK_USE_PLATFORM_WAYLAND_KHR would, in
+the general case, also call at least some Wayland functions. The
+build scripts for that program would have to employ `pkg-config
+wayland-client --cflags --libs` in any case, based simply on the use
+of said Wayland functions.
+
+Now, there is a corner case wherein the program defines
+VK_USE_PLATFORM_*, but does not make use of Wayland functions
+directly:
+
+	echo "#define VK_USE_PLATFORM_WAYLAND_KHR
+	#include <vulkan/vulkan.h>
+	int main() {return 0;}" | gcc -x c -
+
+"Should `pkg-config` be required for this?"
+
+One opinion is that the use of -DVK_USE_PLATFORM_WAYLAND_KHR is so
+explicitly willful that `pkg-config` is required.
+
+Another stance is that, since no Wayland header and no Wayland
+functions were directly used by the program, the program itself
+should not have to use `pkg-config`; responsibility to satisfy the
+"#include <wayland-client.h>" in vulkan.h would then fall to
+vulkan.pc, which would have to pull in wayland-client.pc. That on the
+other hand would pull in wayland for everyone, which is bad.
+
+Either way, I found the following option: Delete the include for
+which you would need wayland's -I flags. This works because we can
+just add forward declaration like "struct wl_display;" to
+vulkan_wayland.h. But we don't even need that. C (and C++) seem to be
+fine with undeclared names, e.g.
+
+	//no "struct T;"
+	struct S { struct T *t; }
+	void f(struct T *t) {}
+
+so I guess it's the solution, for now.
+
+Keep in mind that, as soon as a program uses Wayland functions (directly; not
+indirectly through vulkan), it needs to #include <wayland-client.h> anyway on
+its own, and then the pkg-config case from the first paragraph applies.
+
+---
+ include/vulkan/vulkan.h | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/include/vulkan/vulkan.h b/include/vulkan/vulkan.h
+index 004fa70..3510ac9 100644
+--- a/include/vulkan/vulkan.h
++++ b/include/vulkan/vulkan.h
+@@ -38,7 +38,6 @@
+ 
+ 
+ #ifdef VK_USE_PLATFORM_WAYLAND_KHR
+-#include <wayland-client.h>
+ #include "vulkan_wayland.h"
+ #endif
+ 
+-- 
+2.36.1
+
