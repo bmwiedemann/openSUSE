@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 25 08:02:16 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Replace toml library with tomli.
+
+-------------------------------------------------------------------
 Mon May  9 09:42:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Use python310 flavor explicitly, irrespective of the primary

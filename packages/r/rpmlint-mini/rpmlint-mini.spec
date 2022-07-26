@@ -40,7 +40,8 @@ BuildRequires:  %{python_flavor}-pybeam
 BuildRequires:  %{python_flavor}-pyenchant
 BuildRequires:  %{python_flavor}-pyxdg
 BuildRequires:  %{python_flavor}-rpm
-BuildRequires:  %{python_flavor}-toml
+BuildRequires:  %{python_flavor}-tomli
+BuildRequires:  %{python_flavor}-tomli-w
 BuildRequires:  %{python_flavor}-xml
 BuildRequires:  %{python_flavor}-zstandard
 BuildRequires:  dash
