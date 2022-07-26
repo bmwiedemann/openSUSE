@@ -22,4 +22,21 @@
   * feat: add support for Org files (forwarded request 986929 from jfkw)</comment>
     <requestid>987256</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f75df7ea17f8388a91bdc619fbc4ab90</srcmd5>
+    <version>2.20.1</version>
+    <time>1658857451</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 2.20.1:
+  * refactor: fix `IsPhrase` tests
+  * test: add tests for `IsPhrase`
+  * refactor: add missing `doc.go`
+  * fix: set action params
+  * fix: improve error message
+  * fix: check all error conditions
+  * Fix: Enable PIE mode
+  * Fix: Remove exec bit from docs
+  * docs: add Org support (forwarded request 990897 from jfkw)</comment>
+    <requestid>990899</requestid>
+  </revision>
 </revisionlist>

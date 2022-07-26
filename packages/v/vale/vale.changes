@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul 24 17:32:44 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 2.20.1:
+  * refactor: fix `IsPhrase` tests
+  * test: add tests for `IsPhrase`
+  * refactor: add missing `doc.go`
+  * fix: set action params
+  * fix: improve error message
+  * fix: check all error conditions
+  * Fix: Enable PIE mode
+  * Fix: Remove exec bit from docs
+  * docs: add Org support
+
+-------------------------------------------------------------------
 Tue Jul 05 23:31:58 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 2.20.0:
