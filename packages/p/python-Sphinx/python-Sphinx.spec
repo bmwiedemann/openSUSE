@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-Sphinx%{psuffix}
-Version:        5.0.2
+Version:        5.1.0
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -35,13 +35,15 @@ Group:          Development/Languages/Python
 URL:            http://sphinx-doc.org
 Source:         https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-%{version}.tar.gz
 Source1:        https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-%{version}.tar.gz.asc
-# Provide intersphinx inventory offline
-# https://docs.python.org/3/objects.inv#/python3.inv
+# Provide intersphinx inventory offline, run update-intersphinx.sh
+# https://docs.python.org/3/objects.inv
 Source2:        python3.inv
-# https://requests.readthedocs.io/en/stable/objects.inv#/requests.inv
+# https://requests.readthedocs.io/en/stable/objects.inv
 Source3:        requests.inv
-# https://docs.readthedocs.io/en/stable/objects.inv#/readthedocs.inv
+# https://docs.readthedocs.io/en/stable/objects.inv
 Source4:        readthedocs.inv
+Source5:        update-intersphinx.sh
+Source99:       python-Sphinx.keyring
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -167,6 +169,7 @@ Requires:       tex(ptmr.tfm)
 Requires:       tex(pzcmi.tfm)
 Requires:       tex(tabulary.sty)
 Requires:       tex(textcomp.sty)
+Requires:       tex(tgtermes.sty)
 Requires:       tex(threeparttable.sty)
 Requires:       tex(times.sty)
 Requires:       tex(titlesec.sty)
