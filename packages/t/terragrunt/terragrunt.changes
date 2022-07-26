@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 22 17:39:05 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.6:
+  * Add metadata to render-json output (#2199)
+  * Remove unused appveyor (#2194)
+
+-------------------------------------------------------------------
 Sat Jul 16 19:04:18 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.38.5:
