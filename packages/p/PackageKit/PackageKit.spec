@@ -281,7 +281,8 @@ This package provides the upstream default configuration for PackageKit.
         %{!?with_cnf:-Dbash_command_not_found=false} \
         %{!?with_offline_updates:-Doffline_update=false} \
         -Dcron=false \
-        -Dlocal_checkout=false
+        -Dlocal_checkout=false \
+        -Ddbus_sys=%{_datadir}/dbus-1/system.d
 %meson_build
 
 %install
@@ -376,7 +377,7 @@ fi
 %dir %{_libdir}/packagekit-backend
 %dir %{_usr}/lib/tmpfiles.d
 %{_datadir}/bash-completion/completions/pkcon
-%{_sysconfdir}/dbus-1/system.d/org.freedesktop.PackageKit.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.PackageKit.conf
 %{_bindir}/pkcon
 %{_bindir}/pkmon
 %{_libdir}/packagekit-backend/libpk_backend_dummy.so
