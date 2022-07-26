@@ -16,9 +16,9 @@
 #
 
 
-%define abiversion 16
+%define abiversion 17
 Name:           dcmtk
-Version:        3.6.6
+Version:        3.6.7
 Release:        0
 Summary:        DICOM Toolkit
 License:        BSD-3-Clause AND Apache-2.0
@@ -32,6 +32,8 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtiff-devel
+# Workaround for boo#1201799
+BuildRequires:  openjpeg2
 BuildRequires:  pkgconfig
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(icu-uc)
@@ -104,9 +106,9 @@ install -pm 0644 README %{buildroot}%{_docdir}/dcmtk/
 %files
 %license COPYRIGHT
 %doc CREDITS FAQ README
+%doc %{_docdir}/dcmtk/
 %config(noreplace) %{_sysconfdir}/dcmtk/*.cfg
 %dir %{_sysconfdir}/dcmtk
-%doc %{_docdir}/dcmtk/
 %{_bindir}/*
 %{_datadir}/dcmtk/
 %{_mandir}/man1/*
@@ -116,6 +118,7 @@ install -pm 0644 README %{buildroot}%{_docdir}/dcmtk/
 %{_includedir}/dcmtk/
 %{_libdir}/*.so
 %{_libdir}/cmake/dcmtk/
+%{_libdir}/pkgconfig/dcmtk.pc
 
 %files -n libdcmtk%{abiversion}
 %license COPYRIGHT

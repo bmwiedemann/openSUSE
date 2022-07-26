@@ -1,21 +1,31 @@
+From 6bb5b2b2865b4b57a80d5f801a43453918666d99 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Sat, 23 Jul 2022 09:21:38 +0200
+Subject: [PATCH] Don't add executables to exported CMake targets
+
+This prevents installing the devel package without requiring the dcmtk utilities.
+---
+ CMake/GenerateCMakeExports.cmake | 4 ++--
+ CMake/dcmtkMacros.cmake          | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
 diff --git a/CMake/GenerateCMakeExports.cmake b/CMake/GenerateCMakeExports.cmake
-index 9a9feb3..e13332a 100644
+index 4512624..11205e3 100644
 --- a/CMake/GenerateCMakeExports.cmake
 +++ b/CMake/GenerateCMakeExports.cmake
-@@ -15,8 +15,9 @@
- # DCMTKConfig.cmake will contain options used to build this DCMTK package
+@@ -18,8 +18,8 @@
+ file(WRITE "${CMAKE_BINARY_DIR}/DCMTKTargets.cmake" "")
  
  # Get and store all executable targets to DCMTKTargets.cmake within build's main dir
 -get_property(DCMTK_EXECUTABLE_TARGETS GLOBAL PROPERTY DCMTK_EXECUTABLE_TARGETS)
--export(TARGETS ${DCMTK_EXECUTABLE_TARGETS} FILE "${DCMTK_BUILD_CMKDIR}/DCMTKTargets.cmake")
-+## DO NOT TRACK EXECUTABLES, IT BREAKS usage of 'dcmtk-devel' without 'dcmtk' package
+-export(TARGETS ${DCMTK_EXECUTABLE_TARGETS} APPEND FILE "${CMAKE_BINARY_DIR}/DCMTKTargets.cmake" NAMESPACE DCMTK::)
 +#get_property(DCMTK_EXECUTABLE_TARGETS GLOBAL PROPERTY DCMTK_EXECUTABLE_TARGETS)
-+#export(TARGETS ${DCMTK_EXECUTABLE_TARGETS} FILE "${DCMTK_BUILD_CMKDIR}/DCMTKTargets.cmake")
++#export(TARGETS ${DCMTK_EXECUTABLE_TARGETS} APPEND FILE "${CMAKE_BINARY_DIR}/DCMTKTargets.cmake" NAMESPACE DCMTK::)
  
  # Get and store libraries to DCMTKTargets.cmake within the build's main dir
  get_property(DCMTK_LIBRARY_TARGETS GLOBAL PROPERTY DCMTK_LIBRARY_TARGETS)
 diff --git a/CMake/dcmtkMacros.cmake b/CMake/dcmtkMacros.cmake
-index db0cd51..3501818 100644
+index 6cbce0a..0844e58 100644
 --- a/CMake/dcmtkMacros.cmake
 +++ b/CMake/dcmtkMacros.cmake
 @@ -64,7 +64,7 @@ macro(DCMTK_ADD_EXECUTABLE PROGRAM)
@@ -27,3 +37,6 @@ index db0cd51..3501818 100644
                  COMPONENT bin
                  DESTINATION ${CMAKE_INSTALL_BINDIR})
      endif()
+-- 
+2.37.1
+
