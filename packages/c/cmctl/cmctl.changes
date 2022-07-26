@@ -1,4 +1,177 @@
 -------------------------------------------------------------------
+Fri Jul 22 15:37:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.9.0:
+  * When a CertificateSigningRequest using the SelfSigned issuer references a Secret which does not exist, return error, rather than marking the request as failed.
+  * TestManyPasswordLengths: pre-create password test cases outside of concurrent tests
+  * Update the approval e2e tests so that transient client request errors are retried, and correctly check the error returned is expected when appropriate.
+  * Adds on conflict retries to certificate state change in the SecretTemplate e2e test setups
+  * Adds on conflict retries to certificate state change in the additionaloutputformat e2e test setups
+  * update base images using ./hack/latest-base-images.sh
+  * Retry update on conflicts during SecretTemplate tests to avoid test flakes
+  * add missing target for $(BINDIR)
+  * make: cmctl and kubectl-cert_manager were using two -ldflags
+  * Use variable for curl, add retries
+  * updates bazel deps
+  * Adds unit tests for route53 access key ID secret validation
+  * Cleans up the logic for testing that the route53 dns access ID Key secret is valid
+  * Updates wording for aws rout53 dns CRD field comments
+  * check gatewayapi SHA256SUM
+  * use new darwin-arm64 versions of kubebuilder tools
+  * Change all scripts #!/bin/bash -> #!/usr/bin/env bash. Also changes same for Makefile SHELL
+  * Updates LICENSES
+  * Bump informerResyncPeriod
+  * Downgrade kube-openapi
+  * Bump versions of kubebuilder assets and kubectl
+  * Bump Helm dependency
+  * bump base images to latest available
+  * Bump k8s.io dependencies
+  * move legacy targets to legacy.mk
+  * add make-based upgrade test
+  * add warning about vendor-go gotcha
+  * make update-all & ensure bazel-only targets are runnable
+  * Runs ./hack/update-bazel.sh
+  * Removes support for networking/v1beta1 Ingress
+  * Increase Venafi issuer timeout on retrieving certificate
+  * fix name of command in example comment
+  * Don't require python to be installed for everything
+  * Add private key Ingress annotations to set private key properties for Certificate
+  * make verify_deps is now a no-op
+  * remove now-replaced tests from hack/BUILD.bazel
+  * update LICENSES file to new format
+  * add make verifier / updater for LICENSES
+  * add install for go-licenses
+  * move VENDORED_GO_VERSION up with other versions
+  * remove bazel tests which are run in make
+  * add CRD generation to makefile, replacing bazel
+  * add a make variant for codegen tools
+  * add extra info on how to fix when tools are missing
+  * bump version of k8s-codegen assets
+  * Increase ACME client HTTP timeout to 90s
+  * Remove timeouts in ACME logging middleware
+  * Incease issuer and clusterissuer controller timeouts
+  * Set static (Cluster)Issuers timeout to 90 seconds
+  * CertificateRequests controllers must wait for the core secrets informer to be synced
+  * timeouts proposal
+  * Don't include new bindir when generating bazel files
+  * add todo warning about using FULL images
+  * move commented out SHASUM generation to bottom of file
+  * move FORCE target to Makefile
+  * change name of bin dir to _bin by default and make it a variable
+  * change default shell to use /usr/bin/env
+  * Add revision history limit Ingress annotation to set field on the Certificate
+  * Code review feedback
+  * Bumps base images
+  * Fixing unit tests around SecretAccessKeyID pointers
+  * Changed SecretAccessKeyID member to pointer as it is optional and tagged omitempty. Added issuer tests for access key ID secret validation. Added issuer API validations for AccessKeyID/SecretAccessKeyID.
+  * fix(cmctl): typo
+  * update boilerplate headers
+  * add VerifyCredentials to Venafi issuers setup
+  * add target for publishing a release to GCS using rclone
+  * Updating and regenerating CRDs to make SecretAccessKeyID field usage more clear
+  * Update CRD documentation to be a bit clearer
+  * Reverts additional check for ServiceMonitor.
+  * Fixing typo in error message
+  * Enforce validation on either accessKeyID or accessKeyIDSecretRef being specified, but not both. Drop unneeded unit test
+  * Add unit test for testing access key ID secrets as well as priority when both accessKeyIDSecretRef and accessKeyID are specified
+  * Adds a couple comments and TODOs
+  * Default kube version for test kind cluster to 1.24
+  * Bumps kind to 0.14, use upstream kube 1.24 image
+  * add install for rclone
+  * prefix failed goimports files to make errors clearer
+  * Corrects the cert.spec.privateKey path in logs
+  * Clarifies the warning if private key cannot be regenerated, but spec has changed
+  * Corrects the --dns01-check-retry-period flag description
+  * Add support for pulling Route53/AWS access key IDs out of secrets
+  * Feature gated support for using literal subjects in `Certificate`s
+  * Removes check for Kubernetes 1.18 and 1.19
+  * Allows kind to choose API version for kubeadm Cluster config
+  * Remove kind config for kube 1.18 and 1.19
+  * Removes unused kind config
+  * Predefine what service IP range kind should use
+  * Removes 1.18 and 1.19 kind images
+  * Removes Gateway Kubernetes version check
+  * Removes installation of pre-kubernetes 1.19 compat ingress
+  * Removes the unused traefik and haproxy addons config
+  * Adding new line to the end helpers file
+  * Ensure that flags are actually passed to etcd
+  * add unsigned manifests target
+  * add alternative bindirs to gitignore in preparation for #5130
+  * Bump Go to 1.18
+  * Code review feedback
+  * add URL for cert-manager website to chart, update logo URL
+  * Adds design template
+  * Improve logging output for webhook cert renewal
+  * Adding link to the problem that has been identified in helm around sub charts and setting of namespaces
+  * Refactored the namespace override and moved it into helper script so it can be updated in single place, then found more files that needed the value updated
+  * update base images
+  * Added a namespace override so that the namespace where the services are deployed into can be set. Helpful when using this chart as a dependency (sub chart)
+  * Set the startupapicheck nodeSelector to linux
+  * Ensure that Venafi client for CSRs gets initialized with metrics
+  * Addressed code review feedback and simplified the unit-tests
+  * Don't fail when removing a non-existant tar
+  * Refactor the update and updateStatus to a single deferred function
+  * don't verify chart in ci-presubmit
+  * maintain a single source of truth for updating kind images
+  * use a version sort for proper version comparisons
+  * use command -v over which
+  * Improve "make help" output and add a couple of utility commands
+  * ignore bin directory in various verification scripts
+  * make verify-chart-version respect CTR in makefile
+  * Bumps Contour v1.20.0 -> v1.20.1
+  * Removes duplicated Gateway CRDs
+  * Fix CR approve/deny e2e test for kube 1.24
+  * Ensure that kube version can be modified
+  * Fix kube 1.24 image
+  * Wait for cluster-info to be available
+  * Cleanup + a couple TODOs
+  * Ensures Envoy ClusterIP is parameterized consistently
+  * Bumps kind v0.11.1 -> v0.12.0
+  * Remove leftover cainjector annotations from our CRDs
+  * Delete mask
+  * Allows creation of 1.24 kind cluster
+  * various README improvements for clarity and brevity
+  * Revert "Use Apply instead of Update to modify resources in tests"
+  * Test that the cleanup is performed
+  * Update minimum version constraint to be 1.19.0-0
+  * Add minimum kubernetes version constraint to chart
+  * Use a more reliable check for deletion
+  * Code review feedback
+  * ./hack/update-all.sh
+  * Integration tests use SSA instead of Update to update test resources
+  * e2e tests use SSA to update test resources
+  * certificates.Apply returns the patched certificate
+  * Use pngcrush -brute
+  * Add small logo
+  * Square the logo
+  * Mark venafi_client_request_duration_seconds metric as alpha
+  * Code review feedback
+  * Always save e2e test logs
+  * Remove finalizer duties from the scheduling function and update and expand the tests
+  * Set the finalizer as part of the Challenge Sync function
+  * Bump golang.org/x/crypto to v0.0.0-20220411220226-7b82a4e95df4
+  * update logo dimensions + add note about logo location and name
+  * Don't use --force option to install addons with helm
+  * Fix kind cluster creation with kube 1.19 and 1.18
+  * Cleanup
+  * Log Venafi API calls
+  * Adds Venafi metrics
+  * update tar command to trim paths for release manifests
+  * add helpful comment to tar commands
+  * update tar commands to trim paths for cmctl
+  * remove pkg/util/coverage
+  * also clean bazel folders with make clean
+  * bump base images
+  * Add a unit test for challenges reScheduler
+  * Fix the error is reported to null when it happens
+  * fix old logo location in helm chart
+  * Explicitly mount service-account-token in deployment
+  * Remove OWNERS from helm chart
+  * add cert manager blog details
+  * Clean up template
+  * Remove securityContext.enabled from helm chart
+
+-------------------------------------------------------------------
 Thu Jun 23 15:45:02 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.8.2:
