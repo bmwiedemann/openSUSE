@@ -52,6 +52,12 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(uuid)
+Requires:       libgfapi0 = %version
+Requires:       libgfchangelog0 = %version
+Requires:       libgfrpc0 = %version
+Requires:       libgfxdr0 = %version
+Requires:       libglusterd0 = %version
+Requires:       libglusterfs0 = %version
 %{?systemd_ordering}
 
 %description
