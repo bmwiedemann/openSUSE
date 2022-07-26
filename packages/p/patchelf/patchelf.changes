@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 22 22:13:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.0:
+  * Add --add-debug option
+  * Add O_BINARY flag when opening files to allow compilation for Windows
+  * Document --print-needed
+  * modifyRPath: return early if new and old rpath are empty
+  * Add comment explaining calculation for DT_MIPS_RLD_MAP_REL
+  * Add --no-sort option
+  * Handle DT_MIPS_XHASH and .MIPS.xhash  
+  
+-------------------------------------------------------------------
 Sun Mar 20 21:02:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.5:
