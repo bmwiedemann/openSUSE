@@ -3397,4 +3397,12 @@
     <comment>Fix build failure for gcc12 package that is blocking a staging project.</comment>
     <requestid>987363</requestid>
   </revision>
+  <revision rev="461" vrev="1">
+    <srcmd5>e549249900302d69505b63dddfc6b184</srcmd5>
+    <version>17.31.0</version>
+    <time>1658857352</time>
+    <user>RBrownFactory</user>
+    <comment>Softwarestack update</comment>
+    <requestid>990959</requestid>
+  </revision>
 </revisionlist>
