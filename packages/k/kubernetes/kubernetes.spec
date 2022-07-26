@@ -39,7 +39,7 @@ License:        Apache-2.0
 Group:          System/Management
 URL:            http://kubernetes.io
 Source:         README.packaging
-ExcludeArch:    %{ix86} s390 ppc64
+ExcludeArch:    %{ix86} s390 ppc64 %arm
 
 %description
 Kubernetes is a system for automating deployment, scaling, and

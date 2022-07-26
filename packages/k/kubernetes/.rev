@@ -794,4 +794,12 @@
     <comment>- Bump kubernetes-* to 1.24.3, *-minus1 to 1.23.9</comment>
     <requestid>990651</requestid>
   </revision>
+  <revision rev="86" vrev="26">
+    <srcmd5>a33e0f0afd108b6d1def0dc0500ce5d7</srcmd5>
+    <version>unknown</version>
+    <time>1658857526</time>
+    <user>RBrownFactory</user>
+    <comment>- Exclude 32-bit arm (forwarded request 991014 from Guillaume_G)</comment>
+    <requestid>991190</requestid>
+  </revision>
 </revisionlist>

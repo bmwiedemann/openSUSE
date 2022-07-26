@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 25 11:53:17 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Exclude 32-bit arm
+
+-------------------------------------------------------------------
 Fri Jul 22 09:15:35 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Bump kubernetes-* to 1.24.3, *-minus1 to 1.23.9
