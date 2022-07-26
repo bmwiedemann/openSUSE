@@ -17,14 +17,14 @@
 
 
 %define maj_version 3.7
-%define min_version 0.8
+%define min_version 0.10
 Name:           povray
 Version:        %{maj_version}.%{min_version}
 Release:        0
 Summary:        Persistence of Vision Raytracer
 License:        AGPL-3.0-or-later AND CC-BY-SA-3.0
 Group:          Productivity/Graphics/Visualization/Raytracers
-URL:            http://www.povray.org
+URL:            https://www.povray.org/
 Source:         https://github.com/POV-Ray/povray/archive/v%{version}.tar.gz
 Patch1:         povray-3.6.9.7-ini.patch
 Patch2:         povray-3.6.9.7-fix.patch
@@ -39,6 +39,7 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(sdl)
@@ -112,7 +113,7 @@ chmod 755 %{buildroot}%{_datadir}/povray-%{maj_version}/scenes/camera/mesh_camer
 %config(noreplace) %{_sysconfdir}/%{name}/%{maj_version}/%{name}.*
 %{_bindir}/povray
 %{_datadir}/povray-%{maj_version}
-%{_mandir}/man1/povray.1*
+%{_mandir}/man1/povray.1%{?ext_man}
 %exclude %{_defaultdocdir}/povray/html
 
 %files doc
