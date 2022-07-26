@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 25 06:07:23 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid OOM
+
+-------------------------------------------------------------------
 Wed Jul 20 01:34:11 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - limit to only Tier 1 support arches

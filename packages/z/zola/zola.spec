@@ -25,11 +25,11 @@ URL:            https://github.com/getzola/zola
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        cargo_config
+BuildRequires:  c++_compiler
+BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  libgcc_s1
 BuildRequires:  pkg-config
-BuildRequires:  c++_compiler
-BuildRequires:  c_compiler
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description

@@ -7,4 +7,12 @@
     <comment>I want to maintain zola in openSUSE:Factory</comment>
     <requestid>990426</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>62aabf247831c9b39fa301a8fe6c1ca5</srcmd5>
+    <version>0.16.0</version>
+    <time>1658857506</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991049</requestid>
+  </revision>
 </revisionlist>
