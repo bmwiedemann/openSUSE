@@ -1,6 +1,6 @@
-diff -Nru oci-cli-3.10.5.orig/requirements.txt oci-cli-3.10.5/requirements.txt
---- oci-cli-3.10.5.orig/requirements.txt	2022-06-28 21:38:46.000000000 +0200
-+++ oci-cli-3.10.5/requirements.txt	2022-07-01 13:29:18.948566781 +0200
+diff -Nru oci-cli-3.11.1.orig/requirements.txt oci-cli-3.11.1/requirements.txt
+--- oci-cli-3.11.1.orig/requirements.txt	2022-07-19 20:42:32.000000000 +0200
++++ oci-cli-3.11.1/requirements.txt	2022-07-25 12:32:55.483644162 +0200
 @@ -2,41 +2,41 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
@@ -12,18 +12,18 @@ diff -Nru oci-cli-3.10.5.orig/requirements.txt oci-cli-3.10.5/requirements.txt
  cffi>=1.9.1
 -click==7.1.2
 -coverage==4.5.2
--cryptography==3.3.2
+-cryptography>=3.2.1,<=37.0.2
 -httpsig-cffi==15.0.0
 -Jinja2==3.0.3
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.73.0
+-oci==2.75.1
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.10.0
 -pyasn1==0.2.3
--pyOpenSSL==19.1.0
+-pyOpenSSL>=17.5.0,<=22.0.0
 -pycparser==2.20
 -pyparsing==2.2.0
 -pytest==3.2.3
@@ -31,18 +31,18 @@ diff -Nru oci-cli-3.10.5.orig/requirements.txt oci-cli-3.10.5/requirements.txt
 -python-dateutil>=2.5.3,<3.0.0
 +click>=7.1.2
 +coverage>=4.5.2
-+cryptography>=3.3.2
++cryptography>=3.2.1
 +httpsig-cffi>=15.0.0
 +Jinja2>=3.0.3
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.73.0
++oci>=2.75.1
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.10.0
 +pyasn1>=0.2.3
-+pyOpenSSL>=19.1.0
++pyOpenSSL>=17.5.0
 +pycparser>=2.20
 +pyparsing>=2.2.0
 +pytest>=3.2.3
@@ -75,3 +75,40 @@ diff -Nru oci-cli-3.10.5.orig/requirements.txt oci-cli-3.10.5/requirements.txt
 +PyYAML>=5.4
 +docutils>=0.15.2
 +prompt-toolkit>=3.0.29
+diff -Nru oci-cli-3.11.1.orig/setup.py oci-cli-3.11.1/setup.py
+--- oci-cli-3.11.1.orig/setup.py	2022-07-19 20:42:32.000000000 +0200
++++ oci-cli-3.11.1/setup.py	2022-07-25 12:33:22.695846917 +0200
+@@ -29,23 +29,23 @@
+     readme = f.read()
+ 
+ requires = [
+-    'oci==2.75.1',
++    'oci>=2.75.1',
+     'arrow>=1.0.0',
+     'certifi',
+-    'click==7.1.2',
+-    'cryptography>=3.2.1,<=37.0.2',
+-    'jmespath==0.10.0',
+-    'python-dateutil>=2.5.3,<3.0.0',
++    'click>=7.1.2',
++    'cryptography>=3.2.1',
++    'jmespath>=0.10.0',
++    'python-dateutil>=2.5.3',
+     'pytz>=2016.10',
+     'six>=1.15.0',
+-    'terminaltables==3.1.0',
+-    'pyOpenSSL>=17.5.0,<=22.0.0',
+-    'PyYAML>=5.4,<6',
+-    'prompt-toolkit==3.0.29'
++    'terminaltables>=3.1.0',
++    'pyOpenSSL>=17.5.0',
++    'PyYAML>=5.4',
++    'prompt-toolkit>=3.0.29'
+ ]
+ 
+ extras = {
+-    'db': ['cx_Oracle==8.3']
++    'db': ['cx_Oracle>=8.3']
+ }
+ 
+ fips_libcrypto_file = os.getenv("OCI_CLI_FIPS_LIBCRYPTO_FILE")
