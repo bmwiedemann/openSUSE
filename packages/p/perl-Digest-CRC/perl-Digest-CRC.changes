@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 13 03:06:56 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.24
+   see /usr/share/doc/packages/perl-Digest-CRC/Changes
+
+
+  0.24  Tue Jul 12 12:42:41 2021
+            - fixed issue with clone-method and addfile
+              Thanks to Dirk Joos <dirk@tdmail.de>
+
+-------------------------------------------------------------------
 Fri Apr 16 03:06:48 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.23
