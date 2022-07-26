@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 22 21:56:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.3:
+  * security fix for lossless encoder (#565, chromium:1313709)
+  * improved progress granularity in WebPReportProgress() when using lossless
+  * improved precision in Sharp YUV (-sharp_yuv) conversion
+  * many corrections to webp-lossless-bitstream-spec.txt (#551)
+  * crash/leak fixes on error/OOM and other bug fixes (#558, #563, #569, #573)
+
+-------------------------------------------------------------------
 Mon Jan 31 20:22:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.2:
