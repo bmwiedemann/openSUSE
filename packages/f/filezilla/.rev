@@ -941,4 +941,12 @@
 - add disable-avx-on-i586.patch to disable avx on 32bit platforms</comment>
     <requestid>982630</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>53460c53a907cff07b2ec328bc5be554</srcmd5>
+    <version>3.60.2</version>
+    <time>1658857426</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990818</requestid>
+  </revision>
 </revisionlist>

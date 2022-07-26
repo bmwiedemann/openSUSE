@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 23 14:10:54 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.60.2
+  * Bugfixes and minor changes:
+    - Updated to libfilezilla 0.38.1 to address an issue with child
+      process termination resulting in freezes
+
+-------------------------------------------------------------------
 Tue Jun 14 13:30:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.60.1:
