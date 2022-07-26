@@ -1,4 +1,482 @@
 -------------------------------------------------------------------
+Thu Jul 21 07:52:04 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-11.0.16+8 (July 2022 CPU)
+  * Security fixes:
+    + JDK-8272243: Improve DER parsing
+    + JDK-8272249: Better properties of loaded Properties
+    + JDK-8277608: Address IP Addressing
+    + JDK-8281859, CVE-2022-21540, bsc#1201694: Improve class
+      compilation
+    + JDK-8281866, CVE-2022-21541, bsc#1201692: Enhance
+      MethodHandle invocations
+    + JDK-8283190: Improve MIDI processing
+    + JDK-8284370: Improve zlib usage
+    + JDK-8285407, CVE-2022-34169, bsc#1201684: Improve Xalan
+      supports
+  * Other fixes:
+    + JDK-6986863: ProfileDeferralMgr throwing
+      ConcurrentModificationException
+    + JDK-7124293: [macosx] VoiceOver reads percentages rather than
+      the actual values for sliders.
+    + JDK-7124301: [macosx] When in a tab group if you arrow
+      between tabs there are no VoiceOver announcements.
+    + JDK-8133713: [macosx] Accessible JTables always reported as
+      empty
+    + JDK-8139046: Compiler Control: IGVPrintLevel directive should
+      set PrintIdealGraph
+    + JDK-8139173: [macosx] JInternalFrame shadow is not properly
+      drawn
+    + JDK-8163498: Many long-running security libs tests
+    + JDK-8166727: javac crashed: [jimage.dll+0x1942]
+      ImageStrings::find+0x28
+    + JDK-8169004: Fix redundant @requires tags in tests
+    + JDK-8181571: printing to CUPS fails on mac sandbox app
+    + JDK-8182404: remove jdk.testlibrary.JDKToolFinder and
+      JDKToolLauncher
+    + JDK-8186548: move jdk.testlibrary.JcmdBase closer to tests
+    + JDK-8192057: com/sun/jdi/BadHandshakeTest.java fails with
+      java.net.ConnectException
+    + JDK-8193682: Infinite loop in ZipOutputStream.close()
+    + JDK-8199874: [TESTBUG] runtime/Thread/ThreadPriorities.java
+      fails with "expected 0 to equal 10"
+    + JDK-8202886: [macos] Test java/awt/MenuBar/8007006/
+      /bug8007006.java fails on MacOS
+    + JDK-8203238: [TESTBUG] rewrite MemOptions shell test in Java
+    + JDK-8203239: [TESTBUG] remove vmTestbase/vm/gc/kind/parOld
+      test
+    + JDK-8206187: javax/management/remote/mandatory/connection/
+      /DefaultAgentFilterTest.java fails with Port already in use
+    + JDK-8206330: Revisit com/sun/jdi/RedefineCrossEvent.java
+    + JDK-8207364: nsk/jvmti/ResourceExhausted/resexhausted003
+      fails to start
+    + JDK-8208207: Test nsk/stress/jni/gclocker/gcl001 fails after
+      co-location
+    + JDK-8208246: flags duplications in
+      vmTestbase_vm_g1classunloading tests
+    + JDK-8208249: TriggerUnloadingByFillingMetaspace generates
+      garbage class names
+    + JDK-8208697: vmTestbase/metaspace/stressHierarchy/
+      /stressHierarchy012/TestDescription.java fails with
+      OutOfMemoryError: Metaspace
+    + JDK-8209150: [TESTBUG] Add logging to verify JDK-8197901 to a
+      different test
+    + JDK-8209776: Refactor jdk/security/JavaDotSecurity/ifdefs.sh
+      to plain java test
+    + JDK-8209883: ZGC: Compile without C1 broken
+    + JDK-8209920: runtime/logging/RedefineClasses.java fail with
+      OOME with ZGC
+    + JDK-8210022: remove jdk.testlibrary.ProcessThread, TestThread
+      and XRun
+    + JDK-8210039: move OSInfo to top level testlibrary
+    + JDK-8210108: sun/tools/jstatd test build failures after
+      JDK-8210022
+    + JDK-8210112: remove jdk.testlibrary.ProcessTools
+    + JDK-8210649: AssertionError @
+      jdk.compiler/com.sun.tools.javac.comp.Modules.enter
+      (Modules.java:244)
+    + JDK-8210732: remove jdk.testlibrary.Utils
+    + JDK-8211795: ArrayIndexOutOfBoundsException in PNGImageReader
+      after JDK-6788458
+    + JDK-8211822: Some tests fail after JDK-8210039
+    + JDK-8211962: Implicit narrowing in MacOSX java.desktop jsound
+    + JDK-8212151: jdi/ExclusiveBind.java times out due to "bind
+      failed: Address already in use" on Solaris-X64
+    + JDK-8213440: Lingering INCLUDE_ALL_GCS in
+      test_oopStorage_parperf.cpp
+    + JDK-8214275: CondyRepeatFailedResolution asserts "Dynamic
+      constant has no fixed basic type"
+    + JDK-8214799: Add package declaration to each JTREG test case
+      in the gc folder
+    + JDK-8215544: SA: Modify ClhsdbLauncher to add sudo privileges
+      to enable MacOS tests on Mach5
+    + JDK-8216137: assert(Compile::current()->live_nodes() <
+      Compile::current()->max_node_limit()) failed: Live Node limit
+      exceeded limit
+    + JDK-8216265: [testbug] Introduce
+      Platform.sharedLibraryPathVariableName() and adapt all tests.
+    + JDK-8217017: [TESTBUG] Tests fail to compile after JDK-8216265
+    + JDK-8217233: Update build settings for AIX/xlc
+    + JDK-8217340: Compilation failed:
+      tools/launcher/Test7029048.java
+    + JDK-8217473: SA: Tests using ClhsdbLauncher fail on SAP
+      docker containers
+    + JDK-8218136: minor hotspot adjustments for xlclang++ from
+      xlc16 on AIX
+    + JDK-8218751: Do not store original classfiles inside the CDS
+      archive
+    + JDK-8218965: aix:  support xlclang++ in the compiler detection
+    + JDK-8220658: Improve the readability of container information
+      in the error log
+    + JDK-8220813: update hotspot tier1_gc tests depending on GC to
+      use @requires vm.gc.X
+    + JDK-8222799: java.beans.Introspector uses an obsolete methods
+      cache
+    + JDK-8222926: Shenandoah build fails with
+      --with-jvm-features=-compiler1
+    + JDK-8223143: Restructure/clean-up for 'loopexit_or_null()'.
+    + JDK-8223363: Bad node estimate assertion failure
+    + JDK-8223502: Node estimate for loop unswitching is not
+      correct: assert(delta <= 2 * required) failed: Bad node estimate
+    + JDK-8224648: assert(!exceeding_node_budget()) failed: Too
+      many NODES required! failure with ctw
+    + JDK-8223389: Shenandoah optimizations fail with
+      assert(!phase->exceeding_node_budget())
+    + JDK-8223396: [TESTBUG] several jfr tests do not clean up
+      files created in /tmp
+    + JDK-8225475: Node budget asserts on x86_32/64
+    + JDK-8227171: provide function names in native stack trace on
+      aix with xlc16
+    + JDK-8227389: Remove unsupported xlc16 compile options on aix
+    + JDK-8229210: [TESTBUG] Move gc stress tests from JFR
+      directory tree to gc/stress
+    + JDK-8229486: Replace wildcard address with loopback or local
+      host in tests - part 21
+    + JDK-8229499: Node budget assert in fuzzed test
+    + JDK-8230305: Cgroups v2: Container awareness
+    + JDK-8229202: Docker reporting causes secondary crashes in
+      error handling
+    + JDK-8216366: Add rationale to PER_CPU_SHARES define
+    + JDK-8230865: [TESTBUG] jdk/jfr/event/io/EvilInstrument.java
+      fails at-run shell MakeJAR.sh target
+    + JDK-8231111: Cgroups v2: Rework Metrics in java.base so as to
+      recognize unified hierarchy
+    + JDK-8231454: File lock in Windows on a loaded jar due to a
+      leak in Introspector::getBeanInfo
+    + JDK-8231489: GC watermark_0_1 failed due to
+      "metaspace.gc.Fault: GC has happened too rare"
+    + JDK-8231565: More node budget asserts in fuzzed tests
+    + JDK-8233551: [TESTBUG] SelectEditTableCell.java fails on MacOS
+    + JDK-8234382: Test tools/javac/processing/model/
+      /testgetallmembers/Main.java using too small heap
+    + JDK-8234605: C2 failed "assert(C->live_nodes() -
+      live_at_begin <= 2 * _nodes_required) failed: Bad node
+      estimate: actual = 208 >> request = 101"
+    + JDK-8234608: [TESTBUG] Fix G1 redefineClasses tests and a
+      memory leak
+    + JDK-8235220: ClhsdbScanOops.java fails with
+      sun.jvm.hotspot.types.WrongTypeException
+    + JDK-8235385: Crash on aarch64 JDK due to long offset
+    + JDK-8237479: 8230305 causes slowdebug build failure
+    + JDK-8239559: Cgroups: Incorrect detection logic on some
+      systems
+    + JDK-8239785: Cgroups: Incorrect detection logic on old
+      systems in hotspot
+    + JDK-8240132: ProblemList com/sun/jdi/InvokeHangTest.java
+    + JDK-8240189: [TESTBUG] Some cgroup tests are failing after
+      JDK-8231111
+    + JDK-8240335: C2: assert(found_sfpt) failed: no node in loop
+      that's not input to safepoint
+    + JDK-8240734: ModuleHashes attribute not reproducible between
+      builds
+    + JDK-8240756: [macos] SwingSet2:TableDemo:Printed Japanese
+      characters were garbled
+    + JDK-8241707: introduce randomness k/w to hotspot test suite
+    + JDK-8242310: use reproducible random in hotspot compiler tests
+    + JDK-8242311: use reproducible random in hotspot runtime tests
+    + JDK-8242312: use reproducible random in hotspot gc tests
+    + JDK-8242313: use reproducible random in hotspot svc tests
+    + JDK-8242538: java/security/SecureRandom/ThreadSafe.java
+      failed on windows
+    + JDK-8243429: use reproducible random in :vmTestbase_nsk_stress
+    + JDK-8243666: ModuleHashes attribute generated for JMOD and
+      JAR files depends on timestamps
+    + JDK-8244500: jtreg test error in test/hotspot/jtreg/
+      /containers/docker/TestMemoryAwareness.java
+    + JDK-8244602: Add JTREG_REPEAT_COUNT to repeat execution of a
+      test
+    + JDK-8245543: Cgroups: Incorrect detection logic on some
+      systems (still reproducible)
+    + JDK-8245938: Remove unused print_stack(void) method from
+      XToolkit.c
+    + JDK-8246494: introduce vm.flagless at-requires property
+    + JDK-8246741: NetworkInterface/UniqueMacAddressesTest: mac
+      address uniqueness test failed
+    + JDK-8247589: Implementation of Alpine Linux/x64 Port
+    + JDK-8247591: Document Alpine Linux build steps in OpenJDK
+      build guide
+    + JDK-8247592: refactor test/jdk/tools/launcher/Test7029048.java
+    + JDK-8247614: java/nio/channels/DatagramChannel/Connect.java
+      timed out
+    + JDK-8248876: LoadObject with bad base address created for
+      exec file on linux
+    + JDK-8249592: Robot.mouseMove moves cursor to incorrect
+      location when display scale varies and Java runs in DPI
+      Unaware mode
+    + JDK-8252117: com/sun/jdi/BadHandshakeTest.java failed with
+      "ConnectException: Connection refused: connect"
+    + JDK-8252248: __SIGRTMAX is not declared in musl libc
+    + JDK-8252250: isnanf is obsolete
+    + JDK-8252359: HotSpot Not Identifying it is Running in a
+      Container
+    + JDK-8252957: Wrong comment in CgroupV1Subsystem::cpu_quota
+    + JDK-8253435: Cgroup: 'stomping of _mount_path' crash if
+      manually mounted cpusets exist
+    + JDK-8253714: [cgroups v2] Soft memory limit incorrectly using
+      memory.high
+    + JDK-8253727: [cgroups v2] Memory and swap limits reported
+      incorrectly
+    + JDK-8253797: [cgroups v2] Account for the fact that swap
+      accounting is disabled on some systems
+    + JDK-8253872: ArgumentHandler must use the same delimiters as
+      in jvmti_tools.cpp
+    + JDK-8253939: [TESTBUG] Increase coverage of the cgroups
+      detection code
+    + JDK-8254001: [Metrics] Enhance parsing of cgroup interface
+      files for version detection
+    + JDK-8254887: C2: assert(cl->trip_count() > 0) failed: peeling
+      a fully unrolled loop
+    + JDK-8254997: Remove unimplemented
+      OSContainer::read_memory_limit_in_bytes
+    + JDK-8255266: Update Public Suffix List to 3c213aa
+    + JDK-8255604: java/nio/channels/DatagramChannel/Connect.java
+      fails with java.net.BindException: Cannot assign requested
+      address: connect
+    + JDK-8255787: Tag container tests that use cGroups with
+      cgroups keyword
+    + JDK-8256146: Cleanup test/jdk/java/nio/channels/
+      /DatagramChannel/Connect.java
+    + JDK-8256722: handle VC++:1927 VS2019 in  abstract_vm_version
+    + JDK-8257794: Zero: assert(istate->_stack_limit ==
+      istate->_thread->last_Java_sp() + 1) failed: wrong on
+      Linux/x86_32
+    + JDK-8258795: Update IANA Language Subtag Registry to Version
+      2021-05-11
+    + JDK-8258956: Memory Leak in StringCoding on ThreadLocal
+      resultCached StringCoding.Result
+    + JDK-8259517: Incorrect test path in test cases
+    + JDK-8260518: Change default -mmacosx-version-min to 10.12
+    + JDK-8261169: Upgrade HarfBuzz to the latest 2.8.0
+    + JDK-8262379: Add regression test for JDK-8257746
+    + JDK-8263364: sun/net/www/http/KeepAliveStream/
+      /KeepAliveStreamCloseWithWrongContentLength.java wedged in
+      getInputStream
+    + JDK-8263718: unused-result warning happens at os_linux.cpp
+    + JDK-8263856: Github Actions for macos/aarch64 cross-build
+    + JDK-8264179: [TESTBUG] Some compiler tests fail when running
+      without C2
+    + JDK-8265261: java/nio/file/Files/InterruptCopy.java fails
+      with java.lang.RuntimeException: Copy was not interrupted
+    + JDK-8265297: javax/net/ssl/SSLSession/
+      /TestEnabledProtocols.java failed with "RuntimeException:
+      java.net.SocketException: Connection reset"
+    + JDK-8265343: Update Debian-based cross-compilation recipes
+    + JDK-8266251: compiler.inlining.InlineAccessors shouldn't do
+      testing in driver VM
+    + JDK-8266318: Switch to macos prefix for macOS bundles
+    + JDK-8266391: Replace use of reflection in
+      jdk.internal.platform.Metrics
+    + JDK-8266545: 8261169 broke Harfbuzz build with gcc 7 and 8
+    + JDK-8268773: Improvements related to: Failed to start thread
+      - pthread_create failed (EAGAIN)
+    + JDK-8269772: [macos-aarch64] test compilation failed with
+      "SocketException: No buffer space available"
+    + JDK-8269933: test/jdk/javax/net/ssl/compatibility/JdkInfo
+      incorrect verification of protocol and cipher support
+    + JDK-8270797: ShortECDSA.java test is not complete
+    + JDK-8271055: Crash during deoptimization with
+      "assert(bb->is_reachable()) failed: getting result from
+      unreachable basicblock" with -XX:+VerifyStack
+    + JDK-8271199: Mutual TLS handshake fails signing client
+      certificate with custom sensitive PKCS11 key
+    + JDK-8272167: AbsPathsInImage.java should skip *.dSYM
+      directories
+    + JDK-8272358: Some tests may fail when executed with other
+      locales than the US
+    + JDK-8272493: Suboptimal code generation around
+      Preconditions.checkIndex intrinsic with AVX2
+    + JDK-8272908: Missing coverage for certain classes in
+      com.sun.org.apache.xml.internal.security
+    + JDK-8272964: java/nio/file/Files/InterruptCopy.java fails
+      with java.lang.RuntimeException: Copy was not interrupted
+    + JDK-8273176: handle latest VS2019 in abstract_vm_version
+    + JDK-8273655: content-types.properties files are missing some
+      common types
+    + JDK-8274171: java/nio/file/Files/probeContentType/Basic.java
+      failed on "Content type" mismatches
+    + JDK-8274233: Minor cleanup for ToolBox
+    + JDK-8274735: javax.imageio.IIOException: Unsupported Image
+      Type while processing a valid JPEG image
+    + JDK-8274751: Drag And Drop hangs on Windows
+    + JDK-8275082: Update XML Security for Java to 2.3.0
+    + JDK-8275330: C2:  assert(n->is_Root() || n->is_Region() ||
+      n->is_Phi() || n->is_MachMerge() ||
+      def_block->dominates(block)) failed: uses must be dominated
+      by definitions
+    + JDK-8275337: C1: assert(false) failed: live_in set of first
+      block must be empty
+    + JDK-8276657: XSLT compiler tries to define a class with empty
+      name
+    + JDK-8276990: Memory leak in invoker.c fillInvokeRequest()
+      during JDI operations
+    + JDK-8277072: ObjectStreamClass caches keep ClassLoaders alive
+    + JDK-8277093: Vector should throw ClassNotFoundException for a
+      missing class of an element
+    + JDK-8277396: [TESTBUG] In DefaultButtonModelCrashTest.java,
+      frame is accessed from main thread
+    + JDK-8277422: tools/jar/JarEntryTime.java fails with modified
+      time mismatch
+    + JDK-8277922: Unable to click JCheckBox in JTable through Java
+      Access Bridge
+    + JDK-8278065: Refactor subclassAudits to use ClassValue
+    + JDK-8278186: org.jcp.xml.dsig.internal.dom.Utils
+      .parseIdFromSameDocumentURI throws
+      StringIndexOutOfBoundsException when calling substring method
+    + JDK-8278346: java/nio/file/Files/probeContentType/Basic.java
+      fails on Linux SLES15 machine
+    + JDK-8278472: Invalid value set to CANDIDATEFORM structure
+    + JDK-8278794: Infinite loop in DeflaterOutputStream.finish()
+    + JDK-8278851: Correct signer logic for jars signed with
+      multiple digestalgs
+    + JDK-8278951: containers/cgroup/PlainRead.java fails on Ubuntu
+      21.10
+    + JDK-8279219: [REDO] C2 crash when allocating array of size
+      too large
+    + JDK-8279356: Method linking fails with
+      guarantee(mh->adapter() != NULL) failed: Adapter blob must
+      already exist!
+    + JDK-8279505: Update documentation for RETRY_COUNT and
+      REPEAT_COUNT
+    + JDK-8279520: SPNEGO has not passed channel binding info into
+      the underlying mechanism
+    + JDK-8279529: ProblemList java/nio/channels/DatagramChannel/
+      /ManySourcesAndTargets.java on macosx-aarch64
+    + JDK-8279532: ProblemList sun/security/ssl/SSLSessionImpl/
+      /NoInvalidateSocketException.java
+    + JDK-8279668: x86: AVX2 versions of vpxor should be asserted
+    + JDK-8279837: C2: assert(is_Loop()) failed: invalid node
+      class: Region
+    + JDK-8279842: HTTPS Channel Binding support for Java
+      GSS/Kerberos
+    + JDK-8279958: Provide configure hints for Alpine/apk package
+      managers
+    + JDK-8280041: Retry loop issues in java.io.ClassCache
+    + JDK-8280373: Update Xalan serializer / SystemIDResolver to
+      align with JDK-8270492
+    + JDK-8280476: [macOS] : hotspot arm64 bug exposed by latest
+      clang
+    + JDK-8280684: JfrRecorderService failes with
+      guarantee(num_written > 0) when no space left on device.
+    + JDK-8280799: С2: assert(false) failed: cyclic dependency
+      prevents range check elimination
+    + JDK-8280867: Cpuid1Ecx feature parsing is incorrect for AMD
+      CPUs
+    + JDK-8280964: [Linux aarch64] : drawImage dithers
+      TYPE_BYTE_INDEXED images incorrectly
+    + JDK-8281274: deal with ActiveProcessorCount in
+      os::Linux::print_container_info
+    + JDK-8281275: Upgrading from 8 to 11 no longer accepts '/' as
+      filepath separator in gc paths
+    + JDK-8281615: Deadlock caused by jdwp agent
+    + JDK-8281811: assert(_base == Tuple) failed: Not a Tuple after
+      JDK-8280799
+    + JDK-8282008: Incorrect handling of quoted arguments in
+      ProcessBuilder
+    + JDK-8282172: CompileBroker::log_metaspace_failure is called
+      from non-Java/compiler threads
+    + JDK-8282225: GHA: Allow one concurrent run per PR only
+    + JDK-8282231: x86-32: runtime call to SharedRuntime::ldiv
+      corrupts registers
+    + JDK-8282293: Domain value for system property
+      jdk.https.negotiate.cbt should be case-insensitive
+    + JDK-8282312: Minor corrections to evbroadcasti32x4 intrinsic
+      on x86
+    + JDK-8282382: Report glibc malloc tunables in error reports
+    + JDK-8282422: JTable.print() failed with
+      UnsupportedCharsetException on AIX ko_KR locale
+    + JDK-8282501: Bump update version for OpenJDK: jdk-11.0.16
+    + JDK-8282583: Update BCEL md to include the copyright notice
+    + JDK-8282588: [11] set harfbuzz compilation flag to -std=c++11
+    + JDK-8282589: runtime/ErrorHandling/ErrorHandler.java fails on
+      MacOS aarch64 in jdk 11
+    + JDK-8282887: Potential memory leak in sun.util.locale.provider
+     .HostLocaleProviderAdapterImpl.getNumberPattern() on Windows
+    + JDK-8283018: 11u GHA: Update GCC 9 minor versions
+    + JDK-8283217: Leak FcObjectSet in getFontConfigLocations() in
+      fontpath.c
+    + JDK-8283323: libharfbuzz optimization level results in
+      extreme build times
+    + JDK-8283350: (tz) Update Timezone Data to 2022a
+    + JDK-8283408: Fix a C2 crash when filling arrays with unsafe
+    + JDK-8283420: [AOT] Exclude TrackedFlagTest/NotTrackedFlagTest
+      in 11u because of intermittent java.lang.AssertionError:
+      duplicate classes for name Ljava/lang/Boolean;
+    + JDK-8283424: compiler/loopopts/
+      /LoopUnswitchingBadNodeBudget.java fails with release VMs due
+      to lack of -XX:+UnlockDiagnosticVMOptions
+    + JDK-8283451: C2: assert(_base == Long) failed: Not a Long
+    + JDK-8283469: Don't use memset to initialize members in
+      FileMapInfo and fix memory leak
+    + JDK-8283497: [windows] print TMP and TEMP in hs_err and
+      VM.info
+    + JDK-8283614: [11] Repair compiler versions handling after
+      8233787
+    + JDK-8283641: Large value for CompileThresholdScaling causes
+      assert
+    + JDK-8283834: Unmappable character for US-ASCII encoding in
+      TestPredicateInputBelowLoopPredicate
+    + JDK-8284033: Leak XVisualInfo in getAllConfigs in
+      awt_GraphicsEnv.c
+    + JDK-8284094: Memory leak in invoker_completeInvokeRequest()
+    + JDK-8284102: [TESTBUG] [11u] Retroactively add regression
+      test for JDK-8272124
+    + JDK-8284369: TestFailedAllocationBadGraph fails with
+      -XX:TieredStopAtLevel < 4
+    + JDK-8284389: Improve stability of GHA Pre-submit testing by
+      caching cygwin installer
+    + JDK-8284458: CodeHeapState::aggregate() leaks blob_name
+    + JDK-8284507: GHA: Only check test results if testing was not
+      skipped
+    + JDK-8284549: JFR: FieldTable leaks FieldInfoTable member
+    + JDK-8284573: [11u] ProblemList TestBubbleUpRef.java and
+      TestGCOldWithCMS.java because of 8272195
+    + JDK-8284604: [11u] Update Boot JDK used in GHA to 11.0.14.1
+    + JDK-8284620: CodeBuffer may leak _overflow_arena
+    + JDK-8284622: Update versions of some Github Actions used in
+      JDK workflow
+    + JDK-8284756: [11u] Remove unused isUseContainerSupport in
+      CgroupV1Subsystem
+    + JDK-8285395: [JVMCI] [11u] Partial backport of JDK-8220623:
+      InstalledCode
+    + JDK-8285397: JNI exception pending in CUPSfuncs.c:250
+    + JDK-8285445: cannot open file "NUL:"
+    + JDK-8285515: (dc) DatagramChannel.disconnect fails with
+      "Invalid argument" on macOS 12.4
+    + JDK-8285523: Improve test
+      java/io/FileOutputStream/OpenNUL.java
+    + JDK-8285591: [11] add signum checks in DSA.java engineVerify
+    + JDK-8285686: Update FreeType to 2.12.0
+    + JDK-8285720: test/jdk/java/nio/file/Files/probeContentType/
+      /Basic.java fails to compile after backport of 8273655
+    + JDK-8285726: [11u, 17u] Unify fix for JDK-8284548 with
+      version from head
+    + JDK-8285727: [11u, 17u] Unify fix for JDK-8284920 with
+      version from head
+    + JDK-8285828: runtime/execstack/TestCheckJDK.java fails with
+      zipped debug symbols
+    + JDK-8286013: Incorrect test configurations for
+      compiler/stable/TestStableShort.java
+    + JDK-8286198: [linux] Fix process-memory information
+    + JDK-8286293: Tests ShortResponseBody and
+      ShortResponseBodyWithRetry should use less resources
+    + JDK-8286444: javac errors after JDK-8251329 are not helpful
+      enough to find root cause
+    + JDK-8286594: (zipfs) Mention paths with dot elements in
+      ZipException and cleanups
+    + JDK-8286630: [11] avoid -std=c++11 CXX harfbuzz buildflag on
+      Windows
+    + JDK-8286855: javac error on invalid jar should only print
+      filename
+    + JDK-8287109: Distrust.java failed with
+      CertificateExpiredException
+    + JDK-8287119: Add Distrust.java to ProblemList
+    + JDK-8287362: FieldAccessWatch testcase failed on AIX platform
+    + JDK-8287378: GHA: Update cygwin to fix issues in langtools
+      tests on Windows
+    + JDK-8287739: [11u] ProblemList sun/security/ssl/
+      /SSLSessionImpl/NoInvalidateSocketException.java
+
+-------------------------------------------------------------------
 Wed Apr 20 15:36:24 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-11.0.15+10 (April 2022 CPU)
