@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jul 23 14:18:00 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.38.1
+  * New features:
+    - fz::aio_waitable now also accepts event handlers in addition
+      to aio_waiter
+  * Bugfixes and minor changes:
+    - Split fz::process::kill into separate stop and kill functions
+- Changes from 0.38.0
+  * New features:
+    - Added readers and writers for asynchronous disk I/O operating
+      on a buffer pool
+    - Added fz::current_username()
+    - Added fz::event_handler::stop_add_timer
+    - Added overload for fz::event_handler::add_timer that takes
+      a deadline
+    - Added fz::file::set_modification_time
+    - Added fz::get_network_interfaces
+    - *nix: fz::socket can now accept Unix-domain sockets,
+      added fz::socket::send_fd and fz::socke::read_fd
+  * Bugfixes and minor changes:
+    - *nix: When impersonating, limit supplementary groups to
+      NGROUPS_MAX
+
+-------------------------------------------------------------------
 Thu May 12 10:24:54 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.37.2
