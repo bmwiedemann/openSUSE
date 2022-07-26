@@ -17,7 +17,7 @@
 
 
 Name:           smplayer
-Version:        22.2.0
+Version:        22.7.0
 Release:        0
 Summary:        Complete frontend for MPV
 License:        GPL-2.0-or-later
