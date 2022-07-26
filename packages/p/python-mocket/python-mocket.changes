@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 25 09:24:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean test requirements and suggestions
+- Drop recording-urllib3-brotli.patch fixed by updated httpx
+
+-------------------------------------------------------------------
 Wed May 18 06:31:34 UTC 2022 - pgajdos@suse.com
 
 - version update to 3.10.6

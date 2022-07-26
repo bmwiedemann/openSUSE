@@ -33,39 +33,26 @@ Summary:        Python socket mock framework
 License:        BSD-3-Clause
 URL:            https://github.com/mindflayer/python-mocket
 Source0:        https://files.pythonhosted.org/packages/source/m/mocket/mocket-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE recording-urllib3-brotli.patch -- our urllib has different default headers than upstreams test reference, code@bnavigator.de
-Patch0:         recording-urllib3-brotli.patch
-# https://github.com/mindflayer/python-mocket/issues/178
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator >= 4
 Requires:       python-http-parser >= 0.9.0
 Requires:       python-python-magic >= 0.4.5
-Requires:       python-six
 Requires:       python-urllib3 >= 1.25.3
-Suggests:       python-gevent
 Suggests:       python-pook >= 0.2.1
-Suggests:       python-redis
-Suggests:       python-requests
 Suggests:       python-xxhash
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module PySocks}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module async_timeout}
-BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module gevent}
-BuildRequires:  %{python_module http-parser >= 0.9.0}
-BuildRequires:  %{python_module pook}
-BuildRequires:  %{python_module pyOpenSSL}
+BuildRequires:  %{python_module mocket = %{version}}
+BuildRequires:  %{python_module pook >= 0.2.1}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-magic}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module sure}
-BuildRequires:  %{python_module urllib3}
 BuildRequires:  %{python_module xxhash}
 BuildRequires:  ca-certificates-mozilla
 %endif
@@ -79,10 +66,6 @@ included, with gevent/asyncio/SSL support.
 %setup -q -n mocket-%{version}
 sed -i '/cov/ d' setup.cfg
 sed -i '/pipenv/ d' setup.py
-%if 0%{suse_version} >= 1550
-# urllib3 in TW accepts Brotli encoding by default
-%patch0 -p1
-%endif
 
 %build
 %if !%{with test}
@@ -109,7 +92,11 @@ pytest_python3_ignore="--ignore tests/tests37 --ignore tests/tests38"
 donttest="TrueRedisTestCase"
 # Checks the ability to record a real request and response. Not available inside obs.
 donttest="$donttest or test_asyncio_record_replay"
-%pytest -k "not ($donttest)" ${pytest_$python_ignore}
+# The reference recording has different headers in this case
+%if %{pkg_vcmp python3-httpx < 0.23}
+donttest="$donttest or test_truesendall_with_dump_from_recording"
+%endif
+%pytest -rfEs -k "not ($donttest)" ${pytest_$python_ignore}
 %endif
 
 %if !%{with test}
