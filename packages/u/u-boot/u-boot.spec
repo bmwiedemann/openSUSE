@@ -625,6 +625,8 @@ fi
 %doc doc/README.hwconfig doc/README.nand doc/README.serial_multi
 %doc doc/README.SNTP doc/README.standalone doc/README.update doc/README.usb
 %doc doc/README.video doc/README.VLAN doc/README.silent doc/README.POST
+%doc doc/usage/*
+%doc doc/board/*
 # Copy some useful kermit scripts as well
 %doc tools/kermit/dot.kermrc tools/kermit/flash_param tools/kermit/send_cmd tools/kermit/send_image
 # Now any h/w dependent Documentation
