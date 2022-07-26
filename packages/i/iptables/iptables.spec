@@ -33,6 +33,7 @@ URL:            https://netfilter.org/projects/iptables/
 Source:         https://netfilter.org/projects/iptables/files/%name-%version.tar.bz2
 Source2:        https://netfilter.org/projects/iptables/files/%name-%version.tar.bz2.sig
 Source3:        %name.keyring
+Source4:        baselibs.conf
 Patch1:         iptables-batch.patch
 Patch2:         iptables-batch-lock.patch
 Patch3:         iptables-1.8.2-dont_read_garbage.patch
