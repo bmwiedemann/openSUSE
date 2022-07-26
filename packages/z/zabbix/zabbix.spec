@@ -23,7 +23,7 @@
 %define agent_group  zabbix
 %define SUSEfirewall_services_dir %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
 Name:           zabbix
-Version:        4.0.39
+Version:        4.0.42
 Release:        0
 Summary:        Distributed monitoring system
 License:        GPL-2.0-or-later
@@ -47,6 +47,8 @@ Source14:       zabbix-java-gateway.service
 Source15:       README-SSL.SUSE
 # PATCH-FIX-UPSTREAM zabbix-3.0.25-new-m4-pgsql.patch fix for opensuse issue caused/solved by bnc#1120035
 Patch0:         zabbix-3.0.25-new-m4-pgsql.patch
+# PATCH-FIX-UPSTREAN  CVE-2022-35230.patch fix for CVE-2022-35230 https://git.zabbix.com/projects/ZBX/repos/zabbix/commits/3b47a97676ee9ca4e16566f1931c456459108eae
+Patch1:         CVE-2022-35230.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  autoconf
@@ -242,6 +244,7 @@ remotely.
 %prep
 %setup -q -n zabbix-%{version}
 %patch0
+%patch1
 
 cp %{SOURCE6} .
 # fix source & config files to respect adapted names

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 22 23:14:21 UTC 2022 - Boris Manojlovic <boris@steki.net>
+
+- add CVE-2022-35230 patch file CVE-2022-35230.patch 
+
+-------------------------------------------------------------------
+Fri Jul 22 22:44:34 UTC 2022 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 4.0.42
+- New Features and Improvements
+  + ZBXNEXT-7694 Added "utf8mb3" character set support for MySQL database
+  + ZBX-20946 Enabled Bulgarian, Chinese (zh_TW), German, Greek, Indonesian,
+    Romanian, Spanish and Vietnamese languages in frontend
+- Bug Fixes
+  + ZBX-21123 Fixed crash when VMware VC was not available at the first moment when starting zabbix_server
+  + ZBX-21137 Fixed VMware collector crash related to datastore state disconnected from all HVs
+  + ZBX-20600 Fixed vmware hv.datastore.latency item when multiple datastores with duplicate name
+  + ZBX-20844 Fixed external check becoming unsupported when Zabbix server or Zabbix proxy is stopped
+
+-------------------------------------------------------------------
 Thu Mar 17 09:40:55 UTC 2022 - Boris Manojlovic <boris@steki.net>
 
 - updated to latest release 4.0.39
