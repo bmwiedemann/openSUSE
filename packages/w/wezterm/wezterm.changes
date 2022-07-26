@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Sat Jul 16 04:06:51 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220624.141144.bd1b7c5d+git171:
+  * macos: Add com.apple.security.automation.apple-events entitlement
+  * fix padding to the right of retro tab bar
+  * overlays: handle resize better
+  * color scheme: allow exporting schemes that set index colors
+  * x11/wayland: always try the portal for appearance
+  * exec domains: pass paneid to fixup method
+  * docs: fix typos
+  * add wezterm.color.save_scheme for exporting color schemes
+  * add lua functions for importing color scheme files
+  * colors: move wezterm.get_builtin_color_schemes to wezterm.colors.get_builtin_schemes
+  * add wezterm.color.get_default_colors
+  * add wezterm.gui.get_appearance to retrieve dark mode
+  * fix build; last commit passed `cargo check` but not `cargo build`!?
+  * fonts: allow glyph not found warnings to show after config reload
+  * color schemes: add version metadata
+  * color schemes: remove : splitting for prefix extraction
+  * fonts: limit missing glyph notification to once per hour
+  * debug overlay: remember last log line globally
+  * colors: refine importer
+  * color schemes: move other color scheme format code to color-funcs
+  * x11/wayland: subscribe to xdg desktop portal for settings changes
+  * docs: fix link discussing subpixel hinting
+  * windows: avoid recursing and borrowing inner twice
+  * x11/wayland: use xdg desktop portal settings interface to get dark mode
+  * Fix shortcut for "move between panes": `shift` was missing
+  * docs: show how to find just the dark color schemes
+  * docs: clarify order of extracted colors
+  * docs: changelog for https://github.com/wez/wezterm/issues/2234
+  * lua: add pane:is_alt_screen_active()
+  * color schemes: import all official base16 schemes
+  * sync-color-schemes: refactor caching and fetching
+  * sync-color-schemes: refactor
+  * wezterm.mux.set_active_workspace now updates the gui
+  * dynamic: add validate attribute, validate line_height.
+  * quickselect: select bottom-most match
+  * docs: add wezterm.color.from_hsla link to color object docs
+  * repl: suppress "nil" results
+  * color: refactor docs, add a couple more methods
+  * fix termwiz build
+  * lua: add wezterm.color.extract_colors_from_image
+  * ensure that we spawn open calls on a background thread
+  * colors: add RYB based complement
+  * add wezterm.color module for working with colors
+  * lua: implicit tostring(userdata) when printing and ToDynamic
+  * add distro-defaults feature
+  * color-types: add missing license file
+  * Import terminal.sexy themes
+  * fmt
+  * colorschemes: expand to include Gogh color schemes
+  * unset VTE_VERSION to avoid problems with vte.sh integration
+  * add wezterm.json_parse and wezterm.json_encode
+  * vtparse: increase MAX_OSC to load dynamic color scripts
+  * windows: fixup starting maximized
+  * wayland: double-buffer ime events
+  * wayland: ime: clear compose state after commit
+  * docs: make color scheme dirs as needed
+  * docs: even more robust idents for colorschemes
+  * docs: more robust ident generation for asciinema player
+  * docs: remove color scheme screenshots
+  * docs: show the number of color schemes
+  * wayland: workaround mutter IME issue
+  * docs: use asciinema's web player for screenshots
+  * wezterm.format: accept "ResetAttributes" to reset attributes
+  * gui: fix padding color when there are splits
+  * exec domains: report errors in label function
+  * wayland: fixup IME preedit
+  * wayland: fix ime position when scaling > 1
+  * tab bar: invalidate on resize to avoid gaps on the RHS
+  * docs: fixup changelog for https://github.com/wez/wezterm/issues/1620
+  * wayland: fix transparent gap under tab bar
+  * wayland: initial support for zwp_text_input_v3 / IME
+  * invalid tab bar on scaling changes
+  * docs: add wezterm.gui.screens() to changelog
+  * docs: wrap some text
+  * add docs for ExecDomain
+  * docs: fix typo and copy pasta
+  * fonts: allow setting assume_emoji_presentation per font
+  * fonts: assume emoji presentation for fonts with "moji" in their name
+  * docs: changelog for https://github.com/wez/wezterm/pull/2233
+  * win32: fix encoding of delete and backspace keys
+  * wsl_domains: soft-bind to the config definition
+  * exec_domains: soft-bind to the config definition
+  * docs: note about wezterm.format in launcher menu labels
+  * allow parsing attributes from launcher labels
+  * exec_domains: allow async callbacks. can now also set label for launcher
+  * wayland: use zwlr_output_manager if available
+  * wayland: implement wezterm.gui.screens()
+  * remove stray debug
+  * new: exec_domains
+  * dynamic: handle ambiguous {} object vs. array case centrally
+  * docs: window:maximize(), window:restore() and gui-startup
+  * windows: implement window:maximize(), window:restore()
+  * wayland: implement window:maximize() window:restore()
+  * add window:toggle_fullscreen()
+  * x11: implement maximize and restore
+  * add plumbing for maximize/restore on x11/wayland
+  * lua: add window:maximize() and window:restore() methods
+  * lua: make gui_window() reconcile workspace
+  * add window:set_position window:set_inner_size
+  * docs: window:gui_window, wezterm.gui.screens() and friends
+  * docs: add mux_window:gui_window()
+  * docs: split MuxWindow.md into multiple pages
+  * lua: add MuxWindow::gui_window() method
+  * lua: add wezterm.gui.gui_window_for_mux_window()
+  * lua: reduce a bit of boilerplate around registering wezterm.submodule
+  * docs: fix typo and copypasta in window:copy_to_clipboard
+  * rename `wezterm.window` to `wezterm.gui`
+  * win32: fixup initial window pos after screens changes
+  * lua: screens: fixup x11 build
+  * lua: implement wezterm.window.screens() for macos
+  * lua: add screens.active
+  * cargo update
+  * fix up x11 build for screens changes on win32
+  * screens: improve naming on Windows, move resolve_geom to Connection
+  * lua: implement wezterm.window.screens() on Windows
+  * rustfmt
+  * lua: add wezterm.window.screens()
+  * ensure that we reset attributes to defaults when producing escapes
+  * docs: changelog for #2225 #2226
+  * Add window:get_selection_escapes_for_pane()
+  * lua: add window:copy_to_clipboard method
+
+-------------------------------------------------------------------
 Wed Jul 06 05:09:05 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 20220624.141144.bd1b7c5d+git50:
