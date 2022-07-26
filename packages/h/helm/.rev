@@ -350,4 +350,13 @@ See changelog in:
   * chore(deps): bump github.com/Masterminds/squirrel from 1.5.2 to 1.5.3</comment>
     <requestid>989346</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>5967a0b9e55b49bd86fb58b745ea3b27</srcmd5>
+    <version>3.9.2</version>
+    <time>1658857408</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 3.9.2:
+  * Updating the circleci image we use</comment>
+    <requestid>990727</requestid>
+  </revision>
 </revisionlist>
