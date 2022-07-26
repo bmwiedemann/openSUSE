@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 18 05:43:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.07.18
+  * youtube: Fix duration check for post-live manifestless mode
+
+-------------------------------------------------------------------
 Wed Jun 29 05:40:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2022.06.29
