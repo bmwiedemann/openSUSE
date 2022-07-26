@@ -25,15 +25,14 @@ Group:          Productivity/Graphics/3D Editors
 URL:            https://github.com/mkeeter/fstl.git
 Source0:        https://github.com/fstl-app/fstl/archive/refs/tags/v%{version}.tar.gz
 Source1:        %{name}.desktop
-Source2:        %{name}-mimeinfo.xml
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  icoutils
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  update-desktop-files
 
 %description
 Fast stl file viewer.
@@ -65,14 +64,11 @@ install -Dm 0755 fstl_5_128x128x32.png \
 install -Dm 0755 fstl_6_256x256x32.png \
   %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
 
-install -Dm 0644 %{SOURCE2} %{buildroot}%{_datadir}/mime/packages/fslt-mimeinfo.xml
-
 %suse_update_desktop_file -i %{name}
 
 %files
 %{_bindir}/fstl
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/mime/packages/fslt-mimeinfo.xml
 
 %changelog
