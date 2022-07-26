@@ -17,7 +17,7 @@
 
 
 Name:           pcm
-Version:        202203
+Version:        202207
 Release:        0
 Summary:        Processor Counter Monitor
 License:        BSD-3-Clause
@@ -43,11 +43,24 @@ of Intel Core, Xeon, Atom and Xeon Phi processors.
 
 %install
 %cmake_install
-rm -rf %{buildroot}%{_datadir}/doc/%{name}
+rm -rf %{buildroot}%{_datadir}/doc/PCM/CUSTOM-COMPILE-OPTIONS.md
+rm -rf %{buildroot}%{_datadir}/doc/PCM/DOCKER_README.md
+rm -rf %{buildroot}%{_datadir}/doc/PCM/FREEBSD_HOWTO.txt
+rm -rf %{buildroot}%{_datadir}/doc/PCM/MAC_HOWTO.txt
+rm -rf %{buildroot}%{_datadir}/doc/PCM/WINDOWS_HOWTO.md
 
 %files
 %license LICENSE
 %doc doc/*HOWTO*
+/usr/share/doc/PCM
+/usr/share/doc/PCM/ENVVAR_README.md
+/usr/share/doc/PCM/FAQ.md
+/usr/share/doc/PCM/LINUX_HOWTO.txt
+/usr/share/doc/PCM/PCM-EXPORTER.md
+/usr/share/doc/PCM/PCM-SENSOR-SERVER-README.md
+/usr/share/doc/PCM/PCM_RAW_README.md
+/usr/share/doc/PCM/README.md
+/usr/share/doc/PCM/license.txt
 %{_sbindir}/pcm
 %{_sbindir}/pcm-core
 %{_sbindir}/pcm-iio

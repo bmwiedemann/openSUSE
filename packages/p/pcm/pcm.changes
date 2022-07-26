@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jul 26 08:27:00 UTC 2022 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to version 202207:
+  * pcm-raw: add json output to pcm-raw
+  * pcm-memory: fix csv output inconsistency for channels without traffic
+  * fix automatic version generation on checkout
+  * use GNUInstallDirs for install paths
+  * pcm-iio: optionally display root port pci device id
+  * automatically increase limit on open files on Linux
+  * pcm-daemon: add 'memory mode hit approximation' metric + client sample app fixes
+  * pcm-daemon: document all pcm-daemon metrics in the common.h header
+  * add CPU model number in processor information list
+  * correct hardcoded QPI strings and change to UPI when applicable
+  * pcm-iio: add missing header item
+  * pcm-raw: fix "EDP" format prints for offlined cores
+  * PCM_KEEP_NMI_WATCHDOG=1 env variable to keep NMI watchdog running
+  * support pcm-iio on ICX-D
+  * support additional Alderlake cpu model
+  * document -pid option in pcm-numa and pcm-tsx
+
+-------------------------------------------------------------------
 Wed May  4 09:23:50 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 202203:
