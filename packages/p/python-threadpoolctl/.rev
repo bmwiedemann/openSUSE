@@ -49,4 +49,19 @@
   - Fixed an attribute error when python is run with -OO.</comment>
     <requestid>925765</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8b4bfa96770713bcd7746eb6fa729692</srcmd5>
+    <version>3.1.0</version>
+    <time>1658857324</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 3.1.0:
+  * Fixed a detection issue of the BLAS libraires packaged by conda-forge on Windows.
+    https://github.com/joblib/threadpoolctl/pull/112
+  * `threadpool_limits` and `ThreadpoolController.limit` now accept the string
+    &quot;sequential_blas_under_openmp&quot; for the `limits` parameter. It should only be used for
+    the specific case when one wants to have sequential BLAS calls within an OpenMP
+    parallel region. It takes into account the unexpected behavior of OpenBLAS with the
+    OpenMP threading layer.</comment>
+    <requestid>990867</requestid>
+  </revision>
 </revisionlist>
