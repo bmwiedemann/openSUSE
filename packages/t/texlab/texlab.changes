@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 15 14:08:51 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 4.2.0:
+  * Fix compression tasks
+  * Fix release build job name
+  * Update transitive dependencies with dependabot
+  * Update transitive dependencies
+  * Remove multimap dependency
+  * Bump serde_json from 1.0.81 to 1.0.82 (#664)
+  * Bump clap from 3.2.6 to 3.2.8 (#665)
+  * Revert "Re-introduce brunch for benchmarking"
+  * Re-introduce brunch for benchmarking
+
+-------------------------------------------------------------------
 Sun Jun 19 15:48:32 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - removing cargo tests. not useful
