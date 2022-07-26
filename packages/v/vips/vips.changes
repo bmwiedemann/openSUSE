@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Jul 25 21:18:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.13.0: 
+  * last release with autotools build system
+  * configure fails for requested but unmet dependencies
+  * add support for another quantiser
+  * add "extend", "background" and "premultiplied" to vips_mapim() to fix edge
+  antialiasing
+  * add support for HDR HEIC and AVIF images
+  * add vips_spngsave()
+  * jpeg2000 load left-justifies bitdepth
+  * add "password" option to pdfload, fix byte ordering of "background"
+  * add vips_operation_block_set(), vips_block_untrusted_set()
+  * improve the pixel rng
+  * new meson build system
+  * improve introspection annotations
+  * add "unlimited" to heifload
+  * add support for regions in C++ API
+  * add "maxerror" to gifsave
+  * update libnsgif API
+  * deprecate "properties" option to dzsave (now always on)
+  * add vips_dzsave_buffer()
+  * always set the min stack size for pthreads, if we can
+  * add "fail-on" to thumbnail
+  * add "gap" option to vips_reduce[hv]() and vips_resize()
+  * add "ceil" option to vips_shrink()
+  * quality improvements for image resizing
+  * add vips_source_new_from_target()
+  * add vips_target_seek(), vips_target_read(), vips_target_new_temp()
+  * add vips_tiffsave_target()
+  * add vips_target_end(), deprecate vips_target_finish()
+  * add "mixed" to webpsave
+  * add support for ICC profiles and linear encoding to JXL load and save
+  * add "reoptimise" to gifsave
+  * add "bitdepth" to magicksave
+  * change default PNG filter to "none"
+
+-------------------------------------------------------------------
 Sat Jun 18 14:40:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.12.2:

@@ -19,16 +19,16 @@
 %define _typelibdir %(pkg-config --variable=typelibdir gobject-introspection-1.0)
 %define _girdir %(pkg-config --variable=girdir gobject-introspection-1.0)
 %define libname lib%{name}
-%define short_version  8.12
-%define short_version_ 8_12
+%define short_version  8.13
+%define short_version_ 8_13
 %define somajor 42
 Name:           vips
-Version:        8.12.2
+Version:        8.13.0
 Release:        0
 Summary:        C/C++ library for processing large images
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-URL:            https://libvips.github.io/libvips/
+URL:            https://www.libvips.org/
 Source0:        https://github.com/libvips/libvips/releases/download/v%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE libexif-header.patch -- set path to libexif header
 Patch1:         vips-8.4.2_libexif-header.patch
