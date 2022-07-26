@@ -19,7 +19,7 @@
 %define modname mechanize
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mechanize
-Version:        0.4.7
+Version:        0.4.8
 Release:        0
 Summary:        Stateful programmatic web browsing
 License:        BSD-3-Clause AND (BSD-3-Clause OR ZPL-2.1)
