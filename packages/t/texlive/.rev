@@ -999,4 +999,16 @@
 - use negative listing approach for luajit determination</comment>
     <requestid>988282</requestid>
   </revision>
+  <revision rev="82" vrev="85">
+    <srcmd5>8c8ece026b5e196ad1e92b275e411bcf</srcmd5>
+    <version>unknown</version>
+    <time>1658857354</time>
+    <user>RBrownFactory</user>
+    <comment>- exclude all powerpc and riscv64 from luajit usage
+
+- Correct list of archs supported by luajit
+- 0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch: Remove
+  defective patch</comment>
+    <requestid>991003</requestid>
+  </revision>
 </revisionlist>

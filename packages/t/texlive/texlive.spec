@@ -38,7 +38,7 @@
 #                                          https://github.com/LuaJIT/LuaJIT/issues/42
 #	    Compare with libs/luajit/LuaJIT-<version>/src/lj_arch.h
 #
-%ifnarch s390 s390x ppc64le
+%ifnarch ppc %power64 s390 s390x riscv64
 %global         with_LuaJIT 1
 %endif
 %bcond_with	LuaJIT
@@ -264,7 +264,7 @@ Patch47:        biber-perl-5.18.2.dif
 # PATCH-FIX-SUSE Let it build even without ls-R files around
 Patch62:        source-psutils-kpathsea.dif
 # PATCH-FIX-SUSE Support luajit on ppc64/ppc64le
-Patch104:       0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
+#  Missed luajit fix for ppc/ppc64/ppc64le and riscv64
 # PATCH-FIX-SUSE Support luajit fix for arm64
 Patch106:       0006-Fix-register-allocation-bug-in-arm64.patch
 Prefix:         %{_bindir}
@@ -3979,7 +3979,7 @@ This package is required by the package texlive-biber-bin.
 %patch19 -p0 -b .dvipng
 %patch21 -p0 -b .ppcelf
 pushd libs/luajit/LuaJIT-src/
-%patch104 -p1 -b .ppc64
+#XXX -p1 -b .ppc64le
 %patch106 -p1 -b .arm64
 popd
 %patch0  -p0 -b .p0

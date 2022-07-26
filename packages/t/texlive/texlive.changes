@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 25 10:43:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- exclude all powerpc and riscv64 from luajit usage
+
+-------------------------------------------------------------------
+Sun Jul 24 10:11:52 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Correct list of archs supported by luajit
+- 0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch: Remove
+  defective patch
+
+-------------------------------------------------------------------
 Mon Jul 11 07:19:55 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Require correct perl(Biber) version 
