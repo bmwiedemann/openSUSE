@@ -1,0 +1,30 @@
+From d76fa203ac51014158060915835ed92bf5018b2a Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Thu, 21 Jul 2022 15:22:26 +0200
+Subject: [PATCH] vulkaninfo: include wayland-client because its functions are
+ used
+
+"Include what you use": vulkaninfo.h calls wl_registry_bind, thus
+ought to include wayland-client.h.
+---
+ vulkaninfo/vulkaninfo.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/vulkaninfo/vulkaninfo.h b/vulkaninfo/vulkaninfo.h
+index 1a1e9f95..e6618d35 100644
+--- a/vulkaninfo/vulkaninfo.h
++++ b/vulkaninfo/vulkaninfo.h
+@@ -79,6 +79,10 @@
+ #include "metal_view.h"
+ #endif
+ 
++#if defined(VK_USE_PLATFORM_WAYLAND_KHR)
++#include <wayland-client.h>
++#endif
++
+ #include <vulkan/vulkan.h>
+ 
+ static std::string VkResultString(VkResult err);
+-- 
+2.37.1
+

@@ -25,6 +25,7 @@ Group:          Development/Tools/Other
 URL:            https://github.com/KhronosGroup/Vulkan-Tools
 
 Source:         https://github.com/KhronosGroup/Vulkan-Tools/archive/sdk-%version.tar.gz
+Patch1:         0001-vulkaninfo-include-wayland-client-because-its-functi.patch
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  glslang-devel >= 8.13.3743

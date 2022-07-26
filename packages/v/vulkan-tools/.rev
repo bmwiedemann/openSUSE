@@ -279,4 +279,12 @@
     <comment>- Update to release SDK-1.3.216.0</comment>
     <requestid>982874</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>c567479412262334325da54efe5ff252</srcmd5>
+    <version>1.3.216.0</version>
+    <time>1658857383</time>
+    <user>RBrownFactory</user>
+    <comment>- Add 0001-vulkaninfo-include-wayland-client-because-its-functi.patch</comment>
+    <requestid>990571</requestid>
+  </revision>
 </revisionlist>
