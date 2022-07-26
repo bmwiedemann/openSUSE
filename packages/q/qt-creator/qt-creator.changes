@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jul 22 12:24:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 8.0.0:
+  * https://www.qt.io/blog/qt-creator-8-released
+  Note that this is the last release that can be built using Qt 5.
+- Add upstream change to fix license issues:
+  * 0001-Fixes-license-header.patch
+
+-------------------------------------------------------------------
+Tue Jul 19 12:25:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the qmldesigner data folder when building qt-creator
+  with Qt5. The plugin is only available with the Qt 6 variant.
+
+-------------------------------------------------------------------
+Fri Jul  8 10:07:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 8.0.0-rc1:
+  * https://www.qt.io/blog/qt-creator-8-rc-released
+
+-------------------------------------------------------------------
+Wed Jun 29 07:28:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 8.0.0-beta2:
+  * https://www.qt.io/blog/qt-creator-8-beta2-released
+- Drop patch, fixed upstream:
+  * 0001-Correctly-include-KSyntaxHighlighting-headers.patch
+
+-------------------------------------------------------------------
 Mon May 30 06:54:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 7.0.2. Bugfix release:

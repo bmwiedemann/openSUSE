@@ -1,0 +1,670 @@
+From d094abaea789c7e5b3e55177ac187cccb3de8c4a Mon Sep 17 00:00:00 2001
+From: Thomas Hartmann <thomas.hartmann@qt.io>
+Date: Mon, 18 Jul 2022 12:42:37 +0200
+Subject: [PATCH] Fixes: license header
+
+Use GNU General Public License instead of commercial license only.
+
+Task-number: QTCREATORBUG-27895
+Change-Id: I1782638871f79b9729f0c7ce06abb38f6c34ed7a
+---
+ .../MCUDefaultStyle/Button.qml                | 45 ++++++++++++++----
+ .../MCUDefaultStyle/CheckBox.qml              | 45 ++++++++++++++----
+ .../MCUDefaultStyle/DefaultStyle.qml          | 46 +++++++++++++++----
+ .../application-mcu/MCUDefaultStyle/Dial.qml  | 45 ++++++++++++++----
+ .../MCUDefaultStyle/ProgressBar.qml           | 45 ++++++++++++++----
+ .../MCUDefaultStyle/RadioButton.qml           | 45 ++++++++++++++----
+ .../MCUDefaultStyle/Slider.qml                | 45 ++++++++++++++----
+ .../MCUDefaultStyle/SwipeView.qml             | 45 ++++++++++++++----
+ .../MCUDefaultStyle/Switch.qml                | 45 ++++++++++++++----
+ .../projects/application-mcu/detailsPage.qml  |  2 +-
+ .../imagecacheconnectionmanager.cpp           | 10 +++-
+ .../imagecache/imagecacheconnectionmanager.h  | 10 +++-
+ 12 files changed, 344 insertions(+), 84 deletions(-)
+
+diff --git a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/Button.qml b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/Button.qml
+index 892ff25bba..4b56842a84 100644
+--- a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/Button.qml
++++ b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/Button.qml
+@@ -1,23 +1,50 @@
+-/******************************************************************************
++/****************************************************************************
+ **
+-** Copyright (C) 2021 The Qt Company Ltd.
++** Copyright (C) 2022 The Qt Company Ltd.
+ ** Contact: https://www.qt.io/licensing/
+ **
+-** This file is part of the Qt Quick Ultralite module.
+-**
+-** $QT_BEGIN_LICENSE:COMM$
++** This file is part of the examples of the Qt Design Studio.
+ **
+ ** Commercial License Usage
+ ** Licensees holding valid commercial Qt licenses may use this file in
+ ** accordance with the commercial license agreement provided with the
+ ** Software or, alternatively, in accordance with the terms contained in
+ ** a written agreement between you and The Qt Company. For licensing terms
+-** and conditions see http://www.qt.io/terms-conditions. For further
+-** information use the contact form at http://www.qt.io/contact-us.
++** and conditions see https://www.qt.io/terms-conditions. For further
++** information use the contact form at https://www.qt.io/contact-us.
++**
++** BSD License Usage
++** Alternatively, you may use this file under the terms of the BSD license
++** as follows:
++**
++** "Redistribution and use in source and binary forms, with or without
++** modification, are permitted provided that the following conditions are
++** met:
++**   * Redistributions of source code must retain the above copyright
++**     notice, this list of conditions and the following disclaimer.
++**   * Redistributions in binary form must reproduce the above copyright
++**     notice, this list of conditions and the following disclaimer in
++**     the documentation and/or other materials provided with the
++**     distribution.
++**   * Neither the name of The Qt Company Ltd nor the names of its
++**     contributors may be used to endorse or promote products derived
++**     from this software without specific prior written permission.
++**
++**
++** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++** "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++** LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++** A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++** OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++** SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++** LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++** DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++** THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++** OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
+ **
+-** $QT_END_LICENSE$
+ **
+-******************************************************************************/
++****************************************************************************/
+ 
+ import QtQuick 2.15
+ import QtQuick.Templates 2.15 as T
+diff --git a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/CheckBox.qml b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/CheckBox.qml
+index 51d82ddd2b..77db371817 100644
+--- a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/CheckBox.qml
++++ b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/CheckBox.qml
+@@ -1,23 +1,50 @@
+-/******************************************************************************
++/****************************************************************************
+ **
+-** Copyright (C) 2021 The Qt Company Ltd.
++** Copyright (C) 2022 The Qt Company Ltd.
+ ** Contact: https://www.qt.io/licensing/
+ **
+-** This file is part of the Qt Quick Ultralite module.
+-**
+-** $QT_BEGIN_LICENSE:COMM$
++** This file is part of the examples of the Qt Design Studio.
+ **
+ ** Commercial License Usage
+ ** Licensees holding valid commercial Qt licenses may use this file in
+ ** accordance with the commercial license agreement provided with the
+ ** Software or, alternatively, in accordance with the terms contained in
+ ** a written agreement between you and The Qt Company. For licensing terms
+-** and conditions see http://www.qt.io/terms-conditions. For further
+-** information use the contact form at http://www.qt.io/contact-us.
++** and conditions see https://www.qt.io/terms-conditions. For further
++** information use the contact form at https://www.qt.io/contact-us.
++**
++** BSD License Usage
++** Alternatively, you may use this file under the terms of the BSD license
++** as follows:
++**
++** "Redistribution and use in source and binary forms, with or without
++** modification, are permitted provided that the following conditions are
++** met:
++**   * Redistributions of source code must retain the above copyright
++**     notice, this list of conditions and the following disclaimer.
++**   * Redistributions in binary form must reproduce the above copyright
++**     notice, this list of conditions and the following disclaimer in
++**     the documentation and/or other materials provided with the
++**     distribution.
++**   * Neither the name of The Qt Company Ltd nor the names of its
++**     contributors may be used to endorse or promote products derived
++**     from this software without specific prior written permission.
++**
++**
++** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++** "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++** LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++** A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++** OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++** SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++** LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++** DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++** THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++** OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
+ **
+-** $QT_END_LICENSE$
+ **
+-******************************************************************************/
++****************************************************************************/
+ 
+ import QtQuick 2.15
+ import QtQuick.Templates 2.15 as T
+diff --git a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/DefaultStyle.qml b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/DefaultStyle.qml
+index 5b25fd8746..d25ec19226 100644
+--- a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/DefaultStyle.qml
++++ b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/DefaultStyle.qml
+@@ -1,23 +1,51 @@
+-/******************************************************************************
++/****************************************************************************
+ **
+-** Copyright (C) 2021 The Qt Company Ltd.
++** Copyright (C) 2022 The Qt Company Ltd.
+ ** Contact: https://www.qt.io/licensing/
+ **
+-** This file is part of the Qt Quick Ultralite module.
+-**
+-** $QT_BEGIN_LICENSE:COMM$
++** This file is part of the examples of the Qt Design Studio.
+ **
+ ** Commercial License Usage
+ ** Licensees holding valid commercial Qt licenses may use this file in
+ ** accordance with the commercial license agreement provided with the
+ ** Software or, alternatively, in accordance with the terms contained in
+ ** a written agreement between you and The Qt Company. For licensing terms
+-** and conditions see http://www.qt.io/terms-conditions. For further
+-** information use the contact form at http://www.qt.io/contact-us.
++** and conditions see https://www.qt.io/terms-conditions. For further
++** information use the contact form at https://www.qt.io/contact-us.
++**
++** BSD License Usage
++** Alternatively, you may use this file under the terms of the BSD license
++** as follows:
++**
++** "Redistribution and use in source and binary forms, with or without
++** modification, are permitted provided that the following conditions are
++** met:
++**   * Redistributions of source code must retain the above copyright
++**     notice, this list of conditions and the following disclaimer.
++**   * Redistributions in binary form must reproduce the above copyright
++**     notice, this list of conditions and the following disclaimer in
++**     the documentation and/or other materials provided with the
++**     distribution.
++**   * Neither the name of The Qt Company Ltd nor the names of its
++**     contributors may be used to endorse or promote products derived
++**     from this software without specific prior written permission.
+ **
+-** $QT_END_LICENSE$
+ **
+-******************************************************************************/
++** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++** "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++** LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++** A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++** OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++** SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++** LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++** DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++** THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++** OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
++**
++**
++****************************************************************************/
++
+ pragma Singleton
+ 
+ import QtQuick 2.15
+diff --git a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/Dial.qml b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/Dial.qml
+index 2c6a954cdc..2307188b44 100644
+--- a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/Dial.qml
++++ b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/Dial.qml
+@@ -1,23 +1,50 @@
+-/******************************************************************************
++/****************************************************************************
+ **
+-** Copyright (C) 2021 The Qt Company Ltd.
++** Copyright (C) 2022 The Qt Company Ltd.
+ ** Contact: https://www.qt.io/licensing/
+ **
+-** This file is part of the Qt Quick Ultralight module.
+-**
+-** $QT_BEGIN_LICENSE:COMM$
++** This file is part of the examples of the Qt Design Studio.
+ **
+ ** Commercial License Usage
+ ** Licensees holding valid commercial Qt licenses may use this file in
+ ** accordance with the commercial license agreement provided with the
+ ** Software or, alternatively, in accordance with the terms contained in
+ ** a written agreement between you and The Qt Company. For licensing terms
+-** and conditions see http://www.qt.io/terms-conditions. For further
+-** information use the contact form at http://www.qt.io/contact-us.
++** and conditions see https://www.qt.io/terms-conditions. For further
++** information use the contact form at https://www.qt.io/contact-us.
++**
++** BSD License Usage
++** Alternatively, you may use this file under the terms of the BSD license
++** as follows:
++**
++** "Redistribution and use in source and binary forms, with or without
++** modification, are permitted provided that the following conditions are
++** met:
++**   * Redistributions of source code must retain the above copyright
++**     notice, this list of conditions and the following disclaimer.
++**   * Redistributions in binary form must reproduce the above copyright
++**     notice, this list of conditions and the following disclaimer in
++**     the documentation and/or other materials provided with the
++**     distribution.
++**   * Neither the name of The Qt Company Ltd nor the names of its
++**     contributors may be used to endorse or promote products derived
++**     from this software without specific prior written permission.
++**
++**
++** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++** "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++** LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++** A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++** OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++** SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++** LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++** DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++** THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++** OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
+ **
+-** $QT_END_LICENSE$
+ **
+-******************************************************************************/
++****************************************************************************/
+ 
+ import QtQuick 2.15
+ import QtQuick.Templates 2.15 as T
+diff --git a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/ProgressBar.qml b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/ProgressBar.qml
+index 997418b1b0..cbf1e9bfbf 100644
+--- a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/ProgressBar.qml
++++ b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/ProgressBar.qml
+@@ -1,23 +1,50 @@
+-/******************************************************************************
++/****************************************************************************
+ **
+-** Copyright (C) 2021 The Qt Company Ltd.
++** Copyright (C) 2022 The Qt Company Ltd.
+ ** Contact: https://www.qt.io/licensing/
+ **
+-** This file is part of the Qt Quick Ultralight module.
+-**
+-** $QT_BEGIN_LICENSE:COMM$
++** This file is part of the examples of the Qt Design Studio.
+ **
+ ** Commercial License Usage
+ ** Licensees holding valid commercial Qt licenses may use this file in
+ ** accordance with the commercial license agreement provided with the
+ ** Software or, alternatively, in accordance with the terms contained in
+ ** a written agreement between you and The Qt Company. For licensing terms
+-** and conditions see http://www.qt.io/terms-conditions. For further
+-** information use the contact form at http://www.qt.io/contact-us.
++** and conditions see https://www.qt.io/terms-conditions. For further
++** information use the contact form at https://www.qt.io/contact-us.
++**
++** BSD License Usage
++** Alternatively, you may use this file under the terms of the BSD license
++** as follows:
++**
++** "Redistribution and use in source and binary forms, with or without
++** modification, are permitted provided that the following conditions are
++** met:
++**   * Redistributions of source code must retain the above copyright
++**     notice, this list of conditions and the following disclaimer.
++**   * Redistributions in binary form must reproduce the above copyright
++**     notice, this list of conditions and the following disclaimer in
++**     the documentation and/or other materials provided with the
++**     distribution.
++**   * Neither the name of The Qt Company Ltd nor the names of its
++**     contributors may be used to endorse or promote products derived
++**     from this software without specific prior written permission.
++**
++**
++** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++** "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++** LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++** A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++** OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++** SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++** LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++** DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++** THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++** OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
+ **
+-** $QT_END_LICENSE$
+ **
+-******************************************************************************/
++****************************************************************************/
+ 
+ import QtQuick 2.15
+ import QtQuick.Templates 2.15 as T
+diff --git a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/RadioButton.qml b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/RadioButton.qml
+index e80216c3bf..6d8e69fcd4 100644
+--- a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/RadioButton.qml
++++ b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/RadioButton.qml
+@@ -1,23 +1,50 @@
+-/******************************************************************************
++/****************************************************************************
+ **
+-** Copyright (C) 2021 The Qt Company Ltd.
++** Copyright (C) 2022 The Qt Company Ltd.
+ ** Contact: https://www.qt.io/licensing/
+ **
+-** This file is part of the Qt Quick Ultralite module.
+-**
+-** $QT_BEGIN_LICENSE:COMM$
++** This file is part of the examples of the Qt Design Studio.
+ **
+ ** Commercial License Usage
+ ** Licensees holding valid commercial Qt licenses may use this file in
+ ** accordance with the commercial license agreement provided with the
+ ** Software or, alternatively, in accordance with the terms contained in
+ ** a written agreement between you and The Qt Company. For licensing terms
+-** and conditions see http://www.qt.io/terms-conditions. For further
+-** information use the contact form at http://www.qt.io/contact-us.
++** and conditions see https://www.qt.io/terms-conditions. For further
++** information use the contact form at https://www.qt.io/contact-us.
++**
++** BSD License Usage
++** Alternatively, you may use this file under the terms of the BSD license
++** as follows:
++**
++** "Redistribution and use in source and binary forms, with or without
++** modification, are permitted provided that the following conditions are
++** met:
++**   * Redistributions of source code must retain the above copyright
++**     notice, this list of conditions and the following disclaimer.
++**   * Redistributions in binary form must reproduce the above copyright
++**     notice, this list of conditions and the following disclaimer in
++**     the documentation and/or other materials provided with the
++**     distribution.
++**   * Neither the name of The Qt Company Ltd nor the names of its
++**     contributors may be used to endorse or promote products derived
++**     from this software without specific prior written permission.
++**
++**
++** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++** "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++** LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++** A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++** OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++** SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++** LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++** DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++** THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++** OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
+ **
+-** $QT_END_LICENSE$
+ **
+-******************************************************************************/
++****************************************************************************/
+ 
+ import QtQuick 2.15
+ import QtQuick.Templates 2.15 as T
+diff --git a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/Slider.qml b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/Slider.qml
+index c6591d1309..abcd9b84f0 100644
+--- a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/Slider.qml
++++ b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/Slider.qml
+@@ -1,23 +1,50 @@
+-/******************************************************************************
++/****************************************************************************
+ **
+-** Copyright (C) 2021 The Qt Company Ltd.
++** Copyright (C) 2022 The Qt Company Ltd.
+ ** Contact: https://www.qt.io/licensing/
+ **
+-** This file is part of the Qt Quick Ultralite module.
+-**
+-** $QT_BEGIN_LICENSE:COMM$
++** This file is part of the examples of the Qt Design Studio.
+ **
+ ** Commercial License Usage
+ ** Licensees holding valid commercial Qt licenses may use this file in
+ ** accordance with the commercial license agreement provided with the
+ ** Software or, alternatively, in accordance with the terms contained in
+ ** a written agreement between you and The Qt Company. For licensing terms
+-** and conditions see http://www.qt.io/terms-conditions. For further
+-** information use the contact form at http://www.qt.io/contact-us.
++** and conditions see https://www.qt.io/terms-conditions. For further
++** information use the contact form at https://www.qt.io/contact-us.
++**
++** BSD License Usage
++** Alternatively, you may use this file under the terms of the BSD license
++** as follows:
++**
++** "Redistribution and use in source and binary forms, with or without
++** modification, are permitted provided that the following conditions are
++** met:
++**   * Redistributions of source code must retain the above copyright
++**     notice, this list of conditions and the following disclaimer.
++**   * Redistributions in binary form must reproduce the above copyright
++**     notice, this list of conditions and the following disclaimer in
++**     the documentation and/or other materials provided with the
++**     distribution.
++**   * Neither the name of The Qt Company Ltd nor the names of its
++**     contributors may be used to endorse or promote products derived
++**     from this software without specific prior written permission.
++**
++**
++** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++** "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++** LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++** A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++** OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++** SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++** LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++** DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++** THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++** OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
+ **
+-** $QT_END_LICENSE$
+ **
+-******************************************************************************/
++****************************************************************************/
+ 
+ import QtQuick 2.15
+ import QtQuick.Templates 2.15 as T
+diff --git a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/SwipeView.qml b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/SwipeView.qml
+index 3e8238bde8..8b98d11fef 100644
+--- a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/SwipeView.qml
++++ b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/SwipeView.qml
+@@ -1,23 +1,50 @@
+-/******************************************************************************
++/****************************************************************************
+ **
+-** Copyright (C) 2021 The Qt Company Ltd.
++** Copyright (C) 2022 The Qt Company Ltd.
+ ** Contact: https://www.qt.io/licensing/
+ **
+-** This file is part of the Qt Quick Ultralight module.
+-**
+-** $QT_BEGIN_LICENSE:COMM$
++** This file is part of the examples of the Qt Design Studio.
+ **
+ ** Commercial License Usage
+ ** Licensees holding valid commercial Qt licenses may use this file in
+ ** accordance with the commercial license agreement provided with the
+ ** Software or, alternatively, in accordance with the terms contained in
+ ** a written agreement between you and The Qt Company. For licensing terms
+-** and conditions see http://www.qt.io/terms-conditions. For further
+-** information use the contact form at http://www.qt.io/contact-us.
++** and conditions see https://www.qt.io/terms-conditions. For further
++** information use the contact form at https://www.qt.io/contact-us.
++**
++** BSD License Usage
++** Alternatively, you may use this file under the terms of the BSD license
++** as follows:
++**
++** "Redistribution and use in source and binary forms, with or without
++** modification, are permitted provided that the following conditions are
++** met:
++**   * Redistributions of source code must retain the above copyright
++**     notice, this list of conditions and the following disclaimer.
++**   * Redistributions in binary form must reproduce the above copyright
++**     notice, this list of conditions and the following disclaimer in
++**     the documentation and/or other materials provided with the
++**     distribution.
++**   * Neither the name of The Qt Company Ltd nor the names of its
++**     contributors may be used to endorse or promote products derived
++**     from this software without specific prior written permission.
++**
++**
++** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++** "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++** LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++** A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++** OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++** SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++** LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++** DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++** THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++** OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
+ **
+-** $QT_END_LICENSE$
+ **
+-******************************************************************************/
++****************************************************************************/
+ 
+ import QtQuick 2.15
+ import QtQuick.Templates 2.15 as T
+diff --git a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/Switch.qml b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/Switch.qml
+index 7b55052a74..1eec28d1ca 100644
+--- a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/Switch.qml
++++ b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/MCUDefaultStyle/Switch.qml
+@@ -1,23 +1,50 @@
+-/******************************************************************************
++/****************************************************************************
+ **
+-** Copyright (C) 2021 The Qt Company Ltd.
++** Copyright (C) 2022 The Qt Company Ltd.
+ ** Contact: https://www.qt.io/licensing/
+ **
+-** This file is part of the Qt Quick Ultralite module.
+-**
+-** $QT_BEGIN_LICENSE:COMM$
++** This file is part of the examples of the Qt Design Studio.
+ **
+ ** Commercial License Usage
+ ** Licensees holding valid commercial Qt licenses may use this file in
+ ** accordance with the commercial license agreement provided with the
+ ** Software or, alternatively, in accordance with the terms contained in
+ ** a written agreement between you and The Qt Company. For licensing terms
+-** and conditions see http://www.qt.io/terms-conditions. For further
+-** information use the contact form at http://www.qt.io/contact-us.
++** and conditions see https://www.qt.io/terms-conditions. For further
++** information use the contact form at https://www.qt.io/contact-us.
++**
++** BSD License Usage
++** Alternatively, you may use this file under the terms of the BSD license
++** as follows:
++**
++** "Redistribution and use in source and binary forms, with or without
++** modification, are permitted provided that the following conditions are
++** met:
++**   * Redistributions of source code must retain the above copyright
++**     notice, this list of conditions and the following disclaimer.
++**   * Redistributions in binary form must reproduce the above copyright
++**     notice, this list of conditions and the following disclaimer in
++**     the documentation and/or other materials provided with the
++**     distribution.
++**   * Neither the name of The Qt Company Ltd nor the names of its
++**     contributors may be used to endorse or promote products derived
++**     from this software without specific prior written permission.
++**
++**
++** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++** "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++** LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++** A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++** OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++** SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++** LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++** DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++** THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++** OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
+ **
+-** $QT_END_LICENSE$
+ **
+-******************************************************************************/
++****************************************************************************/
+ 
+ import QtQuick 2.15
+ import QtQuick.Templates 2.15 as T
+diff --git a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/detailsPage.qml b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/detailsPage.qml
+index 3d6e807880..93f0205a59 100644
+--- a/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/detailsPage.qml
++++ b/share/qtcreator/qmldesigner/studio_templates/projects/application-mcu/detailsPage.qml
+@@ -1,6 +1,6 @@
+ /****************************************************************************
+ **
+-** Copyright (C) 2021 The Qt Company Ltd.
++** Copyright (C) 2022 The Qt Company Ltd.
+ ** Contact: https://www.qt.io/licensing/
+ **
+ ** This file is part of Qt Creator.
+diff --git a/src/plugins/qmldesigner/designercore/imagecache/imagecacheconnectionmanager.cpp b/src/plugins/qmldesigner/designercore/imagecache/imagecacheconnectionmanager.cpp
+index d1cd65b4c4..a4bb0426e2 100644
+--- a/src/plugins/qmldesigner/designercore/imagecache/imagecacheconnectionmanager.cpp
++++ b/src/plugins/qmldesigner/designercore/imagecache/imagecacheconnectionmanager.cpp
+@@ -1,6 +1,6 @@
+ /****************************************************************************
+ **
+-** Copyright (C) 2020 The Qt Company Ltd.
++** Copyright (C) 2022 The Qt Company Ltd.
+ ** Contact: https://www.qt.io/licensing/
+ **
+ ** This file is part of Qt Creator.
+@@ -13,6 +13,14 @@
+ ** and conditions see https://www.qt.io/terms-conditions. For further
+ ** information use the contact form at https://www.qt.io/contact-us.
+ **
++** GNU General Public License Usage
++** Alternatively, this file may be used under the terms of the GNU
++** General Public License version 3 as published by the Free Software
++** Foundation with exceptions as appearing in the file LICENSE.GPL3-EXCEPT
++** included in the packaging of this file. Please review the following
++** information to ensure the GNU General Public License requirements will
++** be met: https://www.gnu.org/licenses/gpl-3.0.html.
++**
+ ****************************************************************************/
+ 
+ #include "imagecacheconnectionmanager.h"
+diff --git a/src/plugins/qmldesigner/designercore/imagecache/imagecacheconnectionmanager.h b/src/plugins/qmldesigner/designercore/imagecache/imagecacheconnectionmanager.h
+index 2eef8b9a93..8afafb86f5 100644
+--- a/src/plugins/qmldesigner/designercore/imagecache/imagecacheconnectionmanager.h
++++ b/src/plugins/qmldesigner/designercore/imagecache/imagecacheconnectionmanager.h
+@@ -1,6 +1,6 @@
+ /****************************************************************************
+ **
+-** Copyright (C) 2020 The Qt Company Ltd.
++** Copyright (C) 2022 The Qt Company Ltd.
+ ** Contact: https://www.qt.io/licensing/
+ **
+ ** This file is part of Qt Creator.
+@@ -13,6 +13,14 @@
+ ** and conditions see https://www.qt.io/terms-conditions. For further
+ ** information use the contact form at https://www.qt.io/contact-us.
+ **
++** GNU General Public License Usage
++** Alternatively, this file may be used under the terms of the GNU
++** General Public License version 3 as published by the Free Software
++** Foundation with exceptions as appearing in the file LICENSE.GPL3-EXCEPT
++** included in the packaging of this file. Please review the following
++** information to ensure the GNU General Public License requirements will
++** be met: https://www.gnu.org/licenses/gpl-3.0.html.
++**
+ ****************************************************************************/
+ 
+ #pragma once
+-- 
+2.37.1
+
