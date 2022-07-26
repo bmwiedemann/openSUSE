@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Fri Jul 22 20:09:16 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.3.5:
+  - Backport #1044. Fixes 404 from admin server for /admin.
+  - Backport #1033. Fixes TypeError from click==8.1.3.
+  - Back-port #1019: fixes for werkzeug 2.1.0.
+- Update to 3.3.2:
+  - Enabled the Jinja debug extension when the LEKTOR_DEV env var
+    is set to 1 and lektor server is used. (#984)
+  - The wording in the LICENSE file was standardized to that of
+    the current BSD 3-Clause License. (#972)
+  - Fix overzealous HTML-entity escaping of link and image
+    attributes. (#989)
+  - Fix a bug in make_editor_session when editing non-existant
+    pages with a non-primary alt. (#964)
+  - Fix the ability to add an initial flowblock to a
+    page. (Broken in 3.3.1.)
+  - Refactor API views to move business logic back into the Tree
+    adapter (#967). This fixes #962.
+  - Changed the structure of the URLs used by the GUI single-page
+    app (#976). This fixes problems with the "edit" pencil when
+    using alternatives (#975), and issues when page ids include
+    colons (#610).
+  - Other React refactors and fixes (#988).
+  - Fix Attachment.url_path when alternatives are in use. There
+    is only one copy of each attachment emitted — the url_path
+    should always be that corresponding to the primary
+    alternative. (#958)
+  - Pad.get, if not passed an explicit value for the alt
+    parameter, now returns the record for the primary alternative
+    rather than the fallback record. Similarly, Pad.root now
+    returns the root record for the primary alternative. (#958,
+    #965)
+  - Fix for uncaught OSError(error=EINVAL) on Windows when
+    Pad.get was called with a path containing characters which
+    are not allowed in Windows filenames (e.g. <>*?|\/":).
+  - Pages now record a build dependency on their datamodel .ini
+    file.
+  - Fix sqlite version detection so that we use "without rowid"
+    optimization with current versions of sqlite. (#1002)
+  - When running lektor dev new-theme: fix check for ability to
+    create symlinks under Windows. (#996)
+  - Fix rsync publisher when deletion enabled on macOS. (#946,
+    #954)
+  - Fix for test failures when git is not installed. (#998,
+    #1000)
+  - Cleaned up EditorSession to split mapping methods (for
+    access to record data) to a separate class, now available as
+    EditorSession.data. (#969)
+  - Cleaned up and moved our pylint and coverage configuration to
+    pyproject.toml. (#990, #991)
+  - Move frontend source from lektor/admin/static/
+    to frontend/. Compiled frontend code moved from
+    lektor/admin/static/gen/ to 'lektor/admin/static/`. (#1003)
+  - Omit example subdirectory, frontend source code,
+    developer-centric config files, as well as other assorted
+    cruft from sdist. (#986)
+- Update to 3.3.1:
+  - Fixed an import cycle which caused in ImportError if
+    lektor.types was imported before lektor.environemnt. #974
+  - Disuse deprecated Thread.setDaemon(). #979
+  - Fix spastic scroll behavior when editing flow elements. #640
+  - Fix admin GUI when page contains an unknown flowblock
+    type. #968
+  - Fix admin GUI layout on mobile devices. #981
+  - Increased timeout in test_watcher.IterateInThread to prevent
+    random spurious failures during CI testing.
+  - Fix tests/test_prev_next_sibling.py so as to allow running
+    multiple test runs in parallel.
+  - Use per-testenv coverage files to prevent contention when
+    running tox --parallel.
+  - Mark tests that require a working internet connections with
+    pytest mark requiresinternet. #983
+  - Finish rewriting React class-based components to
+    function-based components. #977
+  - Finish adding types for all API endpoints. #980
+  - Remove disused event-source polyfill.
+- Remove upstreamed patch skip-network-tests.patch.
+
+-------------------------------------------------------------------
 Thu Jan  6 20:02:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - We don't have to skip failing test due to new version of

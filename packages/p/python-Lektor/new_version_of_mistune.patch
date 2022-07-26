@@ -17,9 +17,9 @@ keeping compatibility with mistune 0.8.X.
 
 --- a/lektor/markdown.py
 +++ b/lektor/markdown.py
-@@ -11,30 +11,50 @@ from lektor.context import get_ctx
- 
- _markdown_cache = threading.local()
+@@ -14,30 +14,50 @@ _markdown_cache = threading.local()
+ def escape(text: str) -> str:
+     return mistune.escape(text, quote=True)
  
 +_old_mistune = int(mistune.__version__.split(".", maxsplit=1)[0]) < 2
  
@@ -90,7 +90,7 @@ keeping compatibility with mistune 0.8.X.
  
  
  class MarkdownConfig:
-@@ -56,7 +76,9 @@ def make_markdown(env):
+@@ -59,7 +79,9 @@ def make_markdown(env):
      env.plugin_controller.emit("markdown-config", config=cfg)
      renderer = cfg.make_renderer()
      env.plugin_controller.emit("markdown-lexer-config", config=cfg, renderer=renderer)
@@ -104,11 +104,11 @@ keeping compatibility with mistune 0.8.X.
 --- a/setup.cfg
 +++ b/setup.cfg
 @@ -37,7 +37,7 @@ install_requires =
-     Flask
-     inifile>=0.4.1
-     Jinja2>=3.0
--    mistune>=0.7.0,<2
-+    mistune>=0.7.0,<3.0
-     pip
-     python-slugify
-     requests[security]
+ 	Flask
+ 	inifile>=0.4.1
+ 	Jinja2>=3.0
+-	mistune>=0.7.0,<2
++	mistune>=0.7.0,<3
+ 	pip
+ 	python-slugify
+ 	requests[security]

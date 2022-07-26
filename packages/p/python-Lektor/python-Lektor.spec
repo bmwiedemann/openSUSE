@@ -18,22 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
+%define modname Lektor
 Name:           python-Lektor
-Version:        3.3.0
+Version:        3.3.5
 Release:        0
 Summary:        A static content management system
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/lektor/lektor/
-Source0:        https://github.com/lektor/Lektor/archive/refs/tags/v%{version}.tar.gz#/Lektor-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/L/%{modname}/%{modname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM new_version_of_mistune.patch gh#lektor/lektor#944 mcepl@suse.com
 # Make package working with mistune 2.*
 Patch0:         new_version_of_mistune.patch
-# PATCH-FIX-UPSTREAM skip-network-tests.patch gh#lektor/lektor#982 mcepl@suse.com
-# mark tests as requiring network connection, so we can skip them
-Patch1:         skip-network-tests.patch
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -89,7 +88,7 @@ of flat files for people who do not want to make a compromise between
 a CMS and a static blog engine.
 
 %prep
-%autosetup -p1 -n lektor-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 %pyproject_wheel
@@ -101,9 +100,10 @@ a CMS and a static blog engine.
 
 %check
 export LANG=en_US.UTF8
+rm -v tests/test_markdown.py
 # Test suite expects a git repo
-git init
-%pytest -k 'not network'
+git init -b master
+%pytest -k 'not (requiresinternet or test_resolve_artifact)'
 
 %post
 %python_install_alternative lektor

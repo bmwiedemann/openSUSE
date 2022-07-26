@@ -119,4 +119,41 @@
 </comment>
     <requestid>944543</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ea5b825a5c801273f53a40fb9cf6bdd2</srcmd5>
+    <version>3.3.5</version>
+    <time>1658857430</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 3.3.5:
+  - Backport #1044. Fixes 404 from admin server for /admin.
+  - Backport #1033. Fixes TypeError from click==8.1.3.
+  - Back-port #1019: fixes for werkzeug 2.1.0.
+- Update to 3.3.2:
+  - Enabled the Jinja debug extension when the LEKTOR_DEV env var
+    is set to 1 and lektor server is used. (#984)
+  - The wording in the LICENSE file was standardized to that of
+    the current BSD 3-Clause License. (#972)
+  - Fix overzealous HTML-entity escaping of link and image
+    attributes. (#989)
+  - Fix a bug in make_editor_session when editing non-existant
+    pages with a non-primary alt. (#964)
+  - Fix the ability to add an initial flowblock to a
+    page. (Broken in 3.3.1.)
+  - Refactor API views to move business logic back into the Tree
+    adapter (#967). This fixes #962.
+  - Changed the structure of the URLs used by the GUI single-page
+    app (#976). This fixes problems with the &quot;edit&quot; pencil when
+    using alternatives (#975), and issues when page ids include
+    colons (#610).
+  - Other React refactors and fixes (#988).
+  - Fix Attachment.url_path when alternatives are in use. There
+    is only one copy of each attachment emitted — the url_path
+    should always be that corresponding to the primary
+    alternative. (#958)
+  - Pad.get, if not passed an explicit value for the alt
+    parameter, now returns the record for the primary alternative
+    rather than the fallback record. Similarly, Pad.root now
+    returns the root record for the primary alternative. (#958,</comment>
+    <requestid>990829</requestid>
+  </revision>
 </revisionlist>
