@@ -1,7 +1,7 @@
 #
 # spec file for package libime
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,24 @@
 
 
 Name:           libime
-Version:        1.0.11
+Version:        1.0.13
 Release:        0
 Summary:        Generic input method implementation
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/libime
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
-Source1:        https://download.fcitx-im.org/data/dict.utf8-20211021.tar.xz
-Source2:        https://download.fcitx-im.org/data/lm_sc.3gm.arpa-20140820.tar.bz2
-Source3:        https://download.fcitx-im.org/data/table.tar.gz
-Patch0:         libime-no-download.patch
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.xz
+# PATCH-FIX-UPSTREAM gh#kpu/kenlm#391
+Patch0:         libime-1.0.13-return-0.0-for-other-platforms-in-usage.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_filesystem-devel
 
 %description
 This is a library to support generic input method implementation.
@@ -90,11 +88,7 @@ Group:          System/I18n/Chinese
 This package provides dictionary files for libime.
 
 %prep
-%setup -q
-%autopatch -p1
-cp -r %{SOURCE1} data/
-cp -r %{SOURCE2} data/
-cp -r %{SOURCE3} data/
+%autosetup -p1
 
 %build
 export LANG=en_US.UTF-8

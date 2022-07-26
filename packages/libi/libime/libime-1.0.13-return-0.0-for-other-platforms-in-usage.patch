@@ -1,0 +1,19 @@
+From 568df4a23827f409f132146e93ab0f7c191296df Mon Sep 17 00:00:00 2001
+From: Kenneth Heafield <github@kheafield.com>
+Date: Sun, 3 Jul 2022 17:18:27 +0100
+Subject: [PATCH] return 0.0 for other platforms in usage fixes #391
+
+ 
+Index: libime-1.0.13/src/libime/core/kenlm/util/usage.cc
+===================================================================
+--- libime-1.0.13.orig/src/libime/core/kenlm/util/usage.cc
++++ libime-1.0.13/src/libime/core/kenlm/util/usage.cc
+@@ -181,6 +181,8 @@ double ThreadTime() {
+   task_info(mach_task_self(), TASK_BASIC_INFO, (task_info_t)&t_info, &t_info_count);
+   
+   return 0.0;
++#else
++  return 0.0;
+ #endif
+ }
+ 

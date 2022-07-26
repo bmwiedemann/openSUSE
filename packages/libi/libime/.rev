@@ -7,4 +7,23 @@
     <comment>depedency of fcitx5</comment>
     <requestid>949606</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c322b585c0ac53af870ef08c6bcf9dda</srcmd5>
+    <version>1.0.13</version>
+    <time>1658857393</time>
+    <user>RBrownFactory</user>
+    <comment>- Remove yet another stale file, table.tar.gz
+
+- Remove one unused file
+  * libime-1.0.13.tar.xz
+
+- Update to 1.0.13
+  * fix a crash in pinyin under certain rare cases
+- Use _dict tar which contains all the needed dictionaries
+- Fix build by adding return statement (gh#kpu/kenlm#391)
+  * libime-1.0.13-return-0.0-for-other-platforms-in-usage.patch
+- Remove unneeded patch
+  * libime-no-download.patch</comment>
+    <requestid>991010</requestid>
+  </revision>
 </revisionlist>

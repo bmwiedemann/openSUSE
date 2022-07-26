@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jul 25 11:30:42 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Remove yet another stale file, table.tar.gz
+
+-------------------------------------------------------------------
+Sun Jul 24 12:02:08 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Remove one unused file
+  * libime-1.0.13.tar.xz
+
+-------------------------------------------------------------------
+Tue Jul  5 13:59:07 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 1.0.13
+  * fix a crash in pinyin under certain rare cases
+- Use _dict tar which contains all the needed dictionaries
+- Fix build by adding return statement (gh#kpu/kenlm#391)
+  * libime-1.0.13-return-0.0-for-other-platforms-in-usage.patch
+- Remove unneeded patch
+  * libime-no-download.patch
+
+-------------------------------------------------------------------
 Tue Jan 25 13:53:26 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 1.0.11
