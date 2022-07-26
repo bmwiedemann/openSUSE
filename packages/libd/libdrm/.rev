@@ -1538,4 +1538,12 @@ Man pages are disabled for this build, upstream disabled them for this release. 
 - added tegra-* tools on aarch64 to spefile</comment>
     <requestid>980683</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>8b6c24152f787e0242390ea1f380a091</srcmd5>
+    <version>2.4.112</version>
+    <time>1658857335</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990773</requestid>
+  </revision>
 </revisionlist>
