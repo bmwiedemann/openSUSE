@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 25 07:48:00 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.7:
+  * ensure the the "current message" is cleared with clearing the
+    headers-view; also update mu4e-message-at-point to be stricter
+  * only show messages in mu-find that exist
+  * load mu4e-view earlier
+
+-------------------------------------------------------------------
 Thu Jul 14 07:50:32 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.6:

@@ -464,4 +464,16 @@
   * Add more matching tests</comment>
     <requestid>989100</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>d24569f732a67c2cb66a06d16272dfa9</srcmd5>
+    <version>1.8.7</version>
+    <time>1658857462</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.8.7:
+  * ensure the the &quot;current message&quot; is cleared with clearing the
+    headers-view; also update mu4e-message-at-point to be stricter
+  * only show messages in mu-find that exist
+  * load mu4e-view earlier</comment>
+    <requestid>990950</requestid>
+  </revision>
 </revisionlist>
