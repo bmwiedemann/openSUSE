@@ -7,4 +7,15 @@
     <comment>Restore python-llfuse package (boo#1186080)</comment>
     <requestid>895275</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>81be6bb30a5d9fe4d2b6909719196975</srcmd5>
+    <version>1.4.2</version>
+    <time>1658857439</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 1.4.2:
+  * cythonize with Cython 0.29.30 (brings python 3.11 support)
+  * also test on python 3.10 and 3.11-dev
+  * remove &quot;nonempty&quot; default mount option, seems unsupported now.</comment>
+    <requestid>990872</requestid>
+  </revision>
 </revisionlist>
