@@ -513,4 +513,13 @@
     <comment></comment>
     <requestid>982899</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>eea2ca9f54c65f6497e07a9171e322da</srcmd5>
+    <version>23.7.0</version>
+    <time>1658857326</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 23.7.0:
+  * #582: Suppress KeyringErrors for devpi client.</comment>
+    <requestid>990874</requestid>
+  </revision>
 </revisionlist>

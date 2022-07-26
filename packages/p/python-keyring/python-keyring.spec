@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-keyring
-Version:        23.6.0
+Version:        23.7.0
 Release:        0
 Summary:        System keyring service access from Python
 License:        MIT AND Python-2.0
