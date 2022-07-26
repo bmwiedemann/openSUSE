@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jul 24 14:10:38 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.4.0
+  * Drop support for Python 3.6
+  * Add pre-commit config
+  * pick returns single tuple when multiselect=False
+  version 1.3.1:
+  * Bump version
+  version 1.3.0:
+  Add type hints
+  version 1.2.0:
+  * Fixed support for Python 3.6
+  version 1.1.1:
+  * Bump version
+  version 1.1.0:
+  * Fixes missing `screen` on call to `self.draw`
+  version 1.0.0:
+  * Drop python2 support
+
+-------------------------------------------------------------------
 Mon Mar 16 08:48:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 0.6.7
