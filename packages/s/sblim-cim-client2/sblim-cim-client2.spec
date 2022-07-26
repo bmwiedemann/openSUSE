@@ -1,7 +1,7 @@
 #
 # spec file for package sblim-cim-client2
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,13 +24,17 @@ Release:        0
 Summary:        Java CIM Client library
 License:        EPL-1.0
 Group:          Development/Libraries/Java
-Url:            http://sourceforge.net/projects/sblim/
+URL:            http://sourceforge.net/projects/sblim/
 Source:         http://downloads.sourceforge.net/project/sblim/%{name}/%{version}/%{name}-%{version}-src.zip
 Source1:        http://downloads.sourceforge.net/project/sblim/%{name}/%{version}/%{name}-%{version}-doc.zip
 Patch1:         sblim-cim-client2-2.2.5-src.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  dos2unix
+%if %{?suse_version} >= 1500
+BuildRequires:  java-devel = 11
+%else
 BuildRequires:  java-devel
+%endif
 BuildRequires:  jpackage-utils >= 1.5.32
 BuildRequires:  unzip
 Requires:       jpackage-utils >= 1.5.32
