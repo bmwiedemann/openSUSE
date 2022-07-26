@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 22 21:19:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to version 0.14.3
+  * see https://github.com/ColinIanKing/stress-ng/blob/V0.14.03/debian/changelog
+  for the full changelog 
+
+-------------------------------------------------------------------
 Wed Apr 13 09:54:34 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
-- Update to ersion 0.14.00
+- Update to version 0.14.00
   See https://github.com/ColinIanKing/stress-ng/blob/V0.14.00/debian/changelog
   for the full changelog
 
