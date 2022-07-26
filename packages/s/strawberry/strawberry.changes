@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 25 19:50:13 UTC 2022 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.0.7
+
+ + Fixed checking file extension case-insensitive when loading and saving playlists.
+ + Fixed reading and saving rating with TagParser.
+ + Added option for selecting file extension when saving all playlists. 
+
+-------------------------------------------------------------------
 Sun Jul 17 21:49:21 UTC 2022 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Build with Qt 6 on openSUSE Leap 15.4 and higher

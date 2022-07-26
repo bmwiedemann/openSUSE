@@ -1026,4 +1026,16 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>989755</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>7ac2bb383eb3162bf42214d88b4f7024</srcmd5>
+    <version>1.0.7</version>
+    <time>1658857518</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 1.0.7
+ + Fixed checking file extension case-insensitive when loading and saving playlists.
+ + Fixed reading and saving rating with TagParser.
+ + Added option for selecting file extension when saving all playlists. 
+</comment>
+    <requestid>991156</requestid>
+  </revision>
 </revisionlist>

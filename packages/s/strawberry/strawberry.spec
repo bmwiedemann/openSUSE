@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
@@ -28,9 +28,11 @@ Source:         https://files.strawberrymusicplayer.org/%{name}-%{version}.tar.x
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
-%if 0%{?sle_version} == 150400
+%if 0%{?sle_version} == 150400 || 0%{?sle_version} == 150500
+BuildRequires:  gcc11
 BuildRequires:  gcc11-c++
 %else
+BuildRequires:  gcc
 BuildRequires:  gcc-c++
 %endif
 BuildRequires:  gettext
@@ -119,7 +121,7 @@ Features:
 %setup -q
 
 %build
-%if 0%{?sle_version} == 150400
+%if 0%{?sle_version} == 150400 || 0%{?sle_version} == 150500
 export CC="gcc-11"
 export CXX="g++-11"
 %endif
