@@ -81,4 +81,25 @@
     <comment></comment>
     <requestid>957672</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4b653b220ae43293ec8e1b8c08b486e0</srcmd5>
+    <version>3.1.0</version>
+    <time>1658857535</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 3.1.0:
+    Use configurable output grammar, compatible with YAML 1.1
+- Update to 3.0.2:
+  - Expand merge keys (https://yaml.org/type/merge.html). This is
+    a YAML 1.1 specific behavior, but will be accommodated in yq
+    due to its widespread use and low likelihood of accidental
+    invocation.
+- Update to 3.0.1:
+  - yq now uses the YAML 1.2 grammar when parsing and rendering
+    YAML documents. This means bare literals like “on”, “no”,
+    and “12:34:56” are interpreted as strings. (Fix interrupted
+    release)
+- Removed upstreamed e37a7981b505aa0fd60d062ca81fd7b23715233e.patch
+</comment>
+    <requestid>991280</requestid>
+  </revision>
 </revisionlist>
