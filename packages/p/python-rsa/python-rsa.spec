@@ -25,7 +25,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-rsa
-Version:        4.8
+Version:        4.9
 Release:        0
 Summary:        Pure-Python RSA Implementation
 License:        Apache-2.0

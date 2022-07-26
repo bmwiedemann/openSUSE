@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 24 08:44:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.9:
+  * Remove debug logging from `rsa/key.py`
+  * Remove overlapping slots in `PrivateKey` and `PublicKey`.
+  * Do not include CHANGELOG/LICENSE/README.md in wheel
+  * Fixed Key Generation Unittest: Public and Private keys are assigned the wrong way around
+
+-------------------------------------------------------------------
 Sat Jun 25 20:49:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8:

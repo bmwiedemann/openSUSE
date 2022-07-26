@@ -196,4 +196,16 @@
     makes decryption 2-4x faster</comment>
     <requestid>985079</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ebc5025f8c106a3bf173c29ff2693b03</srcmd5>
+    <version>4.9</version>
+    <time>1658857325</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 4.9:
+  * Remove debug logging from `rsa/key.py`
+  * Remove overlapping slots in `PrivateKey` and `PublicKey`.
+  * Do not include CHANGELOG/LICENSE/README.md in wheel
+  * Fixed Key Generation Unittest: Public and Private keys are assigned the wrong way around</comment>
+    <requestid>990868</requestid>
+  </revision>
 </revisionlist>
