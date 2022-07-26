@@ -23,17 +23,15 @@
 %endif
 
 Name:           upower
-Version:        0.99.17
+Version:        0.99.20
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://upower.freedesktop.org/
-Source:         %{name}-%{version}.tar.xz
-
+Source:         https://gitlab.freedesktop.org/upower/upower/-/archive/v%{version}/upower-v%{version}.tar.gz
 # PATCH-FEATURE-SLE upower-sle15.patch fcrozat@suse.com -- Disable some hardenings, don't work on SLE15 SP2+
 Patch1:         upower-sle15.patch
-
 BuildRequires:  gobject-introspection-devel >= 0.9.9
 BuildRequires:  gtk-doc >= 1.11
 BuildRequires:  intltool
@@ -107,7 +105,7 @@ system) are restricted using PolicyKit.
 %lang_package
 
 %prep
-%setup -q
+%setup -q -n %{name}-v%{version}
 %if 0%{?sle_version}
 %patch1 -p1
 %endif
@@ -131,12 +129,14 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %post
 %{?udev_rules_update:%udev_rules_update}
 %service_add_post upower.service
+%udev_hwdb_update
 
 %preun
 %service_del_preun upower.service
 
 %postun
 %service_del_postun upower.service
+%udev_hwdb_update
 
 %ldconfig_scriptlets -n libupower-glib3
 
@@ -150,12 +150,12 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %dir %{_libexecdir}/upower
 %{_libexecdir}/upower/upowerd
 %{_udevrulesdir}/*.rules
+%{_udevhwdbdir}/*.hwdb
 %{_unitdir}/upower.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.UPower.conf
 %{_datadir}/dbus-1/interfaces/org.freedesktop.UPower.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.UPower.Device.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.UPower.KbdBacklight.xml
-%{_datadir}/dbus-1/interfaces/org.freedesktop.UPower.Wakeups.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.UPower.service
 %{_mandir}/man1/upower.1%{?ext_man}
 %{_mandir}/man7/UPower.7%{?ext_man}
