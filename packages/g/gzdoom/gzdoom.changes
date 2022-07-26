@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 24 07:43:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace 0001-Revert-load-the-hex-font-as-early-as-possible.patch
+  by better fix, 0001-fix-gzdoom.pk3-not-found-error.patch .
+- Drop gzdoom-asmjit.patch (no longer needed; the linkage error
+  it used to fix seems just gone)
+
+-------------------------------------------------------------------
 Sun Jul 10 08:32:53 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Disable rpath

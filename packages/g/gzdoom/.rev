@@ -196,4 +196,15 @@ and that one is GPL3.</comment>
     <comment>- Disable rpath</comment>
     <requestid>988102</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>0ff7305cf1701ea71f6a46b737de6ff0</srcmd5>
+    <version>4.8.2</version>
+    <time>1658857440</time>
+    <user>RBrownFactory</user>
+    <comment>- Replace 0001-Revert-load-the-hex-font-as-early-as-possible.patch
+  by better fix, 0001-fix-gzdoom.pk3-not-found-error.patch .
+- Drop gzdoom-asmjit.patch (no longer needed; the linkage error
+  it used to fix seems just gone)</comment>
+    <requestid>990870</requestid>
+  </revision>
 </revisionlist>

@@ -28,16 +28,14 @@ URL:            https://zdoom.org/
 Source:         https://github.com/coelckers/gzdoom/archive/g%version.tar.gz
 Patch1:         gzdoom-waddir.patch
 Patch2:         gzdoom-lzma.patch
-Patch3:         gzdoom-asmjit.patch
 Patch4:         gzdoom-sdlbug.patch
 Patch5:         gzdoom-vulkan.patch
 Patch6:         gzdoom-discord.patch
-Patch8:         0001-Revert-load-the-hex-font-as-early-as-possible.patch
+Patch8:         0001-fix-gzdoom.pk3-not-found-error.patch
 Patch9:         0001-Revert-use-static_assert-to-make-32-bit-builds-fail.patch
 BuildRequires:  cmake >= 2.8.7
 BuildRequires:  discord-rpc-devel
 BuildRequires:  gcc-c++
-BuildRequires:  glslang-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkg-config
 BuildRequires:  unzip
@@ -50,12 +48,17 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2) >= 2.0.6
 BuildRequires:  pkgconfig(vpx)
-BuildRequires:  pkgconfig(vulkan) >= 1.2.162
 BuildRequires:  pkgconfig(zlib)
+%if 0%{?suse_version} >= 1550
+BuildRequires:  glslang-devel
+BuildRequires:  pkgconfig(vulkan) >= 1.2.162
+%else
+Provides:       bundled(glslang) = 11.10.0
+Provides:       bundled(vulkan) = 1.2.189.1
+%endif
 Suggests:       freedoom
 Provides:       qzdoom = 1.3.0
 Provides:       zdoom = 2.8.1
-# DUMB is modified to read OggVorbis samples
 Provides:       bundled(gdtoa)
 Provides:       bundled(re2c) = 0.16.0
 Provides:       bundled(xbrz) = 1.7
@@ -78,10 +81,11 @@ The executables hard-require SSE2 on i686 currently.
 %autosetup -n %name-g%version -p1
 perl -i -pe 's{__DATE__}{"does not matter when"}g' src/common/platform/posix/sdl/i_main.cpp
 perl -i -pe 's{<unknown version>}{%version}g' tools/updaterevision/UpdateRevision.cmake
-rm -Rf glslang src/common/rendering/vulkan/thirdparty/vulkan
 mkdir -p extra_include/glslang
-%if 0%{?suse_version} && 0%{?suse_version} < 1550
-touch extra_include/glslang/build_info.h
+%if 0%{?suse_version} >= 1550
+rm -Rf glslang src/common/rendering/vulkan/thirdparty/vulkan
+%else
+%patch -P 5 -R -p1
 %endif
 
 %build
