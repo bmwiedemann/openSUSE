@@ -17,6 +17,6 @@ Index: triggerhappy-release-0.5.0/systemd/triggerhappy.service
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions 
+ Type=notify
  ExecStart=/usr/sbin/thd --triggers /etc/triggerhappy/triggers.d/ --socket /run/thd.socket --user nobody --deviceglob /dev/input/event*
  
- [Install]

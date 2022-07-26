@@ -1,7 +1,7 @@
 #
 # spec file for package triggerhappy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,10 @@ License:        GPL-3.0-or-later
 Group:          System/Base
 URL:            https://github.com/wertarbyte/triggerhappy
 Source:         https://github.com/wertarbyte/triggerhappy/archive/release/0.5.0.tar.gz
-Patch0:         0001-Fix-systemd-service.patch
+BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(libsystemd)
 Patch1:         harden_triggerhappy.service.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Triggerhappy
@@ -42,8 +43,7 @@ configuration.
 
 %prep
 %setup -q -n %{name}-release-%{version}
-%patch0 -p1
-%patch1 -p1
+%autopatch -p1
 
 %build
 make %{?_smp_mflags}
@@ -68,7 +68,8 @@ mkdir -p %{buildroot}/etc/triggerhappy/triggers.d/
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS README COPYING triggerhappy.conf.examples
+%license COPYING
+%doc AUTHORS README triggerhappy.conf.examples
 %{_sbindir}/th*
 %{_mandir}/man1/th*
 %dir %{_udevrulesdir}

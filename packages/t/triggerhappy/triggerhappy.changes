@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 21 18:43:19 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Build with systemd development files to prevent service timeouts
+  (https://github.com/wertarbyte/triggerhappy/pull/17)
+  - Remove 0001-Fix-systemd-service.patch
+- Spec file cleanup
+
+-------------------------------------------------------------------
 Thu Nov 25 13:49:27 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
