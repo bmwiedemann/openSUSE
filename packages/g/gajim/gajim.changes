@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Jul 24 18:16:35 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.4.7:
+  * Startup: Show hint in console if Gajim is already running.
+  * Preview: Add a setting to disable file preview.
+  * Roster: Display show value in tooltip.
+  * ChatActionProcessor: Improve detection of emoji shortcode
+    start.
+  * Roster: Don’t invalidate filter on contact update.
+  * Roster: Sort more efficiently.
+  * Settings migration: Don’t fail on missing proxies key.
+  * Chat Markers: Don’t send marker for outgoing messages.
+  * Main Window: Move to stored position on startup.
+  * Preview: Allow manual download for all mime types.
+  * GroupchatInfo: Don’t set subject when loading from disco info.
+  * Preview: Hide download hint if we sent the file.
+  * Remote: Console scripts need a method as entry point.
+  * CodeWidget: Don’t default to python for highlighting.
+  * ContactInfo: Preserve groups when changing contact name.
+  * CodeWidget: Don't highlight matching brackets.
+  * StatusIcon: Don’t lose new message icon on state change.
+  * GtkStatusIcon: Always show when Gajim has not toplevel focus.
+  * GroupChatNickCompletion: Only process Tab press.
+  * MessageRow: Align name label correctly.
+  * StatusIcon: Fix logic error on activate.
+
+-------------------------------------------------------------------
 Thu Jul  7 19:19:21 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.4.6:
