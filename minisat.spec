@@ -1,7 +1,7 @@
 #
 # spec file for package minisat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,7 +67,9 @@ Headers and libraries for the minisat package.
 
 %build
 %define __builder ninja
-%cmake -DMINISAT_INSTALL_CMAKE_DIR=%{_libdir}/cmake/%{name}
+%cmake -DMINISAT_INSTALL_CMAKE_DIR=%{_libdir}/cmake/%{name} \
+	-DCMAKE_INSTALL_LIBDIR:PATH=%{_prefix}/%{_lib}
+# bug in CMakeLists.txt, it looks up absolute paths only ^^
 %make_jobs
 
 %install

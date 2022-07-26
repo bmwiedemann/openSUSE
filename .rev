@@ -41,4 +41,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>847751</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1414c5e1ce9937b13ff303834e392221</srcmd5>
+    <version>2.2.1+20200902</version>
+    <time>1658857523</time>
+    <user>RBrownFactory</user>
+    <comment>- fix rpath (don't use relative lib64)</comment>
+    <requestid>991175</requestid>
+  </revision>
 </revisionlist>

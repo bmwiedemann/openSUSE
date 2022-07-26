@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 26 04:31:49 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- fix rpath (don't use relative lib64)
+
+-------------------------------------------------------------------
 Wed Nov 04 09:03:48 UTC 2020 - jslaby@suse.cz
 
 - Update to version 2.2.1+20200902:

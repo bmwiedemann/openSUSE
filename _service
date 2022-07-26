@@ -1,6 +1,6 @@
 <services>
   <service mode="disabled" name="obs_scm">
-    <param name="url">git://github.com/stp/minisat.git</param>
+    <param name="url">https://github.com/stp/minisat</param>
     <param name="scm">git</param>
     <param name="filename">minisat</param>
     <param name="changesgenerate">enable</param>
