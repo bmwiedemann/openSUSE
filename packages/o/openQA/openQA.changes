@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul 24 17:31:49 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1658503430.1290d12:
+  * Use new Leap repository name format
+  * Avoid potential problem in audit log test
+  * Document enabling the AMQP plugin (and not just configuring it)
+  * Only apply the domain passlist-check for ASSETS as documented
+  * Prevent error about "unreadable git hash"
+  * Fix sort order of comments on job details page
+  * Fix sorting of jobs that have never run on 'All tests' page
+
+-------------------------------------------------------------------
 Wed Jul 20 15:36:58 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1658331411.61dd85b:
