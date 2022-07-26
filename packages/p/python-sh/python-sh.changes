@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 24 07:52:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.3:
+  * bugfix where `Command` was not aware of default call args when wrapping the
+    module 
+
+-------------------------------------------------------------------
 Sun Jun  6 11:40:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.2:

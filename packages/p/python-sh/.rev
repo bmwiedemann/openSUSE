@@ -115,4 +115,14 @@
   * fix documentation link</comment>
     <requestid>897829</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5f5d9684dcd8bffcb4e4ae7e49566450</srcmd5>
+    <version>1.14.3</version>
+    <time>1658857324</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 1.14.3:
+  * bugfix where `Command` was not aware of default call args when wrapping the
+    module</comment>
+    <requestid>990863</requestid>
+  </revision>
 </revisionlist>
