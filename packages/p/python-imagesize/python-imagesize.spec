@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-imagesize
-Version:        1.3.0
+Version:        1.4.1
 Release:        0
 Summary:        Getting image size from PNG/JPEG/JPEG2000/GIF files
 License:        MIT
@@ -30,7 +30,6 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %python_subpackages
@@ -58,7 +57,6 @@ rm -v test/test_get_filelike.py
 %pytest
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %{python_sitelib}/*
 %doc README.rst
 

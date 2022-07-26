@@ -70,4 +70,14 @@
   * remove dependency on nose</comment>
     <requestid>945445</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2f50bc720c089f59c3ae31cffd038f62</srcmd5>
+    <version>1.4.1</version>
+    <time>1658857323</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 1.4.1:
+  * python 3.10 compat
+  * documentation updates</comment>
+    <requestid>990796</requestid>
+  </revision>
 </revisionlist>
