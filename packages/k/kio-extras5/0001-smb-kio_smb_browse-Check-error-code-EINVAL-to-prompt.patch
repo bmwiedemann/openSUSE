@@ -1,0 +1,35 @@
+From 546c2b06e27f0e8460f5ddf1347d28aa0ec22979 Mon Sep 17 00:00:00 2001
+From: Anthony Hung <anthonyhungck@gmail.com>
+Date: Wed, 22 Jun 2022 17:37:51 +0800
+Subject: [PATCH] smb/kio_smb_browse: Check error code `EINVAL` to prompt the
+ password dialog
+
+With `samba-libs` >= 4.16, when user connect to the windows file sharing with incorrect user credential, the error code is `EINVAL`.
+
+The user should get the password dialog to enter username and password if the error code is `EINVAL`.
+
+Reference URL:
+https://bugzilla.samba.org/show_bug.cgi?id=14983
+https://gitlab.gnome.org/GNOME/gvfs/-/issues/611
+
+BUG: 453090
+---
+ smb/kio_smb_browse.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/smb/kio_smb_browse.cpp b/smb/kio_smb_browse.cpp
+index 3bc25d83..a773befa 100644
+--- a/smb/kio_smb_browse.cpp
++++ b/smb/kio_smb_browse.cpp
+@@ -452,7 +452,7 @@ WorkerResult SMBWorker::listDir(const QUrl &kurl)
+     if (m_current_url.getType() != SMBURLTYPE_ENTIRE_NETWORK && smbc->error() != 0) {
+         // not smb:// and had an error -> handle it
+         const int err = smbc->error();
+-        if (err == EPERM || err == EACCES || workaroundEEXIST(err)) {
++        if (err == EPERM || err == EACCES || err == EINVAL || workaroundEEXIST(err)) {
+             qCDebug(KIO_SMB_LOG) << "trying checkPassword";
+             const int passwordError = checkPassword(m_current_url);
+             if (passwordError == KJob::NoError) {
+-- 
+2.36.1
+

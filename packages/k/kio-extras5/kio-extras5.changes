@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 21 06:33:22 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add preliminary patch to fix smb connections with samba >= 4.16
+  (boo#1201737, kde#453090):
+  * 0001-smb-kio_smb_browse-Check-error-code-EINVAL-to-prompt.patch
+
+-------------------------------------------------------------------
 Tue Jul  5 17:03:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 22.04.3
