@@ -16,9 +16,10 @@
 #
 
 
+%define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-adblock
-Version:        0.5.2
+Version:        0.6.0
 Release:        0
 Summary:        Brave's adblock library in Python
 License:        Apache-2.0 OR MIT
@@ -40,9 +41,9 @@ ExclusiveArch:  %{rust_arches}
 Python wrapper for Brave's adblocking library.
 
 %prep
-%setup -q -n adblock-%{version}
-# build flavor-specific versions -- otherwise py3.9 wheel will not work
-sed -i 's/"abi3-py36", //' Cargo.toml
+%setup -q
+# build flavor-specific versions -- otherwise wheels will not work
+sed -i 's/"abi3-py37", //' Cargo.toml
 
 tar xf %{SOURCE1}
 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 24 16:35:11 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.6.0
+Added
+  * Added aliases optional argument to Engine.add_resource.
+Changes
+  * Update PyO3 dependency to 0.16.
+  * Update upstream dependency to 0.5.6.
+Breaks
+  * Minimum Rust version is now 1.53.
+  * Minimum Python version is now 3.7.
+
+-------------------------------------------------------------------
 Wed Jun 15 14:07:33 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.5.2

@@ -52,4 +52,20 @@
     (gh#ArniDagur/python-adblock#59)</comment>
     <requestid>982852</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>21e829c5229f895d8fd504666294b6f4</srcmd5>
+    <version>0.6.0</version>
+    <time>1658857449</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.6.0
+Added
+  * Added aliases optional argument to Engine.add_resource.
+Changes
+  * Update PyO3 dependency to 0.16.
+  * Update upstream dependency to 0.5.6.
+Breaks
+  * Minimum Rust version is now 1.53.
+  * Minimum Python version is now 3.7.</comment>
+    <requestid>990893</requestid>
+  </revision>
 </revisionlist>
