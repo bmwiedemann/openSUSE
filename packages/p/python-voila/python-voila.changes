@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Jul 24 23:45:15 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update python-jupyter-server requirement to 1.18
+
+- update to version 0.3.6:
+  * Enhancements made
+    + adding nbextension path to voila config object #1167
+      (@dharmaquark)
+  * Bugs fixed
+    + The cling tests appear to hang on OSX #1171 (@SylvainCorlay)
+    + Fix default VOILA_WS_BASE_URL value in preheating mode #1141
+      (@vkaidalov-rft)
+  * Maintenance and upkeep improvements
+    + Bump jquery-ui from 1.13.1 to 1.13.2 #1172 (@dependabot)
+    + Bump moment from 2.29.1 to 2.29.4 #1166 (@dependabot)
+    + Bump moment from 2.29.1 to 2.29.4 in /ui-tests #1165
+      (@dependabot)
+    + Bump parse-url from 6.0.0 to 6.0.2 #1164 (@dependabot)
+    + Update jupyter_server #1163 (@martinRenou)
+    + Bump jpeg-js from 0.4.3 to 0.4.4 in /ui-tests #1162
+      (@dependabot)
+    + Bump async from 2.6.3 to 2.6.4 in /ui-tests #1151 (@dependabot)
+    + [tests] rerun failed tests 2 times in CI #1150 (@timkpaine)
+    + Fix UI-tests detached script #1136 (@martinRenou)
+    + Bump minimist from 1.2.5 to 1.2.6 in /ui-tests #1135
+      (@dependabot)
+  * Documentation improvements
+    + Update deploy to Heroku instructions #1158 (@samharrison7)
+    + Use pydata-sphinx-theme #1139 (@martinRenou)
+
+-------------------------------------------------------------------
 Thu Jul  7 19:26:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Skip flaky tests, try a second time if more fail

@@ -32,7 +32,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-voila%{psuffix}
-Version:        0.3.5
+Version:        0.3.6
 Release:        0
 Summary:        Plugin for serving read-only live Jupyter notebooks
 License:        BSD-3-Clause
@@ -52,7 +52,7 @@ Requires:       jupyter-voila = %{version}
 Requires:       python-nbclient >= 0.4
 Requires:       python-websockets >= 9.0
 Requires:       (python-jupyter-client >= 6.1.3 with python-jupyter-client < 8)
-Requires:       (python-jupyter-server >= 0.3.0 with python-jupyter-server < 2)
+Requires:       (python-jupyter-server >= 1.18 with python-jupyter-server < 2)
 Requires:       (python-jupyterlab-server >= 2.3.0 with python-jupyterlab-server < 3)
 Requires:       (python-nbconvert >= 6.4.5 with python-nbconvert < 7)
 Requires:       (python-traitlets >= 5.0.3 with python-traitlets < 6)
@@ -69,8 +69,8 @@ BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module matplotlib-web}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module pytest-rerunfailures}
+BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module voila = %{version}}
 %endif
