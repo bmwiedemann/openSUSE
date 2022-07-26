@@ -31,13 +31,13 @@
 %bcond_with libalternatives
 %endif
 Name:           python-jupyter-server%{psuffix}
-Version:        1.17.1
+Version:        1.18.1
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://jupyter-server.readthedocs.io
-Source:         https://files.pythonhosted.org/packages/source/j/jupyter-server/jupyter_server-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/j/jupyter_server/jupyter_server-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jupyter_packaging}
 BuildRequires:  %{python_module setuptools}

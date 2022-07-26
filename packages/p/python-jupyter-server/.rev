@@ -237,4 +237,12 @@
 - boo#1200548, CVE-2022-29241</comment>
     <requestid>982746</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0fb95738a645abe94ae3dd83068291b5</srcmd5>
+    <version>1.18.1</version>
+    <time>1658857457</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990956</requestid>
+  </revision>
 </revisionlist>

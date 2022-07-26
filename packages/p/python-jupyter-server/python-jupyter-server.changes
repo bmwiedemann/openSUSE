@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul 25 00:12:10 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.18.1:
+  * Bugs fixed
+    + Notify ChannelQueue that the response router thread is finishing
+      #896 (@CiprianAnton)
+    + Make ChannelQueue.get_msg true async #892 (@CiprianAnton)
+
+- changes from version 1.18.0:
+  * Enhancements made
+    + Show import error when faiing to load an extension #878 (@minrk)
+  * Bugs fixed
+    + Fix gateway kernel shutdown #874 (@kevin-bates)
+  * Maintenance and upkeep improvements
+    + suppress tornado deprecation warnings #882 (@minrk)
+    + Normalize os_path #886 (@martinRenou)
+    + Fix lint #867 (@blink1073)
+    + Fix sphinx 5.0 support #865 (@blink1073)
+
+-------------------------------------------------------------------
 Tue Jun 14 14:19:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.17.1
