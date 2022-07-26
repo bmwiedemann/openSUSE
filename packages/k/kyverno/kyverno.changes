@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jul 25 11:08:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.7.2:
+  * tag v1.7.2 (#4261)
+  * Use non-blocking channel send for UpdateWebhookChan (#4204) (#4247)
+  * Release v1.7.2-rc2 (#4246)
+  * fix split policyreport name with background scan (#4237) (#4245)
+  * fix check depreciated api issue (#4243) (#4244)
+  * fix kyverno cli policy-report typo (#4224) (#4232)
+  * Limit queued events (#4233)
+  * update cosign to v1.9.0 (#4231)
+  * Only set up logging context if it will be used (#4213)
+  * use the unstructured list instead of interface type (#4211)
+  * Fix UpdateRequest labeling (#4199)
+  * Release 1.7 (#4200)
+  * external.metrics.k8s.io/v1beta1 issue (#4182)
+  * delete policy reports on policy deletion (#4174) (#4175)
+  * tag v1.7.2-rc1 (#4167)
+  * feat: split policy report per policy bases (#4147) (#4166)
+  * Re-implement #4159 (#4165)
+  * Cherry pick #4155 (#4164)
+  * Cherry-pick #4148
+  * Use kyverno namespace informer to list pods while processing URs (#4156)
+  * Cherry-pick #4138 to 1.7 (#4160)
+  * fix: use dev tag for init container local build target (#4141)
+
+-------------------------------------------------------------------
 Wed Jun 22 08:17:51 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.7.1:
