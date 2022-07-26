@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 24 17:36:21 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to upstream release 3.4.2
+  minor release to provide out-of-the-box compatibility with the merge
+  of libldap and libldap_r that happened with OpenLDAP's 2.5 release.
+
+-------------------------------------------------------------------
 Fri Dec 10 14:13:43 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - skip Python 2 builds
