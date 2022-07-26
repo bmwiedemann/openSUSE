@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jul 16 02:39:09 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 0.4.1:
+  * doc: update demo GIF
+  * fix: use terminal_width to check min width
+  * doc: add GitHub FUNDING.yml
+  * chore: remove resolved TODO
+  * doc: overhaul Word list docstrings
+  * chore: move min line width to global const variable
+  * fix: use ```vec`` and use max line length as ```50```
+  * chore: format files
+  * fix: export LOCALE before sorting
+  * docs: add doc comment crediting monkeytype for word lists
+  * chore: format word lists
+  * refactor: update wordlists.rc to add the new word list files
+  * feat: add english commonly misspelled word list
+  * feat: add english 10k word list
+  * feat: add new 25k word list
+
+-------------------------------------------------------------------
 Sat May 21 15:37:56 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Initial spec for toipe (0.4.0)

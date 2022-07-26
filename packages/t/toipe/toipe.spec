@@ -17,13 +17,13 @@
 
 
 Name:           toipe
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Yet another typing test, but crab flavoured
-License:        ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( Unlicense OR MIT ) AND MIT
+License:        (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT) AND (MIT OR Unlicense) AND MIT
 URL:            https://github.com/Samyak2/toipe
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  rust >= 1.46

@@ -7,4 +7,12 @@
     <comment>I want to maintain toipe in openSUSE:Factory</comment>
     <requestid>978636</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>92405a400c529339a1756526217978af</srcmd5>
+    <version>0.4.1</version>
+    <time>1658857411</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>990745</requestid>
+  </revision>
 </revisionlist>
