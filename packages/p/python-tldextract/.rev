@@ -215,4 +215,15 @@ Bugfixes
       (#gh/john-kurkowski/tldextract/issues/246))</comment>
     <requestid>982862</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>878beb82d3510f27a9a16b545d86c1f5</srcmd5>
+    <version>3.3.1</version>
+    <time>1658857450</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 3.3.1
+Bugfixes
+  * Fix documented types, in README and in exception message
+    #gh/john-kurkowski/tldextract#265</comment>
+    <requestid>990894</requestid>
+  </revision>
 </revisionlist>
