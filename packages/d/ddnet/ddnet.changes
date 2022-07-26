@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jul 17 23:56:01 UTC 2022 - Timothy Brown <stimut@gmail.com>
+
+- Update to version 16.2.2:
+  * [Client] Add option to change default eyes when joining server
+  * [Client] Tooltips to explain some settings
+  * [Client] DDNet HUD
+  * [Client] Controller support
+  * [Client] Add community skin option
+  * [Client] Prediction of switch state toggles
+  * [Client] Use STUN to check network status when connecting
+  * [Server] HTTP masterserver registering
+  * [Server] Enable swapping in team 0
+  * [Server] Shields that take away specific weapons
+  * [Client+Server] Unify logging infrastructure so that F1 shows all
+  * [Client+Server] Switch new players to DDNet config dir, support Teeworlds as fallback
+  * Plus many bug fixes listed at https://ddnet.tw/downloads/
+
+-------------------------------------------------------------------
 Tue Apr  5 19:07:01 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 16.0.3
