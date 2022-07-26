@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  3 13:16:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim old specfile constructs
+- Remove --with-pic since that only affects static libs
+  which are disabled.
+
+-------------------------------------------------------------------
 Sat Apr 23 23:55:13 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.3.8

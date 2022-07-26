@@ -59,7 +59,6 @@ BuildRequires:  pkgconfig(xt)
 Conflicts:      lestif2
 Provides:       openmotif = %{version}
 Obsoletes:      openmotif < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This package provides programs of the Motif runtime enviroment.
@@ -117,6 +116,7 @@ Motif applications.
 %prep
 %autosetup -p1
 sed -i 's|{libdir}/X11|{datadir}/X11|' configure.ac
+
 %build
 autoreconf -fi
 export CFLAGS="%{optflags} -fno-strict-aliasing"
@@ -126,8 +126,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
     --with-x11rgbdir="%{_datadir}/X11" \
     --enable-xft \
     --enable-jpeg \
-    --enable-png \
-    --with-pic
+    --enable-png
 %make_build MWMRCDIR=%{_sysconfdir}/X11 XMBINDDIR_FALLBACK=%{_datadir}/X11/bindings
 
 %install
@@ -151,7 +150,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libXm4  -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
 %dir %{_includedir}/X11/bitmaps
 %{_includedir}/X11/bitmaps/xm_*
 %{_datadir}/X11/bindings
@@ -164,19 +162,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/xsessions/*
 
 %files -n libMrm4
-%defattr(-,root,root)
 %{_libdir}/libMrm.so.4*
 
 %files -n libUil4
-%defattr(-,root,root)
 %{_libdir}/libUil.so.4*
 
 %files -n libXm4
-%defattr(-,root,root)
 %{_libdir}/libXm.so.4*
 
 %files devel
-%defattr(-, root, root)
 %{_bindir}/uil
 %{_includedir}/Mrm
 %{_includedir}/uil
