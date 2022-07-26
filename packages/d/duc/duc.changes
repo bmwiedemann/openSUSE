@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 25 07:44:40 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.5:
+  * new: added '-u' option to duc index to index by username
+  * new: added json subcommand
+  * new: added support for NO_COLOR env var
+  * cha: duc db location is now XDG compliant
+  * fix: various bug fixes, check the git log for details
+
+-------------------------------------------------------------------
 Mon Aug 12 14:44:29 UTC 2019 - Benoît Monin <benoit.monin@gmx.fr>
 
 - fix build: add missing dependency to gobject library

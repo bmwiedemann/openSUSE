@@ -31,4 +31,17 @@
     <comment></comment>
     <requestid>724557</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6a03068d123f5faefd4149960b0644a8</srcmd5>
+    <version>1.4.5</version>
+    <time>1658857463</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.4.5:
+  * new: added '-u' option to duc index to index by username
+  * new: added json subcommand
+  * new: added support for NO_COLOR env var
+  * cha: duc db location is now XDG compliant
+  * fix: various bug fixes, check the git log for details</comment>
+    <requestid>990948</requestid>
+  </revision>
 </revisionlist>
