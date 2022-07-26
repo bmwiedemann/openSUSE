@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 23 11:37:02 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v4.2.13 fixed don't initialize playback recall
+  twice.
+- minor improvements
+
+-------------------------------------------------------------------
 Fri Jul  1 11:35:10 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v4.2.10 minor improvements and some bug-fixes.
