@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 20 07:11:15 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to 20220801
+- Fetch real used shared library name from import libraries to avoid
+  file name generation errors, for example with mingw32-glib2
+- Scan all archives for shared library names as packages may not use
+  the default import library extension
+
+-------------------------------------------------------------------
 Tue Jul 12 07:18:39 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Fix finding qm files for KDE Frameworks >= 5.76 (taken from rpm-4.14.1)

@@ -31,7 +31,7 @@
 %define _rpmmacrodir %{_sysconfdir}/rpm
 %endif
 Name:           mingw32-filesystem
-Version:        20220620
+Version:        20220801
 Release:        0
 Summary:        MinGW base filesystem and environment
 License:        GPL-2.0-or-later
