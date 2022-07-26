@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Mon Jul 18 14:50:16 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 4.7.0+44 (current git master):
+  * Fix vmstate regression
+  * msvc: use char* for pointer arithmetic
+  * Align outgoing packets
+  * Bump incoming packet alignment to 8 bytes
+  * msvc: fix some gcc-specific pragma warnings
+  * msvc: enable vmstate code on !gnuc
+  * vmstate: only enable when building under GNU C
+  * ncsitest: Fix build with msvc
+  * Avoid running git-version-gen when building with MS VC
+  * windows: export symbols
+  * win32: replace strcasecmp with g_ascii_strcasecmp
+  * Drop spurious inline
+  * Avoid returning void
+  * Fix arithmetic on void *
+  * Avoid using ##__VA_ARGS__ gcc extension
+  * Fix bitfields order for MSVC
+  * Separate out SLIRP_PACKED to SLIRP_PACKED_BEGIN/END
+  * Do not use ssize_t on Windows
+  * Do not include unistd.h on windows, it does not have it
+  * Accept build-aux/git-version-gen failing to run
+  * container_of: avoid using __extension__
+  * ncsi: Add Mellanox Get Mac Address handler
+  * slirp: Add out-of-band ethernet address
+  * ncsi: Add OEM command handler
+  * ncsi: Add basic test for Get Version ID response
+  * ncsi: Use response header for payload length
+  * ncsi: Pass command header to response handlers
+  * src/slirp.h: Bump the minimum Windows version to Windows 7
+  * ncsi: Add Get Version ID command
+  * ncsi: Pass Slirp structure to response handlers
+  * slirp: Add manufacturer's ID
+  * Add support for Haiku to meson.build
+  * meson: add extra warnings
+  * win32: declare some local functions as static
+  * Include <sys/socket.h> and <arpa/inet.h> for AF_INET6 and inet_pton
+  * Release v4.7.0
+  * bump ABI version and age
+  * slirp: invoke client callback before creating timers
+  * pingtest: port to timer_new_opaque
+  * introduce timer_new_opaque callback
+  * introduce slirp_timer_new wrapper
+  * icmp6: make ndp_send_ra static
+  * Add sanitizers CI runs
+  * socket: Handle ECONNABORTED from recv
+  * bootp: fix g_str_has_prefix warning/critical
+  * slirp: Don't duplicate packet in tcp_reass
+  * Rename insque/remque -> slirp_[ins|rem]que
+  * mbuf: Use SLIRP_DEBUG to enable mbuf debugging instead of DEBUG
+  * Replace inet_ntoa() with safer inet_ntop()
+  * Add VMS_END marker
+  * bootp: add support for UEFI HTTP boot
+  * IPv6 DNS proxying support
+  * Add missing scope_id in caching
+  * Drop fixed TODO
+  * socket: Move closesocket(so->s_aux) to sofree
+  * socket: Check so_type instead of so_tcpcb for Unix-to-inet translation
+  * socket: Add s_aux field to struct socket for storing auxilliary socket
+  * socket: Initialize so_type in socreate
+  * socket: Allocate Unix-to-TCP hostfwd port from OS by binding to port 0
+  * Allow to disable internal DHCP server
+  * slirp_pollfds_fill: Explain why dividing so_snd.sb_datalen by two
+  * CI: run integration tests with slirp4netns
+  * socket: Check address family for Unix-to-inet accept translation
+  * socket: Add debug args for tcpx_listen (inet and Unix sockets)
+  * socket: Restore original definition of fhost
+  * socket: Move <sys/un.h> include to socket.h
+  * Support Unix sockets in hostfwd
+  * resolv: fix IPv6 resolution on Darwin
+  * Use the exact sockaddr size in getnameinfo call
+  * Initialize sin6_scope_id to zero
+  * slirp_socketpair_with_oob: Connect pair through 127.0.0.1
+  * resolv: fix memory leak when using libresolv
+  * pingtest: Add a trivial ping test
+  * icmp: Support falling back on trying a SOCK_RAW socket
+
+-------------------------------------------------------------------
 Thu Jul 22 11:39:54 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 4.6.1+7:
