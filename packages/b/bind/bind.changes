@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jul 21 06:51:58 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Update to bind release 9.18.5
+  Bugs fixed:
+  * When resolving a name, don't give up immediately if an
+    authoritative server returns FORMERR; try the other servers first.
+  * When synth-from-dnssec generated a response using records from a
+    higher zone, it could unexpectedly prove non-existance of
+    records in a subordinate grafted-on namespace.  
+  * Update HTTP listener settings on reconfiguration.
+  * Fix a crash in dig NS search mode when one of the NS server
+    queries fail.
+  * Changed dnssec-signzone -H default to 0 additional NSEC3
+    iterations.
+  * When processing a catalog zone member zone make sure that there
+    is no configured pre-existing forward-only forw]ard zone with
+    that name.
+  [bind-9.18.5.tar.xz bind-9.18.5.tar.xz.sha512.asc]
+
+-------------------------------------------------------------------
 Wed Jun 15 12:37:17 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
 
 - Upgrade to 9.18.4:
