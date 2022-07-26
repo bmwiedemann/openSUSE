@@ -317,4 +317,12 @@
 - IPC: server: avoid temporary channel priority loss, up to deadlock-worth (gh#ClusterLabs/libqb#352, rh#1718773, bsc#1188212) (forwarded request 946347 from yan_gao)</comment>
     <requestid>946348</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>94010f48bba5f9eb9a32e8353c6772cd</srcmd5>
+    <version>2.0.6+20220323.758044b</version>
+    <time>1658857340</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>991002</requestid>
+  </revision>
 </revisionlist>

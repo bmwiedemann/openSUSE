@@ -3,4 +3,6 @@
     <param name="url">git://github.com/ClusterLabs/libqb.git</param>
     <param name="changesrevision">a2691b96188033b5ad5c08871982048ae1f4f4e8</param>
   </service>
-</servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/ClusterLabs/libqb.git</param>
+              <param name="changesrevision">758044bed5f615c90818aa5431d00303288888e5</param></service></servicedata>

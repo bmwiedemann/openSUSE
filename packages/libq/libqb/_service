@@ -1,17 +1,17 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="scm">git</param>
-    <param name="url">git://github.com/ClusterLabs/libqb.git</param>
+    <param name="url">https://github.com/ClusterLabs/libqb.git</param>
     <param name="package-meta">yes</param>
     <param name="exclude">.git</param>
 <!--
     To update to a new release, change "revision" to the desired
     git commit hash and bump "version" if necessary
 
-    <param name="version">2.0.4</param>
+    <param name="version">2.0.6</param>
 -->
-    <param name="versionformat">2.0.4+%cd.%h</param>
-    <param name="revision">v2.0.4</param>
+    <param name="versionformat">2.0.6+%cd.%h</param>
+    <param name="revision">v2.0.6</param>
     <param name="changesgenerate">enable</param>
   </service>
 

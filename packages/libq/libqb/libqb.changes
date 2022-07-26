@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Apr 21 07:50:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Make sure that the libstat_wrapper.so library is included in the libqb-tests RPM (when built)
+
+-------------------------------------------------------------------
+Wed Mar 23 15:50:36 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.6+20220323.758044b (v2.0.6):
+- test: Include ipc_sock.test in the libqb-tests rpm (gh#ClusterLabs/libqb##463)
+
+-------------------------------------------------------------------
+Wed Mar 23 13:44:10 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20220321.ccdaada (v2.0.5):
+- blackbox: Sanitize items read from the blackbox header (gh#ClusterLabs/libqb#438)
+- ipcc: Fix errno returned from qb_ipcc_connect (gh#ClusterLabs/libqb#460)
+- util: reimplement time functions as a series of fallbacks (gh#ClusterLabs/libqb#457)
+- util: use HAVE_GETTIMEOFDAY where appropriate
+
+- Retry if posix_fallocate is interrupted with EINTR (#453) (gh#ClusterLabs/libqb#451, bsc#1193737, bsc#1193912)
+- Merge:
+  * bsc#1193737-0001-Retry-if-posix_fallocate-is-interrupted-with-EINTR-4.patch
+
+- ipcc: Add an async connect API (gh#ClusterLabs/libqb#450)
+
+-------------------------------------------------------------------
 Fri Jan 14 08:06:10 UTC 2022 - Yan Gao <ygao@suse.com>
 
 - Retry if posix_fallocate is interrupted with EINTR (#453) (gh#ClusterLabs/libqb#451, bsc#1193737, bsc#1193912)

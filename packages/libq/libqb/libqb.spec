@@ -21,7 +21,7 @@
 %bcond_without doxygen2man
 
 Name:           libqb
-Version:        2.0.4+20211112.a2691b9
+Version:        2.0.6+20220323.758044b
 Release:        0
 Summary:        An IPC library for high performance servers
 License:        LGPL-2.1-or-later
@@ -29,8 +29,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/ClusterLabs/libqb
 Source0:        %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-Patch1:         bsc#1193737-0001-Retry-if-posix_fallocate-is-interrupted-with-EINTR-4.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -67,8 +65,8 @@ features. It provides logging, tracing, IPC, and polling.
 %package tools
 Summary:        Utilities from libqb, an IPC library
 Group:          Development/Tools/Other
-Provides:       libqb0:/usr/sbin/qb-blackbox
 Conflicts:      libqb0 <= 1.0.3
+Provides:       libqb0:%{_sbindir}/qb-blackbox
 
 %description tools
 libqb is a library providing high performance client server reusable
@@ -76,7 +74,6 @@ features. It provides logging, tracing, IPC, and polling.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch1 -p1
 
 %build
 if [ ! -f .tarball-version ]; then
@@ -88,7 +85,7 @@ fi
  --enable-install-tests \
 %endif
  --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %if 0%{?with_check}
 %check
@@ -96,15 +93,15 @@ make %{?_smp_mflags}
 # TODO: This test might not be quite right -- it seems to fail on OBS,
 # but OBS is capable of doing "make check" successfully, whereas
 # "osc build" in a chroot fails.
-if [ -w /dev/shm -a -w /var/run ] ; then
+if [ -w /dev/shm -a -w %{_localstatedir}/run ] ; then
 
-	make V=1 check
+	%make_build check
 fi
 %endif
 
 %install
 %make_install
-find %{buildroot} -name '*.la' -delete
+find %{buildroot} -type f -name "*.la" -delete -print
 rm -rf %{buildroot}%{_datadir}/doc
 
 %post -n libqb100 -p /sbin/ldconfig
@@ -112,29 +109,28 @@ rm -rf %{buildroot}%{_datadir}/doc
 %postun -n libqb100 -p /sbin/ldconfig
 
 %files -n libqb100
-%doc COPYING
+%license COPYING
 %{_libdir}/libqb.so.*
 
 %files devel
-%defattr(-,root,root,-)
-%doc COPYING README.markdown
+%license COPYING
+%doc README.markdown
 %{_includedir}/qb/
 %{_libdir}/libqb.so
 %{_libdir}/pkgconfig/libqb.pc
-%{_mandir}/man3/qb*3*
+%{_mandir}/man3/qb*3%{?ext_man}
 
 %files tools
-%defattr(-,root,root,-)
-%doc COPYING
+%license COPYING
 %{_sbindir}/qb-blackbox
-%{_mandir}/man8/qb-blackbox.8.gz
+%{_mandir}/man8/qb-blackbox.8%{?ext_man}
 
 %package	tests
 Summary:        Test suite for %{name}
 Group:          Development/Tools/Other
 
-%files		tests
-%doc COPYING
+%files tests
+%license COPYING
 %dir %{_libdir}/libqb
 %dir %{_libdir}/libqb/tests
 %{_libdir}/libqb/tests/*
@@ -142,18 +138,18 @@ Group:          Development/Tools/Other
 %description	tests
 The %{name}-tests package contains the %{name} test suite.
 
-
 %if %{with doxygen2man}
 %package	-n doxygen2man
 Summary:        tool to generate man pages from Doxygen XML files
-Group:          Development/Libraries
-Requires:       libqb100 = %{version}-%{release}
+Group:          Development/Tools/Doc Generators
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libxml-2.0)
+Requires:       libqb100 = %{version}-%{release}
 
 %files -n doxygen2man
 %{_bindir}/doxygen2man
-%{_mandir}/man1/doxygen2man.1*
-%doc COPYING
+%{_mandir}/man1/doxygen2man.1%{?ext_man}
+%license COPYING
 
 %description	-n doxygen2man
 The doxygen2man package contains the doxygen2man utility.
