@@ -1,0 +1,44 @@
+From e9ba0461065b94f3b0611cf6b5e2d88994cfa124 Mon Sep 17 00:00:00 2001
+From: actboy168 <actboy168@gmail.com>
+Date: Mon, 25 Jul 2022 09:42:26 +0800
+Subject: [PATCH] fixes #1377
+
+---
+ 3rd/bee.lua/binding/lua_time.cpp             |    2 ++
+ 3rd/luamake/3rd/bee.lua/binding/lua_time.cpp |    2 ++
+ luamake/3rd/bee.lua/binding/lua_time.cpp     |    2 ++
+ 3 files changed, 6 insertions(+)
+
+--- a/3rd/bee.lua/binding/lua_time.cpp
++++ b/3rd/bee.lua/binding/lua_time.cpp
+@@ -2,6 +2,8 @@
+ 
+ #if defined(_WIN32)
+ #include <Windows.h>
++#else
++#include <time.h>
+ #endif
+ 
+ namespace bee::lua_time {
+--- a/3rd/luamake/3rd/bee.lua/binding/lua_time.cpp
++++ b/3rd/luamake/3rd/bee.lua/binding/lua_time.cpp
+@@ -2,6 +2,8 @@
+ 
+ #if defined(_WIN32)
+ #include <Windows.h>
++#else
++#include <time.h>
+ #endif
+ 
+ namespace bee::lua_time {
+--- a/luamake/3rd/bee.lua/binding/lua_time.cpp
++++ b/luamake/3rd/bee.lua/binding/lua_time.cpp
+@@ -2,6 +2,8 @@
+ 
+ #if defined(_WIN32)
+ #include <Windows.h>
++#else
++#include <time.h>
+ #endif
+ 
+ namespace bee::lua_time {

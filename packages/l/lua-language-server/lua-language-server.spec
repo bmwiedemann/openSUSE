@@ -18,7 +18,7 @@
 
 
 Name:           lua-language-server
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        Lua Language Server coded by Lua
 License:        MIT
@@ -29,6 +29,9 @@ Source0:        https://github.com/sumneko/%{name}/releases/download/%{version}/
 Source1:        https://github.com/sumneko/%{name}/archive/%{version}.tar.gz
 Source2:        lua-lsp-launcher.sh
 Source3:        README.suse-maint.md
+# PATCH-FIX-UPSTREAM time_includes.patch gh#sumneko/lua-language-server#1377 mcepl@suse.com
+# Add missing #include
+Patch0:         time_includes.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ninja

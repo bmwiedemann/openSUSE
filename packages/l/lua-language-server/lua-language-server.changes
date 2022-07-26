@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul 26 00:08:48 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.5.0:
+  - meta: openresty add api run_worker_thread
+  - bugfix:allow get() in sharedict return value and nil
+  - table new/clear function actual use scenarios
+  - #1325: add missing paramter type for getfenv
+  - Meta: make osdate accept strings
+  - More tag descriptions
+  - fix typos in annotation
+- Update to 3.4.1:
+  - Fix dofile returns multiple values ---@return any ...
+  - add 3rd luafilesystem
+  - OpenResty type annotation updates
+  - fixing grammar in error message
+- Add time_includes.patch to fix missing #includes
+  (gh#sumneko/lua-language-server#1377).
+
+-------------------------------------------------------------------
 Wed Jun 29 21:05:12 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.4.0:
