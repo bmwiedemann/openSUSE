@@ -1,7 +1,7 @@
 #
 # spec file for package genders
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,9 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  lua-devel
+BuildRequires:  patchelf
+BuildRequires:  python
+BuildRequires:  python-devel
 BuildRequires:  python3
 BuildRequires:  python3-devel
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -77,13 +80,13 @@ Requires:       %{name} = %{version}
 %description devel
 genders headers and libraries files needed for development
 
-%package -n python3-%{name}
+%package -n python-%{name}
 Summary:        Python bindings for genders
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       python
 
-%description -n python3-%{name}
+%description -n python-%{name}
 Necessary files for using genders with Python.
 
 %package -n lua-%{name}
@@ -118,7 +121,7 @@ Summary:        C++ library API for genders
 Group:          System/Libraries
 Requires:       %{name}-base
 
-%description -n lib%{name}plusplus%{cpp_api} 
+%description -n lib%{name}plusplus%{cpp_api}
 This package contains the library needed to run programs dynamically linked
 with genders. This is the C++ API.
 
@@ -135,22 +138,19 @@ with genders. This is the C++ API.
 %if %{?_with_perl_vendor_arch:1}%{!?_with_perl_vendor_arch:0}
 %define _perldir %(perl -e 'use Config; $T=$Config{installvendorarch}; $P=$Config{vendorprefix}; $T=~/$P\\/(.*)/; print "%{_prefix}/$1\\n"')
 %endif
+
 %prep
 %setup -c -q -n %{name}-%{version}
 mv genders-genders-%{slash_ver}/* .
 rm -r genders-genders-%{slash_ver}
-%patch1 -p1
-%patch2 -p1
-%patch4 -p1 
+%autopatch -p1
 
 %build
 aclocal --force --install -I config
 libtoolize -f -i
 automake -a -f
 autoconf --force
-mkdir -p bin/
-ln -s $(which python3) bin/python
-export PATH=$(pwd)/bin/:${PATH}
+export GENDERS_LIBDIR=%{_libdir}
 %configure --program-prefix=%{?_program_prefix:%{_program_prefix}} \
     %{?_with_perl_extensions} \
     %{?_without_perl_extensions} \
@@ -178,15 +178,14 @@ export NO_BRP_CHECK_RPATH=true
 find "%{buildroot}" -name .packlist -exec sed -i "s#%{buildroot}##" {} +
 find "%{buildroot}" -name .packlist -exec sed -i '/BUILDROOT/d'        {} +
 
-for file in %{buildroot}%{_prefix}/lib/genders/*.pl; do grep '#!/usr/bin/perl' $file || sed -i '1s,^,#!/usr/bin/perl\n,' $file ;done  
+for file in %{buildroot}%{_prefix}/lib/genders/*.pl; do grep '#!/usr/bin/perl' $file || sed -i '1s,^,#!/usr/bin/perl\n,' $file ;done
 
 # remove .a files
 %if %{?_with_cplusplus_extensions:1}%{!?_with_cplusplus_extensions:0}
 rm -v %{buildroot}%{_libdir}/libgendersplusplus.la
 %endif
 rm -v %{buildroot}%{_libdir}/libgenders.la
-rm -rv %{buildroot}%{_libdir}/python*/site-packages/__pycache__
-find %{buildroot}%{_libdir}/lua -name \*.la -delete 
+find %{buildroot}%{_libdir}/lua -name \*.la -delete
 mkdir -p  %{buildroot}%{_sysconfdir}
 # create sample config, but remove comments
 cat > %{buildroot}%{_sysconfdir}/genders <<EOF
@@ -197,8 +196,8 @@ cat > %{buildroot}%{_sysconfdir}/genders <<EOF
 # each of which can optionally have a value.  The substitution string "%n" can
 # be used in an attribute value to represent the nodename.  Nodenames can be
 # listed on multiple lines, so a node's attributes can be specified on multiple
-# lines. However, no single node may have duplicate attributes. Genders database 
-# accepts ranges of nodenames in the general form: prefix[n-m,l-k,...], 
+# lines. However, no single node may have duplicate attributes. Genders database
+# accepts ranges of nodenames in the general form: prefix[n-m,l-k,...],
 # where n < m and l < k, etc., as an alternative to explicit lists of nodenames.
 #
 # Following is a sample genders configuration setup
@@ -207,14 +206,19 @@ EOF
 LD_PRELOAD=%{buildroot}%{_libdir}/libgenders.so.0 %{buildroot}%{_bindir}/nodeattr -f genders.sample --compress >> %{buildroot}%{_sysconfdir}/genders
 
 sed -i -e 's/^\([^#]\)/## \1/' %{buildroot}%{_sysconfdir}/genders
+# remove rpath the hard way
+brklib=$(find %{buildroot} -name Libgenders.so -print)
+chmod 644 $brklib
+patchelf --remove-rpath $brklib
+chmod 444 $brklib
 
-%post -n lib%{name}plusplus%{cpp_api} -p /sbin/ldconfig 
+%post -n lib%{name}plusplus%{cpp_api} -p /sbin/ldconfig
 
-%postun -n lib%{name}plusplus%{cpp_api} -p /sbin/ldconfig 
+%postun -n lib%{name}plusplus%{cpp_api} -p /sbin/ldconfig
 
-%post -n lib%{name}%{c_api} -p /sbin/ldconfig 
+%post -n lib%{name}%{c_api} -p /sbin/ldconfig
 
-%postun -n lib%{name}%{c_api} -p /sbin/ldconfig 
+%postun -n lib%{name}%{c_api} -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root)
@@ -243,7 +247,7 @@ sed -i -e 's/^\([^#]\)/## \1/' %{buildroot}%{_sysconfdir}/genders
 %{_mandir}/man3/libgenders*
 
 %if %{?_with_python_extensions:1}%{!?_with_python_extensions:0}
-%files -n python3-%{name}
+%files -n python-%{name}
 %{_libdir}/python*
 %endif
 

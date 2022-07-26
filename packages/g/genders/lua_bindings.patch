@@ -1,3 +1,27 @@
+From 93e668aa34d1315140349217cb39563c78b33fe2 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Fri, 22 Jul 2022 14:39:37 +0200
+Subject: [PATCH 1/2] added lua bindings
+
+---
+ config/ac_lua_extensions.m4                   |  21 ++
+ config/x_ac_lua.m4                            |  60 ++++
+ configure.ac                                  |  21 ++
+ genders.spec                                  | 110 ++++++
+ src/extensions/Makefile.am                    |   2 +-
+ .../lua/GendersTest/GendersTest.lua           | 134 ++++++++
+ src/extensions/lua/GendersTest/testgenders    |  21 ++
+ src/extensions/lua/Makefile.am                |  21 ++
+ src/extensions/lua/genderslua.c               | 322 ++++++++++++++++++
+ 9 files changed, 711 insertions(+), 1 deletion(-)
+ create mode 100644 config/ac_lua_extensions.m4
+ create mode 100644 config/x_ac_lua.m4
+ create mode 100644 genders.spec
+ create mode 100755 src/extensions/lua/GendersTest/GendersTest.lua
+ create mode 100644 src/extensions/lua/GendersTest/testgenders
+ create mode 100644 src/extensions/lua/Makefile.am
+ create mode 100644 src/extensions/lua/genderslua.c
+
 diff --git a/config/ac_lua_extensions.m4 b/config/ac_lua_extensions.m4
 new file mode 100644
 index 0000000..9421588
@@ -792,3 +816,6 @@ index 0000000..f2364af
 +
 +	return 1;
 +}
+-- 
+2.37.1
+
