@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 22 16:43:12 CEST 2022 - ma@suse.com
+
+- Fixes to build with libzypp newer than 17.31.0.
+- version 5.0.5
+
+-------------------------------------------------------------------
 Wed Nov 10 11:13:38 CET 2021 - ma@suse.com
 
 - Switch to using CMake

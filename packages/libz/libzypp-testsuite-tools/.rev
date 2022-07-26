@@ -385,4 +385,12 @@ Contains files with GPL-2.0 (i.e. &quot;only&quot;) licenses - see e.g. src/XmlN
     <comment>Softwarestack update</comment>
     <requestid>930643</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>21f5f106e145a32e7956d5cb41cbcdf5</srcmd5>
+    <version>5.0.5</version>
+    <time>1658857464</time>
+    <user>RBrownFactory</user>
+    <comment>Softwarestack update</comment>
+    <requestid>990961</requestid>
+  </revision>
 </revisionlist>

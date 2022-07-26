@@ -1,7 +1,7 @@
 #
 # spec file for package libzypp-testsuite-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libzypp-testsuite-tools
-Version:        5.0.4
+Version:        5.0.5
 Release:        0
 License:        GPL-2.0-only
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
