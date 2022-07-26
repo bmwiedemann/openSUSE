@@ -17,7 +17,7 @@
 
 
 Name:           hdparm
-Version:        9.63
+Version:        9.64
 Release:        0
 Summary:        A Program to get and set hard disk parameters
 License:        SUSE-Permissive
@@ -64,6 +64,7 @@ ln -sf %{_sbindir}/hdparm "%{buildroot}/sbin"
 %endif
 
 %files
+%license LICENSE.TXT
 %doc Changelog README.acoustic contrib/README.contrib README.wiper
 %{_mandir}/man8/hdparm.8%{?ext_man}
 %if !0%{?usrmerged}

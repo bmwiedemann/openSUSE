@@ -585,4 +585,13 @@
     <comment></comment>
     <requestid>945646</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>f2f0b171217169af337a4291f1bbf6ad</srcmd5>
+    <version>9.64</version>
+    <time>1658857349</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 9.64:
+  * fix truncated output buf with --Istdin</comment>
+    <requestid>990765</requestid>
+  </revision>
 </revisionlist>

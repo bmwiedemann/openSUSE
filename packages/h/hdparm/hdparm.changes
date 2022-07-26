@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 23 06:53:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.64:
+  * fix truncated output buf with --Istdin 
+
+-------------------------------------------------------------------
 Tue Jan 11 18:06:50 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 9.63:
