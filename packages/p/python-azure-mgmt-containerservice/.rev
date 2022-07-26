@@ -269,4 +269,15 @@
 - Update Requires from setup.py (forwarded request 990508 from glaubitz)</comment>
     <requestid>990538</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>190dc4c0a5130687a0c7e95be6712529</srcmd5>
+    <version>20.2.0</version>
+    <time>1658857500</time>
+    <user>RBrownFactory</user>
+    <comment>- New upstream release
+  + Version 20.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 991025 from glaubitz)</comment>
+    <requestid>991026</requestid>
+  </revision>
 </revisionlist>
