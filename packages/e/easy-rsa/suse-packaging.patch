@@ -1,14 +1,11 @@
---- easyrsa.orig	2020-11-20 15:05:31.051230522 +0100
-+++ easyrsa	2020-11-20 15:08:45.769207521 +0100
-@@ -1664,10 +1664,7 @@
- 	vars=
- 
- 	# set up program path
--	prog_file="$0"
--	prog_file2="$(which -- "$prog_file" 2>/dev/null)" && prog_file="$prog_file2"
--	prog_file2="$(readlink -f "$prog_file" 2>/dev/null)" && prog_file="$prog_file2"
+--- easyrsa.orig	2022-06-15 21:04:39.858643843 +0200
++++ easyrsa	2022-06-15 21:05:18.250698012 +0200
+@@ -2562,7 +2562,7 @@
+ 	# Removed for basic sanity - To re-enable provide a REASON
+ 	#prog_file2="$(which -- "$prog_file" 2>/dev/null)" && prog_file="$prog_file2"
+ 	#prog_file2="$(readlink -f "$prog_file" 2>/dev/null)" && prog_file="$prog_file2"
 -	prog_dir="${prog_file%/*}"
 +	prog_dir="/etc/easy-rsa"
+ 
+ 	# Program dir vars - This location is least wanted.
  	prog_vars="${prog_dir}/vars"
- 	# set up PKI path
- 	pki_vars="${EASYRSA_PKI:-$PWD/pki}/vars"
