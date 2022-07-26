@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 22 22:01:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.07.14:
+  * use SHA-1 rather than MD5 to hash the latest tarball of our code
+
+-------------------------------------------------------------------
 Fri Jun 24 12:15:38 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2022.06.16:
