@@ -181,4 +181,15 @@
   * Utils: vpiano note labels font stability fix.</comment>
     <requestid>974457</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ed007f0befb74d5205d0a3bc7781df7a</srcmd5>
+    <version>2.6.1</version>
+    <time>1658857418</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 2.6.1
+  * Fixed generated pkgconfig files
+  * Fix the wrong icon in KDE+Wayland
+  * Fixed another issue with installation library dir</comment>
+    <requestid>990769</requestid>
+  </revision>
 </revisionlist>

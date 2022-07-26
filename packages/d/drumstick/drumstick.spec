@@ -18,7 +18,7 @@
 
 
 Name:           drumstick
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        MIDI Sequencer C++ Library Bindings
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -152,8 +152,10 @@ sed -i 's#%{_includedir}/QtCore#%{_includedir}/qt5/QtCore#' Doxyfile.in
 sed -i 's#%{_includedir}/QtGui#%{_includedir}/qt5/QtGui#' Doxyfile.in
 
 %build
-%cmake -DSTATIC_DRUMSTICK=0 -DCMAKE_INSTALL_LIBDIR=%{_lib}
+%cmake -DSTATIC_DRUMSTICK=0
+
 %cmake_build
+
 make %{?_smp_mflags} doxygen
 
 %install

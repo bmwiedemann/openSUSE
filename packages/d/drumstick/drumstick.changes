@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 23 07:04:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.6.1
+  * Fixed generated pkgconfig files
+  * Fix the wrong icon in KDE+Wayland
+  * Fixed another issue with installation library dir
+
+-------------------------------------------------------------------
 Mon May  2 16:26:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.6.0
