@@ -25,7 +25,7 @@
 %bcond_without  apparmor
 
 Name:           galene
-Version:        0.5.4
+Version:        0.5.5
 Release:        0
 Summary:        Galène videoconferencing server
 License:        MIT
@@ -40,7 +40,7 @@ Source5:        apparmor-usr.sbin.galene
 Patch1:         galene-html-sendselect-default.patch
 BuildRequires:  fdupes
 BuildRequires:  filesystem
-BuildRequires:  go >= 1.14
+BuildRequires:  go >= 1.16
 BuildRequires:  systemd-rpm-macros
 Requires:       fdupes
 Requires:       filesystem
