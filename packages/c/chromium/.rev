@@ -4187,4 +4187,18 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>990359</requestid>
   </revision>
+  <revision rev="345" vrev="2">
+    <srcmd5>1c5df3498ec5e8221b669b11785c143e</srcmd5>
+    <version>103.0.5060.134</version>
+    <time>1658857466</time>
+    <user>RBrownFactory</user>
+    <comment>- Switch back to Clang so that we can use BTI on aarch64
+  * Gold is too old - doesn't understand BTI
+  * LD crashes on aarch64
+- Re-enable LTO
+- Prepare move to FFmpeg 5 for new channel layout
+  (requires 5.1+)
+</comment>
+    <requestid>991005</requestid>
+  </revision>
 </revisionlist>

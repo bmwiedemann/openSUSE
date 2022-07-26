@@ -20,24 +20,15 @@
 %define outputdir out
 # bsc#1108175
 %define __provides_exclude ^lib.*\\.so.*$
-%if 0%{?suse_version} >= 1550
-%bcond_without system_icu
-%else
-%bcond_with system_icu
-%endif
+# Compiler
+%bcond_without clang
+# Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
+%bcond_without lto
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 %bcond_without gtk4
 %else
 %bcond_with gtk4
 %endif
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
-%bcond_without pipewire
-%else
-%bcond_with pipewire
-%endif
-%bcond_without system_ffmpeg
-%bcond_without system_zlib
-%bcond_with system_vpx
 %ifarch aarch64
 %bcond_with swiftshader
 %else
@@ -46,13 +37,34 @@
 %if 0%{?suse_version} >= 1550
 %bcond_without system_harfbuzz
 %bcond_without system_freetype
+%bcond_without arm_bti
+%bcond_without system_icu
 %else
 %bcond_with system_harfbuzz
 %bcond_with system_freetype
+%bcond_with arm_bti
+%bcond_with system_icu
 %endif
-%bcond_with clang
-# Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
-%bcond_with lto
+%bcond_without pipewire
+%bcond_without system_ffmpeg
+%bcond_without system_zlib
+%bcond_with system_vpx
+%bcond_with ffmpeg_51
+
+# FFmpeg version
+%if %{with ffmpeg_51}
+%define ffmpeg_version 59
+%else
+%define ffmpeg_version 58
+%endif
+
+# LLVM version
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150400
+%define llvm_version 12
+%else
+%define llvm_version 13
+%endif
+
 Name:           chromium
 Version:        103.0.5060.134
 Release:        0
@@ -160,10 +172,6 @@ BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(kadm-client)
 BuildRequires:  pkgconfig(kdb)
 BuildRequires:  pkgconfig(krb5)
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavfilter)
-BuildRequires:  pkgconfig(libavformat) >= 58
-BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libdc1394-2)
@@ -263,25 +271,30 @@ BuildRequires:  pkgconfig(gtk4)
 %else
 BuildRequires:  pkgconfig(gtk+-3.0)
 %endif
+%if %{with system_ffmpeg}
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavfilter)
+BuildRequires:  pkgconfig(libavformat) >= %{ffmpeg_version}
+BuildRequires:  pkgconfig(libavutil)
+%endif
 %if %{with clang}
-%if %{?suse_version} < 1550
-BuildRequires:  clang12
-BuildRequires:  gcc10
-BuildRequires:  libstdc++6-devel-gcc10
-BuildRequires:  lld12
-BuildRequires:  llvm12
-%else
+%if 0%{?suse_version} < 1550
 #!BuildIgnore:  gcc
+BuildRequires:  clang%{llvm_version}
+BuildRequires:  gcc11
+BuildRequires:  libstdc++6-devel-gcc11
+BuildRequires:  lld%{llvm_version}
+BuildRequires:  llvm%{llvm_version}
+%else
 BuildRequires:  clang
-BuildRequires:  gcc10
-BuildRequires:  libstdc++6-devel-gcc10
+BuildRequires:  libstdc++-devel
 BuildRequires:  lld
 BuildRequires:  llvm
 %endif
 %endif
 %if %{without clang}
 BuildRequires:  binutils-gold
-%if %{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 %else
@@ -307,7 +320,9 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %if 0%{?suse_version} >= 1550
 patch -R -p1 < %{PATCH68}
 %endif
+%if %{without ffmpeg_51}
 patch -R -p1 < %{SOURCE4}
+%endif
 
 %build
 # esbuild
@@ -608,6 +623,9 @@ build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
 %if %{with clang}
 export CC=clang
 export CXX=clang++
+export AR=llvm-ar
+export NM=llvm-nm
+export RANLIB=llvm-ranlib
 %else
 %if 0%{?suse_version} <= 1500
 export CC=gcc-11
@@ -620,9 +638,10 @@ export PATH="$HOME/bin/:$PATH"
 export CC=gcc
 export CXX=g++
 %endif
-%endif
 export AR=ar
 export NM=nm
+export RANLIB=ranlib
+%endif
 # REDUCE DEBUG as it gets TOO large
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/^-g / /g' -e 's/ -g / /g' -e 's/ -g$//g'`"
 export CXXFLAGS="${ARCH_FLAGS} -Wno-return-type"
@@ -782,7 +801,7 @@ myconf_gn+=" use_lld=true"
 myconf_gn+=" is_clang=false"
 myconf_gn+=" use_gold=true"
 %endif
-%if %{with lto}
+%if %{with lto} && %{without clang}
 myconf_gn+=" gcc_lto=true"
 %endif
 %if %{with system_icu}
@@ -797,7 +816,11 @@ myconf_gn+=" ffmpeg_branding=\"Chrome\""
 
 %ifarch aarch64
 myconf_gn+=" host_cpu=\"arm64\""
+%if %{with arm_bti}
+myconf_gn+=" arm_control_flow_integrity=\"standard\""
+%else
 myconf_gn+=" arm_control_flow_integrity=\"none\""
+%endif
 %endif
 
 # Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys

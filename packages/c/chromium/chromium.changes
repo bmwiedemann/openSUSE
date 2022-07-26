@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 23 12:20:39 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Switch back to Clang so that we can use BTI on aarch64
+  * Gold is too old - doesn't understand BTI
+  * LD crashes on aarch64
+- Re-enable LTO
+- Prepare move to FFmpeg 5 for new channel layout
+  (requires 5.1+)
+
+-------------------------------------------------------------------
 Wed Jul 20 08:05:57 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 103.0.5060.134 (boo#1201679):
