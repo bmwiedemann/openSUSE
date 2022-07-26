@@ -25,7 +25,7 @@
 %endif
 
 Name:           python-versioningit
-Version:        1.1.1
+Version:        2.0.0
 Release:        0
 Summary:        Versioning It with your Version In Git
 License:        MIT

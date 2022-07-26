@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 22 21:44:24 UTC 2022 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to v2.0.0
+  + Breaking API changes, see CHANGELOG.md
+
+-------------------------------------------------------------------
 Fri Jun  3 20:14:18 UTC 2022 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Build using pyproject, not setup.py
