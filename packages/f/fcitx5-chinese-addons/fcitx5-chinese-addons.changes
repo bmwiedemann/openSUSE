@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul  5 11:29:27 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.14
+  * moving the cursor will filter the candidates to show only text till
+    the cursor in Pinyin. This allows you to easily select a prefix of the
+    sentence result, instead of selecting every single word till the point
+    you want to change.
+  * allow you to learn phrases with other phrases in the table engine.
+  * ng/gn option is renamed to common typo and includes more auto
+    correction. See libime changelog for more details on this change.
+- BuildRequires libime-devel >= 1.0.12 (gh#fcitx/fcitx5-chinese-addons#93)
+
+-------------------------------------------------------------------
 Sat Mar 12 09:35:07 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 5.0.12

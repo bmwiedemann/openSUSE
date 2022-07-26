@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-chinese-addons
-Version:        5.0.12
+Version:        5.0.14
 Release:        0
 Summary:        Pinyin and Table IM support for fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -44,7 +44,7 @@ BuildRequires:  libQt5DBus-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libcurl-devel
-BuildRequires:  libime-devel
+BuildRequires:  libime-devel >= 1.0.12
 BuildRequires:  libqt5-qtwebengine-devel
 BuildRequires:  opencc-devel
 BuildRequires:  pkgconfig
