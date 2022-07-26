@@ -1,4 +1,156 @@
 -------------------------------------------------------------------
+Tue Jul 26 07:50:07 UTC 2022 - manfred.h@gmx.net
+
+- Update to version 0.145.2:
+  * The image publishing workflow should trigger on version tags
+    by @mumoshu in #212
+  * Fix helmfile-deps issue that it is unable to find the chartify
+    output by @yxxhero in #214
+
+- Update to version 0.145.1:
+  * Bump github.com/stretchr/testify from 1.7.5 to 1.8.0 by
+    @dependabot in #188
+  * fix bug.yaml by @yxxhero in #198
+  * test: use T.Setenv to set env vars in tests by @Juneezee in #189
+  * Fix/invalid path on windows by @philomory in #200
+  * fix within func issue by @yxxhero in #209
+
+- Update to version 0.145.0:
+  * Add an issue form for bug report by @mumoshu in #4
+  * remove ioutil usage in all project by @yxxhero in #5
+  * add unittest for formatters.go by @yxxhero in #9
+  * mv captureStdout as public func by @yxxhero in #13
+  * [test] update helm 3.8.0 to 3.8.1 by @itscaro in #16
+  * add unittest for load_opts.go by @yxxhero in #11
+  * bump go 1.18 & remove .circleci by @itscaro in #2
+  * update args_test.go unittest by @yxxhero in #17
+  * add unittest for RequiredEnv func by @yxxhero in #18
+  * Update badge to reflect Github Action status by @itscaro in #19
+  * [fix] unclosed file stream when creating temporary decrypted
+    files by @itscaro in #20
+  * [fix] bump go 1.18 & optional TAG definition in makefile by
+    @itscaro in #21
+  * Bump go-getter to 1.5.11 by @mumoshu in #25
+  * [Dockerfile] only use image alpine for compilation, add sops
+    & age to pre-built image, remove helm v2 image by @itscaro in #28
+  * (fix) typo in state.go by @yxxhero in #32
+  * fix output-dir issue by @yxxhero in #31
+  * (fix) chartify process when chart path is absolute by @itscaro
+    in #22
+  * Fix non-existent custom temp dir by @itscaro in #37
+  * Redact sensitive informations like password in chart url by
+    @dol in #34
+  * Fix helmfile deps not to remove entries for charts that are
+    being chartified by @mumoshu in #23
+  * feat: Auto-detect term for coloring helm-diff output by @mumoshu
+    in #24
+  * (test) update helm to 3.8.2 by @itscaro in #39
+  * add unittest for constants.go by @yxxhero in #44
+  * remove gotest deps by @yxxhero in #45
+  * Update README.md by @mumoshu in #46
+  * fix go lint warn by @yxxhero in #48
+  * feat: Add openssh-client to images by @itscaro in #53
+  * (feat) update helm to v3.8.2 in container images by @itscaro
+    in #55
+  * Create dependabot.yml by @itscaro in #54
+  * add unittest for Exec by @yxxhero in #52
+  * Add unittest for newExecutionID by @yxxhero in #62
+  * add unittest for ValidateConfig by @yxxhero in #67
+  * add unittest for context.go by @yxxhero in #68
+  * remove temp_rand and use k8s.io/apimachinery/pkg/util/rand
+    by @yxxhero in #69
+  * add unittest for error.go in pkg/app by @yxxhero in #71
+  * Bump github.com/stretchr/testify from 1.7.0 to 1.7.1 by
+    @dependabot in #56
+  * Bump github.com/go-test/deep from 1.0.7 to 1.0.8 by
+    @dependabot in #60
+  * Bump github.com/spf13/cobra from 1.3.0 to 1.4.0 by
+    @dependabot in #59
+  * Bump github.com/google/go-cmp from 0.5.7 to 0.5.8 by
+    @dependabot in #93
+  * Bump github.com/hashicorp/go-version from 1.2.1 to 1.4.0
+    by @dependabot in #94
+  * update doc for template func by @yxxhero in #74
+  * [#80] README, update release tag url by @yjqg6666 in #81
+  * chore: bump variantdev/vals to support remote secret
+    tfstateremote by @carnei-ro in #76
+  * [feat] add execEnvs by @yxxhero in #95
+  * Bump go.uber.org/zap from 1.19.0 to 1.21.0 by @dependabot
+    in #87
+  * fix old URLs in docs and fix Dockerfile by @itscaro in #84
+  * Bump github.com/urfave/cli from 1.22.5 to 1.22.9 by
+    @dependabot in #96
+  * Bump github.com/hashicorp/go-getter from 1.5.11 to 1.6.0 by
+    @dependabot in #103
+  * rename execEnvs to envExec by @yxxhero in #97
+  * Rename module to github.com/helmfile/helmfile by @austince
+    in #101
+  * build image on tag by @itscaro in #40
+  * Bump github.com/hashicorp/go-getter from 1.6.0 to 1.6.1 by
+    @dependabot in #106
+  * update envExec docs by @yxxhero in #104
+  * add helm 3.9 to tests by @itscaro in #85
+  * fix intergration test for argo-cd form master to main branch
+    by @yxxhero in #118
+  * feat: allow --validate on sync command by @chubchubsancho in #88
+  * remove unused comments by @yxxhero in #112
+  * Update sops version on dockerfile by @rodrigodc07 in #123
+  * Update Helm diff plugin to version 3.5.0 in Dockerfile by
+    @philippeckel in #122
+  * Bump github.com/imdario/mergo from 0.3.12 to 0.3.13 by
+    @dependabot in #114
+  * add e2e tmpl test by @yxxhero in #99
+  * reconstruct main function by @yxxhero in #83
+  * little code optimize by @yxxhero in #130
+  * Adds feature to fetch release values and secret values from
+    remote by @dol in #47
+  * introduce DISABLE_INSECURE_FEATURES to disable insecure
+    executions by @itscaro in #1
+  * chore(state): Append Api Versions flags to helm-diff by
+    @semoac in #107
+  * fix ci issue by @yxxhero in #131
+  * Add yxxhero as a maintainer by @mumoshu in #132
+  * Enhance the bug report form by @mumoshu in #134
+  * Create SECURITY.md by @mumoshu in #135
+  * Minor documentation fixes by @stoned in #138
+  * Move repos subcommand to a dedicated source file by @yxxhero
+    in #137
+  * Add proposals about two breaking changes before we cut Helmfile
+    1.0 by @mumoshu in #136
+  * Fix deprecated chart in Getting Started by @ogugu9 in #140
+  * proposal: Drop --args in Helmfile 1.0 by @mumoshu in #144
+  * Move diff charts template subcommand to a dedicated source
+    file by @yxxhero in #139
+  * Bump module Go version to 1.18 by @mumoshu in #150
+  * Release automation and release build testing by @mumoshu in #151
+  * Bump github.com/stretchr/testify from 1.7.1 to 1.7.2 by
+    @dependabot in #141
+  * Bump github.com/variantdev/vals from 0.16.2 to 0.17.1 by
+    @dependabot in #152
+  * move all subcommand to sigle file by @yxxhero in #153
+  * Bump github.com/variantdev/vals from 0.17.1 to 0.18.0 by
+    @dependabot in #158
+  * Bump github.com/hashicorp/go-getter from 1.6.1 to 1.6.2 by
+    @dependabot in #159
+  * feat(dockerfile): update helm to 3.9.0 by @Jasstkn in #163
+  * docker build test on ci by @yxxhero in #164
+  * Make a few helmfile sub-commands consistently support
+    needs-related flags by @mumoshu in #78
+  * Bump github.com/stretchr/testify from 1.7.2 to 1.7.3 by
+    @dependabot in #172
+  * fix ci test error by @yxxhero in #167
+  * update Readme.md by @yxxhero in #170
+  * Fix typo in README by @kobtea in #177
+  * Bump github.com/stretchr/testify from 1.7.3 to 1.7.4 by
+    @dependabot in #176
+  * Update alpine base image to 3.16 by @jduepmeier in #179
+  * Bump github.com/stretchr/testify from 1.7.4 to 1.7.5 by
+    @dependabot in #180
+  * add unittest for text_renderer.go by @yxxhero in #168
+  * Bump github.com/spf13/cobra from 1.4.0 to 1.5.0 by
+    @dependabot in #175
+
+-------------------------------------------------------------------
 Fri Apr  8 09:11:11 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.144.0:

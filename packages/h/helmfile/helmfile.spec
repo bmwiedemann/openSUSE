@@ -17,14 +17,14 @@
 #
 
 
-%define git_commit be5af8e3b79fc886aa8e245778ce2231910ca1fe
+%define git_commit 96174e422940db988b78c555f668e9d635dbfd91
 Name:           helmfile
-Version:        0.144.0
+Version:        0.145.2
 Release:        0
 Summary:        Deploy Kubernetes Helm Charts
 License:        MIT
 Group:          Development/Languages/Other
-URL:            https://github.com/roboll/helmfile
+URL:            https://github.com/helmfile/helmfile
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Requires:       helm
