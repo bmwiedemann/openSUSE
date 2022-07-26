@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 24 08:07:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.7
+  * Don't hardcode Perl path
+
+-------------------------------------------------------------------
 Sun Apr 10 14:06:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.3.6

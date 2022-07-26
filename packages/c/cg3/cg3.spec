@@ -18,7 +18,7 @@
 
 Name:           cg3
 %define lname	libcg3-1
-Version:        1.3.6
+Version:        1.3.7
 Release:        0
 Summary:        VISL Constraint Grammar implementation
 License:        BSD-3-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND MIT
