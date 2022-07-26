@@ -1,7 +1,7 @@
 #
 # spec file for package libfwevt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define lname	libfwevt1
 Name:           libfwevt
-Version:        20211219
+Version:        20220723
 Release:        0
-Summary:        Library for Windows NT data types
+Summary:        Library for Windows XML Event Log (EVTX) data types
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libfwevt
@@ -29,29 +29,29 @@ Source2:        https://github.com/libyal/libfwevt/releases/download/%version/li
 Source3:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  gettext-tools >= 0.21
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdata) >= 20210625
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcthreads) >= 20211115
-BuildRequires:  pkgconfig(libfdatetime) >= 20180910
-BuildRequires:  pkgconfig(libfguid) >= 20180724
-BuildRequires:  pkgconfig(libfvalue) >= 20210510
-BuildRequires:  pkgconfig(libuna) >= 20210801
+BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libcnotify) >= 20220108
+BuildRequires:  pkgconfig(libcthreads) >= 20220102
+BuildRequires:  pkgconfig(libfdatetime) >= 20220112
+BuildRequires:  pkgconfig(libfguid) >= 20220113
+BuildRequires:  pkgconfig(libfvalue) >= 20220120
+BuildRequires:  pkgconfig(libuna) >= 20220611
 
 %description
-Library to provide Windows NT data type support for the libyal family of libraries.
+libfwevt is a library for Windows XML Event Log (EVTX) data types.
 libyal is typically used in digital forensic tools.
 
 %package -n %{lname}
-Summary:        Library for Windows NT data types
+Summary:        Library for Windows XML Event Log data types
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n %{lname}
-Library to provide Windows NT data type support for the libyal family of libraries.
+libfwevt is a library for Windows XML Event Log (EVTX) data types.
 libyal is typically used in digital forensic tools.
 
 %package devel
@@ -61,7 +61,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
-Library to provide Windows NT data type support for the libyal family of libraries.  libyal is typically used in digital forensic tools.
+libfwevt is a library for Windows XML Event Log (EVTX) data types.
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of libfwevt.
