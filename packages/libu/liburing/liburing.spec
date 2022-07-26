@@ -18,15 +18,20 @@
 
 %define lname   liburing2
 Name:           liburing
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        Linux-native io_uring I/O access library
 License:        (GPL-2.0-only AND LGPL-2.1-or-later) OR MIT
 Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.dk/cgit/liburing
 Source:         https://git.kernel.dk/cgit/liburing/snapshot/%{name}-%{version}.tar.bz2
-BuildRequires:  gcc
+# PATCH-FIX-UPSTREAM: has been accepted upstream
+# [1/1] Handle EINTR in tests
+#      commit: fa67f6aedcfdaffc14cbf0b631253477b2565ef0
+Patch2:         handle-eintr.patch
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  procps
 # Kernel part has landed in 5.1
 Conflicts:      kernel < 5.1
 
@@ -55,7 +60,7 @@ This package provides header files to include and libraries to link with
 for the Linux-native io_uring.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # not autotools, so configure macro doesn't work
@@ -66,6 +71,9 @@ sh ./configure --prefix=%{_prefix} \
             --mandir=%{_mandir} \
             --datadir=%{_datadir}
 %make_build -C src
+
+%check
+/usr/bin/make runtests
 
 %install
 %make_install
