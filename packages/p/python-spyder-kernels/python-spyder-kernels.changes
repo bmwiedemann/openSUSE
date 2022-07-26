@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul 25 12:31:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.3.2
+  * Fixed issue 394 - The variable explorer is broken while
+   debugging
+  * PR 399: Increase minimal required version of jupyter_client to
+    7.3.4, by @ccordoba12
+  * PR 398: Fix module namespace, by @impact27
+  * PR 395: Fix running namespace and improve eventloop integration
+    while debugging, by @impact27 (394)
+  * PR 389: Fix debug filename path for remote debugging, by
+    @impact27 (18330)
+  * PR 388: Fix getting args from functions or methods, by
+    @ccordoba12
+  * PR 386: Fix flaky test, by @impact27
+  * PR 381: Eliminate unnecessary updates of the Variable Explorer
+    while debugging, by @rear1019
+  * PR 378: Append paths that come from Spyder's Python path
+    manager to the end of sys.path, by @mrclary
+
+-------------------------------------------------------------------
 Tue May 24 19:06:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.3.1
