@@ -15,4 +15,18 @@
     <comment></comment>
     <requestid>662876</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>932e37abfe0e75c93a30497128794e20</srcmd5>
+    <version>3.1.0</version>
+    <time>1658857453</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 3.1.0:
+  - Dropped support for Python 3.4, added Python 3.8
+  - Add `__slots__` optimization in Node class, should give performance improvement
+  - Fixed:
+    - Restore universal wheels
+    - Bytes/str type incompatibility in setup.py
+    - New version of distutils rejects version suffixes of `.postNN`, use `aNN` instead</comment>
+    <requestid>990898</requestid>
+  </revision>
 </revisionlist>

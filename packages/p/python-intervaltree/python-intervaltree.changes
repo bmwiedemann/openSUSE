@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 24 18:03:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  - Dropped support for Python 3.4, added Python 3.8
+  - Add `__slots__` optimization in Node class, should give performance improvement
+  - Fixed:
+    - Restore universal wheels
+    - Bytes/str type incompatibility in setup.py
+    - New version of distutils rejects version suffixes of `.postNN`, use `aNN` instead
+
+-------------------------------------------------------------------
 Fri Jan  4 16:36:26 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to Version 3.0.2

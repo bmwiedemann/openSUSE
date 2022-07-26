@@ -1,7 +1,7 @@
 #
 # spec file for package python-intervaltree
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-intervaltree
-Version:        3.0.2
+Version:        3.1.0
 Release:        0
 Summary:        Editable interval tree data structure for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/chaimleib/intervaltree
+URL:            https://github.com/chaimleib/intervaltree
 Source:         https://files.pythonhosted.org/packages/source/i/intervaltree/intervaltree-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
