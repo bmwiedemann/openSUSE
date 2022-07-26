@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jul 21 17:02:27 UTC 2022 - Reinhard Max <max@suse.com>
+
+- update to 3.39.2:
+  * Fix a performance regression in the query planner associated
+    with rearranging the order of FROM clause terms in the
+    presences of a LEFT JOIN.
+  * Apply fixes for CVE-2022-35737, Chromium bugs 1343348 and
+    1345947, forum post 3607259d3c, and other minor problems
+    discovered by internal testing. [boo#1201783]
+
+-------------------------------------------------------------------
+Fri Jul 15 17:20:31 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.39.1:
+  * Fix an incorrect result from a query that uses a view that
+    contains a compound SELECT in which only one arm contains a
+    RIGHT JOIN and where the view is not the first FROM clause term
+    of the query that contains the view
+  * Fix a long-standing problem with ALTER TABLE RENAME that can
+    only arise if the sqlite3_limit(SQLITE_LIMIT_SQL_LENGTH) is set
+    to a very small value.
+  * Fix a long-standing problem in FTS3 that can only arise when
+    compiled with the SQLITE_ENABLE_FTS3_PARENTHESIS compile-time
+    option.
+  * Fix the initial-prefix optimization for the REGEXP extension so
+    that it works correctly even if the prefix contains characters
+    that require a 3-byte UTF8 encoding.
+  * Enhance the sqlite_stmt virtual table so that it buffers all of
+    its output. 
+
+-------------------------------------------------------------------
 Fri Jul  1 21:10:07 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.39.0:
