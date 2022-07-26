@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define version %(rpm -q --qf '%%{VERSION}' kernel-source)
 
 Name:           rtla
@@ -23,10 +24,10 @@ Release:        0
 Summary:        Real-Time Linux Analysis tools
 License:        GPL-2.0-only
 URL:            https://www.kernel.org/
-BuildRequires:  libtracefs-devel >= 1.3
-BuildRequires:  libtraceevent-devel >= 1.5
-BuildRequires:  procps-devel
 BuildRequires:  kernel-source >= 5.17
+BuildRequires:  libtraceevent-devel >= 1.5
+BuildRequires:  libtracefs-devel >= 1.3
+BuildRequires:  procps-devel
 BuildRequires:  python3-docutils
 
 %description
@@ -36,10 +37,8 @@ testing Linux as a black box, rtla leverages kernel tracing
 capabilities to provide precise information about the properties
 and root causes of unexpected results.
 
-
 %prep
 (cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib Documentation/tools/rtla) | tar -xf -
-
 
 %build
 cd tools/tracing/rtla
@@ -47,7 +46,7 @@ make %{?_smp_mflags}
 
 %install
 cd tools/tracing/rtla
-make install DESTDIR=%{buildroot}
+make install DESTDIR=%{buildroot} STRIP=true
 
 # Fixup symlinks as they are pointing to DESTDIR instead prefix
 rm %{buildroot}%{_bindir}/osnoise

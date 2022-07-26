@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 25 14:20:41 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Suppress stripping of installed binaries
+
+-------------------------------------------------------------------
 Fri Feb 11 17:07:20 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Initial packaging of rtla.
