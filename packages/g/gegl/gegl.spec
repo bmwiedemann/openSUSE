@@ -21,7 +21,7 @@
 %bcond_with gegl_docs
 
 Name:           gegl
-Version:        0.4.36
+Version:        0.4.38
 Release:        0
 Summary:        Generic Graphics Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -56,9 +56,9 @@ BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(lcms2) >= 2.8
 BuildRequires:  pkgconfig(lensfun)
-BuildRequires:  pkgconfig(libavcodec) < 59
-BuildRequires:  pkgconfig(libavformat) < 59
-BuildRequires:  pkgconfig(libavutil) < 57
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libavutil) >= 55.92.100
 BuildRequires:  pkgconfig(libpng) >= 1.6.0
 BuildRequires:  pkgconfig(libraw) >= 0.15.4

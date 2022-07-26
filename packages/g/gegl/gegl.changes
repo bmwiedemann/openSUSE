@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul 21 09:23:21 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update BuildRequires to reflect it now does work with ffmpeg5.
+
+-------------------------------------------------------------------
+Thu Jul 21 07:19:10 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.4.38:
+  + Operations:
+    - denoise-dct: a NEW denoising operation which decomposes the
+      input buffer to sliding overlapping patches, calculates the
+      DCT denoising in each patch, and then aggregates the denoised
+      patches to the output buffer averaging the overlapped pixels.
+    - ff-load and ff-save: big cleanup API cleanup, now ffmpeg-5.0
+      compatible.
+    - gif-load: updated to latest upstream libnsgif version.
+    - slic: progress reporting and improved parameter handling.
+    - vector-fill: updated to latest upstream ctx version.
+    - oilify: clamp inputs to avoid nan in output.
+    - gegl:load fix possible double free.
+    - rgbe-write: plug leaks in error paths.
+  + Core: Fixes of some potential NULL dereferences on custom
+    dataformats for malformed inputs.
+
+-------------------------------------------------------------------
 Fri Apr 29 07:51:08 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update BuildRequires to reflect it does not work with ffmpeg5.
