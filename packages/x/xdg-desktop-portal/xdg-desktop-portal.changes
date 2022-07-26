@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 21 13:19:00 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.5:
+  + realtime: Fix realtime: fix priority type in
+    MakeThreadHighPriority.
+
+-------------------------------------------------------------------
 Thu May  5 17:34:21 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.14.4:
