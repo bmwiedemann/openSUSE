@@ -1,9 +1,9 @@
 diff --git a/scripts/telegraf.service b/scripts/telegraf.service
-index c4eed38e..288dd806 100644
+index 1726913b0..e9ca1ff3f 100644
 --- a/scripts/telegraf.service
 +++ b/scripts/telegraf.service
-@@ -4,6 +4,19 @@ Documentation=https://github.com/influxdata/telegraf
- After=network.target
+@@ -5,6 +5,19 @@ After=network-online.target
+ Wants=network-online.target
  
  [Service]
 +# added automatically, for details please see
