@@ -1,8 +1,10 @@
---- a/CMakeLists.txt	2020-09-01 00:04:40.000000000 +0200
-+++ b/CMakeLists.txt	2020-11-15 10:56:57.712801770 +0100
-@@ -386,7 +386,7 @@ ELSE()
- 	INSTALL(DIRECTORY data DESTINATION ${H2_SYS_PATH} PATTERN ".git" EXCLUDE PATTERN "i18n" EXCLUDE PATTERN doc EXCLUDE)
+Index: hydrogen-1.1.1/CMakeLists.txt
+===================================================================
+--- hydrogen-1.1.1.orig/CMakeLists.txt
++++ hydrogen-1.1.1/CMakeLists.txt
+@@ -391,7 +391,7 @@ IF(EXISTS ${CMAKE_SOURCE_DIR}/data/doc/C
  ENDIF()
+ INSTALL(DIRECTORY data DESTINATION ${H2_DATA_PATH} PATTERN ".git" EXCLUDE PATTERN "i18n" EXCLUDE PATTERN doc EXCLUDE)
  IF(NOT MINGW AND NOT APPLE)
 -	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/org.hydrogenmusic.Hydrogen.appdata.xml DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/appdata")
 +	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/org.hydrogenmusic.Hydrogen.appdata.xml DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/metainfo")

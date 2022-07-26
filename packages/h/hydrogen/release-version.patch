@@ -1,0 +1,18 @@
+Index: hydrogen-1.1.1/CMakeLists.txt
+===================================================================
+--- hydrogen-1.1.1.orig/CMakeLists.txt
++++ hydrogen-1.1.1/CMakeLists.txt
+@@ -30,12 +30,7 @@ ELSE()
+ ENDIF(VERSION_SUFFIX)
+ 
+ # Consider any tagged commit as a release build
+-EXECUTE_PROCESS(COMMAND git describe --exact-match --tags OUTPUT_VARIABLE GIT_TAG)
+-IF(GIT_TAG)
+-        SET(IS_DEVEL_BUILD "false")
+-ELSE()
+-        SET(IS_DEVEL_BUILD "true")
+-ENDIF()
++SET(IS_DEVEL_BUILD "false")
+ 
+ 
+ SET(LIBSNDFILE_VERSION_PREV "1.0.17")

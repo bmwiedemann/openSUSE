@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jul 23 07:00:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Keyboard cursor-driven pattern, song and note properties editing
+  * Note selection and movement in pattern editors
+  * New OSC commands (new song, open song, save song (as), quit,
+  * toggle looped playback, toggle timeline, toggle Jack transport,
+  * toggle Jack timebase master, add/delete timeline marker,
+  * toggle song/pattern playback mode)
+  * NSM support reworked
+  * Deprecating JACK-session
+  * Instrument main pitch shift offset
+  * Custom pattern size support with representation in note values
+  * Custom pan law support in mixer
+  * Audio output device selection in CoreAudio (macOS) and PortAudio (Windows)
+  * Preferences dialog 'OK' bug
+  * Audio problems when using LADSPA plugins with PulseAudio
+  * MIDI crashes and other issues on 64-bit Windows
+  * Missing tags and markers
+  * Inability to control audio latency on Windows (PortAudio) 
+- add release-version.patch to avoid devel-build warning
+- drop fix-version-soversion.patch: this needs to be, if at all
+  upstreamed
+
+-------------------------------------------------------------------
 Sun May  9 14:07:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.2:

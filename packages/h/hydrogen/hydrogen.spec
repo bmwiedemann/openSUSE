@@ -1,7 +1,7 @@
 #
 # spec file for package hydrogen
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define soversion 1
 %bcond_with lash
 # The use of librubberband2 is marked as experimental.
 # Because the current implementation produce wrong timing!
@@ -24,17 +23,17 @@
 # If rubberband-cli is installed, the hydrogen rubberband-function
 # will work properly as expected.
 %bcond_with librubberband
-
 Name:           hydrogen
-Version:        1.0.2
+Version:        1.1.1
+%define soversion 1_1_1
 Release:        0
 Summary:        A Real-Time Drum Machine and Sequencer
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            http://www.hydrogen-music.org/
 Source0:        https://github.com/hydrogen-music/hydrogen/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:         fix-version-soversion.patch
 Patch1:         fix-obsolete-appdata.patch
+Patch2:         release-version.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  help2man
@@ -100,11 +99,11 @@ provided, and there is multi-layer support for instruments (up to 16
 samples for each instrument). Human velocity, human time, pitch and
 swing functions are implemented as well.
 
-%package -n libhydrogen-core%{soversion}
+%package -n libhydrogen-core-%{soversion}
 Summary:        Library essential for the hydrogen drum machine software
 Group:          System/Libraries
 
-%description -n libhydrogen-core%{soversion}
+%description -n libhydrogen-core-%{soversion}
 Hydrogen is a software synthesizer which can be used alone, emulating
 a drum machine based on patterns, or via an external MIDI
 keyboard/sequencer software.
@@ -114,7 +113,7 @@ This library is the core of hydrogen's operation.
 %package -n libhydrogen-core-devel
 Summary:        Development files and headers for libhydrogen-core
 Group:          Development/Libraries/C and C++
-Requires:       libhydrogen-core%{soversion} = %{version}
+Requires:       libhydrogen-core-%{soversion} = %{version}
 
 %description -n libhydrogen-core-devel
 These are the headers needed to develop apps that
@@ -170,14 +169,10 @@ LD_LIBRARY_PATH=%{buildroot}%{_libdir} \
 %{_mandir}/man1/h2cli.1%{?ext_man}
 %{_mandir}/man1/hydrogen.1%{?ext_man}
 
-%post -n libhydrogen-core%{soversion} -p /sbin/ldconfig
-%postun -n libhydrogen-core%{soversion} -p /sbin/ldconfig
-
-%files -n libhydrogen-core%{soversion}
-%{_libdir}/libhydrogen-core.so.*
+%files -n libhydrogen-core-%{soversion}
+%{_libdir}/libhydrogen-core-%{version}.so
 
 %files -n libhydrogen-core-devel
 %{_includedir}/%{name}
-%{_libdir}/libhydrogen-core.so
 
 %changelog
