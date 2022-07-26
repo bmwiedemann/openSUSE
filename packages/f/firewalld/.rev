@@ -1190,4 +1190,16 @@ This is a bug fix only release.
     <user>favogt_factory</user>
     <comment>Revert for boo#1201836</comment>
   </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>debbde4ab30c8f7f4b6bb8ee3b0d3476</srcmd5>
+    <version>1.2.0</version>
+    <time>1658857343</time>
+    <user>RBrownFactory</user>
+    <comment>- readd iptables requires, as docker uses iptables passthrough
+  currently, which calls into iptables (bsc#1201836)
+
+- Also remove ipset, ebtables and iptables from the BuildRequires
+  list (compare with change from 2022-03-03 - Thorsten Kukuk &lt;kukuk@suse.com&gt;)</comment>
+    <requestid>991048</requestid>
+  </revision>
 </revisionlist>
