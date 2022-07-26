@@ -138,4 +138,27 @@
     <comment></comment>
     <requestid>925613</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1336beae09dba6af6156dbc6e4a18e96</srcmd5>
+    <version>2.1.9</version>
+    <time>1658857422</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 2.1.9:
+  * [fsevents] Fix flakey test to assert that there are no errors when stopping the emitter.
+  * [inotify] Suppress occasional ``OSError: [Errno 9] Bad file descriptor`` at shutdown. 
+  * [watchmedo] Make ``auto-restart`` restart the sub-process if it terminates. 
+  * [watchmedo] Avoid zombie sub-processes when running ``shell-command`` without ``--wait``. 
+  * Fix adding failed emitters on observer schedule. 
+  * [inotify] Fix hang when unscheduling watch on a path in an unmounted filesystem. 
+  * [watchmedo] Fix broken parsing of ``--kill-after`` argument for the ``auto-restart`` command. 
+  * [watchmedo] Fix broken parsing of boolean arguments. 
+  * [watchmedo] Fix broken parsing of commands from ``auto-restart``, and ``shell-command``. 
+  * [watchmedo] Support setting verbosity level via ``-q/--quiet`` and ``-v/--verbose`` arguments. 
+  * Thanks to our beloved contributors: @taleinat, @kianmeng, @palfrey, @IlayRosenberg, @BoboTiG
+  * Eliminate timeout in waiting on event queue. 
+  * [inotify] Fix ``not`` equality implementation for ``InotifyEvent``. 
+  * [watchmedo] Fix calling commands from within a Python script. 
+  * [watchmedo] ``PyYAML`` is loaded only when strictly necessary.</comment>
+    <requestid>990798</requestid>
+  </revision>
 </revisionlist>

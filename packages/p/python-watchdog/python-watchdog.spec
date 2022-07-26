@@ -1,7 +1,7 @@
 #
 # spec file for package python-watchdog
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-watchdog
-Version:        2.1.6
+Version:        2.1.9
 Release:        0
 Summary:        Filesystem events monitoring
 License:        Apache-2.0
@@ -70,7 +70,8 @@ cd docs && make html && rm -r build/html/.buildinfo build/html/objects.inv # Bui
 sed -i '/--cov/d' setup.cfg
 export LANG=en_US.UTF-8
 # test_event_dispatcher randomly fails on SLE15
-%pytest -k 'not test_event_dispatcher'
+# test_unmount_watched_directory_filesystem requires sudo/root which is not available
+%pytest -k 'not test_event_dispatcher and not test_unmount_watched_directory_filesystem'
 
 %post
 %python_install_alternative watchmedo

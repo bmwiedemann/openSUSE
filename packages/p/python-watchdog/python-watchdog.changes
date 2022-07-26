@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jul 23 11:29:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.9:
+  * [fsevents] Fix flakey test to assert that there are no errors when stopping the emitter.
+  * [inotify] Suppress occasional ``OSError: [Errno 9] Bad file descriptor`` at shutdown. 
+  * [watchmedo] Make ``auto-restart`` restart the sub-process if it terminates. 
+  * [watchmedo] Avoid zombie sub-processes when running ``shell-command`` without ``--wait``. 
+  * Fix adding failed emitters on observer schedule. 
+  * [inotify] Fix hang when unscheduling watch on a path in an unmounted filesystem. 
+  * [watchmedo] Fix broken parsing of ``--kill-after`` argument for the ``auto-restart`` command. 
+  * [watchmedo] Fix broken parsing of boolean arguments. 
+  * [watchmedo] Fix broken parsing of commands from ``auto-restart``, and ``shell-command``. 
+  * [watchmedo] Support setting verbosity level via ``-q/--quiet`` and ``-v/--verbose`` arguments. 
+  * Thanks to our beloved contributors: @taleinat, @kianmeng, @palfrey, @IlayRosenberg, @BoboTiG
+  * Eliminate timeout in waiting on event queue. 
+  * [inotify] Fix ``not`` equality implementation for ``InotifyEvent``. 
+  * [watchmedo] Fix calling commands from within a Python script. 
+  * [watchmedo] ``PyYAML`` is loaded only when strictly necessary.
+
+-------------------------------------------------------------------
 Sun Oct 10 19:18:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v2.1.6
