@@ -1,7 +1,7 @@
 #
 # spec file for package quassel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define realver 0.13.1
+%define realver 0.14.0
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           quassel
-Version:        0.13.1
+Version:        0.14.0
 Release:        0
 Summary:        Distributed IRC client
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -33,36 +33,31 @@ Source1:        service.%{name}core
 Source2:        sysconfig.%{name}core
 Source3:        logrotate.%{name}core
 Source5:        quassel-rpmlintrc
-# PATCH-FIX-SUSE: Set the correct libraries and compiler flags in order to use qglobal.h in check_cxx_source_compiles function
-Patch0:         quassel-set-required-libs-and-flags.patch
-# PATCH-FIX-UPSTREAM: Fix build with Qt 5.14
-Patch1:         0001-common-Disable-enum-type-stream-operators-for-Qt-5.1.patch
-BuildRequires:  cmake >= 2.8.10
-BuildRequires:  extra-cmake-modules
+BuildRequires:  boost-devel
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  knotifications-devel
-BuildRequires:  knotifyconfig-devel
-BuildRequires:  ktextwidgets-devel
-BuildRequires:  kxmlgui-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  snorenotify-qt5-devel >= 0.7
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(LibsnoreQt5) >= 0.7
+BuildRequires:  cmake(Qca-qt5)
+BuildRequires:  cmake(Qt5Core) >= 5.5.0
+BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Script)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5WebEngine)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(dbusmenu-qt5)
-BuildRequires:  pkgconfig(qca2-qt5)
+BuildRequires:  cmake(Qt5Multimedia)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Script)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5WebEngine)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(dbusmenu-qt5)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
 %{?systemd_requires}
@@ -95,6 +90,8 @@ This is the quassel standalone client.
 Summary:        KDE client for the Quassel IRC client
 Group:          Productivity/Networking/IRC
 Requires:       %{name}-base = %{version}
+Requires:       update-alternatives
+Requires(post): update-alternatives
 Provides:       %{name}_ui = %{version}
 
 %description client
@@ -109,6 +106,8 @@ This is the quassel KDE client only.
 Summary:        Qt5 client for the Quassel IRC client
 Group:          Productivity/Networking/IRC
 Requires:       %{name}-base = %{version}
+Requires:       update-alternatives
+Requires(post): update-alternatives
 Provides:       %{name}_ui = %{version}
 
 %description client-qt5
@@ -150,8 +149,7 @@ such as WeeChat, but graphical.
 This contains common parts shared by %{name} and %{name}-client.
 
 %prep
-%setup -q -n %{name}-%{realver}
-%autopatch -p1
+%autosetup -p1 -n %{name}-%{realver}
 
 %build
 FAKE_BUILDDATE=$(LC_ALL=C date -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
@@ -159,11 +157,11 @@ sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" src/common/quassel.cpp
 FAKE_BUILDTIME=$(LC_ALL=C date -r %{_sourcedir}/%{name}.changes '+%%H:%%M:%%S')
 sed -i "s/__TIME__/\"$FAKE_BUILDTIME\"/" src/common/quassel.cpp
 
-%cmake_kf5 -d build -- -DUSE_QT5=ON -DWITH_WEBENGINE=ON -DWITH_KDE=ON
-make %{?_smp_mflags}
+%cmake_kf5 -d build -- -DUSE_QT5=ON -DWITH_WEBENGINE=ON -DWITH_KDE=ON -DENABLE_SHARED=OFF
+%cmake_build
 cd ..
-%cmake_kf5 -d build-qt5 -- -DUSE_QT5=ON -DWITH_WEBENGINE=ON -DWITH_KDE=OFF
-make %{?_smp_mflags}
+%cmake_kf5 -d build-qt5 -- -DUSE_QT5=ON -DWITH_WEBENGINE=ON -DWITH_KDE=OFF -DENABLE_SHARED=OFF
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
@@ -187,6 +185,11 @@ install -D -m 644 %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.quasselcore
 install -d -m 751 %{buildroot}%{_localstatedir}/log/%{name}
 install -D -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}core
 
+# actions svg icon dir is named incorrectly as 'action'
+if [ -d %{buildroot}%{_datadir}/icons/hicolor/scalable/action ]; then
+    mv %{buildroot}%{_datadir}/icons/hicolor/scalable/action %{buildroot}%{_datadir}/icons/hicolor/scalable/actions
+fi
+
 # rewrite env shebang on scripts to normal shebang
 sed -i '1{
     s,^#!%{_bindir}/env  *bash *$,#!/bin/bash,
@@ -208,14 +211,6 @@ sed -i '1{
 
 %postun core
 %service_del_postun quasselcore.service
-
-%if 0%{?suse_version} < 1500
-%post base
-%icon_theme_cache_post
-
-%postun base
-%icon_theme_cache_postun
-%endif
 
 %post client
 update-alternatives --install %{_bindir}/quasselclient quasselclient %{_bindir}/quasselclient-kde 20
@@ -262,10 +257,8 @@ fi
 
 %files base
 %license COPYING
-%{_datadir}/applications/%{name}client.desktop
-%{_datadir}/pixmaps/%{name}.png
-%dir %{_datadir}/%{name}
 %{_datadir}/%{name}
+%{_datadir}/applications/%{name}client.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/knotifications5/%{name}.notifyrc
 

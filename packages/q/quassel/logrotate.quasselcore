@@ -8,6 +8,6 @@
     missingok
     copytruncate
     postrotate
-	chmod 644 /var/log/quasselcore
+    su quasselcore quasselcore
     endscript
 }
