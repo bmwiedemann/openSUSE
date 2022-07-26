@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jul 25 07:58:17 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220725.8b1e5f2a:
+  * Port 2 usages of toml library to tomli.
+  * Port TOML configs to tomli library
+
+-------------------------------------------------------------------
+Sun Jul 24 14:30:23 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220724.d9fd8cf3:
+  * Reflect README with toml library change.
+  * Use tomllib from the standard library on Python 3.11+
+
+-------------------------------------------------------------------
+Thu Jul 21 11:32:30 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220721.32c15c31:
+  * dbus-services: really adjust location from etc -> usr
+
+-------------------------------------------------------------------
+Fri Jul 15 15:22:25 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220715.9ec62e45:
+  * Skip shlib-policy-name-error for HPC libraries
+
+-------------------------------------------------------------------
+Fri Jul 15 11:55:14 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220714.7cb9607:
+  * Remove trailing ': x%' from 'package-with-huge-docs' error
+  * Fix useless-provides
+  * digest whitelists: remove now redundant sha256 algorithm specification
+  * FileDigestCheck: use sha256 digest algorithm by default
+  * dbus-services: adjust to PackageKit etc -> usr config file move (bsc#1201347)
+  * dbus-services: adjust to cups etc -> usr config file move (bsc#1201346)
+  * dbus-services: adjust to avahi etc -> usr config file move (bsc#1201345)
+- Remove upstreamed patch skip-rpmlint-for-rpmlint.patch.
+
+-------------------------------------------------------------------
 Tue Jul 12 20:38:18 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 2.3.0+git20220712.761ddf0:

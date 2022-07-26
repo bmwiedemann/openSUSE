@@ -3883,4 +3883,34 @@ oddjob-gpupdate isn't blocked)</comment>
   this package.</comment>
     <requestid>989092</requestid>
   </revision>
+  <revision rev="405" vrev="1">
+    <srcmd5>0d0a57e920fbb8bf211a0facc59df4df</srcmd5>
+    <version>2.3.0+git20220725.8b1e5f2a</version>
+    <time>1658857364</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 2.3.0+git20220725.8b1e5f2a:
+  * Port 2 usages of toml library to tomli.
+  * Port TOML configs to tomli library
+
+- Update to version 2.3.0+git20220724.d9fd8cf3:
+  * Reflect README with toml library change.
+  * Use tomllib from the standard library on Python 3.11+
+
+- Update to version 2.3.0+git20220721.32c15c31:
+  * dbus-services: really adjust location from etc -&gt; usr
+
+- Update to version 2.3.0+git20220715.9ec62e45:
+  * Skip shlib-policy-name-error for HPC libraries
+
+- Update to version 2.3.0+git20220714.7cb9607:
+  * Remove trailing ': x%' from 'package-with-huge-docs' error
+  * Fix useless-provides
+  * digest whitelists: remove now redundant sha256 algorithm specification
+  * FileDigestCheck: use sha256 digest algorithm by default
+  * dbus-services: adjust to PackageKit etc -&gt; usr config file move (bsc#1201347)
+  * dbus-services: adjust to cups etc -&gt; usr config file move (bsc#1201346)
+  * dbus-services: adjust to avahi etc -&gt; usr config file move (bsc#1201345)
+- Remove upstreamed patch skip-rpmlint-for-rpmlint.patch.</comment>
+    <requestid>990955</requestid>
+  </revision>
 </revisionlist>
