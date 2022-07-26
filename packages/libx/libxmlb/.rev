@@ -96,4 +96,12 @@ Needed for future versions of fwupd</comment>
 - Add pkgconfig(liblzma) BuildRequires: new dependency.</comment>
     <requestid>942315</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>62a4933811e37e7e431cb981592c92db</srcmd5>
+    <version>0.3.9</version>
+    <time>1658857346</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991056</requestid>
+  </revision>
 </revisionlist>

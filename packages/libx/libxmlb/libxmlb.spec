@@ -1,7 +1,7 @@
 #
 # spec file for package libxmlb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,17 +19,17 @@
 
 %define sover 2
 Name:           libxmlb
-Version:        0.3.6
+Version:        0.3.9
 Release:        0
 Summary:        Library for querying compressed XML metadata
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Other
 URL:            https://github.com/hughsie/libxmlb
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  meson >= 0.47.0
 # Enable when/if libstemmer becomes available in openSUSE (+ in meson call)
 #BuildRequires:  libstemmer-devel
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.45.8
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
@@ -112,7 +112,8 @@ Files for development with %{name}.
 
 %files -n xmlb-tool
 %doc README.md NEWS
-%{_libexecdir}/xb-tool
+%{_bindir}/xb-tool
+%{_mandir}/man1/xb-tool.1%{?ext_man}
 
 %files devel
 %doc %{_datadir}/gtk-doc/html/%{name}

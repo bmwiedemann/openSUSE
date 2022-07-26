@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 22 21:52:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.9:
+  * Fix the crash for when the root tree has no children (Richard Hughes)
+  * Fix the crash when getting the element for the [empty] root (Richard Hughes)
+  * Install xb-tool into bindir (Richard Hughes)
+  * Ensure reproducible results when importing a node (Richard Hughes)
+  * Ignore all hidden files when using _WATCH_DIRECTORY (Richard Hughes)
+  * Show the value bindings when using XB_SILO_PROFILE_FLAG_XPATH (Richard Hughes)
+  * Use the correct lookup method for the python3 script interpreter (Eli Schwartz)
+ 
+-------------------------------------------------------------------
 Wed Dec 22 12:07:22 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 0.3.6:
