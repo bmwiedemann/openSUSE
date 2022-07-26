@@ -1,24 +1,63 @@
 -------------------------------------------------------------------
 Sun Mar 13 01:54:25 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
 
+- Update to version 0.9.
+  * NEW: Mangohud - Added frame_count option to display the number
+    of frames since start
+  * NEW: Mangohud - Added GPU throttling option to show if GPU is
+    throttling based on Power, current, temp or "other" (Only shows
+    if throttling is currently happening)
+  * NEW: Mangohud - Selected quick layout button will keep the
+    active color
+  * NEW: Mangohud - Added Option to run vkcube with Gamescope in
+    the Hamburguer menu
+  * FIX: Removed Breeze theme dependency/style. GUI will use the
+    current system theme but it is optimised for Breeze (QT) and
+    Adwaita (GTK) themes.
+  * FIX: Mangohud - Driverversion wasn't selected on the complete
+    quick layout
+  * FIX: Mangohud - Displayed Kernelversion will update
+    automatically now (not attached to a text file anymore)
+  * FIX: Mangohud - Notifications didn't expire, now they are
+    transient (thanks @NoXPhasma)
+  * FIX: VKbasalt - Changed menu icon to standart hamburguer menu
+  * FIX: Vkbasalt , replaysorcery - Display wrong hint message from
+    the mangohud toolbox
+
+-------------------------------------------------------------------
+Sun Mar 13 01:54:25 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
 - Update to version 0.8 & 0.8.1.
   * NEW - New option to start steam using the Deck UI
-  * NEW - New Classic mode to fix the problem of white text in white background for GTK desktops with no Breeze theme. Issue #198
+  * NEW - New Classic mode to fix the problem of white text in
+    white background for GTK desktops with no Breeze theme.
+    Issue #198
   * FIX - Created icons for hamburguer options.
   * FIX - Re-add Autostart logging feature. Issue #188
   * FIX - Wrong hint on log duration. Issue #188
-  * NEW: Mangohud - Display gamepad controllers battery status (needs xone driver for xbox one and series X controllers)
-  * NEW: Mangohud - Preconfigure color themes (Mangohud default, Simple White, Old Afterburner, Intel + Nvidia, Intel + Radeon, AMD + Nvidia, AMD + Radeon)
-  * NEW: Mangohud - Added option FPS_Only to display only FPS value. Issue #192
-  * NEW: Mangohud - Added Minimal quick layout with only fps and frametime
+  * NEW: Mangohud - Display gamepad controllers battery status
+    (needs xone driver for xbox one and series X controllers)
+  * NEW: Mangohud - Preconfigure color themes (Mangohud default,
+    Simple White, Old Afterburner, Intel + Nvidia, Intel + Radeon,
+    AMD + Nvidia, AMD + Radeon)
+  * NEW: Mangohud - Added option FPS_Only to display only FPS value.
+    Issue #192
+  * NEW: Mangohud - Added Minimal quick layout with only fps and
+    frametime
   * FIX: Global enable method updated. Issue #186
-  * FIX: Mangohud - Colors from colorsbuttons resemble but doesn't matched the stock mangohud. Now they do.
-  * FIX: Removed the lines "exec=echo" from baterry config. It seems it were causing steam errors. Issue #178
-  * FIX: Custom FPS field was locked to 200. Now the maximum value is 999. Issue #172
+  * FIX: Mangohud - Colors from colorsbuttons resemble but doesn't
+    matched the stock mangohud. Now they do.
+  * FIX: Removed the lines "exec=echo" from baterry config. It seems
+    it were causing steam errors. Issue #178
+  * FIX: Custom FPS field was locked to 200. Now the maximum value
+    is 999. Issue #172
   * FIX: Added Dependency checker for Breeze-theme
-  * CHANGE: Changed cpuload color 2 to a lighter orange tone: old $000078FF , new $007FAAFF
-  * CHANGE: Preconfigure layouts now instantly save the new options and update previews
-  * CHANGE: Now a “Config saved” message is also displayed next to the save button. It disapear on mouse enter the mangohud panel.
+  * CHANGE: Changed cpuload color 2 to a lighter orange tone: old
+    $000078FF , new $007FAAFF
+  * CHANGE: Preconfigure layouts now instantly save the new options
+    and update previews
+  * CHANGE: Now a “Config saved” message is also displayed next to
+    the save button. It disapear on mouse enter the mangohud panel.
 
 -------------------------------------------------------------------
 Fri Dec 17 08:37:31 UTC 2021 - andy great <andythe_great@pm.me>
