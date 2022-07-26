@@ -17,13 +17,13 @@
 
 
 Name:           freeciv
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Free Civilization Clone
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Strategy/Turn Based
-URL:            http://www.freeciv.org
-Source0:        http://files.freeciv.org/stable/%{name}-%{version}.tar.xz
+URL:            https://www.freeciv.org
+Source0:        https://files.freeciv.org/stable/%{name}-%{version}.tar.xz
 Source1:        freeciv-gtk3.desktop
 Source2:        freeciv-qt.desktop
 Source3:        freeciv.png
@@ -144,8 +144,8 @@ rm %{buildroot}%{_docdir}/freeciv/COPYING
 %{_datadir}/pixmaps/freeciv-modpack.png
 %{_datadir}/pixmaps/freeciv-ruledit.png
 %{_datadir}/pixmaps/%{name}.png
-%{_datadir}/metainfo/freeciv-server.appdata.xml
-%{_datadir}/metainfo/freeciv-ruledit.appdata.xml
+%{_datadir}/metainfo/org.freeciv.server.appdata.xml
+%{_datadir}/metainfo/org.freeciv.ruledit.appdata.xml
 
 %files lang -f %{name}-core.lang -f %{name}-nations.lang -f %{name}-ruledit.lang
 
@@ -153,13 +153,13 @@ rm %{buildroot}%{_docdir}/freeciv/COPYING
 %{_bindir}/freeciv-gtk3
 %{_bindir}/freeciv-mp-gtk3
 %{_datadir}/applications/org.freeciv.gtk3.desktop
-%{_datadir}/metainfo/freeciv-gtk3.appdata.xml
+%{_datadir}/metainfo/org.freeciv.gtk3.appdata.xml
 %{_datadir}/applications/org.freeciv.mp.gtk3.desktop
-%{_datadir}/metainfo/freeciv-mp-gtk3.appdata.xml
+%{_datadir}/metainfo/org.freeciv.mp.gtk3.appdata.xml
 
 %files qt
 %{_bindir}/freeciv-qt
 %{_datadir}/applications/org.freeciv.qt.desktop
-%{_datadir}/metainfo/freeciv-qt.appdata.xml
+%{_datadir}/metainfo/org.freeciv.qt.appdata.xml
 
 %changelog
