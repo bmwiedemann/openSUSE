@@ -537,6 +537,7 @@ export PYTHON=%{_bindir}/$python
 	--disable-static\
         --with-distro=suse\
         --enable-xmltoman\
+        --with-dbus-sys=%{_datadir}/dbus-1/system.d \
 %if %{build_core}
 	--enable-compat-libdns_sd\
 	--enable-compat-howl\
@@ -800,7 +801,7 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %{_sysconfdir}/avahi/avahi-dnsconfd.action
 %dir %{_sysconfdir}/avahi/services
 %config(noreplace) %{_sysconfdir}/avahi/hosts
-%{_sysconfdir}/dbus-1/system.d/*.conf
+%{_datadir}/dbus-1/system.d/*.conf
 %{_datadir}/dbus-1/interfaces/org.freedesktop.Avahi.*.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.Avahi.service
 %dir %{_prefix}/lib/avahi
