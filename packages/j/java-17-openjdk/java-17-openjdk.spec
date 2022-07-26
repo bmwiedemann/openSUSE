@@ -32,16 +32,16 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       3
-%global datever         2022-04-19
-%global buildver        7
+%global updatever       4
+%global datever         2022-07-19
+%global buildver        8
 %global openjdk_repo    jdk17u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
 # priority must be 6 digits in total
-%if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 %global priority        2705
 %else
 %global priority        0
@@ -182,7 +182,6 @@ Patch200:       ppc_stack_overflow_fix.patch
 Patch201:       fix_armv6_build.patch
 #
 Patch300:       JDK-8282944.patch
-Patch301:       JDK-8282004.patch
 Patch302:       disable-doclint-by-default.patch
 Patch303:       alternative-tzdb_dat.patch
 #
@@ -232,7 +231,7 @@ BuildRequires:  pkgconfig(gthread-2.0)
 Requires:       %{name}-headless = %{version}-%{release}
 Requires:       fontconfig
 Requires(post): file
-%if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage base provides.
 Provides:       java = %{javaver}
 Provides:       java-%{javaver} = %{version}-%{release}
@@ -305,7 +304,7 @@ Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
 Requires(postun):update-alternatives
 Recommends:     tzdata-java8
-%if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
 Provides:       java-headless = %{javaver}
@@ -339,7 +338,7 @@ Requires:       %{name} = %{version}-%{release}
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
 Requires(postun):update-alternatives
-%if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage devel provides.
 Provides:       java-%{javaver}-devel = %{version}
 Provides:       java-devel = %{javaver}
@@ -386,7 +385,7 @@ Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall javadoc alternative.
 Requires(postun):update-alternatives
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage javadoc provides.
 Provides:       java-%{javaver}-javadoc = %{version}-%{release}
 Provides:       java-javadoc = %{version}-%{release}
@@ -454,7 +453,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %endif
 
 %patch300 -p1
-%patch301 -p1
 %patch302 -p1
 %patch303 -p1
 
@@ -825,6 +823,7 @@ update-alternatives \
   --slave %{_bindir}/jmap jmap %{sdkbindir}/jmap \
   --slave %{_bindir}/jmod jmod %{sdkbindir}/jmod \
   --slave %{_bindir}/jps jps %{sdkbindir}/jps \
+  --slave %{_bindir}/jpackage jpackage %{sdkbindir}/jpackage \
   --slave %{_bindir}/jrunscript jrunscript %{sdkbindir}/jrunscript \
   --slave %{_bindir}/jshell jshell %{sdkbindir}/jshell \
   --slave %{_bindir}/jstack jstack %{sdkbindir}/jstack \
