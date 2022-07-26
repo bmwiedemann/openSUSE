@@ -25,6 +25,16 @@
 
 # _tmpfilesdir is not defined in systemd macros up to openSUSE 13.2
 %{!?_tmpfilesdir: %global _tmpfilesdir /usr/lib/tmpfiles.d }
+
+# dbus too old in SLE 12
+%if 0%{?suse_version} < 1500
+%define dbus_dir %{_sysconfdir}/dbus-1
+%define dbus_config %config
+%else
+%define dbus_dir %{_datadir}/dbus-1
+%define dbus_config %nil
+%endif
+
 Name:           cups
 # CUPS beta version numbers like "2.3b6" can be used as is because
 # "zypper vcmp 2.3.b99 2.3.0" shows "2.3.b99 is older than 2.3.0" and
@@ -379,7 +389,7 @@ export CC=cc
 make %{?_smp_mflags}
 
 %install
-make BUILDROOT=%{buildroot} install
+make BUILDROOT=%{buildroot} DBUSDIR=%{dbus_dir} install
 # Make directory for ssl files:
 mkdir -p %{buildroot}%{_sysconfdir}/cups/ssl
 # Add a client.conf as template (Source108: cups-client.conf):
@@ -581,7 +591,7 @@ exit 0
 %config(noreplace) %attr(640,root,lp) %{_sysconfdir}/cups/cupsd.conf
 %config(noreplace) %attr(640,root,lp) %{_sysconfdir}/cups/snmp.conf
 %config %{_sysconfdir}/pam.d/cups
-%config %{_sysconfdir}/dbus-1/system.d/cups.conf
+%dbus_config %{dbus_dir}/system.d/cups.conf
 %config %{_sysconfdir}/cups/cupsd.conf.default
 %config %{_sysconfdir}/cups/cups-files.conf.default
 %config %{_sysconfdir}/cups/snmp.conf.default

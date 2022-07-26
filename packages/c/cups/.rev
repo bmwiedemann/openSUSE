@@ -1241,4 +1241,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>CUPS version upgrade to 2.4.2 which includes a fix for CVE-2022-26691 (#bsc1199474)</comment>
     <requestid>980461</requestid>
   </revision>
+  <revision rev="164" vrev="2">
+    <srcmd5>da6fa348467e5ed97dc776e22b15bcaf</srcmd5>
+    <version>2.4.2</version>
+    <time>1658857366</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990986</requestid>
+  </revision>
 </revisionlist>
