@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jul 26 04:31:49 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- fix rpath (don't use relative lib64)
+- switch python to noarch
+- Update to version 2.3.3+20220722:
+  * Added reviewer's suggestions
+  * Fixed the broken link on SMT-LIBv2 documentation.
+  * Fix cli to disable new simplifications with --disablesimplifications
+  * enable sharing-aware rewrites by default.
+  * Extra simplification rule.
+  * re-enabling removal of BVOR to evaluate how important it is.
+  * some more simplification rules.
+  * Improved simplifications
+  * Faster/better Always true identification
+  * First attempt at sharing aware rewrites.
+  * Create 100000...
+  * Nicer implementation of Always true.
+  * Remove the unnecessary use of a SCARY iterator that may break on older compilers
+  * Cleanup memory leaks. Nicer signed comparison on unsigned interval.
+  * Nicer domain analyis.
+  * extra test case for strength reduction.
+  * Strength reduction now iterates through. This should make it idempotent and deterministic.
+  * Make the new PropagateEqualities deterministic
+  * Find non-overlapping extracts of variables and replace them with fresh variables.
+  * Changes to how domain information about bit-vector nodes is stored.
+  * and some more.
+
+-------------------------------------------------------------------
 Wed May 11 08:48:14 UTC 2022 - jslaby@suse.cz
 
 - Update to version 2.3.3+20220507:

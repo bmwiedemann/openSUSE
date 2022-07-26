@@ -18,7 +18,7 @@
 
 %define sover 2_3
 Name:           stp
-Version:        2.3.3+20220507
+Version:        2.3.3+20220722
 Release:        0
 Summary:        Constraint Solver
 License:        MIT
@@ -75,6 +75,7 @@ Developmnet files for stp library.
 %package -n python3-stp
 Summary:        Python bindings for stp
 Requires:       libstp%{sover} = %{version}
+BuildArch:      noarch
 
 %description -n python3-stp
 Python bindings for stp library.
@@ -87,7 +88,9 @@ Python bindings for stp library.
 %cmake \
 	-DPython_ADDITIONAL_VERSIONS=3 \
 	-DALSO_BUILD_STATIC_LIB:BOOL="off" \
-	-DSTP_TIMESTAMPS:BOOL="off"
+	-DSTP_TIMESTAMPS:BOOL="off" \
+	-DCMAKE_INSTALL_LIBDIR:PATH=%{_prefix}/%{_lib}
+# bug in CMakeLists.txt, it looks up absolute paths only ^^
 %cmake_build
 
 %install
