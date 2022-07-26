@@ -1,7 +1,7 @@
 #
 # spec file for package libvpx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         sover 7
 Name:           libvpx
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        VP8/VP9 codec library
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -27,12 +27,11 @@ URL:            https://www.webmproject.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1000:     baselibs.conf
 Patch2:         libvpx-configure-add-arch.patch
+# only needed for test suite
+BuildRequires:  gcc-c++
 # Needed to be able to create pkgconfig() provides.
 BuildRequires:  pkgconfig
 BuildRequires:  yasm
-
-# only needed for test suite
-BuildRequires:  gcc-c++
 # add curl and do not copy it in to get an updated test-data.sha1 file
 #BuildRequires:  curl
 
@@ -99,13 +98,8 @@ sed -i~ 's@ssse3@@' build/make/rtcd.pl
 %endif
 cd build
 # It is only an emulation of autotools configure; the macro does not work
-
-# libvpx default enable NEON support on ARMv7, unfortunately some ARMv7
-# CPU doesn't have NEON, e.g. NVIDIA Tegra 2.
-# So, we still set -mfpu=neon when build libvpx rpm, but also enable
-# runtime-cpu-detect for runtime detect NEON.
-export CFLAGS="%optflags -O3"
-export CXXFLAGS="%optflags -O3"
+export CFLAGS="%{optflags} -O3"
+export CXXFLAGS="%{optflags} -O3"
 ../configure \
     --prefix=%{_prefix} \
     --libdir=%{_libdir} \
@@ -138,7 +132,7 @@ export CXXFLAGS="%optflags -O3"
 echo '#define DECODE_WIDTH_LIMIT 8192'  >> vpx_config.h
 echo '#define DECODE_HEIGHT_LIMIT 8192' >> vpx_config.h
 
-make %{?_smp_mflags} verbose=yes GEN_EXAMPLES=
+%make_build verbose=yes GEN_EXAMPLES=
 
 %install
 cd build
@@ -152,7 +146,6 @@ make %{?_smp_mflags} verbose=yes GEN_EXAMPLES= DESTDIR=%{buildroot} install
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %files -n vpx-tools
-%defattr(-,root,root)
 %{_bindir}/*
 
 %files -n %{name}%{sover}

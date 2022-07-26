@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jul 22 21:46:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.0:
+  This release adds optimizations for Loongarch, adds support for vp8 in the
+  real-time rate control library, upgrades GoogleTest to v1.11.0, updates
+  libwebm to libwebm-1.0.0.28-20-g206d268, and includes numerous bug fixes.
+  - Enhancement:
+    Numerous improvements on checking memory allocations.
+    Optimizations for Loongarch.
+    Code clean-up.
+  - Bug fixes:
+    Fix to a crash related to {vp8/vp9}_set_roi_map.
+    Fix to compiling failure with -Wformat-nonliteral.
+    Fix to integer overflow with vp9 with high resolution content.
+    Fix to AddNoiseTest failure with ARMv7.
+    Fix to libvpx Null-dereference READ in vp8.
+
+-------------------------------------------------------------------
 Wed Nov 24 08:55:18 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Rename libvpx-configure-add-s390.patch to
