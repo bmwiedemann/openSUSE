@@ -1,7 +1,7 @@
 #
 # spec file for package gamemode
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gamemode
-Version:        1.6.1
+Version:        1.7
 Release:        0
 Summary:        Daemon/library combo for changing Linux system performance on demand
 License:        BSD-3-Clause
@@ -109,8 +109,7 @@ This package contains the headers required to compile games with
 built-in GameMode support.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 cp %{SOURCE3} .
 
@@ -123,6 +122,9 @@ cp %{SOURCE3} .
 
 %install
 %meson_install
+# We don't want to create the gamemode group as without further
+# configuration to actually use it, it does not provide any value
+rm %{buildroot}/%{_sysusersdir}/gamemode.conf
 
 %post -n libgamemode0 -p /sbin/ldconfig
 %postun -n libgamemode0 -p /sbin/ldconfig
@@ -131,6 +133,7 @@ cp %{SOURCE3} .
 
 %files -n gamemoded
 %{_bindir}/gamemoded
+%{_bindir}/gamemodelist
 %{_bindir}/gamemoderun
 %{_libexecdir}/cpugovctl
 %{_libexecdir}/gpuclockctl

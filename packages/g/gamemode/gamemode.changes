@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 22 18:27:05 UTC 2022 - Matthias Bach <marix@marix.org> - 1.7
+
+- Update to version 1.7
+  * New utility: gamemode
+  * Run executables from PATH instead of /usr/bin
+
+-------------------------------------------------------------------
 Thu Apr 29 14:02:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.6.1

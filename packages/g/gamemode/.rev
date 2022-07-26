@@ -75,4 +75,14 @@
     <comment></comment>
     <requestid>889401</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>214bec21b5230f3635ac81052156f6bd</srcmd5>
+    <version>1.7</version>
+    <time>1658857404</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 1.7
+  * New utility: gamemode
+  * Run executables from PATH instead of /usr/bin</comment>
+    <requestid>990718</requestid>
+  </revision>
 </revisionlist>
