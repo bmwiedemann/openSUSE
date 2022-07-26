@@ -573,4 +573,26 @@
     <comment></comment>
     <requestid>982784</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>c829467b5f9777d7153b84376ad8277f</srcmd5>
+    <version>1.24.1</version>
+    <time>1658857454</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 1.24.1:
+  CVE-2022-1708
+  * boo#1200285 CVE-2022-1708
+  * bump to v1.24.1
+  * conmonmgr: query help text to see if it supports log-global-size-max
+  * add support for conmon log-global-size-max
+  * oci: cap exec sync length
+  * Fix review issues
+  * Fix it case failed
+  * Fix review issues
+  * Add integration test for remove paused ctr
+  * 1.When in paused state, stop contianer should unpause it 2.We should treat paused state as running, or kubelet will delete it and restart one
+  * fix review issues
+  * Try to force delete ctr when in paused state
+  * vendor: bump crypto package (forwarded request 990917 from jfkw)</comment>
+    <requestid>990918</requestid>
+  </revision>
 </revisionlist>

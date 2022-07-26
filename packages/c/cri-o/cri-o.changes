@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 25 01:47:38 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 1.24.1:
+  CVE-2022-1708
+  * boo#1200285 CVE-2022-1708
+  * bump to v1.24.1
+  * conmonmgr: query help text to see if it supports log-global-size-max
+  * add support for conmon log-global-size-max
+  * oci: cap exec sync length
+  * Fix review issues
+  * Fix it case failed
+  * Fix review issues
+  * Add integration test for remove paused ctr
+  * 1.When in paused state, stop contianer should unpause it 2.We should treat paused state as running, or kubelet will delete it and restart one
+  * fix review issues
+  * Try to force delete ctr when in paused state
+  * vendor: bump crypto package
+
+-------------------------------------------------------------------
 Thu May 19 16:13:54 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update BuildRequires: golang(API) >= 1.18
