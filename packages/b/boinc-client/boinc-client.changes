@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 18 11:26:15 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.20.2
+  * client: if bandwidth limit is removed (up or down), remove
+    limit from active transfers.
+  * client: fix bug in work fetch logic for case of zero resource
+    share and zero work buf.
+
+-------------------------------------------------------------------
 Sun Jul  3 16:51:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.20.1
