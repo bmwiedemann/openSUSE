@@ -25,7 +25,7 @@
 %bcond_with doc
 %endif
 Name:           python-atomicwrites%{psuffix}
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Atomic file writes for Python
 License:        MIT

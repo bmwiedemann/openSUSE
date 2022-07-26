@@ -109,4 +109,16 @@
 </comment>
     <requestid>949779</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f1e0f24f551016f2d0043d3cf51ecc9d</srcmd5>
+    <version>1.4.1</version>
+    <time>1658857517</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 1.4.1:
+  * package is now unmaintained
+  * python 3.8 support
+  * README updates
+  * Support ppc64le</comment>
+    <requestid>991150</requestid>
+  </revision>
 </revisionlist>
