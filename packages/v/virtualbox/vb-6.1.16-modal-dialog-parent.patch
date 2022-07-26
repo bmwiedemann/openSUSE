@@ -1,7 +1,7 @@
-Index: VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsExtension.cpp
+Index: VirtualBox-6.1.36/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsExtension.cpp
 ===================================================================
---- VirtualBox-6.1.18.orig/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsExtension.cpp
-+++ VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsExtension.cpp
+--- VirtualBox-6.1.36.orig/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsExtension.cpp
++++ VirtualBox-6.1.36/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsExtension.cpp
 @@ -16,6 +16,7 @@
   */
  
@@ -19,10 +19,10 @@ Index: VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlo
  
      QString strFilePath;
      if (!fileNames.isEmpty())
-Index: VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/widgets/UIFilePathSelector.cpp
+Index: VirtualBox-6.1.36/src/VBox/Frontends/VirtualBox/src/widgets/UIFilePathSelector.cpp
 ===================================================================
---- VirtualBox-6.1.18.orig/src/VBox/Frontends/VirtualBox/src/widgets/UIFilePathSelector.cpp
-+++ VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/widgets/UIFilePathSelector.cpp
+--- VirtualBox-6.1.36.orig/src/VBox/Frontends/VirtualBox/src/widgets/UIFilePathSelector.cpp
++++ VirtualBox-6.1.36/src/VBox/Frontends/VirtualBox/src/widgets/UIFilePathSelector.cpp
 @@ -397,10 +397,10 @@ void UIFilePathSelector::selectPath()
      switch (m_enmMode)
      {
@@ -45,10 +45,10 @@ Index: VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/widgets/UIFilePathSel
      }
  
      /* Do nothing if nothing chosen: */
-Index: VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/widgets/UIEmptyFilePathSelector.cpp
+Index: VirtualBox-6.1.36/src/VBox/Frontends/VirtualBox/src/widgets/UIEmptyFilePathSelector.cpp
 ===================================================================
---- VirtualBox-6.1.18.orig/src/VBox/Frontends/VirtualBox/src/widgets/UIEmptyFilePathSelector.cpp
-+++ VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/widgets/UIEmptyFilePathSelector.cpp
+--- VirtualBox-6.1.36.orig/src/VBox/Frontends/VirtualBox/src/widgets/UIEmptyFilePathSelector.cpp
++++ VirtualBox-6.1.36/src/VBox/Frontends/VirtualBox/src/widgets/UIEmptyFilePathSelector.cpp
 @@ -232,16 +232,16 @@ void UIEmptyFilePathSelector::choose()
      switch (mMode)
      {
@@ -69,11 +69,11 @@ Index: VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/widgets/UIEmptyFilePa
      }
      if (path.isEmpty())
          return;
-Index: VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/medium/UIMediumSelector.cpp
+Index: VirtualBox-6.1.36/src/VBox/Frontends/VirtualBox/src/medium/UIMediumSelector.cpp
 ===================================================================
---- VirtualBox-6.1.18.orig/src/VBox/Frontends/VirtualBox/src/medium/UIMediumSelector.cpp
-+++ VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/medium/UIMediumSelector.cpp
-@@ -438,7 +438,7 @@ void UIMediumSelector::sltButtonLeaveEmp
+--- VirtualBox-6.1.36.orig/src/VBox/Frontends/VirtualBox/src/medium/UIMediumSelector.cpp
++++ VirtualBox-6.1.36/src/VBox/Frontends/VirtualBox/src/medium/UIMediumSelector.cpp
+@@ -441,7 +441,7 @@ void UIMediumSelector::sltButtonLeaveEmp
  
  void UIMediumSelector::sltAddMedium()
  {
@@ -82,10 +82,10 @@ Index: VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/medium/UIMediumSelect
      if (uMediumID.isNull())
          return;
      repopulateTreeWidget();
-Index: VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/globals/UICommon.cpp
+Index: VirtualBox-6.1.36/src/VBox/Frontends/VirtualBox/src/globals/UICommon.cpp
 ===================================================================
---- VirtualBox-6.1.18.orig/src/VBox/Frontends/VirtualBox/src/globals/UICommon.cpp
-+++ VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/globals/UICommon.cpp
+--- VirtualBox-6.1.36.orig/src/VBox/Frontends/VirtualBox/src/globals/UICommon.cpp
++++ VirtualBox-6.1.36/src/VBox/Frontends/VirtualBox/src/globals/UICommon.cpp
 @@ -3197,7 +3197,7 @@ void UICommon::updateMachineStorage(cons
                  }
                  else if (target.type == UIMediumTarget::UIMediumTargetType_WithFileDialog)
@@ -95,10 +95,10 @@ Index: VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/globals/UICommon.cpp
                                                               strMachineFolder, false /* fUseLastFolder */);
                  }
                  else if(target.type == UIMediumTarget::UIMediumTargetType_CreateAdHocVISO)
-Index: VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/medium/UIMediumManager.cpp
+Index: VirtualBox-6.1.36/src/VBox/Frontends/VirtualBox/src/medium/UIMediumManager.cpp
 ===================================================================
---- VirtualBox-6.1.18.orig/src/VBox/Frontends/VirtualBox/src/medium/UIMediumManager.cpp
-+++ VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/medium/UIMediumManager.cpp
+--- VirtualBox-6.1.36.orig/src/VBox/Frontends/VirtualBox/src/medium/UIMediumManager.cpp
++++ VirtualBox-6.1.36/src/VBox/Frontends/VirtualBox/src/medium/UIMediumManager.cpp
 @@ -486,7 +486,7 @@ void UIMediumManagerWidget::sltHandleMac
  void UIMediumManagerWidget::sltAddMedium()
  {
@@ -108,23 +108,10 @@ Index: VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/medium/UIMediumManage
                                                strDefaultMachineFolder, true /* use most recent medium folder */);
  }
  
-Index: VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/settings/machine/UIMachineSettingsStorage.cpp
+Index: VirtualBox-6.1.36/src/VBox/Frontends/VirtualBox/src/extradata/UIExtraDataManager.cpp
 ===================================================================
---- VirtualBox-6.1.18.orig/src/VBox/Frontends/VirtualBox/src/settings/machine/UIMachineSettingsStorage.cpp
-+++ VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/settings/machine/UIMachineSettingsStorage.cpp
-@@ -3958,7 +3958,7 @@ void UIMachineSettingsStorage::sltChoose
- {
-     const QString strMachineFolder(QFileInfo(m_strMachineSettingsFilePath).absolutePath());
- 
--    QUuid uMediumId = uiCommon().openMediumWithFileOpenDialog(m_pMediumIdHolder->type(), this, strMachineFolder);
-+    QUuid uMediumId = uiCommon().openMediumWithFileOpenDialog(m_pMediumIdHolder->type(), QApplication::activeWindow(), strMachineFolder);
-     if (uMediumId.isNull())
-         return;
-     m_pMediumIdHolder->setId(uMediumId);
-Index: VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/extradata/UIExtraDataManager.cpp
-===================================================================
---- VirtualBox-6.1.18.orig/src/VBox/Frontends/VirtualBox/src/extradata/UIExtraDataManager.cpp
-+++ VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/extradata/UIExtraDataManager.cpp
+--- VirtualBox-6.1.36.orig/src/VBox/Frontends/VirtualBox/src/extradata/UIExtraDataManager.cpp
++++ VirtualBox-6.1.36/src/VBox/Frontends/VirtualBox/src/extradata/UIExtraDataManager.cpp
 @@ -1176,7 +1176,7 @@ void UIExtraDataManagerWindow::sltSave()
      /* Compose initial file-name: */
      const QString strInitialFileName = QDir(uiCommon().homeFolder()).absoluteFilePath(QString("%1_ExtraData.xml").arg(currentChooserName()));
@@ -143,10 +130,10 @@ Index: VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/extradata/UIExtraData
                                                                "Choose file to load extra-data from..");
      /* Make sure file-name was chosen: */
      if (strFileName.isEmpty())
-Index: VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/widgets/UILineTextEdit.cpp
+Index: VirtualBox-6.1.36/src/VBox/Frontends/VirtualBox/src/widgets/UILineTextEdit.cpp
 ===================================================================
---- VirtualBox-6.1.18.orig/src/VBox/Frontends/VirtualBox/src/widgets/UILineTextEdit.cpp
-+++ VirtualBox-6.1.18/src/VBox/Frontends/VirtualBox/src/widgets/UILineTextEdit.cpp
+--- VirtualBox-6.1.36.orig/src/VBox/Frontends/VirtualBox/src/widgets/UILineTextEdit.cpp
++++ VirtualBox-6.1.36/src/VBox/Frontends/VirtualBox/src/widgets/UILineTextEdit.cpp
 @@ -78,7 +78,7 @@ void UITextEditor::retranslateUi()
  
  void UITextEditor::open()

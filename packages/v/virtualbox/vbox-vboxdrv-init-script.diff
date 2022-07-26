@@ -1,7 +1,7 @@
-Index: VirtualBox-6.1.0_RC1/src/VBox/Installer/linux/vboxdrv.sh
+Index: VirtualBox-6.1.36/src/VBox/Installer/linux/vboxdrv.sh
 ===================================================================
---- VirtualBox-6.1.0_RC1.orig/src/VBox/Installer/linux/vboxdrv.sh
-+++ VirtualBox-6.1.0_RC1/src/VBox/Installer/linux/vboxdrv.sh
+--- VirtualBox-6.1.36.orig/src/VBox/Installer/linux/vboxdrv.sh
++++ VirtualBox-6.1.36/src/VBox/Installer/linux/vboxdrv.sh
 @@ -19,11 +19,12 @@
  #
  ### BEGIN INIT INFO
@@ -19,7 +19,7 @@ Index: VirtualBox-6.1.0_RC1/src/VBox/Installer/linux/vboxdrv.sh
  ### END INIT INFO
  
  ## @todo This file duplicates a lot of script with vboxadd.sh.  When making
-@@ -315,13 +316,6 @@ See the documenatation for your Linux di
+@@ -393,13 +394,6 @@ See the documentation for your Linux dis
          fi
      fi
      # ensure permissions
@@ -33,29 +33,28 @@ Index: VirtualBox-6.1.0_RC1/src/VBox/Installer/linux/vboxdrv.sh
      if ! $MODPROBE vboxnetflt > /dev/null 2>&1; then
          failure "modprobe vboxnetflt failed. Please use 'dmesg' to find out why"
      fi
-@@ -451,50 +445,8 @@ cleanup()
- # setup_script
- setup()
+@@ -531,17 +525,6 @@ setup()
  {
--    begin_msg "Building VirtualBox kernel modules" console
--    log "Building the main VirtualBox module."
--    if ! myerr=`$BUILDINTMP \
--        --save-module-symvers /tmp/vboxdrv-Module.symvers \
--        --module-source "$MODULE_SRC/vboxdrv" \
--        --no-print-directory install 2>&1`; then
--        "${INSTALL_DIR}/check_module_dependencies.sh" || exit 1
--        log "Error building the module:"
--        module_build_log "$myerr"
--        failure "Look at $LOG to find out what went wrong"
+     begin_msg "Building VirtualBox kernel modules" console
+     log "Building the main VirtualBox module."
+-
+-    # Detect if kernel was built with clang.
+-    unset LLVM
+-    vbox_cc_is_clang=$(/lib/modules/"$KERN_VER"/build/scripts/config \
+-        --file /lib/modules/"$KERN_VER"/build/.config \
+-        --state CONFIG_CC_IS_CLANG 2>/dev/null)
+-    if test "${vbox_cc_is_clang}" = "y"; then
+-        log "Using clang compiler."
+-        export LLVM=1
 -    fi
--    log "Building the net filter module."
--    if ! myerr=`$BUILDINTMP \
--        --use-module-symvers /tmp/vboxdrv-Module.symvers \
--        --module-source "$MODULE_SRC/vboxnetflt" \
--        --no-print-directory install 2>&1`; then
--        log "Error building the module:"
--        module_build_log "$myerr"
--        failure "Look at $LOG to find out what went wrong"
+-
+     if ! myerr=`$BUILDINTMP \
+         --save-module-symvers /tmp/vboxdrv-Module.symvers \
+         --module-source "$MODULE_SRC/vboxdrv" \
+@@ -559,31 +542,7 @@ setup()
+         log "Error building the module:"
+         module_build_log "$myerr"
+         failure "Look at $LOG to find out what went wrong"
 -    fi
 -    log "Building the net adaptor module."
 -    if ! myerr=`$BUILDINTMP \
@@ -81,7 +80,6 @@ Index: VirtualBox-6.1.0_RC1/src/VBox/Installer/linux/vboxdrv.sh
 -    depmod -a
 -    sync
 -    succ_msg "VirtualBox kernel modules built"
-+#   Try to build the host kernel modules in case prepackaging has failed
 +    /sbin/vboxconfig
      # Secure boot on Ubuntu and Debian.
      if test -n "$HAVE_SEC_BOOT" &&
