@@ -106,11 +106,14 @@ for f in $dlls; do
         sed 's/\(.*\)/'"$target"'(\1)/'
 done | sort -u
 
+# scan import libraries - all archive files are scanned, not only
+# '.dll.a' as some packages do not use the standard extension
+# for import libraries
 if [ -n "$scan_implibs" ]; then
-    implibs=$(echo "$filelist" | grep '\.dll.a$')
+    implibs=$(echo "$filelist" | grep '\.a$')
     for f in $implibs; do
         [ ! -f "$f" ] && continue
-        "$OBJDUMP" -r "$f" | grep '_iname' | sed 's,^.*lib,lib,g;s,_iname,,g;s,_dll,.dll,g;s,_,-,g' |
+        "$STRINGS" "$f" | grep '\.dll$' |
             tr "[:upper:]" "[:lower:]" |
             grep -Ev "$exclude_pattern" |
             sed 's/\(.*\)/'"$target"'(\1)/'
