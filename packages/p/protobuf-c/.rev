@@ -152,4 +152,11 @@
     <comment></comment>
     <requestid>986912</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>5e2914bcc15e5f45a33a577a7a0b53f6</srcmd5>
+    <version>1.4.0</version>
+    <time>1658951219</time>
+    <user>RBrownFactory</user>
+    <comment>Revert to rev 19, https://github.com/protocolbuffers/protobuf/issues/10323</comment>
+  </revision>
 </revisionlist>
