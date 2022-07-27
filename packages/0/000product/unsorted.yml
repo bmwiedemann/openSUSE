@@ -3833,6 +3833,7 @@ unsorted:
   - flarq 
   - flashfocus 
   - flashrom 
+  - flashrom-devel 
   - flatbuffers-devel 
   - flatpak-builder 
   - flatpak-devel 
@@ -3917,7 +3918,6 @@ unsorted:
   - foot-themes 
   - forge-parent 
   - forkbomb 
-  - forked-daapd 
   - forkstat 
   - forkstat-bash-completion 
   - form 
@@ -5506,8 +5506,6 @@ unsorted:
   - ghc-type-equality-devel: [x86_64] 
   - ghc-typed-process: [x86_64] 
   - ghc-typed-process-devel: [x86_64] 
-  - ghc-typerep-map: [x86_64] 
-  - ghc-typerep-map-devel: [x86_64] 
   - ghc-uglymemo: [x86_64] 
   - ghc-uglymemo-devel: [x86_64] 
   - ghc-unbounded-delays: [x86_64] 
@@ -10495,7 +10493,7 @@ unsorted:
   - libdc1394-25-32bit: [x86_64] 
   - libdc1394-devel 
   - libdc1394-tools 
-  - libdcmtk16 
+  - libdcmtk17 
   - libdconf1-32bit: [x86_64] 
   - libddccontrol0 
   - libddcutil-devel 
@@ -10576,7 +10574,7 @@ unsorted:
   - libdouble-conversion3-32bit: [x86_64] 
   - libdpdk-22: [x86_64] 
   - libdqlite0 
-  - libdrm-devel: [i586] # devel package of common_locks:libdrm_amdgpu1 
+  - libdrm-devel: [i586] # devel package of common_locks:libdrm_intel1 
   - libdrm-devel-32bit: [x86_64] 
   - libdrm-tools 
   - libdrm2-32bit: [x86_64] 
@@ -10838,7 +10836,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla25 
+  - libfilezilla29 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -10857,6 +10855,7 @@ unsorted:
   - libfl-devel-32bit: [x86_64] 
   - libfl2-32bit: [x86_64] 
   - libflann1_9 
+  - libflashrom1 
   - libflatbuffers2 
   - libflatzinc9 
   - libflickcurl-devel 
@@ -11621,8 +11620,8 @@ unsorted:
   - libhwloc15 
   - libhwy0 
   - libhx509-5 
+  - libhydrogen-core-1_1_1 
   - libhydrogen-core-devel 
-  - libhydrogen-core1 
   - libhyphen0-32bit: [x86_64] 
   - libi2c0 
   - libi2c0-devel 
@@ -11739,6 +11738,7 @@ unsorted:
   - libiodbc-devel 
   - libiodbc2 
   - libiodbcadm2 
+  - libip4tc2-32bit: [x86_64] 
   - libipa_hbac-devel 
   - libipa_hbac0 
   - libiperf0 
@@ -11827,6 +11827,9 @@ unsorted:
   - libjsonrpc-glib-1_0-1 
   - libjte-devel 
   - libjthread1_3_3 
+  - libjxl-devel 
+  - libjxl-tools 
+  - libjxl0_7 
   - libjxrglue0 
   - libjxrglue0-32bit: [x86_64] 
   - libkadm5clnt7 
@@ -15186,6 +15189,7 @@ unsorted:
   - linode-cli-bash-completion 
   - linphone 
   - linphone-cli 
+  - linphone-devel 
   - linssid 
   - linstor 
   - linux-atm 
@@ -17401,7 +17405,6 @@ unsorted:
   - notmuch-doc 
   - notmuch-emacs 
   - noto-arimo-fonts 
-  - noto-coloremoji-fonts 
   - noto-cousine-fonts 
   - noto-fonts 
   - noto-kufiarabic-fonts 
@@ -21448,6 +21451,7 @@ unsorted:
   - python-flup-doc 
   - python-freezerclient-doc 
   - python-gdbm 
+  - python-genders 
   - python-gevent-doc 
   - python-glanceclient-doc 
   - python-gnome-dvb-daemon 
@@ -21663,7 +21667,6 @@ unsorted:
   - python3-gcemetadata 
   - python3-gdcm 
   - python3-geis 
-  - python3-genders 
   - python3-gensio 
   - python3-gexiv2 
   - python3-gi-docgen 
@@ -31580,6 +31583,7 @@ unsorted:
   - qemu-accel-qtest 
   - qemu-arm 
   - qemu-audio-alsa 
+  - qemu-audio-dbus 
   - qemu-audio-jack 
   - qemu-audio-oss 
   - qemu-audio-pa 
@@ -31597,9 +31601,9 @@ unsorted:
   - qemu-ppc 
   - qemu-s390x 
   - qemu-skiboot 
-  - qemu-testsuite 
   - qemu-uefi-aarch32: [x86_64] 
   - qemu-uefi-aarch64: [x86_64] 
+  - qemu-ui-dbus 
   - qemu-vhost-user-gpu 
   - qgis 
   - qgis-devel 
@@ -42762,7 +42766,7 @@ unsorted:
   - typelib-1_0-UMockdev-1_0 
   - typelib-1_0-Uhm-0_0 
   - typelib-1_0-Urfkill-0_0 
-  - typelib-1_0-Vips-8_12 
+  - typelib-1_0-Vips-8_13 
   - typelib-1_0-WebKit2-5_0: [i586] 
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-WebKit2WebExtension-4_1 
@@ -42851,7 +42855,6 @@ unsorted:
   - uimaj-javadoc 
   - uisp 
   - ulfius-devel 
-  - ullae-veliyae 
   - ulogd 
   - ulogd-mysql 
   - ulogd-pcap 
@@ -43164,7 +43167,7 @@ unsorted:
   - vino 
   - vino-lang 
   - vips-doc 
-  - vips-modules-8.12 
+  - vips-modules-8.13 
   - vips-tools 
   - virglrenderer-devel 
   - virglrenderer-test-server 
