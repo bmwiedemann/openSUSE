@@ -35,7 +35,10 @@ rpm -qa | grep "^libisl" | xargs -r rpm -e
 [ "$desktop" = "kde" ] && rpm -e --nodeps adwaita-icon-theme
 
 # Workaround until dropped from xfce4-branding-openSUSE
-[ "$desktop" = "x11" -o "$desktop" = "xfce" ] && rpm -e --nodeps noto-coloremoji-fonts xorg-x11-server-Xvfb
+if [ "$desktop" = "x11" -o "$desktop" = "xfce" ]; then
+	rpm -e --nodeps xorg-x11-server-Xvfb
+	rpm -e --nodeps noto-coloremoji-fonts || rpm -e --nodeps google-noto-coloremoji-fonts
+fi
 
 #--------------------------------------
 # enable and disable services

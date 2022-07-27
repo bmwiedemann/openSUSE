@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 27 06:25:00 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- config.sh: Cope with new name of noto-coloremoji-fonts
+
+-------------------------------------------------------------------
 Fri Jul 22 12:14:30 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - list-common: Drop fcoe-utils
