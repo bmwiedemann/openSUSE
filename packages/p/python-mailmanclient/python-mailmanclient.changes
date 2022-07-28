@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  4 10:44:31 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Enable multiflavor so that we can pin mailman3 itself to python39
+
+-------------------------------------------------------------------
 Thu Jun  9 08:48:24 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix BR for mailman3 (package has been renamed)
