@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 27 16:18:39 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.2.6:
+  * ENHANCEMENTS:
+    - Add a warning and guidance when terraform init fails to fully populate the .terraform.lock.hcl file. (#31399)
+    - Add a direct link to the relevant documentation when terraform init fails on missing checksums. (#31408)
+  * BUG FIXES:
+    - Fix panic on terraform show when state file is invalid or unavailable. (#31444)
+    - Fix terraform providers lock command failing on missing checksums. (#31389)
+    - Some combinations of move block operations would be executed in the wrong order (#31499)
+    - Don't attribute an error to the provider when a computed attribute is listed in ignore_changes (#31509)
+
+-------------------------------------------------------------------
 Sat Jul 16 19:11:52 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.2.5:
