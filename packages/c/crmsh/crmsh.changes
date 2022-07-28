@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 28 08:14:15 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220728.3f249756:
+  * Dev: ui_cluster: Change the dest of -N option as node_list
+  * Update crmsh/ui_cluster.py
+  * Dev: unittest: Adjust unit test for previous changes
+  * Dev: behave: adjust functional test based on previous changes
+  * Dev: doc: remove cluster add in doc
+  * Dev: bootstrap: remove cluster add sub-command
+  * Fix: bootstrap: -N option setup the current node and peers all together (bsc#1175863)
+
+-------------------------------------------------------------------
 Mon Jul 11 06:59:28 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.0+20220711.573ebb98:
