@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 21 13:13:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove old specfile constructs and all the things pre-15.x;
+  drop obsolete dosemu-flex.patch in the process.
+- Trim descriptions, it's not supposed to be a manual.
+
+-------------------------------------------------------------------
 Tue Jun  7 07:40:13 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace SDL-devel BuildRequires with pkgconfig(sdl): allow to use

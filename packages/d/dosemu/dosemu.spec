@@ -27,7 +27,6 @@ Source:         %{name}-%{version}.tgz
 Source1:        dosemu-freedos-bin.tgz
 Patch1:         dosemu-1.4.0-destbufferoverflow.patch
 Patch2:         force-vm86-emu.patch
-Patch3:         dosemu-flex.patch
 Patch4:         dosemu-skip-glibc-test.patch
 # PATCH-FIX-UPSTREAM https://github.com/stsp/dosemu2/pull/386 https://github.com/stsp/dosemu2/commit/8d7ab25daf6f2d8ca09e1598fd11de2d8460255e
 Patch5:         reproducible.patch
@@ -54,45 +53,10 @@ machine (the DOS box) provides the necessary BIOS functions and
 emulates most of the chip devices (for example: timer, interrupt, and
 keyboard controller).
 
-Documentation can be found in /usr/share/doc/packages/dosemu, the man
-page, and in the sources.
-
-Starting with version 1.0.2, DOSEMU configuration files are no longer
-in /etc but in the user's HOME directory in ~/dosemu. DOSEMU no longer
-has the SUID bit set, so if you need access to hardware that requires
-root privileges, you must run DOSEMU as root.
-
-If you rely on the old configuration scheme, you can get it back by
-using dosemu.bin instead of dosemu (dos and xdos have been renamed to
-dosemu and xdosemu).
-
-The parameter $_hogthreshold in ~/dosemu/conf/dosemu.conf defines how
-often an idling DOSEMU should return the CPU to Linux and its default
-value (1) means "all power to Linux." The higher this value is, the
-more CPU power is dedicated to DOSEMU. The value (0) disables this
-feature completely, hence: "all power to DOSEMU." If that is not fast
-enough, you (running as UID root) can get maximum performance with
-
-nice -19 dos -D-a 2>/dev/null
-
-Do not be surprised if other Linux processes then run very sluggishly.
-
-On sensitive systems, you should never offer an suid-root DOSEMU as
-world readable. Even if the '$_secure' option in dosemu.conf is set, it
-is still possible that some DPMI clients (most likely Dos4gw based
-ones) may succeed in accessing the whole user space (including DOSEMU
-code) and thus gain root access. A comfortable solution is to have two
-copies of the DOSEMU binary, a non-suid-root one for world access and a
-suid-root one (protected by file permissions) only available to trusted
-users.
-
 %prep
 %setup -q -n %{name}-1.4.0.1
 %patch1
 %patch2 -p1
-%if 0%{?suse_version} > 1220 && 0%{?suse_version} < 1321
-%patch3 -p1
-%endif
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
