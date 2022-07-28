@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 27 16:17:35 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.5.1:
+  * Fix release-branch workflow (#2962) (#2965)
+  * fix patch in release-branch (#2961)
+  * Remove paragraph in error template (#2959) (#2960)
+
+-------------------------------------------------------------------
 Wed Jul 20 14:57:09 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.5.0:
