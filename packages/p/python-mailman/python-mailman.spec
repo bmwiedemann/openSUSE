@@ -34,8 +34,17 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} >= 1550
+# Newest python supported by mailman is Python 3.9 -- https://gitlab.com/mailman/mailman/-/issues/936
+%define pythons python39
+%define mypython python39
+%define mypython_sitelib %{python39_sitelib}
+%else
 %{?!python_module:%define python_module() python3-%{**}}
 %define pythons python3
+%define mypython python3
+%define mypython_sitelib %{python3_sitelib}
+%endif
 Name:           python-mailman%{psuffix}
 Version:        3.3.5
 Release:        0
@@ -70,41 +79,21 @@ Patch2:         support-alembic-1-8.patch
 # PATCH-FIX-UPSTREAM ARC-message-fail-tests.patch bsc#[0-9]+ mcepl@suse.com
 # this patch makes things totally awesome
 Patch3:         ARC-message-fail-tests.patch
+# Disable cache_ok warnings on console messages: disable caching completely at the moment
+Patch4:         mailman-support-sqlalchemy-1-4.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+%if 0%{?suse_version} >= 1550
+# use the real python3 primary for rpm pythondistdeps.py
+BuildRequires:  python3-packaging
+%endif
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module SQLAlchemy >= 1.2.3}
-BuildRequires:  %{python_module aiosmtpd >= 1.1}
-BuildRequires:  %{python_module alembic}
-BuildRequires:  %{python_module atpublic}
-BuildRequires:  %{python_module authheaders >= 0.9.2}
-BuildRequires:  %{python_module authres >= 1.0.1}
-BuildRequires:  %{python_module click >= 7.0}
-BuildRequires:  %{python_module dnspython >= 1.14.0}
-BuildRequires:  %{python_module falcon > 3.0.0}
-BuildRequires:  %{python_module flufl.bounce >= 4.0}
-BuildRequires:  %{python_module flufl.i18n >= 3.2}
-BuildRequires:  %{python_module flufl.lock >= 5.1}
 BuildRequires:  %{python_module flufl.testing}
-BuildRequires:  %{python_module gunicorn}
-BuildRequires:  %{python_module importlib-resources >= 1.1.0}
-BuildRequires:  %{python_module lazr.config}
-BuildRequires:  %{python_module mailman >= %{version}}
 BuildRequires:  %{python_module nose2}
-BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil >= 2.0}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module zope.component}
-BuildRequires:  %{python_module zope.configuration}
-BuildRequires:  %{python_module zope.event}
-BuildRequires:  %{python_module zope.interface >= 5.0}
-%endif
-%if 0%{python3_version_nodots} == 38
-# help in replacing any previously installed multiflavor package back to the primary python3 package
-Provides:       python38-mailman = %{version}-%{release}
-Obsoletes:      python38-mailman <= %{version}-%{release}
+BuildRequires:  mailman3 = %{version}
 %endif
 
 %description
@@ -112,35 +101,40 @@ Mailman is a mailing list manager from the GNU project.
 
 %package -n mailman3
 Summary:        A mailing list manager
+Requires:       %{mypython}-SQLAlchemy >= 1.2.3
+Requires:       %{mypython}-aiosmtpd >= 1.4.1
+Requires:       %{mypython}-alembic
+Requires:       %{mypython}-atpublic
+Requires:       %{mypython}-authheaders >= 0.9.2
+Requires:       %{mypython}-authres >= 1.0.1
+Requires:       %{mypython}-click >= 7.0
+Requires:       %{mypython}-dnspython >= 1.14.0
+Requires:       %{mypython}-falcon > 3.0.0
+Requires:       %{mypython}-flufl.bounce >= 4.0
+Requires:       %{mypython}-flufl.i18n >= 3.2
+Requires:       %{mypython}-flufl.lock >= 5.1
+Requires:       %{mypython}-gunicorn
+Requires:       %{mypython}-importlib-resources >= 1.1.0
+Requires:       %{mypython}-lazr.config
+Requires:       %{mypython}-passlib
+Requires:       %{mypython}-python-dateutil >= 2.0
+Requires:       %{mypython}-requests
+Requires:       %{mypython}-setuptools
+Requires:       %{mypython}-zope.component
+Requires:       %{mypython}-zope.configuration
+Requires:       %{mypython}-zope.event
+Requires:       %{mypython}-zope.interface >= 5.0
 Requires:       logrotate
-Requires:       python3-SQLAlchemy >= 1.2.3
-Requires:       python3-aiosmtpd >= 1.4.1
-Requires:       python3-alembic
-Requires:       python3-atpublic
-Requires:       python3-authheaders >= 0.9.2
-Requires:       python3-authres >= 1.0.1
-Requires:       python3-click >= 7.0
-Requires:       python3-dnspython >= 1.14.0
-Requires:       python3-falcon > 3.0.0
-Requires:       python3-flufl.bounce >= 4.0
-Requires:       python3-flufl.i18n >= 3.2
-Requires:       python3-flufl.lock >= 5.1
-Requires:       python3-gunicorn
-Requires:       python3-importlib-resources >= 1.1.0
-Requires:       python3-lazr.config
-Requires:       python3-passlib
-Requires:       python3-python-dateutil >= 2.0
-Requires:       python3-requests
-Requires:       python3-setuptools
-Requires:       python3-zope.component
-Requires:       python3-zope.configuration
-Requires:       python3-zope.event
-Requires:       python3-zope.interface >= 5.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       mailman = %{version}
-Provides:       python3-mailman = %{version}
-Obsoletes:      python3-mailman <= %{version}
+%if "%{expand:%%%{mypython}_provides}" == "python3"
+Provides:       python3-mailman = %{version}-%{release}
+%endif
+Obsoletes:      python3-mailman < %{version}-%{release}
+# help in replacing any previously installed multiflavor package back to the unprefixed package
+Provides:       %{mypython}-mailman = %{version}-%{release}
+Obsoletes:      %{mypython}-mailman < %{version}-%{release}
 
 %description -n mailman3
 Mailman is a mailing list manager from the GNU project.
@@ -255,7 +249,8 @@ getent passwd %{mailman_user} >/dev/null || \
 %{_bindir}/runner
 %{_bindir}/mailman
 %{_bindir}/master
-%{python_sitelib}/*
+%{mypython_sitelib}/mailman
+%{mypython_sitelib}/mailman-%{version}*-info
 %{_unitdir}/%{mailman_name}.service
 %{_unitdir}/%{mailman_name}-digests.service
 %{_unitdir}/%{mailman_name}-digests.timer

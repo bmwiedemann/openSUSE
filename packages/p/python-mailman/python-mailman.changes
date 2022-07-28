@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul  4 13:14:27 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Go back to Python 3.9 for mailman. Python 3.10 is not supported
+  and it is unclear whether the test failures are due to the
+  production code or only in the setup of aiosmtpd in the test
+  suite. -- https://gitlab.com/mailman/mailman/-/issues/936
+
+-------------------------------------------------------------------
+Wed Jun 29 18:14:25 UTC 2022 - Lars Vogdt <lars@linux-schulserver.de>
+
+- added mailman-support-sqlalchemy-1-4.patch (from Andreas Schneider):
+  The TypeDecorator.cache_ok class-level flag indicates if this custom
+  TypeDecorator is safe to be used as part of a cache key. This flag defaults to
+  None which will initially generate a warning when the SQL compiler attempts to
+  generate a cache key for a statement that uses this type. If the TypeDecorator
+  is not guaranteed to produce the same bind/result behavior and SQL generation
+  every time, this flag should be set to False; otherwise if the class produces
+  the same behavior each time, it may be set to True. See TypeDecorator.cache_ok
+  for further notes on how this works.
+
+-------------------------------------------------------------------
 Mon Jun 13 09:09:17 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Added support-alembic-1-8.patch

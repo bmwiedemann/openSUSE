@@ -203,4 +203,15 @@
     <comment></comment>
     <requestid>982453</requestid>
   </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>52372f344f0462de00c07d89a3b99347</srcmd5>
+    <version>3.3.5</version>
+    <time>1659034661</time>
+    <user>RBrownFactory</user>
+    <comment>- Go back to Python 3.9 for mailman. Python 3.10 is not supported
+  and it is unclear whether the test failures are due to the
+  production code or only in the setup of aiosmtpd in the test
+  suite. -- https://gitlab.com/mailman/mailman/-/issues/936 (forwarded request 986649 from bnavigator)</comment>
+    <requestid>986717</requestid>
+  </revision>
 </revisionlist>

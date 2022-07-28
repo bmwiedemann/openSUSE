@@ -1,2 +1,4 @@
 addFilter("incoherent-logrotate-file /etc/logrotate.d/mailman")
-addFilter("zero-length /usr/lib/python3.6/site-packages/mailman/templates/.*")
+addFilter("zero-length /usr/lib/python3../site-packages/mailman/templates/.*")
+addFilter("obsolete-not-provided python3-mailman")
+addFilter("explicit-lib-dependency python3.*-passlib")
