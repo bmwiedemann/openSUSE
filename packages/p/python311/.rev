@@ -81,4 +81,102 @@ C API
 </comment>
     <requestid>990681</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7de27b0598152b6f3515679bd309629d</srcmd5>
+    <version>3.11.0b5</version>
+    <time>1659034687</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 3.11.0b5:
+  - Core and Builtins
+    - gh-93351: ast.AST node positions are now validated when
+      provided to compile() and other related functions. If
+      invalid positions are detected, a ValueError will be
+      raised.
+    - gh-94438: Fix an issue that caused extended opcode
+      arguments and some conditional pops to be ignored when
+      calculating valid jump targets for assignments to the
+      f_lineno attribute of frame objects. In some cases, this
+      could cause inconsistent internal state, resulting in a
+      hard crash of the interpreter.
+    - gh-95060: Undocumented PyCode_Addr2Location function now
+      properly returns when addrq argument is less than zero.
+    - gh-95113: Replace all EXTENDED_ARG_QUICK instructions
+      with basic EXTENDED_ARG instructions in unquickened
+      code. Consumers of non-adaptive bytecode should be able to
+      handle extended arguments the same way they were handled in
+      CPython 3.10 and older.
+    - gh-91409: Fix incorrect source location info caused by
+      certain optimizations in the bytecode compiler.
+    - gh-94036: Fix incorrect source location info for some
+      multi-line attribute accesses and method calls.
+    - gh-94739: Allow jumping within, out of, and across
+      exception handlers in the debugger.
+    - gh-94949: ast.parse() will no longer parse parenthesized
+      context managers when passed feature_version less than (3,
+      9). Patch by Shantanu Jain.
+    - gh-94947: ast.parse() will no longer parse assignment
+      expressions when passed feature_version less than (3,
+      8). Patch by Shantanu Jain.
+    - gh-91256: Ensures the program name is known for help text
+      during interpreter startup.
+    - gh-94869: Fix the column offsets for some expressions in
+      multi-line f-strings ast nodes. Patch by Pablo Galindo.
+    - gh-94822: Fix an issue where lookups of metaclass
+      descriptors may be ignored when an identically-named
+      attribute also exists on the class itself.
+    - gh-91153: Fix an issue where a bytearray item assignment
+      could crash if it’s resized by the new value’s __index__()
+      method.
+    - gh-90699: Fix reference counting bug in
+      bool.__repr__(). Patch by Kumar Aditya.
+  - Library
+    - gh-95087: Fix IndexError in parsing invalid date in the
+      email module.
+    - gh-95199: Upgrade bundled setuptools to 63.2.0.
+    - gh-95194: Upgrade bundled pip to 22.2.
+    - gh-95132: Fix a sqlite3 regression where *args and **kwds
+      were incorrectly relayed from connect() to the Connection
+      factory. The regression was introduced in 3.11a1 with PR
+      24421 (gh-85128). Patch by Erlend E. Aasland.`
+    - gh-93157: Fix fileinput module didn’t support errors option
+      when inplace is true.
+    - gh-95105: wsgiref.types.InputStream.__iter__() should
+      return Iterator[bytes], not Iterable[bytes]. Patch by
+      Shantanu Jain.
+    - gh-94857: Fix refleak in
+      _io.TextIOWrapper.reconfigure. Patch by Kumar Aditya.
+    - gh-94821: Fix binding of unix socket to empty address
+      on Linux to use an available address from the abstract
+      namespace, instead of “0”.
+    - gh-89988: Fix memory leak in pickle.Pickler when looking up
+      dispatch_table. Patch by Kumar Aditya.
+    - bpo-47025: Drop support for bytes on sys.path.
+  - Tests
+    - gh-95212: Make multiprocessing test case
+      test_shared_memory_recreate parallel-safe.
+  - Build
+    - gh-94847: Fixed _decimal module build issue on GCC when
+      compiling with LTO and pydebug. Debug builds no longer
+      force inlining of functions.
+    - gh-94841: Fix the possible performance regression of
+      PyObject_Free() compiled with MSVC version 1932.
+    - gh-94801: configure now uses custom flags like ZLIB_CFLAGS
+      and ZLIB_LIBS when searching for headers and libraries.
+    - gh-94773: deepfreeze.py now supports code object with
+      frozensets that contain incompatible, unsortable types.
+  - C API
+    - gh-94930: Fix SystemError raised when
+      PyArg_ParseTupleAndKeywords() is used with # in (...) but
+      without PY_SSIZE_T_CLEAN defined.
+    - gh-94864: Fix PyArg_Parse* with deprecated format units “u”
+      and “Z”. It returned 1 (success) when warnings are turned
+      into exceptions.
+    - gh-94731: Python again uses C-style casts for
+      most casting operations when compiled with
+      C++. This may trigger compiler warnings, if they
+      are enabled with e.g. -Wold-style-cast `` or
+      ``-Wzero-as-null-pointer-constant options for g++.
+</comment>
+    <requestid>991283</requestid>
+  </revision>
 </revisionlist>
