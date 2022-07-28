@@ -156,4 +156,19 @@
     returns the root record for the primary alternative. (#958,</comment>
     <requestid>990829</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>19e9098137806a56096ab1b22b9267b4</srcmd5>
+    <version>3.3.6</version>
+    <time>1659034732</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 3.3.6:
+  - Spurious edit page scrolling when typing in textareas is now
+    (hopefully) fixed.
+  - Fixed the edit hotkey (&lt;ctl&gt;-e or &lt;meta&gt;-e on a Mac) so that
+    it works again.
+  - The save hotkey (&lt;ctl&gt;-s or equivalent) in the edit view now
+    always switches to the preview view.
+</comment>
+    <requestid>991450</requestid>
+  </revision>
 </revisionlist>

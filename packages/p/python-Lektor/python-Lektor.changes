@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 27 22:19:50 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.3.6:
+  - Spurious edit page scrolling when typing in textareas is now
+    (hopefully) fixed.
+  - Fixed the edit hotkey (<ctl>-e or <meta>-e on a Mac) so that
+    it works again.
+  - The save hotkey (<ctl>-s or equivalent) in the edit view now
+    always switches to the preview view.
+
+-------------------------------------------------------------------
 Fri Jul 22 20:09:16 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.3.5:
