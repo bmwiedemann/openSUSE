@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul 27 13:26:17 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to rekor 0.9.1
+  - feat: add subject URIs to index for x509 certificates by @asraa in #897
+  - fix: sql syntax in dbcreate script by @xens in #903
+  - Switch to go 1.18 and pin release-utils to v0.7.1 by @saschagrunert in #904
+  - Check inactive shards for UUID for /retrieve endpoint by @priyawadhwa in #905
+  - ensure log messages have requestID where possible by @bobcallaway in #907
+  - Remove unnecessary lookup of non-existent attestations from storage layer by @bobcallaway in #909
+  - Fix bug where /retrieve endpoint returns wrong logIndex across shards by @priyawadhwa in #908
+
+- updated to rekor 0.9.0
+  - Add COSE support to Rekor by @kommendorkapten in #867
+  - Fix intoto index keys by @bobcallaway in #889
+  - Resolve virtual log index when calling /retrieve endpoint by @priyawadhwa in #894
+- updated to rekor 0.8.2
+  - collect docker-compose logs if sharding tests fail, also trim IDs by @bobcallaway in #869
+  - ensure fallback logic executes if attestation key is empty when fetching attestation by @bobcallaway in #878
+
+-------------------------------------------------------------------
 Wed Jun 29 12:26:43 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - rekor-zypper-verify.sh: add a small script that verifies the on-system

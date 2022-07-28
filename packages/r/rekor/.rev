@@ -138,4 +138,12 @@
   zypper repo cache against rekor transparency log.</comment>
     <requestid>985790</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a226a43247c9ee3957edc2371c557d16</srcmd5>
+    <version>0.9.1</version>
+    <time>1659034718</time>
+    <user>RBrownFactory</user>
+    <comment> (forwarded request 991394 from msmeissn)</comment>
+    <requestid>991395</requestid>
+  </revision>
 </revisionlist>
