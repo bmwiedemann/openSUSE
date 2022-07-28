@@ -1,8 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 26 21:58:12 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20220726.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20220726
+  * Add TruffleRuby 22.2.0
+- Update to version 20220725.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20220725
+  * Only check the opensslv.h header to find the system openssl version
+    * openssl version can be another version than the header, for instance with
+    * apt-get install --no-install-recommends ca-certificates libssl1.0-dev on Ubuntu 18.04: #2014 (reply in thread)
+
+
+-------------------------------------------------------------------
 Thu Jul 21 16:22:26 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20220721.
-  Changelog: //github.com/rbenv/ruby-build/releases/tag/v20220721
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20220721
   * For Ruby 3.2.0-dev, install YJIT by default if rustc 1.60+ is available
   * Don't auto-enable YJIT except on x86_64
   * Restructure build_package_enable_yjit to be cleaner and to exit before later checks if possible.
@@ -13,7 +26,7 @@ Thu Jul 21 16:22:26 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 Thu Jul 14 11:26:59 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20220713.
-  Changelog: //github.com/rbenv/ruby-build/releases/tag/v20220713
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20220713
   * Use OpenSSL 3.x with Ruby 3.1.x
 
 -------------------------------------------------------------------
