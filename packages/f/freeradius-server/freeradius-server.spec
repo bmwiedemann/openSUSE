@@ -215,7 +215,12 @@ FreeRADIUS plugin providing SQLite support.
 %build
 autoreconf -fi
 export CFLAGS="%{optflags} -DLDAP_DEPRECATED -fstack-protector -fPIC -DPIC"
+%if 0%{?suse_version} > 1550
+export LDFLAGS="-pie $(python3-config --embed --libs)"
+%else
 export LDFLAGS="-pie"
+%endif
+
 %configure \
   --disable-static \
   --libdir=%{_libdir}/freeradius \

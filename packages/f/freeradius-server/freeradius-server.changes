@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 21 00:49:49 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Resolve issue with linking python3 with rlm-python
+
+-------------------------------------------------------------------
 Wed Feb  2 11:59:44 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Remove libwbclient-devel BuildRequires in favor of
