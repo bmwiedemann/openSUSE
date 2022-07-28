@@ -70,10 +70,17 @@ Provides:       mingw64(dwrite.dll)
 Provides:       mingw64(dxgi.dll)
 Provides:       mingw64(ncrypt.dll)
 Provides:       mingw64(wtsapi32.dll)
+Requires:       coreutils
+Requires:       findutils
+Requires:       gawk
+Requires:       grep
+Requires:       mingw64-cross-binutils
 Requires:       mingw64-cross-breakpad-tools
+Requires:       mingw64-cross-pkgconf
 Requires:       python3
 Requires:       rpm
 Requires:       rpmlint-mini
+Requires:       sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 #!BuildIgnore: post-build-checks

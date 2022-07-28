@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 28 09:03:20 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add 'arch-independent-package-contains-binary-or-object' filter also
+  for static libraries (boo#1201173)
+- When scanning libraries exclude non real dll file names e.g. '%s.dll'
+
+-------------------------------------------------------------------
+Mon Jul 25 07:21:16 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add missing runtime dependencies (boo#1188144)
+- Use newer $host-pkgconf
+- Fix using undefined STRINGS env variable
+
+-------------------------------------------------------------------
 Wed Jul 20 07:11:15 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to 20220801

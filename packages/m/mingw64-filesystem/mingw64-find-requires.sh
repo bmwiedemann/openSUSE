@@ -23,6 +23,7 @@ if [ -n "$1" ]; then
 fi
 
 [ -z "$OBJDUMP" ] && OBJDUMP="$host-objdump"
+[ -z "$STRINGS" ] && STRINGS="$host-strings"
 
 # Get the list of files.
 
@@ -113,7 +114,7 @@ if [ -n "$scan_implibs" ]; then
     implibs=$(echo "$filelist" | grep '\.a$')
     for f in $implibs; do
         [ ! -f "$f" ] && continue
-        "$STRINGS" "$f" | grep '\.dll$' |
+        "$STRINGS" "$f" | grep '\.dll$' | grep -v '[%$&#]' |
             tr "[:upper:]" "[:lower:]" |
             grep -Ev "$exclude_pattern" |
             sed 's/\(.*\)/'"$target"'(\1)/'
@@ -123,14 +124,14 @@ fi
 (
 for g in $pcs; do
 	dirname="${g%/*}"
-	PKG_CONFIG_PATH="$dirname" "$host-pkg-config" --print-errors --print-requires "$g" | awk '{ print "'"$target"'(pkg:"$1")", $2, $3 }'
-	PKG_CONFIG_PATH="$dirname" "$host-pkg-config" --print-errors --print-requires-private "$g" | grep -Ev "$exclude_pattern" | awk '{ print "'"$target"'(pkg:"$1")", $2, $3 }'
-	for h in $(PKG_CONFIG_PATH="$dirname" "$host-pkg-config" --libs-only-l "$g" | sed 's#^\-l##g;s# \-l# #g'); do
+	PKG_CONFIG_PATH="$dirname" "$host-pkgconf" --print-errors --print-requires "$g" | awk '{ print "'"$target"'(pkg:"$1")", $2, $3 }'
+	PKG_CONFIG_PATH="$dirname" "$host-pkgconf" --print-errors --print-requires-private "$g" | grep -Ev "$exclude_pattern" | awk '{ print "'"$target"'(pkg:"$1")", $2, $3 }'
+	for h in $(PKG_CONFIG_PATH="$dirname" "$host-pkgconf" --libs-only-l "$g" | sed 's#^\-l##g;s# \-l# #g'); do
 		echo "$target(lib:$h)"
 	done
 done
 for k in $configs; do
-    for j in $(PKG_CONFIG="$host-pkg-config" "$k" --libs); do
+    for j in $(PKG_CONFIG="$host-pkgconf" "$k" --libs); do
         case "$j" in
             -l*)
                 echo "$j" | sed 's#\-l##g' | grep -Ev "$exclude_pattern" | awk '{ print "'"$target"'(lib:"$1")" }'
