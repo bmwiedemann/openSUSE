@@ -32,14 +32,17 @@ tar xvf matrix-analytics-events-0.0.1.tgz --strip-components=1 -C package/
 tar czf matrix-analytics-events-0.0.1.tgz package/
 rm -r package
 
-# fill sentry-cli cache with binaries for all architecutres
+# fill sentry-cli cache with mock binaries for all architecutres
 cd sentry-cli
 sentry_cli_version=$(ls ../@sentry-cli-*.tgz | sed -e 's/.*cli-//' -e 's/.tgz//')
 for arch in i686 x86_64 aarch64 armv7 ; do
 	url="https://downloads.sentry-cdn.com/sentry-cli/${sentry_cli_version}/sentry-cli-Linux-${arch}"
-	filehash=$(echo -n "$url" |  md5sum | cut -c1-6)
+	filehash=$(echo -n "$url" | md5sum | cut -c1-6)
 	target="${filehash}-sentry-cli-Linux-${arch/_/-}"
-	wget -O "$target" "$url"
+	#wget -O "$target" "$url"
+	echo '#!/bin/bash' > "$target"
+	echo '' >> "$target"
+	echo "echo ${sentry_cli_version}" >> "$target"
 	chmod +x "$target"
 done
 cd ..

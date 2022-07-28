@@ -145,4 +145,12 @@ please use same ADI as https://build.opensuse.org/request/show/902766</comment>
     <comment>version update</comment>
     <requestid>989172</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>1720452575a2dab2e07c4f7e8aa05613</srcmd5>
+    <version>1.11.0</version>
+    <time>1659034702</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>991376</requestid>
+  </revision>
 </revisionlist>
