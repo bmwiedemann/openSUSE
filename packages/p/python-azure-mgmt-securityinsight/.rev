@@ -7,4 +7,18 @@
     <comment>New package part of Azure SDK</comment>
     <requestid>965966</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>16594d92a70fa415446202e2eb2f095e</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1659034703</time>
+    <user>RBrownFactory</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b2
+- Update Requires from setup.py (forwarded request 991213 from glaubitz)</comment>
+    <requestid>991378</requestid>
+  </revision>
 </revisionlist>
