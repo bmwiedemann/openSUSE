@@ -1,7 +1,7 @@
 #
 # spec file for package python-parallax
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/krig/parallax/
 Source:         https://files.pythonhosted.org/packages/source/p/parallax/parallax-%{version}.tar.gz
 Patch1:         0001-Add-ssh_key-option-used-by-i-option-of-ssh-scp.patch
 Patch2:         0002-Change-format-of-scp-command-for-ipv6-compatible.patch
+Patch3:         0003-Fix-task-Don-t-use-ssh-if-command-running-on-local-b.patch
 
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -37,10 +38,10 @@ Requires:       openssh
 BuildArch:      noarch
 %if 0%{?suse_version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %else
 Requires(post): %{_sbindir}/update-alternatives
-Requires(postun): %{_sbindir}/update-alternatives
+Requires(postun):%{_sbindir}/update-alternatives
 %endif
 %python_subpackages
 
@@ -53,6 +54,7 @@ multiple nodes using SCP.
 %setup -q -n parallax-%{version}
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %python_build

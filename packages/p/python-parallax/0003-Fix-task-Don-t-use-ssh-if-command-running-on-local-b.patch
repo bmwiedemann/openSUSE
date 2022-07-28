@@ -1,0 +1,100 @@
+From 22cd571ceb360c66279512af3690347e1d6a768d Mon Sep 17 00:00:00 2001
+From: liangxin1300 <XLiang@suse.com>
+Date: Tue, 12 Jul 2022 10:06:06 +0800
+Subject: [PATCH] Fix: task: Don't use ssh if command running on local
+ (bsc#1200833)
+
+** Problem
+When a command is running on local, it will failed if local ssh service stopped
+** Solution
+Run this command directly, without ssh
+---
+ parallax/__init__.py | 22 ++++++++++++++++++++--
+ parallax/task.py     |  6 ++++--
+ 2 files changed, 24 insertions(+), 4 deletions(-)
+
+diff --git a/parallax/__init__.py b/parallax/__init__.py
+index 50a2268..aa6ebd9 100644
+--- a/parallax/__init__.py
++++ b/parallax/__init__.py
+@@ -27,6 +27,7 @@
+ 
+ import os
+ import sys
++import socket
+ 
+ DEFAULT_PARALLELISM = 32
+ DEFAULT_TIMEOUT = 0  # "infinity" by default
+@@ -176,7 +177,11 @@ def call(hosts, cmdline, opts=Options()):
+                       warn_message=opts.warn_message,
+                       callbacks=_CallOutputBuilder())
+     for host, port, user in _expand_host_port_user(hosts):
+-        cmd = _build_call_cmd(host, port, user, cmdline, opts)
++        is_local = is_local_host(host)
++        if is_local:
++            cmd = [cmdline]
++        else:
++            cmd = _build_call_cmd(host, port, user, cmdline, opts)
+         t = Task(host, port, user, cmd,
+                  stdin=opts.input_stream,
+                  verbose=opts.verbose,
+@@ -184,7 +189,8 @@ def call(hosts, cmdline, opts=Options()):
+                  print_out=opts.print_out,
+                  inline=opts.inline,
+                  inline_stdout=opts.inline_stdout,
+-                 default_user=opts.default_user)
++                 default_user=opts.default_user,
++                 is_local=is_local)
+         manager.add_task(t)
+     try:
+         return manager.run()
+@@ -366,3 +372,15 @@ def slurp(hosts, src, dst, opts=Options()):
+         return manager.run()
+     except FatalError as err:
+         raise IOError(str(err))
++
++
++def is_local_host(host):
++    """
++    Check if the host is local
++    """
++    try:
++        socket.inet_aton(host)
++        hostname = socket.gethostbyaddr(host)[0]
++    except:
++        hostname = host
++    return hostname == socket.gethostname()
+diff --git a/parallax/task.py b/parallax/task.py
+index 5e05f30..5307b06 100644
+--- a/parallax/task.py
++++ b/parallax/task.py
+@@ -39,7 +39,8 @@ class Task(object):
+                  print_out=False,
+                  inline=False,
+                  inline_stdout=False,
+-                 default_user=None):
++                 default_user=None,
++                 is_local=False):
+ 
+         # Backwards compatibility:
+         if not isinstance(verbose, bool):
+@@ -66,6 +67,7 @@ class Task(object):
+         self.pretty_host = host
+         self.port = port
+         self.cmd = cmd
++        self.is_local = is_local
+ 
+         if user and user != default_user:
+             self.pretty_host = '@'.join((user, self.pretty_host))
+@@ -126,7 +128,7 @@ class Task(object):
+                     close_fds=False, preexec_fn=os.setsid, env=environ)
+         else:
+             self.proc = Popen(self.cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
+-                    close_fds=False, start_new_session=True, env=environ)
++                    close_fds=False, start_new_session=True, env=environ, shell=self.is_local)
+ 
+         self.timestamp = time.time()
+         if self.inputbuffer:
+-- 
+2.34.1
+

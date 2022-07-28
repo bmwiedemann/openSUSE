@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 28 01:42:06 UTC 2022 - XinLiang <XLiang@suse.com>
+
+- Don't use ssh if command running on local (bsc#1200833)
+  Add patch 0003-Fix-task-Don-t-use-ssh-if-command-running-on-local-b.patch 
+
+-------------------------------------------------------------------
 Wed Aug  5 07:43:16 UTC 2020 - XinLiang <XLiang@suse.com>
 
 - Change format of scp command for ipv6 compatible(bsc#1174894)
