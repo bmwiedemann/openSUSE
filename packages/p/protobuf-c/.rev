@@ -159,4 +159,11 @@
     <user>RBrownFactory</user>
     <comment>Revert to rev 19, https://github.com/protocolbuffers/protobuf/issues/10323</comment>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c80cbd1e3dd4a15e5642d2ef300c46c7</srcmd5>
+    <version>1.4.1</version>
+    <time>1659007960</time>
+    <user>RBrownFactory</user>
+    <comment>Revert the revert, protobuf =/= protobuf-c</comment>
+  </revision>
 </revisionlist>
