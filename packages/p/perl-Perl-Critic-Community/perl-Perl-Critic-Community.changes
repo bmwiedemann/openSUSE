@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 25 03:07:25 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.0.3
+   see /usr/share/doc/packages/perl-Perl-Critic-Community/Changes
+
+  v1.0.3    2022-07-24 02:27:25 EDT
+    - Allow use v5.36+ to satisfy StrictWarnings policy (marlencrabapple #50)
+    - Recognize use v5.36+ in the Prototypes policy as an indication that signatures are enabled
+
+-------------------------------------------------------------------
 Sun Feb 13 13:26:27 UTC 2022 - Tina Müller <tina.mueller@suse.com>
 
 - Initial import. Successor of Perl-Critic-Freenode

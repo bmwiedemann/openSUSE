@@ -18,7 +18,7 @@
 
 %define cpan_name Perl-Critic-Community
 Name:           perl-Perl-Critic-Community
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 License:        Artistic-2.0
 Summary:        Community-inspired Perl::Critic policies
