@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 27 18:17:56 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.10.3:
+  * Detect duplicate deployed helm releases (#360)
+  * Bump helm.sh/helm/v3 from 3.9.0 to 3.9.2 (#358)
+  * Bump sigs.k8s.io/controller-runtime from 0.12.2 to 0.12.3 (#350)
+  * Bump github.com/stretchr/testify from 1.7.4 to 1.8.0 (#344)
+  * Bump k8s.io/klog/v2 from 2.70.0 to 2.70.1 (#349)
+  * Fix repository name in Pluto (#348)
+  * update Insights CI (#346)
+
+-------------------------------------------------------------------
 Wed Jul 06 06:24:00 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 5.10.2:
