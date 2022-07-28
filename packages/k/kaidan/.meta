@@ -1,0 +1,10 @@
+<package name="kaidan" project="openSUSE:Factory">
+  <title>A XMPP client based on KDE Framework</title>
+  <description>Kaidan is a simple Jabber/XMPP client providing a user-interface using
+Kirigami and QtQuick. The back-end of Kaidan is entirely written in C++
+using the qxmpp XMPP client library and Qt 5.
+
+</description>
+  <devel project="KDE:Extra" package="kaidan"/>
+  <url>https://www.kaidan.im/</url>
+</package>

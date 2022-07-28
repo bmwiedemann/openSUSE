@@ -1,0 +1,131 @@
+-------------------------------------------------------------------
+Fri Oct  1 16:00:38 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to 0.8.0:
+Features:
+ * Add typing notifications (XEP-0085: Chat State Notifications)
+ * Add message history syncing (XEP-0313: Message Archive Management)
+ * Window size is restored
+ * The server's website link is displayed if account creation is disabled
+ * Improved user strings & descriptions
+
+-------------------------------------------------------------------
+Sat Feb 27 16:52:21 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.7.0
+Features:
+  * Display client information (name, version, OS) of contacts
+  * Drag'n'drop for sending files
+  * Allow pasting images from the clipboard (Ctrl+Shift+V) into
+    the chat
+  * Allow inserting newlines using Shift+Enter
+  * Add configuration of custom hostname/port
+  * Favourite emojis are shown by default now
+  * Search emojis by ":<name>"
+  * Display connection errors in the global drawer after login
+  * Improved design of media preview sheets
+  * Restructure message sending bar
+
+Bugfixes:
+  * Do not interpret random URLs as files anymore
+  * Fix the style of buttons when using Material style
+  * Fix file dialog and media drawer opening in some cases
+  * Fix opening of the LoginPage when scanning QR code without
+    password
+
+Notes:
+  * Kaidan requires Qt 5.14 now
+
+- Changes in 0.6.0:
+Features:
+  * When offline, messages are cached now to be sent later
+  * It's allowed to also correct other messages than the last one
+    now
+  * Also pending (unsent) messages can be corrected now
+  * Chats can be opened from the notifications now
+  * New option to permanently hide your password in Kaidan
+  * New buttons for easily copying your jid and password
+  * Moved account management pages into the settings
+  * The cursor is moved to the end of the text field when
+    correcting a message now
+  * Scanning QR codes without a password works now and results in
+    only the JID being set
+  * The roster is called contact list now
+  * The resource for the displayed presence is picked with fixed
+    rules now (it was random before which resource is displayed)
+  * Handle notifications differently on GNOME to keep them in the
+    notifications area
+  * Switched to the upstream HTTP File Upload implementation
+  * Code refactoring and partial rewrite of the following classes:
+    Kaidan, ClientWorker, RosterManager, PresenceCache,
+    DownloadManager, TransferCache, QrCodeDecoder
+
+Bugfixes:
+  * Playback issues in media video preview
+  * Messages sent from other of your devices are displayed as they
+    were sent by the chat partner
+  * Notifications are shown persistently on the screen
+  * Roster names are not updated in the database
+  * Roster items are not updated in the model correctly
+  * All sheets contain two headers: It uses the new built-in header
+    property now
+  * Unreadable buttons with white text on withe background in some
+    styles
+  * Database version isn't saved correctly
+  * Errors when building with newer ZXing versions
+
+Notes:
+  * Kaidan requires a C++17-compliant compiler now
+- Drop 0001-Port-deprecations-and-little-refactoring-of-the-QrCo.patch
+
+-------------------------------------------------------------------
+Sun Aug 16 18:02:07 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.5.0
+  * Add parsing of XMPP URIs
+  * Add QR code scanning and generation
+  * Add contact search
+  * Add muting notifications for messages of contacts
+  * Add renaming contacts
+  * Show user profile information
+  * Add extended multimedia support
+  * Add message search
+  * Redesign contact list, text avatar, counter for unread messages, chat page, chat message bubble
+  * Add option for enabling or disabling an account temporarily
+  * Refactor login screen with hints for invalid credentials and better usage of keyboard keys
+  * Add message quoting
+  * Truncate very long messages to avoid crashing Kaidan or using it to full capacity
+  * Add button with link for issue tracking to about page
+  * Improve messages for connection errors
+  * Add account deletion
+  * Redesign logo and global drawer banner
+  * Add onboarding with registration, normal login and QR code login
+  * Add OARS rating
+  * Add secondary roster sorting by contact name
+  * Add support for recording audio and video messages
+  * Add Kaidan to KDE’s F-Droid repository
+  * Improve build scripts for better cross-platform support
+  * Refactor code for better performance and stability
+  * Add documentation to achieve easier maintenance
+- Add upstream patch:
+  * 0001-Port-deprecations-and-little-refactoring-of-the-QrCo.patch
+
+-------------------------------------------------------------------
+Wed Jul 17 19:19:46 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.4.1
+  * Fix SSL problems for AppImage
+  * Fix connection problems
+  * Keep QXmpp v0.8.3 compatibility
+
+-------------------------------------------------------------------
+Tue Jul  9 12:23:58 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.4.0 final release
+- Update build requirements
+- Update URLs
+
+-------------------------------------------------------------------
+Sun May 12 19:49:31 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
+
+- Initial package for openSUSE
