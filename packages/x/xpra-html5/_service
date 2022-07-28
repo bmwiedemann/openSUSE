@@ -35,7 +35,9 @@
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="disabled"/>
-  <service name="tar" mode="disabled"/>
+  <service name="tar" mode="disabled">
+    <param name="package-meta">yes</param>
+  </service>
   <service name="recompress" mode="disabled">
     <param name="compression">gz</param>
     <param name="file">*.tar</param>

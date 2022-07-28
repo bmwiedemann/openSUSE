@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 19 17:56:29 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 5.0+git20220718.17c39ca:
+  * Fix for #188
+  * simplify
+  * fix broken legacy clipboard
+  * use the version agnostic package name
+  * #188 need arrow function to use 'this'
+
+-------------------------------------------------------------------
 Tue Jun 21 17:48:10 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 5.0+git20220610.56f906c:
