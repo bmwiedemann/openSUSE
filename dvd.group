@@ -2083,7 +2083,6 @@
     <package name="libhdf5hl_fortran100" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libheif1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libhidapi-hidraw0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libhiredis1_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="libhogweed6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libhugetlbfs" supportstatus="unsupported"/> <!-- reason: dvd:nvme-cli -->
     <package name="libhunspell-1_7-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2251,7 +2250,6 @@
     <package name="libmeanwhile1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libmediaart-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmediacheck6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="libmemcached11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="libmetalink3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libmetis5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmikmod3" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -2904,7 +2902,6 @@
     <package name="mailcommon-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mailimporter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mailimporter-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="mailman3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="mailutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="mailx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="make" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
@@ -2940,7 +2937,6 @@
     <package name="mdadm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="mdevctl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="media-player-info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="memcached" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="memtest86+" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="menulibre" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="messagelib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3525,7 +3521,6 @@
     <package name="pwgen" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python-falcon-doc" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python-gobject2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python-gtk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python-tqdm-bash-completion" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3538,7 +3533,6 @@
     <package name="python3-createrepo_c" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python3-cupshelpers" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-firewall" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="python3-flufl.bounce" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-gedit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-ldb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python3-louis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3556,25 +3550,21 @@
     <package name="python310" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python310-Automat" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-Babel" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python310-Beaker" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python310-Bottleneck" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-Brotli" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-Cycler" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
-    <package name="python310-Deprecated" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python310-FontTools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-Genshi" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-Jinja2" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-M2Crypto" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python310-Mako" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-MarkupSafe" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python310-MarkupSafe" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-Pillow" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-Pillow-tk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python310-PyMySQL" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="python310-PyNaCl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python310-PySocks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-PyYAML" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-Pygments" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="python310-SQLAlchemy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python310-SQLAlchemy" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-Twisted" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-Twisted-tls" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-XlsxWriter" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3584,36 +3574,27 @@
     <package name="python310-aiohttp_cors" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-aioitertools" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-aiosignal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
-    <package name="python310-aiosmtpd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-alembic" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-anyio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python310-anyio" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-apipkg" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-appdirs" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="python310-argon2-cffi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-argon2-cffi-bindings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python310-asttokens" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
-    <package name="python310-async_generator" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="python310-async_timeout" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-atpublic" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python310-async_timeout" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-atspi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python310-attrs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-authheaders" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-authres" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python310-attrs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-backcall" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="python310-bcrypt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python310-beautifulsoup4" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-black" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-boto3" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-botocore" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="python310-brotlicffi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python310-brotlicffi" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-brotlipy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-cached-property" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-certifi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-cffi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python310-chardet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python310-chardet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-charset-normalizer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python310-click" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python310-click" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-cmdln" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python310-colorama" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-configobj" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -3622,27 +3603,22 @@
     <package name="python310-cramjam" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-cryptography" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-cssselect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
-    <package name="python310-curio" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-curses" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python310-dbm" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python310-dbus-python" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python310-decorator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python310-deprecation" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-distro" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python310-dkimpy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-dnspython" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python310-dnspython" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-docutils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-dragonmapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-editables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-et_xmlfile" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-executing" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-extras" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="python310-falcon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python310-fastparquet" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-filetype" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-fixtures" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="python310-flufl.i18n" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-flufl.lock" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python310-frozenlist" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-fs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-fsspec" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3652,24 +3628,22 @@
     <package name="python310-gobject" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python310-gobject-Gdk" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python310-gobject-cairo" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="python310-greenlet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-gunicorn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-h11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-h2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python310-greenlet" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python310-h11" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python310-h2" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-hanzidentifier" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-hatchling" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
-    <package name="python310-hiredis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-hpack" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-hstspreload" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python310-hpack" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python310-hstspreload" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-html5lib" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="python310-httpcore" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-httpx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-hyperframe" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python310-httpcore" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python310-httpx" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python310-hyperframe" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-hyperlink" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-idna" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-immutables" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-importlib-metadata" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python310-importlib-resources" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python310-importlib-resources" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-incremental" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-iniconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-ipaddr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -3678,8 +3652,6 @@
     <package name="python310-jedi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-jmespath" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-kiwisolver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
-    <package name="python310-lazr.config" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-lazr.delegates" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python310-libvirt-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-libxml2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-linecache2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -3705,11 +3677,9 @@
     <package name="python310-olefile" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-openpyxl" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-ordered-set" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="python310-outcome" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-packaging" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python310-pandas" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-parso" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
-    <package name="python310-passlib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python310-pathspec" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-pbr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-pexpect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
@@ -3723,7 +3693,6 @@
     <package name="python310-psutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="python310-psycopg2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-ptyprocess" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
-    <package name="python310-publicsuffix2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python310-pure-eval" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-py" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-pyOpenSSL" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3733,7 +3702,6 @@
     <package name="python310-pycairo" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python310-pycares" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-pycparser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python310-pycryptodome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python310-pycups" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-pycurl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-pydot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -3741,8 +3709,6 @@
     <package name="python310-pygit2" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-pygraphviz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-pyinotify" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python310-pylibmc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-pymongo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python310-pyparsing" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python310-pyreadstat" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-pysendfile" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
@@ -3751,19 +3717,17 @@
     <package name="python310-pytest" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-python-dateutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python310-python-lzo" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="python310-python-memcached" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python310-python-mimeparse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-pytz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-pyudev" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python310-pyzmq" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-qt5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-qt5-sip" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="python310-redis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python310-reportlab" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-requests" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-requests-kerberos" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python310-requests-toolbelt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-rfc3986" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python310-requests-toolbelt" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python310-rfc3986" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-roman" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-rpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python310-rsa" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3771,18 +3735,15 @@
     <package name="python310-s3transfer" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-scipy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-scour" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
-    <package name="python310-scrypt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python310-semanage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-service_identity" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-setools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
-    <package name="python310-setproctitle" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-setuptools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python310-simplejson" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-six" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-slip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python310-slip-dbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="python310-sniffio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-sortedcontainers" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="python310-sniffio" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-soupsieve" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-stack-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-sympy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
@@ -3792,33 +3753,26 @@
     <package name="python310-tk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python310-toml" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-tomli" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
-    <package name="python310-tornado" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-tornado6" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-tqdm" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-traceback2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-traitlets" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
-    <package name="python310-trio" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-typeguard" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="python310-typing_extensions" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python310-typing_extensions" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-unicodedata2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-urllib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-urwid" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-wcwidth" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-webencodings" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="python310-wrapt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python310-wrapt" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-xarray" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-xlrd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-xlwt" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-yarl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-zhon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-zipp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python310-zope.component" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-zope.configuration" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-zope.event" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-zope.hookable" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-zope.i18nmessageid" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-zope.interface" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python310-zope.schema" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python310-zope.event" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python310-zope.interface" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-zopfli" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-zypp-plugin" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="qalculate-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3868,7 +3822,6 @@
     <package name="readcd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="readline-doc" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="rebootmgr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
-    <package name="redis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="reiserfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="remmina" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="remmina-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->

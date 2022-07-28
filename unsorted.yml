@@ -400,6 +400,7 @@ unsorted:
   - adobe-sourcehansans-hk-fonts 
   - adobe-sourcehansans-jp-fonts 
   - adobe-sourcehansans-kr-fonts 
+  - adobe-sourcehanserif-hk-fonts 
   - adobe-sourcehanserif-jp-fonts 
   - adobe-sourcehanserif-kr-fonts 
   - adobe-sourceserif4-fonts 
@@ -7965,6 +7966,7 @@ unsorted:
   - kaffeine-lang 
   - kafka-kit: [x86_64] 
   - kafka-source 
+  - kaidan 
   - kail: [x86_64] 
   - kajaani-kombat 
   - kajaani-kombat-server 
@@ -11589,6 +11591,7 @@ unsorted:
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa2 
+  - libhiredis1_0_0: [i586] 
   - libhivex0 
   - libhl1 
   - libhmac-devel 
@@ -12206,6 +12209,7 @@ unsorted:
   - libmemcache0 
   - libmemcached 
   - libmemcached-devel 
+  - libmemcached11: [i586] 
   - libmemcachedprotocol0 
   - libmemcachedutil2 
   - libmemkind0: [x86_64] 
@@ -14062,6 +14066,7 @@ unsorted:
   - libstilview0 
   - libstk-devel 
   - libstk4 
+  - libstl-thumb 
   - libstlink1 
   - libstorage-ng-devel 
   - libstorage-ng-integration-tests 
@@ -15701,6 +15706,7 @@ unsorted:
   - mailgraph 
   - mailgraph-apache 
   - mailimporter-devel 
+  - mailman3 
   - mailprocessing 
   - mailutils-delivery 
   - mailutils-devel 
@@ -16147,6 +16153,7 @@ unsorted:
   - melody 
   - melody-lang 
   - melt 
+  - memcached: [i586] 
   - memcached-devel 
   - memkind: [x86_64] 
   - memkind-devel: [x86_64] 
@@ -17648,6 +17655,15 @@ unsorted:
   - noto-serif-gujarati-fonts 
   - noto-serif-gurmukhi-fonts 
   - noto-serif-hebrew-fonts 
+  - noto-serif-hk-black-fonts 
+  - noto-serif-hk-bold-fonts 
+  - noto-serif-hk-extralight-fonts 
+  - noto-serif-hk-fonts 
+  - noto-serif-hk-fonts-full 
+  - noto-serif-hk-light-fonts 
+  - noto-serif-hk-medium-fonts 
+  - noto-serif-hk-regular-fonts 
+  - noto-serif-hk-semibold-fonts 
   - noto-serif-jp-black-fonts 
   - noto-serif-jp-extralight-fonts 
   - noto-serif-jp-fonts-full 
@@ -21446,6 +21462,7 @@ unsorted:
   - python-doc-pdf 
   - python-efl-doc 
   - python-efl-examples 
+  - python-falcon-doc 
   - python-fastcluster-doc 
   - python-flake8-doc 
   - python-flup-doc 
@@ -21637,7 +21654,6 @@ unsorted:
   - python3-debtcollector 
   - python3-deltarpm 
   - python3-designateclient 
-  - python3-django-mailman3 
   - python3-dnf 
   - python3-dnf-plugin-kickstart 
   - python3-dnf-plugin-leaves 
@@ -21734,8 +21750,6 @@ unsorted:
   - python3-logreduce 
   - python3-lttngust 
   - python3-magnumclient 
-  - python3-mailman-hyperkitty 
-  - python3-mailmanclient 
   - python3-manilaclient 
   - python3-marisa 
   - python3-masakariclient 
@@ -21882,6 +21896,7 @@ unsorted:
   - python310-Authlib 
   - python310-BTrees 
   - python310-BTrees-devel 
+  - python310-Beaker: [i586] 
   - python310-BitVector 
   - python310-CCColUtils 
   - python310-CacheControl 
@@ -21898,6 +21913,7 @@ unsorted:
   - python310-DataShape 
   - python310-DateTime 
   - python310-Delorean 
+  - python310-Deprecated: [i586] 
   - python310-Django 
   - python310-Dumper 
   - python310-Durus 
@@ -21954,6 +21970,7 @@ unsorted:
   - python310-Lektor 
   - python310-Levenshtein 
   - python310-Logbook 
+  - python310-Mako: [i586] 
   - python310-Markdown 
   - python310-MarkupPy 
   - python310-Markups 
@@ -22003,6 +22020,7 @@ unsorted:
   - python310-PyMeta3 
   - python310-PyMsgBox 
   - python310-PyMuPDF 
+  - python310-PyNaCl 
   - python310-PyNamecheap 
   - python310-PyOgg 
   - python310-PyOpenAL 
@@ -22135,6 +22153,7 @@ unsorted:
   - python310-aioquic 
   - python310-aioresponses 
   - python310-aiorpcX 
+  - python310-aiosmtpd 
   - python310-aiosmtplib 
   - python310-aiosqlite 
   - python310-aiounittest 
@@ -22142,6 +22161,7 @@ unsorted:
   - python310-akismet 
   - python310-alabaster 
   - python310-aldjemy 
+  - python310-alembic: [i586] 
   - python310-allpairspy 
   - python310-alsa 
   - python310-altair 
@@ -22173,6 +22193,8 @@ unsorted:
   - python310-arf 
   - python310-argcomplete: [i586] 
   - python310-argh 
+  - python310-argon2-cffi: [i586] 
+  - python310-argon2-cffi-bindings: [i586] 
   - python310-argparse-manpage: [i586] 
   - python310-args 
   - python310-arrow 
@@ -22197,11 +22219,13 @@ unsorted:
   - python310-astropy-healpix 
   - python310-astunparse 
   - python310-asv 
+  - python310-async_generator 
   - python310-asyncpg 
   - python310-asyncssh 
   - python310-atlassian-python-api 
   - python310-atom 
   - python310-atomicwrites 
+  - python310-atpublic 
   - python310-attr 
   - python310-aubio 
   - python310-audio-degrader 
@@ -22209,6 +22233,8 @@ unsorted:
   - python310-audiomate 
   - python310-audioread 
   - python310-augeas 
+  - python310-authheaders 
+  - python310-authres 
   - python310-autobahn 
   - python310-autocommand 
   - python310-autodoc 
@@ -22525,6 +22551,7 @@ unsorted:
   - python310-base58 
   - python310-bashate 
   - python310-basictracer 
+  - python310-bcrypt 
   - python310-beartype 
   - python310-before-after 
   - python310-behave 
@@ -22741,6 +22768,7 @@ unsorted:
   - python310-ctypescrypto 
   - python310-cu2qu 
   - python310-cufflinks 
+  - python310-curio 
   - python310-curlylint 
   - python310-curtsies 
   - python310-cwcwidth 
@@ -22863,6 +22891,7 @@ unsorted:
   - python310-django-jsonfield 
   - python310-django-localflavor 
   - python310-django-mailer 
+  - python310-django-mailman3 
   - python310-django-mathfilters 
   - python310-django-minio-storage 
   - python310-django-model-utils 
@@ -22915,6 +22944,7 @@ unsorted:
   - python310-djangorestframework-simplejwt 
   - python310-djet 
   - python310-djvulibre 
+  - python310-dkimpy 
   - python310-dmidecode 
   - python310-dns-lexicon 
   - python310-dnslib 
@@ -23005,6 +23035,7 @@ unsorted:
   - python310-factory_boy 
   - python310-fake-useragent 
   - python310-fakeredis 
+  - python310-falcon 
   - python310-fanficfare 
   - python310-fann2 
   - python310-fastbencode 
@@ -23062,6 +23093,9 @@ unsorted:
   - python310-flit-core 
   - python310-flower 
   - python310-fluent 
+  - python310-flufl.bounce 
+  - python310-flufl.i18n 
+  - python310-flufl.lock 
   - python310-flufl.testing 
   - python310-fluidity-sm 
   - python310-flup 
@@ -23161,6 +23195,7 @@ unsorted:
   - python310-gst 
   - python310-gsw 
   - python310-guessit 
+  - python310-gunicorn 
   - python310-guzzle_sphinx_theme 
   - python310-gvm-tools 
   - python310-gwcs 
@@ -23191,6 +23226,7 @@ unsorted:
   - python310-hetznercloud 
   - python310-hexdump 
   - python310-hijri-converter 
+  - python310-hiredis: [i586] 
   - python310-hkdf 
   - python310-hl7apy 
   - python310-holidays 
@@ -23403,6 +23439,8 @@ unsorted:
   - python310-language-check 
   - python310-lark-parser: [i586] 
   - python310-latexcodec 
+  - python310-lazr.config 
+  - python310-lazr.delegates 
   - python310-lazr.uri 
   - python310-lazy 
   - python310-lazy-object-proxy 
@@ -23509,6 +23547,7 @@ unsorted:
   - python310-magic-wormhole-transit-relay 
   - python310-magicalimport 
   - python310-mailman3-fedmsg-plugin 
+  - python310-mailmanclient 
   - python310-main-wrapper 
   - python310-makefun 
   - python310-managesieve 
@@ -23729,6 +23768,7 @@ unsorted:
   - python310-osmviz 
   - python310-ospd 
   - python310-ospd-openvas 
+  - python310-outcome 
   - python310-ovirt-engine-sdk 
   - python310-ovs 
   - python310-pa-ringbuffer 
@@ -23764,6 +23804,7 @@ unsorted:
   - python310-parver 
   - python310-pass_python_keyring 
   - python310-passivetotal 
+  - python310-passlib 
   - python310-pastel 
   - python310-pastream 
   - python310-patatt 
@@ -23891,6 +23932,7 @@ unsorted:
   - python310-ptpython-ptipython 
   - python310-ptr 
   - python310-publicsuffix 
+  - python310-publicsuffix2 
   - python310-publicsuffixlist 
   - python310-pudb 
   - python310-pulsectl 
@@ -23941,6 +23983,7 @@ unsorted:
   - python310-pycocotools 
   - python310-pycodestyle 
   - python310-pycountry 
+  - python310-pycryptodome: [i586] 
   - python310-pycryptodomex 
   - python310-pycsw 
   - python310-pyct 
@@ -24006,6 +24049,7 @@ unsorted:
   - python310-pylibfdt 
   - python310-pyliblo 
   - python310-pyliblo-doc 
+  - python310-pylibmc: [i586] 
   - python310-pylineclip 
   - python310-pylint 
   - python310-pylint-ignore 
@@ -24026,6 +24070,7 @@ unsorted:
   - python310-pymilter 
   - python310-pymisp 
   - python310-pymol 
+  - python310-pymongo: [i586] 
   - python310-pymssql 
   - python310-pynamodb 
   - python310-pynetbox 
@@ -24230,6 +24275,7 @@ unsorted:
   - python310-python-lsp-jsonrpc 
   - python310-python-lsp-server 
   - python310-python-magic 
+  - python310-python-memcached: [i586] 
   - python310-python-mpd2 
   - python310-python-mpv 
   - python310-python-multipart 
@@ -24357,6 +24403,7 @@ unsorted:
   - python310-reconfigure 
   - python310-redbaron 
   - python310-redfish 
+  - python310-redis: [i586] 
   - python310-reedsolo 
   - python310-regex: [i586] 
   - python310-relatorio 
@@ -24455,6 +24502,7 @@ unsorted:
   - python310-screeninfo 
   - python310-screenplain 
   - python310-scripttest 
+  - python310-scrypt 
   - python310-scspell3k 
   - python310-sdnotify 
   - python310-seaborn 
@@ -24468,6 +24516,7 @@ unsorted:
   - python310-serpent 
   - python310-serpy 
   - python310-serverfiles 
+  - python310-setproctitle 
   - python310-setupmeta 
   - python310-setuptools-declarative-requirements 
   - python310-setuptools-git 
@@ -24527,6 +24576,7 @@ unsorted:
   - python310-softlayer-zeep 
   - python310-sorl-thumbnail 
   - python310-sortedcollections 
+  - python310-sortedcontainers 
   - python310-sortinghat 
   - python310-sounddevice 
   - python310-sox 
@@ -24690,6 +24740,7 @@ unsorted:
   - python310-toolz 
   - python310-toposort 
   - python310-topy 
+  - python310-tornado 
   - python310-tortilla 
   - python310-towncrier 
   - python310-tox 
@@ -24709,6 +24760,7 @@ unsorted:
   - python310-treq 
   - python310-tri.declarative 
   - python310-tri.struct 
+  - python310-trio 
   - python310-trove-classifiers 
   - python310-trustme 
   - python310-tsk 
@@ -24901,13 +24953,18 @@ unsorted:
   - python310-zipstream 
   - python310-zodbpickle 
   - python310-zope.cachedescriptors 
+  - python310-zope.component 
+  - python310-zope.configuration 
   - python310-zope.copy 
   - python310-zope.deferredimport 
   - python310-zope.deprecation 
   - python310-zope.exceptions 
+  - python310-zope.hookable 
+  - python310-zope.i18nmessageid 
   - python310-zope.location 
   - python310-zope.proxy 
   - python310-zope.proxy-devel 
+  - python310-zope.schema 
   - python310-zope.security 
   - python310-zope.testbrowser 
   - python310-zope.testbrowser-test 
@@ -25994,6 +26051,7 @@ unsorted:
   - python38-django-jsonfield 
   - python38-django-localflavor 
   - python38-django-mailer 
+  - python38-django-mailman3 
   - python38-django-mathfilters 
   - python38-django-minio-storage 
   - python38-django-model-utils 
@@ -26205,6 +26263,7 @@ unsorted:
   - python38-flit-core 
   - python38-flower 
   - python38-fluent 
+  - python38-flufl.bounce 
   - python38-flufl.i18n 
   - python38-flufl.lock 
   - python38-flufl.testing 
@@ -26699,6 +26758,7 @@ unsorted:
   - python38-magic-wormhole-transit-relay 
   - python38-magicalimport 
   - python38-mailman3-fedmsg-plugin 
+  - python38-mailmanclient 
   - python38-main-wrapper 
   - python38-makefun 
   - python38-managesieve 
@@ -29304,6 +29364,7 @@ unsorted:
   - python39-django-jsonfield 
   - python39-django-localflavor 
   - python39-django-mailer 
+  - python39-django-mailman3 
   - python39-django-mathfilters 
   - python39-django-minio-storage 
   - python39-django-model-utils 
@@ -29514,6 +29575,7 @@ unsorted:
   - python39-flit-core 
   - python39-flower 
   - python39-fluent 
+  - python39-flufl.bounce 
   - python39-flufl.i18n 
   - python39-flufl.lock 
   - python39-flufl.testing 
@@ -30006,7 +30068,9 @@ unsorted:
   - python39-magic-wormhole-mailbox-server 
   - python39-magic-wormhole-transit-relay 
   - python39-magicalimport 
+  - python39-mailman-hyperkitty 
   - python39-mailman3-fedmsg-plugin 
+  - python39-mailmanclient 
   - python39-main-wrapper 
   - python39-makefun 
   - python39-managesieve 
@@ -32252,6 +32316,7 @@ unsorted:
   - redeclipse-server 
   - redfish-finder 
   - redfishtool 
+  - redis: [i586] 
   - redis++-devel 
   - redland 
   - redland-storage-postgresql 
@@ -32952,7 +33017,6 @@ unsorted:
   - simtrace2 
   - simutrans 
   - simutrans-makeobj 
-  - singularity 
   - sipcalc 
   - sipp 
   - siproxd 
@@ -33330,6 +33394,8 @@ unsorted:
   - stix-pua-fonts 
   - stix-sizes-fonts 
   - stix-variants-fonts 
+  - stl-thumb 
+  - stl-thumb-devel 
   - stlink 
   - stlink-devel 
   - stlink-gui 
@@ -44134,6 +44200,7 @@ unsorted:
   - zchunk 
   - zdbsp 
   - zeal 
+  - zellij: [x86_64] 
   - zerobranestudio 
   - zerofree 
   - zeromq-devel 
