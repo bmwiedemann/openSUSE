@@ -11,8 +11,8 @@ addFilter ("^mingw32-.*filelist-forbidden-fhs23 /usr/i686-w64-mingw32")
 # why, but we permit this for now.
 addFilter ("^mingw32-.*spurious-executable-perm.*\.dll\.a$")
 
-# *.dll.a files are permitted arch-independent objects.
-addFilter ("^mingw32-.*arch-independent-package-contains-binary-or-object.*\.dll\.a$")
+# *.dll.a and *.a files are permitted arch-independent objects.
+addFilter ("^mingw32-.*arch-independent-package-contains-binary-or-object.*\.a$")
 
 addFilter ("^mingw32-.*mono-versioned-deps-missing")
 
