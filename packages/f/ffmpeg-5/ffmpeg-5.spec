@@ -75,7 +75,7 @@
 %define _major_expected 6
 
 Name:           ffmpeg-5
-Version:        5.0.1
+Version:        5.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -98,10 +98,9 @@ Patch1:         ffmpeg-arm6l.diff
 Patch2:         ffmpeg-new-coder-errors.diff
 Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
-Patch8:         vmaf-trim-usr-local.patch
+Patch5:         work-around-abi-break.patch
 Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
 Patch10:        ffmpeg-chromium.patch
-Patch11:        ffmpeg-openh264-averr-on-bad-version.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 
 BuildRequires:  ladspa-devel
@@ -156,6 +155,9 @@ BuildRequires:  pkgconfig(libzmq)
 BuildRequires:  pkgconfig(lilv-0)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opus)
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(libjxl)
+%endif
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 BuildRequires:  pkgconfig(rav1e)
 %endif
@@ -576,6 +578,9 @@ LDFLAGS="%_lto_cflags" \
 	--enable-libfribidi \
 	--enable-libgsm \
 	--enable-libjack \
+%if 0%{?suse_version} >= 1550
+	--enable-libjxl \
+%endif
 	--enable-libmp3lame \
 %if %{with mysofa}
 	--enable-libmysofa \
@@ -658,7 +663,7 @@ LDFLAGS="%_lto_cflags" \
 	--enable-decoder="$(perl -pe 's{^(\w*).*}{$1,}gs' <%_sourcedir/enable_decoders)" \
 
 for i in MPEG4 H263 H264 HEVC VC1; do
-	grep -q "#define CONFIG_${i}_DECODER 0" config.h
+	grep -q "#define CONFIG_${i}_DECODER 0" config_components.h
 done
 %endif
 
@@ -714,35 +719,35 @@ done
 
 %files -n libavcodec59
 %license COPYING.GPLv2 LICENSE.md
-%_libdir/libavcodec.so.59*
+%_libdir/libavcodec.so.*
 
 %files -n libavdevice59
 %license COPYING.GPLv2 LICENSE.md
-%_libdir/libavdevice.so.59*
+%_libdir/libavdevice.so.*
 
 %files -n libavfilter8
 %license COPYING.GPLv2 LICENSE.md
-%_libdir/libavfilter.so.8*
+%_libdir/libavfilter.so.*
 
 %files -n libavformat59
 %license COPYING.GPLv2 LICENSE.md
-%_libdir/libavformat.so.59*
+%_libdir/libavformat.so.*
 
 %files -n libavutil57
 %license COPYING.GPLv2 LICENSE.md
-%_libdir/libavutil.so.57*
+%_libdir/libavutil.so.*
 
 %files -n libpostproc56
 %license COPYING.GPLv2 LICENSE.md
-%_libdir/libpostproc.so.56*
+%_libdir/libpostproc.so.*
 
 %files -n libswresample4
 %license COPYING.GPLv2 LICENSE.md
-%_libdir/libswresample.so.4*
+%_libdir/libswresample.so.*
 
 %files -n libswscale6
 %license COPYING.GPLv2 LICENSE.md
-%_libdir/libswscale.so.6*
+%_libdir/libswscale.so.*
 
 %files libavcodec-devel
 %dir %_includedir/ffmpeg/

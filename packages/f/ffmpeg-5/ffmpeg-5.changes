@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jul 26 18:55:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable libjxl
+
+-------------------------------------------------------------------
+Sat Jul 23 15:29:58 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update ffmpeg-chromium.patch from upstream
+
+-------------------------------------------------------------------
+Sat Jul 23 08:35:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.1
+  * AVIF image muxer support for the AV1-based image format
+  * JPEG-XL image support
+  * Removed the X-Video Motion Compensation (XvMC) hardware
+    acceleration
+  * IPFS/IPNS protocol support
+  * PCM-Bluray encoder support
+- Drop vmaf-trim-usr-local.patch (obsolete),
+  ffmpeg-openh264-averr-on-bad-version.patch (merged)
+- Add work-around-abi-break.patch
+
+-------------------------------------------------------------------
 Sat Apr  9 22:36:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.1:

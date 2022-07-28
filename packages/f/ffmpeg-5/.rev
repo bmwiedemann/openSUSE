@@ -15,4 +15,18 @@
     <comment></comment>
     <requestid>969259</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>91016eedf1fe04f75678cd450b1740ac</srcmd5>
+    <version>5.1</version>
+    <time>1659034737</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to release 5.1
+  * AVIF image muxer support for the AV1-based image format
+  * JPEG-XL image support
+  * Removed the X-Video Motion Compensation (XvMC) hardware
+    acceleration
+  * IPFS/IPNS protocol support
+  * PCM-Bluray encoder support</comment>
+    <requestid>991461</requestid>
+  </revision>
 </revisionlist>

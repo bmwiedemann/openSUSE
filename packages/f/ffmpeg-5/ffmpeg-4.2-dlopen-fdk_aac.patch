@@ -1,3 +1,10 @@
+From: Ismail Dönmez <ismail@i10z.com>
+Date: 2019-06-11 11:21:23
+
+This is ffmpeg-4.1-dlopen-faac-mp3lame-opencore-x264-x265-xvid.patch
+from OpenMandriva to optionally enable runtime enabling of
+fdkaac/lame/x264/x265.
+
 ---
  configure                  |    3 ++
  libavcodec/dlopen.h        |   12 ++++++++++
@@ -5,10 +12,10 @@
  libavcodec/libfdk-aacenc.c |   47 +++++++++++++++++++++++++++++++++++++++
  4 files changed, 115 insertions(+)
 
-Index: ffmpeg-5.0/configure
+Index: ffmpeg-5.1/configure
 ===================================================================
---- ffmpeg-5.0.orig/configure
-+++ ffmpeg-5.0/configure
+--- ffmpeg-5.1.orig/configure
++++ ffmpeg-5.1/configure
 @@ -231,6 +231,7 @@ External library support:
    --enable-libdc1394       enable IIDC-1394 grabbing using libdc1394
                             and libraw1394 [no]
@@ -17,7 +24,7 @@ Index: ffmpeg-5.0/configure
    --enable-libflite        enable flite (voice synthesis) support via libflite [no]
    --enable-libfontconfig   enable libfontconfig, useful for drawtext filter [no]
    --enable-libfreetype     enable libfreetype, needed for drawtext filter [no]
-@@ -1784,6 +1785,7 @@ EXTERNAL_LIBRARY_GPL_LIST="
+@@ -1787,6 +1788,7 @@ EXTERNAL_LIBRARY_GPL_LIST="
  EXTERNAL_LIBRARY_NONFREE_LIST="
      decklink
      libfdk_aac
@@ -25,7 +32,7 @@ Index: ffmpeg-5.0/configure
      libtls
  "
  
-@@ -6528,6 +6530,7 @@ enabled libdrm            && require_pkg
+@@ -6544,6 +6546,7 @@ enabled libdrm            && require_pkg
  enabled libfdk_aac        && { check_pkg_config libfdk_aac fdk-aac "fdk-aac/aacenc_lib.h" aacEncOpen ||
                                 { require libfdk_aac fdk-aac/aacenc_lib.h aacEncOpen -lfdk-aac &&
                                   warn "using libfdk without pkg-config"; } }
@@ -33,10 +40,10 @@ Index: ffmpeg-5.0/configure
  flite_extralibs="-lflite_cmu_time_awb -lflite_cmu_us_awb -lflite_cmu_us_kal -lflite_cmu_us_kal16 -lflite_cmu_us_rms -lflite_cmu_us_slt -lflite_usenglish -lflite_cmulex -lflite"
  enabled libflite          && require libflite "flite/flite.h" flite_init $flite_extralibs
  enabled fontconfig        && enable libfontconfig
-Index: ffmpeg-5.0/libavcodec/dlopen.h
+Index: ffmpeg-5.1/libavcodec/dlopen.h
 ===================================================================
 --- /dev/null
-+++ ffmpeg-5.0/libavcodec/dlopen.h
++++ ffmpeg-5.1/libavcodec/dlopen.h
 @@ -0,0 +1,12 @@
 +#ifndef LOCALINC_DLOPEN_H
 +#define LOCALINC_DLOPEN_H
@@ -50,11 +57,11 @@ Index: ffmpeg-5.0/libavcodec/dlopen.h
 +		goto error;
 +
 +#endif
-Index: ffmpeg-5.0/libavcodec/libfdk-aacdec.c
+Index: ffmpeg-5.1/libavcodec/libfdk-aacdec.c
 ===================================================================
---- ffmpeg-5.0.orig/libavcodec/libfdk-aacdec.c
-+++ ffmpeg-5.0/libavcodec/libfdk-aacdec.c
-@@ -37,6 +37,54 @@
+--- ffmpeg-5.1.orig/libavcodec/libfdk-aacdec.c
++++ ffmpeg-5.1/libavcodec/libfdk-aacdec.c
+@@ -38,6 +38,54 @@
  #define AAC_PCM_MAX_OUTPUT_CHANNELS AAC_PCM_OUTPUT_CHANNELS
  #endif
  
@@ -109,7 +116,7 @@ Index: ffmpeg-5.0/libavcodec/libfdk-aacdec.c
  enum ConcealMethod {
      CONCEAL_METHOD_SPECTRAL_MUTING      =  0,
      CONCEAL_METHOD_NOISE_SUBSTITUTION   =  1,
-@@ -229,6 +277,11 @@ static av_cold int fdk_aac_decode_init(A
+@@ -244,6 +292,11 @@ static av_cold int fdk_aac_decode_init(A
      FDKAACDecContext *s = avctx->priv_data;
      AAC_DECODER_ERROR err;
  
@@ -121,10 +128,10 @@ Index: ffmpeg-5.0/libavcodec/libfdk-aacdec.c
      s->handle = aacDecoder_Open(avctx->extradata_size ? TT_MP4_RAW : TT_MP4_ADTS, 1);
      if (!s->handle) {
          av_log(avctx, AV_LOG_ERROR, "Error opening decoder\n");
-Index: ffmpeg-5.0/libavcodec/libfdk-aacenc.c
+Index: ffmpeg-5.1/libavcodec/libfdk-aacenc.c
 ===================================================================
---- ffmpeg-5.0.orig/libavcodec/libfdk-aacenc.c
-+++ ffmpeg-5.0/libavcodec/libfdk-aacenc.c
+--- ffmpeg-5.1.orig/libavcodec/libfdk-aacenc.c
++++ ffmpeg-5.1/libavcodec/libfdk-aacenc.c
 @@ -36,6 +36,48 @@
  #define FDKENC_VER_AT_LEAST(vl0, vl1) 0
  #endif
@@ -179,10 +186,10 @@ Index: ffmpeg-5.0/libavcodec/libfdk-aacenc.c
      int sce = 0, cpe = 0;
  
 +#ifdef CONFIG_LIBFDK_AAC_DLOPEN
-+    if (loadLibFdkAac(avctx))
-+        return -1;
++	if (loadLibFdkAac(avctx))
++		return -1;
 +#endif
 +
-     if ((err = aacEncOpen(&s->handle, 0, avctx->channels)) != AACENC_OK) {
+     if ((err = aacEncOpen(&s->handle, 0, avctx->ch_layout.nb_channels)) != AACENC_OK) {
          av_log(avctx, AV_LOG_ERROR, "Unable to open the encoder: %s\n",
                 aac_get_error(err));
