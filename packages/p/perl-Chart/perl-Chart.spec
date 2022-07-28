@@ -18,7 +18,7 @@
 
 %define cpan_name Chart
 Name:           perl-Chart
-Version:        2.402.3
+Version:        2.403.6
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Series of charting modules
@@ -38,16 +38,9 @@ Requires:       perl(GD) >= 2
 %{perl_requires}
 
 %description
-These man-pages give you the most important information about Chart. There
-is also a complete documentation (Documentation.pdf) within the Chart
-package. Look at it to get more information. This module is an attempt to
-build a general purpose graphing module that is easily modified and
-expanded. I borrowed most of the API from Martien Verbruggen's GIFgraph
-module. I liked most of GIFgraph, but I thought it was to difficult to
-modify, and it was missing a few things that I needed, most notably
-legends. So I decided to write a new module from scratch, and I've designed
-it from the bottom up to be easy to modify. Like GIFgraph, Chart uses
-Lincoln Stein's GD module for all of its graphics primitives calls.
+Chart help you to create PNG and JPG images with visualizations of numeric
+data. This page gives you a summary how to use it. For a more thorough
+documentation and lots of example code please visit the Chart::Manual.
 
 %prep
 %autosetup  -n %{cpan_name}-v%{version}
@@ -65,7 +58,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING doc Documentation.pdf README TODO
+%doc Changes CONTRIBUTING README TODO
 %license LICENSE
 
 %changelog
