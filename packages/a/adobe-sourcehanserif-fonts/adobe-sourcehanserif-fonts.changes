@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jun 18 02:41:01 UTC 2022 - Dingzhong Chen <wsxy162@gmail.com>
+
+- Update to 2.001R
+  * The copyright year was changed to “2017–2022.”
+  * Many glyphs changes (maps, fixes, additions, adjustments)
+- Changes from 2.000R
+  * The copyright year was changed to “2017–2021.”
+  * Added support for Hong Kong SCS-2016
+  * Updated Latin glyphs derived from Source Serif to align with version 4.0
+  * All fonts have been built as variable fonts
+  * Many glyphs changes (maps, fixes, additions, adjustments)
+- Add Hongkong specific subset fonts
+- Add variable fonts for all regions
+
+-------------------------------------------------------------------
 Mon Apr 29 17:51:04 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Add all region-specific fonts

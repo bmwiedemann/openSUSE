@@ -1,7 +1,7 @@
 #
 # spec file for package adobe-sourcehanserif-fonts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,22 @@
 %define shared_description Source Han Serif is an open source Pan-CJK typeface whose OpenType/CFF fonts and CID-based sources are covered under the terms of the SIL Open Font License, Version 1.1.
 
 Name:           adobe-sourcehanserif-fonts
-Version:        1.001
+Version:        2.001
 Release:        0
 Summary:        Source Han Serif fonts
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/adobe-fonts/source-han-serif
-Source0:        https://raw.githubusercontent.com/adobe-fonts/source-han-serif/%{version}R/SubsetOTF/SourceHanSerifCN.zip
-Source1:        https://raw.githubusercontent.com/adobe-fonts/source-han-serif/%{version}R/SubsetOTF/SourceHanSerifJP.zip
-Source2:        https://raw.githubusercontent.com/adobe-fonts/source-han-serif/%{version}R/SubsetOTF/SourceHanSerifKR.zip
-Source3:        https://raw.githubusercontent.com/adobe-fonts/source-han-serif/%{version}R/SubsetOTF/SourceHanSerifTW.zip
+Source0:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/SubsetOTF/SourceHanSerifCN.zip
+Source1:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/SubsetOTF/SourceHanSerifHK.zip
+Source2:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/SubsetOTF/SourceHanSerifJP.zip
+Source3:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/SubsetOTF/SourceHanSerifKR.zip
+Source4:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/SubsetOTF/SourceHanSerifTW.zip
+Source5:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/Variable/OTF/Subset/SourceHanSerifCN-VF.otf
+Source6:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/Variable/OTF/Subset/SourceHanSerifHK-VF.otf
+Source7:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/Variable/OTF/Subset/SourceHanSerifJP-VF.otf
+Source8:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/Variable/OTF/Subset/SourceHanSerifKR-VF.otf
+Source9:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/Variable/OTF/Subset/SourceHanSerifTW-VF.otf
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -42,12 +48,14 @@ unzip -o %{S:0}
 unzip -o %{S:1}
 unzip -o %{S:2}
 unzip -o %{S:3}
+unzip -o %{S:4}
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_ttfontsdir}
-mv */*.otf %{buildroot}%{_ttfontsdir}
+mv *.otf %{buildroot}%{_ttfontsdir}
+cp -t %{buildroot}%{_ttfontsdir} %{S:5} %{S:6} %{S:7} %{S:8} %{S:9} 
 
 # Chinese China package
 %package -n adobe-sourcehanserif-cn-fonts
@@ -61,9 +69,25 @@ Provides:       locale(zh_CN)
 %reconfigure_fonts_scriptlets -n adobe-sourcehanserif-cn-fonts
 %files -n adobe-sourcehanserif-cn-fonts
 %defattr(0644,root,root,755)
-%license SourceHanSerifCN/LICENSE.txt
+%license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSerifCN-*.otf
+
+# Chinese Hongkong package
+%package -n adobe-sourcehanserif-hk-fonts
+Summary:        Source Han Serif HK
+Group:          System/X11/Fonts
+Provides:       scalable-font-zh_HK
+Provides:       locale(zh_HK)
+
+%description -n adobe-sourcehanserif-hk-fonts
+%{shared_description}
+%reconfigure_fonts_scriptlets -n adobe-sourcehanserif-hk-fonts
+%files -n adobe-sourcehanserif-hk-fonts
+%defattr(0644,root,root,755)
+%license LICENSE.txt
+%dir %{_ttfontsdir}
+%{_ttfontsdir}/SourceHanSerifHK-*.otf
 
 # Japanese package
 %package -n adobe-sourcehanserif-jp-fonts
@@ -77,7 +101,7 @@ Provides:       locale(jp)
 %reconfigure_fonts_scriptlets -n adobe-sourcehanserif-jp-fonts
 %files -n adobe-sourcehanserif-jp-fonts
 %defattr(0644,root,root,755)
-%license SourceHanSerifJP/LICENSE.txt
+%license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSerifJP-*.otf
 
@@ -93,7 +117,7 @@ Provides:       locale(kr)
 %reconfigure_fonts_scriptlets -n adobe-sourcehanserif-kr-fonts
 %files -n adobe-sourcehanserif-kr-fonts
 %defattr(0644,root,root,755)
-%license SourceHanSerifKR/LICENSE.txt
+%license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSerifKR-*.otf
 
@@ -112,7 +136,7 @@ Obsoletes:      adobe-sourcehanserif-fonts < %version
 %reconfigure_fonts_scriptlets -n adobe-sourcehanserif-tw-fonts
 %files -n adobe-sourcehanserif-tw-fonts
 %defattr(0644,root,root,755)
-%license SourceHanSerifTW/LICENSE.txt
+%license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSerifTW-*.otf
 
