@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 25 11:07:44 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.17.1:
+  * Version 0.17.1
+  * Switch from structopt to clap
+  * Update dependencies
+  * fix bug where fish completion for contexts would not terminate
+- remove zstd as BuildRequires, as cargo_vendor no longer spits out tar.zst files...
+
+-------------------------------------------------------------------
 Mon May 30 14:38:03 UTC 2022 - kastl@b1-systems.de
 
 - add zstd as BuildRequires, as cargo_vendor now spits out tar.zst files...
