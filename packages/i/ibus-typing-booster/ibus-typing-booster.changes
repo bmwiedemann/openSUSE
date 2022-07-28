@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 27 02:56:29 UTC 2022 - maiku.fabian@gmail.com
+
+- Update to 2.18.4
+- Get program name of focused window if do_focus_id doesn’t provide that already
+- Show lookup table *always* when display of related emoji or words is requested
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/350)
+- Translation update from Weblate (nl updated to 100%)
+
+-------------------------------------------------------------------
 Mon Jul 18 19:23:49 UTC 2022 - maiku.fabian@gmail.com
 
 - Update to 2.18.0
