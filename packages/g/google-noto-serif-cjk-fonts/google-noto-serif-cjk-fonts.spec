@@ -1,7 +1,7 @@
 #
 # spec file for package google-noto-serif-cjk-fonts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,16 @@
 #
 
 
-%define _version 2.001
-
 Name:           google-noto-serif-cjk-fonts
-Version:        20170403
+Version:        2.001
 Release:        0
 Summary:        Noto Serif CJK Font Families
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/googlefonts/noto-cjk
-Source0:        https://github.com/googlefonts/noto-cjk/archive/NotoSansV%{_version}.tar.gz
+Source0:        https://github.com/googlefonts/noto-cjk/releases/download/Serif%{version}/05_NotoSerifCJKOTF.zip
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -207,10 +204,9 @@ Medium weight of Serif font for Traditional Chinese, hinted.
 %package -n noto-serif-tc-fonts
 Summary:        Noto Serif Traditional Chinese Font - Regular and Bold
 Group:          System/X11/Fonts
-Provides:       scalable-font-zh-HK
 Provides:       scalable-font-zh-MO
 Provides:       scalable-font-zh-TW
-Provides:       locale(zh_HK;zh_MO;zh_TW)
+Provides:       locale(zh_MO;zh_TW)
 Requires:       noto-serif-tc-bold-fonts = %{version}
 Requires:       noto-serif-tc-regular-fonts = %{version}
 
@@ -233,6 +229,104 @@ Requires:       noto-serif-tc-semibold-fonts = %{version}
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 All weights of Serif font for Traditional Chinese, hinted.
+
+%package -n noto-serif-hk-regular-fonts
+Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - Regular
+Group:          System/X11/Fonts
+%reconfigure_fonts_prereq
+
+%description -n noto-serif-hk-regular-fonts
+Noto's design goal is to achieve visual harmonization (e.g., compatible
+heights and stroke thicknesses) across languages. This package contains
+Regular weight of Serif font for Traditional Chinese (Hong Kong), hinted.
+
+%package -n noto-serif-hk-semibold-fonts
+Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - SemiBold
+Group:          System/X11/Fonts
+%reconfigure_fonts_prereq
+
+%description -n noto-serif-hk-semibold-fonts
+Noto's design goal is to achieve visual harmonization (e.g., compatible
+heights and stroke thicknesses) across languages. This package contains
+SemiBold weight of Serif font for Traditional Chinese (Hong Kong), hinted.
+
+%package -n noto-serif-hk-light-fonts
+Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - Light
+Group:          System/X11/Fonts
+%reconfigure_fonts_prereq
+
+%description -n noto-serif-hk-light-fonts
+Noto's design goal is to achieve visual harmonization (e.g., compatible
+heights and stroke thicknesses) across languages. This package contains
+Light weight of Serif font for Traditional Chinese (Hong Kong), hinted.
+
+%package -n noto-serif-hk-extralight-fonts
+Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - Extralight
+Group:          System/X11/Fonts
+%reconfigure_fonts_prereq
+
+%description -n noto-serif-hk-extralight-fonts
+Noto's design goal is to achieve visual harmonization (e.g., compatible
+heights and stroke thicknesses) across languages. This package contains
+Extralight weight of Serif font for Traditional Chinese (Hong Kong), hinted.
+
+%package -n noto-serif-hk-bold-fonts
+Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - Bold
+Group:          System/X11/Fonts
+%reconfigure_fonts_prereq
+
+%description -n noto-serif-hk-bold-fonts
+Noto's design goal is to achieve visual harmonization (e.g., compatible
+heights and stroke thicknesses) across languages. This package contains
+Bold weight of Serif font for Traditional Chinese (Hong Kong), hinted.
+
+%package -n noto-serif-hk-black-fonts
+Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - Black
+Group:          System/X11/Fonts
+%reconfigure_fonts_prereq
+
+%description -n noto-serif-hk-black-fonts
+Noto's design goal is to achieve visual harmonization (e.g., compatible
+heights and stroke thicknesses) across languages. This package contains
+Black weight of Serif font for Traditional Chinese (Hong Kong), hinted.
+
+%package -n noto-serif-hk-medium-fonts
+Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - Medium
+Group:          System/X11/Fonts
+%reconfigure_fonts_prereq
+
+%description -n noto-serif-hk-medium-fonts
+Noto's design goal is to achieve visual harmonization (e.g., compatible
+heights and stroke thicknesses) across languages. This package contains
+Medium weight of Serif font for Traditional Chinese (Hong Kong), hinted.
+
+%package -n noto-serif-hk-fonts
+Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - Regular and Bold
+Group:          System/X11/Fonts
+Provides:       scalable-font-zh-HK
+Provides:       locale(zh_HK)
+Requires:       noto-serif-hk-bold-fonts = %{version}
+Requires:       noto-serif-hk-regular-fonts = %{version}
+
+%description -n noto-serif-hk-fonts
+Noto's design goal is to achieve visual harmonization (e.g., compatible
+heights and stroke thicknesses) across languages. This package contains
+Regular and Bold weights of Serif font for Traditional Chinese (Hong Kong), hinted.
+
+%package -n noto-serif-hk-fonts-full
+Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - All Weights
+Group:          System/X11/Fonts
+Requires:       noto-serif-hk-black-fonts = %{version}
+Requires:       noto-serif-hk-extralight-fonts = %{version}
+Requires:       noto-serif-hk-fonts = %{version}
+Requires:       noto-serif-hk-light-fonts = %{version}
+Requires:       noto-serif-hk-medium-fonts = %{version}
+Requires:       noto-serif-hk-semibold-fonts = %{version}
+
+%description -n noto-serif-hk-fonts-full
+Noto's design goal is to achieve visual harmonization (e.g., compatible
+heights and stroke thicknesses) across languages. This package contains
+All weights of Serif font for Traditional Chinese (Hong Kong), hinted.
 
 %package -n noto-serif-jp-regular-fonts
 Summary:        Noto Serif Japanese Font - Regular
@@ -431,13 +525,13 @@ heights and stroke thicknesses) across languages. This package contains
 All weights of Serif font for Korean, hinted.
 
 %prep
-%setup -q -n noto-cjk-NotoSansV%{_version}
+unzip -qqn %{SOURCE0}
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_ttfontsdir}
-cp NotoSerifCJK*.?tf %{buildroot}%{_ttfontsdir}/
+cp */*/*.?tf %{buildroot}%{_ttfontsdir}/
 
 %reconfigure_fonts_scriptlets -n noto-serif-sc-regular-fonts
 
@@ -466,6 +560,20 @@ cp NotoSerifCJK*.?tf %{buildroot}%{_ttfontsdir}/
 %reconfigure_fonts_scriptlets -n noto-serif-tc-black-fonts
 
 %reconfigure_fonts_scriptlets -n noto-serif-tc-medium-fonts
+
+%reconfigure_fonts_scriptlets -n noto-serif-hk-regular-fonts
+
+%reconfigure_fonts_scriptlets -n noto-serif-hk-bold-fonts
+
+%reconfigure_fonts_scriptlets -n noto-serif-hk-semibold-fonts
+
+%reconfigure_fonts_scriptlets -n noto-serif-hk-light-fonts
+
+%reconfigure_fonts_scriptlets -n noto-serif-hk-extralight-fonts
+
+%reconfigure_fonts_scriptlets -n noto-serif-hk-black-fonts
+
+%reconfigure_fonts_scriptlets -n noto-serif-hk-medium-fonts
 
 %reconfigure_fonts_scriptlets -n noto-serif-jp-regular-fonts
 
@@ -532,12 +640,10 @@ cp NotoSerifCJK*.?tf %{buildroot}%{_ttfontsdir}/
 
 %files -n noto-serif-sc-fonts
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
 %license LICENSE
 
 %files -n noto-serif-sc-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
 %license LICENSE
 
 %files -n noto-serif-tc-regular-fonts
@@ -577,12 +683,53 @@ cp NotoSerifCJK*.?tf %{buildroot}%{_ttfontsdir}/
 
 %files -n noto-serif-tc-fonts
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
 %license LICENSE
 
 %files -n noto-serif-tc-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
+%license LICENSE
+
+%files -n noto-serif-hk-regular-fonts
+%defattr(0644,root,root,755)
+%dir %{_ttfontsdir}
+%{_ttfontsdir}/NotoSerifCJKhk-Regular.?tf
+
+%files -n noto-serif-hk-bold-fonts
+%defattr(0644,root,root,755)
+%dir %{_ttfontsdir}
+%{_ttfontsdir}/NotoSerifCJKhk-Bold.?tf
+
+%files -n noto-serif-hk-semibold-fonts
+%defattr(0644,root,root,755)
+%dir %{_ttfontsdir}
+%{_ttfontsdir}/NotoSerifCJKhk-SemiBold.?tf
+
+%files -n noto-serif-hk-light-fonts
+%defattr(0644,root,root,755)
+%dir %{_ttfontsdir}
+%{_ttfontsdir}/NotoSerifCJKhk-Light.?tf
+
+%files -n noto-serif-hk-extralight-fonts
+%defattr(0644,root,root,755)
+%dir %{_ttfontsdir}
+%{_ttfontsdir}/NotoSerifCJKhk-ExtraLight.?tf
+
+%files -n noto-serif-hk-black-fonts
+%defattr(0644,root,root,755)
+%dir %{_ttfontsdir}
+%{_ttfontsdir}/NotoSerifCJKhk-Black.?tf
+
+%files -n noto-serif-hk-medium-fonts
+%defattr(0644,root,root,755)
+%dir %{_ttfontsdir}
+%{_ttfontsdir}/NotoSerifCJKhk-Medium.?tf
+
+%files -n noto-serif-hk-fonts
+%defattr(0644,root,root,755)
+%license LICENSE
+
+%files -n noto-serif-hk-fonts-full
+%defattr(0644,root,root,755)
 %license LICENSE
 
 %files -n noto-serif-jp-regular-fonts
@@ -622,12 +769,10 @@ cp NotoSerifCJK*.?tf %{buildroot}%{_ttfontsdir}/
 
 %files -n noto-serif-jp-fonts
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
 %license LICENSE
 
 %files -n noto-serif-jp-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
 %license LICENSE
 
 %files -n noto-serif-kr-regular-fonts
@@ -667,12 +812,10 @@ cp NotoSerifCJK*.?tf %{buildroot}%{_ttfontsdir}/
 
 %files -n noto-serif-kr-fonts
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
 %license LICENSE
 
 %files -n noto-serif-kr-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS HISTORY README.formats README.third_party
 %license LICENSE
 
 %changelog
