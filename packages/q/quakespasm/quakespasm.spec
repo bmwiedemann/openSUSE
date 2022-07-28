@@ -18,7 +18,7 @@
 
 
 Name:           quakespasm
-Version:        0.94.6
+Version:        0.94.7
 Release:        0
 Summary:        A Quake Engine
 License:        GPL-2.0-or-later

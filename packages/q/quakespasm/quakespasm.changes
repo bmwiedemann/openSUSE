@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 25 14:56:09 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.94.7
+  * Fix console history buffer wrapping.
+  * Fix wrong external texture use after vid_restart.
+  * Update lodepng from mainstream git.
+  * Miscellaneous source code cleanups.
+
+-------------------------------------------------------------------
 Mon Jul  4 09:17:52 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.94.6
