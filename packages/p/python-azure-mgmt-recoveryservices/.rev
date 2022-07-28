@@ -93,4 +93,16 @@
 - Update Requires from setup.py</comment>
     <requestid>912930</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e4e5a9e0dfc986aa2f34909b8191a0db</srcmd5>
+    <version>2.1.0</version>
+    <time>1659034746</time>
+    <user>RBrownFactory</user>
+    <comment>- New upstream release
+  + Version 2.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 991505 from glaubitz)</comment>
+    <requestid>991533</requestid>
+  </revision>
 </revisionlist>
