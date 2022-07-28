@@ -1,7 +1,7 @@
 #
 # spec file for package pdns-common
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,41 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%if 0%{?suse_version} > 1230
-%bcond_without systemd
-%define  _localstatedir /run/pdns
-%else
-%bcond_with    systemd
-%define  _localstatedir /var/run/pdns
-%endif
-
 %define home           %{_var}/lib/pdns
-
-%{!?_tmpfilesdir: %global _tmpfilesdir /usr/lib/tmpfiles.d }
-
+%{!?_tmpfilesdir: %global _tmpfilesdir %{_prefix}/lib/tmpfiles.d }
 Name:           pdns-common
 Version:        4.0
 Release:        0
 Summary:        Shared directories between PowerDNS Packages
 License:        MIT
 Group:          Productivity/Networking/DNS/Servers
-Url:            https://www.powerdns.com/
-Source:         pdns-common.tmpfiles.d
+URL:            https://www.powerdns.com/
+Source0:        pdns-common.tmpfiles.d
+Source1:        system-user-pdns.conf
+BuildRequires:  sysuser-tools
 BuildArch:      noarch
-%if %{with systemd}
-BuildRequires:  pkgconfig(systemd)
-%{?systemd_requires}
-%endif
+%sysusers_requires
 %if 0%{?suse_version}
+# FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         shadow
 %else
+# FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         shadow-utils
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Shared directories between PowerDNS Packages
@@ -54,35 +44,25 @@ Shared directories between PowerDNS Packages
 %prep
 
 %build
+%sysusers_generate_pre %{SOURCE1} pdns system-user-pdns.conf
 
 %install
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
+
 install -Dd -m 0755 %{buildroot}%{home}
 install -Dd -m 0755 %{buildroot}%{_sysconfdir}/pdns
 
-%if %{with systemd}
 install -D    -m 0644 %{SOURCE0} %{buildroot}%{_tmpfilesdir}/%{name}.conf
-%else
-install -D -d -m 0750 %{buildroot}%{_localstatedir}
-%endif
 
-%pre
-/usr/sbin/groupadd -r pdns >/dev/null 2>&1 || :
-/usr/sbin/useradd -g pdns -s /bin/false -r -c "PowerDNS" -d %{home} pdns >/dev/null 2>&1 || :
-
-%if %{with systemd}
+%pre -f pdns.pre
 %post
-systemd-tmpfiles --create /usr/lib/tmpfiles.d/%{name}.conf ||:
-%endif
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 
 %files
-%defattr(-,root,root)
-%if %{with systemd}
 %{_tmpfilesdir}/%{name}.conf
-%dir %attr(750,pdns,pdns) %ghost %{_localstatedir}/
-%else
-%dir %attr(750,pdns,pdns)        %{_localstatedir}/
-%endif
-%dir %attr(750,root,pdns)        %{_sysconfdir}/pdns/
-%dir %attr(750,pdns,pdns)        %{home}/
+%dir %attr(750,root,pdns) %{_sysconfdir}/pdns/
+%dir %attr(750,pdns,pdns) %{home}/
+%{_sysusersdir}/system-user-pdns.conf
 
 %changelog
