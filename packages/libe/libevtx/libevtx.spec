@@ -18,7 +18,7 @@
 
 %define lname	libevtx1
 Name:           libevtx
-Version:        20210525
+Version:        20220724
 Release:        0
 Summary:        Library and tools to access the Windows XML Event Log (EVTX) format
 License:        GFDL-1.3-only AND LGPL-3.0-or-later
@@ -31,31 +31,31 @@ Source10:       Windows_XML_Event_Log_EVTX.pdf
 Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  gettext-tools >= 0.21
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcdirectory) >= 20200702
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcpath) >= 20200623
-BuildRequires:  pkgconfig(libcsplit) >= 20200703
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libbfio) >= 20220120
+BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcdirectory) >= 20210415
+BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libcfile) >= 20210409
+BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libcnotify) >= 20220108
+BuildRequires:  pkgconfig(libcpath) >= 20220108
+BuildRequires:  pkgconfig(libcsplit) >= 20220109
+BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libexe) >= 20210424
-BuildRequires:  pkgconfig(libfcache) >= 20200708
-BuildRequires:  pkgconfig(libfdata) >= 20201129
-BuildRequires:  pkgconfig(libfdatetime) >= 20180910
-BuildRequires:  pkgconfig(libfguid) >= 20180724
-BuildRequires:  pkgconfig(libfvalue) >= 20210510
-BuildRequires:  pkgconfig(libfwevt) >= 20210508
-BuildRequires:  pkgconfig(libfwnt) >= 20210421
-BuildRequires:  pkgconfig(libregf) >= 20210419
-BuildRequires:  pkgconfig(libuna) >= 20201204
-BuildRequires:  pkgconfig(libwrc) >= 20210425
+BuildRequires:  pkgconfig(libfcache) >= 20220110
+BuildRequires:  pkgconfig(libfdata) >= 20211023
+BuildRequires:  pkgconfig(libfdatetime) >= 20220112
+BuildRequires:  pkgconfig(libfguid) >= 20220113
+BuildRequires:  pkgconfig(libfvalue) >= 20220120
+BuildRequires:  pkgconfig(libfwevt) >= 20220723
+BuildRequires:  pkgconfig(libfwnt) >= 20210906
+BuildRequires:  pkgconfig(libregf) >= 20220131
+BuildRequires:  pkgconfig(libuna) >= 20220611
+BuildRequires:  pkgconfig(libwrc) >= 20220720
 BuildRequires:  pkgconfig(python3)
 %python_subpackages
 

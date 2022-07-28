@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 24 09:38:52 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220724
+  * Added event version functions
+
+-------------------------------------------------------------------
 Fri Jan 21 18:25:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Edit specfile to do multipython builds.

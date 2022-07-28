@@ -174,4 +174,12 @@ part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>- Edit specfile to do multipython builds.</comment>
     <requestid>948033</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0e12b53eefa031a5cedcf8d81316298d</srcmd5>
+    <version>20220724</version>
+    <time>1659034680</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to release 20220724</comment>
+    <requestid>990882</requestid>
+  </revision>
 </revisionlist>
