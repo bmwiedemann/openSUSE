@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 28 06:04:01 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch pymongo-4-support.patch:
+  * Support pymongo >= 4
+
+-------------------------------------------------------------------
 Thu Apr  7 08:37:47 UTC 2022 - pgajdos@suse.com
 
 - version update to 7.1.2

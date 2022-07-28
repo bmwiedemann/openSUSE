@@ -303,4 +303,13 @@
     <comment></comment>
     <requestid>967522</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>580fee744e68e10b0d873a9dffd40810</srcmd5>
+    <version>7.1.2</version>
+    <time>1659034738</time>
+    <user>RBrownFactory</user>
+    <comment>- Add patch pymongo-4-support.patch:
+  * Support pymongo &gt;= 4</comment>
+    <requestid>991485</requestid>
+  </revision>
 </revisionlist>
