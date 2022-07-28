@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 26 16:50:25 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Include additional tools used by cdi-importer:
+  cdi-containerimage-server
+  cdi-image-size-detection
+  cdi-source-update-poller
+
+-------------------------------------------------------------------
 Fri Jul 15 09:41:36 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 1.51.0

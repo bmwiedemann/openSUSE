@@ -179,14 +179,17 @@ CDI_GIT_COMMIT='v%{version}' \
 CDI_GIT_VERSION='v%{version}' \
 CDI_GIT_TREE_STATE="clean" \
 ./hack/build/build-go.sh build \
-	cmd/cdi-apiserver \
-	cmd/cdi-cloner \
-	cmd/cdi-controller \
-	cmd/cdi-importer \
-	cmd/cdi-uploadproxy \
-	cmd/cdi-uploadserver \
-	cmd/cdi-operator \
-	%{nil}
+    cmd/cdi-apiserver \
+    cmd/cdi-cloner \
+    cmd/cdi-controller \
+    cmd/cdi-importer \
+    cmd/cdi-uploadproxy \
+    cmd/cdi-uploadserver \
+    cmd/cdi-operator \
+    tools/cdi-containerimage-server \
+    tools/cdi-image-size-detection \
+    tools/cdi-source-update-poller \
+    %{nil}
 
 env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version}-%{release} ./hack/build/build-manifests.sh
 
@@ -201,6 +204,9 @@ install -p -m 0755 _out/cmd/cdi-cloner/cdi-cloner %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/cdi-controller/cdi-controller %{buildroot}%{_bindir}/virt-cdi-controller
 
 install -p -m 0755 _out/cmd/cdi-importer/cdi-importer %{buildroot}%{_bindir}/virt-cdi-importer
+install -p -m 0755 _out/tools/cdi-containerimage-server/cdi-containerimage-server %{buildroot}%{_bindir}/
+install -p -m 0755 _out/tools/cdi-image-size-detection/cdi-image-size-detection %{buildroot}%{_bindir}/
+install -p -m 0755 _out/tools/cdi-source-update-poller/cdi-source-update-poller %{buildroot}%{_bindir}/
 
 install -p -m 0755 _out/cmd/cdi-operator/cdi-operator %{buildroot}%{_bindir}/virt-cdi-operator
 
@@ -238,6 +244,9 @@ install -m 0644 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
 %license LICENSE
 %doc README.md
 %{_bindir}/virt-cdi-importer
+%{_bindir}/cdi-containerimage-server
+%{_bindir}/cdi-image-size-detection
+%{_bindir}/cdi-source-update-poller
 
 %files operator
 %license LICENSE
