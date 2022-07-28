@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 27 06:38:05 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.9.1:
+  * Add code comment which states that it is valid to use neither an AccessKeyID or AccessKeySecretRef
+  * In PR https://github.com/cert-manager/cert-manager/pull/5194, we introduced a validation whereby an issuer would be rejected if it did not contain AccessKeyID or SecretAccessKeyID when using the route53 DNS solver. This is incorrect, since neither should need to be defined when using AWS ambient credentials.
+  * remove issue error if role is specified
+
+-------------------------------------------------------------------
 Fri Jul 22 15:37:24 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.9.0:
