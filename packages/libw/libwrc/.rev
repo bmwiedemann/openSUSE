@@ -102,4 +102,12 @@
     <comment>- Edit specfile to do multipython builds.</comment>
     <requestid>948034</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c9d186b1c46169c1656e0f2b95b71dc8</srcmd5>
+    <version>20220720</version>
+    <time>1659034679</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to release 20220720</comment>
+    <requestid>990881</requestid>
+  </revision>
 </revisionlist>

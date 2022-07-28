@@ -5,15 +5,15 @@ Some dirs are not present in snapshots directly generated from git
 (nor are they marked as a submodule). Patch it out, since we have
 them as system libs.
 ---
- Makefile.am  |   34 ----------------------------------
- configure.ac |   18 ------------------
- 2 files changed, 52 deletions(-)
+ Makefile.am  |   32 --------------------------------
+ configure.ac |   17 -----------------
+ 2 files changed, 49 deletions(-)
 
-Index: libwrc/Makefile.am
+Index: libwrc-20220720/Makefile.am
 ===================================================================
---- libwrc.orig/Makefile.am
-+++ libwrc/Makefile.am
-@@ -3,25 +3,7 @@ ACLOCAL_AMFLAGS = -I m4
+--- libwrc-20220720.orig/Makefile.am
++++ libwrc-20220720/Makefile.am
+@@ -3,24 +3,7 @@ ACLOCAL_AMFLAGS = -I m4
  SUBDIRS = \
  	include \
  	common \
@@ -32,14 +32,13 @@ Index: libwrc/Makefile.am
 -	libfdatetime \
 -	libfguid \
 -	libfvalue \
--	libfwevt \
 -	libfwnt \
  	libwrc \
 -	libexe \
  	wrctools \
  	pywrc \
  	pywrc-python2 \
-@@ -82,22 +64,6 @@ lib: library
+@@ -80,21 +63,6 @@ lib: library
  
  library:
  	(cd $(srcdir)/common && $(MAKE) $(AM_MAKEFLAGS))
@@ -57,16 +56,15 @@ Index: libwrc/Makefile.am
 -	(cd $(srcdir)/libfdata && $(MAKE) $(AM_MAKEFLAGS))
 -	(cd $(srcdir)/libfdatetime && $(MAKE) $(AM_MAKEFLAGS))
 -	(cd $(srcdir)/libfvalue && $(MAKE) $(AM_MAKEFLAGS))
--	(cd $(srcdir)/libfwevt && $(MAKE) $(AM_MAKEFLAGS))
 -	(cd $(srcdir)/libfwnt && $(MAKE) $(AM_MAKEFLAGS))
  	(cd $(srcdir)/libwrc && $(MAKE) $(AM_MAKEFLAGS))
  	(cd $(srcdir)/po && $(MAKE) $(AM_MAKEFLAGS))
  
-Index: libwrc/configure.ac
+Index: libwrc-20220720/configure.ac
 ===================================================================
---- libwrc.orig/configure.ac
-+++ libwrc/configure.ac
-@@ -182,28 +182,10 @@ dnl Generate Makefiles
+--- libwrc-20220720.orig/configure.ac
++++ libwrc-20220720/configure.ac
+@@ -178,27 +178,10 @@ dnl Generate Makefiles
  AC_CONFIG_FILES([Makefile])
  AC_CONFIG_FILES([include/Makefile])
  AC_CONFIG_FILES([common/Makefile])
@@ -85,7 +83,6 @@ Index: libwrc/configure.ac
 -AC_CONFIG_FILES([libfdatetime/Makefile])
 -AC_CONFIG_FILES([libfguid/Makefile])
 -AC_CONFIG_FILES([libfvalue/Makefile])
--AC_CONFIG_FILES([libfwevt/Makefile])
 -AC_CONFIG_FILES([libfwnt/Makefile])
  AC_CONFIG_FILES([libwrc/Makefile])
  AC_CONFIG_FILES([pywrc/Makefile])

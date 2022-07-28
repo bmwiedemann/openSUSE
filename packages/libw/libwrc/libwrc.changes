@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 24 10:57:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220720
+  * Removed WEVT_TEMPLATE resource support
+  * Drop use of libfwevt
+
+-------------------------------------------------------------------
 Fri Jan 21 18:25:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Edit specfile to do multipython builds.
