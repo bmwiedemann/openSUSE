@@ -1,7 +1,7 @@
 #
 # spec file for package python-ogr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-ogr
-Version:        0.18.0
+Version:        0.38.1
 Release:        0
 Summary:        One API for multiple git forges
 License:        MIT
@@ -37,6 +37,7 @@ Requires:       python-PyGithub
 Requires:       python-PyYAML
 Requires:       python-cryptography
 Requires:       python-python-gitlab
+Requires:       python-requests
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Deprecated}
@@ -65,7 +66,7 @@ One API for multiple git forges.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -rs --ignore tests/integration -k 'not ((GithubTests and test_get_project) or (GenericCommands and test_parent_project) or (gitlab and Forks))'
+%pytest
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
