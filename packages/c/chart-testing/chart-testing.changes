@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jul 27 12:51:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 3.7.0:
+  * Updates to prepare next release (#457)
+  * Bump sigstore/cosign-installer from 2.4.1 to 2.5.0 (#456)
+  * Set a request timeout on kubectl commands (#360)
+  * Fix integration tests for upgrade flag (#446)
+  * Bump sigstore/cosign-installer from 2.4.0 to 2.4.1 (#452)
+  * Bump github.com/stretchr/testify from 1.7.5 to 1.8.0 (#451)
+  * Bump github.com/spf13/cobra from 1.4.0 to 1.5.0 (#449)
+  * Bump actions/setup-go from 3.2.0 to 3.2.1 (#454)
+  * Bump github.com/stretchr/testify from 1.7.4 to 1.7.5 (#450)
+  * Bump github.com/stretchr/testify from 1.7.2 to 1.7.4 (#448)
+  * fixes for kind config (#438)
+  * Bump sigstore/cosign-installer from 2.3.0 to 2.4.0 (#447)
+  * Bump github.com/stretchr/testify from 1.7.1 to 1.7.2 (#443)
+  * Bump github.com/spf13/viper from 1.11.0 to 1.12.0 (#441)
+  * Bump actions/checkout from 3.0.1 to 3.0.2 (#430)
+  * Bump docker/setup-buildx-action from 1.6.0 to 2 (#437)
+  * Bump docker/login-action from 1.14.1 to 2 (#436)
+  * Bump docker/setup-qemu-action from 1.2.0 to 2 (#435)
+  * Bump actions/setup-go from 3.0.0 to 3.2.0 (#442)
+  * feat(upgrade): it should upgrade to new version instead of the old one (#434)
+
+-------------------------------------------------------------------
 Mon May 30 14:38:28 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 3.6.0:

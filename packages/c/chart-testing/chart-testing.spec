@@ -1,7 +1,7 @@
 #
 # spec file for package chart-testing
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define name_of_binary ct
 
 Name:           chart-testing
-Version:        3.6.0
+Version:        3.7.0
 Release:        0
 Summary:        CLI tool for linting and testing Helm charts
 Group:          Development/Languages/Other
@@ -53,7 +53,6 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/%{name_of_binary}
 install -d -m 0755 %{buildroot}/%{_docdir}/%{name}/
 install -D -m 0644 etc/chart_schema.yaml %{buildroot}/%{_docdir}/%{name}/
 install -D -m 0644 etc/lintconf.yaml %{buildroot}/%{_docdir}/%{name}/
-
 
 %files
 %doc README.md
