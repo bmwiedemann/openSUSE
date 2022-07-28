@@ -41,4 +41,12 @@ The fonts are split into per-language subpackages for the size reduction.</comme
     <comment></comment>
     <requestid>956311</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9b70686a68cf49f91b200188d50f0801</srcmd5>
+    <version>2.004</version>
+    <time>1659034665</time>
+    <user>RBrownFactory</user>
+    <comment>- Move google-noto-serif-cjk-fonts into its own repository again</comment>
+    <requestid>990774</requestid>
+  </revision>
 </revisionlist>
