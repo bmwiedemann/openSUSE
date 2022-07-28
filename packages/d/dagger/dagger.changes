@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jul 27 18:16:56 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.27:
+  * docs: Jeremy edits
+  * feat(lsp): update lsp import + fix incompatibilities
+  * Send telemetry data about action cache status
+  * docs: Dagger.#FS docs
+  * aws/_scripts -> aws/scripts
+
+-------------------------------------------------------------------
+Tue Jul 26 11:28:43 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.26:
+  * implement helm upgrade action (#2807)
+  * docs: add instructions for using SOPS  (#2852)
+  * build(deps): bump @svgr/webpack from 6.3.0 to 6.3.1 in /website (#2840)
+  * docs: Resolve Dagger version dynamically
+  * docs: Add appropriate title to Jenkinsfile (#2848)
+  * docs: Add appropriate title to Tekton YAML
+  * docs: Add title to GitLab yaml
+  * docs: Remove unecessary yaml header
+  * docs: Add title to TravisCI yaml
+  * docs: Add simple CircleCI example
+  * chore: update go version in `#Build` test to 1.18
+  * universe(go): revert of part of #2632
+  * fix: ensure doppler works with file or config (#2833)
+  * chore: updated the install link (#2834)
+  * fix: absolute paths for plans (#2454)
+  * feat(lsp): add `dagger lsp` command. (#2826)
+  * feat: add Doppler support (#2831)
+  * ci: Dependabot appends area/website label to /website bumps
+  * website: remove cypress in absence of tests
+  * build(deps): bump @svgr/webpack from 6.2.1 to 6.3.0 in /website
+  * build(deps): bump terser from 5.10.0 to 5.14.2 in /website
+  * bump up docusaurus preset classic
+  * build(deps): bump @docusaurus/core in /website
+
+-------------------------------------------------------------------
 Thu Jul 21 13:21:22 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.25:
