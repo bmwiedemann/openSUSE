@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 19 17:31:46 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.2.5
+  - Implement motion sensor support. Motion sensor support is
+    enabled, when build with SDL2 >= 2.0.14.
+  - Allow storing calibration for multiple controllers in a profile
+  - Crash on close after copying set.
+  - Remove unused "Game Controller Mapping" button.
+  
+-------------------------------------------------------------------
 Fri Jun 24 10:43:40 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.2.4
