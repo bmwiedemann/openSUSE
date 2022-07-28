@@ -71,9 +71,9 @@ BuildRequires:  mysql-devel
 BuildRequires:  openjpeg2-devel
 BuildRequires:  pam
 BuildRequires:  pam-devel
-#BuildRequires:  postgresql-devel >= 9.1
+BuildRequires:  postgresql-devel >= 9.1
 %if 0%{?suse_version} >= 1500
-#BuildRequires:  postgresql-server-devel >= 9.1
+BuildRequires:  postgresql-server-devel >= 9.1
 %endif
 BuildRequires:  libprotobuf-c-devel
 BuildRequires:  proj
@@ -102,9 +102,10 @@ Group:          System/Libraries
 Mapserver library for mapserver or mapscript module. you need this lib to run mapserver
 or any of the mapscript module (php, java, python, ruby)
 
+
+
 # We don't require apache2_mod-php8 users could have php5 running
 # with other modes (cgi, php-fpm, etc)
-
 %package -n php-mapscript
 Summary:        PHP/Mapscript map making extensions to PHP
 Group:          Development/Libraries/Other
@@ -142,8 +143,8 @@ Group:          Development/Languages/Python
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 %endif
-Requires:       python3-base
 Requires:       %{libname} = %{version}-%{release}
+Requires:       python3-base
 Provides:       mapserver-python = %{version}-%{release}
 Obsoletes:      mapserver-python < %{version}-%{release}
 
@@ -237,7 +238,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DWITH_PERL=TRUE \
         -DCUSTOM_PERL_SITE_ARCH_DIR="%{perl_vendorarch}" \
         -DWITH_PHPNG=FALSE \
-        -DWITH_POSTGIS=FALSE \
+        -DWITH_POSTGIS=TRUE \
         -DWITH_PROJ=TRUE \
         -DUSE_PROJ=TRUE \
         -DWITH_PROTOBUFC=TRUE \

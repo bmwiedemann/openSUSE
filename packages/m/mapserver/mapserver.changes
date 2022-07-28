@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 26 14:54:06 UTC 2022 - Boris Manojlovic <boris@steki.net>
+
+- re-enable postgresql support... 
+
+-------------------------------------------------------------------
 Wed Mar  9 12:06:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Make the package build on current Tumbleweed again:
