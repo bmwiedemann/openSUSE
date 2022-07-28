@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 26 11:28:54 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.44.0:
+  * add env variables and keychain for GHCR publish (#843)
+  * update grype to use syft v0.52.0 (#838)
+  * add debug distroless image to published images (#835)
+  * add new line for help block (#834)
+  * add Gentoo matching support (#813)
+  * feat: add filtering support using target software field in cpe (#810)
+
+-------------------------------------------------------------------
 Tue Jul 19 08:19:48 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.43.0:
