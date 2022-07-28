@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Thu Jul 21 10:59:37 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.5.0~0:
+  * FXAA Anti-aliasing - Images look much nicer now without the
+    jagged edges! FXAA is on by default, but can be shut off. It has
+    minimal performance impact.
+  * Pipes! - Can now read STL data from the stdin stream instead of
+    a file #23
+  * Faster Image Compression
+  * Added option to force recalculating face normals if your STL
+    files are malformed #59
+  * Published on package on crates.io and docs on docs.rs.
+
+-------------------------------------------------------------------
+Thu Jul 21 10:33:27 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Copy version 0.4.0 from home:mrbadguy:KDE5/stl-thumb
+- Remove patches:
+  * glium.patch
+  * force-running-event-loop-outside-main-loop.patch
+  * change-colors.patch
+  * no-mesa-workaround.patch
+- Update _service file get sources and recompress according to
+  rust packaging wiki
