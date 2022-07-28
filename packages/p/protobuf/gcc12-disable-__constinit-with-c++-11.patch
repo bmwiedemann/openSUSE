@@ -1,8 +1,6 @@
-Index: protobuf-21.3/src/google/protobuf/port_def.inc
-===================================================================
---- protobuf-21.3.orig/src/google/protobuf/port_def.inc
-+++ protobuf-21.3/src/google/protobuf/port_def.inc
-@@ -652,7 +652,11 @@
+--- protobuf-21.2/src/google/protobuf/port_def.inc.orig	2022-07-03 09:45:35.196880191 +0200
++++ protobuf-21.2/src/google/protobuf/port_def.inc	2022-07-03 09:46:17.673245305 +0200
+@@ -651,7 +651,11 @@
  #define PROTOBUF_CONSTINIT [[clang::require_constant_initialization]]
  #define PROTOBUF_CONSTEXPR constexpr
  #elif PROTOBUF_GNUC_MIN(12, 2)
@@ -12,5 +10,5 @@ Index: protobuf-21.3/src/google/protobuf/port_def.inc
 +#define PROTOBUF_CONSTINIT
 +#endif
  #define PROTOBUF_CONSTEXPR constexpr
- // MSVC 17 currently seems to raise an error about constant-initialized pointers.
- #elif defined(_MSC_VER) && _MSC_VER >= 1930
+ #else
+ #define PROTOBUF_CONSTINIT
