@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 25 11:56:31 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Exclude 32-bit arm
+
+-------------------------------------------------------------------
 Mon Aug  2 12:35:35 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Re-add busybox-findutils
