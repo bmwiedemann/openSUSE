@@ -16,9 +16,13 @@
 #
 
 
+%if 0%{?suse_version} >= 1550
+# Newest python supported by mailman is Python 3.9 -- https://gitlab.com/mailman/mailman/-/issues/936
+%define pythons python39
+%else
 %{?!python_module:%define python_module() python3-%{**}}
-# mailman is built only for primary python3 flavor
 %define pythons python3
+%endif
 Name:           python-mailman-hyperkitty
 Version:        1.2.0
 Release:        0
@@ -44,11 +48,6 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zope.interface}
 # /SECTION
-%if 0%{python3_version_nodots} == 38
-# help in replacing any previously installed multiflavor package back to the primary python3 package
-Provides:       python38-mailman-hyperkitty = %{version}-%{release}
-Obsoletes:      python38-mailman-hyperkitty < %{version}-%{release}
-%endif
 %python_subpackages
 
 %description
@@ -70,6 +69,7 @@ Mailman archiver plugin for HyperKitty
 %files %{python_files}
 %doc README.rst mailman-hyperkitty.cfg
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/mailman_hyperkitty
+%{python_sitelib}/mailman_hyperkitty-%{version}*-info
 
 %changelog

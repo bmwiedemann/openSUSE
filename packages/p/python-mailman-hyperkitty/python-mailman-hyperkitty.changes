@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  4 11:12:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Go back to python39 -- highest supported Python by mailman3
+
+-------------------------------------------------------------------
 Thu Jun  9 11:11:24 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix BR for mailman3 (package has been renamed)

@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>982318</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>d4407574742f4b5a31598a6e43c4864c</srcmd5>
+    <version>1.2.0</version>
+    <time>1659034660</time>
+    <user>RBrownFactory</user>
+    <comment>- Go back to python39 -- highest supported Python by mailman3 (forwarded request 986653 from bnavigator)</comment>
+    <requestid>986716</requestid>
+  </revision>
 </revisionlist>
