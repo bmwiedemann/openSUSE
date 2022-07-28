@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 14 18:43:40 UTC 2022 - Jacob Michalskie <hel@lcp.world>
+
+- Fix the patch for django 4.0 to update dependencies
+
+-------------------------------------------------------------------
+Mon Jul  4 11:17:34 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Enable multiflavor so that we can pin mailman3 and hyperkitty
+  to python39
+
+-------------------------------------------------------------------
 Mon May  9 20:55:06 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Clean up the SPEC file.
