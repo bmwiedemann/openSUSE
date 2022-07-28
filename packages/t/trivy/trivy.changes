@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul 27 06:38:26 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.30.4:
+  * fix: remove the first arg when running as a plugin (#2595)
+  * fix: k8s controlplaner scanning (#2593)
+  * fix(vuln): GitLab report template (#2578)
+
+-------------------------------------------------------------------
+Tue Jul 26 11:29:36 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.30.3:
+  * fix(server): use a new db worker for hot updates (#2581)
+  * docs: add trivy with download-db-only flag to Air-Gapped Environment (#2583)
+  * docs: split commands to download db for different versions of oras (#2582)
+  * feat(report): export exitcode for license checks (#2564)
+  * fix: cli can use lowercase for severities (#2565)
+  * fix: allow subcommands with TRIVY_RUN_AS_PLUGIN (#2577)
+  * fix: add missing types in TypeOSes and TypeLanguages in analyzer (#2569)
+  * fix: enable some features of the wasm runtime (#2575)
+  * fix(k8s): no error logged if trivy can't get docker image in kubernetes mode (#2521)
+  * docs(sbom): improve sbom attestation documentation (#2566)
+
+-------------------------------------------------------------------
 Thu Jul 21 13:21:11 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.30.2:
