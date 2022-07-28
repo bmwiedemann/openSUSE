@@ -18,10 +18,11 @@
 
 # Requires at least python 3.9
 %define skip_python2 1
+%define skip_python36 1
 %define skip_python38 1
 %define _name   nbxmpp
 Name:           python-nbxmpp
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        XMPP library by Gajim team
 License:        GPL-3.0-or-later

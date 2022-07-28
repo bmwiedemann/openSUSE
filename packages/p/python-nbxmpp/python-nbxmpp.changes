@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 27 21:40:35 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.1.1:
+  * Add more datetime test cases.
+  * Use cache when calling JID.new_as_bare().
+  * Allow handlers to connect to presence type available.
+
+-------------------------------------------------------------------
 Sat May 28 20:17:01 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 3.1.0:
