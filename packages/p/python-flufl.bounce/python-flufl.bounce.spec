@@ -1,7 +1,7 @@
 #
 # spec file for package python-flufl.bounce
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define pythons python3
+%define skip_python2 1
 Name:           python-flufl.bounce
 Version:        4.0
 Release:        0
@@ -61,6 +61,9 @@ cp %{SOURCE1} .
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%dir %{python_sitelib}/flufl
+%{python_sitelib}/flufl/bounce
+%{python_sitelib}/flufl.bounce-*.pth
+%{python_sitelib}/flufl.bounce-%{version}*-info
 
 %changelog
