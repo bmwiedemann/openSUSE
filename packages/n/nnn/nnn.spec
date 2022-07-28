@@ -17,7 +17,7 @@
 
 
 Name:           nnn
-Version:        4.5
+Version:        4.6
 Release:        0
 Summary:        Terminal based file browser
 License:        BSD-2-Clause
@@ -70,7 +70,7 @@ The official zsh completion script for %{name}.
 
 %build
 export CFLAGS="%{optflags}"
-%make_build
+%make_build strip
 
 %install
 %make_install PREFIX=%{_prefix}
