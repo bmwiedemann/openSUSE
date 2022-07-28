@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Jul 27 13:41:54 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 1.10.0
+  - replace gcr.io/distroless/ to use ghcr.io/distroless/ by @cpanato in #1961
+  - Separate RegExp matching of issuer/subject from strict by @vaikas in #1956
+  - tuf: improve TUF client concurrency and caching by @asraa in #1953
+  - Add Cloudsmith Container Registry to tested registry list by @ciaracarey in #1966
+  - feat(fulcioroots): singleton error pattern by @developer-guy in #1965
+  - Drop tuf client dependency on GCS client library by @imjasonh in #1967
+  - Add spdxjson predicate type for attestations by @jdolitsky in #1974
+  - Remove policy-controller now that it lives in sigstore/policy-controller by @vaikas in #1976
+  - cleanup: unexport kubernetes.Client method by @imjasonh in #1973
+  - cleanup ci job and remove policy-controller references by @cpanato in #1981
+  - fix/update post build job by @cpanato in #1983
+  - docs: updated Azure kms commands. by @JBrejnholt in #1972
+  - Add cyclonedx predicate type for attestations by @jdolitsky in #1977
+  - Route deprecated -version to version subcommand by @puerco in #1854
+  - docs(readme): add installation steps for container image for cosign binary by @developer-guy in #1986
+  - Add --platform flag to cosign sbom download by @puerco in #1975
+  - Use pkg/fulcioroots and pkg/tuf from sigstore/sigstore by @imjasonh in #1866
+  - Add --oidc-provider flag to specify which provider to use for ambient credentials by @priyawadhwa in #1998
+  - encrypt values to create the github action secret by @cpanato in #1990
+  - sign-blob: bundle should work independently and respect --output-certificate and --output-signature by @Dentrax in #2016
+  - Attempt to clean up pkg/cosign by @imjasonh in #2018
+  - public-key: fix command description by @Dentrax in #2024
+  - [NFC] specs: fix list formatting on SIGNATURE_SPEC by @woodruffw in #2030
+  - feat: cert-extensions verify by @developer-guy in #1626
+  - Fix #1378 create new attestation signature in replace mode if not existent by @Syquel in #2014
+  - Use cosign.ConfirmPrompt more consistently by @imjasonh in #2039
+  - chore: add a note about SIGSTORE_REKOR_PUBLIC_KEY var by @hectorj2f in #2040
+  - Fix OIDC test by @cpanato in #2050
+  - Add env subcommand. by @wlynch in #2051
+  - remove tests with 1.21 k8s cluster because it is deprecated and add v1.23/24 by @cpanato in #2055
+  - update ct/otel and etcd by @cpanato in #2054
+  - chore(deps): CycloneDX PredicateType changed to use in-toto-golang by @masahiro331 in #2067
+  - Remove replace directives in go.mod. by @wlynch in #2070
+  - update design doc link by @bobcallaway in #2077
+  - Remove hack/tools.go by @imjasonh in #2080
+  - fix missing quote by @cpanato in #2090
+- removed cosigned and webhook
+
+-------------------------------------------------------------------
 Sat Jun 18 14:16:31 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 1.9.0

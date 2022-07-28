@@ -17,9 +17,9 @@
 
 
 Name:           cosign
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
-%define revision a4cb262dc3d45a283a6a7513bb767a38a2d3f448
+%define revision 3a6088d03d7c053f9b3bd61ed07fba92133579cf
 Summary:        Container Signing, Verification and Storage in an OCI registry
 License:        Apache-2.0
 URL:            https://github.com/sigstore/cosign
@@ -52,7 +52,6 @@ CLI_PKG=github.com/sigstore/cosign/pkg/version
 CLI_LDFLAGS="-X ${CLI_PKG}.gitVersion=%{version} -X ${CLI_PKG}.gitCommit=%{revision} -X ${CLI_PKG}.gitTreeState=release -X ${CLI_PKG}.buildDate=${BUILD_DATE}"
 
 go build -mod=vendor -buildmode=pie -ldflags "${CLI_LDFLAGS}" -o cosign ./cmd/cosign
-go build -mod=vendor -buildmode=pie -ldflags "${CLI_LDFLAGS}" -o cosigned ./cmd/cosign/webhook
 go build -mod=vendor -buildmode=pie -ldflags "${CLI_LDFLAGS}" -o sget ./cmd/sget
 ./cosign version
 ./sget version
@@ -61,13 +60,11 @@ go build -mod=vendor -buildmode=pie -ldflags "${CLI_LDFLAGS}" -o sget ./cmd/sget
 %install
 install -D -m 0755 cosign %{buildroot}%{_bindir}/cosign
 install -D -m 0755 sget %{buildroot}%{_bindir}/sget
-install -D -m 0755 cosigned %{buildroot}%{_bindir}/cosigned
 
 %files
 %license LICENSE
 %doc *.md
 %{_bindir}/cosign
-%{_bindir}/cosigned
 %{_bindir}/sget
 
 %changelog
