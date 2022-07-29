@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 28 06:48:07 UTC 2022 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 3.6.7:
+  * Multiple Files preference "Create new file automatically… after" [time] working incorrectly.
+  * get_filter Lua function doesn’t return the filter.
+  * Dissector bug, protocol HTTP failed assertion "saved_layers_len < 500" with chunked/multipart.
+  * Wrong EtherCAT bit label (possible dissector bug).
+  * UDP packets falsely marked as "malformed packet".
+  * TLS certificate parser with filter crash.
+  * Incorrect type for the IEC 60870 APDU appears in packet details pane.
+  * NHRP Problem.
+  * EtherCAT CoE header unknown type.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.6.7.html
+
+-------------------------------------------------------------------
 Mon Jun 20 06:36:18 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 3.6.6:
