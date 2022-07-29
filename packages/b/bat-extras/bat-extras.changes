@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 28 20:32:10 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Update to release 2022-07-27
+  * batdiff: Fix use of deprecated --hunk-style
+  * batman: Fix error when using fzf to pick manpages
+  * batgrep: Pass -u flag to ripgrep
+
+
+-------------------------------------------------------------------
 Sun Apr 10 18:23:12 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
 
 - Create man dir on install

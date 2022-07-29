@@ -17,7 +17,7 @@
 
 
 Name:           bat-extras
-Version:        2021.08.21
+Version:        2022.07.27
 Release:        0
 Summary:        Extra scripts for bat
 License:        MIT
