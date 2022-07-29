@@ -1,0 +1,11 @@
+# Those files ARE arch-independent, but named like they are not (*.a, etc.) so the script is wrong here
+addFilter("files-duplicate .*")
+addFilter("static-library-without-symtab .*")
+addFilter("static-library-without-debuginfo .*")
+addFilter("readelf-failed .*")
+addFilter("zero-length .*")
+addFilter("arch-dependent-file-in-usr-share .*")
+# There are empty dummy-files in the sysroot
+addFilter('lto-no-text-in-archive .*')
+addFilter('devel-file-in-non-devel-package .*')
+

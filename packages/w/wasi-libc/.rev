@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f9970495b99b2a0663628b0696ef83ab</srcmd5>
+    <version>0.1.1652147647.9886d3d</version>
+    <time>1659106093</time>
+    <user>RBrownFactory</user>
+    <comment>Add wasi-libc for building rust1.62 with wasi support</comment>
+    <requestid>991620</requestid>
+  </revision>
+</revisionlist>

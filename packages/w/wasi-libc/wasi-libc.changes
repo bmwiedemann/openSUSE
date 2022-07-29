@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Fri Jul 29 00:34:36 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Update services to comply with OBS
+- Fix rpmlintrc
+
+-------------------------------------------------------------------
+Wed Apr 20 13:32:28 UTC 2022 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Add rpmlintrc to suppress errors for now
+- Add workaround-broken-makefile.patch for cleaner build/install
+  separation
+
+-------------------------------------------------------------------
+Wed Apr 20 12:48:58 UTC 2022 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Initial commit 
