@@ -36,6 +36,13 @@
 %bcond_without general
 %endif
 
+%define         python_pkg_name python310
+%if "%{python_pkg_name}" == "%{primary_python}"
+%define primary_interpreter 1
+%else
+%define primary_interpreter 0
+%endif
+
 %if 0%{?sle_version} && 0%{?suse_version} < 1550
 # Obsoleting previous "latest" Python versions
 # Next versions will get more lines like for older versions
@@ -58,14 +65,6 @@ Obsoletes:      python39%{?1:-%{1}}
 %define tarversion %{version}
 %else
 %define tarversion %{version}
-%endif
-%define         python_pkg_name python310
-# Will provide the python3-* provides
-# Will do the /usr/bin/python3 and all the core links
-%if 0%{?sle_version} || 0%{?suse_version} < 1550
-%define primary_interpreter 0
-%else
-%define primary_interpreter 1
 %endif
 # We don't process beta signs well
 %define         folderversion 3.10.5
