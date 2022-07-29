@@ -121,6 +121,7 @@ Summary:        SELinux policy core policy devel utilities
 Group:          Productivity/Security
 Requires:       %{_bindir}/make
 Requires:       python3-%{name} = %{version}-%{release}
+Recommends:     %{_sbindir}/ausearch
 Conflicts:      %{name}-python <= 2.6
 
 %description devel

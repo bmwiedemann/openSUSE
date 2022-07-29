@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 25 15:07:58 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Add recommends for ausearch binary (bsc#1201043)
+
+-------------------------------------------------------------------
 Wed Jun 22 15:39:31 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Handle missing translations properly in chcat. Added 
