@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 29 10:25:22 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.41.6
+  * Support recent versions of clang
+
+-------------------------------------------------------------------
 Thu Apr 21 09:55:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.41.5
