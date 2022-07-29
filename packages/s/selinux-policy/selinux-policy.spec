@@ -142,6 +142,7 @@ Patch058:       fix_bitlbee.patch
 Patch059:       systemd_domain_dyntrans_type.patch
 Patch060:       fix_dnsmasq.patch
 Patch061:       fix_userdomain.patch
+Patch062:       fix_cloudform.patch
 
 Patch100:       sedoctool.patch
 

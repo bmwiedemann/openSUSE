@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 27 14:00:55 UTC 2022 - Hu <cathy.hu@suse.com>
+
+- fix_networkmanager.patch: Allow NetworkManager_dispatcher_tlp_t 
+  and NetworkManager_dispatcher_custom_t to access nscd socket 
+  (bsc#1201741)
+
+-------------------------------------------------------------------
+Thu Jul 26 10:50:21 UTC 2022 - Zdenek Kubala <zkubala@suse.com>
+
+- Add fix_cloudform.patch to fix cloud-init runcmd issue with snapper 
+  (bnc#201015)
+
+-------------------------------------------------------------------
 Thu Jul 14 08:44:12 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 20220714. Refreshed:
