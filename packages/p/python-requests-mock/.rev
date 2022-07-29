@@ -228,4 +228,13 @@
   * Improve MockerCore type stubs</comment>
     <requestid>897834</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>3b1b94a1f0aa5c6a1cfc7b7d66013852</srcmd5>
+    <version>1.9.3</version>
+    <time>1659106015</time>
+    <user>RBrownFactory</user>
+    <comment>- Add patch remove-mock.patch:
+  * Use unittest.mock if available.</comment>
+    <requestid>990666</requestid>
+  </revision>
 </revisionlist>

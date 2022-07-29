@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-mock
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,10 @@ Version:        1.9.3
 Release:        0
 Summary:        Module to mock out responses from the requests package
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/jamielennox/requests-mock
 Source:         https://files.pythonhosted.org/packages/source/r/requests-mock/requests-mock-%{version}.tar.gz
+Patch0:         remove-mock.patch
 BuildRequires:  %{python_module fixtures}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module purl}
 BuildRequires:  %{python_module purl}
@@ -55,7 +54,7 @@ requests-mock provides a building block to stub out the HTTP requests portions o
 You should checkout the docs for more information.
 
 %prep
-%setup -q -n requests-mock-%{version}
+%autosetup -p1 -n requests-mock-%{version}
 
 %build
 %python_build
