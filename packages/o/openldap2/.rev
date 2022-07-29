@@ -1478,4 +1478,12 @@ Removal of SuSEfirewall2 service.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>980334</requestid>
   </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>e79ca5e4cc799f8c318361261c16611d</srcmd5>
+    <version>2.6.3</version>
+    <time>1659106014</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>990644</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 %define run_test_suite 0
-%define version_main 2.6.2
+%define version_main 2.6.3
 %define slapdrundir %{_rundir}/slapd
 %define flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == "contrib"
@@ -56,7 +56,6 @@ Patch3:         0003-LDAPI-socket-location.dif
 Patch5:         0005-pie-compile.dif
 Patch8:         0008-In-monitor-backend-do-not-return-Connection0-entries.patch
 Patch16:        0016-Clear-shared-key-only-in-close-function.patch
-Patch17:        0017-Resolve-error-handling-in-new-ctx-when-global.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  argon2-devel
@@ -244,7 +243,6 @@ Servers
 %patch5 -p1
 %patch8 -p1
 %patch16 -p1
-%patch17 -p1
 cp %{SOURCE5} .
 
 %build

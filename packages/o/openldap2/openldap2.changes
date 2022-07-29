@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul 14 21:22:41 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- removed obsolete 0017-Resolve-error-handling-in-new-ctx-when-global.patch
+- update to 2.6.3
+  * Fixed librewrite declaration of calloc (ITS#9841)
+  * Fixed libldap to check for NULL ld (ITS#9157)
+  * Fixed libldap memory leaks (ITS#9876)
+  * Fixed lloadd to correctly tag Notice of Disconnection (ITS#9856)
+  * Fixed slapd delta-sync DN leak on ADD ops (ITS#9866)
+  * Fixed slapd replication with back-glue (ITS#9868)
+  * Fixed slapd lastbind replication with chaining (ITS#9863)
+  * Fixed slapd-ldap to correctly set authzid (ITS#9863)
+  * Fixed slapd-mdb to check for stale readers on
+    MDB_READERS_FULL (ITS#7165)
+  * Fixed slapd-mdb indexer task with replicated config (ITS#9858)
+  * Fixed slapo-accesslog onetime memory leak (ITS#9864)
+  * Fixed slapo-ppolicy interaction with slapo-rwm (ITS#9871)
+  * Fixed slapo-rwm to handle escaping special characters (ITS#9817)
+  * Fixed slapo-syncprov memory leaks (ITS#9867)
+  * Fixed slapo-syncprov fallback in delta-sync mode (ITS#9823)
+  * Fixed slapo-unique to not release NULL entry (ITS#8245)
+  * doc: Fixed ldap_get_option(3) to clarify ldap_get/set_option
+    restrictions (ITS#9824)
+
+-------------------------------------------------------------------
 Mon May 23 10:51:45 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to release 2.6.2
