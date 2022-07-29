@@ -33,7 +33,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        2.2.2~git0.55e2c7ab3
+Version:        2.2.2~git11.f002e9e09
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -63,6 +63,7 @@ BuildRequires:  gdb
 BuildRequires:  krb5-devel
 BuildRequires:  libcmocka-devel
 BuildRequires:  libevent-devel
+BuildRequires:  libjson-c-devel
 BuildRequires:  libtalloc-devel
 BuildRequires:  libtevent-devel
 BuildRequires:  libtool

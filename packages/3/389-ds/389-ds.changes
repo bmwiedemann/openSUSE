@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 29 03:09:11 UTC 2022 - william.brown@suse.com
+
+- Update to version 2.2.2~git11.f002e9e09:
+  * Issue 5383 - UI - Various fixes and RFE's for UI
+  * Issue 4656 - Remove problematic language from source code
+  * Issue 5380 - Separate cleanAllRUV code into new file
+  * Issue 5322 - optime & wtime on rejected connections is not properly set
+  * Issue 5335 - RFE - Add Security Audit Log
+  * Issue 5375 - CI - disable TLS hostname checking
+  * Issue 981 Managed Entries betxnpreoperation - transaction not aborted on managed entry failure (#5369)
+  * Issue 5373 - dsidm user get_dn fails with search_ext() argument 1 must be str, not function
+  * Issue 5371 - Update npm and cargo packages
+  * Issue 3069 - Support ECDSA private keys for TLS (#5365)
+
+-------------------------------------------------------------------
 Wed Jul 06 01:20:20 UTC 2022 - william.brown@suse.com
 
 - Update to version 2.2.2~git0.55e2c7ab3:
