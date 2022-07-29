@@ -1,7 +1,7 @@
 #
 # spec file for package bamf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define _binver 3
 %define _version 0.5
 Name:           bamf
-Version:        0.5.5
+Version:        0.5.6
 Release:        0
 Summary:        Window matching library
 License:        GPL-3.0-only AND LGPL-3.0-only
 URL:            https://launchpad.net/bamf
-Source:         https://launchpad.net/bamf/%{_version}/%{version}/+download/bamf-%{version}.tar.xz
-Source2:        https://launchpad.net/bamf/%{_version}/%{version}/+download/bamf-%{version}.tar.xz.asc
+Source:         https://launchpad.net/bamf/%{_version}/%{version}/+download/bamf-%{version}.tar.gz
+Source2:        https://launchpad.net/bamf/%{_version}/%{version}/+download/bamf-%{version}.tar.gz.asc
 Source3:        %{name}.keyring
 BuildRequires:  gnome-common
 BuildRequires:  pkgconfig
@@ -35,7 +35,7 @@ BuildRequires:  python3-lxml
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.30.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.10.2
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libgtop-2.0)
@@ -109,7 +109,6 @@ rm -r %{buildroot}%{_datadir}/upstart/
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files daemon
