@@ -17,7 +17,7 @@
 
 
 Name:           po4a
-Version:        0.66
+Version:        0.67
 Release:        0
 Summary:        Framework to translate documentation and other materials
 License:        GPL-2.0-only
@@ -59,6 +59,7 @@ BuildRequires:  perl-YAML-Tiny
 BuildRequires:  perl-base
 BuildRequires:  perl-gettext >= 1.01
 BuildRequires:  perl(Pod::Parser)
+BuildRequires:  perl(Syntax::Keyword::Try)
 # for test suite
 BuildRequires:  docbook_4
 BuildRequires:  iso_ent
@@ -82,6 +83,7 @@ Requires:       gettext-tools
 Requires:       perl-SGMLS
 Requires:       perl-YAML-Tiny
 Requires:       perl(Pod::Parser)
+Requires:       perl(Syntax::Keyword::Try)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %lang_package
@@ -89,7 +91,8 @@ BuildArch:      noarch
 
 %description
 Po4a extracts the translatable material from its input in a PO file.
-When the PO file is translated, it re-injects the translation in the structure of the document, and generates the translated document.
+When the PO file is translated, it re-injects the translation in the structure of the document,
+and generates the translated document.
 If a string is not translated (i.e. it was not translated or it is "fuzzy"
 because the original document was updated), the original string is used.
 This permits to provide always up-to-date documentation.
@@ -99,8 +102,8 @@ po4a supports currently the following formats:
   * POD
   * XML (generic, DocBook, XHTML, Dia, Guide, or WML)
   * SGML
-  * TeX (generic, LaTeX, or Texinfo)
-  * text (simple text files with some formatting, markdown, or AsciiDoc)
+  * TeX (generic, LaTeX, BibTex or Texinfo)
+  * text (simple text files with some formatting, markdown, rubydoc or AsciiDoc)
   * INI
   * YAML
   * KernelHelp
@@ -142,6 +145,7 @@ rm -rf t/fmt-tex.t t/fmt/tex
 %dir %{_mandir}/fr
 %dir %{_mandir}/it
 %dir %{_mandir}/ja
+%dir %{_mandir}/nb
 %dir %{_mandir}/nl
 %dir %{_mandir}/pl
 %dir %{_mandir}/pt
@@ -150,5 +154,6 @@ rm -rf t/fmt-tex.t t/fmt/tex
 %dir %{_mandir}/sr_Cyrl
 %dir %{_mandir}/uk
 %dir %{_mandir}/zh_CHS
+%dir %{_mandir}/zh_Hant
 
 %changelog
