@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 29 10:01:54 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.11
+  * Remove unary_function and binary_function which are
+    deprecated in c++11 and removed in c++17.
+
+-------------------------------------------------------------------
 Fri Oct  2 11:16:48 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.10
