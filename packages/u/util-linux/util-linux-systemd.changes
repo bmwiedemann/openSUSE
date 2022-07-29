@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 21 08:00:59 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- linux-fs.patch: Fix conflict between <linux/fs.h> and <sys/mount.h>
+
+-------------------------------------------------------------------
 Tue Mar  8 02:00:05 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 2.37.4:

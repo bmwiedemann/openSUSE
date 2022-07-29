@@ -2304,4 +2304,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
 - Fix &quot;su -s&quot; bash completion...</comment>
     <requestid>960950</requestid>
   </revision>
+  <revision rev="255" vrev="2">
+    <srcmd5>fecf76c6ad74602522b7b15c2af224c4</srcmd5>
+    <version>2.37.4</version>
+    <time>1659106012</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990582</requestid>
+  </revision>
 </revisionlist>

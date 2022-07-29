@@ -151,6 +151,8 @@ Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
 Patch3:         util-linux-sulogin4bsc1175514.patch
 # PATCH-FIX-SUSE util-linux-bash-completion-su-chsh-l.patch bsc1172427 -- Fix "su -s" bash completion.
 Patch4:         util-linux-bash-completion-su-chsh-l.patch
+# PATH-FIX-UPSTREAM linux-fs.patch -- sulogin: fix includes
+Patch5:         linux-fs.patch
 #
 %if %build_util_linux
 Supplements:    filesystem(minix)
