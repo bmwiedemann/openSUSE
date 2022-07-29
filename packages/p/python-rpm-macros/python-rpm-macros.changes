@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 25 21:27:08 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 20220725.2ae32d5:
+  * restore end-of-line in alternative scriptlets
+
+-------------------------------------------------------------------
+Thu Jul 21 10:31:50 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 20220721.0a061eb:
+  * make python_flavored_alternatives less verbose
+  * Move install of libalts from sciptlets to python_clone -a -- close gh#openSUSE/python-rpm-macros#133
+  * hard-code %py_ver -- fix gh#openSUSE/python-rpm-macros#131
+  * fix gh#openSUSE/python-rpm-macros#130 print proper error on missing python interpreter
+
+-------------------------------------------------------------------
 Sat Jun 18 19:59:31 UTC 2022 - mcepl@cepl.eu
 
 - Update to version 20220618.1ed0055:

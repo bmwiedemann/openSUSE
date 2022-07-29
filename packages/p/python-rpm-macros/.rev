@@ -497,4 +497,19 @@ prerequisite for new python submission</comment>
 </comment>
     <requestid>983633</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>9482536de43a07d4a0a96ab5aaf83428</srcmd5>
+    <version>20220725.2ae32d5</version>
+    <time>1659106019</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 20220725.2ae32d5:
+  * restore end-of-line in alternative scriptlets
+- Update to version 20220721.0a061eb:
+  * make python_flavored_alternatives less verbose
+  * Move install of libalts from sciptlets to python_clone -a -- close gh#openSUSE/python-rpm-macros#133
+  * hard-code %py_ver -- fix gh#openSUSE/python-rpm-macros#131
+  * fix gh#openSUSE/python-rpm-macros#130 print proper error on missing python interpreter
+</comment>
+    <requestid>991154</requestid>
+  </revision>
 </revisionlist>
