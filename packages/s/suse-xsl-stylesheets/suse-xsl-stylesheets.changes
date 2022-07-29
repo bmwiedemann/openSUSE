@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jul 29 07:19:50 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.85.1
+
+- Update 2.85.1
+  - Fix #453: colors in <phrase role="color:..."> works now
+  - update README 
+
+-------------------------------------------------------------------
+Wed Jul 27 14:10:19 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com>
+
+- Add requirement for google-poppins-fonts
+
+-------------------------------------------------------------------
+Tue Jul 26 13:27:54 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.85.0
+
+- Update to 2.85.0
+  - Fix #479: Typo fix in parameter qnumber -> number
+  - Fix #478: reduce length count for socialmedia and search description
+    to 150
+  - Fix #474: Support alt/title attributes in images
+  - Fix #455: Add missing strings for HTML output
+  - Fix #286: Rudimentary style <result> element
+
+-------------------------------------------------------------------
 Fri Jul  8 09:57:07 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.84.1
 
 - Update to 2.84.1

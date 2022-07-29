@@ -17,7 +17,7 @@
 
 
 Name:           suse-xsl-stylesheets
-Version:        2.84.1
+Version:        2.85.1
 Release:        0
 
 %define reponame          suse-xsl
@@ -63,6 +63,8 @@ Requires:       ghostscript-fonts-std
 Requires:       gnu-free-fonts
 # "Generic" font for use in cases where we don't want one of the gnu-free-fonts
 Requires:       dejavu-fonts
+# For the new SUSE layout
+Requires:       google-poppins-fonts
 
 # FONTS USED IN "suse" (aka "suse2005") STYLESHEETS
 # Proprietary Western:
