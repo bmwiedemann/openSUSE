@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 26 03:07:53 UTC 2022 - Tim Serong <tserong@suse.com>
+
+- Update to 16.2.9-538-g9de83fa4064:
+  + (bsc#1201604) cephfs-shell: move source to separate subdirectory
+
+-------------------------------------------------------------------
 Wed Jul 13 07:18:02 UTC 2022 - Tim Serong <tserong@suse.com>
 
 - Update to 16.2.9-536-g41a9f9a5573:
