@@ -2396,4 +2396,32 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
 - Add buildtime dependencies on python-rpm-macros and setuptools</comment>
     <requestid>990296</requestid>
   </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>46834ed44bf011786abd917571a9f67d</srcmd5>
+    <version>3.0.5</version>
+    <time>1659106020</time>
+    <user>RBrownFactory</user>
+    <comment>- update to AppArmor 3.0.5
+  - several additions to profiles and abstractions
+  - bugfixes in parser and utils
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.0.5
+    for the detailed upstream changelog
+- remove upstream(ed) patchs:
+  - apparmor-setuptools61-mr897.patch
+  - dovecot-profiles-boo1199535-mr881.diff
+  - php8-fpm-mr876.patch
+  - python310-help-mr848.patch
+  - samba-new-dcerpcd.patch
+  - samba_deny_net_admin.patch
+  - update-samba-bgqd.diff
+  - update-usr-sbin-smbd.diff
+- apparmor-samba-include-permissions-for-shares.diff: remove
+  upstreamed part
+- add dirtest-sort-mr900.diff to fix random test failures
+- change apache-extra-profile-include-if-exists.diff to the post-mv
+  path (new quilt executes mv)
+- stop disabling lto (fixed upstream) (boo#1133091)
+- package profile-load script in -parser (forwarded request 991157 from cboltz)</comment>
+    <requestid>991158</requestid>
+  </revision>
 </revisionlist>

@@ -8,10 +8,10 @@ profile at its new location (extra profiles directory)
 
 Fixes https://bugzilla.opensuse.org/show_bug.cgi?id=1178527
 
-Index: profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2
+Index: profiles/apparmor/profiles/extras/usr.lib.apache2.mpm-prefork.apache2
 ===================================================================
---- profiles/apparmor.d//usr.lib.apache2.mpm-prefork.apache2.orig	2020-12-02 12:01:37.000000000 +0100
-+++ profiles/apparmor.d//usr.lib.apache2.mpm-prefork.apache2	2021-01-22 12:19:45.964708670 +0100
+--- profiles/apparmor/profiles/extras/usr.lib.apache2.mpm-prefork.apache2.orig	2020-12-02 12:01:37.000000000 +0100
++++ profiles/apparmor/profiles/extras/usr.lib.apache2.mpm-prefork.apache2	2021-01-22 12:19:45.964708670 +0100
 @@ -75,7 +75,7 @@ include <tunables/global>
    # This directory contains web application
    # package-specific apparmor files.

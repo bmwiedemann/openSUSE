@@ -18,7 +18,7 @@
 
 
 Name:           libapparmor
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        Utility library for AppArmor
 License:        LGPL-2.1-or-later
@@ -66,7 +66,6 @@ AppArmor API.
 %setup -q -n apparmor-%{version}
 
 %build
-%define _lto_cflags %{nil}
 (
   cd ./libraries/libapparmor
   %configure \

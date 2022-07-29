@@ -1,0 +1,42 @@
+From c0815d0e0f1c68397b8ce04d81c48940e4b2c63b Mon Sep 17 00:00:00 2001
+From: intrigeri <intrigeri@boum.org>
+Date: Mon, 25 Jul 2022 10:04:13 +0000
+Subject: [PATCH] dirtest.sh: don't rely on apparmor_parser -N's output sort
+ order to be deterministic
+
+I've seen this test fail because "apparmor_parser -N" returned the expected
+lines, but in a different order than what's expected (dirtest.out).
+
+To fix this, sort both the expected and actual output.
+---
+ parser/tst/dirtest.sh          | 3 ++-
+ parser/tst/dirtest/dirtest.out | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/parser/tst/dirtest.sh b/parser/tst/dirtest.sh
+index 8c94dbd68..95c108371 100755
+--- a/parser/tst/dirtest.sh
++++ b/parser/tst/dirtest.sh
+@@ -31,8 +31,9 @@ do_tst() {
+ 	shift 2
+ 	#global tmpdir
+ 
+-	${APPARMOR_PARSER} "$@" > "$tmpdir/out" 2>/dev/null
++	${APPARMOR_PARSER} "$@" > "$tmpdir/out.unsorted" 2>/dev/null
+ 	rc=$?
++	LC_ALL=C sort "$tmpdir/out.unsorted" > "$tmpdir/out"
+ 	if [ $rc -ne 0 ] && [ "$expected" != "fail" ] ; then
+ 		echo "failed: expected \"$expected\" but parser returned error"
+ 		return 1
+diff --git a/parser/tst/dirtest/dirtest.out b/parser/tst/dirtest/dirtest.out
+index e82188b84..5b4cc30aa 100644
+--- a/parser/tst/dirtest/dirtest.out
++++ b/parser/tst/dirtest/dirtest.out
+@@ -1,3 +1,3 @@
+-good_target
+ a_profile
+ b_profile
++good_target
+-- 
+GitLab
+
