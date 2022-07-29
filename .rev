@@ -181,4 +181,13 @@
     <comment></comment>
     <requestid>963714</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>9b972ef7fa4d0fcab5762f077a1e2031</srcmd5>
+    <version>10.0</version>
+    <time>1659106097</time>
+    <user>RBrownFactory</user>
+    <comment>- Add patch pytest-7-support.patch:
+  * Support pytest &gt;= 7.</comment>
+    <requestid>991672</requestid>
+  </revision>
 </revisionlist>

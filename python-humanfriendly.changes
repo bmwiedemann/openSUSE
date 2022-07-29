@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 29 07:42:02 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch pytest-7-support.patch:
+  * Support pytest >= 7. 
+
+-------------------------------------------------------------------
 Mon Mar 21 12:15:56 UTC 2022 - pgajdos@suse.com
 
 - do not require mock for build
