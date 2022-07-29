@@ -23,8 +23,14 @@ License:        GPL-3.0
 URL:            https://github.com/89luca89/distrobox
 Source:         distrobox-%{version}.tar.gz
 Source1:        distrobox.conf
+# Fix a problem with automatic rootful container creation (from upstream)
+Patch1:         0001-enter-fix-automatic-container-creation-when-r-is-use.patch
+# Fix a problem if man is there but actual manpages are stripped (from upstream PR)
+Patch2:         0002-distrobox-handle-situations-with-weird-manpages-setu.patch
+# Default to distrobox-enter when just distrobox is used
+Patch3:         0003-distrobox-if-no-command-is-specified-default-to-ente.patch
 # Read the config from vendor specific directory (/usr/etc/distrobox) too
-Patch1:         0001-Read-config-in-usr-etc-too.patch
+Patch4:         0004-opensuse-check-for-the-config-file-in-usr-etc-too.patch
 Requires:       %{_bindir}/basename
 Requires:       %{_bindir}/find
 Requires:       %{_bindir}/grep
@@ -40,8 +46,7 @@ allowing sharing of the HOME directory of the user, external storage,
 external USB devices and graphical apps (X11/Wayland), and audio.
 
 %prep
-%setup -q -n distrobox-%{version}
-%patch1 -p1
+%autosetup -p1 -n distrobox-%{version}
 
 %build
 

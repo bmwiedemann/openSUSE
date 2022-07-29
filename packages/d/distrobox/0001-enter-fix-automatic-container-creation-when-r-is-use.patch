@@ -1,0 +1,44 @@
+From 2773eff4dcafc8df176f74b001a56557c7893507 Mon Sep 17 00:00:00 2001
+From: Dario Faggioli <dfaggioli@suse.com>
+Date: Wed, 27 Jul 2022 13:17:34 +0200
+Subject: [PATCH 1/4] enter: fix automatic container creation when '-r' is used
+ (#364)
+
+When calling 'distrobox-create', from inside 'distrobox-enter' (in cause
+automatic creation of the container is enabled) we were not "forwarding"
+the '-r' flag properly. Therefore, when 'distrobox enter -r' was used,
+we were trying to create a rootless container, which is obviously wrong!
+
+Fixes: 8b195e3328d0a6fb19564555dec067c607fa8116
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+(cherry picked from commit 19aa7bfccc1726551eda9df36403da58beb00823)
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ distrobox-enter | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/distrobox-enter b/distrobox-enter
+index 138446c..e754c6b 100755
+--- a/distrobox-enter
++++ b/distrobox-enter
+@@ -407,10 +407,15 @@ if [ "${container_status}" = "unknown" ]; then
+ 	case "${response}" in
+ 		y | Y | Yes | yes | YES)
+ 			# Ok, let's create the container with just 'distrobox create $container_name
++			create_command="$(dirname "${0}")/distrobox-create"
++			if [ "${rootful}" -ne 0 ]; then
++				create_command="${create_command} --root"
++			fi
++			create_command="${create_command} -i ${container_image} -n ${container_name}"
+ 			printf >&2 "Creating the container with command:\n"
+-			printf >&2 "  distrobox create -i %s %s\n" "${container_image}" "${container_name}"
++			printf >&2 "  %s\n" "${create_command}"
+ 			if [ "${dryrun}" -ne 1 ]; then
+-				"$(dirname "${0}")"/distrobox-create -i "${container_image}" -n "${container_name}"
++				eval "${create_command}"
+ 			fi
+ 			;;
+ 		n | N | No | no | NO)
+-- 
+2.37.1
+

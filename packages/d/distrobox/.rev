@@ -41,4 +41,33 @@
     <comment></comment>
     <requestid>984378</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>61f6a3744ef8f2118f127101288920a3</srcmd5>
+    <version>1.3.1</version>
+    <time>1659106044</time>
+    <user>RBrownFactory</user>
+    <comment>- Fix a (potential) problem with man and manpages
+  * Patch added:
+    0002-distrobox-handle-situations-with-weird-manpages-setu.patch
+- Default to distrobox-enter when only typing distrobox
+  * Patch added:
+    0003-distrobox-if-no-command-is-specified-default-to-ente.patch
+- Reordered the patchqueue:
+  * Patch removed:
+    0002-opensuse-check-for-the-config-file-in-usr-etc-too.patch
+  * Patch added:
+    0004-opensuse-check-for-the-config-file-in-usr-etc-too.patch
+- enable non-interactive mode by default
+- Fix a but with automatic cretion of rootful containers
+  * Patch added:
+    0001-enter-fix-automatic-container-creation-when-r-is-use.patch
+- Rework the /usr/etc config file patch (better changelog)
+  * Patch removed:
+    0001-Read-config-in-usr-etc-too.patch
+  * Patch added:
+    0002-opensuse-check-for-the-config-file-in-usr-etc-too.patch
+- Switched to %autosetup in the spec file
+</comment>
+    <requestid>991609</requestid>
+  </revision>
 </revisionlist>

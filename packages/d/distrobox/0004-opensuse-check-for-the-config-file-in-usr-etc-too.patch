@@ -1,7 +1,7 @@
-From fd1243898d3547e890bd11cc69077fb2c57cf2df Mon Sep 17 00:00:00 2001
+From 9a9a4dd4843199e9e40668dc58986abb82fb9020 Mon Sep 17 00:00:00 2001
 From: Dario Faggioli <dfaggioli@suse.com>
-Date: Tue, 21 Jun 2022 18:17:59 +0200
-Subject: [PATCH] Read config in /usr/etc too
+Date: Wed, 27 Jul 2022 12:50:16 +0200
+Subject: [PATCH 4/4] opensuse: check for the config file in /usr/etc too
 
 Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
 ---
@@ -26,7 +26,7 @@ index b0bb0e9..94fe003 100755
  	${HOME}/.config/distrobox/distrobox.conf
  	${HOME}/.distroboxrc
 diff --git a/distrobox-enter b/distrobox-enter
-index 138446c..2ddf9ac 100755
+index e754c6b..25870f2 100755
 --- a/distrobox-enter
 +++ b/distrobox-enter
 @@ -69,6 +69,7 @@ version="1.3.1"
@@ -74,7 +74,7 @@ index accfce0..f848b7e 100755
  	${HOME}/.config/distrobox/distrobox.conf
  	${HOME}/.distroboxrc
 diff --git a/docs/README.md b/docs/README.md
-index df00785..61b2c7a 100644
+index 64e4c0d..58cf1d8 100644
 --- a/docs/README.md
 +++ b/docs/README.md
 @@ -243,6 +243,7 @@ Configuration files can be placed in the following paths, from the least importa
@@ -86,5 +86,5 @@ index df00785..61b2c7a 100644
  - ${HOME}/.config/distrobox/distrobox.conf
  - ${HOME}/.distroboxrc
 -- 
-2.36.1
+2.37.1
 

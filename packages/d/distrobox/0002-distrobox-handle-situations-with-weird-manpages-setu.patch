@@ -1,0 +1,75 @@
+From d8f81bb5a6169b4efce137c3538afa770abb1fbb Mon Sep 17 00:00:00 2001
+From: Dario Faggioli <dfaggioli@suse.com>
+Date: Thu, 28 Jul 2022 11:02:05 +0200
+Subject: [PATCH 2/4] distrobox: handle situations with weird manpages setup
+
+So, assume you're distro strip manpages during packages install. That
+might mean the `man` command exists, but there isn't any entry for
+anything. In that case, the following happens:
+
+    distrobox --help
+    No manual entry for distrobox
+
+    An error occurred
+
+Fix this by checking also the return value of the `man` invocation too,
+and show our own help if it failed.
+
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+(cherry picked from https://github.com/89luca89/distrobox/pull/365)
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ distrobox | 23 +++++++++++++----------
+ 1 file changed, 13 insertions(+), 10 deletions(-)
+
+diff --git a/distrobox b/distrobox
+index 5cbb6de..4e37031 100755
+--- a/distrobox
++++ b/distrobox
+@@ -19,8 +19,6 @@
+ # along with distrobox; if not, see <http://www.gnu.org/licenses/>.
+ 
+ # POSIX
+-set -o errexit
+-set -o nounset
+ 
+ trap '[ "$?" -ne 0 ] && printf "\nAn error occurred\n"' EXIT
+ 
+@@ -50,6 +48,19 @@ if [ $# -eq 0 ]; then
+ 	exit
+ fi
+ 
++# Handle 'help' here, before setting 'errexit', so we have a chance
++# to show our help if the man command is there but fails.
++if [ "$1" = "help" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
++	if command -v man > /dev/null; then
++		man distrobox && exit 0
++	fi
++	show_help
++	exit 0
++fi
++
++set -o errexit
++set -o nounset
++
+ distrobox_path="$(dirname "${0}")"
+ distrobox_command="${1}"
+ shift
+@@ -76,14 +87,6 @@ case "${distrobox_command}" in
+ 		printf "distrobox: %s\n" "${version}"
+ 		exit 0
+ 		;;
+-	help | --help | -h)
+-		if command -v man > /dev/null; then
+-			man distrobox
+-			exit 0
+-		fi
+-		show_help
+-		exit 0
+-		;;
+ 	*) # Default case: If no more options then break out of the loop.
+ 		printf >&2 "Error: invalid command\n"
+ 		show_help
+-- 
+2.37.1
+

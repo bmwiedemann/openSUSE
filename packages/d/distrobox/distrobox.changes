@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jul 28 09:48:32 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix a (potential) problem with man and manpages
+  * Patch added:
+    0002-distrobox-handle-situations-with-weird-manpages-setu.patch
+- Default to distrobox-enter when only typing distrobox
+  * Patch added:
+    0003-distrobox-if-no-command-is-specified-default-to-ente.patch
+- Reordered the patchqueue:
+  * Patch removed:
+    0002-opensuse-check-for-the-config-file-in-usr-etc-too.patch
+  * Patch added:
+    0004-opensuse-check-for-the-config-file-in-usr-etc-too.patch
+
+-------------------------------------------------------------------
+Wed Jul 27 11:31:23 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- enable non-interactive mode by default
+- Fix a but with automatic cretion of rootful containers
+  * Patch added:
+    0001-enter-fix-automatic-container-creation-when-r-is-use.patch
+- Rework the /usr/etc config file patch (better changelog)
+  * Patch removed:
+    0001-Read-config-in-usr-etc-too.patch
+  * Patch added:
+    0002-opensuse-check-for-the-config-file-in-usr-etc-too.patch
+- Switched to %autosetup in the spec file
+
+-------------------------------------------------------------------
 Tue Jun 21 16:49:28 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Move config file in vendor specific path by default
