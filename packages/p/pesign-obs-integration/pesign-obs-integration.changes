@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul  9 16:19:57 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update attr.patch to fix ghost symlinks still being affected
+- Add rpmlintrc.patch to stop copying it to the build output
+
+-------------------------------------------------------------------
 Wed Jun 22 20:02:36 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add attr.patch to fix:
