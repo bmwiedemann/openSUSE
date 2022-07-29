@@ -485,4 +485,14 @@ Core and Builtins
     <comment>- Switch primary_interpreter from python38 to python310</comment>
     <requestid>975215</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>5fd6f8a9886b3a71e743ecab34a0a6db</srcmd5>
+    <version>3.8.13</version>
+    <time>1659106016</time>
+    <user>RBrownFactory</user>
+    <comment>- Switch from %primary_interpreter to prjconf-defined
+  %primary_python (gh#openSUSE/python-rpm-macros#127).
+</comment>
+    <requestid>990680</requestid>
+  </revision>
 </revisionlist>

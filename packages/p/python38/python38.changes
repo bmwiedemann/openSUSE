@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 21 14:19:54 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Switch from %primary_interpreter to prjconf-defined
+  %primary_python (gh#openSUSE/python-rpm-macros#127).
+
+-------------------------------------------------------------------
 Thu May  5 14:34:56 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Switch primary_interpreter from python38 to python310

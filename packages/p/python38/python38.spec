@@ -35,6 +35,14 @@
 %bcond_with base
 %bcond_without general
 %endif
+
+%define         python_pkg_name python38
+%if "%{python_pkg_name}" == "%{primary_python}"
+%define primary_interpreter 1
+%else
+%define primary_interpreter 0
+%endif
+
 %define _version %(c=%{version}; echo ${c/[a-z]*/})
 %define tar_suffix %(c=%{_version}; echo ${c#%{_version}})
 %define python_version %(c=%{_version}; echo ${c:0:3})
@@ -48,10 +56,6 @@
 %else
 %define tarversion %{version}
 %endif
-%define         python_pkg_name python38
-# Will provide the python3-* provides
-# Will do the /usr/bin/python3 and all the core links
-%define         primary_interpreter 0
 %define         folderversion %{tarversion}
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
