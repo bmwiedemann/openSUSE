@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 29 05:23:54 UTC 2022 - Christoph Junghans <junghans@votca.org>
+
+- only use python3-epressomd for testing on x86_64
+
+-------------------------------------------------------------------
 Sun Jan 16 01:10:58 UTC 2022 - Christoph Junghans <junghans@votca.org>
 
 - Update to 2022

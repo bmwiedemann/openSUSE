@@ -17,4 +17,13 @@
     <comment></comment>
     <requestid>946727</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a320f6072b35450bb143c4b318b0a930</srcmd5>
+    <version>2022</version>
+    <time>1659106095</time>
+    <user>RBrownFactory</user>
+    <comment>- only use python3-epressomd for testing on x86_64
+</comment>
+    <requestid>991629</requestid>
+  </revision>
 </revisionlist>

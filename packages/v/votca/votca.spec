@@ -56,7 +56,10 @@ BuildRequires:  pkg-config
 BuildRequires:  procps
 BuildRequires:  psmisc
 BuildRequires:  python3-cma
+# only needed for testing 
+%ifarch x86_64
 BuildRequires:  python3-espressomd
+%endif
 BuildRequires:  python3-lxml
 BuildRequires:  python3-pytest
 # for hdf5
