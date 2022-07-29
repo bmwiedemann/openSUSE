@@ -186,7 +186,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        12.1.1+git215
+Version:        12.1.1+git287
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -567,6 +567,9 @@ Provides:       libstdc++%{libstdcxx_sover}-pp = %{version}-%{release}
 # and dropped somewhen during the GCC11 to GCC12 transition
 Obsoletes:      libstdc++6-pp-gcc9 libstdc++6-pp-gcc10
 Obsoletes:      libstdc++6-pp-gcc11
+Provides:       libstdc++6-pp-gcc10
+Provides:       libstdc++6-pp-gcc11
+Provides:       libstdc++6-pp-gcc9
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
 Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-pp
@@ -593,6 +596,9 @@ Provides:       libstdc++%{libstdcxx_sover}-pp-32bit = %{version}-%{release}
 # and dropped somewhen during the GCC11 to GCC12 transition
 Obsoletes:      libstdc++6-pp-gcc9-32bit libstdc++6-pp-gcc10-32bit
 Obsoletes:      libstdc++6-pp-gcc11-32bit
+Provides:       libstdc++6-pp-gcc10-32bit
+Provides:       libstdc++6-pp-gcc11-32bit
+Provides:       libstdc++6-pp-gcc9-32bit
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
 Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-pp-32bit
@@ -619,6 +625,9 @@ Provides:       libstdc++%{libstdcxx_sover}-pp-64bit = %{version}-%{release}
 # and dropped somewhen during the GCC11 to GCC12 transition
 Obsoletes:      libstdc++6-pp-gcc9-64bit libstdc++6-pp-gcc10-64bit
 Obsoletes:      libstdc++6-pp-gcc11-64bit
+Provides:       libstdc++6-pp-gcc10-64bit
+Provides:       libstdc++6-pp-gcc11-64bit
+Provides:       libstdc++6-pp-gcc9-64bit
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
 Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-pp-64bit

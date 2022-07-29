@@ -190,7 +190,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:          https://gcc.gnu.org/
-Version: 12.1.1+git215
+Version: 12.1.1+git287
 Release:      1
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -534,8 +534,10 @@ Provides:	libstdc++%{libstdcxx_sover}-pp@variant@ = %{version}-%{release}
 # To allow updates from libstdc++6-pp-gccM to libstdc++6-pp we need
 # enumerates Obsoletes, the separate -pp package was introduced with GCC9
 # and dropped somewhen during the GCC11 to GCC12 transition
-Obsoletes:      libstdc++6-pp-gcc9@variant@ libstdc++6-pp-gcc10@variant@
+Obsoletes:	libstdc++6-pp-gcc9@variant@ libstdc++6-pp-gcc10@variant@
 Obsoletes:	libstdc++6-pp-gcc11@variant@
+Provides:	libstdc++6-pp-gcc9@variant@ libstdc++6-pp-gcc10@variant@
+Provides:	libstdc++6-pp-gcc11@variant@
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
 Conflicts:	%selfconflict libstdc++%{libstdcxx_sover}-pp@variant@

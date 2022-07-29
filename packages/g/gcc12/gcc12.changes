@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 26 06:46:45 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Add Provides of libstdc++6-pp-gccN to libstdc++6-pp.  [bsc#1201848]
+
+-------------------------------------------------------------------
+Thu Jul 21 13:43:06 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-12 branch head, 4f15d2234608e82159d030dadb1, git287
+  * includes build fixes when building against glibc 2.33.
+
+-------------------------------------------------------------------
 Wed Jun 29 13:54:45 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-12 branch head, 7811663964aa7e31c3939b859bb, git215

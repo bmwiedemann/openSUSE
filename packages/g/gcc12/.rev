@@ -63,4 +63,15 @@ to release my review on the gcc package now.
 - Enable PRU architecture for AM335x platforms</comment>
     <requestid>985843</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d08ac14bffe1d5d22da6fc5b1610f9e5</srcmd5>
+    <version>12.1.1+git287</version>
+    <time>1659106023</time>
+    <user>RBrownFactory</user>
+    <comment>- Add Provides of libstdc++6-pp-gccN to libstdc++6-pp.  [bsc#1201848]
+
+- Update to gcc-12 branch head, 4f15d2234608e82159d030dadb1, git287
+  * includes build fixes when building against glibc 2.33.</comment>
+    <requestid>991198</requestid>
+  </revision>
 </revisionlist>
