@@ -6043,4 +6043,41 @@ always built-in because vim has direct perl dependencies anyway.
   * The command line test is getting quite big.</comment>
     <requestid>986612</requestid>
   </revision>
+  <revision rev="315" vrev="1">
+    <srcmd5>f95eec8b3d99292c2f471c2c99472cd4</srcmd5>
+    <version>9.0.0073</version>
+    <time>1659106038</time>
+    <user>RBrownFactory</user>
+    <comment>- Updated to version 9.0.0073, fixes the following problems
+- fix CVE-2022-2522 - boo#1201863
+  * In the quickfix window 'cursorline' overrules QuickFixLine highlighting.
+  * On a Belgian keyboard CTRL-[ does not work.
+  * Spell tests do not always clear the word list.
+  * Spell dump may go beyond end of an array.
+  * 'fillchars' cannot have window-local values.
+  * 'listchars' test fails.
+  * Not all systems have GDK_KEY_dead_circumflex. (Hisashi T Fujinaka)
+  * Use of set_chars_option() is confusing.
+  * A couple of filetype patterns do not have &quot;*&quot; before &quot;/etc&quot;.
+  * Missing change for filetype detection.
+  * Insufficient testing for bracket commands.
+  * Typos in comments, wrapping lines.
+  * Reading past end of completion with a long line and 'infercase' set.
+  * Reading past end of completion with duplicate match.
+  * Using freed memory with recursive substitute.
+  * Cursor in wrong column with mouse click after concealed text.
+  * Csv and tsv files are not recognized.
+  * Split else-if is confusing.
+  * Using CTRL-C wih :append may hang Vim.
+  * &quot;zG&quot; may throw an error if invalid character follows.
+  * E1281 not tested with the old regexp engine.
+  * Compiler warning for size_t to int conversion.
+  * Bitbake files are not detected.
+  * Wrong line number reported when :cexpr fails in :def function.
+  * has('patch-xxx') returns true.
+  * Test file has wrong name.
+  * Accessing uninitialized memory when completing long line.
+  * ml_get error with nested autocommand.</comment>
+    <requestid>991225</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Jul 26 09:40:08 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.0073, fixes the following problems
+- fix CVE-2022-2522 - boo#1201863
+  * In the quickfix window 'cursorline' overrules QuickFixLine highlighting.
+  * On a Belgian keyboard CTRL-[ does not work.
+  * Spell tests do not always clear the word list.
+  * Spell dump may go beyond end of an array.
+  * 'fillchars' cannot have window-local values.
+  * 'listchars' test fails.
+  * Not all systems have GDK_KEY_dead_circumflex. (Hisashi T Fujinaka)
+  * Use of set_chars_option() is confusing.
+  * A couple of filetype patterns do not have "*" before "/etc".
+  * Missing change for filetype detection.
+  * Insufficient testing for bracket commands.
+  * Typos in comments, wrapping lines.
+  * Reading past end of completion with a long line and 'infercase' set.
+  * Reading past end of completion with duplicate match.
+  * Using freed memory with recursive substitute.
+  * Cursor in wrong column with mouse click after concealed text.
+  * Csv and tsv files are not recognized.
+  * Split else-if is confusing.
+  * Using CTRL-C wih :append may hang Vim.
+  * "zG" may throw an error if invalid character follows.
+  * E1281 not tested with the old regexp engine.
+  * Compiler warning for size_t to int conversion.
+  * Bitbake files are not detected.
+  * Wrong line number reported when :cexpr fails in :def function.
+  * has('patch-xxx') returns true.
+  * Test file has wrong name.
+  * Accessing uninitialized memory when completing long line.
+  * ml_get error with nested autocommand.
+  * Compiler warnings for signed/unsigned char.
+  * Too many type casts for dict_get functions.
+  * Confusing error when using "q:" in command line window.
+  * Cross-compiling doesn't work because of timer_create check.
+  * Switching window uneccarily when getting buffer options.
+  * Cannot show virtual text.
+  * Build fails with tiny features.
+  * Leaking memory when using text prop with inserted text.
+  * Using utfc_ptr2char_len() when length is negative.
+  * Command overlaps with printed text in scrollback.
+  * Compiler warning for uninitialized variable.
+  * Too many files recognized as bsdl.
+
+-------------------------------------------------------------------
 Mon Jul  4 10:06:35 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0032, fixes the following problems
