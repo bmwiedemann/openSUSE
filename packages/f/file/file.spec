@@ -62,7 +62,8 @@ Patch31:        file-5.19-biorad.dif
 Patch32:        file-5.19-clicfs.dif
 Patch37:        file-secure_getenv.patch
 Patch39:        file-5.28-btrfs-image.dif
-# Upstream commits as patches
+# Upstream commits as patch
+Patch42:        file-boo1201350.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
 %global         _miscdir    %{_datadir}/misc
@@ -106,6 +107,7 @@ to develop applications that require the magic "file" interface.
 
 %prep
 %setup -q -n file-%{version}
+%patch42 -p0
 %patch1  -p0 -b .misc
 %patch4  -p0 -b .conf
 %patch5  -p0 -b .tex
@@ -124,6 +126,7 @@ to develop applications that require the magic "file" interface.
 %patch32 -p0 -b .clicfs
 %patch37 -p1 -b .getenv
 %patch39 -p1 -b .btrfs
+
 %patch -b .0
 test -s src/magic.h.in || cp -p src/magic.h src/magic.h.in
 rm -fv src/magic.h

@@ -1525,4 +1525,18 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
 - Port and rename patch file-5.41.dif which is now file-5.42.dif</comment>
     <requestid>982386</requestid>
   </revision>
+  <revision rev="129" vrev="2">
+    <srcmd5>3b0362e3e8752a41cbec2d246f01bd00</srcmd5>
+    <version>5.42</version>
+    <time>1659106011</time>
+    <user>RBrownFactory</user>
+    <comment>- Add upstream patch to fix boo#1201350
+  * file-boo1201350.patch which combines the commits
+    c80065fe6900be5e794941e29b32440e9969b1c3
+    7e59d34206d7c962e093d4239e5367a2cd8b7623
+    f042050f59bfc037677871c4d1037c33273f5213
+    d471022b2772071877895759f209f2c346757a4c
+    441ac2b15508909e82ad467960df4ac0adf9644c</comment>
+    <requestid>990574</requestid>
+  </revision>
 </revisionlist>
