@@ -229,4 +229,14 @@
   as it was fully patched against CVE-2022-25236.</comment>
     <requestid>983936</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>63da7f44e7102c927be6b5af5425aec4</srcmd5>
+    <version>3.10.5</version>
+    <time>1659106018</time>
+    <user>RBrownFactory</user>
+    <comment>- Switch from %primary_interpreter to prjconf-defined
+  %primary_python (gh#openSUSE/python-rpm-macros#127).
+</comment>
+    <requestid>990684</requestid>
+  </revision>
 </revisionlist>
