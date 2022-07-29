@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jul 28 09:40:31 UTC 2022 - David Diaz <dgonzalez@suse.com>
+
+- Do not ask for user input while checking file conflicts if the
+  delayed progress popup is not shown (bsc#1201924)
+- 4.5.10
+
+-------------------------------------------------------------------
+Thu Jul 28 07:57:14 UTC 2022 - Michal Filka <mfilka@suse.com>
+
+- bsc#1200016
+  - added a method for finding a package according to a pattern
+- 4.5.9
+
+-------------------------------------------------------------------
+Wed Jul 27 13:41:45 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed libzypp initialization, in the YaST container read the
+  configured repositories from the host (related to bsc#1199840)
+- 4.5.8
+
+-------------------------------------------------------------------
+Fri Jul 22 12:13:13 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Text mode control center: always display the YaST modules
+  installed in the system root (when running in a container
+  display the modules installed in the container) (bsc#1199840)
+- 4.5.7
+
+-------------------------------------------------------------------
 Fri Jun 24 12:08:30 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - save_y2logs - check both Packages and Packages.db in
