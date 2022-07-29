@@ -16,9 +16,9 @@
 #
 
 
-%define stripped_version 2200
+%define stripped_version 2201
 Name:           7zip
-Version:        22.00
+Version:        22.01
 Release:        0
 Summary:        File Archivier
 # CPP/7zip/Compress/LzfseDecoder.cpp is under the BSD-3-Clause

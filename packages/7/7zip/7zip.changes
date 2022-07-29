@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 22 21:16:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.01:
+  * UDF support was improved to UDF version 2.60.
+  * HFS and APFS support was improved. 
+
+-------------------------------------------------------------------
 Sun Jul  3 21:01:22 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 22.00: 
