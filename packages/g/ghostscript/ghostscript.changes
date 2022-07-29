@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jul 18 07:28:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.56.1:
+  * New PDF Interpreter: This is an entirely new implementation written in C
+    (rather than PostScript, as before)
+  * Calling Ghostscript via the GS API is now thread safe. The one limitation
+    is that the X11 devices for Unix-like systems (x11, x11alpha, x11cmyk,
+    x11cmyk2, x11cmyk4, x11cmyk8, x11gray2, x11gray4 and x11mono) cannot be
+    made thread safe, due to their interaction with the X11 server, those
+    devices have been modified to only allow one instance in an executable.
+  * The PSD output device now writes ICC profiles to their output files, for
+    improved color fidelity.
+  * Our efforts in code hygiene and maintainability continue.
+  * The usual round of bug fixes, compatibility changes, and incremental
+    improvements.
+  * We have added the capability to build with the Tesseract OCR
+    engine. In such a build, new devices are available (pdfocr8/pdfocr24/
+    pdfocr32) which render the output file to an image, OCR that image, and
+    output the image "wrapped" up as a PDF file, with the OCR generated text
+    information included as "invisible" text (in PDF terms, text rendering mode
+    3).
+- drop CVE-2021-3781.patch, CVE-2021-45949.patch: upstream
+
+-------------------------------------------------------------------
+Mon Jul 18 06:38:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use _multibuild 
+
+-------------------------------------------------------------------
 Wed Apr 13 11:12:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use system zlib (bsc#1198449) 

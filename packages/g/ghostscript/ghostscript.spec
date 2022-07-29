@@ -1,5 +1,5 @@
 #
-# spec file for package ghostscript
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,90 +16,26 @@
 #
 
 
-Name:           ghostscript
-# SLE12 needs special BuildRequires.
-# For suse_version values see https://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto
-%if 0%{?suse_version} == 1315
-# For SLE12 by default CUPS 1.7.5 is provided and alternatively CUPS 1.5.4 is provided in the "legacy" module.
-# For SLE12 build it with traditional CUPS 1.5.4 to ensure it works on SLE12 both with CUPS 1.7.5 and CUPS 1.5.4
-# because libcups and libcupsimage in CUPS 1.7.5 are backward compatible with CUPS 1.5.4 so that applications
-# that have been built with CUPS 1.5.4 also work under CUPS 1.7.5 but the libraries in CUPS 1.7.5 provide
-# some additional functions so that applications that have been built with CUPS 1.7.5 and use those
-# additional functions would not work under CUPS 1.7.5.
-# Only in the Printing project for SLE12 use cups154-ddk (a sub package of the cups154-SLE12 source package):
-BuildRequires:  cups154-devel
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "mini"
+%global psuffix -mini
 %else
-# Anything what is not SLE12 (i.e. SLE11 and all openSUSE versions) have "normal" BuildRequires:
-BuildRequires:  cups-devel
+%global psuffix %{nil}
 %endif
-# dbus-1-devel is needed for "configure --enable-dbus" (see below):
-BuildRequires:  dbus-1-devel
-BuildRequires:  freetype2-devel
-BuildRequires:  libexpat-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  liblcms2-devel
-BuildRequires:  libpng-devel
-BuildRequires:  libtiff-devel
-BuildRequires:  libtool
-BuildRequires:  pkg-config
-BuildRequires:  update-alternatives
-BuildRequires:  xorg-x11-devel
-BuildRequires:  xorg-x11-fonts
-BuildRequires:  zlib-devel
-# Always check if latest version of penjpeg becomes compatible with ghostscript
-%if 0%{?suse_version} >= 1550
-BuildRequires:  pkgconfig(libopenjp2) >= 2.3.1
-%endif
-%if 0%{?suse_version} >= 1500
-BuildRequires:  apparmor-abstractions
-BuildRequires:  apparmor-rpm-macros
-%endif
-Requires(post): update-alternatives
-Requires(preun):update-alternatives
-Summary:        The Ghostscript interpreter for PostScript and PDF
-License:        AGPL-3.0-only
-Group:          Productivity/Office/Other
-URL:            https://www.ghostscript.com/
-# Special version needed for Ghostscript release candidates (e.g. "Version: 9.14pre15rc1" for 9.15rc1).
-# Version 9.15rc1 would be newer than 9.15 (run "zypper vcmp 9.15rc1 9.15") because the rpmvercmp algorithm
-# would treat 9.15rc1 as 9.15.rc.1 (alphabetic and numeric sections get separated into different elements)
-# and 9.15.rc.1 is newer than 9.15 (it has one more element in the list while previous elements are equal)
-# so that we use an alphabetic prefix 'pre' to make it older than 9.15 (numbers are considered newer than letters).
-# But only with the alphabetic prefix "9.pre15rc1" would be older than the previous version number "9.14"
-# because rpmvercmp would treat 9.pre15rc1 as 9.pre.15.rc1 and letters are older than numbers
-# so that we keep additionally the previous version number to upgrade from the previous version:
-# Starting SLE12/rpm-4.10, one can use tildeversions: 9.15~rc1.
-#Version:        9.25pre26rc1
-Version:        9.54.0
-Release:        0
-# Normal version for Ghostscript releases is the upstream version:
-# tarball_version is used below to specify the directory via "setup -n":
-# Special tarball_version needed for Ghostscript release candidates e.g. "define tarball_version 9.15rc1".
-# For Ghostscript releases tarball_version and version are the same (i.e. the upstream version):
-%define tarball_version %{version}
-#define tarball_version 9.26rc1
 # built_version is used below in the install and files sections:
 # Separated built_version needed in case of Ghostscript release candidates e.g. "define built_version 9.15".
 # For Ghostscript releases built_version and version are the same (i.e. the upstream version):
 %define built_version %{version}
-#define built_version 9.26
-# Source0...Source9 is for sources from upstream:
-# Special URLs for Ghostscript release candidates:
-# see https://github.com/ArtifexSoftware/ghostpdl-downloads/releases
-# URL for Source0:
-# wget -O ghostscript-9.26rc1.tar.gz https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9.26rc1/ghostscript-9.26rc1.tar.gz
-# URL for MD5 checksums:
-# wget -O gs9.26rc1.MD5SUMS https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9.26rc1/MD5SUMS
-# MD5 checksum for Source0: 6539d5b270721938936d721f279a3520 ghostscript-9.26rc1.tar.gz
-#Source0:        ghostscript-%{tarball_version}.tar.gz
-# Normal URLs for Ghostscript releases:
-# URL for Source0:
-# wget -O ghostscript-9.54.0.tar.gz https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostscript-9.54.0.tar.gz
-# URL for MD5 checksums:
-# wget -O gs9540.MD5SUMS https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/MD5SUMS
-# MD5 checksum for Source0: 5d571792a8eb826c9f618fb69918d9fc ghostscript-9.54.0.tar.gz
-Source0:        ghostscript-%{version}.tar.gz
-Source1:        apparmor_ghostscript
+Name:           ghostscript%{psuffix}
+Version:        9.56.1
+Release:        0
+Summary:        The Ghostscript interpreter for PostScript and PDF
+License:        AGPL-3.0-only
+Group:          Productivity/Office/Other
+URL:            https://www.ghostscript.com/
+# sha512:fe5a5103c081dd87cf8b3e0bbbd0df004c0e4e04e41bded7c70372916e6e26249a0e8fa434b561292964c5f3820ee6c60ef1557827a6efb5676012ccb73ded85
+Source0:        https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9561/ghostscript-%{version}.tar.xz
+Source10:       apparmor_ghostscript
 # Patch0...Patch9 is for patches from upstream:
 # Source10...Source99 is for sources from SUSE which are intended for upstream:
 # Patch10...Patch99 is for patches from SUSE which are intended for upstream:
@@ -111,18 +47,17 @@ Patch100:       remove-zlib-h-dependency.patch
 # Patch101 ijs_exec_server_dont_use_sh.patch fixes IJS printing problem
 # additionally allow exec'ing hpijs in apparmor profile was needed (bsc#1128467):
 Patch101:       ijs_exec_server_dont_use_sh.patch
-# Patch102 CVE-2021-3781.patch is
-# https://git.ghostscript.com/?p=ghostpdl.git;a=patch;h=a9bd3dec9fde
-# that fixes CVE-2021-3781 Trivial -dSAFER bypass
-# cf. https://bugs.ghostscript.com/show_bug.cgi?id=704342
-# and https://bugzilla.suse.com/show_bug.cgi?id=1190381
-Patch102:       CVE-2021-3781.patch
-# Patch103 CVE-2021-45949.patch was derived for Ghostscript-9.54 from
-# https://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=2a3129365d3bc0d4a41f107ef175920d1505d1f7
-# that fixes CVE-2021-45949 heap-based buffer overflow in sampled_data_finish
-# cf. https://github.com/google/oss-fuzz-vulns/blob/main/vulns/ghostscript/OSV-2021-803.yaml
-# and https://bugzilla.suse.com/show_bug.cgi?id=1194304
-Patch103:       CVE-2021-45949.patch
+BuildRequires:  freetype2-devel
+BuildRequires:  libjpeg-devel
+BuildRequires:  liblcms2-devel
+BuildRequires:  libpng-devel
+BuildRequires:  libtiff-devel
+BuildRequires:  libtool
+BuildRequires:  pkgconfig
+BuildRequires:  update-alternatives
+BuildRequires:  zlib-devel
+Requires(post): update-alternatives
+Requires(preun):update-alternatives
 # RPM dependencies:
 # Additional RPM Provides of the ghostscript-library packages in openSUSE 11.4 from
 # "rpm -q --provides ghostscript-library" and "rpm -q --provides ghostscript-x11":
@@ -170,54 +105,49 @@ Patch103:       CVE-2021-45949.patch
 # ghostscript-mini installed (but only the full featured ghostscript package)
 # because ghostscript-mini (and ghostscript-mini-devel) are not published
 # in openSUSE products, cf. https://build.opensuse.org/request/show/877083
-Provides:       ghostscript_any
-Provides:       gs
-Provides:       gs_lib
+Provides:       ghostscript_any = %{version}
+%if "%{flavor}" != "mini"
+BuildRequires:  dbus-1-devel
+BuildRequires:  libexpat-devel
+BuildRequires:  xorg-x11-devel
+BuildRequires:  xorg-x11-fonts
+%if 0%{?suse_version} == 1315
+BuildRequires:  cups154-devel
+%else
+BuildRequires:  cups-devel
+%endif
+%if 0%{?suse_version} >= 1500
+BuildRequires:  apparmor-abstractions
+BuildRequires:  apparmor-rpm-macros
+%endif
+%endif
+# Always check if latest version of openjpeg becomes compatible with ghostscript
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(libopenjp2) >= 2.3.1
+%endif
+%if "%{flavor}" == "mini"
+Conflicts:      ghostscript
+Conflicts:      ghostscript-devel
+Conflicts:      ghostscript-library
+Conflicts:      ghostscript-x11
+%else
+Recommends:     ghostscript-x11 = %{version}-%{release}
+Conflicts:      ghostscript-x11 < %{version}-%{release}
+Provides:       gs = %{version}
+Provides:       gs_lib = %{version}
 # There is a needless requirement for pstoraster in gutenprint up to openSUSE 11.4.
 # Satisfy it to be backward compatible with installed gutenprint packages:
 Provides:       pstoraster
-# Replace any version of the packages ghostscript-library and ghostscript-mini silently.
-# The "Obsoletes: ghostscript-mini" is intentionally unversioned because
-# this package ghostscript should replace any version of ghostscript-mini.
-# There is intentionally no "Provides: ghostscript-mini" here because this
-# would cause a conflict when this package ghostscript should be re-replaced
-# by ghostscript-library because ghostscript-library conflicts with ghostscript-mini
-# so that there would be no easy way back from ghostscript to ghostscript-library.
-# Different versions must be explicitly specified in Provides and Obsoletes
-# to avoid a RPMLINT warning that the package obsoletes itself
-# because an unversioned RPM dependency means "all versions".
-# The RPM documentation http://www.rpm.org/max-rpm/s1-rpm-depend-manual-dependencies.html
-# and /usr/share/doc/packages/rpm/manual/dependencies (in rpm-4.8.0 in openSUSE 11.4)
-# does not show a comparison operator for "not equal" so that two obsoletes are used:
+Provides:       %{version}
 Provides:       ghostscript-library = %{version}
 Obsoletes:      ghostscript-library < %{version}
-Obsoletes:      ghostscript-library > %{version}
+# The "Obsoletes: ghostscript-mini" is intentionally unversioned because
+# this package ghostscript should replace any version of ghostscript-mini.
 Obsoletes:      ghostscript-mini
-# The ghostscript-x11 sub-package requires the exact matching version-release
-# of the ghostscript main-package (see below) so that the ghostscript main-package
-# should conflict with a non-matching ghostscript-x11 package to make sure
-# that the ghostscript main-package is not changed without changing
-# the ghostscript-x11 sub-package accordingly.
-# The RPM documentation http://www.rpm.org/max-rpm/s1-rpm-depend-manual-dependencies.html
-# and /usr/share/doc/packages/rpm/manual/dependencies (in rpm-4.8.0 in openSUSE 11.4)
-# does not show a comparison operator for "not equal" so that two conflicts are used:
-Conflicts:      ghostscript-x11 < %{version}-%{release}
-Conflicts:      ghostscript-x11 > %{version}-%{release}
-# When the ghostscript main-package is installed, usually the exact matching
-# version-release of the ghostscript-x11 sub-package should be also installed:
-Recommends:     ghostscript-x11 = %{version}-%{release}
-# When the ghostscript main-package is installed, usually the CUPS filters gstoraster and gstopxl
-# should be also installed. Since version 9.10 those CUPS filters are removed from Ghostscript
-# and are now provided by the binary RPM sub-package cups-filters-ghostscript
-# (see the cups-filters-ghostscript sub-package description).
-# No RPM requirement because Ghostscript can be used without those CUPS filters
-# and cups-filters-ghostscript is only available for newer openSUSE versions
-# (currently since openSUSE 12.2) but in particular not for SLE11:
 %if 0%{?suse_version} > 1210
 Recommends:     cups-filters-ghostscript
 %endif
-# Install into this non-root directory (required when norootforbuild is used):
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%endif
 
 %description
 Ghostscript is a package of software that provides:
@@ -241,7 +171,7 @@ capabilities that appear as primitive operations
 in the PostScript language and in PDF.
 
 For information how to use Ghostscript see
-/usr/share/ghostscript/%{version}/doc/Use.htm
+%{_datadir}/ghostscript/%{version}/doc/Use.htm
 
 %package x11
 Summary:        X11 library for Ghostscript
@@ -268,8 +198,7 @@ Requires:       ghostscript = %{version}-%{release}
 Conflicts:      ghostscript-library < %{version}
 Conflicts:      ghostscript-library > %{version}
 Conflicts:      ghostscript-mini
-# In openSUSE:Factory (dated 22 Feb. 2012) ghostview gv and texlive-bin require ghostscript_x11 (see above):
-Provides:       ghostscript_x11
+Provides:       ghostscript_x11 = %{version}
 
 %description x11
 This package contains the X11 library which is needed
@@ -300,9 +229,8 @@ Conflicts:      ghostscript-mini-devel
 This package contains the development files for Ghostscript.
 
 %prep
-# Be quiet when unpacking and
-# use a directory name matching Source0 to make it work also for ghostscript-mini:
-%setup -q -n ghostscript-%{tarball_version}
+%setup -q -n ghostscript-%{version}
+
 # Patch100 remove-zlib-h-dependency.patch removes dependency on zlib/zlib.h
 # in makefiles as we do not use the zlib sources from the Ghostscript upstream tarball.
 # Again use the zlib sources from Ghostscript upstream
@@ -312,18 +240,6 @@ This package contains the development files for Ghostscript.
 # Patch101 ijs_exec_server_dont_use_sh.patch fixes IJS printing problem
 # additionally allow exec'ing hpijs in apparmor profile was needed (bsc#1128467):
 %patch101 -p1
-# Patch102 CVE-2021-3781.patch is
-# https://git.ghostscript.com/?p=ghostpdl.git;a=patch;h=a9bd3dec9fde
-# that fixes CVE-2021-3781 Trivial -dSAFER bypass
-# cf. https://bugs.ghostscript.com/show_bug.cgi?id=704342
-# and https://bugzilla.suse.com/show_bug.cgi?id=1190381
-%patch102 -p1
-# Patch103 CVE-2021-45949.patch was derived for Ghostscript-9.54 from
-# https://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=2a3129365d3bc0d4a41f107ef175920d1505d1f7
-# that fixes CVE-2021-45949 heap-based buffer overflow in sampled_data_finish
-# cf. https://github.com/google/oss-fuzz-vulns/blob/main/vulns/ghostscript/OSV-2021-803.yaml
-# and https://bugzilla.suse.com/show_bug.cgi?id=1194304
-%patch103
 # Remove patch backup files to avoid packaging
 # cf. https://build.opensuse.org/request/show/581052
 rm -f Resource/Init/*.ps.orig
@@ -370,7 +286,7 @@ rm -rf lcms2art
 
 %build
 # Derive build timestamp from latest changelog entry
-export SOURCE_DATE_EPOCH=$(date -d "$(head -n 2 %{_sourcedir}/%{name}.changes | tail -n 1 | cut -d- -f1 )" +%s)
+export SOURCE_DATE_EPOCH=$(date -d "$(head -n 2 %{_sourcedir}/%{name}.changes | tail -n 1 | cut -d- -f1 )" +%{s})
 # Set our preferred architecture-specific flags for the compiler and linker:
 export CFLAGS="%{optflags} -fno-strict-aliasing -fPIC"
 export CXXFLAGS="%{optflags} -fno-strict-aliasing -fPIC"
@@ -398,50 +314,47 @@ autoreconf -fi
 #   into the library, which is the upstream recommendation for distributions. This also allows
 #   unbundling the 35 Postscript Standard fonts, provided by the URW font package
 # --without-libpaper disables libpaper support because SUSE does not have libpaper.
-%define gs_font_path /usr/share/fonts/truetype:/usr/share/fonts/Type1:/usr/share/fonts/CID:/usr/share/fonts/URW
+%define gs_font_path %{_datadir}/fonts/truetype:%{_datadir}/fonts/Type1:%{_datadir}/fonts/CID:%{_datadir}/fonts/URW
 # See http://bugs.ghostscript.com/show_bug.cgi?id=693100
 export SUSE_ASNEEDED=0
-./configure --prefix=%{_prefix} \
-            --bindir=%{_bindir} \
-            --libdir=%{_libdir} \
-            --datadir=%{_datadir} \
-            --mandir=%{_mandir} \
-            --infodir=%{_infodir} \
-            --with-fontpath=%{gs_font_path} \
-            --with-libiconv=maybe \
-            --enable-freetype \
-            --with-jbig2dec \
-            --enable-openjpeg \
-            --enable-dynamic \
-            --disable-compile-inits \
-	    --without-local-zlib \
-            --with-ijs \
-            --enable-cups \
-            --with-drivers=ALL \
-            --with-x \
-            --disable-gtk \
-            --without-ufst \
-            --without-luratech \
-            --without-libpaper
+%configure \
+    --with-fontpath=%{gs_font_path} \
+    --with-libiconv=maybe \
+    --enable-freetype \
+    --with-jbig2dec \
+    --enable-openjpeg \
+    --enable-dynamic \
+    --disable-compile-inits \
+%if "%{flavor}" == "mini"
+    --without-ijs \
+    --disable-cups \
+    --disable-dbus \
+    --without-pdftoraster \
+    --with-drivers=FILES \
+    --without-x \
+%else
+    --without-local-zlib \
+    --with-ijs \
+    --enable-cups \
+    --with-drivers=ALL \
+    --with-x \
+%endif
+    --disable-gtk \
+    --without-ufst \
+    --without-luratech \
+    --without-libpaper
 
 # Make libgs.so and two programs which use it, gsx and gsc:
 # With --disable-gtk, gsx and gsc are identical. It provides a command line
 # frontend to libgs equivalent (functional and command line arguments) to
 # the gs binary, but uses the shared libgs instead of static linking
-make so
+%make_build so
 # Configure and make libijs (that is not done regardless whether or not --with-ijs is used above):
 pushd ijs
 ./autogen.sh
 autoreconf -fi
-./configure --prefix=%{_prefix} \
-            --bindir=%{_bindir} \
-            --libdir=%{_libdir} \
-            --datadir=%{_datadir} \
-            --mandir=%{_mandir} \
-            --infodir=%{_infodir} \
-            --enable-shared \
-            --disable-static
-make
+%configure --enable-shared --disable-static
+%make_build
 popd
 
 %install
@@ -452,7 +365,7 @@ mv %{buildroot}/%{_bindir}/{gsc,gs}
 rm %{buildroot}/%{_bindir}/gsx
 # Install libijs and its header files:
 pushd ijs
-make install DESTDIR=%{buildroot}
+%make_install
 popd
 # Remove installed ijs example client and server and its .la file:
 rm %{buildroot}%{_bindir}/ijs_client_example
@@ -495,7 +408,7 @@ done
 # Do not pollute the build log file with zillions of meaningless messages:
 set +x
 cat /dev/null >catalog.devices
-for D in $( LD_LIBRARY_PATH=%{buildroot}/%{_libdir} %{buildroot}/usr/bin/gs -h | sed -n -e '/^Available devices:/,/^Search path:/p' | egrep -v '^Available devices:|^Search path:' )
+for D in $( LD_LIBRARY_PATH=%{buildroot}/%{_libdir} %{buildroot}%{_bindir}/gs -h | sed -n -e '/^Available devices:/,/^Search path:/p' | grep -E -v '^Available devices:|^Search path:' )
 do for F in $catalog_devices_source_files
    do sed -n -e '/ Catalog /,/ End of catalog /p' $F | grep "[[:space:]]$D[[:space:]]" | grep -o '[[:alnum:]].*' | tr -s '[:blank:]' ' ' | sed -e 's/ /\t/' | expand -t16 >>catalog.devices
    done
@@ -503,18 +416,22 @@ done
 # Switch back to the usual build log messages:
 set -x
 install -m 644 catalog.devices $DOCDIR
-install -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/apparmor.d/ghostscript
+%if "%{flavor}" != "mini"
+install -D -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/apparmor.d/ghostscript
+%endif
 
 # Move /usr/bin/gs to /usr/bin/gs.bin to be able to use update-alternatives
-install -d %buildroot%{_sysconfdir}/alternatives
+install -d %{buildroot}%{_sysconfdir}/alternatives
 mv %{buildroot}%{_bindir}/gs %{buildroot}%{_bindir}/gs.bin
 ln -sf %{_bindir}/gs.bin %{buildroot}%{_sysconfdir}/alternatives/gs
 ln -sf %{_sysconfdir}/alternatives/gs %{buildroot}%{_bindir}/gs
 
 %post
 /sbin/ldconfig
+%if "%{flavor}" != "mini"
 %if 0%{?suse_version} >= 1500
-%apparmor_reload /etc/apparmor.d/ghostscript
+%apparmor_reload %{_sysconfdir}/apparmor.d/ghostscript
+%endif
 %endif
 %{_sbindir}/update-alternatives \
   --install %{_bindir}/gs gs %{_bindir}/gs.bin 15
@@ -528,7 +445,6 @@ if test $1 -eq 0 ; then
 fi
 
 %files
-%defattr(-, root, root)
 %ghost %config %{_sysconfdir}/alternatives/gs
 %{_bindir}/dvipdf
 %{_bindir}/eps2eps
@@ -557,40 +473,40 @@ fi
 %{_bindir}/ps2ps
 %{_bindir}/ps2ps2
 %{_bindir}/unix-lpr.sh
-%doc %{_mandir}/man1/dvipdf.1.gz
-%doc %{_mandir}/man1/eps2eps.1.gz
-%doc %{_mandir}/man1/gs.1.gz
-%doc %{_mandir}/man1/gsbj.1.gz
-%doc %{_mandir}/man1/gsdj.1.gz
-%doc %{_mandir}/man1/gsdj500.1.gz
-%doc %{_mandir}/man1/gslj.1.gz
-%doc %{_mandir}/man1/gslp.1.gz
-%doc %{_mandir}/man1/gsnd.1.gz
-%doc %{_mandir}/man1/pdf2dsc.1.gz
-%doc %{_mandir}/man1/pdf2ps.1.gz
-%doc %{_mandir}/man1/pf2afm.1.gz
-%doc %{_mandir}/man1/pfbtopfa.1.gz
-%doc %{_mandir}/man1/printafm.1.gz
-%doc %{_mandir}/man1/ps2ascii.1.gz
-%doc %{_mandir}/man1/ps2epsi.1.gz
-%doc %{_mandir}/man1/ps2pdf.1.gz
-%doc %{_mandir}/man1/ps2pdf12.1.gz
-%doc %{_mandir}/man1/ps2pdf13.1.gz
-%doc %{_mandir}/man1/ps2pdf14.1.gz
-%doc %{_mandir}/man1/ps2pdfwr.1.gz
-%doc %{_mandir}/man1/ps2ps.1.gz
-%doc %{_mandir}/de/man1/dvipdf.1.gz
-%doc %{_mandir}/de/man1/eps2eps.1.gz
-%doc %{_mandir}/de/man1/gsnd.1.gz
-%doc %{_mandir}/de/man1/pdf2dsc.1.gz
-%doc %{_mandir}/de/man1/pdf2ps.1.gz
-%doc %{_mandir}/de/man1/printafm.1.gz
-%doc %{_mandir}/de/man1/ps2ascii.1.gz
-%doc %{_mandir}/de/man1/ps2pdf.1.gz
-%doc %{_mandir}/de/man1/ps2pdf12.1.gz
-%doc %{_mandir}/de/man1/ps2pdf13.1.gz
-%doc %{_mandir}/de/man1/ps2pdf14.1.gz
-%doc %{_mandir}/de/man1/ps2ps.1.gz
+%{_mandir}/man1/dvipdf.1%{?ext_man}
+%{_mandir}/man1/eps2eps.1%{?ext_man}
+%{_mandir}/man1/gs.1%{?ext_man}
+%{_mandir}/man1/gsbj.1%{?ext_man}
+%{_mandir}/man1/gsdj.1%{?ext_man}
+%{_mandir}/man1/gsdj500.1%{?ext_man}
+%{_mandir}/man1/gslj.1%{?ext_man}
+%{_mandir}/man1/gslp.1%{?ext_man}
+%{_mandir}/man1/gsnd.1%{?ext_man}
+%{_mandir}/man1/pdf2dsc.1%{?ext_man}
+%{_mandir}/man1/pdf2ps.1%{?ext_man}
+%{_mandir}/man1/pf2afm.1%{?ext_man}
+%{_mandir}/man1/pfbtopfa.1%{?ext_man}
+%{_mandir}/man1/printafm.1%{?ext_man}
+%{_mandir}/man1/ps2ascii.1%{?ext_man}
+%{_mandir}/man1/ps2epsi.1%{?ext_man}
+%{_mandir}/man1/ps2pdf.1%{?ext_man}
+%{_mandir}/man1/ps2pdf12.1%{?ext_man}
+%{_mandir}/man1/ps2pdf13.1%{?ext_man}
+%{_mandir}/man1/ps2pdf14.1%{?ext_man}
+%{_mandir}/man1/ps2pdfwr.1%{?ext_man}
+%{_mandir}/man1/ps2ps.1%{?ext_man}
+%{_mandir}/de/man1/dvipdf.1%{?ext_man}
+%{_mandir}/de/man1/eps2eps.1%{?ext_man}
+%{_mandir}/de/man1/gsnd.1%{?ext_man}
+%{_mandir}/de/man1/pdf2dsc.1%{?ext_man}
+%{_mandir}/de/man1/pdf2ps.1%{?ext_man}
+%{_mandir}/de/man1/printafm.1%{?ext_man}
+%{_mandir}/de/man1/ps2ascii.1%{?ext_man}
+%{_mandir}/de/man1/ps2pdf.1%{?ext_man}
+%{_mandir}/de/man1/ps2pdf12.1%{?ext_man}
+%{_mandir}/de/man1/ps2pdf13.1%{?ext_man}
+%{_mandir}/de/man1/ps2pdf14.1%{?ext_man}
+%{_mandir}/de/man1/ps2ps.1%{?ext_man}
 %doc %{_defaultdocdir}/ghostscript
 %dir %{_datadir}/doc/ghostscript
 %doc %{_datadir}/doc/ghostscript/%{built_version}
@@ -603,6 +519,7 @@ fi
 %{_libdir}/libgs.so.*
 %{_libdir}/ghostscript/
 %{_libdir}/libijs-0.35.so
+%if "%{flavor}" != "mini"
 %exclude %{_libdir}/ghostscript/%{built_version}/X11.so
 %if 0%{?suse_version} < 1500
 %dir %{_sysconfdir}/apparmor.d
@@ -610,11 +527,10 @@ fi
 %{_sysconfdir}/apparmor.d/ghostscript
 
 %files x11
-%defattr(-,root,root)
 %{_libdir}/ghostscript/%{built_version}/X11.so
+%endif
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/ghostscript/
 %{_libdir}/libgs.so
 %{_includedir}/ijs/
