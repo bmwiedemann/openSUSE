@@ -114,6 +114,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 mv %{buildroot}/%{_datadir}/vim/vimfiles %{buildroot}/%{_datadir}/vim/site
 
 %check
+# This causes a >20x slowdown otherwise (boo#1201884)
+unset MALLOC_PERTURB_
 %make_build check
 
 %post   -n libaugeas0 -p /sbin/ldconfig

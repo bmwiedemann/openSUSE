@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 26 15:49:09 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Unset MALLOC_PERTURB_ to speed up %check significantly
+  (boo#1201884, gh#hercules-team#768)
+
+-------------------------------------------------------------------
 Tue Apr 26 08:43:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Employ shared library packaging guideline and resolve this
