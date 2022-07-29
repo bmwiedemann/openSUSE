@@ -35,6 +35,8 @@ URL:            https://github.com/xolox/python-humanfriendly
 Source:         https://files.pythonhosted.org/packages/source/h/humanfriendly/humanfriendly-%{version}.tar.gz
 # https://github.com/xolox/python-humanfriendly/issues/62
 Patch0:         python-humanfriendly-no-mock.patch
+# PATCH-FIX-UPSTREAM gh#xolox/python-humanfriendly#65
+Patch1:         pytest-7-support.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -74,8 +76,7 @@ text interfaces more user friendly.
     friendly rendering of usage messages and querying the terminal for its size.
 
 %prep
-%setup -q -n humanfriendly-%{version}
-%patch0 -p1
+%autosetup -p1 -n humanfriendly-%{version}
 
 %build
 %python_build
