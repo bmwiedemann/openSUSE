@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 26 19:55:25 CEST 2022 - kurt@garloff.de
+
+- Update to dd_rescue-1.99.12:
+  * Works with openssl-3.0 now (using EVP_Cipher_Init to set IV).
+  * openssl-1.1 performs significantly better so we keep building
+    against it if available.
+  * nosalthdr option for libddr_crypt for compatibility with
+    openssl-3, no longer writing header when salt is passed.
+  * ARMv7 crypto support successfully compiles with clang now.
+- Drop no-python2.patch (included in dd_rescue-1.99.12). 
+
+-------------------------------------------------------------------
 Mon Dec  6 14:21:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - build against openssl 1.1 (bsc#1193438) 

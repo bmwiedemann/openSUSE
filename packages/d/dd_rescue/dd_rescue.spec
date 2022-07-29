@@ -1,7 +1,7 @@
 #
 # spec file for package dd_rescue
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           dd_rescue
-Version:        1.99.11
+Version:        1.99.12
 Release:        0
 Summary:        Data copying in the presence of I/O Errors
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -33,7 +33,6 @@ Source2:        %{name}.keyring
 Source99:       %{name}.changes
 # PATCH-FIX-UPSTREAM no-python2.patch sf#ddrescue#4 mcepl@suse.com
 # Remove dependency on python2
-Patch0:         no-python2.patch
 BuildRequires:  autoconf
 BuildRequires:  libattr-devel
 # Workaround for bsc#1193438
@@ -113,7 +112,6 @@ data to the decompressor; the plugin is still young and might expose bugs.
 
 %prep
 %setup -q
-%autopatch -p1
 
 # Remove build time references so build-compare can do its work
 FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{SOURCE99} '+%%H:%%M')
