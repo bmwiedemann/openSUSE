@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 28 11:43:18 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.1.22
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Build xz tarballs instead of bzip2
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Update README.G80 for gitlab migration
+  * riva_xaa: don't build RivaSetRopPattern when XAA is not supported
+  * autogen.sh: Implement GNOME Build API
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * Replace xf86PciInfo.h with our own pci ids
+
+-------------------------------------------------------------------
 Mon May 29 14:06:57 UTC 2017 - sndirsch@suse.com
 
 - commented out modalias lines in specfile in order to no longer

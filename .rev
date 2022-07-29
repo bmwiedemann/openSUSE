@@ -123,4 +123,25 @@
 - covers missing SLE entry fate#320388 (bsc#1041416)</comment>
     <requestid>499009</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>64891b8fb82dcd7a85c9f7bf42ee2ef1</srcmd5>
+    <version>2.1.22</version>
+    <time>1659106040</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 2.1.22
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Build xz tarballs instead of bzip2
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Update README.G80 for gitlab migration
+  * riva_xaa: don't build RivaSetRopPattern when XAA is not supported
+  * autogen.sh: Implement GNOME Build API
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * Replace xf86PciInfo.h with our own pci ids</comment>
+    <requestid>991536</requestid>
+  </revision>
 </revisionlist>
