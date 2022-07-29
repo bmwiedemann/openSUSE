@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 26 14:30:04 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added "kdump" dependency, yast2-kdump only has a runtime
+  depenency but the package is also needed in the inst-sys
+  (related to bsc#1199840)
+- 20220726
+
+-------------------------------------------------------------------
+Mon Jul 25 15:14:00 UTC 2022 - Shawn W Dunn <sfalken@cloverleaf-linux.org>
+
+- Update MicroOS KDE Pattern to use transactional-update (boo#1201874)
+- 20220725
+
+-------------------------------------------------------------------
 Thu Jul 14 12:38:44 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Restore KDE Desktop as Alpha (boo#1201049)

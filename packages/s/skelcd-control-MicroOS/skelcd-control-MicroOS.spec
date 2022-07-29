@@ -62,6 +62,8 @@ Requires:       yast2-firewall
 Requires:       yast2-installation >= 3.1.217.9
 Requires:       yast2-iscsi-client
 Requires:       yast2-kdump
+# yast2-kdump has only runtime dependency but the package is also needed in the inst-sys
+Requires:       kdump
 Requires:       yast2-multipath
 Requires:       yast2-network >= 3.1.42
 Requires:       yast2-nfs-client
@@ -118,7 +120,7 @@ Requires:       yast2-vm
 
 URL:            https://github.com/yast/skelcd-control-MicroOS
 AutoReqProv:    off
-Version:        20220714
+Version:        20220726
 Release:        0
 Summary:        The MicroOS control file needed for installation
 License:        MIT
