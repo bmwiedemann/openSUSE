@@ -1,5 +1,5 @@
 #
-# spec file for package python-starlette
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,9 +16,17 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-Name:           python-starlette
+Name:           python-starlette%{psuffix}
 Version:        0.20.4
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
@@ -27,25 +35,27 @@ URL:            https://github.com/encode/starlette
 Source:         https://github.com/encode/starlette/archive/refs/tags/%{version}.tar.gz#/starlette-%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module anyio}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module contextlib2}
+BuildRequires:  %{python_module itsdangerous}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing_extensions}
+%if %{with test}
 BuildRequires:  %{python_module aiofiles}
 BuildRequires:  %{python_module aiosqlite}
-BuildRequires:  %{python_module anyio}
-BuildRequires:  %{python_module contextlib2}
 BuildRequires:  %{python_module databases}
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module graphene}
-BuildRequires:  %{python_module itsdangerous}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-multipart}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module trio}
-BuildRequires:  %{python_module typing_extensions}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-base >= 3.7
 BuildArch:      noarch
 %python_subpackages
 
@@ -60,20 +70,26 @@ building high performance asyncio services.
 %python_build
 
 %install
+%if ! %{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 # Remove unrecognized arguments: --strict-config --strict-markers
 sed -i "s|--strict-config||" setup.cfg
 sed -i "s|--strict-markers||" setup.cfg
 sed -i "s| error$||" setup.cfg
 %pytest --asyncio-mode=strict
+%endif
 
+%if ! %{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE.md
 %{python_sitelib}/starlette
 %{python_sitelib}/starlette-%{version}*-info
+%endif
 
 %changelog
