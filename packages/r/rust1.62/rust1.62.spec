@@ -141,7 +141,7 @@ ExcludeArch:    armv6hl
 %if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1550
 %ifarch x86_64 aarch64
 %bcond_without wasm32
-%bcond_with wasi
+%bcond_without wasi
 %else
 %bcond_with wasm32
 %bcond_with wasi
@@ -625,6 +625,10 @@ fi
 rm -rf %{buildroot}/home
 
 # End without test
+
+# Ugly hack to get brp-15-strip-debug call llvm-strip, which is wasm-aware, as system-strip will break wasm-files (same for ar/ranlib)
+export CROSS_COMPILE=llvm-
+
 %endif
 
 %if %{with test}
