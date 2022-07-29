@@ -28,6 +28,7 @@ Source:         %{name}-%{version}.tar.gz
 Patch:          order.patch
 Patch1:         attr.patch
 Patch2:         lang.patch
+Patch3:         rpmlintrc.patch
 BuildRequires:  openssl
 Requires:       fipscheck
 Requires:       mozilla-nss-tools
