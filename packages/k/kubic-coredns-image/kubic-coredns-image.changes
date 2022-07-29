@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 29 06:50:05 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Exclude 32-bit Arm to match kubernetes set of architectures
+
+-------------------------------------------------------------------
 Fri May 28 13:16:28 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Fix org.opensuse.reference
