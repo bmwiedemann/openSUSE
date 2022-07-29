@@ -1,8 +1,7 @@
-diff --git a/unitest-restful.py b/unitest-restful.py
-index 7b77a2b..5f991bd 100755
---- a/unitest-restful.py
-+++ b/unitest-restful.py
-@@ -22,6 +22,7 @@
+diff -ur glances-3.2.7.orig/unitest-restful.py glances-3.2.7/unitest-restful.py
+--- glances-3.2.7.orig/unitest-restful.py	2022-07-28 18:10:35.000000000 +0200
++++ glances-3.2.7/unitest-restful.py	2022-07-28 20:22:43.516291302 +0200
+@@ -12,6 +12,7 @@
  
  import shlex
  import subprocess
@@ -10,20 +9,19 @@ index 7b77a2b..5f991bd 100755
  import time
  import numbers
  import unittest
-@@ -64,7 +65,7 @@ class TestGlances(unittest.TestCase):
+@@ -54,7 +55,7 @@
          global pid
  
          print('INFO: [TEST_000] Start the Glances Web Server')
--        cmdline = "python -m glances -w -p %s" % SERVER_PORT
-+        cmdline = "%s -m glances -w -p %s" % (sys.executable, SERVER_PORT)
+-        cmdline = "python -m glances -B localhost -w -p %s" % SERVER_PORT
++        cmdline = "%s -m glances -B localhost -w -p %s" % (sys.executable, SERVER_PORT)
          print("Run the Glances Web Server on port %s" % SERVER_PORT)
          args = shlex.split(cmdline)
          pid = subprocess.Popen(args)
-diff --git a/unitest-xmlrpc.py b/unitest-xmlrpc.py
-index 7e52ec5..384fa46 100755
---- a/unitest-xmlrpc.py
-+++ b/unitest-xmlrpc.py
-@@ -23,6 +23,7 @@
+diff -ur glances-3.2.7.orig/unitest-xmlrpc.py glances-3.2.7/unitest-xmlrpc.py
+--- glances-3.2.7.orig/unitest-xmlrpc.py	2022-07-28 18:10:35.000000000 +0200
++++ glances-3.2.7/unitest-xmlrpc.py	2022-07-28 20:22:49.160260716 +0200
+@@ -13,6 +13,7 @@
  import json
  import shlex
  import subprocess
@@ -31,11 +29,11 @@ index 7e52ec5..384fa46 100755
  import time
  import unittest
  
-@@ -53,7 +54,7 @@ class TestGlances(unittest.TestCase):
+@@ -43,7 +44,7 @@
          global pid
  
          print('INFO: [TEST_000] Start the Glances Web Server')
--        cmdline = "python -m glances -s -p %s" % SERVER_PORT
+-        cmdline = "python -m glances -B localhost -s -p %s" % SERVER_PORT
 +        cmdline = "%s -m glances -s -p %s" % (sys.executable, SERVER_PORT)
          print("Run the Glances Server on port %s" % SERVER_PORT)
          args = shlex.split(cmdline)
