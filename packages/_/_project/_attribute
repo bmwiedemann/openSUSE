@@ -33,7 +33,7 @@
   boo#1199885: '20220606'
   boo#1199924: '20220601'
   boo#1199925: '20220601'
-  boo#1200275: '20220725'
+  boo#1200275: '20220728'
   boo#1200403: '20220728'
   boo#1200595: '20220614'
   boo#1200600: '20220614'
@@ -55,6 +55,7 @@
   bsc#1191684: '20220728'
   bsc#1198101: '20220728'
   bsc#1198235: '20220503'
+  gh#os-autoinst/opensuse-jobgroups#180: '20220728'
   gh#os-autoinst/os-autoinst-distri-opensuse#15257: '20220719'
   poo#105295: '20220518'
   poo#106676: '20220412'
@@ -105,8 +106,8 @@ splitter-whitelist =
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-# devel:BCI:Tumbleweed for inclusion of BCI containers - rbrown 10 Jun 2022
-devel-whitelist = devel:BCI:Tumbleweed
+# YaST:Head:D-Installer init - rbrown 29 Jul 2022
+devel-whitelist = YaST:Head:D-Installer
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
@@ -138,7 +139,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20220728</value>
+    <value>20220729</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -460,9 +461,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20220728'
-published: '20220725'
-publishing: '20220725'
+    <value>failed: ''
+published: '20220728'
+publishing: '20220728'
 testing: '20220728'
 </value>
   </attribute>
