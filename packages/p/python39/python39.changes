@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 21 14:19:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Switch from %primary_interpreter to prjconf-defined
+  %primary_python (gh#openSUSE/python-rpm-macros#127).
+
+-------------------------------------------------------------------
 Thu Jun  9 16:43:30 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2015-20107-mailcap-unsafe-filenames.patch to avoid

@@ -664,4 +664,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>985337</requestid>
   </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>9749865eb3a63536694c12febd97db4a</srcmd5>
+    <version>3.9.13</version>
+    <time>1659106017</time>
+    <user>RBrownFactory</user>
+    <comment>- Switch from %primary_interpreter to prjconf-defined
+  %primary_python (gh#openSUSE/python-rpm-macros#127).
+</comment>
+    <requestid>990683</requestid>
+  </revision>
 </revisionlist>

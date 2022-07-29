@@ -35,6 +35,14 @@
 %bcond_with base
 %bcond_without general
 %endif
+
+%define         python_pkg_name python39
+%if "%{python_pkg_name}" == "%{primary_python}"
+%define primary_interpreter 1
+%else
+%define primary_interpreter 0
+%endif
+
 %define _version %(c=%{version}; echo ${c/[a-z]*/})
 %define tar_suffix %(c=%{_version}; echo ${c#%{_version}})
 %define python_version %(c=%{_version}; echo ${c:0:3})
@@ -47,14 +55,6 @@
 %define tarversion %{version}
 %else
 %define tarversion %{version}
-%endif
-%define         python_pkg_name python39
-# Will provide the python3-* provides
-# Will do the /usr/bin/python3 and all the core links
-%if 0%{?sle_version} || 0%{?suse_version} >= 1550
-%define primary_interpreter 0
-%else
-%define primary_interpreter 1
 %endif
 # We don't process beta signs well
 %define         folderversion 3.9.13
