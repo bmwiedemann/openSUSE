@@ -6,7 +6,7 @@
     <value>last_seen:
   boo#1094987: '20220728'
   boo#1172073: '20220614'
-  boo#1183454: '20220728'
+  boo#1183454: '20220729'
   boo#1190434: '20220728'
   boo#1190823: '20220409'
   boo#1196201: '20220525'
@@ -38,7 +38,7 @@
   boo#1200595: '20220614'
   boo#1200600: '20220614'
   boo#1200615: '20220627'
-  boo#1200616: '20220728'
+  boo#1200616: '20220729'
   boo#1200682: '20220628'
   boo#1200753: '20220726'
   boo#1200893: '20220718'
@@ -461,10 +461,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20220729'
 published: '20220728'
 publishing: '20220728'
-testing: '20220728'
+testing: '20220729'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
