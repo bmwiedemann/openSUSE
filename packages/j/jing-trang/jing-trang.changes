@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 25 17:12:32 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com>
+
+- Update to 20220510
+- Removed patch:
+  * 0002-Use-Xalan-instead-of-Saxon-for-the-build-655601.patch
+    Use Saxon9 instead of Xalan
+- Recreated patch files
+
+-------------------------------------------------------------------
 Fri Jul  2 11:40:01 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

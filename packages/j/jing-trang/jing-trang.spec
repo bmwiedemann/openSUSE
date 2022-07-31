@@ -1,7 +1,7 @@
 #
 # spec file for package jing-trang
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %global relaxng_hash 1fc8c8d337c2c75b6b15b281f2c69e86110e475f
+#
 Name:           jing-trang
-Version:        20181222
+Version:        20220510
 Release:        0
 Summary:        Schema validation and conversion based on RELAX NG
 License:        BSD-3-Clause
@@ -31,7 +32,6 @@ Source3:        https://repo1.maven.org/maven2/org/relaxng/trang/%{version}/tran
 Source10:       dtdinst.1
 #
 Patch0:         0000-Various-build-fixes.patch
-Patch1:         0002-Use-Xalan-instead-of-Saxon-for-the-build-655601.patch
 Patch2:         no-tests.patch
 Patch3:         old-saxon.patch
 BuildRequires:  ant >= 1.8.2
@@ -126,7 +126,7 @@ mv gcj/{trang,jing}.1 .
 
 rm -r gcj mod/datatype/src/main/org $(find . -name "*.jar")
 %patch0 -p1
-%patch1 -p1
+# %%patch1 -p1
 %patch2 -p1
 %patch3 -p1
 rm -f \

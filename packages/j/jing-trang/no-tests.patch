@@ -1,30 +1,53 @@
---- jing-trang-20181222/build.xml	2021-07-01 11:39:52.944475295 +0200
-+++ jing-trang-20181222/build.xml	2021-07-01 11:41:13.792611378 +0200
-@@ -386,7 +386,7 @@
+From 1c6338f2640ed9e7a93f84986d3019a22450515a Mon Sep 17 00:00:00 2001
+From: Tom Schraitle <tom_schr@web.de>
+Date: Mon, 25 Jul 2022 19:08:57 +0200
+Subject: [PATCH] No tests
+
+---
+ build.xml                | 2 +-
+ build.xsl                | 6 +-----
+ mod/catalog/mod.xml      | 3 +--
+ mod/infer/mod.xml        | 3 +--
+ mod/pattern/mod.xml      | 3 +--
+ mod/rng-jaxp/mod.xml     | 3 +--
+ mod/util/mod.xml         | 3 +--
+ mod/xsd-datatype/mod.xml | 4 +---
+ 8 files changed, 8 insertions(+), 19 deletions(-)
+
+diff --git a/build.xml b/build.xml
+index 51c695f..b88d420 100644
+--- a/build.xml
++++ b/build.xml
+@@ -409,7 +409,7 @@
    <gzip zipfile="${build.dir}/dist/relaxng.tar.gz" src="${build.dir}/relaxng.tar"/>
  </target>
  
--<target name="dist" depends="test,validate,jing-dist,trang-dist,dtdinst-dist,website"
+-<target name="dist" depends="ant-test,validate,jing-dist,trang-dist,dtdinst-dist,website"
 +<target name="dist" depends="validate,jing-dist,trang-dist,dtdinst-dist,website"
  	description="Make a distribution, leaving artifacts in ${build.dir}/dist"/>
  
  <target name="googlecode.properties.available">
---- jing-trang-20181222/build.xsl	2021-07-01 11:39:52.944475295 +0200
-+++ jing-trang-20181222/build.xsl	2021-07-01 11:45:58.721090950 +0200
-@@ -15,11 +15,6 @@
+diff --git a/build.xsl b/build.xsl
+index e45acf6..334b1a6 100644
+--- a/build.xsl
++++ b/build.xsl
+@@ -15,11 +15,7 @@
      <property name="javacc.dir" value="${{lib.dir}}"/>
-     <property name="ant.build.javac.source" value="7"/>
-     <property name="ant.build.javac.target" value="1.7"/>
+     <property name="ant.build.javac.source" value="8"/>
+     <property name="ant.build.javac.target" value="1.8"/>
 -    <taskdef name="testng" classname="org.testng.TestNGAntTask">
 -      <classpath>
 -	<pathelement location="${{lib.dir}}/testng.jar"/>
 -      </classpath>
 -    </taskdef>
++
      <target name="dummy"/>
      <target name="init">
        <mkdir dir="{$build}"/>
---- jing-trang-20181222/mod/catalog/mod.xml	2021-07-01 11:39:52.948475302 +0200
-+++ jing-trang-20181222/mod/catalog/mod.xml	2021-07-01 11:42:11.328708210 +0200
+diff --git a/mod/catalog/mod.xml b/mod/catalog/mod.xml
+index 5398646..ae21910 100644
+--- a/mod/catalog/mod.xml
++++ b/mod/catalog/mod.xml
 @@ -1,6 +1,5 @@
  <module>
 -  <compile test="yes"/>
@@ -33,8 +56,10 @@
    <depends module="util"/>
    <depends module="resolver"/>
    <depends lib="xml-commons-resolver"/>
---- jing-trang-20181222/mod/infer/mod.xml	2021-07-01 11:39:52.960475322 +0200
-+++ jing-trang-20181222/mod/infer/mod.xml	2021-07-01 11:42:17.348718337 +0200
+diff --git a/mod/infer/mod.xml b/mod/infer/mod.xml
+index 8a781e9..e997d69 100644
+--- a/mod/infer/mod.xml
++++ b/mod/infer/mod.xml
 @@ -4,6 +4,5 @@
    <depends module="datatype"/>
    <depends module="xsd-datatype"/>
@@ -43,8 +68,10 @@
 -  <test name="unit" type="testng"/>
 +  <compile test="no"/>
  </module>
---- jing-trang-20181222/mod/pattern/mod.xml	2021-07-01 11:39:52.960475322 +0200
-+++ jing-trang-20181222/mod/pattern/mod.xml	2021-07-01 11:42:23.344728421 +0200
+diff --git a/mod/pattern/mod.xml b/mod/pattern/mod.xml
+index 875f1cb..1f1f199 100644
+--- a/mod/pattern/mod.xml
++++ b/mod/pattern/mod.xml
 @@ -4,6 +4,5 @@
    <depends module="datatype"/>
    <depends module="rng-parse"/>
@@ -53,8 +80,10 @@
 -  <test name="unit" type="testng"/>
 +  <compile test="no"/>
  </module>
---- jing-trang-20181222/mod/rng-jaxp/mod.xml	2021-07-01 11:39:52.964475329 +0200
-+++ jing-trang-20181222/mod/rng-jaxp/mod.xml	2021-07-01 11:42:29.884739430 +0200
+diff --git a/mod/rng-jaxp/mod.xml b/mod/rng-jaxp/mod.xml
+index 48c5d8c..c387216 100644
+--- a/mod/rng-jaxp/mod.xml
++++ b/mod/rng-jaxp/mod.xml
 @@ -8,6 +8,5 @@
    <depends module="pattern"/>
    <depends module="jaxp"/>
@@ -63,8 +92,10 @@
 -  <test name="unit" type="testng"/>
 +  <compile test="no"/>
  </module>
---- jing-trang-20181222/mod/util/mod.xml	2021-07-01 11:39:52.972475342 +0200
-+++ jing-trang-20181222/mod/util/mod.xml	2021-07-01 11:42:35.516748907 +0200
+diff --git a/mod/util/mod.xml b/mod/util/mod.xml
+index d9e1853..5317816 100644
+--- a/mod/util/mod.xml
++++ b/mod/util/mod.xml
 @@ -1,5 +1,4 @@
  <module>
 -  <compile test="yes"/>
@@ -72,8 +103,10 @@
 +  <compile test="no"/>
  </module>
  
---- jing-trang-20181222/mod/xsd-datatype/mod.xml	2021-07-01 11:39:52.972475342 +0200
-+++ jing-trang-20181222/mod/xsd-datatype/mod.xml	2021-07-01 11:42:48.676771055 +0200
+diff --git a/mod/xsd-datatype/mod.xml b/mod/xsd-datatype/mod.xml
+index cc7645b..2d717b3 100644
+--- a/mod/xsd-datatype/mod.xml
++++ b/mod/xsd-datatype/mod.xml
 @@ -3,9 +3,7 @@
    <depends module="datatype"/>
    <depends module="regex"/>
@@ -85,3 +118,6 @@
    <service type="org.relaxng.datatype.DatatypeLibraryFactory">
      <provider classname="com.thaiopensource.datatype.xsd.DatatypeLibraryFactoryImpl"/>
    </service>
+-- 
+2.35.3
+
