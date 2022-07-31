@@ -7,6 +7,15 @@ Mon Jul 11 07:46:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 - Remove 508.patch (merged)
 
 -------------------------------------------------------------------
+Tue Jul  5 12:38:17 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Do not build static libraries
+- Run unit tests
+- Explicit files and directories for includedir, so we can detect
+  what we actually install there
+- 508.patch: fixes invalid arithmetic shift (bsc#1200908, CVE-2022-33070)
+
+-------------------------------------------------------------------
 Tue Nov 23 10:10:53 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop no longer needed rpmlintrc.

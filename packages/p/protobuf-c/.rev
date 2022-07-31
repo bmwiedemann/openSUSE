@@ -166,4 +166,12 @@
     <user>RBrownFactory</user>
     <comment>Revert the revert, protobuf =/= protobuf-c</comment>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>82981c438e93aaf8636f3d606806be77</srcmd5>
+    <version>1.4.1</version>
+    <time>1659301219</time>
+    <user>favogt_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>989809</requestid>
+  </revision>
 </revisionlist>
