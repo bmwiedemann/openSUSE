@@ -33,7 +33,7 @@
 %define piddir /run
 
 Name:           unbound
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 BuildRequires:  flex
 BuildRequires:  ldns-devel >= %{ldns_version}
