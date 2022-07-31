@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 29 02:36:36 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Change the URL in SBAT section to mail:security@suse.de. (bsc#1193282)
+
+-------------------------------------------------------------------
+Mon Jul 25 12:44:24 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Revoked the change in shim.spec for "use common SBAT values (boo#1193282)"
+  - we need to build openSUSE Tumbleweed's shim on Leap 15.4 because Factory
+    is unstable for building out a stable shim binary for signing. (bsc#1198458)
+  - But the rpm-config-suse package in Leap 15.4 is direct copied from SLE 15.4
+    because closing-the-leap-gap. So sbat_distro_* variables are SLE version,
+    not for openSUSE. (bsc#1198458)
+
+-------------------------------------------------------------------
 Tue Jun 28 04:03:45 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Update to 15.6 (bsc#1198458)
