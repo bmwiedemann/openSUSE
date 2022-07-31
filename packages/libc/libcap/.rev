@@ -460,4 +460,19 @@
   * Minor clarification to cap_get_pid() man page concerning pid value within namespaces.</comment>
     <requestid>969556</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>960836f8fd1494fa48d2001136459b93</srcmd5>
+    <version>2.65</version>
+    <time>1659301207</time>
+    <user>favogt_factory</user>
+    <comment>- update to 2.65:
+  * Fix syntax error in DEBUG build of protected code in setcap.c.
+  * Prevent bash from reading the wrong startup files when the capsh --user=xxx
+    argument is used to invoke a shell as the user xxx. This is done by capsh now
+    changing the USER and HOME environment variables when --user is specified.
+    The argument --noenv can be used to suppress this behavior to what used to be
+    the problematic default. (Bug: 215926)
+  * Improved documentation</comment>
+    <requestid>990728</requestid>
+  </revision>
 </revisionlist>

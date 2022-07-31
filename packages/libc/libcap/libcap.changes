@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 22 21:34:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.65:
+  * Fix syntax error in DEBUG build of protected code in setcap.c.
+  * Prevent bash from reading the wrong startup files when the capsh --user=xxx
+    argument is used to invoke a shell as the user xxx. This is done by capsh now
+    changing the USER and HOME environment variables when --user is specified.
+    The argument --noenv can be used to suppress this behavior to what used to be
+    the problematic default. (Bug: 215926)
+  * Improved documentation
+
+-------------------------------------------------------------------
 Tue Apr 12 19:46:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.64:
