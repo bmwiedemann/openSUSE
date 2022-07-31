@@ -45,10 +45,6 @@ update-aliases.py:
 	A program to update aliases.list from the latest kernel	RPM
 	files.  Pass kernel RPM files as arguments.
 
-copy-firmware.sh:
-	A helper script to copy the all listed files in WHENCE to the
-	destination directory.  Used for raw catch-all installation.
-
 install-split.sh:
 	A helper script to copy the files based on WHENCE like the
 	above, but also to create a file list for each topic in

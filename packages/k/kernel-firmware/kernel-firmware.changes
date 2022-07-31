@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Jul 18 07:10:06 UTC 2022 - tiwai@suse.com
+
+- Update to version 20220714 (git commit 84661a3ba62f):
+  * amdgpu: update DMCUB firmware for DCN 3.1.6
+  * WHENCE: Correct dangling symlinks
+  * Correct WHENCE entry for wfx firmware
+  * bnx2: Drop unsupported Broadcom NetXtremeII firmware
+  * bnx2: drop unsupported firmwares
+  * bnx2: sort firmware names in filesystem order
+  * Remove old Broadcom Everest (bnx2x) v4/5 firmware
+  * drop Token Ring network firmwares
+  * Drop TDA7706 radio firmware
+  * Drop Intel WiMax firmware
+  * Drop Computone IntelliPort Plus serial firmware
+  * Drop ATM Ambassador devices firmware
+  * brocade: drop old unsupported firmware revs
+  * amdgpu: update yellow carp DMCUB firmware
+  * linux-firmware: update firmware for MT7622 WiFi device
+  * linux-firmware: update firmware for MT7922 WiFi device
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7922)
+  * linux-firmware: Update firmware file for Intel Bluetooth 9462
+  * linux-firmware: Update firmware file for Intel Bluetooth 9462
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * mediatek: Add SCP firmware for MT8186
+  * rtw88: 8822c: Update normal firmware to v9.9.13
+  * rtw88: 8822c: Update normal firmware to v9.9.12
+- Drop obsoleted temporary patches:
+  wfx-WHENCE-fix.diff
+  brcm-symlink-fixes.diff
+- Minor update of README.build
+- Fix missing aliases for qlogic (bsc#1200889)
+
+-------------------------------------------------------------------
 Mon Jul 04 07:42:16 UTC 2022 - tiwai@suse.com
 
 - Update to version 20220622 (git commit 9ed4d42c51ac):

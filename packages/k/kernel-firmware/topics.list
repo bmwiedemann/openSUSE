@@ -1,12 +1,10 @@
 # FIRSTWORD:	TOPIC		MODULES...
 BCM-0bb4-0306:	brcm		btbcm
-ambassador:	network
 snd-korg1212:	sound
 snd-maestro3:	sound
 snd-ymfpci:	sound
 advansys:	platform
 qla1280:	qlogic
-smctr:		network
 kaweth:		usb-network
 dvb-ttusb-budget: media
 keyspan:	serial
@@ -15,7 +13,6 @@ emi26:		sound
 emi62:		sound
 ti_usb_3410_5052: serial
 whiteheat:	serial
-ip2:		serial
 cpia2:		media
 dabusb:		media
 vicam:		media		gspca_vicam vicam
@@ -36,7 +33,6 @@ e100:		network
 acenic:		network
 tg3:		network
 starfire:	network
-i2400m-usb:	intel
 libertas:	marvell		libertas_tf_usb libertas_sdio libertas_cs usb8xxx btmrvl_sdio
 mwl8k:		marvell
 mwifiex:	mwifiex		mwifiex mwifiex_pcie mwifiex_usb mwifiex_sdio btmrvl_sdio
@@ -46,7 +42,6 @@ cx231xx:	media		cx25840
 tehuti:		network
 typhoon:	network
 yam:		platform
-3c359:		network
 pcnet_cs:	platform	pcnet_cs serial_cs
 3c589_cs:	platform	serial_cs
 3c574_cs:	platform	serial_cs
@@ -82,12 +77,11 @@ s2255drv:	platform
 rtl8192e:	realtek		r8192e_pci
 lgs8gxx:	media
 ib_qib:		qlogic
-qed:		qlogic
+qed:		qlogic		qede qedf qedi
 ueagle-atm:	ueagle
 vxge:		network
 brcmsmac:	brcm
 brcmfmac:	brcm
-tda7706:	media
 ti-vpe:		media
 wl1251:		ti
 wl12xx:		ti		wl12xx wl12xx_sdio wl12xx_spi
@@ -184,7 +178,6 @@ fsl-mc:		dpaa2
 mscc-phy:	platform
 meson-vdec:	media
 ice:		network
-ast:		platform
 inside-secure:	platform	crypto_safexcel
 qcom_q6v5_pas:	qcom
 qcom_q6v5_mss:	qcom
@@ -194,3 +187,4 @@ wfx:		platform
 wave5:		platform
 rvu_cptpf:	platform
 amphion:	platform
+ast:		platform
