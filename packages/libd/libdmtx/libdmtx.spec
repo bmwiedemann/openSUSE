@@ -1,7 +1,7 @@
 #
 # spec file for package libdmtx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 Name:           libdmtx
-Version:        0.7.5
+Version:        0.7.7
 Release:        0
 Summary:        Software for reading and writing Data Matrix barcodes
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://libdmtx.sourceforge.net/
+URL:            https://github.com/dmtx/libdmtx
 Source:         https://github.com/dmtx/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         libdmtx-0.7.4.diff
-# PATCH-FIX-UPSTREAM libdmtx-DmtxPropRowPadBytes.patch
-Patch1:         libdmtx-DmtxPropRowPadBytes.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -63,7 +61,7 @@ its capabilities without extra restrictions or overhead.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
