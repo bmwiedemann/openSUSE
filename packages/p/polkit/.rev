@@ -727,4 +727,13 @@ I didn't encounter any errors while playing around with it in a Live CD. (forwar
   0001-CVE-2021-4115-GHSL-2021-077-fix.patch</comment>
     <requestid>956662</requestid>
   </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>b2668928e8d0a3ee8942b41138b90d9d</srcmd5>
+    <version>0.120</version>
+    <time>1659301222</time>
+    <user>favogt_factory</user>
+    <comment>- split out pkexec into seperate package to make system hardening
+  easier (to avoid installing it jsc#PED-132 jsc#PED-148). (forwarded request 989830 from msmeissn)</comment>
+    <requestid>989831</requestid>
+  </revision>
 </revisionlist>

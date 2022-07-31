@@ -90,6 +90,14 @@ Requires:       typelib-1_0-Polkit-1_0 = %{version}
 %description devel
 Development files for PolicyKit Authorization Framework.
 
+%package -n pkexec
+Summary:        pkexec component of polkit
+Group:          System/Libraries
+Requires:       %{name} = %{version}-%{release}
+
+%description -n pkexec
+This package contains the pkexec setuid root binary part of polkit.
+
 %package doc
 Summary:        Development documentation for PolicyKit
 Group:          Development/Libraries/C and C++
@@ -183,13 +191,17 @@ install -m0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/
 %postun
 %service_del_postun polkit.service
 
-%post
+%post -n pkexec
 %set_permissions %{_bindir}/pkexec
+
+%post
 %set_permissions %{_libexecdir}/polkit-1/polkit-agent-helper-1
 %service_add_post polkit.service
 
-%verifyscript
+%verifyscript -n pkexec
 %verify_permissions -e %{_bindir}/pkexec
+
+%verifyscript
 %verify_permissions -e %{_libexecdir}/polkit-1/polkit-agent-helper-1
 
 %post -n libpolkit-agent-1-0 -p /sbin/ldconfig
@@ -210,7 +222,6 @@ install -m0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/
 %files -f polkit-1.lang
 %license COPYING
 
-%{_mandir}/man1/pkexec.1%{?ext_man}
 %{_mandir}/man1/pkaction.1%{?ext_man}
 %{_mandir}/man1/pkcheck.1%{?ext_man}
 %{_mandir}/man1/pkttyagent.1%{?ext_man}
@@ -231,7 +242,6 @@ install -m0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/
 %attr(0700,polkitd,root) %dir %{_sysconfdir}/polkit-1/rules.d
 %{_bindir}/pkaction
 %{_bindir}/pkcheck
-%verify(not mode) %attr(4755,root,root) %{_bindir}/pkexec
 %{_bindir}/pkttyagent
 %dir %{_libexecdir}/polkit-1
 %{_libexecdir}/polkit-1/polkitd
@@ -252,6 +262,10 @@ install -m0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/
 %{_datadir}/polkit-1/actions/org.freedesktop.policykit.examples.pkexec.policy
 %{_datadir}/gettext/its/polkit.its
 %{_datadir}/gettext/its/polkit.loc
+
+%files -n pkexec
+%{_mandir}/man1/pkexec.1%{?ext_man}
+%verify(not mode) %attr(4755,root,root) %{_bindir}/pkexec
 
 %files doc
 %doc NEWS

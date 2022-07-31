@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 18 09:38:28 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- split out pkexec into seperate package to make system hardening
+  easier (to avoid installing it jsc#PED-132 jsc#PED-148).
+
+-------------------------------------------------------------------
 Tue Feb 22 10:48:15 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - Fixed denial of service via file descriptor leak (bsc#1195542 CVE-2021-4115)
