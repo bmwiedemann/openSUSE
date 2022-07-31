@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu Jul 28 20:04:58 UTC 2022 - dmueller@suse.com
+
+- Update to version 2.6.2+git0.16a3646fd:
+  * [RELEASE] Released version 2.6.2
+  * BUG/MINOR: backend: Fallback on RR algo if balance on source is impossible
+  * BUILD: quic: fix anonymous union for gcc-4.4
+  * BUG/MEDIUM: stconn: Only reset connect expiration when processing backend side
+  * BUILD: add detection for unsupported compiler models
+  * BUG/MEDIUM: mworker: proc_self incorrectly set crashes upon reload
+  * BUG/MAJOR: mux_quic: fix invalid PROTOCOL_VIOLATION on POST data overlap
+  * BUG/MINOR: mworker/cli: relative pid prefix not validated anymore
+  * BUG/MINOR: quic: do not send CONNECTION_CLOSE_APP in initial/handshake
+  * BUG/MINOR: tools: fix statistical_prng_range()'s output range
+  * BUG/MINOR: ssl: allow duplicate certificates in ca-file directories
+  * BUG/MINOR: resolvers: shut off the warning for the default resolvers
+  * MINOR: resolvers: resolvers_destroy() deinit and free a resolver
+  * BUG/MEDIUM: tools: avoid calling dlsym() in static builds (try 2)
+  * BUILD: makefile: Fix install(1) handling for OpenBSD/NetBSD/Solaris/AIX
+  * BUG/MEDIUM: tools: avoid calling dlsym() in static builds
+  * BUG/MINOR: debug: enter ha_panic() only once
+  * BUG/MEDIUM: cli/threads: make "show threads" more robust on applets
+  * BUG/MINOR: quic: fix closing state on NO_ERROR code sent
+  * BUG/MEDIUM: mux-quic: fix server chunked encoding response
+  * CLEANUP: h2: Typo fix in h2_unsubcribe() traces
+  * MINOR: qpack: properly handle invalid dynamic table references
+  * MINOR: h3: handle errors on HEADERS parsing/QPACK decoding
+  * MINOR: h3: add h3c pointer into h3s instance
+  * BUG/MINOR: mux-quic: do not signal FIN if gap in buffer
+  * MINOR: ncbuf: implement ncb_is_fragmented()
+  * MINOR: quic: Increase the QUIC connections RX buffer size (upto 64Kb)
+  * MINOR: quic: Improvements for the datagrams receipt
+  * MINOR: task: Add tasklet_wakeup_after()
+  * MINOR: quic: Duplicated QUIC_RX_BUFSZ definition
+  * MINOR: quic: Add new stats counter to diagnose RX buffer overrun
+  * BUG/MINOR: quic: Dropped packets not counted (with RX buffers full)
+  * BUILD: quic+h3: 32-bit compilation errors fixes
+  * BUG/MAJOR: quic: Big RX dgrams leak with POST requests
+  * BUG/MAJOR: quic: Big RX dgrams leak when fulfilling a buffer
+  * BUG/MINOR: quic: Wrong reuse of fulfilled dgram RX buffer
+  * BUG/MINOR: quic: Missing acknowledgments for trailing packets
+  * MEDIUM: mworker: set the iocb of the socketpair without using fd_insert()
+  * BUG/MEDIUM: mux-h1: Handle connection error after a synchronous send
+  * BUG/MEDIUM: http-ana: Don't wait to have an empty buf to switch in TUNNEL state
+  * BUG/MINOR: mux-h1: Be sure to commit htx changes in the demux buffer
+  * REGTEESTS: filters: Fix CONNECT request in random-forwarding script
+  * BUG/MEDIUM: http-fetch: Don't fetch the method if there is no stream
+  * MINOR: http-htx: Use new HTTP functions for the scheme based normalization
+  * BUG/MEDIUM: h1: Improve authority validation for CONNCET request
+  * MINOR: http: Add function to detect default port
+  * MINOR: http: Add function to get port part of a host
+  * BUG/MINOR: http-htx: Fix scheme based normalization for URIs wih userinfo
+  * BUG/MINOR: peers: fix possible NULL dereferences at config parsing
+  * BUG/MINOR: http-act: Properly generate 103 responses when several rules are used
+  * BUG/MINOR: http-check: Preserve headers if not redefined by an implicit rule
+  * BUG/MINOR: peers/config: always fill the bind_conf's argument
+  * MINOR: fd: Add BUG_ON checks on fd_insert()
+  * CI: re-enable gcc asan builds
+  * BUILD: Makefile: Add Lua 5.4 autodetect
+  * BUG/MEDIUM: ssl/fd: unexpected fd close using async engine
+  * MINOR: fd: add a new FD_DISOWN flag to prevent from closing a deleted FD
+  * BUG/MINOR: http-fetch: Use integer value when possible in "method" sample fetch
+  * BUG/MINOR: http-ana: Set method to HTTP_METH_OTHER when an HTTP txn is created
+  * BUG/MINOR: ssl: Do not look for key in extra files if already in pem
+  * MEDIUM: mux-h2: try to coalesce outgoing WINDOW_UPDATE frames
+- drop lua54.patch (upstream)
+
+-------------------------------------------------------------------
 Sat Jul 09 20:13:15 UTC 2022 - elimat@opensuse.org
 
 - Update to version 2.6.1+git0.f6ca66d44:

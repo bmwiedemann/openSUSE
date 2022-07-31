@@ -1200,4 +1200,12 @@
     <comment>- Update to version 2.6.1+git0.f6ca66d44:</comment>
     <requestid>990410</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>e483bd126b49fb24aa1b8699fab7e998</srcmd5>
+    <version>2.6.2+git0.16a3646fd</version>
+    <time>1659301248</time>
+    <user>favogt_factory</user>
+    <comment>- Update to version 2.6.2+git0.16a3646fd:</comment>
+    <requestid>991607</requestid>
+  </revision>
 </revisionlist>
