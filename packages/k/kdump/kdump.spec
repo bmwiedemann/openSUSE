@@ -49,7 +49,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        1.0.2+git13.ge715180
+Version:        1.0.2+git17.g491c742
 Release:        0
 Summary:        Script for kdump
 License:        GPL-2.0-or-later
@@ -199,18 +199,6 @@ touch %{_sysconfdir}/sysconfig/kdump
 rm %{_localstatedir}/log/dump >/dev/null 2>&1 || true
 %service_del_postun kdump.service
 %service_del_postun kdump-early.service
-
-# Compatibility cruft
-# there is no %%license prior to SLE12
-%if %{undefined _defaultlicensedir}
-%define license %doc
-%else
-# filesystem before SLE12 SP3 lacks /usr/share/licenses
-%if 0%(test ! -d %{_defaultlicensedir} && echo 1)
-%define _defaultlicensedir %{_defaultdocdir}
-%endif
-%endif
-# End of compatibility cruft
 
 %files
 %defattr(-,root,root)

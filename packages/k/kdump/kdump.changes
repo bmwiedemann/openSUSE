@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul  8 19:05:10 UTC 2022 - Jiri Bohac <jbohac@suse.com>
+
+- fix network-related dracut options handling for fadump case
+- drop the elevator=deadline kernel option (bsc#1193211)
+- fix broken URL in manpage (bsc#1187312)
+
+
+-------------------------------------------------------------------
 Wed May  4 15:13:51 UTC 2022 - Jiri Bohac <jbohac@suse.com>
 
 - kdumptool calibrate: add more margin to reservation calculations 
