@@ -21,7 +21,7 @@
 # need ssl always for python-pycurl
 %bcond_without openssl
 Name:           curl
-Version:        7.83.1
+Version:        7.84.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
@@ -35,6 +35,7 @@ Patch1:         dont-mess-with-rpmoptflags.patch
 Patch2:         curl-secure-getenv.patch
 #PATCH-FIX-OPENSUSE bsc#1076446 protocol redirection not supported or disabled
 Patch3:         curl-disabled-redirect-protocol-message.patch
+Patch4:         https://github.com/curl/curl/commit/0484127805dc2cb7c743b67e017a725b5369227d.patch#/tests-for-32bit.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 Requires:       libcurl4 = %{version}

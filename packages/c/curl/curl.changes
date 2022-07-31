@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Sun Jul 24 19:37:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add tests-for-32bit.patch to fix testsuite on 32bit platforms 
+
+-------------------------------------------------------------------
+Mon Jun 27 14:36:10 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 7.84.0:
+  * Security fixes:
+    - (bsc#1200737, CVE-2022-32208): FTP-KRB bad message verification
+    - (bsc#1200736, CVE-2022-32207): Unpreserved file permissions
+    - (bsc#1200735, CVE-2022-32206): HTTP compression denial of service
+    - (bsc#1200734, CVE-2022-32205): Set-Cookie denial of service
+  * Changes:
+    - curl: add --rate to set max request rate per time unit
+    - curl: deprecate --random-file and --egd-file
+    - curl_version_info: add CURL_VERSION_THREADSAFE
+    - CURLINFO_CAPATH/CAINFO: get the default CA paths from libcurl
+    - lib: make curl_global_init() threadsafe when possible
+    - libssh2: add CURLOPT_SSH_HOSTKEYFUNCTION
+    - opts: deprecate RANDOM_FILE and EGDSOCKET
+    - socks: support unix sockets for socks proxy 
+  * Bugfixes:
+    - aws-sigv4: fix potentional NULL pointer arithmetic
+    - bindlocal: don't use a random port if port number would wrap
+    - c-hyper: mark status line as status for Curl_client_write()
+    - ci: avoid `cmake -Hpath`
+    - CI: bump FreeBSD 13.0 to 13.1
+    - ci: update github actions
+    - cmake: add libpsl support
+    - cmake: do not add libcurl.rc to the static libcurl library
+    - cmake: enable curl.rc for all Windows targets
+    - cmake: fix detecting libidn2
+    - cmake: support adding a suffix to the OS value
+    - configure: skip libidn2 detection when winidn is used
+    - configure: use the SED value to invoke sed
+    - configure: warn about rustls being experimental
+    - content_encoding: return error on too many compression steps
+    - cookie: address secure domain overlay
+    - cookie: apply limits
+    - copyright.pl: parse and use .reuse/dep5 for skips
+    - copyright: make repository REUSE compliant
+    - curl.1: add a few see also --tls-max
+    - curl.1: mention exit code zero too
+    - curl: re-enable --no-remote-name
+    - curl_easy_pause.3: remove explanation of progress function
+    - curl_getdate.3: document that some illegal dates pass through
+    - Curl_parsenetrc: don't access local pwbuf outside of scope
+    - curl_url_set.3: clarify by default using known schemes only
+    - CURLOPT_ALTSVC.3: document the file format
+    - CURLOPT_FILETIME.3: fix the protocols this works with
+    - CURLOPT_HTTPHEADER.3: improve comment in example
+    - CURLOPT_NETRC.3: document the .netrc file format
+    - CURLOPT_PORT.3: We discourage using this option
+    - CURLOPT_RANGE.3: remove ranged upload advice
+    - digest: added detection of more syntax error in server headers
+    - digest: tolerate missing "realm"
+    - digest: unquote realm and nonce before processing
+    - DISABLED: disable 1021 for hyper again
+    - docs/cmdline-opts: add copyright and license identifier to each file
+    - docs/CONTRIBUTE.md: document the 'needs-votes' concept
+    - docs: clarify data replacement policy for MIME API
+    - doh: remove UNITTEST macro definition
+    - examples/crawler.c: use the curl license
+    - examples: remove fopen.c and rtsp.c
+    - FAQ: Clarify Windows double quote usage
+    - fopen: add Curl_fopen() for better overwriting of files
+    - ftp: restore protocol state after http proxy CONNECT
+    - ftp: when failing to do a secure GSSAPI login, fail hard
+    - GHA/hyper: enable debug in the build
+    - gssapi: improve handling of errors from gss_display_status
+    - gssapi: initialize gss_buffer_desc strings
+    - headers api: remove EXPERIMENTAL tag
+    - http2: always debug print stream id in decimal with %u
+    - http2: reject overly many push-promise headers
+    - http: restore header folding behavior
+    - hyper: use 'alt-used'
+    - krb5: return error properly on decode errors
+    - lib: make more protocol specific struct fields #ifdefed
+    - libcurl-security.3: add "Secrets in memory"
+    - libcurl-security.3: document CRLF header injection
+    - libssh: skip the fake-close when libssh does the right thing
+    - links: update dead links to the curl-wiki
+    - log2changes: do not indent empty lines [ci skip]
+    - macos9: remove partial support
+    - Makefile.am: fix portability issues
+    - Makefile.m32: delete obsolete options, improve -On [ci skip]
+    - Makefile.m32: delete two obsolete OpenSSL options [ci skip]
+    - Makefile.m32: stop forcing XP target with ipv6 enabled [ci skip]
+    - max-time.d: clarify max-time sets max transfer time
+    - mprintf: ignore clang non-literal format string
+    - netrc: check %USERPROFILE% as well on Windows
+    - netrc: support quoted strings
+    - ngtcp2: allow curl to send larger UDP datagrams
+    - ngtcp2: correct use of ngtcp2 and nghttp3 signed integer types
+    - ngtcp2: enable Linux GSO
+    - ngtcp2: extend QUIC transport parameters buffer
+    - ngtcp2: fix alert_read_func return value
+    - ngtcp2: fix typo in preprocessor condition
+    - ngtcp2: handle error from ngtcp2_conn_submit_crypto_data
+    - ngtcp2: send appropriate connection close error code
+    - ngtcp2: support boringssl crypto backend
+    - ngtcp2: use helper funcs to simplify TLS handshake integration
+    - ntlm: provide a fixed fake host name
+    - projects: fix third-party SSL library build paths for Visual Studio
+    - quic: add Curl_quic_idle
+    - quiche: support ca-fallback
+    - rand: stop detecting /dev/urandom in cross-builds
+    - remote-name.d: mention --output-dir
+    - runtests.pl: add the --repeat parameter to the --help output
+    - runtests: fix skipping tests not done event-based
+    - runtests: skip starting the ssh server if user name is lacking
+    - scripts/copyright.pl: fix the exclusion to not ignore man pages
+    - sectransp: check for a function defined when __BLOCKS__ is undefined
+    - select: return error from "lethal" poll/select errors
+    - server/sws: support spaces in the HTTP request path
+    - speed-limit/time.d: mention these affect transfers in either direction
+    - strcase: some optimisations
+    - test 2081: add a valid reply for the second request
+    - test 675: add missing CR so the test passes when run through Privoxy
+    - test414: add the '--resolve' keyword
+    - test681: verify --no-remote-name
+    - tests 266, 116 and 1540: add a small write delay
+    - tests/data/test1501: kill ftp server after slow LIST response
+    - tests/getpart: fix getpartattr to work with "data" and "data2"
+    - tests/server/sws.c: change the HTTP writedelay unit to milliseconds
+    - test{440,441,493,977}: add "HTTP proxy" keywords
+    - tool_getparam: fix --parallel-max maximum value constraint
+    - tool_operate: make sure --fail-with-body works with --retry
+    - transfer: fix potential NULL pointer dereference
+    - transfer: maintain --path-as-is after redirects
+    - transfer: upload performance; avoid tiny send
+    - url: free old conn better on reuse
+    - url: remove redundant #ifdefs in allocate_conn()
+    - url: URL encode the path when extracted, if spaces were set
+    - urlapi: make curl_url_set(url, CURLUPART_URL, NULL, 0) clear all parts
+    - urlapi: support CURLU_URLENCODE for curl_url_get()
+    - urldata: reduce size of a few struct fields
+    - urldata: remove three unused booleans from struct UserDefined
+    - urldata: store tcp_keepidle and tcp_keepintvl as ints
+    - version: allow stricmp() for sorting the feature list
+    - vtls: make curl_global_sslset thread-safe
+    - wolfssh.h: removed
+    - wolfssl: correct the failf() message when a handle can't be made
+    - wolfSSL: explicitly use compatibility layer
+    - x509asn1: mark msnprintf return as unchecked 
+
+-------------------------------------------------------------------
 Wed May 11 07:11:50 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to 7.83.1:
