@@ -1309,4 +1309,12 @@ See-also: gnupg-announce/2019q1/000434.html
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>978674</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>a4613c738f50ee99a2bf148b2e159984</srcmd5>
+    <version>2.3.7</version>
+    <time>1659301218</time>
+    <user>favogt_factory</user>
+    <comment>GnuPG 2.3.7 CVE-2022-34903 boo#1201225 (forwarded request 988764 from AndreasStieger)</comment>
+    <requestid>989805</requestid>
+  </revision>
 </revisionlist>

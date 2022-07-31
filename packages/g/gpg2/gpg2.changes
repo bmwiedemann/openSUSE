@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 12 22:06:02 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GnuPG 2.3.7:
+  * CVE-2022-34903: garbled status messages could trick gpgme and
+    other parsers to accept faked status lines [boo#1201225]
+  * A number of bug fixes to the gpg command line interface
+  * gpgsm gained a number of new options and got some rework on
+    the PKCS#12 parser to support DFN issues keys
+  * The gpg agent got some added options and UI tweaks
+  * smart card support got a number of bug fixes, and improved
+    support for Technology Nexus cards and Yubikey
+  * The Telesec ESIGN application is now supported
+
+-------------------------------------------------------------------
 Mon May 16 09:12:06 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - added tpm support, added a new subpackage gpg2-tpm
