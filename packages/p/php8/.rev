@@ -280,4 +280,15 @@
   https://www.php.net/ChangeLog-8.php#8.1.7</comment>
     <requestid>981968</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>51df7b7b71d92999f4af9cdae3cb4a69</srcmd5>
+    <version>8.1.8</version>
+    <time>1659301225</time>
+    <user>favogt_factory</user>
+    <comment>- version update to 8.1.8
+  * This is a security release.
+  https://www.php.net/ChangeLog-8.php#8.1.8
+- fixes CVE-2022-31627 [bsc#1201499]</comment>
+    <requestid>989872</requestid>
+  </revision>
 </revisionlist>

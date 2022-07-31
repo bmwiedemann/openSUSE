@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 18 08:04:24 UTC 2022 - pgajdos@suse.com
+
+- version update to 8.1.8
+  * This is a security release.
+  https://www.php.net/ChangeLog-8.php#8.1.8
+- fixes CVE-2022-31627 [bsc#1201499]
+
+-------------------------------------------------------------------
 Fri Jun 10 03:54:53 UTC 2022 - pgajdos@suse.com
 
 - version update to 8.1.7
