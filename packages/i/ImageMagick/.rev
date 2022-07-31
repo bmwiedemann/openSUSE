@@ -3372,4 +3372,41 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   https://github.com/ImageMagick/Website/blob/main/ChangeLog.md (forwarded request 981212 from dirkmueller)</comment>
     <requestid>981245</requestid>
   </revision>
+  <revision rev="253" vrev="1">
+    <srcmd5>89695c310822ad4e93a995201ab1a854</srcmd5>
+    <version>7.1.0.44</version>
+    <time>1659301235</time>
+    <user>favogt_factory</user>
+    <comment>- version update to 7.1.0.44
+  upstream changelog:
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md
+- modified patches
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)
+
+- update to 7.1.0.42:
+  * incorrect pointer update when computing median @ ImageMagick/ImageMagick#5298
+  * Added extra check because the flag was removed in 0.21-Beta1.
+  * the -transparent-color option accepts colornames @ ImageMagick/ImageMagick#5297
+  * fix MVG stroke-opacity issues
+  * map channel parameter to pixel channel offset @ ImageMagick/ImageMagick#5308
+  * beta release
+  * preserve input depth @ ImageMagick/ImageMagick6#188
+  * update to latest automake/autoconf release
+  * recognize SVG file if it starts with whitespace @ ImageMagick/ImageMagick#5294
+  * Removed unused stealth flag.
+  * Removed used path field.
+  * Removed unused target field.
+  * Removed unused exempt field.
+  * Added extra option to the skip spaces to the MagicInfo.
+  * Always start at the start of the string when comparing the magic value.
+  * cosmetic
+  * avoid OMP deadlock @ ImageMagick/ImageMagick#5301
+  * prevent undefined shift
+  * prevent possible buffer overflow
+  * correct copy/paste error
+  * We need to free the stream ourselves when the call to FT_Open_Face fails.
+  * Added missing call to DestroyString.
+  * MVG requires seekable stream</comment>
+    <requestid>991214</requestid>
+  </revision>
 </revisionlist>

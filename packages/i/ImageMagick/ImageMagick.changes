@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Tue Jul 26 07:53:29 UTC 2022 - pgajdos@suse.com
+
+- version update to 7.1.0.44
+  upstream changelog:
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md
+- modified patches
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)
+
+-------------------------------------------------------------------
+Mon Jul 11 11:36:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0.42:
+  * incorrect pointer update when computing median @ ImageMagick/ImageMagick#5298
+  * Added extra check because the flag was removed in 0.21-Beta1.
+  * the -transparent-color option accepts colornames @ ImageMagick/ImageMagick#5297
+  * fix MVG stroke-opacity issues
+  * map channel parameter to pixel channel offset @ ImageMagick/ImageMagick#5308
+  * beta release
+  * preserve input depth @ ImageMagick/ImageMagick6#188
+  * update to latest automake/autoconf release
+  * recognize SVG file if it starts with whitespace @ ImageMagick/ImageMagick#5294
+  * Removed unused stealth flag.
+  * Removed used path field.
+  * Removed unused target field.
+  * Removed unused exempt field.
+  * Added extra option to the skip spaces to the MagicInfo.
+  * Always start at the start of the string when comparing the magic value.
+  * cosmetic
+  * avoid OMP deadlock @ ImageMagick/ImageMagick#5301
+  * prevent undefined shift
+  * prevent possible buffer overflow
+  * correct copy/paste error
+  * We need to free the stream ourselves when the call to FT_Open_Face fails.
+  * Added missing call to DestroyString.
+  * MVG requires seekable stream
+  * Added extra malloc method to avoid early calls to the policy checks on Windows.
+  * Removed defines.
+  * Only check for dll's in non static build.
+  * Set the client name and path earlier.
+  * fix background opacity rounding @ ImageMagick/ImageMagick#5264
+  * empty result on conversion from tiff to pdf @ ImageMagick/ImageMagick#5256
+  * Corrected patch that was made for #5256.
+  * Pass negative interline_spacing to pango
+  * Also check extension to fix possible stack overflow.
+  * eliminate possible buffer overflow
+  * set group 4 photometric to min-is-white
+  * dasharray requires non-zero values
+  * eliminate compiler warning
+  * only permit one rows/columns keyword
+  * Moved allocation back to the correct spot to avoid bypassing SetImageExtent.
+  * Also restore setting quantum_info to null.
+  * eliminate uninitialized value warning
+  * Make sure all text strings are freed when realloc fails.
+  * Reset primitive_info inside RenderMVGContent because this address could point to another address.
+  * Always check if .text is set instead.
+  * eliminate uninitialized alpha pixel
+  * recognize read-mask & write-mask for -channel option
+  * eliminate compiler warning
+  * fix scrambled image @ ImageMagick/ImageMagick#5291
+  * yikes, misspelled 'level'
+  * Fixed possible memory leak.
+  * support floating point formats
+  * initialize date:precision in private TimerComponentGenesis() method
+  * check for -1 is not required
+  * refactor date:precision flow
+  * eliminate compiler warning
+  * correct formulation of the phash normalization
+  * phash normalization is conventional RMS calculation
+  * only check shread count once
+  * add private ShredMagickMemory() method to hide contents of memory buffers
+    before they are relinquished
+  * system:shred value has precedence over MAGICK_SHRED_PASSES
+  * support shredding memory pools
+  * update memory pointer
+  * Silenced warning.
+  * Corrected documentation.
+  * first pass is fast for performance, second is crytographically strong
+  * recommend shred value of 1 for performance reasons
+  * only set the # of shred passes one time
+  * if enabled, shred streams
+  * unmap mapped pixels
+  * default mapped member to false
+  * don't shred streaming pixels
+  * rework shred passes
+  * optimize performance
+  * change per lint advisement
+  * typecast per lint advisement
+  * eliminate compiler warning
+  * eliminate lint warnings
+  * eliminate lint warnings
+  * support date:timestamp property
+  * eliminate lint warnings
+  * set timestamp from image->timestamp member
+  * eliminate lint warnings
+  * support MAGICK_DATE_PRECISION and registrydateprecision defines
+  * support registry:precision define
+  * need at least one policy defined
+  * eliminate lint warnings
+  * note, system:precision is deprecated
+  * eliminate icc compiler warnings
+  * eliminate icc compiler warnings
+  * eliminate compiler warning
+  * Reverted incorrect patch when doing auto-orient of an image that is
+    right-top or left-bottom.#
+  * Corrected conversion from flip to Orientation.
+  * Only close the file blob when gzopen is successful (#5233).
+  * Added method to add utf8 support for gzopen on Windows.
+  * Only parse SOURCE_DATE_EPOCH once.
+  * Restored check that did not seem to be necessary.
+  * Whitespace
+  * Limit the value of min_channels in the PSDInfo inside the tiff coder to
+    make it possible to read images with a lot of meta channels
+  * Make sure that the creation and modification date have the same value in
+    both places and added option to override this (pdf:create-epoch and
+    pdf:modify-epoch)
+  * Added option to specify the creator (pdf:creator) and use that as
+    xap:CreatorTool instead.
+  * Added WritePDFValue method that can be reused to write other values.
+  * Use the new method to write the other values.
+  * Added option to specify the keywords (pdf:keywords) and use that as
+    pdf:Keywords in the xmp profile.
+  * Only check if magick is PDFA once.
+  * Added option to specify the subject (pdf:subject).
+  * Also fix incorrect fclose for bzlib.
+  * collect VICAR properties
+  * fix improper close when opening zipped file
+  * Restored setting the file to NULL
+  * Also remove date:timestamp when stripping the image.
+
+-------------------------------------------------------------------
 Tue Jun  7 20:51:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update version to 7.1.0.37

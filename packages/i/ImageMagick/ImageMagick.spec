@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.1.0
-%define mfr_revision   37
+%define mfr_revision   44
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -39,9 +39,9 @@ Summary:        Viewer and Converter for Images
 License:        ImageMagick
 Group:          Productivity/Graphics/Other
 URL:            https://imagemagick.org/
-Source0:        https://imagemagick.org/download/releases/ImageMagick-%{mfr_version}-%{mfr_revision}.tar.bz2
+Source0:        https://imagemagick.org/archive/releases/ImageMagick-%{mfr_version}-%{mfr_revision}.tar.xz
 Source1:        baselibs.conf
-Source2:        https://imagemagick.org/download/releases/ImageMagick-%{mfr_version}-%{mfr_revision}.tar.bz2.asc
+Source2:        https://imagemagick.org/archive/releases/ImageMagick-%{mfr_version}-%{mfr_revision}.tar.xz.asc
 Source3:        ImageMagick.keyring
 # suse specific patches
 Patch0:         ImageMagick-configuration-SUSE.patch
@@ -63,7 +63,6 @@ BuildRequires:  libwmf-devel
 BuildRequires:  xdg-utils
 BuildRequires:  xz-devel
 BuildRequires:  zip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version} >= 1315
 BuildRequires:  dejavu-fonts
 %endif
