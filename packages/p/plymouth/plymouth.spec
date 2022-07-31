@@ -36,31 +36,31 @@ Patch0:         plymouth-dracut-path.patch
 Patch1:         plymouth-some-greenish-openSUSE-colors.patch
 # PATCH-FIX-UPSTREAM plymouth-manpages.patch bnc#871419 idoenmez@suse.de -- Fix man page installation
 Patch2:         plymouth-manpages.patch
-# PATCH-FIX-OPENSUSE plymouth-disable-fedora-logo.patch qzhao@opensuse.org -- Disable the fedora logo reference which is not in openSUSE.
+# PATCH-FIX-OPENSUSE plymouth-disable-fedora-logo.patch qzhao@suse.com -- Disable the fedora logo reference which is not in openSUSE.
 Patch3:         plymouth-disable-fedora-logo.patch
-# PATCH-FIX-OPENSUSE plymouth-only_use_fb_for_cirrus_bochs.patch bnc#888590 boo#1172028 bsc#1181913 fvogt@suse.com -- force fb for cirrus and bochs, force drm otherwise. replace removal of framebuffer driver and plymouth-ignore-cirrusdrm.patch with single patch.
+# PATCH-FIX-OPENSUSE plymouth-only_use_fb_for_cirrus_bochs.patch bnc#888590 boo#1172028 bsc#1181913 fvogt@suse.com -- Force fb for cirrus and bochs, force drm otherwise. replace removal of framebuffer driver and plymouth-ignore-cirrusdrm.patch with single patch.
 Patch4:         plymouth-only_use_fb_for_cirrus_bochs.patch
-# PATCH-FIX-OPENSUSE plymouth-crash-avoid-on-keyboard-remove-input-handler.patch bsc#1193736 qzhao@suse.com -- Confirm keyboard handler list not NULL before release memory to avoid crash.
-Patch5:         plymouth-crash-avoid-on-keyboard-remove-input-handler.patch
+# PATCH-FIX-OPENSUSE plymouth-keep-KillMode-none.patch bsc#1177082 bsc#1184087 boo#1182145 qzhao@suse.com -- Keep the plymouth-start.service KillMode=none.
+Patch5:         plymouth-keep-KillMode-none.patch
 # PATCH-FIX-OPENSUSE plymouth-install-label-library-and-font-file-to-initrd.patch boo#1183425 boo#1184309 qzhao@suse.com -- Pack label plugin and font into initram to ensure notice info could successfully show when partition encrypted.
 Patch6:         plymouth-install-label-library-and-font-file-to-initrd.patch
-# PATCH-FIX-OPENSUSE plymouth-screen-twice-scale-on-160DPI-higher.patch boo#1183425 boo#1184309 qzhao@suse.com -- When DPI > 160, screen will scale output twice.
-Patch7:         plymouth-screen-twice-scale-on-160DPI-higher.patch
 # PATCH-FIX-OPENSUSE plymouth-quiet-dracut-build-info.patch bsc#1189613 qzhao@suse.com -- Hide unuseful output when re-generate initrd.
-Patch8:         plymouth-quiet-dracut-build-info.patch
+Patch7:         plymouth-quiet-dracut-build-info.patch
 # PATCH-FIX-OPENSUSE plymouth-watermark-config.patch bsc#1189613 qzhao@suse.com -- Add two-step water mark config support.
-Patch9:         plymouth-watermark-config.patch
+Patch8:         plymouth-watermark-config.patch
 # PATCH-FIX-OPENSUSE plymouth-log-on-default.patch bsc#1193736 qzhao@suse.com -- Enable plymouth log by default, help to resolve random appear problems.
-Patch10:        plymouth-log-on-default.patch
-# PATCH-FIX-OPENSUSE plymouth-keep-KillMode-none.patch bsc#1177082 bsc#1184087 boo#1182145 qzhao@suse.com -- Keep the plymouth-start.service KillMode=none.
-Patch11:        plymouth-keep-KillMode-none.patch
-# PATCH-FIX-UPSTREAM 0001-Add-label-ft-plugin.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
+Patch9:         plymouth-log-on-default.patch
+# PATCH-FIX-OPENSUSE plymouth-screen-twice-scale-on-160DPI-higher.patch boo#1183425 boo#1184309 qzhao@suse.com -- When DPI > 160, screen will scale output twice.
+Patch10:        plymouth-screen-twice-scale-on-160DPI-higher.patch
+# PATCH-FIX-OPENSUSE plymouth-crash-avoid-on-keyboard-remove-input-handler.patch bsc#1193736 qzhao@suse.com -- Confirm keyboard handler list not NULL before release memory to avoid crash.
+Patch11:        plymouth-crash-avoid-on-keyboard-remove-input-handler.patch
+# PATCH-FIX-UPSTREAM 0001-Add-label-ft-plugin.patch boo#959986 fvogt@suse.com -- Add ability to output text in initrd needed for encryption.
 Patch1001:      0001-Add-label-ft-plugin.patch
-# PATCH-FIX-UPSTREAM 0002-Install-label-ft-plugin-into-initrd-if-available.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
+# PATCH-FIX-UPSTREAM 0002-Install-label-ft-plugin-into-initrd-if-available.patch boo#959986 fvogt@suse.com -- Add ability to output text in initrd needed for encryption.
 Patch1002:      0002-Install-label-ft-plugin-into-initrd-if-available.patch
-# PATCH-FIX-UPSTREAM 0003-fix_null_deref.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
+# PATCH-FIX-UPSTREAM 0003-fix_null_deref.patch boo#959986 fvogt@suse.com -- Add ability to output text in initrd needed for encryption.
 Patch1003:      0003-fix_null_deref.patch
-# PATCH-FIX-UPSTREAM 0004-label-ft-fix-alignment.patch boo#959986 fvogt@suse.com -- fix alignment for label-ft
+# PATCH-FIX-UPSTREAM 0004-label-ft-fix-alignment.patch boo#959986 fvogt@suse.com -- Fix alignment for label-ft
 Patch1004:      0004-label-ft-fix-alignment.patch
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
@@ -398,6 +398,7 @@ make %{?_smp_mflags}
 %install
 %make_install
 
+# *.la are files generated during compilation, useless for final user.
 find %{buildroot} -type f -name "*.la" -delete
 
 # Glow isn't quite ready for primetime
@@ -405,15 +406,14 @@ rm -rf %{buildroot}%{_datadir}/plymouth/themes/glow/
 
 # We will nolonger ship plymouthd.conf, Plymouthd will read /usr/share/plymouth/plymouthd.defaults if /etc/plymouth/plymouthd.conf doesn't exist(jsc#SLE-11637).
 rm -f %{buildroot}%{_sysconfdir}/plymouth/plymouthd.conf
-rm -f %{buildroot}%{_datadir}/plymouth/plymouthd.conf
 
-# Move logrotate files from user specific directory /etc/logrotate.d
-# to vendor specific directory /usr/etc/logrotate.d.
+# Move logrotate files from user specific directory /etc/logrotate.d to vendor specific directory /usr/etc/logrotate.d.
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
 mv %{buildroot}%{_sysconfdir}/logrotate.d/bootlog %{buildroot}%{_distconfdir}/logrotate.d/bootlog
 %endif
 
+# Split lang to seperate package.
 %find_lang %{name}
 
 %post

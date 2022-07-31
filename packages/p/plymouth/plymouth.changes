@@ -20,14 +20,14 @@ Wed Jun 29 08:52:34 UTC 2022 - Stefan Schubert <schubi@suse.com>
 -------------------------------------------------------------------
 Sun May 15 15:58:33 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
-- Add plymouth-crash-avoid-on-keyboard-remove-input-handler.patch
+- Add plymouth-crash-avoid-on-keyboard-remove-input-handler.patch:
   Confirm keyboard handler list not NULL before release memory
   to avoid crash(bsc#1193736).
 
 -------------------------------------------------------------------
 Sun May 15 14:38:55 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
-- Add code to plymouth-watermark-config.patch in order to install
+- Update plymouth-watermark-config.patch: in order to install
   the Watermark image file to initrd
 - Refresh patches to apply cleanly
 
@@ -391,7 +391,7 @@ Wed Aug 18 07:52:38 UTC 2021 - pandom79@gmail.com
 -------------------------------------------------------------------
 Fri May 14 14:19:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
-- Do not own /usr/share/locale (owned by filesystem):
+- Update plymouth.spec: Do not own /usr/share/locale (owned by filesystem):
   + Split out -lang package
   + Use find_lang macro to create file list for -lang package
 
