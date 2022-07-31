@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 25 15:26:05 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Execute the command grub2-mkpasswd-pbkdf2 in the target system
+  so the module can run in a minimal container (bsc#1199840).
+- 4.5.2
+
+-------------------------------------------------------------------
 Thu Apr  7 13:21:58 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
 
 - AutoYaST: do not clone device for hibernation and also check
@@ -9,7 +16,7 @@ Thu Apr  7 13:21:58 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
 -------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
-- Bump version to 4.5.0 (#bsc1198109)
+- Bump version to 4.5.0 (bsc#1198109)
 
 -------------------------------------------------------------------
 Fri Jan 28 22:37:00 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
