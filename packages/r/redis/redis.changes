@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 18 14:36:34 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Security update to version 7.0.4
+  (CVE-2022-31144) A specially crafted XAUTOCLAIM command on a stream
+  key in a specific state may result with heap overflow, and potentially
+  remote code execution. The problem affects Redis versions 7.0.0 or newer.
+
+-------------------------------------------------------------------
 Mon Jul 11 15:02:24 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 7.0.3
