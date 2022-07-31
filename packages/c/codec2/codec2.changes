@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 17 07:02:37 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 1.0.5
+  * Bump version to 1.0.5 to clearly delineate from various 1.0.4
+    tags, otherwise the same as 1.0.4_rc2
+- Update to version 1.0.4
+  * 2020B,
+  * build system and tools maintenance.
+  * This RC fixes FreeDV API backwards compatibility issue in v1.0.4
+
+-------------------------------------------------------------------
 Fri Jan 21 07:44:06 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0.3:

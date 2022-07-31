@@ -71,4 +71,12 @@
 - Disable unit tests as they were not run anyways and require octave</comment>
     <requestid>947868</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fafdf8a49314589ef50bf5115305eb21</srcmd5>
+    <version>1.0.5</version>
+    <time>1659301221</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>989824</requestid>
+  </revision>
 </revisionlist>

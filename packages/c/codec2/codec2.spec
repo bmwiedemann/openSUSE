@@ -18,7 +18,7 @@
 
 %define libname lib%{name}-1_0
 Name:           codec2
-Version:        1.0.3
+Version:        1.0.5
 Release:        0
 Summary:        Low bit rate speech codec
 # octave and asterisk directories contain GPL-2.0 licensed code but its not
