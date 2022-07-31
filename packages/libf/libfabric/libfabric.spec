@@ -17,10 +17,10 @@
 
 
 #
-%define git_ver .0.e800ff281fdb
+%define git_ver .0.abb0b891e97a
 
 Name:           libfabric
-Version:        1.14.1
+Version:        1.15.1
 Release:        0
 Summary:        User-space RDMA Fabric Interfaces
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -28,6 +28,7 @@ Group:          Development/Libraries/C and C++
 Source:         %{name}-%{version}%{git_ver}.tar.bz2
 Source1:        baselibs.conf
 Patch0:         libfabric-libtool.patch
+Patch1:         prov-opx-Correctly-disable-OPX-if-unsupported.patch
 URL:            http://www.github.com/ofiwg/libfabric
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -70,6 +71,7 @@ services, such as RDMA. This package contains the development files.
 %prep
 %setup -q -n  %{name}-%{version}%{git_ver}
 %patch0 -p1
+%patch1
 
 %build
 %define _lto_cflags %{nil}

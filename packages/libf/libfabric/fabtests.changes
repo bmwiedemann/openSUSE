@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Thu Jun 23 10:36:09 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.15.1
+  - Core
+    - Fix fi_info indentation error in fi_tostr
+    - hmem_ze: Add runtime option to choose specific copy engine
+    - Cleanup of configure HMEM checks
+    - Fixed stringop-truncation in ofi_ifaddr_get_speed
+    - Add utility provider log suffix to make logs easier to read
+    - Fix truncation of ipv6 addressing
+    - hmem: add support for AWS Trainium devices
+    - Fix potential sscanf overflows
+    - hmem: pass through device and flags when querying memory interface
+    - Rework locking in several areas to convert spinlocks to mutexes
+    - Add new locking abstractions to select lock types at runtime
+    - Add new FI_PROTO_RXM_TCP for optimized rxm over tcp path
+    - Fix windows implementation to remove fd from poll set
+  - EFA
+    - Added windows support through efawin (https://github.com/aws/efawin)
+    - Added support of AWS neuron.
+    - Added support of using gdrcopy to copy data from host to device.
+    - Fixed a bug that cause 0 byte read to fail.
+    - Fixed a memory corruption issue that can caused forked process to crash.
+    - Extended testing coverage through new pytest based testing framework.
+  - HOOKS
+    - Add new hooking provider dmabuf_peer_mem
+    - Enable DL build of hooking providers
+    - Add HMEM memory registration hook
+  - OPX
+    - New provider supporting Cornelis Networks Omni-path hardware
+  - PSM3
+    - Updated psm3 to match IEFS 11.2.0.0 release
+    - Added support for sockets (TCP/UDP) via a runtime selectable Hardware
+  Abstraction Layer (HAL)
+    - Added support for IPv6 addressing in RoCE and sockets
+    - Added various NIC selection filtering options (wildcarded NIC name,
+      address format, wildcarded IP subnet, link speed)
+    - Performance tuning in conjunction with OneAPI and OneCCL
+    - Improved PSM3_IDENTIFY output
+    - Rename most internal symbols to psm3_
+    - Corrected vulnerabilities found during Coverity scans
+    - configure options refined and help text improved
+    - PSM3_MULTI_EP has been deprecated (recommend always enabled, default
+      is enabled [same default as previous releases])
+    - Various bug fixes
+  - RxM
+    - Add check that atomic size is valid
+    - Add support to passthru calls to tcp provider in specific
+  - TCP
+    - Add assert to verify RMA source/target msg sizes match
+    - Wake-up threads blocked on CQ to update their poll events
+    - Fix use of incorrect events in progress handler
+    - Fixes for various compile warnings, mostly on Windows
+    - Add support for FI_RMA_EVENT capability
+    - Add support for completion counters
+    - Fix check for CQ data in tagged messages
+    - Add cancel support to shared rx context
+    - Add src_addr receive buffer matching
+    - Add provider control to assign a src_addr with an ep
+    - Handle trecv with FI_PEEK flag
+    - Allow binding a CQ with an SRX
+    - Restructuring of code in source files
+    - Handle EWOULDBLOCK returned by send call
+    - Add hot (active) pollfd
+  - SHM
+    - Properly chain the original signal handlers
+    - Avoid uninitialized variable with invalid atomic parameters
+    - Fix 0 byte SAR read
+    - Initialize len parameter to accept
+    - Refactor and simplify protocol code
+    - Remove broken support for 128-bit atomics
+    - Fix FI_INJECT flag support
+    - Add assert to verify RMA source/target msg sizes match
+    - Set domain threading to thread safe
+    - Fix possible use of uninitiated var in av_insert
+  - Util
+    - Fix sign warning in ofi_bufpool_region_alloc
+    - Remove unused variable from ofi_bufpool_destroy
+    - Fix check for valid datatype in ofi_atomic_valid
+    - Return with error if util_coll_sched_copy fails
+    - Fix use of uninitialized variable in ofi_ep_allreduce
+    - Fix memory access in ip_av_insertsym
+    - Track ep per collective operation not with multicast
+    - Restructure collective av set creation/destruction
+    - Change most locks from spin locks to mutexes
+    - Allow selection of spinlocks for CQ and domain objects
+    - Fix AV default addrlen
+    - Update fi_getinfo checks to include hints->addr_
+    - Handle NULL address insertion to fi_av_insert
+  - Verbs
+    - Initial changes for compiling on Windows (via NetworkDirect)
+    - Add a failover path to dma-buf based memory registration
+    - Replace use of spin locks with mutexes
+    - Check for valid qp prior to cleanup
+    - Set and check for address format correct in fi_getinfo
+  - Fabtests
+    - hmem_cuda: used device allocated host buff to fill device buf
+    - Add python scripts to control test execution
+    - test_configs: include util provider in core config file
+    - Add option "--pin-core"
+    - Only call nrt_init once
+    - Fix a bug in ft_neuron_cleanup
+    - Correct help for unit test programs
+    - Remove duplicate help prints from fi_mcast
+    - configure.ac: fix --enable-debug=no not properly detected
+    - msg_inject: handle the case ft_tsendmsg return -FI_EAGAIN
+    - Add AWS Trainium device support
+    - fi_inj_complete: Add FI_INJECT to fabtests
+    - inj_complete.c: Make arguments align with the other tests
+    - dgram_pingpong: handle the error return of fi_recv
+    - recv_cancel: Remove requirement for unexpected msg handling
+    - poll: Fix crash if unable to allocate pollset
+    - ubertest: Add GPU testing and validation support
+    - Add HMEM options parsing support
+    - Update and re-enable fi_multi_ep test
+- Add prov-opx-Correctly-disable-OPX-if-unsupported.patch to disable
+  OPX compilation on non x86_64 systems
+
+-------------------------------------------------------------------
 Tue Apr 19 07:27:42 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 1.14.1
