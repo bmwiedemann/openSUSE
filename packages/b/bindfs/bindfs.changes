@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 29 10:26:36 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.17.0
+  * Added --map-{passwd,group}-rev
+
+-------------------------------------------------------------------
 Fri Feb 26 19:51:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.15.1
