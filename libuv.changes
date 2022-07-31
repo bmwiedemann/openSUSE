@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Jul 18 10:28:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.44.2:
+  * Add SHA to ChangeLog
+  * aix, ibmi: handle server hang when remote sends TCP RST
+  * process: reset the signal mask if the fork fails
+  * zos: implement cmpxchgi() using assembly
+  * ibmi: Implement UDP disconnect
+  * unix: simplify getpwuid call
+  * process,iOS: fix build breakage in process.c
+  * test: remove unused declarations in tcp_rst test
+  * core: add thread-safe strtok implementation
+  * test: fix flaky file watcher test
+  * unix,win: fix UV_RUN_ONCE + uv_idle_stop loop hang
+  * win: fix unexpected ECONNRESET error on TCP socket
+  * doc: make sample cross-platform build
+  * test: separate some static variables by test cases
+  * sunos: fs-event callback can be called after uv_close()
+  * uv: re-register interest in a file after change
+  * uv: register UV_RENAME event for _RFIM_UNLINK
+  * uv: register __rfim_event 156 as UV_RENAME
+  * release: check versions of autogen scripts are newer
+  * test: rewrite embed test
+  * unix: use MSG_CMSG_CLOEXEC where supported
+  * test: remove disabled callback_order test
+  * kqueue: skip EVFILT_PROC when invalidating fds
+  * zos: don't err when killing a zombie process
+  * zos: avoid fs event callbacks after uv_close()
+  * zos: correctly format interface addresses names
+  * zos: add uv_interface_addresses() netmask support
+  * zos: improve memory management of ip addresses
+  * tcp,pipe: fail `bind` or `listen` after `close`
+  * zos: implement uv_available_parallelism()
+  * udp,win: fix UDP compiler warning
+  * zos: fix early exit of epoll_wait()
+  * unix,tcp: fix errno handling in uv__tcp_bind()
+  * shutdown,unix: reduce code duplication
+  * unix: fix c99 comments
+  * unix: retry tcgetattr/tcsetattr() on EINTR
+  * unix,stream: optimize uv_shutdown() codepath
+  * unix,tcp: allow EINVAL errno from setsockopt in uv_tcp_close_reset()
+  * win,shutdown: improve how shutdown is dispatched
+
+-------------------------------------------------------------------
 Sun Mar 13 19:53:16 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.44.1:
