@@ -681,4 +681,12 @@ See SR#946556</comment>
     <comment>- Update to version 1.61.0 - for details see the rust1.61 package</comment>
     <requestid>978352</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>f58b7e88fb805892a1f04583799685e9</srcmd5>
+    <version>1.62.0</version>
+    <time>1659301237</time>
+    <user>favogt_factory</user>
+    <comment>- Update to version 1.62.0 - for details see the rust1.62 package</comment>
+    <requestid>987768</requestid>
+  </revision>
 </revisionlist>
