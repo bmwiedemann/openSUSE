@@ -8,11 +8,11 @@ to be available during build and installed on the target system to work
 properly.
 ---
  Makefile.am                            |  1 +
- src/branding/suse-microos/Makefile.am  | 11 ++++
- src/branding/suse-microos/branding.css | 87 ++++++++++++++++++++++++++
+ src/branding/sle-micro/Makefile.am  | 11 ++++
+ src/branding/sle-micro/branding.css | 87 ++++++++++++++++++++++++++
  3 files changed, 99 insertions(+)
- create mode 100644 src/branding/suse-microos/Makefile.am
- create mode 100644 src/branding/suse-microos/branding.css
+ create mode 100644 src/branding/sle-micro/Makefile.am
+ create mode 100644 src/branding/sle-micro/branding.css
 
 diff --git a/Makefile.am b/Makefile.am
 index fb619f3f253..ec761210a52 100644
@@ -22,32 +22,32 @@ index fb619f3f253..ec761210a52 100644
  include src/branding/fedora/Makefile.am
  include src/branding/kubernetes/Makefile.am
  include src/branding/opensuse/Makefile.am
-+include src/branding/suse-microos/Makefile.am
++include src/branding/sle-micro/Makefile.am
  include src/branding/registry/Makefile.am
  include src/branding/rhel/Makefile.am
  include src/branding/scientific/Makefile.am
-diff --git a/src/branding/suse-microos/Makefile.am b/src/branding/suse-microos/Makefile.am
+diff --git a/src/branding/sle-micro/Makefile.am b/src/branding/sle-micro/Makefile.am
 new file mode 100644
 index 00000000000..3f4b762afa5
 --- /dev/null
-+++ b/src/branding/suse-microos/Makefile.am
++++ b/src/branding/sle-micro/Makefile.am
 @@ -0,0 +1,11 @@
-+susemicroosbrandingdir = $(datadir)/cockpit/branding/suse-microos
++slemicrobrandingdir = $(datadir)/cockpit/branding/sle-micro
 +
-+dist_susemicroosbranding_DATA = \
-+	src/branding/suse-microos/branding.css \
++dist_slemicrobranding_DATA = \
++	src/branding/sle-micro/branding.css \
 +	$(NULL)
 +
 +install-data-hook::
-+	$(LN_S) -f /usr/share/wallpapers/SLEdefault/contents/images/1920x1200.png $(DESTDIR)$(susemicroosbrandingdir)/default-1920x1200.png
-+	$(LN_S) -f /usr/share/pixmaps/distribution-logos/square-hicolor.svg $(DESTDIR)$(susemicroosbrandingdir)/square-hicolor.svg
-+	$(LN_S) -f /usr/share/pixmaps/distribution-logos/favicon.ico $(DESTDIR)$(susemicroosbrandingdir)/favicon.ico
-+	$(LN_S) -f /usr/share/pixmaps/distribution-logos/apple-touch-icon.png $(DESTDIR)$(susemicroosbrandingdir)/apple-touch-icon.png
-diff --git a/src/branding/suse-microos/branding.css b/src/branding/suse-microos/branding.css
++	$(LN_S) -f /usr/share/wallpapers/SLEdefault/contents/images/1920x1200.png $(DESTDIR)$(slemicrobrandingdir)/default-1920x1200.png
++	$(LN_S) -f /usr/share/pixmaps/distribution-logos/square-hicolor.svg $(DESTDIR)$(slemicrobrandingdir)/square-hicolor.svg
++	$(LN_S) -f /usr/share/pixmaps/distribution-logos/favicon.ico $(DESTDIR)$(slemicrobrandingdir)/favicon.ico
++	$(LN_S) -f /usr/share/pixmaps/distribution-logos/apple-touch-icon.png $(DESTDIR)$(slemicrobrandingdir)/apple-touch-icon.png
+diff --git a/src/branding/sle-micro/branding.css b/src/branding/sle-micro/branding.css
 new file mode 100644
 index 00000000000..e3c7939c464
 --- /dev/null
-+++ b/src/branding/suse-microos/branding.css
++++ b/src/branding/sle-micro/branding.css
 @@ -0,0 +1,87 @@
 +/* Extra overrides */
 +:root {

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 28 08:41:13 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Update suse-microos-branding.patch for new /etc/os-release ID.
+- Add storage-btrfs.patch to enable BTRFS use in cockpit-storage.
+
+-------------------------------------------------------------------
 Thu Jun 23 09:27:17 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - Add conflict between cockpit-networkmanager and cockpit-wicked
