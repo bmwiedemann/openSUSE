@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jul 29 13:36:34 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to Mercurial 6.2.1.
+  * git: make sure to fsdecode bookmark names everywhere (issue6723)
+  * git: add a missing reset_copy keyword argument to dirstate.set_tracked()
+  * git: copy findmissingrevs() from revlog.py to gitlog.py (issue6472)
+  * sslutil: use proper attribute to select python 3.7+
+  * sslutil: another use proper attribute to select python 3.7+
+  * mergestate: action name was str
+  * packaging: update keyring on Windows to avoid spurious stacktraces
+  * packaging: bump dulwich to 0.20.45
+  * debug-discovery: fix a typo in the doc
+  * debug-discovery: properly apply remote filtering in "old" mode
+  * debug-discovery: also gather details on tree-discovery queries type
+  * debug-discovery: gather the right number of roundtrips for tree discovery
+  * debug-discovery: do not abort on unrelated repositories
+  * debug-discovery: deal with case where common is empty
+  * tree-discovery: fix the request debug output and progress location
+  * debug-discovery: apply spelling fixes from Raphaël
+
+-------------------------------------------------------------------
 Tue Jul 19 10:12:34 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.2
