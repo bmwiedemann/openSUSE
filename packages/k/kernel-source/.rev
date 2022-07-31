@@ -5954,4 +5954,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>retbleed CVE (+fastop &amp; native_irq_return_ldt fixups) &amp; tty CVE &amp; 5.18.11 &amp; 5.18.10</comment>
     <requestid>989311</requestid>
   </revision>
+  <revision rev="650" vrev="1">
+    <srcmd5>91f81f0d8306afb78694099a7a596c75</srcmd5>
+    <version>5.18.12</version>
+    <time>1659301213</time>
+    <user>favogt_factory</user>
+    <comment>5.18.12 = fix gpmi nand corruption (arm)</comment>
+    <requestid>989541</requestid>
+  </revision>
 </revisionlist>

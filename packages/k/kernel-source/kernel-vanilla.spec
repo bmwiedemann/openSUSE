@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.18
-%define patchversion 5.18.11
+%define patchversion 5.18.12
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -107,9 +107,9 @@ Name:           kernel-vanilla
 Summary:        The Standard Kernel - without any SUSE patches
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.18.11
+Version:        5.18.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g4fcb983
+Release:        <RELEASE>.g3198c22
 %else
 Release:        0
 %endif
@@ -234,10 +234,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-4fcb983f9d8c4dcd921cf0963cec87cffb1e2692
-Provides:       kernel-srchash-4fcb983f9d8c4dcd921cf0963cec87cffb1e2692
+Provides:       kernel-%build_flavor-base-srchash-3198c220fdd40521c8cd401fa4ad949bcb0ab3f5
+Provides:       kernel-srchash-3198c220fdd40521c8cd401fa4ad949bcb0ab3f5
 # END COMMON DEPS
-Provides:       %name-srchash-4fcb983f9d8c4dcd921cf0963cec87cffb1e2692
+Provides:       %name-srchash-3198c220fdd40521c8cd401fa4ad949bcb0ab3f5
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
