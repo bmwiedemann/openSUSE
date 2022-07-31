@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 14 17:05:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1:
+  - provide cerfConfig.cmake (contributed by Lori A. Burns and Christoph Junghans)
+  - libcerf.pc: remove hard-coded lib/
+  - version number incremented to overcome upstream problems with withdrawn release 2.0
+- drop 2.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Dec 14 18:21:54 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - Fix test execution
