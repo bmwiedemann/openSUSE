@@ -174,4 +174,12 @@ Note: socket_wrapper fails if built on 'lamb'</comment>
 </comment>
     <requestid>879655</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>08a31efef050c9de83b9a894c405dff3</srcmd5>
+    <version>1.3.4</version>
+    <time>1659301239</time>
+    <user>favogt_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>991556</requestid>
+  </revision>
 </revisionlist>
