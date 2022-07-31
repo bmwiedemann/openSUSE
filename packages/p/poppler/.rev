@@ -1860,4 +1860,12 @@ New upstream release</comment>
 - drop poppler-cairo_font_face_t-incorrect-cacheing.patch (upstream)</comment>
     <requestid>980829</requestid>
   </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>c8a7e4bb322355cb70d0fdeb0e18123a</srcmd5>
+    <version>22.07.0</version>
+    <time>1659301234</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>990942</requestid>
+  </revision>
 </revisionlist>

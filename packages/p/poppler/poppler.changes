@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jul 25 06:39:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.07.0:
+  * Fix crash when filling in forms in some files. Issue #1258
+  * Fix first lines of Annotations sometimes being cut off. Issue #1246
+  * Signatures: Don't crash if the signature doesn't have a common name
+  * CairoFontEngine: increment font_face reference when retrieving from the cache
+  * Add ToUnicode support for lessorequalslant and greaterorequalslant
+  glib:
+    * Add support for stamp annotation
+- add gpg keyring validation for the release tarball
+- drop da226d346e691f7545d995d6761d43e08855a3b7.patch (upstream)
+
+-------------------------------------------------------------------
+Sat Jul 16 15:07:27 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add da226d346e691f7545d995d6761d43e08855a3b7.patch --
+  CairoFontEnginer: increment font_face reference when retrieving
+  from the cache; this fixes crashes with certain pdfs
+  [glgo#GNOME/evince#1808, glfo#poppler/poppler#1212].
+
+-------------------------------------------------------------------
 Sun Jun  5 01:03:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.06.0:

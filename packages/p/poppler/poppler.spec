@@ -32,13 +32,15 @@
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        22.06.0
+Version:        22.07.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://poppler.freedesktop.org
 Source:         %{url}/%{sname}-%{version}.tar.xz
+Source1:        %{url}/%{sname}-%{version}.tar.xz.sig
+Source90:       poppler.keyring
 Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} < 1550
