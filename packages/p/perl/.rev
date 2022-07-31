@@ -1071,4 +1071,12 @@ I hope I got it right now. It export both 5.34.0 and 5.34.1 COMPAT. That should 
   This fixes execution of builtime source services in OBS. (forwarded request 989343 from adrianSuSE)</comment>
     <requestid>989358</requestid>
   </revision>
+  <revision rev="127" vrev="3">
+    <srcmd5>de05be5ab625d28a740a95cd324c2062</srcmd5>
+    <version>5.36.0</version>
+    <time>1659301209</time>
+    <user>favogt_factory</user>
+    <comment>fix build on ppc</comment>
+    <requestid>991041</requestid>
+  </revision>
 </revisionlist>

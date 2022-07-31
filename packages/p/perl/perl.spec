@@ -184,7 +184,7 @@ cp -p %{SOURCE3} .
 %patch7
 %ifarch ppc ppc64 ppc64le
 %patch8 -p1
-%patch13 -p1
+%patch13
 %endif
 %patch9 -p1
 %patch11
