@@ -18,7 +18,7 @@
 
 
 Name:           wayland-protocols
-Version:        1.25
+Version:        1.26
 Release:        0
 Summary:        Wayland protocols that add functionality not available in the core protocol
 License:        MIT
@@ -32,7 +32,7 @@ Patch0:         wayland-protocols-disable-pedantic-test-unstable-xdg-decoration-
 
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
-BuildRequires:  meson >= 0.54.0
+BuildRequires:  meson >= 0.55.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildArch:      noarch
