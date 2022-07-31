@@ -20,11 +20,16 @@
 Name:           perl-HTTP-Daemon
 Version:        6.14
 Release:        0
-License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple http server class
+License:        Artistic-1.0 OR GPL-1.0-or-later
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+# PATCH-FIX-SECURITY bsc#1201157 otto.hollmann@suse.com
+# Fix request smuggling in HTTP::Daemon
+Patch0:         CVE-2022-31081.patch
+Patch1:         CVE-2022-31081-2.patch
+Patch2:         CVE-2022-31081-Add-new-test-for-Content-Length-issues.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -65,7 +70,7 @@ method on this object will read data from the client and return an
 back various responses.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build

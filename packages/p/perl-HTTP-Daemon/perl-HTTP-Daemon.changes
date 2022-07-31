@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 13 09:04:49 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Fix request smuggling in HTTP::Daemon
+  (CVE-2022-31081, bsc#1201157)
+  * CVE-2022-31081.patch
+  * CVE-2022-31081-2.patch
+  * CVE-2022-31081-Add-new-test-for-Content-Length-issues.patch
+
+-------------------------------------------------------------------
 Fri Mar  4 03:07:35 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.14
