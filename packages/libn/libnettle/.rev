@@ -402,4 +402,12 @@
   * New s390x implementation of AES, GCM, Chacha, memxor, SHA1,</comment>
     <requestid>988627</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>ba8116ad7135fd081538b0f2c5715399</srcmd5>
+    <version>3.8.1</version>
+    <time>1659301254</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>991715</requestid>
+  </revision>
 </revisionlist>

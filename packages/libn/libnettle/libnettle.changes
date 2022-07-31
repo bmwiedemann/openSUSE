@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 28 20:25:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.1:
+  * Avoid non-posix m4 argument references in the chacha
+    implementation for arm64, powerpc64 and s390x. Reported by
+    Christian Weisgerber, fix contributed by Mamone Tarsha.
+  * Use explicit .machine pseudo-ops where needed in s390x
+    assembly files. Bug report by Andreas K. Huettel, fix
+    contributed by Mamone Tarsha.
+
+-------------------------------------------------------------------
 Mon Jul 11 19:22:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.8:
