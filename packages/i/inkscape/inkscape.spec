@@ -16,16 +16,16 @@
 #
 
 
-%define _version 1.2_2022-05-15_dc2aedaf03
+%define _version 1.2.1_2022-07-14_9c6d41e410
 
 Name:           inkscape
-Version:        1.2
+Version:        1.2.1
 Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
 URL:            https://inkscape.org/
 
-Source:         https://inkscape.org/gallery/item/33449/inkscape-%{version}.tar.xz#/inkscape-%{_version}.tar.xz
+Source:         https://inkscape.org/gallery/item/34673/inkscape-%{version}.tar.xz#/inkscape-%{_version}.tar.xz
 # openSUSE palette file
 Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
@@ -72,6 +72,8 @@ BuildRequires:  pkgconfig(librevenge-0.0)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libvisio-0.1)
 BuildRequires:  pkgconfig(libwpg-0.3)
+# extensions use annotations which requires 3.7+
+Requires:       python(abi) >= 3.7
 Requires:       python3-gobject
 Recommends:     python3-lxml
 Recommends:     python3-numpy

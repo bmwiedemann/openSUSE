@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 16 16:30:42 UTC 2022 - thod_@gmx.de
+
+- Update to version 1.2.1:
+  + Important fix for a bug where a loss of data occurred
+  + Ensures that objects in multipage documents show up on all pages
+  + Fixes 5 crashes, over 25 bugs, 4 extension bugs, 15 improved
+    user interface translations, 3 improved documentation translations
+  + See the full release notes for Inkscape 1.2.1 at
+    https://media.inkscape.org/media/doc/release_notes/1.2.1/Inkscape_1.2.1.html
+
+-------------------------------------------------------------------
 Thu Jun  9 13:08:07 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix version: it's 1.2, not 1.2.0 (fixes download of upstream
