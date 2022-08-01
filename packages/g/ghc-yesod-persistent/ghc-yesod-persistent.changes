@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 15 17:21:58 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update yesod-persistent to version 1.6.0.8.
+  ## 1.6.0.8
+
+  * Add support for `persistent-2.14` [#1706](https://github.com/yesodweb/yesod/pull/1760)
+
+-------------------------------------------------------------------
 Fri May  7 17:04:24 UTC 2021 - psimons@suse.com
 
 - Update yesod-persistent to version 1.6.0.7.
