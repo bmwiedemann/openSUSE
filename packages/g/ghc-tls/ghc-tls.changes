@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun  6 02:45:15 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update tls to version 1.6.0.
+  ## Version 1.6.0
+
+  - Major version up because of disabling SSL3
+  - Some fixes against tlsfuzzer
+
+  ## Version 1.5.8
+
+  - Require mtl-2.2.1 or newer
+    [#448](https://github.com/haskell-tls/hs-tls/pull/448)
+
+-------------------------------------------------------------------
 Thu Jan 20 00:35:33 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update tls to version 1.5.7.
