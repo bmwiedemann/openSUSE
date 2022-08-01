@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-pipes-safe
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name pipes-safe
 Name:           ghc-%{pkg_name}
-Version:        2.3.3
+Version:        2.3.4
 Release:        0
 Summary:        Safety for the pipes ecosystem
 License:        BSD-3-Clause

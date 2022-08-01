@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  8 01:37:53 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update pipes-safe to version 2.3.4.
+  Upstream has not updated the file "changelog.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Sat Feb 13 11:43:59 UTC 2021 - psimons@suse.com
 
 - Update pipes-safe to version 2.3.3.
