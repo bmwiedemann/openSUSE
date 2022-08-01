@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 30 23:43:58 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update mintty to version 0.1.4.
+  ### 0.1.4 [2022.06.30]
+  * Remove an unused dependency on `filepath`.
+
+-------------------------------------------------------------------
 Sun Nov  7 16:10:23 UTC 2021 - psimons@suse.com
 
 - Update mintty to version 0.1.3.
