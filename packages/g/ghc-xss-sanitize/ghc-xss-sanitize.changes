@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 30 14:05:07 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update xss-sanitize to version 0.3.7 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Sep 20 07:11:01 UTC 2021 - psimons@suse.com
 
 - Update xss-sanitize to version 0.3.7.
