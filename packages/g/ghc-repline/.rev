@@ -23,4 +23,12 @@
     <comment>update haskell stack in openSUS</comment>
     <requestid>857534</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>626232f736f199c1bbed034596ad5e66</srcmd5>
+    <version>0.4.2.0</version>
+    <time>1659382223</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>987082</requestid>
+  </revision>
 </revisionlist>
