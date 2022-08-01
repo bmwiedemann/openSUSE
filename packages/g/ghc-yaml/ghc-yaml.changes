@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 24 12:19:07 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update yaml to version 0.11.8.0.
+  ## 0.11.8.0
+
+  * Export `Parse` and `StringStyle` [#204](https://github.com/snoyberg/yaml/pull/204)
+
+-------------------------------------------------------------------
 Tue Oct 12 10:51:16 UTC 2021 - psimons@suse.com
 
 - Update yaml to version 0.11.7.0.
