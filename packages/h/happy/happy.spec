@@ -1,7 +1,7 @@
 #
 # spec file for package happy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ Summary:        Happy is a parser generator for Haskell
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  autoconf
 BuildRequires:  docbook-dtd
 BuildRequires:  docbook-xsl-stylesheets
@@ -46,6 +47,7 @@ to the 'yacc' tool for C.
 
 %prep
 %autosetup
+cp -p %{SOURCE1} %{name}.cabal
 find . -type f -exec chmod -x {} +
 
 %build
