@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 19 23:17:38 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update ShellCheck to version 0.8.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun Nov  7 14:54:02 UTC 2021 - psimons@suse.com
 
 - Update ShellCheck to version 0.8.0.
