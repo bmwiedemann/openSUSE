@@ -1,6 +1,6 @@
 name:               quickcheck-instances
 version:            0.3.27
-x-revision:         1
+x-revision:         2
 synopsis:           Common quickcheck instances
 description:
   QuickCheck instances.
@@ -106,7 +106,7 @@ library
     , transformers-compat   >=0.6.5   && <0.8
     , unordered-containers  >=0.2.2.0 && <0.3
     , uuid-types            >=1.0.3   && <1.1
-    , vector                >=0.9     && <0.13
+    , vector                >=0.9     && <0.14
 
   -- version is irrelevant.
   build-depends:    time
