@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 01 11:06:14 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.5.2:
+  * Fix okteto destroy manifest not found with k8s.yml (#2969) (#2972)
+
+-------------------------------------------------------------------
 Wed Jul 27 16:17:35 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.5.1:
