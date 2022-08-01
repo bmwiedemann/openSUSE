@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-DiagINC
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Test-DiagINC
 Name:           perl-Test-DiagINC
-Version:        0.008
+Version:        0.010
 Release:        0
 License:        Apache-2.0
 Summary:        List modules and versions loaded if tests fail
