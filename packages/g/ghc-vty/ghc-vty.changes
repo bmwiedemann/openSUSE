@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Mon Jul  4 16:02:42 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update vty to version 5.36.
+  5.36
+  ----
+
+   * Raised `microlens` upper bound to allow building with 0.4.13.
+   * Replaced incomplete `Show` output for `Picture` with a derived
+     instance; derived `Show` for `Cursor` and `Background`, too.
+
+-------------------------------------------------------------------
+Mon Mar 21 03:41:32 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update vty to version 5.35.1.
+  5.35.1
+  ------
+
+  Bug fixes:
+   * Fixed a build issue with a test program.
+
+  5.35
+  ----
+
+  New features:
+   * Add support for 24-bit color (thanks @u-quark). This change
+     updates Vty to look at the `COLORTERM` environment variable that is
+     conventionally used to advertise support for truecolor escape
+     sequences. The change also updates the Vty demo to demonstrate
+     24-bit colors. This change also adds a new data type, `ColorMode`,
+     to represent the color mode in use, as well as an `Output` interface
+     field, `outputColorMode`, to track the active color mode and use it
+     to clamp emitted color escape sequences to the active color range.
+
+  API changes:
+   * All types in `Graphics.Vty.Input.Events` now have strict constructor
+     fields.
+   * Internal events are now wrapped in a new `InternalEvent` type to
+     improve how signal handling is done. This change modifies the `Input`
+     type's event channel API to produce `InternalEvents`, not `Events`.
+     The new `InternalEvent` either wraps `Event` with the `InputEvent`
+     constructor (the previous behavior) or indicates that Vty resumed
+     after handling a signal using the `ResumeAfterSignal` constructor.
+     This change avoids the previous use of `EvResize` with lazy exception
+     arguments as a sentinel value for `ResumeAfterSignal`.
+
+  Other enhancements:
+   * Bracketed paste parsing performance has been greatly improved thanks
+     to benchmarking and optimization work by @iphydf. As part of that
+     work, Vty now uses bytestrings rather than Strings internally when
+     parsing input to look for events.
+   * The `\b` value is now interpreted as `KBS` (thanks @vglfr)
+
+-------------------------------------------------------------------
+Sun Feb 27 23:25:07 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update vty to version 5.34.
+  5.34
+  ----
+
+  API changes:
+   * Added an `NFData` instance for `Event` (thanks Mario Lang)
+   * Removed `Monoid` and `Semigroup` instances for `Attr` and
+     `MaybeDefault`. This change removed the instances because they were
+     misbehaved; merging `Attr` and `MaybeDefault` values with these
+     instances resulted in field value losses. For example, before this
+     change,
+  ```
+  (defAttr `withForeColor` blue) <> (defAttr `withBackColor` green)
+  ```
+     would result in just
+  ```
+     (defAttr `withBackColor` green)
+  ```
+     because the instances were designed to favor the right-hand
+     arguments' fields even if they had not been explicitly set
+     (a consequence of the `MaybeDefault` `Semigroup` instance).
+     While that behavior was sensible specifically in the context of
+     `Graphics.Vty.Inline`, it wasn't a useful user-facing API and it made
+     for surprising instance behavior. Since there is actually no good way
+     to handle this in a `Semigroup` instance for `Attr` -- some choices
+     have to be made about how to merge two attributes' foreground colors,
+     and that won't be much better than what we had -- the instance was
+     just removed.
+
+-------------------------------------------------------------------
 Wed Feb 24 19:35:07 UTC 2021 - psimons@suse.com
 
 - Update vty to version 5.33 revision 1.
