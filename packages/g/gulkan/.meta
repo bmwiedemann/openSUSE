@@ -1,0 +1,5 @@
+<package name="gulkan" project="openSUSE:Factory">
+  <title>A GLib library for Vulkan abstraction</title>
+  <description>A GLib library for Vulkan abstraction. It provides classes for handling Vulkan instances, devices, shaders and initialize textures GDK Pixbufs, Cairo surfaces and DMA buffers.</description>
+  <devel project="X11:Wayland" package="gulkan"/>
+</package>
