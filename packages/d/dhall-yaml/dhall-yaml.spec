@@ -19,13 +19,13 @@
 %global pkg_name dhall-yaml
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        1.2.9
+Version:        1.2.10
 Release:        0
 Summary:        Convert between Dhall and YAML
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/2.cabal#/%{name}.cabal
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-HsYAML-aeson-devel

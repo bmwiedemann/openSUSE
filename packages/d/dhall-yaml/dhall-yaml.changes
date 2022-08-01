@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 18 00:38:34 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update dhall-yaml to version 1.2.10 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Feb 22 02:18:28 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update dhall-yaml to version 1.2.10.
+  1.2.10
+
+  * Build against `dhall-1.41`
+  * [Build against `optparse-applicative-0.17`](https://github.com/dhall-lang/dhall-haskell/pull/2376)
+  * [Build against `text-2.0`](https://github.com/dhall-lang/dhall-haskell/pull/2356)
+
+-------------------------------------------------------------------
 Thu Feb  3 03:31:54 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update dhall-yaml to version 1.2.9 revision 2.
