@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 30 13:53:17 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.14 development release
+  - More progress on syscall interface for USER32.
+  - Improved font fallbacks in DirectWrite.
+  - Some fixes for socket shutdowns.
+  - Various bug fixes.
+- update staging to 7.14 release
+
+-------------------------------------------------------------------
 Sat Jul 16 07:09:00 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.13 development release

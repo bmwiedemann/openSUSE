@@ -4505,4 +4505,17 @@
 - libcapi20-devel currently only for tumbleweed</comment>
     <requestid>989582</requestid>
   </revision>
+  <revision rev="383" vrev="1">
+    <srcmd5>48b29c696e40d7ed19699e42892ffce1</srcmd5>
+    <version>7.14</version>
+    <time>1659382346</time>
+    <user>RBrownFactory</user>
+    <comment>- updated to 7.14 development release
+  - More progress on syscall interface for USER32.
+  - Improved font fallbacks in DirectWrite.
+  - Some fixes for socket shutdowns.
+  - Various bug fixes.
+- update staging to 7.14 release</comment>
+    <requestid>991814</requestid>
+  </revision>
 </revisionlist>
