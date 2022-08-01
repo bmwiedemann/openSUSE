@@ -19,7 +19,7 @@
 %global pkg_name brick
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.67
+Version:        0.73
 Release:        0
 Summary:        A declarative terminal user interface library
 License:        BSD-3-Clause

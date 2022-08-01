@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Sat Jul  9 16:24:17 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update brick to version 0.73.
+  0.73
+  ----
+
+  API changes:
+   * Added `Brick.Widgets.Edit.getCursorPosition` (thanks
+     @TristanCacqueray)
+
+  0.72
+  ----
+
+  Package changes:
+   * Increased lower bound on `text-zipper` to `0.12`.
+
+  API changes:
+   * `handleEditorEvent` now takes a `BrickEvent` rather than just a Vty
+     `Event`.
+   * Brick editors now handle mouse clicks to change their cursor
+     positions.
+
+-------------------------------------------------------------------
+Tue Jul  5 15:21:33 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update brick to version 0.71.1.
+  0.71.1
+  ------
+
+  Bug fixes:
+   * Fixed an issue where `tests/Render.hs` did not gracefully exit in the
+     presence of an unknown terminal.
+
+-------------------------------------------------------------------
+Mon Jul  4 16:28:56 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update brick to version 0.71.
+  0.71
+  ----
+
+  Package changes:
+   * Increased `vty` lower bound to `5.36`.
+
+  API changes:
+   * Added `tests/Render.hs` to provide a simple test of
+     `Brick.Main.renderWidget` (thanks @valyagolev)
+   * Added `Brick.Main.renderWidget` to help in golden testing contexts
+     (thanks @valyagolev)
+
+  Other changes:
+   * Various `table` documentation improvements.
+
+-------------------------------------------------------------------
+Sun Jun 19 20:13:57 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update brick to version 0.70.1.
+  0.70.1
+  ------
+
+  Build fixes:
+   * Added a missing import for GHC 8.2.2.
+
+  0.70
+  ----
+
+  Enhancements:
+   * The table widget now behaves much better when some or all cells are
+     empty.
+
+  Bug fixes:
+   * BorderMaps got fixed to ensure that smart borders connect even in the
+     presence of empty widgets (#370). Thanks to Daniel Wagner for this
+     fix!
+
+  0.69.1
+  ------
+
+  Bug fixes:
+   * `table` can now deal properly with empty cells that are in left- and
+     top-aligned settings. Previously, empty cells in those settings would
+     break table rendering. (#369)
+
+-------------------------------------------------------------------
+Mon May 23 20:30:38 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update brick to version 0.69.
+  0.69
+  ----
+
+  New features:
+   * `Brick.Widgets.Core`: added `relativeTo` to support relative
+     positioning across layers. This allows elements in higher layers
+     to be positioned relative to elements in lower layers as long as
+     those elements have had their extents reported with `reportExtent` or
+     `clickable`.
+
+-------------------------------------------------------------------
+Fri Apr  1 05:03:26 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update brick to version 0.68.1.
+  0.68.1
+  ------
+
+  Bug fixes:
+   * Brick's internal book-keeping got a bug fix that caused mouse-click
+     coordinates to be wrong for clickable regions that were translated
+     partially off of the left or top edges of a rendered region.
+
+-------------------------------------------------------------------
+Mon Mar  7 16:33:29 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update brick to version 0.68.
+  0.68
+  ----
+
+  API changes:
+   * Removed the "markup" feature, which included `Data.Text.Markup`,
+     `Brick.Markup`, and `brick-markup-demo`. This feature never performed
+     well and was awkward to use. I considered it experimental from the
+     initial release of this library. Some recent incompatibilities with
+     Vty changes made me realize that it was time to finally get rid of
+     this. If this affects you, please let me know and I am happy to work
+     with you to figure out an alternative. Granted, anyone is welcome to
+     dig up the previous code and re-use it in their own projects!
+
+-------------------------------------------------------------------
 Mon Jan 31 17:17:26 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update brick to version 0.67.
