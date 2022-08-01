@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Apr 24 00:26:04 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hpack to version 0.35.0.
+  ## Changes in 0.35.0
+    - Add support for `language` (thanks @mpilgrem)
+    - Accept Cabal names for fields where Hpack and Cabal use different
+      terminology, but still warn (e.g. accept `hs-source-dirs` as an alias for
+      `source-dirs`)
+
+-------------------------------------------------------------------
+Mon Mar 28 15:12:50 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hpack to version 0.34.7.
+  ## Changes in 0.34.7
+    - Support `Cabal-3.6.*`
+    - Make sure that verbatim `import` fields are rendered at the beginning of
+      a section (see #486)
+
+-------------------------------------------------------------------
 Fri Nov 26 20:01:46 UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Update hpack to version 0.34.6.
