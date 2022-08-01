@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 31 11:17:52 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- SUSEPrime-0.8.8
+  * prime-select.sh: offload-set(): no need to check for xf86-video-amdgpu
+    package
+    amdgpu/nvidia is not implemented for offload on AMD, only modeset/nvidia;
+    you could run "prime-select offload-set intel" on AMD/NVIDIA, but this is
+    rather confusing; so just use "prime-select offload" there for
+    having modeset/nvidia (issue #81) 
+
+-------------------------------------------------------------------
 Mon Mar 14 15:05:50 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - SUSEPrime-0.8.7
