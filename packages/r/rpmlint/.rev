@@ -3913,4 +3913,14 @@ oddjob-gpupdate isn't blocked)</comment>
 - Remove upstreamed patch skip-rpmlint-for-rpmlint.patch.</comment>
     <requestid>990955</requestid>
   </revision>
+  <revision rev="406" vrev="1">
+    <srcmd5>57e477712626ce467dc09c27b6b78f41</srcmd5>
+    <version>2.3.0+git20220725.94636c5e</version>
+    <time>1659382087</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 2.3.0+git20220725.94636c5e:
+  * Do not use flake8-simplify for testers automatically.
+  * Add flake8-simplify issues.</comment>
+    <requestid>991299</requestid>
+  </revision>
 </revisionlist>

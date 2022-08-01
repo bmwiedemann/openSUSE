@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 26 19:37:50 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220725.94636c5e:
+  * Do not use flake8-simplify for testers automatically.
+  * Add flake8-simplify issues.
+
+-------------------------------------------------------------------
 Mon Jul 25 07:58:17 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.3.0+git20220725.8b1e5f2a:
