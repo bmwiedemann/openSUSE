@@ -1,7 +1,7 @@
 #
 # spec file for package hledger
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name hledger
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        1.24.99
+Version:        1.26.1
 Release:        0
 Summary:        Command-line interface for the hledger accounting system
 License:        GPL-3.0-or-later
