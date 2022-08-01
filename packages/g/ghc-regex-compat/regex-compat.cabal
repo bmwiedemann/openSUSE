@@ -1,18 +1,16 @@
 cabal-version:          1.12
 name:                   regex-compat
 version:                0.95.2.1
-x-revision:             1
+x-revision:             2
 
 build-type:             Simple
 license:                BSD3
 license-file:           LICENSE
 copyright:              Copyright (c) 2006, Christopher Kuklewicz
 author:                 Christopher Kuklewicz
-maintainer:
-  Herbert Valerio Riedel <hvr@gnu.org>,
-  Andreas Abel
+maintainer:             Andreas Abel
 homepage:               https://wiki.haskell.org/Regular_expressions
-bug-reports:            https://github.com/hvr/regex-compat/issues
+bug-reports:            https://github.com/haskell-hvr/regex-compat/issues
 synopsis:               Replaces/enhances "Text.Regex"
 category:               Text
 description:
@@ -24,36 +22,35 @@ extra-source-files:
   ChangeLog.md
 
 tested-with:
-  -- Haskell CI:
-  GHC == 7.0.4
-  GHC == 7.2.2
-  GHC == 7.4.2
-  GHC == 7.6.3
-  GHC == 7.8.4
-  GHC == 7.10.3
-  GHC == 8.0.2
-  GHC == 8.2.2
-  GHC == 8.4.4
-  GHC == 8.6.5
+  GHC == 9.4.1
+  GHC == 9.2.2
+  GHC == 9.0.2
+  GHC == 8.10.7
   GHC == 8.8.4
-  GHC == 8.10.4
-  GHC == 9.0.1
-  -- manually (AA, 2021-08-12):
-  -- GHC == 9.2.1 -- RC 1
+  GHC == 8.6.5
+  GHC == 8.4.4
+  GHC == 8.2.2
+  GHC == 8.0.2
+  GHC == 7.10.3
+  GHC == 7.8.4
+  GHC == 7.6.3
+  GHC == 7.4.2
+  GHC == 7.2.2
+  GHC == 7.0.4
 
 source-repository head
   type:     git
-  location: https://github.com/hvr/regex-compat.git
+  location: https://github.com/haskell-hvr/regex-compat.git
 
 source-repository this
   type:     git
-  location: https://github.com/hvr/regex-compat.git
-  tag:      v0.95.2.1
+  location: https://github.com/haskell-hvr/regex-compat.git
+  tag:      v0.95.2.1-r2
 
 library
   exposed-modules: Text.Regex
 
-  build-depends: base        >= 4.3 && < 4.17
+  build-depends: base        >= 4.3 && < 5
                , regex-base  == 0.94.*
                , regex-posix == 0.96.*
                , array       >= 0.3 && < 0.6
