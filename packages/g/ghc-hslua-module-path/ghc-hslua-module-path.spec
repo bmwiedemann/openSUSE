@@ -19,13 +19,12 @@
 %global pkg_name hslua-module-path
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Lua module to work with file paths
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-hslua-core-devel
@@ -56,7 +55,6 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
