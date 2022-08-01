@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  8 01:21:45 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update monad-par to version 0.3.5 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
