@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  9 22:42:21 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update JuicyPixels to version 3.3.7.
+  v3.3.7 March 2022
+  -----------------
+
+   * Jpg: Fixing renderng bug with MCUs with single block in width and
+     multiple in height
+
+-------------------------------------------------------------------
 Wed Oct 13 19:06:54 UTC 2021 - psimons@suse.com
 
 - Update JuicyPixels to version 3.3.6.

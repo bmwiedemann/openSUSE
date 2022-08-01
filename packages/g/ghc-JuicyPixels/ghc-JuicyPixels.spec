@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-JuicyPixels
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name JuicyPixels
 Name:           ghc-%{pkg_name}
-Version:        3.3.6
+Version:        3.3.7
 Release:        0
 Summary:        Picture loading/serialization (in png, jpeg, bitmap, gif, tga, tiff and radiance)
 License:        BSD-3-Clause
