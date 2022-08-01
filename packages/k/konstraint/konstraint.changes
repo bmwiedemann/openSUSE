@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 01 11:06:05 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.23.0:
+  * Bump github.com/open-policy-agent/opa from 0.42.2 to 0.43.0 (#316)
+  * Bump alpine from 3.16.0 to 3.16.1 (#315)
+  * Bump github.com/sirupsen/logrus from 1.8.1 to 1.9.0 (#314)
+  * Bump golang from 1.18.3-alpine to 1.18.4-alpine (#313)
+
+-------------------------------------------------------------------
 Sat Jul 16 18:59:43 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.22.2:
