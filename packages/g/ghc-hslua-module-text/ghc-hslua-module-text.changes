@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 19 14:38:23 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-text to version 1.0.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hslua-module-text-1.0.2/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Sun Jan 30 08:00:08 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hslua-module-text to version 1.0.1 revision 1.
