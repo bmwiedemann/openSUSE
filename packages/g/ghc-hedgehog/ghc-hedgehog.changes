@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May 22 14:23:14 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hedgehog to version 1.1.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Mar  9 09:33:49 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hedgehog to version 1.1.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Jan 29 06:40:09 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hedgehog to version 1.1.1.
