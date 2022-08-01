@@ -1,0 +1,36 @@
+diff -Naur nvidia-settings-430.26.old/src/libXNVCtrl/Makefile nvidia-settings-430.26/src/libXNVCtrl/Makefile
+--- Makefile	2019-06-16 21:49:43.008676795 +0200
++++ Makefile	2019-06-16 21:50:31.462519476 +0200
+@@ -51,7 +51,9 @@
+ .PHONY: clean
+ 
+ all: $(LIBXNVCTRL)
++all: $(LIBXNVCTRL_SHARED)
+ 
+ clean:
+ 	rm -rf $(LIBXNVCTRL) *~ \
+ 		$(OUTPUTDIR)/*.o $(OUTPUTDIR)/*.d
++	rm -f $(LIBXNVCTRL_SHARED) $(LIBXNVCTRL_SHARED).*
+diff -Naur nvidia-settings-430.26.old/src/libXNVCtrl/xnvctrl.mk nvidia-settings-430.26/src/libXNVCtrl/xnvctrl.mk
+--- xnvctrl.mk	2019-06-16 21:49:43.008676795 +0200
++++ xnvctrl.mk	2019-06-18 18:48:30.736176713 +0200
+@@ -37,7 +37,8 @@
+ XNVCTRL_CFLAGS ?=
+ 
+ 
+-LIBXNVCTRL = $(OUTPUTDIR)/libXNVCtrl.a
++LIBXNVCTRL = libXNVCtrl.a
++LIBXNVCTRL_SHARED = libXNVCtrl.so
+ 
+ LIBXNVCTRL_SRC = $(XNVCTRL_DIR)/NVCtrl.c
+ 
+@@ -47,3 +48,9 @@
+ 
+ $(LIBXNVCTRL) : $(LIBXNVCTRL_OBJ)
+ 	$(call quiet_cmd,AR) ru $@ $(LIBXNVCTRL_OBJ)
++
++$(LIBXNVCTRL_SHARED): $(LIBXNVCTRL_OBJ)
++	$(RM) $@ $@.*
++	$(CC) -shared -Wl,-soname=$@.0 -o $@.0.0.0 $(LDFLAGS) $^ -lXext -lX11
++	ln -s $@.0.0.0 $@.0
++	ln -s $@.0 $@
