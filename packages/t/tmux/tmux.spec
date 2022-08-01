@@ -17,7 +17,7 @@
 
 
 Name:           tmux
-Version:        3.2a
+Version:        3.3a
 Release:        0
 Summary:        Terminal multiplexer
 License:        ISC AND BSD-3-Clause AND BSD-2-Clause
@@ -29,6 +29,8 @@ Source1:        bash_completion_tmux.sh
 Patch0:         tmux-socket-path.patch
 BuildRequires:  pkgconfig
 BuildRequires:  utempter-devel
+BuildRequires:  pkgconfig(libutf8proc)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libevent) >= 2.0
 %{?systemd_ordering}
 %if 0%{?suse_version} >= 1320
@@ -55,7 +57,7 @@ to (display and accept keyboard input from) multiple clients.
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%configure
+%configure --enable-utf8proc --with-TERM=screen-256color --enable-systemd
 %if 0%{?suse_version} >= 1320
 %make_build
 %else
