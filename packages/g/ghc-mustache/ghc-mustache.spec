@@ -19,7 +19,7 @@
 %global pkg_name mustache
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        A mustache template parser library
 License:        BSD-3-Clause
