@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        6.1.0
+Version:        6.2.1
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -98,6 +98,7 @@ BuildRequires:  pkgconfig(ncurses) >= 6.3
 BuildRequires:  pkgconfig(python3) >= 3.10
 BuildRequires:  pkgconfig(readline) >= 8.1
 BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(uchardet)
 # calibre no longer depends on ImageMagick
 # but keept BuildRequires to convert icon to serveral sizes
 BuildRequires:  pkgconfig(ImageMagick) >= 6.5.9

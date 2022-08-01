@@ -1,7 +1,7 @@
-Index: calibre-6.0.0/bypy/linux/__main__.py
+Index: calibre-6.2.0/bypy/linux/__main__.py
 ===================================================================
---- calibre-6.0.0.orig/bypy/linux/__main__.py
-+++ calibre-6.0.0/bypy/linux/__main__.py
+--- calibre-6.2.0.orig/bypy/linux/__main__.py
++++ calibre-6.2.0/bypy/linux/__main__.py
 @@ -38,7 +38,7 @@ qt_get_dll_path = partial(get_dll_path,
  
  def binary_includes():
@@ -11,23 +11,28 @@ Index: calibre-6.0.0/bypy/linux/__main__.py
  
          j(PREFIX, 'private', 'mozjpeg', 'bin', x) for x in ('jpegtran', 'cjpeg')] + [
          ] + list(map(
-Index: calibre-6.0.0/src/calibre/test_build.py
+Index: calibre-6.2.0/src/calibre/test_build.py
 ===================================================================
---- calibre-6.0.0.orig/src/calibre/test_build.py
-+++ calibre-6.0.0/src/calibre/test_build.py
-@@ -107,12 +107,13 @@ class BuildTest(unittest.TestCase):
+--- calibre-6.2.0.orig/src/calibre/test_build.py
++++ calibre-6.2.0/src/calibre/test_build.py
+@@ -112,15 +112,15 @@ class BuildTest(unittest.TestCase):
+     def test_speech_dispatcher(self):
          from speechd.client import SSIPClient
          del SSIPClient
- 
+-
 -    def test_zeroconf(self):
--        import zeroconf as z, ifaddr
+-        import ifaddr
+-        import zeroconf as z
+-
 -        from calibre.devices.smart_device_app.driver import monkeypatch_zeroconf
 -        monkeypatch_zeroconf()
 -        del z
 -        del ifaddr
 +# Newest python-zeroconf in openSUSE rise up an error
 +#    def test_zeroconf(self):
-+#        import zeroconf as z, ifaddr
++#        import ifaddr
++#        import zeroconf as z
++#
 +#        from calibre.devices.smart_device_app.driver import monkeypatch_zeroconf
 +#        monkeypatch_zeroconf()
 +#        del z
@@ -35,7 +40,7 @@ Index: calibre-6.0.0/src/calibre/test_build.py
  
      def test_plugins(self):
          exclusions = set()
-@@ -384,9 +385,10 @@ class BuildTest(unittest.TestCase):
+@@ -399,9 +399,10 @@ class BuildTest(unittest.TestCase):
          from calibre.gui2.win_file_dialogs import test
          test()
  
