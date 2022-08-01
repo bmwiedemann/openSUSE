@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Aug  1 16:04:57 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 0.23.8
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.8/NEWS
+  * support libfmt 9
+  * storage: curl: fix crash if web server does not understand WebDAV
+  * input:
+    * cdio_paranoia:
+      * fix crash if no drive was found
+      * faster cancellation
+      * don't scan for replay gain tags
+    * pipewire:
+      * fix playback of very short tracks
+      * drop all buffers before manual song change
+      * fix stuttering after manual song change
+    * snapcast:
+      * fix busy loop while paused
+      * fix stuttering after resuming playback
+  * mixer
+    * better error messages
+    * alsa: fix setting volume before playback starts
+    * pipewire:
+      * fix crash bug
+      * fix volume change events with PipeWire 0.3.53
+      * don't force initial volume=100%
+
+-------------------------------------------------------------------
 Wed Jun  1 14:58:09 UTC 2022 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 0.23.7
