@@ -1101,4 +1101,12 @@
     <comment>require/recommend dbus-send (forwarded request 986985 from cgiboudeaux)</comment>
     <requestid>987206</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>838da338ddd58d38aea60c36befeba42</srcmd5>
+    <version>3.6.0</version>
+    <time>1659382374</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991922</requestid>
+  </revision>
 </revisionlist>

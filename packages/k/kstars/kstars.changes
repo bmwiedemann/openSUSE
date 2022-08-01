@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul 31 13:19:33 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.6.0:
+  * Add linear 1 pass focus algorithm.
+  * Polar alignment V3.
+  * Add image ROI statistics.
+  * Revamped profile scripts.
+  * Geographic map update.
+  * Show number of clipped pixels on fitsviewer status bar if show-clipping is enabled.
+  * Improve tooltips for GPG expert settings.
+  * Various fixes and improvements related to DSO catalogs and visibility.
+- Remove upstreamed fix-eigen3.patch
+
+-------------------------------------------------------------------
 Wed Jul  6 06:40:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Explicitly recommend dbus-send. The program is needed by the
