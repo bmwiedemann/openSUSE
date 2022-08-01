@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-unordered-containers
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name unordered-containers
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.16.0
+Version:        0.2.19.1
 Release:        0
 Summary:        Efficient hashing-based container types
 License:        BSD-3-Clause
@@ -29,16 +29,18 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-template-haskell-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-ChasingBottoms-devel
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-nothunks-devel
 BuildRequires:  ghc-random-devel
-BuildRequires:  ghc-test-framework-devel
-BuildRequires:  ghc-test-framework-hunit-devel
-BuildRequires:  ghc-test-framework-quickcheck2-devel
+BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-tasty-quickcheck-devel
 %endif
 
 %description
