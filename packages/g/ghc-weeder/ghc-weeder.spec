@@ -58,7 +58,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver algebraic-graphs '^>= 0.5' '< 1'
 cabal-tweak-dep-ver lens '^>= 5.0.1' '< 6'
 cabal-tweak-dep-ver optparse-applicative '^>= 0.16.0.0' '< 1'
 
