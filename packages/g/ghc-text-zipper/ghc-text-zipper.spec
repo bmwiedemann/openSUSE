@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-text-zipper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name text-zipper
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.11
+Version:        0.12
 Release:        0
 Summary:        A text editor zipper library
 License:        BSD-3-Clause
@@ -70,7 +70,7 @@ This package provides the Haskell %{pkg_name} library development files.
 %files -f %{name}.files
 %license LICENSE
 %dir %{_datadir}/%{pkg_name}-%{version}
-%{_datadir}/%{pkg_name}-%{version}/CHANGELOG
+%{_datadir}/%{pkg_name}-%{version}/CHANGELOG.md
 
 %files devel -f %{name}-devel.files
 

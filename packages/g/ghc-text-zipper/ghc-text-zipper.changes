@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul  9 15:39:25 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update text-zipper to version 0.12.
+  Upstream has renamed and modified the change log file(s) in this
+  release. Unfortunately, the automatic updater cannot reliable
+  determine relevant entries for this release.
+
+-------------------------------------------------------------------
 Mon Jan  4 11:06:31 UTC 2021 - psimons@suse.com
 
 - Update text-zipper to version 0.11.
