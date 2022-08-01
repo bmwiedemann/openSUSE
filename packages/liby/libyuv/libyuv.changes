@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Fri Jul 29 16:35:26 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Initial packaging version 20220713+d248929c
+- Add required patches:
+  * Use-a-proper-so-version.patch
+  * Link-against-shared-library.patch
+  * Disable-static-library.patch
+  * Don-t-install-conversion-tool.patch
+  * Use-library-suffix-during-installation.patch
+  * Link-main-library-against-libjpeg.patch
+

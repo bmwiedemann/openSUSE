@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://chromium.googlesource.com/libyuv/libyuv.git</param>
+              <param name="changesrevision">d248929c059ff7629a85333699717d7a677d8d96</param></service></servicedata>
