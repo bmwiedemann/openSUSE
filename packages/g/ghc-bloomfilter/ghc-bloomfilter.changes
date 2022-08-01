@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  2 18:30:49 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update bloomfilter to version 2.0.1.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov 15 06:59:43 UTC 2021 - psimons@suse.com
 
 - Update bloomfilter to version 2.0.1.0 revision 1.
