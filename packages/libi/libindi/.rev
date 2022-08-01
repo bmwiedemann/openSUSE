@@ -509,4 +509,24 @@
   * Driver for WandererRotatorLite</comment>
     <requestid>978596</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>29925f80e7d44ea142f252080a32c9cb</srcmd5>
+    <version>1.9.7</version>
+    <time>1659382358</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.9.7:
+  * INDI Receiver and rtl-sdr.
+  * Ensure defensive check of UBP previous data to fix crash.
+  * Fast blob transfer.
+  * More AP changes: UDP, Home, Encoder Status, version major/minor.
+  * Fix memory leak when converting blob to base64.
+  * Use 8bits samples in the lookup table.
+  * Adding some basic PEC status and control to lx200gemini.
+  * Add Servo Precision control.
+  * Added RA/DEC guide speed.
+  * Fixed a bug where PEC was always enabled on startup.
+  * Various other fixes.
+</comment>
+    <requestid>991877</requestid>
+  </revision>
 </revisionlist>

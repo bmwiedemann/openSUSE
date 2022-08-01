@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul 29 14:52:35 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9.7:
+  * INDI Receiver and rtl-sdr.
+  * Ensure defensive check of UBP previous data to fix crash.
+  * Fast blob transfer.
+  * More AP changes: UDP, Home, Encoder Status, version major/minor.
+  * Fix memory leak when converting blob to base64.
+  * Use 8bits samples in the lookup table.
+  * Adding some basic PEC status and control to lx200gemini.
+  * Add Servo Precision control.
+  * Added RA/DEC guide speed.
+  * Fixed a bug where PEC was always enabled on startup.
+  * Various other fixes.
+
+-------------------------------------------------------------------
 Sat May 21 15:37:19 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.9.6:
