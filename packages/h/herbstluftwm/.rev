@@ -290,4 +290,24 @@ herbstluftwm.x86_64: E: summary-not-capitalized (Badness: 63) C a manual tiling 
     premultiply rgb values with the alpha value</comment>
     <requestid>962651</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>05a90247454e360f4c964be6cc0cc277</srcmd5>
+    <version>0.9.5</version>
+    <time>1659382380</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.9.5:
+  * Key binds for release events.
+  * The Setting 'smart_frame_surroundings' has been changed to accept the
+    following new values: 'off', 'hide_all', and 'hide_gaps'. Setting it to
+    'hide_gaps' will only hide frame gaps when applicable, 'hide_all' and 'off'
+    mirror the old behaviour with regards to 'true' and 'false'.
+  * New format '%{ }' for easier attribute access in the sprintf command
+  * New setting 'show_frame_decorations' that controls when frame decorations
+    are shown. This should be used instead of the old 'always_show_frame'
+  * New frame attribute 'content_geometry'
+  * New tag attribute 'at_end'
+  * New monitor attribute 'content_geometry'
+  * Fix bug in ipc protocol for big-endian systems</comment>
+    <requestid>991943</requestid>
+  </revision>
 </revisionlist>
