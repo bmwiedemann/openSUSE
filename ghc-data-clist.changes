@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 25 08:18:33 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update data-clist to version 0.2.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
