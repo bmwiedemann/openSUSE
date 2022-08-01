@@ -1,6 +1,6 @@
 name:           polyparse
 version:        1.13
-x-revision: 3
+x-revision: 4
 license:        LGPL
 license-files:   COPYRIGHT, LICENCE-LGPL, LICENCE-commercial
 copyright:      (c) 2006-2016 Malcolm Wallace
@@ -72,7 +72,7 @@ library
         Text.Parse
   if impl(ghc)
     build-depends:      bytestring >= 0.9.1.0 && < 0.12
-    build-depends:      text >= 1.2.3.0 && <1.3
+    build-depends:      text >= 1.2.3.0 && <1.3 || >= 2.0 && < 2.1
     exposed-modules:
         Text.ParserCombinators.Poly.ByteString
         Text.ParserCombinators.Poly.ByteStringChar
