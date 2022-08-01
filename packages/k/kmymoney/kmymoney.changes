@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Aug  1 11:47:12 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 5.1.3
+- Major bugs fixed:
+  * Duplicating an investment transaction also duplicates a matched but not
+    accepted transaction in the brokerage account with original not the new
+    date on the matched transaction (kde#426161)
+  * Calculation of the balance is incorrect for future balances (kde#447025)
+  * Investment Cap Gains by Account (Customized) crashes with my dataset.
+    Changing the date of one ledger entry fixes the crash. (kde#445458)
+  * Attempting KMyMoney 5.0.8 "Currencies" Maintenance, Application Crash
+    (kde#450016)
+  * crashes on new category with a double colon (kde#451677)
+- New features:
+  * add match strings as well as name from deleted payee to new payee
+    (kde#399685)
+  * Change default matching behavior for new payees to "match on exact payee
+    name" (kde#424377)
+  * When exporting a report, the file name (suggested) takes the report name
+    (kde#440586)
+  * When "Amount" at ledgers get the focus by click, select the entire value
+    (kde#441581)
+  * Date picker, frequency and process schedule at last day of the month should
+    interact (kde#444262)
+  * Allow currencies to be divisible by more than ten decimal places
+    (kde#447480)
+  * Please add Functionality to Scheduled Transactions (kde#450965)
+  * Decimal and thousands separators in ordinate axis labels are missing
+    (kde#453922)
+- Full changelog available at https://kmymoney.org/2022/07/30/kmymoney-5-1-3-released.html
+- Drop merged patches:
+  * 0001-Remove-unused-variable-definition.patch
+  * 0002-Fix-build-with-newer-Gwenhywfar-versions.patch
+  * Fix-compile-for-Newer-Akonadi-Builds.patch
+
+
+-------------------------------------------------------------------
 Tue Nov 30 16:34:37 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Fix-compile-for-Newer-Akonadi-Builds.patch to fix build with

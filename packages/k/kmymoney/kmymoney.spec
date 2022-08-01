@@ -1,7 +1,7 @@
 #
 # spec file for package kmymoney
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,18 +24,13 @@
 %bcond_with qtwebengine
 %endif
 Name:           kmymoney
-Version:        5.1.2
+Version:        5.1.3
 Release:        0
 Summary:        A Personal Finance Manager by KDE
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Office/Finance
 URL:            https://www.kmymoney.org/
 Source0:        https://download.kde.org/stable/kmymoney/%{version}/src/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Remove-unused-variable-definition.patch
-Patch1:         0002-Fix-build-with-newer-Gwenhywfar-versions.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         Fix-compile-for-Newer-Akonadi-Builds.patch
 BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -138,7 +133,6 @@ Development files and headers need to build software using KMyMoney.
 %files
 %license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kmymoney/
-%doc ChangeLog ChangeLog.original
 %dir %{_kf5_iconsdir}/hicolor/1024x1024
 %dir %{_kf5_iconsdir}/hicolor/1024x1024/apps
 %dir %{_kf5_iconsdir}/hicolor/1024x1024/mimetypes
