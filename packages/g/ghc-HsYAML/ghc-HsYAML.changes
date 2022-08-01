@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 11 07:28:44 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update HsYAML to version 0.2.1.1.
+  ### 0.2.1.1
+
+  _2022-05-11_
+
+  * Compatibility with `mtl-2.3`
+  * Tested with GHC 7.4 - 9.2
+
+-------------------------------------------------------------------
 Sun Dec 26 17:52:12 UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Update HsYAML to version 0.2.1.0 revision 4.
