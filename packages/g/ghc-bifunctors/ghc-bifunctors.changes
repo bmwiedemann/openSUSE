@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May  8 00:00:30 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update bifunctors to version 5.5.12.
+  5.5.12 [2022.05.07]
+  -------------------
+  * Backport an upstream GHC change which removes the default implementation of
+    `bitraverse`. Per the discussion in
+    https://github.com/haskell/core-libraries-committee/issues/47, this default
+    implementation was completely broken, as attempting to use it would always
+    result in an infinite loop.
+
+-------------------------------------------------------------------
 Wed Aug  4 08:17:55 UTC 2021 - psimons@suse.com
 
 - Update bifunctors to version 5.5.11 revision 1.
