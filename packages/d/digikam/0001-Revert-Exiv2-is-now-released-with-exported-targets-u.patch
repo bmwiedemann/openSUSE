@@ -33,18 +33,16 @@ index 16bba83335..174dc3c683 100644
  set(OPENCV_MIN_VERSION    "3.3.0")
  set(LENSFUN_MIN_VERSION   "0.2.6.0")      # For Lens auto-correction plugin
  set(QTAV_MIN_VERSION      "1.12.0")       # For video support.
-@@ -180,19 +180,15 @@ if(NOT X265_FOUND)
-     set(X265_LIBRARIES "")
+@@ -188,7 +188,7 @@
+ 
  endif()
  
 -find_package(exiv2 REQUIRED)
 +find_package(Exiv2 ${EXIV2_MIN_VERSION} REQUIRED)
  
--set_package_properties("exiv2"     PROPERTIES
-+set_package_properties("Exiv2"     PROPERTIES
+ set_package_properties("exiv2"     PROPERTIES
                         DESCRIPTION "Required to build digiKam"
-                        URL         "https://www.exiv2.org"
-                        TYPE        RECOMMENDED
+@@ -197,10 +197,6 @@
                         PURPOSE     "Library to manage image metadata"
  )
  
@@ -232,8 +230,8 @@ index 9e3a026035..596c701516 100644
  
      DISABLE_GCC_COMPILER_WARNINGS("5.99.99" "-Wno-deprecated")
  
-@@ -90,14 +89,13 @@ set(libdmetadata_SRCS
- )
+@@ -99,14 +99,13 @@
+ endif()
  
  include_directories(
 +    ${EXIV2_INCLUDE_DIR}

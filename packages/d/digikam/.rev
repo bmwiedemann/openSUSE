@@ -1777,4 +1777,12 @@ General : Update internal Libraw to snapshot 202110
     <comment></comment>
     <requestid>979358</requestid>
   </revision>
+  <revision rev="206" vrev="1">
+    <srcmd5>a65a59831f7edf763a12b188a194b20e</srcmd5>
+    <version>7.7.0</version>
+    <time>1659382403</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>992032</requestid>
+  </revision>
 </revisionlist>

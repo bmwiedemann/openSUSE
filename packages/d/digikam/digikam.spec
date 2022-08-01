@@ -19,7 +19,7 @@
 %bcond_without released
 %bcond_with    apidocs
 Name:           digikam
-Version:        7.6.0
+Version:        7.7.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later
@@ -32,8 +32,6 @@ Source2:        %{name}.keyring
 %endif
 # PATCH-FIX-OPENSUSE -- Lower minimum exiv2 version to 0.26
 Patch0:         0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         Fix-build-with-akonadi-contacts-22.04.patch
 # QtWebEngine is not available on ppc and zSystems
 ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{mips} %{riscv}
 BuildRequires:  QtAV-devel >= 1.12
@@ -141,7 +139,7 @@ Additional plugins for digiKam.
 %package devel
 Summary:        DigiKam development files
 Group:          Development/Libraries/KDE
-Requires:       libdigikamcore7_6_0 = %{version}
+Requires:       libdigikamcore7_7_0 = %{version}
 
 %description devel
 Development headers and libraries for digiKam.
@@ -154,7 +152,7 @@ Supplements:    %{name}
 %description -n showfoto
 Additional program to browse and view photos
 
-%package -n libdigikamcore7_6_0
+%package -n libdigikamcore7_7_0
 Summary:        The main digikam libraries
 Group:          Development/Libraries/KDE
 Conflicts:      libdigikamcore7
@@ -162,7 +160,7 @@ Conflicts:      libdigikamcore7
 %requires_eq %(rpm --qf %%{name} -qf %{_libdir}/libopencv_dnn.so.%{pkg_version opencv-devel})
 Recommends:     %{name}-plugins
 
-%description -n libdigikamcore7_6_0
+%description -n libdigikamcore7_7_0
 The main digikam libraries that are being shared between showfoto and digikam
 
 %lang_package
@@ -173,7 +171,6 @@ The main digikam libraries that are being shared between showfoto and digikam
 # Leap 15 only has exiv2 0.26
 %patch0 -p1
 %endif
-%patch1 -p1
 
 %build
 %cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON
@@ -197,8 +194,8 @@ The main digikam libraries that are being shared between showfoto and digikam
 
 %fdupes %{buildroot}
 
-%post -n libdigikamcore7_6_0 -p /sbin/ldconfig
-%postun -n libdigikamcore7_6_0 -p /sbin/ldconfig
+%post -n libdigikamcore7_7_0 -p /sbin/ldconfig
+%postun -n libdigikamcore7_7_0 -p /sbin/ldconfig
 
 %files
 %{_kf5_bindir}/digikam
@@ -242,11 +239,11 @@ The main digikam libraries that are being shared between showfoto and digikam
 %{_kf5_kxmlguidir}/showfoto/
 %{_kf5_appstreamdir}/org.kde.showfoto.appdata.xml
 
-%files -n libdigikamcore7_6_0
+%files -n libdigikamcore7_7_0
 %license COPYING*
-%{_kf5_libdir}/libdigikamcore.so.7.6.0
-%{_kf5_libdir}/libdigikamdatabase.so.7.6.0
-%{_kf5_libdir}/libdigikamgui.so.7.6.0
+%{_kf5_libdir}/libdigikamcore.so.7.7.0
+%{_kf5_libdir}/libdigikamdatabase.so.7.7.0
+%{_kf5_libdir}/libdigikamgui.so.7.7.0
 
 %if %{with released}
 %files lang -f %{name}.lang

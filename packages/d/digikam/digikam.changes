@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug  1 11:03:57 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Updated 0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
+
+-------------------------------------------------------------------
+Sat Jul 30 09:53:33 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 7.7.0
+  * https://www.digikam.org/news/2022-06-26-7.7.0_release_announcement/
+- New features (from NEWS):
+  * Remove internal libheif and libde265 from core in favor to
+    system libraries.
+  * Update internal Libraw snashot to 2022-06-17 with Olympus OM-1
+    support.
+- 81 bugs fixed
+- Removed now included Fix-build-with-akonadi-contacts-22.04.patch 
+
+-------------------------------------------------------------------
 Wed May 25 11:04:34 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve rpmlint error "libdigikamcore7.x86_64: E: shlib-policy-name-error
