@@ -19,7 +19,7 @@
 %global pkg_name hslua-packaging
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        Utilities to build Lua modules
 License:        MIT
