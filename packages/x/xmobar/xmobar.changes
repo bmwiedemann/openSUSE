@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jul  8 22:59:18 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update xmobar to version 0.44.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/xmobar-0.44/src/changelog.md
+
+-------------------------------------------------------------------
+Wed May 11 16:54:50 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update xmobar to version 0.43.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/xmobar-0.43/src/changelog.md
+
+-------------------------------------------------------------------
+Tue Mar  1 16:12:23 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update xmobar to version 0.42.
+  ## Version 0.42 (March, 2022)
+
+  _New features_
+
+    - New text mode (thanks to Pavel Kagulin, see issue #601), with
+      output formats compatible with color terminals and pango.
+    - New text mode with format following swaybar-protocol, supporting
+      colors, faces, boxes and actions.
+
+  _Bug fixes_
+
+     - Fix for bottom placement (#608)
+     - Fix for memory leak during X drawing (#609)
+
+-------------------------------------------------------------------
 Sat Jan  1 19:59:06 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update xmobar to version 0.41.

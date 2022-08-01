@@ -19,7 +19,7 @@
 %global pkg_name xmobar
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.41
+Version:        0.44
 Release:        0
 Summary:        A Minimalistic Text Based Status Bar
 License:        BSD-3-Clause
@@ -29,6 +29,7 @@ BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-X11-devel
 BuildRequires:  ghc-X11-xft-devel
+BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-alsa-core-devel
 BuildRequires:  ghc-alsa-mixer-devel
 BuildRequires:  ghc-async-devel
