@@ -19,7 +19,7 @@
 %global pkg_name statistics
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.16.0.1
+Version:        0.16.1.0
 Release:        0
 Summary:        A library of statistical types, data, and functions
 License:        BSD-2-Clause
@@ -33,8 +33,8 @@ BuildRequires:  ghc-data-default-class-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-dense-linear-algebra-devel
 BuildRequires:  ghc-math-functions-devel
-BuildRequires:  ghc-monad-par-devel
 BuildRequires:  ghc-mwc-random-devel
+BuildRequires:  ghc-parallel-devel
 BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros

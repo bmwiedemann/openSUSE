@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu May 12 18:58:41 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update statistics to version 0.16.1.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/statistics-0.16.1.0/src/changelog.md
+
+-------------------------------------------------------------------
+Fri Mar 18 18:26:26 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update statistics to version 0.16.0.2.
+  ## Changes in 0.16.0.2
+
+   * Bug in constructor of binomial distribution is fixed (#181). It accepted
+     out-of range probability before.
+
+-------------------------------------------------------------------
 Sat Jan  8 15:39:32 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update statistics to version 0.16.0.1.
