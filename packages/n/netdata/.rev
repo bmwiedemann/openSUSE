@@ -3521,4 +3521,41 @@ Collectors
       (gh#netdata/netdata#12078)</comment>
     <requestid>977544</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>9651e480df8f96794dd63e8ef36fc4fe</srcmd5>
+    <version>1.35.1</version>
+    <time>1659382355</time>
+    <user>RBrownFactory</user>
+    <comment>- Fix %fdupes usage that resulted in the webserver refusing to
+  serve required assets
+- Update to 1.35.1 (go.d.plugin 0.33.1)
+Netdata now comes with on-device machine learning. Unsupervised ML
+models are trained for every metric, at the edge (on your devices),
+enabling real time anomaly detection across your infrastructure.
+Update netdata.conf with the following information to enable ML
+on your agent:
+[ml]
+    enabled = yes
+More information on the Netdata blog:
+https://www.netdata.cloud/blog/introducing-anomaly-advisor-unsupervised-anomaly-detection-in-netdata/
+Collectors
+  * New
+    + Add &quot;UPS Load Usage&quot; in Watts chart (charts.d/apcupsd)
+      gh#netdata/netdata#12965
+    + Add Pressure Stall Information stall time charts
+      (proc.plugin, cgroups.plugin)
+      gh#netdata/netdata#12869
+    + Add &quot;CPU Time Relative Share&quot; chart when running inside a
+      K8s cluster (cgroups.plugin)
+      gh#netdata/netdata#12741
+    + Add a collector that parses the log files of the OpenVPN
+      server (go.d/openvpn_status_log)
+      gh#netdata/netdata#675
+  * Improvements
+    + Add Tailscale apps_groups.conf (apps.plugin)
+      gh#netdata/netdata#13033
+    + Skip collecting network interface speed and duplex if carrier
+      is down (proc.plugin)</comment>
+    <requestid>991836</requestid>
+  </revision>
 </revisionlist>

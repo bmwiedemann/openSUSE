@@ -1,4 +1,340 @@
 -------------------------------------------------------------------
+Sun Jul 31 04:05:38 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Fix %fdupes usage that resulted in the webserver refusing to
+  serve required assets
+- Update to 1.35.1 (go.d.plugin 0.33.1)
+Netdata now comes with on-device machine learning. Unsupervised ML
+models are trained for every metric, at the edge (on your devices),
+enabling real time anomaly detection across your infrastructure.
+
+Update netdata.conf with the following information to enable ML
+on your agent:
+
+[ml]
+    enabled = yes
+
+More information on the Netdata blog:
+https://www.netdata.cloud/blog/introducing-anomaly-advisor-unsupervised-anomaly-detection-in-netdata/
+
+Collectors
+  * New
+    + Add "UPS Load Usage" in Watts chart (charts.d/apcupsd)
+      gh#netdata/netdata#12965
+    + Add Pressure Stall Information stall time charts
+      (proc.plugin, cgroups.plugin)
+      gh#netdata/netdata#12869
+    + Add "CPU Time Relative Share" chart when running inside a
+      K8s cluster (cgroups.plugin)
+      gh#netdata/netdata#12741
+    + Add a collector that parses the log files of the OpenVPN
+      server (go.d/openvpn_status_log)
+      gh#netdata/netdata#675
+  * Improvements
+    + Add Tailscale apps_groups.conf (apps.plugin)
+      gh#netdata/netdata#13033
+    + Skip collecting network interface speed and duplex if carrier
+      is down (proc.plugin)
+      gh#netdata/netdata#13019
+    + Run the /net/dev module in a separate thread (proc.plugin)
+      gh#netdata/netdata#12996
+    + Add dictionary support to statsd
+      gh#netdata/netdata#12980
+    + Add an option to filter the alarms (python.d/alarms)
+      gh#netdata/netdata#12972
+    + Update net, aws, and ha groups in apps_groups.conf
+      (apps.plugin)
+      gh#netdata/netdata#12921
+    + Add k8s_cluster_name label to cgroup charts in K8s on GKE
+      (cgroups.plugin)
+      gh#netdata/netdata#12858
+    + Exclude Proxmox bridge interfaces (proc.plugin)
+      gh#netdata/netdata#12789
+    + Add filtering by cgroups name and improve renaming in K8s
+      (cgroups.plugin)
+      gh#netdata/netdata#12778
+    + Execute the renaming script only for containers in K8s
+      (cgroups.plugin)
+      gh#netdata/netdata#12747
+    + Add k8s_qos_class label to cgroup charts in K8s
+      (cgroups.plugin)
+      gh#netdata/netdata#12737
+    + Reduce the CPU time required for cgroup-network-helper.sh
+      (cgroups.plugin)
+      gh#netdata/netdata#12711
+    + Add Proxmox VE processes to apps_groups.conf (apps.plugin)
+      gh#netdata/netdata#12704
+    + Add Caddy to apps_groups.conf (apps.plugin)
+      gh#netdata/netdata#12678
+  * Bug fixse
+    + Fix adding wrong labels to cgroup charts (cgroups.plugin)
+      gh#netdata/netdata#13062
+    + Fix cpu_guest chart context (apps.plugin)
+      gh#netdata/netdata#12983
+    + Fix counting unique values in Sets (statsd.plugin)
+      gh#netdata/netdata#12963
+    + Fix collecting data from uninitialized containers in K8s
+      (cgroups.plugin)
+      gh#netdata/netdata#12912
+    + Fix CPU-specific data in the "C-state residency time" chart
+      dimensions (proc.plugin)
+      gh#netdata/netdata#12898
+    + Fix disabling K8s pod/container cgroups when fail to rename
+      them (cgroups.plugin)
+      gh#netdata/netdata#12865
+    + Fix memory usage calculation by considering ZFS ARC as cache
+      on Linux (proc.plugin)
+      gh#netdata/netdata#12847
+    + Fix adding network interfaces when the cgroup proc is in the
+      host network namespace (cgroups.plugin)
+      gh#netdata/netdata#12788
+    + Fix not setting chart units (go.d/snmp)
+      gh#netdata/netdata#682
+    + Fix not collecting Integer type values (go.d/snmp)
+      gh#netdata/netdata#680
+eBPF
+  * Add CO-RE algorithms to all threads related to memory
+    gh#netdata/netdata#12684
+  * Fix wrong chart type for ip charts
+    gh#netdata/netdata#12698
+  * Fix disabled apps (ebpf.plugin)
+    gh#netdata/netdata#13044
+  * Fix "libbpf: failed to load" warnings
+    gh#netdata/netdata#12831
+  * Re-enable socket module by default
+    gh#netdata/netdata#12702
+Health
+  * Fix not respecting host labels when creating alerts for
+    children instances
+    gh#netdata/netdata#13053
+  * Expose anomaly-bit option to health
+    gh#netdata/netdata#12835
+  * Add priority to Gotify notifications to trigger
+    sound & vibration on the Gotify phone app
+    gh#netdata/netdata#12753
+  * Add Gotify notification method
+    gh#netdata/netdata#12639
+Streaming
+  * Improve failover logic when the Agent is configured to stream
+    to multiple destinations
+    gh#netdata/netdata#12866
+  * Increase the default "buffer size bytes" to 10MB
+    gh#netdata/netdata#12913
+Exporting
+  * Add the URL query parameter that filters charts from the
+    /allmetrics API query
+    gh#netdata/netdata#12820
+  * Make the "send charts matching" option behave the same as the
+    "filter" URL query parameter for prometheus format
+    gh#netdata/netdata#12832
+Other Notable Changes
+  * Improvements
+    + Add hostname to mirrored hosts int the /api/v1/info endpoint
+      gh#netdata/netdata#13030
+    + Optimize query engine queries
+      gh#netdata/netdata#12988
+    + Optimize query engine and cleanup
+      gh#netdata/netdata#12978
+    + Improve the web server work distribution across worker
+      threads
+      gh#netdata/netdata#12975
+    + Check link local address before querying cloud instance
+      metadata
+      gh#netdata/netdata#12973
+    + Speed up query engine by refactoring
+      rrdeng_load_metric_next()
+      gh#netdata/netdata#12966
+    + Optimize the dimensions option store to the metadata database
+      gh#netdata/netdata#12952
+    + Add detailed dbengine stats
+      gh#netdata/netdata#12948
+    + Stream Metric Correlation version to parent and advertise
+      Metric Correlation status to the Cloud
+      gh#netdata/netdata#12940
+    + Move directories, logs, and environment variables
+      configuration options to separate sections
+      gh#netdata/netdata#12935
+    + Adjust the dimension liveness status check
+      gh#netdata/netdata#12933
+    + Make sqlite PRAGMAs user configurable
+      gh#netdata/netdata#12917
+    + Add worker jobs for cgroup-rename, cgroup-network and
+      cgroup-first-time
+      gh#netdata/netdata#12910
+    + Return stable or nightly based on version if the file check
+      fails
+      gh#netdata/netdata#12894
+    + Take into account the in queue wait time when executing a
+      data query
+      gh#netdata/netdata#12885
+    + Add fixes and improvements to workers library
+      gh#netdata/netdata#12863
+    + Pause alert pushes to the cloud
+      gh#netdata/netdata#12852
+    + Allow to use the new MQTT 5 implementation
+      gh#netdata/netdata#12838
+    + Set a page wait timeout and retry count
+      gh#netdata/netdata#12836
+    + Allow external plugins to create chart labels
+      gh#netdata/netdata#12834
+    + Reduce the number of messages written in the error log due to
+      out of bound timestamps
+      gh#netdata/netdata#12829
+    + Cleanup the node instance table on startup
+      gh#netdata/netdata#12825
+    + Accept a data query timeout parameter from the cloud
+      gh#netdata/netdata#12823
+    + Write the entire request with parameters in the access.log
+      file
+      gh#netdata/netdata#12815
+    + Add a parameter for how many worker threads the libuv library
+      needs to pre-initialize
+      gh#netdata/netdata#12814
+    + Optimize linking of foreach alarms to dimensions
+      gh#netdata/netdata#12813
+    + Add a hyphen to the list of available characters for chart
+      names
+      gh#netdata/netdata#12812
+    + Speed up queries by providing optimization in the main loop
+      gh#netdata/netdata#12811
+    + Add workers utilization charts for Netdata components
+      gh#netdata/netdata#12807
+    + Fill missing removed events after a crash
+      gh#netdata/netdata#12803
+    + Speed up buffer increases (minimize reallocs)
+      gh#netdata/netdata#12792
+    + Speed up reading big proc files
+      gh#netdata/netdata#12791
+    + Make dbengine page cache undumpable and dedupuble
+      gh#netdata/netdata#12765
+    + Speed up execution of external programs
+      gh#netdata/netdata#12759
+    + Remove per chart configuration
+      gh#netdata/netdata#12728
+    + Check for chart obsoletion on children re-connections
+      gh#netdata/netdata#12707
+    + Add a 2 minute timeout to stream receiver socket
+      gh#netdata/netdata#12673
+    + Improve Agent cloud chart synchronization
+      gh#netdata/netdata#12655
+    + Add the ability to perform a data query using an offline node
+      id
+      gh#netdata/netdata#12650
+    + Implement ks_2samp test for Metric Correlations
+      gh#netdata/netdata#12582
+    + Reduce alert events sent to the cloud
+      gh#netdata/netdata#12544
+    + Store alert log entries even if alert it is repeating
+      gh#netdata/netdata#12226
+    + Improve storage number unpacking by using a lookup table
+      gh#netdata/netdata#11048
+  * Bug fixes
+    + Fix locking access to chart labels
+      gh#netdata/netdata#13064
+    + Fix coverity 378625
+      gh#netdata/netdata#13055
+    + Fix dictionary crash walkthrough empty
+      gh#netdata/netdata#13051
+    + Fix the retry count and netdata_exit check when running a
+      sqlite3_step command
+      gh#netdata/netdata#13040
+    + Fix sending first time seen dimensions with zero timestamp to
+      the Cloud
+      gh#netdata/netdata#13035
+    + Fix gap filling on dbengine gaps
+      gh#netdata/netdata#13027
+    + Fix coverity issue 378598
+      gh#netdata/netdata#13022
+    + Fix coverity issue 378617,378615
+      gh#netdata/netdata#13021
+    + Fix a dimension 100% anomaly rate despite no change in the
+      metric value
+      gh#netdata/netdata#13005
+    + Fix compilation warnings
+      gh#netdata/netdata#12993
+    + Fix crash because of corrupted label message from streaming
+      gh#netdata/netdata#12992
+    + Fix nanosleep on platforms other than Linux
+      gh#netdata/netdata#12991
+    + Fix disabling a streaming destination because of denied
+      access
+      gh#netdata/netdata#12971
+    + Fix "unused variable" compilation warning
+      gh#netdata/netdata#12969
+    + Fix virtualization detection on FreeBSD
+      gh#netdata/netdata#12964
+    + Fix buffer overflow when logging "command_to_be_logged" in
+      analytics
+      gh#netdata/netdata#12947
+    + Fix "global statistics" section in netdata.conf
+      gh#netdata/netdata#12916
+    + Fix virtualization detection when systemd-detect-virt is not
+      available
+      gh#netdata/netdata#12911
+    + Fix the log entry for incoming cloud start streaming commands
+      gh#netdata/netdata#12908
+    + Fix release channel in the node info message
+      gh#netdata/netdata#12905
+    + Fix alarms count in /api/v1/alarm_count
+      gh#netdata/netdata#12896
+    + Fix multihost queries alignment
+      gh#netdata/netdata#12870
+    + Fix negative worker jobs busy time
+      gh#netdata/netdata#12867
+    + Fix reported by coverity issues related to memory and
+      structure dereference
+      gh#netdata/netdata#12846
+    + Fix memory leaks and mismatches of the use of the z functions
+      for allocations
+      gh#netdata/netdata#12841
+    + Fix using obsolete charts/dims in prediction thread
+      gh#netdata/netdata#12833
+    + Fix not skipping ACLK dimension update when dimension is
+      freed
+      gh#netdata/netdata#12777
+    + Fix coverity warning about not checking return value in
+      receiver setsockopt
+      gh#netdata/netdata#12772
+    + Fix disk size calculation on macOS
+      gh#netdata/netdata#12764
+    + Fix "implicit declaration of function" compilation warning
+      gh#netdata/netdata#12756
+    + Fix Valgrind errors
+      gh#netdata/netdata#12619
+    + Fix redirecting alert emails for a child to the parent
+      gh#netdata/netdata#12609
+Deprecation Notice
+The following items will be removed in our next minor release (v1.36.0):
+
+Component                   Type          Will be replaced by
+=================================================================
+python.d/chrony	collector   go.d/chrony   -
+python.d/ovpn_status_log    collector     go.d/openvpn_status_log
+
+Deprecated in this release:
+
+Component                   Type          Replaced by
+=================================================================
+node.d                      plugin        -
+node.d/snmp                 collector     go.d/snmp
+python.d/apache             collector     go.d/apache
+python.d/couchdb            collector     go.d/couchdb
+python.d/dns_query_time     collector     go.d/dnsquery
+python.d/dnsdist            collector     go.d/dnsdist
+python.d/elasticsearch      collector     go.d/elasticsearch
+python.d/energid            collector     go.d/energid
+python.d/freeradius         collector     go.d/freeradius
+python.d/httpcheck          collector     go.d/httpcheck
+python.d/isc_dhcpd          collector     go.d/isc_dhcpd
+python.d/mysql              collector     go.d/mysql
+python.d/nginx              collector     go.d/nginx
+python.d/phpfpm             collector     go.d/phpfpm
+python.d/portcheck          collector     go.d/portcheck
+python.d/powerdns           collector     go.d/powerdns
+python.d/redis              collector     go.d/redis
+python.d/web_log            collector     go.d/weblog
+
+-------------------------------------------------------------------
 Mon May 16 11:27:01 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.34.1 (go.d.plugin 0.32.3)
