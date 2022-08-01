@@ -1,0 +1,97 @@
+# Commit ce59e472b581e4923f6892172dde62b88c8aa8b7
+# Date 2022-05-02 08:49:12 +0200
+# Author Roger Pau Monné <roger.pau@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/msr: handle reads to MSR_P5_MC_{ADDR,TYPE}
+
+Windows Server 2019 Essentials will unconditionally attempt to read
+P5_MC_ADDR MSR at boot and throw a BSOD if injected a #GP.
+
+Fix this by mapping MSR_P5_MC_{ADDR,TYPE} to
+MSR_IA32_MCi_{ADDR,STATUS}, as reported also done by hardware in Intel
+SDM "Mapping of the Pentium Processor Machine-Check Errors to the
+Machine-Check Architecture" section.
+
+Reported-by: Steffen Einsle <einsle@phptrix.de>
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/cpu/mcheck/mce.h
++++ b/xen/arch/x86/cpu/mcheck/mce.h
+@@ -169,6 +169,12 @@ static inline int mce_vendor_bank_msr(co
+         if (msr >= MSR_IA32_MC0_CTL2 &&
+             msr < MSR_IA32_MCx_CTL2(v->arch.vmce.mcg_cap & MCG_CAP_COUNT) )
+             return 1;
++        fallthrough;
++
++    case X86_VENDOR_CENTAUR:
++    case X86_VENDOR_SHANGHAI:
++        if (msr == MSR_P5_MC_ADDR || msr == MSR_P5_MC_TYPE)
++            return 1;
+         break;
+ 
+     case X86_VENDOR_AMD:
+--- a/xen/arch/x86/cpu/mcheck/mce_intel.c
++++ b/xen/arch/x86/cpu/mcheck/mce_intel.c
+@@ -1001,8 +1001,27 @@ int vmce_intel_wrmsr(struct vcpu *v, uin
+ 
+ int vmce_intel_rdmsr(const struct vcpu *v, uint32_t msr, uint64_t *val)
+ {
++    const struct cpuid_policy *cp = v->domain->arch.cpuid;
+     unsigned int bank = msr - MSR_IA32_MC0_CTL2;
+ 
++    switch ( msr )
++    {
++    case MSR_P5_MC_ADDR:
++        /*
++         * Bank 0 is used for the 'bank 0 quirk' on older processors.
++         * See vcpu_fill_mc_msrs() for reference.
++         */
++        *val = v->arch.vmce.bank[1].mci_addr;
++        return 1;
++
++    case MSR_P5_MC_TYPE:
++        *val = v->arch.vmce.bank[1].mci_status;
++        return 1;
++    }
++
++    if ( !(cp->x86_vendor & X86_VENDOR_INTEL) )
++        return 0;
++
+     if ( bank < GUEST_MC_BANK_NUM )
+     {
+         *val = v->arch.vmce.bank[bank].mci_ctl2;
+--- a/xen/arch/x86/cpu/mcheck/vmce.c
++++ b/xen/arch/x86/cpu/mcheck/vmce.c
+@@ -150,6 +150,8 @@ static int bank_mce_rdmsr(const struct v
+     default:
+         switch ( boot_cpu_data.x86_vendor )
+         {
++        case X86_VENDOR_CENTAUR:
++        case X86_VENDOR_SHANGHAI:
+         case X86_VENDOR_INTEL:
+             ret = vmce_intel_rdmsr(v, msr, val);
+             break;
+--- a/xen/include/asm-x86/msr-index.h
++++ b/xen/include/asm-x86/msr-index.h
+@@ -15,6 +15,9 @@
+  * abbreviated name.  Exceptions will be considered on a case-by-case basis.
+  */
+ 
++#define MSR_P5_MC_ADDR                      0
++#define MSR_P5_MC_TYPE                      0x00000001
++
+ #define MSR_APIC_BASE                       0x0000001b
+ #define  APIC_BASE_BSP                      (_AC(1, ULL) <<  8)
+ #define  APIC_BASE_EXTD                     (_AC(1, ULL) << 10)
+--- a/xen/arch/x86/msr.c
++++ b/xen/arch/x86/msr.c
+@@ -282,6 +282,8 @@ int guest_rdmsr(struct vcpu *v, uint32_t
+         *val = msrs->misc_features_enables.raw;
+         break;
+ 
++    case MSR_P5_MC_ADDR:
++    case MSR_P5_MC_TYPE:
+     case MSR_IA32_MCG_CAP     ... MSR_IA32_MCG_CTL:      /* 0x179 -> 0x17b */
+     case MSR_IA32_MCx_CTL2(0) ... MSR_IA32_MCx_CTL2(31): /* 0x280 -> 0x29f */
+     case MSR_IA32_MCx_CTL(0)  ... MSR_IA32_MCx_MISC(31): /* 0x400 -> 0x47f */

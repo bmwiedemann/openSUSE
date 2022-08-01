@@ -1,0 +1,39 @@
+# Commit 80ad8db8a4d9bb24952f0aea788ce6f47566fa76
+# Date 2022-06-15 10:19:32 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+IOMMU/x86: work around bogus gcc12 warning in hvm_gsi_eoi()
+
+As per [1] the expansion of the pirq_dpci() macro causes a -Waddress
+controlled warning (enabled implicitly in our builds, if not by default)
+tying the middle part of the involved conditional expression to the
+surrounding boolean context. Work around this by introducing a local
+inline function in the affected source file.
+
+Reported-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: Roger Pau Monné <roger.pau@citrix.com>
+
+[1] https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102967
+
+--- a/xen/drivers/passthrough/x86/hvm.c
++++ b/xen/drivers/passthrough/x86/hvm.c
+@@ -25,6 +25,18 @@
+ #include <asm/hvm/support.h>
+ #include <asm/io_apic.h>
+ 
++/*
++ * Gcc12 takes issue with pirq_dpci() being used in boolean context (see gcc
++ * bug 102967). While we can't replace the macro definition in the header by an
++ * inline function, we can do so here.
++ */
++static inline struct hvm_pirq_dpci *_pirq_dpci(struct pirq *pirq)
++{
++    return pirq_dpci(pirq);
++}
++#undef pirq_dpci
++#define pirq_dpci(pirq) _pirq_dpci(pirq)
++
+ static DEFINE_PER_CPU(struct list_head, dpci_list);
+ 
+ /*

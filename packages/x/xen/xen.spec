@@ -119,7 +119,7 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.16.1_02
+Version:        4.16.1_06
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -155,7 +155,36 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
+Patch1:         625fca42-VT-d-reserved-CAP-ND.patch
+Patch2:         626f7ee8-x86-MSR-handle-P5-MC-reads.patch
+Patch3:         627549d6-IO-shutdown-race.patch
+Patch4:         62a1e594-x86-clean-up-_get_page_type.patch
+Patch5:         62a1e5b0-x86-ABAC-race-in-_get_page_type.patch
+Patch6:         62a1e5d2-x86-introduce-_PAGE_-for-mem-types.patch
+Patch7:         62a1e5f0-x86-dont-change-cacheability-of-directmap.patch
+Patch8:         62a1e60e-x86-split-cache_flush-out-of-cache_writeback.patch
+Patch9:         62a1e62b-x86-AMD-work-around-CLFLUSH-ordering.patch
+Patch10:        62a1e649-x86-track-and-flush-non-coherent.patch
+Patch11:        62a99614-IOMMU-x86-gcc12.patch
+Patch12:        62ab0fab-x86-spec-ctrl-VERW-flushing-runtime-cond.patch
+Patch13:        62ab0fac-x86-spec-ctrl-enum-for-MMIO-Stale-Data.patch
+Patch14:        62ab0fad-x86-spec-ctrl-add-unpriv-mmio.patch
+Patch15:        62bdd840-x86-spec-ctrl-only-adjust-idle-with-legacy-IBRS.patch
+Patch16:        62bdd841-x86-spec-ctrl-knobs-for-STIBP-and-PSFD.patch
+Patch17:        62c56cc0-libxc-fix-compilation-error-with-gcc13.patch
+Patch18:        62cc31ed-x86-honour-spec-ctrl-0-for-unpriv-mmio.patch
+Patch19:        62cc31ee-cmdline-extend-parse_boolean.patch
+Patch20:        62cc31ef-x86-spec-ctrl-fine-grained-cmdline-subopts.patch
+Patch21:        62cd91d0-x86-spec-ctrl-rework-context-switching.patch
+Patch22:        62cd91d1-x86-spec-ctrl-rename-SCF_ist_wrmsr.patch
+Patch23:        62cd91d2-x86-spec-ctrl-rename-opt_ibpb.patch
+Patch24:        62cd91d3-x86-spec-ctrl-rework-SPEC_CTRL_ENTRY_FROM_INTR_IST.patch
+Patch25:        62cd91d4-x86-spec-ctrl-IBPB-on-entry.patch
+Patch26:        62cd91d5-x86-cpuid-BTC_NO-enum.patch
+Patch27:        62cd91d6-x86-spec-ctrl-enable-Zen2-chickenbit.patch
+Patch28:        62cd91d7-x86-spec-ctrl-mitigate-Branch-Type-Confusion.patch
 # EMBARGOED security fixes
+Patch108:       xsa408.patch
 # libxc
 Patch301:       libxc-bitmap-long.patch
 Patch302:       libxc-sr-xl-migration-debug.patch
@@ -480,6 +509,7 @@ export PYTHON="/usr/bin/python3"
 configure_flags="${configure_flags} --disable-qemu-traditional"
 ./configure \
         --disable-xen \
+        --disable-pvshim \
         --enable-tools \
         --enable-docs \
         --prefix=/usr \

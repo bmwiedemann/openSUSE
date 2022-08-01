@@ -1,0 +1,22 @@
+# Commit 4cdb519d797c19ebb8fadc5938cdb47479d5a21b
+# Date 2022-07-11 15:21:35 +0100
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/spec-ctrl: Honour spec-ctrl=0 for unpriv-mmio sub-option
+
+This was an oversight from when unpriv-mmio was introduced.
+
+Fixes: 8c24b70fedcb ("x86/spec-ctrl: Add spec-ctrl=unpriv-mmio")
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/spec_ctrl.c
++++ b/xen/arch/x86/spec_ctrl.c
+@@ -122,6 +122,7 @@ static int __init parse_spec_ctrl(const
+             opt_l1d_flush = 0;
+             opt_branch_harden = false;
+             opt_srb_lock = 0;
++            opt_unpriv_mmio = false;
+         }
+         else if ( val > 0 )
+             rc = -EINVAL;

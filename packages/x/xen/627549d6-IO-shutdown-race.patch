@@ -1,0 +1,120 @@
+# Commit b7e0d8978810b534725e94a321736496928f00a5
+# Date 2022-05-06 17:16:22 +0100
+# Author Julien Grall <jgrall@amazon.com>
+# Committer Julien Grall <jgrall@amazon.com>
+xen: io: Fix race between sending an I/O and domain shutdown
+
+Xen provides hypercalls to shutdown (SCHEDOP_shutdown{,_code}) and
+resume a domain (XEN_DOMCTL_resumedomain). They can be used for checkpoint
+where the expectation is the domain should continue as nothing happened
+afterwards.
+
+hvmemul_do_io() and handle_pio() will act differently if the return
+code of hvm_send_ioreq() (resp. hvmemul_do_pio_buffer()) is X86EMUL_RETRY.
+
+In this case, the I/O state will be reset to STATE_IOREQ_NONE (i.e
+no I/O is pending) and/or the PC will not be advanced.
+
+If the shutdown request happens right after the I/O was sent to the
+IOREQ, then emulation code will end up to re-execute the instruction
+and therefore forward again the same I/O (at least when reading IO port).
+
+This would be problem if the access has a side-effect. A dumb example,
+is a device implementing a counter which is incremented by one for every
+access. When running shutdown/resume in a loop, the value read by the
+OS may not be the old value + 1.
+
+Add an extra boolean in the structure hvm_vcpu_io to indicate whether
+the I/O was suspended. This is then used in place of checking the domain
+is shutting down in hvmemul_do_io() and handle_pio() as they should
+act on suspend (i.e. vcpu_start_shutdown_deferral() returns false) rather
+than shutdown.
+
+Signed-off-by: Julien Grall <jgrall@amazon.com>
+Reviewed-by: Paul Durrant <paul@xen.org>
+
+--- a/xen/arch/arm/ioreq.c
++++ b/xen/arch/arm/ioreq.c
+@@ -80,9 +80,10 @@ enum io_state try_fwd_ioserv(struct cpu_
+         return IO_ABORT;
+ 
+     vio->req = p;
++    vio->suspended = false;
+ 
+     rc = ioreq_send(s, &p, 0);
+-    if ( rc != IO_RETRY || v->domain->is_shutting_down )
++    if ( rc != IO_RETRY || vio->suspended )
+         vio->req.state = STATE_IOREQ_NONE;
+     else if ( !ioreq_needs_completion(&vio->req) )
+         rc = IO_HANDLED;
+--- a/xen/arch/x86/hvm/emulate.c
++++ b/xen/arch/x86/hvm/emulate.c
+@@ -239,6 +239,7 @@ static int hvmemul_do_io(
+     ASSERT(p.count);
+ 
+     vio->req = p;
++    vio->suspended = false;
+ 
+     rc = hvm_io_intercept(&p);
+ 
+@@ -334,7 +335,7 @@ static int hvmemul_do_io(
+         else
+         {
+             rc = ioreq_send(s, &p, 0);
+-            if ( rc != X86EMUL_RETRY || currd->is_shutting_down )
++            if ( rc != X86EMUL_RETRY || vio->suspended )
+                 vio->req.state = STATE_IOREQ_NONE;
+             else if ( !ioreq_needs_completion(&vio->req) )
+                 rc = X86EMUL_OKAY;
+--- a/xen/arch/x86/hvm/io.c
++++ b/xen/arch/x86/hvm/io.c
+@@ -138,10 +138,11 @@ bool handle_pio(uint16_t port, unsigned
+ 
+     case X86EMUL_RETRY:
+         /*
+-         * We should not advance RIP/EIP if the domain is shutting down or
+-         * if X86EMUL_RETRY has been returned by an internal handler.
++         * We should not advance RIP/EIP if the vio was suspended (e.g.
++         * because the domain is shutting down) or if X86EMUL_RETRY has
++         * been returned by an internal handler.
+          */
+-        if ( curr->domain->is_shutting_down || !vcpu_ioreq_pending(curr) )
++        if ( vio->suspended || !vcpu_ioreq_pending(curr) )
+             return false;
+         break;
+ 
+--- a/xen/common/ioreq.c
++++ b/xen/common/ioreq.c
+@@ -1256,6 +1256,7 @@ int ioreq_send(struct ioreq_server *s, i
+     struct vcpu *curr = current;
+     struct domain *d = curr->domain;
+     struct ioreq_vcpu *sv;
++    struct vcpu_io *vio = &curr->io;
+ 
+     ASSERT(s);
+ 
+@@ -1263,7 +1264,10 @@ int ioreq_send(struct ioreq_server *s, i
+         return ioreq_send_buffered(s, proto_p);
+ 
+     if ( unlikely(!vcpu_start_shutdown_deferral(curr)) )
++    {
++        vio->suspended = true;
+         return IOREQ_STATUS_RETRY;
++    }
+ 
+     list_for_each_entry ( sv,
+                           &s->ioreq_vcpu_list,
+--- a/xen/include/xen/sched.h
++++ b/xen/include/xen/sched.h
+@@ -159,6 +159,11 @@ enum vio_completion {
+ struct vcpu_io {
+     /* I/O request in flight to device model. */
+     enum vio_completion  completion;
++    /*
++     * Indicate whether the I/O was not handled because the domain
++     * is about to be paused.
++     */
++    bool                 suspended;
+     ioreq_t              req;
+ };
+ 

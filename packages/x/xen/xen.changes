@@ -1,8 +1,95 @@
 -------------------------------------------------------------------
+Wed Jul 13 11:10:03 MDT 2022 - carnold@suse.com
+
+- Added --disable-pvshim when running configure in xen.spec.
+  We have never shipped the shim and don't need to build it.
+
+-------------------------------------------------------------------
+Tue Jul 13 10:30:00 CEST 2022 - jbeulich@suse.com
+
+- bsc#1199965 - VUL-0: CVE-2022-26362: xen: Race condition
+  in typeref acquisition
+  62a1e594-x86-clean-up-_get_page_type.patch
+  62a1e5b0-x86-ABAC-race-in-_get_page_type.patch
+- bsc#1199966 - VUL-0: CVE-2022-26363,CVE-2022-26364: xen:
+  Insufficient care with non-coherent mappings
+  62a1e5d2-x86-introduce-_PAGE_-for-mem-types.patch
+  62a1e5f0-x86-dont-change-cacheability-of-directmap.patch
+  62a1e60e-x86-split-cache_flush-out-of-cache_writeback.patch
+  62a1e62b-x86-AMD-work-around-CLFLUSH-ordering.patch
+  62a1e649-x86-track-and-flush-non-coherent.patch
+- bsc#1200549 VUL-0: CVE-2022-21123,CVE-2022-21125,CVE-2022-21166:
+  xen: x86: MMIO Stale Data vulnerabilities (XSA-404)
+  62ab0fab-x86-spec-ctrl-VERW-flushing-runtime-cond.patch
+  62ab0fac-x86-spec-ctrl-enum-for-MMIO-Stale-Data.patch
+  62ab0fad-x86-spec-ctrl-add-unpriv-mmio.patch
+- bsc#1201469 - VUL-0: CVE-2022-23816,CVE-2022-23825,CVE-2022-29900:
+  xen: retbleed - arbitrary speculative code execution with return
+  instructions (XSA-407)
+  62cc31ed-x86-honour-spec-ctrl-0-for-unpriv-mmio.patch
+  62cc31ee-cmdline-extend-parse_boolean.patch
+  62cc31ef-x86-spec-ctrl-fine-grained-cmdline-subopts.patch
+  62cd91d0-x86-spec-ctrl-rework-context-switching.patch
+  62cd91d1-x86-spec-ctrl-rename-SCF_ist_wrmsr.patch
+  62cd91d2-x86-spec-ctrl-rename-opt_ibpb.patch
+  62cd91d3-x86-spec-ctrl-rework-SPEC_CTRL_ENTRY_FROM_INTR_IST.patch
+  62cd91d4-x86-spec-ctrl-IBPB-on-entry.patch
+  62cd91d5-x86-cpuid-BTC_NO-enum.patch
+  62cd91d6-x86-spec-ctrl-enable-Zen2-chickenbit.patch
+  62cd91d7-x86-spec-ctrl-mitigate-Branch-Type-Confusion.patch
+- Upstream bug fixes (bsc#1027519)
+  62a99614-IOMMU-x86-gcc12.patch
+  62bdd840-x86-spec-ctrl-only-adjust-idle-with-legacy-IBRS.patch
+  62bdd841-x86-spec-ctrl-knobs-for-STIBP-and-PSFD.patch
+- Drop patches replaced by upstream versions
+  xsa401-1.patch
+  xsa401-2.patch
+  xsa402-1.patch
+  xsa402-2.patch
+  xsa402-3.patch
+  xsa402-4.patch
+  xsa402-5.patch
+
+-------------------------------------------------------------------
+Tue Jul 12 08:32:19 MDT 2022 - carnold@suse.com
+
+- bsc#1201394 - VUL-0: CVE-2022-33745: xen: insufficient TLB flush
+  for x86 PV guests in shadow mode (XSA-408)
+  xsa408.patch
+- Fix gcc13 compilation error
+  62c56cc0-libxc-fix-compilation-error-with-gcc13.patch
+
+-------------------------------------------------------------------
 Tue Jun 28 14:31:48 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Moved logrotate files from user specific directory /etc/logrotate.d
   to vendor specific directory /usr/etc/logrotate.d.
+
+-------------------------------------------------------------------
+Tue Jun 08 17:50:00 CEST 2022 - jbeulich@suse.com
+
+- bsc#1199966 - VUL-0: EMBARGOED: CVE-2022-26363,CVE-2022-26364: xen:
+  Insufficient care with non-coherent mappings
+  fix xsa402-5.patch
+
+-------------------------------------------------------------------
+Tue May 31 17:25:00 CEST 2022 - jbeulich@suse.com
+
+- Upstream bug fixes (bsc#1027519)
+  625fca42-VT-d-reserved-CAP-ND.patch
+  626f7ee8-x86-MSR-handle-P5-MC-reads.patch
+  627549d6-IO-shutdown-race.patch
+- bsc#1199965 - VUL-0: EMBARGOED: CVE-2022-26362: xen: Race condition
+  in typeref acquisition
+  xsa401-1.patch
+  xsa401-2.patch
+- bsc#1199966 - VUL-0: EMBARGOED: CVE-2022-26363,CVE-2022-26364: xen:
+  Insufficient care with non-coherent mappings
+  xsa402-1.patch
+  xsa402-2.patch
+  xsa402-3.patch
+  xsa402-4.patch
+  xsa402-5.patch
 
 -------------------------------------------------------------------
 Tue May 10 16:08:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
