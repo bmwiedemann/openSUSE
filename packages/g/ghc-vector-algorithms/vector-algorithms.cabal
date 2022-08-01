@@ -1,6 +1,6 @@
 name:              vector-algorithms
 version:           0.8.0.4
-x-revision: 1
+x-revision: 2
 license:           BSD3
 license-file:      LICENSE
 author:            Dan Doel
@@ -58,7 +58,7 @@ library
   default-language: Haskell2010
 
   build-depends: base >= 4.5 && < 5,
-                 vector >= 0.6 && < 0.14,
+                 vector >= 0.6 && < 0.13,
                  primitive >=0.3 && <0.8,
                  bytestring >= 0.9 && < 1.0
 
