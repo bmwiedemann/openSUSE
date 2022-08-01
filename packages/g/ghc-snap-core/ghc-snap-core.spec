@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-snap-core
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name snap-core
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.4.2
+Version:        1.0.5.0
 Release:        0
 Summary:        Snap: A Haskell Web Framework (core interfaces and types)
 License:        BSD-3-Clause
@@ -101,7 +101,7 @@ This package provides the Haskell %{pkg_name} library development files.
 %prep
 %autosetup -n %{pkg_name}-%{version}
 cp -p %{SOURCE1} %{pkg_name}.cabal
-cabal-tweak-dep-ver 'attoparsec' '< 0.14' '< 0.15'
+cabal-tweak-dep-ver 'unix-compat' '< 0.6' '< 1'
 
 %build
 %ghc_lib_build

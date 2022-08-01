@@ -1,5 +1,5 @@
 name:           snap-core
-version:        1.0.4.2
+version:        1.0.5.0
 x-revision: 1
 synopsis:       Snap: A Haskell Web Framework (core interfaces and types)
 
@@ -36,8 +36,8 @@ homepage:       http://snapframework.com/
 bug-reports:    https://github.com/snapframework/snap-core/issues
 category:       Web, Snap, IO-Streams
 Tested-With:    GHC == 7.4.2, GHC == 7.6.3, GHC == 7.8.4, GHC == 7.10.3,
-                GHC == 8.0.2, GHC == 8.2.2, GHC == 8.4.4, GHC == 8.6.3,
-                GHC == 8.8.3, GHC == 8.10.1
+                GHC == 8.0.2, GHC == 8.2.2, GHC == 8.4.4, GHC == 8.6.5,
+                GHC == 8.8.4, GHC == 8.10.7, GHC == 9.0.2, GHC == 9.2.1
 
 extra-source-files:
   test/TestSuite.hs,
@@ -113,6 +113,7 @@ Library
     Snap.Internal.Debug,
     Snap.Internal.Http.Types,
     Snap.Internal.Parsing,
+    Snap.Internal.Util.FileServe,
     Snap.Test,
     Snap.Types.Headers,
     Snap.Util.CORS,
@@ -126,13 +127,12 @@ Library
     Snap.Internal.Routing,
     Snap.Internal.Test.RequestBuilder,
     Snap.Internal.Test.Assertions,
-    Snap.Internal.Util.FileServe,
     Snap.Internal.Util.FileUploads
 
 
   build-depends:
     HUnit                     >= 1.2     && < 2,
-    attoparsec                >= 0.12    && < 0.14,
+    attoparsec                >= 0.12    && < 0.15,
     base                      >= 4       && < 5,
     bytestring                >= 0.9     && < 0.12,
     bytestring-builder        >= 0.10.4  && < 0.11,
@@ -142,14 +142,14 @@ Library
     filepath                  >= 1.1     && < 2.0,
     lifted-base               >= 0.1     && < 0.3,
     io-streams                >= 1.3     && < 1.6,
-    hashable                  >= 1.2.0.6 && < 1.4,
+    hashable                  >= 1.2.0.6 && < 1.5,
     monad-control             >= 1.0     && < 1.1,
     mtl                       >= 2.0     && < 2.3,
     random                    >= 1       && < 2,
     readable                  >= 0.1     && < 0.4,
     regex-posix               >= 0.95    && < 1,
-    text                      >= 0.11    && < 1.3,
-    time                      >= 1.0     && < 1.11,
+    text                      >= 0.11    && < 2.1,
+    time                      >= 1.0     && < 1.14,
     transformers              >= 0.3     && < 0.6,
     transformers-base         >= 0.4     && < 0.5,
     unix-compat               >= 0.3     && < 0.6,
@@ -194,6 +194,11 @@ Library
   else
     build-depends: network-uri >= 2.5 && < 2.6,
                    network     >= 2.3 && < 2.6
+
+  if impl(ghc >= 7.6)
+    build-depends: unix-compat >= 0.3 && < 0.6
+  else
+    build-depends: unix-compat >= 0.3 && < 0.5.3
 
 
 Test-suite testsuite
