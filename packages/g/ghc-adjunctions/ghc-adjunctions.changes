@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  7 23:22:16 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update adjunctions to version 4.4.1.
+  4.4.1 [2022.05.07]
+  ------------------
+  * Allow building with `transformers-0.6.*` and `mtl-2.3.*`.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
