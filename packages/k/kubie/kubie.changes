@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 28 19:54:42 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.17.2:
+  * Version 0.17.2
+  * Restore serde lowercase enum variants #114
+
+-------------------------------------------------------------------
 Mon Jul 25 11:07:44 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.17.1:
