@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 30 11:25:52 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.20220729.
+- Drop obsolete patches:
+  * llvm14-braced-constructor-call.patch
+  * llvm14-include-STLExtras.patch
+  * llvm14-refactor-isIdentifierBody.patch
+
+-------------------------------------------------------------------
 Sat Jun  4 13:28:49 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Port back upstream patches to fix build with LLVM 14:
