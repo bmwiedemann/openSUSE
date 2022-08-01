@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 18 11:55:34 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update base-prelude to version 1.6.1.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Tue Feb 15 14:43:39 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update base-prelude to version 1.6.

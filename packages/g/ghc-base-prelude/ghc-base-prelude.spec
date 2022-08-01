@@ -18,7 +18,7 @@
 
 %global pkg_name base-prelude
 Name:           ghc-%{pkg_name}
-Version:        1.6
+Version:        1.6.1
 Release:        0
 Summary:        Featureful preludes formed solely from the "base" package
 License:        MIT
