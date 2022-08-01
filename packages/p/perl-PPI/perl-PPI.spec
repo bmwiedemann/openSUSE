@@ -18,7 +18,7 @@
 
 %define cpan_name PPI
 Name:           perl-PPI
-Version:        1.274
+Version:        1.276
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse, Analyze and Manipulate Perl (without perl)

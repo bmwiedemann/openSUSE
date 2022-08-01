@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 20 03:07:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.276
+   see /usr/share/doc/packages/perl-PPI/Changes
+
+  1.276   2022-07-19 21:43:50Z
+  	Summary:
+  	- Implement Replace Method (GH#274) (Renee and Olaf Alders)
+
+  1.275   2022-07-18 19:42:13Z
+  	Summary:
+  	- CHECK bareword handle parsed as scheduled block (GH#247) (trwyant)
+
+-------------------------------------------------------------------
 Tue May  3 03:06:34 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.274
