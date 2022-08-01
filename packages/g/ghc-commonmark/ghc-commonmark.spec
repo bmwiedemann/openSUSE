@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-commonmark
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name commonmark
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.1.1
+Version:        0.2.2
 Release:        0
 Summary:        Pure Haskell commonmark parser
 License:        BSD-3-Clause
@@ -32,6 +32,7 @@ BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
+BuildRequires:  ghc-unicode-data-devel
 BuildRequires:  ghc-unicode-transforms-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
