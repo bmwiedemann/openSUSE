@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-feed
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %global pkg_name feed
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.3.2.0
+Version:        1.3.2.1
 Release:        0
 Summary:        Interfacing with RSS (v 0.9x, 2.x, 1.0) + Atom feeds
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-compat-devel
 BuildRequires:  ghc-bytestring-devel
@@ -57,7 +56,7 @@ modules provides parsers, pretty printers and some utility code for querying
 and just generally working with a concrete representation of feeds in Haskell.
 
 See here for an example of how to create an Atom feed:
-<https://github.com/bergmark/feed/blob/master/tests/Example/CreateAtom.hs>
+<https://github.com/haskell-party/feed/blob/master/tests/Example/CreateAtom.hs>
 
 For basic reading and editing of feeds, consult the documentation of the
 Text.Feed.* hierarchy.
@@ -74,7 +73,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
