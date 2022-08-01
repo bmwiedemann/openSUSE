@@ -19,7 +19,7 @@
 %global pkg_name x509
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.7.6
+Version:        1.7.7
 Release:        0
 Summary:        X509 reader and writer
 License:        BSD-3-Clause
@@ -34,11 +34,12 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-cryptonite-devel
 BuildRequires:  ghc-hourglass-devel
 BuildRequires:  ghc-memory-devel
-BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-pem-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-transformers-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
+BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-quickcheck-devel
 %endif
@@ -78,5 +79,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc ChangeLog.md
 
 %changelog

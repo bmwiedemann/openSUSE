@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 31 03:00:43 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update x509 to version 1.7.7.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Mon Jan 17 07:54:38 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update x509 to version 1.7.6.
