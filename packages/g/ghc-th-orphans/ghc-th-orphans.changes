@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 20 04:12:36 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update th-orphans to version 0.13.13.
+  ### 0.13.13 [2022.05.19]
+  * Implement `qGetPackageRoot` (introduced in `template-haskell-2.19.0.0`)
+    for the `Quasi` instances defined in `th-orphans`.
+
+-------------------------------------------------------------------
 Tue Nov 16 19:50:42 UTC 2021 - psimons@suse.com
 
 - Update th-orphans to version 0.13.12 revision 2.

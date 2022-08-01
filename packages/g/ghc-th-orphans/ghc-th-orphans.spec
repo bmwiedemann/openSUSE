@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-th-orphans
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,17 @@
 %global pkg_name th-orphans
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.13.12
+Version:        0.13.13
 Release:        0
 Summary:        Orphan instances for TH datatypes
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-th-compat-devel
-BuildRequires:  ghc-th-expand-syns-devel
 BuildRequires:  ghc-th-lift-devel
 BuildRequires:  ghc-th-lift-instances-devel
 BuildRequires:  ghc-th-reify-many-devel
@@ -58,7 +56,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
