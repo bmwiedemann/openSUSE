@@ -19,13 +19,12 @@
 %global pkg_name text-manipulate
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.0.0
+Version:        0.3.1.0
 Release:        0
 Summary:        Case conversion, word boundary manipulation, and textual subjugation
 License:        MPL-2.0
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
@@ -44,12 +43,6 @@ Has support for common idioms like casing of programmatic variable names,
 taking, dropping, and splitting by word, and modifying the first character of a
 piece of text.
 
-/Caution:/ this library makes heavy use of the
-<http://hackage.haskell.org/package/text text> library's internal loop
-optimisation framework. Since internal modules are not guaranteed to have a
-stable API there is potential for build breakage when the text dependency is
-upgraded. Consider yourself warned!.
-
 %package devel
 Summary:        Haskell %{pkg_name} library development files
 Requires:       %{name} = %{version}-%{release}
@@ -63,7 +56,6 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
