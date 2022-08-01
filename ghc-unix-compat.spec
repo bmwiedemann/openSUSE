@@ -17,8 +17,9 @@
 
 
 %global pkg_name unix-compat
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.5.4
+Version:        0.6
 Release:        0
 Summary:        Portable POSIX-compatibility layer
 License:        BSD-3-Clause
@@ -28,6 +29,14 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-unix-devel
 ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-HUnit-devel
+BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-extra-devel
+BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-monad-parallel-devel
+BuildRequires:  ghc-temporary-devel
+%endif
 
 %description
 This package provides portable implementations of parts of the unix package.
@@ -53,6 +62,9 @@ This package provides the Haskell %{pkg_name} library development files.
 %install
 %ghc_lib_install
 
+%check
+%cabal_test
+
 %post devel
 %ghc_pkg_recache
 
@@ -63,5 +75,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc CHANGELOG.md
 
 %changelog
