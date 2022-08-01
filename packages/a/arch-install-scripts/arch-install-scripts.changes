@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 31 19:00:04 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 26
+- New upstream version 26
+  * arch-chroot: Use separate pid namespace for worker processes
+
+-------------------------------------------------------------------
 Mon Jul  4 15:17:52 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 25
 - New upstream version 25
   * arch-chroot: add unshare mode
