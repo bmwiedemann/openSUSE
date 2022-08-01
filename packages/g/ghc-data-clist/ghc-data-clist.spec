@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-data-clist
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,21 @@
 
 
 %global pkg_name data-clist
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.2.3
+Version:        0.2
 Release:        0
 Summary:        Simple functional ring type
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-QuickCheck-devel
+%endif
 
 %description
 Simple functional bidirectional ring type. Given that the ring terminiology
@@ -48,13 +50,15 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
 
 %install
 %ghc_lib_install
+
+%check
+%cabal_test
 
 %post devel
 %ghc_pkg_recache
