@@ -91,9 +91,7 @@ Release:        0
 BuildRequires:  libnuma-devel
 %endif
 %ifarch aarch64 %{arm}
-BuildRequires:  binutils-gold
-Requires:       binutils-gold
-Requires:       llvm9
+Requires:       llvm
 %endif
 %ifnarch %{arm} s390x
 Requires:       libffi-devel

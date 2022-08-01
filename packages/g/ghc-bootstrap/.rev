@@ -233,4 +233,12 @@ Add support for ppc64le.</comment>
     <comment>version update</comment>
     <requestid>953387</requestid>
   </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>5de7bdf5818067fb2b46240dcd9433a7</srcmd5>
+    <version>8.10.1</version>
+    <time>1659382146</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>986171</requestid>
+  </revision>
 </revisionlist>
