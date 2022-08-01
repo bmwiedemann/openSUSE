@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 27 06:58:04 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 5.1.1
+* #10701: Fix ValueError in the new ``deque`` based ``sphinx.ext.napolean``
+  iterator implementation.
+* #10702: Restore compatability with third-party builders.
+
+-------------------------------------------------------------------
 Sun Jul 24 17:44:29 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 5.1.0
