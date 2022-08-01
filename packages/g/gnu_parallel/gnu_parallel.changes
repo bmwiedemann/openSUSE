@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul 25 06:31:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20220722:
+  * --colour-failed will color output red if the job fails.
+  * sql: support for InfluxDB.
+  * Polarhome.com is dead, so these OSs are no longer supported: AIX
+    HPUX IRIX Minix OPENSTEP OpenIndiana OpenServer QNX Solaris Syllable
+    Tru64 Ultrix UnixWare.
+  * Bug fixes and man page updates.
+- add bash and zsh completion subpackages
+
+-------------------------------------------------------------------
+Wed Jul  6 08:57:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20220622:
+  * , can be used in --sshlogin if quoted as \, or ,,
+  * --plus {/#regexp/str} replace ^regexp with str.
+  * --plus {/%regexp/str} replace regexp$ with str.
+  * --plus {//regexp/str} replace every regexp with str.
+  * 'make install' installs bash+zsh completion files.
+  * Bug fixes and man page updates.
+
+-------------------------------------------------------------------
 Sun May 29 18:13:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20220522:

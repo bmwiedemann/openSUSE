@@ -17,7 +17,7 @@
 
 
 Name:           gnu_parallel
-Version:        20220522
+Version:        20220722
 Release:        0
 Summary:        Shell tool for executing jobs in parallel
 License:        GPL-3.0-or-later
@@ -49,6 +49,28 @@ GNU Parallel is a shell tool for executing jobs in parallel using one
 or more computers.
 This subpackage contains the documentation for Parallel.
 
+%package bash-completion
+Summary:        zsh completion for GNU parallel
+Requires:       %name = %version
+Supplements:    (%name and bash-completion)
+BuildRequires:  bash
+
+%description bash-completion
+GNU Parallel is a shell tool for executing jobs in parallel using one
+or more computers.
+This subpackage contains the bash completion for Parallel.
+
+%package zsh-completion
+Summary:        zsh completion for GNU parallel
+Requires:       %name = %version
+Supplements:    (%name and zsh)
+BuildRequires:  zsh
+
+%description zsh-completion
+GNU Parallel is a shell tool for executing jobs in parallel using one
+or more computers.
+This subpackage contains the zsh completion for Parallel.
+
 %prep
 %autosetup -n parallel-%version -p1
 
@@ -61,7 +83,7 @@ This subpackage contains the documentation for Parallel.
 cp -a CITATION NEWS README "%buildroot/%_docdir/%name/"
 
 # fix shebang to to not use env & preserve the time stamps
-sed -i.orig "s:^#\!/usr/bin/env\s\+perl\s\?$:#!%__perl:" "%buildroot/%_bindir/parallel"
+sed -i.orig "s:^#\!/usr/bin/env\s\+perl\s\?$:#!perl:" "%buildroot/%_bindir/parallel"
 touch -r "%buildroot/%_bindir/parallel.orig" "%buildroot/%_bindir/parallel"
 rm "%buildroot/%_bindir/parallel.orig"
 
@@ -74,6 +96,12 @@ rm "%buildroot/%_bindir/parallel.orig"
 %_bindir/sql
 %_mandir/man1/*.1*
 %_mandir/man7/*.7*
+
+%files bash-completion
+%_datadir/bash-completion/
+
+%files zsh-completion
+%_datadir/zsh/
 
 %files doc
 %_docdir/%name/
