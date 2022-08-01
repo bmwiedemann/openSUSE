@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 23 11:15:48 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v15.6.1
+  * Changes of version 15.6.1
+    = Add characters:
+      ~ BLANK SYMBOL (U+2422);
+      ~ SYMBOL FOR DELETE FORM TWO (U+2425);
+      ~ SYMBOL FOR SUBSTITUTE FORM TWO (U+2426);
+
+-------------------------------------------------------------------
 Sat Jul 16 16:30:13 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v15.6.0
