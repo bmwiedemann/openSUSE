@@ -1,8 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 27 17:04:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add ghc.keyring to have source validation enabled
+- limit to use llvm12 for Factory as newer versions are not supported
+
+-------------------------------------------------------------------
 Fri Apr 29 13:49:29 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Remove dependency on binutils-gold as the package will be removed
   in the future. Gold linker is unmaintained by the upstream project.
+
+-------------------------------------------------------------------
+Tue Mar  8 22:35:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add ghc-armv7-VFPv3D16--NEON.patch to use vfpv3-d16 on armv7hl
 
 -------------------------------------------------------------------
 Fri Sep  3 20:57:29 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>

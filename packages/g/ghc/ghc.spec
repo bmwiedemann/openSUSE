@@ -23,6 +23,11 @@
 %endif
 
 %global unregisterised_archs s390 s390x riscv64
+%if 0%{suse_version} > 1550
+%global llvm_major 12
+%else
+%global llvm_major 9
+%endif
 %define full_version 8.10.7
 
 Name:           ghc
@@ -32,6 +37,7 @@ URL:            https://www.haskell.org/ghc/
 Source:         https://downloads.haskell.org/~ghc/%{full_version}/ghc-%{version}-src.tar.xz
 Source1:        https://downloads.haskell.org/~ghc/%{full_version}/ghc-%{version}-src.tar.xz.sig
 Source2:        ghc-rpmlintrc
+Source9:        ghc.keyring
 Summary:        The Glorious Glasgow Haskell Compiler
 License:        BSD-3-Clause
 Group:          Development/Languages/Other
@@ -51,9 +57,9 @@ BuildRequires:  ncurses-devel
 BuildRequires:  pkg-config
 BuildRequires:  xz
 %ifarch aarch64 %{arm}
-BuildRequires:  clang >= 9
-BuildRequires:  llvm >= 9
-BuildRequires:  llvm-devel >= 9
+BuildRequires:  clang%{llvm_major}
+BuildRequires:  llvm%{llvm_major}
+BuildRequires:  llvm%{llvm_major}-devel
 %endif
 %if %{undefined without_manual}
 BuildRequires:  python3-Sphinx
@@ -68,7 +74,8 @@ PreReq:         update-alternatives
 Requires:       ghc-compiler = %{version}-%{release}
 Requires:       ghc-ghc-devel = %{version}-%{release}
 Requires:       ghc-libraries = %{version}-%{release}
-
+# PATCH-FIX-OPENSUSE: use vfpv3-d16 and disable NEON
+Patch2:         ghc-armv7-VFPv3D16--NEON.patch
 # PATCH-FIX-UPSTREAM Disable-unboxed-arrays.patch ptrommler@icloud.com -- Do not use unboxed arrays on big-endian platforms. See Haskell Trac #15411.
 Patch3:         Disable-unboxed-arrays.patch
 # PATCH-FIX-UPSTREAM ghc-pie.patch - set linux as default PIE platform
@@ -103,12 +110,14 @@ Requires:       ghc-base-devel
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %ifarch aarch64 %{arm}
-Requires:       clang9
-Requires:       llvm9
+Requires:       binutils-gold
 %endif
-%ifarch x86_64 %{ix86}
-Suggests:       clang9
-Suggests:       llvm9
+%ifarch aarch64 %{arm}
+Requires:       clang%{llvm_major}
+Requires:       llvm%{llvm_major}
+%else
+Suggests:       clang%{llvm_major}
+Suggests:       llvm%{llvm_major}
 %endif
 
 %description compiler
@@ -180,6 +189,7 @@ except the ghc library, which is installed by the toplevel ghc metapackage.
 
 %prep
 %setup -q
+%patch2 -p1
 %ifarch ppc64 s390 s390x
 %patch3 -p1
 %endif
