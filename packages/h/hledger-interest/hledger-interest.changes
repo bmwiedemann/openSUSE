@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun  6 09:43:46 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-interest to version 1.6.4.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Mon Mar 14 13:03:36 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-interest to version 1.6.3 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun Dec  5 21:47:52 UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Update hledger-interest to version 1.6.3 revision 1.
