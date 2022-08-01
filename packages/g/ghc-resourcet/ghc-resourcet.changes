@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 30 06:16:07 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update resourcet to version 1.2.6.
+  ## 1.2.6
+
+  * Add `allocateU` [#490](https://github.com/snoyberg/conduit/pull/490)
+
+-------------------------------------------------------------------
+Tue May 10 13:16:48 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update resourcet to version 1.2.5.
+  ## 1.2.5
+
+  * Support `transformers-0.6` / `mtl-2.3`
+
+-------------------------------------------------------------------
 Fri Feb  4 12:15:08 UTC 2022 - psimons@suse.com
 
 - Update resourcet to version 1.2.4.3 revision 1.
