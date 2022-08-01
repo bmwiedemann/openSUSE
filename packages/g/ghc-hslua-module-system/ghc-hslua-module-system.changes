@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 19 14:38:22 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-system to version 1.0.2.
+  ## hslua-module-system-1.0.2
+
+  Released 2022-02-19.
+
+  -   Adjusted package bounds, for hslua-core and hslua-packaging.
+
+-------------------------------------------------------------------
 Sun Jan 30 07:17:44 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hslua-module-system to version 1.0.1 revision 1.
