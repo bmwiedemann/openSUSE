@@ -1,7 +1,7 @@
 #
 # spec file for package libgsm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define _name gsm
-%define _version 1.0-pl19
+%define _version 1.0-pl20
 Name:           libgsm
-Version:        1.0.19
+Version:        1.0.20
 Release:        0
 Summary:        GSM 06.10 Lossy Speech Compressor Library and Utilities
 License:        ISC
@@ -28,7 +28,7 @@ URL:            http://www.quut.com/gsm/
 Source:         http://www.quut.com/gsm/%{_name}-%{version}.tar.gz
 Source2:        baselibs.conf
 # This is a Debian patch file with debian chunks removed.
-Patch0:         %{name}-1.0.13.patch
+Patch0:         %{name}-1.0.20.patch
 Patch1:         libgsm-paths.patch
 Patch2:         libgsm-include.patch
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 26 09:07:00 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.20:
+  * Use $(RMFLAGS) with the rms in the Makefile; add -f to $(RMFLAGS) to
+    avoid spurious error messages during build.
+- Rebase and rename libgsm-1.0.20.patch from libgsm-1.0.13.patch.
+- Rebase libgsm-include.patch.
+
+-------------------------------------------------------------------
 Thu Apr 29 07:40:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.19:

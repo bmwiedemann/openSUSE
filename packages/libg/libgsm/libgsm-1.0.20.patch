@@ -1,9 +1,8 @@
-From: <jochen@scram.de>
-Subject: New patch generated from libgsm 1.0.10-14 diff.gz
-
---- a/Makefile
-+++ b/Makefile
-@@ -96,7 +96,7 @@ TOAST_INSTALL_MAN = $(TOAST_INSTALL_ROOT
+Index: gsm-1.0-pl20/Makefile
+===================================================================
+--- gsm-1.0-pl20.orig/Makefile
++++ gsm-1.0-pl20/Makefile
+@@ -99,7 +99,7 @@ TOAST_INSTALL_MAN = $(TOAST_INSTALL_ROOT
  #  Other tools
  
  SHELL		= /bin/sh
@@ -12,7 +11,7 @@ Subject: New patch generated from libgsm 1.0.10-14 diff.gz
  BASENAME 	= basename
  AR		= ar
  ARFLAGS		= cr
-@@ -140,6 +140,7 @@ LFLAGS	= $(LDFLAGS) $(LDINC)
+@@ -143,6 +143,7 @@ LFLAGS	= $(LDFLAGS) $(LDINC)
  # Targets
  
  LIBGSM	= $(LIB)/libgsm.a
@@ -20,7 +19,7 @@ Subject: New patch generated from libgsm 1.0.10-14 diff.gz
  
  TOAST	= $(BIN)/toast
  UNTOAST	= $(BIN)/untoast
-@@ -279,7 +280,7 @@ TOAST_INSTALL_TARGETS =	\
+@@ -282,7 +283,7 @@ TOAST_INSTALL_TARGETS =	\
  
  # Target rules
  
@@ -29,7 +28,7 @@ Subject: New patch generated from libgsm 1.0.10-14 diff.gz
  		@-echo $(ROOT): Done.
  
  tst:		$(TST)/lin2cod $(TST)/cod2lin $(TOAST) $(TST)/test-result
-@@ -299,6 +300,11 @@ install:	toastinstall gsminstall
+@@ -302,6 +303,11 @@ install:	toastinstall gsminstall
  
  # The basic API: libgsm
  
@@ -41,7 +40,7 @@ Subject: New patch generated from libgsm 1.0.10-14 diff.gz
  $(LIBGSM):	$(LIB) $(GSM_OBJECTS)
  		-rm $(RMFLAGS) $(LIBGSM)
  		$(AR) $(ARFLAGS) $(LIBGSM) $(GSM_OBJECTS)
-@@ -308,15 +314,15 @@ $(LIBGSM):	$(LIB) $(GSM_OBJECTS)
+@@ -311,15 +317,15 @@ $(LIBGSM):	$(LIB) $(GSM_OBJECTS)
  # Toast, Untoast and Tcat -- the compress-like frontends to gsm.
  
  $(TOAST):	$(BIN) $(TOAST_OBJECTS) $(LIBGSM)
@@ -60,14 +59,18 @@ Subject: New patch generated from libgsm 1.0.10-14 diff.gz
  
  
  # The local bin and lib directories
-@@ -426,7 +432,9 @@ semi-clean:
+@@ -428,9 +434,11 @@ semi-clean:
+ 			-print | xargs rm $(RMFLAGS)
  
  clean:	semi-clean
- 		-rm $(RMFLAGS) $(LIBGSM) $(ADDTST)/add		\
+-		-rm $(RMFLAGS) $(LIBGSM) $(ADDTST)/add		\
 -			$(TOAST) $(TCAT) $(UNTOAST)	\
-+			$(LIBGSMSO) $(LIB)/libgsm.so.1.0.18	\
-+			$(LIB)libgsm.so.1			\
-+			$(TOAST) $(TCAT) $(UNTOAST)		\
- 			$(ROOT)/gsm-1.0.tar.Z
+-			$(ROOT)/gsm-1.0.tar.gz
++		-rm $(RMFLAGS) $(LIBGSM) $(ADDTST)/add \
++			$(LIBGSMSO) $(LIB)/libgsm.so.1.0.18 \
++			$(LIB)/libgsm.so.1 \
++			$(TOAST) $(TCAT) $(UNTOAST) \
++			$(ROOT)/gsm-1.0.tar.gz
  
  
+ # Two tools that helped me generate gsm_encode.c and gsm_decode.c,
