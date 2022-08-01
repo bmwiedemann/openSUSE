@@ -19,7 +19,7 @@
 %global pkg_name hslua-classes
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Type classes for HsLua
 License:        MIT
