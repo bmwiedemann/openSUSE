@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 22 16:21:54 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update shelly to version 1.10.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Jan 31 00:03:22 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update shelly to version 1.10.0.
