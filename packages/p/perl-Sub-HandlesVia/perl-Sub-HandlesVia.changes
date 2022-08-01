@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jul 13 03:08:54 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.032
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.032	2022-07-12
+   [ Packaging ]
+   - Require newer version of Role::Hooks.
+  0.031	2022-07-09
+   [ Packaging ]
+   - Add dependencies on MRO::Compat and Devel::GlobalDestruction, but only
+     on very old Perls.
+  0.030	2022-07-09
+   [ Packaging ]
+   - Drop dependency on Scope::Guard.
+  0.029	2022-07-09
+   [ Packaging ]
+   - Use Mite internally, dropping the dependency on Class::Tiny.
+  0.028	2022-07-02
+   [ Test Suite ]
+   - Lots more tests for using Sub::HandlesVia with Mite.
+   [ Other ]
+   - Updated: Support for Mite roles.
+
+-------------------------------------------------------------------
 Thu Jun 30 03:06:38 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.027

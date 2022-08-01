@@ -18,7 +18,7 @@
 
 %define cpan_name Sub-HandlesVia
 Name:           perl-Sub-HandlesVia
-Version:        0.027
+Version:        0.032
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Alternative handles_via implementation
@@ -29,27 +29,21 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Method::Modifiers)
-BuildRequires:  perl(Class::Tiny)
-BuildRequires:  perl(Eval::TypeTiny)
 BuildRequires:  perl(Exporter::Shiny)
 BuildRequires:  perl(List::Util) >= 1.54
+BuildRequires:  perl(Role::Hooks) >= 0.008
 BuildRequires:  perl(Role::Tiny)
-BuildRequires:  perl(Scope::Guard)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Requires)
 BuildRequires:  perl(Try::Tiny)
-BuildRequires:  perl(Type::Params) >= 1.004000
-BuildRequires:  perl(Types::Standard)
+BuildRequires:  perl(Type::Tiny) >= 1.004
 Requires:       perl(Class::Method::Modifiers)
-Requires:       perl(Class::Tiny)
-Requires:       perl(Eval::TypeTiny)
 Requires:       perl(Exporter::Shiny)
 Requires:       perl(List::Util) >= 1.54
+Requires:       perl(Role::Hooks) >= 0.008
 Requires:       perl(Role::Tiny)
-Requires:       perl(Scope::Guard)
-Requires:       perl(Type::Params) >= 1.004000
-Requires:       perl(Types::Standard)
+Requires:       perl(Type::Tiny) >= 1.004
 Recommends:     perl(Sub::Util)
 %{perl_requires}
 
