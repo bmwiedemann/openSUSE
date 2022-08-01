@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-shakespeare
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name shakespeare
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.0.25.1
+Version:        2.0.29
 Release:        0
 Summary:        A toolkit for making compile-time interpolated templates
 License:        MIT
@@ -33,6 +33,7 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-exceptions-devel
+BuildRequires:  ghc-file-embed-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-rpm-macros
