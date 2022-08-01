@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May 19 17:52:09 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update skylighting-core to version 0.12.3.1.
+  ## 0.12.3.1
+
+    * Allow mtl 2.3.
+
+    * Update syntax defs from upstream: bash, cmake, go, haxe, lua, zsh.
+
+    * Add nix.xml (#149).
+
+    * Add Pygments styles for `Import` and `BuiltIn` token types (#147,
+      Bryan A. Danielak).
+
+    * Use StrictData.
+
+    * Remove unused dependencies (silences cabal warnings) (Andreas Abel).
+
+-------------------------------------------------------------------
 Fri Feb 18 19:54:42 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update skylighting-core to version 0.12.3.
