@@ -25,6 +25,8 @@ Summary:        Stateful programmatic web browsing
 License:        BSD-3-Clause AND (BSD-3-Clause OR ZPL-2.1)
 URL:            https://github.com/python-mechanize/mechanize
 Source:         https://files.pythonhosted.org/packages/source/m/mechanize/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-mechanize-setup.cfg.patch gh#python-mechanize/mechanize#73 -- setup.cfg: Move packages def to options section
+Patch1:         %{name}-setup.cfg.patch
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module setuptools}
@@ -32,33 +34,22 @@ BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python
 BuildRequires:  python-rpm-macros
-Requires:       python-Twisted
 Requires:       python-html5lib
-Requires:       python-zope.interface
 BuildArch:      noarch
 %python_subpackages
 
 %description
-Stateful programmatic web browsing, after Andy Lester's Perl module
-WWW::Mechanize.
+Stateful programmatic web browsing in Python. Browse pages
+programmatically with HTML form filling and clicking
+of links.
 
-The library is layered: mechanize.Browser (stateful web browser),
-mechanize.UserAgent (configurable URL opener), plus urllib2 handlers.
-
-Features include: ftp:, http: and file: URL schemes, browser history,
-high-level hyperlink and HTML form support, HTTP cookies, HTTP-EQUIV and
-Refresh, Referer [sic] header, robots.txt, redirections, proxies, and Basic and
-Digest HTTP authentication. mechanize's response objects are (lazily-)
-.seek()able and still work after .close().
-
-Much of the code originally derived from Perl code by Gisle Aas (libwww-perl),
-Johnny Lee (MSIE Cookie support) and last but not least Andy Lester
-(WWW::Mechanize). urllib2 was written by Jeremy Hylton.
 
 %prep
 %setup -q -n %{modname}-%{version}
-sed -i -e '/^#!\/usr\/bin\/env python/d' %{modname}/_{entities,equiv,form_controls}.py
-sed -i "1d" examples/forms/{echo.cgi,example.py,simple.py} # Fix doc-file-dependency
+%patch1 -p1
+sed -i -e '1{/^#!\/usr\/bin\/env python/d}' %{modname}/{_entities,_equiv,_form_controls,polyglot}.py
+sed -i -e '1{/^#!/d}' examples/forms/{echo.cgi,example.py,simple.py}
+chmod -x examples/forms/{echo.cgi,example.py,simple.py}
 
 %build
 %python_build
@@ -73,6 +64,7 @@ sed -i "1d" examples/forms/{echo.cgi,example.py,simple.py} # Fix doc-file-depend
 %files %{python_files}
 %license LICENSE
 %doc examples README.rst
-%{python_sitelib}/%{modname}*
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}*-info
 
 %changelog
