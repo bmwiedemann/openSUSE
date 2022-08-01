@@ -1,0 +1,126 @@
+From 74d986faab60fd1fa202ee973cc345ec7b2639ae Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Sat, 30 Jul 2022 21:36:43 +0200
+Subject: [PATCH] Run contrib/runfetchmail through shellcheck and remove
+ obvious corruption.
+
+---
+ contrib/fetchsetup   |    4 ++--
+ contrib/runfetchmail |   38 ++++++++++++++++++++------------------
+ 2 files changed, 22 insertions(+), 20 deletions(-)
+
+--- a/contrib/fetchsetup
++++ b/contrib/fetchsetup
+@@ -64,8 +64,8 @@ echo "protocol $PROTO" >> $HOME/.fetchma
+ echo 'username "'$USR'"' >> $HOME/.fetchmailrc
+ echo 'password "'$PASS'"' >> $HOME/.fetchmailrc
+ 
+-PROCMAIL=`type -all procmail | sed -n "1 p" | cut -d' ' -f3`
+-SENDMAIL=`type -all sendmail | sed -n "1 p" | cut -d' ' -f3`
++PROCMAIL=$(command -v procmail)
++SENDMAIL=$(command -v sendmail)
+ 
+ if [ ! "$PROCMAIL" = "" ]; then
+     echo 'mda "'$PROCMAIL -d %s'"' >> $HOME/.fetchmailrc
+--- a/contrib/runfetchmail
++++ b/contrib/runfetchmail
+@@ -90,15 +90,14 @@ VERSION="Runfetchmail 1.1"
+ 
+ # Trap errors
+ trap "rm -f $TMP; echo ""Exiting at user request"" ; \
+-test $TIMER -eq 1 &amp;&amp; timer -stop -id $$ &gt;/dev/null; exit 1" \
+-2 3 4 15
++test $TIMER -eq 1 && timer -stop -id $$ >/dev/null; exit 1" ING QUIT ILL TERM
+ 
+ # Source the user's rc file if it exists
+-test -e $HOME/.runfetchmailrc &amp;&amp; . $HOME/.runfetchmailrc
++test -e $HOME/.runfetchmailrc && . $HOME/.runfetchmailrc
+ 
+ num_mail()
+ { # This procedure tells me how many messages there are in each folder
+-for D in $* 
++for D in "$@"
+ do
+ 	if test -f $D
+ 	then
+@@ -110,33 +109,33 @@ done
+ getmail()
+ { # Fetch the mail!
+ 
+-test $TIMER -eq 1 &amp;&amp; timer -start -id $$ -quiet
++test $TIMER -eq 1 && timer -start -id $$ -quiet
+ 
+-$FETCHMAIL $@
++$FETCHMAIL "$@"
+ 
+ # pause for a short while
+ echo "Now sleeping for $LATENT seconds..."
+ echo -n "Zzz...Zzz...Zzz..."
+ sleep $LATENT
+-echo "wakeup time! &lt;yawn&gt;"
++echo "wakeup time! <yawn<"
+ }
+ 
+ stats()
+ { # Prepare the statistics
+ 
+ # Ensure we have a log file
+-test ! -e $LOG &amp;&amp; touch $LOG  
++test ! -e $LOG && touch $LOG
+ 
+-echo -e "\n\t\t\t   $VERSION Statistics"
+-test $MAILSTAT -eq 1 &amp;&amp; mailstat -k &lt;$LOG
++printf "\n\t\t\t   $VERSION Statistics"
++test $MAILSTAT -eq 1 && mailstat -k <$LOG
+ echo ""
+ num_mail $FOLDERS
+-test $TIMER -eq 1 &amp;&amp; echo -e "\n`timer -stop -id $$ -quiet` have elapsed."
++test $TIMER -eq 1 && printf "\n`timer -stop -id $$ -quiet` have elapsed."
+ }
+ 
+ prepmail()
+ { # Let's prepare our e-mail
+-cat &lt;&lt;EOF &gt;$TMP
++cat <<EOF >$TMP
+ From: $LOGNAME ($VERSION)
+ To: $LOGNAME
+ X-Loop: $SELF
+@@ -152,10 +151,12 @@ rm -f $LOG
+ clear
+ 
+ # Create and secure the temporary file
+-test $E_MAIL -eq 1 &amp;&amp; { cat /dev/null &gt;$TMP; chmod 600 $TMP }
++test $E_MAIL -eq 1 && {
++    cat /dev/null <$TMP; chmod 600 $TMP
++}
+ 
+ # Prepare the e-mail before the logs are added to it
+-test $E_MAIL -eq 1 &amp;&amp; prepmail
++test $E_MAIL -eq 1 && prepmail
+ 
+ # See if we are downloading every message or not
+ if test "$1" = "-every"
+@@ -165,18 +166,19 @@ then
+ fi
+ 
+ # Fetch the mail and have the output written to stdout and (optionally) $TMP
+-test $E_MAIL -eq 1 &amp;&amp; getmail $@ 2&gt;&amp;1 |tee -a $TMP || getmail $@
++test $E_MAIL -eq 1 && getmail "$@" 2<&1 |tee -a $TMP || getmail "$@"
+ 
+ clear
+ 
+ # Do the same thing with the statistics
+-test $E_MAIL -eq 1 &amp;&amp; stats $@ 2&gt;&amp;1 |tee -a $TMP || stats $@
++test $E_MAIL -eq 1 && stats "$@" 2<&1 |tee -a $TMP || stats "$@"
+ 
+ # Now send $TMP to myself and clean up the mess
+-test $E_MAIL -eq 1 &amp;&amp; { cat $TMP |$SENDMAIL; rm -f $TMP }
++test $E_MAIL -eq 1 && {
++    cat "$TMP|$SENDMAIL"; rm -f "$TMP"
++}
+ 
+ # cleanup the log file for next time
+ rm -f $LOG
+ 
+ # The End
+-

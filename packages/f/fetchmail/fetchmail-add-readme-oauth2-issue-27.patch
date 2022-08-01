@@ -5,12 +5,9 @@ Git-repo: https://gitlab.com/fetchmail/fetchmail.git
 Git-commit: d52ba9652c9207358e0b9acc11403688f6f16b9e
 
 ---
- README.OAUTH2 | 147 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ README.OAUTH2 |  147 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 147 insertions(+)
 
-diff --git a/README.OAUTH2 b/README.OAUTH2
-new file mode 100644
-index 00000000..e861c812
 --- /dev/null
 +++ b/README.OAUTH2
 @@ -0,0 +1,147 @@
@@ -161,4 +158,3 @@ index 00000000..e861c812
 +* Google links
 +  + Google API Dashboard: https://console.developers.google.com/apis/dashboard
 +  + Google Cloud Resource Manager: https://console.developers.google.com/cloud-resource-manager
-

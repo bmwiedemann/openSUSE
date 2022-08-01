@@ -598,7 +598,7 @@ Git-commit: c82625858682eb2396b6a49da79e403c6f2b018b
 +  main(sys.argv)
 --- a/fetchmail.man
 +++ b/fetchmail.man
-@@ -1062,7 +1062,8 @@ External tools are necessary to obtain
+@@ -1073,7 +1073,8 @@ External tools are necessary to obtain
  such tokens.  Access tokens often expire fairly quickly (e.g. 1 hour),
  and new ones need to be generated from renewal tokens, so the
  "passwordfile", "passwordfd", or "pwmd_*" options may be useful.  See the

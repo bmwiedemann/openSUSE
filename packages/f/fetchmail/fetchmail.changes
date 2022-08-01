@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 30 19:10:08 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 6.4.32:
+  * Use configure to find rst2html, some systems install it only
+    with .py suffix, others only without, and some install both.
+  * Update README.maintainer
+  * Translations updated.
+- Reapplied patches
+- Add 44-uncorrupt_runfetchmail.patch to clean up some contrib/
+  scripts (gl#fetchmail/fetchmail#44).
+
+-------------------------------------------------------------------
 Mon Jul 18 08:26:23 UTC 2022 - David Anes <david.anes@suse.com>
 
 - update to 6.4.31

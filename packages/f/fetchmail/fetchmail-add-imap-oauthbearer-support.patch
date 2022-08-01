@@ -10,17 +10,15 @@ When configured, it will also fall back on trying xoauth2.
  conf.c           |    2 +
  fetchmail.c      |    3 +
  fetchmail.h      |    2 +
- fetchmail.man    |   23 +++++++++++-
+ fetchmail.man    |   26 +++++++++++--
  fetchmailconf.py |    2 -
  imap.c           |  104 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
  options.c        |    2 +
  rcfile_l.l       |    1 
- 8 files changed, 136 insertions(+), 3 deletions(-)
+ 8 files changed, 137 insertions(+), 5 deletions(-)
 
-Index: fetchmail-6.4.31/conf.c
-===================================================================
---- fetchmail-6.4.31.orig/conf.c
-+++ fetchmail-6.4.31/conf.c
+--- a/conf.c
++++ b/conf.c
 @@ -288,6 +288,8 @@ void dump_config(struct runctl *runp, st
  		stringdump("auth", "otp");
  	    else if (ctl->server.authenticate == A_MSN)
@@ -30,10 +28,8 @@ Index: fetchmail-6.4.31/conf.c
  
  #ifdef HAVE_RES_SEARCH
  	    booldump("dns", ctl->server.dns);
-Index: fetchmail-6.4.31/fetchmail.c
-===================================================================
---- fetchmail-6.4.31.orig/fetchmail.c
-+++ fetchmail-6.4.31/fetchmail.c
+--- a/fetchmail.c
++++ b/fetchmail.c
 @@ -1783,6 +1783,9 @@ static void dump_params (struct runctl *
  	case A_SSH:
  	    printf(GT_("  End-to-end encryption assumed.\n"));
@@ -44,10 +40,8 @@ Index: fetchmail-6.4.31/fetchmail.c
  	}
  	if (ctl->server.principal != (char *) NULL)
  	    printf(GT_("  Mail service principal is: %s\n"), ctl->server.principal);
-Index: fetchmail-6.4.31/fetchmail.h
-===================================================================
---- fetchmail-6.4.31.orig/fetchmail.h
-+++ fetchmail-6.4.31/fetchmail.h
+--- a/fetchmail.h
++++ b/fetchmail.h
 @@ -79,6 +79,7 @@ struct addrinfo;
  #define		A_SSH		8	/* authentication at session level */
  #define		A_MSN		9	/* same as NTLM with keyword MSN */
@@ -64,11 +58,9 @@ Index: fetchmail-6.4.31/fetchmail.h
  #define		PASSWORDLEN	256	/* max password length */
  #define		DIGESTLEN	33	/* length of MD5 digest */
  
-Index: fetchmail-6.4.31/fetchmail.man
-===================================================================
---- fetchmail-6.4.31.orig/fetchmail.man
-+++ fetchmail-6.4.31/fetchmail.man
-@@ -1004,7 +1004,7 @@ AUTHENTICATION below for details).  The
+--- a/fetchmail.man
++++ b/fetchmail.man
+@@ -1006,7 +1006,7 @@ AUTHENTICATION below for details).  The
  \&\fBpassword\fP, \fBkerberos_v5\fP, \fBkerberos\fP (or, for
  excruciating exactness, \fBkerberos_v4\fP), \fBgssapi\fP,
  \fBcram\-md5\fP, \fBotp\fP, \fBntlm\fP, \fBmsn\fP (only for POP3),
@@ -77,7 +69,7 @@ Index: fetchmail-6.4.31/fetchmail.man
  When \fBany\fP (the default) is specified, fetchmail tries
  first methods that do not require a password (EXTERNAL, GSSAPI, KERBEROS\ IV,
  KERBEROS\ 5); then it looks for methods that mask your password
-@@ -1029,8 +1029,24 @@ authentication.  This option does not wo
+@@ -1031,8 +1031,24 @@ authentication.  This option does not wo
  in line with RFC-2743 and IANA registrations, see
  .UR https://www.iana.org/assignments/gssapi-service-names/
  Generic Security Service Application Program Interface (GSSAPI)/Kerberos/Simple
@@ -104,7 +96,7 @@ Index: fetchmail-6.4.31/fetchmail.man
  .SS Miscellaneous Options
  .TP
  .B \-f <pathname> | \-\-fetchmailrc <pathname>
-@@ -2323,7 +2339,9 @@ Legal protocol identifiers for use with
+@@ -2325,7 +2341,9 @@ Legal protocol identifiers for use with
  .PP
  Legal authentication types are 'any', 'password', 'kerberos',
  \&'kerberos_v4', 'kerberos_v5' and 'gssapi', 'cram\-md5', 'otp', 'msn'
@@ -115,10 +107,8 @@ Index: fetchmail-6.4.31/fetchmail.man
  The 'password' type specifies
  authentication by normal transmission of a password (the password may be
  plain text or subject to protocol-specific encryption as in CRAM-MD5);
-Index: fetchmail-6.4.31/fetchmailconf.py
-===================================================================
---- fetchmail-6.4.31.orig/fetchmailconf.py
-+++ fetchmail-6.4.31/fetchmailconf.py
+--- a/fetchmailconf.py
++++ b/fetchmailconf.py
 @@ -500,7 +500,7 @@ defaultports = {"auto":None,
                  "ODMR":"odmr"}
  
@@ -128,10 +118,8 @@ Index: fetchmail-6.4.31/fetchmailconf.py
  
  listboxhelp = {
      'title' : 'List Selection Help',
-Index: fetchmail-6.4.31/imap.c
-===================================================================
---- fetchmail-6.4.31.orig/imap.c
-+++ fetchmail-6.4.31/imap.c
+--- a/imap.c
++++ b/imap.c
 @@ -26,6 +26,10 @@
  #define IMAP4		0	/* IMAP4 rev 0, RFC1730 */
  #define IMAP4rev1	1	/* IMAP4 rev 1, RFC2060 */
@@ -271,10 +259,8 @@ Index: fetchmail-6.4.31/imap.c
      /* Yahoo hack - we'll just try ID if it was offered by the server,
       * and IGNORE errors. */
      {
-Index: fetchmail-6.4.31/options.c
-===================================================================
---- fetchmail-6.4.31.orig/options.c
-+++ fetchmail-6.4.31/options.c
+--- a/options.c
++++ b/options.c
 @@ -421,6 +421,8 @@ int parsecmdline (int argc /** argument
  		ctl->server.authenticate = A_ANY;
  	    else if (strcmp(optarg, "msn") == 0)
@@ -284,10 +270,8 @@ Index: fetchmail-6.4.31/options.c
  	    else {
  		fprintf(stderr,GT_("Invalid authentication `%s' specified.\n"), optarg);
  		errflag++;
-Index: fetchmail-6.4.31/rcfile_l.l
-===================================================================
---- fetchmail-6.4.31.orig/rcfile_l.l
-+++ fetchmail-6.4.31/rcfile_l.l
+--- a/rcfile_l.l
++++ b/rcfile_l.l
 @@ -106,6 +106,7 @@ cram(-md5)?	{ SETSTATE(0); yylval.proto
  msn		{ SETSTATE(0); yylval.proto = A_MSN; return AUTHTYPE;}
  ntlm		{ SETSTATE(0); yylval.proto = A_NTLM; return AUTHTYPE;}

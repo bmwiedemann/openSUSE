@@ -8,14 +8,12 @@ Also allocate the actual needed size instead of an excessively large
 approximate size.
 
 ---
- oauth2.c | 6 ++++--
+ oauth2.c |    6 ++++--
  1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/oauth2.c b/oauth2.c
-index 4f7a072a..addc91aa 100644
 --- a/oauth2.c
 +++ b/oauth2.c
-@@ -34,6 +34,7 @@ char *get_oauth2_string(struct query *ctl,flag xoauth2)
+@@ -34,6 +34,7 @@ char *get_oauth2_string(struct query *ct
      int oauth2len;
  
      char *oauth2b64;
@@ -23,7 +21,7 @@ index 4f7a072a..addc91aa 100644
  
      oauth2len = strlen(ctl->remotename) + strlen(ctl->password) + 32;
      oauth2str = (char *)xmalloc(oauth2len);
-@@ -52,8 +53,9 @@ char *get_oauth2_string(struct query *ctl,flag xoauth2)
+@@ -52,8 +53,9 @@ char *get_oauth2_string(struct query *ct
  		 ctl->password);
      }
  
@@ -35,4 +33,3 @@ index 4f7a072a..addc91aa 100644
  
      memset(oauth2str, 0x55, strlen(oauth2str));
      free(oauth2str);
-

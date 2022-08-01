@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           fetchmail
-Version:        6.4.31
+Version:        6.4.32
 Release:        0
 Summary:        Full-Featured POP and IMAP Mail Retrieval Daemon
 License:        GPL-2.0-or-later
@@ -49,8 +49,12 @@ Patch10:        fetchmail-oauth2-c-calculate-and-pass-in-correct-buffer-size-to-
 Patch11:        fetchmail-increase-max-password-length-to-handle-oauth-tokens.patch
 Patch12:        fetchmail-bump-max-passwordlen-to-1bytes.patch
 Patch13:        fetchmail-add-readme-oauth2-issue-27.patch
+# PATCH-FIX-UPSTREAM 44-uncorrupt_runfetchmail.patch gl#fetchmail/fetchmail#44 mcepl@suse.com
+# it seems like the script went through some kind of HTML conversion or something
+Patch14:        44-uncorrupt_runfetchmail.patch
 BuildRequires:  automake
 BuildRequires:  bison
+BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  krb5-devel
 BuildRequires:  openssl-devel
@@ -139,6 +143,8 @@ cp sysconfig.%{name} %{buildroot}%{_fillupdir}
 mkdir -p %{buildroot}%{_localstatedir}/log
 touch %{buildroot}%{_localstatedir}/log/fetchmail
 mkdir -p %{buildroot}%{_localstatedir}/lib/fetchmail
+# Deduplicate Python files
+%fdupes %{buildroot}%{python3_sitelib}
 # we don't need this, it's aimed at fetchmail developers
 # and rpmlint is complaining that we have a binary in /usr/share
 rm -r contrib/gai*
