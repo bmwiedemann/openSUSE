@@ -29,7 +29,7 @@ Source:         https://prdownloads.sourceforge.net/wxsvg/%{name}-%{version}.tar
 Patch:          ffmpeg5.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  wxWidgets-3_0-devel
+BuildRequires:  wxGTK3-3_2-devel
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(pangocairo)
@@ -53,7 +53,7 @@ Dynamic libraries from %{name}, as required at runtime.
 Summary:        Header files for %{name}
 Requires:       %{name} = %{version}
 Requires:       lib%{name}%{sover} = %{version}
-Requires:       wxWidgets-devel >= 3
+Requires:       wxGTK3-3_2-devel
 Requires:       pkgconfig(expat)
 Requires:       pkgconfig(libart-2.0)
 

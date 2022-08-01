@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  1 09:10:41 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Build with wxGTK3-3_2 to match DVDStyler's needs
+
+-------------------------------------------------------------------
 Tue Jul 12 20:03:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add ffmpeg5.patch: Fix build with ffmpeg5, patch from gentoo
