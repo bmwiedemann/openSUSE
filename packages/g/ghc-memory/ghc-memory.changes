@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 10 01:00:19 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update memory to version 0.17.0.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Sat Nov 20 17:29:35 UTC 2021 - psimons@suse.com
 
 - Update memory to version 0.16.0 revision 1.
