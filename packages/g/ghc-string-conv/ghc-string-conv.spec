@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-string-conv
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %global pkg_name string-conv
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.2
+Version:        0.2.0
 Release:        0
 Summary:        Standardized conversion between string types
 License:        BSD-3-Clause
@@ -29,6 +30,11 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-quickcheck-instances-devel
+BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-quickcheck-devel
+%endif
 
 %description
 Avoids the need to remember many different functions for converting string
@@ -53,6 +59,9 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %install
 %ghc_lib_install
+
+%check
+%cabal_test
 
 %post devel
 %ghc_pkg_recache
