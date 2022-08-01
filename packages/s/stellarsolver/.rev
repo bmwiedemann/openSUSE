@@ -87,4 +87,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>984848</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f4ebd6b8bb247850a948e5fa9fe4142a</srcmd5>
+    <version>2.4</version>
+    <time>1659382401</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 2.4:
+  * Make sure stellarsolver does not run after its deleted.
+  * Adding an abort and wait function that will wait synchronously, if desired.
+  * Add parallel abort support.
+  * Preventing program freezes and improving messages.
+</comment>
+    <requestid>992029</requestid>
+  </revision>
 </revisionlist>

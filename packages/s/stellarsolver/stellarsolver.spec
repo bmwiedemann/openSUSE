@@ -17,10 +17,10 @@
 
 
 %define sover 2
-%define min_sover 3
+%define min_sover 4
 
 Name:           stellarsolver
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        Astrometric Solver
 License:        GPL-3.0-or-later
@@ -69,7 +69,7 @@ Development headers and libraries for %{name}.
 %prep
 %autosetup -p1
 find . -name *DS_Store -delete
-sed -i 's/Version=2.2/Version=1.4/' stellarbatchsolver/com.github.rlancaste.stellarbatchsolver.desktop
+sed -i 's/Version=1.4/Version=1.0/' stellarbatchsolver/com.github.rlancaste.stellarbatchsolver.desktop
 
 %build
 %cmake \

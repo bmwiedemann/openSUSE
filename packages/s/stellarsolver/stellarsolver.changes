@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug  1 12:09:18 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.4:
+  * Make sure stellarsolver does not run after its deleted.
+  * Adding an abort and wait function that will wait synchronously, if desired.
+  * Add parallel abort support.
+  * Preventing program freezes and improving messages.
+
+-------------------------------------------------------------------
 Thu Jun 16 06:05:43 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.3:
