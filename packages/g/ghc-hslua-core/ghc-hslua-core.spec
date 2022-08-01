@@ -19,7 +19,7 @@
 %global pkg_name hslua-core
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        Bindings to Lua, an embeddable scripting language
 License:        MIT

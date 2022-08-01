@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Jun 19 11:35:43 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hslua-core to version 2.2.1.
+  ## hslua-core-2.2.1
+
+  Released 2022-06-19.
+
+  -   Ensure that loadfile works with umlauts in filepath: The OS
+      does not necessarily expect filenames to be UTF-8 encoded,
+      especially Windows. On non-Windows systems, the current file
+      system encoding is now used to convert filenames to C
+      strings. On Windows, the `CP_ACP` codepage is used, as
+      required by the Windows API.
+
+  -   GC managed Lua state: Add new type `GCManagedState` and
+      functions `newGCManagedState`, `closeGCManagedState`, and
+      `withGCManagedState`. These allow to create and use a Lua
+      state in flexible ways in that it does not require the state
+      to be closed explicitly. The state will be closed when the
+      respective variable is collected.
+
+  -   Require lua-2.2.1.
+
+  -   Relax upper bound for mtl, allow mtl-2.3.
+
+-------------------------------------------------------------------
+Sat Feb 19 14:38:17 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hslua-core to version 2.2.0.
+  ## hslua-core-2.2.0
+
+  Released 2022-02-19.
+
+  -    Use lua-2.2.0, which requires Lua 5.4.
+
+  -    Rename `newuserdata` to `newuserdatauv` and let it take the
+       number of associated uservalues as an additional argument.
+
+       Similarly, `newhsuserdata` is now `newhsuserdatauv`.
+
+  -    Rename `getuservalue` and `setuservalue` to `getiuservalue`
+       and `setiuservalue`, respectively. Like both functions now
+       take an extra argument specifying the number of the uservalue
+       that should be retrieved or set.
+
+       It is now possible for `setiuservalue` to fail, so it returns
+       a boolean to indicate whether the action was successful.
+
+  -    The `GCControl` type has been updated to match the new gc
+       control:
+
+       -   The GCStep constructor takes an argument "stepsize";
+       -   constructors GCGen and GCInc have been added;
+       -   constructors GCSetPause and GCSetStepMul have been removed.
+
+-------------------------------------------------------------------
 Sat Jan 29 10:07:51 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hslua-core to version 2.1.0.
