@@ -17,7 +17,7 @@
 #
 
 
-%global sover   2_0
+%global sover   2
 %global libname libmimalloc%{sover}
 Name:           mimalloc
 Version:        2.0.6
@@ -41,6 +41,7 @@ timing, depending on the particular workload.
 %package -n %{libname}
 Summary:        A compact general purpose allocator
 Group:          System/Libraries
+Obsoletes:      libmimalloc2_0
 
 %description -n %{libname}
 This is a general purpose allocator. It is a drop-in replacement for
