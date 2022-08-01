@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 14 03:07:24 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.42
+   see /usr/share/doc/packages/perl-Crypt-PasswdMD5/Changelog.ini
+
+  [V 1.42]
+  Date=2022-07-13T16:20:00
+  Comments= <<EOT
+  - Accept pull request from Dmitry Karasik, to handle the case where the password
+  has the utf8 bit set. With thanx.
+  - Update t/basic.t to use Encode and to test the utf8 bit setting.
+  - Very slightly reformat the source code of PasswdMD5.pm and basic.t.
+  EOT
+
+-------------------------------------------------------------------
 Tue Feb  2 03:06:51 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.41

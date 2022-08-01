@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Crypt-PasswdMD5
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Crypt-PasswdMD5
 Name:           perl-Crypt-PasswdMD5
-Version:        1.41
+Version:        1.42
 Release:        0
-Summary:        Provide interoperable MD5-based crypt() functions
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Provide interoperable MD5-based crypt() functions
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSAVAGE/%{cpan_name}-%{version}.tgz
 Source1:        cpanspec.yml
