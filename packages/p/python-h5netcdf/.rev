@@ -41,4 +41,74 @@
 </comment>
     <requestid>873743</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5f6181d3e99224accc32db583c85c151</srcmd5>
+    <version>1.0.1</version>
+    <time>1659382351</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.0.1:
+  - Fix failing tests when using netCDF4 4.9.0.
+  - Add HSDS pytest-fixture, make tests work with h5ypd. By
+    Aleksandar Jelenak.
+  - Remove _NCProperties from existing file if writing invalid
+    netcdf features. Warn users if .nc file extension is used
+    writing invalid netcdf features. By Kai Mühlbauer.
+  - Remove deprecated code (eg. remove deprecated code (eg.
+    handling mode, chunking_heuristics, decode_vlen_strings),
+    adapt LICENSE/AUTHOR.txt, prepare repository for release
+    1.0. By Kai Mühlbauer.
+  - Add documentation to h5netcdf, merging current available
+    documentation available as .rst-files, in the repo-wiki
+    and new API-docs into one document using sphinx-doc and
+    sphinx-book-theme. By Kai Mühlbauer.
+  - Directly return non-string Empty-type attributes as empty
+    numpy-ndarray. By Kai Mühlbauer.
+  - Add chunking_heuristic keyword and custom heuristic
+    chunking_heuristic=&quot;h5netcdf&quot; with better handling of
+    unlimited dimensions. By Dion Häfner.
+  - Return group name instead of full group path for legacy
+    API. By Kai Mühlbauer.
+  - Add endian keyword argument
+    legacyapi.Dataset.createVariable. By Kai Mühlbauer.
+  - Resize Dimensions when writing to variables (legacy API
+    only), return padded arrays. By Kai Mühlbauer.
+  - Allow 1D boolean indexers in legacy API. By Kai Mühlbauer.
+  - Revert order tracking by default to avoid a bug in h5py
+    (Closes Issue #136). By Mark Harfouche.
+  - Implement Dimension-class. By Kai Mühlbauer.
+  - Return items from 0-dim and one-element 1-dim array
+    attributes. Return multi-element attributes as lists. Return
+    string attributes as Python strings decoded from their
+    respective encoding (utf-8, ascii). By Kai Mühlbauer.
+  - Assign dimensions at creation time, instead of at sync/flush
+    (file-close). By Kai Mühlbauer.
+  - Create/attach dimension scales on the fly, instead of at
+    sync/flush (file-close). By Kai Mühlbauer.
+  - Ensure order tracking is true for newly created netcdf4 files
+    as required by the netcdf4 standard. This enables files
+    created by h5netcdf to be appended to by netCDF4 library
+    users (Closes Issue #128). By Mark Harfouche.
+  - Added FutureWarning to use mode='r' as default when opening
+    files. By Ryan Grout.
+  - Moved handling of _nc4_non_coord_ to
+    h5netcdf.BaseVariable. By Kai Mühlbauer.
+  - Write _NCProperties when overwriting existing files. By Kai
+    Mühlbauer.
+  - Create/Attach dimension scales on append (mode=&quot;r+&quot;) By Kai
+    Mühlbauer.
+  - Create/Attach/Detach dimension scales only if necessary. By
+    Kai Mühlbauer.
+  - Switch warning into error when using invalid netCDF
+    features. By Kai Mühlbauer.
+  - Avoid circular references to objects referencing h5py
+    objects. By Tom Augspurger.
+  - Included h5pyd.Dataset objects as netCDF variables. By
+    Aleksandar Jelenak.
+  - Added automatic PyPI upload on creation of github release.
+  - Moved Changelog to CHANGELOG.rst.
+  - Updated decode_vlen_strings FutureWarning.
+  - Support for h5py.Empty strings. By Kai Mühlbauer.
+</comment>
+    <requestid>991824</requestid>
+  </revision>
 </revisionlist>

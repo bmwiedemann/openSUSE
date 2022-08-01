@@ -1,7 +1,7 @@
 #
 # spec file for package python-h5netcdf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,16 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-h5netcdf
-Version:        0.10.0
+Version:        1.0.1
 Release:        0
 Summary:        A Python library to use netCDF4 files via h5py
 License:        BSD-3-Clause
 URL:            https://github.com/h5netcdf/h5netcdf
 Source:         https://files.pythonhosted.org/packages/source/h/h5netcdf/h5netcdf-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-h5py
@@ -47,18 +50,20 @@ relying on the Unidata netCDF library.
 %autosetup -p1 -n h5netcdf-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -rs
+# gh#h5netcdf/h5netcdf#179
+%pytest -rs -k 'not (test_more_than_7_attr_creation_track_order or test_bool_slicing_length_one_dim)'
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/h5netcdf
+%{python_sitelib}/h5netcdf-%{version}*-info
 
 %changelog
