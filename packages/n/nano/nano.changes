@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 25 09:03:56 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Added obs-channel-and-patchinfo-syntax.patch to support syntax 
+  highlighting for _channel and _patchinfo files used by OBS
+  
+-------------------------------------------------------------------
 Fri Apr 29 07:09:44 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.3:

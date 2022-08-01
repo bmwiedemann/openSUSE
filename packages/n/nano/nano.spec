@@ -28,6 +28,8 @@ Source0:        https://nano-editor.org/dist/v%{_version}/%{name}-%{version}.tar
 Source1:        https://nano-editor.org/dist/v%{_version}/%{name}-%{version}.tar.xz.asc
 Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=42085#/%{name}.keyring
 Source3:        nanorc
+# PATCH-FIX-OPENSUSE obs-channel-and-patchinfo-syntax.patch maurizio.galli@suse.com -- enable syntax for _channel and _patchinfo files used by OBS
+Patch0:         obs-channel-and-patchinfo-syntax.patch
 BuildRequires:  file-devel
 BuildRequires:  groff-full
 BuildRequires:  makeinfo
@@ -42,7 +44,7 @@ the Pico text editor while also offering a few enhancements.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \

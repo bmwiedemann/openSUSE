@@ -1,0 +1,11 @@
+diff -rub a/syntax/xml.nanorc b/syntax/xml.nanorc
+--- a/syntax/xml.nanorc	2022-04-08 17:13:15.000000000 +0800
++++ b/syntax/xml.nanorc	2022-07-25 16:59:05.041959714 +0800
+@@ -1,6 +1,6 @@
+ ## Syntax highlighting for XML files.
+ 
+-syntax xml "\.([jrsx]html?|jnlp|mml|pom|rng|sgml?|svg|w[as]dl|wsdd|xjb|xml|xs(d|lt?)|xul)$"
++syntax xml "(\.([jrsx]html?|jnlp|mml|pom|rng|sgml?|svg|w[as]dl|wsdd|xjb|xml|xs(d|lt?)|xul)$|_patchinfo|_channel)"
+ header "<\?xml.*version=.*\?>"
+ magic "(XML|SGML) (sub)?document"
+ comment "<!--|-->"
