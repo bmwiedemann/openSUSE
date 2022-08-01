@@ -1,6 +1,6 @@
 name:            hjsmin
 version:         0.2.0.4
-x-revision: 1
+x-revision: 2
 license:         BSD3
 license-file:    LICENSE
 author:          Alan Zimmerman <alan.zimm@gmail.com>
@@ -46,7 +46,7 @@ executable hjsmin
   other-modules:        Text.Jasmine
 
   build-depends:        base                    >= 4.8          && < 5
-                      , bytestring              == 0.10.*
+                      , bytestring
                       , language-javascript
                       , optparse-applicative    >= 0.7
                       , text

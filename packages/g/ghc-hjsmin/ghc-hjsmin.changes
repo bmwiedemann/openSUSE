@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 23 10:50:51 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hjsmin to version 0.2.0.4 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Dec  1 20:12:17 UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Update hjsmin to version 0.2.0.4 revision 1.
