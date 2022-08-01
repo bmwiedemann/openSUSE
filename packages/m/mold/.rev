@@ -203,4 +203,12 @@
     correctly so that mold no longer emit spurious &quot;recompile with -fPIC&quot; errors. (5294300)</comment>
     <requestid>986181</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>00b6d93ec7a414544a071c106fb3bbc5</srcmd5>
+    <version>1.3.1</version>
+    <time>1659382374</time>
+    <user>RBrownFactory</user>
+    <comment>- Add fix-tests.patch which fixes tests on i586.</comment>
+    <requestid>992001</requestid>
+  </revision>
 </revisionlist>
