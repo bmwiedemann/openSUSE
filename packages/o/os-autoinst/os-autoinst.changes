@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 30 11:23:14 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1659175884.1aca550:
+  * Fix re-connecting via VNC over WebSockets
+  * End color escape sequences at the end of the line
+  * Allow insecure VNC over WebSockets connections only if configured
+  * Add test for `vnctest` script
+  * Fix race condition in dewebsockify test
+  * Adapt spec file to include new scripts for VNC over WebSockets
+  * Test further code paths of VMWare/WebSockets related code
+
+-------------------------------------------------------------------
 Mon Jul 25 20:27:59 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1658780871.1a85ca4:
