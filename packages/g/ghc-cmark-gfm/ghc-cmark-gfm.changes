@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  9 03:24:24 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update cmark-gfm to version 0.2.3.
+  cmark-gfm 0.2.3 (9 Mar 2022)
+
+    * Pull in upstream changes.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

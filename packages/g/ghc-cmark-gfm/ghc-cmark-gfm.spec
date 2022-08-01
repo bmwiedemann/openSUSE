@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-cmark-gfm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name cmark-gfm
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        Fast, accurate GitHub Flavored Markdown parser and renderer
 License:        BSD-3-Clause
@@ -38,7 +38,7 @@ BuildRequires:  ghc-HUnit-devel
 This package provides Haskell bindings for <https://github.com/github/cmark-gfm
 libcmark-gfm>, the reference parser for <https://github.github.com/gfm/ GitHub
 Flavored Markdown>, a fully specified variant of Markdown. It includes sources
-for libcmark-gfm (0.29.0.gfm.0) and does not require prior installation of the
+for libcmark-gfm (0.29.0.gfm.3) and does not require prior installation of the
 C library.
 
 %package devel
