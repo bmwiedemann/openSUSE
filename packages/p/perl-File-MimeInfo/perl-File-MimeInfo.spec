@@ -18,7 +18,7 @@
 
 %define cpan_name File-MimeInfo
 Name:           perl-File-MimeInfo
-Version:        0.32
+Version:        0.33
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Determine file types

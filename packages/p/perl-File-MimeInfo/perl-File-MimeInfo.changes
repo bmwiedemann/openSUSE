@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 13 03:07:34 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.33
+   see /usr/share/doc/packages/perl-File-MimeInfo/Changes
+
+  0.33  2022-07-12
+   - Fix uninitialized value warning in File::MimeInfo::Applications,
+     provided by SPFabGerman
+
+-------------------------------------------------------------------
 Mon Mar  7 03:06:57 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.32
