@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-microlens
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name microlens
 Name:           ghc-%{pkg_name}
-Version:        0.4.12.0
+Version:        0.4.13.0
 Release:        0
 Summary:        A tiny lens library with no dependencies
 License:        BSD-3-Clause
