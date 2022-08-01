@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jun 21 10:42:49 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update lens to version 5.1.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue May 17 12:16:51 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update lens to version 5.1.1.
+  5.1.1 [2022.05.17]
+  ------------------
+  * Add `Data.HashSet.Lens.hashMap`, an `Iso` between a `HashSet a` and a
+    `HashMap a ()`.
+  * Allow building with `transformers-0.6.*` and `mtl-2.3.*`.
+
+    Note that `lens` no longer defines `Zoom` instances for `ErrorT` or `ListT`
+    when building with `mtl-2.3` or later. This is because `MonadState` is a
+    superclass of `Zoom`, and the `MonadState` instances for `ErrorT` and `ListT`
+    were removed in `mtl-2.3`. Be watchful of this if you build `lens` with
+    `mtl-2.3` (or later) combined with an older version of `transformers`
+    (pre-`0.6`) that defines `ErrorT` or `ListT`.
+
+-------------------------------------------------------------------
 Sun Dec 26 22:30:17 UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Update lens to version 5.1 revision 1.
