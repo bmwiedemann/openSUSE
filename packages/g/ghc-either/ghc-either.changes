@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  8 00:39:36 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update either to version 5.0.2.
+  5.0.2 [2022.05.07]
+  ------------------
+  * Tweak error messages of `fromRight'` and `fromLeft'` for clarity.
+  * Allow building with `mtl-2.3.*`.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
