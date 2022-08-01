@@ -19,7 +19,7 @@
 %global pkg_name texmath
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.12.4
+Version:        0.12.5.1
 Release:        0
 Summary:        Conversion between math formats
 License:        GPL-2.0-or-later
@@ -34,6 +34,7 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-network-uri-devel
 BuildRequires:  ghc-pandoc-types-devel
 BuildRequires:  ghc-parsec-devel
+BuildRequires:  ghc-pretty-show-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-split-devel
 BuildRequires:  ghc-syb-devel
@@ -43,9 +44,9 @@ ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-process-devel
-BuildRequires:  ghc-temporary-devel
-BuildRequires:  ghc-utf8-string-devel
+BuildRequires:  ghc-tagged-devel
+BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-golden-devel
 %endif
 
 %description
@@ -54,21 +55,19 @@ MathML, and OMML (Office Math Markup Language, used in Microsoft Office).
 Support is also included for converting math formats to Gnu eqn and to pandoc's
 native format (allowing conversion, via pandoc, to a variety of different
 markup formats). The TeX reader supports basic LaTeX and AMS extensions, and it
-can parse and apply LaTeX macros. (See <http://johnmacfarlane.net/texmath here>
-for a live demo of bidirectional conversion between LaTeX and MathML.)
+can parse and apply LaTeX macros. (See <https://johnmacfarlane.net/texmath
+here> for a live demo of bidirectional conversion between LaTeX and MathML.)
 
 The package also includes several utility modules which may be useful for
 anyone looking to manipulate either TeX math or MathML. For example, a copy of
-the MathML operator dictionary is included. . Use the 'executable' flag to
-install a standalone executable, 'texmath', that by default reads a LaTeX
-formula from 'stdin' and writes MathML to 'stdout'. With flags all the
-functionality exposed by 'Text.TeXMath' can be accessed through this
-executable. (Use the '--help' flag for a description of all functionality)
+the MathML operator dictionary is included.
 
-The 'texmath' executable can also be used as a CGI script, when renamed as
-'texmath-cgi'. It will expect query parameters for 'from', 'to', 'input', and
-optionally 'inline', and return a JSON object with either 'error' and a message
-or 'success' and the converted result.
+Use the 'executable' flag to install a standalone executable, 'texmath', that
+converts formulas from one format to another. (Use the '--help' flag for a
+description of all functionality).
+
+Use the 'server' flag to install a web server, 'texmath-server', that exposes a
+JSON API allowing conversion of individual formulas and batches of formulas.
 
 %package -n ghc-%{name}
 Summary:        Haskell %{name} library
