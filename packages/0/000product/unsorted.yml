@@ -10196,7 +10196,7 @@ unsorted:
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
-  - libcerf1 
+  - libcerf2 
   - libcerror-devel 
   - libcerror1 
   - libcfg6-32bit: [x86_64] 
@@ -20728,6 +20728,7 @@ unsorted:
   - pixz 
   - pkTriggerCord 
   - pkcs11-helper-devel 
+  - pkexec 
   - pkgdiff 
   - plank 
   - plank-devel 
