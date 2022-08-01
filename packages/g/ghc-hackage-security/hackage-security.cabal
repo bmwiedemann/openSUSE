@@ -1,7 +1,7 @@
 cabal-version:       1.12
 name:                hackage-security
 version:             0.6.2.1
-x-revision: 1
+x-revision: 2
 
 synopsis:            Hackage security library
 description:         The hackage security library provides both server and
@@ -155,7 +155,7 @@ library
     build-depends:     base       >= 4.10
 
   if flag(Cabal-syntax)
-    build-depends: Cabal-syntax >= 3.7 && < 3.9
+    build-depends: Cabal-syntax >= 3.7 && < 3.10
   else
     build-depends: Cabal        >= 1.14    && < 1.26
                              || >= 2.0     && < 2.6
