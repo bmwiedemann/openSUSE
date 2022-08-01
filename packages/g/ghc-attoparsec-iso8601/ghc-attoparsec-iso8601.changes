@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 15 14:53:41 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update attoparsec-iso8601 to version 1.1.0.0.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Sat Jan  1 19:05:59 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update attoparsec-iso8601 to version 1.0.2.1.

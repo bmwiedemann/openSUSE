@@ -18,7 +18,7 @@
 
 %global pkg_name attoparsec-iso8601
 Name:           ghc-%{pkg_name}
-Version:        1.0.2.1
+Version:        1.1.0.0
 Release:        0
 Summary:        Parsing of ISO 8601 dates, originally from aeson
 License:        BSD-3-Clause
@@ -66,6 +66,6 @@ files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc README.md
+%doc README.md changelog.md
 
 %changelog
