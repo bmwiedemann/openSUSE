@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu May 19 19:52:23 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update optics to version 0.4.2.
+  # optics-0.4.2 (2022-05-19)
+  * Allow `transformers-0.6` and `mtl-2.3`
+
+    Note that `optics-extra` no longer defines `Zoom` instances for `ErrorT` or `ListT` when
+    building with `mtl-2.3` or later. This is because `MonadState` is a superclass of
+    `Zoom`, and the `MonadState` instances for `ErrorT` and `ListT` were removed in
+    `mtl-2.3`. Be watchful of this if you build `optics-extra` with `mtl-2.3` (or
+    later) combined with an older version of `transformers` (pre-0.6) that defines
+    `ErrorT` or `ListT`.  Similarly for `Magnify` and `MagnifyMany`.
+
+-------------------------------------------------------------------
+Tue Mar 22 06:29:42 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update optics to version 0.4.1.
+  # optics-0.4.1 (2022-03-22)
+  * Add support for GHC-9.2
+  * Add `is` ([#410](https://github.com/well-typed/optics/pull/410))
+  * Improve error messages related to the `JoinKinds` class
+    ([#439](https://github.com/well-typed/optics/pull/439))
+  * Port `universeOf`, `cosmosOf`, `paraOf`, `rewriteOf`, `transformOf`,
+    `rewriteMOf` and `transformMOf` from `Control.Lens.Plated`
+    ([#379](https://github.com/well-typed/optics/pull/379))
+  * Add `(%?)` composition operator
+    ([#434](https://github.com/well-typed/optics/pull/434))
+
+-------------------------------------------------------------------
 Tue Feb 23 18:12:01 UTC 2021 - psimons@suse.com
 
 - Update optics to version 0.4.
