@@ -39,4 +39,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>932796</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0e6864d24af91fd0b8a292d1a5e42a41</srcmd5>
+    <version>0.4.3.2</version>
+    <time>1659382283</time>
+    <user>RBrownFactory</user>
+    <comment>- Update microlens-platform to version 0.4.3.2.
+  # 0.4.3.1
+  * Bumped `text` upper bound to support 2.0.
+  # 0.4.3
+  * New minor release (microlens-0.4.13.0, microlens-ghc-0.4.14).
+</comment>
+    <requestid>988554</requestid>
+  </revision>
 </revisionlist>
