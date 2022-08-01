@@ -8,7 +8,7 @@ cabal-version: 1.12
 
 name:           monad-logger
 version:        0.3.36
-x-revision: 1
+x-revision: 2
 synopsis:       A class of monads which can log messages.
 description:    See README and Haddocks at <https://www.stackage.org/package/monad-logger>
 category:       System
@@ -33,6 +33,8 @@ flag template_haskell
   default: True
 
 library
+  build-depends: transformers <0.6
+
   exposed-modules:
       Control.Monad.Logger
   other-modules:
