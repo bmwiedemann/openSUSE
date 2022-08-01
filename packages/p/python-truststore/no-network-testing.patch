@@ -1,0 +1,44 @@
+---
+ pyproject.toml     |    3 +++
+ test_truststore.py |    7 +++----
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -26,3 +26,6 @@ Home = "https://github.com/sethmlarson/t
+ [tool.pytest.ini_options]
+ asyncio_mode = "strict"
+ filterwarnings = ["error"]
++markers = [
++    "network: test case requires network connection",
++]
+--- a/test_truststore.py
++++ b/test_truststore.py
+@@ -21,7 +21,7 @@ import truststore
+ # if the client drops the connection due to a cert verification error
+ socket.setdefaulttimeout(10)
+ 
+-successful_hosts = pytest.mark.parametrize("host", ["example.com", "1.1.1.1"])
++successful_hosts = pytest.mark.network
+ 
+ 
+ @dataclass
+@@ -113,9 +113,7 @@ if platform.system() != "Linux":
+         )
+     )
+ 
+-failure_hosts = pytest.mark.parametrize(
+-    "failure", failure_hosts_list, ids=attrgetter("host")
+-)
++failure_hosts = pytest.mark.network
+ 
+ 
+ @pytest.fixture(scope="session")
+@@ -242,6 +240,7 @@ def test_trustme_cert_loaded_via_capath(
+         assert len(resp.data) > 0
+ 
+ 
++@pytest.mark.network
+ def test_trustme_cert_still_uses_system_certs(trustme_ca):
+     ctx = truststore.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+     trustme_ca.configure_trust(ctx)
