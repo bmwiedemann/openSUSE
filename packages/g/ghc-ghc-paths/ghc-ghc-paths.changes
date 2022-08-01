@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 16 17:32:13 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update ghc-paths to version 0.1.0.12 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov  1 08:26:50 UTC 2021 - psimons@suse.com
 
 - Update ghc-paths to version 0.1.0.12 revision 3.

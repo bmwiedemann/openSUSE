@@ -1,6 +1,6 @@
 name: ghc-paths
 version: 0.1.0.12
-x-revision: 3
+x-revision: 4
 license: BSD3
 license-file: LICENSE
 copyright: (c) Simon Marlow
@@ -14,7 +14,7 @@ cabal-version: >= 1.6
 build-type: Custom
 
 custom-setup
-        setup-depends: base >= 3 && < 5, Cabal >= 1.6 && <3.7, directory
+        setup-depends: base >= 3 && < 5, Cabal >= 1.6 && <3.9, directory
 
 library
         build-depends: base >= 3 && < 5
