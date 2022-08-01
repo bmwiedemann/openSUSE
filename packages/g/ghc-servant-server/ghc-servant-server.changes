@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 29 16:33:37 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update servant-server to version 0.19.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Mar 21 14:54:33 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update servant-server to version 0.19.1 revision 1.
+  0.19.1
+  ------
+
+  - Add `MonadFail` instance for `Handler` wrt [#1545](https://github.com/haskell-servant/servant/issues/1545)
+  - Support GHC 9.2 [#1525](https://github.com/haskell-servant/servant/issues/1525)
+
+-------------------------------------------------------------------
+Wed Feb 23 10:00:38 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update servant-server to version 0.19 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Feb  2 13:27:41 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update servant-server to version 0.19.

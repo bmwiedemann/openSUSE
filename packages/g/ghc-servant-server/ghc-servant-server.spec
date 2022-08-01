@@ -19,12 +19,13 @@
 %global pkg_name servant-server
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.19
+Version:        0.19.1
 Release:        0
 Summary:        A family of combinators for defining webservices APIs and serving them
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
@@ -93,7 +94,8 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver base-compat '< 0.12' '< 1'
+cp -p %{SOURCE1} %{pkg_name}.cabal
+cabal-tweak-dep-ver http-api-data '< 0.4.4' '< 1'
 
 %build
 %ghc_lib_build
