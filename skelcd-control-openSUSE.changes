@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 26 14:27:02 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added "kdump" dependency, yast2-kdump only has a runtime
+  depenency but the package is also needed in the inst-sys
+  (related to bsc#1199840)
+- 20220726
+
+-------------------------------------------------------------------
 Wed Jan 19 12:48:38 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - Use NetworkManager always (boo#1172684)
