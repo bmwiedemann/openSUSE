@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 30 18:16:05 UTC 2022 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Don't try to build with NBD until 15.3 or later
+
+-------------------------------------------------------------------
+Fri Jul 29 21:48:16 UTC 2022 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Fix bug in spec file (was missing /run/s3backer-ndb)
+
+-------------------------------------------------------------------
 Sun Jul 17 22:56:12 UTC 2022 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Fix build on older systems that don't have libzstd. 

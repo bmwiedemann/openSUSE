@@ -249,4 +249,14 @@
   + Added support for zstd compression (pr #187)</comment>
     <requestid>989756</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>638cdc9e9ce4ec4df7948b51d9bca7a6</srcmd5>
+    <version>2.0.2</version>
+    <time>1659382352</time>
+    <user>RBrownFactory</user>
+    <comment>- Don't try to build with NBD until 15.3 or later
+
+- Fix bug in spec file (was missing /run/s3backer-ndb)</comment>
+    <requestid>991825</requestid>
+  </revision>
 </revisionlist>

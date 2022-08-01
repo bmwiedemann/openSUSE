@@ -16,6 +16,14 @@
 #
 
 
+# Should we try to include NDB support?
+%if 0%{?sle_version} >= 150300
+%define         include_nbd 1
+%define         runfilesdir /run
+%define         nbdsockdir  %{runfilesdir}/s3backer-nbd
+%define         tmpfileconf s3backer-nbd.conf
+%endif
+
 Name:           s3backer
 Version:        2.0.2
 Release:        0
@@ -28,10 +36,10 @@ BuildRequires:  fuse-devel >= 2.5
 BuildRequires:  libcurl-devel >= 7.16.2
 BuildRequires:  libexpat-devel
 BuildRequires:  libopenssl-devel
-%if 0%{?sle_version} >= 150000
+%if 0%{?include_nbd}
 BuildRequires:  libzstd-devel
 %endif
-%if 0%{?sle_version} >= 150300
+%if 0%{?include_nbd}
 BuildRequires:  nbd
 BuildRequires:  nbdkit-devel
 BuildRequires:  nbdkit-server
@@ -73,11 +81,26 @@ make install DESTDIR='%{buildroot}'
 install -m 0644 COPYING %{buildroot}%{_docdir}/%{name}/
 rm -f %{buildroot}%{_docdir}/%{name}/INSTALL
 
+%if 0%{?include_nbd}
+mkdir -p %{buildroot}%{_tmpfilesdir}
+cat > %{buildroot}%{_tmpfilesdir}/%{tmpfileconf} << 'xxxEOFxxx'
+# See tmpfiles.d(5) for details
+d %{nbdsockdir} 0700 root root -
+xxxEOFxxx
+%endif
+
+%if 0%{?include_nbd}
+%post
+%tmpfiles_create %{_tmpfilesdir}/%{tmpfileconf}
+%endif
+
 %files
 %{_bindir}/*
 %{_mandir}/man1/*
-%if 0%{?sle_version} >= 150300
+%if 0%{?include_nbd}
 %{_libdir}/nbdkit/plugins/*
+%{_tmpfilesdir}/%{tmpfileconf}
+%ghost %dir %attr(0700,root,root) %{nbdsockdir}
 %endif
 %{_docdir}/%{name}
 
