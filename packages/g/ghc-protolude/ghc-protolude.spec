@@ -18,7 +18,7 @@
 
 %global pkg_name protolude
 Name:           ghc-%{pkg_name}
-Version:        0.3.0
+Version:        0.3.2
 Release:        0
 Summary:        A small prelude
 License:        MIT
@@ -55,7 +55,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver transformers-compat '<0.7' '< 1'
 
 %build
 %ghc_lib_build
