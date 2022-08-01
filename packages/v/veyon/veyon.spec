@@ -88,6 +88,7 @@ BuildRequires:  pkgconfig(xp)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
+Requires:       pkexec
 Requires(post): permissions
 %{?systemd_requires}
 

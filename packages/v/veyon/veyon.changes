@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 18 09:55:09 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- require pkexec which is now a standalone package
+
+-------------------------------------------------------------------
 Fri Apr 22 00:48:11 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.7.3
