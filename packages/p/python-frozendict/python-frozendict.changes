@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 31 10:03:13 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.3.4 
+  - fixed various memory leaks
+  - Implemented a memory leak tracer
+  - Fixed memory leaks in repr() and in costruction of an empty
+    frozendict.
+
+-------------------------------------------------------------------
 Tue Jun  7 17:55:15 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.3.2

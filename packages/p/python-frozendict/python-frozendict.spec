@@ -21,7 +21,7 @@
 # Do not enable multibuild unless seriously necessary, it in
 # combination with arch is a right mess!
 Name:           python-frozendict
-Version:        2.3.2
+Version:        2.3.4
 Release:        0
 Summary:        An immutable dictionary
 License:        MIT
