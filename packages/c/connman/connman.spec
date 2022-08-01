@@ -35,6 +35,11 @@ URL:            http://www.moblin.org/
 Source0:        http://www.kernel.org/pub/linux/network/connman/connman-%{version}.tar.xz
 Source1:        http://www.kernel.org/pub/linux/network/connman/connman-%{version}.tar.sign
 Source2:        connman.keyring
+Patch001:       0001-wispr-Rename-wispr_portal_list-to-wispr_portal_hash.patch
+Patch002:       0002-wispr-Ignore-NULL-proxy.patch
+Patch003:       0003-wispr-Add-reference-counter-to-portal-context.patch
+Patch004:       0004-wispr-Update-portal-context-references.patch
+Patch005:       0005-gweb-Fix-OOB-write-in-received_data.patch
 # PATCH-FIX-OPENSUSE -- Greate symlink to network.service
 # downstream patches
 Patch100:       0100-connman-1.35-service.patch
