@@ -19,7 +19,7 @@
 %global pkg_name hslua-objectorientation
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        Object orientation tools for HsLua
 License:        MIT
