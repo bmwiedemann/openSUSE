@@ -125,4 +125,12 @@ It's very actively maintained upstream, so I see no reason why it shouldn't be p
     <comment></comment>
     <requestid>949183</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ed4ce353e07895ea4c5a49586623be63</srcmd5>
+    <version>2.28.0</version>
+    <time>1659382394</time>
+    <user>RBrownFactory</user>
+    <comment>Update to 2.28.0</comment>
+    <requestid>991996</requestid>
+  </revision>
 </revisionlist>

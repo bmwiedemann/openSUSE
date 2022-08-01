@@ -25,7 +25,7 @@
 %bcond_with qtwebengine
 %endif
 Name:           skrooge
-Version:        2.27.0
+Version:        2.28.0
 Release:        0
 Summary:        A Personal Finance Management Tool
 License:        GPL-3.0-only
