@@ -182,4 +182,12 @@
     <comment>version update</comment>
     <requestid>953415</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>37192dd040110fd8b42fd629b6dd1dba</srcmd5>
+    <version>2.10.0</version>
+    <time>1659382264</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>987126</requestid>
+  </revision>
 </revisionlist>
