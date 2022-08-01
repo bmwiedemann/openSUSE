@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar 13 12:56:59 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update cryptonite to version 0.30.
+  ## 0.30
+
+  * Fix some C symbol blake2b prefix to be cryptonite_ prefix (fix mixing with other C library)
+  * add hmac-lazy
+  * Fix compilation with GHC 9.2
+  * Drop support for GHC8.0, GHC8.2, GHC8.4, GHC8.6
+
+  ## 0.29
+
+  * advance compilation with gmp breakage due to change upstream
+  * Add native EdDSA support
+
+-------------------------------------------------------------------
 Sat May  8 17:16:38 UTC 2021 - psimons@suse.com
 
 - Update cryptonite to version 0.29.
