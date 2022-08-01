@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 15 15:54:00 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update http-api-data to version 0.5.
+  0.5
+  ---
+
+  * Use `attoparsec-iso8601-1.1.0.0`.
+    `Day` and `UTCTime` parsers require at least 4 digits now, which is a breaking change.
+  * Drop GHC-7.8 and GHC-7.10 support.
+
+-------------------------------------------------------------------
 Tue Jan  4 00:30:26 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update http-api-data to version 0.4.3 revision 6.
