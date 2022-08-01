@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May 20 11:51:08 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update optics-extra to version 0.4.2.1.
+  # optics-extra-0.4.2.1 (2022-05-20)
+  * Fix for previous release when used with `mtl-2.3` and `transformers-0.5`.
+
+  # optics-extra-0.4.2 (2022-05-19)
+  * Allow `transformers-0.6` and `mtl-2.3`
+
+    Note that `optics-extra` no longer defines `Zoom` instances for `ErrorT` or `ListT` when
+    building with `mtl-2.3` or later. This is because `MonadState` is a superclass of
+    `Zoom`, and the `MonadState` instances for `ErrorT` and `ListT` were removed in
+    `mtl-2.3`. Be watchful of this if you build `optics-extra` with `mtl-2.3` (or
+    later) combined with an older version of `transformers` (pre-0.6) that defines
+    `ErrorT` or `ListT`.  Similarly for `Magnify` and `MagnifyMany`.
+
+-------------------------------------------------------------------
+Tue Mar 22 06:29:33 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update optics-extra to version 0.4.1.
+  # optics-extra-0.4.1 (2022-03-22)
+  * Add support for GHC-9.2
+
+-------------------------------------------------------------------
 Sat Jan  1 18:00:41 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update optics-extra to version 0.4 revision 2.
