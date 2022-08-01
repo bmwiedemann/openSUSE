@@ -22,12 +22,12 @@
 #   in build service directly, use
 #   https://github.com/yast/skelcd-control-openSUSE repository
 #
-#   See https://github.com/yast/skelcd-control-openSUSE/blob/master/CONTRIBUTING.md
+#   See https://github.com/yast/.github/blob/master/CONTRIBUTING.md
 #   for more details.
 #
 ######################################################################
 Name:           skelcd-control-openSUSE
-Version:        20220119
+Version:        20220726
 Release:        0
 Summary:        The openSUSE Installation Control file
 License:        MIT
@@ -59,6 +59,8 @@ Requires:       yast2-firewall
 Requires:       yast2-installation >= 3.1.201
 Requires:       yast2-iscsi-client
 Requires:       yast2-kdump
+# yast2-kdump has only runtime dependency but the package is also needed in the inst-sys
+Requires:       kdump
 Requires:       yast2-multipath
 Requires:       yast2-network >= 3.1.24
 Requires:       yast2-nfs-client
