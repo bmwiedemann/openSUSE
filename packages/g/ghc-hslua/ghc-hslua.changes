@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Jun 19 11:56:53 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hslua to version 2.2.1.
+  ## hslua-2.2.1
+
+  Released 2022-06-19.
+
+  -   Require hslua-core-2.2.1.
+
+  -   Require hslua-marshalling-2.2.0.1.
+
+  -   Relax upper bound for mtl, allow mtl-2.3.
+
+-------------------------------------------------------------------
+Fri May 20 09:02:24 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hslua to version 2.2.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Feb 19 14:38:11 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hslua to version 2.2.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hslua-2.2.0/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Sat Jan 29 10:07:48 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hslua to version 2.1.0.
