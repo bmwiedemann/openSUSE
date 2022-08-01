@@ -1,7 +1,7 @@
 cabal-version:        2.2
 name:                 haddock-library
 version:              1.10.0
-x-revision: 2
+x-revision: 3
 synopsis:             Library exposing some functionality of Haddock.
 
 description:          Haddock is a documentation-generation tool for Haskell
@@ -43,7 +43,7 @@ common lib-defaults
     , bytestring
     , containers   ^>= 0.4.2.1 || ^>= 0.5.0.0 || ^>= 0.6.0.1
     , transformers
-    , text         ^>= 1.2.3.0
+    , text         ^>= 1.2.3.0 || ^>= 2.0
     , parsec       ^>= 3.1.13.0
 
   ghc-options: -funbox-strict-fields -Wall
