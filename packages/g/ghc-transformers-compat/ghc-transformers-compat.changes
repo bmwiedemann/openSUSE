@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 26 13:13:51 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update transformers-compat to version 0.7.2.
+  0.7.2 [2022.06.26]
+  ------------------
+  * Add `Eq`, `Ord`, `Read`, and `Show` instances for `FunctorClassesDefault` in
+    `Data.Functor.Classes.Generic`.
+
+-------------------------------------------------------------------
 Mon Jan 10 23:16:30 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update transformers-compat to version 0.7.1 revision 1.
