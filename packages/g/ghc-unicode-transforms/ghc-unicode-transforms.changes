@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 21 11:41:13 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update unicode-transforms to version 0.4.0.1.
+  ## 0.4.0.1 (March 2022)
+
+  * Support text-icu == 0.8.* in tests
+  * Support unicode-data == 0.3.*
+
+-------------------------------------------------------------------
 Sun Jan  9 09:53:23 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update unicode-transforms to version 0.4.0 revision 1.
