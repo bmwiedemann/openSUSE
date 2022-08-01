@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Jul 28 12:19:08 UTC 2022 - fcrozat@suse.com
+
+- Update to version 1.24.3+k3s1:
+  * Update to v1.24.3 (#5870)
+  * Address issues with etcd snapshots
+  * Fix deletion of svclb DaemonSet when Service is deleted
+  * Remove legacy bidirectional datastore sync code
+  * Fix fatal error when reconciling bootstrap data
+  * Promote v1.23.8+k3s2 to stable
+  * Replace dapper testing with regular docker (#5805)
+  * Fix issue with containerd stats missing from cadvisor metrics
+  * Bump runc version to v1.1.3
+  * Bump remotedialer
+  * Bump kine to v0.9.3
+  * Don't crash when service IPFamiliyPolicy is not set
+  * Fix egress selector proxy/bind-address support
+  * Add tests for down-level etcd join
+  * Handle egress-selector-mode change during upgrade
+  * Remove go-powershell dead dependency (#5777)
+  * add 1.24 release channel (#5742)
+  * Mark v1.23.8+k3s1 to stable
+  * Update to v1.24.2
+  * Bump helm-controller
+  * containerd: Enable enable_unprivileged_ports and enable_unprivileged_icmp by default
+  * Enable compact tests for k3s s390x
+  * Only listen on loopback when resetting
+  * Ensure that CONTAINERD_ variables are not shadowed by later entries
+  * Sanitize filenames for use in configmap keys
+  * Disable urfave markdown/man docs generation
+  * Delay service readiness until after startuphooks have finished (#5649)
+  * add arm tests and upgrade tests (#5526)
+  * Add alternate scripts location (#5692)
+  * Introduce servicelb-namespace parameter
+  * Move all klipper-lb daemonset to common namespace for PodSecurity
+  * E2E: Dualstack test (#5617)
+  * add support for pprof server (#5527)
+  * Update security email contact (#5607)
+  * E2E Improvements and groundwork for test-pad tool (#5593)
+  * Integration Test: Startup (#5630)
+  * Add FlannelConfCNI flag
+  * Add ability to pass configuration options to flannel backend
+  * Bump flannel to v0.18.1
+  * Remove kube-ipvs0 interface when cleaning up
+
+-------------------------------------------------------------------
 Mon Jun 13 14:17:50 UTC 2022 - fcrozat@suse.com
 
 - Update to version 1.24.1+k3s1:
