@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jul 31 14:24:01 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Update to version 0.10.1
+  Maintenance
+  * Add logo to cargo-deb assets
+  * Clean up documentation
+  * Enable wayland clipboard support by default on supported
+    platforms
+  * Update to librespot 0.4.2
+    * Should fix ChannelError issues which were previously fixed
+      with a workaround in /etc/hosts
+  * Updated context menu info and config values table in README
+  Features
+  * Add 'hide_display_names' config option
+  * Added possibility to Follow/Unfollow artists via the context
+    menu
+  * Add statusbar_format option to configure track formatting in
+    status bar
+
+-------------------------------------------------------------------
 Mon Jun 20 03:27:46 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
@@ -20,7 +40,8 @@ Sun Jun 12 11:48:07 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
   * Fix: don't throw error if search yields no result
   Features
   * Add option (library_tabs) to customize library tabs
-  * Add track_format config option for custom track formatting in lists
+  * Add track_format config option for custom track formatting in
+    lists
   * Add desktop entry & notification icon hint
 
 -------------------------------------------------------------------
