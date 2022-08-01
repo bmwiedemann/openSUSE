@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  9 08:26:35 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update megaparsec to version 9.2.1.
+  *Megaparsec follows [SemVer](https://semver.org/).*
+
+  ## Megaparsec 9.2.1
+
+  * Builds with `mtl-2.3` and `transformers-0.6`.
+
+-------------------------------------------------------------------
 Thu Dec 30 10:04:05 UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Update megaparsec to version 9.2.0 revision 1.
