@@ -1,7 +1,7 @@
 #
 # spec file for package hledger-ui
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hledger-ui
-Version:        1.24.99
+Version:        1.26.1
 Release:        0
 Summary:        Curses-style terminal interface for the hledger accounting system
 License:        GPL-3.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  ghc-hledger-lib-devel
 BuildRequires:  ghc-megaparsec-devel
 BuildRequires:  ghc-microlens-devel
 BuildRequires:  ghc-microlens-platform-devel
+BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-safe-devel
