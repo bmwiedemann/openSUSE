@@ -82,4 +82,12 @@
     <comment>update haskell stack in openSUS</comment>
     <requestid>857536</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e9a84d27bc13aa9723065955936c890b</srcmd5>
+    <version>0.3.1.0</version>
+    <time>1659382224</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>987083</requestid>
+  </revision>
 </revisionlist>

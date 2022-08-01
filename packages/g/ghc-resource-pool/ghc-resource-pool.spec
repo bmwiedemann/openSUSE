@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-resource-pool
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,16 @@
 
 %global pkg_name resource-pool
 Name:           ghc-%{pkg_name}
-Version:        0.2.3.2
+Version:        0.3.1.0
 Release:        0
 Summary:        A high-performance striped resource pooling implementation
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-hashable-devel
-BuildRequires:  ghc-monad-control-devel
+BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-time-devel
-BuildRequires:  ghc-transformers-base-devel
-BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-vector-devel
 ExcludeArch:    %{ix86}
 
 %description
@@ -68,6 +63,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc README.markdown
+%doc CHANGELOG.md README.md
 
 %changelog

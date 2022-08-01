@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 15 21:02:08 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update resource-pool to version 0.3.1.0.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
