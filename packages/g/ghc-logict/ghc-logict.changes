@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  8 20:46:55 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update logict to version 0.8.0.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/logict-0.8.0.0/src/changelog.md
+
+-------------------------------------------------------------------
 Mon Jan 18 09:08:22 UTC 2021 - psimons@suse.com
 
 - Update logict to version 0.7.1.0.
