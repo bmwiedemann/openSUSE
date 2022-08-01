@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 28 21:02:12 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update cabal-doctest to version 1.0.9 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov  8 16:30:40 UTC 2021 - psimons@suse.com
 
 - Update cabal-doctest to version 1.0.9.
