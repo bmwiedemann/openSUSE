@@ -19,7 +19,7 @@
 %global pkg_name lpeg
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        LPeg – Parsing Expression Grammars For Lua
 License:        MIT
