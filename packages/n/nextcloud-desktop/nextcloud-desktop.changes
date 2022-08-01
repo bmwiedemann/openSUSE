@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jul 29 16:09:27 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.5.3
+  - desktop#4726 [stable-3.5] Fix the system tray menu not being correctly replaced in setupContextMenu on GNOME
+  - desktop#4727 [stable-3.5] Ensure call notification stays on top of other windows
+  - desktop#4729 [stable-3.5] Work around issues with window positioning on Linux DEs,
+    hardcode tray window to screen center when new account added
+  - desktop#4731 [stable-3.5] Clean up systray methods, make more QML-friendly
+  - desktop#4739 [stable-3.5] Refactor tray window opening code for clarity and efficiency
+  - desktop#4740 [stable-3.5] Only set _FORTIFY_SOURCE when a higher level of this flag has not been set
+  - desktop#4741 [stable-3.5] Limit concurrent notifications
+  - desktop#4742 [stable-3.5] Take ints by value rather than reference in UserModel methods
+  - desktop#4743 [stable-3.5] Respect skipAutoUpdateCheck in nextcloud.cfg with Sparkle on macOS
+  - desktop#4744 [stable-3.5] Use preprocessor directive rather than normal 'if' for UNNotification types
+  - desktop#4745 [stable-3.5] QML-ify the UserModel, use properties rather than setter methods
+  - desktop#4750 [stable-3.5] Fix ActivityItemContent QML paintedWidth errors
+  - desktop#4763 [stable-3.5] Stop clearing notifications when new notifications are received
+  - desktop#4764 [stable-3.5] Ensure debug archive contents are readable by any user
+  - desktop#4765 [stable-3.5] Stop styling QML unified search items hierarchically, use global Style constants
+  - desktop#4766 [stable-3.5] Update macOS Info.plist
+  - desktop#4767 [stable-3.5] print sync direction in SyncFileStatusTracker::slotAboutToPropagate
+  - desktop#4772 [stable-3.5] Remove Ubuntu Impish, add Kinetic
+  - desktop#4775 [stable-3.5] Ensure that throttled notifications still appear in tray activity model
+  - desktop#4783 [stable-3.5] Make apps menu scrollable when content taller than available vertical space,
+    preventing borking of layout
+- Drop nextcloud-remove-fortify-source-2.patch, because the fortify
+  problem is now handled in code from upstream.
+
+-------------------------------------------------------------------
 Mon Jul  4 17:09:14 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.5.2

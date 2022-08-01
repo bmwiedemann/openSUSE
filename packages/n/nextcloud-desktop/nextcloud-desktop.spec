@@ -19,7 +19,7 @@
 %define soname  libnextcloudsync
 %define sover   0
 Name:           nextcloud-desktop
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -29,8 +29,6 @@ Source:         https://github.com/nextcloud/desktop/archive/v%{version}/%{name}
 Source1:        sysctl-sync-inotify.conf
 # PATCH-FIX-OPENSUSE nextcloud-desktop-remove-datetime.patch sor.alexei@meowr.ru -- Remove __TIME__ and __DATE__.
 Patch1:         nextcloud-desktop-remove-datetime.patch
-# PATCH-FIX-OPENSUSE nextcloud-remove-fortify-source-2.patch code@bnavigator.de -- Remove hardcoding of _FORTIFY_SOURCE=2 in order to not conflict with distribtion presets, boo#1201070, gh#nextcloud/desktop#4697
-Patch2:         nextcloud-remove-fortify-source-2.patch
 BuildRequires:  AppStream
 BuildRequires:  cmake >= 3.2
 BuildRequires:  extra-cmake-modules
