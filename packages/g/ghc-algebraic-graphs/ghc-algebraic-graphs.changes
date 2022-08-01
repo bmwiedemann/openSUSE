@@ -1,13 +1,4 @@
 -------------------------------------------------------------------
-Thu Dec 16 21:32:29 UTC 2021 - Peter Simons <psimons@suse.com>
-
-- Update algebraic-graphs to version 0.6 revision 1.
-  Upstream has edited the change log file since the last release in
-  a non-trivial way, i.e. they did more than just add a new entry
-  at the top. You can review the file at:
-  http://hackage.haskell.org/package/algebraic-graphs-0.6/src/CHANGES.md
-
--------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

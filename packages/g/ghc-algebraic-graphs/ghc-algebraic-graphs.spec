@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-algebraic-graphs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %global pkg_name algebraic-graphs
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.6
+Version:        0.5
 Release:        0
 Summary:        A library for algebraic graph construction and transformation
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-containers-devel
@@ -60,23 +59,15 @@ Algebra.Graph.Labelled>.
 
 The library also provides conventional graph data structures, such as
 <http://hackage.haskell.org/package/algebraic-graphs/docs/Algebra-Graph-AdjacencyMap.html
-Algebra.Graph.AdjacencyMap> along with its various flavours:
-
-* adjacency maps specialised to graphs with vertices of type 'Int'
+Algebra.Graph.AdjacencyMap> along with its various flavours: adjacency maps
+specialised to graphs with vertices of type 'Int'
 (<http://hackage.haskell.org/package/algebraic-graphs/docs/Algebra-Graph-AdjacencyIntMap.html
-Algebra.Graph.AdjacencyIntMap>), * non-empty adjacency maps
+Algebra.Graph.AdjacencyIntMap>), non-empty adjacency maps
 (<http://hackage.haskell.org/package/algebraic-graphs/docs/Algebra-Graph-NonEmpty-AdjacencyMap.html
-Algebra.Graph.NonEmpty.AdjacencyMap>), * adjacency maps for undirected
-bipartite graphs
-(<http://hackage.haskell.org/package/algebraic-graphs/docs/Algebra-Graph-Bipartite-AdjacencyMap.html
-Algebra.Graph.Bipartite.AdjacencyMap>), * adjacency maps with edge labels
+Algebra.Graph.NonEmpty.AdjacencyMap>), and adjacency maps with edge labels
 (<http://hackage.haskell.org/package/algebraic-graphs/docs/Algebra-Graph-Labelled-AdjacencyMap.html
-Algebra.Graph.Labelled.AdjacencyMap>), * acyclic adjacency maps
-(<http://hackage.haskell.org/package/algebraic-graphs/docs/Algebra-Graph-Acyclic-AdjacencyMap.html
-Algebra.Graph.Acyclic.AdjacencyMap>),
-
-A large part of the API of algebraic graphs and adjacency maps is available
-through the 'Foldable'-like type class
+Algebra.Graph.Labelled.AdjacencyMap>). A large part of the API of algebraic
+graphs and adjacency maps is available through the 'Foldable'-like type class
 <http://hackage.haskell.org/package/algebraic-graphs/docs/Algebra-Graph-ToGraph.html
 Algebra.Graph.ToGraph>.
 
@@ -104,7 +95,6 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
