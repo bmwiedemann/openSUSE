@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 18 17:51:29 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update streaming-bytestring to version 0.2.2.
+  ## 0.2.2 (2022-05-18)
+
+  #### Changed
+
+  - Dependency adjustments.
+
+-------------------------------------------------------------------
 Tue Feb 15 08:02:35 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update copyright header in the spec file.

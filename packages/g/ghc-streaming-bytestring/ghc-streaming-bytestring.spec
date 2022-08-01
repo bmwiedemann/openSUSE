@@ -19,7 +19,7 @@
 %global pkg_name streaming-bytestring
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        Fast, effectful byte streams
 License:        BSD-3-Clause
@@ -69,7 +69,6 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver mmorph '<1.2' '< 2'
 
 %build
 %ghc_lib_build
