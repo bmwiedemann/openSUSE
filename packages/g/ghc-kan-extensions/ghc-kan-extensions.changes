@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jun 26 21:16:24 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update kan-extensions to version 5.2.5.
+  5.2.5 [2022.06.26]
+  ------------------
+  * Only require a `Functor` constraint in the `Eq` and `Ord` instances for
+    `Coyoneda` when building against `transformers-0.4.*`.
+
+-------------------------------------------------------------------
+Sat May  7 23:33:49 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update kan-extensions to version 5.2.4.
+  5.2.4 [2022.05.07]
+  ------------------
+  * Allow building with `transformers-0.6.*` and `mtl-2.3.*`.
+
+-------------------------------------------------------------------
 Wed Jul 28 07:43:21 UTC 2021 - psimons@suse.com
 
 - Update kan-extensions to version 5.2.3.
