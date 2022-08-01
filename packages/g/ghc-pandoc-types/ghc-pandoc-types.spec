@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-pandoc-types
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name pandoc-types
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.22.1
+Version:        1.22.2
 Release:        0
 Summary:        Types for representing a structured document
 License:        GPL-2.0-only
