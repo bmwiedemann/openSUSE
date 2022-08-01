@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-microlens-mtl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name microlens-mtl
 Name:           ghc-%{pkg_name}
-Version:        0.2.0.1
+Version:        0.2.0.2
 Release:        0
 Summary:        Microlens support for Reader/Writer/State from mtl
 License:        BSD-3-Clause

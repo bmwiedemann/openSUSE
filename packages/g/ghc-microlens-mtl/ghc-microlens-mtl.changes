@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 16 04:48:35 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update microlens-mtl to version 0.2.0.2.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
