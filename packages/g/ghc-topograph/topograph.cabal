@@ -1,7 +1,7 @@
 cabal-version:   2.2
 name:            topograph
 version:         1.0.0.1
-x-revision:      3
+x-revision:      4
 synopsis:        Directed acyclic graphs.
 category:        Data, Graph
 description:
@@ -52,7 +52,7 @@ library
     , base-compat   ^>=0.10.5 || ^>=0.11.0 || ^>=0.12.0
     , base-orphans  ^>=0.8
     , containers    ^>=0.5.0.0 || ^>=0.6.0.1
-    , vector        ^>=0.12
+    , vector        ^>=0.12 || ^>=0.13
 
   other-extensions:
     RankNTypes
