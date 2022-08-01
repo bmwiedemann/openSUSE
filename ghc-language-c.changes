@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr  6 09:31:53 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update language-c to version 0.9.1.
+  ## 0.9.1
+
+    - Support parsing an empty list of clobbers after a colon in `asm` statements
+
+-------------------------------------------------------------------
+Wed Mar 16 08:39:25 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update language-c to version 0.9.0.2.
+  ## 0.9.0.2
+
+  	- Correct lower bound on GHC
+
+-------------------------------------------------------------------
 Sat Feb  5 00:26:26 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update language-c to version 0.9.0.1 revision 1.
