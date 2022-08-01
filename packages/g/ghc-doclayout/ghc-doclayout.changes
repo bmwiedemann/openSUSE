@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Apr  2 22:30:30 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update doclayout to version 0.4.
+  ## 0.4
+
+    * Expose `unfoldD` [API change].
+    * Remove `realLengthNoShortcut`, `isEmojiModifier`, and
+      `isEmojiJoiner` [API change] (Stephen Morgan).
+    * Add new exported functions `realLengthNarrowContext`,
+      `realLengthWideContext`, `realLengthNarrowContextNoShortcut`,
+      `realLengthWideContextNoShortcut`, `isSkinToneModifier`, `isZWJ`
+      [API change] (Stephen Morgan).
+    * Compute `realLength` strictly.
+    * Make `getOffset` stricter.
+    * Drop support for ghc <= 8.4, add test for ghc 9.2.
+    * Don't collapse the CarriageReturn + Newline combination (#20).
+      We want to ensure that a literal starting with a Newline
+      doesn't lose the newline if it occurs after a CarriageReturn.
+      This affects code blocks in pandoc that begin with newlines.
+    * Improve performance of NoShortcut code (Stephen Morgan).
+    * Simplify emoji processing (Stephen Morgan).
+    * Add benchmarking for code with no shortcuts (Stephen Morgan).
+    * Add unicodeWidth.inc to cabal file.
+    * Fix `offset`, `minOffset`, `updateColumn` so they don't re-render.
+    * Get unicode block widths directly from the Unicode specification, rather
+      than writing it out ourselves (Stephen Morgan).
+    * Resolve the width of ambiguous characters based on their context
+      (Stephen Morgan).
+    * Spacing marks should have nonzero width, even though they are combining
+      characters (Stephen Morgan).
+    * Add shortcuts for extended Latin, Arabic, Cyrillic, Greek,
+      Devangari, Bengali, Korean, Telugu, and Tamil (Stephen Morgan).
+    * Fix location of extra-source-files in cabal.
+    * update.hs: require text package
+    * Handle emoji variation modifiers specially, so the keypad emoji can be
+      ignored (Stephen Morgan).  This results in a 16% speedup of realLength
+      on ascii text.
+    * Add benchmarks for all scripts used by more than 50 million people, plus
+      a couple more. (#9, Stephen Morgan).
+
+-------------------------------------------------------------------
 Tue Oct 12 10:51:12 UTC 2021 - psimons@suse.com
 
 - Update doclayout to version 0.3.1.1.
