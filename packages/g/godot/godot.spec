@@ -1,7 +1,7 @@
 #
 # spec file for package godot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017 Luke Jones, luke.nukem.jones@gmail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -90,15 +90,15 @@ BuildRequires:  mbedtls-devel
 Requires:       ca-certificates
 Recommends:     ca-certificates-mozilla
 Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
+Requires(postun):update-desktop-files
 Recommends:     %{name}-bash-completion
 Suggests:       %{name}-headless = %{version}
 Suggests:       %{name}-runner = %{version}
 Suggests:       %{name}-server = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-# The following "Provides: bundled()" and comments were taken from the 
-# Fedora Godot specfile. 
+# The following "Provides: bundled()" and comments were taken from the
+# Fedora Godot specfile.
 # Link: https://src.fedoraproject.org/rpms/godot/blob/master/f/godot.spec
 
 # Has some modifications for IPv6 support, upstream enet is unresponsive
@@ -180,7 +180,7 @@ Recommends:     ca-certificates-mozilla
 Suggests:       %{name}-bash-completion
 
 %description headless
-This package is the headless version of the Godot editor that is suited for 
+This package is the headless version of the Godot editor that is suited for
 exporting Godot games on the command line.
 
 %package runner
@@ -332,7 +332,12 @@ scons %{build_args} platform=server tools=no target=release
 
 %install
 # Installing the editor
-install -D -p -m 755 bin/%{name}.x11.opt.tools.%{__isa_bits} %{buildroot}%{_bindir}/%{name}
+%ifarch riscv64
+suffix=rv64
+%else
+suffix=%{__isa_bits}
+%endif
+install -D -p -m 755 bin/%{name}.x11.opt.tools.$suffix %{buildroot}%{_bindir}/%{name}
 
 install -D -p -m 644 misc/dist/linux/godot.6 %{buildroot}/%{_mandir}/man6/%{name}.6%{?ext_man}
 install -D -p -m 644 icon.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
@@ -342,13 +347,13 @@ install -D -p -m 644 misc/dist/linux/org.godotengine.Godot.appdata.xml  %{buildr
 
 %if !0%{?faster_build}
 # Installing the headless editor
-install -D -p -m 755 bin/%{name}_server.x11.opt.tools.%{__isa_bits} %{buildroot}%{_bindir}/%{name}-headless
+install -D -p -m 755 bin/%{name}_server.x11.opt.tools.$suffix %{buildroot}%{_bindir}/%{name}-headless
 
 # Installing the runner
-install -D -p -m 755 bin/%{name}.x11.opt.%{__isa_bits} %{buildroot}%{_bindir}/%{name}-runner
+install -D -p -m 755 bin/%{name}.x11.opt.$suffix %{buildroot}%{_bindir}/%{name}-runner
 
 # Installing the server
-install -D -p -m 755 bin/%{name}_server.x11.opt.%{__isa_bits} %{buildroot}%{_bindir}/%{name}-server
+install -D -p -m 755 bin/%{name}_server.x11.opt.$suffix %{buildroot}%{_bindir}/%{name}-server
 %endif
 
 # Installing bash-completion
