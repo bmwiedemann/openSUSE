@@ -36,4 +36,21 @@
   * Make it possible to tune shadow colors via the effects tab</comment>
     <requestid>985587</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7333f0606cc9469b766d1cf4d8de8a82</srcmd5>
+    <version>3.5.0</version>
+    <time>1659382378</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 3.5.0:
+  * Fix GitHub Issue #112: Optimizer: Take current node locations
+    into account when building initial layout
+    + This change makes the optimizer way more stable with respect
+      to the original global placement
+    + Tries to find the best possible initial locations for the
+      nodes in a normalized coordinate space
+    + Makes only local changes within a very small search radius
+      (row-wise and cell-wise)
+  * Update German and Dutch translations</comment>
+    <requestid>991944</requestid>
+  </revision>
 </revisionlist>
