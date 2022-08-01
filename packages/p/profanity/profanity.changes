@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  1 13:25:13 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Fix building with icons:
+  --enable-icons switch was renamed to --enable-icons-and-clipboard
+
+-------------------------------------------------------------------
 Mon Apr  4 16:21:51 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to to 0.12.1:

@@ -494,4 +494,13 @@
   * Fix race condition on resize (#1671)</comment>
     <requestid>966863</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>4a20c4a6dc42e5af8e5e0ec149284343</srcmd5>
+    <version>0.12.1</version>
+    <time>1659382404</time>
+    <user>RBrownFactory</user>
+    <comment>- Fix building with icons:
+  --enable-icons switch was renamed to --enable-icons-and-clipboard</comment>
+    <requestid>992036</requestid>
+  </revision>
 </revisionlist>

@@ -52,7 +52,7 @@ Summary:        Console-based XMPP client
 Group:          Productivity/Networking/Instant Messenger
 Requires:       profanity = %{version}
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 Provides:       profanity-binary = %{version}-%{release}
 
 %description mini
@@ -67,7 +67,7 @@ Summary:        Console-based XMPP client
 Group:          Productivity/Networking/Instant Messenger
 Requires:       profanity = %{version}
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 Provides:       profanity-binary = %{version}-%{release}
 
 %description standard
@@ -93,7 +93,7 @@ sed -i -e "s/python-config/python3-config/g" configure
 	--enable-python-plugins \
 	--enable-c-plugins \
 	--enable-plugins \
-	--enable-icons
+	--enable-icons-and-clipboard
 
 export CFLAGS="%{optflags} -fcommon"
 %make_build
@@ -115,7 +115,7 @@ make clean
 	--enable-python-plugins \
 	--enable-c-plugins \
 	--enable-plugins \
-	--disable-icons
+    --disable-icons-and-clipboard
 
 export CFLAGS="%{optflags} -fcommon"
 make %{?_smp_mflags}
@@ -153,6 +153,7 @@ ln -s -f %{_sysconfdir}/alternatives/profanity %{buildroot}%{_bindir}/profanity
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+
 %post mini
 %{_sbindir}/update-alternatives --install \
     %{_bindir}/profanity profanity %{_bindir}/profanity-mini 10
