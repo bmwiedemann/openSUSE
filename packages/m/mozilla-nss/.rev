@@ -2673,4 +2673,34 @@
   * bmo#1769302 - NSS 3.79 should depend on NSPR 4.34</comment>
     <requestid>985447</requestid>
   </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>946442509eb5b9c7d5ad9995ba895f4c</srcmd5>
+    <version>3.80</version>
+    <time>1659382091</time>
+    <user>RBrownFactory</user>
+    <comment>- update to NSS 3.80
+  * bmo#1774720 - Fix SEC_ERROR_ALGORITHM_MISMATCH entry in SECerrs.h.
+  * bmo#1617956 - Add support for asynchronous client auth hooks.
+  * bmo#1497537 - nss-policy-check: make unknown keyword check optional.
+  * bmo#1765383 - GatherBuffer: Reduced plaintext buffer allocations
+                  by allocating it on initialization. Replaced
+                  redundant code with assert. Debug builds: Added
+                  buffer freeing/allocation for each record.
+  * bmo#1773022 - Mark 3.79 as an ESR release.
+  * bmo#1764206 - Bump nssckbi version number for June.
+  * bmo#1759815 - Remove Hellenic Academic 2011 Root.
+  * bmo#1770267 - Add E-Tugra Roots.
+  * bmo#1768970 - Add Certainly Roots.
+  * bmo#1764392 - Add DigitCert Roots.
+  * bmo#1759794 - Protect SFTKSlot needLogin with slotLock.
+  * bmo#1366464 - Compare signature and signatureAlgorithm fields in
+                  legacy certificate verifier.
+  * bmo#1771497 - Uninitialized value in cert_VerifyCertChainOld.
+  * bmo#1771495 - Unchecked return code in sec_DecodeSigAlg.
+  * bmo#1771498 - Uninitialized value in cert_ComputeCertType.
+  * bmo#1760998 - Avoid data race on primary password change.
+  * bmo#1769063 - Replace ppc64 dcbzl intrinisic.
+  * bmo#1771036 - Allow LDFLAGS override in makefile builds.</comment>
+    <requestid>991359</requestid>
+  </revision>
 </revisionlist>
