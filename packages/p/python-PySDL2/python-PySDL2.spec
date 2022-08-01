@@ -19,18 +19,23 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         X_display         ":98"
 Name:           python-PySDL2
-Version:        0.9.11
+Version:        0.9.13
 Release:        0
 Summary:        Python ctypes wrapper around SDL2
 License:        SUSE-Public-Domain
 URL:            https://github.com/py-sdl/py-sdl2
 Source:         https://files.pythonhosted.org/packages/source/P/PySDL2/PySDL2-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM mixer_tests_fix.patch gh#py-sdl/py-sdl2#241 mcepl@suse.com
+# allow dynamic configuration of libmpg123
+Patch0:         mixer_tests_fix.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  SDL2 >= 2.0.5
-BuildRequires:  SDL2_gfx >= 1.0.3
-BuildRequires:  SDL2_image >= 2.0.1
-BuildRequires:  SDL2_mixer >= 2.0.1
-BuildRequires:  SDL2_ttf >= 2.0.14
+BuildRequires:  %{python_module wheel}
+BuildRequires:  SDL2 >= 2.0.22
+BuildRequires:  SDL2_gfx >= 1.0.4
+BuildRequires:  SDL2_image >= 2.6.0
+BuildRequires:  SDL2_mixer >= 2.6.0
+BuildRequires:  SDL2_ttf >= 2.20.0
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -39,11 +44,11 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  xorg-x11-server
 # /SECTION
-Requires:       SDL2 >= 2.0.5
-Requires:       SDL2_gfx >= 1.0.3
-Requires:       SDL2_image >= 2.0.1
-Requires:       SDL2_mixer >= 2.0.1
-Requires:       SDL2_ttf >= 2.0.14
+Requires:       SDL2 >= 2.0.22
+Requires:       SDL2_gfx >= 1.0.4
+Requires:       SDL2_image >= 2.6.0
+Requires:       SDL2_mixer >= 2.6.0
+Requires:       SDL2_ttf >= 2.20.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,13 +60,14 @@ Python classes and wrappers for common SDL2 functionality.
 
 %prep
 %autosetup -p1 -n PySDL2-%{version}
+
 sed -i 's/\r$//' AUTHORS.txt COPYING.txt README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -98,7 +104,7 @@ python2_donttest=" or test_SDL_GetBasePath or test_render_on"
 
 %files %{python_files}
 %license COPYING.txt
-%doc AUTHORS.txt README.md
+%doc AUTHORS.txt README.md doc/
 %{python_sitelib}/sdl2
 %{python_sitelib}/PySDL2-%{version}*-info
 

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jul 29 12:38:06 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.9.13:
+  - Updated to wrap new functions and constants in SDL_ttf
+    2.20.0.
+  - Updated to wrap new functions and constants in SDL_mixer
+    2.6.0.
+  - Updated to wrap new functions and constants in SDL_image
+    2.6.0.
+  - Added experimental bindings for the new functions and
+    constants in the SDL 2.23.1 pre-release.
+  - Added a new function :func:sdl2.ext.load_svg that allows
+    loading simple SVG images at arbitrary resolutions with
+    SDL_image 2.6.0 or later.
+  - Added bindings for new functions and constants introduced in
+    SDL2 2.0.22
+  - Added a stable API for accessing the raw ctypes function
+    objects for SDL2 functions
+  - Various bugfixes (see the project's news.rst for more info)
+- Add mixer_tests_fix.patch to switch off failing tests
+  (gh#py-sdl/py-sdl2#241).
+
+-------------------------------------------------------------------
 Sun Mar 20 09:55:17 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.9.11

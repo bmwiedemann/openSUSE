@@ -56,4 +56,31 @@
     <comment></comment>
     <requestid>963464</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4ee552230c5cb212bda37b7ea6989c5f</srcmd5>
+    <version>0.9.13</version>
+    <time>1659382323</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.9.13:
+  - Updated to wrap new functions and constants in SDL_ttf
+    2.20.0.
+  - Updated to wrap new functions and constants in SDL_mixer
+    2.6.0.
+  - Updated to wrap new functions and constants in SDL_image
+    2.6.0.
+  - Added experimental bindings for the new functions and
+    constants in the SDL 2.23.1 pre-release.
+  - Added a new function :func:sdl2.ext.load_svg that allows
+    loading simple SVG images at arbitrary resolutions with
+    SDL_image 2.6.0 or later.
+  - Added bindings for new functions and constants introduced in
+    SDL2 2.0.22
+  - Added a stable API for accessing the raw ctypes function
+    objects for SDL2 functions
+  - Various bugfixes (see the project's news.rst for more info)
+- Add mixer_tests_fix.patch to switch off failing tests
+  (gh#py-sdl/py-sdl2#241).
+</comment>
+    <requestid>992068</requestid>
+  </revision>
 </revisionlist>
