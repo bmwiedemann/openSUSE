@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 17 13:03:16 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update some to version 1.0.4.
+  # 1.0.4
+
+  - Add instances for `(:~~:)`
+  - Add instances for `:+:` and `:*:`
+  - Add `defaultGeq :: GCompare f => f a -> f b -> Maybe (a :~: b)`
+  - Add `defaultGshowsPrec :: Show (t a) => Int -> t a -> ShowS`
+
+-------------------------------------------------------------------
 Sat Nov 20 17:29:50 UTC 2021 - psimons@suse.com
 
 - Update some to version 1.0.3 revision 2.
