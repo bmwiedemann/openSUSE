@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-text-conversions
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name text-conversions
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.1
+Version:        0.3.1.1
 Release:        0
 Summary:        Safe conversions between textual types
 License:        ISC
@@ -29,7 +29,6 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base16-bytestring-devel
 BuildRequires:  ghc-base64-bytestring-devel
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-errors-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 ExcludeArch:    %{ix86}
