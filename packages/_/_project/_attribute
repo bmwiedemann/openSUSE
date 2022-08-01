@@ -6,7 +6,7 @@
     <value>last_seen:
   boo#1094987: '20220729'
   boo#1172073: '20220614'
-  boo#1183454: '20220729'
+  boo#1183454: '20220731'
   boo#1190434: '20220729'
   boo#1190823: '20220409'
   boo#1196201: '20220525'
@@ -34,11 +34,11 @@
   boo#1199924: '20220601'
   boo#1199925: '20220601'
   boo#1200275: '20220729'
-  boo#1200403: '20220729'
+  boo#1200403: '20220731'
   boo#1200595: '20220614'
   boo#1200600: '20220614'
   boo#1200615: '20220627'
-  boo#1200616: '20220729'
+  boo#1200616: '20220731'
   boo#1200682: '20220628'
   boo#1200753: '20220726'
   boo#1200893: '20220718'
@@ -53,7 +53,7 @@
   boo#1201931: '20220726'
   bsc#1161276: '20220729'
   bsc#1191684: '20220729'
-  bsc#1198101: '20220729'
+  bsc#1198101: '20220731'
   bsc#1198235: '20220503'
   gh#os-autoinst/opensuse-jobgroups#180: '20220728'
   gh#os-autoinst/os-autoinst-distri-opensuse#15257: '20220719'
@@ -90,7 +90,7 @@
   poo#112700: '20220622'
   poo#112982: '20220623'
   poo#113051: '20220703'
-  poo#113075: '20220729'
+  poo#113075: '20220731'
   poo#113114: '20220628'
   poo#113360: '20220712'
   poo#113492: '20220729'
@@ -461,10 +461,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20220731'
 published: '20220729'
 publishing: '20220729'
-testing: '20220729'
+testing: '20220731'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
