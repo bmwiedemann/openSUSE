@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 16 03:07:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.62
+   see /usr/share/doc/packages/perl-JSON-Parse/Changes
+
+  0.62 2022-07-16
+
+  * Bug fix for tokenize with backslash-double quote
+
+-------------------------------------------------------------------
 Thu Feb 11 03:08:01 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.61
