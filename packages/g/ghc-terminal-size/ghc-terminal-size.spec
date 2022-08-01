@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-terminal-size
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name terminal-size
 Name:           ghc-%{pkg_name}
-Version:        0.3.2.1
+Version:        0.3.3
 Release:        0
 Summary:        Get terminal window height and width
 License:        BSD-3-Clause
