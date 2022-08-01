@@ -19,7 +19,7 @@
 %global pkg_name lua
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        Lua, an embeddable scripting language
 License:        MIT
@@ -37,7 +37,7 @@ BuildRequires:  ghc-tasty-hunit-devel
 This package provides bindings and types to bridge Haskell and
 <https://www.lua.org/ Lua>.
 
-The full Lua interpreter version 5.3.6 is included. Alternatively, a
+The full Lua interpreter version 5.4.4 is included. Alternatively, a
 system-wide Lua installation can be linked instead.
 
 %package devel
