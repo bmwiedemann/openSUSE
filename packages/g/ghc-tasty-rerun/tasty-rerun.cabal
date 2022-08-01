@@ -1,6 +1,6 @@
 name:                tasty-rerun
 version:             1.1.18
-x-revision: 2
+x-revision: 3
 homepage:            http://github.com/ocharles/tasty-rerun
 license:             BSD3
 license-file:        LICENSE
@@ -31,7 +31,7 @@ tested-with: GHC==8.10.2, GHC==8.8.4, GHC==8.6.5, GHC==8.4.4, GHC==8.2.2, GHC==8
 library
   exposed-modules:     Test.Tasty.Ingredients.Rerun
   build-depends:
-    base >=4.6 && <4.17,
+    base >=4.6 && <4.18,
     containers >= 0.5.0.0,
     mtl >= 2.1.2,
     optparse-applicative >= 0.6,
