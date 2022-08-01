@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package pandoc
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -19,7 +19,7 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.17.1.1
+Version:        2.18
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -57,9 +57,8 @@ BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-file-embed-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-haddock-library-devel
-BuildRequires:  ghc-hslua-aeson-devel
 BuildRequires:  ghc-hslua-devel
-BuildRequires:  ghc-hslua-marshalling-devel
+BuildRequires:  ghc-hslua-module-doclayout-devel
 BuildRequires:  ghc-hslua-module-path-devel
 BuildRequires:  ghc-hslua-module-system-devel
 BuildRequires:  ghc-hslua-module-text-devel
@@ -98,6 +97,7 @@ BuildRequires:  ghc-unicode-transforms-devel
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-xml-conduit-devel
 BuildRequires:  ghc-xml-devel
+BuildRequires:  ghc-xml-types-devel
 BuildRequires:  ghc-yaml-devel
 BuildRequires:  ghc-zip-archive-devel
 BuildRequires:  ghc-zlib-devel
@@ -144,7 +144,7 @@ Summary:        Haskell %{name} library development files
 Requires:       ghc-%{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
-Requires(postun):ghc-compiler = %{ghc_version}
+Requires(postun): ghc-compiler = %{ghc_version}
 
 %description -n ghc-%{name}-devel
 This package provides the Haskell %{name} library development files.
@@ -160,7 +160,6 @@ This package provides the Haskell %{name} library development files.
 %ghc_fix_rpath %{pkg_name}-%{version}
 # Link duplicate template files
 %fdupes %{buildroot}%{_datadir}/%{pkg_name}-%{version}/data/templates/
-install -D -m 644 man/%{name}.1 %buildroot/%_mandir/man1/%name.1
 
 %check
 %cabal_test
@@ -174,7 +173,6 @@ install -D -m 644 man/%{name}.1 %buildroot/%_mandir/man1/%name.1
 %files
 %license COPYING.md
 %doc AUTHORS.md README.md changelog.md
-%_mandir/man1/%name.1%{?ext_man}
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}-%{version}
 %dir %{_datadir}/%{name}-%{version}/citeproc
@@ -217,6 +215,7 @@ install -D -m 644 man/%{name}.1 %buildroot/%_mandir/man1/%name.1
 %{_datadir}/%{name}-%{version}/data/bash_completion.tpl
 %{_datadir}/%{name}-%{version}/data/creole.lua
 %{_datadir}/%{name}-%{version}/data/default.csl
+%{_datadir}/%{name}-%{version}/data/docbook-entities.txt
 %{_datadir}/%{name}-%{version}/data/docx/?Content_Types?.xml
 %{_datadir}/%{name}-%{version}/data/docx/_rels/.rels
 %{_datadir}/%{name}-%{version}/data/docx/docProps/app.xml
