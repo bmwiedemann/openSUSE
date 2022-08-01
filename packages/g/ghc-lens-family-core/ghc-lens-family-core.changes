@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 14 01:36:24 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update lens-family-core to version 2.1.2.
+  2.1.2 (Changes from 2.1.0)
+  ==========================
+  * Bump dependency on transformers.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
