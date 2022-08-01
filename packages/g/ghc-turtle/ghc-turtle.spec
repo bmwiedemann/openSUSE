@@ -19,7 +19,7 @@
 %global pkg_name turtle
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.5.24
+Version:        1.6.1
 Release:        0
 Summary:        Shell programming, Haskell-style
 License:        BSD-3-Clause
@@ -33,6 +33,7 @@ BuildRequires:  ghc-clock-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-exceptions-devel
+BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-foldl-devel
 BuildRequires:  ghc-hostname-devel
 BuildRequires:  ghc-managed-devel
@@ -42,8 +43,6 @@ BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-streaming-commons-devel
-BuildRequires:  ghc-system-fileio-devel
-BuildRequires:  ghc-system-filepath-devel
 BuildRequires:  ghc-temporary-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
@@ -53,6 +52,8 @@ BuildRequires:  ghc-unix-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-doctest-devel
+BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-hunit-devel
 %endif
 
 %description
@@ -75,7 +76,7 @@ Features include:
 
 * Formatting: Type-safe 'printf'-style text formatting
 
-* Modern: Supports 'text' and 'system-filepath'
+* Modern: Supports 'text'
 
 Read "Turtle.Tutorial" for a detailed tutorial or "Turtle.Prelude" for a
 quick-start guide
