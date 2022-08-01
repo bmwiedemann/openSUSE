@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 22 22:48:17 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update cborg-json to version 0.2.4.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/cborg-json-0.2.4.0/src/ChangeLog.md
+
+-------------------------------------------------------------------
 Mon Nov  1 08:31:11 UTC 2021 - psimons@suse.com
 
 - Update cborg-json to version 0.2.3.0.

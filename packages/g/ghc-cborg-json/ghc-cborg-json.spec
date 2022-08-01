@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-cborg-json
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name cborg-json
 Name:           ghc-%{pkg_name}
-Version:        0.2.3.0
+Version:        0.2.4.0
 Release:        0
 Summary:        A library for encoding JSON as CBOR
 License:        BSD-3-Clause
