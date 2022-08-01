@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Jul  3 10:17:11 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update invariant to version 0.6.
+  # 0.6 [2022.07.03]
+  * Loosen the `Monad` constraint in the `Invariant(2)` instances for
+    `Kleisli` to an `Invariant` constraint.
+  * Loosen the `Comonad` constraint in the `Invariant2` instance for `Cokleisli`
+    to an `Invariant` constraint.
+  * Add `Invariant` instances for `PastroSum`, `CopastroSum`, `Environment`,
+    `FreeMapping`, `Pastro`, and `FreeTraversing` from the `profunctors` library.
+  * Add `Invariant(2)` instances for `Copastro` and `Coyoneda` from the
+    `profunctors` library.
+
+-------------------------------------------------------------------
+Sat May  7 23:56:16 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update invariant to version 0.5.6.
+  # 0.5.6 [2022.05.07]
+  * Add `InvariantProfunctor` and `InvariantArrow` newtypes that admit
+    implementations of `invmap` that only require `Profunctor` or `Arrow`
+    constraints, respectively. Also add top-level `invmapProfunctor` and
+    `invmapArrow` functions.
+
+-------------------------------------------------------------------
 Mon Nov  1 12:27:07 UTC 2021 - psimons@suse.com
 
 - Update invariant to version 0.5.5.
