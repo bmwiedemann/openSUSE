@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hledger-lib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name hledger-lib
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.24.99
+Version:        1.26.1
 Release:        0
 Summary:        A reusable library providing the core functionality of hledger
 License:        GPL-3.0-or-later
@@ -67,9 +67,6 @@ BuildRequires:  ghc-uglymemo-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-utf8-string-devel
 ExcludeArch:    %{ix86}
-%if %{with tests}
-BuildRequires:  ghc-doctest-devel
-%endif
 
 %description
 A reusable library containing hledger's core functionality. This is used by
