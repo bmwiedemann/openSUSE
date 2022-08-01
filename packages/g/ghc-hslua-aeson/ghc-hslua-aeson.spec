@@ -19,7 +19,7 @@
 %global pkg_name hslua-aeson
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        Allow aeson data types to be used with Lua
 License:        MIT
