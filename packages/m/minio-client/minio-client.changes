@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 01 11:13:22 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220729T191716Z:
+  * change rm color on the terminal (#4171)
+  * rm: add fake message with --fake (#4170)
+  * Remove isURLPrefixExists() call (#4173)
+  * Use madmin-go version 1.4.9 (#4169)
+  * Validate license against deployment id (#4161)
+  * introduce net.Conn deadlines to avoid hung connections (#4164)
+  * New offline registration flow (#4156)
+  * Add admin bucket info command (#4109)
+  * Add `mc replicate diff` cmd to show unreplicated objects (#4127)
+  * support perf to execute all speed tests (#4158)
+  * remove sysinfo from --json mode without --debug (#4159)
+  * Add support for NewerNoncurrentVersions (#4153)
+  * info: Show pools summary of a erasure cluster (#4162)
+  * Add mc cat --tail and --offset (#4149)
+  * Add `license update` command (#4155)
+
+-------------------------------------------------------------------
 Tue Jul 19 08:21:04 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20220715T092055Z:
