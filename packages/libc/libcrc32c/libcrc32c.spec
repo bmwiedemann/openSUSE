@@ -1,7 +1,7 @@
 #
 # spec file for package libcrc32c
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%define packagename crc32c
+%define rname crc32c
 %define soname 1
 Name:           libcrc32c
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        CRC32C implementation with support for CPU-specific acceleration instructions
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/crc32c
-Source:         https://github.com/google/crc32c/archive/refs/tags/%{version}.tar.gz#/crc32c-%{version}.tar.gz
+Source:         %{url}/archive/%{version}/%{rname}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 
@@ -50,7 +50,7 @@ CRC32C is specified as the CRC that uses the iSCSI polynomial in RFC 3720.
 The polynomial was introduced by G. Castagnoli, S. Braeuer and M. Herrmann.
 
 %package  -n %{name}-devel
-Summary:        C++ header files and library symbolic links for %{packagename}
+Summary:        C++ header files and library symbolic links for %{rname}
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{soname} = %{version}
 
@@ -60,7 +60,7 @@ libraries for %{name}. If you would like to develop programs using %{name},
 you will need to install %{name}-devel.
 
 %prep
-%autosetup -n %{packagename}-%{version}
+%autosetup -n %{rname}-%{version}
 
 %build
 %cmake -DCRC32C_BUILD_TESTS=0 -DCRC32C_BUILD_BENCHMARKS=0 -DCRC32C_USE_GLOG=0
@@ -79,7 +79,7 @@ you will need to install %{name}-devel.
 
 %files -n %{name}-devel
 %doc AUTHORS CONTRIBUTING.md README.md
-%{_includedir}/%{packagename}
+%{_includedir}/%{rname}
 %{_libdir}/%{name}.so
 %{_libdir}/cmake/Crc32c
 
