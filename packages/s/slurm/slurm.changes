@@ -1,10 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug  2 12:43:39 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Fix a potential security vulnerability in the test package
+  (bsc#1201674, CVE-2022-31251).
+
+-------------------------------------------------------------------
+Thu Jul 21 19:20:42 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- make slurmtest.tar reproducible
+
+-------------------------------------------------------------------
 Thu Jul 14 15:20:46 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Improve check for mpicc in testsuite package: if binary isn't
   found, don't crash.
-- Fix a typo which prevented the nproc limit for slurmd to be
-  up-ed for the test suite.
+- Patch NOFILE Limit in the slurmd.service copy for the testsuite.
 
 -------------------------------------------------------------------
 Mon Jun 20 09:23:17 UTC 2022 - Christian Goll <cgoll@suse.com>

@@ -919,4 +919,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>990643</requestid>
   </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>3a0a590ca2e0e31d6dd7139ac9802bec</srcmd5>
+    <version>22.05.2</version>
+    <time>1659470994</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a potential security vulnerability in the test package
+  (bsc#1201674, CVE-2022-31251).
+
+- Patch NOFILE Limit in the slurmd.service copy for the testsuite. (forwarded request 992353 from eeich)</comment>
+    <requestid>992362</requestid>
+  </revision>
 </revisionlist>

@@ -873,11 +873,18 @@ EOF
 mkdir -p %{buildroot}/srv/slurm-testsuite/shared
 mkdir -p %{buildroot}%_localstatedir/lib/slurm/shared
 cd %{buildroot}/srv/slurm-testsuite
-tar --group=%slurm_g --owner=%slurm_u -cjf /tmp/slurmtest.tar.bz2 *
+find -type f -name "*.[ao]" -print | while read f; do
+  # drop non-deterministic lto bits from .o files
+  strip -p --discard-locals -R .gnu.lto_* -R .gnu.debuglto_* -N __gnu_lto_v1 $f
+done
+tar --group=%slurm_g --owner=%slurm_u \
+  --sort=name --mtime="@${SOURCE_DATE_EPOCH:-`date +%%s`}" --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
+  -cjf /tmp/slurmtest.tar.bz2 *
 cd -
 rm -rf %{buildroot}/srv/slurm-testsuite
 mkdir -p %{buildroot}/srv/slurm-testsuite
-mv /tmp/slurmtest.tar.bz2 %{buildroot}/srv/slurm-testsuite
+mkdir -p %{buildroot}/%{_datadir}/%{name}
+mv /tmp/slurmtest.tar.bz2 %{buildroot}/%{_datadir}/%{name}
 
 mkdir -p %{buildroot}/etc/sudoers.d
 echo "slurm ALL=(auser) NOPASSWD:ALL" > %{buildroot}/etc/sudoers.d/slurm
@@ -889,7 +896,12 @@ cp %{buildroot}/%_unitdir/slurmd.service  $SLURMD_SERVICE
 if grep -qE "^LimitNPROC" $SLURMD_SERVICE; then
     sed -i -e '/LimitNPROC/s@=.*@=infinity@' $SLURMD_SERVICE
 else
-    sed -i -e '/LimitNPROC/aLimitNPROC=infinity' $SLURMD_SERVICE
+    sed -i -e '/LimitSTACK/aLimitNPROC=infinity' $SLURMD_SERVICE
+fi
+if grep -qE "^LimitNOFILE" $SLURMD_SERVICE; then
+    sed -i -e '/LimitNOFILE/s@=.*@=131072:infinity@' $SLURMD_SERVICE
+else
+    sed -i -e '/LimitSTACK/aLimitNOFILE=131072:infinity' $SLURMD_SERVICE
 fi
 sed -i -e '/ExecStart/aExecStartPre=/bin/bash -c "for i in 0 1 2 3; do test -e /dev/nvidia$i || mknod /dev/nvidia$i c 10 $((i+2)); done"' $SLURMD_SERVICE
 
@@ -1031,7 +1043,7 @@ exit 0
 
 %post testsuite
 rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite /srv/slurm-testsuite/config.h
-tar --same-owner -C /srv/slurm-testsuite -xjf /srv/slurm-testsuite/slurmtest.tar.bz2
+sudo -u %slurm_u /usr/bin/tar --same-owner -C /srv/slurm-testsuite -xjf %{_datadir}/%{name}/slurmtest.tar.bz2
 
 %preun testsuite
 rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite /srv/slurm-testsuite/config.h
@@ -1467,6 +1479,7 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite /srv/slurm-testsu
 %files testsuite
 %defattr(-, %slurm_u, %slurm_u, -)
 %dir %attr(-, %slurm_u, %slurm_u) /srv/slurm-testsuite
+%attr(-, root, root) %{_datadir}/%{name}
 %if 0%{?sle_version} == 120200
 %dir %{_pam_secconfdir}/limits.d
 %endif
