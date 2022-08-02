@@ -319,7 +319,7 @@ Summary:        PipeWire PulseAudio implementation
 Group:          Development/Libraries/C and C++
 Requires:       %{libpipewire} >= %{version}-%{release}
 Requires:       %{name} >= %{version}-%{release}
-Recommends:     alsa-plugins-pulse
+Recommends:     pipewire-alsa
 Conflicts:      pulseaudio
 Conflicts:      pulseaudio-daemon
 # Virtual Provides to support swapping between PipeWire-PA and PA

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  1 12:07:38 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Recommend pipewire-alsa (instead of alsa-plugins-pulse) from
+  pipewire-pulseaudio (boo#1201409)
+
+-------------------------------------------------------------------
 Tue Jul 19 14:00:39 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.3.56:
