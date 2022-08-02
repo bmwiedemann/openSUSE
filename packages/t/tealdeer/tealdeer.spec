@@ -35,6 +35,8 @@ BuildRequires:  rust
 BuildRequires:  rust-std
 BuildRequires:  zlib-devel
 
+ExclusiveArch:  %{rust_tier1_arches}
+
 %description
 An implementation of tldr in Rust. It has example based and community-driven man pages.
 
