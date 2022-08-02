@@ -18,13 +18,13 @@
 
 
 Name:           mupdf
-Version:        1.19.1
+Version:        1.20.0
 Release:        0
 Summary:        PDF and XPS Viewer and Parser and Rendering Library
 License:        AGPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://mupdf.com/
-Source0:        https://mupdf.com/downloads/archive/%{name}-%{version}-source.tar.xz
+Source0:        https://mupdf.com/downloads/archive/%{name}-%{version}-source.tar.zst
 Source1:        %{name}.desktop
 Source2:        %{name}-gl.desktop
 Patch0:         mupdf-no-strip.patch
@@ -41,6 +41,7 @@ BuildRequires:  openjpeg2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(openssl)
