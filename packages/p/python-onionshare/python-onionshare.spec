@@ -58,6 +58,7 @@ BuildRequires:  update-desktop-files
 Requires:       python3-Flask >= 1.4.1
 Requires:       python3-Flask-SocketIO >= 5.0.1
 Requires:       python3-PyNaCl
+Requires:       python3-PySocks
 Requires:       python3-Unidecode
 Requires:       python3-cepa >= 1.8.3
 Requires:       python3-colorama
@@ -70,6 +71,7 @@ Requires:       python3-urllib3
 Requires:       tor
 Provides:       %{name}-%{version}
 Obsoletes:      %{name}-data < %{version}
+Obsoletes:      python310-onionshare < %{version}
 Obsoletes:      python36-onionshare < %{version}
 Obsoletes:      python38-onionshare < %{version}
 Obsoletes:      python39-onionshare < %{version}

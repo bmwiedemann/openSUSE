@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 26 10:12:57 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- dependency on python3-PySocks added
+
+-------------------------------------------------------------------
 Mon May 23 10:27:18 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - desktop tests disabled. Started failing without code change....
