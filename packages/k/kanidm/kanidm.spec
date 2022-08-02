@@ -19,7 +19,7 @@
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
 
 Name:           kanidm
-Version:        1.1.0~alpha8~git0.b6be0524
+Version:        1.1.0~alpha9~git2.ebab6c5f
 Release:        0
 Summary:        A identity management service and clients.
 License:        ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR ISC OR MIT ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( CC0-1.0 OR Apache-2.0 ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND MPL-2.0 AND MPL-2.0+
@@ -173,21 +173,9 @@ install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/kanidm_ssh_authorizedkeys.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_ssh_authorizedkeys.sh
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/kanidm_unixd_status.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_unixd_status.sh
 
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/SUMMARY.md %{buildroot}%{_datadir}/kanidm/docs/SUMMARY.md
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/accounts_and_groups.md %{buildroot}%{_datadir}/kanidm/docs/accounts_and_groups.md
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/administrivia.md %{buildroot}%{_datadir}/kanidm/docs/administrivia.md
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/client_tools.md %{buildroot}%{_datadir}/kanidm/docs/client_tools.md
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/installing_the_server.md %{buildroot}%{_datadir}/kanidm/docs/installing_the_server.md
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/intro.md %{buildroot}%{_datadir}/kanidm/docs/intro.md
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/ldap.md %{buildroot}%{_datadir}/kanidm/docs/ldap.md
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/pam_and_nsswitch.md %{buildroot}%{_datadir}/kanidm/docs/pam_and_nsswitch.md
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/password_quality.md %{buildroot}%{_datadir}/kanidm/docs/password_quality.md
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/posix_accounts.md %{buildroot}%{_datadir}/kanidm/docs/posix_accounts.md
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/radius.md %{buildroot}%{_datadir}/kanidm/docs/radius.md
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/recycle_bin.md %{buildroot}%{_datadir}/kanidm/docs/recycle_bin.md
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/security_hardening.md %{buildroot}%{_datadir}/kanidm/docs/security_hardening.md
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/ssh_key_dist.md %{buildroot}%{_datadir}/kanidm/docs/ssh_key_dist.md
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/why_tls.md %{buildroot}%{_datadir}/kanidm/docs/why_tls.md
+rm %{_builddir}/%{name}-%{version}/kanidm_book/src/DEVELOPER_README.md
+cp %{_builddir}/%{name}-%{version}/DEVELOPER_README.md %{_builddir}/%{name}-%{version}/kanidm_book/src/DEVELOPER_README.md
+cp -r %{_builddir}/%{name}-%{version}/kanidm_book/src/ %{buildroot}%{_datadir}/kanidm/docs/
 
 ## TODO: Add /usr/share/kanidm/ui/pkg
 install -m 0644 %{_builddir}/%{name}-%{version}/kanidmd_web_ui/pkg/style.css %{buildroot}%{_datadir}/kanidm/ui/pkg/style.css
