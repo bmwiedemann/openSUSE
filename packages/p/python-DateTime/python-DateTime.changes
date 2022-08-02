@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  2 12:25:41 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 4.5:
+  * Add __format__ method for DateTime objects (#35)
+- Changes from 4.4:
+  * Fix WAT definition #31.
+  * Add support for Python 3.8, 3.9, and 3.10.
+  * Drop support for Python 3.4.
+
+-------------------------------------------------------------------
 Wed May 19 09:31:11 UTC 2021 - pgajdos@suse.com
 
 - use %pytest macro in %check
