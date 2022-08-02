@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Tue Aug  2 13:48:56 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to v13.15.1:
+  * change license_formats pt_BR to match Mercosul.
+- Changes from v13.15.0:
+  * Upgrade person, company, internet, currency providers for tr_TR.
+- Changes from v13.14.0:
+  * Fix vat and police id for el_GR.
+  * Add tin and ssn for el_GR.
+- Changes from v13.13.1:
+  * Fix area codes for fr_FR phone numbers.
+- Changes from v13.13.0:
+  * Add support for ISO 8601 timestamp profiles.
+- Changes from v13.12.1:
+  * Correct RUT range in es_CL.
+- Changes from v13.12.0:
+  * Add support for generating relative file paths.
+- Changes from v13.11.1:
+  * Fix firefox ua being nondeterministic with fixed seed.
+- Changes from v13.11.0:
+  * Add sq-AL automotive provider.
+- Changes from v13.10.0:
+  * Improve it_IT ssn provider to match real building rules.
+- Changes from v13.9.0:
+  * Add part-of-speech functionality for en_US.
+- Changes from v13.8.0:
+  * Add fr-FR datetime provider.
+  * Add no-NO datetime provider.
+  * Add zh-CN datetime provider.
+- Changes from v13.7.0:
+  * Add automotive provider for fi_FI, et_EE, lt_LT and vi_VN.
+- Changes from v13.6.0:
+  * Add ar_BH automotive provider.
+- Changes from v13.5.0:
+  * Add Mexican CLABE bank code for es_MX locale.
+- Changes from v13.4.0:
+  * Add it_IT automotive provider.
+- Changes from v13.3.5:
+  * Fix error in currency provider data.
+- Changes from v13.3.4:
+  * Bump actions/cache from 2 to 3 (#1631).
+- Changes from v13.3.3:
+  * Fix factory selection when Faker has been seeded.
+- Changes from v13.3.2:
+  * Bump actions/stale from 3 to 5 (#1629).
+- Changes from v13.3.1:
+  * Bump actions/setup-python from 2 to 3 (#1626).
+- Changes from v13.3.0:
+  * Add lorem provider for fa-ir language code.
+- Changes from v13.2.0:
+  * Add bn_BD Lorem Provider.
+- Changes from v13.1.0:
+  * Add lorem support for de_DE and de_AT.
+- Changes from v13.0.0:
+  * Use os.urandom in binary() if unseeded.
+- Changes from v12.3.3:
+  * Arabic improvements for names.
+- Changes from v12.3.2:
+  * Fix postcode format for es_ES locale.
+- Changes from v12.3.1:
+  * Prevent "non-integer arguments to randrange()" warnings on Python 3.10.
+- Changes from v12.3.0:
+  * Fix it_IT ssn() validity.
+- Changes from v12.2.0:
+  * Add cities to de_CH.
+- Changes from v12.1.0:
+  * Set correct language on provider when specific locale is requested.
+- Changes from v12.0.1:
+  * Remove empty string in Korean job list.
+- Changes from v12.0.0:
+  * Remove dependency from text-unidecode.
+- Changes from v11.4.0:
+  * Add geonames db of Italian cap-city-province and full match when generating full addresses.
+- Changes from v11.3.0:
+  * Add banks for fa-ir.
+- Changes from v11.2.0:
+  * Improve phone numbers for it_IT.
+- Changes from v11.1.0:
+  * Add providers for az_AZ locale.
+- Changes from v11.0.0:
+  * Replace lorempixel.com service with picsum.photos in image_url provider.
+  * Add placeholder_url argument to image_url.
+
+-------------------------------------------------------------------
 Mon Dec 27 17:51:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add missing typing-extensions requirement
