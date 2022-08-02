@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyterlab
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,8 @@
 #
 
 
-%define _buildshell /bin/bash
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-jupyterlab
-Version:        3.2.3
+Version:        3.4.4
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
@@ -30,12 +27,13 @@ URL:            https://github.com/jupyterlab/jupyterlab
 Source0:        https://files.pythonhosted.org/packages/py3/j/jupyterlab/jupyterlab-%{version}-py3-none-any.whl
 Source99:       python-jupyterlab-rpmlintrc
 BuildRequires:  %{python_module Jinja2 >= 2.1}
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module jupyter_core}
-BuildRequires:  %{python_module jupyter_server >= 1.4}
-BuildRequires:  %{python_module jupyterlab-server >= 2.3}
-BuildRequires:  %{python_module nbclassic >= 0.2}
+BuildRequires:  %{python_module jupyter_server >= 1.16}
+BuildRequires:  %{python_module jupyterlab-server >= 2.10}
+BuildRequires:  %{python_module nbclassic}
+BuildRequires:  %{python_module notebook < 7}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module tornado >= 6.1}
@@ -46,9 +44,10 @@ Requires:       jupyter-jupyterlab = %{version}
 Requires:       python-Jinja2 >= 2.1
 Requires:       python-ipython
 Requires:       python-jupyter_core
-Requires:       python-jupyter_server >= 1.4
-Requires:       python-jupyterlab-server >= 2.3
-Requires:       python-nbclassic >= 0.2
+Requires:       python-jupyter_server >= 1.16
+Requires:       python-jupyterlab-server >= 2.10
+Requires:       python-nbclassic
+Requires:       python-notebook < 7
 Requires:       python-packaging
 Requires:       python-tornado >= 6.1
 Provides:       python-jupyter_jupyterlab = %{version}
@@ -56,10 +55,9 @@ Obsoletes:      python-jupyter_jupyterlab < %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 6.0}
-BuildRequires:  %{python_module jupyterlab-server-test >= 2.2}
+BuildRequires:  %{python_module jupyterlab-server-test}
 BuildRequires:  %{python_module pytest-check-links}
 BuildRequires:  %{python_module pytest-console-scripts}
-BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module virtualenv}
 # /SECTION
@@ -100,14 +98,14 @@ etc.).
 # not needed
 
 %install
-%{python_expand mkdir build; cp -a %{SOURCE0} build/}
-%pyproject_install
-%jupyter_move_config
-%python_expand sed -i -e 's|^#!%{_bindir}/env node|#!%{_bindir}/node|' %{buildroot}%{$python_sitelib}/jupyterlab/node-version-check.js
-%python_expand sed -i -e 's|^#!%{_bindir}/env node|#!%{_bindir}/node|' %{buildroot}%{$python_sitelib}/jupyterlab/staging/yarn.js
-%python_expand chmod a+x %{buildroot}%{$python_sitelib}/jupyterlab/node-version-check.js
-%python_expand chmod a+x %{buildroot}%{$python_sitelib}/jupyterlab/staging/yarn.js
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%pyproject_install %{SOURCE0}
+%{python_expand #
+for f in %{buildroot}%{$python_sitelib}/jupyterlab/{node-version-check.js,staging/yarn.js}; do
+  sed -i -e 's|^#!%{_bindir}/env node|#!%{_bindir}/node|' $f
+  chmod a+x $f
+done
+%fdupes %{buildroot}%{$python_sitelib}
+}
 %fdupes %{buildroot}%{_jupyter_prefix}
 cp %{buildroot}%{python3_sitelib}/jupyterlab-%{version}.dist-info/LICENSE .
 
@@ -116,22 +114,22 @@ cp %{buildroot}%{python3_sitelib}/jupyterlab-%{version}.dist-info/LICENSE .
 # suite would use jlpm which needs online connection through npm:
 # https://jupyterlab.readthedocs.io/en/stable/developer/contributing.html#build-and-run-the-tests
 # Disable build checks that pull in remote resources with npm
-donttest+=" or (TestExtension and test_app_dir)"
-donttest+=" or (TestExtension and test_build)"
-donttest+=" or (TestExtension and test_disable_extension)"
-donttest+=" or (TestExtension and test_enable_extension)"
-donttest+=" or (TestExtension and test_list_extension)"
-donttest+=" or (TestExtension and test_link)"
-donttest+=" or (TestExtension and test_unlink)"
-donttest+=" or (TestExtension and test_install)"
-donttest+=" or (TestExtension and test_uninstall)"
-donttest+=" or (TestExtension and test_update)"
-donttest+=" or (TestAppHandlerRegistry and test_get_registry)"
-donttest+=" or (TestAppHandlerRegistry and test_populate_staging)"
-donttest+=" or (TestAppHandlerRegistry and test_yarn_config)"
+donttest="$donttest or (TestExtension and test_app_dir)"
+donttest="$donttest or (TestExtension and test_build)"
+donttest="$donttest or (TestExtension and test_disable_extension)"
+donttest="$donttest or (TestExtension and test_enable_extension)"
+donttest="$donttest or (TestExtension and test_list_extension)"
+donttest="$donttest or (TestExtension and test_link)"
+donttest="$donttest or (TestExtension and test_unlink)"
+donttest="$donttest or (TestExtension and test_install)"
+donttest="$donttest or (TestExtension and test_uninstall)"
+donttest="$donttest or (TestExtension and test_update)"
+donttest="$donttest or (TestAppHandlerRegistry and test_get_registry)"
+donttest="$donttest or (TestAppHandlerRegistry and test_populate_staging)"
+donttest="$donttest or (TestAppHandlerRegistry and test_yarn_config)"
 # don't have the fixtures
-donttest+=" or (TestBuildAPI and (test_get_status or test_build))"
-donttest+=" or test_load_extension"
+donttest="$donttest or (TestBuildAPI and (test_get_status or test_build))"
+donttest="$donttest or test_load_extension"
 
 %pytest --pyargs jupyterlab -k "not (${donttest:4})"
 
@@ -146,8 +144,8 @@ donttest+=" or test_load_extension"
 %{_bindir}/jupyter-lab
 %{_bindir}/jupyter-labextension
 %{_bindir}/jupyter-labhub
-%{?!_jupyter_distconfig:%config} %{_jupyter_servextension_confdir}/jupyterlab.json
-%{?!_jupyter_distconfig:%config} %{_jupyter_server_confdir}/jupyterlab.json
+%_jupyter_config %{_jupyter_servextension_confdir}/jupyterlab.json
+%_jupyter_config %{_jupyter_server_confdir}/jupyterlab.json
 %{_jupyter_lab_dir}
 
 %changelog

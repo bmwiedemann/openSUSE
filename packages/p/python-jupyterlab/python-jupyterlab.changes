@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Mon Aug  1 19:42:29 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.4.4
+  Enhancements made
+  * Adds version maintenance policy #12829 (@jweill-aws)
+  * Increase title width in simple mode #11546 (@SylvainCorlay)
+  * Bump xtermjs to latest #12715 (@yuvipanda)
+  * Debugger: Make kernel source list react based #12751 (@vidartf)
+  * Optimize debugger editor eachLine loops #12746 (@vidartf)
+  * Make password inputs not give away how many characters were
+    typed #12659 (@jasongrout)
+  Bugs fixed
+  * Remove drive prefix from the file path when creating the new
+    path #12824 (@hbcarlos)
+  * Use path to extract tmpPath #12823 (@fcollonval)
+  * update tab name after file rename #12791 (@RobbyPratl)
+  * Update base.css #12783 (@siddartha-10)
+  * Pin nbclassic below 0.4.0 #12767 (@fcollonval)
+  * Set focus when active cell changes only from mouse click #12735
+    (@fcollonval)
+  * Fix staging/yarn.lock registry #12742 (@vidartf)
+  * Debugger: Fix CSS for variables inspecting #12749
+    (@martinRenou)
+  * Translate "Default: " and "Remove" in custom fields #12732
+    (@krassowski)
+  * Fix cell toolbar overlap in side-by-side render mode #12710
+    (@peytondmurray)
+  * Remove ipywidgets message count in the execution indicator
+    model #12665 (@trungleduc)
+  Maintenance and upkeep improvements
+  * Update verdaccio, start registry on 0.0.0.0 #12825
+    (@fcollonval)
+  * Use Vega SVG renderer to drop canvas dependency #12811
+    (@fcollonval)
+  * Bump moment from 2.29.2 to 2.29.4 #12781 (@dependabot[bot])
+  * [memory-leaks] Fixes following cell addition analysis #12774
+    (@fcollonval)
+  * Bump @lumino/widgets to 1.33.0 #12777 (@fcollonval)
+  * Fix memory leaks #12750 (@fcollonval)
+  * Bump version of marked and @types/marked #12747 (@krassowski)
+  * Drop pre-commit from build dependencies (#12680) #12706
+    (@jtpio)
+- Release 3.4.3
+  New features added
+  * Persistent side-by-side ratio setting #12633 (@echarles)
+  Enhancements made
+  * Persistent side-by-side ratio setting #12633 (@echarles)
+  * Add "Open in Simple Mode" contextMenu option #12577
+  * (@fcollonval)
+  Bugs fixed
+  * Always check local packages against abspath #10662 (@mlucool)
+  * Fix arrow position on unrendered markdown cell #12660
+    (@fcollonval)
+  * Fix the side-by-side cell resize handle #12611 (@echarles)
+  * Fix loading toolbar factory twice #12599 (@fcollonval)
+  * Fixes behavior of maxNumberOutputs #12598 (@fcollonval)
+  * Focus not set when clicking on cell margin #12447 (@fcollonval)
+  * Make selected text translucent so the cursor is visible in vim
+    mode #12520 (@Jessie-Newman)
+  * Fix file browser search highlighting bug #12578 (@fcollonval)
+- Release 3.4.2
+  * Building extensions fail if not using latest patch #12571
+    (@ajbozarth)
+  * fixed shouldOverwrite is never called when rename target exists
+    #12543 (@ephes)
+- Release 3.4.1
+  Enhancements made
+  * Setting to use the advanced setting editor for the settings
+  * #12466 (@echarles)
+  Bugs fixed
+  * Allow users to yarn link @jupyterlab/builder #12533
+    (@ajbozarth)
+  * Get Auto Close Brackets working consistently in Consoles #12508
+    (@Jessie-Newman)
+  * Handled new dialog creation with no buttons #12496 (@Jnnamchi)
+  * Handle missing preferredPath from the page config #12521
+    (@jtpio)
+- Release 3.4.0
+  Enhancements made
+  * Add ability to open settings editor to specific plugin's
+    settings #12506 (@fcollonval)
+  * Don't sort context menu items by selector #12505 (@fcollonval)
+  * Allow downstream extension to set toolbar layout #12503
+    (@fcollonval)
+  * Display default value in setting editor for changed values
+    #12468 (@echarles)
+  * Uses dark theme for Vega when JupyterLab theme is dark #12411
+    (@jweill-aws)
+  * Creates cell-toolbar, cell-toolbar-extension packages and
+    populates toolbar #12028 (@jweill-aws)
+  * Customize the file browser toolbar via the settings #12441
+    (@fcollonval)
+  * Wait until file browser commands are ready before activating
+    file browser widget #12435 (@fcollonval)
+  * Add a "New Tab" button that opens the launcher #12195
+    (@ajbozarth)
+  * Simplify galata import by proxying expect #12311 (@fcollonval)
+  * Open terminal in cwd from launcher #12250 (@rccern)
+  * Add support for filtering by field names in setting editor
+    #12082 (@marthacryan)
+  * Use transform to quickly switch between tabs. #11074
+    (@fcollonval)
+  * Pop up select kernel dialog when run a cell without kernel
+    #12379 (@a3626a)
+  * Allow LauncherModel to be more extendable #12344 (@ajbozarth)
+  * Add argument searchText and replaceText to search and replace
+    commands #12310 (@fcollonval)
+  * Add argument line and column to codemirror go to line command
+    #12204 (@fcollonval)
+  * Default is no virtual rendering + Relax virtual notebook
+    rendering and ensure no structural change until rendering is
+    completed #12258 (@echarles)
+  Bugs fixed
+  * Ensure settings editor is attached before activation #12507
+    (@fcollonval)
+  * Setting form editor has a formState to avoid focus lost #12470
+    (@echarles)
+  * Check if process is declared before optional chaining in
+    makeSettings #12472 (@fcollonval)
+  * Signal should only export ISignal publicly #12471 (@fcollonval)
+  * Move cell toolbar below search document widget #12467
+    (@fcollonval)
+  * Use css variable for font size. #12255 (@Carreau)
+- More release notes for 3.3.0 and older:
+  * https://github.com/jupyterlab/jupyterlab/releases and
+    ChANGELOG.md
+
+-------------------------------------------------------------------
 Sun Nov 14 20:33:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Allow to keep the config in %_distconfdir

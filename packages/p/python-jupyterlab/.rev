@@ -200,4 +200,41 @@
     <comment></comment>
     <requestid>931630</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>94939ca03af8658ad4bf0f68752ad5d7</srcmd5>
+    <version>3.4.4</version>
+    <time>1659470938</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.4
+  Enhancements made
+  * Adds version maintenance policy #12829 (@jweill-aws)
+  * Increase title width in simple mode #11546 (@SylvainCorlay)
+  * Bump xtermjs to latest #12715 (@yuvipanda)
+  * Debugger: Make kernel source list react based #12751 (@vidartf)
+  * Optimize debugger editor eachLine loops #12746 (@vidartf)
+  * Make password inputs not give away how many characters were
+    typed #12659 (@jasongrout)
+  Bugs fixed
+  * Remove drive prefix from the file path when creating the new
+    path #12824 (@hbcarlos)
+  * Use path to extract tmpPath #12823 (@fcollonval)
+  * update tab name after file rename #12791 (@RobbyPratl)
+  * Update base.css #12783 (@siddartha-10)
+  * Pin nbclassic below 0.4.0 #12767 (@fcollonval)
+  * Set focus when active cell changes only from mouse click #12735
+    (@fcollonval)
+  * Fix staging/yarn.lock registry #12742 (@vidartf)
+  * Debugger: Fix CSS for variables inspecting #12749
+    (@martinRenou)
+  * Translate &quot;Default: &quot; and &quot;Remove&quot; in custom fields #12732
+    (@krassowski)
+  * Fix cell toolbar overlap in side-by-side render mode #12710
+    (@peytondmurray)
+  * Remove ipywidgets message count in the execution indicator
+    model #12665 (@trungleduc)
+  Maintenance and upkeep improvements
+  * Update verdaccio, start registry on 0.0.0.0 #12825
+    (@fcollonval)</comment>
+    <requestid>992098</requestid>
+  </revision>
 </revisionlist>
