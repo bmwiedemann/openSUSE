@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 28 20:23:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.8:
+  * Add CMake alias libraries.
+  * Add an option to disable tests to configure script.
+  * Fix C++11 compatibility: C++11 does not have basic_string_view.
+  * Look for Android's log library.
+  * Fix handling of ,aux extension for FileAppender.
+
+-------------------------------------------------------------------
 Wed Apr 27 12:44:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve rpmlint report "liblog4cplus-1_2-5.x86_64: E:

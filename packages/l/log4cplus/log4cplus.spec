@@ -18,7 +18,7 @@
 
 %define soname  2_0-3
 Name:           log4cplus
-Version:        2.0.7
+Version:        2.0.8
 Release:        0
 Summary:        C++ logging library
 License:        Apache-2.0
