@@ -2,7 +2,7 @@
 Wed Jun 15 07:37:19 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to upstream version 1.3.10
-  * ppc64_cpu: Add support to parse PAPR information for energy and frequency (bsc#1200465 ltc#197256 jsc#SLE-18129)
+  * ppc64_cpu: Add support to parse PAPR information for energy and frequency (bsc#1200465 ltc#197256 jsc#SLE-18129 jsc#PED-519)
   * powerpc-utils: Enhance error message when lparstat -E fails on max config systems (bsc#1198956 ltc#196850)
   * drmgr: Add support for 'acc' command (jsc#SLE-18644)
   * hcn-init.service: Add RemainAfterExit=yes
