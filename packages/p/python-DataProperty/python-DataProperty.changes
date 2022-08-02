@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Aug  2 12:21:17 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to v0.55.0:
+  * Add default_format_flags property
+  * Fix PyPy version specification
+  * Update key of steps
+  * Use extras in tox.ini instead of self-referencing the package in deps
+  * Replace to use MAKE
+  * Remove basepython from testenvs
+  * Fix concurrency.group of a job
+  * Add tool.black.target-version to pyproject.toml
+- Changes from v0.54.2
+  * Remove pytype
+  * Fix DataProperty.get_padding_len method return improper len when the inputs
+    are dict
+  * Fix preprocess failed when the inputs are dict
+- Changes from v0.54.1
+  * Fix normalization order of type hints
+- Changes from v0.54.0
+  * Improve normalize_type_hint
+  * Add setup-ci target to Makefile
+  * Add strategy.matrix.exclude to a workflow
+- Changes from v0.53.0
+  * Modify type annotation of column_type_hints property
+  * Modify to accept type hints as strings
+  * Add normalize_type_hint function
+  * Add dequote to parameter to Preprocessor class
+  * Add max_precision property to DataPropertyExtractor class
+  * Add jupyter extra to black
+  * Bump Python 3.10 RC version
+- Changes from v0.52.0
+  * Add support for max_precision
+- Changes from v0.51.0
+  * Modify to use Python 3.6 syntax
+  * Add support for Python 3.10
+  * Drop support for Python 3.5
+  * Improve calculation of ascii char width of the body
+  * Add max_decimal_places argument to get_number_of_digit function
+  * Improve precision for real number values
+  * Add support for string with thousand separators as integer
+
+-------------------------------------------------------------------
 Mon May  3 15:17:04 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 0.50.1
