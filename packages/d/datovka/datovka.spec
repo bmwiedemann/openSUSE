@@ -27,7 +27,7 @@
 %endif
 
 Name:           datovka
-Version:        4.19.0
+Version:        4.20.0
 Release:        0
 Summary:        Library to access Czech eGov system "Datove schranky"
 License:        GPL-3.0-or-later
@@ -82,16 +82,10 @@ sed -i \
 
 %build
 export CFLAGS="%{optflags}"
-%if 0%{qt_version} == 6
-export CXXFLAGS="-std=c++17 %{optflags}"
-%else
-export CXXFLAGS="-std=c++11 %{optflags}"
-%endif
+export CXXFLAGS="%{optflags}"
 %{lrelease} datovka.pro
 %if 0%{qt_version} == 6
-# QMAKE_LIBS_LIBATOMIC= is only temporary to fix:
-# "Library 'libatomic' is not defined."
-%qmake6 PREFIX=%{_prefix} DISABLE_VERSION_CHECK_BY_DEFAULT=1 QMAKE_LIBS_LIBATOMIC=
+%qmake6 PREFIX=%{_prefix} DISABLE_VERSION_CHECK_BY_DEFAULT=1
 %qmake6_build
 %else
 %qmake5 PREFIX=%{_prefix} DISABLE_VERSION_CHECK_BY_DEFAULT=1

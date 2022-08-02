@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May  3 06:54:31 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 4.20.0
+ * Fixed a mistake when adding prefixes to multi-line log entries.
+ * Enhanced code for handling JSON data.
+ * Rewritten JSON classes for communication with the records management service.
+ * Able to create a short PDF attachment directly in the application. Only a
+   single file can be created whose file name is fixed.
+ * Modified communication sequence with records management server when
+   automatically uploading newly downloaded messages according to matching
+   identifiers. Upload hierarchy is queried only once.
+ * Fixed a problem when automatic upload into records management might cause
+   the application to crash.
+ * Fixed a communication problem when message automatically uploaded into
+   records management haven't been displayed in message listing as uploaded.
+ * Using c++17 compiler flag when compiling with Qt-6.
+- Update datovka-fix-pro.patch: c++17 for qt6 is fixed above
+
+-------------------------------------------------------------------
 Tue Feb  1 06:50:56 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to 4.19.0
