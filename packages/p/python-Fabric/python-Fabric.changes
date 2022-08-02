@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  2 13:31:00 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 2.7.1:
+  * [Bug] #1924: (also #2007) Overhaul behavior and testing re: merging together
+    different sources for the key_filename parameter in
+    Connection.connect_kwargs. This fixes a number of type-related errors
+    (string objects have no extend attribute, cannot add lists to strings, etc).
+
+-------------------------------------------------------------------
 Tue May 17 05:29:37 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.7.0:

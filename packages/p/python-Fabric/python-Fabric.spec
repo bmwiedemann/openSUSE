@@ -18,11 +18,11 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Fabric
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        A Pythonic tool for remote execution and deployment
 License:        BSD-2-Clause
-URL:            http://fabfile.org
+URL:            https://fabfile.org
 Source:         https://files.pythonhosted.org/packages/source/f/fabric/fabric-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#fabric/fabric#2209
 Patch0:         fix-executable.patch
