@@ -85,22 +85,7 @@ export SDL_AUDIODRIVER=dummy
 export SDL_RENDER_DRIVER=software
 export PYTHONFAULTHANDLER=1
 
-donttest="pytest_k_dummyprefix"
-# color mismatches, test shell variable because this is a noarch package
-if [ "$RPM_ARCH" = "ppc64" -o "$RPM_ARCH" = "ppc64le" -o "$RPM_ARCH" = "s390x" ]; then
-  donttest="$donttest or sdl2ext"
-fi
-# Does not recognize big endian byteorder
-if [ $(python3 -c "import sys; print(sys.byteorder)") = "big" ]; then
-  donttest="$donttest or PixelFormatEnum"
-fi
-%if 0%{suse_version} < 1550
-# Segfault with SDL on Leap
-donttest="$donttest or test_SDL_GetPowerInfo"
-# python2 env different, pytest arg missing
-python2_donttest=" or test_SDL_GetBasePath or test_render_on"
-%endif
-%pytest -rfEs -k "not ($donttest ${$python_donttest})"
+%pytest -rfEs
 
 %files %{python_files}
 %license COPYING.txt

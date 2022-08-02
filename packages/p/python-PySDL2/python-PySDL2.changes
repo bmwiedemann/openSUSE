@@ -20,6 +20,8 @@ Fri Jul 29 12:38:06 UTC 2022 - Matej Cepl <mcepl@suse.com>
   - Various bugfixes (see the project's news.rst for more info)
 - Add mixer_tests_fix.patch to switch off failing tests
   (gh#py-sdl/py-sdl2#241).
+- Otherwise, we actually don’t need to explicitly skip ANY
+  tests! Wow!
 
 -------------------------------------------------------------------
 Sun Mar 20 09:55:17 UTC 2022 - Ben Greiner <code@bnavigator.de>
