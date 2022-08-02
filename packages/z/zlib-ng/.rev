@@ -49,4 +49,13 @@
     <comment></comment>
     <requestid>984124</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>b171e4a2937c4b53128a7034b083c930</srcmd5>
+    <version>2.0.6</version>
+    <time>1659470971</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf
+</comment>
+    <requestid>992184</requestid>
+  </revision>
 </revisionlist>

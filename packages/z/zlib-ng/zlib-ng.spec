@@ -37,6 +37,7 @@ Summary:        Zlib replacement with SIMD optimizations
 License:        Zlib
 URL:            https://github.com/zlib-ng/zlib-ng
 Source0:        https://github.com/zlib-ng/zlib-ng/archive/refs/tags/%{version}.tar.gz#/zlib-ng-%{version}.tar.gz
+Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM - Backport https://github.com/zlib-ng/zlib-ng/pull/1297 to fix boo#1200578
 Patch0:         1297.patch
 BuildRequires:  cmake
