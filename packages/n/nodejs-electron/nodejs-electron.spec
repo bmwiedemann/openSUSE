@@ -40,21 +40,10 @@ BuildArch:      i686
 %{expand:%%global optflags %(echo "%optflags") -march=pentium4 -mtune=generic}
 %endif
 
-%ifarch x86_64
-%if 0%{?suse_version} > 1500 || 0%{?fedora}
-# DISABLE LTO AS IT IS BROKEN RIGHT NOW
-#%%bcond_without lto
+
+#Electron built with LTO crashes on selecting any text.
+#See https://gist.github.com/brjsp/80620a5a0be9efbee6b9154cb127879d for the stack trace.
 %bcond_with lto
-# else suse_version
-%else
-%bcond_with lto
-# endif suse_version
-%endif
-# else arch x86_64
-%else
-%bcond_with lto
-# endif arch x86_64
-%endif
 
 %bcond_without pipewire
 
@@ -191,10 +180,10 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        19.0.8
+Version:        19.0.9
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
-License:        MIT
+License:        MIT AND BSD-3-Clause AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://github.com/electron/electron
 Source0:        %{mod_name}-%{version}.tar.xz
@@ -239,108 +228,108 @@ Source49:       woff2.gn
 
 # Reverse upstream changes to be able to build against system ffmpeg
 Source400:      ffmpeg-new-channel-layout.patch
+
+# PATCHES for openSUSE-specific things
 Patch0:         chromium-102-compiler.patch
-Patch2:         chromium-system-libusb.patch
 Patch3:         gcc-enable-lto.patch
-Patch4:         chromium-gcc11.patch
 Patch5:         chromium-norar.patch
 Patch6:         chromium-vaapi.patch
 Patch7:         chromium-91-java-only-allowed-in-android-builds.patch
 Patch9:         chromium-86-fix-vaapi-on-intel.patch
-Patch10:        chromium-93-ffmpeg-4.4.patch
-Patch11:        chromium-ffmpeg-first-dts.patch
-Patch13:        chromium-96-CouponDB-include.patch
-Patch16:        chromium-98-EnumTable-crash.patch
-Patch17:        system-libdrm.patch
-# Fix building sql recover_module
-Patch20:        electron-13-fix-sql-virtualcursor-type.patch
 # Always disable use_thin_lto which is an lld feature
 Patch21:        electron-13-fix-use-thin-lto.patch
+# Fix common.gypi to include /usr/include/electron
+Patch25:        electron-16-system-node-headers.patch
+# https://sources.debian.org/patches/chromium/102.0.5005.115-1/debianization/support-i386.patch/
+Patch39:        support-i386.patch
+Patch49:        abseil-remove-unused-targets.patch
+# from https://sources.debian.org/patches/chromium/103.0.5060.53-1/disable/catapult.patch/
+Patch67:        disable-catapult.patch
+
+# PATCHES to use system libs
+Patch1002:      chromium-system-libusb.patch
+Patch1017:      system-libdrm.patch
+Patch1036:      chromium-101-libxml-unbundle.patch
+# http://svnweb.mageia.org/packages/updates/7/chromium-browser-stable/current/SOURCES/chromium-74-pdfium-system-libopenjpeg2.patch?view=markup
+Patch1038:      pdfium-fix-system-libs.patch
+%if %{with system_jsoncpp}
+# https://sources.debian.org/patches/chromium/102.0.5005.115-1/system/jsoncpp.patch/
+Patch1040:      system-jsoncpp.patch
+%endif
+# https://sources.debian.org/patches/chromium/102.0.5005.115-1/system/zlib.patch/
+Patch1041:      system-zlib.patch
+Patch1043:      node-system-libs.patch
+Patch1044:      replace_gn_files-system-libs.patch
+Patch1045:      angle-system-xxhash.patch
+%if %{with system_tiff}
+# https://svnweb.mageia.org/packages/cauldron/chromium-browser-stable/current/SOURCES/chromium-99-pdfium-system-libtiff-libpng.patch
+Patch1046:      chromium-99-pdfium-system-libtiff.patch
+%endif
+Patch1047:      cares_public_headers.patch
+Patch1048:      chromium-remove-bundled-roboto-font.patch
+%if %{with system_llvm}
+Patch1053:      swiftshader-use-system-llvm.patch
+%endif
+%if %{with system_abseil}
+Patch1054:      thread_annotations-fix-build-with-system-abseil.patch
+%endif
+Patch1063:      system-libbsd.patch
+Patch1065:      base-system-nspr.patch
+Patch1066:      system-gtest.patch
+Patch1067:      breakpad-system-curl.patch
+
+# PATCHES to fix interaction with third-party software
+Patch2004:      chromium-gcc11.patch
+Patch2010:      chromium-93-ffmpeg-4.4.patch
+Patch2011:      chromium-ffmpeg-first-dts.patch
+# Fix building sql recover_module
+Patch2020:      electron-13-fix-sql-virtualcursor-type.patch
 # Fixe builds with older clang versions that do not allow
 # nomerge attributes on declaration. Otherwise, the following error
 # is produced:
 #     'nomerge' attribute cannot be applied to a declaration
 # See https://reviews.llvm.org/D92800
-Patch22:        electron-13-fix-base-check-nomerge.patch
-# Fix blink nodestructor
-Patch23:        electron-13-blink-gcc-ambiguous-nodestructor.patch
+Patch2022:      electron-13-fix-base-check-nomerge.patch
 # Fix electron patched code
-Patch24:        electron-16-std-vector-non-const.patch
-# Fix common.gypi to include /usr/include/electron
-Patch25:        electron-16-system-node-headers.patch
-Patch27:        electron-16-freetype-visibility-list.patch
-Patch28:        electron-16-third_party-symbolize-missing-include.patch
-Patch29:        electron-16-webpack-fix-openssl-3.patch
+Patch2024:      electron-16-std-vector-non-const.patch
+Patch2029:      electron-16-webpack-fix-openssl-3.patch
 # https://bugzilla.redhat.com/show_bug.cgi?id=2052228
-Patch30:        electron-16-fix-swiftshader-template.patch
+Patch2030:      electron-16-fix-swiftshader-template.patch
+
+
+# PATCHES that should be submitted upstream verbatim or near-verbatim
+Patch3016:      chromium-98-EnumTable-crash.patch
+# Fix blink nodestructor
+Patch3023:      electron-13-blink-gcc-ambiguous-nodestructor.patch
+Patch3027:      electron-16-freetype-visibility-list.patch
+Patch3028:      electron-16-third_party-symbolize-missing-include.patch
 # From https://git.droidware.info/wchen342/ungoogled-chromium-fedora
-Patch33:        chromium-94.0.4606.71-InkDropHost-crash.patch
+Patch3033:      chromium-94.0.4606.71-InkDropHost-crash.patch
 # https://sources.debian.org/patches/chromium/102.0.5005.115-1/upstream/byteswap-constexpr.patch/
-Patch34:        byteswap-constexpr.patch
+Patch3034:      byteswap-constexpr.patch
 # https://sources.debian.org/patches/chromium/102.0.5005.115-1/bullseye/byteswap-constexpr2.patch/
-Patch35:        byteswap-constexpr2.patch
-Patch36:        chromium-101-libxml-unbundle.patch
-Patch37:        chromium-102-fenced_frame_utils-include.patch
-# http://svnweb.mageia.org/packages/updates/7/chromium-browser-stable/current/SOURCES/chromium-74-pdfium-system-libopenjpeg2.patch?view=markup
-Patch38:        pdfium-fix-system-libs.patch
-# https://sources.debian.org/patches/chromium/102.0.5005.115-1/debianization/support-i386.patch/
-Patch39:        support-i386.patch
-%if %{with system_jsoncpp}
-# https://sources.debian.org/patches/chromium/102.0.5005.115-1/system/jsoncpp.patch/
-Patch40:        system-jsoncpp.patch
-%endif
-# https://sources.debian.org/patches/chromium/102.0.5005.115-1/system/zlib.patch/
-Patch41:        system-zlib.patch
-Patch42:        chromium-fix-pac-with-gcc.patch
-Patch43:        node-system-libs.patch
-Patch44:        replace_gn_files-system-libs.patch
-Patch45:        angle-system-xxhash.patch
-%if %{with system_tiff}
-# https://svnweb.mageia.org/packages/cauldron/chromium-browser-stable/current/SOURCES/chromium-99-pdfium-system-libtiff-libpng.patch
-Patch46:        chromium-99-pdfium-system-libtiff.patch
-%endif
-Patch47:        cares_public_headers.patch
-Patch48:        chromium-remove-bundled-roboto-font.patch
-Patch49:        abseil-remove-unused-targets.patch
-# PATCH-FIX-UPSTREAM
-Patch50:        abseil_string_number_conversions-do-not-assume-ABI.patch
-# PATCH-FIX-UPSTREAM
-Patch51:        multi_channel_content_detector-missing-unique_ptr.patch
-# PATCH-FIX-UPSTREAM
-Patch52:        process_doc_wrapper-do-not-assume-ABI.patch
-%if %{with system_llvm}
-Patch53:        swiftshader-use-system-llvm.patch
-%endif
-%if %{with system_abseil}
-Patch54:        thread_annotations-fix-build-with-system-abseil.patch
-%endif
-#PATCH-FIX-UPSTREAM
-Patch55:        json_generation-missing-unique_ptr.patch
-#PATCH-FIX-UPSTREAM
-Patch56:        async_shared_storage_database_impl-missing-absl-WrapUnique.patch
-#PATCH-FIX-UPSTREAM
-Patch57:        metrics_recorder-missing-string.patch
-#PATCH-FIX-UPSTREAM
-Patch58:        skia_utils-missing-uint64_t.patch
-#PATCH-FIX-UPSTREAM
-Patch59:        device_perf_info-missing-uint32_t.patch
-# PATCH-FIX-UPSTREAM
-Patch60:        dark_mode_types-uint8_t.patch
-# PATCH-FIX-UPSTREAM
-Patch61:        ax_property_node-missing-unique_ptr-forward.patch
-# PATCH-FIX-UPSTREAM
-Patch62:        attribution_manager_impl-missing-absl-WrapUnique.patch
-Patch63:        system-libbsd.patch
+Patch3035:      byteswap-constexpr2.patch
+Patch3037:      chromium-102-fenced_frame_utils-include.patch
+Patch3042:      chromium-fix-pac-with-gcc.patch
+Patch3050:      abseil_string_number_conversions-do-not-assume-ABI.patch
+Patch3051:      multi_channel_content_detector-missing-unique_ptr.patch
+Patch3055:      json_generation-missing-unique_ptr.patch
+Patch3056:      async_shared_storage_database_impl-missing-absl-WrapUnique.patch
+Patch3057:      metrics_recorder-missing-string.patch
+Patch3058:      skia_utils-missing-uint64_t.patch
+Patch3059:      device_perf_info-missing-uint32_t.patch
+Patch3060:      dark_mode_types-uint8_t.patch
+Patch3061:      ax_property_node-missing-unique_ptr-forward.patch
+Patch3062:      attribution_manager_impl-missing-absl-WrapUnique.patch
 # https://salsa.debian.org/chromium-team/chromium/-/blob/456851fc808b2a5b5c762921699994e957645917/debian/patches/upstream/nested-nested-nested-nested-nested-nested-regex-patterns.patch
-Patch64:        nested-nested-nested-nested-nested-nested-regex-patterns.patch
-Patch65:        base-system-nspr.patch
-# PATCH-FIX-UPSTREAM — Fedora patch to fix build with python3.11
-Patch66:        chromium-103.0.5060.53-python3-do-not-use-deprecated-mode-U.patch
-# from https://sources.debian.org/patches/chromium/103.0.5060.53-1/disable/catapult.patch/
-Patch67:        disable-catapult.patch
+Patch3064:      nested-nested-nested-nested-nested-nested-regex-patterns.patch
+# Fedora patch to fix build with python3.11
+Patch3066:      chromium-103.0.5060.53-python3-do-not-use-deprecated-mode-U.patch
+
 %if %{with clang}
 BuildRequires:  clang
 BuildRequires:  lld
+BuildRequires:  llvm
 %endif
 %if %{with gold}
 BuildRequires:  binutils-gold
@@ -393,11 +382,11 @@ BuildRequires:  ninja >= 1.7.2
 %else
 BuildRequires:  ninja-build >= 1.7.2
 %endif
-%if 0%{?suse_version}
+%if 0%{?sle_version} == 150300
 BuildRequires:  nodejs16
 BuildRequires:  npm16
 %else
-BuildRequires:  nodejs >= 16.5.0
+BuildRequires:  nodejs >= 16
 BuildRequires:  npm
 %endif
 BuildRequires:  pkgconfig
@@ -460,6 +449,7 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(glproto)
+BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(gtk+-3.0)
 %if %{with system_harfbuzz}
 BuildRequires:  pkgconfig(harfbuzz) >= 3
@@ -510,8 +500,8 @@ BuildRequires:  pkgconfig(libxxhash)
 %if 0%{?fedora}
 BuildRequires:  minizip-compat-devel
 # help decide for dependency
-BuildRequires:  pipewire-jack-audio-connection-kit-devel
-BuildRequires:  nodejs-devel >= 17
+# BuildRequires:  pipewire-jack-audio-connection-kit-devel
+# BuildRequires:  nodejs-devel >= 17
 %else
 BuildRequires:  pkgconfig(minizip)
 %endif
@@ -598,8 +588,8 @@ mkdir -p third_party/node/linux/node-linux-x64/bin
 ln -sf %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
 
 # Fix eu-strip
-rm buildtools/third_party/eu-strip/bin/eu-strip
-ln -s %{_bindir}/eu-strip buildtools/third_party/eu-strip/bin/eu-strip
+mkdir -p buildtools/third_party/eu-strip/bin
+ln -sf %{_bindir}/eu-strip buildtools/third_party/eu-strip/bin/eu-strip
 
 # Fix shim header generation
 sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
@@ -613,18 +603,15 @@ find third_party/icu -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 # GN sets lto on its own and we need just ldflag options, not cflags
 %define _lto_cflags %{nil}
 
+
 # Make sure python is python3
 install -d -m 0755 python3-path
 ln -sf %{_bindir}/python3 "$(pwd)/python3-path/python"
 export PATH="$(pwd)/python3-path:${PATH}"
 
-# Make sure node is node16 on suse
-export NODE_VERSION=16
+ARCH_FLAGS="%optflags"
 
 
-
-# REDUCE DEBUG as it gets TOO large
-ARCH_FLAGS="$(echo %{optflags} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
 
 
 %if 0%{?fedora}
@@ -635,19 +622,36 @@ ARCH_FLAGS="$(echo $ARCH_FLAGS | sed -e 's/ -fexceptions / /g')"
 
 
 
-
 # for wayland
 export CXXFLAGS="${ARCH_FLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon"
+export CFLAGS="${CXXFLAGS}"
+
+# Google has a bad coding style, using a macro `NOTREACHED()` that is not properly detected by GCC
+# multiple times throughout the codebase. It is not possible to redefine the macro to __builtin_unreachable,
+# as it has an astonishing syntax, behaving like an ostream (in debug builds it is supposed to trap and print an error message)
+export CXXFLAGS="${CXXFLAGS} -Wno-error=return-type"
+# As of 19.0.8, export_gin_v8platform_pageallocator_for_usage_outside_of_the_gin.patch
+# introduces non-conformant C++ code (redefinition of PageAllocator)
+# This is an Electron-specific problem that does not appear in Chromium.
+export CXXFLAGS="${CXXFLAGS} -fpermissive"
+
+# REDUCE DEBUG for C++ as it gets TOO large due to “heavy hemplate use in Blink”
+export CXXFLAGS="$(echo ${CXXFLAGS} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
+
 
 export LDFLAGS="%{?build_ldflags}"
 
 
 
+
 %if %{with clang}
 
-export CFLAGS="${CXXFLAGS}"
+
 export CC=clang
 export CXX=clang++
+export AR=llvm-ar
+export NM=llvm-nm
+export RANLIB=llvm-ranlib
 
 # else with clang
 %else
@@ -663,36 +667,25 @@ export CXX=clang++
 %endif
 
 
-export CXXFLAGS="${CXXFLAGS} -Wno-return-type"
-# extra flags to reduce warnings that aren't very useful
-export CXXFLAGS="${CXXFLAGS} -Wno-pedantic -Wno-unused-result -Wno-unused-function -Wno-unused-variable -Wno-unused-but-set-variable -Wno-deprecated-declarations"
-# ignore warnings for minor mistakes that are too common
-export CXXFLAGS="${CXXFLAGS} -Wno-return-type -Wno-parentheses -Wno-misleading-indentation"
-# ignore warnings that are not supported well until gcc 8
-export CXXFLAGS="${CXXFLAGS} -Wno-attributes"
-# ignore warnings due to gcc bug (https://gcc.gnu.org/bugzilla/show_bug.cgi?id=84055)
-export CXXFLAGS="${CXXFLAGS} -Wno-ignored-attributes"
-# ingore new gcc 8 warnings that aren't yet handled upstream
-export CXXFLAGS="${CXXFLAGS} -Wno-address -Wno-dangling-else -Wno-packed-not-aligned"
 
-export CFLAGS="${CXXFLAGS}"
-export CXXFLAGS="${CXXFLAGS} -Wno-subobject-linkage -Wno-class-memaccess -Wno-invalid-offsetof -fpermissive"
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora}
 export CC=gcc
 export CXX=g++
+export AR=gcc-ar
+export NM=gcc-nm
+export RANLIB=gcc-ranlib
 %else
 export CC=gcc-10
 export CXX=g++-10
+export AR=gcc-ar-10
+export NM=gcc-nm-10
+export RANLIB=gcc-ranlib-10
 %endif
 
 # endif with clang
 %endif
 
-# Needed e.g. for static library creation by base/third_party/dynamic_annotations/
-export AR=ar
-export NM=nm
-export RANLIB=ranlib
 
 # do not eat all memory
 %limit_build -m 2600
@@ -879,11 +872,15 @@ myconf_gn+=" use_swiftshader_with_subzero=false"
 myconf_gn+=" is_component_ffmpeg=true"
 myconf_gn+=" use_cups=true"
 myconf_gn+=" use_aura=true"
+
+
+# These options have been disabled, see chromium-102-compiler.patch
 # symbol_level=2 is full debug
 # symbol_level=1 is enough info for stacktraces
 # symbol_level=0 disable debug
-myconf_gn+=" symbol_level=1"
-myconf_gn+=" blink_symbol_level=0"
+#myconf_gn+=" symbol_level=2"
+#myconf_gn+=" blink_symbol_level=1"
+
 myconf_gn+=" use_kerberos=true"
 myconf_gn+=" enable_vr=false"
 myconf_gn+=" optimize_webui=false"
@@ -1035,7 +1032,7 @@ mkdir -p "%{buildroot}%{_datadir}/webapps"
 rsync -av out/Release/gen/node_headers/include/node/* %{buildroot}%{_includedir}/electron
 
 %files
-%license electron/LICENSE
+%license electron/LICENSE electron/chromium_src/LICENSE.chromium third_party/blink/LICENSE_FOR_ABOUT_CREDITS
 %doc electron/README.md
 %{_bindir}/electron
 %{_datadir}/pixmaps/electron.png

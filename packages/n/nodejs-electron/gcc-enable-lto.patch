@@ -33,7 +33,7 @@ Index: electron-17.1.0/build/config/compiler/BUILD.gn
  }
  
 +config("gcc_lto") {
-+  cflags = [ "-flto" ]
++  cflags = [ "-flto=auto" ]
 +}
 +
  config("default_stack_frames") {

@@ -11,7 +11,7 @@ diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
 index d40843b..b92f03b 100644
 --- a/build/config/compiler/BUILD.gn
 +++ b/build/config/compiler/BUILD.gn
-@@ -286,9 +286,7 @@ config("compiler") {
+@@ -286,9 +286,7 @@
  
    configs += [
      # See the definitions below.
@@ -21,7 +21,7 @@ index d40843b..b92f03b 100644
      ":compiler_codegen",
      ":compiler_deterministic",
    ]
-@@ -522,31 +520,6 @@ config("compiler") {
+@@ -522,31 +520,6 @@
      ldflags += [ "-Wl,-z,keep-text-section-prefix" ]
    }
  
@@ -53,7 +53,17 @@ index d40843b..b92f03b 100644
    # Rust compiler setup (for either clang or rustc).
    if (enable_rust) {
      defines += [ "RUST_ENABLED" ]
-@@ -1232,45 +1205,6 @@ config("compiler_deterministic") {
+@@ -880,7 +853,8 @@
+ # without using everything that "compiler" brings in.  Options that
+ # tweak code generation for a particular CPU do not belong here!
+ # See "compiler_codegen", below.
+-config("compiler_cpu_abi") {
++config("compiler_cpu_abi") { }
++config("xcompiler_cpu_abi") {
+   cflags = []
+   ldflags = []
+   defines = []
+@@ -1232,45 +1206,6 @@
      }
    }
  
@@ -99,7 +109,7 @@ index d40843b..b92f03b 100644
    # Tells the compiler not to use absolute paths when passing the default
    # paths to the tools it invokes. We don't want this because we don't
    # really need it and it can mess up the goma cache entries.
-@@ -1538,15 +1472,6 @@ config("default_warnings") {
+@@ -1538,15 +1473,6 @@
          cflags += [ "-Wno-deprecated-non-prototype" ]
        }
  
@@ -115,7 +125,7 @@ index d40843b..b92f03b 100644
        if (is_fuchsia) {
          # TODO(https://bugs.chromium.org/p/fuchsia/issues/detail?id=77383)
          cflags += [ "-Wno-deprecated-copy" ]
-@@ -1615,7 +1540,7 @@ config("chromium_code") {
+@@ -1615,7 +1541,7 @@
        defines = [ "_HAS_NODISCARD" ]
      }
    } else {
@@ -124,7 +134,7 @@ index d40843b..b92f03b 100644
      if (treat_warnings_as_errors) {
        cflags += [ "-Werror" ]
  
-@@ -1624,10 +1549,6 @@ config("chromium_code") {
+@@ -1624,10 +1550,6 @@
        # well.
        ldflags = [ "-Werror" ]
      }
@@ -135,7 +145,7 @@ index d40843b..b92f03b 100644
  
      # In Chromium code, we define __STDC_foo_MACROS in order to get the
      # C99 macros on Mac and Linux.
-@@ -1636,15 +1557,6 @@ config("chromium_code") {
+@@ -1636,15 +1558,6 @@
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -151,7 +161,7 @@ index d40843b..b92f03b 100644
      if (is_mac) {
        cflags_objc = [ "-Wobjc-missing-property-synthesis" ]
        cflags_objcc = [ "-Wobjc-missing-property-synthesis" ]
-@@ -2035,7 +1947,8 @@ config("default_stack_frames") {
+@@ -2035,7 +1948,8 @@
  }
  
  # Default "optimization on" config.
@@ -161,7 +171,7 @@ index d40843b..b92f03b 100644
    if (is_win) {
      if (chrome_pgo_phase != 2) {
        # Favor size over speed, /O1 must be before the common flags.
-@@ -2073,7 +1986,8 @@ config("optimize") {
+@@ -2073,7 +1987,8 @@
  }
  
  # Turn off optimizations.
@@ -171,7 +181,7 @@ index d40843b..b92f03b 100644
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -2113,7 +2027,8 @@ config("no_optimize") {
+@@ -2113,7 +2028,8 @@
  # Turns up the optimization level. On Windows, this implies whole program
  # optimization and link-time code generation which is very expensive and should
  # be used sparingly.
@@ -181,7 +191,7 @@ index d40843b..b92f03b 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2146,7 +2061,8 @@ config("optimize_max") {
+@@ -2146,7 +2062,8 @@
  #
  # TODO(crbug.com/621335) - rework how all of these configs are related
  # so that we don't need this disclaimer.
@@ -191,7 +201,7 @@ index d40843b..b92f03b 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2172,7 +2088,8 @@ config("optimize_speed") {
+@@ -2172,7 +2089,8 @@
    }
  }
  
@@ -201,7 +211,7 @@ index d40843b..b92f03b 100644
    cflags = [ "-O1" ] + common_optimize_on_cflags
    rustflags = [ "-Copt-level=1" ]
    ldflags = common_optimize_on_ldflags
-@@ -2291,7 +2208,8 @@ config("win_pdbaltpath") {
+@@ -2291,7 +2209,8 @@
  }
  
  # Full symbols.
@@ -211,7 +221,7 @@ index d40843b..b92f03b 100644
    if (is_win) {
      if (is_clang) {
        cflags = [ "/Z7" ]  # Debug information in the .obj files.
-@@ -2419,7 +2337,8 @@ config("symbols") {
+@@ -2419,7 +2338,8 @@
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
@@ -221,7 +231,7 @@ index d40843b..b92f03b 100644
    if (is_win) {
      # Functions, files, and line tables only.
      cflags = []
-@@ -2492,7 +2411,8 @@ config("minimal_symbols") {
+@@ -2492,7 +2412,8 @@
  # This configuration contains function names only. That is, the compiler is
  # told to not generate debug information and the linker then just puts function
  # names in the final debug information.
@@ -231,6 +241,3 @@ index d40843b..b92f03b 100644
    if (is_win) {
      ldflags = [ "/DEBUG" ]
  
--- 
-2.35.1
-

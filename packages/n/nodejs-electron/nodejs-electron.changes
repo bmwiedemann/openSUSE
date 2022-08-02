@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jul 22 09:58:00 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 19.0.9
+  * Updated Chromium to 102.0.5005.167
+  * Fixed a potential crash when changing window settings after initializing WCO with an invalid titleBarStyle
+  * Fixed alwaysOnTop BrowserWindow option for X11.
+  * Fixed an issue where printing with an invalid deviceName caused silent failures.
+  * Fixed empty app_id when running under wayland.
+  * Prevent brief display of "Ozone X11" in window title.
+- Remove some unused huge libraries from third_party in source tarball.
+- Remove process_doc_wrapper-do-not-assume-ABI.patch. The file being patched was not getting compiled for a while,
+  and is now removed from the tarball.
+- Add system-gtest.patch
+- Add breakpad-system-curl.patch
+
+-------------------------------------------------------------------
+Tue Jul 12 17:03:39 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Do not require SSE3 (chromium-102-compiler.patch).
+  Both openSUSE and Fedora still support the original Opteron, and
+  package maintainers should not unilaterally require more.
+- Use system node for the typescript compiler (again).
+  We do not need to force node16 (Fedora compiles fine with node18 even),
+  Factory pushes a devel node version as default for a reason,
+  and it accidentally broke build on RISC-V which only has node17.
+- Restore full debuginfo on the C-only code parts.
+- Document all other deviations from recommended compilation options.
+- Remove obsolete chromium-96-CouponDB-include.patch
+- Correct licence in header (Electron bundles Chromium)
+
+-------------------------------------------------------------------
 Wed Jul  6 21:57:42 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 19.0.8
   * Updated Chromium to 102.0.5005.148
