@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  1 12:06:01 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- security update:
+  * CVE-2022-34526 [bsc#1202026]
+    + tiff-CVE-2022-34526.patch
+
+-------------------------------------------------------------------
 Wed Jul  6 07:55:09 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - security update

@@ -806,4 +806,14 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     + tiff-CVE-2022-2056,CVE-2022-2057,CVE-2022-2058.patch</comment>
     <requestid>987003</requestid>
   </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>0ad84f4755ad524a5e8111d5e0fb84b8</srcmd5>
+    <version>4.4.0</version>
+    <time>1659470917</time>
+    <user>dimstar_suse</user>
+    <comment>- security update:
+  * CVE-2022-34526 [bsc#1202026]
+    + tiff-CVE-2022-34526.patch</comment>
+    <requestid>992028</requestid>
+  </revision>
 </revisionlist>

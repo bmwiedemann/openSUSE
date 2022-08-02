@@ -34,6 +34,7 @@ Patch0:         tiff-4.0.3-seek.patch
 # http://bugzilla.maptools.org/show_bug.cgi?id=2442
 Patch1:         tiff-4.0.3-compress-warning.patch
 Patch2:         tiff-CVE-2022-2056,CVE-2022-2057,CVE-2022-2058.patch
+Patch3:         tiff-CVE-2022-34526.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libjbig-devel
 BuildRequires:  libjpeg-devel
@@ -74,6 +75,7 @@ the libtiff library.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 CFLAGS="%{optflags} -fPIE"
