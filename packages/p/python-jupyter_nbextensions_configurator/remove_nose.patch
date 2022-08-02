@@ -10,11 +10,12 @@
  
 --- a/tests/test_application.py
 +++ b/tests/test_application.py
-@@ -12,7 +12,6 @@ import os
+@@ -12,7 +12,7 @@ import os
  from unittest import TestCase
  
  import jupyter_core.paths
 -import nose.tools as nt
++import pytest
  from jupyter_contrib_core.notebook_compat import serverextensions
  from jupyter_contrib_core.testing_utils import (
      get_logger, patch_traitlets_app_logs,
@@ -48,7 +49,7 @@
 -                'disable command should disable all '
 -                'nbserver_extensions in file {}'.format(path))
 +            assert not {k: v for k, v in nbservext.items() if v}, \
-+                'disable command should disable all nbserver_extensions in file {}'.format(path))
++                'disable command should disable all nbserver_extensions in file {}'.format(path)
  
          reset_app_class(DisableJupyterNbextensionsConfiguratorApp)
  

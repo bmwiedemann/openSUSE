@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter_nbextensions_configurator
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter_nbextensions_configurator
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        Configuration interfaces for nbextensions
 License:        BSD-3-Clause
@@ -32,16 +32,18 @@ Patch0:         remove_nose.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module jupyter_contrib_core >= 0.3.3}
 BuildRequires:  %{python_module jupyter_core}
-BuildRequires:  %{python_module notebook}
+BuildRequires:  %{python_module notebook >= 6}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module traitlets}
 BuildRequires:  fdupes
+BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-jupyter_contrib_core >= 0.3.3
 Requires:       python-jupyter_core
-Requires:       python-notebook >= 4.0
+Requires:       python-notebook >= 6
 Requires:       python-tornado
 Requires:       python-traitlets
 Recommends:     jupyter-jupyter_nbextensions_configurator = %{version}
@@ -63,7 +65,7 @@ Summary:        Configuration interfaces for nbextensions
 Group:          Development/Languages/Python
 Requires:       jupyter-jupyter_contrib_core >= 0.3.3
 Requires:       jupyter-jupyter_core
-Requires:       jupyter-notebook >= 4.0
+Requires:       jupyter-notebook >= 6
 Requires:       python3-jupyter_nbextensions_configurator = %{version}
 
 %description -n jupyter-jupyter_nbextensions_configurator
@@ -89,15 +91,11 @@ sed -i 's|/usr/bin/env python|%{__python3}|' scripts/jupyter-nbextensions_config
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-PYTHONPATH=%{buildroot}%{python3_sitelib} %{buildroot}%{_bindir}/jupyter-nbextensions_configurator enable --user
-
-for f in ~/.jupyter/nbconfig/*.json ; do
-    tdir=$( basename -s .json ${f} )
-    install -Dm 644 ${f} %{buildroot}%{_jupyter_nb_confdir}/${tdir}.d/nbextensions_configurator.json
-done
-
 %fdupes %{buildroot}%{_jupyter_prefix}
+
+%check
+# no geckodriver for selenium tests, no jupyterhub
+%pytest --ignore tests/test_nbextensions_configurator.py --ignore tests/test_jupyterhub.py
 
 %files %{python_files}
 %doc README.md
@@ -108,7 +106,8 @@ done
 %files -n jupyter-jupyter_nbextensions_configurator
 %license LICENSE.txt
 %{_bindir}/jupyter-nbextensions_configurator
-%_jupyter_config %{_jupyter_nb_notebook_confdir}/nbextensions_configurator.json
-%_jupyter_config %{_jupyter_nb_tree_confdir}/nbextensions_configurator.json
+%_jupyter_config %{_jupyter_servextension_confdir}/jupyter_nbextensions_configurator.json
+%_jupyter_config %{_jupyter_nb_notebook_confdir}/jupyter_nbextensions_configurator.json
+%_jupyter_config %{_jupyter_nb_tree_confdir}/jupyter_nbextensions_configurator.json
 
 %changelog
