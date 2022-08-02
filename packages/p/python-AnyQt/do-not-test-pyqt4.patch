@@ -6,16 +6,15 @@ so the import doesn't fail and then it fails where the test doesn't
 expect it.
 
 
-Index: AnyQt-0.0.10/test/test_import.py
+Index: AnyQt-0.1.1/test/test_import.py
 ===================================================================
---- AnyQt-0.0.10.orig/test/test_import.py
-+++ AnyQt-0.0.10/test/test_import.py
-@@ -5,7 +5,7 @@ import importlib
- import subprocess
+--- AnyQt-0.1.1.orig/test/test_import.py
++++ AnyQt-0.1.1/test/test_import.py
+@@ -2,7 +2,6 @@ import subprocess
  import sys
  
--apis = {'pyqt4': 'PyQt4', 'pyqt5': 'PyQt5', 'pyside': 'PySide', 'pyside2': 'PySide2'}
-+apis = {'pyqt5': 'PyQt5', 'pyside': 'PySide', 'pyside2': 'PySide2'}
- 
- submodules_common = ['QtCore', 'QtGui', 'QtHelp',
-               'QtMultimedia', 'QtNetwork', 'QtOpenGL', 'QtPrintSupport',
+ apis = {
+-    'pyqt4': 'PyQt4',
+     'pyqt5': 'PyQt5',
+     'pyside': 'PySide',
+     'pyside2': 'PySide2',

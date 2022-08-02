@@ -68,4 +68,12 @@
   * QGroupBox: Add idClicked/Pressed/Released/Toggled when not present</comment>
     <requestid>959997</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7205ead397aa9662a5bae549a7dd05c0</srcmd5>
+    <version>0.1.1</version>
+    <time>1659470977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992329</requestid>
+  </revision>
 </revisionlist>

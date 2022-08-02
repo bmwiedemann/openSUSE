@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Aug  2 09:46:16 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- update to 0.1.1
+  * importhooks: Fix deprecation warnings `find_module` and `load_module` are deprecated.
+- from version 0.1.0
+  * Update imports of QWebEngineCore components for Qt6
+  * Add tests
+  * Add forward compatible QTextEdit.setTabStopDistance, ...
+  * Qt5: Add forward compatible QAbstractItem.itemDelegateForIndex method
+  * Add forward compatible QAbstractItemView.initViewItemOption
+  * Make available enum members in type when not present
+  * PyQt6: Add ctypes QAction.menu/setMenut
+  * Add QLibraryInfo.path if not present
+  * PyQt6: Add back obsolete accessors to QWheelEvent
+  * PyQt6: Add back obsolete accessors to QDropEvent, QEnterEvent
+  * PyQt6: Add back obsolete pos,x, ..., accessors to QMouseEvent
+  * PyQt6: Implement QAbstractItemView.viewOptions back compatible method
+  * PyQt6: Move QShortcut, QAction imports
+  * PyQt6: Move QUndoStack, ... imports
+  * PyQt6: Add back some common Enum/Flag type aliases
+  * PyQt6: Add QtSvgWidgets stub module
+  * Add support for PyQt6
+  * Make all members of QFontDatabase static
+- updated patch do-not-test-pyqt4.patch 
+
+-------------------------------------------------------------------
 Mon Mar  7 14:18:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.14
