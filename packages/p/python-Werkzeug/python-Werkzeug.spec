@@ -1,5 +1,5 @@
 #
-# spec file for package python-Werkzeug
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,10 +16,18 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
-Name:           python-Werkzeug
+Name:           python-Werkzeug%{psuffix}
 Version:        2.1.2
 Release:        0
 Summary:        The Swiss Army knife of Python web development
@@ -30,6 +38,11 @@ Source:         https://files.pythonhosted.org/packages/source/W/Werkzeug/Werkze
 # PATCH-FIX-UPSTREAM moved_root.patch bsc#[0-9]+ mcepl@suse.com
 # this patch makes things totally awesome
 Patch1:         moved_root.patch
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
+%if %{with test}
+BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module ephemeral-port-reserve}
 BuildRequires:  %{python_module hypothesis}
@@ -37,9 +50,8 @@ BuildRequires:  %{python_module pytest >= 6.2.4}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xprocess}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sortedcontainers}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-termcolor
@@ -76,19 +88,25 @@ sed -i "1d" examples/manage-{i18nurls,simplewiki,shorty,couchy,cupoftee,webpylik
 %python_build
 
 %install
+%if ! %{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 # workaround pytest 6.2 (like https://github.com/pallets/werkzeug/commit/16718f461d016b88b6457d3ef63816b7df1f0d1f, but shorter)
-%pytest -k 'not (dev_server or test_reloader_sys_path or test_chunked_encoding or test_basic or test_server or test_ssl or test_http_proxy or test_500_error or test_untrusted_host or test_double_slash_path or test_wrong_protocol or test_content_type_and_length or test_multiple_headers_concatenated or test_multiline_header_folding)'
+%pytest -k 'not (dev_server or test_reloader_sys_path or test_chunked_encoding or test_basic or test_server or test_ssl or test_http_proxy or test_500_error or test_untrusted_host or test_double_slash_path or test_wrong_protocol or test_content_type_and_length or test_multiple_headers_concatenated or test_multiline_header_folding or test_exclude_patterns)'
+%endif
 
+%if ! %{with test}
 %files %{python_files}
 %license LICENSE.rst
 %doc CHANGES.rst README.rst
 %{python_sitelib}/werkzeug
 %{python_sitelib}/Werkzeug-%{version}-py*.egg-info
+%endif
 
 %changelog

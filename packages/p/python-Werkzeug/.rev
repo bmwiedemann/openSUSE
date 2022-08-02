@@ -557,4 +557,12 @@
 - drop 2402-dev_server.patch (upstream)</comment>
     <requestid>976285</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>a5fdd5af4408b7260b86f5883e06d161</srcmd5>
+    <version>2.1.2</version>
+    <time>1659470917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>991941</requestid>
+  </revision>
 </revisionlist>
