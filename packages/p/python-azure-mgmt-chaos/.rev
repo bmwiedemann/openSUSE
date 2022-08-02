@@ -42,4 +42,15 @@
 - Update Requires from setup.py (forwarded request 986034 from glaubitz)</comment>
     <requestid>986046</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6046d5bfffec327aea130dda78fe4846</srcmd5>
+    <version>1.0.0b5</version>
+    <time>1659470945</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b5
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 991952 from glaubitz)</comment>
+    <requestid>992121</requestid>
+  </revision>
 </revisionlist>
