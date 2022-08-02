@@ -21,7 +21,8 @@
 %define pname petsc
 %define vers 3.14.5
 %define _vers 3_14_5
-%define so_ver 3
+%define so_ver 3_14
+%define so_major 3
 %define openblas_vers 0.3.6
 
 ExcludeArch:    s390 s390x
@@ -61,13 +62,6 @@ BuildArch:      noarch
 %{bcond_with hpc}
 %endif
 
-%if "%flavor" == "openmpi"
-%{?DisOMPI1}
-%define mpi_family openmpi
-%define mpi_vers 1
-%{bcond_with hpc}
-%endif
-
 %if "%flavor" == "openmpi2"
 %{?DisOMPI2}
 %define mpi_family openmpi
@@ -86,11 +80,6 @@ BuildArch:      noarch
 %{?DisOMPI4}
 %define mpi_family openmpi
 %define mpi_vers 4
-%{bcond_with hpc}
-%endif
-
-%if "%flavor" == "mvapich2"
-%define mpi_family mvapich2
 %{bcond_with hpc}
 %endif
 
@@ -348,14 +337,9 @@ BuildArch:      noarch
 ExclusiveArch:  do_not_build
 %endif
 
-# openmpi 1 was called just "openmpi" in Leap 15.x/SLE15
-%if 0%{?suse_version} >= 1550 || "%{mpi_family}" != "openmpi"  || "%{mpi_vers}" != "1"
-%define mpi_ext %{?mpi_vers}
-%endif
-
 %if %{without hpc}
-%define package_name() %{pname}%{?with_mpi:-%{mpi_family}%{?mpi_ext}}
-%define libname() lib%{pname}%{so_ver}%{?with_mpi:-%{mpi_family}%{?mpi_ext}}
+%define package_name() %{pname}%{?with_mpi:-%{mpi_family}%{?mpi_vers}}
+%define libname() lib%{pname}%{so_ver}%{?with_mpi:-%{mpi_family}%{?mpi_vers}}
 %else
 %{hpc_init -c %compiler_family -m %mpi_family %{?c_f_ver:-v %{c_f_ver}} %{?mpi_vers:-V %{mpi_vers}} %{?ext:-e %{ext}}}
 
@@ -376,10 +360,10 @@ ExclusiveArch:  do_not_build
  %else
  %{?with_mpi:%{!?mpi_family:error "No MPI family specified!"}}
 
-%define p_base %{_libdir}/mpi/gcc/%{mpi_family}%{?mpi_ext}/
- %endif # mpi
+%define p_base %{_libdir}/mpi/gcc/%{mpi_family}%{?mpi_vers}/
+ %endif
 %define p_prefix %{p_libdir}/petsc/%{version}/%petsc_arch
-%else # hpc
+%else
 %define p_base %{hpc_prefix}/
 %define p_prefix %{hpc_prefix}
 %endif
@@ -397,20 +381,18 @@ Version:        %vers
 Release:        0
 
 Source:         ftp://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-%{version}.tar.gz
+Source99:       petsc-rpmlintrc
 Patch0:         petsc-3.3-p2-no-rpath.patch
 Patch1:         petsc-3.7-fix-pastix-detection.patch
 URL:            https://www.mcs.anl.gov/petsc/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{!?makedoc:1}
 BuildRequires:  fdupes
+BuildRequires:  hwloc-devel
 BuildRequires:  pkg-config
 %if %{python_ver} == 2
 BuildRequires:  python2-base
 %endif
 BuildRequires:  python3-base
-%if 0%{?suse_version} >= 1315
-BuildRequires:  hwloc-devel
-%endif
 
 %if %{without hpc}
 BuildRequires:  Modules
@@ -421,20 +403,20 @@ BuildRequires:  lapack-devel
 BuildRequires:  suitesparse-devel
 
  %if %{with mpi}
-BuildRequires:  %{mpi_family}%{?mpi_ext}-devel
-BuildRequires:  blacs-%{mpi_family}%{?mpi_ext}-devel
-BuildRequires:  hdf5-%{mpi_family}%{?mpi_ext}-devel
+BuildRequires:  %{mpi_family}%{?mpi_vers}-devel
+BuildRequires:  blacs-%{mpi_family}%{?mpi_vers}-devel
+BuildRequires:  hdf5-%{mpi_family}%{?mpi_vers}-devel
 %if %{with hypre}
-BuildRequires:  hypre-%{mpi_family}%{?mpi_ext}-devel
+BuildRequires:  hypre-%{mpi_family}%{?mpi_vers}-devel
 BuildRequires:  superlu-devel
 %endif
-BuildRequires:  ptscotch-%{mpi_family}%{?mpi_ext}-devel
-BuildRequires:  ptscotch-parmetis-%{mpi_family}%{?mpi_ext}-devel
+BuildRequires:  ptscotch-%{mpi_family}%{?mpi_vers}-devel
+BuildRequires:  ptscotch-parmetis-%{mpi_family}%{?mpi_vers}-devel
 #!BuildIgnore:  metis-devel
 %if %{with pastix}
-BuildRequires:  pastix-%{mpi_family}%{?mpi_ext}-devel
+BuildRequires:  pastix-%{mpi_family}%{?mpi_vers}-devel
 %endif
-BuildRequires:  scalapack-%{mpi_family}%{?mpi_ext}-devel
+BuildRequires:  scalapack-%{mpi_family}%{?mpi_vers}-devel
  %else
 BuildRequires:  metis-devel
  %endif
@@ -449,10 +431,11 @@ BuildRequires:  lua-lmod
 BuildRequires:  suse-hpc
 %endif
 
-BuildRequires:  valgrind
+BuildRequires:  valgrind-devel
 BuildRequires:  xz
 BuildRequires:  zlib-devel
-%endif # !?makedoc
+%endif
+# !?makedoc
 
 %description
 PETSc is a suite of data structures and routines for the scalable
@@ -460,12 +443,15 @@ PETSc is a suite of data structures and routines for the scalable
 differential equations.
 
 %package -n %{libname %_vers}
-Summary:        Devel files for petsc
+Summary:        PETSc shared libraries
 Group:          System/Libraries
 %if %{with hpc}
 %{hpc_requires}
 %{requires_eq libhdf5%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc}
 %{requires_eq libscalapack2%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc}
+%else
+# Fixup wrong package name
+Conflicts:      libpetsc3%{?with_mpi:-%{mpi_family}%{?mpi_vers}}
 %endif
 
 %description -n %{libname %_vers}
@@ -485,18 +471,15 @@ Requires:       suitesparse-devel
  %if %{without mpi}
 Requires:       metis-devel
  %else
-Requires:       blacs-%{mpi_family}%{?mpi_ext}-devel
-Requires:       hdf5-%{mpi_family}%{?mpi_ext}-devel
-Requires:       hypre-%{mpi_family}%{?mpi_ext}-devel
-Requires:       ptscotch-%{mpi_family}%{?mpi_ext}-devel
-Requires:       ptscotch-parmetis-%{mpi_family}%{?mpi_ext}-devel
-Requires:       scalapack-%{mpi_family}%{?mpi_ext}-devel
-  %if "%{mpi_family}%{?mpi_ext}" == "openmpi1"
-Provides:       %{pname}-openmpi-devel
-  %endif
+Requires:       blacs-%{mpi_family}%{?mpi_vers}-devel
+Requires:       hdf5-%{mpi_family}%{?mpi_vers}-devel
+Requires:       hypre-%{mpi_family}%{?mpi_vers}-devel
+Requires:       ptscotch-%{mpi_family}%{?mpi_vers}-devel
+Requires:       ptscotch-parmetis-%{mpi_family}%{?mpi_vers}-devel
+Requires:       scalapack-%{mpi_family}%{?mpi_vers}-devel
  %endif
-%else # with hpc
-Requires:       %{libname %_vers} = %{version}
+%else
+# with hpc:
 %{requires_eq hdf5%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc-devel}
 %{requires_eq libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel}
 %{requires_eq libscalapack2%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc-devel}
@@ -550,7 +533,9 @@ find lib/petsc/bin -type f -exec sed -i \
 %files doc
 %defattr(-,root,root,-)
 %doc docs/*
-%else # !?makedoc
+
+%else
+# Everything below is for the non-makedoc case
 
 %if 0 && %{without hpc}
 cat > %{_sourcedir}/baselibs.conf  <<EOF
@@ -615,13 +600,14 @@ python%{python_ver} ./config/configure.py \
         --with-superlu=1 \
         --with-hypre=1 \
         --with-hypre-include=%{p_base}/include/hypre \
-        --with-hypre-lib=%{p_libdir}/libHYPRE.so \
+        --with-hypre-lib=[%{p_libdir}/libHYPRE.so] \
   %endif
         --with-hdf5=1 \
-        --with-hdf5-lib=%{p_libdir}/libhdf5.so \
-        --with-hdf5-include=%{p_base}/include
+        --with-hdf5-lib=[%{p_libdir}/libhdf5.so] \
+        --with-hdf5-include=%{p_base}/include \
+        || cat configure.log
  %endif
-%else # with hpc
+%else
         --with-blas-lapack-lib=$OPENBLAS_LIB/libopenblas.so \
         --with-scalapack-dir=$SCALAPACK_DIR \
         --with-hdf5=1 \
@@ -651,7 +637,7 @@ rm -f %{buildroot}%{p_prefix}/lib/petsc/conf/.DIR
 
 pushd %{buildroot}%{p_prefix}/lib
 ln -sf libpetsc.so.%{version} libpetsc.so
-ln -sf libpetsc.so.%{version} libpetsc.so.%{so_ver}
+ln -sf libpetsc.so.%{version} libpetsc.so.%{so_major}
 popd
 
 %if %{without hpc}
@@ -670,7 +656,7 @@ popd
 
 # Module files
 mkdir -p %{buildroot}/usr/share/modules/%{name}-%{petsc_arch}
-cat << EOF > %{buildroot}/usr/share/modules/%{name}-%{petsc_arch}/%version%{?with_mpi:-%{mpi_family}%{?mpi_ext}}
+cat << EOF > %{buildroot}/usr/share/modules/%{name}-%{petsc_arch}/%version%{?with_mpi:-%{mpi_family}%{?mpi_vers}}
 #%%Module
 proc ModulesHelp { } {
         global dotversion
@@ -684,7 +670,8 @@ setenv PETSC_DIR  %{p_libdir}/petsc/%{version}/%{petsc_arch}
 prepend-path LD_LIBRARY_PATH %{p_libdir}/petsc/%{version}/%{petsc_arch}/lib
 
 EOF
-%else # with hpc
+%else
+# with hpc:
 
 if [ ! -d %{buildroot}%{p_libdir} -a -d %{buildroot}%{p_base}/lib ]
 then
@@ -780,7 +767,8 @@ setenv          %{hpc_upcase %pname}_INC        %{hpc_includedir}
 setenv          %{hpc_upcase %pname}_LIB        %{hpc_libdir}
 }
 EOF
-%endif  # with hpc
+%endif
+# with/out hpc
 
 # clean up non-include files
 find %{buildroot}%{p_include} -name \*.html  -exec rm {} \;
@@ -806,6 +794,7 @@ done
 
 %fdupes %{buildroot}%{p_include}
 %fdupes %{buildroot}%{p_libdir}
+%fdupes %{buildroot}%{p_prefix}/share/petsc/examples
 
 ##
 %post -n %{libname %_vers} -p /sbin/ldconfig
@@ -816,21 +805,22 @@ done
 
 %files -n %{libname %_vers}
 %doc docs/manual.pdf
-  %if %{without hpc}
-%dir %{p_libdir}/petsc
-%dir %{p_libdir}/petsc/%{version}
-  %else
-%hpc_dirs
-%hpc_modules_files
-%{dirname:%{hpc_python_sitearch_no_singlespec}}
-  %endif # with hpc
+
 %dir %{p_prefix}
 %dir %{p_prefix}/lib
 %{p_libdir}/*.so.*
-%{!?with_hpc:%{p_prefix}/lib/*.so.*}
 %{p_prefix}/share
 %exclude %{p_prefix}/share/petsc/examples
 %exclude %{p_prefix}/share/petsc/saws
+%if %{without hpc}
+%dir %{p_libdir}/petsc
+%dir %{p_libdir}/petsc/%{version}
+%{p_prefix}/lib/*.so.*
+%else
+%hpc_dirs
+%hpc_modules_files
+%{dirname:%{hpc_python_sitearch_no_singlespec}}
+%endif
 
 %files %{?n_pre}devel
 %{p_prefix}/lib/petsc/bin/
@@ -842,7 +832,7 @@ done
   %if %{without hpc}
 %{p_prefix}/lib/*.so
 %dir %{_datadir}/modules/%{name}-%{petsc_arch}
-%{_datadir}/modules/%{name}-%{petsc_arch}/%version%{?with_mpi:-%{mpi_family}%{?mpi_ext}}
+%{_datadir}/modules/%{name}-%{petsc_arch}/%version%{?with_mpi:-%{mpi_family}%{?mpi_vers}}
   %endif
 %{p_prefix}/share/petsc/examples
 
@@ -852,6 +842,7 @@ done
 %{p_prefix}/share/petsc/saws
 %endif
 
-%endif # !?makedoc
+%endif
+# !?makedoc
 
 %changelog

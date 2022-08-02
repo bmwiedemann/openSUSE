@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 16 19:49:40 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix library package name for non-HPC flavors.
+- Remove openmpi1 for non-HPC.
+- Correct valgrind-devel BuildRequires.
+- Add rpmlintrc to ignore some empty files in examples
+
+-------------------------------------------------------------------
 Wed Feb 16 15:39:12 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Fix HPC module settings (bsc#1195782).
