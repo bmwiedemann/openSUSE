@@ -39,7 +39,7 @@ Fri Jul 15 19:01:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * templates: Documentation consistency (#4796)
   * chore: Bump quic-go to v0.27.0 (#4782)
   * reverseproxy: Support http1.1>h2c (close #4777) (#4778)
-  * rewrite: Handle fragment before query (fix #4775)
+  * rewrite: Handle fragment before query (fix #4775) [bsc#1201822, CVE-2022-34037]
   * httpcaddyfile: Support multiple values for `default_bind` (#4774)
 
 -------------------------------------------------------------------
