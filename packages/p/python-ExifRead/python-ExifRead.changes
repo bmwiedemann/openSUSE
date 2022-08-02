@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug  2 13:23:00 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 3.0.0:
+  * BREAKING CHANGE: Add type hints, which removes Python2 compatibility
+  * Update make_string util to clean up bad values (#128)
+  * Fix Olympus SpecialMode Unknown Values (#143)
+  * Remove coding system from UserComment sequence only if it is valid (#147)
+  * Fixes to orientation
+  * Add some EXIF tags
+  * Add support for PNG files (#159)
+  * Fix for HEIC Unknown Parsers (#153)
+  * Handle images that has corrupted headers/tags (#152)
+
+-------------------------------------------------------------------
 Fri Aug 27 12:36:56 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.3.2:
