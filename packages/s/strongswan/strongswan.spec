@@ -17,7 +17,7 @@
 
 
 Name:           strongswan
-Version:        5.9.6
+Version:        5.9.7
 Release:        0
 %define         upstream_version     %{version}
 %define         strongswan_docdir    %{_docdir}/%{name}
@@ -566,7 +566,6 @@ fi
 %{_mandir}/man5/ipsec.secrets.5*
 %{_mandir}/man5/strongswan.conf.5*
 %dir %{_libexecdir}/ipsec
-%{_libexecdir}/ipsec/_copyright
 %{_libexecdir}/ipsec/_updown
 %if %{with test}
 %{_libexecdir}/ipsec/conftest

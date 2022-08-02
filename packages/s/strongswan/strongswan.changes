@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jul 30 06:48:29 UTC 2022 - Peter Conrad <conrad@quisquis.de>
+
+- Update to release 5.9.7
+  * The IKEv2 key derivation is now delayed until the keys are
+    actually needed to process or send the next message.
+  * Inbound IKEv2 messages, in particular requests, are now
+    processed differently.
+  * The retransmission logic in the dhcp plugin has been fixed.
+  * The connmark plugin now considers configured masks in
+    installed firewall rules.
+  * Child config selection has been fixed as responder in cases
+    where multiple children use transport mode traffic selectors.
+  * The outbound SA/policy is now also removed after IKEv1
+    CHILD_SA rekeyings.
+  * The openssl plugin supports AES and Camellia in CTR mode.
+  * The AES-XCBC/CMAC PRFs are demoted in the default proposal
+    (after HMAC-based PRFs) since they were never widely adopted.
+  * The kdf plugin is now automatically enabled if any of the
+    aesni, cmac or xcbc plugins are enabled, or if none of the
+    plugins that directly provide HMAC-based KDFs are enabled.
+
+-------------------------------------------------------------------
 Sat Apr 30 08:21:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.9.6
