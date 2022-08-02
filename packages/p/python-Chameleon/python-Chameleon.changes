@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  2 11:11:29 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- version update to 3.10.1
+  * Fix __str__ method of chameleon.exc.TemplateError (#356)
+  * Make scope class dict-like (#305)
+  * Work in FIPS enabled environments (#345)
+  * Fix tab handling issue (#350)
+
+-------------------------------------------------------------------
 Thu May 20 09:41:02 UTC 2021 - pgajdos@suse.com
 
 - version update to 3.9.1
