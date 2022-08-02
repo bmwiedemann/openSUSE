@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Aug  1 09:13:00 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Update to 3.2.1 and build with wxGTK3-3_2-devel.
+- Fix build with patch from upstream - fix.patch
+- Upstream changes:
+  * added support of font attribute 'underline' and "line-through"
+  * video properties: added possiblity to add video filters before
+    pad/scale filters
+  * some improvements of PCM support (experemental)
+  * added initial support of transparent highlighted colors
+  * disabled format selection for mjpeg streams (preview images)
+  * disabled "Copy" option for MP3 and PCM (because PCM need to be
+    repacked to big endian)
+  * ignore mjpeg streams (preview images)
+  * fixed creation of dvd with more than 100 hours
+  * fixed generation of DVD if some video streams are omitted
+  * fixed setting shadow if multiple objects are selected
+  * fixed slow loading of project files
+  * added some new buttons (thanks to ecodrv)
+
+-------------------------------------------------------------------
 Wed Apr  8 08:48:03 UTC 2020 - aloisio@gmx.com
 
 - Updated wxsvg version requirement

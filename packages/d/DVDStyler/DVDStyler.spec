@@ -1,7 +1,7 @@
 #
 # spec file for package DVDStyler
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012-2014 Mariusz Fik <fisiu@opensuse.org>
 # Copyright (c) 2011-2012 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2007-2011 Detlef Reichelt <detlef@links2linux.de>
@@ -22,7 +22,7 @@
 
 %define wxsvgver %(pkg-config --modversion libwxsvg)
 Name:           DVDStyler
-Version:        3.1.2
+Version:        3.2.1
 Release:        0
 Summary:        GUI frontend for dvdauthor and other related tools
 License:        GPL-3.0-or-later
@@ -31,18 +31,21 @@ Source:         https://sourceforge.net/projects/dvdstyler/files/dvdstyler/%{ver
 Source1:        gpl-3.0.txt
 # PATCH-FIX-UPSTREAM -- bmwiedemann https://sourceforge.net/p/dvdstyler/DVDStyler/merge-requests/1/
 Patch0:         reproducible.patch
+# PATCH-FIX-UPSTREAM -- https://sourceforge.net/p/dvdstyler/discussion/318795/thread/b40e1d871f/993d/attachment/fix.patch
+Patch1:         fix.patch
 BuildRequires:  bison
-#!BuildIgnore: cdrkit-cdrtools-compat
+#!BuildIgnore:  wxWidgets-3_2-devel
 BuildRequires:  dvd+rw-tools
 BuildRequires:  dvdauthor
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
+#BuildRequires:  mc
 BuildRequires:  mkisofs >= 2.01
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
-BuildRequires:  wxWidgets-3_0-devel
+BuildRequires:  wxGTK3-3_2-devel
 BuildRequires:  xmlto
 BuildRequires:  zip
 BuildRequires:  pkgconfig(libavcodec)
@@ -118,6 +121,7 @@ export FFMPEG_PATH=%{_bindir}/ffmpeg
 %license COPYING gpl-3.0.txt
 %{_bindir}/dvdstyler
 %{_datadir}/applications/dvdstyler.desktop
+%{_datadir}/metainfo/dvdstyler.appdata.xml
 %{_datadir}/dvdstyler
 %{_datadir}/pixmaps/dvdstyler.png
 %{_mandir}/man1/dvdstyler.1%{ext_man}
