@@ -4730,6 +4730,8 @@ unsorted:
   - ghc-deepseq-devel: [x86_64] 
   - ghc-dense-linear-algebra: [x86_64] 
   - ghc-dense-linear-algebra-devel: [x86_64] 
+  - ghc-deriving-aeson: [x86_64] 
+  - ghc-deriving-aeson-devel: [x86_64] 
   - ghc-dhall: [x86_64] 
   - ghc-dhall-devel: [x86_64] 
   - ghc-dhall-json: [x86_64] 
@@ -4934,6 +4936,8 @@ unsorted:
   - ghc-hslua-devel: [x86_64] 
   - ghc-hslua-marshalling: [x86_64] 
   - ghc-hslua-marshalling-devel: [x86_64] 
+  - ghc-hslua-module-doclayout: [x86_64] 
+  - ghc-hslua-module-doclayout-devel: [x86_64] 
   - ghc-hslua-module-path: [x86_64] 
   - ghc-hslua-module-path-devel: [x86_64] 
   - ghc-hslua-module-system: [x86_64] 
@@ -6058,7 +6062,9 @@ unsorted:
   - gnu-unifont-legacy-bitmap-fonts 
   - gnu_ddrescue 
   - gnu_parallel 
+  - gnu_parallel-bash-completion 
   - gnu_parallel-doc 
+  - gnu_parallel-zsh-completion 
   - gnuastro 
   - gnuastro-bash-completion 
   - gnuastro-devel 
@@ -6653,6 +6659,8 @@ unsorted:
   - guilt 
   - guitarix 
   - guix 
+  - gulkan-devel 
+  - gulkan0_15-0 
   - gummi 
   - gummi-lang 
   - gup 
@@ -9444,6 +9452,8 @@ unsorted:
   - libX11-devel: [i586] # devel package of common_locks:libX11-xcb1 
   - libX11-devel-32bit: [x86_64] 
   - libX11-xcb1-32bit: [x86_64] 
+  - libXNVCtrl-devel 
+  - libXNVCtrl0 
   - libXRes1-32bit: [x86_64] 
   - libXau-devel: [i586] # devel package of common_locks:libXau6 
   - libXau-devel-32bit: [x86_64] 
@@ -10534,7 +10544,7 @@ unsorted:
   - libdhash-devel-32bit: [x86_64] 
   - libdhash1-32bit: [x86_64] 
   - libdico2 
-  - libdigikamcore7_6_0 
+  - libdigikamcore7_7_0 
   - libdirac_decoder0 
   - libdirac_decoder0-32bit: [x86_64] 
   - libdirac_encoder0 
@@ -11728,6 +11738,8 @@ unsorted:
   - libinput-devel 
   - libinput-tools 
   - libinput10-32bit: [x86_64] 
+  - libinputsynth-devel 
+  - libinputsynth0_15-0 
   - libinsane-devel 
   - libinsane1 
   - libinsane_gobject-devel 
@@ -12245,7 +12257,7 @@ unsorted:
   - libmikmod-devel 
   - libmikmod3-32bit: [x86_64] 
   - libmilter-doc 
-  - libmimalloc2_0 
+  - libmimalloc2 
   - libmimetic-devel 
   - libmimetic0 
   - libminisat2 
@@ -15078,6 +15090,8 @@ unsorted:
   - libyui-qt-rest-api16 
   - libyui-rest-api-devel 
   - libyui-rest-api16 
+  - libyuv-devel 
+  - libyuv0 
   - libz-ng2 
   - libz3-4_8 
   - libzapojit-0_0-0 
@@ -16438,7 +16452,7 @@ unsorted:
   - mojo-executor-javadoc 
   - mojo-parent 
   - moka-icon-theme 
-  - mold: [x86_64] 
+  - mold 
   - molequeue 
   - molequeue-devel 
   - molequeue-doc 
@@ -19149,6 +19163,7 @@ unsorted:
   - perl-Algorithm-Combinatorics 
   - perl-Algorithm-Diff 
   - perl-Alien-Build 
+  - perl-Alien-Hunspell 
   - perl-Alien-Libxml2 
   - perl-Alien-SDL 
   - perl-Alien-Tidyp 
@@ -19999,6 +20014,7 @@ unsorted:
   - perl-PerlIO-via-dynamic 
   - perl-PerlMagick 
   - perl-PerlX-Maybe 
+  - perl-PkgConfig 
   - perl-Plack 
   - perl-Plack-App-WebSocket 
   - perl-Plack-Middleware-FixMissingBodyInRedirect 
@@ -20050,6 +20066,7 @@ unsorted:
   - perl-Reply 
   - perl-Return-Value 
   - perl-Role-HasMessage 
+  - perl-Role-Hooks 
   - perl-Role-Identifiable 
   - perl-Role-Tiny 
   - perl-Rose-Object 
@@ -20180,6 +20197,7 @@ unsorted:
   - perl-Term-Terminfo 
   - perl-Term-UI 
   - perl-Test-API 
+  - perl-Test-Alien-CPP 
   - perl-Test-Assert 
   - perl-Test-Base 
   - perl-Test-CChecker 
@@ -24402,6 +24420,7 @@ unsorted:
   - python310-rebulk 
   - python310-recommonmark 
   - python310-reconfigure 
+  - python310-recordclass 
   - python310-redbaron 
   - python310-redfish 
   - python310-redis: [i586] 
@@ -24764,6 +24783,7 @@ unsorted:
   - python310-trio 
   - python310-trove-classifiers 
   - python310-trustme 
+  - python310-truststore 
   - python310-tsk 
   - python310-tweepy 
   - python310-twine 
@@ -27675,6 +27695,7 @@ unsorted:
   - python38-rebulk 
   - python38-recommonmark 
   - python38-reconfigure 
+  - python38-recordclass 
   - python38-redbaron 
   - python38-redfish 
   - python38-redis 
@@ -30987,6 +31008,7 @@ unsorted:
   - python39-rebulk 
   - python39-recommonmark 
   - python39-reconfigure 
+  - python39-recordclass 
   - python39-redbaron 
   - python39-redfish 
   - python39-redis 
