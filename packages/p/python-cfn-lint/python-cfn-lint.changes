@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu May 26 12:28:47 UTC 2022 - pgajdos@suse.com
+
+- version update to 0.60.1
+  * Update CloudFormation specs to 72.0.0 (pull #2272)
+  * Don't allow regex expressions that result in a warning (pull #2272)
+  * Move null checks from the parsing engine into rules (pull #2242)
+  * Add rule E4002 to validate metadata config (pull #2242)
+  * Update rule E2001 to error on null values (pull #2242)
+  * Update rule E3012 to validate for null values in properties (pull #2242)
+  * Update CloudFormation specs to 69.0.0 (pull #2261)
+  * Update CloudFormation specs to 66.1.0 (pull #2255)
+  * Lambda runtime deprecation updates (python3.6) (pull #2252)
+  * Update rule E3002 to consider a list as valid JSON (pull #2253)
+  * Update aws-sam-translator to 1.45.0 (pull #2245)
+  * Remove dependency on six (pull #2204)
+  * New rule E3504 to validate resources with AWS::Backup::BackupPlan. 
+    The property DeleteAfterDays cannot be less than 90 days from
+    MoveToColdStorageAfterDays (pull #2230)
+  * Update CloudFormation specs to 66.0.0 (pull #2245)
+  * Update CloudFormation specs to 61.0.0 (pull #2232)
+  * Update SAM Transform pre work to add ImageUri when using Image as PackageType in AWS::Serverless::Function (pull #2236)
+  * Update CloudFormation specs to 59.0.0 (pull #2225)
+  * Remove allowed values for AWS::Config::ConfigurationRecorder.ResourceTypes (pull #2231)
+  * Wrap creating a YAML map with try/except and create lint error on failure (pull #2226)
+  * Update CloudFormation specs to 58.0.0 (pull #2217)
+  * W2506: Avoid false positives when using a Ref against a resource (pull #2210)
+  * E3502: Blank out functions in JSON size check to prevent false positives (pull #2222)
+  * Update CloudFormation specs to 56.0.0 (pull #2207)
+  * Update rule E3020 to validate that TTL isn't added for Alias records (pull #2195)
+  * Remove imports to pathlib2 with deprecation of Python 2.7, 3.4, and 3.5 (pull #2205)
+  * Improvements to json parsing code (pull #2199)
+  * Update CloudFormation specs to 54.0.0 (pull #2202)
+  * Fix an issue checking values of false in custom rules (pull #2208)
+  * EOL of Python 2.7, 3.4, and 3.5 support (pull #2195)
+  * Update CloudFormation specs to 53.0.0 (pull #2196)
+  * Fix an issue with rule E2001 to allow string parameter constraints for all AWS specific types (pull #2193)
+  * Update CloudFormation specs to 52.0.0 (pull #2188)
+  * Add region ap-southeast-3 (pull #2192)
+  * Update aws-sam-translator to 1.42.0 (pull #2183)
+  * Update CloudFormation specs to 50.0.0 (pull #2180)
+  * Update CloudFormation specs to 49.0.0 (pull #2178)
+  * Expand StatefulResources to include AWS::OpenSearchService::Domain (pull #2179)
+  * Add AWS::EKS::Cluster.ClusterSecurityGroupId to GetAtt list of AWS::EC2::SecurityGroup.NameOrGroupId (pull #2177)
+  * Update CloudFormation specs to 48.0.0 (pull #2170)
+  * Add AWS::OpenSearchService::Domain to be in the list for EnableVersionUpgrade (pull #2174)
+  * Update aws-sam-translator to 1.40.0 (pull #2165)
+  * Update CloudFormation specs to 47.0.0 (pull #2164)
+  * Switching logging level for samtranslator to CRITICAL (pull #2168)
+  * Adds support for outputting results in SARIF (pull #2126)
+  * Update CloudFormation specs to 46.0.0 (pull #2158)
+
+-------------------------------------------------------------------
 Mon Dec  6 21:34:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.54.4:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-cfn-lint
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-cfn-lint
-Version:        0.54.4
+Version:        0.60.1
 Release:        0
 Summary:        Tool to checks cloudformation for practices and behaviour
 License:        MIT
@@ -37,6 +37,7 @@ Requires:       python-jsonpatch
 Requires:       python-jsonschema > 3.0
 Requires:       python-junit-xml >= 1.9
 Requires:       python-requests >= 2.15.0
+Requires:       python-sarif-om >= 1.0.4
 Requires:       python-six >= 1.11
 %if 0%{python_version_nodots} <= 34
 Requires:       python-importlib_resources >= 1.0.2
@@ -53,6 +54,7 @@ Requires:       python-importlib_resources >= 1.4
 
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Requires:       python-jschema-to-python >= 1.2.3
 Recommends:     python-pydot
 Provides:       cfn-lint = %{version}
 Obsoletes:      cfn-lint < %{version}
@@ -63,14 +65,16 @@ BuildRequires:  python
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.4}
 BuildRequires:  %{python_module aws-sam-translator >= 1.39.0}
+BuildRequires:  %{python_module jschema-to-python >= 1.2.3}
 BuildRequires:  %{python_module jsonpatch}
 BuildRequires:  %{python_module jsonschema > 3.0}
 BuildRequires:  %{python_module junit-xml >= 1.9}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module networkx >= 2.2}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pydot}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.15.0}
+BuildRequires:  %{python_module sarif-om >= 1.0.4}
 BuildRequires:  %{python_module six >= 1.11}
 BuildRequires:  bash
 BuildRequires:  git-core
@@ -126,7 +130,8 @@ git add src/cfnlint/rules
 ln -sf %{buildroot}%{_bindir}/cfn-lint-%{$python_bin_suffix} bin/cfn-lint
 export PATH="./bin:$OPATH"
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python -B -m unittest discover -s test -v
+# test_sarif_formatter: online test
+$python -B -m pytest -s test -v -k 'not test_sarif_formatter'
 }
 
 %files %{python_files}
