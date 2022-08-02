@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug  2 15:45:47 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- It's PyYAML, not pyYAML.
+
+-------------------------------------------------------------------
+Tue Aug  2 08:23:02 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix two typos
+
+-------------------------------------------------------------------
+Mon Aug  1 21:35:10 UTC 2022 - Marina Latini <marina.latini@suse.com>
+
+- Enhanced dependency management for Py3.7 and earlier
+  * Re-add `responses` that is needed for building tests
+- Use python_module macro for build requires
+- Remove the BuildRequires:  %{python_module devel}
+- Refactoring of spec file with spec-cleaner
+
+-------------------------------------------------------------------
 Thu Jul 21 14:15:00 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.6.6

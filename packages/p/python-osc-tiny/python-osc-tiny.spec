@@ -27,7 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/crazyscientist/osc-tiny
 Source:         https://files.pythonhosted.org/packages/source/o/osc-tiny/osc-tiny-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
@@ -42,12 +41,12 @@ Requires:       python-lxml
 Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires:       python-requests
-%if %python_version_nodots < 38
-BuildRequires:  python3-cached-property
-Requires:       python-cached-property
-%endif
 Suggests:       openssh
 BuildArch:      noarch
+%if %python_version_nodots < 38
+BuildRequires:  %{python_module cached-property}
+Requires:       python-cached-property
+%endif
 %python_subpackages
 
 %description
@@ -56,9 +55,9 @@ accessing the OpenBuildService API.
 
 For further details see:
 
-* https://osc-tiny.readthedocs.io/en/latest/
-* https://openbuildservice.org/
-* https://build.opensuse.org/apidocs/index
+ * https://osc-tiny.readthedocs.io/en/latest/
+ * https://openbuildservice.org/
+ * https://build.opensuse.org/apidocs/index
 
 %prep
 %setup -q -n osc-tiny-%{version}
@@ -66,12 +65,12 @@ For further details see:
 %build
 %python_build
 
-%check
-%pytest
-
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc README.md

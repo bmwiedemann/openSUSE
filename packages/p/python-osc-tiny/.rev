@@ -145,4 +145,19 @@
     <comment></comment>
     <requestid>990578</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>82b0d9ecf5543edfe44987bcaa573e3e</srcmd5>
+    <version>0.6.6</version>
+    <time>1659470973</time>
+    <user>dimstar_suse</user>
+    <comment>- It's PyYAML, not pyYAML.
+- Fix two typos
+- Enhanced dependency management for Py3.7 and earlier
+  * Re-add `responses` that is needed for building tests
+- Use python_module macro for build requires
+- Remove the BuildRequires:  %{python_module devel}
+- Refactoring of spec file with spec-cleaner
+</comment>
+    <requestid>992375</requestid>
+  </revision>
 </revisionlist>
