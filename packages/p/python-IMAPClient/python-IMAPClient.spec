@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-IMAPClient
-Version:        2.2.0
+Version:        2.3.1
 Release:        0
 Summary:        Pythonic IMAP client library
 License:        BSD-3-Clause
