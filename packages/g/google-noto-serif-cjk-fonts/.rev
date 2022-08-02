@@ -56,4 +56,12 @@
   * Fixed Korean IVS mapping for U+8ACB as reported in Issue #276</comment>
     <requestid>990775</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e8d12aea12880c07ef9e5a67d75b7924</srcmd5>
+    <version>2.001</version>
+    <time>1659470980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992339</requestid>
+  </revision>
 </revisionlist>

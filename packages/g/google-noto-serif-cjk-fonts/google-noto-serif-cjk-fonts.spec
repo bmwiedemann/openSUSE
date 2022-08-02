@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+# FIXME: When there is a version higher than 2.001, change the <= back to < for Obsoletes
 Name:           google-noto-serif-cjk-fonts
 Version:        2.001
 Release:        0
@@ -32,494 +32,584 @@ BuildArch:      noarch
 Noto's design goal is to achieve visual harmonization (e.g., compatible heights and stroke
 thicknesses) across languages.
 
-%package -n noto-serif-sc-regular-fonts
+%package -n google-noto-serif-sc-regular-fonts
 Summary:        Noto Serif Simplified Chinese Font - Regular
 Group:          System/X11/Fonts
+Provides:       noto-serif-sc-regular-fonts = %{version}
+Obsoletes:      noto-serif-sc-regular-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-sc-regular-fonts
+%description -n google-noto-serif-sc-regular-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Regular weight of Serif font for Simplified Chinese, hinted.
 
-%package -n noto-serif-sc-semibold-fonts
+%package -n google-noto-serif-sc-semibold-fonts
 Summary:        Noto Serif Simplified Chinese Font - SemiBold
 Group:          System/X11/Fonts
+Provides:       noto-serif-sc-semibold-fonts = %{version}
+Obsoletes:      noto-serif-sc-semibold-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-sc-semibold-fonts
+%description -n google-noto-serif-sc-semibold-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 SemiBold weight of Serif font for Simplified Chinese, hinted.
 
-%package -n noto-serif-sc-light-fonts
+%package -n google-noto-serif-sc-light-fonts
 Summary:        Noto Serif Simplified Chinese Font - Light
 Group:          System/X11/Fonts
+Provides:       noto-serif-sc-light-fonts = %{version}
+Obsoletes:      noto-serif-sc-light-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-sc-light-fonts
+%description -n google-noto-serif-sc-light-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Light weight of Serif font for Simplified Chinese, hinted.
 
-%package -n noto-serif-sc-extralight-fonts
+%package -n google-noto-serif-sc-extralight-fonts
 Summary:        Noto Serif Simplified Chinese Font - Extralight
 Group:          System/X11/Fonts
+Provides:       noto-serif-sc-extralight-fonts = %{version}
+Obsoletes:      noto-serif-sc-extralight-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-sc-extralight-fonts
+%description -n google-noto-serif-sc-extralight-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Extralight weight of Serif font for Simplified Chinese, hinted.
 
-%package -n noto-serif-sc-bold-fonts
+%package -n google-noto-serif-sc-bold-fonts
 Summary:        Noto Serif Simplified Chinese Font - Bold
 Group:          System/X11/Fonts
+Provides:       noto-serif-sc-bold-fonts = %{version}
+Obsoletes:      noto-serif-sc-bold-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-sc-bold-fonts
+%description -n google-noto-serif-sc-bold-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Bold weight of Serif font for Simplified Chinese, hinted.
 
-%package -n noto-serif-sc-black-fonts
+%package -n google-noto-serif-sc-black-fonts
 Summary:        Noto Serif Simplified Chinese Font - Black
 Group:          System/X11/Fonts
+Provides:       noto-serif-sc-black-fonts = %{version}
+Obsoletes:      noto-serif-sc-black-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-sc-black-fonts
+%description -n google-noto-serif-sc-black-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Black weight of Serif font for Simplified Chinese, hinted.
 
-%package -n noto-serif-sc-medium-fonts
+%package -n google-noto-serif-sc-medium-fonts
 Summary:        Noto Serif Simplified Chinese Font - Medium
 Group:          System/X11/Fonts
+Provides:       noto-serif-sc-medium-fonts = %{version}
+Obsoletes:      noto-serif-sc-medium-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-sc-medium-fonts
+%description -n google-noto-serif-sc-medium-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Medium weight of Serif font for Simplified Chinese, hinted.
 
-%package -n noto-serif-sc-fonts
+%package -n google-noto-serif-sc-fonts
 Summary:        Noto Serif Simplified Chinese Font - Regular and Bold
 Group:          System/X11/Fonts
+Provides:       noto-serif-sc-fonts = %{version}
+Obsoletes:      noto-serif-sc-fonts <= %{version}
 Provides:       scalable-font-zh-CN
 Provides:       scalable-font-zh-SG
 Provides:       locale(zh_CN;zh_SG)
-Requires:       noto-serif-sc-bold-fonts = %{version}
-Requires:       noto-serif-sc-regular-fonts = %{version}
+Requires:       google-noto-serif-sc-bold-fonts = %{version}
+Requires:       google-noto-serif-sc-regular-fonts = %{version}
 
-%description -n noto-serif-sc-fonts
+%description -n google-noto-serif-sc-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Regular and Bold weights of Serif font for Simplified Chinese, hinted.
 
-%package -n noto-serif-sc-fonts-full
+%package -n google-noto-serif-sc-fonts-full
 Summary:        Noto Serif Simplified Chinese Font - All Weights
 Group:          System/X11/Fonts
-Requires:       noto-serif-sc-black-fonts = %{version}
-Requires:       noto-serif-sc-extralight-fonts = %{version}
-Requires:       noto-serif-sc-fonts = %{version}
-Requires:       noto-serif-sc-light-fonts = %{version}
-Requires:       noto-serif-sc-medium-fonts = %{version}
-Requires:       noto-serif-sc-semibold-fonts = %{version}
+Provides:       noto-serif-sc-fonts-full = %{version}
+Obsoletes:      noto-serif-sc-fonts-full <= %{version}
+Requires:       google-noto-serif-sc-black-fonts = %{version}
+Requires:       google-noto-serif-sc-extralight-fonts = %{version}
+Requires:       google-noto-serif-sc-fonts = %{version}
+Requires:       google-noto-serif-sc-light-fonts = %{version}
+Requires:       google-noto-serif-sc-medium-fonts = %{version}
+Requires:       google-noto-serif-sc-semibold-fonts = %{version}
 
-%description -n noto-serif-sc-fonts-full
+%description -n google-noto-serif-sc-fonts-full
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 All weights of Serif font for Simplified Chinese, hinted.
 
-%package -n noto-serif-tc-regular-fonts
+%package -n google-noto-serif-tc-regular-fonts
 Summary:        Noto Serif Traditional Chinese Font - Regular
 Group:          System/X11/Fonts
+Provides:       noto-serif-tc-regular-fonts = %{version}
+Obsoletes:      noto-serif-tc-regular-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-tc-regular-fonts
+%description -n google-noto-serif-tc-regular-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Regular weight of Serif font for Traditional Chinese, hinted.
 
-%package -n noto-serif-tc-semibold-fonts
+%package -n google-noto-serif-tc-semibold-fonts
 Summary:        Noto Serif Traditional Chinese Font - SemiBold
 Group:          System/X11/Fonts
+Provides:       noto-serif-tc-semibold-fonts = %{version}
+Obsoletes:      noto-serif-tc-semibold-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-tc-semibold-fonts
+%description -n google-noto-serif-tc-semibold-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 SemiBold weight of Serif font for Traditional Chinese, hinted.
 
-%package -n noto-serif-tc-light-fonts
+%package -n google-noto-serif-tc-light-fonts
 Summary:        Noto Serif Traditional Chinese Font - Light
 Group:          System/X11/Fonts
+Provides:       noto-serif-tc-light-fonts = %{version}
+Obsoletes:      noto-serif-tc-light-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-tc-light-fonts
+%description -n google-noto-serif-tc-light-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Light weight of Serif font for Traditional Chinese, hinted.
 
-%package -n noto-serif-tc-extralight-fonts
+%package -n google-noto-serif-tc-extralight-fonts
 Summary:        Noto Serif Traditional Chinese Font - Extralight
 Group:          System/X11/Fonts
+Provides:       noto-serif-tc-extralight-fonts = %{version}
+Obsoletes:      noto-serif-tc-extralight-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-tc-extralight-fonts
+%description -n google-noto-serif-tc-extralight-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Extralight weight of Serif font for Traditional Chinese, hinted.
 
-%package -n noto-serif-tc-bold-fonts
+%package -n google-noto-serif-tc-bold-fonts
 Summary:        Noto Serif Traditional Chinese Font - Bold
 Group:          System/X11/Fonts
+Provides:       noto-serif-tc-bold-fonts = %{version}
+Obsoletes:      noto-serif-tc-bold-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-tc-bold-fonts
+%description -n google-noto-serif-tc-bold-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Bold weight of Serif font for Traditional Chinese, hinted.
 
-%package -n noto-serif-tc-black-fonts
+%package -n google-noto-serif-tc-black-fonts
 Summary:        Noto Serif Traditional Chinese Font - Black
 Group:          System/X11/Fonts
+Provides:       noto-serif-tc-black-fonts = %{version}
+Obsoletes:      noto-serif-tc-black-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-tc-black-fonts
+%description -n google-noto-serif-tc-black-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Black weight of Serif font for Traditional Chinese, hinted.
 
-%package -n noto-serif-tc-medium-fonts
+%package -n google-noto-serif-tc-medium-fonts
 Summary:        Noto Serif Traditional Chinese Font - Medium
 Group:          System/X11/Fonts
+Provides:       noto-serif-tc-medium-fonts = %{version}
+Obsoletes:      noto-serif-tc-medium-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-tc-medium-fonts
+%description -n google-noto-serif-tc-medium-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Medium weight of Serif font for Traditional Chinese, hinted.
 
-%package -n noto-serif-tc-fonts
+%package -n google-noto-serif-tc-fonts
 Summary:        Noto Serif Traditional Chinese Font - Regular and Bold
 Group:          System/X11/Fonts
-Provides:       scalable-font-zh-MO
+Provides:       noto-serif-tc-fonts = %{version}
+Obsoletes:      noto-serif-tc-fonts <= %{version}
 Provides:       scalable-font-zh-TW
-Provides:       locale(zh_MO;zh_TW)
-Requires:       noto-serif-tc-bold-fonts = %{version}
-Requires:       noto-serif-tc-regular-fonts = %{version}
+Provides:       locale(zh_TW)
+Requires:       google-noto-serif-tc-bold-fonts = %{version}
+Requires:       google-noto-serif-tc-regular-fonts = %{version}
 
-%description -n noto-serif-tc-fonts
+%description -n google-noto-serif-tc-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Regular and Bold weights of Serif font for Traditional Chinese, hinted.
 
-%package -n noto-serif-tc-fonts-full
+%package -n google-noto-serif-tc-fonts-full
 Summary:        Noto Serif Traditional Chinese Font - All Weights
 Group:          System/X11/Fonts
-Requires:       noto-serif-tc-black-fonts = %{version}
-Requires:       noto-serif-tc-extralight-fonts = %{version}
-Requires:       noto-serif-tc-fonts = %{version}
-Requires:       noto-serif-tc-light-fonts = %{version}
-Requires:       noto-serif-tc-medium-fonts = %{version}
-Requires:       noto-serif-tc-semibold-fonts = %{version}
+Provides:       noto-serif-tc-fonts-full = %{version}
+Obsoletes:      noto-serif-tc-fonts-full <= %{version}
+Requires:       google-noto-serif-tc-black-fonts = %{version}
+Requires:       google-noto-serif-tc-extralight-fonts = %{version}
+Requires:       google-noto-serif-tc-fonts = %{version}
+Requires:       google-noto-serif-tc-light-fonts = %{version}
+Requires:       google-noto-serif-tc-medium-fonts = %{version}
+Requires:       google-noto-serif-tc-semibold-fonts = %{version}
 
-%description -n noto-serif-tc-fonts-full
+%description -n google-noto-serif-tc-fonts-full
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 All weights of Serif font for Traditional Chinese, hinted.
 
-%package -n noto-serif-hk-regular-fonts
+%package -n google-noto-serif-hk-regular-fonts
 Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - Regular
 Group:          System/X11/Fonts
+Provides:       noto-serif-hk-regular-fonts = %{version}
+Obsoletes:      noto-serif-hk-regular-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-hk-regular-fonts
+%description -n google-noto-serif-hk-regular-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Regular weight of Serif font for Traditional Chinese (Hong Kong), hinted.
 
-%package -n noto-serif-hk-semibold-fonts
+%package -n google-noto-serif-hk-semibold-fonts
 Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - SemiBold
 Group:          System/X11/Fonts
+Provides:       noto-serif-hk-semibold-fonts = %{version}
+Obsoletes:      noto-serif-hk-semibold-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-hk-semibold-fonts
+%description -n google-noto-serif-hk-semibold-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 SemiBold weight of Serif font for Traditional Chinese (Hong Kong), hinted.
 
-%package -n noto-serif-hk-light-fonts
+%package -n google-noto-serif-hk-light-fonts
 Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - Light
 Group:          System/X11/Fonts
+Provides:       noto-serif-hk-light-fonts = %{version}
+Obsoletes:      noto-serif-hk-light-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-hk-light-fonts
+%description -n google-noto-serif-hk-light-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Light weight of Serif font for Traditional Chinese (Hong Kong), hinted.
 
-%package -n noto-serif-hk-extralight-fonts
+%package -n google-noto-serif-hk-extralight-fonts
 Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - Extralight
 Group:          System/X11/Fonts
+Provides:       noto-serif-hk-extralight-fonts = %{version}
+Obsoletes:      noto-serif-hk-extralight-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-hk-extralight-fonts
+%description -n google-noto-serif-hk-extralight-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Extralight weight of Serif font for Traditional Chinese (Hong Kong), hinted.
 
-%package -n noto-serif-hk-bold-fonts
+%package -n google-noto-serif-hk-bold-fonts
 Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - Bold
 Group:          System/X11/Fonts
+Provides:       noto-serif-hk-bold-fonts = %{version}
+Obsoletes:      noto-serif-hk-bold-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-hk-bold-fonts
+%description -n google-noto-serif-hk-bold-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Bold weight of Serif font for Traditional Chinese (Hong Kong), hinted.
 
-%package -n noto-serif-hk-black-fonts
+%package -n google-noto-serif-hk-black-fonts
 Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - Black
 Group:          System/X11/Fonts
+Provides:       noto-serif-hk-black-fonts = %{version}
+Obsoletes:      noto-serif-hk-black-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-hk-black-fonts
+%description -n google-noto-serif-hk-black-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Black weight of Serif font for Traditional Chinese (Hong Kong), hinted.
 
-%package -n noto-serif-hk-medium-fonts
+%package -n google-noto-serif-hk-medium-fonts
 Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - Medium
 Group:          System/X11/Fonts
+Provides:       noto-serif-hk-medium-fonts = %{version}
+Obsoletes:      noto-serif-hk-medium-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-hk-medium-fonts
+%description -n google-noto-serif-hk-medium-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Medium weight of Serif font for Traditional Chinese (Hong Kong), hinted.
 
-%package -n noto-serif-hk-fonts
+%package -n google-noto-serif-hk-fonts
 Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - Regular and Bold
 Group:          System/X11/Fonts
+Provides:       noto-serif-hk-fonts = %{version}
+Obsoletes:      noto-serif-hk-fonts <= %{version}
 Provides:       scalable-font-zh-HK
-Provides:       locale(zh_HK)
-Requires:       noto-serif-hk-bold-fonts = %{version}
-Requires:       noto-serif-hk-regular-fonts = %{version}
+Provides:       scalable-font-zh-MO
+Provides:       locale(zh_HK;zh_MO)
+Requires:       google-noto-serif-hk-bold-fonts = %{version}
+Requires:       google-noto-serif-hk-regular-fonts = %{version}
 
-%description -n noto-serif-hk-fonts
+%description -n google-noto-serif-hk-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Regular and Bold weights of Serif font for Traditional Chinese (Hong Kong), hinted.
 
-%package -n noto-serif-hk-fonts-full
+%package -n google-noto-serif-hk-fonts-full
 Summary:        Noto Serif Traditional Chinese (Hong Kong) Font - All Weights
 Group:          System/X11/Fonts
-Requires:       noto-serif-hk-black-fonts = %{version}
-Requires:       noto-serif-hk-extralight-fonts = %{version}
-Requires:       noto-serif-hk-fonts = %{version}
-Requires:       noto-serif-hk-light-fonts = %{version}
-Requires:       noto-serif-hk-medium-fonts = %{version}
-Requires:       noto-serif-hk-semibold-fonts = %{version}
+Provides:       noto-serif-hk-fonts-full = %{version}
+Obsoletes:      noto-serif-hk-fonts-full <= %{version}
+Requires:       google-noto-serif-hk-black-fonts = %{version}
+Requires:       google-noto-serif-hk-extralight-fonts = %{version}
+Requires:       google-noto-serif-hk-fonts = %{version}
+Requires:       google-noto-serif-hk-light-fonts = %{version}
+Requires:       google-noto-serif-hk-medium-fonts = %{version}
+Requires:       google-noto-serif-hk-semibold-fonts = %{version}
 
-%description -n noto-serif-hk-fonts-full
+%description -n google-noto-serif-hk-fonts-full
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 All weights of Serif font for Traditional Chinese (Hong Kong), hinted.
 
-%package -n noto-serif-jp-regular-fonts
+%package -n google-noto-serif-jp-regular-fonts
 Summary:        Noto Serif Japanese Font - Regular
 Group:          System/X11/Fonts
+Provides:       noto-serif-jp-regular-fonts = %{version}
+Obsoletes:      noto-serif-jp-regular-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-jp-regular-fonts
+%description -n google-noto-serif-jp-regular-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Regular weight of Serif font for Japanese, hinted.
 
-%package -n noto-serif-jp-semibold-fonts
+%package -n google-noto-serif-jp-semibold-fonts
 Summary:        Noto Serif Japanese Font - SemiBold
 Group:          System/X11/Fonts
+Provides:       noto-serif-jp-semibold-fonts = %{version}
+Obsoletes:      noto-serif-jp-semibold-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-jp-semibold-fonts
+%description -n google-noto-serif-jp-semibold-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 SemiBold weight of Serif font for Japanese, hinted.
 
-%package -n noto-serif-jp-light-fonts
+%package -n google-noto-serif-jp-light-fonts
 Summary:        Noto Serif Japanese Font - Light
 Group:          System/X11/Fonts
+Provides:       noto-serif-jp-light-fonts = %{version}
+Obsoletes:      noto-serif-jp-light-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-jp-light-fonts
+%description -n google-noto-serif-jp-light-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Light weight of Serif font for Japanese, hinted.
 
-%package -n noto-serif-jp-extralight-fonts
+%package -n google-noto-serif-jp-extralight-fonts
 Summary:        Noto Serif Japanese Font - Extralight
 Group:          System/X11/Fonts
+Provides:       noto-serif-jp-extralight-fonts = %{version}
+Obsoletes:      noto-serif-jp-extralight-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-jp-extralight-fonts
+%description -n google-noto-serif-jp-extralight-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Extralight weight of Serif font for Japanese, hinted.
 
-%package -n noto-serif-jp-bold-fonts
+%package -n google-noto-serif-jp-bold-fonts
 Summary:        Noto Serif Japanese Font - Bold
 Group:          System/X11/Fonts
+Provides:       noto-serif-jp-bold-fonts = %{version}
+Obsoletes:      noto-serif-jp-bold-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-jp-bold-fonts
+%description -n google-noto-serif-jp-bold-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Bold weight of Serif font for Japanese, hinted.
 
-%package -n noto-serif-jp-black-fonts
+%package -n google-noto-serif-jp-black-fonts
 Summary:        Noto Serif Japanese Font - Black
 Group:          System/X11/Fonts
+Provides:       noto-serif-jp-black-fonts = %{version}
+Obsoletes:      noto-serif-jp-black-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-jp-black-fonts
+%description -n google-noto-serif-jp-black-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Black weight of Serif font for Japanese, hinted.
 
-%package -n noto-serif-jp-medium-fonts
+%package -n google-noto-serif-jp-medium-fonts
 Summary:        Noto Serif Japanese Font - Medium
 Group:          System/X11/Fonts
+Provides:       noto-serif-jp-medium-fonts = %{version}
+Obsoletes:      noto-serif-jp-medium-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-jp-medium-fonts
+%description -n google-noto-serif-jp-medium-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Medium weight of Serif font for Japanese, hinted.
 
-%package -n noto-serif-jp-fonts
+%package -n google-noto-serif-jp-fonts
 Summary:        Noto Serif Japanese Font - Regular and Bold
 Group:          System/X11/Fonts
+Provides:       noto-serif-jp-fonts = %{version}
+Obsoletes:      noto-serif-jp-fonts <= %{version}
 Provides:       scalable-font-ja
 Provides:       locale(ja)
-Requires:       noto-serif-jp-bold-fonts = %{version}
-Requires:       noto-serif-jp-regular-fonts = %{version}
+Requires:       google-noto-serif-jp-bold-fonts = %{version}
+Requires:       google-noto-serif-jp-regular-fonts = %{version}
 
-%description -n noto-serif-jp-fonts
+%description -n google-noto-serif-jp-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Regular and Bold weights of Serif font for Japanese, hinted.
 
-%package -n noto-serif-jp-fonts-full
+%package -n google-noto-serif-jp-fonts-full
 Summary:        Noto Serif Japanese Font - All Weights
 Group:          System/X11/Fonts
-Requires:       noto-serif-jp-black-fonts = %{version}
-Requires:       noto-serif-jp-extralight-fonts = %{version}
-Requires:       noto-serif-jp-fonts = %{version}
-Requires:       noto-serif-jp-light-fonts = %{version}
-Requires:       noto-serif-jp-medium-fonts = %{version}
-Requires:       noto-serif-jp-semibold-fonts = %{version}
+Provides:       noto-serif-jp-fonts-full = %{version}
+Obsoletes:      noto-serif-jp-fonts-full <= %{version}
+Requires:       google-noto-serif-jp-black-fonts = %{version}
+Requires:       google-noto-serif-jp-extralight-fonts = %{version}
+Requires:       google-noto-serif-jp-fonts = %{version}
+Requires:       google-noto-serif-jp-light-fonts = %{version}
+Requires:       google-noto-serif-jp-medium-fonts = %{version}
+Requires:       google-noto-serif-jp-semibold-fonts = %{version}
 
-%description -n noto-serif-jp-fonts-full
+%description -n google-noto-serif-jp-fonts-full
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 All weights of Serif font for Japanese, hinted.
 
-%package -n noto-serif-kr-regular-fonts
+%package -n google-noto-serif-kr-regular-fonts
 Summary:        Noto Serif Korean Font - Regular
 Group:          System/X11/Fonts
+Provides:       noto-serif-kr-regular-fonts = %{version}
+Obsoletes:      noto-serif-kr-regular-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-kr-regular-fonts
+%description -n google-noto-serif-kr-regular-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Regular weight of Serif font for Korean, hinted.
 
-%package -n noto-serif-kr-semibold-fonts
+%package -n google-noto-serif-kr-semibold-fonts
 Summary:        Noto Serif Korean Font - SemiBold
 Group:          System/X11/Fonts
+Provides:       noto-serif-kr-semibold-fonts = %{version}
+Obsoletes:      noto-serif-kr-semibold-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-kr-semibold-fonts
+%description -n google-noto-serif-kr-semibold-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 SemiBold weight of Serif font for Korean, hinted.
 
-%package -n noto-serif-kr-light-fonts
+%package -n google-noto-serif-kr-light-fonts
 Summary:        Noto Serif Korean Font - Light
 Group:          System/X11/Fonts
+Provides:       noto-serif-kr-light-fonts = %{version}
+Obsoletes:      noto-serif-kr-light-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-kr-light-fonts
+%description -n google-noto-serif-kr-light-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Light weight of Serif font for Korean, hinted.
 
-%package -n noto-serif-kr-extralight-fonts
+%package -n google-noto-serif-kr-extralight-fonts
 Summary:        Noto Serif Korean Font - Extralight
 Group:          System/X11/Fonts
+Provides:       noto-serif-kr-extralight-fonts = %{version}
+Obsoletes:      noto-serif-kr-extralight-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-kr-extralight-fonts
+%description -n google-noto-serif-kr-extralight-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Extralight weight of Serif font for Korean, hinted.
 
-%package -n noto-serif-kr-bold-fonts
+%package -n google-noto-serif-kr-bold-fonts
 Summary:        Noto Serif Korean Font - Bold
 Group:          System/X11/Fonts
+Provides:       noto-serif-kr-bold-fonts = %{version}
+Obsoletes:      noto-serif-kr-bold-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-kr-bold-fonts
+%description -n google-noto-serif-kr-bold-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Bold weight of Serif font for Korean, hinted.
 
-%package -n noto-serif-kr-black-fonts
+%package -n google-noto-serif-kr-black-fonts
 Summary:        Noto Serif Korean Font - Black
 Group:          System/X11/Fonts
+Provides:       noto-serif-kr-black-fonts = %{version}
+Obsoletes:      noto-serif-kr-black-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-kr-black-fonts
+%description -n google-noto-serif-kr-black-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Black weight of Serif font for Korean, hinted.
 
-%package -n noto-serif-kr-medium-fonts
+%package -n google-noto-serif-kr-medium-fonts
 Summary:        Noto Serif Korean Font - Medium
 Group:          System/X11/Fonts
+Provides:       noto-serif-kr-medium-fonts = %{version}
+Obsoletes:      noto-serif-kr-medium-fonts <= %{version}
 %reconfigure_fonts_prereq
 
-%description -n noto-serif-kr-medium-fonts
+%description -n google-noto-serif-kr-medium-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Medium weight of Serif font for Korean, hinted.
 
-%package -n noto-serif-kr-fonts
+%package -n google-noto-serif-kr-fonts
 Summary:        Noto Serif Korean Font - Regular and Bold
 Group:          System/X11/Fonts
+Provides:       noto-serif-kr-fonts = %{version}
+Obsoletes:      noto-serif-kr-fonts <= %{version}
 Provides:       scalable-font-ko
 Provides:       locale(ko)
-Requires:       noto-serif-kr-bold-fonts = %{version}
-Requires:       noto-serif-kr-regular-fonts = %{version}
+Requires:       google-noto-serif-kr-bold-fonts = %{version}
+Requires:       google-noto-serif-kr-regular-fonts = %{version}
 
-%description -n noto-serif-kr-fonts
+%description -n google-noto-serif-kr-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Regular and Bold weights of Serif font for Korean, hinted.
 
-%package -n noto-serif-kr-fonts-full
+%package -n google-noto-serif-kr-fonts-full
 Summary:        Noto Serif Korean Font - All Weights
 Group:          System/X11/Fonts
-Requires:       noto-serif-kr-black-fonts = %{version}
-Requires:       noto-serif-kr-extralight-fonts = %{version}
-Requires:       noto-serif-kr-fonts = %{version}
-Requires:       noto-serif-kr-light-fonts = %{version}
-Requires:       noto-serif-kr-medium-fonts = %{version}
-Requires:       noto-serif-kr-semibold-fonts = %{version}
+Provides:       noto-serif-kr-fonts-full = %{version}
+Obsoletes:      noto-serif-kr-fonts-full <= %{version}
+Requires:       google-noto-serif-kr-black-fonts = %{version}
+Requires:       google-noto-serif-kr-extralight-fonts = %{version}
+Requires:       google-noto-serif-kr-fonts = %{version}
+Requires:       google-noto-serif-kr-light-fonts = %{version}
+Requires:       google-noto-serif-kr-medium-fonts = %{version}
+Requires:       google-noto-serif-kr-semibold-fonts = %{version}
 
-%description -n noto-serif-kr-fonts-full
+%description -n google-noto-serif-kr-fonts-full
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 All weights of Serif font for Korean, hinted.
@@ -533,288 +623,288 @@ unzip -qqn %{SOURCE0}
 mkdir -p %{buildroot}%{_ttfontsdir}
 cp */*/*.?tf %{buildroot}%{_ttfontsdir}/
 
-%reconfigure_fonts_scriptlets -n noto-serif-sc-regular-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-sc-regular-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-sc-bold-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-sc-bold-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-sc-semibold-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-sc-semibold-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-sc-light-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-sc-light-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-sc-extralight-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-sc-extralight-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-sc-black-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-sc-black-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-sc-medium-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-sc-medium-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-tc-regular-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-tc-regular-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-tc-bold-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-tc-bold-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-tc-semibold-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-tc-semibold-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-tc-light-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-tc-light-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-tc-extralight-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-tc-extralight-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-tc-black-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-tc-black-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-tc-medium-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-tc-medium-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-hk-regular-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-hk-regular-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-hk-bold-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-hk-bold-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-hk-semibold-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-hk-semibold-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-hk-light-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-hk-light-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-hk-extralight-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-hk-extralight-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-hk-black-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-hk-black-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-hk-medium-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-hk-medium-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-jp-regular-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-jp-regular-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-jp-bold-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-jp-bold-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-jp-semibold-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-jp-semibold-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-jp-light-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-jp-light-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-jp-extralight-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-jp-extralight-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-jp-black-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-jp-black-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-jp-medium-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-jp-medium-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-kr-regular-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-kr-regular-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-kr-bold-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-kr-bold-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-kr-semibold-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-kr-semibold-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-kr-light-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-kr-light-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-kr-extralight-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-kr-extralight-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-kr-black-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-kr-black-fonts
 
-%reconfigure_fonts_scriptlets -n noto-serif-kr-medium-fonts
+%reconfigure_fonts_scriptlets -n google-noto-serif-kr-medium-fonts
 
-%files -n noto-serif-sc-regular-fonts
+%files -n google-noto-serif-sc-regular-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKsc-Regular.?tf
 
-%files -n noto-serif-sc-bold-fonts
+%files -n google-noto-serif-sc-bold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKsc-Bold.?tf
 
-%files -n noto-serif-sc-semibold-fonts
+%files -n google-noto-serif-sc-semibold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKsc-SemiBold.?tf
 
-%files -n noto-serif-sc-light-fonts
+%files -n google-noto-serif-sc-light-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKsc-Light.?tf
 
-%files -n noto-serif-sc-extralight-fonts
+%files -n google-noto-serif-sc-extralight-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKsc-ExtraLight.?tf
 
-%files -n noto-serif-sc-black-fonts
+%files -n google-noto-serif-sc-black-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKsc-Black.?tf
 
-%files -n noto-serif-sc-medium-fonts
+%files -n google-noto-serif-sc-medium-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKsc-Medium.?tf
 
-%files -n noto-serif-sc-fonts
+%files -n google-noto-serif-sc-fonts
 %defattr(0644,root,root,755)
 %license LICENSE
 
-%files -n noto-serif-sc-fonts-full
+%files -n google-noto-serif-sc-fonts-full
 %defattr(0644,root,root,755)
 %license LICENSE
 
-%files -n noto-serif-tc-regular-fonts
+%files -n google-noto-serif-tc-regular-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKtc-Regular.?tf
 
-%files -n noto-serif-tc-bold-fonts
+%files -n google-noto-serif-tc-bold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKtc-Bold.?tf
 
-%files -n noto-serif-tc-semibold-fonts
+%files -n google-noto-serif-tc-semibold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKtc-SemiBold.?tf
 
-%files -n noto-serif-tc-light-fonts
+%files -n google-noto-serif-tc-light-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKtc-Light.?tf
 
-%files -n noto-serif-tc-extralight-fonts
+%files -n google-noto-serif-tc-extralight-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKtc-ExtraLight.?tf
 
-%files -n noto-serif-tc-black-fonts
+%files -n google-noto-serif-tc-black-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKtc-Black.?tf
 
-%files -n noto-serif-tc-medium-fonts
+%files -n google-noto-serif-tc-medium-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKtc-Medium.?tf
 
-%files -n noto-serif-tc-fonts
+%files -n google-noto-serif-tc-fonts
 %defattr(0644,root,root,755)
 %license LICENSE
 
-%files -n noto-serif-tc-fonts-full
+%files -n google-noto-serif-tc-fonts-full
 %defattr(0644,root,root,755)
 %license LICENSE
 
-%files -n noto-serif-hk-regular-fonts
+%files -n google-noto-serif-hk-regular-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKhk-Regular.?tf
 
-%files -n noto-serif-hk-bold-fonts
+%files -n google-noto-serif-hk-bold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKhk-Bold.?tf
 
-%files -n noto-serif-hk-semibold-fonts
+%files -n google-noto-serif-hk-semibold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKhk-SemiBold.?tf
 
-%files -n noto-serif-hk-light-fonts
+%files -n google-noto-serif-hk-light-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKhk-Light.?tf
 
-%files -n noto-serif-hk-extralight-fonts
+%files -n google-noto-serif-hk-extralight-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKhk-ExtraLight.?tf
 
-%files -n noto-serif-hk-black-fonts
+%files -n google-noto-serif-hk-black-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKhk-Black.?tf
 
-%files -n noto-serif-hk-medium-fonts
+%files -n google-noto-serif-hk-medium-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKhk-Medium.?tf
 
-%files -n noto-serif-hk-fonts
+%files -n google-noto-serif-hk-fonts
 %defattr(0644,root,root,755)
 %license LICENSE
 
-%files -n noto-serif-hk-fonts-full
+%files -n google-noto-serif-hk-fonts-full
 %defattr(0644,root,root,755)
 %license LICENSE
 
-%files -n noto-serif-jp-regular-fonts
+%files -n google-noto-serif-jp-regular-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKjp-Regular.?tf
 
-%files -n noto-serif-jp-bold-fonts
+%files -n google-noto-serif-jp-bold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKjp-Bold.?tf
 
-%files -n noto-serif-jp-semibold-fonts
+%files -n google-noto-serif-jp-semibold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKjp-SemiBold.?tf
 
-%files -n noto-serif-jp-light-fonts
+%files -n google-noto-serif-jp-light-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKjp-Light.?tf
 
-%files -n noto-serif-jp-extralight-fonts
+%files -n google-noto-serif-jp-extralight-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKjp-ExtraLight.?tf
 
-%files -n noto-serif-jp-black-fonts
+%files -n google-noto-serif-jp-black-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKjp-Black.?tf
 
-%files -n noto-serif-jp-medium-fonts
+%files -n google-noto-serif-jp-medium-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKjp-Medium.?tf
 
-%files -n noto-serif-jp-fonts
+%files -n google-noto-serif-jp-fonts
 %defattr(0644,root,root,755)
 %license LICENSE
 
-%files -n noto-serif-jp-fonts-full
+%files -n google-noto-serif-jp-fonts-full
 %defattr(0644,root,root,755)
 %license LICENSE
 
-%files -n noto-serif-kr-regular-fonts
+%files -n google-noto-serif-kr-regular-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKkr-Regular.?tf
 
-%files -n noto-serif-kr-bold-fonts
+%files -n google-noto-serif-kr-bold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKkr-Bold.?tf
 
-%files -n noto-serif-kr-semibold-fonts
+%files -n google-noto-serif-kr-semibold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKkr-SemiBold.?tf
 
-%files -n noto-serif-kr-light-fonts
+%files -n google-noto-serif-kr-light-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKkr-Light.?tf
 
-%files -n noto-serif-kr-extralight-fonts
+%files -n google-noto-serif-kr-extralight-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKkr-ExtraLight.?tf
 
-%files -n noto-serif-kr-black-fonts
+%files -n google-noto-serif-kr-black-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKkr-Black.?tf
 
-%files -n noto-serif-kr-medium-fonts
+%files -n google-noto-serif-kr-medium-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifCJKkr-Medium.?tf
 
-%files -n noto-serif-kr-fonts
+%files -n google-noto-serif-kr-fonts
 %defattr(0644,root,root,755)
 %license LICENSE
 
-%files -n noto-serif-kr-fonts-full
+%files -n google-noto-serif-kr-fonts-full
 %defattr(0644,root,root,755)
 %license LICENSE
 
