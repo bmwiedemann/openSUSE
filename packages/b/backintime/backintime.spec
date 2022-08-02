@@ -36,6 +36,7 @@ BuildRequires:  update-desktop-files
 Requires:       cron
 Requires:       dbus-1-python3
 Requires:       openssh
+Requires:       pkexec
 Requires:       python3
 Requires:       python3-keyring
 Requires:       rsync
