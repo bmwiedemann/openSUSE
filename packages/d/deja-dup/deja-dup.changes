@@ -157,7 +157,7 @@ Tue Oct 27 13:00:11 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 -------------------------------------------------------------------
 Wed Sep 30 12:45:06 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update to 42.4:
+- Update to 42.4 (boo#1197712):
   * Redesign the main window and preferences to follow GNOME
     design patterns
   * Add welcome state for first time use (with slightly guided
