@@ -63,4 +63,12 @@
     static analysis via Cppcheck</comment>
     <requestid>925764</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6cec70532d52144f08c6c91d2894c113</srcmd5>
+    <version>6.1.3</version>
+    <time>1659470940</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>992112</requestid>
+  </revision>
 </revisionlist>

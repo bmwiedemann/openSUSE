@@ -1,7 +1,7 @@
 #
 # spec file for package python-platformio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-platformio
-Version:        5.2.1
+Version:        6.1.3
 Release:        0
 Summary:        New Generation Ecosystem for Embedded Development
 License:        Apache-2.0
@@ -30,15 +30,36 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-Requires:       python-bottle
-Requires:       python-click >= 5
+Requires:       python-aiofiles < 0.9
+Requires:       python-aiofiles >= 0.8
+Requires:       python-ajsonrpc < 2
+Requires:       python-ajsonrpc >= 1
+Requires:       python-bottle < 0.13
+Requires:       python-bottle >= 0.12
+Requires:       python-click < 9
+Requires:       python-click >= 8.0.4
 Requires:       python-colorama
-Requires:       python-marshmallow >= 2
-Requires:       python-pyelftools >= 0.25
-Requires:       python-pyserial >= 3
-Requires:       python-requests >= 2.4.0
-Requires:       python-semantic_version >= 2.8.1
-Requires:       python-tabulate >= 0.8.3
+Requires:       python-marshmallow < 4
+Requires:       python-marshmallow >= 3
+Requires:       python-pyelftools < 1
+Requires:       python-pyelftools >= 0.27
+Requires:       python-pyserial < 3.6
+Requires:       python-pyserial >= 3.5
+Requires:       python-requests < 3
+Requires:       python-requests >= 2
+Requires:       python-semantic_version < 2.11
+Requires:       python-semantic_version >= 2.10
+Requires:       python-starlette < 0.21
+Requires:       python-starlette >= 0.20
+Requires:       python-tabulate < 0.9
+Requires:       python-tabulate >= 0.8
+Requires:       python-uvicorn < 0.19
+# dropping requirement to 0.16 instead of 0.18, setup.py asks for 0.18 since python 3.7
+Requires:       python-uvicorn >= 0.16
+Requires:       python-wsproto < 1.2
+# dropping requirement to 1.0 instead of 1.1, setup.py asks for 1.1 since python 3.7
+Requires:       python-wsproto >= 1.0
+Requires:       python-zeroconf < 1
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 
