@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  2 17:22:48 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.5.4
+  - #4794 Add and use DO_NOT_REBOOT_IN_SILENT=1 parameter for MSI to not reboot during the auto-update.
+
+-------------------------------------------------------------------
 Fri Jul 29 16:09:27 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.5.3
