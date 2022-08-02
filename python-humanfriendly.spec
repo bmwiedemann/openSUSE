@@ -48,7 +48,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module capturer >= 2.1}
 BuildRequires:  %{python_module coloredlogs >= 2}
 BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module pytest-cov >= 2.4.0}
 BuildRequires:  %{pythons}
