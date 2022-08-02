@@ -1335,6 +1335,7 @@ Prefer: %{rb_default_ruby_suffix}-rubygem-yast-rake
 
 # PYTHON STUFF
 
+%define primary_python python310
 %define skip_python2 1
 %define _without_python2 1
 
