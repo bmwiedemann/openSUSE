@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 01 11:37:17 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1659353820.539e6c4:
+  * Avoid server error if vars.json is missing in investigation
+
+-------------------------------------------------------------------
 Sun Jul 24 17:31:49 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1658503430.1290d12:
