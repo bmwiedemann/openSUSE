@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug  2 10:51:06 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Cleaning spec.
+
+-------------------------------------------------------------------
+Mon Aug  1 03:09:41 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.6.8:
+  * Fixes MangoHud not loading with latest DXVK.
+  * Use of system spdlog dependency.
+  * Fixed table_columns not working as expected.
+  * Minor adjustments to hud elements and imgui.
+  * Added MANGOHUD_LOG_LEVEL env variable
+    it takes off, info, err, warn.
+  * Added FCAT support.
+  * Disabled gamepad_battery_icon by default.
+  * Generalize control over socket so it works with OpenGL as well.
+  * AMDGPU: fixed gfx and cpu power metrics being parsed incorrectly.
+  * fps_only disables legacy_layout by default.
+
+-------------------------------------------------------------------
 Sat May 14 17:22:37 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.6.7~1:

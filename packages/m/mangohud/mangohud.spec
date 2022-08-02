@@ -16,14 +16,11 @@
 #
 
 
-%define internal_ver 0.6.7-1
+%define internal_ver 0.6.8
 %define imgui_ver 1.81
 %define imgui_wrap 1
-%define spdlog_ver 1.8.5
-%define spdlog_wrap 1
-
 Name:           mangohud
-Version:        0.6.7~1
+Version:        0.6.8
 Release:        0
 Summary:        A Vulkan and OpenGL overlay for monitoring
 License:        MIT
@@ -31,9 +28,8 @@ URL:            https://github.com/flightlessmango/MangoHud
 Source0:        %{url}/archive/v%{internal_ver}.tar.gz#/%{name}-%{internal_ver}.tar.gz
 Source1:        https://github.com/ocornut/imgui/archive/v%{imgui_ver}/imgui-%{imgui_ver}.tar.gz
 Source2:        https://wrapdb.mesonbuild.com/v1/projects/imgui/%{imgui_ver}/%{imgui_wrap}/get_zip#/imgui-%{imgui_ver}-%{imgui_wrap}-wrap.zip
-Source3:        https://github.com/gabime/spdlog/archive/v%{spdlog_ver}/spdlog-%{spdlog_ver}.tar.gz
-Source4:        https://wrapdb.mesonbuild.com/v1/projects/spdlog/%{spdlog_ver}/%{spdlog_wrap}/get_zip#/spdlog-%{spdlog_ver}-%{spdlog_wrap}-wrap.zip
 Source99:       baselibs.conf
+BuildRequires:  AppStream
 BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  glslang-devel
@@ -43,6 +39,7 @@ BuildRequires:  python3-mako
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(spdlog)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(x11)
 Suggests:       goverlay
@@ -55,20 +52,18 @@ A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and m
 %autosetup -n MangoHud-%{internal_ver}
 %autosetup -n MangoHud-%{internal_ver} -DTa1
 %autosetup -n MangoHud-%{internal_ver} -DTa2
-%autosetup -n MangoHud-%{internal_ver} -DTa3
-%autosetup -n MangoHud-%{internal_ver} -DTa4
-sed -i -e '1d;2i#!/usr/bin/bash' bin/mangohud.in
-sed -i 's,^@ld_libdir_mangohud@ ,/usr/\$LIB/mangohud/,' bin/mangohud.in
+sed -i -e '1d;2i#!%{_bindir}/bash' bin/mangohud.in
+sed -i 's,^@ld_libdir_mangohud@ ,%{_prefix}/\$LIB/mangohud/,' bin/mangohud.in
 mkdir subprojects/imgui
 mv imgui-%{imgui_ver}/* subprojects/imgui/
-mkdir subprojects/spdlog
-mv spdlog-%{spdlog_ver}/* subprojects/spdlog/
+sed -i 's/0.60.0/0.59/g' meson.build
 
 %build
 %meson \
  -Duse_system_vulkan=enabled \
  -Dwith_wayland=enabled \
- -Dwith_xnvctrl=disabled
+ -Dwith_xnvctrl=disabled \
+ -Duse_system_spdlog=enabled
 
 %meson_build
 
@@ -83,5 +78,10 @@ mv spdlog-%{spdlog_ver}/* subprojects/spdlog/
 %{_datadir}/doc/%{name}/
 %{_datadir}/vulkan/implicit_layer.d/
 %{_mandir}/man1/mangohud.1%{?ext_man}
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/scalable
+%dir %{_datadir}/icons/hicolor/scalable/apps
+%{_datadir}/icons/*/*/*/*.svg
+%{_datadir}/metainfo/*.metainfo.xml
 
 %changelog
