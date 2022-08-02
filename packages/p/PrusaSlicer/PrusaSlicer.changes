@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  1 15:42:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add PrusaSlicer-cereal.patch -- gh#prusa3d/PrusaSlicer#7809
+
+-------------------------------------------------------------------
 Tue May 31 19:04:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Disable test_voronoi -- rh#2059646
