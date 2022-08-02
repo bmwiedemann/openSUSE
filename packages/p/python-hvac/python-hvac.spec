@@ -24,14 +24,13 @@ Summary:        HashiCorp Vault API client
 License:        BSD-3-Clause
 URL:            https://github.com/ianunruh/hvac
 Source:         https://github.com/hvac/hvac/archive/v%{version}.tar.gz
-# https://github.com/hvac/hvac/issues/582
-Patch0:         python-hvac-no-mock.patch
+# PATCH-FIX-UPSTREAM Based on gh#hvac/hvac#23cd94654835134aa118805ecb4b7e5c538d04c1
+Patch0:         remove-mock.patch
 BuildRequires:  %{python_module Authlib}
 BuildRequires:  %{python_module Flask-SQLAlchemy}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module jwcrypto}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pyhcl >= 0.3.10}
 BuildRequires:  %{python_module pytest}
@@ -51,8 +50,7 @@ BuildArch:      noarch
 HashiCorp Vault API client for Python 2/3
 
 %prep
-%setup -q -n hvac-%{version}
-%patch0 -p1
+%autosetup -p1 -n hvac-%{version}
 # doctests and ldap need set up ldap server and that is quite an effort
 rm -r tests/doctest/
 rm tests/integration_tests/api/auth_methods/test_ldap.py

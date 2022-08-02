@@ -136,4 +136,14 @@
     <comment></comment>
     <requestid>974474</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>40b6e153bdd57861f6d0f794bb368619</srcmd5>
+    <version>0.11.2</version>
+    <time>1659470958</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patch python-hvac-no-mock.patch
+- Add patch remove-mock.patch, from upstream.
+- Remove unneeded BuildRequires on mock</comment>
+    <requestid>992138</requestid>
+  </revision>
 </revisionlist>

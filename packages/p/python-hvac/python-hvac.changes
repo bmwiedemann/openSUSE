@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  2 05:50:10 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove patch python-hvac-no-mock.patch
+- Add patch remove-mock.patch, from upstream.
+- Remove unneeded BuildRequires on mock 
+
+-------------------------------------------------------------------
 Mon May  2 17:28:37 UTC 2022 - pgajdos@suse.com
 
 - added patches
