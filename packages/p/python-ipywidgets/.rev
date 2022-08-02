@@ -67,4 +67,41 @@
     <comment>- Add ipywidgets-pr2655-collectionsabc.patch for python310 support (forwarded request 944469 from bnavigator)</comment>
     <requestid>944470</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>46b7d9db21f075ffd057d0165b127c89</srcmd5>
+    <version>7.7.1</version>
+    <time>1659470932</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.7.1
+  * Fix broken link icon for FontAwesome 4 and 5 #3495
+  * Fix message throttling bug #3494
+  * Fix state message parsing to be more permissive #3486
+  * Fix tests on Python 3.11 #3480
+  * Add better front-page docs #3496
+- Release 7.7
+  * Fix installation on Python 3.10. #3368
+  * Throw an error if we cannot render a widget, enabling the
+    rendering system to fall back to rendering a different data
+    type if available. #3290
+  * Create a new widget control comm channel, enabling more
+    efficient fetching of kernel widget state. #3201
+  * Refactor logic for fetching kernel widget state to the manager
+    base class. This logic first tries to use the new widget
+    control comm channel, falling back to the existing method of
+    requesting each widget's state individually. #3337
+  * Enable HTMLManager output widgets to render state updates.
+    #3372
+  * Do not reset JupyterLab CSS variables if they are already
+    defined. #3344
+  * Fix variable inspector example. #3302
+  * Introduce new widget manager has_model method for synchronously
+    checking if a widget model is registered. #3377
+  * Work around bug in Chrome rendering Combobox arrows. #3375
+  * Optionally echo update messages from frontends to other
+    frontends. This enables widget views in different frontends to
+    maintain consistent state simultaneously, and also makes sure
+    that simultaneous updates from the kernel and frontend resolve
+    to a consistent state. This is off by default in ipywidgets</comment>
+    <requestid>992081</requestid>
+  </revision>
 </revisionlist>

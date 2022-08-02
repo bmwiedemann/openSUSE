@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipywidgets
-Version:        7.6.5
+Version:        7.7.1
 Release:        0
 Summary:        IPython HTML widgets for Jupyter
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-widgets/ipywidgets
 Source0:        https://files.pythonhosted.org/packages/source/i/ipywidgets/ipywidgets-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM ipywidgets-pr2655-collectionsabc.patch -- gh#jupyter-widgets/ipywidgets#2655
-Patch0:         https://github.com/jupyter-widgets/ipywidgets/commit/f9a13dbb3b8f1ffefef483bdb4c14f04f7743ff1.patch#/ipywidgets-pr2655-collectionsabc.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -36,9 +34,8 @@ Requires:       python-ipykernel >= 4.5.1
 Requires:       python-ipython >= 4
 Requires:       python-ipython_genutils >= 0.2
 Requires:       python-jupyterlab_widgets >= 1
-Requires:       python-nbformat >= 4.2
 Requires:       python-traitlets >= 4.3.1
-Requires:       python-widgetsnbextension >= 3.5.0
+Requires:       python-widgetsnbextension >= 3.6.0
 Provides:       python-jupyter_ipywidgets = %{version}
 Obsoletes:      python-jupyter_ipywidgets < %{version}
 BuildArch:      noarch
@@ -47,10 +44,9 @@ BuildRequires:  %{python_module ipykernel >= 4.5.1}
 BuildRequires:  %{python_module ipython >= 4}
 BuildRequires:  %{python_module ipython_genutils >= 0.2}
 BuildRequires:  %{python_module jupyterlab_widgets >= 1}
-BuildRequires:  %{python_module nbformat >= 4.2.0}
 BuildRequires:  %{python_module pytest >= 3.6.0}
 BuildRequires:  %{python_module traitlets >= 4.3.1}
-BuildRequires:  %{python_module widgetsnbextension >= 3.5.0}
+BuildRequires:  %{python_module widgetsnbextension >= 3.6.0}
 # /SECTION
 %if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-ipywidgets = %{version}
