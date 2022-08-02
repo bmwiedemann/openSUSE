@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-photutils
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        An Astropy package for photometry
 License:        BSD-3-Clause
@@ -43,6 +41,7 @@ Recommends:     python-matplotlib >= 3.1
 Recommends:     python-scikit-image >= 0.15.0
 Recommends:     python-scikit-learn
 Recommends:     python-scipy >= 1.6.0
+Recommends:     python-tqdm
 # SECTION test requirements
 BuildRequires:  %{python_module Bottleneck}
 BuildRequires:  %{python_module astropy >= 5.0}

@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Mon Aug  1 17:22:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.5.0
+  General
+  * Added tqdm as an optional dependency. [#1364]
+  New Features
+  * photutils.psf
+    - Added a mask keyword when calling the PSF-fitting classes.
+      [#1350, #1351]
+    - The EPSFBuilder progress bar will use tqdm if the optional
+      package is installed. [#1367]
+  * photutils.segmentation
+    - Added SourceFinder class, which is a convenience class
+      combining detect_sources and deblend_sources. [#1344]
+    - Added a sigma_clip keyword to detect_threshold. [#1354]
+    - Added a make_source_mask method to SegmentationImage. [#1355]
+    - Added a make_2dgaussian_kernel convenience function. [#1356]
+    - Allow SegmentationImage.make_cmap background_color to be in
+      any matplotlib color format. [#1361]
+    - Added an imshow convenience method to SegmentationImage.
+      [#1362]
+    - Improved performance of deblend_sources. [#1364]
+    - Added a progress_bar keyword to deblend_sources. [#1364]
+    - Added a 'sinh' mode to deblend_sources. [#1368]
+    - Improved the resetting of cached SegmentationImage properties
+      so that custom (non-cached) attributes can be kept. [#1368]
+    - Added a nproc keyword to enable multiprocessing in
+      deblend_sources and SourceFinder. [#1372]
+    - Added a make_cutouts method to SourceCatalog for making
+      custom-shaped cutout images. [#1376]
+    - Added the ability to set a minimum unscaled Kron radius in
+      SourceCatalog. [#1381]
+  * photutils.utils
+    - Added a circular_footprint convenience function. [#1355]
+    - Added a CutoutImage class. [#1376]
+  Bug Fixes
+  * photutils.psf
+    - Fixed a warning message in EPSFFitter. [#1382]
+  * photutils.segmentation
+    - Fixed an issue in generating watershed markers used for
+      source deblending. [#1383]
+  API Changes
+  * photutils.centroids
+    - Changed the axes order of oversampling keyword in
+      centroid_com when input as a tuple. [#1358]
+    - Deprecated the oversampling keyword in centroid_com. [#1377]
+  * photutils.psf
+    - Invalid data values (i.e., NaN or inf) are now automatically
+      masked when performing PSF fitting. [#1350]
+    - Deprecated the sandbox classes DiscretePRF and Reproject.
+      [#1357]
+    - Changed the axes order of oversampling keywords when input as
+      a tuple. [#1358]
+    - Removed the unused shift_val keyword in EPSFBuilder and
+      EPSFModel. [#1377]
+    - Renamed the flux_residual_sigclip keyword (now deprecated) to
+      sigma_clip in EPSFBuilder. [#1378]
+    - The EPSFBuilder progress bar now requires that the optional
+      tqdm package be installed. [#1379]
+    - The tools in the PSF package now require keyword-only
+      arguments. [#1386]
+  * photutils.segmentation
+    - Removed the deprecated circular_aperture method from
+      SourceCatalog. [#1329]
+    - The SourceCatalog plot_kron_apertures method now sets a
+      default kron_apers value. [#1346]
+    - deblend_sources no longer allows an array to be input as a
+      segmentation image. It must be a SegmentationImage object.
+      [#1347]
+    - SegmentationImage no longer allows array-like input. It must
+      be a numpy ndarray. [#1347]
+    - Deprecated the sigclip_sigma and sigclip_iters keywords in
+      detect_threshold. Use the sigma_clip keyword instead. [#1354]
+    - Deprecated the make_source_mask function in favor of the
+      SegmentationImage.make_source_mask method. [#1355]
+    - Deprecated the kernel keyword in detect_sources and
+      deblend_sources. Instead, if filtering is desired, input a
+      convolved image directly into the data parameter. [#1365]
+    - Sources with a data minimum of zero are now treated the same
+      as negative minima (i.e., the mode is changed to “linear”)
+      for the “exponential” deblending mode. [#1368]
+    - A single warning (as opposed to 1 per source) is now raised
+      about negative/zero minimum data values using the
+      ‘exponential’ deblending mode. The affected labels is
+      available in a new “info” attribute. [#1368]
+    - If the mode in deblend_sources is “exponential” or “sinh” and
+      there are too many potential deblended sources within a given
+      source (watershed markers), a warning will be raised and the
+      mode will be changed to “linear”. [#1369]
+    - The SourceCatalog make_circular_apertures and
+      make_kron_apertures methods now return a single aperture
+      (instead of a list with one item) for a scalar SourceCatalog.
+      [#1376]
+    - The SourceCatalog kron_params keyword now has an optional
+      third item representing the minimum circular radius. [#1381]
+    - The SourceCatalog kron_radius is now set to the minimum Kron
+      radius (the second element of kron_params) if the data or
+      radially weighted data sum to zero. [#1381]
+  * photutils.utils
+    - The colormap returned from make_random_cmap now has colors in
+      RGBA format. [#1361]
+
+-------------------------------------------------------------------
 Mon Mar 28 17:36:19 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.4.0 

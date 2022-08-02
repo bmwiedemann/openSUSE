@@ -349,4 +349,41 @@
 </comment>
     <requestid>965460</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7235ecb4b9c3aecbc982a3cfc5d05080</srcmd5>
+    <version>1.5.0</version>
+    <time>1659470929</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.0
+  General
+  * Added tqdm as an optional dependency. [#1364]
+  New Features
+  * photutils.psf
+    - Added a mask keyword when calling the PSF-fitting classes.
+      [#1350, #1351]
+    - The EPSFBuilder progress bar will use tqdm if the optional
+      package is installed. [#1367]
+  * photutils.segmentation
+    - Added SourceFinder class, which is a convenience class
+      combining detect_sources and deblend_sources. [#1344]
+    - Added a sigma_clip keyword to detect_threshold. [#1354]
+    - Added a make_source_mask method to SegmentationImage. [#1355]
+    - Added a make_2dgaussian_kernel convenience function. [#1356]
+    - Allow SegmentationImage.make_cmap background_color to be in
+      any matplotlib color format. [#1361]
+    - Added an imshow convenience method to SegmentationImage.
+      [#1362]
+    - Improved performance of deblend_sources. [#1364]
+    - Added a progress_bar keyword to deblend_sources. [#1364]
+    - Added a 'sinh' mode to deblend_sources. [#1368]
+    - Improved the resetting of cached SegmentationImage properties
+      so that custom (non-cached) attributes can be kept. [#1368]
+    - Added a nproc keyword to enable multiprocessing in
+      deblend_sources and SourceFinder. [#1372]
+    - Added a make_cutouts method to SourceCatalog for making
+      custom-shaped cutout images. [#1376]
+    - Added the ability to set a minimum unscaled Kron radius in
+      SourceCatalog. [#1381]</comment>
+    <requestid>992078</requestid>
+  </revision>
 </revisionlist>
