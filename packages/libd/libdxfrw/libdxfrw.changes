@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 26 05:25:31 UTC 2022 - jslaby@suse.cz
+
+- Update to version 1.1.0~rc1+git.20220702:
+  * removed unnecessary std::endl calls which were causing significant slowdown when writing to file
+  * fix "iterator after end" error on some strings
+  * minor, removed superfluous semicolon
+  * fix processViewport(), removed misplaced break
+- switch to obs_scm
+
+-------------------------------------------------------------------
 Tue Jan 18 07:54:50 UTC 2022 - jslaby@suse.cz
 
 - Update to version 1.0.1+git.20220109:
