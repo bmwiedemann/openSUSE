@@ -16,15 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-jupyter_console
-Version:        6.4.3
+Version:        6.4.4
 Release:        0
 Summary:        Jupyter terminal console
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/jupyter_console
 Source0:        https://files.pythonhosted.org/packages/source/j/jupyter_console/jupyter_console-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -62,8 +61,6 @@ This code is based on the single-process IPython terminal.
 
 %prep
 %setup -q -n jupyter_console-%{version}
-# always build and install with setuptools: it is needed to get the entrypoint gh#jupyter/jupyter_console#222
-sed -i '/import sys/ a import setuptools' setup.py
 
 %build
 %python_build

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug  1 18:17:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.4.4
+  * Use asyncio.create_task and asyncio.get_running_loop with
+    interact().
+  * Drop Python 3.6. #270 (@encukou)
+
+-------------------------------------------------------------------
 Sun Mar 13 07:28:36 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.4.3
