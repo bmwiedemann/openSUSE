@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jul 25 12:13:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.8.6
+  * Bug
+    + [MNG-7432] - [REGRESSION] Resolver session contains
+      non-MavenWorkspaceReader
+    + [MNG-7433] - [REGRESSION] Multiple maven instances working on
+      same source tree can lock each other
+    + [MNG-7441] - Update Version of (optional) Logback to Address
+      CVE-2021-42550, bsc#1193795
+    + [MNG-7448] - Don't ignore bin/ otherwise bin/ in apache-maven
+      module cannot be readded
+    + [MNG-7455] - [REGRESSION] IllegalStateException in
+      SessionScope during guice injection in multithreaded build
+    + [MNG-7459] - Revert MNG-7347 (SessionScoped beans should be
+      singletons for a given session)
+    + [MNG-7467] - [REGRESSION] Compilation failure with relocated
+      transitive dependency
+    + [MNG-7487] - Fix deadlock during forked lifecycle executions
+    + [MNG-7493] - [REGRESSION] Resolving dependencies between
+      submodules fails
+  * New Feature
+    + [MNG-7486] - Create a multiline message helper for boxed log
+      messages
+  * Improvement
+    + [MNG-7445] - to refactor some useless code
+    + [MNG-7476] - Display a warning when an aggregator mojo is
+      locking other mojo executions
+  * Task
+    + [MNG-7466] - Align Assembly Descriptor NS versions
+  * Dependency upgrade
+    + [MNG-7488] - Upgrade SLF4J to 1.7.36
+    + [MNG-7489] - Upgrade JUnit to 4.13.2
+    + [MNG-7490] - Upgrade Plexus Utils to 3.3.1
+
+-------------------------------------------------------------------
 Mon May 16 14:26:42 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.8.5
@@ -64,7 +100,7 @@ Mon May 16 14:26:42 UTC 2022 - Fridrich Strba <fstrba@suse.com>
   * 0004-Remove-dependency-on-powermock.patch
     + Remove the non-interpolated tests that require powermock
   * 0006-Restore-DefaultModelValidator-compatibility-with-Mav.patch
-    + XMvn was relying on default constructor for the 
+    + XMvn was relying on default constructor for the
       org.apache.maven.model.validation.DefaultModelValidator,
       which is not generated, since a non-default one is defined.
     + This adds the no-parameter constructor back implicitely
