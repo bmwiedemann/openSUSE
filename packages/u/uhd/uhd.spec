@@ -17,7 +17,7 @@
 
 %define libname libuhd4_2_0
 Name:           uhd
-Version:        4.2.0.0
+Version:        4.2.0.1
 Release:        0
 Summary:        The driver for USRP SDR boards
 License:        GPL-3.0-or-later
