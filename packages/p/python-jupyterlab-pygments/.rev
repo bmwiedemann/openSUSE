@@ -41,4 +41,14 @@
     <comment></comment>
     <requestid>931616</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6858f9b484a7727ab578a801ede64af6</srcmd5>
+    <version>0.2.2</version>
+    <time>1659470939</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.2.2
+  * no release notes
+- Add labextensions subpackage</comment>
+    <requestid>992101</requestid>
+  </revision>
 </revisionlist>

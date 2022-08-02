@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,20 +25,21 @@
 %bcond_with test
 %endif
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-jupyterlab-pygments%{psuffix}
-Version:        0.1.2
+Version:        0.2.2
 Release:        0
 Summary:        Pygments theme for jupyterlab
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyterlab/jupyterlab_pygments
-Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_pygments/jupyterlab_pygments-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/py2.py3/j/jupyterlab-pygments/jupyterlab_pygments-%{version}-py2.py3-none-any.whl
 Source1:        https://raw.githubusercontent.com/jupyterlab/jupyterlab_pygments/%{version}/notebooks/Example.ipynb
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
+BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
+Requires:       jupyter-jupyterlab-pygments = %{version}
 Requires:       python-pygments >= 2.4.1
 BuildArch:      noarch
 %if %{with test}
@@ -52,16 +53,23 @@ BuildRequires:  %{python_module pytest}
 This package contains a syntax coloring theme for pygments making use
 of the JupyterLab CSS variables.
 
+%package -n jupyter-jupyterlab-pygments
+Summary:        Pygments theme for jupyterlab -- Jupyterlab extension files
+
+%description -n jupyter-jupyterlab-pygments
+This package contains the Jupyterlab extension files for python-jupyterlab-pygments
+
 %prep
-%setup -q -n jupyterlab_pygments-%{version}
+%setup -q -c -T
+
+%build
+:
 
 %if !%{with test}
-%build
-%python_build
-
 %install
-%python_install
+%pyproject_install %{SOURCE0}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+cp  %{buildroot}%{python3_sitelib}/jupyterlab_pygments-%{version}.dist-info/LICENSE .
 %endif
 
 %if %{with test}
@@ -72,9 +80,11 @@ of the JupyterLab CSS variables.
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
-%doc README.md
 %{python_sitelib}/jupyterlab_pygments
-%{python_sitelib}/jupyterlab_pygments-%{version}*-info
+%{python_sitelib}/jupyterlab_pygments-%{version}.dist-info
+
+%files -n jupyter-jupyterlab-pygments
+%_jupyter_labextensions_dir3/jupyterlab_pygments
 %endif
 
 %changelog
