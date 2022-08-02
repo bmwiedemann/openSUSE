@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 29 07:55:45 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+feat!: rename noto-*-cjk-fonts -> google-noto-*-cjk-fonts
+- The Noto Coloremoji fonts have already been renamed by now
+- The other Noto fonts will be renamed once upstream finishes migrating them to the new website
+  * https://github.com/notofonts/notofonts.github.io
+fix: move zh_MO obsoletes and provides to Hong Kong TC fonts
+- Macau is physically and culturally closer to Hong Kong than Taiwan
+fix: summary and description for Hong Kong TC fonts
+
+-------------------------------------------------------------------
 Sat Jul 23 07:43:29 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
 - Move google-noto-serif-cjk-fonts into its own repository again
