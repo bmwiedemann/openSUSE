@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jul 28 18:47:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8:
+  ** Changes in Behavior
+    Schedule -f/--full combined with non-linewise operations for deprecation.
+    In a future release, -f/--full will only be usable with operations where
+    it makes sense. For now, we print a warning to stderr when -f/--full is
+    used with non-linewise operations, and such usage will no longer be
+    supported.
+  * The bin operation now uses more intuitive bins. Previously, a command
+    such as `datamash bin 1 <<< -0` would output -100; and -100 did not fall
+    in its own bin. We now require all bins to take the form `[nx,(n+1)x)`
+    with integer n and bin width x. We discard the sign on -0 and gate such
+    inputs into the [0,x) bin.
+  * Operations taking more than one argument now provide more complete output
+    with --header-out. Previously, an operation such as `pcov x:y` would
+    produce an output header like `pcov(y)`, discarding the `x`. The new
+    behavior will output header `pcov(x,y)`.
+  * datamash(1) no longer ignores --output-delimiter with the rmdup operation.
+  ** New Features
+  * New datamash option --sort-cmd argument to specify the program used
+    by the -s option to sort input, plus enhancements to the security and
+    portability of building sort command lines.
+  * New datamash option -c/--collapse-delimiter=X argument uses character
+    X instead of comma between values in collapse and unique lists.
+  * New datamash operations: mean square (ms) and root mean square (rms).
+  * Decorate now supports sorting IP addresses of both versions 4 and 6
+    together. IPv4 addresses are logically converted to IPv6 addresses,
+    either as IPv4-Mapped (ipv6v4map) or IPv4-Compatible (ipv6v4comp)
+    addresses.
+  * Add two command aliases:
+      'echo' may now be used instead of 'cut'.
+      'uniq' may now be used instead of 'unique'.
+
+-------------------------------------------------------------------
 Sat Apr 25 20:09:33 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.7:

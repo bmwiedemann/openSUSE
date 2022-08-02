@@ -1,7 +1,7 @@
 #
 # spec file for package datamash
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,8 @@
 %ifarch ppc64le ppc64 aarch64
 %define _lto_cflags %{nil}
 %endif
-
 Name:           datamash
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Statistical, numerical and textual operations in the command line
 License:        GPL-3.0-or-later
@@ -30,11 +29,12 @@ Group:          Productivity/Scientific/Math
 URL:            https://www.gnu.org/software/datamash/
 Source:         https://ftp.gnu.org/gnu/datamash/%{name}-%{version}.tar.gz
 Source2:        https://ftp.gnu.org/gnu/datamash/%{name}-%{version}.tar.gz.sig
-Source3:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=datamash&download=1#/%{name}.keyring
+# "Timothy Rice (Yubikey 5 Nano 13139911) <trice@posteo.net>" from https://ftp.gnu.org/gnu/gnu-keyring.gpg
+Source3:        datamash.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 
 %description
 GNU datamash is a command-line program which performs basic numeric,
@@ -51,14 +51,14 @@ textual and statistical operations on input textual data files.
 	--with-packager-version="%{distribution} %{version}-%{release}" \
 	--with-packager-bug-reports="%{packager}" \
 	--with-bash-completion-dir=no
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 %find_lang %{name}
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
@@ -68,7 +68,7 @@ make %{?_smp_mflags} check
 
 %files -f %{name}.lang
 %license COPYING
-%doc ChangeLog README AUTHORS THANKS TODO
+%doc ChangeLog README AUTHORS THANKS
 %{_bindir}/*
 %{_mandir}/man1/*.1%{?ext_man}
 %{_infodir}/%{name}.info%{?ext_info}
