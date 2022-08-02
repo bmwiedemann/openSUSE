@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 01 23:01:15 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1659356059.2610c33:
+  * t: Remove useless rmtree
+  * wheels: Pick up Perl modules and tests
+  * Fix re-connecting via VNC over WebSockets
+  * Make DISCARD inside SUT unmap blocks in qcow2 file
+  * End color escape sequences at the end of the line
+
+-------------------------------------------------------------------
 Sat Jul 30 11:23:14 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1659175884.1aca550:
