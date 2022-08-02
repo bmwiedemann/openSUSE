@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-mohawk
 Version:        1.1.0
 Release:        0
@@ -31,10 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
 BuildArch:      noarch
-%if %{with test}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module six}
-%endif
 %python_subpackages
 
 %description
@@ -42,8 +38,7 @@ Mohawk is an alternate Python implementation of the Hawk HTTP
 authorization scheme.
 
 %prep
-%setup -q -n mohawk-%{version}
-%autopatch -p1
+%autosetup -p1 -n mohawk-%{version}
 
 %build
 %python_build
@@ -52,10 +47,8 @@ authorization scheme.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
 %pyunittest
-%endif
 
 %files %{python_files}
 %doc README.rst

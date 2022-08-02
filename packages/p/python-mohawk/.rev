@@ -82,4 +82,13 @@
 </comment>
     <requestid>964932</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>3ff59eb97644d1eb606d2b5ccf3818ec</srcmd5>
+    <version>1.1.0</version>
+    <time>1659470948</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on mock.
+- Remove bcond for running tests.</comment>
+    <requestid>992127</requestid>
+  </revision>
 </revisionlist>
