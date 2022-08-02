@@ -190,4 +190,12 @@
   * Support pytest &gt;= 7.</comment>
     <requestid>991672</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>97b5effba23e229a887ab9556b5f2c75</srcmd5>
+    <version>10.0</version>
+    <time>1659470947</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on mock.</comment>
+    <requestid>992125</requestid>
+  </revision>
 </revisionlist>

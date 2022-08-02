@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  2 03:12:41 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on mock. 
+
+-------------------------------------------------------------------
 Fri Jul 29 07:42:02 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch pytest-7-support.patch:
