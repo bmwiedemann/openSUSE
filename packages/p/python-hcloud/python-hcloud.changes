@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  2 05:01:14 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.17.0:
+  * Add suport for primary IPs
+- Add patch remove-mock.patch:
+  * Use unittest.mock. 
+
+-------------------------------------------------------------------
 Mon Mar 21 13:04:30 UTC 2022 - pgajdos@suse.com
 
 - version update to 1.16.0
