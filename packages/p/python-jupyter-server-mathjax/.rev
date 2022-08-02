@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>961406</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dbf4f377557f64f96ef0dfeef744d935</srcmd5>
+    <version>0.2.6</version>
+    <time>1659470935</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.6
+  * no release notes, mostly build system changes
+- Update minimum python requirement to &gt;= 3.7</comment>
+    <requestid>992084</requestid>
+  </revision>
 </revisionlist>

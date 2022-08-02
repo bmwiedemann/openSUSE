@@ -16,30 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-jupyter-server-mathjax
-Version:        0.2.5
+Version:        0.2.6
 Release:        0
 Summary:        MathJax resources as a Jupyter Server Extension
 License:        Apache-2.0 AND BSD-3-Clause
 URL:            https://github.com/jupyter-server/jupyter_server_mathjax
 # Get the bundled JS stuff with the wheel
 Source:         https://files.pythonhosted.org/packages/py3/j/jupyter_server_mathjax/jupyter_server_mathjax-%{version}-py3-none-any.whl
-BuildRequires:  %{python_module jupyter-packaging}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module jupyter-packaging >= 0.10 with %python-jupyter-packaging < 2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-server-mathjax = %{version}
 Requires:       python-jupyter_server >= 1.1
 BuildArch:      noarch
-# SECTION test requirements (including jupyter_server[test])
-BuildRequires:  %{python_module ipykernel}
+# SECTION test requirements
 BuildRequires:  %{python_module jupyter-server >= 1.1}
-BuildRequires:  %{python_module pytest-console-scripts}
-BuildRequires:  %{python_module pytest-tornasync}
+BuildRequires:  %{python_module jupyter-server-test}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages

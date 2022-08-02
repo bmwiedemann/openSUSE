@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  1 18:11:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.2.6
+  * no release notes, mostly build system changes
+- Update minimum python requirement to >= 3.7
+
+-------------------------------------------------------------------
 Sun Mar 13 07:21:21 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.2.5
