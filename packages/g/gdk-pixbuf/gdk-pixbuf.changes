@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Mar 18 12:36:39 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 2.42.8:
+- Update to version 2.42.8 (boo#1201826):
   + Clear the pixbuf's memory buffer to avoid returning
     uninitialized memory.
   + Turn GdkPixbufModule functions into typed callbacks.
@@ -11,6 +11,7 @@ Fri Mar 18 12:36:39 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
   + jpeg: Do not rely on UB around setjmp/longjmp.
   + Build fixes.
   + Documentation fixes.
+  + Security fixes: CVE-2021-46829.
   + Updated translations.
 - Stop passing options to meson that just follow upstream default,
   just rely on upstream providing sane defaults, apart from where
