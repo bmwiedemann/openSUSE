@@ -15,4 +15,20 @@
     <comment>- Trim conjecture from descriptions. (forwarded request 922067 from jengelh)</comment>
     <requestid>922114</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ce27dcbb57a50c1ac6db32ca42437941</srcmd5>
+    <version>3.4.0</version>
+    <time>1659554225</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.4.0
+  * enhancement: add API call jent_set_fips_failure_callback as requested by Daniel Ojalvo
+  * fix: Change the SHA-3 integration: The entropy pool is now a SHA-3 state.
+It is filled with the time delta containing entropy and auxiliary data that does not contain entropy using a SHA update operation. The auxiliary data is calculated by a SHA-3 hashing of some varying state data. The time delta that contains entropy is measured about the SHA-3 hasing of the auxiliary data. This satisfies FIPS 140-3 IG D.K resolutions 4, 6, and 8.
+  * enhancement: add CMake support by Andrew Hopkins
+- updated to 3.3.1
+  * fix: bug fix in initialization logic by Vladis Dronov &lt;vdronov@redhat.com&gt;
+  * fix: use __asm__ instead of asm to suit the C11 standard
+- added a -devel-static package to be able to link it static. (forwarded request 992611 from msmeissn)</comment>
+    <requestid>992612</requestid>
+  </revision>
 </revisionlist>

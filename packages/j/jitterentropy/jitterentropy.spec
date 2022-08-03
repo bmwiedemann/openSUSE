@@ -1,7 +1,7 @@
 #
 # spec file for package jitterentropy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           jitterentropy
 Summary:        A userspace library for jitter entropy generation
 License:        BSD-3-Clause OR GPL-2.0-or-later
 Group:          Development/Tools/Other
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 URL:            https://github.com/smuellerDD/jitterentropy-library
 Source0:        https://github.com/smuellerDD/jitterentropy-library/archive/refs/tags/v%{version}.tar.gz
@@ -55,6 +55,16 @@ timing jitter. It depends on a high-resolution time stamp.
 
 This package contains the development header and library.
 
+%package devel-static
+Summary:        Jitter entropy generator static library
+Group:          Development/Tools/Other
+
+%description devel-static
+The Jitter RNG provides a noise source using the CPU execution
+timing jitter. It depends on a high-resolution time stamp.
+
+This package contains the static library.
+
 %prep
 %autosetup -n jitterentropy-library-%version
 
@@ -62,7 +72,7 @@ This package contains the development header and library.
 %make_build PREFIX="%_prefix" LIBDIR="%_lib"
 
 %install
-%make_install PREFIX="%_prefix" LIBDIR="%_lib"
+%make_install PREFIX="%_prefix" LIBDIR="%_lib" all install-static
 
 %post -n libjitterentropy3 -p /sbin/ldconfig
 %postun -n libjitterentropy3 -p /sbin/ldconfig
@@ -74,9 +84,13 @@ This package contains the development header and library.
 %_libdir/libjitterentropy.so
 %_mandir/man3/jitterentropy.3*
 
+%files devel-static
+%license LICENSE.gplv2 LICENSE LICENSE.bsd
+%_libdir/libjitterentropy.a
+
 %files -n libjitterentropy3
 %license LICENSE.gplv2 LICENSE LICENSE.bsd
 %_libdir/libjitterentropy.so.3
-%_libdir/libjitterentropy.so.3.3.0
+%_libdir/libjitterentropy.so.3.4.0
 
 %changelog
