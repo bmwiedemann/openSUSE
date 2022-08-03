@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  2 09:17:56 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- readd ipset buildrequires to reenable ipset support (bsc#1202043)
+- readd ebtables too, as there is no builtin support.
+
+-------------------------------------------------------------------
 Mon Jul 25 13:38:56 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - readd iptables requires, as docker uses iptables passthrough

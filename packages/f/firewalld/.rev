@@ -1202,4 +1202,13 @@ This is a bug fix only release.
   list (compare with change from 2022-03-03 - Thorsten Kukuk &lt;kukuk@suse.com&gt;)</comment>
     <requestid>991048</requestid>
   </revision>
+  <revision rev="72" vrev="5">
+    <srcmd5>42f0eaf336c6659e3a3f7834caf88118</srcmd5>
+    <version>1.2.0</version>
+    <time>1659554185</time>
+    <user>dimstar_suse</user>
+    <comment>- readd ipset buildrequires to reenable ipset support (bsc#1202043)
+- readd ebtables too, as there is no builtin support.</comment>
+    <requestid>992210</requestid>
+  </revision>
 </revisionlist>

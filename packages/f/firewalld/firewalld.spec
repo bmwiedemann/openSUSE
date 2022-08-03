@@ -49,6 +49,8 @@ BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  iptables
+BuildRequires:  ebtables
+BuildRequires:  ipset
 BuildRequires:  libxslt-tools
 BuildRequires:  python3-devel
 BuildRequires:  systemd-rpm-macros
