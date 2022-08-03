@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug  3 10:24:30 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220713.00 (bsc#1202100, bsc#1202101)
+  * try restoring module mode (#172)
+  * update for golang 1.16 (#171)
+- from version 20220614.00
+  * Remove log that can break startup scripts (#170)
+- from version 20220603.00
+  * repeat fix for arm (#169)
+  * no authorized keys on debian (#168)
+- from version 20220527.00
+  * Add authorized keys command to the Windows agent package. (#167)
+  * Support for Windows SSH (#164)
+- from version 20220523.00
+  * restore double slash metadata url (#166)
+- from version 20220520.00
+  * Support .exe as an option for scripts and refactor runScript (#165)
+
+-------------------------------------------------------------------
 Thu May  5 12:37:36 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20220429.00
