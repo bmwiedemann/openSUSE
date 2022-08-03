@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220801" schemaversion="4.1">
+<image name="OBS__openSUSE___20220802" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220801</productvar>
+      <productvar name="VERSION">20220802</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220801,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220802,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220801/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220802/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -731,6 +731,28 @@
       <repopackage name="gnutls"/>
       <repopackage name="google-carlito-fonts"/>
       <repopackage name="google-noto-coloremoji-fonts"/>
+      <repopackage name="google-noto-sans-cjk-fonts"/>
+      <repopackage name="google-noto-sans-jp-bold-fonts"/>
+      <repopackage name="google-noto-sans-jp-fonts"/>
+      <repopackage name="google-noto-sans-jp-regular-fonts"/>
+      <repopackage name="google-noto-sans-kr-bold-fonts"/>
+      <repopackage name="google-noto-sans-kr-fonts"/>
+      <repopackage name="google-noto-sans-kr-regular-fonts"/>
+      <repopackage name="google-noto-sans-sc-bold-fonts"/>
+      <repopackage name="google-noto-sans-sc-fonts"/>
+      <repopackage name="google-noto-sans-sc-regular-fonts"/>
+      <repopackage name="google-noto-sans-tc-bold-fonts"/>
+      <repopackage name="google-noto-sans-tc-fonts"/>
+      <repopackage name="google-noto-sans-tc-regular-fonts"/>
+      <repopackage name="google-noto-serif-jp-bold-fonts"/>
+      <repopackage name="google-noto-serif-jp-fonts"/>
+      <repopackage name="google-noto-serif-jp-regular-fonts"/>
+      <repopackage name="google-noto-serif-sc-bold-fonts"/>
+      <repopackage name="google-noto-serif-sc-fonts"/>
+      <repopackage name="google-noto-serif-sc-regular-fonts"/>
+      <repopackage name="google-noto-serif-tc-bold-fonts"/>
+      <repopackage name="google-noto-serif-tc-fonts"/>
+      <repopackage name="google-noto-serif-tc-regular-fonts"/>
       <repopackage name="google-opensans-fonts"/>
       <repopackage name="google-poppins-fonts"/>
       <repopackage name="google-roboto-fonts"/>
@@ -3089,8 +3111,8 @@
       <repopackage name="libyui-qt16"/>
       <repopackage name="libyui16"/>
       <repopackage name="libz-ng-compat1"/>
+      <repopackage name="libz-ng-compat1-32bit" arch="x86_64"/>
       <repopackage name="libz1"/>
-      <repopackage name="libz1-32bit" arch="x86_64"/>
       <repopackage name="libzbar0"/>
       <repopackage name="libzck1"/>
       <repopackage name="libzebra1"/>
@@ -3386,15 +3408,6 @@
       <repopackage name="notification-daemon"/>
       <repopackage name="notification-daemon-lang"/>
       <repopackage name="noto-sans-fonts"/>
-      <repopackage name="noto-serif-jp-bold-fonts"/>
-      <repopackage name="noto-serif-jp-fonts"/>
-      <repopackage name="noto-serif-jp-regular-fonts"/>
-      <repopackage name="noto-serif-sc-bold-fonts"/>
-      <repopackage name="noto-serif-sc-fonts"/>
-      <repopackage name="noto-serif-sc-regular-fonts"/>
-      <repopackage name="noto-serif-tc-bold-fonts"/>
-      <repopackage name="noto-serif-tc-fonts"/>
-      <repopackage name="noto-serif-tc-regular-fonts"/>
       <repopackage name="npm17"/>
       <repopackage name="nscd"/>
       <repopackage name="nss-mdns"/>

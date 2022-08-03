@@ -6218,6 +6218,80 @@ unsorted:
   - google-lekton-fonts 
   - google-merriweather-fonts 
   - google-nobile-fonts 
+  - google-noto-sans-hk-black-fonts 
+  - google-noto-sans-hk-bold-fonts 
+  - google-noto-sans-hk-demilight-fonts 
+  - google-noto-sans-hk-fonts 
+  - google-noto-sans-hk-fonts-full 
+  - google-noto-sans-hk-light-fonts 
+  - google-noto-sans-hk-medium-fonts 
+  - google-noto-sans-hk-mono-fonts 
+  - google-noto-sans-hk-regular-fonts 
+  - google-noto-sans-hk-thin-fonts 
+  - google-noto-sans-jp-black-fonts 
+  - google-noto-sans-jp-demilight-fonts 
+  - google-noto-sans-jp-fonts-full 
+  - google-noto-sans-jp-light-fonts 
+  - google-noto-sans-jp-medium-fonts 
+  - google-noto-sans-jp-mono-fonts 
+  - google-noto-sans-jp-thin-fonts 
+  - google-noto-sans-kr-black-fonts 
+  - google-noto-sans-kr-demilight-fonts 
+  - google-noto-sans-kr-fonts-full 
+  - google-noto-sans-kr-light-fonts 
+  - google-noto-sans-kr-medium-fonts 
+  - google-noto-sans-kr-mono-fonts 
+  - google-noto-sans-kr-thin-fonts 
+  - google-noto-sans-sc-black-fonts 
+  - google-noto-sans-sc-demilight-fonts 
+  - google-noto-sans-sc-fonts-full 
+  - google-noto-sans-sc-light-fonts 
+  - google-noto-sans-sc-medium-fonts 
+  - google-noto-sans-sc-mono-fonts 
+  - google-noto-sans-sc-thin-fonts 
+  - google-noto-sans-tc-black-fonts 
+  - google-noto-sans-tc-demilight-fonts 
+  - google-noto-sans-tc-fonts-full 
+  - google-noto-sans-tc-light-fonts 
+  - google-noto-sans-tc-medium-fonts 
+  - google-noto-sans-tc-mono-fonts 
+  - google-noto-sans-tc-thin-fonts 
+  - google-noto-serif-hk-black-fonts 
+  - google-noto-serif-hk-bold-fonts 
+  - google-noto-serif-hk-extralight-fonts 
+  - google-noto-serif-hk-fonts 
+  - google-noto-serif-hk-fonts-full 
+  - google-noto-serif-hk-light-fonts 
+  - google-noto-serif-hk-medium-fonts 
+  - google-noto-serif-hk-regular-fonts 
+  - google-noto-serif-hk-semibold-fonts 
+  - google-noto-serif-jp-black-fonts 
+  - google-noto-serif-jp-extralight-fonts 
+  - google-noto-serif-jp-fonts-full 
+  - google-noto-serif-jp-light-fonts 
+  - google-noto-serif-jp-medium-fonts 
+  - google-noto-serif-jp-semibold-fonts 
+  - google-noto-serif-kr-black-fonts 
+  - google-noto-serif-kr-bold-fonts 
+  - google-noto-serif-kr-extralight-fonts 
+  - google-noto-serif-kr-fonts 
+  - google-noto-serif-kr-fonts-full 
+  - google-noto-serif-kr-light-fonts 
+  - google-noto-serif-kr-medium-fonts 
+  - google-noto-serif-kr-regular-fonts 
+  - google-noto-serif-kr-semibold-fonts 
+  - google-noto-serif-sc-black-fonts 
+  - google-noto-serif-sc-extralight-fonts 
+  - google-noto-serif-sc-fonts-full 
+  - google-noto-serif-sc-light-fonts 
+  - google-noto-serif-sc-medium-fonts 
+  - google-noto-serif-sc-semibold-fonts 
+  - google-noto-serif-tc-black-fonts 
+  - google-noto-serif-tc-extralight-fonts 
+  - google-noto-serif-tc-fonts-full 
+  - google-noto-serif-tc-light-fonts 
+  - google-noto-serif-tc-medium-fonts 
+  - google-noto-serif-tc-semibold-fonts 
   - google-or-tools 
   - google-or-tools-devel 
   - google-or-tools-minizinc 
@@ -7891,7 +7965,6 @@ unsorted:
   - jupyter-jupyter-themer 
   - jupyter-jupyter-wysiwyg 
   - jupyter-jupyter_cms 
-  - jupyter-jupyter_contrib_core 
   - jupyter-jupyter_core-filesystem: [i586] 
   - jupyter-jupyter_dashboards 
   - jupyter-jupyter_highlight_selected_word 
@@ -7902,6 +7975,7 @@ unsorted:
   - jupyter-jupyterlab-filesystem: [i586] 
   - jupyter-jupyterlab-ipyscales 
   - jupyter-jupyterlab-latex 
+  - jupyter-jupyterlab-pygments: [i586] 
   - jupyter-jupyterlab-templates 
   - jupyter-jupyterlab-widgets: [i586] 
   - jupyter-lineup-widget 
@@ -13014,10 +13088,10 @@ unsorted:
   - libpetsc-gnu-openmpi2-hpc 
   - libpetsc-gnu-openmpi3-hpc 
   - libpetsc-gnu-openmpi4-hpc 
-  - libpetsc3 
-  - libpetsc3-openmpi2 
-  - libpetsc3-openmpi3 
-  - libpetsc3-openmpi4 
+  - libpetsc3_14 
+  - libpetsc3_14-openmpi2 
+  - libpetsc3_14-openmpi3 
+  - libpetsc3_14-openmpi4 
   - libpetsc_3_14_5-gnu-mpich-hpc 
   - libpetsc_3_14_5-gnu-mvapich2-hpc 
   - libpetsc_3_14_5-gnu-openmpi1-hpc 
@@ -15093,6 +15167,8 @@ unsorted:
   - libyuv-devel 
   - libyuv0 
   - libz-ng2 
+  - libz-ng2-32bit: [x86_64] 
+  - libz1-32bit: [x86_64] 
   - libz3-4_8 
   - libzapojit-0_0-0 
   - libzapojit-devel 
@@ -17462,7 +17538,6 @@ unsorted:
   - noto-sans-cham-fonts 
   - noto-sans-cherokee-fonts 
   - noto-sans-chorasmian-fonts 
-  - noto-sans-cjk-fonts 
   - noto-sans-coptic-fonts 
   - noto-sans-cuneiform-fonts 
   - noto-sans-cypriot-fonts 
@@ -17490,28 +17565,11 @@ unsorted:
   - noto-sans-hebrew-fonts 
   - noto-sans-hebrewdroid-fonts 
   - noto-sans-hebrewnew-fonts 
-  - noto-sans-hk-black-fonts 
-  - noto-sans-hk-bold-fonts 
-  - noto-sans-hk-demilight-fonts 
-  - noto-sans-hk-fonts 
-  - noto-sans-hk-fonts-full 
-  - noto-sans-hk-light-fonts 
-  - noto-sans-hk-medium-fonts 
-  - noto-sans-hk-mono-fonts 
-  - noto-sans-hk-regular-fonts 
-  - noto-sans-hk-thin-fonts 
   - noto-sans-imperialaramaic-fonts 
   - noto-sans-indicsiyaqnumbers-fonts 
   - noto-sans-inscriptionalpahlavi-fonts 
   - noto-sans-inscriptionalparthian-fonts 
   - noto-sans-javanese-fonts 
-  - noto-sans-jp-black-fonts 
-  - noto-sans-jp-demilight-fonts 
-  - noto-sans-jp-fonts-full 
-  - noto-sans-jp-light-fonts 
-  - noto-sans-jp-medium-fonts 
-  - noto-sans-jp-mono-fonts 
-  - noto-sans-jp-thin-fonts 
   - noto-sans-kaithi-fonts 
   - noto-sans-kannada-fonts 
   - noto-sans-kannada-ui-fonts 
@@ -17521,16 +17579,6 @@ unsorted:
   - noto-sans-khmer-ui-fonts 
   - noto-sans-khojki-fonts 
   - noto-sans-khudawadi-fonts 
-  - noto-sans-kr-black-fonts 
-  - noto-sans-kr-bold-fonts 
-  - noto-sans-kr-demilight-fonts 
-  - noto-sans-kr-fonts 
-  - noto-sans-kr-fonts-full 
-  - noto-sans-kr-light-fonts 
-  - noto-sans-kr-medium-fonts 
-  - noto-sans-kr-mono-fonts 
-  - noto-sans-kr-regular-fonts 
-  - noto-sans-kr-thin-fonts 
   - noto-sans-lao-fonts 
   - noto-sans-lao-ui-fonts 
   - noto-sans-lepcha-fonts 
@@ -17591,13 +17639,6 @@ unsorted:
   - noto-sans-runic-fonts 
   - noto-sans-samaritan-fonts 
   - noto-sans-saurashtra-fonts 
-  - noto-sans-sc-black-fonts 
-  - noto-sans-sc-demilight-fonts 
-  - noto-sans-sc-fonts-full 
-  - noto-sans-sc-light-fonts 
-  - noto-sans-sc-medium-fonts 
-  - noto-sans-sc-mono-fonts 
-  - noto-sans-sc-thin-fonts 
   - noto-sans-sharada-fonts 
   - noto-sans-shavian-fonts 
   - noto-sans-siddham-fonts 
@@ -17622,13 +17663,6 @@ unsorted:
   - noto-sans-tamil-ui-fonts 
   - noto-sans-tamilsupplement-fonts 
   - noto-sans-tangsa-fonts 
-  - noto-sans-tc-black-fonts 
-  - noto-sans-tc-demilight-fonts 
-  - noto-sans-tc-fonts-full 
-  - noto-sans-tc-light-fonts 
-  - noto-sans-tc-medium-fonts 
-  - noto-sans-tc-mono-fonts 
-  - noto-sans-tc-thin-fonts 
   - noto-sans-telugu-fonts 
   - noto-sans-telugu-ui-fonts 
   - noto-sans-thaana-fonts 
@@ -17669,33 +17703,9 @@ unsorted:
   - noto-serif-gujarati-fonts 
   - noto-serif-gurmukhi-fonts 
   - noto-serif-hebrew-fonts 
-  - noto-serif-hk-black-fonts 
-  - noto-serif-hk-bold-fonts 
-  - noto-serif-hk-extralight-fonts 
-  - noto-serif-hk-fonts 
-  - noto-serif-hk-fonts-full 
-  - noto-serif-hk-light-fonts 
-  - noto-serif-hk-medium-fonts 
-  - noto-serif-hk-regular-fonts 
-  - noto-serif-hk-semibold-fonts 
-  - noto-serif-jp-black-fonts 
-  - noto-serif-jp-extralight-fonts 
-  - noto-serif-jp-fonts-full 
-  - noto-serif-jp-light-fonts 
-  - noto-serif-jp-medium-fonts 
-  - noto-serif-jp-semibold-fonts 
   - noto-serif-kannada-fonts 
   - noto-serif-khmer-fonts 
   - noto-serif-khojki-fonts 
-  - noto-serif-kr-black-fonts 
-  - noto-serif-kr-bold-fonts 
-  - noto-serif-kr-extralight-fonts 
-  - noto-serif-kr-fonts 
-  - noto-serif-kr-fonts-full 
-  - noto-serif-kr-light-fonts 
-  - noto-serif-kr-medium-fonts 
-  - noto-serif-kr-regular-fonts 
-  - noto-serif-kr-semibold-fonts 
   - noto-serif-lao-fonts 
   - noto-serif-makasar-fonts 
   - noto-serif-malayalam-fonts 
@@ -17703,22 +17713,10 @@ unsorted:
   - noto-serif-nyiakengpuachuehmong-fonts 
   - noto-serif-olduyghur-fonts 
   - noto-serif-oriya-fonts 
-  - noto-serif-sc-black-fonts 
-  - noto-serif-sc-extralight-fonts 
-  - noto-serif-sc-fonts-full 
-  - noto-serif-sc-light-fonts 
-  - noto-serif-sc-medium-fonts 
-  - noto-serif-sc-semibold-fonts 
   - noto-serif-sinhala-fonts 
   - noto-serif-tamil-fonts 
   - noto-serif-tamilslanted-fonts 
   - noto-serif-tangut-fonts 
-  - noto-serif-tc-black-fonts 
-  - noto-serif-tc-extralight-fonts 
-  - noto-serif-tc-fonts-full 
-  - noto-serif-tc-light-fonts 
-  - noto-serif-tc-medium-fonts 
-  - noto-serif-tc-semibold-fonts 
   - noto-serif-telugu-fonts 
   - noto-serif-thai-fonts 
   - noto-serif-tibetan-fonts 
@@ -24454,6 +24452,7 @@ unsorted:
   - python310-resampy 
   - python310-resolvelib 
   - python310-responses 
+  - python310-respx 
   - python310-restructuredtext_lint 
   - python310-restview 
   - python310-resultsdb_api 
@@ -24642,6 +24641,7 @@ unsorted:
   - python310-sphinxcontrib-seqdiag 
   - python310-sphinxcontrib-serializinghtml 
   - python310-sphinxcontrib-svg2pdfconverter 
+  - python310-sphinxcontrib-towncrier 
   - python310-sphinxcontrib-trio 
   - python310-sphinxcontrib-websupport 
   - python310-sphinxext-opengraph 
@@ -27733,6 +27733,7 @@ unsorted:
   - python38-resampy 
   - python38-resolvelib 
   - python38-responses 
+  - python38-respx 
   - python38-restructuredtext_lint 
   - python38-restview 
   - python38-resultsdb_api 
@@ -27938,6 +27939,7 @@ unsorted:
   - python38-sphinxcontrib-seqdiag 
   - python38-sphinxcontrib-serializinghtml 
   - python38-sphinxcontrib-svg2pdfconverter 
+  - python38-sphinxcontrib-towncrier 
   - python38-sphinxcontrib-trio 
   - python38-sphinxcontrib-websupport 
   - python38-sphinxext-opengraph 
@@ -31046,6 +31048,7 @@ unsorted:
   - python39-resampy 
   - python39-resolvelib 
   - python39-responses 
+  - python39-respx 
   - python39-restructuredtext_lint 
   - python39-restview 
   - python39-resultsdb_api 
@@ -31251,6 +31254,7 @@ unsorted:
   - python39-sphinxcontrib-seqdiag 
   - python39-sphinxcontrib-serializinghtml 
   - python39-sphinxcontrib-svg2pdfconverter 
+  - python39-sphinxcontrib-towncrier 
   - python39-sphinxcontrib-trio 
   - python39-sphinxcontrib-websupport 
   - python39-sphinxext-opengraph 
@@ -33726,7 +33730,7 @@ unsorted:
   - tdom 
   - tdom-devel 
   - tea 
-  - tealdeer 
+  - tealdeer: [x86_64] 
   - tecla 
   - tecla-devel 
   - tecnoballz 
@@ -44025,6 +44029,7 @@ unsorted:
   - xterm-console 
   - xtexit 
   - xtl-devel 
+  - xtl-doc 
   - xtrans: [i586] 
   - xtrx-tools 
   - xtrx-usb-udev 
