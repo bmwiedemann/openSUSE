@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug  3 05:32:29 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2022.1025:
+  * Pin pylint to <2.13
+- Add patch no-more-pathlib2.patch:
+  * Use pathlib rather than pathlib2.
+- Drop {Build,}Requires on pathlib2 
+
+-------------------------------------------------------------------
 Wed Feb 23 14:35:03 UTC 2022 - pgajdos@suse.com
 
 - version update to 2021.1024

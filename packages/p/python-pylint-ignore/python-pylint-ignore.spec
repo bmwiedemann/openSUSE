@@ -18,23 +18,23 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pylint-ignore
-Version:        2021.1024
+Version:        2022.1025
 Release:        0
 Summary:        Start with silence, not with noise But do start!
 License:        MIT
 URL:            https://github.com/mbarkhau/pylint-ignore
 Source:         https://files.pythonhosted.org/packages/source/p/pylint-ignore/pylint-ignore-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#mbarkhau/pylint-ignore#15
+Patch0:         no-more-pathlib2.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module pathlib2}
 BuildRequires:  %{python_module pylev}
 BuildRequires:  %{python_module pylint > 2.4}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-astroid > 2.1.0
-Requires:       python-pathlib2
 Requires:       python-pylev
 Requires:       python-pylint > 2.4
 BuildArch:      noarch
@@ -48,7 +48,7 @@ This file is used to ignore Pylint messages without adding comments to the
 source code itself. It's similar to Rupocop's .rubocop_todo.yml.
 
 %prep
-%setup -q -n pylint-ignore-%{version}
+%autosetup -p1 -n pylint-ignore-%{version}
 
 %build
 %python_build
