@@ -1,7 +1,7 @@
 #
 # spec file for package pam_csync
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,24 @@
 #
 
 
+%if !%{defined _pam_moduledir}
+%define _pam_moduledir /%{_lib}/security
+%endif
 Name:           pam_csync
-BuildRequires:  cmake
-BuildRequires:  libcsync-devel
-BuildRequires:  libiniparser-devel
-BuildRequires:  pam-devel
 Version:        0.43.0
 Release:        0
 Summary:        A PAM module for roaming home directories
 License:        GPL-2.0-or-later
 Group:          System/Libraries
-URL:            http://www.csync.org/
+URL:            https://www.csync.org/
 Source0:        https://gitlab.com/csync/pam_csync/-/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM 0002-Update-FSF-address.patch
 Patch2:         0002-Update-FSF-address.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  cmake
+BuildRequires:  libcsync-devel
+BuildRequires:  libiniparser-devel
+BuildRequires:  pam-devel
 
 %description
 This is a PAM module to provide roaming home directories for a user
@@ -39,18 +41,11 @@ session. The authentication module verifies the identity of a user and
 triggers a synchronization with the server on the first login and the
 last logout.
 
-
-
-Authors:
---------
-    Andreas Schneider
-
-
 %prep
 %autosetup -p1
 
 %build
-%cmake
+%cmake -DPAM_MODULE_INSTALL_DIR=%{_pam_moduledir}
 %cmake_build
 
 %install
@@ -59,7 +54,7 @@ Authors:
 %files
 %doc FAQ README
 %license COPYING
-/%{_lib}/security/pam_csync.so
+%{_pam_moduledir}/pam_csync.so
 %dir %{_sysconfdir}/security
 %config(noreplace) %{_sysconfdir}/security/pam_csync.conf
 %{_mandir}/man?/pam_csync.*

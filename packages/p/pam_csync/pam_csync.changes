@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  3 06:47:39 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- use %_pam_moduledir (boo#1190949)
+- run spec-cleaner
+
+-------------------------------------------------------------------
 Wed Jun 10 08:55:47 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.43.0
