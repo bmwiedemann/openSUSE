@@ -43,6 +43,7 @@ Obsoletes:      liblxqt-qt5 < %{version}
 Provides:       liblxqt-qt5 = %{version}
 # moved files to correct location in liblxqt1 (/lxqt-backlight_backend, power.conf, polkit)
 Conflicts:      liblxqt0
+Requires:       /usr/bin/pkexec
 
 %description
 liblxqt represents the core library of LXQt providing essential
