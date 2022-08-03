@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 03 15:27:22 UTC 2022 - maiku.fabian@gmail.com
+
+- Update to 2.18.7
+- Use the environment variable DICPATH as well when searching for dicitonaries
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/357)
+- Translation update from Weblate (sw updated to 100%)
+
+-------------------------------------------------------------------
 Sat Jul 30 00:40:38 UTC 2022 - maiku.fabian@gmail.com
 
 - Update to 2.18.6
