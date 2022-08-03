@@ -83,6 +83,7 @@ BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xtst)
 Requires:       hicolor-icon-theme
+Requires:       pkexec
 Requires:       qt5integration
 Recommends:     %{name}-lang
 
