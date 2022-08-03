@@ -14,12 +14,7 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 465fd913..10c8bf08 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -220,11 +220,13 @@ set_target_properties(minisat_simp       PROPERTIES OUTPUT_NAME "minisat")
- #--------------------------------------------------------------------------------------------------
- # Installation targets:
- 
-+set(CMAKE_INSTALL_LIBDIR lib CACHE STRING "Output directory for libraries")
-+
+@@ -220,8 +220,8 @@ set_target_properties(minisat_simp       PROPERTIES OUTPUT_NAME "minisat")
  install(TARGETS minisat minisat_core minisat_simp
          EXPORT ${MINISAT_EXPORT_NAME}
          RUNTIME DESTINATION bin

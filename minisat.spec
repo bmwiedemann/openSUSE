@@ -24,7 +24,8 @@ Summary:        SAT solver
 License:        MIT
 Group:          Development/Tools/Other
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         0001-CMakeLists-support-different-lib-dirs.patch
+Patch0:         CMakeLists-use-absolute-libdir-in-rpath-handling.patch
+Patch1:         0001-CMakeLists-support-different-lib-dirs.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -67,9 +68,7 @@ Headers and libraries for the minisat package.
 
 %build
 %define __builder ninja
-%cmake -DMINISAT_INSTALL_CMAKE_DIR=%{_libdir}/cmake/%{name} \
-	-DCMAKE_INSTALL_LIBDIR:PATH=%{_prefix}/%{_lib}
-# bug in CMakeLists.txt, it looks up absolute paths only ^^
+%cmake -DMINISAT_INSTALL_CMAKE_DIR=%{_libdir}/cmake/%{name}
 %make_jobs
 
 %install
