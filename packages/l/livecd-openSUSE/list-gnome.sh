@@ -14,15 +14,15 @@ install adobe-sourcecodepro-fonts
 
 buildignore google-carlito-fonts
 buildignore noto-sans-fonts
-buildignore noto-sans-cjk-fonts
-buildignore noto-sans-sc-bold-fonts
-buildignore noto-sans-sc-regular-fonts
-buildignore noto-sans-tc-bold-fonts
-buildignore noto-sans-tc-regular-fonts
-buildignore noto-sans-jp-bold-fonts
-buildignore noto-sans-jp-regular-fonts
-buildignore noto-sans-kr-bold-fonts
-buildignore noto-sans-kr-regular-fonts
+buildignore google-noto-sans-cjk-fonts
+buildignore google-noto-sans-sc-bold-fonts
+buildignore google-noto-sans-sc-regular-fonts
+buildignore google-noto-sans-tc-bold-fonts
+buildignore google-noto-sans-tc-regular-fonts
+buildignore google-noto-sans-jp-bold-fonts
+buildignore google-noto-sans-jp-regular-fonts
+buildignore google-noto-sans-kr-bold-fonts
+buildignore google-noto-sans-kr-regular-fonts
 
 # Expected by openQA - But no more space on the CD
 # install libreoffice-writer

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  3 05:53:28 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Adjust GNOME ignore list: google-noto- font packages were renamed
+  to include the google- prefix.
+
+-------------------------------------------------------------------
 Wed Jul 27 06:25:00 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - config.sh: Cope with new name of noto-coloremoji-fonts
