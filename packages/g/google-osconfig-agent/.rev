@@ -204,4 +204,12 @@
   * Add regex support to package exclusion in OS Patch (#415) (forwarded request 970116 from glaubitz)</comment>
     <requestid>970129</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f35361338868372114b8789ac6f5aab0</srcmd5>
+    <version>20220801.00</version>
+    <time>1659554219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992568</requestid>
+  </revision>
 </revisionlist>

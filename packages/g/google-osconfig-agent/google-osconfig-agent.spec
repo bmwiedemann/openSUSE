@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           google-osconfig-agent
-Version:        20220314.01
+Version:        20220801.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
@@ -56,6 +56,7 @@ CGO_ENABLED=0 go build -ldflags="-s -w -X main.version=%{version}-%{release}" -m
 %install
 install -d %{buildroot}%{_bindir}
 install -d %{buildroot}%{_sbindir}
+install -d %{buildroot}%{_var}/lib/google_osconfig_agent
 install -d %{buildroot}/etc/osconfig
 install -p -m 0755 google_osconfig_agent %{buildroot}%{_bindir}/google_osconfig_agent
 install -d %{buildroot}%{_unitdir}
@@ -71,8 +72,14 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
 %post
     %service_add_post google-osconfig-agent.service
 
+    if [ "$1" == "2" ] && ! [ -e /.buildenv ]; then
+      # If the old directory exists make sure we set the file there.
+      [ -e %{_sysconfdir}/osconfig ] && touch %{_sysconfdir}/osconfig/osconfig_agent_restart_required
+      touch %{_var}/lib/google_osconfig_agent/osconfig_agent_restart_required
+    fi
+
 %postun
-    %service_del_postun google-osconfig-agent.service
+    %service_del_postun_without_restart google-osconfig-agent.service
 
 %files
 %defattr(0644,root,root,0755)

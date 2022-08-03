@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug  3 10:25:55 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220801.00 (bsc#1202100, bsc#1202101)
+  * update OWNERS (#438)
+  * Close client when RegisterAgent fails. (#436)
+- from version 20220714.00
+  * Add timeouts for pip/gem updates. (#433)
+- from version 20220623.00
+  * upgrade to golang 1.16 and override deb build settings for compatibility (#432)
+- from version 20220606.00
+  * new example policy to ensure sshd is running on windows VMs (#430)
+- from version 20220531.00
+  * Add default timeout for pip and gem list commands (#429)
+- Don't restart daemon on package upgrade, create a state file instead (bsc#1194319)
+
+-------------------------------------------------------------------
 Thu Mar 17 08:49:05 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20220314.01
