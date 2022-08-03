@@ -15,16 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_with     test
 Name:           zellij
-Version:        0.30.0
+Version:        0.31.0
 Release:        0
-Summary:        Terminal workspace with batteries included 
+Summary:        Terminal workspace with batteries included
 License:        MIT
 URL:            https://github.com/zellij-org/zellij
 Source0:        https://github.com/zellij-org/zellij/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        cargo_config
+Source3:        README.suse-maint.md
+BuildRequires:  rust+cargo >= 1.62
 BuildRequires:  cargo-packaging
 ExclusiveArch:  %{rust_tier1_arches}
 %if %{with test}
@@ -32,27 +35,44 @@ BuildRequires:  pkgconfig(openssl)
 %endif
 
 %description
-Zellij is a workspace aimed at developers, ops-oriented people and anyone who loves the terminal. 
-At its core, it is a terminal multiplexer (similar to tmux and screen), but this is merely its 
+Zellij is a workspace aimed at developers, ops-oriented people and anyone who loves the terminal.
+At its core, it is a terminal multiplexer (similar to tmux and screen), but this is merely its
 infrastructure layer.
 
-Zellij includes a layout system, and a plugin system allowing one to create plugins in any 
+Zellij includes a layout system, and a plugin system allowing one to create plugins in any
 language that compiles to WebAssembly.
 
 %prep
 %autosetup -a1
-mkdir .cargo
+mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
+# Remove prebuilt binaries
+rm assets/plugins/*
 
 %build
-%{cargo_build}
+# First rebuilt plugins we just deleted
+# Note: RUSTFLAGS break linking with WASM-files, so we don't use the cargo_build-macro here
+pushd default-plugins/status-bar
+cargo --offline build --release --target=wasm32-wasi
+popd
+pushd default-plugins/tab-bar
+cargo --offline build --release --target=wasm32-wasi
+popd
+pushd default-plugins/strider
+cargo --offline build --release --target=wasm32-wasi
+popd
+# Move the results to the place they are expected
+mv target/wasm32-wasi/release/*.wasm assets/plugins/
+
+# Build zellij proper
+%{cargo_build} --all-features
 
 %install
-%{cargo_install}
+%{cargo_install} --all-features
 
 %if %{with test}
 %check
-%{cargo_test}
+%{cargo_test} --all-features
 %endif
 
 %files
