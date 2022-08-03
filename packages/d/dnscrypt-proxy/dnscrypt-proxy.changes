@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 2 12:00:00 UTC 2022 - cunix@mail.de - 2.1.2
+
+- Update to version 2.1.2
+  * Support for DoH over HTTP/3 (DoH3, HTTP over QUIC)
+      Compatible servers will automatically use it.
+      Note that QUIC uses UDP
+      (usually over port 443, like DNSCrypt) instead of TCP.
+  * fixed memory usage kept growing due to channels not
+      being properly closed
+  * DNS64: "CNAME" records are now translated like other responses
+  * A relay whose name has been configured, but doesn't exist in the
+      list of available relays is now a hard error
+  * "dnscrypt-proxy -resolve" now reports if ECS (EDNS-clientsubnet) is
+      supported by the server
+  * "dnscrypt-proxy -list" now includes ODoH (Oblivious DoH) servers
+  * Local DoH: queries made using the "GET" method are now handled
+  * "PTR" queries are now supported for cloaked domains
+
+- Minimum golang version now at 1.18
+
+-------------------------------------------------------------------
 Wed Mar 22 12:00:00 UTC 2022 - cunix@mail.de
 
 - switched to vendored_licenses_packager as build dependency
