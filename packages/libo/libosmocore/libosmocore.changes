@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug  3 14:37:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7.0
+  * Introduce CRC and FSM for IuUP (user plane) as used in 3G RTP
+    data
+  * VTY: implement 'no log gsmtap [HOSTNAME]' command
+  * iuup: Fix decoding of 1byte-length subflow size fields
+  * iuup: Submit RNL-STATUS-Initialization.ind upon rx of Init
+  * BSSAP: HO Request Ack: add missing Codec List (BSS Supported)
+  * APDU parsing support for GlobalPlatform
+
+-------------------------------------------------------------------
 Fri Nov 19 08:49:06 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 1.6.0

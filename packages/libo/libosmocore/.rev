@@ -223,4 +223,12 @@
     <comment>- Update to new upstream release 1.6.0</comment>
     <requestid>932574</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>7571d698454d3a6f2c0029d6eb977756</srcmd5>
+    <version>1.7.0</version>
+    <time>1659554228</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.7.0</comment>
+    <requestid>992618</requestid>
+  </revision>
 </revisionlist>
