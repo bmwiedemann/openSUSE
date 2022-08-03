@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  2 09:04:01 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.23.3:
+  * This version made no changes to documented features or interfaces.
+    Some implementation updates were made to support ecosystem changes
+    and/or fix regressions.
+- Rebase cmake-fix-ruby-test.patch
+- Rebase cmake-fix-png-include-dir.patch
+
+-------------------------------------------------------------------
 Sat Jul  2 07:32:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix the %%cmake macro which tried to run sed on 'CMakeLists.txt'

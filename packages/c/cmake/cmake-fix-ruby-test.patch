@@ -1,8 +1,8 @@
-Index: b/Modules/FindRuby.cmake
+Index: cmake-3.23.3/Modules/FindRuby.cmake
 ===================================================================
---- a/Modules/FindRuby.cmake
-+++ b/Modules/FindRuby.cmake
-@@ -290,7 +290,7 @@
+--- cmake-3.23.3.orig/Modules/FindRuby.cmake
++++ cmake-3.23.3/Modules/FindRuby.cmake
+@@ -316,7 +316,7 @@ if(Ruby_EXECUTABLE AND NOT Ruby_VERSION_
    _RUBY_CONFIG_VAR("sitelibdir" Ruby_SITELIB_DIR)
  
    # vendor_ruby available ?
