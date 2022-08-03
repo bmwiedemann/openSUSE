@@ -1,5 +1,5 @@
 #
-# spec file for package python-pdm-pep517
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -24,31 +24,26 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-Name:           python-pdm-pep517
-Version:        1.0.2
+
+Name:           python-pdm-pep517%{psuffix}
+Version:        1.0.3
 Release:        0
 Summary:        Python Development Master
 License:        MIT
 URL:            https://github.com/pdm-project/pdm-pep517
 Source:         https://files.pythonhosted.org/packages/source/p/pdm-pep517/pdm-pep517-%{version}.tar.gz
-BuildRequires:  %{python_module devel > 3.6}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  git
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module parver}
-BuildRequires:  %{python_module pdm-pep517}
-BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pdm-pep517 = %{version}}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module towncrier}
+BuildRequires:  git-core
 %endif
 # /SECTION
 %python_subpackages
@@ -62,7 +57,9 @@ doesn't need to create a virtualenv at all!
 %autosetup -p1 -n pdm-pep517-%{version}
 
 %build
+%if !%{with test}
 %pyproject_wheel
+%endif
 
 %install
 %if !%{with test}
@@ -72,7 +69,15 @@ doesn't need to create a virtualenv at all!
 
 %if %{with test}
 %check
-%pytest -k 'not (test_project_version_use_scm or test_build_wheel_write_version_to_file or test_build_wheel_write_version_to_file_template)'
+# must be set to the same value as it is set by the python_flavored_alternatives macro used below in pytest
+export XDG_CONFIG_HOME=$PWD/build/xdgflavorconfig
+%{python_expand # the config home is inside the shuffled build dir
+mkdir -p $XDG_CONFIG_HOME/git
+touch $XDG_CONFIG_HOME/git/config
+git config --global user.name abuild
+git config --global user.email abuild@obs
+}
+%pytest
 %endif
 
 %if !%{with test}

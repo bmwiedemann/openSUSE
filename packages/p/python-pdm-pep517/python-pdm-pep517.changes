@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug  3 08:35:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.3
+  * Fix a bug of editable install not reading
+  `run-setuptools = false` config.
+  * Put the long description in the body as specified by Metadata
+    Version 2.1
+  * Use `pkgutil`-style namespace package
+- Remove unnecessary build requirements
+- Remove release tools from test requirements
+- Requires python-devel only for tests
+- Fix missing psuffix in test multibuild flavor
+- Unskip git based tests
+
+-------------------------------------------------------------------
 Tue Aug  2 13:36:47 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
 - Update to 1.0.2
