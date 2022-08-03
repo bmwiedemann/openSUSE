@@ -1,5 +1,5 @@
 #
-# spec file for package python-nbclassic
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,44 +16,65 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
-%if 0%{?suse_version} > 1500
-%bcond_without libalternatives
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
 %else
-%bcond_with libalternatives
+%define psuffix %{nil}
+%bcond_with test
 %endif
-Name:           python-nbclassic
-Version:        0.3.7
+# this conditional is used in the python-rpm-macros, but `osc build --without libalternatives` won't work
+%bcond_without libalternatives
+%define plainpython python
+
+Name:           python-nbclassic%{psuffix}
+Version:        0.4.3
 Release:        0
 Summary:        Jupyter Notebook as a Jupyter Server Extension
 License:        BSD-3-Clause
 URL:            https://github.com/jupyterlab/nbclassic
-# The github archive has the tests
-Source:         https://github.com/jupyterlab/nbclassic/archive/v%{version}.tar.gz#/nbclassic-%{version}-gh.tar.gz
-BuildRequires:  %{python_module jupyter_server >= 1.8}
-BuildRequires:  %{python_module notebook < 7}
-BuildRequires:  %{python_module notebook_shim >= 0.1.0}
-BuildRequires:  %{python_module setuptools}
+# The github archive has the nbclassic tests
+Source0:        https://github.com/jupyterlab/nbclassic/archive/v%{version}.tar.gz#/nbclassic-%{version}-gh.tar.gz
+# The wheel has the notebook 6 JS stuff
+Source1:        https://files.pythonhosted.org/packages/py3/n/nbclassic/nbclassic-%{version}-py3-none-any.whl
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros >= 20210929
+BuildRequires:  update-desktop-files
 Requires:       jupyter-nbclassic = %{version}
-Requires:       python-jupyter_server >= 1.8
-Requires:       python-notebook < 7
-Requires:       python-notebook_shim >= 0.1.0
+Requires:       python-Jinja2
+Requires:       python-Send2Trash >= 1.8.0
+Requires:       python-argon2-cffi
+Requires:       python-ipykernel
+Requires:       python-ipython_genutils
+Requires:       python-jupyter-client >= 6.1.1
+Requires:       python-jupyter-core >= 4.6.1
+Requires:       python-jupyter-server >= 1.8
+Requires:       python-nbconvert >= 5
+Requires:       python-nbformat
+Requires:       python-nest-asyncio >= 1.5
+Requires:       python-notebook-shim >= 0.1.0
+Requires:       python-prometheus-client
+Requires:       python-pyzmq >= 17
+Requires:       python-terminado >= 0.8.3
+Requires:       python-tornado >= 6.1
+Requires:       python-traitlets >= 4.2.1
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
 %else
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+BuildRequires:  this-specfile-is-not-functional-without-libalternatives
 %endif
-# SECTION test requirements
+%if %{with test}
+BuildRequires:  %{python_module nbclassic = %{version}}
 BuildRequires:  %{python_module pytest-console-scripts}
 BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module pytest}
-# /SECION
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -76,42 +97,89 @@ to Jupyter Server for their Python Web application backend. Using this package,
 users can launch Jupyter Notebook, JupyterLab and other frontends side-by-side
 on top of the new Python server backend.
 
-This package contains the jupyterlab server configuration file
+This package contains the jupyterlab server configuration and desktop files
 
 %prep
 %setup -q -n nbclassic-%{version}
 
 %build
-%python_build
+:
 
+%if !%{with test}
 %install
-%python_install
+%pyproject_install %{SOURCE1}
+
+%{python_expand #
+rm %{buildroot}%{$python_sitelib}/nbclassic/bundler/tests/resources/subdir/subsubdir/.gitkeep
+
+%fdupes %{buildroot}%{$python_sitelib}
+
+# the locale structure is not compatible with (python_)find_lang. Roll our own.
+echo '%%dir %{$python_sitelib}/nbclassic' > %{$python_prefix}-nbclassic.files
+find %{buildroot}%{$python_sitelib}/nbclassic -mindepth 1 -maxdepth 1 -not -name i18n > non-lang-files
+sed 's:%{buildroot}::' >> %{$python_prefix}-nbclassic.files < non-lang-files
+find %{buildroot}%{$python_sitelib}/nbclassic/i18n -type f -o -type l > lang-files
+sed -E '
+    s:%{buildroot}::
+    s:(.*/nbclassic/i18n/)([^/_]+)(.*(mo|po|json)$):%lang(\2) \1\2\3:
+' >> %{$python_prefix}-nbclassic.files < lang-files
+find %{buildroot}%{$python_sitelib}/nbclassic/i18n -type d > lang-dirs
+sed -E '
+    s:%{buildroot}::
+    s:(.*):%%dir \1:
+' >> %{$python_prefix}-nbclassic.files < lang-dirs
+}
+
+# https://github.com/jupyter/notebook/issues/6501
+cp %{buildroot}%{_bindir}/jupyter-nbclassic %{buildroot}%{_bindir}/jupyter-notebook
+# clone after copy to jupyter-notebook
 %python_clone -a %{buildroot}%{_bindir}/jupyter-nbclassic
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
-%jupyter_move_config
+duplicates="jupyter-notebook jupyter-bundlerextension jupyter-nbextension jupyter-serverextension"
+for basebin in $duplicates; do
+  %python_clone -a %{buildroot}%{_bindir}/${basebin}
+  %{python_expand mv %{buildroot}%{_bindir}/${basebin}{,.nbclassic}-%{$python_bin_suffix}
+    echo %{_bindir}/${basebin} >> %{$python_prefix}-nbclassic.files
+    echo %{_bindir}/${basebin}.nbclassic-%{$python_bin_suffix} >> %{$python_prefix}-nbclassic.files
+    echo "%%dir %{_datadir}/libalternatives/${basebin}" >> %{$python_prefix}-nbclassic.files
+    # increase priority over alternatives from notebook and use same grouping
+    myaltprio=%{$python_version_nodots}
+    if [ "%{$python_provides}" == "python3" ]; then
+      myaltprio=$(($myaltprio + 1000))
+    fi
+    conf=%{buildroot}%{_datadir}/libalternatives/${basebin}/${myaltprio}.conf
+    newconf=${conf/.conf/0.conf}
+    sed "s/${basebin}/${basebin}.nbclassic/" $conf > $newconf
+    echo "group=${duplicates// /, }" >> $newconf
+    rm $conf
+    echo $newconf | sed 's:%{buildroot}::' >> %{$python_prefix}-nbclassic.files
+  }
+done
+%fdupes %{buildroot}%{_bindir}
+
+%suse_update_desktop_file jupyter-nbclassic
+%endif
 
 %pre
-# If libalternatives is used: Removing old update-alternatives entries.
+# Remove old update-alternatives entry for transition to libalternatives
 %python_libalternatives_reset_alternative jupyter-nbclassic
 
-%post
-%python_install_alternative jupyter-nbclassic
-
-%postun
-%python_uninstall_alternative jupyter-nbclassic
-
+%if %{with test}
 %check
 %pytest
+%endif
 
-%files %{python_files}
+%if !%{with test}
+%files %{python_files} -f %{python_prefix}-nbclassic.files
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/jupyter-nbclassic
-%{python_sitelib}/nbclassic
 %{python_sitelib}/nbclassic-%{version}*-info
 
 %files -n jupyter-nbclassic
 %license LICENSE
 %_jupyter_config %{_jupyter_server_confdir}/nbclassic.json
+%{_datadir}/icons/hicolor/*/apps/nbclassic.svg
+%{_datadir}/applications/jupyter-nbclassic.desktop
+%endif
 
 %changelog

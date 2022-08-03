@@ -84,4 +84,34 @@
     <comment></comment>
     <requestid>980922</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>acc7212ca7a484bf0cea9bd4543f7cd8</srcmd5>
+    <version>0.4.3</version>
+    <time>1659554198</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.3
+  * Handle execution errors with empty traceback entries similar to
+    Lab #126 (@kevin-bates)
+  * fix some import errors in 0.4 #130 (@minrk)
+  * fix enable-on-install #127 (@minrk)
+  * Fix notebook shim version check #129 (@minrk)
+- Release 0.4.2
+  * Don't shim notebook if notebook&lt;7 is available #123 (@echarles)
+  * Relax assert for IPythonHandler in case of notebook&lt;6 #122
+    (@echarles)
+  * Fix executable name in desktop file #119 (@antonio-rojas)
+- Release 0.4.0
+  * Shim to support the notebook extensions #113 (@echarles)
+  * nbclassic to use its own static assets #96 (@echarles)
+  * Add the notebook 6.4.x tests, docs and companion files (with
+    git history) #94 (@echarles)
+  * Add the notebook static assets (with git history) #93
+    (@echarles)
+- Use the pure wheel for install which has the JS stuff.
+- Override notebook entrypoints with higer priority libalternatives
+  configurations gh#jupyter/notebook#6501
+- Test in multibuild for all the dependencies. Stay with nbclassic
+  tests only, not the notebook tests further down in the tree.</comment>
+    <requestid>992400</requestid>
+  </revision>
 </revisionlist>
