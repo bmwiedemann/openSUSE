@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20220801" schemaversion="4.1">
+<image name="OBS__MicroOS___20220802" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220801</productvar>
+      <productvar name="VERSION">20220802</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220801,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220802,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220801/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220802/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -76,7 +76,6 @@
       <repopackage name="alsa" arch="x86_64"/>
       <repopackage name="alsa-oss" arch="x86_64"/>
       <repopackage name="alsa-plugins" arch="x86_64"/>
-      <repopackage name="alsa-plugins-pulse" arch="x86_64"/>
       <repopackage name="alsa-plugins-speexrate" arch="x86_64"/>
       <repopackage name="alsa-plugins-upmix" arch="x86_64"/>
       <repopackage name="alsa-ucm-conf" arch="x86_64"/>
@@ -472,6 +471,24 @@
       <repopackage name="google-carlito-fonts"/>
       <repopackage name="google-droid-fonts" arch="x86_64"/>
       <repopackage name="google-noto-coloremoji-fonts" arch="x86_64"/>
+      <repopackage name="google-noto-sans-jp-bold-fonts"/>
+      <repopackage name="google-noto-sans-jp-fonts"/>
+      <repopackage name="google-noto-sans-jp-regular-fonts"/>
+      <repopackage name="google-noto-sans-sc-bold-fonts"/>
+      <repopackage name="google-noto-sans-sc-fonts"/>
+      <repopackage name="google-noto-sans-sc-regular-fonts"/>
+      <repopackage name="google-noto-sans-tc-bold-fonts"/>
+      <repopackage name="google-noto-sans-tc-fonts"/>
+      <repopackage name="google-noto-sans-tc-regular-fonts"/>
+      <repopackage name="google-noto-serif-jp-bold-fonts"/>
+      <repopackage name="google-noto-serif-jp-fonts"/>
+      <repopackage name="google-noto-serif-jp-regular-fonts"/>
+      <repopackage name="google-noto-serif-sc-bold-fonts"/>
+      <repopackage name="google-noto-serif-sc-fonts"/>
+      <repopackage name="google-noto-serif-sc-regular-fonts"/>
+      <repopackage name="google-noto-serif-tc-bold-fonts"/>
+      <repopackage name="google-noto-serif-tc-fonts"/>
+      <repopackage name="google-noto-serif-tc-regular-fonts"/>
       <repopackage name="google-opensans-fonts" arch="x86_64"/>
       <repopackage name="google-poppins-fonts" arch="x86_64"/>
       <repopackage name="google-roboto-fonts" arch="x86_64"/>
@@ -643,6 +660,7 @@
       <repopackage name="jupyter-jupyter_core-filesystem" arch="x86_64"/>
       <repopackage name="jupyter-jupyterlab" arch="x86_64"/>
       <repopackage name="jupyter-jupyterlab-filesystem" arch="x86_64"/>
+      <repopackage name="jupyter-jupyterlab-pygments" arch="x86_64"/>
       <repopackage name="jupyter-jupyterlab-widgets" arch="x86_64"/>
       <repopackage name="jupyter-nbclassic" arch="x86_64"/>
       <repopackage name="jupyter-nbconvert" arch="x86_64"/>
@@ -2045,24 +2063,6 @@
       <repopackage name="notification-daemon"/>
       <repopackage name="notification-daemon-lang"/>
       <repopackage name="noto-sans-fonts" arch="x86_64"/>
-      <repopackage name="noto-sans-jp-bold-fonts"/>
-      <repopackage name="noto-sans-jp-fonts"/>
-      <repopackage name="noto-sans-jp-regular-fonts"/>
-      <repopackage name="noto-sans-sc-bold-fonts"/>
-      <repopackage name="noto-sans-sc-fonts"/>
-      <repopackage name="noto-sans-sc-regular-fonts"/>
-      <repopackage name="noto-sans-tc-bold-fonts"/>
-      <repopackage name="noto-sans-tc-fonts"/>
-      <repopackage name="noto-sans-tc-regular-fonts"/>
-      <repopackage name="noto-serif-jp-bold-fonts"/>
-      <repopackage name="noto-serif-jp-fonts"/>
-      <repopackage name="noto-serif-jp-regular-fonts"/>
-      <repopackage name="noto-serif-sc-bold-fonts"/>
-      <repopackage name="noto-serif-sc-fonts"/>
-      <repopackage name="noto-serif-sc-regular-fonts"/>
-      <repopackage name="noto-serif-tc-bold-fonts"/>
-      <repopackage name="noto-serif-tc-fonts"/>
-      <repopackage name="noto-serif-tc-regular-fonts"/>
       <repopackage name="npm17" arch="x86_64"/>
       <repopackage name="nscd" arch="x86_64"/>
       <repopackage name="nss-mdns" arch="x86_64"/>
