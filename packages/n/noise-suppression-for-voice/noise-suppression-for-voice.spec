@@ -17,19 +17,24 @@
 
 
 Name:           noise-suppression-for-voice
-Version:        0.91+git8.6922453
+Version:        1.03+git1.226f03b
 Release:        0
 Summary:        Noise suppression plugin based on Xiph's RNNoise
 License:        GPL-3.0-only
 URL:            https://github.com/werman/noise-suppression-for-voice
 Source:         %{name}-%{version}.tar.xz
+BuildRequires:  Mesa-libGL-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa
 BuildRequires:  ladspa-devel
-BuildRequires:  lv2
+BuildRequires:  libXcursor-devel
+BuildRequires:  libXrandr-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(lv2)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xinerama)
 
 %description
 The plugin is meant to suppress a wide range of noise origins
@@ -64,6 +69,44 @@ Other sample rates may work, or not...
 
 This package holds the lv2 plugin.
 
+%package     -n vst3-rnnoise
+Summary:        Noise suppression plugin based on Xiph's RNNoise - vst3 plugin
+
+%description -n vst3-rnnoise
+The plugin is meant to suppress a wide range of noise origins
+(from original paper): computer fans, office, crowd, airplane,
+car, train, construction.
+
+From my tests mild background noise is always suppressed,
+loud sounds, like clicking of mechanical keyboard, are
+suppressed while there is no voice however they are only
+reduced in volume when voice is present.
+
+The plugin is made to work with 1 channel and/or 2 channels
+(ladspa plugin), 16 bit, 48000 Hz audio input.
+Other sample rates may work, or not...
+
+This package holds the vst3 plugin.
+
+%package     -n vst-rnnoise
+Summary:        Noise suppression plugin based on Xiph's RNNoise - vst plugin
+
+%description -n vst-rnnoise
+The plugin is meant to suppress a wide range of noise origins
+(from original paper): computer fans, office, crowd, airplane,
+car, train, construction.
+
+From my tests mild background noise is always suppressed,
+loud sounds, like clicking of mechanical keyboard, are
+suppressed while there is no voice however they are only
+reduced in volume when voice is present.
+
+The plugin is made to work with 1 channel and/or 2 channels
+(ladspa plugin), 16 bit, 48000 Hz audio input.
+Other sample rates may work, or not...
+
+This package holds the vst plugin.
+
 %package     -n ladspa-rnnoise
 Summary:        Noise suppression plugin based on Xiph's RNNoise - ladspa plugin
 
@@ -86,6 +129,8 @@ This package holds the ladspa plugin.
 %prep
 %autosetup -p1
 
+sed -i -e 's/lxvst/vst/' src/juce_plugin/CMakeLists.txt
+
 %build
 %cmake
 %cmake_build
@@ -101,6 +146,17 @@ This package holds the ladspa plugin.
 %files -n lv2-rnnoise
 %license LICENSE
 %doc README.md
-%{_libdir}/lv2/rnnoise.lv2/
+%{_libdir}/lv2/
+
+%files -n vst3-rnnoise
+%license LICENSE
+%doc README.md
+%{_libdir}/vst3/
+
+%files -n vst-rnnoise
+%license LICENSE
+%doc README.md
+%dir %{_libdir}/vst
+%{_libdir}/vst/
 
 %changelog
