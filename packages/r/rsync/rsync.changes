@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  1 12:27:43 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Security fix: [bsc#1201840, CVE-2022-29154]
+  * arbitrary file write vulnerability via do_server_recv function
+  * Added patch rsync-rsync-CVE-2022-29154.patch
+
+-------------------------------------------------------------------
 Tue Jun 21 10:34:12 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Removed %config flag for files in /usr directory.
