@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug  1 21:22:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.1.4:
+  * anv: disable non uniform indexing of UBOs
+  * anv: use the right helper to invalidate memory
+  * intel/fs: ray query fix for global address
+  * isl: add new helper for format component compatibility
+  * radeonsi: fix random PS wave size
+  * r300: Keep rc_rename_regs() from overflowing
+  * aco/ra: update register file when updating phi definition
+  * radv: Fix vkCmdCopyQueryResults -> vkCmdResetPool hazard
+
+-------------------------------------------------------------------
 Fri Jul 15 13:00:57 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - let Mesa ignore Mesa-dri as dep to resolve a build cycle

@@ -33,7 +33,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 22.1.3
+%define _version 22.1.4
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -106,12 +106,12 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        22.1.3
+Version:        22.1.4
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
 Group:          System/Libraries
-URL:            http://www.mesa3d.org
+URL:            https://www.mesa3d.org
 #Git-Clone:     git://anongit.freedesktop.org/mesa/mesa
 Source:         https://mesa.freedesktop.org/archive/%{_name_archive}-%{_version}.tar.xz
 Source1:        https://mesa.freedesktop.org/archive/%{_name_archive}-%{_version}.tar.xz.sig
