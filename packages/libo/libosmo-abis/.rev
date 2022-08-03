@@ -120,4 +120,12 @@ fix build with ortp 0.27</comment>
     <comment>- Update to new upstream release 1.2.0</comment>
     <requestid>932575</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>49736d2c60ec29043486f1f2fd27ee1c</srcmd5>
+    <version>1.3.0</version>
+    <time>1659554229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.3.0</comment>
+    <requestid>992622</requestid>
+  </revision>
 </revisionlist>

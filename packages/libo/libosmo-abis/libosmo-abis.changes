@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  3 14:54:10 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.0
+  * input/e1d: fix a memleak in handle_ts_raw_read()
+
+-------------------------------------------------------------------
 Fri Nov 19 09:14:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 1.2.0

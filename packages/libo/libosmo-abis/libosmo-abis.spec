@@ -1,7 +1,7 @@
 #
 # spec file for package libosmo-abis
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libosmo-abis
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Osmocom library for A-bis interface between BTS and BSC
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -31,10 +31,10 @@ BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libosmo-e1d) >= 0.2.0
-BuildRequires:  pkgconfig(libosmocodec) >= 1.5.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.5.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.5.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.5.0
+BuildRequires:  pkgconfig(libosmocodec) >= 1.7.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.7.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.7.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.7.0
 BuildRequires:  pkgconfig(ortp) >= 0.22
 BuildRequires:  pkgconfig(talloc)
 
@@ -128,7 +128,7 @@ fi
 %postun -n libosmotrau2 -p /sbin/ldconfig
 
 %files -n libosmoabis10
-%_libdir/libosmoabis.so.10*
+%_libdir/libosmoabis.so.*
 
 %files -n libosmoabis-devel
 %license COPYING
@@ -139,7 +139,7 @@ fi
 %_libdir/pkgconfig/libosmoabis.pc
 
 %files -n libosmotrau2
-%_libdir/libosmotrau.so.2*
+%_libdir/libosmotrau.so.*
 
 %files -n libosmotrau-devel
 %license COPYING
