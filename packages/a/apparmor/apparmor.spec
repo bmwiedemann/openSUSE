@@ -45,7 +45,7 @@
 %define JAR_FILE changeHatValve.jar
 
 Name:           apparmor
-Version:        3.0.5
+Version:        3.0.6
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -82,9 +82,6 @@ Patch6:         apache-extra-profile-include-if-exists.diff
 # add zgrep and xzgrep profile (merged upstream 2022-04-12 https://gitlab.com/apparmor/apparmor/-/merge_requests/870 + merged upstream 2022-04-18 https://gitlab.com/apparmor/apparmor/-/merge_requests/873
 #                               + merged upstream 2022-06-29 https://gitlab.com/apparmor/apparmor/-/merge_requests/892 - master only)
 Patch9:         zgrep-profile-mr870.diff
-
-# dirtest.sh: sort output to avoid random test failures (from upstream, merged 3.0+master 2022-07-25 https://gitlab.com/apparmor/apparmor/-/merge_requests/900)
-Patch10:        dirtest-sort-mr900.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -352,7 +349,6 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch5
 %patch6
 %patch9 -p1
-%patch10 -p1
 
 %build
 export SUSE_ASNEEDED=0

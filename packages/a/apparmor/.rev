@@ -2424,4 +2424,17 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
 - package profile-load script in -parser (forwarded request 991157 from cboltz)</comment>
     <requestid>991158</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>ab41a698501ad3392a692f540f95fb44</srcmd5>
+    <version>3.0.6</version>
+    <time>1659554179</time>
+    <user>dimstar_suse</user>
+    <comment>- update to AppArmor 3.0.6
+  - fix LTO build in the parser
+  - remove dbus deny rule in abstractions/exo-open
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.0.6
+    for the detailed upstream changelog
+- drop upstream patch dirtest-sort-mr900.diff (forwarded request 992099 from cboltz)</comment>
+    <requestid>992100</requestid>
+  </revision>
 </revisionlist>

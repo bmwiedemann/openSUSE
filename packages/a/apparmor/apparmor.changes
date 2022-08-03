@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  1 18:42:57 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 3.0.6
+  - fix LTO build in the parser
+  - remove dbus deny rule in abstractions/exo-open
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.0.6
+    for the detailed upstream changelog
+- drop upstream patch dirtest-sort-mr900.diff
+
+-------------------------------------------------------------------
 Mon Jul 25 18:18:04 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 3.0.5
