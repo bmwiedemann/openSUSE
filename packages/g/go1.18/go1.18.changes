@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug  1 15:40:03 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.18.5 (released 2022-08-01) includes security fixes to the
+  encoding/gob and math/big packages, as well as bug fixes to the
+  compiler, the go command, the runtime, and the testing package.
+  Refs boo#1193742 go1.18 release tracking
+  CVE-2022-32189
+  * boo#1202035 CVE-2022-32189 go#53871
+  * go#54095 math/big: index out of range in Float.GobDecode
+  * go#53883 cmd/compile: interface conversion with generics reports "types from different scopes"
+  * go#53875 cmd/go: livelock when computing module graph in a workspace with GOPROXY=off
+  * go#53852 cmd/compile: internal compiler error: assertion failed
+  * go#53847 runtime: modified timer results in extreme cpu load
+  * go#53119 cmd/go: Build information embedded by Go 1.18 impairs build reproducibility with cgo flags
+  * go#53112 runtime: gentraceback() dead loop on arm64 casued the process hang
+  * go#52986 testing: TempDir RemoveAll cleanup failures with "The process cannot access the file because it is being used by another process."
+  * go#52961 cmd/compile: miscompilation in pointer operations
+
+-------------------------------------------------------------------
 Tue Jul 12 20:28:01 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.18.4 (released 2022-07-12) includes security fixes to the

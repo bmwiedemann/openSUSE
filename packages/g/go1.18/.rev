@@ -219,4 +219,26 @@
   CVE-2022-1705 CVE-2022-32148 CVE-2022-30631 CVE-2022-30633 CVE-2022-28131 CVE-2022-30635 CVE-2022-30632 CVE-2022-30630 CVE-2022-1962 (forwarded request 988807 from jfkw)</comment>
     <requestid>988809</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cdda62514ebc0bdb53f4bf100795c3c1</srcmd5>
+    <version>1.18.5</version>
+    <time>1659554176</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.18.5 (released 2022-08-01) includes security fixes to the
+  encoding/gob and math/big packages, as well as bug fixes to the
+  compiler, the go command, the runtime, and the testing package.
+  Refs boo#1193742 go1.18 release tracking
+  CVE-2022-32189
+  * boo#1202035 CVE-2022-32189 go#53871
+  * go#54095 math/big: index out of range in Float.GobDecode
+  * go#53883 cmd/compile: interface conversion with generics reports &quot;types from different scopes&quot;
+  * go#53875 cmd/go: livelock when computing module graph in a workspace with GOPROXY=off
+  * go#53852 cmd/compile: internal compiler error: assertion failed
+  * go#53847 runtime: modified timer results in extreme cpu load
+  * go#53119 cmd/go: Build information embedded by Go 1.18 impairs build reproducibility with cgo flags
+  * go#53112 runtime: gentraceback() dead loop on arm64 casued the process hang
+  * go#52986 testing: TempDir RemoveAll cleanup failures with &quot;The process cannot access the file because it is being used by another process.&quot;
+  * go#52961 cmd/compile: miscompilation in pointer operations (forwarded request 992076 from jfkw)</comment>
+    <requestid>992080</requestid>
+  </revision>
 </revisionlist>
