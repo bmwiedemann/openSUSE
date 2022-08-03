@@ -30,6 +30,8 @@ Source:         https://github.com/rpm-software-management/%{modname}/releases/d
 Patch0:         use-binary-mode-when-reopening-files.patch
 # PATCH-FIX_UPSTREAM https://github.com/rpm-software-management/urlgrabber/pull/35
 Patch1:         fix_find_proxy_logic_and_drop_six.patch
+# PATCH-FIX_UPSTREAM https://github.com/rpm-software-management/urlgrabber/pull/34
+Patch2:         avoid_crashing_when_urlgrabber_debug_enabled.patch
 
 BuildRequires:  %{python_module pycurl}
 BuildRequires:  %{python_module setuptools}
