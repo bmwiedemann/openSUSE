@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 25 21:15:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.12.0: 
+  * py-93259: Now raise ``ValueError`` when ``None`` or an empty
+    string are passed to ``Distribution.from_name`` (and other
+    callers).
+
+-------------------------------------------------------------------
 Sun Jun  5 00:10:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.11.4:
