@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  3 06:53:47 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.3.1:
+    - Bugfix: Add header file in snapshot parser - fix build for 
+      certain libc++ libs (github issue #43 from manojgupta)
+    - Bugfix: Fix typo in comment (github issue #42 from nothatDinger)
+
+-------------------------------------------------------------------
 Tue Apr  5 12:43:48 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.3.0:
