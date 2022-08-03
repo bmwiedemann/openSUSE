@@ -13,6 +13,6 @@ if [ -f /run/ignition/neednet ] && ! getargbool 0 'rd.neednet'; then
         udevadm trigger --subsystem-match net --action add
     else
         # NetworkManager
-        . /usr/lib/dracut/hooks/cmdline/99-nm-config.sh
+        . /lib/dracut/hooks/cmdline/99-nm-config.sh
     fi
 fi

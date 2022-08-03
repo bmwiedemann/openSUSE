@@ -597,4 +597,12 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
 - Use fixed paths in spec file for hardcoded installation paths</comment>
     <requestid>982087</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>bfbf50950d33158f80ad8b181b35bb0c</srcmd5>
+    <version>2.14.0</version>
+    <time>1659554187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992323</requestid>
+  </revision>
 </revisionlist>

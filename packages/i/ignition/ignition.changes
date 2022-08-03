@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  2 11:28:11 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- ignition-enable-network.sh: Use /lib/dracut/hooks directly
+  instead of the usr-merged location which isn't available everywhere
+  (bsc#1201957)
+
+-------------------------------------------------------------------
 Wed May 18 12:37:46 UTC 2022 - iforster@suse.com
 
 - Update to version 2.14.0:
