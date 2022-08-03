@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 31 12:00:00 UTC 2022 - cunix@mail.de
+
+- Update to 3.2.12
+  * Expose "olm_sas_calculate_mac_fixed_base64" in python bindings
+  * Fix Python type hints
+
+-------------------------------------------------------------------
 Sun Jan 30 10:32:17 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Updateto 3.2.10
