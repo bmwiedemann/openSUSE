@@ -16,7 +16,7 @@ Index: gnuplot-5.2.2/configure.ac
 -  # If pkg-config did return libgd configuration then
 -  # libgd_{CFLAGS,LDFLAGS,LIBS} is set
 -  # If gdlib-config executable is found then GDLIB_CONFIG is set
--  if test $pkg_failed == no && test -n "$GDLIB_CONFIG"; then
+-  if test $pkg_failed = no && test -n "$GDLIB_CONFIG"; then
 -    # If pkg-config did succeed and we have gdlib-config then the later takes
 -    # priority
 -    libgd_CFLAGS=`$GDLIB_CONFIG --cflags`

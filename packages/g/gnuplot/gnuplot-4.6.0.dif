@@ -63,7 +63,7 @@
  
 --- gnuplot-5.4.0/src/gplt_x11.c
 +++ gnuplot-5.4.0/src/gplt_x11.c	2020-07-17 07:25:36.834034450 +0000
-@@ -2509,9 +2509,12 @@ exec_cmd(plot_struct *plot, char *comman
+@@ -2513,9 +2513,12 @@ exec_cmd(plot_struct *plot, char *comman
  	}
      }
      /*   X11_justify_text(mode) - set text justification mode  */

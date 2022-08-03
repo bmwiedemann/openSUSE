@@ -1043,4 +1043,41 @@
 - Use wxGTK3 instead of GTK2 wxWidgets. (forwarded request 983724 from StefanBruens)</comment>
     <requestid>983854</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>9c6fc32a1c0b4c5d1672ded493c23dea</srcmd5>
+    <version>5.4.4</version>
+    <time>1659554190</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.4.4
+  * NEW plots can use arrow styles that specify &quot;lc rgb variable&quot; 
+  * CHANGE make page layout of &quot;set view map; splot&quot; more like that of &quot;plot&quot;
+           - honor &quot;set rmargin&quot; and &quot;set tmargin&quot; Bug #2484
+           - display x2label and y2label Bug #2484
+           - revised placement of color box Bug #2484
+           - reconcile linked axis data and tic ranges Bug #2483
+           - apply &quot;set key invert&quot; to splot Bug #2381
+  * CHANGE cairo terminals: increase internal oversampling factor Bugs #2499 #2369
+  * CHANGE fig: restore terminal option &quot;pointsmax &lt;N&gt;&quot; Bug #2509
+  * CHANGE always add a space between items in a &quot;print&quot; command Bug #2488
+  * CHANGE consistent ordering of input columns for &quot;plot ... ps var pt var&quot; Bug #2524
+  * CHANGE gnuplot -c script.gp A B -C ... will pass A B -C ... without interpretation
+  * CHANGE stricter error checks when promoting string to numeric value Bug #2527
+  * CHANGE report GPVAL_TERM_XMIN and friends as floating point values
+  * FIX handle combination of axis properties logscale + autoscale + reverse Bug #2347
+  * FIX mis-handled arguments at start-up of &quot;gnuplot -c script arg1 ...&quot; Bug #2493
+  * FIX windows: redirected output of printf() Bug #2490
+  * FIX allow variable point style and point type in plot &quot;with yerrorbars&quot;
+  * FIX plots &quot;with labels point pt variable&quot; were off-by-one in choosing point type
+  * FIX contour &quot;with labels&quot; from binary data
+  * FIX x/y fractional coordinate mouse readout for nonlinear axes Bug #2526
+  * FIX Support combination of &quot;set surface explicit; set hidden3d&quot; Bug #2521
+- Use https
+- Port patches
+  * gnuplot-4.6.0-fonts.diff
+  * gnuplot-4.6.0.dif
+  * gnuplot-gd.patch
+
+- Update to gnuplot 5.4.4</comment>
+    <requestid>992338</requestid>
+  </revision>
 </revisionlist>

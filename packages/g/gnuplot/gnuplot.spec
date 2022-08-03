@@ -77,8 +77,8 @@ BuildRequires:  tex(pdftex.def)
 BuildRequires:  tex(subfigure.sty)
 BuildRequires:  tex(textgreek.sty)
 %endif
-URL:            http://www.gnuplot.info/
-Version:        5.4.3
+URL:            https://www.gnuplot.info/
+Version:        5.4.4
 Release:        0
 %global         underscore 5_4
 %if "%{flavor}" == ""
@@ -90,11 +90,11 @@ Summary:        Documentation of GNUplot
 License:        GPL-2.0-or-later AND SUSE-Gnuplot
 Group:          Documentation/Other
 %endif
-Source0:        http://downloads.sourceforge.net/project/gnuplot/gnuplot/%{version}/gnuplot-%{version}.tar.gz
-Source1:        http://downloads.sourceforge.net/project/gnuplot/gnuplot/%{version}/Gnuplot_%{underscore}.pdf
+Source0:        https://downloads.sourceforge.net/project/gnuplot/gnuplot/%{version}/gnuplot-%{version}.tar.gz
+Source1:        https://downloads.sourceforge.net/project/gnuplot/gnuplot/%{version}/Gnuplot_%{underscore}.pdf
 Source2:        gnuplot-fr.doc.bz2
 Source3:        README.whynot
-# http://mirrors.ctan.org/macros/latex209/contrib/picins/picins.sty
+# https://mirrors.ctan.org/macros/latex209/contrib/picins/picins.sty
 # That's a build requirement, not provided by Tex Live
 Source5:        picins.sty
 # Repair broken texi(nfo) file
