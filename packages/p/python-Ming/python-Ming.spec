@@ -18,28 +18,24 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Ming
-Version:        0.11.2
+Version:        0.12.0
 Release:        0
 Summary:        Database mapping layer for MongoDB on Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/TurboGears/Ming
 Source:         https://files.pythonhosted.org/packages/source/M/Ming/Ming-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/TurboGears/Ming/master/LICENSE.txt
-# https://github.com/TurboGears/Ming/issues/39
-Patch0:         python-Ming-no-mock.patch
+Patch0:         pymongo-4-support.patch
 BuildRequires:  %{python_module FormEncode >= 1.2.1}
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module WebTest}
-BuildRequires:  %{python_module mock >= 0.8.0}
 BuildRequires:  %{python_module pymongo >= 3.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-pymongo >= 3.0
 Requires:       python-pytz
-Requires:       python-six >= 1.6.1
 Recommends:     python-FormEncode >= 1.2.1
 BuildArch:      noarch
 %python_subpackages
@@ -49,9 +45,7 @@ Database mapping layer for MongoDB on Python.
 Includes schema enforcement and some facilities for schema migration.
 
 %prep
-%setup -q -n Ming-%{version}
-%patch0 -p1
-cp %{SOURCE1} .
+%autosetup -p1 -n Ming-%{version}
 
 # gridfs fails
 rm ming/tests/test_gridfs.py

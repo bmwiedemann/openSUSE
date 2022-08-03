@@ -127,4 +127,23 @@
     <comment></comment>
     <requestid>964656</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>29fcdce894b3b59e57d64167a8405bbb</srcmd5>
+    <version>0.12.0</version>
+    <time>1659554195</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Remove six dependency.
+  * Remove Python 3.5 support.
+  * Run pyupgrade --py37-plus.
+  * Support distinct() keys traversing lists.
+- Remove unneeded BuildRequires on mock. 
+- Remove seperate source for LICENSE, it is now shipped.
+- Add missing Requires on pymongo.
+- Remove patch python-Ming-no-mock.patch:
+  * Included upstream.
+- Add patch pymongo-4-support.patch:
+  * Support pymongo &gt;= 4</comment>
+    <requestid>992418</requestid>
+  </revision>
 </revisionlist>
