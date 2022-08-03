@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 02 11:32:23 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.0+git1:
+  * Use /lib/dracut/hooks instead of the usr-merged location (bsc#1201957)
+
+-------------------------------------------------------------------
 Wed Jul 06 09:34:01 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Switch to use the git repo with obs_scm
