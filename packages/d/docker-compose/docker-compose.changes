@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Tue Aug 02 06:38:24 UTC 2022 - dmueller@suse.com
+
+- Update to version 2.9.0:
+  * switch tests back to '_' separator for networks and volumes
+  * update to compose-go v1.4.0 as previous version introduced breaking changes
+  * Overwrite parent commands PreRun code for `compose version`
+  * Improve descriptions about tests in CONTRIBUTING.md
+  * Fix LinkLocalIPs in V2
+  * Link to BUILDING.md for testing instructions
+
+-------------------------------------------------------------------
+Mon Aug 01 11:13:31 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.8.0:
+  * Fix go.mod on  replace for compose-go
+  * config: ignore image for config hash generation (#9350)
+  * Bump compose-go -> 1.3.0
+  * use '-' as separator by default for image name
+  * as --no-build is set, set service image to default image name
+  * cmd: consistent handling no-args commands (#9660)
+  * Fixes #9403: Remove Named Pipes from volumeMounts
+  * Fix environment variables priority between environment and .env
+  * Fix .env and --envfile priorities
+  * add pull & build config to project before create add pull flag to create and up documentation
+  * introduce --pull
+  * use Google addlicense instead of kunalkushwaha/ltag
+  * update cli-doc-tool and update the doc with this new version
+  * remove usage of GO111MODULE option in gh actions
+  * use env variable for golang version and updates gh actions from v2 to v3
+  * ci(docs): use push-to-fork when creating pr
+  * remove unused sessionConfig param for addSecretsConfig function
+
+-------------------------------------------------------------------
+Wed Jul 20 07:19:38 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.7.0:
+  * Bump compose-go -> v1.2.9
+  * build(deps): bump github.com/sirupsen/logrus from 1.8.1 to 1.9.0
+  * Fix nolint issues
+  * Add "style" tag to gocritic
+  * Add "opinionated" tag to gocritic
+  * Add "diagnostic" tag to gocritic
+  * Add gocritic to linters
+  * add 2 named networks with close name in the networks test suite to guarantee the good distinction on network names
+  * update go to 1.18.4
+  * keep the container reference when volumes_from target a container and not a service
+  * build.go: Access customLabels directly instead of by reference
+  * check the exact network's name before creating or stopping it NetworkList API doesn't return the extact name match, so we can retrieve more than one network with a request
+  * build(deps): bump github.com/cnabio/cnab-to-oci from 0.3.4 to 0.3.5
+  * Fix typo in docker_compose_pull
+  * Fix typo in compose pull documentation
+  * add new targets to build Compose binary before running e2e tests
+  * Fix golangci syntax error in run configuration
+  * add support of environment secret during build step
+  * Use switch/case instead of static map for simplicity
+  * TC: Add missing tests for argumetns
+  * TC: fix naming
+  * TC: Use map to simplify flag conversion and avoid multilple if statements
+  * e2e: add more start/stop test cases
+  * build(deps): bump github.com/stretchr/testify from 1.7.5 to 1.8.0
+  * Update logic to keep `compose stop` and `restart` from affecting one-offs
+  * e2e: split out `pause` tests and add more cases
+  * fix: panic caused by empty string argument
+  * build(deps): bump github.com/hashicorp/go-version from 1.5.0 to 1.6.0
+  * Blacklist ioutil pkg in golangci-lint
+  * Use alpine instead of ubuntu for E2E compose file, no need to include version
+  * Replace deprecated ioutil pkg with os & io
+  * test: add copyright notice
+  * ci: release workflow to open a PR on docs repo with latest changes
+  * build(deps): bump github.com/stretchr/testify from 1.7.4 to 1.7.5
+  * build(deps): bump github.com/cnabio/cnab-to-oci from 0.3.3 to 0.3.4
+  * network: make test mock consistent throughout
+  * build: respect dependency order for classic builder
+  * networks: prevent issues due to duplicate names
+  * build(deps): bump github.com/spf13/cobra from 1.4.0 to 1.5.0
+  * build(deps): bump github.com/stretchr/testify from 1.7.2 to 1.7.4
+  * Use appropriate dependency condition for one-shot containers when running `compose up --wait`
+
+-------------------------------------------------------------------
+Wed Jun 29 18:26:32 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- first version of package docker-compose (v2)
+  - v2 was rewritten in golang, while v1 was in Python
+  - as they behaviour changes between v1 (python-docker-compose) and v2,
+    this package does not obsolete the v1 package 
