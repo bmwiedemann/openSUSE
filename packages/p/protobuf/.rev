@@ -679,4 +679,12 @@
     <user>RBrownFactory</user>
     <comment>Revert to 21.2, avoid ABI break</comment>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>e60a61da0a1607768e6ee5c47c534fd3</srcmd5>
+    <version>21.3</version>
+    <time>1659554185</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>992221</requestid>
+  </revision>
 </revisionlist>
