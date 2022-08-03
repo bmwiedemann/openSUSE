@@ -18,13 +18,13 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           libkrun
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        A dynamic library providing KVM-based process isolation capabilities
 License:        Apache-2.0
 URL:            https://github.com/containers/libkrun
 Source0:        libkrun-%{version}.tar.gz
-Source1:        vendor.tar.zst
+Source1:        vendor.tar.xz
 Source2:        cargo_config
 # libkrunfw is a plugin for us, more than a full-fledged library,
 # so let's avoid setting up a SONAME etc (which upstream is now doing).

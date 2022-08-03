@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug  3 09:01:53 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Reconcile spec file and package content (reference .xz and
+  get rid of .zst)
+
+-------------------------------------------------------------------
+Fri Jul 29 11:12:32 UTC 2022 - fcrozat@suse.com
+
+- Update to version 1.2.2:
+  * Bump version to v1.2.2
+  * vsock: remove stray println
+
+-------------------------------------------------------------------
 Wed Jun 22 07:36:02 UTC 2022 - dfaggioli@suse.com
 
 - Run services and update vendored dependencies
