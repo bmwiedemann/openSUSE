@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Aug  2 11:51:50 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 0.29.32:
+  - Bugs fixed:
+    * Revert "Using memoryview typed arguments in inner functions is now
+      rejected as unsupported."
+    * from module import * failed in 0.29.31 when using memoryviews
+- Changes from 0.29.31:
+  - Features added:
+    * A new argument --module-name was added to the cython command to provide
+      the (one) exact target module name from the command line.
+  - Bugs fixed:
+    * Use importlib.util.find_spec() instead of the deprecated
+      importlib.find_loader() function when setting up the package path at
+      import-time.
+    * Require the C compiler to support the two-arg form of va_start on
+      Python 3.10 and higher.
+    * Make fused_type subscriptable in Shadow.py.
+    * Fix the incorrect code generation of the target type in bytearray loops.
+    * Atomic refcounts for memoryviews were not used on some GCC versions by
+      accident.
+    * Silence some GCC -Wconversion warnings in C utility code.
+    * Tuple multiplication was ignored in expressions such as [*(1,) * 2].
+    * Calling append methods on extension types could fail to find the method in
+      some cases.
+    * Ensure that object buffers (e.g. ndarray[object, ndim=1]) containing NULL
+      pointers are safe to use, returning None instead of the NULL pointer.
+    * Using memoryview typed arguments in inner functions is now rejected as
+      unsupported.
+    * Compilation could fail on systems (e.g. FIPS) that block MD5 checksums at
+      runtime.
+    * Experimental adaptations for the CPython "nogil" fork was added. Note that
+      there is no official support for this in Cython 0.x.
+
+-------------------------------------------------------------------
 Wed May 18 08:35:39 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 0.29.30:
