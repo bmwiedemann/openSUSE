@@ -1,7 +1,7 @@
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/cmd/loki/loki-local-config.yaml
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/cmd/loki/loki-local-config.yaml
 ===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/cmd/loki/loki-local-config.yaml
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/cmd/loki/loki-local-config.yaml
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/cmd/loki/loki-local-config.yaml
++++ loki-2.6.1+git.1658128747.6bd05c9a4/cmd/loki/loki-local-config.yaml
 @@ -5,11 +5,11 @@ server:
    grpc_listen_port: 9096
  
@@ -17,11 +17,20 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/cmd/loki/loki-local-config.yaml
    replication_factor: 1
    ring:
      instance_addr: 127.0.0.1
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/configuration/examples.md
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/configuration/examples.md
 ===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/configuration/examples.md
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/configuration/examples.md
-@@ -148,7 +148,7 @@ storage_config:
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/docs/sources/configuration/examples.md
++++ loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/configuration/examples.md
+@@ -150,7 +150,7 @@ storage_config:
+     secret_access_key: secret_access_key
+ 
+ compactor:
+-  working_directory: /tmp/loki/compactor
++  working_directory: /var/lib/loki/compactor
+   shared_store: bos
+ ```
+ 
+@@ -179,7 +179,7 @@ storage_config:
      keyspace: lokiindex
  
    filesystem:
@@ -30,7 +39,7 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/configuration/examples.m
      
  ```
  
-@@ -184,10 +184,10 @@ schema_config:
+@@ -215,10 +215,10 @@ schema_config:
  
  storage_config:
    boltdb:
@@ -43,10 +52,10 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/configuration/examples.m
  
  limits_config:
    enforce_metric_name: false
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/configuration/examples/cassandra-index.yaml
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/configuration/examples/cassandra-index.yaml
 ===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/configuration/examples/cassandra-index.yaml
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/configuration/examples/cassandra-index.yaml
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/docs/sources/configuration/examples/cassandra-index.yaml
++++ loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/configuration/examples/cassandra-index.yaml
 @@ -19,5 +19,5 @@ storage_config:
      keyspace: lokiindex
  
@@ -56,10 +65,10 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/configuration/examples/c
 \ No newline at end of file
 +    directory: /var/lib/loki/chunks
 +
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/configuration/examples/complete-local-config.yaml
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/configuration/examples/complete-local-config.yaml
 ===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/configuration/examples/complete-local-config.yaml
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/configuration/examples/complete-local-config.yaml
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/docs/sources/configuration/examples/complete-local-config.yaml
++++ loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/configuration/examples/complete-local-config.yaml
 @@ -26,10 +26,10 @@ schema_config:
  
  storage_config:
@@ -73,10 +82,10 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/configuration/examples/c
  
  limits_config:
    enforce_metric_name: false
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/operations/storage/filesystem.md
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/operations/storage/filesystem.md
 ===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/operations/storage/filesystem.md
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/operations/storage/filesystem.md
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/docs/sources/operations/storage/filesystem.md
++++ loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/operations/storage/filesystem.md
 @@ -10,7 +10,7 @@ Very simply it stores all the objects (c
  ```yaml
  storage_config:
@@ -86,10 +95,28 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/operations/storage/files
  ```
  
  A folder is created for every tenant all the chunks for one tenant are stored in that directory.
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/rules/_index.md
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/rules/_index.md
 ===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/rules/_index.md
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/rules/_index.md
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/docs/sources/rules/_index.md
++++ loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/rules/_index.md
+@@ -18,7 +18,7 @@ ruler:
+   storage:
+     type: local
+     local:
+-      directory: /tmp/rules
++      directory: /var/lib/loki/rules
+   rule_path: /tmp/scratch
+   alertmanager_url: http://localhost
+   ring:
+@@ -245,7 +245,7 @@ ruler:
+             consul:
+                 host: consul.loki-dev.svc.cluster.local:8500
+             store: consul
+-    rule_path: /tmp/rules
++    rule_path: /var/lib/loki/rules
+     storage:
+         gcs:
+             bucket_name: <loki-rules-bucket>
 @@ -260,12 +260,12 @@ The local implementation reads the rule
  A typical local configuration might look something like:
  ```
@@ -105,11 +132,11 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/rules/_index.md
                             /rules2.yaml
  ```
  Yaml files are expected to be [Prometheus compatible](#Prometheus_Compatible) but include LogQL expressions as specified in the beginning of this doc.
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/upgrading/_index.md
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/upgrading/_index.md
 ===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/upgrading/_index.md
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/upgrading/_index.md
-@@ -862,8 +862,8 @@ Not every environment will allow this ca
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/docs/sources/upgrading/_index.md
++++ loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/upgrading/_index.md
+@@ -875,8 +875,8 @@ Not every environment will allow this ca
  In 1.4.0 and earlier the included config file in the docker container was using directories:
  
  ```
@@ -120,7 +147,7 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/upgrading/_index.md
  ```
  
  In 1.5.0 this has changed:
-@@ -879,9 +879,9 @@ This will mostly affect anyone using doc
+@@ -892,9 +892,9 @@ This will mostly affect anyone using doc
  
  One possible upgrade path would look like this:
  
@@ -132,25 +159,27 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/upgrading/_index.md
  
  To move to 1.5.0 I can do the following (please note that your container names and paths and volumes etc may be different):
  
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/operator/internal/manifests/distributor.go
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/operator/internal/manifests/distributor.go
 ===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/operator/internal/manifests/distributor.go
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/operator/internal/manifests/distributor.go
-@@ -18,8 +18,8 @@ const (
- 	walVolumeName     = "wal"
- 	configVolumeName  = "config"
- 	storageVolumeName = "storage"
--	walDirectory      = "/tmp/wal"
--	dataDirectory     = "/tmp/loki"
-+	walDirectory      = "/var/lib/loki/wal"
-+	dataDirectory     = "/var/lib/loki"
- 	secretDirectory   = "/etc/proxy/secrets"
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/operator/internal/manifests/distributor.go
++++ loki-2.6.1+git.1658128747.6bd05c9a4/operator/internal/manifests/distributor.go
+@@ -19,9 +19,9 @@ const (
+ 	configVolumeName       = "config"
+ 	rulesStorageVolumeName = "rules"
+ 	storageVolumeName      = "storage"
+-	walDirectory           = "/tmp/wal"
+-	dataDirectory          = "/tmp/loki"
+-	rulesStorageDirectory  = "/tmp/rules"
++	walDirectory           = "/var/lib/loki/wal"
++	dataDirectory          = "/var/lib/loki"
++	rulesStorageDirectory  = "/var/lib/loki/rules"
+ 	secretDirectory        = "/etc/proxy/secrets"
  )
  
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-cloudflare.yaml
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/clients/cmd/promtail/promtail-cloudflare.yaml
 ===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/clients/cmd/promtail/promtail-cloudflare.yaml
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-cloudflare.yaml
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/clients/cmd/promtail/promtail-cloudflare.yaml
++++ loki-2.6.1+git.1658128747.6bd05c9a4/clients/cmd/promtail/promtail-cloudflare.yaml
 @@ -3,7 +3,7 @@ server:
    grpc_listen_port: 0
  
@@ -160,10 +189,10 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-cloudfl
  
  clients:
    - url: http://localhost:3100/loki/api/v1/push
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-docker-config.yaml
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/clients/cmd/promtail/promtail-docker-config.yaml
 ===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/clients/cmd/promtail/promtail-docker-config.yaml
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-docker-config.yaml
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/clients/cmd/promtail/promtail-docker-config.yaml
++++ loki-2.6.1+git.1658128747.6bd05c9a4/clients/cmd/promtail/promtail-docker-config.yaml
 @@ -3,7 +3,7 @@ server:
    grpc_listen_port: 0
  
@@ -173,10 +202,10 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-docker-
  
  clients:
    - url: http://loki:3100/loki/api/v1/push
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-local-config.yaml
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/clients/cmd/promtail/promtail-local-config.yaml
 ===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/clients/cmd/promtail/promtail-local-config.yaml
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-local-config.yaml
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/clients/cmd/promtail/promtail-local-config.yaml
++++ loki-2.6.1+git.1658128747.6bd05c9a4/clients/cmd/promtail/promtail-local-config.yaml
 @@ -3,7 +3,7 @@ server:
    grpc_listen_port: 0
  
@@ -186,10 +215,10 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-local-c
  
  clients:
    - url: http://localhost:3100/loki/api/v1/push
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-local-limit-config.yaml
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/clients/cmd/promtail/promtail-local-limit-config.yaml
 ===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/clients/cmd/promtail/promtail-local-limit-config.yaml
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-local-limit-config.yaml
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/clients/cmd/promtail/promtail-local-limit-config.yaml
++++ loki-2.6.1+git.1658128747.6bd05c9a4/clients/cmd/promtail/promtail-local-limit-config.yaml
 @@ -3,7 +3,7 @@ server:
    grpc_listen_port: 0
  
@@ -199,10 +228,10 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-local-l
  
  clients:
    - url: http://localhost:3100/loki/api/v1/push
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-local-pubsub-config.yaml
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/clients/cmd/promtail/promtail-local-pubsub-config.yaml
 ===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/clients/cmd/promtail/promtail-local-pubsub-config.yaml
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-local-pubsub-config.yaml
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/clients/cmd/promtail/promtail-local-pubsub-config.yaml
++++ loki-2.6.1+git.1658128747.6bd05c9a4/clients/cmd/promtail/promtail-local-pubsub-config.yaml
 @@ -3,7 +3,7 @@ server:
    grpc_listen_port: 0
  
@@ -212,11 +241,11 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/clients/cmd/promtail/promtail-local-p
  
  clients:
    - url: http://localhost:3100/loki/api/v1/push
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/clients/lambda-promtail/_index.md
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/clients/lambda-promtail/_index.md
 ===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/clients/lambda-promtail/_index.md
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/clients/lambda-promtail/_index.md
-@@ -134,7 +134,7 @@ server:
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/docs/sources/clients/lambda-promtail/_index.md
++++ loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/clients/lambda-promtail/_index.md
+@@ -140,7 +140,7 @@ server:
    grpc_listen_port: 0
  
  positions:
@@ -225,11 +254,11 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/clients/lambda-promtail/
  
  clients:
    - url: http://ip_or_hostname_where_Loki_run:3100/loki/api/v1/push
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/clients/promtail/configuration.md
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/clients/promtail/configuration.md
 ===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/clients/promtail/configuration.md
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/clients/promtail/configuration.md
-@@ -1865,7 +1865,7 @@ server:
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/docs/sources/clients/promtail/configuration.md
++++ loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/clients/promtail/configuration.md
+@@ -1884,7 +1884,7 @@ server:
    grpc_listen_port: 0
  
  positions:
@@ -238,7 +267,7 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/clients/promtail/configu
  
  clients:
    - url: http://ip_or_hostname_where_loki_runs:3100/loki/api/v1/push
-@@ -1891,7 +1891,7 @@ server:
+@@ -1910,7 +1910,7 @@ server:
    grpc_listen_port: 0
  
  positions:
@@ -247,7 +276,7 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/clients/promtail/configu
  
  clients:
    - url: http://loki_addr:3100/loki/api/v1/push
-@@ -1917,7 +1917,7 @@ server:
+@@ -1936,7 +1936,7 @@ server:
    grpc_listen_port: 0
  
  positions:
@@ -256,36 +285,10 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/clients/promtail/configu
  
  clients:
    - url: http://ip_or_hostname_where_Loki_run:3100/loki/api/v1/push
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/getting-started/get-logs-into-loki.md
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/production/docker/config/promtail-gateway.yaml
 ===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/getting-started/get-logs-into-loki.md
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/getting-started/get-logs-into-loki.md
-@@ -26,7 +26,7 @@ The following instructions should help y
-       grpc_listen_port: 0
-     
-     positions:
--      filename: /tmp/positions.yaml
-+      filename: /var/lib/promtail/positions.yaml
-     
-     clients:
-       - url: http://loki:3100/loki/api/v1/push
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/getting-started/troubleshooting.md
-===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/docs/sources/getting-started/troubleshooting.md
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/docs/sources/getting-started/troubleshooting.md
-@@ -31,7 +31,7 @@ Promtail yet. There may be one of many r
-   them off. Here is what you can do:
-     - Start Promtail after Loki, e.g., 60 seconds later.
-     - To force Promtail to re-send log messages, delete the positions file
--      (default location `/tmp/positions.yaml`).
-+      (default location `/var/lib/promtail/positions.yaml`).
- - Promtail is ignoring targets and isn't reading any logs because of a
-   configuration issue.
-     - This can be detected by turning on debug logging in Promtail and looking
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/production/docker/config/promtail-gateway.yaml
-===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/production/docker/config/promtail-gateway.yaml
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/production/docker/config/promtail-gateway.yaml
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/production/docker/config/promtail-gateway.yaml
++++ loki-2.6.1+git.1658128747.6bd05c9a4/production/docker/config/promtail-gateway.yaml
 @@ -4,7 +4,7 @@ server:
      log_level: "debug"
    
@@ -295,16 +298,499 @@ Index: loki-2.5.0+git.1649366683.2d9d0ee23/production/docker/config/promtail-gat
    
  clients:
      - url: http://loki-gateway:80/loki/api/v1/push
-Index: loki-2.5.0+git.1649366683.2d9d0ee23/production/simple-scalable/promtail-config.yaml
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/configuration/examples/bos-config.yaml
 ===================================================================
---- loki-2.5.0+git.1649366683.2d9d0ee23.orig/production/simple-scalable/promtail-config.yaml
-+++ loki-2.5.0+git.1649366683.2d9d0ee23/production/simple-scalable/promtail-config.yaml
-@@ -4,7 +4,7 @@ server:
-   grpc_listen_port: 0
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/docs/sources/configuration/examples/bos-config.yaml
++++ loki-2.6.1+git.1658128747.6bd05c9a4/docs/sources/configuration/examples/bos-config.yaml
+@@ -21,5 +21,5 @@ storage_config:
+     secret_access_key: secret_access_key
  
- positions:
--  filename: /tmp/positions.yaml
-+  filename: /var/lib/promtail/positions.yaml
+ compactor:
+-  working_directory: /tmp/loki/compactor
++  working_directory: /var/lib/loki/compactor
+   shared_store: bos
+\ No newline at end of file
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/operator/internal/manifests/internal/config/build_test.go
+===================================================================
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/operator/internal/manifests/internal/config/build_test.go
++++ loki-2.6.1+git.1658128747.6bd05c9a4/operator/internal/manifests/internal/config/build_test.go
+@@ -28,7 +28,7 @@ common:
+       s3forcepathstyle: true
+ compactor:
+   compaction_interval: 2h
+-  working_directory: /tmp/loki/compactor
++  working_directory: /var/lib/loki/compactor
+ frontend:
+   tail_proxy_url: http://loki-querier-http-lokistack-dev.default.svc.cluster.local:3100
+   compress_responses: true
+@@ -60,7 +60,7 @@ ingester:
+   max_transfer_retries: 0
+   wal:
+     enabled: true
+-    dir: /tmp/wal
++    dir: /var/lib/loki/wal
+     replay_memory_ceiling: 2500
+ ingester_client:
+   grpc_client_config:
+@@ -151,8 +151,8 @@ server:
+   log_level: info
+ storage_config:
+   boltdb_shipper:
+-    active_index_directory: /tmp/loki/index
+-    cache_location: /tmp/loki/index_cache
++    active_index_directory: /var/lib/loki/index
++    cache_location: /var/lib/loki/index_cache
+     cache_ttl: 24h
+     resync_interval: 5m
+     shared_store: s3
+@@ -207,12 +207,12 @@ overrides:
+ 			FQDN: "loki-index-gateway-grpc-lokistack-dev.default.svc.cluster.local",
+ 			Port: 9095,
+ 		},
+-		StorageDirectory: "/tmp/loki",
++		StorageDirectory: "/var/lib/loki",
+ 		MaxConcurrent: MaxConcurrent{
+ 			AvailableQuerierCPUCores: 2,
+ 		},
+ 		WriteAheadLog: WriteAheadLog{
+-			Directory:             "/tmp/wal",
++			Directory:             "/var/lib/loki/wal",
+ 			IngesterMemoryRequest: 5000,
+ 		},
+ 		ObjectStorage: storage.Options{
+@@ -253,7 +253,7 @@ common:
+       s3forcepathstyle: true
+ compactor:
+   compaction_interval: 2h
+-  working_directory: /tmp/loki/compactor
++  working_directory: /var/lib/loki/compactor
+ frontend:
+   tail_proxy_url: http://loki-querier-http-lokistack-dev.default.svc.cluster.local:3100
+   compress_responses: true
+@@ -285,7 +285,7 @@ ingester:
+   max_transfer_retries: 0
+   wal:
+     enabled: true
+-    dir: /tmp/wal
++    dir: /var/lib/loki/wal
+     replay_memory_ceiling: 2500
+ ingester_client:
+   grpc_client_config:
+@@ -376,8 +376,8 @@ server:
+   log_level: info
+ storage_config:
+   boltdb_shipper:
+-    active_index_directory: /tmp/loki/index
+-    cache_location: /tmp/loki/index_cache
++    active_index_directory: /var/lib/loki/index
++    cache_location: /var/lib/loki/index_cache
+     cache_ttl: 24h
+     resync_interval: 5m
+     shared_store: s3
+@@ -449,12 +449,12 @@ overrides:
+ 			FQDN: "loki-index-gateway-grpc-lokistack-dev.default.svc.cluster.local",
+ 			Port: 9095,
+ 		},
+-		StorageDirectory: "/tmp/loki",
++		StorageDirectory: "/var/lib/loki",
+ 		MaxConcurrent: MaxConcurrent{
+ 			AvailableQuerierCPUCores: 2,
+ 		},
+ 		WriteAheadLog: WriteAheadLog{
+-			Directory:             "/tmp/wal",
++			Directory:             "/var/lib/loki/wal",
+ 			IngesterMemoryRequest: 5000,
+ 		},
+ 		ObjectStorage: storage.Options{
+@@ -512,12 +512,12 @@ func TestBuild_ConfigAndRuntimeConfig_Cr
+ 			FQDN: "loki-index-gateway-grpc-lokistack-dev.default.svc.cluster.local",
+ 			Port: 9095,
+ 		},
+-		StorageDirectory: "/tmp/loki",
++		StorageDirectory: "/var/lib/loki",
+ 		MaxConcurrent: MaxConcurrent{
+ 			AvailableQuerierCPUCores: 2,
+ 		},
+ 		WriteAheadLog: WriteAheadLog{
+-			Directory:             "/tmp/wal",
++			Directory:             "/var/lib/loki/wal",
+ 			IngesterMemoryRequest: 5000,
+ 		},
+ 		ObjectStorage: storage.Options{
+@@ -557,7 +557,7 @@ common:
+       s3forcepathstyle: true
+ compactor:
+   compaction_interval: 2h
+-  working_directory: /tmp/loki/compactor
++  working_directory: /var/lib/loki/compactor
+ frontend:
+   tail_proxy_url: http://loki-querier-http-lokistack-dev.default.svc.cluster.local:3100
+   compress_responses: true
+@@ -589,7 +589,7 @@ ingester:
+   max_transfer_retries: 0
+   wal:
+     enabled: true
+-    dir: /tmp/wal
++    dir: /var/lib/loki/wal
+     replay_memory_ceiling: 2500
+ ingester_client:
+   grpc_client_config:
+@@ -709,15 +709,15 @@ ruler:
+         min_backoff: 30ms
+         max_backoff: 100ms
+   wal:
+-    dir: /tmp/wal
++    dir: /var/lib/loki/wal
+     truncate_frequency: 60m
+     min_age: 5m
+     max_age: 4h
+-  rule_path: /tmp/loki
++  rule_path: /var/lib/loki
+   storage:
+     type: local
+     local:
+-      directory: /tmp/rules
++      directory: /var/lib/loki/rules
+   ring:
+     kvstore:
+       store: memberlist
+@@ -734,8 +734,8 @@ server:
+   log_level: info
+ storage_config:
+   boltdb_shipper:
+-    active_index_directory: /tmp/loki/index
+-    cache_location: /tmp/loki/index_cache
++    active_index_directory: /var/lib/loki/index
++    cache_location: /var/lib/loki/index_cache
+     cache_ttl: 24h
+     resync_interval: 5m
+     shared_store: s3
+@@ -792,7 +792,7 @@ overrides:
+ 		},
+ 		Ruler: Ruler{
+ 			Enabled:               true,
+-			RulesStorageDirectory: "/tmp/rules",
++			RulesStorageDirectory: "/var/lib/loki/rules",
+ 			EvaluationInterval:    "1m",
+ 			PollInterval:          "1m",
+ 			AlertManager: &AlertManagerConfig{
+@@ -837,12 +837,12 @@ overrides:
+ 				},
+ 			},
+ 		},
+-		StorageDirectory: "/tmp/loki",
++		StorageDirectory: "/var/lib/loki",
+ 		MaxConcurrent: MaxConcurrent{
+ 			AvailableQuerierCPUCores: 2,
+ 		},
+ 		WriteAheadLog: WriteAheadLog{
+-			Directory:             "/tmp/wal",
++			Directory:             "/var/lib/loki/wal",
+ 			IngesterMemoryRequest: 5000,
+ 		},
+ 		ObjectStorage: storage.Options{
+@@ -883,7 +883,7 @@ common:
+       s3forcepathstyle: true
+ compactor:
+   compaction_interval: 2h
+-  working_directory: /tmp/loki/compactor
++  working_directory: /var/lib/loki/compactor
+ frontend:
+   tail_proxy_url: http://loki-querier-http-lokistack-dev.default.svc.cluster.local:3100
+   compress_responses: true
+@@ -915,7 +915,7 @@ ingester:
+   max_transfer_retries: 0
+   wal:
+     enabled: true
+-    dir: /tmp/wal
++    dir: /var/lib/loki/wal
+     replay_memory_ceiling: 2500
+ ingester_client:
+   grpc_client_config:
+@@ -1035,15 +1035,15 @@ ruler:
+         min_backoff: 30ms
+         max_backoff: 100ms
+   wal:
+-    dir: /tmp/wal
++    dir: /var/lib/loki/wal
+     truncate_frequency: 60m
+     min_age: 5m
+     max_age: 4h
+-  rule_path: /tmp/loki
++  rule_path: /var/lib/loki
+   storage:
+     type: local
+     local:
+-      directory: /tmp/rules
++      directory: /var/lib/loki/rules
+   ring:
+     kvstore:
+       store: memberlist
+@@ -1060,8 +1060,8 @@ server:
+   log_level: info
+ storage_config:
+   boltdb_shipper:
+-    active_index_directory: /tmp/loki/index
+-    cache_location: /tmp/loki/index_cache
++    active_index_directory: /var/lib/loki/index
++    cache_location: /var/lib/loki/index_cache
+     cache_ttl: 24h
+     resync_interval: 5m
+     shared_store: s3
+@@ -1118,7 +1118,7 @@ overrides:
+ 		},
+ 		Ruler: Ruler{
+ 			Enabled:               true,
+-			RulesStorageDirectory: "/tmp/rules",
++			RulesStorageDirectory: "/var/lib/loki/rules",
+ 			EvaluationInterval:    "1m",
+ 			PollInterval:          "1m",
+ 			AlertManager: &AlertManagerConfig{
+@@ -1164,12 +1164,12 @@ overrides:
+ 				},
+ 			},
+ 		},
+-		StorageDirectory: "/tmp/loki",
++		StorageDirectory: "/var/lib/loki",
+ 		MaxConcurrent: MaxConcurrent{
+ 			AvailableQuerierCPUCores: 2,
+ 		},
+ 		WriteAheadLog: WriteAheadLog{
+-			Directory:             "/tmp/wal",
++			Directory:             "/var/lib/loki/wal",
+ 			IngesterMemoryRequest: 5000,
+ 		},
+ 		ObjectStorage: storage.Options{
+@@ -1210,7 +1210,7 @@ common:
+       s3forcepathstyle: true
+ compactor:
+   compaction_interval: 2h
+-  working_directory: /tmp/loki/compactor
++  working_directory: /var/lib/loki/compactor
+ frontend:
+   tail_proxy_url: http://loki-querier-http-lokistack-dev.default.svc.cluster.local:3100
+   compress_responses: true
+@@ -1242,7 +1242,7 @@ ingester:
+   max_transfer_retries: 0
+   wal:
+     enabled: true
+-    dir: /tmp/wal
++    dir: /var/lib/loki/wal
+     replay_memory_ceiling: 2500
+ ingester_client:
+   grpc_client_config:
+@@ -1375,15 +1375,15 @@ ruler:
+         min_backoff: 30ms
+         max_backoff: 100ms
+   wal:
+-    dir: /tmp/wal
++    dir: /var/lib/loki/wal
+     truncate_frequency: 60m
+     min_age: 5m
+     max_age: 4h
+-  rule_path: /tmp/loki
++  rule_path: /var/lib/loki
+   storage:
+     type: local
+     local:
+-      directory: /tmp/rules
++      directory: /var/lib/loki/rules
+   ring:
+     kvstore:
+       store: memberlist
+@@ -1400,8 +1400,8 @@ server:
+   log_level: info
+ storage_config:
+   boltdb_shipper:
+-    active_index_directory: /tmp/loki/index
+-    cache_location: /tmp/loki/index_cache
++    active_index_directory: /var/lib/loki/index
++    cache_location: /var/lib/loki/index_cache
+     cache_ttl: 24h
+     resync_interval: 5m
+     shared_store: s3
+@@ -1458,7 +1458,7 @@ overrides:
+ 		},
+ 		Ruler: Ruler{
+ 			Enabled:               true,
+-			RulesStorageDirectory: "/tmp/rules",
++			RulesStorageDirectory: "/var/lib/loki/rules",
+ 			EvaluationInterval:    "1m",
+ 			PollInterval:          "1m",
+ 			AlertManager: &AlertManagerConfig{
+@@ -1521,12 +1521,12 @@ overrides:
+ 				},
+ 			},
+ 		},
+-		StorageDirectory: "/tmp/loki",
++		StorageDirectory: "/var/lib/loki",
+ 		MaxConcurrent: MaxConcurrent{
+ 			AvailableQuerierCPUCores: 2,
+ 		},
+ 		WriteAheadLog: WriteAheadLog{
+-			Directory:             "/tmp/wal",
++			Directory:             "/var/lib/loki/wal",
+ 			IngesterMemoryRequest: 5000,
+ 		},
+ 		ObjectStorage: storage.Options{
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/clients/pkg/promtail/promtail_test.go
+===================================================================
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/clients/pkg/promtail/promtail_test.go
++++ loki-2.6.1+git.1658128747.6bd05c9a4/clients/pkg/promtail/promtail_test.go
+@@ -55,7 +55,7 @@ func TestPromtail(t *testing.T) {
+ 	util_log.Logger = logger
  
- clients:
-   - url: http://gateway:3100/loki/api/v1/push
+ 	initRandom()
+-	dirName := "/tmp/promtail_test_" + randName()
++	dirName := "/var/lib/promtail_test_" + randName()
+ 	positionsFileName := dirName + "/positions.yml"
+ 
+ 	err := os.MkdirAll(dirName, 0o750)
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/operator/docs/enhancements/ruler_support.md
+===================================================================
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/operator/docs/enhancements/ruler_support.md
++++ loki-2.6.1+git.1658128747.6bd05c9a4/operator/docs/enhancements/ruler_support.md
+@@ -768,7 +768,7 @@ spec:
+         volumeMounts:
+         - name: "rules"
+           volume: "rules"
+-          path: "/tmp/rules"
++          path: "/var/lib/loki/rules"
+       volumes:
+       - name: "rules"
+         items:
+@@ -785,7 +785,7 @@ spec:
+ In turn the rules directory is outlined as such:
+ 
+ ```
+-/tmp/rules/application/ns-a-alerting-rule-a-kube-uid-a.yaml
++/var/lib/loki/rules/application/ns-a-alerting-rule-a-kube-uid-a.yaml
+           /application/ns-a-recording-rule-a-kube-uid-b.yaml
+           /infrastructure/ns-b-alerting-rule-b-kube-uid-c.yaml
+           /infrastructure/ns-b-recording-rule-b-kube-uid-d.yaml
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/pkg/logcli/client/file_test.go
+===================================================================
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/pkg/logcli/client/file_test.go
++++ loki-2.6.1+git.1658128747.6bd05c9a4/pkg/logcli/client/file_test.go
+@@ -20,8 +20,8 @@ func TestFileClient_QueryRangeLogQueries
+ 	input := []string{
+ 		`level=info event="loki started" caller=main.go ts=1625995076`,
+ 		`level=info event="runtime loader started" caller=main.go ts=1625995077`,
+-		`level=error event="unable to read rules directory" file="/tmp/rules" caller=rules.go ts=1625995090`,
+-		`level=error event="failed to apply wal" error="/tmp/wal/ corrupted" caller=wal.go ts=1625996090`,
++		`level=error event="unable to read rules directory" file="/var/lib/loki/rules" caller=rules.go ts=1625995090`,
++		`level=error event="failed to apply wal" error="/var/lib/loki/wal/ corrupted" caller=wal.go ts=1625996090`,
+ 		`level=info event="loki ready" caller=main.go ts=1625996095`,
+ 	}
+ 
+@@ -92,8 +92,8 @@ func TestFileClient_Query(t *testing.T)
+ 	input := []string{
+ 		`level=info event="loki started" caller=main.go ts=1625995076`,
+ 		`level=info event="runtime loader started" caller=main.go ts=1625995077`,
+-		`level=error event="unable to read rules directory" file="/tmp/rules" caller=rules.go ts=1625995090`,
+-		`level=error event="failed to apply wal" error="/tmp/wal/ corrupted" caller=wal.go ts=1625996090`,
++		`level=error event="unable to read rules directory" file="/var/lib/loki/rules" caller=rules.go ts=1625995090`,
++		`level=error event="failed to apply wal" error="/var/lib/loki/wal/ corrupted" caller=wal.go ts=1625996090`,
+ 		`level=info event="loki ready" caller=main.go ts=1625996095`,
+ 	}
+ 
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/pkg/loki/config_wrapper_test.go
+===================================================================
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/pkg/loki/config_wrapper_test.go
++++ loki-2.6.1+git.1658128747.6bd05c9a4/pkg/loki/config_wrapper_test.go
+@@ -494,15 +494,15 @@ memberlist:
+ 			fsConfig := `common:
+   storage:
+     filesystem:
+-      chunks_directory: /tmp/chunks
+-      rules_directory: /tmp/rules`
++      chunks_directory: /var/lib/loki/chunks
++      rules_directory: /var/lib/loki/rules`
+ 
+ 			config, defaults := testContext(fsConfig, nil)
+ 
+ 			assert.Equal(t, "local", config.Ruler.StoreConfig.Type)
+ 
+-			assert.Equal(t, "/tmp/rules", config.Ruler.StoreConfig.Local.Directory)
+-			assert.Equal(t, "/tmp/chunks", config.StorageConfig.FSConfig.Directory)
++			assert.Equal(t, "/var/lib/loki/rules", config.Ruler.StoreConfig.Local.Directory)
++			assert.Equal(t, "/var/lib/loki/chunks", config.StorageConfig.FSConfig.Directory)
+ 
+ 			// should remain empty
+ 			assert.EqualValues(t, defaults.Ruler.StoreConfig.GCS, config.Ruler.StoreConfig.GCS)
+@@ -662,8 +662,8 @@ storage_config:
+ 					configString: `common:
+   storage:
+     filesystem:
+-      chunks_directory: /tmp/chunks
+-      rules_directory: /tmp/rules`,
++      chunks_directory: /var/lib/loki/chunks
++      rules_directory: /var/lib/loki/rules`,
+ 					expected: config.StorageTypeFileSystem,
+ 				},
+ 			} {
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/pkg/loki/loki_test.go
+===================================================================
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/pkg/loki/loki_test.go
++++ loki-2.6.1+git.1658128747.6bd05c9a4/pkg/loki/loki_test.go
+@@ -125,7 +125,7 @@ server:
+   http_listen_port: %d
+   grpc_listen_port: %d
+ common:
+-  path_prefix: /tmp/loki
++  path_prefix: /var/lib/loki
+   ring:
+     kvstore:
+       store: inmemory
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/production/ksonnet/loki/config.libsonnet
+===================================================================
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/production/ksonnet/loki/config.libsonnet
++++ loki-2.6.1+git.1658128747.6bd05c9a4/production/ksonnet/loki/config.libsonnet
+@@ -339,7 +339,7 @@
+       },
+ 
+       ruler: if $._config.ruler_enabled then {
+-        rule_path: '/tmp/rules',
++        rule_path: '/var/lib/loki/rules',
+         enable_api: true,
+         alertmanager_url: 'http://alertmanager.%s.svc.cluster.local/alertmanager' % $._config.namespace,
+         enable_sharding: true,
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/production/nomad/loki-distributed/config.yml
+===================================================================
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/production/nomad/loki-distributed/config.yml
++++ loki-2.6.1+git.1658128747.6bd05c9a4/production/nomad/loki-distributed/config.yml
+@@ -114,7 +114,7 @@ ruler:
+   enable_alertmanager_v2: true
+   enable_api: true
+   external_url: https://loki-ruler.service.consul
+-  rule_path: {{ env "NOMAD_ALLOC_DIR" }}/tmp/rules
++  rule_path: {{ env "NOMAD_ALLOC_DIR" }}/var/lib/loki/rules
+   storage:
+     type: local
+     local:
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/production/nomad/loki-simple/config.yml
+===================================================================
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/production/nomad/loki-simple/config.yml
++++ loki-2.6.1+git.1658128747.6bd05c9a4/production/nomad/loki-simple/config.yml
+@@ -66,7 +66,7 @@ ruler:
+   enable_alertmanager_v2: true
+   enable_api: true
+   external_url: https://loki.service.consul
+-  rule_path: {{ env "NOMAD_ALLOC_DIR" }}/tmp/rules
++  rule_path: {{ env "NOMAD_ALLOC_DIR" }}/var/lib/loki/rules
+   storage:
+     type: local
+     local:
+Index: loki-2.6.1+git.1658128747.6bd05c9a4/production/nomad/loki/config.yml
+===================================================================
+--- loki-2.6.1+git.1658128747.6bd05c9a4.orig/production/nomad/loki/config.yml
++++ loki-2.6.1+git.1658128747.6bd05c9a4/production/nomad/loki/config.yml
+@@ -66,7 +66,7 @@ ruler:
+   enable_alertmanager_v2: true
+   enable_api: true
+   external_url: https://loki.service.consul
+-  rule_path: {{ env "NOMAD_ALLOC_DIR" }}/tmp/rules
++  rule_path: {{ env "NOMAD_ALLOC_DIR" }}/var/lib/loki/rules
+   storage:
+     type: local
+     local:

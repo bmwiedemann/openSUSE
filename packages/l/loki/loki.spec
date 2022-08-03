@@ -20,7 +20,7 @@
 %global promtail_datadir /var/lib/promtail
 
 Name:           loki
-Version:        2.5.0+git.1649366683.2d9d0ee23
+Version:        2.6.1+git.1658128747.6bd05c9a4
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
@@ -44,7 +44,7 @@ Requires:       user(loki)
 Requires(post): %fillup_prereq
 %systemd_ordering
 
-%{go_nostrip}
+###%%{go_nostrip}
 
 %description
 Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus.
