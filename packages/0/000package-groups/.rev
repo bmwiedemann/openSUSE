@@ -1424,4 +1424,11 @@ is not needed.
     <comment>Enable soft deps for the MicroOS DVD to make -lang packages and some others available.</comment>
     <requestid>985847</requestid>
   </revision>
+  <revision rev="199" vrev="197">
+    <srcmd5>46e1daf7c67807801ab7c7e37c6c60df</srcmd5>
+    <version>unknown</version>
+    <time>1659527529</time>
+    <user>dimstar_suse</user>
+    <comment>Follow noto-sans -&gt; google-noto-sans font rename; still lock them</comment>
+  </revision>
 </revisionlist>
