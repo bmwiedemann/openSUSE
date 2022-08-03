@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug  3 10:25:32 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220721.00 (bsc#1202100, bsc#1202101)
+  * prune outdated info from readme (#86)
+- from version 20220714.00
+  * strip json-c version symbol (#84)
+- from version 20220622.00
+  * pam login: split conditions for logging (#83)
+
+-------------------------------------------------------------------
 Wed May  4 19:37:21 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
 
 - use pam_moduledir (boo#1191036)
