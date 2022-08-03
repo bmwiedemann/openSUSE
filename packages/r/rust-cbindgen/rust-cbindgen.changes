@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jul 27 07:30:01 UTC 2022 - wolfgang@rosenauer.org
+
+- Update to version 0.24.3+git0:
+  * Bump version.
+  * tests: Add a test for struct constants going through typedefs.
+  * bindings: Peel through typedefs for struct constant generation.
+  * Rustfmt recent changes.
+  * Version bump.
+  * bitflags: Be explicit in binary operators and such.
+  * Version bump.
+  * constant: Add support for unary negation.
+  * bitflags: Make more operations constexpr.
+  * Fix changelog typo.
+
+-------------------------------------------------------------------
+Wed Jun 08 04:11:38 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.24.2+git0:
+  * Version bump.
+  * bitflags: Be explicit in binary operators and such.
+  * Version bump.
+  * constant: Add support for unary negation.
+  * bitflags: Make more operations constexpr.
+  * Fix changelog typo.
+  * Version bump.
+  * constant: Support suffixes for integers that otherwise would be narrowed.
+  * Fix specialization of `SomeType<N>` when `N` is a const parameter.
+  * Minor refactor of ConstExpr::load().
+
+-------------------------------------------------------------------
 Thu Apr 21 22:18:35 UTC 2022 - william.brown@suse.com
 
 - Update to version 0.23.0+git0:
