@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 27 06:45:36 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- add CMakeLists-use-absolute-libdir-in-rpath-handling.patch
+
+-------------------------------------------------------------------
 Tue Jul 26 04:31:49 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - fix rpath (don't use relative lib64)

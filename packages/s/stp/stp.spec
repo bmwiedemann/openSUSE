@@ -25,6 +25,7 @@ License:        MIT
 URL:            https://github.com/stp/stp/wiki
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         py3.patch
+Patch1:         CMakeLists-use-absolute-libdir-in-rpath-handling.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  flex
@@ -88,9 +89,7 @@ Python bindings for stp library.
 %cmake \
 	-DPython_ADDITIONAL_VERSIONS=3 \
 	-DALSO_BUILD_STATIC_LIB:BOOL="off" \
-	-DSTP_TIMESTAMPS:BOOL="off" \
-	-DCMAKE_INSTALL_LIBDIR:PATH=%{_prefix}/%{_lib}
-# bug in CMakeLists.txt, it looks up absolute paths only ^^
+	-DSTP_TIMESTAMPS:BOOL="off"
 %cmake_build
 
 %install
