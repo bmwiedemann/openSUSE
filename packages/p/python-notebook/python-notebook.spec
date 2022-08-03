@@ -209,6 +209,8 @@ sed -E '
 %python_clone -a %{buildroot}%{_bindir}/jupyter-nbextension
 %python_clone -a %{buildroot}%{_bindir}/jupyter-notebook
 %python_clone -a %{buildroot}%{_bindir}/jupyter-serverextension
+# https://github.com/jupyter/notebook/issues/6501, use the same grouping as nbclassic
+%python_group_libalternatives jupyter-notebook jupyter-bundlerextension jupyter-nbextension jupyter-serverextension
 %suse_update_desktop_file jupyter-notebook
 
 %endif

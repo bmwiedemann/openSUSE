@@ -174,4 +174,13 @@
 </comment>
     <requestid>982883</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>9e4a866ba28f8317de0f14746ab977ce</srcmd5>
+    <version>6.4.12</version>
+    <time>1659554197</time>
+    <user>dimstar_suse</user>
+    <comment>- Enforce libalternatives grouping for nbclassic alternatives
+  gh#jupyter/notebook#6501</comment>
+    <requestid>992398</requestid>
+  </revision>
 </revisionlist>
