@@ -5702,4 +5702,41 @@
     via retargeted javascript: URI</comment>
     <requestid>988096</requestid>
   </revision>
+  <revision rev="370" vrev="1">
+    <srcmd5>8bc1d100b49fb50ad74f152795483baf</srcmd5>
+    <version>103.0.1</version>
+    <time>1659554149</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 103.0.1
+  * Enabled hardware acceleration on newer AMD cards.
+  * Fixed a crash on Firefox shutdown caused by a bug in the
+    audio manager
+
+- Mozilla Firefox 103.0
+  https://www.mozilla.org/en-US/firefox/103.0/releasenotes
+  MFSA 2022-28 (bsc#1201758)
+  * CVE-2022-36319 (bmo#1737722)
+    Mouse Position spoofing with CSS transforms
+  * CVE-2022-36317 (bmo#1759951)
+    Long URL would hang Firefox for Android
+  * CVE-2022-36318 (bmo#1771774)
+    Directory indexes for bundled resources reflected URL
+    parameters
+  * CVE-2022-36314 (bmo#1773894)
+    Opening local &lt;code&gt;.lnk&lt;/code&gt; files could cause unexpected
+    network loads
+  * CVE-2022-36315 (bmo#1762520)
+    Preload Cache Bypasses Subresource Integrity
+  * CVE-2022-36316 (bmo#1768583)
+    Performance API leaked whether a cross-site resource is
+    redirecting
+  * CVE-2022-36320 (bmo#1759794, bmo#1760998)
+    Memory safety bugs fixed in Firefox 103
+  * CVE-2022-2505 (bmo#1769739, bmo#1772824)
+    Memory safety bugs fixed in Firefox 103 and 102.1
+- requires
+  NSS &gt;= 3.80
+  rust = 1.61</comment>
+    <requestid>992040</requestid>
+  </revision>
 </revisionlist>

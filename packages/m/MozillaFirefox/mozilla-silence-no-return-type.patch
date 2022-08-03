@@ -1,11 +1,15 @@
 # HG changeset patch
-# Parent  72e5683524907256ec499f82bac513c29760b332
+# Parent  df69adcb42a137798460d007b5acae9ec85b95fd
 
-Index: firefox-102.0/Cargo.lock
-===================================================================
---- firefox-102.0.orig/Cargo.lock
-+++ firefox-102.0/Cargo.lock
-@@ -2218,8 +2218,6 @@ dependencies = [
+diff --git a/Cargo.lock b/Cargo.lock
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -2347,18 +2347,16 @@ name = "glsl-to-cxx"
+ version = "0.1.0"
+ dependencies = [
+  "glsl",
+ ]
+ 
  [[package]]
  name = "glslopt"
  version = "0.1.9"
@@ -14,23 +18,41 @@ Index: firefox-102.0/Cargo.lock
  dependencies = [
   "cc",
  ]
-Index: firefox-102.0/Cargo.toml
-===================================================================
---- firefox-102.0.orig/Cargo.toml
-+++ firefox-102.0/Cargo.toml
-@@ -116,6 +116,7 @@ libudev-sys = { path = "dom/webauthn/lib
+ 
+ [[package]]
+ name = "gluesmith"
+ version = "0.1.0"
+ dependencies = [
+diff --git a/Cargo.toml b/Cargo.toml
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -150,16 +150,17 @@ async-task = { git = "https://github.com
+ chardetng = { git = "https://github.com/hsivonen/chardetng", rev="3484d3e3ebdc8931493aa5df4d7ee9360a90e76b" }
+ chardetng_c = { git = "https://github.com/hsivonen/chardetng_c", rev="ed8a4c6f900a90d4dbc1d64b856e61490a1c3570" }
+ coremidi = { git = "https://github.com/chris-zen/coremidi.git", rev="fc68464b5445caf111e41f643a2e69ccce0b4f83" }
+ fog = { path = "toolkit/components/glean/api" }
+ libudev-sys = { path = "dom/webauthn/libudev-sys" }
  packed_simd = { package = "packed_simd_2", git = "https://github.com/hsivonen/packed_simd", rev="c149d0a519bf878567c7630096737669ec2ff15f" }
  midir = { git = "https://github.com/mozilla/midir.git", rev = "4c11f0ffb5d6a10de4aff40a7b81218b33b94e6f" }
  minidump_writer_linux = { git = "https://github.com/rust-minidump/minidump-writer.git", rev = "75ada456c92a429704691a85e1cb42fef8cafc0d" }
 +glslopt = { path = "third_party/rust/glslopt/" }
  
- # Patch mio 0.6 to use winapi 0.3 and miow 0.3, getting rid of winapi 0.2.
- # There is not going to be new version of mio 0.6, mio now being >= 0.7.11.
-Index: firefox-102.0/gfx/skia/skia/include/codec/SkEncodedOrigin.h
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/include/codec/SkEncodedOrigin.h
-+++ firefox-102.0/gfx/skia/skia/include/codec/SkEncodedOrigin.h
-@@ -41,6 +41,7 @@ static inline SkMatrix SkEncodedOriginTo
+ # application-services overrides to make updating them all simpler.
+ interrupt-support = { git = "https://github.com/mozilla/application-services", rev = "2689788cecf24c385e6b7440e3aa1a89c511f14a" }
+ sql-support = { git = "https://github.com/mozilla/application-services", rev = "2689788cecf24c385e6b7440e3aa1a89c511f14a" }
+ sync15-traits = { git = "https://github.com/mozilla/application-services", rev = "2689788cecf24c385e6b7440e3aa1a89c511f14a" }
+ viaduct = { git = "https://github.com/mozilla/application-services", rev = "2689788cecf24c385e6b7440e3aa1a89c511f14a" }
+ webext-storage = { git = "https://github.com/mozilla/application-services", rev = "2689788cecf24c385e6b7440e3aa1a89c511f14a" }
+ 
+diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
+--- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
++++ b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
+@@ -36,12 +36,13 @@ static inline SkMatrix SkEncodedOriginTo
+         case kBottomRight_SkEncodedOrigin: return SkMatrix::MakeAll(-1,  0, w,  0, -1, h, 0, 0, 1);
+         case  kBottomLeft_SkEncodedOrigin: return SkMatrix::MakeAll( 1,  0, 0,  0, -1, h, 0, 0, 1);
+         case     kLeftTop_SkEncodedOrigin: return SkMatrix::MakeAll( 0,  1, 0,  1,  0, 0, 0, 0, 1);
+         case    kRightTop_SkEncodedOrigin: return SkMatrix::MakeAll( 0, -1, h,  1,  0, 0, 0, 0, 1);
+         case kRightBottom_SkEncodedOrigin: return SkMatrix::MakeAll( 0, -1, h, -1,  0, w, 0, 0, 1);
          case  kLeftBottom_SkEncodedOrigin: return SkMatrix::MakeAll( 0,  1, 0, -1,  0, w, 0, 0, 1);
      }
      SK_ABORT("Unexpected origin");
@@ -38,11 +60,16 @@ Index: firefox-102.0/gfx/skia/skia/include/codec/SkEncodedOrigin.h
  }
  
  
-Index: firefox-102.0/gfx/skia/skia/include/private/GrTypesPriv.h
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/include/private/GrTypesPriv.h
-+++ firefox-102.0/gfx/skia/skia/include/private/GrTypesPriv.h
-@@ -540,6 +540,7 @@ static inline GrSLType GrSLCombinedSampl
+ #endif // SkEncodedOrigin_DEFINED
+diff --git a/gfx/skia/skia/include/private/GrTypesPriv.h b/gfx/skia/skia/include/private/GrTypesPriv.h
+--- a/gfx/skia/skia/include/private/GrTypesPriv.h
++++ b/gfx/skia/skia/include/private/GrTypesPriv.h
+@@ -535,32 +535,34 @@ static inline GrSLType GrSLCombinedSampl
+             return kTexture2DSampler_GrSLType;
+         case GrTextureType::kRectangle:
+             return kTexture2DRectSampler_GrSLType;
+         case GrTextureType::kExternal:
+             return kTextureExternalSampler_GrSLType;
          default:
              SK_ABORT("Unexpected texture type");
      }
@@ -50,7 +77,16 @@ Index: firefox-102.0/gfx/skia/skia/include/private/GrTypesPriv.h
  }
  
  /** Rectangle and external textures only support the clamp wrap mode and do not support
-@@ -556,6 +557,7 @@ static inline bool GrTextureTypeHasRestr
+  *  MIP maps.
+  */
+ static inline bool GrTextureTypeHasRestrictedSampling(GrTextureType type) {
+     switch (type) {
+         case GrTextureType::k2D:
+             return false;
+         case GrTextureType::kRectangle:
+             return true;
+         case GrTextureType::kExternal:
+             return true;
          default:
              SK_ABORT("Unexpected texture type");
      }
@@ -58,7 +94,17 @@ Index: firefox-102.0/gfx/skia/skia/include/private/GrTypesPriv.h
  }
  
  static constexpr bool GrSLTypeIsCombinedSamplerType(GrSLType type) {
-@@ -858,6 +860,7 @@ static inline size_t GrCompressedFormatD
+     switch (type) {
+         case kTexture2DSampler_GrSLType:
+         case kTextureExternalSampler_GrSLType:
+         case kTexture2DRectSampler_GrSLType:
+             return true;
+@@ -853,16 +855,17 @@ static inline size_t GrCompressedFormatD
+     switch (compressionType) {
+         case SkImage::kETC1_CompressionType:
+             SkASSERT((width & 3) == 0);
+             SkASSERT((height & 3) == 0);
+             return (width >> 2) * (height >> 2) * 8;
      }
  
      SK_ABORT("Invalid pixel config");
@@ -66,11 +112,20 @@ Index: firefox-102.0/gfx/skia/skia/include/private/GrTypesPriv.h
  }
  
  /**
-Index: firefox-102.0/gfx/skia/skia/src/core/SkGeometry.h
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/core/SkGeometry.h
-+++ firefox-102.0/gfx/skia/skia/src/core/SkGeometry.h
-@@ -182,6 +182,7 @@ static inline bool SkCubicIsDegenerate(S
+  * Like SkColorType this describes a layout of pixel data in CPU memory. It specifies the channels,
+  * their type, and width. This exists so that the GPU backend can have private types that have no
+  * analog in the public facing SkColorType enum and omit types not implemented in the GPU backend.
+  * It does not refer to a texture format and the mapping to texture formats may be many-to-many.
+  * It does not specify the sRGB encoding of the stored values. The components are listed in order of
+diff --git a/gfx/skia/skia/src/core/SkGeometry.h b/gfx/skia/skia/src/core/SkGeometry.h
+--- a/gfx/skia/skia/src/core/SkGeometry.h
++++ b/gfx/skia/skia/src/core/SkGeometry.h
+@@ -177,28 +177,30 @@ static inline bool SkCubicIsDegenerate(S
+         case SkCubicType::kLocalCusp:
+         case SkCubicType::kCuspAtInfinity:
+             return false;
+         case SkCubicType::kQuadratic:
+         case SkCubicType::kLineOrPoint:
              return true;
      }
      SK_ABORT("Invalid SkCubicType");
@@ -78,7 +133,12 @@ Index: firefox-102.0/gfx/skia/skia/src/core/SkGeometry.h
  }
  
  static inline const char* SkCubicTypeName(SkCubicType type) {
-@@ -194,6 +195,7 @@ static inline const char* SkCubicTypeNam
+     switch (type) {
+         case SkCubicType::kSerpentine: return "kSerpentine";
+         case SkCubicType::kLoop: return "kLoop";
+         case SkCubicType::kLocalCusp: return "kLocalCusp";
+         case SkCubicType::kCuspAtInfinity: return "kCuspAtInfinity";
+         case SkCubicType::kQuadratic: return "kQuadratic";
          case SkCubicType::kLineOrPoint: return "kLineOrPoint";
      }
      SK_ABORT("Invalid SkCubicType");
@@ -86,11 +146,20 @@ Index: firefox-102.0/gfx/skia/skia/src/core/SkGeometry.h
  }
  
  /** Returns the cubic classification.
-Index: firefox-102.0/gfx/skia/skia/src/core/SkTextBlob.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/core/SkTextBlob.cpp
-+++ firefox-102.0/gfx/skia/skia/src/core/SkTextBlob.cpp
-@@ -201,6 +201,7 @@ void SkTextBlob::operator delete(void* p
+ 
+     t[],s[] are set to the two homogeneous parameter values at which points the lines L & M
+     intersect with K, sorted from smallest to largest and oriented so positive values of the
+     implicit are on the "left" side. For a serpentine curve they are the inflection points. For a
+     loop they are the double point. For a local cusp, they are both equal and denote the cusp point.
+diff --git a/gfx/skia/skia/src/core/SkTextBlob.cpp b/gfx/skia/skia/src/core/SkTextBlob.cpp
+--- a/gfx/skia/skia/src/core/SkTextBlob.cpp
++++ b/gfx/skia/skia/src/core/SkTextBlob.cpp
+@@ -196,16 +196,17 @@ unsigned SkTextBlob::ScalarsPerGlyph(Gly
+ }
+ 
+ void SkTextBlob::operator delete(void* p) {
+     sk_free(p);
+ }
  
  void* SkTextBlob::operator new(size_t) {
      SK_ABORT("All blobs are created by placement new.");
@@ -98,11 +167,20 @@ Index: firefox-102.0/gfx/skia/skia/src/core/SkTextBlob.cpp
  }
  
  void* SkTextBlob::operator new(size_t, void* p) {
-Index: firefox-102.0/gfx/skia/skia/src/core/SkTypeface_remote.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/core/SkTypeface_remote.cpp
-+++ firefox-102.0/gfx/skia/skia/src/core/SkTypeface_remote.cpp
-@@ -29,6 +29,7 @@ void SkScalerContextProxy::initCache(SkS
+     return p;
+ }
+ 
+ SkTextBlobRunIterator::SkTextBlobRunIterator(const SkTextBlob* blob)
+     : fCurrentRun(SkTextBlob::RunRecord::First(blob)) {
+diff --git a/gfx/skia/skia/src/core/SkTypeface_remote.cpp b/gfx/skia/skia/src/core/SkTypeface_remote.cpp
+--- a/gfx/skia/skia/src/core/SkTypeface_remote.cpp
++++ b/gfx/skia/skia/src/core/SkTypeface_remote.cpp
+@@ -24,16 +24,17 @@ void SkScalerContextProxy::initCache(SkS
+     SkASSERT(cache != nullptr);
+ 
+     fCache = cache;
+     fStrikeCache = strikeCache;
+ }
  
  unsigned SkScalerContextProxy::generateGlyphCount()  {
      SK_ABORT("Should never be called.");
@@ -110,11 +188,20 @@ Index: firefox-102.0/gfx/skia/skia/src/core/SkTypeface_remote.cpp
  }
  
  bool SkScalerContextProxy::generateAdvance(SkGlyph* glyph) {
-Index: firefox-102.0/gfx/skia/skia/src/core/SkTypeface_remote.h
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/core/SkTypeface_remote.h
-+++ firefox-102.0/gfx/skia/skia/src/core/SkTypeface_remote.h
-@@ -63,23 +63,28 @@ public:
+     return false;
+ }
+ 
+ void SkScalerContextProxy::generateMetrics(SkGlyph* glyph) {
+     TRACE_EVENT1("skia", "generateMetrics", "rec", TRACE_STR_COPY(this->getRec().dump().c_str()));
+diff --git a/gfx/skia/skia/src/core/SkTypeface_remote.h b/gfx/skia/skia/src/core/SkTypeface_remote.h
+--- a/gfx/skia/skia/src/core/SkTypeface_remote.h
++++ b/gfx/skia/skia/src/core/SkTypeface_remote.h
+@@ -58,46 +58,54 @@ public:
+             , fGlyphCount{glyphCount}
+             , fIsLogging{isLogging}
+             , fDiscardableManager{std::move(manager)} {}
+     SkFontID remoteTypefaceID() const {return fFontId;}
+     int glyphCount() const {return fGlyphCount;}
      bool isLogging() const {return fIsLogging;}
  
  protected:
@@ -144,7 +231,7 @@ Index: firefox-102.0/gfx/skia/skia/src/core/SkTypeface_remote.h
      }
      void onGetFamilyName(SkString* familyName) const override {
          // Used by SkStrikeCache::DumpMemoryStatistics.
-@@ -87,12 +92,15 @@ protected:
+         *familyName = "";
      }
      SkTypeface::LocalizedStrings* onCreateFamilyNameIterator() const override {
          SK_ABORT("Should never be called.");
@@ -160,7 +247,17 @@ Index: firefox-102.0/gfx/skia/skia/src/core/SkTypeface_remote.h
      }
      SkScalerContext* onCreateScalerContext(const SkScalerContextEffects& effects,
                                             const SkDescriptor* desc) const override {
-@@ -116,6 +124,7 @@ protected:
+         return new SkScalerContextProxy(sk_ref_sp(const_cast<SkTypefaceProxy*>(this)), effects,
+                                         desc, fDiscardableManager);
+     }
+     void onFilterRec(SkScalerContextRec* rec) const override {
+         // The rec filtering is already applied by the server when generating
+@@ -111,26 +119,28 @@ protected:
+     }
+ 
+     void getPostScriptGlyphNames(SkString*) const override {
+         SK_ABORT("Should never be called.");
+     }
  
      std::unique_ptr<SkAdvancedTypefaceMetrics> onGetAdvancedMetrics() const override {
          SK_ABORT("Should never be called.");
@@ -168,7 +265,10 @@ Index: firefox-102.0/gfx/skia/skia/src/core/SkTypeface_remote.h
      }
      void onCharsToGlyphs(const SkUnichar* chars, int count, SkGlyphID glyphs[]) const override {
          SK_ABORT("Should never be called.");
-@@ -126,6 +135,7 @@ protected:
+     }
+     int onCountGlyphs() const override {
+         return this->glyphCount();
+     }
  
      void* onGetCTFontRef() const override {
          SK_ABORT("Should never be called.");
@@ -176,11 +276,20 @@ Index: firefox-102.0/gfx/skia/skia/src/core/SkTypeface_remote.h
      }
  
  private:
-Index: firefox-102.0/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
-+++ firefox-102.0/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
-@@ -144,6 +144,7 @@ static GrTextureDomain::Mode to_texture_
+     const SkFontID                                  fFontId;
+     const int                                       fGlyphCount;
+     const bool                                      fIsLogging;
+     sk_sp<SkStrikeClient::DiscardableHandleManager> fDiscardableManager;
+ 
+diff --git a/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp b/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
+--- a/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
++++ b/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
+@@ -139,16 +139,17 @@ static GrTextureDomain::Mode to_texture_
+         case SkTileMode::kDecal:
+             return GrTextureDomain::kDecal_Mode;
+         case SkTileMode::kMirror:
+             // TODO (michaelludwig) - Support mirror mode, treat as repeat for now
+         case SkTileMode::kRepeat:
              return GrTextureDomain::kRepeat_Mode;
          default:
              SK_ABORT("Unsupported tile mode.");
@@ -188,11 +297,20 @@ Index: firefox-102.0/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cp
      }
  }
  #endif
-Index: firefox-102.0/gfx/skia/skia/src/effects/imagefilters/SkLightingImageFilter.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/effects/imagefilters/SkLightingImageFilter.cpp
-+++ firefox-102.0/gfx/skia/skia/src/effects/imagefilters/SkLightingImageFilter.cpp
-@@ -1701,6 +1701,7 @@ static SkImageFilterLight* create_random
+ 
+ // This is defined by the SVG spec:
+ // https://drafts.fxtf.org/filter-effects/#feGaussianBlurElement
+ static int calculate_window(double sigma) {
+     // NB 136 is the largest sigma that will not cause a buffer full of 255 mask values to overflow
+diff --git a/gfx/skia/skia/src/effects/imagefilters/SkLightingImageFilter.cpp b/gfx/skia/skia/src/effects/imagefilters/SkLightingImageFilter.cpp
+--- a/gfx/skia/skia/src/effects/imagefilters/SkLightingImageFilter.cpp
++++ b/gfx/skia/skia/src/effects/imagefilters/SkLightingImageFilter.cpp
+@@ -1696,16 +1696,17 @@ static SkImageFilterLight* create_random
+             return new SkPointLight(random_point3(random), random->nextU());
+         }
+         case 2: {
+             return new SkSpotLight(random_point3(random), random_point3(random),
+                                    random->nextUScalar1(), random->nextUScalar1(), random->nextU());
          }
          default:
              SK_ABORT("Unexpected value.");
@@ -200,11 +318,20 @@ Index: firefox-102.0/gfx/skia/skia/src/effects/imagefilters/SkLightingImageFilte
      }
  }
  
-Index: firefox-102.0/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
-+++ firefox-102.0/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
-@@ -69,6 +69,7 @@ void SkFontMgr_Indirect::onGetFamilyName
+ std::unique_ptr<GrFragmentProcessor> GrDiffuseLightingEffect::TestCreate(GrProcessorTestData* d) {
+     int texIdx = d->fRandom->nextBool() ? GrProcessorUnitTest::kSkiaPMTextureIdx
+                                         : GrProcessorUnitTest::kAlphaTextureIdx;
+     sk_sp<GrTextureProxy> proxy = d->textureProxy(texIdx);
+     SkScalar surfaceScale = d->fRandom->nextSScalar1();
+diff --git a/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp b/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
+--- a/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
++++ b/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
+@@ -64,16 +64,17 @@ int SkFontMgr_Indirect::onCountFamilies(
+ }
+ 
+ void SkFontMgr_Indirect::onGetFamilyName(int index, SkString* familyName) const {
+     SK_ABORT("Not implemented");
+ }
  
  SkFontStyleSet* SkFontMgr_Indirect::onCreateStyleSet(int index) const {
      SK_ABORT("Not implemented");
@@ -212,11 +339,20 @@ Index: firefox-102.0/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
  }
  
  SkFontStyleSet* SkFontMgr_Indirect::onMatchFamily(const char familyName[]) const {
-Index: firefox-102.0/gfx/skia/skia/src/gpu/GrDataUtils.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/GrDataUtils.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/GrDataUtils.cpp
-@@ -128,6 +128,7 @@ size_t GrCompressedDataSize(SkImage::Com
+     return new SkStyleSet_Indirect(this, -1, fProxy->matchName(familyName));
+ }
+ 
+ SkTypeface* SkFontMgr_Indirect::createTypefaceFromFontId(const SkFontIdentity& id) const {
+     if (id.fDataId == SkFontIdentity::kInvalidDataId) {
+diff --git a/gfx/skia/skia/src/gpu/GrDataUtils.cpp b/gfx/skia/skia/src/gpu/GrDataUtils.cpp
+--- a/gfx/skia/skia/src/gpu/GrDataUtils.cpp
++++ b/gfx/skia/skia/src/gpu/GrDataUtils.cpp
+@@ -123,25 +123,27 @@ static int num_ETC1_blocks(int w, int h)
+ 
+ size_t GrCompressedDataSize(SkImage::CompressionType type, int width, int height) {
+     switch (type) {
+         case SkImage::kETC1_CompressionType:
+             int numBlocks = num_ETC1_blocks(width, height);
              return numBlocks * sizeof(ETC1Block);
      }
      SK_ABORT("Unexpected compression type");
@@ -224,7 +360,9 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/GrDataUtils.cpp
  }
  
  size_t GrCompressedRowBytes(SkImage::CompressionType type, int width) {
-@@ -137,6 +138,7 @@ size_t GrCompressedRowBytes(SkImage::Com
+     switch (type) {
+         case SkImage::kETC1_CompressionType:
+             int numBlocksWidth = num_ETC1_blocks_w(width);
              return numBlocksWidth * sizeof(ETC1Block);
      }
      SK_ABORT("Unexpected compression type");
@@ -232,11 +370,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/GrDataUtils.cpp
  }
  
  // Fill in 'dest' with ETC1 blocks derived from 'colorf'
-Index: firefox-102.0/gfx/skia/skia/src/gpu/GrFragmentProcessor.h
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/GrFragmentProcessor.h
-+++ firefox-102.0/gfx/skia/skia/src/gpu/GrFragmentProcessor.h
-@@ -375,6 +375,7 @@ protected:
+ static void fillin_ETC1_with_color(int width, int height, const SkColor4f& colorf, void* dest) {
+     SkColor color = colorf.toSkColor();
+ 
+     ETC1Block block;
+     create_etc1_block(color, &block);
+diff --git a/gfx/skia/skia/src/gpu/GrFragmentProcessor.h b/gfx/skia/skia/src/gpu/GrFragmentProcessor.h
+--- a/gfx/skia/skia/src/gpu/GrFragmentProcessor.h
++++ b/gfx/skia/skia/src/gpu/GrFragmentProcessor.h
+@@ -370,16 +370,17 @@ protected:
+                                                    const Args&... samps) {
+         return (0 == i) ? samp0 : IthTextureSampler(i - 1, samps...);
+     }
+     inline static const TextureSampler& IthTextureSampler(int i);
+ 
  private:
      virtual SkPMColor4f constantOutputForConstantInput(const SkPMColor4f& /* inputColor */) const {
          SK_ABORT("Subclass must override this if advertising this optimization.");
@@ -244,11 +391,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/GrFragmentProcessor.h
      }
  
      /** Returns a new instance of the appropriate *GL* implementation class
-Index: firefox-102.0/gfx/skia/skia/src/gpu/GrPathRendering.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/GrPathRendering.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/GrPathRendering.cpp
-@@ -19,6 +19,7 @@ const GrUserStencilSettings& GrPathRende
+         for the given GrFragmentProcessor; caller is responsible for deleting
+         the object. */
+     virtual GrGLSLFragmentProcessor* onCreateGLSLInstance() const = 0;
+ 
+     /** Implemented using GLFragmentProcessor::GenKey as described in this class's comment. */
+diff --git a/gfx/skia/skia/src/gpu/GrPathRendering.cpp b/gfx/skia/skia/src/gpu/GrPathRendering.cpp
+--- a/gfx/skia/skia/src/gpu/GrPathRendering.cpp
++++ b/gfx/skia/skia/src/gpu/GrPathRendering.cpp
+@@ -14,16 +14,17 @@
+ #include "src/gpu/GrPathRendering.h"
+ #include "src/gpu/GrProgramInfo.h"
+ #include "src/gpu/GrRenderTarget.h"
+ 
+ const GrUserStencilSettings& GrPathRendering::GetStencilPassSettings(FillType fill) {
      switch (fill) {
          default:
              SK_ABORT("Unexpected path fill.");
@@ -256,11 +412,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/GrPathRendering.cpp
          case GrPathRendering::kWinding_FillType: {
              constexpr static GrUserStencilSettings kWindingStencilPass(
                  GrUserStencilSettings::StaticInit<
-Index: firefox-102.0/gfx/skia/skia/src/gpu/GrPathRendering.h
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/GrPathRendering.h
-+++ firefox-102.0/gfx/skia/skia/src/gpu/GrPathRendering.h
-@@ -63,6 +63,7 @@ public:
+                     0xffff,
+                     GrUserStencilTest::kAlwaysIfInClip,
+                     0xffff,
+                     GrUserStencilOp::kIncWrap,
+                     GrUserStencilOp::kIncWrap,
+diff --git a/gfx/skia/skia/src/gpu/GrPathRendering.h b/gfx/skia/skia/src/gpu/GrPathRendering.h
+--- a/gfx/skia/skia/src/gpu/GrPathRendering.h
++++ b/gfx/skia/skia/src/gpu/GrPathRendering.h
+@@ -58,16 +58,17 @@ public:
+                 return 1;
+             case kTranslate_PathTransformType:
+                 return 2;
+             case kAffine_PathTransformType:
+                 return 6;
  
              default:
                  SK_ABORT("Unknown path transform type");
@@ -268,11 +433,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/GrPathRendering.h
          }
      }
  
-Index: firefox-102.0/gfx/skia/skia/src/gpu/GrProcessorUnitTest.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/GrProcessorUnitTest.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/GrProcessorUnitTest.cpp
-@@ -20,6 +20,7 @@ std::unique_ptr<GrFragmentProcessor> GrP
+     // No native support for inverse at this time
+     enum FillType {
+         /** Specifies that "inside" is computed by a non-zero sum of signed
+             edge crossings
+         */
+diff --git a/gfx/skia/skia/src/gpu/GrProcessorUnitTest.cpp b/gfx/skia/skia/src/gpu/GrProcessorUnitTest.cpp
+--- a/gfx/skia/skia/src/gpu/GrProcessorUnitTest.cpp
++++ b/gfx/skia/skia/src/gpu/GrProcessorUnitTest.cpp
+@@ -15,11 +15,12 @@ std::unique_ptr<GrFragmentProcessor> GrP
+     std::unique_ptr<GrFragmentProcessor> fp;
+     do {
+         fp = GrFragmentProcessorTestFactory::Make(data);
+         SkASSERT(fp);
+     } while (fp->numChildProcessors() != 0);
      return fp;
  #else
      SK_ABORT("Should not be called if !SK_ALLOW_STATIC_GLOBAL_INITIALIZERS");
@@ -280,11 +454,15 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/GrProcessorUnitTest.cpp
  #endif
  }
  #endif
-Index: firefox-102.0/gfx/skia/skia/src/gpu/GrReducedClip.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/GrReducedClip.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/GrReducedClip.cpp
-@@ -525,6 +525,7 @@ GrReducedClip::ClipResult GrReducedClip:
+diff --git a/gfx/skia/skia/src/gpu/GrReducedClip.cpp b/gfx/skia/skia/src/gpu/GrReducedClip.cpp
+--- a/gfx/skia/skia/src/gpu/GrReducedClip.cpp
++++ b/gfx/skia/skia/src/gpu/GrReducedClip.cpp
+@@ -520,16 +520,17 @@ GrReducedClip::ClipResult GrReducedClip:
+                                        GrAA(element->isAA()));
+ 
+         case Element::DeviceSpaceType::kPath:
+             return this->addAnalyticFP(element->getDeviceSpacePath(),
+                                        Invert(element->isInverseFilled()), GrAA(element->isAA()));
      }
  
      SK_ABORT("Unexpected DeviceSpaceType");
@@ -292,7 +470,17 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/GrReducedClip.cpp
  }
  
  GrReducedClip::ClipResult GrReducedClip::clipOutsideElement(const Element* element) {
-@@ -591,6 +592,7 @@ GrReducedClip::ClipResult GrReducedClip:
+     switch (element->getDeviceSpaceType()) {
+         case Element::DeviceSpaceType::kEmpty:
+             return ClipResult::kMadeEmpty;
+ 
+         case Element::DeviceSpaceType::kRect:
+@@ -586,16 +587,17 @@ GrReducedClip::ClipResult GrReducedClip:
+         }
+ 
+         case Element::DeviceSpaceType::kPath:
+             return this->addAnalyticFP(element->getDeviceSpacePath(),
+                                        Invert(!element->isInverseFilled()), GrAA(element->isAA()));
      }
  
      SK_ABORT("Unexpected DeviceSpaceType");
@@ -300,11 +488,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/GrReducedClip.cpp
  }
  
  inline void GrReducedClip::addWindowRectangle(const SkRect& elementInteriorRect, bool elementIsAA) {
-Index: firefox-102.0/gfx/skia/skia/src/gpu/GrResourceCache.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/GrResourceCache.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/GrResourceCache.cpp
-@@ -40,6 +40,7 @@ GrScratchKey::ResourceType GrScratchKey:
+     SkIRect window;
+     if (!elementIsAA) {
+         elementInteriorRect.round(&window);
+     } else {
+         elementInteriorRect.roundIn(&window);
+diff --git a/gfx/skia/skia/src/gpu/GrResourceCache.cpp b/gfx/skia/skia/src/gpu/GrResourceCache.cpp
+--- a/gfx/skia/skia/src/gpu/GrResourceCache.cpp
++++ b/gfx/skia/skia/src/gpu/GrResourceCache.cpp
+@@ -35,27 +35,29 @@ DECLARE_SKMESSAGEBUS_MESSAGE(GrTextureFr
+ //////////////////////////////////////////////////////////////////////////////
+ 
+ GrScratchKey::ResourceType GrScratchKey::GenerateResourceType() {
+     static std::atomic<int32_t> nextType{INHERITED::kInvalidDomain + 1};
+ 
      int32_t type = nextType++;
      if (type > SkTo<int32_t>(UINT16_MAX)) {
          SK_ABORT("Too many Resource Types");
@@ -312,7 +509,11 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/GrResourceCache.cpp
      }
  
      return static_cast<ResourceType>(type);
-@@ -51,6 +52,7 @@ GrUniqueKey::Domain GrUniqueKey::Generat
+ }
+ 
+ GrUniqueKey::Domain GrUniqueKey::GenerateDomain() {
+     static std::atomic<int32_t> nextDomain{INHERITED::kInvalidDomain + 1};
+ 
      int32_t domain = nextDomain++;
      if (domain > SkTo<int32_t>(UINT16_MAX)) {
          SK_ABORT("Too many GrUniqueKey Domains");
@@ -320,11 +521,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/GrResourceCache.cpp
      }
  
      return static_cast<Domain>(domain);
-Index: firefox-102.0/gfx/skia/skia/src/gpu/GrShaderVar.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/GrShaderVar.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/GrShaderVar.cpp
-@@ -18,6 +18,7 @@ static const char* type_modifier_string(
+ }
+ 
+ uint32_t GrResourceKeyHash(const uint32_t* data, size_t size) {
+     return SkOpts::hash(data, size);
+ }
+diff --git a/gfx/skia/skia/src/gpu/GrShaderVar.cpp b/gfx/skia/skia/src/gpu/GrShaderVar.cpp
+--- a/gfx/skia/skia/src/gpu/GrShaderVar.cpp
++++ b/gfx/skia/skia/src/gpu/GrShaderVar.cpp
+@@ -13,30 +13,32 @@ static const char* type_modifier_string(
+     switch (t) {
+         case GrShaderVar::kNone_TypeModifier: return "";
+         case GrShaderVar::kIn_TypeModifier: return "in";
+         case GrShaderVar::kInOut_TypeModifier: return "inout";
+         case GrShaderVar::kOut_TypeModifier: return "out";
          case GrShaderVar::kUniform_TypeModifier: return "uniform";
      }
      SK_ABORT("Unknown shader variable type modifier.");
@@ -332,7 +542,14 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/GrShaderVar.cpp
  }
  
  void GrShaderVar::setIOType(GrIOType ioType) {
-@@ -32,6 +33,7 @@ void GrShaderVar::setIOType(GrIOType ioT
+     switch (ioType) {
+         case kRW_GrIOType:
+             return;
+         case kRead_GrIOType:
+             this->addModifier("readonly");
+             return;
+         case kWrite_GrIOType:
+             this->addModifier("writeonly");
              return;
      }
      SK_ABORT("Unknown io type.");
@@ -340,11 +557,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/GrShaderVar.cpp
  }
  
  void GrShaderVar::appendDecl(const GrShaderCaps* shaderCaps, SkString* out) const {
-Index: firefox-102.0/gfx/skia/skia/src/gpu/SkGpuDevice.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/SkGpuDevice.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/SkGpuDevice.cpp
-@@ -283,6 +283,7 @@ static inline GrPrimitiveType point_mode
+     SkString layout = fLayoutQualifier;
+     if (!fLayoutQualifier.isEmpty()) {
+         out->appendf("layout(%s) ", fLayoutQualifier.c_str());
+     }
+     out->append(fExtraModifiers);
+diff --git a/gfx/skia/skia/src/gpu/SkGpuDevice.cpp b/gfx/skia/skia/src/gpu/SkGpuDevice.cpp
+--- a/gfx/skia/skia/src/gpu/SkGpuDevice.cpp
++++ b/gfx/skia/skia/src/gpu/SkGpuDevice.cpp
+@@ -278,16 +278,17 @@ static inline GrPrimitiveType point_mode
+         case SkCanvas::kPoints_PointMode:
+             return GrPrimitiveType::kPoints;
+         case SkCanvas::kLines_PointMode:
+             return GrPrimitiveType::kLines;
+         case SkCanvas::kPolygon_PointMode:
              return GrPrimitiveType::kLineStrip;
      }
      SK_ABORT("Unexpected mode");
@@ -352,11 +578,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/SkGpuDevice.cpp
  }
  
  void SkGpuDevice::drawPoints(SkCanvas::PointMode mode,
-Index: firefox-102.0/gfx/skia/skia/src/gpu/SkGr.h
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/SkGr.h
-+++ firefox-102.0/gfx/skia/skia/src/gpu/SkGr.h
-@@ -159,6 +159,7 @@ static inline GrPrimitiveType SkVertexMo
+                              size_t count, const SkPoint pts[], const SkPaint& paint) {
+     ASSERT_SINGLE_OWNER
+     GR_CREATE_TRACE_MARKER_CONTEXT("SkGpuDevice", "drawPoints", fContext.get());
+     SkScalar width = paint.getStrokeWidth();
+     if (width < 0) {
+diff --git a/gfx/skia/skia/src/gpu/SkGr.h b/gfx/skia/skia/src/gpu/SkGr.h
+--- a/gfx/skia/skia/src/gpu/SkGr.h
++++ b/gfx/skia/skia/src/gpu/SkGr.h
+@@ -154,16 +154,17 @@ static inline GrPrimitiveType SkVertexMo
+         case SkVertices::kTriangles_VertexMode:
+             return GrPrimitiveType::kTriangles;
+         case SkVertices::kTriangleStrip_VertexMode:
+             return GrPrimitiveType::kTriangleStrip;
+         case SkVertices::kTriangleFan_VertexMode:
              break;
      }
      SK_ABORT("Invalid mode");
@@ -364,11 +599,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/SkGr.h
  }
  
  //////////////////////////////////////////////////////////////////////////////
-Index: firefox-102.0/gfx/skia/skia/src/gpu/ccpr/GrCCCoverageProcessor.h
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/ccpr/GrCCCoverageProcessor.h
-+++ firefox-102.0/gfx/skia/skia/src/gpu/ccpr/GrCCCoverageProcessor.h
-@@ -240,6 +240,7 @@ inline const char* GrCCCoverageProcessor
+ 
+ GR_STATIC_ASSERT((int)kZero_GrBlendCoeff == (int)SkBlendModeCoeff::kZero);
+ GR_STATIC_ASSERT((int)kOne_GrBlendCoeff == (int)SkBlendModeCoeff::kOne);
+ GR_STATIC_ASSERT((int)kSC_GrBlendCoeff == (int)SkBlendModeCoeff::kSC);
+ GR_STATIC_ASSERT((int)kISC_GrBlendCoeff == (int)SkBlendModeCoeff::kISC);
+diff --git a/gfx/skia/skia/src/gpu/ccpr/GrCCCoverageProcessor.h b/gfx/skia/skia/src/gpu/ccpr/GrCCCoverageProcessor.h
+--- a/gfx/skia/skia/src/gpu/ccpr/GrCCCoverageProcessor.h
++++ b/gfx/skia/skia/src/gpu/ccpr/GrCCCoverageProcessor.h
+@@ -235,16 +235,17 @@ inline const char* GrCCCoverageProcessor
+     switch (type) {
+         case PrimitiveType::kTriangles: return "kTriangles";
+         case PrimitiveType::kWeightedTriangles: return "kWeightedTriangles";
+         case PrimitiveType::kQuadratics: return "kQuadratics";
+         case PrimitiveType::kCubics: return "kCubics";
          case PrimitiveType::kConics: return "kConics";
      }
      SK_ABORT("Invalid PrimitiveType");
@@ -376,11 +620,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/ccpr/GrCCCoverageProcessor.h
  }
  
  inline void GrCCCoverageProcessor::TriPointInstance::set(
-Index: firefox-102.0/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.cpp
-@@ -60,6 +60,7 @@ static GrCCStrokeGeometry::Verb join_ver
+         const SkPoint p[3], const Sk2f& translate, Ordering ordering) {
+     this->set(p[0], p[1], p[2], translate, ordering);
+ }
+ 
+ inline void GrCCCoverageProcessor::TriPointInstance::set(
+diff --git a/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.cpp b/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.cpp
+--- a/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.cpp
++++ b/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.cpp
+@@ -55,16 +55,17 @@ static GrCCStrokeGeometry::Verb join_ver
+         case SkPaint::kBevel_Join:
+             return Verb::kBevelJoin;
+         case SkPaint::kMiter_Join:
+             return Verb::kMiterJoin;
+         case SkPaint::kRound_Join:
              return Verb::kRoundJoin;
      }
      SK_ABORT("Invalid SkPaint::Join.");
@@ -388,22 +641,35 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.cpp
  }
  
  void GrCCStrokeGeometry::beginPath(const SkStrokeRec& stroke, float strokeDevWidth,
-Index: firefox-102.0/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.h
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.h
-+++ firefox-102.0/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.h
-@@ -175,5 +175,6 @@ inline bool GrCCStrokeGeometry::IsIntern
+                                    InstanceTallies* tallies) {
+     SkASSERT(!fInsideContour);
+     // Client should have already converted the stroke to device space (i.e. width=1 for hairline).
+     SkASSERT(strokeDevWidth > 0);
+ 
+diff --git a/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.h b/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.h
+--- a/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.h
++++ b/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.h
+@@ -170,10 +170,11 @@ inline bool GrCCStrokeGeometry::IsIntern
+         case Verb::kMiterJoin:
+         case Verb::kRoundJoin:
+         case Verb::kSquareCap:
+         case Verb::kRoundCap:
+         case Verb::kEndContour:
              return false;
      }
      SK_ABORT("Invalid GrCCStrokeGeometry::Verb.");
 +    SkUNREACHABLE;
  }
  #endif
-Index: firefox-102.0/gfx/skia/skia/src/gpu/ccpr/GrCoverageCountingPathRenderer.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/ccpr/GrCoverageCountingPathRenderer.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/ccpr/GrCoverageCountingPathRenderer.cpp
-@@ -164,6 +164,7 @@ GrPathRenderer::CanDrawPath GrCoverageCo
+diff --git a/gfx/skia/skia/src/gpu/ccpr/GrCoverageCountingPathRenderer.cpp b/gfx/skia/skia/src/gpu/ccpr/GrCoverageCountingPathRenderer.cpp
+--- a/gfx/skia/skia/src/gpu/ccpr/GrCoverageCountingPathRenderer.cpp
++++ b/gfx/skia/skia/src/gpu/ccpr/GrCoverageCountingPathRenderer.cpp
+@@ -159,16 +159,17 @@ GrPathRenderer::CanDrawPath GrCoverageCo
+             return CanDrawPath::kYes;
+         }
+ 
+         case SkStrokeRec::kStrokeAndFill_Style:
+             return CanDrawPath::kNo;
      }
  
      SK_ABORT("Invalid stroke style.");
@@ -411,21 +677,34 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/ccpr/GrCoverageCountingPathRenderer.c
  }
  
  bool GrCoverageCountingPathRenderer::onDrawPath(const DrawPathArgs& args) {
-Index: firefox-102.0/gfx/skia/skia/src/gpu/ccpr/GrVSCoverageProcessor.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/ccpr/GrVSCoverageProcessor.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/ccpr/GrVSCoverageProcessor.cpp
-@@ -550,4 +550,5 @@ GrGLSLPrimitiveProcessor* GrVSCoveragePr
+     SkASSERT(!fFlushing);
+ 
+     SkIRect clipIBounds;
+     GrRenderTargetContext* rtc = args.fRenderTargetContext;
+     args.fClip->getConservativeBounds(rtc->width(), rtc->height(), &clipIBounds, nullptr);
+diff --git a/gfx/skia/skia/src/gpu/ccpr/GrVSCoverageProcessor.cpp b/gfx/skia/skia/src/gpu/ccpr/GrVSCoverageProcessor.cpp
+--- a/gfx/skia/skia/src/gpu/ccpr/GrVSCoverageProcessor.cpp
++++ b/gfx/skia/skia/src/gpu/ccpr/GrVSCoverageProcessor.cpp
+@@ -545,9 +545,10 @@ GrGLSLPrimitiveProcessor* GrVSCoveragePr
+         case PrimitiveType::kWeightedTriangles:
+             return new Impl(std::move(shader), 3);
+         case PrimitiveType::kQuadratics:
+         case PrimitiveType::kCubics:
+         case PrimitiveType::kConics:
              return new Impl(std::move(shader), 4);
      }
      SK_ABORT("Invalid PrimitiveType");
 +    SkUNREACHABLE;
  }
-Index: firefox-102.0/gfx/skia/skia/src/gpu/dawn/GrDawnOpsRenderPass.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/dawn/GrDawnOpsRenderPass.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/dawn/GrDawnOpsRenderPass.cpp
-@@ -39,7 +39,9 @@ static dawn::LoadOp to_dawn_load_op(GrLo
+diff --git a/gfx/skia/skia/src/gpu/dawn/GrDawnOpsRenderPass.cpp b/gfx/skia/skia/src/gpu/dawn/GrDawnOpsRenderPass.cpp
+--- a/gfx/skia/skia/src/gpu/dawn/GrDawnOpsRenderPass.cpp
++++ b/gfx/skia/skia/src/gpu/dawn/GrDawnOpsRenderPass.cpp
+@@ -34,17 +34,19 @@ static dawn::LoadOp to_dawn_load_op(GrLo
+             // Load should be equivalent to DontCare for desktop; Clear would
+             // probably be better for tilers. If Dawn does add DontCare
+             // as an extension, use it here.
+             return dawn::LoadOp::Load;
+         case GrLoadOp::kClear:
              return dawn::LoadOp::Clear;
          default:
              SK_ABORT("Invalid LoadOp");
@@ -435,11 +714,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/dawn/GrDawnOpsRenderPass.cpp
  }
  
  GrDawnOpsRenderPass::GrDawnOpsRenderPass(GrDawnGpu* gpu, GrRenderTarget* rt, GrSurfaceOrigin origin,
-Index: firefox-102.0/gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp
-@@ -95,6 +95,7 @@ uint32_t grsltype_to_alignment_mask(GrSL
+                                          const LoadAndStoreInfo& colorInfo,
+                                          const StencilLoadAndStoreInfo& stencilInfo)
+         : INHERITED(rt, origin)
+         , fGpu(gpu)
+         , fColorInfo(colorInfo) {
+diff --git a/gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp b/gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp
+--- a/gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp
++++ b/gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp
+@@ -90,16 +90,17 @@ uint32_t grsltype_to_alignment_mask(GrSL
+         case kTexture2DSampler_GrSLType:
+         case kTextureExternalSampler_GrSLType:
+         case kTexture2DRectSampler_GrSLType:
+         case kTexture2D_GrSLType:
+         case kSampler_GrSLType:
              break;
      }
      SK_ABORT("Unexpected type");
@@ -447,7 +735,17 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp
  }
  
  static inline uint32_t grsltype_to_size(GrSLType type) {
-@@ -173,6 +174,7 @@ static inline uint32_t grsltype_to_size(
+     switch(type) {
+         case kByte_GrSLType:
+         case kUByte_GrSLType:
+             return 1;
+         case kByte2_GrSLType:
+@@ -168,16 +169,17 @@ static inline uint32_t grsltype_to_size(
+         case kTexture2DSampler_GrSLType:
+         case kTextureExternalSampler_GrSLType:
+         case kTexture2DRectSampler_GrSLType:
+         case kTexture2D_GrSLType:
+         case kSampler_GrSLType:
              break;
      }
      SK_ABORT("Unexpected type");
@@ -455,11 +753,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp
  }
  
  uint32_t get_ubo_offset(uint32_t* currentOffset,
-Index: firefox-102.0/gfx/skia/skia/src/gpu/dawn/GrDawnVaryingHandler.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/dawn/GrDawnVaryingHandler.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/dawn/GrDawnVaryingHandler.cpp
-@@ -76,6 +76,7 @@ static inline int grsltype_to_location_s
+                         GrSLType type,
+                         int arrayCount) {
+     uint32_t alignmentMask = grsltype_to_alignment_mask(type);
+     // We want to use the std140 layout here, so we must make arrays align to 16 bytes.
+     if (arrayCount || type == kFloat2x2_GrSLType) {
+diff --git a/gfx/skia/skia/src/gpu/dawn/GrDawnVaryingHandler.cpp b/gfx/skia/skia/src/gpu/dawn/GrDawnVaryingHandler.cpp
+--- a/gfx/skia/skia/src/gpu/dawn/GrDawnVaryingHandler.cpp
++++ b/gfx/skia/skia/src/gpu/dawn/GrDawnVaryingHandler.cpp
+@@ -71,16 +71,17 @@ static inline int grsltype_to_location_s
+         case kUByte_GrSLType:
+              return 1;
+         case kTexture2D_GrSLType:
+              return 0;
+         case kSampler_GrSLType:
               return 0;
      }
      SK_ABORT("Unexpected type");
@@ -467,11 +774,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/dawn/GrDawnVaryingHandler.cpp
  }
  
  static void finalize_helper(GrDawnVaryingHandler::VarArray& vars) {
-Index: firefox-102.0/gfx/skia/skia/src/gpu/effects/GrConstColorProcessor.fp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/effects/GrConstColorProcessor.fp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/effects/GrConstColorProcessor.fp
-@@ -58,6 +58,7 @@ void main() {
+     int locationIndex = 0;
+     for (int i = 0; i < vars.count(); ++i) {
+         GrShaderVar& var = vars[i];
+         SkString location;
+         location.appendf("location = %d", locationIndex);
+diff --git a/gfx/skia/skia/src/gpu/effects/GrConstColorProcessor.fp b/gfx/skia/skia/src/gpu/effects/GrConstColorProcessor.fp
+--- a/gfx/skia/skia/src/gpu/effects/GrConstColorProcessor.fp
++++ b/gfx/skia/skia/src/gpu/effects/GrConstColorProcessor.fp
+@@ -53,16 +53,17 @@ void main() {
+             case InputMode::kIgnore:
+                 return color;
+             case InputMode::kModulateA:
+                 return color * input.fA;
+             case InputMode::kModulateRGBA:
                  return color * input;
          }
          SK_ABORT("Unexpected mode");
@@ -479,11 +795,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/effects/GrConstColorProcessor.fp
      }
  }
  
-Index: firefox-102.0/gfx/skia/skia/src/gpu/effects/GrCoverageSetOpXP.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/effects/GrCoverageSetOpXP.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/effects/GrCoverageSetOpXP.cpp
-@@ -204,6 +204,7 @@ const GrXPFactory* GrCoverageSetOpXPFact
+ @test(d) {
+     SkPMColor4f color;
+     int colorPicker = d->fRandom->nextULessThan(3);
+     switch (colorPicker) {
+         case 0: {
+diff --git a/gfx/skia/skia/src/gpu/effects/GrCoverageSetOpXP.cpp b/gfx/skia/skia/src/gpu/effects/GrCoverageSetOpXP.cpp
+--- a/gfx/skia/skia/src/gpu/effects/GrCoverageSetOpXP.cpp
++++ b/gfx/skia/skia/src/gpu/effects/GrCoverageSetOpXP.cpp
+@@ -199,16 +199,17 @@ const GrXPFactory* GrCoverageSetOpXPFact
+                 static _CONSTEXPR_ const GrCoverageSetOpXPFactory gRevDiffCDXPF(
+                         SkRegion::kReverseDifference_Op, false);
+                 return &gRevDiffCDXPF;
+             }
+         }
      }
  #undef _CONSTEXPR_
      SK_ABORT("Unknown region op.");
@@ -491,11 +816,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/effects/GrCoverageSetOpXP.cpp
  }
  
  sk_sp<const GrXferProcessor> GrCoverageSetOpXPFactory::makeXferProcessor(
-Index: firefox-102.0/gfx/skia/skia/src/gpu/effects/GrPorterDuffXferProcessor.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/effects/GrPorterDuffXferProcessor.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/effects/GrPorterDuffXferProcessor.cpp
-@@ -753,6 +753,7 @@ const GrXPFactory* GrPorterDuffXPFactory
+         const GrProcessorAnalysisColor&,
+         GrProcessorAnalysisCoverage,
+         bool hasMixedSamples,
+         const GrCaps& caps,
+         GrClampType) const {
+diff --git a/gfx/skia/skia/src/gpu/effects/GrPorterDuffXferProcessor.cpp b/gfx/skia/skia/src/gpu/effects/GrPorterDuffXferProcessor.cpp
+--- a/gfx/skia/skia/src/gpu/effects/GrPorterDuffXferProcessor.cpp
++++ b/gfx/skia/skia/src/gpu/effects/GrPorterDuffXferProcessor.cpp
+@@ -748,16 +748,17 @@ const GrXPFactory* GrPorterDuffXPFactory
+         case SkBlendMode::kPlus:
+             return &gPlusPDXPF;
+         case SkBlendMode::kModulate:
+             return &gModulatePDXPF;
+         case SkBlendMode::kScreen:
              return &gScreenPDXPF;
          default:
              SK_ABORT("Unexpected blend mode.");
@@ -503,11 +837,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/effects/GrPorterDuffXferProcessor.cpp
      }
  }
  
-Index: firefox-102.0/gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp
-@@ -154,6 +154,7 @@ public:
+ sk_sp<const GrXferProcessor> GrPorterDuffXPFactory::makeXferProcessor(
+         const GrProcessorAnalysisColor& color, GrProcessorAnalysisCoverage coverage,
+         bool hasMixedSamples, const GrCaps& caps, GrClampType clampType) const {
+     BlendFormula blendFormula;
+     bool isLCD = coverage == GrProcessorAnalysisCoverage::kLCD;
+diff --git a/gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp b/gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp
+--- a/gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp
++++ b/gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp
+@@ -149,16 +149,17 @@ public:
+             return kHalf4x4_GrSLType;
+         } else if (type == *fContext.fBool_Type) {
+             return kBool_GrSLType;
+         } else if (type == *fContext.fInt_Type) {
+             return kInt_GrSLType;
          }
          printf("%s\n", SkSL::String(type.fName).c_str());
          SK_ABORT("unsupported uniform type");
@@ -515,7 +858,17 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp
      }
  
      void emitCode(EmitArgs& args) override {
-@@ -568,6 +569,7 @@ std::unique_ptr<GrFragmentProcessor> GrS
+         for (const auto& v : fInAndUniformVars) {
+             if (v->fModifiers.fFlags & SkSL::Modifiers::kUniform_Flag && v->fType !=
+                                                                 *fContext.fFragmentProcessor_Type) {
+                 fUniformHandles.push_back(args.fUniformHandler->addUniform(
+                                                                    kFragment_GrShaderFlag,
+@@ -563,11 +564,12 @@ std::unique_ptr<GrFragmentProcessor> GrS
+             }
+             std::unique_ptr<GrSkSLFP> result = GrSkSLFP::Make(d->context(), overdrawIndex,
+                                                               "Overdraw", SKSL_OVERDRAW_SRC,
+                                                               &inputs, sizeof(inputs));
+             return std::unique_ptr<GrFragmentProcessor>(result.release());
          }
      }
      SK_ABORT("unreachable");
@@ -523,11 +876,15 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp
  }
  
  #endif
-Index: firefox-102.0/gfx/skia/skia/src/gpu/effects/generated/GrConstColorProcessor.h
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/effects/generated/GrConstColorProcessor.h
-+++ firefox-102.0/gfx/skia/skia/src/gpu/effects/generated/GrConstColorProcessor.h
-@@ -41,6 +41,7 @@ public:
+diff --git a/gfx/skia/skia/src/gpu/effects/generated/GrConstColorProcessor.h b/gfx/skia/skia/src/gpu/effects/generated/GrConstColorProcessor.h
+--- a/gfx/skia/skia/src/gpu/effects/generated/GrConstColorProcessor.h
++++ b/gfx/skia/skia/src/gpu/effects/generated/GrConstColorProcessor.h
+@@ -36,16 +36,17 @@ public:
+             case InputMode::kIgnore:
+                 return color;
+             case InputMode::kModulateA:
+                 return color * input.fA;
+             case InputMode::kModulateRGBA:
                  return color * input;
          }
          SK_ABORT("Unexpected mode");
@@ -535,11 +892,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/effects/generated/GrConstColorProcess
      }
      static std::unique_ptr<GrFragmentProcessor> Make(SkPMColor4f color, InputMode mode) {
          return std::unique_ptr<GrFragmentProcessor>(new GrConstColorProcessor(color, mode));
-Index: firefox-102.0/gfx/skia/skia/src/gpu/geometry/GrShape.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/geometry/GrShape.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/geometry/GrShape.cpp
-@@ -164,6 +164,7 @@ SkRect GrShape::bounds() const {
+     }
+     GrConstColorProcessor(const GrConstColorProcessor& src);
+     std::unique_ptr<GrFragmentProcessor> clone() const override;
+     const char* name() const override { return "ConstColorProcessor"; }
+     SkPMColor4f color;
+diff --git a/gfx/skia/skia/src/gpu/geometry/GrShape.cpp b/gfx/skia/skia/src/gpu/geometry/GrShape.cpp
+--- a/gfx/skia/skia/src/gpu/geometry/GrShape.cpp
++++ b/gfx/skia/skia/src/gpu/geometry/GrShape.cpp
+@@ -159,16 +159,17 @@ SkRect GrShape::bounds() const {
+             return fRRectData.fRRect.getBounds();
+         case Type::kArc:
+             // Could make this less conservative by looking at angles.
+             return fArcData.fOval;
+         case Type::kPath:
              return this->path().getBounds();
      }
      SK_ABORT("Unknown shape type");
@@ -547,7 +913,17 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/geometry/GrShape.cpp
  }
  
  SkRect GrShape::styledBounds() const {
-@@ -254,6 +255,7 @@ int GrShape::unstyledKeySize() const {
+     if (this->isEmpty() && !fStyle.hasNonDashPathEffect()) {
+         return SkRect::MakeEmpty();
+     }
+ 
+     SkRect bounds;
+@@ -249,16 +250,17 @@ int GrShape::unstyledKeySize() const {
+             if (dataKeySize >= 0) {
+                 return dataKeySize;
+             }
+             // The key is the path ID and fill type.
+             return 2;
          }
      }
      SK_ABORT("Should never get here.");
@@ -555,11 +931,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/geometry/GrShape.cpp
  }
  
  void GrShape::writeUnstyledKey(uint32_t* key) const {
-Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLCaps.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/gl/GrGLCaps.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLCaps.cpp
-@@ -4159,6 +4159,7 @@ GrBackendFormat GrGLCaps::getBackendForm
+     SkASSERT(this->unstyledKeySize());
+     SkDEBUGCODE(uint32_t* origKey = key;)
+     if (fInheritedKey.count()) {
+         memcpy(key, fInheritedKey.get(), sizeof(uint32_t) * fInheritedKey.count());
+         SkDEBUGCODE(key += fInheritedKey.count();)
+diff --git a/gfx/skia/skia/src/gpu/gl/GrGLCaps.cpp b/gfx/skia/skia/src/gpu/gl/GrGLCaps.cpp
+--- a/gfx/skia/skia/src/gpu/gl/GrGLCaps.cpp
++++ b/gfx/skia/skia/src/gpu/gl/GrGLCaps.cpp
+@@ -4154,16 +4154,17 @@ GrBackendFormat GrGLCaps::getBackendForm
+         case SkImage::kETC1_CompressionType:
+             // if ETC2 is available default to that format
+             if (this->isFormatTexturable(GrGLFormat::kCOMPRESSED_RGB8_ETC2)) {
+                 return GrBackendFormat::MakeGL(GR_GL_COMPRESSED_RGB8_ETC2, GR_GL_TEXTURE_2D);
+             }
              return GrBackendFormat::MakeGL(GR_GL_COMPRESSED_ETC1_RGB8, GR_GL_TEXTURE_2D);
      }
      SK_ABORT("Invalid compression type");
@@ -567,21 +952,34 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLCaps.cpp
  }
  
  GrSwizzle GrGLCaps::getTextureSwizzle(const GrBackendFormat& format, GrColorType colorType) const {
-Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLGLSL.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/gl/GrGLGLSL.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLGLSL.cpp
-@@ -68,4 +68,5 @@ bool GrGLGetGLSLGeneration(const GrGLInt
+     const auto& info = this->getFormatInfo(format.asGLFormat());
+     for (int i = 0; i < info.fColorTypeInfoCount; ++i) {
+         const auto& ctInfo = info.fColorTypeInfos[i];
+         if (ctInfo.fColorType == colorType) {
+             return ctInfo.fTextureSwizzle;
+diff --git a/gfx/skia/skia/src/gpu/gl/GrGLGLSL.cpp b/gfx/skia/skia/src/gpu/gl/GrGLGLSL.cpp
+--- a/gfx/skia/skia/src/gpu/gl/GrGLGLSL.cpp
++++ b/gfx/skia/skia/src/gpu/gl/GrGLGLSL.cpp
+@@ -63,9 +63,10 @@ bool GrGLGetGLSLGeneration(const GrGLInt
+         if (ver >= GR_GLSL_VER(2,0)) {
+             *generation = k330_GrGLSLGeneration;  // ES 3.0
+         } else {
+             *generation = k110_GrGLSLGeneration;
+         }
          return true;
      }
      SK_ABORT("Unknown GL Standard");
 +    SkUNREACHABLE;
  }
-Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
-@@ -196,6 +196,7 @@ static int gl_target_to_binding_index(Gr
+diff --git a/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp b/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
+--- a/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
++++ b/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
+@@ -191,16 +191,17 @@ static int gl_target_to_binding_index(Gr
+         case GR_GL_TEXTURE_2D:
+             return 0;
+         case GR_GL_TEXTURE_RECTANGLE:
+             return 1;
+         case GR_GL_TEXTURE_EXTERNAL:
              return 2;
      }
      SK_ABORT("Unexpected GL texture target.");
@@ -589,7 +987,17 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
  }
  
  GrGpuResource::UniqueID GrGLGpu::TextureUnitBindings::boundID(GrGLenum target) const {
-@@ -234,6 +235,7 @@ static GrGLenum filter_to_gl_mag_filter(
+     return fTargetBindings[gl_target_to_binding_index(target)].fBoundResourceID;
+ }
+ 
+ bool GrGLGpu::TextureUnitBindings::hasBeenModified(GrGLenum target) const {
+     return fTargetBindings[gl_target_to_binding_index(target)].fHasBeenModified;
+@@ -229,39 +230,42 @@ void GrGLGpu::TextureUnitBindings::inval
+ 
+ static GrGLenum filter_to_gl_mag_filter(GrSamplerState::Filter filter) {
+     switch (filter) {
+         case GrSamplerState::Filter::kNearest: return GR_GL_NEAREST;
+         case GrSamplerState::Filter::kBilerp:  return GR_GL_LINEAR;
          case GrSamplerState::Filter::kMipMap:  return GR_GL_LINEAR;
      }
      SK_ABORT("Unknown filter");
@@ -597,7 +1005,9 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
  }
  
  static GrGLenum filter_to_gl_min_filter(GrSamplerState::Filter filter) {
-@@ -243,6 +245,7 @@ static GrGLenum filter_to_gl_min_filter(
+     switch (filter) {
+         case GrSamplerState::Filter::kNearest: return GR_GL_NEAREST;
+         case GrSamplerState::Filter::kBilerp:  return GR_GL_LINEAR;
          case GrSamplerState::Filter::kMipMap:  return GR_GL_LINEAR_MIPMAP_LINEAR;
      }
      SK_ABORT("Unknown filter");
@@ -605,7 +1015,14 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
  }
  
  static inline GrGLenum wrap_mode_to_gl_wrap(GrSamplerState::WrapMode wrapMode,
-@@ -257,6 +260,7 @@ static inline GrGLenum wrap_mode_to_gl_w
+                                             const GrCaps& caps) {
+     switch (wrapMode) {
+         case GrSamplerState::WrapMode::kClamp:        return GR_GL_CLAMP_TO_EDGE;
+         case GrSamplerState::WrapMode::kRepeat:       return GR_GL_REPEAT;
+         case GrSamplerState::WrapMode::kMirrorRepeat: return GR_GL_MIRRORED_REPEAT;
+         case GrSamplerState::WrapMode::kClampToBorder:
+             // May not be supported but should have been caught earlier
+             SkASSERT(caps.clampToBorderSupport());
              return GR_GL_CLAMP_TO_BORDER;
      }
      SK_ABORT("Unknown wrap mode");
@@ -613,7 +1030,17 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
  }
  
  ///////////////////////////////////////////////////////////////////////////////
-@@ -1107,7 +1111,7 @@ static bool renderbuffer_storage_msaa(co
+ 
+ class GrGLGpu::SamplerObjectCache {
+ public:
+     SamplerObjectCache(GrGLGpu* gpu) : fGpu(gpu) {
+         fNumTextureUnits = fGpu->glCaps().shaderCaps()->maxFragmentSamplers();
+@@ -1102,17 +1106,17 @@ static bool renderbuffer_storage_msaa(co
+             GL_ALLOC_CALL(ctx.interface(),
+                             RenderbufferStorageMultisampleES2EXT(GR_GL_RENDERBUFFER,
+                                                                 sampleCount,
+                                                                 format,
+                                                                 width, height));
              break;
          case GrGLCaps::kNone_MSFBOType:
              SK_ABORT("Shouldn't be here if we don't support multisampled renderbuffers.");
@@ -622,7 +1049,17 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
      }
      return (GR_GL_NO_ERROR == CHECK_ALLOC_ERROR(ctx.interface()));
  }
-@@ -2275,9 +2279,10 @@ static GrGLenum gr_primitive_type_to_gl_
+ 
+ bool GrGLGpu::createRenderTargetObjects(const GrGLTexture::Desc& desc,
+                                         int sampleCount,
+                                         GrGLRenderTarget::IDs* rtIDs) {
+     rtIDs->fMSColorRenderbufferID = 0;
+@@ -2270,19 +2274,20 @@ static GrGLenum gr_primitive_type_to_gl_
+         case GrPrimitiveType::kPoints:
+             return GR_GL_POINTS;
+         case GrPrimitiveType::kLines:
+             return GR_GL_LINES;
+         case GrPrimitiveType::kLineStrip:
              return GR_GL_LINE_STRIP;
          case GrPrimitiveType::kPath:
              SK_ABORT("non-mesh-based GrPrimitiveType");
@@ -634,7 +1071,17 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
  }
  
  void GrGLGpu::sendMeshToGpu(GrPrimitiveType primitiveType, const GrBuffer* vertexBuffer,
-@@ -4006,7 +4011,8 @@ int GrGLGpu::TextureToCopyProgramIdx(GrT
+                             int vertexCount, int baseVertex) {
+     const GrGLenum glPrimType = gr_primitive_type_to_gl_mode(primitiveType);
+     if (this->glCaps().drawArraysBaseVertexIsBroken()) {
+         this->setupGeometry(nullptr, vertexBuffer, baseVertex, nullptr, 0, GrPrimitiveRestart::kNo);
+         GL_CALL(DrawArrays(glPrimType, 0, vertexCount));
+@@ -4001,17 +4006,18 @@ int GrGLGpu::TextureToCopyProgramIdx(GrT
+     switch (GrSLCombinedSamplerTypeForTextureType(texture->texturePriv().textureType())) {
+         case kTexture2DSampler_GrSLType:
+             return 0;
+         case kTexture2DRectSampler_GrSLType:
+             return 1;
          case kTextureExternalSampler_GrSLType:
              return 2;
          default:
@@ -644,11 +1091,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
      }
  }
  
-Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLPath.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/gl/GrGLPath.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLPath.cpp
-@@ -197,6 +197,7 @@ static GrPathRendering::FillType convert
+ #ifdef SK_ENABLE_DUMP_GPU
+ #include "src/utils/SkJSONWriter.h"
+ void GrGLGpu::onDumpJSON(SkJSONWriter* writer) const {
+     // We are called by the base class, which has already called beginObject(). We choose to nest
+     // all of our caps information in a named sub-object.
+diff --git a/gfx/skia/skia/src/gpu/gl/GrGLPath.cpp b/gfx/skia/skia/src/gpu/gl/GrGLPath.cpp
+--- a/gfx/skia/skia/src/gpu/gl/GrGLPath.cpp
++++ b/gfx/skia/skia/src/gpu/gl/GrGLPath.cpp
+@@ -192,16 +192,17 @@ inline bool init_path_object_for_general
+ 
+ /*
+  * For now paths only natively support winding and even odd fill types
+  */
+ static GrPathRendering::FillType convert_skpath_filltype(SkPath::FillType fill) {
      switch (fill) {
          default:
              SK_ABORT("Incomplete Switch\n");
@@ -656,11 +1112,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLPath.cpp
          case SkPath::kWinding_FillType:
          case SkPath::kInverseWinding_FillType:
              return GrPathRendering::kWinding_FillType;
-Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp
-@@ -25,6 +25,7 @@ GrTextureType GrGLTexture::TextureTypeFr
+         case SkPath::kEvenOdd_FillType:
+         case SkPath::kInverseEvenOdd_FillType:
+             return GrPathRendering::kEvenOdd_FillType;
+     }
+ }
+diff --git a/gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp b/gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp
+--- a/gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp
++++ b/gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp
+@@ -20,30 +20,33 @@ GrTextureType GrGLTexture::TextureTypeFr
+         case GR_GL_TEXTURE_2D:
+             return GrTextureType::k2D;
+         case GR_GL_TEXTURE_RECTANGLE:
+             return GrTextureType::kRectangle;
+         case GR_GL_TEXTURE_EXTERNAL:
              return GrTextureType::kExternal;
      }
      SK_ABORT("Unexpected texture target");
@@ -668,7 +1133,12 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp
  }
  
  static inline GrGLenum target_from_texture_type(GrTextureType type) {
-@@ -37,8 +38,10 @@ static inline GrGLenum target_from_textu
+     switch (type) {
+         case GrTextureType::k2D:
+             return GR_GL_TEXTURE_2D;
+         case GrTextureType::kRectangle:
+             return GR_GL_TEXTURE_RECTANGLE;
+         case GrTextureType::kExternal:
              return GR_GL_TEXTURE_EXTERNAL;
          default:
              SK_ABORT("Unexpected texture target");
@@ -679,11 +1149,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp
  }
  
  // Because this class is virtually derived from GrSurface we must explicitly call its constructor.
-Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLVertexArray.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/gl/GrGLVertexArray.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLVertexArray.cpp
-@@ -80,6 +80,7 @@ static AttribLayout attrib_layout(GrVert
+ GrGLTexture::GrGLTexture(GrGLGpu* gpu, SkBudgeted budgeted, const Desc& desc,
+                          GrMipMapsStatus mipMapsStatus)
+         : GrSurface(gpu, desc.fSize, desc.fConfig, GrProtected::kNo)
+         , INHERITED(gpu, desc.fSize, desc.fConfig, GrProtected::kNo,
+                     TextureTypeFromTarget(desc.fTarget), mipMapsStatus)
+diff --git a/gfx/skia/skia/src/gpu/gl/GrGLVertexArray.cpp b/gfx/skia/skia/src/gpu/gl/GrGLVertexArray.cpp
+--- a/gfx/skia/skia/src/gpu/gl/GrGLVertexArray.cpp
++++ b/gfx/skia/skia/src/gpu/gl/GrGLVertexArray.cpp
+@@ -75,16 +75,17 @@ static AttribLayout attrib_layout(GrVert
+         case kUint_GrVertexAttribType:
+             return {false, 1, GR_GL_UNSIGNED_INT};
+         case kUShort_norm_GrVertexAttribType:
+             return {true, 1, GR_GL_UNSIGNED_SHORT};
+         case kUShort4_norm_GrVertexAttribType:
              return {true, 4, GR_GL_UNSIGNED_SHORT};
      }
      SK_ABORT("Unknown vertex attrib type");
@@ -691,21 +1170,34 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/gl/GrGLVertexArray.cpp
  };
  
  void GrGLAttribArrayState::set(GrGLGpu* gpu,
-Index: firefox-102.0/gfx/skia/skia/src/gpu/glsl/GrGLSL.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/glsl/GrGLSL.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/glsl/GrGLSL.cpp
-@@ -98,4 +98,5 @@ const char* GrGLSLTypeString(GrSLType t)
+                                int index,
+                                const GrBuffer* vertexBuffer,
+                                GrVertexAttribType cpuType,
+                                GrSLType gpuType,
+                                GrGLsizei stride,
+diff --git a/gfx/skia/skia/src/gpu/glsl/GrGLSL.cpp b/gfx/skia/skia/src/gpu/glsl/GrGLSL.cpp
+--- a/gfx/skia/skia/src/gpu/glsl/GrGLSL.cpp
++++ b/gfx/skia/skia/src/gpu/glsl/GrGLSL.cpp
+@@ -93,9 +93,10 @@ const char* GrGLSLTypeString(GrSLType t)
+         case kUByte4_GrSLType:
+             return "ubyte4";
+         case kTexture2D_GrSLType:
+             return "texture2D";
+         case kSampler_GrSLType:
              return "sampler";
      }
      SK_ABORT("Unknown shader var type.");
 +    SkUNREACHABLE;
  }
-Index: firefox-102.0/gfx/skia/skia/src/gpu/glsl/GrGLSLVarying.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/glsl/GrGLSLVarying.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/glsl/GrGLSLVarying.cpp
-@@ -35,6 +35,7 @@ static bool use_flat_interpolation(GrGLS
+diff --git a/gfx/skia/skia/src/gpu/glsl/GrGLSLVarying.cpp b/gfx/skia/skia/src/gpu/glsl/GrGLSLVarying.cpp
+--- a/gfx/skia/skia/src/gpu/glsl/GrGLSLVarying.cpp
++++ b/gfx/skia/skia/src/gpu/glsl/GrGLSLVarying.cpp
+@@ -30,16 +30,17 @@ static bool use_flat_interpolation(GrGLS
+             SkASSERT(!shaderCaps.preferFlatInterpolation() ||
+                      shaderCaps.flatInterpolationSupport());
+             return shaderCaps.preferFlatInterpolation();
+         case Interpolation::kMustBeFlat:
+             SkASSERT(shaderCaps.flatInterpolationSupport());
              return true;
      }
      SK_ABORT("Invalid interpolation");
@@ -713,11 +1205,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/glsl/GrGLSLVarying.cpp
  }
  
  void GrGLSLVaryingHandler::addVarying(const char* name, GrGLSLVarying* varying,
-Index: firefox-102.0/gfx/skia/skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp
-@@ -51,6 +51,7 @@ static const char* input_type_name(GrGLS
+                                       Interpolation interpolation) {
+     SkASSERT(GrSLTypeIsFloatType(varying->type()) || Interpolation::kMustBeFlat == interpolation);
+     bool willUseGeoShader = fProgramBuilder->primitiveProcessor().willUseGeoShader();
+     VaryingInfo& v = fVaryings.push_back();
+ 
+diff --git a/gfx/skia/skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp b/gfx/skia/skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp
+--- a/gfx/skia/skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp
++++ b/gfx/skia/skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp
+@@ -46,26 +46,28 @@ void GrGLSLVertexBuilder::onFinalize() {
+ static const char* input_type_name(GrGLSLGeometryBuilder::InputType in) {
+     using InputType = GrGLSLGeometryBuilder::InputType;
+     switch (in) {
+         case InputType::kPoints: return "points";
+         case InputType::kLines: return "lines";
          case InputType::kTriangles: return "triangles";
      }
      SK_ABORT("invalid input type");
@@ -725,7 +1226,10 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp
  }
  
  static const char* output_type_name(GrGLSLGeometryBuilder::OutputType out) {
-@@ -61,6 +62,7 @@ static const char* output_type_name(GrGL
+     using OutputType = GrGLSLGeometryBuilder::OutputType;
+     switch (out) {
+         case OutputType::kPoints: return "points";
+         case OutputType::kLineStrip: return "line_strip";
          case OutputType::kTriangleStrip: return "triangle_strip";
      }
      SK_ABORT("invalid output type");
@@ -733,11 +1237,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp
  }
  
  void GrGLSLGeometryBuilder::configure(InputType inputType, OutputType outputType, int maxVertices,
-Index: firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm
-+++ firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm
-@@ -506,6 +506,7 @@ size_t GrMtlCaps::GetFormatIndex(MTLPixe
+                                       int numInvocations) {
+     SkASSERT(!this->isConfigured());
+     fNumInvocations = numInvocations;
+     this->addLayoutQualifier(input_type_name(inputType), kIn_InterfaceQualifier);
+     this->addLayoutQualifier(SkStringPrintf("invocations = %i", numInvocations).c_str(),
+diff --git a/gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm b/gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm
+--- a/gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm
++++ b/gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm
+@@ -501,16 +501,17 @@ size_t GrMtlCaps::GetFormatIndex(MTLPixe
+     static_assert(SK_ARRAY_COUNT(kMtlFormats) == GrMtlCaps::kNumMtlFormats,
+                   "Size of kMtlFormats array must match static value in header");
+     for (size_t i = 0; i < GrMtlCaps::kNumMtlFormats; ++i) {
+         if (kMtlFormats[i] == pixelFormat) {
+             return i;
          }
      }
      SK_ABORT("Invalid MTLPixelFormat");
@@ -745,7 +1258,17 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm
  }
  
  void GrMtlCaps::initFormatTable() {
-@@ -1011,6 +1012,7 @@ GrBackendFormat GrMtlCaps::getBackendFor
+     FormatInfo* info;
+ 
+     // Format: R8Unorm
+     {
+         info = &fFormatTable[GetFormatIndex(MTLPixelFormatR8Unorm)];
+@@ -1006,16 +1007,17 @@ GrBackendFormat GrMtlCaps::getBackendFor
+         case SkImage::kETC1_CompressionType:
+ #ifdef SK_BUILD_FOR_MAC
+             return {};
+ #else
+             return GrBackendFormat::MakeMtl(MTLPixelFormatETC2_RGB8);
  #endif
      }
      SK_ABORT("Invalid compression type");
@@ -753,11 +1276,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm
  }
  
  GrSwizzle GrMtlCaps::getTextureSwizzle(const GrBackendFormat& format, GrColorType colorType) const {
-Index: firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm
-+++ firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm
-@@ -155,6 +155,7 @@ static inline MTLVertexFormat attribute_
+     MTLPixelFormat mtlFormat = GrBackendFormatAsMTLPixelFormat(format);
+     SkASSERT(mtlFormat != MTLPixelFormatInvalid);
+     const auto& info = this->getFormatInfo(mtlFormat);
+     for (int i = 0; i < info.fColorTypeInfoCount; ++i) {
+         const auto& ctInfo = info.fColorTypeInfos[i];
+diff --git a/gfx/skia/skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm b/gfx/skia/skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm
+--- a/gfx/skia/skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm
++++ b/gfx/skia/skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm
+@@ -150,16 +150,17 @@ static inline MTLVertexFormat attribute_
+                 return MTLVertexFormatUShortNormalized;
+             } else {
+                 return MTLVertexFormatInvalid;
+             }
+         case kUShort4_norm_GrVertexAttribType:
              return MTLVertexFormatUShort4Normalized;
      }
      SK_ABORT("Unknown vertex attribute type");
@@ -765,7 +1297,17 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm
  }
  
  static MTLVertexDescriptor* create_vertex_descriptor(const GrPrimitiveProcessor& primProc) {
-@@ -276,6 +277,7 @@ static MTLBlendFactor blend_coeff_to_mtl
+     uint32_t vertexBinding = 0, instanceBinding = 0;
+ 
+     int nextBinding = GrMtlUniformHandler::kLastUniformBinding + 1;
+     if (primProc.hasVertexAttributes()) {
+         vertexBinding = nextBinding++;
+@@ -271,16 +272,17 @@ static MTLBlendFactor blend_coeff_to_mtl
+             } else {
+                 return MTLBlendFactorZero;
+             }
+         case kIllegal_GrBlendCoeff:
+             return MTLBlendFactorZero;
      }
  
      SK_ABORT("Unknown blend coefficient");
@@ -773,11 +1315,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm
  }
  
  static MTLBlendOperation blend_equation_to_mtl_blend_op(GrBlendEquation equation) {
-Index: firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlSampler.mm
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/mtl/GrMtlSampler.mm
-+++ firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlSampler.mm
-@@ -38,6 +38,7 @@ static inline MTLSamplerAddressMode wrap
+     static const MTLBlendOperation gTable[] = {
+         MTLBlendOperationAdd,              // kAdd_GrBlendEquation
+         MTLBlendOperationSubtract,         // kSubtract_GrBlendEquation
+         MTLBlendOperationReverseSubtract,  // kReverseSubtract_GrBlendEquation
+     };
+diff --git a/gfx/skia/skia/src/gpu/mtl/GrMtlSampler.mm b/gfx/skia/skia/src/gpu/mtl/GrMtlSampler.mm
+--- a/gfx/skia/skia/src/gpu/mtl/GrMtlSampler.mm
++++ b/gfx/skia/skia/src/gpu/mtl/GrMtlSampler.mm
+@@ -33,16 +33,17 @@ static inline MTLSamplerAddressMode wrap
+             } else
+ #endif
+             {
+                 SkASSERT(false);
+                 return MTLSamplerAddressModeClampToEdge;
              }
      }
      SK_ABORT("Unknown wrap mode.");
@@ -785,11 +1336,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlSampler.mm
  }
  
  GrMtlSampler* GrMtlSampler::Create(const GrMtlGpu* gpu, const GrSamplerState& samplerState) {
-Index: firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm
-+++ firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm
-@@ -90,6 +90,7 @@ static uint32_t grsltype_to_alignment_ma
+     static MTLSamplerMinMagFilter mtlMinMagFilterModes[] = {
+         MTLSamplerMinMagFilterNearest,
+         MTLSamplerMinMagFilterLinear,
+         MTLSamplerMinMagFilterLinear
+     };
+diff --git a/gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm b/gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm
+--- a/gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm
++++ b/gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm
+@@ -85,16 +85,17 @@ static uint32_t grsltype_to_alignment_ma
+         case kTexture2DSampler_GrSLType:
+         case kTextureExternalSampler_GrSLType:
+         case kTexture2DRectSampler_GrSLType:
+         case kSampler_GrSLType:
+         case kTexture2D_GrSLType:
              break;
      }
      SK_ABORT("Unexpected type");
@@ -797,7 +1357,17 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm
  }
  
  /** Returns the size in bytes taken up in Metal buffers for GrSLTypes. */
-@@ -172,6 +173,7 @@ static inline uint32_t grsltype_to_mtl_s
+ static inline uint32_t grsltype_to_mtl_size(GrSLType type) {
+     switch(type) {
+         case kByte_GrSLType:
+             return sizeof(int8_t);
+         case kByte2_GrSLType:
+@@ -167,16 +168,17 @@ static inline uint32_t grsltype_to_mtl_s
+         case kTexture2DSampler_GrSLType:
+         case kTextureExternalSampler_GrSLType:
+         case kTexture2DRectSampler_GrSLType:
+         case kSampler_GrSLType:
+         case kTexture2D_GrSLType:
              break;
      }
      SK_ABORT("Unexpected type");
@@ -805,11 +1375,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm
  }
  
  // Given the current offset into the ubo, calculate the offset for the uniform we're trying to add
-Index: firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlUtil.mm
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/mtl/GrMtlUtil.mm
-+++ firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlUtil.mm
-@@ -112,6 +112,7 @@ bool GrPixelConfigToMTLFormat(GrPixelCon
+ // taking into consideration all alignment requirements. The uniformOffset is set to the offset for
+ // the new uniform, and currentOffset is updated to be the offset to the end of the new uniform.
+ static void get_ubo_aligned_offset(uint32_t* uniformOffset,
+                                    uint32_t* currentOffset,
+                                    uint32_t* maxAlignment,
+diff --git a/gfx/skia/skia/src/gpu/mtl/GrMtlUtil.mm b/gfx/skia/skia/src/gpu/mtl/GrMtlUtil.mm
+--- a/gfx/skia/skia/src/gpu/mtl/GrMtlUtil.mm
++++ b/gfx/skia/skia/src/gpu/mtl/GrMtlUtil.mm
+@@ -107,16 +107,17 @@ bool GrPixelConfigToMTLFormat(GrPixelCon
+         case kRGBA_16161616_GrPixelConfig:
+             *format = MTLPixelFormatRGBA16Unorm;
+             return true;
+         case kRG_half_GrPixelConfig:
+             *format = MTLPixelFormatRG16Float;
              return true;
      }
      SK_ABORT("Unexpected config");
@@ -817,11 +1396,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/mtl/GrMtlUtil.mm
  }
  
  MTLTextureDescriptor* GrGetMTLTextureDescriptor(id<MTLTexture> mtlTexture) {
-Index: firefox-102.0/gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp
-@@ -610,6 +610,7 @@ static uint32_t seed_vertices(GrPrimitiv
+     MTLTextureDescriptor* texDesc = [[MTLTextureDescriptor alloc] init];
+     texDesc.textureType = mtlTexture.textureType;
+     texDesc.pixelFormat = mtlTexture.pixelFormat;
+     texDesc.width = mtlTexture.width;
+     texDesc.height = mtlTexture.height;
+diff --git a/gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp b/gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp
+--- a/gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp
++++ b/gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp
+@@ -605,16 +605,17 @@ static uint32_t seed_vertices(GrPrimitiv
+         case GrPrimitiveType::kLines:
+         case GrPrimitiveType::kLineStrip:
+             return 2;
+         case GrPrimitiveType::kPath:
+             SkASSERT(0);
              return 0;
      }
      SK_ABORT("Incomplete switch\n");
@@ -829,7 +1417,17 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp
  }
  
  static uint32_t primitive_vertices(GrPrimitiveType type) {
-@@ -627,6 +628,7 @@ static uint32_t primitive_vertices(GrPri
+     switch (type) {
+         case GrPrimitiveType::kTriangles:
+             return 3;
+         case GrPrimitiveType::kLines:
+             return 2;
+@@ -622,16 +623,17 @@ static uint32_t primitive_vertices(GrPri
+         case GrPrimitiveType::kPoints:
+         case GrPrimitiveType::kLineStrip:
+             return 1;
+         case GrPrimitiveType::kPath:
+             SkASSERT(0);
              return 0;
      }
      SK_ABORT("Incomplete switch\n");
@@ -837,21 +1435,34 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp
  }
  
  static SkPoint random_point(SkRandom* random, SkScalar min, SkScalar max) {
-Index: firefox-102.0/gfx/skia/skia/src/gpu/ops/GrFillRRectOp.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/ops/GrFillRRectOp.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/ops/GrFillRRectOp.cpp
-@@ -823,4 +823,5 @@ static bool can_use_hw_derivatives_with_
+     SkPoint p;
+     p.fX = random->nextRangeScalar(min, max);
+     p.fY = random->nextRangeScalar(min, max);
+     return p;
+ }
+diff --git a/gfx/skia/skia/src/gpu/ops/GrFillRRectOp.cpp b/gfx/skia/skia/src/gpu/ops/GrFillRRectOp.cpp
+--- a/gfx/skia/skia/src/gpu/ops/GrFillRRectOp.cpp
++++ b/gfx/skia/skia/src/gpu/ops/GrFillRRectOp.cpp
+@@ -818,9 +818,10 @@ static bool can_use_hw_derivatives_with_
+                 if (!can_use_hw_derivatives_with_coverage(devScale, rrect.radii(corner))) {
+                     return false;
+                 }
+             }
+             return true;
          }
      }
      SK_ABORT("Invalid round rect type.");
 +    SkUNREACHABLE;
  }
-Index: firefox-102.0/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp
-@@ -2283,6 +2283,7 @@ static int rrect_type_to_vert_count(RRec
+diff --git a/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp b/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp
+--- a/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp
++++ b/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp
+@@ -2278,39 +2278,42 @@ static int rrect_type_to_vert_count(RRec
+     switch (type) {
+         case kFill_RRectType:
+         case kStroke_RRectType:
+             return kVertsPerStandardRRect;
+         case kOverstroke_RRectType:
              return kVertsPerOverstrokeRRect;
      }
      SK_ABORT("Invalid type");
@@ -859,7 +1470,12 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp
  }
  
  static int rrect_type_to_index_count(RRectType type) {
-@@ -2295,6 +2296,7 @@ static int rrect_type_to_index_count(RRe
+     switch (type) {
+         case kFill_RRectType:
+             return kIndicesPerFillRRect;
+         case kStroke_RRectType:
+             return kIndicesPerStrokeRRect;
+         case kOverstroke_RRectType:
              return kIndicesPerOverstrokeRRect;
      }
      SK_ABORT("Invalid type");
@@ -867,7 +1483,11 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp
  }
  
  static const uint16_t* rrect_type_to_indices(RRectType type) {
-@@ -2306,6 +2308,7 @@ static const uint16_t* rrect_type_to_ind
+     switch (type) {
+         case kFill_RRectType:
+         case kStroke_RRectType:
+             return gStandardRRectIndices;
+         case kOverstroke_RRectType:
              return gOverstrokeRRectIndices;
      }
      SK_ABORT("Invalid type");
@@ -875,11 +1495,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp
  }
  
  ///////////////////////////////////////////////////////////////////////////////////////////////////
-Index: firefox-102.0/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp
-@@ -155,6 +155,7 @@ static int rrect_type_to_vert_count(RRec
+ 
+ // For distance computations in the interior of filled rrects we:
+ //
+ //   add a interior degenerate (point or line) rect
+ //   each vertex of that rect gets -outerRad as its radius
+diff --git a/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp b/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp
+--- a/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp
++++ b/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp
+@@ -150,39 +150,42 @@ static int rrect_type_to_vert_count(RRec
+         case kFill_RRectType:
+             return kVertsPerFillRRect;
+         case kStroke_RRectType:
+             return kVertsPerStrokeRRect;
+         case kOverstroke_RRectType:
              return kVertsPerOverstrokeRRect;
      }
      SK_ABORT("Invalid type");
@@ -887,7 +1516,12 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp
  }
  
  static int rrect_type_to_index_count(RRectType type) {
-@@ -167,6 +168,7 @@ static int rrect_type_to_index_count(RRe
+     switch (type) {
+         case kFill_RRectType:
+             return kIndicesPerFillRRect;
+         case kStroke_RRectType:
+             return kIndicesPerStrokeRRect;
+         case kOverstroke_RRectType:
              return kIndicesPerOverstrokeRRect;
      }
      SK_ABORT("Invalid type");
@@ -895,7 +1529,11 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp
  }
  
  static const uint16_t* rrect_type_to_indices(RRectType type) {
-@@ -178,6 +180,7 @@ static const uint16_t* rrect_type_to_ind
+     switch (type) {
+         case kFill_RRectType:
+         case kStroke_RRectType:
+             return gRRectIndices + 6*4;
+         case kOverstroke_RRectType:
              return gRRectIndices;
      }
      SK_ABORT("Invalid type");
@@ -903,11 +1541,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp
  }
  
  ///////////////////////////////////////////////////////////////////////////////
-Index: firefox-102.0/gfx/skia/skia/src/gpu/text/GrTextBlob.h
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/text/GrTextBlob.h
-+++ firefox-102.0/gfx/skia/skia/src/gpu/text/GrTextBlob.h
-@@ -125,6 +125,7 @@ public:
+ namespace {
+ 
+ class ShadowCircularRRectOp final : public GrMeshDrawOp {
+ public:
+     DEFINE_OP_CLASS_ID
+diff --git a/gfx/skia/skia/src/gpu/text/GrTextBlob.h b/gfx/skia/skia/src/gpu/text/GrTextBlob.h
+--- a/gfx/skia/skia/src/gpu/text/GrTextBlob.h
++++ b/gfx/skia/skia/src/gpu/text/GrTextBlob.h
+@@ -120,16 +120,17 @@ public:
+     }
+ 
+     void operator delete(void* p) {
+         ::operator delete(p);
+     }
  
      void* operator new(size_t) {
          SK_ABORT("All blobs are created by placement new.");
@@ -915,21 +1562,34 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/text/GrTextBlob.h
      }
  
      void* operator new(size_t, void* p) { return p; }
-Index: firefox-102.0/gfx/skia/skia/src/gpu/text/GrTextBlobVertexRegenerator.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/text/GrTextBlobVertexRegenerator.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/text/GrTextBlobVertexRegenerator.cpp
-@@ -284,4 +284,5 @@ bool GrTextBlob::VertexRegenerator::rege
+ 
+     bool hasDistanceField() const { return SkToBool(fTextType & kHasDistanceField_TextType); }
+     bool hasBitmap() const { return SkToBool(fTextType & kHasBitmap_TextType); }
+     void setHasDistanceField() { fTextType |= kHasDistanceField_TextType; }
+     void setHasBitmap() { fTextType |= kHasBitmap_TextType; }
+diff --git a/gfx/skia/skia/src/gpu/text/GrTextBlobVertexRegenerator.cpp b/gfx/skia/skia/src/gpu/text/GrTextBlobVertexRegenerator.cpp
+--- a/gfx/skia/skia/src/gpu/text/GrTextBlobVertexRegenerator.cpp
++++ b/gfx/skia/skia/src/gpu/text/GrTextBlobVertexRegenerator.cpp
+@@ -279,9 +279,10 @@ bool GrTextBlob::VertexRegenerator::rege
+         // set use tokens for all of the glyphs in our subrun.  This is only valid if we
+         // have a valid atlas generation
+         fFullAtlasManager->setUseTokenBulk(*fSubRun->bulkUseToken(),
+                                            fUploadTarget->tokenTracker()->nextDrawToken(),
+                                            fSubRun->maskFormat());
          return true;
      }
      SK_ABORT("Should not get here");
 +    SkUNREACHABLE;
  }
-Index: firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp
-@@ -108,6 +108,7 @@ static FormatCompatibilityClass format_c
+diff --git a/gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp b/gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp
+--- a/gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp
++++ b/gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp
+@@ -103,16 +103,17 @@ static FormatCompatibilityClass format_c
+         case VK_FORMAT_R8G8B8_UNORM:
+             return FormatCompatibilityClass::k24_3_1;
+ 
+         case VK_FORMAT_ETC2_R8G8B8_UNORM_BLOCK:
+             return FormatCompatibilityClass::kETC2_RGB_8_16;
  
          default:
              SK_ABORT("Unsupported VkFormat");
@@ -937,7 +1597,17 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp
      }
  }
  
-@@ -1656,6 +1657,7 @@ GrBackendFormat GrVkCaps::getBackendForm
+ bool GrVkCaps::canCopyImage(VkFormat dstFormat, int dstSampleCnt, bool dstHasYcbcr,
+                             VkFormat srcFormat, int srcSampleCnt, bool srcHasYcbcr) const {
+     if ((dstSampleCnt > 1 || srcSampleCnt > 1) && dstSampleCnt != srcSampleCnt) {
+         return false;
+     }
+@@ -1651,16 +1652,17 @@ GrBackendFormat GrVkCaps::onGetDefaultBa
+ 
+ GrBackendFormat GrVkCaps::getBackendFormatFromCompressionType(
+         SkImage::CompressionType compressionType) const {
+     switch (compressionType) {
+         case SkImage::kETC1_CompressionType:
              return GrBackendFormat::MakeVk(VK_FORMAT_ETC2_R8G8B8_UNORM_BLOCK);
      }
      SK_ABORT("Invalid compression type");
@@ -945,11 +1615,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp
  }
  
  GrSwizzle GrVkCaps::getTextureSwizzle(const GrBackendFormat& format, GrColorType colorType) const {
-Index: firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkMemory.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/vk/GrVkMemory.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkMemory.cpp
-@@ -28,6 +28,7 @@ static BufferUsage get_buffer_usage(GrVk
+     VkFormat vkFormat;
+     SkAssertResult(format.asVkFormat(&vkFormat));
+     const auto& info = this->getFormatInfo(vkFormat);
+     for (int i = 0; i < info.fColorTypeInfoCount; ++i) {
+         const auto& ctInfo = info.fColorTypeInfos[i];
+diff --git a/gfx/skia/skia/src/gpu/vk/GrVkMemory.cpp b/gfx/skia/skia/src/gpu/vk/GrVkMemory.cpp
+--- a/gfx/skia/skia/src/gpu/vk/GrVkMemory.cpp
++++ b/gfx/skia/skia/src/gpu/vk/GrVkMemory.cpp
+@@ -23,16 +23,17 @@ static BufferUsage get_buffer_usage(GrVk
+         case GrVkBuffer::kUniform_Type:
+             SkASSERT(dynamic);
+             return BufferUsage::kCpuWritesGpuReads;
+         case GrVkBuffer::kCopyRead_Type: // fall through
+         case GrVkBuffer::kCopyWrite_Type:
              return BufferUsage::kCpuOnly;
      }
      SK_ABORT("Invalid GrVkBuffer::Type");
@@ -957,11 +1636,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkMemory.cpp
  }
  
  bool GrVkMemory::AllocAndBindBufferMemory(const GrVkGpu* gpu,
-Index: firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp
-@@ -80,6 +80,7 @@ static inline VkFormat attrib_type_to_vk
+                                           VkBuffer buffer,
+                                           GrVkBuffer::Type type,
+                                           bool dynamic,
+                                           GrVkAlloc* alloc) {
+     GrVkMemoryAllocator* allocator = gpu->memoryAllocator();
+diff --git a/gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp b/gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp
+--- a/gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp
++++ b/gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp
+@@ -75,16 +75,17 @@ static inline VkFormat attrib_type_to_vk
+         case kUint_GrVertexAttribType:
+             return VK_FORMAT_R32_UINT;
+         case kUShort_norm_GrVertexAttribType:
+             return VK_FORMAT_R16_UNORM;
+         case kUShort4_norm_GrVertexAttribType:
              return VK_FORMAT_R16G16B16A16_UNORM;
      }
      SK_ABORT("Unknown vertex attrib type");
@@ -969,7 +1657,17 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp
  }
  
  static void setup_vertex_input_state(const GrPrimitiveProcessor& primProc,
-@@ -162,8 +163,10 @@ static VkPrimitiveTopology gr_primitive_
+                                   VkPipelineVertexInputStateCreateInfo* vertexInputInfo,
+                                   SkSTArray<2, VkVertexInputBindingDescription, true>* bindingDescs,
+                                   VkVertexInputAttributeDescription* attributeDesc) {
+     uint32_t vertexBinding = 0, instanceBinding = 0;
+ 
+@@ -157,18 +158,20 @@ static VkPrimitiveTopology gr_primitive_
+         case GrPrimitiveType::kPoints:
+             return VK_PRIMITIVE_TOPOLOGY_POINT_LIST;
+         case GrPrimitiveType::kLines:
+             return VK_PRIMITIVE_TOPOLOGY_LINE_LIST;
+         case GrPrimitiveType::kLineStrip:
              return VK_PRIMITIVE_TOPOLOGY_LINE_STRIP;
          case GrPrimitiveType::kPath:
              SK_ABORT("Unsupported primitive type");
@@ -980,11 +1678,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp
  }
  
  static void setup_input_assembly_state(GrPrimitiveType primitiveType,
-Index: firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkSampler.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/vk/GrVkSampler.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkSampler.cpp
-@@ -23,6 +23,7 @@ static inline VkSamplerAddressMode wrap_
+                                        VkPipelineInputAssemblyStateCreateInfo* inputAssemblyInfo) {
+     memset(inputAssemblyInfo, 0, sizeof(VkPipelineInputAssemblyStateCreateInfo));
+     inputAssemblyInfo->sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
+     inputAssemblyInfo->pNext = nullptr;
+     inputAssemblyInfo->flags = 0;
+diff --git a/gfx/skia/skia/src/gpu/vk/GrVkSampler.cpp b/gfx/skia/skia/src/gpu/vk/GrVkSampler.cpp
+--- a/gfx/skia/skia/src/gpu/vk/GrVkSampler.cpp
++++ b/gfx/skia/skia/src/gpu/vk/GrVkSampler.cpp
+@@ -18,16 +18,17 @@ static inline VkSamplerAddressMode wrap_
+         case GrSamplerState::WrapMode::kRepeat:
+             return VK_SAMPLER_ADDRESS_MODE_REPEAT;
+         case GrSamplerState::WrapMode::kMirrorRepeat:
+             return VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT;
+         case GrSamplerState::WrapMode::kClampToBorder:
              return VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER;
      }
      SK_ABORT("Unknown wrap mode.");
@@ -992,11 +1699,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkSampler.cpp
  }
  
  GrVkSampler* GrVkSampler::Create(GrVkGpu* gpu, const GrSamplerState& samplerState,
-Index: firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkTransferBuffer.h
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/vk/GrVkTransferBuffer.h
-+++ firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkTransferBuffer.h
-@@ -34,6 +34,7 @@ private:
+                                  const GrVkYcbcrConversionInfo& ycbcrInfo) {
+     static VkFilter vkMinFilterModes[] = {
+         VK_FILTER_NEAREST,
+         VK_FILTER_LINEAR,
+         VK_FILTER_LINEAR
+diff --git a/gfx/skia/skia/src/gpu/vk/GrVkTransferBuffer.h b/gfx/skia/skia/src/gpu/vk/GrVkTransferBuffer.h
+--- a/gfx/skia/skia/src/gpu/vk/GrVkTransferBuffer.h
++++ b/gfx/skia/skia/src/gpu/vk/GrVkTransferBuffer.h
+@@ -29,16 +29,17 @@ private:
+                           const SkString& dumpName) const override;
+ 
+     void onMap() override { this->GrGpuBuffer::fMapPtr = this->vkMap(this->getVkGpu()); }
+ 
+     void onUnmap() override { this->vkUnmap(this->getVkGpu()); }
  
      bool onUpdateData(const void* src, size_t srcSizeInBytes) override {
          SK_ABORT("Not implemented for transfer buffers.");
@@ -1004,11 +1720,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkTransferBuffer.h
      }
  
      GrVkGpu* getVkGpu() const {
-Index: firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp
-@@ -89,6 +89,7 @@ static uint32_t grsltype_to_alignment_ma
+         SkASSERT(!this->wasDestroyed());
+         return reinterpret_cast<GrVkGpu*>(this->getGpu());
+     }
+ 
+     typedef GrGpuBuffer INHERITED;
+diff --git a/gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp b/gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp
+--- a/gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp
++++ b/gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp
+@@ -84,16 +84,17 @@ static uint32_t grsltype_to_alignment_ma
+         case kTexture2DSampler_GrSLType:
+         case kTextureExternalSampler_GrSLType:
+         case kTexture2DRectSampler_GrSLType:
+         case kSampler_GrSLType:
+         case kTexture2D_GrSLType:
              break;
      }
      SK_ABORT("Unexpected type");
@@ -1016,7 +1741,17 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp
  }
  
  /** Returns the size in bytes taken up in vulkanbuffers for GrSLTypes. */
-@@ -172,6 +173,7 @@ static inline uint32_t grsltype_to_vk_si
+ static inline uint32_t grsltype_to_vk_size(GrSLType type) {
+     switch(type) {
+         case kByte_GrSLType:
+             return sizeof(int8_t);
+         case kByte2_GrSLType:
+@@ -167,16 +168,17 @@ static inline uint32_t grsltype_to_vk_si
+         case kTexture2DSampler_GrSLType:
+         case kTextureExternalSampler_GrSLType:
+         case kTexture2DRectSampler_GrSLType:
+         case kSampler_GrSLType:
+         case kTexture2D_GrSLType:
              break;
      }
      SK_ABORT("Unexpected type");
@@ -1024,11 +1759,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp
  }
  
  
-Index: firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkVaryingHandler.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/gpu/vk/GrVkVaryingHandler.cpp
-+++ firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkVaryingHandler.cpp
-@@ -74,6 +74,7 @@ static inline int grsltype_to_location_s
+ // Given the current offset into the ubo, calculate the offset for the uniform we're trying to add
+ // taking into consideration all alignment requirements. The uniformOffset is set to the offset for
+ // the new uniform, and currentOffset is updated to be the offset to the end of the new uniform.
+ static void get_ubo_aligned_offset(uint32_t* uniformOffset,
+                                    uint32_t* currentOffset,
+diff --git a/gfx/skia/skia/src/gpu/vk/GrVkVaryingHandler.cpp b/gfx/skia/skia/src/gpu/vk/GrVkVaryingHandler.cpp
+--- a/gfx/skia/skia/src/gpu/vk/GrVkVaryingHandler.cpp
++++ b/gfx/skia/skia/src/gpu/vk/GrVkVaryingHandler.cpp
+@@ -69,16 +69,17 @@ static inline int grsltype_to_location_s
+         case kByte_GrSLType:
+              return 1;
+         case kUint_GrSLType: // fall through
+         case kUShort_GrSLType:
+         case kUByte_GrSLType:
               return 1;
      }
      SK_ABORT("Unexpected type");
@@ -1036,11 +1780,20 @@ Index: firefox-102.0/gfx/skia/skia/src/gpu/vk/GrVkVaryingHandler.cpp
  }
  
  static void finalize_helper(GrVkVaryingHandler::VarArray& vars) {
-Index: firefox-102.0/gfx/skia/skia/src/pdf/SkPDFTag.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/pdf/SkPDFTag.cpp
-+++ firefox-102.0/gfx/skia/skia/src/pdf/SkPDFTag.cpp
-@@ -64,6 +64,7 @@ static const char* tag_name_from_type(Sk
+     int locationIndex = 0;
+     for (int i = 0; i < vars.count(); ++i) {
+         GrShaderVar& var = vars[i];
+         SkString location;
+         location.appendf("location = %d", locationIndex);
+diff --git a/gfx/skia/skia/src/pdf/SkPDFTag.cpp b/gfx/skia/skia/src/pdf/SkPDFTag.cpp
+--- a/gfx/skia/skia/src/pdf/SkPDFTag.cpp
++++ b/gfx/skia/skia/src/pdf/SkPDFTag.cpp
+@@ -59,16 +59,17 @@ static const char* tag_name_from_type(Sk
+         M(WT);
+         M(WP);
+         M(Figure);
+         M(Formula);
+         M(Form);
          #undef M
      }
      SK_ABORT("bad tag");
@@ -1048,11 +1801,20 @@ Index: firefox-102.0/gfx/skia/skia/src/pdf/SkPDFTag.cpp
  }
  
  struct SkPDFTagNode {
-Index: firefox-102.0/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
-+++ firefox-102.0/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
-@@ -173,18 +173,22 @@ public:
+     SkPDFTagNode* fChildren = nullptr;
+     size_t fChildCount = 0;
+     struct MarkedContentInfo {
+         unsigned fPageIndex;
+         int fMarkId;
+diff --git a/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp b/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
+--- a/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
++++ b/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
+@@ -168,28 +168,32 @@ public:
+     SkFontMgr_FCI(sk_sp<SkFontConfigInterface> fci)
+         : fFCI(std::move(fci))
+         , fCache(kMaxSize)
+     {}
+ 
  protected:
      int onCountFamilies() const override {
          SK_ABORT("Not implemented.");
@@ -1075,7 +1837,17 @@ Index: firefox-102.0/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
      }
  
      SkTypeface* onMatchFamilyStyle(const char requestedFamilyName[],
-@@ -215,10 +219,12 @@ protected:
+                                    const SkFontStyle& requestedStyle) const override
+     {
+         SkAutoMutexExclusive ama(fMutex);
+ 
+         SkFontConfigInterface::FontIdentity identity;
+@@ -210,20 +214,22 @@ protected:
+         }
+         return face.release();
+     }
+ 
+     SkTypeface* onMatchFamilyStyleCharacter(const char familyName[], const SkFontStyle&,
                                              const char* bcp47[], int bcp47Count,
                                              SkUnichar character) const override {
          SK_ABORT("Not implemented.");
@@ -1088,11 +1860,20 @@ Index: firefox-102.0/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
      }
  
      sk_sp<SkTypeface> onMakeFromData(sk_sp<SkData> data, int ttcIndex) const override {
-Index: firefox-102.0/gfx/skia/skia/src/shaders/SkImageShader.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/shaders/SkImageShader.cpp
-+++ firefox-102.0/gfx/skia/skia/src/shaders/SkImageShader.cpp
-@@ -183,6 +183,7 @@ static GrSamplerState::WrapMode tile_mod
+         return this->onMakeFromStreamIndex(SkMemoryStream::Make(std::move(data)), ttcIndex);
+     }
+ 
+     sk_sp<SkTypeface> onMakeFromStreamIndex(std::unique_ptr<SkStreamAsset> stream,
+                                             int ttcIndex) const override {
+diff --git a/gfx/skia/skia/src/shaders/SkImageShader.cpp b/gfx/skia/skia/src/shaders/SkImageShader.cpp
+--- a/gfx/skia/skia/src/shaders/SkImageShader.cpp
++++ b/gfx/skia/skia/src/shaders/SkImageShader.cpp
+@@ -178,16 +178,17 @@ static GrSamplerState::WrapMode tile_mod
+         case SkTileMode::kRepeat:
+             return GrSamplerState::WrapMode::kRepeat;
+         case SkTileMode::kMirror:
+             return GrSamplerState::WrapMode::kMirrorRepeat;
+         case SkTileMode::kDecal:
              return GrSamplerState::WrapMode::kClampToBorder;
      }
      SK_ABORT("Unknown tile mode.");
@@ -1100,11 +1881,20 @@ Index: firefox-102.0/gfx/skia/skia/src/shaders/SkImageShader.cpp
  }
  
  std::unique_ptr<GrFragmentProcessor> SkImageShader::asFragmentProcessor(
-Index: firefox-102.0/gfx/skia/skia/src/utils/SkShadowUtils.cpp
-===================================================================
---- firefox-102.0.orig/gfx/skia/skia/src/utils/SkShadowUtils.cpp
-+++ firefox-102.0/gfx/skia/skia/src/utils/SkShadowUtils.cpp
-@@ -149,6 +149,7 @@ struct SpotVerticesFactory {
+         const GrFPArgs& args) const {
+     const auto lm = this->totalLocalMatrix(args.fPreLocalMatrix, args.fPostLocalMatrix);
+     SkMatrix lmInverse;
+     if (!lm->invert(&lmInverse)) {
+         return nullptr;
+diff --git a/gfx/skia/skia/src/utils/SkShadowUtils.cpp b/gfx/skia/skia/src/utils/SkShadowUtils.cpp
+--- a/gfx/skia/skia/src/utils/SkShadowUtils.cpp
++++ b/gfx/skia/skia/src/utils/SkShadowUtils.cpp
+@@ -144,16 +144,17 @@ struct SpotVerticesFactory {
+                 // if the offsets don't match.
+                 if (fOffset == that.fOffset) {
+                     translate->set(0, 0);
+                     return true;
+                 }
                  return false;
          }
          SK_ABORT("Uninitialized occluder type?");
@@ -1112,11 +1902,20 @@ Index: firefox-102.0/gfx/skia/skia/src/utils/SkShadowUtils.cpp
      }
  
      sk_sp<SkVertices> makeVertices(const SkPath& path, const SkMatrix& ctm,
-Index: firefox-102.0/intl/icu/source/i18n/number_rounding.cpp
-===================================================================
---- firefox-102.0.orig/intl/icu/source/i18n/number_rounding.cpp
-+++ firefox-102.0/intl/icu/source/i18n/number_rounding.cpp
-@@ -283,6 +283,7 @@ FractionPrecision Precision::constructFr
+                                    SkVector* translate) const {
+         bool transparent = OccluderType::kTransparent == fOccluderType;
+         SkPoint3 zParams = SkPoint3::Make(0, 0, fOccluderHeight);
+         if (ctm.hasPerspective() || OccluderType::kOpaquePartialUmbra == fOccluderType) {
+             translate->set(0, 0);
+diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/number_rounding.cpp
+--- a/intl/icu/source/i18n/number_rounding.cpp
++++ b/intl/icu/source/i18n/number_rounding.cpp
+@@ -278,27 +278,29 @@ Precision IncrementPrecision::withMinFra
+ }
+ 
+ FractionPrecision Precision::constructFraction(int32_t minFrac, int32_t maxFrac) {
+     FractionSignificantSettings settings;
+     settings.fMinFrac = static_cast<digits_t>(minFrac);
      settings.fMaxFrac = static_cast<digits_t>(maxFrac);
      settings.fMinSig = -1;
      settings.fMaxSig = -1;
@@ -1124,7 +1923,11 @@ Index: firefox-102.0/intl/icu/source/i18n/number_rounding.cpp
      PrecisionUnion union_;
      union_.fracSig = settings;
      return {RND_FRACTION, union_};
-@@ -294,6 +295,7 @@ Precision Precision::constructSignifican
+ }
+ 
+ Precision Precision::constructSignificant(int32_t minSig, int32_t maxSig) {
+     FractionSignificantSettings settings;
+     settings.fMinFrac = -1;
      settings.fMaxFrac = -1;
      settings.fMinSig = static_cast<digits_t>(minSig);
      settings.fMaxSig = static_cast<digits_t>(maxSig);
@@ -1132,11 +1935,20 @@ Index: firefox-102.0/intl/icu/source/i18n/number_rounding.cpp
      PrecisionUnion union_;
      union_.fracSig = settings;
      return {RND_SIGNIFICANT, union_};
-Index: firefox-102.0/third_party/libwebrtc/api/adaptation/resource.cc
-===================================================================
---- firefox-102.0.orig/third_party/libwebrtc/api/adaptation/resource.cc
-+++ firefox-102.0/third_party/libwebrtc/api/adaptation/resource.cc
-@@ -9,6 +9,7 @@
+ }
+ 
+ Precision
+ Precision::constructFractionSignificant(
+         const FractionPrecision &base,
+diff --git a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libwebrtc/api/adaptation/resource.cc
+--- a/third_party/libwebrtc/api/adaptation/resource.cc
++++ b/third_party/libwebrtc/api/adaptation/resource.cc
+@@ -4,25 +4,29 @@
+  *  Use of this source code is governed by a BSD-style license
+  *  that can be found in the LICENSE file in the root of the source
+  *  tree. An additional intellectual property rights grant can be found
+  *  in the file PATENTS.  All contributing project authors may
+  *  be found in the AUTHORS file in the root of the source tree.
   */
  
  #include "api/adaptation/resource.h"
@@ -1144,7 +1956,9 @@ Index: firefox-102.0/third_party/libwebrtc/api/adaptation/resource.cc
  
  namespace webrtc {
  
-@@ -18,6 +19,9 @@ const char* ResourceUsageStateToString(R
+ const char* ResourceUsageStateToString(ResourceUsageState usage_state) {
+   switch (usage_state) {
+     case ResourceUsageState::kOveruse:
        return "kOveruse";
      case ResourceUsageState::kUnderuse:
        return "kUnderuse";
@@ -1154,11 +1968,20 @@ Index: firefox-102.0/third_party/libwebrtc/api/adaptation/resource.cc
    }
  }
  
-Index: firefox-102.0/third_party/libwebrtc/api/rtp_parameters.cc
-===================================================================
---- firefox-102.0.orig/third_party/libwebrtc/api/rtp_parameters.cc
-+++ firefox-102.0/third_party/libwebrtc/api/rtp_parameters.cc
-@@ -29,6 +29,9 @@ const char* DegradationPreferenceToStrin
+ ResourceListener::~ResourceListener() {}
+ 
+ Resource::Resource() {}
+ 
+ Resource::~Resource() {}
+diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc/api/rtp_parameters.cc
+--- a/third_party/libwebrtc/api/rtp_parameters.cc
++++ b/third_party/libwebrtc/api/rtp_parameters.cc
+@@ -24,16 +24,19 @@ const char* DegradationPreferenceToStrin
+     case DegradationPreference::DISABLED:
+       return "disabled";
+     case DegradationPreference::MAINTAIN_FRAMERATE:
+       return "maintain-framerate";
+     case DegradationPreference::MAINTAIN_RESOLUTION:
        return "maintain-resolution";
      case DegradationPreference::BALANCED:
        return "balanced";
@@ -1168,11 +1991,20 @@ Index: firefox-102.0/third_party/libwebrtc/api/rtp_parameters.cc
    }
  }
  
-Index: firefox-102.0/third_party/libwebrtc/api/video_codecs/video_codec.cc
-===================================================================
---- firefox-102.0.orig/third_party/libwebrtc/api/video_codecs/video_codec.cc
-+++ firefox-102.0/third_party/libwebrtc/api/video_codecs/video_codec.cc
-@@ -119,6 +119,9 @@ const char* CodecTypeToPayloadString(Vid
+ const double kDefaultBitratePriority = 1.0;
+ 
+ RtcpFeedback::RtcpFeedback() = default;
+ RtcpFeedback::RtcpFeedback(RtcpFeedbackType type) : type(type) {}
+ RtcpFeedback::RtcpFeedback(RtcpFeedbackType type,
+diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/libwebrtc/api/video_codecs/video_codec.cc
+--- a/third_party/libwebrtc/api/video_codecs/video_codec.cc
++++ b/third_party/libwebrtc/api/video_codecs/video_codec.cc
+@@ -114,16 +114,19 @@ const char* CodecTypeToPayloadString(Vid
+     case kVideoCodecAV1:
+       return kPayloadNameAv1;
+     case kVideoCodecH264:
+       return kPayloadNameH264;
+     case kVideoCodecMultiplex:
        return kPayloadNameMultiplex;
      case kVideoCodecGeneric:
        return kPayloadNameGeneric;
@@ -1182,11 +2014,20 @@ Index: firefox-102.0/third_party/libwebrtc/api/video_codecs/video_codec.cc
    }
  }
  
-Index: firefox-102.0/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
-===================================================================
---- firefox-102.0.orig/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
-+++ firefox-102.0/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
-@@ -161,6 +161,9 @@ class VideoEncoderSoftwareFallbackWrappe
+ VideoCodecType PayloadStringToCodecType(const std::string& name) {
+   if (absl::EqualsIgnoreCase(name, kPayloadNameVp8))
+     return kVideoCodecVP8;
+   if (absl::EqualsIgnoreCase(name, kPayloadNameVp9))
+     return kVideoCodecVP9;
+diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
+--- a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
++++ b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
+@@ -156,16 +156,19 @@ class VideoEncoderSoftwareFallbackWrappe
+             << "Trying to access encoder in uninitialized fallback wrapper.";
+         // Return main encoder to preserve previous behavior.
+         ABSL_FALLTHROUGH_INTENDED;
+       case EncoderState::kMainEncoderUsed:
+         return encoder_.get();
        case EncoderState::kFallbackDueToFailure:
        case EncoderState::kForcedFallback:
          return fallback_encoder_.get();
@@ -1196,7 +2037,17 @@ Index: firefox-102.0/third_party/libwebrtc/api/video_codecs/video_encoder_softwa
      }
    }
  
-@@ -339,6 +342,9 @@ int32_t VideoEncoderSoftwareFallbackWrap
+   // Updates encoder with last observed parameters, such as callbacks, rates,
+   // etc.
+   void PrimeEncoder(VideoEncoder* encoder) const;
+ 
+   // Settings used in the last InitEncode call and used if a dynamic fallback to
+@@ -334,16 +337,19 @@ int32_t VideoEncoderSoftwareFallbackWrap
+     case EncoderState::kUninitialized:
+       return WEBRTC_VIDEO_CODEC_ERROR;
+     case EncoderState::kMainEncoderUsed: {
+       return EncodeWithMainEncoder(frame, frame_types);
+     }
      case EncoderState::kFallbackDueToFailure:
      case EncoderState::kForcedFallback:
        return fallback_encoder_->Encode(frame, frame_types);
@@ -1206,11 +2057,20 @@ Index: firefox-102.0/third_party/libwebrtc/api/video_codecs/video_encoder_softwa
    }
  }
  int32_t VideoEncoderSoftwareFallbackWrapper::EncodeWithMainEncoder(
-Index: firefox-102.0/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
-===================================================================
---- firefox-102.0.orig/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
-+++ firefox-102.0/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
-@@ -161,6 +161,9 @@ const char* Adaptation::StatusToString(A
+     const VideoFrame& frame,
+     const std::vector<VideoFrameType>* frame_types) {
+   int32_t ret = encoder_->Encode(frame, frame_types);
+   // If requested, try a software fallback.
+   bool fallback_requested = (ret == WEBRTC_VIDEO_CODEC_FALLBACK_SOFTWARE);
+diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
+--- a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
++++ b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
+@@ -156,16 +156,19 @@ const char* Adaptation::StatusToString(A
+     case Adaptation::Status::kAwaitingPreviousAdaptation:
+       return "kAwaitingPreviousAdaptation";
+     case Status::kInsufficientInput:
+       return "kInsufficientInput";
+     case Status::kAdaptationDisabled:
        return "kAdaptationDisabled";
      case Status::kRejectedByConstraint:
        return "kRejectedByConstraint";
@@ -1220,7 +2080,17 @@ Index: firefox-102.0/third_party/libwebrtc/call/adaptation/video_stream_adapter.
    }
  }
  
-@@ -380,6 +383,9 @@ VideoStreamAdapter::RestrictionsOrState
+ Adaptation::Adaptation(int validation_id,
+                        VideoSourceRestrictions restrictions,
+                        VideoAdaptationCounters counters,
+                        VideoStreamInputState input_state)
+     : validation_id_(validation_id),
+@@ -375,16 +378,19 @@ VideoStreamAdapter::RestrictionsOrState 
+       return IncreaseResolution(input_state, current_restrictions_);
+     }
+     case DegradationPreference::MAINTAIN_RESOLUTION: {
+       // Scale up framerate.
+       return IncreaseFramerate(input_state, current_restrictions_);
      }
      case DegradationPreference::DISABLED:
        return Adaptation::Status::kAdaptationDisabled;
@@ -1230,7 +2100,17 @@ Index: firefox-102.0/third_party/libwebrtc/call/adaptation/video_stream_adapter.
    }
  }
  
-@@ -459,6 +465,9 @@ VideoStreamAdapter::GetAdaptationDownSte
+ Adaptation VideoStreamAdapter::GetAdaptationDown() {
+   RTC_DCHECK_RUN_ON(&sequence_checker_);
+   VideoStreamInputState input_state = input_state_provider_->InputState();
+   ++adaptation_validation_id_;
+   RestrictionsOrState restrictions_or_state =
+@@ -454,16 +460,19 @@ VideoStreamAdapter::GetAdaptationDownSte
+     case DegradationPreference::MAINTAIN_FRAMERATE: {
+       return DecreaseResolution(input_state, current_restrictions);
+     }
+     case DegradationPreference::MAINTAIN_RESOLUTION: {
+       return DecreaseFramerate(input_state, current_restrictions);
      }
      case DegradationPreference::DISABLED:
        return Adaptation::Status::kAdaptationDisabled;
@@ -1240,7 +2120,17 @@ Index: firefox-102.0/third_party/libwebrtc/call/adaptation/video_stream_adapter.
    }
  }
  
-@@ -599,6 +608,8 @@ Adaptation VideoStreamAdapter::GetAdaptD
+ VideoStreamAdapter::RestrictionsOrState VideoStreamAdapter::DecreaseResolution(
+     const VideoStreamInputState& input_state,
+     const RestrictionsWithCounters& current_restrictions) {
+   int target_pixels =
+       GetLowerResolutionThan(input_state.frame_size_pixels().value());
+@@ -594,16 +603,18 @@ Adaptation VideoStreamAdapter::GetAdaptD
+     case DegradationPreference::MAINTAIN_FRAMERATE:
+       return GetAdaptationDown();
+     case DegradationPreference::BALANCED: {
+       return RestrictionsOrStateToAdaptation(
+           GetAdaptDownResolutionStepForBalanced(input_state), input_state);
      }
      default:
        RTC_NOTREACHED();
@@ -1249,11 +2139,20 @@ Index: firefox-102.0/third_party/libwebrtc/call/adaptation/video_stream_adapter.
    }
  }
  
-Index: firefox-102.0/third_party/libwebrtc/call/simulated_network.cc
-===================================================================
---- firefox-102.0.orig/third_party/libwebrtc/call/simulated_network.cc
-+++ firefox-102.0/third_party/libwebrtc/call/simulated_network.cc
-@@ -77,6 +77,8 @@ bool CoDelSimulation::DropDequeuedPacket
+ VideoStreamAdapter::RestrictionsOrState
+ VideoStreamAdapter::GetAdaptDownResolutionStepForBalanced(
+     const VideoStreamInputState& input_state) const {
+   // Adapt twice if the first adaptation did not decrease resolution.
+   auto first_step = GetAdaptationDownStep(input_state, current_restrictions_);
+diff --git a/third_party/libwebrtc/call/simulated_network.cc b/third_party/libwebrtc/call/simulated_network.cc
+--- a/third_party/libwebrtc/call/simulated_network.cc
++++ b/third_party/libwebrtc/call/simulated_network.cc
+@@ -72,16 +72,18 @@ bool CoDelSimulation::DropDequeuedPacket
+         if (queue_size - packet_size < kMaxPacketSize)
+           state_ = kPending;
+         last_drop_at_ = next_drop_at;
+         ++drop_count_;
+         return true;
        }
        return false;
    }
@@ -1262,11 +2161,20 @@ Index: firefox-102.0/third_party/libwebrtc/call/simulated_network.cc
  }
  
  SimulatedNetwork::SimulatedNetwork(Config config, uint64_t random_seed)
-Index: firefox-102.0/third_party/libwebrtc/call/video_send_stream.cc
-===================================================================
---- firefox-102.0.orig/third_party/libwebrtc/call/video_send_stream.cc
-+++ firefox-102.0/third_party/libwebrtc/call/video_send_stream.cc
-@@ -27,6 +27,9 @@ const char* StreamTypeToString(VideoSend
+     : random_(random_seed), bursting_(false) {
+   SetConfig(config);
+ }
+ 
+ SimulatedNetwork::~SimulatedNetwork() = default;
+diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwebrtc/call/video_send_stream.cc
+--- a/third_party/libwebrtc/call/video_send_stream.cc
++++ b/third_party/libwebrtc/call/video_send_stream.cc
+@@ -22,16 +22,19 @@ namespace {
+ const char* StreamTypeToString(VideoSendStream::StreamStats::StreamType type) {
+   switch (type) {
+     case VideoSendStream::StreamStats::StreamType::kMedia:
+       return "media";
+     case VideoSendStream::StreamStats::StreamType::kRtx:
        return "rtx";
      case VideoSendStream::StreamStats::StreamType::kFlexfec:
        return "flexfec";
@@ -1276,11 +2184,20 @@ Index: firefox-102.0/third_party/libwebrtc/call/video_send_stream.cc
    }
  }
  
-Index: firefox-102.0/third_party/libwebrtc/modules/audio_coding/neteq/decision_logic.cc
-===================================================================
---- firefox-102.0.orig/third_party/libwebrtc/modules/audio_coding/neteq/decision_logic.cc
-+++ firefox-102.0/third_party/libwebrtc/modules/audio_coding/neteq/decision_logic.cc
-@@ -352,7 +352,7 @@ NetEq::Operation DecisionLogic::FuturePa
+ }  // namespace
+ 
+ VideoSendStream::StreamStats::StreamStats() = default;
+ VideoSendStream::StreamStats::~StreamStats() = default;
+ 
+diff --git a/third_party/libwebrtc/modules/audio_coding/neteq/decision_logic.cc b/third_party/libwebrtc/modules/audio_coding/neteq/decision_logic.cc
+--- a/third_party/libwebrtc/modules/audio_coding/neteq/decision_logic.cc
++++ b/third_party/libwebrtc/modules/audio_coding/neteq/decision_logic.cc
+@@ -347,17 +347,17 @@ NetEq::Operation DecisionLogic::FuturePa
+     return NetEq::Operation::kNormal;
+   }
+ 
+   // If previous was comfort noise, then no merge is needed.
+   if (prev_mode == NetEq::Mode::kRfc3389Cng ||
        prev_mode == NetEq::Mode::kCodecInternalCng) {
      size_t cur_size_samples =
          estimate_dtx_delay_
@@ -1289,11 +2206,20 @@ Index: firefox-102.0/third_party/libwebrtc/modules/audio_coding/neteq/decision_l
              : num_packets_in_packet_buffer * decoder_frame_length;
      // Target level is in number of packets in Q8.
      const size_t target_level_samples =
-Index: firefox-102.0/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-===================================================================
---- firefox-102.0.orig/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-+++ firefox-102.0/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-@@ -113,6 +113,9 @@ GainControl::Mode Agc1ConfigModeToInterf
+         (delay_manager_->TargetLevel() * packet_length_samples_) >> 8;
+     const bool generated_enough_noise =
+         static_cast<uint32_t>(generated_noise_samples + target_timestamp) >=
+         available_timestamp;
+ 
+diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
+--- a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
++++ b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
+@@ -108,16 +108,19 @@ GainControl::Mode Agc1ConfigModeToInterf
+   using Agc1Config = AudioProcessing::Config::GainController1;
+   switch (mode) {
+     case Agc1Config::kAdaptiveAnalog:
+       return GainControl::kAdaptiveAnalog;
+     case Agc1Config::kAdaptiveDigital:
        return GainControl::kAdaptiveDigital;
      case Agc1Config::kFixedDigital:
        return GainControl::kFixedDigital;
@@ -1303,7 +2229,17 @@ Index: firefox-102.0/third_party/libwebrtc/modules/audio_processing/audio_proces
    }
  }
  
-@@ -1852,6 +1855,7 @@ void AudioProcessingImpl::InitializeNois
+ // Maximum lengths that frame of samples being passed from the render side to
+ // the capture side can have (does not apply to AEC3).
+ static const size_t kMaxAllowedValuesOfSamplesPerBand = 160;
+ static const size_t kMaxAllowedValuesOfSamplesPerFrame = 480;
+ 
+@@ -1847,16 +1850,17 @@ void AudioProcessingImpl::InitializeNois
+             case NoiseSuppresionConfig::kModerate:
+               return NsConfig::SuppressionLevel::k12dB;
+             case NoiseSuppresionConfig::kHigh:
+               return NsConfig::SuppressionLevel::k18dB;
+             case NoiseSuppresionConfig::kVeryHigh:
                return NsConfig::SuppressionLevel::k21dB;
              default:
                RTC_NOTREACHED();
@@ -1311,11 +2247,20 @@ Index: firefox-102.0/third_party/libwebrtc/modules/audio_processing/audio_proces
            }
          };
  
-Index: firefox-102.0/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
-===================================================================
---- firefox-102.0.orig/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
-+++ firefox-102.0/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
-@@ -27,6 +27,9 @@ std::string NoiseSuppressionLevelToStrin
+     NsConfig cfg;
+     cfg.target_level = map_level(config_.noise_suppression.level);
+     submodules_.noise_suppressor = std::make_unique<NoiseSuppressor>(
+         cfg, proc_sample_rate_hz(), num_proc_channels());
+   }
+diff --git a/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc b/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
+--- a/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
++++ b/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
+@@ -22,38 +22,47 @@ std::string NoiseSuppressionLevelToStrin
+     case AudioProcessing::Config::NoiseSuppression::Level::kLow:
+       return "Low";
+     case AudioProcessing::Config::NoiseSuppression::Level::kModerate:
+       return "Moderate";
+     case AudioProcessing::Config::NoiseSuppression::Level::kHigh:
        return "High";
      case AudioProcessing::Config::NoiseSuppression::Level::kVeryHigh:
        return "VeryHigh";
@@ -1325,7 +2270,12 @@ Index: firefox-102.0/third_party/libwebrtc/modules/audio_processing/include/audi
    }
  }
  
-@@ -39,6 +42,9 @@ std::string GainController1ModeToString(
+ std::string GainController1ModeToString(
+     const AudioProcessing::Config::GainController1::Mode& mode) {
+   switch (mode) {
+     case AudioProcessing::Config::GainController1::Mode::kAdaptiveAnalog:
+       return "AdaptiveAnalog";
+     case AudioProcessing::Config::GainController1::Mode::kAdaptiveDigital:
        return "AdaptiveDigital";
      case AudioProcessing::Config::GainController1::Mode::kFixedDigital:
        return "FixedDigital";
@@ -1335,7 +2285,10 @@ Index: firefox-102.0/third_party/libwebrtc/modules/audio_processing/include/audi
    }
  }
  
-@@ -49,6 +55,9 @@ std::string GainController2LevelEstimato
+ std::string GainController2LevelEstimatorToString(
+     const AudioProcessing::Config::GainController2::LevelEstimator& level) {
+   switch (level) {
+     case AudioProcessing::Config::GainController2::LevelEstimator::kRms:
        return "Rms";
      case AudioProcessing::Config::GainController2::LevelEstimator::kPeak:
        return "Peak";
@@ -1345,11 +2298,20 @@ Index: firefox-102.0/third_party/libwebrtc/modules/audio_processing/include/audi
    }
  }
  
-Index: firefox-102.0/third_party/libwebrtc/modules/pacing/pacing_controller.cc
-===================================================================
---- firefox-102.0.orig/third_party/libwebrtc/modules/pacing/pacing_controller.cc
-+++ firefox-102.0/third_party/libwebrtc/modules/pacing/pacing_controller.cc
-@@ -83,6 +83,9 @@ int GetPriorityForType(RtpPacketMediaTyp
+ int GetDefaultMaxInternalRate() {
+ #ifdef WEBRTC_ARCH_ARM_FAMILY
+   return 32000;
+ #else
+   return 48000;
+diff --git a/third_party/libwebrtc/modules/pacing/pacing_controller.cc b/third_party/libwebrtc/modules/pacing/pacing_controller.cc
+--- a/third_party/libwebrtc/modules/pacing/pacing_controller.cc
++++ b/third_party/libwebrtc/modules/pacing/pacing_controller.cc
+@@ -78,16 +78,19 @@ int GetPriorityForType(RtpPacketMediaTyp
+       // Video has "normal" priority, in the old speak.
+       // Send redundancy concurrently to video. If it is delayed it might have a
+       // lower chance of being useful.
+       return kFirstPriority + 3;
+     case RtpPacketMediaType::kPadding:
        // Packets that are in themselves likely useless, only sent to keep the
        // BWE high.
        return kFirstPriority + 4;
@@ -1359,11 +2321,20 @@ Index: firefox-102.0/third_party/libwebrtc/modules/pacing/pacing_controller.cc
    }
  }
  
-Index: firefox-102.0/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
-===================================================================
---- firefox-102.0.orig/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
-+++ firefox-102.0/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
-@@ -36,6 +36,9 @@ std::unique_ptr<VideoRtpDepacketizer> Cr
+ }  // namespace
+ 
+ const TimeDelta PacingController::kMaxExpectedQueueLength =
+     TimeDelta::Millis(2000);
+ const float PacingController::kDefaultPaceMultiplier = 2.5f;
+diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
+@@ -31,12 +31,15 @@ std::unique_ptr<VideoRtpDepacketizer> Cr
+       return std::make_unique<VideoRtpDepacketizerVp8>();
+     case kVideoCodecVP9:
+       return std::make_unique<VideoRtpDepacketizerVp9>();
+     case kVideoCodecAV1:
+       return std::make_unique<VideoRtpDepacketizerAv1>();
      case kVideoCodecGeneric:
      case kVideoCodecMultiplex:
        return std::make_unique<VideoRtpDepacketizerGeneric>();
@@ -1373,11 +2344,16 @@ Index: firefox-102.0/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_
    }
  }
  
-Index: firefox-102.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-===================================================================
---- firefox-102.0.orig/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-+++ firefox-102.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-@@ -130,6 +130,9 @@ bool IsNonVolatile(RTPExtensionType type
+ }  // namespace webrtc
+diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
+@@ -125,16 +125,19 @@ bool IsNonVolatile(RTPExtensionType type
+     case kRtpExtensionNone:
+     case kRtpExtensionNumberOfExtensions:
+       RTC_NOTREACHED();
+       return false;
+     case kRtpExtensionCsrcAudioLevel:
        // TODO: Mozilla implement for CsrcAudioLevel
        RTC_CHECK(false);
        return false;
@@ -1387,11 +2363,20 @@ Index: firefox-102.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
    }
  }
  
-Index: firefox-102.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
-===================================================================
---- firefox-102.0.orig/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
-+++ firefox-102.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
-@@ -45,6 +45,9 @@ const char* FrameTypeToString(AudioFrame
+ bool HasBweExtension(const RtpHeaderExtensionMap& extensions_map) {
+   return extensions_map.IsRegistered(kRtpExtensionTransportSequenceNumber) ||
+          extensions_map.IsRegistered(kRtpExtensionTransportSequenceNumber02) ||
+          extensions_map.IsRegistered(kRtpExtensionAbsoluteSendTime) ||
+          extensions_map.IsRegistered(kRtpExtensionTransmissionTimeOffset);
+diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
+@@ -40,16 +40,19 @@ namespace {
+ const char* FrameTypeToString(AudioFrameType frame_type) {
+   switch (frame_type) {
+     case AudioFrameType::kEmptyFrame:
+       return "empty";
+     case AudioFrameType::kAudioFrameSpeech:
        return "audio_speech";
      case AudioFrameType::kAudioFrameCN:
        return "audio_cn";
@@ -1401,11 +2386,20 @@ Index: firefox-102.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_au
    }
  }
  #endif
-Index: firefox-102.0/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
-===================================================================
---- firefox-102.0.orig/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
-+++ firefox-102.0/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
-@@ -28,6 +28,9 @@ TemporalLayersChecker::CreateTemporalLay
+ 
+ constexpr char kIncludeCaptureClockOffset[] =
+     "WebRTC-IncludeCaptureClockOffset";
+ 
+ }  // namespace
+diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
+--- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
++++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
+@@ -23,16 +23,19 @@ TemporalLayersChecker::CreateTemporalLay
+                                                    int num_temporal_layers) {
+   switch (type) {
+     case Vp8TemporalLayersType::kFixedPattern:
+       return std::make_unique<DefaultTemporalLayersChecker>(
+           num_temporal_layers);
      case Vp8TemporalLayersType::kBitrateDynamic:
        // Conference mode temporal layering for screen content in base stream.
        return std::make_unique<TemporalLayersChecker>(num_temporal_layers);
@@ -1415,11 +2409,20 @@ Index: firefox-102.0/third_party/libwebrtc/modules/video_coding/codecs/vp8/tempo
    }
  }
  
-Index: firefox-102.0/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-===================================================================
---- firefox-102.0.orig/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-+++ firefox-102.0/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-@@ -54,6 +54,9 @@ std::string ToString(VideoAdaptationReas
+ TemporalLayersChecker::TemporalLayersChecker(int num_temporal_layers)
+     : num_temporal_layers_(num_temporal_layers),
+       sequence_number_(0),
+       last_sync_sequence_number_(0),
+       last_tl0_sequence_number_(0) {}
+diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
+--- a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
++++ b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
+@@ -49,16 +49,19 @@ bool IsFramerateScalingEnabled(Degradati
+ }
+ 
+ std::string ToString(VideoAdaptationReason reason) {
+   switch (reason) {
+     case VideoAdaptationReason::kQuality:
        return "quality";
      case VideoAdaptationReason::kCpu:
        return "cpu";
@@ -1429,11 +2432,20 @@ Index: firefox-102.0/third_party/libwebrtc/video/adaptation/video_stream_encoder
    }
  }
  
-Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp
-===================================================================
---- firefox-102.0.orig/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp
-+++ firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp
-@@ -2651,6 +2651,7 @@ get_type_name_for_precision_qualifier(co
+ }  // namespace
+ 
+ class VideoStreamEncoderResourceManager::InitialFrameDropper {
+  public:
+   explicit InitialFrameDropper(
+diff --git a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp
+--- a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp
++++ b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp
+@@ -2646,16 +2646,17 @@ get_type_name_for_precision_qualifier(co
+          unreachable("Unsupported sampler/image type");
+       } /* sampler/image type */
+       break;
+    } /* GLSL_TYPE_SAMPLER/GLSL_TYPE_IMAGE */
+    break;
     default:
        unreachable("Unsupported type");
     } /* base type */
@@ -1441,11 +2453,20 @@ Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/a
  }
  
  static unsigned
-Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ir.cpp
-===================================================================
---- firefox-102.0.orig/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ir.cpp
-+++ firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ir.cpp
-@@ -624,6 +624,7 @@ ir_expression::get_num_operands(ir_expre
+ select_gles_precision(unsigned qual_precision,
+                       const glsl_type *type,
+                       struct _mesa_glsl_parse_state *state, YYLTYPE *loc)
+ {
+    /* Precision qualifiers do not have any meaning in Desktop GLSL.
+diff --git a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ir.cpp b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ir.cpp
+--- a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ir.cpp
++++ b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ir.cpp
+@@ -619,16 +619,17 @@ ir_expression::get_num_operands(ir_expre
+ 
+    if (op <= ir_last_triop)
+       return 3;
+ 
+    if (op <= ir_last_quadop)
        return 4;
  
     unreachable("Could not calculate number of operands");
@@ -1453,11 +2474,20 @@ Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/i
  }
  
  #include "ir_expression_operation_strings.h"
-Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/loop_analysis.cpp
-===================================================================
---- firefox-102.0.orig/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/loop_analysis.cpp
-+++ firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/loop_analysis.cpp
-@@ -239,6 +239,7 @@ incremented_before_terminator(ir_loop *l
+ 
+ const char*
+ depth_layout_string(ir_depth_layout layout)
+ {
+    switch(layout) {
+diff --git a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/loop_analysis.cpp b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/loop_analysis.cpp
+--- a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/loop_analysis.cpp
++++ b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/loop_analysis.cpp
+@@ -234,16 +234,17 @@ incremented_before_terminator(ir_loop *l
+       }
+ 
+       default:
+          break;
+       }
     }
  
     unreachable("Unable to find induction variable");
@@ -1465,11 +2495,20 @@ Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/l
  }
  
  /**
-Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/opt_vectorize.cpp
-===================================================================
---- firefox-102.0.orig/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/opt_vectorize.cpp
-+++ firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/opt_vectorize.cpp
-@@ -229,6 +229,7 @@ write_mask_to_swizzle(unsigned write_mas
+  * Record the fact that the given loop variable was referenced inside the loop.
+  *
+  * \arg in_assignee is true if the reference was on the LHS of an assignment.
+  *
+  * \arg in_conditional_code_or_nested_loop is true if the reference occurred
+diff --git a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/opt_vectorize.cpp b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/opt_vectorize.cpp
+--- a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/opt_vectorize.cpp
++++ b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/opt_vectorize.cpp
+@@ -224,16 +224,17 @@ write_mask_to_swizzle(unsigned write_mas
+ {
+    switch (write_mask) {
+    case WRITEMASK_X: return SWIZZLE_X;
+    case WRITEMASK_Y: return SWIZZLE_Y;
+    case WRITEMASK_Z: return SWIZZLE_Z;
     case WRITEMASK_W: return SWIZZLE_W;
     }
     unreachable("not reached");
@@ -1477,11 +2516,20 @@ Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/o
  }
  
  /**
-Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_types.cpp
-===================================================================
---- firefox-102.0.orig/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_types.cpp
-+++ firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_types.cpp
-@@ -460,6 +460,7 @@ const glsl_type *glsl_type::get_bare_typ
+  * Returns whether a single-channeled write mask matches a swizzle.
+  */
+ static bool
+ write_mask_matches_swizzle(unsigned write_mask,
+                            const ir_swizzle *swz)
+diff --git a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_types.cpp b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_types.cpp
+--- a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_types.cpp
++++ b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_types.cpp
+@@ -455,16 +455,17 @@ const glsl_type *glsl_type::get_bare_typ
+    case GLSL_TYPE_VOID:
+    case GLSL_TYPE_SUBROUTINE:
+    case GLSL_TYPE_FUNCTION:
+    case GLSL_TYPE_ERROR:
+       return this;
     }
  
     unreachable("Invalid base type");
@@ -1489,7 +2537,17 @@ Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_t
  }
  
  const glsl_type *glsl_type::get_float16_type() const
-@@ -2016,6 +2017,7 @@ glsl_type::get_explicit_std140_type(bool
+ {
+    assert(this->base_type == GLSL_TYPE_FLOAT);
+ 
+    return get_instance(GLSL_TYPE_FLOAT16,
+                        this->vector_elements,
+@@ -2011,16 +2012,17 @@ glsl_type::get_explicit_std140_type(bool
+                                        (enum glsl_interface_packing)this->interface_packing,
+                                        this->interface_row_major,
+                                        this->name);
+ 
+       delete[] fields;
        return type;
     } else {
        unreachable("Invalid type for UBO or SSBO");
@@ -1497,7 +2555,17 @@ Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_t
     }
  }
  
-@@ -2374,6 +2376,7 @@ glsl_type::get_explicit_std430_type(bool
+ unsigned
+ glsl_type::std430_base_alignment(bool row_major) const
+ {
+ 
+    unsigned N = is_64bit() ? 8 : 4;
+@@ -2369,16 +2371,17 @@ glsl_type::get_explicit_std430_type(bool
+                                        (enum glsl_interface_packing)this->interface_packing,
+                                        this->interface_row_major,
+                                        this->name);
+ 
+       delete[] fields;
        return type;
     } else {
        unreachable("Invalid type for SSBO");
@@ -1505,7 +2573,17 @@ Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_t
     }
  }
  
-@@ -2448,6 +2451,7 @@ glsl_type::get_explicit_type_for_size_al
+ const glsl_type *
+ glsl_type::get_explicit_interface_type(bool supports_std430) const
+ {
+    enum glsl_interface_packing packing =
+       this->get_internal_ifc_packing(supports_std430);
+@@ -2443,16 +2446,17 @@ glsl_type::get_explicit_type_for_size_al
+       unsigned stride = align(col_size, col_align);
+ 
+       *size = this->matrix_columns * stride;
+       *alignment = col_align;
+       return glsl_type::get_instance(this->base_type, this->vector_elements,
                                       this->matrix_columns, stride, false);
     } else {
        unreachable("Unhandled type.");
@@ -1513,7 +2591,17 @@ Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_t
     }
  }
  
-@@ -2948,6 +2952,7 @@ glsl_get_sampler_dim_coordinate_componen
+ unsigned
+ glsl_type::count_vec4_slots(bool is_gl_vertex_input, bool is_bindless) const
+ {
+    /* From page 31 (page 37 of the PDF) of the GLSL 1.50 spec:
+     *
+@@ -2943,12 +2947,13 @@ glsl_get_sampler_dim_coordinate_componen
+    case GLSL_SAMPLER_DIM_SUBPASS:
+    case GLSL_SAMPLER_DIM_SUBPASS_MS:
+       return 2;
+    case GLSL_SAMPLER_DIM_3D:
+    case GLSL_SAMPLER_DIM_CUBE:
        return 3;
     default:
        unreachable("Unknown sampler dim");
@@ -1521,11 +2609,16 @@ Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_t
     }
  }
  
-Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shaderobj.h
-===================================================================
---- firefox-102.0.orig/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shaderobj.h
-+++ firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shaderobj.h
-@@ -185,6 +185,7 @@ _mesa_shader_stage_from_subroutine_unifo
+ }
+diff --git a/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shaderobj.h b/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shaderobj.h
+--- a/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shaderobj.h
++++ b/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shaderobj.h
+@@ -180,16 +180,17 @@ static inline gl_shader_stage
+    case GL_COMPUTE_SUBROUTINE_UNIFORM:
+       return MESA_SHADER_COMPUTE;
+    case GL_TESS_CONTROL_SUBROUTINE_UNIFORM:
+       return MESA_SHADER_TESS_CTRL;
+    case GL_TESS_EVALUATION_SUBROUTINE_UNIFORM:
        return MESA_SHADER_TESS_EVAL;
     }
     unreachable("not reached");
@@ -1533,7 +2626,17 @@ Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shade
  }
  
  static inline gl_shader_stage
-@@ -205,6 +206,7 @@ _mesa_shader_stage_from_subroutine(GLenu
+ _mesa_shader_stage_from_subroutine(GLenum subroutine)
+ {
+    switch (subroutine) {
+    case GL_VERTEX_SUBROUTINE:
+       return MESA_SHADER_VERTEX;
+@@ -200,16 +201,17 @@ static inline gl_shader_stage
+    case GL_COMPUTE_SUBROUTINE:
+       return MESA_SHADER_COMPUTE;
+    case GL_TESS_CONTROL_SUBROUTINE:
+       return MESA_SHADER_TESS_CTRL;
+    case GL_TESS_EVALUATION_SUBROUTINE:
        return MESA_SHADER_TESS_EVAL;
     }
     unreachable("not reached");
@@ -1541,7 +2644,17 @@ Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shade
  }
  
  static inline GLenum
-@@ -230,6 +232,7 @@ _mesa_shader_stage_to_subroutine(gl_shad
+ _mesa_shader_stage_to_subroutine(gl_shader_stage stage)
+ {
+    switch (stage) {
+    case MESA_SHADER_VERTEX:
+       return GL_VERTEX_SUBROUTINE;
+@@ -225,16 +227,17 @@ static inline GLenum
+       return GL_TESS_EVALUATION_SUBROUTINE;
+    case MESA_SHADER_NONE:
+       break;
+    case MESA_SHADER_KERNEL:
+       unreachable("not reached");
        break;
     }
     unreachable("not reached");
@@ -1549,7 +2662,17 @@ Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shade
  }
  
  static inline GLenum
-@@ -253,6 +256,7 @@ _mesa_shader_stage_to_subroutine_uniform
+ _mesa_shader_stage_to_subroutine_uniform(gl_shader_stage stage)
+ {
+    switch (stage) {
+    case MESA_SHADER_VERTEX:
+       return GL_VERTEX_SUBROUTINE_UNIFORM;
+@@ -248,16 +251,17 @@ static inline GLenum
+       return GL_TESS_CONTROL_SUBROUTINE_UNIFORM;
+    case MESA_SHADER_TESS_EVAL:
+       return GL_TESS_EVALUATION_SUBROUTINE_UNIFORM;
+    case MESA_SHADER_NONE:
+    case MESA_SHADER_KERNEL:
        break;
     }
     unreachable("not reached");
@@ -1557,3 +2680,8 @@ Index: firefox-102.0/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shade
  }
  
  extern bool
+ _mesa_validate_pipeline_io(struct gl_pipeline_object *);
+ 
+ #ifdef __cplusplus
+ }
+ #endif
