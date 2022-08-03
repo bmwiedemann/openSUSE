@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xdg-utils
-Version:        1.1.3+20201113
+Version:        1.1.3+20210805
 Release:        0
 Summary:        Utilities to uniformly interface desktop environments
 License:        MIT

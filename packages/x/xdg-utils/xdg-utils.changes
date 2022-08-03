@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 26 07:16:43 UTC 2022 - jslaby@suse.cz
+
+- Update to version 1.1.3+20210805:
+  * xdg-email fails on kde with desktop files #187
+- switch to obs_scm
+
+-------------------------------------------------------------------
 Mon Aug 30 08:54:16 UTC 2021 - jslaby@suse.cz
 
 - Update to version 1.1.3+20201113:
