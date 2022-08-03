@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  2 07:50:11 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.30.2
+  * Only use EWOULDBLOCK if the macro is defined.
+
+-------------------------------------------------------------------
 Wed Jul 13 06:33:54 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.30.1
