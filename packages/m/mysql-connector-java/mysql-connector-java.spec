@@ -17,7 +17,7 @@
 
 
 Name:           mysql-connector-java
-Version:        8.0.29
+Version:        8.0.30
 Release:        0
 Summary:        Official JDBC Driver for MySQL
 License:        GPL-2.0-or-later

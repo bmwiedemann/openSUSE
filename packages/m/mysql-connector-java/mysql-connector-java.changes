@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Aug  1 10:44:23 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 8.0.30:
+  Functionality Added or Changed
+    * X DevAPI: For document-modifying methods that are chained 
+      after modify() and take a document path expression as one of
+      its arguments (that is, set(), unset(), arrayInsert(),
+      arrayAppend()), Connector/J now throws an error when the
+      document path is empty or is a null string.
+  Bugs Fixed
+    * Historically, MySQL Server has used utf8 as an alias for 
+      utf8mb3. Since release 8.0.29, utf8mb3 has become a recognized
+      (though deprecated) character set on its own for MySQL Server
+      and to make things consistent, in release 8.0.30, any 
+      collations prefixed with utf8_ are now prefixed with utf8mb3_ 
+      instead. To go with that change, Connector/J has updated its
+      character set and collation mapping accordingly in this
+      release, and users are encouraged to update to Connector/J 
+      8.0.30 to avoid potential issues when working with MySQL 
+      Server 8.0.30 or later.
+    * A few links in the CONTRIBUTING.md file in the distribution
+      packages were broken. They have now been fixed or removed.
+    * The description for the connection property
+      rewriteBatchedStatements has been corrected, removing the
+      limitation that server-sided prepared statements could not
+      take advantage of the rewrite option.
+    * A spelling error has been fixed in the source file for the
+      PropertyDefinitions class. Thanks to Weijie Wu for 
+      contributing the fix.
+    * DatabaseMetaData.getTypeInfo always returned false for
+      AUTO_INCREMENT for all data types. With this fix, Connector/J
+      returns the correct value for each data type. Also, the
+      missing types DOUBLE UNSIGNED and DOUBLE PRECISION UNSIGNED
+      have been added to the ResultSet.
+    * Contrary to the the MySQL requirement for comments, 
+      Connector/J did not require a whitespace (or a control
+      character such as a newline) after "--" to mark the beginning
+      of a comment within a SQL statement. This fix aligns
+      Connector/J with the MySQL requirement.  
+
+-------------------------------------------------------------------
 Thu Apr 28 09:47:16 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to 8.0.29: 
