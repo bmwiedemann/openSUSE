@@ -31,10 +31,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-jupyter-core%{psuffix}
-Version:        4.9.2
+Version:        4.11.1
 Release:        0
 Summary:        Base package on which Jupyter projects rely
 License:        BSD-3-Clause
@@ -42,12 +40,11 @@ URL:            https://github.com/jupyter/jupyter_core
 Source0:        https://files.pythonhosted.org/packages/source/j/jupyter_core/jupyter_core-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE -- use_rpms_paths.patch -- change paths so they are easy to replace at build time
 Patch0:         use_rpms_paths.patch
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module traitlets}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
-BuildRequires:  jupyter-jupyter_core-filesystem
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       jupyter-jupyter_core-filesystem
 Requires:       python-traitlets
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -67,7 +64,8 @@ Obsoletes:      jupyter-jupyter_core < %{version}-%{release}
 %endif
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module jupyter-core}
+BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module jupyter-core = %{version}}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 %endif
@@ -87,13 +85,16 @@ as a dependency by packages that require it.
 # Set the appropriate hardcoded paths dynamically
 sed -i "s|\"_datadir_jupyter_\"|\"%{_datadir}/jupyter\"|" jupyter_core/paths.py
 sed -i "s|\"_sysconfdir_jupyter_\"|\"%{_sysconfdir}/jupyter\"|" jupyter_core/paths.py
+sed -i "/addopts/ s/--color=yes//" pyproject.toml
 
-%build
-%python_build
-
-%install
 %if !%{with test}
-%python_install
+%build
+%pyproject_wheel
+%endif
+
+%if !%{with test}
+%install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/jupyter
 %python_clone -a %{buildroot}%{_bindir}/jupyter-migrate
 %python_clone -a %{buildroot}%{_bindir}/jupyter-troubleshoot
@@ -106,10 +107,8 @@ sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitel
 
 %if %{with test}
 %check
-pushd jupyter_core/tests
 # test_jupyter_path_prefer_env does not work outside venvs: gh#jupyter/jupyter_core#208
 %pytest -k "not test_jupyter_path_prefer_env"
-popd
 %endif
 
 %pre

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug  1 17:56:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.11.1
+  * Fix inclusion of jupyter file and check in CI by @blink1073 in
+    #276
+- Release 4.11.0
+  * Use hatch backend by @blink1073 in #265
+  * is_hidden: Use normalized paths by @martinRenou in #271
+- Release 4.10.0
+  * Include all files from jupyter_core by @jonringer in #253
+- Refresh use_rpms_paths.patch
+
+-------------------------------------------------------------------
 Sun Mar 13 06:59:34 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.9.2
