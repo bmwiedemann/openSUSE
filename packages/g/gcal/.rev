@@ -208,4 +208,14 @@
   (fflush: be more paranoid about libio.h change) (forwarded request 678927 from oertel)</comment>
     <requestid>678928</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>1c8eebf615fca14752f4348ea629134a</srcmd5>
+    <version>4.1</version>
+    <time>1659554221</time>
+    <user>dimstar_suse</user>
+    <comment>Use -D_FORTIFY_SOURCE=2 to fix crashes.
+
+Not sure whether that's the correct approach to set it like this though. (forwarded request 991823 from stroeder)</comment>
+    <requestid>992583</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul 30 16:53:17 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- use -D_FORTIFY_SOURCE=2 to fix crashes
+
+-------------------------------------------------------------------
 Mon Feb 25 15:15:06 CET 2019 - ro@suse.de
 
 - add patches (parts of git commits from gnulib):

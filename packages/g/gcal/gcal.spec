@@ -52,7 +52,7 @@ Gregorian calendar replaced the earlier Julian calendar.
 
 %build
 %configure
-make %{?_smp_mflags} "CFLAGS=%{optflags}"
+make %{?_smp_mflags} "CFLAGS=%{optflags} -D_FORTIFY_SOURCE=2"
 
 %install
 %make_install
