@@ -49,4 +49,12 @@
     <comment>- fix rpath (don't use relative lib64)</comment>
     <requestid>991175</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9ae7f09d89725c4426d126ed3897c3f5</srcmd5>
+    <version>2.2.1+20200902</version>
+    <time>1659554213</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>992468</requestid>
+  </revision>
 </revisionlist>
