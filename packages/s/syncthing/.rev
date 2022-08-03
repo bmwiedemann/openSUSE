@@ -1110,4 +1110,18 @@
 </comment>
     <requestid>986795</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>57927bb53f99aff53ae1208874996989</srcmd5>
+    <version>1.20.4</version>
+    <time>1659554215</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.20.4
+  * Bugfixes:
+    #7458: Syncthing announces address of interface which is down
+    #8479: Panic in failure reporting
+  * Enhancements:
+    #8007: Support listing the discovered devices using the cli 
+</comment>
+    <requestid>992531</requestid>
+  </revision>
 </revisionlist>
