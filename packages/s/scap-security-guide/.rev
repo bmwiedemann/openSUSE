@@ -213,4 +213,24 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
     <comment>- Fix the build for RHEL 7 and clones (python-setuptools is used) (forwarded request 989423 from juliogonzalezgil)</comment>
     <requestid>989425</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>461edfaa7de7eff118aca636009e1955</srcmd5>
+    <version>0.1.63</version>
+    <time>1659554193</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.63 (jsc#ECO-3319)
+   - multiple bugfixes in SUSE profiles
+   - Expand project guidelines 
+   - Add Draft OCP4 STIG profile 
+   - Add anssi_bp28_intermediary profile 
+   - add products/uos20 to support UnionTech OS Server 20
+   - products/alinux3: Add CIS Alibaba Cloud Linux 3 profiles
+   - Remove WRLinux Products
+   - Update CIS RHEL8 Benchmark for v2.0.0
+- removed fix-bash-template.patch: fixed upstream
+- Fixed: stig: /etc/shadow group owner should not be root but shadow (bsc#1200149)
+- Fixed: sles15_script-stig.sh: remediation_functions: No such file or directory (bsc#1200163)
+- Fixed: SLES-15-010130 - The SUSE operating system must initiate a session lock after a 15-minute period of inactivity (bsc#1200122)</comment>
+    <requestid>992448</requestid>
+  </revision>
 </revisionlist>

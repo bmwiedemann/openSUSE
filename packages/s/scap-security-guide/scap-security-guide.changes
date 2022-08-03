@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jul 30 13:59:29 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.63 (jsc#ECO-3319)
+   - multiple bugfixes in SUSE profiles
+   - Expand project guidelines 
+   - Add Draft OCP4 STIG profile 
+   - Add anssi_bp28_intermediary profile 
+   - add products/uos20 to support UnionTech OS Server 20
+   - products/alinux3: Add CIS Alibaba Cloud Linux 3 profiles
+   - Remove WRLinux Products
+   - Update CIS RHEL8 Benchmark for v2.0.0
+- removed fix-bash-template.patch: fixed upstream
+- Fixed: stig: /etc/shadow group owner should not be root but shadow (bsc#1200149)
+- Fixed: sles15_script-stig.sh: remediation_functions: No such file or directory (bsc#1200163)
+- Fixed: SLES-15-010130 - The SUSE operating system must initiate a session lock after a 15-minute period of inactivity (bsc#1200122)
+
+-------------------------------------------------------------------
 Fri Jul 15 11:57:43 UTC 2022 - Julio González Gil <jgonzalez@suse.com>
 
 - Fix the build for RHEL 7 and clones (python-setuptools is used) 

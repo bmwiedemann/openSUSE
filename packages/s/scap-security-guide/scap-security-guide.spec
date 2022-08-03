@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.62
+Version:        0.1.63
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -53,8 +53,6 @@ Packager:       SUSE Security Team <security@suse.de>
 %endif
 Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
 Patch0:         scap-security-guide-UnicodeEncodeError-character-fix.patch
-# upstream d9aa7a49d135be60e1a6f9d2ce4e29560482b3d0 and 3485c8298957b24d97a563079fd648004a92822b
-Patch1:         fix-bash-template.patch
 BuildRequires:  cmake
 
 %if "%{_vendor}" == "debbuild"
@@ -184,13 +182,14 @@ Note that the included profiles are community supplied and not officially suppor
 %prep
 %setup -n content-%version
 %patch0 -p0
-%patch1 -p1
 
 %build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DCMAKE_INSTALL_MANDIR=%{_mandir} \
       -DSSG_PRODUCT_CHROMIUM=OFF \
+	 -DSSG_PRODUCT_ALINUX2=OFF \
+	 -DSSG_PRODUCT_ALINUX3=OFF \
 	 -DSSG_PRODUCT_DEBIAN9=ON \
 	 -DSSG_PRODUCT_DEBIAN10=ON \
 	 -DSSG_PRODUCT_DEFAULT=ON \
@@ -216,6 +215,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	 -DSSG_PRODUCT_UBUNTU1604=ON \
 	 -DSSG_PRODUCT_UBUNTU1804=ON \
 	 -DSSG_PRODUCT_UBUNTU2004=ON \
+	 -DSSG_PRODUCT_UOS20=OFF \
          -DSSG_PRODUCT_VSEL=OFF \
          -DSSG_PRODUCT_EKS=OFF \
          -DSSG_PRODUCT_WRLINUX8=OFF \
