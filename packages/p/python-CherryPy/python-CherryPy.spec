@@ -1,7 +1,7 @@
 #
 # spec file for package python-CherryPy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,11 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-CherryPy
-Version:        18.6.1
+Version:        18.8.0
 Release:        0
 Summary:        Object-Oriented HTTP framework
 License:        BSD-3-Clause
-URL:            http://www.cherrypy.org
+URL:            https://www.cherrypy.dev
 Source:         https://files.pythonhosted.org/packages/source/C/CherryPy/CherryPy-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -45,7 +45,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %endif
 Recommends:     python-Routes >= 2.3.1
 Recommends:     python-flup
@@ -102,7 +102,7 @@ export TRAVIS="true"
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.
-%python_libalternatives_reset_alternative cherryd 
+%python_libalternatives_reset_alternative cherryd
 
 %post
 %python_install_alternative cherryd

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  2 11:32:54 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 18.8.0
+  * Dangerous characters received in a host header encoded using RFC 2047 are
+    now elided by default. Currently, dangerous characters are defined as CR
+    and LF. The original value is still available as
+    cherrypy.request.headers['Host'].raw if needed.
+- Changes from v18.7.0
+  * Drop support for Python 3.5.
+  * Fixed compatibility on Python 3.11.
+- Fix URL in spec file: cherrypy.org -> cherrypy.dev 
+
+-------------------------------------------------------------------
 Tue Oct  5 14:01:39 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Added BuildRequires:  alts
