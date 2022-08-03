@@ -1,7 +1,7 @@
 #
 # spec file for package libasn1c
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libasn1c
-Version:        0.9.33
+Version:        0.9.34
 Release:        0
 Summary:        Osmocon ASN.1 decoder and encoder library
 License:        BSD-2-Clause
@@ -86,7 +86,7 @@ fi
 %postun -n libasn1c1 -p /sbin/ldconfig
 
 %files -n libasn1c1
-%_libdir/libasn1c.so.1*
+%_libdir/libasn1c.so.*
 
 %files -n libasn1c-devel
 %license COPYING

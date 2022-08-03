@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  3 17:02:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.9.34
+  * Build system change only with regard to ASan
+
+-------------------------------------------------------------------
 Sun Mar 14 21:12:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.9.33
