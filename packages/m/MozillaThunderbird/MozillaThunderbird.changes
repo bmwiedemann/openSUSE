@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Jul 26 09:03:40 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.1.0
+  * https://www.thunderbird.net/en-US/thunderbird/102.1.0/releasenotes
+  MFSA 2022-32 (bsc#1201758)
+  * CVE-2022-36319 (bmo#1737722)
+    Mouse Position spoofing with CSS transforms
+  * CVE-2022-36318 (bmo#1771774)
+    Directory indexes for bundled resources reflected URL parameters
+  * CVE-2022-36314 (bmo#1773894)
+    Opening local <code>.lnk</code> files could cause unexpected
+    network loads
+  * CVE-2022-2505 (bmo#1769739, bmo#1772824)
+    Memory safety bugs fixed in Thunderbird 102.1
+- added mozilla-newer-cbindgen.patch to fix build with
+  rust-cbindgen >= 0.24 (and also require that for build)
+- added mozilla-pgo.patch to fix LTO builds with gcc
+
+-------------------------------------------------------------------
+Tue Jul 19 07:31:52 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.0.3
+  Bugfixes as in
+  * https://www.thunderbird.net/en-US/thunderbird/102.0.3/releasenotes/
+
+-------------------------------------------------------------------
+Sat Jul  9 21:53:27 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.0.2
+  * https://www.thunderbird.net/en-US/thunderbird/102.0/releasenotes/
+- removed obsolete patches
+  mozilla-bmo1504834-part2.patch
+  mozilla-bmo1504834-part4.patch
+  mozilla-bmo1602730.patch
+  mozilla-bmo1626236.patch
+  mozilla-bmo1724679.patch
+  mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
+  mozilla-sandbox-fips.patch
+- added patches inherited from FF 102
+  one_swizzle_to_rule_them_all.patch
+  svg-rendering.patch
+- fix KDE detection (boo#1200987) in mozilla-kde.patch
+- requires
+  rust = 1.60
+  NSPR >= 4.34
+  NSS >= 3.79
+  rust-cbindgen >= 0.23.0
+- remove special breakpad debug symbol creation
+
+-------------------------------------------------------------------
 Sun Jun 26 08:53:26 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 91.11.0

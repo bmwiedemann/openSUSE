@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          91
-%define mainver        %major.11.0
-%define orig_version   91.11.0
+%define major          102
+%define mainver        %major.1.0
+%define orig_version   102.1.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -66,7 +66,7 @@ BuildArch:      i686
 %define gnome_dir     %{_prefix}
 %define desktop_file_name %{progname}
 %define __provides_exclude ^lib.*\\.so.*$
-%define __requires_exclude ^(libmoz.*|liblgpllibs.*|libxul.*|libldap.*|libldif.*|libprldap.*)$
+%define __requires_exclude ^(libmoz.*|liblgpllibs.*|libxul.*|libldap.*|libldif.*|libprldap.*|librnp.*)$
 %define localize 1
 %define crashreporter 0
 %define with_pipewire0_3 1
@@ -85,27 +85,31 @@ BuildRequires:  autoconf213
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  fdupes
 BuildRequires:  memory-constraints
-%if 0%{?suse_version} <= 1320
-BuildRequires:  gcc9-c++
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150400
+BuildRequires:  gcc11-c++
 %else
 BuildRequires:  gcc-c++
 %endif
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
-BuildRequires:  cargo >= 1.51
-BuildRequires:  rust >= 1.51
+BuildRequires:  cargo >= 1.59
+BuildRequires:  rust >= 1.59
 %else
 # Newer sle/leap/tw use parallel versioned rust releases which have
 # a different method for provides that we can use to request a
 # specific version
-BuildRequires:  rust+cargo >= 1.51
+# minimal requirement:
+BuildRequires:  rust+cargo >= 1.59
+# actually used upstream:
+BuildRequires:  cargo1.60
+BuildRequires:  rust1.60
 %endif
 %if 0%{useccache} != 0
 BuildRequires:  ccache
 %endif
 BuildRequires:  libXcomposite-devel
 BuildRequires:  libcurl-devel
-BuildRequires:  mozilla-nspr-devel >= 4.32
-BuildRequires:  mozilla-nss-devel >= 3.68.4
+BuildRequires:  mozilla-nspr-devel >= 4.34
+BuildRequires:  mozilla-nss-devel >= 3.79
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -115,14 +119,13 @@ BuildRequires:  python36
 BuildRequires:  python3 >= 3.5
 BuildRequires:  python3-devel
 %endif
-BuildRequires:  rust-cbindgen >= 0.19.0
+BuildRequires:  rust-cbindgen >= 0.24.0
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXt-devel
 %if 0%{?do_profiling}
 BuildRequires:  xvfb-run
 %endif
-BuildRequires:  xz
 BuildRequires:  yasm
 BuildRequires:  zip
 %if 0%{?suse_version} < 1550
@@ -185,28 +188,25 @@ Patch1:         mozilla-nongnome-proxies.patch
 Patch2:         mozilla-kde.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         mozilla-aarch64-startup-crash.patch
-Patch6:         mozilla-sandbox-fips.patch
-Patch7:         mozilla-fix-aarch64-libopus.patch
-Patch8:         mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
-Patch9:         mozilla-s390-context.patch
-Patch11:        mozilla-reduce-rust-debuginfo.patch
-Patch13:        mozilla-bmo1005535.patch
-Patch14:        mozilla-bmo1568145.patch
-Patch15:        mozilla-bmo1504834-part1.patch
-Patch16:        mozilla-bmo1504834-part2.patch
-Patch17:        mozilla-bmo1504834-part3.patch
-Patch19:        mozilla-bmo1512162.patch
-Patch20:        mozilla-fix-top-level-asm.patch
-Patch21:        mozilla-bmo1504834-part4.patch
-Patch22:        mozilla-bmo849632.patch
-Patch24:        mozilla-bmo1602730.patch
-Patch25:        mozilla-bmo998749.patch
-Patch26:        mozilla-bmo1626236.patch
-Patch27:        mozilla-s390x-skia-gradient.patch
-Patch28:        mozilla-libavcodec58_91.patch
-Patch29:        mozilla-silence-no-return-type.patch
-Patch30:        mozilla-bmo531915.patch
-Patch31:        mozilla-bmo1724679.patch
+Patch5:         mozilla-fix-aarch64-libopus.patch
+Patch6:         mozilla-s390-context.patch
+Patch7:         mozilla-pgo.patch
+Patch8:         mozilla-reduce-rust-debuginfo.patch
+Patch9:         mozilla-bmo1005535.patch
+Patch10:        mozilla-bmo1568145.patch
+Patch11:        mozilla-bmo1504834-part1.patch
+Patch12:        mozilla-bmo1504834-part3.patch
+Patch13:        mozilla-bmo1512162.patch
+Patch14:        mozilla-fix-top-level-asm.patch
+Patch15:        mozilla-bmo849632.patch
+Patch16:        mozilla-bmo998749.patch
+Patch17:        mozilla-s390x-skia-gradient.patch
+Patch18:        mozilla-libavcodec58_91.patch
+Patch19:        mozilla-silence-no-return-type.patch
+Patch20:        mozilla-bmo531915.patch
+Patch21:        one_swizzle_to_rule_them_all.patch
+Patch22:        svg-rendering.patch
+Patch23:        mozilla-newer-cbindgen.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh
@@ -255,16 +255,6 @@ This package contains rarely used languages for the user interface
 of %{appname}.
 %endif
 
-%if %crashreporter
-%package buildsymbols
-Summary:        Breakpad buildsymbols for %{appname}
-Group:          Development/Debug
-
-%description buildsymbols
-This subpackage contains the Breakpad created and compatible debugging
-symbols meant for upload to Mozilla's crash collector database.
-%endif
-
 %if !%{with only_print_mozconfig}
 %prep
 %if %localize
@@ -287,28 +277,25 @@ fi
 %endif
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 %patch6 -p1
 %patch7 -p1
-#%patch8 -p1
+%patch8 -p1
 %patch9 -p1
+%patch10 -p1
 %patch11 -p1
+%patch12 -p1
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
 %patch16 -p1
 %patch17 -p1
+%patch18 -p1
 %patch19 -p1
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch28 -p1
-%patch29 -p1
-%patch30 -p1
-%patch31 -p1
+%patch23 -p1
 %endif
 
 %build
@@ -349,8 +336,8 @@ export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 export MOZ_REQUIRE_SIGNING=
 export MACH_USE_SYSTEM_PYTHON=1
-%if 0%{?suse_version} <= 1320
-export CC=gcc-9
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150400
+export CC=gcc-11
 %else
 %if 0%{?clang_build} == 0
 export CC=gcc
@@ -363,6 +350,8 @@ export CFLAGS="$CFLAGS -fimplicit-constexpr"
 %ifarch %arm %ix86
 # Limit RAM usage during link
 export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+# A lie to prevent -Wl,--gc-sections being set which requires more memory than 32bit can offer
+export GC_SECTIONS_BREAKS_DEBUG_RANGES=yes
 %endif
 export LDFLAGS="${LDFLAGS} -fPIC -Wl,-z,relro,-z,now"
 %ifarch ppc64 ppc64le
@@ -419,8 +408,9 @@ ac_add_options --enable-default-toolkit=cairo-gtk3
 %ifarch %ix86 %arm
 ac_add_options --disable-debug-symbols
 %else
-ac_add_options --enable-debug-symbols
+ac_add_options --enable-debug-symbols=-g1
 %endif
+ac_add_options --disable-install-strip
 # building with elf-hack started to fail everywhere with FF73
 #%if 0%{?suse_version} > 1549
 %ifnarch aarch64 ppc64 ppc64le s390x
@@ -441,6 +431,11 @@ ac_add_options --disable-necko-wifi
 ac_add_options --enable-update-channel=%{update_channel}
 ac_add_options --with-unsigned-addon-scopes=app
 ac_add_options --allow-addon-sideload
+# at least temporary until the "wasi-sysroot" issue is solved
+ac_add_options --without-wasm-sandboxed-libraries
+%ifarch x86_64 aarch64
+ac_add_options --enable-rust-simd
+%endif
 ac_add_options --enable-official-branding
 %if ! %crashreporter
 ac_add_options --disable-crashreporter
@@ -498,6 +493,7 @@ ac_add_options --enable-application=comm/mail
 ac_add_options --prefix=%{_prefix}
 ac_add_options --with-l10n-base=$RPM_BUILD_DIR/l10n
 ac_add_options --disable-updater
+ac_add_options --without-wasm-sandboxed-libraries
 ac_add_options --enable-official-branding
 EOF
 mkdir -p $RPM_BUILD_DIR/langpacks_artifacts/
@@ -510,19 +506,15 @@ sed -r '/^(ja-JP-mac|en-US|$)/d;s/ .*$//' $RPM_BUILD_DIR/%{source_prefix}/comm/m
         export MOZCONFIG=${MOZCONFIG}_$locale
         # nsinstall is needed for langpack-build. It is already built by `./mach build`, but building it again is very fast
         ./mach build config/nsinstall langpack-$locale
-        cp -rL ../obj_$locale/dist/xpi-stage/locale-$locale \
-           $RPM_BUILD_DIR/langpacks_artifacts/langpack-$locale@thunderbird.mozilla.org
-        rm -rf $RPM_BUILD_DIR/langpacks_artifacts/langpack-$locale@thunderbird.mozilla.org/defaults
-        rm -rf $RPM_BUILD_DIR/langpacks_artifacts/langpack-$locale@thunderbird.mozilla.org/hyphenation
-        # Build systems like to run out of disc-space, so we delete the build-dir here (we copied already all relevant files)
-        rm -rf ../obj_$locale/
+        cp -L ../obj_$locale/dist/linux-*/xpi/thunderbird-%{orig_version}.$locale.langpack.xpi \
+            $RPM_BUILD_DIR/langpacks_artifacts/langpack-$locale@thunderbird.mozilla.org.xpi
         # check against the fixed common list and sort into the right filelist
         _matched=0
         for _match in ar ca cs da de el en-GB es-AR es-CL es-ES fi fr hu it ja ko nb-NO nl pl pt-BR pt-PT ru sv-SE zh-CN zh-TW; do
             [ "$_match" = "$locale" ] && _matched=1
         done
         [ $_matched -eq 1 ] && _l10ntarget=common || _l10ntarget=other
-        echo %{progdir}/extensions/langpack-$locale@thunderbird.mozilla.org \
+        echo %{progdir}/extensions/langpack-$locale@thunderbird.mozilla.org.xpi \
           >> %{_tmppath}/translations.$_l10ntarget
 ' -- {}
 %endif
@@ -608,24 +600,6 @@ rm -f %{buildroot}%{progdir}/nspr-config
 %fdupes %{buildroot}%{progdir}
 %fdupes %{buildroot}%{_libdir}/mozilla
 %fdupes %{buildroot}%{_datadir}
-# create breakpad debugsymbols
-%if %crashreporter
-SYMBOLS_NAME="thunderbird-%{version}-%{release}.%{_arch}-%{suse_version}-symbols"
-make buildsymbols \
-  SYMBOL_INDEX_NAME="$SYMBOLS_NAME.txt" \
-  SYMBOL_FULL_ARCHIVE_BASENAME="$SYMBOLS_NAME-full" \
-  SYMBOL_ARCHIVE_BASENAME="$SYMBOLS_NAME"
-if [ -e dist/*symbols.zip ]; then
-  mkdir -p %{buildroot}%{_datadir}/mozilla/
-  cp dist/*symbols.zip %{buildroot}%{_datadir}/mozilla/
-fi
-%endif
-
-%clean
-rm -rf %{buildroot}
-%if %localize
-rm -rf %{_tmppath}/translations.*
-%endif
 
 %post
 %desktop_database_post
@@ -649,6 +623,8 @@ exit 0
 %{progdir}/pingsender
 %{progdir}/platform.ini
 %{progdir}/plugin-container
+%{progdir}/rnp-cli
+%{progdir}/rnpkeys
 %{progdir}/thunderbird-bin
 # crashreporter files
 %if %crashreporter
@@ -675,12 +651,6 @@ exit 0
 %files translations-other -f %{_tmppath}/translations.other
 %defattr(-,root,root)
 %dir %{progdir}/extensions/
-%endif
-
-%if %crashreporter
-%files buildsymbols
-%defattr(-,root,root)
-%{_datadir}/mozilla/
 %endif
 
 %changelog

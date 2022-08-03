@@ -4277,4 +4277,41 @@ I cannot test locally unfortunately.
     Memory safety bugs fixed in Thunderbird 91.11 and Thunderbird 102</comment>
     <requestid>985736</requestid>
   </revision>
+  <revision rev="283" vrev="1">
+    <srcmd5>f615ab8ce6d3f3893a3b8681b222ed50</srcmd5>
+    <version>102.1.0</version>
+    <time>1659554161</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.1.0
+  * https://www.thunderbird.net/en-US/thunderbird/102.1.0/releasenotes
+  MFSA 2022-32 (bsc#1201758)
+  * CVE-2022-36319 (bmo#1737722)
+    Mouse Position spoofing with CSS transforms
+  * CVE-2022-36318 (bmo#1771774)
+    Directory indexes for bundled resources reflected URL parameters
+  * CVE-2022-36314 (bmo#1773894)
+    Opening local &lt;code&gt;.lnk&lt;/code&gt; files could cause unexpected
+    network loads
+  * CVE-2022-2505 (bmo#1769739, bmo#1772824)
+    Memory safety bugs fixed in Thunderbird 102.1
+- added mozilla-newer-cbindgen.patch to fix build with
+  rust-cbindgen &gt;= 0.24 (and also require that for build)
+- added mozilla-pgo.patch to fix LTO builds with gcc
+
+- Mozilla Thunderbird 102.0.3
+  Bugfixes as in
+  * https://www.thunderbird.net/en-US/thunderbird/102.0.3/releasenotes/
+
+- Mozilla Thunderbird 102.0.2
+  * https://www.thunderbird.net/en-US/thunderbird/102.0/releasenotes/
+- removed obsolete patches
+  mozilla-bmo1504834-part2.patch
+  mozilla-bmo1504834-part4.patch
+  mozilla-bmo1602730.patch
+  mozilla-bmo1626236.patch
+  mozilla-bmo1724679.patch
+  mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
+  mozilla-sandbox-fips.patch</comment>
+    <requestid>992051</requestid>
+  </revision>
 </revisionlist>
