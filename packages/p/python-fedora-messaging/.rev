@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>974781</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e73c2a241b7fd6cafc9723aba9f91b85</srcmd5>
+    <version>3.0.2</version>
+    <time>1659554203</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.2:
+  * Add packit configuration.
+  * Correct sync list, add issue repo and version info
+- Remove unneeded BuildRequires on mock.</comment>
+    <requestid>992422</requestid>
+  </revision>
 </revisionlist>

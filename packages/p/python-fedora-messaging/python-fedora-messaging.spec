@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fedora-messaging
-Version:        3.0.0
+Version:        3.0.2
 Release:        0
 Summary:        Python tools for Fedora's messaging infrastructure
 License:        GPL-2.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/fedora-infra/fedora-messaging
 Source:         https://files.pythonhosted.org/packages/source/f/fedora_messaging/fedora_messaging-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -48,7 +47,6 @@ BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module crochet}
 BuildRequires:  %{python_module jsonschema}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pika >= 1.0.1}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest-twisted}
