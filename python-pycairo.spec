@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycairo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cairo-devel >= 1.15.10
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-cairo = %{version}
 Obsoletes:      python-cairo < %{version}
@@ -77,6 +78,13 @@ packages that depend on Pycairo.
 
 %install
 %python_install
+# Incorrectly installed by a python38-setuptools vendored distutils
+# which does not play well with the distro patched python38.
+# Later flavors installed the correct files into lib64 as well
+if [ "%{_libdir}" != "%{_prefix}/lib" -a -d %{buildroot}%{_prefix}/lib/pkgconfig ]; then
+  rm -r  %{buildroot}%{_prefix}/lib/pkgconfig
+fi
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 # this is not the deprecated setuptools test call but a custom setup compiling stuff and running pytest
