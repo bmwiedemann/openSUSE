@@ -18,8 +18,10 @@
 
 %if 0%{?suse_version} >= 1550
 %bcond_without aom
+%bcond_without yuv
 %else
 %bcond_with aom
+%bcond_with yuv
 %endif
 
 # Also update baselibs.conf if you bump the version
@@ -49,6 +51,9 @@ BuildRequires:  pkgconfig(zlib)
 
 %if %{with aom}
 BuildRequires:  pkgconfig(aom) >= 2.0.0
+%endif
+%if %{with yuv}
+BuildRequires:  pkgconfig(libyuv)
 %endif
 
 %description

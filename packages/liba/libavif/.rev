@@ -171,4 +171,13 @@ This lib uses rav1e and dav1d for encoding and decoding.</comment>
     <comment></comment>
     <requestid>972437</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f623c1ba6cec6ea4a07f1611d1333e69</srcmd5>
+    <version>0.10.1</version>
+    <time>1659612164</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable libyuv on TW
+</comment>
+    <requestid>992214</requestid>
+  </revision>
 </revisionlist>
