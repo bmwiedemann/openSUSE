@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Aug  2 13:59:58 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 0.7.7:
+  * Declared setuptools as the build backend (#65)
+  * Fixed deprecation warnings caused by escape sequences in regex pattern
+    strings (#63)
+- Changes from 0.7.6:
+  * Added support for Python 3.10 and 3.11 (#54, #56, #58)
+  * Replaced assertEquals with assertEqual. assertEquals was deprecated in
+    Python 3.2. (#42)
+  * Removed used of element.getchildren() which has been removed from the Python
+    standard library elementtree in Python 3.9. (#57)
+  * Added support for Python 3.10 by using CodeType.replace in
+    `build_code_chunk` to make code object updates more robust against changes
+    in CodeType. (#49)
+  * Moved tests and releases workflows to GitHub Actions (#61, #51)
+  * Fixed reference leak in Markup.join C implementation. (#47)
+  * Sort directives only by directive index. Previously they were sorted by the
+    class, namespace and arguments of the directives. This was acceptable in
+    Python 2, but is a bug in Python 3 since some the arguments may not be
+    comparable. (#44)
+  * Add support for msgctxt to i18n. (#13)
+  * Implemented skipping of empty attributes during translation to match the
+    behaviour during translation extraction (i.e. don't try to translate empty
+    strings that are not extracted). (#38)
+  * Ported setuptools options to declarative config in setup.cfg. (#40)
+  * Removed used of deprecated setuptools Feature in setup.py. (#39)
+- Removed patches, already in upstream:
+  * Genshi-pr39-fix-setuptools-extension.patch
+  * Genshi-pr49-fix-python310-tests.patch
+
+-------------------------------------------------------------------
 Sat Dec 11 21:10:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - add Genshi-pr49-fix-python310-tests.patch - gh#edgewall/genshi#49

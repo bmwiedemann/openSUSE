@@ -1,7 +1,7 @@
 #
 # spec file for package python-Genshi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Genshi
-Version:        0.7.5
+Version:        0.7.7
 Release:        0
 Summary:        A toolkit for generation of output for the web
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://genshi.edgewall.org/
+URL:            https://genshi.edgewall.org/
 Source:         https://files.pythonhosted.org/packages/source/G/Genshi/Genshi-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Genshi-pr39-fix-setuptools-extension.patch -- gh#edgewall/genshi#39 fixes gh#edgewall/genshi#36
-Patch1:         Genshi-pr39-fix-setuptools-extension.patch
-# PATCH-FIX-UPSTREAM Genshi-pr49-fix-python310-tests.patch -- gh#edgewall/genshi#49
-Patch2:         https://github.com/edgewall/genshi/pull/49.patch#/Genshi-pr49-fix-python310-tests.patch
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
