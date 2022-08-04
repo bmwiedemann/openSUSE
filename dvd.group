@@ -63,6 +63,9 @@
     <package name="aaa_base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="aaa_base-extras" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="abcde" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="accerciser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
+    <package name="accerciser-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
+    <package name="accerciser-plugin-IPython" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="accountsservice" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="accountsservice-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="acl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -2417,7 +2420,7 @@
     <package name="libpoppler-cpp0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpoppler-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libpoppler122" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libpoppler123" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libportal-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libportaudio2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -2778,8 +2781,10 @@
     <package name="libwireplumber-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libwmf-0_2-7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwmf-tools" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libwnck-1-22" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="libwnck-3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwnck-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libwnck2-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="libwoff2common1_0_2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libwoff2dec1_0_2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libwpd-0_10-10" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2854,6 +2859,7 @@
     <package name="libyui-qt-pkg16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libyui-qt16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libyui16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libyuv0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libz-ng-compat1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libz1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzbar0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -3412,6 +3418,7 @@
     <package name="pipewire-spa-tools" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="pipewire-tools" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="pkcs11-helper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="pkexec" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pkgconf" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pkgconf-m4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pkgconf-pkg-config" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3737,6 +3744,7 @@
     <package name="python310-python-dateutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python310-python-lzo" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-python-mimeparse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="python310-python-xlib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-pytz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-pyudev" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python310-pyzmq" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
@@ -4561,6 +4569,7 @@
     <package name="typelib-1_0-GstPbutils-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GstTag-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GstVideo-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="typelib-1_0-Gtk-2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="typelib-1_0-Gtk-3_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="typelib-1_0-Gtk-4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GtkClutter-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4603,6 +4612,7 @@
     <package name="typelib-1_0-Vte-2.91" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="typelib-1_0-WebKit2-4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-WebKit2-4_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis -->
+    <package name="typelib-1_0-Wnck-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="typelib-1_0-Wnck-3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Xfconf-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="ucode-amd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->

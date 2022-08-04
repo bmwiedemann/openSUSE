@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20220803" schemaversion="4.1">
+<image name="OBS__MicroOS___20220804" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220803</productvar>
+      <productvar name="VERSION">20220804</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220803,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220804,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220803/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220804/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -57,6 +57,9 @@
       <repopackage name="7zip" arch="x86_64"/>
       <repopackage name="aaa_base"/>
       <repopackage name="aaa_base-extras"/>
+      <repopackage name="accerciser" arch="x86_64"/>
+      <repopackage name="accerciser-lang" arch="x86_64"/>
+      <repopackage name="accerciser-plugin-IPython" arch="x86_64"/>
       <repopackage name="accountsservice" arch="x86_64"/>
       <repopackage name="accountsservice-lang" arch="x86_64"/>
       <repopackage name="acl" arch="x86_64"/>
@@ -1531,7 +1534,7 @@
       <repopackage name="libpoppler-cpp0"/>
       <repopackage name="libpoppler-glib8" arch="x86_64"/>
       <repopackage name="libpoppler-qt5-1" arch="x86_64"/>
-      <repopackage name="libpoppler122"/>
+      <repopackage name="libpoppler123"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libportaudio2"/>
       <repopackage name="libpostproc55_9" arch="x86_64"/>
@@ -1917,6 +1920,7 @@
       <repopackage name="libyui-qt-pkg16" arch="x86_64"/>
       <repopackage name="libyui-qt16" arch="x86_64"/>
       <repopackage name="libyui16" arch="x86_64"/>
+      <repopackage name="libyuv0"/>
       <repopackage name="libz-ng-compat1"/>
       <repopackage name="libz1" arch="x86_64"/>
       <repopackage name="libzbar0"/>
@@ -2226,6 +2230,7 @@
       <repopackage name="pipewire-spa-tools"/>
       <repopackage name="pipewire-tools"/>
       <repopackage name="pkcs11-helper" arch="x86_64"/>
+      <repopackage name="pkexec" arch="x86_64"/>
       <repopackage name="pkgconf"/>
       <repopackage name="pkgconf-m4"/>
       <repopackage name="pkgconf-pkg-config"/>
@@ -2502,6 +2507,7 @@
       <repopackage name="python310-pytest" arch="x86_64"/>
       <repopackage name="python310-python-dateutil" arch="x86_64"/>
       <repopackage name="python310-python-memcached" arch="x86_64"/>
+      <repopackage name="python310-python-xlib" arch="x86_64"/>
       <repopackage name="python310-pytz" arch="x86_64"/>
       <repopackage name="python310-pyudev" arch="x86_64"/>
       <repopackage name="python310-PyYAML" arch="x86_64"/>

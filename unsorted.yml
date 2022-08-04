@@ -318,9 +318,6 @@ unsorted:
   - acarsdec 
   - accel-config: [x86_64] 
   - accel-config-devel: [x86_64] 
-  - accerciser 
-  - accerciser-lang 
-  - accerciser-plugin-IPython 
   - accounts-qml-module 
   - accounts-qml-module-doc 
   - accountsservice-devel 
@@ -12930,8 +12927,9 @@ unsorted:
   - libosmo-mgcp-devel 
   - libosmo-mslookup-devel 
   - libosmo-mslookup0 
-  - libosmo-mtp-1_5_0 
+  - libosmo-mtp-1_6_0 
   - libosmo-mtp-devel 
+  - libosmo-octoi0 
   - libosmo-ranap-devel 
   - libosmo-ranap5 
   - libosmo-rspro-devel 
@@ -12940,13 +12938,13 @@ unsorted:
   - libosmo-rua0 
   - libosmo-sabp-devel 
   - libosmo-sabp1 
-  - libosmo-sccp-1_5_0 
+  - libosmo-sccp-1_6_0 
   - libosmo-sccp-devel 
   - libosmo-sigtran-devel 
   - libosmo-sigtran7 
   - libosmo-simtrace2-1 
   - libosmo-simtrace2-devel 
-  - libosmo-xua-1_5_0 
+  - libosmo-xua-1_6_0 
   - libosmo-xua-devel 
   - libosmoabis-devel 
   - libosmoabis10 
@@ -13214,7 +13212,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler122-32bit: [x86_64] 
+  - libpoppler123-32bit: [x86_64] 
   - libportal-devel 
   - libportal-gtk3-1 
   - libportal-gtk3-devel 
@@ -14808,13 +14806,11 @@ unsorted:
   - libwmf-devel 
   - libwmf-gnome 
   - libwmf-gnome-32bit: [x86_64] 
-  - libwnck-1-22 
   - libwnck-1-22-32bit: [x86_64] 
   - libwnck-3-0-32bit: [x86_64] 
   - libwnck-devel 
   - libwnck-tools 
   - libwnck2-devel 
-  - libwnck2-lang 
   - libwnn0 
   - libwoff2common1_0_2-32bit: [x86_64] 
   - libwoff2dec1_0_2-32bit: [x86_64] 
@@ -15171,11 +15167,11 @@ unsorted:
   - libyui-rest-api-devel 
   - libyui-rest-api16 
   - libyuv-devel 
-  - libyuv0 
+  - libyuv0-32bit: [x86_64] 
   - libz-ng2 
   - libz-ng2-32bit: [x86_64] 
   - libz1-32bit: [x86_64] 
-  - libz3-4_8 
+  - libz3-4_10 
   - libzapojit-0_0-0 
   - libzapojit-devel 
   - libzbar-devel 
@@ -20749,7 +20745,6 @@ unsorted:
   - pixz 
   - pkTriggerCord 
   - pkcs11-helper-devel 
-  - pkexec 
   - pkgdiff 
   - plank 
   - plank-devel 
@@ -24313,7 +24308,6 @@ unsorted:
   - python310-python-utils 
   - python310-python-vlc 
   - python310-python-whois 
-  - python310-python-xlib 
   - python310-python-yubico 
   - python310-python3-openid 
   - python310-pythondialog 
@@ -24564,7 +24558,6 @@ unsorted:
   - python310-sklearn-pandas 
   - python310-skyfield 
   - python310-slack-sdk 
-  - python310-slackclient 
   - python310-slimit 
   - python310-slixmpp 
   - python310-slycot 
@@ -27856,7 +27849,6 @@ unsorted:
   - python38-sklearn-pandas 
   - python38-skyfield 
   - python38-slack-sdk 
-  - python38-slackclient 
   - python38-slimit 
   - python38-slip 
   - python38-slip-dbus 
@@ -31171,7 +31163,6 @@ unsorted:
   - python39-sklearn-pandas 
   - python39-skyfield 
   - python39-slack-sdk 
-  - python39-slackclient 
   - python39-slimit 
   - python39-slip 
   - python39-slip-dbus 
@@ -42780,7 +42771,6 @@ unsorted:
   - typelib-1_0-GstVulkanWayland-1_0 
   - typelib-1_0-GstVulkanXCB-1_0 
   - typelib-1_0-GstWebRTC-1_0 
-  - typelib-1_0-Gtk-2_0 
   - typelib-1_0-GtkLayerShell-0_1 
   - typelib-1_0-GtkSpell-3_0 
   - typelib-1_0-Gucharmap-2_90 
@@ -42849,7 +42839,6 @@ unsorted:
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-WebKit2WebExtension-4_1 
   - typelib-1_0-WebKit2WebExtension-5_0 
-  - typelib-1_0-Wnck-1_0 
   - typelib-1_0-Workrave-1_0 
   - typelib-1_0-Wp-0_4 
   - typelib-1_0-XApp-1_0 
