@@ -3034,6 +3034,8 @@ unsorted:
   - docker-buildx 
   - docker-client-java 
   - docker-client-java-javadoc 
+  - docker-compose 
+  - docker-compose-switch 
   - docker-fish-completion 
   - docker-kubic: [x86_64] 
   - docker-kubic-bash-completion: [x86_64] 
@@ -7829,6 +7831,7 @@ unsorted:
   - jisp2-javadoc 
   - jitterentropy-devel 
   - jitterentropy-devel-32bit: [x86_64] 
+  - jitterentropy-devel-static 
   - jlatexmath 
   - jlatexmath-fop 
   - jlatexmath-javadoc 
@@ -7964,7 +7967,6 @@ unsorted:
   - jupyter-ipyscales 
   - jupyter-ipyvolume 
   - jupyter-ipywebrtc 
-  - jupyter-jupyter-client: [i586] 
   - jupyter-jupyter-full-width 
   - jupyter-jupyter-themer 
   - jupyter-jupyter-wysiwyg 
@@ -12954,14 +12956,14 @@ unsorted:
   - libosmocoding0 
   - libosmocore-devel 
   - libosmocore-tools 
-  - libosmocore18 
+  - libosmocore19 
   - libosmoctrl-devel 
   - libosmoctrl0 
   - libosmodsp0 
   - libosmogb-devel 
-  - libosmogb12 
+  - libosmogb14 
   - libosmogsm-devel 
-  - libosmogsm17 
+  - libosmogsm18 
   - libosmonetif-devel 
   - libosmonetif8 
   - libosmosdr0 
@@ -20479,7 +20481,6 @@ unsorted:
   - perl-subunit 
   - perl-syntax 
   - perl-thrift 
-  - perl-version 
   - perl-warewulf-cluster: [x86_64] 
   - perl-warewulf-common: [x86_64] 
   - perl-warewulf-ipmi: [x86_64] 
@@ -22041,7 +22042,6 @@ unsorted:
   - python310-PyMeta3 
   - python310-PyMsgBox 
   - python310-PyMuPDF 
-  - python310-PyNaCl 
   - python310-PyNamecheap 
   - python310-PyOgg 
   - python310-PyOpenAL 
@@ -22240,7 +22240,6 @@ unsorted:
   - python310-astropy-healpix 
   - python310-astunparse 
   - python310-asv 
-  - python310-async_generator 
   - python310-asyncpg 
   - python310-asyncssh 
   - python310-atlassian-python-api 
@@ -22258,7 +22257,6 @@ unsorted:
   - python310-authres 
   - python310-autobahn 
   - python310-autocommand 
-  - python310-autodoc 
   - python310-autodocsumm 
   - python310-autoflake 
   - python310-autopage 
@@ -22572,7 +22570,6 @@ unsorted:
   - python310-base58 
   - python310-bashate 
   - python310-basictracer 
-  - python310-bcrypt 
   - python310-beartype 
   - python310-before-after 
   - python310-behave 
@@ -22789,7 +22786,6 @@ unsorted:
   - python310-ctypescrypto 
   - python310-cu2qu 
   - python310-cufflinks 
-  - python310-curio 
   - python310-curlylint 
   - python310-curtsies 
   - python310-cwcwidth 
@@ -22829,7 +22825,6 @@ unsorted:
   - python310-ddg3 
   - python310-ddt 
   - python310-deap 
-  - python310-debugpy: [i586] 
   - python310-deepdiff 
   - python310-deepmerge 
   - python310-defcon 
@@ -23025,7 +23020,6 @@ unsorted:
   - python310-encore 
   - python310-enrich 
   - python310-entrypoint2 
-  - python310-entrypoints: [i586] 
   - python310-environ-config 
   - python310-environmental-override 
   - python310-envisage 
@@ -23118,7 +23112,6 @@ unsorted:
   - python310-flufl.i18n 
   - python310-flufl.lock 
   - python310-flufl.testing 
-  - python310-fluidity-sm 
   - python310-flup 
   - python310-flynt 
   - python310-folium 
@@ -23202,7 +23195,6 @@ unsorted:
   - python310-graphene-django 
   - python310-graphql-core 
   - python310-graphql-relay 
-  - python310-graphviz 
   - python310-greenlet-devel 
   - python310-grpc-google-iam-v1 
   - python310-grpcio 
@@ -23212,7 +23204,6 @@ unsorted:
   - python310-gscholar 
   - python310-gsm0338 
   - python310-gspread 
-  - python310-gssapi 
   - python310-gst 
   - python310-gsw 
   - python310-guessit 
@@ -23316,7 +23307,6 @@ unsorted:
   - python310-intervals 
   - python310-intervaltree 
   - python310-invocations 
-  - python310-invoke 
   - python310-iocapture 
   - python310-ipdb 
   - python310-iptables 
@@ -23324,10 +23314,8 @@ unsorted:
   - python310-ipydatawidgets 
   - python310-ipyevents 
   - python310-ipyfilechooser 
-  - python310-ipykernel: [i586] 
   - python310-ipyleaflet 
   - python310-ipympl 
-  - python310-ipyparallel: [i586] 
   - python310-ipyscales 
   - python310-ipysheet 
   - python310-ipython_genutils: [i586] 
@@ -23398,8 +23386,6 @@ unsorted:
   - python310-junitxml 
   - python310-junos-eznc 
   - python310-jupyter: [i586] 
-  - python310-jupyter-client: [i586] 
-  - python310-jupyter-core: [i586] 
   - python310-jupyter-jupyterlab-server: [i586] 
   - python310-jupyter-jupyterlab-server-test 
   - python310-jupyter-kernel-test 
@@ -23476,7 +23462,6 @@ unsorted:
   - python310-leglight 
   - python310-lesscpy 
   - python310-leveldb 
-  - python310-lexicon 
   - python310-lfdfiles 
   - python310-lhafile 
   - python310-lib3to6 
@@ -23698,7 +23683,6 @@ unsorted:
   - python310-ndg-httpsclient 
   - python310-neovim 
   - python310-neovim-remote 
-  - python310-nest-asyncio: [i586] 
   - python310-nested-lookup 
   - python310-net-snmp 
   - python310-netCDF4 
@@ -23789,7 +23773,6 @@ unsorted:
   - python310-osmviz 
   - python310-ospd 
   - python310-ospd-openvas 
-  - python310-outcome 
   - python310-ovirt-engine-sdk 
   - python310-ovs 
   - python310-pa-ringbuffer 
@@ -23810,7 +23793,6 @@ unsorted:
   - python310-parallax 
   - python310-param 
   - python310-parameterized 
-  - python310-paramiko 
   - python310-paramiko-expect 
   - python310-parfive 
   - python310-parse 
@@ -24581,6 +24563,7 @@ unsorted:
   - python310-siphashc 
   - python310-sklearn-pandas 
   - python310-skyfield 
+  - python310-slack-sdk 
   - python310-slackclient 
   - python310-slimit 
   - python310-slixmpp 
@@ -24599,7 +24582,6 @@ unsorted:
   - python310-softlayer-zeep 
   - python310-sorl-thumbnail 
   - python310-sortedcollections 
-  - python310-sortedcontainers 
   - python310-sortinghat 
   - python310-sounddevice 
   - python310-sox 
@@ -24784,7 +24766,6 @@ unsorted:
   - python310-treq 
   - python310-tri.declarative 
   - python310-tri.struct 
-  - python310-trio 
   - python310-trove-classifiers 
   - python310-trustme 
   - python310-truststore 
@@ -25393,7 +25374,6 @@ unsorted:
   - python38-authres 
   - python38-autobahn 
   - python38-autocommand 
-  - python38-autodoc 
   - python38-autodocsumm 
   - python38-autoflake 
   - python38-autopage 
@@ -27875,6 +27855,7 @@ unsorted:
   - python38-six 
   - python38-sklearn-pandas 
   - python38-skyfield 
+  - python38-slack-sdk 
   - python38-slackclient 
   - python38-slimit 
   - python38-slip 
@@ -28710,7 +28691,6 @@ unsorted:
   - python39-authres 
   - python39-autobahn 
   - python39-autocommand 
-  - python39-autodoc 
   - python39-autodocsumm 
   - python39-autoflake 
   - python39-autopage 
@@ -31190,6 +31170,7 @@ unsorted:
   - python39-six 
   - python39-sklearn-pandas 
   - python39-skyfield 
+  - python39-slack-sdk 
   - python39-slackclient 
   - python39-slimit 
   - python39-slip 
@@ -43333,6 +43314,8 @@ unsorted:
   - vpx-tools 
   - vsqlite++-devel 
   - vst-lsp-plugins 
+  - vst-rnnoise 
+  - vst3-rnnoise 
   - vtable-dumper 
   - vtcl 
   - vte-devel 
