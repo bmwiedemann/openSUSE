@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug  1 13:05:10 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 1.16.2 (boo#1202031 boo#1202033)
+  * Features
+    - Merge #718: Introduce infra-cache-max-rtt option to config max
+      retransmit timeout.
+  * Bug Fixes
+    - Fix the novel ghost domain issues CVE-2022-30698 and CVE-2022-30699.
+    - Fix bug introduced in 'improve val_sigcrypt.c::algo_needs_missing for
+      one loop pass'.
+    - Merge PR #668 from Cristian Rodríguez: Set IP_BIND_ADDRESS_NO_PORT on
+      outbound tcp sockets.
+    - Fix verbose EDE error printout.
+    - Fix dname count in sldns parse type descriptor for SVCB and HTTPS.
+    - For windows crosscompile, fix setting the IPV6_MTU socket option
+      equivalent (IPV6_USER_MTU); allows cross compiling with latest
+      cross-compiler versions.
+    - Merge PR 714: Avoid treat normal hosts as unresponsive servers.
+      And fixup the lock code.
+    - iana portlist update.
+    - Update documentation for 'outbound-msg-retry:'.
+    - Tests for ghost domain fixes.
+
+-------------------------------------------------------------------
 Mon Jul 11 10:03:06 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.16.1
