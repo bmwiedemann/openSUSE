@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  1 11:15:42 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Add systemd drop-in directory for named service
+  [bsc#1201689, bind.spec]
+
+-------------------------------------------------------------------
 Thu Jul 21 06:51:58 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
 
 - Update to bind release 9.18.5

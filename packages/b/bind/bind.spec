@@ -365,6 +365,7 @@ mv vendor-files/config/rndc-access.conf %{buildroot}/%{_sysconfdir}/named.d
 	install -D -m 0644 %{_sourcedir}/named.root %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named/root.hint
 	install -m 0644 vendor-files/config/{127.0.0,localhost}.zone %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named
 	install -m 0644 bind.keys %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named/named.root.key
+	install -d -m 0755 %{buildroot}/%{_unitdir}/named.service.d
 %else
 	for file in named; do
 		install -m 0754 vendor-files/init/${file} %{buildroot}%{_initddir}/${file}
@@ -477,6 +478,7 @@ fi
 %attr(0644,root,root) %config /%{_sysconfdir}/slp.reg.d/bind.reg
 %if %{with_systemd}
 %{_unitdir}/named.service
+%dir %{_unitdir}/named.service.d
 %{_prefix}/lib/tmpfiles.d/bind.conf
 %{_sysusersdir}/named.conf
 %{_datadir}/factory
