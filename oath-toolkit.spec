@@ -16,6 +16,7 @@
 #
 
 
+%{!?_pam_moduledir: %define _pam_moduledir /%{_lib}/security}
 Name:           oath-toolkit
 Version:        2.6.7
 Release:        0
@@ -132,7 +133,7 @@ This subpackage contains the headers for this library.
 %build
 autoreconf -fiv
 %configure  \
-  --with-pam-dir=/%{_lib}/security \
+  --with-pam-dir=%{_pam_moduledir} \
   --with-libgcrypt \
   --disable-silent-rules \
   --disable-static
@@ -166,7 +167,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n pam_oath
 %doc pam_oath/README
 %license pam_oath/COPYING
-/%{_lib}/security/pam_oath.so
+%{_pam_moduledir}/pam_oath.so
 
 %files -n liboath0
 %license liboath/COPYING

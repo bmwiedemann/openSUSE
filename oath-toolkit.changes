@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  2 20:39:41 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Use %_pam_moduledir instead of hardcoding %{_lib}/security
+- Define macro _pam_moduledir if not set to fix builds for Leap and SLE
+
+-------------------------------------------------------------------
 Thu Apr 21 09:52:55 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - url -> https
