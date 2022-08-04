@@ -1,9 +1,9 @@
-Index: gnutls-3.6.15/lib/fips.c
+Index: gnutls-3.7.7/lib/fips.c
 ===================================================================
---- gnutls-3.6.15.orig/lib/fips.c	2020-09-03 16:59:05.000000000 +0200
-+++ gnutls-3.6.15/lib/fips.c	2020-11-10 12:51:40.420071675 +0100
-@@ -398,6 +398,28 @@ int _gnutls_fips_perform_self_checks2(vo
- 		goto error;
+--- gnutls-3.7.7.orig/lib/fips.c
++++ gnutls-3.7.7/lib/fips.c
+@@ -517,6 +517,26 @@ int _gnutls_fips_perform_self_checks2(vo
+ 		return gnutls_assert_val(GNUTLS_E_SELF_TEST_ERROR);
  	}
  
 +        /* KDF */
@@ -18,14 +18,12 @@ Index: gnutls-3.6.15/lib/fips.c
 +	ret = _gnutls_prf_raw(GNUTLS_MAC_SHA256, secret.size, secret.data,
 +		label.size, (char*)label.data, seed.size, seed.data, expected.size, derived);
 +	if (ret < 0) {
-+		gnutls_assert();
-+		goto error;
++		return gnutls_assert_val(GNUTLS_E_SELF_TEST_ERROR);
 +	}
 +
 +	ret = memcmp(derived, expected.data, expected.size);
 +	if (ret != 0) {
-+		gnutls_assert();
-+		goto error;
++		return gnutls_assert_val(GNUTLS_E_SELF_TEST_ERROR);
 +	}
 +
  	/* PK */

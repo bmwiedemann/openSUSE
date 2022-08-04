@@ -36,7 +36,7 @@
 %bcond_with tpm
 %bcond_without guile
 Name:           gnutls
-Version:        3.7.6
+Version:        3.7.7
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -50,8 +50,6 @@ Patch0:         gnutls-3.5.11-skip-trust-store-tests.patch
 Patch1:         gnutls-3.6.6-set_guile_site_dir.patch
 Patch2:         gnutls-FIPS-TLS_KDF_selftest.patch
 Patch3:         gnutls-FIPS-disable-failing-tests.patch
-#PATCH-FIX-SUSE bsc#1184669 FIPS: Additional PBKDF2 requirements for KAT
-Patch4:         gnutls-FIPS-PBKDF2-KAT-requirements.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge
@@ -91,7 +89,7 @@ BuildRequires:  libunbound-devel
 %endif
 %endif
 %if %{with guile}
-BuildRequires:  guile-devel
+BuildRequires:  guile-devel > 1.8
 %endif
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 BuildRequires:  crypto-policies
@@ -194,7 +192,7 @@ Files needed for software development using gnutls.
 Summary:        Guile wrappers for gnutls
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Other
-Requires:       guile
+Requires:       guile > 1.8
 
 %description guile
 GnuTLS Wrappers for GNU Guile, a dialect of Scheme.

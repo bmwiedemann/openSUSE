@@ -1572,4 +1572,12 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
     FIPS-140 mode when used in TLS (forwarded request 979523 from 1Antoine1)</comment>
     <requestid>979801</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>dd090da7cfc3a6479388151d2313d1fd</srcmd5>
+    <version>3.7.7</version>
+    <time>1659612161</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>991995</requestid>
+  </revision>
 </revisionlist>

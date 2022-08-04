@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Jul 29 14:29:17 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.7.7: [bsc#1202020, CVE-2022-2509]
+  * libgnutls: Fixed double free during verification of pkcs7
+    signatures. CVE-2022-2509
+  * libgnutls: gnutls_hkdf_expand now only accepts LENGTH argument
+    less than or equal to 255 times hash digest size, to comply with
+    RFC 5869 2.3.
+  * libgnutls: Length limit for TLS PSK usernames has been increased
+    from 128 to 65535 characters
+  * libgnutls: AES-GCM encryption function now limits plaintext
+    length to 2^39-256 bits, according to SP800-38D 5.2.1.1.
+  * libgnutls: New block cipher functions have been added to
+    transparently handle padding. gnutls_cipher_encrypt3 and
+    gnutls_cipher_decrypt3 can be used in combination of
+    GNUTLS_CIPHER_PADDING_PKCS7 flag to automatically add/remove
+    padding if the length of the original plaintext is not a multiple
+    of the block size.
+  * libgnutls: New function for manual FIPS self-testing.
+  * API and ABI modifications:
+    - gnutls_fips140_run_self_tests: New function
+    - gnutls_cipher_encrypt3: New function
+    - gnutls_cipher_decrypt3: New function
+    - gnutls_cipher_padding_flags_t: New enum
+  * guile: Guile 1.8 is no longer supported
+  * guile: Session record port treats premature termination as EOF Previously,
+    a 'gnutls-error' exception with the 'error/premature-termination' value
+    would be thrown while reading from a session record port when the
+    underlying session was terminated prematurely. This was inconvenient
+    since users of the port may not be prepared to handle such an exception.
+    Reading from the session record port now returns the end-of-file object
+    instead of throwing an exception, just like it would for a proper
+    session termination.
+  * guile: Session record ports can have a 'close' procedure. The
+    'session-record-port' procedure now takes an optional second parameter,
+    and a new 'set-session-record-port-close!' procedure is provided to
+    specify a 'close' procedure for a session record port. This 'close'
+    procedure lets users specify cleanup operations for when the port is
+    closed, such as closing the file descriptor or port that backs the
+    underlying session.
+  * Rebase patches:
+    - gnutls-3.6.6-set_guile_site_dir.patch
+    - gnutls-FIPS-TLS_KDF_selftest.patch
+    - gnutls-FIPS-disable-failing-tests.patch
+  * Remove patch merged upstream:
+    - gnutls-FIPS-PBKDF2-KAT-requirements.patch
+    - https://gitlab.com/gnutls/gnutls/merge_requests/1561
+
+-------------------------------------------------------------------
 Fri May 27 16:56:26 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 3.7.6:
