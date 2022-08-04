@@ -17,13 +17,14 @@
 
 
 Name:           opencc
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Open Chinese Convert
 License:        Apache-2.0
 Group:          System/I18n/Chinese
 URL:            https://github.com/BYVoid/OpenCC
 Source:         https://github.com/BYVoid/OpenCC/archive/ver.%{version}/OpenCC-ver.%{version}.tar.gz
+Patch1:         fix-soversion.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -73,6 +74,7 @@ This package provides development headers for OpenCC.
 
 %prep
 %setup -q -n OpenCC-ver.%{version}
+%patch1 -p1
 # call python3 with path
 sed -i \
     -e 's:BIN python:BIN /usr/bin/python3:g' \

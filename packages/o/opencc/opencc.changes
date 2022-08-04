@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug  1 22:04:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.4:
+  * Add python 3.10 support
+  * remove support for python < 3.7 and node 10.x
+  * small bugfixes 
+- add fix-soversion.patch for fixing the leftover .so version tag
+
+-------------------------------------------------------------------
 Mon Feb 14 21:28:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.3:
