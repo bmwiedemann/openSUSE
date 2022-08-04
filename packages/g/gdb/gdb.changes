@@ -1,4 +1,529 @@
 -------------------------------------------------------------------
+Sat Jul 30 07:24:23 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Add SLE-12/x86_64 to "known clean configs".
+  * Add fail for PR29405.
+  * Add fail for PR26915.
+
+-------------------------------------------------------------------
+Fri Jul 29 06:53:15 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Patches added:
+  * gdb-testsuite-fix-gdb.threads-killed-outside.exp-on-aarch64.patch
+- Maintenance script qa.sh:
+  * Remove PR29247 internal-error.
+  * Add SLE-15/aarch64 to "known clean configs".
+
+-------------------------------------------------------------------
+Thu Jul 28 05:48:21 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Patches added:
+  * gdb-fix-watchpoints-triggered.patch
+- Maintenance script qa.sh:
+  * Add kfails for PR25038, PR29253, and PR29423.
+  * Remove gdb.mi/mi-var-invalidate-shlib.exp kfails.
+- Mention qa-local.sh, qa-remote.sh and README.qa as sources.
+
+-------------------------------------------------------------------
+Wed Jul 27 06:26:34 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa-local.sh:
+  * Use have_combo consistently.
+- Maintenance script qa.sh:
+  * Add kfail_aarch64.
+  * Add PR29419/PR29409 kfails.
+  * Update PR29247 kfails.
+- Patches added:
+  * make-gdb.ada-float-bits.exp-more-generic.patch
+  * gdb-testsuite-fix-gdb.ada-literals.exp-with-aarch64.patch
+
+-------------------------------------------------------------------
+Tue Jul 26 06:56:40 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Actually apply fixup-gdb-test-bt-cfi-without-die.patch and
+  fixup-2-gdb-rhbz1553104-s390x-arch12-test.patch.
+
+-------------------------------------------------------------------
+Mon Jul 25 20:28:02 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Also remove gdb-6.5-readline-long-line-crash-test.patch from
+  patches list in gdb.spec.
+
+-------------------------------------------------------------------
+Mon Jul 25 08:11:07 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Patches added:
+  * powerpc-add-support-for-ieee-128-bit-format.patch
+  * powerpc-correct-the-gdb-ioctl-values-for-tcgets-tcsets-tcsetsw-and-tcsetsf.patch
+  * gdb-testsuite-remove-target-limits-in-gdb.base-catch-syscall.exp.patch
+  * powerpc-fix-for-gdb.base-eh_return.exp.patch
+  * fix-comparison-of-unsigned-long-int-to-int-in-record_linux_system_call.patch
+  * gdb-testsuite-fix-gdb.reverse-test_ioctl_tcsetsw.exp-with-libc-debuginfo.patch
+  * fixup-gdb-test-bt-cfi-without-die.patch
+  * fix-core-file-detach-crash-corefiles-29275.patch
+  * gdb-testsuite-fix-gdb.dwarf2-dw2-out-of-range-end-of-seq.exp-on-aarch64.patch
+  * gdb-testsuite-fix-gdb.base-catch-syscall.exp-without-enable-targets.patch
+  * gdb-testsuite-fix-gdb.base-catch-syscall.exp-with-with-expat-no.patch
+  * fix-for-gdb.base-solib-search.exp-test.patch
+- Patch removed:
+  * gdb-6.7-ppc-clobbered-registers-O2-test.patch
+  * gdb-6.5-readline-long-line-crash-test.patch
+- Patches updated:
+  * gdb-tdep-update-syscalls-ppc64-ppc-linux.xml.patch
+  * gdb-testsuite-handle-pipe2-syscall-in-gdb.base-catch-syscall.exp.patch
+
+-------------------------------------------------------------------
+Wed Jun 22 14:31:30 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Add PR28504 KFAILs.
+  * Make .sum file matching less complex.
+  * Add fedora test-case kfail.
+- Maintenance script qa-local.sh:
+  * Fix incorrect path name.
+- Update comments in gdb.spec.
+- Patches added:
+  * powerpc-update-expected-floating-point-output-for-gdb.arch-altivec-regs.exp-and-gdb.arch-vsx-regs.exp.patch
+
+-------------------------------------------------------------------
+Wed Jun 22 12:41:23 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Patches updated:
+  * gdb-testsuite-support-recording-of-getrandom.patch
+    (add aarch64 part)
+- Maintenance script qa.sh:
+  * Add i586 to known clean configs.
+
+-------------------------------------------------------------------
+Tue Jun 21 21:22:58 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Patches added:
+  * gdb-testsuite-enable-some-test-cases-for-x86_64-m32.patch
+  * gdb-testsuite-fix-gdb.reverse-i387-env-reverse.exp-for-pie.patch
+  * gdb-testsuite-support-recording-of-getrandom.patch
+- Patches updated:
+  * gdb-record-handle-statx-system-call.patch
+- Maintenance script qa.sh:
+  * Allow only two summary files, for i586.
+  * Add i586 KFAILs. 
+- Maintenance script qa-local.sh:
+  * Add i586.
+
+-------------------------------------------------------------------
+Thu Jun 16 13:23:31 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa-local.sh:
+  * Fix rpm pathname.
+- Maintenance script qa-remote.sh:
+  * Skip stale config openSUSE_Leap_15.2.
+- Maintenance script qa.sh:
+  * Drop known clean config: Leap 15.2 x86_64.
+
+-------------------------------------------------------------------
+Mon Jun 13 09:37:45 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa-local.sh:
+  * Add cleanup step.
+  * Add "build all configs without testsuite" step.
+  * For "build all configs with testsuite" step, redirect output
+    to log and produce PASS/FAIL line, and make sure buildroot is
+    removed also in case of missing rpm.
+  * Use "--clean --trust-all-projects" for osc build commands.
+* Drop openSUSE_Leap_15.2.
+- Maintenance script qa.sh:
+  * Rename argument 6 to -local.
+  * Add PR29247 KFAILs.
+  * Update internal-error regexps.
+- New maintenance script qa-remote.sh.
+- Add "build all configs without testsuite" step in README.qa.
+- Patches added (backport from trunk):
+  * gdb-testsuite-remove-attach-test-from-can_spawn_for_attach.patch
+- README.qa:
+  * Add remote qa entry.
+  * Update local qa entry:
+    * Add notes entry.
+    * Other updates to match changes in qa-local.sh.
+
+-------------------------------------------------------------------
+Mon Jun 13 03:16:35 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Fix installed but unpackaged /usr/share/info/ctf-spec.info.gz.
+
+-------------------------------------------------------------------
+Sat Jun 11 22:51:37 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Rebase to 12.1 release (as in fedora 36 @ 89947a7):
+  * DBX mode is deprecated, and will be removed in GDB 13.
+
+  * GDB 12 is the last release of GDB that will support building against
+    Python 2.  From GDB 13, it will only be possible to build GDB itself
+    with Python 3 support.
+
+  * Improved C++ template support:
+    GDB now treats functions/types involving C++ templates like it does function
+    overloads.  Users may omit parameter lists to set breakpoints on families of
+    template functions, including types/functions composed of multiple template types:
+      (gdb) break template_func(template_1, int)
+    The above will set breakpoints at every function `template_func' where
+    the first function parameter is any template type named `template_1' and
+    the second function parameter is `int'.
+    TAB completion also gains similar improvements.
+
+  * New commands:
+
+    maint set backtrace-on-fatal-signal on|off
+    maint show backtrace-on-fatal-signal
+    This setting is 'on' by default.  When 'on' GDB will print a limited
+    backtrace to stderr in the situation where GDB terminates with a
+    fatal signal.  This only supported on some platforms where the
+    backtrace and backtrace_symbols_fd functions are available.
+
+    set source open on|off
+    show source open
+    This setting, which is on by default, controls whether GDB will try
+    to open source code files.  Switching this off will stop GDB trying
+    to open and read source code files, which can be useful if the files
+    are located over a slow network connection.
+
+    set varsize-limit
+    show varsize-limit
+    These are now deprecated aliases for "set max-value-size" and
+    "show max-value-size".
+
+    task apply [all | TASK-IDS...] [FLAG]... COMMAND
+    Like "thread apply", but applies COMMAND to Ada tasks.
+
+    watch [...] task ID
+    Watchpoints can now be restricted to a specific Ada task.
+
+    maint set internal-error backtrace on|off
+    maint show internal-error backtrace
+    maint set internal-warning backtrace on|off
+    maint show internal-warning backtrace
+    GDB can now print a backtrace of itself when it encounters either an
+    internal-error, or an internal-warning.  This is on by default for
+    internal-error and off by default for internal-warning.
+
+    set logging on|off
+    Deprecated and replaced by "set logging enabled on|off".
+
+    set logging enabled on|off
+    show logging enabled
+    These commands set or show whether logging is enabled or disabled.
+
+    exit
+    You can now exit GDB by using the new command "exit", in addition to
+    the existing "quit" command.
+
+    set debug threads on|off
+    show debug threads
+    Print additional debug messages about thread creation and deletion.
+
+    set debug linux-nat on|off
+    show debug linux-nat
+    These new commands replaced the old 'set debug lin-lwp' and 'show
+    debug lin-lwp' respectively.  Turning this setting on prints debug
+    messages relating to GDB's handling of native Linux inferiors.
+
+    maint flush source-cache
+    Flush the contents of the source code cache.
+
+    maint set gnu-source-highlight enabled on|off
+    maint show gnu-source-highlight enabled
+    Whether GDB should use the GNU Source Highlight library for adding
+    styling to source code.  When off, the library will not be used, even
+    when available.  When GNU Source Highlight isn't used, or can't add
+    styling to a particular source file, then the Python Pygments
+    library will be used instead.
+
+    set suppress-cli-notifications (on|off)
+    show suppress-cli-notifications
+    This controls whether printing the notifications is suppressed for CLI.
+    CLI notifications occur when you change the selected context
+    (i.e., the current inferior, thread and/or the frame), or when
+    the program being debugged stops (e.g., because of hitting a
+    breakpoint, completing source-stepping, an interrupt, etc.).
+
+    set style disassembler enabled on|off
+    show style disassembler enabled
+    If GDB is compiled with Python support, and the Python Pygments
+    package is available, then, when this setting is on, disassembler
+    output will have styling applied.
+
+    set ada source-charset
+    show ada source-charset
+    Set the character set encoding that is assumed for Ada symbols.  Valid
+    values for this follow the values that can be passed to the GNAT
+    compiler via the '-gnati' option.  The default is ISO-8859-1.
+
+  * Changed commands:
+
+    print
+    Printing of floating-point values with base-modifying formats like
+    /x has been changed to display the underlying bytes of the value in
+    the desired base.  This was GDB's documented behavior, but was never
+    implemented correctly.
+
+    maint packet
+    This command can now print a reply, if the reply includes
+    non-printable characters.  Any non-printable characters are printed
+    as escaped hex, e.g. \x?? where '??' is replaces with the value of
+    the non-printable character.
+
+    clone-inferior
+    The clone-inferior command now ensures that the TTY, CMD and ARGS
+    settings are copied from the original inferior to the new one.
+    All modifications to the environment variables done using the 'set
+    environment' or 'unset environment' commands are also copied to the new
+    inferior.
+
+    set debug lin-lwp on|off
+    show debug lin-lwp
+    These commands have been removed from GDB.  The new command 'set
+    debug linux-nat' and 'show debug linux-nat' should be used
+    instead.
+
+    info win
+    This command now includes information about the width of the tui
+    windows in its output.
+
+  * GDB's Ada parser now supports an extension for specifying the exact
+    byte contents of a floating-point literal.  This can be useful for
+    setting floating-point registers to a precise value without loss of
+    precision.  The syntax is an extension of the based literal syntax.
+    Use, e.g., "16lf#0123abcd#" -- the number of "l"s controls the width
+    of the floating-point type, and the "f" is the marker for floating
+    point.
+
+  * MI changes:
+
+   ** The '-add-inferior' with no option flags now inherits the
+      connection of the current inferior, this restores the behaviour of
+      GDB as it was prior to GDB 10.
+
+   ** The '-add-inferior' command now accepts a '--no-connection'
+      option, which causes the new inferior to start without a
+      connection.
+
+  * Python API:
+
+    ** New function gdb.add_history(), which takes a gdb.Value object
+       and adds the value it represents to GDB's history list.  An
+       integer, the index of the new item in the history list, is
+       returned.
+
+    ** New function gdb.history_count(), which returns the number of
+       values in GDB's value history.
+
+    ** New gdb.events.gdb_exiting event.  This event is called with a
+       gdb.GdbExitingEvent object which has the read-only attribute
+       'exit_code', which contains the value of the GDB exit code.  This
+       event is triggered once GDB decides it is going to exit, but
+       before GDB starts to clean up its internal state.
+
+    ** New function gdb.architecture_names(), which returns a list
+       containing all of the possible Architecture.name() values.  Each
+       entry is a string.
+
+    ** New function gdb.Architecture.integer_type(), which returns an
+       integer type given a size and a signed-ness.
+
+    ** New gdb.TargetConnection object type that represents a connection
+       (as displayed by the 'info connections' command).  A sub-class,
+       gdb.RemoteTargetConnection, is used to represent 'remote' and
+       'extended-remote' connections.
+
+    ** The gdb.Inferior type now has a 'connection' property which is an
+       instance of gdb.TargetConnection, the connection used by this
+       inferior.  This can be None if the inferior has no connection.
+
+    ** New 'gdb.events.connection_removed' event registry, which emits a
+       'gdb.ConnectionEvent' when a connection is removed from GDB.
+       This event has a 'connection' property, a gdb.TargetConnection
+       object for the connection being removed.
+
+    ** New gdb.connections() function that returns a list of all
+       currently active connections.
+
+    ** New gdb.RemoteTargetConnection.send_packet(PACKET) method.  This
+       is equivalent to the existing 'maint packet' CLI command; it
+       allows a user specified packet to be sent to the remote target.
+
+    ** New function gdb.host_charset(), returns a string, which is the
+       name of the current host charset.
+
+    ** New gdb.set_parameter(NAME, VALUE).  This sets the gdb parameter
+       NAME to VALUE.
+
+    ** New gdb.with_parameter(NAME, VALUE).  This returns a context
+       manager that temporarily sets the gdb parameter NAME to VALUE,
+       then resets it when the context is exited.
+
+    ** The gdb.Value.format_string method now takes a 'styling'
+       argument, which is a boolean.  When true, the returned string can
+       include escape sequences to apply styling.  The styling will only
+       be present if styling is otherwise turned on in GDB (see 'help
+       set styling').  When false, which is the default if the argument
+       is not given, then no styling is applied to the returned string.
+
+    ** New read-only attribute gdb.InferiorThread.details, which is
+       either a string, containing additional, target specific thread
+       state information, or None, if there is no such additional
+       information.
+
+    ** New read-only attribute gdb.Type.is_scalar, which is True for
+       scalar types, and False for all other types.
+
+    ** New read-only attribute gdb.Type.is_signed.  This attribute
+       should only be read when Type.is_scalar is True, and will be True
+       for signed types, and False for all other types.  Attempting to
+       read this attribute for non-scalar types will raise a ValueError.
+
+    ** It is now possible to add GDB/MI commands implemented in Python.
+
+- Update libipt to v2.0.5.
+- Patches added:
+  * gdb-6.3-rh-testversion-20041202.patch
+  * gdb-6.5-BEA-testsuite.patch
+  * gdb-6.6-buildid-locate-misleading-warning-missing-debuginfo-rhbz981154.patch
+  * gdb-6.7-charsign-test.patch
+  * gdb-6.8-bz466901-backtrace-full-prelinked.patch
+  * gdb-fix-for-gdb.base-eof-exit.exp-test-failures.patch
+  * gdb-improved-eof-handling-when-using-readline-7.patch
+  * gdb-libexec-add-index.patch
+  * gdb-tdep-detect-get_pc_thunk-call-in-i386-prologue.patch
+  * gdb-testsuite-address-test-failures-in-gdb.mi-mi-multi-commands.exp.patch
+  * gdb-testsuite-detect-change-instead-of-init-in-gdb.mi-mi-var-block.exp.patch
+  * gdb-testsuite-fix-gdb.opt-clobbered-registers-o2.exp-with-gcc-12.patch
+  * gdb-testsuite-fix-occasional-failure-in-gdb.mi-mi-multi-commands.exp.patch
+  * gdb-testsuite-fix-test-failure-when-building-against-readline-v7.patch
+  * gdb-testsuite-handle-older-python-in-gdb.python-py-send-packet.py.patch
+  * gdb-testsuite-handle-quotes-in-gdb_py_module_available.patch
+  * gdb-testsuite-handle-unordered-dict-in-gdb.python-py-mi-cmd.exp.patch
+  * gdb-testsuite-skip-gdb.fortran-namelist.exp-for-gfortran-4.8.patch
+  * gdb-testsuite-workaround-unnecessary-.s-file-with-gfortran-4.8.patch
+- Patches dropped:
+  * aarch64-make-gdbserver-register-set-selection-dynamic.patch
+  * fix-build-with-current-gcc-el_explicit-location-always-non-null.patch
+  * fix-gdb.base-sigstep.exp-test-for-ppc.patch
+  * fix-gdb.multi-multi-term-settings.exp-race.patch
+  * fixup-2-gdb-6.6-buildid-locate.patch
+  * fixup-gdb-6.6-buildid-locate.patch
+  * gdb-6.3-inferior-notification-20050721.patch
+  * gdb-ada-fix-assert-in-ada_is_unconstrained_packed_array_type.patch
+  * gdb-build-add-cxx_dialect-to-cxx.patch
+  * gdb-build-make-c-exp.y-work-with-bison-3.8.patch
+  * gdb-doc-fix-print-inferior-events-default.patch
+  * gdb-exp-improve-error-reading-variable-message.patch
+  * gdb-fortran-handle-dw-at-string-length-with-loclistptr.patch
+  * gdb-r_version-check.patch
+  * gdb-rhbz1976887-field-location-kind.patch
+  * gdb-rhbz2012976-paper-over-fortran-lex-problems.patch
+  * gdb-symtab-add-call_site_eq-and-call_site_hash.patch
+  * gdb-symtab-c-ify-call_site.patch
+  * gdb-symtab-fix-htab_find_slot-call-in-read_call_site_scope.patch
+  * gdb-symtab-fix-segfault-in-search_one_symtab.patch
+  * gdb-symtab-remove-compunit_call_site_htab.patch
+  * gdb-symtab-use-unrelocated-addresses-in-call_site.patch
+  * gdb-tdep-fix-avx512-m32-support-in-gdbserver.patch
+  * gdb-tdep-rs6000-don-t-skip-system-call-in-skip_prologue.patch
+  * gdb-test-for-rhbz1976887.patch
+  * gdb-testsuite-add-gdb.arch-ppc64-break-on-_exit.exp.patch
+  * gdb-testsuite-add-gdb.opt-break-on-_exit.exp.patch
+  * gdb-testsuite-add-gdb.testsuite-dump-system-info.exp.patch
+  * gdb-testsuite-add-missing-wait-in-gdb.base-signals-state-child.exp.patch
+  * gdb-testsuite-add-nopie-in-two-test-cases.patch
+  * gdb-testsuite-detect-no-mpx-support.patch
+  * gdb-testsuite-disable-inferior-output-in-gdb.base-foll-vfork.exp.patch
+  * gdb-testsuite-don-t-error-when-trying-to-unset-last_spawn_tty_name.patch
+  * gdb-testsuite-factor-out-dump_info-in-gdb.testsuite-dump-system-info.exp.patch
+  * gdb-testsuite-fix-assembly-comments-in-gdb.dwarf2-clang-debug-names.exp.tcl.patch
+  * gdb-testsuite-fix-data-alignment-in-gdb.arch-i386-avx-sse-.exp.patch
+  * gdb-testsuite-fix-fail-in-gdb.base-annota1.exp.patch
+  * gdb-testsuite-fix-fail-in-gdb.tui-basic.exp.patch
+  * gdb-testsuite-fix-fail-in-gdb.tui-corefile-run.exp.patch
+  * gdb-testsuite-fix-gdb.ada-big_packed_array.exp-xfail-for-m32.patch
+  * gdb-testsuite-fix-gdb.arch-i386-pkru.exp-on-linux.patch
+  * gdb-testsuite-fix-gdb.base-annota1.exp-with-pie.patch
+  * gdb-testsuite-fix-gdb.base-dcache-flush.exp.patch
+  * gdb-testsuite-fix-gdb.gdb-selftest.exp.patch
+  * gdb-testsuite-fix-gdb.guile-scm-type.exp-with-gcc-4.8.patch
+  * gdb-testsuite-fix-gdb.python-py-events.exp.patch
+  * gdb-testsuite-fix-gdb.server-server-kill.exp-with-m32.patch
+  * gdb-testsuite-fix-gdb.threads-check-libthread-db.exp-with-glibc-2.34.patch
+  * gdb-testsuite-fix-gdb.threads-linux-dp.exp.patch
+  * gdb-testsuite-fix-gdb.threads-thread-specific-bp.exp.patch
+  * gdb-testsuite-fix-port-detection-in-gdb.debuginfod-fetch_src_and_symbols.exp.patch
+  * gdb-testsuite-fix-regexp-in-gdb.base-foll-vfork.exp.patch
+  * gdb-testsuite-fix-stepi-test-cases-with-unix-m32-fpie-pie.patch
+  * gdb-testsuite-handle-recursive-internal-problem-in-gdb_internal_error_resync.patch
+  * gdb-testsuite-handle-runto-fail-in-gdb.mi-mi-var-cp.exp.patch
+  * gdb-testsuite-handle-sigill-in-two-gdb.arch-powerpc-test-cases.patch
+  * gdb-testsuite-handle-supports_memtag-in-gdb.base-gdb-caching-proc.exp.patch
+  * gdb-testsuite-make-gdb.base-annota1.exp-more-robust.patch
+  * gdb-testsuite-refactor-regexp-in-gdb.base-annota1.exp.patch
+  * gdb-testsuite-support-fpie-fno-pie-pie-no-pie-in-gdb_compile_rust.patch
+  * gdb-testsuite-update-test-gdb.base-step-over-syscall.exp.patch
+  * gdb-testsuite-use-compiler-generated-instead-of-gas-generated-stabs.patch
+  * gdb-tui-fix-breakpoint-display-functionality.patch
+  * ibm-z-add-another-arch14-instruction.patch
+  * ibm-z-remove-lpswey-parameter.patch
+- Patched updated:
+  * gdb-6.3-gstack-20050411.patch
+  * gdb-6.5-bz185337-resolve-tls-without-debuginfo-v2.patch
+  * gdb-6.6-buildid-locate-rpm-librpm-workaround.patch
+  * gdb-6.6-buildid-locate-rpm-scl.patch
+  * gdb-6.6-buildid-locate-rpm.patch
+  * gdb-6.6-buildid-locate-solib-missing-ids.patch
+  * gdb-6.6-buildid-locate.patch
+  * gdb-cli-add-ignore-errors-command.patch
+  * gdb-container-rh-pkg.patch
+  * gdb-core-open-vdso-warning.patch
+  * gdb-fedora-libncursesw.patch
+  * gdb-gcore-bash.patch
+  * gdb-linux_perf-bundle.patch
+  * gdb-testsuite-handle-init-errors-in-gdb.mi-user-selected-context-sync.exp.patch
+- Add BuildRequires python-xml.
+- Maintenance script qa.sh:
+  * Add -sle-12 and -factory options.
+  * Handle *.-fPIE.-pie.sum files.
+  * Add KFAILs for PRs 26292, 29238, 25059, 29240, 29241, 29244,
+    29245, 29160, 29196.
+  * Move PR27539 KFAILs from kfail_factory to kfail.
+- New maintenance script qa-local.sh.
+- New file README.qa.
+
+-------------------------------------------------------------------
+Mon May  9 12:05:38 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (trunk backport):
+  * gdb-testsuite-detect-no-mpx-support.patch
+  * gdb-testsuite-handle-init-errors-in-gdb.mi-user-selected-context-sync.exp.patch
+  * gdb-add-gdb-syscalls-makefile.patch
+- Patches added (ml backport):
+  * gdb-update-syscalls-amd64-i386-linux.xml.patch
+  * gdb-record-handle-statx-system-call.patch
+- Patches added (to be upstreamed):
+  * gdb-tdep-update-syscalls-ppc64-ppc-linux.xml.patch
+- Maintenance script qa.sh:
+  * Add another KFAIL for PR27027.
+  * Remove PR28461 KFAIL.
+
+-------------------------------------------------------------------
+Wed May  4 13:49:10 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- patches added (trunk backport):
+  * gdb-testsuite-make-gdb.base-annota1.exp-more-robust.patch
+  * gdb-testsuite-fix-gdb.base-annota1.exp-with-pie.patch
+- patches added (gdb-patches ml backport):
+  * gdb-tdep-handle-pipe2-syscall-for-amd64.patch
+  * gdb-testsuite-handle-pipe2-syscall-in-gdb.base-catch-syscall.exp.patch
+  * gdb-tdep-support-catch-syscall-pipe2-for-i386.patch
+- Maintenance script qa.sh:
+  * Add Leap 15.4 x86_64 to know good configs.
+
+-------------------------------------------------------------------
 Fri Apr 29 13:27:04 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Remove dependency on binutils-gold as the package will be removed

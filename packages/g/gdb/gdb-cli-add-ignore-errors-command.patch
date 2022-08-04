@@ -69,7 +69,7 @@ gdb/testsuite/ChangeLog:
  4 files changed, 68 insertions(+), 1 deletion(-)
 
 diff --git a/gdb/cli/cli-cmds.c b/gdb/cli/cli-cmds.c
-index 56ae12a0c19..ce8af45a925 100644
+index 31d398cb13b..4eff591b3df 100644
 --- a/gdb/cli/cli-cmds.c
 +++ b/gdb/cli/cli-cmds.c
 @@ -39,6 +39,7 @@
@@ -80,8 +80,8 @@ index 56ae12a0c19..ce8af45a925 100644
  
  #include "ui-out.h"
  #include "interps.h"
-@@ -2249,6 +2250,34 @@ gdb_maint_setting_str_internal_fn (struct gdbarch *gdbarch,
- 				 gdbarch);
+@@ -2399,6 +2400,34 @@ gdb_maint_setting_str_internal_fn (struct gdbarch *gdbarch,
+   return str_value_from_setting (*show_cmd->var, gdbarch);
  }
  
 +/* Completer for "ignore-errors".  */
@@ -115,7 +115,7 @@ index 56ae12a0c19..ce8af45a925 100644
  void _initialize_cli_cmds ();
  void
  _initialize_cli_cmds ()
-@@ -2625,4 +2654,10 @@ when GDB is started."), GDBINIT);
+@@ -2786,4 +2815,10 @@ when GDB is started."), GDBINIT).release ();
    c = add_cmd ("source", class_support, source_command,
  	       source_help_text, &cmdlist);
    set_cmd_completer (c, filename_completer);
@@ -127,10 +127,10 @@ index 56ae12a0c19..ce8af45a925 100644
 +  set_cmd_completer (c, ignore_errors_command_completer);
  }
 diff --git a/gdb/doc/gdb.texinfo b/gdb/doc/gdb.texinfo
-index 025d6bec42a..1700b0305c5 100644
+index 1cf3550885e..68e11585942 100644
 --- a/gdb/doc/gdb.texinfo
 +++ b/gdb/doc/gdb.texinfo
-@@ -27508,7 +27508,8 @@ The lines in a command file are generally executed sequentially,
+@@ -27680,7 +27680,8 @@ The lines in a command file are generally executed sequentially,
  unless the order of execution is changed by one of the
  @emph{flow-control commands} described below.  The commands are not
  printed as they are executed.  An error in any command terminates
@@ -140,7 +140,7 @@ index 025d6bec42a..1700b0305c5 100644
  
  @value{GDBN} first searches for @var{filename} in the current directory.
  If the file is not found there, and @var{filename} does not specify a
-@@ -27603,6 +27604,11 @@ the controlling expression.
+@@ -27775,6 +27776,11 @@ the controlling expression.
  @item end
  Terminate the block of commands that are the body of @code{if},
  @code{else}, or @code{while} flow-control commands.

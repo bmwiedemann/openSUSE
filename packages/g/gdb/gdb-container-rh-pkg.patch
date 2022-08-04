@@ -9,7 +9,7 @@ Subject: gdb-container-rh-pkg.patch
 diff --git a/gdb/remote.c b/gdb/remote.c
 --- a/gdb/remote.c
 +++ b/gdb/remote.c
-@@ -14290,7 +14290,17 @@ remote_target::pid_to_exec_file (int pid)
+@@ -14343,7 +14343,17 @@ remote_target::pid_to_exec_file (int pid)
    char *annex = NULL;
  
    if (packet_support (PACKET_qXfer_exec_file) != PACKET_ENABLE)
