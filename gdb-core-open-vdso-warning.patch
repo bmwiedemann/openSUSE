@@ -27,7 +27,7 @@ diff --git a/gdb/testsuite/gdb.base/solib-symbol.exp b/gdb/testsuite/gdb.base/so
  
  if [get_compiler_info] {
      return -1
-@@ -71,8 +72,26 @@ gdb_test "br foo2" \
+@@ -70,8 +71,26 @@ gdb_test "br foo2" \
  	 "Breakpoint.*: foo2. .2 locations..*" \
  	 "foo2 in mdlib"
  

@@ -68,7 +68,7 @@ Group:          Development/Languages/C and C++
 %endif
 Name:           gdb%{name_suffix}
 
-Version:        11.1
+Version:        12.1
 Release:        0
 
 # The release always contains a leading reserved number, start it at 1.
@@ -127,7 +127,7 @@ Source4:        gdbinit
 Source5:        gdbinit.without-python
 
 # libipt: Intel Processor Trace Decoder Library
-%global libipt_version 2.0.4
+%global libipt_version 2.0.5
 Source7:        v%{libipt_version}.tar.gz
 
 # Infrastructure to sync patches from the Fedora rpm
@@ -140,6 +140,9 @@ Source13:       gdb-rpmlintrc
 Source14:       clean.sh
 Source15:       import-patches.sh
 Source16:       qa.sh
+Source17:       qa-local.sh
+Source18:       qa-remote.sh
+Source19:       README.qa
 
 %if %{build_testsuite}
 NoSource:       0
@@ -155,83 +158,80 @@ NoSource:       13
 NoSource:       14
 NoSource:       15
 NoSource:       16
+NoSource:       17
+NoSource:       18
+NoSource:       19
 %endif
 
-# Fedora import from branch f35, commit 9cd9368 "Rebase to FSF GDB 11.1."
+# Fedora import from branch f36, commit 89947a7 "Rebase to FSF GDB 12.1."
 
 #Fedora Packages begin
 Patch2:         gdb-6.3-gstack-20050411.patch
 Patch3:         gdb-6.3-test-dtorfix-20050121.patch
 Patch4:         gdb-6.3-test-movedir-20050125.patch
 Patch5:         gdb-6.3-threaded-watchpoints2-20050225.patch
-Patch6:         gdb-6.3-inferior-notification-20050721.patch
-Patch7:         gdb-6.3-inheritancetest-20050726.patch
-Patch8:         gdb-6.5-bz185337-resolve-tls-without-debuginfo-v2.patch
-Patch9:         gdb-6.5-sharedlibrary-path.patch
-Patch11:        gdb-6.5-last-address-space-byte-test.patch
-Patch12:        gdb-6.5-readline-long-line-crash-test.patch
-Patch13:        gdb-6.5-bz218379-ppc-solib-trampoline-test.patch
-Patch14:        gdb-6.5-bz109921-DW_AT_decl_file-test.patch
-Patch15:        gdb-6.3-bz140532-ppc-unwinding-test.patch
-Patch16:        gdb-6.3-bz202689-exec-from-pthread-test.patch
-Patch17:        gdb-6.6-bz230000-power6-disassembly-test.patch
-Patch18:        gdb-6.6-bz229517-gcore-without-terminal.patch
-Patch19:        gdb-6.6-testsuite-timeouts.patch
-Patch20:        gdb-6.6-bz237572-ppc-atomic-sequence-test.patch
-Patch21:        gdb-6.3-attach-see-vdso-test.patch
-Patch22:        gdb-6.5-bz243845-stale-testing-zombie-test.patch
-Patch23:        gdb-6.6-buildid-locate.patch
-Patch24:        gdb-6.6-buildid-locate-solib-missing-ids.patch
-Patch25:        gdb-6.6-buildid-locate-rpm.patch
-Patch27:        gdb-6.7-ppc-clobbered-registers-O2-test.patch
-Patch28:        gdb-6.7-testsuite-stable-results.patch
-Patch29:        gdb-6.5-ia64-libunwind-leak-test.patch
-Patch30:        gdb-6.5-missed-trap-on-step-test.patch
-Patch31:        gdb-6.5-gcore-buffer-limit-test.patch
-Patch32:        gdb-6.3-mapping-zero-inode-test.patch
-Patch33:        gdb-6.3-focus-cmd-prev-test.patch
-Patch34:        gdb-6.8-bz442765-threaded-exec-test.patch
-Patch35:        gdb-6.5-section-num-fixup-test.patch
-Patch37:        gdb-simultaneous-step-resume-breakpoint-test.patch
-Patch38:        gdb-core-open-vdso-warning.patch
-Patch39:        gdb-ccache-workaround.patch
-Patch40:        gdb-lineno-makeup-test.patch
-Patch41:        gdb-ppc-power7-test.patch
-Patch42:        gdb-archer-next-over-throw-cxx-exec.patch
-Patch43:        gdb-bz601887-dwarf4-rh-test.patch
-Patch44:        gdb-6.6-buildid-locate-rpm-librpm-workaround.patch
-Patch45:        gdb-test-bt-cfi-without-die.patch
-Patch46:        gdb-bz634108-solib_address.patch
-Patch47:        gdb-test-pid0-core.patch
-Patch48:        gdb-test-dw2-aranges.patch
-Patch49:        gdb-test-expr-cumulative-archer.patch
-Patch50:        gdb-physname-pr11734-test.patch
-Patch51:        gdb-physname-pr12273-test.patch
-Patch52:        gdb-test-ivy-bridge.patch
-Patch53:        gdb-runtest-pie-override.patch
-Patch54:        gdb-glibc-strstr-workaround.patch
-Patch55:        gdb-rhel5.9-testcase-xlf-var-inside-mod.patch
-Patch56:        gdb-rhbz-818343-set-solib-absolute-prefix-testcase.patch
-Patch57:        gdb-rhbz947564-findvar-assertion-frame-failed-testcase.patch
-Patch58:        gdb-rhbz1007614-memleak-infpy_read_memory-test.patch
-Patch60:        gdb-fortran-frame-string.patch
-Patch61:        gdb-rhbz1156192-recursive-dlopen-test.patch
-Patch62:        gdb-rhbz1149205-catch-syscall-after-fork-test.patch
-Patch63:        gdb-rhbz1186476-internal-error-unqualified-name-re-set-test.patch
-Patch64:        gdb-rhbz1350436-type-printers-error.patch
-Patch65:        gdb-rhbz1084404-ppc64-s390x-wrong-prologue-skip-O2-g-3of3.patch
-Patch66:        gdb-fedora-libncursesw.patch
-Patch67:        gdb-opcodes-clflushopt-test.patch
-Patch68:        gdb-6.6-buildid-locate-rpm-scl.patch
-Patch69:        gdb-rhbz1261564-aarch64-hw-watchpoint-test.patch
-Patch70:        gdb-container-rh-pkg.patch
-Patch71:        gdb-rhbz1325795-framefilters-test.patch
-Patch72:        gdb-linux_perf-bundle.patch
-Patch74:        gdb-rhbz1398387-tab-crash-test.patch
-Patch75:        gdb-rhbz1553104-s390x-arch12-test.patch
-Patch76:        gdb-rhbz1976887-field-location-kind.patch
-Patch77:        gdb-test-for-rhbz1976887.patch
-Patch78:        gdb-rhbz2012976-paper-over-fortran-lex-problems.patch
+Patch6:         gdb-6.3-inheritancetest-20050726.patch
+Patch7:         gdb-6.5-bz185337-resolve-tls-without-debuginfo-v2.patch
+Patch8:         gdb-6.5-sharedlibrary-path.patch
+Patch10:        gdb-6.5-last-address-space-byte-test.patch
+Patch12:        gdb-6.5-bz218379-ppc-solib-trampoline-test.patch
+Patch13:        gdb-6.5-bz109921-DW_AT_decl_file-test.patch
+Patch14:        gdb-6.3-bz140532-ppc-unwinding-test.patch
+Patch15:        gdb-6.3-bz202689-exec-from-pthread-test.patch
+Patch16:        gdb-6.6-bz230000-power6-disassembly-test.patch
+Patch17:        gdb-6.6-bz229517-gcore-without-terminal.patch
+Patch18:        gdb-6.6-testsuite-timeouts.patch
+Patch19:        gdb-6.6-bz237572-ppc-atomic-sequence-test.patch
+Patch20:        gdb-6.3-attach-see-vdso-test.patch
+Patch21:        gdb-6.5-bz243845-stale-testing-zombie-test.patch
+Patch22:        gdb-6.6-buildid-locate.patch
+Patch23:        gdb-6.6-buildid-locate-solib-missing-ids.patch
+Patch24:        gdb-6.6-buildid-locate-rpm.patch
+Patch27:        gdb-6.7-testsuite-stable-results.patch
+Patch28:        gdb-6.5-ia64-libunwind-leak-test.patch
+Patch29:        gdb-6.5-missed-trap-on-step-test.patch
+Patch30:        gdb-6.5-gcore-buffer-limit-test.patch
+Patch31:        gdb-6.3-mapping-zero-inode-test.patch
+Patch32:        gdb-6.3-focus-cmd-prev-test.patch
+Patch33:        gdb-6.8-bz442765-threaded-exec-test.patch
+Patch34:        gdb-6.5-section-num-fixup-test.patch
+Patch36:        gdb-simultaneous-step-resume-breakpoint-test.patch
+Patch37:        gdb-core-open-vdso-warning.patch
+Patch38:        gdb-ccache-workaround.patch
+Patch39:        gdb-lineno-makeup-test.patch
+Patch40:        gdb-ppc-power7-test.patch
+Patch41:        gdb-archer-next-over-throw-cxx-exec.patch
+Patch42:        gdb-bz601887-dwarf4-rh-test.patch
+Patch43:        gdb-6.6-buildid-locate-rpm-librpm-workaround.patch
+Patch44:        gdb-test-bt-cfi-without-die.patch
+Patch45:        gdb-bz634108-solib_address.patch
+Patch46:        gdb-test-pid0-core.patch
+Patch47:        gdb-test-dw2-aranges.patch
+Patch48:        gdb-test-expr-cumulative-archer.patch
+Patch49:        gdb-physname-pr11734-test.patch
+Patch50:        gdb-physname-pr12273-test.patch
+Patch51:        gdb-test-ivy-bridge.patch
+Patch52:        gdb-runtest-pie-override.patch
+Patch53:        gdb-glibc-strstr-workaround.patch
+Patch54:        gdb-rhel5.9-testcase-xlf-var-inside-mod.patch
+Patch55:        gdb-rhbz-818343-set-solib-absolute-prefix-testcase.patch
+Patch56:        gdb-rhbz947564-findvar-assertion-frame-failed-testcase.patch
+Patch57:        gdb-rhbz1007614-memleak-infpy_read_memory-test.patch
+Patch59:        gdb-fortran-frame-string.patch
+Patch60:        gdb-rhbz1156192-recursive-dlopen-test.patch
+Patch61:        gdb-rhbz1149205-catch-syscall-after-fork-test.patch
+Patch62:        gdb-rhbz1186476-internal-error-unqualified-name-re-set-test.patch
+Patch63:        gdb-rhbz1350436-type-printers-error.patch
+Patch64:        gdb-rhbz1084404-ppc64-s390x-wrong-prologue-skip-O2-g-3of3.patch
+Patch65:        gdb-fedora-libncursesw.patch
+Patch66:        gdb-opcodes-clflushopt-test.patch
+Patch67:        gdb-6.6-buildid-locate-rpm-scl.patch
+Patch68:        gdb-rhbz1261564-aarch64-hw-watchpoint-test.patch
+Patch69:        gdb-container-rh-pkg.patch
+Patch70:        gdb-rhbz1325795-framefilters-test.patch
+Patch71:        gdb-linux_perf-bundle.patch
+Patch73:        gdb-rhbz1398387-tab-crash-test.patch
+Patch74:        gdb-rhbz1553104-s390x-arch12-test.patch
 #Fedora Packages end
 
 # Fedora Packages not copied:
@@ -245,19 +245,22 @@ Patch78:        gdb-rhbz2012976-paper-over-fortran-lex-problems.patch
 # Broken:
 # - gdb-6.5-BEA-testsuite.patch
 #   over-specific test-case in a shell script
+# - gdb-6.5-readline-long-line-crash-test.patch
+#   Hangs for horizontal-scroll-mode on, times out after 10 minutes.
 #
 # Obsolete:
 # - gdb-6.7-charsign-test.patch
+# - gdb-6.7-ppc-clobbered-registers-O2-test.patch
 
 # Fedora patches fixup
 
 Patch500:       fixup-gdb-linux_perf-bundle.patch
-Patch501:       fixup-gdb-6.6-buildid-locate.patch
-Patch502:       fixup-2-gdb-6.6-buildid-locate.patch
-Patch503:       fixup-gdb-rhbz1325795-framefilters-test.patch
-Patch504:       fixup-gdb-rhbz1553104-s390x-arch12-test.patch
-Patch505:       fixup-gdb-glibc-strstr-workaround.patch
-Patch506:       fixup-gdb-6.5-bz243845-stale-testing-zombie-test.patch
+Patch501:       fixup-gdb-rhbz1325795-framefilters-test.patch
+Patch502:       fixup-gdb-rhbz1553104-s390x-arch12-test.patch
+Patch503:       fixup-gdb-glibc-strstr-workaround.patch
+Patch504:       fixup-gdb-6.5-bz243845-stale-testing-zombie-test.patch
+Patch505:       fixup-gdb-test-bt-cfi-without-die.patch
+Patch506:       fixup-2-gdb-rhbz1553104-s390x-arch12-test.patch
 
 # openSUSE specific
 
@@ -304,51 +307,41 @@ Patch1506:      gdb-testsuite-fix-race-in-gdb.threads-detach-step-over.exp.patch
 
 # Backports from release branch
 
-Patch1900:      gdb-build-add-cxx_dialect-to-cxx.patch
-Patch1901:      gdb-tui-fix-breakpoint-display-functionality.patch
-Patch1902:      aarch64-make-gdbserver-register-set-selection-dynamic.patch
+Patch1700:      fix-core-file-detach-crash-corefiles-29275.patch
 
 # Backports from master, available in next release.
 
-Patch2000:      gdb-testsuite-fix-gdb.gdb-selftest.exp.patch
-Patch2001:      gdb-testsuite-refactor-regexp-in-gdb.base-annota1.exp.patch
-Patch2002:      gdb-testsuite-fix-fail-in-gdb.base-annota1.exp.patch
-Patch2003:      gdb-testsuite-fix-gdb.base-dcache-flush.exp.patch
-Patch2004:      gdb-testsuite-fix-fail-in-gdb.tui-corefile-run.exp.patch
-Patch2005:      gdb-testsuite-fix-gdb.threads-check-libthread-db.exp-with-glibc-2.34.patch
-Patch2006:      gdb-testsuite-fix-gdb.python-py-events.exp.patch
-Patch2007:      gdb-testsuite-handle-supports_memtag-in-gdb.base-gdb-caching-proc.exp.patch
-Patch2008:      gdb-symtab-fix-htab_find_slot-call-in-read_call_site_scope.patch
-Patch2009:      gdb-symtab-remove-compunit_call_site_htab.patch
-Patch2010:      gdb-symtab-add-call_site_eq-and-call_site_hash.patch
-Patch2011:      gdb-symtab-c-ify-call_site.patch
-Patch2012:      gdb-symtab-use-unrelocated-addresses-in-call_site.patch
-Patch2013:      gdb-testsuite-add-nopie-in-two-test-cases.patch
-Patch2014:      gdb-testsuite-use-compiler-generated-instead-of-gas-generated-stabs.patch
-Patch2015:      gdb-testsuite-support-fpie-fno-pie-pie-no-pie-in-gdb_compile_rust.patch
-Patch2016:      gdb-testsuite-fix-gdb.server-server-kill.exp-with-m32.patch
-Patch2017:      gdb-testsuite-fix-gdb.ada-big_packed_array.exp-xfail-for-m32.patch
-Patch2018:      fix-gdb.multi-multi-term-settings.exp-race.patch
-Patch2019:      gdb-testsuite-update-test-gdb.base-step-over-syscall.exp.patch
-Patch2020:      gdb-testsuite-fix-gdb.threads-linux-dp.exp.patch
-Patch2021:      gdb-testsuite-add-gdb.testsuite-dump-system-info.exp.patch
-Patch2022:      gdb-testsuite-factor-out-dump_info-in-gdb.testsuite-dump-system-info.exp.patch
-Patch2023:      gdb-testsuite-add-gdb.opt-break-on-_exit.exp.patch
-Patch2024:      gdb-tdep-rs6000-don-t-skip-system-call-in-skip_prologue.patch
-Patch2025:      gdb-testsuite-fix-stepi-test-cases-with-unix-m32-fpie-pie.patch
-Patch2026:      gdb-testsuite-fix-assembly-comments-in-gdb.dwarf2-clang-debug-names.exp.tcl.patch
-Patch2027:      gdb-doc-fix-print-inferior-events-default.patch
-Patch2028:      gdb-testsuite-fix-gdb.guile-scm-type.exp-with-gcc-4.8.patch
-Patch2029:      gdb-testsuite-add-gdb.arch-ppc64-break-on-_exit.exp.patch
-Patch2030:      gdb-testsuite-don-t-error-when-trying-to-unset-last_spawn_tty_name.patch
-Patch2031:      gdb-exp-improve-error-reading-variable-message.patch
-Patch2032:      fix-gdb.base-sigstep.exp-test-for-ppc.patch
-Patch2033:      gdb-testsuite-fix-regexp-in-gdb.base-foll-vfork.exp.patch
-Patch2034:      gdb-testsuite-add-missing-wait-in-gdb.base-signals-state-child.exp.patch
-Patch2035:      gdb-r_version-check.patch
-Patch2036:      ibm-z-add-another-arch14-instruction.patch
-Patch2037:      ibm-z-remove-lpswey-parameter.patch
-Patch2038:      fix-build-with-current-gcc-el_explicit-location-always-non-null.patch
+Patch2000:      gdb-testsuite-fix-gdb.opt-clobbered-registers-o2.exp-with-gcc-12.patch
+Patch2001:      gdb-testsuite-detect-change-instead-of-init-in-gdb.mi-mi-var-block.exp.patch
+Patch2002:      gdb-fix-for-gdb.base-eof-exit.exp-test-failures.patch
+Patch2003:      gdb-testsuite-handle-init-errors-in-gdb.mi-user-selected-context-sync.exp.patch
+Patch2004:      gdb-add-gdb-syscalls-makefile.patch
+Patch2005:      gdb-record-handle-statx-system-call.patch
+Patch2006:      gdb-tdep-handle-pipe2-syscall-for-amd64.patch
+Patch2007:      gdb-testsuite-handle-pipe2-syscall-in-gdb.base-catch-syscall.exp.patch
+Patch2008:      gdb-tdep-support-catch-syscall-pipe2-for-i386.patch
+Patch2009:      gdb-update-syscalls-amd64-i386-linux.xml.patch
+Patch2010:      gdb-testsuite-address-test-failures-in-gdb.mi-mi-multi-commands.exp.patch
+Patch2011:      gdb-testsuite-fix-occasional-failure-in-gdb.mi-mi-multi-commands.exp.patch
+Patch2012:      gdb-testsuite-fix-test-failure-when-building-against-readline-v7.patch
+Patch2013:      gdb-improved-eof-handling-when-using-readline-7.patch
+Patch2014:      gdb-testsuite-remove-attach-test-from-can_spawn_for_attach.patch
+Patch2015:      powerpc-update-expected-floating-point-output-for-gdb.arch-altivec-regs.exp-and-gdb.arch-vsx-regs.exp.patch
+Patch2016:      powerpc-add-support-for-ieee-128-bit-format.patch
+Patch2017:      powerpc-correct-the-gdb-ioctl-values-for-tcgets-tcsets-tcsetsw-and-tcsetsf.patch
+Patch2018:      gdb-testsuite-remove-target-limits-in-gdb.base-catch-syscall.exp.patch
+Patch2019:      gdb-tdep-update-syscalls-ppc64-ppc-linux.xml.patch
+Patch2020:      powerpc-fix-for-gdb.base-eh_return.exp.patch
+Patch2021:      fix-comparison-of-unsigned-long-int-to-int-in-record_linux_system_call.patch
+Patch2022:      gdb-testsuite-fix-gdb.reverse-test_ioctl_tcsetsw.exp-with-libc-debuginfo.patch
+Patch2023:      gdb-testsuite-fix-gdb.dwarf2-dw2-out-of-range-end-of-seq.exp-on-aarch64.patch
+Patch2024:      gdb-testsuite-support-recording-of-getrandom.patch
+Patch2025:      gdb-testsuite-fix-gdb.base-catch-syscall.exp-without-enable-targets.patch
+Patch2026:      gdb-testsuite-fix-gdb.base-catch-syscall.exp-with-with-expat-no.patch
+Patch2027:      fix-for-gdb.base-solib-search.exp-test.patch
+Patch2028:      make-gdb.ada-float-bits.exp-more-generic.patch
+Patch2029:      gdb-testsuite-fix-gdb.threads-killed-outside.exp-on-aarch64.patch
+
 
 # Backports from master, not yet available in next release.
 
@@ -356,46 +349,41 @@ Patch2038:      fix-build-with-current-gcc-el_explicit-location-always-non-null.
 
 # Backport from gdb-patches
 
-# https://sourceware.org/pipermail/gdb-patches/2021-October/182474.html
-Patch2100:      gdb-build-make-c-exp.y-work-with-bison-3.8.patch
 # https://sourceware.org/pipermail/gdb-patches/2021-September/182226.html
-Patch2101:      gdb-python-finishbreakpoint-update.patch
+Patch2100:      gdb-python-finishbreakpoint-update.patch
 # https://sourceware.org/pipermail/gdb-patches/2021-October/182444.html
-Patch2102:      gdb-testsuite-prevent-compilation-fails-with-unix-fpie-pie.patch
-# https://sourceware.org/pipermail/gdb-patches/2021-October/182572.html
-Patch2103:      gdb-fortran-handle-dw-at-string-length-with-loclistptr.patch
-# https://sourceware.org/pipermail/gdb-patches/2021-August/181576.html
-Patch2104:      gdb-testsuite-handle-recursive-internal-problem-in-gdb_internal_error_resync.patch
-# https://sourceware.org/pipermail/gdb-patches/2021-October/182800.html
-Patch2105:      gdb-testsuite-handle-runto-fail-in-gdb.mi-mi-var-cp.exp.patch
+Patch2101:      gdb-testsuite-prevent-compilation-fails-with-unix-fpie-pie.patch
 # https://sourceware.org/pipermail/gdb-patches/2021-October/182847.html
-Patch2106:      gdb-testsuite-fix-fail-in-gdb.threads-fork-and-threads.exp.patch
+Patch2102:      gdb-testsuite-fix-fail-in-gdb.threads-fork-and-threads.exp.patch
 # https://sourceware.org/pipermail/gdb-patches/2021-October/182846.html
-Patch2107:      gdb-testsuite-add-kfail-in-gdb.threads-fork-plus-threads.exp.patch
-# https://sourceware.org/pipermail/gdb-patches/2021-October/182855.html
-Patch2108:      gdb-testsuite-fix-port-detection-in-gdb.debuginfod-fetch_src_and_symbols.exp.patch
-# https://sourceware.org/pipermail/gdb-patches/2021-October/182868.html
-Patch2110:      gdb-testsuite-fix-gdb.threads-thread-specific-bp.exp.patch
+Patch2103:      gdb-testsuite-add-kfail-in-gdb.threads-fork-plus-threads.exp.patch
 # https://sourceware.org/pipermail/gdb-patches/2021-October/182919.html
-Patch2111:      gdb-testsuite-work-around-skip_prologue-problems-in-gdb.threads-process-dies-while-detaching.exp.patch
-# https://sourceware.org/pipermail/gdb-patches/2021-October/182921.html
-Patch2112:      gdb-testsuite-handle-sigill-in-two-gdb.arch-powerpc-test-cases.patch
+Patch2104:      gdb-testsuite-work-around-skip_prologue-problems-in-gdb.threads-process-dies-while-detaching.exp.patch
 # https://sourceware.org/pipermail/gdb-patches/2021-May/178990.html
-Patch2114:      gdb-cli-add-ignore-errors-command.patch
-# https://sourceware.org/pipermail/gdb-patches/2021-November/183183.html
-Patch2115:      gdb-testsuite-fix-data-alignment-in-gdb.arch-i386-avx-sse-.exp.patch
-# https://sourceware.org/pipermail/gdb-patches/2021-October/182887.html
-Patch2116:      gdb-testsuite-fix-fail-in-gdb.tui-basic.exp.patch
-# https://sourceware.org/pipermail/gdb-patches/2021-November/date.html
-Patch2117:      gdb-testsuite-disable-inferior-output-in-gdb.base-foll-vfork.exp.patch
-# https://sourceware.org/pipermail/gdb-patches/2021-November/183363.html
-Patch2118:      gdb-symtab-fix-segfault-in-search_one_symtab.patch
-# https://sourceware.org/pipermail/gdb-patches/2021-November/183939.html
-Patch2119:      gdb-testsuite-fix-gdb.arch-i386-pkru.exp-on-linux.patch
-# https://sourceware.org/pipermail/gdb-patches/2021-November/183960.html
-Patch2120:      gdb-tdep-fix-avx512-m32-support-in-gdbserver.patch
-# https://sourceware.org/pipermail/gdb-patches/2021-December/184241.html
-Patch2121:      gdb-ada-fix-assert-in-ada_is_unconstrained_packed_array_type.patch
+Patch2105:      gdb-cli-add-ignore-errors-command.patch
+# https://sourceware.org/pipermail/gdb-patches/2022-June/189994.html
+Patch2106:      gdb-testsuite-skip-gdb.fortran-namelist.exp-for-gfortran-4.8.patch
+# https://sourceware.org/pipermail/gdb-patches/2022-June/189995.html
+Patch2107:      gdb-testsuite-workaround-unnecessary-.s-file-with-gfortran-4.8.patch
+# https://sourceware.org/pipermail/gdb-patches/2022-June/190045.html
+Patch2108:      gdb-testsuite-handle-quotes-in-gdb_py_module_available.patch
+# https://sourceware.org/pipermail/gdb-patches/2022-June/190046.html
+Patch2109:      gdb-testsuite-handle-unordered-dict-in-gdb.python-py-mi-cmd.exp.patch
+# https://sourceware.org/pipermail/gdb-patches/2022-June/190054.html
+Patch2110:      gdb-testsuite-handle-older-python-in-gdb.python-py-send-packet.py.patch
+# https://sourceware.org/pipermail/gdb-patches/2022-June/190248.html
+Patch2111:      gdb-testsuite-enable-some-test-cases-for-x86_64-m32.patch
+# https://sourceware.org/pipermail/gdb-patches/2022-June/190249.html
+Patch2112:      gdb-testsuite-fix-gdb.reverse-i387-env-reverse.exp-for-pie.patch
+# https://sourceware.org/pipermail/gdb-patches/2022-July/191107.html
+Patch2113:      gdb-testsuite-fix-gdb.ada-literals.exp-with-aarch64.patch
+# https://sourceware.org/bugzilla/show_bug.cgi?id=29423#c8
+Patch2114:      gdb-fix-watchpoints-triggered.patch
+
+# Debug patches.
+
+#
+
 
 BuildRequires:  bison
 BuildRequires:  flex
@@ -590,6 +578,10 @@ BuildRequires:  elfutils-debuginfod
 BuildRequires:  xz
 %endif
 
+# Provide python package xml.etree.ElementTree, used by test-case
+# gdb.python/py-send-packet.exp.
+BuildRequires:  python-xml
+
 %endif # %%{build_testsuite}
 
 %ifarch ia64
@@ -664,8 +656,7 @@ find -name "*.info*"|xargs rm -f
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
-%patch9 -p1
-%patch11 -p1
+%patch10 -p1
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
@@ -679,7 +670,6 @@ find -name "*.info*"|xargs rm -f
 %patch22 -p1
 %patch23 -p1
 %patch24 -p1
-%patch25 -p1
 %patch27 -p1
 %patch28 -p1
 %patch29 -p1
@@ -688,7 +678,7 @@ find -name "*.info*"|xargs rm -f
 %patch32 -p1
 %patch33 -p1
 %patch34 -p1
-%patch35 -p1
+%patch36 -p1
 %patch37 -p1
 %patch38 -p1
 %patch39 -p1
@@ -710,7 +700,7 @@ find -name "*.info*"|xargs rm -f
 %patch55 -p1
 %patch56 -p1
 %patch57 -p1
-%patch58 -p1
+%patch59 -p1
 %patch60 -p1
 %patch61 -p1
 %patch62 -p1
@@ -723,12 +713,8 @@ find -name "*.info*"|xargs rm -f
 %patch69 -p1
 %patch70 -p1
 %patch71 -p1
-%patch72 -p1
+%patch73 -p1
 %patch74 -p1
-%patch75 -p1
-%patch76 -p1
-%patch77 -p1
-%patch78 -p1
 #Fedora patching end
 
 %patch500 -p1
@@ -754,9 +740,7 @@ find -name "*.info*"|xargs rm -f
 %patch1505 -p1
 %patch1506 -p1
 
-%patch1900 -p1
-%patch1901 -p1
-%patch1902 -p1
+%patch1700 -p1
 
 %patch2000 -p1
 %patch2001 -p1
@@ -788,15 +772,6 @@ find -name "*.info*"|xargs rm -f
 %patch2027 -p1
 %patch2028 -p1
 %patch2029 -p1
-%patch2030 -p1
-%patch2031 -p1
-%patch2032 -p1
-%patch2033 -p1
-%patch2034 -p1
-%patch2035 -p1
-%patch2036 -p1
-%patch2037 -p1
-%patch2038 -p1
 
 %patch2100 -p1
 %patch2101 -p1
@@ -807,17 +782,13 @@ find -name "*.info*"|xargs rm -f
 %patch2106 -p1
 %patch2107 -p1
 %patch2108 -p1
+%patch2109 -p1
 %patch2110 -p1
 %patch2111 -p1
 %patch2112 -p1
+%patch2113 -p1
 %patch2114 -p1
-%patch2115 -p1
-%patch2116 -p1
-%patch2117 -p1
-%patch2118 -p1
-%patch2119 -p1
-%patch2120 -p1
-%patch2121 -p1
+
 
 #unpack libipt
 %if 0%{have_libipt}
@@ -1144,7 +1115,6 @@ $CC -o ./orphanripper %{SOURCE2} -Wall -lutil -ggdb2
   # RUNTESTFLAGS='--ignore ...' is not used below as it gets separated by the
   # `check//...' target spawn and too much escaping there would be dense.
   DISABLE_TESTS=
-  DISABLE_TESTS="$DISABLE_TESTS gdb.base/readline-overflow.exp"
   DISABLE_TESTS="$DISABLE_TESTS gdb.base/bigcore.exp"
   DISABLE_TESTS="$DISABLE_TESTS gdb.threads/attach-many-short-lived-threads.exp"
   %if 0%{suse_version} == 1110
@@ -1205,7 +1175,7 @@ touch -r %{SOURCE5} $RPM_BUILD_ROOT%{_sysconfdir}/gdbinit
 for i in `find $RPM_BUILD_ROOT%{_datadir}/gdb/python/gdb -name "*.py"`
 do
   # Files could be also patched getting the current time.
-  touch -r $RPM_BUILD_DIR/%{gdb_src}/gdb/ChangeLog $i
+  touch -r $RPM_BUILD_DIR/%{gdb_src}/gdb/version.in $i
 done
 
 %if 0%{?_enable_debug_packages:1} && 0%{!?_without_python:1}
@@ -1239,7 +1209,7 @@ for i in `find $RPM_BUILD_ROOT%{_datadir}/gdb/python -name "*.py"` \
          `find $RPM_BUILD_ROOT%{_datadir}/gdb/auto-load%{_prefix} -name "*.py"` \
 ; do
   # Files come from gdb-archer.patch and can be also further patched.
-  touch -r $RPM_BUILD_DIR/%{gdb_src}/gdb/ChangeLog $i
+  touch -r $RPM_BUILD_DIR/%{gdb_src}/gdb/version.in $i
 done
 %endif # 0%{!?_without_python:1}
 %endif # 0%{?rhel:1} && 0%{?rhel} <= 6
@@ -1305,6 +1275,7 @@ make -j1 -C gdb/doc install DESTDIR=$RPM_BUILD_ROOT
 # Documentation only for development; keep 'rm's here after "noarch" above.
 rm -f $RPM_BUILD_ROOT%{_infodir}/gdbint*
 rm -f $RPM_BUILD_ROOT%{_infodir}/stabs*
+rm -f $RPM_BUILD_ROOT%{_infodir}/ctf-spec*
 
 # Delete this too because the dir file will be updated at rpm install time.
 # We don't want a gdb specific one overwriting the system wide one.

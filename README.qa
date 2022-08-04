@@ -1,0 +1,117 @@
+I. LOCAL QA.
+
+
+0. Notes.
+
+Note that the configs are hardcoded in the script.  F.i. atm SLE-11 is not
+included, because the config is unresolvable on devel:gcc/gdb.  Also Leap
+15.2 is not included because of 'remote error: unknown repository type
+UNDEFINED"'.
+
+The script tries to keep disk usage low by removing the buildroot after each
+build, but that requires sudo rights, so the first thing the script does is
+ask for sudo authentication.
+
+
+1. Cleanup.
+
+Do:
+...
+$ bash qa-local.sh 1
+...
+
+
+2. Build.
+
+Do:
+...
+$ bash qa-local.sh 2
+...
+
+This builds gdb for each x86_64 config, without running the testsuite.
+
+I did a timing run on my laptop (with 6 configs) and got:
+...
+real    66m17.689s
+user    149m31.925s
+sys     12m25.359s
+...
+so for a dual-core/4-SMT CPU, it's ~1h5m.
+
+
+3. Build & test.
+
+Do:
+...
+$ bash qa-local.sh 3
+...
+
+This builds gdb and produces test results for each x86_64 config.
+
+I did a timing run on my laptop (with 6 configs) and got:
+...
+real    285m9.679s
+user    683m16.769s
+sys     133m58.287s
+...
+so for a dual-core/4-SMT CPU, it's ~4h45m.
+
+The resulting testlogs (with 6 configs) is 1.4GB.
+
+
+4. Verify.
+
+Do:
+...
+$ bash qa-local.sh 4
+...
+
+This verifies the test results for each x86_64 config, using the qa.sh script.
+
+
+5. Cleanup.
+
+Do:
+...
+$ rm -Rf tmp-qa-local
+...
+l
+
+
+I. REMOTE QA.
+
+
+1. Cleanup.
+
+Do:
+...
+$ bash qa-remote.sh 1
+...
+
+
+2. Get test results.
+
+Do:
+...
+$ bash qa-remote.sh 2
+...
+
+This downloads the remote test results.
+
+
+3. Verify.
+
+Do:
+...
+$ bash qa-remote.sh 3 <m>
+...
+with m running from 1 to 5.
+
+This verifies the test results, using the qa.sh script.
+
+4. Cleanup.
+
+Do:
+...
+$ rm -Rf tmp-qa-remote
+...
