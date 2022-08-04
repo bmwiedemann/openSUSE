@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug  2 14:54:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- update to 1.26.11
+  * Fix OverflowError when TLS is used on some Python versions
+
+-------------------------------------------------------------------
+Sun Jul 24 08:02:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.26.10:
+  * Removed support for Python 3.5
+  * Fixed an issue where a ``ProxyError`` recommending configuring the proxy as HTTP
+    instead of HTTPS could appear even when an HTTPS proxy wasn't configured.
+- refresh remove_mock.patch with extra mock usages
+
+-------------------------------------------------------------------
 Tue Apr 19 05:34:17 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove unneeded BuildRequires of mock. 
+- Remove unneeded BuildRequires of mock.
 
 -------------------------------------------------------------------
 Tue Apr  5 19:54:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
