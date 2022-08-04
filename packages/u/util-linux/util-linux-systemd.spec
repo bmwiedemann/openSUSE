@@ -1160,13 +1160,11 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions
 %{_datadir}/bash-completion/completions/*
-%if %build_util_linux_systemd
 %exclude %{_datadir}/bash-completion/completions/findmnt
 %exclude %{_datadir}/bash-completion/completions/logger
 %exclude %{_datadir}/bash-completion/completions/lsblk
 %exclude %{_datadir}/bash-completion/completions/lslogins
 %exclude %{_datadir}/bash-completion/completions/uuidd
-%endif
 %ifnarch ia64 m68k
 #XXX: post our patches upstream
 #XXX: call fdupes on /usr/share/man

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 27 14:25:16 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- exclude bash-completion stuff for programs that are in
+  util-linux-systemd from util-linux for real.
+
+-------------------------------------------------------------------
 Thu Jul 21 08:00:59 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - linux-fs.patch: Fix conflict between <linux/fs.h> and <sys/mount.h>
