@@ -18,7 +18,7 @@
 
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.23.0
+%global icedtea_version 3.24.0
 %global buildoutputdir openjdk.build/
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
@@ -31,8 +31,8 @@
 # priority must be 6 digits in total
 %global priority        1805
 %global javaver         1.8.0
-%global updatever       332
-%global buildver        09
+%global updatever       345
+%global buildver        01
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
 %global archname        %{sdklnk}
@@ -190,7 +190,6 @@ Patch1002:      icedtea-3.8.0-s390.patch
 Patch1003:      java-1_8_0-openjdk-autoconf27.patch
 Patch2001:      disable-doclint-by-default.patch
 Patch2002:      JDK_1_8_0-8208602.patch
-Patch2003:      JDK-8076190.patch
 Patch3000:      tls13extensions.patch
 Patch4000:      riscv64-zero.patch
 Patch5001:      fips.patch
@@ -524,7 +523,6 @@ patch -p0 -i %{PATCH103}
 
 patch -p0 -i %{PATCH2001}
 patch -p0 -i %{PATCH2002}
-patch -p0 -i %{PATCH2003}
 
 patch -p0 -i %{PATCH3000}
 

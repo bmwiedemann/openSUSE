@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Tue Aug  2 19:37:31 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u345 (icedtea-3.24.0)
+  * July 2022 CPU
+  * Security fixes
+     + JDK-8272243: Improve DER parsing
+     + JDK-8272249: Better properties of loaded Properties
+     + JDK-8277608: Address IP Addressing
+     + JDK-8281859, CVE-2022-21540, bsc#1201694: Improve class
+       compilation
+     + JDK-8281866, CVE-2022-21541, bsc#1201692: Enhance
+       MethodHandle invocations
+     + JDK-8283190: Improve MIDI processing
+     + JDK-8284370: Improve zlib usage
+     + JDK-8285407, CVE-2022-34169, bsc#1201684: Improve Xalan
+       supports
+  * Import of OpenJDK 8 u342
+     + JDK-8076190, bsc#1195163: Customizing the generation of a
+       PKCS12 keystore
+     + JDK-8129572: Cleanup usage of getResourceAsStream in jaxp
+     + JDK-8132256: jaxp: Investigate removal of com/sun/org/apache/
+       /bcel/internal/util/ClassPath.java
+     + JDK-8168926: C2: Bytecode escape analyzer crashes due to
+       stack overflow
+     + JDK-8170530: bash configure output contains a typo in a
+       suggested library name
+     + JDK-8190753: (zipfs): Accessing a large entry (> 2^31 bytes)
+       leads to a negative initial size for ByteArrayOutputStream
+     + JDK-8194154: System property user.dir should not be changed
+     + JDK-8202142: jfr/event/io/TestInstrumentation is unstable
+     + JDK-8209771: jdk.test.lib.Utils::runAndCheckException error
+     + JDK-8221988: add possibility to build with Visual Studio 2019
+     + JDK-8223396: [TESTBUG] several jfr tests do not clean up
+       files created in /tmp
+     + JDK-8230865: [TESTBUG] jdk/jfr/event/io/EvilInstrument.java
+       fails at-run shell MakeJAR.sh target
+     + JDK-8235211: serviceability/attach/
+       /RemovingUnixDomainSocketTest.java fails with
+       AttachNotSupportedException: Unable to open socket file
+     + JDK-8244973: serviceability/attach/
+       /RemovingUnixDomainSocketTest.java fails "stderr was not
+       empty"
+     + JDK-8248876: LoadObject with bad base address created for
+       exec file on linux
+     + JDK-8255239: The timezone of the hs_err_pid log file is
+       corrupted in Japanese locale
+     + JDK-8261107: ArrayIndexOutOfBoundsException in the
+       ICC_Profile.getInstance(InputStream)
+     + JDK-8266187: Memory leak in appendBootClassPath()
+     + JDK-8274658: ISO 4217 Amendment 170 Update
+     + JDK-8274751: Drag And Drop hangs on Windows
+     + JDK-8278138: OpenJDK8 fails to start on Windows 8.1 after
+       upgrading compiler to VS2017
+     + JDK-8279669: test/jdk/com/sun/jdi/TestScaffold.java uses
+       wrong condition
+     + JDK-8281814: Debuginfo.diz contains redundant build path
+       after backport JDK-8025936
+     + JDK-8282458: Update .jcheck/conf file for 8u move to git
+     + JDK-8282552: Bump update version of OpenJDK: 8u342
+     + JDK-8283350: (tz) Update Timezone Data to 2022a
+     + JDK-8284620: CodeBuffer may leak _overflow_arena
+     + JDK-8285445: cannot open file "NUL:"
+     + JDK-8285523: Improve test java/io/FileOutputStream/
+       /OpenNUL.java
+     + JDK-8285591: [11] add signum checks in DSA.java engineVerify
+     + JDK-8285727: [11u, 17u] Unify fix for JDK-8284920 with
+       version from head
+     + JDK-8286989: Build failure on macOS after 8281814
+     + JDK-8287537: 8u JDK-8284620 backport broke AArch64 build
+  * Import of OpenJDK 8 u345
+     + JDK-8290832: It is no longer possible to change "user.dir"
+       in the JDK8
+     + JDK-8291568: Bump update version of OpenJDK: 8u345
+- Removed patch:
+  * JDK-8076190.patch
+    + Included by upstream
+
+-------------------------------------------------------------------
 Thu Jun 30 08:07:09 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u332 (icedtea-3.23.0)
