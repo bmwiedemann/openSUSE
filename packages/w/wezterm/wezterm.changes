@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Thu Jul 28 03:04:12 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220624.141144.bd1b7c5d+git264:
+  * really fix termwiz --all-features build
+  * lua: expose metrics to lua
+  * fix termwiz --all-features build
+  * wezterm.format: now supports rgba colors
+  * termwiz: allow setting alpha for SGR fg, bg attributes
+  * termwiz: ColorSpec now allows for alpha to be tracked
+  * allow setting alpha for OSC 10, 11, 12
+  * term: avoid panic in phys_row when row is out of range
+  * deps: harfbuzz -> 5.0.1
+  * tabs: revise active index after killing panes
+  * deps: zstd 0.6 -> 0.11
+  * docs: fix typo in changelog
+  * fix "no pane" tab hang when two panes close at once
+  * Pane::search: expose range, limit. Limit quickselect by default
+  * ci: try uploading sha256 files alongside release assets
+  * json: fix visited hash set
+  * termwiz: refactor: split line into sub-modules
+  * docs: changelog for https://github.com/wez/wezterm/issues/2162
+  * term: fixup cursor position during rewrap
+  * cargo update
+  * search: fix coordinates for matches at EOL
+  * mux: prefer compressed Lines when syncing
+  * Line::wrap now prefers cluster storage
+  * docs: changelog for scrollback/search improvements
+  * search: debounce searches by ~350ms
+  * search: fix incorrect highlight in search results
+  * search: improve coordinates for new search implementation
+  * rangeset: fix accidentally quadratic complexity
+  * localpane: revise search method implementation
+  * term: refactor getting logical lines
+  * term/termwiz: microoptimize set cell
+  * termwiz: microoptimize ClusteredLine::set_last_cell_was_wrapped
+  * termwiz: micro-optimize ClusteredLine::new(), set_last_wrapped
+  * termwiz: don't claim that visible_cells is double-ended
+  * termwiz: avoid cluster -> vec conversions in a few more cases
+  * term: default to cluster storage
+  * term: compress rows as they move into scrollback
+  * Line::as_str() -> Cow<str>
+  * termwiz: add clustered line storage for line
+  * line: introduce possibility of alternate cell backing
+  * termwiz: refactor Line::visible_cells()
+  * fix reloading the global config when the appearance changes
+  * termwiz: add bench for Cell creation/drop
+  * term: refactor the charset/remapping out of flush_print
+  * termwiz: add static WcLookupTable to codegen
+  * termwiz: micro-optimize grapheme_column_width
+  * termwiz: add criterion benches for wcwidth
+  * termwiz: make emoji presentation very slightly more efficient
+  * term: remove Line::invalidate_implicit_hyperlinks calls
+  * Docs: Clean and slim the flowchart ...
+  * Docs: Bring the connected nodes together ...
+  * Docs: Improve the order in this mermaid code ...
+  * Docs: Merge the common action in the keyb-concepts
+  * docs: note about `wezterm-gui.exe --help` not outputting anything
+  * wezterm cli spawn: update help and clap constraints
+  * revise bug report template
+  * quote pwd in open-wezterm-here
+  * deploy: don't try to strip a shell script
+  * Add open-wezterm-here script
+  * rustfmt
+  * update shell completions for `wezter show-keys` subcommand
+  * wezterm cli: --workspace requires --new-window
+  * add ClearScrollback example that adds CTRL-L after clearing
+  * fix tab `x` button being obscured by tab title text
+  * add gelatyx to verify-pages workflow
+  * color schemes: add alias concept
+  * sync nightfox color schemes
+  * gui-startup event now accepts SpawnCommand
+  * config: revert taking name from the first comment line of toml color scheme files
+  * docs: changelog for #2253 #2273
+  * docs: apply stylua formatting
+  * docs: fix lua syntax
+  * docs: split MuxPane
+  * docs: fix lua syntax issues
+  * docs: only try to format tracked files
+  * docs: reformat lua code
+  * key table activation timeout is now reset on matching key presses
+  * add MuxTab:set_zoomed and SetPaneZoomState keyassignment
+  * docs: fix parameters to call_after callback
+  * lua: add wezterm.time.call_after and wezterm.reload_configuration
+  * rustfmt
+  * cargo update
+  * lua: add wezterm.time and Time object
+  * docs: changelog for #2103 #2271
+  * add `--cwd .` to desktop file `Exec` field
+  * change exec command in desktop file
+  * term: fix encoding for modified F1-F4
+  * lua: add wezterm.procinfo module
+  * lua: add tostring impls for window, tab and pane objects
+  * docs: clarify what happens when appearance changes
+  * add Catppuccin color schemes
+  * retro tab bar: use resolved palette for colors
+  * schemes: prefer name from metadata when loading toml
+
+-------------------------------------------------------------------
 Sat Jul 16 04:06:51 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 20220624.141144.bd1b7c5d+git171:

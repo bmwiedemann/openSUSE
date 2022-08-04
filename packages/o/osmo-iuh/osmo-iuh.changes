@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug  3 18:32:22 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.0
+  * ranap_common: add decoder for RAB SetupOrModifyItemFirst
+  * ranap_common_cn: add functions for direct access to decoder
+  * ranap_common_ran: add decoder for CN/MSC originated messages
+  * ranap_common: add decoder for RAB-FailedList and RAB-ReleaseList
+  * Make logging message about received RANAP message more meaningful
+  * move new_transp_layer_addr to public API
+
+-------------------------------------------------------------------
 Sat Apr  2 14:52:53 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.0

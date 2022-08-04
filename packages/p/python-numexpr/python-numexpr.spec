@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-numexpr
 Version:        2.8.3
 Release:        0
@@ -25,14 +24,15 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pydata/numexpr/
 Source:         https://files.pythonhosted.org/packages/source/n/numexpr/numexpr-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.6}
+BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module numpy-devel >= 1.13.3}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.6
+Requires:       python-numpy >= 1.13.3
+Requires:       python-packaging
 %python_subpackages
 
 %description

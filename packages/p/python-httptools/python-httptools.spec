@@ -16,10 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-httptools
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Python framework independent HTTP protocol utils
 License:        MIT
@@ -56,14 +56,16 @@ mv vendor/http-parser*/ vendor/http-parser/
 %fdupes %{buildroot}%{$python_sitearch}
 }
 
-%if 0%{?python_version_nodots} > 36
 %check
+%if 0%{suse_version} >= 1550
+# pytest on suse <= 15.4 does not support the required pytest importlib import mode
 %pytest_arch -k 'not test_parser_response_1'
 %endif
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/httptools
+%{python_sitearch}/httptools-%{version}*-info
 
 %changelog

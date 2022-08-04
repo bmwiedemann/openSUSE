@@ -47,4 +47,12 @@
     <comment>remove accidental paste from epub2txt2.changes file</comment>
     <requestid>984722</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d284af502b1872489519537461f5d5e7</srcmd5>
+    <version>2.06</version>
+    <time>1659612228</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>992660</requestid>
+  </revision>
 </revisionlist>

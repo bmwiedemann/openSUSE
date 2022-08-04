@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 29 19:29:38 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.40.0:
+  + ipython_view: Clear output on Ctrl+L.
+  + Fix navigating to a bookmark when "View" -> "Show applications
+    without children" is disabled (the default).
+  + Make expanding and selecting the corresponding item in the
+    treeview work when clicking on a bookmark for the first time.
+  + Fix support for IPython 8.
+  + Updated translations.
+- Update Supplements to current openSUSE standard.
+
+-------------------------------------------------------------------
 Mon Sep 20 17:30:46 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed Aug  3 12:39:37 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.0135, fixes the following problems
+  * Coverity warns for double free.
+  * Some compilers warn for using an uninitialized variable. (Tony Mechelynck)
+  * No test for what patch 8.1.1424 fixes.
+  * When switching window in autocmd the restored cursor position may be wrong.
+  * Star register is changed when deleting and both "unnamed" and "unnamedplus"
+  are in 'clipboard'.
+  * Error in autoload script not reported for 'foldexpr'.
+  * Compiler warning for size_t to int conversion.
+  * Command line completion of user command may have duplicates. (Dani
+  Dickstein)
+  * Cannot interrupt global command from command line.
+  * ModeChanged event not triggered when leaving the cmdline window.
+  * Using "terraform" filetype for .tfvars file is bad.
+  * ":write" fails after ":file name" and then ":edit".
+  * Tabline is not redrawn when entering command line.
+  * MS-Windows: CTRL-[ on Belgian keyboard does not work like Esc.
+  * Pattern for detecting bitbake files is not sufficient.
+  * Fuzzy argument completion doesn't work for shell commands.
+  * No error when assigning bool to a string option with setwinvar().
+  * Duplicate error number.
+  * Plugins cannot change v:completed_item.
+  * Sway config files are recognized as i3config.
+  * Cursor restored unexpected with nested autocommand.
+  * Conditions are always true.
+  * Flag "new_value_alloced" is always true.
+  * Long quickfix line is truncated for :clist.
+  * missing include file in timer_create configure check.
+  * Scrollback can be wrong after redrawing the command line.
+  * Get hit-enter prompt for system() when '!' is in 'guioptions'.
+  * Invalid memory access in diff mode with "dp" and undo.
+  * Reading past end of line with insert mode completion.
+  * If running configure with cached results -lrt may be missing.
+  * Illegal memory access when pattern starts with illegal byte.
+  * Illegal byte regexp test doesn't fail when fix is reversed.
+  * Condition always has the same value.
+  * Configure check for timer_create may give wrong error.
+  * Writing over the end of a buffer on stack when making list of spell
+  suggestions.
+  * Help tag generation picks up words in code examples.
+  * "nocombine" is missing from synIDattr().
+  * has() is not strict about parsing the patch version.
+  * The command line takes up space even when not used.
+  * When 'cmdheight' is zero pressing ':' may scroll a window.
+  * Virtual text not displayed if 'signcolumn' is "yes".
+  * Text of removed textprop with text is not freed.
+  * No test for what patch 9.0.0155 fixes.
+  * Tiny chance that creating a backup file fails.
+  * Cannot put virtual text after or below a line.
+  * Breakindent test fails.
+  * Cannot build with small features.
+  * Code has more indent than needed.
+  * Cursor positioned wrong with virtual text after the line.
+  * Expanding file names fails in directory with more than 255 entries.
+  * Unused variable.
+  * Coverity complains about possible double free.
+  * Compiler warning for int/size_t usage.
+  * Cursor position wrong when inserting around virtual text.
+  * Virtual text with Tab is not displayed correctly.
+  * Multi-byte characters in virtual text not handled correctly.
+  * Virtual text after line moves to joined line. (Yegappan Lakshmanan)
+  * No test for text property with column zero.
+
+-------------------------------------------------------------------
 Tue Jul 26 09:40:08 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0073, fixes the following problems

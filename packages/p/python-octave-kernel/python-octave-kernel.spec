@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-octave-kernel
-Version:        0.34.1
+Version:        0.34.2
 Release:        0
 Summary:        A Jupyter kernel for Octave
 License:        BSD-3-Clause

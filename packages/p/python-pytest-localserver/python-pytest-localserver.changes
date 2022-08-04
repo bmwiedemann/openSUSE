@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug  1 15:00:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update build requirements: Without setuptools_scm[toml], this
+  installs a version 0.0.0 into the python metadata.
+- Drop obsolete remove_bindir.patch
+
+-------------------------------------------------------------------
+Sun Jul 31 12:21:40 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Update to 0.6.0
+  * Drop support for Python 3.3 and 3.4
+  * Use setuptools_scm for managing versions of this package
+  * Support sending chunked responses from the HTTP server
+  * Switch SMTP server backend from smtpd to aiosmtpd
+- version 0.5.1.post0
+  * Explicitly list supported Python versions with python_requires in setup.py.
+- version 0.5.1
+  * Regenerate included certificate to use SHA-256 hash to avoid OpenSSL errors (fixes #2).
+  * Add support for Python 3.10.
+  * Drop support for Python 2.6.
+  * Migrate repository to Github and update project metadata.
+
+-------------------------------------------------------------------
 Tue Mar 17 11:16:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use %pytest call for testing

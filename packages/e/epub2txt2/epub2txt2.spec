@@ -16,16 +16,17 @@
 #
 
 
-%global _commit_hash "02f69e6243d6c96f78da45fb710a265e5aee2fb5"
+%global _commit_hash ac4e73fa79202ccc106b36c06c20e36c37345a58
 
 Name:           epub2txt2
-Version:        2.04
+Version:        2.06
 Release:        0
 Summary:        Simple command-line utility for extracting text from EPUB documents
 License:        GPL-3.0-only
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/kevinboone/epub2txt2
-Source0:        https://github.com/kevinboone/epub2txt2/archive/02f69e6243d6c96f78da45fb710a265e5aee2fb5.tar.gz
+Source0:        https://github.com/kevinboone/epub2txt2/archive/%{_commit_hash}.tar.gz
+Patch0:         54b41e87156bc823d5938749d71c4c57adc75b1b.patch
 BuildRequires:  gcc
 BuildRequires:  make
 Requires:       unzip
@@ -34,7 +35,7 @@ Requires:       unzip
 Simple command-line utility for extracting text from EPUB documents
 
 %prep
-%setup -n %{name}-%{_commit_hash}
+%autosetup -n %{name}-%{_commit_hash} -p1
 
 %build
 %make_build

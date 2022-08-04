@@ -28,14 +28,13 @@
 %bcond_with test
 %endif
 Name:           python-cryptography%{psuffix}
-Version:        37.0.2
+Version:        37.0.4
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://cryptography.io/en/latest/
 Source0:        https://files.pythonhosted.org/packages/source/c/cryptography/cryptography-%{version}.tar.gz
-Source1:        https://files.pythonhosted.org/packages/source/c/cryptography/cryptography-%{version}.tar.gz.asc
 # use `osc service disabledrun` to regenerate
 Source2:        vendor.tar.zst
 # use `osc service disabledrun` to regenerate

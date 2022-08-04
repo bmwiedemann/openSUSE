@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jul 18 13:39:44 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.2.1:
+  * [bug] [tests] Various fixes to the test suite in the area of exception
+    message rendering to accommodate for variability in Python versions as
+    well as Pygments.
+  * [performance] Optimized some codepaths within the lexer/Python code
+    generation process, improving performance for generation of templates
+    prior to their being cached. Pull request courtesy Takuto Ikuta.
+  * [changed] [py3k] Corrected "universal wheel" directive in setup.cfg so
+    that building a wheel does not target Python 2.
+  * [changed] [py3k] The bytestring_passthrough template argument is removed,
+    as this flag only applied to Python 2.
+  * [changed] [py3k] With the removal of Python 2's cStringIO, Mako now uses
+    its own internal FastEncodingBuffer exclusively.
+  * [changed] Refactored test utilities into mako.testing module. Removed
+    unittest.TestCase dependency in favor of pytest.
+  * [changed] [setup] Replaced the use of pkg_resources with the importlib
+    library. For Python < 3.8 the library importlib_metadata is used.
+  * [changed] [py3k] Removed support for Python 2 and Python 3.6. Mako now
+    requires Python >= 3.7.
+  * [bug] [py3k] Mako now performs exception chaining using raise from,
+    correctly identifying underlying exception conditions when it raises its
+    own exceptions. Pull request courtesy Ram Rachum.
+- Remove python2 gubbins, since it is no longer supported.
+
+-------------------------------------------------------------------
 Thu Mar 24 09:22:40 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build

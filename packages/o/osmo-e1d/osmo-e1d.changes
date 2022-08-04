@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug  3 17:22:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.4.0
+  * Use the error counters for remote alarm + remote CRC error
+  * Add support for icE1usb RAI interrupt error flag
+  * Allow configuration of interfaces/lines via VTY
+  * GPS-DO support for icE1usb hardware
+  * OCTOI: initial support for E1oIP forwarding
+  * RIFO (random in, first out) for IP->E1 direction
+  * Add rate counters for number of frames muxed/demuxed (E1 side)
+
+-------------------------------------------------------------------
 Sat Apr  2 14:45:10 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.3.0

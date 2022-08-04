@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug  3 13:20:52 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.1:
+  This is just a summary. Full release notes are available at
+  https://docs.djangoproject.com/en/4.1/releases/4.1/
+  + Django 4.1 supports Python 3.8, 3.9, and 3.10
+  + Asynchronous handlers for class-based views
+  + Asynchronous ORM interface
+  + Validation of Constraints
+  + Form rendering accessibility
+  + CSRF_COOKIE_MASKED setting
+- Drop fix_test_custom_fields_SQLite.patch (already merged)
+- Add 0001-Fixed-33887-Added-version-in-asserted-test-URL.patch to fix
+  test
+
+-------------------------------------------------------------------
+Wed Aug  3 11:48:48 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.0.7 (CVE-2022-36359, bsc#1201923):
+  + Django 4.0.7 fixes a security issue with severity “high” in 4.0.6.
+
+-------------------------------------------------------------------
 Tue Jul  5 08:04:12 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 4.0.6

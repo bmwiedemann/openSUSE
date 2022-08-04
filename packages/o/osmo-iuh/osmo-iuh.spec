@@ -17,7 +17,7 @@
 
 
 Name:           osmo-iuh
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -32,13 +32,13 @@ BuildRequires:  pkg-config >= 0.20
 # python3 for asn1tostruct.py
 BuildRequires:  python3
 BuildRequires:  pkgconfig(libasn1c) >= 0.9.30
-BuildRequires:  pkgconfig(libosmo-netif) >= 1.1.0
-BuildRequires:  pkgconfig(libosmo-sigtran) >= 1.4.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.5.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 1.5.0
-BuildRequires:  pkgconfig(libosmogb) >= 1.5.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.5.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.5.0
+BuildRequires:  pkgconfig(libosmo-netif) >= 1.2.0
+BuildRequires:  pkgconfig(libosmo-sigtran) >= 1.6.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.7.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.7.0
+BuildRequires:  pkgconfig(libosmogb) >= 1.7.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.7.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.7.0
 
 %description
 Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
@@ -54,7 +54,7 @@ found in Home Node B networks on the Iu-h interface.
 %package -n libosmo-hnbap-devel
 Summary:        Development files for Osmocom HNBAP library
 Group:          Development/Libraries/C and C++
-Requires:       libosmo-hnbap0 = %version
+Requires:       libosmo-hnbap0 = %version-%release
 
 %description -n libosmo-hnbap-devel
 This subpackage contains libraries and header files for developing
@@ -71,7 +71,7 @@ interface.
 %package -n libosmo-ranap-devel
 Summary:        Header files for the Osmocom RANAP library
 Group:          Development/Libraries/C and C++
-Requires:       libosmo-ranap5 = %version
+Requires:       libosmo-ranap5 = %version-%release
 
 %description -n libosmo-ranap-devel
 Osmocom code for the Radio Access Network Application Part of the Iu-h
@@ -90,7 +90,7 @@ Osmocom code for the RANAP User Adaption signalling.
 %package -n libosmo-rua-devel
 Summary:        Header files for the Osmocom RUA library
 Group:          Development/Libraries/C and C++
-Requires:       libosmo-rua0 = %version
+Requires:       libosmo-rua0 = %version-%release
 
 %description -n libosmo-rua-devel
 Osmocom code for the RANAP User Adaption signalling.
@@ -108,7 +108,7 @@ Osmocom code for the Service Area Broadcast Protocol interface.
 %package -n libosmo-sabp-devel
 Summary:        Header files for the Osmocom SABP library
 Group:          Development/Libraries/C and C++
-Requires:       libosmo-sabp1 = %version
+Requires:       libosmo-sabp1 = %version-%release
 
 %description -n libosmo-sabp-devel
 Osmocom code for the Service Area Broadcast Protocol interface.
@@ -151,7 +151,7 @@ fi
 
 %files -n libosmo-hnbap0
 %license COPYING
-%_libdir/libosmo-hnbap.so.0*
+%_libdir/libosmo-hnbap.so.*
 
 %files -n libosmo-hnbap-devel
 %dir %_includedir/osmocom/
@@ -161,7 +161,7 @@ fi
 %_libdir/pkgconfig/libosmo-hnbap.pc
 
 %files -n libosmo-ranap5
-%_libdir/libosmo-ranap.so.5*
+%_libdir/libosmo-ranap.so.*
 
 %files -n libosmo-ranap-devel
 %dir %_includedir/osmocom/
@@ -170,7 +170,7 @@ fi
 %_libdir/pkgconfig/libosmo-ranap.pc
 
 %files -n libosmo-rua0
-%_libdir/libosmo-rua.so.0*
+%_libdir/libosmo-rua.so.*
 
 %files -n libosmo-rua-devel
 %dir %_includedir/osmocom/

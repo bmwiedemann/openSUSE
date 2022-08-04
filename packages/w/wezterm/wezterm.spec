@@ -17,7 +17,7 @@
 
 
 Name:           wezterm
-Version:        20220624.141144.bd1b7c5d+git171
+Version:        20220624.141144.bd1b7c5d+git264
 Release:        0
 Summary:        GPU-accelerated cross-platform terminal emulator and multiplexer
 URL:            https://github.com/wez/wezterm
@@ -27,8 +27,12 @@ Source1:        vendor.tar.gz
 Source2:        cargo_config
 Requires:       terminfo
 BuildRequires:  Mesa-libEGL-devel
+BuildRequires:  rust >= 1.43
+%if 0%{?suse_version} >= 1599
 BuildRequires:  cargo-packaging
-BuildRequires:  rust >= 1.46
+%else
+BuildRequires:  cargo
+%endif
 ExclusiveArch:  %{rust_arches}
 
 BuildRequires:  cmake
@@ -65,7 +69,11 @@ cp %{SOURCE2} .cargo/config
 tic -vvv -x -o terminfo termwiz/data/%{name}.terminfo
 
 %build
-%{cargo_build}
+%if 0%{?suse_version} < 1599
+  cargo build --offline --release --all-features
+%else
+  %{cargo_build}
+%endif
 
 %install
 install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/wezterm %{buildroot}%{_bindir}/wezterm

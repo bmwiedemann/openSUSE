@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           streamlink
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        BSD-2-Clause
@@ -30,11 +30,11 @@ Source1:        https://github.com/%{name}/%{name}/releases/download/%{version}/
 
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Sphinx
+BuildRequires:  python3-Sphinx >= 4
 BuildRequires:  python3-devel >= 3.7
 BuildRequires:  python3-pip
 BuildRequires:  python3-requests >= 2.26
-BuildRequires:  python3-versioningit
+BuildRequires:  python3-versioningit >= 2.0.0
 BuildRequires:  python3-wheel
 
 # TEST REQUIREMENTS
@@ -60,16 +60,13 @@ Conflicts:      python3-PySocks = 1.5.7
 
 Recommends:     vlc
 Suggests:       ffmpeg
-Suggests:       rtmpdump
 BuildArch:      noarch
 
 %description
-Streamlink is a CLI utility that pipes flash videos
-from online streaming services to a variety of video players
-such as MPV, or alternatively, a browser.
-The main purpose of streamlink is to convert CPU-heavy
-flash plugins to a less CPU-intensive format.
-Streamlink is a fork of the livestreamer project.
+Streamlink is a command-line utility which pipes video streams from various
+services into a video player, such as VLC. The main purpose of Streamlink is to
+avoid resource-heavy and unoptimized websites, while still allowing the user to
+enjoy various streamed content.
 
 %prep
 %setup -q

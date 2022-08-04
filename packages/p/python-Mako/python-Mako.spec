@@ -22,17 +22,15 @@
 %bcond_with libalternatives
 %endif
 
-%define oldpython python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Mako
-Version:        1.1.6
+Version:        1.2.1
 Release:        0
 Summary:        A Python templating language
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://www.makotemplates.org/
 Source:         https://files.pythonhosted.org/packages/source/M/Mako/Mako-%{version}.tar.gz
 BuildRequires:  %{python_module MarkupSafe >= 0.9.2}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -51,10 +49,6 @@ BuildArch:      noarch
 Recommends:     python-Beaker >= 1.1
 Provides:       python-mako = %{version}
 Obsoletes:      python-mako < %{version}
-%ifpython2
-Provides:       %{oldpython}-mako = %{version}
-Obsoletes:      %{oldpython}-mako < %{version}
-%endif
 %python_subpackages
 
 %description

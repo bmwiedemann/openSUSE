@@ -19,11 +19,11 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-widgetsnbextension
-Version:        3.6.0
+Version:        3.6.1
 Release:        0
 Summary:        Jupyter interactive widgets for Jupyter Notebook
 License:        BSD-3-Clause
-URL:            https://github.com/jupyter-widgets/ipywidgets
+URL:            https://github.com/jupyter-widgets/ipywidgets/tree/master/python/widgetsnbextension
 Source:         https://files.pythonhosted.org/packages/source/w/widgetsnbextension/widgetsnbextension-%{version}.tar.gz
 BuildRequires:  %{python_module notebook >= 4.4.1}
 BuildRequires:  %{python_module setuptools}
@@ -62,7 +62,6 @@ It provides the Jupyter configuration files.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%jupyter_move_config
 
 %check
 export JUPYTER_PATH=%{buildroot}%{_jupyter_prefix}
@@ -81,7 +80,7 @@ rm -f %{buildroot}%{_jupyter_confdir}migrated
 
 %files -n jupyter-widgetsnbextension
 %license LICENSE
-%config %{_jupyter_nb_notebook_confdir}/widgetsnbextension.json
+%_jupyter_config %{_jupyter_nb_notebook_confdir}/widgetsnbextension.json
 %dir %{_jupyter_nbextension_dir}/jupyter-js-widgets
 %{_jupyter_nbextension_dir}/jupyter-js-widgets/extension.js
 %{_jupyter_nbextension_dir}/jupyter-js-widgets/extension.js.map

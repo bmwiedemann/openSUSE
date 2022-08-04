@@ -21,14 +21,13 @@
 %define skip_python2 1
 Name:           python-cryptography-vectors
 # ALWAYS KEEP IN SYNC WITH python-cryptography!
-Version:        37.0.2
+Version:        37.0.4
 Release:        0
 Summary:        Test vectors for the cryptography package
 License:        Apache-2.0 OR BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pyca/cryptography
 Source0:        https://files.pythonhosted.org/packages/source/c/cryptography_vectors/cryptography_vectors-%{version}.tar.gz
-Source1:        https://files.pythonhosted.org/packages/source/c/cryptography_vectors/cryptography_vectors-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        python-cryptography-vectors-rpmlintrc
 BuildRequires:  %{python_module setuptools}

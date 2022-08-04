@@ -736,4 +736,12 @@ I didn't encounter any errors while playing around with it in a Live CD. (forwar
   easier (to avoid installing it jsc#PED-132 jsc#PED-148). (forwarded request 989830 from msmeissn)</comment>
     <requestid>989831</requestid>
   </revision>
+  <revision rev="83" vrev="5">
+    <srcmd5>5bd41e9508237dd57e922e9417b444b9</srcmd5>
+    <version>0.120</version>
+    <time>1659612178</time>
+    <user>dimstar_suse</user>
+    <comment>- add split-provides for polkit:/usr/bin/pkexec. (bsc#1202070) (forwarded request 992574 from msmeissn)</comment>
+    <requestid>992575</requestid>
+  </revision>
 </revisionlist>

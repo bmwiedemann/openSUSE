@@ -1,5 +1,27 @@
 -------------------------------------------------------------------
-Thu Jul 14 14:37:05 UTC 2022 - daniel.wagner@suse.com
+Wed Aug  3 08:04:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 2.1.1:
+  * build: Update version to v2.1.1
+  * build: Extend release script to support micro version releases
+  * build: Add minimum build requirement on libnvme
+  * wrapper: Add weak nvme_init_copy_range_f1 symbol
+  * build: Update version before regenerating docs
+  * build: Update release version rules
+
+-------------------------------------------------------------------
+Mon Aug 01 13:17:48 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version v2.1:
+  * nvme: Do not print error message in collect_effects_log helper
+  * fabrics: Remove dhchap-ctrl-secret from discover/connect-all
+  * nvme-print: sanitize the get-feature async event config output
+  * nvme: Set default rae value for nvme_get_nsid_log users
+  * fabrics: Avoid nvme_scan_ctrl when disconnecting
+  * print: Fix nvme_id_uuid_list
+
+-------------------------------------------------------------------
+Thu Jul 14 14:37:05 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version v2.1~rc0:
   * build and install fixes/improvements

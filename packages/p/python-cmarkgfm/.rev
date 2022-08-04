@@ -34,4 +34,15 @@
 </comment>
     <requestid>952923</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>95565633edcce4ee92d4d45fdc6af601</srcmd5>
+    <version>0.8.0</version>
+    <time>1659612187</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2022.3.4:
+  - Updated cmark to 0.29.0.gfm.3
+  - Switched to calendar versioning
+</comment>
+    <requestid>989564</requestid>
+  </revision>
 </revisionlist>

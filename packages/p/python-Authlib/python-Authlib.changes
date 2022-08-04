@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  4 06:30:52 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on mock. 
+- Remove duplicated BuildRequires on pytest.
+
+-------------------------------------------------------------------
 Mon May  9 22:06:00 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Fix tests.

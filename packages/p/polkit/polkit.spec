@@ -94,6 +94,7 @@ Development files for PolicyKit Authorization Framework.
 Summary:        pkexec component of polkit
 Group:          System/Libraries
 Requires:       %{name} = %{version}-%{release}
+Provides:       polkit:/usr/bin/pkexec
 
 %description -n pkexec
 This package contains the pkexec setuid root binary part of polkit.

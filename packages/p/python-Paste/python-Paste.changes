@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 15 19:15:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.1:
+  * Replace deprecated threading.currentThread, getName and setDaemon
+    with threading.current_thread, name and daemon.
+
+-------------------------------------------------------------------
 Tue Feb 23 15:59:59 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Get rid of broken %ifpython3 macro

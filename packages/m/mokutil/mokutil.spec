@@ -1,7 +1,7 @@
 #
 # spec file for package mokutil
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mokutil
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Tools for manipulating machine owner keys
 License:        GPL-3.0-only
@@ -27,8 +27,6 @@ Source:         https://github.com/lcp/%{name}/archive/%{version}.tar.gz
 Source1:        modhash
 # PATCH-FIX-SUSE mokutil-remove-libkeyutils-check.patch glin@suse.com -- Disable the check of libkeyutils version
 Patch1:         mokutil-remove-libkeyutils-check.patch
-# PATCH-FIX-UPSTREAM mokutil-fix-missing-header.patch glin@suse.com -- Fix the compilation error due to the missing header
-Patch2:         mokutil-fix-missing-header.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  efivar-devel >= 0.12
@@ -47,7 +45,6 @@ keys (MOK) stored in the database of shim.
 %if 0%{?suse_version} <= 1500
 %patch1 -p1
 %endif
-%patch2 -p1
 
 %build
 ./autogen.sh

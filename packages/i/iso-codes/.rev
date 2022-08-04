@@ -780,4 +780,16 @@
     <comment></comment>
     <requestid>981117</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>f8cdd6e21307a49f740a18ecb82cfde3</srcmd5>
+    <version>4.11.0</version>
+    <time>1659612156</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.11.0:
+  + Update ISO 639-3 codes from SIL website.
+  + Updated translations.
+ 
+</comment>
+    <requestid>991755</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  3 21:13:19 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.34.2
+  * Fix error: '_make_figures' undefined near line 1, column 1 #212
+
+-------------------------------------------------------------------
 Sat Mar 26 20:55:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update packaging: install the kernel

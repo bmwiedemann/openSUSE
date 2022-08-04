@@ -1,7 +1,7 @@
 #
 # spec file for package sqlite-jdbc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%global version 3.36.0.3
-%global amalgamation_version 3360000
+%global version 3.39.2.0
+%global amalgamation_version 3390200
 %global debug_package %{nil}
 Name:           sqlite-jdbc
 Version:        %{version}
@@ -28,19 +28,19 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/xerial/%{name}
 Source0:        %{url}/archive/%{version}.tar.gz
-Source1:        https://www.sqlite.org/2021/sqlite-amalgamation-%{amalgamation_version}.zip
+Source1:        https://www.sqlite.org/2022/sqlite-amalgamation-%{amalgamation_version}.zip
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
+BuildRequires:  unzip
+BuildRequires:  xmvn
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
 BuildRequires:  mvn(org.hamcrest:hamcrest-all)
 BuildRequires:  mvn(org.junit.jupiter:junit-jupiter-api)
 BuildRequires:  mvn(org.junit.jupiter:junit-jupiter-engine)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
-BuildRequires:  unzip
-BuildRequires:  xmvn
 
 %description
 SQLite JDBC is a library for accessing and creating SQLite database files in
@@ -61,8 +61,7 @@ API documentation for %{name}.
 %prep
 %setup -q
 %{mvn_file} : %{name}-%{version} %{name}
-%pom_xpath_replace "pom:plugin[pom:artifactId/text()='maven-compiler-plugin']/pom:configuration/pom:source" 11 pom.xml
-%pom_xpath_replace "pom:plugin[pom:artifactId/text()='maven-compiler-plugin']/pom:configuration/pom:target" 11 pom.xml
+%pom_remove_plugin org.sonatype.plugins:nexus-staging-maven-plugin
 dos2unix SQLiteJDBC.wiki
 mkdir target
 cp %{SOURCE1} target/sqlite-$(sed -e 's/^version=//' VERSION)-amal.zip

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug  2 18:55:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 1.1:
+  * Regenerate all documentation
+  * json: fixup dhchap_ctrl_key definitions
+  * fabrics: Fix build_options() return values
+  * fabrics: sanitize dump-config output
+  * Fix poll.h includes
+  * build: Drop -nostdinc for LibreSSL header checks
+  * ioctl: Honor rae in nvme_get_nsid_log
+  * build: Add support to build against LibreSSL
+  * rpmbuild: Enable 'make rpm' to build rpm pkgs #408
+  * mi: unify MI Get Log Page function with ioctl API
+  * python: add missing ctrl attrs to Python bindings
+  * mi-mctp: Add timeout support to MCTP transport
+  * mi: Add maximum More Processing Required limit API
+  * mi: Add endpoint get/set timeout API
+
+-------------------------------------------------------------------
 Thu Jul 14 14:00:41 UTC 2022 - daniel.wagner@suse.com
 
 - Update to version v1.1-rc0:

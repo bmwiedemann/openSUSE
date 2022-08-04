@@ -570,4 +570,12 @@ No LGPL-2.1+ licenses found in package (forwarded request 105656 from babelworx)
   (jsc#SLE-21105). (forwarded request 920390 from sbrabec)</comment>
     <requestid>920563</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>0d473c6f13a270db1ac670445c8a918f</srcmd5>
+    <version>3.40.0</version>
+    <time>1659612238</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 991749 from iznogood)</comment>
+    <requestid>992696</requestid>
+  </revision>
 </revisionlist>

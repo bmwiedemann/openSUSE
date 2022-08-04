@@ -290,4 +290,13 @@
     <comment></comment>
     <requestid>967318</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b855b3d3918b0968a92b9453c49ee1a1</srcmd5>
+    <version>1.4.2</version>
+    <time>1659612194</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.2:
+  * pecan no longer depends on webtest</comment>
+    <requestid>990228</requestid>
+  </revision>
 </revisionlist>

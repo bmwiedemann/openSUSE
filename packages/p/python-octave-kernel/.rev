@@ -60,4 +60,13 @@
     <comment></comment>
     <requestid>965095</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0617e9949376ef63aa9bb245dc2786c8</srcmd5>
+    <version>0.34.2</version>
+    <time>1659612213</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.34.2
+  * Fix error: '_make_figures' undefined near line 1, column 1 #212</comment>
+    <requestid>992643</requestid>
+  </revision>
 </revisionlist>

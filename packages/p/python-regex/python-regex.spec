@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-regex
-Version:        2022.6.2
+Version:        2022.7.9
 Release:        0
 Summary:        Alternative regular expression module for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://bitbucket.org/mrabarnett/mrab-regex
+URL:            https://github.com/mrabarnett/mrab-regex
 Source:         https://files.pythonhosted.org/packages/source/r/regex/regex-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}

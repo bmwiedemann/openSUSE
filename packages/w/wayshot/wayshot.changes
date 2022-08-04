@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug  4 03:53:24 UTC 2022 - William Brown <william.brown@suse.com>
+
+- bsc#1182059 - CVE-2021-21299 - hyper request smuggling
+
+-------------------------------------------------------------------
+Thu Jul 21 05:06:33 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 1.1.9:
+  * [backend.rs] Add support for ppm rendering.
+  * [bump] 1.1.8
+  * [region-capture] out of bounds detection added
+  * [update] add output dimension detection
+  * [update] remove smithay dependency for faster builds
+  * [push] .editorconfig
+  * [update] memfd_create - add freebsd to target_os
+  * [update] Readme.md
+  * [chore] Cargo.lock
+  * [update] replace xdg-output-handler with wl_output
+
+-------------------------------------------------------------------
 Sun May 29 15:41:06 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 1.1.7~0:

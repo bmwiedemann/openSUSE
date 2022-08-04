@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,46 +24,35 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
+
 Name:           python-httpcore%{psuffix}
-Version:        0.14.7
+Version:        0.15.0
 Release:        0
 Summary:        Minimal low-level Python HTTP client
 License:        BSD-3-Clause
 URL:            https://github.com/encode/httpcore
 Source:         https://github.com/encode/httpcore/archive/%{version}.tar.gz#/httpcore-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-anyio >= 3.1.0
+Requires:       python-anyio >= 3
 Requires:       python-certifi
-Requires:       python-chardet >= 3.0
 Requires:       python-h11 >= 0.11.0
-Requires:       python-idna >= 2.0
-Requires:       python-rfc3986 >= 1.0
 Requires:       python-sniffio >= 1.0
 Recommends:     python-h2 >= 3.0
+Recommends:     python-socksio >= 1.0
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module anyio >= 3.1.0}
-BuildRequires:  %{python_module certifi}
-BuildRequires:  %{python_module chardet >= 3.0}
-BuildRequires:  %{python_module h11 >= 0.11.0}
+BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module h2 >= 3.0}
-BuildRequires:  %{python_module idna >= 2.0}
-BuildRequires:  %{python_module mitmproxy}
-BuildRequires:  %{python_module pproxy >= 2.7.8}
-BuildRequires:  %{python_module pytest >= 6.2.4}
-BuildRequires:  %{python_module pytest-asyncio >= 0.15.1}
-BuildRequires:  %{python_module pytest-curio}
+BuildRequires:  %{python_module httpcore = %{version}}
+BuildRequires:  %{python_module pytest >= 7.0.1}
+BuildRequires:  %{python_module pytest-asyncio >= 0.16.0}
 BuildRequires:  %{python_module pytest-httpbin}
-BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module pytest-trio >= 0.7.0}
-BuildRequires:  %{python_module pytest-twisted}
-BuildRequires:  %{python_module rfc3986 >= 1.0}
-BuildRequires:  %{python_module trustme >= 0.7.0}
-BuildRequires:  %{python_module uvicorn >= 0.12.1}
+BuildRequires:  %{python_module trio >= 0.19.0}
 %endif
 # /SECTION
 %python_subpackages
@@ -91,14 +79,15 @@ Python minimal low-level HTTP client.
 # tests/async_tests + tests/sync_tests causes open file limit
 # socks5 -- we don't ship socksio
 %if %{with test}
-%pytest -rs -k 'not (test_interfaces or test_no_retries or test_retries or test_threadsafe_basic or socks5)'
+%pytest -rs -k 'not (test_interfaces or test_no_retries or test_retries or test_threadsafe_basic or socks5)' --asyncio-mode=strict
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE.md
-%{python_sitelib}/*
+%{python_sitelib}/httpcore
+%{python_sitelib}/httpcore-%{version}*-info
 %endif
 
 %changelog

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  2 19:00:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.08.0:
+  * Fix rendering text on some forms
+  * CairoOutputDev: Support Type3 charprocs having Resources
+  * Fix crashes on malformed files
+
+-------------------------------------------------------------------
 Mon Jul 25 06:39:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.07.0:

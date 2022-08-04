@@ -1,4 +1,146 @@
 -------------------------------------------------------------------
+Thu Jul 28 02:55:24 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 2022.07.25:
+  * fix: Autocomplete for struct fields includes receiver
+  * fix: consider assignee expressions in record fields exhaustiveness check
+  * Add info whether it's assignee expr to relevant HIR `Expr` variants
+  * Add `ellipsis` to HIR `RecordLit`
+  * internal: extract common code for adjusting diagnostic range
+  * feat: don't highlight the whole fn on return-type mismatch
+  * fix: Don't add braces to 'if' completion in match guard position
+  * fix generate_new doc
+  * fix: Fix error tooltip message for VSCode status bar item
+  * internal: Don't parse files unnecessarily in scope_for_offset
+  * Revert 03a62c180e6a7300d0d7b8c4d680b749c101bcbb
+  * Use ItemTree for modules in attrs_query
+  * fix: Improve syntax highlighting in attributes
+  * Add comment about replacing crossbeam with std scoped threads when they land
+  * Use std::panic::resume_unwind
+  * Move interner methods to Symbol, return SmolStr directly since it's ref-counted
+  * Fix raw ident handling (a little)
+  * Add test for idents incl. raw idents
+  * Stringify literals create client-side properly
+  * Add test for literals created client-side
+  * Run proc macro expansion in a separate thread (for the thread-local interner)
+  * Use a thread-local for the symbol interner (1/2)
+  * Move version string to RustcInfo, read '.rustc' section only once
+  * Pass tidy checks
+  * Assert that sysroot ABI version matches exactly
+  * fix: Fix `trait_impls_in_deps_query` being called directly instead of as a query
+  * Use ItemTree for crate root attr_query collection
+  * internal: Use itemtree for variant and field attribute collection
+  * Simplify
+  * Simplify
+  * Remove AstIdMap from Expander as it is seldom needed
+  * implement literal_from_str (poorly)
+  * Add literal/ident conversion, tests pass
+  * stub missing APIs
+  * Fix imports, delete removed interfaces
+  * Move token_stream to separate module
+  * Add sysroot-abi feature, copy 1.64 ABI fo rnow
+  * Add PROC_MACRO_TEST_TOOLCHAIN environment variable
+  * Update crates/proc-macro-test/build.rs
+  * Update crates/proc-macro-test/build.rs
+  * Add proc-macro-srv integration test that clones literals
+  * Don't copy the Cargo.lock
+  * proc-macro-test build script: wipe before, be more verbose
+  * Build proc-macro-test-impl out-of-tree
+  * Remove in-rust-tree feature
+  * Remove check_merge_commits test altogether
+  * Allow merge commits when 'in-rust-tree' feature is enabled
+  * Rename proc macro server from 'Rustc' to 'RustAnalyzer'
+  * fix: don't replace default members' body
+  * internal: Don't eagerly construct `AstIdMap`s
+  * Run cargo fmt
+  * Fix last few warnings manually
+  * Run cargo fix --edition-idioms
+  * Enable extra warnings required by rust-lang/rust
+  * fix: Fix search for associated trait items being inconsistent
+  * Add comments
+  * Fix generated `PartialEq::ne`
+  * Inverted the match logic to skip comments, attribute macros, and whitespace before the appropriate keywords.
+  * Add CARGO_WORKSPACE_DIR env var in `.cargo/config.toml`
+  * Upgrade to expect-test@1.4.0
+  * Work around Code bug with empty diagnostics
+  * Added case for const
+  * Cleaned up trailing whitespace for tidy::files_are_tidy
+  * Added coverage for trait, mod, impl, and enum cases.
+  * Add test case and token finder to address 12790
+  * fix: Prevent panic in Remove Unused Parameter assist
+  * Add simple support for completion item details
+  * Move `convert_to_def_in_trait` into `ide-db`
+  * Improve file watcher config
+  * Remove macro ABI version from doc comment
+  * Find original as node before compute ref match
+  * Remove outdated proc macro ABIs
+  * chore: change str_ref_to_string to str_ref_to_owned
+  * Support the 1.64 nightly proc macro ABI
+  * fix: “Generate constant” ignores the path prefix of the identifier
+  * Fix extract variable assist for subexpression in mutable borrow
+  * fix: un-inline `ConstScalarOrPath::from_expr_opt`
+  * fix: address suggestions
+  * refactor: inline some variables
+  * Check for local IDs belong to same definition
+  * feat: support negative const generic parameters
+  * tests: add hover tests for const generics
+  * Improve syntax fixup a bit, handle incomplete `if`
+  * try fixing spurious CI failures on windows
+  * fix: Improve self param completion applicability
+  * internal: Remove allocation in DefCollector::reseed_with_unresolved_attribute
+  * Remove deprecate action
+  * Update .github/workflows/release.yaml
+  * Remove deprecate action
+  * fix: Don't show qualified path completions for private items
+  * fix: Fix imports being inserted before doc comments in inline modules
+  * fix(completion): `super::` completion at crate root and module depth aware
+  * Make search for applicable generics more precise
+  * fix: Support generics in extract_function assist
+  * add tests
+  * fix: Set server binary version when distributing
+  * fix: Fix VSCode status bar tooltip not showing the error messages
+  * Update 1.63 proc macro ABI to match rustc
+  * Implement `ignore`  and `index` metavar expression
+  * Fix typos
+  * Fix obsolete `completion.snippets` config
+  * Fix obsolete `enableRangeFormatting` config
+  * Fix `rustcSource` -> `rustc_source`
+  * Fix obsolete `diagnostics.experimental.enable`
+  * Fix obsolete `loadOutDirsFromCheck` configs
+  * Fix config keys regarding imports in docs
+  * fix: ignore renames for crate root
+  * Fix test
+  * Add str_ref_to_string fix
+  * fix: Fix unresolved proc macro diagnostics pointing to macro expansions
+  * internal: Record all macro definitions in ItemScope
+  * Fix typo
+  * fix: escape receiver texts in format string completion
+  * fix: escape ${receiver} when completing with custom snippets
+  * WellFormed -> Holds
+  * add test for item same name
+  * add test for suggest_name
+  * restore sth
+  * fix test in resolve_proc_macro:  Foo is Owner
+  * rename "trait_def" to "def_in_trait"
+  * highlight: trait path
+  * fix test in qualify_method:  stay in trait path
+  * fix some test due to resolve to where trait m impl
+  * functions resolve to impl
+  * Fix unstable feature use
+  * Add two more tests
+  * Various cleanups
+  * reformat code
+  * goto where trait method impl
+  * add doc strings to use_trivial_contructor.rs
+  * add use_trivial_contructor.rs
+  * apply suggestions
+  * replace TODO with FIXME
+  * fix CI
+  * remove dbg
+  * cleanup
+  * instanciate_empty_structs
+
+-------------------------------------------------------------------
 Fri Jul 15 13:57:57 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 2022.07.11:

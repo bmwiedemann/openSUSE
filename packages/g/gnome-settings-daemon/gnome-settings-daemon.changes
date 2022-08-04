@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  3 12:53:21 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Change dependency from polkit to /usr/bin/pkexec: pkexec has been
+  split out of polkit. Requiring the explicit capability seems
+  better here than having to worry what package carries the binary.
+
+-------------------------------------------------------------------
 Wed Jun  1 09:02:14 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.2:

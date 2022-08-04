@@ -48,4 +48,13 @@
 </comment>
     <requestid>975956</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>8b014e728bbea4e29dff0d90a2c8ad88</srcmd5>
+    <version>1.0.1</version>
+    <time>1659612233</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on mock. 
+- Remove duplicated BuildRequires on pytest.</comment>
+    <requestid>992686</requestid>
+  </revision>
 </revisionlist>

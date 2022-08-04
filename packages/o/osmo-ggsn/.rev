@@ -63,4 +63,12 @@
     <comment>- Update to version 1.8.0</comment>
     <requestid>932599</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>235be4ac753dc100b444ce56e1de2d87</srcmd5>
+    <version>1.9.0</version>
+    <time>1659612211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.9.0</comment>
+    <requestid>992630</requestid>
+  </revision>
 </revisionlist>

@@ -6080,4 +6080,41 @@ always built-in because vim has direct perl dependencies anyway.
   * ml_get error with nested autocommand.</comment>
     <requestid>991225</requestid>
   </revision>
+  <revision rev="316" vrev="1">
+    <srcmd5>0735fd464edc9a0dfaa455e2bfebf18e</srcmd5>
+    <version>9.0.0135</version>
+    <time>1659612179</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.0135, fixes the following problems
+  * Coverity warns for double free.
+  * Some compilers warn for using an uninitialized variable. (Tony Mechelynck)
+  * No test for what patch 8.1.1424 fixes.
+  * When switching window in autocmd the restored cursor position may be wrong.
+  * Star register is changed when deleting and both &quot;unnamed&quot; and &quot;unnamedplus&quot;
+  are in 'clipboard'.
+  * Error in autoload script not reported for 'foldexpr'.
+  * Compiler warning for size_t to int conversion.
+  * Command line completion of user command may have duplicates. (Dani
+  Dickstein)
+  * Cannot interrupt global command from command line.
+  * ModeChanged event not triggered when leaving the cmdline window.
+  * Using &quot;terraform&quot; filetype for .tfvars file is bad.
+  * &quot;:write&quot; fails after &quot;:file name&quot; and then &quot;:edit&quot;.
+  * Tabline is not redrawn when entering command line.
+  * MS-Windows: CTRL-[ on Belgian keyboard does not work like Esc.
+  * Pattern for detecting bitbake files is not sufficient.
+  * Fuzzy argument completion doesn't work for shell commands.
+  * No error when assigning bool to a string option with setwinvar().
+  * Duplicate error number.
+  * Plugins cannot change v:completed_item.
+  * Sway config files are recognized as i3config.
+  * Cursor restored unexpected with nested autocommand.
+  * Conditions are always true.
+  * Flag &quot;new_value_alloced&quot; is always true.
+  * Long quickfix line is truncated for :clist.
+  * missing include file in timer_create configure check.
+  * Scrollback can be wrong after redrawing the command line.
+  * Get hit-enter prompt for system() when '!' is in 'guioptions'.</comment>
+    <requestid>992576</requestid>
+  </revision>
 </revisionlist>

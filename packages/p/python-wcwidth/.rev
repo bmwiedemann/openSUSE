@@ -118,4 +118,15 @@
     <comment></comment>
     <requestid>896913</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>e26fb8dffe49794b16e7e7b8d6c5b107</srcmd5>
+    <version>0.2.5</version>
+    <time>1659612191</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-pkg_resources.patch:
+  * Use importlib.metadata rather than pkg_resources.
+- Since importlib.metadata is not as a stickler as pkg_resources is, remove
+  multibuild.</comment>
+    <requestid>989970</requestid>
+  </revision>
 </revisionlist>

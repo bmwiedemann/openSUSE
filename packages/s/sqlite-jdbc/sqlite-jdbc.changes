@@ -1,7 +1,97 @@
 -------------------------------------------------------------------
+Thu Aug  4 04:27:30 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.39.2.0
+  * Changes:
+    + Build
+      ~ 63e0467 create the release commit only after successful
+        push to Maven Central
+      ~ 5aaeb8c attach javadoc when creating the jar in release
+        profile
+      ~ 7310a45 add missing project url in pom.xml
+      ~ 13d2369 automatic release via workflow_dispatch
+      ~ 6537808 add jreleaser plugin
+      ~ 9f9ce09 remove maven-release-plugin and adjust version
+        number
+      ~ 10ab71c add test for #720
+      ~ c7b54a2 expand multiarch test to arm64/alpine and
+        ppc64/ubuntu
+      ~ 50c0458 simplify matrix on test job using include instead
+        of exclude
+      ~ 972f1db run mvn with --batch-mode --no-transfer-progress
+      ~ 7fc747f use actions/checkout@v3
+      ~ 8409e5c display more information during OSInfoTest
+      ~ 062440a build on jdk 17 (#747)
+📝  + Documentation
+      ~ 5c03f58 update list of supported platforms in README.md
+      ~ d23711e remove bitbucket links
+      ~ 766a51f syntax highlighting in README.md
+    + --------
+      ~ 481b803 fix memory leak when calling
+        Connection.getMetaData() (#757)
+      ~ bb84601 show numeric code instead of UNKNOWN_ERROR (#689)
+      ~ 085700f compile OSInfo on the fly if needed by make (#715)
+        Removed outdated version of OSInfo.class
+      ~ 67159a5 add snapshot badge to README.md
+      ~ 5da0039 Publish snapshots to OSSRH automatically from CI
+      ~ 6c4f373 Use setUseCaches instead of setDefaultUseCaches
+        (#755)
+        Use of setDefaultUseCaches impacts all URLClassLoaders and
+        HttpURLConnections, which can lead to erratic behavior of
+        non-sqlite components running on a system since the
+        variable is static.
+      ~ e1d282c Wrap Statement Pointers to prevent use after free
+        race
+      ~ 6ee09e1 add ppc64el/ppc64le mapping
+    + Closes: #450
+      ~ 49facf5 Update changelog for 3.35.0.1 through 3.36.0.3
+        (#702)
+      ~ e737a19 Musl check improvements
+      ~ Fix older linux compatibility with MUSL check
+      ~ 14d5903 org.sqlite.SQLiteConfig.setDatePrecision(String)
+        throws unnecessary S… (#751)
+      ~ a6d63ee add native binary for Linux aarch64 with musl
+        (#704)
+      ~ f55b2aa Upgrade to 3.39.2 (#746)
+      ~ Update dockcross scripts
+      ~ ada2b14 detect musl by checking /proc/self/map_files (#675)
+      ~ detect musl by checking /proc/self/map_files
+      ~ 15ecb1b Use more specific types instead of String when
+        fetching JDBC3ResultSet.getBigDecimal (#666)
+      ~ c57be93 Add native libs for Android arm64, x86, x86_64 via
+        dockcross (#662)
+      ~ cleanup OSInfo.java with IDE suggestions
+      ~ 1481bf2 Fix file descriptor (handle) leak when opening
+        database fails (#665)
+      ~ 1716215 Update Eclipse settings to use Java 8 (#664)
+      ~ 7ac4c87 Switch to Temurin JDK builds as AdoptJDK has been
+        discontinued (#660)
+      ~ 4958df0 update CI badge on README.md (#661)
+      ~ 674288c Add CI tests for aarch64 and armv7 (#658)
+      ~ multiarch test
+      ~ 9c03d9c migrate to setup-java@v2 with built-in maven cache
+        (#657)
+      ~ 0ecb95b Update cross prefix following recent dockcross
+        updates (#655)
+      ~ simplify the cross prefix, as the binaries are available in
+        the PATH
+      ~ 3d04d7d Code formatting via Spotless with google java
+        format (#653)
+      ~ add spotless with google java format
+      ~ ec79c49 Makefile: remove -it/-ti flags from docker calls
+        (#654)
+        These control whether to run docker in interactive mode and
+        attach the tty,
+      ~ f5889a4 Next snapshot:
+- Remove plugin: org.sonatype.plugins:nexus-staging-maven-plugin 
+
+-------------------------------------------------------------------
 Tue Sep  7 14:33:29 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.36.0.3
+  * Changes:
+    + Fixes for GraalVM
+    + Internal update: Migrate to JUnit5. Add CI with GraalVM
 - Change architecture to noarch for javadoc subpackage
 
 -------------------------------------------------------------------

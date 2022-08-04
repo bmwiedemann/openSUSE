@@ -61,14 +61,20 @@
 %bcond_with ringdisabled
 %if %{without hpc}
 %define package_name %{pname}
+# for file section
 %define p_python_sitearch %{python_sitearch}
+# for inside python_expand
+%define p_python_sitearch_expand %{$python_sitearch}
 %define p_prefix %{_prefix}
 %define p_bindir %{_bindir}
 %else
 %{!?compiler_family:%global compiler_family gnu}
 %{hpc_init -c %{compiler_family} %{?c_f_ver:-v %{c_f_ver}} %{?ext:-e %{ext}}}
 %define package_name %{hpc_package_name %{_ver}}
+# for file section
 %define p_python_sitearch %{hpc_python_sitearch}
+# for inside python_expand
+%define p_python_sitearch_expand $($python -c "import sysconfig as s; print(s.get_paths(vars={'platbase':'%{hpc_prefix}','base':'%{hpc_prefix}'}).get('platlib'))")
 %define p_prefix %{hpc_prefix}
 %define p_bindir %{hpc_bindir}
 # Magic for OBS Staging. Only build the flavors required by
@@ -181,16 +187,21 @@ $python setup.py config_fc --fcompiler=gnu95 --noarch build
 %hpc_setup
 module load $python-numpy
 %endif
+# Note: SciPy 1.9 will switch to Meson and support for numpy.distutils will be removed in 1.10
 $python setup.py install --prefix=%{p_prefix} --root=%{buildroot}
-%fdupes %{buildroot}%{$python_sitearch}
+# Setuptools 60+ unexpectedly writes the egg-info in CamelCase,
+# upstream published dist-info is lowercase; keep lowercase until above mentioned switch happens.
+if [ -d %{buildroot}%{p_python_sitearch_expand}/SciPy-%{version}-py%{$python_bin_suffix}.egg-info ]; then
+  mv %{buildroot}%{p_python_sitearch_expand}/SciPy-%{version}-py%{$python_bin_suffix}.egg-info \
+     %{buildroot}%{p_python_sitearch_expand}/scipy-%{version}-py%{$python_bin_suffix}.egg-info
+fi
+%fdupes %{buildroot}%{p_python_sitearch_expand}
 }
 
 %if %{with hpc}
 %define hpc_module_pname ${python_flavor}-%{shortname}
 %{python_expand #
-python_flavor=$(cat _current_flavor)
-sitesearch_path=`$python -c "import sysconfig as s; print(s.get_paths(vars={'platbase':'%{hpc_prefix}','base':'%{hpc_prefix}'}).get('platlib'))"`
-rm -rf %{buildroot}${sitesearch_path}/scipy/{,core,distutils,f2py,fft,lib,linalg,ma,matrixlib,oldnumeric,polynomial,random,testing}/tests
+rm -rf %{buildroot}%{p_python_sitearch_expand}/scipy/{,core,distutils,f2py,fft,lib,linalg,ma,matrixlib,oldnumeric,polynomial,random,testing}/tests
 %hpc_write_modules_files
 #%%Module1.0#####################################################################
 
@@ -261,7 +272,7 @@ touch debugsourcefiles.list
 %files %{python_files}
 %license LICENSE.txt
 %{p_python_sitearch}/scipy/
-%{p_python_sitearch}/scipy-*-py*.egg-info
+%{p_python_sitearch}/scipy-%{version}*-info
 
 %if %{with hpc}
 %define hpc_module_pname %{python_flavor}-scipy

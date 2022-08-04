@@ -24,25 +24,23 @@
 %bcond_with memcached
 Name:           python-Django
 # We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
-Version:        4.0.6
+Version:        4.1
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
 URL:            https://www.djangoproject.com
-Source:         https://www.djangoproject.com/m/releases/4.0/Django-%{version}.tar.gz
-Source1:        https://media.djangoproject.com/pgp/Django-%{version}.checksum.txt#/Django-%{version}.tar.gz.asc
+Source:         https://www.djangoproject.com/m/releases/4.1/Django-%{version}.tar.gz
+# For 4.1 the signature file seems to be invalid, but the SHA1 match the published one
+Source1:        https://media.djangoproject.com/pgp/Django-%{version}.checksum.txt#/Django-%{version}.tar.gz.asc.INVALID
 Source2:        %{name}.keyring
 Source99:       python-Django-rpmlintrc
-# PATCH-FIX-UPSTREAM fix_test_custom_fields_SQLite.patch gh#django/django#15168 mcepl@suse.com
-# Use FlexibleFieldLookupDict which is case-insensitive mapping
-# because SQLite 3.37+ returns some data type names upper-cased
-# e.g. TEXT.
-Patch0:         fix_test_custom_fields_SQLite.patch
+# PATCH-FIX-UPSTREAM 0001-Fixed-33887-Added-version-in-asserted-test-URL.patch gh#django/django#15908 aplanas@suse.com
+Patch0:         0001-Fixed-33887-Added-version-in-asserted-test-URL.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module argon2-cffi >= 16.1.0}
-BuildRequires:  %{python_module asgiref >= 3.4.1}
+BuildRequires:  %{python_module argon2-cffi >= 19.1.0}
+BuildRequires:  %{python_module asgiref >= 3.5.2}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module docutils}
@@ -58,11 +56,12 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module backports.zoneinfo if (%python-base with python38-base)}
 Requires:       python
 Requires:       python-Pillow >= 6.2.0
-Requires:       python-argon2-cffi >= 16.1.0
-Requires:       python-asgiref >= 3.4.1
+Requires:       python-argon2-cffi >= 19.1.0
+Requires:       python-asgiref >= 3.5.2
 %if "%{python_flavor}" == "python38"
 Requires:       python-backports.zoneinfo
 %endif
+Requires:       python-bcrypt
 Requires:       python-pytz
 Requires:       python-setuptools
 Requires:       python-sqlparse >= 0.2.2
@@ -70,7 +69,6 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-Jinja2 >= 2.9.2
 Recommends:     python-PyYAML
-Recommends:     python-bcrypt
 Recommends:     python-geoip2
 Recommends:     python-pylibmc
 Recommends:     python-python-memcached >= 1.59

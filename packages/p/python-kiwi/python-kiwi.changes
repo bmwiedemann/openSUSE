@@ -1,4 +1,193 @@
 -------------------------------------------------------------------
+Tue Jul 12 09:46:16 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.44 → 9.24.45
+
+-------------------------------------------------------------------
+Thu Jul 07 18:35:19 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Umount device before cloning
+
+  In case a clone should be created from a partition we need
+  to make sure to umount the device after sync and prior cloning.
+  Otherwise the clone operation is not safe because the rsynced
+  data might still be in memory and not synced out to the block
+  device.
+
+-------------------------------------------------------------------
+Wed Jul 06 15:52:07 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed custom disk start sector setup
+
+  The attribute disk_start_sector allows to specify a custom
+  start sector for the first partition of the disk. On GPT
+  tables everything works nicely, on DOS tables the used tools
+  fdisk/sfdisk are not able to manage the start/end values of
+  subsequent partitions if the first partition doesn't start
+  with the tooling default. This patch allows to set the
+  start sector after the partition table has been created
+
+-------------------------------------------------------------------
+Sat Jul 02 10:23:28 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed CentOS-8 repo setup
+
+-------------------------------------------------------------------
+Fri Jun 24 12:40:31 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.43 → 9.24.44
+
+-------------------------------------------------------------------
+Thu Jun 23 16:29:07 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure to rebuild rpm database
+
+  For rpm based distributions make sure to call
+  rpm --rebuilddb unconditionally prior using rpm
+  with the chroot. This Fixes #2165
+
+-------------------------------------------------------------------
+Wed Jun 22 23:38:20 CEST 2022 - Neal Gompa <neal@gompa.dev>
+
+- github: Refresh issue template to cover more operating scenarios
+
+  KIWI is often used for cross-distribution image builds, so we
+  should ask for that information when appropriate.
+
+  Additionally, clarify "OBS" as "Open Build Service" to disambiguate.
+
+  Finally, add a line about Koji since Koji can run kiwi to build
+  images now.
+
+-------------------------------------------------------------------
+Wed Jun 22 16:04:06 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed unit tests
+
+-------------------------------------------------------------------
+Tue Jun 21 09:54:50 CEST 2022 - Igor Raits <igor.raits@gmail.com>
+
+- Forcefully disable versionlock plugin in DNF
+
+  [ INFO    ]: 09:39:08 | Uninstalling system packages (chroot)
+  [ INFO    ]: 09:39:08 | Using package manager backend: dnf
+  [ INFO    ]: 09:39:08 | --> package: linux-firmware
+  [ INFO    ]: 09:39:08 | Uninstall system packages (chroot)
+  [ DEBUG   ]: 09:39:08 | EXEC: [chroot /tmp/myimage8/build/image-root dnf --config /kiwi_v708wllp -y --releasever=8 autoremove linux-firmware]
+  [ INFO    ]: Processing: [########################################] 100%
+  [ ERROR   ]: 09:39:08 | KiwiPackagesDeletePhaseFailed: System package deletion failed: Package deletion failed: Error: Locklist not set
+
+  The versionlock plugin does not bring any benefit anyways as we
+  completely override plugin configs.
+
+  Also refactor configparser related stuff a bit.
+
+  Signed-off-by: Igor Raits <igor.raits@gmail.com>
+
+-------------------------------------------------------------------
+Mon Jun 20 18:20:31 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support squashfs in custom partitions
+
+  When using squashfs in a custom partitions setup like the following:
+
+  <partitions>
+  <partition ... filesystem="squashfs"/>
+  </partitions>
+
+  The build fails because the filesystem needs to be created
+  using the create_on_file() API and not the create_on_device()
+  API. In addition the size estimation is bogus when using
+  squashfs and cannot be pre-calculated because we only know
+  how much space the filesystem really needs after mksquashfs
+  as worked on the data and the compression. Thus this commit
+  also relaxes the required size check in case of squashfs.
+  Last but not least a squashfs filesystem does not provide
+  label or UUID and can only be referenced by the PARTUUID
+  it gets dumped on or by the native unix device node. As
+  the unix node is a loop during build time of the image and
+  meaningless this commit also forces by-partuuid mapping in
+  fstab when mounting the squashfs based device.
+
+-------------------------------------------------------------------
+Thu Jun 16 10:23:57 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed use of CommandCapabilities
+
+  The class allows to check for data produced on stdout
+  and stderr. However, programs reporting data on stderr
+  usually fails with an exit code != 0. If the command
+  is not called with raise_on_error=False it will never
+  be possible to catch information from stderr. As we
+  don't know if programs returns a failed exit code
+  even on their e.g --usage message we should always
+  pass the no raise option to make this more useful
+
+-------------------------------------------------------------------
+Wed Jun 15 15:37:53 CEST 2022 - David Cassany <dcassany@suse.com>
+
+- Fix volume mount path and adapt unit tests
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Tue Jun 14 23:10:09 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Handle older versions of setfiles correctly
+
+  In older versions of setfiles we need a two pass setup
+  First set the policy, second apply the security context.
+  This commit checks in the usage message of setfiles which
+  invocation syntax is required
+
+-------------------------------------------------------------------
+Tue Jun 14 20:38:39 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.42 → 9.24.43
+
+-------------------------------------------------------------------
+Tue Jun 14 18:17:00 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed error handling for setfiles policy lookup
+
+  Errors from os.scandir were not catched. In addition the path
+  to run scandir was not properly created
+
+-------------------------------------------------------------------
+Tue Jun 14 10:43:47 CEST 2022 - Ludwig Nussel <ludwig.nussel@suse.de>
+
+- Mount /sys also for disks.sh
+
+  /sys is needed to be able to run dracut in disks.sh
+
+-------------------------------------------------------------------
+Mon Jun 13 16:32:50 CEST 2022 - Ludwig Nussel <ludwig.nussel@suse.de>
+
+- Fix btrfs volume mounting
+
+  If the second argument of os.path.join is an absolute directory, the
+  result would be that directory. The intention is to produce a
+  subdirectory of the mountpoint though. So pass a relative path.
+
+  Without the fix, kiwi would try to e.g mount the /var subvolume of
+  the image over the /var of the host, screwing everthing up of course
+  :-)
+
+-------------------------------------------------------------------
+Mon Jun 13 15:26:04 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Prefer file based syscall in kexec when possible
+
+  Use file based syscall in kexec if available. This is needed to
+  support boot on an secure boot enabled system and is in general
+  more reliable to boot into the system on real hardware platforms
+
+-------------------------------------------------------------------
+Mon Jun 13 14:56:55 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.41 → 9.24.42
+
+-------------------------------------------------------------------
 Thu Jun 09 10:29:53 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.24.40 → 9.24.41
@@ -26,6 +215,18 @@ Wed Jun 08 18:29:42 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
   kiwi expects the signing key to be references as an URI
   format like file://... Therefore this patch changes the
   delimiter from colon(:) to semicolon(;)
+
+-------------------------------------------------------------------
+Wed Jun 08 12:15:24 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Correct setfiles relabeling
+
+  This change was inspired by a change done on Fedora's livecd-tools
+  from here: livecd-tools/livecd-tools#236. The patch corrects issues
+  with the setfiles SELinux relabel command. The issues become apparent
+  when the host and guest policies differ. Thus it becomes required
+  to explicitly set the policy to decouple from eventual unwanted
+  host settings.
 
 -------------------------------------------------------------------
 Wed Jun 01 11:31:29 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>

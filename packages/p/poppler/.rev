@@ -1868,4 +1868,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>990942</requestid>
   </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>22f3882908e6af5b1601f978d1fffc88</srcmd5>
+    <version>22.08.0</version>
+    <time>1659612174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992463</requestid>
+  </revision>
 </revisionlist>

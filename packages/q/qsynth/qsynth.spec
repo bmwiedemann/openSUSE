@@ -18,7 +18,7 @@
 
 
 Name:           qsynth
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        Graphical User Interface for fluidsynth
 License:        GPL-2.0-or-later
@@ -68,8 +68,8 @@ export CXX=g++-11
 %license LICENSE
 %{_bindir}/qsynth
 %{_datadir}/applications/org.rncbc.%{name}.desktop
-%{_datadir}/icons/*/*/apps/qsynth.png
-%{_datadir}/icons/hicolor/scalable/apps/qsynth.svg
+%{_datadir}/icons/*/*/apps/org.rncbc.qsynth.png
+%{_datadir}/icons/hicolor/scalable/apps/org.rncbc.qsynth.svg
 %{_datadir}/metainfo
 %{_datadir}/qsynth
 %exclude %{_datadir}/qsynth/translations

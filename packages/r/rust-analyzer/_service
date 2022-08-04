@@ -3,7 +3,7 @@
     <param name="url">https://github.com/rust-lang/rust-analyzer</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">5342f47</param>
+    <param name="revision">7e2b983fd</param>
     <param name="versionrewrite-pattern">(\d+)-(\d+)-(\d+)</param>
     <param name="versionrewrite-replacement">\1.\2.\3</param>
     <param name="changesgenerate">enable</param>
@@ -18,7 +18,7 @@
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">rust-analyzer</param>
      <param name="compression">xz</param>
-     <param name="update">false</param>
+     <param name="update">true</param>
   </service>
   <service name="cargo_audit" mode="disabled">
      <param name="srcdir">rust-analyzer</param>

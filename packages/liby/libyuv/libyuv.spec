@@ -23,6 +23,7 @@ License:        BSD-3-Clause
 Group:          Productivity/Multimedia/Other
 URL:            https://chromium.googlesource.com/libyuv/libyuv/
 Source0:        %{name}-%{version}.tar.xz
+Source99:       baselibs.conf
 # from Fedora
 Patch0:         Use-a-proper-so-version.patch
 Patch1:         Link-against-shared-library.patch

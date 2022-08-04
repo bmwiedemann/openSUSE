@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 15 07:59:26 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix tests: setuptools changed the builddir library path and does
+  not find the module from it. Use the installed platlib instead
+  and exclude psutil.tests only later.
+- Refresh skip-obs.patch
+
+-------------------------------------------------------------------
 Thu Jun 23 11:09:31 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch mem-used-bsc1181475.patch (bsc#1181475)

@@ -11,10 +11,10 @@ Signed-off-by: Gary Lin <glin@suse.com>
  src/Makefile.am | 3 +--
  2 files changed, 1 insertion(+), 3 deletions(-)
 
-Index: mokutil-0.5.0/configure.ac
+Index: mokutil-0.6.0/configure.ac
 ===================================================================
---- mokutil-0.5.0.orig/configure.ac
-+++ mokutil-0.5.0/configure.ac
+--- mokutil-0.6.0.orig/configure.ac
++++ mokutil-0.6.0/configure.ac
 @@ -85,7 +85,6 @@ AC_CHECK_FUNCS([memset])
  
  PKG_CHECK_MODULES(OPENSSL, [openssl >= 0.9.8])
@@ -23,10 +23,10 @@ Index: mokutil-0.5.0/configure.ac
  
  AC_ARG_WITH([bash-completion-dir],
      AS_HELP_STRING([--with-bash-completion-dir[=PATH]],
-Index: mokutil-0.5.0/src/Makefile.am
+Index: mokutil-0.6.0/src/Makefile.am
 ===================================================================
---- mokutil-0.5.0.orig/src/Makefile.am
-+++ mokutil-0.5.0/src/Makefile.am
+--- mokutil-0.6.0.orig/src/Makefile.am
++++ mokutil-0.6.0/src/Makefile.am
 @@ -2,13 +2,12 @@ bin_PROGRAMS    = mokutil
  
  mokutil_CFLAGS  = $(OPENSSL_CFLAGS)	\

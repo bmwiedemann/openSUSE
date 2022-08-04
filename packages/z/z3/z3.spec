@@ -16,9 +16,9 @@
 #
 
 
-%define sover 4_8
+%define sover 4_10
 Name:           z3
-Version:        4.8.17
+Version:        4.10.2
 Release:        0
 Summary:        Theorem prover from Microsoft Research
 License:        MIT
@@ -93,7 +93,7 @@ Python bindings for the Z3 library.
 
 %files
 %license LICENSE.txt
-%doc README.md RELEASE_NOTES
+%doc README.md RELEASE_NOTES.md
 %{_bindir}/z3
 
 %files -n libz3-%{sover}

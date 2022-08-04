@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -27,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-urllib3%{psuffix}
-Version:        1.26.9
+Version:        1.26.11
 Release:        0
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 License:        MIT
@@ -130,6 +128,8 @@ skiplist="test_ssl_read_timeout or test_ssl_failed_fingerprint_verification or t
 # system has a correct system time breaks (re-)building the package after too
 # many months have passed since the last release.
 skiplist+=" or test_recent_date"
+# too slow to run in obs (checks 2GiB of data)
+skiplist+=" or test_requesting_large_resources_via_ssl"
 %pytest -k "not (${skiplist})"
 %endif
 

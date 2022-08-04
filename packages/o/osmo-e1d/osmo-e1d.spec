@@ -18,7 +18,7 @@
 
 
 Name:           osmo-e1d
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Osmocom E1 Daemon
 License:        GPL-2.0-or-later
@@ -29,9 +29,9 @@ BuildRequires:  automake >= 1.9
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config >= 0.20
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(libosmocore) >= 1.6.0
-BuildRequires:  pkgconfig(libosmousb) >= 1.6.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.6.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.7.0
+BuildRequires:  pkgconfig(libosmousb) >= 1.7.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.7.0
 BuildRequires:  pkgconfig(talloc) >= 2.0.1
 
 %description
@@ -52,11 +52,20 @@ Group:          System/Libraries
 %description -n libosmo-e1d1
 Osmocom E1 Daemon Protocol Library.
 
+%package -n libosmo-octoi0
+Summary:        Library for the Osmocom Community TDMoIP network
+License:        LGPL-3.0-or-later
+Group:          System/Libraries
+
+%description -n libosmo-octoi0
+Library for the Osmocom Community TDMoIP network.
+
 %package devel
 Summary:        Header files for the Osmocom E1 daemon protocol library
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmo-e1d1 = %version
+Requires:       libosmo-e1d1 = %version-%release
+Requires:       libosmo-octoi0 = %version-%release
 Provides:       libosmo-e1d-devel = %version-%release
 Obsoletes:      libosmo-e1d-devel < %version-%release
 
@@ -86,6 +95,8 @@ rm -Rf "%buildroot/%_sysconfdir/osmocom"
 
 %post   -n libosmo-e1d1 -p /sbin/ldconfig
 %postun -n libosmo-e1d1 -p /sbin/ldconfig
+%post   -n libosmo-octoi0 -p /sbin/ldconfig
+%postun -n libosmo-octoi0 -p /sbin/ldconfig
 
 %preun
 %service_del_preun %name.service
@@ -106,16 +117,19 @@ rm -Rf "%buildroot/%_sysconfdir/osmocom"
 %_bindir/osmo-e1d-pipe
 %dir %_docdir/%name
 %dir %_docdir/%name/examples
-%_docdir/%name/examples/osmo-e1d-vpair.cfg
-%_docdir/%name/examples/osmo-e1d.cfg
+%_docdir/%name/examples/
 %_unitdir/osmo-e1d.service
 
 %files -n libosmo-e1d1
-%_libdir/libosmo-e1d.so.1*
+%_libdir/libosmo-e1d.so.*
+
+%files -n libosmo-octoi0
+%_libdir/libosmo-octoi.so.*
 
 %files devel
 %_includedir/%name/
 %_libdir/libosmo-e1d.so
-%_libdir/pkgconfig/libosmo-e1d.pc
+%_libdir/libosmo-octoi.so
+%_libdir/pkgconfig/*.pc
 
 %changelog

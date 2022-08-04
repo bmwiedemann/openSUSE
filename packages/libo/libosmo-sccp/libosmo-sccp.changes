@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  3 16:35:16 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.0
+  * Add ss7 instances to osmo_ss7_instances in creation order
+  * M3UA/SUA: Implement handling of SCON (signaling congestion)
+
+-------------------------------------------------------------------
 Fri Nov 19 09:21:16 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 1.5.0

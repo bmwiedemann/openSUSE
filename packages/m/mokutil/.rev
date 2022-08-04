@@ -228,4 +228,17 @@ bnc#809703: remove the key from the pending request if necessary (forwarded requ
     <comment></comment>
     <requestid>906401</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>cd0ba1d68d8d635907ab4802c79d590e</srcmd5>
+    <version>0.6.0</version>
+    <time>1659612174</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0
+    + 6c98907 SBAT revocation update support
+    + 0276891 mokutil: Add trust_mok_keys and untrust_mok_keys
+    + 57bc385 mokutil: enable setting fallback verbosity and noreboot mode
+    + b15e7c4 util: add the missing stdio.h
+- Drop mokutil-fix-missing-header.patch (upstream)</comment>
+    <requestid>992467</requestid>
+  </revision>
 </revisionlist>

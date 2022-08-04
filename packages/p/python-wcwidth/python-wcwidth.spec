@@ -1,7 +1,7 @@
 #
-# spec file for package python
+# spec file for package python-wcwidth
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,32 +17,23 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test"
-%define psuffix -%{flavor}
-%bcond_without test
-%else
-%define psuffix %{nil}
-%bcond_with test
-%endif
 %bcond_without python2
-Name:           python-wcwidth%{psuffix}
+Name:           python-wcwidth
 Version:        0.2.5
 Release:        0
 Summary:        Number of Terminal column cells of wide-character codes
 License:        MIT
 URL:            https://github.com/jquast/wcwidth
 Source:         https://github.com/jquast/wcwidth/archive/%{version}.tar.gz#/wcwidth-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#jquast/wcwidth#62
+Patch0:         remove-pkg_resources.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%if %{with test}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module wcwidth >= %{version}}
 %if %{with python2}
 BuildRequires:  python-backports.functools_lru_cache >= 1.2.1
-%endif
 %endif
 %ifpython2
 Requires:       python-backports.functools_lru_cache >= 1.2.1
@@ -63,7 +54,7 @@ commonly many releases older than the most current Unicode Standard
 release files, which this project aims to track.
 
 %prep
-%setup -q -n wcwidth-%{version}
+%autosetup -p1 -n wcwidth-%{version}
 sed -i 's/--cov[-=a-z]*//g' tox.ini
 # this option is nonsense
 sed -i 's/looponfailroots.*//' tox.ini
@@ -72,21 +63,15 @@ sed -i 's/looponfailroots.*//' tox.ini
 %python_build
 
 %install
-%if ! %{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%endif
 
 %check
-%if %{with test}
 %pytest tests
-%endif
 
-%if ! %{with test}
 %files %{python_files}
 %license LICENSE
 %doc docs/intro.rst
 %{python_sitelib}/*
-%endif
 
 %changelog

@@ -78,7 +78,6 @@ sed -i "1s/#!.*//" psutil/{__init__.py,_compat.py,_psbsd.py,_pslinux.py,_psosx.p
 %{python_expand mkdir -p %{buildroot}%{_docdir}/%{$python_prefix}-psutil
 cp -r scripts %{buildroot}%{_docdir}/%{$python_prefix}-psutil/
 find %{buildroot}%{_docdir}/%{$python_prefix}-psutil/scripts/ -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python.*|#!%{__$python}|" {} \;
-rm -rf %{buildroot}%{$python_sitearch}/psutil/tests
 %fdupes %{buildroot}%{_docdir}/%{$python_prefix}-psutil/
 %fdupes %{buildroot}%{$python_sitearch}
 }
@@ -87,13 +86,12 @@ rm -rf %{buildroot}%{$python_sitearch}/psutil/tests
 %check
 export LANG=en_US.UTF-8
 export PSUTIL_TESTING=1
-export TRAVIS=1
-march=`python3 -c "import platform ; print(platform.machine())"`
-
-# Note test_fetch_all is a bit flaky, occasionally failing
-%{python_expand export PYTHONPATH=build/lib.linux-${march}-%{$python_version}/
-$python -Wa psutil/tests/runner.py
-}
+export PSUTIL_DEBUG=1
+export PYTHONDONTRWRITEBYTECODE=1
+mkdir testd
+pushd testd
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -Wa -m psutil.tests
+popd
 %endif
 
 %files %{python_files}
@@ -101,7 +99,7 @@ $python -Wa psutil/tests/runner.py
 %doc CREDITS HISTORY.rst README.rst
 %{_docdir}/%{python_prefix}-psutil/scripts/
 %{python_sitearch}/psutil/
-%{python_sitearch}/psutil/_psutil_*.so
-%{python_sitearch}/psutil-%{version}-py*.egg-info
+%exclude %{python_sitearch}/psutil/tests
+%{python_sitearch}/psutil-%{version}*-info
 
 %changelog

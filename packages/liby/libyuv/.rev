@@ -7,4 +7,13 @@
     <comment>To be used by libavif</comment>
     <requestid>991974</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>48a3dc0d906abf704662104541dd67f6</srcmd5>
+    <version>20220713+d248929c</version>
+    <time>1659612176</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf for libyuv0
+</comment>
+    <requestid>992562</requestid>
+  </revision>
 </revisionlist>

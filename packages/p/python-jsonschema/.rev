@@ -248,4 +248,12 @@
     No functional behavior changes are expected from the change.</comment>
     <requestid>980820</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0c57df9b1c3297f982a66e2fc6936795</srcmd5>
+    <version>4.8.0</version>
+    <time>1659612201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>991690</requestid>
+  </revision>
 </revisionlist>

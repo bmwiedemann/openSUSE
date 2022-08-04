@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 18 13:40:16 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-pkg_resources.patch:
+  * Use importlib.metadata rather than pkg_resources.
+- Since importlib.metadata is not as a stickler as pkg_resources is, remove
+  multibuild. 
+
+-------------------------------------------------------------------
 Wed Jun  2 08:42:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix the %doc files. README.rst is a symlink pointing to

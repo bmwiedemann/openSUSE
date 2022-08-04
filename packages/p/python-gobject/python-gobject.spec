@@ -29,7 +29,7 @@
 %global __requires_exclude_from ^%{_libdir}/python.*/site-packages/gi/__init__.py$
 %define _name   pygobject
 Name:           python-gobject
-Version:        3.42.1
+Version:        3.42.2
 Release:        0
 Summary:        Python bindings for GObject
 License:        LGPL-2.1-or-later
@@ -124,6 +124,12 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+# Incorrectly installed by a python38-setuptools vendored distutils
+# which does not play well with the distro patched python38.
+# Later flavors installed the correct files into lib64 as well
+if [ "%{_libdir}" != "%{_prefix}/lib" -a -d %{buildroot}%{_prefix}/lib/pkgconfig ]; then
+  rm -r  %{buildroot}%{_prefix}/lib/pkgconfig
+fi
 
 %{python_expand # delete unwanted python scripts and their compiled cache files
 # Drop pygtkcompat layer - It's useless and we lack other stuff for it to work

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jul 22 10:00:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.42.2:
+  + Error out instead of crashing when marshaling unsupported
+    fundamental types in some cases.
+  + Add a workaround for a PyPy 3.9+ bug when threads are used.
+  + Fix crashes when marshaling zero terminated arrays for certain
+    item types.
+  + Fix a crash/refcounting error in case marshaling a hash table
+    fails.
+  + Make the test suite pass again with PyPy.
+  + tests: support running tests with (MSVC) CPython 3.8+ on
+    Windows.
+  + interface: Fix leak when overriding GInterfaceInfo.
+  + setup.py: look up pycairo headers without importing the module
+    (helps with building on Windows and MSVC CPython 3.8+).
+
+-------------------------------------------------------------------
+Sat Jul 16 22:53:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Work around vendored distutils in setuptools >= 60 incorrectly
+  installing pkgconfig files into the wrong libdir
+
+-------------------------------------------------------------------
 Thu Jun  9 12:51:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add dependency on python-cairo to python-gobject-cairo: The

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  3 22:05:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.7:
+  * https://github.com/sqlmapproject/sqlmap/compare/1.5.7...1.6.7 
+
+-------------------------------------------------------------------
 Tue Aug 31 05:16:54 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update fix_shebang.patch to switch Python scripts to calling

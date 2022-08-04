@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 19 11:55:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.2:
+  * pecan no longer depends on webtest
+
+-------------------------------------------------------------------
 Wed Apr  6 12:14:40 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build

@@ -25,7 +25,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pecan
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        A WSGI object-dispatching web framework
 License:        BSD-3-Clause
@@ -50,7 +50,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-Mako >= 0.4.0
 Requires:       python-WebOb >= 1.8
-Requires:       python-WebTest >= 1.3.1
 Requires:       python-logutils >= 0.3
 Requires:       python-setuptools
 Requires:       python-six

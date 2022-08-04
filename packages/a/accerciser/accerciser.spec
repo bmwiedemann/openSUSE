@@ -1,7 +1,7 @@
 #
 # spec file for package accerciser
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           accerciser
-Version:        3.38.0
+Version:        3.40.0
 Release:        0
 Summary:        Accessibility debugging tool
 License:        BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Accerciser
-Source0:        https://download.gnome.org/sources/accerciser/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/accerciser/3.40/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
@@ -58,7 +58,7 @@ Requires:       %{name} = %{version}
 Requires:       python3-ipython
 # we need setuptools for pkg_resources
 Requires:       python3-setuptools
-Supplements:    packageand(%{name}:python3-ipython)
+Supplements:    %{name} and python3-ipython
 
 %description plugin-IPython
 Accerciser is an interactive Python accessibility explorer for the
@@ -80,11 +80,11 @@ This package provides the IPython console widget
 %make_install
 %suse_update_desktop_file -r -N "Accerciser" -G "Accesibility Debugger" accerciser Utility GNOME Accessibility
 %find_lang %{name} %{?no_lang_C}
-%fdupes %{buildroot}
+%fdupes %{buildroot}%{_prefix}
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}
 %{_datadir}/%{name}/

@@ -1,7 +1,7 @@
 #
 # spec file for package read-only-root-fs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           read-only-root-fs
-Version:        1.0+git20200730.1243fd0
+Version:        1.0+git20220801.cbb90bc
 Release:        0
 Summary:        Files and Scripts for a RO root fileystem
 License:        GPL-2.0-or-later
@@ -98,6 +98,8 @@ exit 0
 %{_prefix}/lib/systemd/system/systemd-udevd.service.d/etcmount.conf
 %dir %{_prefix}/lib/systemd/system/systemd-journal-flush.service.d
 %{_prefix}/lib/systemd/system/systemd-journal-flush.service.d/afterlocalfs.conf
+%dir %{_prefix}/lib/systemd/system/systemd-remount-fs.service.d
+%{_prefix}/lib/systemd/system/systemd-remount-fs.service.d/before-boot-writable.conf
 %dir %{_sysconfdir}/grub.d
 %config(noreplace) %{_sysconfdir}/grub.d/01_suse_ro_root
 

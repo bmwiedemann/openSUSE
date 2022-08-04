@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  3 18:29:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.0
+  * libgtp: Fix ggsn crash if pdp alloc array is full (PDP_MAX)
+  * gtp: Log detection of rx duplicate
+  * gtp: Log retrans queue register&free entries
+
+-------------------------------------------------------------------
 Fri Nov 19 10:50:35 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.8.0

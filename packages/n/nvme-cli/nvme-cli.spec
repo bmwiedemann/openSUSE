@@ -17,7 +17,7 @@
 
 
 Name:           nvme-cli
-Version:        2.1~rc0
+Version:        2.1.1
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
@@ -31,7 +31,7 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libhugetlbfs-devel
 BuildRequires:  libjson-c-devel
-BuildRequires:  libnvme-devel >= 1.1~rc0
+BuildRequires:  libnvme-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  make
 BuildRequires:  meson >= 0.47.0
@@ -84,7 +84,7 @@ Optional dependency offering zsh completion for NVM Express user space tools
     -Ddracutrulesdir=%{_sysconfdir}/dracut/dracut.conf.d \
     -Dsystemddir=%{_unitdir} \
     -Ddocs=man \
-    -Dsystemctl=/usr/bin/systemctl
+    -Dsystemctl=%{_bindir}/systemctl
 %meson_build
 
 %install
@@ -100,7 +100,7 @@ install -m 744 -D regress %{buildroot}%{_sbindir}/nvme-regress
 %define services nvmefc-boot-connections.service nvmf-connect.target nvmf-autoconnect.service
 
 %pre
-%service_add_pre %services nvmf-connect@.service
+%service_add_pre %{services} nvmf-connect@.service
 
 %post
 if [ ! -s %{_sysconfdir}/nvme/hostnqn ]; then
@@ -110,13 +110,13 @@ fi
 if [ ! -s %{_sysconfdir}/nvme/hostid ]; then
 	%{_bindir}/uuidgen > %{_sysconfdir}/nvme/hostid
 fi
-%service_add_post %services nvmf-connect@.service
+%service_add_post %{services} nvmf-connect@.service
 
 %preun
-%service_del_preun %services
+%service_del_preun %{services}
 
 %postun
-%service_del_postun %services
+%service_del_postun %{services}
 
 %posttrans
 if [ -f /sys/class/fc/fc_udev_device/nvme_discovery ]; then

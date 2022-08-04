@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cmarkgfm
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Minimal bindings to GitHub's fork of cmark
 License:        MIT
@@ -41,7 +41,8 @@ Requires:       python-cffi >= 1.0.0
 Minimal bindings to GitHub's fork of cmark
 
 %prep
-%setup -q -n cmarkgfm-%{version}
+%autosetup -p1 -n cmarkgfm-%{version}
+
 chmod a-x LICENSE.txt README.rst
 
 %build

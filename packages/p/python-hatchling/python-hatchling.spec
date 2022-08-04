@@ -19,12 +19,13 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hatchling
-Version:        1.4.1
+Version:        1.6.0
 Release:        0
 Summary:        Build backend used by Hatch
 License:        MIT
 URL:            https://hatch.pypa.io/latest/
 Source0:        https://files.pythonhosted.org/packages/source/h/hatchling/hatchling-%{version}.tar.gz
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module editables >= 0.3}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module packaging >= 21.3}

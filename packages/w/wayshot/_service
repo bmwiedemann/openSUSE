@@ -3,7 +3,7 @@
     <param name="url">https://github.com/waycrate/wayshot.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">0469431138d95a2a0ed528c7e796659047a0897f</param>
+    <param name="revision">bbbdc2c1ca3f8b7732829232bc960e63deb2c4db</param>
     <param name="versionrewrite-pattern">(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
@@ -12,12 +12,12 @@
   <service mode="disabled" name="tar" />
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
-    <param name="compression">zst</param>
+    <param name="compression">gz</param>
   </service>
   <service mode="disabled" name="set_version"/>
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">wayshot</param>
-     <param name="compression">zst</param>
+     <param name="compression">gz</param>
      <param name="update">true</param>
   </service>
   <service name="cargo_audit" mode="disabled">

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  3 15:52:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0
+  * stream: Add support for AF_UNIX sockets
+  * Introduce osmo_prim_srv APIs
+  * prim: Add internal CTL SAPI to negotiate SAP versions
+
+-------------------------------------------------------------------
 Sun Mar 14 20:55:09 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.0

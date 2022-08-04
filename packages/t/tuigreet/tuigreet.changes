@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  4 03:52:52 UTC 2022 - William Brown <william.brown@suse.com>
+
+- bsc#1182059 - CVE-2021-21299 - hyper request smuggling
+
+-------------------------------------------------------------------
 Thu May 26 23:45:31 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Update vendored dependencies

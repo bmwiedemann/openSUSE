@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jul 29 06:28:16 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.8.0:
+  * ``best_match`` no longer traverses into ``anyOf`` and ``oneOf`` when all of
+    the errors within them seem equally applicable. This should lead to clearer
+    error messages in some cases where no branches were matched.
+
+-------------------------------------------------------------------
+Tue Jul 19 11:08:23 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.7.2:
+* Fix best_match's type matching when it's an array.
+- update to 4.7.1:
+  * Minor case correction for PyPI links
+- update to 4.7.0:
+  * Enhance best match to prefer errors from matching types. by @Julian in #972
+- update to 4.6.2:
+  * docs: Fix a few typos by @timgates42 in #969
+- update to 4.6.1:
+  * Type annotate format checker methods by @sirosen in #958
+  * Fix fuzzer to include instrumentation by @DavidKorczynski in #965
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #967
+
+-------------------------------------------------------------------
+Tue Jul 19 08:44:07 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.6.0:
+  * Add package_url for changelog by @fhightower in #950
+  * Only validate unevaluated properties/items on applicable types by @EpicWink in #949
+  * Add v4.5.1 to changelog by @sirosen in #956
+  * Modernize the packaging setup via PEP 621 and Hatch. by @Julian in #957
+
+-------------------------------------------------------------------
 Sun Jun  5 00:14:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5.1:

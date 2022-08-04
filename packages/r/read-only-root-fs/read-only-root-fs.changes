@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 01 14:14:08 UTC 2022 - iforster@suse.com
+
+- Update to version 1.0+git20220801.cbb90bc:
+  * Add another workaround for read-only subvolumes (boo#1202000)
+  * Correctly declare mount-overlay.sh as Bash file
+- Update source service URL
+
+-------------------------------------------------------------------
 Wed Sep  2 08:53:55 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Adjust btrfsmaintenance sysconfig to not use the read-only 

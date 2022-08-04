@@ -329,4 +329,14 @@
     <comment></comment>
     <requestid>874688</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ad48202a0f9a2ca8de91ce6cc4adbc54</srcmd5>
+    <version>3.5.1</version>
+    <time>1659612185</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.1:
+  * Replace deprecated threading.currentThread, getName and setDaemon
+    with threading.current_thread, name and daemon.</comment>
+    <requestid>989492</requestid>
+  </revision>
 </revisionlist>

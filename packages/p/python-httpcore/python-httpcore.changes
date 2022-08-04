@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 19 15:31:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.15.0
+  * Drop Python 3.6 support (#535)
+  * Ensure HTTP proxy CONNECT requests include timeout
+    configuration. (#506)
+  * Switch to explicit typing.Optional for type hints (#513)
+  * For trio map OSError exceptions to ConnectError (#543)
+- Fix forgotten test package dep drops -- gh#encode/httpcore#473
+
+-------------------------------------------------------------------
 Mon Feb 21 10:54:40 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 0.14.7:

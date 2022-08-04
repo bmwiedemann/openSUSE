@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 16 22:51:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Work around vendored distutils in setuptools >= 60 incorrectly
+  installing pkgconfig files into the wrong libdir
+- Deduplicate files in python_sitearch
+
+-------------------------------------------------------------------
 Thu Aug 12 08:07:16 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - Add Obsoletes/Provides for python3-cairo-devel.

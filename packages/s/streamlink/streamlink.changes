@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul 27 01:38:22 UTC 2022 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 4.2.0
+  + Added: parsed multivariant playlist reference to HLSStream and MuxedHLSStream (#4568)
+  + Fixed: unnecessary delay when closing DASHStreams (#4630)
+  + Fixed: FFmpegMuxer not closing sub-streams concurrently (#4634)
+  + Fixed: threading issue when closing WebsocketClient connections (#4608)
+  + Fixed: handling of PluginErrors when outputting JSON data via --json (#4590)
+  + Fixed: broken YouTube plugin when setting custom authentication headers (#4576)
+  + Fixed: "source" Twitch VODs not being considered "best" (#4625)
+  + Fixed: and rewritten FilmOn plugin (#4573)
+  + Fixed: websocket issue in Twitcasting plugin (#4608, #4628)
+  + Fixed: VK plugin (#4613, #4638)
+  + Fixed: various other plugin issues (see full changelog)
+  + New plugins: Aloula (#4572)
+  + Removed plugins: Eltrecetv (#4593)
+- Update package description and requirements
+
+-------------------------------------------------------------------
 Thu Jun  9 16:06:20 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 4.1.0

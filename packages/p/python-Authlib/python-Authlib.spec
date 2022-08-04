@@ -39,9 +39,7 @@ BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module cachelib}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module starlette}

@@ -131,4 +131,15 @@
     <comment></comment>
     <requestid>982667</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>150d402b26e8d76407f287c0dd22bb85</srcmd5>
+    <version>2022.7.9</version>
+    <time>1659612187</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2022.7.9:
+  * Fix Emoji classified as letter
+  * Revisit compilation flag to prevent adding a single explicitly compiled regex to cache
+  * Fix Scoped inline flags 'a', 'u', and 'L' affecting global flags</comment>
+    <requestid>989685</requestid>
+  </revision>
 </revisionlist>

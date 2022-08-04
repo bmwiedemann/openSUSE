@@ -19,16 +19,20 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           wayshot
-Version:        1.1.7
+Version:        1.1.9
 Release:        0
 Summary:        Screenshot tool for wlroots based compositors
 License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND BSD-3-Clause AND ISC AND MIT AND Zlib AND BSD-2-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/waycrate/wayshot
-Source0:        %{name}-%{version}.tar.zst
-Source1:        vendor.tar.zst
+Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
 Source2:        cargo_config
+%if 0%{?suse_version} >= 1500
 BuildRequires:  cargo-packaging
+%else
+BuildRequires:  cargo
+%endif
 
 %description
 A screenshot tool for wlroots based compositors implementing zwlr_screencopy_v1
@@ -39,10 +43,19 @@ mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
+%if 0%{?suse_version} >= 1500
 RUSTFLAGS=%{rustflags} %{cargo_build}
+%else
+sed -i 's/2021/2018/g' Cargo.toml
+RUSTFLAGS=%{rustflags} cargo build --offline --release
+%endif
 
 %install
+%if 0%{?suse_version} >= 1500
 RUSTFLAGS=%{rustflags} %{cargo_install}
+%else
+RUSTFLAGS=%{rustflags} cargo install --root=%{buildroot}%{_prefix} --path .
+%endif
 
 %files
 %{_bindir}/wayshot

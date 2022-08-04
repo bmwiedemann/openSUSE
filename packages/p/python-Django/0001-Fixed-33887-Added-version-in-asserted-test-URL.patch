@@ -1,0 +1,33 @@
+From 6a5640efabd6a01c827462c979a2dbf5cf6c86da Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Wed, 3 Aug 2022 15:42:39 +0200
+Subject: [PATCH] Fixed #33887 -- Added {version} in asserted test URL
+
+---
+ tests/migrations/test_commands.py | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/tests/migrations/test_commands.py b/tests/migrations/test_commands.py
+index a3e1efc924..0d4fb52bbb 100644
+--- a/tests/migrations/test_commands.py
++++ b/tests/migrations/test_commands.py
+@@ -3005,11 +3005,12 @@ class OptimizeMigrationTests(MigrationTestBase):
+         with self.temporary_migration_module(
+             module="migrations.test_migrations_manual_porting"
+         ) as migration_dir:
++            version = get_docs_version()
+             msg = (
+-                "Migration will require manual porting but is already a squashed "
+-                "migration.\nTransition to a normal migration first: "
+-                "https://docs.djangoproject.com/en/dev/topics/migrations/"
+-                "#squashing-migrations"
++                f"Migration will require manual porting but is already a squashed "
++                f"migration.\nTransition to a normal migration first: "
++                f"https://docs.djangoproject.com/en/{version}/topics/migrations/"
++                f"#squashing-migrations"
+             )
+             with self.assertRaisesMessage(CommandError, msg):
+                 call_command("optimizemigration", "migrations", "0004", stdout=out)
+-- 
+2.37.1
+

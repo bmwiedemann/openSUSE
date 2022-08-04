@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul 17 17:53:17 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.4.1: bug-fix release
+  * Fix an import issue with importlib.util (#1274).
+- additional changes from version 3.4.0:
+  * see https://python-markdown.github.io/change_log/release-3.4/
+    for details
+- drop requirement of python-xml, not needed by upstream
+- set the minimum python version to 3.7
+- require importlib-metadata only for python version < 3.10
+
+-------------------------------------------------------------------
 Thu May  5 21:23:17 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Clean up the SPEC file.
