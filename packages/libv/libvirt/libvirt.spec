@@ -158,7 +158,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        8.5.0
+Version:        8.6.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -958,7 +958,6 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %endif
 
 %meson \
-           --libexecdir=%{_libdir}/%{name} \
            -Drunstatedir=%{_rundir} \
            %{?arg_qemu} \
            %{?arg_openvz} \
@@ -1191,7 +1190,7 @@ if test "$DISABLE_RESTART_ON_UPDATE" != yes -a \
              %{_bindir}/systemctl try-restart \
                     libvirtd.socket \
                     libvirtd-ro.socket \
-		    libvirtd-admin.socket >/dev/null 2>&1 || :
+                    libvirtd-admin.socket >/dev/null 2>&1 || :
 
              %{_bindir}/systemctl start libvirtd.service >/dev/null 2>&1 || :
         fi
@@ -1336,7 +1335,7 @@ fi
 %{_sbindir}/virtlogd
 %{_sbindir}/virtlockd
 %dir %{_libdir}/%{name}
-%attr(0755, root, root) %{_libdir}/%{name}/libvirt-guests.sh
+%attr(0755, root, root) %{_libexecdir}/libvirt-guests.sh
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/hooks
 %{_unitdir}/libvirtd.service
 %{_unitdir}/libvirtd.socket
@@ -1400,7 +1399,7 @@ fi
 %endif
 %{_datadir}/polkit-1/actions/org.libvirt.unix.policy
 %{_datadir}/polkit-1/actions/org.libvirt.api.policy
-%attr(0755, root, root) %{_libdir}/%{name}/libvirt_iohelper
+%attr(0755, root, root) %{_libexecdir}/libvirt_iohelper
 %attr(0755, root, root) %{_bindir}/virt-ssh-helper
 %doc %{_mandir}/man1/virt-admin.1*
 %doc %{_mandir}/man1/virt-host-validate.1*
@@ -1422,7 +1421,7 @@ fi
 %config(noreplace) %{_sysconfdir}/apparmor.d/%{name}/TEMPLATE.lxc
 %config(noreplace) %{_sysconfdir}/apparmor.d/%{name}/TEMPLATE.qemu
 %config(noreplace) %{_sysconfdir}/apparmor.d/local/usr.lib.libvirt.virt-aa-helper
-%{_libdir}/%{name}/virt-aa-helper
+%{_libexecdir}/virt-aa-helper
 %endif
 %dir %{_prefix}/lib/firewalld
 %dir %{_fwdefdir}
@@ -1471,7 +1470,7 @@ fi
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/qemu/networks/autostart
 %dir %attr(0700, root, root) %{_localstatedir}/lib/%{name}/network/
 %dir %attr(0755, root, root) %{_localstatedir}/lib/%{name}/dnsmasq/
-%attr(0755, root, root) %{_libdir}/%{name}/libvirt_leaseshelper
+%attr(0755, root, root) %{_libexecdir}/libvirt_leaseshelper
 %dir %{_libdir}/%{name}/connection-driver
 %{_libdir}/%{name}/connection-driver/libvirt_driver_network.so
 %if %{with_firewalld_zone}
@@ -1536,7 +1535,7 @@ fi
 %{_unitdir}/virtstoraged-admin.socket
 %{_sbindir}/virtstoraged
 %{_sbindir}/rcvirtstoraged
-%attr(0755, root, root) %{_libdir}/%{name}/libvirt_parthelper
+%attr(0755, root, root) %{_libexecdir}/libvirt_parthelper
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/storage/
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/storage/autostart/
 %dir %{_libdir}/%{name}/connection-driver
@@ -1635,7 +1634,7 @@ fi
 %{logrotate_prefix} %{logrotate_dir}/libvirtd.lxc
 %dir %attr(0700, root, root) %{_localstatedir}/lib/%{name}/lxc/
 %dir %attr(0700, root, root) %{_localstatedir}/log/%{name}/lxc/
-%attr(0755, root, root) %{_libdir}/%{name}/libvirt_lxc
+%attr(0755, root, root) %{_libexecdir}/libvirt_lxc
 %{_datadir}/augeas/lenses/libvirtd_lxc.aug
 %{_datadir}/augeas/lenses/tests/test_libvirtd_lxc.aug
 %dir %{_libdir}/%{name}/connection-driver
@@ -1786,7 +1785,7 @@ fi
 %{_datadir}/augeas/lenses/tests/test_libvirt_sanlock.aug
 %dir %attr(0700, root, sanlock) %{_localstatedir}/lib/%{name}/sanlock
 %{_sbindir}/virt-sanlock-cleanup
-%attr(0755, root, root) %{_libdir}/%{name}/libvirt_sanlock_helper
+%attr(0755, root, root) %{_libexecdir}/libvirt_sanlock_helper
 %endif
 
 %if %{with_wireshark}

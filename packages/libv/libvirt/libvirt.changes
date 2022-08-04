@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  2 16:10:13 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 8.6.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v8-6-0-2022-08-01
+
+-------------------------------------------------------------------
+Tue Jul 19 23:54:51 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- spec: Don't redefine libexecdir
+  boo#1201565
+
+-------------------------------------------------------------------
 Tue Jul  5 20:25:19 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 8.5.0
