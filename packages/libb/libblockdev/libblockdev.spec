@@ -22,7 +22,7 @@
 %bcond_with     python2
 
 Name:           libblockdev
-Version:        2.26
+Version:        2.27
 Release:        0
 Summary:        A library for low-level manipulation with block devices
 License:        LGPL-2.1-only
