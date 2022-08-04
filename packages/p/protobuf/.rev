@@ -687,4 +687,11 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>992221</requestid>
   </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>cb93929f997d78a3f7181be550c39980</srcmd5>
+    <version>21.2</version>
+    <time>1659613242</time>
+    <user>dimstar_suse</user>
+    <comment>https://github.com/protocolbuffers/protobuf/issues/10323</comment>
+  </revision>
 </revisionlist>
