@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  1 07:27:35 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Fix reproducible build problems:
+   - Do not use %release in binaries (but use SOURCE_DATE_EPOCH)
+   - Fix date call messed up by spec-cleaner
+
+-------------------------------------------------------------------
 Tue Feb  1 11:28:51 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - FIPS: Disable DSA in FIPS mode [bsc#1195385]

@@ -179,11 +179,11 @@ understanding of applied cryptography is required to use Libgcrypt.
 %build
 echo building with build_hmac256 set to %{build_hmac256}
 autoreconf -fi
-date=$(date -u +%{Y}-%{m}-%{dT}%{H}:%{M}+0000 -r %{SOURCE99})
+date=$(date -u '+%%Y-%%m-%%dT%%H:%%M+0000' -r %{SOURCE99})
 sed -e "s,BUILD_TIMESTAMP=.*,BUILD_TIMESTAMP=$date," -i configure
 export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
 %configure \
-           --with-fips-module-version="Libgcrypt version %{version}-%{release}" \
+           --with-fips-module-version="Libgcrypt version %{version}-$SOURCE_DATE_EPOCH" \
            --enable-noexecstack \
            --disable-static \
            --enable-m-guard \
