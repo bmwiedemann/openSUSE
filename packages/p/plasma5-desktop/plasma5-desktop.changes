@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug  2 14:07:13 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.4
+- Changes since 5.25.3:
+  * Fix mouse settings not being loaded when a mouse is connected (kde#435113)
+  * applets/kimpanel: add accessible properties
+  * applets/kimpanel: add keyboard navigation support
+  * applets/kickoff: add text to allow screen reader to read button name
+  * applets/taskmanager: use `model.display` in accessible properties
+  * [applets/pager] Fix button group management on configuration page (kde#456525)
+  * applets/taskmanager: press `Esc` to close group dialog
+  * [kcms/landingpage] Strip whitespace at the beginning of a telemetry description
+
+-------------------------------------------------------------------
 Tue Jul 12 11:29:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.3
