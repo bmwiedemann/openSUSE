@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug  2 14:07:12 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.4
+- Changes since 5.25.3:
+  * applets/calculator: read the answer after pressing `=`
+  * applets/calculator: move focus to the corresponding button when pressing keys
+  * applets/colorpicker: press space to open color menu
+  * applets/colorpicker: add name to color rectangle
+  * applets/fuzzy-clock: add a11y properties
+  * [applets/comic] Fix configurationRequired and busy state when deactivating the last provider
+  * [applets/comic] Update providers list after (un)installing provider
+  * Add missing include to array
+  * [applets/comic] Disable most context menu actions when comic is not ready (kde#406991)
+  * Remove clipPath portion of SVG (kde#399568)
+
+-------------------------------------------------------------------
 Tue Jul 12 11:29:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.3
