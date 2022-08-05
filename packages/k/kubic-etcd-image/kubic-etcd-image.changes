@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  4 07:05:06 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable 32-bit Arm since kubernetes is not available
+
+-------------------------------------------------------------------
 Fri May 28 13:00:07 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Refer to an existing tag in org.opensuse.reference
