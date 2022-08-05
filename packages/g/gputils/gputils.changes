@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 23 06:50:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.2:
+  * Fix Parser doesn't allow more than one unary operator
+  * Fixed bug: "#318 ELIF is not ELSE IF, bug or unusual name?"
+  * Fixed bug: "#314 PIC16F69 TRIS does not assemble correctly"
+  * Fixed bug: "#315 gpasm allows RETURN for 10F202"
+
+-------------------------------------------------------------------
 Sat Oct 22 17:18:30 UTC 2016 - jengelh@inai.de
 
 - trim TM marks
