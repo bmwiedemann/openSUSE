@@ -265,7 +265,7 @@ running display manager.
         -Dgnome-settings-daemon-dir=%{_libexecdir}/gnome-settings-daemon-3.0 \
         -Dinitial-vt=7 \
         -Dipv6=true \
-        -Dpam-mod-dir=%{_pamdir} \
+        -Dpam-mod-dir=%{_pam_moduledir} \
         -Dplymouth=enabled \
         -Drun-dir=/run/gdm \
 %if %{enable_split_authentication}
@@ -368,7 +368,7 @@ dconf update
 %{_datadir}/dconf/profile/gdm
 %{_datadir}/gdm/
 %{_datadir}/gnome-session/sessions/gnome-login.session
-%{_pamdir}/pam_gdm.so
+%{_pam_moduledir}/pam_gdm.so
 %dir %{_libexecdir}/gdm
 %{_libexecdir}/gdm/gdm-*
 %{_libexecdir}/gdm/gdmflexiserver

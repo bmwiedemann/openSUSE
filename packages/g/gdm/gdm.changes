@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  2 01:52:26 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
+
+- Fix specfile: Adapt macros %_pam_moduledir (boo#1191033).
+
+-------------------------------------------------------------------
 Tue Apr 26 14:32:28 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Ensure /run/gdm is created by tmpfiles.
