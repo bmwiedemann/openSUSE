@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  4 07:31:45 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use standard LABEL directive to add mandatory labels
+
+-------------------------------------------------------------------
 Fri Jan 14 09:04:24 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Enable only x86_64 build
