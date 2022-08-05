@@ -67,6 +67,7 @@ Source0:        https://download.gnome.org/sources/NetworkManager/1.38/%{name}-%
 Source1:        nfs
 Source2:        NetworkManager.conf
 Source3:        baselibs.conf
+Source4:        conncheck-disabled.conf
 Source98:       macros.NetworkManager
 Source99:       NetworkManager-rpmlintrc
 
@@ -195,7 +196,7 @@ This package provides the GObject Introspection bindings for the
 NetworkManager library.
 
 %package branding-upstream
-Summary:        Default upstream configuration for %{_sysconfdir}/NetworkManager/NetworkManager.conf
+Summary:        Default upstream configuration for NetworkManager
 Group:          Productivity/Networking/System
 Requires:       NetworkManager = %{version}
 Supplements:    (NetworkManager and branding-upstream)
@@ -205,7 +206,7 @@ BuildArch:      noarch
 
 %description branding-upstream
 This package provides the default upstream configuration for
-%{_sysconfdir}/NetworkManager/NetworkManager.conf. Specifically,
+NetworkManager. Specifically,
 it is not configured for connection checking against
 http://conncheck.opensuse.org. For, the version with connection
 checking, install %{name}-branding-openSUSE.
@@ -344,14 +345,16 @@ export PYTHON=%{_bindir}/python3
 %find_lang %{name}
 %fdupes %{buildroot}%{_datadir}/gtk-doc/
 mkdir -p %{buildroot}%{_bindir}
-mkdir -p %{buildroot}%{_sysconfdir}/NetworkManager/VPN
+mkdir -p %{buildroot}%{_sysconfdir}/NetworkManager/{VPN,conf.d}
 mkdir -p %{buildroot}%{_localstatedir}/log/
-mkdir -p %{buildroot}%{_localstatedir}/lib/NetworkManager
+mkdir -p %{buildroot}%{_localstatedir}/lib/NetworkManager/dispatcher.d
 mkdir -p %{buildroot}%{_prefix}/lib/NetworkManager/VPN
 touch %{buildroot}%{_localstatedir}/log/NetworkManager
 mkdir -p %{buildroot}%{_sysconfdir}/NetworkManager/system-connections
 install -m 0755 %{SOURCE1} %{buildroot}%{_prefix}/lib/NetworkManager/dispatcher.d/
-install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/NetworkManager/
+install -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/NetworkManager/
+chmod 0644 %{buildroot}%{_prefix}/lib/NetworkManager/NetworkManager.conf
+install -m 0644 %{SOURCE4} %{buildroot}%{_prefix}/lib/NetworkManager/conf.d
 # Install RPM macros to be consumed by plugins
 mkdir -p %{buildroot}%{_rpmmacrodir}
 install -m 0644 %{SOURCE98} %{buildroot}%{_rpmmacrodir}/
@@ -420,6 +423,7 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_libexecdir}/nm-priv-helper
 %dir %{_sysconfdir}/NetworkManager
 %dir %{_sysconfdir}/NetworkManager/VPN
+%dir %{_sysconfdir}/NetworkManager/conf.d
 %dir %{_sysconfdir}/NetworkManager/dispatcher.d
 %dir %{_sysconfdir}/NetworkManager/system-connections
 %attr(0755,root,root) %{_prefix}/lib/NetworkManager/dispatcher.d/nfs
@@ -433,6 +437,8 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_unitdir}/nm-priv-helper.service
 %ghost %config(noreplace) %{_localstatedir}/log/NetworkManager
 %dir %{_prefix}/lib/NetworkManager
+%{_prefix}/lib/NetworkManager/NetworkManager.conf
+%dir %{_prefix}/lib/NetworkManager/conf.d
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d/no-wait.d
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d/pre-up.d
@@ -468,7 +474,7 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %files lang -f %{name}.lang
 
 %files branding-upstream
-%config(noreplace) %{_sysconfdir}/NetworkManager/NetworkManager.conf
+%{_prefix}/lib/NetworkManager/conf.d/conncheck-disabled.conf
 
 %files pppoe
 %{_libdir}/NetworkManager/%{version}/libnm-device-plugin-adsl.so

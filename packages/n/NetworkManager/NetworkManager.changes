@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 28 13:34:51 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Create /etc/NetworkManager/conf.d by default, allowing easy
+  override for NetworkManager.conf file with drop-in.
+- Move default config file to 
+  /usr/lib/NetworkManager/NetworkManager.conf, as part of main
+  package.
+- Branding upstream package is now just a config drop-in to
+  disable conncheck.
+- Ensure /usr/lib/NetworkManager/conf.d is part of the package.
+
+-------------------------------------------------------------------
 Fri Jun 24 10:21:43 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
 
 - Bring back /sbin/netconfig as build option since the netconfig
