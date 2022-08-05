@@ -14,13 +14,16 @@ FROM $KUBEVIRTFROM
 # since TARGETARCH is not defined in OBS builds yet. Default to amd64.
 ARG TARGETARCH=amd64
 
+# Mandatory labels for the build service:
+#   https://en.opensuse.org/Building_derived_containers
 # labelprefix=%%LABELPREFIX%%
-PREFIXEDLABEL org.opencontainers.image.title="kubevirt libguestfs-tools container"
-PREFIXEDLABEL org.opencontainers.image.description="Container for libguestfs tools"
-PREFIXEDLABEL org.opencontainers.image.created="%BUILDTIME%"
-PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
-PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
-PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/libguestfs-tools:%%PKG_VERSION%%.%RELEASE%"
+LABEL org.opencontainers.image.title="kubevirt libguestfs-tools container"
+LABEL org.opencontainers.image.description="Container for libguestfs tools"
+LABEL org.opencontainers.image.created="%BUILDTIME%"
+LABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
+LABEL org.openbuildservice.disturl="%DISTURL%"
+LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/libguestfs-tools:%%PKG_VERSION%%.%RELEASE%"
+# endlabelprefix
 
 # Note: the trick with install/remove kubevirt-manifests is needed to ensure
 # that OBS triggers the rebuild of the container whenever the main kubevirt
