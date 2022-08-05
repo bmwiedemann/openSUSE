@@ -1,5 +1,5 @@
 #
-# spec file for package python-ini2toml
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,13 +16,36 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%endif
+%if "%{flavor}" == ""
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
+%bcond_with ringdisabled
+#              | Ring1 | Factory |
+# ringdisabled |   x   |         |
+# ------       | ----- | ------- |
+# lite         |   x   |    x    |
+# full         |       |    x    |
+# all          |       |    x    |
+# experimental |       |         |
 %bcond_without lite
+%if %{with ringdisabled}
+%bcond_with full
+%bcond_with all
+%else
 %bcond_without full
 %bcond_without all
-# these do not have the requirement in the distribution
+%endif
 %bcond_with experimental
 
-Name:           python-ini2toml
+%define skip_python2 1
+Name:           python-ini2toml%{psuffix}
 Version:        0.11
 Release:        0
 Summary:        Automatic conversion of .ini/cfg files to TOML equivalents
@@ -35,17 +58,23 @@ BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 20.7
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-# SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module packaging >= 20.7}
-BuildRequires:  %{python_module configupdater >= 3.0.1 with %python-configupdater < 4}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tomli-w >= 0.4.0 with %python-tomli-w < 2}
-BuildRequires:  %{python_module tomlkit >= 0.10 with %python-tomlkit < 2}
-BuildRequires:  %{python_module validate-pyproject >= 0.6}
-%if %{with experimental}
-BuildRequires:  %{python_module pyproject-fmt >= 0.32}
+BuildRequires:  %{python_module validate-pyproject >= 0.6 with %python-validate-pyproject < 2}
+%if %{with lite}
+BuildRequires:  %{python_module ini2toml-lite = %{version}}
 %endif
-# /SECTION
+%if %{with full}
+BuildRequires:  %{python_module ini2toml-full = %{version}}
+%endif
+%if %{with all}
+BuildRequires:  %{python_module ini2toml-all = %{version}}
+%endif
+%if %{with experimental}
+BuildRequires:  %{python_module ini2toml-experimental = %{version}}
+%endif
+%endif
 BuildRequires:  fdupes
 BuildArch:      noarch
 %python_subpackages
@@ -59,6 +88,7 @@ file to TOML.
 %package lite
 Summary:        Python ini2toml[lite] extra requirement
 Requires:       python-ini2toml = %{version}
+Requires:       (python-importlib-metadata if python-base < 3.8)
 Requires:       (python-tomli-w >= 0.4.0 with python-tomli-w < 2)
 
 %description lite
@@ -81,6 +111,8 @@ The ini2toml[full] extra requirements for %{python_flavor}-ini2toml
 Summary:        Python ini2toml[all] extra requirement
 Requires:       python-ini2toml = %{version}
 Requires:       (python-configupdater >= 3.0.1 with python-configupdater < 4)
+Requires:       (python-importlib-metadata if python-base < 3.8)
+Requires:       (python-tomli-w >= 0.4.0 with python-tomli-w < 2)
 Requires:       (python-tomlkit >= 0.10 with python-tomlkit < 2)
 
 %description all
@@ -101,6 +133,7 @@ The ini2toml[experimental] extra requirements for %{python_flavor}-ini2toml
 %setup -q -n ini2toml-%{version}
 sed -i 's/--cov ini2toml --cov-report term-missing//' setup.cfg
 
+%if !%{with test}
 %build
 %python_build
 
@@ -108,12 +141,30 @@ sed -i 's/--cov ini2toml --cov-report term-missing//' setup.cfg
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/ini2toml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
-%if ! %{with experimental}
+%if %{without all} && %{without full}
+ignoretests=(
+    --ignore tests/test_examples.py
+    --ignore tests/test_transformations.py
+    --ignore tests/test_translator.py
+    --ignore tests/drivers/test_configupdater.py
+    --ignore tests/plugins/test_best_effort.py
+    --ignore tests/plugins/test_coverage.py
+    --ignore tests/drivers/test_full_toml.py
+    --ignore tests/plugins/test_isort.py
+    --ignore tests/plugins/test_mypy.py
+    --ignore tests/plugins/test_pytest.py
+    --ignore tests/plugins/test_setuptools_pep621.py
+)
+%endif
+%if %{without experimental}
 donttest=(-k "not test_auto_formatting")
 %endif
-%pytest "${donttest[@]}"
+%pytest "${ignoretests[@]}" "${donttest[@]}"
+%endif
 
 %post
 %python_install_alternative ini2toml
@@ -121,6 +172,7 @@ donttest=(-k "not test_auto_formatting")
 %postun
 %python_uninstall_alternative ini2toml
 
+%if !%{with test}
 %files %{python_files}
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %license LICENSE.txt
@@ -146,6 +198,7 @@ donttest=(-k "not test_auto_formatting")
 %if %{with experimental}
 %files %{python_files experimental}
 %license LICENSE.txt
+%endif
 %endif
 
 %changelog
