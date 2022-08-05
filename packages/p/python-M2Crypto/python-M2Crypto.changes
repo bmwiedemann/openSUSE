@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  3 16:48:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update CVE-2020-25657-Bleichenbacher-attack.patch to actually
+  contain the fix rather than just being empty (CVE-2020-25657,
+  bsc#1178829)
+
+-------------------------------------------------------------------
 Tue Jul 12 20:49:47 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2020-25657-Bleichenbacher-attack.patch (CVE-2020-25657,

@@ -686,4 +686,14 @@ Update to 0.36.0:
 </comment>
     <requestid>988816</requestid>
   </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>5e689b6b107c65e60b5e6973c575f3e2</srcmd5>
+    <version>0.38.0</version>
+    <time>1659721808</time>
+    <user>dimstar_suse</user>
+    <comment>- update CVE-2020-25657-Bleichenbacher-attack.patch to actually
+  contain the fix rather than just being empty (CVE-2020-25657,
+  bsc#1178829)</comment>
+    <requestid>992616</requestid>
+  </revision>
 </revisionlist>
