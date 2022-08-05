@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  4 07:26:59 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use standard LABEL directive to add mandatory labels
+
+-------------------------------------------------------------------
 Thu Jul 21 12:34:40 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Initial container for virt-exportserver
