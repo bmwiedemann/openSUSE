@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu Aug  4 09:13:28 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 22.7.1:
+  * fix: Fix a few typos in docs (#1587)
+  * fix: remove log noise from autobahn.websocket.protocol (#1588)
+  * new: add more helpers to EthereumKey and CryptosignKey (#1583)
+  * new: EIP712 certificate chains, incl. use for WAMP-Cryptosign
+  * fix: improve message logging at trace log level
+  * fix: forward correct TLS channel ID once the TLS handshake is complete
+  * new: add eip712 types for WAMP-Cryptosign certificates
+  * new: add more helpers to EthereumKey and CryptosignKey
+  * new: add EthereumKey.from_keyfile, CryptosignKey.from_keyfile,
+    CryptosignKey.from_pubkey
+- Changes from 22.6.1:
+  * new: add SecurityModuleMemory.from_config and
+    SecurityModuleMemory.from_keyfile
+  * new: moved UserKey from crossbar to autobahn
+  * fix: more WAMP-Cryptosign unit tests
+  * new: experimental WAMP API catalog support
+  * new: regenerate FlatBuffers WAMP messages
+  * fix: allow tests to pass without XBR dependencies (#1580)
+  * new: Flatbuffers IDL based WAMP payload validation (#1576)
+  * fix: restore autobahn.twisted.testing to distribution (#1578)
+- Changes from 22.5.1:
+  * new: WAMP Flatbuffers IDL and schema processing (experimental)
+  * new: WAMP-cryptosign trustroot (experimental)
+  * new: add wrapper type for CryptosignAuthextra
+  * fix: stricted type checking of Challenge; fix cryposign unit test;
+  * new: more test coverage
+  * fix: reduce log noise
+  * fix: forward channel_binding selected in Component client
+  * new: expand ISigningKey to provide security_module/key_id (if used)
+  * fix: Component cryptosign test
+  * fix: add type hints; fix channel_binding
+  * new: work on federated realms and secmods
+  * new: rename to and work on a.w.CryptosignKey
+  * new: add bip44 for cryptosign test
+  * fix: remove all txaio.make_logger refs from generic code (#1564)
+  * new: initial support for federated WAMP realms via a.x.FederatedRealm/Seeder
+  * new: moved utility functions and unit tests for WAMP realm name checking
+    from Crossbar.io
+  * new: allow list of URLs for transports in a.t.component.Component
+  * new: add websocket_options to a.t.wamp.ApplicationRunner
+  * new: add stop_at_close flag in a.t.component.run
+  * fix: reduce log noise (regression) on ApplicationRunner Twisted (#1561)
+  * new: allow max_retry_delay==0 for always-immediate auto-reconnect in
+    ApplicationRunner on Twisted
+  * new: add websocket_options to WAMP ApplicationRunner on Twisted (#888)
+  * new: more type hints and docs
+- Changes from 22.4.2:
+  * fix: can not import autobahn.twisted.util with no-TLS (#1559)
+- Changes from 22.4.1:
+  * new: modernize SessionDetails
+  * new: improve ISession/ITransportHandler and implementations (#1557)
+  * new: expand and refactor TransportDetails (#1551)
+  * fix: misc fixes, add type hints, more docs (#1547)
+  * new: key modules for use with WAMP-cryptosign (#1544)
+  * fix: string formatting with binary values in
+    TransportDetails.secure_channel_id (#1483)
+  * fix: never default set authid/authrole in component authenticators
+  * fix: TransportDetails string formatting (fixes #1486)
+  * fix: reading private ssh key for cryptosign (fixes #932)
+  * fix: do not throw (but log) when leaving a session not joined (#1542)
+  * fix: store WAMP authextra received (#1541)
+
+-------------------------------------------------------------------
 Wed Mar 30 07:49:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.3.2:
