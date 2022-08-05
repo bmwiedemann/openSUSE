@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug  3 13:14:32 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- When enabling query_logging by un-commenting an example in
+  bind.conf, named attempts to create a file in /var/log which
+  fails due to missing credentials. This also applies to the
+  "dump-file" and the "statistics-file".
+  This is solved by having systemd-tmpfiles create a subdirectory
+  "/var/log/named" owned by named:named and changing the file
+  paths accordingly:
+  /var/log/named_querylog -> /var/log/named/querylog
+  /var/log/named_dump.db -> /var/log/named/dump.db
+  /var/log/named.stats -> /var/log/named/stats
+  Also, in "named.service", the ReadWritePath was changed to
+  include "/var/log/named" rather than just "var/log".
+  [bsc#1200685, bind.conf, vendor-files/config/named.conf,
+   vendor-files/system/named.service]
+
+-------------------------------------------------------------------
 Mon Aug  1 11:15:42 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Add systemd drop-in directory for named service
