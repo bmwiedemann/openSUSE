@@ -253,4 +253,28 @@
   - Add env subcommand. by @wlynch in #2051 (forwarded request 991559 from msmeissn)</comment>
     <requestid>991560</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b536f416d2e678be7c85493289db424f</srcmd5>
+    <version>1.10.1</version>
+    <time>1659721920</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.10.1 (jsc#SLE-23879)
+  - CVE-2022-35929: Fixed that cosign verify-attestaton --type can
+    report a false positive if any attestation exists (GHSA-vjxv-45g9-9296
+    (bsc#1202157)
+- What else changed:
+  - add flag to allow skipping upload to transparency log by @k4leung4 in #2089
+  - Improve error message when no sigs/atts are found for an image by @imjasonh in #2101
+  - Change Result in Vulnerability Attestation to interface{} by @knqyf263 in #2096
+  - Fix field names in the vulnerability attestation by @otms61 in #2099
+  - remove style jobs and cleanup makefile gofmt and goimports are running already with golangci-lint by @cpanato in #2105
+  - sparkles Enable Scorecard badge by @azeemshaikh38 in #2109
+  - Resolves #522 set Created date to time of execution by @Lerentis in #2108
+  - Introduce a custom error type to classify errors. by @mattmoor in #2114
+  - feat: attach: attestation: allow passing multiple payloads by @Dentrax in #2085
+  - update cross-builder to go1.18.5 and cosign image to 1.10.0 by @cpanato in #2119
+  - chore: fix documentation and warning on using untrusted rekor key by @asraa in #2124
+  - Correct the type used for attest by @mattmoor in #2128 (forwarded request 993341 from msmeissn)</comment>
+    <requestid>993342</requestid>
+  </revision>
 </revisionlist>
