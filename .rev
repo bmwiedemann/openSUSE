@@ -1383,4 +1383,13 @@ Also wanted for 13.1</comment>
     <comment>GNOME 42.2 (forwarded request 979900 from dimstar)</comment>
     <requestid>980036</requestid>
   </revision>
+  <revision rev="180" vrev="2">
+    <srcmd5>f204f5a2f8b295b1c7768c95289994bb</srcmd5>
+    <version>1.50.2</version>
+    <time>1659721816</time>
+    <user>dimstar_suse</user>
+    <comment>- recommend pkexec in gvfs-backends. (not requires to allow customers
+  to remove pkexec) (bsc#1202070) (forwarded request 992458 from msmeissn)</comment>
+    <requestid>992702</requestid>
+  </revision>
 </revisionlist>

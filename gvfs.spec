@@ -117,6 +117,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         permissions
+Recommends:     pkexec
 Recommends:     udisks2
 
 %description backends
