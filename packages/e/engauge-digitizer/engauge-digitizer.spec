@@ -1,7 +1,7 @@
 #
 # spec file for package engauge-digitizer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,8 @@ Release:        0
 Summary:        Ditigizer software that converts old graphs into numbers again
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
-URL:            http://markummitchell.github.io/engauge-digitizer/
+URL:            https://markummitchell.github.io/engauge-digitizer/
 Source0:        https://github.com/markummitchell/%{name}/archive/v%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -49,7 +48,6 @@ BuildRequires:  pkgconfig(poppler-qt5)
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 Suggests:       %{name}-doc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This digitizing software converts an image file, showing a graph or
@@ -80,6 +78,8 @@ This package contains the development documentation for Engauge Digitizer.
 
 # UNNECESSARY EXEC PERM
 chmod -x help/build_qt5_12_0.bash
+# Remove any RUNPATH, we don't use the wrapper script or private libraries
+sed -i -e '/QMAKE_LFLAGS.*ORIGIN/ d' engauge.pro
 
 %build
 # ADD JPEG2000 SUPPORT
@@ -130,32 +130,20 @@ popd
 
 # INSTALL APPDATA
 install -Dm 0644 dev/gnome/engauge-digitizer.appdata.xml \
-            %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+            %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
 
 # REMOVE UNNECESSARY windows BUILD FILE
 find ./ -name build.windows -delete -print
 
 %fdupes -s doc/doxygen/html
 
-%if 0%{?suse_version} < 1500
-%post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%icon_theme_cache_postun
-%desktop_database_postun
-%endif
-
 %files
-%defattr(-,root,root)
 %doc README.md engauge.qhc engauge.qch
 %license LICENSE
 %{_bindir}/engauge
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/applications/%{name}.desktop
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/%{name}.appdata.xml
 
 %files doc
 %doc help
