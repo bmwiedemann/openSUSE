@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug  4 16:13:02 UTC 2022 - Jan Baier <jbaier@suse.com>
+
+- update to version 20220613
+    - ADD standard(ish) unixy command line flags
+    - Fix unused variable warning during compile.
+    - Document use of an arbitrary date specification
+- add sunwait-fix-parentheses.patch
+
+-------------------------------------------------------------------
 Mon Feb  8 15:12:06 UTC 2021 - Jan Baier <jbaier@suse.com>
 
 - update to version 20201026

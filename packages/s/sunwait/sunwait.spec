@@ -1,7 +1,7 @@
 #
 # spec file for package sunwait
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sunwait
-Version:        20201026
+Version:        20220613
 Release:        0
 Summary:        Sunrise, sunset and twilight calculator
 License:        GPL-2.0-or-later
@@ -25,6 +25,7 @@ Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/risacher/sunwait
 Source:         %{name}-%{version}.tar.xz
 Patch0:         sunwait-no-rpm-opt-flags.patch
+Patch1:         sunwait-fix-parentheses.patch
 BuildRequires:  gcc-c++
 
 %description
@@ -34,7 +35,7 @@ useful for home automation tasks.
 
 %prep
 %setup -q
-%patch0 -p1
+%autopatch
 
 %build
 %make_build
