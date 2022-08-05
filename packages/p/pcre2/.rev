@@ -212,4 +212,12 @@ Not source compatible. Installable in parallel with all packages.</comment>
     <comment></comment>
     <requestid>975361</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>10bd8b156d60bda610b632086ba78e19</srcmd5>
+    <version>10.40</version>
+    <time>1659721768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992166</requestid>
+  </revision>
 </revisionlist>
