@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ansi2html
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Python module to convert text with ANSI color codes to HTML or LaTeX
 License:        LGPL-3.0-or-later

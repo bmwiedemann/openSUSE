@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug  4 08:46:29 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 1.8.0:
+  * Fix for ANSI color codes that include blank values (#178)
+  * style.py: Drop unused CSS class .bold (#161)
+  * Added py.typed file (#176)
+  * style.py: Get CSS class .inv_foreground in sync with .body_foreground (#160)
+  * Fix --input-encoding=<encoding> regression added in PR #143 + related tests (alternative to PR #162) (#172)
+  * Migrate from mock to unittest.mock of Python >=3.3 (fixes #169) (#171)
+  * Add ability to also recognize colons in ANSI escapes (#167)
+  * Fixes to respect bright colors in palette (#126)
+  * CHANGELOG.rst: Fix misleading 1.6.0 entry and missing 1.7.0 entries (#159)
+  * Add comments to reduce reader research time (#158)
+
+-------------------------------------------------------------------
 Wed Apr 27 11:41:26 UTC 2022 - pgajdos@suse.com
 
 - version update to 1.7.0
