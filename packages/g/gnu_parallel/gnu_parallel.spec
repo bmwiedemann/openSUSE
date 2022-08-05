@@ -83,7 +83,7 @@ This subpackage contains the zsh completion for Parallel.
 cp -a CITATION NEWS README "%buildroot/%_docdir/%name/"
 
 # fix shebang to to not use env & preserve the time stamps
-sed -i.orig "s:^#\!/usr/bin/env\s\+perl\s\?$:#!perl:" "%buildroot/%_bindir/parallel"
+sed -i.orig "s:^#\!/usr/bin/env\s\+perl\s\?$:#!/usr/bin/perl:" "%buildroot/%_bindir/parallel"
 touch -r "%buildroot/%_bindir/parallel.orig" "%buildroot/%_bindir/parallel"
 rm "%buildroot/%_bindir/parallel.orig"
 
