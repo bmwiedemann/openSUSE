@@ -16,7 +16,9 @@
 #
 
 
-#!BuildIgnore:  rpmlint-mini
+# allow to not build vala binding
+%bcond_without vala
+
 Name:           accountsservice
 Version:        22.08.8
 Release:        0
@@ -41,7 +43,6 @@ Patch1000:      as-fate318433-prevent-same-account-multi-logins.patch
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  vala
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.63.5
 BuildRequires:  pkgconfig(gio-unix-2.0)
@@ -92,17 +93,20 @@ Requires:       typelib-1_0-AccountsService-1_0 = %{version}
 The accountsservice server provides a set of D-Bus interfaces for
 querying and manipulating user account information.
 
+%if %{with vala}
 %package vala
 Summary:        Vala bindings for accountsservice
 Group:          Development/Libraries/C and C++
 Requires:       libaccountsservice0 = %{version}
 Requires:       typelib-1_0-AccountsService-1_0 = %{version}
+BuildRequires:  vala
 
 %description vala
 The accountsservice server provides a set of D-Bus interfaces for
 querying and manipulating user account information.
 
 This package contains the Vala bindings for accountservice.
+%endif
 
 %lang_package
 
@@ -121,6 +125,11 @@ This package contains the Vala bindings for accountservice.
 %meson \
 	-Dintrospection=true \
 	-Dgtk_doc=true \
+%if %{with vala}
+	-Dvapi=true \
+%else
+	-Dvapi=false \
+%endif
 	%{nil}
 %meson_build
 
@@ -175,10 +184,12 @@ This package contains the Vala bindings for accountservice.
 %{_includedir}/accountsservice-1.0/
 %{_datadir}/gir-1.0/AccountsService-1.0.gir
 
+%if %{with vala}
 %files vala
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/accountsservice.deps
 %{_datadir}/vala/vapi/accountsservice.vapi
+%endif
 
 %files lang -f accounts-service.lang
 
