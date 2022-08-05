@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  3 13:55:13 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to release 0.8.1:
+  * make shared xsk creation network namespace aware
+
+-------------------------------------------------------------------
 Thu May 19 03:00:36 UTC 2022 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to release 0.8.0
