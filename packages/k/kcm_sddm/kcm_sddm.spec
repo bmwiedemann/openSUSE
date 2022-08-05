@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kcm_sddm
-Version:        5.25.3
+Version:        5.25.4
 Release:        0
 Summary:        A sddm control module for KDE
 License:        GPL-2.0-only
