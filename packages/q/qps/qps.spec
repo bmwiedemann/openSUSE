@@ -1,7 +1,7 @@
 #
 # spec file for package qps
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qps
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Visual Process Manager
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
