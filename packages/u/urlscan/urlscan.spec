@@ -26,10 +26,12 @@ Group:          Productivity/Networking/Web/Browsers
 URL:            https://github.com/firecat53/urlscan
 Source0:        https://github.com/firecat53/urlscan/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        muttrc
+BuildRequires:  fdupes
 BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
+BuildRequires:  sed
 Requires:       python3
 Requires:       python3-base
 Requires:       python3-urwid
@@ -45,21 +47,31 @@ quoted-printable and base64 encoding.
 %setup -q
 
 %build
-python3 setup.py build
+%python3_build
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
-rm -rf %{buildroot}%{_datadir}/doc/%{name}*
+%python3_install
 mkdir -p %{buildroot}%{_defaultdocdir}/%{name}
+if test -e %{buildroot}%{_datadir}/doc/%{name}*
+then
+   rm -vf %{buildroot}%{_datadir}/doc/%{name}*/COPYING
+   mv %{buildroot}%{_datadir}/doc/%{name}*/* \
+      %{buildroot}%{_defaultdocdir}/%{name}/
+fi
+rm -rf %{buildroot}%{_datadir}/doc/%{name}*
 install -m 0644 %{SOURCE1} %{buildroot}%{_defaultdocdir}/%{name}
-rm -rvf %{buildroot}%{python_sitelib}/%{name}-%{version}-*-info
+chmod 755 %{buildroot}%{python_sitelib}/%{name}/__main__*
+sed -ri '1 { s@(/usr/bin/)env *@\1@ }' %{buildroot}%{python_sitelib}/%{name}/__main__*
+%fdupes %{buildroot}
 
 %files
 %license COPYING
 %{_bindir}/%{name}
 %{python_sitelib}/%{name}
+%{python_sitelib}/%{name}-%{version}-py*.egg-info
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%dir %{_defaultdocdir}/%{name}/
 %doc %{_defaultdocdir}/%{name}/muttrc
-%dir %{_docdir}/urlscan
+%doc %{_defaultdocdir}/%{name}/README.md
 
 %changelog

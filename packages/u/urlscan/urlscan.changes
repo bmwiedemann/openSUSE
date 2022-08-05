@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  4 13:26:52 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Do not remove egg info anymore as the pythonm3 interpreter
+  does not work anymore without this information (boo#1202137) 
+
+-------------------------------------------------------------------
 Sun Jan 30 15:23:36 UTC 2022 - Avinesh Kumar <avinesh.kumar@suse.com>
 
 - update to version 0.9.9:
