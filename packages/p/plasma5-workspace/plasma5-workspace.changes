@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Aug  2 14:07:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.4
+- Changes since 5.25.3:
+  * wallpaper/slideshow: shouldn't display "current" item in image list (kde#457327)
+  * Disable toplevel fixed positions on Wayland
+  * runners/helprunner: Fix launching of plasmasearch kcm with args
+  * [kicker/kickoff] Fix urls for search results (kde#456984)
+  * applets/icon: fix invalid `Accessible.description`
+  * applets/devicenotifier: improve accessible properties
+  * applets/batterymonitor: add accessible properties to slider
+  * [FIX] Unable to remove manually added wallpaper (kde#457019)
+  * kcms/colors: make sure the preview uses the right colours (kde#456648)
+  * Don't break configuration when saving layouts
+  * [Notifications] When there is no thumbnail available, use file icon as drag pixmap
+  * [Notifications] Ignore stopped job in job aggregator
+  * [applet/{analog,digital}-clock] Use `onPressed: wasExpanded = ...` idiom
+  * Fix non-functional lockscreen due to bad cherry-pick (kde#456639)
+- Drop patches, now upstream:
+  * 0001-Fix-non-functional-lockscreen-due-to-bad-cherry-pick.patch
+
+-------------------------------------------------------------------
 Tue Jul 12 18:17:00 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix the lock screen (kde#456639):
