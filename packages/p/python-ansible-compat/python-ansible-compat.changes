@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 28 20:45:45 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.2.0:
+  * Minor Changes
+    - Allow installation of pre-released collections (#157) @ssbarnea
+    - Add support for python 3.11 (#155) @ssbarnea
+  * Bugfixes
+    - Refactor schema testing (#152) @ssbarnea
+    - Use jsonschema 4.6.0 (#153) @ssbarnea
+    - Avoid CryptographyDeprecationWarning from paramiko (#150) @ssbarnea
+
+-------------------------------------------------------------------
 Tue Jun 14 21:02:38 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 2.1.0:
