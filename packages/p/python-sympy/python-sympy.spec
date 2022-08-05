@@ -19,7 +19,8 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
-%bcond_without  test
+# Tests run 7h53m47s in OBS ... so we are switching them off right now
+%bcond_with  test
 Name:           python-sympy
 Version:        1.10.1
 Release:        0

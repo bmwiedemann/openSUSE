@@ -253,4 +253,13 @@ Note: resubmit with fixed license</comment>
     <comment></comment>
     <requestid>979052</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>094ba45a8fd9cf3b4648fd949122566e</srcmd5>
+    <version>1.10.1</version>
+    <time>1659721824</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch off tests (they run 7h53m47s).
+</comment>
+    <requestid>993135</requestid>
+  </revision>
 </revisionlist>

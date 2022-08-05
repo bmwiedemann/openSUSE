@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  4 19:58:36 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Switch off tests (they run 7h53m47s).
+
+-------------------------------------------------------------------
 Tue May 24 06:33:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add sympy_printing_ccode.patch eliminating sympy.printing.ccode
