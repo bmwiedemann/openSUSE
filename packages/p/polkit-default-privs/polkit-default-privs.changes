@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 02 08:10:20 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 1550+20220727.3ce2e2f:
+  * iio-sensor-proxy (bsc#1201558): add claim-sensor action
+
+-------------------------------------------------------------------
 Wed Jun 08 14:34:58 UTC 2022 - wolfgang.frisch@suse.com
 
 - Update to version 1550+20220608.097448e:
