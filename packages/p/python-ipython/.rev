@@ -1134,4 +1134,15 @@
     <comment></comment>
     <requestid>980869</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>8e53aa2a4f9d943499efa13aaa30dcff</srcmd5>
+    <version>8.4.0</version>
+    <time>1659721826</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ipython-pr13714-xxlimited.patch gh#ipython/ipython#13714
+
+- Remove nbformat from the :test flavor. Run locally
+  `--with localtests` for not skipping the tests.</comment>
+    <requestid>993332</requestid>
+  </revision>
 </revisionlist>

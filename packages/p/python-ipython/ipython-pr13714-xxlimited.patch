@@ -1,0 +1,28 @@
+From d858213d4088237e1481038865bc52ccdd074053 Mon Sep 17 00:00:00 2001
+From: Lumir Balhar <lbalhar@redhat.com>
+Date: Fri, 29 Jul 2022 08:48:59 +0200
+Subject: [PATCH] xxlimited_35 module now has the same name in repr in Py 3.11
+
+See https://github.com/python/cpython/commit/a87c9b538fbfc42883417c4d5e69f1a5922690e3
+---
+ IPython/lib/tests/test_pretty.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/IPython/lib/tests/test_pretty.py b/IPython/lib/tests/test_pretty.py
+index 86085166071..b93ab97eb9e 100644
+--- a/IPython/lib/tests/test_pretty.py
++++ b/IPython/lib/tests/test_pretty.py
+@@ -141,9 +141,12 @@ def test_pprint_heap_allocated_type():
+     Test that pprint works for heap allocated types.
+     """
+     module_name = "xxlimited" if sys.version_info < (3, 10) else "xxlimited_35"
++    expected_output = (
++        "xxlimited.Null" if sys.version_info < (3, 10, 6) else "xxlimited_35.Null"
++    )
+     xxlimited = pytest.importorskip(module_name)
+     output = pretty.pretty(xxlimited.Null)
+-    assert output == "xxlimited.Null"
++    assert output == expected_output
+ 
+ 
+ def test_pprint_nomod():

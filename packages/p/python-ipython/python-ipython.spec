@@ -24,13 +24,15 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
+# extra tests are skipped automatically, don't require these packages for Ring1
+%bcond_with localtest
+
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
+
 Name:           python-ipython%{psuffix}
 Version:        8.4.0
 Release:        0
@@ -40,6 +42,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipython
 Source:         https://files.pythonhosted.org/packages/source/i/ipython/ipython-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtconsole/resources/icon/JupyterConsole.svg
+# PATCH-FIX-UPSTREAM ipython-pr13714-xxlimited.patch gh#ipython/ipython#13714
+Patch0:         ipython-pr13714-xxlimited.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools >= 18.5}
 BuildRequires:  %{pythons}
@@ -83,7 +87,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module curio}
 BuildRequires:  %{python_module ipython = %{version}}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module numpy >= 1.19}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pygments}
@@ -91,6 +94,9 @@ BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module trio}
+%endif
+%if %{with localtest}
+BuildRequires:  %{python_module nbformat}
 %endif
 %if !%{with test}
 BuildRequires:  desktop-file-utils

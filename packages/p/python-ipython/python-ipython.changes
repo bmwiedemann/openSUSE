@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug  5 13:54:20 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add ipython-pr13714-xxlimited.patch gh#ipython/ipython#13714
+
+-------------------------------------------------------------------
+Thu Aug  4 10:24:27 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove nbformat from the :test flavor. Run locally
+  `--with localtests` for not skipping the tests.
+
+-------------------------------------------------------------------
 Sat Jun  4 23:13:12 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 8.4.0:
