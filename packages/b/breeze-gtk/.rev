@@ -982,4 +982,12 @@ https://cgit.kde.org/breeze-gtk.git/commit/COPYING.LIB?id=499226afa44cafb342546d
     <comment>Plasma 5.25.3, with fixed lockscreen (forwarded request 988718 from Vogtinator)</comment>
     <requestid>988819</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>e19f0c7040ff9f0a2fab1ffe929592c0</srcmd5>
+    <version>5.25.4</version>
+    <time>1659721780</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.4 (forwarded request 992383 from Vogtinator)</comment>
+    <requestid>992476</requestid>
+  </revision>
 </revisionlist>
