@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug  3 08:30:34 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- In case of an update of package info: do never remove existing
+  info page from dir file (boo#1201852)
+
+-------------------------------------------------------------------
+Fri Jul 29 12:14:22 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Do lua scripting only once for execute() function 
+
+-------------------------------------------------------------------
+Wed Jul 27 07:39:30 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Check for filetrigger lua scriplets if rpm.execute() as function
+  call is given and used this
+
+-------------------------------------------------------------------
 Tue Apr 26 13:37:31 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add 13a8894fe2.patch

@@ -616,4 +616,18 @@
     <comment>Fix factory issue with GPM (forwarded request 972890 from susnux)</comment>
     <requestid>972891</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>2196ab45c0b4421e748f5733ad00eb0b</srcmd5>
+    <version>6.8</version>
+    <time>1659721772</time>
+    <user>dimstar_suse</user>
+    <comment>- In case of an update of package info: do never remove existing
+  info page from dir file (boo#1201852)
+
+- Do lua scripting only once for execute() function 
+
+- Check for filetrigger lua scriplets if rpm.execute() as function
+  call is given and used this</comment>
+    <requestid>992724</requestid>
+  </revision>
 </revisionlist>

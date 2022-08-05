@@ -129,7 +129,7 @@ fi
 if cmp  %{buildroot}%{_mandir}/man1/pdftexi2dvi.1 %{buildroot}%{_mandir}/man1/texi2pdf.1
 then
     rm -vf %{buildroot}%{_mandir}/man1/pdftexi2dvi.1
-    ln -sf texi2pdf.1.gz %{buildroot}%{_mandir}/man1/pdftexi2dvi.1.gz
+    ln -sf texi2pdf.1%{?ext_man} %{buildroot}%{_mandir}/man1/pdftexi2dvi.1%{?ext_man}
 fi
 
 %if !0%{?usrmerged}
@@ -150,48 +150,47 @@ LANG=en_GB.UTF-8
 export LANG
 make %{?_smp_mflags} check
 
-%filetriggerin -n info -p <lua> -- %{_infodir}
--- TODO: replace with rpm.execute after rpm 4.15
-function execute(path, ...)
-  local pid = posix.fork()
-  if pid == 0 then
-     posix.exec(path, ...)
-     io.write(path, ": exec failed: ", posix.errno(), "\n")
-     os.exit(1)
+%global trigger_functions %{expand:
+-- Check if rpm.execute() as function call is given
+if type(rpm.execute) == "function" then
+   execute = rpm.execute
+else
+  function execute(path, ...)
+    local pid = posix.fork()
+    if not pid then
+       error(path .. ": fork failed: " .. posix.errno() .. "\n")
+    elseif pid == 0 then
+       assert(posix.exec(path, ...))
+    else
+       posix.wait(pid)
+    end
   end
-  if not pid then
-     error(path .. ": fork failed: " .. posix.errno() .. "\n")
-  end
-  posix.wait(pid)
 end
 --
+}
+
+%filetriggerin -n info -p <lua> -- %{_infodir}
+%trigger_functions
 file = rpm.next_file()
 while file do
-    if string.match(file, "%%.info%%.gz$") then
-	execute("%{_bindir}/install-info", "--info-dir=%{_infodir}", file)
+    if string.match(file, "%%.info%%%{ext_info}$") then
+	stat = posix.stat(file)
+	if stat then
+	    execute("%{_bindir}/install-info", "--info-dir=%{_infodir}", file)
+	end
     end
     file = rpm.next_file()
 end
 
 %filetriggerun -n info -p <lua> -- %{_infodir}
--- TODO: replace with rpm.execute after rpm 4.15
-function execute(path, ...)
-  local pid = posix.fork()
-  if pid == 0 then
-     posix.exec(path, ...)
-     io.write(path, ": exec failed: ", posix.errno(), "\n")
-     os.exit(1)
-  end
-  if not pid then
-     error(path .. ": fork failed: " .. posix.errno() .. "\n")
-  end
-  posix.wait(pid)
-end
---
+%trigger_functions
 file = rpm.next_file()
 while file do
-    if string.match(file, "%%.info%%.gz$") then
-	execute("%{_bindir}/install-info", "--quiet", "--delete", "--info-dir=%{_infodir}", file)
+    if string.match(file, "%%.info%%%{ext_info}$") then
+	stat = posix.stat(file)
+	if not stat then
+	    execute("%{_bindir}/install-info", "--quiet", "--delete", "--info-dir=%{_infodir}", file)
+	end
     end
     file = rpm.next_file()
 end
@@ -231,7 +230,7 @@ end
 
 %files -n info
 %defattr(-,root,root,0755)
-%ghost %verify(not md5 size mtime) %{_infodir}/dir
+%ghost %verify(not mode md5 size mtime) %{_infodir}/dir
 %if !0%{?usrmerged}
 /sbin/install-info
 %else
