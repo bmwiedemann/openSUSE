@@ -11,13 +11,16 @@
 ARG KUBEVIRTFROM
 FROM $KUBEVIRTFROM
 
+# Mandatory labels for the build service:
+#   https://en.opensuse.org/Building_derived_containers
 # labelprefix=%%LABELPREFIX%%
-PREFIXEDLABEL org.opencontainers.image.title="CDI upload server container"
-PREFIXEDLABEL org.opencontainers.image.description="Upload server for the data fetching service for VM container images"
-PREFIXEDLABEL org.opencontainers.image.created="%BUILDTIME%"
-PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
-PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
-PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-uploadserver:%%PKG_VERSION%%.%RELEASE%"
+LABEL org.opencontainers.image.title="CDI upload server container"
+LABEL org.opencontainers.image.description="Upload server for the data fetching service for VM container images"
+LABEL org.opencontainers.image.created="%BUILDTIME%"
+LABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
+LABEL org.openbuildservice.disturl="%DISTURL%"
+LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-uploadserver:%%PKG_VERSION%%.%RELEASE%"
+# endlabelprefix
 
 RUN zypper -n install \
            qemu-tools qemu-block-curl tar util-linux \
