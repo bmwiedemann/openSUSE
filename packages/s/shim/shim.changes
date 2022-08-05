@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  5 05:25:16 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Add logic to shim.spec for detecting --set-sbat-policy option before
+  using mokutil to set sbat policy. (bsc#1202120)
+
+-------------------------------------------------------------------
 Fri Jul 29 02:36:36 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Change the URL in SBAT section to mail:security@suse.de. (bsc#1193282)

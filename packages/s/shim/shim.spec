@@ -308,7 +308,8 @@ is_efi () {
 # run mokutil for setting sbat policy to latest mode
 SBAT_POLICY=/sys/firmware/efi/efivars/SbatPolicy-605dab50-e046-4300-abb6-3dd810dd8b23
 if is_efi; then
-        if [ ! -f "$SBAT_POLICY" ]; then
+        if [ ! -f "$SBAT_POLICY" ] && mokutil -h | grep -q "set-sbat-policy"; then
+        # Only apply CA check on the kernel package certs (bsc#1173115)
                 mokutil --set-sbat-policy latest
         fi
 fi
