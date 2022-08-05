@@ -1122,4 +1122,12 @@
     <comment>GNOME 42.2 (forwarded request 979885 from dimstar)</comment>
     <requestid>980023</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>1583b91d870f524233fab82a85c37a56</srcmd5>
+    <version>42.2</version>
+    <time>1659721814</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 991751 from iznogood)</comment>
+    <requestid>992697</requestid>
+  </revision>
 </revisionlist>

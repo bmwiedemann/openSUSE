@@ -18,7 +18,7 @@
 
 %bcond_without  python_bindings
 Name:           gedit
-Version:        42.1
+Version:        42.2
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
