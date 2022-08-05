@@ -18,53 +18,40 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-funcparserlib
-Version:        0.3.6
+Version:        1.0.0
 Release:        0
 Summary:        Recursive descent parsing library based on functional combinators
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/vlasovskikh/funcparserlib
-Source:         https://files.pythonhosted.org/packages/source/f/funcparserlib/funcparserlib-%{version}.tar.gz
-Patch1:         no2to3.patch
+Source:         https://github.com/vlasovskikh/funcparserlib/archive/refs/tags/%{version}.tar.gz#/funcparserlib-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-modernize
 BuildArch:      noarch
 %python_subpackages
 
 %description
-Parser combinators are just higher-order functions that take parsers as
-their arguments and return them as result values. Parser combinators are:
-
-First-class values. Extremely composable. Tend to make the code quite compact.
-Resemble the readable notation of xBNF grammars.
-
-Parsers made with funcparserlib are pure-Python LL(*) parsers. It means that
-it's very easy to write them without thinking about look-aheads and all that
-hardcore parsing stuff. But the recursive descent parsing is a rather slow
-method compared to LL(k) or LR(k) algorithms.
-
-So the primary domain for funcparserlib is parsing little languages or external
+The primary focus of funcparserlib is parsing little languages or external
 DSLs (domain specific languages).
 
-The library itself is very small. Its source code is only 0.5 KLOC, with lots
-of comments included. It features the longest parsed prefix error reporting,
-as well as a tiny lexer generator for token position tracking.
+Parsers made with funcparserlib are pure-Python LL(*) parsers. It means that
+it's very easy to write parsers without thinking about lookaheads and other
+hardcore parsing stuff. However, recursive descent parsing is a rather
+low method compared to LL(k) or LR(k) algorithms. Still, parsing with
+funcparserlib is at least twice faster than PyParsing, a very popular library
+for Python.
 
 %prep
 %setup -q -n funcparserlib-%{version}
-%patch1 -p1
-python-modernize -nw funcparserlib/
-sed -i "s/ur'/r'/" funcparserlib/tests/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -72,8 +59,8 @@ sed -i "s/ur'/r'/" funcparserlib/tests/*.py
 
 %files %{python_files}
 %license LICENSE
-%doc README CHANGES
-%{python_sitelib}/funcparserlib/
-%{python_sitelib}/funcparserlib*egg-info
+%doc README.md
+%{python_sitelib}/funcparserlib
+%{python_sitelib}/funcparserlib-%{version}*-info
 
 %changelog

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Aug  4 19:54:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.0
+  * The stable 1.0.0 release freezes the API of funcparserlib 0.3.6
+    which was released on 2013-05-02, with a few bug fixes and
+    small features.
+  * Added support for Python 3.10
+  * Added support for Python 3.9 (#63) (Thanks to @pkulev)
+  * Added support for Python 3.8
+  * Added -p (the same as skip(p)) with more strict type hints for
+    -p and p1 + p2
+  * Added tok(type[, value]) for more compact grammars, better
+    error messages
+  * Added TokenSpec(type, pattern[, flags]) to simplify the use of
+    make_tokenizer()
+  * Added type hints for the public API
+  * Added the new library homepage with the new Getting Started
+    guide and the new API reference
+  * Parse exceptions now show expected tokens and grammar rules at
+    the stopped position (#52)
+  * Dropped support for Python 3.4, 3.5, 3.6 (end of life)
+  * Dropped support for Python 2.5, 2.6, 3.3 (end of life),
+    modernized code for Python 3 to run without obsolete 2to3 (#57)
+    (Thanks to @jdufresne)
+  * Removed documentation and unit tests from the distribution
+  * Switched from setuptools to Poetry
+  * Switched to poetry-core for lighter PEP 517 builds (#73)
+    (Thanks to @fabaff)
+  * Fixed TypeError in oneplus when applying it parser + parser
+    (#66) (Thanks to @martica)
+  * Fixed AttributeError when comparing Token objects to None (#58)
+    (Thanks to @Halolegend94)
+  * Fixed doctests in the tutorial (#49)
+  * Fixed several cases of wrong expected tokens in error messages
+- Drop no2to3.patch
+
+-------------------------------------------------------------------
 Tue Mar  1 09:44:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add no2to3.patch for compatibility with newer setuptools 
