@@ -6107,6 +6107,7 @@ unsorted:
   - go-for-it-lang 
   - go-md2man 
   - go-race: [x86_64] 
+  - go-sendxmpp 
   - go1.12 
   - go1.12-doc 
   - go1.12-race: [x86_64] 
@@ -15818,6 +15819,10 @@ unsorted:
   - mako 
   - malaga-suomi 
   - malcontent-devel 
+  - mame 
+  - mame-data 
+  - mame-mess 
+  - mame-tools 
   - man-pages-fi 
   - man-pages-id 
   - man-pages-mk 
@@ -24812,6 +24817,7 @@ unsorted:
   - python310-userpath 
   - python310-uvicorn 
   - python310-uvloop 
+  - python310-uwsgi-python3 
   - python310-validate-pyproject 
   - python310-validate_email 
   - python310-validators 
@@ -28125,6 +28131,7 @@ unsorted:
   - python38-userpath 
   - python38-uvicorn 
   - python38-uvloop 
+  - python38-uwsgi-python3 
   - python38-validate-pyproject 
   - python38-validate_email 
   - python38-validators 
@@ -31438,6 +31445,7 @@ unsorted:
   - python39-userpath 
   - python39-uvicorn 
   - python39-uvloop 
+  - python39-uwsgi-python3 
   - python39-validate-pyproject 
   - python39-validate_email 
   - python39-validators 
@@ -43056,7 +43064,6 @@ unsorted:
   - uwsgi-php7 
   - uwsgi-psgi 
   - uwsgi-pypy 
-  - uwsgi-python3 
   - uwsgi-sqlite3 
   - uwsgi-xslt 
   - v2ray-core 
@@ -43872,6 +43879,7 @@ unsorted:
   - xmoto 
   - xmoto-data 
   - xmp 
+  - xmpp-dns 
   - xmppc 
   - xmrig 
   - xmvn 
