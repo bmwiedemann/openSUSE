@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Aug  2 14:07:11 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.4
+- Changes since 5.25.3:
+  * Update QtQuick views at the start of the frame
+  * xkb: Use Ctrl+Mrys+Zenkaku_Hankaku to toggle the touchpad
+  * input: don't forward gestures used by KWin to applications (kde#455952)
+  * effects/private: Raise currently dragged window higher than anything (kde#456936)
+  * Fix activity swtiching through UserActions menu (kde#456873)
+  * backends/drm: fix build
+  * backends/drm: fix memory leak
+  * backends/drm: explicitly initialize all fields of drmModeModeInfo
+  * effects/colorpicker: Fix picking colors (kde#454974)
+  * wayland/tablet_v2: Keep also the pad surface in a QPointer (kde#456817)
+  * Support keyboard navigation between windows across desktops (kde#456068)
+  * Make DesktopView a FocusScope
+  * Accept keys in windowheap conditionally
+  * activation: Be liberal about the StartupWMClass
+  * activation: Fix activation notification of Xwayland clients (kde#455265)
+  * activation: Simplify icon loading logic
+  * x11: Fix shading with non-zero border (kde#450582)
+  * backends/drm: don't crash if importing a texture fails
+  * Swapping desktops: only swap windows on current activity. (kde#386769)
+  * Don't use Plasma-themed icons in Present Windows (kde#455368)
+  * TabBox: Fix loading a different switcher after one has failed (kde#445455)
+  * backends/drm: handle broken legacy drivers better (kde#453860)
+  * wayland/drmlease: split up DrmLeaseV1Interface::deny
+  * wayland/drmlease: correct DrmLeaseDeviceV1Interface::setDrmMaster
+  * drmlease: send device done event correctly
+
+-------------------------------------------------------------------
 Tue Jul 12 11:29:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.3
