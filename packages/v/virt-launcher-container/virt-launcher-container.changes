@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  4 06:27:58 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use standard LABEL directive to add mandatory labels
+
+-------------------------------------------------------------------
 Wed Apr 27 16:30:17 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Setup permissions and capabilities for non-root VMIs
