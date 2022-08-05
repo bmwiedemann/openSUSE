@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug  4 17:45:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.1
+  * Add Django 4.1 compatibility
+  * New setting ``COMPRESS_OFFLINE_MANIFEST_STORAGE`` to customize
+    the offline manifest's file storage (#1112) With this change
+    the function
+    ``compressor.cache.get_offline_manifest_filename()`` has been
+    removed. You can now use the new file storage
+    ``compressor.storage.default_offline_manifest_storage`` to
+    access the location of the manifest.
+- Release 4.0
+  * Fix intermittent No such file or directory errors by changing
+    strategy to deal with duplicate filenames in
+    CompressorFileStorage
+  * Deprecate SlimItFilter, stop testing it with Python 3.7 or
+    higher
+
+-------------------------------------------------------------------
 Wed Apr 27 01:58:15 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on mock. 

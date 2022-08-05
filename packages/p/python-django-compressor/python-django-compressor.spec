@@ -16,11 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define mod_name django_compressor
 %define skip_python2 1
 Name:           python-django-compressor
-Version:        3.1
+Version:        4.1
 Release:        0
 Summary:        Python module to compress linked/inline JavaScript/CSS to cached files
 License:        Apache-2.0 AND BSD-3-Clause AND MIT
@@ -65,13 +65,17 @@ template tag.
 
 %prep
 %setup -q -n %{mod_name}-%{version}
+sed -i '1{/env python/d}' compressor/tests/precompiler.py
 
 %build
 %python_build
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand #
+echo '/* empty file */' >> %{buildroot}%{$python_sitelib}/compressor/tests/static/CACHE/css/output.e3b0c44298fc.css
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
 %python_expand $python -m django test --settings=compressor.test_settings compressor --pythonpath=`pwd` -v2
@@ -79,6 +83,7 @@ template tag.
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README.rst
-%{python_sitelib}/*
+%{python_sitelib}/compressor
+%{python_sitelib}/django_compressor-%{version}*-info
 
 %changelog
