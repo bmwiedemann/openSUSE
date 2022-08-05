@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug  4 13:22:24 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.10.0
+ see installed CHANGELOG
+
+  v2.10.0 (12th May 2022)
+  - Various bug fixes
+  - Expanded sorbet type annotations
+  
+
+-------------------------------------------------------------------
 Thu Mar  3 08:25:06 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.9.2
