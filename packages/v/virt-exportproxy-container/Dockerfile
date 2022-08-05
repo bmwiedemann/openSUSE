@@ -11,13 +11,16 @@
 ARG KUBEVIRTFROM
 FROM $KUBEVIRTFROM
 
+# Mandatory labels for the build service:
+#   https://en.opensuse.org/Building_derived_containers
 # labelprefix=%%LABELPREFIX%%
-PREFIXEDLABEL org.opencontainers.image.title="kubevirt virt-exportproxy container"
-PREFIXEDLABEL org.opencontainers.image.description="Export proxy for the VirtualMachineExport resources"
-PREFIXEDLABEL org.opencontainers.image.created="%BUILDTIME%"
-PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
-PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
-PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/virt-exportproxy:%%PKG_VERSION%%.%RELEASE%"
+LABEL org.opencontainers.image.title="kubevirt virt-exportproxy container"
+LABEL org.opencontainers.image.description="Export proxy for the VirtualMachineExport resources"
+LABEL org.opencontainers.image.created="%BUILDTIME%"
+LABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
+LABEL org.openbuildservice.disturl="%DISTURL%"
+LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/virt-exportproxy:%%PKG_VERSION%%.%RELEASE%"
+# endlabelprefix
 
 RUN zypper -n install kubevirt-virt-exportproxy shadow && \
     zypper clean -a && \
