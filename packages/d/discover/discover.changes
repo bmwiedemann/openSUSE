@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Aug  2 14:07:09 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.4
+- Changes since 5.25.3:
+  * Fix crash after update (kde#457278)
+  * Do not change the sorting among resources in the default backend (kde#451667)
+  * Sources: Give a minimum size to section headers (kde#434349)
+  * fwupd: Make sure we don't crash trying to print an error (kde#455132)
+  * kns: Make KNSReview aware of its possible lack of AtticaProvider (kde#457145)
+  * AppListPage: Make sure the PlaceholderMessage doesn't get in the way (kde#457029)
+  * appstream: Do not treat spdx operators as licenses
+  * appstream: Treat unknown licences
+  * kns: join into the AppStreamUtils::license party
+  * pk: Try harder to convert non-appstream packages licences (kde#454480)
+  * pk: Allow some error codes from offline updates (kde#443090)
+  * snap: Do not install a categories file (kde#456889)
+  * Do not warn anymore about missing categories
+  * odrs: Make sure we don't fail when the application page is opened early (kde#426270)
+  * Fix submitting usefulness
+
+-------------------------------------------------------------------
 Tue Jul 12 11:28:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.3
