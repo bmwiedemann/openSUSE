@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug  4 20:14:27 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix the requirements
+- Enable tests
+- Don't catchall files
+
+-------------------------------------------------------------------
+Thu Aug  4 08:24:17 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 3.0.0
+  * Drop python3.6 support
+  * Use funcparserlib-1.0.0a0 or newer to support new python versions
+  * Allow to write multiline string via triple quotes (""" ... """)
+  * Fix a bug: Fix #147: file existence disclosure using svg renderer
+
+-------------------------------------------------------------------
 Wed May 27 09:35:59 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

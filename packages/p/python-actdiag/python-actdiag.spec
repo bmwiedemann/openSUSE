@@ -1,7 +1,7 @@
 #
 # spec file for package python-actdiag
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,26 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-actdiag
-Version:        2.0.0
+Version:        3.0.0
 Release:        0
 Summary:        Text to activity-diagram image generator
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            http://blockdiag.com/
 Source:         https://files.pythonhosted.org/packages/source/a/actdiag/actdiag-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module blockdiag >= 3}
+BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-blockdiag >= 1.5.0
+Requires:       python-blockdiag >= 3
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
-%if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24 ||  0%{?rhel} >= 8
-Suggests:       python-docutils
-Suggests:       python-nose
-Suggests:       python-pep8 >= 1.3
-Suggests:       python-reportlab
-%endif
 %python_subpackages
 
 %description
@@ -47,6 +43,8 @@ actdiag generates activity-diagram image files from spec-text files.
 
 %prep
 %setup -q -n actdiag-%{version}
+# python-blockdiag-nose-to-pytest.patch of python-blockdiag changed the function name
+sed -i 's/testcase_generator/_testcase_generator/' src/actdiag/tests/test_generate_diagram.py
 
 %build
 %python_build
@@ -55,6 +53,9 @@ actdiag generates activity-diagram image files from spec-text files.
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/actdiag
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest src/actdiag/tests
 
 %post
 %python_install_alternative actdiag
@@ -66,6 +67,7 @@ actdiag generates activity-diagram image files from spec-text files.
 %license LICENSE
 %doc README.rst
 %python_alternative %{_bindir}/actdiag
-%{python_sitelib}/*
+%{python_sitelib}/actdiag
+%{python_sitelib}/actdiag-%{version}*-info
 
 %changelog
