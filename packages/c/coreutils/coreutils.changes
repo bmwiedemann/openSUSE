@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug  2 11:05:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add missing hostname buildrequires
+
+-------------------------------------------------------------------
+Mon Aug  1 21:16:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- refresh coreutils-i18n.patch to prevent unexpand from failing on control
+  characters (brc#2112870)  (bsc#1202029)
+- extend psuffix handling to be quilt(1) compatible
+
+-------------------------------------------------------------------
 Tue Apr 26 08:21:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - remove builddisabled conditions for rings - will be done now as

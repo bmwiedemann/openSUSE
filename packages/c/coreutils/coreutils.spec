@@ -20,12 +20,14 @@
 # macros but OBS and the bots that rely on parser information from
 # OBS can't deal with all of them
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" != ""
-%define psuffix -%{flavor}
+%if "%{flavor}" == "single"
+%global psuffix -single
+%elif "%{flavor}" == "testsuite"
+%global psuffix -testsuite
 %else
-%define psuffix %{nil}
+%global psuffix %{nil}
 %endif
-Name:           coreutils%{psuffix}
+Name:           coreutils%{?psuffix}
 Version:        9.1
 Release:        0
 Summary:        GNU Core Utilities
@@ -64,6 +66,7 @@ Patch810:       coreutils-skip-tests-rm-ext3-perf.patch
 Patch850:       gnulib-simple-backup-fix.patch
 BuildRequires:  automake
 BuildRequires:  gmp-devel
+BuildRequires:  hostname
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libcap-devel

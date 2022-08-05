@@ -1228,4 +1228,16 @@ then, coreutils doesn't need this patch from the kernel v4.10-rc1. (forwarded re
     so that forward compatibility and robustness is improved.</comment>
     <requestid>972793</requestid>
   </revision>
+  <revision rev="146" vrev="3">
+    <srcmd5>9d78bd3e61832a83a1055b477df1ecd4</srcmd5>
+    <version>9.1</version>
+    <time>1659721769</time>
+    <user>dimstar_suse</user>
+    <comment>- add missing hostname buildrequires
+
+- refresh coreutils-i18n.patch to prevent unexpand from failing on control
+  characters (brc#2112870)  (bsc#1202029)
+- extend psuffix handling to be quilt(1) compatible</comment>
+    <requestid>992240</requestid>
+  </revision>
 </revisionlist>
