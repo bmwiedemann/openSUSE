@@ -3418,7 +3418,7 @@
     <package name="pipewire-spa-tools" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="pipewire-tools" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="pkcs11-helper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="pkexec" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="pkexec" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="pkgconf" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pkgconf-m4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pkgconf-pkg-config" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
