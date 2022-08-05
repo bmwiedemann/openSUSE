@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug  5 07:27:07 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 22.07.00:
+  * lib: fwts_version.h - update to V22.07.00
+  * debian: update changelog
+  * auto-packager: mkpackage.sh: remove impish
+  * fwts-test: sync up with asf verbose dump
+  * acpi: asf: enable verbose output
+  * fwts-test: sync up the remove of ASF minimun watchdog reset value
+  * acpi: asf: remove the checking of minmun watchdog reset value 0
+  * fwts-test: sync up the fix of pmtt wrong table label
+  * acpi: pmtt: fix the wrong table label
+  * dmicheck: update the processor upgrade field for type 4
+  * dmicheck: update for supporting DMI version to 3.5
+  * dmicheck: add Processor Architecture Types check for type 44
+  * build: Improve linking
+
+-------------------------------------------------------------------
 Tue May 31 08:15:44 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 22.05.00:

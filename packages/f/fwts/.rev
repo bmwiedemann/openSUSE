@@ -878,4 +878,25 @@
   * ACPICA: Update to version 20220331</comment>
     <requestid>980057</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>dd44f44a10eecd2849a778b1c986a8de</srcmd5>
+    <version>22.07.00</version>
+    <time>1659721892</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.07.00:
+  * lib: fwts_version.h - update to V22.07.00
+  * debian: update changelog
+  * auto-packager: mkpackage.sh: remove impish
+  * fwts-test: sync up with asf verbose dump
+  * acpi: asf: enable verbose output
+  * fwts-test: sync up the remove of ASF minimun watchdog reset value
+  * acpi: asf: remove the checking of minmun watchdog reset value 0
+  * fwts-test: sync up the fix of pmtt wrong table label
+  * acpi: pmtt: fix the wrong table label
+  * dmicheck: update the processor upgrade field for type 4
+  * dmicheck: update for supporting DMI version to 3.5
+  * dmicheck: add Processor Architecture Types check for type 44
+  * build: Improve linking</comment>
+    <requestid>993245</requestid>
+  </revision>
 </revisionlist>
