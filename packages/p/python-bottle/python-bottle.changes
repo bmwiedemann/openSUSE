@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug  3 20:24:55 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 0.12.23: bugfix release
+  * fix: Include keyword-only-args in getarcspec() polyfill
+- additional changes from version 0.12.22:
+  * fix: Jinja2 and mako test path issues
+  * getargspec is gone in python 3.11: so use getfullargspec on all
+    3.x versions instead
+  * fix: view decorator does not forward default values if route
+    result is None
+  * fix: Make tests runnable with both unittest and pytest
+  * fix: Cookie test falsely reports a failure for some python
+    versions
+- drop fix_cookie_test.patch: fixed upstream
+- run the tests with unittest
+
+-------------------------------------------------------------------
 Thu May 26 20:41:56 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 0.12.21: bugfix release
