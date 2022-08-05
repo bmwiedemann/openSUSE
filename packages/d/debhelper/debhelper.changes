@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Aug  4 16:44:48 UTC 2022 - Jan Baier <jbaier@suse.com>
+
+- Update to version 13.8
+   * dh_perl: Fix incorrect binary versioning caused by a regression
+     in 13.3.  Thanks to Niko Tyni for reporting the issue.
+     (Closes: #997961)
+   * d/control: Bump Standards-Version to 4.6.1 - no changes required.
+   * root_sequence.pm: Run `dh_installsysusers` before
+     `dh_installtmpfiles` (only affects compat 14 or later).  Thanks
+     to Nicholas Brown for the suggestion.  (Closes: #1011099)
+   * autoscripts/postinst-init-tmpfiles: Remove runtime check on the
+     system having systemd as init system.
+   * dh_installtmpfiles: Replace runtime check on the system running
+     under systemd in generated `postinst` script with a dependency
+     on `systemd | systemd-tmpfiles` added to `${misc:Depends}`.
+     Thanks to Guilhem Moulin for the suggestion.  (Closes: #1013969)
+   * dh_installsystemd: Ditto.
+   * dh_installinit: Ditto.
+   * debhelper-compat-upgrade-checklist.pod: Correct description for
+     the addition of dh_installsysusers in compat 14.
+   * meson.pm: Use `meson install` instead of `ninja install` for
+     dh_auto_install in compat 14.  Thanks to Andrea Pappacoda for
+     the suggestion.  (Closes: #1006805)
+   * Dh_Lib.pm: Remove double semi-colon.  (Closes: #1010591)
+   * Dh_Lib.pm: _strip_spaces now explicitly returns undef on undef
+     argument.
+     (Closes: #1010594)
+   * cmake.pm: Set FETCHCONTENT_FULLY_DISCONNECTED to true.  This
+     ensures that the `FetchContent` module does not attempt to
+     use internet connection.
+   * debhelper-compat-upgrade-checklist.pod: Update documentation
+     for compat 14 change.  (Closes: #1011404)
+   * debhelper.pod: Correct link to the new upgrade checklist.
+     (Closes: #1012777)
+   * dh_installman: Avoid false positive language detection on
+     shared libs.
+   * Update Portuguese translation (Américo Monteiro)
+     (Closes: #1011256)
+
+
+-------------------------------------------------------------------
 Mon May  2 14:33:58 UTC 2022 - Jan Baier <jbaier@suse.com>
 
 - Update to version 13.7.1

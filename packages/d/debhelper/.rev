@@ -83,4 +83,12 @@ Resubmit without Source URL</comment>
     <comment>Update debhelper to version 13.7.1</comment>
     <requestid>974435</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>150c0466019947a0d45969a255ddf843</srcmd5>
+    <version>13.8</version>
+    <time>1659721861</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.8</comment>
+    <requestid>993111</requestid>
+  </revision>
 </revisionlist>
