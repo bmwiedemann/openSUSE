@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Aug 03 11:54:24 UTC 2022 - fcrozat@suse.com
+
+- Update to version 1.26.3:
+  * release: bump to v1.26.3
+  * define.downloadToDirectory: fail early if bad HTTP response
+  * add: fail on bad http response instead of writing to container
+  * squash: never use build cache when computing last step of last stage
+  * run: allow resuing secret twice in different RUN steps
+  * integration tests: update expected error messages
+  * integration tests: quote "?" in shell scripts
+  * Use errors.Is() to check for storage errors
+  * lint: inspectable is never nil
+  * chroot: use ActKillThread instead of ActKill
+  * chroot: honor DefaultErrnoRet
+  * Bump dependencies
+  * Set user namespace defaults correctly for the library
+  * contrib/rpm/buildah.spec: fix `rpm` parser warnings
+- Drop requires on apparmor pattern, should be moved elsewhere
+  for systems which want AppArmor instead of SELinux.
+- Drop binutils-gold workaround, no longer needed.
+- Update BuildRequires to libassuan-devel >= 2.5.2, pkgconfig file
+  is required to build.
+
+-------------------------------------------------------------------
 Thu Jul 07 09:00:47 UTC 2022 - dcermak@suse.com
 
 - Update to version 1.26.2:

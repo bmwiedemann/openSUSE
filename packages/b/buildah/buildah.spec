@@ -18,7 +18,7 @@
 
 %define project github.com/containers/buildah
 Name:           buildah
-Version:        1.26.2
+Version:        1.26.3
 Release:        0
 Summary:        Tool for building OCI containers
 License:        Apache-2.0
@@ -34,12 +34,12 @@ BuildRequires:  glib2-devel-static
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  libapparmor-devel
-BuildRequires:  libassuan-devel
+BuildRequires:  libassuan-devel >= 2.5.2
 BuildRequires:  libbtrfs-devel
+BuildRequires:  libgpgme-devel
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
 BuildRequires:  golang(API) >= 1.13
-Requires:       patterns-base-apparmor
 Requires:       cni
 Requires:       libcontainers-common
 Requires:       libcontainers-image
@@ -48,10 +48,6 @@ Requires:       runc >= 1.0.2
 Requires:       slirp4netns
 %{go_nostrip}
 BuildRequires:  libostree-devel
-# workaround for https://bugzilla.opensuse.org/show_bug.cgi?id=1183043
-%ifarch %arm %arm64
-BuildRequires:  binutils-gold
-%endif
 # Not supported by libseccomp-golang
 ExcludeArch:    ppc64
 
