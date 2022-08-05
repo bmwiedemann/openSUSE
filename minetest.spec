@@ -1,7 +1,7 @@
 #
 # spec file for package minetest
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,25 @@
 
 %define minetestuser %{name}
 %define minetestgroup %{name}
+%define irrlichtmt_version 1.9.0mt5
 %bcond_without leveldb
 %bcond_without redis
 %bcond_without postgresql
 Name:           minetest
-Version:        5.4.1
+Version:        5.5.1
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
-License:        LGPL-2.1-or-later AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND LGPL-2.1-or-later
 Group:          Amusements/Games/3D/Simulation
 URL:            https://minetest.net/
 Source:         https://github.com/minetest/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        minetest-rpmlintrc
 Source2:        minetest@.service
+Source3:        https://github.com/minetest/irrlicht/archive/%{irrlichtmt_version}/irrlicht-%{irrlichtmt_version}.tar.gz
 # PATCH-FIX-UPSTREAM - minetest-fix-luajit-include-path.diff -- Fixes the FindLuaJIT CMake module so it also looks for moonjit’s include path
 Patch0:         minetest-fix-luajit-include-path.patch
 # PATCH-FIX-OPENSUSE old-desktopfile-standard.patch dmueller@suse.com -- build without 'PrefersNonDefaultGPU' option in desktopfile on Leap 15.3 and below
 Patch1:         old-desktopfile-standard.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Fix-build-for-newer-versions-of-GCC-11246.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -50,6 +50,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  irrlicht-devel
 BuildRequires:  libXxf86vm-devel
 BuildRequires:  libjpeg-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  ncurses-devel
 # Needed for symlink checking
 BuildRequires:  opengl-games-utils
@@ -69,7 +70,7 @@ BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?sle_version} > 0 && 0%{?sle_version} <= 150300
+%if 0%{?sle_version} > 0 && 0%{?sle_version} <= 150400
 BuildRequires:  desktop-file-utils
 %else
 BuildRequires:  desktop-file-utils >= 0.25
@@ -92,6 +93,7 @@ Requires:       opengl-games-utils
 Recommends:     %{name}-lang
 Recommends:     minetest-game
 Provides:       minetest-runtime = %{version}
+Provides:       bundled(irrlicht) = %{irrlichtmt_version}
 
 %description
 An infinite-world block sandbox game and a game engine, inspired by
@@ -117,7 +119,7 @@ This package contains a minetest server.
 
 %package data
 Summary:        Minetest shared data
-License:        LGPL-2.1-or-later AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND LGPL-2.1-or-later
 Group:          Amusements/Games/3D/Simulation
 Requires:       google-arimo-fonts
 Requires:       google-cousine-fonts
@@ -132,14 +134,18 @@ This package contains data for minetest and minetestserver.
 
 %prep
 %setup -q
+%if 0%{?sle_version} > 0 && 0%{?sle_version} <= 150400
 %patch0 -p1
-%if 0%{?sle_version} > 0 && 0%{?sle_version} <= 150300
 %patch1 -p1
 %endif
-%patch2 -p1
 
-# Purge bundled libraries.
-rm -rf lib
+cd lib
+tar -xzf %{SOURCE3}
+mv irrlicht-%{irrlichtmt_version} irrlichtmt
+cd ..
+
+# Purge bundled jsoncpp, lua and gmp libraries.
+rm -rf lib/jsoncpp lib/lua lib/gmp
 
 %build
 %cmake \

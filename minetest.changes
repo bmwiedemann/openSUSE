@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jul 30 22:36:49 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
+- Drop 0001-Fix-build-for-newer-versions-of-GCC-11246.patch as it is merged upstream
+- Only apply minetest-fix-luajit-include-path.patch on openSUSE Leap as TW versions do not require it any more.
+- Switch to from system irrlicht to IrrlichtMt library version 1.9.0mt5
+- Don't purge the bundled bitop library
+- Add new libzstd build dependency
+- Update to version 5.5.0 & 5.5.1:
+  * Full log for version 5.5.0: https://dev.minetest.net/Changelog#5.4.0_.E2.86.92_5.5.0
+  * This release switches from Irrlicht to our own fork called IrrlichtMt.
+  * Full log for version 5.5.1: https://dev.minetest.net/Changelog#5.5.0_.E2.86.92_5.5.1
+  * This is a maintenance release based on 5.5.0, it contains bugfixes but no new features.
+
+-------------------------------------------------------------------
 Wed Oct  6 12:04:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
