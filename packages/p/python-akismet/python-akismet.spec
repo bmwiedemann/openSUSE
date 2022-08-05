@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define mod_name akismet
 %define skip_python2 1
 Name:           python-%{mod_name}
-Version:        1.1
+Version:        1.2.1
 Release:        0
 Summary:        Interface to the Akismet Anti Comment-Spam API
 License:        BSD-3-Clause
