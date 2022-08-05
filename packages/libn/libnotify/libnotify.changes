@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 22 17:31:30 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Update to version 0.8.1:
+  + Keep version of bindings at 0.7.
+- Changes from version 0.8.0:
+  + Use Desktop Portal Notification when running confined (snap and
+    flatpak).
+  + Now the library acts like a wrapper in such scenario, with some
+    limited.
+  + capabilities, but this will enforce security and user control
+    over the allowed notifications.
+  + notify-send: Handles SIGINT gracefully, closing waiting
+    notification.
+  + Use NotifyClosedReason enum as closed reason return value.
+  + Bump dependency on GLib 2.38.
+  + Various introspection docs improvements and fixes.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Fri May 13 09:56:10 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop libnotify-rpmlintrc: no longer needed, all rpmlint issues

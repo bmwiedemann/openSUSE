@@ -17,14 +17,15 @@
 
 
 Name:           libnotify
-Version:        0.7.12
+Version:        0.8.1
 Release:        0
 Summary:        Notifications Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://galago-project.org/
-Source:         https://download.gnome.org/sources/libnotify/0.7/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/libnotify/0.8/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
@@ -91,13 +92,11 @@ D-BUS notifications library.
 %install
 %meson_install
 
-%post -n libnotify4 -p /sbin/ldconfig
-%postun -n libnotify4 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libnotify4
 
 %files -n libnotify4
 %license COPYING
-# README is empty
-%doc AUTHORS NEWS
+%doc AUTHORS NEWS README.md
 %{_libdir}/*.so.*
 
 %files -n typelib-1_0-Notify-0_7
