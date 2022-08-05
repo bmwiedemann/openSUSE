@@ -609,4 +609,12 @@ x86-64 when building with python 3.5.</comment>
 </comment>
     <requestid>983454</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>c258e6a68c1cd6e5a5b88de8ad2df338</srcmd5>
+    <version>2.5.2</version>
+    <time>1659721822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993096</requestid>
+  </revision>
 </revisionlist>
