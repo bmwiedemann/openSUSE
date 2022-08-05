@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  4 07:45:33 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use standard LABEL directive to add mandatory labels
+
+-------------------------------------------------------------------
 Mon Jan 10 10:53:09 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Handle aarch64

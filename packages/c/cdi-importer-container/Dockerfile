@@ -14,13 +14,16 @@ FROM $KUBEVIRTFROM
 # since TARGETARCH is not defined in OBS builds yet. Default to amd64.
 ARG TARGETARCH=amd64
 
+# Mandatory labels for the build service:
+#   https://en.opensuse.org/Building_derived_containers
 # labelprefix=%%LABELPREFIX%%
-PREFIXEDLABEL org.opencontainers.image.title="CDI Data fetching service container"
-PREFIXEDLABEL org.opencontainers.image.description="Data fetching service for VM container images"
-PREFIXEDLABEL org.opencontainers.image.created="%BUILDTIME%"
-PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
-PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
-PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-importer:%%PKG_VERSION%%.%RELEASE%"
+LABEL org.opencontainers.image.title="CDI Data fetching service container"
+LABEL org.opencontainers.image.description="Data fetching service for VM container images"
+LABEL org.opencontainers.image.created="%BUILDTIME%"
+LABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
+LABEL org.openbuildservice.disturl="%DISTURL%"
+LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-importer:%%PKG_VERSION%%.%RELEASE%"
+# endlabelprefix
 
 RUN zypper -n install \
            qemu-tools qemu-block-curl skopeo tar util-linux \
