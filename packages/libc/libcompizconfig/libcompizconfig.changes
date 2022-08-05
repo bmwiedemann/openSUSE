@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug  4 06:41:23 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fold libcompizconfig.so.0 back into the main package. This
+  library is not suitable for parallel installations as the plugin
+  system is unversioned and mixing libs would most likely crash.
+- Filter rpmlint error "E: shlib-policy-name-error" as acceptable.
+
+-------------------------------------------------------------------
+Wed Apr 27 09:36:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "libcompizconfig.x86_64: E:
+  shlib-policy-name-error SONAME: libcompizconfig.so.0, expected
+  package suffix: 0"
+
+-------------------------------------------------------------------
 Sat Apr  4 22:34:57 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.8.18:

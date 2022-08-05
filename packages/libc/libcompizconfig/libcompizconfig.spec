@@ -1,7 +1,7 @@
 #
 # spec file for package libcompizconfig
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Summary:        CompizConfig plugin required for CCSM
 License:        GPL-2.0-or-later
 URL:            https://gitlab.com/compiz/libcompizconfig
 Source:         https://gitlab.com/compiz/libcompizconfig/uploads/%{_rev}/%{name}-%{version}.tar.xz
+Source99:       libcompizconfig-rpmlintrc
 # PATCH-FIX-OPENSUSE libcompizconfig-config-dir.patch boo#438081 rodrigo@novell.com
 Patch0:         %{name}-config-dir.patch
 # PATCH-FIX-UPSTREAM libcompizconfig-configure-retval.patch ro@suse.de
@@ -47,7 +48,7 @@ CompizConfig plugin required for compizconfig-settings-manager.
 
 %package devel
 Summary:        Development files for libcompizconfig
-Requires:       %{name} = %{version}
+Requires:       libcompizconfig = %{version}-%{release}
 Requires:       pkgconfig
 Requires:       pkgconfig(compiz) < 0.9
 Requires:       pkgconfig(libxml-2.0)
@@ -72,20 +73,18 @@ NOCONFIGURE=1 ./autogen.sh
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license COPYING LICENSE*
 %doc NEWS README.md
 %dir %{_sysconfdir}/compizconfig/
 %config %{_sysconfdir}/compizconfig/config
-%{_libdir}/%{name}.so.%{sover}*
 %{_libdir}/compizconfig/
 %dir %{_datadir}/compiz/
 %{_libdir}/compiz/*ccp*
 %{_datadir}/compiz/*ccp.*
+%{_libdir}/%{name}.so.%{sover}*
 
 %files devel
 %{_libdir}/pkgconfig/%{name}.pc
