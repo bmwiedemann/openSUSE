@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Aug  3 15:07:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0
+  * TPL tradeoff optimizations for 4L pred structure
+  * Quality-vs-cycles tradeoff improvements across all presets
+  * Add ability to force key_frame positions through ffmpeg for
+    CRF mode
+  * Minimize the quality impact of fast-decode while maintaining
+    the decoder speedup
+  * AVX2 optimizations for low delay mode
+  * Improve CRF preset tradeoffs for both the default and
+    fast-decode modes
+  * Improve the SSIM-based tradeoffs of the presets without
+    impacting those of PSNR / VMAF
+  * Improve CBR mode by enhancing the bit-distribution within the
+    GOP
+  * Added support for reference frame scaling
+  * Added support for quantization matrices
+  * AVX2 optimizations for low-delay mode
+  * TPL-based VBR mode improvements
+  * Improved Chroma RDOQ
+  * Improve TPL QP Scaling
+  * Add length info to ivf header
+  * Fix support for metadata pass-through
+  * Add ability to specify Chroma and Luma qindex offsets
+    independently on top of CRF qp assignments
+
+-------------------------------------------------------------------
 Fri Apr 22 21:47:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.0
