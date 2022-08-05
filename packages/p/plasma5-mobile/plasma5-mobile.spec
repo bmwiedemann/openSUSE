@@ -24,7 +24,7 @@
 
 %bcond_without released
 Name:           plasma5-mobile
-Version:        5.25.3
+Version:        5.25.4
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -39,6 +39,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/plasma-mobile-
 Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-mobile-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-components-Attempt-to-fix-some-cyclic-dependencies.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
