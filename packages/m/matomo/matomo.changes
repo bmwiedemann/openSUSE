@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Aug  4 12:00:56 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.11.0 
+  * matomo-org/matomo
+    - #13321 Invite new users in Matomo, rather than creating them directly
+    - #19081 Notify that requests to matomo.org will soon use HTTPS by default
+    - #2030 Goal tracking: New Report “Top Landing Pages URLs/Titles” for each goal
+      (and also “Pages where goals are triggered”)
+    - #14974 Add Goals visualisation for Pages reports in behaviour category
+    - #19206 Sparklines show correct data in all goals reports
+    - #10716 Show sparkline evolution figures for visits, goals and ecommerce overviews
+    - #11047 Add refresh / reload keyboard shortcut for visualizations (eg tables, pie, bar chart)
+    - #18809 Fix referrer attribution cookie not set if no tracking request is sent, resulting in wrong attribution
+    - #19225 Fix error in php8.1 running console config:get command
+    - #19421 Show a notification if PHP version is end of life
+    - #19244 Ensure Safari browser shows the information notice
+    - #19252 Fix anchor links issue within Matomo
+    - #19275 Fix for undefined array index error when rendering sparklines
+    - #18692 Fixes problem where dashboards can’t be copied to users in certain circumstances
+    - #19011 When a segment is shown, and no data is there, then show accurate error message
+      when segment won’t be archived
+    - #11046 Preserve rows to display on Visits overview (with graph)
+    - #19158 Improve memory management in DataTable/CSV
+    - #19232 Take care to always ‘return request’ in appendAvailablePerformanceMetrics
+    - #19239 Add utility function for pattern that issues a single AJAX request at a time
+    - #19245 Add 429 (rate limited) response code
+    - #19268 Composer: Revise project type from “application” to “project”
+  * matomo-org/tag-manager
+    - #484 Use correct async init method to detect when tracker is loaded
+    - #477 Allow dynamic height on Tag manager preview
+    - #481 “Observe DOM changes” in Visibility Trigger causes JS error on load
+  * matomo-org/tracker-proxy
+    - #70 Add current PHP versions to Travis CI tests
+    - #71 Fix build badge and remove failing images in Travis CI tests
+  * matomo-org/matomo-log-analytics
+    - #335 Import fails when Referrer field is not present using Regex format
+    - #336 Set referrer to empty string if it doesn’t exist
+  * matomo-org/matomo-php-tracker
+    - #103 More virtualization of MatomoTracker class
+  * matomo-org/referrer-spam-list
+    - #1322 Add katrd.xyz
+  * matomo-org/device-detector
+    - #7111 Detect new brands: Sylvania, Future Mobile Technology, MBI, OUJIA, Qware 
+      and Detect devices for several existing brands
+    - #7112 Detect httplib2
+    - #7117 Adds detection for Tesla Browser
+    - #7118 Adds detection for Patchwatch, WhereGoes
+    - #7119 Adds detection for various apps and improves version detection for Windows
+    - #7120 Improves detection for Tesla, Xiaomi devices
+    - #7121 Improvement of condition for detection the platform when using clienthints
+    - #7122 Detect devices for existing brands
+    - #7123 Adds detection for InternetMeasurement, masscan-ng bots
+    - #7124 Adds detection for Sidekick and Wave Browser
+    - #7125 Improves version detection for iOS and improves detection for Opera GX
+    - #7126 Adds detection for various bots
+    - #7128 Detect new brands: AFFIX, Listo, Aquarius and Detect devices for several existing brands
+    - #7130 Detect devices for existing brands
+    - #7131 Detect devices for existing brands and Detect Pi Browser
+    - #7133 Detect devices for existing brands
+
+-------------------------------------------------------------------
 Wed May 25 05:39:32 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.10.1
