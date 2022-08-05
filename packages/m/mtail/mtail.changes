@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Aug 03 20:23:02 UTC 2022 - michael@stroeder.com
+
+- Update to version 3.0.0rc50:
+  * ci: Select the correct sha for the test results when running from a post-merge action.
+  * Fix typos
+  * Fix typo
+  * Bump github.com/prometheus/common from 0.36.0 to 0.37.0
+  * Bump github.com/prometheus/common from 0.35.0 to 0.36.0
+  * Fix golangci-lint code issue
+  * Fix store GC not remove all expired metrics
+  * Add Non single byte end of read buffer test case
+  * Fix golangci-lint issue
+  * Fix Unicode replacement character appear in parse result
+  * chore: go mod tidy
+  * Raise minimum Go version to 1.17.
+  * Bump lewagon/wait-on-check-action from 1.1.1 to 1.1.2
+  * Bump github.com/prometheus/common from 0.34.0 to 0.35.0
+  * Make linter happy
+  * Stabelize order of labels in statsd/graphite/collectd export
+  * Bump goreleaser/goreleaser-action from 2 to 3
+  * Reformat the code to appease the linter.
+
+-------------------------------------------------------------------
+Thu May 19 08:32:49 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 3.0.0rc49
+  * Update the docs for limit.
+  * Add a RemoveOldestDatum method to remove the oldest datum from a metric.
+  * Store the metric's size limit in the Metric object.
+  * Add LIMIT keyword to specify the size limit of a dimensioned metric.
+  * Bump github.com/prometheus/client_golang from 1.12.1 to 1.12.2
+  * Bump github.com/google/go-cmp from 0.5.7 to 0.5.8
+  * Bump github/codeql-action from 1 to 2
+  * Bump github.com/prometheus/common from 0.33.0 to 0.34.0
+  * Bump actions/setup-go from 2 to 3
+  * Bump actions/stale from 4 to 5
+  * Bump actions/upload-artifact from 2 to 3
+  * Bump codecov/codecov-action from 2.1.0 to 3
+  * Bump hmarr/auto-approve-action from 2.2.0 to 2.2.1
+  * Bump hmarr/auto-approve-action from 2.1.0 to 2.2.0
+  * Bump github.com/prometheus/common from 0.32.1 to 0.33.0
+  * Bump actions/cache from 2.1.7 to 3
+  * Bump actions/checkout from 2 to 3
+  * Bump golangci/golangci-lint-action from 2.5.2 to 3
+  * Fix test name in the automerge action.
+  * Bump actions/github-script from 5 to 6
+  * Run CI on build matrix of all OSes provided.
+  * Wait for all checks that start with the name test.
+  * support for windows paths
+  * Bump github.com/prometheus/client_golang from 1.12.0 to 1.12.1
+  * Bump github.com/google/go-cmp from 0.5.6 to 0.5.7
+  * Bump github.com/prometheus/client_golang from 1.11.0 to 1.12.0
+  * Remove duplicate gosec scan.
+  * Rewrite the comment to suit new gosec formatting requirements.
+
+-------------------------------------------------------------------
 Mon Nov 22 19:35:22 UTC 2021 - michael@stroeder.com
 
 - Update to version 3.0.0rc48:

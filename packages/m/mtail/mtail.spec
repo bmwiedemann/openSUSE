@@ -1,7 +1,7 @@
 #
 # spec file for package mtail
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %bcond_without  apparmor
 
 Name:           mtail
-Version:        3.0.0rc48
+Version:        3.0.0rc50
 Release:        0
 Summary:        Tool for extracting metrics from application logs
 License:        Apache-2.0
@@ -36,7 +36,7 @@ Source2:        %{name}.service
 Source3:        %{name}.sysconfig
 Source4:        apparmor-usr.sbin.%{name}
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API)
+BuildRequires:  golang(API) >= 1.17
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
 %if %{with apparmor}
