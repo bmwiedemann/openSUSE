@@ -1,7 +1,7 @@
 #
 # spec file for package gputils
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define ver 1.5.0
-%define version %{ver}
-%define src_ver %{ver}-1
-
 Name:           gputils
-Version:        %{version}
+Version:        1.5.2
 Release:        0
 Summary:        Development utilities for Microchip PIC microcontrollers
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
-Url:            http://gputils.sourceforge.net
-Source:         http://downloads.sourceforge.net/%{name}/%{name}-%{src_ver}.tar.bz2
+URL:            http://gputils.sourceforge.net
+Source:         https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE gputils-no-build-time.patch -- fix W: file-contains-current-date
 Patch1:         gputils-no-build-time.patch
 BuildRequires:  bison
@@ -35,7 +31,6 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc
 BuildRequires:  make
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This is a collection of development tools for Microchip PIC
@@ -61,21 +56,20 @@ Documentation for gputils and supported PIC MCUs.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install
+%make_install
 
 %fdupes %{buildroot}
 
 # documentation
 install -d %{buildroot}%{_docdir}/%{name}
-mv %{buildroot}%{_datadir}/doc/%{name}-%{ver}/html %{buildroot}%{_docdir}/%{name}
-rm -r %{buildroot}%{_datadir}/doc/%{name}-%{ver}
+mv %{buildroot}%{_datadir}/doc/%{name}-%{version}/html %{buildroot}%{_docdir}/%{name}
+rm -r %{buildroot}%{_datadir}/doc/%{name}-%{version}
 install -Dm 644 doc/gputils.pdf %{buildroot}%{_docdir}/%{name}
 
 %files
-%defattr(-,root,root)
 %{_bindir}/gpasm
 %{_bindir}/gpdasm
 %{_bindir}/gplib
@@ -86,13 +80,13 @@ install -Dm 644 doc/gputils.pdf %{buildroot}%{_docdir}/%{name}
 %{_mandir}/man1/*
 %{_mandir}/fr/man1/*
 %{_datadir}/gputils
-%doc AUTHORS COPYING ChangeLog NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
 %exclude %{_docdir}/%{name}/html/
 %exclude %{_docdir}/%{name}/gputils.pdf
 
 %if 0%{?suse_version} >= 1200
 %files doc
-%defattr(-,root,root)
 %{_docdir}/%{name}/html/
 %{_docdir}/%{name}/gputils.pdf
 %endif
