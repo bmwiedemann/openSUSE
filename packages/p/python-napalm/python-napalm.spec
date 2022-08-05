@@ -28,6 +28,7 @@ URL:            https://github.com/napalm-automation/napalm
 Source:         https://github.com/napalm-automation/napalm/archive/%{version}.tar.gz#/napalm-%{version}.tar.gz
 # https://github.com/napalm-automation/napalm/issues/1594
 Patch0:         python-napalm-no-mock.patch
+Patch1:         netmiko-4-support.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,7 +41,7 @@ Requires:       python-junos-eznc >= 2.2.1
 Requires:       python-lxml >= 4.3.0
 Requires:       python-ncclient
 Requires:       python-netaddr
-Requires:       python-netmiko >= 3.1.0
+Requires:       python-netmiko >= 4.0.0
 Requires:       python-paramiko >= 2.6.0
 Requires:       python-pyeapi >= 0.8.2
 Requires:       python-requests >= 2.7.0
@@ -60,10 +61,9 @@ BuildRequires:  %{python_module ddt}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module junos-eznc >= 2.2.1}
 BuildRequires:  %{python_module lxml >= 4.3.0}
-BuildRequires:  %{python_module mock >= 4.0.3}
 BuildRequires:  %{python_module ncclient}
 BuildRequires:  %{python_module netaddr}
-BuildRequires:  %{python_module netmiko >= 3.1.0}
+BuildRequires:  %{python_module netmiko >= 4.0.0}
 BuildRequires:  %{python_module paramiko >= 2.6.0}
 BuildRequires:  %{python_module pyeapi >= 0.8.2}
 BuildRequires:  %{python_module pytest >= 5.4.3}

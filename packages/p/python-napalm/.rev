@@ -87,4 +87,15 @@
     <comment></comment>
     <requestid>964675</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>40be579dfac7bcab774fa91d25c8e2b2</srcmd5>
+    <version>3.4.0</version>
+    <time>1659721888</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch netmiko-4-support.patch:
+  * Support netmiko &gt;= 4
+  * As a consequence, bump {Build,}Requires on netmiko to &gt;= 4.
+- Remove unneeded BuildRequires on mock</comment>
+    <requestid>993200</requestid>
+  </revision>
 </revisionlist>
