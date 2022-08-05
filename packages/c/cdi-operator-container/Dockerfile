@@ -11,13 +11,16 @@
 ARG KUBEVIRTFROM
 FROM $KUBEVIRTFROM
 
+# Mandatory labels for the build service:
+#   https://en.opensuse.org/Building_derived_containers
 # labelprefix=%%LABELPREFIX%%
-PREFIXEDLABEL org.opencontainers.image.title="CDI operator service container"
-PREFIXEDLABEL org.opencontainers.image.description="Operator for the data fetching service for VM container images"
-PREFIXEDLABEL org.opencontainers.image.created="%BUILDTIME%"
-PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
-PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
-PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-operator:%%PKG_VERSION%%.%RELEASE%"
+LABEL org.opencontainers.image.title="CDI operator service container"
+LABEL org.opencontainers.image.description="Operator for the data fetching service for VM container images"
+LABEL org.opencontainers.image.created="%BUILDTIME%"
+LABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
+LABEL org.openbuildservice.disturl="%DISTURL%"
+LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-operator:%%PKG_VERSION%%.%RELEASE%"
+# endlabelprefix
 
 RUN zypper -n install \
            containerized-data-importer-operator \
