@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug  4 08:57:47 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 0.26.0:
+  * Changes
+    -------
+    * Add support to use awaitable object in password function.   (#889)
+      (by @kwarunek in fb3b6bf7 for #889)
+    * Support direct TLS connections (i.e. no STARTTLS) (#923)
+      (by @jackwotherspoon in f2a937d2 for #923)
+  * Fixes
+    -----
+    * Fix invalid `pyproject.toml` (#900)
+      (by @Rongronggg9 in eddb649c for #900)
+    * Add record_class parameter Pool.fetch and Pool.fetchrow (#896)
+      (by @baltitenger in 2519cf38 for #896)
+    * Domain basetypes are introspected (#886) (#887)
+      (by @QuantumTM in cca4a2d3 for #886)
+    * Properly handle exceptions raised while handling server auth messages (#862)
+      (by @elprans in bd192623 for #862)
+
+-------------------------------------------------------------------
 Sun Jan 23 16:35:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update  
