@@ -65,4 +65,27 @@
     <comment></comment>
     <requestid>964085</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>17aca5ff7e86d6daaa3031e314acae41</srcmd5>
+    <version>22.06</version>
+    <time>1659721864</time>
+    <user>dimstar_suse</user>
+    <comment>- Use GCC 10 to build neochat on Leap.
+
+- update to 22.06:
+  * Sending of typing notifications can now be disabled.
+  * In the room list, the scrollbar will now disappear correctly when it is not needed.
+  * On wayland, NeoChat will now raise correctly when clicking on a notification.
+  * Several bugs have been fixed that would sometimes cause messages containing
+    markdown and/or HTML elements to be sent incorrectly.
+  * The quick switcher can now be controlled using the mouse.
+  * There is now an option to disable automatic room sidebar opening when
+    resizing the window.
+  * Creation of custom emojis has been fixed.
+  * Editing or replying to the last message using the keyboard shortcuts now
+    works correctly.
+  * When switching between rooms using the keyboard, the switching direction is
+    now correct.</comment>
+    <requestid>993234</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %define _kf5_version 5.88.0
 %bcond_without  lang
 Name:           neochat
-Version:        22.02
+Version:        22.06
 Release:        0
 Summary:        A chat client for Matrix, the decentralized communication protocol
 License:        BSD-2-Clause AND GPL-3.0-only AND GPL-3.0-or-later
@@ -34,6 +34,9 @@ BuildRequires:  cmake >= 3.16
 BuildRequires:  cmark
 BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc10-c++
+%endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
@@ -79,7 +82,13 @@ messaging.
 %autosetup -p1
 
 %build
+# c++-20 is required
+%if 0%{?suse_version} == 1500
+    export CC=gcc-10 CXX=g++-10
+%endif
+
 %cmake_kf5 -d build
+
 %cmake_build
 
 %install
@@ -100,6 +109,9 @@ messaging.
 %{_kf5_iconsdir}/hicolor/*/apps/org.kde.neochat*.svg
 %{_kf5_appstreamdir}/org.kde.neochat.appdata.xml
 %{_kf5_notifydir}/neochat.notifyrc
+%dir %{_kf5_sharedir}/krunner
+%dir %{_kf5_sharedir}/krunner/dbusplugins
+%{_kf5_sharedir}/krunner/dbusplugins/plasma-runner-neochat.desktop
 
 %if %{with lang}
 %files lang -f %{name}.lang
