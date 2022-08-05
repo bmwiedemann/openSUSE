@@ -25,4 +25,16 @@
 - Also fix variable expansion in %description (boo#1172773). (forwarded request 817545 from iznogood)</comment>
     <requestid>817615</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d9173e00f6a236e84eae537918725535</srcmd5>
+    <version>42.1</version>
+    <time>1659721843</time>
+    <user>dimstar_suse</user>
+    <comment>- Move conncheck config file out of /etc. No longer
+  import main config file.
+
+(to be used with corresponding NM submission)
+(requires changes in prjconfig to prefer NM-branding-upstream for building) (forwarded request 991574 from fcrozat)</comment>
+    <requestid>992694</requestid>
+  </revision>
 </revisionlist>

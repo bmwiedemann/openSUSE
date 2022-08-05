@@ -1,7 +1,7 @@
 #
-# spec file for package NetworkManager-branding
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,14 +32,13 @@ ExclusiveArch:  %{nil}
 Name:           NetworkManager-branding%{?dash}%{branding_name}
 Version:        42.1
 Release:        0
-Summary:        Default %{branding_name} branding for %{_sysconfdir}/NetworkManager/NetworkManager.conf
+Summary:        Default %{branding_name} branding for NetworkManager configuration file.
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            http://www.gnome.org/projects/NetworkManager/
 Source0:        NetworkManager.conf.in
 Source1:        NetworkManager-branding-COPYING
 BuildRequires:  NetworkManager
-BuildRequires:  NetworkManager-branding-upstream
 %requires_eq    NetworkManager
 Supplements:    packageand(NetworkManager:branding-%{branding_name})
 Conflicts:      NetworkManager-branding
@@ -59,23 +58,18 @@ obtain IP addresses from a DHCP server, and change name servers
 whenever it sees fit.
 
 This package provides the default %{branding_name} configuration for
-%{_sysconfdir}/NetworkManager/NetworkManager.conf, configured to
+/usr/lib/NetworkManager/conf.d/conncheck.conf, configured to
 check connectivity against http://conncheck.opensuse.org.
 
 %prep
 %setup -q -T -c %{name}-%{version}
 cp %{SOURCE1} COPYING
-cp -a %{_sysconfdir}/NetworkManager/NetworkManager.conf ./
-
-%build
-cat %{SOURCE0} >> NetworkManager.conf
 
 %install
-install -m0644 -D NetworkManager.conf %{buildroot}%{_sysconfdir}/NetworkManager/NetworkManager.conf
+install -m0644 -D %{SOURCE0} %{buildroot}%{_prefix}/lib/NetworkManager/conf.d/conncheck-%{branding_name}.conf
 
 %files
 %license COPYING
-
-%config(noreplace) %{_sysconfdir}/NetworkManager/NetworkManager.conf
+%{_prefix}/lib/NetworkManager/conf.d/conncheck-%{branding_name}.conf
 
 %changelog
