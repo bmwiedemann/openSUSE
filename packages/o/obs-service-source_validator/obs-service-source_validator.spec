@@ -35,6 +35,7 @@ BuildArch:      noarch
 BuildRequires:  build
 Requires:       /usr/bin/xmllint
 Requires:       build
+Requires:       patch
 Requires:       perl-TimeDate
 Provides:       osc-source_validator = %version
 Obsoletes:      osc-source_validator <= 0.1
