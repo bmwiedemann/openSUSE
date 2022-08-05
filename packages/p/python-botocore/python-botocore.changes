@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Thu Aug  4 07:25:04 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.27.45
+  * api-change:``cognito-idp``: Add a new exception type, ForbiddenException, that is returned when
+    request is not allowed
+  * api-change:``wafv2``: You can now associate an AWS WAF web ACL with an Amazon Cognito user pool.
+- from version 1.27.44
+  * api-change:``license-manager-user-subscriptions``: This release supports user based subscription
+    for Microsoft Visual Studio Professional and Enterprise on EC2.
+  * api-change:``personalize``: This release adds support for incremental bulk ingestion for the
+    Personalize CreateDatasetImportJob API.
+- from version 1.27.43
+  * api-change:``config``: Documentation update for PutConfigRule and PutOrganizationConfigRule
+  * api-change:``workspaces``: This release introduces ModifySamlProperties, a new API that allows
+    control of SAML properties associated with a WorkSpaces directory. The DescribeWorkspaceDirectories
+    API will now additionally return SAML properties in its responses.
+- from version 1.27.42
+  * bugfix:TraceId: Rollback bugfix for obeying _X_AMZN_TRACE_ID env var
+- from version 1.27.41
+  * bugfix:Config: Obey _X_AMZN_TRACE_ID environment variable instead of _X_AMZ_TRACE_ID
+  * api-change:``ec2``: Documentation updates for Amazon EC2.
+  * api-change:``fsx``: Documentation updates for Amazon FSx
+  * api-change:``shield``: AWS Shield Advanced now supports filtering for ListProtections and
+    ListProtectionGroups.
+- from version 1.27.40
+  * api-change:``ec2``: Documentation updates for VM Import/Export.
+  * api-change:``es``: This release adds support for gp3 EBS (Elastic Block Store) storage.
+  * api-change:``lookoutvision``: This release introduces support for image segmentation models and
+    updates CPU accelerator options for models hosted on edge devices.
+  * api-change:``opensearch``: This release adds support for gp3 EBS (Elastic Block Store) storage.
+- from version 1.27.39
+  * api-change:``auditmanager``: This release adds an exceeded quota exception to several APIs. We
+    added a ServiceQuotaExceededException for the following operations: CreateAssessment,
+    CreateControl, CreateAssessmentFramework, and UpdateAssessmentStatus.
+  * api-change:``chime``: Chime VoiceConnector will now support ValidateE911Address which will allow
+    customers to prevalidate their addresses included in their SIP invites for emergency calling
+  * api-change:``config``: This release adds ListConformancePackComplianceScores API to support the
+    new compliance score feature, which provides a percentage of the number of compliant rule-resource
+    combinations in a conformance pack compared to the number of total possible rule-resource
+    combinations in the conformance pack.
+  * api-change:``globalaccelerator``: Global Accelerator now supports dual-stack accelerators,
+    enabling support for IPv4 and IPv6 traffic.
+  * api-change:``marketplace-catalog``: The SDK for the StartChangeSet API will now automatically set
+    and use an idempotency token in the ClientRequestToken request parameter if the customer does not
+    provide it.
+  * api-change:``polly``: Amazon Polly adds new English and Hindi voice - Kajal. Kajal is available
+    as Neural voice only.
+  * api-change:``ssm``: Adding doc updates for OpsCenter support in Service Setting actions.
+  * api-change:``workspaces``: Added CreateWorkspaceImage API to create a new WorkSpace image from an
+    existing WorkSpace.
+- from version 1.27.38
+  * api-change:``appsync``: Adds support for a new API to evaluate mapping templates with mock data,
+    allowing you to remotely unit test your AppSync resolvers and functions.
+  * api-change:``detective``: Added the ability to get data source package information for the
+    behavior graph. Graph administrators can now start (or stop) optional datasources on the behavior
+    graph.
+  * api-change:``guardduty``: Amazon GuardDuty introduces a new Malware Protection feature that
+    triggers malware scan on selected EC2 instance resources, after the service detects a potentially
+    malicious activity.
+  * api-change:``lookoutvision``: This release introduces support for the automatic scaling of
+    inference units used by Amazon Lookout for Vision models.
+  * api-change:``macie2``: This release adds support for retrieving (revealing) sample occurrences of
+    sensitive data that Amazon Macie detects and reports in findings.
+  * api-change:``rds``: Adds support for using RDS Proxies with RDS for MariaDB databases.
+  * api-change:``rekognition``: This release introduces support for the automatic scaling of
+    inference units used by Amazon Rekognition Custom Labels models.
+  * api-change:``securityhub``: Documentation updates for AWS Security Hub
+  * api-change:``transfer``: AWS Transfer Family now supports Applicability Statement 2 (AS2), a
+    network protocol used for the secure and reliable transfer of critical Business-to-Business (B2B)
+    data over the public internet using HTTP/HTTPS as the transport mechanism.
+
+-------------------------------------------------------------------
 Tue Jul 26 09:34:34 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.27.37
