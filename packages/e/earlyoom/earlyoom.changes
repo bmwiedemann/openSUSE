@@ -1,5 +1,20 @@
 -------------------------------------------------------------------
-Thu Nov 18 09:31:29 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Wed May 18 16:14:43 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Refreshed spec-file via spec-cleaner and manual optimizated.
+  * Reduced to the standard github URL.
+  * Added -p flag to all install commands.
+- Updated file earlyoom.sysconfig with actual firefox process names.
+- Updated to 1.7
+  * Updated file earlyoom.1 (MANPAGE.md -s -t man > earlyoom.1).
+  * https://github.com/rfjakob/earlyoom#changelog
+  * Added -N flag to run a script every time a process is killed.
+  * Added -g flag to kill whole process group.
+  * Removed -i flag, it does not work properly on Linux kernels 5.9+.
+  * Droped ambient capabilities on startup.
+
+-------------------------------------------------------------------
+Thu Nov 18 09:31:29 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Added GeckoMain in --prefer parameter. (firefox name process)
 - Removed firefox and chromium in --prefer parameter. (irrelevant)
@@ -76,7 +91,7 @@ Thu Mar 19 08:50:17 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 - earlyoom.sysconfig: Fix sddm, add kwin_wayland
 
 -------------------------------------------------------------------
-Wed Mar  4 17:40:07 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Mar  4 17:40:07 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Add PREFIX=%{_prefix} to %make_build macro for correct ExecStart.
 - Update to 1.4
@@ -97,7 +112,7 @@ Wed Mar  4 17:40:07 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
   * Fix spurious testsuite failure on systems with a lot of RAM.
 
 -------------------------------------------------------------------
-Fri Feb 21 06:55:10 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Fri Feb 21 06:55:10 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Add "Web\ Content" before "firefox" in --prefer parameter.
 - Manual optimizations in spec-file.

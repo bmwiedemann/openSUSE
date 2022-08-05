@@ -120,4 +120,28 @@
     <comment></comment>
     <requestid>932774</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>429384a5bc75c2b1c396b59c62252fde</srcmd5>
+    <version>1.7</version>
+    <time>1659721862</time>
+    <user>dimstar_suse</user>
+    <comment>- Refreshed spec-file via spec-cleaner and manual optimizated.
+  * Reduced to the standard github URL.
+  * Added -p flag to all install commands.
+- Updated file earlyoom.sysconfig with actual firefox process names.
+- Updated to 1.7
+  * Updated file earlyoom.1 (MANPAGE.md -s -t man &gt; earlyoom.1).
+  * https://github.com/rfjakob/earlyoom#changelog
+  * Added -N flag to run a script every time a process is killed.
+  * Added -g flag to kill whole process group.
+  * Removed -i flag, it does not work properly on Linux kernels 5.9+.
+  * Droped ambient capabilities on startup.
+- Added GeckoMain in --prefer parameter. (firefox name process)
+- Removed firefox and chromium in --prefer parameter. (irrelevant)
+- Package pre-built earlyoom.1 as pandoc / haskell is not supported
+  on all archs.
+- Drop pandoc BuildRequires.
+</comment>
+    <requestid>993117</requestid>
+  </revision>
 </revisionlist>
