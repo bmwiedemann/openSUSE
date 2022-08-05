@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jul 30 22:36:49 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 5.5.0 & 5.5.1:
+  * Add “Read” and “Write” tabs to book interface when you own the book (orbea)
+  * Allow to write books without text or title (orbea)
+  * Make identical keys stackable (Luis Royer)
+  * Fix creative inventory trash slot not working for player named “trash” (Montandalar)
+  * Fix sunlight propagation for glass stair/slab (An0n3m0us)
+  * Fix glass bottle with firefly not being placable in vessels shelf (An0n3m0us)
+  * Other bugfixes
+  * Translations: Esperanto (Jason Cartwright), Russian (ptah-alexs), Japanese (nogajun), German (Wuzzy), Slovak (Daretmavi), French (Olivier Dragon), Swedish (ROllerozxa), Chinese (雷哲翰), Ukrainian (baytuch)
+  * player_api mod: Fix crash if player has no model (appgurueu)
+  * player_api mod: Mods can now override globalstep by overriding player_api.globalstep (LoneWolfHT)
+  * Shadow intensity (of dynamic shadows) changes with weather (lhofhansl)
+  * Some cart movement behavior fixes (SmallJoker)
+  * Fix some translations in uk and ru locales (baytuch)
+
+-------------------------------------------------------------------
 Mon Apr 19 16:59:29 UTC 2021 - Maximilian Trummer <opensuse@trummer.xyz>
 
 - Update to version 5.4.1:
