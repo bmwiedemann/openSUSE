@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  4 07:43:27 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use standard LABEL directive to add mandatory labels
+
+-------------------------------------------------------------------
 Mon Dec  6 14:37:46 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build only on aarch64 and x86_64

@@ -11,13 +11,16 @@
 ARG KUBEVIRTFROM
 FROM $KUBEVIRTFROM
 
+# Mandatory labels for the build service:
+#   https://en.opensuse.org/Building_derived_containers
 # labelprefix=%%LABELPREFIX%%
-PREFIXEDLABEL org.opencontainers.image.title="CDI API server container"
-PREFIXEDLABEL org.opencontainers.image.description="Kubernetes API extension for CDI"
-PREFIXEDLABEL org.opencontainers.image.created="%BUILDTIME%"
-PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
-PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
-PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-apiserver:%%PKG_VERSION%%.%RELEASE%"
+LABEL org.opencontainers.image.title="CDI API server container"
+LABEL org.opencontainers.image.description="Kubernetes API extension for CDI"
+LABEL org.opencontainers.image.created="%BUILDTIME%"
+LABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
+LABEL org.openbuildservice.disturl="%DISTURL%"
+LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-apiserver:%%PKG_VERSION%%.%RELEASE%"
+# endlabelprefix
 
 RUN zypper -n install \
            containerized-data-importer-api \
