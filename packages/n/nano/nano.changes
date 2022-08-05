@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  3 20:25:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4:
+  * The file browser does not crash when moving up to the root folder.
+  * Softwrapping very long lines is done more efficiently.
+  * Invoking the formatter does not blink the screen.
+
+-------------------------------------------------------------------
 Mon Jul 25 09:03:56 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Added obs-channel-and-patchinfo-syntax.patch to support syntax 
