@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug  4 19:43:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.0
+  * Drop python3.6 support
+  * Use funcparserlib-1.0.0a0 or newer to support new python
+    versions
+  * Allow to write multiline string via triple quotes (""" ... """)
+  * Fix #147: file existence disclosure using svg renderer
+- Refresh python-blockdiag-nose-to-pytest.patch
+
+-------------------------------------------------------------------
 Wed Sep  1 07:28:26 UTC 2021 - pgajdos@suse.com
 
 - added patches

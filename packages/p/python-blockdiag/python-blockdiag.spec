@@ -1,7 +1,7 @@
 #
 # spec file for package python-blockdiag
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,38 +16,37 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-blockdiag
-Version:        2.0.1
+Version:        3.0.0
 Release:        0
 Summary:        Program to generate block-diagram images from text
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            http://blockdiag.com/
 Source:         https://files.pythonhosted.org/packages/source/b/blockdiag/blockdiag-%{version}.tar.gz
-# https://github.com/blockdiag/blockdiag/pull/131
+# PATCH-FIX-UPSTREAM python-blockdiag-nose-to-pytest.patch gh#blockdiag/blockdiag#131 pgajdos@suse.com
+# Remove the last silly dependency on nose
 Patch0:         python-blockdiag-nose-to-pytest.patch
-BuildRequires:  %{python_module Pillow >= 2.2.1}
-BuildRequires:  %{python_module funcparserlib >= 0.3.6}
-BuildRequires:  %{python_module reportlab}
+BuildRequires:  %{python_module Pillow >= 3}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module funcparserlib >= 1.0.0~a0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module webcolors}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Pillow >= 2.2.1
-Requires:       python-funcparserlib >= 0.3.6
+Requires:       python-Pillow >= 3
+Requires:       python-funcparserlib >= 1.0.0~a0
+Requires:       python-setuptools
 Requires:       python-webcolors
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module reportlab}
 BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module pep8 >= 1.3}
-BuildRequires:  %{python_module pip >= 1.4.1}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-%if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
+%if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Recommends:     ghostscript
 Recommends:     python-Wand
 Recommends:     python-reportlab
@@ -59,8 +58,7 @@ The blockdiag package generates block-diagram image files
 from spec-text files.
 
 %prep
-%setup -q -n blockdiag-%{version}
-%patch0 -p1
+%autosetup -p1 -n blockdiag-%{version}
 
 %build
 %python_build
@@ -73,7 +71,7 @@ from spec-text files.
 %post
 %python_install_alternative blockdiag
 
-%preun
+%postun
 %python_uninstall_alternative blockdiag
 
 %check
@@ -89,6 +87,7 @@ popd
 %license LICENSE
 %doc CHANGES.rst README.rst
 %python_alternative %{_bindir}/blockdiag
-%{python_sitelib}/*
+%{python_sitelib}/blockdiag
+%{python_sitelib}/blockdiag-%{version}*-info
 
 %changelog
