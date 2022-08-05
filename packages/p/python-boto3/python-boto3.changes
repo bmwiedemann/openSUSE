@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Thu Aug  4 07:28:48 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.24.45
+  * api-change:``cognito-idp``: [``botocore``] Add a new exception type, ForbiddenException, that is
+    returned when request is not allowed
+  * api-change:``wafv2``: [``botocore``] You can now associate an AWS WAF web ACL with an Amazon
+    Cognito user pool.
+- from version 1.24.44
+  * api-change:``license-manager-user-subscriptions``: [``botocore``] This release supports user
+    based subscription for Microsoft Visual Studio Professional and Enterprise on EC2.
+  * api-change:``personalize``: [``botocore``] This release adds support for incremental bulk
+    ingestion for the Personalize CreateDatasetImportJob API.
+- from version 1.24.43
+  * api-change:``config``: [``botocore``] Documentation update for PutConfigRule and
+    PutOrganizationConfigRule
+  * api-change:``workspaces``: [``botocore``] This release introduces ModifySamlProperties, a new API
+    that allows control of SAML properties associated with a WorkSpaces directory. The
+    DescribeWorkspaceDirectories API will now additionally return SAML properties in its responses.
+- from version 1.24.42
+  * bugfix:TraceId: [``botocore``] Rollback bugfix for obeying _X_AMZN_TRACE_ID env var
+- from version 1.24.41
+  * bugfix:Config: [``botocore``] Obey _X_AMZN_TRACE_ID environment variable instead of
+    _X_AMZ_TRACE_ID
+  * api-change:``ec2``: [``botocore``] Documentation updates for Amazon EC2.
+  * api-change:``fsx``: [``botocore``] Documentation updates for Amazon FSx
+  * api-change:``shield``: [``botocore``] AWS Shield Advanced now supports filtering for
+    ListProtections and ListProtectionGroups.
+- from version 1.24.40
+  * api-change:``ec2``: [``botocore``] Documentation updates for VM Import/Export.
+  * api-change:``es``: [``botocore``] This release adds support for gp3 EBS (Elastic Block Store)
+    storage.
+  * api-change:``lookoutvision``: [``botocore``] This release introduces support for image
+    segmentation models and updates CPU accelerator options for models hosted on edge devices.
+  * api-change:``opensearch``: [``botocore``] This release adds support for gp3 EBS (Elastic Block
+    Store) storage.
+- from version 1.24.39
+  * api-change:``auditmanager``: [``botocore``] This release adds an exceeded quota exception to
+    several APIs. We added a ServiceQuotaExceededException for the following operations:
+    CreateAssessment, CreateControl, CreateAssessmentFramework, and UpdateAssessmentStatus.
+  * api-change:``chime``: [``botocore``] Chime VoiceConnector will now support ValidateE911Address
+    which will allow customers to prevalidate their addresses included in their SIP invites for
+    emergency calling
+  * api-change:``config``: [``botocore``] This release adds ListConformancePackComplianceScores API
+    to support the new compliance score feature, which provides a percentage of the number of compliant
+    rule-resource combinations in a conformance pack compared to the number of total possible
+    rule-resource combinations in the conformance pack.
+  * api-change:``globalaccelerator``: [``botocore``] Global Accelerator now supports dual-stack
+    accelerators, enabling support for IPv4 and IPv6 traffic.
+  * api-change:``marketplace-catalog``: [``botocore``] The SDK for the StartChangeSet API will now
+    automatically set and use an idempotency token in the ClientRequestToken request parameter if the
+    customer does not provide it.
+  * api-change:``polly``: [``botocore``] Amazon Polly adds new English and Hindi voice - Kajal. Kajal
+    is available as Neural voice only.
+  * api-change:``ssm``: [``botocore``] Adding doc updates for OpsCenter support in Service Setting
+    actions.
+  * api-change:``workspaces``: [``botocore``] Added CreateWorkspaceImage API to create a new
+    WorkSpace image from an existing WorkSpace.
+- from version 1.24.38
+  * api-change:``appsync``: [``botocore``] Adds support for a new API to evaluate mapping templates
+    with mock data, allowing you to remotely unit test your AppSync resolvers and functions.
+  * api-change:``detective``: [``botocore``] Added the ability to get data source package information
+    for the behavior graph. Graph administrators can now start (or stop) optional datasources on the
+    behavior graph.
+  * api-change:``guardduty``: [``botocore``] Amazon GuardDuty introduces a new Malware Protection
+    feature that triggers malware scan on selected EC2 instance resources, after the service detects a
+    potentially malicious activity.
+  * api-change:``lookoutvision``: [``botocore``] This release introduces support for the automatic
+    scaling of inference units used by Amazon Lookout for Vision models.
+  * api-change:``macie2``: [``botocore``] This release adds support for retrieving (revealing) sample
+    occurrences of sensitive data that Amazon Macie detects and reports in findings.
+  * api-change:``rds``: [``botocore``] Adds support for using RDS Proxies with RDS for MariaDB
+    databases.
+  * api-change:``rekognition``: [``botocore``] This release introduces support for the automatic
+    scaling of inference units used by Amazon Rekognition Custom Labels models.
+  * api-change:``securityhub``: [``botocore``] Documentation updates for AWS Security Hub
+  * api-change:``transfer``: [``botocore``] AWS Transfer Family now supports Applicability Statement
+    2 (AS2), a network protocol used for the secure and reliable transfer of critical
+    Business-to-Business (B2B) data over the public internet using HTTP/HTTPS as the transport
+    mechanism.
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Jul 26 09:38:55 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.24.37
