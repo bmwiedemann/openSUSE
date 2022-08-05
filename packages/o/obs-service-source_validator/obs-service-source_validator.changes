@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 04 08:20:29 UTC 2022 - dmueller@suse.com
+
+- Update to version 0.25 (bsc#1202132)
+  * Reject empty or ill-formatted patches
+
+-------------------------------------------------------------------
 Thu Jul 07 16:30:51 UTC 2022 - dmueller@suse.com
 
 - Update to version 0.24:

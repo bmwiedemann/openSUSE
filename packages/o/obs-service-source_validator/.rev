@@ -514,4 +514,14 @@ last submission had wrong tar ball for unknown reason</comment>
     <comment></comment>
     <requestid>987566</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>030ce25f18c6f7e5a8466cf00883c5b4</srcmd5>
+    <version>0.25</version>
+    <time>1659721818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.25 (bsc#1202132)
+  * Reject empty or ill-formatted patches
+</comment>
+    <requestid>992725</requestid>
+  </revision>
 </revisionlist>
