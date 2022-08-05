@@ -1,4 +1,140 @@
 -------------------------------------------------------------------
+Thu Aug  4 12:31:33 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- Updated to version 1.1.0-rc1 which enables apptainer to run without
+  suid and additional groups. Although this is a prerelease this is 
+  a major advantage justifying its use.
+  * Added a squashfuse image driver that enables mounting SIF files without
+    using setuid-root. Requires the squashfuse command and unprivileged user
+    namespaces.
+  * Added a fuse2fs image driver that enables mounting EXT3 files and EXT3 SIF
+    overlay partitions without using setuid-root. Requires the fuse2fs command
+    and unprivileged user namespaces.
+  * Added the ability to use persistent overlay (--overlay) and
+    --writable-tmpfs without using setuid-root. This requires unprivileged user
+    namespaces and either a new enough kernel (>= 5.11) or the fuse-overlayfs
+    command. Persistent overlay works when the overlay path points to a regular
+    filesystem (known as "sandbox" mode, which is not allowed when in setuid
+    mode), or when it points to an EXT3 image. Does not work with a SIF
+    partition because that requires privileges to mount as an ext3 image.
+  * Extended the --fakeroot option to be useful when /etc/subuid and
+    /etc/subgid mappings have not been set up. If they have not been set up, a
+    root-mapped unprivileged user namespace (the equivalent of unshare -r)
+    and/or the fakeroot command from the host will be tried. Together they
+    emulate the mappings pretty well but they are simpler to administer. This
+    feature is especially useful with the --overlay and --writable-tmpfs
+    options and for building containers unprivileged, because they allow
+    installing packages that assume they're running as root. A limitation on
+    using it with --overlay and --writable-tmpfs however is that when only the
+    fakeroot command can be used (because there are no user namespaces
+    available, in suid mode) then the base image has to be a sandbox. This
+    feature works nested inside of an apptainer container, where another
+    apptainer command will also be in the fakeroot environment without
+    requesting the --fakeroot option again, or it can be used inside an
+    apptainer container that was not started with --fakeroot. However, the
+    fakeroot command uses LD_PRELOAD and so needs to be bound into the
+    container which requires a compatible libc. For that reason it doesn't work
+    when the host and container operating systems are of very different
+    vintages. If that's a problem and you want to use only an unprivileged
+    root-mapped namespace even when the fakeroot command is installed, just run
+    apptainer with unshare -r.
+  * Made the --fakeroot option be implied when an unprivileged user builds a
+    container from a definition file. When /etc/subuid and /etc/subgid mappings
+    are not available, all scriptlets are run in a root-mapped unprivileged
+    namespace (when possible) and the %post scriptlet is additionally run with
+    the fakeroot command. When unprivileged user namespaces are not available,
+    such that only the fakeroot command can be used, the --fix-perms option is
+    implied to allow writing into directories.
+  * Added a --fakeroot option to the apptainer overlay create command to make
+    an overlay EXT3 image file that works with the fakeroot that comes from
+    unprivileged root-mapped namespaces. This is not needed with the fakeroot
+    that comes with /etc/sub[ug]id mappings nor with the fakeroot that comes
+    with only the fakeroot command in suid flow.
+  * $HOME is now used to find the user's configuration and cache by default. If
+    that is not set it will fall back to the previous behavior of looking up
+    the home directory in the password file. The value of $HOME inside the
+    container still defaults to the home directory in the password file and can
+    still be overridden by the --home option.
+  * When starting a container, if the user has specified the cwd by using the
+    --pwd flag, if there is a problem an error is returned instead of
+    defaulting to a different directory.
+  * Nesting of bind mounts now works even when a --bind option specified a
+    different source and destination with a colon between them. Now the
+    APPTAINER_BIND environment variable makes sure the bind source is from the
+    bind destination so it will be succesfully re-bound into a nested apptainer
+    container.
+  * The warning about more than 50 bind mounts required for an underlay bind
+    has been changed to an info message.
+  * oci mount sets Process.Terminal: true when creating an OCI config.json, so
+    that oci run provides expected interactive behavior by default.
+    The default hostname for oci mount containers is now apptainer instead of mrsdalloway.
+  * systemd is now supported and used as the default cgroups manager. Set
+    systemd cgroups = no in apptainer.conf to manage cgroups directly via the
+    cgroupfs.
+  * Added a new action flag --no-eval which:
+      + Prevents shell evaluation of APPTAINERENV_ / --env / --env-file
+        environment variables as they are injected in the container, to match
+        OCI behavior. Applies to all containers.  
+      + Prevents shell evaluation of the values of CMD / ENTRYPOINT and command
+        line arguments for containers run or built directly from an OCI/Docker
+        source. Applies to newly built containers only, use apptainer inspect
+        to check version that container was built with.
+  * Added --no-eval to the list of flags set by the OCI/Docker --compat mode.
+  * sinit process has been renamed to appinit.
+  * Added --keysdir to key command to provide an alternative way of setting
+    local keyring path. The existing reading of the keyring path from
+    environment variable 'APPTAINER_KEYSDIR' is untouched.
+  * apptainer key push will output the key server's response if included in
+    order to help guide users through any identity verification the server may
+    require.
+  * ECL no longer requires verification for all signatures, but only when
+    signature verification would alter the expected behavior of the list:
+      + At least one matching signature included in a whitelist must be
+        validated, but other unvalidated signatures do not cause ECL to fail.
+      + All matching signatures included in a whitestrict must be validated,
+        but unvalidated signatures not in the whitestrict do not cause ECL to
+        fail.
+      + Signature verification is not checked for a blacklist; unvalidated
+        signatures can still block execution via ECL, and unvalidated
+        signatures not in the blacklist do not cause ECL to fail.
+- New features / functionalities
+  * Non-root users can now use --apply-cgroups with run/shell/exec to limit
+    container resource usage on a system using cgroups v2 and the systemd
+    cgroups manager.
+  * Native cgroups v2 resource limits can be specified using the [unified] key
+    in a cgroups toml file applied via --apply-cgroups.
+  * Added --cpu*, --blkio*, --memory*, --pids-limit flags to apply cgroups
+    resource limits to a container directly.
+    Added instance stats command.
+  * The --no-mount flag & APPTAINER_NO_MOUNT env var can now be used to disable
+    a bind path entry from apptainer.conf by specifying the absolute path to
+    the destination of the bind.
+  * Apptainer now supports the riscv64 architecture.
+  * remote add --insecure may now be used to configure endpoints that are only
+    accessible via http. Alternatively the environment variable
+    APPTAINER_ADD_INSECURE can be set to true to allow http remotes to be added
+    wihtout the --insecure flag. Specifying https in the remote URI overrules
+    both --insecure and APPTAINER_ADD_INSECURE.
+  * Gpu flags --nv and --rocm can now be used from an apptainer nested inside
+    another apptainer container.
+  * Added --public, --secret, and --both flags to the key remove command to
+    support removing secret keys from the apptainer keyring.
+  * Debug output can now be enabled by setting the APPTAINER_DEBUG env var.
+  * Debug output is now shown for nested apptainer calls, in wrapped unsquashfs
+    image extraction, and build stages.
+- Bug fixes
+  * Remove warning message about SINGULARITY and APPTAINER variables having
+    different values when the SINGULARITY variable is not set.
+  * Add specific error for unreadable image / overlay file.
+  * Pass through a literal \n in host environment variables to the container.
+  * Fix loop device creation with loop-control when running inside docker containers.
+  * Fix the issue that the oras protocol would ignore the --no-https/--nohttps flag.
+- File changes
+  * Removed useful_error_message.patch as not needed any more
+  * Added fix-32bit-compilation.patch from upstream
+
+
+-------------------------------------------------------------------
 Mon Jul 11 09:38:45 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 - Update to version 1.0.3:

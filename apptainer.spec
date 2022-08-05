@@ -19,13 +19,13 @@
 %define apptainerpath src/github.com/apptainer/
 %define _buildshell /bin/bash
 
-#%%define vers_suffix -rc.2
+%define vers_suffix -rc.1
 
 Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL
 Group:          Productivity/Clustering/Computing
 Name:           apptainer
-Version:        1.0.3
+Version:        1.1.0
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://apptainer.org
@@ -35,7 +35,7 @@ Source2:        SLE-12SP5.def
 Source3:        SLE-15SP3.def
 Source5:        %{name}-rpmlintrc
 Source10:       vendor.tar.gz
-Patch1:         useful_error_message.patch
+Patch1:         fix-32bit-compilation.patch
 BuildRequires:  cryptsetup
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -55,8 +55,8 @@ PreReq:         permissions
 # there's no golang for ppc64, ppc64le does not have non pie builds
 ExcludeArch:    ppc64 ppc64le
 
-Provides:       %{name}-runtime
 Obsoletes:      singularity
+Obsoletes:      singularity-ce
 Obsoletes:      singularity-runtime
 
 %description
@@ -75,7 +75,7 @@ cd %{name}
 # create VERSION file
 echo %version > VERSION
 # Not all of these parameters currently have an effect, but they might be
-#  used someday.  They are the same parameters as in the configure macro.
+# used someday.  They are the same parameters as in the configure macro.
 tar xzf %{S:10}
 ./mconfig -V %{version}-%{release} \
         -P release \
@@ -91,7 +91,8 @@ tar xzf %{S:10}
         --localstatedir=%{_localstatedir}/lib \
         --sharedstatedir=%{_sharedstatedir} \
         --mandir=%{_mandir} \
-        --infodir=%{_infodir}
+        --infodir=%{_infodir} \
+        --without-suid
 cd builddir
 make V="" old_config=
 
@@ -101,8 +102,7 @@ export GOFLAGS=-mod=vendor
 export PATH=$GOPATH/bin:$PATH
 cd %{name}/builddir
 
-mkdir -p $RPM_BUILD_ROOT%{_mandir}/man1
-make DESTDIR=$RPM_BUILD_ROOT install man
+make DESTDIR=$RPM_BUILD_ROOT install
 cd ../..
 %fdupes apptainer/examples
 mkdir -p .tmp
@@ -115,21 +115,10 @@ for j in LICENSE.md LICENSE; do
     done
 done
 
-echo "g %name -" > system-group-%{name}.conf
-%sysusers_generate_pre system-group-%{name}.conf %{name} system-group-%{name}.conf
-install -D -m 644 system-group-%{name}.conf %{buildroot}%{_sysusersdir}/system-group-%{name}.conf
-
-%fdupes -s .tmp
+%fdupes -s .tmp/
 mv .tmp/* .
 rmdir .tmp
-
-%pre -f %{name}.pre
-
-%post
-%set_permissions %{_libexecdir}/apptainer/bin/starter-suid
-
-%verifyscript
-%set_permissions %{_libexecdir}/apptainer/bin/starter-suid
+%fdupes -s %buildroot
 
 %files
 %doc apptainer/examples
@@ -142,12 +131,13 @@ rmdir .tmp
 %doc %{basename:%{S:3}}
 %license apptainer/LICENSE.md
 %license *-LICENSE.md *-LICENSE
-%attr(4750, root, apptainer) %{_libexecdir}/apptainer/bin/starter-suid
 %{_bindir}/*
 %dir %{_libexecdir}/apptainer
 %dir %{_libexecdir}/apptainer/bin
 %dir %{_libexecdir}/apptainer/cni
+%dir %{_libexecdir}/apptainer/lib
 %{_libexecdir}/apptainer/bin/starter
+%{_libexecdir}/apptainer/lib/offsetpreload.so
 %{_libexecdir}/apptainer/cni/*
 %dir %{_sysconfdir}/apptainer
 %config(noreplace) %{_sysconfdir}/apptainer/capability.json
@@ -166,6 +156,5 @@ rmdir .tmp
 %dir %{_localstatedir}/lib/apptainer/mnt
 %dir %{_localstatedir}/lib/apptainer/mnt/session
 %{_mandir}/man1/*
-%{_sysusersdir}/system-group-%{name}.conf
 
 %changelog

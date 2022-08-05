@@ -30,4 +30,12 @@
 </comment>
     <requestid>988330</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b1b64954fdca1f20e1e9b5e4257653ec</srcmd5>
+    <version>1.1.0</version>
+    <time>1659721855</time>
+    <user>dimstar_suse</user>
+    <comment>* Added fix-32bit-compilation.patch from upstream (forwarded request 993258 from mslacken)</comment>
+    <requestid>993259</requestid>
+  </revision>
 </revisionlist>

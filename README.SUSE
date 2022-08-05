@@ -1,18 +1,3 @@
-openSUSE/SUSE specific Settings
-===============================
-
-openSUSE and SUSE have a small difference with upstream default. 
-This means the SUID root binaries distributed by singularty are
-executable only by users belonging to the group 'apptainer'.
-
-Otherwise, users will get an error message like this one:
-
-FATAL:   while executing /usr/lib/apptainer/bin/starter-suid: permission denied
-
-To add a user to the group apptainer, execute (as root):
-
- # usermod -a -G apptainer <user_login>
-
 Create Apptainer Images from openSUSE/SLE
 ===========================================
 
