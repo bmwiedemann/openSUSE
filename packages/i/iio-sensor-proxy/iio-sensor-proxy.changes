@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 15 21:52:12 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.4:
+  * Add polkit checks for whether a user is allowed to claim a
+    sensor.
+  * Fix the ambient light sensor readings on some systems, a
+    regression in the fake-input-accelerometer test binary.
+  * A number of memory leaks.
+- Package polkit privilege file (subject to boo#1201558); add
+  BuildRequires: pkgconfig(polkit-gobject-1).
+
+-------------------------------------------------------------------
 Thu Sep 30 00:25:09 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.3:

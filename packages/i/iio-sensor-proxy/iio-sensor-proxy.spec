@@ -1,7 +1,7 @@
 #
 # spec file for package iio-sensor-proxy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           iio-sensor-proxy
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        Proxy for IIO and input subsystems
 License:        GPL-3.0-only
@@ -30,6 +30,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gudev-1.0) >= 237
+BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(systemd) >= 219
 BuildRequires:  pkgconfig(udev) >= 219
 Requires:       user(srvGeoClue)
@@ -80,6 +81,7 @@ This package contains the documentation for %{name}.
 %{_libexecdir}/iio-sensor-proxy
 %{_udevrulesdir}/*.rules
 %{_unitdir}/iio-sensor-proxy.service
+%{_datadir}/polkit-1/actions/net.hadess.SensorProxy.policy
 # Own dirs to avoid depending on dbus while building.
 %dir %{_sysconfdir}/dbus-1
 %dir %{_sysconfdir}/dbus-1/system.d
