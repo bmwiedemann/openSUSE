@@ -1022,4 +1022,12 @@ and test it with openQA
     <comment>Plasma 5.25.3, with fixed lockscreen (forwarded request 988718 from Vogtinator)</comment>
     <requestid>988849</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>335dcd13ec22b4b131f281bb8b7f45e9</srcmd5>
+    <version>5.25.4</version>
+    <time>1659721798</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.4 (forwarded request 992383 from Vogtinator)</comment>
+    <requestid>992506</requestid>
+  </revision>
 </revisionlist>
