@@ -50,6 +50,7 @@ BuildRequires:  libgpg-error-devel
 BuildRequires:  libgpgme-devel >= 1.1.8
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  python3-pyparsing
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  xdg-dbus-proxy >= 0.1.0

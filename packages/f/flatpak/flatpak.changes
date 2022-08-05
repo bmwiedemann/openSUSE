@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 15 14:05:05 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- variant-schema-compiler requires the Python module pyparsing
+
+-------------------------------------------------------------------
 Sun Jul  3 08:33:14 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Correct Supplements for flatpak-zsh-completion boo#1201113
