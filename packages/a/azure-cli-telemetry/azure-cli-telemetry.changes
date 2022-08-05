@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug  4 11:18:35 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.0.7
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Jun 27 11:05:06 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add missing python-rpm-macros package to BuildRequires

@@ -47,4 +47,16 @@
     <comment>- Add missing python-rpm-macros package to BuildRequires (forwarded request 985302 from glaubitz)</comment>
     <requestid>985303</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>151a989a13145c07d511f35d3b78db23</srcmd5>
+    <version>1.0.7</version>
+    <time>1659721846</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.7
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Update Requires from setup.py (forwarded request 992762 from glaubitz)</comment>
+    <requestid>992770</requestid>
+  </revision>
 </revisionlist>
