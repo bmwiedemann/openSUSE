@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 27 23:20:54 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Use system discord-rpc library instead of bundled copy
+
+-------------------------------------------------------------------
 Tue Jan 12 13:05:54 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable discord for non-x86* as it requires pre-built x86 libs

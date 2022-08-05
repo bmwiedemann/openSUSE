@@ -1,7 +1,7 @@
 #
 # spec file for package redeclipse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           redeclipse
 Version:        2.0.0
 Release:        0
 Summary:        Fast-paced first person ego shooter
-License:        Zlib AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND Zlib
 Group:          Amusements/Games/3D/Shoot
 URL:            http://www.redeclipse.net/
 Source:         https://github.com/redeclipse/base/releases/download/v%{version}/%{name}_%{version}_nix.tar.bz2
@@ -28,7 +28,7 @@ Source:         https://github.com/redeclipse/base/releases/download/v%{version}
 Patch0:         windowed-by-default.patch
 Patch1:         system_sqlite.patch
 
-BuildRequires:  SDL2-devel
+BuildRequires:  discord-rpc-devel
 BuildRequires:  ed
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -45,9 +45,9 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data >= %{version}
 
 %description
-Red Eclipse 2 is a first person shooter based on the tesseract engine.
+Red Eclipse 2 is a first-person shooter based on the tesseract engine.
 Parkour gameplay, different game modes, and several mutators to make the game very flexible.
-Map editor is included.
+A map editor is included.
 
 %package data
 Summary:        Data files for the Red Eclipse game
@@ -66,9 +66,11 @@ Requires:       %{name}-data >= %{version}
 This package contains the server binary for the Red Eclipse game.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
+# Make sure we use no externally-provided blobs
+rm -rf bin/x86 bin/amd64
+# Use the system discord headers
+rm -rf src/shared/discord_rpc.h src/shared/discord_register.h
 
 rm -r src/enet/
 rm -r src/include/
@@ -83,7 +85,7 @@ iconv -f iso8859-1 -t utf-8 readme.txt > readme.txt.conv \
 sed -i 's/mapeditor/mapeditor;/g' src/install/nix/redeclipse.desktop.am
 
 %build
-make %{?_smp_mflags} \
+%make_build \
   CXXFLAGS='%{optflags}' \
 %ifarch %{ix86} x86_64
   WANT_DISCORD=1 \
@@ -91,7 +93,7 @@ make %{?_smp_mflags} \
   LIBENET="" -C src/
 
 %install
-make %{?_smp_mflags} CXXFLAGS="%{optflags}" -C src/ \
+%make_build CXXFLAGS="%{optflags}" -C src/ \
         DESTDIR=%{buildroot} prefix=%{_prefix}      \
         libexecdir=%{buildroot}%{_libexecdir}       \
         docdir=%{buildroot}%{_docdir}               \
@@ -110,7 +112,6 @@ sed -i 's/"redeclipse"/redeclipse/g' %{buildroot}%{_datadir}/applications/%{name
 %icon_theme_cache_postun
 
 %files
-%defattr(-,root,root)
 %license doc/license.txt
 %doc readme.txt doc/*.txt
 %doc %{_defaultdocdir}/%{name}/examples/
@@ -124,7 +125,6 @@ sed -i 's/"redeclipse"/redeclipse/g' %{buildroot}%{_datadir}/applications/%{name
 %{_mandir}/man6/%{name}.6.*
 
 %files data
-%defattr(-,root,root)
 %license doc/license.txt
 %{_datadir}/%{name}
 
