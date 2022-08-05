@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 14 09:38:38 UTC 2022 - rombert@apache.org
+
+- Update to version 0.12.0:
+  * Update Go crypo libraries and migrate to Go 1.18
+  * Add k3s and LXC post
+  * Use explicit path for SUCCESS_CMD
+  * Fix 376
+  * Add k3s check command
+  * Update README.md
+  * Add sponsoring card back to README due to lack of sponsors
+  * Update README.md
+  * Update PULL_REQUEST_TEMPLATE.md
+  * Update .DEREK.yml
+  * Mention k3s-channel flag
+  * Remove vendoring in CI
+  * Update go version for M1 Darwin support in CI
+
+-------------------------------------------------------------------
 Tue Jan 04 13:47:21 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.11.2:
