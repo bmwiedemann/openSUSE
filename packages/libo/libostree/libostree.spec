@@ -17,28 +17,29 @@
 
 
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
+%bcond_without ed25519
 Name:           libostree
-Version:        2021.6
+Version:        2022.5
 Release:        0
 Summary:        Git for operating system binaries
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/ostreedev/ostree
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/ostreedev/ostree/releases/download/v%{version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE ostree-grub2-location.patch boo#974714 dimstar@opensuse.org -- Fix path to grub-mkconfig_lib
 Patch0:         ostree-grub2-location.patch
 BuildRequires:  bison
 BuildRequires:  gjs
 BuildRequires:  gnome-common
 BuildRequires:  gobject-introspection-devel >= 1.34.0
-BuildRequires:  gpgme-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libcap-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dracut)
 BuildRequires:  pkgconfig(e2p)
 BuildRequires:  pkgconfig(fuse) >= 2.9.2
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.36.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gpgme) >= 1.1.8
 BuildRequires:  pkgconfig(libarchive) >= 2.8.0
 BuildRequires:  pkgconfig(liblzma) >= 5.0.5
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.39.1
@@ -49,6 +50,9 @@ BuildRequires:  pkgconfig(zlib)
 # Package was renamed from ostree to libostree with version 2017.2
 Provides:       ostree = %{version}
 Obsoletes:      ostree < %{version}
+%if %{with ed25519}
+BuildRequires:  pkgconfig(libsodium) >= 1.0.14
+%endif
 
 %description
 OSTree is a tool for managing bootable, immutable, versioned
@@ -120,9 +124,11 @@ of both.
 %autosetup -p1
 
 %build
-NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--with-dracut \
+%if %{with ed25519}
+	--with-ed25519-libsodium \
+%endif
 	%{nil}
 %make_build
 
@@ -142,18 +148,21 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 %service_add_pre ostree-remount.service
 %service_add_pre ostree-finalize-staged.service
 %service_add_pre ostree-finalize-staged.path
+%service_add_pre ostree-boot-complete.service
 
 %preun
 %service_del_preun ostree-prepare-root.service
 %service_del_preun ostree-remount.service
 %service_del_preun ostree-finalize-staged.service
 %service_del_preun ostree-finalize-staged.path
+%service_del_preun ostree-boot-complete.service
 
 %post
 %service_add_post ostree-prepare-root.service
 %service_add_post ostree-remount.service
 %service_add_post ostree-finalize-staged.service
 %service_add_post ostree-finalize-staged.path
+%service_add_post ostree-boot-complete.service
 %tmpfiles_create %{_tmpfilesdir}/ostree-tmpfiles.conf
 
 %postun
@@ -161,6 +170,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 %service_del_postun ostree-remount.service
 %service_del_postun ostree-finalize-staged.service
 %service_del_postun ostree-finalize-staged.path
+%service_del_postun ostree-boot-complete.service
 
 %files
 %license COPYING
@@ -176,11 +186,13 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 %{_prefix}/lib/ostree/ostree-prepare-root
 %{_prefix}/lib/ostree/ostree-remount
 %{_libexecdir}/libostree/ostree-trivial-httpd
+%{_libexecdir}/libostree/s390x-se-luks-gencpio
 %{_dracutmodulesdir}/98ostree/
 %{_unitdir}/ostree-prepare-root.service
 %{_unitdir}/ostree-remount.service
 %{_unitdir}/ostree-finalize-staged.service
 %{_unitdir}/ostree-finalize-staged.path
+%{_unitdir}/ostree-boot-complete.service
 %dir %{_sysconfdir}/dracut.conf.d
 %{_sysconfdir}/dracut.conf.d/ostree.conf
 %{_datadir}/ostree/

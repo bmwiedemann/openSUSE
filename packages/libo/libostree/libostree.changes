@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Jul 23 10:06:19 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2022.5:
+  + Greatly improved performance for ostree prune on large repositories
+  + Support for in-place kargs changes
+  + includes a fix for ed25519: Invalid out of bound reads
+    Did not affect previous openSUSE packages [boo#1201800]
+- includes changes from 2022.4:
+  + A new repository option bls-append-except-default intended to 
+    help with enabling GRUB password locking
+  + Further fixes for s390x SE
+  + Several API additions and fixes to the Rust bindings
+- includes changes from 2022.3:
+  + GLib requirement to 2.66
+  + documentation for using IMA with ostree
+  + A few static analyzer fixes
+  + refcounting fix in OstreeRepoAutoTransaction
+  + close longstanding conflict between ostree and per-machine
+    SELinux policy customizations
+  + ostree learned how to use bubblewrap to create a container
+    targeting the pending deployment to re-build the policy if
+    necessary
+- includes changes from 2022.2:
+  + improve reliability of pulls with static deltas
+  + new ostree prune --commit-only
+- includes changes from 2022.1:
+  + add transparent support for external sub-commands on the ostree
+    binary. Custom binaries present in PATH in the form of
+    ostree-<subcmd> will be now used as a fallback for sub-
+    commands that are not natively implemented.
+  + address some static analysis warnings
+  + The git submodule for bsdiff has been updated to latest
+    upstream revision, picking up additional bound-checks and
+    fixing CVE-2014-9862 boo#1201770
+- enable ed25519 support with libsodium, introduced with 2020.4
+- switch to upstream tarball 
+
+-------------------------------------------------------------------
 Sat Jul 16 16:25:07 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix packaging warnings from missing systemd service macros
