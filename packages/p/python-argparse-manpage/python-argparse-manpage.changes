@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Aug  4 11:18:38 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
+
+- Update to 3
+  * New man page format: single-commands-section
+  * Add CLI and conf options for setting the output format
+  * Add CLI and conf options to explicitly specify %prog value
+  * Skip showing commands with help == SUPPRESS
+  * Avoid rendering docs for command aliases
+  * Print program name in upper case in header and footer
+  * The --author CLI option has changed, and takes arbitrary string
+    (typically 'Author Name <the@example.com>'), and newly can be specified
+    multiple times.  Therefore, it now replaces the '--author-email' option.
+    The --author-email option is kept, but is just an alias to the --author
+    option.
+  * All CLI options can be specified also in setup.cfg
+  * Don't render AUTHORS and DISTRIBUTION if they would contain undefined values
+  * Remove '... was written by' from AUTHORS
+  * Fixed the testsuite against the setuptools v60+
+  * Output manual pages should be built reproducibly, no matter the current
+    size of the terminal.
+  * Methods build_manpages, get_build_py_cmd, get_install_cmd are now
+    provided in top-level module.
+  * More portable opening and parsing given by python file name.
+  * Split out options by generic argument groups, not only predefined
+    "positional arguments", "options", and Subparsers.
+  * Drop python3-six requirement.
+  * Properly highligh all option argument METAVARs.
+
+- spec changes:
+  * BuildArch set to noarch
+  * Add build dependency on pip module
+
+-------------------------------------------------------------------
 Tue Apr 20 12:44:31 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.5
