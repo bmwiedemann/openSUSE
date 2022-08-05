@@ -51,6 +51,8 @@
   boo#1201504: '20220719'
   boo#1201538: '20220722'
   boo#1201931: '20220726'
+  boo#1202000: '20220804'
+  boo#1202161: '20220804'
   bsc#1161276: '20220804'
   bsc#1191684: '20220804'
   bsc#1198101: '20220804'
@@ -96,6 +98,7 @@
   poo#113492: '20220804'
   poo#113549: '20220713'
   poo#114923: '20220803'
+  poo#114986: '20220804'
   poo#63397: '20220422'
   poo#99312: '20220502'
 </value>
@@ -121,7 +124,7 @@ nocleanup-packages = 000product 000release-packages bootstrap-copy
 # subpackages of ring packages with unacceptable requires (don't abuse)
 repo_checker-binary-whitelist-ring = patterns-media-rest_dvd patterns-media-rest_cd_x11 patterns-devel-base-devel_web patterns-base-update_test monitoring-plugins-metadata codec2-examples libreoffice-l10n-fi java-1_8_0-openjdk-accessibility hplip-scan-utils patterns-kde-devel_qt6
 
-repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bison,bzip2,compat-usrmerge,cpio,crypto-policies,dejagnu,diffutils,dwz,e2fsprogs,ed,elfutils,expat,expect,fdupes,file,findutils,fipscheck,flex,gawk,gcc,gcc12,gdbm,gettext-runtime-mini,glibc,glibc:i686,gmp,gpm,gzip,help2man,isl,keyutils,krb5-mini,libcap,libcap-ng,libdb-4_8,libeconf,libedit,libffi,libgcrypt,libgpg-error,libnsl,libnss_usrfiles,libseccomp,libselinux,libsemanage,libsepol,libtirpc,libtool,libverto,libxcrypt,libzio,linux-glibc-devel,lua-macros,lua54,m4,make,makedepend,meson,mpc,mpdecimal,mpfr,ncurses,netcfg,ninja,openssl,openssl-1_1,pam,patch,pcre2,perl,perl-Text-Unidecode,perl-gettext,permissions,pkgconf,popt,python-rpm-macros,python310:base,python38:base,readline,rpm,screen,shadow,system-user-root,system-users,systemd-rpm-macros,systemtap-headers,sysuser-tools,tcl,tclap,tcpd,texinfo,timezone,update-alternatives,utempter,util-linux,which,xz,zlib,zstd,
+repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bison,bzip2,compat-usrmerge,cpio,crypto-policies,debugedit,dejagnu,diffutils,dwz,e2fsprogs,ed,elfutils,expat,expect,fdupes,file,findutils,fipscheck,flex,gawk,gcc,gcc12,gdbm,gettext-runtime-mini,glibc,glibc:i686,gmp,gpm,gzip,help2man,isl,keyutils,krb5-mini,libcap,libcap-ng,libdb-4_8,libeconf,libedit,libffi,libgcrypt,libgpg-error,libnsl,libnss_usrfiles,libseccomp,libselinux,libsemanage,libsepol,libtirpc,libtool,libverto,libxcrypt,libzio,linux-glibc-devel,lua-macros,lua54,m4,make,makedepend,meson,mpc,mpdecimal,mpfr,ncurses,netcfg,ninja,openssl,openssl-1_1,pam,patch,pcre2,perl,perl-Text-Unidecode,perl-gettext,permissions,pkgconf,popt,python-rpm-macros,python-rpm-packaging,python-flit-core:primary:python-packaging:primary:python-pyparsing:primary,python310:base,readline,rpm,screen,shadow,system-user-root,system-users,systemd-rpm-macros,systemtap-headers,sysuser-tools,tcl,tclap,tcpd,texinfo,timezone,update-alternatives,utempter,util-linux,which,xz,zlib,zstd,
 
 staging-required-checks-adi = installcheck
 repo_checker-project-skip = True
@@ -462,9 +465,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20220804'
-published: '20220802'
-publishing: '20220802'
+    <value>failed: ''
+published: '20220804'
+publishing: '20220804'
 testing: '20220804'
 </value>
   </attribute>
