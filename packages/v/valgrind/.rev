@@ -1312,4 +1312,12 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
     <comment>- update to 3.12.0 (bsc#1017016, FATE#321455, bsc#987635, CVE-2016-6131)</comment>
     <requestid>976045</requestid>
   </revision>
+  <revision rev="139" vrev="4">
+    <srcmd5>54b746350f722a1602109367d92c4e68</srcmd5>
+    <version>3.19.0</version>
+    <time>1659721806</time>
+    <user>dimstar_suse</user>
+    <comment>- exclude client-headers from building for non-supported architectures</comment>
+    <requestid>992608</requestid>
+  </revision>
 </revisionlist>

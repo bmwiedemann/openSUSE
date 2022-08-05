@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  3 15:20:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- exclude client-headers from building for non-supported architectures
+
+-------------------------------------------------------------------
 Wed Apr 20 09:39:21 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - fix build on SLE12

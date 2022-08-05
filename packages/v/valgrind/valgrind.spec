@@ -44,12 +44,12 @@ Patch9:         parallel-lto.patch
 Patch10:        dhat-use-datadir.patch
 BuildRequires:  automake
 BuildRequires:  pkgconfig
+ExclusiveArch:  aarch64 %{ix86} x86_64 ppc ppc64 ppc64le s390x armv7l armv7hl armv6l armv6hl
 %if "%{flavor}" == ""
 Requires:       glibc >= %{glibc_main_version}.%{glibc_major_version}
 Requires:       glibc < %{glibc_main_version}.%{lua:print(rpm.expand("%{glibc_major_version}")+1)}
 Provides:       callgrind = %{version}
 Obsoletes:      callgrind < %{version}
-ExclusiveArch:  aarch64 %{ix86} x86_64 ppc ppc64 ppc64le s390x armv7l armv7hl armv6l armv6hl
 %if %{with docs}
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
