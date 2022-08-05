@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  3 07:14:18 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- recommend pkexec in gvfs-backends. (not requires to allow customers
+  to remove pkexec) (bsc#1202070)
+
+-------------------------------------------------------------------
 Mon May 30 11:33:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.50.2:
