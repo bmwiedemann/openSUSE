@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  4 07:03:44 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable 32-bit Arm since kubernetes is not available
+
+-------------------------------------------------------------------
 Wed May 29 15:38:23 CEST 2019 - kukuk@suse.de
 
 - Fix OCI Annotation
