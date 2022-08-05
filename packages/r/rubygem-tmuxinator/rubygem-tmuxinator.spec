@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-tmuxinator
-Version:        3.0.2
+Version:        3.0.5
 Release:        0
 %define mod_name tmuxinator
 %define mod_full_name %{mod_name}-%{version}
