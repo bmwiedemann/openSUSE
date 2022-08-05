@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Jul 28 11:56:31 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.16.4
+  * CVE-2022-2031: Samba AD users can bypass certain restrictions
+    associated with changing passwords; (bsc#1201495); (bso#15047);
+  * CVE-2022-32744: Samba AD users can forge password change
+    requests for any user; (bsc#1201493); (bso#15074);
+  * CVE-2022-32745: Samba AD users can crash the server process
+    with an LDAP add or modify request; (bsc#1201492); (bso#15008);
+  * CVE-2022-32746: Samba AD users can induce a use-after-free in
+    the server process with an LDAP add or modify request;
+    (bsc#1201490); (bso#15009);
+  * CVE-2022-32742: Server memory information leak via SMB1;
+    (bsc#1201496); (bso#15085);
+
+-------------------------------------------------------------------
+Tue Jul 19 11:25:59 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.16.3
+  * Using vfs_streams_xattr and deleting a file causes a panic;
+    (bso#15099);
+  * Add support for bind 9.18; (bso#14986);
+  * logging dsdb audit to specific files does not work;
+    (bso#15076);
+  * Problem when winbind renews Kerberos; (bso#14979);
+    (bsc#1196224);
+  * Samba with new lorikeet-heimdal fails to build on gcc 12.1 in
+    developer mode; (bso#15095);
+  * Crash in streams_xattr because fsp->base_fsp->fsp_name is
+    NULL; (bso#15105);
+  * Crash in rpcd_classic - NULL pointer deference in
+    mangle_is_mangled(); (bso#15118);
+  * smbclient commands del & deltree fail with
+    NT_STATUS_OBJECT_PATH_NOT_FOUND with DFS; (bso#15100);
+    (bsc#1200556);
+  * Fix check for chown when processing NFSv4 ACL; (bso#15120);
+  * The pcap background queue process should not be stopped;
+    (bso#15082);
+  * testparm: Fix typo in idmap rangesize check; (bso#15097);
+  * net ads info returns LDAP server and LDAP server name as
+    null; (bso#15106);
+  * ldconfig: /lib64/libsmbconf.so.0 is not a symbolic link;
+    (bso#15108);
+  * CTDB child process logging does not work as expected;
+    (bso#15090);
+
+-------------------------------------------------------------------
 Tue Jul 12 10:48:47 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Update spec file to fix the optional Heimdal DC build
