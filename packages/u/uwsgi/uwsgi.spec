@@ -16,6 +16,7 @@
 #
 
 
+%{?!python_module:%define python_module() python3-%{**}}
 Name:           uwsgi
 Version:        2.0.20
 Release:        0
@@ -89,10 +90,11 @@ BuildRequires:  pcre-devel
 BuildRequires:  php7-devel
 BuildRequires:  php7-embed
 %endif
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module greenlet-devel}
 BuildRequires:  pkg-config
 BuildRequires:  postgresql-devel
-BuildRequires:  python3-devel
-BuildRequires:  python3-greenlet-devel
+BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} <= 1310
 BuildRequires:  ruby19-devel
 %endif
@@ -136,6 +138,11 @@ Provides:       uwsgi-ugreen = %{version}
 Obsoletes:      uwsgi-ugreen < 1.9.11
 Provides:       uwsgi-zergpool = %{version}
 Obsoletes:      uwsgi-zergpool < 1.9.11
+%if 0%{?suse_version} >= 1550
+# these must be the last directives before the description
+%define python_subpackage_only 1
+%python_subpackages
+%endif
 
 %description
 uWSGI is a self-healing application container server coded in pure C.
@@ -321,17 +328,38 @@ uWSGI is a self-healing application container server coded in pure C.
 
 This package contains support for Python applications using PyPy.
 
+%if 0%{suse_version} < 1550
+
 %package python3
 Summary:        Python 3 Plugin for uWSGI
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}
 Requires:       python3-base >= 3.6
+Provides:       python3-uwsgi-python3 = %{version}-%{release}
 
 %description python3
 uWSGI is a self-healing application container server coded in pure C.
 
 This package contains support for Python 3 applications via the WSGI protocol.
 
+%else
+
+%package -n python-uwsgi-python3
+Summary:        Python %{python_version} Plugin for uWSGI
+Group:          Productivity/Networking/Web/Servers
+Requires:       %{name} = %{version}
+%if "%{python_provides}" == "python3"
+Provides:       uwsgi-python3 = %{version}-%{release}
+Obsoletes:      uwsgi-python3 < %{version}-%{release}
+%endif
+# the plugin is linked to the python library, no reason the state -base explicitly
+
+%description -n python-uwsgi-python3
+uWSGI is a self-healing application container server coded in pure C.
+
+This package contains support for Python %{python_version} applications via the WSGI protocol.
+
+%endif
 
 %if 0%{?suse_version} <= 1310
 %package ruby
@@ -462,7 +490,7 @@ excluded_plugins="$excluded_plugins v8"
 %endif
 %endif
 
-# python3 module is built separately
+# python3 modules are built separately
 excluded_plugins="$excluded_plugins python"
 
 # Ruby 1.9 is no longer available after 13.1
@@ -492,8 +520,13 @@ export CFLAGS="%{optflags} -Wno-error=deprecated-declarations -I%{_includedir}/g
 %{?jobs:export CPUCOUNT=%jobs}
 python3 uwsgiconfig.py --build opensuse
 
-# Build python3 plugin
+# Build python3 plugins
+%if 0%{?suse_version} < 1550
 python3 uwsgiconfig.py --plugin plugins/python opensuse python3
+%else
+# https://uwsgi-docs.readthedocs.io/en/latest/WSGIquickstart.html#bonus-multiple-python-versions-for-the-same-uwsgi-binary
+%python_expand PYTHON=$python $python uwsgiconfig.py --plugin plugins/python opensuse ${python_flavor}
+%endif
 
 # Build Apache modules
 %if 0%{suse_version} < 1500
@@ -517,7 +550,16 @@ install -m 0644 %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{buildroot}%{_sysco
 install -m 0644 vassals/broodlord.ini %{buildroot}%{_sysconfdir}/uwsgi/vassals/broodlord.ini.example
 install -m 0644 vassals/cc.ini %{buildroot}%{_sysconfdir}/uwsgi/vassals/cc.ini.example
 install -m 0644 vassals/multi.xml %{buildroot}%{_sysconfdir}/uwsgi/vassals/multi.xml.example
+%if 0%{suse_version} < 1550
 install -D -m 0644 uwsgidecorators.py %{buildroot}%{python3_sitelib}/uwsgidecorators.py
+%else
+%{python_expand #
+install -D -m 0644 uwsgidecorators.py %{buildroot}%{$python_sitelib}/uwsgidecorators.py
+if [ "%{$python_provides}" == "python3" ]; then
+  ln -s  ${python_flavor}_plugin.so %{buildroot}%{_libdir}/uwsgi/python3_plugin.so
+fi
+}
+%endif
 install -D plugins/jvm/uwsgi.jar %{buildroot}%{_javadir}/uwsgi.jar
 install -d -m 0755 %{buildroot}/%{apache_libexecdir}
 install -m 0755 apache2/.libs/*.so %{buildroot}/%{apache_libexecdir}
@@ -700,10 +742,24 @@ install -m 0644 %{SOURCE9} %{buildroot}/%{_tmpfilesdir}/uwsgi.conf
 %defattr(-,root,root,-)
 %{_libdir}/uwsgi/pypy_plugin.so
 
+%if 0%{suse_version} < 1550
+
 %files python3
 %defattr(-,root,root,-)
 %{_libdir}/uwsgi/python3_plugin.so
 %{python3_sitelib}/uwsgidecorators.py*
+
+%else
+
+%files %{python_files uwsgi-python3}
+%defattr(-,root,root,-)
+%{_libdir}/uwsgi/%{python_flavor}_plugin.so
+%if "%{python_provides}" == "python3"
+%{_libdir}/uwsgi/python3_plugin.so
+%endif
+%{python_sitelib}/uwsgidecorators.py*
+
+%endif
 
 %if 0%{?suse_version} <= 1310
 %files ruby
