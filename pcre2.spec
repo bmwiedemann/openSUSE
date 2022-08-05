@@ -189,7 +189,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
   %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
   export LANG=POSIX
   # do not run profiling in parallel for reproducible builds (boo#1040589 boo#1102408)
-  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}" check
+  %make_build -j1 CFLAGS="%{optflags} %{cflags_profile_generate}" check
   %make_build clean
   %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
