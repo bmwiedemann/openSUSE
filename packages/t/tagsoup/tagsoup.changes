@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  6 04:27:28 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Condition for SLE-12 to avoid accidental use of modular java
+  with javapackages-tools 2.x
+
+-------------------------------------------------------------------
 Sun Mar 20 21:54:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Compile with source and target levels 8

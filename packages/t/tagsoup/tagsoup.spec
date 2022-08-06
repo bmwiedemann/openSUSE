@@ -37,6 +37,11 @@ BuildRequires:  unzip
 BuildRequires:  xalan-j2
 Requires:       javapackages-tools
 BuildArch:      noarch
+%if 0%{?suse_version} < 1500
+BuildConflicts: java >= 9
+BuildConflicts: java-devel >= 9
+BuildConflicts: java-headless >= 9
+%endif
 
 %description
 TagSoup is a SAX-compliant parser written in Java that, instead of
