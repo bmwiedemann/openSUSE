@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug  4 17:52:26 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.1:
+  + Add shortcuts for switching tabs in main window.
+  + Add shortcut to open shortcuts window.
+  + Updated translations.
+- Package gnome-shell-search-provider-gnote as noarch.
+
+-------------------------------------------------------------------
 Sun Mar 27 23:28:53 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 42.0:

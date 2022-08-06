@@ -19,7 +19,7 @@
 %define base_version 42
 
 Name:           gnote
-Version:        42.0
+Version:        42.1
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
@@ -56,6 +56,7 @@ Group:          Productivity/Office/Other
 Requires:       %{name} = %{version}
 Requires:       gnome-shell
 Supplements:    (%{name} and gnome-shell)
+BuildArch:      noarch
 
 %description -n gnome-shell-search-provider-%{name}
 It is the same note taking application, including most of the add-ins (more are
