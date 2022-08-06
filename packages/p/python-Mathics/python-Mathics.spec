@@ -31,17 +31,15 @@
 %define skip_python2 1
 %define pyname Mathics3
 Name:           python-Mathics%{psuffix}
-Version:        4.0.0
+Version:        5.0.0
 Release:        0
 Summary:        A general-purpose computer algebra system
 # Mathics itself is licensed as GPL-3.0 but it includes third-party software with MIT, BSD-3-Clause, and Apache-2.0 Licensing; also includes data from wikipedia licensed under CC-BY-SA-3.0 and GFDL-1.3
 License:        Apache-2.0 AND BSD-3-Clause AND GPL-3.0-only AND MIT
 URL:            https://mathics.github.io/
-Source:         https://github.com/mathics/Mathics/archive/%{version}/%{pyname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Revert version jump to dev branch
-Patch0:         https://github.com/Mathics3/mathics-core/commit/41dee8c9dd7b979a4d77d38a1e8fe8dc75b7638c.patch
-# PATCH-FIX-UPSTREAM python-Mathics-relax-sympy-versions.patch badshah400@gmail.com -- Relax required sympy versions, to enable tests to run on openSUSE >= 1550 where sympy is at version 1.10.x already
-Patch1:         python-Mathics-relax-sympy-versions.patch
+Source0:        https://github.com/Mathics3/mathics-core/releases/download/%{version}/%{pyname}-%{version}.tar.gz
+# File missing from tagged tarball
+Source1:        https://raw.githubusercontent.com/Mathics3/mathics-core/%{version}/requirements-cython.txt
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Django >= 1.8}
 BuildRequires:  %{python_module colorama}
@@ -52,7 +50,7 @@ BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10}
-BuildRequires:  %{python_module sympy >= 1.8}
+BuildRequires:  %{python_module sympy >= 1.10.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.8
@@ -62,8 +60,9 @@ Requires:       python-llvmlite
 Requires:       python-mpmath >= 0.19
 Requires:       python-palettable
 Requires:       python-python-dateutil
+Requires:       python-recordclass
 Requires:       python-six >= 1.10
-Requires:       python-sympy >= 1.8
+Requires:       python-sympy >= 1.10.1
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %if %{with test}
@@ -75,6 +74,7 @@ BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module llvmlite}
 BuildRequires:  %{python_module palettable}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module recordclass}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scipy}
 # /SECTION
@@ -86,15 +86,17 @@ Provides:       python-Mathics3 = %{version}
 Mathics is a general-purpose computer algebra system (CAS). It is meant to be a free, lightweight alternative to Mathematica.
 
 %prep
-%setup -q -n Mathics-%{version}
-%patch0 -p1 -R
-%patch1 -p1
+%setup -q -n %{pyname}-%{version}
+
+cp %{SOURCE1} ./
 
 # FIX SPURIOUS EXEC PERMISSIONS
 chmod -x ./mathics/data/ExampleData/{numberdata.csv,InventionNo1.xml}
+chmod -x ./mathics/packages/SciDraw/*.m
 
 # WRONG END-OF-FILE ENCODING
 sed -i "s/\r$//" ./mathics/data/ExampleData/numberdata.csv
+sed -i "s/\r$//" ./mathics/packages/SciDraw/*.m
 
 # REMOVE SHEBANGS FROM FILES INSTALLED TO NON-EXEC LOCATIONS
 pushd mathics
@@ -106,11 +108,13 @@ popd
 
 %build
 %if %{without test}
+export USE_CYTHON=1
 %python_build
 %endif
 
 %install
 %if %{without test}
+export USE_CYTHON=1
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/mathics
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
@@ -118,11 +122,8 @@ popd
 
 %if %{with test}
 %check
-# Tests need to be run from the test dir, otherwise some tests in test_files.py fail
-pushd test
-# Home page tests require django server up and running
-%pytest_arch -k 'not test_home_page'
-popd
+# Home page tests require django server up and running, test_gudermannian needs network access
+%pytest_arch -k 'not (test_home_page or test_gudermannian)'
 %endif
 
 %if %{without test}
