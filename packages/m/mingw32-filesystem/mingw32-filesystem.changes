@@ -1,7 +1,24 @@
 -------------------------------------------------------------------
+Thu Jul 28 15:22:52 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to 20220805
+- Fix for generating the source file list for the debug package (boo#1201107).
+  * Added the script 'mingw-objdump-srcfiles' to determine the
+    source files used by the package in question.
+  * The gawk script is based on a perl script from jengelh, which was
+    not adopted due to an additional runtime dependency. 
+  * With this change, *.sym files are no longer included in generated
+    debug packages. 
+  * The now obsolete runtime dependency to mingw32-cross-breakpad-tools
+    has been removed
+- Exclude 'mlang.dll' and other dll's from automatic runtime library
+  detection required for win_iconv and libqt5 packages
+- Fix spelling in *.changes
+
+-------------------------------------------------------------------
 Thu Jul 28 09:03:20 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 
-- Add 'arch-independent-package-conatins-binary-or-object' filter also
+- Add 'arch-independent-package-contains-binary-or-object' filter also
   for static libraries (boo#1201173)
 - When scanning libraries exclude non real dll file names e.g. '%s.dll'
 
@@ -107,7 +124,7 @@ Tue Aug 25 19:27:01 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
 - Update to 20200825
 - Fix
   * W: non-etc-or-var-file-marked-as-conffile /usr/libexec/rpm/fileattrs/mingw32-cmake.attr
-  * w: non-etc-or-var-file-marked-as-conffile /usr/libexec/rpm/mingw32-cmake.prov
+  * W: non-etc-or-var-file-marked-as-conffile /usr/libexec/rpm/mingw32-cmake.prov
   * W: script-without-shebang /usr/libexec/rpm/fileattrs/mingw32-cmake.attr
   * W: non-standard-group Development/Libraries
   * installing mingw32-scripts on Tumbleweed

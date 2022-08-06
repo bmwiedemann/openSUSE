@@ -31,7 +31,7 @@
 %define _rpmmacrodir %{_sysconfdir}/rpm
 %endif
 Name:           mingw32-filesystem
-Version:        20220801
+Version:        20220805
 Release:        0
 Summary:        MinGW base filesystem and environment
 License:        GPL-2.0-or-later
@@ -53,6 +53,9 @@ Source12:       mingw32-cmake.prov
 Source13:       mingw32-cmake.attr
 Source14:       macros.mingw32-cmake
 Source15:       mingw32-filesystem-rpmlintrc
+Source16:       mingw-objdump-srcfiles
+# add excluded system libraries to mingw32-find-requires.sh
+# TODO: The following provides could be removed after all packages has been rebuild
 Provides:       mingw32(bcrypt.dll)
 Provides:       mingw32(dbghelp.dll)
 Provides:       mingw32(mpr.dll)
@@ -199,6 +202,8 @@ while read LANG ; do
   done
 done < %{SOURCE11}
 
+install -m 0755 %{SOURCE16} %{buildroot}%{_bindir}/i686-w64-mingw32-objdump-srcfiles
+
 %files
 %defattr(-,root,root,-)
 %doc COPYING
@@ -218,6 +223,7 @@ done < %{SOURCE11}
 %{_rpmconfigdir}/mingw32-cmake.prov
 %{_fileattrsdir}/mingw32-cmake.attr
 %{_bindir}/mingw32-*
+%{_bindir}/i686-w64-mingw32-*
 %{_libexecdir}/mingw32-scripts
 %{_prefix}/i686-w64-mingw32/
 %{_rpmconfigdir}/mingw32-*

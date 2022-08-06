@@ -26,7 +26,6 @@ SOURCEFILE="$BUILDDIR/$target-debugsources.list"
 srcdir=`realpath $PWD`
 
 ROOT_DIR="/usr/$host/sys-root/mingw"
-SYMBOL_DIR="${ROOT_DIR}/symbols"
 SOURCE_DIR="${ROOT_DIR}/src"
 DEBUGSOURCE_DIR="${SOURCE_DIR}/debug"
 
@@ -44,14 +43,8 @@ do
 
 	echo extracting debug info from $f
 
-	# breakpad symbols
-	symfile=`"$host-gen_sym_files" "$f" "$RPM_BUILD_ROOT$SYMBOL_DIR"`
-	echo $symfile
-	# grep all listed source files belonging to this package into temporary source file list
-	cat $symfile | grep "FILE" | cut -d' ' -f3 | grep $srcdir >> $SOURCEFILE.tmp
-	# remap file path in symbol file to src debug location
-	# we remap all files to make finding src files from other packages possible
-	sed -i "s,$BUILDDIR,$DEBUGSOURCE_DIR,g" $symfile
+	# grep all listed source files belonging to this package into temporary source file list.
+	"$host-objdump" -Wi "$f" | "$host-objdump-srcfiles" | grep $srcdir >>"$SOURCEFILE.tmp"
 
 	"$host-objcopy" --only-keep-debug "$f" "$f.debug" || :
 	pushd `dirname $f`
@@ -69,10 +62,6 @@ find $RPM_BUILD_ROOT -type f \
 	-or -name "*.dll.mdb" \
 | sort \
 | sed -n -e "s#^$RPM_BUILD_ROOT##p" > $BUILDDIR/$target-debugfiles.list
-
-if [ -e "$RPM_BUILD_ROOT/$SYMBOL_DIR" ]; then
-	echo "$SYMBOL_DIR" >> $BUILDDIR/$target-debugfiles.list
-fi
 
 echo creating debugsource file structure
 
@@ -94,9 +83,6 @@ do
 	fi
 	echo copying $f to $o
 	install -m 644 $f $o
-	# create debugsource.list
-	# we do not add each single file, see below
-	#echo $o | sed "s,${RPM_BUILD_ROOT},,g" >> $SOURCEFILE
 done
 rm $SOURCEFILE.tmp
 
