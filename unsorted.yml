@@ -7965,16 +7965,11 @@ unsorted:
   - jupyter-ipyscales 
   - jupyter-ipyvolume 
   - jupyter-ipywebrtc 
-  - jupyter-jupyter-full-width 
-  - jupyter-jupyter-themer 
   - jupyter-jupyter-wysiwyg 
-  - jupyter-jupyter_cms 
   - jupyter-jupyter_core-filesystem: [i586] 
-  - jupyter-jupyter_dashboards 
   - jupyter-jupyter_highlight_selected_word 
   - jupyter-jupyter_latex_envs 
   - jupyter-jupyter_nbextensions_configurator 
-  - jupyter-jupyterbgnotify 
   - jupyter-jupyterlab: [i586] 
   - jupyter-jupyterlab-filesystem: [i586] 
   - jupyter-jupyterlab-ipyscales 
@@ -12359,6 +12354,7 @@ unsorted:
   - libmlt-7-7 
   - libmlt-devel 
   - libmlt7-data 
+  - libmlt7-module-qt6 
   - libmlt7-modules 
   - libmlx4-1-32bit: [x86_64] 
   - libmlx5-1-32bit: [x86_64] 
@@ -23053,11 +23049,12 @@ unsorted:
   - python310-falcon 
   - python310-fanficfare 
   - python310-fann2 
+  - python310-fastapi 
   - python310-fastbencode 
   - python310-fastcluster 
   - python310-fasteners 
   - python310-fastimport 
-  - python310-fastjsonschema 
+  - python310-fastjsonschema: [i586] 
   - python310-fastnumbers 
   - python310-fastremap 
   - python310-fasttext 
@@ -23387,6 +23384,7 @@ unsorted:
   - python310-junos-eznc 
   - python310-jupyter: [i586] 
   - python310-jupyter-jupyterlab-server: [i586] 
+  - python310-jupyter-jupyterlab-server-openapi 
   - python310-jupyter-jupyterlab-server-test 
   - python310-jupyter-kernel-test 
   - python310-jupyter-nbutils 
@@ -26209,6 +26207,7 @@ unsorted:
   - python38-falcon 
   - python38-fanficfare 
   - python38-fann2 
+  - python38-fastapi 
   - python38-fastbencode 
   - python38-fastcluster 
   - python38-fasteners 
@@ -26587,6 +26586,7 @@ unsorted:
   - python38-jupyter-client 
   - python38-jupyter-core 
   - python38-jupyter-jupyterlab-server 
+  - python38-jupyter-jupyterlab-server-openapi 
   - python38-jupyter-jupyterlab-server-test 
   - python38-jupyter-kernel-test 
   - python38-jupyter-nbutils 
@@ -29524,6 +29524,7 @@ unsorted:
   - python39-falcon 
   - python39-fanficfare 
   - python39-fann2 
+  - python39-fastapi 
   - python39-fastbencode 
   - python39-fastcluster 
   - python39-fasteners 
@@ -29901,6 +29902,7 @@ unsorted:
   - python39-jupyter-client 
   - python39-jupyter-core 
   - python39-jupyter-jupyterlab-server 
+  - python39-jupyter-jupyterlab-server-openapi 
   - python39-jupyter-jupyterlab-server-test 
   - python39-jupyter-kernel-test 
   - python39-jupyter-nbutils 
@@ -44077,6 +44079,7 @@ unsorted:
   - yaru-icon-theme 
   - yasm 
   - yasm-devel 
+  - yast-in-container: [x86_64] 
   - yast2-adcommon-python 
   - yast2-adsi 
   - yast2-aduc 
