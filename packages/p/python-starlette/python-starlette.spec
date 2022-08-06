@@ -42,21 +42,21 @@ BuildRequires:  %{python_module itsdangerous}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-anyio >= 3.4.0
+Requires:       python-typing_extensions >= 3.10.0
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module aiofiles}
 BuildRequires:  %{python_module aiosqlite}
 BuildRequires:  %{python_module databases}
-BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module graphene}
 BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-multipart}
 BuildRequires:  %{python_module trio}
 %endif
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 %python_subpackages
 
 %description

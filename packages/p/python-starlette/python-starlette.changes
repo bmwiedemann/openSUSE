@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  5 11:37:43 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add missing runtime dependencies anyio and typing_extensions
+- Remove unnecessary build dependencies flake8 and pytest-cov
+
+-------------------------------------------------------------------
 Fri Jul 29 10:21:51 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
 - enable multibuild for test
