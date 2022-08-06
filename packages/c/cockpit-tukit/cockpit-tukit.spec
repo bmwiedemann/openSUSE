@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-tukit
-Version:        0.0.3~git10.d8579a3
+Version:        0.0.3~git28.b446f50
 Release:        0%{?dist}
 Summary:        Cockpit module for Transactional Update
 License:        LGPL-2.1-or-later

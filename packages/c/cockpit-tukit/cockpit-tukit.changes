@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 05 13:16:27 UTC 2022 - jtomasiak@suse.com
+
+- Update to version 0.0.3~git28.b446f50:
+  * Add missing plurals
+  * Added translation using Weblate (Portuguese)
+  * Translated using Weblate (Polish)
+  * Add Swedish Translation
+  * added/corrected de.po for german
+  * initial version of czech translation
+  * Add support for dict-format snapshots List
+  * Fix URIError: malformed URI sequence
+  * Reformat spec to match Factory
+
+-------------------------------------------------------------------
 Mon Jun 20 11:06:02 UTC 2022 - jtomasiak@suse.com
 
 - Update to version 0.0.3~git10.d8579a3:

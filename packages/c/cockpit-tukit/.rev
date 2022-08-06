@@ -28,4 +28,12 @@
     <comment>update changes file to match Factory requirements (forwarded request 983984 from jtomasiak)</comment>
     <requestid>983985</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9f1d605aaa86dbb78684b9bb454965b3</srcmd5>
+    <version>0.0.3~git28.b446f50</version>
+    <time>1659816475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993348</requestid>
+  </revision>
 </revisionlist>
