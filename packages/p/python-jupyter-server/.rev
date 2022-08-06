@@ -245,4 +245,12 @@
     <comment></comment>
     <requestid>990956</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>5d58fca6968c9214f3094f96913a0966</srcmd5>
+    <version>1.18.1</version>
+    <time>1659816486</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing pytest-timeout in -test package</comment>
+    <requestid>993388</requestid>
+  </revision>
 </revisionlist>

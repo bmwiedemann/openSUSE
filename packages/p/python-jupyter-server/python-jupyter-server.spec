@@ -97,6 +97,7 @@ Requires:       python-jupyter-server = %{version}
 Requires:       python-pytest >= 6
 Requires:       python-pytest-console-scripts
 Requires:       python-pytest-mock
+Requires:       python-pytest-timeout
 Requires:       python-pytest-tornasync
 Requires:       python-requests
 

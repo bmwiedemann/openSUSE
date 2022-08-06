@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  5 19:58:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add missing pytest-timeout in -test package
+
+-------------------------------------------------------------------
 Mon Jul 25 00:12:10 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.18.1:
