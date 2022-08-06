@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 06 11:23:30 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1659623026.7aaa3d1:
+  * spec: Only exclude 27-consoles-vmware on ppc64le
+  * spec: Exclude t/27-consoles-vmware.t on OBS
+  * Fix CPUs assignment in QEMU 6.20
+  * t: Remove useless rmtree
+  * wheels: Pick up Perl modules and tests
+
+-------------------------------------------------------------------
 Thu Aug 04 03:40:30 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1659553242.de857e0:

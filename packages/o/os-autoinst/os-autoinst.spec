@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1659553242.de857e0
+Version:        4.6.1659623026.7aaa3d1
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -172,15 +172,18 @@ Convenience package providing os-autoinst + s390 worker jumphost dependencies.
 # and exclude known flaky tests in OBS check
 # https://progress.opensuse.org/issues/52652
 # 07-commands: https://progress.opensuse.org/issues/60755
-# 27-consoles-vmware: https://progress.opensuse.org/issues/114881
 # 29-backend-driver: https://progress.opensuse.org/issues/105061
-for i in 07-commands 13-osutils 14-isotovideo 18-qemu-options 18-backend-qemu 27-consoles-vmware 29-backend-driver 99-full-stack; do
+for i in 07-commands 13-osutils 14-isotovideo 18-qemu-options 18-backend-qemu 29-backend-driver 99-full-stack; do
     rm t/$i.t
 done
 # exclude unnecessary author tests
 rm xt/00-tidy.t
 # Remove test relying on a git working copy
 rm xt/30-make.t
+# https://progress.opensuse.org/issues/114881
+%ifarch ppc64le
+rm t/27-consoles-vmware.t
+%endif
 
 %build
 %define __builder ninja
