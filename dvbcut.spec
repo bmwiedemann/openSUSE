@@ -1,7 +1,7 @@
 #
 # spec file for package dvbcut
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dvbcut
-Version:        0.7.3
+Version:        0.7.4
 Release:        0
 Summary:        Qt application for cutting parts out of DVB streams
 License:        GPL-2.0-or-later AND LGPL-2.1-only
