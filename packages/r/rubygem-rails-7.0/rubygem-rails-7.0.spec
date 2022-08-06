@@ -24,13 +24,14 @@
 #
 
 Name:           rubygem-rails-7.0
-Version:        7.0.3
+Version:        7.0.3.1
 Release:        0
 %define mod_name rails
 %define mod_full_name %{mod_name}-%{version}
 %define mod_version_suffix -7.0
 # MANUAL
 #!BuildIgnore: ruby3.1-rubygem-sprockets-3.7
+BuildRequires:  %{rubygem activejob >= 7.0}
 BuildRequires:  %{rubygem activemodel:7.0}
 BuildRequires:  %{rubygem railties:7.0}
 
@@ -44,6 +45,7 @@ BuildRequires:  %{rubygem sqlite3:1 >= 1.4}
 BuildRequires:  %{rubygem stimulus-rails}
 BuildRequires:  %{rubygem turbo-rails}
 BuildRequires:  %{rubygem web-console }
+
 # It says 3.0, but to avoid any question for the 3.7 we
 # still have in Factory, let's go newer
 BuildRequires:  %{rubygem sprockets > 3.8}

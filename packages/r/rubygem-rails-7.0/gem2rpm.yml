@@ -74,6 +74,7 @@
     #!BuildIgnore: ruby3.1-rubygem-sprockets-3.7
     BuildRequires: %{rubygem railties:7.0}
     BuildRequires: %{rubygem activemodel:7.0}
+    BuildRequires: %{rubygem activejob >= 7.0}
 
     # keep in sync with below
     BuildRequires: %{rubygem puma:5}
@@ -85,6 +86,7 @@
     BuildRequires: %{rubygem stimulus-rails}
     BuildRequires: %{rubygem jbuilder}
     BuildRequires: %{rubygem web-console }
+    
     # It says 3.0, but to avoid any question for the 3.7 we 
     # still have in Factory, let's go newer
     BuildRequires: %{rubygem sprockets > 3.8}
@@ -105,4 +107,5 @@
     Requires: %{rubygem jbuilder}
     Requires: %{rubygem web-console }
     Requires: %{rubygem sprockets > 3.8}
+    Requires: %{rubygem activejob >= 7.0}
 
