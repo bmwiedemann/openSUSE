@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Fri Aug  5 04:54:23 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- Add more explicit warning till more official and stable place
+  for containers are created
+- 4.5.10
+
+-------------------------------------------------------------------
+Wed Aug  3 13:29:49 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- add support for opensuse tumbleweed and ALP
+- 4.5.9
+
+-------------------------------------------------------------------
+Mon Jul 25 15:31:45 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Set `LIBSTORAGE_ROOTPREFIX` to improve libstorage-ng probing
+  (bsc#1199840).
+- 4.5.8
+
+-------------------------------------------------------------------
+Wed Jul 20 10:02:16 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Set `LIBSTORAGE_LOCKFILE_ROOT` to the target root system
+- 4.5.7
+
+-------------------------------------------------------------------
+Tue Jul 19 10:07:48 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Enable mount propagation between the container and the host
+- 4.5.6
+
+-------------------------------------------------------------------
+Fri Jun 17 13:51:27 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Use the SLE BCI based container images
+- 4.5.5
+
+-------------------------------------------------------------------
+Thu Jun  9 13:06:24 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Properly package symlinks
+- 4.5.4
+
+-------------------------------------------------------------------
+Wed Jun  8 14:56:33 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added visual feedback when downloading the container image
+  in background
+- Updated documentation
+- 4.5.3
+
+-------------------------------------------------------------------
+Tue Jun  7 08:30:54 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added "yast2_web_container" script which runs YaST inside
+  a container with web (HTTPS) access
+- Added *.desktop file to start containerized YaST from desktop
+- 4.5.2
+
+-------------------------------------------------------------------
+Mon May 30 16:50:16 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Print the executed podman/docker command for easier
+  testing or debugging
+- 4.5.1
+
+-------------------------------------------------------------------
+Fri May 27 08:39:16 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Initial version (bsc#1199840)
+- 4.5.0

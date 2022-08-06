@@ -1,0 +1,5 @@
+<package name="yast-in-container" project="openSUSE:Factory">
+  <title>Scripts for running YaST in a container</title>
+  <description></description>
+  <devel project="YaST:Head" package="yast-in-container"/>
+</package>
