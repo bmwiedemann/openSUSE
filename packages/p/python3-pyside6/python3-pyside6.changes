@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  6 09:27:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use CMAKE_SKIP_RPATH when building python3-shiboken6 to avoid
+  non-existent RUNPATH entries in the library.
+
+-------------------------------------------------------------------
 Sun Jun 19 19:11:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.3.1. Check the installed changes-6.3.1 file for the

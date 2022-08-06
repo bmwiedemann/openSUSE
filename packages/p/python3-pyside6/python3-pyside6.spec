@@ -144,6 +144,9 @@ pushd sources/%{pyside_flavor}
   -DPYTHON_EXECUTABLE:STRING=python3 \
   -DNUMPY_INCLUDE_DIR:STRING=%{python_sitearch}/numpy/core/include \
   -DCMAKE_BUILD_RPATH_USE_ORIGIN:BOOL=ON \
+%if "%{pyside_flavor}" == "shiboken6"
+  -DCMAKE_SKIP_RPATH:BOOL=ON \
+%endif
   -DQFP_NO_STRIP:BOOL=ON
 
 %{qt6_build}
@@ -180,6 +183,14 @@ export PATH=%{_qt6_bindir}:$PATH
 
 # Needed by the shiboken tests
 export LD_LIBRARY_PATH=%{buildroot}%{_qt6_libdir}:$LD_LIBRARY_PATH
+
+%if "%{pyside_flavor}" == "shiboken6"
+# Since we need CMAKE_SKIP_RPATH to avoid having bogus RUNPATH in the shiboken libraries,
+# It needs to know the path to a couple tests folders
+for dir in libminimal libother libsample libsmart; do
+  export LD_LIBRARY_PATH=$PWD/sources/shiboken6/shiboken6/tests/$dir:$LD_LIBRARY_PATH
+done
+%endif
 
 %if "%{pyside_flavor}" == "pyside6"
 %define xvfb_command xvfb-run -s "-screen 0 1600x1200x16 -ac +extension GLX +render -noreset" \\
