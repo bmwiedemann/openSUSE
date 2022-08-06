@@ -1,7 +1,7 @@
 #
 # spec file for package jupyter-jupyterlab-server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,36 +16,40 @@
 #
 
 
-%define skip_python2 1
 %define oldpython python
 Name:           jupyter-jupyterlab-server
-Version:        2.10.2
+Version:        2.15.0
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
 URL:            https://github.com/jupyterlab/jupyterlab_server
 Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_server/jupyterlab_server-%{version}.tar.gz
 Source100:      jupyter-jupyterlab-server-rpmlintrc
+# PATCH-FIX-OPENSUSE jupyterlab-server-fix-testing.patch code@bnavigator.de -- remove color, failing deprecation warnings, and used nbconvert vendored mistune
+Patch0:         jupyterlab-server-fix-testing.patch
 BuildRequires:  %{python_module Babel}
-BuildRequires:  %{python_module Jinja2 >= 2.10}
-BuildRequires:  %{python_module base >= 3.5}
-BuildRequires:  %{python_module entrypoints >= 0.2.2}
+BuildRequires:  %{python_module Jinja2 >= 3.0.3}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatchling >= 0.25}
+BuildRequires:  %{python_module importlib-metadata >= 3.6 if %python-base < 3.10}
 BuildRequires:  %{python_module json5}
 BuildRequires:  %{python_module jsonschema >= 3.0.1}
 BuildRequires:  %{python_module jupyter_server >= 1.4}
 BuildRequires:  %{python_module packaging > 0.9}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Babel
-Requires:       python-Jinja2 >= 2.10
-Requires:       python-entrypoints >= 0.2.2
+Requires:       python-Jinja2 >= 3.0.3
 Requires:       python-json5
 Requires:       python-jsonschema >= 3.0.1
-Requires:       python-jupyter_server >= 1.4
 Requires:       python-packaging
 Requires:       python-requests
+Requires:       (python-jupyter-server >= 1.8 with python-jupyter-server < 2)
+%if 0%{?python_version_nodots} < 310
+Requires:       python-importlib-metadata >= 3.6
+%endif
 Provides:       python-jupyterlab-server = %{version}-%{release}
 Obsoletes:      python-jupyterlab-server < %{version}-%{release}
 Provides:       python-jupyterlab_server = %{version}-%{release}
@@ -74,7 +78,7 @@ Obsoletes:      jupyter-jupyterlab_server < %{version}-%{release}
 # SECTION test requirements
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module jupyter-server-test}
-BuildRequires:  %{python_module openapi-core >= 0.13.8}
+BuildRequires:  %{python_module openapi-core >= 0.14.2}
 BuildRequires:  %{python_module pytest >= 5.3.2}
 BuildRequires:  %{python_module pytest-console-scripts}
 BuildRequires:  %{python_module ruamel.yaml}
@@ -84,7 +88,11 @@ BuildRequires:  %{python_module wheel}
 %python_subpackages
 
 %description
-This package is used to launch an application built using JupyterLab.
+JupyterLab Server sits between JupyterLab and Jupyter Server,
+and provides a set of REST API handlers and utilities that are
+used by JupyterLab. It is a separate project in order to
+accommodate creating JupyterLab-like applications from a more
+limited scope.
 
 %package test
 Summary:        The jupyterlab_server[test] requirements
@@ -93,42 +101,49 @@ Obsoletes:      python-jupyterlab-server-test < %{version}-%{release}
 Requires:       python-ipykernel
 Requires:       python-jupyter-server-test
 Requires:       python-jupyterlab-server = %{version}
-Requires:       python-openapi-core >= 0.14.0
+Requires:       python-openapi-core >= 0.14.2
 Requires:       python-pytest >= 5.3.2
 Requires:       python-pytest-console-scripts
 Requires:       python-ruamel.yaml
 Requires:       python-strict-rfc3339
-Requires:       python-wheel
 
 %description test
 Metapackage for the jupyterlab_server[test] requirement specifier
 
+%package openapi
+Summary:        The jupyterlab_server[openapi]] extra
+Provides:       python-jupyterlab-server-openapi = %{version}-%{release}
+Obsoletes:      python-jupyterlab-server-openapi < %{version}-%{release}
+Requires:       python-jupyterlab-server = %{version}
+Requires:       python-openapi-core >= 0.14.2
+
+%description openapi
+Metapackage for the jupyterlab_server[openapi] extra
+
 %prep
 %autosetup -p1 -n jupyterlab_server-%{version}
-# remove color and coverage flags from pytest
-sed -i '/addopts/ d' pyproject.toml
-# mistune is imported in tests and normally installed as transitive requirement
-# from jupyter-server/nbconvert, but we had to vendorize it -- gh#jupyter/nbconvert#1685
-sed -i jupyterlab_server/tests/test_licenses_api.py \
-  -e 's/import mistune/from nbconvert.filters.markdown_mistune import mistune/'
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest --pyargs jupyterlab_server -ra
+# pytest error when trying to import tornasync plugin pulled in by jupyter-server-test (?)
+%pytest -p no:tornasync
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/jupyterlab_server/
-%{python_sitelib}/jupyterlab_server-%{version}-py*.egg-info/
+%{python_sitelib}/jupyterlab_server
+%{python_sitelib}/jupyterlab_server-%{version}*-info
 
 %files %{python_files test}
+%license LICENSE
+
+%files %{python_files openapi}
 %license LICENSE
 
 %changelog

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Aug  5 19:44:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.15.0
+  * Suppress tornado 6.2 beta warnings #285 (@blink1073)
+  * Add compat for openapi-core 0.15 #281 (@blink1073)
+- Release 2.14.0
+  * proper setup for the fallback logger #269 (@rvalieris)
+  * Switch to hatch backend #274 (@blink1073)
+- Release 2.13.0
+  * Audit uses of print #261 (@blink1073)
+  * Switch to importlib.metadata to list entry points #264
+    (@fcollonval)
+  * Add git-blame-ignore-revs #258 (@blink1073)
+- Release 2.12.0
+  * Make openapi optional and lazy #253 (@blink1073)
+  * Adds notebook_starts_kernel option to make "canStartKernel"
+    configurable #248 (@jweill-aws)
+  * Clean up tests and add public openapi_spec #247 (@blink1073)
+- Release 2.11.2
+  * Resolve paths in tests #245 (@blink1073)
+- Release 2.11.1
+  * Restore pytest_plugin #243 (@blink1073)
+- Release 2.11.0
+  * Also look in static for license files #238 (@bollwyvl)
+- Add jupyterlab-server-fix-testing.patch
+
+-------------------------------------------------------------------
 Fri Dec 31 18:04:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.10.2
