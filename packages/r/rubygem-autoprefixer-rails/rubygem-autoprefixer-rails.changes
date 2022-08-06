@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug  4 12:55:00 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 10.4.7.0
+ see installed CHANGELOG.md
+
+  ## 10.4.7.0
+  * Fixed `print-color-adjust` support in Firefox.
+  * Fixed `print-color-adjust` support.
+  * Fixed `NaN` in grid (by @SukkaW).
+  
+
+-------------------------------------------------------------------
 Tue Jan 25 06:29:33 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 10.4.2.0
