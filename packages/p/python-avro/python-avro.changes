@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug  4 09:32:11 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 1.11.1 (from GitHub release notes):
+  - Avro specification
+    - Clarify which names are allowed to be qualified with
+      namespaces
+    - Inconsistent behaviour on types as invalid names
+    - Clarify how fullnames are created, with example
+    - IDL: add syntax to create optional fields
+    - Improve docs for logical type annotation
+  - Python
+    - Scale assignment optimization
+    - "Scale" property from decimal object
+    - Byte reading in avro.io does not assert bytes read
+    - validate the default value of an enum field
+    - Pass LogicalType to BytesDecimalSchema
+  - Website
+    - Website refactor
+    - Document IDL support in IDEs
+
+-------------------------------------------------------------------
 Tue Nov 16 13:31:30 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable test_minimum_speed which is unstable in OBS
