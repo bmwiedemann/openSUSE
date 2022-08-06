@@ -32,6 +32,7 @@ Requires:       python-Django >= 2.2
 Requires:       python-arrow
 Requires:       python-blessed
 Requires:       python-django-picklefield
+Requires:       python-redis
 Suggests:       python-croniter
 Suggests:       python-django-q-rollbar >= 0.1
 Suggests:       python-django-q-sentry >= 0.1
