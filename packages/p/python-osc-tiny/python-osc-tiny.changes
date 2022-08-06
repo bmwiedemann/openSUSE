@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug  3 09:48:04 UTC 2022 - Marina Latini <marina.latini@suse.com>
+
+- Buildrequires cached-property always, not only for Python lower than 3.8
+  * This is needed due to a mismatching python-rpm-macros
+
+-------------------------------------------------------------------
+Wed Aug  3 08:01:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix conditional Requires and BuildRequires.
+
+-------------------------------------------------------------------
 Tue Aug  2 15:45:47 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - It's PyYAML, not pyYAML.

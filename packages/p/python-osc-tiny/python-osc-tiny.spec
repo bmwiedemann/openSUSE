@@ -41,12 +41,16 @@ Requires:       python-lxml
 Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires:       python-requests
+Requires:       python-responses
 Suggests:       openssh
 BuildArch:      noarch
-%if %python_version_nodots < 38
+# Using 'if' instead of 'with' because the latter requires rpm >= 4.14
+%if 0%{?suse_version} >= 1550
+BuildRequires:  %{python_module cached-property if %python-base < 3.8}
+%else
 BuildRequires:  %{python_module cached-property}
-Requires:       python-cached-property
 %endif
+Requires:       (python-cached-property if python-base < 3.8)
 %python_subpackages
 
 %description
