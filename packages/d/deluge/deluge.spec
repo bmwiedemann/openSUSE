@@ -18,9 +18,9 @@
 
 %global __requires_exclude typelib\\(GConf\\)
 
-%define _version 2.0
+%define _version 2.1
 Name:           deluge
-Version:        2.0.5
+Version:        2.1.1
 Release:        0
 Summary:        BitTorrent Client
 License:        SUSE-GPL-3.0-with-openssl-exception
@@ -43,7 +43,7 @@ BuildRequires:  python3-Twisted-tls >= 17.1
 BuildRequires:  python3-Twisted >= 17.1
 %endif
 BuildRequires:  python3-devel
-BuildRequires:  python3-libtorrent-rasterbar >= 1.1.1
+BuildRequires:  python3-libtorrent-rasterbar >= 1.2
 BuildRequires:  python3-rjsmin
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-slimit
@@ -59,7 +59,7 @@ Requires:       python3-Twisted >= 17.1
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
-Requires:       python3-libtorrent-rasterbar >= 1.1.1
+Requires:       python3-libtorrent-rasterbar >= 1.2
 Requires:       python3-pyOpenSSL
 Requires:       python3-pyxdg
 Requires:       python3-rencode
@@ -84,6 +84,7 @@ Requires:       python3-pycairo
 %else
 Requires:       python3-cairo
 %endif
+%{?systemd_ordering}
 
 %description
 Deluge is a Free Software, cross-platform BitTorrent client on
@@ -101,7 +102,10 @@ sed -i '/^#!/d' deluge/path_chooser_common.py deluge/ui/gtk3/path_combo_chooser.
 
 %install
 %py3_install
+install -D -m 644 packaging/systemd/deluged.service %{buildroot}%{_userunitdir}/deluged.service
+install -D -m 644 packaging/systemd/deluge-web.service %{buildroot}%{_userunitdir}/deluge-web.service
 %fdupes %{buildroot}%{python3_sitelib}/
+%fdupes %{buildroot}%{_datadir}/icons/hicolor/
 
 mv %{buildroot}%{python3_sitelib}/%{name}/i18n %{buildroot}%{_datadir}/locale
 %find_lang %{name}
@@ -119,12 +123,26 @@ done
 popd
 %fdupes %{buildroot%}%{_datadir}/icons
 
+%pre
+%systemd_user_pre deluged.service deluge-web.service
+
+%post
+%systemd_user_post deluged.service deluge-web.service
+
+%preun
+%systemd_user_preun deluged.service deluge-web.service
+
+%postun
+%systemd_user_postun deluged.service deluge-web.service
+
 %files
 %license LICENSE
 %doc AUTHORS CHANGELOG.md README.md
 %{_bindir}/%{name}*
 %{python3_sitelib}/%{name}/
 %{python3_sitelib}/%{name}-*
+%{_userunitdir}/deluged.service
+%{_userunitdir}/deluge-web.service
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_datadir}/icons/hicolor/*/apps/%{name}-panel.*
