@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Thu Aug  4 09:02:37 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 2.11.0:
+  * Made a number of improvements in SFTP glob support, with thanks to Github
+    user LuckyDams for all the help working out these changes!
+    * Added a new glob_sftpname() method which returns glob matches together
+      with attribute information, avoiding the need for a caller to make
+      separate calls to stat() on the returned results.
+    * Switched from listdir() to scandir() to reduce the number of stat()
+      operations required while finding matches.
+    * Added code to remove duplicates when glob() is called with multiple
+      patterns that match the same path.
+    * Added a cache of directory listing and stat results to improve performance
+      when matching patterns with overlapping paths.
+    * Fixed an "index out of range" bug in recursive glob matching and aligned
+      it better with results reeturned by UNIX shells.
+    * Changed matching to ignore inaccessible or non-existent paths in a glob
+      pattern, to allow accessible paths to be fully explored before returning
+      an error. The error handler will now be called only if a pattern results
+      in no matches, or if a more serious error occurs while scanning.
+  * Changed SFTP makedirs() method to work better cases where parts of requested
+    path already exist but don't allow read access. As long as the entire path
+    can be created, makedirs() will succeed, even if some directories on the
+    path don't allow their contents to be read. Thanks go to Peter Rowlands for
+    providing this fix.
+  * Replaced custom Diffie Hellman implementation in AsyncSSH with the one in
+    the cryptography package, resulting in an over 10x speedup. Thanks go to
+    Github user iwanb for suggesting this change.
+  * Fixed AsyncSSH to re-acquire GSS credentials when performing key
+    renegotiation to avoid expired credentials on long-lived connections. Thanks
+    go to Github user PromyLOPh for pointing out this issue and suggesting a fix.
+  * Fixed GSS MIC to work properly with GSS key exchange when AsyncSSH is
+    running as a server. This was previously fixed on the client side, but a
+    similar fix for the server was missed.
+  * Changed connection timeout unit tests to work better in environments where a
+    firewall is present. Thanks go to Stefano Rivera for reporting this issue.
+  * Improved unit tests of Windows SSPI GSSAPI module.
+  * Improved speed of unit tests by reducing the number of key generation calls.
+    RSA key generation in particular has gotten much more expensive in OpenSSL 3.
+- Changes from 2.10.1:
+  * Added a workaround for a bug in dropbear which can improperly reject
+    full-sized data packets when compression is enabled. Thanks go to Matti
+    Niemenmaa for reporting this issue and helping to reproduce it.
+  * Added support for "Match Exec" in config files and updated AsyncSSH API
+    calls to do config parsing in an executor to avoid blocking the event loop
+    if a "Match Exec" command doesn't return immediately.
+  * Fixed an issue where settings associated with server channels set when
+    creating a listener rather than at the time a new channel is opened were not
+    always being applied correctly.
+  * Fixed config file handling to be more consistent with OpenSSH, making all
+    relative paths be evaluated relative to ~/.ssh and allowing references to
+    config file patterns which don't match anything to only trigger a debug
+    message rather than an error. Thanks go to Caleb Ho for reporting this issue!
+  * Updated minimum required version of cryprography package to 3.1, to allow
+    calls to it to be made without passing in a "backend" argument. This was
+    missed back in the 2.9 release. Thanks go to Github users sebby97 and
+    JavaScriptDude for reporting this issue!
+- Changes from 2.10.0:
+  * Added new get_server_auth_methods() function which returns the set of auth
+    methods available for a given user and SSH server.
+  * Added support for new line_echo argument when creating a server channel
+    which controls whether input in the line editor is echoed to the output
+    immediately or under the control of the application, allowing more control
+    over the ordering of input and output.
+  * Added explicit support for RSA SHA-2 certificate algorithms. Previously
+    SHA-2 signatures were supported using the original
+    ssh-rsa-cert-v01@openssh.com algorithm name, but recent versions of SSH now
+    disable this algorithm by default, so the new SHA-2 algorithm names need to
+    be advertised for SHA-2 signatures to work when using OpenSSH certificates.
+  * Improved handling of config file loading when options argument is used
+    allowing config loading to be overridden at connect() time even if the
+    options passed in referenced a config file.
+  * Improved speed of unit tests by avoiding some network timeouts when
+    connecting to invalid addresses.
+  * Merged GitHub workflows contributed by GitHub user hexchain to run unit
+    tests and collect code coverage information on multiple platforms and Python
+    versions. Thanks so much for this work!
+  * Fixed issue with GSS auth unit tests hanging on Windows.
+  * Fixed issue with known_hosts matching when ProxyJump is being used. Thanks
+    go to GitHub user velavokr for reporting this and helping to debug it.
+  * Fixed type annotations for SFTP client and server open methods. Thanks go to
+    Marat Sharafutdinov for reporting this!
+
+-------------------------------------------------------------------
 Mon Jan 31 01:37:54 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip more tests that are unstable. 
