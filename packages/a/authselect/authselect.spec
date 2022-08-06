@@ -30,6 +30,7 @@ Summary:        Configures authentication and identity sources from supported pr
 License:        GPL-3.0-or-later
 URL:            https://github.com/authselect/authselect
 Source0:        %{name}-%{version}.tar.gz
+Patch0:         authselect-usrmerge.patch
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -79,7 +80,8 @@ Requires(posttrans):coreutils
 Requires(posttrans):findutils
 Requires(posttrans):gawk
 Requires(posttrans):grep
-Requires(posttrans):pam >= 1.3.1-23
+Requires(posttrans):pam
+# >= 1.3.1-23
 Requires(posttrans):sed
 Requires(posttrans):systemd
 # Package split

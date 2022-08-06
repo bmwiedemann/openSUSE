@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  5 19:39:16 UTC 2022 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- added authselect-usrmerge.patch to adapt authselect for the /etc - /usr/etc merge
+
+-------------------------------------------------------------------
 Sat Jun 25 17:49:26 UTC 2022 - Matthew Davis opensuse@virtual.drop.net
 
 - Update to version 1.4.0+git.0.2c30265:
