@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  5 09:14:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add pip-run-suse-ring1-no-nbformat.patch for removal of nbformat
+  from Ring1 (pip-run will be in Ring1 for setuptools:test)
+
+-------------------------------------------------------------------
 Wed Jul 13 14:27:22 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v8.8.1

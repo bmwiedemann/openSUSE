@@ -1,5 +1,5 @@
 #
-# spec file for package python-pip-run
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -23,6 +24,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+# Disables installing nbformat for tests in Ring1 (see also Patch1)
+%bcond_with ringdisabled
 
 Name:           python-pip-run%{psuffix}
 Version:        8.8.1
@@ -34,28 +37,32 @@ Source:         https://files.pythonhosted.org/packages/source/p/pip-run/pip-run
 # Needs the wheels for path and path.py for testing
 Source10:       https://files.pythonhosted.org/packages/py3/p/path.py/path.py-12.5.0-py3-none-any.whl
 Source11:       https://files.pythonhosted.org/packages/py3/p/path/path-16.4.0-py3-none-any.whl
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools >= 56}
-BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
+# PATCH-FEATURE-OPENSUSE pip-run-suse-ring1-no-nbformat.patch code@bnavigator.de -- Don't test with nbformat if not available
+Patch1:         pip-run-suse-ring1-no-nbformat.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 56}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-Requires:       python-pip >= 19.3
+BuildRequires:  python-rpm-macros
 Requires:       python-autocommand
-Requires:       python-path >= 15.1
 Requires:       python-packaging
+Requires:       python-path >= 15.1
+Requires:       python-pip >= 19.3
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %if 0%{?python_version_nodots} < 38
 Requires:       python-importlib-metadata
 %endif
 %if %{with test}
+BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module pip-run = %{version}}
 BuildRequires:  %{python_module pytest >= 6}
-BuildRequires:  %{python_module nbformat}
-BuildRequires:  %{python_module Pygments}
 BuildRequires:  ca-certificates
+%if !%{with ringdisabled}
+BuildRequires:  %{python_module nbformat}
+%endif
 %endif
 BuildArch:      noarch
 %python_subpackages
@@ -76,7 +83,7 @@ pip-run is a compliment to Pip and Virtualenv and Setuptools, intended to more
 readily address the on-demand needs.
 
 %prep
-%setup -q -n pip-run-%{version}
+%autosetup -p1 -n pip-run-%{version}
 
 %if !%{with test}
 %build
