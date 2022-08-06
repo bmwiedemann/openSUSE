@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug  5 16:54:51 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 1.4.0
+  * Initial support for the 32-bit RISC-V (RV32) has landed. (d9db6bc)
+  * mold now demangles Rust symbols in error messages thanks to @eddyb's rust-demangle.c. (22e1bba)
+  * --export-dynamic-symbol and --export-dynamic-symbol-list are now supported for
+    the sake of compatibility with LLVM lld. With these options, you can specify
+    symbols that should be exported using glob pattern. (e115aae)
+  * [x86-64] PLT entries created by mold now always begins with ENDBR64 instruction
+    to improve compatibility with Intel IBT (Indirect Branch Tracking.) (e3e371d)
+  * mold now defines __dso_handle symbol. The lack of this linker-synthesized symbol
+    caused a link error with GCC in some environments (#507). (764d757)
+- Remove fix-tests.patch.
+
+-------------------------------------------------------------------
 Mon Aug  1 05:35:29 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add fix-tests.patch which fixes tests on i586.
