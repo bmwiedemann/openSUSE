@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Aug  6 09:45:00 AEST 2021 - John Zaitseff <J.Zaitseff@zap.org.au>
+
+- New upstream release of Star Traders: version 7.18.
+  * From version 7.17: fixed two TOCTOU (time-of-check / time-of-use)
+    bugs between checking for traditional data directory and creating a
+    data directory later.  Also fixed a bug when the HOME environment
+    variable is empty.
+  * From version 7.17: Updated Brazilian Portuguese, Norwegian Bokmål,
+    Swedish, French, Esperanto, Serbian, German and English translations.
+  * Removed the <icon> line from trader.appdata.xml so that the icon is
+    taken from the trader.desktop file instead.
+- Include trader.keyring to allow for upstream source verification.
+- Remove prerelease conditional.
+  * Prereleases haven't been used for over five years, nor is it expected
+    that an openSUSE package will be made from one even if there is a
+    future prerelease.
+
+-------------------------------------------------------------------
 Thu Apr 29 18:59:55 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 7.16

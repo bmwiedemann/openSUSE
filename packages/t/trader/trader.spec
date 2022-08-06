@@ -1,8 +1,8 @@
 #
 # spec file for package trader
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2012-20 John Zaitseff <J.Zaitseff@zap.org.au>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2012-22 John Zaitseff <J.Zaitseff@zap.org.au>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,20 +20,19 @@
 # ***********************************************************************
 # *                                                                     *
 # *            Star Traders: A Game of Interstellar Trading             *
-# *               Copyright (C) 1990-2020, John Zaitseff                *
+# *               Copyright (C) 1990-2022, John Zaitseff                *
 # *                                                                     *
 # ***********************************************************************
 
 # Author: John Zaitseff <J.Zaitseff@zap.org.au>
-# $Id: 93048e804cac81e200f0e08e124be95a7f556632 $
+# $Id: 99f93cf1589a39d7579741fa302eb9e9818a2e5b $
 
 # This file is distributed under the same licence as Star Traders itself:
 # the GNU General Public License, version 3 or later.
 
-%define upstream_version   7.16
-%define normalised_version 7.16
+%define upstream_version   7.18
+%define normalised_version 7.18
 %define rpm_release_num    1
-%define is_prerelease      0
 
 Name:           trader
 Version:        %{normalised_version}
@@ -41,13 +40,12 @@ Release:        %{rpm_release_num}%{?dist}
 Summary:        Star Traders, a simple game of interstellar trading
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Strategy/Turn Based
-Url:            https://www.zap.org.au/projects/trader/
+URL:            https://www.zap.org.au/projects/trader/
 
-%if 0%{?is_prerelease}
-Source0:        https://ftp.zap.org.au/pub/trader/unix/prerelease/trader-%{upstream_version}.tar.xz
-%else
 Source0:        https://ftp.zap.org.au/pub/trader/unix/trader-%{upstream_version}.tar.xz
-%endif
+Source1:        https://ftp.zap.org.au/pub/trader/unix/trader-%{upstream_version}.tar.xz.sig
+# Source2 downloaded from https://www.zap.org.au/~john/pubkey.asc
+Source2:        trader.keyring
 
 BuildRequires:  gcc
 BuildRequires:  gettext
@@ -55,8 +53,8 @@ BuildRequires:  gperf
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(ncurses)
 
-Requires(post):   hicolor-icon-theme
-Requires(postun): hicolor-icon-theme
+Requires(post): hicolor-icon-theme
+Requires(postun):hicolor-icon-theme
 Recommends:     %{name}-lang = %{version}
 
 %description
