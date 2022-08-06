@@ -743,4 +743,18 @@ Only build sdl2 module.
     <comment>- Update to 7.8.0</comment>
     <requestid>984851</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>51572fcb36a67a36d40cbc20c8fc6d99</srcmd5>
+    <version>7.8.0</version>
+    <time>1659816495</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream changes to build a Qt 6 based mod:
+  * 0001-Split-to-allow-installing-Qt5-and-Qt6-in-parallel-80.patch
+  * 0002-Remove-deprecated-C-register-keyword-815.patch
+  * 0003-Move-CMake-code-for-testing-to-the-right-position-fo.patch
+  * 0004-Add-MLT_REPOSITORY_DENY-envvar-to-skip-plugin-loadin.patch
+  * 0005-Avoid-to-load-both-qt-modules-816.patch
+</comment>
+    <requestid>993436</requestid>
+  </revision>
 </revisionlist>

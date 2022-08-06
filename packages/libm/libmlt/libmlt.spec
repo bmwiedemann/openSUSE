@@ -26,6 +26,10 @@
 %define sover_pp 7
 %define lversion_pp 7.8.0
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
+# Qt 6 is not available in Leap 15.3
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+%bcond_without Qt6
+%endif
 Name:           %{libname}
 Version:        7.8.0
 Release:        0
@@ -35,9 +39,19 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.mltframework.org
 Source0:        https://github.com/mltframework/mlt/archive/v%{version}.tar.gz#/%{_name}-%{version}.tar.gz
 Patch0:         0001-Another-take-on-fixing-the-wcrtomb-issue.patch
+# Improvements to allow building both the Qt 5 and Qt 6 mods and prevent loading both at the same time
+Patch1:         0001-Split-to-allow-installing-Qt5-and-Qt6-in-parallel-80.patch
+Patch2:         0002-Remove-deprecated-C-register-keyword-815.patch
+Patch3:         0003-Move-CMake-code-for-testing-to-the-right-position-fo.patch
+Patch4:         0004-Add-MLT_REPOSITORY_DENY-envvar-to-skip-plugin-loadin.patch
+Patch5:         0005-Avoid-to-load-both-qt-modules-816.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+%if %{with Qt6} && 0%{?sle_version}
+# Qt 6 requires a compiler that fully supports c++-17
+BuildRequires:  gcc10-c++
+%endif
 BuildRequires:  ladspa-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -46,6 +60,13 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+%if %{with Qt6}
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6SvgWidgets)
+BuildRequires:  cmake(Qt6Xml)
+%endif
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(frei0r)
@@ -148,6 +169,25 @@ transcoders and web streamers.
 The functionality of the system is provided via an assortment of
 tools, XML authoring components, and an plug-in based API.
 
+%if %{with Qt6}
+# Creating a distinct Qt 6 module avoids pulling Qt 6 when installing the
+# libmlt modules package
+%package -n %{libname}%{sover}-module-qt6
+Summary:        Qt 6 module for the MLT multimedia framework
+Group:          Productivity/Multimedia/Video/Editors and Convertors
+Requires:       %{libname}%{sover}-modules
+
+%description -n %{libname}%{sover}-module-qt6
+MLT is a multimedia framework for television broadcasting. It
+provides a toolkit for broadcasters, video editors, media players,
+transcoders and web streamers.
+
+The functionality of the system is provided via an assortment of
+tools, XML authoring components, and an plug-in based API.
+
+This package provides a Qt 6 module for MLT.
+%endif
+
 %package -n %{libname}%{sover}-data
 Summary:        Architecture-independent data files for the MLT multimedia framework
 Group:          Productivity/Multimedia/Video/Editors and Convertors
@@ -176,6 +216,10 @@ This package contains python bindings.
 %autosetup -p1 -n %{_name}-%{version}
 
 %build
+%if %{with Qt6} && 0%{?sle_version}
+export CC=gcc-10 CXX=g++-10
+%endif
+
 # WARNING: building opencv module causes multicore issues - boo#1068792
 %cmake \
 %if 0%{?suse_version} > 1501
@@ -186,7 +230,11 @@ This package contains python bindings.
    -DGPL=ON \
    -DGPL3=ON \
    -DSWIG_PYTHON=ON \
-   -DCMAKE_SKIP_RPATH=1
+   -DCMAKE_SKIP_RPATH=1 \
+%if %{with Qt6}
+   -DMOD_QT6=ON
+%endif
+
 %cmake_build
 
 %install
@@ -196,11 +244,15 @@ This package contains python bindings.
 for MODULE in %{buildroot}%{_libdir}/mlt-%{sover}/libmlt*.so; do
   echo $MODULE
   MODULEDIR=%{_datadir}/mlt-%{sover}/$(echo $MODULE | sed 's|%{buildroot}%{_libdir}/mlt-%{sover}/libmlt\(.*\).so|\1|')
+  if [[ "$MODULEDIR" =~ "qt6" ]]; then
+    echo "Ignoring $MODULEDIR"
+    continue
+  fi
   echo $MODULEDIR
   if [ -e %{buildroot}$MODULEDIR ]; then
     echo Done $MODULEDIR
     echo $MODULEDIR >> module_data.dirs
-  fi;
+  fi
 done
 
 #Link man melt to man melt-7
@@ -243,6 +295,15 @@ popd
 %license GPLv3 COPYING GPL
 %{_libdir}/%{_name}-%{sover}
 %dir %{_datadir}/%{_name}-%{sover}/
+%exclude %{_libdir}/%{_name}-%{sover}/libmltqt6.so
+
+%if %{with Qt6}
+%files -n %{libname}%{sover}-module-qt6
+%dir %{_libdir}/%{_name}-%{sover}
+%{_libdir}/%{_name}-%{sover}/libmltqt6.so
+%dir %{_datadir}/%{_name}-%{sover}/
+%{_datadir}/%{_name}-%{sover}/qt6/
+%endif
 
 %files -n %{libname}%{sover}-data
 %dir %{_datadir}/%{_name}-%{sover}/

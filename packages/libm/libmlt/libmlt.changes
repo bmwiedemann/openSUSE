@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug  5 16:16:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream changes to build a Qt 6 based mod:
+  * 0001-Split-to-allow-installing-Qt5-and-Qt6-in-parallel-80.patch
+  * 0002-Remove-deprecated-C-register-keyword-815.patch
+  * 0003-Move-CMake-code-for-testing-to-the-right-position-fo.patch
+  * 0004-Add-MLT_REPOSITORY_DENY-envvar-to-skip-plugin-loadin.patch
+  * 0005-Avoid-to-load-both-qt-modules-816.patch
+
+-------------------------------------------------------------------
 Thu Jun 23 15:20:03 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 7.8.0
