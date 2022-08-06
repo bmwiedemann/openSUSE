@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  3 21:00:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.4.0
+  * Fix import nbformat.current by @shadchin in #269
+  * Add mypy support by @blink1073 in #270
+  * Packaging updates
+
+-------------------------------------------------------------------
 Wed Mar 23 19:04:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update dependencies 

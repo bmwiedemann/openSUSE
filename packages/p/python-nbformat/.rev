@@ -107,4 +107,15 @@
     <comment></comment>
     <requestid>964362</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>71944b542e793163fdd25244ba688bed</srcmd5>
+    <version>5.4.0</version>
+    <time>1659816503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.0
+  * Fix import nbformat.current by @shadchin in #269
+  * Add mypy support by @blink1073 in #270
+  * Packaging updates</comment>
+    <requestid>992642</requestid>
+  </revision>
 </revisionlist>

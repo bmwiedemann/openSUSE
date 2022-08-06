@@ -18,28 +18,25 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define doc_ver 5.2.0
-%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
-%else
-%bcond_with libalternatives
-%endif
 Name:           python-nbformat
-Version:        5.2.0
+Version:        5.4.0
 Release:        0
 Summary:        The Jupyter Notebook format
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/nbformat
 # PyPI sdist has only some schema tests, get the full test suite from GitHub sources
-Source:         %{url}/archive/%{version}.tar.gz#/nbformat-%{version}.tar.gz
+Source:         https://github.com/jupyter/nbformat/archive/%{version}.tar.gz#/nbformat-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-BuildRequires:  unzip
 Requires:       jupyter-nbformat = %{version}
-Requires:       python-jsonschema > 2.5.0
+Requires:       python-fastjsonschema
+Requires:       python-jsonschema > 2.6
 Requires:       python-jupyter_core
-Requires:       python-traitlets >= 4.1
+Requires:       python-traitlets >= 5.1
 Provides:       python-jupyter_nbformat = %{version}
 Obsoletes:      python-jupyter_nbformat < %{version}
 BuildArch:      noarch
@@ -52,11 +49,12 @@ Requires(postun):update-alternatives
 %endif
 # SECTION test requirements
 BuildRequires:  %{pythons}
-BuildRequires:  %{python_module jsonschema > 2.5.0}
+BuildRequires:  %{python_module fastjsonschema}
+BuildRequires:  %{python_module jsonschema > 2.6}
 BuildRequires:  %{python_module jupyter_core}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}
-BuildRequires:  %{python_module traitlets >= 4.1}
+BuildRequires:  %{python_module traitlets >= 5.1}
 # /SECTION
 %python_subpackages
 
@@ -83,6 +81,7 @@ This package provides the jupyter components.
 
 %prep
 %setup -q -n nbformat-%{version}
+sed -i 's/--color=yes//' pyproject.toml
 
 %build
 %python_build
@@ -95,8 +94,7 @@ This package provides the jupyter components.
 %fdupes %{buildroot}%{_docdir}/jupyter-nbformat/
 
 %check
-# we don't have the alternative validator, cannot fallback from it
-%pytest -k "not (fastjsonschema or test_fallback_validator_with_iter_errors_using_ref)"
+%pytest
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.
