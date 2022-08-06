@@ -31,7 +31,7 @@
 %define _rpmmacrodir %{_sysconfdir}/rpm
 %endif
 Name:           mingw64-filesystem
-Version:        20220801
+Version:        20220805
 Release:        0
 Summary:        MinGW base filesystem and environment
 License:        GPL-2.0-or-later
@@ -53,6 +53,9 @@ Source12:       mingw64-cmake.prov
 Source13:       mingw64-cmake.attr
 Source14:       macros.mingw64-cmake
 Source15:       mingw64-filesystem-rpmlintrc
+Source16:       mingw-objdump-srcfiles
+# add excluded system libraries to mingw64-find-requires.sh
+# TODO: The following provides could be removed after all packages has been rebuild
 Provides:       mingw64(bcrypt.dll)
 Provides:       mingw64(dbghelp.dll)
 Provides:       mingw64(mpr.dll)
@@ -200,6 +203,8 @@ while read LANG ; do
   done
 done < %{SOURCE11}
 
+install -m 0755 %{SOURCE16} %{buildroot}%{_bindir}/x86_64-w64-mingw32-objdump-srcfiles
+
 %files
 %defattr(-,root,root,-)
 %doc COPYING
@@ -218,6 +223,7 @@ done < %{SOURCE11}
 %{_rpmconfigdir}/mingw64-cmake.prov
 %{_fileattrsdir}/mingw64-cmake.attr
 %{_bindir}/mingw64-*
+%{_bindir}/x86_64-w64-mingw32-*
 %{_libexecdir}/mingw64-scripts
 %{_prefix}/x86_64-w64-mingw32/
 %{_rpmconfigdir}/mingw64-*

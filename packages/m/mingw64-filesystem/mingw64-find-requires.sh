@@ -31,16 +31,24 @@ filelist=`sed "s/['\"]/\\\&/g"`
 
 libs_to_exclude+="
     advapi32
+    bcrypt
     cfgmgr32
     comctl32
     comdlg32
     crypt32
+    d2d1
+    d3d11
+    d3d12
     d3d8
     d3d9
+    dbghelp
+    dcomp
     ddraw
     dnsapi
     dsound
     dwmapi
+    dwrite
+    dxgi
     dxva2
     evr
     gdi32
@@ -53,6 +61,8 @@ libs_to_exclude+="
     ksuser
     mf
     mfplat
+    mlang
+    mpr
     mpr
     mscms
     mscoree
@@ -62,8 +72,10 @@ libs_to_exclude+="
     msvcr90
     msvcrt
     mswsock
+    ncrypt
     netapi32
     odbc32
+    odbccp32
     ole32
     oleacc
     oleaut32
@@ -75,14 +87,17 @@ libs_to_exclude+="
     shell32
     shlwapi
     user32
+    userenv
     usp10
+    uxtheme
     version
+    winhttp
     wininet
     winmm
     wldap32
     ws2_32
     wsock32
-    winhttp
+    wtsapi32
 "
 
 exclude_pattern=""
