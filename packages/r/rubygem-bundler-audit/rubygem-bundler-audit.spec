@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-bundler-audit
-Version:        0.9.0.1
+Version:        0.9.1
 Release:        0
 %define mod_name bundler-audit
 %define mod_full_name %{mod_name}-%{version}

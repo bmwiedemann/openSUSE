@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Aug  4 13:00:44 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.9.1
+ see installed ChangeLog.md
+
+  ### 0.9.1 / 2022-05-19
+  
+  #### CLI
+  
+  * Improve the readability of the suggested gem versions to upgrade to
+    (pull #331).
+  
+  #### Rake Task
+  
+  * Fixed a regression introduced in 0.9.0 where the `bundler:audit` rake task
+    was not exiting with an error status code if vulnerabilities were found.
+    Now when the `bundler-audit` command fails, the rake task will also exit with
+    the `bundler-audit` command's error code.
+  * If the `bundler-audit` command could not be found for some reason raise the
+    {Bundler::Audit::Task::CommandNotFound} exception.
+  
+
+-------------------------------------------------------------------
 Tue Jan 25 06:43:14 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 0.9.0.1
