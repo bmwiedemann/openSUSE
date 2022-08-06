@@ -60,6 +60,7 @@ Recommends:     ntfsprogs
 Recommends:     reiserfs
 Recommends:     udftools
 Recommends:     xfsprogs
+Recommends:     pkexec
 %if !0%{?is_opensuse}
 BuildRequires:  translation-update-upstream
 %endif
@@ -90,8 +91,6 @@ export GKSUPROG="pkexec"
 %make_install
 
 install -Dm0644 %{SOURCE98} %{buildroot}%{_datadir}/polkit-1/actions/org.opensuse.policykit.%{name}.policy
-# Here we remove upstream policy file since we have our own
-rm %{buildroot}%{_datadir}/polkit-1/actions/org.gnome.%{name}.policy
 
 %suse_update_desktop_file %{name}
 %fdupes %{buildroot}%{_datadir}
