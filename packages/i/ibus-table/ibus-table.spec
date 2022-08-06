@@ -17,7 +17,7 @@
 
 
 Name:           ibus-table
-Version:        1.16.9
+Version:        1.16.11
 Release:        0
 Summary:        The Table engine for IBus platform
 License:        LGPL-2.1-or-later
@@ -77,6 +77,14 @@ make %{?_smp_mflags}
 %{_ibus_componentdir}/table.xml
 %{_mandir}/man1/%{name}-createdb.1.gz
 %{_datadir}/metainfo/ibus-table.appdata.xml
+%{_datadir}/icons/hicolor/16x16/apps/ibus-table.png
+%{_datadir}/icons/hicolor/22x22/apps/ibus-table.png
+%{_datadir}/icons/hicolor/32x32/apps/ibus-table.png
+%{_datadir}/icons/hicolor/48x48/apps/ibus-table.png
+%{_datadir}/icons/hicolor/64x64/apps/ibus-table.png
+%{_datadir}/icons/hicolor/128x128/apps/ibus-table.png
+%{_datadir}/icons/hicolor/256x256/apps/ibus-table.png
+%{_datadir}/icons/hicolor/scalable/apps/ibus-table.svg
 
 %files devel
 %{_libdir}/pkgconfig/%{name}.pc

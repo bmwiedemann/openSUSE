@@ -344,4 +344,21 @@
     <comment></comment>
     <requestid>985580</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e2a699445439cb11d8b0ea460e807b1d</srcmd5>
+    <version>1.16.11</version>
+    <time>1659816515</time>
+    <user>dimstar_suse</user>
+    <comment>update: 1.16.10 -&gt; 1.16.11
+- Remove hashbang from chinese_variants.py and tabcreatedb.py
+  * gh#mike-fabian/ibus-table#118
+
+update: 1.16.9 -&gt; 1.6.10
+- Add png versions of the ibus-table.svg icon
+- Add (remote) icon to ibus-table.appdata.xml
+- Add screenshot to ibus-table.appdata.xml
+
+feat: use _service files to automate fetching sources</comment>
+    <requestid>993546</requestid>
+  </revision>
 </revisionlist>

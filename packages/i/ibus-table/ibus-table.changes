@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Aug  6 15:27:27 UTC 2022 - Gordon Leung <pirateclip@protonmail.com> - 1.16.11
+
+update: 1.16.10 -> 1.16.11
+- Remove hashbang from chinese_variants.py and tabcreatedb.py
+  * gh#mike-fabian/ibus-table#118
+
+-------------------------------------------------------------------
+Fri Aug  5 20:17:23 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 1.16.9 -> 1.6.10
+- Add png versions of the ibus-table.svg icon
+- Add (remote) icon to ibus-table.appdata.xml
+- Add screenshot to ibus-table.appdata.xml
+
+-------------------------------------------------------------------
+Mon Aug  1 04:21:05 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+feat: use _service files to automate fetching sources
+
+-------------------------------------------------------------------
 Sat Jun 25 18:07:26 UTC 2022 - Gordon Leung <pirateclip@protonmail.com> - 1.16.9
 
 update: 1.13.3 -> 1.16.9
