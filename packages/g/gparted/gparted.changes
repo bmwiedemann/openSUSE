@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  6 13:00:33 UTC 2022 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Recommend pkexec
+- Remove removal of upstream polkit action, it is not being installed by default
+
+-------------------------------------------------------------------
 Tue Mar 29 06:50:58 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 1.4.0:
