@@ -200,6 +200,7 @@ FileProvides: /usr/bin/mkisofs mkisofs
 FileProvides: /usr/bin/node nodejs-default
 FileProvides: /usr/bin/openssl openssl
 FileProvides: /usr/bin/perl perl-base
+FileProvides: /usr/bin/pkexec pkexec
 FileProvides: /usr/bin/pkg-config pkgconf-pkg-config
 Substitute: pkg-config pkgconf-pkg-config
 FileProvides: /usr/bin/glxinfo Mesa-demo-x
