@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 05 13:17:14 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220805.0414dd16:
+  * gocd: keep LEO group name in botmaster
+  * gocd: more rename from LEO to ALP
+  * gocd: LEO is replaced with ALP
+
+-------------------------------------------------------------------
+Thu Aug 04 15:07:32 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220804.2601ff93:
+  * Dont use garbled patches for test fixture
+
+-------------------------------------------------------------------
 Thu Aug 04 11:21:01 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220804.db4d05c0:
