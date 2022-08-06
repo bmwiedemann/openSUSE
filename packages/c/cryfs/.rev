@@ -80,4 +80,13 @@
     <comment></comment>
     <requestid>957027</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>3219ec5b83d34f05c0dd977fb7bb82e1</srcmd5>
+    <version>0.11.2</version>
+    <time>1659816483</time>
+    <user>dimstar_suse</user>
+    <comment>- add upstream signing key and verify source signature
+</comment>
+    <requestid>993534</requestid>
+  </revision>
 </revisionlist>

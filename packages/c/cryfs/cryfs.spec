@@ -27,6 +27,9 @@ Summary:        Cryptographic filesystem for the cloud
 License:        LGPL-3.0-only
 URL:            https://www.cryfs.org/
 Source:         https://github.com/cryfs/cryfs/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://github.com/cryfs/cryfs/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+# 0x5D5EC7BC6F1443EC2AF7177A9E6C996C991D25E1
+Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_atomic-devel >= 1.65.1
