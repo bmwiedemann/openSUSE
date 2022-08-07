@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug  6 21:30:32 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Set CMAKE_SKIP_RPATH to avoid incorrect and unneeded
+  RUNPATH in the openobex apps
+- Spec cleanup
+
+-------------------------------------------------------------------
 Thu Jul  6 20:10:14 UTC 2017 - jengelh@inai.de
 
 - Fix RPM groups.

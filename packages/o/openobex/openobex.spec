@@ -1,7 +1,7 @@
 #
 # spec file for package openobex
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           openobex
 Version:        1.7.2
 Release:        0
 Summary:        Object Exchange (OBEX) Protocol
-License:        GPL-2.0+ AND LGPL-2.1+
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://openobex.sourceforge.net/
+URL:            http://openobex.sourceforge.net/
 Source:         http://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}-Source.tar.gz
 Patch1:         openobex-1.7.1-fix_udev_rules.patch
 Patch2:         xopen-source.patch
@@ -46,7 +46,7 @@ to exchange all kind of objects, like files, pictures, calendar entries
 
 %package -n libopenobex2
 Summary:        Open Source Implementation of the Object Exchange (OBEX) Protocol
-License:        GPL-2.0+ AND LGPL-2.1+
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 Provides:       %{name} = %{version}-%{release}
 Obsoletes:      %{name} < %{version}-%{release}
@@ -59,7 +59,7 @@ to exchange all kind of objects, like files, pictures, calendar entries
 
 %package apps
 Summary:        Open Source Implementation of the Object Exchange (OBEX) Protocol
-License:        GPL-2.0+ AND LGPL-2.1+
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Web/Utilities
 
 %description apps
@@ -67,7 +67,7 @@ Various applications and ools using the Object Exchange (OBEX) Protocol librarie
 
 %package devel
 Summary:        Development package for openobex
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libopenobex2 = %{version}
 
@@ -75,9 +75,8 @@ Requires:       libopenobex2 = %{version}
 Files needed for software development using openobex.
 
 %prep
-%setup -q -n openobex-%{version}-Source
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n openobex-%{version}-Source
+
 # openobex runs some tests with g++
 sed -i -e 's:openobex C:openobex C CXX:' CMakeLists.txt
 # do not compile and install the udev part
@@ -87,25 +86,31 @@ sed -i -e '4 iHTML_TIMESTAMP=NO' doc/Doxyfile.in
 
 %build
 %cmake \
-	-DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name}
-make %{?_smp_mflags}
-make %{?_smp_mflags} openobex-apps
+  -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} \
+  -DCMAKE_SKIP_RPATH=ON
+
+%cmake_build
+%cmake_build openobex-apps
 
 %install
 %cmake_install
+
 find %{buildroot} -type f -name "*.la" -delete -print
+
 %fdupes %{buildroot}%{_docdir}
+
 # don't ship obex_test program, that is for testing purposes only
 # and has some problems (multiple buffer overflows etc.)
-rm -f %{buildroot}%{_bindir}/obex_test
-rm -f %{buildroot}%{_mandir}/man1/obex_test.1*
+rm %{buildroot}%{_bindir}/obex_test
+rm %{buildroot}%{_mandir}/man1/obex_test.1*
 
 %post -n libopenobex2 -p /sbin/ldconfig
 %postun -n libopenobex2 -p /sbin/ldconfig
 
 %files -n libopenobex2
+%license COPYING COPYING.LIB
 # NEWS is empty
-%doc AUTHORS COPYING COPYING.LIB ChangeLog README
+%doc AUTHORS ChangeLog README
 %{_libdir}/libopenobex.so.*
 
 %files apps
