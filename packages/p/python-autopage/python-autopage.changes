@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  4 09:29:45 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 0.5.1:
+  * integration tests: Increase timeout for subprocess to exit
+
+-------------------------------------------------------------------
 Wed Feb 23 15:24:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - skip end-to-end test, they hang in OBS 
