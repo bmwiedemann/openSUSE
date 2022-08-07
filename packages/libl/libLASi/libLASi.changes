@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug  6 19:21:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Disable RPATH when building libLASi. The option adds a bogus
+  RUNPATH entry to the library.
+- Spec cleanup
+
+-------------------------------------------------------------------
 Tue Jun  1 08:30:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add GCC 11 build fix:

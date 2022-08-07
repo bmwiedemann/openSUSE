@@ -1,7 +1,7 @@
 #
 # spec file for package libLASi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Library to write UTF-8 strings to Postscript stream
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://unifont.org/lasi/
+URL:            https://unifont.org/lasi/
 Source:         http://download.sourceforge.net/lasi/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM libLASi-link_gobject2.patch aloisio@gmx.com -- self-explanatory
 Patch0:         libLASi-link_gobject2.patch
@@ -109,8 +109,10 @@ This package provides the header files necessary for development with
 %build
 %cmake \
   -DCMAKE_BUILD_TYPE=Release \
-  -Ddocdir=%{_defaultdocdir}/%{name}-%{version}
-make %{?_smp_mflags}
+  -Ddocdir=%{_defaultdocdir}/%{name}-%{version} \
+  -DUSE_RPATH=OFF
+
+%cmake_build
 
 %install
 %cmake_install
@@ -120,11 +122,7 @@ make %{?_smp_mflags}
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %files -n %{name}%{sover}
-%if 0%{?suse_version} > 1315
 %license COPYING
-%else
-%doc COPYING
-%endif
 %doc AUTHORS ChangeLog.* NEWS README README.release
 %{_libdir}/%{name}.so.%{sover}*
 
