@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug  4 13:08:31 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.11.0
+ see installed CHANGELOG
+
+  === 1.11.0 (2022-08-02)
+  
+  * Support :freeze_template_literals option for configuring whether to add .freeze to template literal strings (casperisfine) (#33)
+  
+  * Support :chain_appends option for chaining appends to the buffer variable (casperisfine, jeremyevans) (#32)
+  
+  * Avoid unnecessary defined? usage on Ruby 3+ when using the :ensure option (jeremyevans)
+  
+
+-------------------------------------------------------------------
 Fri Dec 11 03:11:59 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.10.0
