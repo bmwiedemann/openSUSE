@@ -623,4 +623,13 @@
     <comment>KDE Gear 22.04.3</comment>
     <requestid>987724</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>c7379288883b6cd71e0dcde0bbcbaaa1</srcmd5>
+    <version>22.04.3</version>
+    <time>1659890037</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change to fix issues detected by CMake 3.24:
+  * 0001-Fix-pimcommon-CMake.patch</comment>
+    <requestid>993604</requestid>
+  </revision>
 </revisionlist>

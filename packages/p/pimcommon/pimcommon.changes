@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug  7 07:28:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream change to fix issues detected by CMake 3.24:
+  * 0001-Fix-pimcommon-CMake.patch
+
+-------------------------------------------------------------------
 Tue Jul  5 17:04:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 22.04.3
