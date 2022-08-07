@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Aug  4 13:22:51 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.4.9
+ see installed NEWS
+
+  == 1.4.9 - 2022-07-31
+  
+  This is a bug fix release of 1.4.8. All 1.4.8 users should be upgraded
+  to 1.4.9.
+  
+  === Fixes
+  
+    * Fixed a regression bug in 1.4.8 that PkgConfig.have_package can't
+      detect nonexistent package.
+  
+  == 1.4.8 - 2022-07-30
+  
+  === Improvements
+  
+    * Added support for showing found package version.
+  
+
+-------------------------------------------------------------------
 Tue Jan 25 07:19:26 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.4.7

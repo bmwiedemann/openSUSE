@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-pkg-config
-Version:        1.4.7
+Version:        1.4.9
 Release:        0
 %define mod_name pkg-config
 %define mod_full_name %{mod_name}-%{version}
