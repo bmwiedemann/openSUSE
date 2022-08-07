@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Aug 2 12:00:00 UTC 2022 - cunix@mail.de
+
+- Update to 3.4.5
+
+  Added:
+  * Expose "tile_texture" property in TilesetEditorContext
+
+  Changed:
+  * XR: Update Meta hand tracking version
+
+  Fixed:
+  * X11 "OS.is_window_maximized()"
+  * Properly check for fullscreen toggle made through the Window Manager
+  * Crash in AudioServer when switching audio devices
+    with different audio channels count
+  * EditorProperty icon overlapping text with checkbox
+  * Custom class icon when it inherits from a script
+  * UndoRedo in Gradient editor
+  * Editor undo history for function name autocompletion
+  * FileDialog: Fix support for changing directory in
+    "user://" and "res://" modes
+  * RichTextLabel: Fix implementation of "remove_line()"
+  * glTF texture filename decoding
+  * Document that accumulated input is disabled by default
+    This is actually due to a regression in 3.4.
+    It's kept disabled in this release for compatibility,
+    but will be enabled by default in 3.5.
+  * GLES2: Unpack blend shape arrays when necessary
+  * GLES3: Unbind vertex buffer before calculating blend shapes
+  * Portals: Force full check on adding moving object
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.4.5/Godot_v3.4.5-stable_changelog_chrono.txt
+
+-------------------------------------------------------------------
 Wed Jun 29 11:22:45 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Fix name of installable binaries

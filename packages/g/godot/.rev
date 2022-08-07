@@ -246,4 +246,12 @@
     <comment>- Fix name of installable binaries</comment>
     <requestid>991888</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0ca321a023f885bf85c3a8191df4c382</srcmd5>
+    <version>3.4.5</version>
+    <time>1659890044</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.4.5</comment>
+    <requestid>993565</requestid>
+  </revision>
 </revisionlist>
