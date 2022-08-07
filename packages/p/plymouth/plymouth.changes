@@ -1,8 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug  4 01:50:22 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 22.02.122+60.52b0494:
+  src: Run through uncrustify.
+  scripts: Diff less.
+  scripts: Update uncrustify config.
+  src: Drop vim: lines.
+  ply-utils: Drop linux/fs.h include.
+  scripts: Add -B to interdiff in check-format.
+- Rebase plymouth-log-on-default.patch;
+- Rebase plymouth-screen-twice-scale-on-160DPI-higher.patch;
+
+-------------------------------------------------------------------
 Wed Jul 20 03:50:22 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
 - Update to version 0.9.5~git20220719.9e72df3:
-  * Make use of standard --runstatedir flag vs custom --with-runtimedir
+  Make use of standard --runstatedir flag vs custom --with-runtimedir
 
 -------------------------------------------------------------------
 Mon Jul 11 13:01:49 UTC 2022 - Fabian Vogt <fvogt@suse.com>

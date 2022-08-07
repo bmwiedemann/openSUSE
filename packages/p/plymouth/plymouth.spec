@@ -23,7 +23,7 @@
 %global soversion 5
 
 Name:           plymouth
-Version:        0.9.5~git20220719.9e72df3
+Version:        22.02.122+60.52b0494
 Release:        0
 Summary:        Graphical Boot Animation and Logger
 License:        GPL-2.0-or-later

@@ -997,4 +997,12 @@ plymouth-branding-openSUSE (forwarded request 114125 from gary_lin)</comment>
     <comment></comment>
     <requestid>991664</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>0dbe194e59116a8ce848fc02ba6cf7a1</srcmd5>
+    <version>22.02.122+60.52b0494</version>
+    <time>1659890027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993316</requestid>
+  </revision>
 </revisionlist>
