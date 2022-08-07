@@ -93,4 +93,15 @@
 </comment>
     <requestid>972708</requestid>
   </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>84c796e7de213f2fc274f8c31e882ec2</srcmd5>
+    <version>12.0.1</version>
+    <time>1659890041</time>
+    <user>dimstar_suse</user>
+    <comment>- Add openmp-Remove-omptarget-soname.patch to fix rpmlint issue:
+  Upstream decided to remove the soname from libomptarget.so (the
+  interface is apparently not stable yet), so we can still package
+  it in libomp-devel if we port that back.</comment>
+    <requestid>993564</requestid>
+  </revision>
 </revisionlist>

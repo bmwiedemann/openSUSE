@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug  6 21:51:40 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add openmp-Remove-omptarget-soname.patch to fix rpmlint issue:
+  Upstream decided to remove the soname from libomptarget.so (the
+  interface is apparently not stable yet), so we can still package
+  it in libomp-devel if we port that back.
+
+-------------------------------------------------------------------
 Sun Apr 24 20:52:29 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Don't override default linker flags. (We were losing -Wl,-z,now.)

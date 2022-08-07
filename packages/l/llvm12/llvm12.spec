@@ -128,6 +128,8 @@ Patch26:        lld-default-sha1.patch
 Patch27:        llvm-exegesis-link-dylib.patch
 # Fix lookup of targets in installed CMake files. (boo#1180748, https://reviews.llvm.org/D96670)
 Patch33:        CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch
+# Backport to fix rpmlint issue: removes soname from libomptarget.so. (https://reviews.llvm.org/D101509, modulo bits from https://reviews.llvm.org/D95572)
+Patch34:        openmp-Remove-omptarget-soname.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -595,6 +597,12 @@ rm test/std/localization/locale.categories/category.time/locale.time.get.byname/
 
 # These tests often verify timing and can randomly fail if the system is under heavy load. It happens sometimes on our build machines.
 rm -rf test/std/thread/
+popd
+%endif
+
+%if %{with openmp}
+pushd openmp-%{_version}.src
+%patch34 -p2
 popd
 %endif
 
@@ -1843,7 +1851,6 @@ fi
 %{_libdir}/libarcher.so
 %{_libdir}/libomp.so
 %{_libdir}/libomptarget.so
-%{_libdir}/libomptarget.so.%{_sonum}
 %endif
 
 %if %{with libcxx}
