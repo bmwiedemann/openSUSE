@@ -17,7 +17,7 @@
 
 
 Name:           schismtracker
-Version:        20220506
+Version:        20220807
 Release:        0
 Summary:        Music editor that matches the look and feel of Impulse Tracker
 License:        GPL-2.0-or-later
@@ -28,7 +28,6 @@ Source2:        %name.desktop
 Patch1:         schism-alsa.diff
 Patch2:         schism-nodate.diff
 Patch3:         schism-deptrack.diff
-Patch4:         0001-configure.ac-Accept-SDL-1.2.50.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -37,7 +36,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  python3-base
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(sdl)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xv)
 

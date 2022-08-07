@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug  7 11:43:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220807
+  * Use SDL2 instead of SDL1.2. This fixes various
+    platform-dependent issues with video code, adds support for
+    new audio drivers such as JACK, and removes the System
+    Configuration video driver choices in favor of video scaling
+    method selection.
+  * Fix multitrack mono audio export.
+  * Support ADPCM and stereo samples in XM files.
+- Drop 0001-configure.ac-Accept-SDL-1.2.50.patch
+
+-------------------------------------------------------------------
 Wed Jun 22 22:44:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-configure.ac-Accept-SDL-1.2.50.patch

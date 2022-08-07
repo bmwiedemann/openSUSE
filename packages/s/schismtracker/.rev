@@ -165,4 +165,12 @@
     <comment>- Add 0001-configure.ac-Accept-SDL-1.2.50.patch</comment>
     <requestid>984615</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2757f18d725c9131c30067b9a1291c0f</srcmd5>
+    <version>20220807</version>
+    <time>1659890050</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220807</comment>
+    <requestid>993617</requestid>
+  </revision>
 </revisionlist>

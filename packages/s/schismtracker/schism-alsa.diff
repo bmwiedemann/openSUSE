@@ -38,11 +38,11 @@ option.
  schism/audio_playback.c |    7 +------
  1 file changed, 1 insertion(+), 6 deletions(-)
 
-Index: schismtracker-20170910/schism/audio_playback.c
+Index: schismtracker-20220807/schism/audio_playback.c
 ===================================================================
---- schismtracker-20170910.orig/schism/audio_playback.c
-+++ schismtracker-20170910/schism/audio_playback.c
-@@ -1281,15 +1281,10 @@ static int _audio_open(const char *drive
+--- schismtracker-20220807.orig/schism/audio_playback.c
++++ schismtracker-20220807/schism/audio_playback.c
+@@ -1295,15 +1295,10 @@ static int _audio_open(const char *drive
  	if (SDL_InitSubSystem(SDL_INIT_AUDIO) < 0)
  		return 0;
  
@@ -51,7 +51,7 @@ Index: schismtracker-20170910/schism/audio_playback.c
 -	is set. (see SDL_alsa_audio.c: http://tinyurl.com/ybf398f)
 -	If hw doesn't exist, so be it -- let this fail, we'll fall back to the dummy device, and the
 -	user can pick a more reasonable device later. */
- 	if (SDL_AudioDriverName(driver_name, sizeof(driver_name)) != NULL && !strcmp(driver_name, "alsa")) {
+ 	if ((driver_name = SDL_GetCurrentAudioDriver()) != NULL && !strcmp(driver_name, "alsa")) {
  		char *dev = getenv("AUDIODEV");
  		if (!dev || !*dev)
 -			put_env_var("AUDIODEV", "hw");
