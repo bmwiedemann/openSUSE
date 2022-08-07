@@ -196,4 +196,12 @@
     They are not – and never were – thread-safe, though.</comment>
     <requestid>945429</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3cca94ba69063ff5c45b63f10c9dd6a4</srcmd5>
+    <version>22.1.0</version>
+    <time>1659890025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993244</requestid>
+  </revision>
 </revisionlist>

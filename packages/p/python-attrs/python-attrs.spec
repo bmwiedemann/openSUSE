@@ -27,7 +27,7 @@
 %endif
 %global skip_python36 1
 Name:           python-attrs%{psuffix}
-Version:        21.4.0
+Version:        22.1.0
 Release:        0
 Summary:        Attributes without boilerplate
 License:        MIT
