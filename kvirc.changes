@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  6 18:45:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- set CMAKE_SKIP_RPATH when building kvirc. Without it, CMake adds
+  a (yet unexplained) empty RUNPATH entry to the perl module.
+
+-------------------------------------------------------------------
 Mon Jun 28 08:23:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove the optional QtWebKit dependency

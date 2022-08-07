@@ -336,4 +336,13 @@
     <comment>- Remove the optional QtWebKit dependency</comment>
     <requestid>902764</requestid>
   </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>e5d9ad218c371b1535affc3b531b9152</srcmd5>
+    <version>5.0.0</version>
+    <time>1659890039</time>
+    <user>dimstar_suse</user>
+    <comment>- set CMAKE_SKIP_RPATH when building kvirc. Without it, CMake adds
+  a (yet unexplained) empty RUNPATH entry to the perl module.</comment>
+    <requestid>993559</requestid>
+  </revision>
 </revisionlist>
