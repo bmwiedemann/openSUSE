@@ -20,7 +20,7 @@
 %global __requires_exclude qmlimport\\(Kid3.*
 
 Name:           kid3
-Version:        3.9.1
+Version:        3.9.2
 Release:        0
 Summary:        Efficient ID3 Tag Editor
 License:        GPL-2.0-or-later
@@ -67,7 +67,7 @@ Conflicts:      kid3-qt = %{version}
 
 %description
 f you want to easily tag multiple MP3, Ogg/Vorbis, Opus, DSF, FLAC,
-MPC, MP4/AAC, MP2, Opus, Speex, TrueAudio, WavPack and WMA files 
+MPC, MP4/AAC, MP2, Opus, Speex, TrueAudio, WavPack and WMA files
 (e.g. full albums) without typing the same information again and
 again and have control over both ID3v1 and ID3v2 tags,
 then Kid3 is the program you are looking for.
