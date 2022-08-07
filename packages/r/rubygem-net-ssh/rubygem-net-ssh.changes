@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug  4 13:20:18 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.1
+ see installed CHANGES.txt
+
+  === 6.3.0 beta1
+  
+    * Support cert based host key auth, fix asterisk in known_hosts [#833]
+    * Support kex dh-group14-sha256  [#795]
+    * Fix StrictHostKeyChecking ssh config parameter translation [#765]
+  
+
+-------------------------------------------------------------------
 Fri Apr 30 06:28:45 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 6.2.0.rc2
