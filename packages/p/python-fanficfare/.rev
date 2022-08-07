@@ -1005,4 +1005,16 @@
 </comment>
     <requestid>988869</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>740207ff6daf3641829c8e23c67b6c85</srcmd5>
+    <version>4.14.3</version>
+    <time>1659890046</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.14.3:
+  - Update translations.
+  - Remove site: webnovel.com See #843
+  - Fix for qt6 vs qt5 in Calibre6 and personal.ini search.
+</comment>
+    <requestid>993599</requestid>
+  </revision>
 </revisionlist>
