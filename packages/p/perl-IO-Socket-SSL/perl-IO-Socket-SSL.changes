@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  9 16:41:18 UTC 2022 - David Anes <david.anes@suse.com>
+
+- (bsc#1200295) follow system "PROFILE=SYSTEM" openSSL ciphers 
+  * Add perl-IO-Socket-SSL-use-system-default-cipher-list.patch
+
+-------------------------------------------------------------------
 Sat Jan  8 03:07:59 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.074

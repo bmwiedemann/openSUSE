@@ -25,6 +25,9 @@ License:        Artistic-1.0 OR GPL-1.0-or-later
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SU/SULLR/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+# (bsc#1200295) perl-IO-Socket-SSL doesn't follow system "PROFILE=SYSTEM" openSSL ciphers
+# UPSTREAM PATCH: https://git.centos.org/rpms/perl-IO-Socket-SSL/blob/e0b0ae04f5cdb41b1f29cb7d76c23abba7ac35e9/f/SOURCES/IO-Socket-SSL-2.066-use-system-default-cipher-list.patch
+Patch0:         perl-IO-Socket-SSL-use-system-default-cipher-list.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -74,7 +77,7 @@ Additional documentation can be found in
 * * IO::Socket::SSL::Utils - Useful functions for certificates etc
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build

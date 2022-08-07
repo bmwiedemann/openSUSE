@@ -1,4 +1,5 @@
 patches:
+  perl-IO-Socket-SSL-use-system-default-cipher-list.patch: -p1
 ignore_requires: Mozilla::CA
 prep: |-
  rm README.Win32
