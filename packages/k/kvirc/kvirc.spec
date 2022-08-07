@@ -77,6 +77,7 @@ SOCKSV4 & V5 support; and more.
 %build
 EXTRA_FLAGS="-UCMAKE_MODULE_LINKER_FLAGS \
 -DWANT_QTWEBKIT=OFF \
+-DCMAKE_SKIP_RPATH=ON \
 %if "%{?_lib}" == "lib64"
 -DLIB_SUFFIX=64 \
 %endif
