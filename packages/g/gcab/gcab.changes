@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug  5 07:09:19 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.5:
+  + New Features:
+    - New gcab_file_set_bytes() API.
+    - meson: Register the gcab executable with meson.
+  + Bugfixes:
+    - Fixed MSZIP compression when deflate algorithm would expand.
+      Previous versions of gcab can produce "incorrect" archives
+      (when a compressed block is larger than its input). They are
+      however supported by gcab itself, and we will keep support
+      for it for the foreseeble future.
+    - gcab: avoid runtime warnings.
+    - Fix coverity warnings.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:07:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
