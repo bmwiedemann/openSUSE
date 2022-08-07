@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define sover 32
+%define sover 3_21_4
 %define tarname protobuf
 %define src_install_dir %{_prefix}/src/%{name}
 %define extra_java_flags -source 7 -target 7
@@ -27,7 +27,7 @@
 %bcond_without python2
 %bcond_without python3
 Name:           protobuf
-Version:        21.2
+Version:        21.4
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause
@@ -37,6 +37,8 @@ Source0:        https://github.com/protocolbuffers/protobuf/archive/v%{version}.
 Source1:        manifest.txt.in
 Source2:        baselibs.conf
 Patch0:         gcc12-disable-__constinit-with-c++-11.patch
+# https://github.com/protocolbuffers/protobuf/pull/10355
+Patch1:         10355.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
@@ -164,8 +166,7 @@ This package contains the Python bindings for Google Protocol Buffers.
 %endif
 
 %prep
-%setup -n %{tarname}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{tarname}-%{version}
 mkdir gmock
 
 %if %{with python2} || %{with python3}
@@ -256,20 +257,22 @@ find %{buildroot}%{src_install_dir} -type f -name ".gitignore" -exec rm -f "{}" 
 
 %files -n libprotobuf%{sover}
 %license LICENSE
-%{_libdir}/libprotobuf.so.%{sover}*
+%{_libdir}/libprotobuf-3.%{version}.so
 
 %files -n libprotoc%{sover}
-%{_libdir}/libprotoc.so.%{sover}*
+%{_libdir}/libprotoc-3.%{version}.so
 
 %files -n libprotobuf-lite%{sover}
-%{_libdir}/libprotobuf-lite.so.%{sover}*
+%{_libdir}/libprotobuf-lite-3.%{version}.so
 
 %files devel
 %doc CHANGES.txt CONTRIBUTORS.txt README.md
 %{_bindir}/protoc
 %{_includedir}/google
-%{_libdir}/*.so
 %{_libdir}/pkgconfig/*
+%{_libdir}/libprotobuf-lite.so
+%{_libdir}/libprotobuf.so
+%{_libdir}/libprotoc.so
 %{_datadir}/vim
 
 %files source

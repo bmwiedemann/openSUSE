@@ -694,4 +694,12 @@
     <user>dimstar_suse</user>
     <comment>https://github.com/protocolbuffers/protobuf/issues/10323</comment>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>b0ea02a6e742ceb672a360db868202e1</srcmd5>
+    <version>21.4</version>
+    <time>1659890022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993150</requestid>
+  </revision>
 </revisionlist>
