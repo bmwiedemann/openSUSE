@@ -13257,13 +13257,13 @@ unsorted:
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
-  - libprotobuf-lite32-32bit: [x86_64] 
+  - libprotobuf-lite3_21_4-32bit: [x86_64] 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
   - libprotobuf-nanopb0 
-  - libprotobuf32-32bit: [x86_64] 
-  - libprotoc32 
-  - libprotoc32-32bit: [x86_64] 
+  - libprotobuf3_21_4-32bit: [x86_64] 
+  - libprotoc3_21_4 
+  - libprotoc3_21_4-32bit: [x86_64] 
   - libproxy-devel 
   - libproxy-sharp 
   - libproxy-tools 
