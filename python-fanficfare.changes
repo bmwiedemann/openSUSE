@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug  7 06:36:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.14.3:
+  - Update translations.
+  - Remove site: webnovel.com See #843
+  - Fix for qt6 vs qt5 in Calibre6 and personal.ini search.
+
+-------------------------------------------------------------------
 Tue Jul 12 21:17:49 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.14.0:
