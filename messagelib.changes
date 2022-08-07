@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug  7 07:17:34 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream changes to fix issues detected by CMake 3.24:
+  * 0001-Add-missing-find_dependency-calls.patch
+  * 0001-Use-WebEngineWidgets-as-WebEngine-is-not-define-in-q.patch
+
+-------------------------------------------------------------------
 Tue Jul  5 17:04:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 22.04.3

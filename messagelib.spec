@@ -31,6 +31,10 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Add-missing-find_dependency-calls.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Use-WebEngineWidgets-as-WebEngine-is-not-define-in-q.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Sql-private-headers-devel
@@ -100,6 +104,7 @@ Requires:       cmake(KF5Libkleo)
 Requires:       cmake(KF5MessageCore)
 Requires:       cmake(KF5Mime)
 Requires:       cmake(KF5PimCommon)
+Requires:       cmake(Qt5WebEngineWidgets)
 
 %description devel
 This package contains source headers for messagelib.

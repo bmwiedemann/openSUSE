@@ -694,4 +694,14 @@
     <comment>KDE Gear 22.04.3</comment>
     <requestid>987714</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>593cbed6fec17b78dab3cafbc9a514b7</srcmd5>
+    <version>22.04.3</version>
+    <time>1659890038</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream changes to fix issues detected by CMake 3.24:
+  * 0001-Add-missing-find_dependency-calls.patch
+  * 0001-Use-WebEngineWidgets-as-WebEngine-is-not-define-in-q.patch</comment>
+    <requestid>993605</requestid>
+  </revision>
 </revisionlist>

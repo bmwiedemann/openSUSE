@@ -1,0 +1,64 @@
+From 3edc93673f94604c203be1c899dffb25575985db Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heiko.becker@kde.org>
+Date: Sun, 17 Jul 2022 00:07:56 +0200
+Subject: [PATCH] Add missing find_dependency calls
+
+There are probably more used in the public link interface, but these
+were enough to fix building dependents with cmake 3.24.0-rc3, which
+seems to be stricter than 3.23.x.
+---
+ messagecomposer/KF5MessageComposerConfig.cmake.in | 1 +
+ messagecore/KF5MessageCoreConfig.cmake.in         | 1 +
+ messageviewer/KF5MessageViewerConfig.cmake.in     | 1 +
+ templateparser/KF5TemplateParserConfig.cmake.in   | 4 ++++
+ 4 files changed, 7 insertions(+)
+
+diff --git a/messagecomposer/KF5MessageComposerConfig.cmake.in b/messagecomposer/KF5MessageComposerConfig.cmake.in
+index e054e2120e..e151870421 100644
+--- a/messagecomposer/KF5MessageComposerConfig.cmake.in
++++ b/messagecomposer/KF5MessageComposerConfig.cmake.in
+@@ -2,6 +2,7 @@
+ include(CMakeFindDependencyMacro)
+ find_dependency(KF5Mime "@KMIME_LIB_VERSION@")
+ find_dependency(KF5MessageCore "@MESSAGELIB_LIB_VERSION@")
++find_dependency(KF5TemplateParser "@MESSAGELIB_LIB_VERSION@")
+ find_dependency(KF5PimCommon "@PIMCOMMON_LIB_VERSION@")
+ find_dependency(KF5Akonadi "@AKONADI_VERSION@")
+ find_dependency(KF5IdentityManagement "@IDENTITYMANAGEMENT_LIB_VERSION@")
+diff --git a/messagecore/KF5MessageCoreConfig.cmake.in b/messagecore/KF5MessageCoreConfig.cmake.in
+index c3cce3c82b..2f3a4e7c7c 100644
+--- a/messagecore/KF5MessageCoreConfig.cmake.in
++++ b/messagecore/KF5MessageCoreConfig.cmake.in
+@@ -1,4 +1,5 @@
+ @PACKAGE_INIT@
+ include(CMakeFindDependencyMacro)
+ find_dependency(KF5Mime "@KMIME_LIB_VERSION@")
++find_dependency(KF5MimeTreeParser "@MESSAGELIB_LIB_VERSION@")
+ include("${CMAKE_CURRENT_LIST_DIR}/KF5MessageCoreTargets.cmake")
+diff --git a/messageviewer/KF5MessageViewerConfig.cmake.in b/messageviewer/KF5MessageViewerConfig.cmake.in
+index cf12d4cbb8..9af546f470 100644
+--- a/messageviewer/KF5MessageViewerConfig.cmake.in
++++ b/messageviewer/KF5MessageViewerConfig.cmake.in
+@@ -3,6 +3,7 @@ include(CMakeFindDependencyMacro)
+ find_dependency(KF5PimCommon "@PIMCOMMON_LIB_VERSION@")
+ find_dependency(KF5MessageCore "@MESSAGELIB_LIB_VERSION@")
+ find_dependency(KF5MimeTreeParser "@MESSAGELIB_LIB_VERSION@")
++find_dependency(KF5WebEngineViewer "@MESSAGELIB_LIB_VERSION@")
+ find_dependency(KF5Akonadi "@AKONADI_VERSION@")
+ find_dependency(KF5Mime "@KMIME_LIB_VERSION@")
+ find_dependency(KF5Contacts "@KF5_MIN_VERSION@")
+diff --git a/templateparser/KF5TemplateParserConfig.cmake.in b/templateparser/KF5TemplateParserConfig.cmake.in
+index 0f619b484b..ddd889128a 100644
+--- a/templateparser/KF5TemplateParserConfig.cmake.in
++++ b/templateparser/KF5TemplateParserConfig.cmake.in
+@@ -1,3 +1,7 @@
+ @PACKAGE_INIT@
+ 
++include(CMakeFindDependencyMacro)
++find_dependency(KF5MimeTreeParser "@MESSAGELIB_LIB_VERSION@")
++find_dependency(KF5MessageCore "@MESSAGELIB_LIB_VERSION@")
++
+ include("${CMAKE_CURRENT_LIST_DIR}/KF5TemplateParserTargets.cmake")
+-- 
+2.37.1
+
