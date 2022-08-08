@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 14 16:30:49 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove old pathlib extra package build requirement. It is
+  included in the stdlib since Python 3.4
+
+-------------------------------------------------------------------
 Tue Apr 12 21:25:34 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Tests require the extra dependency toml which is not pulled in
