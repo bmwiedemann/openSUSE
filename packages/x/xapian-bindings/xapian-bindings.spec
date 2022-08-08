@@ -30,7 +30,7 @@
 %bcond_with mono
 %define skip_python2 1
 Name:           xapian-bindings
-Version:        1.4.19
+Version:        1.4.20
 Release:        0
 Summary:        Bindings for xapian
 License:        GPL-2.0-only

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul 19 14:16:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Refresh do-not-use-sphinx.diff
+
+-------------------------------------------------------------------
+Sun Jul 17 15:40:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.20:
+  * Enable -fvisibility-inlines-hidden option if the compiler supports it.
+  * Add missing reference tracking. XapianEnquire now keeps a reference to the
+    current XapianSorter object (if any).  XapianQueryParser now keeps a
+    reference to any set XapianFieldProcessor objects.  Test coverage for keeping
+    references to set functor objects is now more comprehensive.
+  * smoketest.php: Remove bogus extra null parameters.  PHP ignores these extra
+    parameters, but it's more helpful to be testing valid usage.
+  * The configure probes for Python3 no longer use the deprecated distutils and
+    imp modules (both of which are slated for removal in Python 3.12).  We now
+    use sysconfig to get the directory to install the xapian module to, which may
+    result in it being installed in a different place (it should still work, but
+    if you're packaging the bindings you may need to update the list of files to
+    include in the package).
+
+-------------------------------------------------------------------
 Fri Jan 28 08:27:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.19:
