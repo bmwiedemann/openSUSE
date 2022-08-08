@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-kiwisolver
-Version:        1.4.1
+Version:        1.4.4
 Release:        0
 Summary:        An implementation of the Cassowary constraint solver
 License:        BSD-3-Clause
@@ -28,8 +26,9 @@ URL:            https://github.com/nucleic/kiwi
 Source:         https://files.pythonhosted.org/packages/source/k/kiwisolver/kiwisolver-%{version}.tar.gz
 BuildRequires:  %{python_module cppy >= 1.2.0}
 BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools >= 42}
+BuildRequires:  %{python_module setuptools >= 61.2}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
 BuildRequires:  %{python_module tomli}
 BuildRequires:  %{python_module wheel}
@@ -56,10 +55,10 @@ dos2unix LICENSE README.rst releasenotes.rst
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
