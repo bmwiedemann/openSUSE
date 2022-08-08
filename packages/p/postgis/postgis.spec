@@ -1,5 +1,5 @@
 #
-# spec file for package postgis
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -15,13 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define         pg_name  @BUILD_FLAVOR@%{nil}
 %define         ext_name postgis
 %{pg_version_from_name}
 %define         main_version 3.2
 
 Name:           %{pg_name}-%{ext_name}
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Geographic Information Systems Extensions to PostgreSQL
 License:        GPL-2.0-or-later
@@ -30,8 +31,8 @@ URL:            https://postgis.net/
 Source0:        https://download.osgeo.org/postgis/source/%{ext_name}-%{version}.tar.gz
 Source1:        https://download.osgeo.org/postgis/source/%{ext_name}-%{version}.tar.gz.md5
 Patch0:         patch-tests-results.patch
-BuildRequires:  %{pg_name}-server-devel
 BuildRequires:  %{pg_name}-llvmjit-devel
+BuildRequires:  %{pg_name}-server-devel
 BuildRequires:  cgal-devel
 BuildRequires:  cunit-devel
 BuildRequires:  fdupes
@@ -39,20 +40,25 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gdal-devel >= 3.0
 BuildRequires:  gtk2-devel
-BuildRequires:  libprotobuf-c-devel
 BuildRequires:  libgeos-devel >= 3.7.0
 BuildRequires:  libjson-c-devel
 BuildRequires:  libproj-devel >= 6.0.0
+BuildRequires:  libprotobuf-c-devel
 # proj.db is required for ST_ functions and tests boo#1188129
 BuildRequires:  proj
-BuildRequires:  libxml2-devel
 BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  libxml2-devel
 BuildRequires:  libxml2-tools
 # building doc but would add 350 texlive packages
 # BuildRequires:  dblatex
 # BuildRequires:  ImageMagick
 BuildRequires:  protobuf-c >= 1.1.0
+%ifarch %{ix86}
+%define with_sfcgal 0
+%else
+%define with_sfcgal 1
 BuildRequires:  sfcgal-devel > 1.3.1
+%endif
 BuildRequires:  update-alternatives
 %pg_server_requires
 %if "%{pg_name}" == ""
@@ -62,7 +68,7 @@ ExclusiveArch:  do_not_build
 # proj.db is required for ST_ functions and tests boo#1188129
 Requires:       proj
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Conflicts:      postgis2
 Provides:       postgis
 Conflicts:      %{pg_name}-address_standardizer
@@ -95,7 +101,9 @@ echo "pg_version is %{pg_version}"
     --with-topology \
     --with-gui \
     --with-json \
+%if %{with_sfcgal}
     --with-sfcgal=%{_bindir}/sfcgal-config \
+%endif
     --disable-rpath \
     --disable-gtktest \
     --with-interrupt-tests \
@@ -188,7 +196,6 @@ pg_ctl -D "${PGDATA}" --mode="fast" stop
 %{pg_config_sharedir}/contrib/postgis*
 %{pg_config_sharedir}/extension/postgis*
 %{pg_config_sharedir}/extension/address_standardizer*
-
 
 %files utils
 %defattr(755,root,root)

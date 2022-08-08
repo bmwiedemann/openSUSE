@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Aug  3 11:41:54 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to bugfix version 3.2.2
+  - #5182, Fix loading topology.sql in new database
+  - #4835, Occasional distance errors in polar area
+  - #5124, GRANT USAGE on topology schema to PUBLIC
+  - #5120, Fix not-null result from ST_EstimatedExtent against
+           truncated tables with spatial index 
+  - #5115, Allow dropping topologies with pending constraints
+  - #5105, Fix false invalidity report from ValidateTopology
+  - #5039, postgis_tiger_geocoder: Support for TIGER 2021 (Regina Obe)
+  - #5097, Ensure spatial index is used during topology population
+           at the getClosestEdge step
+  - #5091, Fix --without-protobuf builds
+  - #5100, Don't use pg_atoi (removed in PG15)
+  - #5114, Crash with long column names pgsql2shp
+  - #5123, Support for PG15 (JSON funcs exposed)
+  - #5125, Fix search path function
+  - #5150, Change signature of AddToSearchPath
+  - #5151, ST_SetPoint with empty geometries
+  - #5152, Fix infinite loop with ST_Split
+  - #5173, Crash creating flatgeobuf on row without geometry
+  - #4541, ST_ConcaveHull returns a "geometrycollection" type
+           instead of the expected "polygon"
+  - #5154, raster ST_Value is undercosted
+- Disable sfcgal for ix86 arch (sfcgal can't be build for those)
+  Please try to uninstall sfcgal before doing extension upgrade.
+
+-------------------------------------------------------------------
 Tue Jun 28 10:50:10 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - no longer pull clang-devel and llvm-devel directory the correct
