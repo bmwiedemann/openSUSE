@@ -115,4 +115,24 @@
     <comment></comment>
     <requestid>968058</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d56d5c5f7c3f3bc655e697d8dca72f36</srcmd5>
+    <version>1.5.0</version>
+    <time>1659945750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.0
+  * Add DiagnosticTag tags for Pylint, Pycodestyle, and Flake8
+    plugins.
+  * Add support to connect to the server through websockets.
+  * Allow multiple per-file-ignores for the same pattern in Flake8
+    plugin.
+  * Parse YAPF diffs into TextEdits.
+  * Add support for LSP formatting options parameter.
+- Entry point installation require setuptools 61.2, switch to
+  PEP517
+- Test suite: flavored alternatives are provided by the %pytest
+  macro now. Remove extra pylint testbin setup.
+</comment>
+    <requestid>991046</requestid>
+  </revision>
 </revisionlist>

@@ -16,26 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-python-lsp-server
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools >= 44}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 61.2}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
 BuildRequires:  %{python_module tomli}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros >= 20210628
 # SECTION test requirements
-BuildRequires:  %{python_module jedi >= 0.17.2}
 BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module autopep8 >= 1.6.0 with %python-autopep8 < 1.7.0}
 BuildRequires:  %{python_module flake8 >= 4.0.0 with %python-flake8 < 4.1.0}
 BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module jedi >= 0.17.2 with %python-jedi < 0.19.0}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module mccabe >= 0.6.0}
 BuildRequires:  %{python_module numpy}
@@ -49,14 +49,15 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.0.0}
 BuildRequires:  %{python_module rope >= 0.10.5}
 BuildRequires:  %{python_module ujson >= 3.0.0}
+BuildRequires:  %{python_module whatthepatch}
 BuildRequires:  %{python_module yapf}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-jedi >= 0.17.2
 Requires:       python-pluggy >= 1.0.0
 Requires:       python-python-lsp-jsonrpc >= 1.0.0
 Requires:       python-setuptools >= 39.0.0
 Requires:       python-ujson >= 3.0.0
+Requires:       (python-jedi >= 0.17.2 with python-jedi < 0.19.0)
 Suggests:       python-autopep8 >= 1.6.0
 Conflicts:      python-autopep8 >= 1.7.0
 Suggests:       python-flake8 >= 4.0.0
@@ -71,6 +72,7 @@ Conflicts:      python-pyflakes >= 2.5.0
 Suggests:       python-pylint >= 2.5.0
 Suggests:       python-rope >= 0.10.5
 Suggests:       python-yapf
+Suggests:       python-whatthepatch
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -95,23 +97,18 @@ will be enabled:
 
 %prep
 %autosetup -p1 -n python-lsp-server-%{version}
+# Remove pytest addopts
+sed -i '/addopts/d' pyproject.toml
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pylsp
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand # provide pylint command in correct flavor
-mkdir -p build/testbin
-ln -s %{_bindir}/pylint-%{$python_bin_suffix} build/testbin/pylint
-}
-export PATH="$PWD/build/testbin:$PATH"
-# Remove pytest addopts
-rm setup.cfg
 %pytest
 
 %post
