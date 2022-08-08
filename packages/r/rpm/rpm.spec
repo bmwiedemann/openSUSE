@@ -58,14 +58,11 @@ Requires:       /usr/bin/awk
 Summary:        The RPM Package Manager
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        4.17.0
+Version:        4.17.1
 Release:        0
 URL:            https://rpm.org/
 #Git-Clone:     https://github.com/rpm-software-management/rpm
 Source:         http://ftp.rpm.org/releases/rpm-4.17.x/rpm-%{version}.tar.bz2
-Source1:        RPM-HOWTO.tar.bz2
-Source2:        https://sourceware.org/ftp/debugedit/5.0/debugedit-5.0.tar.xz
-Source3:        python-rpm-packaging.tar.bz2
 Source5:        rpmsort
 Source8:        rpmconfigcheck
 Source9:        sysconfig.services-rpm
@@ -112,20 +109,10 @@ Patch117:       findsupplements.diff
 Patch122:       db_conversion.diff
 Patch123:       nextiteratorheaderblob.diff
 Patch131:       posttrans.diff
-Patch132:       verbosearg.diff
 Patch133:       zstdpool.diff
 Patch134:       zstdthreaded.diff
-Patch135:       ocaml-cmxs.diff
-Patch136:       0001-fix-minimize_writes.patch
 # touches a generated file
 Patch180:       whatrequires-doc.diff
-Patch200:       finddebuginfo.diff
-Patch201:       finddebuginfo-absolute-links.diff
-Patch202:       debugsubpkg.diff
-Patch203:       debuglink.diff
-Patch204:       debuginfo-mono.patch
-Patch205:       singlefilemode.diff
-Patch300:       python-rpm-packaging.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -196,6 +183,8 @@ Requires:       tar
 Requires:       util-linux
 Requires:       which
 Requires:       xz
+# needed for debuginfo generation
+Requires:       debugedit = 5.0
 # drop candidates
 Requires:       cpio
 Requires:       file
@@ -209,17 +198,6 @@ Conflicts:      rpm < 4.15.0
 If you want to build a rpm, you need this package. It provides rpmbuild
 and requires some packages that are usually required.
 
-%package build-python
-Summary:        RPM dependency generator for Python
-Group:          Development/Languages/Python
-Requires:       python3-base
-# To avoid widespread breakage by package mistakenly ignoring
-# their requirement of python-rpm-macros (bsc#1180125)
-Requires:       python-rpm-macros
-
-%description build-python
-Provides and requires generator for .py files and modules.
-
 %package build-perl
 Summary:        RPM dependency generator for Perl
 Group:          Development/Languages/Perl
@@ -230,9 +208,6 @@ Provides and requires generator for .pl files and modules.
 
 %prep
 %setup -q -n rpm-%{version}
-tar -xjf %{SOURCE1}
-tar -xJf %{SOURCE2}
-tar -xjf %{SOURCE3}
 
 rm -rf sqlite
 %patch -P  5      -P 12 -P 13             -P 16       -P 18
@@ -246,19 +221,8 @@ rm -rf sqlite
 %patch                   -P 93 -P 94                         -P 99
 %patch -P 100        -P 102 -P 103
 %patch                                                  -P 117
-%patch -P 122 -P 123               -P 131 -P 132 -P 133 -P 134
-%patch -P 135 -P 136
+%patch -P 122 -P 123               -P 131        -P 133 -P 134
 %patch -P 180
-
-# debugedit patches
-pushd debugedit-5.0
-%patch -P 200 -P 201 -P 202 -P 203 -P 204 -P 205
-popd
-
-# python-rpm-packaging patches
-pushd python-rpm-packaging
-%patch -P 300
-popd
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464
@@ -302,14 +266,6 @@ $BUILDTARGET
 
 rm po/de.gmo
 make %{?_smp_mflags}
-
-%if "%{NAME}" != "python-rpm"
-pushd debugedit-5.0
-./configure --bindir=/usr/lib/rpm
-touch find-debuginfo.1
-make
-popd
-%endif
 
 %install
 mkdir -p %{buildroot}/usr/lib
@@ -392,16 +348,6 @@ echo -n "%{_target_cpu}-suse-linux-gnueabi" > %{buildroot}/etc/rpm/platform
 echo "setting the default database backend to 'ndb'"
 sed -i -e '/_db_backend/s/sqlite/ndb/' %{buildroot}/usr/lib/rpm/macros
 
-# install debugedit files
-pushd debugedit-5.0
-make install-exec DESTDIR="%{buildroot}"
-popd
-
-# install python-rpm-packaging files
-cp -a python-rpm-packaging/fileattrs/*.attr %{buildroot}/usr/lib/rpm/fileattrs
-cp -a python-rpm-packaging/scripts/* %{buildroot}/usr/lib/rpm
-chmod 755 %{buildroot}/usr/lib/rpm/brp-python-bytecompile
-
 %post
 %{fillup_only -an services}
 
@@ -442,7 +388,6 @@ fi
 %defattr(-,root,root)
 %license 	COPYING
 %doc 	docs/manual
-%doc    RPM-HOWTO
 	/etc/rpm
 %if !0%{?usrmerged}
 	/bin/rpm
@@ -498,17 +443,11 @@ fi
 /usr/lib/rpm/ocamldeps.sh
 /usr/lib/rpm/elfdeps
 /usr/lib/rpm/rpmdeps
-/usr/lib/rpm/debugedit
-/usr/lib/rpm/sepdebugcrcfix
 /usr/bin/rpmspec
 /usr/lib/rpm/brp-*
-%exclude /usr/lib/rpm/brp-python-hardlink
-%exclude /usr/lib/rpm/brp-python-bytecompile
 /usr/lib/rpm/check-*
 /usr/lib/rpm/*find*
 /usr/lib/rpm/fileattrs/
-%exclude /usr/lib/rpm/fileattrs/python.attr
-%exclude /usr/lib/rpm/fileattrs/pythondist.attr
 %exclude /usr/lib/rpm/fileattrs/perl*.attr
 /usr/lib/rpm/*.prov
 %exclude /usr/lib/rpm/perl.prov
@@ -518,14 +457,6 @@ fi
 /usr/lib/rpm/config.guess
 /usr/lib/rpm/config.sub
 %endif
-
-%files build-python
-%defattr(-,root,root)
-/usr/lib/rpm/fileattrs/python.attr
-/usr/lib/rpm/fileattrs/pythondist.attr
-/usr/lib/rpm/pythondistdeps.py
-/usr/lib/rpm/brp-python-hardlink
-/usr/lib/rpm/brp-python-bytecompile
 
 %files build-perl
 %defattr(-,root,root)

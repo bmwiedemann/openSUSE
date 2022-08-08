@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul 21 16:11:22 CEST 2022 - mls@suse.de
+
+- update to rpm-4.17.1
+  * new bcond macro for a nicer way to define build conditionals
+  * openPGP parser and IMA security fixes (CVE-2021-3521)
+  * buildroot policy fixes
+- refreshed patches:
+  * brp.diff
+- removed patches:
+  * verbosearg.diff
+  * ocaml-cmxs.diff
+  * 0001-fix-minimize_writes.patch
+
+-------------------------------------------------------------------
+Mon Jun 27 11:01:54 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- remove obsolete RPM-HOWTO from 1999 (removed RPM-HOWTO.tar.bz2)
+- move debugedit to separate package
+  (Removed debuginfo-mono.patch, debuglink.diff, debugsubpkg.diff,
+   finddebuginfo-absolute-links.diff, finddebuginfo.diff,
+   singlefilemode.diff, debugedit-5.0.tar.xz)
+- move python-rpm-packaging to separate package
+  (Removed python-rpm-packaging.diff, python-rpm-packaging.tar.bz2)
+
+-------------------------------------------------------------------
 Tue May 31 19:58:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - drop requires-ge-macro.diff: this is already in rpm-config-SUSE 
