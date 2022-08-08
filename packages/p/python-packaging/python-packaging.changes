@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Aug  1 07:44:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- BuildIgnore python3-packaging for primary bootstrap.
+
+-------------------------------------------------------------------
+Thu Jul 21 11:16:04 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Refine build and runtime requirements for primary and non-primary
+  builds
+
+-------------------------------------------------------------------
+Fri Jul 15 12:30:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Split primary flavor in multibuild for possible inclusion into
+  Ring0
+
+-------------------------------------------------------------------
+Thu Jul 14 13:13:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Setuptools itself does not depend on packaging anymore, only for
+  pythondistdeps.py, That dependency will move to
+  python-rpm-packaging soon. -- boo#1178257
+- Use "setuptools" for building again.
+  * Python 3.12 will drop the distutils fallback
+  * Use the python-base vendored pip in a venv
+  * Drop no-legacyversion-warning.patch
+- Remove nonsensical python362 flavor check.
+
+-------------------------------------------------------------------
 Sun May 29 09:22:42 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add patch to fix testsuite on big-endian targets
