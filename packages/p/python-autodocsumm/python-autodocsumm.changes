@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug  4 09:17:21 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 0.2.9:
+  * specify parser for BeautifulSoup
+  * Allow Sphinx v5
+  * Drop Python 3.6 support
+  * Declare project and pytest configuration in pyproject.toml
+
+-------------------------------------------------------------------
 Fri Jun 24 00:30:34 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove guard on upper Sphinx version. 
