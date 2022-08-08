@@ -63,13 +63,17 @@ autoreconf -fiv
 
 %install
 %make_install
+mkdir -p %{buildroot}/usr/lib/rpm
+mv %{buildroot}%{_bindir}/{find-debuginfo,sepdebugcrcfix} %{buildroot}/usr/lib/rpm
+ln -s ../../bin/debugedit %{buildroot}/usr/lib/rpm
 
 %files
 %license COPYING3
 %doc README
 %{_bindir}/debugedit
-%{_bindir}/find-debuginfo
-%{_bindir}/sepdebugcrcfix
+/usr/lib/rpm/debugedit
+/usr/lib/rpm/find-debuginfo
+/usr/lib/rpm/sepdebugcrcfix
 %{_mandir}/man1/debugedit.1%{?ext_man}
 %{_mandir}/man1/find-debuginfo.1%{?ext_man}
 %{_mandir}/man1/sepdebugcrcfix.1%{?ext_man}
