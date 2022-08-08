@@ -13,16 +13,19 @@ install branding-openSUSE
 install adobe-sourcecodepro-fonts
 
 buildignore google-carlito-fonts
-buildignore noto-sans-fonts
-buildignore google-noto-sans-cjk-fonts
-buildignore google-noto-sans-sc-bold-fonts
-buildignore google-noto-sans-sc-regular-fonts
-buildignore google-noto-sans-tc-bold-fonts
-buildignore google-noto-sans-tc-regular-fonts
-buildignore google-noto-sans-jp-bold-fonts
-buildignore google-noto-sans-jp-regular-fonts
-buildignore google-noto-sans-kr-bold-fonts
-buildignore google-noto-sans-kr-regular-fonts
+# Was renamed in TW
+for prefix in google- ""; do
+	buildignore ${prefix}noto-sans-fonts
+	buildignore ${prefix}noto-sans-cjk-fonts
+	buildignore ${prefix}noto-sans-sc-bold-fonts
+	buildignore ${prefix}noto-sans-sc-regular-fonts
+	buildignore ${prefix}noto-sans-tc-bold-fonts
+	buildignore ${prefix}noto-sans-tc-regular-fonts
+	buildignore ${prefix}noto-sans-jp-bold-fonts
+	buildignore ${prefix}noto-sans-jp-regular-fonts
+	buildignore ${prefix}noto-sans-kr-bold-fonts
+	buildignore ${prefix}noto-sans-kr-regular-fonts
+done
 
 # Expected by openQA - But no more space on the CD
 # install libreoffice-writer

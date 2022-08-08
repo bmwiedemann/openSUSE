@@ -36,7 +36,9 @@ rpm -qa | grep "^libisl" | xargs -r rpm -e
 
 # Workaround until dropped from xfce4-branding-openSUSE
 if [ "$desktop" = "x11" -o "$desktop" = "xfce" ]; then
-	rpm -e --nodeps xorg-x11-server-Xvfb
+	if rpm -q xorg-x11-server-Xvfb; then
+		rpm -e --nodeps xorg-x11-server-Xvfb
+	fi
 	rpm -e --nodeps noto-coloremoji-fonts || rpm -e --nodeps google-noto-coloremoji-fonts
 fi
 

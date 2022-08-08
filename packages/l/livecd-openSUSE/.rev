@@ -1502,4 +1502,12 @@
     <comment>- Adjust GNOME ignore list: google-noto- font packages were renamed
   to include the google- prefix.</comment>
   </revision>
+  <revision rev="187" vrev="187">
+    <srcmd5>9c4e09533b3edd6685ff7f120f4d5ea6</srcmd5>
+    <version>unknown</version>
+    <time>1659948081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993707</requestid>
+  </revision>
 </revisionlist>
