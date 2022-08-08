@@ -1,7 +1,7 @@
 #
 # spec file for package rr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,24 @@
 
 
 Name:           rr
-Version:        5.5.0
+Version:        5.6.0
 Release:        0
 Summary:        Records nondeterministic executions and debugs them deterministically
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://rr-project.org/
 Source:         https://github.com/mozilla/%{name}/archive/%{version}.tar.gz
-# undefined reference to `_dl_addr'
-Patch0:         https://github.com/rr-debugger/rr/commit/da6e6fb2395e97921e3b8069afce62a1cc2233bc.patch#/rr-map-elf-header.patch
-# gh#2987
-Patch1:         https://github.com/rr-debugger/rr/commit/48f1d60f6eaf15137b426b1275cf285becb97258.patch#/rr-pthread-for-new-gcc.patch
-# gh#2913 gh#3199
-Patch2:         https://github.com/rr-debugger/rr/commit/d8b1db03360df84c4e369b2858a21dc6feee3213.patch#/rr-glib-234.patch
 BuildRequires:  capnproto
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gdb
 BuildRequires:  libcapnp-devel
+BuildRequires:  patchelf
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-pexpect
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  patchelf
 ExclusiveArch:  x86_64 aarch64
 %ifarch x86_64
 BuildRequires:  gcc-c++-32bit
@@ -53,9 +47,6 @@ data watchpoints and quickly reverse-execute to where they were hit.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 # Fix incorrect path to bash

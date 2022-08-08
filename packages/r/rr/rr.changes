@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug  8 06:59:55 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.6.0:
+  * This release includes many bug fixes, improvements to system call coverage, and
+    incremental performance improvements. Plus:
+  * ARM Aarch64 support is now production quality (features implemented and
+    tests pass), with some caveats. Recent iterations of Cortex and Neoverse (AWS
+    Graviton) chips are supported, as is Apple M1 (when running Linux on bare metal
+    M1). LDREX/STREX are not supported; userspace code must use Large System
+    Extensions atomics only. Thanks to Yichao Yu and Keno Fischer for this work! We
+    don't have prebuilt ARM packages yet.
+  * Recording applications that use RDTSC heavily should be much faster than in
+    previous versions of rr.
+  * The rseq system call is now supported (via emulation).
+-  Remove patches contained in new release:
+  * rr-glib-234.patch
+  * rr-map-elf-header.patch
+  * rr-pthread-for-new-gcc.patch
+
+-------------------------------------------------------------------
 Mon May 23 06:25:59 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Add rr-glib-234.patch to build with glib > 2.34
