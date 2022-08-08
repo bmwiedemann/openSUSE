@@ -16,10 +16,8 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-maturin
-Version:        0.12.15
+Version:        0.13.1
 Release:        0
 Summary:        Rust/Python Interoperability
 License:        Apache-2.0 OR MIT
@@ -27,13 +25,20 @@ URL:            https://github.com/PyO3/maturin
 Source:         https://files.pythonhosted.org/packages/source/m/maturin/maturin-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools-rust >= 1.4.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tomli}
+BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}
+BuildRequires:  %{python_module wheel >= 0.36.2}
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%if 0%{?python_version_nodots} < 311
+Requires:       python-tomli >= 1.1.0
+%endif
 %python_subpackages
 
 %description
@@ -48,13 +53,14 @@ setuptools-rust milksnake. It supports building wheels for Python
 %autosetup -a1 -n maturin-%{version}
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
+sed -i '1{/env python/d}' maturin/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_clone -a %{buildroot}%{_bindir}/maturin
 
 %post
@@ -67,6 +73,7 @@ cp %{SOURCE2} .cargo/config
 %license license-apache license-mit
 %doc Changelog.md Readme.md
 %python_alternative %{_bindir}/maturin
-%{python_sitelib}/*
+%{python_sitearch}/maturin
+%{python_sitearch}/maturin-%{version}*-info
 
 %changelog

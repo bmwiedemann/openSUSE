@@ -312,4 +312,138 @@
     <comment></comment>
     <requestid>983848</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>efa7fecf557f9abadb5b5ec1a28cc805</srcmd5>
+    <version>0.13.1</version>
+    <time>1659941099</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.13.1
+  * Add 64-bit RISC-V support
+    gh#PyO3/maturin#1001
+  * Run tests on CI with cargo-nextest
+    gh#PyO3/maturin#1004
+  * Add support for invoking with python3 -m maturin
+    gh#PyO3/maturin#1008
+  * Consider pyproject.toml features when detecting pyo3
+    gh#PyO3/maturin#1014
+  * Respect user specified Rust target in maturin develop
+    gh#PyO3/maturin#1016
+  * Use cargo rustc --crate-type cdylib on Rust nightly/dev channel
+    gh#PyO3/maturin#1020
+  * Use cargo-nextest in test-alpine
+    gh#PyO3/maturin#1021
+-  Update to v0.13.0
+  * Drop python 3.6 by @konstin in #945
+  * Add support for building with multiple binary targets by
+    @messense in #948
+  * Add a --target option to maturin list-python command by
+    @messense in #957
+  * Add support for using bundled python sysconfigs for PyPy when
+    abi3 feature is enabled by @messense in #958
+  * Filter cargo targets by kind instead of crate_types by
+    @messense in #959
+  * Don't build sdist by default in maturin build command by
+    @messense in #955
+  * Add support for cross compiling PyPy wheels when abi3 feature
+    is enabled by @messense in #963
+  * Update actions/checkout and actions/setup-python versions by
+    @messense in #965
+  * Add --find-interpreter option to build and publish commands by
+    @messense in #964
+  * Infer target triple from ARCHFLAGS for macOS by @messense in
+    #967
+  * Add bootstrap from sdist test to CI by @messense in #968
+  * Upload wheel artifacts in bootstrap test for inspection by
+    @messense in #971
+  * Expose commonly used Cargo CLI options in maturin build command
+    by @messense in #972
+  * Add support for wasm32-unknown-emscripten target by @messense
+    in #974
+  * Allow overriding platform release version using env var by
+    @messense in #975
+  * Don't warn if package not listed in cargo metadata is a
+    dependency of Rust std by @messense in #976
+  * Fix Emscripten CI: Pyodide packages.json was moved to
+    repodata.json by @hoodmane in #977
+  * Emscripten: Use -Z link-native-libraries=no and remove emcc
+    wrapper by @hoodmane in #978
+  * Fix maturin develop for arm64 Python on M1 Mac when default
+    toolchain is x86_64 by @messense in #980
+  * Improvements to Emscripten/Pyodide CI by @hoodmane in #983
+  * Setup Pyodide with nox for easier local testing by @messense in
+    #984
+  * Remove -Zbuild-std for Emscripten target by @messense in #986
+  * Add --repository option to upload command by @messense in #987
+  * Only lookup bundled Python sysconfig when interpreters aren't
+    specified as file path by @messense in #988
+  * Align some maturin build options with cargo by @messense in
+    #991
+  * Find CPython upper to 3.12 and PyPy upper to 3.10 by @messense
+    in #993
+  * Add aliases for maturin build and develop subcommands by
+    @messense in #994
+  * Update zbus to 1.9.3 to fix GHSA-76w9-p8mg-j927 and
+    GHSA-wgrg-5h56-jg27 by @messense in #996
+  * Update to Rust 1.62 for Docker image by @messense in #997
+  * Upgrade setuptools-rust to 1.4.0 by @messense in #998
+  * Bump openssl-src from 111.21.0+1.1.1p to 111.22.0+1.1.1q by
+    @dependabot in #1000
+  * Update user guide for the upcoming 0.13 release by @messense in
+    #973
+- Release 0.12.20
+  * Fix incompatibility with cibuildwheel for 32-bit Windows in
+    #951
+  * Don't require pip error messages to be utf-8 encoding in #953
+  * Compare minimum python version requirement between
+    requires-python and bindings crate in #954
+  * Set PYO3_PYTHON env var for PyPy when abi3 is enabled in #960
+  * Add sysconfigs for x64 Windows PyPy in #962
+  * Add support for Linux armv6l in #966
+  * Fix auditwheel bundled shared libs directory name in #969
+- Release 0.12.19
+  * Fix Windows Store install detection in #949
+  * Filter Python interpreters by target pointer width on Windows
+    in #950
+- Release 0.12.18
+  * Add support for building bin bindings wheels with multiple
+    platform tags in #928
+  * Skip auditwheel for non-compliant linux environment
+    automatically in #931
+  * Fix abi3 wheel build issue when no Python interpreters found on
+    host in #933
+  * Add Python 3.11 sysconfigs for Linux, macOS and Windows in #934
+  * Add Python 3.11 sysconfig for arm64 Windows in #936
+  * Add network proxy support to upload command in #939
+  * Fix python interpreter detection on arm64 Windows in #940
+  * Fallback to py -X.Y when pythonX.Y cannot be found on Windows
+    in #943
+  * Auto-detect Python Installs from Microsoft Store in #944
+  * Add bindings detection to bin targets in #938
+- Release 0.12.17
+  * Don't consider compile to i686 on x86_64 Windows cross
+    compiling in #923
+  * Accept -i x.y and -i python-x.y in maturin build command in
+    #925
+- Release 0.12.16
+  * Add Linux armv7l python sysconfig in #901
+  * Add NetBSD python sysconfig in #903
+  * Update 'replace_needed' to reduce total calls to 'patchelf' in
+    #905
+  * Add wheel data support in #906
+  * Allow use python interpreters from bundled sysconfig when not
+    cross compiling in #907
+  * Use setuptools-rust for bootstrapping in #909
+  * Allow setting the publish repository URL via
+    MATURIN_REPOSITORY_URL in #913
+  * Allow stubs-only mixed project layout in #914
+  * Allow setting the publish user name via MATURIN_USERNAME in
+    #915
+  * Add Windows python sysconfig in #917
+  * Add support for generate-import-lib feature of pyo3 in #918
+  * Integrate cargo-xwin for cross compiling to Windows MSVC
+    targets in #919
+- Fix runtime requirements
+</comment>
+    <requestid>991319</requestid>
+  </revision>
 </revisionlist>
