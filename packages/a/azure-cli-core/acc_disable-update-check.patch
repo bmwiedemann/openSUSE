@@ -1,7 +1,8 @@
-diff -Nru azure-cli-core-2.18.0.orig/azure/cli/core/util.py azure-cli-core-2.18.0/azure/cli/core/util.py
---- azure-cli-core-2.18.0.orig/azure/cli/core/util.py	2021-01-15 10:50:35.000000000 +0100
-+++ azure-cli-core-2.18.0/azure/cli/core/util.py	2021-01-21 10:32:01.708270048 +0100
-@@ -439,20 +439,7 @@
+Index: azure-cli-core-2.39.0/azure/cli/core/util.py
+===================================================================
+--- azure-cli-core-2.39.0.orig/azure/cli/core/util.py
++++ azure-cli-core-2.39.0/azure/cli/core/util.py
+@@ -485,20 +485,7 @@ def show_updates_available(new_line_befo
  
  
  def show_updates(updates_available_components, only_show_when_updates_available=False):

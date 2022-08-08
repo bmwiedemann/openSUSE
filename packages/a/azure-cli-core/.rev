@@ -370,4 +370,18 @@
     <comment></comment>
     <requestid>990671</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>108d94376d605ec38e6c80a0ab6a8e8d</srcmd5>
+    <version>2.39.0</version>
+    <time>1659951779</time>
+    <user>dimstar_suse</user>
+    <comment>- refresh previously empty acc_update-argcomplete.patch
+
+- New upstream release
+  + Version 2.39.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Update Requires from setup.py</comment>
+    <requestid>993720</requestid>
+  </revision>
 </revisionlist>
