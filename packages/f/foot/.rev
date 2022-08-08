@@ -270,4 +270,31 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.12.1 for more details.</comment>
     <requestid>973272</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8d1b8d7efd2cafb0e68989090cc0412f</srcmd5>
+    <version>1.13.0</version>
+    <time>1659941109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.13.0:
+  * foot.ini options:
+    * Added colors.search-box-no-match and colors.search-box-match options.
+    * Added new environment section to define custom environment variables for
+      child processes.
+    * Added key-bindings.prompt-prev and key-bindings.prompt-next options.
+      These key bindings jump to the previous / next prompt with a cooperating
+      shell.
+    * Added key-bindings.unicode-input and search-bindings.unicode-input
+      options. They provide a way to input unicode using codepoints without
+      an external IME.
+  * Client-side decorations no longer show buttons that do nothing because
+    the compositor doesn't support the button's feature. For example,
+    the minimize button won't be shown if the compositor doesn't support
+    minimizing.
+  * Added new themes - Monokai Pro, Catppuccin, Tokyo Night,
+    Tokyo Night Day, Tokyo Night Storm.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.13.0 for more details.
+- Mark foot-extra-terminfo and foot-themes packages as noarch.
+- Remove redundant copy of doc files and license in $datadir/doc/foot/</comment>
+    <requestid>993625</requestid>
+  </revision>
 </revisionlist>

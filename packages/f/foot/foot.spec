@@ -17,7 +17,7 @@
 
 
 Name:           foot
-Version:        1.12.1
+Version:        1.13.0
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
@@ -48,6 +48,7 @@ A Wayland terminal emulator.
 %package extra-terminfo
 
 Summary:        Extra terminfo files for the foot terminal emulator
+BuildArch:      noarch
 
 %description extra-terminfo
 This package contains extra terminfo files for the foot terminal emulator
@@ -59,6 +60,7 @@ take advantage of the files in this package.
 
 Summary:        Community-contributed themes for the foot terminal emulator
 Requires:       foot
+BuildArch:      noarch
 
 %description themes
 This package contains popular themes for the foot terminal emulator providing
@@ -81,6 +83,7 @@ users an easy way to theme foot.
 
 %install
 %meson_install
+rm -r %{buildroot}/%{_datadir}/doc/%{name}/
 mv %{buildroot}/%{_datadir}/terminfo/f/foot %{buildroot}/%{_datadir}/terminfo/f/foot-extra
 mv %{buildroot}/%{_datadir}/terminfo/f/foot-direct %{buildroot}/%{_datadir}/terminfo/f/foot-extra-direct
 
@@ -93,7 +96,6 @@ mv %{buildroot}/%{_datadir}/terminfo/f/foot-direct %{buildroot}/%{_datadir}/term
 %{_datadir}/applications/footclient.desktop
 %{_datadir}/applications/foot-server.desktop
 %{_datadir}/bash-completion/
-%{_datadir}/doc/%{name}/
 %{_datadir}/fish/
 %{_datadir}/zsh/
 %{_datadir}/icons/hicolor/
