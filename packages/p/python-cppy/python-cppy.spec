@@ -16,20 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-cppy
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        C++ headers for C extension development
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/nucleic/cppy
 Source:         https://files.pythonhosted.org/packages/source/c/cppy/cppy-%{version}.tar.gz
+Source99:       python-cppy-rpmlintrc
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61.2}
 BuildRequires:  %{python_module tomli}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
