@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 15 10:07:35 UTC 2022 - Jacob Michalskie <hel@lcp.world>
+
+- Update to 35.0:
+  * works with newer versions of cmarkgfm
+
+-------------------------------------------------------------------
 Wed Feb  9 10:39:46 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - We require cmarkgfm == 0.7.0 (gh#pypa/readme_renderer#221) and
