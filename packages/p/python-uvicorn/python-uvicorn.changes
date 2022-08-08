@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Aug  5 09:51:32 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix URL to 1537.patch: add ".patch" to the gh Pr to reference the
+  raw patch, not the gh webui.
+
+-------------------------------------------------------------------
+Tue Jul 19 20:59:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Disable testing with watchfiles
+  * We don't want it in Ring1-MinimalX
+
+-------------------------------------------------------------------
+Mon Jul 18 20:17:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.18.2
+  * Add default `log_config` on `uvicorn.run()` (#1541)
+  * Revert `logging` file name modification (#1543)
+- Release 0.18.1
+  * Use `DEFAULT_MAX_INCOMPLETE_EVENT_SIZE` as default to
+    `h11_max_incomplete_event_size` on the CLI (#1534)
+- Release 0.18.0
+  * The `reload` flag prioritizes `watchfiles` instead of the
+    deprecated `watchgod` (#1437)
+  *  Annotate `uvicorn.run()` function (#1423)
+  * Allow configuring `max_incomplete_event_size` for `h11`
+    implementation (#1514)
+  * Remove `asgiref` dependency (#1532)
+  * Turn `raw_path` into bytes on both websockets implementations
+    (#1487)
+  * Revert log exception traceback in case of invalid HTTP request
+    (#1518)
+  * Set `asyncio.WindowsSelectorEventLoopPolicy()` when using
+    multiple workers to avoid "WinError 87" (#1454)
+- Release 0.17.5
+  * Fix case where url is fragmented in httptools protocol (#1263)
+    2/16/22
+  * Fix WSGI middleware not to explode quadratically in the case of
+    a larger body (#1329)
+  *  Send HTTP 400 response for invalid request (#1352)
+- Release 0.17.4
+  *  Replace `create_server` by `create_unix_server` (#1362)
+- Release 0.17.3
+   * Drop wsproto version checking. (#1359)
+- Release 0.17.2
+  * Revert #1332. While trying to solve the memory leak, it
+    introduced an issue (#1345) when the server receives big chunks
+    of data using the `httptools` implementation. (#1354)
+  * Revert stream interface changes. This was introduced on 0.14.0,
+    and caused an issue (#1226), which caused a memory leak when
+    sending TCP pings. (#1355)
+  * Fix wsproto version check expression (#1342)
+- Release 0.17.1
+  * Move all data handling logic to protocol and ensure connection
+    is closed. (#1332)
+  * Change `spec_version` field from "2.1" to "2.3", as Uvicorn is
+    compliant with that version of the ASGI specifications. (#1337)
+- Add uvicorn-pr1537-no-watchgod-tests.patch gh#encode/uvicorn#1537
+
+-------------------------------------------------------------------
 Tue Feb  1 05:38:09 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing Requires on python-asgiref. 

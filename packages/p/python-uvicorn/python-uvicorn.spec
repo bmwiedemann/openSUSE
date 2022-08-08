@@ -16,27 +16,29 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-uvicorn
-Version:        0.17.0
+Version:        0.18.2
 Release:        0
 Summary:        An Asynchronous Server Gateway Interface server
 License:        BSD-3-Clause
 URL:            https://github.com/encode/uvicorn
 Source:         https://github.com/encode/uvicorn/archive/%{version}.tar.gz#/uvicorn-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM uvicorn-pr1537-no-watchgod-tests.patch gh#encode/uvicorn#1537
+Patch1:         https://github.com/encode/uvicorn/pull/1537.patch#/uvicorn-pr1537-no-watchgod-tests.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-asgiref >= 3.4
 Requires:       python-click >= 7.0
 Requires:       python-h11 >= 0.8.0
-Requires:       python-httptools >= 0.1.0
+%if 0%{python_version_nodots} < 38
 Requires:       python-typing_extensions
-Requires:       python-websockets >= 8.0
+%endif
 Recommends:     python-PyYAML >= 5.1
+Recommends:     python-httptools >= 0.4.0
+Recommends:     python-websockets >= 8.0
 Suggests:       python-uvloop >= 0.14.0
-Suggests:       python-watchgod >= 0.6
+Suggests:       python-watchfiles >= 0.13
 Suggests:       python-wsproto >= 0.15.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -46,7 +48,7 @@ BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module asgiref >= 3.4}
 BuildRequires:  %{python_module click >= 7.0}
 BuildRequires:  %{python_module h11 >= 0.8.0}
-BuildRequires:  %{python_module httptools >= 0.1.0}
+BuildRequires:  %{python_module httptools >= 0.4.0}
 BuildRequires:  %{python_module httpx >= 0.18}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
@@ -54,11 +56,12 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dotenv}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module trustme}
-BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
 BuildRequires:  %{python_module uvloop >= 0.14.0}
-BuildRequires:  %{python_module watchgod >= 0.6}
 BuildRequires:  %{python_module websockets >= 8.0}
 BuildRequires:  %{python_module wsproto >= 0.15.0}
+# We don't want watchfiles in Ring1
+#BuildRequires:  #{python_module watchfiles >= 0.13}
 # /SECTION
 %python_subpackages
 
@@ -87,14 +90,13 @@ rm setup.cfg
 %check
 # Required for reporting bugs
 %python_exec -m uvicorn --version
-# Three wsproto upgrade related tests
-# https://github.com/encode/uvicorn/issues/868
-%pytest -rs -k 'not (test_supported_upgrade_request or test_invalid_upgrade)'
+%pytest
 
 %files %{python_files}
 %doc README.md
 %license LICENSE.md
 %python_alternative %{_bindir}/uvicorn
-%{python_sitelib}/*
+%{python_sitelib}/uvicorn
+%{python_sitelib}/uvicorn-%{version}*-info
 
 %changelog
