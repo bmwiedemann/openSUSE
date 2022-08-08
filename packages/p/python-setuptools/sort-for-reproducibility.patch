@@ -1,8 +1,8 @@
-Index: setuptools-58.3.0/setuptools/command/easy_install.py
+Index: setuptools-63.1.0/setuptools/command/easy_install.py
 ===================================================================
---- setuptools-58.3.0.orig/setuptools/command/easy_install.py
-+++ setuptools-58.3.0/setuptools/command/easy_install.py
-@@ -413,7 +413,7 @@ class easy_install(Command):
+--- setuptools-63.1.0.orig/setuptools/command/easy_install.py
++++ setuptools-63.1.0/setuptools/command/easy_install.py
+@@ -419,7 +419,7 @@ class easy_install(Command):
              for spec in self.args:
                  self.easy_install(spec, not self.no_deps)
              if self.record:
@@ -11,11 +11,11 @@ Index: setuptools-58.3.0/setuptools/command/easy_install.py
                  if self.root:  # strip any package prefix
                      root_len = len(self.root)
                      for counter in range(len(outputs)):
-Index: setuptools-58.3.0/setuptools/command/egg_info.py
+Index: setuptools-63.1.0/setuptools/command/egg_info.py
 ===================================================================
---- setuptools-58.3.0.orig/setuptools/command/egg_info.py
-+++ setuptools-58.3.0/setuptools/command/egg_info.py
-@@ -654,7 +654,7 @@ def _write_requirements(stream, reqs):
+--- setuptools-63.1.0.orig/setuptools/command/egg_info.py
++++ setuptools-63.1.0/setuptools/command/egg_info.py
+@@ -683,7 +683,7 @@ def _write_requirements(stream, reqs):
  
      def append_cr(line):
          return line + '\n'
@@ -24,11 +24,11 @@ Index: setuptools-58.3.0/setuptools/command/egg_info.py
      stream.writelines(lines)
  
  
-Index: setuptools-58.3.0/setuptools/dist.py
+Index: setuptools-63.1.0/setuptools/dist.py
 ===================================================================
---- setuptools-58.3.0.orig/setuptools/dist.py
-+++ setuptools-58.3.0/setuptools/dist.py
-@@ -208,7 +208,7 @@ def write_pkg_file(self, file):  # noqa:
+--- setuptools-63.1.0.orig/setuptools/dist.py
++++ setuptools-63.1.0/setuptools/dist.py
+@@ -222,7 +222,7 @@ def write_pkg_file(self, file):  # noqa:
      if self.long_description_content_type:
          write_field('Description-Content-Type', self.long_description_content_type)
      if self.provides_extras:
@@ -37,10 +37,10 @@ Index: setuptools-58.3.0/setuptools/dist.py
              write_field('Provides-Extra', extra)
  
      self._write_list(file, 'License-File', self.license_files or [])
-Index: setuptools-58.3.0/setuptools/tests/test_egg_info.py
+Index: setuptools-63.1.0/setuptools/tests/test_egg_info.py
 ===================================================================
---- setuptools-58.3.0.orig/setuptools/tests/test_egg_info.py
-+++ setuptools-58.3.0/setuptools/tests/test_egg_info.py
+--- setuptools-63.1.0.orig/setuptools/tests/test_egg_info.py
++++ setuptools-63.1.0/setuptools/tests/test_egg_info.py
 @@ -297,8 +297,8 @@ class TestEggInfo:
              wheel>=0.5
              pytest
@@ -51,3 +51,42 @@ Index: setuptools-58.3.0/setuptools/tests/test_egg_info.py
          ''',
  
          '''
+Index: setuptools-63.1.0/setuptools/tests/test_wheel.py
+===================================================================
+--- setuptools-63.1.0.orig/setuptools/tests/test_wheel.py
++++ setuptools-63.1.0/setuptools/tests/test_wheel.py
+@@ -425,30 +425,30 @@ WHEEL_INSTALL_TESTS = (
+     dict(
+         id='requires_ensure_order',
+         install_requires='''
+-        foo
+         bar
+         baz
++        foo
+         qux
+         ''',
+         extras_require={
+             'extra': '''
+-            foobar>3
+             barbaz>4
+             bazqux>5
++            foobar>3
+             quxzap>6
+             ''',
+         },
+         requires_txt=DALS(
+             '''
+-            foo
+             bar
+             baz
++            foo
+             qux
+ 
+             [extra]
+-            foobar>3
+             barbaz>4
+             bazqux>5
++            foobar>3
+             quxzap>6
+             '''
+         ),

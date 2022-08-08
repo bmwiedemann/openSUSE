@@ -23,75 +23,61 @@
 %define psuffix -test
 %bcond_without test
 %bcond_with wheel
-%else
+%endif
 %if "%{flavor}" == "wheel"
 %define psuffix -wheel
+%bcond_with test
 %bcond_without wheel
-%else
+%endif
+%if "%{flavor}" == ""
 %define psuffix %{nil}
 %bcond_with test
 %bcond_with wheel
 %endif
-%endif
+
 # in order to avoid rewriting for subpackage generator
 %define mypython python
 Name:           python-setuptools%{psuffix}
-Version:        58.3.0
+Version:        63.2.0
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
-License:        MIT
+License:        Apache-2.0 AND MIT AND BSD-2-Clause AND Python-2.0
 URL:            https://github.com/pypa/setuptools
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-%{version}.tar.gz
 Patch0:         sort-for-reproducibility.patch
 # PATCH-FIX-OPENSUSE remove_mock.patch mcepl@suse.com
 Patch1:         remove_mock.patch
-# PATCH-FIX-OPENSUSE remove-more-itertools-dependency-cycle.patch alarrosa@suse.com
-Patch2:         remove-more-itertools-dependency-cycle.patch
-BuildRequires:  %{python_module appdirs >= 1.4.3}
-BuildRequires:  %{python_module ordered-set >= 3.1.1}
-BuildRequires:  %{python_module packaging >= 20.4}
-BuildRequires:  %{python_module pyparsing >= 2.2.1}
-BuildRequires:  %{python_module xml}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-appdirs >= 1.4.3
-Requires:       python-base >= 3.6
-Requires:       python-ordered-set >= 3.1.1
-Requires:       python-packaging >= 20.4
-Requires:       python-pyparsing >= 2.2.1
-Requires:       python-xml
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
+%if %{with wheel}
+Requires:       %mypython(abi) = %python_version
+%endif
 %if %{with test}
-BuildRequires:  %{python_module Paver}
-BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module jaraco.envs}
+BuildRequires:  %{python_module filelock >= 3.4.0}
+BuildRequires:  %{python_module ini2toml-lite >= 0.9}
+BuildRequires:  %{python_module jaraco.envs >= 2.2}
 BuildRequires:  %{python_module jaraco.path >= 3.2.0}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest-fixture-config}
-BuildRequires:  %{python_module pytest-virtualenv}
+BuildRequires:  %{python_module pip >= 19.1}
+BuildRequires:  %{python_module pip-run >= 8.8}
+BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools >= %{version}}
+BuildRequires:  %{python_module setuptools = %{version}}
+BuildRequires:  %{python_module tomli-w >= 1.0.0}
 BuildRequires:  %{python_module virtualenv >= 13.0.0}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python3-setuptools-wheel = %{version}
 %endif
 %if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Recommends:     ca-certificates-mozilla
 %endif
 %if %{with wheel}
 BuildRequires:  %{python_module wheel}
-%endif
-%if !%{with test} && !%{with wheel}
-# work around boo#1186870
-Provides:       %{mypython}%{python_version}dist(setuptools) = %{version}
-Provides:       %{mypython}%{python_version}dist(pkg_resources) = %{version}
-%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
-Provides:       %{mypython}3dist(pkg_resources) = %{version}
-Provides:       %{mypython}3dist(setuptools) = %{version}
-%endif
 %endif
 %python_subpackages
 
@@ -110,23 +96,6 @@ especially ones that have dependencies on other packages.
 # ^ = start; #!/ = shebang leading characters; .* = rest of line; $ = end
 # replace with nothing
 sed -r -i '1s@^#!/.*$@@' pkg_resources/_vendor/appdirs.py
-
-%if ! %{with wheel}
-# replace the bundled stuff
-find ./ -type f -name \*.py -exec sed -i \
-  -e 's:from setuptools\.extern\.:from :g' \
-  -e 's:from pkg_resources\.extern\.:from :g' \
-  -e 's:pkg_resources\.extern\.::g' \
-  -e 's:setuptools\.extern\.::g' \
-  {} \;
-find ./ -type f -name \*.py -exec sed -i \
-  -e 's:from setuptools\.extern ::g' \
-  -e 's:from pkg_resources\.extern ::g' \
-  {} \;
-find ./ -type f -name \*.py -exec sed -i  \
-  -e 's:from .extern ::g' \
-  {} \;
-%endif
 
 %build
 %if ! %{with wheel}
@@ -147,14 +116,12 @@ find ./ -type f -name \*.py -exec sed -i  \
 
 %check
 %if %{with test}
-# the 4 skipped test rely on the bundled packages but they are
-# not available on virtualenv; this is expected behaviour
-donttest="test_clean_env_install or test_pip_upgrade_from_source or test_test_command_install_requirements or test_no_missing_dependencies"
-# these 3 tests try to download the wheel wheel from PyPI
-donttest="$donttest or (test_distutils_adoption and (distutils_stdlib or distutils_local))"
+export PRE_BUILT_SETUPTOOLS_WHEEL=%{python3_sitelib}/../wheels/setuptools-%{version}-py2.py3-none-any.whl
 export LANG=en_US.UTF-8
-# tests need imports local source dir
+# tests need imports from local source dir
 export PYTHONPATH=$(pwd)
+# no online comparisons in obs
+donttest="(test_apply_pyproject_equivalent_to_setupcfg and https)"
 %pytest -rfE -n auto -k "not ($donttest)"
 %endif
 
@@ -164,7 +131,7 @@ export PYTHONPATH=$(pwd)
 %license LICENSE
 %doc CHANGES.rst README.rst
 %{python_sitelib}/setuptools
-%{python_sitelib}/setuptools-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/setuptools-%{version}*-info
 %dir %{python_sitelib}/pkg_resources
 %{python_sitelib}/pkg_resources/*
 %{python_sitelib}/_distutils_hack

@@ -839,4 +839,12 @@
     <comment>- Refresh remove_mock.patch to add a missing file to it.</comment>
     <requestid>964742</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>ddcca74dc3188ca848f507e67b4b95ed</srcmd5>
+    <version>63.2.0</version>
+    <time>1659941090</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>989636</requestid>
+  </revision>
 </revisionlist>
