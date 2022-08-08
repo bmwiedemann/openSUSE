@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 25 06:29:36 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 10.2.1
+  * update glplugin, better get_table fallback handling
+
+-------------------------------------------------------------------
 Fri May  6 07:16:26 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 10.1.0.3
