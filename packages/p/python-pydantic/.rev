@@ -98,4 +98,13 @@
     <comment></comment>
     <requestid>983628</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>53d9f3a9070bb16467e2b71bb6fcd379</srcmd5>
+    <version>1.9.1</version>
+    <time>1659941094</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-pkg_resources.patch:
+  * Use packaging, not pkg_resources for versions.</comment>
+    <requestid>990100</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,9 @@ Summary:        Data validation and settings management using python type hintin
 License:        MIT
 URL:            https://github.com/samuelcolvin/pydantic
 Source:         https://github.com/samuelcolvin/pydantic/archive/v%{version}.tar.gz#/pydantic-%{version}.tar.gz
+Patch0:         remove-pkg_resources.patch
 BuildRequires:  %{python_module email_validator >= 1.0.3}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dotenv >= 0.10.4}

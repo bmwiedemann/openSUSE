@@ -1,0 +1,22 @@
+Index: pydantic-1.9.1/tests/test_utils.py
+===================================================================
+--- pydantic-1.9.1.orig/tests/test_utils.py
++++ pydantic-1.9.1/tests/test_utils.py
+@@ -8,7 +8,7 @@ from copy import copy, deepcopy
+ from typing import Callable, Dict, List, NewType, Tuple, TypeVar, Union
+ 
+ import pytest
+-from pkg_resources import safe_version
++from packaging.version import Version
+ from typing_extensions import Annotated, Literal
+ 
+ from pydantic import VERSION, BaseModel, ConstrainedList, conlist
+@@ -379,7 +379,7 @@ def test_version_info():
+ 
+ 
+ def test_standard_version():
+-    assert safe_version(VERSION) == VERSION
++    assert str(Version(VERSION)) == VERSION
+ 
+ 
+ def test_class_attribute():
