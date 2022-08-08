@@ -87,4 +87,16 @@
 </comment>
     <requestid>964842</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>0a7fa4af0cb0e4ec4212910f790f8c99</srcmd5>
+    <version>3.7.1</version>
+    <time>1659941104</time>
+    <user>dimstar_suse</user>
+    <comment>- Use prjconf provided primary_python if available
+- Split primary flavor in multibuild for possible inclusion into
+  Ring0
+- Remove devendoring of tomli, so that we can put this in Ring0
+</comment>
+    <requestid>992386</requestid>
+  </revision>
 </revisionlist>

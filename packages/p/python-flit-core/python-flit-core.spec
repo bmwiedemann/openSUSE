@@ -16,21 +16,41 @@
 #
 
 
+%define modname flit-core
+%define mypython python
+# fallback if primary_python is not available from the project configuration
+%{?!primary_python:%define primary_python python3%{?!sle_version:10}}
 %global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "primary"
+# this one is built in Ring0
+%define pprefix %{primary_python}
+%define pythons %{primary_python}
+%endif
+%if "%{flavor}" == ""
+# The rest is in Ring1
+%define pprefix python
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} == 150500
+%{expand:%%define skip_%{primary_python} 1}
+BuildRequires:  python3-base >= 3.6
+%else
+# no non-primary python in <=15.4
+ExclusiveArch:  do-not-build
+%define python_module() no-build-without-multibuild-flavor
+%endif
+%endif
 %if "%{flavor}" == "test"
+%define pprefix python
 %define psuffix -test
 %bcond_without test
 %else
-%define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
-Name:           python-flit-core%{psuffix}
+
+Name:           %{pprefix}-flit-core%{?psuffix}
 Version:        3.7.1
 Release:        0
 Summary:        Distribution-building parts of Flit
-License:        BSD-3-Clause
+License:        BSD-3-Clause AND MIT
 URL:            https://github.com/pypa/flit
 Source0:        https://files.pythonhosted.org/packages/source/f/flit-core/flit_core-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
@@ -41,29 +61,35 @@ BuildRequires:  %{python_module testpath}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
-Requires:       python-tomli
 BuildArch:      noarch
+# SECTION boo#1186870: we are a transitive build dependency of python-packaging which is used by pythondistdeps.py normally creating this entry
+#!BuildIgnore:  python3-packaging
+#!BuildIgnore:  %{primary_python}-packaging
+Provides:       %{mypython}%{python_version}dist(%{modname}) = %{version}
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Provides:       %{mypython}3dist(%{modname}) = %{version}
+Provides:       %{mypython}3-%{modname} = %{version}-%{release}
+Obsoletes:      %{mypython}3-%{modname} < %{version}-%{release}
+%endif
+# /SECTION
 %python_subpackages
 
 %description
-Flit is a simple way to put Python packages and modules on PyPI.
+This provides a PEP 517 build backend for packages using Flit.
+The only public interface is the API specified by PEP 517, at flit_core.buildapi.
 
 %prep
 %setup -q -n flit_core-%{version}
 
+%if !%{with test}
 %build
 # https://flit.readthedocs.io/en/latest/bootstrap.html
 python3 -m flit_core.wheel
 
-%if !%{with test}
 %install
 %{python_expand #
 mkdir -p %{buildroot}%{$python_sitelib}
 $python bootstrap_install.py dist/flit_core-%{version}-py3-none-any.whl -i %{buildroot}%{$python_sitelib}
-# debundle after the bootstrap. See vendor/README
-sed -i 's/from .vendor import tomli/import tomli/'  %{buildroot}%{$python_sitelib}/flit_core/config.py
-rm -r %{buildroot}%{$python_sitelib}/flit_core/vendor
 # Don't package the tests
 rm -r  %{buildroot}%{$python_sitelib}/flit_core/tests
 }
@@ -73,7 +99,7 @@ rm -r  %{buildroot}%{$python_sitelib}/flit_core/tests
 
 %if %{with test}
 %check
-# make sure we do not test the sources but the debundled package
+# make sure we do not test the sources but the package
 rm flit_core/*.py pyproject.toml
 %pytest -rfEs
 %endif

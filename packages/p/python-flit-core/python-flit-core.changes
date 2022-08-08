@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug  2 19:03:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Use prjconf provided primary_python if available
+
+-------------------------------------------------------------------
+Thu Jul 14 22:27:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Split primary flavor in multibuild for possible inclusion into
+  Ring0
+
+-------------------------------------------------------------------
+Thu Jul 14 15:34:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove devendoring of tomli, so that we can put this in Ring0
+
+-------------------------------------------------------------------
 Fri Mar 25 12:10:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 3.7.1
