@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,22 +31,22 @@ Version:        3.0.0
 Release:        0
 Summary:        Pytest plugin for coverage reporting
 License:        MIT
-URL:            https://github.com/schlamar/pytest-cov
+URL:            https://github.com/pytest-dev/pytest-cov
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-cov/pytest-cov-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#pytest-dev/pytest-cov/issues/509
+# PATCH-FIX-UPSTREAM gh#pytest-dev/pytest-cov#509
 Patch0:         support-coverage-62.patch
+# PATCH-FIX-UPSTREAM gh#pytest-dev/pytest-cov#545
+Patch1:         support-setuptools60.patch
+BuildRequires:  %{python_module setuptools}
+%if %{with test}
 BuildRequires:  %{python_module coverage >= 5.2.1}
 BuildRequires:  %{python_module fields}
 BuildRequires:  %{python_module process-tests}
-%if %{with test}
-BuildRequires:  %{python_module hunter}
 BuildRequires:  %{python_module pytest >= 4.6.0}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module virtualenv}
 %endif
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-coverage >= 5.2.1

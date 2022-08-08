@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 17 20:14:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add support-setuptools60.patch gh#pytest-dev/pytest-cov#545
+
+-------------------------------------------------------------------
 Mon Dec 20 01:21:53 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add support-coverage-62.patch:
