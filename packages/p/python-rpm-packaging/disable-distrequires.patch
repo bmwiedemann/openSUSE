@@ -1,0 +1,8 @@
+--- ./fileattrs/pythondist.attr.orig	2019-12-06 14:32:57.245328376 +0000
++++ ./fileattrs/pythondist.attr	2019-12-06 14:33:35.345238073 +0000
+@@ -1,3 +1,4 @@
+ %__pythondist_provides	%{_rpmconfigdir}/pythondistdeps.py --provides --majorver-provides
+-%__pythondist_requires	%{_rpmconfigdir}/pythondistdeps.py --requires
++#disabled for now
++#%__pythondist_requires	%{_rpmconfigdir}/pythondistdeps.py --requires
+ %__pythondist_path		/lib(64)?/python[[:digit:]]\\.[[:digit:]]+/site-packages/[^/]+\\.(dist-info|egg-info|egg-link)$
