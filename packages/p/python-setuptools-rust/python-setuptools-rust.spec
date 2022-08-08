@@ -16,26 +16,35 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
 Name:           python-setuptools-rust
-Version:        1.3.0
+Version:        1.4.1
 Release:        0
 Summary:        Setuptools plugin for Rust extensions
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/PyO3/setuptools-rust
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools-rust/setuptools-rust-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module semantic_version >= 2.8.2}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 62.4}
+BuildRequires:  %{python_module setuptools_scm >= 6.3.2}
 BuildRequires:  %{python_module typing_extensions >= 3.7.4.3}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  cargo
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  rust
+Requires:       cargo
 Requires:       python-semantic_version >= 2.8.2
+Requires:       python-setuptools >= 62.4
 Requires:       python-typing_extensions >= 3.7.4.3
+Requires:       rust
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description
@@ -49,18 +58,28 @@ were written in C.
 %setup -q -n setuptools-rust-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+%pytest tests/
+pushd examples/hello-world
+%{python_expand # See noxfile.py
+# hello-world is the only example which does not need extra rust packages (via cargo_vendor)
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+$python -m pip install --no-build-isolation --target=$PWD/build/exampleinstall/ --no-deps --no-index .
+$PWD/build/exampleinstall/bin/hello-world
+}
+popd
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/setuptools_rust-%{version}*-info
+%{python_sitelib}/setuptools_rust
 
 %changelog

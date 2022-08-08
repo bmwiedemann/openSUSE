@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Jul 20 09:16:41 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix requirements
+  * Don't need sphinx
+  * Needs rust and cargo
+  * Don't need nox; can't use it in obs as it wants to install
+    wheels.
+- Fix tests:
+  * Plain pytest test suite without is rudimentary
+  * At least build the hello-world example
+- Use PEP517
+
+-------------------------------------------------------------------
+Mon Jul 18 07:35:46 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Deduplicate files in python_sitelib.
+
+-------------------------------------------------------------------
+Sat Jul 16 15:56:02 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update setuptools requirement to 62.4
+  * require pyparsing
+  * be mor specific in %files section
+  * use pytest
+
+- update to version 1.4.1:
+  * Fixed
+    + Fix crash when checking Rust version. #263
+
+- changes from version 1.4.0:
+  * Packaging
+    + Increase minimum setuptools version to 62.4. #246
+  * Added
+    + Add cargo_manifest_args to support locked, frozen and offline
+      builds. #234
+    + Add RustBin for packaging binaries in scripts data
+      directory. #248
+  * Changed
+    + Exec binding RustExtension with script=True is deprecated in
+      favor of RustBin. #248
+    + Errors while calling cargo metadata are now reported back to the
+      user #254
+    + quiet option will now suppress output of cargo metadata. #256
+    + setuptools-rust will now match cargo behavior of not setting
+      --target when the selected target is the rust host. #258
+    + Deprecate native option of RustExtension. #258
+  * Fixed
+    + If the sysconfig for BLDSHARED has no flags, setuptools-rust
+      won't crash anymore. #241
+
+-------------------------------------------------------------------
 Sun May 15 19:16:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.0:
