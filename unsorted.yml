@@ -21578,6 +21578,7 @@ unsorted:
   - python-renderspec-doc 
   - python-rpm-generators: [i586] 
   - python-rpm-macros: [i586] 
+  - python-rpm-packaging 
   - python-rtslib-fb-common 
   - python-saharaclient-doc 
   - python-senlinclient-doc 
@@ -21923,7 +21924,6 @@ unsorted:
   - python310-Chameleon 
   - python310-Cheetah3 
   - python310-CherryPy 
-  - python310-CommonMark 
   - python310-ConfigArgParse 
   - python310-ConfigUpdater 
   - python310-Cython 
@@ -22007,7 +22007,6 @@ unsorted:
   - python310-Parsley 
   - python310-Paste 
   - python310-PasteDeploy 
-  - python310-Paver 
   - python310-PeachPy: [x86_64] 
   - python310-PeakUtils 
   - python310-Pebble 
@@ -22611,6 +22610,7 @@ unsorted:
   - python310-branca 
   - python310-breathe 
   - python310-brewer2mpl 
+  - python310-brotlicffi 
   - python310-bsddb3 
   - python310-bsddb3-devel 
   - python310-bson 
@@ -23241,6 +23241,7 @@ unsorted:
   - python310-holidays 
   - python310-holoviews 
   - python310-hotdoc 
+  - python310-hstspreload 
   - python310-html2text 
   - python310-html5-parser 
   - python310-htmlmin 
@@ -23765,6 +23766,7 @@ unsorted:
   - python310-orange-widget-base 
   - python310-orangebox 
   - python310-ordered-namespace 
+  - python310-ordered-set 
   - python310-orderedmultidict 
   - python310-osc-tiny 
   - python310-oscrypto 
@@ -23811,7 +23813,6 @@ unsorted:
   - python310-patatt 
   - python310-patchy 
   - python310-path 
-  - python310-pathlib 
   - python310-pathlib2 
   - python310-pathtools 
   - python310-pathvalidate 
@@ -24446,7 +24447,6 @@ unsorted:
   - python310-retryrequests 
   - python310-rfc3987 
   - python310-rfc6555 
-  - python310-rich 
   - python310-rjsmin 
   - python310-rnc2rng 
   - python310-rnginline 
@@ -24863,7 +24863,7 @@ unsorted:
   - python310-warlock 
   - python310-watchdog 
   - python310-watchdog-doc 
-  - python310-watchgod 
+  - python310-watchfiles 
   - python310-watermark 
   - python310-wcag-contrast-ratio 
   - python310-wcmatch 
@@ -25100,7 +25100,6 @@ unsorted:
   - python38-Parsley 
   - python38-Paste 
   - python38-PasteDeploy 
-  - python38-Paver 
   - python38-PeachPy: [x86_64] 
   - python38-PeakUtils 
   - python38-Pebble 
@@ -27043,7 +27042,6 @@ unsorted:
   - python38-patatt 
   - python38-patchy 
   - python38-path 
-  - python38-pathlib 
   - python38-pathlib2 
   - python38-pathspec 
   - python38-pathtools 
@@ -28181,7 +28179,7 @@ unsorted:
   - python38-warlock 
   - python38-watchdog 
   - python38-watchdog-doc 
-  - python38-watchgod 
+  - python38-watchfiles 
   - python38-watermark 
   - python38-wcag-contrast-ratio 
   - python38-wcmatch 
@@ -28419,7 +28417,6 @@ unsorted:
   - python39-Parsley 
   - python39-Paste 
   - python39-PasteDeploy 
-  - python39-Paver 
   - python39-PeachPy: [x86_64] 
   - python39-PeakUtils 
   - python39-Pebble 
@@ -30361,7 +30358,6 @@ unsorted:
   - python39-patatt 
   - python39-patchy 
   - python39-path 
-  - python39-pathlib 
   - python39-pathlib2 
   - python39-pathspec 
   - python39-pathtools 
@@ -31496,7 +31492,7 @@ unsorted:
   - python39-warlock 
   - python39-watchdog 
   - python39-watchdog-doc 
-  - python39-watchgod 
+  - python39-watchfiles 
   - python39-watermark 
   - python39-wcag-contrast-ratio 
   - python39-wcmatch 
@@ -32508,7 +32504,6 @@ unsorted:
   - rpm-32bit: [x86_64] 
   - rpm-build 
   - rpm-build-perl 
-  - rpm-build-python 
   - rpm-devel 
   - rpm-repo-keys-openSUSE 
   - rpm-repos-openSUSE-Tumbleweed 
