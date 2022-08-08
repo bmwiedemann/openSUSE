@@ -28,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/f/fabric/fabric-%
 Patch0:         fix-executable.patch
 # PATCH-FIX-UPSTREAM gh#fabric/fabric#2210
 Patch1:         remove-mock.patch
+# PATCH-FIX-OPENSUSE remove pathlib2 requirement gh#fabric/fabric#2180
+Patch2:         remove-pathlib2.patch
 BuildRequires:  %{python_module cryptography >= 1.1}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module invoke >= 1.3}
@@ -41,7 +43,6 @@ Requires:       python-cryptography >= 1.1
 Requires:       python-decorator
 Requires:       python-invoke >= 1.3
 Requires:       python-paramiko >= 2.4
-Requires:       python-pathlib2
 Requires:       python-setuptools
 Requires:       python-six
 Requires(post): update-alternatives
