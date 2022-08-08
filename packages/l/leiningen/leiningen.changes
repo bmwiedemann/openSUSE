@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug  8 07:06:46 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.9.9:
+  * Migrate the repository from Github to Codeberg.
+  * Fix a bug in new where template group-ids could be ignored.
+  * Work around a change in Java 9 which broke template listing.
+  * Fix a bug in pedantic checks which resulted in infinite loops.
+  * Prevent module-info.class files from being included in uberjars.
+  * Prevent duplicate warnings in resource-paths when creating jars.
+  * Fix an issue with check where AOT would shadow reflection warnings.
+  * Allow change to edit dependency versions.
+  * Fix a bug where composite profiles would leak dependencies downstream.
+  * Allow repl to bind to filesystem sockets via :headless :socket PATH
+
+-------------------------------------------------------------------
 Mon Dec  6 10:41:28 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.9.8:

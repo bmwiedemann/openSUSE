@@ -115,4 +115,22 @@
   * Allow LEIN_JAR to be overridden if you install elsewhere.</comment>
     <requestid>935973</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>99cfcaf5bae0dbf809d7d8668b49b94c</srcmd5>
+    <version>2.9.9</version>
+    <time>1659946651</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.9:
+  * Migrate the repository from Github to Codeberg.
+  * Fix a bug in new where template group-ids could be ignored.
+  * Work around a change in Java 9 which broke template listing.
+  * Fix a bug in pedantic checks which resulted in infinite loops.
+  * Prevent module-info.class files from being included in uberjars.
+  * Prevent duplicate warnings in resource-paths when creating jars.
+  * Fix an issue with check where AOT would shadow reflection warnings.
+  * Allow change to edit dependency versions.
+  * Fix a bug where composite profiles would leak dependencies downstream.
+  * Allow repl to bind to filesystem sockets via :headless :socket PATH</comment>
+    <requestid>993683</requestid>
+  </revision>
 </revisionlist>
