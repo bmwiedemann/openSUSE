@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Jul 13 08:32:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix spec-cleaner gone wrong
+- Update requirements
+
+-------------------------------------------------------------------
+Wed Jul 13 00:37:49 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * remove skip python version 2 (got base>=3.7 anyway)
+  * switch to pyproject build
+  * require hatchling, pip, pytest-timeout
+
+- update to version 0.12.2:
+  * Maintenance and upkeep improvements
+    + Replace deprecated pipes.quote with shlex.quote #153 (@hroncok)
+    + [pre-commit.ci] pre-commit autoupdate #152 (@pre-commit-ci)
+    + [pre-commit.ci] pre-commit autoupdate #151 (@pre-commit-ci)
+
+- changes from version 0.12.1:
+  * Enhancements made
+    + Allow skipping npm with JUPYTER_PACKAGING_SKIP_NPM env #133
+      (@minrk)
+  * Maintenance and upkeep improvements
+    + [pre-commit.ci] pre-commit autoupdate #149 (@pre-commit-ci)
+    + Auto label bot PRs #148 (@blink1073)
+    + Use hatch backend #147 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #146 (@pre-commit-ci)
+    + Use flit build backend #144 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #142 (@pre-commit-ci)
+    + [pre-commit.ci] pre-commit autoupdate #141 (@pre-commit-ci)
+    + [pre-commit.ci] pre-commit autoupdate #140 (@pre-commit-ci)
+    + Update pre-commit #139 (@blink1073)
+    + Clean up CI and Tests #137 (@blink1073)
+  * Other merged PRs
+    + do not install tests as a top-level package #135 (@mgorny)
+
+- changes from version 0.12.0:
+  * Bugs fixed
+    + Update import for new setuptools path (setuptools >=61.0.0) #131
+      (@timkpaine)
+    + Use pathlib rather than os.path #125 (@fcollonval)
+  * Maintenance and upkeep improvements
+    + Add source URL to pypi project page #129 (@manics)
+    + Add pre-commit #126 (@fcollonval)
+    + Stop using distutils.log #123 (@blink1073)
+
+-------------------------------------------------------------------
 Sun Nov 21 14:19:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.11.1

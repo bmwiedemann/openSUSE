@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-packaging
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-jupyter-packaging
-Version:        0.11.1
+Version:        0.12.2
 Release:        0
 Summary:        Jupyter Packaging Utilities
 License:        BSD-3-Clause
@@ -28,24 +26,27 @@ URL:            https://github.com/jupyter/jupyter-packaging
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter-packaging/jupyter_packaging-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module deprecation}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module setuptools >= 46.4.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 60.2}
 BuildRequires:  %{python_module tomlkit}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 Requires:       python-deprecation
 Requires:       python-packaging
-Requires:       python-setuptools >= 46.4.0
+Requires:       python-setuptools >= 60.2
 Requires:       python-tomlkit
 Requires:       python-wheel
 Provides:       python-jupyter_packaging = %{version}-%{release}
-# SECTON test requirements
+# SECTION test requirements
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 #/SECTION
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -58,10 +59,10 @@ sed -i 's/\r$//' README.md
 sed -i -e '/^#!\//, 1d' jupyter_packaging/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
