@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 19 12:26:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.18:
+  * Fix iteration when tree is 7 levels deep and has collissions
+  * Test on python 3.10
+  * consolidate mypy and pytest config into pyproject.toml
+
+-------------------------------------------------------------------
 Tue Feb 22 09:01:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16:
