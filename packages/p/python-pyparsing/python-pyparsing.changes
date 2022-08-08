@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Jul 15 12:23:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Split primary flavor in multibuild for possible inclusion into
+  Ring0
+- Remove hardcoded primary_python variable.
+
+-------------------------------------------------------------------
+Thu Jul 14 14:39:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 3.0.9
+  * Added Unicode set BasicMultilingualPlane (may also be
+    referenced as BMP) representing the Basic Multilingual Plane
+    (Unicode characters up to code point 65535). Can be used to
+    parse most language characters, but omits emojis, wingdings,
+    etc. Raised in discussion with Dave Tapley (issue #392).
+  * To address mypy confusion of pyparsing.Optional and
+    typing.Optional resulting in error: "_SpecialForm" not callable
+    message reported in issue #365, fixed the import in
+    exceptions.py. Nice sleuthing by Iwan Aucamp and Dominic
+    Davis-Foster, thank you! (Removed definitions of OptionalType,
+    DictType, and IterableType and replaced them with
+    typing.Optional, typing.Dict, and typing.Iterable throughout.)
+  * Fixed typo in jinja2 template for railroad diagrams, thanks for
+    the catch Nioub (issue #388).
+  * Removed use of deprecated pkg_resources package in railroad
+    diagramming code (issue #391).
+  * Updated bigquery_view_parser.py example to parse examples at
+    https://cloud.google.com/bigquery/docs/reference/legacy-sql
+- Release 3.0.8
+  * API CHANGE: modified pyproject.toml to require Python version
+    3.6.8 or later for pyparsing 3.x. Earlier minor versions of 3.6
+    fail in evaluating the version_info class (implemented using
+    typing.NamedTuple). If you are using an earlier version of
+    Python 3.6, you will need to use pyparsing 2.4.7.
+  * Improved pyparsing import time by deferring regex pattern
+    compiles. PR submitted by Anthony Sottile to fix issue #362,
+    thanks!
+  * Updated build to use flit, PR by Michał Górny, added
+    BUILDING.md doc and removed old Windows build scripts - nice
+    cleanup work!
+  * More type-hinting added for all arithmetic and logical operator
+    methods in ParserElement. PR from Kazantcev Andrey, thank you.
+  * Fixed infix_notation's definitions of lpar and rpar, to accept
+    parse expressions such that they do not get suppressed in the
+    parsed results. PR submitted by Philippe Prados, nice work.
+  * Fixed bug in railroad diagramming with expressions containing
+    Combine elements. Reported by Jeremy White, thanks!
+  * Added show_groups argument to create_diagram to highlight
+    grouped elements with an unlabeled bounding box.
+  * Added unicode_denormalizer.py to the examples as a
+    demonstration of how Python's interpreter will accept Unicode
+    characters in identifiers, but normalizes them back to ASCII so
+    that identifiers print and 𝕡𝓻ᵢ𝓃𝘁 and 𝖕𝒓𝗂𝑛ᵗ are all
+    equivalent.
+  * Removed imports of deprecated sre_constants module for catching
+    exceptions when compiling regular expressions. PR submitted by
+    Serhiy Storchaka, thank you.
+- Use python-base bundled pip as frontend for flit-core
+
+-------------------------------------------------------------------
 Thu Feb  3 21:16:53 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
@@ -71,7 +131,7 @@ Wed Nov 24 14:03:24 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
   * Fixed bug in which Dict classes did not correctly return tokens
     as nested ParseResults
   * Documented API-changing side-effect of converting ParseResults
-    to use __slots__ to pre-define instance attributes. 
+    to use __slots__ to pre-define instance attributes.
   * Fixed bug in railroad diagramming where the vertical limit would
     count all expressions in a group, not just those that would
     create visible railroad elements.
@@ -824,8 +884,8 @@ Tue Nov 11 17:34:18 UTC 2014 - Greg.Freemyer@gmail.com
 	  and prettified output. Now instead of importing the pprint module
 	  and then writing "pprint.pprint(result)", you can just write
 	  "result.pprint()".  This method also accepts addtional positional and
-	  keyword arguments (such as indent, width, etc.), which get passed 
-	  through directly to the pprint method 
+	  keyword arguments (such as indent, width, etc.), which get passed
+	  through directly to the pprint method
 	  (see http://docs.python.org/2/library/pprint.html#pprint.pprint).
 
 	- Removed deprecation warnings when using '<<' for Forward expression
@@ -843,25 +903,25 @@ Tue Nov 11 17:34:18 UTC 2014 - Greg.Freemyer@gmail.com
 
 	- ParseResults emulates the change in list vs. iterator semantics for
 	  methods like keys(), values(), and items(). Under Python 2.x, these
-	  methods will return lists, under Python 3.x, these methods will 
+	  methods will return lists, under Python 3.x, these methods will
 	  return iterators.
 
 	- ParseResults now has a method haskeys() which returns True or False
 	  depending on whether any results names have been defined. This simplifies
-	  testing for the existence of results names under Python 3.x, which 
+	  testing for the existence of results names under Python 3.x, which
 	  returns keys() as an iterator, not a list.
 
 	- ParseResults now supports both list and dict semantics for pop().
 	  If passed no argument or an integer argument, it will use list semantics
 	  and pop tokens from the list of parsed tokens. If passed a non-integer
-	  argument (most likely a string), it will use dict semantics and 
+	  argument (most likely a string), it will use dict semantics and
 	  pop the corresponding value from any defined results names. A
-	  second default return value argument is supported, just as in 
+	  second default return value argument is supported, just as in
 	  dict.pop().
 
 	- Fixed bug in markInputline, thanks for reporting this, Matt Grant!
 
-	- Cleaned up my unit test environment, now runs with Python 2.6 and 
+	- Cleaned up my unit test environment, now runs with Python 2.6 and
 	  3.3.
 
 -------------------------------------------------------------------
@@ -873,9 +933,9 @@ Mon Sep 23 08:45:12 UTC 2013 - hpj@urpla.net
 Tue Sep 17 13:15:51 UTC 2013 - speilicke@suse.com
 
 - Update to version 2.0.1:
-  - Removed use of "nonlocal" that prevented using this version of 
-    pyparsing with Python 2.6 and 2.7. This will make it easier to 
-    install for packages that depend on pyparsing, under Python 
+  - Removed use of "nonlocal" that prevented using this version of
+    pyparsing with Python 2.6 and 2.7. This will make it easier to
+    install for packages that depend on pyparsing, under Python
     versions 2.6 and later. Those using older versions of Python
     will have to manually install pyparsing 1.5.7.
   - Fixed implementation of <<= operator to return self; reported by
@@ -883,7 +943,7 @@ Tue Sep 17 13:15:51 UTC 2013 - speilicke@suse.com
     and Mathias!
 - Changes from version 2.0.0:
   - Rather than release another combined Python 2.x/3.x release
-    I've decided to start a new major version that is only 
+    I've decided to start a new major version that is only
     compatible with Python 3.x (and consequently Python 2.7 as
     well due to backporting of key features). This version will
     be the main development path from now on, with little follow-on
@@ -896,13 +956,13 @@ Tue Sep 17 13:15:51 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Tue Sep 17 12:45:24 UTC 2013 - dmueller@suse.com
 
-- remove nonsensical tarball 
+- remove nonsensical tarball
 
 -------------------------------------------------------------------
 Wed Mar 13 09:04:46 UTC 2013 - dmueller@suse.com
 
 - update to 1.5.7:
- * NOTE: This is the last release of pyparsing that will try to 
+ * NOTE: This is the last release of pyparsing that will try to
    maintain compatibility with Python versions < 2.6. The next
    release of pyparsing will be version 2.0.0, using new Python
    syntax that will not be compatible for Python version 2.5 or
@@ -915,40 +975,40 @@ Wed Mar 13 09:04:46 UTC 2013 - dmueller@suse.com
    purportedly has been a performance issue under PyPy.
  * Fixed bug in ParseResults.__dir__ under Python 3, reported by
    Thomas Kluyver, thank you Thomas!
- * Added ParserElement.inlineLiteralsUsing static method, to 
+ * Added ParserElement.inlineLiteralsUsing static method, to
    override pyparsing's default behavior of converting string
    literals to Literal instances, to use other classes (such
    as Suppress or CaselessLiteral).
- * Added new operator '<<=', which will eventually replace '<<' for 
+ * Added new operator '<<=', which will eventually replace '<<' for
    storing the contents of a Forward(). '<<=' does not have the same
    operator precedence problems that '<<' does.
  * 'operatorPrecedence' is being renamed 'infixNotation' as a better
    description of what this helper function creates. 'operatorPrecedence'
    is deprecated, and will be dropped entirely in a future release.
- * Added optional arguments lpar and rpar to operatorPrecedence, so that 
+ * Added optional arguments lpar and rpar to operatorPrecedence, so that
    expressions that use it can override the default suppression of the
    grouping characters.
- * Added support for using single argument builtin functions as parse 
+ * Added support for using single argument builtin functions as parse
    actions.  Now you can write 'expr.setParseAction(len)' and get back
    the length of the list of matched tokens.  Supported builtins are:
    sum, len, sorted, reversed, list, tuple, set, any, all, min, and max.
    A script demonstrating this feature is included in the examples
    directory.
- * Fixed a bug in the definition of 'alphas', which was based on the 
-   string.uppercase and string.lowercase "constants", which in fact 
-   *aren't* constant, but vary with locale settings. This could make 
+ * Fixed a bug in the definition of 'alphas', which was based on the
+   string.uppercase and string.lowercase "constants", which in fact
+   *aren't* constant, but vary with locale settings. This could make
    parsers locale-sensitive in a subtle way. Thanks to Kef Schecter for
-   his diligence in following through on reporting and monitoring 
+   his diligence in following through on reporting and monitoring
    this bugfix!
  * Fixed a bug in the Py3 version of pyparsing, during exception
-   handling with packrat parsing enabled, reported by Catherine 
+   handling with packrat parsing enabled, reported by Catherine
    Devlin - thanks Catherine!
- * Fixed typo in ParseBaseException.__dir__, reported anonymously on 
+ * Fixed typo in ParseBaseException.__dir__, reported anonymously on
    the SourceForge bug tracker, thank you Pyparsing User With No Name.
  * Fixed bug in srange when using '\x###' hex character codes.
- * Addeed optional 'intExpr' argument to countedArray, so that you 
+ * Addeed optional 'intExpr' argument to countedArray, so that you
    can define your own expression that will evaluate to an integer,
-   to be used as the count for the following elements. Allows you 
+   to be used as the count for the following elements. Allows you
    to define a countedArray with the count given in hex, for example,
    by defining intExpr as "Word(hexnums).setParseAction(int(t[0],16))".
 
@@ -988,7 +1048,7 @@ Thu Jun 30 08:33:22 UTC 2011 - saschpe@suse.de
     in Python 3.
   * Fixed bug when using packrat parsing, where a previously parsed
     expression would duplicate subsequent tokens
-  * Fixed bug in srange, which accepted escaped hex characters of the 
+  * Fixed bug in srange, which accepted escaped hex characters of the
     form '\0x##', but should be '\x##'.  Both forms will be supported
     for backwards compatibility.
   * Added the Verilog parser to the provided set of examples, under the
@@ -1001,7 +1061,7 @@ Thu Jun 30 08:33:22 UTC 2011 - saschpe@suse.de
     parse time performance.
   * Slight performance improvement in transformString, removing empty
     strings from the list of string fragments built while scanning the
-    source text, before calling ''.join. Especially useful when using 
+    source text, before calling ''.join. Especially useful when using
     transformString to strip out selected text.
   * Enhanced form of using the "expr('name')" style of results naming,
     in lieu of calling setResultsName.  If name ends with an '*', then
@@ -1011,8 +1071,8 @@ Thu Jun 30 08:33:22 UTC 2011 - saschpe@suse.de
 - Changes from version 1.5.5:
   * Typo in Python3 version of pyparsing, "builtin" should be "builtins".
 - Changes from version 1.5.4:
-  * Fixed __builtins__ and file references in Python 3 code, thanks to 
-    Greg Watson, saulspatz, sminos, and Mark Summerfield for reporting 
+  * Fixed __builtins__ and file references in Python 3 code, thanks to
+    Greg Watson, saulspatz, sminos, and Mark Summerfield for reporting
     their Python 3 experiences.
 - Spec file cleanup:
   * Regenerated with py2pack, much simpler spec file

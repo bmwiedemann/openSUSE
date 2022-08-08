@@ -19,41 +19,58 @@
 %define modname pyparsing
 # in order to avoid rewriting for subpackage generator
 %define mypython python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "primary"
+# this one is built in Ring0
+%define pprefix %{primary_python}
+%define pythons %{primary_python}
+%endif
+%if "%{flavor}" == ""
+# The rest is in Ring1
+%define pprefix python
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} == 150500
+BuildRequires:  python3-base >= 3.6
+%{expand:%%define skip_%{primary_python} 1}
+%else
+%define python_module() no-build-without-multibuild-flavor
+# no non-primary python in <=15.4
+ExclusiveArch:  do-not-build
+%endif
+%endif
 %if "%{flavor}" == "test"
+%define pprefix python
 %define psuffix -test
 %bcond_without test
 %else
-%define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
-Name:           python-pyparsing%{psuffix}
-Version:        3.0.7
+%{?!python_module:%define python_module() python3-%{**}}
+Name:           %{pprefix}-pyparsing%{?psuffix}
+Version:        3.0.9
 Release:        0
 Summary:        Grammar Parser Library for Python
 License:        GPL-2.0-or-later AND MIT AND GPL-3.0-or-later
 URL:            https://github.com/pyparsing/pyparsing/
 Source:         https://files.pythonhosted.org/packages/source/p/pyparsing/pyparsing-%{version}.tar.gz
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# work around boo#1186870
-Provides:       %{mypython}%{python_version}dist(pyparsing) = %{version}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module jinja2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module railroad-diagrams}
 %endif
-%ifpython2
-Provides:       %{mypython}-parsing = %{version}
-Obsoletes:      %{mypython}-parsing < %{version}
-%endif
+# SECTION boo#1186870: we are a dependency of python-packaging which is used by pythondistdeps.py normally creating this entry
+#!BuildIgnore:  python3-packaging
+Provides:       %{mypython}%{python_version}dist(%{modname}) = %{version}
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
-Provides:       %{mypython}3dist(pyparsing) = %{version}
+Provides:       %{mypython}3-%{modname} = %{version}-%{release}
+Provides:       %{mypython}3dist(%{modname}) = %{version}
+Obsoletes:      %{mypython}3-%{modname} < %{version}-%{release}
 %endif
+# /SECTION
 %python_subpackages
 
 %description
@@ -64,20 +81,22 @@ code uses to construct the grammar directly in Python code.
 
 %prep
 %setup -q -n %{modname}-%{version}
-# do not require setuptools
-# https://github.com/pyparsing/pyparsing/pull/133
-sed -i -e 's:from setuptools :from distutils.core :g' setup.py
 
+%if !%{with test}
 %build
-%python_build
+%{python_expand # use pythonXX-base bundled pip as PEP517 frontend for flit-core
+mkdir -p build
+$python -m venv build/buildenv --system-site-packages
+}
+export PATH=$PWD/build/buildenv/bin:$PATH
+%pyproject_wheel
 
 %install
-%if ! %{with test}
-%python_install
-# ensure egg-info is a directory
-%{python_expand rm -rf %{buildroot}%{$python_sitelib}/*.egg-info
-cp -r pyparsing.egg-info %{buildroot}%{$python_sitelib}/pyparsing-%{version}-py%{$python_version}.egg-info
-}
+export PATH=$PWD/build/buildenv/bin:$PATH
+%pyproject_install
+# fix venv install path
+mv %{buildroot}/$PWD/build/buildenv %{buildroot}%{_prefix}
+rm -r %{buildroot}/home
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -91,7 +110,7 @@ cp -r pyparsing.egg-info %{buildroot}%{$python_sitelib}/pyparsing-%{version}-py%
 %license LICENSE
 %doc CHANGES README.rst
 %{python_sitelib}/pyparsing
-%{python_sitelib}/pyparsing-%{version}-py*.egg-info/
+%{python_sitelib}/pyparsing-%{version}*-info
 %endif
 
 %changelog
