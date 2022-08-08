@@ -1,7 +1,7 @@
 #
 # spec file for package python-lib3to6
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,13 @@ Summary:        Module to compile Python 3.6+ code to Python 2.7+
 License:        MIT
 URL:            https://gitlab.com/mbarkhau/lib3to6
 Source:         https://files.pythonhosted.org/packages/source/l/lib3to6/lib3to6-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#mbarkhau/lib3to6#5
+Patch0:         use-pathlib-directly.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-astor
 Requires:       python-click
-Requires:       python-pathlib2
 Requires:       python-typing
 Requires:       python-wheel
 Requires(post): update-alternatives
@@ -39,7 +40,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module astor}
 BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module pathlib2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing}
 # /SECTION
@@ -49,8 +49,7 @@ BuildRequires:  %{python_module typing}
 A module to compile Python 3.6+ code to Python 2.7+.
 
 %prep
-%setup -q -n lib3to6-%{version}
-sed -i '/typing/d' requirements/*
+%autosetup -p1 -n lib3to6-%{version}
 sed -i '1{/^#!/d}' src/lib3to6/__main__.py
 
 %build

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  8 05:21:21 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-pathlib-directly.patch:
+  * Stop using pathlib2.
+- No longer remove typing from requirements, we install it explicitly.
+
+-------------------------------------------------------------------
 Wed Dec  8 14:16:38 UTC 2021 - pgajdos@suse.com
 
 - version update to 202107.1047
