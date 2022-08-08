@@ -476,4 +476,15 @@
   * load mu4e-view earlier</comment>
     <requestid>990950</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>33c13e425464b3a98b71117f835f7c9a</srcmd5>
+    <version>1.8.8</version>
+    <time>1659951779</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.8:
+  * Update mu4e-action-add-org-contact for new contact format (#2306)
+  * Ensure non-nil works (rather than only t) in mu4e-server (#2310)
+  * Add some more unit tests for skipdups / related messages.</comment>
+    <requestid>993675</requestid>
+  </revision>
 </revisionlist>

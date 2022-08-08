@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug  8 06:56:00 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.8:
+  * Update mu4e-action-add-org-contact for new contact format (#2306)
+  * Ensure non-nil works (rather than only t) in mu4e-server (#2310)
+  * Add some more unit tests for skipdups / related messages.
+
+-------------------------------------------------------------------
 Mon Jul 25 07:48:00 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.7:
