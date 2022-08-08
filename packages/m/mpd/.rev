@@ -642,4 +642,12 @@
       * don't force initial volume=100%</comment>
     <requestid>992071</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>18f104abd3ce5d905c6bbdedf7952dac</srcmd5>
+    <version>0.23.8</version>
+    <time>1659951782</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-build-ffmpeg5.patch to fix build with ffmpeg 5.1</comment>
+    <requestid>993718</requestid>
+  </revision>
 </revisionlist>

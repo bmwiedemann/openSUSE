@@ -33,13 +33,15 @@ Source4:        %{name}.firewalld
 Source5:        %{name}.tmpfiles.d
 Patch0:         %{name}-conf.patch
 Patch1:         %{name}-sndfile.patch
+# PATCH-FIX-UPSTREAM - support ffmpeg 5.1
+Patch2:         fix-build-ffmpeg5.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  group(audio)
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libcue-devel
+BuildRequires:  group(audio)
 # MPD_ENABLE_AUTO_LIB
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libmikmod-devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  8 08:19:19 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Add fix-build-ffmpeg5.patch to fix build with ffmpeg 5.1
+
+-------------------------------------------------------------------
 Mon Aug  1 16:04:57 UTC 2022 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 0.23.8
