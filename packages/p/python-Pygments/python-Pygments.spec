@@ -34,14 +34,16 @@ Group:          Development/Languages/Python
 URL:            http://pygments.org
 Source:         https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.5}
-# We need pytest just because of its test runner, it seems even
-# python3 stdlib unittest runner doesn't work
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wcag-contrast-ratio}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       python-setuptools
+# Preferred for plugin loading, see https://pygments.org/docs/plugins/
+%if 0%{?python_version_nodots} < 38
+Requires:       python-importlib-metadata
+%endif
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
@@ -81,7 +83,9 @@ install -Dm0644 doc/pygmentize.1 %{buildroot}%{_mandir}/man1/pygmentize.1
 %fdupes %{buildroot}%{$python_sitelib}
 }
 
-%prepare_alternative pygmentize
+%check
+# skip test that requires wcag-contrast-ratio Python package
+%pytest
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.
@@ -93,17 +97,12 @@ install -Dm0644 doc/pygmentize.1 %{buildroot}%{_mandir}/man1/pygmentize.1
 %postun
 %python_uninstall_alternative pygmentize
 
-%check
-# skip test that requires wcag-contrast-ratio Python package
-rm ./tests/contrast/test_contrasts.py
-%pytest
-
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS CHANGES
 %python_alternative %{_bindir}/pygmentize
 %python_alternative %{_mandir}/man1/pygmentize.1%{ext_man}
-%{python_sitelib}/pygments/
-%{python_sitelib}/Pygments-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/pygments
+%{python_sitelib}/Pygments-%{version}*-info
 
 %changelog

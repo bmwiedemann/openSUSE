@@ -389,4 +389,17 @@
   - Bump minimal Python version to 3.6 (#2059)</comment>
     <requestid>977386</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>8d6455d2f7916e1ffb59e0f9d12eff89</srcmd5>
+    <version>2.12.0</version>
+    <time>1659941092</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BR of wcag-contrast-ratio to enable more tests.
+- Removing a test file is too much a hack for me
+- Don't fall back to setuptools but to importlib-metadata for
+  plugin loading. (If a package for 15.X would be build, but
+  Pytest 7 is required for testing -- gh#pygments/pygments#2080)
+</comment>
+    <requestid>989964</requestid>
+  </revision>
 </revisionlist>
