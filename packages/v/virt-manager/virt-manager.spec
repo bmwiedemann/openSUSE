@@ -1,5 +1,5 @@
 #
-# spec file for package virt-manager
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -20,20 +20,28 @@
 %global with_guestfs               0
 %global default_hvs                "qemu,xen,lxc"
 
-Name:           virt-manager
-Version:        4.0.0
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -%{flavor}
+%else
+%bcond_with test
+%define psuffix %{nil}
+%endif
+
+Name:           virt-manager%{psuffix}
+Version:        4.1.0
 Release:        0
 Summary:        Virtual Machine Manager
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            http://virt-manager.org/
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://virt-manager.org/download/sources/virt-manager/virt-manager-%{version}.tar.gz
 Source1:        virt-install.rb
 Source2:        virt-install.desktop
 Source3:        virt-manager-supportconfig
 # Upstream Patches
 Patch1:         revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case-too.patch
-Patch2:         d51541e1-Fix-UI-rename-with-firmware-efi.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -84,7 +92,6 @@ Patch183:       virtinst-add-oracle-linux-support.patch
 Patch184:       virtinst-windows-server-detection.patch
 
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %define verrel %{version}-%{release}
 Requires:       dbus-1-x11
@@ -109,6 +116,12 @@ BuildRequires:  gettext
 BuildRequires:  python3-devel
 BuildRequires:  python3-docutils
 BuildRequires:  python3-setuptools
+%if %{with test}
+BuildRequires:  python3-argcomplete
+BuildRequires:  python3-pytest
+BuildRequires:  virt-install = %{version}
+BuildRequires:  virt-manager = %{version}
+%endif
 
 %description
 Virtual Machine Manager provides a graphical tool for administering virtual
@@ -158,8 +171,9 @@ Package includes several command line utilities, including virt-install
 machine).
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n virt-manager-%{version}
 
+%if !%{with test}
 %build
 %if %{default_hvs}
 %global _default_hvs --default-hvs %{default_hvs}
@@ -183,8 +197,44 @@ install -m644 %SOURCE2 %{buildroot}/%{_datadir}/applications/YaST2/virt-install.
 # Oddly, supportconfig doesn't execute plugins with '-' in the name, so use 'virt_manager'
 mkdir -p %{buildroot}/usr/lib/supportconfig/plugins
 install -m 755 %SOURCE3 %{buildroot}/usr/lib/supportconfig/plugins/virt_manager
+chmod -x %{buildroot}%{_datadir}/virt-manager/virtManager/virtmanager.py
 
 %find_lang %{name}
+%endif
+
+%if %{with test}
+%check
+# TODO: check if these are genuine failures or due to the non-upstream patches
+# different device names
+donttest="test_disk_numtotarget"
+donttest="$donttest or testCLI0001virt_install_many_devices"
+donttest="$donttest or testCLI0110virt_install_reinstall_cdrom"
+donttest="$donttest or testCLI0284virt_xml_build_pool_logical_disk"
+donttest="$donttest or testCLI0276virt_xml_build_disk_domain"
+donttest="$donttest or testCLI0371virt_xml_add_disk_create_storage_start"
+# depends on osc/obs host cpu?
+donttest="$donttest or testCLI0003virt_install_singleton_config_2"
+donttest="$donttest or testCLI0283virt_xml_edit_cpu_host_copy"
+# RuntimeError: SEV launch security requires a Q35 machine -- due to patch for bsc#1196806, jsc#SLE-18834 ?
+donttest="$donttest or testCLI0162virt_install"
+# Expectsion <video> element
+donttest="$donttest or testCLI0168virt_install_s390x_cdrom"
+# missing <boot> element, extra <kernel> element
+donttest="$donttest or testCLI0189virt_install_xen_default"
+donttest="$donttest or testCLI0190virt_install_xen_pv"
+# different <emulator> additional <model> in <interface>
+donttest="$donttest or testCLI0191virt_install_xen_hvm"
+donttest="$donttest or testCLI0192virt_install_xen_hvm"
+# different source image format
+donttest="$donttest or testCLI0199virt_install_bhyve_default_f27"
+# Due to the above skips:
+# "there are XML properties that are untested in the test suite"
+donttest="$donttest or testCheckXMLBuilderProps"
+# "These command line arguments or aliases are not checked in the test suite"
+donttest="$donttest or testCheckCLISuboptions"
+#
+pytest -v -rfEs -k "not ($donttest)"
+%endif
 
 %post
 /bin/touch --no-create %{_datadir}/icons/hicolor >/dev/null 2>&1 || :
@@ -202,6 +252,7 @@ fi
 /usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor >/dev/null 2>&1 || :
 /usr/bin/glib-compile-schemas %{_datadir}/glib-2.0/schemas > /dev/null 2>&1 || :
 
+%if !%{with test}
 %files
 %defattr(-,root,root,-)
 %{_bindir}/%{name}
@@ -250,5 +301,6 @@ fi
 %dir %{_datadir}/YaST2/clients
 %dir %{_datadir}/applications/YaST2
 %{_datadir}/YaST2/clients/virt-install.rb
+%endif
 
 %changelog

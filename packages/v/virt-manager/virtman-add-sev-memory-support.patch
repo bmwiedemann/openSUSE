@@ -108,7 +108,7 @@ Index: virt-manager-4.0.0/virtManager/object/domain.py
 +            if sevmem is True:
 +                domcaps = self.get_domain_capabilities()
 +                guest.launchSecurity.type = "sev"
-+                guest.launchSecurity.set_defaults(guest, domcaps.supports_sev_es_launch_security())
++                guest.launchSecurity.set_defaults(guest)
 +                guest.memoryBacking.set_locked(True)
 +                _set_rombar(guest, "off")
 +            else:
@@ -147,19 +147,18 @@ Index: virt-manager-4.0.0/virtinst/domcapabilities.py
 ===================================================================
 --- virt-manager-4.0.0.orig/virtinst/domcapabilities.py
 +++ virt-manager-4.0.0/virtinst/domcapabilities.py
-@@ -93,6 +93,10 @@ def _make_capsblock(xml_root_name):
+@@ -93,6 +93,9 @@ def _make_capsblock(xml_root_name):
  class _SEV(XMLBuilder):
      XML_NAME = "sev"
      supported = XMLProperty("./@supported", is_yesno=True)
 +    cbitpos = XMLProperty("./cbitpos")
 +    reducedPhysBits = XMLProperty("./reducedPhysBits")
 +    maxGuests = XMLProperty("./maxGuests")
-+    maxESGuests = XMLProperty("./maxESGuests")
+     maxESGuests = XMLProperty("./maxESGuests")
  
  
- #############################
-@@ -398,6 +402,9 @@ class DomainCapabilities(XMLBuilder):
-         """
+@@ -402,6 +405,9 @@ class DomainCapabilities(XMLBuilder):
+                         self.features.sev.maxESGuests)
          return bool(self.features.sev.supported)
  
 +    def supports_sev_es_launch_security(self):
@@ -172,14 +171,12 @@ Index: virt-manager-4.0.0/virtinst/domain/launch_security.py
 ===================================================================
 --- virt-manager-4.0.0.orig/virtinst/domain/launch_security.py
 +++ virt-manager-4.0.0/virtinst/domain/launch_security.py
-@@ -18,9 +18,13 @@ class DomainLaunchSecurity(XMLBuilder):
-     dhCert = XMLProperty("./dhCert")
+@@ -19,8 +19,12 @@ class DomainLaunchSecurity(XMLBuilder):
      kernelHashes = XMLProperty("./@kernelHashes", is_yesno=True)
  
--    def _set_defaults_sev(self, guest):
+     def _set_defaults_sev(self, guest):
 -        if not guest.os.is_q35() or not guest.is_uefi():
 -            raise RuntimeError(_("SEV launch security requires a Q35 UEFI machine"))
-+    def _set_defaults_sev(self, guest, sev_es):
 +        if not guest.os.is_q35():
 +            raise RuntimeError(_("SEV launch security requires a Q35 machine"))
 +        # Libvirt will select the appropriate firmware file if not specified
@@ -187,23 +184,8 @@ Index: virt-manager-4.0.0/virtinst/domain/launch_security.py
 +        if not guest.is_uefi():
 +            guest.os.firmware = 'efi'
  
-         # 'policy' is a mandatory 4-byte argument for the SEV firmware,
-         # if missing, let's use 0x03 which, according to the table at
-@@ -28,8 +32,11 @@ class DomainLaunchSecurity(XMLBuilder):
-         # (bit 0) - disables the debugging mode
-         # (bit 1) - disables encryption key sharing across multiple guests
-         if self.policy is None:
--            self.policy = "0x03"
-+            if sev_es:
-+                self.policy = "0x07"
-+            else:
-+                self.policy = "0x03"
- 
--    def set_defaults(self, guest):
-+    def set_defaults(self, guest, sev_es=False):
-         if self.type == "sev":
--            return self._set_defaults_sev(guest)
-+            return self._set_defaults_sev(guest, sev_es)
+         # The 'policy' is a mandatory 4-byte argument for the SEV firmware.
+         # If missing, we use 0x03 for the original SEV implementation and
 Index: virt-manager-4.0.0/virtinst/devices/interface.py
 ===================================================================
 --- virt-manager-4.0.0.orig/virtinst/devices/interface.py

@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Aug  5 16:25:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.1.0
+  * Fix build with setuptools-61 (Peter Alfredsen, Miro Hrončok)
+  * add UI and cli support for qemu-vdagent channel (Jonathon Jongsma)
+  * cli: More --iothreads suboptions (Lin Ma)
+  * launch_security: Use SEV-ES policy=0x07 if host supports it (Charles
+  * Arnold)
+  * cli: Add support for URL query with disks (Martin Kletzander)
+- Drop patches merged upstream:
+  * c6107419-tests-Drop-usage-of-sgio-unfiltered.patch
+  * 90e13549-Fix-build-with-setuptools-61+.patch
+  * 46dc0616-setup-add-bits-for-setuptools-61.patch
+  * 9ac94ef7-tests-Fix-another-sgio-filtered-case.patch
+  * 34662fec-tests-Fix-with-latest-argcomplete.patch
+  * d51541e1-Fix-UI-rename-with-firmware-efi.patch
+  * b8a77805-domain-cpu-Clear-migratable-when-changing-to-custom-cpu.patch
+  * 0d84bcfb-cli-Add-iothreadids-attributes-thread_pool_min-and-thread_pool_max.patch
+  * 424283ad-launch_security-Use-SEV-ES-policy-0x07-if-host-supports-it.patch
+- Refresh patches
+  * virtman-add-tooltip-to-firmware.patch
+    -- changed surrounding imports
+  * virtinst-set-cache-mode-unsafe-for-install.patch 
+    -- the patch changes the expected output in tests
+- Refresh test skips
+
+-------------------------------------------------------------------
+Wed Aug  3 14:51:34 MDT 2022 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1027942)
+  c6107419-tests-Drop-usage-of-sgio-unfiltered.patch
+  9ac94ef7-tests-Fix-another-sgio-filtered-case.patch
+  b8a77805-domain-cpu-Clear-migratable-when-changing-to-custom-cpu.patch
+  0d84bcfb-cli-Add-iothreadids-attributes-thread_pool_min-and-thread_pool_max.patch
+  90e13549-Fix-build-with-setuptools-61+.patch
+  424283ad-launch_security-Use-SEV-ES-policy-0x07-if-host-supports-it.patch
+- Modified virtman-add-sev-memory-support.patch
+- Renamed upstream patches
+  virtman-pr381-setuptools-61.patch to
+    46dc0616-setup-add-bits-for-setuptools-61.patch
+  virtman-34662fe-argcomplete.patch to
+    34662fec-tests-Fix-with-latest-argcomplete.patch
+
+-------------------------------------------------------------------
+Tue Jul 19 10:03:04 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add Source URL
+- Add upstream patch virtman-pr381-setuptools-61.patch
+  gh#virt-manager/virt-manager#381
+- Enable tests
+  * No python package should go untested
+  * Use multibuild so that all runtime requirements are checked
+  * Add virtman-34662fe-argcomplete.patch
+
+-------------------------------------------------------------------
 Tue Jul 12 14:41:21 MDT 2022 - carnold@suse.com
 
 - Upstream bug fix (bsc#1027942)
