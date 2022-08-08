@@ -1,7 +1,7 @@
 #
 # spec file for package python-py3c
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,26 +62,27 @@ rm -r %{buildroot}%{_includedir}/*
 %check
 pushd test
 # Test C extension
-%python_exec setup.py build
+%python_build
 %{python_expand # copy the lib and run the test
-cp ./build/lib.linux*-%{$python_bin_suffix}/test_py3c* ./
+cp ./build/lib.linux*/test_py3c* ./
 $python __main__.py -v
+rm -f test_py3c*.so
+rm -rf build
 }
 # Test Cpp extension
-rm -f test_py3c*.so
-rm -rf build*
 export TEST_USE_CPP="yes"
-%python_exec setup.py build
+%python_build
 %{python_expand # copy the lib and run the test
-cp ./build/lib.linux*-%{$python_bin_suffix}/test_py3c* ./
+cp ./build/lib.linux*/test_py3c* ./
 $python __main__.py -v
+rm -f test_py3c*.so
 }
 popd
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.MIT
-%{python_sitelib}/*
+%{python_sitelib}/py3c-%{version}*-info
 
 %files -n py3c-devel
 %{_includedir}/py3c.h
