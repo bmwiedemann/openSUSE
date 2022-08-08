@@ -21,7 +21,7 @@
 # your live system before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        5.3.1
+Version:        5.3.2
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -62,7 +62,6 @@ Requires:       python3-psutil >= 5.3
 Requires:       python3-pycodestyle >= 2.6.0
 Requires:       python3-pydocstyle >= 2.0.0
 Requires:       python3-pyflakes >= 2.2.0
-Requires:       python3-pylint >= 2.5.0
 Requires:       python3-pyls-spyder >= 0.4.0
 Requires:       python3-python-lsp-black >= 1.2.0
 Requires:       python3-pyxdg >= 0.26
@@ -75,11 +74,13 @@ Requires:       python3-setuptools >= 49.6.0
 Requires:       python3-textdistance >= 4.2.0
 Requires:       python3-three-merge >= 0.1.1
 Requires:       python3-watchdog
+Requires:       python3-whatthepatch
 Requires:       python3-yapf
 Requires:       (python3-QDarkStyle >= 3.0.2 with python3-QDarkStyle < 3.1.0)
-Requires:       (python3-python-lsp-server >= 1.4.1 with python3-python-lsp-server < 1.5)
+Requires:       (python3-pylint >= 2.5.0 with python3-pylint < 3)
+Requires:       (python3-python-lsp-server >= 1.5.0 with python3-python-lsp-server < 1.6)
 Requires:       (python3-qtconsole >= 5.3.0 with python3-qtconsole < 5.4.0)
-Requires:       (python3-spyder-kernels >= 2.3.0 with python3-spyder-kernels < 2.4.0)
+Requires:       (python3-spyder-kernels >= 2.3.2 with python3-spyder-kernels < 2.4.0)
 Recommends:     %{name}-dicom
 Recommends:     %{name}-hdf5
 Recommends:     python3-Cython >= 0.21
@@ -107,7 +108,7 @@ Obsoletes:      spyder3-breakpoints < %{version}
 Obsoletes:      spyder3-profiler < %{version}
 Obsoletes:      spyder3-pylint < %{version}
 BuildArch:      noarch
-%if %{with test}
+# SECTION test requirements
 BuildRequires:  cookiecutter >= 1.6.0
 BuildRequires:  git-core
 BuildRequires:  python3-Cython >= 0.21
@@ -146,7 +147,6 @@ BuildRequires:  python3-pyaml
 BuildRequires:  python3-pycodestyle >= 2.6.0
 BuildRequires:  python3-pydocstyle >= 2.0.0
 BuildRequires:  python3-pyflakes >= 2.2.0
-BuildRequires:  python3-pylint >= 2.5.0
 BuildRequires:  python3-pyls-spyder >= 0.4.0
 BuildRequires:  python3-pytest >= 5.0
 BuildRequires:  python3-pytest-lazy-fixture
@@ -166,14 +166,16 @@ BuildRequires:  python3-sympy >= 0.7.3
 BuildRequires:  python3-textdistance >= 4.2.0
 BuildRequires:  python3-three-merge >= 0.1.1
 BuildRequires:  python3-watchdog
+BuildRequires:  python3-whatthepatch
 BuildRequires:  python3-yapf
 BuildRequires:  xdpyinfo
 BuildRequires:  xvfb-run
 BuildRequires:  (python3-QDarkStyle >= 3.0.2 with python3-QDarkStyle < 3.1.0)
-BuildRequires:  (python3-python-lsp-server >= 1.4.1 with python3-python-lsp-server < 1.5)
+BuildRequires:  (python3-pylint >= 2.5.0 with python3-pylint < 3)
+BuildRequires:  (python3-python-lsp-server >= 1.5 with python3-python-lsp-server < 1.6)
 BuildRequires:  (python3-qtconsole >= 5.3.0 with python3-qtconsole < 5.4.0)
-BuildRequires:  (python3-spyder-kernels >= 2.3.1 with python3-spyder-kernels < 2.4.0)
-%endif
+BuildRequires:  (python3-spyder-kernels >= 2.3.2 with python3-spyder-kernels < 2.4.0)
+# /SECTION
 
 %description
 Spyder, the Scientific Python Development Environment, is an
@@ -266,9 +268,8 @@ rm spyder/plugins/ipythonconsole/scripts/conda-activate.bat
 # remove egg package pins read at runtime startup and for the test suite dependency sync checks
 sed -r \
     -e 's/(ipython.*),<8.0.0/\1/' \
-    -e 's/(IPython.*),<8.0.0/\1/' \
     -e 's/(pyqt.*)<5.16/\1/' \
-    -i setup.py requirements/conda.txt binder/environment.yml
+    -i setup.py requirements/main.yml binder/environment.yml
 sed -r \
     -e 's/(IPYTHON_REQVER.*);<8.0.0/\1/' \
     -i spyder/dependencies.py

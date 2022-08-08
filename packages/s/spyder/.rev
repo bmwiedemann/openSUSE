@@ -527,4 +527,12 @@ rename the package from spyder3 to spyder.
     * https://github.com/spyder-ide/spyder/releases/tag/v5.3.1 (forwarded request 980901 from bnavigator)</comment>
     <requestid>980902</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>14d61dc60fd38ae7009a9d9e012d4973</srcmd5>
+    <version>5.3.2</version>
+    <time>1659945751</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>992041</requestid>
+  </revision>
 </revisionlist>

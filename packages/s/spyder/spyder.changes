@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jul 23 10:02:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.3.2
+  * New entry from the Editor context menu to Show help for current
+    object.
+  * Improve UX/UI for the repositioning panes functionality.
+  * Fix several bugs related to the debugging functionality (remote
+    kernels usage and Pdb history).
+  * Fix incompatibility with Pylint 2.14.0+.
+  * Fix several bugs related with the Plots pane.
+  * Add create_client_for_kernel and rename_client_tab to the
+    Ipython Console plugin so that other plugins can access to
+    console creation like Spyder-notebook.
+
+-------------------------------------------------------------------
 Sun Jun  5 16:20:08 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update the requirements, add note about test suite
