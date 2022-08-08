@@ -171,4 +171,16 @@
     <comment></comment>
     <requestid>975740</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>1c9b1aa7868d3585afd4188198126458</srcmd5>
+    <version>0.3.10</version>
+    <time>1659941106</time>
+    <user>dimstar_suse</user>
+    <comment>- Add no-pkg-resources.patch:
+  * Replaces pkg_resources with python-packaging
+  * pkg_resources is provided by setuptools, but the previously
+    transitive pull in of setuptools has been broken by
+    gtk-doc --&gt; python3-Pygments -/-&gt; python3-setuptools</comment>
+    <requestid>993338</requestid>
+  </revision>
 </revisionlist>

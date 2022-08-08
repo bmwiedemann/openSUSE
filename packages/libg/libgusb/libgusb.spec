@@ -25,9 +25,14 @@ Group:          Development/Libraries/GNOME
 URL:            https://github.com/hughsie/libgusb
 Source0:        http://people.freedesktop.org/~hughsient/releases/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM no-pkg-resources.patch gh#hughsie/libgusb#61 mcepl@suse.com
+# Don't rely on the obsolete version of pkg_resources
+Patch0:         no-pkg-resources.patch
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  python3-base
+BuildRequires:  python3-packaging
 BuildRequires:  vala
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.29
@@ -69,7 +74,7 @@ asynchronous control, bulk and interrupt transfers with proper
 cancellation and integration into a mainloop.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson

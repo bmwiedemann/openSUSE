@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  5 11:30:24 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add no-pkg-resources.patch:
+  * Replaces pkg_resources with python-packaging
+  * pkg_resources is provided by setuptools, but the previously
+    transitive pull in of setuptools has been broken by
+    gtk-doc --> python3-Pygments -/-> python3-setuptools
+
+-------------------------------------------------------------------
 Mon May  9 07:58:08 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.3.10:
