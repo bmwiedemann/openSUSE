@@ -28,7 +28,7 @@ URL:            https://github.com/lark-parser
 Source:         https://github.com/lark-parser/lark/archive/%{version}.tar.gz#/lark-%{version}.tar.gz
 # extracted test gramars from nearley -> https://github.com/kach/nearley
 BuildRequires:  %{python_module Js2Py >= 0.68}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 6.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
