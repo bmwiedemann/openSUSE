@@ -32,4 +32,12 @@
   * Type information is now provided following [PEP 561](https://www.python.org/dev/peps/pep-0561/) (many thanks to [`Caleb Ho`](https://github.com/calebho)).</comment>
     <requestid>958541</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>75e70d49ccf64abc002ea49c15b083d7</srcmd5>
+    <version>0.21.0</version>
+    <time>1659945751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>991207</requestid>
+  </revision>
 </revisionlist>

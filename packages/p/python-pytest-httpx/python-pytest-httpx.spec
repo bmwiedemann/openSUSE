@@ -16,23 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-pytest-httpx
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        Send responses to httpx
 License:        MIT
 URL:            https://colin-b.github.io/pytest_httpx/
-Source:         https://github.com/Colin-b/pytest_httpx/archive/refs/tags/v%{version}.tar.gz
+Source:         https://github.com/Colin-b/pytest_httpx/archive/refs/tags/v%{version}.tar.gz#/pytest_httpx-%{version}-gh.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module httpx >= 0.22.0}
+BuildRequires:  %{python_module httpx >= 0.23.0}
 BuildRequires:  %{python_module pytest >= 6.0}
 BuildRequires:  %{python_module pytest-asyncio >= 0.14.0}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-httpx >= 0.22.0
+Requires:       python-httpx >= 0.23.0
 Requires:       python-pytest >= 6.0
 BuildArch:      noarch
 %python_subpackages
@@ -42,6 +42,8 @@ Send responses to httpx.
 
 %prep
 %setup -q -n pytest_httpx-%{version}
+# unpin exact version
+sed -i '/install_requires/ s/httpx==0./httpx>=0./' setup.py
 
 %build
 %python_build
@@ -54,6 +56,7 @@ Send responses to httpx.
 %pytest
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/pytest_httpx
+%{python_sitelib}/pytest_httpx-%{version}*-info
 
 %changelog
