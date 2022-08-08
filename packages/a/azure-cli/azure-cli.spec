@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.38.0
+Version:        2.39.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -72,7 +72,7 @@ Requires:       python3-azure-mgmt-apimanagement >= 3.0.0
 Requires:       python3-azure-mgmt-appconfiguration >= 2.1.0
 Requires:       python3-azure-mgmt-applicationinsights >= 1.0.0
 Requires:       python3-azure-mgmt-authorization >= 0.61.0
-Requires:       python3-azure-mgmt-batch >= 16.1.0
+Requires:       python3-azure-mgmt-batch >= 16.2.0
 Requires:       python3-azure-mgmt-batchai >= 7.0.0b1
 Requires:       python3-azure-mgmt-billing >= 6.0.0
 Requires:       python3-azure-mgmt-botservice >= 2.0.0b3
@@ -82,7 +82,7 @@ Requires:       python3-azure-mgmt-compute >= 27.1.0
 Requires:       python3-azure-mgmt-consumption >= 2.0
 Requires:       python3-azure-mgmt-containerinstance >= 9.1.0
 Requires:       python3-azure-mgmt-containerregistry >= 8.2.0
-Requires:       python3-azure-mgmt-containerservice >= 19.1.0
+Requires:       python3-azure-mgmt-containerservice >= 20.2.0
 Requires:       python3-azure-mgmt-cosmosdb >= 7.0.0b6
 Requires:       python3-azure-mgmt-databoxedge >= 1.0.0
 Requires:       python3-azure-mgmt-datalake-analytics >= 0.2.1
@@ -91,11 +91,11 @@ Requires:       python3-azure-mgmt-datamigration >= 10.0.0
 Requires:       python3-azure-mgmt-deploymentmanager >= 0.2.0
 Requires:       python3-azure-mgmt-devtestlabs >= 2.2
 Requires:       python3-azure-mgmt-dns >= 8.0.0
-Requires:       python3-azure-mgmt-eventgrid >= 9.0.0
+Requires:       python3-azure-mgmt-eventgrid >= 10.2.0
 Requires:       python3-azure-mgmt-eventhub >= 10.1.0
 Requires:       python3-azure-mgmt-extendedlocation >= 1.0.0b2
 Requires:       python3-azure-mgmt-hdinsight >= 9.0.0
-Requires:       python3-azure-mgmt-imagebuilder >= 1.0.0
+Requires:       python3-azure-mgmt-imagebuilder >= 1.1.0
 Requires:       python3-azure-mgmt-iotcentral >= 10.0.0b1
 Requires:       python3-azure-mgmt-iothub >= 2.2.0
 Requires:       python3-azure-mgmt-iothubprovisioningservices >= 1.1.0
@@ -113,7 +113,7 @@ Requires:       python3-azure-mgmt-netapp >= 8.0.0
 Requires:       python3-azure-mgmt-network >= 20.0.0
 Requires:       python3-azure-mgmt-policyinsights >= 1.1.0b2
 Requires:       python3-azure-mgmt-privatedns >= 1.0.0
-Requires:       python3-azure-mgmt-rdbms >= 10.0.0
+Requires:       python3-azure-mgmt-rdbms >= 10.2.0b1
 Requires:       python3-azure-mgmt-recoveryservices >= 2.0.0
 Requires:       python3-azure-mgmt-recoveryservicesbackup >= 5.0.0
 Requires:       python3-azure-mgmt-redhatopenshift >= 1.1.0
@@ -133,7 +133,7 @@ Requires:       python3-azure-mgmt-sqlvirtualmachine >= 1.0.0b3
 Requires:       python3-azure-mgmt-storage >= 20.0.0
 Requires:       python3-azure-mgmt-synapse >= 2.1.0
 Requires:       python3-azure-mgmt-trafficmanager >= 1.0.0
-Requires:       python3-azure-mgmt-web >= 6.1.0
+Requires:       python3-azure-mgmt-web >= 7.0.0
 Requires:       python3-azure-multiapi-storage >= 0.9.0
 Requires:       python3-azure-storage-common >= 1.4
 Requires:       python3-azure-synapse-accesscontrol >= 0.5.0
