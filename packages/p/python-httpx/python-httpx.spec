@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,58 +24,47 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
+
 Name:           python-httpx%{psuffix}
-Version:        0.22.0
+Version:        0.23.0
 Release:        0
 Summary:        Python HTTP client with async support
 License:        BSD-3-Clause
 URL:            https://github.com/encode/httpx
 Source:         https://github.com/encode/httpx/archive/%{version}.tar.gz#/httpx-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM CVE-2021-41945 gh#encode/httpx#2084 including changes
-# from gh#encode/httpx#2185
-# Don't leak data in httpx.URL.copy_with
-Patch0:         CVE-2021-41945-copy_with-data-leak.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-brotlicffi
 Requires:       python-certifi
-Requires:       python-chardet >= 3.0
-Requires:       python-charset-normalizer >= 2.0.6
-Requires:       python-h11 >= 0.8.0
-Requires:       python-hstspreload >= 2019.8.27
-Requires:       python-httpcore >= 0.14.0
+Requires:       python-httpcore >= 0.15.0
 Requires:       python-idna >= 2.0
 Requires:       python-rfc3986 >= 1.3
 Requires:       python-sniffio
+Recommends:     python-Brotli
+Recommends:     python-Pygments >= 2
+Recommends:     python-click >= 8
+Recommends:     python-h2 >= 3.0
+Recommends:     python-rich >= 10
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Recommends:     python-h2 >= 3.0
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module anyio}
-BuildRequires:  %{python_module async_generator}
-BuildRequires:  %{python_module brotlicffi}
-BuildRequires:  %{python_module certifi}
-BuildRequires:  %{python_module chardet >= 3.0}
-BuildRequires:  %{python_module charset-normalizer >= 2.0.6}
-BuildRequires:  %{python_module h11 >= 0.8.0}
+BuildRequires:  %{python_module Brotli}
+BuildRequires:  %{python_module Pygments >= 2}
+BuildRequires:  %{python_module chardet >= 5.0}
+BuildRequires:  %{python_module click >= 8}
 BuildRequires:  %{python_module h2 >= 3.0}
-BuildRequires:  %{python_module hstspreload >= 2019.8.27}
-BuildRequires:  %{python_module httpcore >= 0.14.0}
-BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module idna >= 2.0}
+BuildRequires:  %{python_module httpx = %{version}}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module rfc3986 >= 1.3}
-BuildRequires:  %{python_module sniffio}
+BuildRequires:  %{python_module rich >= 10}
 BuildRequires:  %{python_module trio}
 BuildRequires:  %{python_module trustme}
-BuildRequires:  %{python_module uvicorn}
-BuildRequires:  %{python_module uvloop}
+# uvicorn 0.18 fixed an issue in the test suite where http-headers wer not all lowercase as expected
+BuildRequires:  %{python_module uvicorn >= 0.18}
 %endif
 # /SECTION
 %python_subpackages
@@ -86,7 +74,8 @@ Python HTTP client with async support.
 
 %prep
 %autosetup -p1 -n httpx-%{version}
-rm setup.cfg
+# remove turning pytest warnings into error
+sed -i '/tool.pytest/,$ {/error/d}' setup.cfg
 
 %build
 %python_build
@@ -100,7 +89,11 @@ rm setup.cfg
 
 %check
 %if %{with test}
-%pytest -k 'not (network or socks or test_main or response_no_charset or test_text_decoder)'
+# obs builds offline
+donttest="network"
+# no socksio
+donttest="$donttest or socks"
+%pytest -vv -k "not ($donttest)" --asyncio-mode=strict
 %endif
 
 %post
@@ -114,7 +107,8 @@ rm setup.cfg
 %doc CHANGELOG.md README.md
 %license LICENSE.md
 %python_alternative %{_bindir}/httpx
-%{python_sitelib}/httpx*
+%{python_sitelib}/httpx
+%{python_sitelib}/httpx-%{version}*-info
 %endif
 
 %changelog
