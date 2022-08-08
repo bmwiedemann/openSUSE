@@ -17,7 +17,7 @@
 
 
 Name:           ibus-m17n
-Version:        1.4.9
+Version:        1.4.10
 Release:        0
 Summary:        The M17N engine for IBus platform
 License:        GPL-2.0-or-later
@@ -58,5 +58,13 @@ the input table maps from m17n-db.
 %{_datadir}/glib-2.0/schemas/org.freedesktop.ibus.engine.m17n.gschema.xml
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/m17n.appdata.xml
+%{_datadir}/icons/hicolor/16x16/apps/ibus-m17n.png
+%{_datadir}/icons/hicolor/22x22/apps/ibus-m17n.png
+%{_datadir}/icons/hicolor/24x24/apps/ibus-m17n.png
+%{_datadir}/icons/hicolor/32x32/apps/ibus-m17n.png
+%{_datadir}/icons/hicolor/48x48/apps/ibus-m17n.png
+%{_datadir}/icons/hicolor/64x64/apps/ibus-m17n.png
+%{_datadir}/icons/hicolor/128x128/apps/ibus-m17n.png
+%{_datadir}/icons/hicolor/256x256/apps/ibus-m17n.png
 
 %changelog

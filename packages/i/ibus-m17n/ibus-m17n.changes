@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug  5 21:15:04 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+feat: use _service files to automate fetching sources
+update: 1.4.9 -> 1.4.10
+- Add language to longname in --xml output to make engines which have exactly
+  the same icon distinguishable in the engine switcher
+- Make the icon of the current engine appear at the left of floating panel of ibus.
+  And also show the full engine name as a tooltip on that icon
+  Before only a generic gear wheel ⚙️ was shown, the same for
+  all engines, so one could not distinguish which engine was
+  selected in the floating panel.
+- Show also the engine name in the title of the setup tool window.
+  I.e. instead of just “Preferences” show something like
+  “Preferences m17n:t:latn-post”.
+- Better icon and a screenshot which can be shown in gnome-software	
+- Improvements in m17n.appdata.xml
+
+-------------------------------------------------------------------
 Sun Jun 26 18:48:40 UTC 2022 - Gordon Leung <pirateclip@protonmail.com> - 1.4.9
 
 update: 1.4.6 -> 1.4.9
