@@ -315,4 +315,12 @@
     wdf upper bound for local shards which will in typically give a tighter</comment>
     <requestid>947559</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8eb56a00d77e10c3844983955fa1206a</srcmd5>
+    <version>1.4.20</version>
+    <time>1659941098</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>990888</requestid>
+  </revision>
 </revisionlist>
