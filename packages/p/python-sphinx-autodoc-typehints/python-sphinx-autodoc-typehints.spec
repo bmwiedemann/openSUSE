@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 %define modname sphinx_autodoc_typehints
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -29,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-sphinx-autodoc-typehints%{psuffix}
-Version:        1.18.2
+Version:        1.18.3
 Release:        0
 Summary:        Type hints (PEP 484) support for the Sphinx autodoc extension
 License:        MIT
@@ -52,7 +51,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Sphinx >= 1.7}
 BuildRequires:  %{python_module doc}
 BuildRequires:  %{python_module nptyping}
-BuildRequires:  %{python_module pathlib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphobjinv}
 BuildRequires:  %{python_module typing_extensions}
