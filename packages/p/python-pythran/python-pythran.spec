@@ -54,6 +54,8 @@ URL:            https://github.com/serge-sans-paille/pythran
 Source0:        https://github.com/serge-sans-paille/pythran/archive/refs/tags/%{version}.tar.gz#/pythran-%{version}-gh.tar.gz
 Source99:       python-pythran-rpmlintrc
 Patch0:         gcc12-fixes.patch
+# PATCH-FIX-UPSTREAM pythran-pr1984-fixdistutils.patch gh#serge-sans-paille/pythran#1984
+Patch1:         pythran-pr1984-fixdistutils.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -73,6 +75,7 @@ Requires:       python-numpy-devel
 # /SECTION
 %if %{with test}
 BuildRequires:  %{python_module ipython}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pythran = %{version}}
@@ -87,12 +90,10 @@ BuildArch:      noarch
 Ahead of Time compiler for numeric kernels
 
 %prep
-%setup -q -n pythran-%{version}
-%patch0 -p1
+%autosetup -p1 -n pythran-%{version}
 
 find -name '*.hpp' -exec chmod -x {} +
 sed -i '1{/env python/d}' pythran/run.py
-sed -i "s/'python'/sys.executable/" pythran/tests/test_distutils.py
 
 # Remove bundled header libs and use the ones from system
 rm -r third_party/boost
@@ -101,6 +102,13 @@ cat >> setup.cfg << EOF
 no_boost=True
 EOF
 
+# Register pytest.mark.module
+cat >> pytest.ini << EOF
+# https://github.com/serge-sans-paille/pythran/pull/286
+[pytest]
+markers =
+    module: execute module annotate class
+EOF
 # The tests have some cflags in them
 # We need to adapt the flags to play nicely with other obs flags
 # E.g. fortify source implies at least -O1

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 18 12:24:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add pythran-pr1984-fixdistutils.patch
+  * gh#serge-sans-paille/pythran#1984
+  * Fixes gh#serge-sans-paille/pythran#1984 with setuptools >= 60
+
+-------------------------------------------------------------------
 Tue Mar 15 07:59:46 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add gcc12-fixes.patch in order to fix GCC 12 building issues.
