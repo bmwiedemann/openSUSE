@@ -15,4 +15,12 @@
     <comment>New upstream release 5.0.4</comment>
     <requestid>927266</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ac8e262f8dd983883e82df24c89d8ece</srcmd5>
+    <version>5.1.0</version>
+    <time>1660051593</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>993486</requestid>
+  </revision>
 </revisionlist>

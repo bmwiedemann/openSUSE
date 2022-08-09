@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-http
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,28 @@
 #
 
 
-%define mod_name http
-%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
+
 Name:           rubygem-http
-Version:        5.0.4
+Version:        5.1.0
 Release:        0
-Summary:        HTTP should be easy
-License:        MIT
-Group:          Development/Languages/Ruby
+%define mod_name http
+%define mod_full_name %{mod_name}-%{version}
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{ruby >= 2.6}
+BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/httprb/http
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-BuildRequires:  %{ruby >= 2.5}
-BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
+Summary:        HTTP should be easy
+License:        MIT
+Group:          Development/Languages/Ruby
 
 %description
 An easy-to-use client library for making requests from Ruby. It uses a simple
@@ -53,7 +55,6 @@ method chaining system for building requests, similar to Python's Requests.
 # drop files from the git repository
 find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '.rubocop*' -o -name '.github' -o -name '.yardopts' -o -name '.rspec' -o -name '.gitignore' \) | xargs rm -rf
 # /MANUAL
-
 
 %gem_packages
 
