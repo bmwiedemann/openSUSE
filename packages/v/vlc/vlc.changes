@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  8 12:44:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Also limit lua interpreter to < 5.4 (boo#1200944).
+
+-------------------------------------------------------------------
 Wed Jul 13 07:37:44 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Limit to Lua < 5.4 (boo#1200944).

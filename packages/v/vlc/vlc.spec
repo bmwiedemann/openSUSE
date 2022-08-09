@@ -107,7 +107,9 @@ BuildRequires:  mpg123-devel
 BuildRequires:  pkgconfig
 BuildRequires:  posix_cc
 BuildRequires:  schroedinger-devel >= 1.0.10
+BuildRequires:  (lua >= 5.1 with lua < 5.4)
 BuildRequires:  (lua-devel >= 5.1 with lua-devel < 5.4)
+BuildConflicts: lua >= 5.4
 BuildRequires:  pkgconfig(libudev) >= 142
 BuildRequires:  pkgconfig(smbclient)
 %if 0%{?is_opensuse}
