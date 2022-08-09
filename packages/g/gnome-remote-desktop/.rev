@@ -113,4 +113,12 @@ need to be staged with libVNCServer sr#862644 (forwarded request 862647 from fcr
     <comment>New stable release (forwarded request 986487 from iznogood)</comment>
     <requestid>986583</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>08be5ee0c3e784108e381bce0e0c9ad7</srcmd5>
+    <version>42.4</version>
+    <time>1660051686</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 993726 from iznogood)</comment>
+    <requestid>993952</requestid>
+  </revision>
 </revisionlist>

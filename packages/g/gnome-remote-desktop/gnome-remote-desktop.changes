@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 08 09:27:42 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 42.4:
+  + ctl:
+    - Do not crash, when deleting non-existent credentials
+    - Fix error messages
+  + rdp: Don't dereference NULL pointer when parent dir cannot be
+    found
+  + rdp-gfx-surface: Delete GFX surface before clearing its members
+  + rdp-graphics-pipeline: Extend comment with documentation
+    reference
+  + rdp/nw-auto: Disallow unqueued bandwidth measure stops
+  + rdp/rdpgfx: Only clear unacked frames when surface has frame
+    controller
+  + session-rdp:
+    - Do not crash, when credentials are not set
+    - Stop leaking session sources when session creation fails
+    - Stop leaking the event queue, when session creation fails
+  + session-vnc: Do not crash, when password is not set
+  + settings: Do not set error twice when
+    secret_password_lookup_sync fails
+  + tests/egl: Replace tautologies with actual modifier checks
+
+-------------------------------------------------------------------
 Sun Jul 03 18:16:17 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 42.3:
