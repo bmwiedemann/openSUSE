@@ -106,4 +106,12 @@
     <comment>- Enable multipython builds.</comment>
     <requestid>948380</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>4450cef94c454d7fce53a5265b9a3165</srcmd5>
+    <version>20210419</version>
+    <time>1660051738</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>994021</requestid>
+  </revision>
 </revisionlist>
