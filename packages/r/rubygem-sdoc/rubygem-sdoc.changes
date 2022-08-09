@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug  4 13:28:41 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.4.0
+ see installed CHANGELOG.md
+
+  2.4.0
+  =====
+  
+  * #187 Allow setting CSS based version badge [@p8](https://github.com/p8)
+  
+
+-------------------------------------------------------------------
 Thu Apr 28 05:49:47 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.3.2

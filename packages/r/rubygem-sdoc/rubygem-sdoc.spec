@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-sdoc
-Version:        2.3.2
+Version:        2.4.0
 Release:        0
 %define mod_name sdoc
 %define mod_full_name %{mod_name}-%{version}
