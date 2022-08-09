@@ -1,5 +1,0 @@
-<package name="canna-yubin" project="openSUSE:Factory">
-  <title>Postal Code Extension Dictionary for Canna</title>
-  <description>A postal code extension dictionary for Canna.</description>
-  <devel project="M17N" package="canna-yubin"/>
-</package>
