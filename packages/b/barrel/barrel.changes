@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 04 11:14:13 CEST 2022 - aschnell@suse.com
+
+- support arrays on stack and use of arrays when creating volume
+  groups and file systems
+- version 0.1.7
+
+-------------------------------------------------------------------
 Mon Jul 05 13:55:43 CEST 2022 - aschnell@suse.com
 
 - allow to create multi-device btrfs
