@@ -79,8 +79,11 @@ autoreconf -fi
 # OOT builds are presently broken, so we have to install
 # within each python iteration now, not in %%install.
 %{python_expand #
+# see libcdata for version-sc
+echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type \
-	--enable-python PYTHON_VERSION="%{$python_bin_suffix}"
+	--enable-python PYTHON_VERSION="%{$python_bin_suffix}" \
+	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
 %make_build
 %make_install DESTDIR="%_builddir/rt"
 %make_build clean
