@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>898209</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>05cacd5b92eb7dc602d2df9b2c3e1be4</srcmd5>
+    <version>20210415</version>
+    <time>1660051697</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993970</requestid>
+  </revision>
 </revisionlist>
