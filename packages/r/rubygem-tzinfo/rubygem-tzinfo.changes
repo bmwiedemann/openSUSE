@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug  4 13:33:15 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.0.5
+ see installed CHANGES.md
+
+  ## Version 2.0.5 - 19-Jul-2022
+  
+  * Changed `DateTime` results to always use the proleptic Gregorian calendar.
+    This affects `DateTime` results prior to 1582-10-15 and any arithmetic
+    performed on the results that would produce a secondary result prior to
+    1582-10-15.
+  * Added support for eager loading all the time zone and country data by calling
+    either `TZInfo::DataSource#eager_load!` or `TZInfo.eager_load!`. Compatible
+    with Ruby On Rails' `eager_load_namespaces`. #129.
+  * Ignore the SECURITY file from Arch Linux's tzdata package. #134.
+  
+  
+
+-------------------------------------------------------------------
 Sun Dec 20 09:18:28 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.0.4
