@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  5 19:04:35 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add retry-pthread_create.patch that fixes
+  gh#oneapi-src/oneTBB#824.
+
+-------------------------------------------------------------------
 Sat May  7 12:51:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2021.1.5:

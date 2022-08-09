@@ -51,7 +51,8 @@ Source99:       tbb-rpmlintrc
 # PATCH-FIX-UPSTREAM tbb-pr609-32bit-mwaitpkg.patch
 Patch1:         https://github.com/oneapi-src/oneTBB/pull/609.patch#/tbb-pr609-32bit-mwaitpkg.patch
 # PATCH-FIX-OPENSUSE cmake-remove-include-path.patch -- openCV include error
-Patch4:         cmake-remove-include-path.patch
+Patch2:         cmake-remove-include-path.patch
+Patch3:         retry-pthread_create.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
