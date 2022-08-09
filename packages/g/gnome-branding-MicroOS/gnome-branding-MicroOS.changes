@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  4 17:21:54 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Add Conflicts: plasma-branding-MicroOS
+
+-------------------------------------------------------------------
 Sat Jan 29 11:43:01 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - fix firstboot script: we should not go over 100% as anything that is
