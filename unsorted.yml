@@ -1496,7 +1496,6 @@ unsorted:
   - budgie-clockworks-applet 
   - budgie-control-center 
   - budgie-control-center-bash-completion 
-  - budgie-control-center-devel 
   - budgie-control-center-lang 
   - budgie-countdown-applet 
   - budgie-desktop 
@@ -1764,9 +1763,8 @@ unsorted:
   - canlock 
   - canna 
   - canna-devel 
+  - canna-libs 
   - canna-libs-32bit: [x86_64] 
-  - canna-yubin 
-  - cannadic 
   - cantata 
   - cantata-lang 
   - cantor 
@@ -8210,7 +8208,7 @@ unsorted:
   - keybinder-devel 
   - keybinder-lua 
   - keychain 
-  - keylime-agent: [i586] 
+  - keylime-agent 
   - keylime-config: [i586] 
   - keylime-firewalld: [i586] 
   - keylime-logrotate: [i586] 
@@ -13123,7 +13121,6 @@ unsorted:
   - libpinyin-tools 
   - libpinyin13-32bit: [x86_64] 
   - libpipeline-devel 
-  - libpipewire-0_2-1 
   - libpipewire-0_3-0-32bit: [x86_64] 
   - libpixman-1-0-devel: [i586] # devel package of common_locks:libpixman-1-0 
   - libpkcs11-helper1-32bit: [x86_64] 
@@ -17468,8 +17465,8 @@ unsorted:
   - no-more-secrets 
   - nodejs-default 
   - nodejs-devel-default 
-  - nodejs-electron: [x86_64] 
-  - nodejs-electron-devel: [x86_64] 
+  - nodejs-electron 
+  - nodejs-electron-devel 
   - nodejs-packaging 
   - nodejs-underscore 
   - nodejs16 
@@ -20734,7 +20731,6 @@ unsorted:
   - pipewire-libjack-0_3-devel 
   - pipewire-modules-0_3-32bit: [x86_64] 
   - pipewire-spa-plugins-0_2-32bit: [x86_64] 
-  - pipewire0_2-compat 
   - pithos 
   - pitivi 
   - pitivi-lang 
@@ -20759,6 +20755,7 @@ unsorted:
   - plantuml-javadoc 
   - plasma-applet-weather-widget 
   - plasma-applet-weather-widget-lang 
+  - plasma-branding-MicroOS: [i586] 
   - plasma-framework-devel 
   - plasma-nm5-fortisslvpn 
   - plasma-nm5-iodine 
@@ -32578,6 +32575,7 @@ unsorted:
   - rubberband-cli 
   - rubberband-ladspa 
   - rubberband-ladspa-32bit: [x86_64] 
+  - rubberband-lv2 
   - rubberband-vamp 
   - rubberband-vamp-32bit: [x86_64] 
   - ruby-apparmor 
@@ -32596,6 +32594,9 @@ unsorted:
   - ruby3.1-devel-extra 
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
+  - ruby3.1-rubygem-omniauth-github 
+  - ruby3.1-rubygem-omniauth-google-oauth2 
+  - ruby3.1-rubygem-sinatra 
   - rubygem-docker-api 
   - rubygem-docker-api-doc 
   - rubygem-docker-api-testsuite 
@@ -32612,7 +32613,6 @@ unsorted:
   - rust 
   - rust-analyzer 
   - rust-cbindgen 
-  - rust-keylime: [x86_64] 
   - rust-packaging 
   - rust-srpm-macros 
   - rust1.60 
@@ -32815,7 +32815,6 @@ unsorted:
   - scikit-hep-testdata-files 
   - scim-32bit: [x86_64] 
   - scim-anthy 
-  - scim-canna 
   - scim-chewing 
   - scim-devel 
   - scim-gtk3-32bit: [x86_64] 
@@ -33025,6 +33024,7 @@ unsorted:
   - simtrace2 
   - simutrans 
   - simutrans-makeobj 
+  - singularity-ce 
   - sipcalc 
   - sipp 
   - siproxd 
@@ -42377,6 +42377,15 @@ unsorted:
   - tiobench 
   - tipcutils 
   - tiptop 
+  - tiro-bangla-fonts 
+  - tiro-devahindi-fonts 
+  - tiro-devamarathi-fonts 
+  - tiro-devasanskrit-fonts 
+  - tiro-gurmukhi-fonts 
+  - tiro-indigo-fonts 
+  - tiro-kannada-fonts 
+  - tiro-tamil-fonts 
+  - tiro-telugu-fonts 
   - tix 
   - tj 
   - tk-32bit: [x86_64] 
