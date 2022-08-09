@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-importmap-rails
-Version:        1.0.3
+Version:        1.1.5
 Release:        0
 %define mod_name importmap-rails
 %define mod_full_name %{mod_name}-%{version}
