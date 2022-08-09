@@ -65,4 +65,12 @@ The spec file was imported from Fedora and adapted for SUSE.</comment>
 </comment>
     <requestid>942130</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c14c7ac5d89589b4fc2e35b6660a9137</srcmd5>
+    <version>1.2.0</version>
+    <time>1660051752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994102</requestid>
+  </revision>
 </revisionlist>
