@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug  4 13:20:10 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.17.1
+ see installed History.rdoc
+
+  === Net::LDAP 0.17.1
+  * Fixed shebang of bash #385
+  * Omit some tests for now until we update our CA cert #386
+  * Add Ruby 3.0 support #388
+  * Add TruffleRuby 21.0.0 to CI #389
+  * Correct a typo in an error message #391
+  * Enable bundler caching for travis #390
+  * Fix circular require while loading lib/net/ldap/entry.rb and lib/net/ldap/dataset.rb #392
+  * Handle nil value in GetbyteForSSLSocket::getbyte #306
+  
+
+-------------------------------------------------------------------
 Sat Dec 19 22:06:36 UTC 2020 - Matthew Trescott <matthewtrescott@gmail.com>
 
 updated to version 0.17.0
