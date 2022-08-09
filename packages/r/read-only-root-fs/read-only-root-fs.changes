@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 08 09:53:28 UTC 2022 - fvogt@suse.com
+
+- Update to version 1.0+git20220808.cd59f4f:
+  * Fix writableagain.conf
+
+-------------------------------------------------------------------
+Fri Aug 05 12:45:16 UTC 2022 - fvogt@suse.com
+
+- Update to version 1.0+git20220805.4a3d850:
+  * Work around read-only state of subvolumes in a different way
+
+-------------------------------------------------------------------
 Mon Aug 01 14:14:08 UTC 2022 - iforster@suse.com
 
 - Update to version 1.0+git20220801.cbb90bc:
