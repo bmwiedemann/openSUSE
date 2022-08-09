@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Aug 05 06:02:43 UTC 2022 - tiwai@suse.com
+
+- Update to version 20220804 (git commit e6185d5197fd):
+  * linux-firmware: Update firmware file for Intel Bluetooth 9462
+  * linux-firmware: Update firmware file for Intel Bluetooth 9462
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * Mellanox: Add new mlxsw_spectrum firmware xx.2010.3020
+  * linux-firmware: Add firmware for Cirrus CS35L41
+  * i915: Add GuC v70.4.1 for DG2
+  * i915: Add DMC v2.07 for DG2
+  * amdgpu partially revert "amdgpu: update beige goby to release 22.20"
+  * mediatek: Update mt8183/mt8192/mt8195 SCP firmware
+  * amdgpu: update renoir to release 22.20
+  * amdgpu: update beige goby to release 22.20
+  * amdgpu: update yellow carp to release 22.20
+  * amdgpu: update dimgrey cavefish to release 22.20
+  * amdgpu: update vega20 to release 22.20
+  * amdgpu: update vega12 to release 22.20
+  * amdgpu: update raven to release 22.20
+  * amdgpu: update navy flounder to release 22.20
+  * amdgpu: update vega10 to release 22.20
+  * amdgpu: update sienna cichlid to release 22.20
+  * amdgpu: update navi14 to release 22.20
+  * amdgpu: update green sardine to release 22.20
+  * amdgpu: update vangogh to release 22.20
+  * amdgpu: update navi12 to release 22.20
+  * amdgpu: update navi10 to release 22.20
+  * amdgpu: update picasso to release 22.20
+  * amdgpu: update aldebaran to release 22.20
+  * amdgpu: update psp 13.0.8 TA firmware
+  * WHENCE: Fix the dangling symlinks fix
+- Revert the previous rtw88/rtw8822c_fw.bin change due to regression
+  on HP Pavilion 15 (bsc#1202152)
+- Update alias from 5.19
+
+-------------------------------------------------------------------
 Mon Jul 18 07:10:06 UTC 2022 - tiwai@suse.com
 
 - Update to version 20220714 (git commit 84661a3ba62f):

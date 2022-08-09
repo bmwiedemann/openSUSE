@@ -44,6 +44,8 @@ Source8:        ql2600_fw.bin
 Source9:        ql2700_fw.bin
 Source10:       ql8300_fw.bin
 Source99:       %{name}-rpmlintrc
+# temporary revert (bsc#1202152): taken from upstream commit 06acb465d80b
+Source100:      rtw8822c_fw.bin
 # install / build infrastructure
 Source1001:     install-split.sh
 Source1002:     list-license.sh
@@ -121,6 +123,8 @@ all files that have been provided by kernel-firmware package.
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
+# temporary revert (bsc#1202152)
+install -c -m 0644 %{SOURCE100} rtw88/rtw8822c_fw.bin
 
 %build
 # nothing to do

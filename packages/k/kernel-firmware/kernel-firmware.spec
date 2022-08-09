@@ -23,10 +23,10 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20220714
+%define version_unconverted 20220804
 
 Name:           kernel-firmware
-Version:        20220714
+Version:        20220804
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -44,6 +44,8 @@ Source8:        ql2600_fw.bin
 Source9:        ql2700_fw.bin
 Source10:       ql8300_fw.bin
 Source99:       %{name}-rpmlintrc
+# temporary revert (bsc#1202152): taken from upstream commit 06acb465d80b
+Source100:      rtw8822c_fw.bin
 # install / build infrastructure
 Source1001:     install-split.sh
 Source1002:     list-license.sh
@@ -3296,6 +3298,7 @@ Supplements:    modalias(pci:v00008086d00001593sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001599sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000159Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000159Bsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00001888sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000188Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000188Bsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000188Csv*sd*bc*sc*i*)
@@ -3988,6 +3991,8 @@ Supplements:    modalias(of:N*T*Cqcom,mdss)
 Supplements:    modalias(of:N*T*Cqcom,mdssC*)
 Supplements:    modalias(of:N*T*Cqcom,mdss_mdp)
 Supplements:    modalias(of:N*T*Cqcom,mdss_mdpC*)
+Supplements:    modalias(of:N*T*Cqcom,msm8226-adsp-pil)
+Supplements:    modalias(of:N*T*Cqcom,msm8226-adsp-pilC*)
 Supplements:    modalias(of:N*T*Cqcom,msm8916-mss-pil)
 Supplements:    modalias(of:N*T*Cqcom,msm8916-mss-pilC*)
 Supplements:    modalias(of:N*T*Cqcom,msm8974-adsp-pil)
@@ -4048,6 +4053,12 @@ Supplements:    modalias(of:N*T*Cqcom,sc8180x-mdss)
 Supplements:    modalias(of:N*T*Cqcom,sc8180x-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom,sc8180x-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom,sc8180x-mpss-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sc8280xp-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sc8280xp-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sc8280xp-nsp0-pas)
+Supplements:    modalias(of:N*T*Cqcom,sc8280xp-nsp0-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sc8280xp-nsp1-pas)
+Supplements:    modalias(of:N*T*Cqcom,sc8280xp-nsp1-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sdm660-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sdm660-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-adsp-pas)
@@ -6206,6 +6217,8 @@ various USB WiFi / Ethernet drivers.
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
+# temporary revert (bsc#1202152)
+install -c -m 0644 %{SOURCE100} rtw88/rtw8822c_fw.bin
 
 %build
 # nothing to do
