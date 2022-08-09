@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Mon Aug 8 12:46:25 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#31
+- include full URL to submit request in log
+- add GIT2LOG_DEFAULT_EMAIL environment var
+- 1.1
+
+--------------------------------------------------------------------
 Wed Apr 14 14:26:15 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc-devtools#30
