@@ -636,4 +636,13 @@ So preferably for 13.1 as well.</comment>
     <comment></comment>
     <requestid>987487</requestid>
   </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>b73ee3c0a4339a7d34baf9d632f005a4</srcmd5>
+    <version>43.4</version>
+    <time>1660051665</time>
+    <user>dimstar_suse</user>
+    <comment>- The nautilus-deja-dup plugin has been dropped since version 42.4,
+  explicitly obsoletes it in the specfile. (forwarded request 993643 from yfjiang)</comment>
+    <requestid>993855</requestid>
+  </revision>
 </revisionlist>

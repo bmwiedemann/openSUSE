@@ -47,6 +47,7 @@ BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(packagekit-glib2) >= 0.6.5
 Requires:       duplicity >= 0.8.21
 Requires:       python3-oauthlib
+Obsoletes:      nautilus-deja-dup <= 42.4
 
 %description
 Déjà  Dup is a simple backup tool. It hides the complexity of doing
