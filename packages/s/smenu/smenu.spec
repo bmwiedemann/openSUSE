@@ -17,15 +17,14 @@
 
 
 Name:           smenu
-Version:        1.0.0.RC1
+Version:        1.0.0
 Release:        0
 Summary:        A standard input word picker
 License:        GPL-2.0-only
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/p-gen/%{name}
-Source:         %{name}-%{version}.tar.bz2
+Source:         https://github.com/p-gen/smenu/releases/download/v%{version}/smenu-%{version}.tar.bz2
 BuildRequires:  ncurses-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This tool reads words from a file or standard input, presents them in an
@@ -37,7 +36,7 @@ selected words, if any, to standard output.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %package tests
 Summary:        Testing system for %{name}
@@ -56,11 +55,9 @@ make install DESTDIR="%{?buildroot}"
 %endif
 
 %files tests
-%defattr(-,root,root,-)
 %doc tests
 
 %files
-%defattr(-,root,root,-)
 %attr(0755,root,root) %{_bindir}/*
 %if 0%{?sle_version} < 120300
 %doc COPYRIGHT

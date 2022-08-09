@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  9 06:33:24 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.0:
+  * Fix and improve the content of the integrated help system.
+  * Allow multiple instances of the "-limits" option.
+
+-------------------------------------------------------------------
 Fri May 20 09:41:20 UTC 2022 - Pierre Gentile <p.gen.progs@gmail.com>
 
 - Version 1.0.0.RC1
