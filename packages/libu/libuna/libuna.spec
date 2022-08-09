@@ -92,11 +92,14 @@ applications that want to make use of libuna.
 
 %build
 autoreconf -fi
+# see libcdata for version-sc
+echo "V_%version { global: *; };" >v.sym
 %configure \
 %if "@BUILD_FLAVOR@" == "mini"
 	--disable-tools \
 %endif
-	--disable-static --enable-wide-character-type
+	--disable-static --enable-wide-character-type \
+	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
 %make_build
 
 %install
