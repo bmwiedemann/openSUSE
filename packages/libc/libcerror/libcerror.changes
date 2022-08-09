@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  8 11:37:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add forced symvers
+
+-------------------------------------------------------------------
 Thu Jan 20 10:06:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Force autoreconf run due to patch presence.
