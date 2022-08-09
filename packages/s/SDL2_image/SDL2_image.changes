@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  1 21:46:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.1
+  * Fixing grayscale image loading using the built-in stb_image
+    (openSUSE uses libjpg/libpng, not stb)
+
+-------------------------------------------------------------------
 Fri Jul  8 20:20:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.6.0
