@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  8 11:37:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add forced symvers
+
+-------------------------------------------------------------------
 Sat Jan 22 23:11:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable multipython builds. (This reenables python2 on Leap 15)

@@ -143,4 +143,12 @@ part of summer 2013 libyal refresh for opensuse 13.1
     <comment>- Enable multipython builds. (This reenables python2 on Leap 15)</comment>
     <requestid>948166</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>babb323de3d85b3ee2c8ba63a6f83b46</srcmd5>
+    <version>20210417</version>
+    <time>1660051731</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>994010</requestid>
+  </revision>
 </revisionlist>
