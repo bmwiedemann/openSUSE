@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Aug  8 12:52:48 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.7.9 (boo#1201311):
+  + Do not generate a capsule header for the FMP GUID.
+  + Do not use CoD even when advertized on non-aarch64 platforms.
+  + Fix a critical warning when parsing an invalid PHAT record.
+  + Fix a regression for devices using the Atmel FLIP Bootloader.
+  + Fix parsing SMBIOS data.
+  + Set the device ID on the FwupdRequest.
+  + Use the correct protocol member when converting to JSON.
+  + Wait for the system76-launch device to re-enumerate if unlocked
+    and reset.
+- Changes from version 1.7.8:
+  + Add the bootloader VID/PID used for the first batch of ColorHug
+    devices.
+  + Also check for os-release in SYSCONFDIR.
+  + Export the version lowest raw value correctly.
+  + Fix a Wacom timeout when parsing very corrupt firmware.
+  + Fix Genesys device enumeration failure by not claiming the
+    interface.
+  + Hardcode the Redfish filedata name to firmware.bin.
+  + Install D-Bus introspection data even if introspection is
+    disabled.
+  + Only set the flashrom BIOS size if not already quirked.
+  + Read the SynapticsMST firmware size in a more safe way.
+  + Restart the BMC after installing BCM updates.
+
+-------------------------------------------------------------------
 Sun Apr 17 12:52:22 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 1.7.7:

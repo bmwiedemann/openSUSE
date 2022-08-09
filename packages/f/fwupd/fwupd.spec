@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %ifarch %{ix86} x86_64 aarch64
 %bcond_without efi_fw_update
 %else
@@ -36,7 +37,7 @@
 %endif
 
 Name:           fwupd
-Version:        1.7.7
+Version:        1.7.9
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -185,8 +186,8 @@ the local machine.
 %package bash-completion
 Summary:        Bash completion for fwupd
 Group:          System/Management
-Requires:       bash-completion
 Requires:       %{name}
+Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
@@ -197,8 +198,8 @@ This package contain the bash completion command for the device firmware updater
 %package fish-completion
 Summary:        Fish completion for fwupd
 Group:          System/Management
-Requires:       fish
 Requires:       %{name}
+Requires:       fish
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
@@ -225,6 +226,7 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
   -Dplugin_uefi_capsule=true \
   -Dplugin_uefi_pk=true \
   -Defi_binary=false \
+  -Dsystemd_unit_user=root \
 %else
   -Dplugin_uefi_capsule=false \
   -Dplugin_uefi_pk=false \
