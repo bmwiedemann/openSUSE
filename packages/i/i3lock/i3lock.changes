@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  9 09:32:04 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use %_pam_vendordir
+
+-------------------------------------------------------------------
 Sun Dec 27 22:03:03 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - update to 2.13

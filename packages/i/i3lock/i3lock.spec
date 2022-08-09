@@ -1,7 +1,7 @@
 #
 # spec file for package i3lock
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 B1 Systems GmbH, Vohburg, Germany.
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -73,8 +73,8 @@ install -D -m0644 %{name}.1 "%{buildroot}%{_mandir}/man1/%{name}.1"
 install -D -m0644 %{SOURCE2} %{buildroot}%{_datadir}/i3lock-xlock-compat/i3lock-icon.png
 install -m0755 %{SOURCE3} %{buildroot}/%{_bindir}/xlock
 %if 0%{?suse_version} >= 1550
-mkdir -p %{buildroot}%{_distconfdir}
-mv %{buildroot}%{_sysconfdir}/pam.d %{buildroot}%{_distconfdir}
+mkdir -p %{buildroot}%{_pam_vendordir}
+mv %{buildroot}%{_sysconfdir}/pam.d/* %{buildroot}%{_pam_vendordir}/
 %endif
 
 %pre
@@ -96,7 +96,7 @@ done
 %license LICENSE
 %doc CHANGELOG README.md
 %if 0%{?suse_version} >= 1550
-%{_distconfdir}/pam.d/%{name}
+%{_pam_vendordir}/%{name}
 %else
 %config(noreplace) %{_sysconfdir}/pam.d/%{name}
 %endif
