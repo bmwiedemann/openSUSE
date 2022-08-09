@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-down
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 %define mod_name down
 %define mod_full_name %{mod_name}-%{version}
