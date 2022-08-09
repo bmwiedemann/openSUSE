@@ -1122,4 +1122,14 @@
     <comment></comment>
     <requestid>993468</requestid>
   </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>7840b5e2b958c22258c2b4a2bd43785c</srcmd5>
+    <version>1.4.0</version>
+    <time>1660051659</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert 'removal of upstream pokit action', but rather
+  BuildRequire pkexec, which is what decides if the file is
+  installed or not.</comment>
+    <requestid>993908</requestid>
+  </revision>
 </revisionlist>
