@@ -117,4 +117,14 @@
     <comment></comment>
     <requestid>976924</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>13f3833d098e6c30c2fa95d15ae0933d</srcmd5>
+    <version>3.4</version>
+    <time>1660051625</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python2 dependency
+
+- fix fdupes call</comment>
+    <requestid>993756</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug  8 11:18:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- remove python2 dependency
+
+-------------------------------------------------------------------
 Thu May 12 17:00:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- fix fdupes call 
+- fix fdupes call
 
 -------------------------------------------------------------------
 Wed Oct  6 04:19:43 UTC 2021 - Neil Brown <nfbrown@suse.com>

@@ -39,7 +39,6 @@ BuildRequires:  gcc
 BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  python
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(gtk+-3.0)
