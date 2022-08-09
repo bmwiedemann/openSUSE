@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Aug  4 13:22:33 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.4.2
+ see installed History.rdoc
+
+  == v1.4.2 [2022-07-27] Lars Kanis <lars@greiz-reinsdorf.de>
+  
+  Bugfixes:
+  
+  - Properly handle empty host parameter when connecting. #471
+  - Update Windows fat binary gem to OpenSSL-1.1.1q.
+  
+  
+  == v1.4.1 [2022-06-24] Lars Kanis <lars@greiz-reinsdorf.de>
+  
+  Bugfixes:
+  
+  - Fix another ruby-2.7 keyword warning. #465
+  - Allow PG::Error to be created without arguments. #466
+  
+  
+  == v1.4.0 [2022-06-20] Lars Kanis <lars@greiz-reinsdorf.de>
+  
+  Added:
+  
+  - Add PG::Connection#hostaddr, present since PostgreSQL-12. #453
+  - Add PG::Connection.conninfo_parse to wrap PQconninfoParse. #453
+  
+  Bugfixes:
+  
+  - Try IPv6 and IPv4 addresses, if DNS resolves to both. #452
+  - Re-add block-call semantics to PG::Connection.new accidently removed in pg-1.3.0. #454
+  - Handle client error after all data consumed in #copy_data for output. #455
+  - Avoid spurious keyword argument warning on Ruby 2.7. #456
+  - Change connection setup to respect connect_timeout parameter. #459
+  - Fix indefinite hang in case of connection error on Windows #458
+  - Set connection attribute of PG::Error in various places where it was missing. #461
+  - Fix transaction leak on early break/return. #463
+  - Update Windows fat binary gem to OpenSSL-1.1.1o and PostgreSQL-14.4.
+  
+  Enhancements:
+  
+  - Don't flush at each put_copy_data call, but flush at get_result. #462
+  
+  
+
+-------------------------------------------------------------------
 Thu Apr 28 05:41:21 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.3.5
