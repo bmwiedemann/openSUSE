@@ -265,4 +265,12 @@
   + Translation updates (forwarded request 972934 from susnux)</comment>
     <requestid>972937</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b1b97dee0569e27239e5daffb81ca81f</srcmd5>
+    <version>40.8</version>
+    <time>1660051684</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 993535 from iznogood)</comment>
+    <requestid>993947</requestid>
+  </revision>
 </revisionlist>
