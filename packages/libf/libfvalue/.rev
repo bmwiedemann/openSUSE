@@ -55,4 +55,12 @@
     <comment>- Update to release 20220120</comment>
     <requestid>947652</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ba21629f15969e0ffb39d509a1ebc842</srcmd5>
+    <version>20220120</version>
+    <time>1660051723</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>994002</requestid>
+  </revision>
 </revisionlist>
