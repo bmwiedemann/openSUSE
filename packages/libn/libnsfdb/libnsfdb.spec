@@ -1,7 +1,7 @@
 #
 # spec file for package libnsfdb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,7 +86,9 @@ read Notes Storage Facility databases.
 
 %build
 if [ ! -e configure ]; then ./autogen.sh; fi
-%configure --disable-static
+# see libcdata for version-sc
+echo "V_%version { global: *; };" >v.sym
+%configure --disable-static LDFLAGS="-Wl,--version-script=$PWD/v.sym"
 %make_build
 
 %install
