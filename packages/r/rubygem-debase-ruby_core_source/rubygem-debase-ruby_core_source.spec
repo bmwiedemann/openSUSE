@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-debase-ruby_core_source
-Version:        0.10.14
+Version:        0.10.16
 Release:        0
 %define mod_name debase-ruby_core_source
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ Release:        0
 BuildRequires:  fdupes
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 1.9.3}
+BuildRequires:  %{ruby >= 2.0.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/ruby-debug/debase-ruby_core_source

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Aug  4 13:06:25 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.10.16
+ see installed CHANGELOG.md
+
+  ## [0.10.16](https://github.com/ruby-debug/debase-ruby_core_source/compare/v0.10.15...v0.10.16)
+  
+  * ruby-2.5.4-p155 added
+  * updated `required_ruby_version` to require ruby 2.0
+  * ruby-1.9.3 removed
+  
+  ## [0.10.15](https://github.com/ruby-debug/debase-ruby_core_source/compare/v0.10.14...v0.10.15)
+  
+  * ruby-3.2.0-preview1 added
+  
+  ## [0.10.14](https://github.com/ruby-debug/debase-ruby_core_source/compare/v0.10.13...v0.10.14)
+  
+  * ruby-3.1-0-p0 added
+  * ruby-3.1.0-preview1 removed
+  
+  ## [0.10.13](https://github.com/ruby-debug/debase-ruby_core_source/compare/v0.10.12...v0.10.13)
+  
+  * ruby-3.1.0-preview1 added
+  
+  ## [0.10.12](https://github.com/ruby-debug/debase-ruby_core_source/compare/v0.10.11...v0.10.12)
+  
+  * ruby-3.0.0-p0 added
+  * ruby-3.0.0-preview1 removed
+  
+  ## [0.10.11](https://github.com/ruby-debug/debase-ruby_core_source/compare/v0.10.10...v0.10.11)
+  
+  * ruby-3.0.0-preview1 added
+  
+
+-------------------------------------------------------------------
 Tue Feb 15 07:26:58 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 0.10.14
