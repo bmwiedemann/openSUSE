@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Aug  8 09:55:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Ugraded to freerdp 2.8.0
+  * Backported API to get peer accepted channel option flags
+  * Backported API to get peer accepted channel names
+  * Backported Stream_CheckAndLogRequiredLength
+  * Backported #7954: Add server side handling for [MS-RDPET]
+  * Backported #8010: Add server side handling for [MS-RDPECAM]
+  * Backported #8041: Remove ALAW/ULAW codecs from linux backends (unreliable)
+  * Backported #8051: Relieve CLIPRDR filename restriction when connecting to non-MS Windows servers
+  * Backported #8048: TLS version control
+  * Backported #7987: Add a new command line arg to enforce tls1.2
+
+- Fixed issues:
+  * Fixed #7837: Prevent out of bound reads for FFMPEG
+  * Backported #7859 and #7861: Unwind support for backtrace generation
+  * Backported #7440: wlfreerdp appid
+  * Backported #7832: RAIL window restore
+  * Backported #7833: Refactored WinPR thread locking
+  * Backported #7893: Mac rdpsnd memory leak fixes
+  * Backported #7895: Mac audin memory leak fixes
+  * Backported #7898: Automatic android versioning
+  * Backported #7916: GFX 10.7 capability support
+  * Backported #7949: Server RDPSND API improvements
+  * Backported #7957: Server DVC API improvements
+  * Backported #7760: Fixed osMinorType values
+  * Backported #8013: Add missing osMajorType values
+  * Backported #8076: Fix wrong usage of subband diffing flag (tile artifact fix)
+
+-------------------------------------------------------------------
 Tue Apr 26 06:02:24 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Upgraded to freerdp 2.7.0
@@ -17,7 +47,7 @@ Tue Apr 26 06:02:24 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 -------------------------------------------------------------------
 Tue Mar  8 10:34:50 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Upgraded to freerdp 2.6.1 
+- Upgraded to freerdp 2.6.1
   * Decreased logging verbosity, now freerdp is much less verbose by default
   * Backported freerdp_abort_connect during freerdp_connect fix (#gh:FreeRDP/FreeRDP#7700)
   * Backported improved version dection see docs/version_detection.md for details
