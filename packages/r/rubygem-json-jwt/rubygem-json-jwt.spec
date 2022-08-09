@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-json-jwt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-json-jwt
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 %define mod_name json-jwt
 %define mod_full_name %{mod_name}-%{version}
