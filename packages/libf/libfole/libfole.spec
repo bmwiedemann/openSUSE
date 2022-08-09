@@ -64,7 +64,9 @@ applications that want to make use of libfole.
 
 %build
 autoreconf -fi
-%configure --disable-static
+# see libcdata for version-sc
+echo "V_%version { global: *; };" >v.sym
+%configure --disable-static LDFLAGS="-Wl,--version-script=$PWD/v.sym"
 %make_build
 
 %install
