@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rice
-Version:        4.0.3
+Version:        4.0.4
 Release:        0
 %define mod_name rice
 %define mod_full_name %{mod_name}-%{version}
