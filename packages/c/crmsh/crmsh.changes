@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 09 07:05:44 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220809.4f90c4ef:
+  * Dev: bootstrap: Don't sync csync2 when peer node's csync2 service not ready
+
+-------------------------------------------------------------------
+Mon Aug 08 15:04:45 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220808.89fa84a6:
+  * Dev: bootstrap: Don't open mgmt port since it's deprecated
+
+-------------------------------------------------------------------
 Thu Jul 28 08:14:15 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.0+20220728.3f249756:
