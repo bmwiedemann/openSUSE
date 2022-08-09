@@ -98,4 +98,12 @@ part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>- Update to release 20220113</comment>
     <requestid>946369</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>65b627d4da2e43498fa4cec08b2b04c4</srcmd5>
+    <version>20220113</version>
+    <time>1660051711</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993988</requestid>
+  </revision>
 </revisionlist>
