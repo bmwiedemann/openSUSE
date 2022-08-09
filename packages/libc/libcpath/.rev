@@ -102,4 +102,12 @@ summer 2013 libyal refresh for opensuse 13.1 (forwarded request 184909 from greg
     <comment>- Force autoreconf run due to patch presence.</comment>
     <requestid>947903</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>b46749e79a563044850b3fc50b2cb522</srcmd5>
+    <version>20220108</version>
+    <time>1660051701</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993975</requestid>
+  </revision>
 </revisionlist>

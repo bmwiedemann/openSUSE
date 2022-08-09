@@ -63,7 +63,9 @@ applications that want to make use of libcpath.
 
 %build
 autoreconf -fi
-%configure --disable-static --enable-wide-character-type
+# see libcdata for version-sc
+echo "V_%version { global: *; };" >v.sym
+%configure --disable-static --enable-wide-character-type LDFLAGS="-Wl,--version-script=$PWD/v.sym"
 %make_build
 
 %install
