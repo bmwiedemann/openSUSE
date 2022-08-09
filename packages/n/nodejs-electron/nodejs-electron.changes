@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Aug  5 13:52:55 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 19.0.11
+  * Fixed webContents.getUserAgent() incorrectly returning an empty string unless previously set.
+  * Disabled GPU acceleration on VMware on Linux.
+- New upstream release 19.0.10
+  * Added support for --ozone-platform-hint flag.
+  * Fixed inertial scroll is broken when the scrollable element has an overlay with pointer-events: none.
+- Do not use non-free closure compiler JAR during compilation.
+- Use system jpeg-xl and XNVCtrl also on Tumbleweed.
+- Use system libyuv on Tumbleweed.
+  * libyuv.gn
+- Make nodejs-electron-devel require zlib-devel instead of shipping own headers.
+  * no-zlib-headers.patch
+  * add -lz to LDFLAGS in electron-16-system-node-headers.patch
+- Use system toolchain, incl. nasm, ply, flatc
+  * flatbuffers.gn
+  * system-nasm.patch
+  * system-pydeps.patch
+- Thorough cleanup of various other third party libraries from source tarball.
+  * do-not-build-libvulkan.so.patch
+  * libsecret.gn
+  * node-system-icu.patch
+  * skia-system-vulkan-headers.patch
+  * system-six.patch
+  * system-usb_ids.patch
+  * Adjust system-gtest.patch to also account for the second googletest copy in electron_node
+- Re-enable full debuginfo on x64 for everything except Blink and v8, which fails to build due to heavy template use.
+  * adjust chromium-102-compiler.patch
+  * nasm-generate-debuginfo.patch
+- Fix build of EXPERIMENTAL ix86 and arm7hf ports by using the LLVM linker (lld) on these platforms.
+  * Note that ix86 requires SSE2 instructions (that means Pentium 4 / Pentium M / Atom or equivalent)
+
+-------------------------------------------------------------------
 Fri Jul 22 09:58:00 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 19.0.9
   * Updated Chromium to 102.0.5005.167

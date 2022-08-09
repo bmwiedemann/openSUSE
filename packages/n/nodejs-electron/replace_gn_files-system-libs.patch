@@ -1,6 +1,6 @@
 --- chromium-79.0.3945.29/build/linux/unbundle/replace_gn_files.py.system-dav1d	2019-11-09 14:30:17.297016975 +0100
 +++ chromium-79.0.3945.29/build/linux/unbundle/replace_gn_files.py	2019-11-10 09:40:19.694662891 +0100
-@@ -17,12 +17,37 @@ import sys
+@@ -17,12 +17,40 @@ import sys
  
  
  REPLACEMENTS = {
@@ -27,6 +27,7 @@
 +  'double-conversion': 'base/third_party/double_conversion/BUILD.gn',
    'ffmpeg': 'third_party/ffmpeg/BUILD.gn',
    'flac': 'third_party/flac/BUILD.gn',
++  'flatbuffers': 'third_party/flatbuffers/BUILD.gn',
    'fontconfig': 'third_party/fontconfig/BUILD.gn',
    'freetype': 'build/config/freetype/freetype.gni',
    'harfbuzz-ng': 'third_party/harfbuzz-ng/harfbuzz.gni',
@@ -35,10 +36,12 @@
 +  'libaom' : 'third_party/libaom/BUILD.gn',
 +  'libavif' : 'third_party/libavif/BUILD.gn',
 +  'libjxl' : 'third_party/libjxl/BUILD.gn',
++  'libsecret' : 'third_party/libsecret/BUILD.gn',
++  'libyuv' : 'third_party/libyuv/BUILD.gn',
    'libdrm': 'third_party/libdrm/BUILD.gn',
    'libevent': 'base/third_party/libevent/BUILD.gn',
    'libjpeg': 'third_party/libjpeg.gni',
-@@ -33,6 +61,11 @@
+@@ -33,6 +64,11 @@
    'opus': 'third_party/opus/BUILD.gn',
    're2': 'third_party/re2/BUILD.gn',
    'snappy': 'third_party/snappy/BUILD.gn',

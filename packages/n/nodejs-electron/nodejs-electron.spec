@@ -26,12 +26,10 @@
 # Do not provide libEGL.so, etc…
 %define __provides_exclude ^lib.*\\.so.*$
 
+# Double DWZ memory limits
+%define _dwz_low_mem_die_limit  20000000
+%define _dwz_max_die_limit     100000000
 
-# These ports now assemble correctly as of 19.0.5,
-# but the linker gets out of memory (32-bit)
-# causing build failure near the end
-# Remove this block if you wish to fix it
-ExcludeArch: %ix86 %arm
 
 #x86 requires SSE2
 %ifarch %ix86
@@ -47,8 +45,10 @@ BuildArch:      i686
 
 %bcond_without pipewire
 
-%ifarch x86_64 %ix86 %arm
+%ifarch x86_64 %arm
 #Use subzero as swiftshader backend instead of LLVM
+#ix86 is also supposed to support subzero, but as of 19.0.9 we're getting linker error
+#undefined symbol: void Ice::X8632::emitIASRegOpTyGPR<true, true>(Ice::Cfg const*, Ice::Type, Ice::Variable const*, Ice::Operand const*, Ice::X8632::AssemblerX8632::GPREmitterRegOp const&)
 %bcond_without subzero
 %else
 %bcond_with subzero
@@ -76,7 +76,25 @@ BuildArch:      i686
 %bcond_with clang
 
 
+# Linker selection. GCC only. Default is BFD.
+# arm64 reports relocation errors with BFD.
+%ifarch x86_64 aarch64
 %bcond_without gold
+%else
+%bcond_with gold
+%endif
+
+# Both BFD and Gold run out of memory on 32-bit.
+%ifarch %ix86 %arm
+%bcond_without lld
+%else
+%bcond_with lld
+%endif
+
+#Mold succeeds on ix86 but seems to produce corrupt binaries (no build-id)
+%bcond_with mold
+
+
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400 || 0%{?fedora}
 %bcond_without system_harfbuzz
@@ -95,8 +113,14 @@ BuildArch:      i686
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora_version}
 %bcond_without system_crc32c
+%bcond_without system_nghttp2
+%bcond_without system_jxl
+%bcond_without system_nvctrl
 %else
 %bcond_with system_crc32c
+%bcond_with system_nghttp2
+%bcond_with system_jxl
+%bcond_with system_nvctrl
 %endif
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora} >= 37
@@ -107,14 +131,9 @@ BuildArch:      i686
 
 %bcond_without system_double_conversion
 %bcond_without system_jsoncpp
-%bcond_without system_cares
 %bcond_without system_woff2
 
-%if 0%{?fedora}
-%bcond_without system_nvctrl
-%else
-%bcond_with system_nvctrl
-%endif
+
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora} >= 37
 %bcond_without system_spirv
@@ -128,20 +147,21 @@ BuildArch:      i686
 %bcond_with system_llvm
 %endif
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora_version}
-%bcond_without system_nghttp2
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
+%bcond_without system_yuv
 %else
-%bcond_with system_nghttp2
+%bcond_with system_yuv
 %endif
 
 %bcond_without system_tiff
 
+
 %if 0%{?fedora}
-%bcond_without system_jxl
+
 %bcond_without system_llhttp
 %bcond_without system_histogram
 %else
-%bcond_with system_jxl
+
 %bcond_with system_llhttp
 %bcond_with system_histogram
 %endif
@@ -175,18 +195,18 @@ BuildArch:      i686
 # sqlite       | third_party/sqlite                | Fork.
 # srtp / srtp2 | third_party/libsrtp               | Api matches neither version 1 nor 2 of this library.
 # uv           | third_party/electron_node/deps/uv | Heavily modified version which is exposed as part of Electron's public ABI.
-# yuv          | third_party/libyuv                | Version in Fedora (0-0.43.20201024git19d71f6) is too old.
+
 
 
 
 Name:           nodejs-electron
-Version:        19.0.9
+Version:        19.0.11
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        MIT AND BSD-3-Clause AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://github.com/electron/electron
-Source0:        %{mod_name}-%{version}.tar.xz
+Source0:        %{mod_name}-%{version}.tar.zst
 Source1:        create_tarball.sh
 Source10:       electron-launcher.sh
 Source11:       electron.desktop
@@ -224,6 +244,9 @@ Source46:       swiftshader-SPIRV-Tools.gn
 Source47:       vulkan-SPIRV-Headers.gn
 Source48:       vulkan-SPIRV-Tools.gn
 Source49:       woff2.gn
+Source50:       flatbuffers.gn
+Source51:       libsecret.gn
+Source52:       libyuv.gn
 
 
 # Reverse upstream changes to be able to build against system ffmpeg
@@ -245,6 +268,8 @@ Patch39:        support-i386.patch
 Patch49:        abseil-remove-unused-targets.patch
 # from https://sources.debian.org/patches/chromium/103.0.5060.53-1/disable/catapult.patch/
 Patch67:        disable-catapult.patch
+Patch68:        do-not-build-libvulkan.so.patch
+Patch69:        nasm-generate-debuginfo.patch
 
 # PATCHES to use system libs
 Patch1002:      chromium-system-libusb.patch
@@ -277,6 +302,13 @@ Patch1063:      system-libbsd.patch
 Patch1065:      base-system-nspr.patch
 Patch1066:      system-gtest.patch
 Patch1067:      breakpad-system-curl.patch
+Patch1068:      system-six.patch
+Patch1069:      system-usb_ids.patch
+Patch1070:      skia-system-vulkan-headers.patch
+Patch1071:      system-pydeps.patch
+Patch1072:      node-system-icu.patch
+Patch1073:      system-nasm.patch
+Patch1074:      no-zlib-headers.patch
 
 # PATCHES to fix interaction with third-party software
 Patch2004:      chromium-gcc11.patch
@@ -347,6 +379,10 @@ BuildRequires:  double-conversion-devel
 %endif
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+%if 0%{?fedora}
+BuildRequires:  flatbuffers-compiler
+%endif
+BuildRequires:  flatbuffers-devel
 BuildRequires:  git-core
 BuildRequires:  gn >= 0.1807
 BuildRequires:  gperf
@@ -354,8 +390,7 @@ BuildRequires:  gperf
 BuildRequires:  HdrHistogram_c-devel
 %endif
 BuildRequires:  hicolor-icon-theme
-# Java used during build
-BuildRequires:  java-openjdk-headless
+BuildRequires:  hwdata
 %if 0%{?fedora}
 BuildRequires:  libatomic
 %endif
@@ -373,10 +408,17 @@ BuildRequires:  libXNVCtrl-devel
 %if %{with system_llhttp}
 BuildRequires:  llhttp-devel
 %endif
+%if %{with lld}
+BuildRequires:  lld
+%endif
 %if %{with system_llvm}
 BuildRequires:  llvm-devel
 %endif
 BuildRequires:  memory-constraints
+%if %{with mold}
+BuildRequires:  mold
+%endif
+BuildRequires:  nasm
 %if 0%{?suse_version}
 BuildRequires:  ninja >= 1.7.2
 %else
@@ -390,6 +432,10 @@ BuildRequires:  nodejs >= 16
 BuildRequires:  npm
 %endif
 BuildRequires:  pkgconfig
+BuildRequires:  plasma-wayland-protocols
+BuildRequires:  python3-json5
+BuildRequires:  python3-mako
+BuildRequires:  python3-ply
 BuildRequires:  python3-six
 BuildRequires:  rsync
 BuildRequires:  snappy-devel
@@ -397,6 +443,8 @@ BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
 %endif
 BuildRequires:  util-linux
+BuildRequires:  vulkan-headers
+BuildRequires:   zstd
 %if %{with system_abseil}
 BuildRequires:  pkgconfig(absl_algorithm_container) >= 20211000
 BuildRequires:  pkgconfig(absl_base)
@@ -472,9 +520,7 @@ BuildRequires:  pkgconfig(libavif)
 %endif
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libbrotlienc)
-%if %{with system_cares}
 BuildRequires:  pkgconfig(libcares)
-%endif
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libevent)
@@ -489,6 +535,7 @@ BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libwebp) >= 0.4.0
 %if %{with system_woff2}
@@ -497,11 +544,11 @@ BuildRequires:  pkgconfig(libwoff2dec)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.5
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(libxxhash)
+%if %{with system_yuv}
+BuildRequires:  pkgconfig(libyuv)
+%endif
 %if 0%{?fedora}
 BuildRequires:  minizip-compat-devel
-# help decide for dependency
-# BuildRequires:  pipewire-jack-audio-connection-kit-devel
-# BuildRequires:  nodejs-devel >= 17
 %else
 BuildRequires:  pkgconfig(minizip)
 %endif
@@ -566,7 +613,8 @@ Nodejs application: Build cross platform desktop apps with JavaScript, HTML, and
 %package devel
 Summary:        Electron development headers
 Group:          Development/Libraries/C and C++
-Requires:       nodejs-electron = %{version}
+Requires:       nodejs-electron%{?_isa} = %{version}
+Requires:       pkgconfig(zlib)
 
 %description devel
 Development headers for Electron projects.
@@ -579,6 +627,13 @@ Development headers for Electron projects.
 patch -R -p1 < %{SOURCE400}
 
 
+
+
+
+# Link system wayland-protocols-devel into where chrome expects them
+mkdir -p third_party/wayland-protocols/kde/src
+#ln -svfT %{_datadir}/wayland-protocols third_party/wayland-protocols/src
+ln -svfT %{_datadir}/plasma-wayland-protocols third_party/wayland-protocols/kde/src/protocols
 
 # Shim generators for replace_gn_files.py
 cp -lv %{_sourcedir}/*.gn build/linux/unbundle/
@@ -609,7 +664,8 @@ install -d -m 0755 python3-path
 ln -sf %{_bindir}/python3 "$(pwd)/python3-path/python"
 export PATH="$(pwd)/python3-path:${PATH}"
 
-ARCH_FLAGS="%optflags"
+#some Fedora ports still try to build with LTO
+ARCH_FLAGS=$(echo "%optflags"|sed 's/-f[^ ]*lto[^ ]*//g' )
 
 
 
@@ -635,8 +691,12 @@ export CXXFLAGS="${CXXFLAGS} -Wno-error=return-type"
 # This is an Electron-specific problem that does not appear in Chromium.
 export CXXFLAGS="${CXXFLAGS} -fpermissive"
 
-# REDUCE DEBUG for C++ as it gets TOO large due to “heavy hemplate use in Blink”
-export CXXFLAGS="$(echo ${CXXFLAGS} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
+# REDUCE DEBUG for C++ as it gets TOO large due to “heavy hemplate use in Blink”. See symbol_level below and chromium-102-compiler.patch
+export CXXFLAGS="$(echo ${CXXFLAGS} | sed -e 's/-g / /g' -e 's/-g$//g')"
+
+%ifarch %ix86 %arm
+export CFLAGS="$(echo ${CFLAGS} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
+%endif
 
 
 export LDFLAGS="%{?build_ldflags}"
@@ -687,18 +747,31 @@ export RANLIB=gcc-ranlib-10
 %endif
 
 
+%if %{with lld}
+export LDFLAGS="${LDFLAGS} -Wl,--as-needed -fuse-ld=lld"
+%endif
+%if %{with mold}
+export LDFLAGS="${LDFLAGS} -Wl,--as-needed -fuse-ld=mold"
+%endif
+
 # do not eat all memory
+%ifarch %ix86 %arm
+%limit_build -m 1200
+%else
 %limit_build -m 2600
+%endif
 
 gn_system_libraries=(
     brotli
     ffmpeg
     flac
+    flatbuffers
     fontconfig
     libdrm
     libevent
     libjpeg
     libpng
+    libsecret
     libusb
     libwebp
     libxml
@@ -710,8 +783,7 @@ gn_system_libraries=(
 )
 
 %if %{with system_abseil}
-find third_party/abseil-cpp -name *.[ch] -delete
-find third_party/abseil-cpp -name *.cc -delete
+find third_party/abseil-cpp -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 gn_system_libraries+=(
    absl_algorithm
    absl_base
@@ -736,49 +808,48 @@ rm third_party/abseil-cpp/absl/utility/BUILD.gn
 
 
 %if %{with system_aom}
-find third_party/libaom -name *.[ch] -delete
-find third_party/libaom -name *.cc -delete
+find third_party/libaom -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 gn_system_libraries+=( libaom )
 %endif
 
 %if %{with system_avif}
-find third_party/libavif -name *.[ch] -delete
+find third_party/libavif -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 gn_system_libraries+=( libavif )
 %endif
 
 %if %{with system_crc32c}
-find third_party/crc32c -name *.[ch] -delete
+find third_party/crc32c -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 gn_system_libraries+=( crc32c )
 %endif
 
 %if %{with system_jxl}
-find third_party/libjxl -name *.[ch] -delete
+find third_party/highway -type f ! -name "*.gn" -a ! -name "*.gni" -delete
+find third_party/libjxl -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 gn_system_libraries+=( libjxl )
 %endif
 
 
 %if %{with system_dav1d}
-find third_party/dav1d -name *.[ch] -delete
+find third_party/dav1d -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 gn_system_libraries+=( dav1d )
 %endif
 
 %if %{with system_double_conversion}
-find base/third_party/double_conversion -name *.[ch] -delete
+find base/third_party/double_conversion -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 gn_system_libraries+=( double-conversion )
 %endif
 
 %if %{with system_nvctrl}
-find third_party/angle/src/third_party/libXNVCtrl/ -name *.[ch] -delete
+find third_party/angle/src/third_party/libXNVCtrl/ -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 gn_system_libraries+=( libXNVCtrl )
 %endif
 
 %if %{with system_spirv}
-rm -rv third_party/swiftshader/third_party/SPIRV-Headers/include
-find  third_party/swiftshader/third_party/SPIRV-Tools/ -name *.[ch] -delete
-find  third_party/swiftshader/third_party/SPIRV-Tools/ -name *.[ch]pp -delete
-rm -rv third_party/vulkan-deps/spirv-headers/src/include
-find third_party/vulkan-deps/spirv-tools/ -name *.[ch] -delete
-find third_party/vulkan-deps/spirv-tools/ -name *.[ch]pp -delete
+rm -rf third_party/swiftshader/third_party/SPIRV-Headers/include
+find  third_party/swiftshader/third_party/SPIRV-Tools/ -type f ! -name "*.gn" -a ! -name "*.gni"  -delete
+
+rm -rf third_party/vulkan-deps/spirv-headers/src/include
+find third_party/vulkan-deps/spirv-tools/ -type f ! -name "*.gn" -a ! -name "*.gni"  -delete
 
 gn_system_libraries+=( 
    swiftshader-SPIRV-Headers
@@ -790,14 +861,12 @@ gn_system_libraries+=(
 %endif
 
 %if %{with system_harfbuzz}
-find third_party/harfbuzz-ng -name *.[ch] \! -path "third_party/harfbuzz-ng/utils/hb_scoped.h" -delete
-find third_party/harfbuzz-ng -name *.cc -delete
-find third_party/harfbuzz-ng -name *.hh -delete
+find third_party/harfbuzz-ng -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -path "third_party/harfbuzz-ng/utils/hb_scoped.h" -delete
 gn_system_libraries+=( harfbuzz-ng )
 %endif
 
 %if %{with system_freetype}
-find third_party/freetype -name *.[ch] -delete
+find third_party/freetype -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 gn_system_libraries+=( freetype )
 %endif
 
@@ -806,32 +875,34 @@ gn_system_libraries+=( icu )
 %endif
 
 %if %{with system_vpx}
-find third_party/libvpx -name *.[ch] -delete
+find third_party/libvpx -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 gn_system_libraries+=( libvpx )
 %endif
 
 %if %{with system_woff2}
-find third_party/woff2 -name *.[ch] -delete
-find third_party/woff2 -name *.cc -delete
+find third_party/woff2 -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 gn_system_libraries+=( woff2 )
+%endif
+
+%if %{with system_yuv}
+find third_party/libyuv -type f ! -name "*.gn" -a ! -name "*.gni" -delete
+gn_system_libraries+=( libyuv )
 %endif
 
 build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_libraries[@]}
 
-%if %{with system_cares}
-find third_party/electron_node/deps/cares -name *.[ch] -delete
-%endif
+
 
 %if %{with system_nghttp2}
-find third_party/electron_node/deps/nghttp2 -name *.[ch] -delete
+find third_party/electron_node/deps/nghttp2 -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 %endif
 
 %if %{with system_llhttp}
-find third_party/electron_node/deps/llhttp -name *.[ch] -delete
+find third_party/electron_node/deps/llhttp -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 %endif
 
 %if %{with system_histogram}
-find third_party/electron_node/deps/histogram -name *.[ch] -delete
+find third_party/electron_node/deps/histogram -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 %endif
 
 %if %{with system_llvm}
@@ -873,13 +944,31 @@ myconf_gn+=" is_component_ffmpeg=true"
 myconf_gn+=" use_cups=true"
 myconf_gn+=" use_aura=true"
 
+# This requires the non-free closure_compiler.jar. If we ever need to build chrome with JS typecheck,
+# we would need to package it separately and compile it from sources, since the chrome git repo
+# provides only a compiled binary.
+myconf_gn+=" enable_js_type_check=false"
 
-# These options have been disabled, see chromium-102-compiler.patch
+# The option below get overriden by whatever is in CFLAGS/CXXFLAGS, so they affect only C++ code.
 # symbol_level=2 is full debug
 # symbol_level=1 is enough info for stacktraces
 # symbol_level=0 disable debug
-#myconf_gn+=" symbol_level=2"
-#myconf_gn+=" blink_symbol_level=1"
+# blink (HTML engine) and v8 (js engine) are template-heavy, trying to compile them with full debug leads to linker errors
+%ifnarch %ix86 %arm aarch64
+myconf_gn+=" symbol_level=2"
+myconf_gn+=" blink_symbol_level=1"
+myconf_gn+=" v8_symbol_level=1"
+%endif
+%ifarch %ix86 %arm 
+myconf_gn+=" symbol_level=0" #Sorry, no debug on 32bit for now.
+myconf_gn+=" blink_symbol_level=0" #Sorry, no debug on 32bit for now.
+myconf_gn+=" v8_symbol_level=0" #Sorry, no debug on 32bit for now.
+%endif
+%ifarch aarch64 #“No space left on device” with symbol level 2
+myconf_gn+=" symbol_level=1"
+myconf_gn+=" blink_symbol_level=1"
+myconf_gn+=" v8_symbol_level=1"
+%endif
 
 myconf_gn+=" use_kerberos=true"
 myconf_gn+=" enable_vr=false"
@@ -922,15 +1011,14 @@ myconf_gn+=" use_system_libjpeg=true"
 myconf_gn+=" use_system_libpng=true"
 myconf_gn+=" use_system_lcms2=true"
 myconf_gn+=" use_system_libopenjpeg2=true"
+myconf_gn+=" use_system_wayland_scanner=true"
 %if %{with system_harfbuzz}
 myconf_gn+=" use_system_harfbuzz=true"
 %endif
 %if %{with system_freetype}
 myconf_gn+=" use_system_freetype=true"
 %endif
-%if %{with system_cares}
 myconf_gn+=" use_system_cares=true"
-%endif
 %if %{with system_nghttp2}
 myconf_gn+=" use_system_nghttp2=true"
 %endif
@@ -964,6 +1052,21 @@ myconf_gn+=" gcc_lto=true"
 # endif with lto
 %endif
 
+%ifarch %arm
+# Bundled libaom is broken on ARMv7
+%if %{without system_aom}
+# [74796s] FAILED: v8_context_snapshot_generator 
+# [74796s] python3 "../../build/toolchain/gcc_link_wrapper.py" --output="./v8_context_snapshot_generator" -- g++ -Wl,--build-id=sha1 -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -rdynamic -Wl,-z,defs -Wl,--as-needed -pie -Wl,--disable-new-dtags -Wl,-rpath=\$ORIGIN  -Wl,--as-needed -fuse-ld=lld -o "./v8_context_snapshot_generator" -Wl,--start-group @"./v8_context_snapshot_generator.rsp"  -Wl,--end-group  -latomic -ldl -lpthread -lrt -lgmodule-2.0 -lglib-2.0 -lgobject-2.0 -lgthread-2.0 -ljsoncpp -labsl_base -labsl_raw_logging_internal -labsl_log_severity -labsl_spinlock_wait -labsl_cord -labsl_cordz_info -labsl_cord_internal -labsl_cordz_functions -labsl_exponential_biased -labsl_cordz_handle -labsl_synchronization -labsl_graphcycles_internal -labsl_stacktrace -labsl_symbolize -labsl_debugging_internal -labsl_demangle_internal -labsl_malloc_internal -labsl_time -labsl_civil_time -labsl_time_zone -labsl_bad_optional_access -labsl_strings -labsl_strings_internal -labsl_int128 -labsl_throw_delegate -labsl_hash -labsl_city -labsl_bad_variant_access -labsl_low_level_hash -labsl_raw_hash_set -labsl_hashtablez_sampler -labsl_failure_signal_handler -labsl_examine_stack -labsl_random_distributions -labsl_random_seed_sequences -labsl_random_internal_pool_urbg -labsl_random_internal_randen -labsl_random_internal_randen_hwaes -labsl_random_internal_randen_hwaes_impl -labsl_random_internal_randen_slow -labsl_random_internal_platform -labsl_random_internal_seed_material -labsl_random_seed_gen_exception -labsl_status -labsl_str_format_internal -labsl_strerror -labsl_statusor -licui18n -licuuc -licudata -lsmime3 -lnss3 -lnssutil3 -lplds4 -lplc4 -lnspr4 -ldouble-conversion -levent -lz -ljpeg -lpng16 -lxml2 -lxslt -lresolv -lgio-2.0 -lbrotlidec -lwebpdemux -lwebpmux -lwebp -lfreetype -lexpat -lfontconfig -lharfbuzz-subset -lharfbuzz -lyuv -lopus -lvpx -lm -ldav1d -lX11 -lXcomposite -lXdamage -lXext -lXfixes -lXrender -lXrandr -lXtst -lpipewire-0.3 -lgbm -lEGL -ldrm -lcrc32c -lbsd -lxcb -lxkbcommon -lwayland-client -ldbus-1 -lre2 -lpangocairo-1.0 -lpango-1.0 -lcairo -latk-1.0 -latk-bridge-2.0 -lasound -lpulse -lavcodec -lavformat -lavutil -lXi -lpci -lxxhash -lXNVCtrl -lsnappy -lavif -ljxl -lwoff2dec -latspi
+# [74796s] ld.lld: error: undefined symbol: aom_arm_cpu_caps
+# [74796s] >>> referenced by av1_rtcd.h:1079 (../../third_party/libaom/source/config/linux/arm/config/av1_rtcd.h:1079)
+# [74796s] >>>               libaom/av1_rtcd.o:(setup_rtcd_internal) in archive obj/third_party/libaom/libaom.a
+# [74796s] >>> referenced by aom_dsp_rtcd.h:3560 (../../third_party/libaom/source/config/linux/arm/config/aom_dsp_rtcd.h:3560)
+# [74796s] >>>               libaom/aom_dsp_rtcd.o:(setup_rtcd_internal) in archive obj/third_party/libaom/libaom.a
+# [74796s] >>> referenced by aom_scale_rtcd.h:162 (../../third_party/libaom/source/config/linux/arm/config/aom_scale_rtcd.h:162)
+# [74796s] >>>               libaom/aom_scale_rtcd.o:(setup_rtcd_internal) in archive obj/third_party/libaom/libaom.a
+myconf_gn+=" enable_libaom=false"
+%endif
+%endif
 
 %if %{with pipewire}
 myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"

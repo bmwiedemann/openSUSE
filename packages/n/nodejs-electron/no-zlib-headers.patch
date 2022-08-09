@@ -1,0 +1,11 @@
+Do not ship bundled zlib headers. Electron uses the system zlib, and anyone compiling against it should also.
+--- a/third_party/electron_node/BUILD.gn
++++ b/third_party/electron_node/BUILD.gn
+@@ -417,7 +417,6 @@
+ 
+ group("copy_headers") {
+   public_deps = header_groups + [
+-                  ":zlib_headers",
+                   ":node_gypi_headers",
+                   ":node_version_header",
+                 ]

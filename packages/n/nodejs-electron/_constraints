@@ -5,12 +5,9 @@
       <size unit="G">24</size>
     </disk>
     <memory>
-      <size unit="G">16</size>
+      <size unit="G">8</size>
     </memory>
-    <physicalmemory>
-      <size unit="G">12</size>
-    </physicalmemory>
-    <processors>8</processors>
+    <jobs>6</jobs>
   </hardware>
   <overwrite>
     <conditions>
@@ -19,9 +16,9 @@
     </conditions>
     <hardware>
       <memory>
-        <size unit="G">32</size>
+        <size unit="G">27</size>
       </memory>
-      <processors>16</processors>
+      <jobs>12</jobs>
     </hardware>
   </overwrite>
   <overwrite>

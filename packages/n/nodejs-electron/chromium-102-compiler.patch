@@ -216,7 +216,7 @@ index d40843b..b92f03b 100644
  
  # Full symbols.
 -config("symbols") {
-+config("symbols") { }
++config("symbols") { cflags = ["-g2"] }
 +config("xsymbols") {
    if (is_win) {
      if (is_clang) {
@@ -226,7 +226,7 @@ index d40843b..b92f03b 100644
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
 -config("minimal_symbols") {
-+config("minimal_symbols") { }
++config("minimal_symbols") { cflags = ["-g1"] }
 +config("xminimal_symbols") {
    if (is_win) {
      # Functions, files, and line tables only.
@@ -236,7 +236,7 @@ index d40843b..b92f03b 100644
  # told to not generate debug information and the linker then just puts function
  # names in the final debug information.
 -config("no_symbols") {
-+config("no_symbols") { }
++config("no_symbols") { cflags = ["-g0"]}
 +config("xno_symbols") {
    if (is_win) {
      ldflags = [ "/DEBUG" ]
