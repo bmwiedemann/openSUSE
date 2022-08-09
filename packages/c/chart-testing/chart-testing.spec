@@ -43,7 +43,7 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags="-X github.com/helm/chart-testing/v3/ct/cmd.Version=%{version} \
-   -X github.com/helm/chart-testing/v3/ct/cmd.BuildDate=$(date --iso-8601)" \
+   -X github.com/helm/chart-testing/v3/ct/cmd.BuildDate=$(date --iso-8601 -d @${SOURCE_DATE_EPOCH:-$(date +%%s)})" \
    -o bin/ct ct/main.go
 
 %install
