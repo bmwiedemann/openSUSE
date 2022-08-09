@@ -49,6 +49,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module colorama >= 0.3.3}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module pep517}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -56,9 +57,15 @@ BuildRequires:  %{python_module sh >= 1.10}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  clang
+BuildRequires:  ccache
 BuildRequires:  cmake
 BuildRequires:  dos2unix
+BuildRequires:  gcc-c++
+BuildRequires:  lld
+BuildRequires:  libtool
 BuildRequires:  unzip
 # /SECTION
 %python_subpackages
@@ -109,6 +116,8 @@ chmod a+x %{buildroot}%{$python_sitelib}/pythonforandroid/toolchain.py
 export PYTHONPATH=${PWD}:${PWD}/tests/
 # Five failures due to venv attempting download of pip, wheel, setuptools
 skip_tests="test_get_dep_names_of_package or test_get_package_dependencies or test_venv or test_get_package_as_folder or test_extract_metainfo_files_from_package"
+# Unable to download NDK
+skip_tests="$skip_tests or (TestToolchainCL and test_create)"
 
 %pytest -rs tests -k "not ($skip_tests)"
 
@@ -123,6 +132,7 @@ skip_tests="test_get_dep_names_of_package or test_get_package_dependencies or te
 %license LICENSE
 %python_alternative %{_bindir}/python-for-android
 %python_alternative %{_bindir}/p4a
-%{python_sitelib}/*
+%{python_sitelib}/*pythonforandroid*/
+%{python_sitelib}/*python_for_android*/
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  9 00:15:47 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add test dependencies and mark one test skipped
+
+-------------------------------------------------------------------
 Fri Jun 17 13:29:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Properly fix shebangs to inject path to python interpreter.
