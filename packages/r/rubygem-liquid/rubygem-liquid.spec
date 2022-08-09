@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-liquid
-Version:        5.3.0
+Version:        5.4.0
 Release:        0
 %define mod_name liquid
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.5.0}
+BuildRequires:  %{ruby >= 2.7.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            http://www.liquidmarkup.org
