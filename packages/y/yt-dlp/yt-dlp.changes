@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  9 07:51:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.08.08
+  * Remove Python 3.6 support
+  * Merge youtube-dl upto commit adb5294
+  * Reject entire playlists faster with `--match-filter`
+  * youtube: Fixes for third party client detection
+
+-------------------------------------------------------------------
 Mon Jul 18 05:43:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2022.07.18
