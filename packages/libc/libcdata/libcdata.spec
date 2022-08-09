@@ -65,9 +65,17 @@ applications that want to make use of libcdata.
 
 %build
 autoreconf -fi
-# performance killer, benefit of implicit locking unclear
-# https://github.com/libyal/libcdata/issues/6
-%configure --disable-static --disable-multi-threading-support
+# Enabling MTS in libcdata means data structures are protected by
+# libcdata itself, with an implicit rwlock. Every downstream use
+# (e.g. by libpff) suffers, even if libpff already made sure that any
+# one libcdata object is not used concurrently. Therefore, we disable
+# MTS. - https://github.com/libyal/libcdata/issues/6
+#
+# Enforce symver. The SO library version means nothing during
+# exp/alpha/beta, symbols can and do change.
+#
+echo "V_%version { global: *; };" >v.sym
+%configure --disable-static --disable-multi-threading-support LDFLAGS="-Wl,--version-script=$PWD/v.sym"
 %make_build
 
 %install
