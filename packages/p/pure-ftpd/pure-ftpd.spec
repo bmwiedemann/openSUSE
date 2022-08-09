@@ -17,7 +17,7 @@
 
 
 Name:           pure-ftpd
-Version:        1.0.50
+Version:        1.0.51
 Release:        0
 Summary:        A Lightweight, Fast, and Secure FTP Server
 License:        BSD-3-Clause
