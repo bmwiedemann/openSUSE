@@ -1,7 +1,7 @@
 #
 # spec file for package inn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,7 @@ Requires:       perl(GD)
 Requires:       perl(MIME::Parser)
 %{?systemd_requires}
 %{?libperl_requires}
-Version:        2.6.4
+Version:        2.6.5
 Release:        0
 %define PatchVersion -%{version}
 Source:         https://downloads.isc.org/isc/inn/inn%{PatchVersion}.tar.gz
@@ -149,7 +149,6 @@ mkdir -p %{buildroot}%{_mandir}
 #
 make DESTDIR=%{buildroot} OWNER= ROWNER= install
 # rename list manpage as it conflicts with the man-pages package
-mv %{buildroot}%{_mandir}/man3/list.3 %{buildroot}%{_mandir}/man3/list-inn.3
 for i in %{buildroot}%{_mandir}/*/* ; do
   if test -L "$i" ; then
     il=$(readlink "$i")
@@ -173,7 +172,7 @@ ln %{buildroot}%{_libexecdir}/news/bin/ovdb_init %{buildroot}%{_libexecdir}/news
 %define installroot install -o root -g root -m
 %define installroot install -m
 %{installnews} 0755 	-d		%{buildroot}/var/log/news/http
-%{installnews} 0644	subscriptions	%{buildroot}/etc/news
+%{installnews} 0644	samples/subscriptions	%{buildroot}/etc/news
 %{installnews} 0644	distributions	%{buildroot}/etc/news
 %{installnews} 0644	crontab.sample	%{buildroot}/etc/news
 %{installnews} 0644	profile		%{buildroot}/etc/news/.profile
@@ -317,7 +316,7 @@ fi
 %defattr(-,root,root)
 %dir			/etc/slp.reg.d
 %config(noreplace)	/etc/slp.reg.d/inn.reg
-%doc ChangeLog NEWS INSTALL README*
+%doc NEWS INSTALL README*
 %doc doc-inn/*
 
 %files devel

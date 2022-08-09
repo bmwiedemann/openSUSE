@@ -352,4 +352,41 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment></comment>
     <requestid>954075</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>ac5e87553cec52f4f78d641f99e1f7ad</srcmd5>
+    <version>2.6.5</version>
+    <time>1660051687</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.5:
+    * A new step in INN development has been achieved with the migration of
+      the INN project to GitHub.
+    * An up-to-date nocem.ctl file is provided with this release.  You
+      should manually update your nocem.ctl file with the new information
+      recorded about NoCeM issuers, and make sure the right PGP keys are
+      present on your system.
+    * Up-to-date control.ctl and moderators files are provided with this
+      release.  You should manually update them (notably for the fido7.*
+      hierarchy).
+    * Added a stricter validation of article numbers given in NNTP commands
+      so that numbers superior to 2^31 are correctly considered invalid. 
+      Thanks to Richard Kettlewell for the patch.
+    * Added a check in rc.news for the existence of the *pathrun* directory.
+      INN won't start until this directory is writable.  Previously, it
+      bailed out quickly after starting, without clear logs about why it
+      failed.
+    * Fixed parallel builds using &quot;make -j&quot;.  Thanks to Richard Kettlewell
+      for the path.
+    * nnrpd now properly gathers timer statistics when a compression layer
+      is active.
+    * nnrpd now properly discards data received from a news client after a
+      timeout when a TLS layer is active.  It previously tried to read
+      incoming data before closing the socket, leading to decoding errors
+      from an underlying compression or SASL layer.
+    * innfeed and ovdb_stat now generate status reports in valid HTML
+      syntax.
+    * Fixed a bug in the buffindexed overview that prevented it from working
+      on several systems, amongst them FreeBSD.  Unsupported, and useless,
+      permission bits were given to semaphores.</comment>
+    <requestid>993958</requestid>
+  </revision>
 </revisionlist>

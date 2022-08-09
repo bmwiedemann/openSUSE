@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Jul 14 09:41:05 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 2.6.5:
+    * A new step in INN development has been achieved with the migration of
+      the INN project to GitHub.
+    * An up-to-date nocem.ctl file is provided with this release.  You
+      should manually update your nocem.ctl file with the new information
+      recorded about NoCeM issuers, and make sure the right PGP keys are
+      present on your system.
+    * Up-to-date control.ctl and moderators files are provided with this
+      release.  You should manually update them (notably for the fido7.*
+      hierarchy).
+    * Added a stricter validation of article numbers given in NNTP commands
+      so that numbers superior to 2^31 are correctly considered invalid. 
+      Thanks to Richard Kettlewell for the patch.
+    * Added a check in rc.news for the existence of the *pathrun* directory.
+      INN won't start until this directory is writable.  Previously, it
+      bailed out quickly after starting, without clear logs about why it
+      failed.
+    * Fixed parallel builds using "make -j".  Thanks to Richard Kettlewell
+      for the path.
+    * nnrpd now properly gathers timer statistics when a compression layer
+      is active.
+    * nnrpd now properly discards data received from a news client after a
+      timeout when a TLS layer is active.  It previously tried to read
+      incoming data before closing the socket, leading to decoding errors
+      from an underlying compression or SASL layer.
+    * innfeed and ovdb_stat now generate status reports in valid HTML
+      syntax.
+    * Fixed a bug in the buffindexed overview that prevented it from working
+      on several systems, amongst them FreeBSD.  Unsupported, and useless,
+      permission bits were given to semaphores.
+    * Fixed the detection of library paths at configure time: multilib
+      directories (lib32 or lib64) are now also used if they exist, even it
+      the system does not use multilib.  It will notably fix the detection
+      of the OpenSSL 3.0.0 library.
+    * The *tlscertfile* parameter in inn.conf now permits the use of a
+      complete certificate chain, instead of necessarily having to use
+      *tlscafile* for additional certificates.
+    * Added support for the new OpenSSL 3.0.0 API, which deprecated a few
+      functions.
+    * The inn.conf default value for *tlsprotocols* no longer contains TLS
+      versions 1.0 and 1.1, which have been deprecated by RFC 8996.
+    * A new inn.conf parameter has been added to tune the length of the
+      queue of pending connections to innd, nnrpd and the "ovdb" overview
+      storage method: the *maxlisten* parameter now permits configuring
+      their listen backlog, whose previously hard-coded values were 128 for
+      nnrpd and 25 for the others, which was not high enough for some uses. 
+      The default value is now 128 for all of them, and configurable in
+      inn.conf.  Thanks to Kevin Bowling for the patch.
+    * The name of seven man pages for routines built in libinn(3) are now
+      prefixed with libinn_ so as not to consume namespace and conflict with
+      other packages (notably, the list(3) and uwildmat(3) man pages are now
+      named libinn_list(3) and libinn_uwildmat(3)).
+    * Other minor bug fixes and documentation improvements, notably a
+      revised installation checklist and a section summarizing the most used
+      configuration at the beginning of a few complex man pages.
+- delete inn-2.6.4.diff patch
+- add inn-2.6.5.diff patch instead
+
+-------------------------------------------------------------------
 Wed Dec  1 07:44:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.6.4:
