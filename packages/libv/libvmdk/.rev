@@ -95,4 +95,12 @@
     <comment>- Enable multipython builds. (This reenables Python2 on Leap 15.)</comment>
     <requestid>948441</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>a2f579835356adcae3c53a5eb9c77746</srcmd5>
+    <version>20210807</version>
+    <time>1660051744</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>994029</requestid>
+  </revision>
 </revisionlist>
