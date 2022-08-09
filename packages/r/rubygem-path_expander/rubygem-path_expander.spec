@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-path_expander
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-path_expander
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 %define mod_name path_expander
 %define mod_full_name %{mod_name}-%{version}
