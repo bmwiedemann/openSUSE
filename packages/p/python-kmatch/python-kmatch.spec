@@ -22,7 +22,6 @@ Version:        0.4.0
 Release:        0
 Summary:        A language for matching/validating/filtering Python dictionaries
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ambitioninc/kmatch
 Source:         https://files.pythonhosted.org/packages/source/k/kmatch/kmatch-%{version}.tar.gz
 # https://github.com/ambitioninc/kmatch/issues/42
@@ -33,7 +32,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mock >= 1.0.1}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
