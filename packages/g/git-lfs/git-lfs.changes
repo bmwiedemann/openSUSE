@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 30 09:16:11 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Cherry pick the switch to asciidoctor so we can have man pages
+  again (5054.patch)
+
+-------------------------------------------------------------------
 Wed May 25 22:07:04 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - bump golang to 1.18 or newer as we need support for

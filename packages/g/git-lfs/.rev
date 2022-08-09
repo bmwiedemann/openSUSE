@@ -87,4 +87,13 @@
     <comment></comment>
     <requestid>979850</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>18efc91c28176d5063fa85b6b4d89645</srcmd5>
+    <version>3.2.0</version>
+    <time>1660051675</time>
+    <user>dimstar_suse</user>
+    <comment>- Cherry pick the switch to asciidoctor so we can have man pages
+  again (5054.patch)</comment>
+    <requestid>993917</requestid>
+  </revision>
 </revisionlist>

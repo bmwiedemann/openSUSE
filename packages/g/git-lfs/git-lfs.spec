@@ -19,11 +19,7 @@
 %define rb_build_ruby_abis     %{rb_default_ruby_abi}
 %define rb_build_versions      %{rb_default_ruby}
 
-%if 0%{?suse_version} >= 1550 || (0%{?suse_version} >= 1500 && 0%{?is_opensuse})
-%bcond_with    build_docs
-%else
-%bcond_with    build_docs
-%endif
+%bcond_without    build_docs
 
 Name:           git-lfs
 Version:        3.2.0
@@ -33,6 +29,7 @@ License:        MIT
 Group:          Development/Tools/Version Control
 URL:            https://github.com/git-lfs/git-lfs
 Source0:        https://github.com/git-lfs/git-lfs/releases/download/v%{version}/git-lfs-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         https://patch-diff.githubusercontent.com/raw/git-lfs/git-lfs/pull/5054.patch
 BuildRequires:  curl
 BuildRequires:  fdupes
 BuildRequires:  git-core >= 1.8.2
@@ -44,7 +41,7 @@ Requires(post): git-core >= 1.8.2
 Requires(preun):git-core >= 1.8.2
 %{go_nostrip}
 %if %{with build_docs}
-BuildRequires:  %{rubygem ronn}
+BuildRequires:  %{rubygem asciidoctor}
 %endif
 
 %description
@@ -66,8 +63,8 @@ install -D -m 755 git-lfs %{buildroot}%{_bindir}/git-lfs
 %if %{with build_docs}
 mkdir -p -m 755 %{buildroot}%{_mandir}/man1
 mkdir -p -m 755 %{buildroot}%{_mandir}/man5
-install  -m 644 man/*.1 %{buildroot}%{_mandir}/man1
-install  -m 644 man/*.5 %{buildroot}%{_mandir}/man5
+install  -m 644 man/man1/*.1 %{buildroot}%{_mandir}/man1
+install  -m 644 man/man5/*.5 %{buildroot}%{_mandir}/man5
 %endif
 
 %fdupes -s %{buildroot}
