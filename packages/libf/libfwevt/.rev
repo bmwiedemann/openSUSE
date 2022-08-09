@@ -71,4 +71,12 @@
     <comment>- Update to release 20220723</comment>
     <requestid>990862</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9eadb86a9214873e90b86c6e77a1cf05</srcmd5>
+    <version>20220723</version>
+    <time>1660051725</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>994004</requestid>
+  </revision>
 </revisionlist>
