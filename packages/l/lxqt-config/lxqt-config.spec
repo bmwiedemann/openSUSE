@@ -83,6 +83,15 @@ install -Dm 0644 %{name}-appearance/man/%{name}-appearance.1 %{buildroot}%{_mand
 
 %find_lang %{name} --with-qt
 
+mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d/
+cat <<EOF >%{buildroot}%{_sysconfdir}/ld.so.conf.d/lxqt-config.conf
+%{_libdir}/%{name}
+EOF
+
+%post -p /sbin/ldconfig
+
+%postun -p /sbin/ldconfig
+
 %files
 %license LICENSE
 %doc AUTHORS
@@ -91,6 +100,7 @@ install -Dm 0644 %{name}-appearance/man/%{name}-appearance.1 %{buildroot}%{_mand
 %dir %{_datadir}/lxqt/icons
 %dir %{_sysconfdir}/xdg/menus
 %config %{_sysconfdir}/xdg/menus/*.menu
+%config %{_sysconfdir}/ld.so.conf.d/lxqt-config.conf
 %{_bindir}/%{name}
 %{_bindir}/%{name}-appearance
 %{_bindir}/%{name}-file-associations

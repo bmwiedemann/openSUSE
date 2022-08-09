@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  8 04:06:58 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- create /etc/ld.so.conf.d/lxqt-config.conf to fix private library issue [boo#1201772,boo#1196707] 
+
+-------------------------------------------------------------------
 Fri Apr 29 05:48:46 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.1.0:
