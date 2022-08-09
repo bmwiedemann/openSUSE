@@ -52,4 +52,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>980463</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>1a0bd526f5aec6feafa64dac79bdb6d4</srcmd5>
+    <version>20210424</version>
+    <time>1660051707</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993983</requestid>
+  </revision>
 </revisionlist>
