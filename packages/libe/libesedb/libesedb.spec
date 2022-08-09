@@ -18,13 +18,13 @@
 
 %define lname	libesedb1
 Name:           libesedb
-Version:        20210513
+Version:        20220806
 Release:        0
 Summary:        Library and tools to access the ESE Database File (EDB) format
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libesedb
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/libyal/libesedb/releases/download/%version/libesedb-experimental-%version.tar.gz
 Source2:        Exchange.pdf
 Source3:        Extensible_Storage_Engine_ESE_Database_File_EDB_format.pdf
 Source4:        Forensic_analysis_of_the_Windows_Search_database.pdf
@@ -33,27 +33,27 @@ Source6:        libesedb-libfdata.pdf
 Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  gettext-tools >= 0.21
 BuildRequires:  libtool
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcpath) >= 20200623
-BuildRequires:  pkgconfig(libcsplit) >= 20200703
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfcache) >= 20200708
-BuildRequires:  pkgconfig(libfdata) >= 20201129
-BuildRequires:  pkgconfig(libfdatetime) >= 20180910
-BuildRequires:  pkgconfig(libfguid) >= 20180724
-BuildRequires:  pkgconfig(libfmapi) >= 20180714
-BuildRequires:  pkgconfig(libfvalue) >= 20210510
-BuildRequires:  pkgconfig(libfwnt) >= 20210421
-BuildRequires:  pkgconfig(libmapidb) >= 20170304
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libbfio) >= 20220120
+BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libcfile) >= 20210409
+BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libcnotify) >= 20220108
+BuildRequires:  pkgconfig(libcpath) >= 20220108
+BuildRequires:  pkgconfig(libcsplit) >= 20220109
+BuildRequires:  pkgconfig(libcthreads) >= 20220102
+BuildRequires:  pkgconfig(libfcache) >= 20220110
+BuildRequires:  pkgconfig(libfdata) >= 20211023
+BuildRequires:  pkgconfig(libfdatetime) >= 20220112
+BuildRequires:  pkgconfig(libfguid) >= 20220113
+BuildRequires:  pkgconfig(libfmapi) >= 20220114
+BuildRequires:  pkgconfig(libfvalue) >= 20220120
+BuildRequires:  pkgconfig(libfwnt) >= 20210906
+BuildRequires:  pkgconfig(libmapidb) >= 20210421
+BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
 
 %description
@@ -101,8 +101,11 @@ autoreconf -fi
 # OOT builds are presently broken, so we have to install
 # within each python iteration now, not in %%install.
 %{python_expand #
+# see libcdata for version-sc
+echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type \
-	--enable-python PYTHON_VERSION="%{$python_bin_suffix}"
+	--enable-python PYTHON_VERSION="%{$python_bin_suffix}" \
+	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
 %make_build
 %make_install DESTDIR="%_builddir/rt"
 %make_build clean

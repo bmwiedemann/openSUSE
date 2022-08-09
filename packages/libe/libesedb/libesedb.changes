@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  6 14:51:17 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to relase 20220806
+  * Unspecified changes for error tollerance
+
+-------------------------------------------------------------------
 Fri Jan 21 18:25:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Edit specfile to do multipython builds.
