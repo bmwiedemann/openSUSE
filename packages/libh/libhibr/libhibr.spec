@@ -1,7 +1,7 @@
 #
 # spec file for package libhibr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           libhibr
 %define lname	libhibr1
 Version:        20210421
 Release:        0
-Summary:        Library and tools to access the Windows Hibernation File format 
+Summary:        Library and tools to access the Windows Hibernation File format
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libhibr
@@ -87,7 +87,10 @@ inspecting Windows Hibernation Files (hiberfil.sys).
 
 %build
 if [ ! -e configure ]; then ./autogen.sh; fi
-%configure --disable-static --enable-wide-character-type
+# see libcdata for version-sc
+echo "V_%version { global: *; };" >v.sym
+%configure --disable-static --enable-wide-character-type \
+	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
 %make_build
 
 %install
