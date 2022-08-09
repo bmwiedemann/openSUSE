@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>899366</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>eb3475c3a3c24746ce5a6245abcbd690</srcmd5>
+    <version>20210417</version>
+    <time>1660051715</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993993</requestid>
+  </revision>
 </revisionlist>
