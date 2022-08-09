@@ -23,4 +23,12 @@
     <comment>- Provide proper tarball signature file.</comment>
     <requestid>947644</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>3bbb4161805d14352f1e5ebc939182c0</srcmd5>
+    <version>20220119</version>
+    <time>1660051723</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>994001</requestid>
+  </revision>
 </revisionlist>
