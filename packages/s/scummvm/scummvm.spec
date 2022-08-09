@@ -20,10 +20,10 @@
 %bcond_without libmpeg2
 %bcond_without mad
 Name:           scummvm
-Version:        2.5.1
+Version:        2.6.0
 Release:        0
 Summary:        Interpreter for several adventure games
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 Group:          Amusements/Games/Other
 URL:            https://www.scummvm.org/
 Source:         https://www.scummvm.org/frs/scummvm/%{version}/scummvm-%{version}.tar.xz
