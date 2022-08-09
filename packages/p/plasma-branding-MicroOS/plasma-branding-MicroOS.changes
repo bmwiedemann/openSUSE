@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Thu Aug  4 17:25:55 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Add Conflicts: gnome-branding-MicroOS 
+
+-------------------------------------------------------------------
+Mon Jul 11 22:09:22 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Removed kwrite from the flatpak installations.  Kate is already in the base image. 
