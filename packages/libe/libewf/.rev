@@ -167,4 +167,12 @@ Replace python 2 with python 3</comment>
     <comment>- Edit specfile to do multipython builds.</comment>
     <requestid>948041</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>0b46312a2d8cd18719ea162d0fda6f77</srcmd5>
+    <version>20140811</version>
+    <time>1660051706</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993982</requestid>
+  </revision>
 </revisionlist>
