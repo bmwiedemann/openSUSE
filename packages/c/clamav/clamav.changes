@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug  5 06:42:21 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.103.7
+  - Zip parser: tolerate 2-byte overlap in file entries
+  - Fix bug with logical signature Intermediates feature
+  - Update to UnRAR v6.1.7
+  - Patch UnRAR: allow skipping files in solid archives
+  - Patch UnRAR: limit dict winsize to 1GB
+
+-------------------------------------------------------------------
 Thu May  5 15:50:42 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 0.103.6
