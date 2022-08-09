@@ -161,8 +161,6 @@ BuildRequires:  %{rubygem ffi >= 1.9 }
 BuildRequires:  %{rubygem thor:0.19}
 # Prevent have choice for rubygem(ruby:2.5.0:addressable) >= 2.3.6
 BuildRequires:  %{rubygem addressable >= 2.7}
-# Prevent have choice for rubygem(ruby:2.5.0:public_suffix) >= 2.0.2
-BuildRequires:  %{rubygem public_suffix:4}
 
 # gem2rpm *must* be included as a direct dependency when building with a
 # non-default ruby version

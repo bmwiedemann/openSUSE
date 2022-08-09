@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  8 07:17:40 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Remove BuildRequires on public_suffix
+  This has been only added to prevent a "have choice for" error, which now
+  causes problems.
+
+-------------------------------------------------------------------
 Mon Feb 28 11:08:13 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Bump rspec version to ~> 3.11.0

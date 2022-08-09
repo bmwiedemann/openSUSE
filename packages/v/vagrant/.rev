@@ -327,4 +327,12 @@
     <comment></comment>
     <requestid>958039</requestid>
   </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>c2c9f5359751afc442a9eb17483c7fbd</srcmd5>
+    <version>2.2.19</version>
+    <time>1660051558</time>
+    <user>dimstar_suse</user>
+    <comment>Remove BuildRequires on public_suffix</comment>
+    <requestid>993687</requestid>
+  </revision>
 </revisionlist>
