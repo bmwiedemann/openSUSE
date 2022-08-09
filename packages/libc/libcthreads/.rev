@@ -82,4 +82,12 @@
     <comment>- Update to release 20220102</comment>
     <requestid>944878</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>001a433215d737a869528c0785bb7a5a</srcmd5>
+    <version>20220102</version>
+    <time>1660051703</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993978</requestid>
+  </revision>
 </revisionlist>
