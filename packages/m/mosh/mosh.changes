@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 04 05:39:16 UTC 2022 - pdostal@suse.com
+
+- Update to version 1.4.0.rc1:
+  * Bump release candidate to 1.4.0-rc1
+  * Actually evaluate the github actions contains() expression for prerelease
+  * Fetch forcibly while fetching tags
+  * Tag mosh 1.4.0 Release Candidate
+  * Audit and fix up format strings
+  * Switch macOS multi-arch to x86_64+arm64
+  * Add -Wno-unused-parameter
+  * Remove obsolete Travis CI configuration
+  * Add macOS release steps to Github Actions
+  * Add release action on Linux
+
+-------------------------------------------------------------------
 Wed Jan 12 12:49:34 UTC 2022 - pdostal@suse.com
 
 - Update to version -1.3.2+20211210:

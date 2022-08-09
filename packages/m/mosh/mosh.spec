@@ -18,13 +18,13 @@
 
 
 Name:           mosh
-Version:        1.3.2+20211210
+Version:        1.4.0.rc1
 Release:        0
 Summary:        The mobile shell
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/SSH
 URL:            https://mosh.org/
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
