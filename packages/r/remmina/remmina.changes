@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  8 15:29:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Set CMAKE_SKIP_RPATH to avoid writing bogus RUNPATH to
+  binaries and modules
+- Spec cleanup
+
+-------------------------------------------------------------------
 Tue Jun 21 13:31:34 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to remmina version 1.4.27

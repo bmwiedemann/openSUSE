@@ -19,7 +19,7 @@
 %if 0%{?is_opensuse}
 %bcond_without  remmina_kwallet
 %else
-%bcond_with	remmina_kwallet
+%bcond_with     remmina_kwallet
 %endif
 Name:           remmina
 Version:        1.4.27
@@ -194,6 +194,7 @@ export CFLAGS="$CFLAGS -fPIC"
 %endif
 
 %cmake \
+	-DCMAKE_SKIP_RPATH=ON \
 	-DWITH_NEWS=OFF \
 	-DWITH_KIOSK_SESSION=ON \
 	-DWITH_GVNC=ON \
@@ -216,61 +217,6 @@ export CFLAGS="$CFLAGS -fPIC"
 %fdupes %{buildroot}%{_datadir}/icons
 
 %find_lang %{name}
-
-# Begin: all icons/desktop updates only for suse < 1500
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-
-%post plugin-exec
-%icon_theme_cache_post
-
-%postun plugin-exec
-%icon_theme_cache_postun
-
-%post plugin-python-wrapper
-%icon_theme_cache_post
-
-%postun plugin-python-wrapper
-%icon_theme_cache_postun
-
-%post plugin-spice
-%icon_theme_cache_post
-
-%postun plugin-spice
-%icon_theme_cache_postun
-
-%post plugin-rdp
-%icon_theme_cache_post
-
-%postun plugin-rdp
-%icon_theme_cache_postun
-
-%post  plugin-vnc
-%icon_theme_cache_post
-
-%postun plugin-vnc
-%icon_theme_cache_postun
-
-%post  plugin-gvnc
-%icon_theme_cache_post
-
-%postun plugin-gvnc
-%icon_theme_cache_postun
-
-%post  plugin-www
-%icon_theme_cache_post
-
-%postun plugin-www
-%icon_theme_cache_postun
-
-# end: only for suse < 1500
-%endif
 
 %files
 %license LICENSE LICENSE.OpenSSL
