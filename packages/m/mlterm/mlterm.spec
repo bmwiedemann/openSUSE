@@ -26,7 +26,6 @@ URL:            http://mlterm.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/project/mlterm/01release/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source10:       %{name}.desktop
 Patch0:         etc.patch
-BuildRequires:  canna-devel
 BuildRequires:  coreutils
 BuildRequires:  fwnn-devel
 BuildRequires:  gcc-c++
@@ -81,14 +80,6 @@ Other features:
 * background image (requires Imlib)
 * multiple pty windows
 * scrollbar plug-in API (unstable)
-
-%package canna
-Summary:        Canna plugin for mlterm
-Group:          System/X11/Terminals
-Provides:       locale(scim:ja;ko;ar;he)
-
-%description canna
-A plugin to use the canna input methods directly from mlterm.
 
 %package ibus
 Summary:        Ibus plugin for mlterm
@@ -152,7 +143,6 @@ export INSTALL_OPT='-m 755'
   --enable-ibus \
   --disable-fcitx \
   --enable-wnn \
-  --enable-canna \
   --enable-scim \
   --enable-uim \
   --with-gtk=3.0 \
@@ -233,9 +223,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_datadir}/mlterm/scrollbars/
 %dir %{_datadir}/mlterm/scrollbars/sample3/
 %{_datadir}/mlterm/scrollbars/sample3/*
-
-%files canna
-%{_libdir}/mlterm/libim-canna.so
 
 %files ibus
 %{_libdir}/mlterm/libim-ibus.so
