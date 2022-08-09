@@ -12660,4 +12660,18 @@ Switch to repomd for 42.1, its susetags are bugged</comment>
     <user>staging-bot</user>
     <comment>Automatic update</comment>
   </revision>
+  <revision rev="2051" vrev="2051">
+    <srcmd5>90130114841687f4e9bad13f7a3b4002</srcmd5>
+    <version>unknown</version>
+    <time>1660046856</time>
+    <user>dimstar_suse</user>
+    <comment>Automated update</comment>
+  </revision>
+  <revision rev="2052" vrev="2052">
+    <srcmd5>d3f13c27ddce7e59c3eb049b6e2a3362</srcmd5>
+    <version>unknown</version>
+    <time>1660046967</time>
+    <user>dimstar_suse</user>
+    <comment>Add weakremovers for 15.4 -&gt; TW updates</comment>
+  </revision>
 </revisionlist>
