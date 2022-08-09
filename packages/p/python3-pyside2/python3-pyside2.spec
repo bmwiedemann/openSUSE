@@ -178,7 +178,11 @@ python3 setup.py dist_info
 for d in *.dist-info; do
   # the commands were copied verbatim, not wrapped by entry-points.
   rm -f $d/entry_points.txt
+%if %{pkg_vcmp python3-setuptools < 63}
   cp -r $d %{buildroot}%{python3_sitearch}/${d/.dist-info/-%{version}.dist-info}
+%else
+  cp -r $d %{buildroot}%{python3_sitearch}/${d}
+%endif
 done
 
 # Examples must be installed manually

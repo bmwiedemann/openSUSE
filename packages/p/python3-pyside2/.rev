@@ -199,4 +199,15 @@
     <comment></comment>
     <requestid>986190</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>62cbe3a1bc317a592268b10339d9a8f8</srcmd5>
+    <version>5.15.5</version>
+    <time>1660051753</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the dist-info folder name with python3-setuptools 63
+  The dist-info folder created with recent setuptools already
+  contains the version.
+</comment>
+    <requestid>994106</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  9 08:25:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the dist-info folder name with python3-setuptools 63
+  The dist-info folder created with recent setuptools already
+  contains the version.
+
+-------------------------------------------------------------------
 Fri Jul  1 08:06:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.15.5
