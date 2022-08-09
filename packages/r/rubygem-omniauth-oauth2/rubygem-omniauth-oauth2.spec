@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-omniauth-oauth2
-Version:        1.7.2
+Version:        1.8.0
 Release:        0
 %define mod_name omniauth-oauth2
 %define mod_full_name %{mod_name}-%{version}
@@ -48,7 +48,7 @@ An abstract OAuth2 strategy for OmniAuth.
 
 %install
 %gem_install \
-  --doc-files="LICENSE.md README.md" \
+  --doc-files="CHANGELOG.md LICENSE.md README.md" \
   -f
 
 %gem_packages
