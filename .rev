@@ -43,4 +43,43 @@
 </comment>
     <requestid>979499</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>569523b61bc63eca089b709ecb3eea6a</srcmd5>
+    <version>1.1.0+0</version>
+    <time>1660051639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0+0:
+  * Update GLib dependency to 2.70
+  * power: Remove support for power-profiles-daemon &lt; 0.9.0
+  * build: Add script to detect files in XDG_DATA_DIRS
+  * sharing: Turn off VNC gsettings key when turning off VNC (CVE-2022-1736, lp#1971415)
+  * sharing: Turn off RDP gsettings key when turning off RDP (lp#1971415)
+  * applications: Switch to g_spawn_check_wait_status()
+  * applications: Properly protect against NULL app_id
+  * wacom: Explicitly discard input from touchscreens
+  * wacom: Allow NULL monitors in calibration
+  * wwan: Make sure secrets are set when querying connection APN password
+  * display: Always show refresh rate
+  * network: Fix saving passwords for non-wifi connections
+  * build: Bump required gsettings-desktop-schemas version
+  * ua: Use the new high contrast key
+  * datetime: Remove tzname_daylight
+  * keyboard-shortcut-editor: fix leak of accel string
+  * keyboard-item: fix leak on unused CcKeyCombo
+  * keyboard-manager: fix leak of section list store
+  * common: Fix leak of GUdevDevice
+  * network: fix critical when opening VPN details page
+  * wacom: Add scenario tester
+  * wacom: Add a fake stylus when mocking a tablet
+  * wacom: Split off notebook switching for detected stylus
+  * wacom: Print errors for libwacom_new_from_*() calls
+  * info-overview: Allow changing &quot;Device Name&quot; by pressing &quot;Enter&quot;
+  * small typo
+  * Ensure buddies gresource includes sound test icons
+  * Remove Python from dependencies
+  * Fix typo in feature template
+  * Edit typo in bug_report template
+</comment>
+    <requestid>993797</requestid>
+  </revision>
 </revisionlist>
