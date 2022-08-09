@@ -17,7 +17,7 @@
 
 
 Name:           budgie-control-center
-Version:        1.0.2+0
+Version:        1.1.0+0
 Release:        0
 Summary:        Fork of GNOME Control Center for Budgie 10
 License:        GPL-2.0-or-later
@@ -64,14 +64,6 @@ BuildRequires:  pkgconfig(upower-glib)
 %description
 Fork of GNOME Control Center for Budgie 10
 
-%package devel
-Summary:        Header files for the Budgie Control Center
-Group:          Development/Libraries/GNOME
-Requires:       %{name} = %{version}
-
-%description devel
-This package contains the header files for Budgie Control Center
-
 %package bash-completion
 Summary:        Bash Completion for Budgie Control Center
 Group:          System/GUI/Other
@@ -117,9 +109,6 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/budgie-control-center.rules
 %{_libexecdir}/budgie-cc-remote-login-helper
 %{_libexecdir}/budgie-control-center-print-renderer
 %{_mandir}/man1/budgie-control-center.1%{?ext_man}
-
-%files devel
-%{_datadir}/pkgconfig/budgie-keybindings.pc
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/budgie-control-center
