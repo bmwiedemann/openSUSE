@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug  4 13:21:56 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.3.0
+ see installed CHANGELOG.md
+
+  ### 2.3.0
+  
+  #### Paint.%() now returns different escape sequences!
+  
+  * Fix #30: Color/effect nesting restores the parent level correctly. More
+             verbose ASCII escape sequences are generated to ensure this.
+  
+  #### Other Fixes
+  
+  * Fix #31: Make paint work with frozen strings enabled
+      * Also make paint library itself frozen
+  * Fix #29: Update dev dependencies
+  
+
+-------------------------------------------------------------------
 Wed Jan 20 13:04:11 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.2.1
