@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-json_pure
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 %define mod_name json_pure
 %define mod_full_name %{mod_name}-%{version}
