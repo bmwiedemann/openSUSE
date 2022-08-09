@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug  4 13:08:07 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.8.1
+ see installed CHANGELOG.md
+
+  ## 0.8.0
+  
+  ### Added
+  
+  - `Dry::Core::BasicObject` ported from hanami-utils (@jodosha)
+  
+  ### Changed
+  
+  - [BREAKING] [descendants tracker] switch to using `Class#subclasses` on Ruby 3.1+.
+  This changes the order of returned subclasses (immediate subclasses now go first) (@flash-gordon)
+  
+  
+  [Compare v0.7.1...v0.8.0](https://github.com/dry-rb/dry-core/compare/v0.7.1...master)
+  
+
+-------------------------------------------------------------------
 Mon Jul 26 05:53:37 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 0.7.1
