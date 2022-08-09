@@ -1,7 +1,7 @@
 #
 # spec file for package rlog
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,25 +13,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-
-Name:           rlog
-BuildRequires:  gcc-c++ libtool pkgconfig
-Summary:        C++ Logging Library
-Version:        1.4
-Release:        1
 %define soname 5
-License:        LGPL-2.1+
+Name:           rlog
+Version:        1.4
+Release:        0
+Summary:        C++ Logging Library
+License:        LGPL-2.1-or-later
 Group:          System/Libraries
-# http://rlog.googlecode.com/files/rlog-%{version}.tar.gz
+URL:            http://www.arg0.net/rlog
+# http://rlog.googlecode.com/files/rlog-%%{version}.tar.gz
 Source:         rlog-%{version}.tar.bz2
-Patch1:         include_fix.patch
 Source99:       rlog-rpmlintrc
-Url:            http://www.arg0.net/rlog
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch0:         include_fix.patch
+Patch1:         0002-Fix-FTBFS-with-autoconf-2.70.patch
+BuildRequires:  gcc-c++
+BuildRequires:  libtool
+BuildRequires:  pkgconfig
 
 %description
 RLOG is a C++ library to manage message logging.
@@ -67,50 +68,47 @@ to develop applications that require these.
 
 %prep
 %setup -q
-%patch1
+%patch0
+%patch1 -p1
 
 %build
 autoreconf -fiv
-export CXXFLAGS="%optflags -fvisibility-inlines-hidden"
+export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
 %configure --disable-static --with-pic
-make %{?_smp_mflags}
+%make_build
 
 %install
-%__make DESTDIR="$RPM_BUILD_ROOT" install
-%__rm -rf "$RPM_BUILD_ROOT%{_datadir}/doc"
-%__rm -f "%{buildroot}%{_libdir}"/*.la
+%make_install
+rm -rf "%{buildroot}%{_datadir}/doc"
+find %{buildroot} -type f -name "*.la" -delete -print
 
-%__install -d "%{buildroot}%{_docdir}/librlog%{soname}"
+install -d "%{buildroot}%{_docdir}/librlog%{soname}"
 
 FILES_MAIN="$PWD/files.main.lst"
 echo "%doc %dir %{_docdir}/librlog%{soname}" >"$FILES_MAIN"
 for f in AUTHORS COPYING* ChangeLog README*; do
     ff=$(basename "$f")
-    %__cp -a "$f" "%{buildroot}%{_docdir}/librlog%{soname}/"
+    cp -a "$f" "%{buildroot}%{_docdir}/librlog%{soname}/"
     echo "%doc %{_docdir}/librlog%{soname}/$ff" >>"$FILES_MAIN"
 done
 
 FILES_DOC="$PWD/files.doc.lst"
 for f in docs/html docs/latex/*.pdf; do
     ff=$(basename "$f")
-    %__cp -a "$f" "%{buildroot}%{_docdir}/librlog%{soname}/"
+    cp -a "$f" "%{buildroot}%{_docdir}/librlog%{soname}/"
     echo "%doc %{_docdir}/librlog%{soname}/$ff" >>"$FILES_DOC"
 done
 
 %post   -n librlog%{soname} -p /sbin/ldconfig
-
 %postun -n librlog%{soname} -p /sbin/ldconfig
 
 %files -n librlog%{soname} -f files.main.lst
-%defattr(-,root,root)
 %{_libdir}/librlog.so.%{soname}
 %{_libdir}/librlog.so.%{soname}.*
 
 %files -n librlog%{soname}-doc -f files.doc.lst
-%defattr(-,root,root)
 
 %files -n librlog-devel
-%defattr(-,root,root)
 %{_libdir}/librlog.so
 %{_includedir}/rlog
 %{_libdir}/pkgconfig/librlog.pc

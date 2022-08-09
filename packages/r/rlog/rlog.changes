@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  8 10:44:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch from Debian:
+  * 0002-Fix-FTBFS-with-autoconf-2.70.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Thu Jul 31 12:48:28 UTC 2014 - dimstar@opensuse.org
 
 - Rename rpmlintrc to %{name}-rpmlintrc.
