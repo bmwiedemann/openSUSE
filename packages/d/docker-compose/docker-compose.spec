@@ -28,6 +28,7 @@ Source:         compose-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang(API) = 1.18
 Requires:       docker
+Requires:       docker-compose-switch
 
 %description
 Docker Compose is a tool for running multi-container applications on Docker defined using the Compose file format. A Compose file is used to define how the one or more containers that make up your application are configured. Once you have a Compose file, you can create and start your application with a single command: docker compose up.

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  8 18:52:46 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Require docker-compose-switch to not break user expectations,
+  as otherwise 'zypper in docker-compose' will not provide a docker-compose binary
+  (docker-compose only provides a docker plugin, i.e. 'docker compose ...')
+
+-------------------------------------------------------------------
 Tue Aug 02 06:38:24 UTC 2022 - dmueller@suse.com
 
 - Update to version 2.9.0:
