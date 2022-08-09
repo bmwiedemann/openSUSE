@@ -61,7 +61,9 @@ applications that want to make use of libcfile.
 
 %build
 if [ ! -e configure ]; then ./autogen.sh; fi
-%configure --disable-static --enable-wide-character-type
+# see libcdata for version-sc
+echo "V_%version { global: *; };" >v.sym
+%configure --disable-static --enable-wide-character-type LDFLAGS="-Wl,--version-script=$PWD/v.sym"
 %make_build
 
 %install
