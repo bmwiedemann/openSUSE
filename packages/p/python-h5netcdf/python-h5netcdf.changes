@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  2 12:08:07 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.0.2:
+  - Adapt boolean indexing as h5py 3.7.0
+  - Fix several tests to work with new h5py 3.7.0
+
+-------------------------------------------------------------------
 Fri Jul 29 17:38:22 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.0.1:

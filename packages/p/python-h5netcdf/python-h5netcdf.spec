@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-h5netcdf
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        A Python library to use netCDF4 files via h5py
 License:        BSD-3-Clause
@@ -57,8 +57,7 @@ relying on the Unidata netCDF library.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# gh#h5netcdf/h5netcdf#179
-%pytest -rs -k 'not (test_more_than_7_attr_creation_track_order or test_bool_slicing_length_one_dim)'
+%pytest -rs
 
 %files %{python_files}
 %doc README.rst
