@@ -56,6 +56,11 @@ ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 #!BuildIgnore: rpmlint
 BuildRequires:  bison
 BuildRequires:  fdupes
+%if %{with system_ffmpeg}
+BuildRequires:  ffmpeg-4-libavcodec-devel
+BuildRequires:  ffmpeg-4-libavformat-devel
+BuildRequires:  ffmpeg-4-libavutil-devel
+%endif
 BuildRequires:  flac-devel
 BuildRequires:  flex
 BuildRequires:  gperf
@@ -122,11 +127,6 @@ BuildRequires:  pkgconfig(icu-uc) >= 65.0
 BuildRequires:  pkgconfig(icu-i18n) >= 65.0
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(lcms2)
-%if %{with system_ffmpeg}
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
-%endif
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libevent)
