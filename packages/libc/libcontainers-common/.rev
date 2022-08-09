@@ -406,4 +406,16 @@
     <comment></comment>
     <requestid>982766</requestid>
   </revision>
+  <revision rev="48" vrev="11">
+    <srcmd5>088d38cdd2c4c6f6c7e8128d664ab350</srcmd5>
+    <version>20210626</version>
+    <time>1660051554</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix obvious typo in containers.conf
+
+- Resync containers.conf / storage.conf with Fedora
+- Create /etc/containers/registries.conf.d and 
+  add 000-shortnames.conf to it.</comment>
+    <requestid>993956</requestid>
+  </revision>
 </revisionlist>

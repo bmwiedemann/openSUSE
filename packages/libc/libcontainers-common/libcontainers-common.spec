@@ -47,6 +47,7 @@ Source8:        default.yaml
 Source9:        common-%{commonver}.tar.xz
 Source10:       containers.conf
 Source11:       %{name}.rpmlintrc
+Source12:	shortnames.conf
 BuildRequires:  go-go-md2man
 Provides:       libcontainers-image = %{version}
 Provides:       libcontainers-storage = %{version}
@@ -111,12 +112,14 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/containers
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/containers/oci/hooks.d
 install -d -m 0755 %{buildroot}/%{_datadir}/containers/oci/hooks.d
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/containers/registries.d
+install -d -m 0755 %{buildroot}/%{_sysconfdir}/containers/registries.conf.d
 
 install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json
 install -D -m 0644 %{SOURCE4} %{buildroot}/%{_sysconfdir}/containers/storage.conf
 install -D -m 0644 %{SOURCE5} %{buildroot}/%{_datadir}/containers/mounts.conf
 install -D -m 0644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/containers/mounts.conf
 install -D -m 0644 %{SOURCE6} %{buildroot}/%{_sysconfdir}/containers/registries.conf
+install -D -m 0644 %{SOURCE12} %{buildroot}/%{_sysconfdir}/containers/registries.conf.d/000-shortnames.conf
 install -D -m 0644 %{SOURCE8} %{buildroot}/%{_sysconfdir}/containers/registries.d/default.yaml
 sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE10}
 install -D -m 0644 %{SOURCE10} %{buildroot}/%{_datadir}/containers/containers.conf
@@ -151,6 +154,7 @@ fi
 %dir %{_sysconfdir}/containers/oci
 %dir %{_sysconfdir}/containers/oci/hooks.d
 %dir %{_sysconfdir}/containers/registries.d
+%dir %{_sysconfdir}/containers/registries.conf.d
 %dir %{_datadir}/containers
 %dir %{_datadir}/containers/oci
 %dir %{_datadir}/containers/oci/hooks.d
@@ -162,6 +166,7 @@ fi
 %config(noreplace) %{_sysconfdir}/containers/registries.conf
 %config(noreplace) %{_sysconfdir}/containers/seccomp.json
 %config(noreplace) %{_sysconfdir}/containers/registries.d/default.yaml
+%config(noreplace) %{_sysconfdir}/containers/registries.conf.d/000-shortnames.conf
 %{_datadir}/containers/seccomp.json
 %{_datadir}/containers/containers.conf
 

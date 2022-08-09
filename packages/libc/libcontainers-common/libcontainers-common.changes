@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug  9 08:49:18 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Fix obvious typo in containers.conf
+
+-------------------------------------------------------------------
+Wed Aug  3 13:19:58 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Resync containers.conf / storage.conf with Fedora
+- Create /etc/containers/registries.conf.d and 
+  add 000-shortnames.conf to it.
+
+-------------------------------------------------------------------
 Wed Jun 15 10:20:16 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Use $() again in %post, but with a space for POSIX compliance
