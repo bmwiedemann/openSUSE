@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug  4 13:14:17 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.24.0
+ see installed History.rdoc
+
+  === 3.24.0 / 2022-06-20
+  
+  * 3 minor enhancements:
+  
+    * Add bindir and homepage accessor methods. (dsisnero)
+    * Don't auto-intuit values if they're already set. (dsisnero)
+    * Use bindir to determine executables. (dsisnero)
+  
+
+-------------------------------------------------------------------
 Tue Jan 25 07:02:54 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.23.1
