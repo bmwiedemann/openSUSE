@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug  4 13:29:16 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.3.0
+ see installed Changelog
+
+  2022-06-13 version 2.3.0
+  
+  * Add restart_worker_interval option to prevent workers restart immediately
+    after kill
+  * Reopen log file when rotation done by external tool is detected
+  * Fix unexpected behavior of start_worker_delay option
+  * Remove windows-pr dependency
+  * Fix a potential crash that command_sender_pipe of ProcessManager::Monitor
+    raises error on shutdown
+  * Allow to load serverengine/socket_manager without servernegine/utils
+  * Fix unstable tests
+  
+
+-------------------------------------------------------------------
 Tue Jan 25 07:35:37 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.2.5
