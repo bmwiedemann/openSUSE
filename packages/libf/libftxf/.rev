@@ -15,4 +15,12 @@
     <comment>- Update to release 20220116</comment>
     <requestid>946853</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8c6add52dd169d07d6aa2357829050da</srcmd5>
+    <version>20220116</version>
+    <time>1660051721</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993999</requestid>
+  </revision>
 </revisionlist>
