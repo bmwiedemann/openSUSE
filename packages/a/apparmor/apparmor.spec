@@ -83,6 +83,9 @@ Patch6:         apache-extra-profile-include-if-exists.diff
 #                               + merged upstream 2022-06-29 https://gitlab.com/apparmor/apparmor/-/merge_requests/892 - master only)
 Patch9:         zgrep-profile-mr870.diff
 
+# add missing r permissions for dnsmasc//libvirt-leaseshelper (submitted upstream 2022-08-08 https://gitlab.com/apparmor/apparmor/-/merge_requests/905)
+Patch10:        dnsmasq.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
@@ -349,6 +352,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch5
 %patch6
 %patch9 -p1
+%patch10 -p1
 
 %build
 export SUSE_ASNEEDED=0

@@ -2437,4 +2437,13 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
 - drop upstream patch dirtest-sort-mr900.diff (forwarded request 992099 from cboltz)</comment>
     <requestid>992100</requestid>
   </revision>
+  <revision rev="179" vrev="2">
+    <srcmd5>703486a4244de32ec1a465c0eaf0a7d4</srcmd5>
+    <version>3.0.6</version>
+    <time>1660051582</time>
+    <user>dimstar_suse</user>
+    <comment>- add dnsmasq.diff: missing r permissions for dnsmasq//libvirt-leaseshelper
+  (boo#1202161) (forwarded request 993843 from cboltz)</comment>
+    <requestid>993844</requestid>
+  </revision>
 </revisionlist>
