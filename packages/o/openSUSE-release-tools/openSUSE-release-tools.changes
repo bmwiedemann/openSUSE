@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 09 07:29:12 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220809.46872b13:
+  * Do not fail when there is no cloud image to be released to TEST
+
+-------------------------------------------------------------------
 Fri Aug 05 13:17:14 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220805.0414dd16:
