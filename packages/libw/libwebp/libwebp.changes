@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug  7 19:53:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.4:
+  This is a binary compatible release.
+  * restore CMake libwebpmux target name for compatibility with 1.2.2 (#575)
+  * fix lossless crunch mode encoding with WEBP_REDUCE_SIZE
+    (chromium: #1345547, #1345595, #1345772, #1345804)
+ 
+-------------------------------------------------------------------
 Fri Jul 22 21:56:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.3:

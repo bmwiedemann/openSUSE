@@ -17,7 +17,7 @@
 
 
 Name:           libwebp
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        Library and tools for the WebP graphics format
 License:        BSD-3-Clause
