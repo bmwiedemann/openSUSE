@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-jwt
-Version:        2.3.0
+Version:        2.4.1
 Release:        0
 %define mod_name jwt
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.1}
+BuildRequires:  %{ruby >= 2.5}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/jwt/ruby-jwt
