@@ -64,4 +64,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>980466</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>73d8c0531340ff88c1f64cb89dc86aa8</srcmd5>
+    <version>20220807</version>
+    <time>1660051724</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220807
+  * Format support</comment>
+    <requestid>994003</requestid>
+  </revision>
 </revisionlist>
