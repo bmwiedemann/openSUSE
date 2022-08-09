@@ -1,7 +1,7 @@
 #
 # spec file for package librubberband
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   2
 Name:           librubberband
-Version:        1.8.2
+Version:        3.0.0
 Release:        0
 Summary:        Audio time-stretching and pitch-shifting library
 License:        GPL-2.0-or-later
@@ -26,17 +26,19 @@ Group:          System/Libraries
 URL:            https://www.breakfastquay.com/rubberband/
 Source:         https://breakfastquay.com/files/releases/rubberband-%{version}.tar.bz2
 Source1:        baselibs.conf
-Patch1:         rubberband-mk.patch
-BuildRequires:  dos2unix
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  help2man
 BuildRequires:  ladspa-devel
+BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
+BuildRequires:  vamp-plugin-sdk-devel
 BuildRequires:  pkgconfig(fftw3)
+BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(vamp-sdk)
 Requires:       ladspa
+Requires:       lv2
 
 %description
 Rubber Band is a library and utility program that permits you to change the
@@ -67,6 +69,14 @@ Requires:       %{name}%{sover} = %{version}
 
 %description -n rubberband-ladspa
 Package rubberband-ladspa is LADSPA plugin that can change the pitch of a sound in real-time.
+
+%package -n     rubberband-lv2
+Summary:        LV2 plugins for %{name}
+Group:          Productivity/Multimedia/Sound/Utilities
+Requires:       %{name}%{sover} = %{version}
+
+%description -n rubberband-lv2
+Package rubberband-lv2 contains the rubberband LV2 plugin.
 
 %package -n     rubberband-vamp
 Summary:        Vamp plugins for %{name}
@@ -102,43 +112,33 @@ developing applications that use %{name}.
 
 %prep
 %setup -q -n rubberband-%{version}
-%patch1 -p1
-# Fix README EOL encoding
-dos2unix -o README.txt
-mv README.txt README
 
 %build
-%configure
-%make_build
+%meson -Dfft=fftw
+%meson_build
 
 %install
-%make_install
-
-mkdir -p %{buildroot}%{_mandir}/man1
-pushd %{buildroot}%{_mandir}/man1
-cp -v %{buildroot}%{_bindir}/rubberband ./
-help2man --no-discard-stderr \
-	-N -o rubberband.1 ./rubberband
-rm rubberband
-popd
+%meson_install
+find %{buildroot} -name '*.la' -exec rm -f {} ';'
+rm -rf %{buildroot}%{_libdir}/*.a
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %files -n %{name}%{sover}
 %license COPYING
-%doc README
+%doc README.md
 %{_libdir}/%{name}.so.%{sover}*
 
 %files devel
-%doc
-%{_includedir}/rubberband
-%{_libdir}/%{name}.so
+%dir %{_includedir}/rubberband
+%{_includedir}/rubberband/*.h
+%{_libdir}/librubberband.so
 %{_libdir}/pkgconfig/rubberband.pc
 
 %files -n rubberband-cli
 %{_bindir}/rubberband
-%{_mandir}/man1/rubberband.1%{?ext_man}
+%{_bindir}/rubberband-r3
 
 %files -n rubberband-ladspa
 %dir %{_libdir}/ladspa
@@ -147,6 +147,13 @@ popd
 %{_libdir}/ladspa/ladspa-rubberband.cat
 %{_libdir}/ladspa/ladspa-rubberband.so
 %{_datadir}/ladspa/rdf/ladspa-rubberband.rdf
+
+%files -n rubberband-lv2
+%dir %{_libdir}/lv2
+%dir %{_libdir}/lv2/rubberband.lv2
+%{_libdir}/lv2/rubberband.lv2/lv2-rubberband.so
+%{_libdir}/lv2/rubberband.lv2/lv2-rubberband.ttl
+%{_libdir}/lv2/rubberband.lv2/manifest.ttl
 
 %files -n rubberband-vamp
 %dir %{_libdir}/vamp
