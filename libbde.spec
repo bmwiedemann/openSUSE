@@ -18,7 +18,7 @@
 
 %define lname	libbde1
 Name:           libbde
-Version:        20220121
+Version:        20220807
 Release:        0
 Summary:        Library and tools to access Microsoft Bitlocker Disk Encrypted partitions
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
@@ -31,28 +31,27 @@ Source10:       BitLocker_Drive_Encryption_BDE_format.pdf
 Patch1:         system-libs.patch
 BuildRequires:  %python_module devel
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  gettext-tools >= 0.21
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse) >= 2.6
 BuildRequires:  pkgconfig(libbfio) >= 20220120
-BuildRequires:  pkgconfig(libcaes) >= 20210522
+BuildRequires:  pkgconfig(libcaes) >= 20220529
 BuildRequires:  pkgconfig(libcdata) >= 20220115
 BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libcfile) >= 20210409
 BuildRequires:  pkgconfig(libclocale) >= 20220107
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfcache) >= 20220110
-BuildRequires:  pkgconfig(libfdata) >= 20211023
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfvalue) >= 20220120
-BuildRequires:  pkgconfig(libhmac) >= 20200104
-BuildRequires:  pkgconfig(libuna) >= 20220102
+BuildRequires:  pkgconfig(libhmac) >= 20220425
+BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
 
 %description
@@ -117,7 +116,11 @@ autoreconf -fi
 # OOT builds are presently broken, so we have to install
 # within each python iteration now, not in %%install.
 %{python_expand #
-%configure --disable-static --enable-wide-character-type --enable-python PYTHON_VERSION="%{$python_bin_suffix}"
+# see libcdata for version-sc
+echo "V_%version { global: *; };" >v.sym
+%configure --disable-static --enable-wide-character-type --enable-python \
+	PYTHON_VERSION="%{$python_bin_suffix}" \
+	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
 %make_build
 %make_install DESTDIR="%_builddir/rt"
 %make_build clean
