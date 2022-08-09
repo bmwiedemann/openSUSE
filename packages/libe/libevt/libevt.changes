@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  9 07:37:49 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 20220808
+  * Build with newer libwrc
+
+-------------------------------------------------------------------
 Fri Jan 21 18:25:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Edit specfile to do multipython builds.
