@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-gettext
-Version:        3.4.2
+Version:        3.4.3
 Release:        0
 %define mod_name gettext
 %define mod_full_name %{mod_name}-%{version}
