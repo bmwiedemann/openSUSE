@@ -302,13 +302,12 @@ Provides:       pattern-visible()
 %ifarch %{ix86} ia64 x86_64 %{arm} aarch64
 Requires:       dmidecode
 %endif
-Requires:       keylime-agent
-Requires:       keylime-firewalld
+Requires:       rust-keylime
 Requires:       pattern() = microos_ima_evm
 
 %description ra_agent
-Packages required to enable remote attestation via Keylime agent on
-openSUSE MicroOS.
+Packages required to enable remote attestation via the Rust Keylime
+agent on openSUSE MicroOS.
 
 %package ra_verifier
 Summary:        Remote Attestation (Verifier) Support
@@ -444,7 +443,7 @@ Requires:       gnome-session-wayland
 Requires:       flatpak
 Requires:       gnome-branding-MicroOS
 Requires:       gnome-color-manager
-Requires:       gnome-packagekit
+#Requires:       gnome-packagekit
 Requires:       gnome-shell-classic
 Requires:       gnome-software
 Requires:       gnome-system-monitor
@@ -533,8 +532,11 @@ Provides:       pattern-order() = 9101
 Provides:       pattern-visible()
 Requires:       pattern() = kde_plasma
 Requires:       pattern() = microos_desktop_common
-# Pull in PackageKit
-Requires:       pattern() = microos_base_packagekit
+# Pull in transactional-update
+Requires:       pattern() = microos_base_zypper
+
+# Pull in plasma-branding-MicroOS for firstboot setup
+Requires:       plasma-branding-MicroOS
 
 # Some basic system tools
 Requires:       kate
@@ -561,7 +563,7 @@ Requires:       pinentry-qt5
 
 # Recommends and Supplements won't work, so pull in manually
 Requires:       discover-backend-flatpak
-Requires:       discover-backend-packagekit
+#Requires:       discover-backend-packagekit
 Requires:       kde-gtk-config5
 Requires:       kde-gtk-config5-gtk3
 Requires:       plasma-browser-integration
@@ -619,7 +621,6 @@ Requires:       pattern() = microos_cloud
 Requires:       pattern() = microos_hardware
 Requires:       pattern() = microos_ima_evm
 Requires:       pattern() = microos_ra_agent
-Requires:       pattern() = microos_ra_verifier
 Requires:       pattern() = microos_sssd_ldap
 
 %description onlyDVD
@@ -637,7 +638,6 @@ Requires:       pattern() = microos_apparmor
 Requires:       pattern() = microos_cloud
 Requires:       pattern() = microos_cockpit
 Requires:       pattern() = microos_ima_evm
-Requires:       pattern() = microos_ra_agent
 Requires:       pattern() = microos_ra_verifier
 Requires:       pattern() = microos_selinux
 Requires:       pattern() = microos_sssd_ldap

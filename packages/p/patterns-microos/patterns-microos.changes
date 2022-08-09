@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug  8 09:51:57 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Have onlyDVD require ra_agent and alt_onlyDVD ra_verifier to allow
+  conflicts between them
+
+-------------------------------------------------------------------
+Thu Jul 25 22:50:09 UTC 2022 - Syds Bearda <opensuse@syds.eu>
+
+- Changing KDE back to transactional-update as well.
+- removed gnome-packagekit and discover-backend-packagekit
+
+-------------------------------------------------------------------
+Thu Jul 21 21:57:05 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Add plasma-branding-MicroOS to the default install for MicroOS-KDE 
+
+-------------------------------------------------------------------
 Thu Jun 30 16:24:11 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Use gnome-initial-setup for configuring user on firstboot of MicroOS Desktop 
@@ -13,6 +30,11 @@ Tue Jun 21 14:10:02 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 Mon Jun 20 15:38:03 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove tallow, doesn't work with firewalld using nft anymore
+
+-------------------------------------------------------------------
+Tue Jun 14 14:22:19 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Make the Rust Keylime agent the default one for ra_agent
 
 -------------------------------------------------------------------
 Mon Jun 13 14:38:10 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
