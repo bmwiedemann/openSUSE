@@ -119,4 +119,12 @@
     <comment>- Update to release 2022.1</comment>
     <requestid>970696</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>48aa719f1b49cb850160b03e534301b3</srcmd5>
+    <version>2022.1</version>
+    <time>1660051562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993769</requestid>
+  </revision>
 </revisionlist>

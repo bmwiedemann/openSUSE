@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  8 12:07:29 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Remove old python(2)-xml build dependency - build requires python3
+
+-------------------------------------------------------------------
 Mon Apr 18 23:38:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2022.1
