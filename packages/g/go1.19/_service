@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="include">compiler-rt</param>
     <!-- [boo#1052528] Always make sure this is kept up to date with src/runtime/race/README. -->
-    <param name="revision">41cb504b7c4b18ac15830107431a0c1eec73a6b2</param>
+    <param name="revision">127e59048cd3d8dbb80c14b3036918c114089529</param>
     <param name="versionformat">%H</param>
     <param name="filename">llvm</param>
   </service>

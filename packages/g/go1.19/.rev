@@ -7,4 +7,13 @@
     <comment>- go1.19beta1 (released 2022-06-10) is a beta version of go1.19 cut from the master branch at the revision tagged go1.19beta1.</comment>
     <requestid>982094</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9fdf48cde04188c0a059e05c75dfb343</srcmd5>
+    <version>1.19</version>
+    <time>1660051668</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.19 (released 2022-08-02) is a major release of Go.
+  go1.19.x minor releases will be provided through August 2023. (forwarded request 993859 from jfkw)</comment>
+    <requestid>993860</requestid>
+  </revision>
 </revisionlist>

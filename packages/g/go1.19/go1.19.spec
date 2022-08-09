@@ -69,11 +69,9 @@
 #!BuildIgnore: gcc-PIE
 %endif
 
-# Build go-race only on platforms where it's supported (both amd64 and aarch64
-# requires SLE15-or-later because of C++14, and ppc64le doesn't build at all
-# on openSUSE yet).
+# Build go-race only on platforms where C++14 is supported (SLE-15)
 %if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 150000
-%define tsan_arch x86_64 aarch64
+%define tsan_arch x86_64 aarch64 s390x ppc64le
 %else
 # Cannot use {nil} here (ifarch doesn't like it) so just make up a fake
 # architecture that no build will ever match.
@@ -87,7 +85,11 @@
 #
 # In order to update the TSAN version, modify _service. See boo#1052528 for
 # more details.
+%ifarch x86_64
+%define tsan_commit 127e59048cd3d8dbb80c14b3036918c114089529
+%else
 %define tsan_commit 41cb504b7c4b18ac15830107431a0c1eec73a6b2
+%endif
 
 # go_api is the major version of Go.
 # Used by go1.x packages and go metapackage for:
@@ -145,7 +147,7 @@
 %endif
 
 Name:           go1.19
-Version:        1.19beta1
+Version:        1.19
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -156,7 +158,10 @@ Source1:        go-rpmlintrc
 Source4:        README.SUSE
 Source6:        go.gdbinit
 # We have to compile TSAN ourselves. boo#1052528
-Source100:      llvm-%{tsan_commit}.tar.xz
+# Preferred form when all arches share llvm race version
+# Source100:      llvm-%{tsan_commit}.tar.xz
+Source100:      llvm-127e59048cd3d8dbb80c14b3036918c114089529.tar.xz
+Source101:      llvm-41cb504b7c4b18ac15830107431a0c1eec73a6b2.tar.xz
 # PATCH-FIX-OPENSUSE: https://go-review.googlesource.com/c/go/+/391115
 Patch7:         dont-force-gold-on-arm64.patch
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - find /usr/bin/go-8 when bootstrapping with gcc8-go
@@ -224,7 +229,12 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %prep
 %ifarch %{tsan_arch}
 # compiler-rt (from LLVM)
+%ifarch x86_64
 %setup -q -T -b 100 -n llvm-%{tsan_commit}
+%else
+%setup -q -T -b 101 -n llvm-%{tsan_commit}
+%endif
+
 %endif
 # go
 %setup -q -n go
@@ -313,6 +323,14 @@ for ext in *.{go,c,h,s,S,py,syso,bin}; do
 done
 # executable bash scripts called by go tool, etc
 find src -name "*.bash" -exec install -Dm655 \{\} %{buildroot}%{_datadir}/go/%{go_label}/\{\} \;
+# # Trace viewer html and javascript files moved from misc/trace in
+# # previous versions to src/cmd/trace/static in go1.19.
+# # static contains pprof trace viewer html javascript and markdown
+# echo "PWD:" `pwd`
+# echo "GOROOT:" $GOROOT
+# mkdir -v -p $GOROOT/src/cmd/trace/static
+install -d  %{buildroot}%{_datadir}/go/%{go_label}/src/cmd/trace/static
+install -Dm644 src/cmd/trace/static/* %{buildroot}%{_datadir}/go/%{go_label}/src/cmd/trace/static
 
 mkdir -p $GOROOT/src
 for i in $(ls %{buildroot}/usr/share/go/%{go_label}/src);do
@@ -341,14 +359,14 @@ sed -i "s/\$go_label/%{go_label}/" $GOROOT/bin/gdbinit.d/go.gdb
 %endif
 
 # update-alternatives
- mkdir -p %{buildroot}%{_sysconfdir}/alternatives
- mkdir -p %{buildroot}%{_bindir}
- mkdir -p %{buildroot}%{_sysconfdir}/profile.d
- mkdir -p %{buildroot}%{_sysconfdir}/gdbinit.d
- touch %{buildroot}%{_sysconfdir}/alternatives/{go,gofmt,go.gdb}
- ln -sf %{_sysconfdir}/alternatives/go %{buildroot}%{_bindir}/go
- ln -sf %{_sysconfdir}/alternatives/gofmt %{buildroot}%{_bindir}/gofmt
- ln -sf %{_sysconfdir}/alternatives/go.gdb %{buildroot}%{_sysconfdir}/gdbinit.d/go.gdb
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+mkdir -p %{buildroot}%{_bindir}
+mkdir -p %{buildroot}%{_sysconfdir}/profile.d
+mkdir -p %{buildroot}%{_sysconfdir}/gdbinit.d
+touch %{buildroot}%{_sysconfdir}/alternatives/{go,gofmt,go.gdb}
+ln -sf %{_sysconfdir}/alternatives/go %{buildroot}%{_bindir}/go
+ln -sf %{_sysconfdir}/alternatives/gofmt %{buildroot}%{_bindir}/gofmt
+ln -sf %{_sysconfdir}/alternatives/go.gdb %{buildroot}%{_sysconfdir}/gdbinit.d/go.gdb
 
 # documentation and examples
 # fix documetation permissions (rpmlint warning)
@@ -357,7 +375,7 @@ find doc/ misc/ -type f -exec chmod 0644 '{}' +
 rm -rf misc/cgo/test/{_*,*.o,*.out,*.6,*.8}
 # prepare go-doc
 mkdir -p %{buildroot}%{_docdir}/go/%{go_label}
-cp -r AUTHORS CONTRIBUTORS CONTRIBUTING.md LICENSE PATENTS README.md README.SUSE %{buildroot}%{_docdir}/go/%{go_label}
+cp -r CONTRIBUTING.md LICENSE PATENTS README.md README.SUSE %{buildroot}%{_docdir}/go/%{go_label}
 cp -r doc/* %{buildroot}%{_docdir}/go/%{go_label}
 
 %fdupes -s %{buildroot}%{_prefix}
@@ -388,8 +406,6 @@ fi
 %ghost %{_sysconfdir}/alternatives/go.gdb
 %dir %{_docdir}/go
 %dir %{_docdir}/go/%{go_label}
-%doc %{_docdir}/go/%{go_label}/AUTHORS
-%doc %{_docdir}/go/%{go_label}/CONTRIBUTORS
 %doc %{_docdir}/go/%{go_label}/CONTRIBUTING.md
 %doc %{_docdir}/go/%{go_label}/PATENTS
 %doc %{_docdir}/go/%{go_label}/README.md
