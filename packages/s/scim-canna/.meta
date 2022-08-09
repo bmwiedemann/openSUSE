@@ -1,5 +1,0 @@
-<package name="scim-canna" project="openSUSE:Factory">
-  <title>Canna Input Method Engine for SCIM</title>
-  <description>Canna Input Method Engine for SCIM</description>
-  <devel project="M17N" package="scim-canna"/>
-</package>
