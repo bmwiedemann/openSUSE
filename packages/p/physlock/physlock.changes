@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  9 12:02:13 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use %_pam_vendordir
+
+-------------------------------------------------------------------
 Tue Sep 22 12:52:54 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Use throughout _distconfdir in spec file 

@@ -1,6 +1,7 @@
 #
 # spec file for package physlock
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 SUSE Software Solutions Germany GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,17 +16,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%if ! %{defined _distconfdir}
-%define _distconfdir %{_sysconfdir}
+
+%if ! %{defined _pam_vendordir}
+%define _pam_vendordir %{_sysconfdir}/pam.d
 %endif
 
 Name:           physlock
 Version:        13
 Release:        0
 Summary:        Lightweight linux console locking tool
-Url:            https://github.com/muennich/physlock
+URL:            https://github.com/muennich/physlock
 Group:          Productivity/Security
-License:        GPL-2.0
+License:        GPL-2.0-only
 Source0:        https://github.com/muennich/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Patch0:         %{name}-%{version}.dif
@@ -62,8 +64,8 @@ make %{?_smp_mflags}
 
 %install
 %make_install PREFIX=%{_prefix}
-mkdir -p %{buildroot}%{_distconfdir}/pam.d
-cat > %{buildroot}%{_distconfdir}/pam.d/physlock <<-'EOF'
+mkdir -p %{buildroot}%{_pam_vendordir}
+cat > %{buildroot}%{_pam_vendordir}/physlock <<-'EOF'
 	auth		required	pam_unix.so	nis try_first_pass
 	account		required	pam_unix.so	nis try_first_pass
 	password	required	pam_unix.so	nis try_first_pass
@@ -80,7 +82,7 @@ cat > %{buildroot}%{_distconfdir}/pam.d/physlock <<-'EOF'
 %defattr(-,root,root)
 %doc README.md
 %license LICENSE
-%{_distconfdir}/pam.d/physlock
+%{_pam_vendordir}/physlock
 %verify(not mode group) %attr(04750,root,trusted) %{_bindir}/%{name}
 %{_mandir}/man?/%{name}.?%{ext_man}
 
