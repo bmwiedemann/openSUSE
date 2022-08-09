@@ -34,6 +34,9 @@ BuildRequires:  intltool
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  polkit
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkexec
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  xfsprogs-devel
 BuildRequires:  yelp-tools
@@ -91,6 +94,8 @@ export GKSUPROG="pkexec"
 %make_install
 
 install -Dm0644 %{SOURCE98} %{buildroot}%{_datadir}/polkit-1/actions/org.opensuse.policykit.%{name}.policy
+# Here we remove upstream policy file since we have our own
+rm %{buildroot}%{_datadir}/polkit-1/actions/org.gnome.%{name}.policy
 
 %suse_update_desktop_file %{name}
 %fdupes %{buildroot}%{_datadir}

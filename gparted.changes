@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  8 16:15:42 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Revert 'removal of upstream pokit action', but rather
+  BuildRequire pkexec, which is what decides if the file is
+  installed or not.
+
+-------------------------------------------------------------------
 Sat Aug  6 13:00:33 UTC 2022 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Recommend pkexec
