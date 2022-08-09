@@ -7,4 +7,12 @@
     <comment>New dependency of the libyal library family currently in ADI:6.  Required to allow all builds to complete.</comment>
     <requestid>899026</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>16376dee898785bb9cf4928960fa1dc7</srcmd5>
+    <version>20210415</version>
+    <time>1660051709</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993985</requestid>
+  </revision>
 </revisionlist>
