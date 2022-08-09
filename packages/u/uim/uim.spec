@@ -37,7 +37,6 @@ Patch2:         uim-fix-crash-in-firefox.diff
 Patch3:         bugzilla-1175274-emacs-27.1.patch
 Patch4:         uim-fix-multiple_declaration.diff
 Patch5:         riscv.patch
-BuildRequires:  canna-devel
 BuildRequires:  emacs-x11
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -122,7 +121,6 @@ iconv -f euc-jp -t utf-8 < emacs/README.ja > README.ja.emacs
 %build
 %configure --disable-static \
         --libexecdir=%{_prefix}/lib/uim \
-        --with-canna\
         --with-anthy-utf8 \
 %if %{build_qt4}
         --with-qt4 \
@@ -190,7 +188,7 @@ rm -f doc/Makefile*
 #     %%{_datadir}/uim/installed-modules.scm
 #     %%{_datadir}/uim/loader.scm
 uim-module-manager --register \
-    ajax-ime anthy anthy-utf8 byeoru canna elatin  hangul  ipa-x-sampa \
+    ajax-ime anthy anthy-utf8 byeoru elatin  hangul  ipa-x-sampa \
     latin m17nlib pyload skk tcode trycode tutcode viqr
 
 %postun -p /sbin/ldconfig
