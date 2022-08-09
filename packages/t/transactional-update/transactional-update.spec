@@ -26,14 +26,13 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        4.0.0~rc4
+Version:        4.0.0
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Base
 URL:            https://github.com/openSUSE/transactional-update
-#Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-Source0:        transactional-update-4.0.0~rc4.tar.gz
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        transactional-update.check
 
 BuildRequires:  autoconf
@@ -274,6 +273,7 @@ mv %{buildroot}/%{_sysconfdir}/logrotate.d/transactional-update %{buildroot}%{_d
 %{_sbindir}/tukit
 %{_sbindir}/create_dirs_from_rpmdb
 %{_unitdir}/create-dirs-from-rpmdb.service
+%{_mandir}/man5/tukit.conf.5.gz
 
 %files -n dracut-%{name}
 %license COPYING gpl-2.0.txt
@@ -292,6 +292,8 @@ mv %{buildroot}/%{_sysconfdir}/logrotate.d/transactional-update %{buildroot}%{_d
 %{_unitdir}/tukitd.service
 %{_prefix}/share/dbus-1/system-services/tukitd.d-bus.service
 %{_prefix}/share/dbus-1/system.d/org.opensuse.tukit.conf
+%{_prefix}/share/dbus-1/interfaces/org.opensuse.tukit.Snapshot.xml
+%{_prefix}/share/dbus-1/interfaces/org.opensuse.tukit.Transaction.xml
 
 %files -n %{devname}
 %license COPYING lgpl-2.1.txt
