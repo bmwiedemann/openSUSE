@@ -6,7 +6,7 @@ Sun Apr 10 11:46:05 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 -------------------------------------------------------------------
 Tue Mar  8 12:57:40 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
-- Update to version 73:
+- Update to version 73 (jsc#PED-764):
   * Many CXL fixes
   * Fix shipped monitor.conf (bsc#1194696 https://github.com/pmem/ndctl/pull/189)
   * inject-smart: Add support for papr
