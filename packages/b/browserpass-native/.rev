@@ -51,4 +51,12 @@
   * Compile without cgo to remove libc dependency (forwarded request 958311 from tux93)</comment>
     <requestid>959613</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ae925f8f1f07ed995c29562cafedea9f</srcmd5>
+    <version>3.0.10</version>
+    <time>1660051658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993812</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug  6 21:10:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.0.10:
+  - No functional changes
+  - Explicitly use cgo-free function to get user's home dir (was
+    already the case since 3.0.9 if your browserpass was compiled
+    without cgo as per our Makefile)
+
+-------------------------------------------------------------------
 Tue Mar  1 15:37:27 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 3.0.9
