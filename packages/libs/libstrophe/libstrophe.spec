@@ -18,15 +18,13 @@
 
 %define c_lib   libstrophe0
 Name:           libstrophe
-Version:        0.12.1
+Version:        0.12.2
 Release:        0
 Summary:        A XMPP library for C
 License:        GPL-3.0-or-later OR MIT
 Group:          Development/Libraries/C and C++
 URL:            http://strophe.im/libstrophe/
 Source0:        https://github.com/strophe/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-# See https://github.com/strophe/libstrophe/pull/211
-Patch0:         libstrophe-0.12-stream-management-fix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
@@ -65,7 +63,6 @@ The libstrophe library is a XMPP library written in C.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 ./bootstrap.sh
