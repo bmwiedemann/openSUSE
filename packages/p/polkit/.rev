@@ -744,4 +744,12 @@ I didn't encounter any errors while playing around with it in a Live CD. (forwar
     <comment>- add split-provides for polkit:/usr/bin/pkexec. (bsc#1202070) (forwarded request 992574 from msmeissn)</comment>
     <requestid>992575</requestid>
   </revision>
+  <revision rev="84" vrev="6">
+    <srcmd5>7cc1583aa287cf4e2f0c63b1e2ef218c</srcmd5>
+    <version>0.120</version>
+    <time>1660051560</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993702</requestid>
+  </revision>
 </revisionlist>

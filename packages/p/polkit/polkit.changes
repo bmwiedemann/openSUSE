@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  8 07:28:25 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use %_pam_vendordir
+
+-------------------------------------------------------------------
 Wed Aug  3 12:03:30 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - add split-provides for polkit:/usr/bin/pkexec. (bsc#1202070)

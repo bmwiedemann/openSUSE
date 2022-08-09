@@ -177,8 +177,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # create $HOME for polkit user
 install -d %{buildroot}%{_localstatedir}/lib/polkit
 %find_lang polkit-1
-mkdir -p %{buildroot}%{_distconfdir}/pam.d
-mv %{buildroot}%{_sysconfdir}/pam.d/* %{buildroot}%{_distconfdir}/pam.d/
+mkdir -p %{buildroot}%{_pam_vendordir}
+mv %{buildroot}%{_sysconfdir}/pam.d/* %{buildroot}%{_pam_vendordir}/
 mv %{buildroot}%{_sysconfdir}/polkit-1/rules.d/50-default.rules %{buildroot}%{_datadir}/polkit-1/rules.d/50-default.rules
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/
@@ -238,7 +238,7 @@ install -m0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/
 %{_datadir}/polkit-1/actions/org.freedesktop.policykit.policy
 %attr(0700,polkitd,root) %dir %{_datadir}/polkit-1/rules.d
 %attr(0700,polkitd,root) %{_datadir}/polkit-1/rules.d/50-default.rules
-%{_distconfdir}/pam.d/polkit-1
+%{_pam_vendordir}/polkit-1
 %dir %{_sysconfdir}/polkit-1
 %attr(0700,polkitd,root) %dir %{_sysconfdir}/polkit-1/rules.d
 %{_bindir}/pkaction
