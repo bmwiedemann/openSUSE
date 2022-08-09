@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Jun  8 15:53:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- switch to go 1.16 for 2.8.1
+- switch to go 1.16 for 2.8.1 (jsc#SLE-24963)
 - build the additional commands as well
 - rename to follow upstream renaming
 - cleanups 

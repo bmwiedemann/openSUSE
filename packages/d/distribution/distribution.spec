@@ -30,8 +30,8 @@ Source2:        registry.service
 Source4:        README-registry.SUSE
 Source10:       system-user-registry.conf
 BuildRequires:  golang-packaging
-BuildRequires:  sysuser-tools
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  zstd
 BuildRequires:  golang(API) = 1.16
 Provides:       docker-distribution = %{version}
