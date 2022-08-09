@@ -47,4 +47,12 @@
     <comment>- Update to release 20220110</comment>
     <requestid>945302</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6bf04be1a9a2f24944cc3be5f39b31cc</srcmd5>
+    <version>20220110</version>
+    <time>1660051708</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993984</requestid>
+  </revision>
 </revisionlist>
