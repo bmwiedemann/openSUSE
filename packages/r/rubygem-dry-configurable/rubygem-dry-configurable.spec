@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-dry-configurable
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 %define mod_name dry-configurable
 %define mod_full_name %{mod_name}-%{version}
