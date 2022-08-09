@@ -74,9 +74,10 @@ applications that want to make use of libbfio.
 
 %build
 autoreconf -fi
-# for disable-MTS see libcdata
+# see libcdata for disable-multi-thr and version-sc
+echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type \
-	--disable-multi-thread
+	--disable-multi-thread LDFLAGS="-Wl,--version-script=$PWD/v.sym"
 %make_build
 
 %install

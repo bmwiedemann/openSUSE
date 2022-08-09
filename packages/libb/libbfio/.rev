@@ -134,4 +134,12 @@ libyal refresh for opensuse 13.1 release (forwarded request 184907 from gregfree
     <comment>- Update to release 20220120</comment>
     <requestid>947904</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>bb838e265aac2f1d9c1623c0f6625697</srcmd5>
+    <version>20220120</version>
+    <time>1660051693</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993965</requestid>
+  </revision>
 </revisionlist>
