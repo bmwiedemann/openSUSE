@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  5 15:00:23 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Remove reiserfs conversion from releases after SLE/Leap 15.X in
+  preparation to remove the reiserfs package.
+
+-------------------------------------------------------------------
 Tue Jun 14 00:00:00 CEST 2022 - dsterba@suse.cz
 
 - update to 5.18.1:

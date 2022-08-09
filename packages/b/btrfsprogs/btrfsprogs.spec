@@ -65,7 +65,7 @@ BuildRequires:  dracut
 BuildRequires:  libattr-devel
 BuildRequires:  libblkid-devel
 BuildRequires:  libext2fs-devel
-%if 0%{?suse_version} >= 1500
+%if 0%{?suse_version} == 1500
 BuildRequires:  libreiserfscore-devel >= 3.6.27
 Requires:       libreiserfscore0 >= 3.6.27
 %endif
