@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack-protection
-Version:        2.2.0
+Version:        2.2.2
 Release:        0
 %define mod_name rack-protection
 %define mod_full_name %{mod_name}-%{version}
