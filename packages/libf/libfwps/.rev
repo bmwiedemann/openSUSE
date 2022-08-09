@@ -17,4 +17,12 @@ Required to allow builds to complete.</comment>
     <comment>- Update to release 20220122</comment>
     <requestid>948137</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c085675e8908d5f461f526c6216fbff7</srcmd5>
+    <version>20220122</version>
+    <time>1660051726</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>994006</requestid>
+  </revision>
 </revisionlist>
