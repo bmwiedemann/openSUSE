@@ -1,5 +1,5 @@
 #
-# spec file for package qt6-webengine
+# spec file for qt6-webengine
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -45,7 +45,7 @@ Name:           qt6-webengine%{?pkg_suffix}
 Version:        6.3.1
 Release:        0
 Summary:        Web browser engine for Qt applications
-License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webengine-rpmlintrc
@@ -75,9 +75,6 @@ BuildRequires:  memory-constraints
 BuildRequires:  nodejs-default
 BuildRequires:  pipewire-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python
-BuildRequires:  python-devel
-BuildRequires:  python-xml
 BuildRequires:  python3-html5lib
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
@@ -99,8 +96,8 @@ BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6QmlModels)
 BuildRequires:  cmake(Qt6QmlTools)
 BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6QuickTest)
 BuildRequires:  cmake(Qt6QuickControls2)
+BuildRequires:  cmake(Qt6QuickTest)
 BuildRequires:  cmake(Qt6QuickWidgets)
 BuildRequires:  cmake(Qt6WebChannel)
 BuildRequires:  cmake(Qt6WebSockets)
@@ -110,13 +107,13 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(glproto)
 BuildRequires:  pkgconfig(harfbuzz) >= 2.4.0
 %if %{with system_icu}
-BuildRequires:  pkgconfig(icu-uc) >= 68
 BuildRequires:  pkgconfig(icu-i18n) >= 68
+BuildRequires:  pkgconfig(icu-uc) >= 68
 %endif
 BuildRequires:  pkgconfig(lcms2)
 %if %{with system_ffmpeg}

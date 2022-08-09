@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  8 12:03:18 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Remove python2 from buildrequires - it's a left over from qt5
+
+-------------------------------------------------------------------
 Fri Jun 17 15:15:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.3.1:

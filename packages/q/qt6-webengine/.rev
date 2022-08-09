@@ -73,4 +73,12 @@
     <comment>Qt 6.3.1 (forwarded request 983727 from cgiboudeaux)</comment>
     <requestid>983759</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>fa81101630d6bce63853b6fb65fb6af9</srcmd5>
+    <version>6.3.1</version>
+    <time>1660051629</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python2 from buildrequires - it's a left over from qt5</comment>
+    <requestid>993776</requestid>
+  </revision>
 </revisionlist>
