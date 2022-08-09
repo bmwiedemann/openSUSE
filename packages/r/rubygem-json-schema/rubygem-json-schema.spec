@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-json-schema
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,15 @@
 #
 
 Name:           rubygem-json-schema
-Version:        2.8.1
+Version:        3.0.0
 Release:        0
 %define mod_name json-schema
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 1.9}
+BuildRequires:  %{ruby >= 2.5}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            http://github.com/ruby-json-schema/json-schema/tree/master
+URL:            http://github.com/voxpupuli/json-schema/
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Ruby JSON Schema Validator
