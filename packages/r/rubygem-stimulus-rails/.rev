@@ -7,4 +7,12 @@
     <comment>new dep of rails 7</comment>
     <requestid>959928</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9a3c8478971711f698ba7be22f3138ca</srcmd5>
+    <version>1.1.0</version>
+    <time>1660051615</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>993524</requestid>
+  </revision>
 </revisionlist>
