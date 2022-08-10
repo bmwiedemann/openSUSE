@@ -1071,4 +1071,13 @@
   + Updated translations. (forwarded request 986299 from iznogood)</comment>
     <requestid>986579</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>3a866f768c0cdc2b24c7229a3911e7f6</srcmd5>
+    <version>3.44.4</version>
+    <time>1660144375</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.44.4:
+  + Bugs fixed: Calendar: Fix occurrence index counter. (forwarded request 993263 from iznogood)</comment>
+    <requestid>993943</requestid>
+  </revision>
 </revisionlist>
