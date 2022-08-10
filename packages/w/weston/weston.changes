@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Aug  9 20:21:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.0.2:
+  This is a bugfix release for 10.0.0.
+  * clients/simple-dmabuf-feedback: do not use buffer before compositor's response
+  * kiosk-shell: Check if app_ids have been set after initial commit
+  * kiosk-shell: Don't occlude shsurf on other outputs
+  * kiosk-shell: Favor out views on same output
+  * libweston: Assert if ref-count balance is wrong
+  * libweston, desktop-shell: Add a wrapper for weston_surface reference
+  * desktop-shell: Create a distinct view for the fade-out close anim
+  * desktop-shell: Rename destroy_layer functions
+  * desktop-shell: Migrate surface_unlink_view
+  * desktop-shell: Check for a valid desktop_surface
+  * desktop-shell: Clarify weston_view destruction at tear down
+  * desktop-shell: Add missing weston_view_destroy()
+  * simple-egl: Add start as maximized
+  * libweston-desktop: Replace buffer with geometry
+  * simple-egl: Remove uneeded check
+  * simple-egl: Defer EGL surface/window creation
+  * simple-egl: Move set_fullscreen/set_maximized before initial commit
+  * gl-renderer: fix performance regression in frag
+  * libweston/compositor: Cache buffer damage for synced subsurfaces
+  * tests: Add test for synced subsurfaces and buffer damage
+  * libweston/compositor: Do not map subsurfaces without buffer
+  * tests: Add test for subsurfaces mapping hierachies
+  * clients/simple-dmabuf-feedback: Support multi-tranche feedbacks
+  * clients/simple-dmabuf-*: Increase buffer limit to four
+  * clients/simple-dmabuf-feedback: Add fallback print method for unknown formats
+  * backend-drm: Add failure reasons for failing gbm_bo_import
+  * clients/simple-dmabuf-feedback: use time instead of redraws
+  * libweston/linux-dmabuf: create surface feedback on demand 
+
+-------------------------------------------------------------------
 Tue Feb  1 22:35:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10

@@ -19,18 +19,17 @@
 Name:           weston
 %define lname	libweston0
 %define major   10
-%define realver	10.0.0
-Version:        10
+%define realver	10.0.2
+Version:        10.0.2
 Release:        0
 Summary:        Wayland Reference Compositor
 License:        CC-BY-SA-3.0 AND MIT
 Group:          System/X11/Servers
 URL:            https://wayland.freedesktop.org/
-
 #Git-Clone:	git://anongit.freedesktop.org/wayland/weston
 #Git-Web:	https://cgit.freedesktop.org/wayland/weston/
-Source:         https://wayland.freedesktop.org/releases/weston-%realver.tar.xz
-Source2:        https://wayland.freedesktop.org/releases/weston-%realver.tar.xz.sig
+Source:         https://gitlab.freedesktop.org/wayland/weston/-/releases/%realver/downloads/weston-%realver.tar.xz
+Source2:        https://gitlab.freedesktop.org/wayland/weston/-/releases/%realver/downloads/weston-%realver.tar.xz.sig
 Source3:        %name.keyring
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  autoconf >= 2.64
