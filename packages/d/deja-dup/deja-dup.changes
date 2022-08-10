@@ -2,12 +2,13 @@
 Mon Aug  8 02:51:28 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
 
 - The nautilus-deja-dup plugin has been dropped since version 42.4,
-  explicitly obsoletes it in the specfile.
+  explicitly obsoletes it in the specfile (jsc#SLE-24632,
+  bsc#1199740).
 
 -------------------------------------------------------------------
 Tue Jul  5 05:49:32 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update to version 43.4:
+- Update to version 43.4 (jsc#SLE-24632, bsc#1199740):
   + Warn about delayed backups due to power saver mode,
     if it's been over a day since we were supposed to back up.
   + Improve support for mobile screen sizes.
