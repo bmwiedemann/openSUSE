@@ -1,7 +1,7 @@
 #
 # spec file for package gtk-vnc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _sonamepkg 2_0
 
 Name:           gtk-vnc
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        A GTK widget for VNC clients
 License:        LGPL-2.1-only AND LGPL-2.1-or-later
