@@ -887,4 +887,12 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment></comment>
     <requestid>986277</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>42ca48ec510810c8e8213701d369e33d</srcmd5>
+    <version>42.4</version>
+    <time>1660144375</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 993278 from iznogood)</comment>
+    <requestid>993944</requestid>
+  </revision>
 </revisionlist>
