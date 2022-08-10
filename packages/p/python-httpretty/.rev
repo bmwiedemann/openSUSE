@@ -173,4 +173,12 @@
   * Use unittest.mock in the functional tests.</comment>
     <requestid>975077</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>acfa60beec4a6355d988e7b3fff2141e</srcmd5>
+    <version>1.1.4</version>
+    <time>1660144347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993919</requestid>
+  </revision>
 </revisionlist>

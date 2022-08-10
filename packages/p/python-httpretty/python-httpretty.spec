@@ -26,11 +26,19 @@ License:        MIT
 URL:            https://github.com/gabrielfalcao/HTTPretty
 Source:         https://files.pythonhosted.org/packages/source/h/httpretty/httpretty-%{version}.tar.gz
 Patch0:         remove-mock.patch
+# PATCH-FIX-UPSTREAM 453-fix-tests-pytest.patch gh#gabrielfalcao/HTTPretty#449 mcepl@suse.com
+# Make tests compatible with pytest
+Patch1:         453-fix-tests-pytest.patch
+# PATCH-FIX-OPENSUSE test_double_slash may be replaced with / from stdlib
+# gh#gabrielfalcao/HTTPretty#457
+Patch2:         double-slash-paths.patch
+BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module fakeredis}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module httplib2}
-BuildRequires:  %{python_module nose2}
+BuildRequires:  %{python_module pytest-httpserver}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sure}
@@ -47,10 +55,6 @@ It is similar to Ruby's FakeWeb.
 
 %prep
 %autosetup -p1 -n httpretty-%{version}
-# no test coverage check needed
-sed -i -e '/cover/ d' setup.cfg
-# no color printout for tests
-sed -i -e '/rednose/ d' setup.cfg
 
 %build
 %python_build
@@ -60,16 +64,13 @@ sed -i -e '/rednose/ d' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/gabrielfalcao/HTTPretty/issues/405
+# gh#gabrielfalcao/HTTPretty#405
 export EVENTLET_NO_GREENDNS=yes
-# test_http_passthrough and test_https_passthrough need internet connection
-sed -Ei 's/(test_https?_passthrough)/_\1/' tests/functional/test_passthrough.py
-# fails on 15.1
-sed -Ei 's/(test_streaming_responses)/_\1/'  tests/functional/test_requests.py
-# fails on x86_64
-sed -Ei 's/(test_fakesock_socket_sendall_with_body_data_with_chunked_entry)/_\1/' tests/unit/test_core.py
-
-%python_exec -m nose2 -v
+#  needs internet connection to httpbin.org
+donttest="test_http_passthrough or test_https_passthrough"
+# flaky (too slow) on obs
+donttest="$donttest or test_httpretty_should_allow_forcing_headers_urllib2"
+%pytest -k "not (${donttest})"
 
 %files %{python_files}
 %license COPYING
