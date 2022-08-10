@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 10 06:33:40 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220810.97f838f2:
+  * StagingBot: call staging rebuild first (support random fails) and handle Factory:NonFree
+
+-------------------------------------------------------------------
 Tue Aug 09 07:29:12 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220809.46872b13:
