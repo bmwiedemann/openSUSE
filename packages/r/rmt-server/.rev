@@ -1167,4 +1167,12 @@ PubCloud:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>991304</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>ab42beb042d020d50ebe9e7096682516</srcmd5>
+    <version>2.8.1</version>
+    <time>1660144455</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>994171</requestid>
+  </revision>
 </revisionlist>
