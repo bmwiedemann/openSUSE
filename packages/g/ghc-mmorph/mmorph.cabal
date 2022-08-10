@@ -1,6 +1,6 @@
 Name: mmorph
 Version: 1.2.0
-x-revision: 1
+x-revision: 2
 Cabal-Version: >= 1.10
 Build-Type: Simple
 License: BSD3
@@ -22,8 +22,8 @@ Library
     Hs-Source-Dirs: src
     Build-Depends:
         base                >= 4.5     && < 5  ,
-        mtl                 >= 2.1     && < 2.3,
-        transformers        >= 0.2.0.0 && < 0.6,
+        mtl                 >= 2.1     && < 2.4,
+        transformers        >= 0.2.0.0 && < 0.7,
         transformers-compat >= 0.3     && < 0.8
     if impl(ghc < 8.0)
         Build-Depends:
