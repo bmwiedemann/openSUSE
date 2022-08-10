@@ -35,7 +35,7 @@
 %bcond_with kmp
 %define lname libopenvswitch-2_17-0
 Name:           openvswitch
-Version:        2.17.0
+Version:        2.17.2
 Release:        0
 Summary:        A multilayer virtual network switch
 # All code is Apache-2.0 except
@@ -43,8 +43,8 @@ Summary:        A multilayer virtual network switch
 # - utilities/bugtool which is LGPL-2.1
 License:        Apache-2.0 AND LGPL-2.1-only AND SISSL
 Group:          Productivity/Networking/System
-URL:            http://openvswitch.org/
-Source0:        http://openvswitch.org/releases/openvswitch-%{version}.tar.gz
+URL:            https://www.openvswitch.org/
+Source0:        https://www.openvswitch.org/releases/openvswitch-%{version}.tar.gz
 Source2:        preamble
 Source89:       Module.supported.updates
 Source99:       openvswitch-rpmlintrc

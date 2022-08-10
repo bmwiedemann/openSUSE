@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Aug  3 11:11:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.2:
+  - Bug fixes
+  - DPDK:
+    * OVS validated with DPDK 21.11.1.  It is recommended to use this version
+      until further releases.
+  - Bug fixes
+  - libopenvswitch API change:
+    * To fix the Undefined Behavior issue causing the compiler to incorrectly
+      optimize important parts of code, container iteration macros (e.g.,
+      LIST_FOR_EACH) have been re-implemented in a UB-safe way.
+    * Backwards compatibility has mostly been preserved, however the
+     user-provided pointer is now set to NULL after the loop (unless it
+      exited via "break;")
+    * Users of libopenvswitch will need to double-check the use of such loop
+       macros before compiling with a new version.
+    * Since the change is limited to the definitions within the headers, the
+      ABI is not affected.
+- refresh 0001-openvswitch-merge-compiler.h-files-into-one-file.patch
+  0002-build-Seperated-common-used-headers.patch
+
+-------------------------------------------------------------------
 Fri May 13 15:52:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Allow dpdk version 21.11.

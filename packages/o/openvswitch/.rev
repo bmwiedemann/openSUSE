@@ -729,4 +729,30 @@
     <comment></comment>
     <requestid>977255</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>072a31d7665440910144ae5a9ad3f56e</srcmd5>
+    <version>2.17.2</version>
+    <time>1660144382</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.17.2:
+  - Bug fixes
+  - DPDK:
+    * OVS validated with DPDK 21.11.1.  It is recommended to use this version
+      until further releases.
+  - Bug fixes
+  - libopenvswitch API change:
+    * To fix the Undefined Behavior issue causing the compiler to incorrectly
+      optimize important parts of code, container iteration macros (e.g.,
+      LIST_FOR_EACH) have been re-implemented in a UB-safe way.
+    * Backwards compatibility has mostly been preserved, however the
+     user-provided pointer is now set to NULL after the loop (unless it
+      exited via &quot;break;&quot;)
+    * Users of libopenvswitch will need to double-check the use of such loop
+       macros before compiling with a new version.
+    * Since the change is limited to the definitions within the headers, the
+      ABI is not affected.
+- refresh 0001-openvswitch-merge-compiler.h-files-into-one-file.patch
+  0002-build-Seperated-common-used-headers.patch</comment>
+    <requestid>993959</requestid>
+  </revision>
 </revisionlist>
