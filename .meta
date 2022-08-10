@@ -20,4 +20,5 @@ heartbeat implements the following kinds of heartbeats:
 - UDP/IPv4 broadcast, multi-cast, and unicast
 
 - IPv4 &quot;ping&quot; pseudo-cluster members.</description>
+  <devel project="network:ha-clustering:Factory" package="resource-agents"/>
 </package>
