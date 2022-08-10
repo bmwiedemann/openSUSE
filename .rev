@@ -239,4 +239,210 @@
 </comment>
     <requestid>990684</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>eab08a0d39e78bbebf969a3f2be1af13</srcmd5>
+    <version>3.10.6</version>
+    <time>1660144340</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.10.6:
+  - gh-87389: http.server: Fix an open redirection vulnerability
+    in the HTTP server when an URI path starts with //.
+    Vulnerability discovered, and initial fix proposed, by Hamza
+    Avvan.
+  - gh-92888: Fix memoryview use after free when accessing the
+    backing buffer in certain cases.
+  - gh-95355: _PyPegen_Parser_New now properly detects token
+    memory allocation errors. Patch by Honglin Zhu.
+  - gh-94938: Fix error detection in some builtin functions when
+    keyword argument name is an instance of a str subclass with
+    overloaded __eq__ and __hash__. Previously it could cause
+    SystemError or other undesired behavior.
+  - gh-94949: ast.parse() will no longer parse parenthesized
+    context managers when passed feature_version less than
+    (3, 9). Patch by Shantanu Jain.
+  - gh-94947: ast.parse() will no longer parse assignment
+    expressions when passed feature_version less than
+    (3, 8). Patch by Shantanu Jain.
+  - gh-94869: Fix the column offsets for some expressions in
+    multi-line f-strings ast nodes. Patch by Pablo Galindo.
+  - gh-91153: Fix an issue where a bytearray item assignment
+    could crash if it’s resized by the new value’s __index__()
+    method.
+  - gh-94329: Compile and run code with unpacking of extremely
+    large sequences (1000s of elements). Such code failed to
+    compile. It now compiles and runs correctly.
+  - gh-94360: Fixed a tokenizer crash when reading encoded
+    files with syntax errors from stdin with non utf-8 encoded
+    text. Patch by Pablo Galindo
+  - gh-94192: Fix error for dictionary literals with invalid
+    expression as value.
+  - gh-93964: Strengthened compiler overflow checks to prevent
+    crashes when compiling very large source files.
+  - gh-93671: Fix some exponential backtrace case happening with
+    deeply nested sequence patterns in match statements. Patch by
+    Pablo Galindo
+  - gh-93021: Fix the __text_signature__ for __get__() methods
+    implemented in C. Patch by Jelle Zijlstra.
+  - gh-92930: Fixed a crash in _pickle.c from mutating
+    collections during __reduce__ or persistent_id.
+  - gh-92914: Always round the allocated size for lists up to the
+    nearest even number.
+  - gh-92858: Improve error message for some suites with syntax
+    error before ‘:’
+  - gh-95339: Update bundled pip to 22.2.1.
+  - gh-95045: Fix GC crash when deallocating _lsprof.Profiler by
+    untracking it before calling any callbacks. Patch by Kumar
+    Aditya.
+  - gh-95087: Fix IndexError in parsing invalid date in the email
+    module.
+  - gh-95199: Upgrade bundled setuptools to 63.2.0.
+  - gh-95194: Upgrade bundled pip to 22.2.
+  - gh-93899: Fix check for existence of os.EFD_CLOEXEC,
+    os.EFD_NONBLOCK and os.EFD_SEMAPHORE flags on older kernel
+    versions where these flags are not present. Patch by Kumar
+    Aditya.
+  - gh-95166: Fix concurrent.futures.Executor.map() to cancel the
+    currently waiting on future on an error - e.g. TimeoutError
+    or KeyboardInterrupt.
+  - gh-93157: Fix fileinput module didn’t support errors option
+    when inplace is true.
+  - gh-94821: Fix binding of unix socket to empty address
+    on Linux to use an available address from the abstract
+    namespace, instead of “0”.
+  - gh-94736: Fix crash when deallocating an instance of a
+    subclass of _multiprocessing.SemLock. Patch by Kumar Aditya.
+  - gh-94637: SSLContext.set_default_verify_paths() now releases
+    the GIL around SSL_CTX_set_default_verify_paths call. The
+    function call performs I/O and CPU intensive work.
+  - gh-94510: Re-entrant calls to sys.setprofile() and
+    sys.settrace() now raise RuntimeError. Patch by Pablo
+    Galindo.
+  - gh-92336: Fix bug where linecache.getline() fails on bad
+    files with UnicodeDecodeError or SyntaxError. It now returns
+    an empty string as per the documentation.
+  - gh-89988: Fix memory leak in pickle.Pickler when looking up
+    dispatch_table. Patch by Kumar Aditya.
+  - gh-94254: Fixed types of struct module to be immutable. Patch
+    by Kumar Aditya.
+  - gh-94245: Fix pickling and copying of typing.Tuple[()].
+  - gh-94207: Made _struct.Struct GC-tracked in order to fix a
+    reference leak in the _struct module.
+  - gh-94101: Manual instantiation of ssl.SSLSession objects is
+    no longer allowed as it lead to misconfigured instances that
+    crashed the interpreter when attributes where accessed on
+    them.
+  - gh-84753: inspect.iscoroutinefunction(),
+    inspect.isgeneratorfunction(), and
+    inspect.isasyncgenfunction() now properly return True
+    for duck-typed function-like objects like instances of
+    unittest.mock.AsyncMock.
+  - This makes inspect.iscoroutinefunction() consistent with the
+    behavior of asyncio.iscoroutinefunction(). Patch by Mehdi
+    ABAAKOUK.
+  - gh-83499: Fix double closing of file description in tempfile.
+  - gh-79512: Fixed names and __module__ value of weakref classes
+    ReferenceType, ProxyType, CallableProxyType. It makes them
+    pickleable.
+  - gh-90494: copy.copy() and copy.deepcopy() now always raise
+    a TypeError if __reduce__() returns a tuple with length 6
+    instead of silently ignore the 6th item or produce incorrect
+    result.
+  - gh-90549: Fix a multiprocessing bug where a global named
+    resource (such as a semaphore) could leak when a child
+    process is spawned (as opposed to forked).
+  - gh-79579: sqlite3 now correctly detects DML queries with
+    leading comments. Patch by Erlend E. Aasland.
+  - gh-93421: Update sqlite3.Cursor.rowcount when a DML
+    statement has run to completion. This fixes the row count
+    for SQL queries like UPDATE ... RETURNING. Patch by Erlend
+    E. Aasland.
+  - gh-91810: Suppress writing an XML declaration in open
+    files in ElementTree.write() with encoding='unicode' and
+    xml_declaration=None.
+  - gh-93353: Fix the importlib.resources.as_file() context
+    manager to remove the temporary file if destroyed late
+    during Python finalization: keep a local reference to the
+    os.remove() function. Patch by Victor Stinner.
+  - gh-83658: Make multiprocessing.Pool raise an exception if
+    maxtasksperchild is not None or a positive int.
+  - gh-74696: shutil.make_archive() no longer temporarily changes
+    the current working directory during creation of standard
+    .zip or tar archives.
+  - gh-91577: Move imports in SharedMemory methods to module
+    level so that they can be executed late in python
+    finalization.
+  - bpo-47231: Fixed an issue with inconsistent trailing slashes
+    in tarfile longname directories.
+  - bpo-46755: In QueueHandler, clear stack_info from LogRecord
+    to prevent stack trace from being written twice.
+  - bpo-46053: Fix OSS audio support on NetBSD.
+  - bpo-46197: Fix ensurepip environment isolation for subprocess
+    running pip.
+  - bpo-45924: Fix asyncio incorrect traceback when future’s
+    exception is raised multiple times. Patch by Kumar Aditya.
+  - bpo-34828: sqlite3.Connection.iterdump() now handles
+    databases that use AUTOINCREMENT in one or more tables.
+  - gh-94321: Document the PEP 246 style protocol type
+    sqlite3.PrepareProtocol.
+  - gh-86128: Document a limitation in ThreadPoolExecutor where
+    its exit handler is executed before any handlers in atexit.
+  - gh-61162: Clarify sqlite3 behavior when Using the connection
+    as a context manager.
+  - gh-87260: Align sqlite3 argument specs with the actual
+    implementation.
+  - gh-86986: The minimum Sphinx version required to build the
+    documentation is now 3.2.
+  - gh-88831: Augmented documentation of
+    asyncio.create_task(). Clarified the need to keep strong
+    references to tasks and added a code snippet detailing how to
+    to this.
+  - bpo-47161: Document that pathlib.PurePath does not collapse
+    initial double slashes because they denote UNC paths.
+  - gh-95280: Fix problem with test_ssl test_get_ciphers on
+    systems that require perfect forward secrecy (PFS) ciphers.
+  - gh-95212: Make multiprocessing test case
+    test_shared_memory_recreate parallel-safe.
+  - gh-91330: Added more tests for dataclasses to cover behavior
+    with data descriptor-based fields.
+  - gh-94208: test_ssl is now checking for supported TLS version
+    and protocols in more tests.
+  - gh-93951: In test_bdb.StateTestCase.test_skip, avoid
+    including auxiliary importers.
+  - gh-93957: Provide nicer error reporting from subprocesses in
+    test_venv.EnsurePipTest.test_with_pip.
+  - gh-57539: Increase calendar test coverage for
+    calendar.LocaleTextCalendar.formatweekday().
+  - gh-92886: Fixing tests that fail when running with
+    optimizations (-O) in test_zipimport.py
+  - bpo-47016: Create a GitHub Actions workflow for verifying
+    bundled pip and setuptools. Patch by Illia Volochii and Adam
+    Turner.
+  - gh-94841: Fix the possible performance regression of
+    PyObject_Free() compiled with MSVC version 1932.
+  - gh-95511: Fix the Shell context menu copy-with-prompts bug of
+    copying an extra line when one selects whole lines.
+  - gh-95471: In the Edit menu, move Select All and add a new
+    separator.
+  - gh-95411: Enable using IDLE’s module browser with .pyw files.
+  - gh-89610: Add .pyi as a recognized extension for IDLE on
+    macOS. This allows opening stub files by double clicking on
+    them in the Finder.
+  - gh-94538: Fix Argument Clinic output to custom file
+    destinations. Patch by Erlend E. Aasland.
+  - gh-94430: Allow parameters named module and self with custom
+    C names in Argument Clinic. Patch by Erlend E. Aasland
+  - gh-94930: Fix SystemError raised when
+    PyArg_ParseTupleAndKeywords() is used with # in (...) but
+    without PY_SSIZE_T_CLEAN defined.
+  - gh-94864: Fix PyArg_Parse* with deprecated format units “u”
+    and “Z”. It returned 1 (success) when warnings are turned
+    into exceptions.
+- Reapply patches
+  -  bpo-31046_ensurepip_honours_prefix.patch
+  -  fix_configure_rst.patch
+  -  no-skipif-doctests.patch
+  -  skip-test_pyobject_freed_is_freed.patch
+</comment>
+    <requestid>992411</requestid>
+  </revision>
 </revisionlist>
