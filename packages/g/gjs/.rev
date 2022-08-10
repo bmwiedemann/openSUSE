@@ -1688,4 +1688,16 @@ Fri Dec  18 23:51:08 UTC 2015 - damjanovic.ivo@gmail.com
     <comment>Scripted push from GNOME:Next (forwarded request 987180 from dimstar)</comment>
     <requestid>987354</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>edea1ea4c681a8fac0648f172492ac2e</srcmd5>
+    <version>1.72.2</version>
+    <time>1660144380</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.72.2:
+  + Various fixes ported from the development branch.
+  + Closed bugs and merge requests:
+    - gi/arg-cache.cpp: Fix building on Visual Studio.
+    - doc: Reflect support for constructor with GObject. (forwarded request 993714 from iznogood)</comment>
+    <requestid>993950</requestid>
+  </revision>
 </revisionlist>

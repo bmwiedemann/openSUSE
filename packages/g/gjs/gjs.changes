@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug  8 08:39:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.72.2:
+  + Various fixes ported from the development branch.
+  + Closed bugs and merge requests:
+    - gi/arg-cache.cpp: Fix building on Visual Studio.
+    - doc: Reflect support for constructor with GObject.
+
+-------------------------------------------------------------------
 Wed Jul  6 12:18:50 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.72.1:
