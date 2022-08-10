@@ -113,8 +113,8 @@ splitter-whitelist =
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-# YaST:Head:D-Installer init - rbrown 29 Jul 2022
-devel-whitelist = YaST:Head:D-Installer
+# devel:microos:containers init - rbrown 10 Aug 2022
+devel-whitelist = devel:microos:containers
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
@@ -146,7 +146,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20220809</value>
+    <value>20220810</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -469,8 +469,8 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20220808'
-publishing: '20220808'
+published: '20220809'
+publishing: '20220809'
 testing: '20220809'
 </value>
   </attribute>
