@@ -19,7 +19,7 @@
 %global pkg_name retry
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.9.2.1
+Version:        0.9.3.0
 Release:        0
 Summary:        Retry combinators for monadic actions that may fail
 License:        BSD-3-Clause
@@ -32,6 +32,7 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
+BuildRequires:  ghc-unliftio-core-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
