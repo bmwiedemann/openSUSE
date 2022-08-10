@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Aug 10 11:42:43 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.2.7
+  * minor incompatible change: the compiler emits full WARNINGs for undefined
+    references to variables in TYPE and DYNAMIC-EXTENT declarations, and for
+    SETQ of an undefined variable.  (This was the historic behaviour for
+    everything except the DYNAMIC-EXTENT case, which used to emit a
+    STYLE-WARNING, but these diagnostics got lost in a refactoring since
+    sbcl-2.2.2)
+  * minor incompatible change: literal objects (strings, in particular)
+    in compiled code may at the discretion of the runtime be placed in
+    read-only memory. Violations of CLHS 3.7.1 could produce memory faults.
+    If ":PURIFY NIL" is given to SAVE-LISP-AND-DIE then no read-only memory
+    will be used.
+  * enhancement: Unicode support has been updated to support version 10.0.0 of
+    the Unicode standard, including addition of characters and refinements to
+    breaking and collation algorithms.
+  * bug fix: AVX is no longer used for loading simd-pack-256 constants.
+    (lp#1928097)
+  * bug fix: fix building the manual when some contribs are blocked or
+    otherwise disabled.  (lp#1979821, thanks to Robert Schiele)
+  * bug fix: fix type derivation of sequence functions with highly-specific
+    declared argument types.  (lp#1980292, reported by James Kalenius)
+  * bug fix: internal error when optimizing chains of conditionals in local
+    functions.  (lp#1981607, reported by Pasha K)
+  * bug fix: fix comparison of negative floats with bignums.
+  * optimization: faster TRUNCATE with float arguments.
+  * optimization: EQUALP hashing of large floating point values should
+    generate less garbage.
+- from version 2.2.6
+  * minor incompatible change: support for 32-bit x86 on macOS has been
+    removed.
+  * new contrib: sb-simd, to provide a convenient interface for SIMD
+    programming on x86-64.  (Thanks to Marco Heisig and other sb-simd
+    contributors)
+  * enhancement: core compression now uses zstd instead of zlib.  (lp#1881089)
+  * enhancement: provide compiler warnings for specialized array type
+    mismatches in CONCATENATE.
+  * enhancement: provide compiler warnings for bad sequence bounding index
+    designator arguments to sequence functions.
+  * enhancement: The sb-mpfr contrib now allows coercion from MPFR-FLOATs
+    to CL:RATIONAL.  (Thanks to Robert Smith)
+  * bug fix: fix compilation failure related to declaiming types of constants.
+    (lp#1977726, reported by Pierre Neidhardt)
+  * bug fix: fix race condition in CLOS optimized constructors.  (lp#1951341)
+  * bug fix: fix too-eager elision of allocation barriers when initializing
+    closure and structure objects.
+  * optimization: fasl files are now usually smaller (up to 10% on default
+    policy) and may load faster, especially on high debug.
+  * optimization: faster string comparisons on arm64, x86-64.
+  * optimization: faster [n]string-down/upcase on arm64, x86-64.
+  * optimization: faster [n]reverse for 8- and 32-bit element vectors on
+    arm64, x86-64.
+  * optimization: faster type tests for (CONS (EQL symbol)) on x86-64.
+- Add libzstd-devel to BuildRequires
+
+-------------------------------------------------------------------
 Fri Jun 17 06:52:22 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.2.5

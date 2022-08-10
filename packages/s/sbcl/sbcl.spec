@@ -21,7 +21,7 @@
 
 Name:           sbcl
 #!BuildIgnore:  gcc-PIE
-Version:        2.2.5
+Version:        2.2.7
 Release:        0
 Summary:        Steel Bank Common Lisp
 License:        BSD-3-Clause AND SUSE-Public-Domain
@@ -83,6 +83,7 @@ BuildRequires:  sbcl
 %endif
 BuildRequires:  ctags
 BuildRequires:  ghostscript
+BuildRequires:  libzstd-devel
 BuildRequires:  zlib-devel
 %if 0%{?suse_version:1}
 BuildRequires:  netcfg
