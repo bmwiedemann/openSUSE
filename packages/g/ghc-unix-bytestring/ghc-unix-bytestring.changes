@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 26 05:28:17 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update unix-bytestring to version 0.3.7.7.
+  0.3.7.7 (2022-05-25):
+      - Updated the `alignment` macro to avoid warnings on hsc2hs-0.68 (ghc-8.0); also fixing cross-compilation for Arm AArch64:
+      * <https://gitlab.haskell.org/ghc/ghc/-/wikis/migration/8.0#hsc2hs-defines-an-alignment-macro>
+
+-------------------------------------------------------------------
 Wed Nov  3 15:44:25 UTC 2021 - psimons@suse.com
 
 - Update unix-bytestring to version 0.3.7.6.
