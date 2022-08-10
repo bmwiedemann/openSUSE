@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Aug  3 07:45:27 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- harfbuzz 5.1.0:
+  + More extensive buffer tracing messages
+  + Fix hb-ft regression in bitmap fonts rendering
+  + Support extension promotion of lookups in hb-subset-repacker
+  + A new HB_GLYPH_FLAG_SAFE_TO_INSERT_TATWEEL for scripts that use
+    elongation (e.g. Arabic) to signify where it is safe to insert
+    tatweel glyph without interrupting shaping
+  + Add --safe-to-insert-tatweel to hb-shape tool
+- add harfbuzz-5.1.0-repacker-fix-signedness-of-char-in-tests.patch
+  from upstream to fix ARM and PPC builds
+
+-------------------------------------------------------------------
+Sun Jul 24 16:34:16 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- harfbuzz 5.0.1, including changes from 5.0.0:
+  + Improve for fonts with more than 65535 glyphs
+  + Support version 2 of “avar” table
+  + Improve support for some Arabic, Hebrew fonts
+  + Support for specific script tags to be retained in the 
+    subsetter, and add “--layout-scripts” option to “hb-subset”
+    tool
+  + Improved handling of command line options
+  + Improve support for multiple tables and font features,
+    and font feature specific bug fixes
+
+-------------------------------------------------------------------
 Sun Jul  3 09:33:36 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - harfbuzz 4.4.1:

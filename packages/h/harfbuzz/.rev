@@ -870,4 +870,12 @@ https://github.com/harfbuzz/harfbuzz/issues/3216</comment>
     <comment>harfbuzz 4.4.1 CVE-2022-33068 boo#1200900 (forwarded request 986441 from AndreasStieger)</comment>
     <requestid>986573</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>c88bfbe028116d69a9572ad5824a080e</srcmd5>
+    <version>5.1.0</version>
+    <time>1660144368</time>
+    <user>dimstar_suse</user>
+    <comment>harfbuzz 5.1.0 (forwarded request 992464 from AndreasStieger)</comment>
+    <requestid>993935</requestid>
+  </revision>
 </revisionlist>
