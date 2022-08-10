@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 10 12:42:58 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.4.1
+  - Print info messages on stdout,  not stderr
+
+-------------------------------------------------------------------
 Tue Mar 16 14:54:54 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
-- Change to go.mod
+- Update to version 1.4
+  - Change to go.mod
 
 -------------------------------------------------------------------
 Mon Mar 15 22:37:26 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>

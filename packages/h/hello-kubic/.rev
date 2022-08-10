@@ -47,4 +47,16 @@
   * Drop BuildRequires: golang-packaging not currently using macros</comment>
     <requestid>879432</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4f26c59c580faaf36b78d6a538618b72</srcmd5>
+    <version>1.4.1</version>
+    <time>1660144498</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.1
+  - Print info messages on stdout,  not stderr
+
+- Update to version 1.4
+  - Change to go.mod</comment>
+    <requestid>994328</requestid>
+  </revision>
 </revisionlist>
