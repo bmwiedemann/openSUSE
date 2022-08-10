@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 20 23:32:14 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update concurrent-output to version 1.10.16.
+  concurrent-output (1.10.16) unstable; urgency=medium
+
+    * Allow transformers-0.6
+      (Thanks, Janus Troelsen)
+
+   -- Joey Hess <id@joeyh.name>  Fri, 20 May 2022 19:31:56 -0400
+
+-------------------------------------------------------------------
 Fri Feb  4 19:33:16 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update concurrent-output to version 1.10.15.
