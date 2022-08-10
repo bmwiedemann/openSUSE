@@ -16,7 +16,7 @@
 #
 
 
-%{!?_distconfdir:%global _distconfdir %_sysconfdir}
+%{!?_pam_vendordir:%global _pam_vendordir %_sysconfdir/pam.d}
 
 %bcond_without released
 Name:           kscreenlocker
@@ -97,7 +97,7 @@ Development files for Library and components for secure lock screen architecture
 
 %install
   # Ship our own file to not depend on a display manager being installed (boo#1108329)
-  install -D -m0644 %{SOURCE3} %{buildroot}%{_distconfdir}/pam.d/kde
+  install -D -m0644 %{SOURCE3} %{buildroot}%{_pam_vendordir}/kde
   %kf5_makeinstall -C build
 %if %{with released}
   %kf5_find_lang
@@ -130,7 +130,7 @@ exit 0
 
 %files
 %license COPYING*
-%{_distconfdir}/pam.d/kde
+%{_pam_vendordir}/kde
 %{_kf5_applicationsdir}/kcm_screenlocker.desktop
 %{_kf5_sharedir}/kconf_update/
 %{_kf5_plugindir}/

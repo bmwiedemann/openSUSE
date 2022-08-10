@@ -1018,4 +1018,12 @@
     <comment>Plasma 5.25.4 (forwarded request 992383 from Vogtinator)</comment>
     <requestid>992489</requestid>
   </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>e9a7640f67de48e1b9031ff0c2b763df</srcmd5>
+    <version>5.25.4</version>
+    <time>1660144387</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %_pam_vendordir (forwarded request 994058 from kukuk)</comment>
+    <requestid>994146</requestid>
+  </revision>
 </revisionlist>

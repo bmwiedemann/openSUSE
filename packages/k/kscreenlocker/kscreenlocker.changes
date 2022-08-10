@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  9 09:43:19 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use %_pam_vendordir
+
+-------------------------------------------------------------------
 Tue Aug  2 14:07:10 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.4
