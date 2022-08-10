@@ -19,7 +19,7 @@
 
 %define         sover 2
 Name:           libbluray
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Library to access Blu-Ray disk
 License:        LGPL-2.1-or-later
@@ -28,7 +28,6 @@ URL:            https://www.videolan.org/developers/libbluray.html
 Source0:        https://download.videolan.org/pub/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
 Patch0:         libbluray-pkgconfig.patch
-Patch1:         libbluray-April2022CPU.patch
 BuildRequires:  ant
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  libtool
@@ -89,9 +88,7 @@ intended for software that want to support Blu-ray playback (such as VLC and
 MPlayer). We, the authors of this library, do not condone nor endorse piracy.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure \
