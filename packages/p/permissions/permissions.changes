@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug  8 06:40:01 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix dependency from permissions-zypp-plugin to permissions.
+
+-------------------------------------------------------------------
+Sat Jul 30 07:14:02 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Avoid different Versions for subpackages to fix build-compare
+  seeing the src rpm as equal. It replaces VERSION-RELEASE but
+  that will fail if subpackages use a different Version
+
+-------------------------------------------------------------------
+Wed Jul 13 13:52:09 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 20220713:
+  * postfix: add postlog setgid for maildrop binary (bsc#1201385)
+  * libexec migration: KDE utilities now properly place their helpers
+  * pccardctl: installation path has finally changed to /usr/sbin
+
+-------------------------------------------------------------------
 Fri Mar 11 11:14:05 UTC 2022 - matthias.gerstner@suse.com
 
 - Update to version 20220309:

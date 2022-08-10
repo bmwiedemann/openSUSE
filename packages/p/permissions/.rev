@@ -1408,4 +1408,12 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
   * mgetty: faxq-helper now finally reside in /usr/libexec</comment>
     <requestid>961063</requestid>
   </revision>
+  <revision rev="151" vrev="31">
+    <srcmd5>f57da728664b0f7f95e4a8a0bf2eb12f</srcmd5>
+    <version>1599_20220713</version>
+    <time>1660144391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993693</requestid>
+  </revision>
 </revisionlist>

@@ -16,10 +16,10 @@
 #
 
 
-%define VERSION_DATE 20220309
+%define VERSION_DATE 20220713
 
 Name:           permissions
-Version:        %{VERSION_DATE}.%{suse_version}
+Version:        %{suse_version}_%{VERSION_DATE}
 Release:        0
 Summary:        SUSE Linux Default Permissions
 # Maintained in github by the security team.
@@ -62,8 +62,6 @@ This package does not contain files, it just requires the necessary packages.
 %package config
 Summary:        SUSE Linux Default Permissions config files
 Group:          Productivity/Security
-Version:        %{suse_version}_%{VERSION_DATE}
-Release:        0
 Requires(post): %fillup_prereq
 Requires(post): chkstat
 #!BuildIgnore:  group(trusted)
@@ -93,8 +91,6 @@ The actual permissions configuration files, /usr/share/permissions/permission.*.
 %package -n chkstat
 Summary:        SUSE Linux Default Permissions tool
 Group:          Productivity/Security
-Version:        %{suse_version}_%{VERSION_DATE}
-Release:        0
 
 %description -n chkstat
 Tool to check and set file permissions.
@@ -105,7 +101,7 @@ Tool to check and set file permissions.
 
 %package -n permissions-zypp-plugin
 BuildArch:      noarch
-Requires:       permissions = %{VERSION_DATE}.%{suse_version}
+Requires:       permissions = %{version}
 Requires:       python3-zypp-plugin
 Requires:       libzypp(plugin:commit) = 1
 Summary:        A zypper commit plugin for calling chkstat
