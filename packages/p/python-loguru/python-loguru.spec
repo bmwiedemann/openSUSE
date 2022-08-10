@@ -1,7 +1,7 @@
 #
 # spec file for package python-loguru
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-loguru
-Version:        0.5.3
+Version:        0.6.0
 Release:        0
 Summary:        Python logging component with a simple interface
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Delgan/loguru
 Source:         https://files.pythonhosted.org/packages/source/l/loguru/loguru-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pytest-6.2-excepthooks.patch
-Patch0:         https://github.com/Delgan/loguru/commit/31cf758ee9d22dbfa125f38153782fe20ac9dce5.patch#/pytest-6.2-excepthooks.patch
-# PATCH-FIX-UPSTREAM loguru-exception-formatting-py39.patch
-Patch1:         https://github.com/Delgan/loguru/commit/19f518c5f1f355703ffc4ee62f0e1e397605863e.patch#/loguru-exception-formatting-py39.patch
+# PATCH-FIX-UPSTREAM loguru-fix-repr-tests.patch https://github.com/Delgan/loguru/commit/4fe21f6 -- Fix "repr()" tests failing on Python 3.11 and Python 3.10.6
+Patch1:         loguru-fix-repr-tests.patch
 BuildRequires:  %{python_module aiocontextvars if %python-base < 3.7}
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module pytest}
@@ -64,9 +62,7 @@ if [ $(getconf LONG_BIT) = 32 ]; then
   # Threads have different references on 32-bit
   donttest=" or (test_log_formatters and thread and not thread.name)"
 fi
-# different line numbers -- https://github.com/Delgan/loguru/issues/550
-python310_donttest=" or (test_exceptions_formatting and formatting_with_context_manager)"
-%pytest -k "not (donttestexprprefixdummy $donttest ${$python_donttest})"
+%pytest -k "not (donttestexprprefixdummy $donttest)"
 
 %files %{python_files}
 %license LICENSE
