@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  5 21:07:13 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add 398.patch -- policy-node: fix potential rescan loop to
+  prevent high cpu usage (glfo#pipewire/wireplumber#152); patch
+  taken from upstream merge request.
+
+-------------------------------------------------------------------
 Thu Jul 14 08:35:10 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix crash on session end:

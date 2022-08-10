@@ -35,6 +35,7 @@ Patch0:         reduce-meson-required-version.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         fix-alsa.patch
 Patch2:         0001-dbus-fix-crash-when-trying-to-reconnect.patch
+Patch3:         https://gitlab.freedesktop.org/pipewire/wireplumber/-/merge_requests/398.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
@@ -145,6 +146,7 @@ the wireplumber shared library.
 %endif
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 pushd src/config/main.lua.d
 python3 %{SOURCE1}
