@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Sat Aug  6 13:40:17 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.10:
+  + Build: Require libqmi 1.30.8.
+  + FCC unlock: Updated SDX55 unlock script to handle the new
+    method introduced in the latest firmware releases.
+  + Modem interface:
+    - Set signal quality to 0% on shutdown.
+    - Set signal quality as recent on init.
+  + MBIM:
+    - Fix task completion when peeking device fails.
+    - Fix several GError double-frees.
+  + mmcli: Don't print signal quality until modem is enabled.
+  + Plugins: foxconn: remove carrier mapping table for T99W175.
+  + Several other minor improvements and fixes.
+- Changes from version 1.18.8:
+  + A new connection status dispatcher setup is provided, where
+    users can provide custom scripts that will be called on bearer
+    connect/disconnect events. This dispatcher will make the netifd
+    integration in openwrt work much better, as we'll be able to
+    report network-initiated disconnections cleanly to netifd.
+    There are no default connection status dispatcher scripts
+    installed, but it's suggested distributions make sure the
+    following directories exist:
+    - ${sysconfdir}/ModemManager/connection.d/
+    - ${libdir}/ModemManager/connection.d/
+  + API: Add missing Simple interface definitions in
+    ModemManager-names.h.
+  + Build:
+    - meson:
+      . fix daemon enums dependencies.
+      . fix port enums includes.
+      . fix 'export_packages' in GIR setup.
+      . fix simtech plugin module name.
+    - systemd: don't run ModemManager in containers.
+  + Core:
+    - serial: ensure the port object is valid after BUFFER_FULL
+      handling.
+    - netlink:
+      . use unaligned netlink attribute length.
+      . only change IFF_UP flag.
+    - bearer: match unknown auth to chap in loose comparisons.
+    - charsets: return error if UTF-8 validation fails.
+    - fcc-unlock: make scripts POSIX shell compatible.
+    - modem-helpers:
+      . consider minimum ID when choosing best profile.
+      . fix reading <Act> given in COPS=? responses.
+    - sms: prevent crash if date is out of range.
+    - profile-manager: fix copy-paste error on tags for quarks.
+  + QMI:
+    - Ignore slot status indications until initial status is known.
+    - Return error when loading capabilities if none is found.
+  + MBIM:
+    - Default initial EPS bearer's auth to chap when unknown.
+    - Update default error when network error is out of range.
+  + mmcli: Fix key length when printing list of items.
+  + Plugins:
+    - linktop: new port type hints.
+    - cinterion: add support for PLSx3w modems.
+    - huawei: disable +CPOL based features in Huawei E226.
+  + Several other minor improvements and fixes.
+
+-------------------------------------------------------------------
 Wed Jun  8 11:01:59 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Enable QRTR support
