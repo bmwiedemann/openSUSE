@@ -1332,4 +1332,16 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
   * This is a bug-fix release, fixing a variety of small issues (forwarded request 985076 from dirkmueller)</comment>
     <requestid>985999</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>3ec0e8010141041ba52a341d9b150d84</srcmd5>
+    <version>2.2.7</version>
+    <time>1660144484</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.7:
+  * This is a bug-fix release, fixing a $edit_headers bug on MacOS, along with
+    a few other small bugs. It also tightens the $query_command parser to
+    accept a single tab between fields, and changes $pager to accept a %s
+    expando. (forwarded request 994182 from dirkmueller)</comment>
+    <requestid>994257</requestid>
+  </revision>
 </revisionlist>

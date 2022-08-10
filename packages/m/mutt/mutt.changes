@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  9 19:05:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.7:
+  * This is a bug-fix release, fixing a $edit_headers bug on MacOS, along with
+    a few other small bugs. It also tightens the $query_command parser to
+    accept a single tab between fields, and changes $pager to accept a %s
+    expando. 
+
+-------------------------------------------------------------------
 Sat Jun 25 20:25:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.6:
