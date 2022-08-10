@@ -3923,4 +3923,16 @@ oddjob-gpupdate isn't blocked)</comment>
   * Add flake8-simplify issues.</comment>
     <requestid>991299</requestid>
   </revision>
+  <revision rev="407" vrev="1">
+    <srcmd5>dbefa71b146d6b15f0c39bf770de1279</srcmd5>
+    <version>2.3.0+git20220808.2a6c0296</version>
+    <time>1660144392</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git20220808.2a6c0296:
+  * Modify format of binary-or-shlib-defines-rpath
+
+- Update to version 2.3.0+git20220804.c5a6b057:
+  * Whitelist gromox (bsc#1200165)</comment>
+    <requestid>993842</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 08 19:04:14 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220808.2a6c0296:
+  * Modify format of binary-or-shlib-defines-rpath
+
+-------------------------------------------------------------------
+Thu Aug 04 16:15:41 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220804.c5a6b057:
+  * Whitelist gromox (bsc#1200165)
+
+-------------------------------------------------------------------
 Tue Jul 26 19:37:50 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.3.0+git20220725.94636c5e:
