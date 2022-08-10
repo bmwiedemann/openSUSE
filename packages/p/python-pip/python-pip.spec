@@ -50,6 +50,9 @@ URL:            http://www.pip-installer.org
 Source:         https://github.com/pypa/pip/archive/%{version}.tar.gz#/pip-%{version}-gh.tar.gz
 # PATCH-FIX-OPENSUSE pip-shipped-requests-cabundle.patch -- adapted patch from python-certifi package
 Patch0:         pip-shipped-requests-cabundle.patch
+# PATCH-FIX-UPSTREAM distutils-reproducible-compile.patch gh#python/cpython#8057 mcepl@suse.com
+# To get reproducible builds, byte_compile() of distutils.util now sorts filenames.
+Patch1:         distutils-reproducible-compile.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools >= 40.8.0}
 BuildRequires:  fdupes
@@ -85,8 +88,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module mock}
 %endif
 BuildRequires:  ca-certificates
-BuildRequires:  git
-BuildRequires:  subversion
+BuildRequires:  git-core
 %endif
 %if %{with wheel}
 BuildRequires:  %{python_module wheel}

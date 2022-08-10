@@ -662,4 +662,17 @@
     <comment></comment>
     <requestid>963100</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>3a849829b5bc01c3c513d45b646f8dbc</srcmd5>
+    <version>22.0.4</version>
+    <time>1660144348</time>
+    <user>dimstar_suse</user>
+    <comment>- skip subversion tests, not that relevant to pull in
+  dozens of dependencies into small bootstrap
+
+- Add distutils-reproducible-compile.patch to make installed
+  files ordered correctly and thus builds reproducible again
+  (port of the fix for bpo#29708 and gh#python/cpython#8057).</comment>
+    <requestid>994298</requestid>
+  </revision>
 </revisionlist>

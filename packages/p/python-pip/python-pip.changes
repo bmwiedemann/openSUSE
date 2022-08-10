@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 10 10:33:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip subversion tests, not that relevant to pull in
+  dozens of dependencies into small bootstrap
+
+-------------------------------------------------------------------
+Thu Jun 23 20:08:32 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add distutils-reproducible-compile.patch to make installed
+  files ordered correctly and thus builds reproducible again
+  (port of the fix for bpo#29708 and gh#python/cpython#8057).
+
+-------------------------------------------------------------------
 Sat Mar 19 17:14:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Avoid cycle: BuildRequire ca-certificates only in tests
