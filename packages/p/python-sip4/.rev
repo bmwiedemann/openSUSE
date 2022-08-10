@@ -48,4 +48,13 @@
     <comment></comment>
     <requestid>914894</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>816bca9fecf519bf4ecedb08e317d19d</srcmd5>
+    <version>4.19.25</version>
+    <time>1660144459</time>
+    <user>dimstar_suse</user>
+    <comment>- Override install location to platformdir for distutils hijacked
+  by setuptools 60+</comment>
+    <requestid>994183</requestid>
+  </revision>
 </revisionlist>

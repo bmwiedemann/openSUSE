@@ -158,7 +158,8 @@ ldlibrary=`$python -c "import sysconfig as s;print(s.get_config_var('LDLIBRARY')
 $python ../configure.py --debug \
     CFLAGS+="%{optflags}" \
     CXXFLAGS+="%{optflags}" \
-    LIBS+="-l$ldlibrary"
+    LIBS+="-l$ldlibrary" \
+    -d %{$python_sitearch}
 
 make %{?_smp_mflags}
 
@@ -187,7 +188,8 @@ $python ../configure.py --debug \
   CFLAGS+="%{optflags}" \
   CXXFLAGS+="%{optflags}" \
   LIBS+="-l$ldlibrary" \
-  --no-dist-info
+  --no-dist-info \
+  -d %{$python_sitearch}
 
 make %{?_smp_mflags}
 
