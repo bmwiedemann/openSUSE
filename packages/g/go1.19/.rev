@@ -16,4 +16,13 @@
   go1.19.x minor releases will be provided through August 2023. (forwarded request 993859 from jfkw)</comment>
     <requestid>993860</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>574a2679b519bbc7ef9f74c5434ace11</srcmd5>
+    <version>1.19</version>
+    <time>1660144467</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase gcc-go.patch onto upstream changes in go/src/make.bash and
+  go/src/make.rc. Used for SLE-12 go bootstrap builds with gcc8. (forwarded request 994190 from jfkw)</comment>
+    <requestid>994192</requestid>
+  </revision>
 </revisionlist>

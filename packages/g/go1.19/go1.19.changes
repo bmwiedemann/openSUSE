@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  9 05:56:23 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Rebase gcc-go.patch onto upstream changes in go/src/make.bash and
+  go/src/make.rc. Used for SLE-12 go bootstrap builds with gcc8.
+
+-------------------------------------------------------------------
 Tue Aug  2 17:19:11 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.19 (released 2022-08-02) is a major release of Go.
