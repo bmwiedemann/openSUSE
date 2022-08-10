@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Tue Aug 9 13:46:27 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#117
+- glibc 2.36+ includes fsconfig itself, make linux/fs.h inclusion
+  conditional (bsc#1202213)
+- 22.1
+
+--------------------------------------------------------------------
 Fri Aug 5 07:56:03 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#114
