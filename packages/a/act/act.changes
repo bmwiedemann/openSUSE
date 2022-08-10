@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Aug 10 03:15:57 UTC 2022 - jayvdb@gmail.com
+
+- Update to version 0.2.30:
+  * fix: ensure all post steps are executed (#1286)
+  * walk submodule path instead of dir name (#1282)
+  * fix: add parent step id in composite action step id (#1268)
+  * Made env interpolated instead of evaluated. (#1222)
+  * build(deps): bump github.com/sirupsen/logrus from 1.8.1 to 1.9.0 (#1273)
+  * Update README.md (#1260)
+  * lint: add ReadHeaderTimeout (#1277)
+  * fix: the number in the github event is of type number (#1252)
+  * only perform chown operation for non root users (#1250)
+  * fix: allow TimeoutMinutes to be expression in Jobs (#1247)
+  * fix: use docker images from dockerhub (#1249)
+  * Improve --eventpath example command (#1243)
+  * Improve docs for events inputs (#1238)
+  * build(deps): bump github.com/rhysd/actionlint from 1.6.14 to 1.6.15 (#1239)
+  * build(deps): bump github.com/stretchr/testify from 1.7.5 to 1.8.0 (#1240)
+
+-------------------------------------------------------------------
 Sun Jul 03 21:39:05 UTC 2022 - elimat@opensuse.org
 
 - Update to version 0.2.29:
