@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Sat Aug  6 15:12:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update Requirements
+- Add mypy-pr13259-walrus.patch -- gh#python/mypy#13259
+  * fix test failures with Python >= 3.10.6
+
+-------------------------------------------------------------------
+Sat Aug  6 14:10:01 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.971:
+  - Last Release Officially Supporting Python 2 and 3.6:
+    - Support for Python 2 will be completely removed in the next
+      mypy feature release after this one, mypy 0.980.
+    - Support for Python 3.6 will also be dropped in mypy 0.980,
+      since Python 3.6 has reached its end of life. It will be
+      still possible to target Python 3.6 using --python-version
+      in future mypy versions, but no bugs will be fixed that
+      affect only Python 3.6 (unless they are regressions). Also
+      note that typeshed just recently dropped Python 3.6
+      support, so standard library features only available in
+      Python 3.6 will not be supported.
+    on https://mypy-lang.blogspot.com/2022/07/mypy-0971-released.html
+  - Mypyc Improvements and Fixes
+    * Speed up accessing always defined native attributes (Jukka
+      Lehtosalo, PR 12600)
+    * Reduce the overhead of reference counting (Jukka Lehtosalo,
+      PR 12805, PR 12810, PR 12817)
+    * Fix Python 3.11 C API errors (97littleleaf11, PR 12850)
+    * Generate smaller code for casts and some implicit type
+      coercions (Jukka Lehtosalo, PR 12839)
+    * Optimize calling Python objects with zero or one arguments
+      (97littleleaf11, PR 12862)
+    * Replace integer floor division by a power of two with a shift
+      (Jukka Lehtosalo, PR 12870)
+    * Add primitives for faster access of float and tuple type
+      objects (Richard Si, PR 13078)
+    * Fix compile error related to operator assignment in a
+      generator function (Zsolt Dollenstein, PR 13144)
+  - Stubtest Improvements
+    * Allow ellipsis as default argument (Shantanu, PR 12838)
+    * Support --version (Shantanu, PR 12852)
+    * Check type variables and ParamSpecs (Shantanu, PR 12851)
+    * Add error summary and other output tweaks (KotlinIsland, PR
+      12855)
+  - Other Notable Fixes and Improvements
+    * Disallow assignments to awaited coroutines that do not return
+      (Shantanu, PR 12853)
+    * Search sys.path for PEP 561 compliant packages (Ashley
+      Whetter, PR 11143)
+    * Treat generators with await as async (Jared Hance, PR 12925)
+    * Fix bug in constraints solver regarding ParamSpec upper
+      bounds (Alex Waygood, PR 12938)
+    * Fix crash on redefined class variable annotated with
+      Final[<type>] (Alex Waygood, PR 12951)
+    * Improve handling of overloads with ParamSpec (Alex Waygood,
+      PR 12953)
+    * Don’t suggest installing types packages for some third-party
+      packages that now include types or are obsolete (Shantanu, PR
+      12959)
+    * Add a short note when an error may be fixed by adding an
+      await (Ivan Levkivskyi, PR 12958)
+    * Support unannotated converters for attr.ib (t4lz, PR 12815)
+    * Disallow undesirable implicit reexport with a from import
+      (Shantanu, PR 12704)
+    * Fix crash when subclass method has the same name as a type
+      alias (Wesley Collin Wright, PR 13015)
+    * Include end column offset in the mypy AST (bruno messias, PR
+      12972)
+    * Fix "attribute 'arguments' of 'FuncDef' undefined"
+      incremental crash (Frédéric Perrin, PR 12324)
+    * Fix false positive error on multiple enum base classes (Alex
+      Waygood, PR 12963)
+    * Don't add __match_args__ for dataclasses and named tuples on
+      Python versions lower than 3.10 (Stanislav K, PR 12503)
+    * Fix crash when overriding partial-type attribute with method
+      (Jake Lishman, PR 12943)
+    * Fix editable installs to current working directory (Shantanu,
+      PR 13161)
+  - Typeshed is now modular and distributed as separate PyPI
+    packages for everything except the standard library stubs.
+    Please see git log for full list of typeshed changes.
+
+-------------------------------------------------------------------
 Tue Jun 21 09:00:36 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - remove obsolete patch 12452-stringent-err-msg.patch

@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define typed_ast_version 1.5.1
 Name:           mypy
-Version:        0.961
+Version:        0.971
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -31,18 +31,22 @@ Source0:        https://files.pythonhosted.org/packages/source/m/mypy/mypy-%{ver
 # License Source1: Apache-2.0. Only for the test suite, not packaged here.
 Source1:        https://files.pythonhosted.org/packages/source/t/types-typed-ast/types-typed-ast-%{typed_ast_version}.tar.gz
 Source99:       mypy-rpmlintrc
+# PATCH-FIX-UPSTREAM mypy-pr13259-walrus.patch gh#python/mypy#13259 -- fix test failures with Python >= 3.10.6
+Patch0:         mypy-pr13259-walrus.patch
 BuildRequires:  %{python_module mypy_extensions >= 0.4.3}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tomli >= 1.1.0}
+BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}
 BuildRequires:  %{python_module typed-ast >= 1.4.0 if %python-base < 3.8}
 BuildRequires:  %{python_module typing_extensions >= 3.10}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mypy_extensions >= 0.4.3
-Requires:       python-tomli >= 1.1.0
 Requires:       python-typing_extensions >= 3.10
 %if 0%{?python_version_nodots} < 38
 Requires:       python-typed-ast >= 1.4.0
+%endif
+%if 0%{?python_version_nodots} < 311
+Requires:       python-tomli >= 1.1.0
 %endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -55,6 +59,7 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module attrs >= 18}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module filelock >= 3.3}
 BuildRequires:  %{python_module importlib-metadata >= 4.6.1}
 BuildRequires:  %{python_module lxml >= 4}
 BuildRequires:  %{python_module psutil >= 4}
