@@ -19,7 +19,7 @@
 %global pkg_name wai-extra
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.1.8
+Version:        3.1.12.1
 Release:        0
 Summary:        Provides some basic WAI handlers and middleware
 License:        MIT
@@ -56,6 +56,7 @@ BuildRequires:  ghc-word8-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-temporary-devel
 BuildRequires:  ghc-zlib-devel
 %endif
 
@@ -88,6 +89,10 @@ Clean a request path to a canonical form.
 
 Negotiate HTTP payload gzip compression.
 
+* Health check endpoint
+
+Add an empty health check endpoint.
+
 * HTTP Basic Authentication
 
 WAI Basic Authentication Middleware which uses Authorization header.
@@ -109,6 +114,10 @@ Request logging middleware for development and production environments
 * Request Rewrite
 
 Rewrite request path info based on a custom conversion rules.
+
+* Select
+
+Dynamically choose between Middlewares.
 
 * Stream Files
 
