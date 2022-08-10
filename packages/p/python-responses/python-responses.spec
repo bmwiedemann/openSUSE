@@ -18,7 +18,6 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %global skip_python2 1
-%global skip_python36 1
 Name:           python-responses
 Version:        0.21.0
 Release:        0
@@ -27,6 +26,9 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/getsentry/responses
 Source:         https://files.pythonhosted.org/packages/source/r/responses/responses-%{version}.tar.gz
+# PATCH-FIX-SLE py_old_re_Pattern.patch mcepl@suse.com
+# Make package compatible with SLE-15
+Patch0:         py_old_re_Pattern.patch
 # test requirements
 BuildRequires:  %{python_module cookies}
 BuildRequires:  %{python_module pytest-localserver}
@@ -48,7 +50,7 @@ Check https://github.com/getsentry/responses for more information
 about the library.
 
 %prep
-%setup -q -n responses-%{version}
+%autosetup -p1 -n responses-%{version}
 
 %build
 export LANG="en_US.UTF8"
