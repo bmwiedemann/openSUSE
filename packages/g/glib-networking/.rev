@@ -630,4 +630,12 @@ a newer version not fitting</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 987170 from dimstar)</comment>
     <requestid>987345</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>f25ac663525f9fd34f7193834c8017af</srcmd5>
+    <version>2.72.2</version>
+    <time>1660144381</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 993762 from iznogood)</comment>
+    <requestid>993953</requestid>
+  </revision>
 </revisionlist>
