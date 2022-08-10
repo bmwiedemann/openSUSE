@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug  9 06:24:56 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.1.2
+  * fix for bmo#1777765 (no POP download progress bar) was backed
+    out from this release to address broken POP message download
+    with Fetch headers only selected in Account Settings (bmo#1783552)
+
+-------------------------------------------------------------------
+Mon Aug  8 06:46:01 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.1.1
+  Bugfixes:
+  * https://www.thunderbird.net/en-US/thunderbird/102.1.1/releasenotes/
+
+-------------------------------------------------------------------
 Tue Jul 26 09:03:40 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 102.1.0

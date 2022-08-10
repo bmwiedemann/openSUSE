@@ -4314,4 +4314,19 @@ I cannot test locally unfortunately.
   mozilla-sandbox-fips.patch</comment>
     <requestid>992051</requestid>
   </revision>
+  <revision rev="284" vrev="1">
+    <srcmd5>3c104511a1f7d9d6c921d953c4da4917</srcmd5>
+    <version>102.1.2</version>
+    <time>1660144350</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.1.2
+  * fix for bmo#1777765 (no POP download progress bar) was backed
+    out from this release to address broken POP message download
+    with Fetch headers only selected in Account Settings (bmo#1783552)
+
+- Mozilla Thunderbird 102.1.1
+  Bugfixes:
+  * https://www.thunderbird.net/en-US/thunderbird/102.1.1/releasenotes/</comment>
+    <requestid>993911</requestid>
+  </revision>
 </revisionlist>
