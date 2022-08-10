@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug  5 09:00:24 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.44.4:
+  + ESoupAuthBearer: Check for token expiration in
+    e_soup_auth_bearer_is_authenticated().
+  + ESoupSession: Avoid downgrade of Bearer (OAuth2) auth for
+    authentication.
+  + Check for non-zero value passed to g_flags_get_first_value().
+  + alarm-notify: Use themed icon instead of file icon for
+    notifications.
+  + Bugs fixed: IMAPx: Unsubscribed folder always removed from the
+    UI.
+
+-------------------------------------------------------------------
 Fri Jul  1 20:30:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.44.3:
