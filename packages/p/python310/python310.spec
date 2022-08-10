@@ -67,7 +67,7 @@ Obsoletes:      python39%{?1:-%{1}}
 %define tarversion %{version}
 %endif
 # We don't process beta signs well
-%define         folderversion 3.10.5
+%define         folderversion 3.10.6
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
@@ -103,7 +103,7 @@ Obsoletes:      python39%{?1:-%{1}}
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.10.5
+Version:        3.10.6
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
