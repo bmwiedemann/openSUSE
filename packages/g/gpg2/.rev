@@ -1317,4 +1317,12 @@ See-also: gnupg-announce/2019q1/000434.html
     <comment>GnuPG 2.3.7 CVE-2022-34903 boo#1201225 (forwarded request 988764 from AndreasStieger)</comment>
     <requestid>989805</requestid>
   </revision>
+  <revision rev="162" vrev="2">
+    <srcmd5>12f5a427f599d6dfb7286aba6344f51e</srcmd5>
+    <version>2.3.7</version>
+    <time>1660144349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993850</requestid>
+  </revision>
 </revisionlist>

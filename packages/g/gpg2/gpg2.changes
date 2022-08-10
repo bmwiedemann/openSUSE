@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  8 18:00:44 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix YubiKey 5 Nano support (boo#1202201), add
+  gnupg-2.3.7-scd-openpgp-Fix-workaround-for-Yubikey-heuristics.patch
+
+-------------------------------------------------------------------
 Tue Jul 12 22:06:02 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GnuPG 2.3.7:
