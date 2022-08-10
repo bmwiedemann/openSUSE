@@ -1,6 +1,6 @@
 From 307a0f63dd9b118f4b8470ed3d7567e81fdb7a6d Mon Sep 17 00:00:00 2001
 From: Mike Gilbert <floppym@gentoo.org>
-Date: Tue, 3 May 2022 10:51:55 +0000
+Date: Fri, 27 May 2022 11:06:49 +0000
 Subject: [PATCH] Disable various compiler configs
 
 ---
@@ -8,7 +8,7 @@ Subject: [PATCH] Disable various compiler configs
  1 file changed, 17 insertions(+), 97 deletions(-)
 
 diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
-index f378b95..cb2aeb3 100644
+index c90821e..dcb8b87 100644
 --- a/build/config/compiler/BUILD.gn
 +++ b/build/config/compiler/BUILD.gn
 @@ -286,9 +286,7 @@ config("compiler") {
@@ -105,7 +105,7 @@ index f378b95..cb2aeb3 100644
  
 -      if (!is_nacl && !(is_chromeos ||
 -                        default_toolchain == "//build/toolchain/cros:target")) {
--        # TODO(https://crbug.com/1316298): Re-enable once test failure is figured out
+-        # TODO(https://crbug.com/1322823): Remove flags once potential miscompile is investigated.
 -        cflags += [
 -          "-Xclang",
 -          "-no-opaque-pointers",
@@ -211,7 +211,7 @@ index f378b95..cb2aeb3 100644
    if (is_win) {
      if (is_clang) {
        cflags = [ "/Z7" ]  # Debug information in the .obj files.
-@@ -2415,7 +2333,8 @@ config("symbols") {
+@@ -2413,7 +2331,8 @@ config("symbols") {
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
@@ -221,7 +221,7 @@ index f378b95..cb2aeb3 100644
    if (is_win) {
      # Functions, files, and line tables only.
      cflags = []
-@@ -2488,7 +2407,8 @@ config("minimal_symbols") {
+@@ -2486,7 +2405,8 @@ config("minimal_symbols") {
  # This configuration contains function names only. That is, the compiler is
  # told to not generate debug information and the linker then just puts function
  # names in the final debug information.
@@ -233,3 +233,4 @@ index f378b95..cb2aeb3 100644
  
 -- 
 2.35.1
+

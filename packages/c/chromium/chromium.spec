@@ -39,17 +39,18 @@
 %bcond_without system_freetype
 %bcond_without arm_bti
 %bcond_without system_icu
+%bcond_without ffmpeg_51
 %else
 %bcond_with system_harfbuzz
 %bcond_with system_freetype
 %bcond_with arm_bti
 %bcond_with system_icu
+%bcond_with ffmpeg_51
 %endif
 %bcond_without pipewire
 %bcond_without system_ffmpeg
 %bcond_without system_zlib
 %bcond_with system_vpx
-%bcond_with ffmpeg_51
 
 # FFmpeg version
 %if %{with ffmpeg_51}
@@ -66,7 +67,7 @@
 %endif
 
 Name:           chromium
-Version:        103.0.5060.134
+Version:        104.0.5112.79
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -101,7 +102,7 @@ Patch10:        chromium-disable-parallel-gold.patch
 Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
 Patch12:        chromium-78-protobuf-RepeatedPtrField-export.patch
-Patch15:        chromium-103-compiler.patch
+Patch15:        chromium-104-compiler.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch21:        chromium-gcc11.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
@@ -115,9 +116,9 @@ Patch78:        chromium-98-EnumTable-crash.patch
 Patch87:        chromium-98-gtk4-build.patch
 Patch90:        chromium-100-InMilliseconds-constexpr.patch
 Patch98:        chromium-102-regex_pattern-array.patch
-Patch101:       chromium-103-FrameLoadRequest-type.patch
-Patch102:       chromium-103-SubstringSetMatcher-packed.patch
 Patch103:       chromium-103-VirtualCursor-std-layout.patch
+Patch104:       chromium-104-ContentRendererClient-type.patch
+Patch105:       chromium-104-tflite-system-zlib.patch
 Patch201:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
@@ -151,6 +152,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
+BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
 BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  util-linux
@@ -784,6 +786,8 @@ myconf_gn+=" use_system_harfbuzz=true"
 %if %{with system_freetype}
 myconf_gn+=" use_system_freetype=true"
 %endif
+myconf_gn+=" use_system_libwayland=true"
+myconf_gn+=" use_system_wayland_scanner=true"
 myconf_gn+=" enable_hangout_services_extension=true"
 myconf_gn+=" enable_vulkan=true"
 %if %{with pipewire}

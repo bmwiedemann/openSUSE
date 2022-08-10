@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Aug  9 12:29:06 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Chromium 104.0.5112.79 (boo#1202075)
+  * CVE-2022-2603: Use after free in Omnibox
+  * CVE-2022-2604: Use after free in Safe Browsing
+  * CVE-2022-2605: Out of bounds read in Dawn
+  * CVE-2022-2606: Use after free in Managed devices API
+  * CVE-2022-2607: Use after free in Tab Strip
+  * CVE-2022-2608: Use after free in Overview Mode
+  * CVE-2022-2609: Use after free in Nearby Share
+  * CVE-2022-2610: Insufficient policy enforcement in Background Fetch
+  * CVE-2022-2611: Inappropriate implementation in Fullscreen API
+  * CVE-2022-2612: Side-channel information leakage in Keyboard input
+  * CVE-2022-2613: Use after free in Input
+  * CVE-2022-2614: Use after free in Sign-In Flow
+  * CVE-2022-2615: Insufficient policy enforcement in Cookies
+  * CVE-2022-2616: Inappropriate implementation in Extensions API
+  * CVE-2022-2617: Use after free in Extensions API
+  * CVE-2022-2618: Insufficient validation of untrusted input in Internals
+  * CVE-2022-2619: Insufficient validation of untrusted input in Settings
+  * CVE-2022-2620: Use after free in WebUI
+  * CVE-2022-2621: Use after free in Extensions
+  * CVE-2022-2622: Insufficient validation of untrusted input in Safe Browsing
+  * CVE-2022-2623: Use after free in Offline
+  * CVE-2022-2624: Heap buffer overflow in PDF
+- Added patches:
+  * chromium-104-compiler.patch
+  * chromium-104-ContentRendererClient-type.patch
+  * chromium-104-tflite-system-zlib.patch
+- Removed patches:
+  * chromium-103-SubstringSetMatcher-packed.patch
+  * chromium-103-FrameLoadRequest-type.patch
+  * chromium-103-compiler.patch
+- Use FFmpeg 5.1 on TW
+
+-------------------------------------------------------------------
 Sat Jul 23 12:20:39 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Switch back to Clang so that we can use BTI on aarch64
