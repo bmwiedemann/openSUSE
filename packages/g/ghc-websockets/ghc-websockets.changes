@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 30 08:01:35 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update websockets to version 0.12.7.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov  1 08:41:21 UTC 2021 - psimons@suse.com
 
 - Update websockets to version 0.12.7.3.
