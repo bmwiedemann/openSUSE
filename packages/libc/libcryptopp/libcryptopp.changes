@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 10 04:17:28 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Enable SSE2 to fix i586 build
+
+-------------------------------------------------------------------
+Tue Aug  9 07:18:25 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 8.7.0
+- https://cryptopp.com/release870.html
+  * fix RSA key generation for small moduli (GH #1136)
+  * fix AES-GCM with AESNI but without CLMUL (GH #1132)
+  * rework CFB_CipherTemplate::ProcessData and AdditiveCipherTemplate::ProcessData (GH #1088, GH #1103)
+    + restored performance and avoided performance penalty of a temp buffer
+  * fix undersized SecBlock buffer in Integer bit operations (GH #1072)
+  * work around several GCC 11 & 12 problems
+
+-------------------------------------------------------------------
 Sat Sep 25 08:00:47 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Update to 8.6.0

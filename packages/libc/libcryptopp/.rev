@@ -315,4 +315,13 @@ Filter out -flto= flag for arm7 see cryptopp issue#865</comment>
    ChaCha20 AVX2 implementation.</comment>
     <requestid>921434</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>af7d9663c5068fe5ccdee4c49f0670ab</srcmd5>
+    <version>8.7.0</version>
+    <time>1660144395</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable SSE2 to fix i586 build
+- Update to 8.7.0</comment>
+    <requestid>994251</requestid>
+  </revision>
 </revisionlist>

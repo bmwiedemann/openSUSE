@@ -1,7 +1,7 @@
 #
 # spec file for package libcryptopp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define major 8
-%define minor 6
+%define minor 7
 %define patch 0
 %define pkg_version %{major}%{minor}%patch
 # There is no upstream interface version information.
@@ -76,6 +76,9 @@ curve crypto. This package is used for crypto++ development.
 %define _lto_cflags %{nil}
 %endif
 CXXFLAGS="-DNDEBUG %{optflags} -fpic -fPIC -pthread -fopenmp"
+%ifarch i586
+  CXXFLAGS="$CXXFLAGS -mmmx -msse2"
+%endif
 # aarch64 arm -march=armv7-a -mfpu=neon
 %ifarch ppc64
 CXXFLAGS="$CXXFLAGS -DCRYPTOPP_DISABLE_ALTIVEC"
@@ -116,7 +119,9 @@ Cflags:
 EOF
 
 %check
+%ifnarch i586
 LD_LIBRARY_PATH=%{buildroot}%{_libdir} %make_build test
+%endif
 
 %post   -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig
@@ -129,6 +134,7 @@ LD_LIBRARY_PATH=%{buildroot}%{_libdir} %make_build test
 %doc Readme.txt
 %{_includedir}/cryptopp
 %{_libdir}/libcryptopp.so
+%{_libdir}/libcryptopp.so.%{major}
 %{_libdir}/pkgconfig/cryptopp.pc
 
 %changelog
