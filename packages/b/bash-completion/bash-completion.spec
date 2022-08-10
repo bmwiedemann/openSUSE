@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package bash
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -70,6 +70,8 @@ Patch12:        bash-completion-fix-missing-directory-completion-with-filename-p
 Patch13:        boo1190929-9af4afd0.patch
 # PATCH-FIX-SUSE boo#1199724
 Patch14:        bsc1199724-modules.patch
+# PATCH-FIX-UPSTREAM bsc#1200791
+Patch15:        fix-curl-help-completion-bsc1200791.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildArch:      noarch

@@ -1,0 +1,17 @@
+---
+ completions/curl |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+--- a/completions/curl
++++ b/completions/curl
+@@ -91,7 +91,9 @@ _curl()
+     esac
+ 
+     if [[ $cur == -* ]]; then
+-        COMPREPLY=($(compgen -W '$(_parse_help "$1")' -- "$cur"))
++        COMPREPLY=($(compgen -W '$(_parse_help "$1" "--help all")' -- "$cur"))
++        [[ $COMPREPLY ]] ||
++            COMPREPLY=($(compgen -W '$(_parse_help "$1")' -- "$cur"))
+     fi
+ } &&
+     complete -F _curl curl

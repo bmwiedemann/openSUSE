@@ -541,4 +541,12 @@
   * Enable upstream commit to list ko.zst modules as well</comment>
     <requestid>978684</requestid>
   </revision>
+  <revision rev="55" vrev="6">
+    <srcmd5>8aa036a71a01b3f07ed714c26c3fe6f6</srcmd5>
+    <version>2.11</version>
+    <time>1660144362</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>993929</requestid>
+  </revision>
 </revisionlist>

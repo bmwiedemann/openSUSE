@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 26 19:26:11 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Add patch fix-curl-help-completion-bsc1200791.patch (bsc#1200791)
+  * List all options for `curl --<TAB>`
+
+-------------------------------------------------------------------
 Mon May 23 10:37:27 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch bsc1199724-modules.patch (bsc#1199724)
