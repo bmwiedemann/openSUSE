@@ -20,7 +20,11 @@
 %define source_name SFCGAL
 %define _libname    libSFCGAL1
 %define _soversion  1
-%ifarch i586 x86_64
+# while upstream https://gitlab.com/Oslandia/SFCGAL/-/issues/259
+# and https://gitlab.com/Oslandia/SFCGAL/-/issues/258 are pending.
+# this force postgis ix86 to be build without sfcgal.
+ExcludeArch:    %{ix86}
+%ifarch %{ix86} x86_64
 %define withosgd 1
 BuildRequires:  pkgconfig(openscenegraph)
 %else
@@ -37,7 +41,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            https://oslandia.gitlab.io/SFCGAL/
 Source0:        https://gitlab.com/Oslandia/SFCGAL/-/archive/v%{version}/SFCGAL-v%{version}.tar.bz2
-#CGAL 5.4 checking failed instead warning for certain invalid geometry (hole on border)
+# CGAL 5.4 checking failed instead warning for certain invalid geometry (hole on border)
 Patch0:         disable_invalid_cgal_test.patch
 BuildRequires:  cmake
 BuildRequires:  gmp-devel
@@ -55,11 +59,7 @@ BuildRequires:  libboost_thread-devel
 BuildRequires:  libboost_timer-devel
 BuildRequires:  libcgal-devel >= 5.3
 BuildRequires:  libstdc++-devel
-%ifarch i586
-BuildRequires:  gcc-c++
-%else
 BuildRequires:  llvm-clang
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(cunit)
@@ -119,10 +119,13 @@ Content headers & files to envelopment files for %{_libname}
 %prep
 %setup -q -n %{source_name}-v%{version}
 %autopatch -p1
+# remove CGAL tests see upstream commit 74858e42
+rm -rfv test/unit/CGAL
 
 %build
-tmpflags="%{optflags} -fPIC -fpie"
+tmpflags="%{optflags} -fPIC -fPIE"
 echo "${tmpflags}"
+# Desactivate lto (check with upstream)
 %define _lto_cflags %{nil}
 tmpflags="${tmpflags/-flto=auto}"
 %ifarch ppc64 ppc64le
@@ -138,21 +141,19 @@ tmpflags="${tmpflags/-fstack-clash-protection}"
   -DCMAKE_C_FLAGS="${tmpflags} -Doverride=" \
   -DCMAKE_CXX_FLAGS="${tmpflags} -Doverride=" \
   -DCMAKE_CXX_FLAGS_RELEASE="${tmpflags} -Doverride=" \
-  -DCMAKE_NO_BUILTIN_CHRPATH=ON \
   -DCMAKE_BUILD_TYPE="Release" \
   -DCMAKE_GMP_ENABLE_CXX=ON \
   -DSFCGAL_CHECK_VALIDITY=TRUE \
+  -DCMAKE_NO_BUILTIN_CHRPATH=ON \
 %if %{withosgd}
   -DSFCGAL_WITH_OSG=ON \
 %else
   -DSFCGAL_WITH_OSG=OFF \
 %endif
-  -DPOSTGRESQL_INCLUDE_DIR=%{_includedir}/pgsql \
-  -DPOSTGRESQL_LIBRARIES=`pkg-config --libs libpq` \
   -DSFCGAL_BUILD_EXAMPLES=ON \
   -DSFCGAL_BUILD_TESTS=ON
 
-#Upstream recommend to lower number of -j with -g
+# Upstream recommend to lower number of -j with -g
 # so we can keep constraint low on memory
 %ifarch i586 ppc64
 make -j2

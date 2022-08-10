@@ -1,14 +1,30 @@
 -------------------------------------------------------------------
+Wed Aug  3 08:28:42 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Disable i586 build which failed with both gcc and clang
+  https://gitlab.com/Oslandia/SFCGAL/-/issues/258
+  https://gitlab.com/Oslandia/SFCGAL/-/issues/259
+- Remove unused -D calls
+- Lower physical memory constraint to 8GB but keep global memory
+  to 16GB
+
+-------------------------------------------------------------------
+Tue Jul 26 13:33:58 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Apply upstream fix by removing bundled CGAL test
+  see https://gitlab.com/Oslandia/SFCGAL/-/merge_requests/279
+
+-------------------------------------------------------------------
 Fri Apr 15 06:13:17 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Use gcc for i586 and limit the number of worker (upstream)
-  so we can lower again _constraint. 
+  so we can lower again _constraint.
 
 -------------------------------------------------------------------
 Fri Apr  8 17:05:12 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Introduce disable_invalid_cgal_test.patch to disable tests
-  failing with CGAL 5.4 on openSUSE. 
+  failing with CGAL 5.4 on openSUSE.
 
 -------------------------------------------------------------------
 Wed Feb 16 17:36:44 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>

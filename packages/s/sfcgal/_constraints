@@ -4,6 +4,9 @@
     <physicalmemory>
       <size unit="M">8192</size>
     </physicalmemory>
+    <memory>
+      <size unit="M">16384</size>
+    </memory>
   </hardware>
   <sandbox>kvm</sandbox>
   <hostlabel exclude="true">SLOW_CPU</hostlabel>
