@@ -105,4 +105,12 @@ required by mycroft-core</comment>
   * Support parametrized event_loop fixture. #278</comment>
     <requestid>986981</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>42c649960943873209858b14bfac0dd4</srcmd5>
+    <version>0.19.0</version>
+    <time>1660144346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993601</requestid>
+  </revision>
 </revisionlist>

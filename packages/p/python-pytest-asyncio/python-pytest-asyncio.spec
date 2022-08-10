@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-pytest-asyncio
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -25,15 +25,17 @@
 %bcond_with test
 %endif
 Name:           python-pytest-asyncio%{psuffix}
-Version:        0.18.3
+Version:        0.19.0
 Release:        0
 Summary:        Pytest support for asyncio
 License:        Apache-2.0
 URL:            https://github.com/pytest-dev/pytest-asyncio
 Source:         https://github.com/pytest-dev/pytest-asyncio/archive/v%{version}.tar.gz#/pytest-asyncio-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 6.1.0
@@ -63,12 +65,12 @@ provides useful fixtures and markers to make testing easier.
 
 %build
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
-%python_build
+%pyproject_wheel
 
 %if !%{with test}
 %install
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -81,8 +83,8 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/pytest_asyncio
-%{python_sitelib}/pytest_asyncio-%{version}*-info
+%{python_sitelib}/pytest_asyncio/
+%{python_sitelib}/pytest_asyncio-%{version}*-info/
 %endif
 
 %changelog

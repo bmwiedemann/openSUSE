@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  5 04:57:24 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to 0.19.0
+  * BREAKING: The default ``asyncio_mode`` is now *strict*.
+  * Removes `setup.py` since all relevant configuration is present
+    `setup.cfg`.
+  * Declare support for Python 3.11
+
+-------------------------------------------------------------------
 Wed Jul  6 07:59:54 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Inject multibuild to defeat a build loop 
