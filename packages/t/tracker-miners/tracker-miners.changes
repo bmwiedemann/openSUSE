@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  8 09:19:56 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 401.patch: Specify graphs in "tracker3 search" queries;
+  resolves tracker search listing files multiple times
+  (boo#1200403 glgo#GNOME/tracker-miners#229).
+
+-------------------------------------------------------------------
 Wed Jun  1 09:01:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.3.1:

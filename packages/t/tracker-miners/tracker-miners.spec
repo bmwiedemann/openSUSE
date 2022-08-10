@@ -25,6 +25,8 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker-miners/3.3/%{name}-%{version}.tar.xz
 
+# PATCH-FIX-UPSTREAM 401.patch boo#1200403 glgo#GNOME/tracker-miners#229 -- Specify graphs in "tracker3 search" queries
+Patch0:         https://gitlab.gnome.org/GNOME/tracker-miners/-/merge_requests/401.patch
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE tracker-miners-drop-syscalls-in-seccomp.patch bsc#1192567 qkzhu@suse.com -- Revert some syscalls in seccomp since Leap and SLE do not have them
 Patch1000:      tracker-miners-drop-syscalls-in-seccomp.patch
@@ -96,7 +98,7 @@ This package contains a miner to index files and applications.
 
 %prep
 %setup -q
-
+%patch0 -p1
 # SLE and Leap only patches start at 1000
 %if 0%{?sle_version}
 %patch1000 -p1
