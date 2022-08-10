@@ -594,4 +594,12 @@
   * fix truncated output buf with --Istdin</comment>
     <requestid>990765</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>0518417a8b8ff266dca97aa06af04be8</srcmd5>
+    <version>9.64</version>
+    <time>1660144386</time>
+    <user>dimstar_suse</user>
+    <comment>- add avoid-linux-includes.patch (bsc#1202212)</comment>
+    <requestid>994126</requestid>
+  </revision>
 </revisionlist>

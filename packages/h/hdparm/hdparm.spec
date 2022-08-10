@@ -28,6 +28,8 @@ Patch1:         hdparm-nostrip.patch
 Patch2:         hdparm-wiper-warn.patch
 Patch3:         hdparm-leak-fix.patch
 Patch4:         hdparm-9.43-fix-bashisms.patch
+# https://sourceforge.net/p/hdparm/patches/52/
+Patch5:         avoid-linux-includes.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(udev)
 Requires(post): coreutils
@@ -43,6 +45,7 @@ driver and IDE drives.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 %make_build CFLAGS="%{optflags} -Wall -Wstrict-prototypes" LDFLAGS= CC="gcc"
