@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug  5 11:36:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.1.2
+  * #9726: An unnecessary numpy import inside
+    pytest.approx{.interpreted-text role="func"} was removed.
+  * #9820: Fix comparison of dataclasses with InitVar.
+  * #9869: Increase stacklevel for the NODE_CTOR_FSPATH_ARG
+    deprecation to point to the user's code, not pytest.
+  * #9871: Fix a bizarre (and fortunately rare) bug where the
+    [temp_path]{.title-ref} fixture could raise an internal error
+    while attempting to get the current user's username.
+
+-------------------------------------------------------------------
 Fri Mar 25 23:39:31 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.1.1

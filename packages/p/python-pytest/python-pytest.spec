@@ -34,7 +34,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest%{psuffix}
-Version:        7.1.1
+Version:        7.1.2
 Release:        0
 Summary:        Simple powerful testing with Python
 License:        MIT
@@ -104,8 +104,7 @@ sed -i '/^\[metadata\]/ a version = %{version}' setup.cfg
 
 %check
 %if %{with test}
-# assert rewrite: gh#pytest-dev/pytest#9761
-%pytest -n auto -k "not (test_assertrewrite)"
+%pytest -n auto
 %endif
 
 %if ! %{with test}
