@@ -56,6 +56,16 @@ Patch4:         PackageKit-fix-crash-pre-dbus.patch
 Patch5:         PackageKit-zypp-locked-packages.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-add-upgrade-system.patch gh#hughsie/PackageKit/commit/930dd201b sckang@suse.com -- zypp: implement upgrade-system method
 Patch6:         PackageKit-zypp-add-upgrade-system.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-avoid-statuReset.patch gh#PackageKit/PackageKit/commit/dd1964255, bsc#1199895 sckang@suse.com -- zypp: Avoid statuReset() on locked packages
+Patch7:         PackageKit-zypp-avoid-statuReset.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-disable-upgrade-system-in-sle.patch gh#PackageKit/PackageKit/commit/0fcd820c2 sckang@suse.com -- zypp: Disable upgrade-system support in SLE
+Patch8:         PackageKit-zypp-disable-upgrade-system-in-sle.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-restore-pool-status-after-simulating-update.patch gh#PackageKit/PackageKit/commit/2b61a6649, bsc#1199895 sckang@suse.com -- zypp: restore pool status after simulating an update
+Patch9:         PackageKit-zypp-restore-pool-status-after-simulating-update.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-fix-is-tumbleweed-check.patch gh#PackageKit/PackageKit/commit/146890153 sckang@suse.com -- zypp: build the pool before calling is_tumbleweed()
+Patch10:        PackageKit-zypp-fix-is-tumbleweed-check.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-update-libzypp-dependency-version.patch gh#PackageKit/PackageKit/commit/58c7c0285, bsc#1199895 sckang@suse.com -- zypp: update libzypp dependency version
+Patch11:        PackageKit-zypp-update-libzypp-dependency-version.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -73,7 +83,6 @@ BuildRequires:  libdnf-devel >= 0.43.1
 %endif
 BuildRequires:  libgudev-1_0-devel
 BuildRequires:  libtool
-BuildRequires:  libzypp-devel
 BuildRequires:  meson >= 0.50
 BuildRequires:  mozilla-nspr-devel >= 4.8
 BuildRequires:  ninja
@@ -111,7 +120,9 @@ suck less.
 Summary:        Zypp backend for the PackageKit installation management software
 License:        GPL-2.0-or-later
 Group:          System/Daemons
+BuildRequires:  libzypp-devel >= 17.31.0
 Requires:       %{name} = %{version}
+Requires:       libzypp >= 17.31.0
 Provides:       %{name}-backend = %{version}
 Conflicts:      %{name}-backend
 Supplements:    (%{name} and libzypp)

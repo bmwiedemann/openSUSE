@@ -1,0 +1,50 @@
+From 01ae2ceee2688b308553b0ed0c5f9c1b6f27ad78 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Wed, 27 Jul 2022 17:15:31 +0800
+Subject: [PATCH] zypp: Disable upgrade-system support in SLE
+
+---
+ backends/zypp/pk-backend-zypp.cpp | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/backends/zypp/pk-backend-zypp.cpp b/backends/zypp/pk-backend-zypp.cpp
+index 259aa2b90..271cc0a6c 100644
+--- a/backends/zypp/pk-backend-zypp.cpp
++++ b/backends/zypp/pk-backend-zypp.cpp
+@@ -44,6 +44,7 @@
+ #include <pk-backend.h>
+ #include <pk-shared.h>
+ #include <packagekit-glib2/packagekit.h>
++#include <packagekit-glib2/pk-common-private.h>
+ #include <packagekit-glib2/pk-enum.h>
+ 
+ #include <zypp/Digest.h>
+@@ -3547,6 +3548,8 @@ pk_backend_upgrade_system_thread (PkBackendJob *job,
+ 				  gpointer user_data)
+ {
+ 	const gchar *release_ver = NULL;
++    g_autofree gchar *release_name = NULL;
++    g_autoptr(GError) error = NULL;
+ 	PkBitfield transaction_flags = 0;
+ 
+ 	g_variant_get (params, "(t&su)",
+@@ -3565,6 +3568,16 @@ pk_backend_upgrade_system_thread (PkBackendJob *job,
+ 		return;
+ 	}
+ 
++    release_name = pk_get_distro_name (&error);
++	if (release_name == NULL)
++		g_error ("Failed to parse os-release: %s", error->message);
++    if (g_str_has_prefix (release_name, "SLE")) {
++		pk_backend_job_error_code (job, PK_ERROR_ENUM_NOT_SUPPORTED,
++					   "upgrade-system is not supported in SLE.");
++
++		return;
++    }
++
+ 	ResPool pool = zypp_build_pool (zypp, TRUE);
+ 	PkRestartEnum restart = PK_RESTART_ENUM_NONE;
+ 	PoolStatusSaver saver;
+-- 
+2.36.1
+

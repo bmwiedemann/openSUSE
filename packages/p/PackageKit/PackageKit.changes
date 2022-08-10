@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug  3 03:27:36 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Modified PackageKit.spec: bump libzypp dependency version to
+  17.31.0.
+- Add PackageKit-zypp-avoid-statuReset.patch: zypp: Avoid
+  statuReset() on locked packages
+  (gh#PackageKit/PackageKit/commit/dd1964255, bsc#1199895).
+- Add PackageKit-zypp-disable-upgrade-system-in-sle.patch: zypp:
+  Disable upgrade-system support in SLE
+  (gh#PackageKit/PackageKit/commit/0fcd820c2).
+- Add PackageKit-zypp-restore-pool-status-after-simulating-update.patch:
+  zypp: restore pool status after simulating an update
+  (gh#PackageKit/PackageKit/commit/2b61a6649, bsc#1199895).
+- Add PackageKit-zypp-fix-is-tumbleweed-check.patch: zypp: build
+  the pool before calling is_tumbleweed()
+  (gh#PackageKit/PackageKit/commit/146890153).
+- Add PackageKit-zypp-update-libzypp-dependency-version.patch:
+  zypp: update libzypp dependency version
+  (gh#PackageKit/PackageKit/commit/58c7c0285, bsc#1199895).
+
+-------------------------------------------------------------------
 Sat Jul  9 12:35:42 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move the dbus-1 system.d file to /usr (bsc#1201347)

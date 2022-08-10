@@ -1958,4 +1958,28 @@ Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)<
     <comment></comment>
     <requestid>990416</requestid>
   </revision>
+  <revision rev="229" vrev="5">
+    <srcmd5>515338b95136edeaf1c4581ed6ff290c</srcmd5>
+    <version>1.2.5</version>
+    <time>1660144370</time>
+    <user>dimstar_suse</user>
+    <comment>- Modified PackageKit.spec: bump libzypp dependency version to
+  17.31.0.
+- Add PackageKit-zypp-avoid-statuReset.patch: zypp: Avoid
+  statuReset() on locked packages
+  (gh#PackageKit/PackageKit/commit/dd1964255, bsc#1199895).
+- Add PackageKit-zypp-disable-upgrade-system-in-sle.patch: zypp:
+  Disable upgrade-system support in SLE
+  (gh#PackageKit/PackageKit/commit/0fcd820c2).
+- Add PackageKit-zypp-restore-pool-status-after-simulating-update.patch:
+  zypp: restore pool status after simulating an update
+  (gh#PackageKit/PackageKit/commit/2b61a6649, bsc#1199895).
+- Add PackageKit-zypp-fix-is-tumbleweed-check.patch: zypp: build
+  the pool before calling is_tumbleweed()
+  (gh#PackageKit/PackageKit/commit/146890153).
+- Add PackageKit-zypp-update-libzypp-dependency-version.patch:
+  zypp: update libzypp dependency version
+  (gh#PackageKit/PackageKit/commit/58c7c0285, bsc#1199895). (forwarded request 992722 from JonathanKang)</comment>
+    <requestid>993936</requestid>
+  </revision>
 </revisionlist>
