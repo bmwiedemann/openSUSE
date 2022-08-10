@@ -18,7 +18,7 @@
 
 
 Name:           manpages-l10n
-Version:        4.14.0
+Version:        4.15.0
 Release:        0
 Summary:        Translation of man pages
 License:        GPL-3.0-or-later
@@ -62,5 +62,8 @@ This package provides translations of man pages in multiple languages.
 
 %install
 %make_install
+# net-tools translations conflict on all supported RPM-based distributions
+# https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/issues/8
+rm -v %{buildroot}%{_mandir}/de/man5/ethers.5*
 
 %changelog

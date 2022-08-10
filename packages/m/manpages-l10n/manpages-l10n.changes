@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 10 12:47:13 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Remove ethers.5 German translation already provided by net-tools
+  (https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/issues/8).
+
+-------------------------------------------------------------------
+Tue Aug  9 18:58:11 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 4.15.0: Updated many translations.
+
+-------------------------------------------------------------------
 Wed May  4 19:10:16 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 4.14.0:

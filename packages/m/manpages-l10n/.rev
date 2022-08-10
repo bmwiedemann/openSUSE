@@ -117,4 +117,15 @@ This will obsolete current packages man-pages-fr &amp; man-pages-fr-extra (to be
     <comment></comment>
     <requestid>974998</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6fa44406f699bde7e2b0be6f7fc78708</srcmd5>
+    <version>4.15.0</version>
+    <time>1660144461</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ethers.5 German translation already provided by net-tools
+  (https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/issues/8).
+- Update to version 4.15.0: Updated many translations.
+</comment>
+    <requestid>994339</requestid>
+  </revision>
 </revisionlist>
