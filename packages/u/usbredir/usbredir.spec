@@ -18,7 +18,7 @@
 
 
 Name:           usbredir
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        A protocol for redirecting USB traffic
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -26,9 +26,7 @@ Group:          System/Libraries
 URL:            https://www.spice-space.org/usbredir.html
 Source:         https://www.spice-space.org/download/usbredir/%{name}-%{version}.tar.xz
 Source1:        https://www.spice-space.org/download/usbredir/%{name}-%{version}.tar.xz.sig
-Patch0:         https://gitlab.freedesktop.org/spice/usbredir/-/commit/9426fdb1.patch
-Patch1:         https://gitlab.freedesktop.org/spice/usbredir/-/commit/dffc41c3.patch
-Patch2:         0001-Use-D_FORTIFY_SOURCE-instead-of-Wp-D_FORTIFY_SOURCE.patch
+Source99:       %{name}.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel >= 2.44
 BuildRequires:  meson >= 0.48
@@ -96,8 +94,6 @@ of this protocol.
 %license COPYING
 %{_bindir}/usbredirect
 %{_mandir}/man1/usbredirect.1.gz
-%{_mandir}/man1/usbredirserver.1.gz
-%{_sbindir}/usbredirserver
 
 %files -n libusbredirhost1
 %defattr(-, root, root)
