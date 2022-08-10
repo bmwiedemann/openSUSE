@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 10 08:15:05 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add fix-fgets-.-size-1.patch that fixes broken package
+  (https://github.com/fanf2/unifdef/pull/15).
+
+-------------------------------------------------------------------
 Mon Mar  8 23:26:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.12:

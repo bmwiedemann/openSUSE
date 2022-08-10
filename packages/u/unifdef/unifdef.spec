@@ -1,7 +1,7 @@
 #
 # spec file for package unifdef
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ Version:        2.12
 Release:        0
 URL:            https://dotat.at/prog/unifdef/
 Source:         https://dotat.at/prog/unifdef/unifdef-%{version}.tar.xz
+Patch0:         fix-fgets-.-size-1.patch
 BuildRequires:  xz
 
 %description
@@ -32,10 +33,8 @@ leaving the file alone.  Unifdef acts on #ifdef, #ifndef, #else, and #endif
 lines, and it knows only enough about C to know when one of these is
 inactive because it is inside a comment, or a single or double quote.
 
-
-
 %prep
-%setup -q
+%autosetup -p1
 sed -i Makefile \
 	-e 's,^\(prefix\).*=.*,\1 =\t%{_prefix},' \
 	-e 's,^\(bindir\).*=.*,\1 =\t%{_bindir},' \
