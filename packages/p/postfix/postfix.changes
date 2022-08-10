@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug  4 19:09:34 UTC 2022 - chris@computersalat.de
+
+- use correct source signature file (gpg2)
+
+-------------------------------------------------------------------
+Mon Jul 11 14:21:41 UTC 2022 - chris@computersalat.de
+
+- update to 3.7.2
+  https://de.postfix.org/ftpmirror/official/postfix-3.7.2.RELEASE_NOTES
+- rebase patches
+  * pointer_to_literals.patch
+  * postfix-linux45.patch
+  * postfix-main.cf.patch
+  * postfix-master.cf.patch
+  * postfix-no-md5.patch
+  * postfix-ssl-release-buffers.patch
+  * postfix-vda-v14-3.0.3.patch
+  * set-default-db-type.patch
+- build against libpcre2
+
+-------------------------------------------------------------------
 Tue May 10 20:14:54 UTC 2022 - chris@computersalat.de
 
 - remove *.swp from postfix-SUSE.tar.gz

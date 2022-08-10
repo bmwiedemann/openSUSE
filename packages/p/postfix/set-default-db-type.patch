@@ -2,7 +2,7 @@ Index: src/util/sys_defs.h
 ===================================================================
 --- src/util/sys_defs.h.orig
 +++ src/util/sys_defs.h
-@@ -51,7 +51,7 @@
+@@ -53,7 +53,7 @@
  #define HAS_FSYNC
  #define HAS_DB
  #define HAS_SA_LEN
@@ -11,7 +11,7 @@ Index: src/util/sys_defs.h
  #if (defined(__NetBSD_Version__) && __NetBSD_Version__ >= 104250000)
  #define ALIAS_DB_MAP   DEF_DB_TYPE ":/etc/mail/aliases"	/* sendmail 8.10 */
  #endif
-@@ -232,7 +232,7 @@
+@@ -234,7 +234,7 @@
  #define HAS_FSYNC
  #define HAS_DB
  #define HAS_SA_LEN
@@ -20,7 +20,7 @@ Index: src/util/sys_defs.h
  #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
  #define GETTIMEOFDAY(t) gettimeofday(t,(struct timezone *) 0)
  #define ROOT_PATH	"/bin:/usr/bin:/sbin:/usr/sbin"
-@@ -289,7 +289,7 @@
+@@ -291,7 +291,7 @@
  #define HAS_FSYNC
  /* might be set by makedef */
  #ifdef HAS_DB
@@ -29,7 +29,7 @@ Index: src/util/sys_defs.h
  #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
  #else
  #define HAS_DBM
-@@ -761,7 +761,7 @@ extern int initgroups(const char *, int)
+@@ -763,7 +763,7 @@ extern int initgroups(const char *, int)
  #define DEF_MAILBOX_LOCK "fcntl, dotlock"	/* RedHat >= 4.x */
  #define HAS_FSYNC
  #define HAS_DB
@@ -38,7 +38,7 @@ Index: src/util/sys_defs.h
  #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
  #ifndef NO_NIS
  #define HAS_NIS
-@@ -844,7 +844,7 @@ extern int initgroups(const char *, int)
+@@ -846,7 +846,7 @@ extern int initgroups(const char *, int)
  #define DEF_MAILBOX_LOCK "dotlock"	/* verified RedHat 3.03 */
  #define HAS_FSYNC
  #define HAS_DB
@@ -47,7 +47,7 @@ Index: src/util/sys_defs.h
  #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
  #ifndef NO_NIS
  #define HAS_NIS
-@@ -877,7 +877,7 @@ extern int initgroups(const char *, int)
+@@ -879,7 +879,7 @@ extern int initgroups(const char *, int)
  #define DEF_MAILBOX_LOCK "fcntl, dotlock"	/* RedHat >= 4.x */
  #define HAS_FSYNC
  #define HAS_DB
@@ -56,7 +56,7 @@ Index: src/util/sys_defs.h
  #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
  #ifndef NO_NIS
  #define HAS_NIS
-@@ -1202,7 +1202,7 @@ extern int opterr;			/* XXX use <getopt.
+@@ -1204,7 +1204,7 @@ extern int opterr;			/* XXX use <getopt.
  #define INTERNAL_LOCK	MYFLOCK_STYLE_FCNTL
  #define DEF_MAILBOX_LOCK "fcntl, dotlock"
  #define HAS_FSYNC
@@ -69,7 +69,7 @@ Index: src/global/mail_params.h
 ===================================================================
 --- src/global/mail_params.h.orig
 +++ src/global/mail_params.h
-@@ -2953,7 +2953,7 @@ extern int var_vrfy_pend_limit;
+@@ -2960,7 +2960,7 @@ extern int var_vrfy_pend_limit;
  extern char *var_verify_service;
  
  #define VAR_VERIFY_MAP			"address_verify_map"
@@ -78,7 +78,7 @@ Index: src/global/mail_params.h
  extern char *var_verify_map;
  
  #define VAR_VERIFY_POS_EXP		"address_verify_positive_expire_time"
-@@ -3721,7 +3721,7 @@ extern char *var_multi_cntrl_cmds;
+@@ -3728,7 +3728,7 @@ extern char *var_multi_cntrl_cmds;
    * postscreen(8)
    */
  #define VAR_PSC_CACHE_MAP	"postscreen_cache_map"
@@ -91,7 +91,7 @@ Index: man/man1/postmap.1
 ===================================================================
 --- man/man1/postmap.1.orig
 +++ man/man1/postmap.1
-@@ -63,7 +63,7 @@ by RFC 5322. For example, an address loc
+@@ -66,7 +66,7 @@ by RFC 5322. For example, an address loc
  By default the lookup key is mapped to lowercase to make
  the lookups case insensitive; as of Postfix 2.3 this case
  folding happens only with tables whose lookup keys are
@@ -100,7 +100,7 @@ Index: man/man1/postmap.1
  earlier versions, the lookup key is folded even with tables
  where a lookup field can match both upper and lower case
  text, such as regexp: and pcre:. This resulted in loss of
-@@ -210,9 +210,9 @@ the "\fBpostconf \-m\fR" command.
+@@ -215,9 +215,9 @@ the "\fBpostconf \-m\fR" command.
  The \fBpostmap\fR(1) command can query any supported file type,
  but it can create only the following file types:
  .RS
@@ -113,7 +113,7 @@ Index: man/man1/postmap.1
  .IP \fBcdb\fR
  The output consists of one file, named \fIfile_name\fB.cdb\fR.
  This is available on systems with support for \fBcdb\fR databases.
-@@ -224,9 +224,6 @@ This is available on systems with suppor
+@@ -229,9 +229,6 @@ This is available on systems with suppor
  A table that reliably fails all requests. The lookup table
  name is used for logging only. This table exists to simplify
  Postfix error tests.
@@ -123,7 +123,7 @@ Index: man/man1/postmap.1
  .IP \fBlmdb\fR
  The output is a btree\-based file, named \fIfile_name\fB.lmdb\fR.
  \fBlmdb\fR supports concurrent writes and reads from different
-@@ -272,12 +269,6 @@ The following \fBmain.cf\fR parameters a
+@@ -277,12 +274,6 @@ The following \fBmain.cf\fR parameters a
  this program.
  The text below provides only a parameter summary. See
  \fBpostconf\fR(5) for more details including examples.

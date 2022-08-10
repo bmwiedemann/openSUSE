@@ -2,7 +2,7 @@ Index: src/cleanup/cleanup_message.c
 ===================================================================
 --- src/cleanup/cleanup_message.c.orig
 +++ src/cleanup/cleanup_message.c
-@@ -299,7 +299,7 @@ static const char *cleanup_act(CLEANUP_S
+@@ -300,7 +300,7 @@ static const char *cleanup_act(CLEANUP_S
      while (*optional_text && ISSPACE(*optional_text))
  	optional_text++;
  

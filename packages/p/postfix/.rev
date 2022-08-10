@@ -2095,4 +2095,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment>remove *.swp from postfix-SUSE.tar.gz (forwarded request 976132 from computersalat)</comment>
     <requestid>976135</requestid>
   </revision>
+  <revision rev="218" vrev="1">
+    <srcmd5>07d962fd1d3973a68351d45eed073812</srcmd5>
+    <version>3.7.2</version>
+    <time>1660144391</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes files (forwarded request 993128 from computersalat)</comment>
+    <requestid>993129</requestid>
+  </revision>
 </revisionlist>

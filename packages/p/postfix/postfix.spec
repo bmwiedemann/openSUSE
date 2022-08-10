@@ -42,7 +42,7 @@
 %bcond_without libnsl
 %bcond_without ldap
 Name:           postfix
-Version:        3.6.6
+Version:        3.7.2
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        IPL-1.0 OR EPL-2.0
@@ -78,7 +78,7 @@ BuildRequires:  libopenssl-devel >= 1.1.1
 BuildRequires:  lmdb-devel
 BuildRequires:  m4
 BuildRequires:  mysql-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
 BuildRequires:  shadow
@@ -209,8 +209,8 @@ export CCARGS="${CCARGS} -DHAS_LDAP -DLDAP_DEPRECATED=1 -DUSE_LDAP_SASL"
 export AUXLIBS_LDAP="-lldap -llber"
 %endif
 #
-export CCARGS="${CCARGS} -DHAS_PCRE"
-export AUXLIBS_PCRE="-lpcre"
+export CCARGS="${CCARGS} -DHAS_PCRE=2"
+export AUXLIBS_PCRE="-lpcre2-8"
 #
 export CCARGS="${CCARGS} -DUSE_SASL_AUTH -DUSE_CYRUS_SASL -I%{_includedir}/sasl"
 if pkg-config libsasl2 ; then
@@ -453,8 +453,9 @@ if [ ${1:-0} -gt 1 ]; then
 		rm %{pf_database_convert}
 	fi
 fi
-%set_permissions %{_sbindir}/postqueue
 %set_permissions %{_sbindir}/postdrop
+%set_permissions %{_sbindir}/postlog
+%set_permissions %{_sbindir}/postqueue
 %set_permissions %{_sysconfdir}/%{name}/sasl_passwd
 %set_permissions %{_sbindir}/sendmail
 %{fillup_only postfix}
@@ -465,8 +466,9 @@ fi
 %service_del_postun %{name}.service
 
 %verifyscript
-%verify_permissions -e %{_sbindir}/postqueue
 %verify_permissions -e %{_sbindir}/postdrop
+%verify_permissions -e %{_sbindir}/postlog
+%verify_permissions -e %{_sbindir}/postqueue
 %verify_permissions -e %{_sysconfdir}/%{name}/sasl_passwd
 %verify_permissions -e %{_sbindir}/sendmail
 
@@ -524,6 +526,7 @@ fi
 %{_unitdir}/%{name}.service
 %{_unitdir}/mail-transfer-agent.target.wants
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postdrop
+%verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postlog
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postqueue
 %{_bindir}/mailq
 %{_bindir}/newaliases
@@ -534,7 +537,6 @@ fi
 %attr(0755,root,root) %{_sbindir}/%{name}
 %attr(0755,root,root) %{_sbindir}/postkick
 %attr(0755,root,root) %{_sbindir}/postlock
-%attr(0755,root,root) %{_sbindir}/postlog
 %attr(0755,root,root) %{_sbindir}/postmap
 %attr(0755,root,root) %{_sbindir}/postmulti
 %attr(0755,root,root) %{_sbindir}/postsuper
