@@ -1236,7 +1236,6 @@
     <package name="kqtquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="krb5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="krename" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kreversi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kreversi-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3120,9 +3119,6 @@
     <package name="openSUSE-release" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="openSUSE-release-appliance-custom" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="openSUSE-release-dvd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release-dvd -->
-    <package name="openafs" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
-    <package name="openafs-client" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
-    <package name="openafs-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
     <package name="openal-soft-data" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="opencc-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="openconnect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5007,6 +5003,7 @@
   <packagelist relationship="recommends">
     <package name="MozillaFirefox-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpng12-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.18.15-1-default needed by openafs-kmp-default-1.8.8.2~rc1_k5.18.15_1-1.7.i586-->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
@@ -5031,7 +5028,6 @@
     <package name="crash-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="dpdk-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="exim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5065,6 +5061,7 @@
     <package name="joycond" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="joycond-autoload" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="lib389" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libHX32-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libICE-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -5261,7 +5258,6 @@
     <package name="libxml2-2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libz-ng-compat1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libzstd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="lttng-modules-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="mcelog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="mhvtl-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="mokutil" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
@@ -5281,6 +5277,7 @@
     <package name="nbdkit-vddk-plugin" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="nss-mdns-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.18.15-1-default needed by openafs-kmp-default-1.8.8.2~rc1_k5.18.15_1-1.7.x86_64-->
     <package name="ovmf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pam_apparmor-32bit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->

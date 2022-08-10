@@ -900,6 +900,7 @@ unsorted:
   - asteroids3D 
   - astyle 
   - asusfan 
+  - asymptote 
   - at-spi-sharp 
   - at-spi-sharp-devel 
   - at-spi2-atk-devel 
@@ -3104,6 +3105,7 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
+  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -8437,6 +8439,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -9483,7 +9486,7 @@ unsorted:
   - libSDL_ttf-2_0-0-32bit: [x86_64] 
   - libSDL_ttf-devel 
   - libSDL_ttf-devel-32bit: [x86_64] 
-  - libSFCGAL1 
+  - libSFCGAL1: [x86_64] 
   - libSHERPA-MC0 
   - libSHERPA-MC0-config 
   - libSILLY-devel 
@@ -10459,8 +10462,8 @@ unsorted:
   - libcrypto49 
   - libcrypto49-32bit: [x86_64] 
   - libcryptopp-devel 
-  - libcryptopp8_6_0 
-  - libcryptopp8_6_0-32bit: [x86_64] 
+  - libcryptopp8_7_0 
+  - libcryptopp8_7_0-32bit: [x86_64] 
   - libcryptsetup-devel 
   - libcryptsetup12-hmac-32bit: [x86_64] 
   - libcryptui-devel 
@@ -15475,7 +15478,7 @@ unsorted:
   - ltrace 
   - ltrace-32bit: [x86_64] 
   - lttng-modules 
-  - lttng-modules-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - lttng-modules-kmp-default 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
@@ -18268,11 +18271,14 @@ unsorted:
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSE-xfce-icon-theme 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -22319,6 +22325,7 @@ unsorted:
   - python310-azure-common 
   - python310-azure-communication-administration 
   - python310-azure-communication-chat 
+  - python310-azure-communication-email 
   - python310-azure-communication-identity 
   - python310-azure-communication-networktraversal 
   - python310-azure-communication-nspkg 
@@ -23364,7 +23371,6 @@ unsorted:
   - python310-json-rpc 
   - python310-json5: [i586] 
   - python310-json_tricks 
-  - python310-jsondate 
   - python310-jsondiff 
   - python310-jsonlines 
   - python310-jsonpatch: [i586] 
@@ -23810,7 +23816,6 @@ unsorted:
   - python310-patatt 
   - python310-patchy 
   - python310-path 
-  - python310-pathlib2 
   - python310-pathtools 
   - python310-pathvalidate 
   - python310-patiencediff 
@@ -25437,6 +25442,7 @@ unsorted:
   - python38-azure-common 
   - python38-azure-communication-administration 
   - python38-azure-communication-chat 
+  - python38-azure-communication-email 
   - python38-azure-communication-identity 
   - python38-azure-communication-networktraversal 
   - python38-azure-communication-nspkg 
@@ -26562,7 +26568,6 @@ unsorted:
   - python38-json-rpc 
   - python38-json5 
   - python38-json_tricks 
-  - python38-jsondate 
   - python38-jsondiff 
   - python38-jsonlines 
   - python38-jsonpatch 
@@ -27039,7 +27044,6 @@ unsorted:
   - python38-patatt 
   - python38-patchy 
   - python38-path 
-  - python38-pathlib2 
   - python38-pathspec 
   - python38-pathtools 
   - python38-pathvalidate 
@@ -28754,6 +28758,7 @@ unsorted:
   - python39-azure-common 
   - python39-azure-communication-administration 
   - python39-azure-communication-chat 
+  - python39-azure-communication-email 
   - python39-azure-communication-identity 
   - python39-azure-communication-networktraversal 
   - python39-azure-communication-nspkg 
@@ -29876,7 +29881,6 @@ unsorted:
   - python39-json-rpc 
   - python39-json5 
   - python39-json_tricks 
-  - python39-jsondate 
   - python39-jsondiff 
   - python39-jsonlines 
   - python39-jsonpatch 
@@ -30355,7 +30359,6 @@ unsorted:
   - python39-patatt 
   - python39-patchy 
   - python39-path 
-  - python39-pathlib2 
   - python39-pathspec 
   - python39-pathtools 
   - python39-pathvalidate 
@@ -32936,8 +32939,8 @@ unsorted:
   - setroubleshoot-server 
   - sev-tool 
   - sevctl: [x86_64] 
-  - sfcgal 
-  - sfcgal-devel 
+  - sfcgal: [x86_64] 
+  - sfcgal-devel: [x86_64] 
   - sfftobmp 
   - sffview 
   - sfml2-devel 
