@@ -178,4 +178,12 @@
     CHANGELOG.md file provided with this package (forwarded request 983626 from glaubitz)</comment>
     <requestid>984163</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e4b711266b4749a4c3cb040f4beed87c</srcmd5>
+    <version>8.1.0</version>
+    <time>1660144486</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>994267</requestid>
+  </revision>
 </revisionlist>
