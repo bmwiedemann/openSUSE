@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug  2 21:54:06 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.0 Patch 2 - 2022-08-02
+
+- IMPROVEMENT: remind: Allow more forms of OMIT as per Ian D. Allen!'s request:
+
+               OMIT Month [THROUGH Month]
+               OMIT Day Month [THROUGH Day Month]
+               OMIT Day Month Year [THROUGH Day Month Year]
+
+- BUG FIX: Make $T behave as documented, exactly like trigdate().  $T would
+  return '1989-12-31' rather than 0 if the trigger date was not valid.
+
+- BUG FIX: TkRemind: Fix resizing bug for a calendar with 6 rows.
+
+- DOCUMENTATION IMPROVEMENT: Improve TkRemind documentation; document use
+  of inotifywait if available. 
+
+-------------------------------------------------------------------
 Sat Jun  4 13:52:17 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 4.0 Patch 1 - 2022-06-03
