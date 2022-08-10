@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  9 12:35:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.26.4:
+  + This release includes a fix to a test data file not being
+    installed, and a bug fix for a bug in the libsoup3 port.
+
+-------------------------------------------------------------------
 Thu Jun 30 14:53:38 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.26.3:

@@ -28,7 +28,7 @@
 %endif
 
 Name:           geocode-glib%{?nsuffix}
-Version:        3.26.3
+Version:        3.26.4
 Release:        0
 Summary:        Convenience library for the Yahoo! Place Finder APIs
 License:        LGPL-2.0-or-later
