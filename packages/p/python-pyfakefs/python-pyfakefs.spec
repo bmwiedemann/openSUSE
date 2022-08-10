@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-pyfakefs%{psuffix}
-Version:        4.5.3
+Version:        4.6.3
 Release:        0
 Summary:        Fake file system that mocks the Python file system modules
 License:        Apache-2.0
@@ -39,7 +39,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module pytest >= 2.8.6}
+BuildRequires:  %{python_module pytest >= 3}
 BuildRequires:  %{pythons}
 %endif
 %python_subpackages
@@ -71,9 +71,10 @@ export LANG=C.UTF-8
 
 %if !%{with test}
 %files %{python_files}
-%doc CHANGES* README*
-%license COPYING*
-%{python_sitelib}/*
+%doc CHANGES.md README.md
+%license COPYING
+%{python_sitelib}/pyfakefs
+%{python_sitelib}/pyfakefs-%{version}*-info
 %endif
 
 %changelog
