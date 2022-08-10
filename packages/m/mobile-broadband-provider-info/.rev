@@ -226,4 +226,12 @@
     <comment>Update to 20220511 (forwarded request 978735 from dimstar)</comment>
     <requestid>978918</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a9d30b3da1f73c48409fb5e2598a678a</srcmd5>
+    <version>20220725</version>
+    <time>1660144371</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release (forwarded request 993247 from iznogood)</comment>
+    <requestid>993938</requestid>
+  </revision>
 </revisionlist>
