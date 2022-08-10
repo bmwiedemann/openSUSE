@@ -194,4 +194,16 @@
     CHANGELOG.md file provided with this package (forwarded request 967251 from glaubitz)</comment>
     <requestid>967282</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2f7dd24a3f32019a3643e586736fba74</srcmd5>
+    <version>20.1.0</version>
+    <time>1660144494</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 20.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 994258 from glaubitz)</comment>
+    <requestid>994315</requestid>
+  </revision>
 </revisionlist>
