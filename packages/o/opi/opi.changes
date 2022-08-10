@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  9 13:59:29 UTC 2022 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2.8.0
+- add anydesk
+- add yandex browser
+- Use list for plugin queries and check for conflicts
+- Don't show projects with non-matching repo
+
+-------------------------------------------------------------------
 Mon Jun 13 09:08:36 UTC 2022 - Dominik Heidler <dheidler@suse.de>
 
 - Version 2.7.0
