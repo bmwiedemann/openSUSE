@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug  5 09:02:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.44.4:
+  + Change when symbolic icons are forced in the application.
+  + Bugs fixed:
+    - Missing divider lines and paddings under GNOME.
+    - EColorSchemeWatcher: Verify chosen dark variant theme name
+      exists.
+    - ECompEditor: Reminders list is too small.
+    - Calendar: The default reminder not always added.
+
+-------------------------------------------------------------------
 Fri Jul  1 20:32:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.44.3:

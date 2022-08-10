@@ -2173,4 +2173,19 @@ Recommended for 12.3</comment>
   + Updated translations. (forwarded request 986298 from iznogood)</comment>
     <requestid>986578</requestid>
   </revision>
+  <revision rev="259" vrev="1">
+    <srcmd5>b28d1a4fb9261b061bb575764f60d1e3</srcmd5>
+    <version>3.44.4</version>
+    <time>1660144374</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.44.4:
+  + Change when symbolic icons are forced in the application.
+  + Bugs fixed:
+    - Missing divider lines and paddings under GNOME.
+    - EColorSchemeWatcher: Verify chosen dark variant theme name
+      exists.
+    - ECompEditor: Reminders list is too small.
+    - Calendar: The default reminder not always added. (forwarded request 993262 from iznogood)</comment>
+    <requestid>993942</requestid>
+  </revision>
 </revisionlist>
