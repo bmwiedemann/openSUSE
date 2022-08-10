@@ -731,4 +731,14 @@
   * llvm{9,10} are removed in Tumbleweed now</comment>
     <requestid>986225</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>1b6b3d43e05d0fe9af2a90e8a1d067ad</srcmd5>
+    <version>2.4.0+git.20220809.f32223a</version>
+    <time>1660144458</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git.20220809.f32223a:
+  * refactors so that the project is LLVM 15-compatible
+  * Remove extra space in a message.</comment>
+    <requestid>994178</requestid>
+  </revision>
 </revisionlist>

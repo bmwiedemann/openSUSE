@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 09 18:01:17 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git.20220809.f32223a:
+  * refactors so that the project is LLVM 15-compatible
+  * Remove extra space in a message.
+
+-------------------------------------------------------------------
 Fri Jul 01 12:15:15 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.4.0+git.20220701.2941a38:
