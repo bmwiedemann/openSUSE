@@ -29,6 +29,7 @@ URL:            https://launchpad.net/plank
 Source0:        https://launchpad.net/%{name}/1.0/%{version}/+download/%{name}-%{version}.tar.xz
 Source1:        https://launchpad.net/%{name}/1.0/%{version}/+download/%{name}-%{version}.tar.xz.asc
 Source3:        %{name}.keyring
+Patch1:         0001_changed-plank-positioning-according-to-workarea.patch
 BuildRequires:  autoconf >= 2.65
 BuildRequires:  automake >= 1.11
 BuildRequires:  hicolor-icon-theme
@@ -57,6 +58,7 @@ BuildRequires:  pkgconfig(xi) >= 1.6.99.1
 Requires:       bamf-daemon >= 0.2.92
 Recommends:     %{name}-docklets
 Recommends:     %{name}-lang
+Recommends:     bamf-daemon
 
 %description
 Plank is a trivial dock.
@@ -95,7 +97,7 @@ linking application which will use libplank.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 [ ! -e configure ] && NOCONFIGURE=1 ./autogen.sh
