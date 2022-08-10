@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Apr 25 16:22:36 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update yesod-core to version 1.6.23.1.
+  ## 1.6.23.1
+
+  * Fix typo in creation of the description `<meta>` tag in `defaultLayout`. [#1766](https://github.com/yesodweb/yesod/pull/1766)
+
+  ## 1.6.23
+
+  * Add idempotent versions of `setDescription`, `setDescriptionI`. These functions
+    have odd behaviour when called multiple times, so they are now warned against.
+    This can't be a silent change - if you want to switch to the new functions, make
+    sure your layouts are updated to use `pageDescription` as well as `pageTitle`.
+    [#1765](https://github.com/yesodweb/yesod/pull/1765)
+
+  ## 1.6.22.1
+
+  + Remove sometimes failing superfluous test. [#1756](https://github.com/yesodweb/yesod/pull/1756)
+
+-------------------------------------------------------------------
+Thu Mar 24 03:28:36 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update yesod-core to version 1.6.22.0.
+  ## 1.6.22.0
+
+  * Add missing list to documentation for ``Yesod.Core.Dispatch.warp``. [#1745](https://github.com/yesodweb/yesod/pull/1745)
+  * Add instances for `ToContent Void`, `ToTypedContent Void`. [#1752](https://github.com/yesodweb/yesod/pull/1752)
+  * Handle async exceptions within yesod rather then warp. [#1753](https://github.com/yesodweb/yesod/pull/1753)
+  * Support template-haskell 2.18 [#1754](https://github.com/yesodweb/yesod/pull/1754)
+
+-------------------------------------------------------------------
 Fri Jul 23 08:07:30 UTC 2021 - psimons@suse.com
 
 - Update yesod-core to version 1.6.21.0.
