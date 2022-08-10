@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 10 07:54:15 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 3.1.0
+  * Refactor Multi Expression Code
+  * Add Python 3.9 and 3.10 to the test matrix
+  * fix: default value for argument should be Undefined (Issue #1394)
+  * fix: add default param _variables to parse_literal #1419
+  * Make Graphene compatible with GraphQL-Core 3.2
+
+-------------------------------------------------------------------
 Mon Mar 21 13:16:21 UTC 2022 - pgajdos@suse.com
 
 - actually does not require python-mock for build

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-graphene
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        GraphQL Framework for Python
 License:        MIT
@@ -27,8 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/graphql-python/graphene
 Source:         https://github.com/graphql-python/graphene/archive/v%{version}.tar.gz#/graphene-%{version}.tar.gz
 BuildRequires:  %{python_module aniso8601 >= 8}
-BuildRequires:  %{python_module graphql-core >= 3.1.2}
-BuildRequires:  %{python_module graphql-relay >= 3.0}
+BuildRequires:  %{python_module graphql-core >= 3.1}
+BuildRequires:  %{python_module graphql-relay >= 3.1}
 BuildRequires:  %{python_module promise}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-benchmark}
@@ -40,8 +40,8 @@ BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aniso8601 >= 8
-Requires:       python-graphql-core >= 3.1.2
-Requires:       python-graphql-relay >= 3.0
+Requires:       python-graphql-core >= 3.1
+Requires:       python-graphql-relay >= 3.1
 Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
@@ -61,12 +61,8 @@ Graphene is a Python library for building GraphQL schemas/types.
 
 %check
 # The example depend on snapshottest, which is a bit messy to package as of v0.5.1
-# https://github.com/syrusakbary/snapshottest/pull/114
-
-# test_objecttype_as_container_extra_args and test_objecttype_as_container_invalid_kwargs
-# have slightly different output on Python 3.10, that the tests do not expect
-# https://github.com/graphql-python/graphene/issues/1400
-%pytest --ignore examples -k 'not (test_objecttype_as_container_extra_args or test_objecttype_as_container_invalid_kwargs)'
+# https://github.com/syrusakbary/snapshottest/issues/92
+%pytest --ignore examples
 
 %files %{python_files}
 %doc README.rst
