@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 22 08:14:08 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update safe-exceptions to version 0.1.7.3.
+  ## 0.1.7.3
+
+  * Allow transformers 0.6 [#39](https://github.com/fpco/safe-exceptions/issues/39)
+
+-------------------------------------------------------------------
 Sat Jul 10 13:42:17 UTC 2021 - psimons@suse.com
 
 - Update safe-exceptions to version 0.1.7.2.
