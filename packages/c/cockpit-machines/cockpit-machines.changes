@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 10 10:19:26 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Require qemu USB drivers needed by virt-install (bsc#1202166)
+
+-------------------------------------------------------------------
 Fri Jun 17 10:31:05 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - load-css-overrides.patch: css overrides for better theming support

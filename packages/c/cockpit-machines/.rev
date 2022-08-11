@@ -64,4 +64,12 @@
   https://github.com/cockpit-project/cockpit-machines/releases/tag/264</comment>
     <requestid>983413</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3f7601734fa29c86bd37944df6faea85</srcmd5>
+    <version>270.2</version>
+    <time>1660235514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994351</requestid>
+  </revision>
 </revisionlist>

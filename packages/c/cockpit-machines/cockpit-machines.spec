@@ -45,6 +45,7 @@ Requires:       libvirt-client
 Requires:       libvirt-dbus >= 1.2.0
 Requires:       qemu-chardev-spice
 Requires:       qemu-hw-display-qxl
+Requires:       qemu-hw-usb-redirect
 Requires:       virt-install
 # Optional components
 Recommends:     libosinfo
