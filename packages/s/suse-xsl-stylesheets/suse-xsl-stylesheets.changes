@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug  2 11:53:48 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.86.0
+
+- Update 2.86.0
+  - Update to JQuery 1.12.4 (#485)
+  - Fix color issues (#486)
+  - Add new section "creating a new release" in README
+
+-------------------------------------------------------------------
+Mon Aug  1 15:15:00 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.85.2
+
+- Update 2.85.2
+  - Fix single h1 issue in HTML in #484 (improves SEO)
+  - update README
+
+-------------------------------------------------------------------
 Fri Jul 29 07:19:50 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.85.1
 
 - Update 2.85.1
