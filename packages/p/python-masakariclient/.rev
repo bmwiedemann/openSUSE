@@ -111,4 +111,21 @@
     <comment></comment>
     <requestid>889975</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cd38d5a2b6c3b89c8e02405c277a832e</srcmd5>
+    <version>7.1.0</version>
+    <time>1660235507</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 7.1.0
+  - Add Python3 xena unit tests
+  - Fix url to docs
+  - [CI] Run bandit
+  - Fix home_page in setup.cfg
+  - Update master for stable/wallaby
+  - Use py3 as the default runtime for tox
+  - setup.cfg: Replace dashes with underscores
+  - [community goal] Update contributor documentation
+  - Replace deprecated UPPER_CONSTRAINTS_FILE variable</comment>
+    <requestid>994199</requestid>
+  </revision>
 </revisionlist>
