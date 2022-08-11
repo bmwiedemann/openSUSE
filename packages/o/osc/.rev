@@ -1575,4 +1575,14 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
     <comment></comment>
     <requestid>991675</requestid>
   </revision>
+  <revision rev="165" vrev="2">
+    <srcmd5>4c22cc6b4b2fd9d379e638487186ec96</srcmd5>
+    <version>0.181.0</version>
+    <time>1660235573</time>
+    <user>dimstar_suse</user>
+    <comment>- fix building on distros that are not openSUSE or SLE
+- build against python3.6 for SLE12 and older
+</comment>
+    <requestid>994530</requestid>
+  </revision>
 </revisionlist>
