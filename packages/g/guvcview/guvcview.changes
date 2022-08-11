@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Aug  8 22:06:07 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.8:
+  * Fix libav API break (ticket #70)
+  * Update autoconf scripts
+  * Support for building against ffmpeg5.
+- Changes from version 2.0.7:
+  * Fix audio encoder (tickets #64 and #65)
+  * Use current theme icons (get icon by name)
+- Convert to multibuild with qt5 as additional flavor:
+  * Drop guvcview-qt5.spec, guvcview-qt5.changes, pre_checkin.sh
+    script.
+  * Drop hunks from guvcview-qt5-nolibs_qt5names.patch duplicated
+    in guvcview-SUSE.patch.
+  * Adapt BuildRequires for the additional flavour appropriately.
+- Update so versions in keeping with upstream shlib versioning.
+- Replace packageand type Supplements with RPM binary Supplements.
+- Update guvcview-SUSE.patch to drop icon dir restructuring: no
+  longer needed after all theme-able application icons dropped.
+
+-------------------------------------------------------------------
 Mon Feb  3 13:51:18 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libudev) instead of libudev-devel: allow
