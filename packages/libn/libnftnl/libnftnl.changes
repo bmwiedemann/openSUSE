@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  9 19:35:17 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.3
+  * This release includes a compile time bugfix with clang and
+    -D_FORTIFY_SOURCE=2.
+
+-------------------------------------------------------------------
 Tue Jun  7 14:54:37 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.2
