@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 10 21:52:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 3.9.3 (CVE-2022-1996, bsc#1200528):
+  * Bump k8s.io/kube-openapi to fix CVE-2022-1996 in github.com/emicklei/go-restful
+  * fixes #11142 missing array length check on release
+
+-------------------------------------------------------------------
 Fri Jul 22 21:26:58 UTC 2022 - dmueller@suse.com
 
 - Update to version 3.9.2:

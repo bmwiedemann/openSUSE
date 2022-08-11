@@ -359,4 +359,14 @@ See changelog in:
   * Updating the circleci image we use</comment>
     <requestid>990727</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>fa912b91a1957309a1cb08ef9dcdd829</srcmd5>
+    <version>3.9.3</version>
+    <time>1660235539</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.9.3 (CVE-2022-1996, bsc#1200528):
+  * Bump k8s.io/kube-openapi to fix CVE-2022-1996 in github.com/emicklei/go-restful
+  * fixes #11142 missing array length check on release</comment>
+    <requestid>994401</requestid>
+  </revision>
 </revisionlist>
