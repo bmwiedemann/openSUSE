@@ -25,7 +25,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           rust-keylime
-Version:        0.1.0+git.1657303637.5b9072a
+Version:        0.1.0+git.1659977521.0186093
 Release:        0
 Summary:        Rust implementation of the keylime agent
 License:        Apache-2.0 AND MIT
@@ -36,11 +36,12 @@ Source2:        cargo_config
 Source3:        keylime.xml
 Source4:        keylime-user.conf
 Source5:        tmpfiles.keylime
-# PATCH-FIX-OPENSUSE keylime.conf.diff
-Patch1:         keylime.conf.diff
-# PATCH-FIX-UPSTREAM 0001-main-die-when-cannot-drop-privileges.patch -- based on PR 423
-Patch2:         0001-main-die-when-cannot-drop-privileges.patch
+# PATCH-FIX-OPENSUSE keylime-agent.conf.diff
+Patch1:         keylime-agent.conf.diff
+# PATCH-FIX-OPENSUSE bindgen.patch
+Patch2:         bindgen.patch
 BuildRequires:  cargo
+BuildRequires:  clang
 BuildRequires:  firewall-macros
 BuildRequires:  libarchive-devel
 BuildRequires:  rust
@@ -50,7 +51,6 @@ BuildRequires:  zeromq-devel
 Requires:       libtss2-tcti-device0
 Requires:       logrotate
 Requires:       tpm2.0-abrmd
-ExcludeArch:    %{ix86} s390x ppc64 ppc64le armhfp armv7hl
 
 %description
 Rust implementation of keylime agent. Keylime is system integrity
@@ -69,7 +69,7 @@ RUSTFLAGS=%{rustflags} cargo build --release --no-default-features --features "w
 RUSTFLAGS=%{rustflags} cargo install --frozen --no-default-features --features "with-zmq" --root=%{buildroot}%{_prefix} --path .
 
 # TODO: move the configuration file into _distconfdir
-install -Dpm 0600 keylime.conf %{buildroot}%{_sysconfdir}/keylime.conf
+install -Dpm 0600 keylime-agent.conf %{buildroot}%{_sysconfdir}/keylime-agent.conf
 install -Dpm 0644 ./dist/systemd/system/keylime_agent.service %{buildroot}%{_unitdir}/keylime_agent.service
 install -Dpm 0644 ./dist/systemd/system/var-lib-keylime-secure.mount %{buildroot}%{_unitdir}/var-lib-keylime-secure.mount
 
@@ -108,7 +108,7 @@ rm %{buildroot}%{_prefix}/.crates2.json
 %license LICENSE
 %{_bindir}/keylime_agent
 %{_bindir}/keylime_ima_emulator
-%config(noreplace) %attr (0600,keylime,tss) %{_sysconfdir}/keylime.conf
+%config(noreplace) %attr (0600,keylime,tss) %{_sysconfdir}/keylime-agent.conf
 %{_unitdir}/keylime_agent.service
 %{_unitdir}/var-lib-keylime-secure.mount
 %dir %{_prefix}/lib/firewalld

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Aug 10 13:39:08 UTC 2022 - aplanas@suse.com
+
+- Update to version 0.1.0+git.1659977521.0186093:
+  * Fix display of mb measurement file path
+  * Add more helpful error when config file is not found
+  * Fix small comment about implementing TPM ownership
+  * main: die when cannot drop privileges
+  * keylime.conf: add run_as section
+  * Use Rust agent-specific config in Makefile
+  * Fix typo in listen_notifications option in keylime.conf
+  * tpm: Support pre-existing EK
+  * Set swtpm context which is later used for test filtering
+  * Add GitLeaks configuration to ignore RSA key used for testing
+  * Handle whitespace in keylime.conf
+- Rename keylime.conf.diff to keylime-agent.conf.diff
+- Drop 0001-main-die-when-cannot-drop-privileges.patch, as is already
+  merged upstream
+- Add bindgen.patch to add more architectures
+
+-------------------------------------------------------------------
 Tue Jul 12 09:20:39 UTC 2022 - aplanas@suse.com
 
 - Update to version 0.1.0+git.1657303637.5b9072a:
