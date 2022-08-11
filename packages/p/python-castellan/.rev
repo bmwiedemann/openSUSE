@@ -242,4 +242,23 @@
   - Remove lower-constraints remnants</comment>
     <requestid>940200</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9f6829275ba1df89aee560557405f4e5</srcmd5>
+    <version>3.11.0</version>
+    <time>1660235508</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.11.0
+  - Add Python3 zed unit tests
+  - Add Python3 yoga unit tests
+  - Support setting Vault kv version config
+  - Update master for stable/yoga
+  - Fix gitignore pattern for vault related files
+  - Replace the deprecated argument tenant
+  - remove unicode from code
+  - Remove redundant override of logging_context_format_string
+  - Add support for Vault Namespaces
+  - Updating python testing classifier as per Yoga testing runtime
+  - Update master for stable/xena</comment>
+    <requestid>994201</requestid>
+  </revision>
 </revisionlist>
