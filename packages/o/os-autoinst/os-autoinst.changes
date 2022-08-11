@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 10 10:05:16 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1660125909.67bf60f:
+  * Implement --color switch on the command-line
+  * spec: Only exclude 27-consoles-vmware on ppc64le
+  * spec: Exclude t/27-consoles-vmware.t on OBS
+  * Add capability to start vmware VMs with cloud init data
+  * Bump the isotovideo interface number
+  * Add a unit test for send_key_until_needlematch
+  * send_key_until_needlematch: Avoid timeout in the first iteration
+
+-------------------------------------------------------------------
 Sat Aug 06 11:23:30 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1659623026.7aaa3d1:
