@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug  9 16:37:52 UTC 2022 - chris@computersalat.de
+
+- 1.3.7e - Released 23-Jul-2022
+  * Issue 1448 - Ensure that mod_sftp algorithms work properly with OpenSSL 3.x.
+- 1.3.7d - Released 23-Apr-2022
+  * Issue 1321 - Crash with long lines in AuthGroupFile due to large realloc(3).
+  * Issue 1325 - NLST does not behave consistently for relative paths.
+  * Issue 1346 - Implement AllowForeignAddress class matching for passive data
+    transfers.
+  * Bug 4467 - DeleteAbortedStores removes successfully transferred files
+    unexpectedly.
+  * Issue 1401 - Keepalive socket options should be set using IPPROTO_TCP, not
+    SOL_SOCKET.
+  * Issue 1402 - TCP keepalive SocketOptions should apply to control as well as
+    data connection.
+  * Issue 1396 - ProFTPD always uses the same PassivePorts port for first
+  transfer.
+  * Issue 1369 - Name-based virtual hosts not working as expected after upgrade
+    from 1.3.7a to 1.3.7b.
+- rebase proftpd-no_BuildDate.patch
+
+-------------------------------------------------------------------
 Sun Mar 27 13:17:21 UTC 2022 - chris@computersalat.de
 
 - fix deps for SLES
