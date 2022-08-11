@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  8 14:18:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Use-SDL_PIXELFORMAT_RGB888-for-24-bit-surfaces.patch
+  to rectify BGR order in older schismtracker.
+
+-------------------------------------------------------------------
 Wed Jun 15 12:12:01 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Require x11 and xorgproto just like SDL-devel.

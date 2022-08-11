@@ -18,4 +18,13 @@
   as our headers include GL/gl.h and GL/glu.h (boo#1200562).</comment>
     <requestid>982792</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a8772af4e5141c63c03accfab9a66703</srcmd5>
+    <version>1.2.52</version>
+    <time>1660235477</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Use-SDL_PIXELFORMAT_RGB888-for-24-bit-surfaces.patch
+  to rectify BGR order in older schismtracker.</comment>
+    <requestid>994185</requestid>
+  </revision>
 </revisionlist>

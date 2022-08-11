@@ -30,6 +30,7 @@ Source8:        baselibs.conf
 Source9:        %name-rpmlintrc
 Patch1:         0001-SDL_GetWMInfo-work-like-1.2-when-SDL_SetVideoMode-ha.patch
 Patch2:         0001-Set-pixels-in-SDL_CreateYUVOverlay-Fix-164.patch
+Patch3:         0001-Use-SDL_PIXELFORMAT_RGB888-for-24-bit-surfaces.patch
 BuildRequires:  cmake
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(sdl2)
