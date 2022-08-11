@@ -87,7 +87,7 @@ MySQL library for the Neko virtual machine.
     -G Ninja \
     -DCMAKE_C_FLAGS:STRING="%optflags -fno-strict-aliasing" \
     -DWITH_APACHE=OFF \
-    -DRELOCATABLERELOCATABLE=OFF \
+    -DRELOCATABLE=OFF \
     -DRUN_LDCONFIG=OFF
 # make_jobs macro does not use ninja in openSUSE_13.2 / Leap_42.1
 %make_jobs || %__builder -v %{?_smp_mflags}
