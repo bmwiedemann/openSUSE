@@ -133,4 +133,14 @@
   * Allow repl to bind to filesystem sockets via :headless :socket PATH</comment>
     <requestid>993683</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ecc98926ca1996385462d939603718b0</srcmd5>
+    <version>2.9.10</version>
+    <time>1660235552</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.10:
+  * Fix a bug where dev-resources could leak into jars/uberjars.
+  * Avoid illegal reflective access doing XML parsing in uberjar/search.</comment>
+    <requestid>994444</requestid>
+  </revision>
 </revisionlist>

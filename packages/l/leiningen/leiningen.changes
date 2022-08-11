@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 11 06:14:04 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.9.10:
+  * Fix a bug where dev-resources could leak into jars/uberjars.
+  * Avoid illegal reflective access doing XML parsing in uberjar/search.
+
+-------------------------------------------------------------------
 Mon Aug  8 07:06:46 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.9.9:
