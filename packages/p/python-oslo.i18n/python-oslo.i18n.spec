@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.i18n
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,6 @@ Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.i18n
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo.i18n/oslo.i18n-5.1.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python3-Babel
-BuildRequires:  python3-mock
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-stestr
@@ -40,8 +38,6 @@ or library.
 
 %package -n python3-oslo.i18n
 Summary:        OpenStack i18n library
-Requires:       python3-Babel
-Requires:       python3-six
 
 %description -n python3-oslo.i18n
 The oslo.i18n library contain utilities for working with internationalization
