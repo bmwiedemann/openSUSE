@@ -86,12 +86,12 @@
 %global llvm_experimental_targets "M68k"
 %ifarch %arm ppc64 ppc64le
 # No cross-compilation, but GPU targets.
-%global llvm_targets "host;AMDGPU;BPF;NVPTX"
+%global llvm_targets "host;AMDGPU;BPF;NVPTX;WebAssembly"
 %global llvm_experimental_targets ""
 %endif
 %ifarch ppc s390x
 # No graphics cards on System Z; turned off for ppc because of relocation overflows.
-%global llvm_targets "host;BPF"
+%global llvm_targets "host;BPF;WebAssembly"
 %global llvm_experimental_targets ""
 %endif
 
@@ -166,6 +166,8 @@ Patch26:        lld-default-sha1.patch
 Patch33:        CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch
 # Make link dependencies of clang-repl private (https://reviews.llvm.org/D122546).
 Patch34:        clang-repl-private-deps.patch
+# Cherry pick patch from LLVM 15: https://github.com/llvm/llvm-project/issues/56421
+Patch35:        llvm-glibc-2-36.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -620,6 +622,10 @@ pushd lld-%{_version}.src
 # lld got a compile-time dependency on libunwind that we don't want. (https://reviews.llvm.org/D86805)
 mkdir include/mach-o
 cp %{SOURCE10} include/mach-o
+popd
+
+pushd compiler-rt-%{_version}.src
+%patch35 -p2
 popd
 
 %if %{with lldb}

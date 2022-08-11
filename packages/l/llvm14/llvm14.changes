@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 10 20:21:59 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add WebAssembly support for all architectures.
+
+-------------------------------------------------------------------
+Tue Aug  9 09:15:12 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add llvm-glibc-2-36.patch in order to address boo#1202215.
+
+-------------------------------------------------------------------
 Mon Jul  4 21:29:11 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 14.0.6.
