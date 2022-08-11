@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 10 10:35:10 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- update to 5.19:
+  * ip/iplink_virt_wifi: add support for virt_wifi
+  * Update kernel headers
+  * libnetlink: Add filtering to rtnl_statsdump_req_filter()
+  * ipstats: Add a "set" command
+  * ipstats: Add a group "link"
+  * libbpf: Use bpf_object__load instead of bpf_object__load_xattr
+  * uapi: change name for zerocopy sendfile in tls
+  * bridge: vxlan device vnifilter support
+  * f_flower: Add num of vlans parameter
+
+-------------------------------------------------------------------
 Sun Jun  5 00:40:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.18:
