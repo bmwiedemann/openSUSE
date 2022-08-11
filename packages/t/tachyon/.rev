@@ -68,4 +68,12 @@
     <comment>- Update to release 0.99.4</comment>
     <requestid>971931</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2c9293e47176c13c3357306ebf721925</srcmd5>
+    <version>0.99.5</version>
+    <time>1660235511</time>
+    <user>dimstar_suse</user>
+    <comment>better obsoletes</comment>
+    <requestid>994341</requestid>
+  </revision>
 </revisionlist>

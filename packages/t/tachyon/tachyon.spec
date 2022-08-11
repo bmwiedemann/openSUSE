@@ -17,8 +17,8 @@
 
 
 Name:           tachyon
-%define lname	libtachyon-0_99_4
-Version:        0.99.4
+%define lname	libtachyon-0_99_5
+Version:        0.99.5
 Release:        0
 Summary:        Parallel ray tracing system
 License:        BSD-3-Clause
@@ -55,12 +55,14 @@ Tachyon implements the basic geometric primitives such as triangles,
 planes, spheres, cylinders, etc. Tachyon parallelizes unlike POV-Ray
 and Rayshade.
 
-%package -n libtachyon-devel
+%package devel
 Summary:        Development files for the Tachyon Ray Tracing System
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %version
+Requires:       %lname = %version-%release
+Obsoletes:      libtachyon-devel < %version-%release
+Provides:       libtachyon-devel = %version-%release
 
-%description -n libtachyon-devel
+%description devel
 A parallel ray tracing system supporting MPI and multithreaded
 implementations.
 
@@ -83,6 +85,9 @@ done
 %make_install
 rm -f "$b/%_libdir"/*.la
 
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
+
 %files
 %_bindir/tachyon
 %license Copyright
@@ -90,7 +95,7 @@ rm -f "$b/%_libdir"/*.la
 %files -n %lname
 %_libdir/libtachyon-*.so
 
-%files -n libtachyon-devel
+%files devel
 %_libdir/libtachyon.so
 %_includedir/tachyon/
 

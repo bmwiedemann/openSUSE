@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 10 10:45:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.99.5
+  * Implemented a new higher performance octahedron normal vector
+    decoding variant that eliminates GPU SIMD divergence and
+    costs fewer instructions
+  * Added a completely flattened closest-hit dispatch approach
+    through bitwise manipulation of the outpus of the OptiX 7
+    optixGetHitKind() and optixGetPrimitiveType() APIs.
+  * Added SBT-local hitgroup geometry flags containing
+    cached/flattened material opacity, texture alpha cutout, and
+    other information useful for short-circuiting frequent high
+    latency data fetches from global memory or textures,
+    particularly those items needed for for any-hit programs.
+
+-------------------------------------------------------------------
 Thu Apr 21 22:12:54 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.99.4

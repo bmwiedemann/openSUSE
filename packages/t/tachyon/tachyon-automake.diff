@@ -41,7 +41,7 @@ Index: tachyon/configure.ac
 --- /dev/null
 +++ tachyon/configure.ac
 @@ -0,0 +1,18 @@
-+AC_INIT([tachyon], [0.99.4])
++AC_INIT([tachyon], [0.99.5])
 +AC_CONFIG_AUX_DIR([build-aux])
 +AC_CONFIG_MACRO_DIRS([m4])
 +AM_INIT_AUTOMAKE([-Wall foreign subdir-objects])
