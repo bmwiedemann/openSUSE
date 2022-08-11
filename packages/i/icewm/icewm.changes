@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Jul 23 07:04:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.8:
+  * Omit trailing dot in CPU temperature and add centigrade symbol for issue
+  * If there is no WM active, then a restart will start icewm.
+  * Don't create ~/.icewm, unless required to save a file.
+  * When showing the desktop, also minimize a focused fullscreen window.
+  * Remove unused setTitle from YMsgBox.
+  * Add support for COMPOUND_TEXT title names and for non-ascii characters in
+  *   WM_NAME strings for issue #26.
+  * upport COMPOUND_TEXT title names and non-ascii characters in WM_NAME
+  *   strings in icesh. Limit window dimensions to 32732 in icesh.
+  * Prevent warnings.
+  * Let TaskBarShowAllWindows influence TaskBarTaskGrouping for issue #560.
+  *   Improve truncation of titles for TaskBarTaskGrouping in issue #658.
+  * Do without pair array.
+  * Update the grouping menu when tasks are added or removed.
+  * Don't convert XA_STRING names to current locale for issue #26.
+  * Update grouping menu when removing a task.
+  * Restore 2.5.0 container handling of button presses for issue #649.
+  * Don't convert XA_STRING in icesh.
+  * Make TaskBarGraphHeight themable for issue #659.
+  * Restore prettyClock as false.
+  * Preserve errno in testOnce.
+  * Clarify which preferences are themable in icewm-preferences(5).
+
+-------------------------------------------------------------------
 Fri May 20 08:01:17 UTC 2022 - QK ZHU <qkzhu@suse.com>
 
 - Rebase patches for version 2.9.7:

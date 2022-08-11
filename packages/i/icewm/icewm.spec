@@ -1,7 +1,7 @@
 #
 # spec file for package icewm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global lites icewm icewmhint icewmbg icesh icewm-session
 Name:           icewm
-Version:        2.9.7
+Version:        2.9.8
 Release:        0
 Summary:        Window Manager with a Taskbar
 License:        LGPL-2.1-or-later
@@ -73,7 +73,7 @@ Requires:       icewm-theme-branding
 Requires:       imlib2-loaders
 Requires:       xdg-menu
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # If you have the choice, prefer the big one.
 Recommends:     icewm-default
 Recommends:     icewm-lang = %{version}
