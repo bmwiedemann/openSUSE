@@ -37,7 +37,6 @@ BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module anyio}
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module contextlib2}
 BuildRequires:  %{python_module itsdangerous}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}

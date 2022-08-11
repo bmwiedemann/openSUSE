@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 11 05:22:41 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on contextlib2. 
+
+-------------------------------------------------------------------
 Fri Aug  5 11:37:43 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add missing runtime dependencies anyio and typing_extensions
