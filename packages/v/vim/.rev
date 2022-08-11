@@ -6117,4 +6117,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Get hit-enter prompt for system() when '!' is in 'guioptions'.</comment>
     <requestid>992576</requestid>
   </revision>
+  <revision rev="317" vrev="1">
+    <srcmd5>1b00366e47949fe210a50c1812090c40</srcmd5>
+    <version>9.0.0181</version>
+    <time>1660235482</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.0181, fixes the following problems
+  * Comment about tabpage line above the wrong code.
+  * After CTRL-Left-mouse click a mouse scroll also has CTRL.
+  * Debugger test may fail when $CWD is very long.
+  * Not enough characters accepted for 'spellfile'.
+  * Truncating virtual text after a line not implemented. Cursor positioning
+  wrong with Newline in the text.
+  * execute() does not use the &quot;legacy&quot; command modifier.
+  * &quot;delmenu&quot; does not remove autocmmands. Running menu test function
+  alone fails.
+  * Crash when adding and removing virtual text. (Ben Jackson)
+  * Cursor positioned after virtual text in empty line.
+  * Text property cannot override 'cursorline' highlight.
+  * Substitute that joins lines drops text properties.
+  * Missing part of change for &quot;override&quot; flag.
+  * Cursor positioned wrong after two text properties with virtual text and
+  &quot;below&quot; alignment. (Tim Pope)
+  * A &quot;below&quot; aligned text property gets 'showbreak' displayed.
+  * Test for fuzzy completion fails sometimes.
+  * Error for using #{ in an expression is a bit confusing.
+  * A &quot;below&quot; aligned text property does not work with 'nowrap'.
+  * Warning for unused argument in small build.
+  * No fold and sign column for virtual text with &quot;below&quot; align and 'nowrap'.
+  * Text properties wrong after splitting a line.
+  * Text properties with &quot;right&quot; and &quot;after&quot; alignment displayed wrong with
+  'nowrap'.
+  * Giving E1170 only in an expression is confusing.
+  * 'showbreak' displayed below truncated &quot;after&quot; text prop.
+  * With 'nowrap' &quot;below&quot; property not displayed correctly.
+  * Cannot build with small features.</comment>
+    <requestid>994291</requestid>
+  </revision>
 </revisionlist>

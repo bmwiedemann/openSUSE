@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Aug 10 09:38:28 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.0181, fixes the following problems
+  * Comment about tabpage line above the wrong code.
+  * After CTRL-Left-mouse click a mouse scroll also has CTRL.
+  * Debugger test may fail when $CWD is very long.
+  * Not enough characters accepted for 'spellfile'.
+  * Truncating virtual text after a line not implemented. Cursor positioning
+  wrong with Newline in the text.
+  * execute() does not use the "legacy" command modifier.
+  * "delmenu" does not remove autocmmands. Running menu test function
+  alone fails.
+  * Crash when adding and removing virtual text. (Ben Jackson)
+  * Cursor positioned after virtual text in empty line.
+  * Text property cannot override 'cursorline' highlight.
+  * Substitute that joins lines drops text properties.
+  * Missing part of change for "override" flag.
+  * Cursor positioned wrong after two text properties with virtual text and
+  "below" alignment. (Tim Pope)
+  * A "below" aligned text property gets 'showbreak' displayed.
+  * Test for fuzzy completion fails sometimes.
+  * Error for using #{ in an expression is a bit confusing.
+  * A "below" aligned text property does not work with 'nowrap'.
+  * Warning for unused argument in small build.
+  * No fold and sign column for virtual text with "below" align and 'nowrap'.
+  * Text properties wrong after splitting a line.
+  * Text properties with "right" and "after" alignment displayed wrong with
+  'nowrap'.
+  * Giving E1170 only in an expression is confusing.
+  * 'showbreak' displayed below truncated "after" text prop.
+  * With 'nowrap' "below" property not displayed correctly.
+  * Cannot build with small features.
+  * Some diff mode tests fail.
+  * Warning for uninitialized variable. (Tony Mechelynck)
+  * Text property "below" gets indent if 'breakindent' is set. (Tim Pope)
+  * Text property not adjusted for text inserted with "p".
+  * Using freed memory with put command.
+  * Looking up a text property type by ID is slow.
+  * When using text properties the line text length is computed twice.
+  * Checking for text properties could be a bit more efficient.
+  * Cursor positioned wrong with two virtual text properties close
+  together. (Ben Jackson)
+  * Insufficient testing for line2byte() with text properties.
+  * Various minor code formatting issues.
+  * Quickfix line highlight is overruled by 'cursorline'.
+  * Trying to allocate zero bytes.
+  * Assert fails only on MS-Windows.
+  * No error for using "#{ comment" in a compiled function.
+  * Spell checking for capital not working with trailing space.
+  * Checking character options is duplicated and incomplete.
+  * Cursor position wrong with 'virtualedit' and mouse click after end of
+  the line. (Hermann Mayer)
+  * Cursor position wrong with virtual text before Tab.
+  * Cursor position wrong with wrapping virtual text in empty line.
+  * Stray logfile appears when running tests.
+
+-------------------------------------------------------------------
 Wed Aug  3 12:39:37 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0135, fixes the following problems
