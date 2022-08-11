@@ -26,6 +26,10 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            https://www.indilib.org/
 Source0:        https://github.com/indilib/indi/archive/v%{version}.tar.gz#/indi-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/indilib/indi/commit/694e07177c7c8d5ad7dfaed54f511c5a77b3befc
+Patch0:         fix-ioptron-timeout.patch
+# PATCH-FIX-UPSTREAM https://github.com/indilib/indi/commit/b717412dc649dfb2505d08931bd9efbfc04b8ff9
+Patch1:         fix-ioptron-meridian.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_system-devel

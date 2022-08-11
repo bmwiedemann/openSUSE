@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  4 06:08:48 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add fix-ioptron-meridian.patch: add again in case a timeout is issued
+  and iOptron returns it despite the flush. This is an attempt to read this buffer again.
+- Add fix-ioptron-timeout.patch: save meridian flip settings by default on change.
+
+-------------------------------------------------------------------
 Fri Jul 29 14:52:35 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.9.7:
