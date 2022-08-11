@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Tue Aug  2 16:10:45 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add patches:
+  * wannier90-install-pkgconfig.patch -- Update Makefile to
+    install a package config file
+  * a75344b646227c9d7f12d90af4a35a902e940dca.patch -- Allocate
+    arrays on non-root nodes to avoid SIGSEG
+    [gh#wannier-developers/wannier90#373]
+  * wannier90-fix-parallel-compilation.patch -- Ignore rank
+    mismatch issues when building openmpi flavours with gfortran,
+    as recommended in upstream bug report
+    [gh#wannier-developers/wannier90#371] 
+
+-------------------------------------------------------------------
+Tue Aug  2 13:05:55 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.

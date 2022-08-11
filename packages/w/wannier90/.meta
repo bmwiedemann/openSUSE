@@ -1,0 +1,10 @@
+<package name="wannier90" project="openSUSE:Factory">
+  <title>A library for generating maximally-localized Wannier functions</title>
+  <description>Wannier90 is a library for generating maximally-localized Wannier functions and
+using them to compute advanced electronic properties of materials with high
+efficiency and accuracy.
+
+</description>
+  <devel project="science" package="wannier90"/>
+  <url>http://www.wannier.org/</url>
+</package>
