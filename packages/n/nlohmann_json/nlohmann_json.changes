@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Aug  2 11:06:05 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 3.11.1:
+  * Version 3.11.0 moved the user-defined string literals (UDL)
+    into namespace nlohmann::literals::json_literals.
+    Unfortunately, this namespace was not imported to the global
+    namespace by default which broke code. This release fixes this
+    bug.
+- Update to 3.11.0:
+  * String view support for all functions working on object keys
+    (e.g., at or operator[]), avoiding unnecessary allocations.
+  * BJData as the fifth supported binary format besides BSON, CBOR,
+    MessagePack, and UBJSON.
+  * Better C++20 support to make the library integrate more
+    smoothly with newer codebases.
+  * Better support for avoiding problems when multiple versions of
+    the library are used in the same project.
+  * Even better and more extensive documentation and examples.
+  * More tests for edge cases like 32-bit support, C++20 features,
+    using the library with ICPC, or after including <windows.h>.
+  * Full changelog available at:
+    https://github.com/nlohmann/json/releases/tag/v3.11.0 
+
+-------------------------------------------------------------------
 Sun Jan 16 16:11:50 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 3.10.5:

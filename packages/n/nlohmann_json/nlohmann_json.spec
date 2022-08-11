@@ -18,7 +18,7 @@
 
 
 Name:           nlohmann_json
-Version:        3.10.5
+Version:        3.11.1
 Release:        0
 Summary:        JSON for Modern C++
 License:        MIT
@@ -80,11 +80,11 @@ export CXXFLAGS=$FLAGS
 %files devel
 %license LICENSE.MIT
 %doc README.md
+%{_datadir}/pkgconfig/nlohmann_json.pc
 %{_includedir}/nlohmann
 %dir %{_libdir}/cmake/nlohmann_json
 %{_libdir}/cmake/nlohmann_json/nlohmann_jsonConfig.cmake
 %{_libdir}/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake
 %{_libdir}/cmake/nlohmann_json/nlohmann_jsonTargets.cmake
-%{_libdir}/pkgconfig/nlohmann_json.pc
 
 %changelog
