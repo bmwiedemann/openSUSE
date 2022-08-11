@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug  8 17:16:41 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Disable some tests for some platforms:
+  * SFML tests/buildrequires are removed to simplify having the same 
+    version in all repositories (SLE, backports, etc.).
+  * Disable test "tests/arc/tasyncorc.nim", which is failing in
+    ppc64le (backports).
+
+- Require/recommend NodeJS 12 only where it is provided, so the 
+  package is buildable on more codestreams.
+
+-------------------------------------------------------------------
 Thu Jul 14 14:15:04 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Remove duplicated strip for nimble.
@@ -12,6 +24,26 @@ Thu Jul 14 14:15:04 UTC 2022 - David Anes <david.anes@suse.com>
 Wed May  4 16:57:06 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Reworked whole package.
+
+- Includes upstream fixes for:
+  * (bsc#1175333, CVE-2020-15693) httpClient is vulnerable to a 
+    CR-LF injection
+  * (bsc#1175334, CVE-2020-15692) mishandle of argument to 
+    browsers.openDefaultBrowser
+  * (bsc#1175332, CVE-2020-15694) httpClient.get().contentLength()
+    fails to properly validate the server response
+  * (bsc#1192712, CVE-2021-41259) null byte accepted in getContent
+    function, leading to URI validation bypass
+  * (bsc#1185948, CVE-2021-29495) stdlib httpClient does not
+    validate peer certificates by default
+  * (bsc#1185085, CVE-2021-21374) Improper verification of the 
+    SSL/TLS certificate
+  * (bsc#1185084, CVE-2021-21373) "nimble refresh" falls back to a 
+    non-TLS URL in case of error
+  * (bsc#1185083, CVE-2021-21372) doCmd can be leveraged to execute
+    arbitrary commands
+  * (bsc#1181705, CVE-2020-15690) Standard library asyncftpclient 
+    lacks a check for newline character
 
 - Add patches:
   * nim-fix-tests-certificate-key-too-small.patch

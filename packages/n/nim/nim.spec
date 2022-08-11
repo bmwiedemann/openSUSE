@@ -56,14 +56,9 @@ BuildRequires:  gcc-c++ >= 6.2
 # Needs node 12 for flag --unhandled-rejections=strict, but it's not
 # strictly needed (it's used to test the Nim JS compiler, so we can
 # skip it and run tests without this compiler target afterwards)
-%if 0%{?suse_version} >= 150100 || 0%{?is_backports}
+%if 0%{?suse_version} >= 150100 || (0%{?suse_version} >= 150100 && 0%{?is_backports})
 BuildRequires:  nodejs >= 12
 Recommends:     nodejs
-%endif
-
-%if 0%{?is_opensuse} || 0%{?is_backports}
-# sfml2 is not avaialable in SLE
-BuildRequires:  sfml2-devel
 %endif
 
 Recommends:     git
@@ -150,14 +145,9 @@ cat << EOT >> tests_to_skip
   tests/nimdoc/trunnableexamples.nim
   # broken in Leap 15.3
   tests/exception/t13115.nim
-EOT
-
-%if 0%{?sle_version} && !0%{?is_opensuse} && !0%{?is_backports}
-cat << EOT >> tests_to_skip
-  # no SFML in plain SLE
+  # no SFML in plain SLE and missing in sin backport repos
   tests/niminaction/Chapter8/sfml/sfml_test.nim
 EOT
-%endif
 
 %ifarch aarch64 armv7l armv7hl ppc64le
 cat << EOT >> tests_to_skip
@@ -175,6 +165,9 @@ cat << EOT >> tests_to_skip
   #aarch64 and ppc64l
   tests/range/tcompiletime_range_checks.nim
   tests/dll/nimhcr_unit.nim
+
+  #ppc64le
+  tests/arc/tasyncorc.nim
 EOT
 %endif
 
