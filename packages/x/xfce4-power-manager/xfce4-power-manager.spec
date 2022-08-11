@@ -53,7 +53,7 @@ BuildRequires:  pkgconfig(xrandr)
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
-Requires:       polkit
+Requires:       /usr/bin/pkexec
 Requires:       systemd
 Requires:       upower
 Recommends:     %{name}-lang = %{version}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  8 12:41:26 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Add requirement to pkexec for brightness control (boo#1202125)
+
+-------------------------------------------------------------------
 Mon Jan  3 21:11:05 UTC 2022 - Predrag Ivanović <predivan@mts.rs>
 
 - Add inhibit_dpms.patch

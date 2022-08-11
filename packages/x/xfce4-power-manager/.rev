@@ -784,4 +784,12 @@
     <comment></comment>
     <requestid>944796</requestid>
   </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>8a697ea673bbe14168d0fcd419b73f21</srcmd5>
+    <version>4.16.0</version>
+    <time>1660235512</time>
+    <user>dimstar_suse</user>
+    <comment>- Add requirement to pkexec for brightness control (boo#1202125)</comment>
+    <requestid>994507</requestid>
+  </revision>
 </revisionlist>
