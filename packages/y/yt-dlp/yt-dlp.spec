@@ -25,13 +25,23 @@ Group:          Productivity/Networking/Web/Utilities
 URL:            https://github.com/yt-dlp/yt-dlp
 Source:         %url/releases/download/%version/yt-dlp.tar.gz
 BuildRequires:  make >= 4
+%if 0%{?suse_version} > 1500
 BuildRequires:  python3-devel
 BuildRequires:  python3-xml
+%else
+BuildRequires:  python39-devel
+BuildRequires:  python39-xml
+%endif
 BuildRequires:  zip
 BuildArch:      noarch
 Requires:       ffmpeg
+%if 0%{?suse_version} > 1500
 Requires:       python3
 Requires:       python3-xml
+%else
+Requires:       python39
+Requires:       python39-xml
+%endif
 
 %description
 yt-dlp is a command-line program to retrieve videos from
@@ -69,7 +79,12 @@ ZSH command line completion support for yt-dlp.
 
 %build
 rm -f youtube-dl yt-dlp
-PYTHON="%_bindir/python3" %make_build yt-dlp
+%if 0%{?suse_version} > 1500
+PYTHON="%_bindir/python3" \
+%else
+PYTHON="%_bindir/python3.9" \
+%endif
+ %make_build yt-dlp
 
 %install
 b="%buildroot"

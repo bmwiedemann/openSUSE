@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 10 15:54:47 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Force python 3.9 on anything older than Tumbleweed
+
+-------------------------------------------------------------------
 Tue Aug  9 07:51:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2022.08.08
