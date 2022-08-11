@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-aiounittest
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Test AyncIO Python Code Easily
 License:        MIT
