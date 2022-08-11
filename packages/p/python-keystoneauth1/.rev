@@ -303,4 +303,30 @@ update to version 2.12.0
     <comment></comment>
     <requestid>889970</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>56b20e6ee9e0698eb2bc8c1579344730</srcmd5>
+    <version>4.6.0</version>
+    <time>1660235509</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.6.0
+  - Improve help messages for a few options
+  - Drop lower-constraints.txt and its testing
+  - Fix version discovery check of url for integer project id
+  - setup.cfg: Replace dashes by underscores
+  - bump py37 to py38 in tox.ini
+  - Update master for stable/wallaby
+  - Fix bindep for current rpm based distributions
+  - remove unicode from code
+  - Allow logging of Content-Type text/plain
+  - Fix docs build
+  - Clarify token_endpoint.Token usecases
+  - Use TOX_CONSTRAINTS_FILE
+  - fix: miss attr _discovery_cache in ServiceTokenAuthWrapper
+  - Update master for stable/yoga
+  - Update master for stable/xena
+  - User-friendly error message for DiscoveryFailure
+
+- update to version 4.4.0</comment>
+    <requestid>994202</requestid>
+  </revision>
 </revisionlist>

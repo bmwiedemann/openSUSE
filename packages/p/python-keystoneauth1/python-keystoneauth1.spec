@@ -1,7 +1,7 @@
 #
 # spec file for package python-keystoneauth1
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,19 @@
 
 
 Name:           python-keystoneauth1
-Version:        4.3.1
+Version:        4.6.0
 Release:        0
 Summary:        OpenStack authenticating tools
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/keystoneauth
-Source0:        https://files.pythonhosted.org/packages/source/k/keystoneauth1/keystoneauth1-4.3.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/k/keystoneauth1/keystoneauth1-4.6.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-betamax
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-iso8601 >= 0.1.11
 BuildRequires:  python3-lxml
-BuildRequires:  python3-mock
 BuildRequires:  python3-oauthlib
 BuildRequires:  python3-os-service-types >= 1.2.0
 BuildRequires:  python3-oslo.config

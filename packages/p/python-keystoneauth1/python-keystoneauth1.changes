@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jun  7 09:22:23 UTC 2022 - cloud-devel@suse.de
+
+- update to version 4.6.0
+  - Improve help messages for a few options
+  - Drop lower-constraints.txt and its testing
+  - Fix version discovery check of url for integer project id
+  - setup.cfg: Replace dashes by underscores
+  - bump py37 to py38 in tox.ini
+  - Update master for stable/wallaby
+  - Fix bindep for current rpm based distributions
+  - remove unicode from code
+  - Allow logging of Content-Type text/plain
+  - Fix docs build
+  - Clarify token_endpoint.Token usecases
+  - Use TOX_CONSTRAINTS_FILE
+  - fix: miss attr _discovery_cache in ServiceTokenAuthWrapper
+  - Update master for stable/yoga
+  - Update master for stable/xena
+  - User-friendly error message for DiscoveryFailure
+
+-------------------------------------------------------------------
+Fri May 13 08:40:00 UTC 2022 - cloud-devel@suse.de
+
+- update to version 4.4.0
+
+-------------------------------------------------------------------
 Sun May  2 17:24:33 UTC 2021 - cloud-devel@suse.de
 
 - update to version 4.3.1
