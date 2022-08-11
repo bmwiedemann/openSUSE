@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 10 07:16:46 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20220805:
+  * Updates to NIXI `.in` subspace in ICANN section of PSL (#1588)
+  * util: gTLD data autopull updates for 2022-07-28T15:14:54 UTC (#1592)
+  * util: gTLD data autopull updates for 2022-07-03T15:13:52 UTC (#1587)
+  * Add messerli.app (#1535)
+  * Add iservschule.de, schulplattform.de, update IServ GmbH contact information (#1580)
+  * Add `lolipopmc.jp` (#1555)
+  * Add ibxos.it and iliadboxos.it domains (#1549)
+  * Simplify the instance and endpoint domains using wildcard syntax (#1584)
+  * util: gTLD data autopull updates for 2022-06-14T15:15:19 UTC (#1581)
+  * doc (.in): update ref uri to registry policies (#1577)
+  * util: gTLD data autopull updates for 2022-06-02T15:16:31 UTC (#1579)
+
+-------------------------------------------------------------------
 Tue May 31 08:10:11 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20220518:

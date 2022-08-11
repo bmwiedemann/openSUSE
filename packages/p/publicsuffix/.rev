@@ -1185,4 +1185,23 @@ Now with build cycle removed.</comment>
   * Fix comments delete space and deprecation of io/ioutil (#1557)</comment>
     <requestid>980053</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>4b1d2e361509b0c39f1fdc526c19ae50</srcmd5>
+    <version>20220805</version>
+    <time>1660235481</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220805:
+  * Updates to NIXI `.in` subspace in ICANN section of PSL (#1588)
+  * util: gTLD data autopull updates for 2022-07-28T15:14:54 UTC (#1592)
+  * util: gTLD data autopull updates for 2022-07-03T15:13:52 UTC (#1587)
+  * Add messerli.app (#1535)
+  * Add iservschule.de, schulplattform.de, update IServ GmbH contact information (#1580)
+  * Add `lolipopmc.jp` (#1555)
+  * Add ibxos.it and iliadboxos.it domains (#1549)
+  * Simplify the instance and endpoint domains using wildcard syntax (#1584)
+  * util: gTLD data autopull updates for 2022-06-14T15:15:19 UTC (#1581)
+  * doc (.in): update ref uri to registry policies (#1577)
+  * util: gTLD data autopull updates for 2022-06-02T15:16:31 UTC (#1579)</comment>
+    <requestid>994259</requestid>
+  </revision>
 </revisionlist>
