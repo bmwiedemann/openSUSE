@@ -1,7 +1,7 @@
-Index: nbconvert-6.5.0/nbconvert/filters/markdown_mistune.py
+Index: nbconvert-6.5.3/nbconvert/filters/markdown_mistune.py
 ===================================================================
---- nbconvert-6.5.0.orig/nbconvert/filters/markdown_mistune.py
-+++ nbconvert-6.5.0/nbconvert/filters/markdown_mistune.py
+--- nbconvert-6.5.3.orig/nbconvert/filters/markdown_mistune.py
++++ nbconvert-6.5.3/nbconvert/filters/markdown_mistune.py
 @@ -21,7 +21,9 @@ except ImportError:
      from cgi import escape as html_escape
  
@@ -13,10 +13,10 @@ Index: nbconvert-6.5.0/nbconvert/filters/markdown_mistune.py
  from pygments import highlight
  from pygments.formatters import HtmlFormatter
  from pygments.lexers import get_lexer_by_name
-Index: nbconvert-6.5.0/setup.py
+Index: nbconvert-6.5.3/setup.py
 ===================================================================
---- nbconvert-6.5.0.orig/setup.py
-+++ nbconvert-6.5.0/setup.py
+--- nbconvert-6.5.3.orig/setup.py
++++ nbconvert-6.5.3/setup.py
 @@ -245,7 +245,6 @@ setup_args["install_requires"] = [
      "jupyter_core>=4.7",
      "jupyterlab_pygments",

@@ -30,9 +30,8 @@
 %bcond_with libalternatives
 %endif
 %{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-nbconvert%{psuffix}
-Version:        6.5.0
+Version:        6.5.3
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause
@@ -46,6 +45,7 @@ Patch1:         nbconvert-vendorize-mistune.patch
 Patch2:         ignore-bleach-deprecation-test.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -61,6 +61,7 @@ Requires:       python-defusedxml
 Requires:       python-entrypoints >= 0.2.2
 Requires:       python-jupyter-core >= 4.7
 Requires:       python-jupyterlab-pygments
+Requires:       python-lxml
 Requires:       python-nbclient >= 0.5
 Requires:       python-nbformat >= 5.1
 Requires:       python-packaging

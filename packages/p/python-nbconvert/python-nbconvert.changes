@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Aug 11 14:01:34 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile
+  * remove skip python 2, since we require python >= 3.7 anyway
+  * updates patches
+  * require lxml
+
+- update to version 6.5.3:
+  * Fix title (#1833)
+
+- changes from version 6.5.2:
+  * escape_html: prevent escaping quotes on widgets JSON reprs (#1829)
+  * Fix linters (#1828)
+  * pre-commit-ci[bot] authored and SylvainCorlay committed 2 days ago
+  * Remove downloaded CSS from repository
+
+- changes from version 6.5.1:
+  * Fix pre-commit
+  * Fix tests
+  * Run black and prettier
+  * Run test on 6.x branch
+  * Convert input to string prior to escape HTML
+  * Check input type before escaping
+  * GHSL-2021-1017, GHSL-2021-1020, GHSL-2021-1021
+  * GHSL-2021-1026, GHSL-2021-1025
+  * GHSL-2021-1024
+  * GHSL-2021-1023
+  * GHSL-2021-1022
+  * GHSL-2021-1019
+  * GHSL-2021-1018
+  * GHSL-2021-1027, GHSL-2021-1028
+  * GHSL-2021-1014, GHSL-2021-1015, GHSL-2021-1016
+  * GHSL-2021-1013
+
+-------------------------------------------------------------------
 Sun Jun  5 11:29:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.5.0
