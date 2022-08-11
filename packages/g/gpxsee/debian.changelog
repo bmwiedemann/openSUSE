@@ -1,3 +1,19 @@
+gpxsee (11.3) stable; urgency=low
+
+  * Added support for Orux maps.
+  * Android PDF/PNG export dialogues fixes/improvements.
+
+ -- Martin Tuma <tumic@cbox.cz>  Thu, 11 Aug 2022 00:51:48 +0200
+
+gpxsee (11.2) stable; urgency=low
+
+  * Added support for Osmdroid SQLite maps.
+  * Added support for GEMF maps.
+  * Various minor map parsers fixes/improvements.
+  * Multiple Android GUI fixes/improvements.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 31 Jul 2022 12:33:49 +0200
+
 gpxsee (11.1) stable; urgency=low
 
   * Fixed broken map zooming using the mouse wheel (introduced in
