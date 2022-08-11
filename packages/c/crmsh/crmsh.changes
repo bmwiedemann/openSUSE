@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 11 12:09:28 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20220811.e3a59fc7:
+  * Fix: bootstrap: Use crmsh.parallax instead of parallax module directly (bsc#1202006)
+
+-------------------------------------------------------------------
+Wed Aug 10 15:00:30 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220810.387d071f:
+  * Dev: unittest: Adjust unit test based on previous changes
+  * Dev: bootstrap: Generate public key from private key
+
+-------------------------------------------------------------------
 Tue Aug 09 07:05:44 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.0+20220809.4f90c4ef:
