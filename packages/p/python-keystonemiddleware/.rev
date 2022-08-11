@@ -256,4 +256,24 @@ update to version 4.9.0
     <comment></comment>
     <requestid>889972</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>842d1dae382c7b27bf7007b43e3cad73</srcmd5>
+    <version>9.5.0</version>
+    <time>1660235510</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 9.5.0
+  - Update master for stable/xena
+  - Update master for stable/yoga
+  - Drop lower-constraints.txt and its testing
+  - Update master for stable/wallaby
+  - Add oslo.config.opts entrypoint for audit middleware options
+  - Update master for stable/victoria
+  - Add Python 3 only classifier
+
+- update to version 9.3.0
+  - Switch to eventlet-safe oslo.cache's MemcacheClientPool
+  - Updating lower-constraints job as non voting
+  - Imported Translations from Zanata</comment>
+    <requestid>994404</requestid>
+  </revision>
 </revisionlist>

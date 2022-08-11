@@ -1,7 +1,7 @@
 #
 # spec file for package python-keystonemiddleware
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-keystonemiddleware
-Version:        9.2.0
+Version:        9.5.0
 Release:        0
 Summary:        Middleware for OpenStack Identity
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/keystonemiddleware
-Source0:        https://files.pythonhosted.org/packages/source/k/keystonemiddleware/keystonemiddleware-9.2.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/k/keystonemiddleware/keystonemiddleware-9.5.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-WebOb >= 1.7.1
 BuildRequires:  python3-WebTest
@@ -31,7 +31,6 @@ BuildRequires:  python3-cryptography
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-keystoneauth1 >= 3.12.0
 BuildRequires:  python3-keystoneclient >= 3.20.0
-BuildRequires:  python3-mock
 BuildRequires:  python3-oslo.cache >= 1.26.0
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.context >= 2.19.2
@@ -44,7 +43,6 @@ BuildRequires:  python3-pycadf >= 1.1.0
 BuildRequires:  python3-python-memcached
 BuildRequires:  python3-requests >= 2.14.2
 BuildRequires:  python3-requests-mock
-BuildRequires:  python3-six >= 1.10.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore
 BuildRequires:  python3-testresources
@@ -73,7 +71,6 @@ Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-pycadf >= 1.1.0
 Requires:       python3-python-memcached
 Requires:       python3-requests >= 2.14.2
-Requires:       python3-six >= 1.10.0
 
 %description -n python3-keystonemiddleware
 This package contains middleware modules designed to provide authentication
@@ -94,7 +91,7 @@ BuildRequires:  python3-sphinxcontrib-svg2pdfconverter
 Documentation for Middleware for OpenStack Identity.
 
 %prep
-%autosetup -p1 -n keystonemiddleware-9.2.0
+%autosetup -p1 -n keystonemiddleware-9.5.0
 %py_req_cleanup
 
 %build
@@ -110,6 +107,7 @@ PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
+rm -v keystonemiddleware/tests/unit/audit/test_logging_notifier.py
 python3 -m stestr.cli run
 
 %files -n python3-keystonemiddleware

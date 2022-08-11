@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun  7 09:22:02 UTC 2022 - cloud-devel@suse.de
+
+- update to version 9.5.0
+  - Update master for stable/xena
+  - Update master for stable/yoga
+  - Drop lower-constraints.txt and its testing
+  - Update master for stable/wallaby
+  - Add oslo.config.opts entrypoint for audit middleware options
+  - Update master for stable/victoria
+  - Add Python 3 only classifier
+
+-------------------------------------------------------------------
+Tue Oct 26 21:45:38 UTC 2021 - cloud-devel@suse.de
+
+- update to version 9.3.0
+  - Switch to eventlet-safe oslo.cache's MemcacheClientPool
+  - Updating lower-constraints job as non voting
+  - Imported Translations from Zanata
+
+-------------------------------------------------------------------
 Sun May  2 17:17:54 UTC 2021 - cloud-devel@suse.de
 
 - update to version 9.2.0
