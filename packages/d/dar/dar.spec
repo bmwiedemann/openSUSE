@@ -18,13 +18,13 @@
 
 %define sover   6000
 Name:           dar
-Version:        2.7.6
+Version:        2.7.7
 Release:        0
 Summary:        Backup and Restore Application
 License:        SUSE-GPL-2.0+-with-openssl-exception
-URL:            http://dar.linux.free.fr/
-Source0:        http://sourceforge.net/projects/dar/files/dar/%{version}/%{name}-%{version}.tar.gz
-Source1:        http://dar.linux.free.fr/sign/v%{version}/%{name}-%{version}.tar.gz.sig
+URL:            https://dar.sourceforge.io/
+Source0:        https://dar.edrusb.org/dar.linux.free.fr/Releases/Source_code/dar-%{version}.tar.gz
+Source1:        https://dar.edrusb.org/dar.linux.free.fr/Releases/Source_code/dar-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 BuildRequires:  automake
 BuildRequires:  curl-devel
