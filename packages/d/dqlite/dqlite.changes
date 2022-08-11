@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 23 11:29:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.11.1:
+  * Replace deprecated raft function raft_fixture_init with
+    raft_fixture_initialize
+- includes changes from 1.11.0:
+  * Fix a bug that causes a node to crash under certain conditions
+    after losing leadership in the middle of a transaction
+
+-------------------------------------------------------------------
 Tue Apr 19 19:34:53 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.10.0:
