@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 10 16:54:05 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.18 (library 16.0.0)
+  * Arithmetic: New operators stitch, noblank, jy-to-counts,
+    Zeropoint, mag-to-jy, jy-to-mag, load-col-%-from-%-hdu-%,
+    random-from-hist-raw, random-from-hist
+  * New options to add metadata (standard FITS keywords) to output
+  * Updates to multiple existing operations and options
+  * Query: Short name for Gaia's DR3 dataset has been added for both
+    ESA's Gaia database and VizieR (astquery gaia, astquery vizier)
+  * A number of bug fixes
+
+-------------------------------------------------------------------
 Sun Mar 20 10:14:41 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Astronomy Utilities 0.17 (library 15.0.0):
