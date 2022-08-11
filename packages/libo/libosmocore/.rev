@@ -231,4 +231,12 @@
     <comment>- Update to release 1.7.0</comment>
     <requestid>992618</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>002929a092105249bf7a2fee9d6d7729</srcmd5>
+    <version>1.7.0</version>
+    <time>1660235579</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop double build require on lksctp</comment>
+    <requestid>994505</requestid>
+  </revision>
 </revisionlist>

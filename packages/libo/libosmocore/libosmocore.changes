@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 11 10:11:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop double build require on lksctp
+
+-------------------------------------------------------------------
 Wed Aug  3 14:37:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.7.0

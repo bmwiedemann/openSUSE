@@ -33,7 +33,6 @@ BuildRequires:  xz
 BuildRequires:  pkgconfig(gnutls) >= 2.12.0
 BuildRequires:  pkgconfig(libmnl)
 BuildRequires:  pkgconfig(libpcsclite)
-BuildRequires:  pkgconfig(libsctp)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(talloc) >= 2.1.0
 
