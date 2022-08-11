@@ -270,4 +270,17 @@
   * NativeStateDrm: Implement swap interval 0</comment>
     <requestid>977498</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fa575e83c6a77566ff2cc59a33a49fbf</srcmd5>
+    <version>20220712</version>
+    <time>1660235561</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220712:
+  * SceneJellyfish: Fix memory leak
+  * SceneRefract: Fix texture leak
+  * SceneIdeas: Fix texture leak
+  * waflib: fix compatibility with python-3.11
+  * NativeStateDRM: Honor visual configuration</comment>
+    <requestid>994484</requestid>
+  </revision>
 </revisionlist>
