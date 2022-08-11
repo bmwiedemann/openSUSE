@@ -91,7 +91,8 @@ find -type f -iname \*.txt -print0 | xargs -r0 perl -p -i -e 's|\r\n|\n|g'
   -DBUILD_JAVA_NATIVE_INTERFACE:BOOL=ON \
   -DBUILD_PMDEFAULTS:BOOL=ON \
   %endif
-  -DBUILD_PORTMIDI_TESTS:BOOL=ON
+  -DBUILD_PORTMIDI_TESTS:BOOL=ON \
+  -DCMAKE_SKIP_BUILD_RPATH=ON
 %cmake_build
 
 %install
