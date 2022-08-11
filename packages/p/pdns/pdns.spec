@@ -82,7 +82,7 @@ BuildRequires:  postgresql-devel
 BuildRequires:  sqlite-devel >= 3
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(systemd)
-%{?systemd_requires}
+%{?systemd_ordering}
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_serialization-devel

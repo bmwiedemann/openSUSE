@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 10 16:13:37 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Use systemd_ordering macro so we can use pdns inside containers
+
+-------------------------------------------------------------------
 Wed Jul 13 10:59:37 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 4.6.3
