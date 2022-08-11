@@ -22,13 +22,13 @@
 %bcond_with libalternatives
 %endif
 
-%define somajor 8
+%define somajor 9
 # See bug boo#1095783
 # Currently disabled suid/sgid program dotlock and maidag
 %bcond_with     set_user_identity
 %bcond_with     guile_22
 Name:           mailutils
-Version:        3.14
+Version:        3.15
 Release:        0
 Summary:        GNU Mailutils
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -201,8 +201,8 @@ else
  mv include/mailutils/guile.h include/mailutils/guile-2.2.h
  tar xfJ %{SOURCE1}
 %patch3 -b .p3
+  autoreconf -fiv
 fi
-autoreconf -fiv
 #
 # Check our somajor value with the actual value of VI_CURRENT
 #

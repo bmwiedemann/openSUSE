@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  9 18:55:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.15:
+  * mbox format: don't count terminating empty line as part of the message
+  * Improve performance of the Sieve fileinto action
+  * Improve efficiency of operations on flat mailboxes in append mode
+  * Bugfixes in quoted-printable and fromrd filters
+  * Various fixes in mbox and dotmail format libraries
+  * Fix compilation with flex version 2.6.1
+   
+-------------------------------------------------------------------
 Mon Jun 20 13:39:33 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Fix number check of test (builtin) in %pre scriptlet (boo#1200676)

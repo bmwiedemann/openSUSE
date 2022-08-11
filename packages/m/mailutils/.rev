@@ -259,4 +259,18 @@
     <comment>- Fix number check of test (builtin) in %pre scriptlet (boo#1200676)</comment>
     <requestid>983992</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d26cee556fb232443d399397172d5314</srcmd5>
+    <version>3.15</version>
+    <time>1660235480</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.15:
+  * mbox format: don't count terminating empty line as part of the message
+  * Improve performance of the Sieve fileinto action
+  * Improve efficiency of operations on flat mailboxes in append mode
+  * Bugfixes in quoted-printable and fromrd filters
+  * Various fixes in mbox and dotmail format libraries
+  * Fix compilation with flex version 2.6.1 (forwarded request 994181 from dirkmueller)</comment>
+    <requestid>994254</requestid>
+  </revision>
 </revisionlist>
