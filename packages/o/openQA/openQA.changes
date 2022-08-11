@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 10 10:30:37 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1660127430.c57e24c:
+  * apparmor: Allow run of ping which is required for ipmi backend jobs
+
+-------------------------------------------------------------------
 Thu Aug 04 03:23:13 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1659521059.d04080d:
