@@ -64,6 +64,6 @@ This package provides translations of man pages in multiple languages.
 %make_install
 # net-tools translations conflict on all supported RPM-based distributions
 # https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/issues/8
-rm -v %{buildroot}%{_mandir}/de/man5/ethers.5*
+rm -vf %{buildroot}%{_mandir}/de/man5/ethers.5*
 
 %changelog
