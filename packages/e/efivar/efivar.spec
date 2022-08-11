@@ -1,7 +1,7 @@
 #
 # spec file for package efivar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,7 @@ Patch4:         efivar-fix-efidp_ipv4_addr-fields-assignment.patch
 Patch5:         efivar-bsc1175989-handle-NULL-set-variable.patch
 Patch6:         efivar-bsc1181967-fix-nvme-parsing.patch
 Patch7:         efivar-bsc1187386-fix-emmc-parsing.patch
+Patch8:         efivar-bsc1202209-fix-glibc-2.36-build.patch
 %if "0%{?buildroot}" == "0"
 # set a sane value for buildroot, unless it's already there!
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -94,6 +95,7 @@ perl -pi -e 's{\#include \<uchar\.h\>}{typedef __CHAR16_TYPE__ char16_t;}' \
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 CFLAGS="%{optflags} -Wno-nonnull -flto"

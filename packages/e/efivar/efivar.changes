@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 10 01:54:21 UTC 2022 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add efivar-bsc1202209-fix-glibc-2.36-build.patch to fix the build
+  error against glibc 2.36 (bsc#1202209)
+
+-------------------------------------------------------------------
 Wed Jun 16 06:45:21 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add efivar-bsc1187386-fix-emmc-parsing.patch to fix the eMMC
