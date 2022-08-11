@@ -17,13 +17,11 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define assaycommit d61a16e060c50f9c1a97df84ad9960825031915e
-%define assayver    259.d61a16e
+%define assaycommit bb62d1f7d51d798b05a88045fff3a2ff92c299c3
+%define assayver    264.bb62d1f
 %define skip_python2 1
-# current astropy in TW requires python >= 3.7
-%define skip_python36 1
 Name:           python-skyfield
-Version:        1.39
+Version:        1.43.1
 Release:        0
 Summary:        Elegant astronomy for Python
 License:        MIT
@@ -33,13 +31,13 @@ Source0:        https://files.pythonhosted.org/packages/source/s/skyfield/skyfie
 Source1:        https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf
 Source2:        https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc
 Source3:        https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/a_old_versions/pck00008.tpc
-Source4:        ftp://ssd.jpl.nasa.gov/pub/eph/planets/bsp/de405.bsp
-Source5:        ftp://ssd.jpl.nasa.gov/pub/eph/planets/bsp/de421.bsp
+Source4:        https://ssd.jpl.nasa.gov/ftp/eph/planets/bsp/de405.bsp
+Source5:        https://ssd.jpl.nasa.gov/ftp/eph/planets/bsp/de421.bsp
 # use generate-hipparcos.sh to download and truncate the test data
 Source6:        hip_main.dat.gz
 Source7:        https://datacenter.iers.org/data/9/finals2000A.all
 # Original with invalid https certificate or http url: http://astro.ukho.gov.uk/nao/lvm/Table-S15.2020.txt
-Source8:        https://raw.githubusercontent.com/skyfielders/python-skyfield/master/Table-S15.2020.txt
+Source8:        https://github.com/skyfielders/python-skyfield/raw/%{version}/Table-S15.2020.txt
 Source97:       generate-hipparcos.sh
 # upstreams custom test runner assay: gh#skyfielders/python-skyfield#405
 Source98:       https://github.com/brandon-rhodes/assay/archive/%{assaycommit}.tar.gz#/assay-master-%{assayver}.tar.gz
@@ -84,20 +82,17 @@ sed -i 's/if IS_32_BIT/if True/' skyfield/tests/test_planetarylib.py
 sed -i 's/assert abs(distance.au - 1) < 1e-16/assert abs(distance.au - 1) < 1e-15/' skyfield/tests/test_positions.py
 
 %build
+export SKYFIELD_USE_SETUPTOOLS=1
 %python_build
 
 %install
+export SKYFIELD_USE_SETUPTOOLS=1
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export PYTHONPATH="../assay-%{assaycommit}"
-%{python_expand # run assay up to 3 times in case of flaky pickling errors
-failed=0
-for i in {1..3}; do
-  $python -m assay --batch skyfield.tests && break || [ $((++failed)) -lt 3 ]
-done
-}
+%python_exec -m assay --batch skyfield.tests
 
 %files %{python_files}
 %doc README.rst
