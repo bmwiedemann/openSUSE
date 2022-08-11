@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec  6 09:31:56 UTC 2021 - cloud-devel@suse.de
+
+- update to version 7.1.0
+  - Add Python3 xena unit tests
+  - Fix url to docs
+  - [CI] Run bandit
+  - Fix home_page in setup.cfg
+  - Update master for stable/wallaby
+  - Use py3 as the default runtime for tox
+  - setup.cfg: Replace dashes with underscores
+  - [community goal] Update contributor documentation
+  - Replace deprecated UPPER_CONSTRAINTS_FILE variable
+
+-------------------------------------------------------------------
 Sun May  2 17:23:18 UTC 2021 - cloud-devel@suse.de
 
 - update to version 7.0.0
