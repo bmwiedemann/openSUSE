@@ -34,7 +34,7 @@
 %define proto_c_ver %(protoc-c --version | head -1 | awk '{print $2}')
 
 Name:           criu
-Version:        3.17
+Version:        3.17.1
 Release:        0
 Summary:        Checkpoint/Restore In Userspace Tools
 License:        GPL-2.0-only

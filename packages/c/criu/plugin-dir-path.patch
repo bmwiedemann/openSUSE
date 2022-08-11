@@ -13,22 +13,22 @@
 +LIBDIR		?= $(PREFIX)/lib
  LIBEXECDIR	?= $(PREFIX)/libexec
  RUNDIR		?= /run
--PLUGINDIR	?= /var/lib/criu
+-PLUGINDIR	?= $(PREFIX)/lib/criu
 +PLUGINDIR	?= $(LIBDIR)/criu
  
  #
  # For recent Debian/Ubuntu with multiarch support.
 --- a/criu/include/plugin.h
 +++ b/criu/include/plugin.h
-@@ -5,7 +5,7 @@
- #include "common/compiler.h"
+@@ -6,7 +6,7 @@
  #include "common/list.h"
  
--#define CR_PLUGIN_DEFAULT "/var/lib/criu/"
+ #ifndef CR_PLUGIN_DEFAULT
+-#define CR_PLUGIN_DEFAULT "/usr/lib/criu/"
 +#define CR_PLUGIN_DEFAULT LIBDIR "/criu/"
+ #endif
  
  void cr_plugin_fini(int stage, int err);
- int cr_plugin_init(int stage);
 --- a/criu/Makefile
 +++ b/criu/Makefile
 @@ -29,6 +29,9 @@ CFLAGS			+= -iquote $(ARCH_DIR)/include
