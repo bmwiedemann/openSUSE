@@ -27,6 +27,8 @@ Group:          System/Packages
 URL:            https://en.opensuse.org/openSUSE:Security_team
 # opensuse@opensuse.org
 Source1:        gpg-pubkey-3dbdc284-53674dd4.asc
+# openSUSE RSA 4096 key
+Source10:       gpg-pubkey-29b700a4-62b07e22.asc
 # build@suse.de for SLE12 / SLE15
 Source2:        gpg-pubkey-39db7c82-5f68629b.asc
 # RISCV
@@ -71,7 +73,7 @@ cp %{SOURCE6} .
 
 %install
 mkdir -p %{buildroot}%{keydir}
-for i in %{SOURCE0} %{SOURCE1} %{SOURCE2} \
+for i in %{SOURCE0} %{SOURCE1} %{SOURCE10} %{SOURCE2} \
 %if 0%{?sle_version}
 %{SOURCE9} \
 %endif
@@ -103,6 +105,7 @@ install -c -m 644 %{SOURCE8} %{buildroot}%{containerkeydir}/suse-container-key.a
 %attr(755,root,root) %dir %{containerkeydir}
 %{keydir}/gpg-pubkey-3dbdc284-53674dd4.asc
 %{keydir}/gpg-pubkey-39db7c82-5f68629b.asc
+%{keydir}/gpg-pubkey-29b700a4-62b07e22.asc
 %if 0%{?sle_version}
 %{keydir}/gpg-pubkey-65176565-61a0ee8f.asc
 %endif
