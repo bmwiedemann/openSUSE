@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  8 00:27:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 5.2.0:
+  * Better support for files larger than 4 GB
+  * Truecolor support on 64 bit systems for terminals that support
+    it
+- add upstream signing key and validate source signature
+- fix license
+
+-------------------------------------------------------------------
 Wed Jan 22 20:58:13 UTC 2020 - Sébastien POHER <sogal@opensuse.org>
 
 - Upgrade to pre5.2
