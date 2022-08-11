@@ -23,9 +23,11 @@ Release:        0
 Summary:        Utilities to work with RDF data
 License:        ISC
 Group:          Productivity/File utilities
-URL:            https://drobilla.net/software/sord/
+URL:            https://drobilla.net/software/sord.html
 Source0:        https://download.drobilla.net/sord-%{version}.tar.bz2
-Source1:        baselibs.conf
+Source1:        https://download.drobilla.net/sord-%{version}.tar.bz2.sig
+Source2:        sord.keyring
+Source3:        baselibs.conf
 BuildRequires:  doxygen
 BuildRequires:  graphviz
 BuildRequires:  pcre-devel
