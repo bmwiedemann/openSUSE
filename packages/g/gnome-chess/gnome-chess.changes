@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 10 06:44:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.1:
+  + Use pango to render clock text, fixing broken ratio and LTR
+    characters.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 18 05:13:45 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 42.0:
