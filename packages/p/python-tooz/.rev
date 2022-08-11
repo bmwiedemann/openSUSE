@@ -232,4 +232,12 @@
   - Fix docstring for get_members()</comment>
     <requestid>981115</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>883ae623cf7ebece8bfffe57cae1ce92</srcmd5>
+    <version>2.11.1</version>
+    <time>1660235507</time>
+    <user>dimstar_suse</user>
+    <comment>- drop unneeded dependencies</comment>
+    <requestid>994200</requestid>
+  </revision>
 </revisionlist>
