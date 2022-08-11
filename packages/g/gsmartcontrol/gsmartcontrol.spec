@@ -1,7 +1,7 @@
 #
 # spec file for package gsmartcontrol
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gsmartcontrol
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Hard Disk Health Inspection Tool
-License:        GPL-2.0 or GPL-3.0
+License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Hardware/Other
-Url:            http://gsmartcontrol.sourceforge.net/
+URL:            http://gsmartcontrol.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name}/%{version}/%{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libstdc++-devel
+BuildRequires:  pkgconfig
 BuildRequires:  polkit
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gtkmm-3.0)
+BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.4
 BuildRequires:  pkgconfig(libpcre)
 Requires:       pcre
 Requires:       polkit
 Requires:       smartmontools >= 5.43
 Recommends:     xdg-utils
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 GSmartControl is a graphical user interface for smartctl, which is a tool for
@@ -47,15 +47,18 @@ SMART data to determine its health, as well as run various tests on it.
 
 %prep
 %setup -q
+#rpmlintrc
+sed -i -e 's|\/usr\/bin\/env bash|\/usr\/bin\/bash|g' data/gsmartcontrol-root.in
 
 %build
 %configure --docdir=%{_defaultdocdir}/%{name} --enable-optimize-options=auto
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 %suse_update_desktop_file %{name}
 %fdupes -s %{buildroot}%{_prefix}
+rm %{buildroot}%{_defaultdocdir}/%{name}/LICENSE_*.txt
 
 %post
 %desktop_database_post
@@ -66,12 +69,12 @@ make %{?_smp_mflags}
 %icon_theme_cache_postun
 
 %files
-%defattr(-,root,root,-)
 %doc %{_defaultdocdir}/%{name}
+%license COPYING LICENSE_*.txt
 %{_sbindir}/%{name}
 %{_bindir}/%{name}-root
-%{_mandir}/man1/%{name}.1%{ext_man}
-%{_mandir}/man1/%{name}-root.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man1/%{name}-root.1%{?ext_man}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/metainfo
