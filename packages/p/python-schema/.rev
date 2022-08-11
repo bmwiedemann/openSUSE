@@ -47,4 +47,16 @@
     <comment></comment>
     <requestid>974869</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7319958870f1fadd3d7b0cd34fa91f7a</srcmd5>
+    <version>0.7.5</version>
+    <time>1660235552</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop patch python-schema-no-mock.patch:
+  * Replaced by the below path.
+- Add patch remove-old-python-support.patch:
+  * Remove support for old Python versions as well mock and contextlib2.
+- Clean up {Build,}Requires as a result.</comment>
+    <requestid>994424</requestid>
+  </revision>
 </revisionlist>

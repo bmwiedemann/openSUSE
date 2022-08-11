@@ -22,19 +22,16 @@ Version:        0.7.5
 Release:        0
 Summary:        Data validation library
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/keleshev/schema
 Source:         https://files.pythonhosted.org/packages/source/s/schema/schema-%{version}.tar.gz
-# https://github.com/keleshev/schema/pull/273
-Patch0:         python-schema-no-mock.patch
+# PATCH-FIX-UPSTREAM gh#keleshev/schema#273
+Patch0:         remove-old-python-support.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module contextlib2 >= 0.5.5}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-contextlib2 >= 0.5.5
 BuildArch:      noarch
 
 %python_subpackages
@@ -45,8 +42,7 @@ obtained from config-files, forms, external services or command-line
 parsing, converted from JSON/YAML (or something else) to Python data-types.
 
 %prep
-%setup -q -n schema-%{version}
-%patch0 -p1
+%autosetup -p1 -n schema-%{version}
 
 %build
 %python_build
