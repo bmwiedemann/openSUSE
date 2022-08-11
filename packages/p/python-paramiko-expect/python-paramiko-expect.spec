@@ -23,7 +23,6 @@ Version:        0.3.2
 Release:        0
 Summary:        An expect-like extension for the Paramiko SSH library
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/fgimian/paramiko-expect
 Source:         https://files.pythonhosted.org/packages/source/p/paramiko-expect/paramiko-expect-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/fgimian/paramiko-expect/master/LICENSE
@@ -33,12 +32,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-paramiko >= 1.10.1
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module contextlib2}
 BuildRequires:  %{python_module paramiko >= 1.10.1}
 BuildRequires:  %{python_module pytest}
-%if %{with python2}
-BuildRequires:  python-mock
-%endif
 # /SECTION
 %python_subpackages
 
