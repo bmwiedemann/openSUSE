@@ -5739,4 +5739,17 @@
   rust = 1.61</comment>
     <requestid>992040</requestid>
   </revision>
+  <revision rev="371" vrev="1">
+    <srcmd5>50aa3c0366007db7937e36e3e33a6c40</srcmd5>
+    <version>103.0.2</version>
+    <time>1660235486</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 103.0.2
+  * Fixed menu shortcuts for users of the JAWS screen reader
+  * Fixed an occasional non-overridable certificate error when
+    accessing device configuration pages
+
+- The --disable-elf-hack option only exists on ARM and X86</comment>
+    <requestid>994312</requestid>
+  </revision>
 </revisionlist>

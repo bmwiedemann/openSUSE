@@ -29,8 +29,8 @@
 # major 69
 # mainver %major.99
 %define major          103
-%define mainver        %major.0.1
-%define orig_version   103.0.1
+%define mainver        %major.0.2
+%define orig_version   103.0.2
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -429,7 +429,7 @@ ac_add_options --enable-debug-symbols=-g1
 ac_add_options --disable-install-strip
 # building with elf-hack started to fail everywhere with FF73
 #%if 0%{?suse_version} > 1549
-%ifnarch aarch64 ppc64 ppc64le s390x
+%ifarch %arm %ix86 x86_64
 ac_add_options --disable-elf-hack
 %endif
 #%endif
