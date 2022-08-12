@@ -150,6 +150,7 @@ unsorted:
   - NetworkManager-strongswan 
   - NetworkManager-strongswan-gnome 
   - NetworkManager-strongswan-lang 
+  - NsCDE 
   - OOKiedokie 
   - OpenBoard 
   - OpenCSD 
@@ -460,6 +461,7 @@ unsorted:
   - alevt 
   - alevtd 
   - alex: [x86_64] 
+  - aliftype-amiri-fonts 
   - alkimia 
   - alkimia-lang 
   - allegro44 
@@ -15464,6 +15466,7 @@ unsorted:
   - lrslib 
   - lrslib-devel 
   - lsb 
+  - lsd 
   - lsdvd 
   - lshw 
   - lshw-gui 
