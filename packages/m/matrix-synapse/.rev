@@ -545,4 +545,12 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>991402</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>67c453053c1b7f9a3b1edb16e198aec3</srcmd5>
+    <version>1.64.0</version>
+    <time>1660319185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.64.0</comment>
+    <requestid>994786</requestid>
+  </revision>
 </revisionlist>

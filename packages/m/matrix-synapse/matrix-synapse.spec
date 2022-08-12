@@ -30,7 +30,7 @@
 %global canonicaljson_version         1.6.0
 %global canonicaljson_max_version     2
 %global cryptography_version          36.0.1
-%global frozendict_version            2.3.0
+%global frozendict_version            2.3.3
 %global idna_version                  3.3
 %global ijson_version                 3.1.4
 %global jsonschema_version            4.4.6
@@ -76,7 +76,7 @@
 %global attrs_version                 21.1.1
 %global bcrypt_version                3.1.0
 %global bleach_version                1.4.3
-%global canonicaljson_version         1.4.0
+%global canonicaljson_version         1.5.0
 %global canonicaljson_max_version     2
 %global cryptography_version          3.4.7
 %global frozendict_version            2.1.3
@@ -153,7 +153,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.63.1
+Version:        1.64.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
