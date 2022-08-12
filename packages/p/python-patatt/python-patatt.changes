@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 12 06:34:55 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.5.0
+  * Handle gpg.[ssh].program configuration parameters
+  * patatt: man page typo fix
+  * Add support for openssh signatures
+  * Always set the i= field
+  * gnupg: Add gpg status output to debug logging
+  * keyring: Add key from Kees Cook
+  * validation: Report lack of signature
+
+-------------------------------------------------------------------
 Fri May 27 12:41:34 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.4.9
