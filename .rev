@@ -668,4 +668,16 @@
 - remove remove_mock.patch (upstream)</comment>
     <requestid>956640</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>601ba8e6c7ae7b86697f97456d7433fd</srcmd5>
+    <version>5.9.0</version>
+    <time>1660319174</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.9.0:
+  * Future-proofing pyproject.toml
+  * Use importlib-metadata for runtime package version lookups
+  * Drop wheel from pyproject.toml examples
+  * Changed minversion in tox to 3.18.0</comment>
+    <requestid>994357</requestid>
+  </revision>
 </revisionlist>
