@@ -103,6 +103,7 @@
   poo#114986: '20220804'
   poo#115115: '20220811'
   poo#115133: '20220808'
+  poo#115274: '20220811'
   poo#63397: '20220422'
   poo#99312: '20220502'
 </value>
@@ -147,7 +148,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20220811</value>
+    <value>20220812</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -231,8 +232,6 @@ products:
   - kubic-weave-npc-image:
     - x86_64
   - opensuse-bind-image:
-    - x86_64
-  - opensuse-cockpit-ws-image:
     - x86_64
   - opensuse-dhcp-server-image:
     - x86_64
@@ -473,8 +472,8 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20220810'
-publishing: '20220810'
+published: '20220811'
+publishing: '20220811'
 testing: '20220811'
 </value>
   </attribute>
