@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-keyvault-administration
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        Microsoft Azure Key Vault Administration Client Library for Python
 License:        MIT
