@@ -4029,4 +4029,12 @@
   * The wrapper rootsh is not a restricted shell</comment>
     <requestid>977891</requestid>
   </revision>
+  <revision rev="490" vrev="1">
+    <srcmd5>3e148695a1437ab3139eb03574aaa458</srcmd5>
+    <version>84.87+git20220727.43b9e53</version>
+    <time>1660313174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993805</requestid>
+  </revision>
 </revisionlist>

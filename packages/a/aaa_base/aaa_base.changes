@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 05 19:31:31 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 84.87+git20220727.43b9e53:
+  * Use HOSTTYPE in MACHTYPE
+  * Move suse to VENDOR
+  * Use /var/mail for MAIL
+
+-------------------------------------------------------------------
 Wed May 18 07:49:13 UTC 2022 - werner@suse.de
 
 - Update to version 84.87+git20220518.dc83f4e:
