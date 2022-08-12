@@ -99,7 +99,7 @@ Group:          System/Monitoring
 %else
 %endif
 Name:           icinga2
-Version:        2.13.4
+Version:        2.13.5
 Release:        %{revision}%{?dist}
 URL:            https://www.icinga.com/
 Source:         https://github.com/Icinga/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -175,6 +175,7 @@ BuildRequires:  boost166-devel
 BuildRequires:  libboost_context-devel >= 1.66
 BuildRequires:  libboost_coroutine-devel >= 1.66
 BuildRequires:  libboost_filesystem-devel >= 1.66
+BuildRequires:  libboost_iostreams-devel >= 1.66
 BuildRequires:  libboost_program_options-devel >= 1.66
 BuildRequires:  libboost_regex-devel >= 1.66
 BuildRequires:  libboost_system-devel >= 1.66
