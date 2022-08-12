@@ -18,9 +18,9 @@
 
 %define netdata_user    netdata
 %define netdata_group   netdata
-%define godplugin_version 0.33.1
+%define godplugin_version 0.35.0
 Name:           netdata
-Version:        1.35.1
+Version:        1.36.0
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
@@ -32,7 +32,6 @@ Source1:        https://github.com/netdata/go.d.plugin/archive/v%{godplugin_vers
 Source2:        vendor.tar.gz
 Source3:        netdata-rpmlintrc
 Patch0:         netdata-logrotate-su.patch
-Patch2:         netdata-smartd-log-path.patch
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -97,7 +96,6 @@ using interactive web dashboards.
 %prep
 %setup -q -n %{name}-v%{version}
 %patch0
-%patch2 -p1
 sed -i 's,%{_bindir}/env bash,/bin/bash,' claim/%{name}-claim.sh.in
 
 %if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500

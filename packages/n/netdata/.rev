@@ -3558,4 +3558,217 @@ Collectors
       is down (proc.plugin)</comment>
     <requestid>991836</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d64afba2c33b446433386debe3ada3d2</srcmd5>
+    <version>1.36.0</version>
+    <time>1660313187</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop netdata-smartd-log-path.patch
+- Update to 1.36.0 (go.d.plugin 0.35.0)
+Collectors
+  * New
+    + Add PgBouncer collector (go.d/pgbouncer)
+      gh#netdata/netdata#748
+    + Add WireGuard collector (go.d/wireguard)
+      gh#netdata/netdata#744
+    + Add PostgresSQL collector (go.d/postgres)
+      gh#netdata/netdata#718
+    + Add Chrony collector (go.d/chrony)
+      gh#netdata/netdata#678
+    + Add Kubernetes State collector (go.d/k8s_state)
+      gh#netdata/netdata#673
+  * Improvements
+    + Add WireGuard description and icon to dashboard info
+      gh#netdata/netdata#13483
+    + Resolve nomad containers name (cgroups.plugin)
+      gh#netdata/netdata#13481
+    + Update postgres dashboard info
+      gh#netdata/netdata#13474
+    + Improve Chrony dashboard info
+      gh#netdata/netdata#13371
+    + Improve config file parsing error message (python.d)
+      gh#netdata/netdata#13363
+    + Add fstype label to disk charts (diskspace.plugin)
+      gh#netdata/netdata#13245
+    + Add support for loadin modules from user plugin directories
+      (python.d)
+      gh#netdata/netdata#13214
+    + Add user plugin dirs to environment variables
+      gh#netdata/netdata#13203
+    + Add second data collection job that tries to read from
+      '/var/lib/smartmontools/' (python.d/smartd)
+      gh#netdata/netdata#13188
+    + Add type label for network interfaces (proc.plugin)
+      gh#netdata/netdata#13187
+    + Add k8s_state dashboard_info
+      gh#netdata/netdata#13181
+    + Add dimension per physical link state to the
+      &quot;Interface Physical Link State&quot; chart (proc.plugin)
+      gh#netdata/netdata#13176
+    + Add dimension per operational state to the
+      &quot;Interface Operational State&quot; chart (proc.plugin)
+      gh#netdata/netdata#13167
+    + Add dimension per duplex state to the
+      &quot;Interface Duplex State&quot; chart (proc.plugin)
+      gh#netdata/netdata#13165
+    + Add cargo/rustc/bazel/buck to apps_groups.conf (apps.plugin)
+      gh#netdata/netdata#13143
+    + Add a separate thread for slow mountpoints in the diskspace
+      plugin (diskspace.plugin)
+      gh#netdata/netdata#13067
+    + Add simple dimension algorithm guess logic when algorithm is
+      not set (go.d/snmp)
+      gh#netdata/netdata#737
+    + Add common stub_status locations (go.d/nginx)
+      gh#netdata/netdata#702
+  * Bug fixes
+    + Fix cgroup name detection for docker containers in containerd
+      cgroup (cgroups.plugin)
+      gh#netdata/netdata#13470
+    + Fix not handling log rotation (python.d/smartd)
+      gh#netdata/netdata#13460
+    + Fix kubepods patterns to filter pods when using Kind cluster
+      (cgroups.plugin)
+      gh#netdata/netdata#13324
+    + Fix 'zmstat*' pattern to exclude zoneminder scripts
+      (apps.plugin)
+      gh#netdata/netdata#13314
+    + Fix kubepods name resolution in a kind cluster
+      (cgroups.plugin)
+      gh#netdata/netdata#13302
+    + Fix extensive error logging (cgroups.plugin)
+      gh#netdata/netdata#13274
+    + Fix qemu VMs and LXC containers name resolution
+      (cgroups.plugin)
+      gh#netdata/netdata#13220
+    + Fix duplicate mountinfo (proc.plugin)
+      gh#netdata/netdata#13215
+    + Fix removing netdev chart labels (cgroups.plugin)
+      gh#netdata/netdata#13200
+    + Fix import collection for py3.10+ (python.d)
+      gh#netdata/netdata#13136
+    + Fix not setting connection timeout for pymongo4+
+      (python.d/mongodb)
+      gh#netdata/netdata#13135
+    + Fix not handling slow setting spec.NodeName for Pods
+      (go.d/k8s_state)
+      gh#netdata/netdata#717
+    + Fix empty charts when ServerMPM is prefork
+      gh#netdata/netdata#715
+    + Fix parsing multiple values in nginx upstream_response_time
+      (go.d/web_log)
+      gh#netdata/netdata#711
+    + Fix collecting metrics for Nodes with dots in name
+      (go.d/k8s_state)
+      gh#netdata/netdata#710
+    + Fix adding dimensions to User CPU Time chart at runtime
+      (go.d/mysql)
+      gh#netdata/netdata#689
+eBPF
+  * Fix data collection frequency
+    gh#netdata/netdata#13351
+  * Fix crash on cleanup
+    gh#netdata/netdata#13259
+Exporting
+  * Fix a base64_encode bug
+    gh#netdata/netdata#13074
+  * Fix sent metrics calculation
+    gh#netdata/netdata#13435
+  * Move host tags to netdata_info
+    gh#netdata/netdata#13358
+  * Fix exporting to OpenTSDB
+    gh#netdata/netdata#13355
+  * Fix exporting to Graphite
+    gh#netdata/netdata#13261
+  * Add exporting chart variables
+    gh#netdata/netdata#13221
+Other notable changes
+  * Improvements
+    + Enable rrdcontexts by default
+      gh#netdata/netdata#13471
+    + Add rrdcontext support for hidden charts
+      gh#netdata/netdata#13466
+    + Load host labels for archived hosts
+      gh#netdata/netdata#13464
+    + Add /api/v1/weights endpoint
+      gh#netdata/netdata#13449
+    + Add stats about currently collected metrics and disk space
+      to tiering endpoint
+      gh#netdata/netdata#13445
+    + Show last 15 alerts in notification
+      gh#netdata/netdata#13434
+    + Add tiering statistics API endpoint
+      gh#netdata/netdata#13420
+    + Send chart context with alert events to the cloud
+      gh#netdata/netdata#13409
+    + Send node info message sooner
+      gh#netdata/netdata#13348
+    + Use new MQTT as default
+      gh#netdata/netdata#13287
+    + Better ACLK debug communication log
+      gh#netdata/netdata#13281
+    + Add Multi-Tier database backend for long term metrics storage
+      gh#netdata/netdata#13263
+    + Add natural and virtual points support to Query Engine
+      gh#netdata/netdata#13248
+    + Delay health until obsoletions check is complete
+      gh#netdata/netdata#13239
+    + Enable ML by default
+      gh#netdata/netdata#13158
+    + Add multi-granularity support to Query Engine and MC
+      improvements
+      gh#netdata/netdata#13155
+    + Add an option to use malloc for page cache instead of mmap
+      gh#netdata/netdata#13142
+    + Significantly improve metrics correlations (73x times faster)
+      gh#netdata/netdata#13107
+    + Add SSL received/send bytes statistics to ACLK
+      gh#netdata/netdata#13091
+  * Bug fixes
+    + Fix crash on Agent startup if data rotation needs to be done
+      gh#netdata/netdata#13473
+    + Fix agent crash when archived host has not been registered
+      to the cloud
+      gh#netdata/netdata#13437
+    + Fix gap filling on dbengine gaps
+      gh#netdata/netdata#13417
+    + Fix 32bit calculation on array allocator
+      gh#netdata/netdata#13343
+    + Fix crash on start on slow disks because ml is initialized
+      before dbengine starts
+      gh#netdata/netdata#13342
+    + Fix crash when the host_labels health line contains the
+      name/value of a label that does not exist on the host
+      gh#netdata/netdata#13305
+    + Fix incorrect dimension names in Redis alarms
+      gh#netdata/netdata#13296
+    + Fix Query Engine alignment
+      gh#netdata/netdata#13282
+    + Fix vbi parser in mqtt5 implementation
+      gh#netdata/netdata#13277
+    + Fix alignment in charts endpoint
+      gh#netdata/netdata#13275
+    + Fix data query on stale chart
+      gh#netdata/netdata#13159
+    + Fix crashes due to misaligned allocations
+      gh#netdata/netdata#13137
+    + Fix buffer overflow detected by the compiler
+      gh#netdata/netdata#13120
+    + Fix 100% CPU when using SSL and a child disconnect from a
+      parent
+      gh#netdata/netdata#13112
+Deprecation notice
+The following items will be removed in our next minor release
+(v1.37.0):
+Component                   Type          Will be replaced by
+=================================================================
+python.d/postgres           collector     go.d/postgres
+Deprecated in this release:
+Component                   Type          Replaced by
+=================================================================
+python.d/chrony	collector   collector     go.d/chrony
+python.d/ovpn_status_log    collector     go.d/openvpn_status_log
+</comment>
+    <requestid>994622</requestid>
+  </revision>
 </revisionlist>
