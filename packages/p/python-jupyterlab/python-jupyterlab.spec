@@ -17,7 +17,7 @@
 
 
 Name:           python-jupyterlab
-Version:        3.4.4
+Version:        3.4.5
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
@@ -54,8 +54,8 @@ Provides:       python-jupyter_jupyterlab = %{version}
 Obsoletes:      python-jupyter_jupyterlab < %{version}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 6.0}
 BuildRequires:  %{python_module jupyterlab-server-test}
+BuildRequires:  %{python_module pytest >= 6.0}
 BuildRequires:  %{python_module pytest-check-links}
 BuildRequires:  %{python_module pytest-console-scripts}
 BuildRequires:  %{python_module requests}
@@ -144,8 +144,8 @@ donttest="$donttest or test_load_extension"
 %{_bindir}/jupyter-lab
 %{_bindir}/jupyter-labextension
 %{_bindir}/jupyter-labhub
-%_jupyter_config %{_jupyter_servextension_confdir}/jupyterlab.json
-%_jupyter_config %{_jupyter_server_confdir}/jupyterlab.json
+%{_jupyter_config} %{_jupyter_servextension_confdir}/jupyterlab.json
+%{_jupyter_config} %{_jupyter_server_confdir}/jupyterlab.json
 %{_jupyter_lab_dir}
 
 %changelog

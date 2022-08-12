@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Aug 11 13:59:58 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.4.5:
+  * Enhancements made
+    + Add an option to enable “fast checks” of the jupyter lab
+      build. #12844 (@thetorpedodog)
+    + Add .webp filetype in docRegistry. #12839 (@yangql176)
+  * Bugs fixed
+    + Only show “Shut Down Kernel” if kernel is running #12919
+      (@krassowski)
+    + Fix JSON Settings Editor #12892 (@krassowski)
+    + Fix progress bar not working after uploading multiple files
+      finished #12871 (@hsuanxyz)
+    + Fix kernel in the statusbar does not match the actual #12865
+      (@hsuanxyz)
+    + Adjust css to not leave trace of deleted widgets #12838
+      (@thomasaarholt)
+  * Maintenance and upkeep improvements
+    + Log launcher error to console #12909 (@trungleduc)
+  * Documentation improvements
+    + Add alt text to documentation #12879 (@isabela-pf)
+    + Split commands in two blocks in the contributing guide #12898
+      (@jtpio)
+    + Remove reference to unmaintained nb_conda_kernels #12878
+      (@SylvainCorlay)
+    + Document building JupyterLab on osx-arm64 platforms #12882
+      (@SylvainCorlay)
+    + Don’t suggest deprecated command #12855 (@ryanlovett)
+
+-------------------------------------------------------------------
 Mon Aug  1 19:42:29 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.4.4
