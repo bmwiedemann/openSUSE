@@ -1,0 +1,11 @@
+<package name="NsCDE" project="openSUSE:Factory">
+  <title>Not so Common Desktop Environment (NsCDE)</title>
+  <description>NsCDE is a retro but powerful UNIX desktop environment which resembles CDE look (and partially feel) but with a more powerful and flexible framework beneath-the-surface, more suited for 21st century unix-like and Linux systems and user requirements than original CDE.
+
+NsCDE can be considered as a heavyweight FVWM theme on steroids, but combined with a couple other free software components and custom FVWM applications and a lot of configuration, NsCDE can be considered a lightweight hybrid desktop environment.
+
+In other words, NsCDE is a heavy FVWM (ab)user. It consists of a set of FVWM applications and configurations, enriched with Python and Shell background drivers, couple of the additional free software tools and applications. FVWM3 is also supported.
+
+Visually, NsCDE mimics CDE, the well known Common Desktop Environment of many commercial UNIX systems of the nineties. It supports CDE backdrops and palettes with FVWM colorsets and has a theme generator for Xt, Xaw, Motif, GTK2, GTK3, Qt4 and Qt5. Integrating all these bits and pieces, the user gets a retro visual experience across almost all X11 applications. Enriched with a bunch of powerful FVWM concepts and functions, modern applications and font rendering, NsCDE acts as a link between classic CDE look and a fast and extensible environment, well suited for modern day computing.</description>
+  <devel project="X11:windowmanagers" package="NsCDE"/>
+</package>
