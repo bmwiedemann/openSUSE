@@ -969,4 +969,12 @@ nicer version with try-reload-or-restart</comment>
     <comment></comment>
     <requestid>983715</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>012fb5309c6f6f39be891c4c7a069a8d</srcmd5>
+    <version>0.4.7.9</version>
+    <time>1660313202</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.4.7.9 (boo#1202336) (forwarded request 994612 from AndreasStieger)</comment>
+    <requestid>994660</requestid>
+  </revision>
 </revisionlist>

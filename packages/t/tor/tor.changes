@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 11 16:39:24 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tor 0.4.7.9 (boo#1202336)
+  * major fixes aimed at reducing memory pressure on relays
+  * prevent a possible side-channel
+  * major bugfix related to congestion control
+  * major bugfix related to Vanguard L2 layer node selection
+
+-------------------------------------------------------------------
 Thu Jun 16 17:08:53 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - tor 0.4.7.8
