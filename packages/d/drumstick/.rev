@@ -192,4 +192,12 @@
   * Fixed another issue with installation library dir</comment>
     <requestid>990769</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>04e70c564405eaf6a723d6764c310786</srcmd5>
+    <version>2.7.0</version>
+    <time>1660313208</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.7.0</comment>
+    <requestid>994719</requestid>
+  </revision>
 </revisionlist>

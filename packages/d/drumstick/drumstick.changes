@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 12 07:17:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.7.0. Check the ChangeLog file for the full list of
+  changes:
+  * Utils: vpiano uses the subscript octave designation option
+  * Drumstick::ALSA revision, registering SequencerEvent
+    with qMetaType
+  * Drumstick::Widgets - fixed piano designer plugin to show
+    more properties
+  * fixed fluidsynth backend to support channel pressure and
+    key pressure MIDI events
+  * fluidsynth backend files and classes renamed with more
+    specific names.
+  * removed sonivox library sources from the source tree
+
+-------------------------------------------------------------------
 Sat Jul 23 07:04:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.6.1
