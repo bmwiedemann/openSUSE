@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 11 11:48:16 UTC 2022 - ro@suse.de
+
+- Update to version 0.26:
+  * Skip non-existing files from the invalid-patches check
+  * Treat to-be-deleted patches as nonexisting for the source-tracked check
+  * Update README with a clearer mission/scope
+  * cleanup: make variable name a valid english word
+
+-------------------------------------------------------------------
 Thu Aug  4 12:09:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - require patch for patch-format checking
