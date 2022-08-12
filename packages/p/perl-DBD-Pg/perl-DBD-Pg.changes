@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug  9 03:06:38 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.16.0
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+  Version 3.16.0 (August 8, 2022)
+   - Automatically use 64-bit versions of large object functions when available
+     [Dagfinn Ilmari Mannsåker, David Christensen]
+   - Set UTF8 flag as needed for error messages
+     [Github user olafgw]
+     (Github issue #97)
+   - In tests, do not assume what the default transaction isolation level will be
+     [Rene Schickbauer]
+     (Github issue #94)
+   - Make tests smarter about detecting pg_ctl results in different locales
+     [Greg Sabino Mullane]
+     (Github issue #95)
+
+-------------------------------------------------------------------
 Tue Feb 15 03:06:49 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.15.1

@@ -18,10 +18,10 @@
 
 %define cpan_name DBD-Pg
 Name:           perl-DBD-Pg
-Version:        3.15.1
+Version:        3.16.0
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Summary:        PostgreSQL database driver for the DBI module
+Summary:        DBI PostgreSQL interface
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TU/TURNSTEP/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -31,7 +31,6 @@ BuildRequires:  perl(DBI) >= 1.614
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(version)
 Requires:       perl(DBI) >= 1.614
-Requires:       perl(Test::More) >= 0.88
 Requires:       perl(version)
 Recommends:     perl(Module::Signature) >= 0.50
 %{perl_requires}
