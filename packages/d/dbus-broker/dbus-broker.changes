@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  5 10:15:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 32
+  * Fix several bugs in the d-bus marshalling layer c-dvar,
+    including out-of-bound reads.
+  * Fix ubsan and asan warnings in c-stdaux and related
+    subprojects.
+
+-------------------------------------------------------------------
 Thu May 26 03:14:09 UTC 2022 - Simon Lees <sflees@suse.de>
 
 - Provide dbus-service so from a packaging perspective its easier
