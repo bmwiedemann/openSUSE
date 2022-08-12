@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 05 06:43:44 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220624.141144.bd1b7c5d+git307:
+  * use titlebar bg for right status background 
+  * docs: clarify that we might be showing more recent info
+  * fix potential panic when computing hyperlink rules
+  * docs: a bit more detail for RGBA sequences
+  * wezterm show-keys --lua to print a lua version of the config
+
+-------------------------------------------------------------------
 Thu Jul 28 03:04:12 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 20220624.141144.bd1b7c5d+git264:
