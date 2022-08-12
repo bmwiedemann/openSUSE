@@ -11265,7 +11265,7 @@ unsorted:
   - libgnt-devel 
   - libgnt0 
   - libgnt0-32bit: [x86_64] 
-  - libgnuastro15 
+  - libgnuastro16 
   - libgnuradio-3_10_3 
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_9_0 
@@ -11470,9 +11470,9 @@ unsorted:
   - libgusb-devel 
   - libgusb2-32bit: [x86_64] 
   - libgviewaudio-2_0-2 
-  - libgviewencoder-2_0-2 
-  - libgviewrender-2_0-2 
-  - libgviewv4l2core-2_0-2 
+  - libgviewencoder-2_1-2 
+  - libgviewrender-2_1-2 
+  - libgviewv4l2core-2_1-2 
   - libgviewv4l2core-lang 
   - libgvncpulse-1_0-0 
   - libgweather-3-16-32bit: [x86_64] 
@@ -14278,8 +14278,7 @@ unsorted:
   - libt3window0 
   - libta-devel 
   - libta_lib0 
-  - libtachyon-0_99_4 
-  - libtachyon-devel 
+  - libtachyon-0_99_5 
   - libtag-devel 
   - libtag-doc 
   - libtag1-32bit: [x86_64] 
@@ -32616,6 +32615,7 @@ unsorted:
   - rust 
   - rust-analyzer 
   - rust-cbindgen 
+  - rust-keylime: [i586] 
   - rust-packaging 
   - rust-srpm-macros 
   - rust1.60 
@@ -33649,6 +33649,7 @@ unsorted:
   - t38modem 
   - tabix 
   - tachyon 
+  - tachyon-devel 
   - tack 
   - tagbanwa-fonts 
   - taglib 
@@ -43358,6 +43359,16 @@ unsorted:
   - wallpapers-openSUSE-extra 
   - wallstreet 
   - wang-fonts 
+  - wannier90 
+  - wannier90-devel 
+  - wannier90-openmpi1 
+  - wannier90-openmpi1-devel 
+  - wannier90-openmpi2 
+  - wannier90-openmpi2-devel 
+  - wannier90-openmpi3 
+  - wannier90-openmpi3-devel 
+  - wannier90-openmpi4 
+  - wannier90-openmpi4-devel 
   - warewulf-cluster: [x86_64] 
   - warewulf-common: [x86_64] 
   - warewulf-doc: [x86_64] 
