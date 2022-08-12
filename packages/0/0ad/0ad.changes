@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 10 21:06:44 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Fix rpmlint by adding premake-no-automatic-rpath.patch: don't let
+  premake automatically add RPATHs, these are unnecessary.
+- Add distribution default link flags, especially -Wl,-z,now.
+
+-------------------------------------------------------------------
 Sun Jun 26 11:24:08 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
 
 - s390x CPU not implemented. 

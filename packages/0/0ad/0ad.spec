@@ -46,6 +46,8 @@ Patch1:         no-version-check.patch
 Patch2:         PrepareZoneForGC.patch
 # PATCH-FIX-UPSTREAM -- Don't define M_PIf if glibc already provides it
 Patch3:         glibc-2.35.patch
+# PATCH-FIX-OPENSUSE -- Skip automatic addition of an RPATH.
+Patch4:         premake-no-automatic-rpath.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libXcursor-devel
@@ -97,6 +99,7 @@ flexible game engine.
 %setup -q -n %{name}-%{version}-alpha
 %patch0 -p1
 %patch3 -p1
+%patch4 -p1
 %if %{with system_mozjs}
 %patch1 -p1
 %patch2 -p1
@@ -107,6 +110,8 @@ export CFLAGS="%{optflags}"
 # bundled Collada uses CCFLAGS
 export CCFLAGS="%{optflags}"
 export CPPFLAGS="%{optflags} -fpermissive"
+# Copied from macros.cmake.
+export LDFLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,now"
 build/workspaces/update-workspaces.sh \
     %{?_smp_mflags} \
     --bindir=%{_bindir} \
