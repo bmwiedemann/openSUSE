@@ -97,4 +97,13 @@
     <comment></comment>
     <requestid>966393</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>9ff4710585d9b82d99e0f2892171d56b</srcmd5>
+    <version>5.1.0</version>
+    <time>1660313204</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with recent kontactinterface releases:
+  * 0001-Adapt-to-new-KontactInterface-Plugin-ctor.patch</comment>
+    <requestid>994688</requestid>
+  </revision>
 </revisionlist>

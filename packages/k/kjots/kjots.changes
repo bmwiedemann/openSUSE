@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 12 06:15:50 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with recent kontactinterface releases:
+  * 0001-Adapt-to-new-KontactInterface-Plugin-ctor.patch
+
+-------------------------------------------------------------------
 Fri Apr  1 10:30:50 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add upstream patches to fix build with Akonadi 22.04:

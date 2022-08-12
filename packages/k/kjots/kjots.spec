@@ -30,6 +30,7 @@ Patch1:         Adapt-to-new-Akonadi-libraries.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         Fix-akonadi-includes.patch
 Patch3:         Fix-build-with-Akonadi-21.12.patch
+Patch4:         0001-Adapt-to-new-KontactInterface-Plugin-ctor.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Grantlee5)
