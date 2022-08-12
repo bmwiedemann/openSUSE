@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-public_suffix
-Version:        4.0.7
+Version:        5.0.0
 Release:        0
 %define mod_name public_suffix
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.3}
+BuildRequires:  %{ruby >= 2.6}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://simonecarletti.com/code/publicsuffix-ruby

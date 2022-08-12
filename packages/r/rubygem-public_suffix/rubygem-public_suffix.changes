@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug  4 13:23:33 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 5.0.0
+ see installed CHANGELOG.md
+
+  ## 5.0.0
+  
+  ### Changed
+  
+  - Minimum Ruby version is 2.6
+  
+  - Updated definitions.
+  
+  
+
+-------------------------------------------------------------------
 Thu Apr 28 05:41:49 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 4.0.7
