@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug 10 19:32:00 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.0.2:
+  * Rerelease to get requirements-cython.txt into tarball.
+- Changes from version 5.0.1:
+  * format and do_format methods were removed from the interface
+    of BaseElement, becoming non-member functions.
+  * The class BoxElement was introduced as a base for boxing
+    elements.
+  * New Builtin 'Inverse Gudermannian'.
+  * Documentation Hyperbolic functions were split off form
+    trigonometry and exponential functions. More url links were
+    added.
+  * Bugs *r Creating a complex number from Infinity no longer
+    crashes and returns 'I * Infinity'
+- Drop requirements-cython.txt as additional source: now included
+  in source tarball.
+
+-------------------------------------------------------------------
 Sun Jul 31 20:48:13 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.0.0:

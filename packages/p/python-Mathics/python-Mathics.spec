@@ -31,15 +31,13 @@
 %define skip_python2 1
 %define pyname Mathics3
 Name:           python-Mathics%{psuffix}
-Version:        5.0.0
+Version:        5.0.2
 Release:        0
 Summary:        A general-purpose computer algebra system
 # Mathics itself is licensed as GPL-3.0 but it includes third-party software with MIT, BSD-3-Clause, and Apache-2.0 Licensing; also includes data from wikipedia licensed under CC-BY-SA-3.0 and GFDL-1.3
 License:        Apache-2.0 AND BSD-3-Clause AND GPL-3.0-only AND MIT
 URL:            https://mathics.github.io/
 Source0:        https://github.com/Mathics3/mathics-core/releases/download/%{version}/%{pyname}-%{version}.tar.gz
-# File missing from tagged tarball
-Source1:        https://raw.githubusercontent.com/Mathics3/mathics-core/%{version}/requirements-cython.txt
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Django >= 1.8}
 BuildRequires:  %{python_module colorama}
@@ -87,8 +85,6 @@ Mathics is a general-purpose computer algebra system (CAS). It is meant to be a 
 
 %prep
 %setup -q -n %{pyname}-%{version}
-
-cp %{SOURCE1} ./
 
 # FIX SPURIOUS EXEC PERMISSIONS
 chmod -x ./mathics/data/ExampleData/{numberdata.csv,InventionNo1.xml}
