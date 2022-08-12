@@ -1,7 +1,7 @@
 #
 # spec file for package clutter-gst
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,10 @@ Group:          Development/Libraries/C and C++
 URL:            http://clutter-project.org/
 Source0:        http://download.gnome.org/sources/clutter-gst/3.0/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+
+# PATCH-FIX-UPSTREAM 0001-video-sink-Remove-RGBx-BGRx-support.patch -- video-sink: Remove RGBx/BGRx support
+Patch0:         0001-video-sink-Remove-RGBx-BGRx-support.patch
+
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(clutter-1.0) >= 1.20.0
 BuildRequires:  pkgconfig(cogl-2.0-experimental) >= 2.0.0
@@ -71,7 +75,7 @@ GStreamer.
 %package -n gstreamer-plugin-cluttergst3
 Summary:        GStreamer Clutter Plug-In
 Group:          Productivity/Multimedia/Other
-Supplements:    packageand(gstreamer:libclutter-gst-3_0-0)
+Supplements:    (gstreamer and libclutter-gst-3_0-0)
 
 %description -n gstreamer-plugin-cluttergst3
 Clutter is an open source software library for creating fast, visually

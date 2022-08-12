@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 10 11:45:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 0001-video-sink-Remove-RGBx-BGRx-support.patch: video-sink:
+  Remove RGBx/BGRx support. The rgb24 renderer uses the wrong pixel
+  stride and the rgb32 renderer assumes alpha is meaningful. We can
+  use neither.
+  Fixes: https://gitlab.gnome.org/GNOME/cheese/-/issues/51
+- Update Supplements to current standard.
+
+-------------------------------------------------------------------
 Thu Feb  7 00:11:43 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 3.0.27:
