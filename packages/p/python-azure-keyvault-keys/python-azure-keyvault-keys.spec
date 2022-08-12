@@ -20,7 +20,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-keyvault-keys
-Version:        4.5.1
+Version:        4.6.1
 Release:        0
 Summary:        Microsoft Azure Key Vault Keys Client Library for Python
 License:        MIT

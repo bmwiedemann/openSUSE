@@ -163,4 +163,15 @@
     <comment></comment>
     <requestid>971037</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>262e5de15928782a7bb37197699c6a21</srcmd5>
+    <version>4.6.1</version>
+    <time>1660313230</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.6.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 994765 from glaubitz)</comment>
+    <requestid>994774</requestid>
+  </revision>
 </revisionlist>
