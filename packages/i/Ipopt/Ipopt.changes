@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 10 19:51:14 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.14.9:
+  * Fixed mapping of meta data for variable bounds, e.g., variable
+    names, from TNLP to Ipopts internal NLP [gh#coin-or/Ipopt#590]
+
+-------------------------------------------------------------------
 Thu Jul 14 12:59:13 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.14.8:
