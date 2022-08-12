@@ -17,7 +17,7 @@
 
 
 Name:           stdman
-Version:        2022.02.01
+Version:        2022.07.30
 Release:        0
 Summary:        C++ stdlib man pages
 License:        MIT
