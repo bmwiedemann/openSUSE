@@ -1,0 +1,31 @@
+From 8eae4c33a32d9951641e289d2809a92a223b1642 Mon Sep 17 00:00:00 2001
+From: Glenn Washburn <development@efficientek.com>
+Date: Thu, 9 Dec 2021 11:14:50 -0600
+Subject: [PATCH 01/14] luks2: Add debug message to align with luks and geli
+ modules
+
+Signed-off-by: Glenn Washburn <development@efficientek.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/disk/luks2.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/disk/luks2.c b/grub-core/disk/luks2.c
+index 371a53b837..fea196dd4a 100644
+--- a/grub-core/disk/luks2.c
++++ b/grub-core/disk/luks2.c
+@@ -370,7 +370,10 @@ luks2_scan (grub_disk_t disk, const char *check_uuid, int check_boot)
+   uuid[j] = '\0';
+ 
+   if (check_uuid && grub_strcasecmp (check_uuid, uuid) != 0)
+-    return NULL;
++    {
++      grub_dprintf ("luks2", "%s != %s\n", uuid, check_uuid);
++      return NULL;
++    }
+ 
+   cryptodisk = grub_zalloc (sizeof (*cryptodisk));
+   if (!cryptodisk)
+-- 
+2.34.1
+

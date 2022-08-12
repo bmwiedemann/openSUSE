@@ -1,0 +1,187 @@
+From 4ace73cc192bc63a00f4208b34981a6d91947811 Mon Sep 17 00:00:00 2001
+From: Glenn Washburn <development@efficientek.com>
+Date: Thu, 9 Dec 2021 11:14:51 -0600
+Subject: [PATCH 02/14] cryptodisk: Refactor to discard have_it global
+
+The global "have_it" was never used by the crypto-backends, but was used to
+determine if a crypto-backend successfully mounted a cryptodisk with a given
+UUID. This is not needed however, because grub_device_iterate() will return
+1 if and only if grub_cryptodisk_scan_device() returns 1. And
+grub_cryptodisk_scan_device() will now only return 1 if a search_uuid has
+been specified and a cryptodisk was successfully setup by a crypto-backend or
+a cryptodisk of the requested UUID is already open.
+
+To implement this grub_cryptodisk_scan_device_real() is modified to return
+a cryptodisk or NULL on failure and having the appropriate grub_errno set to
+indicated failure. Note that grub_cryptodisk_scan_device_real() will fail now
+with a new errno GRUB_ERR_BAD_MODULE when none of the cryptodisk backend
+modules succeed in identifying the source disk.
+
+With this change grub_device_iterate() will return 1 when a crypto device is
+successfully decrypted or when the source device has already been successfully
+opened. Prior to this change, trying to mount an already successfully opened
+device would trigger an error with the message "no such cryptodisk found",
+which is at best misleading. The mount should silently succeed in this case,
+which is what happens with this patch.
+
+Signed-off-by: Glenn Washburn <development@efficientek.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/disk/cryptodisk.c | 56 +++++++++++++++++++++++--------------
+ 1 file changed, 35 insertions(+), 21 deletions(-)
+
+diff --git a/grub-core/disk/cryptodisk.c b/grub-core/disk/cryptodisk.c
+index 90f82b2d39..9df3d310fe 100644
+--- a/grub-core/disk/cryptodisk.c
++++ b/grub-core/disk/cryptodisk.c
+@@ -983,7 +983,7 @@ grub_util_cryptodisk_get_uuid (grub_disk_t disk)
+ 
+ #endif
+ 
+-static int check_boot, have_it;
++static int check_boot;
+ static char *search_uuid;
+ 
+ static void
+@@ -995,7 +995,7 @@ cryptodisk_close (grub_cryptodisk_t dev)
+   grub_free (dev);
+ }
+ 
+-static grub_err_t
++static grub_cryptodisk_t
+ grub_cryptodisk_scan_device_real (const char *name, grub_disk_t source)
+ {
+   grub_err_t err;
+@@ -1005,13 +1005,13 @@ grub_cryptodisk_scan_device_real (const char *name, grub_disk_t source)
+   dev = grub_cryptodisk_get_by_source_disk (source);
+ 
+   if (dev)
+-    return GRUB_ERR_NONE;
++    return dev;
+ 
+   FOR_CRYPTODISK_DEVS (cr)
+   {
+     dev = cr->scan (source, search_uuid, check_boot);
+     if (grub_errno)
+-      return grub_errno;
++      return NULL;
+     if (!dev)
+       continue;
+     
+@@ -1019,16 +1019,16 @@ grub_cryptodisk_scan_device_real (const char *name, grub_disk_t source)
+     if (err)
+     {
+       cryptodisk_close (dev);
+-      return err;
++      return NULL;
+     }
+ 
+     grub_cryptodisk_insert (dev, name, source);
+ 
+-    have_it = 1;
+-
+-    return GRUB_ERR_NONE;
++    return dev;
+   }
+-  return GRUB_ERR_NONE;
++
++  grub_error (GRUB_ERR_BAD_MODULE, "no cryptodisk module can handle this device");
++  return NULL;
+ }
+ 
+ #ifdef GRUB_UTIL
+@@ -1082,8 +1082,10 @@ static int
+ grub_cryptodisk_scan_device (const char *name,
+ 			     void *data __attribute__ ((unused)))
+ {
+-  grub_err_t err;
++  int ret = 0;
+   grub_disk_t source;
++  grub_cryptodisk_t dev;
++  grub_errno = GRUB_ERR_NONE;
+ 
+   /* Try to open disk.  */
+   source = grub_disk_open (name);
+@@ -1093,13 +1095,26 @@ grub_cryptodisk_scan_device (const char *name,
+       return 0;
+     }
+ 
+-  err = grub_cryptodisk_scan_device_real (name, source);
++  dev = grub_cryptodisk_scan_device_real (name, source);
++  if (dev)
++    {
++      ret = (search_uuid != NULL && grub_strcasecmp (search_uuid, dev->uuid) == 0);
++      goto cleanup;
++    }
+ 
+-  grub_disk_close (source);
+-  
+-  if (err)
++  /*
++   * Do not print error when err is GRUB_ERR_BAD_MODULE to avoid many unhelpful
++   * error messages.
++   */
++  if (grub_errno == GRUB_ERR_BAD_MODULE)
++    grub_error_pop ();
++
++  if (grub_errno != GRUB_ERR_NONE)
+     grub_print_error ();
+-  return have_it && search_uuid ? 1 : 0;
++
++ cleanup:
++  grub_disk_close (source);
++  return ret;
+ }
+ 
+ static grub_err_t
+@@ -1110,9 +1125,9 @@ grub_cmd_cryptomount (grub_extcmd_context_t ctxt, int argc, char **args)
+   if (argc < 1 && !state[1].set && !state[2].set)
+     return grub_error (GRUB_ERR_BAD_ARGUMENT, "device name required");
+ 
+-  have_it = 0;
+   if (state[0].set)
+     {
++      int found_uuid;
+       grub_cryptodisk_t dev;
+ 
+       dev = grub_cryptodisk_get_by_uuid (args[0]);
+@@ -1125,10 +1140,10 @@ grub_cmd_cryptomount (grub_extcmd_context_t ctxt, int argc, char **args)
+ 
+       check_boot = state[2].set;
+       search_uuid = args[0];
+-      grub_device_iterate (&grub_cryptodisk_scan_device, NULL);
++      found_uuid = grub_device_iterate (&grub_cryptodisk_scan_device, NULL);
+       search_uuid = NULL;
+ 
+-      if (!have_it)
++      if (!found_uuid)
+ 	return grub_error (GRUB_ERR_BAD_ARGUMENT, "no such cryptodisk found");
+       return GRUB_ERR_NONE;
+     }
+@@ -1142,7 +1157,6 @@ grub_cmd_cryptomount (grub_extcmd_context_t ctxt, int argc, char **args)
+     }
+   else
+     {
+-      grub_err_t err;
+       grub_disk_t disk;
+       grub_cryptodisk_t dev;
+       char *diskname;
+@@ -1178,13 +1192,13 @@ grub_cmd_cryptomount (grub_extcmd_context_t ctxt, int argc, char **args)
+ 	  return GRUB_ERR_NONE;
+ 	}
+ 
+-      err = grub_cryptodisk_scan_device_real (diskname, disk);
++      dev = grub_cryptodisk_scan_device_real (diskname, disk);
+ 
+       grub_disk_close (disk);
+       if (disklast)
+ 	*disklast = ')';
+ 
+-      return err;
++      return (dev == NULL) ? grub_errno : GRUB_ERR_NONE;
+     }
+ }
+ 
+-- 
+2.34.1
+
