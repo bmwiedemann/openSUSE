@@ -335,4 +335,14 @@
   * Add submission/smtps support for postfix</comment>
     <requestid>988999</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1fc879b74cc0f5ec2300b4f54e067d9b</srcmd5>
+    <version>0.0+git20220811.226e80e</version>
+    <time>1660319182</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20220811.226e80e:
+  * Add service for cups container
+  * Make sure dhcp container has NET_RAW capabilities</comment>
+    <requestid>994526</requestid>
+  </revision>
 </revisionlist>

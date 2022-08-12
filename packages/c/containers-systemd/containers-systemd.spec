@@ -16,8 +16,8 @@
 #
 
 
-%define containers bind dhcp-server dovecot fetchmail haproxy mariadb minidlna nfs-server nginx openldap postfix roundcube samba spamassassin squid wsdd
-%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-dovecot.service container-fetchmail.service container-haproxy.service container-mariadb.service container-minidlna.service container-nfs-server.service container-nginx.service container-openldap.service container-postfix.service container-roundcube.service container-samba.service container-spamassassin.service container-squid.service container-wsdd.service container-image-prune.service container-image-prune.timer container-certbot-renew.service container-certbot-renew.timer
+%define containers bind cups dhcp-server dovecot fetchmail haproxy mariadb minidlna nfs-server nginx openldap postfix roundcube samba spamassassin squid wsdd
+%define container_services container-bind.service container-cups.service container-dhcp-server.service container-dhcp6-server.service container-dovecot.service container-fetchmail.service container-haproxy.service container-mariadb.service container-minidlna.service container-nfs-server.service container-nginx.service container-openldap.service container-postfix.service container-roundcube.service container-samba.service container-spamassassin.service container-squid.service container-wsdd.service container-image-prune.service container-image-prune.timer container-certbot-renew.service container-certbot-renew.timer
 
 %if %{undefined service_del_postun_without_restart}
 %define service_del_postun_without_restart() \
@@ -26,7 +26,7 @@ DISABLE_RESTART_ON_UPDATE=1 \
 %endif
 
 Name:           containers-systemd
-Version:        0.0+git20220713.967c6f4
+Version:        0.0+git20220811.226e80e
 Release:        0
 Summary:        Systemd service files and config files for openSUSE container
 License:        MIT
@@ -38,7 +38,7 @@ BuildArch:      noarch
 %description
 This package contains the configuration files and systemd units
 to run the openSUSE containers via podman managed by systemd.
-Currently supported are bind, dhcp-server, dovecot, fetchmail, haproxy,
+Currently supported are bind, cups, dhcp-server, dovecot, fetchmail, haproxy,
 mariadb, minidlna, nginx, openldap, postfix, roundcube, samba,
 spamassassin, squid and wsdd. Additional, there is a timer to cleanup
 dangling container images.
@@ -99,6 +99,10 @@ done
 %{_distconfdir}/default/container-bind
 %{_sbindir}/rccontainer-bind
 %ghost %dir /srv/bind
+%{_unitdir}/container-cups.service
+%{_distconfdir}/default/container-cups
+%{_sbindir}/rccontainer-cups
+%ghost %dir /srv/cups
 %{_unitdir}/container-certbot-renew.service
 %{_unitdir}/container-certbot-renew.timer
 %{_distconfdir}/default/container-certbot

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 11 12:31:53 UTC 2022 - kukuk@suse.com
+
+- Update to version 0.0+git20220811.226e80e:
+  * Add service for cups container
+  * Make sure dhcp container has NET_RAW capabilities
+
+-------------------------------------------------------------------
 Wed Jul 13 12:22:17 UTC 2022 - kukuk@suse.com
 
 - Update to version 0.0+git20220713.967c6f4:
