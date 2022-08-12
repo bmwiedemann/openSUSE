@@ -593,4 +593,12 @@ Update to tag 1.3.92
     <comment></comment>
     <requestid>900364</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>22351a37f5b65736538004ce403e3e91</srcmd5>
+    <version>1.4.0~rc2</version>
+    <time>1660313223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994740</requestid>
+  </revision>
 </revisionlist>

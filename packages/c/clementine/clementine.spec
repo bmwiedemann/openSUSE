@@ -1,7 +1,7 @@
 #
 # spec file for package clementine
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define rev 612767c878220398c3aa6ac5556be9adb28db9aa
+%define rev bbda59a5f347a75bbecde0b1928e03942e367850
 
 %bcond_without git
 
@@ -29,7 +29,7 @@
 %define gname Clementine
 
 Name:           clementine
-Version:        1.3.99.20210609
+Version:        1.4.0~rc2
 Release:        0
 Summary:        A music player inspired by Amarok 1.4
 License:        GPL-3.0-or-later
@@ -44,8 +44,6 @@ Source0:        https://github.com/clementine-player/Clementine/archive/%{rev}.t
 Patch1:         clementine-udisks-headers.patch
 # Patch fix factory build, add -fPIC to moodbar build
 Patch2:         clementine-moodbar-fpic.patch
-# PATCH-FIX-OPENSUSE clementine-hidden-systray-icon.patch davejplater@gmail.com -- sys tray icon is hidden on some plasma5 systems.
-Patch4:         clementine-hidden-systray-icon.patch
 # PATCH-FEATURE-OPENSUSE
 Patch6:         use_system_qxtglobalshortcut.patch
 BuildRequires:  cmake
@@ -185,8 +183,6 @@ rm -f %{name}
 popd
 %endif
 
-%suse_update_desktop_file clementine Qt AudioVideo Audio Player
-
 %if 0%{?suse_version} < 1500
 %post
 %desktop_database_post
@@ -202,8 +198,8 @@ popd
 %doc Changelog README.md
 %license COPYING
 %{_bindir}/clementine*
-%{_datadir}/applications/clementine.desktop
-%{_datadir}/icons/hicolor/*/apps/clementine.*
+%{_datadir}/applications/org.clementine_player.Clementine.desktop
+%{_datadir}/icons/hicolor/*/apps/org.clementine_player.Clementine*
 %if %{with manpage}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %endif
