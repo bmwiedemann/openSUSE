@@ -41,7 +41,6 @@ better support for mocking results.
 Summary:        OpenStack test framework
 Requires:       python3-debtcollector
 Requires:       python3-fixtures >= 3.0.0
-Requires:       python3-mock
 # NOTE: python-os-client-config is only needed for functional testing
 # Requires:       python3-os-client-config
 Requires:       python3-python-subunit >= 1.0.0

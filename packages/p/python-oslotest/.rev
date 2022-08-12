@@ -352,4 +352,14 @@
     <comment>- remove unnecessary dependencies</comment>
     <requestid>979080</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>870769656f338d7d4fa46627d7fb09a6</srcmd5>
+    <version>4.5.0</version>
+    <time>1660313210</time>
+    <user>dimstar_suse</user>
+    <comment>- drop unnecessary mock dependency
+
+- remove unnecessary dependencies</comment>
+    <requestid>994721</requestid>
+  </revision>
 </revisionlist>

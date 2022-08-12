@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 12 08:13:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- drop unnecessary mock dependency
+
+-------------------------------------------------------------------
 Tue May 24 21:25:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- remove unnecessary dependencies 
+- remove unnecessary dependencies
 
 -------------------------------------------------------------------
 Mon Dec  6 09:12:15 UTC 2021 - cloud-devel@suse.de
