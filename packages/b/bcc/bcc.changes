@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 11 06:10:16 UTC 2022 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to version 0.25.0:
+  + Support for kernel up to 5.19
+  + bcc tool updates for oomkill.py, biolatpcts.py, sslsniff.py, tcpaccept.py, etc.
+  + libbpf tool updates for klockstat, opensnoop, tcpconnect, etc.
+  + new bcc tools: tcpcong
+  + new libbpf tools: tcpsynbl, mdflush, oomkill, sigsnoop
+  + usdt: support xmm registers as args for x64
+  + bpftool as a submodule now
+  + remove uses of libbpf deprecated APIs
+  + use new llvm pass manager
+  + support cgroup filtering libbpf tools
+  + fix shared lib module offset <-> global addr conversion
+  + riscv support
+  + LoongArch support
+  + doc update, bug fixes and other tools improvement 
+
+-------------------------------------------------------------------
 Fri Apr 22 13:33:49 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.24.0:
