@@ -1,7 +1,7 @@
 #
 # spec file for package varnish
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define _fillupdir %_localstatedir/adm/fillup-templates
 %endif
 Name:           varnish
-Version:        7.1.0
+Version:        7.1.1
 Release:        0
 Summary:        Accelerator for HTTP services
 License:        BSD-2-Clause

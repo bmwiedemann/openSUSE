@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 12 10:32:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1.1 [boo#1202350] [CVE-2022-38150]
+  * Resolve a denial of service attack involving reason phrases.
+
+-------------------------------------------------------------------
 Mon May 16 20:10:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.1.0 [boo#1195188] [CVE-2022-23959]
