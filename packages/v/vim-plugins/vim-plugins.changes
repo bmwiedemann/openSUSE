@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug  5 09:15:57 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- update
+  * bufexplorer    7.4.24
+  * editorconfig   1.1.1
+  * fugitive       3.7
+  * latex          1.10.0+20220519
+  * markdown       2.0.0+20220507
+  * neomutt        20220612
+- add check_for_updates.pl script
+
+-------------------------------------------------------------------
 Wed Mar  9 08:38:55 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - add vim-plugin-gitrebase-keywordprg

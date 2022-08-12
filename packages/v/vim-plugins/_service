@@ -5,7 +5,6 @@
     <param name="versionformat">@PARENT_TAG@+%cd</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">559088afaf10124ea663ee0f4f73b1de48fb1632</param>
   </service>
   <service name="tar" mode="buildtime">
     <param name="obsinfo">file-line.obsinfo</param>
@@ -15,7 +14,7 @@
     <param name="url">https://github.com/neomutt/neomutt.vim.git</param>
     <param name="scm">git</param>
     <param name="versionformat">%cd</param>
-    <param name="revision">15b06057a75e5b648b1c1c692c870bc7f052d0c9</param>
+    <param name="revision">origin/main</param>
   </service>
   <service name="tar" mode="buildtime">
     <param name="obsinfo">neomutt.vim.obsinfo</param>
@@ -25,7 +24,6 @@
     <param name="url">https://github.com/saltstack/salt-vim.git</param>
     <param name="scm">git</param>
     <param name="versionformat">%cd</param>
-    <param name="revision">6ca9e3500cc39dd417b411435d58a1b720b331cc</param>
   </service>
   <service name="tar" mode="buildtime">
     <param name="obsinfo">salt-vim.obsinfo</param>
@@ -37,7 +35,6 @@
     <param name="versionformat">@PARENT_TAG@+%cd</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">0760891c71e4c332d0b07704f2356bc4f56a7128</param>
   </service>
   <service name="tar" mode="buildtime">
     <param name="obsinfo">vim-latex.obsinfo</param>
@@ -47,7 +44,6 @@
     <param name="url">https://github.com/plasticboy/vim-markdown</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@+%cd</param>
-    <param name="revision">50d42082819cfa91745b6eff6e28ad5cbc8b27fa</param>
   </service>
   <service name="tar" mode="buildtime">
     <param name="obsinfo">vim-markdown.obsinfo</param>

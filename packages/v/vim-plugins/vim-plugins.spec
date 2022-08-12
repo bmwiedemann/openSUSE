@@ -20,24 +20,24 @@
 %define align_version_orig	37-43
 %define align_version		37.43
 %define a_version		2.18
-%define bufexplorer_version	7.4.21
+%define bufexplorer_version	7.4.24
 %define calendar_version	2.5
 %define colorsel_version	20110107
 %define colorschemes_version	1.0
 %define diffchanges_tag		346dae2
 %define diffchanges_version	0.6+g346dae2
-%define editorconfig_version	0.3.3
+%define editorconfig_version	1.1.1
 %define file_line_version	1.0+20161020
-%define fugitive_version	3.4
+%define fugitive_version	3.7
 %define gitdiff_version		2
 %define gnupg_version		2.7.1
-%define latex_version		1.10.0+20210818
+%define latex_version		1.10.0+20220519
 %define locateopen_version	1.3
-%define markdown_version	2.0.0+20220129
+%define markdown_version	2.0.0+20220507
 %define matrix_version		1.10
 %define minibufexpl_version	6.3.2
 %define multiplesearch_version	1.3
-%define neomutt_version		20210218
+%define neomutt_version		20220612
 %define NERDcommenter_version	2.6.0
 %define NERDtree_version	6.10.16
 %define project_version		1.4.1
@@ -95,9 +95,9 @@ Source29:       https://github.com/jamessan/vim-gnupg/releases/download/v%{gnupg
 Source30:       https://github.com/vim-scripts/gitdiff.vim/archive/refs/tags/%{gitdiff_version}.tar.gz#/vimplugin-gitdiff-%{gitdiff_version}.tar.gz
 Source31:       https://github.com/vim-scripts/snipMate/archive/refs/tags/%{snipmate_version}.tar.gz#/vimplugin-snipmate-%{snipmate_version}.tar.gz
 Source32:       https://github.com/vim-scripts/rails.vim/archive/refs/tags/%{rails_version}.tar.gz#/vimplugin-rails-%{rails_version}.tar.gz
-Source33:       https://github.com/mileszs/ack.vim/archive/%{ack_version}.tar.gz#/vimplugin-ack-%{ack_version}.tar.gz
-Source34:       https://github.com/editorconfig/editorconfig-vim/archive/v%{editorconfig_version}.tar.gz#/vimplugin-editorconfig-%{editorconfig_version}.tar.gz
-Source35:       https://github.com/tpope/vim-fugitive/archive/v%{fugitive_version}.tar.gz#/vimplugin-fugitive-%{fugitive_version}.tar.gz
+Source33:       https://github.com/mileszs/ack.vim/archive/refs/tags/%{ack_version}.tar.gz#/vimplugin-ack-%{ack_version}.tar.gz
+Source34:       https://github.com/editorconfig/editorconfig-vim/archive/refs/tags/v%{editorconfig_version}.tar.gz#/vimplugin-editorconfig-%{editorconfig_version}.tar.gz
+Source35:       https://github.com/tpope/vim-fugitive/archive/refs/tags/v%{fugitive_version}.tar.gz#/vimplugin-fugitive-%{fugitive_version}.tar.gz
 # from _service
 Source100:      file-line-%{file_line_version}.tar.xz
 Source101:      vim-markdown-%{markdown_version}.tar.xz
@@ -106,6 +106,7 @@ Source103:      salt-vim-%{salt_version}.tar.xz
 Source104:      vim-latex-%{latex_version}.tar.xz
 Source200:      gitrebase.vim
 Source1000:     https://raw.githubusercontent.com/openSUSE/pack-tools/master/contrib/vim/spec.snippets
+Source1001:     check_for_updates.pl
 Patch1:         locateopen-1.3-locate-support.patch
 Patch2:         showmarks-signs.patch
 Patch3:         file-line-Fix-other-plugins-loading.patch
@@ -296,7 +297,7 @@ Group:          Productivity/Text/Editors
 Requires:       git-core
 
 %description -n vim-plugin-gitrebase-keywordprg
-Set keywordprg in git rebase --interactive. This was used to done before vim
+Set keywordprg in git rebase --interactive. This used to done before vim
 8.2.4529, but was changed afterwards. For details, see
 https://github.com/vim/vim/issues/9845.
 
@@ -832,6 +833,8 @@ fi \
 %defattr(-,root,root,0755)
 %license editorconfig-vim-%{editorconfig_version}/LICENSE
 %vimplugin_dir/plugin/editorconfig.vim
+%vimplugin_dir/autoload/editorconfig_core/
+%vimplugin_dir/autoload/editorconfig_core.vim
 %vimplugin_dir/autoload/editorconfig.vim
 %vimplugin_dir/doc/editorconfig.txt
 
