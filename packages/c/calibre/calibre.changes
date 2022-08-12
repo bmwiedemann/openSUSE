@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Aug 12 07:08:35 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.3.0
+  * New Features
+    - E-book viewer: Allow searching for nearby words using a new
+      "Nearby words" search mode
+    - calibredb: New fts_search and fts_index commands to perform
+      full text searching from the command line
+    - Image viewing popup: Allow zooming using the standard
+      shortcuts of Ctrl+plus/minus
+  * Bug Fixes
+    - Fix a regression in calibre 6.0 that broke remembering the
+      previous sort order for a column
+    - Fix a regression in calibre 6.0 that broke processing of very
+      high resolution images
+    - Full text search: Fix error when using restrict searched
+      books and more than 900 books are present in the searched list
+    - E-book viewer: Fix parsing of CSS styles with @supports rules
+      not working
+    - E-book viewer: Speed up initial render of books with lots of
+      CSS in
+
+-------------------------------------------------------------------
 Fri Jul 29 11:12:51 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 6.2.1
