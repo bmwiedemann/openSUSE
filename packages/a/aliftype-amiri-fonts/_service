@@ -1,0 +1,12 @@
+<services>
+  <service mode="manual" name="download_url">
+    <param name="protocol">https</param>
+    <param name="host">github.com</param>
+    <param name="path">/aliftype/amiri/releases/download/0.117/Amiri-0.117.zip</param>
+  </service>
+  <service mode="manual" name="verify_file">
+    <param name="file">Amiri-0.117.zip</param>
+    <param name="verifier">sha256</param>
+    <param name="checksum">9c4e768893e0023a0ad6f488d5c84bd5add6565d3dcadb838ba5b20e75fcc9a7</param>
+  </service>
+</services>
