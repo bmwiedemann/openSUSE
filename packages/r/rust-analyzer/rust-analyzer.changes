@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Aug 05 06:35:38 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 2022.08.01:
+  * Give variables more descriptive names
+  * Properly cfg the `max` field of Limit
+  * Update xtask promote and release instructions
+  * fix: Fix ast-id up when merging raw attributes
+  * fix: complete path of existing record expr
+  * Be more explicit when filtering built-in completions
+  * Only run rainbow highlighting test on 64-bit Unix
+  * fix: Order ItemScope::entries results
+  * fix: Don't complete marker traits in expression position
+  * publish: Use cargo ws rename to rename crates
+  * fix: Do completions in path qualifier position
+  * fix: Fix pattern completions adding unnecessary braces
+  * fix: Calculate completions after type anchors
+  * Use large stack on expander thread
+  * internal: Assume condition/iterable is missing if there is only a BlockExpr
+  * Find original ast node before compute ref match in fn render
+  * fix: Honor ref expressions for compute_ref_match completions
+  * fix: Fix Semantics::original_ast_node not caching the resulting file
+  * Remove FIXME comment for unreachable fallback.
+  * fix: Fix server panicking on project loading when proc-macros are disabled
+  * Find standalone proc-macro-srv on windows too
+  * Allow name querying for derive helpers
+  * Record derive helper attributes, resolve them in IDE layer
+  * feat: Downmap tokens inside derive helpers
+  * fix: Insert spaces when inlining a function defined in a macro.
+  * Allow specifying sysroot OR sysroot_src
+  * Fix mix up in comments
+  * Gate and rename binary, use it if it's in the sysroot
+  * Remember the difference between 'sysroot root' and 'sysroot src root', start looking in there for a rust-analyzer-proc-macro-srv binary
+  * Name the binary 'proc-macro-srv'
+  * Return result directly
+  * Add doc comment to pass tidy check
+  * Add a proc-macro-srv-cli crate
+  * revert nightly rustfmt formatting that accidentally slipped in
+  * Replace `debug_assert!` with `stdx::always!`
+  * Make macros test order-resistant
+  * Sort when iterating through CrateGraph
+  * Sort in DefMap::dump, since HashMap iteration order isn't defined
+  * hir-def tests: sort results before comparing, since FxHashSet iteration order isn't guaranteed
+  * Fix .gitattributes for test_data
+  * Small fixups
+  * Move cfg attrs up to the mod definitions to disable sourcegen
+  * Disable all source-gen tests at compile time
+  * Don't run slow tests in Rust CI, only RA CI
+  * Better error messages when the proc-macro-server fails to start
+  * Spawn a proc-macro-srv instance per workspace
+
+-------------------------------------------------------------------
 Thu Jul 28 02:55:24 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 2022.07.25:
