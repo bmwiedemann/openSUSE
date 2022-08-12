@@ -17,15 +17,15 @@
 
 
 Name:           python-metakernel
-Version:        0.29.1
+Version:        0.29.2
 Release:        0
 Summary:        Metakernel for Jupyter
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/Calysto/metakernel
-Source:         https://github.com/Calysto/metakernel/archive/refs/tags/v%{version}.tar.gz#/metakernel-%{version}-gh.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/m/metakernel/metakernel-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module flit-core >= 3.2}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

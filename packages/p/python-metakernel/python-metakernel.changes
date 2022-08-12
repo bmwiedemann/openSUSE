@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 11 13:48:44 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * LICENSE, etc back on pypi, switch back to pypi files
+  * switch to hatchling
+
+- update to version 0.29.2:
+  * Bugs fixed
+    + Restore versions of metakernel-echo and metakernel-python #252
+      (@ellert)
+  * Maintenance and upkeep improvements
+    + Switch to hatch backend #254 (@blink1073)
+
+-------------------------------------------------------------------
 Sun Aug  7 09:00:49 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix build requirements
