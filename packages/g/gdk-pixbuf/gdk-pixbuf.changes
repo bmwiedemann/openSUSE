@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug  9 16:35:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.42.9:
+  + Fix the check for maximum value of LZW initial code size.
+  + Use CMake for dependencies on Windows/MSVC.
+  + Add option for building tests.
+  + Move man pages to reStructuredText.
+  + Disable relocation when built as a static libary on Windows.
+  + Update wrap file for libjpeg-turbo.
+  + Limit the memory size when loading image data.
+- Add docutils and pkgconfig(gi-docgen) BuildRequires: New
+  dependencies.
+
+-------------------------------------------------------------------
 Fri Mar 18 12:36:39 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.42.8 (boo#1201826):
