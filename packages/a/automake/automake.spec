@@ -65,7 +65,7 @@ BuildRequires:  libtool
 BuildRequires:  makedepend
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
-BuildRequires:  python
+BuildRequires:  python3
 BuildRequires:  sharutils
 BuildRequires:  zip
 Requires:       expect
