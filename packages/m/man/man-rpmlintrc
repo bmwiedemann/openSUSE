@@ -1,7 +1,4 @@
-addFilter(".*W:.*patch-not-applied.*Patch1:.*man-db-2.6.3-man0.dif.*")
-addFilter(".*W:.*tmpfile-not-in-filelist.*/var/cache/man.*")
-addFilter(".*W:.*name-repeated-in-summary.*C.*man.*")
-addFilter(".*W:.*no-version-in-last-changelog.*")
-addFilter(".*W:.*permissions-incorrect-owner.*/var/cache/man/.*")
-addFilter(".*W:.*shared-lib-calls-exit.*/usr/lib.*/libman-2\.8\.4\.so.*")
-addFilter(".*W:.*suse-missing-rclink.*")
+# We use %posttrans
+addFilter(".*W:.*post-without-tmpfile-creation.*/usr/lib/tmpfiles\.d/man-db\.conf.*")
+addFilter(".*W:.*name-repeated-in-summary.*man.*")
+addFilter(".*E:.*missing-call-to-setgroups-before-setuid.*/usr/lib64/libman-.*\.so.*")

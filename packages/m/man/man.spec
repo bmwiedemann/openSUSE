@@ -1,7 +1,7 @@
 #
 # spec file for package man
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,6 +22,8 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
+%define add_optflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
+%global optflags %{optflags} %{**}
 %bcond_without  sdtimer
 Name:           man
 Version:        2.9.4
@@ -31,7 +33,7 @@ License:        GPL-2.0-or-later
 Group:          System/Base
 URL:            https://savannah.nongnu.org/projects/man-db
 Source0:        https://download.savannah.gnu.org/releases/man-db/man-db-%{version}.tar.xz
-Source1:        http://download.savannah.gnu.org/releases/man-db/man-db-%{version}.tar.xz.asc
+Source1:        https://download.savannah.gnu.org/releases/man-db/man-db-%{version}.tar.xz.asc
 Source2:        https://savannah.nongnu.org/project/memberlist-gpgkeys.php?group=man-db&download=1#/%{name}.keyring
 Source3:        sysconfig.cron-man
 Source4:        cron.daily.do_mandb
@@ -52,12 +54,14 @@ Patch5:         man-db-2.6.3-listall.dif
 Patch6:         reproducible.patch
 # PATCH-FIX-OPENSUSE man-db-2.9.4-no-chown.patch -- chown is not allowed as non-root
 Patch7:         man-db-2.9.4-no-chown.patch
-# what is it good for?
+# PATCH-FIX-SUSE collections of changes
 Patch8:         man-db-2.9.4.patch
 # PATCH-FEATURE-OPENSUSE -- Add documentation about man0 section (header files)
 Patch9:         man-db-2.6.3-man0.dif
 Patch10:        man-db-2.9.4-alternitive.dif
-Patch11:	harden_man-db.service.patch
+Patch11:        harden_man-db.service.patch
+# PATCH-FIX-SUSE ppc64le float128 transition
+Patch12:        gnulib-ppc64le.patch
 BuildRequires:  automake
 BuildRequires:  flex
 BuildRequires:  gdbm-devel
@@ -71,21 +75,18 @@ BuildRequires:  libzio-devel
 BuildRequires:  man-pages
 BuildRequires:  pkgconfig
 BuildRequires:  po4a
-BuildRequires:  update-alternatives
 BuildRequires:  zlib-devel
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(systemd)
+Conflicts:      mandoc
 Requires:       glibc-locale-base
 Suggests:       glibc-locale
 Requires:       groff >= 1.18
 Requires:       less
-Requires:       libalternatives1
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         coreutils
 PreReq:         fillup
-Requires(post): update-alternatives
 Requires(posttrans):systemd
-Requires(postun):update-alternatives
 Requires(pre):  group(man)
 Requires(pre):  user(man)
 Provides:       man_db
@@ -112,6 +113,9 @@ printer (using groff).
 %patch10 -b .libalernative
 rm -f configure
 %patch11 -p1
+%ifarch ppc64le
+%patch12
+%endif
 
 %build
 %global optflags %{optflags} -funroll-loops -pipe -Wall
@@ -139,19 +143,13 @@ SEC=(0 1 n l 8 3 2 5 4 9 6 7
 	 Cg g s m
 )
 SEC="${SEC[@]}"
-if grep -q _DEFAULT_SOURCE %{_includedir}/features.h ; then
-	CFLAGS="%{optflags} -D_GNU_SOURCE -D_DEFAULT_SOURCE"
-else
-	CFLAGS="%{optflags} -D_GNU_SOURCE -D_SVID_SOURCE"
-fi
 for d in $(cat man/LINGUAS*) ; do
 	test -d %{_datadir}/locale/$d || continue
 	LINGUAS="${LINGUAS:+$LINGUAS }$d"
 done
-
 LIBS="-lalternatives"
+export LINGUAS LIBS
 
-export CFLAGS LINGUAS LIBS
 # Create configure
 aclocal  -I ${PWD} -I ${PWD}/m4 -I ${PWD}/gl/m4
 autoconf -B ${PWD} -B ${PWD}/m4 -B ${PWD}/gl/m4
@@ -159,6 +157,7 @@ automake --add-missing
 find -name 'Makefile.*' | xargs \
 	sed -ri -e '/^pkglibdir/{ s@^(pkglibdir[[:blank:]]+=[[:blank:]]+\$\(libdir\)).*@\1@p }'
 # Configure
+%add_optflags -D_GNU_SOURCE -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=500
 %configure \
 %if %{without sdtimer}
 	--with-systemdtmpfilesdir=no \
@@ -218,33 +217,18 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # Move manual
 mkdir -p %{buildroot}%{_docdir}
 mv %{buildroot}%{_datadir}/doc/man-db %{buildroot}%{_docdir}/man/
-# wrapper which drops roots privileges if root executes man or mandb
-mv -vf   %{buildroot}%{_bindir}/man          %{buildroot}%{_libexecdir}/man-db/
+# wrapper which drops roots privileges if root executes mandb
 mv -vf   %{buildroot}%{_bindir}/mandb        %{buildroot}%{_libexecdir}/man-db/
-rm -vf   %{buildroot}%{_bindir}/apropos
-mv -vf   %{buildroot}%{_bindir}/whatis       %{buildroot}%{_libexecdir}/man-db/
 install -D -m 0755 wrapper %{buildroot}%{_libexecdir}/man-db/
-install -d -m 0755 %{buildroot}%{_sysconfdir}/alternatives
-ln -sf   %{_libexecdir}/man-db/wrapper       %{buildroot}%{_sysconfdir}/alternatives/man
 ln -sf   %{_libexecdir}/man-db/wrapper       %{buildroot}%{_bindir}/mandb
-ln -sf   %{_libexecdir}/man-db/whatis        %{buildroot}%{_sysconfdir}/alternatives/apropos
-ln -sf   %{_libexecdir}/man-db/whatis        %{buildroot}%{_sysconfdir}/alternatives/whatis
-ln -sf   %{_sysconfdir}/alternatives/man     %{buildroot}%{_bindir}/man
-ln -sf   %{_sysconfdir}/alternatives/apropos %{buildroot}%{_bindir}/apropos
-ln -sf   %{_sysconfdir}/alternatives/whatis  %{buildroot}%{_bindir}/whatis
 # Fix man pages
 pushd %{buildroot}%{_mandir}/
 rm -rf *.ascii/
 for d in *.UTF-8 ; do
 	find -name '*.[1-9nlop]' | xargs gzip -9f
 done
-for d in `find -name manpath.5%{?ext_man} -printf '%%h '` ; do
+for d in $(find -name manpath.5%{?ext_man} -printf '%%h ') ; do
 	ln -sf manpath.5%{?ext_man} $d/manpath.config.5%{?ext_man}
-done
-for man in apropos man whatis; do
-	mv man1/${man}.1%{?ext_man} man1/${man}-db.1%{?ext_man}
-	ln -sf %{_sysconfdir}/alternatives/${man}.1%{?ext_man} man1/${man}.1%{?ext_man}
-	ln -sf %{_mandir}/man1/${man}-db.1%{?ext_man} %{buildroot}%{_sysconfdir}/alternatives/${man}.1%{?ext_man}
 done
 # remove japanese pages, as they are in man-pages-ja
 # (need to cross verify at some point that they are up to date there)
@@ -286,6 +270,21 @@ test -d var/catman/ && rm -rf var/catman/ || true
 %service_add_pre man-db-create.service
 %endif
 %endif
+if test "$1" > 0 -a -h %{_sysconfdir}/alternatives/man
+then
+  for ua in man apropos whatis man.1%{ext_man} apropos.1%{ext_man} whatis.1%{ext_man}
+  do
+    rm -f %{_sysconfdir}/alternatives/$ua
+    case "$ua" in
+    *.1*)
+      rm -f %{_mandir}/man1/$ua
+      ;;
+    *)
+      rm -f %{_bindir}/$ua
+      ;;
+    esac
+  done
+fi
 
 %post
 %{fillup_only -an cron}
@@ -296,24 +295,6 @@ test -d var/catman/ && rm -rf var/catman/ || true
 %service_add_post man-db.service man-db.timer
 %endif
 %endif
-# Remark: soelim(1)     is part of package groff or mandoc and
-#         makewhatis(8) is part of package makewhat or mandoc
-%{_sbindir}/update-alternatives --quiet --force \
-	--install %{_bindir}/man     man     %{_libexecdir}/man-db/wrapper 1010 \
-	--slave   %{_bindir}/apropos apropos %{_libexecdir}/man-db/whatis \
-	--slave   %{_bindir}/whatis  whatis  %{_libexecdir}/man-db/whatis \
-	--slave   %{_mandir}/man1/man.1%{?ext_man}     man.1%{?ext_man}     %{_mandir}/man1/man-db.1%{?ext_man} \
-	--slave   %{_mandir}/man1/apropos.1%{?ext_man} apropos.1%{?ext_man} %{_mandir}/man1/apropos-db.1%{?ext_man} \
-	--slave   %{_mandir}/man1/whatis.1%{?ext_man}  whatis.1%{?ext_man}  %{_mandir}/man1/whatis-db.1%{?ext_man}
-
-# Old man packages did not apply the proper update-alternatives calls to ensure
-# alternative path move. As a result, the alternative path move induced by
-# libexecdir move breaks man wrapper (boo#1175919). Hence the following migration
-# code for upgrades from Leap 15.2 or Tumbleweed snapshots older than 20200826.
-# To be removed when support for upgrades from Leap 15.2 is dropped (dec. 2021).
-if [ %{_libexecdir} != %{_prefix}/lib ] && [ -f %{_prefix}/lib/man-db/wrapper ] ; then
-   update-alternatives --quiet --remove man %{_prefix}/lib/man-db/wrapper
-fi
 
 %preun
 %if %{with sdtimer}
@@ -331,9 +312,6 @@ fi
 %service_del_postun man-db.service man-db.timer
 %endif
 %endif
-if [ ! -f %{_libexecdir}/man-db/wrapper ] ; then
-   update-alternatives --quiet --remove man %{_libexecdir}/man-db/wrapper
-fi
 
 %posttrans
 %{?tmpfiles_create:%tmpfiles_create %{_prefix}/lib/tmpfiles.d/man-db.conf}
@@ -350,12 +328,6 @@ fi
 %if 0%{?suse_version} < 1500
 %attr(0744,root,root) %{_sysconfdir}/cron.daily/suse-do_mandb
 %endif
-%ghost %{_sysconfdir}/alternatives/man
-%ghost %{_sysconfdir}/alternatives/apropos
-%ghost %{_sysconfdir}/alternatives/whatis
-%ghost %{_sysconfdir}/alternatives/man.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/apropos.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/whatis.1%{ext_man}
 %dir %{_prefix}/etc/profile.d/
 %{_prefix}/etc/profile.d/manpath.*
 %{_bindir}/apropos
@@ -367,8 +339,6 @@ fi
 %{_bindir}/man-recode
 %{_bindir}/whatis
 %dir %attr(0755,root,root) %{_libexecdir}/man-db
-%attr(0755,root,root) %{_libexecdir}/man-db/man
-%attr(0755,root,root) %{_libexecdir}/man-db/whatis
 %attr(0755,root,root) %{_libexecdir}/man-db/mandb
 %attr(0755,root,root) %{_libexecdir}/man-db/manconv
 %attr(0755,root,root) %{_libexecdir}/man-db/globbing

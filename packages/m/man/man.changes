@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug 11 11:55:04 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch gnulib-ppc64le.patch
+  * Support ppc64le float128 transition
+
+-------------------------------------------------------------------
+Thu Aug 11 08:56:58 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Drop usage of update-alternatives as mandoc does not use it
+  (nor libalternative)
+
+-------------------------------------------------------------------
+Sat May  7 12:17:53 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- switch source url to https
+
+-------------------------------------------------------------------
 Wed Oct  6 11:41:21 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

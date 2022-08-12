@@ -848,4 +848,18 @@
     <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 923524 from jsegitz)</comment>
     <requestid>923541</requestid>
   </revision>
+  <revision rev="89" vrev="4">
+    <srcmd5>31035bead104860359587cdf38c52638</srcmd5>
+    <version>2.9.4</version>
+    <time>1660319181</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch gnulib-ppc64le.patch
+  * Support ppc64le float128 transition
+
+- Drop usage of update-alternatives as mandoc does not use it
+  (nor libalternative)
+
+- switch source url to https</comment>
+    <requestid>994522</requestid>
+  </revision>
 </revisionlist>
