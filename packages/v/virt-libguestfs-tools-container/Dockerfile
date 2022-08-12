@@ -79,6 +79,7 @@ RUN chmod +x entrypoint.sh
 RUN LIBGUESTFS_BACKEND=direct \
     LIBGUESTFS_DEBUG=1 \
     libguestfs-make-fixed-appliance --xz && \
+    mv appliance-*.tar.xz appliance.tar.xz && \
     rm -rf /var/tmp/.guestfs-*
 
 ENTRYPOINT [ "/entrypoint.sh" ]

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 12 05:25:47 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use non-versioned appliance to avoid redundant rpm query
+
+-------------------------------------------------------------------
 Thu Aug  4 07:29:45 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Use standard LABEL directive to add mandatory labels

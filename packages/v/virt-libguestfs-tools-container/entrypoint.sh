@@ -2,8 +2,7 @@
 
 #KubeVirt provides LIBGUESTFS_PATH via the pod environemnt.
 DIR=/usr/local/lib/guestfs
-LIBGUESTFS_VERSION=$(rpm -q --queryformat=%{version} libguestfs)
-LIBGUESTFS_APPLIANCE=/appliance-${LIBGUESTFS_VERSION}.tar.xz
+LIBGUESTFS_APPLIANCE=/appliance.tar.xz
 
 mkdir -p ${DIR}
 tar -Jxf ${LIBGUESTFS_APPLIANCE} -C ${DIR}
