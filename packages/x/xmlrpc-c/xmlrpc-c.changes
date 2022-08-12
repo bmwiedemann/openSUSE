@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug  8 20:47:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.54.05:
+  * Fix handling of error on pipe used to interrupt the wait for a client connection.
+  * Build of client libraries: fix failure to find Curl stuff
+  * fix bug: wild memory reference when server times out waiting for request header
+  * fix bug: won't compile with --enable-libxml2
+  * fix bug: ignores LDFLAGS_FOR_BUILD, LDFLAGS_PERSONAL, and LDFLAGS_PTHREAD
+    when building the build tool Gennmtab
+  * Fix bug: 'toValue' won't compile for vector of vectors or map of vectors. Thanks Yang Bo .
+  * Fix tiny memory leak in virtually impossible low memory situation.
+  * Build: fix missing xmlrpc-c/config.h include file in separate build tree build
+
+-------------------------------------------------------------------
 Mon May 31 20:03:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.51.07:
