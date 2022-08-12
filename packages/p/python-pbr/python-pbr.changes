@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 10 14:58:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.9.0:
+  * Future-proofing pyproject.toml
+  * Use importlib-metadata for runtime package version lookups
+  * Drop wheel from pyproject.toml examples
+  * Changed minversion in tox to 3.18.0
+
+-------------------------------------------------------------------
 Tue Feb 22 09:04:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.8.1:

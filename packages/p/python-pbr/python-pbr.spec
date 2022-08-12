@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-pbr%{psuffix}
-Version:        5.8.1
+Version:        5.9.0
 Release:        0
 Summary:        Python Build Reasonableness
 License:        Apache-2.0
@@ -57,7 +57,6 @@ BuildRequires:  python3-pep517
 BuildRequires:  python3-pip
 BuildRequires:  python3-six >= 1.12.0
 BuildRequires:  python3-stestr >= 2.1.0
-BuildRequires:  python3-testrepository >= 0.0.18
 BuildRequires:  python3-testresources >= 2.0.0
 BuildRequires:  python3-testscenarios >= 0.4
 BuildRequires:  python3-testtools >= 2.2.0
