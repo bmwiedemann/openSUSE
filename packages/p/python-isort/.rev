@@ -495,4 +495,12 @@ Let's see which package is missing in ringX for test flavor</comment>
   switch to tomli. (forwarded request 965464 from bnavigator)</comment>
     <requestid>965465</requestid>
   </revision>
+  <revision rev="35" vrev="7">
+    <srcmd5>10787269b616f2e3f26bb02f4802721a</srcmd5>
+    <version>5.10.1</version>
+    <time>1660319175</time>
+    <user>dimstar_suse</user>
+    <comment>- remove unnecessary pylama buildrequires</comment>
+    <requestid>994358</requestid>
+  </revision>
 </revisionlist>
