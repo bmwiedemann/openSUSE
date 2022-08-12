@@ -1,13 +1,13 @@
 ---
- aclocal.m4                  |   40 +++++++++-------
- configure                   |   46 ++++++++++--------
- include/curses.h.in         |    5 +-
+ aclocal.m4                  |   40 ++++++++-------
+ configure                   |   46 +++++++++---------
+ include/curses.h.in         |    5 +
  include/termcap.h.in        |    2 
  include/tic.h               |    4 -
  man/man_db.renames          |    2 
  man/ncurses.3x              |    4 +
- misc/gen-pkgconfig.in       |   23 +++++++++
- misc/terminfo.src           |  107 +++++++++++++++++++++++++++++++++++++-------
+ misc/gen-pkgconfig.in       |   25 +++++++++
+ misc/terminfo.src           |  111 +++++++++++++++++++++++++++++++++++++-------
  ncurses/Makefile.in         |    2 
  ncurses/run_cmd.sh          |   11 ++++
  ncurses/tinfo/MKfallback.sh |   14 ++++-
@@ -15,7 +15,7 @@
  progs/Makefile.in           |    4 -
  test/test.priv.h            |    4 -
  test/tracemunch             |    2 
- 16 files changed, 206 insertions(+), 67 deletions(-)
+ 16 files changed, 209 insertions(+), 70 deletions(-)
 
 --- aclocal.m4
 +++ aclocal.m4	2022-02-21 08:55:21.204338965 +0000
@@ -386,7 +386,7 @@
  for opt in -L$libdir @EXTRA_PKG_LDFLAGS@ @LIBS@
  do
  	case $opt in
-@@ -92,12 +94,26 @@ do
+@@ -92,13 +94,27 @@ do
  	-specs*) # ignore linker specs-files which were used to build library
  		continue
  		;;
@@ -399,6 +399,7 @@
  	-Wl,--dynamic-linker*) # ignore ELF interpreter
  		continue
  		;;
+-	-Wl,--as-needed|-Wl,--build-id=*|-Wl,-dT,*|-Wl,-T,*)
 +	-Wl,-Bsymbolic-functions*) # affect symbol resolution
 +		continue
 +		;;
@@ -410,10 +411,11 @@
 +		pop=" -Wl,--pop-state"
 +		continue
 +		;;
++	-Wl,--build-id=*|-Wl,-dT,*|-Wl,-T,*)
+ 		continue
+ 		;;
  	-L*)
- 		lib_check=`echo "x$opt" | sed -e 's/^.-L//'`
- 		[ -d "$lib_check" ] || continue
-@@ -186,19 +202,22 @@ do
+@@ -189,19 +205,22 @@ do
  	LIBS="-l$name"
  
  	desc="ncurses @NCURSES_MAJOR@.@NCURSES_MINOR@"
@@ -437,7 +439,7 @@
  		desc="$desc add-on library"
  	fi
  
-@@ -208,6 +227,8 @@ do
+@@ -211,6 +230,8 @@ do
  	   [ $NEED_TINFO != yes ] ; then
  		[ -n "$reqs" ] && reqs="$reqs, "
  		reqs="${reqs}${SUB_LIBRARY}${suffix}"
@@ -811,7 +813,7 @@
  
 --- test/test.priv.h
 +++ test/test.priv.h	2022-02-21 08:55:21.212338812 +0000
-@@ -1061,12 +1061,12 @@ extern char *_nc_strstr(const char *, co
+@@ -1065,12 +1065,12 @@ extern char *_nc_strstr(const char *, co
  #endif
  
  /* out-of-band values for representing absent capabilities */
