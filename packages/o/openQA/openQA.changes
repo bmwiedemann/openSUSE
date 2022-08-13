@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 13 11:23:25 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1660317202.3912a15:
+  * Dependency cron 2022-08-12
+  * docs: Add note about gre_tunnel_preup executable bit
+
+-------------------------------------------------------------------
 Wed Aug 10 10:30:37 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1660127430.c57e24c:
