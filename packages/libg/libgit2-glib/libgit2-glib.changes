@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 22 19:27:24 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.0:
+  + Add macro GGIT_CHECK_VERSION.
+  + ggit_diff_foreach: Prevent assertions with null callbacks.
+  + Map flags related to conflicts.
+  + Several meson improvements.
+  + Fix documentation.
+- Replace gtk-doc with pkgconfig(gi-docgen) BuildRequires following
+  upstreams changes.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Thu Dec 23 12:07:52 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.0.0.1:

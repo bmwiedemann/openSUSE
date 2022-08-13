@@ -447,4 +447,12 @@
     <comment> (forwarded request 942243 from iznogood)</comment>
     <requestid>942320</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9b234733cb4a27e97eef94560cb0daad</srcmd5>
+    <version>1.1.0</version>
+    <time>1660422995</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release (forwarded request 994395 from iznogood)</comment>
+    <requestid>994792</requestid>
+  </revision>
 </revisionlist>
