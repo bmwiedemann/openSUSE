@@ -17,7 +17,7 @@
 
 
 Name:           spotify-qt
-Version:        3.8
+Version:        3.9
 Release:        0
 Summary:        Lightweight Spotify client using Qt
 License:        GPL-3.0-only

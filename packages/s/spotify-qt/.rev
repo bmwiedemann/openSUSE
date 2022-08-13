@@ -15,4 +15,31 @@
     <comment></comment>
     <requestid>947431</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a31447751b55cf0598f5e04f3ff3b805</srcmd5>
+    <version>3.9</version>
+    <time>1660423038</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.9
+  - Fixes
+     * Fixed not being able to move window under Wayland.
+     * Fixed showing add and remove options for tracks in collaborative playlists.
+     * Fixed some possible issues with selecting a device.
+     * Fixed MPRIS support under KDE.
+     * Fixed crash when opening links on some artists.
+   - Changes
+     * Much improved MPRIS support.
+     * Added keyboard shortcuts.
+     * Added support for playing tracks from outside the application.
+     * Added support for selecting multiple tracks.
+     * Added an option to use an expanded album cover.
+     * Added an option to close application to the tray.
+     * Improved detection of spotifyd config files.
+     * Added an option to change device type.
+     * Added message when queuing tracks.
+     * Replaced custom font option with ability to select font from system.
+     * Added an option to disable checking for updates on start.
+</comment>
+    <requestid>994898</requestid>
+  </revision>
 </revisionlist>

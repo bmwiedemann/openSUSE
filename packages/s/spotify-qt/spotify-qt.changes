@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Aug 11 18:37:47 UTC 2022 - Jens K. <karatekhd@opensuse.org>
+
+- Update to version 3.9
+  - Fixes
+     * Fixed not being able to move window under Wayland.
+     * Fixed showing add and remove options for tracks in collaborative playlists.
+     * Fixed some possible issues with selecting a device.
+     * Fixed MPRIS support under KDE.
+     * Fixed crash when opening links on some artists.
+   - Changes
+     * Much improved MPRIS support.
+     * Added keyboard shortcuts.
+     * Added support for playing tracks from outside the application.
+     * Added support for selecting multiple tracks.
+     * Added an option to use an expanded album cover.
+     * Added an option to close application to the tray.
+     * Improved detection of spotifyd config files.
+     * Added an option to change device type.
+     * Added message when queuing tracks.
+     * Replaced custom font option with ability to select font from system.
+     * Added an option to disable checking for updates on start.
+
+-------------------------------------------------------------------
 Tue Jan 18 09:46:02 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Clean up spec file a bit:
