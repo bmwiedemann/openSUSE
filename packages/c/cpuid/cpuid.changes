@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 13 10:39:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220812
+  * Corrected (synth) decoding for (0,6),(8,6) Intel Snow
+    Ridge/Parker Ridge.  
+  * Added 8000000a/edx X2AVIC flag
+  * Generalized (0,6),(8,14),9,YP stepping case to include
+    Pentium 4425Y, from instlatx64 sample.
+  * Added support for hypervisor+3/ecx (Microsoft) flags.
+
+-------------------------------------------------------------------
 Thu Feb 24 21:10:05 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 20220224:
