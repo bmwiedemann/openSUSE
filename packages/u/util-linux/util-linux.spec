@@ -640,14 +640,14 @@ exit "$result"
 
 %install
 %if %build_util_linux
-mkdir -p %{buildroot}{%{_distconfdir}/{pam.d,default},%{_mandir}/man{1,8},/bin,/sbin,%{_bindir},%{_sbindir},%{_infodir},%{_sysconfdir}/issue.d}
+mkdir -p %{buildroot}{%{_distconfdir}/default,%{_pam_vendordir},%{_mandir}/man{1,8},/bin,/sbin,%{_bindir},%{_sbindir},%{_infodir},%{_sysconfdir}/issue.d}
 install -m 644 %{SOURCE51} %{buildroot}%{_sysconfdir}/blkid.conf
-install -m 644 %{SOURCE8} %{buildroot}%{_distconfdir}/pam.d/login
-install -m 644 %{SOURCE9} %{buildroot}%{_distconfdir}/pam.d/remote
-install -m 644 %{SOURCE14} %{buildroot}%{_distconfdir}/pam.d/runuser
-install -m 644 %{SOURCE15} %{buildroot}%{_distconfdir}/pam.d/runuser-l
-install -m 644 %{SOURCE10} %{buildroot}%{_distconfdir}/pam.d/su
-install -m 644 %{SOURCE16} %{buildroot}%{_distconfdir}/pam.d/su-l
+install -m 644 %{SOURCE8} %{buildroot}%{_pam_vendordir}/login
+install -m 644 %{SOURCE9} %{buildroot}%{_pam_vendordir}/remote
+install -m 644 %{SOURCE14} %{buildroot}%{_pam_vendordir}/runuser
+install -m 644 %{SOURCE15} %{buildroot}%{_pam_vendordir}/runuser-l
+install -m 644 %{SOURCE10} %{buildroot}%{_pam_vendordir}/su
+install -m 644 %{SOURCE16} %{buildroot}%{_pam_vendordir}/su-l
 install -m 644 %{SOURCE11} %{buildroot}%{_distconfdir}/default/su
 sed 's/\bsu\b/runuser/g' <%{SOURCE11} >runuser.default
 install -m 644 runuser.default %{buildroot}%{_distconfdir}/default/runuser
@@ -881,12 +881,12 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %config(noreplace) %{_sysconfdir}/filesystems
 %config(noreplace) %{_sysconfdir}/blkid.conf
 %if %{defined no_config}
-%{_distconfdir}/pam.d/login
-%{_distconfdir}/pam.d/remote
-%{_distconfdir}/pam.d/runuser
-%{_distconfdir}/pam.d/runuser-l
-%{_distconfdir}/pam.d/su
-%{_distconfdir}/pam.d/su-l
+%{_pam_vendordir}/login
+%{_pam_vendordir}/remote
+%{_pam_vendordir}/runuser
+%{_pam_vendordir}/runuser-l
+%{_pam_vendordir}/su
+%{_pam_vendordir}/su-l
 %if 0%{?suse_version} <= 1520
 %dir %{_distconfdir}/default
 %endif

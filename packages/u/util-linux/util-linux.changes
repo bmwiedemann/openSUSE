@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  9 07:51:17 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use %_pam_vendordir
+
+-------------------------------------------------------------------
 Wed Jul 27 14:25:16 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - exclude bash-completion stuff for programs that are in

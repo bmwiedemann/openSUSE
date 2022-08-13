@@ -640,7 +640,7 @@ exit "$result"
 
 %install
 %if %build_util_linux
-mkdir -p %{buildroot}{%{_distconfdir}/{pam.d,default},%{_mandir}/man{1,8},/bin,/sbin,%{_bindir},%{_sbindir},%{_infodir},%{_sysconfdir}/issue.d}
+mkdir -p %{buildroot}{%{_distconfdir}/default,%{_pam_vendordir},%{_mandir}/man{1,8},/bin,/sbin,%{_bindir},%{_sbindir},%{_infodir},%{_sysconfdir}/issue.d}
 install -m 644 %{SOURCE51} %{buildroot}%{_sysconfdir}/blkid.conf
 install -m 644 %{SOURCE8} %{buildroot}%{_distconfdir}/pam.d/login
 install -m 644 %{SOURCE9} %{buildroot}%{_distconfdir}/pam.d/remote
