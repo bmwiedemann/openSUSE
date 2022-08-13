@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 12 15:52:53 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tor 0.4.7.10
+  * IPFire location database did not have proper ARIN network
+    allocations - affected circuit path selection and relay metrics
+ 
+-------------------------------------------------------------------
 Thu Aug 11 16:39:24 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tor 0.4.7.9 (boo#1202336)
