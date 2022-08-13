@@ -19,7 +19,7 @@ index 2e0cbd37f17..fcd3dd920e4 100644
 @@ -396,7 +396,7 @@ proc check_pr25749b {testname srcfilea srcfileb cflags ldflags dsoldflags args}
  	[list \
  	    "Build lib${testname}.so ($dsoldflags)" \
- 	    "-shared $dsoldflags tmpdir/pr25749-bin.o" \
+ 	    "-shared $dsoldflags tmpdir/pr25749-bin.o -z noexecstack" \
 -	    "-fPIC -I../bfd" \
 +	    "-fPIC -I../bfd -Wa,-mrelax-relocations=yes" \
  	    [list $srcfileb] \

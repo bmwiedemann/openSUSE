@@ -7,12 +7,17 @@ to disable both, the assembly and disassembly of the problematic
 mnemonic (that's only a problem for jgnop vs brcl, but still).
 So, just revert the whole commit.
 
+v2: this adjusts the reversion of above commit to care for commit
+0cfd6cffde32726ca69cde6ed3cc1ece21b9cf7c that changes the touched
+testcases so that it applies again, so it's not a simple revert of
+above commit anymore.
+
 (We leave out the patch to ChangeLog in the reversion)
 
-diff --git a/gas/testsuite/gas/s390/esa-g5.d b/gas/testsuite/gas/s390/esa-g5.d
-index 67a971bef15..949ef141c1a 100644
---- a/gas/testsuite/gas/s390/esa-g5.d
-+++ b/gas/testsuite/gas/s390/esa-g5.d
+Index: binutils-2.38.50/gas/testsuite/gas/s390/esa-g5.d
+===================================================================
+--- binutils-2.38.50.orig/gas/testsuite/gas/s390/esa-g5.d	2022-05-13 17:56:05.000000000 +0200
++++ binutils-2.38.50/gas/testsuite/gas/s390/esa-g5.d	2022-05-13 17:56:06.000000000 +0200
 @@ -78,14 +78,10 @@ Disassembly of section .text:
  .*:	07 29 [	 ]*bhr	%r9
  .*:	07 f9 [	 ]*br	%r9
@@ -109,10 +114,10 @@ index 67a971bef15..949ef141c1a 100644
  .*:	b2 21 bd 69 [	 ]*ipte	%r6,%r9,%r11,13
 -.*:	07 07 [	 ]*nopr	%r7
 +.*:	07 07 [ 	]*nopr	%r7
-diff --git a/gas/testsuite/gas/s390/esa-g5.s b/gas/testsuite/gas/s390/esa-g5.s
-index ee3d6319b19..c417b818add 100644
---- a/gas/testsuite/gas/s390/esa-g5.s
-+++ b/gas/testsuite/gas/s390/esa-g5.s
+Index: binutils-2.38.50/gas/testsuite/gas/s390/esa-g5.s
+===================================================================
+--- binutils-2.38.50.orig/gas/testsuite/gas/s390/esa-g5.s	2022-05-13 17:56:05.000000000 +0200
++++ binutils-2.38.50/gas/testsuite/gas/s390/esa-g5.s	2022-05-13 17:56:06.000000000 +0200
 @@ -72,14 +72,10 @@ foo:
  	bpr	%r9
  	br	%r9
@@ -157,11 +162,11 @@ index ee3d6319b19..c417b818add 100644
  	kdb	%f6,4095(%r5,%r10)
  	kdbr	%f6,%f9
  	keb	%f6,4095(%r5,%r10)
-diff --git a/gas/testsuite/gas/s390/esa-z900.d b/gas/testsuite/gas/s390/esa-z900.d
-index 42f408b624f..f6ff0812d89 100644
---- a/gas/testsuite/gas/s390/esa-z900.d
-+++ b/gas/testsuite/gas/s390/esa-z900.d
-@@ -6,52 +6,29 @@
+Index: binutils-2.38.50/gas/testsuite/gas/s390/esa-z900.d
+===================================================================
+--- binutils-2.38.50.orig/gas/testsuite/gas/s390/esa-z900.d	2022-05-13 17:56:05.000000000 +0200
++++ binutils-2.38.50/gas/testsuite/gas/s390/esa-z900.d	2022-05-13 18:07:33.000000000 +0200
+@@ -6,56 +6,31 @@
  Disassembly of section .text:
  
  .* <foo>:
@@ -211,6 +216,10 @@ index 42f408b624f..f6ff0812d89 100644
 -.*:	c0 f4 00 00 00 00 [	 ]*jg	102 <foo\+0x102>
 -.*:	c0 65 00 00 00 00 [	 ]*brasl	%r6,108 <foo\+0x108>
 -.*:	c0 65 00 00 00 00 [	 ]*brasl	%r6,10e <foo\+0x10e>
+-.*:	c0 65 80 00 00 00 [	 ]*brasl	%r6,114 <foo\+0x114>
+-.*:	c0 65 80 00 00 00 [	 ]*brasl	%r6,11a <foo\+0x11a>
+-.*:	c0 65 7f ff ff ff [	 ]*brasl	%r6,11e <foo\+0x11e>
+-.*:	c0 65 7f ff ff ff [	 ]*brasl	%r6,124 <foo\+0x124>
 +.*:	c0 f4 00 00 00 00 [	 ]*jg	0 \<foo\>
 +.*:	c0 14 00 00 00 00 [	 ]*jgo	6 \<foo\+0x6>
 +.*:	c0 24 00 00 00 00 [	 ]*jgh	c \<foo\+0xc>
@@ -234,27 +243,29 @@ index 42f408b624f..f6ff0812d89 100644
 +.*:	c0 e4 00 00 00 00 [	 ]*jgno	78 \<foo\+0x78>
 +.*:	c0 f4 00 00 00 00 [	 ]*jg	7e \<foo\+0x7e>
 +.*:	c0 65 00 00 00 00 [	 ]*brasl	%r6,84 \<foo\+0x84>
++.*:	c0 65 80 00 00 00 [	 ]*brasl	%r6,8a <foo\+0x8a>
++.*:	c0 65 7f ff ff ff [	 ]*brasl	%r6,8e <foo\+0x8e>
  .*:	01 0b [	 ]*tam
  .*:	01 0c [	 ]*sam24
  .*:	01 0d [	 ]*sam31
-@@ -62,7 +39,7 @@ Disassembly of section .text:
+@@ -66,7 +41,7 @@ Disassembly of section .text:
  .*:	b9 97 00 69 [	 ]*dlr	%r6,%r9
  .*:	b9 98 00 69 [	 ]*alcr	%r6,%r9
  .*:	b9 99 00 69 [	 ]*slbr	%r6,%r9
--.*:	c0 60 00 00 00 00 [	 ]*larl	%r6,136 <foo\+0x136>
-+.*:	c0 60 00 00 00 00 [	 ]*larl	%r6,ac \<foo\+0xac\>
+-.*:	c0 60 00 00 00 00 [	 ]*larl	%r6,14e <foo\+0x14e>
++.*:	c0 60 00 00 00 00 [	 ]*larl	%r6,b8 <foo\+0xb8>
  .*:	e3 65 af ff 00 1e [	 ]*lrv	%r6,4095\(%r5,%r10\)
  .*:	e3 65 af ff 00 1f [	 ]*lrvh	%r6,4095\(%r5,%r10\)
  .*:	e3 65 af ff 00 3e [	 ]*strv	%r6,4095\(%r5,%r10\)
-@@ -72,4 +49,3 @@ Disassembly of section .text:
+@@ -76,4 +51,3 @@ Disassembly of section .text:
  .*:	e3 65 af ff 00 98 [	 ]*alc	%r6,4095\(%r5,%r10\)
  .*:	e3 65 af ff 00 99 [	 ]*slb	%r6,4095\(%r5,%r10\)
  .*:	eb 69 5f ff 00 1d [	 ]*rll	%r6,%r9,4095\(%r5\)
 -.*:	07 07 [	 ]*nopr	%r7
-diff --git a/gas/testsuite/gas/s390/esa-z900.s b/gas/testsuite/gas/s390/esa-z900.s
-index 7a006168f9e..815732df37c 100644
---- a/gas/testsuite/gas/s390/esa-z900.s
-+++ b/gas/testsuite/gas/s390/esa-z900.s
+Index: binutils-2.38.50/gas/testsuite/gas/s390/esa-z900.s
+===================================================================
+--- binutils-2.38.50.orig/gas/testsuite/gas/s390/esa-z900.s	2022-05-13 17:56:05.000000000 +0200
++++ binutils-2.38.50/gas/testsuite/gas/s390/esa-z900.s	2022-05-13 17:57:59.000000000 +0200
 @@ -1,7 +1,6 @@
  .text
  foo:
@@ -263,7 +274,7 @@ index 7a006168f9e..815732df37c 100644
  	jgo	.
  	jgh	.
  	jgp	.
-@@ -23,29 +22,7 @@ foo:
+@@ -23,33 +22,9 @@ foo:
  	jgnp	.
  	jgno	.
  	jg	.
@@ -290,13 +301,17 @@ index 7a006168f9e..815732df37c 100644
 -	brul	.
  	brasl	%r6,.
 -	jasl	%r6,.
+ 	brasl	%r6,.-0x100000000
+-	jasl	%r6,.-0x100000000
+ 	brasl	%r6,.+0xfffffffe
+-	jasl	%r6,.+0xfffffffe
  	tam
  	sam24
  	sam31
-diff --git a/gas/testsuite/gas/s390/zarch-z900.d b/gas/testsuite/gas/s390/zarch-z900.d
-index 8d292dfc11b..8491a8f4e7a 100644
---- a/gas/testsuite/gas/s390/zarch-z900.d
-+++ b/gas/testsuite/gas/s390/zarch-z900.d
+Index: binutils-2.38.50/gas/testsuite/gas/s390/zarch-z900.d
+===================================================================
+--- binutils-2.38.50.orig/gas/testsuite/gas/s390/zarch-z900.d	2022-05-13 17:56:05.000000000 +0200
++++ binutils-2.38.50/gas/testsuite/gas/s390/zarch-z900.d	2022-05-13 17:56:06.000000000 +0200
 @@ -20,11 +20,8 @@ Disassembly of section .text:
  .*:	e3 95 af ff 00 46 [ 	]*bctg	%r9,4095\(%r5,%r10\)
  .*:	b9 46 00 96 [ 	]*bctgr	%r9,%r6
@@ -311,10 +326,10 @@ index 8d292dfc11b..8491a8f4e7a 100644
  .*:	eb 96 5f ff 00 44 [ 	]*bxhg	%r9,%r6,4095\(%r5\)
  .*:	eb 96 5f ff 00 45 [ 	]*bxleg	%r9,%r6,4095\(%r5\)
  .*:	b3 a5 00 96 [ 	]*cdgbr	%f9,%r6
-diff --git a/gas/testsuite/gas/s390/zarch-z900.s b/gas/testsuite/gas/s390/zarch-z900.s
-index 96d27e7b7e2..a175cca2f4f 100644
---- a/gas/testsuite/gas/s390/zarch-z900.s
-+++ b/gas/testsuite/gas/s390/zarch-z900.s
+Index: binutils-2.38.50/gas/testsuite/gas/s390/zarch-z900.s
+===================================================================
+--- binutils-2.38.50.orig/gas/testsuite/gas/s390/zarch-z900.s	2022-05-13 17:56:05.000000000 +0200
++++ binutils-2.38.50/gas/testsuite/gas/s390/zarch-z900.s	2022-05-13 17:56:06.000000000 +0200
 @@ -14,11 +14,8 @@ foo:
  	bctg	%r9,4095(%r5,%r10)
  	bctgr	%r9,%r6
@@ -327,10 +342,10 @@ index 96d27e7b7e2..a175cca2f4f 100644
  	bxhg	%r9,%r6,4095(%r5)
  	bxleg	%r9,%r6,4095(%r5)
  	cdgbr	%f9,%r6
-diff --git a/ld/testsuite/ld-s390/tlsbin_64.dd b/ld/testsuite/ld-s390/tlsbin_64.dd
-index d2aa851af46..b984c5719c9 100644
---- a/ld/testsuite/ld-s390/tlsbin_64.dd
-+++ b/ld/testsuite/ld-s390/tlsbin_64.dd
+Index: binutils-2.38.50/ld/testsuite/ld-s390/tlsbin_64.dd
+===================================================================
+--- binutils-2.38.50.orig/ld/testsuite/ld-s390/tlsbin_64.dd	2022-05-13 17:56:05.000000000 +0200
++++ binutils-2.38.50/ld/testsuite/ld-s390/tlsbin_64.dd	2022-05-13 17:56:06.000000000 +0200
 @@ -87,26 +87,26 @@ Disassembly of section .text:
   +[0-9a-f]+:	41 22 90 00       	la	%r2,0\(%r2,%r9\)
  # GD -> LE with global variable defined in executable
@@ -363,11 +378,11 @@ index d2aa851af46..b984c5719c9 100644
   +[0-9a-f]+:	41 32 90 00       	la	%r3,0\(%r2,%r9\)
   +[0-9a-f]+:	e3 40 d0 48 00 04 	lg	%r4,72\(%r13\)
   +[0-9a-f]+:	41 54 30 00       	la	%r5,0\(%r4,%r3\)
-diff --git a/opcodes/s390-opc.txt b/opcodes/s390-opc.txt
-index d84f9f798a4..33dbeb38249 100644
---- a/opcodes/s390-opc.txt
-+++ b/opcodes/s390-opc.txt
-@@ -246,14 +246,10 @@ d7 xc SS_L0RDRD "exclusive OR" g5 esa,zarch
+Index: binutils-2.38.50/opcodes/s390-opc.txt
+===================================================================
+--- binutils-2.38.50.orig/opcodes/s390-opc.txt	2022-05-13 17:56:05.000000000 +0200
++++ binutils-2.38.50/opcodes/s390-opc.txt	2022-05-13 17:56:06.000000000 +0200
+@@ -246,14 +246,10 @@ d7 xc SS_L0RDRD "exclusive OR" g5 esa,za
  f8 zap SS_LLRDRD "zero and add" g5 esa,zarch
  a70a ahi RI_RI "add halfword immediate" g5 esa,zarch
  84 brxh RSI_RRP "branch relative on index high" g5 esa,zarch
@@ -382,7 +397,7 @@ index d84f9f798a4..33dbeb38249 100644
  b241 cksm RRE_RR "checksum" g5 esa,zarch
  a70e chi RI_RI "compare halfword immediate" g5 esa,zarch
  a9 clcle RS_RRRD "compare logical long extended" g5 esa,zarch
-@@ -272,11 +268,8 @@ a701 tml RI_RU "test under mask low" g5 esa,zarch
+@@ -272,11 +268,8 @@ a701 tml RI_RU "test under mask low" g5
  4700 nop RX_0RRD "no operation" g5 esa,zarch optparm
  4700 b*8 RX_0RRD "conditional branch" g5 esa,zarch
  47f0 b RX_0RRD "unconditional branch" g5 esa,zarch
@@ -394,7 +409,7 @@ index d84f9f798a4..33dbeb38249 100644
  b34a axbr RRE_FEFE "add extended bfp" g5 esa,zarch
  b31a adbr RRE_FF "add long bfp" g5 esa,zarch
  ed000000001a adb RXE_FRRD "add long bfp" g5 esa,zarch
-@@ -444,9 +437,7 @@ e3000000001b slgf RXE_RRRD "subtract logical 64<32" z900 zarch
+@@ -444,9 +437,7 @@ e3000000001b slgf RXE_RRRD "subtract log
  e3000000000c msg RXE_RRRD "multiply single 64" z900 zarch
  e3000000001c msgf RXE_RRRD "multiply single 64<32" z900 zarch
  ec0000000044 brxhg RIE_RRP "branch relative on index high 64" z900 zarch
@@ -404,7 +419,7 @@ index d84f9f798a4..33dbeb38249 100644
  eb0000000044 bxhg RSE_RRRD "branch on index high 64" z900 zarch
  eb0000000045 bxleg RSE_RRRD "branch on index low or equal 64" z900 zarch
  eb000000000c srlg RSE_RRRD "shift right single logical 64" z900 zarch
-@@ -471,15 +462,10 @@ eb0000000080 icmh RSE_RURD "insert characters under mask high" z900 zarch
+@@ -471,15 +462,10 @@ eb0000000080 icmh RSE_RURD "insert chara
  a702 tmhh RI_RU "test under mask high high" z900 zarch
  a703 tmhl RI_RU "test under mask high low" z900 zarch
  c004 brcl RIL_UP "branch relative on condition long" z900 esa,zarch

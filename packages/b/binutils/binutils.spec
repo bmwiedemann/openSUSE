@@ -61,7 +61,7 @@ BuildRequires:  zlib-devel-static
 %else
 BuildRequires:  zlib-devel
 %endif
-Version:        2.38
+Version:        2.39
 Release:        0
 
 # disable libalternatives for now until it's changed to not
@@ -117,7 +117,7 @@ Source:         binutils-%{version}.tar.bz2
 Source2:        binutils-%{version}.tar.bz2.sig
 Source3:        binutils.keyring
 Source4:        baselibs.conf
-Patch1:         binutils-2.38-branch.diff.gz
+Patch1:         binutils-2.39-branch.diff.gz
 Patch3:         binutils-skip-rpaths.patch
 Patch4:         s390-biarch.diff
 Patch5:         x86-64-biarch.patch
@@ -203,6 +203,14 @@ Group:          Development/Tools/Building
 %description -n libctf-nobfd0
 This package includes the libctf-nobfd shared library.
 The Compact C Type Format (CTF) is a way of representing information about a binary program
+
+%package -n gprofng
+Summary:        The next generation profiling tool for Linux
+License:        GFDL-1.3-only AND GPL-3.0-or-later
+Group:          Development/Tools/Building
+
+%description -n gprofng
+The next generation profiling tool for Linux
 
 %ifarch %arm
 %define HOST %{_target_cpu}-suse-linux-gnueabi
@@ -313,6 +321,10 @@ EXTRA_TARGETS="$EXTRA_TARGETS,aarch64-suse-linux"
 # rebuilding the same archive from unchanged .o files recreates
 # it, because timestamps in the .a are 0, unequal to the actual timestamp
 # of the .o files :-/
+#
+# Enable the following 2 configure options explicitly
+# (--enable-warn-execstack=yes, --enable-warn-rwx-segments=yes)
+# as they are not enabled by default for some targets (and we use --enable-targets=[many]).
 %define common_flags CFLAGS="${RPM_OPT_FLAGS}" CXXFLAGS="${RPM_OPT_FLAGS}" \\\
 	--prefix=%{_prefix} --libdir=%{_libdir} \\\
 	--infodir=%{_infodir} --mandir=%{_mandir} \\\
@@ -348,7 +360,12 @@ cd build-dir
 %if %{suse_version} > 1500
 	--enable-pgo-build=lto \
 %endif
-	--enable-obsolete
+%if %{suse_version} <= 1500
+	--disable-gprofng \
+%endif
+	--enable-obsolete \
+	--enable-warn-execstack=yes \
+	--enable-warn-rwx-segments=yes
 
 # we patch headers (bfd-in.h) that are input to other headers
 # which are generated only with --enable-maintainer-mode (which we
@@ -413,6 +430,7 @@ EXTRA_TARGETS="$EXTRA_TARGETS,aarch64-suse-linux"
   --disable-nls \
   --enable-new-dtags \
 	--enable-obsolete \
+	--disable-gprofng \
 %if %{suse_version} <= 1320
   --disable-x86-relax-relocations \
 %endif
@@ -670,6 +688,18 @@ fi;
 %files -n libctf-nobfd0
 %defattr(-,root,root)
 %{_libdir}/libctf-nobfd.so.*
+
+%if %{suse_version} > 1500
+%ifarch %ix86 x86_64 aarch64
+%files -n gprofng
+%defattr(-,root,root)
+%dir %{_libdir}/gprofng/
+%{_libdir}/gprofng/lib*.so
+%{_libdir}/gprofng/lib*.so.*
+%{_distconfdir}/gprofng.rc
+%endif
+%endif
+
 %endif
 
 %changelog

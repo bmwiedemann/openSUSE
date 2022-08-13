@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Aug 10 09:04:57 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Rebase binutils-2.39-branch.diff.gz that contains fix for PR29451.
+
+-------------------------------------------------------------------
+Mon Aug  8 11:43:14 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add binutils-2.39-branch.diff.gz.
+- Explicitly enable --enable-warn-execstack=yes and	--enable-warn-rwx-segments=yes.
+- Add gprofng subpackage.
+
+-------------------------------------------------------------------
+Sat Aug  6 08:41:08 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to binutils 2.39:
+  * The ELF linker will now generate a warning message if the stack is made
+    executable.  Similarly it will warn if the output binary contains a
+    segment with all three of the read, write and execute permission
+    bits set.  These warnings are intended to help developers identify
+    programs which might be vulnerable to attack via these executable
+    memory regions.
+    The warnings are enabled by default but can be disabled via a command
+    line option.  It is also possible to build a linker with the warnings
+    disabled, should that be necessary.
+  * The ELF linker now supports a --package-metadata option that allows
+    embedding a JSON payload in accordance to the Package Metadata
+    specification. 
+  * In linker scripts it is now possible to use TYPE=<type> in an output
+    section description to set the section type value.
+  * The objdump program now supports coloured/colored syntax
+    highlighting of its disassembler output for some architectures.
+    (Currently: AVR, RiscV, s390, x86, x86_64).
+  * The nm program now supports a --no-weak/-W option to make it ignore
+    weak symbols.
+  * The readelf and objdump programs now support a -wE option to prevent
+    them from attempting to access debuginfod servers when following
+    links.
+  * The objcopy program's --weaken, --weaken-symbol, and
+    --weaken-symbols options now works with unique symbols as well.
+- Rebase binutils-compat-old-behaviour.diff, binutils-revert-hlasm-insns.diff,
+  binutils-revert-plt32-in-branches.diff and remove binutils-2.38-branch.diff.gz.
+- For now use --disable-gprofng.
+- Includes fixes for these CVEs:
+  bnc#1142579 aka CVE-2019-1010204 aka PR23765
+
+-------------------------------------------------------------------
 Wed May 25 10:23:35 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Use https for variosu links.

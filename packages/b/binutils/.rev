@@ -2064,4 +2064,41 @@ contain it.
   lines</comment>
     <requestid>979157</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>1ed4faee23aacb03b5cab19d13413124</srcmd5>
+    <version>2.39</version>
+    <time>1660422991</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase binutils-2.39-branch.diff.gz that contains fix for PR29451.
+
+- Add binutils-2.39-branch.diff.gz.
+- Explicitly enable --enable-warn-execstack=yes and	--enable-warn-rwx-segments=yes.
+- Add gprofng subpackage.
+
+- Update to binutils 2.39:
+  * The ELF linker will now generate a warning message if the stack is made
+    executable.  Similarly it will warn if the output binary contains a
+    segment with all three of the read, write and execute permission
+    bits set.  These warnings are intended to help developers identify
+    programs which might be vulnerable to attack via these executable
+    memory regions.
+    The warnings are enabled by default but can be disabled via a command
+    line option.  It is also possible to build a linker with the warnings
+    disabled, should that be necessary.
+  * The ELF linker now supports a --package-metadata option that allows
+    embedding a JSON payload in accordance to the Package Metadata
+    specification. 
+  * In linker scripts it is now possible to use TYPE=&lt;type&gt; in an output
+    section description to set the section type value.
+  * The objdump program now supports coloured/colored syntax
+    highlighting of its disassembler output for some architectures.
+    (Currently: AVR, RiscV, s390, x86, x86_64).
+  * The nm program now supports a --no-weak/-W option to make it ignore
+    weak symbols.
+  * The readelf and objdump programs now support a -wE option to prevent
+    them from attempting to access debuginfod servers when following
+    links.
+  * The objcopy program's --weaken, --weaken-symbol, and</comment>
+    <requestid>994281</requestid>
+  </revision>
 </revisionlist>
