@@ -16,9 +16,9 @@
 #
 
 
-%define so_ver  11
+%define so_ver  12
 Name:           libupnpp
-Version:        0.21.0
+Version:        0.22.2
 Release:        0
 Summary:        Library providing a higher level API over libnpupnp or libupnp
 License:        GPL-2.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libnpupnp)
+BuildRequires:  pkgconfig(libnpupnp) >= 5.0.0
 
 %description
 Libupnpp is a C++ wrapper for libupnp a.k.a Portable UPnP (up to branch 0.17),

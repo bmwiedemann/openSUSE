@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Aug 13 10:34:18 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 0.22.2:
+  * Adapt to the npupnp Upnp_SID type change
+- Update to version 0.22.1:
+  * Allow absolute eventSubURLs in the description.
+    UPnP 1.1 is ambiguous on this point. They are  used by some renderers
+    (e.g. LMS UPnP renderer plugin), which made them incompatible with
+    libupnpp
+- Update to version 0.22.0:
+  * Improved logging of action errors: show what we were doing.
+    Ajust other log message levels
+  * Small stylistic changes
+  * Interface of Songcast API had incompatible change, forced a new
+    package name
+
+-------------------------------------------------------------------
 Sun Mar 20 09:52:35 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream siging key and validate source signature
