@@ -48,7 +48,7 @@
 %define oldpython python
 
 Name:           libkdumpfile
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 %if "%name" == "libkdumpfile"
 Summary:        Kernel dump file access library
@@ -61,7 +61,6 @@ Group:          Development/Languages/Python
 %endif
 URL:            https://github.com/ptesarik/libkdumpfile
 Source:         https://github.com/ptesarik/libkdumpfile/releases/download/v%{version}/%{name}-%{version}.tar.bz2
-Patch1:         %{name}-live-source-Xen-DomU-type-from-sysfs.patch
 BuildRequires:  lzo-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
@@ -122,28 +121,28 @@ the Python interpreter.
 Summary:        Include files and libraries for libkdumpfile development
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libkdumpfile9 = %{version}
+Requires:       libkdumpfile10 = %{version}
 
 %description -n %{name}-devel
 This package contains all necessary include files and libraries needed
 to develop applications that require libkdumpfile.
 
-%package -n libkdumpfile9
+%package -n libkdumpfile10
 Summary:        Kernel dump file access library
 Group:          System/Libraries
 
-%description -n libkdumpfile9
+%description -n libkdumpfile10
 A library that provides an abstraction layer for reading kernel dump
 core files.  It supports different kernel dump core formats, virtual
 to physical translation, Xen mappings and more.
 
 This package contains the libkdumpfile library.
 
-%package -n libaddrxlat2
+%package -n libaddrxlat3
 Summary:        Address translation library used primarily by libkdumpfile
 Group:          System/Libraries
 
-%description -n libaddrxlat2
+%description -n libaddrxlat3
 A library that provides an abstraction layer for translating addresses
 between address spaces (i.e. physical vs virtual).
 
@@ -153,7 +152,7 @@ This package contains the libaddrxlat library.
 Summary:        Include files and libraries for libaddrxlat development
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libaddrxlat2 = %{version}
+Requires:       libaddrxlat3 = %{version}
 
 %description -n libaddrxlat-devel
 This package contains all necessary include files and libraries needed
@@ -223,15 +222,15 @@ rm -v %{?buildroot}%{python3_sitearch}/_kdumpfile*.la
 rm -v %{?buildroot}%{python3_sitearch}/_addrxlat*.la
 %endif
 
-%post -n libkdumpfile9 -p /sbin/ldconfig
+%post -n libkdumpfile10 -p /sbin/ldconfig
 
-%post -n libaddrxlat2 -p /sbin/ldconfig
+%post -n libaddrxlat3 -p /sbin/ldconfig
 
-%postun -n libkdumpfile9 -p /sbin/ldconfig
+%postun -n libkdumpfile10 -p /sbin/ldconfig
 
-%postun -n libaddrxlat2 -p /sbin/ldconfig
+%postun -n libaddrxlat3 -p /sbin/ldconfig
 
-%files -n libkdumpfile9
+%files -n libkdumpfile10
 %defattr(-,root,root)
 %{_libdir}/libkdumpfile.so.*
 %license COPYING COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv3
@@ -243,7 +242,7 @@ rm -v %{?buildroot}%{python3_sitearch}/_addrxlat*.la
 %{_libdir}/libkdumpfile.so
 %{_libdir}/pkgconfig/libkdumpfile.pc
 
-%files -n libaddrxlat2
+%files -n libaddrxlat3
 %defattr(-,root,root)
 %{_libdir}/libaddrxlat.so.*
 %license COPYING COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv3

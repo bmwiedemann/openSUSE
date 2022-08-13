@@ -159,4 +159,24 @@
 </comment>
     <requestid>987382</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>941276042cefff18bdece1e74c493bdc</srcmd5>
+    <version>0.5.0</version>
+    <time>1660423022</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to libkdumpfile version 0.5.0
+  * Support SADUMP file format.
+  * Add kdump_open_fd() and kdump_open_fdset(). Keep KDUMP_ATTR_FILE_FD
+    for (partial) backward compatibility.
+  * Redesigned addrxlat callback API.
+  * Support KDUMP file sets created by makedumpfile --split.
+  * Zstandard compression algorithm
+  * AArch64 52-bit VA
+  * Address translation tuning with addrxlat.default.* and addrxlat.force.*
+    attributes.
+- Drop patches that are upstream:
+  * libkdumpfile-live-source-Xen-DomU-type-from-sysfs.patch
+</comment>
+    <requestid>994881</requestid>
+  </revision>
 </revisionlist>
