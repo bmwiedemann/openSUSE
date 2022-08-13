@@ -1,0 +1,11 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/moebiuscurve/ibus-table-others</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="scm">git</param>
+    <param name="revision">bebc2a98d16b750f539a56cbe87a1eae558bd59e</param>
+    <param name="versionrewrite-pattern">Release (\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+</services>
