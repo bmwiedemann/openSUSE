@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug 13 10:08:52 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 5.0.0:
+  * Changed the API to avoid truncation of some long subscription IDs.
+    Upnp_SID is now an std::string instead of a fixed size array.
+    This change should be source-compatible for programs which used
+    the UpnpEvent_get_SID_cstr() macro for accessing the value, but the
+    ABI changes, hence the major version, package, and shared lib
+    version changes
+- update to 4.2.3:
+  * Fix bug which could close stderr when changing the log level
+  * Miscellaneous mostly stylistic changes
+
+-------------------------------------------------------------------
 Mon May  9 17:16:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.2.2
