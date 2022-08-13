@@ -1,3 +1,15 @@
+-------------------------------------------------------------------
+Sat Aug 13 10:59:31 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.5.19:
+  * Fix uprcl web control interface (asking for update did not work)
+  * Fix upradios stations list order
+- update to 1.5.18:
+  * Create an upmpdcli group during installation and change the group
+    to upmpdcli when started as root (in addition to the setuid())
+  * uprcl: try to show more information when the initialisation fails
+
+-------------------------------------------------------------------
 Wed Jun  1 15:20:02 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.5.17:
