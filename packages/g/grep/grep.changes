@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  3 12:26:44 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Skip more gnulib tests in qemu build
+
+-------------------------------------------------------------------
 Tue May 24 19:42:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use release keyring rather than full one for validation 
