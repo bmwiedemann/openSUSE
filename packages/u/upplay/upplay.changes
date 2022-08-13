@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 13 10:46:11 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- add upstream signing key and validate source signature
+- update to 1.6.3
+  * Fix dir browser display in cases (search string overlapping first result entry)
+  * Avoid having to restart after changing lower lib log level
+- update to 1.6.2
+  * Fix playlist drag and drop
+- update to 1.6.1
+  * New alternative tabbed compact interface for small displays
+  * Hopefully better scaling
+
+-------------------------------------------------------------------
 Fri Apr 22 16:21:39 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.6.0
