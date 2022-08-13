@@ -1,3 +1,47 @@
+-------------------------------------------------------------------------
+Fri Aug 12 21:26:11 UTC 2022 - Fred Fu <moonsolo@gmail.com>
+
+- Update to 8.6:
+  * Racket has an “equal-always?” primitive that equates values that will stay
+    the same even if mutated. See
+    https://docs.racket-lang.org/reference/Equality.html#%28def.%28%28quote.~23~25kernel%29._equal-always~3f%29%29
+
+  * This release uses a new build system, Zuo, which is implemented as a little
+    language, in accordance with the ideas of Language Oriented Programming
+    (LOP). The implementation has a single C file (plus libraries implemented in
+    Zuo), so it compiles easily. The zuo/build library is modeled on make and
+    Shake for tracking dependencies and build steps. See
+    https://docs.racket-lang.org/zuo/index.html and
+    https://racket.discourse.group/t/new-build-system-pushed-to-git-repo/873
+
+  * Racket supports stencil vectors, which associate a virtual bitmask with a
+    vector, enabling certain mask-equipped update operations. See
+    https://docs.racket-lang.org/reference/stencil_vectors.html
+
+  * Racket supports Arm64 machines running Windows.
+
+  * Redex has support for simultaneous substitutions. See
+    https://docs.racket-lang.org/redex/reference.html#%28form._%28%28lib._redex%2Freduction-semantics..rkt%29._substitute%29%29
+
+  * The Web Server provides control over the maximum number of concurrent
+    connections via its “safety limits” construct. See
+    https://docs.racket-lang.org/web-server-internal/dispatch-server-unit.html#%28part._safety-limits%29
+
+  * The Web Server has improved logging performance and improved request parsing performance, reducing tail latencies.
+
+  * The Web Server supports logging response status code via
+    web-server/dispatchers/dispatch-logresp. See
+    https://docs.racket-lang.org/web-server-internal/dispatch-logresp.html
+
+  * The db library supports custom types for PostgreSQL connections; see
+    pg-custom-type for details. See
+    https://docs.racket-lang.org/db/util.html#%28def._%28%28lib._db%2Futil%2Fpostgresql..rkt%29._pg-custom-type%29%29
+
+  * The release includes many other repairs and changes!
+
+- Remove patch racket-amsmath-mathabx.patch, since the conflict between modern
+  amsmath and mathabx LaTeX styles has been resolved in the upstream
+
 -------------------------------------------------------------------
 Thu Jun  9 07:01:25 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
