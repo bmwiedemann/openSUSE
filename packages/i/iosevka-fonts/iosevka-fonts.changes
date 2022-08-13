@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug  6 05:17:33 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v15.6.3
+  * Changes of version 15.6.3
+    = Improve shape of Cyrillic Zhe under Curly variants (#1392).
+
+-------------------------------------------------------------------
+Sat Jul 30 19:25:49 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v15.6.2
+  * Changes of version 15.6.2
+    = Fix assignment of l for SS08.
+    = Fix PHP ligation set's .= (#1390).
+
+-------------------------------------------------------------------
 Sat Jul 23 11:15:48 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v15.6.1
