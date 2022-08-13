@@ -20,7 +20,7 @@
 
 Name:           rage-encryption
 #               This will be set by osc services, that will run after this.
-Version:        0.8.0+0
+Version:        0.8.1+0
 Release:        0
 Summary:        Simple, modern, and secure file encryption tool
 #               If you know the license, put it's SPDX string here.
@@ -35,9 +35,9 @@ Source1:        vendor.tar.xz
 Source2:        cargo_config
 %if %{suse_version} > 1500
 BuildRequires:  cargo-packaging
-%else
-BuildRequires:  rust+cargo >= 1.51
 %endif
+# Requires >1.59 for thread::available_parallelism
+BuildRequires:  cargo >= 1.59
 BuildRequires:  vendored_licenses_packager
 # for feature mount
 BuildRequires:  fuse-devel

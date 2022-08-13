@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 09 03:56:26 UTC 2022 - william.brown@suse.com
+
+- Set minimum rust requirement to 1.59
+- Update to version 0.8.1+0:
+  * v0.8.1
+  * Revert updates to `dashmap` and `indexmap`
+  * cargo update
+  * age: Add passphrase to scrypt_work_factor_23 testkit test file
+  * age: Reject invalid or non-canonical X25519 recipient stanzas
+  * age: Require "contributory" behaviour for X25519 recipient stanzas
+  * age: Add testkit test files from reference impl
+  * Update Homebrew formula to v0.8.0
+
+-------------------------------------------------------------------
 Tue May 03 00:27:46 UTC 2022 - william.brown@suse.com
 
 - Update to version 0.8.0+0:
