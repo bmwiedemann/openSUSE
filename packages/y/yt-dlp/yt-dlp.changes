@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 12 15:36:50 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Drop redundant runtime requirements
+- Differentiate requirements between 15.3 and 15.4
+- Add optional runtime requirements for Tumbleweed
+
+-------------------------------------------------------------------
 Wed Aug 10 15:54:47 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Force python 3.9 on anything older than Tumbleweed

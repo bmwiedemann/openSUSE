@@ -27,20 +27,30 @@ Source:         %url/releases/download/%version/yt-dlp.tar.gz
 BuildRequires:  make >= 4
 %if 0%{?suse_version} > 1500
 BuildRequires:  python3-devel
-BuildRequires:  python3-xml
+%else
+%if 0%{?sle_version} > 150300
+BuildRequires:  python310-devel
 %else
 BuildRequires:  python39-devel
-BuildRequires:  python39-xml
+%endif
 %endif
 BuildRequires:  zip
 BuildArch:      noarch
 Requires:       ffmpeg
 %if 0%{?suse_version} > 1500
 Requires:       python3
-Requires:       python3-xml
+Suggests:       python3-Brotli
+Suggests:       python3-brotlicffi
+Suggests:       python3-certifi
+Suggests:       python3-mutagen
+Suggests:       python3-pycryptodomex
+Suggests:       python3-websockets
+%else
+%if 0%{?sle_version} > 150300
+Requires:       python310
 %else
 Requires:       python39
-Requires:       python39-xml
+%endif
 %endif
 
 %description
@@ -82,7 +92,11 @@ rm -f youtube-dl yt-dlp
 %if 0%{?suse_version} > 1500
 PYTHON="%_bindir/python3" \
 %else
+%if 0%{?sle_version} > 150300
+PYTHON="%_bindir/python3.10" \
+%else
 PYTHON="%_bindir/python3.9" \
+%endif
 %endif
  %make_build yt-dlp
 
