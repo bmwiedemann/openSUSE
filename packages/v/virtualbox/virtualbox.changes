@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 12 00:18:58 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
+
+- Modified the spec file to remove package virtualbox-guest-x11, which is no longer needed. 
+
+-------------------------------------------------------------------
+Wed Aug 10 12:00:31 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
+
+-  Fix screen resizing under Wayland (boo#1194126 and boo#1194126)
+     New files are "VirtualBox-5.2.10-xclient.patch", "vboxclient.desktop",
+     "vboxclient.service", and "vboxservice.service"
+   The fixes were derived from looking at many hundreds of Web pages, and
+   by looking at the code in Fedora35. Thanks to RedHat for the help.
+
+-------------------------------------------------------------------
 Thu Jul 21 19:52:13 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
 
 - Version bump to 6.1.36 released by Oracle July 19 2022

@@ -75,6 +75,8 @@ Source8:        update-extpack.sh
 Source9:        virtualbox-wrapper.sh
 Source10:       virtualbox-LocalConfig.kmk
 Source11:       virtualbox-60-vboxdrv.rules
+Source12:       vboxclient.service
+Source13:       vboxservice.service
 Source14:       vboxdrv.service
 Source15:       vboxadd-service.service
 Source16:       vboxconfig.sh
@@ -86,6 +88,7 @@ Source21:       vboxweb-service.service
 Source22:       vboxweb-service.sh
 Source23:       vboxautostart-service.service
 Source24:       vboxautostart-service.sh
+Source25:       vboxclient.desktop
 Source97:       README.build
 Source98:       virtualbox-rpmlintrc
 Source99:       virtualbox-patch-source.sh
@@ -150,6 +153,7 @@ Patch125:       remove_vbox_video_build.patch
 # fix library search
 Patch128:       fix_lib_search.patch
 # Fixes for modified kernel in Leap 42.3
+Patch129:       VirtualBox-5.2.10-xclient.patch
 Patch130:       fixes_for_Leap42.3.patch
 # Fixes for SLE12
 Patch131:       fixes_for_sle12.patch
@@ -300,8 +304,6 @@ the terms of the GNU Public License (GPL).
 
 
 
-
-
 ##########################################
 %package qt
 Summary:        Qt GUI part for %{name}
@@ -326,8 +328,6 @@ This package contains the code for the GUI used to control VMs.
 
 
 
-
-
 #########################################
 %package websrv
 Summary:        WebService GUI part for %{name}
@@ -344,53 +344,27 @@ The VirtualBox web server is used to control headless VMs using a browser.
 
 
 
-
-
-
-
-
-#########################################
-%package guest-x11
-Summary:        VirtualBox X11 drivers for mouse and video
-Group:          System/X11/Servers/XF86_4
-Requires:       %{name}-kmp = %{version}
-Requires:       libnotify-tools
-Supplements:    modalias(xorg-x11-server:pci:v000080EEd0000CAFEsv*sd*bc*sc*i*)
-#rename from xorg-x11-driver-virtualbox-ose:
-Provides:       xorg-x11-driver-virtualbox-ose = %{version}
-Obsoletes:      xorg-x11-driver-virtualbox-ose < %{version}
-
-%description guest-x11
-This package contains X11 guest utilities and X11 guest mouse and video drivers
-
-
-
-
-
-
-
-
-
-
 ###########################################
+
 %package guest-tools
 Summary:        VirtualBox guest tools
 Group:          System/Emulators/PC
 Requires:       %{name}-kmp = %{version}
+Requires:       libnotify-tools
 # for /usr/lib/virtualbox/vboxadd-service
 Requires:       which
 Supplements:    modalias(pci:v000080EEd0000CAFEsv*sd*bc*sc*i*)
 #rename from "ose" version:
 Provides:       %{name}-ose-guest-tools = %{version}
 Obsoletes:      %{name}-ose-guest-tools < %{version}
+Obsoletes:      virtualbox-guest-x11
+Obsoletes:      xorg-x11-driver-virtualbox-ose
 %if ! 0%{?suse_version} > 1325
 Requires(pre):  net-tools-deprecated
 %endif
 
 %description guest-tools
 VirtualBox guest addition tools.
-
-
 
 
 
@@ -424,8 +398,6 @@ Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
 
-
-
 ###########################################
 %package devel
 Summary:        Devel files for %{name}
@@ -438,8 +410,6 @@ Obsoletes:      %{name}-ose-devel < %{version}
 
 %description devel
 Development file for %{name}
-
-
 
 
 
@@ -485,8 +455,6 @@ sudo %{_sbindir}/vboxguestconfig
 
 
 
-
-
 ###########################################
 %package guest-desktop-icons
 Summary:        Icons for guest desktop files
@@ -497,8 +465,6 @@ BuildArch:      noarch
 
 %description guest-desktop-icons
 This package contains icons for guest desktop files that were created on the desktop.
-
-
 
 
 
@@ -559,6 +525,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch124 -p1
 %patch125 -p1
 %patch128 -p1
+%patch129 -p1
 # Adjustments that are version dependent
 %if 0%{?sle_version} == 120300 && 0%{?is_opensuse}
 # Patch for Leap 42.3
@@ -625,8 +592,8 @@ sed -i 's:include/drm:%{_prefix}/src/linux/include/drm:' src/VBox/Additions/linu
 %if %{main_package}
 %build
 # Disable LTO - Link Time Optimization
-%define _lto_cflags %{nil}
-#ensure we don't ever use them
+	%define _lto_cflags %{nil}
+	#ensure we don't ever use them
 rm -rf src/libs/{libpng-*,libxml2-*,libxslt-*,zlib-*,boost-*}
 
 #	--disable-kmods		don't build Linux kernel modules -  but use SUSE specific way see few lines under
@@ -687,19 +654,28 @@ install -d %{buildroot}%{_unitdir}/multi-user.target.wants
 install -d -m 755 %{buildroot}%{_sysconfdir}/vbox
 install -d -m 755 %{buildroot}%{_sysconfdir}/vbox/autostart.d
 install -d -m 755 %{buildroot}%{_udevrulesdir}
-install -d -m 755 %{buildroot}%{_distconfdir}/X11/xinit/xinitrc.d
+install -d -m 755 %{buildroot}/etc/X11/xinit/xinitrc.d
 
 ###########################################
 echo "entering guest-tools install section"
 ###########################################
-install -m 755 out/linux.*/release/bin/additions/VBoxControl %{buildroot}%{_bindir}/VBoxControl
+install -m 755 out/linux.*/release/bin/additions/VBoxControl %{buildroot}%{_bindir}
 install -m 755 out/linux.*/release/bin/additions/VBoxService %{buildroot}%{_sbindir}/VBoxService
 install -m 755 out/linux.*/release/bin/additions/mount.vboxsf %{buildroot}%{_sbindir}/mount.vboxsf
 install -m 744 src/VBox/Additions/linux/installer/vboxadd-service.sh %{buildroot}%{_vbox_instdir}/vboxadd-service
 install -d %{buildroot}%{_userunitdir}
 # udev rule for guest (virtualbox-guest-tools)
 install -m 644 %{SOURCE3}			%{buildroot}%{_udevrulesdir}/60-vboxguest.rules
+install -p -m 0644 -D %{SOURCE12} %{buildroot}%{_unitdir}/vboxclient.service
+install -p -m 0644 -D %{SOURCE13} %{buildroot}%{_unitdir}/vboxservice.service
 # /media is used for auto-mounting of shared folders
+#VBoxClient daemon (support for clipboard,autoresize,seamless windows)
+install -m 755 out/linux.*/release/bin/additions/VBoxClient	%{buildroot}%{_bindir}
+install -m 755 out/linux.*/release/bin/additions/VBoxDRMClient	%{buildroot}%{_bindir}
+# install init script which start VBoxClient daemon (support for clipboard,autoresize,seamless windows)
+install -m 755 src/VBox/Additions/x11/Installer/98vboxadd-xclient %{buildroot}/etc/X11/xinit/xinitrc.d/
+install -d %{buildroot}%{_sysconfdir}/xdg/autostart/
+install -m 644 %{SOURCE25} %{buildroot}/etc/xdg/autostart/vboxclient.desktop
 %if 0%{?suse_version} > 1320 || 0%{?sle_version} == 120300
 install -d -m 755 %{buildroot}/media
 %endif
@@ -711,17 +687,6 @@ pushd out/linux.*/release/packages/
 mkdir -p "%{buildroot}%{_datadir}/virtualbox/extensions/"
 install -D -m 644 VNC-*.vbox-extpack "%{buildroot}%{_datadir}/virtualbox/extensions/VNC-%{version}.vbox-extpack"
 popd
-
-#
-##############################################################
-echo "entering guest-x11 install section"
-##############################################################
-pushd out/linux.*/release/bin/additions/
-#VBoxClient daemon (support for clipboard,autoresize,seamless windows)
-install -m 755 VBoxClient	%{buildroot}%{_bindir}
-popd
-# install init script which start VBoxClient daemon (support for clipboard,autoresize,seamless windows)
-install -m 755 src/VBox/Additions/x11/Installer/98vboxadd-xclient %{buildroot}%{_distconfdir}/X11/xinit/xinitrc.d/vboxadd-xclient.sh
 
 ##############################################
 echo "entering virtualbox(-qt) install section"
@@ -951,6 +916,8 @@ done
 
 %post guest-tools
 %service_add_post vboxadd-service.service
+%service_add_post vboxclient.service
+%service_add_post vboxservice.service
 
 %post websrv
 %service_add_post vboxweb-service.service
@@ -975,6 +942,8 @@ exit 0
 %stop_on_removal vboxadd-service
 %stop_on_removal vboxadd
 %service_del_preun vboxadd-service.service
+%systemd_preun vboxclient.service
+%systemd_preun vboxservice.service
 exit 0
 
 %preun websrv
@@ -1004,6 +973,8 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %restart_on_update vboxadd
 %restart_on_update vboxadd-service
 %service_del_postun vboxadd-service.service
+%service_del_postun vboxclient.service
+%service_del_postun vboxservice.service
 
 %postun websrv
 %restart_on_update vboxweb-service
@@ -1115,13 +1086,6 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %endif
 %{_udevrulesdir}/60-vboxdrv.rules
 
-%files guest-x11
-%dir %{_libdir}/xorg/modules/drivers
-%dir %{_libdir}/xorg/modules/input
-%dir %{_libdir}/dri/
-%{_bindir}/VBoxClient
-%{_distconfdir}/X11/xinit/xinitrc.d/vboxadd-xclient.sh
-
 %files guest-tools
 %{_bindir}/VBoxControl
 %{_sbindir}/VBoxService
@@ -1131,6 +1095,20 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/vboxadd-service
 %{_unitdir}/vboxadd-service.service
 %{_unitdir}/multi-user.target.wants/vboxadd-service.service
+%dir %{_libdir}/xorg/modules/drivers
+%dir %{_libdir}/xorg/modules/input
+%dir %{_libdir}/dri/
+%dir /etc/X11
+%dir /etc/X11/xinit
+%dir /etc/X11/xinit/xinitrc.d
+%{_bindir}/VBoxClient
+%{_bindir}/VBoxDRMClient
+/etc/X11/xinit/xinitrc.d/98vboxadd-xclient
+%{_unitdir}/vboxclient.service
+%{_unitdir}/vboxservice.service
+%dir /etc/xdg
+%dir /etc/xdg/autostart
+/etc/xdg/autostart/vboxclient.desktop
 %if 0%{?suse_version} > 1320 || 0%{?sle_version} == 120300
 %dir /media
 %endif
