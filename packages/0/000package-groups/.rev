@@ -1431,4 +1431,12 @@ is not needed.
     <user>dimstar_suse</user>
     <comment>Follow noto-sans -&gt; google-noto-sans font rename; still lock them</comment>
   </revision>
+  <revision rev="200" vrev="198">
+    <srcmd5>817193f0c1fdb46dad91c6115f50e8f6</srcmd5>
+    <version>unknown</version>
+    <time>1660485323</time>
+    <user>dimstar_suse</user>
+    <comment>Drop virtualbox-guest-x11: no longer existing</comment>
+    <requestid>994743</requestid>
+  </revision>
 </revisionlist>

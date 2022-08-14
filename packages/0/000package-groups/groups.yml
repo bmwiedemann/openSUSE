@@ -376,7 +376,6 @@ dvd:
   - system-user-upsd
   - technisat-usb2-firmware
   - virtualbox-guest-tools
-  - virtualbox-guest-x11
   - xen-tools-domU
   # used in staging tests
   - yast2-nfs-server
