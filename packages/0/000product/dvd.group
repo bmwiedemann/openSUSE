@@ -4652,7 +4652,6 @@
     <package name="virt-viewer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="virt-what" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <!-- virtualbox-guest-tools not found on i586-->
-    <!-- virtualbox-guest-x11 not found on i586-->
     <package name="vlan" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="vlc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="vlc-codec-gstreamer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
@@ -5320,7 +5319,6 @@
     <package name="virt-v2v" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="virt-v2v-bash-completion" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="virtualbox-guest-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="virtualbox-guest-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="virtualbox-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="wpa_supplicant-gui" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="wxWidgets-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
