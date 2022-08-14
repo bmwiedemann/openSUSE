@@ -1,7 +1,7 @@
 #
 # spec file for package libyajl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Yet Another JSON Library
 License:        ISC
 Group:          System/Libraries
-Url:            http://lloyd.github.com/yajl/
+URL:            http://lloyd.github.com/yajl/
 Source0:        https://github.com/lloyd/yajl/archive/%{version}.tar.gz
 Source1:        baselibs.conf
 Source2:        json_reformat.1
@@ -32,6 +32,7 @@ Source99:       %{name}-rpmlintrc
 Patch1:         libyajl-optflags.patch
 Patch2:         libyajl-lib_suffix.patch
 Patch3:         libyajl-pkgconfig.patch
+Patch4:         libyajl-CVE-2022-24795.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  doxygen
