@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Aug 14 11:08:52 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 70.0.0
+  New features and enhancements:
+  * MKVToolNix GUI: the user can now control where the job queue
+    files & the preferences INI file are stored via environment
+    variables. If set, the variable `MKVTOOLNIX_GUI_STATE_DIR`
+    can point to a directory where the GUI stores both the job
+    queue sub-directory and the preferences INI file. If you
+    only want to relocate the preferences INI file, you can
+    store the desired file name for the INI file in
+    `MKVTOOLNIX_GUI_CONFIG_FILE`.
+  * MKVToolNix GUI: when adding directories via drag & drop/copy
+    & paste the GUI will now offer the user the option to create
+    one multiplex settings tab per directory & adding all files
+    from that directory to the corresponding, newly created tab.
+  Bug fixes:
+  * mkvmerge: AV1 OBU parser: fixed identifying files that only
+    contain single frame.
+  * MKVToolNix GUI: multiplexer: when reading color parameters
+    from identified files that are floating point numbers
+    (minimum/maximum luminance, projection pitch/roll/yaw) the
+    numbers will be formatted in floating-point notation instead
+    of scientific notation as mkvmerge only supports the former.
+  * MKVToolNix GUI: multiplexer: color parameters that are
+    floating point numbers (minimum/maximum luminance, projection
+    pitch/roll/yaw) will only be set to a value during
+    identification if the identification actually contains the
+    property, and not to 0 anymore if it doesn't.
+
+-------------------------------------------------------------------
 Sat Jul  9 18:32:32 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to  version 69.0.0
