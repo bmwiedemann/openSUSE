@@ -719,6 +719,7 @@
     <package name="gpg2-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gpgme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="gprofng" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="gptfdisk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="grantlee5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="grantleetheme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

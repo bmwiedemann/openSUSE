@@ -9680,7 +9680,7 @@ unsorted:
   - libada7 
   - libada7-32bit: [x86_64] 
   - libaddrxlat-devel 
-  - libaddrxlat2 
+  - libaddrxlat3 
   - libadlmidi-devel 
   - libadms0 
   - libadns-devel 
@@ -11947,7 +11947,7 @@ unsorted:
   - libkdstatemachineeditor_debuginterfacesource-static 
   - libkdstatemachineeditor_view1 
   - libkdumpfile-devel 
-  - libkdumpfile9 
+  - libkdumpfile10 
   - libkea-asiodns13 
   - libkea-asiolink27 
   - libkea-cc25 
@@ -12669,7 +12669,7 @@ unsorted:
   - libnozzle1 
   - libnozzle1-devel 
   - libnpupnp-devel 
-  - libnpupnp4 
+  - libnpupnp9 
   - libnscd-devel 
   - libnsfdb-devel 
   - libnsfdb-tools 
@@ -14540,7 +14540,7 @@ unsorted:
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
   - libupnpp-devel 
-  - libupnpp11 
+  - libupnpp12 
   - libupower-glib-devel 
   - libupsclient4 
   - liburcu-devel 
