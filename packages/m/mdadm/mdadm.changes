@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 11 11:41:37 UTC 2022 - Coly Li <colyli@suse.com>
+
+- imsm: support for third Sata controller (bsc#1201297)
+  0121-imsm-support-for-third-Sata-controller.patch
+- mdadm: enable Intel Alderlake RSTe configuration (bsc#1201297)
+  1005-mdadm-enable-Intel-Alderlake-RSTe-configuration.patch
+
+-------------------------------------------------------------------
 Mon May 30 08:25:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
 
 - resource RAID failed during cluster patch, Mdadm gets floating point error (bsc#1197158)

@@ -159,10 +159,12 @@ Patch117:       0117-Grow-be-careful-of-corrupt-dev_roles-list.patch
 Patch118:       0118-Remove-Spare-drives-line-from-details-for-external-m.patch
 Patch119:       0119-Don-t-associate-spares-with-other-arrays-during-RAID.patch
 Patch120:       0120-udev-md-raid-assembly.rules-skip-if-DM_UDEV_DISABLE_.patch
+Patch121:       0121-imsm-support-for-third-Sata-controller.patch
 Patch1001:      1001-display-timeout-status.patch
 Patch1002:      1002-OnCalendar-format-fix-of-mdcheck_start-timer.patch
 Patch1003:      1003-mdadm-treat-the-Dell-softraid-array-as-local-array.patch
 Patch1004:      1004-mdadm-super1-restore-commit-45a87c2f31335-to-fix-clu.patch
+Patch1005:      1005-mdadm-enable-Intel-Alderlake-RSTe-configuration.patch
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define _systemdshutdowndir %{_unitdir}/../system-shutdown
 
@@ -287,10 +289,12 @@ mdadm is a program that can be used to control Linux md devices.
 %patch118 -p1
 %patch119 -p1
 %patch120 -p1
+%patch121 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1
 %patch1004 -p1
+%patch1005 -p1
 
 %build
 make %{?_smp_mflags} CC="%__cc" CXFLAGS="%{optflags} -Wno-error" SUSE=yes BINDIR=%{_sbindir}

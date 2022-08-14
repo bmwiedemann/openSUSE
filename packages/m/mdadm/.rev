@@ -1405,4 +1405,15 @@ which haven't landed upstream yet
   1004-mdadm-super1-restore-commit-45a87c2f31335-to-fix-clu.patch (forwarded request 979803 from hmzhao)</comment>
     <requestid>979975</requestid>
   </revision>
+  <revision rev="134" vrev="19">
+    <srcmd5>41b970ff3272c34893fef95bb58963ce</srcmd5>
+    <version>4.1</version>
+    <time>1660485317</time>
+    <user>dimstar_suse</user>
+    <comment>- imsm: support for third Sata controller (bsc#1201297)
+  0121-imsm-support-for-third-Sata-controller.patch
+- mdadm: enable Intel Alderlake RSTe configuration (bsc#1201297)
+  1005-mdadm-enable-Intel-Alderlake-RSTe-configuration.patch (forwarded request 994528 from colyli)</comment>
+    <requestid>994643</requestid>
+  </revision>
 </revisionlist>
