@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 11 18:44:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.4:
+  + Fix adding suggestions from on-screen keyboard
+  + Allow extension updates with only Extension Manager installed
+  + Only load extensions that support the current session mode
+  + Fix logging in with realmd
+  + Tweak access portal dialog
+  + Improve overview animation performance
+  + Fix remembering set up bluetooth devices
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Jul  6 12:11:54 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.3.1:

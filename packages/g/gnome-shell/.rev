@@ -2012,4 +2012,22 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>Scripted push from GNOME:Next (forwarded request 987174 from dimstar)</comment>
     <requestid>987349</requestid>
   </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>8a39280ef2ead1e09358a2dded535975</srcmd5>
+    <version>42.4</version>
+    <time>1660485331</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 42.4:
+  + Fix adding suggestions from on-screen keyboard
+  + Allow extension updates with only Extension Manager installed
+  + Only load extensions that support the current session mode
+  + Fix logging in with realmd
+  + Tweak access portal dialog
+  + Improve overview animation performance
+  + Fix remembering set up bluetooth devices
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations. (forwarded request 994626 from iznogood)</comment>
+    <requestid>994796</requestid>
+  </revision>
 </revisionlist>
