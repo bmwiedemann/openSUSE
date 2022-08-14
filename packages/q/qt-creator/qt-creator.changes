@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 11 10:38:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 8.0.1:
+  * https://www.qt.io/blog/qt-creator-8.0.1-released-1
+  performance improvements and bug fixes for issues with:
+  - running and debugging bare metal applications
+  - the code model
+  - rebooting Boot2Qt devices
+  - various other things
+- Drop 0001-Fixes-license-header.patch. Merged upstream
+
+-------------------------------------------------------------------
 Fri Jul 22 12:24:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 8.0.0:
