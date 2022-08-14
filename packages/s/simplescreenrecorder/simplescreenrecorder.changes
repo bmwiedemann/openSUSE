@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  8 22:40:22 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add 768957a8de1534f0aa91bfc5d7af3c32f222beb8.patch: fix building
+  against newer ffmpeg (>= 5.0); patch taken from upstream git
+  commit.
+
+-------------------------------------------------------------------
 Wed May 18 15:26:18 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.4.4:

@@ -25,7 +25,8 @@ Group:          System/X11/Utilities
 URL:            http://www.maartenbaert.be/simplescreenrecorder
 Source:         https://github.com/MaartenBaert/ssr/archive/%{version}.tar.gz
 Source9:        baselibs.conf
-
+# PATCH-FIX-UPSTREAM badshah400@gmail.com -- Compatibility for newer ffmpeg (>=4); patch taken from upstream git commit
+Patch0:         https://github.com/MaartenBaert/ssr/commit/768957a8de1534f0aa91bfc5d7af3c32f222beb8.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -109,7 +110,7 @@ install libssr-glinject-32bit for 32bit openGL apps support.
 %endif
 
 %prep
-%setup -q -n ssr-%{version}
+%autosetup -p1 -n ssr-%{version}
 
 %build
 %ifarch %{ix86} x86_64
