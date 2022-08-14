@@ -2055,4 +2055,12 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
 - Ensure /usr/lib/NetworkManager/conf.d is part of the package. (forwarded request 991575 from fcrozat)</comment>
     <requestid>992695</requestid>
   </revision>
+  <revision rev="245" vrev="1">
+    <srcmd5>7e6fb882e3f706520f8aed916648b263</srcmd5>
+    <version>1.38.4</version>
+    <time>1660485329</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 994620 from iznogood)</comment>
+    <requestid>994794</requestid>
+  </revision>
 </revisionlist>
