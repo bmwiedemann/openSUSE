@@ -17,13 +17,13 @@
 
 
 Name:           libgsf
-Version:        1.14.49
+Version:        1.14.50
 Release:        0
 Summary:        I/O library for dealing with structured file formats
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://www.gnome.org
-Source:         http://download.gnome.org/sources/libgsf/1.14/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/libgsf/1.14/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  intltool
 BuildRequires:  libbz2-devel
