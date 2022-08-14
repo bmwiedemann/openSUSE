@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  8 16:07:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip valgrind on riscv64 
+
+-------------------------------------------------------------------
 Thu Mar 17 13:41:47 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - util-Add-barriers-support-for-RISC-V.patch: Backport from upstream: Add
