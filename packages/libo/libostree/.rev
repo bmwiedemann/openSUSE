@@ -299,4 +299,12 @@ boo#1201800
 CVE-2014-9862 boo#1201770 (forwarded request 991255 from AndreasStieger)</comment>
     <requestid>992693</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>bd96468bc30dbd0906b6795a1ccb5335</srcmd5>
+    <version>2022.5</version>
+    <time>1660485325</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with glibc 2.36 (boo#1202300) ostree-glibc_2.36.patch (forwarded request 994345 from AndreasStieger)</comment>
+    <requestid>994789</requestid>
+  </revision>
 </revisionlist>

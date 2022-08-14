@@ -28,6 +28,7 @@ URL:            https://github.com/ostreedev/ostree
 Source:         https://github.com/ostreedev/ostree/releases/download/v%{version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE ostree-grub2-location.patch boo#974714 dimstar@opensuse.org -- Fix path to grub-mkconfig_lib
 Patch0:         ostree-grub2-location.patch
+Patch1:         ostree-glibc_2.36.patch
 BuildRequires:  bison
 BuildRequires:  gjs
 BuildRequires:  gnome-common
