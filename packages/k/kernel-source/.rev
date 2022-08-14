@@ -5978,4 +5978,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.19 with fixed net (eventlet) + zram + bpf + selinux config change</comment>
     <requestid>994169</requestid>
   </revision>
+  <revision rev="653" vrev="1">
+    <srcmd5>ce5f9ab32d6faef175a2b4219f218fdb</srcmd5>
+    <version>5.19.1</version>
+    <time>1660485316</time>
+    <user>dimstar_suse</user>
+    <comment>5.19.1 &amp; ppc build fix &amp; reiserfs disable &amp; FOLL_FORCE CVE</comment>
+    <requestid>994658</requestid>
+  </revision>
 </revisionlist>
