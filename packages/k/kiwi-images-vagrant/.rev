@@ -81,4 +81,13 @@
     <comment>Don't use rsync for synchronized folders for virtualbox</comment>
     <requestid>924213</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>e2cd905394d9c0492145a73b5a29f86a</srcmd5>
+    <version>1.0</version>
+    <time>1660485324</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop virtualbox-guest-x11 dependency from virtualbox flavor: this
+  package is no longer being built. (forwarded request 994753 from dimstar)</comment>
+    <requestid>994756</requestid>
+  </revision>
 </revisionlist>

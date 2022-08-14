@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 12 10:46:23 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop virtualbox-guest-x11 dependency from virtualbox flavor: this
+  package is no longer being built.
+
+-------------------------------------------------------------------
 Fri Oct  8 11:56:33 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - Don't use rsync for synchronized folders for virtualbox
