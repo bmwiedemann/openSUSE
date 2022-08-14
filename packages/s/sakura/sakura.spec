@@ -17,7 +17,7 @@
 
 
 Name:           sakura
-Version:        3.8.4
+Version:        3.8.5
 Release:        0
 Summary:        Terminal Emulator based on the VTE Library
 License:        GPL-2.0-or-later
