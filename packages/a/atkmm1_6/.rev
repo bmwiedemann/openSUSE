@@ -40,4 +40,12 @@
 - turn off doc build, it does not work with new doxygen (forwarded request 923707 from pgajdos)</comment>
     <requestid>924741</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6cb34f8ebc2ec853b4cd8429e10241a1</srcmd5>
+    <version>2.28.3</version>
+    <time>1660485328</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 994469 from iznogood)</comment>
+    <requestid>994793</requestid>
+  </revision>
 </revisionlist>

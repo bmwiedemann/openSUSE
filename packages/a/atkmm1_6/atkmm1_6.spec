@@ -1,7 +1,7 @@
 #
 # spec file for package atkmm1_6
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _name   atkmm
 Name:           atkmm1_6
 
-Version:        2.28.1
+Version:        2.28.3
 Release:        0
 Summary:        C++ Binding for the ATK library
 License:        LGPL-2.1-or-later
@@ -32,10 +32,10 @@ BuildRequires:  c++_compiler
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  graphviz
-BuildRequires:  meson
+BuildRequires:  meson >= 0.55.0
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(atk) >= 1.18
+BuildRequires:  pkgconfig(atk) >= 1.12.0
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.46.2
 
 %description
@@ -74,12 +74,11 @@ This module is part of the GNOME C++ bindings effort.
 %meson_install
 %fdupes %{buildroot}/%{prefix}
 
-%post -n libatkmm-1_6-1 -p /sbin/ldconfig
-%postun -n libatkmm-1_6-1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libatkmm-1_6-1
 
 %files -n libatkmm-1_6-1
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README.md
 %{_libdir}/libatkmm-1.6.so.*
 
 %files devel
