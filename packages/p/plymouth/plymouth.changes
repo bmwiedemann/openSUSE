@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 12 13:50:33 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 22.02.122+64.0b0e93c:
+  plugins: splash: two-step: Secure boot check and a warning image;
+  libply: ply-utils: Add ply_is_secure_boot_enabled () helper;
+*  This work can be used to check the secure boot configuration and put a red
+   warning image on the screen if the secure boot is disabled. Also, this
+   check can be utterly disabled through the kernel parameter for testing.
+   If the parameter "secure_boot.warn_if_disabled=false" appears in the
+   kernel parameter, the secure boot check will be disabled.
+- Rebase plymouth-watermark-config.patch;
+
+-------------------------------------------------------------------
 Thu Aug  4 01:50:22 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
 - Update to version 22.02.122+60.52b0494:
