@@ -43266,7 +43266,7 @@ unsorted:
   - virt-win-reg: [x86_64] 
   - virtme 
   - virtualbox: [x86_64] 
-  - virtualbox-devel: [x86_64] # devel package of dvd:virtualbox-guest-x11 
+  - virtualbox-devel: [x86_64] # devel package of dvd:virtualbox-guest-tools 
   - virtualbox-guest-desktop-icons: [x86_64] 
   - virtualbox-guest-source: [x86_64] 
   - virtualbox-host-source: [x86_64] 
