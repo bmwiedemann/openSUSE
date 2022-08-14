@@ -1633,4 +1633,22 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment>Scripted push from GNOME:Next (forwarded request 987178 from dimstar)</comment>
     <requestid>987353</requestid>
   </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>6e21ff13f40a60298d9cfeac3bc7078b</srcmd5>
+    <version>42.4</version>
+    <time>1660485329</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 42.4:
+  + screencast: Set correct stride when using dmabufs
+  + Fix glitches in apps using subsurfaces
+  + Reduce client work when entering overview
+  + Highlight actors becoming reactive under the pointer
+  + Fall back to ARGB if XRGB is not supported
+  + Support direct scanout on GPUs without modifiers support
+  + Fix registering as X11 window manager if GDK_BACKEND is set
+  + Fixed crash
+  + Plugged leak
+  + Misc. bug fixes and cleanups. (forwarded request 994625 from iznogood)</comment>
+    <requestid>994795</requestid>
+  </revision>
 </revisionlist>
