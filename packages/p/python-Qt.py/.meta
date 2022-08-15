@@ -1,9 +1,0 @@
-<package name="python-Qt.py" project="openSUSE:Factory">
-  <title>Python compat-wrapper around all Qt bindings</title>
-  <description>Python 2 &amp; 3 compatibility wrapper around all Qt bindings -
-PySide, PySide2, PyQt4 and PyQt5.&quot;
-
-</description>
-  <devel project="devel:languages:python" package="python-Qt.py"/>
-  <url>https://github.com/mottosso/Qt</url>
-</package>
