@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Aug  7 22:27:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * docs: clarify URL in IconItem "source" property
+  * Update blur and other window effects when the dialog changes size (kde#457053)
+  * Fix generated import versions for QtQuick Controls with Qt 6
+  * ExpandableListItem: read `Accessible.description` from action
+  * ExpandableListItem: give expand button a name and a tooltip
+  * ExpandableListItem: add accessible properties
+  * PC3/ToolTip: Sync to qq2-desktop-style: Copy delay & timeout implementations
+  * PC3/ToolTip: Sync to qq2-desktop-style: Port to QtQuick.Layouts
+  * PC3/ToolTip: Sync to qq2-desktop-style: Wrap text on label
+  * PlaceholderMessage: use strict Javascript equality
+  * Scope DialogShadows lifetime to application (kde#443706)
+  * Use non-deprecated URL interceptors access with Qt 6
+  * QMenuProxy::transientParent add null checks
+
+-------------------------------------------------------------------
 Sun Jul  3 11:56:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.96.0
