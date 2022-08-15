@@ -29,4 +29,12 @@
 - Remove pytest42.patch merged upstream</comment>
     <requestid>717481</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>15cf6a2b079e207901543bc5e55290fa</srcmd5>
+    <version>0.3.3</version>
+    <time>1660586317</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>995144</requestid>
+  </revision>
 </revisionlist>

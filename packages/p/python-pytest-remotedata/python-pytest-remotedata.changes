@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 11 10:42:42 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.3.3
+  * Various infrastructure and packaging updates.
+- Includes a fix for warnings with distutils hijacked by
+  setuptools 60+
+
+-------------------------------------------------------------------
 Mon Jul 22 08:52:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.2:
