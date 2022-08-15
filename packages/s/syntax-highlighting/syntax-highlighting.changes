@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug  7 22:27:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Too many changes since 5.96.0, only listing bugfixes:
+  * add basic support of aspx and ashx (kde#437220)
+  * R: add := operator (kde#450484)
+
+-------------------------------------------------------------------
 Sun Jul  3 11:56:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.96.0
