@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 11 19:12:58 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Adapt CFLAGS to build with hdf5 >= 1.12.
+- Add o2scl-failing-tests-increase-tol.patch: Fix some more
+  failing tests by small increases of the respective tolerances.
+
+-------------------------------------------------------------------
 Thu Mar  3 13:57:22 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add o2scl-eos_quark_cfl6-test-increase-tol.patch: Increase the

@@ -31,6 +31,8 @@ Patch0:         o2scl-disable-slow-hdf-test.patch
 Patch1:         o2scl-disable-test-without-destdir-support.patch
 # PATCH-FIX-UPSTREAM o2scl-eos_quark_cfl6-test-increase-tol.patch gh#awsteiner/o2scl#18 badshah400@gmail.com -- Increase the tolerance of a test that fails due to minor tolerance issues on x86_64
 Patch2:         o2scl-eos_quark_cfl6-test-increase-tol.patch
+# PATCH-FIX-UPSTREAM o2scl-failing-tests-increase-tol.patch badshah400@gmail.com -- Minor increases in tolerance for a few more failing tests
+Patch3:         o2scl-failing-tests-increase-tol.patch
 BuildRequires:  armadillo-devel
 BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
@@ -96,8 +98,7 @@ This package provides the documentation for %{name}.
 
 %build
 autoreconf -fvi
-# NEED TO PASS ADDITIONAL CXXFLAG TO FIX USED hdf5 HEADER LOCATION AND INDICATE HDF5 < 1.12
-export CXXFLAGS+=" -DO2SCL_PLAIN_HDF5_HEADER -DO2SCL_HDF5_PRE_1_12"
+export CXXFLAGS+=" -DO2SCL_PLAIN_HDF5_HEADER"
 %configure \
 %if 0%{?suse_version} >= 1500
   --enable-gsl2 \

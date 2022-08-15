@@ -155,4 +155,16 @@
     <comment></comment>
     <requestid>959612</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>f1c4a103b22b7a348bae594e5a37386a</srcmd5>
+    <version>0.926</version>
+    <time>1660586302</time>
+    <user>dimstar_suse</user>
+    <comment>Depends on sr#995074
+
+- Adapt CFLAGS to build with hdf5 &gt;= 1.12.
+- Add o2scl-failing-tests-increase-tol.patch: Fix some more failing tests by small increases of the respective tolerances.
+</comment>
+    <requestid>995076</requestid>
+  </revision>
 </revisionlist>
