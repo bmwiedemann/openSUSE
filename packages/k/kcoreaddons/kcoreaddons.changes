@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Aug  7 22:27:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * Deprecate KMessage system
+  * KUserGroup: fix data race by porting from getgrgid to getgrgid_r
+  * KUserGroup: centralize calls to getgrgid(), at least for constructors
+  * KUser: fix data race by porting to getpwuid_r and getpwnam_r
+  * KUser: use member initialization, call getpwuid in a single place
+  * fix up the kpluingmetadata::value doc
+  * Add KRuntimePlatform as alternative for KDeclarative::runtimePlatform
+  * Fix klibexectest when build dir path contains symlink
+  * Fix unit tests in kpluginfactorytest
+  * Bump shared-mime-info to 1.8
+  * make kprocess a more proper qprocess
+  * new ksandbox function to start processes
+  * refresh git-blame-ignore-revs for latest clang-format run
+  * automatic clang-format run (clang 14)
+  * Adapt libexec paths for KF6
+
+-------------------------------------------------------------------
 Sun Jul  3 11:55:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.96.0
