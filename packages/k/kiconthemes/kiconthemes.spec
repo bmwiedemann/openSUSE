@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5IconThemes5
-%define _tar_path 5.96
+%define _tar_path 5.97
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kiconthemes
-Version:        5.96.0
+Version:        5.97.0
 Release:        0
 Summary:        Icon GUI utilities
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -50,6 +50,7 @@ BuildRequires:  cmake(Qt5Svg) >= 5.15.0
 BuildRequires:  cmake(Qt5Test) >= 5.15.0
 BuildRequires:  cmake(Qt5UiPlugin) >= 5.15.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  libqt5-qtbase-private-headers-devel
 
 %description
 This library contains classes to improve the handling of icons
@@ -58,10 +59,12 @@ in applications using the KDE Frameworks.
 %package -n %{lname}
 Summary:        Icon GUI utilities
 Group:          System/GUI/KDE
+%requires_eq libQt5Core5
 %if %pkg_vcmp cmake(Qt5Core) >= 5.12.0
 # Used as fallback icon theme starting with Qt 5.12
 Recommends:     breeze5-icons
 %endif
+
 
 %description -n %{lname}
 This library contains classes to improve the handling of icons
