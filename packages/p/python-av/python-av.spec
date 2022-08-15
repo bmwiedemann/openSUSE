@@ -25,6 +25,8 @@ Summary:        Python bindings for FFmpeg's libraries
 License:        BSD-3-Clause
 URL:            https://github.com/PyAV-Org/PyAV
 Source:         https://files.pythonhosted.org/packages/source/a/av/av-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#PyAV-Org/PyAV#817 badshah400@gmail.com -- Add ffmpeg5 support, patch taken from upstream git
+Patch0:         https://github.com/PyAV-Org/PyAV/commit/18704658487ea25e5202ac18438d836dfe65b9d0.patch#/python-av-ffmpeg5-compatibility.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
@@ -46,7 +48,7 @@ Requires(postun):update-alternatives
 Pythonic bindings for FFmpeg's libraries.
 
 %prep
-%setup -q -n av-%{version}
+%autosetup -p1 -n av-%{version}
 
 # doctests and timeout require network to setup tests
 rm tests/test_doctests.py tests/test_timeout.py

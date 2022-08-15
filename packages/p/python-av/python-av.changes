@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  8 21:41:40 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add python-av-ffmpeg5-compatibility.patch to drop references to
+  symbols in ffmpeg4 and dropped from ffmpeg5 to allow building
+  against ffmpeg5; patch taken from upstream git commit.
+
+-------------------------------------------------------------------
 Mon May  2 21:45:05 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 9.2.0
