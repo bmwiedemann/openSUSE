@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug  7 22:27:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * Remove duplicate header between cpp/h
+  * Do not try to rename label twice in entryRenamed()
+  * Do not create EntryLocation with empty key
+  * Introduce Secret Service API
+
+-------------------------------------------------------------------
 Sun Jul  3 11:56:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.96.0
