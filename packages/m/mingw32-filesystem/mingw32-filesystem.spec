@@ -78,13 +78,11 @@ Requires:       findutils
 Requires:       gawk
 Requires:       grep
 Requires:       mingw32-cross-binutils
-Requires:       mingw32-cross-breakpad-tools
 Requires:       mingw32-cross-pkgconf
 Requires:       python3
 Requires:       rpm
 Requires:       rpmlint-mini
 Requires:       sed
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 #!BuildIgnore: post-build-checks
 
@@ -205,8 +203,7 @@ done < %{SOURCE11}
 install -m 0755 %{SOURCE16} %{buildroot}%{_bindir}/i686-w64-mingw32-objdump-srcfiles
 
 %files
-%defattr(-,root,root,-)
-%doc COPYING
+%license COPYING
 %{_rpmmacrodir}/macros.mingw32
 %{_rpmmacrodir}/macros.mingw32-cmake
 %if %{undefined _distconfdir}
