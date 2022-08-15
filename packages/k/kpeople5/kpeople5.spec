@@ -17,14 +17,14 @@
 
 
 %define rname kpeople
-%define _tar_path 5.96
+%define _tar_path 5.97
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kpeople5
-Version:        5.96.0
+Version:        5.97.0
 Release:        0
 Summary:        Library for access to contacts and identity holders
 License:        LGPL-2.1-or-later
@@ -90,7 +90,6 @@ Development files for kpeople5.
 %{_kf5_debugdir}/*.renamecategories
 %{_kf5_libdir}/libKF5People*.so.*
 %{_kf5_qmldir}/
-%{_kf5_servicetypesdir}/
 
 %files devel
 %{_kf5_libdir}/libKF5People*.so
