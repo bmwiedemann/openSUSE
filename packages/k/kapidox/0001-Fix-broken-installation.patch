@@ -1,0 +1,35 @@
+From 768ece9056721315b8d0a237dc603e2ce7830303 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Wed, 10 Aug 2022 07:54:39 +0200
+Subject: [PATCH] Fix broken installation
+
+Patch picked from Debian.
+Fixes: https://invent.kde.org/frameworks/kapidox/-/issues/14
+---
+ MANIFEST.in | 1 +
+ setup.py    | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 MANIFEST.in
+
+diff --git a/MANIFEST.in b/MANIFEST.in
+new file mode 100644
+index 0000000..c38095f
+--- /dev/null
++++ b/MANIFEST.in
+@@ -0,0 +1 @@
++recursive-include kapidox/data *
+diff --git a/setup.py b/setup.py
+index 12b1d07..0409aa1 100755
+--- a/setup.py
++++ b/setup.py
+@@ -8,6 +8,7 @@ setup(
+         maintainer_email='olivier@churlaud.com',
+         url='https://invent.kde.org/frameworks/kapidox',
+         packages=find_packages(),
++        include_package_data=True,
+         python_requires=">=3.8",
+         scripts=['kapidox/depdiagram_generate_all'],
+         entry_points={
+-- 
+2.37.1
+
