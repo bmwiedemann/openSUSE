@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 12 19:46:06 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add build dependency on libmpg123 because it is required for the tests
+
+-------------------------------------------------------------------
 Fri Feb  4 23:20:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - fix portmidi configuration detection 
