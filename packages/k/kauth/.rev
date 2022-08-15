@@ -882,4 +882,12 @@ depends on sr#237875</comment>
     <comment>KDE Frameworks 5.96 (forwarded request 987972 from cgiboudeaux)</comment>
     <requestid>988113</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>4ddb89cd990da121c89e92e5983b15f2</srcmd5>
+    <version>5.97.0</version>
+    <time>1660586223</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.97.0 (forwarded request 994246 from cgiboudeaux)</comment>
+    <requestid>994951</requestid>
+  </revision>
 </revisionlist>
