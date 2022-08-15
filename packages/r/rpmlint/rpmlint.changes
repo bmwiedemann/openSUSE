@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 12 12:15:02 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220812.05423f8d:
+  * dbus-services: adjust to system-config-printer /etc -> /usr move (bsc#1202340)
+  * dbus-services: adjust to cups-pk-helper /etc -> /usr move (bsc#1202338)
+
+-------------------------------------------------------------------
 Mon Aug 08 19:04:14 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.3.0+git20220808.2a6c0296:

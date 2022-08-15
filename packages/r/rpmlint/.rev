@@ -3935,4 +3935,14 @@ oddjob-gpupdate isn't blocked)</comment>
   * Whitelist gromox (bsc#1200165)</comment>
     <requestid>993842</requestid>
   </revision>
+  <revision rev="408" vrev="1">
+    <srcmd5>af914af9a3bb5dd0ec7686592dfb608a</srcmd5>
+    <version>2.3.0+git20220812.05423f8d</version>
+    <time>1660586210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git20220812.05423f8d:
+  * dbus-services: adjust to system-config-printer /etc -&gt; /usr move (bsc#1202340)
+  * dbus-services: adjust to cups-pk-helper /etc -&gt; /usr move (bsc#1202338)</comment>
+    <requestid>994771</requestid>
+  </revision>
 </revisionlist>
