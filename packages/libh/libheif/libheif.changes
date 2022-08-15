@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 12 16:13:06 UTC 2022 - David Haller <dnh@opensuse.org>
+
+- Fix rpath error for the examples sub-package
+
+-------------------------------------------------------------------
 Fri May 27 16:27:00 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
 
 - Add missing gdk-pixbuf loader scriptlets (bsc#1199987).

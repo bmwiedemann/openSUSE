@@ -105,7 +105,9 @@ This package contains example binary programs for %{name}.
 
 %build
 %if %{with x265}
-%cmake
+%cmake \
+    -DCMAKE_SKIP_RPATH:BOOL=ON \
+    -DCMAKE_INSTALL_RPATH_USE_LINK_PATH:BOOL=OFF
 %else
 %cmake \
     -DWITH_LIBDE265=OFF \
