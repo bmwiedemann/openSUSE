@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug  7 22:27:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * Fix listing of KPackage structures (kde#456726)
+  * README.md add dot at end of sentence
+  * Port archive of test plasmoid to json metadata
+  * Fix tests that generate metadata.desktop file for Qt6 build
+  * Port metadata files in autotests to json
+
+-------------------------------------------------------------------
 Sun Jul  3 11:56:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.96.0
