@@ -815,4 +815,12 @@
     <comment>Update to 1.5.16 (forwarded request 980064 from dimstar)</comment>
     <requestid>980074</requestid>
   </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>62855f569038a9c22a529dd7d28016e1</srcmd5>
+    <version>1.5.16</version>
+    <time>1660586213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994799</requestid>
+  </revision>
 </revisionlist>

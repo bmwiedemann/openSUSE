@@ -160,7 +160,7 @@ automatically configured when plugged on the computer.
         --with-systemdsystemunitdir=%{_unitdir}
 
 %install
-%make_install udevrulesdir=%{_prefix}/lib/udev/rules.d udevhelperdir=%{_prefix}/lib/udev
+%make_install dbusdir=%{_datadir}/dbus-1/system.d/
 for size in 16x16 22x22 24x24 32x32 48x48 512x512; do
 	if test -f %{_datadir}/icons/%{_iconlocation}/$size/devices/printer.png; then
 		mkdir -p %{buildroot}/%{_datadir}/icons/hicolor/$size/apps
@@ -190,7 +190,7 @@ done
 %{_bindir}/%{name}-applet
 %{_mandir}/man1/system-config-printer-applet.1%{?ext_man}
 # The dbus service is provided by applet.py
-%config(noreplace) %{_sysconfdir}/dbus-1/system.d/com.redhat.NewPrinterNotification.conf
+%{_datadir}/dbus-1/system.d/com.redhat.NewPrinterNotification.conf
 %{_sysconfdir}/xdg/autostart/print-applet.desktop
 
 %files dbus-service
@@ -205,7 +205,7 @@ done
 %{python3_sitelib}/cupshelpers
 %{python3_sitelib}/cupshelpers*.egg-info
 # The dbus service is provided by cupshelpers/installdriver.py
-%config(noreplace) %{_sysconfdir}/dbus-1/system.d/com.redhat.PrinterDriversInstaller.conf
+%{_datadir}/dbus-1/system.d/com.redhat.PrinterDriversInstaller.conf
 
 %files -n udev-configure-printer
 %{_unitdir}/configure-printer@.service

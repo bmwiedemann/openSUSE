@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 11 20:29:09 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move all dbus-1 system.d files to /usr (bsc#1202340)
+
+-------------------------------------------------------------------
 Tue May 31 09:15:36 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.5.16:
