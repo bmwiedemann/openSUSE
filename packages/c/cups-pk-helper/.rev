@@ -248,4 +248,23 @@
     <comment></comment>
     <requestid>763359</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>1e79c496f0e474067aa4df3ea387c584</srcmd5>
+    <version>0.2.7</version>
+    <time>1660586214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.7:
+  + Use meson build system.
+  + Remove code using CUPS 1.5 and lower.
+  + Remove calls to deprecated g_type_init().
+  + Move D-Bus conf file to $(datadir)/dbus-1/system.d
+    (bsc#1202338).
+  + Don't compare signed and unsigned int.
+  + Add default statements to silence compiler warnings.
+  + Add Code of Conduct.
+  + Updated translations.
+- Add meson BuildRequires and replace configure/make/make_install
+  macros with relevant meson/meson_build/meson_install ones.</comment>
+    <requestid>994801</requestid>
+  </revision>
 </revisionlist>

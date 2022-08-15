@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 04 11:55:06 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 0.2.7:
+  + Use meson build system.
+  + Remove code using CUPS 1.5 and lower.
+  + Remove calls to deprecated g_type_init().
+  + Move D-Bus conf file to $(datadir)/dbus-1/system.d
+    (bsc#1202338).
+  + Don't compare signed and unsigned int.
+  + Add default statements to silence compiler warnings.
+  + Add Code of Conduct.
+  + Updated translations.
+- Add meson BuildRequires and replace configure/make/make_install
+  macros with relevant meson/meson_build/meson_install ones.
+
+-------------------------------------------------------------------
 Fri Jan 10 22:16:04 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - No longer recommend cups-pk-helper-lang: the lang package has

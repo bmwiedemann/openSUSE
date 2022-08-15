@@ -1,7 +1,7 @@
 #
 # spec file for package cups-pk-helper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,21 @@
 
 
 Name:           cups-pk-helper
-Version:        0.2.6
+Version:        0.2.7
 Release:        0
 Summary:        PolicyKit helper to configure cups with fine-grained privileges
 License:        GPL-2.0-or-later
 Group:          Hardware/Printing
 URL:            https://www.freedesktop.org/wiki/Software/cups-pk-helper/
 Source0:        https://www.freedesktop.org/software/cups-pk-helper/releases/%{name}-%{version}.tar.xz
-
 BuildRequires:  cups-devel
+BuildRequires:  meson
 # For directory ownership
 BuildRequires:  dbus-1
 BuildRequires:  glib2-devel
-BuildRequires:  intltool
 BuildRequires:  polkit-devel
 # Without cups installed, the cups-pk-helper-mechanism gives error: CRITICAL **: Failed to connect to cupsd
-Requires:       cups
+Requires:       cups >= 1.6
 
 %description
 This package provides a PolicyKit helper to configure cups with
@@ -46,18 +45,17 @@ requiring a password for editing printer settings.
 %autosetup -p1
 
 %build
-%configure \
-	%{nil}
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang %{name} %{?no_lang_C}
 
 %files
 %license COPYING
 %doc AUTHORS NEWS README
-%{_sysconfdir}/dbus-1/system.d/org.opensuse.CupsPkHelper.Mechanism.conf
+%{_datadir}/dbus-1/system.d/org.opensuse.CupsPkHelper.Mechanism.conf
 %{_libexecdir}/cups-pk-helper-mechanism
 %{_datadir}/dbus-1/system-services/org.opensuse.CupsPkHelper.Mechanism.service
 %{_datadir}/locale/en/
