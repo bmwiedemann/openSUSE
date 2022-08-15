@@ -1,8 +1,8 @@
-Index: google-api-python-client-2.44.0/tests/test__auth.py
+Index: google-api-python-client-2.56.0/tests/test__auth.py
 ===================================================================
---- google-api-python-client-2.44.0.orig/tests/test__auth.py
-+++ google-api-python-client-2.44.0/tests/test__auth.py
-@@ -18,7 +18,6 @@ import mock
+--- google-api-python-client-2.56.0.orig/tests/test__auth.py
++++ google-api-python-client-2.56.0/tests/test__auth.py
+@@ -18,7 +18,6 @@ from unittest import mock
  import google.auth.credentials
  import google_auth_httplib2
  import httplib2
@@ -22,7 +22,7 @@ Index: google-api-python-client-2.44.0/tests/test__auth.py
  
      def test_default_credentials(self):
          with mock.patch("google.auth.default", autospec=True) as default:
-@@ -103,75 +100,12 @@ class TestAuthWithGoogleAuth(unittest.Te
+@@ -105,75 +102,12 @@ class TestAuthWithGoogleAuth(unittest.Te
          self.assertGreater(authorized_http.http.timeout, 0)
  
  
@@ -98,20 +98,20 @@ Index: google-api-python-client-2.44.0/tests/test__auth.py
  
      def test_default_credentials(self):
          with self.assertRaises(EnvironmentError):
-Index: google-api-python-client-2.44.0/tests/test_discovery.py
+Index: google-api-python-client-2.56.0/tests/test_discovery.py
 ===================================================================
---- google-api-python-client-2.44.0.orig/tests/test_discovery.py
-+++ google-api-python-client-2.44.0/tests/test_discovery.py
-@@ -82,8 +82,6 @@ from googleapiclient.http import MediaUp
- from googleapiclient.http import tunnel_patch
- from googleapiclient.model import JsonModel
- from googleapiclient.schema import Schemas
+--- google-api-python-client-2.56.0.orig/tests/test_discovery.py
++++ google-api-python-client-2.56.0/tests/test_discovery.py
+@@ -43,8 +43,6 @@ import google.auth.credentials
+ from google.auth.exceptions import MutualTLSChannelError
+ import google_auth_httplib2
+ import httplib2
 -from oauth2client import GOOGLE_TOKEN_URI
--from oauth2client.client import OAuth2Credentials, GoogleCredentials
+-from oauth2client.client import GoogleCredentials, OAuth2Credentials
+ from parameterized import parameterized
+ import uritemplate
  
- 
- from googleapiclient import _helpers as util
-@@ -1420,14 +1418,6 @@ class Discovery(unittest.TestCase):
+@@ -1498,14 +1496,6 @@ class Discovery(unittest.TestCase):
          self.assertTrue(getattr(plus, "activities"))
          self.assertTrue(getattr(plus, "people"))
  
@@ -126,7 +126,7 @@ Index: google-api-python-client-2.44.0/tests/test_discovery.py
      def test_google_auth_credentials(self):
          credentials = mock.Mock(spec=google.auth.credentials.Credentials)
          discovery = read_datafile("plus.json")
-@@ -2088,36 +2078,6 @@ class Discovery(unittest.TestCase):
+@@ -2166,36 +2156,6 @@ class Discovery(unittest.TestCase):
          http.request = wrapped_request
          return http
  

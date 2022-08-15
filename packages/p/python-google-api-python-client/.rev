@@ -485,4 +485,17 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>970293</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0601d24d68e28ea98df344eb44a68538</srcmd5>
+    <version>2.56.0</version>
+    <time>1660586304</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.56.0:
+  * * : update the api
+  * deps: require google-auth 1.19.0 (#1824) (7f478ae)
+  * deps: require python 3.7+
+  * test: Switch to unittest.mock
+- Refresh patches.</comment>
+    <requestid>995084</requestid>
+  </revision>
 </revisionlist>

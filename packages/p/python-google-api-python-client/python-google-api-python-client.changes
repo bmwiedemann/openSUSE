@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 15 05:38:58 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.56.0:
+  * * : update the api
+  * deps: require google-auth 1.19.0 (#1824) (7f478ae)
+  * deps: require python 3.7+
+  * test: Switch to unittest.mock
+- Refresh patches.
+
+-------------------------------------------------------------------
 Thu Apr 14 19:30:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.44.0
