@@ -24,7 +24,7 @@
 %define ca_bundle %{_localstatedir}/lib/ca-certificates/ca-bundle.pem
 
 Name:           godot
-Version:        3.4.5
+Version:        3.5
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -47,10 +47,8 @@ BuildRequires:  scons
 BuildRequires:  update-desktop-files
 BuildRequires:  yasm-devel
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(libpcre2-32)
-BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libwebp)
@@ -67,15 +65,29 @@ BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
-BuildRequires:  pkgconfig(zlib)
+
 %if 0%{?suse_version} > 1500
 # Does not work currently:
 # BuildRequires:  embree-devel-static >= 3.13.0
+
+# https://github.com/godotengine/godot/issues/64090 :
+#   unbundled freetype needs to be build with brotli decompression support
+#   to load build in WOFF2 editor fonts since godot version 3.5.
+# This was added according to
+#   https://build.opensuse.org/package/view_file/M17N/freetype2/freetype2.changes
+#   in freetype2 version 2.10.2
+# By default this seems to be currently only available in Tumbleweed (v2.12.1).
+# As of 20220808 Leap 15.2, .3 and .4 report freetype2 version as 2.10.1
+BuildRequires:  pkgconfig(freetype2) >= 2.10.2
+# Using bundled freetype2 throws build errors, if
+#   we don't use bundled libpng and zlib as well.
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig(bullet) >= 2.90
 BuildRequires:  pkgconfig(libwslay)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(miniupnpc)
+BuildRequires:  pkgconfig(zlib)
 %else
 %if 0%{?is_opensuse}
 # SLES seems not to have wslay and miniupnpc
@@ -110,9 +122,10 @@ Provides:       bundled(enet) = 1.3.17
 Provides:       bundled(minizip) = 1.2.12
 
 Provides:       bundled(FastLZ)
+Provides:       bundled(RVO2-3D)
 Provides:       bundled(Tangent_Space_Normal_Maps)
+Provides:       bundled(brotli)
 Provides:       bundled(cvtt)
-Provides:       bundled(easing)
 Provides:       bundled(etc2comp)
 Provides:       bundled(glad)
 Provides:       bundled(google-droid-fonts)
@@ -150,8 +163,12 @@ Provides:       bundled(embree) = 3.13.0
 
 %if 0%{?suse_version} > 1500
 %else
-Provides:       bundled(bullet) = 3.17
+Provides:       bundled(bullet) = 3.24
+# see comments for freetype2, libpng and zlib Factory BuildRequires
+Provides:       bundled(freetype2)
+Provides:       bundled(libpng)
 Provides:       bundled(libzstd)
+Provides:       bundled(zlib)
 %if 0%{?sle_version} < 150200
 Provides:       bundled(mbedtls) = 2.18.1
 %endif
@@ -260,8 +277,8 @@ sed -i '$s/_complete_godot_bash godot/_complete_godot_bash godot-server/' misc/d
 
 %build
 # Configuring build to use some distribution libraries
-unbundle_libs=('certs' 'freetype' 'libogg' 'libpng' 'libtheora' 'libvorbis' \
-               'libwebp' 'opus' 'pcre2' 'zlib')
+unbundle_libs=('certs' 'libogg' 'libtheora' 'libvorbis' \
+               'libwebp' 'opus' 'pcre2')
 
 # Adding distribution name to build name
 %if 0%{?suse_version}
@@ -276,7 +293,7 @@ unbundle_libs=('certs' 'freetype' 'libogg' 'libpng' 'libtheora' 'libvorbis' \
 
 # Unbundle more libs for Tumbleweed
 %if %{suse_version} > 1500
-unbundle_libs+=('bullet' 'mbedtls' 'zstd')
+unbundle_libs+=('bullet' 'freetype' 'libpng' 'mbedtls' 'zlib' 'zstd')
 %else
 # Unbundle more libs for coming Leap
 %if 0%{?sle_version} >= 150200 && 0%{?is_opensuse}

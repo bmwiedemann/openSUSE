@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sat Aug 6 12:00:00 UTC 2022 - cunix@mail.de
+
+- Update to 3.5
+
+  Added:
+  * NavigationServer with obstacle avoidance
+  * Physics interpolation in 3D
+  * SceneTreeTween
+  * Time singleton
+  * Label3D node and Sprite3D material render priority
+  * Scene unique nodes
+  * FlowContainer
+  * Asynchronous shader compilation and caching
+  * OccluderShapePolygon
+  * "material_overlay" property for MeshInstance
+  * Transparent background Viewports with post processing effects
+  * Changing directional shadows at runtime
+  * Setting visibility for CanvasLayer
+  * push, pull, fetch and improved diff view to VCS UI
+  * "global_translation" and "global_rotation"` to Spatial
+  * Option to paste animation as duplicate
+  * Configuring loop mode on WAV import
+  * Pinning property values and Consistent property defaults
+  * Deep comparison of Array and Dictionary
+  * methods "OS.is_process_running()", "OS.crash()", "OS.has_clipboard()",
+    "OS.get_processor_name()", "OS.get_screen_refresh_rate()",
+    "OS.move_to_trash()", "Image.fill_rect()", "String.get_slice()",
+    "String.join()", "Dictionary.merge()"
+  * Search methods for PoolArrays: "has()", "count()", "find()", "rfind()"
+  * Option to keep or skip carriage return (CR) in "File.get_as_text()"
+  * GradientTexture2D
+  * Signal to notify when children nodes enter or exit tree
+  * Alt + Mouse wheel to adjust FOV in the 3D editor viewport
+  * Make overridden properties link to parent definition
+  * drag and drop for NodePaths
+  * drag and drop to TextEdit, LineEdit, RichTextLabel
+  * drag start/end signals for Slider
+  * Option to make selection unique to TextEdit, LineEdit, RichTextLabel
+  * alignment options to Button icons
+  * WOFF2 font support and brotli decoder
+  * RichTextLabel: "deselect()" and "get_selected_text()" methods
+  * Binary MO translation file support
+  * Proxy support for HTTPClient and the editor
+  * "set_extra_headers()" to WebSocketServer
+  * Support for primary clipboard
+  * Viewport property to use full floating-point precision in HDR
+  * Saving multiple Images in BakedLightmap
+  * "max_distance" for VisibilityNotifier
+  * "VERTEX_ID" and "INSTANCE_ID" to user created shaders
+  * Random initial color feature for all Particles nodes
+
+  Changed:
+  * Create onready variables when dropping nodes and holding Ctrl
+  * Don't switch to 2D/3D viewports when selecting nodes while in Script Editor
+  * Re-enable input accumulation disabled by error in 3.4
+  * Navigation and Navigation2D nodes were kept for compatibility but are now
+    deprecated. Their functionality is replaced by the NavigationServer
+    and Navigation2DServer.
+  * WebSocket hostname resolution non-blocking
+  * Use application name as PulseAudio device name
+
+  And much more:
+  https://downloads.tuxfamily.org/godotengine/3.5/Godot_v3.5-stable_changelog_chrono.txt
+
+- "linker_pie_flag.patch" rebased
+
+- Use bundled freetype, libpng and zlib for non-Tumbleweed builds.
+
+-------------------------------------------------------------------
 Tue Aug 2 12:00:00 UTC 2022 - cunix@mail.de
 
 - Update to 3.4.5
