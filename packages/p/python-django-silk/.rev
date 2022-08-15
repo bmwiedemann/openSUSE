@@ -100,4 +100,27 @@
     <comment></comment>
     <requestid>976558</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2ec9dfbad6fe4b7aee0b97c4b1b8a48b</srcmd5>
+    <version>5.0.1</version>
+    <time>1660586313</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.1:
+  * Add jquery UI 1.13.1 images and fix collectstatic
+  * Drop support for Django 2.2 (EOL) (#567)
+  * Added silk_request_garbage_collect command for out-of-band garbage
+    collection.
+  * Switch 'Apply' and 'Clear all filters' ordering
+  * Make filters on Requests tab more visible
+  * Add small margin for filter selects
+  * Add 'Clear all filters' button
+  * Add message when there are no requests to display
+  * Making the error logging more accurate and explicit
+  * Fixing #530 - Adding support for SILKY_EXPLAIN_FLAGS
+  * Remove unused js compilation pipeline (#561) 
+- Add patch remove-contextlib2.patch:
+  * Remove use of contextlib2.
+- No longer skip Python 3.6.</comment>
+    <requestid>995130</requestid>
+  </revision>
 </revisionlist>

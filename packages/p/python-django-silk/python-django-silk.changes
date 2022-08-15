@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 12 04:43:45 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0.1:
+  * Add jquery UI 1.13.1 images and fix collectstatic
+  * Drop support for Django 2.2 (EOL) (#567)
+  * Added silk_request_garbage_collect command for out-of-band garbage
+    collection.
+  * Switch 'Apply' and 'Clear all filters' ordering
+  * Make filters on Requests tab more visible
+  * Add small margin for filter selects
+  * Add 'Clear all filters' button
+  * Add message when there are no requests to display
+  * Making the error logging more accurate and explicit
+  * Fixing #530 - Adding support for SILKY_EXPLAIN_FLAGS
+  * Remove unused js compilation pipeline (#561) 
+- Add patch remove-contextlib2.patch:
+  * Remove use of contextlib2.
+- No longer skip Python 3.6.
+
+-------------------------------------------------------------------
 Thu May 12 06:39:30 UTC 2022 - pgajdos@suse.com
 
 - version update to 4.3.0

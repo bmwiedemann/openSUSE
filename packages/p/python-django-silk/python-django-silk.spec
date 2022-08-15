@@ -17,20 +17,21 @@
 
 
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-django-silk
-Version:        4.3.0
+Version:        5.0.1
 Release:        0
 Summary:        Profiling for the Django Framework
 License:        MIT
 URL:            https://github.com/jazzband/django-silk
 Source:         https://files.pythonhosted.org/packages/source/d/django-silk/django-silk-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#jazzband/django-silk#590
+Patch0:         remove-contextlib2.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.2
+Requires:       python-Django >= 3.2
 Requires:       python-Jinja2 >= 2.8
 Requires:       python-Pillow >= 3.2
 Requires:       python-Pygments >= 2.0
@@ -42,11 +43,10 @@ Requires:       python-requests >= 2.10
 Requires:       python-sqlparse >= 0.1.19
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module Jinja2 >= 2.8}
 BuildRequires:  %{python_module Pillow >= 3.2}
 BuildRequires:  %{python_module autopep8 >= 1.2.1}
-BuildRequires:  %{python_module contextlib2 >= 0.5.5}
 BuildRequires:  %{python_module factory_boy >= 2.8.1}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module gprof2dot >= 2017.09.19}
@@ -57,7 +57,6 @@ BuildRequires:  %{python_module python-dateutil >= 2.4}
 BuildRequires:  %{python_module pytz > 2014.2}
 BuildRequires:  %{python_module requests >= 2.10}
 BuildRequires:  %{python_module simplejson >= 3.13.2}
-BuildRequires:  %{python_module six >= 1.11.0}
 BuildRequires:  %{python_module sqlparse >= 0.1.19}
 # /SECTION
 %python_subpackages
