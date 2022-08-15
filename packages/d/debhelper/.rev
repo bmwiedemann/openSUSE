@@ -91,4 +91,17 @@ Resubmit without Source URL</comment>
     <comment>- Update to version 13.8</comment>
     <requestid>993111</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>735437940997d321180bae0808b73488</srcmd5>
+    <version>13.9</version>
+    <time>1660586316</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.9
+   * d/control: Provide dh-sequence-installsysusers.
+   * debhelper.pod: Add missing word &quot;variables&quot;.
+   * Dh_Lib.pm: Fix in addsubstvar where a value was added when
+     it should not have been.  (Closes: #1015263)
+</comment>
+    <requestid>995135</requestid>
+  </revision>
 </revisionlist>

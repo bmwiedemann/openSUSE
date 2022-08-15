@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 15 09:02:09 UTC 2022 - Jan Baier <jbaier@suse.com>
+
+- Update to version 13.9
+   * d/control: Provide dh-sequence-installsysusers.
+   * debhelper.pod: Add missing word "variables".
+   * Dh_Lib.pm: Fix in addsubstvar where a value was added when
+     it should not have been.  (Closes: #1015263)
+
+-------------------------------------------------------------------
 Thu Aug  4 16:44:48 UTC 2022 - Jan Baier <jbaier@suse.com>
 
 - Update to version 13.8
