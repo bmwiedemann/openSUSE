@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Aug 12 20:06:23 UTC 2022 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 5.19
+  * Changes in behaviour
+    * The "(deleted)" marker for unlinked paths of file descriptors is now printed
+      outside angle brackets;
+  * Improvements
+    * Implemented printing of Unix socket sun_path field's SELinux context.
+    * Implemented decoding of SO_TXREHASH socket option.
+    * Implemented decoding of IFLA_TSO_MAX_SIZE, IFLA_TSO_MAX_SEGS,
+      NDA_FDB_EXT_ATTRS, NDA_FLAGS_EXT, NDA_NDM_FLAGS_MASK,
+      and NDA_NDM_STATE_MASK netlink attributes.
+    * Improved decoding of INET_DIAG_LOCALS, INET_DIAG_MD5SIG, INET_DIAG_PEERS,
+      INET_DIAG_PROTOCOL, INET_DIAG_REQ_PROTOCOL, INET_DIAG_SHUTDOWN,
+      INET_DIAG_SK_BPF_STORAGES, INET_DIAG_SOCKOPT, and INET_DIAG_ULP_INFO
+      NETLINK_SOCK_DIAG netlink attributes.
+    * Enhanced decoding of arch_prctl and prctl syscalls.
+    * Enhanced siginfo_t decoding.
+    * Updated decoding of struct rtnl_link_stats64.
+    * Updated lists of DEVCONF_*, FAN_MARK_*, GPIO_V2_LINE_FLAG_*, IORING_*,
+      KEXEC_*, LANDLOCK_*, NET_IPV4_CONF_*, NLM_F_*, NT_*, PR_*, SECCOMP_*,
+      UFFD_FEATURE_*, V4L2_CID_*, and V4L2_PIX_FMT_* constants.
+    * Updated lists of ioctl commands from Linux 5.19.
+
+-------------------------------------------------------------------
 Sat Jun 18 20:33:56 UTC 2022 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Update to strace 5.18
