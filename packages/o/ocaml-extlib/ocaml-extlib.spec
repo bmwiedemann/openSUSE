@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-extlib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 Andrew Psaltis <ampsaltis at gmail dot com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,19 +18,18 @@
 
 
 Name:           ocaml-extlib
-Version:        1.7.8
+Version:        1.7.9
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        OCaml ExtLib additions to the standard library
 License:        LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/extlib
-Source0:        %{name}-%{version}.tar.xz
-Patch0:         %{name}.patch
+Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-cppo
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210911
+BuildRequires:  ocaml-rpm-macros >= 20220707
 
 %description
 ExtLib is a project aiming at providing a complete - yet small -
@@ -41,13 +40,13 @@ or more safety (tail-recursive) but also to provide new modules which
 should be useful for the average OCaml programmer.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
@@ -64,9 +63,9 @@ dune_release_pkgs='extlib'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 %doc README.md
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog

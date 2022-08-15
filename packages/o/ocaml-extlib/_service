@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-extlib</param>
-    <param name="revision">079e7a8f58bd77990df46e3a27791f9853e072fe</param>
+    <param name="revision">cfb2d9632d117020f9c9bfdabea679ae9222a620</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ygrek/ocaml-extlib.git</param>

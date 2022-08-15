@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  2 02:02:02 UTC 2022 - ohering@suse.de
+
+- Update to version 1.7.9
+  * Add support for OCaml 5.0
+  * Exclude unzip and base64 from build
+- remove obsolete ocaml-extlib.patch
+
+-------------------------------------------------------------------
 Sat Sep 11 12:34:56 UTC 2021 - ohering@suse.de
 
 - Require current ocaml-rpm-macros
