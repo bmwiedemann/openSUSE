@@ -1,7 +1,7 @@
 #
 # spec file for package python-msrest
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,17 +21,19 @@
 %define skip_python2 1
 %endif
 Name:           python-msrest
-Version:        0.6.21
+Version:        0.7.1
 Release:        0
 Summary:        AutoRest swagger generator Python client runtime
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/msrest
-Source:         https://files.pythonhosted.org/packages/source/m/msrest/msrest-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/m/msrest/msrest-%{version}.zip
 Source1:        LICENSE.md
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  unzip
+Requires:       python-azure-core >= 1.24.0
 Requires:       python-certifi >= 2017.4.17
 Requires:       python-isodate >= 0.6.0
 Requires:       python-requests < 3.00
