@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Aug 14 15:29:02 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.13.2
+  * Add Linux mips64el architecture support
+    gh#PyO3/maturin#1023
+  * Add Linux mipsel architecture support
+    gh#PyO3/maturin#1024
+  * Add Linux 32-bit powerpc architecture support
+    gh#PyO3/maturin#1026
+  * Add Linux sparc64 architecture support
+    gh#PyO3/maturin#1027
+  * Bump anyhow from 1.0.58 to 1.0.59
+    gh#PyO3/maturin#1031
+  * Bump serde from 1.0.140 to 1.0.141
+    gh#PyO3/maturin#1032
+  * Bump clap from 3.2.15 to 3.2.16
+    gh#PyO3/maturin#1033
+  * Bump tracing from 0.1.35 to 0.1.36
+    gh#PyO3/maturin#1035
+  * Bump dialoguer from 0.10.1 to 0.10.2
+    gh#PyO3/maturin#1034
+  * Add PEP 440 local version identifier support
+    gh#PyO3/maturin#1037
+  * Fix path search upon python3 -m maturin
+    gh#PyO3/maturin#1038
+  * Update cargo-zigbuild to 0.12.0
+    gh#PyO3/maturin#1042
+  * Fix inconsistent Cargo.toml and pyproject.toml path handling
+    gh#PyO3/maturin#1043
+  * Clarify sdist build error due to missing pyproject.toml
+    gh#PyO3/maturin#1045
+  * Find python module next to pyproject.toml if pyproject.toml
+    exists
+    gh#PyO3/maturin#1044
+  * Add python-source option to [tool.maturin] section of
+    pyproject.toml
+    gh#PyO3/maturin#1046
+  * Deprecate support for specifying python metadata in Cargo.toml
+    gh#PyO3/maturin#1048
+  * Change python-source to be relative to the file specifies it
+    gh#PyO3/maturin#1049
+  * Change data to be relative to the file specifies it
+    gh#PyO3/maturin#1051
+  * Update Pyodide to 0.21.0
+    gh#PyO3/maturin#1056
+  * Find pyproject.toml in parent directories of Cargo.toml
+    gh#PyO3/maturin#1054
+  * Deprecate manylinux2010 support
+    gh#PyO3/maturin#858
+
+-------------------------------------------------------------------
 Wed Jul 27 01:09:20 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to v0.13.1
