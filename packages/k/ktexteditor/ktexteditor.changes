@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Aug  7 22:27:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * fix crash (kde#457392)
+  * Pass parent widget to print preview dialog
+  * fix crash in insertText
+  * Make views for read-only themes read-only instead of disabling them
+  * Cleanup: Remove unused members from KateStyleTreeWidget
+  * Cleanup: use switch in defaultStyleName
+  * Make defaultStyleCount reusable
+  * Silence compiler warning when compiling without KAUTH
+  * avoid crash on caret drawing if no view (kde#456508)
+  * avoid accessing view pointer during printing (kde#456508)
+  * remove unused library
+
+-------------------------------------------------------------------
 Sun Jul  3 11:56:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.96.0
