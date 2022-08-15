@@ -4518,4 +4518,18 @@
 - update staging to 7.14 release</comment>
     <requestid>991814</requestid>
   </revision>
+  <revision rev="384" vrev="1">
+    <srcmd5>7d8a2c81b3343de421cd815ec50c01eb</srcmd5>
+    <version>7.15</version>
+    <time>1660586288</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.15 development release
+  - Command lists in Direct2D.
+  - RSA encryption.
+  - Initial Wow64 thunking in WIN32U.
+  - Optional support for colors in test output.
+  - Various bug fixes.
+- update staging to 7.15 release</comment>
+    <requestid>995034</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 14 12:18:56 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.15 development release
+  - Command lists in Direct2D.
+  - RSA encryption.
+  - Initial Wow64 thunking in WIN32U.
+  - Optional support for colors in test output.
+  - Various bug fixes.
+- update staging to 7.15 release
+
+-------------------------------------------------------------------
 Sat Jul 30 13:53:17 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.14 development release
