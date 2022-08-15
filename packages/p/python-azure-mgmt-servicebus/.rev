@@ -103,4 +103,15 @@
     <comment></comment>
     <requestid>994464</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>79bb03f4595c55767f6d23feddab3cf7</srcmd5>
+    <version>8.1.0</version>
+    <time>1660586328</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 8.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 995187 from glaubitz)</comment>
+    <requestid>995195</requestid>
+  </revision>
 </revisionlist>
