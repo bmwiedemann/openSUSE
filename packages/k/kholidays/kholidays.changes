@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug  7 22:27:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * Use non-deprecated API unconditionally everywhere
+  * Implement deprecated API by calling the new one
+  * Actually test things rather than just produce debug output
+  * Make rawHolidays() with category filter also work with seasonal holidays
+  * Actually implement HolidayRegion::rawHolidays()
+  * Actually include seasonal holidays in rawHolidaysWithAstroSeasons()
+  * Add methods to check for polar days/nights
+
+-------------------------------------------------------------------
 Sun Jul  3 11:55:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.96.0
