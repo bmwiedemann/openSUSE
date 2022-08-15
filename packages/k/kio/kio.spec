@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.96
+%define _tar_path 5.97
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio
-Version:        5.96.0
+Version:        5.97.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -257,7 +257,7 @@ export CXX=g++-10
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.KPasswdServer.xml
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.KSlaveLauncher.xml
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.kio.FileUndoManager.xml
-%{_kf5_sharedir}/kdevfiletemplates/templates/ioslave.tar.bz2
+%{_kf5_sharedir}/kdevfiletemplates/templates/kioworker.tar.bz2
 %{_kf5_includedir}/
 %{_kf5_libdir}/cmake/KF5KIO/
 %{_kf5_libdir}/libKF5KIOCore.so

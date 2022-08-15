@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug  7 22:27:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Too many changes since 5.96.0, only listing bugfixes:
+  * KRecentDocument: better prevent duplicate bookmark for same href (kde#456046)
+  * FileUndoManager: fix job description when undoing a batch-renaming (kde#437510)
+  * Fix crash in DropJob (kde#454747)
+  * Fix thumbnailer result for parent mime types being overwritten (kde#453480)
+  * KImageFilePreview: if no current preview, don't show last one on resize (kde#434912)
+
+-------------------------------------------------------------------
 Sun Jul  3 11:56:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.96.0
