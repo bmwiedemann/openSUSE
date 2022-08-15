@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug  7 22:27:42 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * [KMessageDialog] Emit notification sound just like KMessageBox
+  * Make OK button configurable in KMessageBox::error/detailedError
+  * Deprecate KMessage*::sorry
+  * Remove declaration of unimplemented sorryWId(buttonOk) overload
+  * Deprecate unsupported & unused KMessageBox::PlainCaption flag
+  * Deprecate KMessageBox::about()
+  * Add edit-clear-history icon to the Clear List action
+
+-------------------------------------------------------------------
 Sun Jul  3 11:56:12 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.96.0
