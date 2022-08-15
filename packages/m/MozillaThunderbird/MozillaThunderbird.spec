@@ -207,6 +207,7 @@ Patch20:        mozilla-bmo531915.patch
 Patch21:        one_swizzle_to_rule_them_all.patch
 Patch22:        svg-rendering.patch
 Patch23:        mozilla-newer-cbindgen.patch
+Patch24:        mozilla-glibc236.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh
@@ -296,6 +297,7 @@ fi
 %patch21 -p1
 %patch22 -p1
 %patch23 -p1
+%patch24 -p1
 %endif
 
 %build
