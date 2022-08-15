@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug  7 22:27:43 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * [KShortcutsDialog] Make it possible to reload shortcut schemes
+  * [KShortcutsDialog] Make it possible to add a custom edit action
+  * [KShortcutSchemesEditor] Fix bug introduced by refactoring in commit de0790fe
+  * Fix crash of KMix in Legacy Tray
+  * [KShortcutsDialog] Add icons for actions
+  * KKeySequenceWidget: don't use a QHash to hold a few elements
+
+-------------------------------------------------------------------
 Sun Jul  3 11:56:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.96.0
