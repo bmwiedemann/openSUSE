@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           jira-cli
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        CLI tool for Atlassian JIRA inspired by the Github CLI tool
 License:        MIT

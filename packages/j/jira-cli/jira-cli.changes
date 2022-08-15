@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Aug 14 16:00:16 UTC 2022 - chrisbcoutinho@gmail.com
+
+- Update to version 1.1.0:
+  * fix: Flickering issue (#436)
+  * chore(doc): Add resources section
+  * Add open collective
+  * Add FUNDING.yml
+  * dev: Upgrade jira to 8.22.1
+  * chore(doc): Add missing articles (#423)
+  * ehc: Increase max col width + some cleanup (#427)
+  * fix(minor): Use pointer receiver to avoid heavy copying (#426)
+  * chore: Remove deprecated ioutil usage (#422)
+  * chore: s/\"%s\"/%q/g (#421)
+  * feat: Make selection highlight customizable (#419)
+  * fix: Issue with insecure TLS config (#413)
+  * fix: Remove dead code in comment add (#411)
+  * feat: Ability to add worklog (#410)
+  * fix: Issue with default assignee and unassign from tui (#405)
+  * doc: Add instructions for docker
+
+-------------------------------------------------------------------
 Wed Jul 06 01:23:51 UTC 2022 - jkowalczyk@suse.com
 
 - Initial package version 1.0.0:
