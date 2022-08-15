@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-lxqt
-Version:        20170319
+Version:        20220812
 Release:        0
 Summary:        Patterns for Installation (LXQt)
 License:        MIT
@@ -38,6 +38,7 @@ This particular package contains the LXQt patterns.
 
 
 ################################################################################
+
 %package lxqt
 %pattern_graphicalenvironments
 Summary:        LXQt Desktop Environment
@@ -92,9 +93,9 @@ Recommends:     pulseaudio-utils
 
 #
 Recommends:     openbox
-Recommends:     lightdm
 Recommends:     obconf
 Recommends:     qupzilla
+Recommends:     sddm
 Recommends:     xdg-user-dirs
 Recommends:     xdg-utils
 Recommends:     xorg-x11-essentials
