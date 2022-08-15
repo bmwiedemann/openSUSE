@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug  7 22:27:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * Add a clang-format commit to blame ignore file
+  * Minor code optimisation
+  * GlobalShortcutsRegistry: don't use a QHash for a couple of elements
+  * General code cleanup
+
+-------------------------------------------------------------------
 Sun Jul  3 11:55:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.96.0
