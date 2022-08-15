@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 15 03:51:33 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.10.0:
+  * add bun module.
+  * Add starship preset command.
+  * Add support for blink, hidden, and strikethrough styles.
+  * Add the ability to have some file extensions prevent a module
+    from triggering.
+  * k8s: Add folder detection to the k8s module.
+  * package: support cargo workspace versions.
+  * status: Add pipestatus_segment_format option to status module.
+  * aws: support official AWS_SHARED_CREDENTIALS_FILE variable.
+  * timings: count time spent on custom on 'when' command failure.
+  * pulumi: allow disabling upwards discovery.
+  
+-------------------------------------------------------------------
 Fri Jul  8 02:51:04 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Remove dependency on unmaintained rust-packaging

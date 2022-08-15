@@ -17,7 +17,7 @@
 
 
 Name:           starship
-Version:        1.9.1
+Version:        1.10.0
 Release:        0
 Summary:        The minimal, blazing-fast, and infinitely customizable prompt for any shell
 License:        ISC
@@ -26,6 +26,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
+BuildRequires:  cmake
 BuildRequires:  pkgconfig(openssl)
 
 %description
