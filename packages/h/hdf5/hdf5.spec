@@ -34,9 +34,9 @@
 
 %define use_sz2 0
 
-%define vers 1.10.8
-%define _vers 1_10_8
-%define short_ver 1.10
+%define short_ver 1.12
+%define vers %{short_ver}.2
+%define _vers %( echo %{vers} | tr '.' '_' )
 %define src_ver %{version}
 %define pname hdf5
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -436,8 +436,6 @@ Patch6:         hdf5-Remove-timestamps-from-binaries.patch
 # Could be ported but it's unknown if it's still needed
 Patch7:         hdf5-mpi.patch
 Patch8:         Disable-phdf5-tests.patch
-# boo#1179521, boo#1196682, gh#HDFGroup/hdf5#1494
-Patch9:         hdf5-1.10.8-pr1494-fix-release-check-version.patch
 # Imported from Fedora, strip flags from h5cc wrapper
 Patch10:        hdf5-wrappers.patch
 BuildRequires:  fdupes
@@ -680,7 +678,6 @@ library packages.
 %patch6 -p1
 # %%patch7 -p1
 %patch8 -p1
-%patch9 -p1
 %patch10 -p1
 
 %if %{without hpc}
@@ -775,7 +772,8 @@ export MPICXX=mpicxx
 %if 0%{?use_sz2}
   --with-szlib \
 %endif
-  --with-pthread
+  --with-pthread \
+  %{nil}
 
 make V=1 %{?_smp_mflags}
 
@@ -941,15 +939,13 @@ export HDF5_Make_Ignore=yes
 %{my_bindir}/h5repart
 %{my_bindir}/h5stat
 %{my_bindir}/h5unjam
-%{my_bindir}/mirror_server
-%{my_bindir}/mirror_server_stop
 
 %files -n %{libname -s %{sonum}}
-%doc ACKNOWLEDGMENTS README.txt
+%doc ACKNOWLEDGMENTS README.md
 %mylicense COPYING
 ##
 %if %{without mpi}
-%doc release_docs/HISTORY-1_8_0-1_10_0.txt
+%doc release_docs/HISTORY-1_10_0-1_12_0.txt
 %doc release_docs/RELEASE.txt
 %endif
 %defattr(0755,root,root)
@@ -1000,9 +996,9 @@ export HDF5_Make_Ignore=yes
 %files devel
 ##
 %{?with_hpc:%dir %{my_incdir}}
-%doc release_docs/HISTORY-1_0-1_8_0_rc3.txt
+%doc release_docs/HISTORY-1_10_0-1_12_0.txt
 %doc release_docs/RELEASE.txt
-%doc ACKNOWLEDGMENTS README.txt
+%doc ACKNOWLEDGMENTS README.md
 %{?with_hpc:%{hpc_pkgconfig_file -n hdf5}}
 %{?with_hpc:%{hpc_pkgconfig_file -N -n hdf5_hl}}
 %{?with_hpc:%{hpc_pkgconfig_file -N -n hdf5_fortran}}

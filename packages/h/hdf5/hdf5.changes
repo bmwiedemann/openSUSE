@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 27 23:42:38 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.12.2:
+  See <https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.12/hdf5-1.12.2/src/hdf5-1.12.2-RELEASE.txt>.
+- Minor re-base of existing patches to apply cleanly:
+  * hdf5-LD_LIBRARY_PATH.patch
+  * hdf5-1.8.11-abort_unknown_host_config.patch
+  * hdf5-Remove-timestamps-from-binaries.patch
+  * hdf5-mpi.patch
+  * Disable-phdf5-tests.patch
+- Drop upstreamed patch:
+  hdf5-1.10.8-pr1494-fix-release-check-version.patch.
+
+-------------------------------------------------------------------
 Wed May  4 06:39:53 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Security Fix:

@@ -769,4 +769,14 @@ fixed baselibs.conf compared to previous version</comment>
     <comment>- set higher constraints for succesfull mpich tests (boo#1133222)</comment>
     <requestid>977433</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>5731641fa34068cff853f67b38dcca6d</srcmd5>
+    <version>1.12.2</version>
+    <time>1660586301</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12.2.
+- Minor re-base of existing patches to apply cleanly.
+- Drop upstreamed patch: hdf5-1.10.8-pr1494-fix-release-check-version.patch.</comment>
+    <requestid>995074</requestid>
+  </revision>
 </revisionlist>
