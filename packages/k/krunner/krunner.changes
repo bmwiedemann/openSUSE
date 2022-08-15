@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug  7 22:27:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * Add note about alternative to Plasma::RunnerContext::setSingleRunnerQueryMode
+  * Fix TODO being shown in generated docs
+  * templates/runnerpython: Add hint for multiline property
+  * Fix Qt6 build
+
+-------------------------------------------------------------------
 Sun Jul  3 11:56:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.96.0
