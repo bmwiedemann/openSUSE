@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-purview-catalog
-Version:        1.0.0b3
+Version:        1.0.0b4
 Release:        0
 Summary:        Microsoft Azure Purview Catalog Client Library for Python
 License:        MIT
@@ -36,7 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.20.1
+Requires:       python-azure-core >= 1.23.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-purview-nspkg >= 2.0.0
 Requires:       python-msrest >= 0.6.21
