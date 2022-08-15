@@ -349,4 +349,41 @@
     <comment></comment>
     <requestid>972583</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6825c8ee35f1233c4e737aeca6de7be0</srcmd5>
+    <version>1.7.4</version>
+    <time>1660586309</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.4:
+  * [Doc] Add -config to -help output. (#1665)
+  * [Dmenu] Fix multi-select, use text as indicator.
+  * [filebrowser] Fix building on Mac. (#1662,#1663)
+  * [textbox] Implement text-transform option. (#1010)
+  * [script] Add new-selection (#1064).
+  * [Script] Add keep-selection flag that keeps the current selection. (#1064)
+  * [Debug] Add '-log' flag to redirect debug output to a file.
+  * [XCB] Try to deduce rotated monitors.
+  * [Doc] Add rofi-dmenu to 'See also' in rofi(1).
+  * [Options] Mark offset(s) as deprecated.
+  * [Modes] Support loading multiple icon sizes.
+  * [View] Add textbox|icon-current-entry widget.
+  * [Doc] Add ascii manpage to rofi-script(5).
+  * [Script] Print user-scripts in -h
+  * [Script] Look into $XDG_CONFIG_HOME/rofi/scripts/ for user scripts.
+  * [Dmenu|Script] Allow (some) theme modification from script/dmenu.
+  * [Textbox] Fix some pango alignment.
+  * [FileBrowser] Bind 'kb-accept-custom-alt' to directory up.
+  * [Build] Add desktop files as per complaint (rofi theme selector and rofi itself).
+  * [Dmenu] Code cleanups.
+  * [Themes] Remove broken themes.
+  * [Modes] Allow fallback icon per mode. (#1633)
+  * [View] Fix broken anchoring behaviour. (#1630)
+  * [Rofi] Move error message on commandline to UI.
+  * [Listview] Option to hide listview elements when not filtered. (#1622,#1079)
+  * [DMenu] Speed up reading async in of large files from stdin.
+  * [FileBrowser] Make accept-alt open folder if selected.
+  * [Helper] Add XDG_DATA_DIRS to the theme search path. (#1619)
+  * [Doc] Split up manpages and extend them with examples.</comment>
+    <requestid>995115</requestid>
+  </revision>
 </revisionlist>

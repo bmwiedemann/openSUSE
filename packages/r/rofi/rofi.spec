@@ -17,7 +17,7 @@
 
 
 Name:           rofi
-Version:        1.7.3
+Version:        1.7.4
 Release:        0
 Summary:        A window switcher, run dialog and dmenu replacement
 License:        MIT
@@ -77,6 +77,11 @@ sed -i "s|%{_bindir}/env bash|/bin/bash|g" ./script/rofi-theme-selector
 %{_bindir}/rofi-theme-selector
 %dir %{_datadir}/rofi/
 %{_datadir}/rofi/themes/
+%{_datadir}/applications/rofi-theme-selector.desktop
+%{_datadir}/applications/rofi.desktop
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/apps
+%{_datadir}/icons/hicolor/apps/rofi.svg
 %{_mandir}/man1/rofi.1%{?ext_man}
 %{_mandir}/man1/rofi-sensible-terminal.1%{?ext_man}
 %{_mandir}/man1/rofi-theme-selector.1%{?ext_man}
@@ -84,6 +89,7 @@ sed -i "s|%{_bindir}/env bash|/bin/bash|g" ./script/rofi-theme-selector
 %{_mandir}/man5/rofi-script.5%{?ext_man}
 %{_mandir}/man5/rofi-dmenu.5%{?ext_man}
 %{_mandir}/man5/rofi-keys.5%{?ext_man}
+%{_mandir}/man5/rofi-debugging.5%{?ext_man}
 
 %files devel
 %{_includedir}/rofi/
