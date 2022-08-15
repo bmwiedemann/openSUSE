@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug  7 22:27:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * [kmoretools] Don't lowercase the desktop entry name (kde#417575)
+  * Fixup 6d889ae0: move newlines out of translated string
+  * Remove unneeded close button from window footer
+  * Add a "try again later" message for transient errors
+
+-------------------------------------------------------------------
 Sun Jul  3 11:56:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.96.0
