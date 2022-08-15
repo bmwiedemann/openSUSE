@@ -6154,4 +6154,40 @@ always built-in because vim has direct perl dependencies anyway.
   * Cannot build with small features.</comment>
     <requestid>994291</requestid>
   </revision>
+  <revision rev="318" vrev="1">
+    <srcmd5>f53f868385f9a3a4b3f1e0dfbf07e938</srcmd5>
+    <version>9.0.0203</version>
+    <time>1660586193</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.0203, fixes the following problems
+  * Textprop test with line2byte() fails on MS-Windows.
+  * Quarto files are not recognized.
+  * Extra space after virtual text when 'linebreak' is set.
+  * Virtual text prop highlight continues after truncation.
+  * Virtual text does not show if tehre is a text prop at same position. (Ben
+  Jackson)
+  * Virtual text without highlighting does not show. (Ben Jackson)
+  * Command line height changes when maximizing window height.
+  * Strange effects when using virtual text with &quot;text_align&quot; and non-zero
+  column. (Martin Tournoij)
+  * Invalid memory access for text prop without highlight.
+  * The way 'cmdheight' can be made zero is inconsistent.
+  * Messages test fails; window size incorrect when 'cmdheight' is made
+  smaller.
+  * Possible invalid memory access when 'cmdheight' is zero. (Martin Tournoij)
+  * Search and match highlgith interfere with virtual text highlight. (Ben
+  Jackson)
+  * Cursor displayed in wrong position after removing text prop. (Ben Jackson)
+  * Metafun files are not recogized.
+  * Finding value in list may require a for loop.
+  * Astro files are not detected.
+  * ml_get error when switching buffer in Visual mode.
+  * Cursor position wrong with two right-aligned virtual texts.
+  * cursor in a wrong positoin if 'wrap' is off and using two right aligned
+  text props in one line.
+  * CursorLine highlight overrules virtual text highlight.
+  * Code and help for indexof() is not ideal.
+  * Confusing variable name.</comment>
+    <requestid>995026</requestid>
+  </revision>
 </revisionlist>
