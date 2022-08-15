@@ -17,7 +17,7 @@
 
 
 Name:           ocserv
-Version:        1.1.3
+Version:        1.1.6
 Release:        0
 Summary:        OpenConnect VPN Server
 License:        GPL-2.0-only

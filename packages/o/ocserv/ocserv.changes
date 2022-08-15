@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Aug 14 14:11:34 UTC 2022 - Michael Du <duyizhaozj321@yahoo.com>
+
+- Update to version 1.1.6
+  * Fixed compatibility with clients on Windows ARM64.
+  * Added futex() to the accepted list of seccomp. 
+    It is required by Fedora 36’s libc.
+  * Work around change of returned error code in GnuTLS 3.7.3 
+    for gnutls_privkey_import_x509_raw().
+
+- Changes in version 1.1.5
+  * Fixed manpage output.
+
+- Changes in version 1.1.4
+  * Added newfstatat() and epoll_pwait() to the accepted list of 
+    seccomp calls. This improves compatibility with certain libcs 
+    and aarch64.
+  * Do not allow assigning the same IPv6 as tun device address and 
+    to the client. This allows using /127 as prefix (#430).
+
+-------------------------------------------------------------------
 Mon Jun 20 07:49:38 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - explicitly buildignore libevent-devel, which is pulled in by
