@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug  7 22:27:34 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * Remove notificationplugin service type
+  * Drop lib prefix when building for Windows (MinGW)
+  * use ksandbox instead of hardcoding sandbox detection
+
+-------------------------------------------------------------------
 Sun Jul  3 11:56:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.96.0
