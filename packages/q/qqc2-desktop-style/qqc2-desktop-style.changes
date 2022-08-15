@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Aug  7 22:27:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * Install style as a regular QML for Qt6
+  * ToolTip: Sync to PC3: Strip out ampersands
+  * ProgressBar,Slider: Adapt great precision to the harsh reality (kde#455339)
+  * Fix QQC2 MenuBar theme. (kde#456729)
+  * properly reset the cursorshape (kde#456911)
+  * Use QApplication::font with respective widget class
+  * Wrap checkbox label
+  * ToolTip: wrap text for long tooltips
+  * TextArea,TextField: Remove not referenced id from background style item
+  * TextField: Disable Undo for password fields, including its context menu
+  * Tests: Add manual test for progress bars and sliders
+  * Remove dynamic QQC2 version selection
+  * Clean up code of manual tests, add missing license headers
+  * Fix: url types (like icon.source) are QVariant without length property
+  * Nit: reformat long expressions
+  * Menu: Fix wrong pixel metric being requested for verticalPadding
+  * ProgressBar: Drop layout direction hack
+
+-------------------------------------------------------------------
 Sun Jul  3 11:56:18 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.96.0
