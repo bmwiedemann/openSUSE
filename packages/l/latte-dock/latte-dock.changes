@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug 11 03:23:49 UTC 2022 - Tranter Madi <trmdi@yandex.com>
+
+-  Remove unused keyring file
+
+-------------------------------------------------------------------
+Sun Jun 19 19:26:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 0.11.0~20220619T183501:
+  * support json files from indicators
+  * taks:provide single json metadata file
+  * replace deprecated cmake library
+
+-------------------------------------------------------------------
+Sun Jun 19 09:51:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to a git snapshot (48a60c6268):
+  * Better Plasma 5.25 compatibility
+  * Add -lang tarball explicitly
+
+-------------------------------------------------------------------
 Tue Jan 25 10:47:32 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 0.10.8

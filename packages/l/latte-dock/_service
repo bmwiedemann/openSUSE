@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+     <param name="scm">git</param>
+     <param name="filename">latte-dock</param>
+     <param name="url">https://invent.kde.org/plasma/latte-dock.git</param>
+     <param name="versionformat">0.11.0~%ci</param>
+     <param name="changesgenerate">enable</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

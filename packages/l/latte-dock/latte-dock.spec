@@ -20,22 +20,25 @@
 %global __requires_exclude qmlimport\\(org\\.kde\\.latte\\.private\\.app
 
 %bcond_without released
-%define kf5_version 5.48.0
+%define kf5_version 5.88.0
 Name:           latte-dock
-Version:        0.10.8
+Version:        0.11.0~20220619T183501
 Release:        0
 Summary:        Replacement Dock for Plasma Desktops
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://invent.kde.org/plasma/latte-dock
-Source0:        https://download.kde.org/stable/latte-dock/latte-dock-%{version}.tar.xz
-%if %{with released}
-Source1:        https://download.kde.org/stable/latte-dock/latte-dock-%{version}.tar.xz.sig
-Source2:        latte-dock.keyring
-%endif
+Source0:        latte-dock-%{version}.tar.xz
+# Temporarily using a git snapshot with -lang tarball
+Source1:        latte-dock-lang.tar.xz
+#%if %{with released}
+#Source1:        https://download.kde.org/stable/latte-dock/latte-dock-%{version}.tar.xz.sig
+#Source2:        latte-dock.keyring
+#%endif
 BuildRequires:  fdupes
 BuildRequires:  libSM-devel
 BuildRequires:  pkgconfig
+BuildRequires:  plasma-wayland-protocols
 BuildRequires:  cmake(KF5Activities) >= %{kf5_version}
 BuildRequires:  cmake(KF5Archive) >= %{kf5_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
@@ -60,6 +63,7 @@ BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5WaylandClient)
 BuildRequires:  cmake(Qt5X11Extras) >= 5.9.0
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-util)
@@ -75,7 +79,7 @@ It animates its contents by using a parabolic zoom effect and tries to be there 
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a 1
 
 %build
 %cmake_kf5 -d build
@@ -96,7 +100,6 @@ It animates its contents by using a parabolic zoom effect and tries to be there 
 %{_kf5_bindir}/%{name}
 %{_kf5_plasmadir}/
 %{_kf5_qmldir}/
-%{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/latte-indicator.desktop
 %{_kf5_sharedir}/dbus-1/interfaces/
 %{_kf5_notifydir}/
@@ -105,8 +108,9 @@ It animates its contents by using a parabolic zoom effect and tries to be there 
 %{_kf5_iconsdir}/breeze/
 %{_kf5_appstreamdir}/*.appdata.xml
 %{_kf5_applicationsdir}/org.kde.%{name}.desktop
-%{_kf5_plugindir}/plasma_containmentactions_lattecontextmenu.so
-%{_kf5_plugindir}/kpackage/packagestructure/latte_packagestructure_indicator.so
+%dir %{_kf5_plugindir}/plasma/containmentactions/
+%{_kf5_plugindir}/plasma/containmentactions/plasma_containmentactions_lattecontextmenu.so
+%{_kf5_plugindir}/kpackage/packagestructure/latte_indicator.so
 %{_kf5_sharedir}/latte/
 %{_kf5_knsrcfilesdir}/latte-indicators.knsrc
 %{_kf5_knsrcfilesdir}/latte-layouts.knsrc
