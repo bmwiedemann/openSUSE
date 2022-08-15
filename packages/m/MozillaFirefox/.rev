@@ -5752,4 +5752,12 @@
 - The --disable-elf-hack option only exists on ARM and X86</comment>
     <requestid>994312</requestid>
   </revision>
+  <revision rev="372" vrev="2">
+    <srcmd5>a910dd98c3b3c1d1e31a1a9535e03f26</srcmd5>
+    <version>103.0.2</version>
+    <time>1660586178</time>
+    <user>dimstar_suse</user>
+    <comment>- added mozilla-glibc236.patch (bmo#1782988, boo#1202323)</comment>
+    <requestid>994938</requestid>
+  </revision>
 </revisionlist>

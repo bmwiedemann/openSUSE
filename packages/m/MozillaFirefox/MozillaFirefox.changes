@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 13 06:25:20 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- added mozilla-glibc236.patch (bmo#1782988, boo#1202323)
+
+-------------------------------------------------------------------
 Tue Aug  9 08:46:29 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 103.0.2
