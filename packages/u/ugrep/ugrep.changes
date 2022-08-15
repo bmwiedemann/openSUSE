@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 15 07:24:24 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.9.1:
+  * make -r the default recursive search without following
+    symlinked directories
+  * Symlinked files are always searched on a search path, except
+    with option -p (--no-dereference)
+  * A fix for a minor issue with fuzzy matching when only allowing
+    substitutions
+
+-------------------------------------------------------------------
 Wed Jun 29 13:06:04 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.8.3:
