@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 14 22:37:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.08.14
+  * Merge youtube-dl upto commit d231b56
+
+-------------------------------------------------------------------
 Fri Aug 12 15:36:50 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Drop redundant runtime requirements
