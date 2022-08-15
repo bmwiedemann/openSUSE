@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 11 08:51:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream changes to fix build and tests:
+  * 0001-add-missing-header-time.h-to-src-timer.cpp.patch
+  * 0001-remove-timespan-unittest-which-is-prone-to-rounding-.patch
+  * 0001-fix-reading-time-zones-on-32-bit-systems.patch
+  * 0001-remove-range-check-in-serializationinfo.patch
+
+-------------------------------------------------------------------
 Wed Aug 11 15:26:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop --with-pic, as it has no effect with --disable-static.

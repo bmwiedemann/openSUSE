@@ -27,7 +27,11 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.tntnet.org/cxxtools.html
 Source0:        https://github.com/maekitalo/cxxtools/archive/V%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       cxxtools-rpmlintrc
-Patch1:         gcc11.patch
+Patch0:         gcc11.patch
+Patch1:         0001-add-missing-header-time.h-to-src-timer.cpp.patch
+Patch2:         0001-remove-timespan-unittest-which-is-prone-to-rounding-.patch
+Patch3:         0001-fix-reading-time-zones-on-32-bit-systems.patch
+Patch4:         0001-remove-range-check-in-serializationinfo.patch
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
