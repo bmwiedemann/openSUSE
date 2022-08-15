@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug  7 22:27:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * Try lower ECC levels if we exceed the maximum QR code content size
+  * prison-datamatrix unused local variable
+  * Support ZXing 1.4.0
+- Drop 0001-Support-ZXing-1.4.0.patch. Merged upstream
+
+-------------------------------------------------------------------
 Wed Jul 20 16:24:17 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix build with ZXing 1.4.0:
