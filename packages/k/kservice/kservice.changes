@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug  7 22:27:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * Add property def for X-Flatpak key
+  * Define HAVE_MMAP to 0 instead of undefining it (kde#456780)
+  * KSycocaDict: don't inherit from containers
+  * use ksandbox to determine if we are inside a flatpak
+
+-------------------------------------------------------------------
 Sun Jul  3 11:56:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.96.0
