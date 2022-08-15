@@ -149,6 +149,9 @@ rm -rf lib/jsoncpp lib/lua lib/gmp
 
 %build
 %cmake \
+%ifarch aarch64
+  -DCMAKE_CXX_FLAGS="%{optflags} -mbranch-protection=none" \
+%endif
   -DCUSTOM_DOCDIR="%{_docdir}/%{name}" \
   -DCUSTOM_LOCALEDIR="%{_datadir}/locale" \
   -DCUSTOM_SHAREDIR="%{_datadir}/%{name}" \
