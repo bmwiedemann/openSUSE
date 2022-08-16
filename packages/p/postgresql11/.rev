@@ -302,4 +302,15 @@ Upgrade to version 11.11:
   * https://www.postgresql.org/docs/11/release-11-16.html</comment>
     <requestid>977046</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7013236c3e76f45a0df1426ba335d5ab</srcmd5>
+    <version>11.17</version>
+    <time>1660662400</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 11.17:
+  * bsc#1202368, CVE-2022-2625: Extension scripts replace objects
+    not belonging to the extension.
+  * https://www.postgresql.org/docs/release/11.17/</comment>
+    <requestid>995182</requestid>
+  </revision>
 </revisionlist>
