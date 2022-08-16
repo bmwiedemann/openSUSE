@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 26 03:06:32 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.014
+   see /usr/share/doc/packages/perl-HTTP-CookieJar/Changes
+
+  0.014     2022-07-25 09:45:56-04:00 America/New_York
+      - No changes from 0.013
+  0.013     2022-07-17 10:13:20-04:00 America/New_York (TRIAL RELEASE)
+      [FIXED]
+      - Cookie last access time is updated when a cookie is retrieved; this has
+        no functional effect but is consistent with RFC 6265.
+
+-------------------------------------------------------------------
 Thu Jun 17 03:06:23 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.012
