@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 15 16:16:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.2.1
+  * Fix the python detection logic to try the fast method first
+- Release 0.2.0
+  * Allow provider to keep symlink even when resolve_symlinks is
+    True
+- Fix requirements
+
+-------------------------------------------------------------------
 Tue Jun 14 06:06:48 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial packaging for findpython 0.1.6. 
