@@ -18,7 +18,7 @@
 
 %define cpan_name Sereal-Encoder
 Name:           perl-Sereal-Encoder
-Version:        4.023
+Version:        4.025
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Binary serialization module for Perl (encoder part)
