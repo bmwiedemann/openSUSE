@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 16 08:43:47 UTC 2022 - cloud-devel@suse.de
+
+- update to version 9.0.0
+  - Drop python3.6/3.7 support in testing runtime
+  - Add Python3 zed unit tests
+  - Update master for stable/yoga
+
+-------------------------------------------------------------------
 Tue May 24 21:26:19 UTC 2022 - cloud-devel@suse.de
 
 - update to version 8.8.0
