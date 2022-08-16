@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 13 03:08:14 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.39
+   see /usr/share/doc/packages/perl-Curses/HISTORY
+
+  New in 1.39 (Released August 12, 2022)
+
+    Add #include <stdbool.h> to top of Curses.c to fix a conflict between the
+    Curses header files and Perl header files that causes a "loadable library
+    and perl binaries are mismatched" / handshake key failure when you try to
+    load the Perl module.
+
+-------------------------------------------------------------------
 Mon Aug  2 13:07:55 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.38:
