@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug  4 03:07:28 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.73
+   see /usr/share/doc/packages/perl-Net-SSH2/Changes
+
+  0.73  2022-08-03
+  	- Switch to -std=c11 because Perl uses thread_local now #58
+
+-------------------------------------------------------------------
 Wed Dec 23 03:08:27 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.72
