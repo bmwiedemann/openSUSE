@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Sun Aug 14 14:36:37 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 1.4.0:
+  * Remove pytest py3.11b2 workaround (#407)
+  * Fix CI (#410)
+  * Bump version
+  * Update GH actions (#406)
+  * Test docutils 0.18.1 (#402)
+  * Use node.findall if available (docutils 18.x) (#403)
+  * Add workaround for pytest failures on 3.11b2 (#404)
+  * Test prereleases of requirements (#395)
+  * Fix bug with version name (#400)
+  * Remove old warning filters (#398)
+  * Cleanup sphinx conf (#397)
+  * Update pre-commit (#396)
+  * Test on 3.11-dev (#375)
+  * Ignore black formatting (#394)
+  * Merge pull request #391 from jarrodmillman/black
+  * Use black formatter
+
+- changes from version 1.3.1:
+  * Update manifest (#388)
+  * Update doc requirements (#389)
+
+- changes from version 1.3.0:
+  * Update 1.3 release notes
+  * Update release process
+  * Require sphinx>3 (#385)
+  * Update tests + coverage config to rm warnings. (#383)
+  * MAINT: Dont import for version (#382)
+  * Runtime verification of sphinx and jinja2 versions (#381)
+  * DOC: fix broken link to built-in validation checks. (#379)
+  * Add pre-commit hook / linter (#374)
+  * Cleanup cruft (#371)
+  * Remove deprecated numpydoc_edit_link (#372)
+
+- changes from version 1.2.1:
+  * Update release notes
+  * Update year (#370)
+  * Upper bound jinja (#369)
+  * Use isgeneratorfunction to avoid overgenerating YD01 (#368)
+  * Fix AttributeError in underline length check (#363)
+  * Use consistent release tags (#361)
+  * Update release process
+
+- changes from version 1.2.0:
+  * Add 1.2 release notes (#359)
+  * Document release process (#357)
+  * Fix CI (#358)
+  * Use fstrings (#353)
+  * Require sphinx >= 1.8 (#352)
+  * Add badges (#354)
+  * Fix typos found by codespell (#343)
+  * Update deps (#350)
+  * Remove empty file (#351)
+  * Use setuptools instead of distutils (#349)
+  * Update supported Python versions (#348)
+  * Fix validation bug when parameter type is set of options. (#347)
+  * Escape newline in docstring. (#345)
+  * Avoid mutable default arguments (#342)
+  * Correctly validate parameters under the "Other Parameters" section (#337)
+  * Fix Warnings section in validate (#335)
+  * MAINT: Fix CircleCI (#336)
+  * Update install.rst (#332)
+  * MAINT: Python3 classes do not need to inherit from object (#325)
+  * FIX: Fix RTD
+  * DOC: Add headers to docstring sections to add link anchors (#320)
+  * Be explicit about leading * when documenting *args, **kwargs. (#310)
+  * Merge pull request #319 from larsoner/circle
+  * FIX: Missing links
+  * BUG: Fix navbar search pos
+  * MAINT: Make tinybuild
+  * MAINT: changes related to renaming default branch (#314)
+  * MAINT: use super() as described by PEP 3135 (#315)
+  * DOC: Switch docs to pydata-sphinx-theme (#313)
+  * DOC: Add section about validation via sphinx-build. (#312)
+  * ENH: Enable validation during sphinx-build process (#302)
+  * DOC: fix erroneous numpydoc_edit_link formatting (#309)
+  * document default values as part of the type spec (#289)
+  * Merge pull request #308 from rgommers/fix-missing-obj
+  * BUG: fix an incomplete check in `Reader._error_location`
+  * Merge pull request #295 from rossbar/xref_conf
+  * Merge pull request #272 from rossbar/maint/rm_codepath
+  * CI: Switch from travis to Github actions for tests (#307)
+  * Improve error messages for see also parsing (#306)
+  * Merge pull request #300 from WarrenWeckesser/long-see-also-entry
+  * Add a note to the docstring standard about long 'See Also' entries.
+  * Fix missing periods (#298)
+  * ALTERNATIVE: overload xref_ignore config value
+  * MAINT: minor refactoring in docscrape (#297)
+  * MAINT: pytest ignore doc directory. (#296)
+  * DOC: fix indentation error
+  * DOC: fix inaccuracy in validate docstring. (#294)
+  * DOC: document config value/kwarg
+  * Missed argument rename
+  * Add config value to control behavior
+  * WIP: kwarg to ignore unknown terms in make_xref.
+  * DOC: fix inaccuracy in validate docstring.
+  * Fix param parsing. (#286)
+  * MAINT: Updates related to xref (#292)
+  * BUG: Properly parse See Also when summary on first line. (#283)
+  * fix spliting of parameter lines. (#279)
+  * ENH: Better warning for sections. (#278)
+  * BUG: fix role regex.
+  * MAINT: Tick version
+
+-------------------------------------------------------------------
 Tue Feb 23 20:31:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.1.0

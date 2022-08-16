@@ -1,7 +1,7 @@
 #
 # spec file for package python-numpydoc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-numpydoc
-Version:        1.1.0
+Version:        1.4.0
 Release:        0
 Summary:        Sphinx extension to support docstrings in Numpy format
 License:        BSD-3-Clause
@@ -28,13 +28,13 @@ URL:            https://github.com/numpy/numpydoc
 Source:         https://files.pythonhosted.org/packages/source/n/numpydoc/numpydoc-%{version}.tar.gz
 # https://docs.python.org/3/objects.inv (changes from time to time, accessed 2021-02-23)
 Source1:        python-objects.inv
-BuildRequires:  %{python_module Jinja2 >= 2.3}
-BuildRequires:  %{python_module Sphinx >= 1.6.}
+BuildRequires:  %{python_module Jinja2 >= 2.10}
+BuildRequires:  %{python_module Sphinx >= 3.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Jinja2 >= 2.3
-Requires:       python-Sphinx >= 1.6.5
+Requires:       python-Jinja2 >= 2.10
+Requires:       python-Sphinx >= 3.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -53,7 +53,7 @@ sed -i '1 {/env python/ d}' numpydoc/validate.py
 # don't check coverage
 sed -i 's/--cov.*$//' setup.cfg
 # provide the python doc inventory locally
-sed -i "\|https://docs.python.org/3| s|None|'%SOURCE1'|" numpydoc/tests/tinybuild/conf.py
+sed -i "\|https://docs.python.org/3| s|None|'%{SOURCE1}'|" numpydoc/tests/tinybuild/conf.py
 
 %build
 %python_build
