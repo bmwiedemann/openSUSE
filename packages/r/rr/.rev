@@ -30,4 +30,12 @@
   * rr-pthread-for-new-gcc.patch</comment>
     <requestid>993680</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5c5f968f14eeffbabf81167810b030bf</srcmd5>
+    <version>5.6.0</version>
+    <time>1660662484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>996403</requestid>
+  </revision>
 </revisionlist>

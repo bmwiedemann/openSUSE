@@ -58,7 +58,7 @@ sed -i "s|#!.*%{_bindir}/env.*|#!%{_bindir}/python3|" scripts/rr-collect-symbols
   -Ddisable32bit=true \
 %endif
   -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_CXX_STANDARD=14 
+  -DCMAKE_CXX_STANDARD=14
 %cmake_build
 
 %install
@@ -73,8 +73,8 @@ sed -i "s|#!.*%{_bindir}/env.*|#!%{_bindir}/python3|" scripts/rr-collect-symbols
 %{_bindir}/rr_exec_stub*
 %{_bindir}/signal-rr-recording.sh
 %{_bindir}/rr-collect-symbols.py
-%ifarch x86_64
 %{_libdir}/rr/librrpreload*.so
+%ifarch x86_64
 %{_libdir}/rr/librraudit_32.so
 %{_libdir}/rr/librrpage_32.so
 %endif
