@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 13 18:59:55 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add gloox-1.0.24-fix-gcc12-time.patch: Fix build with GCC 12.
+- Disable build of examples as they are not installed.
+- Drop obsolete build requirements: autoconf, automake.
+
+-------------------------------------------------------------------
 Wed Jan  6 18:44:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.24:

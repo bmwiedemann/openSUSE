@@ -1,7 +1,7 @@
 #
 # spec file for package gloox
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://camaya.net/gloox
 Source:         https://camaya.net/download/gloox-%{version}.tar.bz2
 Source200:      baselibs.conf
-BuildRequires:  autoconf
-BuildRequires:  automake
+# PATCH-FIX-UPSTREAM gloox-1.0.24-fix-gcc12-time.patch -- fix build with GCC 12
+Patch0:         https://gitweb.gentoo.org/repo/gentoo.git/plain/net-libs/gloox/files/gloox-1.0.24-fix-gcc12-time.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgnutls-devel >= 2.12
@@ -69,11 +69,11 @@ several XEPs that make it ideal for writing any kind of Jabber/XMPP client
 or component.
 
 %prep
-%setup -q -n gloox-%{version}
+%autosetup -p1 -n gloox-%{version}
 
 %build
 export SUSE_ASNEEDED=0
-%configure --enable-shared --disable-static --enable-getaddrinfo
+%configure --enable-shared --disable-static --enable-getaddrinfo --without-examples
 %make_build
 
 %install
