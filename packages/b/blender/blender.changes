@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Aug 14 11:23:58 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.2.2:
+  + Align Active Camera to Selected fails with ortho camera T99653
+  + Annotation lines doesn't start where clicked T99368
+  + Bones using empties as custom shapes can't be selected T99270
+  + Crash applying non-existent modifiers T99678
+  + Crash when render finishes T100049
+  + Crash when transform applied on multi-user image T100040
+  + Eternal loop reading blend file thumbnail T99711
+  + Fix crash loading factory settings in image paint mode
+    rB2b83f3d5
+  + Fix integer overflow in thumbnail extractor T99705
+  + Fix Python SystemExit exceptions silently exiting rB5f7c677a
+  + Fix use-after-free error when handling events that close
+    windows rB3d6f6715
+  + Fix: Incorrect coordinates used in BLI_rct*_isect_segment
+    functions rBc07e9e08
+  + Fix: Move DRW_shgroup_add_material_resources(grp, mat) to after
+    the null-check for grp. T99646
+  + Gpencil Flip strokes did not support multiframe edit T99702
+  + GPencil multiframe falloff is scaling wrongly in rotation
+    T99342
+  + GPencil strokes cannot be edited after set origin T99979
+  + Light group passes do not work when shadow catcher is used
+    T98367
+  + Make Principled Hair IOR input behave like other IOR sliders
+    T99785
+  + OBJ (new importer): does not import vertices that aren't part
+    of any face T100017
+  + OBJ (new importer): fails to import faces in some cases T99532
+  + OBJ (new importer): fails with trailing space after wrapped
+    lines T99536
+  + NULL pointer free with corrupt zSTD reading T99744
+  + Python: restrict name-space access for restricted evaluation
+    rBae459317
+  + Sculpt mode missing check for hidden active object T94633
+  + sculpt_update_object calls paint updates for nonpaint tools
+    T99196
+  + Unable to select bones when custom shape display is disabled
+    T99364
+
+-------------------------------------------------------------------
 Fri Jul 15 23:23:04 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 3.2.1:
