@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 16 08:26:01 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.9:
+  * Work around some Protonmail-specific (mis)behavior with messages
+    References; add some tests
+  * Fix probleem with mu4e~view-message being nillified when it shouldn't.
+
+-------------------------------------------------------------------
 Mon Aug  8 06:56:00 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.8:

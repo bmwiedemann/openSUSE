@@ -487,4 +487,15 @@
   * Add some more unit tests for skipdups / related messages.</comment>
     <requestid>993675</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>4caec613bb92b8258a8529e45de18190</srcmd5>
+    <version>1.8.9</version>
+    <time>1660662486</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.9:
+  * Work around some Protonmail-specific (mis)behavior with messages
+    References; add some tests
+  * Fix probleem with mu4e~view-message being nillified when it shouldn't.</comment>
+    <requestid>996446</requestid>
+  </revision>
 </revisionlist>
