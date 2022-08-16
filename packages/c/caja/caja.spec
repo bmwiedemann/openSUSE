@@ -1,7 +1,7 @@
 #
 # spec file for package caja
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _version 1.26
 
 Name:           caja
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        File manager for the MATE desktop
 License:        GPL-2.0-only AND LGPL-2.0-only
@@ -87,6 +87,7 @@ Caja is the official file manager for the MATE desktop. It allows to
 browse directories, preview files and launch applications associated
 with them. It is also responsible for handling the icons on the MATE
 desktop. It works on local and remote filesystems.
+
 
 
 # Needed for using pluma as standalone from MATE.
