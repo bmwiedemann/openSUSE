@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 15 11:45:24 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.2.0
+  * Added support for devices in container creation
+  * Implemented the login endpoint
+  * Added relabel option for mounts and other mount option support
+  * Implemented exec_run
+  * Bug Fixes
+
+-------------------------------------------------------------------
 Thu Jun 30 06:31:58 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 4.0.0
