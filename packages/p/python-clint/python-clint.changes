@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  9 07:18:26 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- disable failing Python 2 build.
+
+-------------------------------------------------------------------
 Sun Sep 12 11:00:58 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - remove executable bits from examples
