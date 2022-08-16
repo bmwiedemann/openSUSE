@@ -20,7 +20,8 @@ Wed Apr 13 08:17:29 UTC 2022 - Tatjana Dehler <tdehler@suse.com>
 Wed Mar  9 09:35:46 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update vendor tarball with prometheus/client_golang 1.11.1
-  (bsc#1196338, jsc#SLE-24238, jsc#SLE-24239, jsc#SUMA-114)
+  (bsc#1196338, jsc#SLE-24238, jsc#SLE-24239, jsc#SUMA-114,
+  CVE-2022-21698)
   + Added 0001-Update-prometheus-client-to-1.11.1.patch
 
 -------------------------------------------------------------------
