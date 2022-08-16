@@ -1,7 +1,7 @@
 #
 # spec file for package perl-SDL
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,16 @@
 #
 
 
+%define cpan_name SDL
 Name:           perl-SDL
 Version:        2.548
 Release:        0
-%define cpan_name SDL
-Summary:        SDL bindings to Perl
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+Summary:        SDL bindings to Perl
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/F/FR/FROGGS/%{cpan_name}-%{version}.tar.gz
-Source1:        cpanspec.yml
-Source2:        perl-SDL.rpmlintrc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  Mesa-devel
-BuildRequires:  libSDL-devel
-BuildRequires:  libSDL_Pango-devel
-BuildRequires:  libSDL_gfx-devel
-BuildRequires:  libSDL_image-devel
-BuildRequires:  libSDL_mixer-devel
-BuildRequires:  libSDL_net-devel
-BuildRequires:  libSDL_sound-devel
-BuildRequires:  libSDL_ttf-devel
+Source1:        perl-SDL.rpmlintrc
+Source2:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Alien::SDL) >= 1.446
@@ -52,6 +41,20 @@ Requires:       perl(CPAN) >= 1.92
 Requires:       perl(File::ShareDir) >= 1.0
 Requires:       perl(Tie::Simple)
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  Mesa-devel
+BuildRequires:  libSDL-devel
+BuildRequires:  libSDL_Pango-devel
+BuildRequires:  libSDL_gfx-devel
+BuildRequires:  libSDL_image-devel
+BuildRequires:  libSDL_mixer-devel
+BuildRequires:  libSDL_net-devel
+BuildRequires:  libSDL_sound-devel
+BuildRequires:  libSDL_ttf-devel
+# Tests: dejavu-fonts required by t/pango.t, udev required by t/core_joystick.t
+BuildRequires:  dejavu-fonts
+BuildRequires:  udev
+# MANUAL END
 
 %description
 SDL Perl are a set of bindings to the Simple DirectMedia Layer (SDL).
@@ -63,14 +66,16 @@ emulators, and many popular games, including the award winning Linux port of
 "Civilization: Call To Power."
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
+# MANUAL BEGIN
 %ifarch %arm ppc64 ppc64le s390x
 # Remove hanging test. See: https://github.com/PerlGameDev/SDL/issues/289
 rm t/sdlx_controller_interface.t
 %endif
+# MANUAL END
 
 %build
-%{__perl} Build.PL installdirs=vendor optimize="%{optflags}"
+perl Build.PL installdirs=vendor optimize="%{optflags}"
 ./Build build flags=%{?_smp_mflags}
 
 %check
@@ -81,8 +86,7 @@ rm t/sdlx_controller_interface.t
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc CHANGELOG examples MacOSX OFL-FAQ.txt OFL.txt scripts share src test TODO
+%doc CHANGELOG examples OFL-FAQ.txt OFL.txt TODO
 %license COPYING
 
 %changelog

@@ -1,20 +1,38 @@
 ---
 #description_paragraphs: 3
-#description: |-
-#  override description from CPAN
+description: |-
+ SDL Perl are a set of bindings to the Simple DirectMedia Layer (SDL).
+ 
+ Simple DirectMedia Layer is a cross-platform multimedia library designed to
+ provide low level access to audio, keyboard, mouse, joystick, 3D hardware via
+ OpenGL, and 2D video framebuffer. It is used by MPEG playback software,
+ emulators, and many popular games, including the award winning Linux port of
+ "Civilization: Call To Power."
 #summary: override summary from CPAN
 #no_testing: broken upstream
-#sources:
-#  - source1
-#  - source2
+sources:
+  - perl-SDL.rpmlintrc
 #patches:
 #  foo.patch: -p1
 #  bar.patch:
-#preamble: |-
-# BuildRequires:  gcc-c++
-#post_prep: |-
-# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
-# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+preamble: |-
+ BuildRequires:  Mesa-devel
+ BuildRequires:  libSDL-devel
+ BuildRequires:  libSDL_Pango-devel
+ BuildRequires:  libSDL_gfx-devel
+ BuildRequires:  libSDL_image-devel
+ BuildRequires:  libSDL_mixer-devel
+ BuildRequires:  libSDL_net-devel
+ BuildRequires:  libSDL_sound-devel
+ BuildRequires:  libSDL_ttf-devel
+ # Tests: dejavu-fonts required by t/pango.t, udev required by t/core_joystick.t
+ BuildRequires:  dejavu-fonts
+ BuildRequires:  udev
+post_prep: |-
+ %ifarch %arm ppc64 ppc64le s390x
+ # Remove hanging test. See: https://github.com/PerlGameDev/SDL/issues/289
+ rm t/sdlx_controller_interface.t
+ %endif
 #post_build: |-
 # rm unused.files
 #post_install: |-

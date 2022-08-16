@@ -67,4 +67,14 @@
     <comment></comment>
     <requestid>823413</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>5189d03048ce2c263102da7ae496f49e</srcmd5>
+    <version>2.548</version>
+    <time>1660662492</time>
+    <user>dimstar_suse</user>
+    <comment>- updated cpanspec.yml
+- Add dejavu-fonts and udev as BuildRequires for tests
+</comment>
+    <requestid>997323</requestid>
+  </revision>
 </revisionlist>
