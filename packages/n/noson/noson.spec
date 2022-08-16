@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/janbar/noson/
 Source0:        https://github.com/janbar/noson/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM noson-include-time.h.patch gh#janbar/noson#16 -- Fix build with gcc 12.1
+Patch0:         noson-include-time.h.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  flac-devel
@@ -56,7 +58,7 @@ Development files for noson library. The noson library supports basic features
 to browse music index and control playback in any zones.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake \
