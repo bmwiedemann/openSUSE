@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Minion-Backend-SQLite
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Minion-Backend-SQLite
 Name:           perl-Minion-Backend-SQLite
-Version:        5.0.6
+Version:        5.0.7
 Release:        0
-Summary:        SQLite backend for Minion job queue
 License:        Artistic-2.0
+Summary:        SQLite backend for Minion job queue
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-v%{version}.tar.gz
 Source1:        cpanspec.yml
