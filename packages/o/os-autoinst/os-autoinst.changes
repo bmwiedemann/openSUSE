@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 15 19:53:35 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1660580448.e31c80d:
+  * tools: Exclude unreliable t/data/tests/tests from coverage
+  * tools: Remove redundant 'select' for codecov
+  * Implement QEMU backend support for arbitrary CPU topology
+  * Implement --color switch on the command-line
+  * Add capability to start vmware VMs with cloud init data
+  * Bump the isotovideo interface number
+  * Add a unit test for send_key_until_needlematch
+  * send_key_until_needlematch: Avoid timeout in the first iteration
+
+-------------------------------------------------------------------
 Sat Aug 13 11:48:16 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1660317963.5a74501:
