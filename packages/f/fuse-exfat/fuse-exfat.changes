@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 15 19:58:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid bashism in post-scripts (bsc#1195391)
+- remove usrmerge hacks
+
+-------------------------------------------------------------------
 Thu Nov 26 09:37:33 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)

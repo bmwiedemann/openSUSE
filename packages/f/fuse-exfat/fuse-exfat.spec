@@ -1,7 +1,7 @@
 #
 # spec file for package fuse-exfat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 Sidlovsky, Yaroslav <zawertun@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -51,10 +51,6 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-%if !0%{?usrmerged}
-mkdir  %{buildroot}/sbin
-ln -sf %{_sbindir}/{mount.exfat,mount.exfat-fuse} %{buildroot}/sbin
-%endif
 
 %post
 if ! grep -q -e '^exfat$' %{_sysconfdir}/filesystems ; then
@@ -68,7 +64,7 @@ if ! grep -q exfat_fuse %{_sysconfdir}/filesystems ; then
 fi
 
 %postun
-if [ "$1" == "0" ]; then
+if [ "$1" = "0" ]; then
     sed -i -e '/exfat_fuse/d' -e '/^exfat$/d' %{_sysconfdir}/filesystems
     echo "Deleted 'exfat' and 'exfat_fuse' from the file %{_sysconfdir}/filesystems"
 fi
@@ -76,9 +72,6 @@ fi
 %files
 %license COPYING
 %doc ChangeLog README
-%if !0%{?usrmerged}
-/sbin/*
-%endif
 %{_sbindir}/mount.exfat
 %{_sbindir}/mount.exfat-fuse
 %{_mandir}/man8/mount.exfat-fuse.8%{?ext_man}
