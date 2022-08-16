@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Aug 11 13:10:15 UTC 2022 - witold.bedyk@suse.com
+
+- Update to version 8.3.10
+  + Security:
+    * Fixes XSS vulnerability in the Unified Alerting
+      (bsc#1201535, CVE-2022-31097)
+    * Fixes OAuth account takeover vulnerability
+      (bsc#1201539, CVE-2022-31107)
+
+- Update to version 8.3.9
+  + Bug fixes:
+    * Geomap: Display legend
+    * Prometheus: Fix timestamp truncation
+
+- Update to version 8.3.7
+  + Bug fix:
+    * Provisioning: Ensure that the default value for orgID is set
+      when provisioning datasources to be deleted.
+
+- Update to version 8.3.6
+  + Features and enhancements:
+    * Cloud Monitoring: Reduce request size when listing labels.
+    * Explore: Show scalar data result in a table instead of graph.
+    * Snapshots: Updates the default external snapshot server URL.
+    * Table: Makes footer not overlap table content.
+    * Tempo: Add request histogram to service graph datalink.
+    * Tempo: Add time range to tempo search query behind a feature flag.
+    * Tempo: Auto-clear results when changing query type.
+    * Tempo: Display start time in search results as relative time.
+  + Bug fixes:
+    * CloudMonitoring: Fix resource labels in query editor.
+    * Cursor sync: Apply the settings without saving the dashboard.
+    * LibraryPanels: Fix for Error while cleaning library panels.
+    * Logs Panel: Fix timestamp parsing for string dates without timezone.
+    * Prometheus: Fix some of the alerting queries that use reduce/math operation.
+    * TablePanel: Fix ad-hoc variables not working on default datasources.
+    * Text Panel: Fix alignment of elements.
+    * Variables: Fix for constant variables in self referencing links.
+
+-------------------------------------------------------------------
 Thu Apr  7 16:17:17 UTC 2022 - Jordi Massaguer <jmassaguerpla@suse.com>
 
 - Update _constraints to require at least 5GB, because with less we
