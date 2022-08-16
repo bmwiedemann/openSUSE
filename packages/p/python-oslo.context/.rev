@@ -258,4 +258,16 @@
   - Fix context from_dict() for system_scope</comment>
     <requestid>983771</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1e08d0fc1732150bfaa58380a390534b</srcmd5>
+    <version>5.0.0</version>
+    <time>1660662483</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.0.0
+  - Add Python3 zed unit tests
+  - Drop python3.6/3.7 support in testing runtime
+  - Update master for stable/yoga
+  - Remove unnecessary unicode prefixes</comment>
+    <requestid>996555</requestid>
+  </revision>
 </revisionlist>
