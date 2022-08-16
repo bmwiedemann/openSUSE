@@ -18,7 +18,7 @@
 
 %define cpan_name Chart
 Name:           perl-Chart
-Version:        2.403.6
+Version:        2.403.7
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Series of charting modules
@@ -38,7 +38,7 @@ Requires:       perl(GD) >= 2
 %{perl_requires}
 
 %description
-Chart help you to create PNG and JPG images with visualizations of numeric
+Chart helps you to create PNG and JPG images with visualizations of numeric
 data. This page gives you a summary how to use it. For a more thorough
 documentation and lots of example code please visit the Chart::Manual.
 
