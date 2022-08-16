@@ -29,20 +29,19 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       3
-%global datever         2022-04-19
-%global buildver        7
+%global updatever       4
+%global datever         2022-07-19
+%global buildver        8
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk17/archive
-%global root_revision   dc07fd49b926c28c33b17053b11ad3121429239f
-%global root_branch     v0.32.0-release
+%global root_revision   d680e266ef43d1c2e239c7d2fd49e6f9a11992ed
+%global root_branch     v0.33.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    ab24b6666596140516d3f240486aa1c84a726775
-%global omr_branch      v0.32.0-release
+%global omr_revision    b58aa2708c095efadf522f67aaef9f7de2a7cbc7
+%global omr_branch      v0.33.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 9a84ec34ed321967cdbe67b29ddcd732b591d051
-%global openj9_branch   v0.32.0-release
-%global openj9_tag      openj9-0.32.0
-%global freemarker_version 2.3.29
+%global openj9_revision 04a55b45b3a0d75813335fda0fb8703819690ee7
+%global openj9_branch   v0.33.0-release
+%global openj9_tag      openj9-0.33.0
 %global java_atk_wrapper_version 0.33.2
 # priority must be 6 digits in total
 %if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
@@ -97,11 +96,6 @@ URL:            https://openjdk.java.net/
 Source0:        %{root_repository}/%{root_revision}.zip
 Source1:        %{omr_repository}/%{omr_revision}.zip
 Source2:        %{openj9_repository}/%{openj9_revision}.zip
-# Use the freemarker jar from maven central
-Source3:        https://repo1.maven.org/maven2/org/freemarker/freemarker/%{freemarker_version}/freemarker-%{freemarker_version}.jar
-# Package also the sources
-Source4:        https://repo1.maven.org/maven2/org/freemarker/freemarker/%{freemarker_version}/freemarker-%{freemarker_version}-sources.jar
-# Accessibility support
 Source8:        https://download.gnome.org/sources/java-atk-wrapper/0.33/java-atk-wrapper-%{java_atk_wrapper_version}.tar.xz
 # Desktop files. Adapted from IcedTea.
 Source11:       jconsole.desktop.in
@@ -119,6 +113,8 @@ Patch3:         java-atk-wrapper-security.patch
 Patch4:         libdwarf-fix.patch
 # Allow multiple initialization of PKCS11 libraries
 Patch5:         multiple-pkcs11-library-init.patch
+# Fix narrowing conversion error
+Patch6:         openj9-no-narrowing.patch
 # Fix: implicit-pointer-decl
 Patch13:        implicit-pointer-decl.patch
 #
@@ -397,6 +393,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 %patch13 -p1
 
 %if %{with_system_pcsc}
@@ -420,6 +417,7 @@ cat %{SOURCE100} \
     | sed "s/@OPENJ9_TAG@/%{openj9_tag}/g" \
     | sed "s/@OPENJ9OMR_SHA@/%{omr_revision}/g" \
     | sed "s/@OPENJDK_SHA@/%{root_revision}/g" \
+    | sed "s/@OPENSSL_SHA@//g" \
     | patch -p1 -u -l
 
 # Prepare desktop files
@@ -476,8 +474,7 @@ bash configure \
     --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
     --with-extra-cflags="$EXTRA_CFLAGS" \
     --disable-javac-server \
-    --enable-demos \
-    --with-freemarker-jar=%{SOURCE3}
+    --enable-demos
 
 make \
     LOG=trace \
@@ -827,6 +824,9 @@ fi
 %{_jvmprivdir}/*
 
 %{_jvmdir}/%{sdkdir}/bin/java
+%ifnarch aarch64
+%{_jvmdir}/%{sdkdir}/bin/jitserver
+%endif
 %{_jvmdir}/%{sdkdir}/bin/keytool
 %{_jvmdir}/%{sdkdir}/bin/rmiregistry
 %{_jvmdir}/%{sdkdir}/conf/logging.properties
@@ -837,6 +837,9 @@ fi
 %{_jvmdir}/%{sdkdir}/conf/sdp/sdp.conf.template
 %{_jvmdir}/%{sdkdir}/conf/security/java.policy
 %{_jvmdir}/%{sdkdir}/conf/security/java.security
+%ifarch x86_64
+%{_jvmdir}/%{sdkdir}/conf/security/nss.fips.cfg
+%endif
 %{_jvmdir}/%{sdkdir}/conf/security/policy/limited/default_local.policy
 %{_jvmdir}/%{sdkdir}/conf/security/policy/limited/default_US_export.policy
 %{_jvmdir}/%{sdkdir}/conf/security/policy/limited/exempt_local.policy
