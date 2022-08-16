@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 12 16:40:16 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 3.11.2:
+  * This release fixes some bugs found in the 3.11.1 release.
+  * Furthermore, the inline namespace of the library has been
+    re-structured.
+  * All changes are backward-compatible.
+  * Full changelog available at
+    https://github.com/nlohmann/json/releases/tag/v3.11.2
+
+-------------------------------------------------------------------
 Tue Aug  2 11:06:05 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 3.11.1:
