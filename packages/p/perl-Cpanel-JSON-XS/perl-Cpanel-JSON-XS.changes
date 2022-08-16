@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 14 03:07:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.32
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.32 2022-08-13 (rurban)
+          - fix new JSON::PP::Boolean overload redefinition warnings. GH #200
+
+  4.31 2022-08-10 (rurban)
+          - adjust t/20_unknown.t pp bool tests for native bool when supported.
+            GH #198 PR by Graham Knop.
+
+-------------------------------------------------------------------
 Fri Jun 17 03:06:07 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.30
