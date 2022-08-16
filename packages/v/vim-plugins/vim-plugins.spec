@@ -747,7 +747,7 @@ rm -rf %{buildroot}/%vimplugin_dir/doc/*.{xml,xsl,css}
 %%post %{-n:-n %{-n*}} \
 vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null \
 %%postun %{-n:-n %{-n*}} \
-if [ $1 == 0 ]; then \
+if [ $1 = 0 ]; then \
   vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null \
 fi \
 %{nil}
