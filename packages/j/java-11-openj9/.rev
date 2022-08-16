@@ -87,4 +87,12 @@
     <comment>April 2022 CPU</comment>
     <requestid>988556</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3727ff5b333b53b9d43d3631ef1e4a73</srcmd5>
+    <version>11.0.16.0</version>
+    <time>1660662457</time>
+    <user>dimstar_suse</user>
+    <comment>July 2022 CPU</comment>
+    <requestid>995922</requestid>
+  </revision>
 </revisionlist>

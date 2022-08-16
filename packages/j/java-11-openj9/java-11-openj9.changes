@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 16 06:49:48 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 11.0.16 with OpenJ9 0.33.0 virtual machine
+  * Including Oracle July 2022 CPU changes
+    CVE-2022-21540 (bsc#1201694), CVE-2022-21541 (bsc#1201692),
+    CVE-2022-34169 (bsc#1201684)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.33
+- Modified template patch:
+  * openj9-nogit.patch.in
+    + The git commit hash code became more generic, so redo the
+      template patch
+- Added patch:
+  * openj9-no-narrowing.patch
+    + Fix narrowing conversion error
+
+-------------------------------------------------------------------
 Tue Jul 12 07:22:32 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 11.0.15 with OpenJ9 0.32.0 virtual machine
