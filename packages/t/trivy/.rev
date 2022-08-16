@@ -461,4 +461,17 @@
   * chore(deps): bump alpine from 3.16.0 to 3.16.1 (#2639)</comment>
     <requestid>997334</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>acfe65d0e9c284fcc7cd29ea7a1a9edd</srcmd5>
+    <version>0.31.2</version>
+    <time>1660753008</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 0.31.2:
+  * fix: Correctly handle recoverable AWS scanning errors (#2726)
+  * docs: Remove reference to SecurityAudit policy for AWS scanning (#2721)
+
+- Update to version 0.31.1:
+  * fix: upgrade defsec to v0.71.7 for elb scan panic (#2720)</comment>
+    <requestid>997437</requestid>
+  </revision>
 </revisionlist>

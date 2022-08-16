@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 16 19:32:37 UTC 2022 - dmueller@suse.com
+
+- Update to version 0.31.2:
+  * fix: Correctly handle recoverable AWS scanning errors (#2726)
+  * docs: Remove reference to SecurityAudit policy for AWS scanning (#2721)
+
+-------------------------------------------------------------------
+Tue Aug 16 13:32:11 UTC 2022 - dmueller@suse.com
+
+- Update to version 0.31.1:
+  * fix: upgrade defsec to v0.71.7 for elb scan panic (#2720)
+
+-------------------------------------------------------------------
 Tue Aug 16 12:02:47 UTC 2022 - dmueller@suse.com
 
 - Update to version 0.31.0:
