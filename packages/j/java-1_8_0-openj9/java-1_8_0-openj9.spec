@@ -26,19 +26,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       332
-%global buildver        b09
+%global updatever       345
+%global buildver        b01
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   0b8b8af39a5f1f2fe0629050343adeed2f48bfd7
-%global root_branch     v0.32.0-release
+%global root_revision   f2d89babf53797cf7884ec3eead7014d52cc2f63
+%global root_branch     v0.33.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    ab24b6666596140516d3f240486aa1c84a726775
-%global omr_branch      v0.32.0-release
+%global omr_revision    b58aa2708c095efadf522f67aaef9f7de2a7cbc7
+%global omr_branch      v0.33.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 9a84ec34ed321967cdbe67b29ddcd732b591d051
-%global openj9_branch   v0.32.0-release
-%global openj9_tag      openj9-0.32.0
-%global freemarker_version 2.3.29
+%global openj9_revision 04a55b45b3a0d75813335fda0fb8703819690ee7
+%global openj9_branch   v0.33.0-release
+%global openj9_tag      openj9-0.33.0
 # priority must be 6 digits in total
 %global priority        1801
 %global javaver         1.8.0
@@ -95,10 +94,6 @@ URL:            https://www.eclipse.org/openj9/
 Source0:        %{root_repository}/%{root_revision}.zip
 Source1:        %{omr_repository}/%{omr_revision}.zip
 Source2:        %{openj9_repository}/%{openj9_revision}.zip
-# Use the freemarker jar from maven central
-Source9:        https://repo1.maven.org/maven2/org/freemarker/freemarker/%{freemarker_version}/freemarker-%{freemarker_version}.jar
-# Package also the sources
-Source10:       https://repo1.maven.org/maven2/org/freemarker/freemarker/%{freemarker_version}/freemarker-%{freemarker_version}-sources.jar
 # Desktop files. Adapated from IcedTea.
 Source11:       jconsole.desktop.in
 Source12:       policytool.desktop.in
@@ -117,6 +112,8 @@ Patch2:         multiple-pkcs11-library-init.patch
 Patch3:         disable-doclint-by-default.patch
 # Allow building with newer libdwarf
 Patch4:         libdwarf-fix.patch
+# Fix narrowing conversion error
+Patch5:         openj9-no-narrowing.patch
 # Patches for system libraries
 Patch201:       system-libjpeg.patch
 Patch202:       system-libpng.patch
@@ -361,6 +358,7 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %patch300 -p1
 
@@ -370,6 +368,7 @@ cat %{SOURCE100} \
     | sed "s/@OPENJ9_TAG@/%{openj9_tag}/g" \
     | sed "s/@OPENJ9OMR_SHA@/%{omr_revision}/g" \
     | sed "s/@OPENJDK_SHA@/%{root_revision}/g" \
+    | sed "s/@OPENSSL_SHA@//g" \
     | patch -p1 -u -l
 
 # Prepare desktop files
@@ -418,8 +417,7 @@ bash configure \
 	--with-openssl=system \
     --with-stdc++lib=dynamic \
     --with-native-debug-symbols=internal \
-    --with-boot-jdk=%{_sysconfdir}/alternatives/java_sdk \
-    --with-freemarker-jar=%{SOURCE9}
+    --with-boot-jdk=%{_sysconfdir}/alternatives/java_sdk
 
 make \
     JAVAC_FLAGS=-g \
