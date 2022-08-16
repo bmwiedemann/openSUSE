@@ -1,5 +1,57 @@
 -------------------------------------------------------------------
-Wed May 11 19:33:16 UTC 2022 - Anthony Iliopoulos <ailiopoulos@suse.com>
+Sat Aug 13 23:03:39 UTC 2022 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 5.19.0: 
+  - xfs_repair: fix printf format specifiers on 32-bit
+  - libxfs: Fix MAP_SYNC build failure on MIPS/musl
+  - mkfs: stop allowing tiny filesystems
+  - mkfs: complain about impossible log size constraints
+  - mkfs: ignore stripe geometry for small filesystems
+  - mkfs: update manpage of bigtime and inobtcount
+  - mkfs: document large extent count in --help screen
+  - mkfs: fix segfault with incorrect options
+  - xfs_repair: Support upgrade to large extent counters
+  - xfs_repair: check geometry before upgrades
+  - xfs_repair: ignore empty xattr leaf blocks
+  - xfs_repair: check rt summary/bitmap vs observations
+  - xfs_repair: check free rt extent count
+  - xfs_repair: detect/fix changed fields w/ nrext64
+  - xfs_repair: clear DIFLAG2_NREXT64 w/o fs support
+  - xfs_repair: ignore log_incompat inconsistencies
+  - xfs_repair: rewrite secondary supers w/ needsrepair
+  - xfs_db: id the minlogsize transaction reservation
+  - mkfs: option to create with large extent counters
+  - xfs_info: Report NREXT64 feature status
+  - xfs_logprint: Log item printing for ATTRI & ATTRD
+  - libxfs changes merged from kernels 5.18 and 5.19-rc
+
+-------------------------------------------------------------------
+Thu Jun  9 18:00:26 UTC 2022 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 5.18.0:
+  - xfsprogs: more autoconf modernisation
+  - mkfs: Fix memory leak
+  - mkfs: don't trample the gid set in the protofile
+  - mkfs: various post-log-size-increase fixes
+  - xfs_scrub: various enhancements and fixes
+  - xfs_scrub: move to mallinfo2 when available
+  - metadump: be careful zeroing corrupt inode forks
+  - metadump: handle corruption errors without aborting
+  - metadump: warn about suspicious finobt trees
+  - xfs_repair: check ftype of . and . directory entries
+  - xfs_repair: detect v5 feature mismatch in backup sb
+  - xfs_repair: fix sizing of the incore rt space usage map calculation
+  - xfs_repair: warn about bad btree levels in AG hdrs
+  - xfs_io: add a quiet option to bulkstat
+  - xfs_db: report maxlevels for each btree type
+  - xfs_db: support computing btheight for all cursors
+  - xfs_db: don't move cursor when switching types
+  - docs: note the removal of XFS_IOC_FSSETDM
+  - xfsprogs: autoconf modernisation
+  - libxfs changes merged from kernels 5.17 and 5.18
+
+-------------------------------------------------------------------
+Wed May 11 19:33:16 UTC 2022 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 5.16.0:
   - libxfs: remove kernel stubs from xfs_shared.h
