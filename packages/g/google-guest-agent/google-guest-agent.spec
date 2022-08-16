@@ -92,16 +92,16 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
 
 %post
     # Handle enabling of services during an upgrade from the old google-compute-engine-init package
-    if [ "$1" == "1" ] && ! [ -e /.buildenv ] && systemctl is-enabled -q google-accounts-daemon.service 2>/dev/null ; then
+    if [ "$1" = "1" ] && ! [ -e /.buildenv ] && systemctl is-enabled -q google-accounts-daemon.service 2>/dev/null ; then
 	mktemp --suffix ".google-accounts-daemon-enabled"
 	if systemctl is-active --quiet google-accounts-daemon.service ; then
 	    mktemp --suffix ".google-accounts-daemon-active"
 	fi
     fi
-    if [ "$1" == "1" ] && ! [ -e /.buildenv ] && systemctl is-enabled -q google-startup-scripts.service 2>/dev/null ; then
+    if [ "$1" = "1" ] && ! [ -e /.buildenv ] && systemctl is-enabled -q google-startup-scripts.service 2>/dev/null ; then
 	mktemp --suffix ".google-startup-scripts"
     fi
-    if [ "$1" == "1" ] && ! [ -e /.buildenv ] && systemctl is-enabled -q google-shutdown-scripts.service 2>/dev/null ; then
+    if [ "$1" = "1" ] && ! [ -e /.buildenv ] && systemctl is-enabled -q google-shutdown-scripts.service 2>/dev/null ; then
 	mktemp --suffix ".google-shutdown-scripts"
     fi
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 15 19:21:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid bashism in post-install scripts (bsc#1195391) 
+
+-------------------------------------------------------------------
 Wed Aug  3 10:24:30 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20220713.00 (bsc#1202100, bsc#1202101)
