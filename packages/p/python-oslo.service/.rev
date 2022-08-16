@@ -360,4 +360,16 @@
   * Update master for stable/xena</comment>
     <requestid>983764</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c551f9cb832b83b19caff92426ca0485</srcmd5>
+    <version>3.0.0</version>
+    <time>1660662481</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0.0
+  - Imported Translations from Zanata
+  - Update master for stable/yoga
+  - Add Python3 zed unit tests
+  - Drop python3.6/3.7 support in testing runtime</comment>
+    <requestid>996543</requestid>
+  </revision>
 </revisionlist>

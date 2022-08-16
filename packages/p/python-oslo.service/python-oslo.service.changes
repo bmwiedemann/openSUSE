@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 11 08:32:12 UTC 2022 - cloud-devel@suse.de
+
+- update to version 3.0.0
+  - Imported Translations from Zanata
+  - Update master for stable/yoga
+  - Add Python3 zed unit tests
+  - Drop python3.6/3.7 support in testing runtime
+
+-------------------------------------------------------------------
 Tue May 24 20:46:28 UTC 2022 - cloud-devel@suse.de
 
 - update to version 2.8.0
