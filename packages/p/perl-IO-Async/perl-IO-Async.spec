@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Async
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name IO-Async
 Name:           perl-IO-Async
-Version:        0.79
+Version:        0.802
 Release:        0
-Summary:        Asynchronous event-driven programming
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Asynchronous event-driven programming
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -34,6 +34,7 @@ BuildRequires:  perl(Module::Build) >= 0.400400
 BuildRequires:  perl(Socket) >= 2.007
 BuildRequires:  perl(Struct::Dumb)
 BuildRequires:  perl(Test::Fatal)
+BuildRequires:  perl(Test::Future::IO::Impl)
 BuildRequires:  perl(Test::Identity)
 BuildRequires:  perl(Test::Metrics::Any)
 BuildRequires:  perl(Test::More) >= 0.88

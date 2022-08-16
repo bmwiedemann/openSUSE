@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Aug 16 03:08:28 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.802
+   see /usr/share/doc/packages/perl-IO-Async/Changes
+
+  0.802   2022-08-15
+          [CHANGES]
+           * Preëmptively use Future ->udata API from upcoming release, to
+             avoid depending on it being a hashref
+           * Report correct caller file + line number in nested test calls to
+             wait_for {}
+          [BUGFIXES]
+           * Use 'SOCK_STREAM' instead of hardcoded 1 in t/50resolver.t
+           * Skip exceptional socket condition test on cygwin because it seems
+             always to fail there
+           * Avoid harmless warnings about undef at global destruction
+             (RT142754)
+  0.801   2021-12-15
+          [BUGFIXES]
+           * Remove extraneous test-time use of Data::Dump (RT140143)
+  0.800   2021-11-11
+          [CHANGES]
+           * Bumped up to three-digit minor version number
+           * Added IO::Async::OS->signum2name
+           * Implement Future::IO->waitpid API
+           * Skip the `spawn` Routine model if POSIX fork() is not available
+           * Replace getaddrinfo / getnameinfo with virtual mocking functions
+             for unit-testing the resolve, so as not to rely on local platform
+             resolver behaviours
+
+-------------------------------------------------------------------
 Fri Aug  6 03:10:29 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.79
