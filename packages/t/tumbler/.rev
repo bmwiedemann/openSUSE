@@ -405,4 +405,16 @@
     <comment></comment>
     <requestid>977338</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>810b8e00334bfe177ea3be76061411d2</srcmd5>
+    <version>4.16.1</version>
+    <time>1660662434</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.16.1
+  * gst-thumbnailer: Add mime type check (gxo#xfce/tumbler#65)
+  * desktop-thumbnailer: Guard against null path
+  * Fix typo in gthread version (gxo#xfce/tumbler!14)
+</comment>
+    <requestid>995248</requestid>
+  </revision>
 </revisionlist>
