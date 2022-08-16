@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 16 12:12:44 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Added patch file 0001-Fix-install-rpaths.patch 
+
+-------------------------------------------------------------------
+Mon Aug 15 09:31:57 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Remove install rpaths from binaries. Factory no longer allows them. 
+
+-------------------------------------------------------------------
 Tue May 31 09:32:33 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.20

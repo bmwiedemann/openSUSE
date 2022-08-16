@@ -25,7 +25,8 @@ Group:          Development/Tools/Debuggers
 URL:            https://renderdoc.org/
 Source0:        https://github.com/baldurk/renderdoc/archive/v%{version}/renderdoc-%{version}.tar.gz
 Source1:        https://github.com/baldurk/swig/archive/renderdoc-modified-7.zip
-Patch0:         0002-Add-debugger-as-desktop-menu-category.patch
+Patch0:         0001-Fix-install-rpaths.patch
+Patch1:         0002-Add-debugger-as-desktop-menu-category.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -78,7 +79,8 @@ mkdir %{_builddir}/%{name}-%{version}/build && cd %{_builddir}/%{name}-%{version
   -DENABLE_RENDERDOCCMD=ON \
   -DENABLE_QRENDERDOC=ON \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-  -DBUILD_VERSION_STABLE=ON
+  -DBUILD_VERSION_STABLE=ON \
+  -DCMAKE_INSTALL_RPATH=""
 %cmake_build
 
 %install
