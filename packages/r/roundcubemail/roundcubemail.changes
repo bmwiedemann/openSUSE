@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 28 23:16:09 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 1.6.0 with these most noteworthy changes:
+  * PHP 8.1 support
+  * Dropped support for PHP < 7.3
+  * Support responses (snippets) in HTML format
+  * Option to purge deleted mails older than 30, 60 or 90 days
+  * Unified and simplified services connection config options
+  * Removed the Classic and Larry skins from the release packages
+  * SQLite: Use foreign keys, require SQLite >= 3.6.19
+
+-------------------------------------------------------------------
 Sun Jun 26 21:55:20 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.5.3
