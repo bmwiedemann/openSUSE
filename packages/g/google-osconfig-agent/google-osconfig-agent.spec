@@ -72,7 +72,7 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
 %post
     %service_add_post google-osconfig-agent.service
 
-    if [ "$1" == "2" ] && ! [ -e /.buildenv ]; then
+    if [ "$1" = "2" ] && ! [ -e /.buildenv ]; then
       # If the old directory exists make sure we set the file there.
       [ -e %{_sysconfdir}/osconfig ] && touch %{_sysconfdir}/osconfig/osconfig_agent_restart_required
       touch %{_var}/lib/google_osconfig_agent/osconfig_agent_restart_required
