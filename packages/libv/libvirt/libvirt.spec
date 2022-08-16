@@ -300,6 +300,8 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
+Patch0:         9493c9b7-lxc-containter-fix-build-with-glibc-2.36.patch
+Patch1:         c0d9adf2-virfile-Fix-build-with-glibc-2.36.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch

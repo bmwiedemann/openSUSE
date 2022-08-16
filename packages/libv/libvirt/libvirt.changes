@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 15 15:59:38 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- Fix build with glibc 2.36
+  9493c9b7-lxc-containter-fix-build-with-glibc-2.36.patch,
+  c0d9adf2-virfile-Fix-build-with-glibc-2.36.patch
+  boo#1202321
+
+-------------------------------------------------------------------
 Tue Aug  2 16:10:13 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 8.6.0

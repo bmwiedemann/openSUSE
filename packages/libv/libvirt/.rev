@@ -4111,4 +4111,15 @@ StandardGroups in rpmlint package.
     <comment></comment>
     <requestid>992407</requestid>
   </revision>
+  <revision rev="357" vrev="2">
+    <srcmd5>bef2ce3eedc7c70df270ff48fb40555f</srcmd5>
+    <version>8.6.0</version>
+    <time>1660662406</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with glibc 2.36
+  9493c9b7-lxc-containter-fix-build-with-glibc-2.36.patch,
+  c0d9adf2-virfile-Fix-build-with-glibc-2.36.patch
+  boo#1202321</comment>
+    <requestid>995199</requestid>
+  </revision>
 </revisionlist>
