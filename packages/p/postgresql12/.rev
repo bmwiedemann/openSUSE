@@ -266,4 +266,15 @@ Upgrade to version 12.6:
   * https://www.postgresql.org/docs/12/release-12-11.html</comment>
     <requestid>977047</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ef4141f5efddf779be02d4235dfdc3a7</srcmd5>
+    <version>12.12</version>
+    <time>1660662402</time>
+    <user>dimstar_suse</user>
+    <comment>- - Update to 12.12:
+  * bsc#1202368, CVE-2022-2625: Extension scripts replace objects
+    not belonging to the extension.
+  * https://www.postgresql.org/docs/release/12.12/</comment>
+    <requestid>995183</requestid>
+  </revision>
 </revisionlist>
