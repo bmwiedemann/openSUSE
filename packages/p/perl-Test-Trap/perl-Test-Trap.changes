@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 28 03:07:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.3.5
+   see /usr/share/doc/packages/perl-Test-Trap/Changes
+
+  0.3.5	Wed 27 Jul 2022 05:58:02 AM CEST
+          No changes to the libraries, just to the tests.  Perl best
+          practices form a moving target.
+          - Stop using bareword filehandles; if it isn't deprecated
+            already, it will be.
+          - RT #143716: Perl pulled the rug from under me on untainting
+            environment variables when it stopped treating an empty
+            string as a safe PATH.  Fix by deleting the offending
+            environment variables instead, as suggested by Graham Knop.
+
+-------------------------------------------------------------------
 Thu Nov  8 07:01:39 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.3.4

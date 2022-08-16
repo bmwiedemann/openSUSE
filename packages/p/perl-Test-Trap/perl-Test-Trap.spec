@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Trap
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-Test-Trap
-Version:        0.3.4
-Release:        0
 %define cpan_name Test-Trap
-Summary:        Trap exit codes, exceptions, output, etc
+Name:           perl-Test-Trap
+Version:        0.3.5
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+Summary:        Trap exit codes, exceptions, output, etc
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/EB/EBHANSSEN/%{cpan_name}-v%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Data::Dump)
@@ -49,7 +47,7 @@ The values collected by the latest trap can then be queried or tested
 through a special trap object.
 
 %prep
-%setup -q -n %{cpan_name}-v%{version}
+%autosetup  -n %{cpan_name}-v%{version}
 
 %build
 perl Build.PL installdirs=vendor
@@ -63,7 +61,6 @@ perl Build.PL installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
