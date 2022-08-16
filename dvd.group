@@ -2087,12 +2087,12 @@
     <package name="libharfbuzz-subset0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libharfbuzz0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libhavege2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libhdf5-103" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libhdf5_cpp103" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libhdf5_fortran102" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libhdf5_hl100" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libhdf5_hl_cpp100" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libhdf5hl_fortran100" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libhdf5-200" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libhdf5_cpp200" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libhdf5_fortran200" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libhdf5_hl200" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libhdf5_hl_cpp200" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libhdf5hl_fortran200" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libheif1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libhidapi-hidraw0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libhogweed6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
