@@ -1439,4 +1439,11 @@ is not needed.
     <comment>Drop virtualbox-guest-x11: no longer existing</comment>
     <requestid>994743</requestid>
   </revision>
+  <revision rev="201" vrev="199">
+    <srcmd5>7c0e4901cf04621f44aa926f2f8ae2b5</srcmd5>
+    <version>unknown</version>
+    <time>1660632455</time>
+    <user>dimstar_suse</user>
+    <comment>Thunderbird and nodejs-electron as i686 (boo#1202372)</comment>
+  </revision>
 </revisionlist>
