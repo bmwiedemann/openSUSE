@@ -498,4 +498,19 @@
     <comment>- remove mock dependency</comment>
     <requestid>983763</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>83c97dea7d94ff59a97fb1196023f334</srcmd5>
+    <version>6.0.0</version>
+    <time>1660662481</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.0.0
+  - requirements: Remove explicit pbr dependency
+  - Remove deprecated helpers from oslo_utils.timeutils
+  - Remove unnecessary unicode prefixes
+  - Remove oslo_utils.fnmatch
+  - bindep: Use Python 3 devel packages
+  - strutils: Defer import of pyparsing
+  - Drop python3.6/3.7 support in testing runtime</comment>
+    <requestid>996538</requestid>
+  </revision>
 </revisionlist>

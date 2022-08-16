@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 11 08:25:23 UTC 2022 - cloud-devel@suse.de
+
+- update to version 6.0.0
+  - requirements: Remove explicit pbr dependency
+  - Remove deprecated helpers from oslo_utils.timeutils
+  - Remove unnecessary unicode prefixes
+  - Remove oslo_utils.fnmatch
+  - bindep: Use Python 3 devel packages
+  - strutils: Defer import of pyparsing
+  - Drop python3.6/3.7 support in testing runtime
+
+-------------------------------------------------------------------
 Tue May 24 20:46:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - remove mock dependency 
