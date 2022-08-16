@@ -1,8 +1,8 @@
 #
 # spec file for package python-pydyf
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2021 Dr. Axel Braun <DocB@openSUSE.org>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2022 Dr. Axel Braun <DocB@openSUSE.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,20 +21,23 @@
 %define         skip_python2 1
 
 Name:           python-pydyf
-Version:        0.1.2
+Version:        0.2.0
 Release:        0
 Summary:        A low-level PDF generator
 License:        BSD-3-Clause
 URL:            https://www.courtbouillon.org/pydyf
 Source:         https://files.pythonhosted.org/packages/source/p/pydyf/pydyf-%{version}.tar.gz
+BuildRequires:  %{python_module flit}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+
 BuildArch:      noarch
 ## Testing
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pytest-isort}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  gs
 
 %python_subpackages
@@ -46,14 +49,14 @@ A low-level PDF generator written in Python and based on PDF specification 1.7.
 %setup -q -n pydyf-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-sed -i 's:--flake8 --cov --no-cov-on-fail::' pyproject.toml
+sed -i 's:--flake8 --numprocesses=auto::' pyproject.toml
 %pytest tests/test_pydyf.py
 
 %files %{python_files}
