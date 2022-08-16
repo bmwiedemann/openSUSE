@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  9 16:05:23 CEST 2022 - ro@suse.de
+
+- add missing files so that the signature checking can work
+  (MANIFEST.txt and all files mentioned within) 
+
+-------------------------------------------------------------------
 Wed Sep  1 13:31:53 UTC 2021 - Patrick Seidensal <pseidensal@suse.com> - v1.6.1
 
 - Update to v1.6.1 - fixes CVE-2020-13429 (bsc#1172125)

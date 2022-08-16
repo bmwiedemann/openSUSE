@@ -1,7 +1,7 @@
 #
 # spec file for package grafana-piechart-panel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,12 +47,14 @@ install -Dd -m0755 %{destination}/img/
 install -Dd -m0755 %{destination}/styles/
 install -D -m0644 dist/img/*.png %{destination}/img/
 install -D -m0644 dist/styles/*.css %{destination}/styles/
-install -D -m0644 dist/dark.js %{destination}/
-install -D -m0644 dist/light.js %{destination}/
+install -D -m0644 dist/dark.js* %{destination}/
+install -D -m0644 dist/light.js* %{destination}/
 install -D -m0644 dist/editor.html %{destination}/
 install -D -m0644 dist/module.html %{destination}/
-install -D -m0644 dist/module.js %{destination}/
+install -D -m0644 dist/module.js* %{destination}/
 install -D -m0644 dist/plugin.json %{destination}/
+install -D -m0644 dist/LICENSE %{destination}/
+install -D -m0644 dist/MANIFEST.txt %{destination}/
 
 install -D -m0644 README.md %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/dist
 install -D -m0644 LICENSE %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/
@@ -69,13 +71,15 @@ install -D -m0644 LICENSE %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/
 %dir %{grafana_plugin_dir}/%{plugin_subdir}/dist/styles
 %{grafana_plugin_dir}/%{plugin_subdir}/dist/editor.html
 %{grafana_plugin_dir}/%{plugin_subdir}/dist/module.html
-%{grafana_plugin_dir}/%{plugin_subdir}/dist/module.js
+%{grafana_plugin_dir}/%{plugin_subdir}/dist/module.js*
 %{grafana_plugin_dir}/%{plugin_subdir}/dist/plugin.json
-%{grafana_plugin_dir}/%{plugin_subdir}/dist/dark.js
-%{grafana_plugin_dir}/%{plugin_subdir}/dist/light.js
+%{grafana_plugin_dir}/%{plugin_subdir}/dist/dark.js*
+%{grafana_plugin_dir}/%{plugin_subdir}/dist/light.js*
 %{grafana_plugin_dir}/%{plugin_subdir}/dist/img/*.png
 %{grafana_plugin_dir}/%{plugin_subdir}/dist/styles/*.css
 %{grafana_plugin_dir}/%{plugin_subdir}/LICENSE
 %{grafana_plugin_dir}/%{plugin_subdir}/dist/README.md
+%{grafana_plugin_dir}/%{plugin_subdir}/dist/LICENSE
+%{grafana_plugin_dir}/%{plugin_subdir}/dist/MANIFEST.txt
 
 %changelog
