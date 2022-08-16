@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 12 11:16:34 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Update to 13.8:
+  * bsc#1202368, CVE-2022-2625: Extension scripts replace objects
+    not belonging to the extension.
+  * https://www.postgresql.org/docs/release/13.8/
+
+-------------------------------------------------------------------
 Thu May 12 10:45:07 UTC 2022 - Reinhard Max <max@suse.com>
 
 - Upgrade to 13.7:
