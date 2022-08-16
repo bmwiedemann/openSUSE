@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 16 09:20:30 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
+
+- Fix build with binutils-2.39:
+  * kdumpid-append_insn.patch
+  * kdumpid-binutils-2.39-fix.patch
+
+-------------------------------------------------------------------
 Tue Sep 22 20:11:47 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
 
 - Update to version 1.3:

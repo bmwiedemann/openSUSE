@@ -1,7 +1,7 @@
 #
 # spec file for package kdumpid
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,14 +34,16 @@ Group:          System/Kernel
 URL:            http://sourceforge.net/p/kdumpid
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         %{name}-%{version}.tar.bz2
+Patch1:         %{name}-append_insn.patch
+Patch2:         %{name}-binutils-2.39-fix.patch
 
 %description
 Kdumpid extracts information such as type of dump, architecture
 and kernel version from raw vmcores (Kernel memory dumps).
 
-
 %prep
 %setup
+%autopatch -p1
 
 %build
 make CUSTOM_CFLAGS="${CFLAGS:-%optflags}"
