@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 30 03:07:15 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.02
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Webpack/Changes
+
+  1.02 2022-07-29T10:45:50+0900
+   - Fix "pnpm init -y" is not a valid command
+   - Fix installing both devDependencies and dependencies #14 #15
+     Contributor: Daniel Mantovani
+
+-------------------------------------------------------------------
 Tue May 25 03:08:00 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.01
