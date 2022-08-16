@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Tiny
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name HTTP-Tiny
 Name:           perl-HTTP-Tiny
-Version:        0.080
+Version:        0.082
 Release:        0
-Summary:        Small, simple, correct HTTP/1.1 client
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Small, simple, correct HTTP/1.1 client
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml

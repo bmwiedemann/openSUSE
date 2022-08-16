@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 26 03:07:09 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.082
+   see /usr/share/doc/packages/perl-HTTP-Tiny/Changes
+
+  0.082     2022-07-25 09:45:34-04:00 America/New_York
+      - No changes from 0.081-TRIAL.
+  0.081     2022-07-17 09:01:51-04:00 America/New_York (TRIAL RELEASE)
+      [FIXED]
+      - No longer deletes the 'headers' key from post_form arguments hashref.
+      [DOCS]
+      - Noted that request/response content are handled as raw bytes.
+
+-------------------------------------------------------------------
 Sat Nov  6 03:06:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.080
