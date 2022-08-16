@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  9 03:09:39 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.99037
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99037  Jun 21 2022 Alexander Nalobin
+      - Fix whois servers for .ai
+
+-------------------------------------------------------------------
 Wed Jun 22 03:08:12 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.99036
