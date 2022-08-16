@@ -1808,4 +1808,14 @@
     (glgo#World/lollypop#2912).</comment>
     <requestid>974468</requestid>
   </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>35a7d9a35944ef4b8098b52296c30d17</srcmd5>
+    <version>1.4.35</version>
+    <time>1660667885</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.35:
+  * Fix an issue preventing an artist to be un-ignored
+    (glgo#World/lollypop#2927).</comment>
+    <requestid>997417</requestid>
+  </revision>
 </revisionlist>
