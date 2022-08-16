@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 11 03:10:09 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.807
+   see /usr/share/doc/packages/perl-Proc-Fork/Changes
+
+  0.807 Wed 10 Aug 2022
+  	- No functional changes
+  	- Packaging fix to stop installing boilerplate.pl
+  	- Updated package metadata
+
+-------------------------------------------------------------------
 Sat Aug 25 05:53:14 UTC 2018 - coolo@suse.com
 
 - updated to 0.806
