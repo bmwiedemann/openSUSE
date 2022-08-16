@@ -1,7 +1,7 @@
 #
 # spec file for package xfsdump
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xfsdump
-Version:        3.1.9
+Version:        3.1.10
 Release:        0
 Summary:        Administrative Utilities for the XFS File System
 License:        GPL-2.0-or-later
@@ -28,6 +28,7 @@ Source1:        https://www.kernel.org/pub/linux/utils/fs/xfs/xfsdump/xfsdump-%{
 Source2:        %{name}.keyring
 Patch0:         xfsdump-docdir.diff
 Patch1:         xfsdump-rename-READ-WRITE-macros-in-rmtlib.patch
+Patch2:         xfsdump-xfs_restore-remove-DMAPI-support.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  e2fsprogs-devel
@@ -59,6 +60,7 @@ subtrees may be restored from full or partial backups.
 %setup -q
 %patch0
 %patch1 -p1
+%patch2 -p1
 
 %build
 rm -f configure
