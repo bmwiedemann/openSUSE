@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
+# python311 does not bundle setuptools < 60
+%define skip_python311 1
 %define         test_data_commit 57cae742c7642494b51c26ba3f27935bbcc0116b
 Name:           python-sherpa
 Version:        4.14.1
@@ -30,8 +30,8 @@ Source1:        https://github.com/sherpa/sherpa-test-data/archive/%{test_data_c
 Patch1:         reproducible.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy-devel >= 1.19}
-#  https://sherpa.readthedocs.io/en/latest/install.html#building-from-source
-BuildRequires:  %{python_module setuptools < 60}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
@@ -60,7 +60,7 @@ data, using a variety of statistics and optimization methods.
 %prep
 %setup -q -n sherpa-%{version} -a1
 %autopatch -p1
-# uncomment system libs
+# uncomment system libs https://sherpa.readthedocs.io/en/latest/install.html#fftw
 sed -i "s|#fftw=local|fftw=local|" setup.cfg
 sed -i "s|#fftw-include[-_]dirs.*$|fftw-include-dirs=%{_includedir}|" setup.cfg
 sed -i "s|#fftw-lib-dirs.*$|fftw-lib-dirs=%{_libdir}|" setup.cfg
@@ -70,13 +70,18 @@ sed -i "s|/lib/|/%{_lib}/|" helpers/sherpa_config.py
 
 %build
 cp -r extern extern0
-%{python_expand %{$python_build}
+%{python_expand #
+# use the python3X bundled setuptools instead of setuptools 60+ from the distribution
+# https://sherpa.readthedocs.io/en/latest/install.html#building-from-source
+mkdir -p build
+$python -m venv build/buildenv --system-site-packages
+build/buildenv/bin/pip wheel --no-deps --disable-pip-version-check --use-pep517 --no-build-isolation --progress-bar off --verbose . -w build/
 rm -r extern
 cp -r extern0 extern
 }
 
 %install
-%python_install
+%pyproject_install
 
 %python_clone -a %{buildroot}%{_bindir}/sherpa_test
 %python_clone -a %{buildroot}%{_bindir}/sherpa_smoke

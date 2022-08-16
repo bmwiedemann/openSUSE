@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  8 15:24:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Sherpa requires a build with setuptools < 60:
+  * Use python3X bundled setuptools instead of distribution package
+  * Enable early skip_python311 because that bundles setuptools 62
+
+-------------------------------------------------------------------
 Thu Jun  9 20:00:36 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.14.1
