@@ -275,7 +275,7 @@
       <package name="mozjs91"/>
       <package name="mozjs78-devel"/>
       <package name="mozjs91-devel"/>
-      <package name-"nodejs-electron"/>
+      <package name="nodejs-electron"/>
       <package name="nodejs-electron-devel"/>
     </packagelist>
   </group>
