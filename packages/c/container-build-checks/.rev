@@ -57,4 +57,12 @@
     <comment>- openSUSE.conf: Allow bci/* as prefix</comment>
     <requestid>987443</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>69bdf1bb047e9193eb77a21aedeea73c</srcmd5>
+    <version>1650464301.a198cf9</version>
+    <time>1660662397</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>995154</requestid>
+  </revision>
 </revisionlist>

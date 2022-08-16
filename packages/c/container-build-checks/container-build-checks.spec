@@ -22,7 +22,7 @@ Release:        0
 Summary:        Scripts to validate built container images
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-URL:            https://build.opensuse.org
+URL:            https://github.com/openSUSE/container-build-checks
 Source0:        %{name}-%{version}.tar.xz
 Source1:        openSUSE.conf
 Source2:        SUSE.conf
