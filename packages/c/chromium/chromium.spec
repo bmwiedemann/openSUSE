@@ -352,9 +352,9 @@ export PYTHON=python3
 ln -sfn %{_bindir}/$PYTHON $HOME/bin/python
 export PATH="$HOME/bin/:$PATH"
 
-# use our wrapper (disabled)
-#rm chrome/installer/linux/common/wrapper
-#cp %{SOURCE106} chrome/installer/linux/common/wrapper
+# use our wrapper
+rm chrome/installer/linux/common/wrapper
+cp %{SOURCE106} chrome/installer/linux/common/wrapper
 
 # Remove bundled libs
 keeplibs=(
