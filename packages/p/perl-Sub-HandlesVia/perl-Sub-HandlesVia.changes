@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Aug 13 03:12:43 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.035
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.035	2022-08-12
+   - Sub::HandlesVia::CodeGenerator method_installer is now a rw attribute as
+     Sub::Accessor::Small was relying on that.
+  0.034	2022-08-07
+   - Sub::HandlesVia::CodeGenerator now handles generating code for type
+     assertions and coercions instead of relying on handlers to do it.
+   - Sub::HandlesVia::CodeGenerator now has a configurable sandbox package.
+   - Updated: Sub::HandlesVia::Toolkit::Mite supports recent Mite features
+     such as lvalue accessors and new ways of specifying defaults.
+  0.033	2022-07-12
+   - Optimizations to Sub::HandlesVia::CodeGenerator.
+   - Updated: Recompile with newer Mite.
+
+-------------------------------------------------------------------
 Wed Jul 13 03:08:54 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.032
