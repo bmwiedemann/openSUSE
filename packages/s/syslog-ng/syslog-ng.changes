@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 16 09:19:49 UTC 2022 - peter czanik <peter@czanik.hu>
+
+- update to 3.37.1 
+- add new modules to file lists
+- enable MQTT support only for Tumbleweed
+
+-------------------------------------------------------------------
 Mon Apr 25 10:54:23 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - URL -> https 

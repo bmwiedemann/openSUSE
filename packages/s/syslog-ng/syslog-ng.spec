@@ -18,11 +18,21 @@
 
 %define         syslog_ng_sockets_cfg	%{syslog_ng_rundir}/additional-log-sockets.conf
 %global		py_ver	 %(rpm -qf %{_bindir}/python3 --qf "%%{version}" | awk -F. '{print $1"."$2}')
+
+#redis only in openSUSE
 %if !0%{?is_opensuse}
 %bcond_with	redis
 %else
 %bcond_without	redis
 %endif
+
+# mqtt only in Tumbleweed
+%if 0%{?suse_version} > 1500
+%bcond_without	mqtt
+%else
+%bcond_with	mqtt
+%endif
+
 # missing dependencies on SLES 15
 %if 0%{?sle_version} >= 150000 && !0%{?is_opensuse}
 %bcond_with	dbi
@@ -56,7 +66,7 @@
 %bcond_with	mongodb
 %bcond_with	amqp
 Name:           syslog-ng
-Version:        3.35.1
+Version:        3.37.1
 Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
@@ -78,7 +88,6 @@ BuildRequires:  libcap-devel
 BuildRequires:  libjson-devel
 BuildRequires:  libnet-devel
 BuildRequires:  libopenssl-devel
-BuildRequires:  libpaho-mqtt-devel
 BuildRequires:  libtool
 BuildRequires:  net-snmp-devel
 BuildRequires:  pcre-devel
@@ -93,6 +102,9 @@ Conflicts:      syslog
 Provides:       syslog
 Provides:       sysvinit(syslog)
 Obsoletes:      syslog-ng-json
+%if %{with mqtt}
+BuildRequires:  libpaho-mqtt-devel
+%endif
 %if %{with smtp}
 BuildRequires:  libesmtp-devel
 %endif
@@ -136,11 +148,11 @@ Key features:
  * hand on messages for further processing using message queues (like
    AMQP), files or databases (like PostgreSQL or MongoDB).
 
-%package -n libevtlog-3_35-0
+%package -n libevtlog-3_37-0
 Summary:        Syslog-ng event logger library runtime
 Group:          System/Libraries
 
-%description -n libevtlog-3_35-0
+%description -n libevtlog-3_37-0
 The EventLog library provides an alternative to the simple syslog()
 API provided on UNIX systems. Compared to syslog, EventLog adds
 structured messages.
@@ -293,7 +305,9 @@ export AM_YFLAGS=-d
 	--enable-ssl				\
         --enable-afsnmp                         \
 	--disable-native			\
+%if %{with mqtt}
 	--enable-mqtt				\
+%endif
 %if %{with smtp}
         --with-libesmtp=%{_prefix}/lib                \
 %endif
@@ -462,8 +476,8 @@ chmod 640 "${additional_sockets#/}"
 #
 %{service_del_postun syslog-ng.service}
 
-%post -n libevtlog-3_35-0 -p /sbin/ldconfig
-%postun -n libevtlog-3_35-0 -p /sbin/ldconfig
+%post -n libevtlog-3_37-0 -p /sbin/ldconfig
+%postun -n libevtlog-3_37-0 -p /sbin/ldconfig
 
 %files
 ##
@@ -536,6 +550,8 @@ chmod 640 "${additional_sockets#/}"
 %dir %{_datadir}/syslog-ng/include/scl/cee/
 %dir %{_datadir}/syslog-ng/include/scl/discord/
 %dir %{_datadir}/syslog-ng/include/scl/fortigate/
+%dir %{_datadir}/syslog-ng/include/scl/kubernetes/
+%dir %{_datadir}/syslog-ng/include/scl/mariadb/
 %dir %{_datadir}/syslog-ng/xsd
 %dir %{_sysconfdir}/syslog-ng
 %dir %{_sysconfdir}/syslog-ng/conf.d
@@ -595,6 +611,7 @@ chmod 640 "${additional_sockets#/}"
 %attr(755,root,root) %{_libdir}/syslog-ng/loggen/libloggen_ssl_plugin.so
 %attr(755,root,root) %{_libdir}/syslog-ng/libazure-auth-header.so
 %attr(755,root,root) %{_libdir}/syslog-ng/libregexp-parser.so
+%attr(755,root,root) %{_libdir}/syslog-ng/librate-limit-filter.so
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/graphite/README
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/graphite/plugin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/nodejs/plugin.conf
@@ -634,9 +651,11 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/cee/adapter.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/discord/discord.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/fortigate/fortigate.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/kubernetes/kubernetes.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/mariadb/audit.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/xsd/*
 
-%files -n libevtlog-3_35-0
+%files -n libevtlog-3_37-0
 %{_libdir}/libevtlog-*.so.*
 
 %files snmp
@@ -728,9 +747,13 @@ chmod 640 "${additional_sockets#/}"
 
 %endif
 
+%if %{with mqtt}
+
 %files mqtt
 %defattr(-,root,root)
 %dir %{_libdir}/syslog-ng
 %attr(755,root,root) %{_libdir}/syslog-ng/libmqtt.so
+
+%endif
 
 %changelog
