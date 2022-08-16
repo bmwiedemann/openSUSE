@@ -17,21 +17,30 @@
 
 
 Name:           reprepro
-Version:        5.3.0
+Version:        5.4.0
 Release:        0
 Summary:        Debian repository metadata generator
 License:        GPL-2.0-only AND GPL-2.0-or-later AND MIT
 URL:            https://salsa.debian.org/debian/reprepro
-Source:         https://salsa.debian.org/debian/reprepro/-/archive/reprepro-%version/reprepro-reprepro-%version.tar.bz2
-Patch1:         0001-add-zstd-support.patch
+Source:         http://deb.debian.org/debian/pool/main/r/reprepro/reprepro_%{version}.orig.tar.xz
 BuildRequires:  automake
 BuildRequires:  gpgme-devel
 BuildRequires:  libarchive-devel
-BuildRequires:  libbz2-devel
-BuildRequires:  libdb-4_8-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
+%if 0%{?suse_version}
+BuildRequires:  libbz2-devel
+BuildRequires:  libdb-4_8-devel
+Requires:       gpg2
+%else
+BuildRequires:  bzip2-devel
+BuildRequires:  (db4-devel or libdb-devel)
+Requires:       gnupg2
+%endif
+Requires:       bzip2
+Requires:       tar
+Requires:       zstd
 
 %description
 reprepro is a tool to manage a repository of Debian packages (.deb).  It
@@ -42,7 +51,7 @@ Checking signatures of mirrored repositories and creating signatures of the
 generated Package indexes is supported.
 
 %prep
-%autosetup -p1 -n %name-%name-%version
+%autosetup -p1 -n %name-%version
 find docs -type f -exec chmod -x {} +
 
 %build
