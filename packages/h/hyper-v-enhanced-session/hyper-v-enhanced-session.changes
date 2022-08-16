@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 15 20:06:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid bashism in post install scripts (bsc#1195391) 
+
+-------------------------------------------------------------------
 Fri Mar 25 19:57:32 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 1.0.1:

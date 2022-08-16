@@ -105,7 +105,7 @@ if [ -e %{_bindir}/firewall-cmd ];
 then
   for service in ms-wbt tigervnc tigervnc-https
   do
-    if [ $(%{_bindir}/firewall-cmd --query-service=$service) == "no" ];
+    if [ $(%{_bindir}/firewall-cmd --query-service=$service) = "no" ];
     then
       printf "\nAdding firewall rules for $service:\n"
       %{_bindir}/firewall-cmd --add-service=$service
