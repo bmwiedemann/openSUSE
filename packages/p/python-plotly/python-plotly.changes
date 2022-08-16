@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Aug 14 14:43:43 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.10.0:
+  * Updated
+    + Updated Plotly.js to from version 2.12.1 to version 2.14.0. See
+      the plotly.js CHANGELOG for more information. Notable changes
+      include:
+    + Add support for sankey links with arrows
+    + Add selections, newselection and activeselection layout
+      attributes to have persistent and editable selections over
+      cartesian subplots
+    + Add unselected.line.color and unselected.line.opacity options to
+      parcoords trace
+    + Display Plotly's new logo in the modebar
+
+-------------------------------------------------------------------
+Sat Jul  9 13:42:36 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.9.0:
+  * Added
+    + pattern_shape options now available in px.timeline() #3774
+    + facet_* and category_orders now available in px.pie() #3775
+  * Performance
+    + px methods no longer call groupby on the input dataframe when
+      the result would be a single group, and no longer groups by a
+      lambda, for significant speedups #3765 with thanks to @jvdd
+  * Updated
+    + Allow non-string extras in flaglist attributes, to support
+      upcoming changes to ax.automargin in plotly.js plotly.js#6193,
+      #3749
+
+- changes from version 5.8.2:
+  * Fixed
+    + Fixed a syntax error that caused rendering issues in Databricks
+      notebooks and likely elsewhere. #3763 with thanks to @fwetdb
+
+- changes from version 5.8.1:
+  * (no changes, due to a mixup with the build process!)
+
+-------------------------------------------------------------------
 Tue May 31 03:06:21 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.8.0:
