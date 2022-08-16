@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Mon Aug 15 12:45:54 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.0.0
+  * Introduces XfdashboardSettings as settings object for libxfdashboard
+  * Introduces XfdashboardPluginSettings as settings object for
+    plugins like XfdashboardSettings is for the library
+  * Move XfdashboardApplication out of library libxfdashboard into
+    application xfdashboard and turn libxfdashboard into a
+    complete library
+  * Implemented a new color class XfdashboardGradientColor which
+    support solid colors (single colors) and path gradients
+    Path gradient will follow a path (the outline) and draw
+    a gradient orthogonal with color stops along this path
+  * Outlines (through XfdashboardoutlineEffect) do now use
+    the new XfdashboardGradientColor to support the usual
+    solid colors as befeofre as well as a new path gradient
+  * Enhanced new color class XfdashboardGradientColor to support
+    also linear gradients besided solid colors (single colors)
+    and path gradients
+    Added support to specify colors for XfdashboardGradientColor in CSS
+  * New search provider plugin "recently used" to search through
+    list of recently used files provided by GTK+ recent-used manager
+  * New plugin "autopin-windows" which will automatically pin each
+    window moved to any non-primary monitor and unpins them if moved
+    to primary monitor. This plugins runs in daemon mode only
+  * Added a new property "visibility", which is stylable, to
+    XfdashboardActor, so each actor inherits this new stylable property.
+    This stylable property controls if an actor should be visible
+    if requested to using clutter_actor_show().
+  * Added new actions for key bindings to add, remove, toggle or
+    apply CSS classes to a target actor at runtime. Using it by
+    default to switch between list and icon mode at application
+    view with <Ctrl>-i for icon mode and <Ctrl>-l for list mode
+    when application view has the focus. (#16)
+  * Fixed crashes with animations when user disabled animations in
+    settings (#9)
+  * Fixed missing $(XFDASHBOARD_DEBUG_CFLAGS) in all Makefile.am files
+    except of libxfdashboard and common folder. So debug macros to print
+    debug message where empty and not printed at all, e.g. at plugins
+  * Fixed registering focusable actors from other stage interface as
+    the main one for primary monitor. (#194)
+  * Fixed signal definition of "can-suspend" at XfdashboardCore which
+    prevented it to return the correct value if suspend is supported.
+    It always returned FALSE even if xfdashboard is run in daemon mode
+    and stopped to run background and activating some plugin. (#197)
+  * Fixed compiler warning about "'__atomic_load' discards 'volatile'
+    qualifier" in g_once_* functions of Glib which was changed in
+    releases since 2.66.3
+  * Fixed crash on start-up if xfdashboard was started for the very
+    first time without any settings in xfconf (#200)
+  * Fixed back button not working in sub-menu "all applications" (#21)
+  * Fixed incorrect allocation for quicklaunch actor when horizontal
+    orientation is used. Thanks to michal4132 for the hint where to
+    look at ;) (#2)
+  * Fixed switching to workspace of window being activated when window
+    was selected at pop-up menu (#15)
+  * Fixed intltool lock file bug in make distcheck.
+  * Fixed failing to create texture for outlines because either width
+    or height is zero (#8)
+  * Fixed visual bug in default theme drawing wrong fill and outlines
+    corners at workspace selector
+  * Fixed not to draw outlines with rounded corners if background type
+    has not set rounded corners, as the fill background method
+    has already checked for years
+  * Fixed AppInfo to match AppStream specification (#4)
+  * Fixed lots of typos I've done sadly
+  * Fixed enabling full debug builds again with removal of all
+    deprecated functions
+  * Fixed using deprecated function by using g_memdup2() instead of
+    g_memdup() when compiling against GLib 2.67.4 or higher
+  * Changed default theme to make use of new path gradients at outlines.
+  * Improved window placements in XfdashboardWindowsView
+    by centering windows in usused space of last row
+  * Do not compile and install the "example-search-provider" plugin
+    anymore but include sources and Makefile example
+    (now called Makefile.am.example) in distribution file
+  * Dropped support of Xfconf legacy (below 4.13.0) because of new
+    XfdashboardSettings and XfdashboardPluginSettings object
+  * Removed all xfdashboard_*_get_default() function to access
+    singleton instances of the subsystems/component, like plugins
+    manager etc., as these singleton instances should now to access
+    through XfdashboardCore and its xfdashboard_core_get_*(...) functions
+  * Background fill color of XfdashboardBackground as well as outline
+    color of XfdashboardOutlineEffect do support all types of new color
+    class XfdashboardGradientColor, i.e solid colors, linear gradients
+    and path gradients
+  * Improved algorithm to detect application and determine its desktop
+    file (*.desktop) for X11 windows by checking for the X atom called
+    "_GTK_APPLICATION_ID" at X11 window properties and at Linux also
+    lookup executable file from /proc filesystem in application database.
+  * Plugins can now use the debug infrastructure of libxfdashboard
+  * Configuration and data files for application added to
+    XfdashboardSettings and also added to plugins for plugin-specific
+    configuration and data filesystem
+  * Implemented function to set "urgent" state at X11 windows
+  * Simplied animation creation and usage (or not if disabled) by
+    returning an empty animation object which the "done" signal can be
+    connected to
+  * Disabled applications-search-provider statistics as it uses a file
+    instead of settings object or similar and does not work with new
+    XfdashboardSettings object.
+  * Prepared for newer libxfce4util (version 4.17.2 or higher) which
+    changed function xfce_append_quoted to xfce_g_string_append_quoted
+  * Translation updates
+
+-------------------------------------------------------------------
 Fri Mar  5 09:45:08 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to 0.8.1

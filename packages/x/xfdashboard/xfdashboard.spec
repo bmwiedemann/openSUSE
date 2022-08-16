@@ -1,7 +1,7 @@
 #
 # spec file for package xfdashboard
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver 0
 Name:           xfdashboard
-Version:        0.8.1
+Version:        1.0.0
 Release:        0
 Summary:        GNOME shell like dashboard for Xfce
 License:        GPL-2.0-or-later
