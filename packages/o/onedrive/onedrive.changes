@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug 16 09:24:20 UTC 2022 - egotthold@suse.com
+
+- Update to version 2.4.20:
+  * Release files for 2.4.20 (#2052)
+  * Enforce that --confdir must be a directory (#2051)
+  * Increase thread sleep for better process handling (#2046)
+  * Update Docker.md
+  * Ensure that any active http instance is shutdown before any application exit (#2035)
+  * Update USAGE.md (#2033)
+  * Update USAGE.md
+  * Fix handling of a custom configuration directory (#2029)
+  * Fix --display-config after http/2 change (#2028)
+  * Various little spelling fixes (check with lintian during Debian packaging) (#2027)
+  * Switch to using curl defaults for HTTP/2 operations (#2026)
+  * Update OneDrive API response handling for National Cloud Deployments (#2023)
+  * Fix 'foreign key constraint failed' when using OneDrive Business Shared Folders (#2017)
+  * Update known-issues.md (#2016)
+  * Release 2.4.20 Dev Prep (#2013)
+
+-------------------------------------------------------------------
 Sat Jun 18 11:40:34 UTC 2022 - hpj@urpla.net
 
 - Update to version 2.4.19:
