@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Aug  7 17:01:37 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.22:
+  * This is a hotfix release that fixes building with libgsasl,
+    which was accidentally broken in version 1.8.21.
+  * It also updates the msmtpq script.
+- additional changes from version 1.8.21:
+  * A new configuration command eval replaces the current
+    configuration file line with the output of a command (similar
+    to passwordeval, but more general).
+  * A Message-ID header is now generated if none is present in the
+    mail. This can be changed with the new command set_msgid_header.
+  * The optional msmtpd service now adds a Received header.
+  * Furthermore, a few minor problems were corrected and the
+    documentation and translations were updated.
+- mark the doc sub-package as noarch
+
+-------------------------------------------------------------------
 Wed Mar 23 19:55:26 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.20:

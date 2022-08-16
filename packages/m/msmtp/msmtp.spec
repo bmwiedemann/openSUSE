@@ -17,7 +17,7 @@
 
 
 Name:           msmtp
-Version:        1.8.20
+Version:        1.8.22
 Release:        0
 BuildRequires:  gnutls-devel >= 3.4
 BuildRequires:  libidn2-devel
@@ -66,6 +66,7 @@ the delivery.  msmtp supports multiple accounts.
 Summary:        Documentation for %{name}
 Group:          Documentation/Other
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description doc
 msmtp is an SMTP client that can be used as a plug-in for Mutt and
