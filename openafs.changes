@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 16 09:54:58 UTC 2022 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- update to current of upstream-branch openafs-stable-1_8_x
+- apply patches for 15.9:
+  * 05b722d.diff 6348262.diff cc8edf7.diff
+- remove patches now in openafs-stable-1_8_x
+  * fix_gcc_12_linux_5.18.diff
+
+-------------------------------------------------------------------
 Wed Jun 22 16:13:18 UTC 2022 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - apply patches adressing:

@@ -106,7 +106,9 @@ Source99:       openafs.changes
 # PATCH-FIX-UPSTREAM KMP build and gcc
 # required patches for Linux-5.18 as mentionend on
 # https://wiki.openafs.org/devel/Whiteboard/ (June 2022)
-Patch1:         fix_gcc_12_linux_5.18.diff
+Patch1:         cc8edf7.diff
+Patch2:         05b722d.diff
+Patch3:         6348262.diff
 # PATCH-FIX-UPSTREAM make configure detect ncurses 6 correctly
 Patch4:         4cf7a9a.diff
 
@@ -319,6 +321,8 @@ done
 
 %setup -q -n openafs-%{upstream_version} -T -b 0 -b 1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 %patch4 -p1
 
 ./regen.sh
