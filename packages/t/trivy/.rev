@@ -424,4 +424,41 @@
     <comment></comment>
     <requestid>991385</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>3b2d2561904b83c755fc6bcbabea40f5</srcmd5>
+    <version>0.31.0</version>
+    <time>1660662499</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.31.0:
+  * fix(flag): add error when there are no supported security checks (#2713)
+  * fix(vuln): continue scanning when no vuln found in the first application (#2712)
+  * revert: add new classes for vulnerabilities (#2701)
+  * feat(secret): detect secrets removed or overwritten in upper layer (#2611)
+  * fix(cli): secret scanning perf link fix (#2607)
+  * chore(deps): bump github.com/spf13/viper from 1.8.1 to 1.12.0 (#2650)
+  * feat: Add AWS Cloud scanning (#2493)
+  * docs: specify the type when verifying an attestation (#2697)
+  * docs(sbom): improve SBOM docs by adding a description for scanning SBOM attestation (#2690)
+  * fix(rpc): scanResponse rpc conversion for custom resources (#2692)
+  * feat(rust): Add support for cargo-auditable (#2675)
+  * feat: Support passing value overrides for configuration checks (#2679)
+  * feat(sbom): add support for scanning a sbom attestation (#2652)
+  * chore(image): skip symlinks and hardlinks from tar scan (#2634)
+  * fix(report): Update junit.tpl (#2677)
+  * fix(cyclonedx): add nil check to metadata.component (#2673)
+  * docs(secret): fix missing and broken links (#2674)
+  * refactor(cyclonedx): implement json.Unmarshaler (#2662)
+  * chore(deps): bump github.com/aquasecurity/table from 1.6.0 to 1.7.2 (#2643)
+  * chore(deps): bump github.com/Azure/go-autorest/autorest (#2642)
+  * feat(kubernetes): add option to specify kubeconfig file path (#2576)
+  * docs:  follow Debian's &quot;instructions to connect to a third-party repository&quot; (#2511)
+  * chore(deps): bump github.com/google/licenseclassifier/v2 (#2644)
+  * chore(deps): bump github.com/samber/lo from 1.24.0 to 1.27.0 (#2645)
+  * chore(deps): bump github.com/Azure/go-autorest/autorest/adal (#2647)
+  * chore(deps): bump github.com/cheggaaa/pb/v3 from 3.0.8 to 3.1.0 (#2646)
+  * chore(deps): bump sigstore/cosign-installer from 2.4.1 to 2.5.0 (#2641)
+  * chore(deps): bump actions/cache from 3.0.4 to 3.0.5 (#2640)
+  * chore(deps): bump alpine from 3.16.0 to 3.16.1 (#2639)</comment>
+    <requestid>997334</requestid>
+  </revision>
 </revisionlist>
