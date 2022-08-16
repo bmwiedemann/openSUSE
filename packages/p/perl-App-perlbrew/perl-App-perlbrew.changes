@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug  1 03:06:06 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.96
+   see /usr/share/doc/packages/perl-App-perlbrew/Changes
+
+  0.96
+  	- Released at 2022-07-31T15:42:39+0900
+  	- Thanks to our contributors: Rolf Stöckli
+  	- `install-cpm` is now properly documented. Thanks to Tekki.
+  	- Let `install` hint for `init` when PERLBREW_ROOT does not exist. .RT #57669.
+          - Reveal the actual error code of curl/wget etc. Github issue #748.
+
+-------------------------------------------------------------------
 Mon May 16 03:06:05 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.95
