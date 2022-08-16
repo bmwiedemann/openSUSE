@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Mon Aug 15 03:09:19 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.016008
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.016008	2022-08-14
+   - Added: Type::Params now has a `goto_next` option, which if set to a
+     coderef will generate a signature which on success, instead of returning
+     @_, passes @_ to the coderef. If `goto_next` is set to true, the
+     signature instead expects to be passed such a coderef as its first
+     argument.
+   - Eval::TypeTiny::CodeAccumulator now better handles placeholders.
+   - Type::Params `wrap_subs` and `wrap_methods` internally use `goto_next`.
+  1.016007	2022-08-04
+   - Added: Type::Params now has a `strictness` option, which if set to false
+     (or certain strings of Perl code that evaluate to false) will skip type
+     checks apart from when needed for coercions, skip parameter count
+     checks, and skip checks for unknown named parameters. You generally
+     don't want to set it to false or indeed set it at all.
+  1.016006	2022-07-25
+   [ Documentation ]
+   - Added a new page to the manual: Type::Tiny::Manual::UsingWithMite.
+   [ Other ]
+   - Type::Tiny now overloads 0+ to return a unique number per type
+     constraint.
+  1.016005	2022-07-23
+   [ Bug Fixes ]
+   - Minor bugfix in Type::Tiny::cmp where in some cases it was returning '0'
+     instead of '0E0'; unlikely to affect anything.
+   [ Other ]
+   - Updated: Updated Type::Params benchmarking scripts.
+   - When Type::Registry/Type::Parser has to create a class or role type
+     constraint, use Types::Standard InstanceOf/ConsumerOf instead of
+     creating new anonymous Type::Tiny::Class/Type::Tiny::Role constraints.
+  1.016004	2022-07-22
+   - Added: Type::Params now allows named parameters to have aliases.
+  1.016003	2022-07-22
+   - Catalyst was relying on the internals of the old slurpy function. Next
+     release of Catalyst should fix that, but this version of Types::Standard
+     introduces a workaround for the issue without going back to implementing
+     Slurpy the old way. (The Catalyst test suite passes at least!)
+   - In most places that accept a Slurpy, happily accept a child of a child
+     of a child of Slurpy.
+   - Rename Type::Params::Coderef to Eval::TypeTiny::CodeAccumulator as it's
+     not really Type::Params-specific. Add test cases for it and make it part
+     of the public API.
+   - Use Eval::TypeTiny::CodeAccumulator in compile_match_on_type.
+   - When Type::Tiny's is_subtype_of, etc methods are called passing a string
+     as a parameter, pay attention to calling package's type registry.
+  1.016002	2022-07-19
+   [ BACK COMPAT ]
+   - The slurpy(Foo) function from Types::Standard has been replaced by a new
+     Slurpy parameterized type, so you can use Slurpy[Foo] instead. A
+     slurpy() function is still provided for backwards compatibility, but if
+     you were relying on the internal detail that this used to return an
+     unblessed hashref, this release might break that assumption.
+  1.016001	2022-07-18
+   - Allow Type::Utils::extends to extend Type::Library::Compiler libraries.
+   - Allow the add_types method of Type::Registry to consume
+     Type::Library::Compiler libraries.
+   - Improved coercion of Type::Library::Compiler's type constraints to
+     Type::Tiny.
+  1.016000	2022-07-16
+   - Add a clone option to parameters in Type::Params to clone them with
+     Storable::dclone(). This is mostly a test of how much easier improving
+     Type::Params is since it was refactored.
+  1.015_003	2022-07-16
+   - The simple case of compile() with no parameters was broken by
+     refactoring. It should now work.
+  1.015_002	2022-07-16
+   - Defaults for Type::Params parameters can now be a reference to a string
+     of Perl code (like Mite).
+  1.015_001	2022-07-16
+   - Type::Params::Signature now avoids using the word `return` in its
+     generated source code, as MooX::Press was using that as a talisman. Also
+     avoid using the `return` keyword to return the final results of the
+     signature check, as falling through performs better on older Perls, plus
+     it enables MooX::Press to convert the coderef into a do{} block.
+  1.015_000	2022-07-16
+   [ BACK COMPAT ]
+   - Type::Params is now smarter at calculating the expected $#_ for
+     functions which take named parameters, so it can 'fail early' more often
+     when there are extra parameters or missing required parameters. This
+     means you may get errors indicating the wrong number of parameters when
+     you were previously getting errors indicating particular unrecognized or
+     missing required parameters. This may break test suites which were
+     looking for particular error messages.
+   [ Other ]
+   - Major refactoring of Type::Params, splitting out signature compilation
+     into separate backend OO-modules which Type::Params now acts as a
+     frontend for. Compiling signature checks is probably now a little
+     slower, but once they're compiled Type::Params is still the fastest Perl
+     implementation of typed parameter checks. This refactor should make the
+     code easier to work with, add new features to, and tweak the performance
+     of.
+
+-------------------------------------------------------------------
 Tue Jun 28 03:08:37 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.014000
