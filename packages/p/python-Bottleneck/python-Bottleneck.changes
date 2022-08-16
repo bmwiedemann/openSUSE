@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Aug 14 15:00:35 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.3.5:
+  * Bug Fixes
+    + Fix numpy deprecation of non-tuple indices
+  * Enhancements
+    + Switch build to manylinux_2_24_x86_64 using cibuildwheel
+
+-------------------------------------------------------------------
+Sat Mar 12 05:34:03 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 1.3.4:
+  * Bug Fixes
+    + Fix Memory leak with big-endian data
+
+- changes from version 1.3.3:
+  * Bug Fixes
+    + Fix Python 3.10 build
+  * Enhancements
+    + Provide pre-compiled wheels for most x86_64 architectures
+
+-------------------------------------------------------------------
 Wed Feb 17 22:59:05 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip python36 build: NumPy 1.20 in Tumbleweed does not provide

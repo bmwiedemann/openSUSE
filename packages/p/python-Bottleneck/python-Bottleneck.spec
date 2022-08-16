@@ -1,7 +1,7 @@
 #
 # spec file for package python-Bottleneck
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-Bottleneck
-Version:        1.3.2
+Version:        1.3.5
 Release:        0
 Summary:        A collection of fast NumPy array functions
 License:        BSD-2-Clause AND BSD-3-Clause
