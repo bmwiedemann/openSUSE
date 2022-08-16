@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 29 03:08:19 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.025
+   see /usr/share/doc/packages/perl-Sereal/Changes
+
+  4.025 Thr Jul 28, 2022
+      * Release with build fixes for the Decoder under threaded
+        perls and MANIFEST update.
+
+  4.024 Wed Jul 27, 2022
+      * Changes to the FREEZE/THAW mechanism. Remove the part that
+        says that FREEZE cannot return a list. It can, and we have
+        supported it for a very long time, although I have not checked
+        how far back this support goes. If you use the FREEZE/THAW
+        API's you should upgrade to this version or later.
+      * Test fixes for t/020_sort_keys.t hanging on some perls
+        which do not come bundled with Hash::Util.
+
+-------------------------------------------------------------------
 Mon Feb 21 03:11:15 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.023
