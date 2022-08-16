@@ -8299,7 +8299,6 @@ unsorted:
   - kimagemapeditor-lang 
   - kimap-devel 
   - kinit-devel 
-  - kinput2 
   - kio-devel 
   - kio-gdrive 
   - kio-gdrive-lang 
@@ -8445,7 +8444,6 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
-  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -10810,7 +10808,7 @@ unsorted:
   - libevt-devel 
   - libevt-tools 
   - libevt1 
-  - libevtlog-3_35-0 
+  - libevtlog-3_37-0 
   - libevtlog-devel 
   - libevtlog0 
   - libevtx-devel 
@@ -15813,7 +15811,6 @@ unsorted:
   - mairix 
   - makebootfat: [i586] 
   - makedepend 
-  - makedev 
   - makeinfo 
   - makeinfo-lang 
   - makeself 
@@ -18277,14 +18274,11 @@ unsorted:
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSE-xfce-icon-theme 
   - openSUSEway 
-  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -19583,6 +19577,7 @@ unsorted:
   - perl-Furl 
   - perl-Fuse 
   - perl-Future 
+  - perl-Future-IO 
   - perl-GD-Barcode 
   - perl-GD-Graph3d 
   - perl-GDGraph 
@@ -24436,6 +24431,7 @@ unsorted:
   - python310-requests-mock 
   - python310-requests-oauthlib 
   - python310-requests-unixsocket 
+  - python310-requests-wsgi-adapter 
   - python310-requests_ntlm 
   - python310-requestsexceptions 
   - python310-requirements-detector 
@@ -27713,6 +27709,7 @@ unsorted:
   - python38-requests-oauthlib 
   - python38-requests-toolbelt 
   - python38-requests-unixsocket 
+  - python38-requests-wsgi-adapter 
   - python38-requests_ntlm 
   - python38-requestsexceptions 
   - python38-requirements-detector 
@@ -31027,6 +31024,7 @@ unsorted:
   - python39-requests-oauthlib 
   - python39-requests-toolbelt 
   - python39-requests-unixsocket 
+  - python39-requests-wsgi-adapter 
   - python39-requests_ntlm 
   - python39-requestsexceptions 
   - python39-requirements-detector 
@@ -33734,8 +33732,6 @@ unsorted:
   - telegraf 
   - telegram-desktop: [x86_64] 
   - telegram-theme-adapta: [x86_64] 
-  - telemetrics-client 
-  - telemetrics-client-devel 
   - telepathy-accounts-signon 
   - telepathy-farstream-devel 
   - telepathy-gabble 
@@ -42884,7 +42880,6 @@ unsorted:
   - tzdb 
   - u-boot-tools 
   - u3-tool 
-  - uacme 
   - ubi_reader 
   - ubridge 
   - ubuntu-fonts 
