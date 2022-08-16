@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 29 03:09:01 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.025
+   see /usr/share/doc/packages/perl-Sereal-Decoder/Changes
+
+  4.025 Thr Jul 28, 2022
+      * Release with build fixes for threaded perls and MANIFEST
+        update. Oops.
+
+  4.024 Wed Jul 27, 2022
+      * Total rework of how THAW is invoked to resolve issues with
+        frozen representations containing blessed objects.
+
+-------------------------------------------------------------------
 Mon Feb 21 03:12:00 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.023
