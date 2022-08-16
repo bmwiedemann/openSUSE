@@ -78,4 +78,15 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
   * https://www.postgresql.org/about/news/p-2470/</comment>
     <requestid>983858</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e0ed380348eb3e65505b378f85685eee</srcmd5>
+    <version>14.5</version>
+    <time>1660662404</time>
+    <user>dimstar_suse</user>
+    <comment>-  Update to 14.5:
+  * bsc#1202368, CVE-2022-2625: Extension scripts replace objects
+    not belonging to the extension.
+  * https://www.postgresql.org/docs/release/14.5/</comment>
+    <requestid>995185</requestid>
+  </revision>
 </revisionlist>
