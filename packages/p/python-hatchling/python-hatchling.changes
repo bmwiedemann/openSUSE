@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Aug 13 19:23:18 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.7.1:
+  * Fixed:
+    + Fix the value the relative_path attribute of included files,
+      that some build plugins may use, when selecting explicit
+      paths
+
+-------------------------------------------------------------------
+Sat Aug 13 14:17:00 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.7.0:
+  * Added:
+    + Add require-runtime-features option for builders and build
+      hooks
+    + Check for unknown trove classifiers
+    + Update SPDX license information to version 3.18
+  * Fixed:
+    + Add better error message for wheel target dev mode
+      installations that define path rewrites with the sources
+      option
+    + Note the allow-direct-references option in the relevant error
+      messages
+
+-------------------------------------------------------------------
 Sat Jul 30 20:38:56 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.6.0:
