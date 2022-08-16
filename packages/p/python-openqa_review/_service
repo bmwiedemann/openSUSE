@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="filename">python-openqa_review</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="url">git://github.com/os-autoinst/openqa_review.git</param>
+    <param name="url">https://github.com/os-autoinst/openqa_review.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
     <param name="changesgenerate">enable</param>

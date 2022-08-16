@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 16 13:47:17 UTC 2022 - okurz@suse.com
+
+- Update to version 1.30.0:
+  * Add command line option for "reopen"
+  * Re-open issues when adding reminder comments
+  * Fix tests for all Python versions
+  * Test expected step in the reminder comment
+  * Include test details steps inside the reminder comment
+  * Add test to check if the link includes module and step
+  * Include expected time until next reminder message
+  * Compute the threshold for sending reminder
+  * Add extra test case to make codecov happy
+  * Add option to disable exponential backoff
+
+-------------------------------------------------------------------
 Mon Jun 28 13:11:42 UTC 2021 - okurz@suse.com
 
 - Update to version 1.25.0:

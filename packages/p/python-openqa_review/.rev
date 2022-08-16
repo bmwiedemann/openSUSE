@@ -361,4 +361,12 @@
 </comment>
     <requestid>902827</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>3d13efc7820b603a65375b833bc27a90</srcmd5>
+    <version>1.30.0</version>
+    <time>1660662526</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.30.0</comment>
+    <requestid>997375</requestid>
+  </revision>
 </revisionlist>
