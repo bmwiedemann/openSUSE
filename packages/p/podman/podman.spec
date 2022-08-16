@@ -22,7 +22,7 @@
 %define with_libostree 1
 %endif
 Name:           podman
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -130,9 +130,6 @@ make %{?_smp_mflags} docs
 %install
 make DESTDIR=%{buildroot} PREFIX=/usr LIBEXECDIR=%{_libexecdir} install install.completions install.docker
 
-# packaged in libcontainers-common
-rm %{buildroot}/usr/share/man/man5/oci-hooks.*
-
 # Add podman modprobe.d drop-in config
 mkdir -p %{buildroot}%{_prefix}/lib/modules-load.d
 install -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
@@ -169,11 +166,13 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %{_unitdir}/podman.service
 %{_unitdir}/podman.socket
 %{_unitdir}/podman-auto-update.service
+%{_unitdir}/podman-kube@.service
 %{_unitdir}/podman-restart.service
 %{_unitdir}/podman-auto-update.timer
 %{_userunitdir}/podman.service
 %{_userunitdir}/podman.socket
 %{_userunitdir}/podman-auto-update.service
+%{_userunitdir}/podman-kube@.service
 %{_userunitdir}/podman-restart.service
 %{_userunitdir}/podman-auto-update.timer
 %ghost /run/podman
