@@ -348,4 +348,22 @@
     <comment></comment>
     <requestid>961775</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f1cdb5c7ace661451421e4b78d3766b8</srcmd5>
+    <version>1.9.11</version>
+    <time>1660662435</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.11
+  * Add support to WebP (gxo#apps/xfce4-screenshooter#76)
+  * Fix window capture in HiDPI mode (gxo#apps/xfce4-screenshooter#73)
+  * Fix intltool lock file problem during make distcheck
+  * Add option to Show in File Manager when saving
+    (gxo#apps/xfce4-screenshooter#47)
+  * Do not quit after dismissing dialog if invoked from plugin
+    (gxo#apps/xfce4-screenshooter#71)
+  * Update COPYING (gxo#apps/xfce4-screenshooter#70)
+  * Translation Updates
+</comment>
+    <requestid>995249</requestid>
+  </revision>
 </revisionlist>

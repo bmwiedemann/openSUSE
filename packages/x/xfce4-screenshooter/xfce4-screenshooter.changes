@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 12 08:53:37 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.9.11
+  * Add support to WebP (gxo#apps/xfce4-screenshooter#76)
+  * Fix window capture in HiDPI mode (gxo#apps/xfce4-screenshooter#73)
+  * Fix intltool lock file problem during make distcheck
+  * Add option to Show in File Manager when saving
+    (gxo#apps/xfce4-screenshooter#47)
+  * Do not quit after dismissing dialog if invoked from plugin
+    (gxo#apps/xfce4-screenshooter#71)
+  * Update COPYING (gxo#apps/xfce4-screenshooter#70)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Mar 13 14:31:28 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.9.10
