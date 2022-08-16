@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Mon Aug 15 14:16:03 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#608
+- fix Bengali font issue: switch from MuktiNarrow.ttf to Mukti.ttf
+  (bsc#1202083, bsc#1197977)
+- 17.60
+
+--------------------------------------------------------------------
 Fri Jul 15 14:16:29 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#604
