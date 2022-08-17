@@ -147,4 +147,12 @@
     <comment>- version 1.9.3 fixes also CVE-2021-3520 [bsc#1185438]</comment>
     <requestid>922939</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6c78d7d83ad2093713280a236d1dc10e</srcmd5>
+    <version>1.9.4</version>
+    <time>1660752996</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to release 1.9.4</comment>
+    <requestid>996246</requestid>
+  </revision>
 </revisionlist>

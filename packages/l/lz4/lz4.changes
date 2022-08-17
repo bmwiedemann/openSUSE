@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug 16 07:20:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.4
+  * Decompression speed on high-end ARM64 platform is improved,
+    by ~+20%.
+  * For the specific scenario of data compressed with -BD4
+    setting (small blocks, <= 64 KB, linked) decompressed
+    block-by-block into a flush buffer (like lz4 CLI does),
+    decompression speed is improved ~+70%.
+  * For compressed data employing the lz4frame format (native
+    format of lz4 CLI), it's possible to ignore checksum
+    validation during decompression, resulting in speed
+    improvements of ~+40% . This capability is exposed at both
+    CLI (see --no-crc) and library levels.
+
+-------------------------------------------------------------------
 Mon Oct  4 07:04:27 UTC 2021 - pgajdos@suse.com
 
 - version 1.9.3 fixes also CVE-2021-3520 [bsc#1185438]
