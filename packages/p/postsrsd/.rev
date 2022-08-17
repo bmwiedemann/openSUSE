@@ -23,4 +23,12 @@
     <comment>- Update to release 1.11 [boo#1180251]</comment>
     <requestid>888545</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c29ce09a33258e19a7c1d6849a459696</srcmd5>
+    <version>1.12</version>
+    <time>1660753022</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to release 1.12</comment>
+    <requestid>997504</requestid>
+  </revision>
 </revisionlist>

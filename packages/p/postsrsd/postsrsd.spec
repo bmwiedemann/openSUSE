@@ -1,7 +1,7 @@
 #
 # spec file for package postsrsd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           postsrsd
-Version:        1.11
+Version:        1.12
 Release:        0
 Summary:        Sender Rewriting Support for postfix
 License:        GPL-2.0-only
