@@ -862,4 +862,13 @@
 - switch source url to https</comment>
     <requestid>994522</requestid>
   </revision>
+  <revision rev="90" vrev="5">
+    <srcmd5>bca6385d57c783038ff5c72a3ea2904b</srcmd5>
+    <version>2.9.4</version>
+    <time>1660752995</time>
+    <user>RBrownFactory</user>
+    <comment>- syntax correction of the preinstall scriptlet to avoid creation 
+  of file /0 (bnc#1202377) (forwarded request 995205 from suse_weber)</comment>
+    <requestid>995603</requestid>
+  </revision>
 </revisionlist>

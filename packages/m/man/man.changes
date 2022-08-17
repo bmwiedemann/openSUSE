@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 15 16:48:51 UTC 2022 - <d_werner@gmx.net>
+
+- syntax correction of the preinstall scriptlet to avoid creation 
+  of file /0 (bnc#1202377)
+
+-------------------------------------------------------------------
 Thu Aug 11 11:55:04 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch gnulib-ppc64le.patch

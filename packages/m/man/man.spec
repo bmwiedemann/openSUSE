@@ -270,7 +270,7 @@ test -d var/catman/ && rm -rf var/catman/ || true
 %service_add_pre man-db-create.service
 %endif
 %endif
-if test "$1" > 0 -a -h %{_sysconfdir}/alternatives/man
+if test "$1" -gt 0 -a -h %{_sysconfdir}/alternatives/man
 then
   for ua in man apropos whatis man.1%{ext_man} apropos.1%{ext_man} whatis.1%{ext_man}
   do
