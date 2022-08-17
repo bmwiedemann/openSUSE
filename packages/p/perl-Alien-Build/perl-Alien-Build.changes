@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Aug 14 03:06:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.56
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.56      2022-08-13 15:33:18 -0600
+    - Production release identical to 2.55.01
+  2.55_01   2022-08-13 15:28:00 -0600
+    - Documentation improvements (gh#313, gh#330)
+  2.54_01   2022-08-13 11:29:15 -0600
+    - Documentation improvements (gh#48, gh#313, gh#329)
+  2.53      2022-08-12 14:02:31 -0600
+    - Documentation improvements (gh#241, gh#254, gh#283, gh#298, gh#312, gh#327)
+    - Added .runtime.inline_auto_include property (gh#226, gh#328)
+    - xs_ok in Test::Alien will now keep temporary generated files on failure
+      by default.  You can override this behavior using TEST_ALIEN_ALWAYS_KEEP
+      (gh#315, gh#326)
+    - Added TEST_ALIEN_ALIENS_MISSING environment variable to remove warning
+      in Test::Alien when you use some tools without first calling alien_ok
+      (gh#326)
+  2.52      2022-08-11 15:18:46 -0600
+    - Improved documentation (gh#317, gh#318)
+    - Fixed bug for run_ok in Test::Alien where passing a command in scalar
+      context would not work for commands with arguments (gh#320)
+    - Added interpolate_run_ok and plugin_ok to Test::Alien (gh#319, gh#321, gh#322)
+    - Better support for Alien::MSYS + Test::Alien (gh#323)
+    - Better handle it when flags are undef by not passing into
+      Text::ParseWords::shellwords(gh#314, gh#324)
+  2.51      2022-08-03 09:57:08 -0600
+    - Remove use of duplicate lddlfalgs in Test::Alien which could cause failures
+      on AIX (gh#217, gh#316)
+
+-------------------------------------------------------------------
 Fri Jun 24 03:06:07 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.50
