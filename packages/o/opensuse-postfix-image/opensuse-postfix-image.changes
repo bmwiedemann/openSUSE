@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 17 09:53:07 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220817.7d0bf3a:
+  * Fix ignoring of SIGTERM (replace pause with sleep)
+
+-------------------------------------------------------------------
 Wed Jul 13 07:01:43 UTC 2022 - kukuk@suse.com
 
 - Update to version 20220713.c55a107:
