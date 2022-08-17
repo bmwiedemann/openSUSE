@@ -5240,12 +5240,12 @@
     <package name="libvirt-daemon-xen" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="libvorbis0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libvorbisfile3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libwx_baseu-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libwx_baseu_net-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libwx_baseu_xml-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libwx_gtk3u_core-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libwx_gtk3u_html-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libwx_gtk3u_qa-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libwx_baseu-suse-nostl8_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libwx_baseu_net-suse-nostl8_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libwx_baseu_xml-suse-nostl8_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libwx_gtk3u_core-suse-nostl8_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libwx_gtk3u_html-suse-nostl8_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libwx_gtk3u_qa-suse-nostl8_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libxcb-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libxcb-render0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libxcb-screensaver0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
