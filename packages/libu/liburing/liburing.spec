@@ -26,6 +26,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.dk/cgit/liburing
 Source:         https://git.kernel.dk/cgit/liburing/snapshot/%{name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM: has been accepted upstream
+Patch0:         test-xattr-don-t-rely-on-NUL-termination.patch
+# PATCH-FIX-UPSTREAM: has been accepted upstream
 # [1/1] Handle EINTR in tests
 #      commit: fa67f6aedcfdaffc14cbf0b631253477b2565ef0
 Patch2:         handle-eintr.patch

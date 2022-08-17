@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 16 10:53:40 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- add test-xattr-don-t-rely-on-NUL-termination.patch (bsc#1202413)
+
+-------------------------------------------------------------------
 Fri Jul  8 12:40:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add handle-eintr.patch, enable tests everywhere 
