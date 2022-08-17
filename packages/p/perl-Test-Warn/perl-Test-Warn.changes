@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 14 03:10:32 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.37
+   see /usr/share/doc/packages/perl-Test-Warn/Changes
+
+  0.37  2022-08-13
+          Merged PR:
+          - allow duplicate warnings when using warnings_exist
+            https://github.com/hanfried/test-warn/pull/8
+            thx to Masahiro Honma (hiratara)
+
+-------------------------------------------------------------------
 Sun Jun 24 06:08:42 UTC 2018 - coolo@suse.com
 
 - updated to 0.36
