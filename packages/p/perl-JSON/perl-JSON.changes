@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug  2 03:07:09 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.09
+   see /usr/share/doc/packages/perl-JSON/Changes
+
+  4.09 2022-08-01
+      - fix a test to pass under perl with core bool support
+
+  4.08 2022-07-31
+      - updated backportPP with JSON::PP 4.11
+
+-------------------------------------------------------------------
 Sat Jun 25 03:06:33 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.07
