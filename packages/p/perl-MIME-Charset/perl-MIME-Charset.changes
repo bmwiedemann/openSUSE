@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Aug 13 03:10:04 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.013.1
+   see /usr/share/doc/packages/perl-MIME-Charset/Changes
+
+  1.013.1  2022-08-12  Hatuka*nezumi - IKEDA Soji  <hatuka(at)nezumi.nu>
+      * No new features.
+      * Update META.json.
+  1.013  2022-08-09  Hatuka*nezumi - IKEDA Soji  <hatuka(at)nezumi.nu>
+      * Update tests.
+      * A typo in comment: "3.18" should be "3.19".
+      * Fix: Escape sequences won't be used with DIN 66003.
+  1.013_01  2022-08-08  Hatuka*nezumi - IKEDA Soji  <hatuka(at)nezumi.nu>
+      * Imp: Added support for DIN 66003.
+      * Chg: Workaround: "ISO-8859-8-I" is treated as an alias of "ISO-8859-8"
+        by Encode (3.18): See the note in
+        https://encoding.spec.whatwg.org/#legacy-single-byte-encodings
+        However we'll treat these as separate names for compatibility.
+
+-------------------------------------------------------------------
 Wed Apr 12 06:00:51 UTC 2017 - coolo@suse.com
 
 - updated to 1.012.2
