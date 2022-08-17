@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Text-CSV
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Text-CSV
 Name:           perl-Text-CSV
-Version:        2.01
+Version:        2.02
 Release:        0
-Summary:        Comma-separated values manipulator (using XS or PurePerl)
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Comma-separated values manipulator (using XS or PurePerl)
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -30,7 +30,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.71
 Requires:       perl(Test::More) >= 0.71
-Recommends:     perl(Text::CSV_XS) >= 1.46
+Recommends:     perl(Text::CSV_XS) >= 1.48
 %{perl_requires}
 
 %description

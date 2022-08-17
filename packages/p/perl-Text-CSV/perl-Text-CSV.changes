@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  8 03:11:38 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.02
+   see /usr/share/doc/packages/perl-Text-CSV/Changes
+
+  2.02  2022-08-08
+      - Imported tests/fixes from Text::CSV_XS 1.48
+      - Fixed a case where csv function is called as a method (GH#46)
+
+-------------------------------------------------------------------
 Sun Jun 20 03:10:11 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.01
