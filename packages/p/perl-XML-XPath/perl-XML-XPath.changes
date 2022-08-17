@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 10 03:11:57 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.48
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.48  2022-08-09 MANWAR
+        - More contributions by @shawnm.
+         a) pull request #11
+            Support use XML::XPath some_version; and modernize inheritance.
+         b) pull request #12
+            Add documentation about supported XPath functions.
+
+-------------------------------------------------------------------
 Sat May 14 03:08:51 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.47

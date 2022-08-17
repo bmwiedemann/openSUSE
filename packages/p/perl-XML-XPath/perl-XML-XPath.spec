@@ -18,7 +18,7 @@
 
 %define cpan_name XML-XPath
 Name:           perl-XML-XPath
-Version:        1.47
+Version:        1.48
 Release:        0
 License:        Artistic-2.0
 Summary:        Parse and evaluate XPath statements
