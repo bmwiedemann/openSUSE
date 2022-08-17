@@ -17,7 +17,7 @@
 
 
 Name:           python-Glymur
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        Tools for accessing JPEG2000 files
 License:        MIT
