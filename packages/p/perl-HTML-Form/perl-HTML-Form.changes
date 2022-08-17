@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 16 03:07:42 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.09
+   see /usr/share/doc/packages/perl-HTML-Form/Changes
+
+  6.09      2022-08-14 22:16:37Z
+
+      - Replace "use vars" with "our" (GH#34) (James Raspass)
+      - Remove superfluous "use lib" (GH#35) (James Raspass)
+      - Replace "Test" with "Test::More" (GH#36) (James Raspass)
+      - Remove superfluous variable copy (GH#37) (James Raspass)
+
+  6.08      2022-08-14 09:26:10Z
+      - Remove Authority section from dist.ini (GH#27) (Olaf Alders)
+      - Allow buttons to not have a value (GH#8) (Felix Ostmann and Julien Fiegehenn)
+      - The legacy API of FileInput fields now correctly supports setting a
+        custom filename (GH#10) (Gil Magno and Julien Fiegehenn)
+      - Allow undef filename for FileInput if there is a Content header (GH#30)
+        (Julien Fiegehenn)
+
+-------------------------------------------------------------------
 Sat Feb 22 03:08:16 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 6.07
