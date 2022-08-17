@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  9 03:10:33 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.63
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.63 -- 2022-08-08
+  	[BUGFIXES]
+  	 * Fix off-by-one in stack handling of head() / tail() (RT143905)
+  	 * Fix documentation copy-paste error about builtin::reftype
+  	 * Ensure exotic_names.t will work on EBCDIC platforms
+  	 * Add basic Github CI workflow
+
+-------------------------------------------------------------------
 Fri Mar 18 03:08:55 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.62
