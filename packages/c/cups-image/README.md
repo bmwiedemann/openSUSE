@@ -1,4 +1,4 @@
-# CUPS Docker Image
+# CUPS Container Image
 
 ## Description
 

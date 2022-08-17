@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4059771bb26c31f5d608c25f813291f0</srcmd5>
+    <version>1.15</version>
+    <time>1660753021</time>
+    <user>RBrownFactory</user>
+    <comment>Fork of RawTherapee with the following main differences:
+* The user interface and the underlying processing pipeline have been significantly restructured, with many tools removed, some new tools added, and several tools rewritten and/or refactored.
+* Various new tools for performing local edits have been added, with support for various masking modes (both drawn and parametric).
+* A new automatic perspective correction tool (taken from darktable) has been added.
+* Better metadata handling (thanks to the exiv2 and exiftool libraries), with (optional) support for reading and writing XMP sidecar files.
+* Support for using LibRaw for decoding raw files. </comment>
+    <requestid>997492</requestid>
+  </revision>
+</revisionlist>

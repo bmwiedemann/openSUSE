@@ -210,4 +210,13 @@ Fix usage of deprecated unix-process polkit authorization subject opens a race c
     <comment></comment>
     <requestid>990243</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>622dd43e737579823079b7f1457abb2b</srcmd5>
+    <version>1.3.2</version>
+    <time>1660753013</time>
+    <user>RBrownFactory</user>
+    <comment>- Don't require pkexec on Leap.
+</comment>
+    <requestid>997449</requestid>
+  </revision>
 </revisionlist>

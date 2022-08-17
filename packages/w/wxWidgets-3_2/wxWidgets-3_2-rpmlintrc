@@ -1,10 +1,4 @@
 # Project name just starts with lowercase.
 addFilter("summary-not-capitalized")
-# We know what we are doing. %{wxlibdir}/wx can be owned by more package instances at once.
-addFilter("shlib-policy-nonversioned-dir")
-# There is no such package.
-addFilter("no-dependency-on")
-# Package splits to many library packages, we just need to obsolete old one.
-addFilter("obsolete-not-provided")
-# Yes, there are macros in comments.
-addFilter("macro-in-comment")
+# rpmlint does not detect dates matching SOURCE_DATE_EPOCH
+addFilter("wxWidgets-3_2-doc-html.noarch:.*file-contains-date-and-time /usr/share/doc/packages/wxWidgets-3_2-doc-html/.*.html")

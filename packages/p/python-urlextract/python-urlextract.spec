@@ -1,7 +1,7 @@
 #
 # spec file for package python-urlextract
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-urlextract
-Version:        0.14.0
+Version:        1.6.0
 Release:        0
 Summary:        Collects and extracts URLs from given text
 License:        MIT
@@ -28,15 +28,19 @@ Source:         https://github.com/lipoja/URLExtract/archive/v%{version}.tar.gz#
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-appdirs
+Requires:       python-dnspython
+Requires:       python-filelock
 Requires:       python-idna
+Requires:       python-platformdirs
 Requires:       python-uritools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module appdirs}
+BuildRequires:  %{python_module dnspython}
+BuildRequires:  %{python_module filelock}
 BuildRequires:  %{python_module idna}
+BuildRequires:  %{python_module platformdirs}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module uritools}
 # /SECTION
@@ -58,7 +62,7 @@ sed -i '1{/^#!/d}' urlextract/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k 'not test_dns'
 
 %post
 %python_install_alternative urlextract
@@ -70,6 +74,6 @@ sed -i '1{/^#!/d}' urlextract/*.py
 %doc CHANGELOG.rst README.rst
 %license LICENSE
 %python_alternative %{_bindir}/urlextract
-%{python_sitelib}/*
+%{python_sitelib}/*urlextract*/
 
 %changelog

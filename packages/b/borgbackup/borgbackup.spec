@@ -220,12 +220,10 @@ sed -i 's/\r$//' docs/_build/html/_static/fonts/source-serif-pro/LICENSE.txt
 
 %if %{with borg_test}
 %check
-export PYTHONPATH=$(pwd)/build/lib.linux-$(uname -m)-%{py3_ver}
+# tests need to run in the build env for some reason
+export py3_ver_nodot=$(echo %{py3_ver} | tr -d '.')
+export PYTHONPATH=$(pwd)/build/lib.linux-$(uname -m)-cpython-$py3_ver_nodot
 TEST_SELECTOR="not benchmark"
-# for some reason, these tests fail with Tumbleweed: hints welcome
-%if 0%{?suse_version} >= 1500
-TEST_SELECTOR="$TEST_SELECTOR and not test_progress_percentage_sameline and not test_progress_percentage_step"
-%endif
 LANG=en_US.UTF-8 py.test -x -vk "$TEST_SELECTOR" $PYTHONPATH/borg/testsuite/*.py
 %endif
 

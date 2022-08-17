@@ -402,4 +402,14 @@ https://github.com/zeromq/libzmq/releases/tag/v4.3.3</comment>
     <comment></comment>
     <requestid>903043</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>7e1fe8fb63f0389bcbcc0dacb795b736</srcmd5>
+    <version>4.3.4</version>
+    <time>1660753006</time>
+    <user>RBrownFactory</user>
+    <comment>- drop xmlto and asciidoc buildrequires, these are only needed
+  for non-release builds which do not ship with prebuilt docs
+</comment>
+    <requestid>997418</requestid>
+  </revision>
 </revisionlist>

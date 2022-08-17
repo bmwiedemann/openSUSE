@@ -1,7 +1,7 @@
 #
 # spec file for package ffmpegthumbnailer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -28,6 +28,10 @@ URL:            https://github.com/dirkvdb/ffmpegthumbnailer
 Source:         https://github.com/dirkvdb/%{name}/releases/download/%{version}/%{name}-%{version}.tar.bz2
 #PATCH-FIX-UPSTREAM ffmpegthumbnailer-cmake-updates.patch dirk.vdb@gmail.com -- Update CMakeLists.txt for new cmake version.
 Patch0:         ffmpegthumbnailer-cmake-updates.patch
+# PATCH-FIX-UPSTREAM badshah400@gmail.com -- Removes use of functionality deprecated in ffmpeg4 and dropped from ffmpeg5, patch taken from upstream commit
+Patch1:         https://github.com/dirkvdb/ffmpegthumbnailer/commit/372cd422e57a9a3531eb9a30559d665caecff1ba.patch
+# PATCH-FIX-UPSTREAM badshah400@gmail.com -- Constify AVCodec, patch taken from upstream commit
+Patch2:         https://github.com/dirkvdb/ffmpegthumbnailer/commit/efb5b618f1c1471c1a7900aed3a59d851ea9a210.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel

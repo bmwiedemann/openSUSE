@@ -1,7 +1,7 @@
 #
 # spec file for package vigra
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,10 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://ukoethe.github.io/vigra/
 Source:         https://github.com/ukoethe/vigra/releases/download/Version-1-11-1/vigra-%{version}-src.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        baselibs.conf
 # https://github.com/ukoethe/vigra/issues/496
 Patch0:         vigra-openexr3.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Add-compatibility-for-hdf5-1-12.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
@@ -90,8 +91,7 @@ VIGRA component to the needs of your application, without giving up
 execution speed.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 sed -i -e "1s|#!.*|#!/usr/bin/python3|" config/vigra-config.in
 
 %build

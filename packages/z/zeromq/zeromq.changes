@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 15 14:00:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- drop xmlto and asciidoc buildrequires, these are only needed
+  for non-release builds which do not ship with prebuilt docs
+
+-------------------------------------------------------------------
 Mon Jun 28 19:49:38 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Explicit BR on python is not necessary.

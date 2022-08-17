@@ -1,17 +1,20 @@
-diff -ur python-systemd-234.orig/systemd/_daemon.c python-systemd-234/systemd/_daemon.c
---- python-systemd-234.orig/systemd/_daemon.c	2017-03-26 03:33:59.000000000 +0200
-+++ python-systemd-234/systemd/_daemon.c	2017-11-06 19:11:48.546733677 +0100
-@@ -127,11 +127,12 @@
+---
+ systemd/_daemon.c |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/systemd/_daemon.c
++++ b/systemd/_daemon.c
+@@ -121,11 +121,12 @@ static PyObject* notify(PyObject *self,
                          return NULL;
  
                  for (i = 0; i < len; i++) {
 +                        long value;
-                         PyObject *item = PySequence_GetItem(fds, i);
+                         _cleanup_Py_DECREF_ PyObject *item = PySequence_GetItem(fds, i);
                          if (!item)
                                  return NULL;
  
 -                        long value = PyLong_AsLong(item);
-+			value = PyLong_AsLong(item);
++                        value = PyLong_AsLong(item);
                          if (PyErr_Occurred())
                                  return NULL;
  

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Aug 13 23:03:31 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to relase 4.2.0, matching wxWidgets 3.2.0
+  For a detailed changelog, see
+  https://www.wxpython.org/news/2022-08-07-wxpython-411-release/index.html
+- Drop patch obsoleted by upstream changes:
+  * 0002-SIP-6.5-compat.patch
+- Do not depend on pip for downloading in wxget, add
+  0003-Make-pip-usage-in-wxget-optional.patch
+- Fix a wrong type size on 32 bit archs, add
+  0004-Fix-time_t-ETG-typedef-extend-DateTime.FromTimeT-tes.patch
+
+-------------------------------------------------------------------
+Sun Jun 26 13:46:42 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to current git version for wxWidgets 3.1.6/3.1.7
+  compatibility.
+- Drop upstream patches:
+  * fix_no_return_in_nonvoid.patch
+  * wxPython-4.1.1-fix-overrides.patch
+  * 2039-bunch-py310-fixes.patch
+  * additional-310-fixes.patch
+- Regenerate bindings from wxWidgets 3.1.7 code
+- Allow SIP generation with SIP 6.x < 6.6,
+  * 0001-Only-import-attrdict-where-needed.patch
+  * 0002-SIP-6.5-compat.patch
+- Add patches for test suite (pending):
+  * 0001-Check-HSV-values-in-image-test.patch
+  * 0001-Fix-overflow-check-for-wxUIntPtr-type.patch
+- Add some more dependencies required for the test suite
+- Disable some tests which can not succeed
+- Enable test suite by default
+- Do not ship copy of wxWidgets locale
+
+-------------------------------------------------------------------
 Wed Jan  5 11:12:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Reduce complexity by not rewriting subpackages at all.

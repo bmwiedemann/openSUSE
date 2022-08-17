@@ -1,4 +1,185 @@
 -------------------------------------------------------------------
+Wed Aug 10 12:43:24 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Making adjustments as per https://build.opensuse.org/request/show/994288
+  * Swapping out '--without-strict'
+  * Using CFLAGS '-Wno-error=deprecated-declarations' for all flavors
+  * Addin 'ExcludeArch:    %ix86'
+
+-------------------------------------------------------------------
+Sun Aug  7 01:55:02 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Making adjustments for 'ffmpeg-4' vs. 'ffmpeg-5'
+
+-------------------------------------------------------------------
+Sat Aug  6 06:52:23 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- %{_libexecdir} issue was fixed upstream, cleaning up spec file
+  * See https://github.com/Xpra-org/xpra/issues/3597
+
+-------------------------------------------------------------------
+Wed Jul 27 16:08:58 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.4+git20220726.a03b3f67e:
+  * #3597 openSUSE Leap 15.4 still does not use libexec
+  * always pop GDK errors
+  * #3595 add man page entry
+  * #3595 'exit-with-windows' option
+  * fix removing monitor: logging was causing an error
+  * layout may be 'None'
+  * close the splash screen if it loses top level focus
+  * #2630 these values aren't 'real' layout names, don't try to use them
+  * #2630 modify shadow keymap when '--keyboard-layout=auto'
+  * `xpra/x11/server_keyboard_config.py`: `'NoneType' object is not iterable`
+  * #3594 fix vim typo
+  * #3594 backwards compatibility fix
+  * f-strings and more dense output
+  * safer: don't delete recursively, delete with glob explicitly
+  * when calling 'xpra clean' explicitly, we can remove session sub-directories
+  * run 'late_cleanup' before trying to remove the session dir
+  * don't try to parse 'resize-display' as a resolution if it is a boolean
+  * remove spurious import added by IDE
+  * distinguish directories from regular files
+  * it is possible to run without the 'rgb' encoder
+  * make it easier to build without any codecs
+  * we can only use the 'native' mapping with existing x11 keycodes
+  * simplify: remove unused argument
+  * #3592 remove redundant 'xkbmap_' prefix
+  * #3592 remove unstructured setxkbmap query data from server
+  * #35822 start removing 'setxkbmap -query' and 'setxkbmap -print'
+  * #3582 audio info may be missing - and that's fine
+  * don't pretend that these versions should work
+  * more resilient version parsing
+  * #3592 remove xkbmap prefix from client
+  * #3582 audio info may be missing - and that's fine
+  * #3592 same as f192c0312bc98360aec94e6aa92af90511259401 but for the server
+  * #3592 move keymap to a substructure
+  * #2303 support agent forwarding with the builtin ssh server
+  * cosmetic
+  * #2303 ignore '_proxy' command line arguments
+  * cosmetic
+  * #2303 when client exits, find another auth socket
+  * unused import
+  * #2303 keep track of sock path
+  * #2303 make function more re-usable
+  * dead symlinks don't "exist"
+  * #3592 remove unused tcp-proxy feature
+  * typo - why didn't this trigger problems?
+  * the 'install' subcommand does add data files
+  * #2303 error handling
+  * return the exit code
+  * #3592 remove uncompressed 'premult_argb32' icon format
+  * #3592 never use zlib for pixel data
+  * unused import
+
+-------------------------------------------------------------------
+Tue Jul 26 01:52:30 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- A few changes related to local builds of Leap 15.4 referencing 150500
+
+-------------------------------------------------------------------
+Fri Jul 22 20:22:17 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.4+git20220721.c00134211:
+  * place the verification token at a random address
+  * remove ancient mmap token location code
+  * #3582 limit audio info
+  * always enable bundling - no need for env switch
+  * the '_proxy' subcommand doesn't need to load compressors
+  * skip lib validation warnings when running 'sdist'
+  * #3582 limit client info exposed
+  * doh: return the info
+  * return a dict even when we hit an error
+  * #3591 clamp negative values to display
+  * #3591 also drop negative dimensions
+  * #2303 honour env var and skip processing ssh agent paths
+  * some clients don't have ssh-auth-sock specified.. don't error out
+  * silence linter
+  * only forward ssl socket options to the ssl wrap function
+  * fix ssl breakage: convert attribute names to arguments
+
+-------------------------------------------------------------------
+Fri Jul 22 19:37:59 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.4+git20220720.22e3ae211:
+  * don't compress rgb pixels with anything but lz4
+  * rename method to prevent confusion
+  * #2303 ssh agent forwarding
+  * #3582 hide detailed version info
+
+-------------------------------------------------------------------
+Wed Jul 20 20:09:42 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.4+git20220720.d0ae240e2:
+  * #3582 skip opengl info
+  * fixup estr logging method
+  * #2303 make is_socket re-usable
+  * #3483 pycuda also imports numpy
+  * #3579 more f-strings
+  * oops: missing import
+  * #3582 mixins info, option to log capabilities
+
+-------------------------------------------------------------------
+Tue Jul 19 19:01:06 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.4+git20220719.d301bf723:
+  * #3582 restrict client info exposed
+  * the system tray forwarding is challenging
+  * we are forced to use appindicator now
+  * simplify
+  * #3577 simplify
+  * #3577 reorder
+  * #3577 remove v4l2 legacy workarounds
+  * typo
+  * too many distros are missing pam pkgconfig files
+  * not all Linux distros have this header file
+  * another strangely misnamed package: libpam0g'
+  * fix misnamed package dependencies
+  * RHEL doesn't have a pam-devel package?
+  * distros have all moved pam to /usr/include/security/pam*
+
+-------------------------------------------------------------------
+Mon Jul 18 22:29:08 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.4+git20220718.6b84ef9f6:
+  * skip all guessing using an env var
+  * #3386 fix typo
+  * procps-devel is not available on RHEL?
+  * pam pkgconfig refs had gone missing
+  * refer to Cython 'Extension' class directly
+  * oops: nvenc is not a package
+  * make it easier to change the number of cores used
+  * ignore 'address' warnings building nvenc
+  * use booleans for switches
+  * no longer used
+  * try the local cuda symlink before anything else
+  * this doesn't do anything
+  * make it easier to choose the number of threads
+  * #3577 remove legacy workarounds
+  * #3577 add switch for 'argb' codec
+  * #3577 group subsystems together
+  * #3577 group macos / win32 bundling workarounds together
+  * #3577 nvenc must use pkgconfig
+  * #3577 enable '-DDEBUG' globally
+  * #3577 convert pam module in pkg-config
+  * CUDA symlink on MS Windows:
+  * #3577 move nvenc tweaks to pkgconfig file
+  * ignore temporary build generated installer file
+  * #3390 evdi uses c++
+  * #3577 use pkgconfig file for nvfbc flags
+  * #3577 simplify nvenc / nvjpeg using pkgconfig files on win32
+  * #3584 typo
+  * fixup bccf36d62f6857094054cb3bd5cefd70b1fd5423: directories must start with a '/'
+  * #2753 RPM file list update
+  * #2753 add new packaging dependency
+  * #3582 limit the info available to remote hosts
+  * convert tray menu to use the new qrencode module
+  * #56 fix miscalculation of initial refresh rate
+  * #3583 update to the new python-cryptography API
+  * #3579 (almost) finish this one module
+  * #3483 only import numpy once, block if necessary
+
+-------------------------------------------------------------------
 Tue Jun 21 17:37:18 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 4.4+git20220621.872c7f8d8:

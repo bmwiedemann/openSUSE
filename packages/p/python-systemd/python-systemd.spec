@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-systemd
-Version:        234
+Version:        235
 Release:        0
 Summary:        Python wrappers for systemd functionality
 License:        LGPL-2.1-or-later
@@ -27,10 +27,6 @@ URL:            https://github.com/systemd/python-systemd
 Source:         https://github.com/systemd/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE iso-c-90.patch makes the building iso-c-90 compatible to allow building on SLE12 SP3
 Patch1:         iso-c-90.patch
-# PATCH-FIX-UPSTREAM 0002-reader-make-PY_SSIZE_T_CLEAN.patch gh#systemd/python-systemd#107 mcepl@suse.com
-# Originally from gh#systemd/python-systemd/commit/c71bbac357f0
-# make PY_SSIZE_T_CLEAN
-Patch2:         0002-reader-make-PY_SSIZE_T_CLEAN.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -62,7 +58,9 @@ Python module for native access to the systemd facilities. Functionality is sepe
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-export PYTEST_ADDOPTS="-k 'not test_reader_this_machine'"
+# Not sure about the first exclusion,
+# the following ones are gh#systemd/python-systemd#118
+export PYTEST_ADDOPTS="-k 'not (test_reader_this_machine or test_get_machine or test_get_machine_app_specific)'"
 %python_expand make PYTHON=python%{$python_version} check
 
 %files %{python_files}

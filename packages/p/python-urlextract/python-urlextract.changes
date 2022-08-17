@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug 17 04:36:34 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.6.0
+  * Add a list of URLs allowed to extract
+  * Updating tests with correct order of actual == expected
+  * Update list of TLDs
+- from v1.5.0
+  * Fix incorrect indices when TLD is found twice
+  * Replace unmaintained appdirs with maintained platformdirs
+  * update README, code style and code formatting using black
+  * updated list of TLDs
+- from v1.4.0
+  * urlextract detects URLs which start with double slash '//'
+  * adding ability to return only URLs with schema
+- from v1.3.0
+  * fixing None of the cache directory is writable
+  * fixes RE for IPv4 addresses
+  * updated list of TLDs
+  * urlextract cli is telling people to report errors on GitHub
+
+-------------------------------------------------------------------
 Mon May 18 09:10:43 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

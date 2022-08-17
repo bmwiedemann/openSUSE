@@ -17,8 +17,13 @@
 
 
 %define         X_display ":98"
-%bcond_with     test
+%bcond_without  test
 %bcond_without  syswx
+# We rebuild the ETG and SIP files for two reasons:
+# - Fixing a bug in the ETG time_t typedef (see patch)
+# - Compatibility with SIP 6.5.x, for Leap 15.x
+%bcond_without  rebuild_sip
+
 %if %{with syswx}
 %define wx_args --use_syswx --gtk3 -v
 %else
@@ -40,9 +45,6 @@ ExclusiveArch:  donotbuild
 # Extraneous build_flavors and skips are excluded automatically so future
 # additions can be included here early and old flavors can be removed some time
 # after the global drop in Factory.
-%if "%flavor" != "python36"
-%define skip_python36 1
-%endif
 %if "%flavor" != "python38"
 %define skip_python38 1
 %endif
@@ -51,6 +53,9 @@ ExclusiveArch:  donotbuild
 %endif
 %if "%flavor" != "python310"
 %define skip_python310 1
+%endif
+%if "%flavor" != "python311"
+%define skip_python311 1
 %endif
 %else
 # SLE/Leap: python3 only
@@ -76,7 +81,7 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           %{pprefix}-wxPython
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        The "Phoenix" variant of the wxWidgets Python bindings
 License:        GPL-2.0-or-later
@@ -84,18 +89,18 @@ Group:          System/Libraries
 URL:            https://github.com/wxWidgets/Phoenix
 Source:         https://files.pythonhosted.org/packages/source/w/wxPython/wxPython-%{version}.tar.gz
 Source1:        python-wxPython-rpmlintrc
-# PATCH-FIX-OPENSUSE fix_no_return_in_nonvoid.patch -- Fix lack of return in nonvoid functions
-Patch0:         fix_no_return_in_nonvoid.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         use_stl_build.patch
-# PATCH-FIX-UPSTREAM wxPython-4.1.1-fix-overrides.patch -- Fix build with wxWidgets 3.1.5 (gh#wxWidgets/Phoenix#1909)
-Patch2:         wxPython-4.1.1-fix-overrides.patch
-# PATCH-FIX-UPSTREAM 2039-bunch-py310-fixes.patch gh#wxWidgets/Phoenix#2039 mcepl@suse.com
-#  Fix a bunch of Python 3.10 issues with pure-Python classes and demos
-Patch3:         2039-bunch-py310-fixes.patch
-# PATCH-FIX-UPSTREAM additional-310-fixes.patch bsc#[0-9]+ mcepl@suse.com
-# collection of patches:
-Patch4:         additional-310-fixes.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Only-import-attrdict-where-needed.patch
+# PATCH-FIX-UPSTREAM - https://github.com/wxWidgets/Phoenix/pull/2232
+Patch4:         0003-Make-pip-usage-in-wxget-optional.patch
+# PATCH-FIX-OPENSUSE
+Patch5:         0004-Fix-time_t-ETG-typedef-extend-DateTime.FromTimeT-tes.patch
+# PATCH-FIX-OPENSUSE - Test fixes/additions:
+Patch112:       0001-Check-HSV-values-in-image-test.patch
+# PATCH-FIX-UPSTREAM - https://github.com/wxWidgets/Phoenix/pull/2233
+Patch113:       0001-Fix-overflow-check-for-wxUIntPtr-type.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module requests}
@@ -105,7 +110,10 @@ BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 %if %{with syswx}
-BuildRequires:  wxGTK3-devel >= 3.1.5
+BuildRequires:  %{python_module sip6-devel >= 6.5.1}
+BuildRequires:  waf
+BuildRequires:  wxGTK3-devel >= 3.2.0
+BuildRequires:  wxWidgets-3_2-doc-xml >= 3.2.0
 %else
 BuildRequires:  freeglut-devel
 BuildRequires:  gstreamer-plugins-base-devel
@@ -141,9 +149,10 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
+BuildRequires:  Mesa-dri
 # Need at least one font installed
 BuildRequires:  google-opensans-fonts
-BuildRequires:  wxWidgets-lang
+# BuildRequires:  wxWidgets-lang
 BuildRequires:  xorg-x11-server
 BuildRequires:  pkgconfig(cppunit)
 %endif
@@ -175,6 +184,13 @@ Provides translations to the package %{name}.
 
 %prep
 %autosetup -n wxPython-%{version} -p1
+# Lower minimum Python version
+sed -i -e '/check_python_version/ s@3,7,0@3,6,0@' wscript
+
+# Reuse locale from wxWidgets package
+%if %{with syswx}
+rm -Rf wx/locale
+%endif
 
 sed -i -e '/^#!\//, 1d' wx/py/*.py
 sed -i -e '/^#!\//, 1d' wx/tools/*.py
@@ -183,7 +199,30 @@ echo "# empty module" >> wx/lib/pubsub/core/itopicdefnprovider.py
 
 %build
 export CFLAGS="%{optflags}"
+
+%if %{with rebuild_sip}
+# Save LICENSE* files from bundled siplib
+mv sip/siplib{,_old}
+
 export DOXYGEN=%{_bindir}/doxygen
+export SIP=%{_bindir}/sip
+export WAF=%{_bindir}/waf
+mkdir -p /tmp/wxxml/docs/doxygen/out/
+rm -f /tmp/wxxml/docs/doxygen/out/xml
+cp ext/wxWidgets/docs/*.txt /tmp/wxxml/docs/
+ln -sf %{_docdir}/wxWidgets*doc-xml /tmp/wxxml/docs/doxygen/out/xml
+export WXWIN=/tmp/wxxml/
+
+%python_exec build.py touch %{wx_args}
+%python_exec build.py etg --nodoc %{wx_args}
+%python_exec build.py sip %{wx_args}
+cp sip/siplib_old/LICENSE* sip/siplib/
+if [ ! -e sip/siplib/sip_array.c ]; then
+  cp sip/siplib/{,sip_}array.c
+  cp sip/siplib/{,sip_}array.h
+fi
+%endif
+
 %python_exec build.py build %{wx_args}
 
 %install
@@ -204,7 +243,9 @@ export DOXYGEN=%{_bindir}/doxygen
 %python_clone -a %{buildroot}%{_bindir}/wxdocs
 %python_clone -a %{buildroot}%{_bindir}/wxget
 
+%if %{without syswx}
 %find_lang wxstd
+%endif
 
 %check
 %if %{with test}
@@ -225,8 +266,13 @@ mv wx wx_temp
 %pytest_arch --forked -n 1 -k 'test_uiaction or test_mousemanager' unittests/
 # Skip Auto ID management test (only enabled on Windows)
 # Skip Frame restore (requires a window manager)
+# Skip Locale.GetString, we do not ship translations for wxWidgets-3_2
+# Skip wx.lib.pubsub, fails due to PYTHONDONTWRITEBYTECODE, also deprecated for pypubsub
 # Skip UiAction tests (already done)
-%pytest_arch --forked -n auto -k '(not test_newIdRef03) and (not test_uiaction) and (not test_mousemanager) and (not test_frameRestore)' unittests/
+%{pytest_arch --forked -n 4 -k \
+  '(not test_newIdRef03) and (not test_uiaction) and (not test_mousemanager) and (not test_frameRestore) and (not test_intlGetString) and (not lib_pubsub_Except) and (not test_xrc7)' \
+  unittests/
+}
 
 mv wx_temp wx
 %endif
@@ -252,13 +298,17 @@ mv wx_temp wx
 %python_alternative %{_bindir}/wxdemo
 %python_alternative %{_bindir}/wxdocs
 %python_alternative %{_bindir}/wxget
-%{python_sitearch}/wxPython-%{version}-py*.egg-info
+%{python_sitearch}/wxPython-*-py*.egg-info
 %{python_sitearch}/wx/
+%if %{without syswx}
 %exclude %{python_sitearch}/wx/locale/
+%endif
 
+%if %{without syswx}
 %files lang -f wxstd.lang
 %dir %{python_sitearch}/wx/locale/
 %dir %{python_sitearch}/wx/locale/*
 %dir %{python_sitearch}/wx/locale/*/LC_MESSAGES
+%endif
 
 %changelog

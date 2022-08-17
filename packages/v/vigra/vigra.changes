@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 17 10:52:50 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Drop baselibs.conf, not necessary
+- Use %autosetup
+- Add patch to fix build against newer hdf5 (boo#1202460):
+  * 0001-Add-compatibility-for-hdf5-1-12.patch
+
+-------------------------------------------------------------------
 Wed Aug 11 09:13:35 UTC 2021 - pgajdos@suse.com
 
 - added patches

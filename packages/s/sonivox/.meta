@@ -1,0 +1,16 @@
+<package name="sonivox" project="openSUSE:Factory">
+  <title>Fork of the AOSP 'platform_external_sonivox' project</title>
+  <description>Sonivox is a fork of the Android Open Source Project 'platform_external_sonivox'
+including a CMake based build system to be used not on Android, but on any other
+Operating System.
+
+This is a Wave Table synthesizer, not using external soundfont files but
+embedded samples instead. It is also a real time GM synthesizer.
+It may be indicated in projects for small embedded devices. There is neither
+MIDI input nor Audio output facilities included in the library. You need to
+provide your own input/output.
+
+</description>
+  <devel project="multimedia:libs" package="sonivox"/>
+  <url>https://github.com/pedrolcl/sonivox</url>
+</package>

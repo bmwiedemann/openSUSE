@@ -144,4 +144,12 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
     <comment>- Update to version 1.23.3: (forwarded request 991142 from jfkw)</comment>
     <requestid>991144</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>68a04775dd813a96b855be3c16b7ffd2</srcmd5>
+    <version>1.23.4</version>
+    <time>1660753014</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 1.23.4:</comment>
+    <requestid>997455</requestid>
+  </revision>
 </revisionlist>

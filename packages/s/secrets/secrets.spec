@@ -17,13 +17,14 @@
 
 
 Name:           secrets
-Version:        6.2
+Version:        6.5
 Release:        0
 Summary:        A password manager for GNOME
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/World/secrets
 Source0:        %{name}-%{version}.tar.xz
-
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Update-pykeepass-to-4.0.3.patch
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson >= 0.51.0
@@ -31,7 +32,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-base >= 3.7.0
 BuildRequires:  python3-construct
 BuildRequires:  python3-gobject-Gdk
-BuildRequires:  python3-pykeepass >= 4.0.1
+BuildRequires:  python3-pykeepass >= 4.0.3
 BuildRequires:  python3-pyotp >= 2.4.0
 BuildRequires:  python3-pytest
 BuildRequires:  pkgconfig(gio-2.0)

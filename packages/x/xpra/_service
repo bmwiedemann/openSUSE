@@ -1,11 +1,13 @@
-<!--
-# vim: set syntax=xml
--->
-
 <services>
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/Xpra-org/xpra</param>
     <param name="scm">git</param>
+    <!-- TESTING -->
+    <param name="revision">a03b3f6</param>
+    <!-- LAST VERIFIED GOOD:  (older) ;  (newer)
+    <param name="revision">d0ae240</param>
+    <param name="revision">c001342</param>
+    -->
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
     <!--  These need changed dependent on tags
           at github.com/Xpra-org/xpra ; Currently
@@ -22,10 +24,14 @@
   <service name="tar" mode="disabled">
   <!--  I'd like to include this, but METADATA_PATTERN
         seems to block including .git
+        * 20220718:
+          * need "package-meta" here too
+          * "include" || "exclude", not both
     <param name="include">.git</param>
     <param name="exclude">.github</param>
     <param name="exclude">.git/objects/pack</param>
   -->
+    <param name="package-meta">yes</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="compression">gz</param>

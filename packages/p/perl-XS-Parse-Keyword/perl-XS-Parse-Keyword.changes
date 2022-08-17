@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 27 03:09:17 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.25
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.25    2022-07-25
+          [CHANGES]
+           * Permit infix operators to consume fewer than all the available
+             symbols; allowing for RHS operands that begin with symbols without
+             intervening whitespace
+           * Improved unit-testing of infix operator parser precedence issues
+           * Added `XPI_OPERAND_ARITH`; renumbered `XPI_OPERAND_TERM` to be
+             non-zero. Currently zero is accepted for back-compat
+
+-------------------------------------------------------------------
 Mon Jun 27 03:06:59 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.24

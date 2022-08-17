@@ -2,4 +2,5 @@
   <package>GTK3</package>
   <package>GTK3-nostl</package>
   <package>Qt</package>
+  <package>doc</package>
 </multibuild>

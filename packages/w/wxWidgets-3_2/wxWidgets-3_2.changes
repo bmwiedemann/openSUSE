@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Thu Jul  7 09:40:20 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 3.2.0:
+  All:
+    * Build fixes for Unix systems using older Cairo or glibc versions.
+    * Fix wxFileName::ReplaceHomeDir() when HOME=="/".
+    * Fix wxLocale::IsAvailable(wxLANGUAGE_DEFAULT) regression.
+    * Provide CMake config file for the library.
+    * Add a 'revision' component to wxVersionInfo (Ronny Krüger).
+  All (GUI):
+    * Make loading bitmaps using BI_BITFIELDS work again.
+    * Fix wxGenericListCtrl::GetColumnCount() for wxLC_LIST (Kvaz1r).
+    * Fix refresh after calling wxGenericListCtrl::EnsureVisible() (taler21).
+    * Add wxMenuItem::GetBitmapBundle().
+    * Support additional wxWizard properties in XRC (Randalphwa).
+  wxGTK:
+    * Fix wxDC::Blit() and wxBitmap::GetSubBitmap() with HiDPI bitmaps.
+    * Fix TAB navigation in wxSimplebook (Adrian Lopez).
+    * Support wxINVERT logical operation on wxDC with white source colour.
+    * Don't assert in wxGtkImage (used in e.g. wxToolBar) when bitmap is missing.
+    * Fix wxListBox selection colors with non-default background (alilie).
+    * Fix wxCURSOR_SIZING with Wayland.
+    * Recognize modern versions of GNOME in GetDesktopEnvironment() (Ulrich Telle).
+- Drop 0001-Add-new-wx-filedlgcustomize.h-to-the-list-of-files.patch
+
+-------------------------------------------------------------------
+Sun Jun 26 17:37:54 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Install missing header added in 3.1.7, add
+  0001-Add-new-wx-filedlgcustomize.h-to-the-list-of-files.patch
+
+-------------------------------------------------------------------
+Sat Jun 25 01:11:47 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add doc generation using _multibuild
+- Enable non-gui tests
+
+-------------------------------------------------------------------
+Tue Jun  7 20:20:58 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 3.1.7:
+  * CMake build system improvements (better precompiled headers
+    support).
+  * Many updated translations and new wxTRANSLATE_IN_CONTEXT().
+  * Several previously missing attributes added to multiple XRC
+    handlers.
+  * Row reordering by dragging and UI enhancements in wxGrid.
+  * Ability to suppress selected (or all) GTK warning messages in
+    wxGTK.
+  * And many bugs fixes, including for the regressions in 3.1.6.
+- Remove wxWidgets-3.1.6-fix-wxDVC-not-showing-empty-cells.patch:
+  Fixed upstream.
+
+-------------------------------------------------------------------
+Sun May  8 09:56:40 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add wxWidgets-3.1.6-fix-wxDVC-not-showing-empty-cells.patch
+  (gh#wxWidgets/wxWidgets#22359).
+- Remove _service file: Unused.
+- Fix some rpmlint warnings:
+  * Remove unused rpmlintrc filters.
+  * Remove non-breaking spaces.
+
+-------------------------------------------------------------------
+Wed Apr 13 16:45:53 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 3.1.6
+  * Many bug fixes for Wayland-specific problem.
+  * Add wxUILocale: CompareStrings(), GetLocalizedName()
+  * Add support for std::string_view to wxPrintf()
+  * Add wxString::ToInt() and ToUInt()
+  * Add wxGetNativeCpuArchitectureName()
+  * Add wxSecureZeroMemory(), wxThread::SetName()
+  * Significantly speed up wxMBConv iconv-based implementation
+  * Support searching from end in wxArrayString in STL build
+  * Several improvements to parsing dates in wxDateTime
+  * Add support for using native spell checking in wxTextCtrl
+  * Add support for style to wxWizard XRC handler
+  * Implement drawing splines in wxSVGFileDC
+  * Improve wxSpinCtrlDouble significant digits handling.
+  * wxGTK:
+    * Fix missing mouse events after enabling touch events
+    * Allow suppressing GTK diagnostics
+    * Fix getting key events from wxDataViewCtrl.
+    * Fix getting wxPrintData from the print dialog.
+    * Fix wxMediaCtrl support when using Wayland
+    * Generate wxKeyEvents for GDK_KEY_LaunchX keys
+- Drop upstream fixed wxWidgets-3.1.5-fix-wxIcon-wxDVC-columns.patch
+
+-------------------------------------------------------------------
 Fri Feb 11 14:53:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop gnome-vfs2-devel BuildRequires, and no longer pass

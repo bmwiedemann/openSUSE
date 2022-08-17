@@ -36,7 +36,9 @@ BuildRequires:  update-desktop-files
 Requires:       cron
 Requires:       dbus-1-python3
 Requires:       openssh
+%if 0%{?suse_version} > 1500
 Requires:       pkexec
+%endif
 Requires:       python3
 Requires:       python3-keyring
 Requires:       rsync

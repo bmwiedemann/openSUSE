@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 14 04:15:20 UTC 2022 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Don't require pkexec on Leap.
+
+-------------------------------------------------------------------
 Mon Jul 18 09:53:26 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - require pkexec as this is now a standalone package.

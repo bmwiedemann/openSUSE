@@ -25,10 +25,17 @@
 # setup.py build --verbose ...
 # Xpra version 4.4
 %define xpra_ver 4.4
-# -----
+# ----
+%if 0%{?suse_version} >= 1550
+%define ffmpeg_ver 5
+%else
+%define ffmpeg_ver 4
+%endif
+
+# ----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        4.4+git20220621.872c7f8d8
+Version:        4.4+git20220726.a03b3f67e
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -36,22 +43,30 @@ Group:          System/X11/Utilities
 URL:            https://www.xpra.org/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        xpra-icon.png
-# -----
+# ----
 BuildRequires:  ImageMagick
 BuildRequires:  brotli
 BuildRequires:  cups
 BuildRequires:  cups-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+BuildRequires:  ffmpeg-%{ffmpeg_ver}
+BuildRequires:  ffmpeg-%{ffmpeg_ver}-libavcodec-devel
+BuildRequires:  ffmpeg-%{ffmpeg_ver}-libavformat-devel
+BuildRequires:  ffmpeg-%{ffmpeg_ver}-libavutil-devel
+BuildRequires:  ffmpeg-%{ffmpeg_ver}-libswresample-devel
+BuildRequires:  ffmpeg-%{ffmpeg_ver}-libswscale-devel
 BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
-# Needed for proper OS detection by setup.py
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
-BuildRequires: distribution-release
+# ----
+%if 0%{?suse_version} >= 1550
+%define using_release "distribution-release"
+BuildRequires:  distribution-release
 %else
-BuildRequires: openSUSE-release
+%define using_release "openSUSE-release"
+BuildRequires:  openSUSE-release
 %endif
-# ---------
+# ----
 BuildRequires:  pam-devel
 %if %{with pandoc}
 BuildRequires:  pandoc
@@ -60,8 +75,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-Cython >= 0.20.0
 BuildRequires:  python3-devel
 BuildRequires:  python3-gobject-devel
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-pyxdg
+BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libavcodec) >= 58
@@ -69,6 +84,9 @@ BuildRequires:  pkgconfig(libavformat) >= 58
 BuildRequires:  pkgconfig(libswscale) >= 5
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwebp) >= 0.4
+# TW can do this, 15.4 can't ...
+#BuildRequires:  pkgconfig(pam)
+#BuildRequires:  pkgconfig(pam_misc)
 BuildRequires:  pkgconfig(py3cairo)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vpx) >= 1.4.0
@@ -78,6 +96,8 @@ BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xres)
 BuildRequires:  pkgconfig(xtst)
+BuildRequires:  procps-devel
+BuildRequires:  qrencode-devel
 Requires:       dbus-1-x11
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
@@ -101,7 +121,6 @@ Requires:       shared-mime-info
 Requires:       xf86-video-dummy
 Requires:       xorg-x11-xauth
 Requires(post): %fillup_prereq
-Recommends:     xdg-menu
 Recommends:     lsb-release
 Recommends:     pinentry
 Recommends:     pulseaudio-module-x11
@@ -113,6 +132,9 @@ Recommends:     python3-opengl-accelerate
 Recommends:     python3-paramiko
 Recommends:     python3-pyinotify
 Recommends:     python3-pyxdg
+Recommends:     xdg-menu
+# Overflow errors on 32-bit
+ExcludeArch:    %ix86
 %{?systemd_ordering}
 
 %description
@@ -133,18 +155,27 @@ network bandwidth constraints.
 find -name '*.py' \
   -exec sed -i '1{\@^#!/usr/bin/env python@d}' {} +
 install -m0644 %{SOURCE1} -T fs/share/icons/xpra.png
-# set fillup dir
+# misc fixes for SUSE specific differences upstream
+baselibexec=$(basename $(rpm -E '%{_libexecdir}'))
 sed -e 's|__FILLUPDIR__|%{_fillupdir}|' \
   -e 's|__UNITDIR__|%{_unitdir}|' \
   -e 's|share/doc/xpra|share/doc/packages/xpra|' \
+  -e "s|__LIBEXECDIR__|$baselibexec|" \
   -i setup.py
 
 %build
 
+### DEBUGGING
+echo "ffmpeg_ver:    %ffmpeg_ver"
+echo "sle_version:   %sle_version"
+echo "suse_version:  %suse_version"
+echo "using_release: %using_release"
+#####
+
 export CFLAGS="%{optflags}"
-%if 0%{?suse_version} <= 1500
+#%%if 0%%{?suse_version} <= 1500
 export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
-%endif
+#%%endif
 python3 setup.py clean
 
 python3 setup.py build \
@@ -163,7 +194,16 @@ python3 setup.py build \
 %if !%{with pandoc}
   --without-docs \
 %endif
+%if %{ffmpeg_ver} == 4
   --without-nvfbc
+%endif
+%if %{ffmpeg_ver} == 5
+  --without-nvfbc
+%endif
+#%%if %%{ffmpeg_ver} == 5
+#  --without-nvfbc \
+#  --without-strict
+#%%endif
 
 %install
 python3 setup.py install \
@@ -186,11 +226,6 @@ rm -rf %{buildroot}%{_datadir}/xpra/cuda
 
 mkdir -pv %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
-
-%if ( 0%{?sle_version} == 150300 || 0%{?sle_version} == 150400 ) && 0%{?is_opensuse}
-mkdir -vp %{buildroot}%{_libexecdir}/%{name}
-mv -v %{buildroot}%{_prefix}/libexec/%{name}/* %{buildroot}%{_libexecdir}/%{name}
-%endif
 
 %fdupes -s %{buildroot}
 
@@ -225,6 +260,7 @@ mkdir -p %{_rundir}/%{name} || exit 1
 %dir %{_sysconfdir}/xpra
 %dir %{_sysconfdir}/xpra/conf.d
 %dir %{_sysconfdir}/xpra/content-categories
+%dir %{_sysconfdir}/xpra/content-parent
 %dir %{_sysconfdir}/xpra/content-type
 %dir %{_sysconfdir}/xpra/http-headers
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/xpra.conf
@@ -232,6 +268,7 @@ mkdir -p %{_rundir}/%{name} || exit 1
 %config(noreplace) %{_sysconfdir}/xpra/*.conf
 %config(noreplace) %{_sysconfdir}/xpra/conf.d/*.conf
 %config(noreplace) %{_sysconfdir}/xpra/content-categories/*.conf
+%config(noreplace) %{_sysconfdir}/xpra/content-parent/*.conf
 %config(noreplace) %{_sysconfdir}/xpra/content-type/*.conf
 %config(noreplace) %{_sysconfdir}/xpra/http-headers/*.txt
 %config(noreplace) %{_sysconfdir}/X11/xorg.conf.d/90-xpra-virtual.conf
