@@ -1651,4 +1651,27 @@
  (bsc#1200710)</comment>
     <requestid>988230</requestid>
   </revision>
+  <revision rev="173" vrev="34">
+    <srcmd5>7cf65e581e2d4d21b671d0c3c5783054</srcmd5>
+    <version>unknown</version>
+    <time>1660752994</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 2.6.2
+  - https://kernel.org/pub/linux/utils/nfs-utils/2.6.2/2.6.2-Changelog
+- Remove patches from this release:
+  - gcc12-fix.patch
+  - 0001-systemd-Apply-all-sysctl-settings-when-NFS-related-m.patch
+  - 0002-Update-autoconfig-files-to-work-with-v2.71.patch
+  - 0003-autoconf-change-tirpc-to-check-for-a-file-not-for-an.patch
+  - 0004-modprobe-protect-against-sysctl-errors.patch
+- Refresh nfs-utils-1.0.7-bind-syntax.patch
+- Added files:
+  - /usr/lib/udev/rules.d/99-nfs.rules
+  - /usr/libexec/nfsrahead
+  - /usr/sbin/rpcctl
+  - /usr/share/man/man5/nfsrahead.5.gz
+  - /usr/share/man/man8/rpcctl.8.gz
+- Sort man page entries in %files section</comment>
+    <requestid>995255</requestid>
+  </revision>
 </revisionlist>

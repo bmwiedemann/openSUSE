@@ -22,7 +22,7 @@
 %endif
 
 Name:           nfs-utils
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        Support Utilities for Kernel nfsd
 License:        GPL-2.0-or-later
@@ -42,11 +42,6 @@ Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
 Source27:       nfs-kernel-server.tmpfiles.conf
 Patch0:         nfs-utils-1.0.7-bind-syntax.patch
-Patch1:         gcc12-fix.patch
-Patch2:         0001-systemd-Apply-all-sysctl-settings-when-NFS-related-m.patch
-Patch3:         0002-Update-autoconfig-files-to-work-with-v2.71.patch
-Patch4:         0003-autoconf-change-tirpc-to-check-for-a-file-not-for-an.patch
-Patch5:         0004-modprobe-protect-against-sysctl-errors.patch
 Patch6:         0005-modprobe-avoid-error-messages-if-sbin-sysctl-fail.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
@@ -271,6 +266,7 @@ fi
 %{_sbindir}/rpc.gssd
 %{_sbindir}/rpc.idmapd
 %{_sbindir}/rpc.statd
+%{_sbindir}/rpcctl
 %{_sbindir}/rpcdebug
 %{_sbindir}/showmount
 %{_sbindir}/sm-notify
@@ -278,6 +274,7 @@ fi
 %{_sbindir}/blkmapd
 %{_sbindir}/rpc.svcgssd
 %{_sbindir}/nfsconf
+%{_udevrulesdir}/99-nfs.rules
 %{_unitdir}/auth-rpcgss-module.service
 %{_unitdir}/nfs-blkmap.service
 %{_unitdir}/nfs-client.target
@@ -298,34 +295,36 @@ fi
 %{_systemdgeneratordir}/nfs-server-generator
 %{_systemdgeneratordir}/rpc-pipefs-generator
 %{_modprobedir}/50-nfs.conf
-%{_mandir}/man8/nfsdclddb.8%{ext_man}
-%{_mandir}/man8/nfsdclnts.8%{ext_man}
-%{_mandir}/man5/nfsmount.conf.5%{ext_man}
-%{_mandir}/man5/nfs.conf.5%{ext_man}
-%{_mandir}/man5/nfs.5%{ext_man}
-%{_mandir}/man8/nfsdcld.8%{ext_man}
 %{_mandir}/man5/idmapd.conf.5%{ext_man}
+%{_mandir}/man5/nfs.5%{ext_man}
+%{_mandir}/man5/nfs.conf.5%{ext_man}
+%{_mandir}/man5/nfsmount.conf.5%{ext_man}
+%{_mandir}/man5/nfsrahead.5%{ext_man}
 %{_mandir}/man7/nfs.systemd.7%{ext_man}
-%{_mandir}/man8/mount.nfs.8%{ext_man}
-%{_mandir}/man8/nfsidmap.8%{ext_man}
-%{_mandir}/man8/nfsstat.8%{ext_man}
-%{_mandir}/man8/nfsconf.8%{ext_man}
-%{_mandir}/man8/rpc.sm-notify.8%{ext_man}
-%{_mandir}/man8/showmount.8%{ext_man}
-%{_mandir}/man8/sm-notify.8%{ext_man}
-%{_mandir}/man8/umount.nfs.8%{ext_man}
-%{_mandir}/man8/rpc.gssd.8%{ext_man}
-%{_mandir}/man8/rpc.idmapd.8%{ext_man}
+%{_mandir}/man8/blkmapd.8%{ext_man}
 %{_mandir}/man8/gssd.8%{ext_man}
 %{_mandir}/man8/idmapd.8%{ext_man}
-%{_mandir}/man8/svcgssd.8%{ext_man}
-%{_mandir}/man8/rpc.statd.8%{ext_man}
-%{_mandir}/man8/rpcdebug.8%{ext_man}
-%{_mandir}/man8/statd.8%{ext_man}
+%{_mandir}/man8/mount.nfs.8%{ext_man}
 %{_mandir}/man8/mountstats.8%{ext_man}
+%{_mandir}/man8/nfsconf.8%{ext_man}
+%{_mandir}/man8/nfsdcld.8%{ext_man}
+%{_mandir}/man8/nfsdclddb.8%{ext_man}
+%{_mandir}/man8/nfsdclnts.8%{ext_man}
+%{_mandir}/man8/nfsidmap.8%{ext_man}
 %{_mandir}/man8/nfsiostat.8%{ext_man}
-%{_mandir}/man8/blkmapd.8%{ext_man}
+%{_mandir}/man8/nfsstat.8%{ext_man}
+%{_mandir}/man8/rpc.gssd.8%{ext_man}
+%{_mandir}/man8/rpc.idmapd.8%{ext_man}
+%{_mandir}/man8/rpc.sm-notify.8%{ext_man}
+%{_mandir}/man8/rpc.statd.8%{ext_man}
 %{_mandir}/man8/rpc.svcgssd.8%{ext_man}
+%{_mandir}/man8/rpcctl.8%{ext_man}
+%{_mandir}/man8/rpcdebug.8%{ext_man}
+%{_mandir}/man8/showmount.8%{ext_man}
+%{_mandir}/man8/sm-notify.8%{ext_man}
+%{_mandir}/man8/statd.8%{ext_man}
+%{_mandir}/man8/svcgssd.8%{ext_man}
+%{_mandir}/man8/umount.nfs.8%{ext_man}
 %{_fillupdir}/sysconfig.nfs
 %{_sysusersdir}/statd-user.conf
 %dir %{_localstatedir}/lib/nfs
@@ -334,6 +333,7 @@ fi
 %attr(0700,statd,statd) %dir %{_localstatedir}/lib/nfs/sm
 %attr(0700,statd,statd) %dir %{_localstatedir}/lib/nfs/sm.bak
 %ghost %{_localstatedir}/lib/nfs/state
+%{_libexecdir}/nfsrahead
 
 %files -n nfs-kernel-server
 %{_unitdir}/nfs-mountd.service

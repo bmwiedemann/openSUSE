@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 12 08:33:37 UTC 2022 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 2.6.2
+  - https://kernel.org/pub/linux/utils/nfs-utils/2.6.2/2.6.2-Changelog
+- Remove patches from this release:
+  - gcc12-fix.patch
+  - 0001-systemd-Apply-all-sysctl-settings-when-NFS-related-m.patch
+  - 0002-Update-autoconfig-files-to-work-with-v2.71.patch
+  - 0003-autoconf-change-tirpc-to-check-for-a-file-not-for-an.patch
+  - 0004-modprobe-protect-against-sysctl-errors.patch
+- Refresh nfs-utils-1.0.7-bind-syntax.patch
+- Added files:
+  - /usr/lib/udev/rules.d/99-nfs.rules
+  - /usr/libexec/nfsrahead
+  - /usr/sbin/rpcctl
+  - /usr/share/man/man5/nfsrahead.5.gz
+  - /usr/share/man/man8/rpcctl.8.gz
+- Sort man page entries in %files section
+
+-------------------------------------------------------------------
 Mon Jul 11 03:31:08 UTC 2022 - Neil Brown <nfbrown@suse.com>
 
 - 0004-modprobe-protect-against-sysctl-errors.patch
