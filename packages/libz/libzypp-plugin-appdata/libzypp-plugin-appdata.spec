@@ -1,7 +1,7 @@
 #
 # spec file for package libzypp-plugin-appdata
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,14 @@
 
 
 Name:           libzypp-plugin-appdata
-Version:        1.0.1+git.20180426
+Version:        1.0.1+git.20220816
 Release:        0
 Summary:        libzypp extension to handle AppStream metadata
-License:        MIT AND CC0-1.0
+License:        CC0-1.0 AND MIT
 Group:          System/Libraries
 URL:            https://wiki.gnome.org/Design/Apps/Software
 Source0:        openSUSE-appstream-%{version}.tar.xz
 Source99:       libzypp-plugin-appdata-rpmlintrc
-Patch0:	harden_appstream-sync-cache.service.patch
-# appstreamcli is provided by the AppStream package. Let's pull it in when available, but ignore its absence
-Recommends:     AppStream
 # appstream-glib >= 0.3.6 is the first to correctly to appstream-util uninstall in /var/cache
 Requires:       appstream-glib >= 0.3.6
 # appdata hook was introduced in libzypp 14.29.4
@@ -59,8 +56,7 @@ Group:          Metapackages
 This package contains extra appstream metadata to be used by appstream-builder
 
 %prep
-%setup -q -n openSUSE-appstream-%{version}
-%patch0 -p1
+%autosetup -n openSUSE-appstream-%{version}
 
 %build
 

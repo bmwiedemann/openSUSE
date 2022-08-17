@@ -232,4 +232,12 @@
     <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 923286 from jsegitz)</comment>
     <requestid>924739</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>898063478a06706e6c5a04a580cd2b4e</srcmd5>
+    <version>1.0.1+git.20220816</version>
+    <time>1660753001</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>997388</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 16 12:19:30 UTC 2022 - dimstar@opensuse.org
+
+- Update to version 1.0.1+git.20220816:
+  * Drop call to appstreamcli refresh
+  * Added hardening to systemd service (bsc#1181400)
+  * Typo fix for command help
+- Drop harden_appstream-sync-cache.service.patch: fixed upstream.
+- Drop Appstream recommends: no longer needed, as we no longer call
+  appstreamcli.
+
+-------------------------------------------------------------------
 Tue Oct  5 09:12:00 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
