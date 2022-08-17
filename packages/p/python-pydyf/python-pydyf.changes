@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 16 20:25:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Implement python packaging best practices for build requirements,
+  testing and files section
+
+-------------------------------------------------------------------
 Sat Aug 13 11:44:53 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - Update to version 0.2.0

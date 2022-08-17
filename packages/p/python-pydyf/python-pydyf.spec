@@ -17,9 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-
 Name:           python-pydyf
 Version:        0.2.0
 Release:        0
@@ -27,19 +24,18 @@ Summary:        A low-level PDF generator
 License:        BSD-3-Clause
 URL:            https://www.courtbouillon.org/pydyf
 Source:         https://files.pythonhosted.org/packages/source/p/pydyf/pydyf-%{version}.tar.gz
-BuildRequires:  %{python_module flit}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-
 BuildArch:      noarch
-## Testing
+# SECTION Testing
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module pytest-isort}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  gs
-
+# /SECTION
 %python_subpackages
 
 %description
@@ -47,6 +43,8 @@ A low-level PDF generator written in Python and based on PDF specification 1.7.
 
 %prep
 %setup -q -n pydyf-%{version}
+sed -i 's:--isort --flake8::' pyproject.toml
+chmod -x pydyf/__init__.py
 
 %build
 %pyproject_wheel
@@ -56,12 +54,12 @@ A low-level PDF generator written in Python and based on PDF specification 1.7.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-sed -i 's:--flake8 --numprocesses=auto::' pyproject.toml
-%pytest tests/test_pydyf.py
+%pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pydyf
+%{python_sitelib}/pydyf-%{version}*-info
 
 %changelog
