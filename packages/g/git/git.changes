@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 15 07:32:12 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.37.2:
+  * multiple bug fixes, developer visible or handling corner cases
+  * "git p4" improved non-ASCII support
+
+-------------------------------------------------------------------
 Tue Jul 12 18:35:14 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.37.1:
