@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 16 12:34:34 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.1
+  * Make distinction between "true" booleans and pretenders
+
+-------------------------------------------------------------------
+Tue Aug 16 07:51:59 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.0
+  * Support setting of multiple values on attribute
+  * Added feature to download binaries
+  * Handle boolean query params
+  * Convert relative paths to SSH keys to absolute paths
+
+-------------------------------------------------------------------
 Wed Aug  3 09:48:04 UTC 2022 - Marina Latini <marina.latini@suse.com>
 
 - Buildrequires cached-property always, not only for Python lower than 3.8

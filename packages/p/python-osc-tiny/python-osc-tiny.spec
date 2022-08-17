@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-osc-tiny
-Version:        0.6.6
+Version:        0.7.1
 Release:        0
 Summary:        Client API for openSUSE BuildService
 License:        MIT
@@ -41,7 +41,6 @@ Requires:       python-lxml
 Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires:       python-requests
-Requires:       python-responses
 Suggests:       openssh
 BuildArch:      noarch
 # Using 'if' instead of 'with' because the latter requires rpm >= 4.14
