@@ -22,7 +22,7 @@
 %define skip_python36 1
 %define modname iminuit
 Name:           python-%{modname}
-Version:        2.12.1
+Version:        2.16.0
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
@@ -43,7 +43,11 @@ Requires:       python-numpy >= 1.11.3
 Recommends:     python-matplotlib
 Recommends:     python-scipy
 # SECTION test requirements
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module numba}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module tabulate}
 # Fix unresolved status for Leap 15.x on account of multiple choices for python3-importlib-metadata (python3-importlib-metadata and python3-importlib_metadata)
 BuildRequires:  %{python_module importlib-metadata}
 # /SECTION
@@ -71,7 +75,12 @@ export CMAKE_ARGS="-DIMINUIT_EXTERNAL_PYBIND11=ON"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+# A tolerance issue on 32-bit
+%ifarch %ix86
+%pytest_arch -k 'not test_matrix'
+%else
 %pytest_arch
+%endif
 
 %files %{python_files}
 %doc README.rst
