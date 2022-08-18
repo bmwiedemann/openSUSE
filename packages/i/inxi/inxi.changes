@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Aug 17 21:38:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.20:
+  1a. More or less completed verification of AMD cpu microarch/built/process, and
+  added more accurate fallback cases for stray model IDs.
+  1b. Extended Intel cpu data a bit more as well. Thanks linuxdaddy from slackware
+  for the research help there.
+  2. Tentative support for finit init system (fast init). Runs in /proc/1/comm,
+  uses initctl, which may have been revived from its upstart days, not sure. Added
+  potential support for nosh, linux only, don't know how to detect other bsd init
+  system.
+  3. Added amd/intel gpu product IDs.
+  4. Added shortcut --filter-all/--za, activates all filters: -z, --zl, --zu, 
+  --zv. Why not?
+  5. Added support for dm types kdmctl and xdmctl, opensuse and maybe redhat use
+  the latter to start the actual dm running the desktop/wm. You want to see that 
+  because you need to do systemctl restart xdm to restart the actual dm. Thanks
+  mrmazda for pointing out this one.
+  6. Added AlmaLinux, RockyLinux, CentosStream to system base (RHEL derived).
+  7. Basic Raptor Lake gpu/apu support added, with patterns to detect since few 
+  product ids yet. Same applies to Arctic and Alchemist, which still have no 
+  product IDs.
+  8. More disk vendors and disk vendor ids, never stops - the waters flow on, the
+  rain falls, then the sun comes out. Until one day it doesn't.
+  * /usr/share/doc/packages/inxi/inxi.changelog.
+
+-------------------------------------------------------------------
 Mon Jun 20 23:55:05 UTC 2022 - malcolmlewis@opensuse.org
 
 - Updated to version 3.3.19:
