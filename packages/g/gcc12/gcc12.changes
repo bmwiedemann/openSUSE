@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 12 11:06:04 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-12 branch head, 6b7d570a5001bb79e34c0d1626a, git372
+  * includes release candidate for GCC 12.2
+
+-------------------------------------------------------------------
+Mon Aug  8 18:31:18 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Remove workaround for obs-service-format_spec_file.
+
+-------------------------------------------------------------------
 Tue Jul 26 06:46:45 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Add Provides of libstdc++6-pp-gccN to libstdc++6-pp.  [bsc#1201848]

@@ -186,7 +186,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        12.1.1+git287
+Version:        12.1.1+git372
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -1016,11 +1016,9 @@ Summary:        GNU Ada Runtime Libraries
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Libraries
 Provides:       libgnarl-12 = %{version}-%{release}
-# FIXME: remove %{after} service-format_spec_file is fixed
-# https://github.com/openSUSE/obs-service-format_spec_file/issues/46
-Conflicts:      %selfconflict libgnarl-12%{nil}
+Conflicts:      %selfconflict libgnarl-12
 Provides:       libgnat-12 = %{version}-%{release}
-Conflicts:      %selfconflict libgnat-12%{nil}
+Conflicts:      %selfconflict libgnat-12
 
 %description -n libada12
 This package contains the shared libraries required to run programs
@@ -1039,11 +1037,9 @@ Summary:        GNU Ada Runtime Libraries
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Libraries
 Provides:       libgnarl-12-32bit = %{version}-%{release}
-# FIXME: remove %{after} service-format_spec_file is fixed
-# https://github.com/openSUSE/obs-service-format_spec_file/issues/46
-Conflicts:      %selfconflict libgnarl-12-32bit%{nil}
+Conflicts:      %selfconflict libgnarl-12-32bit
 Provides:       libgnat-12-32bit = %{version}-%{release}
-Conflicts:      %selfconflict libgnat-12-32bit%{nil}
+Conflicts:      %selfconflict libgnat-12-32bit
 
 %description -n libada12-32bit
 This package contains the shared libraries required to run programs
@@ -1062,11 +1058,9 @@ Summary:        GNU Ada Runtime Libraries
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Libraries
 Provides:       libgnarl-12-64bit = %{version}-%{release}
-# FIXME: remove %{after} service-format_spec_file is fixed
-# https://github.com/openSUSE/obs-service-format_spec_file/issues/46
-Conflicts:      %selfconflict libgnarl-12-64bit%{nil}
+Conflicts:      %selfconflict libgnarl-12-64bit
 Provides:       libgnat-12-64bit = %{version}-%{release}
-Conflicts:      %selfconflict libgnat-12-64bit%{nil}
+Conflicts:      %selfconflict libgnat-12-64bit
 
 %description -n libada12-64bit
 This package contains the shared libraries required to run programs
