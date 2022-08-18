@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Aug 13 14:21:37 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 1.20.3
+  * Fixed multiple parallelism bugs
+  * 8-bit mode now has dithering
+- Update to version 1.20.2
+  * Fixed a crash on startup with re-release Quake data
+  * Fixed crash with small stack sized on Unix (e.g. musl libc)
+- Update to version 1.20.1
+  * Fix a bug that could cause random lockups with 1.20.0
+  * Fix screenshot crash
+  * Fix corruption if new vkquake.pak is missing or old one is still in place
+- Update to version 1.20.0
+  * Parallelized renderer for significantly higher performance
+  * Parallelized texture mip generation for faster load times
+  * SIMD code optimizations
+  * "8-bit" color mode emulation
+  * Scaling is now less blurry
+  * Mods menu
+  * Completely replaced memory management (no more -heapsize)
+
+-------------------------------------------------------------------
 Mon May 16 08:14:35 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.13.1:
