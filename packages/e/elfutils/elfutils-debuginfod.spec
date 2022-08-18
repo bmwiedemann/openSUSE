@@ -31,6 +31,8 @@ Source3:        elfutils.keyring
 Source4:        %{name}.sysusers
 Patch1:         harden_debuginfod.service.patch
 Patch2:         config-Move-the-2-dev-null-inside-the-sh-c-quotes-fo.patch
+Patch3:         PR29474-debuginfod.patch
+Patch4:         support-nullglob-in-profile.-.in-files.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -73,6 +75,7 @@ Summary:        Library for build-id HTTP ELF/DWARF server
 Group:          System/Libraries
 Conflicts:      libdebuginfod1-dummy = %{version}
 License:        GPL-2.0-or-later OR LGPL-3.0-or-later
+Recommends:     debuginfod-profile
 
 %description -n libdebuginfod1
 The libdebuginfod1 package contains shared libraries
@@ -193,7 +196,7 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %{_sysusersdir}/%{name}.conf
 
 %dir %attr(0700,debuginfod,debuginfod) %{_localstatedir}/cache/debuginfod
-%verify(not md5 size mtime) %attr(0600,debuginfod,debuginfod) %{_localstatedir}/cache/debuginfod/debuginfod.sqlite
+%ghost %attr(0600,debuginfod,debuginfod) %{_localstatedir}/cache/debuginfod/debuginfod.sqlite
 
 %files -n libdebuginfod1
 %{_libdir}/libdebuginfod.so.*

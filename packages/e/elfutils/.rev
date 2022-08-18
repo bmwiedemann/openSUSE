@@ -963,4 +963,20 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment></comment>
     <requestid>982782</requestid>
   </revision>
+  <revision rev="99" vrev="5">
+    <srcmd5>debac9122cfa95a8116c6154d0d0d424</srcmd5>
+    <version>0.187</version>
+    <time>1660834123</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %ghost for debuginfod.sqlite file.
+
+- Add support-nullglob-in-profile.-.in-files.patch
+  fixes boo#1202440.
+
+- Add PR29474-debuginfod.patch in order to fix PR29474.
+
+- Add Recommends for libdebuginfod1 so that debuginfod-profile
+  sets the DEBUGINFOD_URLS.</comment>
+    <requestid>997533</requestid>
+  </revision>
 </revisionlist>

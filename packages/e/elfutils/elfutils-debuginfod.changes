@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 17 11:42:11 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Use %ghost for debuginfod.sqlite file.
+
+-------------------------------------------------------------------
+Tue Aug 16 13:29:30 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add support-nullglob-in-profile.-.in-files.patch
+  fixes boo#1202440.
+
+-------------------------------------------------------------------
+Mon Aug 15 11:04:57 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add PR29474-debuginfod.patch in order to fix PR29474.
+
+-------------------------------------------------------------------
+Fri Aug 12 12:35:57 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add Recommends for libdebuginfod1 so that debuginfod-profile
+  sets the DEBUGINFOD_URLS.
+
+-------------------------------------------------------------------
 Wed Jun 15 11:28:34 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add debuginfod-profile subpackage that collects settings
