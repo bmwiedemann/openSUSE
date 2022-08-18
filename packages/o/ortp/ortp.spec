@@ -30,6 +30,7 @@ Source:         https://gitlab.linphone.org/BC/public/ortp/-/archive/%{version}/
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE deps.diff
 Patch0:         deps.diff
+BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.0
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -77,6 +78,8 @@ mv -T %{buildroot}%{_datadir}/doc/%{name}-5.1.0 %{buildroot}%{_docdir}/%{name}
 
 # for some reason, pkgconfig file contains wrong libdir
 sed -i "s,-L/usr/lib,-L%{_libdir}," %{buildroot}/%{_libdir}/pkgconfig/%{name}.pc
+
+chrpath -d %{buildroot}%{_libdir}/%{soname}.so.%{sover}*
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
