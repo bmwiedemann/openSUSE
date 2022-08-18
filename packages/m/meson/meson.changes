@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 10 10:52:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- mono-core is available on s390x now
+- make mono dependency an build-conditional
+
+-------------------------------------------------------------------
 Fri Jun 24 12:53:02 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.62.2:

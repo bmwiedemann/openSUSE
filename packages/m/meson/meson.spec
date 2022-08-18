@@ -26,6 +26,7 @@
 %endif
 
 %bcond_with     setuptools
+%bcond_without  mono
 %define _name   mesonbuild
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 Name:           meson%{name_ext}
@@ -114,8 +115,7 @@ BuildRequires:  python2-PyYAML
 BuildRequires:  libboost_python-devel
 BuildRequires:  python2-devel
 %endif
-%ifnarch s390x
-# csharp is not on s390 machines
+%if %{with mono}
 BuildRequires:  mono(csharp)
 %endif
 %endif
