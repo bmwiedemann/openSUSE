@@ -30,6 +30,7 @@ URL:            https://github.com/pganssle/zoneinfo
 Source:         https://github.com/pganssle/zoneinfo/archive/refs/tags/%{version}.tar.gz#/backports.zoneinfo-%{version}-gh.tar.gz
 # PATCH-FIX-UPSTREAM zoneinfo-0.2.1-santiago-tz2022a.patch -- gh#pganssle/zoneinfo#114, gh#pganssle/zoneinfo#115 (+ gh#pganssle/zoneinfo#101)
 Patch1:         zoneinfo-0.2.1-santiago-tz2022a.patch
+Patch2:         zoneinfo-remove-dublin-check.patch
 BuildRequires:  %{python_module devel < 3.9}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -43,7 +44,7 @@ BuildRequires:  %{python_module importlib_resources if %python-base < 3.7}
 BuildRequires:  %{python_module pytest-subtests}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testsuite}
-BuildRequires:  timezone = 2022a
+BuildRequires:  timezone >= 2022a
 # /SECTION
 %if 0%{?python_version_nodots} < 37
 Requires:       python-importlib_resources

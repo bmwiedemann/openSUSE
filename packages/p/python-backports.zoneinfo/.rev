@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>965102</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>82c7acf126a688b08adbd15a1cb0f3da</srcmd5>
+    <version>0.2.1</version>
+    <time>1660834120</time>
+    <user>dimstar_suse</user>
+    <comment>- add zoneinfo-remove-dublin-check.patch to adjust for changed
+  historic data in tzdata 2022b+
+- allow newer timezone versions as well to not break timezone
+  updates</comment>
+    <requestid>997512</requestid>
+  </revision>
 </revisionlist>

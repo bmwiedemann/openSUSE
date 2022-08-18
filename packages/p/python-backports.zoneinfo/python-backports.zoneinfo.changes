@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 16 19:45:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add zoneinfo-remove-dublin-check.patch to adjust for changed
+  historic data in tzdata 2022b+
+- allow newer timezone versions as well to not break timezone
+  updates
+
+-------------------------------------------------------------------
 Fri Mar 25 17:22:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add zoneinfo-0.2.1-santiago-tz2022a.patch
