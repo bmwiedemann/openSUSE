@@ -679,4 +679,12 @@
   Make xemacs can build successfuly.</comment>
     <requestid>840398</requestid>
   </revision>
+  <revision rev="94" vrev="21">
+    <srcmd5>c81b5b3505c31f133a994c8bee9165e7</srcmd5>
+    <version>21.5.34</version>
+    <time>1660834170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>997783</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package xemacs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Name:           xemacs
 #!BuildIgnore:  diffstat
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
-BuildRequires:  canna-devel
 BuildRequires:  compface
 BuildRequires:  db-devel
 BuildRequires:  fdupes
@@ -322,7 +321,6 @@ PREFIX="--prefix=/usr \
 #  'compile-goto-error'.
 SPECIAL="--with-database=berkdb,gdbm \
 	 --with-ncurses \
-	 --with-canna \
 	 --with-tty=yes \
 	 --with-site-lisp \
 %if %kkcc_broken

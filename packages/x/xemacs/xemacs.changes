@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  8 15:32:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop canna support: canna has not been maintained for a long time
+ and sec issues are not being addressed (bsc#1199280).
+
+-------------------------------------------------------------------
 Fri Oct  9 07:57:26 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch xemacs-21.5.34-strsignal.patch as sys_siglist is deprecated 
