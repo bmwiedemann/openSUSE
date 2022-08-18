@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyannotate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pyannotate
 Version:        1.2.0
 Release:        0
@@ -32,7 +33,7 @@ Requires:       python-mypy_extensions
 Requires:       python-six >= 1.11.0
 Requires:       python-typing
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mypy_extensions}
