@@ -144,6 +144,8 @@ Suggests:       bumblebee-status-module-yubikey = %{version}
 #Suggests:       bumblebee-status-module-twmn = %{version}
 #Suggests:       bumblebee-status-module-zfs = %{version}
 # /SECTION
+# deadbeef is not being built for i586, because libdispatch isnt built for i586
+ExcludeArch:    %ix86
 
 %description
 bumblebee-status is a modular, themeable status line generator for the i3 window manager.
@@ -231,7 +233,6 @@ Group:          System/Monitoring
 Requires:       %{name} = %{version}
 Requires:       deadbeef
 Supplements:    (%{name} and deadbeef)
-BuildArch:      noarch
 
 %description module-deadbeef
 Displays the current song being played in DeaDBeeF and provides
