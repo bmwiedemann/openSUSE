@@ -35,8 +35,15 @@ BuildRequires:  doxygen
 BuildRequires:  gawk
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
+%if 0%{?suse_version}
 BuildRequires:  libgsm-devel
+%else
+BuildRequires:  gsm-devel
+%endif
 BuildRequires:  libjpeg-turbo >= 2.0.0
+%if 0%{?fedora}
+BuildRequires:  turbojpeg-devel
+%endif
 BuildRequires:  libpcap-devel
 BuildRequires:  libsrtp2-linphone-devel
 BuildRequires:  libv4l-devel
@@ -44,7 +51,11 @@ BuildRequires:  libvpx-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  spandsp-devel
+%if 0%{?suse_version}
 BuildRequires:  sqlite3-devel
+%else
+BuildRequires:  libsqlite3x-devel
+%endif
 BuildRequires:  vim
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bctoolbox) >= 5.0.0
@@ -67,6 +78,7 @@ BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libavcodec) >= 51.0.0
 BuildRequires:  pkgconfig(libswscale) >= 0.7.0
+BuildRequires:  chrpath
 
 %description
 Mediastreamer2 is a library to make audio and video real-time
@@ -118,6 +130,9 @@ export CXXFLAGS="$CFLAGS"
 %cmake \
     -DCMAKE_SHARED_LINKER_FLAGS="-flto=auto -Wl,--as-needed -Wl,-z,now" \
     -DENABLE_STATIC=NO \
+%if 0%{?fedora}
+   -DCMAKE_INSTALL_LIBDIR=lib64 \
+%endif
     -DENABLE_STRICT=NO
 %cmake_build
 
@@ -127,6 +142,9 @@ export CXXFLAGS="$CFLAGS"
 mkdir -p %{buildroot}%{_docdir}/%{name}/
 mv -T %{buildroot}%{_datadir}/doc/%{name}-5.1.0/ \
   %{buildroot}%{_docdir}/%{name}/
+
+chrpath -d %{buildroot}%{_bindir}/mediastream %{buildroot}%{_bindir}/mkvstream %{buildroot}%{_bindir}/mediastreamer2_tester 
+chrpath -d %{buildroot}%{_libdir}/%{sobase}.so.%{sover}* %{buildroot}%{_libdir}/libmediastreamer.so
 
 %post -n %{sobase}%{sover} -p /sbin/ldconfig
 %postun -n %{sobase}%{sover} -p /sbin/ldconfig
