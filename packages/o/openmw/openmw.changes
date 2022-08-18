@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 14 14:49:11 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add openmw-0.47.0-gcc12.patch: Fix build with GCC 12 (gl#OpenMW/openmw#6744).
+
+-------------------------------------------------------------------
 Wed Nov 17 19:24:11 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Removed double source entry 

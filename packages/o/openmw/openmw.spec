@@ -1,7 +1,7 @@
 #
 # spec file for package openmw
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012-2015 openSUSE_user1
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,8 @@ Source:         https://gitlab.com/OpenMW/openmw/-/archive/%{name}-%{version}/%{
 Source2:        %{name}.rpmlintrc
 # PATCH-FIX-UPSTREAM openmw-sigaltstack.patch https://gitlab.com/OpenMW/openmw/-/issues/6356 adam@mizerski.pl -- fix error: size of array 'altstack' is not an integral constant-expression
 Patch2:         openmw-sigaltstack.patch
+# PATCH-FIX-UPSTREAM openmw-0.47.0-gcc12.patch -- Fix build with GCC 12, picked from upstream, rebased on 0.47.0 (gl#OpenMW/openmw#6744)
+Patch3:         openmw-0.47.0-gcc12.patch
 BuildRequires:  MyGUI-devel >= 3.2.1
 BuildRequires:  cmake
 BuildRequires:  doxygen
