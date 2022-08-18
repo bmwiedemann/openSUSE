@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Aug 16 07:42:26 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- timezone update 2022c:
+  * Work around awk bug
+  * Improve tzselect on intercontinental Zones
+
+-------------------------------------------------------------------
+Thu Aug 11 12:26:28 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- timezone update 2022b:
+  * Chile's DST is delayed by a week in September 2022 boo#1202324
+  * Iran no longer observes DST after 2022
+  * Rename Europe/Kiev to Europe/Kyiv
+  * New zic -R option
+  * Vanguard form now uses %z
+  * Finish moving duplicate-since-1970 zones to 'backzone'
+
+-------------------------------------------------------------------
+Wed Jun  8 18:58:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- switch to _multibuild
+- refresh keyring, enable keyring validation 
+
+-------------------------------------------------------------------
 Tue Apr 12 13:56:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Add --add-exports for java versions that support it.

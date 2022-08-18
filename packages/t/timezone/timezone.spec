@@ -22,13 +22,13 @@ License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Base
 URL:            http://www.iana.org/time-zones
 # COMMON-BEGIN
-Version:        2022a
+Version:        2022c
 Release:        0
 Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz
 Source1:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz
 Source2:        https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz.asc
 Source3:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz.asc
-Source4:        %{name}.keyring
+Source4:        timezone.keyring
 Source5:        %{name}.changes
 Patch0:         tzdata-china.diff
 Patch3:         iso3166-uk.diff
