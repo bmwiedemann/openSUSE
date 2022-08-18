@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 18 10:57:06 UTC 2022 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to new upstream version 2.4.22
+  - Add support for GPS Bricklet 3.0 and ESP32 (Ethernet) Brick
+  - Add Data Logger support for GPS Bricklet 3.0
+  - Improve plot color palette for dark themes
+  - Rework plot timing logic to greatly reduce jitter
+  - Draw a vertical line to indicate time jumps in plots
+  - Fix driver installation on Windows
+  - Upgrade bundled Python to 3.9 on Windows (Windows 8.1 required)
+  - added 0001-red-Handle-service-provider-country-codes-missing-in.patch to fix build
+
+-------------------------------------------------------------------
 Sat Jan  8 09:35:22 UTC 2022 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - Update to new upstream version 2.4.21
