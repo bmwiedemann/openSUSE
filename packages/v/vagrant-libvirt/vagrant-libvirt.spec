@@ -21,7 +21,7 @@
 %global rb_ruby_suffix %rb_default_ruby_suffix
 
 Name:           vagrant-libvirt
-Version:        0.9.0
+Version:        0.10.1
 Release:        0
 %define mod_name vagrant-libvirt
 %define mod_full_name %{mod_name}-%{version}
@@ -50,6 +50,8 @@ BuildRequires:  %{rubygem vagrant-spec}
 # BuildRequire the same gems as Required
 BuildRequires:  %{rubygem fog-core:2 >= 2.1}
 BuildRequires:  %{rubygem fog-libvirt >= 0.3.}
+BuildRequires:  %{rubygem rexml}
+BuildRequires:  %{rubygem diffy}
 
 # s.add_development_dependency "rspec-core", ">= 3.5"
 BuildRequires:  %{rubygem rspec-core >= 3.5}
@@ -64,6 +66,10 @@ BuildRequires:  %{rubygem rake}
 Requires:       %{rubygem fog-libvirt >= 0.6.}
 # s.add_runtime_dependency 'fog-core', '~> 2'
 Requires:       %{rubygem fog-core:2}
+# s.add_runtime_dependency 'rexml'
+Requires:       %{rubygem rexml}
+# s.add_runtime_dependency 'diffy'
+Requires:       %{rubygem diffy}
 # s.add_runtime_dependency 'nokogiri', '~> 1.6'
 Requires:       %{rubygem nokogiri:1 >= 1.6 }
 
@@ -77,7 +83,7 @@ BuildRequires:  fdupes
 BuildRequires:  procps
 BuildRequires:  kmod
 
-URL:            https://github.com/vagrant-libvirt/vagrant-libvirt
+URL:            https://github.com/%{name}/%{name}
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 
 Summary:        Vagrant provider for libvirt

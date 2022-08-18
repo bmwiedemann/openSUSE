@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Thu Aug 18 07:44:35 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.10.1
+
+## [0.10.1](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.10.1) (2022-08-17)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.10.0...0.10.1)
+
+**Closed issues:**
+
+- Plugin fails to build on Arch Linux with Vagrant 2.3.0 [\#1549](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1549)
+- Vagrant ignores values of "ip" in config.vm.network [\#1541](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1541)
+- Failing to start without a vm.box. [\#1534](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1534)
+- resolve\_disk\_settings.rb bug in 0.9.0 release [\#1519](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1519)
+
+**Merged pull requests:**
+
+- Use libvirt to query host physical devices [\#1550](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1550) ([electrofelix](https://github.com/electrofelix))
+- Fix github context reference in workflow [\#1548](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1548) ([electrofelix](https://github.com/electrofelix))
+
+
+## [0.10.0](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.10.0) (2022-08-16)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.9.0...0.10.0)
+
+**Fixed bugs:**
+
+- The behavior of "vagrant box add -f" is confusing with libvirt [\#1351](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1351)
+
+**Closed issues:**
+
+- net-ssh version misread version 6.2.0.rc2 is actually between 2.6.5 and 7.0.0 but,   [\#1546](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1546)
+- Excessively verbose output when using virtiofs for synced folder [\#1525](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1525)
+- Changing default branch to main [\#1517](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1517)
+- :allow\_existing =\> "true" --\> Call to virStorageVolCreateXML failed: storage volume 'testcluster0\_shared\_disk.raw' exists already
+[\#1510](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1510)
+- No box and PXE boot example from documentation fails [\#1508](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1508)
+- vagrant up of existing machine fails on start\_domain.rb because 'device' is nil  [\#1490](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1490)
+- vagrant up error talking to libvirt - unable to get index for interface eth0 [\#1477](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1477)
+- Can't create nor destroy VM against libvirtd 8.1 [\#1471](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1471)
+- Can't create VM - Call to virDomainDefineXML failed: invalid argument: could not get preferred machine
+[\#1466](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1466)
+- Cant remove domain with cdrom and second storage volume  [\#1450](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1450)
+- Error message given during initialization: can't activate json-2.3.0, already activated json-2.5.1 [\#1390](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1390)
+
+**Merged pull requests:**
+
+- Adjust to ensure previews load isolated code [\#1547](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1547) ([electrofelix](https://github.com/electrofelix))
+- Move plugin version menu dependencies to script [\#1545](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1545) ([electrofelix](https://github.com/electrofelix))
+- Adjust menu loading and styles to be more complete [\#1544](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1544) ([electrofelix](https://github.com/electrofelix))
+- Load plugin versions menu always from latest [\#1543](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1543) ([electrofelix](https://github.com/electrofelix))
+- Explicity set action for preview action input [\#1542](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1542) ([electrofelix](https://github.com/electrofelix))
+- Switch plugin version menu to div and style by JS [\#1540](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1540) ([electrofelix](https://github.com/electrofelix))
+- Make switcher JavaScript unparsed and reduce elements [\#1539](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1539)
+([electrofelix](https://github.com/electrofelix))
+- Simple maintenance improvements [\#1536](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1536) ([a1346054](https://github.com/a1346054))
+- Cache requests for plugin version menu [\#1533](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1533) ([electrofelix](https://github.com/electrofelix))
+- Bump github-pages from 226 to 227 in /docs [\#1531](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1531) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Create dependabot config [\#1530](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1530) ([electrofelix](https://github.com/electrofelix))
+- Simple prepare test for 9p and virtiofs synced\_folders [\#1529](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1529)
+([electrofelix](https://github.com/electrofelix))
+- Tidy up virtiofs and 9p synced\_folder messages [\#1527](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1527) ([electrofelix](https://github.com/electrofelix))
+- Support different rexml location for older vagrant [\#1526](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1526) ([nickbroon](https://github.com/nickbroon))
+- Migrate documentation to github pages [\#1523](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1523) ([electrofelix](https://github.com/electrofelix))
+- Ensure disk controller passed to create domain [\#1520](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1520) ([electrofelix](https://github.com/electrofelix))
+- Adjust spec to avoid early setting domain volumes [\#1518](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1518) ([electrofelix](https://github.com/electrofelix))
+- Correct reference to daysUntilClose [\#1516](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1516) ([electrofelix](https://github.com/electrofelix))
+- Switch no-response action as probot deprecated [\#1514](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1514) ([electrofelix](https://github.com/electrofelix))
+- Migrate acceptance tests to rspec [\#1513](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1513) ([electrofelix](https://github.com/electrofelix))
+- Ensure box version default of 0 uses mtime [\#1512](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1512) ([electrofelix](https://github.com/electrofelix))
+- Provide ruby version and gemset config for rvm [\#1511](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1511) ([electrofelix](https://github.com/electrofelix))
+- Only populate domain\_name if not provided [\#1509](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1509) ([electrofelix](https://github.com/electrofelix))
+- Fix allow\_existing for disks against newer versions of libvirt. [\#1507](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1507)
+([anonym](https://github.com/anonym))
+- Update after hook definition for recent vagrant [\#1506](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1506) ([electrofelix](https://github.com/electrofelix))
+- Tidy up driver code [\#1505](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1505) ([electrofelix](https://github.com/electrofelix))
+- Add basic tests for synced folders 9p and virtiofs [\#1504](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1504) ([electrofelix](https://github.com/electrofelix))
+- Ignore dockerfile changes by default [\#1503](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1503) ([electrofelix](https://github.com/electrofelix))
+- add sysinfo support [\#1500](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1500) ([nsballmann](https://github.com/nsballmann))
+- Flag when source device for public network does not exist [\#1499](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1499)
+([electrofelix](https://github.com/electrofelix))
+- Avoid domain undefine on configuration update [\#1496](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1496) ([electrofelix](https://github.com/electrofelix))
+- Add support for snapshots [\#1456](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1456) ([r0x0d](https://github.com/r0x0d))
+
+
+-------------------------------------------------------------------
 Thu Jul  7 15:38:10 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Remove patch merged upstream:
