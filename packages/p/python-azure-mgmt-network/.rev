@@ -205,4 +205,15 @@
 - Update Requires from setup.py (forwarded request 995186 from glaubitz)</comment>
     <requestid>995194</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>17277dd93617b2761b094fe26fa52112</srcmd5>
+    <version>21.0.1</version>
+    <time>1660834140</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 21.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 997491 from glaubitz)</comment>
+    <requestid>997523</requestid>
+  </revision>
 </revisionlist>
