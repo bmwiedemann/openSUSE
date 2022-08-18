@@ -19,7 +19,7 @@
 # avoid bootstrapping problem
 %define _binary_payload w9.bzdio
 Name:           xz
-Version:        5.2.5
+Version:        5.2.6
 Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND SUSE-Public-Domain
@@ -172,6 +172,24 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 %{_mandir}/man1/xzless.1%{ext_man}
 %{_mandir}/man1/xzmore.1%{ext_man}
 %{_mandir}/man1/xznew.1%{ext_man}
+%dir %{_mandir}/fr_FR
+%dir %{_mandir}/fr_FR/man1
+%{_mandir}/fr_FR/man1/lzcat.1%{ext_man}
+%{_mandir}/fr_FR/man1/lzcmp.1%{ext_man}
+%{_mandir}/fr_FR/man1/lzdiff.1%{ext_man}
+%{_mandir}/fr_FR/man1/lzless.1%{ext_man}
+%{_mandir}/fr_FR/man1/lzma.1%{ext_man}
+%{_mandir}/fr_FR/man1/lzmadec.1%{ext_man}
+%{_mandir}/fr_FR/man1/lzmore.1%{ext_man}
+%{_mandir}/fr_FR/man1/unlzma.1%{ext_man}
+%{_mandir}/fr_FR/man1/unxz.1%{ext_man}
+%{_mandir}/fr_FR/man1/xz.1%{ext_man}
+%{_mandir}/fr_FR/man1/xzcat.1%{ext_man}
+%{_mandir}/fr_FR/man1/xzcmp.1%{ext_man}
+%{_mandir}/fr_FR/man1/xzdec.1%{ext_man}
+%{_mandir}/fr_FR/man1/xzdiff.1%{ext_man}
+%{_mandir}/fr_FR/man1/xzless.1%{ext_man}
+%{_mandir}/fr_FR/man1/xzmore.1%{ext_man}
 %if 0%{!?lang_package:1}
 %{_datadir}/locale/*/LC_MESSAGES/xz.mo
 %endif
