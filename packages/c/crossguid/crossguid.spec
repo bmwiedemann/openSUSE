@@ -1,7 +1,7 @@
 #
 # spec file for package crossguid
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define sover 0
 
+%define sover 0
 Name:           crossguid
-Version:        0.2.2.20190128T092719.8fee233
+Version:        0.2.2.20190529T083634.ca1bf4b
 Release:        0
-Summary:        Cross platform C++ GUID/UUID library 
+Summary:        Cross platform C++ GUID/UUID library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/graeme-hill/crossguid
+URL:            https://github.com/graeme-hill/crossguid
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         crossguid.patch
 BuildRequires:  cmake >= 3.8
-%if %{suse_version} < 1500
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(uuid)
+%if 0%{?suse_version} < 1500
 BuildRequires:  gcc8-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(uuid)
 
 %description
 Lightweight cross platform C++ GUID/UUID library
@@ -42,6 +41,7 @@ Lightweight cross platform C++ GUID/UUID library
 Summary:        Development files for lib%{name}
 Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{sover} = %{version}
+
 %description    devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use lib%{name}.

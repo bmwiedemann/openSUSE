@@ -7,4 +7,13 @@
     <comment>required by kodi.tv</comment>
     <requestid>692989</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ec85595d73b8dd4a9cd20bad6e37c967</srcmd5>
+    <version>0.2.2.20190529T083634.ca1bf4b</version>
+    <time>1660834148</time>
+    <user>dimstar_suse</user>
+    <comment>- update to ca1bf4b810e2d188d04cb6286f957008ee1b7681 
+- drop crossguid.patch: included upstream</comment>
+    <requestid>997612</requestid>
+  </revision>
 </revisionlist>
