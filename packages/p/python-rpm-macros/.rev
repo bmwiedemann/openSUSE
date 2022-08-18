@@ -512,4 +512,13 @@ prerequisite for new python submission</comment>
 </comment>
     <requestid>991154</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>567a422588e92402289543dfef9e3162</srcmd5>
+    <version>20220809.cf8a7b8</version>
+    <time>1660834113</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220809.cf8a7b8:
+  * Pass `--ignore-installed` to `pip install` in %pyproject_install</comment>
+    <requestid>995112</requestid>
+  </revision>
 </revisionlist>

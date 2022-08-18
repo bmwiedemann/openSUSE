@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 15 06:05:08 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 20220809.cf8a7b8:
+  * Pass `--ignore-installed` to `pip install` in %pyproject_install
+
+-------------------------------------------------------------------
 Mon Jul 25 21:27:08 UTC 2022 - mcepl@cepl.eu
 
 - Update to version 20220725.2ae32d5:
