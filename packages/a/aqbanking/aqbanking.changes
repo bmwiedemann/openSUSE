@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 18 07:49:16 UTC 2022 - Johannes Engel <jcnengel@gmail.com>
+
+- Update to 6.5.3
+  + aqbanking-cli: Added command to show supported commands per account.
+  + AqHBCI: Cleanup (remove defs for static function from header files).
+  + AqHBCI: Cleanup jobtransferbase.c. Probably fixed #260.
+  + AqPaypal: Probably fixed missing unlock in bug #253.
+  + AqHBCI: Probably fixed a bug in attach code/ack code handling (#263).
+  + AqHBCI: Move _removeAttachPoints() to cbox_send and call it there.
+  + Many more bugfixes
+  + Add keyring for gpg validation
+
+-------------------------------------------------------------------
 Sun Mar 20 17:20:07 UTC 2022 - Johannes Engel <jcnengel@gmail.com>
 
 - Update to 6.5.0
