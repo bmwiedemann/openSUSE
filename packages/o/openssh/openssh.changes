@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  6 12:15:29 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- openssh-8.4p1-ssh_config_d.patch: admin overrides should take
+  priority (listed first) over package defaults
+
+-------------------------------------------------------------------
 Mon Mar 28 15:00:52 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - read ssh and sshd config file also from /usr/etc

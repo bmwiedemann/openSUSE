@@ -20,17 +20,21 @@ Index: openssh-8.9p1/sshd_config
 ===================================================================
 --- openssh-8.9p1.orig/sshd_config
 +++ openssh-8.9p1/sshd_config
-@@ -9,6 +9,13 @@
- # OpenSSH is to specify options with their default value where
- # possible, but leave them commented.  Uncommented options override the
- # default value.
-+Include /usr/etc/ssh/sshd_config.d/*.conf
-+
+@@ -5,10 +5,17 @@
+ 
+ # This sshd was compiled with PATH=/usr/bin:/bin:/usr/sbin:/sbin
+ 
 +# To modify the system-wide sshd configuration, create a "*.conf" file under
 +# "/etc/ssh/sshd_config.d/" which will be automatically included below.
 +# Don't edit this configuration file itself if possible to avoid update
 +# problems.
 +Include /etc/ssh/sshd_config.d/*.conf
++
+ # The strategy used for options in the default sshd_config shipped with
+ # OpenSSH is to specify options with their default value where
+ # possible, but leave them commented.  Uncommented options override the
+ # default value.
++Include /usr/etc/ssh/sshd_config.d/*.conf
  
  #Port 22
  #AddressFamily any
