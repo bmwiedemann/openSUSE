@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 15 07:43:16 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220813
+  + modify delscreen to more effectively delete all windows on the given
+    screen.
+  + amend portability note for delwin in manual page.
+  + adapt test/test_delwin.c from example by Bill Gray.
+  + account for prescreen data if freeing leaks in pthread-configuration
+  + split-out _nc_set_read_thread(), to reduce compiler warnings about
+    pthread_self(), which may/may not be a weak symbol.
+  + improve pthread-configuration for test/worm.c
+
+-------------------------------------------------------------------
 Tue Aug  9 06:33:48 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20220806

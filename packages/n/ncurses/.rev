@@ -3767,4 +3767,20 @@
 - Port patch ncurses-6.3.dif</comment>
     <requestid>994114</requestid>
   </revision>
+  <revision rev="222" vrev="26">
+    <srcmd5>73f78f1800ffec3037ebca0a31d43847</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1660834117</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20220813
+  + modify delscreen to more effectively delete all windows on the given
+    screen.
+  + amend portability note for delwin in manual page.
+  + adapt test/test_delwin.c from example by Bill Gray.
+  + account for prescreen data if freeing leaks in pthread-configuration
+  + split-out _nc_set_read_thread(), to reduce compiler warnings about
+    pthread_self(), which may/may not be a weak symbol.
+  + improve pthread-configuration for test/worm.c</comment>
+    <requestid>995133</requestid>
+  </revision>
 </revisionlist>
