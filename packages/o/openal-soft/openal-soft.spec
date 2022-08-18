@@ -17,7 +17,7 @@
 
 
 Name:           openal-soft
-Version:        1.21.1
+Version:        1.22.2
 Release:        0
 Summary:        Audio library with an OpenGL-resembling API
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
@@ -28,13 +28,13 @@ Source1:        libopenalcompat.c
 Source3:        baselibs.conf
 # PATCH-FIX-UPSTREAM openal-no-autospawn.diff
 Patch0:         openal-no-autospawn.diff
-Patch1:         openal-soft-gcc11.diff
 BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(alsa)
 # BuildRequires:  pkgconfig(jack) # undefined reference to `jack_error_callback'
+# BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libmysofa)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(portaudio-2.0)
@@ -200,8 +200,7 @@ install -D -m 0644 /dev/null %{buildroot}/%{_sysconfdir}/openal/alsoft.conf
 %{_libdir}/libopenal.so
 %{_libdir}/pkgconfig/openal.pc
 %dir %{_libdir}/cmake/OpenAL
-%{_libdir}/cmake/OpenAL/OpenALConfig-release.cmake
-%{_libdir}/cmake/OpenAL/OpenALConfig.cmake
+%{_libdir}/cmake/OpenAL/OpenAL*.cmake
 %dir %{_includedir}/AL
 %{_includedir}/AL/al.h
 %{_includedir}/AL/alc.h
