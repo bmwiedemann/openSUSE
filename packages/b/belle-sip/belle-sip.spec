@@ -34,6 +34,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bctoolbox) >= 5.0.0
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  chrpath
 
 %description
 Belle-sip is a SIP (RFC3261) implementation written in C, with an
@@ -85,6 +86,8 @@ to develop applications using the belle-sip library.
 
 %install
 %cmake_install
+
+chrpath -d %{buildroot}%{_bindir}/belle_sip_tester %{buildroot}%{_libdir}/%{soname}.so.%{sover}*
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
