@@ -59,4 +59,12 @@
     <comment>- Add support-pytest-6.patch to support running with pytest &gt;= 6.</comment>
     <requestid>879331</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>9995676f95e333d82803687dcce9afc2</srcmd5>
+    <version>7.7.1</version>
+    <time>1660834148</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>997577</requestid>
+  </revision>
 </revisionlist>

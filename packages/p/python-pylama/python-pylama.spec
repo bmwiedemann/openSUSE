@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylama
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,6 @@ BuildRequires:  %{python_module mccabe >= 0.5.2}
 BuildRequires:  %{python_module pycodestyle >= 2.3.1}
 BuildRequires:  %{python_module pydocstyle >= 2.0.0}
 BuildRequires:  %{python_module pyflakes >= 1.5.0}
-BuildRequires:  %{python_module pylint}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module radon >= 1.4.2}
 BuildRequires:  %{python_module setuptools}
@@ -50,7 +49,6 @@ Recommends:     python-mccabe >= 0.5.2
 Recommends:     python-pycodestyle >= 2.3.1
 Recommends:     python-pydocstyle >= 2.0.0
 Recommends:     python-pyflakes >= 1.5.0
-Recommends:     python-pylint
 Recommends:     python-radon >= 1.4.2
 BuildArch:      noarch
 %python_subpackages
