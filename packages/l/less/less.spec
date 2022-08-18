@@ -1,7 +1,7 @@
 #
 # spec file for package less
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 Requires:       file
 # lessopen.sh uses which
-Requires:       which
+Requires:       /usr/bin/which
 
 %description
 less is a text file browser and pager similar to more. It allows

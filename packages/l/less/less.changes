@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 16 15:01:20 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Which need one /usr/bin/which, not the package which
+
+-------------------------------------------------------------------
 Thu Sep 16 09:58:23 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Add missing runtime dependency on which, which it is used by lessopen.sh.
