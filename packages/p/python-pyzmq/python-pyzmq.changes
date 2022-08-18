@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 17 03:13:44 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 23.2.1:
+  * Improvements:
+    + First release with wheels for Python 3.11 (thanks
+      cibuildwheel!).
+    + linux aarch64 wheels now bundle the same libzmq (4.3.4) as all
+      other builds, thanks to switching to native arm builds on
+      CircleCI.
+  * Fixes:
+    + Some type annotation fixes in devices.
+
+-------------------------------------------------------------------
 Tue Jun 28 19:16:08 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 23.2.0

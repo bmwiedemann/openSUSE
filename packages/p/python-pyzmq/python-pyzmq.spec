@@ -26,7 +26,7 @@
 %bcond_with     tests
 %endif
 Name:           python-pyzmq
-Version:        23.2.0
+Version:        23.2.1
 Release:        0
 Summary:        Python bindings for 0MQ
 License:        BSD-3-Clause AND LGPL-3.0-or-later
@@ -41,11 +41,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  zeromq-devel
+Recommends:     python-gevent
+Recommends:     python-numpy
+Recommends:     python-pexpect
+Recommends:     python-simplejson
+Recommends:     python-tornado
+Suggests:       python-paramiko
 # SECTION Test requirements
-%if 0%{?suse_version} >= 1550
-# SLE/Leap <= 15.4 has incompatible gevent API # https://www.gevent.org/api/gevent.timeout.html#gevent.Timeout.close
-BuildRequires:  %{python_module gevent >= 1.3a1}
-%endif
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pytest-rerunfailures}
@@ -53,6 +55,10 @@ BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module simplejson}
 BuildRequires:  %{python_module tornado}
+%if 0%{?suse_version} >= 1550
+# SLE/Leap <= 15.4 has incompatible gevent API # https://www.gevent.org/api/gevent.timeout.html#gevent.Timeout.close
+BuildRequires:  %{python_module gevent >= 1.3a1}
+%endif
 # /SECTION
 # SECTION pypy3 is not in openSUSE at the moment, it would use the cffi backend
 BuildRequires:  %{python_module cffi if (%python with pypy3)}
@@ -62,12 +68,6 @@ Requires:       python-cffi
 Requires:       python-py
 %endif
 # /SECTION
-Recommends:     python-gevent
-Recommends:     python-numpy
-Recommends:     python-pexpect
-Recommends:     python-simplejson
-Recommends:     python-tornado
-Suggests:       python-paramiko
 %python_subpackages
 
 %description
