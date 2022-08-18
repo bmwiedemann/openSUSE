@@ -29,10 +29,16 @@ Source:         https://gitlab.linphone.org/BC/public/lime/-/archive/%{version}/
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+%if 0%{?suse_version}
 BuildRequires:  soci-devel
 BuildRequires:  soci-sqlite3-devel
+%else
+BuildRequires:  soci-devel = 4.0.2
+BuildRequires:  soci-sqlite3-devel = 4.0.2
+%endif
 BuildRequires:  pkgconfig(bctoolbox) >= 5.0.0
 BuildRequires:  pkgconfig(belle-sip) >= 5.0.0
+BuildRequires:  chrpath
 
 %description
 LIME is an encryption library for one-to-one and group instant
@@ -90,12 +96,17 @@ which will use lime.
 %cmake \
   -DENABLE_STRICT=OFF     \
   -DENABLE_STATIC=OFF     \
+%if 0%{?fedora}
+   -DCMAKE_INSTALL_LIBDIR=lib64 \
+%endif
   -DENABLE_C_INTERFACE=ON
 %cmake_build
 
 %install
 %cmake_install
 chmod -x %{buildroot}%{_datadir}/%{name}_tester/data/*.pem
+
+chrpath -d %{buildroot}%{_bindir}/%{name}* %{buildroot}%{_libdir}/%{soname}.so.%{sover}*
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
