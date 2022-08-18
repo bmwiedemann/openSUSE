@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jul 15 04:52:30 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 22.6.0:
+  * Style
+    + Fix unstable formatting involving #fmt: skip and # fmt:skip
+      comments (notice the lack of spaces) (#2970)
+  * Preview style
+    + Docstring quotes are no longer moved if it would violate the
+      line length limit (#3044)
+    + Parentheses around return annotations are now managed (#2990)
+    + Remove unnecessary parentheses around awaited objects (#2991)
+    + Remove unnecessary parentheses in with statements (#2926)
+    + Remove trailing newlines after code block open (#3035)
+  * Integrations
+    + Add scripts/migrate-black.py script to ease introduction of
+      Black to a Git project (#3038)
+  * Output
+    + Output Python version and implementation as part of --version
+      flag (#2997)
+  * Packaging
+    + Use tomli instead of tomllib on Python 3.11 builds where tomllib
+      is not available (#2987)
+  * Parser
+    + PEP 654 syntax (for example, except *ExceptionGroup:) is now
+      supported (#3016)
+    + PEP 646 syntax (for example, Array[Batch, *Shape] or def
+      fn(*args: *T) -> None) is now supported (#3071)
+  * Vim Plugin
+    + Fix strtobool function. It didn't parse
+      true/on/false/off. (#3025)
+
+-------------------------------------------------------------------
 Sat Apr  9 02:02:54 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
