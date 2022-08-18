@@ -17,7 +17,7 @@
 
 
 Name:           mold
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        AGPL-3.0-or-later
@@ -95,7 +95,7 @@ LIBEXECDIR=%{_libexecdir} \
 export TEST_CC=gcc-10
 export TEST_CXX=g++-10
 %endif
-make test -k -e \
+%make_build test -k -e \
 PREFIX=%{_prefix} \
 BINDIR=%{_bindir} \
 MANDIR=%{_mandir} \
@@ -127,5 +127,8 @@ fi
 %dir %{_libexecdir}/mold
 %{_libdir}/mold/mold-wrapper.so
 %{_mandir}/man1/mold.1.gz
+%{_mandir}/man1/ld.mold.1.gz
+%dir /usr/share/doc/mold
+%doc /usr/share/doc/mold/LICENSE
 
 %changelog

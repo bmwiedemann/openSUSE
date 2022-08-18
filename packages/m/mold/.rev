@@ -229,4 +229,36 @@
 - Remove fix-tests.patch.</comment>
     <requestid>993355</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3ff05caac3020c5c5737f6d3e588b3ef</srcmd5>
+    <version>1.4.1</version>
+    <time>1660834139</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.1
+  * mold/macOS is now available as an alpha feature. We do not recommend using it for anything
+    serious though. Starting from this version, we accept not only mold/Unix issues but also
+    mold/macOS ones on our GitHub Issues. Feel free to file a bug if you encounter any problem.
+  * We started supporting CMake in addition to Make to build mold. Our long-term plan is to migrate
+    from Make to CMake because we want to support Windows eventually and CMake provides
+    a better Windows support than Make does. (e6a0e67)
+  * There was a bug that mold accidentally exported a hidden symbol from an executable
+    if a shared library linked to that executable happened to define the same symbol.
+    This caused a build issue with Blender (#606). The bug has been fixed. (b163068)
+    --hash-style=both is now the default if no --hash-style option is given. Previously,
+    --hash-style=sysv was the default. This change shouldn't affect most users because
+    the compiler driver (cc, gcc, clang, etc.) always passes --hash-style to the linker.
+    We made this change because GNU ld defaults to --hash-style=both.
+  * Alias symbols defined by the --defsym option now have the same scope as the aliased symbols.
+    Previously, alias symbols defined by --defsym were always hidden and never
+    be exported as dynamic symbols. (5dd1227)
+  * mold now accepts foo = bar-style linker script directive to define symbol aliases.
+    Previously, such statement was treated as a syntax error.
+    This change was made to link mariadb-connector-c correctly (f0e1237)
+  * Symbols in mergeable string sections now have correct output section
+    indices instead of SHN_UNDEF. (a595c48)
+  * [ARM32] Previously, calling a function from ARM code to Thumb code
+    caused a program crash due to bug #442. This issue has been fixed. (053b90b)
+- Run tests in parallel.</comment>
+    <requestid>997709</requestid>
+  </revision>
 </revisionlist>
