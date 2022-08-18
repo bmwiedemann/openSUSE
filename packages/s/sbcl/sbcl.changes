@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 12 00:35:56 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add sbcl-allow-value-cell-value-in-RO-space.patch: Allow that
+  value-cell-value can move to R/O space, to fix build failures
+  for maxima and other sbcl dependencies; patch taken from
+  upstream git commit [lp#1983218].
+
+-------------------------------------------------------------------
 Wed Aug 10 11:42:43 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.2.7

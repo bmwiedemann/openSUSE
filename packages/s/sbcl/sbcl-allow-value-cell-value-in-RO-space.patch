@@ -1,0 +1,36 @@
+commit 48d686f9718f98122547a9006c871cfcd50439ab
+Author: Douglas Katzman <dougk@google.com>
+Date:   Sun Jul 31 21:38:19 2022 -0400
+
+    Accept that value-cell-value can move to R/O space
+    
+    Fixes lp#1983218
+
+diff --git a/src/runtime/stringspace.c b/src/runtime/stringspace.c
+index ac6055627..f9ad82192 100644
+--- a/src/runtime/stringspace.c
++++ b/src/runtime/stringspace.c
+@@ -76,6 +76,7 @@ static void visit_pointer_words(lispobj* object, lispobj (*func)(lispobj, uword_
+                widetag == RATIO_WIDETAG || widetag == COMPLEX_WIDETAG ||
+                widetag == SIMPLE_ARRAY_WIDETAG ||
+                (widetag >= COMPLEX_BASE_STRING_WIDETAG && widetag <= COMPLEX_ARRAY_WIDETAG) ||
++               widetag == VALUE_CELL_WIDETAG ||
+                widetag == WEAK_POINTER_WIDETAG) {
+         int len = object_size(object), i;
+         for (i=1; i<len; ++i) FIX(object[i]);
+diff --git a/tests/save1.test.sh b/tests/save1.test.sh
+index 59e648191..bcf632a02 100644
+--- a/tests/save1.test.sh
++++ b/tests/save1.test.sh
+@@ -23,6 +23,11 @@ run_sbcl <<EOF
+   ;; but maybe someone changed it :immobile, so bind it to be certain.
+   (let (#+immobile-code (sb-c::*compile-to-memory-space* :dynamic))
+      (defvar *afun* (compile nil '(lambda (x) (- (length x))))))
++  ;; test for lp#1983218 - a VALUE-CELL holding a readonly string could crash
++  (defun mkcell (x) (sb-sys:%primitive sb-vm::make-value-cell x nil))
++  (compile 'mkcell)
++  (defvar *cell* (mkcell (symbol-name '*print-base*)))
++  ;;
+   (save-lisp-and-die "$tmpcore")
+ EOF
+ run_sbcl_with_core "$tmpcore" --noinform --no-userinit --no-sysinit --noprint \
