@@ -160,4 +160,21 @@
   * EternalTerminal-6.2.0-optional.patch</comment>
     <requestid>975351</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>b126b77ecae270677160b5a6c2b58187</srcmd5>
+    <version>6.2.1</version>
+    <time>1660834158</time>
+    <user>dimstar_suse</user>
+    <comment>- Require gcc-c++ instead of gcc12-c++ in most cases
+  This will be gcc12-c++ on TW by default
+  In Leap 15.3/15.4 hard-require gcc10-c++ since the build fails with
+  older versions
+
+  * EternalTerminal-6.2.0-return.patch
+  * CVE-2022-24949 [bsc#1202435]
+  * CVE-2022-24950 [bsc#1202434]
+  * CVE-2022-24951 [bsc#1202433]
+  * CVE-2022-24952 [bsc#1202432]</comment>
+    <requestid>997668</requestid>
+  </revision>
 </revisionlist>

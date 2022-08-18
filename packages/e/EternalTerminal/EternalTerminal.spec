@@ -30,7 +30,12 @@ BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  firewall-macros
 BuildRequires:  firewalld
-BuildRequires:  gcc12-c++
+%if 0%{?sle_version} == 150400 || 0%{?sle_version} == 150300
+BuildRequires:  gcc10-c++
+%define forced_gcc_version -10
+%else
+BuildRequires:  gcc-c++
+%endif
 BuildRequires:  gflags-devel
 BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  libsodium-devel
@@ -50,6 +55,11 @@ interrupting the session.
 %autosetup -n EternalTerminal-et-v%{version} -p1
 
 %build
+
+%if 0%{?forced_gcc_version:1}
+export CC=gcc%{?forced_gcc_version}
+export CXX=g++%{?forced_gcc_version}
+%endif
 export CXXFLAGS="%{optflags} -std=c++17"
 # see https://github.com/MisterTea/EternalTerminal/issues/403
 %cmake -DDISABLE_VCPKG:BOOL=ON -DProtobuf_LITE_LIBRARY=%{_libdir}/libprotobuf-lite.so
