@@ -1,7 +1,5 @@
-Index: polkit-0.118/src/polkitagent/polkitagentsession.c
-===================================================================
---- polkit-0.118.orig/src/polkitagent/polkitagentsession.c
-+++ polkit-0.118/src/polkitagent/polkitagentsession.c
+--- a/src/polkitagent/polkitagentsession.c
++++ b/src/polkitagent/polkitagentsession.c
 @@ -596,7 +596,7 @@ polkit_agent_session_initiate (PolkitAge
        goto error;
      }
@@ -11,3 +9,14 @@ Index: polkit-0.118/src/polkitagent/polkitagentsession.c
    helper_argv[1] = passwd->pw_name;
    helper_argv[2] = NULL;
  
+--- a/meson.build
++++ b/meson.build
+@@ -28,7 +28,7 @@ pk_sysconfdir = get_option('sysconfdir')
+ pk_pkgdatadir = pk_datadir / pk_api_name
+ pk_pkgincludedir = pk_includedir / pk_api_name
+ # note that this is always 'lib', not lib64 or lib/x86_64-linux-gnu
+-pk_libprivdir = 'lib' / pk_api_name
++pk_libprivdir = 'libexec' / pk_api_name
+ pk_pkgsysconfdir = pk_sysconfdir / pk_api_name
+ 
+ pk_actiondir = pk_api_name / 'actions'

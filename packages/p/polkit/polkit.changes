@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Aug  9 06:11:08 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 121:
+  + Addition of duktape as a JS engine backend.
+  + Other small fixes and improvements. For more details, visit:
+    gitlab.freedesktop.org/polkit/polkit/-/blob/121/NEWS.md
+  + Updated translations.
+- Drop merged-upstream patches:
+  + CVE-2021-4034-pkexec-fix.patch;
+  + 0001-CVE-2021-4115-GHSL-2021-077-fix.patch;
+  + duktape-support.patch;
+  + pkexec.patch.
+- Replace Intltool with Gettext as a build requirement following
+  the migration from last release (0.120).
+- Add Meson as a build requirement while dropping Libtool and
+  replace all Autotools macros with Meson ones. And pass the
+  following options to Meson: session_tracking=libsystemd-login;
+  systemdsystemunitdir=%{_unitdir}; os_type=suse;
+  pam_module_dir=%{_pam_moduledir}; pam_prefix=%{_pam_vendordir};
+  examples=true; tests=true; gtk_doc=true; man=true and
+  js_engine=duktape.
+- Drop no longer needed Libtool as a build requirement, following
+  Autotools replacement.
+- Add explicit pkgconfig module build requirements for glib-2.0 and
+  gobject-2.0 that are searched by the build scripts. They were
+  already being pulled by their siblings [pkgconfig(gio-2.0) and
+  pkgconfig(gio-unix-2.0)].
+- Drop conditional macro, which was wrapping "BuildArch: noarch"
+  for the doc subpackage, based on long gone EOLed (open)SUSE
+  release (11.2).
+- Add missing 'Requires(post): permissions' for the pkexec
+  subpackage.
+- Add python3-dbus-python and python3-python-dbusmock as build
+  requirements in order to run test in the check section.
+- Add polkit-fix-pam-prefix.patch to use the value of pam_prefix
+  Meson option, like it was designed to, rather than hard-coded
+  path for pam configuration files.
+- Remove unneeded executable bit from 50-default.rules file.
+
+-------------------------------------------------------------------
 Mon Aug  8 07:28:25 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use %_pam_vendordir
@@ -278,7 +318,7 @@ Tue Jun  7 15:25:00 UTC 2016 - fbui@suse.com
 Thu Nov 26 16:26:09 UTC 2015 - meissner@suse.com
 
 - polkit-revert-session-magic.patch: revert a session detection change
-  that could lead to sessions not being detected as active due to 
+  that could lead to sessions not being detected as active due to
   a systemd bug. bsc#954139
 
 -------------------------------------------------------------------
@@ -520,13 +560,13 @@ Mon Jan  9 09:33:30 UTC 2012 - vuntz@opensuse.org
 -------------------------------------------------------------------
 Wed Jan  4 22:03:54 UTC 2012 - crrodriguez@opensuse.org
 
-- A quick test reveals that the systemd backend does not 
+- A quick test reveals that the systemd backend does not
   integrate very well with packages yet, revert.
 
 -------------------------------------------------------------------
 Wed Jan  4 21:02:38 UTC 2012 - crrodriguez@opensuse.org
 
-- Previous update missed systemd-devel in buildrequires 
+- Previous update missed systemd-devel in buildrequires
   without it no systemd support is built
 
 -------------------------------------------------------------------
@@ -617,7 +657,7 @@ Wed Apr  6 15:40:51 UTC 2011 - fcrozat@novell.com
 -------------------------------------------------------------------
 Wed Mar  9 13:54:11 UTC 2011 - coolo@novell.com
 
-- update to 0.101: 
+- update to 0.101:
   * tons of bug fixes, see NEWS
 
 -------------------------------------------------------------------
@@ -745,7 +785,7 @@ Tue Aug 11 21:23:49 CEST 2009 - kay.sievers@novell.com
 - add upstream patches:
    polkit-close-stdfds.patch
    polkit-no-man-spawn.patch
-   polkit-proc-stat-parse-fix.patch 
+   polkit-proc-stat-parse-fix.patch
 - drop rpmlint patch
 
 -------------------------------------------------------------------

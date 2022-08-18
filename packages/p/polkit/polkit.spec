@@ -16,8 +16,12 @@
 #
 
 
+%define _polkit_rulesdir %{_datadir}/polkit-1/rules.d
+%define glib_br_version  2.30.0
+%define run_tests        1
+
 Name:           polkit
-Version:        0.120
+Version:        121
 Release:        0
 Summary:        PolicyKit Authorization Framework
 License:        LGPL-2.1-or-later
@@ -28,50 +32,58 @@ Source1:        https://www.freedesktop.org/software/polkit/releases/%{name}-%{v
 Source2:        %{name}.keyring
 Source3:        system-user-polkitd.conf
 Source99:       baselibs.conf
+
+# Upstream First - Policy:
+# Never add any patches to this package without the upstream commit id
+# in the patch. Any patches added here without a very good reason to make
+# an exception will be silently removed with the next version update.
+
 # PATCH-FIX-OPENSUSE polkit-no-wheel-group.patch vuntz@opensuse.org -- In openSUSE, there's no special meaning for the wheel group, so we shouldn't allow it to be admin
 Patch0:         polkit-no-wheel-group.patch
 # PATCH-FIX-OPENSUSE polkit-gettext.patch lnussel@suse.de -- allow fallback to gettext for polkit action translations
+# polkit-use-gettext-as-fallback.patch
 Patch1:         polkit-gettext.patch
-# PATCH-FIX-UPSTREAM pkexec.patch schwab@suse.de -- pkexec: allow --version and --help even if not setuid
-Patch2:         pkexec.patch
 # PATCH-FIX-OPENSUSE polkit-keyinit.patch meissner@ -- bsc#1144053 Please add "pam_keyinit.so" to the /etc/pam.d/polkit-1 configuration file
 Patch3:         polkit-keyinit.patch
-# adjust path to polkit-agent-helper-1 (bsc#1180474)
+# PATCH-FIX-OPENSUSE polkit-adjust-libexec-path.patch -- Adjust path to polkit-agent-helper-1 (bsc#1180474)
 Patch4:         polkit-adjust-libexec-path.patch
-# PATCH-FIX-UPSTREAM CVE-2021-4034-pkexec-fix.patch meissner@ -- bsc#1194568 VUL-0: CVE-2021-4034: polkit: pkexec Local Privilege Escalation aka pwnkit
-Patch5:         CVE-2021-4034-pkexec-fix.patch
-# PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/polkit/polkit/-/commit/c7fc4e1b61f0fd82fc697c19c604af7e9fb291a2.patch, without .gitlab-ci.yml (not in the tarball)
-Patch6:         duktape-support.patch
-# PATCH-FIX-UPSTREAM 0001-CVE-2021-4115-GHSL-2021-077-fix.patch meissner@ -- bsc#1195542 VUL-0: CVE-2021-4115: polkit: denial of service via file descriptor leak
-Patch7:         0001-CVE-2021-4115-GHSL-2021-077-fix.patch
+# PATCH-FIX-UPSTREAM polkit-fix-pam-prefix.patch luc14n0@opensuse.org -- Make
+# intended use of pam_prefix meson option rather than hard-coded path
+Patch5:         polkit-fix-pam-prefix.patch
+
 BuildRequires:  gcc-c++
+BuildRequires:  gettext
 BuildRequires:  gtk-doc
-BuildRequires:  intltool
 BuildRequires:  libexpat-devel
-# needed for patch1 and 2
-BuildRequires:  libtool
+BuildRequires:  meson >= 0.50
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(duktape) >= 2.2.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.32.0
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.32.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= %{glib_br_version}
+BuildRequires:  pkgconfig(glib-2.0) >= %{glib_br_version}
+BuildRequires:  pkgconfig(gmodule-2.0) >= %{glib_br_version}
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.2
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
+%if 0%{?run_tests}
+#################################################################
+# python3-dbus-python and python3-python-dbusmock are needed for
+# test-polkitbackendjsauthority test:
+BuildRequires:  python3-dbus-python
+BuildRequires:  python3-python-dbusmock
+#################################################################
+%endif
 # gtk-doc drags indirectyly ruby in for one of the helpers. This in turn causes a build cycle.
 #!BuildIgnore:  ruby
+
 Requires:       dbus-1
 Requires:       libpolkit-agent-1-0 = %{version}-%{release}
 Requires:       libpolkit-gobject-1-0 = %{version}-%{release}
 Requires(post): permissions
 %sysusers_requires
 %systemd_ordering
-# Upstream First - Policy:
-# Never add any patches to this package without the upstream commit id
-# in the patch. Any patches added here without a very good reason to make
-# an exception will be silently removed with the next version update.
 
 %description
 PolicyKit is a toolkit for defining and handling authorizations.
@@ -91,9 +103,10 @@ Requires:       typelib-1_0-Polkit-1_0 = %{version}
 Development files for PolicyKit Authorization Framework.
 
 %package -n pkexec
-Summary:        pkexec component of polkit
+Summary:        Pkexec component of polkit
 Group:          System/Libraries
 Requires:       %{name} = %{version}-%{release}
+Requires(post): permissions
 Provides:       polkit:/usr/bin/pkexec
 
 %description -n pkexec
@@ -102,9 +115,7 @@ This package contains the pkexec setuid root binary part of polkit.
 %package doc
 Summary:        Development documentation for PolicyKit
 Group:          Development/Libraries/C and C++
-%if 0%{?suse_version} >= 1120
 BuildArch:      noarch
-%endif
 
 %description doc
 Development documentation for PolicyKit Authorization Framework.
@@ -147,24 +158,28 @@ processes.
 This package provides the GObject Introspection bindings for PolicyKit.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n polkit-v.%{version}
 
 %build
-# Needed for patch1 and patch2
-autoreconf -fi
-export SUID_CFLAGS="-fPIE"
-export SUID_LDFLAGS="-z now -pie"
-%configure \
-	--with-os-type=suse \
-	--enable-gtk-doc \
-	--disable-static \
-	--enable-introspection \
-	--enable-examples \
-	--enable-libsystemd-login \
-	--with-duktape \
-	%{nil}
-%make_build libprivdir=%{_libexecdir}/polkit-1
+%meson                                     \
+    -D session_tracking=libsystemd-login   \
+    -D systemdsystemunitdir="%{_unitdir}"  \
+    -D os_type=suse                        \
+    -D pam_module_dir="%{_pam_moduledir}"  \
+    -D pam_prefix="%{_pam_vendordir}"      \
+    -D examples=true                       \
+    -D tests=true                          \
+    -D gtk_doc=true                        \
+    -D man=true                            \
+    -D js_engine=duktape                   \
+    %{nil}
+%meson_build
 %sysusers_generate_pre %{SOURCE3} polkit system-user-polkitd.conf
+
+%if 0%{?run_tests}
+%check
+%meson_test
+%endif
 
 %install
 # install explicitly into libexec. upstream has some unflexible logic for
@@ -172,14 +187,20 @@ export SUID_LDFLAGS="-z now -pie"
 #     https://gitlab.freedesktop.org/polkit/polkit/-/merge_requests/63
 # once this has been resolved upstream and we update to a new release we can
 # remove this and also patch4 above.
-%make_install libprivdir=%{_libexecdir}/polkit-1
-find %{buildroot} -type f -name "*.la" -delete -print
+#
+# Additional note: Upstream turned down the MR above, preferring to stick to
+# using ${prefix}/lib/polkit-1 and non-distro-configurable.
+%meson_install
+%find_lang polkit-1
+
 # create $HOME for polkit user
 install -d %{buildroot}%{_localstatedir}/lib/polkit
-%find_lang polkit-1
-mkdir -p %{buildroot}%{_pam_vendordir}
-mv %{buildroot}%{_sysconfdir}/pam.d/* %{buildroot}%{_pam_vendordir}/
-mv %{buildroot}%{_sysconfdir}/polkit-1/rules.d/50-default.rules %{buildroot}%{_datadir}/polkit-1/rules.d/50-default.rules
+
+# We use /usr/share as prefix for the rules.d directory
+mv %{buildroot}%{_sysconfdir}/polkit-1/rules.d/50-default.rules \
+   %{buildroot}%{_polkit_rulesdir}/50-default.rules
+
+# Install the polkitd user creation file:
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/
 
@@ -221,6 +242,7 @@ install -m0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/
 %{_libdir}/girepository-1.0/PolkitAgent-1.0.typelib
 
 %files -f polkit-1.lang
+%doc NEWS.md README.md
 %license COPYING
 
 %{_mandir}/man1/pkaction.1%{?ext_man}
@@ -234,10 +256,11 @@ install -m0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/
 %dir %{_datadir}/dbus-1/system.d
 %{_datadir}/dbus-1/system.d/org.freedesktop.PolicyKit1.conf
 %dir %{_datadir}/polkit-1
+%{_datadir}/polkit-1/policyconfig-1.dtd
 %dir %{_datadir}/polkit-1/actions
 %{_datadir}/polkit-1/actions/org.freedesktop.policykit.policy
-%attr(0700,polkitd,root) %dir %{_datadir}/polkit-1/rules.d
-%attr(0700,polkitd,root) %{_datadir}/polkit-1/rules.d/50-default.rules
+%attr(0700,polkitd,root) %dir %{_polkit_rulesdir}
+%attr(0600,polkitd,root) %{_polkit_rulesdir}/50-default.rules
 %{_pam_vendordir}/polkit-1
 %dir %{_sysconfdir}/polkit-1
 %attr(0700,polkitd,root) %dir %{_sysconfdir}/polkit-1/rules.d
@@ -269,7 +292,6 @@ install -m0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/
 %verify(not mode) %attr(4755,root,root) %{_bindir}/pkexec
 
 %files doc
-%doc NEWS
 %doc %{_datadir}/gtk-doc/html/polkit-1/
 
 %changelog
