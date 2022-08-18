@@ -1240,4 +1240,15 @@ then, coreutils doesn't need this patch from the kernel v4.10-rc1. (forwarded re
 - extend psuffix handling to be quilt(1) compatible</comment>
     <requestid>992240</requestid>
   </revision>
+  <revision rev="147" vrev="4">
+    <srcmd5>4cd18b360e1cca53b689b6428e5e4b70</srcmd5>
+    <version>9.1</version>
+    <time>1660834120</time>
+    <user>dimstar_suse</user>
+    <comment>- refresh coreutils-i18n.patch from Fedora to make expand and unexpand
+  more similar 
+
+- Remove python2 from buildrequires - appears to be a left over</comment>
+    <requestid>994133</requestid>
+  </revision>
 </revisionlist>

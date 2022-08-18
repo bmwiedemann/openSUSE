@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  9 12:13:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- refresh coreutils-i18n.patch from Fedora to make expand and unexpand
+  more similar 
+
+-------------------------------------------------------------------
+Mon Aug  8 12:19:30 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Remove python2 from buildrequires - appears to be a left over
+
+-------------------------------------------------------------------
 Tue Aug  2 11:05:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add missing hostname buildrequires

@@ -81,7 +81,6 @@ BuildRequires:  gcc-PIE
 BuildRequires:  acl
 BuildRequires:  gdb
 BuildRequires:  perl-Expect
-BuildRequires:  python
 BuildRequires:  python3
 BuildRequires:  python3-pyinotify
 BuildRequires:  strace

@@ -19,7 +19,7 @@ Subject: [PATCH] coreutils-i18n.patch
  src/local.mk                |   4 +-
  src/pr.c                    | 443 ++++++++++++++++++--
  src/sort.c                  | 792 +++++++++++++++++++++++++++++++++---
- src/unexpand.c              | 103 ++++-
+ src/unexpand.c              | 102 ++++-
  src/uniq.c                  | 119 +++++-
  tests/Coreutils.pm          |   3 +
  tests/expand/mb.sh          | 183 +++++++++
@@ -35,7 +35,7 @@ Subject: [PATCH] coreutils-i18n.patch
  tests/misc/uniq.pl          |  55 +++
  tests/pr/pr-tests.pl        |  49 +++
  tests/unexpand/mb.sh        | 172 ++++++++
- 31 files changed, 3700 insertions(+), 242 deletions(-)
+ 31 files changed, 3699 insertions(+), 242 deletions(-)
  create mode 100644 lib/mbfile.c
  create mode 100644 lib/mbfile.h
  create mode 100644 m4/mbfile.m4
@@ -4273,21 +4273,18 @@ index 7d6100f..04cd646 100644
                  {
                    /* Go back one column, and force recalculation of the
                       next tab stop.  */
-@@ -218,9 +277,11 @@ unexpand (void)
-                   next_tab_column = column;
-                   tab_index -= !!tab_index;
+@@ -220,16 +279,20 @@ unexpand (void)
                  }
--              else
-+              else if (!mb_iseq (c, '\n'))
+               else
                  {
 -                  column++;
-+                  /* mb_width() returns 0 for control characters */
-+                  const int width = mb_width (c);
-+                  column += (width) ? width : 1;
-                   if (!column)
+-                  if (!column)
++                  const uintmax_t orig_column = column;
++                  column += mb_width (c);
++                  if (column < orig_column)
                      die (EXIT_FAILURE, 0, _("input line is too long"));
                  }
-@@ -228,8 +289,11 @@ unexpand (void)
+ 
                if (pending)
                  {
                    if (pending > 1 && one_blank_before_tab_stop)
@@ -4301,7 +4298,7 @@ index 7d6100f..04cd646 100644
                      die (EXIT_FAILURE, errno, _("write error"));
                    pending = 0;
                    one_blank_before_tab_stop = false;
-@@ -239,16 +303,17 @@ unexpand (void)
+@@ -239,16 +302,17 @@ unexpand (void)
                convert &= convert_entire_line || blank;
              }
  
