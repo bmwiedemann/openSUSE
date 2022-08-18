@@ -23,7 +23,7 @@
 %endif
 
 Name:           rsync
-Version:        3.2.4
+Version:        3.2.5
 Release:        0
 Summary:        Versatile tool for fast incremental file transfer
 License:        GPL-3.0-or-later
@@ -41,8 +41,11 @@ Source9:        rsyncd@.service
 Source10:       http://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz.asc
 Source11:       http://rsync.samba.org/ftp/rsync/src/rsync-patches-%{version}.tar.gz.asc
 Source12:       %{name}.keyring
+# PATCH-FIX-UPSTREAM: slp.diff included in distribution tar file does not apply
+#  cleanly, therefore we use the upstream patch directly (for 3.2.5)
+Source13:       https://raw.githubusercontent.com/WayneD/rsync-patches/d899304ea5daa125417f296bdd6f8bff0ed342ca/slp.diff#:/rsync-3.2.5-slp.patch
 Patch0:         rsync-no-libattr.patch
-Patch1:         rsync-CVE-2022-29154.patch
+Patch1:         rsync-3.2.5-slp.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler
@@ -76,7 +79,11 @@ for backups and mirroring and as an improved copy command for everyday use.
 %setup -q -b 1
 rm -f zlib/*.h
 
-patch -p1 < patches/slp.diff
+# TODO: (See Source13/Patch1) we have to re-enable the patching of SLP using
+#   the patch included in the distributed tar file for next version, for now
+#   we apply latest upstream patch (for 3.2.5) from Github, the one included
+#   in tar fiel desn't apply cleanly
+# patch -p1 < patches/slp.diff
 
 %autopatch -p1
 

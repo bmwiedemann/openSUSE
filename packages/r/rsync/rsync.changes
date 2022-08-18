@@ -1,9 +1,56 @@
 -------------------------------------------------------------------
+Tue Aug 16 08:19:20 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Add upstream patch rsync-3.2.5-slp.patch, as the one included in
+  the released tarball doesn't fully apply.
+
+- Drop patch rsync-CVE-2022-29154.patch, already included upstream.
+
+- Update to 3.2.5
+  * SECURITY FIXES:
+    - Added some file-list safety checking that helps to ensure that a rogue
+      sending rsync can't add unrequested top-level names and/or include recursive
+      names that should have been excluded by the sender.  These extra safety
+      checks only require the receiver rsync to be updated.  When dealing with an
+      untrusted sending host, it is safest to copy into a dedicated destination
+      directory for the remote content (i.e. don't copy into a destination
+      directory that contains files that aren't from the remote host unless you
+      trust the remote host). Fixes CVE-2022-29154.
+    - A fix for CVE-2022-37434 in the bundled zlib (buffer overflow issue).
+  * BUG FIXES:
+    - Fixed the handling of filenames specified with backslash-quoted wildcards
+      when the default remote-arg-escaping is enabled.
+    - Fixed the configure check for signed char that was causing a host that
+      defaults to unsigned characters to generate bogus rolling checksums. This
+      made rsync send mostly literal data for a copy instead of finding matching
+      data in the receiver's basis file (for a file that contains high-bit
+      characters).
+    - Lots of manpage improvements, including an attempt to better describe how
+      include/exclude filters work.
+    - If rsync is compiled with an xxhash 0.8 library and then moved to a system
+      with a dynamically linked xxhash 0.7 library, we now detect this and disable
+      the XX3 hashes (since these routines didn't stabilize until 0.8).
+  * ENHANCEMENTS:
+    - The [`--trust-sender`](rsync.1#opt) option was added as a way to bypass the
+      extra file-list safety checking (should that be required).
+  * PACKAGING RELATED:
+    - A note to those wanting to patch older rsync versions: the changes in this
+      release requires the quoted argument change from 3.2.4. Then, you'll want
+      every single code change from 3.2.5 since there is no fluff in this release.
+    - The build date that goes into the manpages is now based on the developer's
+      release date, not on the build's local-timezone interpretation of the date.
+  * DEVELOPER RELATED:
+    - Configure now defaults GETGROUPS_T to gid_t when cross compiling.
+    - Configure now looks for the bsd/string.h include file in order to fix the
+      build on a host that has strlcpy() in the main libc but not defined in the
+      main string.h file.
+
+-------------------------------------------------------------------
 Mon Aug  1 12:27:43 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Security fix: [bsc#1201840, CVE-2022-29154]
   * arbitrary file write vulnerability via do_server_recv function
-  * Added patch rsync-rsync-CVE-2022-29154.patch
+  * Added patch rsync-CVE-2022-29154.patch
 
 -------------------------------------------------------------------
 Tue Jun 21 10:34:12 UTC 2022 - Stefan Schubert <schubi@suse.com>
