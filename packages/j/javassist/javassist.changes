@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 17 11:32:38 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Version update to 3.29.1:
+  * `Readme.html` was deleted. 
+
+- Rebased javassist-osgi.patch and corrected version numbers in
+  the patch.
+
+-------------------------------------------------------------------
 Mon May 23 13:16:59 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Requires java >= 1.8
