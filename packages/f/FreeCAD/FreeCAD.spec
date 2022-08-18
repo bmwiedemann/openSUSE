@@ -27,7 +27,7 @@
 %bcond_without smesh
 
 Name:           FreeCAD
-Version:        0.20
+Version:        0.20.1
 Release:        0
 Summary:        General Purpose 3D CAD Modeler
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -38,6 +38,8 @@ Source0:        https://github.com/FreeCAD/FreeCAD/archive/refs/tags/%{version}.
 Patch0:         0001-Gui-Quarter-Add-missing-OpenGL-includes.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Avoid-catching-SIGSEGV-defer-to-system-services.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-build-with-NG-6.2.2201-include-BRepMesh_Incremen.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x

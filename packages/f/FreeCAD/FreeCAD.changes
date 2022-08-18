@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 16 00:33:06 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.20.1:
+  * Lots of bugfixes and new features, for details see
+    https://wiki.freecad.org/Release_notes_0.20.1 and
+    https://github.com/FreeCAD/FreeCAD/releases/tag/0.20.1
+
+-------------------------------------------------------------------
+Mon Aug 15 22:06:33 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with Netgen 6.2.2201 and later, add
+  0001-Fix-build-with-NG-6.2.2201-include-BRepMesh_Incremen.patch
+
+-------------------------------------------------------------------
 Tue Jun 14 17:12:11 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.20:
