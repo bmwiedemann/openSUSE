@@ -25,9 +25,9 @@ Name:           med-tools
 Summary:        A library to store and exchange meshed data
 License:        LGPL-3.0-only
 Group:          Productivity/Graphics/Other
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
-URL:            https://www.salome-platform.org/downloads/current-version
+URL:            https://www.salome-platform.org/
 Source0:        https://files.salome-platform.org/Salome/other/med-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE
 Patch0:         fix-cmakefiles.patch
@@ -37,6 +37,8 @@ Patch1:         0003-Avoid-format-warnings-on-64-bit.patch
 Patch2:         use_installed_python_modules_for_tests.patch
 # PATCH-FIX-OPENSUSE
 Patch3:         Fix-no_return_in_nonvoid_function.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         hdf5-1.12.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -136,11 +138,7 @@ to store and exchange meshed data or computation results.
 It uses the HDF5 file format to store the data.
 
 %prep
-%setup -q -n med-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n med-%{version}_SRC
 
 # Fix file not utf8
 iconv --from=ISO-8859-1 --to=UTF-8 ChangeLog > ChangeLog.new && \
