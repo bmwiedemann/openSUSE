@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 17 07:16:12 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update ot mimelang-0.3
+  * Avoid to run on NULL if no UTF-8 marker is found 
+
+-------------------------------------------------------------------
 Thu Jul 29 13:18:14 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add simple mimelang tool to be able to check unicode block of

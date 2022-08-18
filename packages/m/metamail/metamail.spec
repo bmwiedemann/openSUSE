@@ -1,7 +1,7 @@
 #
 # spec file for package metamail
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Source:         metamail-2.7-19.tar.gz
 Source1:        mimecheck
 Source2:        mimecheck.1
 Source3:        mimegrep-0.2.tar.xz
-Source4:        mimelang-0.2.tar.gz
+Source4:        mimelang-0.3.tar.gz
 Patch0:         metamail-2.7-19-security.dif
 Patch1:         metamail-2.7-19.dif
 Patch2:         metamail-2.7-19-getline.dif
@@ -61,7 +61,7 @@ those using the Andrew toolkit) with elm.
 	%configure
 	make %{?_smp_mflags}
     popd
-    pushd ../mimelang-0.2
+    pushd ../mimelang-0.3
 	make %{?_smp_mflags}
     popd
 
@@ -81,7 +81,7 @@ those using the Andrew toolkit) with elm.
     pushd ../mimegrep-0.2
 	make install DESTDIR=%{buildroot}
     popd
-    pushd ../mimelang-0.2
+    pushd ../mimelang-0.3
 	make install DESTDIR=%{buildroot}
     popd
 
