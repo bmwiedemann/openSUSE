@@ -36,6 +36,7 @@ BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bcunit)
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  chrpath
 
 %description
 Utilities library used by Belledonne Communications softwares like
@@ -79,11 +80,16 @@ This package the contains shared library for testing component.
 %autosetup -p1
 
 %build
+%if 0%{?fedora} == 36
+export CFLAGS=$(echo "$CFLAGS -Wno-error=maybe-uninitialized")
+export CXXFLAGS=$(echo "$CXXFLAGS -Wno-error=maybe-uninitialized")
+%endif
 %cmake -DENABLE_STATIC=OFF
 %cmake_build
 
 %install
 %cmake_install
+chrpath -d %{buildroot}%{_libdir}/lib%{name}.so.%{sover}* %{buildroot}%{_libdir}/lib%{name}-tester.so.%{sover}*
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
