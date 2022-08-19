@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kget
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Download Manager
 License:        GPL-2.0-or-later
@@ -103,9 +103,8 @@ An advanced download manager by KDE
 %{_kf5_kxmlguidir}/kget/
 %{_kf5_libdir}/libkgetcore.so*
 %{_kf5_notifydir}/kget.notifyrc
-%dir %{_kf5_plugindir}/kget/
-%dir %{_kf5_plugindir}/kget/kcms/
-%{_kf5_plugindir}/kget/kcms/kcm_kget*.so
+%dir %{_kf5_plugindir}/kget_kcms/
+%{_kf5_plugindir}/kget_kcms/kcm_kget*.so
 %{_kf5_plugindir}/kget/
 %{_kf5_servicetypesdir}/kget_plugin.desktop
 %{_kf5_sharedir}/dbus-1/services/org.kde.kget.service
