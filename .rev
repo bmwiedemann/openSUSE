@@ -704,4 +704,12 @@
   * 0001-Use-WebEngineWidgets-as-WebEngine-is-not-define-in-q.patch</comment>
     <requestid>993605</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>10fab0349289bfd84bd7a6e0bbe1f974</srcmd5>
+    <version>22.08.0</version>
+    <time>1660924365</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.08.0 (forwarded request 997667 from cgiboudeaux)</comment>
+    <requestid>997950</requestid>
+  </revision>
 </revisionlist>
