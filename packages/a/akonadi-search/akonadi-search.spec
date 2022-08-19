@@ -15,14 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %define soversion 5
 %define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-search
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Framework for searching and managing PIM metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -58,7 +57,6 @@ AkonadiSearch is a framework for searching and managing PIM metadata
 %package -n libKF5AkonadiSearch%{soversion}
 Summary:        Core libraries for AkonadiSearch
 Group:          System/Libraries
-# Renamed to fix a rpmlint error
 Provides:       libKF5AkonadiSearch = 22.04.0
 Obsoletes:      libKF5AkonadiSearch < 22.04.0
 
@@ -67,7 +65,7 @@ AkonadiSearch is a framework for searching and managing PIM metadata.
 This package contains the core libraries
 
 %package devel
-Summary:        Development package for AkonadiSearch
+Summary:        Development package for baloo5
 Group:          Development/Libraries/KDE
 Requires:       libKF5AkonadiSearch%{soversion} = %{version}
 Requires:       cmake(KF5Akonadi)
@@ -112,10 +110,11 @@ Development files for the AkonadiSearch library.
 %dir %{_kf5_plugindir}/kf5/krunner/kcms
 %dir %{_kf5_sharedir}/akonadi
 %dir %{_kf5_sharedir}/akonadi/agents
+%dir %{_kf5_plugindir}/pim5
 %{_kf5_bindir}/akonadi_indexing_agent
 %{_kf5_debugdir}/akonadi-search.categories
 %{_kf5_debugdir}/akonadi-search.renamecategories
-%{_kf5_plugindir}/akonadi/
+%{_kf5_plugindir}/pim5/akonadi/
 %{_kf5_plugindir}/kf5/krunner/krunner_pimcontacts.so
 %{_kf5_plugindir}/kf5/krunner/kcms/kcm_krunner_pimcontacts.so
 %{_kf5_sharedir}/akonadi/agents/akonadiindexingagent.desktop
