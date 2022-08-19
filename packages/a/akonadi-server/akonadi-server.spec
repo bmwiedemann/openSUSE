@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-server
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-server
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -34,8 +34,6 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 Source99:       akonadi-server-rpmlintrc
-# PATCH-FIX-UPSTREAM https://invent.kde.org/pim/akonadi/-/merge_requests/94
-Patch1:         akonadiserver-apparmor-typos-mr94.patch
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
@@ -150,6 +148,7 @@ Requires:       cmake(KF5Config)
 Requires:       cmake(KF5ConfigWidgets)
 Requires:       cmake(KF5CoreAddons)
 Requires:       cmake(KF5ItemModels)
+Requires:       cmake(KF5KIO)
 Requires:       cmake(KF5XmlGui)
 Requires:       cmake(Qt5Core)
 Requires:       cmake(Qt5DBus)
@@ -211,6 +210,7 @@ This package contains AppArmor profiles for Akonadi.
 %dir %{_kf5_iconsdir}/hicolor/256x256
 %dir %{_kf5_iconsdir}/hicolor/256x256/apps
 %dir %{_kf5_sysconfdir}/xdg/akonadi
+%dir %{_kf5_plugindir}/pim5
 %{_datadir}/akonadi/
 %{_datadir}/kf5/akonadi/
 %{_datadir}/kf5/akonadi_knut_resource/
@@ -224,7 +224,7 @@ This package contains AppArmor profiles for Akonadi.
 %{_kf5_debugdir}/akonadi.*categories
 %{_kf5_iconsdir}/hicolor/*/apps/akonadi.png
 %{_kf5_iconsdir}/hicolor/scalable/apps/akonadi.svgz
-%{_kf5_plugindir}/akonadi/
+%{_kf5_plugindir}/pim5/akonadi/
 %{_kf5_sharedir}/dbus-1/services/org.freedesktop.Akonadi.Control.service
 %{_kf5_sharedir}/mime/packages/akonadi-mime.xml
 
@@ -256,7 +256,6 @@ This package contains AppArmor profiles for Akonadi.
 %{_kf5_includedir}/AkonadiCore/
 %{_kf5_includedir}/AkonadiWidgets/
 %{_kf5_includedir}/AkonadiXml/
-%{_kf5_includedir}/akonadi_version.h
 %{_kf5_libdir}/libKF5AkonadiAgentBase.so
 %{_kf5_libdir}/libKF5AkonadiCore.so
 %{_kf5_libdir}/libKF5AkonadiPrivate.so

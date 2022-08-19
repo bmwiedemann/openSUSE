@@ -807,4 +807,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE Gear 22.04.3</comment>
     <requestid>987509</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>19752ae4c24f0672337dd39a68c17924</srcmd5>
+    <version>22.08.0</version>
+    <time>1660924289</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.08.0 (forwarded request 997667 from cgiboudeaux)</comment>
+    <requestid>997748</requestid>
+  </revision>
 </revisionlist>
