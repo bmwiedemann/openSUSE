@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-calendar
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later
@@ -47,8 +47,6 @@ BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Test)
-# It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 
 %description
 This library provides calendar integration for Akonadi based Applications.
@@ -122,6 +120,9 @@ Development package for akonadi-calendar.
 %dir %{_kf5_sharedir}/akonadi
 %dir %{_kf5_sharedir}/akonadi/plugins
 %dir %{_kf5_sharedir}/akonadi/plugins/serializer
+%dir %{_kf5_plugindir}/kf5/
+%dir %{_kf5_plugindir}/kf5/org.kde.kcalendarcore.calendars
+%{_kf5_plugindir}/kf5/org.kde.kcalendarcore.calendars/libakonadicalendarplugin.so
 %{_kf5_sharedir}/akonadi/plugins/serializer/akonadi_serializer_kcalcore.desktop
 
 %files -n kalendarac
