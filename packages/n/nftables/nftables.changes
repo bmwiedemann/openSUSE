@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 17 19:21:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.5:
+  * Fixes for the -o/--optimize, run this --optimize option to automagically
+    compact your ruleset using sets, maps and concatenations
+  * Fix ethernet and vlan concatenations, eg. define a dynamic set which
+    is populated from the packet path 
+  * Fix ruleset listing with interface wildcard map
+  * Fix several regressions in the input lexer which broke valid rulesets.
+  * Fix slowdown with large lists of singleton interval elements.
+  * Fix set automerge feature for large lists of singleton interval elements.
+  * Fix bogus error reporting for exact overlaps.
+  * Fix segfault when adding elements to invalid set.
+  * fix device parsing in netdev family in json.
+
+-------------------------------------------------------------------
 Tue Jun  7 14:55:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.4

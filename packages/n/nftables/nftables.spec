@@ -17,7 +17,7 @@
 
 
 Name:           nftables
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        Userspace utility to access the nf_tables packet filter
 License:        GPL-2.0-only
