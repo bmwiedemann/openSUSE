@@ -1,7 +1,7 @@
 #
-# spec file for package python-EasyProcess
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-EasyProcess%{psuffix}
-Version:        0.3
+Version:        1.1
 Release:        0
 Summary:        Python subprocess interface
 License:        BSD-2-Clause
@@ -38,9 +38,16 @@ BuildRequires:  iputils
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module EasyProcess = %{version}}
+BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyVirtualDisplay}
+BuildRequires:  %{python_module entrypoint2}
+BuildRequires:  %{python_module flake8}
+BuildRequires:  %{python_module mypy}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
+BuildRequires:  ImageMagick
 %endif
 %python_subpackages
 

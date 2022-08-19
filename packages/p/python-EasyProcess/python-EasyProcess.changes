@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 10 07:46:11 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Fix build dependencies for test flavour
+- Update to 1.1:
+  * Use popen timeout parameter, remove daemon thread #22
+  * use only kill(), remove terminate(), remove kill* parameters #20 #22
+  * add py310 support, remove py36
+  * fix EASYPROCESS_USE_TEMP_FILES env var usage
+  * test: increase timeouts to avoid random fails
+  * remove py2
+  * add py39 support
+  * Add option to force kill process after timeout
+
+-------------------------------------------------------------------
 Thu Jul  9 00:07:33 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.3
