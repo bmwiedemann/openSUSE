@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kontact
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Personal Information Manager
 License:        GPL-2.0-or-later
@@ -98,11 +98,10 @@ KOrganizer as views in one window.
 %{_kf5_debugdir}/kontact.renamecategories
 %{_kf5_iconsdir}/hicolor/*/apps/kontact.png
 %{_kf5_iconsdir}/hicolor/scalable/apps/kontact.svg
-%dir %{_kf5_plugindir}/pim
-%dir %{_kf5_plugindir}/pim/kcms
-%dir %{_kf5_plugindir}/pim/kcms/kontact
-%{_kf5_plugindir}/pim/kcms/kontact/kcm_kontact.so
-%{_kf5_servicesdir}/kontactconfig.desktop
+%dir %{_kf5_plugindir}/pim5
+%dir %{_kf5_plugindir}/pim5/kcms
+%dir %{_kf5_plugindir}/pim5/kcms/kontact
+%{_kf5_plugindir}/pim5/kcms/kontact/kcm_kontact.so
 %dir %{_kf5_sharedir}/dbus-1/services/
 %{_kf5_sharedir}/dbus-1/services/org.kde.kontact.service
 %{_libdir}/libkontactprivate.so.*
