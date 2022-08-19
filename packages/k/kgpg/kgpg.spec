@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kgpg
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Encryption Tool
 License:        GPL-2.0-or-later
@@ -54,8 +54,6 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       gpg2
-# It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 BuildRequires:  libboost_headers-devel
 
 %description
