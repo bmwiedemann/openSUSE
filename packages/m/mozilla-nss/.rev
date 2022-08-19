@@ -2703,4 +2703,23 @@
   * bmo#1771036 - Allow LDFLAGS override in makefile builds.</comment>
     <requestid>991359</requestid>
   </revision>
+  <revision rev="192" vrev="1">
+    <srcmd5>3fa99b5bd9eeeebe711a7e9b61a34317</srcmd5>
+    <version>3.81</version>
+    <time>1660924379</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.81
+  * bmo#1762831 - Enable aarch64 hardware crypto support on OpenBSD
+  * bmo#1775359 - make NSS_SecureMemcmp 0/1 valued
+  * bmo#1779285 - Add no_application_protocol alert handler and
+                  test client error code is set
+  * bmo#1777672 - Gracefully handle null nickname in
+                  CERT_GetCertNicknameWithValidity
+  * required for Firefox 104
+- raised NSPR requirement to 4.34.1
+- changing some Requires from (pre) to generic as (pre) is not
+  sufficient (boo#1202118)
+</comment>
+    <requestid>997590</requestid>
+  </revision>
 </revisionlist>

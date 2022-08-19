@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 17 11:03:37 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.81
+  * bmo#1762831 - Enable aarch64 hardware crypto support on OpenBSD
+  * bmo#1775359 - make NSS_SecureMemcmp 0/1 valued
+  * bmo#1779285 - Add no_application_protocol alert handler and
+                  test client error code is set
+  * bmo#1777672 - Gracefully handle null nickname in
+                  CERT_GetCertNicknameWithValidity
+  * required for Firefox 104
+- raised NSPR requirement to 4.34.1
+- changing some Requires from (pre) to generic as (pre) is not
+  sufficient (boo#1202118)
+
+-------------------------------------------------------------------
 Tue Jul 26 19:20:48 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.80

@@ -17,14 +17,14 @@
 #
 
 
-%global nss_softokn_fips_version 3.80
-%define NSPR_min_version 4.34
+%global nss_softokn_fips_version 3.81
+%define NSPR_min_version 4.34.1
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 Name:           mozilla-nss
-Version:        3.80
+Version:        3.81
 Release:        0
-%define underscore_version 3_80
+%define underscore_version 3_81
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -86,9 +86,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(nspr) >= %{NSPR_min_version}
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
-Requires(pre):  libfreebl3 >= %{nss_softokn_fips_version}
-Requires(pre):  libsoftokn3 >= %{nss_softokn_fips_version}
-Requires(pre):  mozilla-nspr >= %{NSPR_min_version}
+Requires:       libfreebl3 >= %{nss_softokn_fips_version}
+Requires:       libsoftokn3 >= %{nss_softokn_fips_version}
+Requires:       mozilla-nspr >= %{NSPR_min_version}
 %if "%{_lib}" == "lib64"
 Requires:       libnssckbi.so()(64bit)
 %else
