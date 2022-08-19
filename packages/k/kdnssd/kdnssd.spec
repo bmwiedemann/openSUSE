@@ -16,12 +16,12 @@
 #
 
 
-%define rname zeroconf-ioslave
+%define rname kio-zeroconf
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdnssd
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Zeroconf Support for KIO applications
 License:        GPL-2.0-or-later
@@ -66,7 +66,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %files
 %license LICENSES/*
-%{_kf5_appstreamdir}/org.kde.zeroconf-ioslave.metainfo.xml
+%{_kf5_appstreamdir}/org.kde.kio_zeroconf.metainfo.xml
 %{_kf5_dbusinterfacesdir}/org.kde.kdnssd.xml
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/kded
