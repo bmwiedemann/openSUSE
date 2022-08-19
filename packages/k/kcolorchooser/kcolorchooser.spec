@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kcolorchooser
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Color Chooser
 License:        MIT
