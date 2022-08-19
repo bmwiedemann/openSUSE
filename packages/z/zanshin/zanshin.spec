@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           zanshin
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        TODO Application
 License:        GPL-2.0-only
@@ -69,7 +69,8 @@ job and personal life. You will never forget anything anymore.
 %doc AUTHORS
 %dir %{_kf5_iconsdir}/hicolor/256x256
 %dir %{_kf5_iconsdir}/hicolor/256x256/apps
-%dir %{_kf5_plugindir}/kontact5
+%dir %{_kf5_plugindir}/pim5
+%dir %{_kf5_plugindir}/pim5/kontact
 %{_kf5_applicationsdir}/org.kde.zanshin.desktop
 %{_kf5_appstreamdir}/org.kde.zanshin.metainfo.xml
 %{_kf5_bindir}/zanshin
@@ -77,7 +78,7 @@ job and personal life. You will never forget anything anymore.
 %{_kf5_iconsdir}/hicolor/*/apps/zanshin.png
 %{_kf5_iconsdir}/hicolor/scalable/apps/zanshin.svgz
 %{_kf5_kxmlguidir}/zanshin/
-%{_kf5_plugindir}/kontact5/kontact_zanshinplugin.so
+%{_kf5_plugindir}/pim5/kontact/kontact_zanshinplugin.so
 %{_kf5_plugindir}/krunner_zanshin.so
 %{_kf5_plugindir}/zanshin_part.so
 %{_kf5_servicesdir}/kontact/
