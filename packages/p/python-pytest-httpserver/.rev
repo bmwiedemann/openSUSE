@@ -62,4 +62,12 @@ Required by python-scikit-image</comment>
     <comment></comment>
     <requestid>941334</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6608c738a48a476f04ca47997460eac8</srcmd5>
+    <version>1.0.5</version>
+    <time>1660924418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998104</requestid>
+  </revision>
 </revisionlist>
