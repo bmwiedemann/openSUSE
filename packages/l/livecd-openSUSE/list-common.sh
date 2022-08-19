@@ -211,10 +211,8 @@ buildignore gstreamer-plugins-rs
 
 # Make vim smaller
 buildignore vim-data
-if [ "$distro" = "tumbleweed" ]; then
-        buildignore vim
-        install vim-small
-fi
+buildignore vim
+install vim-small
 
 # This was previously required by base
 install patterns-yast-yast2_basis

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 19 07:30:34 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- list-gnome: Ignore yelp, needed especially on Leap
+- list-common: vim-small is also available on Leap meanwhile
+
+-------------------------------------------------------------------
 Mon Aug  8 07:51:52 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Delete xorg-x11-server-Xvfb only if installed

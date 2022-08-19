@@ -117,3 +117,6 @@ install quadrapassel
 
 # Pulls in Qt WebEngine, too big
 buildignore opensuse-welcome
+
+# Pulls in a different WebKit version on Leap and doesn't offer any useful manuals anyway
+buildignore yelp
