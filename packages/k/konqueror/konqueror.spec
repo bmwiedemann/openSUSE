@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           konqueror
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: konqueror-17.04.2/webenginepart/autotests/webengine_testutils.h is Qt commercial OR GPL-3.0
@@ -147,6 +147,7 @@ Development package for the konqueror libraries.
 %{_kf5_applicationsdir}/kfmclient_html.desktop
 %{_kf5_applicationsdir}/kfmclient_war.desktop
 %{_kf5_applicationsdir}/konqbrowser.desktop
+%{_kf5_applicationsdir}/org.kde.konqueror.desktop
 %{_kf5_appstreamdir}/org.kde.konqueror.appdata.xml
 %{_kf5_bindir}/kfmclient
 %{_kf5_bindir}/konqueror
@@ -216,7 +217,6 @@ Development package for the konqueror libraries.
 %{_kf5_plugindir}/kf5/kfileitemaction/akregatorplugin.so
 %{_kf5_plugindir}/autorefresh.so
 %{_kf5_plugindir}/babelfishplugin.so
-%{_kf5_plugindir}/dirfilterplugin.so
 %{_kf5_plugindir}/khtmlttsplugin.so
 %{_kf5_plugindir}/konqueror_kcms/kcm_history.so
 %{_kf5_plugindir}/kf5/parts/fsviewpart.so
@@ -232,10 +232,10 @@ Development package for the konqueror libraries.
 %{_kf5_plugindir}/webarchivethumbnail.so
 %{_kf5_plugindir}/dolphinpart/kpartplugins/kimgallery.so
 %{_kf5_plugindir}/dolphinpart/kpartplugins/konq_shellcmdplugin.so
+%{_kf5_plugindir}/dolphinpart/kpartplugins/dirfilterplugin.so
 %{_kf5_plugindir}/khtml/kpartplugins/akregatorkonqfeediconkhtml_kpartplugins.so
 %{_kf5_plugindir}/khtml/kpartplugins/autorefreshkhtml_kpartplugins.so
 %{_kf5_plugindir}/khtml/kpartplugins/babelfishpluginkhtml_kpartplugins.so
-%{_kf5_plugindir}/khtml/kpartplugins/dirfilterpluginkhtml_kpartplugins.so
 %{_kf5_plugindir}/khtml/kpartplugins/khtmlsettingspluginkhtml_kpartplugins.so
 %{_kf5_plugindir}/khtml/kpartplugins/khtmlttspluginkhtml_kpartplugins.so
 %{_kf5_plugindir}/khtml/kpartplugins/konqueror_kget_browser_integrationkhtml_kpartplugins.so
@@ -245,7 +245,6 @@ Development package for the konqueror libraries.
 %{_kf5_plugindir}/kwebkitpart/kpartplugins/akregatorkonqfeediconkwebkitpart_kpartplugins.so
 %{_kf5_plugindir}/kwebkitpart/kpartplugins/autorefreshkwebkitpart_kpartplugins.so
 %{_kf5_plugindir}/kwebkitpart/kpartplugins/babelfishpluginkwebkitpart_kpartplugins.so
-%{_kf5_plugindir}/kwebkitpart/kpartplugins/dirfilterpluginkwebkitpart_kpartplugins.so
 %{_kf5_plugindir}/kwebkitpart/kpartplugins/khtmlsettingspluginkwebkitpart_kpartplugins.so
 %{_kf5_plugindir}/kwebkitpart/kpartplugins/khtmlttspluginkwebkitpart_kpartplugins.so
 %{_kf5_plugindir}/kwebkitpart/kpartplugins/konqueror_kget_browser_integrationkwebkitpart_kpartplugins.so
@@ -254,7 +253,6 @@ Development package for the konqueror libraries.
 %{_kf5_plugindir}/webenginepart/kpartplugins/akregatorkonqfeediconwebenginepart_kpartplugins.so
 %{_kf5_plugindir}/webenginepart/kpartplugins/autorefreshwebenginepart_kpartplugins.so
 %{_kf5_plugindir}/webenginepart/kpartplugins/babelfishpluginwebenginepart_kpartplugins.so
-%{_kf5_plugindir}/webenginepart/kpartplugins/dirfilterpluginwebenginepart_kpartplugins.so
 %{_kf5_plugindir}/webenginepart/kpartplugins/khtmlsettingspluginwebenginepart_kpartplugins.so
 %{_kf5_plugindir}/webenginepart/kpartplugins/khtmlttspluginwebenginepart_kpartplugins.so
 %{_kf5_plugindir}/webenginepart/kpartplugins/konqueror_kget_browser_integrationwebenginepart_kpartplugins.so
