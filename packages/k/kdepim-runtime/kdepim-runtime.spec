@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdepim-runtime
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -34,10 +34,12 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  extra-cmake-modules
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_atomic-devel
+BuildRequires:  libboost_thread-devel
+BuildRequires:  libboost_system-devel
 BuildRequires:  libkolabxml-devel >= 1.1
-BuildRequires:  libxslt-devel
 BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiCalendar)
@@ -51,7 +53,6 @@ BuildRequires:  cmake(KF5Config) >= %{kf5_version}
 BuildRequires:  cmake(KF5ConfigWidgets) >= %{kf5_version}
 BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5DAV)
-BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5DocTools) >= %{kf5_version}
 BuildRequires:  cmake(KF5Holidays) >= %{kf5_version}
 BuildRequires:  cmake(KF5IMAP)
@@ -66,7 +67,6 @@ BuildRequires:  cmake(KF5Mbox)
 BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
 BuildRequires:  cmake(KF5NotifyConfig) >= %{kf5_version}
-BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5TextWidgets) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(KPimGAPI)
@@ -77,7 +77,10 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5NetworkAuth)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5TextToSpeech)
+%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
+# Only the tomboy and ews resources need Qt5WebEngine
 BuildRequires:  cmake(Qt5WebEngineWidgets)
+%endif
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5XmlPatterns)
 Recommends:     kalendarac
@@ -89,8 +92,6 @@ Requires(postun): shared-mime-info
 Provides:       kio-pimlibs = %{version}
 Obsoletes:      kdepim4-runtime < %{version}
 Obsoletes:      kio-pimlibs < %{version}
-# It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 
 %description
 This package contains the Akonadi resources, agents and plugins needed to
@@ -119,17 +120,18 @@ use PIM applications.
 %files
 %license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kioslave5/
+%{_kf5_applicationsdir}/org.kde.akonadi_davgroupware_resource.desktop
+%{_kf5_applicationsdir}/org.kde.akonadi_google_resource.desktop
+%{_kf5_applicationsdir}/org.kde.akonadi_kolab_resource.desktop
+%{_kf5_applicationsdir}/org.kde.akonadi_imap_resource.desktop
 %{_kf5_bindir}/*
 %{_kf5_dbusinterfacesdir}/*.xml
 %{_kf5_debugdir}/kdepim-runtime.categories
 %{_kf5_debugdir}/kdepim-runtime.renamecategories
-%dir %{_kf5_iconsdir}/hicolor/24x24
-%dir %{_kf5_iconsdir}/hicolor/72x72
-%dir %{_kf5_iconsdir}/hicolor/96x96
-%{_kf5_iconsdir}/hicolor/*/*/*
-%{_kf5_iconsdir}/hicolor/24x24/apps
-%{_kf5_iconsdir}/hicolor/72x72/apps
-%{_kf5_iconsdir}/hicolor/96x96/apps
+%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
+%{_kf5_iconsdir}/hicolor/*/apps/akonadi-ews.png
+%endif
+%{_kf5_iconsdir}/hicolor/*/apps/ox.png
 %{_kf5_libdir}/*.so.*
 %{_kf5_notifydir}/
 %{_kf5_plugindir}/
