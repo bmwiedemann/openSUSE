@@ -230,4 +230,12 @@
 - Trim filler words from descriptions. (forwarded request 913293 from jengelh)</comment>
     <requestid>913315</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>98c1b3a769804590381e1e9d0dcf223c</srcmd5>
+    <version>1.26.0</version>
+    <time>1660924608</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>998196</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 18 15:33:12 UTC 2022 - Dura-Kovács <balping314@gmail.com>
+
+- Add pluma-1.26.0-fix-segfault.patch: Fix out of bounds write bug
+  (boo#1200853).
+
+-------------------------------------------------------------------
 Fri Aug 20 09:04:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove ldconfig calls, there are no shared libs in standard dirs

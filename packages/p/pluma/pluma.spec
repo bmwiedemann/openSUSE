@@ -1,7 +1,7 @@
 #
 # spec file for package pluma
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Group:          Productivity/Text/Editors
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 Source99:       https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz.sha256sum
+# PATCH-FIX-UPSTREAM pluma-1.26.0-fix-segfault.patch boo#1200853 -- Fix out-of-bounds write (commit 413f9e46).
+Patch0:         pluma-1.26.0-fix-segfault.patch
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 BuildRequires:  mate-common >= %{_version}
