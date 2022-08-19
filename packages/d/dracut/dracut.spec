@@ -25,7 +25,7 @@
 %endif
 
 Name:           dracut
-Version:        057+suse.303.gc4ea1bea
+Version:        057+suse.309.gb71946f6
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -40,7 +40,6 @@ BuildRequires:  cargo
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
 BuildRequires:  rust
-BuildRequires:  suse-module-tools
 BuildRequires:  pkgconfig(libkmod)
 BuildRequires:  pkgconfig(systemd) >= 219
 Requires:       %{_bindir}/get_kernel_version

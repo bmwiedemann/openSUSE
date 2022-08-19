@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 18 07:14:21 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 057+suse.309.gb71946f6:
+  * fix(dracut-initramfs-restore.sh): hide unpack errors (bsc#1199341)
+  * chore(suse): remove suse-module-tools build requirement
+  * fix(suse-initrd): always check that MACHINE_ID is not empty (bsc#1201780)
+
+-------------------------------------------------------------------
 Wed Jul 20 06:41:54 UTC 2022 - antonio.feijoo@suse.com
 
 - Update to version 057+suse.303.gc4ea1bea:
