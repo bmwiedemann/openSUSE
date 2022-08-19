@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Thu Aug 18 15:48:08 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#302
+- pass edid firmware option via sysfs if drm is compiled into the
+  kernel (bsc#1202529)
+- 8.13
+
+--------------------------------------------------------------------
 Wed May 25 10:18:50 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#297
