@@ -17,7 +17,7 @@
 
 
 Name:           python-sunpy
-Version:        4.0.2
+Version:        4.0.4
 Release:        0
 Summary:        SunPy: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
