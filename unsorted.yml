@@ -1555,52 +1555,52 @@ unsorted:
   - buildstream 
   - bulk_extractor 
   - bumblebee 
-  - bumblebee-status 
-  - bumblebee-status-module-alsa 
-  - bumblebee-status-module-arandr 
-  - bumblebee-status-module-brightness 
-  - bumblebee-status-module-caffeine 
-  - bumblebee-status-module-cmus 
-  - bumblebee-status-module-deadbeef 
-  - bumblebee-status-module-deezer 
-  - bumblebee-status-module-dnf 
-  - bumblebee-status-module-docker-ps 
-  - bumblebee-status-module-dunst 
-  - bumblebee-status-module-git 
-  - bumblebee-status-module-indicator 
-  - bumblebee-status-module-layout 
-  - bumblebee-status-module-layout-xkb 
-  - bumblebee-status-module-layout-xkbswitch 
-  - bumblebee-status-module-libvirt 
-  - bumblebee-status-module-mocp 
-  - bumblebee-status-module-mpd 
-  - bumblebee-status-module-notmuch 
-  - bumblebee-status-module-nvidia 
-  - bumblebee-status-module-nvidia-optimus-manager 
-  - bumblebee-status-module-nvidia-prime 
-  - bumblebee-status-module-octoprint 
-  - bumblebee-status-module-pihole 
-  - bumblebee-status-module-playerctl 
-  - bumblebee-status-module-progress 
-  - bumblebee-status-module-pulseaudio 
-  - bumblebee-status-module-redshift 
-  - bumblebee-status-module-rss 
-  - bumblebee-status-module-sensors 
-  - bumblebee-status-module-smartstatus 
-  - bumblebee-status-module-solaar 
-  - bumblebee-status-module-speedtest 
-  - bumblebee-status-module-spotify 
-  - bumblebee-status-module-sun 
-  - bumblebee-status-module-taskwarrior 
-  - bumblebee-status-module-title 
-  - bumblebee-status-module-twmn 
-  - bumblebee-status-module-vault 
-  - bumblebee-status-module-vpn 
-  - bumblebee-status-module-watson 
-  - bumblebee-status-module-xrandr 
-  - bumblebee-status-module-yubikey 
-  - bumblebee-status-module-zfs 
-  - bumblebee-status-theme-powerline 
+  - bumblebee-status: [x86_64] 
+  - bumblebee-status-module-alsa: [x86_64] 
+  - bumblebee-status-module-arandr: [x86_64] 
+  - bumblebee-status-module-brightness: [x86_64] 
+  - bumblebee-status-module-caffeine: [x86_64] 
+  - bumblebee-status-module-cmus: [x86_64] 
+  - bumblebee-status-module-deadbeef: [x86_64] 
+  - bumblebee-status-module-deezer: [x86_64] 
+  - bumblebee-status-module-dnf: [x86_64] 
+  - bumblebee-status-module-docker-ps: [x86_64] 
+  - bumblebee-status-module-dunst: [x86_64] 
+  - bumblebee-status-module-git: [x86_64] 
+  - bumblebee-status-module-indicator: [x86_64] 
+  - bumblebee-status-module-layout: [x86_64] 
+  - bumblebee-status-module-layout-xkb: [x86_64] 
+  - bumblebee-status-module-layout-xkbswitch: [x86_64] 
+  - bumblebee-status-module-libvirt: [x86_64] 
+  - bumblebee-status-module-mocp: [x86_64] 
+  - bumblebee-status-module-mpd: [x86_64] 
+  - bumblebee-status-module-notmuch: [x86_64] 
+  - bumblebee-status-module-nvidia: [x86_64] 
+  - bumblebee-status-module-nvidia-optimus-manager: [x86_64] 
+  - bumblebee-status-module-nvidia-prime: [x86_64] 
+  - bumblebee-status-module-octoprint: [x86_64] 
+  - bumblebee-status-module-pihole: [x86_64] 
+  - bumblebee-status-module-playerctl: [x86_64] 
+  - bumblebee-status-module-progress: [x86_64] 
+  - bumblebee-status-module-pulseaudio: [x86_64] 
+  - bumblebee-status-module-redshift: [x86_64] 
+  - bumblebee-status-module-rss: [x86_64] 
+  - bumblebee-status-module-sensors: [x86_64] 
+  - bumblebee-status-module-smartstatus: [x86_64] 
+  - bumblebee-status-module-solaar: [x86_64] 
+  - bumblebee-status-module-speedtest: [x86_64] 
+  - bumblebee-status-module-spotify: [x86_64] 
+  - bumblebee-status-module-sun: [x86_64] 
+  - bumblebee-status-module-taskwarrior: [x86_64] 
+  - bumblebee-status-module-title: [x86_64] 
+  - bumblebee-status-module-twmn: [x86_64] 
+  - bumblebee-status-module-vault: [x86_64] 
+  - bumblebee-status-module-vpn: [x86_64] 
+  - bumblebee-status-module-watson: [x86_64] 
+  - bumblebee-status-module-xrandr: [x86_64] 
+  - bumblebee-status-module-yubikey: [x86_64] 
+  - bumblebee-status-module-zfs: [x86_64] 
+  - bumblebee-status-theme-powerline: [x86_64] 
   - bumpversion 
   - bup 
   - busybox-adduser 
@@ -2784,7 +2784,6 @@ unsorted:
   - debugedit 
   - debuginfod-client 
   - debuginfod-dummy-client 
-  - debuginfod-profile 
   - decentxml 
   - decentxml-javadoc 
   - deco 
@@ -8398,7 +8397,6 @@ unsorted:
   - kochmorse 
   - kohsuke-pom 
   - kokkos-devel: [x86_64] 
-  - kolor-manager 
   - kompare-devel 
   - kompose 
   - kompose-bash-completion 
@@ -17795,6 +17793,8 @@ unsorted:
   - nut-drivers-net 
   - nvdock 
   - nvidia-texture-tools 
+  - nvimpager 
+  - nvimpager-zsh-completion 
   - nvme-cli-regress-script 
   - nvme-stas 
   - nvmetcli 
@@ -24524,7 +24524,6 @@ unsorted:
   - python310-serpy 
   - python310-serverfiles 
   - python310-setproctitle 
-  - python310-setupmeta 
   - python310-setuptools-declarative-requirements 
   - python310-setuptools-git 
   - python310-setuptools-rust 
@@ -27812,7 +27811,6 @@ unsorted:
   - python38-serverfiles 
   - python38-service_identity 
   - python38-setproctitle 
-  - python38-setupmeta 
   - python38-setuptools 
   - python38-setuptools-declarative-requirements 
   - python38-setuptools-git 
@@ -31126,7 +31124,6 @@ unsorted:
   - python39-serverfiles 
   - python39-service_identity 
   - python39-setproctitle 
-  - python39-setupmeta 
   - python39-setuptools 
   - python39-setuptools-declarative-requirements 
   - python39-setuptools-git 

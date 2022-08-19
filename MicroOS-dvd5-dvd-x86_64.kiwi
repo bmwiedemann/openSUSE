@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20220817" schemaversion="4.1">
+<image name="OBS__MicroOS___20220818" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220817</productvar>
+      <productvar name="VERSION">20220818</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220817,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220818,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220817/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220818/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -244,6 +244,7 @@
       <repopackage name="dbus-1-x11"/>
       <repopackage name="dconf"/>
       <repopackage name="debianutils" arch="x86_64"/>
+      <repopackage name="debuginfod-profile" arch="x86_64"/>
       <repopackage name="dejavu-fonts"/>
       <repopackage name="deltarpm" arch="x86_64"/>
       <repopackage name="desktop-data-openSUSE" arch="x86_64"/>
