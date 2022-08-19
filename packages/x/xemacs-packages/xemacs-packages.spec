@@ -18,7 +18,6 @@
 
 Name:           xemacs-packages
 #!BuildIgnore:  xemacs-packages-info xemacs-packages-el xemacs-packages
-BuildRequires:  canna-devel
 BuildRequires:  compface
 BuildRequires:  db-devel
 %if 0%{?suse_version} >= 1110
@@ -174,6 +173,7 @@ chmod -R u+rw,g+r,o+r .
 %patch34  -p1 -b .mode-local
 # PATCH-FIX-SUSE boo#857207 -- xemacs tramp ssh completion returns "Wrong type argument: symbolp, ..."
 %patch35  -p1 -b .tramp
+rm -vf xemacs-packages/tramp/texi/tramp.texi.tramp
 chmod 755 %{S:3}
 %{S:3}
 

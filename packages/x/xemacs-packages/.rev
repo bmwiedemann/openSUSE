@@ -319,4 +319,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>954307</requestid>
   </revision>
+  <revision rev="44" vrev="12">
+    <srcmd5>9f04063b4f9b7f065ce836782aa19fef</srcmd5>
+    <version>20130822</version>
+    <time>1660924575</time>
+    <user>dimstar_suse</user>
+    <comment>- tramp.texi: Try to avoid old macros nor know by modern texinfo
+
+- Drop canna support: canna has not been maintained for a long time
+  and sec issues are not being addressed (bsc#1199280).</comment>
+    <requestid>998071</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 18 14:32:46 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- tramp.texi: Try to avoid old macros nor know by modern texinfo
+
+-------------------------------------------------------------------
+Thu Aug 18 12:44:16 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Drop canna support: canna has not been maintained for a long time
+  and sec issues are not being addressed (bsc#1199280). 
+
+-------------------------------------------------------------------
 Mon Feb  7 09:13:00 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Require glibc-locale at build time as otherwise iconv fails
