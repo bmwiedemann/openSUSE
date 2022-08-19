@@ -1211,4 +1211,12 @@ before the switch to 4.8 and the KR47 repo. (forwarded request 91020 from christ
     <comment>KDE Gear 22.04.3</comment>
     <requestid>987717</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>54c771592df8a761ffca66146eec74c0</srcmd5>
+    <version>22.08.0</version>
+    <time>1660924367</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.08.0 (forwarded request 997667 from cgiboudeaux)</comment>
+    <requestid>997953</requestid>
+  </revision>
 </revisionlist>
