@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 18 09:04:40 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.24.1:
+  * automoc: avoid compiler warnings in linker-warning-silencing code
+  * FindThreads: Skip check for -pthread flag when targeting the MSVC ABI
+  * IPO: Do not use -flto=auto with GCC 10.x on Windows
+  * export: Restore exclusion of private shared library dependencies from checks
+  * FindVulkan: Restore tolerance of unknown FATAL_ERROR component
+  * Help: Add 3.24 release note about FindVulkan component enforcement
+  * TI compiler: Add support for COMPILE_WARNING_AS_ERROR target property
+  * Help: List compiler IDs supported by COMPILE_WARNING_AS_ERROR
+  * Help: A missing cross-reference to --compile-no-warning-as-error
+
+-------------------------------------------------------------------
 Thu Aug  4 21:20:12 UTC 2022 - Christoph G <foss@grueninger.de>
 
 - Update to 3.24.0
