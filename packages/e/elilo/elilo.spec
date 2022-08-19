@@ -80,6 +80,8 @@ The EFI Linux boot loader.
 # work around b0rked 'Str'-ops in newer 'gnu-efi' ... :-(
 find . -type f -name '*.[ch]' -print0 | xargs -0rn 1 \
   perl -pi -e 's{Str(Chr|n(X?Cpy|Cat))}{eliloStr$1}g'
+# facilitate UsrMerge (bsc#1191059) below
+%define sbin /usr/sbin
 
 %build
 perl -pi -e 's{/usr/lib}{%{_libdir}}' Make.defaults
@@ -94,6 +96,8 @@ make OPTIMFLAGS="$OPTFLAGS"
 perl -pe 's{\@EDITION\@}{%{version}};
 	  s{\@LIBDIR\@}{%{_libdir}};
 	  s{\@ARCH\@}{%{_target_cpu}};
+	  s{/s(bin/get_kernel)}{/usr/$1};
+	  s{/sbin/(elilo)}{%{sbin}/$1};
 	' < %{SOURCE1} > elilo.pl &&
 chmod 555 elilo.pl && touch -r %{SOURCE1} elilo.pl
 ! grep -F '%%{version}' elilo.pl
@@ -102,10 +106,10 @@ pod2man -s 8 -c "System Boot" -r "SuSE Linux" \
 touch -r elilo.pl elilo.8
 
 %install
-install -d $RPM_BUILD_ROOT%{_libdir}/efi $RPM_BUILD_ROOT/sbin
+install -d $RPM_BUILD_ROOT%{_libdir}/efi $RPM_BUILD_ROOT%{sbin}
 install -p -m 444 elilo.efi $RPM_BUILD_ROOT%{_libdir}/efi
-install tools/eliloalt $RPM_BUILD_ROOT/sbin
-install -p -m 555 elilo.pl $RPM_BUILD_ROOT/sbin/elilo
+install tools/eliloalt $RPM_BUILD_ROOT%{sbin}
+install -p -m 555 elilo.pl $RPM_BUILD_ROOT%{sbin}/elilo
 install -D -p -m 644 elilo.8 $RPM_BUILD_ROOT/usr/share/man/man8/elilo.8
 install -D -p -m 644 %{SOURCE2} $RPM_BUILD_ROOT/usr/share/man/man8/eliloalt.8
 install -D -p -m 644 %{SOURCE3} $RPM_BUILD_ROOT/usr/share/man/man5/elilo.conf.5
@@ -116,7 +120,7 @@ diff -q docs/README.txt docs/elilo.txt && rm -f docs/README.txt
 if [ -r /etc/sysconfig/bootloader ]; then
   . /etc/sysconfig/bootloader
   if [ "$LOADER_TYPE" = "elilo" -a -r /etc/elilo.conf ]; then
-    /sbin/elilo -v || :
+    %{sbin}/elilo -v || :
   fi
 fi
 
@@ -124,8 +128,8 @@ fi
 %defattr(-, root, root)
 %doc README README.* TODO docs/*.txt RELEASE-NOTES
 %{_libdir}/efi
-/sbin/elilo
-/sbin/eliloalt
+%{sbin}/elilo
+%{sbin}/eliloalt
 /usr/share/man/man5/*
 /usr/share/man/man8/*
 

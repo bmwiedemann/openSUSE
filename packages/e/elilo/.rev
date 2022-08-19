@@ -218,4 +218,13 @@
     <comment></comment>
     <requestid>873117</requestid>
   </revision>
+  <revision rev="33" vrev="8">
+    <srcmd5>9db89e4525d675c14ccef70265ed497d</srcmd5>
+    <version>3.16</version>
+    <time>1660924416</time>
+    <user>dimstar_suse</user>
+    <comment>Move to '/usr/sbin'.  (bsc#1191059)
+</comment>
+    <requestid>998003</requestid>
+  </revision>
 </revisionlist>
