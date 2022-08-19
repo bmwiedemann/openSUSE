@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kmail
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
@@ -167,8 +167,6 @@ KTNEF is a viewer for email attachments in the TNEF format.
 %license LICENSES/*
 %{_kf5_debugdir}/kmail.categories
 %{_kf5_debugdir}/kmail.renamecategories
-%dir %{_kf5_plugindir}/akonadi
-%dir %{_kf5_plugindir}/akonadi/config
 %doc %lang(en) %{_kf5_htmldir}/en/akonadi_archivemail_agent/
 %doc %lang(en) %{_kf5_htmldir}/en/akonadi_followupreminder_agent/
 %doc %lang(en) %{_kf5_htmldir}/en/akonadi_sendlater_agent/
@@ -191,24 +189,24 @@ KTNEF is a viewer for email attachments in the TNEF format.
 %{_kf5_libdir}/libkmailprivate.so.*
 %{_kf5_notifydir}/akonadi_*_agent.notifyrc
 %{_kf5_notifydir}/kmail2.notifyrc
-%dir %{_kf5_plugindir}/pim
-%dir %{_kf5_plugindir}/pim/kcms
-%dir %{_kf5_plugindir}/pim/kcms/kmail
-%dir %{_kf5_plugindir}/pim/kcms/summary
-%{_kf5_plugindir}/pim/kcms/kmail/kcm_kmail_accounts.so
-%{_kf5_plugindir}/pim/kcms/kmail/kcm_kmail_appearance.so
-%{_kf5_plugindir}/pim/kcms/kmail/kcm_kmail_composer.so
-%{_kf5_plugindir}/pim/kcms/kmail/kcm_kmail_misc.so
-%{_kf5_plugindir}/pim/kcms/kmail/kcm_kmail_plugins.so
-%{_kf5_plugindir}/pim/kcms/kmail/kcm_kmail_security.so
-%{_kf5_plugindir}/pim/kcms/summary/kcmkmailsummary.so
-%{_kf5_plugindir}/pim/kcms/summary/kcmkontactsummary.so
+%dir %{_kf5_plugindir}/pim5
+%dir %{_kf5_plugindir}/pim5/akonadi/
+%dir %{_kf5_plugindir}/pim5/kcms/
+%dir %{_kf5_plugindir}/pim5/kontact/
+%dir %{_kf5_plugindir}/pim5/kcms/kmail
+%dir %{_kf5_plugindir}/pim5/kcms/summary
+%{_kf5_plugindir}/pim5/kcms/kmail/kcm_kmail_accounts.so
+%{_kf5_plugindir}/pim5/kcms/kmail/kcm_kmail_appearance.so
+%{_kf5_plugindir}/pim5/kcms/kmail/kcm_kmail_composer.so
+%{_kf5_plugindir}/pim5/kcms/kmail/kcm_kmail_misc.so
+%{_kf5_plugindir}/pim5/kcms/kmail/kcm_kmail_plugins.so
+%{_kf5_plugindir}/pim5/kcms/kmail/kcm_kmail_security.so
+%{_kf5_plugindir}/pim5/kcms/summary/kcmkmailsummary.so
+%{_kf5_plugindir}/pim5/kcms/summary/kcmkontactsummary.so
 %{_kf5_plugindir}/kmailpart.so
-%dir %{_kf5_plugindir}/kontact5/
-%{_kf5_plugindir}/kontact5/kontact_kmailplugin.so
-%{_kf5_plugindir}/kontact5/kontact_summaryplugin.so
-%{_kf5_plugindir}/akonadi/config/archivemailagentconfig.so
-%{_kf5_plugindir}/akonadi/config/followupreminderagentconfig.so
+%{_kf5_plugindir}/pim5/kontact/kontact_kmailplugin.so
+%{_kf5_plugindir}/pim5/kontact/kontact_summaryplugin.so
+%{_kf5_plugindir}/pim5/akonadi/config/
 %{_kf5_sharedir}/akonadi/agents/
 %dir %{_kf5_sharedir}/dbus-1/services/
 %{_kf5_sharedir}/dbus-1/services/org.kde.kmail.service
