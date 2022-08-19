@@ -17,15 +17,14 @@
 
 
 Name:           fontawesome-fonts
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
 Summary:        Iconic font set
 License:        OFL-1.1
 Group:          System/X11/Fonts
-URL:            http://fontawesome.io/
+URL:            https://fontawesome.com/
 Source0:        https://github.com/FortAwesome/Font-Awesome/releases/download/%{version}/fontawesome-free-%{version}-desktop.zip
 Source1:        https://github.com/FortAwesome/Font-Awesome/releases/download/%{version}/fontawesome-free-%{version}-web.zip
-Source2:        LICENSE.txt
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -49,7 +48,6 @@ Web files (css, less, scss, etc) for font-awesome.
 %prep
 %setup -q -c
 %setup -q -T -D -a 1
-cp -p %{SOURCE2} .
 
 %build
 
@@ -64,11 +62,12 @@ cp -pr */css */less */scss %{buildroot}%{_datadir}/fontawesome-web/
 %reconfigure_fonts_scriptlets
 
 %files
-%license LICENSE.txt
+%license fontawesome-free-%{version}-desktop/LICENSE.txt
 %dir %{_ttfontsdir}/
 %{_ttfontsdir}/*
 
 %files web
+%license fontawesome-free-%{version}-web/LICENSE.txt
 %{_datadir}/fontawesome-web/
 
 %changelog
