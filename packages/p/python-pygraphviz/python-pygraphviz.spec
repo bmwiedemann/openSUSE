@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygraphviz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,24 @@
 #
 
 
-%bcond_without tests
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 %global skip_python36 1
+%global skip_python37 1
+%bcond_without tests
 Name:           python-pygraphviz
-Version:        1.7
+Version:        1.9
 Release:        0
-URL:            https://pygraphviz.github.io/
 Summary:        Python interface to Graphviz
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://pygraphviz.github.io/
 Source:         https://files.pythonhosted.org/packages/source/p/pygraphviz/pygraphviz-%{version}.zip
 # PATCH-FIX-UPSTREAM docdir.patch
 Patch0:         docdir.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{python_module devel}
+# Needed even without tests
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  graphviz-devel >= 2.42
@@ -41,8 +42,6 @@ BuildRequires:  pkgconf-pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
 BuildRequires:  unzip
-# Needed even without tests
-BuildRequires:  %{python_module pytest}
 Requires:       graphviz >= 2.42
 %python_subpackages
 

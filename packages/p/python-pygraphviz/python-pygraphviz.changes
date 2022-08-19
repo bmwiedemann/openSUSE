@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug 14 15:16:00 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 1.9:
+  * Drop Python 3.7 support
+  * Add Python 3.10 support
+  * Add osage and patchwork to progs list
+  * Add IPython rich display hook to AGraph class
+  * Add contributor guide
+  * Fixed directed nature of AGraph.copy()
+  * Minor documentation and code fixes
+
+-------------------------------------------------------------------
 Tue Oct 19 19:58:44 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.7:
