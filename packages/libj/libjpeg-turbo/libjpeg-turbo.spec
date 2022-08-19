@@ -27,7 +27,7 @@
 %define tmicro   0
 %define tlibver  %{tmajor}.%{tminor}.%{tmicro}
 Name:           libjpeg-turbo
-Version:        2.1.3
+Version:        2.1.4
 Release:        0
 Summary:        A SIMD-accelerated library for manipulating JPEG image files
 License:        BSD-3-Clause

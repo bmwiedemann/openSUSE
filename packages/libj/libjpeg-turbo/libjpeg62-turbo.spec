@@ -20,7 +20,7 @@
 %define minor   3
 %define micro   0
 %define libver  %{major}.%{minor}.%{micro}
-%define srcver  2.1.3
+%define srcver  2.1.4
 Name:           libjpeg62-turbo
 Version:        %{srcver}
 Release:        0
