@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           itinerary
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Itinerary and boarding pass management application
 License:        LGPL-2.0-or-later
@@ -45,6 +45,7 @@ BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5QQC2DeskopStyle)
 BuildRequires:  cmake(KF5Solid)
+BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KOSMIndoorMap)
 BuildRequires:  cmake(KPimItinerary)
 BuildRequires:  cmake(KPimPkPass)
@@ -119,5 +120,6 @@ install -m0644 -D %{_kf5_iconsdir}/breeze/actions/22/map-globe.svg \
 %{_kf5_libdir}/libSolidExtras.so
 %{_kf5_notifydir}/itinerary.notifyrc
 %{_kf5_qmldir}/org/kde/solidextras/
+%{_kf5_qmldir}/org/kde/itinerary/
 
 %changelog
