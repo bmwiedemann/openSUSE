@@ -1,7 +1,7 @@
 #
 # spec file for package kimagemapeditor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kimagemapeditor
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        HTML Image Map Editor
 License:        GPL-2.0-or-later
@@ -48,6 +48,8 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 BuildRequires:  cmake(Qt5Widgets)
+# Only build on archs where Qt5WebEngine is available
+ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 
 %description
 A tool to edit image maps of HTML files
