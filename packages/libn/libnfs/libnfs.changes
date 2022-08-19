@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 17 19:03:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.2:
+  * Various small multithreading fixes
+  * Add opaque pointer to service_proc to make it easier to build server apps.
+  * BSD compile fix
+  * OpenBSD support
+  * fix double free in nfs3_pread_mcb() 
+
+-------------------------------------------------------------------
 Mon May  9 08:00:48 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 5.0.1:
