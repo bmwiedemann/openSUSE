@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           falkon
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Modern web browser
 License:        GPL-3.0-or-later
@@ -105,8 +105,10 @@ such as storing passwords in KWallet.
 # openSUSE icons.
 cp -f %{SOURCE3} %{SOURCE4} src/lib/data/icons/sites/
 
+%if %{with released}
 # The plugins are not installed if PySide is not present at build time.
 find po/ -name "falkon_helloqml.po" -o -name "falkon_hellopython.po" -exec rm {} \;
+%endif
 
 # Decrease the minimum CMake version for 15.3.
 # There's no technical reason for requiring CMake 3.18.
