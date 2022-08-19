@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 11 15:10:05 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.037:
+  * Add configuration for redirect for projects (#293)
+
+-------------------------------------------------------------------
+Fri Aug 05 12:14:42 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.036:
+ * Fix mirrors report when missing folders (#288)
+ * Tweak systemd files (#291)
+ * Rework mirrors report (#290)
+ * Rescan if no country hit (#292)
+
+-------------------------------------------------------------------
 Thu Jun 23 04:55:11 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.035:
