@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 18 12:57:27 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.0+git2:
+  * Let selinux-microos-relabel decide whether a relabel is necessary (bsc#1202437)
+
+-------------------------------------------------------------------
 Tue Aug 02 11:32:23 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.0+git1:
