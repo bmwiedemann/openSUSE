@@ -1,7 +1,7 @@
-Index: boost_1_74_0/tools/build/src/tools/python.jam
+Index: boost_1_80_0/tools/build/src/tools/python.jam
 ===================================================================
---- boost_1_74_0.orig/tools/build/src/tools/python.jam
-+++ boost_1_74_0/tools/build/src/tools/python.jam
+--- boost_1_80_0.orig/tools/build/src/tools/python.jam
++++ boost_1_80_0/tools/build/src/tools/python.jam
 @@ -102,7 +102,7 @@ py3-version = ;
  #   using python : 2.3 : /usr/local/bin/python ;
  #
@@ -29,7 +29,7 @@ Index: boost_1_74_0/tools/build/src/tools/python.jam
  {
      exec-prefix ?= $(prefix) ;
  
-@@ -671,7 +671,7 @@ rule version-suffix ( version )
+@@ -677,7 +677,7 @@ rule version-suffix ( version )
  
  # Declare a target to represent Python's library.
  #
@@ -38,7 +38,7 @@ Index: boost_1_74_0/tools/build/src/tools/python.jam
  {
      # Compute the representation of Python version in the name of Python's
      # library file.
-@@ -695,13 +695,13 @@ local rule declare-libpython-target ( ve
+@@ -701,13 +701,13 @@ local rule declare-libpython-target ( ve
      }
  
      # Declare it.
@@ -54,7 +54,7 @@ Index: boost_1_74_0/tools/build/src/tools/python.jam
  {
      local prefix ;
      local exec-prefix ;
-@@ -717,6 +717,7 @@ local rule configure ( version ? : cmd-o
+@@ -723,6 +723,7 @@ local rule configure ( version ? : cmd-o
          extension-suffix ?= _d ;
      }
      extension-suffix ?= "" ;
@@ -62,7 +62,7 @@ Index: boost_1_74_0/tools/build/src/tools/python.jam
  
      local cmds-to-try ;
  
-@@ -792,7 +793,7 @@ local rule configure ( version ? : cmd-o
+@@ -798,7 +799,7 @@ local rule configure ( version ? : cmd-o
                      exec-prefix = $(sys.exec_prefix) ;
  
                      compute-default-paths $(target-os) : $(sys.version) :
@@ -71,7 +71,7 @@ Index: boost_1_74_0/tools/build/src/tools/python.jam
  
                      version = $(sys.version) ;
                      interpreter-cmd ?= $(cmd) ;
-@@ -973,7 +974,7 @@ local rule configure ( version ? : cmd-o
+@@ -979,7 +980,7 @@ local rule configure ( version ? : cmd-o
      }
      else
      {

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 17 21:05:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.80.0:
+  * no new libraries
+  * for details on all the long list of changes, see
+    https://www.boost.org/users/history/version_1_80_0.html
+- drop 0001-json-array-erase-relocate.patch
+  boost-mp-locale-fix.patch: upstream
+
+-------------------------------------------------------------------
 Sun May 29 12:51:47 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix failing conversion of cpp_dec_float to double, depending on

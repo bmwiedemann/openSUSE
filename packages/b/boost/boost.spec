@@ -19,9 +19,9 @@
 #
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define ver 1.79.0
-%define _ver 1_79_0
-%define package_version 1_79_0
+%define ver 1.80.0
+%define _ver 1_80_0
+%define package_version 1_80_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -235,9 +235,9 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 
 Name:           %{base_name}
-Version:        1.79.0
+Version:        1.80.0
 Release:        0
-%define library_version 1_79_0
+%define library_version 1_80_0
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
@@ -265,8 +265,6 @@ Patch18:        dynamic_linking.patch
 Patch20:        python_library_name.patch
 Patch21:        boost-remove-cmakedir.patch
 Patch22:        boost-process.patch
-Patch23:        https://www.boost.org/patches/1_79_0/0001-json-array-erase-relocate.patch
-Patch24:        boost-mp-locale-fix.patch
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
 BuildRequires:  libbz2-devel
@@ -1260,8 +1258,6 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch20 -p1
 %patch21 -p1
 %patch22 -p2
-%patch23 -p1
-%patch24 -p1
 
 %build
 find . -type f -exec chmod u+w {} +

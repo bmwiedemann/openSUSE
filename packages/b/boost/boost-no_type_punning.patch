@@ -75,7 +75,7 @@ Index: libs/python/src/object/class.cpp
 ===================================================================
 --- libs/python/src/object/class.cpp.orig
 +++ libs/python/src/object/class.cpp
-@@ -616,9 +616,11 @@ namespace objects
+@@ -612,9 +612,11 @@ namespace objects
    void class_base::add_property(
      char const* name, object const& fget, char const* docstr)
    {
@@ -88,7 +88,7 @@ Index: libs/python/src/object/class.cpp
        
        this->setattr(name, property);
    }
-@@ -626,9 +628,11 @@ namespace objects
+@@ -622,9 +624,11 @@ namespace objects
    void class_base::add_property(
      char const* name, object const& fget, object const& fset, char const* docstr)
    {

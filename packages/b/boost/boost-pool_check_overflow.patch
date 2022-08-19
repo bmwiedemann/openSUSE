@@ -4,8 +4,8 @@ Check that request size doesn't overflow.
 
 Index: boost/pool/pool.hpp
 ===================================================================
---- boost/pool/pool.hpp.orig	2007-11-25 19:07:19.000000000 +0100
-+++ boost/pool/pool.hpp	2012-06-22 13:03:49.422438613 +0200
+--- boost/pool/pool.hpp.orig
++++ boost/pool/pool.hpp
 @@ -10,6 +10,8 @@
  #define BOOST_POOL_HPP
  
@@ -15,9 +15,9 @@ Index: boost/pool/pool.hpp
  
  // std::less, std::less_equal, std::greater
  #include <functional>
-@@ -793,6 +793,9 @@ void * pool<UserAllocator>::ordered_mall
-   //! \returns Address of chunk n if allocated ok.
-   //! \returns 0 if not enough memory for n chunks.
+@@ -806,6 +808,9 @@ void * pool<UserAllocator>::ordered_mall
+   if (n > max_chunks())
+     return 0;
  
 +  if (requested_size && (n > (std::numeric_limits<size_type>::max)() / requested_size))
 +    return 0;
@@ -25,7 +25,7 @@ Index: boost/pool/pool.hpp
    const size_type partition_size = alloc_size();
    const size_type total_req_size = n * requested_size;
    const size_type num_chunks = total_req_size / partition_size +
-@@ -975,6 +979,8 @@
+@@ -988,6 +993,8 @@ public:
    {
       if(max_alloc_size && (n > max_alloc_size))
          return 0;
