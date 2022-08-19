@@ -1,7 +1,7 @@
 #
 # spec file for package ART
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,9 +29,9 @@ BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  glibmm2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  glibmm2-devel
 BuildRequires:  libraw-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(exiv2)
@@ -80,23 +80,16 @@ A free, open-source, cross-platform raw image processing program. ART is a deriv
 
 %build
 # Upstream recommended '-O3' optimisation, do not change
-# Adding -fno-tree-loop-vectorize due to https://github.com/Beep6581/RawTherapee/issues/5749
-export CFLAGS="%(echo %{optflags} | sed 's/-O2/-O3/' | sed 's/-D_FORTIFY_SOURCE=2/-D_FORTIFY_SOURCE=3/') -fno-tree-loop-vectorize"
+export CFLAGS="%(echo %{optflags} | sed 's/-O2/-O3/' | sed 's/-D_FORTIFY_SOURCE=2/-D_FORTIFY_SOURCE=3/')"
 export CXXFLAGS="$CFLAGS"
 
-echo "CFLAGS: "$CFLAGS
-echo "CXXFLAGS: "$CXXFLAGS
-
 %cmake \
-    -DCMAKE_SHARED_LINKER_FLAGS="-flto=auto -Wl,--as-needed -Wl,-z,now" \
-    -DPROC_TARGET_NUMBER="2" \
+    -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now" \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
     -DCMAKE_C_FLAGS="$CFLAGS" \
     -DCACHE_NAME_SUFFIX="" \
-    -DWITH_LTO="ON" \
     -DENABLE_LIBRAW="ON"
-
-%make_build
+%cmake_build
 
 %install
 %cmake_install

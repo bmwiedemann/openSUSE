@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 18 12:59:51 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Disable LTO, since it makes the program crashing.
+
+-------------------------------------------------------------------
 Wed Aug 17 07:11:28 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add fix-ppc-cflags.patch: set mcpu=native instead of march=native
