@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 17 19:33:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.5:
+  PHP
+  * Added getContainingOneof and getRealContainingOneof to descriptor.
+  * fix PHP readonly legacy files for nested messages
+  Python
+  * Fixed comparison of maps in Python.
+
+-------------------------------------------------------------------
 Thu Aug  4 20:50:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add 10355.patch to fix soversioning
