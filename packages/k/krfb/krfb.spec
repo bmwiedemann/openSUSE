@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           krfb
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Screen sharing using the VNC/RFB protocol
 License:        GPL-2.0-or-later
@@ -103,8 +103,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_iconsdir}/hicolor/*/apps/krfb.*
 %{_kf5_libdir}/libkrfbprivate.so*
 %{_kf5_plugindir}/krfb/
-%{_kf5_servicetypesdir}/krfb-events.desktop
-%{_kf5_servicetypesdir}/krfb-framebuffer*.desktop
 %{_kf5_sharedir}/krfb/
 
 %if %{with released}
