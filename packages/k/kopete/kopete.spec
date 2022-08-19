@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kopete
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Instant Messenger
 License:        GPL-2.0-or-later
@@ -59,6 +59,7 @@ BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5KHtml)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Libkleo)
 BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5Parts)
