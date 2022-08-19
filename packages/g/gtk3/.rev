@@ -1569,4 +1569,12 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
   to the typelib package for SLE and Leap (boo#1200614). (forwarded request 986566 from yfjiang)</comment>
     <requestid>986587</requestid>
   </revision>
+  <revision rev="178" vrev="4">
+    <srcmd5>6ba8fc52ca7b92cf12a223e8e5637ba9</srcmd5>
+    <version>3.24.34</version>
+    <time>1660924404</time>
+    <user>dimstar_suse</user>
+    <comment>- avoid bashism in baselibs postscript (bsc#1195391) (forwarded request 995216 from dirkmueller)</comment>
+    <requestid>997732</requestid>
+  </revision>
 </revisionlist>

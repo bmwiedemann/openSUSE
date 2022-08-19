@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 15 19:13:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid bashism in baselibs postscript (bsc#1195391) 
+
+-------------------------------------------------------------------
 Mon Jul  4 08:11:44 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
 
 - Add compatible dependency "python3-gobject-Gdk if python3-gobject"
