@@ -1307,4 +1307,12 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
     extra efort. The libgtk-2_0-0 package is the only consumer. (forwarded request 926890 from dimstar)</comment>
     <requestid>927467</requestid>
   </revision>
+  <revision rev="179" vrev="3">
+    <srcmd5>25cf909b82afc7b48f326cf09ae2c103</srcmd5>
+    <version>2.24.33</version>
+    <time>1660924408</time>
+    <user>dimstar_suse</user>
+    <comment>- avoid bashism in baselibs postscript (bsc#1195391) (forwarded request 995217 from dirkmueller)</comment>
+    <requestid>997733</requestid>
+  </revision>
 </revisionlist>
