@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Aug 18 13:23:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.2.0
+  * Add workaround for mode argument in QTextCursor.movePosition
+    (PySide6) by @rear1019 in #346
+  * Add missing imports and modules by @DaelonSuzuka in #344
+  * Restore WEBENGINE constant in QtWebEngineWidgets by @ccordoba12
+    in #350
+  * Add note to readme about use with Pyright by @CAM-Gerlach in
+    #353
+  * Add wrapper around sip/shiboken isdeleted/isvalid (compat.py)
+    by @zjp in #354
+  * Fix PyQt6 typing import for Qt by @tlambert03 in #358
+  * Add initial Methods, helpers and QtPy namespace specifics
+    section to the README by @dalthviz in #357
+- Revert last change: Removing Python2 from build requirements of
+  libqt5-qtwebengine and crippling the testsuite of a package not
+  even in ring1 are orthogonal to each other.
+- Enable PySide6 tests: Segfaults are gone.
+
+-------------------------------------------------------------------
+Mon Aug  8 12:12:04 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Disable Qt5 bindings as they require python2 (for chromium within
+  qtwebengine) and we want to get rid of it in ring1
+
+-------------------------------------------------------------------
 Fri Jun  3 19:09:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.1.0

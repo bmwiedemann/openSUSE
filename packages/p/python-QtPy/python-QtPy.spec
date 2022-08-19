@@ -29,16 +29,15 @@ BuildArch:      noarch
 %bcond_without pyqt6
 %ifnarch %power64 s390x
 %bcond_without pyside2
+%bcond_without pyside6
 %else
 %bcond_with pyside2
-%endif
-# unfortunately we get a segfault in the other backends when pyside6 is installed at the same time (!?)
-# test locally: osc build -M test --with pyside6 --without pyside2 --without pyqt5 --without pyqt6 --define "pythons python3"
 %bcond_with pyside6
+%endif
 
 %define skip_python2 1
 Name:           python-QtPy%{psuffix}
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Abstraction layer on top of Qt bindings
 License:        MIT
@@ -109,7 +108,7 @@ PyQt6 or PySide6.
 sed -i 's/\r$//' LICENSE.txt *.md
 # qtcharts is present in our PyQt
 sed -i '/skipif.*not PYSIDE2/ d' qtpy/tests/test_qtcharts.py
-sed -i '/addopts/ s/--cov=.*//' pytest.ini
+sed -i '/addopts/ {s/--cov=.*//; s/--color=yes//}' pytest.ini
 
 %build
 %python_build
@@ -146,7 +145,7 @@ export QT_API=pyqt5 FORCE_QT_API=1
 %if %{with pyqt6}
 %ifarch %{ix86} %{arm} %{power64} s390x
 # QtWebEngine 6.3.0 ceased support for 32-bit
-# No QtWebengine (PyQt5 or PyqQt6 on ppc and s390x
+# No QtWebengine on ppc and s390x
 donttest_pyqt6=" or test_qtwebengine"
 %endif
 export QT_API=pyqt6 FORCE_QT_API=1
