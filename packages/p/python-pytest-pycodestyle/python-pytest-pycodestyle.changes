@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 16 14:09:38 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- update to version 2.3.0
+  * Drop support of Python 3.6
+  * Require pytest v7.0 or later
+  * Replace fspath argument for Node constructors with pathlib.Path
+
+-------------------------------------------------------------------
 Tue Aug 25 10:46:14 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 2.2.0
