@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Sat Jul  9 14:27:53 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.4.1:
+  * Greatly improved performance on PyPy, and other environments that
+    need the pure Python trace function. Thanks, Carl Friedrich
+    Bolz-Tereick (pull 1381 and pull 1388). Slightly improved
+    performance when using the C trace function, as most environments
+    do. Closes issue 1339.
+  * The conditions for using tomllib from the standard library have
+    been made more precise, so that 3.11 alphas will continue to
+    work. Closes issue 1390.
+
+- changes from version 6.4:
+  * A new setting, [run] sigterm, controls whether a SIGTERM signal
+    handler is used. In 6.3, the signal handler was always installed,
+    to capture data at unusual process ends. Unfortunately, this
+    introduced other problems (see issue 1310). Now the signal handler
+    is only used if you opt-in by setting [run] sigterm = true.
+  * Small changes to the HTML report:
+    + Added links to next and previous file, and more keyboard
+      shortcuts: [ and ] for next file and previous file; u for up to
+      the index; and ? to open/close the help panel. Thanks,
+      J. M. F. Tsang.
+    + The timestamp and version are displayed at the top of the
+      report. Thanks, Ammar Askar. Closes issue 1351.
+  * A new debug option debug=sqldata adds more detail to debug=sql,
+    logging all the data being written to the database.
+  * Previously, running coverage report (or any of the reporting
+    commands) in an empty directory would create a .coverage data
+    file. Now they do not, fixing issue 1328.
+  * On Python 3.11, the [toml] extra no longer installs tomli, instead
+    using tomllib from the standard library. Thanks Shantanu.
+  * In-memory CoverageData objects now properly update(), closing
+    issue 1323.
+
+- changes from version 6.3.3 :
+  * Fix: Coverage.py now builds successfully on CPython 3.11
+    (3.11.0b1) again. Closes issue 1367. Some results for generators
+    may have changed.
+
+-------------------------------------------------------------------
+Sat Mar 12 05:47:59 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * require python-base >= 3.7
+
+- update to version 6.3.2:
+  * Fix: adapt to pypy3.9’s decorator tracing behavior. It now traces
+    function decorators like CPython 3.8: both the @-line and the
+    def-line are traced. Fixes issue 1326.
+  * Debug: added pybehave to the list of Diagnostics: coverage debug
+    and --debug options.
+  * Fix: show an intelligible error message if
+    --concurrency=multiprocessing is used without a configuration
+    file. Closes issue 1320.
+
+- changes from version 6.3.1:
+  * Fix: deadlocks could occur when terminating processes. Some of
+    these deadlocks (described in issue 1310) are now fixed.
+  * Fix: a signal handler was being set from multiple threads, causing
+    an error: “ValueError: signal only works in main thread”. This is
+    now fixed, closing issue 1312.
+  * Fix: --precision on the command-line was being ignored while
+    considering --fail-under. This is now fixed, thanks to Marcelo
+    Trylesinski.
+  * Fix: releases no longer provide 3.11.0-alpha wheels. Coverage.py
+    uses CPython internal fields which are moving during the alpha
+    phase. Fixes issue 1316.
+
+- changes from version 6.3:
+  * Feature: Added the lcov command to generate reports in LCOV
+    format. Thanks, Bradley Burns. Closes issues 587 and 626.
+  * Feature: the coverage data file can now be specified on the
+    command line with the --data-file option in any command that reads
+    or writes data. This is in addition to the existing COVERAGE_FILE
+    environment variable. Closes issue 624. Thanks, Nikita
+    Bloshchanevich.
+  * Feature: coverage measurement data will now be written when a
+    SIGTERM signal is received by the process. This includes
+    Process.terminate, and other ways to terminate a
+    process. Currently this is only on Linux and Mac; Windows is not
+    supported. Fixes issue 1307.
+  * Dropped support for Python 3.6, which reached end-of-life on
+    2021-12-23.
+  * Updated Python 3.11 support to 3.11.0a4, fixing issue 1294.
+  * Fix: the coverage data file is now created in a more robust way,
+    to avoid problems when multiple processes are trying to write data
+    at once. Fixes issues 1303 and 883.
+  * Fix: a .gitignore file will only be written into the HTML report
+    output directory if the directory is empty. This should prevent
+    certain unfortunate accidents of writing the file where it is not
+    wanted.
+  * Releases now have MacOS arm64 wheels for Apple Silicon, fixing
+    issue 1288.
+
+-------------------------------------------------------------------
 Thu Dec  9 17:16:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 6.2

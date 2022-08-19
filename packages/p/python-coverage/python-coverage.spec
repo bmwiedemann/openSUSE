@@ -1,7 +1,7 @@
 #
 # spec file for package python-coverage
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-coverage
-Version:        6.2
+Version:        6.4.1
 Release:        0
 Summary:        Code coverage measurement for Python
 License:        Apache-2.0
@@ -27,6 +27,14 @@ URL:            https://github.com/nedbat/coveragepy
 Source:         https://files.pythonhosted.org/packages/source/c/coverage/coverage-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python
+Requires:       python-base >= 3.7
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+# coverage[toml]
+Recommends:     python-tomli
 # SECTION test requirements
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module hypothesis >= 4.57}
@@ -34,15 +42,8 @@ BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module tomli}
 # for database (sqlite3) support
-BuildRequires:  %pythons
+BuildRequires:  %{pythons}
 # /SECTION
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-Requires:       python
-# coverage[toml]
-Recommends:     python-tomli
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 %python_subpackages
 
 %description
