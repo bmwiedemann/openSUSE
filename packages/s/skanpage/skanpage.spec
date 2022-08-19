@@ -20,7 +20,7 @@
 %define kf5_version 5.87
 %bcond_without released
 Name:           skanpage
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Multi-Page Scanning Application
 License:        GPL-2.0-or-later
@@ -38,7 +38,7 @@ BuildRequires:  cmake(KF5Crash) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5Kirigami2) >= %{kf5_version}
 BuildRequires:  cmake(KF5Purpose) >= %{kf5_version}
-BuildRequires:  cmake(KF5Sane) >= 21.12.0
+BuildRequires:  cmake(KSaneCore)
 BuildRequires:  cmake(Qt5Concurrent) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
 BuildRequires:  cmake(Qt5PrintSupport) >= %{qt5_version}
@@ -46,6 +46,11 @@ BuildRequires:  cmake(Qt5Qml) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}
 BuildRequires:  cmake(Qt5QuickControls2) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
+# For OCR
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+BuildRequires:  pkgconfig(tesseract) >= 4
+BuildRequires:  pkgconfig(lept)
+%endif
 Requires:       kirigami2 >= %{kf5_version}
 Requires:       libqt5-qtquickcontrols >= %{qt5_version}
 
