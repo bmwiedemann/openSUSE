@@ -1,7 +1,7 @@
 #
 # spec file for package gwenview5
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           gwenview5
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Image Viewer by KDE
 License:        GPL-2.0-or-later
@@ -66,6 +66,8 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  cmake(kImageAnnotator)
+BuildRequires:  cmake(kColorPicker)
 BuildRequires:  pkgconfig(libtiff-4)
 Provides:       gwenview = %{version}
 Obsoletes:      gwenview < %{version}
