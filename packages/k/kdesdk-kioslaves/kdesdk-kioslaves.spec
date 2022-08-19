@@ -17,20 +17,20 @@
 
 
 %bcond_without released
+%define rname kdesdk-kio
 Name:           kdesdk-kioslaves
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        KDE SDK KIO slaves
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(Qt5Core)
@@ -41,7 +41,7 @@ This package contains additional KIO slaves.
 %lang_package -n kio_perldoc
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{rname}-%{version}
 
 %build
 %cmake_kf5 -d build
