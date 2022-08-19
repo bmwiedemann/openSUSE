@@ -16,7 +16,7 @@ loader_type=`sed -n \\\
 %{_sysconfdir}/sysconfig/bootloader \\\
 2>/dev/null || :` \
 for bl in %{?*}; do \
-  if test "x${bl}" == "x$loader_type"; then \
+  if test "x${bl}" = "x$loader_type" ; then \
     mkdir -p %{_rundir}/update-bootloader/ \
     touch %{_rundir}/update-bootloader/refresh \
     break \
@@ -30,7 +30,7 @@ loader_type=`sed -n \\\
 %{_sysconfdir}/sysconfig/bootloader \\\
 2>/dev/null || :` \
 for bl in %{?*}; do \
-  if test "x${bl}" == "x$loader_type"; then \
+  if test "x${bl}" = "x$loader_type" ; then \
     mkdir -p %{_rundir}/update-bootloader/ \
     touch %{_rundir}/update-bootloader/reinit \
     break \
@@ -41,7 +41,7 @@ done \
 %update_bootloader_posttrans \
 if test -x /sbin/update-bootloader; then \
   if test -f %{_rundir}/update-bootloader/reinit; then \
-    rm -f %{_rundir}/update-bootloader/{reinit,refresh} \
+    rm -f -- %{_rundir}/update-bootloader/reinit %{_rundir}/update-bootloader/refresh \
     if test -x %{_libexecdir}/grub2-instdev-fixup.pl; then \
       %{_libexecdir}/grub2-instdev-fixup.pl || : \
     fi \

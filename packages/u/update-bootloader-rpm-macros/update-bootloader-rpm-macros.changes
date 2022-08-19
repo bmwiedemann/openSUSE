@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 15 19:07:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid bashisms in update-bootloader scriptlets (bsc#1195391)
+
+-------------------------------------------------------------------
 Tue Jul 13 06:16:06 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Use grub2-instdev-fixup.pl if available for correting
