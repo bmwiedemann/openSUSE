@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kalarm
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Personal Alarm Scheduler
 License:        GPL-2.0-only
@@ -78,8 +78,6 @@ BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
 Provides:       kalarm5 = %{version}
 Obsoletes:      kalarm5 < %{version}
-# It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 
 %description
 Personal alarm message, command and email scheduler by KDE.
@@ -116,7 +114,11 @@ Personal alarm message, command and email scheduler by KDE.
 %{_kf5_debugdir}/kalarm.renamecategories
 %{_kf5_iconsdir}/hicolor/*/apps/kalarm.png
 %{_kf5_kxmlguidir}/kalarm/
-%{_kf5_libdir}/libkalarmprivate.so.*
+%{_kf5_libdir}/libkalarmcalendar.so.*
+%{_kf5_libdir}/libkalarmplugin.so.*
+%dir %{_kf5_plugindir}/pim5/
+%dir %{_kf5_plugindir}/pim5/kalarm/
+%{_kf5_plugindir}/pim5/kalarm/akonadiplugin.so
 %{_kf5_notifydir}/kalarm.notifyrc
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.kalarm.rtcwake.service
 %{_kf5_sharedir}/kalarm/
