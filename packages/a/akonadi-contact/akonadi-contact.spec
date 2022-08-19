@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-contact
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        KDE PIM Libraries for Akonadi Contacts
 License:        LGPL-2.1-or-later
@@ -139,16 +139,16 @@ to develop KDE PIM applications.
 
 %files
 %license LICENSES/*
-%dir %{_kf5_plugindir}/akonadi/contacts/
+%dir %{_kf5_plugindir}/pim5
+%dir %{_kf5_plugindir}/pim5/akonadi/
+%dir %{_kf5_plugindir}/pim5/akonadi/contacts/
+%dir %{_kf5_plugindir}/pim5/kcms/
+%dir %{_kf5_plugindir}/pim5/kcms/kaddressbook
 %{_kf5_datadir}/akonadi/contact/
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
-%{_kf5_plugindir}/akonadi/contacts/plugins/
-%dir %{_kf5_plugindir}/pim/
-%dir %{_kf5_plugindir}/pim/kcms/
-%dir %{_kf5_plugindir}/pim/kcms/kaddressbook
-%{_kf5_plugindir}/pim/kcms/kaddressbook/kcm_akonadicontact_actions.so
-%{_kf5_servicesdir}/akonadicontact_actions.desktop
+%{_kf5_plugindir}/pim5/akonadi/contacts/plugins/
+%{_kf5_plugindir}/pim5/kcms/kaddressbook/kcm_akonadicontact_actions.so
 
 %files -n libKF5AkonadiContact5
 %{_kf5_libdir}/libKF5AkonadiContact.so.*
