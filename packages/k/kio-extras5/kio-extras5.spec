@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio-extras5
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
@@ -33,7 +33,7 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 # PATCH-FIX-UPSTREAM https://invent.kde.org/network/kio-extras/-/merge_requests/165
-Patch1:         0001-smb-kio_smb_browse-Check-error-code-EINVAL-to-prompt.patch
+Patch0:         0001-smb-kio_smb_browse-Check-error-code-EINVAL-to-prompt.patch
 # openEXR causes build issues for Leap 15.2 & 15.3
 %if 0%{?suse_version} > 1500
 BuildRequires:  OpenEXR-devel

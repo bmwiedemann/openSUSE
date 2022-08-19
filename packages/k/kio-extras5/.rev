@@ -912,4 +912,12 @@
     <comment></comment>
     <requestid>990493</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>48f34e68a2008b3983d3d17e7ba9b875</srcmd5>
+    <version>22.08.0</version>
+    <time>1660924318</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.08.0 (forwarded request 997667 from cgiboudeaux)</comment>
+    <requestid>997841</requestid>
+  </revision>
 </revisionlist>
