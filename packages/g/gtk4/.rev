@@ -489,4 +489,84 @@
   to the typelib package for SLE and Leap (boo#1200614). (forwarded request 986562 from yfjiang)</comment>
     <requestid>986586</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>74b091f8dabfd3fa3a8f2c386a29b678</srcmd5>
+    <version>4.7.2</version>
+    <time>1660924409</time>
+    <user>dimstar_suse</user>
+    <comment>I changed my mind a bit, with the patch, we can move this into TW, as it seems to be perfectly stable still, even if its the unstable branch.
+
+- Update to version 4.7.2:
+  + GtkTextView: Fix child positioning with gutters.
+  + GtkText: Update placeholder visibility when necessary.
+  + GtkPicture: Add a content-fit property.
+  + GtkPopover: Fix a size allocation problem with the arrow.
+  + GtkTreeView: Fix a problem with DND.
+  + GtkTreePopover: Support scrolling.
+  + GtkGridView: Fix issues with rubberband selection.
+  + GtkLabel: Add a tabs property.
+  + GtkSnapshot: Make GtkSnapshot work from bindings.
+  + GtkScrolledWindow: Scroll at a reasonable speed.
+  + GtkPaned: Avoid an infinite loop.
+  + GtkWindow: Improve generation and handling of crossing events.
+  + CSS: Fix handling of certain transform values.
+  + Media support:
+    - Add audio support to the ffmpeg backend.
+    - Avoid oom with pathological jpeg images.
+  + GDK:
+    - Fix handling of touchpad hold events.
+    - Add support for hi-resolution scroll events.
+  + X11: Fix preferred action for DND.
+  + List models:
+    - Fix items-changed emission.
+    - Add more list model tests.
+  + Demos:
+    - Add a winning sound to game demos.
+    - Make app icons work uninstalled.
+  + Updated translations.
+- Add 0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch:
+  Revert &quot;Meson: Simplify pkgconfig file generator&quot;. Temporarily
+  revert this until we figure out how to best restore private
+  requires that are needed for rpm automatic dep extraction.
+  https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4756
+  This reverts commit 802bf4199911c811938b0454a876089bafa97dba.
+- Update to version 4.7.1:
+  + GtkInscription: A new label-like widget for use in list views.
+  + GtkColorChooser: Style improvements.
+  + GtkFontChooser: Improve support for OpenType features a bit.
+  + GtkLabel: Allow selectable labels to be activated via mnemonic.
+  + GtkTextView: Implement GetCharacterExtents for accessibility.
+  + GtkStack: Fix a poblem with stack page accessibility.
+  + GtkListView:
+    - Cull listitems that are out of view.
+    - Make all our list models implement ::n-items and
+      ::item-type properties.
+  + Translations:
+    - Stop translating property nicks and blurbs.
+    - Fix extracting translations from ui files.
+  + Debugging:
+    - Support GTK_DEBUG=invert-text-dir.
+    - Allow inspecting inspectors.
+    - Replace GTK_USE_PORTAL with GDK_DEBUG=portals.
+    - Improve responsiveness of the inspector.
+  + CSS: Allow fractional letterspacing.
+  + Theme: Improve legibility of selectable labels.
+  + Demos:
+    - Improve the font features demo.
+    - Add demos for GtkInscription.
+  + Wayland:
+    - Freeze popups when hidden.
+    - Only send smooth scroll events for tablet tools.
+    - Make scaled cursor image have the right size.
+    - Fix problems with the activation protocol.
+    - Don't force the HighContrast icon theme.
+    - Support xdg_toplevel.bounds.
+  + X11: Always update the shadoe size.
+  + Windows:
+    - Improve touchpad support by using DirectManipulation.
+    - Add more directories to the builtin hicolor icon theme.
+  + Updated translations.
+- Add pkgconfig(harfbuzz) BuildRequires: new dependency. (forwarded request 997588 from iznogood)</comment>
+    <requestid>997734</requestid>
+  </revision>
 </revisionlist>

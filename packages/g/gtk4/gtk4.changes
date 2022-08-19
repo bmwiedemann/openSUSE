@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Aug 11 19:34:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.7.2:
+  + GtkTextView: Fix child positioning with gutters.
+  + GtkText: Update placeholder visibility when necessary.
+  + GtkPicture: Add a content-fit property.
+  + GtkPopover: Fix a size allocation problem with the arrow.
+  + GtkTreeView: Fix a problem with DND.
+  + GtkTreePopover: Support scrolling.
+  + GtkGridView: Fix issues with rubberband selection.
+  + GtkLabel: Add a tabs property.
+  + GtkSnapshot: Make GtkSnapshot work from bindings.
+  + GtkScrolledWindow: Scroll at a reasonable speed.
+  + GtkPaned: Avoid an infinite loop.
+  + GtkWindow: Improve generation and handling of crossing events.
+  + CSS: Fix handling of certain transform values.
+  + Media support:
+    - Add audio support to the ffmpeg backend.
+    - Avoid oom with pathological jpeg images.
+  + GDK:
+    - Fix handling of touchpad hold events.
+    - Add support for hi-resolution scroll events.
+  + X11: Fix preferred action for DND.
+  + List models:
+    - Fix items-changed emission.
+    - Add more list model tests.
+  + Demos:
+    - Add a winning sound to game demos.
+    - Make app icons work uninstalled.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug  6 11:56:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch:
+  Revert "Meson: Simplify pkgconfig file generator". Temporarily
+  revert this until we figure out how to best restore private
+  requires that are needed for rpm automatic dep extraction.
+  https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4756
+  This reverts commit 802bf4199911c811938b0454a876089bafa97dba.
+
+-------------------------------------------------------------------
+Wed Aug  3 06:10:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.7.1:
+  + GtkInscription: A new label-like widget for use in list views.
+  + GtkColorChooser: Style improvements.
+  + GtkFontChooser: Improve support for OpenType features a bit.
+  + GtkLabel: Allow selectable labels to be activated via mnemonic.
+  + GtkTextView: Implement GetCharacterExtents for accessibility.
+  + GtkStack: Fix a poblem with stack page accessibility.
+  + GtkListView:
+    - Cull listitems that are out of view.
+    - Make all our list models implement ::n-items and
+      ::item-type properties.
+  + Translations:
+    - Stop translating property nicks and blurbs.
+    - Fix extracting translations from ui files.
+  + Debugging:
+    - Support GTK_DEBUG=invert-text-dir.
+    - Allow inspecting inspectors.
+    - Replace GTK_USE_PORTAL with GDK_DEBUG=portals.
+    - Improve responsiveness of the inspector.
+  + CSS: Allow fractional letterspacing.
+  + Theme: Improve legibility of selectable labels.
+  + Demos:
+    - Improve the font features demo.
+    - Add demos for GtkInscription.
+  + Wayland:
+    - Freeze popups when hidden.
+    - Only send smooth scroll events for tablet tools.
+    - Make scaled cursor image have the right size.
+    - Fix problems with the activation protocol.
+    - Don't force the HighContrast icon theme.
+    - Support xdg_toplevel.bounds.
+  + X11: Always update the shadoe size.
+  + Windows:
+    - Improve touchpad support by using DirectManipulation.
+    - Add more directories to the builtin hicolor icon theme.
+  + Updated translations.
+- Add pkgconfig(harfbuzz) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Mon Jul  4 08:11:44 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
 
 - Add compatible dependency "python3-gobject-Gdk if python3-gobject"

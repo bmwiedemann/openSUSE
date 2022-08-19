@@ -22,7 +22,7 @@
 %define _name gtk
 
 Name:           gtk4
-Version:        4.7.0
+Version:        4.7.2
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
@@ -34,6 +34,11 @@ Source2:        settings.ini
 Source3:        macros.gtk4
 Source99:       gtk4-rpmlintrc
 
+# Temporarily revert this until we figure out how to best restore
+# private requires that are needed for rpm automatic dep extraction.
+# https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4756
+# PATCH-FIX-OPENSUSE 0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch -- Revert "Meson: Simplify pkgconfig file generator"
+Patch0:         0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch
 
 BuildRequires:  cups-devel >= 2.0
 # We do not support building against cups 2.3 betas
@@ -72,6 +77,7 @@ BuildRequires:  pkgconfig(graphene-1.0) >= 1.9.1
 BuildRequires:  pkgconfig(graphene-gobject-1.0) >= 1.9.1
 BuildRequires:  pkgconfig(gstreamer-gl-1.0)
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
+BuildRequires:  pkgconfig(harfbuzz) >= 2.6.0
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libjpeg)
@@ -85,7 +91,7 @@ BuildRequires:  pkgconfig(tracker-sparql-3.0)
 BuildRequires:  pkgconfig(wayland-client) >= 1.14.91
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.9.91
 BuildRequires:  pkgconfig(wayland-egl)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.25
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
@@ -264,7 +270,6 @@ This package enhances gettext with an International Tag Set for GTK+ 4
 %meson_install
 
 %find_lang gtk40
-%find_lang gtk40-properties
 install -m 644 -D %{SOURCE2} %{buildroot}%{_datadir}/gtk-4.0/settings.ini
 # create modules directory that should have been created during the build
 if test ! -d %{buildroot}%{_libdir}/gtk-4.0/modules; then
@@ -414,6 +419,6 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_datadir}/gettext/its/gtk4builder.its
 %{_datadir}/gettext/its/gtk4builder.loc
 
-%files lang -f gtk40.lang -f gtk40-properties.lang
+%files lang -f gtk40.lang
 
 %changelog
