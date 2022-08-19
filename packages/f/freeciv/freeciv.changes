@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 19 07:56:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.3 (bsc#1202548, CVE-2022-6083):
+  * 3.0.3 is a bugfix release
+  * see https://freeciv.fandom.com/wiki/NEWS-3.0.3 
+
+-------------------------------------------------------------------
 Mon Jul 18 19:44:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.2:
