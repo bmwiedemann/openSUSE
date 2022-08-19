@@ -1,4 +1,4 @@
-From 441355f3865516f4bc415350da5c7f928799758e Mon Sep 17 00:00:00 2001
+From b7a39f32443001748dd5c3c4e61b3cbb6eb610f1 Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Fri, 22 Nov 2019 13:09:34 +0100
 Subject: [PATCH] Support building against libarchive 3.3.2 again
@@ -10,10 +10,10 @@ No zstd support though.
  2 files changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 29828b44..335ffc27 100644
+index c8f3f94..f43e504 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -59,7 +59,7 @@ if(NOT Qt5Test_FOUND)
+@@ -56,7 +56,7 @@ if(NOT Qt${QT_MAJOR_VERSION}Test_FOUND)
      set(BUILD_TESTING OFF CACHE BOOL "Build the testing tree.")
  endif()
  
@@ -23,10 +23,10 @@ index 29828b44..335ffc27 100644
                         URL "https://www.libarchive.org/"
                         DESCRIPTION "A library for dealing with a wide variety of archive file formats"
 diff --git a/plugins/libarchive/readwritelibarchiveplugin.cpp b/plugins/libarchive/readwritelibarchiveplugin.cpp
-index 37025947..ab580e2a 100644
+index fcc4566..8e9c7f1 100644
 --- a/plugins/libarchive/readwritelibarchiveplugin.cpp
 +++ b/plugins/libarchive/readwritelibarchiveplugin.cpp
-@@ -290,9 +290,11 @@ bool ReadWriteLibarchivePlugin::initializeWriterFilters()
+@@ -270,9 +270,11 @@ bool ReadWriteLibarchivePlugin::initializeWriterFilters()
      case ARCHIVE_FILTER_LZ4:
          ret = archive_write_add_filter_lz4(m_archiveWriter.data());
          break;
@@ -38,7 +38,7 @@ index 37025947..ab580e2a 100644
      case ARCHIVE_FILTER_NONE:
          ret = archive_write_add_filter_none(m_archiveWriter.data());
          break;
-@@ -345,9 +347,11 @@ bool ReadWriteLibarchivePlugin::initializeNewFileWriterFilters(const Compression
+@@ -325,9 +327,11 @@ bool ReadWriteLibarchivePlugin::initializeNewFileWriterFilters(const Compression
      } else if (filename().right(3).toUpper() == QLatin1String("LZ4")) {
          qCDebug(ARK) << "Detected lz4 compression for new file";
          ret = archive_write_add_filter_lz4(m_archiveWriter.data());
@@ -51,5 +51,5 @@ index 37025947..ab580e2a 100644
          qCDebug(ARK) << "Detected no compression for new file (pure tar)";
          ret = archive_write_add_filter_none(m_archiveWriter.data());
 -- 
-2.23.0
+2.37.0
 
