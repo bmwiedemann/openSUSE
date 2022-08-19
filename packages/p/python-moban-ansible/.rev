@@ -7,4 +7,13 @@
     <comment> </comment>
     <requestid>836547</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bb6785437a209a1dfe6232208a7e33c8</srcmd5>
+    <version>0.0.2</version>
+    <time>1660924591</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-mock.patch:
+  * Use unittest.mock, rather than mock.</comment>
+    <requestid>998100</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
-# spec file for package python-moban-ansible
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,12 +34,11 @@ Version:        0.0.2
 Release:        0
 Summary:        Ansible filters, tests and utility functions for moban users
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/moremoban/moban-ansible
 Source:         https://files.pythonhosted.org/packages/source/m/moban-ansible/moban-ansible-%{version}.tar.gz
 # https://github.com/moremoban/moban-ansible/pull/2
-Patch0:          python-moban-ansible-remove-nose.patch
-BuildRequires:  %{python_module devel}
+Patch0:         python-moban-ansible-remove-nose.patch
+Patch1:         remove-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,7 +48,6 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module moban >= 0.8.1}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module mock}
 %endif
 # /SECTION
 %python_subpackages
@@ -58,8 +56,7 @@ BuildRequires:  %{python_module mock}
 Ansible filters, tests and utility functions for moban users
 
 %prep
-%setup -q -n moban-ansible-%{version}
-%patch0 -p1
+%autosetup -p1 -n moban-ansible-%{version}
 
 %if !%{with test}
 %build
