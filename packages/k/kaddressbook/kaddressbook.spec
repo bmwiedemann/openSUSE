@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kaddressbook
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Address book application to manage contacts
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -58,8 +58,6 @@ Requires:       libKPimAddressbookImportExport5 = %{version}
 Recommends:     %{name}-doc
 Provides:       kaddressbook5 = %{version}
 Obsoletes:      kaddressbook5 < %{version}
-# It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 
 %description
 KAddressbook is an application by KDE to manage contacts.
@@ -117,8 +115,6 @@ for KAddressbook.
 
 %files
 %license LICENSES/*
-%dir %{_kf5_plugindir}/kontact5/
-%dir %{_kf5_servicesdir}/kontact/
 %{_kf5_applicationsdir}/kaddressbook-importer.desktop
 %{_kf5_applicationsdir}/kaddressbook-view.desktop
 %{_kf5_applicationsdir}/org.kde.kaddressbook*.desktop
@@ -129,14 +125,12 @@ for KAddressbook.
 %{_kf5_iconsdir}/hicolor/*/apps/kaddressbook.png
 %{_kf5_iconsdir}/hicolor/scalable/apps/kaddressbook.svg
 %{_kf5_libdir}/libkaddressbookprivate.so.*
-%dir %{_kf5_plugindir}/pim/
-%dir %{_kf5_plugindir}/pim/kcms/
-%dir %{_kf5_plugindir}/pim/kcms/kaddressbook/
-%{_kf5_plugindir}/pim/kcms/kaddressbook/kaddressbook_config_plugins.so
+%dir %{_kf5_plugindir}/pim5/
+%dir %{_kf5_plugindir}/pim5/kcms/
+%dir %{_kf5_plugindir}/pim5/kcms/kaddressbook/
+%{_kf5_plugindir}/pim5/kcms/kaddressbook/kaddressbook_config_plugins.so
 %{_kf5_plugindir}/kaddressbookpart.so
-%{_kf5_plugindir}/kontact5/kontact_kaddressbookplugin.so
-%{_kf5_servicesdir}/kaddressbook_config_plugins.desktop
-%{_kf5_servicesdir}/kontact/kaddressbookplugin.desktop
+%{_kf5_plugindir}/pim5/kontact/
 %{_kf5_sharedir}/kaddressbook/
 
 %files -n libKPimAddressbookImportExport5
