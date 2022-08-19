@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 17 17:16:37 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix crashes (kde#437364):
+  0001-Avoid-iterating-a-container-while-it-s-being-mutated.patch
+
+-------------------------------------------------------------------
 Sun Aug  7 22:27:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.97.0

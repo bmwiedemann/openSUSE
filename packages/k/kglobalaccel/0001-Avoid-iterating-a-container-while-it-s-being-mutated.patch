@@ -1,0 +1,29 @@
+From 7347a904f1c97db7b7f7fcf49b6bdd34701c7737 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Wed, 17 Aug 2022 19:10:38 +0200
+Subject: [PATCH] Avoid iterating a container while it's being mutated
+
+Otherwise the iterators get invalidated and weird stuff happens.
+
+CCBUG: 437364
+---
+ src/runtime/globalshortcutsregistry.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/runtime/globalshortcutsregistry.cpp b/src/runtime/globalshortcutsregistry.cpp
+index 08ea010..21f84b9 100644
+--- a/src/runtime/globalshortcutsregistry.cpp
++++ b/src/runtime/globalshortcutsregistry.cpp
+@@ -532,7 +532,8 @@ bool GlobalShortcutsRegistry::unregisterKey(const QKeySequence &key, GlobalShort
+ 
+ void GlobalShortcutsRegistry::writeSettings() const
+ {
+-    const auto &lst = GlobalShortcutsRegistry::self()->allMainComponents();
++    // Make a copy for iterating. ~Component removes itself from the list.
++    const auto lst = GlobalShortcutsRegistry::self()->allMainComponents();
+     for (const KdeDGlobalAccel::Component *component : lst) {
+         KConfigGroup configGroup(&_config, component->uniqueName());
+         if (component->allShortcuts().isEmpty()) {
+-- 
+2.37.1
+
