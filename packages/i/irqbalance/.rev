@@ -513,4 +513,19 @@
     <comment></comment>
     <requestid>986191</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>c9568e46a6d6911dc7afa5aaf96be4ef</srcmd5>
+    <version>1.9.0</version>
+    <time>1660924386</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.0:
+  * correct wait time in oneshot mode
+  * Document updates
+  * disable irqbalance when we only have a single cpu/cache domain
+  * fix UI to fetch full messages from UNIX socket
+  * avoid some buffer overflows
+  * fix UI printf style formatting
+  * drop bounding set from irqbalance</comment>
+    <requestid>997623</requestid>
+  </revision>
 </revisionlist>
