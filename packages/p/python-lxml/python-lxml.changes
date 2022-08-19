@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sat Jul  9 14:10:48 UTC 2022 - Arun Persaud <arun@gmx.de>
 
-- update to version 4.9.1:
+- update to version 4.9.1 (bsc#1201253, CVE-2022-2309):
   * Bugs fixed
     + A crash was resolved when using iterwalk() (or canonicalize())
       after parsing certain incorrect input. Note that iterwalk() can
