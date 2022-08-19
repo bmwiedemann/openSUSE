@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kcalutils
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Library with utility functions for handling calendar data
 License:        LGPL-2.1-or-later
@@ -108,7 +108,9 @@ to develop applications wanting to use kcalutils.
 %{_kf5_mkspecsdir}/qt_KCalUtils.pri
 
 %files
-%{_libdir}/grantlee/
+%dir %{_kf5_libdir}/grantlee/
+%dir %{_kf5_libdir}/grantlee/5.2
+%{_kf5_libdir}/grantlee/5.2/kcalendar_grantlee_plugin.so
 
 %if %{with released}
 %files lang -f %{name}.lang
