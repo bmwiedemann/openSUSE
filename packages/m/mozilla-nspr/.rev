@@ -741,4 +741,14 @@ require it nevertheless
   * fixes to build system and export of private symbols</comment>
     <requestid>979935</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>e472cd1d5b43746d79de1fd96bd5d616</srcmd5>
+    <version>4.34.1</version>
+    <time>1660924379</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.34.1
+  * add file descriptor sanity checks in the NSPR poll function
+</comment>
+    <requestid>997589</requestid>
+  </revision>
 </revisionlist>

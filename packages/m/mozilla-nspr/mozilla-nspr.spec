@@ -20,7 +20,7 @@
 %define useccache     1
 
 Name:           mozilla-nspr
-Version:        4.34
+Version:        4.34.1
 Release:        0
 Summary:        Netscape Portable Runtime
 License:        MPL-2.0
@@ -114,9 +114,6 @@ if [ $TEST_FAILURES -ne 0 ]; then
   exit 1
 fi
 echo "test suite completed"
-
-%clean
-rm -rf %{buildroot}
 
 %post -p /sbin/ldconfig
 
