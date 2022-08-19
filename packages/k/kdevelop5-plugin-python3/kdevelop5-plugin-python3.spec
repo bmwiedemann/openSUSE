@@ -26,7 +26,7 @@
 %endif
 %bcond_without released
 Name:           kdevelop5-plugin-python3
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Python support for KDevelop
 License:        GPL-2.0-or-later
@@ -58,6 +58,8 @@ Obsoletes:      kdevelop4-plugin-python < %{version}
 # The following are needed due to old unstable packages in KDE repositories
 Provides:       kdevelop4-plugin-python3 = %{version}
 Obsoletes:      kdevelop4-plugin-python3 < %{version}
+# Only build on archs where Qt5WebEngine is available
+ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 
 %description
 A KDevelop plugin which provides Python language support, including code completion and debugging using PDB.
