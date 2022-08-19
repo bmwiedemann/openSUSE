@@ -1,7 +1,7 @@
 #
 # spec file for package nilfs-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           nilfs-utils
-Version:        2.2.8
+Version:        2.2.9
 Release:        0
 Summary:        Utilities for NILFS
 License:        GPL-2.0-only
