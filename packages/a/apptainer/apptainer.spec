@@ -19,7 +19,7 @@
 %define apptainerpath src/github.com/apptainer/
 %define _buildshell /bin/bash
 
-%define vers_suffix -rc.1
+%define vers_suffix -rc.2
 
 Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL
@@ -35,7 +35,6 @@ Source2:        SLE-12SP5.def
 Source3:        SLE-15SP3.def
 Source5:        %{name}-rpmlintrc
 Source10:       vendor.tar.gz
-Patch1:         fix-32bit-compilation.patch
 BuildRequires:  cryptsetup
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -68,7 +67,6 @@ containers that can be used across host environments.
 cp %{S:1} %{S:2} %{S:3} .
 mv %{name}-%{version}%{?vers_suffix} %{name}
 cd %{_builddir}/gopath/%{apptainerpath}/apptainer
-%patch1 -p1
 
 %build
 cd %{name}

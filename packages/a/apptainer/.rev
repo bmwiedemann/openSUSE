@@ -38,4 +38,41 @@
     <comment>* Added fix-32bit-compilation.patch from upstream (forwarded request 993258 from mslacken)</comment>
     <requestid>993259</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>42cdedb9623376a670f8f17b42577799</srcmd5>
+    <version>1.1.0</version>
+    <time>1660924604</time>
+    <user>dimstar_suse</user>
+    <comment>- Udpated to version 1.1.0-rc2 with following changes:
+  * Fixed longstanding bug in the underlay logic when there are nested bind
+    points separated by more than one path level, for example /var and
+    /var/lib/yum, and the path didn't exist in the container image. The bug
+    only caused an error when there was a directory in the container image that
+    didn't exist on the host.
+  * Improved wildcard matching in the %files directive of build definition
+    files by replacing usage of sh with the mvdan.cc library.
+  * Replaced checks for compatible filesystem types when using fuse-overlayfs
+    with an INFO message when an incompatible filesystem type causes it to be
+    unwritable by a fakeroot user.
+  * The --nvccli option now works without --fakeroot. In that case the option
+    can be used with --writable-tmpfs instead of --writable, and
+    --writable-tmpfs is implied if neither option is given. Note that also
+    /usr/bin has to be writable by the user, so without --fakeroot that
+    probably requires a sandbox image that was built with --fix-perms.
+  * The --nvccli option implies --nv.
+  * Configure squashfuse to always show files to be owned by the current user.
+    That's especially important for fakeroot to prevent most of the files from
+    looking like they are owned by user 65534.
+  * The fakeroot command can now be used even if $PATH is empty in the
+    environment of the apptainer command.
+  * Allow the newuidmap command to be missing if the current user is not listed
+    in /etc/subuid.
+  * Require the uidmap package in Debian packaging.
+  * Improved error handling of unsupported pass protected PEM files with
+    encrypted containers.
+  * Ensure bootstrap_history directory is populated with previous definition
+    files, present in source containers used in a build.
+  * Add additional options to the build command for testing different fakeroot (forwarded request 998137 from mslacken)</comment>
+    <requestid>998138</requestid>
+  </revision>
 </revisionlist>
