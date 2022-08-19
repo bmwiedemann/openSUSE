@@ -1,7 +1,7 @@
 #
 # spec file for package drumstick
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2005-2010 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           drumstick
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        MIDI Sequencer C++ Library Bindings
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -41,6 +41,7 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5UiPlugin)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(sonivox)
 BuildRequires:  pkgconfig(alsa)
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 BuildRequires:  pkgconfig(fluidsynth)
@@ -144,7 +145,7 @@ BuildArch:      noarch
 This package contains the developer's documentation of the drumstick libraries.
 
 %prep
-%setup -q
+%autosetup -p1
 
 # Update obsolete config file
 doxygen -u Doxyfile.in
@@ -156,25 +157,25 @@ sed -i 's#%{_includedir}/QtGui#%{_includedir}/qt5/QtGui#' Doxyfile.in
 
 %cmake_build
 
-make %{?_smp_mflags} doxygen
+%make_build doxygen
 
 %install
 %cmake_install
+
 %suse_update_desktop_file -n net.sourceforge.drumstick-drumgrid Midi
 %suse_update_desktop_file -n net.sourceforge.drumstick-guiplayer Midi
 %suse_update_desktop_file -n net.sourceforge.drumstick-vpiano Midi
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
-%post -n libdrumstick-file2 -p /sbin/ldconfig
-%postun -n libdrumstick-file2 -p /sbin/ldconfig
 %post -n libdrumstick-alsa2 -p /sbin/ldconfig
-%postun -n libdrumstick-alsa2 -p /sbin/ldconfig
+%post -n libdrumstick-file2 -p /sbin/ldconfig
 %post -n libdrumstick-rt2 -p /sbin/ldconfig
-%postun -n libdrumstick-rt2 -p /sbin/ldconfig
 %post -n libdrumstick-widgets2 -p /sbin/ldconfig
+%postun -n libdrumstick-alsa2 -p /sbin/ldconfig
+%postun -n libdrumstick-file2 -p /sbin/ldconfig
+%postun -n libdrumstick-rt2 -p /sbin/ldconfig
 %postun -n libdrumstick-widgets2 -p /sbin/ldconfig
 
 %files

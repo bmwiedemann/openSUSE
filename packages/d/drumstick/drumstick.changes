@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 18 11:26:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.7.1
+  * Improved the sonivox detection when building drumstick
+  * Fixed underlinking in some RT backends
+
+-------------------------------------------------------------------
 Fri Aug 12 07:17:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.7.0. Check the ChangeLog file for the full list of
