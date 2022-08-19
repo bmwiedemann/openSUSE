@@ -17,10 +17,10 @@
 
 
 %define rname   kdevelop
-%define libkdev_major 58
+%define libkdev_major 59
 %bcond_without released
 Name:           kdevelop5
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
@@ -82,6 +82,8 @@ Requires:       clang%(rpm -q --qf '%''{version}' clang-devel | cut -d. -f1)
 Recommends:     clazy
 Recommends:     cppcheck
 Recommends:     heaptrack-gui
+# Used by the docker plugin
+Recommends:     /usr/bin/pkexec
 Conflicts:      kdevelop4
 Conflicts:      kdevelop4-plugin-clang
 # To allow "zypper in kdevelop"
