@@ -1,6 +1,6 @@
-From 435ed5853b9451ab8fdfff722545c57a8f154625 Mon Sep 17 00:00:00 2001
-From: Fabian Vogt <fabian@ritter-vogt.de>
-Date: Sat, 18 Feb 2017 13:49:14 +0100
+From 52f948fe211fedc54c13c0baf067cd6d8e4cb0c3 Mon Sep 17 00:00:00 2001
+From: Luca Beltrame <lbeltrame@kde.org>
+Date: Sun, 3 Apr 2022 09:26:48 +0200
 Subject: [PATCH] Defuse root block
 
 While the main point is correct as any application running in the same
@@ -8,15 +8,15 @@ X session (not sandboxed) can use kate's capability to open a console,
 we allow (even encourage) running YaST on X11 as root.
 That way it's only an impact on usability.
 ---
- kate/main.cpp   | 3 +--
- kwrite/main.cpp | 3 +--
- 2 files changed, 2 insertions(+), 4 deletions(-)
+ apps/kate/main.cpp   | 15 ++-------------
+ apps/kwrite/main.cpp | 17 +++--------------
+ 2 files changed, 5 insertions(+), 27 deletions(-)
 
-Index: kate-19.11.70git.20220102T020433~0a4347e06/kate/main.cpp
+Index: kate-19.11.70git.20220404T014944~1f6e53f72/apps/kate/main.cpp
 ===================================================================
---- kate-19.11.70git.20220102T020433~0a4347e06.orig/kate/main.cpp	2022-01-02 09:28:49.643692601 +0100
-+++ kate-19.11.70git.20220102T020433~0a4347e06/kate/main.cpp	2022-01-02 09:29:48.503285030 +0100
-@@ -48,19 +48,8 @@
+--- kate-19.11.70git.20220404T014944~1f6e53f72.orig/apps/kate/main.cpp	2022-04-04 03:49:44.000000000 +0200
++++ kate-19.11.70git.20220404T014944~1f6e53f72/apps/kate/main.cpp	2022-04-04 05:55:46.476883480 +0200
+@@ -49,19 +49,8 @@
  #if !defined(Q_OS_WIN) && !defined(Q_OS_HAIKU)
      // Prohibit using sudo or kdesu (but allow using the root user directly)
      if (getuid() == 0) {
@@ -34,7 +34,33 @@ Index: kate-19.11.70git.20220102T020433~0a4347e06/kate/main.cpp
 -            return EXIT_FAILURE;
 -        }
 +        std::cout << "THIS IS POTENTIALLY INSECURE!\nTo edit files as root please use:" << std::endl;
-+        std::cout << "SUDO_EDITOR=kwrite sudoedit <file>" << std::endl;
++        std::cout << "SUDO_EDITOR=kate sudoedit <file>" << std::endl;
      }
  #endif
      /**
+Index: kate-19.11.70git.20220404T014944~1f6e53f72/apps/kwrite/main.cpp
+===================================================================
+--- kate-19.11.70git.20220404T014944~1f6e53f72.orig/apps/kwrite/main.cpp	2022-04-04 03:49:44.000000000 +0200
++++ kate-19.11.70git.20220404T014944~1f6e53f72/apps/kwrite/main.cpp	2022-04-04 05:57:17.276197192 +0200
+@@ -27,19 +27,8 @@
+ #if !defined(Q_OS_WIN) && !defined(Q_OS_HAIKU)
+     // Prohibit using sudo or kdesu (but allow using the root user directly)
+     if (getuid() == 0) {
+-        if (!qEnvironmentVariableIsEmpty("SUDO_USER")) {
+-            std::cout << "Running KWrite with sudo can cause bugs and expose you to security vulnerabilities. "
+-                         "Instead use KWrite normally and you will be prompted for elevated privileges when "
+-                         "saving documents if needed."
+-                      << std::endl;
+-            return EXIT_FAILURE;
+-        } else if (!qEnvironmentVariableIsEmpty("KDESU_USER")) {
+-            std::cout << "Running KWrite with kdesu can cause bugs and expose you to security vulnerabilities. "
+-                         "Instead use KWrite normally and you will be prompted for elevated privileges when "
+-                         "saving documents if needed."
+-                      << std::endl;
+-            return EXIT_FAILURE;
+-        }
++        std::cout << "THIS IS POTENTIALLY INSECURE!\nTo edit files as root please use:" << std::endl;
++        std::cout << "SUDO_EDITOR=kwrite sudoedit <file>" << std::endl;
+     }
+ #endif
+ 

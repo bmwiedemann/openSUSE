@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kate
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Advanced Text Editor
 License:        GPL-3.0-or-later
@@ -133,6 +133,7 @@ plugins and data files for Kate and KWrite editors.
 %{_kf5_appstreamdir}/org.kde.kate.appdata.xml
 %{_kf5_bindir}/kate
 %{_kf5_iconsdir}/hicolor/*/apps/kate.*
+%{_kf5_libdir}/libkateprivate.so.*
 
 %files -n kwrite
 %doc README*
