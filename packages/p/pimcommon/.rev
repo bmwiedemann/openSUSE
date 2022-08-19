@@ -632,4 +632,12 @@
   * 0001-Fix-pimcommon-CMake.patch</comment>
     <requestid>993604</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>cdecf8bddcf5dc4fa7d69e852513dd9f</srcmd5>
+    <version>22.08.0</version>
+    <time>1660924368</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.08.0 (forwarded request 997667 from cgiboudeaux)</comment>
+    <requestid>997960</requestid>
+  </revision>
 </revisionlist>
