@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Aug 18 10:25:21 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid that mandb-symlink-target-timestamp fools us 
+
+-------------------------------------------------------------------
+Thu Aug 18 09:44:06 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Workaround missing groff-full to get refer(1), the bibliographic
+  preprocessor found
+
+-------------------------------------------------------------------
+Thu Aug 18 08:14:54 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to man-db 2.10.0 (4 February 2022)
+  * Manpath deduplication no longer mishandles the case where another entry
+    in the manpath is a suffix of a candidate path to append.
+  * Fix potential crash in path searching if `getcwd` fails for reasons other
+    than running out of memory.
+  * Fix crash in `globbing` test tool if run with no non-option arguments.
+  * `lexgrog` now produces output in the user's locale.
+  * Downgrade "malformed .lf request" warning to a debug message and rephrase
+    it somewhat, since `.lf` requests can use `*roff` arithmetic expressions
+    and we can't reasonably parse those.
+  * Avoid modifying the database without changing its mtime, which had been
+    possible since 2.7.0 if `mandb`'s purge phase found work to do but the
+    main phase didn't, and which confused some backup systems into reporting
+    possible filesystem corruption.
+  * `man` no longer inadvertently modifies the `MANSECT` environment variable
+    before passing it on to its subprocesses.
+  * `mandb` now stores the mtime of link targets as the mtime of their
+    corresponding database entries, rather than sometimes storing the mtime
+    of the link instead.
+  * Since man-db 2.4.2, `man` has behaved as if the `-l` option was given if
+    a manual page argument contains a slash.  Since man-db 2.5.6, this has
+    interacted slightly poorly with the subpage feature, emitting spurious
+    error messages if given multiple manual page arguments some of which
+    include a slash.  `man` no longer emits spurious error messages in this
+    case.
+  * Reduce overhead of `MAN_DISABLE_SECCOMP=1` compared to building without
+    `libseccomp`.
+  * Document `MAN_DISABLE_SECCOMP` and `PIPELINE_DEBUG` environment variables
+    in `man(1)`.
+  * Add `man-pages(7)` reference to `man(1)`.
+  * Recognize Arabic and Persian translations of the `NAME` section.
+  * Delay the `systemd` timer using `RandomizedDelaySec`, so that multiple
+    containers/VMs on the same host are less prone to running `mandb` all at
+    the same time.
+  * Significantly improve `mandb(8)` and `man -K` performance in the common
+    case where pages are of moderate size and compressed using `zlib`: `mandb
+    -c` goes from 344 seconds to 10 seconds on a test system.
+- Remove patch man-db-2.7.1-security4.dif as now upstream creates
+  any missing database
+- Remove gnulib-ppc64le.patch as gnulib is uptodate even on ppc64le
+- Port patches
+  * man-db-2.6.3-chinese.dif
+  * man-db-2.6.3-listall.dif
+  * man-db-2.6.3-man0.dif
+  * man-db-2.7.1-zio.dif
+  * man-db-2.9.4-alternitive.dif
+  * man-db-2.9.4-no-chown.patch
+  * man-db-2.9.4.patch
+  * reproducible.patch
+
+-------------------------------------------------------------------
 Mon Aug 15 16:48:51 UTC 2022 - <d_werner@gmx.net>
 
 - syntax correction of the preinstall scriptlet to avoid creation 

@@ -1,11 +1,25 @@
+---
+ configure.ac        |   18 ++++++++-
+ include/comp_src.h  |    2 -
+ lib/security.c      |   30 ++++++++++++++++
+ mk_catdirs          |   30 ++++++++++++++++
+ src/check_mandirs.c |   33 +++++++++++------
+ src/lexgrog.l       |   64 +++++++++++++++++++++++++---------
+ src/man.c           |   97 +++++++++++++++++++++++++++++++---------------------
+ src/man_db.conf.in  |   17 +++++++--
+ src/mandb.c         |   18 ++++++++-
+ src/manp.c          |    2 -
+ src/straycats.c     |    1 
+ src/ult_src.c       |    9 +++-
+ 12 files changed, 242 insertions(+), 79 deletions(-)
+
 diff --git a/configure.ac b/configure.ac
-index f4fe224..89fb860 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -252,6 +252,14 @@ then
- fi
+@@ -289,6 +289,14 @@ fi
  
  MAN_CHECK_PROGS([eqn], [EQN], [use EQN to preprocess equations], [eqn geqn])
+ AC_DEFINE_UNQUOTED([PROG_EQN], ["$eqn"], [Program to use as eqn.])
 +MAN_CHECK_PROGS([geqn], [GEQN], [use GEQN to preprocess equations], [geqn])
 +dnl
 +dnl if geqn is found and geqn is identical with eqn we use a GNU eqn
@@ -17,7 +31,7 @@ index f4fe224..89fb860 100644
  MAN_CHECK_PROGS([neqn], [NEQN], [use NEQN to preprocess equations for character devices], [neqn gneqn])
  # If we fail to find an neqn, use eqn and try to force it to output for an
  # ascii device. As this is only relevant for equations (?), not using latin1
-@@ -295,9 +303,15 @@ then
+@@ -339,9 +347,15 @@ then
  	compress_ext="gz"
  fi
  MAN_CHECK_PROGS([compress], [COMPRESS], [use COMPRESS as UNIX compression utility], [compress])
@@ -35,25 +49,23 @@ index f4fe224..89fb860 100644
  	if test -z "$gzip"
  	then
  		compressor="$compress -c"
-diff --git a/include/comp_src.h.in b/include/comp_src.h.in
-index bc5d601..39f5f0d 100644
---- a/include/comp_src.h.in
-+++ b/include/comp_src.h.in
+diff --git a/include/comp_src.h b/include/comp_src.h
+--- a/include/comp_src.h
++++ b/include/comp_src.h
 @@ -51,7 +51,7 @@ struct compression comp_list[] = {
  #endif /* HAVE_GZIP */
  
  /* If we have compress, incorporate the following */
 -#ifdef HAVE_COMPRESS
 +#if defined(HAVE_COMPRESS) || defined(HAVE_GZIP)
- 	{UNCOMPRESS, "Z", NULL},
+ 	{PROG_UNCOMPRESS, "Z", NULL},
  /* Else if we have gzip, incorporate the following */
  #elif defined (HAVE_GZIP)
 diff --git a/lib/security.c b/lib/security.c
-index 55f2d85..8524d1c 100644
 --- a/lib/security.c
 +++ b/lib/security.c
-@@ -79,6 +79,11 @@ static void gripe_set_euid (void)
- 	error (FATAL, errno, _("can't set effective uid"));
+@@ -82,6 +82,11 @@ static void gripe_set_euid (void)
+ 	fatal (errno, _("can't set effective uid"));
  }
  
 +static inline void gripe_set_egid (void)
@@ -64,7 +76,7 @@ index 55f2d85..8524d1c 100644
  #endif /* MAN_OWNER */
  
  void init_security (void)
-@@ -165,6 +170,31 @@ void regain_effective_privs (void)
+@@ -168,6 +173,31 @@ void regain_effective_privs (void)
  		uid = euid;
  		gid = egid;
  	}
@@ -97,9 +109,7 @@ index 55f2d85..8524d1c 100644
  }
  
 diff --git a/mk_catdirs b/mk_catdirs
-new file mode 100644
-index 0000000..47eaa25
---- /dev/null
+--- a/mk_catdirs
 +++ b/mk_catdirs
 @@ -0,0 +1,30 @@
 +#!/bin/sh
@@ -133,10 +143,9 @@ index 0000000..47eaa25
 +
 +test "$(id -u)" -ne 0 || chown man:man -R ${CACHE}
 diff --git a/src/check_mandirs.c b/src/check_mandirs.c
-index d28a6be..90c5d58 100644
 --- a/src/check_mandirs.c
 +++ b/src/check_mandirs.c
-@@ -397,7 +397,7 @@ void chown_if_possible (const char *path _GL_UNUSED)
+@@ -417,7 +417,7 @@ void chown_if_possible (const char *path
  #endif /* MAN_OWNER */
  
  /* create the catman hierarchy if it doesn't exist */
@@ -145,15 +154,15 @@ index d28a6be..90c5d58 100644
  {
  	char *manname, *catname;
  
-@@ -425,9 +425,14 @@ static void mkcatdirs (const char *mandir, const char *catdir)
+@@ -445,9 +445,14 @@ static void mkcatdirs (const char *mandi
  			int j;
  			regain_effective_privs ();
  			debug ("creating catdir hierarchy %s	", catdir);
 -			for (j = 1; j <= 9; j++) {
 -				catname[strlen (catname) - 1] = '0' + j;
 -				manname[strlen (manname) - 1] = '0' + j;
-+			for (j = 1; j <= 10; j++) {
-+				unsigned int c;
++			for (j = 0; j <= 10; j++) {
++				char c;
 +				if (j < 10)
 +					c = '0' + j;
 +				else
@@ -163,7 +172,7 @@ index d28a6be..90c5d58 100644
  				if ((is_directory (manname) == 1)
  				 && (is_directory (catname) != 1)) {
  					if (mkdir (catname, 0755) < 0) {
-@@ -435,7 +440,7 @@ static void mkcatdirs (const char *mandir, const char *catdir)
+@@ -455,7 +460,7 @@ static void mkcatdirs (const char *mandi
  							error (0, 0, _("warning: cannot create catdir %s"), catname);
  						debug ("warning: cannot create catdir %s\n", catname);
  					} else
@@ -172,7 +181,7 @@ index d28a6be..90c5d58 100644
  					chown_if_possible (catname);
  				}
  			}
-@@ -583,15 +588,10 @@ static int testmandirs (const char *database,
+@@ -597,15 +602,10 @@ static int testmandirs (MYDBM_FILE dbf,
  		}
  
  		if (!quiet) {
@@ -188,17 +197,17 @@ index d28a6be..90c5d58 100644
 +			fprintf (stderr, "\n");
  		}
  		add_dir_entries (dbf, path, mandir->d_name);
- 		MYDBM_CLOSE (dbf);
-@@ -698,7 +698,7 @@ int update_db (const char *database, const char *manpath, const char *catpath)
- 		dbf = NULL;
- 	}
- 	if (!dbf) {
--		debug ("failed to open %s O_RDONLY\n", database);
-+		debug ("failed to open database %s O_RDONLY\n", database);
- 		return EOF;
+ 		amount++;
+@@ -674,7 +674,7 @@ int update_db (MYDBM_FILE dbf, const cha
+ 	int new;
+ 
+ 	if (!ensure_db_open (dbf) || !sanity_check_db (dbf)) {
+-		debug ("failed to open %s O_RDONLY\n", dbf->name);
++		debug ("failed to open database %s O_RDONLY\n", dbf->name);
+ 		return -1;
  	}
  	mtime = MYDBM_GET_TIME (dbf);
-@@ -904,6 +904,7 @@ static int purge_whatis (MYDBM_FILE dbf, const char *path, int cat,
+@@ -886,6 +886,7 @@ static int purge_whatis (MYDBM_FILE dbf,
  			       "would delete\n", name, info->ext);
  		return 1;
  	}
@@ -206,9 +215,9 @@ index d28a6be..90c5d58 100644
  }
  
  /* Check that multi keys are correctly constructed. */
-@@ -1005,6 +1006,14 @@ int purge_missing (const char *database,
- 			continue;
+@@ -983,6 +984,14 @@ int purge_missing (MYDBM_FILE dbf, const
  		}
+ #pragma GCC diagnostic pop
  
 +		/* Ignore db identifier keys. */
 +		if (*MYDBM_DPTR (key) == '.' && *(key.dptr+1) == 0) {
@@ -222,19 +231,18 @@ index d28a6be..90c5d58 100644
  		if (!MYDBM_DPTR (content)) {
  			nextkey = MYDBM_NEXTKEY (dbf, key);
 diff --git a/src/lexgrog.l b/src/lexgrog.l
-index cc31a70..1e3a0d5 100644
 --- a/src/lexgrog.l
 +++ b/src/lexgrog.l
-@@ -64,7 +64,7 @@
- 
+@@ -69,7 +69,7 @@
+ #include "manconv.h"
  #include "manconv_client.h"
  
 -#define YY_READ_BUF_SIZE	1024
 +#define YY_READ_BUF_SIZE	YY_BUF_SIZE
  #define MAX_NAME		8192
  
- #define ARRAY_SIZE(array) (sizeof (array) / sizeof ((array)[0]))
-@@ -212,15 +212,15 @@ static const struct macro perldocs[] = {
+ /* defines the ordered list of filters detected by lexgrog */
+@@ -228,15 +228,15 @@ static const struct macro perldocs[] = {
  	{ "R\"", "\"" }
  };
  
@@ -249,7 +257,7 @@ index cc31a70..1e3a0d5 100644
 -static void newline_found (void);
 +static __inline__ void add_str_to_whatis (const char *string, size_t length);
 +static __inline__ void add_char_to_whatis (unsigned char c);
-+static __inline__ void add_separator_to_whatis (const char *, size_t);
++static __inline__ void add_separator_to_whatis (void);
 +static __inline__ void add_wordn_to_whatis (const char *string, size_t length);
 +static __inline__ void add_word_to_whatis (const char *string);
 +static __inline__ void add_glyph_to_whatis (const char *string, size_t length);
@@ -259,24 +267,24 @@ index cc31a70..1e3a0d5 100644
  
  static char newname[MAX_NAME];
  static char *p_name;
-@@ -229,6 +229,7 @@ static char filters[MAX_FILTERS];
+@@ -245,6 +245,7 @@ static char filters[MAX_FILTERS];
  
  static int fill_mode;
  static int waiting_for_quote;
 +static int have_separator;
  
- static pipeline *decomp;
+ static decompress *decomp;
  
-@@ -246,7 +247,7 @@ static pipeline *decomp;
+@@ -262,7 +263,7 @@ static decompress *decomp;
  %}
  
  %option ecs meta-ecs
--%option 8bit batch caseful never-interactive 
+-%option 8bit batch caseful never-interactive
 +%option 8bit batch caseful never-interactive align
  %option nostdinit
  %option warn
  %option noyywrap nounput
-@@ -285,8 +286,9 @@ font_change	\\f([[:upper:]1-4]|\({upper}{2})
+@@ -301,8 +302,9 @@ font_change	\\f([[:upper:]1-4]|\({upper}
  size_change	\\s[+-]?{digit}
  style_change	({font_change}{size_change}?|{size_change}{font_change}?)
  typeface	\.(B[IR]?|I[BR]?|R[BI]|S[BM])
@@ -287,10 +295,10 @@ index cc31a70..1e3a0d5 100644
  
   /* Please add to this list if you know how. */
   /* Note that, since flex only supports UTF-8 by accident, character classes
-@@ -325,7 +327,26 @@ vi_name		TÊN
+@@ -344,7 +346,26 @@ vi_name		TÊN
  zh_CN_name	名{blank}?(称|字){blank}?.*
  zh_TW_name	(名{blank}?(稱|字)|命令名){blank}?.*
- name		({bg_name}|{cs_name}|{da_name}|{de_name}|{en_name}|{eo_name}|{es_name}|{fi_name}|{fr_name}|{hu_name}|{id_name}|{it_name}|{ja_name}|{ko_name}|{latin_name}|{lt_name}|{nl_name}|{pl_name}|{ro_name}|{ru_name}|{sk_name}|{sr_name}|{srlatin_name}|{sv_name}|{ta_name}|{tr_name}|{uk_name}|{vi_name}|{zh_CN_name}|{zh_TW_name})
+ name		({ar_name}|{bg_name}|{cs_name}|{da_name}|{de_name}|{en_name}|{eo_name}|{es_name}|{fa_name}|{fi_name}|{fr_name}|{hu_name}|{id_name}|{it_name}|{ja_name}|{ko_name}|{latin_name}|{lt_name}|{nl_name}|{pl_name}|{ro_name}|{ru_name}|{sk_name}|{sr_name}|{srlatin_name}|{sv_name}|{ta_name}|{tr_name}|{uk_name}|{vi_name}|{zh_CN_name}|{zh_TW_name})
 -name_sec	{dbl_quote}?{style_change}?{name}{style_change}?({blank}*{dbl_quote})?
 +name_sec	{dbl_quote}?{style_change}?{name}{style_change}?({blank}*{dbl_quote})?\r?
 +start		{sec_request}{blank_eol}+{name_sec}
@@ -315,7 +323,7 @@ index cc31a70..1e3a0d5 100644
  
   /* eptgrv : eqn, pic, tbl, grap, refer, vgrind */
  tbl_request	\.TS
-@@ -339,8 +360,13 @@ vgrind_request	\.vS
+@@ -358,8 +379,13 @@ vgrind_request	\.vS
  %%
  
   /* begin NAME section processing */
@@ -331,7 +339,7 @@ index cc31a70..1e3a0d5 100644
  
   /* general text matching */
  <MAN_FILE>{
-@@ -415,6 +441,7 @@ vgrind_request	\.vS
+@@ -434,6 +460,7 @@ vgrind_request	\.vS
  	{bol}\.sp{blank}*		|	/* vertical spacing */
  	{bol}\.ig{blank}*		|	/* block comment */
  	{bol}\.de[1i]?{blank}*		|	/* macro definition */
@@ -339,7 +347,7 @@ index cc31a70..1e3a0d5 100644
  	{bol}\.i[ef]{blank}*		|	/* conditional */
  	{empty}{bol}.+			|
  	<<EOF>>				{	/* terminate the string */
-@@ -462,8 +489,8 @@ vgrind_request	\.vS
+@@ -481,8 +508,8 @@ vgrind_request	\.vS
  
   /* Toggle fill mode */
  <MAN_NAME,MAN_DESC>{
@@ -350,7 +358,7 @@ index cc31a70..1e3a0d5 100644
  }
  
  <CAT_NAME>-{eol}{blank_eol}*		/* strip continuations */
-@@ -472,6 +499,9 @@ vgrind_request	\.vS
+@@ -491,6 +518,9 @@ vgrind_request	\.vS
  <MAN_NAME>{
  	{next}{blank}*\\\((mi|hy|em|en){blank}*		|
  	{next}{blank}*\\\[(mi|hy|em|en)\]{blank}*	|
@@ -361,7 +369,6 @@ index cc31a70..1e3a0d5 100644
  	{next}{blank_eol}*[-\\]-{blank}+		|
  	{bol}\.Nd{blank}*			{
 diff --git a/src/man.c b/src/man.c
-index 6d1cba7..f72867c 100644
 --- a/src/man.c
 +++ b/src/man.c
 @@ -56,6 +56,7 @@
@@ -371,8 +378,8 @@ index 6d1cba7..f72867c 100644
 +#include <sys/time.h>
  
  #include "argp.h"
- #include "dirname.h"
-@@ -106,6 +107,8 @@
+ #include "attribute.h"
+@@ -116,6 +117,8 @@
  #ifdef MAN_OWNER
  extern uid_t ruid;
  extern uid_t euid;
@@ -381,7 +388,7 @@ index 6d1cba7..f72867c 100644
  #endif /* MAN_OWNER */
  
  /* the default preprocessor sequence */
-@@ -136,6 +139,11 @@ char *lang;
+@@ -146,6 +149,11 @@ char *lang;
  
  static bool global_manpath;	/* global or user manual page hierarchy? */
  static int skip;		/* page exists but has been skipped */
@@ -393,7 +400,7 @@ index 6d1cba7..f72867c 100644
  
  #if defined _AIX || defined __sgi
  char **global_argv;
-@@ -232,10 +240,10 @@ static int found_a_stray;		/* found a straycat */
+@@ -241,10 +249,10 @@ static int found_a_stray;		/* found a st
  #ifdef MAN_CATS
  static char *tmp_cat_file;	/* for open_cat_stream(), close_cat_stream() */
  static int created_tmp_cat;			/* dto. */
@@ -405,7 +412,7 @@ index 6d1cba7..f72867c 100644
  
  # ifdef TROFF_IS_GROFF
  static bool ditroff;
-@@ -608,36 +616,6 @@ static void gripe_no_name (const char *sect)
+@@ -614,36 +622,6 @@ static void gripe_no_name (const char *s
  	exit (FAIL);
  }
  
@@ -442,7 +449,7 @@ index 6d1cba7..f72867c 100644
  #if defined(TROFF_IS_GROFF) || defined(HEIRLOOM_NROFF)
  static int get_roff_line_length (void)
  {
-@@ -1526,6 +1504,18 @@ static void setenv_less (pipecmd *cmd, const char *title)
+@@ -1533,6 +1511,18 @@ static void setenv_less (pipecmd *cmd, c
  	free (less_opts);
  }
  
@@ -461,7 +468,7 @@ index 6d1cba7..f72867c 100644
  static void add_output_iconv (pipeline *p,
  			      const char *source, const char *target)
  {
-@@ -1656,6 +1646,8 @@ static pipeline *make_display_command (const char *encoding, const char *title)
+@@ -1663,6 +1653,8 @@ static pipeline *make_display_command (c
  
  	if (pager_cmd) {
  		setenv_less (pager_cmd, title);
@@ -470,7 +477,7 @@ index 6d1cba7..f72867c 100644
  		pipeline_command (p, pager_cmd);
  	}
  	pipeline_ignore_signals (p, 1);
-@@ -1666,7 +1658,7 @@ static pipeline *make_display_command (const char *encoding, const char *title)
+@@ -1673,7 +1665,7 @@ static pipeline *make_display_command (c
  	return p;
  }
  
@@ -479,7 +486,7 @@ index 6d1cba7..f72867c 100644
  /* return a (malloced) temporary name in cat_file's directory */
  static char *tmp_cat_filename (const char *cat_file)
  {
-@@ -1694,7 +1686,6 @@ static char *tmp_cat_filename (const char *cat_file)
+@@ -1701,7 +1693,6 @@ static char *tmp_cat_filename (const cha
  		return name;
  }
  
@@ -487,7 +494,7 @@ index 6d1cba7..f72867c 100644
  /* If delete unlink tmp_cat, else commit tmp_cat to cat_file.
     Return non-zero on error.
   */
-@@ -1767,6 +1758,7 @@ static int commit_tmp_cat (const char *cat_file, const char *tmp_cat,
+@@ -1774,6 +1765,7 @@ static int commit_tmp_cat (const char *c
  
  	return status;
  }
@@ -495,7 +502,7 @@ index 6d1cba7..f72867c 100644
  
  /* TODO: This should all be refactored after work on the decompression
   * library is complete.
-@@ -1803,7 +1795,6 @@ static void cleanup_unlink (void *arg)
+@@ -1810,7 +1802,6 @@ static void cleanup_unlink (void *arg)
  }
  
  #ifdef MAN_CATS
@@ -503,23 +510,23 @@ index 6d1cba7..f72867c 100644
  /* Return pipeline to write formatted manual page to for saving as cat file. */
  static pipeline *open_cat_stream (const char *cat_file, const char *encoding)
  {
-@@ -2025,6 +2016,7 @@ static void format_display (pipeline *decomp,
+@@ -2036,6 +2027,7 @@ static void format_display (decompress *
  	regain_effective_privs ();
  }
  
 +#ifdef MAN_CATS
  /* "Display" a page in catman mode, which amounts to saving it. */
  /* TODO: merge with format_display_and_save? */
- static void display_catman (const char *cat_file, pipeline *decomp,
-@@ -2068,6 +2060,7 @@ static void display_catman (const char *cat_file, pipeline *decomp,
+ static void display_catman (const char *cat_file, decompress *d,
+@@ -2081,6 +2073,7 @@ static void display_catman (const char *
  	pop_cleanup (cleanup_unlink, tmpcat);
  	free (tmpcat);
  }
 +#endif /* MAN_CATS */
  
- static void disable_hyphenation (void *data _GL_UNUSED)
+ static void disable_hyphenation (void *data MAYBE_UNUSED)
  {
-@@ -2268,7 +2261,7 @@ static int display (const char *dir, const char *man_file,
+@@ -2283,7 +2276,7 @@ static int display (const char *dir, con
  		format_cmd = NULL;
  		decomp_errno = errno;
  	}
@@ -528,7 +535,7 @@ index 6d1cba7..f72867c 100644
  	/* Get modification time, for commit_tmp_cat(). */
  	if (man_file && *man_file) {
  		struct stat stb;
-@@ -2278,7 +2271,7 @@ static int display (const char *dir, const char *man_file,
+@@ -2293,7 +2286,7 @@ static int display (const char *dir, con
  		} else
  			man_modtime = get_stat_mtime (&stb);
  	}
@@ -537,7 +544,7 @@ index 6d1cba7..f72867c 100644
  	display_to_stdout = troff;
  #ifdef TROFF_IS_GROFF
  	if (htmlout || gxditview)
-@@ -2418,6 +2411,7 @@ static int display (const char *dir, const char *man_file,
+@@ -2434,6 +2427,7 @@ static int display (const char *dir, con
  			}
  			if (printed)
  				putchar ('\n');
@@ -545,7 +552,7 @@ index 6d1cba7..f72867c 100644
  		} else if (catman) {
  			if (format) {
  				if (!save_cat)
-@@ -2430,6 +2424,7 @@ static int display (const char *dir, const char *man_file,
+@@ -2446,6 +2440,7 @@ static int display (const char *dir, con
  							format_cmd,
  							formatted_encoding);
  			}
@@ -553,29 +560,16 @@ index 6d1cba7..f72867c 100644
  		} else if (format) {
  			/* no cat or out of date */
  			pipeline *disp_cmd;
-@@ -2491,8 +2486,10 @@ static int display (const char *dir, const char *man_file,
- 
- 	free (formatted_encoding);
- 
--	pipeline_free (format_cmd);
--	pipeline_free (decomp);
-+	if (format_cmd)
-+		pipeline_free (format_cmd);
-+	if (decomp)
-+		pipeline_free (decomp);
- 
- 	if (!prompt)
- 		prompt = found;
-@@ -3324,7 +3321,7 @@ static int display_database_check (struct candidate *candp)
+@@ -3347,7 +3342,7 @@ static int display_database_check (struc
  #ifdef MAN_DB_UPDATES
  	if (!exists && !skip) {
- 		debug ("dbdelete_wrapper (%s, %p)\n",
--		       candp->req_name, candp->source);
-+		       candp->req_name, candp->source->addr);
- 		dbdelete_wrapper (candp->req_name, candp->source);
+ 		debug ("dbdelete_wrapper (%s, %p, %s)\n",
+-		       candp->req_name, candp->source, candp->path);
++		       candp->req_name, candp->source->addr, candp->path);
+ 		dbdelete_wrapper (candp->req_name, candp->source, candp->path);
  	}
  #endif /* MAN_DB_UPDATES */
-@@ -3753,17 +3750,20 @@ static int local_man_loop (const char *argv)
+@@ -3946,17 +3941,20 @@ static int local_man_loop (const char *a
  		/* Check that the file exists and isn't e.g. a directory */
  		if (stat (argv, &st)) {
  			error (0, errno, "%s", argv);
@@ -596,7 +590,7 @@ index 6d1cba7..f72867c 100644
  			return NOT_FOUND;
  		}
  
-@@ -3826,6 +3826,11 @@ executable_out:
+@@ -4019,6 +4017,11 @@ executable_out:
  					argv_abs = xstrdup (argv);
  			}
  			lang = lang_dir (argv_abs);
@@ -608,7 +602,7 @@ index 6d1cba7..f72867c 100644
  			free (argv_abs);
  			if (!display (NULL, argv, NULL, argv_base, NULL)) {
  				if (local_mf)
-@@ -4075,7 +4080,16 @@ int main (int argc, char *argv[])
+@@ -4274,7 +4277,16 @@ int main (int argc, char *argv[])
  	umask (022);
  	init_locale ();
  
@@ -626,7 +620,7 @@ index 6d1cba7..f72867c 100644
  	/* Use LANGUAGE only when LC_MESSAGES locale category is
  	 * neither "C" nor "POSIX". */
  	if (internal_locale && strcmp (internal_locale, "C") &&
-@@ -4120,7 +4134,16 @@ int main (int argc, char *argv[])
+@@ -4319,7 +4331,16 @@ int main (int argc, char *argv[])
  	if (external)
  		do_extern (argc, argv);
  
@@ -641,10 +635,9 @@ index 6d1cba7..f72867c 100644
  	get_term (); /* stores terminal settings */
 +#endif
  
- 	/* close this locale and reinitialise if a new locale was 
+ 	/* close this locale and reinitialise if a new locale was
  	   issued as an argument or in $MANOPT */
 diff --git a/src/man_db.conf.in b/src/man_db.conf.in
-index 2942000..b2751f5 100644
 --- a/src/man_db.conf.in
 +++ b/src/man_db.conf.in
 @@ -20,6 +20,14 @@
@@ -662,7 +655,7 @@ index 2942000..b2751f5 100644
  #---------------------------------------------------------
  # set up PATH to MANPATH mapping
  # ie. what man tree holds man pages for what binary directory.
-@@ -34,8 +42,10 @@ MANPATH_MAP	/usr/local/bin		/usr/local/man
+@@ -34,8 +42,10 @@ MANPATH_MAP	/usr/local/bin		/usr/local/m
  MANPATH_MAP	/usr/local/bin		/usr/local/share/man
  MANPATH_MAP	/usr/local/sbin		/usr/local/man
  MANPATH_MAP	/usr/local/sbin		/usr/local/share/man
@@ -686,10 +679,9 @@ index 2942000..b2751f5 100644
  #
  #---------------------------------------------------------
 diff --git a/src/mandb.c b/src/mandb.c
-index 7a63d8d..786e77b 100644
 --- a/src/mandb.c
 +++ b/src/mandb.c
-@@ -203,6 +203,8 @@ struct dbpaths {
+@@ -207,6 +207,8 @@ struct dbpaths {
  #ifdef MAN_OWNER
  extern uid_t ruid;
  extern uid_t euid;
@@ -698,7 +690,7 @@ index 7a63d8d..786e77b 100644
  #endif /* MAN_OWNER */
  
  static gl_list_t manpathlist;
-@@ -554,6 +556,8 @@ out:
+@@ -576,6 +578,8 @@ static int mandb (struct dbpaths *dbpath
  	return amount;
  }
  
@@ -707,25 +699,25 @@ index 7a63d8d..786e77b 100644
  static int process_manpath (const char *manpath, bool global_manpath,
  			    gl_map_t tried_catdirs)
  {
-@@ -601,6 +605,8 @@ static int process_manpath (const char *manpath, bool global_manpath,
- 		free (database);
- 	}
+@@ -617,6 +621,8 @@ static int process_manpath (const char *
+ 	} else
+ 		run_mandb = true;
  
 +	mkcatdirs (manpath, catpath);
 +
  	dbpaths = XZALLOC (struct dbpaths);
  	push_cleanup (cleanup, dbpaths, 0);
  	push_cleanup (cleanup_sigsafe, dbpaths, 1);
-@@ -616,7 +622,7 @@ static int process_manpath (const char *manpath, bool global_manpath,
- 	if (!opt_test && amount)
+@@ -636,7 +642,7 @@ static int process_manpath (const char *
+ 	if (!opt_test && (amount || new_purged || new_strays))
  		finish_up (dbpaths);
  #ifdef MAN_OWNER
 -	if (global_manpath)
-+	if (global_manpath  && (euid == 0 || ruid == 0))
++	if (global_manpath && (euid == 0 || ruid == 0))
  		do_chown (dbpaths);
  #endif /* MAN_OWNER */
  
-@@ -819,8 +825,14 @@ int main (int argc, char *argv[])
+@@ -835,8 +841,14 @@ int main (int argc, char *argv[])
  
  #ifdef MAN_OWNER
  	man_owner = get_man_owner ();
@@ -743,10 +735,9 @@ index 7a63d8d..786e77b 100644
  
  	read_config_file (user);
 diff --git a/src/manp.c b/src/manp.c
-index 5441339..ac46d3f 100644
 --- a/src/manp.c
 +++ b/src/manp.c
-@@ -898,7 +898,7 @@ static char *def_path (enum config_flag flag)
+@@ -906,7 +906,7 @@ static char *def_path (enum config_flag
  
  	/* If we have complete config file failure... */
  	if (!manpath)
@@ -756,10 +747,9 @@ index 5441339..ac46d3f 100644
  	return manpath;
  }
 diff --git a/src/straycats.c b/src/straycats.c
-index b07083c..fbc0c1b 100644
 --- a/src/straycats.c
 +++ b/src/straycats.c
-@@ -37,6 +37,7 @@
+@@ -38,6 +38,7 @@
  #include <sys/types.h>
  #include <sys/stat.h>
  #include <unistd.h>
@@ -768,12 +758,11 @@ index b07083c..fbc0c1b 100644
  
  #include "canonicalize.h"
 diff --git a/src/ult_src.c b/src/ult_src.c
-index 43e7a9b..93bd30c 100644
 --- a/src/ult_src.c
 +++ b/src/ult_src.c
-@@ -336,10 +336,15 @@ const char *ult_src (const char *name, const char *path,
+@@ -342,10 +342,15 @@ const char *ult_src (const char *name, c
  		}
- 		pipeline_start (decomp);
+ 		decompress_start (decomp);
  
 -		/* make sure that we skip over any comments */
 +		/*
@@ -781,7 +770,7 @@ index 43e7a9b..93bd30c 100644
 +		 * ... even if we handle TCL/TK manual pages
 +		 */
  		do {
- 			buffer = pipeline_readline (decomp);
+ 			buffer = decompress_readline (decomp);
 -		} while (buffer && STRNEQ (buffer, ".\\\"", 3));
 +		} while (buffer && *buffer &&
 +			 (STRNEQ (buffer, ".\\\"", 3) ||
@@ -789,3 +778,14 @@ index 43e7a9b..93bd30c 100644
  
  		include = test_for_include (buffer);
  		if (include) {
+--- a/src/tests/get-mtime.c
++++ b/src/tests/get-mtime.c	2022-08-18 10:24:04.881594094 +0000
+@@ -69,7 +69,7 @@ int main (int argc, char **argv)
+ 	if (lstat (path, &st) < 0)
+ 		fatal (errno, "can't lstat %s", path);
+ 	ts = get_stat_mtime (&st);
+-	printf ("%ld.%09ld\n", (long) ts.tv_sec, ts.tv_nsec);
++	printf ("%ld.%0.09ld\n", (long) ts.tv_sec, ts.tv_nsec);
+ 
+ 	exit (OK);
+ }

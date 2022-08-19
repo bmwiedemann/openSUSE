@@ -871,4 +871,41 @@
   of file /0 (bnc#1202377) (forwarded request 995205 from suse_weber)</comment>
     <requestid>995603</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>8791fc6fb458da81697bb92e639788fd</srcmd5>
+    <version>2.10.0</version>
+    <time>1660924399</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid that mandb-symlink-target-timestamp fools us 
+
+- Workaround missing groff-full to get refer(1), the bibliographic
+  preprocessor found
+
+- Update to man-db 2.10.0 (4 February 2022)
+  * Manpath deduplication no longer mishandles the case where another entry
+    in the manpath is a suffix of a candidate path to append.
+  * Fix potential crash in path searching if `getcwd` fails for reasons other
+    than running out of memory.
+  * Fix crash in `globbing` test tool if run with no non-option arguments.
+  * `lexgrog` now produces output in the user's locale.
+  * Downgrade &quot;malformed .lf request&quot; warning to a debug message and rephrase
+    it somewhat, since `.lf` requests can use `*roff` arithmetic expressions
+    and we can't reasonably parse those.
+  * Avoid modifying the database without changing its mtime, which had been
+    possible since 2.7.0 if `mandb`'s purge phase found work to do but the
+    main phase didn't, and which confused some backup systems into reporting
+    possible filesystem corruption.
+  * `man` no longer inadvertently modifies the `MANSECT` environment variable
+    before passing it on to its subprocesses.
+  * `mandb` now stores the mtime of link targets as the mtime of their
+    corresponding database entries, rather than sometimes storing the mtime
+    of the link instead.
+  * Since man-db 2.4.2, `man` has behaved as if the `-l` option was given if
+    a manual page argument contains a slash.  Since man-db 2.5.6, this has
+    interacted slightly poorly with the subpage feature, emitting spurious
+    error messages if given multiple manual page arguments some of which
+    include a slash.  `man` no longer emits spurious error messages in this
+    case.</comment>
+    <requestid>997718</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,7 @@
 %global optflags %{optflags} %{**}
 %bcond_without  sdtimer
 Name:           man
-Version:        2.9.4
+Version:        2.10.0
 Release:        0
 Summary:        A Program for Displaying man Pages
 License:        GPL-2.0-or-later
@@ -43,7 +43,6 @@ Source7:        man-db-create.service
 Source8:        manpath.csh
 Source9:        manpath.sh
 Patch0:         man-db-2.3.19deb4.0-groff.dif
-Patch1:         man-db-2.7.1-security4.dif
 Patch2:         man-db-2.7.1-firefox.dif
 Patch3:         man-db-2.6.3-chinese.dif
 # PATCH-FEATURE-OPENSUSE man-db-2.7.1-zio.dif -- Allow using libzio for decompression
@@ -60,8 +59,6 @@ Patch8:         man-db-2.9.4.patch
 Patch9:         man-db-2.6.3-man0.dif
 Patch10:        man-db-2.9.4-alternitive.dif
 Patch11:        harden_man-db.service.patch
-# PATCH-FIX-SUSE ppc64le float128 transition
-Patch12:        gnulib-ppc64le.patch
 BuildRequires:  automake
 BuildRequires:  flex
 BuildRequires:  gdbm-devel
@@ -72,6 +69,7 @@ BuildRequires:  less
 BuildRequires:  libalternatives-devel
 BuildRequires:  libpipeline-devel >= 1.5.0
 BuildRequires:  libzio-devel
+BuildRequires:  lzip
 BuildRequires:  man-pages
 BuildRequires:  pkgconfig
 BuildRequires:  po4a
@@ -101,21 +99,17 @@ printer (using groff).
 %prep
 %setup -q -n man-db-%{version}
 %patch0 -b .groff
-%patch1 -b .secu4
 %patch2 -b .firefox
 %patch3 -b .chinese
 %patch4 -b .zio
 %patch5 -b .listall
-%patch6 -p1 -b .p12
-%patch7 -p1
-%patch8 -p1
-%patch9 -b .s10
+%patch6 -p1 -b .p6
+%patch7 -p1 -b .p7
+%patch8 -p1 -b .p8
+%patch9 -b .p9
 %patch10 -b .libalernative
 rm -f configure
-%patch11 -p1
-%ifarch ppc64le
-%patch12
-%endif
+%patch11 -p1 -b .p11
 
 %build
 %global optflags %{optflags} -funroll-loops -pipe -Wall
@@ -149,6 +143,15 @@ for d in $(cat man/LINGUAS*) ; do
 done
 LIBS="-lalternatives"
 export LINGUAS LIBS
+
+# Hack as otherwise
+# BuildRequires:  groff-full
+# is required
+mkdir bin
+ln -sf /bin/true bin/refer
+ln -sf /bin/true bin/w3m
+PATH=$PATH:${PWD}/bin
+export PATH
 
 # Create configure
 aclocal  -I ${PWD} -I ${PWD}/m4 -I ${PWD}/gl/m4
@@ -321,7 +324,7 @@ then
 fi
 
 %files -f man-db.lang
-%license docs/COPYING
+%license COPYING
 %doc ChangeLog
 %doc %{_docdir}/man/man-db-manual*
 %config %{_sysconfdir}/manpath.config

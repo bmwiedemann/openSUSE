@@ -1,6 +1,6 @@
 --- man/man1/man.man1
 +++ man/man1/man.man1	2018-11-23 14:23:22.531297359 +0000
-@@ -186,6 +186,9 @@ numbers of the manual followed by the ty
+@@ -93,6 +93,9 @@ numbers of the manual followed by the ty
  .TS
  tab (@);
  l lx.
