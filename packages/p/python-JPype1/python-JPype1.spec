@@ -23,7 +23,7 @@
 # https://build.opensuse.org/package/show/Java:packages/sqlite-jdbc is not in Factory
 %bcond_with     test_jdbc
 Name:           python-JPype1
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Python to Java bridge
 License:        Apache-2.0
@@ -39,6 +39,7 @@ BuildRequires:  python-rpm-macros
 Requires:       java-15-openjdk-headless
 Recommends:     python-numpy
 Suggests:       python-typing_extensions
+ExcludeArch:    %{ix86} armv7
 %if %{with test}
 # SECTION test requirements
 BuildRequires:  %{python_module jedi}
