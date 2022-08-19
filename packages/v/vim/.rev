@@ -6190,4 +6190,33 @@ always built-in because vim has direct perl dependencies anyway.
   * Confusing variable name.</comment>
     <requestid>995026</requestid>
   </revision>
+  <revision rev="319" vrev="1">
+    <srcmd5>70a1494179bb4ddcca414595a96adcde</srcmd5>
+    <version>9.0.0224</version>
+    <time>1660924395</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.0224, fixes the following problems
+- fix boo#1202515 - CVE-2022-2845
+  * indexof() may leak memory.
+  * Cursor in wrong position when inserting after virtual text. (Ben Jackson)
+  * Redraw flags are not named specifically.
+  * Stacktrace not shown when debugging.
+  * The override flag has no effect for virtual text. (Ben Jackson)
+  * Build error with small features.
+  * 'list' mode does not work properly with virtual text.
+  * Invalid memory access when compiling :lockvar.
+  * Invalid memory access when compiling :unlet.
+  * Using freed memory with error in assert argument.
+  * Splitting a line may duplicate virtual text. (Ben Jackson)
+  * Not passing APC_INDENT flag.
+  * Undo earlier test sometimes fails on MS-Windows.
+  * 'shellslash' works differently when sourcing a script again.
+  * Reading before the start of the line.
+  * Cannot make a funcref with &quot;s:func&quot; in a def function in legacy script.
+  * Invalid memory access with for loop over NULL string.
+  * Accessing freed memory if compiling nested function fails.
+  * No good reason why text objects are only in larger builds.
+  * Typo in diffmode test.</comment>
+    <requestid>997693</requestid>
+  </revision>
 </revisionlist>

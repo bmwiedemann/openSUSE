@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Aug 18 08:18:06 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.0224, fixes the following problems
+- fix boo#1202515 - CVE-2022-2845
+  * indexof() may leak memory.
+  * Cursor in wrong position when inserting after virtual text. (Ben Jackson)
+  * Redraw flags are not named specifically.
+  * Stacktrace not shown when debugging.
+  * The override flag has no effect for virtual text. (Ben Jackson)
+  * Build error with small features.
+  * 'list' mode does not work properly with virtual text.
+  * Invalid memory access when compiling :lockvar.
+  * Invalid memory access when compiling :unlet.
+  * Using freed memory with error in assert argument.
+  * Splitting a line may duplicate virtual text. (Ben Jackson)
+  * Not passing APC_INDENT flag.
+  * Undo earlier test sometimes fails on MS-Windows.
+  * 'shellslash' works differently when sourcing a script again.
+  * Reading before the start of the line.
+  * Cannot make a funcref with "s:func" in a def function in legacy script.
+  * Invalid memory access with for loop over NULL string.
+  * Accessing freed memory if compiling nested function fails.
+  * No good reason why text objects are only in larger builds.
+  * Typo in diffmode test.
+
+-------------------------------------------------------------------
 Sun Aug 14 09:44:23 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0203, fixes the following problems
