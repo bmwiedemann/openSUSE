@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Thu Aug 18 16:43:36 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v8.3.3
+- This library was lifted from elasticsearch-py and then
+  transformed to be used across all Elastic services rather than
+  only Elasticsearch.
