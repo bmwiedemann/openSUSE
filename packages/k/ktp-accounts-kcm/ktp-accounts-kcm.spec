@@ -20,7 +20,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ktp-accounts-kcm
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Configuration module to set up Telepathy accounts
 License:        LGPL-2.1-or-later
@@ -60,6 +60,8 @@ Recommends:     telepathy-rakia
 Recommends:     telepathy-salut
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
+# Only build on archs where kaccounts-providers/QtWebEngine are available
+ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 
 %description
 This is a KControl Module which handles adding/editing/removing Telepathy
