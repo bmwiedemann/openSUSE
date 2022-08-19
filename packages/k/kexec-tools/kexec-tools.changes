@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 17 21:46:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.25:
+  * kexec-tools: Remove duplicate ultoa() definitions and redefine it
+  * i386: pass rng seed via setup_data
+  * kexec-tools: mips: Pass initrd parameter via cmdline
+  * arm64/crashdump-arm64: increase CRASH_MAX_MEMORY_RANGES to 32k
+
+-------------------------------------------------------------------
 Wed Apr 27 20:16:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.24:
