@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kleopatra
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Certificate manager and GUI for OpenPGP and CMS cryptography
 License:        GPL-2.0-or-later
@@ -32,6 +32,10 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
+# c++-20 required
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc10-c++
+%endif
 BuildRequires:  libboost_headers-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Codecs)
@@ -70,7 +74,11 @@ Kleopatra is a certificate manager and GUI for OpenPGP and CMS cryptography.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=OFF
+%if 0%{?suse_version} == 1500
+export CXX=g++-10
+%endif
+%cmake_kf5 -d build
+
 %cmake_build
 
 %install
@@ -101,11 +109,10 @@ Kleopatra is a certificate manager and GUI for OpenPGP and CMS cryptography.
 %{_kf5_iconsdir}/hicolor/*/apps/kleopatra.png
 %{_kf5_libdir}/libkleopatraclientcore.so*
 %{_kf5_libdir}/libkleopatraclientgui.so*
-%{_kf5_servicesdir}/kleopatra_*.desktop
-%dir %{_kf5_plugindir}/pim/
-%dir %{_kf5_plugindir}/pim/kcms
-%dir %{_kf5_plugindir}/pim/kcms/kleopatra
-%{_kf5_plugindir}/pim/kcms/kleopatra/kleopatra_config_gnupgsystem.so
+%dir %{_kf5_plugindir}/pim5/
+%dir %{_kf5_plugindir}/pim5/kcms
+%dir %{_kf5_plugindir}/pim5/kcms/kleopatra
+%{_kf5_plugindir}/pim5/kcms/kleopatra/kleopatra_config_gnupgsystem.so
 %{_kf5_sharedir}/kconf_update/
 %{_kf5_sharedir}/kleopatra/
 %{_kf5_sharedir}/kwatchgnupg/
