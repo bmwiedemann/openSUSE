@@ -19,7 +19,7 @@
 %define rname   kdev-php
 %bcond_without released
 Name:           kdevelop5-plugin-php
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        PHP plugin for Kdevelop5 Integrated Development Environment
 License:        GPL-2.0-or-later
@@ -45,6 +45,8 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 Requires:       kdevelop5
 Recommends:     %{name}-lang
 Conflicts:      kdevelop4-plugin-php
+# Only build on archs where Qt5WebEngine is available
+ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 
 %description
 PHP plugin for Kdevelop Integrated Development Environment
