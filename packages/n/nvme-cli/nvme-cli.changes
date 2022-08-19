@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 17 19:26:17 UTC 2022 - dmueller@suse.com
+
+- Update to version 2.1.2:
+  * build: Update version to v2.1.2
+  * wrapper: Update SPDIX license
+  * wrapper: Call library version of nvme_init_copy_range_f1
+  * Revert "udev: re-read the discovery log page when a discovery controller reconnected"
+  * nvme: Simplify ns list identify
+  * meson: we don't need a c++ compiler
+  * plugins/ocp: drop unused fd argument
+  * plugins/wdc: remove fd argument from print functions
+  * plugins/wdc: fix memset() on the address of a pointer
+  * plugins/solidigm: fix return value on format parse failure
+  * plugins/wdc: prevent duplicate close on NVMe device
+
+-------------------------------------------------------------------
 Wed Aug  3 08:04:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 2.1.1:

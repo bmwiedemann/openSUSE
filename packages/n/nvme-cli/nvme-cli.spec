@@ -17,7 +17,7 @@
 
 
 Name:           nvme-cli
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
