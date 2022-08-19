@@ -315,6 +315,7 @@ Patch789:       0001-Workaround-volatile-efi-boot-variable.patch
 Patch790:       0001-30_uefi-firmware-fix-printf-format-with-null-byte.patch
 Patch791:       0001-i386-pc-build-btrfs-zstd-support-into-separate-modul.patch
 Patch792:       0001-templates-Follow-the-path-of-usr-merged-kernel-confi.patch
+Patch793:       0001-tpm-Pass-unknown-error-as-non-fatal-but-debug-print-.patch
 Patch794:       0001-Filter-out-POSIX-locale-for-translation.patch
 Patch795:       0001-ieee1275-implement-FCP-methods-for-WWPN-and-LUNs.patch
 Patch796:       0001-disk-diskfilter-Use-nodes-in-logical-volume-s-segmen.patch
@@ -422,7 +423,6 @@ Patch897:       0013-cryptodisk-Support-key-protectors.patch
 Patch898:       0014-util-grub-protect-Add-new-tool.patch
 Patch899:       fix-tpm2-build.patch
 Patch900:       0001-crytodisk-fix-cryptodisk-module-looking-up.patch
-Patch901:       0001-tpm-Log-EFI_VOLUME_FULL-and-continue.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

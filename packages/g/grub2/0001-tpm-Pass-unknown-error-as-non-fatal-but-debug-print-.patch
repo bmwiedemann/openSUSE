@@ -1,0 +1,29 @@
+From 2cecb472ffba4dbc534f4ce3346a453762371c52 Mon Sep 17 00:00:00 2001
+From: Mathieu Trudel-Lapierre <mathieu.tl@gmail.com>
+Date: Fri, 25 Oct 2019 10:27:54 -0400
+Subject: [PATCH] tpm: Pass unknown error as non-fatal, but debug print the
+ error we got
+
+Signed-off-by: Mathieu Trudel-Lapierre <mathieu.trudel-lapierre@canonical.com>
+Patch-Name: ubuntu-tpm-unknown-error-non-fatal.patch
+---
+ grub-core/commands/efi/tpm.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/commands/efi/tpm.c b/grub-core/commands/efi/tpm.c
+index a97d85368..1e399a964 100644
+--- a/grub-core/commands/efi/tpm.c
++++ b/grub-core/commands/efi/tpm.c
+@@ -145,7 +145,8 @@ grub_efi_log_event_status (grub_efi_status_t status)
+     case GRUB_EFI_NOT_FOUND:
+       return grub_error (GRUB_ERR_UNKNOWN_DEVICE, N_("TPM unavailable"));
+     default:
+-      return grub_error (GRUB_ERR_UNKNOWN_DEVICE, N_("Unknown TPM error"));
++      grub_dprintf("tpm", "Unknown TPM error: %" PRIdGRUB_SSIZE, status);
++      return 0;
+     }
+ }
+ 
+-- 
+2.31.1
+
