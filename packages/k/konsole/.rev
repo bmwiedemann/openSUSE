@@ -1269,4 +1269,12 @@
     <comment></comment>
     <requestid>989029</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>f6515f2a35f3d28129256044282af94e</srcmd5>
+    <version>22.08.0</version>
+    <time>1660924333</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.08.0 (forwarded request 997667 from cgiboudeaux)</comment>
+    <requestid>997877</requestid>
+  </revision>
 </revisionlist>
