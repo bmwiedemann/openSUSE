@@ -1,7 +1,7 @@
 #
 # spec file for package cantor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           cantor
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Worksheet GUI for mathematical software
 License:        GPL-2.0-or-later
@@ -70,6 +70,8 @@ Recommends:     maxima
 Recommends:     octave
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
+# Only build on archs where Qt5WebEngine is available
+ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 
 %description
 A frontend to several existing mathematical software such as R, Sage
