@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           korganizer
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Personal Organizer
 License:        GPL-2.0-only
@@ -58,7 +58,6 @@ BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KontactInterface)
 BuildRequires:  cmake(KF5Ldap)
 BuildRequires:  cmake(KF5Libkdepim)
-BuildRequires:  cmake(KF5MailCommon)
 BuildRequires:  cmake(KF5MailTransport)
 BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5NewStuff)
@@ -76,8 +75,6 @@ Requires:       kdepim-addons
 Requires:       kdepim-runtime
 Provides:       korganizer5 = %{version}
 Obsoletes:      korganizer5 < %{version}
-# It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 
 %description
 KOrganizer is a calendar application by KDE.
@@ -126,24 +123,24 @@ rm %{buildroot}%{_kf5_libdir}/*.so
 %{_kf5_libdir}/libkorganizer_core.so.*
 %{_kf5_libdir}/libkorganizer_interfaces.so.*
 %{_kf5_libdir}/libkorganizerprivate.so.*
-%dir %{_kf5_plugindir}/pim/
-%dir %{_kf5_plugindir}/pim/kcms
-%dir %{_kf5_plugindir}/pim/kcms/korganizer
-%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_configcolorsandfonts.so
-%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_configdesignerfields.so
-%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_configfreebusy.so
-%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_configgroupscheduling.so
-%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_configmain.so
-%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_configplugins.so
-%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_configtime.so
-%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_configviews.so
-%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_userfeedback.so
-%dir %{_kf5_plugindir}/pim/kcms/summary
-%{_kf5_plugindir}/pim/kcms/summary/kcmapptsummary.so
-%{_kf5_plugindir}/pim/kcms/summary/kcmsdsummary.so
-%{_kf5_plugindir}/pim/kcms/summary/kcmtodosummary.so
-%dir %{_kf5_plugindir}/kontact5/
-%{_kf5_plugindir}/kontact5/kontact_*.so
+%dir %{_kf5_plugindir}/pim5/
+%dir %{_kf5_plugindir}/pim5/kcms
+%dir %{_kf5_plugindir}/pim5/kcms/korganizer
+%dir %{_kf5_plugindir}/pim5/kontact
+%{_kf5_plugindir}/pim5/kcms/korganizer/korganizer_configcolorsandfonts.so
+%{_kf5_plugindir}/pim5/kcms/korganizer/korganizer_configdesignerfields.so
+%{_kf5_plugindir}/pim5/kcms/korganizer/korganizer_configfreebusy.so
+%{_kf5_plugindir}/pim5/kcms/korganizer/korganizer_configgroupscheduling.so
+%{_kf5_plugindir}/pim5/kcms/korganizer/korganizer_configmain.so
+%{_kf5_plugindir}/pim5/kcms/korganizer/korganizer_configplugins.so
+%{_kf5_plugindir}/pim5/kcms/korganizer/korganizer_configtime.so
+%{_kf5_plugindir}/pim5/kcms/korganizer/korganizer_configviews.so
+%{_kf5_plugindir}/pim5/kcms/korganizer/korganizer_userfeedback.so
+%dir %{_kf5_plugindir}/pim5/kcms/summary
+%{_kf5_plugindir}/pim5/kcms/summary/kcmapptsummary.so
+%{_kf5_plugindir}/pim5/kcms/summary/kcmsdsummary.so
+%{_kf5_plugindir}/pim5/kcms/summary/kcmtodosummary.so
+%{_kf5_plugindir}/pim5/kontact/kontact_*.so
 %{_kf5_plugindir}/korganizerpart.so
 %{_kf5_servicetypesdir}/korganizerpart.desktop
 %dir %{_kf5_sharedir}/dbus-1/services/
