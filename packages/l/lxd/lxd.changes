@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 17 17:06:49 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to using systemd-sysusers
+
+-------------------------------------------------------------------
 Mon Jun 27 23:57:42 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 5.3. The full upstream changelog is available from:

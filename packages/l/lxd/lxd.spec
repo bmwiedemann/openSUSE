@@ -44,6 +44,7 @@ Source:         https://linuxcontainers.org/downloads/%{name}/%{name}-%{version}
 Source1:        https://linuxcontainers.org/downloads/%{name}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        %{name}-rpmlintrc
+Source4:        %{name}.sysusers
 # LXD upstream doesn't use systemd, they use snapd.
 Source100:      %{name}.service
 # LXD upstream doesn't have a sample config file.
@@ -57,7 +58,8 @@ BuildRequires:  libacl-devel
 BuildRequires:  libcap-devel
 BuildRequires:  liblz4-devel
 BuildRequires:  patchelf
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
+BuildRequires:  sysuser-tools
 BuildRequires:  rsync
 BuildRequires:  sqlite3-devel >= 3.25
 BuildRequires:  pkgconfig(libudev)
@@ -108,6 +110,7 @@ Recommends:     thin-provisioning-tools
 # shipped on 32-bit openSUSE).
 Recommends:     criu >= 2.0
 Suggests:       zfs
+%sysusers_requires
 
 %description
 LXD is a system container manager. It offers a user experience
@@ -127,6 +130,7 @@ Bash command line completion support for %{name}.
 %setup -q
 
 %build
+%sysusers_generate_pre %{SOURCE4} %{name} %{name}.conf
 # Make sure any leftover go build caches are gone.
 go clean -cache
 
@@ -355,6 +359,9 @@ install -D -m 0644 %{S:201} %{buildroot}%{_sysconfdir}/dnsmasq.d/60-lxd.conf
 install -d -m 0711 %{buildroot}%{_localstatedir}/lib/%{name}
 install -d -m 0755 %{buildroot}%{_localstatedir}/log/%{name}
 
+# sysusers.d
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
+
 %if 0%{arch_vm_support} != 0
 # In order for VM support in LXD to function, you need to have OVMF configured
 # in the way it expects. In particular, LXD depends on specific filenames for
@@ -367,9 +374,7 @@ ln -s OVMF_VARS.fd %{buildroot}%{lxd_ovmfdir}/OVMF_VARS.ms.fd
 
 %fdupes %{buildroot}
 
-%pre
-# Group which owns the lxd socket, which allows people to administer it.
-getent group %{name} >/dev/null || groupadd -r %{name}
+%pre -f %{name}.pre
 
 # /etc/sub[ug]id should exist already (it's part of shadow-utils), but older
 # distros don't have it. LXD just parses it and doesn't need any special
@@ -427,6 +432,7 @@ grep -q '^root:' /etc/subgid || \
 
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service
+%{_sysusersdir}/%{name}.conf
 
 %dir %{_localstatedir}/lib/%{name}
 %dir %{_localstatedir}/log/%{name}
