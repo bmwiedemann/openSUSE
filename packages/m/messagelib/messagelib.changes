@@ -1,9 +1,32 @@
 -------------------------------------------------------------------
+Sun Aug 14 09:43:59 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.0/
+
+-------------------------------------------------------------------
+Sun Aug  7 07:22:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.90
+  * New feature release
+- Drop patches, fixed upstream:
+  * 0001-Add-missing-find_dependency-calls.patch
+  * 0001-Use-WebEngineWidgets-as-WebEngine-is-not-define-in-q.patch
+
+-------------------------------------------------------------------
 Sun Aug  7 07:17:34 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream changes to fix issues detected by CMake 3.24:
   * 0001-Add-missing-find_dependency-calls.patch
   * 0001-Use-WebEngineWidgets-as-WebEngine-is-not-define-in-q.patch
+
+-------------------------------------------------------------------
+Sat Jul 16 08:28:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.80
+  * New feature release
 
 -------------------------------------------------------------------
 Tue Jul  5 17:04:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
