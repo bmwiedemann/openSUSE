@@ -16,10 +16,11 @@
 #
 
 
+%global __requires_exclude qmlimport\\(org\\.kde\\.kalendar.*
 %define kf5_version 5.91.0
 %bcond_without released
 Name:           kalendar
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Calendar Application
 License:        GPL-3.0-only
@@ -29,8 +30,6 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# No QtWebEngine for other archs
-ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{mips} %{riscv}
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  cmake(KF5Akonadi) >= 5.19.0
 BuildRequires:  cmake(KF5AkonadiContact) >= 5.19.0
@@ -65,6 +64,8 @@ Requires:       qt5qmlimport(QtQuick.Dialogs.1)
 Requires:       qt5qmlimport(org.kde.kitemmodels.1)
 # Got vendored for now
 #Requires:       qt5qmlimport(org.kde.kirigamiaddons.treeview.1)
+# it only briefly existed in the devel project, no need for Provides/Obsoletes
+Conflicts:      kalendar-imports
 
 %description
 Calendar application using Akonadi to sync with external services (NextCloud, GMail, ...).
@@ -86,11 +87,16 @@ Calendar application using Akonadi to sync with external services (NextCloud, GM
 
 %files
 %license LICENSES/*
+%dir %{_kf5_qmldir}/org/kde/kalendar/
 %{_kf5_applicationsdir}/org.kde.kalendar.desktop
 %{_kf5_appstreamdir}/org.kde.kalendar.appdata.xml
 %{_kf5_bindir}/kalendar
+%{_kf5_debugdir}/akonadi.quick.categories
 %{_kf5_debugdir}/kalendar.categories
+%{_kf5_debugdir}/kalendar.contact.categories
 %{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.kalendar.svg
+%{_kf5_qmldir}/org/kde/akonadi/
+%{_kf5_qmldir}/org/kde/kalendar/contact/
 
 %if %{with released}
 %files lang -f %{name}.lang
