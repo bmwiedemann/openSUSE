@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kblocks
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        A classic falling blocks game
 License:        GPL-2.0-or-later
@@ -86,7 +86,6 @@ KBlocks is the KDE version of the classic falling blocks game.
 %{_kf5_debugdir}/kblocks.categories
 %{_kf5_iconsdir}/hicolor/*/*/kblocks.*
 %{_kf5_knsrcfilesdir}/kblocks.knsrc
-%{_kf5_kxmlguidir}/kblocks/
 
 %if %{with released}
 %files lang -f %{name}.lang
