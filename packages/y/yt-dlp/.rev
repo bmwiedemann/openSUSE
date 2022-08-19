@@ -103,4 +103,12 @@
     <comment>- Update to release 2022.08.14</comment>
     <requestid>995075</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f0323a38d145af55d7f12674bbc40855</srcmd5>
+    <version>2022.08.19</version>
+    <time>1660924574</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2022.08.19</comment>
+    <requestid>998046</requestid>
+  </revision>
 </revisionlist>

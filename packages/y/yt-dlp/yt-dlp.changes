@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 19 00:46:17 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.08.19
+  * jsinterp: Fix for new youtube players and related
+    improvements
+  * extractor/youtube: Fix error reporting of "Incomplete data"
+  * extractor/youtube: Improve format sorting for IOS formats
+
+-------------------------------------------------------------------
 Sun Aug 14 22:37:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2022.08.14
