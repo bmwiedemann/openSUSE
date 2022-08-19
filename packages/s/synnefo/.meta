@@ -1,8 +1,0 @@
-<package name="synnefo" project="openSUSE:Factory">
-  <title>Synnefo</title>
-  <description>Qt color management front-end
-
-Synnefo uses the Oyranos CMS to provide the ability to set and examine
-device profiles, as well as to change system-wide color settings.</description>
-  <devel project="multimedia:color_management" package="synnefo"/>
-</package>
