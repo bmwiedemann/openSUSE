@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           dolphin
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
@@ -152,6 +152,8 @@ Provides translations for the "%{name}" package.
 %{_kf5_dbusinterfacesdir}/org.freedesktop.FileManager1.xml
 %{_kf5_sharedir}/dbus-1/services/org.kde.dolphin.FileManager1.service
 %{_kf5_sharedir}/kglobalaccel/org.kde.dolphin.desktop
+%dir %{_kf5_sharedir}/kconf_update
+%{_kf5_sharedir}/kconf_update/dolphin_detailsmodesettings.upd
 %{_userunitdir}/plasma-dolphin.service
 
 %files part
@@ -161,14 +163,11 @@ Provides translations for the "%{name}" package.
 %{_kf5_libdir}/libdolphinprivate.so.*
 %dir %{_kf5_plugindir}/dolphin
 %dir %{_kf5_plugindir}/dolphin/kcms
-%{_kf5_plugindir}/dolphin/kcms/libkcm_dolphin*.so
+%{_kf5_plugindir}/dolphin/kcms/kcm_dolphin*.so
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/parts
 %{_kf5_plugindir}/kf5/parts/dolphinpart.so
 %{_kf5_servicesdir}/dolphinpart.desktop
-%{_kf5_servicesdir}/kcmdolphingeneral.desktop
-%{_kf5_servicesdir}/kcmdolphinnavigation.desktop
-%{_kf5_servicesdir}/kcmdolphinviewmodes.desktop
 %{_kf5_servicetypesdir}/fileviewversioncontrolplugin.desktop
 
 %files -n libdolphinvcs5
