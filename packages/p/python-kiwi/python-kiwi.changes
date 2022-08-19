@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Wed Aug 10 20:40:42 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.46 → 9.24.47
+
+-------------------------------------------------------------------
+Wed Aug 10 20:39:17 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Revert "EFI Filesystem must be Fat32 formatted"
+
+  Using fat32 causes failed boots on e.g AWS EC2 arm.
+  This must be solved differently with an attribute
+  to configure it.
+
+  This reverts commit b8641bdc6825423f8c65b55c8d0870b38874a566.
+
+-------------------------------------------------------------------
+Tue Aug 09 18:24:11 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.45 → 9.24.46
+
+-------------------------------------------------------------------
+Tue Aug 09 15:43:44 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support URIs with credentials in solver plugin
+
+  check if the URI string contains credentials and
+  extract/trim them from the uri object. The urlparse
+  class does not recognize this information as a valid
+  URI and throws an exception
+
+-------------------------------------------------------------------
+Sun Aug 07 19:14:01 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed test-image-disk-legacy
+
+  Increase size of embedded EFI fat image needed for EFI
+  bootable install ISO. Due to the increased size of the
+  custom kiwi initrd the default size for the FAT image
+  is too small
+
+-------------------------------------------------------------------
+Sat Aug 06 20:28:30 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support custom size for embedded EFI FAT image
+
+  For ISO images (live and install) the EFI boot requires an embedded
+  FAT image. As of now a fixed size of 20M was used which leads to a
+  problem if the EFI image or the initrd or the kernel is bigger than
+  20M. With the new attribute:
+
+  efifatimagesize="nonNegativeInteger"
+
+  we can now set a different value for the FAT image. Please note the
+  value must be aligned to the also customizable efipartsize value
+  which allows to configure the size of the EFI partition
+
+-------------------------------------------------------------------
+Fri Aug 05 11:28:54 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed linter complaints after flake update
+
+  flake now complains about E275 missing whitespace
+  after keyword for the way 'del' is used. This commit
+  fixes it
+
+-------------------------------------------------------------------
+Thu Aug 04 01:27:07 CEST 2022 - J Mixer <j.mixer135@gmail.com>
+
+- Added a NOTE: section to explain the finer points of adding tools to a
+  dracut hook.
+
+-------------------------------------------------------------------
+Sat Jul 30 17:54:20 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixup btrfs based legacy kiwi initrd test
+
+-------------------------------------------------------------------
+Thu Jul 21 13:46:52 CEST 2022 - David Cassany <dcassany@suse.com>
+
+- Fix race condition in runtime_config_test
+
+  This commit instead of setting the global variable of the runtime config
+  file patches it. This is relevant if running unit tests in parallel,
+  where global variables are shared if not patched.
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Tue Jul 12 16:39:08 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- EFI Filesystem must be Fat32 formatted
+
+  Given the documentation from Microsoft the EFI partition
+  must be a fat32 format. fat16 is still supported but
+  unexpected. This Fixes #2141
+
+-------------------------------------------------------------------
+Tue Jul 12 15:51:55 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed typo in overview page
+
+  prevent word duplication. This Fixes #2016
+
+-------------------------------------------------------------------
 Tue Jul 12 09:46:16 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.24.44 → 9.24.45
