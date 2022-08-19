@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kalgebra
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Math Expression Solver and Plotter
 License:        GPL-2.0-or-later
@@ -56,6 +56,7 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(eigen3)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 # It can only build on the same platforms as Qt Webengine
