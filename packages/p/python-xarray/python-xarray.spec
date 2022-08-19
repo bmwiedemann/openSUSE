@@ -17,9 +17,8 @@
 
 
 %{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-xarray
-Version:        2022.3.0
+Version:        2022.6.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
@@ -31,41 +30,45 @@ Patch0:         local_dataset.patch
 # PATCH-FIX-UPSTREAM scipy-interpolate.patch gh#pydata/xarray#5375 mcepl@suse.com
 # Add missing import scipy.interpolate
 Patch1:         scipy-interpolate.patch
-BuildRequires:  %{python_module numpy >= 1.18}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module numpy >= 1.19}
 BuildRequires:  %{python_module numpy-devel >= 1.14}
-BuildRequires:  %{python_module pandas >= 1.1}
+BuildRequires:  %{python_module packaging >= 20.0}
+BuildRequires:  %{python_module pandas >= 1.2}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.15
-Requires:       python-pandas >= 0.25
+Requires:       python-numpy >= 1.19
+Requires:       python-packaging >= 20.0
+Requires:       python-pandas >= 1.2
 Provides:       python-xray = %{version}
 Obsoletes:      python-xray < %{version}
 BuildArch:      noarch
-Suggests:       python-dask-all >= 2.30
+Suggests:       python-dask-all >= 2021.4
 # SECTION extras accel
-Recommends:     python-scipy >= 1.5
+Recommends:     python-scipy >= 1.6
 Recommends:     python-bottleneck
-Recommends:     python-numbagg >= 0.51
+Recommends:     python-flox
+Recommends:     python-numbagg >= 0.53
 # /SECTION
 # SECTION extras viz
-Suggests:       python-matplotlib >= 3.3
+Suggests:       python-matplotlib >= 3.4
 Suggests:       python-seaborn >= 0.11
 Suggests:       python-nc-time-axis
 #/SECTION
 # SECTION extras io
 Suggests:       python-netCDF4
-Suggests:       python-h5netcdf
+Suggests:       python-h5netcdf >= 0.11
 Suggests:       python-pydap
-Suggests:       python-zarr >= 2.5
+Suggests:       python-zarr >= 2.8
 Suggests:       python-fsspec
-Suggests:       python-cftime >= 1.2
-Suggests:       python-rasterio
+Suggests:       python-cftime >= 1.4
+Suggests:       python-rasterio >= 1.2
 Suggests:       python-cfgrib
-Suggests:       python-distributed >= 2.30
-Suggests:       python-pint >= 0.16
-Suggests:       python-sparse >= 0.11
+Suggests:       python-distributed >= 2021.4
+Suggests:       python-pint >= 0.17
+Suggests:       python-sparse >= 0.12
 Suggests:       python-toolz >= 0.11
 #/SECTION
 # SECTION tests
@@ -74,7 +77,7 @@ BuildRequires:  %{python_module dask-diagnostics if %python-base < 3.10}
 BuildRequires:  %{python_module pooch}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module scipy >= 1.6}
 # /SECTION
 %python_subpackages
 
@@ -108,7 +111,7 @@ fi
 %pytest -n auto ${donttest:+ -k "not ($donttest)"} xarray
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE licenses/
 %{python_sitelib}/xarray
 %{python_sitelib}/xarray-%{version}*-info

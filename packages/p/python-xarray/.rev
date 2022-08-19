@@ -1135,4 +1135,171 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>961121</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0b36dcdfadfb8586f6caad0c75f252aa</srcmd5>
+    <version>2022.6.0</version>
+    <time>1660924567</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile:
+  * updated requirements versions
+  * added new requirements: packaging and flox (recommends)
+  * require python &gt;= 3.8
+  * update line numbers in patches
+  * changed README.rst-&gt;README.md
+- update to version 2022.6.0:
+  * This release brings a number of bug fixes and improvements, most
+    notably a major internal refactor of the indexing functionality,
+    the use of flox in groupby operations, and experimental support
+    for the new Python Array API standard. It also stops testing
+    support for the abandoned PyNIO.
+  * Much effort has been made to preserve backwards compatibility as
+    part of the indexing refactor. We are aware of one unfixed issue.
+  * New Features
+    + Add Dataset.dtypes, core.coordinates.DatasetCoordinates.dtypes,
+      core.coordinates.DataArrayCoordinates.dtypes properties: Mapping
+      from variable names to dtypes. (PR6706) By Michael Niklas.
+    + Initial typing support for groupby(), rolling(), rolling_exp(),
+      coarsen(), weighted(), resample(), (PR6702) By Michael Niklas.
+    + Experimental support for wrapping any array type that conforms
+      to the python array api standard. (PR6804) By Tom White.
+  * Bug fixes
+    + save_mfdataset() now passes **kwargs on to Dataset.to_netcdf(),
+      allowing the encoding and unlimited_dims options with
+      save_mfdataset(). (GH6684) By Travis A. O’Brien.
+    + Fix backend support of pydap versions &lt;3.3.0 (GH6648,
+      PR6656). By Hauke Schulz.
+    + Dataset.where() with drop=True now behaves correctly with mixed
+      dimensions. (GH6227, PR6690) By Michael Niklas.
+    + Accommodate newly raised OutOfBoundsTimedelta error in the
+      development version of pandas when decoding times outside the
+      range that can be represented with nanosecond-precision values
+      (GH6716, PR6717). By Spencer Clark.
+    + open_dataset() with dask and ~ in the path now resolves the home
+      directory instead of raising an error. (GH6707, PR6710) By
+      Michael Niklas.
+    + DataArrayRolling.__iter__() with center=True now works
+      correctly. (GH6739, PR6744) By Michael Niklas.
+  * Internal Changes
+    + xarray.core.groupby, xarray.core.rolling,
+      xarray.core.rolling_exp, xarray.core.weighted and
+      xarray.core.resample modules are no longer imported by
+      default. (PR6702)
+- changes from version 2022.06.0rc0:
+  * This pre-release brings a number of bug fixes and improvements,
+    most notably a major internal refactor of the indexing
+    functionality and the use of flox in groupby operations. It also
+    stops testing support for the abandoned PyNIO.
+  * Known Regressions
+    + reset_coords(drop=True) does not create indexes (GH6607)
+  * New Features
+    + The zarr backend is now able to read NCZarr. By Mattia Almansi.
+    + Add a weighted quantile method to DatasetWeighted and
+      DataArrayWeighted (PR6059). By Christian Jauvin and David Huard.
+    + Add a create_index=True parameter to Dataset.stack() and
+      DataArray.stack() so that the creation of multi-indexes is
+      optional (PR5692). By Benoît Bovy.
+    + Multi-index levels are now accessible through their own, regular
+      coordinates instead of virtual coordinates (PR5692). By Benoît
+      Bovy.
+    + Add a display_values_threshold option to control the total
+      number of array elements which trigger summarization rather than
+      full repr in (numpy) array detailed views of the html repr
+      (PR6400). By Benoît Bovy.
+    + Allow passing chunks in kwargs form to Dataset.chunk(),
+      DataArray.chunk(), and Variable.chunk(). (PR6471) By Tom
+      Nicholas.
+    + Add core.groupby.DatasetGroupBy.cumsum() and
+      core.groupby.DataArrayGroupBy.cumsum(). By Vladislav Skripniuk
+      and Deepak Cherian. (PR3147, PR6525, GH3141)
+    + Expose inline_array kwarg from dask.array.from_array in
+      open_dataset(), Dataset.chunk(), DataArray.chunk(), and
+      Variable.chunk(). (PR6471)
+    + Expose the inline_array kwarg from dask.array.from_array() in
+      open_dataset(), Dataset.chunk(), DataArray.chunk(), and
+      Variable.chunk(). (PR6471) By Tom Nicholas.
+    + polyval() now supports Dataset and DataArray args of any shape,
+      is faster and requires less memory. (PR6548) By Michael Niklas.
+    + Improved overall typing.
+    + Dataset.to_dict() and DataArray.to_dict() may now optionally
+      include encoding attributes. (PR6635) By Joe Hamman.
+    + Upload development versions to TestPyPI. By Justus Magin.
+  * Breaking changes
+    + PyNIO support is now untested.
+    + The Dataset and DataArray rename&quot; methods do not implicitly add
+      or drop indexes. (PR5692). By Benoît Bovy.
+    + Many arguments like keep_attrs, axis, and skipna are now keyword
+      only for all reduction operations like .mean. By Deepak Cherian,
+      Jimmy Westling.
+    + Xarray’s ufuncs have been removed, now that they can be replaced
+      by numpy’s ufuncs in all supported versions of numpy. By
+      Maximilian Roos.
+    + xr.polyval() now uses the coord argument directly instead of its
+      index coordinate. (PR6548) By Michael Niklas.
+  * Bug fixes
+    + Dataset.to_zarr() now allows to write all attribute types
+      supported by zarr-python. By Mattia Almansi.
+    + Set skipna=None for all quantile methods
+      (e.g. Dataset.quantile()) and ensure it skips missing values for
+      float dtypes (consistent with other methods). This should not
+      change the behavior (PR6303). By Mathias Hauser.
+    + Many bugs fixed by the explicit indexes refactor, mainly related
+      to multi-index (virtual) coordinates. See the corresponding
+      pull-request on GitHub for more details. (PR5692). By Benoît
+      Bovy.
+    + Fixed “unhashable type” error trying to read NetCDF file with
+      variable having its ‘units’ attribute not str
+      (e.g. numpy.ndarray) (GH6368). By Oleh Khoma.
+    + Omit warning about specified dask chunks separating chunks on
+      disk when the underlying array is empty (e.g., because of an
+      empty dimension) (GH6401). By Joseph K Aicher.
+    + Fixed the poor html repr performance on large multi-indexes
+      (PR6400). By Benoît Bovy.
+    + Allow fancy indexing of duck dask arrays along multiple
+      dimensions. (PR6414) By Justus Magin.
+    + In the API for backends, support dimensions that express their
+      preferred chunk sizes as a tuple of integers. (GH6333, PR6334)
+      By Stan West.
+    + Fix bug in where() when passing non-xarray objects with
+      keep_attrs=True. (GH6444, PR6461) By Sam Levang.
+    + Allow passing both other and drop=True arguments to
+      DataArray.where() and Dataset.where() (PR6466, PR6467). By
+      Michael Delgado.
+    + Ensure dtype encoding attributes are not added or modified on
+      variables that contain datetime-like values prior to being
+      passed to xarray.conventions.decode_cf_variable() (GH6453,
+      PR6489). By Spencer Clark.
+    + Dark themes are now properly detected in Furo-themed Sphinx
+      documents (GH6500, PR6501). By Kevin Paul.
+    + Dataset.isel(), DataArray.isel() with drop=True works as
+      intended with scalar DataArray indexers. (GH6554, PR6579) By
+      Michael Niklas.
+    + Fixed silent overflow issue when decoding times encoded with
+      32-bit and below unsigned integer data types (GH6589,
+      PR6598). By Spencer Clark.
+    + Fixed .chunks loading lazy data (GH6538). By Deepak Cherian.
+  * Documentation
+    + Revise the documentation for developers on specifying a
+      backend’s preferred chunk sizes. In particular, correct the
+      syntax and replace lists with tuples in the examples. (GH6333,
+      PR6334) By Stan West.
+    + Mention that DataArray.rename() can rename coordinates. (GH5458,
+      PR6665) By Michael Niklas.
+    + Added examples to Dataset.thin() and DataArray.thin() By Emma
+      Marshall.
+  * Performance
+    + GroupBy binary operations are now vectorized. Previously this
+      involved looping over all groups. (GH5804, PR6160) By Deepak
+      Cherian.
+    + Substantially improved GroupBy operations using flox. This is
+      auto-enabled when flox is installed. Use
+      xr.set_options(use_flox=False) to use the old
+      algorithm. (GH4473, GH4498, GH659, GH2237, PR271). By Deepak
+      Cherian, Anderson Banihirwe, Jimmy Westling.
+  * Internal Changes
+    + Many internal changes due to the explicit indexes refactor. See
+      the corresponding pull-request on GitHub for more
+      details. (PR5692). By Benoît Bovy.
+</comment>
+    <requestid>997996</requestid>
+  </revision>
 </revisionlist>

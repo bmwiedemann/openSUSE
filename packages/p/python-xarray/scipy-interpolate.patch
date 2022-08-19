@@ -4,7 +4,7 @@
 
 --- a/xarray/tests/test_interp.py
 +++ b/xarray/tests/test_interp.py
-@@ -20,6 +20,7 @@ from .test_dataset import create_test_da
+@@ -24,6 +24,7 @@ from .test_dataset import create_test_da
  
  try:
      import scipy
