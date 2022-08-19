@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Aug 18 19:39:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean specfile: remove code coverage checker
+
+-------------------------------------------------------------------
+Mon Aug 15 15:50:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.5
+  * Packaging of sdist and the wheel fixed by adding the extra
+    files only to the sdist and not to the wheel.
+- Release 1.0.4
+  * Fixed type hinting of HeaderValueMatcher.DEFAULT_MATCHERS,
+    which did not allow modifications, however it is explicitly
+    allowed in the documentation.
+  * Version of flake8 library updated to require 4.0.0+ at minimum.
+    This is required to make flake8 working on recent python
+    versions.
+- Release 1.0.3
+  * Additional type hints improvements to make the library more
+    mypy compliant. Imports in __init__.py have been updated to
+    indicate that this is a namespace package.
+  * Package deployment and CI has been migrated to poetry.
+    poetry.lock will be kept up to date. Make target "quick-test"
+    renamed to "test". Also, minor adjustments were made regarding
+    documentation generation. Make targets should be identical.
+    Build results like sdist, and wheel are almost identical to the
+    one which was made by setuptools.
+
+-------------------------------------------------------------------
 Fri Dec 17 13:53:27 UTC 2021 - pgajdos@suse.com
 
 - pytest-runner is not required for build
