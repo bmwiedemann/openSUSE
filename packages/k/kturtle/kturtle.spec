@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kturtle
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Logo Programming Environment
 License:        GPL-2.0-or-later
@@ -78,10 +78,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_bindir}/kturtle
 %{_kf5_iconsdir}/hicolor/*/apps/kturtle.*
 %{_kf5_kxmlguidir}/kturtle/
-%if %{with released}
-%{_kf5_sharedir}/katepart/
-%{_kf5_sharedir}/kturtle/
-%endif
 
 %if %{with released}
 %files lang -f %{name}.lang
