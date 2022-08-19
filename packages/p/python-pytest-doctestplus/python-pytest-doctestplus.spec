@@ -49,7 +49,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip >= 19.3.1}
 BuildRequires:  %{python_module pytest-doctestplus = %{version}}
-BuildRequires:  %{python_module pytest-remotedata = 0.3.2}
+BuildRequires:  %{python_module pytest-remotedata >= 0.3.2}
 %else
 BuildArch:      noarch
 %endif

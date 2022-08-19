@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 16 16:18:41 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix test requirement of pytest-remotedata
+
+-------------------------------------------------------------------
 Sun Mar 13 08:57:08 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.12.0
