@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           knotes
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        Popup Notes
 License:        GPL-2.0-or-later
@@ -79,8 +79,6 @@ BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5Xml)
 Obsoletes:      knotes5 < %{version}
 Provides:       knotes5 = %{version}
-# It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 
 %description
 KNotes is a note taking application by KDE.
@@ -125,21 +123,20 @@ KNotes is a note taking application by KDE.
 %{_kf5_knsrcfilesdir}/knotes_printing_theme.knsrc
 %{_kf5_kxmlguidir}/knotes/
 %{_kf5_notifydir}/akonadi_notes_agent.notifyrc
-%dir %{_kf5_plugindir}/pim
-%dir %{_kf5_plugindir}/pim/kcms
-%dir %{_kf5_plugindir}/pim/kcms/knotes
-%dir %{_kf5_plugindir}/pim/kcms/summary
-%{_kf5_plugindir}/pim/kcms/knotes/kcm_knote_action.so
-%{_kf5_plugindir}/pim/kcms/knotes/kcm_knote_collection.so
-%{_kf5_plugindir}/pim/kcms/knotes/kcm_knote_display.so
-%{_kf5_plugindir}/pim/kcms/knotes/kcm_knote_editor.so
-%{_kf5_plugindir}/pim/kcms/knotes/kcm_knote_misc.so
-%{_kf5_plugindir}/pim/kcms/knotes/kcm_knote_network.so
-%{_kf5_plugindir}/pim/kcms/knotes/kcm_knote_print.so
-%{_kf5_plugindir}/kontact5/kontact_knotesplugin.so
-%{_kf5_plugindir}/pim/kcms/summary/kcmknotessummary.so
-%dir %{_kf5_plugindir}/kontact5/
-%{_kf5_plugindir}/kontact5/kontact_knotesplugin.so
+%dir %{_kf5_plugindir}/pim5
+%dir %{_kf5_plugindir}/pim5/kcms
+%dir %{_kf5_plugindir}/pim5/kcms/knotes
+%dir %{_kf5_plugindir}/pim5/kcms/summary
+%dir %{_kf5_plugindir}/pim5/kontact
+%{_kf5_plugindir}/pim5/kcms/knotes/kcm_knote_action.so
+%{_kf5_plugindir}/pim5/kcms/knotes/kcm_knote_collection.so
+%{_kf5_plugindir}/pim5/kcms/knotes/kcm_knote_display.so
+%{_kf5_plugindir}/pim5/kcms/knotes/kcm_knote_editor.so
+%{_kf5_plugindir}/pim5/kcms/knotes/kcm_knote_misc.so
+%{_kf5_plugindir}/pim5/kcms/knotes/kcm_knote_network.so
+%{_kf5_plugindir}/pim5/kcms/knotes/kcm_knote_print.so
+%{_kf5_plugindir}/pim5/kcms/summary/kcmknotessummary.so
+%{_kf5_plugindir}/pim5/kontact/kontact_knotesplugin.so
 %{_kf5_sharedir}/knotes/
 %{_libdir}/libknotesprivate.so.*
 %{_libdir}/libnotesharedprivate.so.*
