@@ -17,7 +17,7 @@
 
 
 Name:           codespell
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Source code checker for common misspellings
 License:        GPL-2.0-only
