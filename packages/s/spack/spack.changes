@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 15 19:39:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid bashism in post scripts (bsc#1195391) 
+
+-------------------------------------------------------------------
 Thu Apr  7 12:56:45 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Fix: Fix-error-during-documentation-build-due-to-recursive-module-inclusion.patch

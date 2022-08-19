@@ -337,7 +337,7 @@ EOF
 mkdir -p %{buildroot}/%{_sysconfdir}/profile.d
 cat > %{buildroot}/%{_sysconfdir}/profile.d/spack.sh <<EOF
 source /etc/os-release
-if [ "\${ID}" == "opensuse-tumbleweed" ] ; then
+if [ "\${ID}" = "opensuse-tumbleweed" ] ; then
   SPACK_NAME="\${ID/-/}"
 else
   SPACK_NAME="\${ID/-/_}\${VERSION_ID/.*/}"
@@ -433,7 +433,7 @@ sed -i "s@GCC_FULL_VERSION@$GCC_FULL_VERSION@" %{spack_dir}/etc/spack/compilers.
 sed -i "s@GCC_VERSION@$GCC_VERSION@" %{spack_dir}/etc/spack/compilers.yaml
 if [ -e /etc/os-release ] ;  then
   source /etc/os-release
-  if [ "${ID}" == "opensuse-tumbleweed" ] ; then
+  if [ "${ID}" = "opensuse-tumbleweed" ] ; then
     export SPACK_NAME="${ID/-/}"
   else
     export SPACK_NAME="${ID/-/_}${VERSION_ID/.*/}"
