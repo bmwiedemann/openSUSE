@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Tue Jan  4 15:31:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 1.0.0rc+g1 (9aec15e)
+  * Brotli 1.0.9 support
+
+-------------------------------------------------------------------
+Mon Nov  9 11:39:44 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refresh spec-file via spec-cleaner and manual optimizations.
+
+-------------------------------------------------------------------
+Fri Oct  2 04:16:31 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- use the ngx_* macros from the nginx-macros package to simplify
+  the spec file
+
+-------------------------------------------------------------------
+Tue Jul 24 08:25:06 UTC 2018 - mrostecki@suse.de
+
+- Adjust configure parameters for binary compatibility with nginx
+  binary package
+
+-------------------------------------------------------------------
+Tue Jul  3 17:11:43 UTC 2018 - mrostecki@suse.com
+
+- Make use of %license macro
+- Provide explanation why %configure macro cannot be used
+
+-------------------------------------------------------------------
+Tue May 29 10:57:09 UTC 2018 - mrostecki@suse.com
+
+- Initial release
