@@ -21,7 +21,7 @@
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        22.04.3
+Version:        22.08.0
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application by KDE
 License:        GPL-2.0-or-later
@@ -141,8 +141,8 @@ CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %license LICENSES/*
 %doc ChangeLog FAQ.txt PERMISSIONS.txt README.txt
 %{_kf5_knsrcfilesdir}/k3btheme.knsrc
-%dir %{_kf5_plugindir}/k3b/
-%dir %{_kf5_plugindir}/k3b/kcms
+%dir %{_kf5_plugindir}/k3b_plugins/
+%dir %{_kf5_plugindir}/k3b_plugins/kcms
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/kio/
 %dir %{_kf5_servicesdir}/ServiceMenus
@@ -161,8 +161,8 @@ CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %{_kf5_libdir}/libk3bdevice.so.*
 %{_kf5_libdir}/libk3blib.so.*
 %{_kf5_notifydir}/k3b.notifyrc
-%{_kf5_plugindir}/k3b/k3b*.so
-%{_kf5_plugindir}/k3b/kcms/kcm_k3b*.so
+%{_kf5_plugindir}/k3b_plugins/k3b*.so
+%{_kf5_plugindir}/k3b_plugins/kcms/kcm_k3b*.so
 %{_kf5_plugindir}/kf5/kio/videodvd.so
 %{_kf5_servicesdir}/ServiceMenus/k3b_*.desktop
 %{_kf5_servicetypesdir}/k3bplugin.desktop
