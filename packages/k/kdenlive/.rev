@@ -898,4 +898,12 @@ I would be grateful.
     <comment>KDE Gear 22.04.3</comment>
     <requestid>987574</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>5a27871c52e9d1a278a9472d3b6bc393</srcmd5>
+    <version>22.08.0</version>
+    <time>1660924465</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.08.0 (forwarded request 997667 from cgiboudeaux)</comment>
+    <requestid>997812</requestid>
+  </revision>
 </revisionlist>
