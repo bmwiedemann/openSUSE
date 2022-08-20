@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 30 14:53:34 UTC 2022 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+- Provide xinitrc.d script 55mate-session_materc.sh, adopted from
+  Debian/Ubuntu. This provides support for MATE-specific tweaking of the
+  Application menu such as practiced in Ubuntu MATE intensively.
+- Provide xinitrc.d script 99mate-environment.sh, adopted from Debian/Ubuntu.
+  This script allows us to finalize MATE session startup. Here we e.g.
+  prepare loading the canberra GTK module and tweak UI stuff. There
+  are likely more things to come.
+
+-------------------------------------------------------------------
 Thu Aug 12 08:16:39 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.0

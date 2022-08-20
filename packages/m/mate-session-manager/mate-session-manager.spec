@@ -30,6 +30,11 @@ Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{vers
 Source1:        mate-session-manager-upstream-mate_defaults.conf
 # Some documentation for people writing branding packages, shipped in the branding-upstream package.
 Source2:        README.Gsettings-overrides
+# xinitrc.d/ script that add /usr/share/mate and /usr/local/share to XDG_DATA_DIRS
+Source3:        55mate-session_materc.sh
+# xinitrc.d/ script that finalizes everything before the MATE session starts (such as
+# preparing to load the canberra-gtk-module and applying a clutter tweak).
+Source4:        99mate-environment.sh
 # PATCH-FIX-OPENSUSE mate-session-manager-qt-5.7-styleoverride.patch sor.alexei@meowr.ru -- On Qt 5.7+ use Gtk2 Platform Theme.
 Patch0:         mate-session-manager-qt-5.7-styleoverride.patch
 BuildRequires:  hicolor-icon-theme
@@ -95,6 +100,8 @@ MATE Session Manager.
 
 cp -a %{SOURCE2} .
 cp -a %{SOURCE1} mate_defaults.conf
+cp -a %{SOURCE3} .
+cp -a %{SOURCE4} .
 
 %build
 NOCONFIGURE=1 mate-autogen
@@ -110,6 +117,10 @@ NOCONFIGURE=1 mate-autogen
 %make_install
 install -Dpm 0644 mate_defaults.conf \
   %{buildroot}%{_sysconfdir}/mate_defaults.conf
+install -Dpm 0755 55mate-session_materc.sh \
+  %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d/55mate-session_materc.sh
+install -Dpm 0755 99mate-environment.sh \
+  %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d/99mate-environment.sh
 
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
@@ -134,6 +145,10 @@ fi
 %license COPYING
 %doc NEWS README
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
+%dir %{_sysconfdir}/X11/xinit
+%dir %{_sysconfdir}/X11/xinit/xinitrc.d
+%config %{_sysconfdir}/X11/xinit/xinitrc.d/55mate-session_materc.sh
+%config %{_sysconfdir}/X11/xinit/xinitrc.d/99mate-environment.sh
 %{_bindir}/mate-*
 %{_datadir}/%{name}/
 %{_datadir}/xsessions/*.desktop
