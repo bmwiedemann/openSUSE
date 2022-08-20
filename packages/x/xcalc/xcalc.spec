@@ -22,11 +22,13 @@ Release:        0
 Summary:        Scientific calculator for X
 License:        MIT
 Group:          System/X11/Utilities
-URL:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
-Source1:        xcalc.desktop
-Source2:        xcalc.png
-BuildRequires:  pkg-config
+URL:            https://xorg.freedesktop.org/
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+Source1:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz.sig
+Source2:        xcalc.keyring
+Source3:        xcalc.desktop
+Source4:        xcalc.png
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
@@ -34,7 +36,6 @@ BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xt)
 # This was part of the xorg-x11 package up to version 7.6
 Conflicts:      xorg-x11 <= 7.6
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 xcalc is a scientific calculator X11 client that can emulate a TI-30
@@ -42,20 +43,20 @@ or an HP-10C.
 
 %prep
 %setup -q
-cp %{SOURCE1} .
+cp %{SOURCE3} .
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 %suse_update_desktop_file -i -u xcalc Utility Calculator
-install -m0644 -D %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/xcalc.png
+install -m0644 -D %{SOURCE4} %{buildroot}%{_datadir}/pixmaps/xcalc.png
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog COPYING README.md
+%license COPYING
+%doc ChangeLog README.md
 %{_bindir}/xcalc
 %{_datadir}/applications/xcalc.desktop
 %{_datadir}/pixmaps/xcalc.png
