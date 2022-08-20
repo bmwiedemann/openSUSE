@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 18 15:38:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.4.2
+  * Updated argparse decorator to remove annotations when the
+    docstring is used for a command's help text.
+  * Updated unit test to be Python 3.11 compliant.
+- Clean specfile, remove coverage
+
+-------------------------------------------------------------------
 Sat Jun  4 15:00:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.1:

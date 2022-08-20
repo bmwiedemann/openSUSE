@@ -581,4 +581,12 @@
   * `async_alert()` raises a `RuntimeError` if called from the main thread.</comment>
     <requestid>980775</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>08137273e99c53dcf9f7317e1c6b561d</srcmd5>
+    <version>2.4.2</version>
+    <time>1661020064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998089</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-cmd2
-Version:        2.4.1
+Version:        2.4.2
 Release:        0
 Summary:        Extra features for standard library's cmd module
 License:        MIT
@@ -36,23 +36,19 @@ Requires:       python-attrs >= 16.3.0
 Requires:       python-pyperclip >= 1.6
 Requires:       python-wcwidth >= 0.1.7
 BuildArch:      noarch
-%if %{python3_version_nodots} < 35
-Requires:       python-contextlib2
-Requires:       python-typing
+%if 0%{?python_version_nodots} < 38
+Requires:       python-importlib_metadata >= 1.6
+Requires:       python-typing_extensions
 %endif
 # SECTION Test requirements
 BuildRequires:  %{python_module attrs >= 16.3.0}
+BuildRequires:  %{python_module importlib_metadata >= 1.6 if %python-base < 3.8}
 BuildRequires:  %{python_module pyperclip >= 1.6}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
 BuildRequires:  %{python_module wcwidth >= 0.1.7}
-# Required by tests.
 BuildRequires:  vim
-%if 0%{?suse_version} <= 1315
-BuildRequires:  %{python_module contextlib2}
-BuildRequires:  %{python_module typing}
-%endif
 # /SECTION
 %python_subpackages
 
@@ -79,6 +75,7 @@ Drop-in replacement adds several features for command-prompt tools:
 %setup -q -n cmd2-%{version}
 # Fix spurious-executable-perm
 chmod a-x README.md
+sed -i '/--cov/d' setup.cfg
 
 %build
 %python_build
@@ -88,12 +85,13 @@ chmod a-x README.md
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-rm -v tests/test_transcript.py tests/test_parsing.py tests/test_cmd2.py
-%pytest
+# -q: prevent to colorize the terminal from color commands in parametrized test names
+%pytest -q
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.md
-%{python_sitelib}/*
+%{python_sitelib}/cmd2
+%{python_sitelib}/cmd2-%{version}*-info
 
 %changelog
