@@ -1,7 +1,7 @@
 #
 # spec file for package xbacklight
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,24 +22,23 @@ Release:        0
 Summary:        Utility to adjust the screen backlight brightness
 License:        MIT
 Group:          System/X11/Utilities
-Url:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+URL:            https://xorg.freedesktop.org/
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE xcb-util-0_3_6.diff
 Patch0:         xcb-util-0_3_6.diff
 BuildRequires:  autoconf
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xorg-macros) >= 1.8
+BuildRequires:  pkgconfig(xrandr) >= 1.2.0
+# This was part of the xorg-x11 package up to version 7.6
+Conflicts:      xorg-x11 <= 7.6
 %if 0%{?suse_version} > 1210
 BuildRequires:  pkgconfig(xcb-util)
 %else
 BuildRequires:  xcb-util-0_3_6-devel
 %endif
-BuildRequires:  pkgconfig(xorg-macros) >= 1.8
-BuildRequires:  pkgconfig(xrandr) >= 1.2.0
-# This was part of the xorg-x11 package up to version 7.6
-Conflicts:      xorg-x11 <= 7.6
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Xbacklight is used to adjust the backlight brightness where supported.
@@ -50,20 +49,20 @@ same way.
 %prep
 %setup -q
 %if 0%{?suse_version} < 1220
-%patch0 -p0
+%patch0
 %endif
 
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc COPYING README.md
+%license COPYING
+%doc README.md
 %{_bindir}/xbacklight
 %{_mandir}/man1/xbacklight.1%{?ext_man}
 
