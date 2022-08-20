@@ -36,6 +36,7 @@ URL:            https://github.com/ionelmc/python-lazy-object-proxy
 Source:         https://files.pythonhosted.org/packages/source/l/lazy-object-proxy/lazy-object-proxy-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools_scm >= 3.3.1}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Obsoletes:      python-lazy_object_proxy < %{version}-%{release}
@@ -43,8 +44,6 @@ Provides:       python-lazy_object_proxy = %{version}-%{release}
 %if %{with test}
 BuildRequires:  %{python_module lazy-object-proxy = %{version}}
 BuildRequires:  %{python_module pytest-benchmark}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-travis-fold}
 BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
@@ -55,8 +54,6 @@ from Python's ast
 
 %prep
 %setup -q -n lazy-object-proxy-%{version}
-# unpin setuptools_scm
-sed -i '/setuptools_scm/ s/,<6.0//' setup.cfg pyproject.toml
 
 %build
 %if !%{with test}
@@ -79,7 +76,8 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %files %{python_files}
 %doc AUTHORS.rst CHANGELOG.rst CONTRIBUTING.rst README.rst docs
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/lazy_object_proxy
+%{python_sitearch}/lazy_object_proxy-%{version}*-info
 %endif
 
 %changelog
