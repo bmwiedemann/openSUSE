@@ -107,9 +107,11 @@ sed -i '/^HTML_TIMESTAMP/s/YES/NO/' doc/doxygen.conf.in
 
 %install
 %make_install
-mkdir -p %{buildroot}/%{_lib}
-mv %{buildroot}%{_libdir}/security %{buildroot}/%{_lib}
-rm %{buildroot}%{_libdir}/pam_pkcs11/*.*a %{buildroot}/%{_lib}/security/*.*a
+%if 0%{?suse_version} <= 1500
+mkdir -p %{buildroot}%{_pam_moduledir}
+mv %{buildroot}%{_libdir}/security/* %{buildroot}%{_pam_moduledir}
+%endif
+rm %{buildroot}%{_pam_moduledir}/*.la %{buildroot}%{_libdir}/pam_pkcs11/*.la
 # Hardcoded defaults... no sysconfdir
 install -dm 755 %{buildroot}%{_sysconfdir}/pam_pkcs11/cacerts
 install -dm 755 %{buildroot}%{_sysconfdir}/pam_pkcs11/crls
@@ -145,7 +147,7 @@ ln -s service %{buildroot}%{_sbindir}/rcpkcs11_eventmgr
 %exclude %{_docdir}/%{name}/api
 %{_bindir}/*
 %{_libdir}/pam_pkcs11
-/%{_lib}/security/*.so
+/%{_pam_moduledir}/*.so
 %{_mandir}/man?/*%{ext_man}
 %dir %{_sysconfdir}/pam_pkcs11
 %dir %{_sysconfdir}/pam_pkcs11/cacerts
