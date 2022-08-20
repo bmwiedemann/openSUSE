@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 19 12:42:33 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add lttng-modules-2.13.4-linux-5.19.patch: back-port commits
+  6229bbaa423832f6b7c7a658ad11e1d4242752ff,
+  5e2f832d59d51589ab69479c7db43c7581fb9346,
+  c6da9604b1666780ea4725b3b3d1bfa1548f9c89
+  for Linux 5.19 compatibility.
+
+-------------------------------------------------------------------
 Fri Jun  3 20:12:25 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.13.4:
