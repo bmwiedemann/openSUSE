@@ -7,4 +7,4 @@ index 098f636..0ccb9dc 100644
  
  [tool:pytest]
 -addopts = -vv --cov=rpmlint -n auto --flake8
-+addopts = -vv --cov=rpmlint -n auto
++addopts = -vv -n auto

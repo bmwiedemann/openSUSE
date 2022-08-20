@@ -3945,4 +3945,12 @@ oddjob-gpupdate isn't blocked)</comment>
   * dbus-services: adjust to cups-pk-helper /etc -&gt; /usr move (bsc#1202338)</comment>
     <requestid>994771</requestid>
   </revision>
+  <revision rev="409" vrev="1">
+    <srcmd5>16bb1f1bf4cecfe3433e789b3cab0740</srcmd5>
+    <version>2.3.0+git20220818.a8685c5d</version>
+    <time>1661020086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998076</requestid>
+  </revision>
 </revisionlist>

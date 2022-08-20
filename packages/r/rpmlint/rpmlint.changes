@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 18 21:26:31 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Enhance disable-flake.patch to disable-flake-and-cov.patch
+- Reflect the requirements from setup.py in the rpm requirements:
+  Use tomli until we have python3 = 3.11
+
+-------------------------------------------------------------------
+Thu Aug 18 15:55:46 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220818.a8685c5d:
+  * dbus-services: whitelist systemd-experimental: systemd-oomd (bsc#1202454)
+
+-------------------------------------------------------------------
 Fri Aug 12 12:15:02 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.3.0+git20220812.05423f8d:

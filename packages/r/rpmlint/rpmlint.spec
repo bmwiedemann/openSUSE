@@ -23,14 +23,15 @@
 %define name_suffix -%{flavor}
 %endif
 Name:           rpmlint%{name_suffix}
-Version:        2.3.0+git20220812.05423f8d
+Version:        2.3.0+git20220818.a8685c5d
 Release:        0
 Summary:        RPM file correctness checker
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/rpmlint
 Source0:        rpmlint-%{version}.tar.xz
-Patch0:         disable-flake.patch
+Patch0:         disable-flake-and-cov.patch
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 BuildArch:      noarch
 %if "%{flavor}" == "test"
@@ -41,16 +42,16 @@ BuildRequires:  dash
 BuildRequires:  desktop-file-utils
 BuildRequires:  myspell-cs_CZ
 BuildRequires:  myspell-en_US
-BuildRequires:  python-rpm-macros
 BuildRequires:  python3-magic
 BuildRequires:  python3-pybeam
 BuildRequires:  python3-pyenchant
 BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-cov
 BuildRequires:  python3-pytest-xdist
 BuildRequires:  python3-pyxdg
 BuildRequires:  python3-rpm
+%if 0%{?python3_version_nodots < 311}
 BuildRequires:  python3-tomli
+%endif
 BuildRequires:  python3-tomli-w
 BuildRequires:  python3-zstandard
 BuildRequires:  xz
@@ -74,8 +75,10 @@ Requires:       python3-pybeam
 Requires:       python3-pyenchant
 Requires:       python3-pyxdg
 Requires:       python3-rpm
-Requires:       python3-toml
-Requires:       python3-xml
+%if 0%{?python3_version_nodots < 311}
+Requires:       python3-tomli
+%endif
+Requires:       python3-tomli-w
 Requires:       python3-zstandard
 Requires:       rpm-build
 %endif
