@@ -1,7 +1,7 @@
 #
 # spec file for package mate-applets
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _version 1.26
 
 Name:           mate-applets
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        A set of applets for the MATE Desktop
 License:        GFDL-1.1-only AND GPL-2.0-or-later
