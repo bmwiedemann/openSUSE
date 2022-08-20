@@ -1,5 +1,7 @@
 <package name="ft2demos" project="openSUSE:Factory">
-  <title>Freetype2 Utilities and Demo Programs</title>
-  <description>Freetype2 utilities and demo programs.</description>
+  <title>A TrueType Font Library</title>
+  <description>This library features TrueType fonts for open source projects. This
+version also contains an autohinter for producing improved output.</description>
   <devel project="openSUSE:Factory" package="freetype2"/>
+  <bcntsynctag>freetype2</bcntsynctag>
 </package>
