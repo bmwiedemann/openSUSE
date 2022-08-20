@@ -17,32 +17,32 @@
 
 
 %if 0%{?suse_version} < 1550
-  %define _distconfdir /usr/etc
+  %define _distconfdir %{_prefix}%{_sysconfdir}
 %endif
-
 Name:           xfs
 Version:        1.2.1
 Release:        0
 Summary:        X font server
 License:        HPND
 Group:          System/X11/Utilities
-URL:            http://xorg.freedesktop.org/
-# http://xorg.freedesktop.org/releases/individual/app/
-Source0:        %{name}-%{version}.tar.xz
+URL:            https://xorg.freedesktop.org/
+Source0:        https://xorg.freedesktop.org/releases/individual/app/xfs-%{version}.tar.xz
 Source1:        xfs.config
 Source2:        xfs.init.d
 Source3:        xfs.service
+Source10:       https://xorg.freedesktop.org/releases/individual/app/xfs-%{version}.tar.xz.sig
+Source11:       xfs.keyring
 BuildRequires:  font-util >= 1.1
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(xfont2)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.10
 BuildRequires:  pkgconfig(xproto) >= 7.0.17
 BuildRequires:  pkgconfig(xtrans)
+# FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         %fillup_prereq
 # This was part of the xorg-x11 package up to version 7.6
 Conflicts:      xorg-x11 <= 7.6
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 xfs is the X Window System font server. It supplies fonts to X Window
@@ -52,8 +52,8 @@ System display servers.
 %setup -q
 
 %build
-%configure --with-default-config-file=%{_sysconfdir}/X11/fs/config,%{_distconfdir}/X11/fs/config CFLAGS="$RPM_OPT_FLAGS -Wno-error=array-bounds"
-make %{?_smp_mflags}
+%configure --with-default-config-file=%{_sysconfdir}/X11/fs/config,%{_distconfdir}/X11/fs/config CFLAGS="%{optflags} -Wno-error=array-bounds"
+%make_build
 
 %install
 %make_install
@@ -77,8 +77,8 @@ install -D -m 0755 %{SOURCE2} %{buildroot}%{_sbindir}/rcxfs
 %service_del_postun xfs.service
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog COPYING README.md
+%license COPYING
+%doc ChangeLog README.md
 %dir %{_distconfdir}
 %dir %{_distconfdir}/X11
 %dir %{_distconfdir}/X11/fs
