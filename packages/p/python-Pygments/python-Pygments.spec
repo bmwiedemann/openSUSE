@@ -26,7 +26,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pygments
-Version:        2.12.0
+Version:        2.13.0
 Release:        0
 Summary:        A syntax highlighting package written in Python
 License:        BSD-2-Clause

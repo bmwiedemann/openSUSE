@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Thu Aug 18 15:23:43 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 2.13.0:
+  * Added lexers:
+    + COMAL-80 (#2180)
+    + JMESPath (#2174, #2175, #2179, #2182)
+    + Sql+Jinja (#2148)
+  * Updated lexers:
+    + Ada: support Ada 2022 (#2121); disable recognition of
+      namespaces because it disturbs lexing of aspects (#2125)
+    + Agda: allow straight quotes in module names (#2163)
+    + C family (C, C++ and many others): allow comments between
+      elements of function headers, e.g. between the arguments and
+      the opening brace for the body (#1891)
+    + C++: Resolve several cases of Error tokens (#2207, #2208)
+    + Coq: add some common keywords, improve recognition of Set and
+      qualified identifiers (#2158)
+    + F*: Allow C-style comments anywhere in a line
+    + Fortran: fix catastrophic backtracking with backslashes in
+      strings (#2194)
+    + Go: add support for generics (#2167)
+    + Inform: update for version 6.40 (#2190)
+    + Isabelle: recognize cartouches (#2089)
+    + Java: support multiline strings aka. text blocks (#2132)
+    + Kotlin: add value modifier (#2142)
+    + LilyPond: add some missing builtins
+    + Macaulay2: update builtins (#2139)
+    + Matlab session: fix traceback when a line continuation
+      ellipsis appears in the output (#2166)
+    + .NET: add aliases for LibreOffice Basic, OpenOfficeBasic and
+      StarOffice Basic (#2170)
+    + Nim: use Name.Builtin instead of Keyword.Type (#2136)
+    + PHP: fix \"$var\" inside strings (#2105)
+    + Python: only recognize \N, \u and \U escape sequences in
+      string literals, but not in bytes literals where they are not
+      supported (#2204)
+    + Tcl: support ${name} variables (#2145)
+    + Terraform: accept leading whitespace for << heredoc
+      delimiters (#2162)
+    + Teraterm: Various improvements (#2165)
+    + Spice: add support for the recently added features including
+      more builtin functions and bin, oct, hex number formats
+      (#2206)
+  * Added styles:
+    + GitHub dark (#2192)
+    + StarOffice (#2168)
+    + Nord (nord and nord-darker; #2189, #1799, #1678)
+  * Pygments now tries to use the importlib.metadata module to
+    discover plugins instead of the slower pkg_resources (#2155).
+  * Silently ignore BrokenPipeError in the command-line interface
+    (#2193).
+  * The HtmlFormatter now uses the linespans attribute for
+    anchorlinenos if the lineanchors attribute is unset (#2026).
+  * The highlight, lex and format functions no longer wrongly
+    report "argument must be a lexer/formatter instance, not a
+    class" in some cases where this is not the actual problem
+    (#2123).
+  * Fix warnings in doc build (#2124).
+  * The codetagify filter now recognizes FIXME tags by default
+    (#2150).
+  * The pygmentize command now recognizes if the COLORTERM
+    environment variable is set to a value indicating that
+    true-color support is available.  In that case, it uses the
+    TerminalTrueColorFormatter by default (#2160)
+  * Remove redundant caches for filename patterns (#2153)
+  * Use new non-deprecated Pillow API for text bounding box in
+    ImageFormatter (#2198)
+  * Remove default_style (#930, #2183)
+  * Stop treating DeprecationWarnings as errors in the unit tests
+    (#2196)
+
+-------------------------------------------------------------------
 Mon Jul 18 12:58:46 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add BR of wcag-contrast-ratio to enable more tests.
