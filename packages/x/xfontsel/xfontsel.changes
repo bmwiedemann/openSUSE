@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 11 08:07:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- modernize spec-file, move license to %%licensedir
+- use gpg validation for sources
+
+-------------------------------------------------------------------
 Mon Jul 11 12:44:35 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.0:
