@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 11 08:23:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- modernize spec-file, move license to %%licensedir
+
+-------------------------------------------------------------------
 Wed Jan  8 07:34:56 UTC 2020 - pgajdos@suse.com
 
 - added patches

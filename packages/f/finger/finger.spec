@@ -1,7 +1,7 @@
 #
 # spec file for package finger
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ Patch2:         finger-memory-leak.patch
 # Build with -no-common, [bsc#1160264]
 Patch3:         finger-no-common.patch
 Requires:       netcfg
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Finger is a utility that allows users to see information about system
@@ -59,7 +58,7 @@ particular person.
 %build
 export CFLAGS="%{optflags} -fpie" LDFLAGS="-pie"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -d -m 755 %{buildroot}%{_bindir}
@@ -87,18 +86,18 @@ install -D -m 0644 %{SOURCE4} %{buildroot}/%{_unitdir}/finger@.service
 %service_del_postun finger.socket
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING NEWS README
+%license COPYING
+%doc AUTHORS NEWS README
 %{_bindir}/finger
-%{_mandir}/man1/finger.1%{ext_man}
+%{_mandir}/man1/finger.1%{?ext_man}
 
 %files server -f finger-bsd.lang
-%defattr(-,root,root)
-%doc AUTHORS COPYING NEWS README
+%license COPYING
+%doc AUTHORS NEWS README
 %{_unitdir}/finger.socket
 %{_unitdir}/finger@.service
-%{_mandir}/man8/fingerd.8%{ext_man}
-%{_mandir}/man8/in.fingerd.8%{ext_man}
+%{_mandir}/man8/fingerd.8%{?ext_man}
+%{_mandir}/man8/in.fingerd.8%{?ext_man}
 %{_sbindir}/in.fingerd
 
 %changelog

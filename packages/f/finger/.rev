@@ -167,4 +167,12 @@
   + finger-no-common.patch</comment>
     <requestid>761766</requestid>
   </revision>
+  <revision rev="25" vrev="169">
+    <srcmd5>96a155bcadfefc5f54d6653a87079cfe</srcmd5>
+    <version>1.3</version>
+    <time>1661020078</time>
+    <user>dimstar_suse</user>
+    <comment>- modernize spec-file, move license to %%licensedir (forwarded request 994485 from dirkmueller)</comment>
+    <requestid>998146</requestid>
+  </revision>
 </revisionlist>
