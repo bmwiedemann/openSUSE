@@ -3409,4 +3409,14 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * MVG requires seekable stream</comment>
     <requestid>991214</requestid>
   </revision>
+  <revision rev="254" vrev="1">
+    <srcmd5>98218577c6d4363d837538e07ecc6003</srcmd5>
+    <version>7.1.0.46</version>
+    <time>1661020080</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.1.0.46
+  upstream changelog:
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md</comment>
+    <requestid>998175</requestid>
+  </revision>
 </revisionlist>
