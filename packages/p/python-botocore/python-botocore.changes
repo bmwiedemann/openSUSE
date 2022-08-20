@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Fri Aug 19 06:08:42 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.27.55
+  * api-change:``chime-sdk-media-pipelines``: The Amazon Chime SDK now supports live streaming of
+    real-time video from the Amazon Chime SDK sessions to streaming platforms such as Amazon IVS and
+    Amazon Elemental MediaLive. We have also added support for concatenation to create a single media
+    capture file.
+  * api-change:``cloudwatch``: Update cloudwatch client to latest version
+  * api-change:``cognito-idp``: This change is being made simply to fix the public documentation
+    based on the models. We have included the PasswordChange and ResendCode events, along with the
+    Pass, Fail and InProgress status. We have removed the Success and Failure status which are never
+    returned by our APIs.
+  * api-change:``dynamodb``: This release adds support for importing data from S3 into a new DynamoDB
+    table
+  * api-change:``ec2``: This release adds support for VPN log options , a new feature allowing S2S
+    VPN connections to send IKE activity logs to CloudWatch Logs
+  * api-change:``networkmanager``: Add TransitGatewayPeeringAttachmentId property to
+    TransitGatewayPeering Model
+- from version 1.27.54
+  * api-change:``appmesh``: AWS App Mesh release to support Multiple Listener and Access Log Format
+    feature
+  * api-change:``connectcampaigns``: Updated exceptions for Amazon Connect Outbound Campaign api's.
+  * api-change:``kendra``: This release adds Zendesk connector (which allows you to specify Zendesk
+    SAAS platform as data source), Proxy Support for Sharepoint and Confluence Server (which allows you
+    to specify the proxy configuration if proxy is required to connect to your Sharepoint/Confluence
+    Server as data source).
+  * api-change:``lakeformation``: This release adds a new API support "AssumeDecoratedRoleWithSAML"
+    and also release updates the corresponding documentation.
+  * api-change:``lambda``: Added support for customization of Consumer Group ID for MSK and Kafka
+    Event Source Mappings.
+  * api-change:``lexv2-models``: Update lexv2-models client to latest version
+  * api-change:``rds``: Adds support for Internet Protocol Version 6 (IPv6) for RDS Aurora database
+    clusters.
+  * api-change:``secretsmanager``: Documentation updates for Secrets Manager.
+- from version 1.27.53
+  * api-change:``rekognition``: This release adds APIs which support copying an Amazon Rekognition
+    Custom Labels model and managing project policies across AWS account.
+  * api-change:``servicecatalog``: Documentation updates for Service Catalog
+- from version 1.27.52
+  * enhancement:AWSCRT: Upgrade awscrt version to 0.14.0
+  * api-change:``cloudfront``: Adds Http 3 support to distributions
+  * api-change:``identitystore``: Documentation updates to reflect service rename - AWS IAM Identity
+    Center (successor to AWS Single Sign-On)
+  * api-change:``sso``: Documentation updates to reflect service rename - AWS IAM Identity Center
+    (successor to AWS Single Sign-On)
+  * api-change:``wisdom``: This release introduces a new API PutFeedback that allows submitting
+    feedback to Wisdom on content relevance.
+- from version 1.27.51
+  * api-change:``amp``: This release adds log APIs that allow customers to manage logging for their
+    Amazon Managed Service for Prometheus workspaces.
+  * api-change:``chime-sdk-messaging``: The Amazon Chime SDK now supports channels with up to one
+    million participants with elastic channels.
+  * api-change:``ivs``: Updates various list api MaxResults ranges
+  * api-change:``personalize-runtime``: This release provides support for promotions in AWS
+    Personalize runtime.
+  * api-change:``rds``: Adds support for RDS Custom to DBInstanceClass in ModifyDBInstance
+- from version 1.27.50
+  * api-change:``backupstorage``: This is the first public release of AWS Backup Storage. We are
+    exposing some previously-internal APIs for use by external services. These APIs are not meant to be
+    used directly by customers.
+  * api-change:``glue``: Add support for Python 3.9 AWS Glue Python Shell jobs
+  * api-change:``privatenetworks``: This is the initial SDK release for AWS Private 5G. AWS Private
+    5G is a managed service that makes it easy to deploy, operate, and scale your own private mobile
+    network at your on-premises location.
+- from version 1.27.49
+  * api-change:``dlm``: This release adds support for excluding specific data (non-boot) volumes from
+    multi-volume snapshot sets created by snapshot lifecycle policies
+  * api-change:``ec2``: This release adds support for excluding specific data (non-root) volumes from
+    multi-volume snapshot sets created from instances.
+- from version 1.27.48
+  * api-change:``cloudwatch``: Update cloudwatch client to latest version
+  * api-change:``location``: Amazon Location Service now allows circular geofences in
+    BatchPutGeofence, PutGeofence, and GetGeofence  APIs.
+  * api-change:``sagemaker-a2i-runtime``: Fix bug with parsing ISO-8601 CreationTime in Java SDK in
+    DescribeHumanLoop
+  * api-change:``sagemaker``: Amazon SageMaker Automatic Model Tuning now supports specifying
+    multiple alternate EC2 instance types to make tuning jobs more robust when the preferred instance
+    type is not available due to insufficient capacity.
+- from version 1.27.47
+  * api-change:``glue``: Add an option to run non-urgent or non-time sensitive Glue Jobs on spare
+    capacity
+  * api-change:``identitystore``: Documentation updates to reflect service rename - AWS IAM Identity
+    Center (successor to AWS Single Sign-On)
+  * api-change:``iotwireless``: AWS IoT Wireless release support for sidewalk data reliability.
+  * api-change:``pinpoint``: Adds support for Advance Quiet Time in Journeys. Adds
+    RefreshOnSegmentUpdate and WaitForQuietTime to JourneyResponse.
+  * api-change:``quicksight``: A series of documentation updates to the QuickSight API reference.
+  * api-change:``sso-admin``: Documentation updates to reflect service rename - AWS IAM Identity
+    Center (successor to AWS Single Sign-On)
+  * api-change:``sso-oidc``: Documentation updates to reflect service rename - AWS IAM Identity
+    Center (successor to AWS Single Sign-On)
+  * api-change:``sso``: Documentation updates to reflect service rename - AWS IAM Identity Center
+    (successor to AWS Single Sign-On)
+- from version 1.27.46
+  * enhancement:Lambda: Add support for Trace ID in Lambda environments
+  * api-change:``chime-sdk-meetings``: Adds support for Tags on Amazon Chime SDK WebRTC sessions
+  * api-change:``config``: Add resourceType enums for Athena, GlobalAccelerator, Detective and EC2
+    types
+  * api-change:``dms``: Documentation updates for Database Migration Service (DMS).
+  * api-change:``iot``: The release is to support attach a provisioning template to CACert for JITP
+    function,  Customer now doesn't have to hardcode a roleArn and templateBody during register a
+    CACert to enable JITP.
+
+-------------------------------------------------------------------
 Thu Aug  4 07:25:04 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.27.45
