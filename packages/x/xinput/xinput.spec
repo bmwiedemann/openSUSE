@@ -1,7 +1,7 @@
 #
 # spec file for package xinput
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,13 @@ Name:           xinput
 Version:        1.6.3
 Release:        0
 Summary:        Utility to configure and test X input devices
-License:        MIT AND HPND
+License:        HPND AND MIT
 Group:          System/X11/Utilities
-Url:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
-BuildRequires:  pkg-config
+URL:            https://xorg.freedesktop.org/
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source1:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2.sig
+Source2:        xinput.keyring
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(inputproto) >= 2.0.99.1
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
@@ -35,7 +37,6 @@ BuildRequires:  pkgconfig(xorg-macros) >= 1.3
 BuildRequires:  pkgconfig(xrandr)
 # This was part of the xorg-x11 package up to version 7.6
 Conflicts:      xorg-x11 <= 7.6
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 xinput is a utility to configure and test XInput devices.
@@ -45,14 +46,14 @@ xinput is a utility to configure and test XInput devices.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
 %{_bindir}/xinput
 %{_mandir}/man1/xinput.1%{?ext_man}
 
