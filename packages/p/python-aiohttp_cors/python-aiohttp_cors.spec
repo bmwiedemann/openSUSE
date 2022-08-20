@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp_cors
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,15 +41,13 @@ Recommends:     python-aiodns
 Recommends:     python-cChardet
 Suggests:       %{name}-doc
 # SECTION test requirements
-BuildRequires:  %{python_module aiohttp >= 1.1 }
+BuildRequires:  %{python_module aiohttp >= 1.1}
 BuildRequires:  %{python_module async_timeout >= 2.0.0}
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module gunicorn}
 BuildRequires:  %{python_module multidict >= 3.3.0}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module yarl >= 0.13.0}
 # /SECTION
@@ -58,6 +56,7 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  python3-sphinxcontrib-asyncio
 BuildRequires:  python3-sphinxcontrib-newsfeed
 # /SECTION
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -68,16 +67,16 @@ Asynchronous HTTP client/server framework for Python.
 - Web-server has middleware and pluggable routing.
 
 %prep
-%setup -q -n aiohttp-cors-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n aiohttp-cors-%{version}
+# remove code coverage flags from pytest
+sed -i '/addopts/d' setup.cfg
 
 %build
 %python_build
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest tests/unit
@@ -85,6 +84,7 @@ Asynchronous HTTP client/server framework for Python.
 %files %{python_files}
 %license LICENSE
 %doc CHANGES.rst README.rst
-%{python_sitelib}/aiohttp_cors*
+%{python_sitelib}/aiohttp_cors
+%{python_sitelib}/aiohttp_cors-%{version}*-info
 
 %changelog
