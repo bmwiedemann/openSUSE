@@ -45,7 +45,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 BuildArch:      noarch
 %if "%{flavor}" == ""
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 %if %{with libalternatives}
@@ -76,6 +75,7 @@ http://docs.pylonsproject.org/projects/waitress/en/latest/ .
 
 %prep
 %setup -q -n waitress-%{version}
+sed -i '/addopts/d' setup.cfg
 
 %build
 %python_build
@@ -103,9 +103,8 @@ http://docs.pylonsproject.org/projects/waitress/en/latest/ .
 %license LICENSE.txt
 %doc COPYRIGHT.txt README.rst
 %python_alternative %{_bindir}/waitress-serve
-%dir %{python_sitelib}/waitress
-%{python_sitelib}/waitress/*
-%{python_sitelib}/waitress-%{version}-py*.egg-info
+%{python_sitelib}/waitress
+%{python_sitelib}/waitress-%{version}*-info
 
 %else
 
