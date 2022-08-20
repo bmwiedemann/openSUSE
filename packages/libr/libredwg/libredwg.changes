@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 19 15:13:22 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-bits-change-bit_copy_chain.patch,
+  0001-fix-obj_flush_hdlstream-GH-497.patch
+  [CVE-2022-35164] [boo#1202553]
+
+-------------------------------------------------------------------
 Sun Feb 13 23:43:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.12.5 [boo#1193372] [CVE-2021-28237]

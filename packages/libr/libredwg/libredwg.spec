@@ -29,6 +29,8 @@ Source:         https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.gz
 Source2:        https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.gz.sig
 Source3:        http://savannah.gnu.org/people/viewgpg.php?user_id=101103#/%name.keyring
 Source4:        %name-rpmlintrc
+Patch1:         0001-bits-change-bit_copy_chain.patch
+Patch2:         0001-fix-obj_flush_hdlstream-GH-497.patch
 BuildRequires:  pkg-config
 
 %description

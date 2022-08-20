@@ -121,4 +121,14 @@
     <comment>- Update to release 0.12.5 [boo#1193372] [CVE-2021-28237]</comment>
     <requestid>977604</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>ba3531ebf6e248cf06d92aa7b3c5d195</srcmd5>
+    <version>0.12.5</version>
+    <time>1661020137</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-bits-change-bit_copy_chain.patch,
+  0001-fix-obj_flush_hdlstream-GH-497.patch
+  [CVE-2022-35164] [boo#1202553]</comment>
+    <requestid>998213</requestid>
+  </revision>
 </revisionlist>
