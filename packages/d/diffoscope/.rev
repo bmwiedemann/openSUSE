@@ -388,4 +388,33 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>985550</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3e3b754d1ffb58b89adacec9580fd485</srcmd5>
+    <version>220</version>
+    <time>1661020155</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 220:
+ - Support Haskell 9.x series files and update the test files to match. Thanks
+   to Scott Talbert for the relevant info about the new format.
+   (Closes: reproducible-builds/diffoscope#309)
+ - Fix a regression introduced in diffoscope version 207 where diffoscope
+   would crash if one directory contained a directory that wasn't in the
+   other. Thanks to Alderico Gallo for the report and the testcase.
+   (Closes: reproducible-builds/diffoscope#310)
+- update to version 219:
+ - Don't traceback if we encounter an invalid Unicode character in Haskell
+   versioning headers. (Closes: reproducible-builds/diffoscope#307)
+ - Update various copyright years.
+- update to version 218:
+ - Improve output of Markdown and reStructuredText to use code blocks with
+   syntax highlighting. (Closes: reproducible-builds/diffoscope#306)
+- update to version 217:
+ - Update test fixtures for GNU readelf 2.38 (now in Debian unstable).
+ - Be more specific about the minimum required version of readelf (ie.
+   binutils) as it appears that this &quot;patch&quot; level version change resulted in
+   a change of output, not the &quot;minor&quot; version. (Closes: #1013348)
+ - Don't leak the (likely-temporary) pathname when comparing PDF documents.
+</comment>
+    <requestid>998322</requestid>
+  </revision>
 </revisionlist>
