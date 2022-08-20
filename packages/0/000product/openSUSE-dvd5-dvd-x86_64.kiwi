@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220818" schemaversion="4.1">
+<image name="OBS__openSUSE___20220819" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220818</productvar>
+      <productvar name="VERSION">20220819</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220818,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220819,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220818/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220819/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -233,7 +233,7 @@
       <repopackage name="bluez-qt-udev"/>
       <repopackage name="bluez-zsh-completion"/>
       <repopackage name="bolt"/>
-      <repopackage name="boost-license1_79_0"/>
+      <repopackage name="boost-license1_80_0"/>
       <repopackage name="bovo"/>
       <repopackage name="bovo-lang"/>
       <repopackage name="branding-openSUSE"/>
@@ -1297,6 +1297,7 @@
       <repopackage name="kruler"/>
       <repopackage name="kruler-lang"/>
       <repopackage name="krusader"/>
+      <repopackage name="ksanecore-lang"/>
       <repopackage name="kscreen5"/>
       <repopackage name="kscreen5-lang"/>
       <repopackage name="kscreen5-plasmoid"/>
@@ -1463,13 +1464,13 @@
       <repopackage name="libblosc1"/>
       <repopackage name="libbluetooth3"/>
       <repopackage name="libbluray2"/>
-      <repopackage name="libboost_date_time1_79_0"/>
-      <repopackage name="libboost_filesystem1_79_0"/>
-      <repopackage name="libboost_iostreams1_79_0"/>
-      <repopackage name="libboost_locale1_79_0"/>
-      <repopackage name="libboost_program_options1_79_0"/>
-      <repopackage name="libboost_python-py3-1_79_0"/>
-      <repopackage name="libboost_thread1_79_0"/>
+      <repopackage name="libboost_date_time1_80_0"/>
+      <repopackage name="libboost_filesystem1_80_0"/>
+      <repopackage name="libboost_iostreams1_80_0"/>
+      <repopackage name="libboost_locale1_80_0"/>
+      <repopackage name="libboost_program_options1_80_0"/>
+      <repopackage name="libboost_python-py3-1_80_0"/>
+      <repopackage name="libboost_thread1_80_0"/>
       <repopackage name="libbox2d2"/>
       <repopackage name="libbpf0"/>
       <repopackage name="libbreezecommon5-5"/>
@@ -2041,7 +2042,7 @@
       <repopackage name="libkdegames-qt5-imports"/>
       <repopackage name="libkdepim"/>
       <repopackage name="libkdepim-lang"/>
-      <repopackage name="libkdevplatform58"/>
+      <repopackage name="libkdevplatform59"/>
       <repopackage name="libkdsoap2"/>
       <repopackage name="libkeduvocdocument-lang"/>
       <repopackage name="libKEduVocDocument5"/>
@@ -2228,6 +2229,7 @@
       <repopackage name="libKPimPkPass5"/>
       <repopackage name="libKPimSMTP5"/>
       <repopackage name="libksane-lang"/>
+      <repopackage name="libKSaneCore1"/>
       <repopackage name="libksba8"/>
       <repopackage name="libkscreen2-plugin"/>
       <repopackage name="libKScreenLocker5"/>
@@ -2507,8 +2509,8 @@
       <repopackage name="libprocps8"/>
       <repopackage name="libprojectM3"/>
       <repopackage name="libprotobuf-c1"/>
-      <repopackage name="libprotobuf-lite3_21_4"/>
-      <repopackage name="libprotobuf3_21_4"/>
+      <repopackage name="libprotobuf-lite3_21_5"/>
+      <repopackage name="libprotobuf3_21_5"/>
       <repopackage name="libproxy1"/>
       <repopackage name="libproxy1-config-gnome3"/>
       <repopackage name="libproxy1-config-kde"/>
