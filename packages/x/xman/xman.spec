@@ -1,7 +1,7 @@
 #
 # spec file for package xman
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,16 +22,17 @@ Release:        0
 Summary:        Manual page display program for the X Window System
 License:        MIT
 Group:          System/X11/Utilities
-Url:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
-BuildRequires:  pkg-config
+URL:            https://xorg.freedesktop.org/
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source1:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2.sig
+Source2:        xman.keyring
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xproto) >= 7.0.17
 BuildRequires:  pkgconfig(xt)
 # This was part of the xorg-x11 package up to version 7.6
 Conflicts:      xorg-x11 <= 7.6
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 xman is a graphical manual page browser.
@@ -41,14 +42,14 @@ xman is a graphical manual page browser.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog COPYING README.md
+%license COPYING
+%doc ChangeLog README.md
 %{_bindir}/xman
 %dir %{_datadir}/X11/app-defaults
 %{_datadir}/X11/app-defaults/Xman
