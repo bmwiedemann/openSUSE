@@ -223,7 +223,7 @@
     <package name="bluez-qt-udev" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="bluez-zsh-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="bolt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="boost-license1_79_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="boost-license1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="bovo" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="bovo-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1247,6 +1247,7 @@
     <package name="kruler" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kruler-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="krusader" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ksanecore-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kscreen5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kscreen5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kscreen5-plasmoid" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1494,6 +1495,7 @@
     <package name="libKPimItinerary5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPimPkPass5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPimSMTP5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKSaneCore1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKScreenLocker5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKSysGuardSystemStats1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKUserFeedbackCore1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1674,13 +1676,13 @@
     <package name="libblosc1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libbluetooth3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libbluray2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libboost_date_time1_79_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libboost_filesystem1_79_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libboost_iostreams1_79_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libboost_locale1_79_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libboost_program_options1_79_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libboost_python-py3-1_79_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="libboost_thread1_79_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libboost_date_time1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libboost_filesystem1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libboost_iostreams1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libboost_locale1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libboost_program_options1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libboost_python-py3-1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
+    <package name="libboost_thread1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbox2d2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbpf0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbreezecommon5-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2172,7 +2174,7 @@
     <package name="libkdegames-qt5-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdepim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdepim-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libkdevplatform58" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libkdevplatform59" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libkdsoap2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libkeduvocdocument-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libkerfuffle22" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2432,8 +2434,8 @@
     <package name="libprocps8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprojectM3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libprotobuf-c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libprotobuf-lite3_21_4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libprotobuf3_21_4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libprotobuf-lite3_21_5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libprotobuf3_21_5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libproxy1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libproxy1-config-gnome3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libproxy1-config-kde" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
