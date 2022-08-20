@@ -98,6 +98,8 @@ skiptests+=" or test_dns_methods_are_green or test_noraise_dns_tcp"
 skiptests+=" or test_fork_after_monkey_patch or test_send_1k_req_rep or test_cpu_usage_after_bind"
 # tracebacks in denosed suite with pytest inside obs presumably work different than when upstream is running nose?
 skiptests+=" or test_leakage_from_tracebacks"
+# it is racy, see: https://lore.kernel.org/all/CADVnQy=AnJY9NZ3w_xNghEG80-DhsXL0r_vEtkr=dmz0ugcoVw@mail.gmail.com/ (bsc#1202188)
+skiptests+=" or test_018b_http_10_keepalive_framing"
 
 # Unknown Python 3.6 specific errors
 # TypeError: _wrap_socket() argument 1 must be _socket.socket, not SSLSocket
