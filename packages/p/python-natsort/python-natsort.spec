@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-natsort
 Version:        8.1.0
@@ -27,10 +27,8 @@ URL:            https://github.com/SethMMorton/natsort
 Source:         https://files.pythonhosted.org/packages/source/n/natsort/natsort-%{version}.tar.gz
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest >= 4.3}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sortedcontainers}
 BuildRequires:  fdupes
 BuildRequires:  help2man
 BuildRequires:  python-rpm-macros
@@ -81,6 +79,7 @@ export LANG=en_US.UTF8
 %doc README.rst CHANGELOG.md
 %python_alternative %{_bindir}/natsort
 %python_alternative %{_mandir}/man1/natsort.1%{?ext_man}
-%{python_sitelib}/natsort*
+%{python_sitelib}/natsort
+%{python_sitelib}/natsort-%{version}*-info
 
 %changelog
