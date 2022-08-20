@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Aug 20 13:45:52 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.3.5:
+  * Patchbay/Scan menu command removed as redundant.
+  * Added Patchbay/Auto Pin connections option.
+  * Add current system user-name to the singleton/unique
+    application instance identifier.
+
+-------------------------------------------------------------------
+Sat Jul  9 14:23:21 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.3.4:
+  * Fix repainting of pinned/unpinned connections when switching
+    patchbay profiles and Patchbay/Edit mode is on.
+
+-------------------------------------------------------------------
 Wed Jul  6 18:17:35 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.3.3:
