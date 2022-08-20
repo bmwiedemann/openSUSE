@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 20 11:40:55 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1660819728.515dc27:
+  * Add tests for so far uncovered corner cases in capture loop
+  * Package HP Elitebook 820G1 dmidata
+  * tools: Exclude unreliable t/data/tests/tests from coverage
+  * tools: Remove redundant 'select' for codecov
+  * Implement QEMU backend support for arbitrary CPU topology
+
+-------------------------------------------------------------------
 Thu Aug 18 03:28:41 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1660650761.bd747b4:
