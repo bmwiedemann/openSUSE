@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Aug 19 15:10:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.13:
+  - Generic:
+    - Support UTF-8 columns using MSSQL 2019;
+    - Do not accept TDS protocol versions "4.6" (never really supported) and
+      "8.0";
+    - Minor portability issues;
+    - Fix log elision for login;
+    - Detect some possible minor memory failure in application;
+    - Support long (more than 64k) SSPI packets (never encountered but you
+      never know);
+    - Fix unicode columns for ASA database;
+    - Avoid using BCP with old protocols;
+    - (*) Fix bulk copy using big endian machines;
+    - (*) Fix Sybase uni(var)char and unsigned types for big endian machines;
+    - (*) Do not send nullable data during bulk copy if type is not nullable;
+  - ODBC:
+    - Added "Timeout" setting;
+  - Applications:
+    - Improve defncopy utility:
+      - Fix some declaration;
+      - Fix Sybase support;
+    - (*) Fix datacopy and freebcp logging;
+  - CT-Library:
+    - Minor fix for variant type;
+    - Better support for timeout setting;
+    - (*) Support some missing types (like nullable unsigned integers) for
+      Sybase;
+  - DB-library:
+    - Unify date format (all systems can use the same syntax);
+    - (*) Allows to pass 0 as type for bcp_bind;
+    - (*) Fix DBSETLSERVERPRINCIPAL macro;
+    - (*) Do not limit queries length for bcp using Sybase;
+    - (*) Add KEEP_NULLS to BCP hints. 
+
+-------------------------------------------------------------------
 Tue May 11 07:04:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - remove stale _service and fix Source url 
