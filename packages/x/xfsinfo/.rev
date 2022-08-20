@@ -69,4 +69,12 @@
     maximum request size to be incorrectly calculated.</comment>
     <requestid>677760</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>a661a07b9f51f05877f3f39cd56716dc</srcmd5>
+    <version>1.0.6</version>
+    <time>1661020153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998311</requestid>
+  </revision>
 </revisionlist>
