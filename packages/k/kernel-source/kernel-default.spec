@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.19
-%define patchversion 5.19.1
+%define patchversion 5.19.2
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -97,6 +97,9 @@ done )
 
 %ifarch %ix86 x86_64
 %define install_vdso 1
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
+%define separate_vdso 1
+%endif
 %else
 %define install_vdso 0
 %endif
@@ -107,9 +110,9 @@ Name:           kernel-default
 Summary:        The Standard Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.19.1
+Version:        5.19.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga5bf6c0
+Release:        <RELEASE>.g6c252ef
 %else
 Release:        0
 %endif
@@ -236,10 +239,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-a5bf6c0b09ada9ba7e920eeed3a92b4bfb4cc86b
-Provides:       kernel-srchash-a5bf6c0b09ada9ba7e920eeed3a92b4bfb4cc86b
+Provides:       kernel-%build_flavor-base-srchash-6c252efa6215101fc5985edaddc903198d01a2d8
+Provides:       kernel-srchash-6c252efa6215101fc5985edaddc903198d01a2d8
 # END COMMON DEPS
-Provides:       %name-srchash-a5bf6c0b09ada9ba7e920eeed3a92b4bfb4cc86b
+Provides:       %name-srchash-6c252efa6215101fc5985edaddc903198d01a2d8
 %ifarch %ix86
 Provides:       kernel-smp = 2.6.17
 Obsoletes:      kernel-smp <= 2.6.17
@@ -1151,17 +1154,21 @@ add_dirs_to_filelist >> %my_builddir/kernel-devel.files
     done
 
     if [ %CONFIG_MODULES = y ]; then
-	find %{?usrmerged:usr/}lib/modules/%kernelrelease-%build_flavor \
+	MODULES=%{?usrmerged:usr/}lib/modules/%kernelrelease-%build_flavor
+	find "$MODULES" \
+%if 0%{?separate_vdso}
+	    -path "$MODULES/vdso" -prune -o \
+%endif
 	    -type d -o \
 	    \( -path '*/modules.*' ! -path '*/modules.order' \
 	     ! -path '*/modules.builtin' \
 	     ! -path '*/modules.builtin.modinfo' \) -printf '%%%%ghost /%%p\n' \
 	       -o -name '*.ko' -prune \
+	       -o \( -type f \
 %if 0%{?usrmerged}
-	       -o \( -type f ! -path '*/symtypes*' ! -path '*/vmlinu*' \) -printf '/%%p\n'
-%else
-	       -o -type f -printf '/%%p\n'
+		! -path '*/symtypes*' ! -path '*/vmlinu*' \
 %endif
+		\) -printf '/%%p\n'
 	cat %my_builddir/base-modules
     fi
     if test %CONFIG_MODULE_SIG = "y" -a -d etc/uefi/certs; then
@@ -1466,6 +1473,23 @@ kmsg message documentation comments.
 %files man
 %defattr(-,root,root)
 /usr/share/man/man9/*
+%endif
+
+%if 0%{?separate_vdso}
+%package vdso
+Summary:        vdso binaries for debugging purposes
+Group:          System/Kernel
+
+%description vdso
+This package includes the vdso binaries. They can be used for debugging. The
+actual binary linked to the programs is loaded from the in-memory image, not
+from this package.
+
+
+%source_timestamp
+%files vdso
+%defattr(-,root,root)
+/%{?usrmerged:usr/}lib/modules/%kernelrelease-%build_flavor/vdso/
 %endif
 
 %package devel
