@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 19 18:43:03 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- spec: Place 'Requires:' on compression binaries instead of their
+  associated packages
+  boo#1202569
+
+-------------------------------------------------------------------
 Mon Aug 15 15:59:38 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - Fix build with glibc 2.36

@@ -638,12 +638,12 @@ Requires:       %{name}-daemon = %{version}-%{release}
 Requires:       %{name}-libs = %{version}-%{release}
 Requires:       /usr/bin/qemu-img
 # For image compression
-Requires:       bzip2
-Requires:       gzip
-Requires:       lzop
+Requires:       /usr/bin/bzip2
+Requires:       /usr/bin/gzip
+Requires:       /usr/bin/lzop
+Requires:       /usr/bin/xz
 Requires:       qemu
 Requires:       systemd-container
-Requires:       xz
 # swtp is needed to manage <tpm> devices.
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 Requires:       swtpm
