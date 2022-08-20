@@ -63,7 +63,6 @@ Requires:       ftstring = %{version}-%{release}
 Requires:       ftvalid = %{version}-%{release}
 Requires:       ftview = %{version}-%{release}
 Conflicts:      dtc < 1.4.0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Freetype2 utilities and demo programs.
@@ -84,15 +83,6 @@ Conflicts:      %{name} < %{version}-%{release}
 
 %description -n ftdiff
 Compare font hinting modes
-This tool is part of the FreeType project
-
-%package -n ftdump
-Summary:        Simple font dumper
-Group:          Productivity/Publishing/Other
-Conflicts:      %{name} < %{version}-%{release}
-
-%description -n ftdump
-Simple font dumper
 This tool is part of the FreeType project
 
 %package -n ftgamma
@@ -192,21 +182,24 @@ export CFLAGS="%{optflags} -std=gnu99 -D_GNU_SOURCE $(getconf LFS_CFLAGS)"
     --enable-static \
     --without-bzip2
 
-make %{?_smp_mflags}
+%make_build
 pushd ..
     ln -s freetype-%{freetype_version} freetype
     cd ft2demos-%{version}
-    make %{?_smp_mflags}
+    %make_build
 
     cd src/ftinspect
     sed -i s/"-isystem "/"-I "/ ftinspect.pro
+# FIXME: you should use the %%qmake5 macro
     qmake-qt5 ftinspect.pro
-    make
+    %make_build
 popd
 
 %install
 mkdir -p %{buildroot}%{_bindir}
 pushd ../ft2demos-%{version}/bin/.libs
+    # packaged in freetype2.spec
+    rm ftdump
     install -m 755 ft* %{buildroot}%{_bindir}
     install -m 755 ../../src/ftinspect/ftinspect %{buildroot}%{_bindir}
 popd
@@ -219,55 +212,39 @@ popd
 %{buildroot}%{_bindir}/ftbench -c 1 %{SOURCE1016}
 
 %files
-%defattr(-,root,root)
 %doc README
 
 %files -n ftbench
-%defattr(-,root,root)
 %{_bindir}/ftbench
 
 %files -n ftdiff
-%defattr(-,root,root)
 %{_bindir}/ftdiff
 
-%files -n ftdump
-%defattr(-,root,root)
-%{_bindir}/ftdump
-
 %files -n ftgamma
-%defattr(-,root,root)
 %{_bindir}/ftgamma
 
 %files -n ftgrid
-%defattr(-,root,root)
 %{_bindir}/ftgrid
 
 %files -n ftinspect
-%defattr(-,root,root)
 %{_bindir}/ftinspect
 
 %files -n ftlint
-%defattr(-,root,root)
 %{_bindir}/ftlint
 
 %files -n ftmulti
-%defattr(-,root,root)
 %{_bindir}/ftmulti
 
 %files -n ftsdf
-%defattr(-,root,root)
 %{_bindir}/ftsdf
 
 %files -n ftstring
-%defattr(-,root,root)
 %{_bindir}/ftstring
 
 %files -n ftvalid
-%defattr(-,root,root)
 %{_bindir}/ftvalid
 
 %files -n ftview
-%defattr(-,root,root)
 %{_bindir}/ftview
 
 %changelog

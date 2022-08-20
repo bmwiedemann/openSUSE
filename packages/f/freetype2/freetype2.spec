@@ -30,6 +30,8 @@ Source2:        %{name}.sh
 Source10:       https://downloads.sourceforge.net/project/freetype/freetype2/%{version}/freetype-%{version}.tar.xz.sig
 Source11:       https://downloads.sourceforge.net/project/freetype/freetype-docs/%{version}/freetype-doc-%{version}.tar.xz.sig
 Source12:       freetype2.keyring
+Source20:       https://downloads.sourceforge.net/project/freetype/freetype-demos/%{version}/ft2demos-%{version}.tar.xz
+Source21:       https://downloads.sourceforge.net/project/freetype/freetype-demos/%{version}/ft2demos-%{version}.tar.xz.sig
 Source1000:     baselibs.conf
 Patch0:         bugzilla-308961-cmex-workaround.patch
 # PATCH-FIX-OPENSUSE don-t-mark-libpng-as-required-library.patch -- it is private in .pc
@@ -90,9 +92,18 @@ TrueType font library.
 
 It also contains a small tutorial for using that library.
 
+%package -n ftdump
+Summary:        Simple font dumper
+Group:          Productivity/Publishing/Other
+Conflicts:      ft2demos < %{version}-%{release}
+
+%description -n ftdump
+Simple font dumper
+This tool is part of the FreeType project
+
 %prep
 
-%setup -q -n freetype-%{version} -a 1
+%setup -q -n freetype-%{version} -a 1 -a 20
 %autopatch -p1
 
 %build
@@ -103,10 +114,16 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE $(getconf LFS_CFLAGS)"
 	--with-zlib \
     --enable-freetype-config \
 	--disable-static
-make %{?_smp_mflags} ANSIFLAGS=
+%make_build ANSIFLAGS=
+
+cd ft2demos-%{version}
+%make_build TOP_DIR=..  $PWD/bin/ftdump
 
 %install
 %make_install
+cd ft2demos-%{version}
+../builds/unix/libtool --mode=install %{_bindir}/install -c bin/ftdump %{buildroot}%{_bindir}/ftdump
+cd ..
 install -Dm 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/profile.d/%{name}.sh
 
 # remove documentation that does not belong in an rpm
@@ -133,5 +150,8 @@ rm %{buildroot}%{_libdir}/libfreetype.la
 %{_libdir}/pkgconfig/freetype2.pc
 %{_mandir}/man1/freetype-config.1%{?ext_man}
 %{_datadir}/aclocal
+
+%files -n ftdump
+%{_bindir}/ftdump
 
 %changelog
