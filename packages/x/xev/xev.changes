@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 11 07:59:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- modernize spec-file, move license to %%licensedir
+
+-------------------------------------------------------------------
 Tue Jul 12 22:06:52 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.2.5

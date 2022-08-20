@@ -22,19 +22,18 @@ Release:        0
 Summary:        Utility to print contents of X events
 License:        X11
 Group:          System/X11/Utilities
-URL:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
-Source1:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz.sig
-Source2:        %name.keyring
+URL:            https://xorg.freedesktop.org/
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+Source1:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz.sig
+Source2:        %{name}.keyring
 Patch0:         u_Add-event-filter-for-motion-and-button-events.patch
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xproto) >= 7.0.17
 BuildRequires:  pkgconfig(xrandr) >= 1.2
 # This was part of the xorg-x11 package up to version 7.6
 Conflicts:      xorg-x11 <= 7.6
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 xev creates a window and then asks the X server to send it X11 events
@@ -51,14 +50,14 @@ usage.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog COPYING README.md
+%license COPYING
+%doc ChangeLog README.md
 %{_bindir}/xev
 %{_mandir}/man1/xev.1%{?ext_man}
 
