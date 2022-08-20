@@ -21,7 +21,7 @@
 %endif
 
 Name:           fcitx
-Version:        4.2.9.8
+Version:        4.2.9.9
 Release:        0
 Summary:        Flexible Context-aware Input Tool with eXtension
 License:        GPL-2.0-or-later
@@ -33,6 +33,7 @@ Source2:        fcitx-README.suse
 Source3:        xim.fcitx.suse.template
 Source8:        openSUSE-themes.tar.gz
 Source9:        macros.%{name}
+Source10:       %{name}.keyring
 Source99:       baselibs.conf
 Source100:      https://download.fcitx-im.org/fcitx/%{name}-%{version}_dict.tar.xz.sig
 # PATCH-FIX-OPENSUSE fcitx-autostart-check-INPUT_METHOD.patch boo#947576
