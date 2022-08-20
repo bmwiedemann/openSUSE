@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 18 15:44:17 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.0:
+  * Added:
+    + Add get_known_classifiers method to metadata hooks
+  * Fixed:
+    + Fix check for updating static versions with the version
+      command when metadata hooks are in use
+
+-------------------------------------------------------------------
 Sat Aug 13 19:23:18 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.7.1:
