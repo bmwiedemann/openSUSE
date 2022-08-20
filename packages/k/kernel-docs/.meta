@@ -1,7 +1,6 @@
 <package name="kernel-docs" project="openSUSE:Factory">
-  <title>Kernel Documentation</title>
-  <description>These are the PDF documents and man pages (section 9) built from
-thecurrent kernel sources.</description>
+  <title>The Linux Kernel Sources</title>
+  <description>Linux kernel sources with many fixes and improvements.</description>
   <devel project="openSUSE:Factory" package="kernel-source"/>
   <bcntsynctag>kernel-source</bcntsynctag>
 </package>
