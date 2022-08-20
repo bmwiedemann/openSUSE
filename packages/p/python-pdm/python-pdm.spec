@@ -16,25 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test-py38"
-%define psuffix -test-py38
-%define skip_python39 1
-%define skip_python310 1
-%bcond_without test
-%endif
-%if "%{flavor}" == "test-py39"
-%define psuffix -test-py39
-%define skip_python38 1
-%define skip_python310 1
-%bcond_without test
-%endif
-%if "%{flavor}" == "test-py310"
-%define psuffix -test-py310
-%define skip_python38 1
-%define skip_python39 1
+%if "%{flavor}" == "test"
+%define psuffix -test
 %bcond_without test
 %endif
 %if "%{flavor}" == ""
@@ -42,46 +26,52 @@
 %bcond_with test
 %endif
 Name:           python-pdm%{psuffix}
-Version:        1.15.3
+Version:        2.1.2
 Release:        0
 Summary:        Python Development Master
 License:        MIT
 URL:            https://github.com/pdm-project/pdm/
 Source0:        https://files.pythonhosted.org/packages/source/p/pdm/pdm-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module pdm-pep517 >= 0.9}
-BuildRequires:  %{python_module pip >= 20.1}
+BuildRequires:  %{python_module pdm-pep517 >= 1.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-blinker
-Requires:       python-click >= 7
-Requires:       python-findpython
-Requires:       python-installer >= 0.5.1
-Requires:       python-packaging
-Requires:       python-pdm-pep517 >= 0.9
-Requires:       python-pep517 >= 0.11
-Requires:       python-pip >= 20.1
+Requires:       python-cachecontrol >= 0.12.11
+Requires:       python-certifi
+Requires:       python-findpython >= 0.2.0
+Requires:       python-packaging >= 20.9
+Requires:       python-pep517 >= 0.11.0
 Requires:       python-platformdirs
 Requires:       python-python-dotenv >= 0.15
-Requires:       python-resolvelib >= 0.8
-Requires:       python-setuptools
+Requires:       python-requests-toolbelt
+Requires:       python-rich >= 12.3.0
 Requires:       python-shellingham >= 1.3.2
+Requires:       python-unearth >= 0.6.0
+Requires:       python-virtualenv >= 20
+Requires:       (python-installer >= 0.5.1 with python-installer < 0.6)
+Requires:       (python-pdm-pep517 >= 1.0.0 with python-pdm-pep517 < 2.0.0)
+Requires:       (python-resolvelib >= 0.8 with python-resolvelib < 0.9)
+Requires:       (python-tomlkit >= 0.8.0 with python-tomlkit < 1)
+# from python-cachecontrol[filecache]
+Requires:       python-lockfile >= 0.9
+%if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1.1.0
-Requires:       python-tomlkit >= 0.8.0
-Requires:       python-wheel >= 0.36.2
+%endif
+%if 0%{?python_version_nodots} < 38
+Requires:       python-importlib-metadata
+Requires:       python-typing-extensions
+%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
 BuildRequires:  %{python_module pdm = %{version}}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  ca-certificates
-BuildRequires:  git
-BuildRequires:  git-lfs
 %endif
 # /SECTION
 %python_subpackages
@@ -93,6 +83,8 @@ doesn't need to create a virtualenv at all!
 
 %prep
 %autosetup -p1 -n pdm-%{version}
+#  we don't care about certifi version, the distro package replaces the certificates with system ones anyway
+sed -i 's/"certifi>=[0-9.]*"/"certifi"/' pyproject.toml
 
 %build
 %if !%{with test}
@@ -106,23 +98,28 @@ doesn't need to create a virtualenv at all!
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
+%if %{with test}
+%check
+# no network
+donttest="network"
+# mock testing finds the wrong python versions in our multiflavor setup
+donttest="$donttest or test_project_packages_path or test_conda_backend_create"
+%pytest -k "not ($donttest)"
+%endif
+
 %post
 %python_install_alternative pdm
 
 %postun
 %python_uninstall_alternative pdm
 
-%if %{with test}
-%check
-%pytest -x -k 'not (network or path or test_use_command)'
-%endif
-
 %if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/pdm
-%{python_sitelib}/pdm*
+%{python_sitelib}/pdm
+%{python_sitelib}/pdm-%{version}*-info
 %endif
 
 %changelog

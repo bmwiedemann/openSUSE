@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Sun Aug 14 10:47:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v2.1.2
+  * Fix a bug that dependencies from different versions of the same
+    package override each other. #1307
+  * Forward SIGTERM to child processes in pdm run. #1312
+  * Fix errors when running on FIPS 140-2 enabled systems using
+    Python 3.9 and newer. #1313
+  * Fix the build failure when the subprocess outputs with non-UTF8
+    characters. #1319
+  * Delay the trigger of post_lock for add and update operations,
+    to ensure the pyproject.toml is updated before the hook is run.
+    #1320
+- Release 2.1.1
+  * Add a env_file.override option that allows the user to specify
+    that the env_file should override any existing environment
+    variables. This is not the default as the environment the code
+    runs it should take precedence. #1299
+  * Fix a bug that unnamed requirements can't override the old ones
+    in either add or update command. #1287
+  * Support mutual TLS to private repositories via pypi.client_cert
+    and pypi.client_key config options. #1290
+  * Set a minimum version for the packaging dependency to ensure
+    that packaging.utils.parse_wheel_filename is available. #1293
+  * Fix a bug that checking for PDM update creates a venv. #1301
+  * Prefer compatible packages when fetching metadata. #1302
+- Release 2.1.0
+  * Allow the use of custom CA certificates using the pypi.ca_certs
+    config entry. #1240
+  * Add pdm export to available pre-commit hooks. #1279
+  * Skip incompatible requirements when installing build
+    dependencies. #1264
+  * Fix a crash when pdm tries to publish a package with non-ASCII
+    characters in the metadata. #1270
+  * Try to read the lock file even if the lock version is
+    incompatible. #1273
+  * For packages that are only available as source distribution,
+    the summary field in pdm.lock contains the description from the
+    package's pyproject.toml. #1274
+  * Do not crash when calling pdm show for a package that is only
+    available as source distribution. #1276
+  * Fix a bug that completion scripts are interpreted as rich
+    markups. #1283
+  * Remove the dependency of pip. #1268
+  * Deprecate the top-level imports from pdm module, it will be
+    removed in the future. #1282
+- Release 2.0.3
+  * Support Conda environments when detecting the project
+    environment. #1253
+  * Fix the interpreter resolution to first try python executable
+    in the PATH. #1255
+  * Stabilize sorting of URLs in metadata.files in pdm.lock. #1256
+  * Don't expand credentials in the file URLs in the [metada.files]
+    table of the lock file. #1259
+- Release 2.0.2
+  * env_file variables no longer override existing environment
+    variables. #1235
+  * Support referencing other optional groups in
+    optional-dependencies with <this_package_name>[group1, group2]
+    #1241
+  * Respect requires-python when creating the default venv. #1237
+- Release 2.0.1
+  * Write lockfile before calling 'post_lock' hook #1224
+  * Suppress errors when cache dir isn't accessible. #1226
+  * Don't save python path for venv commands. #1230
+- Release 2.0.0
+  * Fix a bug that the running env overrides the PEP 582
+    PYTHONPATH. #1211
+  * Add pwsh as an alias of powershell for shell completion. #1216
+  * Fixed a bug with zsh completion regarding --pep582 flag. #1218
+  * Fix a bug of requirement checking under non-isolated mode.
+    #1219
+  * Fix a bug when removing packages, TOML document might become
+    invalid. #1221
+- Back to testing all python flavors in one go: CLI tests fail if
+  only one python interpreter is found. The test suite runs under 3
+  minutes per flavor on a normal workstation.
+
+-------------------------------------------------------------------
 Sun Jun 19 22:03:26 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix runtime requirements, test by removing build requirements and
