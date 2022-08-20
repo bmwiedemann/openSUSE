@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Aug 19 14:58:42 UTC 2022 - dmueller@suse.com
+
+- Update to version 2.10.0:
+  * Fix breaking test
+  * Update docs for new `compose kill` `--remove-orphans` option
+  * Apply compose model on `compose kill`, add `--remove-orphans`
+  * Code formatting
+  * Give environment variables precedence back to OS over .env
+  * Reset the DockerCli and APIClient after loading the environment file
+  * up/start/run: don't wait for disabled service
+  * create: pull all services logic out of loop; add DependsOn deps
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.14 to 0.0.16 (#9754)
+  * build windows/arm64 and linux/riscv64 binaries
+  * ci: fix checksums file
+  * Use compose to pull image twice
+  * root: filter out commandConn.Close* warning message
+  * Use alpine:3.13.12 to be unique across the test cases
+  * readme: fix badges
+  * Fix package name
+  * Try changing package used to avoid any race condition in tests
+  * Better sandboxed workflow and enhanced cross compilation
+  * build(deps): bump github.com/containerd/containerd from 1.6.7 to 1.6.8
+  * make compose pull tests more expressive
+  * lint: add `nolintlint` and clean up `nolint` directives (#9738)
+  * lint: run gofmt from Go 1.19 (#9728)
+  * don't apply default pull policy from command line if one is define in service configuration
+  * build(deps): bump github.com/containerd/containerd from 1.6.6 to 1.6.7
+  * update Docker CLI version use in CI to v20.10.17
+  * fix version of golangci-lint to v1.47.3, issue with v1.48.0 for now
+  * build(deps): bump github.com/cnabio/cnab-to-oci from 0.3.5 to 0.3.6
+  * config: use correct YAML marshal func (#9712)
+  * docs: remove extra whitespaces in help text (#9710)
+  * ci: use latest stable dockerfile syntax & rename docs Dockerfile (#9711)
+  * Change `projectOrName()` to check COMPOSE_PROJECT_NAME env var
+  * Filter `compose ps` output by provided compose model
+  * Add E2E tests for `compose stop` with compose file
+  * if command is ran with a compose file, apply the compose model, not just project name
+  * up: do not stop dependency containers (#9701)
+  * config: case-insensitive env vars on Windows (#9438)
+  * build: upgrade BuildKit & docker/distribution
+  * build: bump to Go 1.18.5
+  * update usage strings for consistency
+  * remove unused workflows, especially the pr-closed which always failed
+  * Fix breaking TestComposePull test case
+  * Avoid pulling same images multiple times ⚡️
+
+-------------------------------------------------------------------
 Mon Aug  8 18:52:46 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - Require docker-compose-switch to not break user expectations,

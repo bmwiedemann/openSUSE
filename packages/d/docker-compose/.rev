@@ -15,4 +15,41 @@
     <comment></comment>
     <requestid>993846</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2ddd794ffe72b401de8213de36574167</srcmd5>
+    <version>2.10.0</version>
+    <time>1661020129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10.0:
+  * Fix breaking test
+  * Update docs for new `compose kill` `--remove-orphans` option
+  * Apply compose model on `compose kill`, add `--remove-orphans`
+  * Code formatting
+  * Give environment variables precedence back to OS over .env
+  * Reset the DockerCli and APIClient after loading the environment file
+  * up/start/run: don't wait for disabled service
+  * create: pull all services logic out of loop; add DependsOn deps
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.14 to 0.0.16 (#9754)
+  * build windows/arm64 and linux/riscv64 binaries
+  * ci: fix checksums file
+  * Use compose to pull image twice
+  * root: filter out commandConn.Close* warning message
+  * Use alpine:3.13.12 to be unique across the test cases
+  * readme: fix badges
+  * Fix package name
+  * Try changing package used to avoid any race condition in tests
+  * Better sandboxed workflow and enhanced cross compilation
+  * build(deps): bump github.com/containerd/containerd from 1.6.7 to 1.6.8
+  * make compose pull tests more expressive
+  * lint: add `nolintlint` and clean up `nolint` directives (#9738)
+  * lint: run gofmt from Go 1.19 (#9728)
+  * don't apply default pull policy from command line if one is define in service configuration
+  * build(deps): bump github.com/containerd/containerd from 1.6.6 to 1.6.7
+  * update Docker CLI version use in CI to v20.10.17
+  * fix version of golangci-lint to v1.47.3, issue with v1.48.0 for now
+  * build(deps): bump github.com/cnabio/cnab-to-oci from 0.3.5 to 0.3.6
+  * config: use correct YAML marshal func (#9712)
+  * docs: remove extra whitespaces in help text (#9710)</comment>
+    <requestid>998191</requestid>
+  </revision>
 </revisionlist>
