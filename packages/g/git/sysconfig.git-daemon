@@ -28,7 +28,7 @@ GIT_DAEMON_USER=""
 ## Type:	   string
 ## Default: 
 #
-# defaults to "nogroup" if not set
+# defaults to "git-daemon" if not set
 #
 # Group to run git-daemon as.
 GIT_DAEMON_GROUP=""

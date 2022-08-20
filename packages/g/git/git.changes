@@ -24,6 +24,11 @@ Tue Jul 11 11:11:11 UTC 2022 - olaf@aepfle.de
 - Usage of sysusers_requires is optional, like during quilt setup
 
 -------------------------------------------------------------------
+Sun Jul 10 12:24:48 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use the system user's group instead of nogroup
+
+-------------------------------------------------------------------
 Fri Jul  8 09:00:10 UTC 2022 - Petr Vorel <pvorel@suse.cz>
 
 - Add /etc/bash_completion.d/git-prompt: checks for git-prompt.sh and source it
