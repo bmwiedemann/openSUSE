@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 20 11:23:33 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1660819425.c8126a5:
+  * Fix signal guard for hook script since it is a separate Minion task
+  * Document configuring ports for developer mode with firewalld
+
+-------------------------------------------------------------------
 Thu Aug 18 03:23:26 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1660790631.9c38795:
