@@ -18,14 +18,12 @@
 
 %global modname PyCondor
 Name:           python-PyCondor
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Python utility for HTCondor
 License:        MIT
 URL:            https://github.com/jrbourbeau/pycondor
 Source:         https://files.pythonhosted.org/packages/source/P/PyCondor/PyCondor-%{version}.tar.gz
-# https://github.com/jrbourbeau/pycondor/commit/b41b17546c898d5cc2368b92fda86473c605e923
-Patch0:         python-PyCondor-collections.abc-Iterable.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -44,7 +42,6 @@ PyCondor (Python HTCondor) is a tool to help build and submit workflows to HTCon
 
 %prep
 %setup -q -n PyCondor-%{version}
-%patch0 -p1
 sed -Ei "1{/^#!\/usr\/bin\/env python/d}" pycondor/tests/example_script.py
 
 %build
