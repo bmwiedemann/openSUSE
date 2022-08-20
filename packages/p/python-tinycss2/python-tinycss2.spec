@@ -1,7 +1,7 @@
 #
 # spec file for package python-tinycss2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,9 +32,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-flake8}
-BuildRequires:  %{python_module pytest-isort}
 BuildRequires:  %{python_module webencodings >= 0.4}
 # /SECTION
 Requires:       python-webencodings >= 0.4
@@ -48,6 +45,7 @@ more recent CSS Syntax Level 3 specification.
 
 %prep
 %setup -q -n tinycss2-%{version}
+sed -i 's/--isort//;s/--flake8//;s/--cov --no-cov-on-fail//' pyproject.toml
 
 %build
 %pyproject_wheel
@@ -63,6 +61,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/tinycss*
+%{python_sitelib}/tinycss2
+%{python_sitelib}/tinycss2-%{version}*-info
 
 %changelog
