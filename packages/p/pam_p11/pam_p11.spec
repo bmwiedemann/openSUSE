@@ -1,7 +1,7 @@
 #
 # spec file for package pam_p11
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@ security implications, see README.SUSE.
 
 %build
 %configure\
-	--libdir=/%{_lib} \
+	--with-pamdir=/%{_pam_moduledir} \
 	--disable-static \
 	--docdir=%{_docdir}/%{name}
 
@@ -61,6 +61,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -f %{name}.mo
 %license COPYING
 %doc README.md NEWS
-/%{_lib}/security/*.so
+/%{_pam_moduledir}/*.so
 
 %changelog

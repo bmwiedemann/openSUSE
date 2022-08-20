@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 29 08:19:38 UTC 2022 - pgajdos@suse.com
+
+- use pam rpm macros [bsc#1190955]
+
+-------------------------------------------------------------------
 Mon May 17 23:16:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.3.1
