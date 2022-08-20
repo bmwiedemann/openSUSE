@@ -16,18 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-graphviz
-Version:        0.19.1
+Version:        0.20.1
 Release:        0
 Summary:        Python interface for Graphviz
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/xflr6/graphviz
 Source:         https://files.pythonhosted.org/packages/source/g/graphviz/graphviz-%{version}.zip
-Patch0:         python-graphviz-pytest.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pytest >= 6}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock >= 3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
@@ -58,6 +56,8 @@ displayed within IPython notebooks.
 
 %prep
 %autosetup -n graphviz-%{version}
+sed -i '/--cov/d' setup.cfg
+sed -i '/^mock_use_standalone_module/d' setup.cfg
 
 # Fix wrong-file-end-of-line-encoding
 dos2unix LICENSE.txt README.rst docs/*.rst
@@ -70,14 +70,12 @@ dos2unix LICENSE.txt README.rst docs/*.rst
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-sed -i '/^mock/d' */requires.txt
-sed -i '/^mock_use_standalone_module/d' setup.cfg
 %pytest
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/graphviz
-%{python_sitelib}/graphviz-%{version}-py*.egg-info
+%{python_sitelib}/graphviz-%{version}*-info
 
 %changelog

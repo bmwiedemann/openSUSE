@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Aug 18 18:39:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.20.1
+  * Fix documentation building: upgrade to Sphinx 5.0.
+  * Fix broken user guide links in API documentation.
+- Version 0.20
+  * Add keyword-only neato_no_op argument to .render(), .pipe(),
+    and stand-alone graphviz.render() and graphviz.pipe().
+  * When building a Graph or Digraph, warn about an expected DOT
+    syntax error in rendering when passing a string that ends with
+    an odd number of backslashes (e.g. invalid dot.node('spam',
+    label='\\') instead of correct ..., label=r'\\' for a node
+    labled as a backslash).
+  * Increase visibility of graphviz.escape() in the documentation.
+- Version 0.19.2
+  * Drop Python 3.6 support (end of life 23 Dec 2021).
+  * Fix ExecutableNotFound and CalledProcessError in
+    graphviz.__all__.
+  * Better document 0.18 change of behaviour for the body
+    argument/attribute (lines need to include their final newline).
+- drop python-graphviz-pytest.patch
+
+-------------------------------------------------------------------
 Wed Mar 23 10:36:42 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build
