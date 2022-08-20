@@ -11,6 +11,7 @@
 %if %{without bootstrap}
 %dir %{_sysconfdir}/modules-load.d
 %endif
+%dir %{_sysconfdir}/systemd/network
 %dir %{_sysconfdir}/udev
 %dir %{_sysconfdir}/udev/rules.d
 %dir %{_systemd_util_dir}/network

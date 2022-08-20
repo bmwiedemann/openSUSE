@@ -73,6 +73,8 @@
 %dir %{_unitdir}/sockets.target.wants
 %dir %{_unitdir}/sysinit.target.wants
 %dir %{_unitdir}/timers.target.wants
+%dir %{_unitdir}/user@.service.d
+%dir %{_unitdir}/user@0.service.d
 %dir %{xinitconfdir}
 %dir %{xinitconfdir}/xinitrc.d
 %doc %{_modprobedir}/README
@@ -302,7 +304,6 @@
 %{_mandir}/man5/systemd.target.5.gz
 %{_mandir}/man5/systemd.timer.5.gz
 %{_mandir}/man5/systemd.unit.5.gz
-%{_mandir}/man5/sysupdate.d.5.gz
 %{_mandir}/man5/sysusers.d.5.gz
 %{_mandir}/man5/timesyncd.conf.5.gz
 %{_mandir}/man5/timesyncd.conf.d.5.gz
@@ -388,11 +389,6 @@
 %{_mandir}/man8/systemd-sysext.8.gz
 %{_mandir}/man8/systemd-sysext.service.8.gz
 %{_mandir}/man8/systemd-system-update-generator.8.gz
-%{_mandir}/man8/systemd-sysupdate-reboot.service.8.gz
-%{_mandir}/man8/systemd-sysupdate-reboot.timer.8.gz
-%{_mandir}/man8/systemd-sysupdate.8.gz
-%{_mandir}/man8/systemd-sysupdate.service.8.gz
-%{_mandir}/man8/systemd-sysupdate.timer.8.gz
 %{_mandir}/man8/systemd-sysusers.8.gz
 %{_mandir}/man8/systemd-sysusers.service.8.gz
 %{_mandir}/man8/systemd-time-wait-sync.8.gz
@@ -452,9 +448,6 @@
 %{_systemd_util_dir}/systemd-socket-proxyd
 %{_systemd_util_dir}/systemd-sulogin-shell
 %{_systemd_util_dir}/systemd-sysctl
-%if %{without bootstrap}
-%{_systemd_util_dir}/systemd-sysupdate
-%endif
 %{_systemd_util_dir}/systemd-time-wait-sync
 %{_systemd_util_dir}/systemd-timedated
 %{_systemd_util_dir}/systemd-timesyncd
@@ -649,12 +642,6 @@
 %{_unitdir}/systemd-suspend.service
 %{_unitdir}/systemd-sysctl.service
 %{_unitdir}/systemd-sysext.service
-%if %{without bootstrap}
-%{_unitdir}/systemd-sysupdate-reboot.service
-%{_unitdir}/systemd-sysupdate-reboot.timer
-%{_unitdir}/systemd-sysupdate.service
-%{_unitdir}/systemd-sysupdate.timer
-%endif
 %{_unitdir}/systemd-sysusers.service
 %{_unitdir}/systemd-time-wait-sync.service
 %{_unitdir}/systemd-timedated.service
@@ -678,6 +665,8 @@
 %{_unitdir}/user-runtime-dir@.service
 %{_unitdir}/user.slice
 %{_unitdir}/user@.service
+%{_unitdir}/user@.service.d/10-login-barrier.conf
+%{_unitdir}/user@0.service.d/10-login-barrier.conf
 %{xinitconfdir}/xinitrc.d/50-systemd-user.sh
 %if %{with split_usr}
 /bin/systemctl

@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Tue Aug 16 15:55:26 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit 532faa39ebaa6f56e493cc938a91a40df082b74f (merge of v251.4)
+
+  It includes the following fixes:
+
+  - 739d7130cb home: drop conflicted headers (bsc#1202221)
+  - 8fe0c12178 glibc: Remove #include <linux/fs.h> to resolve fsconfig_command/mount_attr conflict with glibc 2.36 (bsc#1202221)
+  - 0c5b7ee318 udev: allow to execute longer command line (bsc#1201766)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/8cd784e9250b38d20d8e14fccbfb211010283c79...532faa39ebaa6f56e493cc938a91a40df082b74f
+
+- Drop 1001-statx.patch, it's no more needed.
+
+-------------------------------------------------------------------
+Mon Aug 15 10:25:34 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch 1001-statx.patch based on commit 3657d3a0
+  * to resolve conflicts with glibc 2.36 with <linux/fs.h>
+  * add dirty hack to get in src/basic/chattr-util.h,
+    src/home/homework.h, src/home/homework-fscrypt.c,
+    src/home/homed-manager.c, and src/home/homework-mount.c as well
+    to avoid that <linux/fs.h> does include <linux/mount.h>
+
+-------------------------------------------------------------------
+Tue Jul 19 12:18:35 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Enable oomd (bsc#1200456)
+
+  It's part of the experimental sub-package for now.
+
+-------------------------------------------------------------------
+Tue Jul 19 11:32:25 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit 8cd784e9250b38d20d8e14fccbfb211010283c79 (merge of v251.3)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/32912879062bb1595d8498b6f9c77d5acd1dc66a...8cd784e9250b38d20d8e14fccbfb211010283c79
+
+-------------------------------------------------------------------
+Tue Jul 19 10:18:03 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit 32912879062bb1595d8498b6f9c77d5acd1dc66a
+
+  111b96ca86 logind: don't delay login for root even if systemd-user-sessions.service is not activated yet (bsc#1195059)
+
+-------------------------------------------------------------------
+Tue Jul 19 08:58:21 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Enable bpf framework
+
+-------------------------------------------------------------------
+Mon Jul 18 15:54:51 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- When systemd-container is installed install tar/gpg too
+
+  So `machinectl import-tar` always works flawlessly. systemd-container already
+  is an optional package and both tar and gpg are rather basic anyway so no harm
+  should be done by requiring them.
+
+- Move the systemd sysupdate stuff from the main package to the experimental
+  sub-package while it's still time. The method used (currently) for updating
+  openSUSE distro is rpm, not systemd-sysupdate.
+
+-------------------------------------------------------------------
+Tue Jul 12 14:41:48 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: add files.experimental
+
+-------------------------------------------------------------------
+Fri Jul  8 16:39:07 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Make {/etc,/usr/lib}/systemd/network owned by both udev and systemd-network (bsc#1201276)
+
+  This configuration files put in these directories are read by both udevd and
+  systemd-networkd.
+
+-------------------------------------------------------------------
+Tue Jun 21 14:24:43 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit 69abca7794ed06d823bc0a9bb55daf822adcc632
+
+  f29b146685 pstore: Run after modules are loaded
+
+-------------------------------------------------------------------
 Tue Jun 21 14:09:51 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - pstore is no more considered as an experimental feature: move it to udev

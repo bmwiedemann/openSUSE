@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version +suse.21.ge9fc337d97
+%define archive_version +suse.29.g532faa39eb
 
 %define _testsuitedir /usr/lib/systemd/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -72,12 +72,14 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        251.2
+Version:        251.4
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if %{without bootstrap}
+BuildRequires:  bpftool
+BuildRequires:  clang
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  kbd
 BuildRequires:  libapparmor-devel
@@ -88,6 +90,7 @@ BuildRequires:  polkit
 BuildRequires:  python3-base
 BuildRequires:  python3-lxml
 BuildRequires:  pkgconfig(audit)
+BuildRequires:  pkgconfig(libbpf)
 BuildRequires:  pkgconfig(libdw)
 BuildRequires:  pkgconfig(libiptc)
 BuildRequires:  pkgconfig(liblz4)
@@ -137,6 +140,8 @@ Requires:       util-linux >= 2.27.1
 Requires:       group(lock)
 # This Recommends because some symbols of libpcre2 are dlopen()ed by journalctl
 Recommends:     libpcre2-8-0
+Recommends:     libbpf0
+
 Requires(post): coreutils
 Requires(post): findutils
 Requires(post): systemd-presets-branding
@@ -178,6 +183,7 @@ Source203:      files.network
 Source204:      files.devel
 Source205:      files.sysvcompat
 Source206:      files.uefi-boot
+Source207:      files.experimental
 
 #
 # All changes backported from upstream are tracked by the git repository, which
@@ -387,6 +393,9 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(zlib)
 %endif
 Requires:       %{name} = %{version}-%{release}
+# import-tar needs tar and gpg
+Requires:       /usr/bin/tar
+Requires:       /usr/bin/gpg
 %systemd_requires
 Obsoletes:      nss-mymachines < %{version}-%{release}
 Provides:       nss-mymachines = %{version}-%{release}
@@ -628,7 +637,7 @@ Components that turn out to be stable and considered as fully
 supported will be merged into the main package or moved into a
 dedicated package.
 
-The package contains: homed, repart, userdbd.
+The package contains: homed, repart, userdbd, oomd.
 
 Have fun with these services at your own risk.
 %endif
@@ -678,12 +687,12 @@ Have fun with these services at your own risk.
         -Dima=false \
         -Dldconfig=false \
         -Dlibcryptsetup-plugins=false \
-        -Doomd=false \
         -Dsmack=false \
         \
         -Dpstore=true \
         \
         -Dapparmor=%{when_not bootstrap} \
+        -Dbpf-framework=%{when_not bootstrap} \
         -Defi=%{when_not bootstrap} \
         -Delfutils=%{when_not bootstrap} \
         -Dhtml=%{when_not bootstrap} \
@@ -692,7 +701,6 @@ Have fun with these services at your own risk.
         -Dnss-systemd=%{when_not bootstrap} \
         -Dseccomp=%{when_not bootstrap} \
         -Dselinux=%{when_not bootstrap} \
-        -Dsysupdate=%{when_not bootstrap} \
         -Dtpm=%{when_not bootstrap} \
         -Dtpm2=%{when_not bootstrap} \
         -Dtranslations=%{when_not bootstrap} \
@@ -720,7 +728,9 @@ Have fun with these services at your own risk.
         -Dresolve=%{when resolved} \
         \
         -Dhomed=%{when experimental} \
+        -Doomd=%{when experimental} \
         -Drepart=%{when experimental} \
+        -Dsysupdate=%{when experimental} \
         -Duserdb=%{when experimental} \
         \
         -Dtests=%{when testsuite unsafe} \
@@ -1264,20 +1274,25 @@ fi
 
 %if %{with experimental}
 %pre experimental
-%service_add_pre systemd-userdbd.service systemd-userdbd.socket
 %service_add_pre systemd-homed.service
+%service_add_pre systemd-oomd.service systemd-oomd.socket
+%service_add_pre systemd-userdbd.service systemd-userdbd.socket
 
 %post experimental
-%service_add_post systemd-userdbd.service systemd-userdbd.socket
+%sysusers_create systemd-oom.conf
 %service_add_post systemd-homed.service
+%service_add_post systemd-oomd.service systemd-oomd.socket
+%service_add_post systemd-userdbd.service systemd-userdbd.socket
 
 %preun experimental
-%service_del_preun systemd-userdbd.service systemd-userdbd.socket
 %service_del_preun systemd-homed.service
+%service_del_preun systemd-oomd.service systemd-oomd.socket
+%service_del_preun systemd-userdbd.service systemd-userdbd.socket
 
 %postun experimental
-%service_del_postun systemd-userdbd.service systemd-userdbd.socket
 %service_del_postun systemd-homed.service
+%service_del_postun systemd-oomd.service systemd-oomd.socket
+%service_del_postun systemd-userdbd.service systemd-userdbd.socket
 %endif
 
 %files
@@ -1409,37 +1424,7 @@ fi
 %if %{with experimental}
 %files experimental
 %defattr(-,root,root)
-%{_bindir}/systemd-repart
-%{_unitdir}/systemd-repart.service
-%{_mandir}/man*/*repart*
-%{_bindir}/userdbctl
-%{_prefix}/lib/systemd/systemd-userwork
-%{_prefix}/lib/systemd/systemd-userdbd
-%{_systemd_util_dir}/system/initrd-root-fs.target.wants/systemd-repart.service
-%{_systemd_util_dir}/system/sysinit.target.wants/systemd-repart.service
-%{_unitdir}/systemd-userdbd.service
-%{_unitdir}/systemd-userdbd.socket
-%{_mandir}/man*/userdbctl*
-%{_mandir}/man*/systemd-userdbd*
-%config(noreplace) %{_sysconfdir}/systemd/homed.conf
-%{_bindir}/homectl
-%{_prefix}/lib/systemd/systemd-homed
-%{_prefix}/lib/systemd/systemd-homework
-%{_unitdir}/systemd-homed.service
-%{_unitdir}/systemd-homed-activate.service
-%{_pam_moduledir}/pam_systemd_home.so
-%{_datadir}/dbus-1/interfaces/org.freedesktop.home1.Home.xml
-%{_datadir}/dbus-1/interfaces/org.freedesktop.home1.Manager.xml
-%{_datadir}/dbus-1/interfaces/org.freedesktop.portable1.Image.xml
-%{_datadir}/dbus-1/interfaces/org.freedesktop.portable1.Manager.xml
-%{_datadir}/dbus-1/system-services/org.freedesktop.home1.service
-%{_datadir}/dbus-1/system.d/org.freedesktop.home1.conf
-%{_datadir}/polkit-1/actions/org.freedesktop.home1.policy
-%{_datadir}/bash-completion/completions/homectl
-%{_mandir}/man*/*homectl*
-%{_mandir}/man*/*homed*
-%{_mandir}/man*/org.freedesktop.home1*
-%{_mandir}/man*/pam_systemd_home*
+%include %{SOURCE207}
 %endif
 
 %changelog
