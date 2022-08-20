@@ -67,7 +67,7 @@
 %endif
 
 Name:           chromium
-Version:        104.0.5112.79
+Version:        104.0.5112.101
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later

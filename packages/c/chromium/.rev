@@ -4219,4 +4219,23 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>997378</requestid>
   </revision>
+  <revision rev="348" vrev="1">
+    <srcmd5>ac8344dabd66f2697ea0768791e621ba</srcmd5>
+    <version>104.0.5112.101</version>
+    <time>1661020094</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 104.0.5112.101 (boo#1202509):
+  * CVE-2022-2852: Use after free in FedCM
+  * CVE-2022-2854: Use after free in SwiftShader
+  * CVE-2022-2855: Use after free in ANGLE
+  * CVE-2022-2857: Use after free in Blink
+  * CVE-2022-2858: Use after free in Sign-In Flow
+  * CVE-2022-2853: Heap buffer overflow in Downloads
+  * CVE-2022-2856: Insufficient validation of untrusted input in Intents
+  * CVE-2022-2859: Use after free in Chrome OS Shell
+  * CVE-2022-2860: Insufficient policy enforcement in Cookies
+  * CVE-2022-2861: Inappropriate implementation in Extensions API
+</comment>
+    <requestid>998184</requestid>
+  </revision>
 </revisionlist>
