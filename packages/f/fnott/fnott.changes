@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 19 23:39:11 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.3.0:
+  * Added:
+    - Support for a “progress” hints, notify-send -h int:value:20 ..., (#51).
+    - title-format, summary-format and body-format options, allowing you to customize the rendered strings. In this release, the %a, %s, %b and %% formatters, as well as \n, are recognized. (#39).
+    - Added configuration option layer to specify the layer on which notifications are displayed. Values include background, top, bottom, and overlay (#71).
+  * Changed:
+    - Minimum required meson version is now 0.58.
+    - Notification text is now truncated instead of running into, and past, the vertical padding (#52).
+    - All color configuration options have been changed from (A)RGB (i.e. ARGB, where the alpha component is optional), to RGBA. This means all color values must be specified with 8 digits (#47).
+  * Removed:
+    - $XDG_CONFIG_HOME/fnottrc and ~/.config/fnottrc. Use $XDG_CONFIG_HOME/fnott/fnott.ini (defaulting to ~/.config/fnott/fnott.ini) instead (#7).
+  * Fixed:
+    - Scale not being applied to the notification’s size when first instantiated (#54).
+    - Fallback to /etc/xdg if XDG_CONFIG_DIRS is unset.
+    - Icon lookup is now better at following the XDG specification (#64).
+    - Setting max-width and/or max-height to 0 no longer causes fnott to crash. Instead, a zero max-width/height means there is no limit (#66).
+
+-------------------------------------------------------------------
 Mon Mar  7 05:24:12 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - use released tarball with source URL
