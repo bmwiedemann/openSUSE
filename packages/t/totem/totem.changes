@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 19 09:18:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Don't do python code linting for the rpm package
+  * Drop build requirement of python3-pylint
+  * Checking code lint is a tool for upstream developers and
+    irrelevant for the functionality of a binary distribution
+    package
+
+-------------------------------------------------------------------
 Sat Mar 19 09:51:17 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.0:

@@ -36,7 +36,6 @@ BuildRequires:  gtk-doc
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  python3-pylint
 BuildRequires:  vala >= 0.14.1
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(cairo) >= 1.14.0
