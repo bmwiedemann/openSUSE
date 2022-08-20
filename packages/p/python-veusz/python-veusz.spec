@@ -1,7 +1,7 @@
 #
 # spec file for package python-veusz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2  1
-%define         skip_python36 1
 Name:           python-veusz
 Version:        3.4
 Release:        0
@@ -27,29 +24,25 @@ Summary:        Scientific plotting library for Python
 License:        GPL-2.0-or-later AND Python-2.0
 URL:            https://veusz.github.io/
 Source0:        https://files.pythonhosted.org/packages/source/v/veusz/veusz-%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
 Source3:        veusz_256.png
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel}
-BuildRequires:  %{python_module qt5-devel}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sip-devel}
+# PATCH-FIX-UPSTREAM veusz-sip65.patch gh#veusz/veusz#595 -- fix build with SIP 6.5
+Patch0:         veusz-sip65.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-devel
+BuildRequires:  python3-numpy-devel
+BuildRequires:  python3-qt5-devel
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-sip-devel
+BuildRequires:  python3-toml
 BuildRequires:  update-desktop-files
-Requires:       python-numpy
-Requires:       python-qt5
-Recommends:     python-astropy
-Recommends:     python-h5py
-Recommends:     veusz
-ExcludeArch:    i586
 # SECTION For Tests
-BuildRequires:  %{python_module astropy}
-BuildRequires:  %{python_module h5py}
+BuildRequires:  python3-astropy
+BuildRequires:  python3-h5py
 # /SECTION
-%python_subpackages
+ExcludeArch:    i586
 
 %description
 Veusz is a scientific plotting package, designed to create
@@ -61,13 +54,20 @@ multiple plots, contours, shapes and fitting data.
 
 %package     -n veusz
 Summary:        GUI scientific plotting package
-Requires:       python3-veusz = %{version}
+Requires:       python3-numpy
+Requires:       python3-qt5
+Recommends:     python3-astropy
+Recommends:     python3-h5py
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
 Requires(postun):desktop-file-utils
 Requires(postun):shared-mime-info
-Obsoletes:      veusz3 < %{version}
-Provides:       veusz3 = %{version}
+Obsoletes:      veusz3 < %{version}-%{release}
+Provides:       veusz3 = %{version}-%{release}
+Obsoletes:      python3-veusz < %{version}-%{release}
+Provides:       python3-veusz = %{version}-%{release}
+Obsoletes:      %{primary_python}-veusz < %{version}-%{release}
+Provides:       %{primary_python}-veusz = %{version}-%{release}
 
 %description -n veusz
 Veusz is a scientific plotting package, designed to create
@@ -78,7 +78,7 @@ plotting functions, data with errors, keys, labels, stacked plots,
 multiple plots, contours, shapes and fitting data.
 
 %prep
-%setup -q -n veusz-%{version}
+%autosetup -p1 -n veusz-%{version}
 find -name \*~ | xargs rm -f
 
 # Remove hashbangs from eventually non-executable scripts
@@ -86,11 +86,10 @@ sed -E -i "/\#!\/usr\/bin\/env python/d" veusz/veusz_{listen,main}.py
 
 %build
 export CFLAGS="%{optflags}"
-
-%python_build
+%python3_build
 
 %install
-%python_install
+%python3_install
 
 # Install .desktop, mime and appdata files from upstream tarball
 install -Dm0644 support/veusz.appdata.xml %{buildroot}%{_datadir}/appdata/veusz.appdata.xml
@@ -101,7 +100,7 @@ desktop-file-install -m 0644 \
   support/veusz.desktop
 
 # move icon files to /usr/share/pixmaps/veusz
-%python_expand install -m 0644 %{SOURCE3} %{buildroot}%{$python_sitearch}/veusz/icons/veusz_256.png
+install -m 0644 %{SOURCE3} %{buildroot}%{python3_sitearch}/veusz/icons/veusz_256.png
 mkdir -p %{buildroot}%{_datadir}/pixmaps/veusz
 ln -s %{python3_sitearch}/veusz/icons %{buildroot}%{_datadir}/pixmaps/veusz
 
@@ -122,12 +121,11 @@ install -p Documents/man-page/veusz.1 -m 0644 %{buildroot}%{_mandir}/man1
 # Remove an unneeded hidden file from documentation
 rm Documents/manual/html/.buildinfo
 
-%python_expand %fdupes %{buildroot}%{$python_sitearch}/veusz/
+%fdupes %{buildroot}%{python3_sitearch}/veusz/
 
 %check
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-QT_QPA_PLATFORM=minimal $python -B tests/runselftest.py
-}
+export PYTHONPATH=%{buildroot}%{python3_sitearch}
+QT_QPA_PLATFORM=minimal python3 -B tests/runselftest.py
 
 %post -n veusz
 update-mime-database %{_datadir}/mime > /dev/null 2>&1 || :
@@ -139,14 +137,9 @@ update-mime-database %{_datadir}/mime > /dev/null 2>&1 || :
 update-desktop-database %{_datadir}/applications
 %icon_theme_cache_postun
 
-%files %{python_files}
+%files -n veusz
 %doc README.md AUTHORS ChangeLog
 %doc Documents/manual/html
-%license COPYING
-%{python_sitearch}/veusz-%{version}-py*.egg-info
-%{python_sitearch}/veusz/
-
-%files -n veusz
 %license COPYING
 %{_bindir}/veusz
 %{_datadir}/applications/veusz.desktop
@@ -156,5 +149,7 @@ update-desktop-database %{_datadir}/applications
 %{_datadir}/icons/hicolor/*/apps/veusz.*
 %{_datadir}/mime/packages/veusz.xml
 %{_mandir}/man1/*
+%{python3_sitearch}/veusz-%{version}*-info
+%{python3_sitearch}/veusz/
 
 %changelog
