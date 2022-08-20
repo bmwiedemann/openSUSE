@@ -34,22 +34,19 @@ Patch1:         mark-network-tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-fasttext
-Requires:       python-langdetect
 Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires:       python-regex
 Requires:       python-tzlocal
 Recommends:     convertdate
-Recommends:     python-jdatetime
+Recommends:     python-fasttext
+Recommends:     python-langdetect
 Recommends:     python-ruamel.yaml
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module GitPython}
 BuildRequires:  %{python_module convertdate}
-BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module fasttext}
-BuildRequires:  %{python_module jdatetime}
 BuildRequires:  %{python_module langdetect}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pytest}
@@ -57,7 +54,6 @@ BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module regex}
 BuildRequires:  %{python_module ruamel.yaml}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tzlocal}
 # /SECTION
 Requires(post): update-alternatives
@@ -73,8 +69,6 @@ Date parsing library designed to parse dates from HTML pages
 # not py3 compatible and weird license of the imported module
 rm tests/test_hijri.py
 rm dateparser/calendars/hijri*
-# Requires files not shipped in PyPi tarball
-rm tests/test_dateparser_data_integrity.py
 
 sed -i '1{/\/usr\/bin\/env python/d;}' \
     dateparser_scripts/update_supported_languages_and_locales.py
@@ -88,10 +82,12 @@ sed -i '1{/\/usr\/bin\/env python/d;}' \
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/scrapinghub/dateparser/issues/1053
-rm tests/test_search.py
 export NO_NETWORK=1
-%pytest
+# Requires files not shipped in PyPI sdist
+ignoretestfiles="--ignore tests/test_dateparser_data_integrity.py"
+# https://github.com/scrapinghub/dateparser/issues/1053
+ignoretestfiles="$ignoretestfiles --ignore tests/test_search.py"
+%pytest $ignoretestfiles
 
 %post
 %python_install_alternative dateparser-download
