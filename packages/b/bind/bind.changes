@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Aug 18 14:57:33 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Fix typo in contrib/dlz/modules/{mysql,mysqldyn} that references
+  LDAP_LIBS instead of MYSQL_LIBS.
+  [bsc#1202149, bind.spec, bind-fix-mysql-bindings.patch]
+
+-------------------------------------------------------------------
+Thu Aug 18 13:28:24 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to bind release 9.18.6
+  Bug Fixes:
+  * When running as a validating resolver forwarding all queries
+    to another resolver, named could crash with an assertion failure.
+    These crashes occurred when the configured forwarder sent
+    a broken DS response and named failed its attempts to find
+    a proper one instead. This has been fixed.
+  * Non-dynamic zones that inherit dnssec-policy from the view
+    or options blocks were not marked as inline-signed
+    and therefore never scheduled to be re-signed. This has been fixed.
+  * The old max-zone-ttl zone option was meant to be superseded
+    by the max-zone-ttl option in dnssec-policy; however,
+    the latter option was not fully effective. This has been corrected:
+    zones no longer load if they contain TTLs greater than the limit
+    configured in dnssec-policy. For zones with both the old
+    max-zone-ttl option and dnssec-policy configured,
+    the old option is ignored, and a warning is generated.
+  * rndc dumpdb -expired was fixed to include expired RRsets,
+    even if stale-cache-enable is set to no and the cache-cleaning
+    time window has passed.
+  For a complete list of changes, see
+  * Bind Release Notes
+    https://downloads.isc.org/isc/bind9/9.18.6/doc/arm/html/notes.html
+  * The CHANGES file in the source RPM
+  [bind.spec bind-9.18.6.tar.xz bind-9.18.6.tar.xz.sha512.asc]
+
+-------------------------------------------------------------------
 Wed Aug  3 13:14:32 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - When enabling query_logging by un-commenting an example in
