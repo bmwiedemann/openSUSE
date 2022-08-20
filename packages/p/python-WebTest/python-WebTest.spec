@@ -1,7 +1,7 @@
 #
 # spec file for package python-WebTest
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-WebTest
 Version:        3.0.0
 Release:        0
 Summary:        Helper to test WSGI applications
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://webtest.pythonpaste.org/
+URL:            https://docs.pylonsproject.org/projects/webtest/
 Source:         https://files.pythonhosted.org/packages/source/W/WebTest/WebTest-%{version}.tar.gz
 BuildRequires:  %{python_module PasteDeploy}
 BuildRequires:  %{python_module WSGIProxy2}
 BuildRequires:  %{python_module WebOb >= 1.2}
 BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module cssselect}
 BuildRequires:  %{python_module pyquery}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module waitress >= 0.8.5}
 BuildRequires:  fdupes
@@ -44,10 +44,6 @@ Requires:       python-WebOb >= 1.2
 Requires:       python-beautifulsoup4
 Requires:       python-waitress >= 0.8.5
 BuildArch:      noarch
-%ifpython2
-Obsoletes:      %{oldpython}-webtest < %{version}
-Provides:       %{oldpython}-webtest = %{version}
-%endif
 %python_subpackages
 
 %description
@@ -67,8 +63,6 @@ This package contains documentation files for %{name}.
 
 %prep
 %setup -q -n WebTest-%{version}
-# remove version limitation for nose
-sed -i 's/nose<1\.3\.0/nose/' setup.py
 
 %build
 %python_build
@@ -79,13 +73,13 @@ python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest -v
+%pytest
 
 %files %{python_files}
 %license license.rst
 %doc CHANGELOG.rst README.rst
 %{python_sitelib}/webtest/
-%{python_sitelib}/WebTest-%{version}-py*.egg-info
+%{python_sitelib}/WebTest-%{version}*-info
 
 %files -n %{name}-doc
 %doc build/sphinx/html
