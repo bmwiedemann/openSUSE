@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-charset-normalizer
 Version:        2.1.0
@@ -28,25 +28,12 @@ Source:         https://github.com/Ousret/charset_normalizer/archive/refs/tags/%
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-cached-property >= 1.5
-Requires:       python-dragonmapper >= 0.2
-Requires:       python-loguru >= 0.5
-Requires:       python-prettytable
-Requires:       python-zhon
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Suggests:       python-requests
-Suggests:       python-requests-html
 Suggests:       python-unicodedata2
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module prettytable}
-BuildRequires:  %{python_module cached-property >= 1.5}
-BuildRequires:  %{python_module dragonmapper >= 0.2}
-BuildRequires:  %{python_module loguru >= 0.5}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module zhon}
 # /SECTION
 %python_subpackages
 
@@ -55,6 +42,8 @@ Python Universal Charset detector.
 
 %prep
 %setup -q -n charset_normalizer-%{version}
+# remove code coverage flags from pytest
+sed -i '/addopts/d' setup.cfg
 
 %build
 %python_build
@@ -77,6 +66,7 @@ Python Universal Charset detector.
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/normalizer
-%{python_sitelib}/charset_normalizer*
+%{python_sitelib}/charset_normalizer
+%{python_sitelib}/charset_normalizer-%{version}*-info
 
 %changelog
