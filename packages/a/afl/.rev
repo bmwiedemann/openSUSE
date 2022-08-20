@@ -1110,4 +1110,24 @@
     - converted all passed to use the new llvm pass manager for llvm 11+</comment>
     <requestid>985621</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>c31081618de30e648f60e6df5c2d76c7</srcmd5>
+    <version>4.02c</version>
+    <time>1661020160</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.02c
+  - afl-cc:
+    - important fix for the default pcguard mode when LLVM IR vector
+      selects are produced, thanks to @juppytt for reporting!
+  - gcc_plugin:
+    -   Adacore submitted CMPLOG support to the gcc_plugin! :-)
+  - llvm_mode:
+    -   laf cmp splitting fixed for more comparison types
+  - frida_mode:
+    -   now works on Android!
+  - afl-fuzz:
+    - change post_process hook to allow returning NULL and 0 length to
+      tell afl-fuzz to skip this mutated input (forwarded request 998343 from msmeissn)</comment>
+    <requestid>998344</requestid>
+  </revision>
 </revisionlist>
