@@ -192,6 +192,9 @@ FileProvides: /usr/bin/fusermount3 fuse3
 FileProvides: /usr/bin/grep busybox-grep grep
 FileProvides: /usr/bin/gzip busybox-gzip gzip zstd-gzip
 Prefer: gzip
+FileProvides: /usr/bin/bzip2 busybox-bzip2 bzip2
+Prefer: bzip2
+FileProvides: /usr/bin/lzop lzop
 FileProvides: /usr/bin/killall psmisc
 FileProvides: /usr/bin/mkdir coreutils busybox-coreutils
 FileProvides: /usr/bin/mimencode metamail
