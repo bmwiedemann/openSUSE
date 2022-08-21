@@ -18,7 +18,7 @@
 
 Name:           SDL2_ttf
 %define lname	libSDL2_ttf-2_0-0
-Version:        2.20.0
+Version:        2.20.1
 Release:        0
 Summary:        Simple DirectMedia Layer 2 Truetype library
 License:        Zlib
@@ -29,11 +29,11 @@ URL:            https://github.com/libsdl-org/SDL_ttf
 Source:         https://github.com/libsdl-org/SDL_ttf/releases/download/release-%version/SDL2_ttf-%version.tar.gz
 Source2:        https://github.com/libsdl-org/SDL_ttf/releases/download/release-%version/SDL2_ttf-%version.tar.gz.sig
 Source8:        %name.keyring
+BuildRequires:  SDL2-devel >= 2.24
 BuildRequires:  c++_compiler
 BuildRequires:  dos2unix
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(sdl2)
 
 %description
 This is a sample library that allows you to use TrueType fonts in your
@@ -42,19 +42,19 @@ SDL applications.
 %package -n %lname
 Summary:        Simple DirectMedia Layer 2 Truetype library
 Group:          System/Libraries
-Provides:       SDL2_ttf = %version
 
 %description -n %lname
 This is a sample library that allows you to use TrueType fonts in your
 SDL applications.
 
-%package -n libSDL2_ttf-devel
+%package devel
 Summary:        Header files for the Simple DirectMedia Layer 2 Truetype library
 Group:          Development/Libraries/X11
 Requires:       %lname = %version
-Provides:       SDL2_ttf-devel = %version
+Obsoletes:      libSDL2_ttf-devel < %version-%release
+Provides:       libSDL2_ttf-devel = %version-%release
 
-%description -n libSDL2_ttf-devel
+%description devel
 This is a sample library that allows you to use TrueType fonts in your
 SDL applications.
 
@@ -77,7 +77,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %license LICENSE.txt
 %_libdir/libSDL2_ttf-2*.so.*
 
-%files -n libSDL2_ttf-devel
+%files devel
 %doc CHANGES.txt README.txt
 %_includedir/SDL2/
 %_libdir/libSDL2_ttf.so
