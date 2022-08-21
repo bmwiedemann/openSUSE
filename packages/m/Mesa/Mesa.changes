@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug 17 16:42:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.1.6:
+  * llvmpipe: make last_fence a screen/rast object not a context one. llvmpipe:
+    keep context list and use to track resource usage.
+  * Revert "pan/bi: Require ATEST coverage mask input in R60"
+  * intel/dev: drop warning for unhandled hwconfig keys
+  * anv: Use sampleLocationsEnable for sample locations
+
+-------------------------------------------------------------------
+Sun Aug  7 18:41:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.1.5:
+  * radv: dynamic vertex input failure
+  * anv: KHR-GL46.tessellation_shader.single.xfb_captures_data_from_correct_stage fails on TGL
+  * anv: GTF-GL46.gtf32.GL3Tests.packed_pixels.packed_pixels_pbo failure
+  * anv: ICL hiz issue
+  * Error compiling gallium-nine on i686 using musl libc
+  * dEQP-VK.memory.mapping.dedicated_alloc failing on bsw and gen9atom
+
+-------------------------------------------------------------------
 Mon Aug  1 21:22:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.1.4:
