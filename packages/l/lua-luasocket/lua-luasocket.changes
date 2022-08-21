@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Aug 20 17:43:12 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+rebase: luasocket-makefile.patch
+fix: W: package-with-huge-docs 69%
+- Create a speperate doc package, lua*-luasocket will recommend it
+fix: update URL
+
+-------------------------------------------------------------------
+Sat Aug 20 06:55:28 UTC 2022 - pirateclip@protonmail.com
+
+- Update to version 3.1.0:
+  * chore: Release v3.1.0
+  * ci: Echo correct platform in job title
+  * fix(build): Use gai_strerrorA not gai_strerror on Windows
+  * feat(tcp): Add support for TCP Defer Accept
+  * feat(tcp): Add support for TCP Fast Open
+  * chore(rockspec): Move recent PR change to proper rockspec (#384)
+  * fix(rockspec): Fixup Windows (mingw32) builds (#383)
+  * chore: Update internal version references to match release (#370)
+  * chore: Release v3.0.0
+  * chore: Copy-edit description in dev rockspec
+
+-------------------------------------------------------------------
 Sun Jul 11 16:15:33 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add a more useful dependency name

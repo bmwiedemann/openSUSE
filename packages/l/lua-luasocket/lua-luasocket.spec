@@ -1,7 +1,7 @@
 #
-# spec file for package lua-luasocket
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name luasocket
-Version:        3.0~rc1+git20170515.5a17f79
+Version:        3.1.0
 Release:        0
 Summary:        Network support for the Lua language
 License:        MIT
 Group:          Development/Languages/Other
-URL:            https://github.com/diegonehab/luasocket
+URL:            https://github.com/lunarmodules/luasocket
 Source:         %{mod_name}-%{version}.tar.xz
 Patch0:         luasocket-makefile.patch
 BuildRequires:  %{flavor}-devel
@@ -35,6 +35,7 @@ Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-%{mod_name}
+Recommends:     %{flavor}-%{mod_name}-doc
 %endif
 
 %description
@@ -55,6 +56,14 @@ Requires:       %{flavor}-%{mod_name} = %{version}
 This subpackage contains header files for developing applications that
 want to make use of %{flavor}-%{mod_name}.
 
+%package doc
+Summary:        Documentation for %{flavor}-%{mod_name}
+Group:          Development/Languages/Other
+BuildArch:      noarch
+
+%description doc
+This subpackage contains documentation for %{flavor}-%{mod_name}.
+
 %prep
 %setup -q -n %{mod_name}-%{version}
 %patch0 -p1
@@ -73,8 +82,6 @@ install -p -m 0644 src/*.h %{buildroot}%{lua_incdir}
 
 %files
 %license LICENSE
-%doc doc/*
-%doc README
 %{lua_archdir}/mime
 %{lua_archdir}/socket
 %{lua_noarchdir}/ltn12.lua
@@ -84,5 +91,9 @@ install -p -m 0644 src/*.h %{buildroot}%{lua_incdir}
 
 %files devel
 %{lua_incdir}/*.h
+
+%files doc
+%doc docs/*
+%doc README.md
 
 %changelog
