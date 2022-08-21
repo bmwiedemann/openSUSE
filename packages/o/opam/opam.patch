@@ -1,3 +1,14 @@
+--- a/src/client/dune
++++ b/src/client/dune
+@@ -3,7 +3,7 @@
+   (public_name opam-client)
+   (synopsis    "OCaml Package Manager client and CLI library")
+   (modules     (:standard \ opamMain get_git_version))
+-  (libraries   opam-state opam-solver opam-repository re extlib cmdliner)
++  (libraries   opam-state opam-solver opam-repository re base64 cmdliner)
+   (flags       (:standard
+                (:include ../ocaml-flags-standard.sexp)
+                (:include ../ocaml-flags-configure.sexp)
 --- a/src/client/opamAdminCheck.ml
 +++ b/src/client/opamAdminCheck.ml
 @@ -110,9 +110,9 @@ let cycle_check univ =
@@ -21,6 +32,17 @@
          in
          (* Simplify the graph by merging all equivalent versions of each
             package *)
+--- a/src/client/opamSwitchCommand.ml
++++ b/src/client/opamSwitchCommand.ml
+@@ -400,7 +400,7 @@ let import_t ?ask importfile t =
+     OpamPath.Switch.extra_files_dir t.switch_global.root t.switch
+   in
+   OpamHash.Map.iter (fun hash content ->
+-      let value = Base64.decode_string content in
++      let value = Base64.decode_exn content in
+       let my = OpamHash.compute_from_string ~kind:(OpamHash.kind hash) value in
+       if OpamHash.contents my = OpamHash.contents hash then
+         let dst =
 --- a/src/solver/dune
 +++ b/src/solver/dune
 @@ -2,7 +2,7 @@

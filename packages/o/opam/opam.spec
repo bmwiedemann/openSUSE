@@ -17,7 +17,7 @@
 
 
 Name:           opam
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        Source-based package manager for OCaml
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
@@ -31,7 +31,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  ocaml
 BuildRequires:  ocaml-cppo
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20220707
+BuildRequires:  ocamlfind(base64)
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(cmdliner)
 BuildRequires:  ocamlfind(cudf)
