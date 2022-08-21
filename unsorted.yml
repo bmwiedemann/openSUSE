@@ -254,9 +254,13 @@ unsorted:
   - RigelEngine 
   - Rivet-devel 
   - Rivet-plugins 
+  - SDL2-devel 
+  - SDL2-devel-32bit: [x86_64] 
   - SDL2_image-devel 
   - SDL2_mixer-devel 
+  - SDL2_net-devel 
   - SDL2_sound-devel 
+  - SDL2_ttf-devel 
   - SDL_Pango-devel 
   - SDL_sound-devel 
   - SHERPA-MC-devel 
@@ -2203,7 +2207,6 @@ unsorted:
   - compat-usrmerge-build 
   - compface 
   - compface-devel 
-  - compicc 
   - compiz 
   - compiz-bcop 
   - compiz-branding-SLED 
@@ -9450,8 +9453,6 @@ unsorted:
   - libRivet-3_1_6 
   - libSDL-1_2-0-32bit: [x86_64] 
   - libSDL2-2_0-0-32bit: [x86_64] 
-  - libSDL2-devel 
-  - libSDL2-devel-32bit: [x86_64] 
   - libSDL2_gfx-1_0-0 
   - libSDL2_gfx-1_0-0-32bit: [x86_64] 
   - libSDL2_gfx-devel 
@@ -9460,11 +9461,8 @@ unsorted:
   - libSDL2_mixer-2_0-0 
   - libSDL2_net-2_0-0 
   - libSDL2_net-2_0-0-32bit: [x86_64] 
-  - libSDL2_net-devel 
-  - libSDL2_net-devel-32bit: [x86_64] 
   - libSDL2_sound2 
   - libSDL2_ttf-2_0-0 
-  - libSDL2_ttf-devel 
   - libSDL_Pango1 
   - libSDL_bgi-devel 
   - libSDL_bgi-suse8 
@@ -11290,8 +11288,6 @@ unsorted:
   - libgomp1-gcc7-32bit: [x86_64] 
   - libgoocanvas-2_0-9 
   - libgoocanvas-3_0-9 
-  - libgoocanvasmm-2_0-6 
-  - libgoocanvasmm-devel 
   - libgooglepinyin-devel 
   - libgovirt-devel 
   - libgpaste-gtk-3-0 
@@ -12992,13 +12988,6 @@ unsorted:
   - libovn-21_09-0 
   - libowncloudsync-devel 
   - libowncloudsync0 
-  - liboyranos-alpha-devel 
-  - liboyranos-devel 
-  - liboyranos0 
-  - liboyranos0-cups 
-  - liboyranos0-lraw 
-  - liboyranos0-monitor 
-  - liboyranos0-sane 
   - libp11-3-32bit: [x86_64] 
   - libp11-devel 
   - libp8-platform2 
@@ -15535,6 +15524,7 @@ unsorted:
   - lua51-luasec 
   - lua51-luasocket 
   - lua51-luasocket-devel 
+  - lua51-luasocket-doc 
   - lua51-luasql 
   - lua51-luassert 
   - lua51-luasystem 
@@ -15587,6 +15577,7 @@ unsorted:
   - lua53-luasec 
   - lua53-luasocket 
   - lua53-luasocket-devel 
+  - lua53-luasocket-doc 
   - lua53-luasql 
   - lua53-luassert 
   - lua53-luasystem 
@@ -15640,6 +15631,7 @@ unsorted:
   - lua54-luasec 
   - lua54-luasocket 
   - lua54-luasocket-devel 
+  - lua54-luasocket-doc 
   - lua54-luasql 
   - lua54-luassert 
   - lua54-luasystem 
@@ -18672,11 +18664,6 @@ unsorted:
   - oxygen5-icon-theme-scalable 
   - oxygen5-lang 
   - oxygen5-style 
-  - oyranos 
-  - oyranos-monitor 
-  - oyranos-profile-graph 
-  - oyranos-qcmsevents 
-  - oyranos-ui-fltk 
   - p0f 
   - p11-kit-32bit: [x86_64] 
   - p11-kit-devel 
@@ -43656,7 +43643,6 @@ unsorted:
   - xclass 
   - xclass-devel 
   - xclipboard 
-  - xcm 
   - xcmsdb 
   - xcolors 
   - xcompmgr 
