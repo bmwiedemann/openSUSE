@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 14 06:12:50 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Disable Python2 to fix 15.3 build.
+
+-------------------------------------------------------------------
 Mon Jun 29 11:43:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not disable py2 build for Leap
