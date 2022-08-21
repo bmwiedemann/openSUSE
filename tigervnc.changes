@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  9 12:17:29 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use %_pam_vendordir
+
+-------------------------------------------------------------------
 Thu Apr 28 21:10:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - fix homepage url

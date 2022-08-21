@@ -26,7 +26,7 @@
 %define use_firewalld 0
 %endif
 %if 0%{?suse_version} < 1550
-%define _distconfdir %{_sysconfdir}
+%define _pam_vendordir %{_sysconfdir}/pam.d
 %endif
 Name:           tigervnc
 Version:        1.12.0
@@ -330,7 +330,7 @@ install -D -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.
 # only package as %%doc (boo#1173045)
 cp %{SOURCE7} .
 install -D -m 755 %{SOURCE8} %{buildroot}%{_bindir}/vncpasswd.arg
-install -D -m 644 %{SOURCE9} %{buildroot}%{_distconfdir}/pam.d/vnc
+install -D -m 644 %{SOURCE9} %{buildroot}%{_pam_vendordir}/vnc
 install -D -m 644 %{SOURCE11} %{buildroot}%{_datadir}/vnc/classes
 %if 0%{?suse_version} >= 1315
 ln -s -f %{_sysconfdir}/alternatives/vncviewer %{buildroot}%{_bindir}/vncviewer
@@ -496,9 +496,9 @@ fi
 %endif
 
 %if 0%{?suse_version} < 1550
-%config %{_distconfdir}/pam.d/vnc
+%config %{_sysconfdir}/pam.d/vnc
 %else
-%{_distconfdir}/pam.d/vnc
+%{_pam_vendordir}/vnc
 %endif
 
 %dir %attr(0755,%{vncuser},%{vncuser}) %{_sysconfdir}/vnc
