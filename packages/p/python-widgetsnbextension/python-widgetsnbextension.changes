@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 20 15:06:27 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require python >= 3.7
+  * require jupyter-packaging
+  * added js license file
+
+- update to version 4.0.2 with jupyter-js-widgets@8.0.2
+  * no relase notes
+
+-------------------------------------------------------------------
 Wed Aug  3 21:23:31 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.6.1

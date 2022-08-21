@@ -47,4 +47,17 @@
   * no release notes (JS static version bumps)</comment>
     <requestid>992645</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6b9761d7c983bd23fcf7c39515b66a76</srcmd5>
+    <version>4.0.2</version>
+    <time>1661083858</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile:
+  * require python &gt;= 3.7
+  * require jupyter-packaging
+  * added js license file
+- update to version 4.0.2 with jupyter-js-widgets@8.0.2
+  * no relase notes</comment>
+    <requestid>998370</requestid>
+  </revision>
 </revisionlist>
