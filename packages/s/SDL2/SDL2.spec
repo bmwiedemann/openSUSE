@@ -19,7 +19,7 @@
 %define sle_version 0
 Name:           SDL2
 %define lname   libSDL2-2_0-0
-Version:        2.0.22
+Version:        2.24.0
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
@@ -33,7 +33,6 @@ Source3:        %name.keyring
 Source4:        baselibs.conf
 Patch1:         sdl2-symvers.patch
 Patch2:         sdl2-khronos.patch
-Patch3:         fix-xi2-crash.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  nasm
@@ -91,10 +90,10 @@ across multiple platforms.
 SDL2 uses dlopen, so if you experience problems under X11, check
 again that libXrandr2 and libXi6 are in fact installed.
 
-%package -n libSDL2-devel
+%package devel
 Summary:        SDL2 Library Developer Files
 Group:          Development/Libraries/X11
-Requires:       %lname = %version
+Requires:       %lname = %version-%release
 Requires:       c_compiler
 Requires:       pkgconfig
 Requires:       pkgconfig(gl)
@@ -103,9 +102,10 @@ Requires:       pkgconfig(glesv2)
 Requires:       pkgconfig(glu)
 Requires:       pkgconfig(x11)
 Requires:       pkgconfig(xproto)
-Provides:       SDL2-devel = %version-%release
+Obsoletes:      libSDL2-devel < %version-%release
+Provides:       libSDL2-devel = %version-%release
 
-%description -n libSDL2-devel
+%description devel
 This package contains files needed for development with the SDL2
 library.
 
@@ -130,7 +130,7 @@ perl -i -pe 's{\r\n}{\n}g' *.txt README.md
 %install
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
-rm -fv "%buildroot/%_libdir/libSDL2.a" "%buildroot/%_libdir/libSDL2_test.a"
+rm -fv "%buildroot/%_libdir/libSDL2.a"
 # Need to keep libSDL2main.a (empty lib), because it is referenced by
 # sdl2-config.cmake, and it seems like that .cmake file cannot be edited to
 # make SDL2::SDL2main a phony target with no file (just leads to more Makefile
@@ -144,7 +144,7 @@ rm -fv "%buildroot/%_libdir/libSDL2.a" "%buildroot/%_libdir/libSDL2_test.a"
 %doc README.md README-SDL.txt
 %_libdir/libSDL2-2*.so.*
 
-%files -n libSDL2-devel
+%files devel
 %doc WhatsNew.txt
 %_bindir/sdl2-config
 %_libdir/libSDL2.so
@@ -153,5 +153,6 @@ rm -fv "%buildroot/%_libdir/libSDL2.a" "%buildroot/%_libdir/libSDL2_test.a"
 %_libdir/pkgconfig/sdl2.pc
 %_libdir/cmake/SDL2/
 %_libdir/libSDL2main.a
+%_libdir/libSDL2_test.a
 
 %changelog

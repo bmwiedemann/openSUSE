@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 19 16:25:00 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.24.0
+  * Added a number of function relating to input devices such as
+    keyboard and joystick.
+  * Added support for the NVIDIA Shield Controller to the HIDAPI
+    driver, supporting rumble and battery status
+  * Added support for opening audio devices with 3 or 5 channels
+    (2.1, 4.1). All channel counts from Mono to 7.1 are now
+    supported.
+- Drop baselibs.conf (no SDL2_ttf-dependent Tumbleweed packages
+  themselves have baselibs).
+- Drop fix-xi2-crash.patch (merged)
+- Rename devel package to just %name-devel, which is what most
+  our packages do.
+
+-------------------------------------------------------------------
 Tue Jul  5 09:16:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add fix-xi2-crash.patch
