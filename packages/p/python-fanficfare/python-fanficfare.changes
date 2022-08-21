@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 20 07:27:45 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.15.0:
+  - adapter_adultfanfictionorg: http->https
+  - Fix for win10/qt6 progbar not displaying initially.
+  - Add get_section_url() for adapter_royalroadcom for longer story URL [sections]
+  - adapter_storiesonlinenet: Single chapter stories slightly
+    different. Also scifistories and finestories.
+  - Use cal6 icon theme system to allow plugin icon customization.
+
+-------------------------------------------------------------------
 Sun Aug  7 06:36:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.14.3:
