@@ -17,8 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define pyver 1.0.2
-%define jupver 3.0.1
+%define pyver 3.0.2
+%define jupver 5.0.2
 Name:           python-jupyterlab-widgets
 Version:        %{pyver}
 Release:        0
@@ -26,8 +26,6 @@ Summary:        A JupyterLab extension for Jupyter/IPython widgets
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter-widgets/ipywidgets
 Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_widgets/jupyterlab_widgets-%{pyver}.tar.gz
-# PATCH-FIX-UPSTREAM ipywidgets-pr3138-pr3194-packaging.patch -- gh#jupyter-widgets/ipywidgets#3138 gh#jupyter-widgets/ipywidgets#3194
-Patch1:         ipywidgets-pr3138-pr3194-packaging.patch
 Source99:       python-jupyterlab-widgets-rpmlintrc
 BuildRequires:  %{python_module jupyter_packaging}
 BuildRequires:  %{python_module setuptools}
@@ -35,21 +33,22 @@ BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-jupyterlab-widgets
-BuildArch:      noarch
 Provides:       python-jupyterlab_widgets = %{pyver}-%{release}
+BuildArch:      noarch
 %python_subpackages
 
 %description
 A JupyterLab 3.0 extension for Jupyter/IPython widgets
 
 %package -n jupyter-jupyterlab-widgets
+Version:        %{pyver}
 Summary:        A JupyterLab extension for Jupyter/IPython widgets - Jupyter JS files
-Version:        %{jupver}
-Provides:       jupyter-jupyterlab_widgets = %{jupver}-%{release}
 Requires:       jupyter-jupyterlab-filesystem
+Provides:       jupyter-jupyterlab_widgets = %{pyver}-%{release}
+Provides:       jupyter-jupyter-widgets-jupyterlab-manager = %{jupver}-%{release}
 
 %description -n jupyter-jupyterlab-widgets
-A JupyterLab 3.0 extension for Jupyter/IPython widgets - Jupyter JS files
+A JupyterLab 3.0 extension for Jupyter/IPython widgets - Jupyterlab-manager JS files
 
 %prep
 %autosetup -p1 -n jupyterlab_widgets-%{pyver}
@@ -74,6 +73,7 @@ $python -c 'import jupyterlab_widgets'
 
 %files -n jupyter-jupyterlab-widgets
 %license LICENSE
-%{_jupyter_labextensions_dir3}/@jupyter-widgets
+%dir %{_jupyter_labextensions_dir3}/@jupyter-widgets
+%{_jupyter_labextensions_dir3}/@jupyter-widgets/jupyterlab-manager
 
 %changelog

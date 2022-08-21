@@ -19,4 +19,17 @@
 </comment>
     <requestid>944237</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>23f7bed8c237865a9ea0f9482e26e50e</srcmd5>
+    <version>3.0.2</version>
+    <time>1661083857</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile:
+  * drop patch ipywidgets-pr3138-pr3194-packaging.patch
+- update to version 3.0.2:
+  * ships jupyter-widgets/jupyterlab-manager@5.0.2
+  * no changelog available
+</comment>
+    <requestid>998368</requestid>
+  </revision>
 </revisionlist>
