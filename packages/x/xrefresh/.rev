@@ -71,4 +71,12 @@
   * Build xz tarballs instead of bzip2</comment>
     <requestid>988768</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>fd1be7af7981cdc6f08bac92399c72fc</srcmd5>
+    <version>1.0.7</version>
+    <time>1661083852</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998304</requestid>
+  </revision>
 </revisionlist>
