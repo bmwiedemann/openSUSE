@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 19 15:27:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.3 (bsc#1201680, CVE-2021-46828):
+  * Fix DoS vulnerability in libtirpc
+  * _rpc_dtablesize: use portable system call
+  * libtirpc: Fix use-after-free accessing the error number
+  * Fix potential memory leak of parms.r_addr
+  * rpcb_clnt.c add mechanism to try v2 protocol first
+  * Eliminate deadlocks in connects with an MT environment
+  * clnt_dg_freeres() uncleared set active state may deadlock
+  * thread safe clnt destruction
+  * SUNRPC: mutexed access blacklist_read state variable
+  * SUNRPC: MT-safe overhaul of address cache management in rpcb_clnt.c
+- drop 0001-Fix-DoS-vulnerability-in-libtirpc.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Sep 15 05:35:58 UTC 2021 - Petr Vorel <pvorel@suse.cz>
 
 - Backport DoS vulnerability fix 0001-Fix-DoS-vulnerability-in-libtirpc.patch
