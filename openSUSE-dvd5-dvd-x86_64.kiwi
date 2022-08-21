@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220819" schemaversion="4.1">
+<image name="OBS__openSUSE___20220820" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220819</productvar>
+      <productvar name="VERSION">20220820</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220819,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220820,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220819/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220820/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -256,6 +256,7 @@
       <repopackage name="bubblewrap"/>
       <repopackage name="bubblewrap-zsh-completion"/>
       <repopackage name="busybox"/>
+      <repopackage name="busybox-bzip2"/>
       <repopackage name="busybox-coreutils"/>
       <repopackage name="busybox-ed"/>
       <repopackage name="busybox-findutils"/>
@@ -266,6 +267,7 @@
       <repopackage name="busybox-sed"/>
       <repopackage name="busybox-sendmail"/>
       <repopackage name="busybox-static"/>
+      <repopackage name="busybox-tar"/>
       <repopackage name="busybox-util-linux"/>
       <repopackage name="busybox-xz"/>
       <repopackage name="bzip2"/>
@@ -3149,6 +3151,7 @@
       <repopackage name="lskat-lang"/>
       <repopackage name="lsof"/>
       <repopackage name="lsscsi"/>
+      <repopackage name="lttng-modules-kmp-default" arch="x86_64"/>
       <repopackage name="luit"/>
       <repopackage name="lunar-calendar"/>
       <repopackage name="lunar-calendar-gtk3-module"/>
@@ -3936,7 +3939,6 @@
       <repopackage name="python310-distro"/>
       <repopackage name="python310-dnspython"/>
       <repopackage name="python310-docutils"/>
-      <repopackage name="python310-dragonmapper"/>
       <repopackage name="python310-editables"/>
       <repopackage name="python310-entrypoints"/>
       <repopackage name="python310-et_xmlfile"/>
@@ -3962,7 +3964,6 @@
       <repopackage name="python310-gssapi"/>
       <repopackage name="python310-h11"/>
       <repopackage name="python310-h2"/>
-      <repopackage name="python310-hanzidentifier"/>
       <repopackage name="python310-hatchling"/>
       <repopackage name="python310-hpack"/>
       <repopackage name="python310-html5lib"/>
@@ -3995,7 +3996,6 @@
       <repopackage name="python310-linecache2"/>
       <repopackage name="python310-linux-procfs"/>
       <repopackage name="python310-littleutils"/>
-      <repopackage name="python310-loguru"/>
       <repopackage name="python310-lxml"/>
       <repopackage name="python310-M2Crypto"/>
       <repopackage name="python310-MarkupSafe"/>
@@ -4032,7 +4032,6 @@
       <repopackage name="python310-platformdirs"/>
       <repopackage name="python310-pluggy"/>
       <repopackage name="python310-ply"/>
-      <repopackage name="python310-prettytable"/>
       <repopackage name="python310-prompt_toolkit"/>
       <repopackage name="python310-psutil"/>
       <repopackage name="python310-psycopg2"/>
@@ -4128,7 +4127,6 @@
       <repopackage name="python310-XlsxWriter"/>
       <repopackage name="python310-xlwt"/>
       <repopackage name="python310-yarl"/>
-      <repopackage name="python310-zhon"/>
       <repopackage name="python310-zipp"/>
       <repopackage name="python310-zope.event"/>
       <repopackage name="python310-zope.interface"/>
@@ -4207,7 +4205,6 @@
       <repopackage name="rsyslog"/>
       <repopackage name="rt2860"/>
       <repopackage name="rtkit"/>
-      <repopackage name="rtl8812au-kmp-default" arch="x86_64"/>
       <repopackage name="ruby"/>
       <repopackage name="ruby-common"/>
       <repopackage name="ruby-solv"/>

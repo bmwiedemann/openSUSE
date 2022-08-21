@@ -1607,7 +1607,6 @@ unsorted:
   - busybox-attr 
   - busybox-bc 
   - busybox-bind-utils 
-  - busybox-bzip2 
   - busybox-cpio 
   - busybox-diffutils 
   - busybox-dos2unix 
@@ -1632,7 +1631,6 @@ unsorted:
   - busybox-sharutils 
   - busybox-syslogd 
   - busybox-sysvinit-tools 
-  - busybox-tar 
   - busybox-telnet 
   - busybox-testsuite 
   - busybox-tftp 
@@ -1729,6 +1727,8 @@ unsorted:
   - caja-extensions-common-lang 
   - caja-gschemas 
   - caja-lang 
+  - caja-rename 
+  - caja-rename-lang 
   - cal10n 
   - cal10n-javadoc 
   - cal3d 
@@ -1765,10 +1765,6 @@ unsorted:
   - camsource-devel 
   - canberra-gtk-play-gnome 
   - canlock 
-  - canna 
-  - canna-devel 
-  - canna-libs 
-  - canna-libs-32bit: [x86_64] 
   - cantata 
   - cantata-lang 
   - cantor 
@@ -8185,9 +8181,11 @@ unsorted:
   - kemoticons-devel 
   - kernel-debug 
   - kernel-debug-devel 
+  - kernel-debug-vdso 
   - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
   - kernel-default-devel 
+  - kernel-default-vdso 
   - kernel-devel 
   - kernel-docs 
   - kernel-docs-html 
@@ -8195,16 +8193,19 @@ unsorted:
   - kernel-install-tools 
   - kernel-kvmsmall: [x86_64] 
   - kernel-kvmsmall-devel: [x86_64] 
+  - kernel-kvmsmall-vdso: [x86_64] 
   - kernel-macros 
   - kernel-obs-build 
   - kernel-obs-qa: [x86_64] 
   - kernel-pae: [i586] 
   - kernel-pae-devel: [i586] 
+  - kernel-pae-vdso: [i586] 
   - kernel-source 
   - kernel-source-vanilla 
   - kernel-syms 
   - kernel-vanilla 
   - kernel-vanilla-devel 
+  - kernel-vanilla-vdso 
   - kernelshark 
   - ketchup 
   - kexi 
@@ -15477,7 +15478,7 @@ unsorted:
   - ltrace 
   - ltrace-32bit: [x86_64] 
   - lttng-modules 
-  - lttng-modules-kmp-default 
+  - lttng-modules-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
@@ -22981,6 +22982,7 @@ unsorted:
   - python310-dpkt 
   - python310-dqsegdb: [x86_64] 
   - python310-dqsegdb2 
+  - python310-dragonmapper 
   - python310-drgn 
   - python310-drms 
   - python310-dropbox 
@@ -23225,6 +23227,7 @@ unsorted:
   - python310-h5py-openmpi4 
   - python310-hammett 
   - python310-hankel 
+  - python310-hanzidentifier 
   - python310-happybase 
   - python310-haproxyctl 
   - python310-hashids 
@@ -23542,6 +23545,7 @@ unsorted:
   - python310-locket 
   - python310-lockfile 
   - python310-logilab-common 
+  - python310-loguru 
   - python310-logutils 
   - python310-logzero 
   - python310-lscsoft-glue 
@@ -23914,6 +23918,7 @@ unsorted:
   - python310-premailer 
   - python310-prestring 
   - python310-pretend 
+  - python310-prettytable 
   - python310-priority 
   - python310-process-tests 
   - python310-proglog 
@@ -24233,7 +24238,6 @@ unsorted:
   - python310-pytest-tornado 
   - python310-pytest-tornasync 
   - python310-pytest-translations 
-  - python310-pytest-travis-fold 
   - python310-pytest-trio 
   - python310-pytest-twisted 
   - python310-pytest-vcr 
@@ -24796,6 +24800,7 @@ unsorted:
   - python310-ufonormalizer 
   - python310-ujson 
   - python310-uncertainties 
+  - python310-unearth 
   - python310-unicodecsv 
   - python310-unidiff 
   - python310-unify 
@@ -24838,7 +24843,6 @@ unsorted:
   - python310-versioningit 
   - python310-versiontag 
   - python310-versiontools 
-  - python310-veusz: [x86_64] 
   - python310-vim-vint 
   - python310-vine 
   - python310-virtkey 
@@ -24954,6 +24958,7 @@ unsorted:
   - python310-zdaemon 
   - python310-zeep 
   - python310-zeroconf 
+  - python310-zhon 
   - python310-zict 
   - python310-zignal 
   - python310-zipstream 
@@ -27497,7 +27502,6 @@ unsorted:
   - python38-pytest-tornado 
   - python38-pytest-tornasync 
   - python38-pytest-translations 
-  - python38-pytest-travis-fold 
   - python38-pytest-trio 
   - python38-pytest-twisted 
   - python38-pytest-vcr 
@@ -28107,6 +28111,7 @@ unsorted:
   - python38-ufonormalizer 
   - python38-ujson 
   - python38-uncertainties 
+  - python38-unearth 
   - python38-unicodecsv 
   - python38-unicodedata2 
   - python38-unidiff 
@@ -28153,7 +28158,6 @@ unsorted:
   - python38-versioningit 
   - python38-versiontag 
   - python38-versiontools 
-  - python38-veusz: [x86_64] 
   - python38-vim-vint 
   - python38-vine 
   - python38-virtkey 
@@ -30813,7 +30817,6 @@ unsorted:
   - python39-pytest-tornado 
   - python39-pytest-tornasync 
   - python39-pytest-translations 
-  - python39-pytest-travis-fold 
   - python39-pytest-trio 
   - python39-pytest-twisted 
   - python39-pytest-vcr 
@@ -31421,6 +31424,7 @@ unsorted:
   - python39-ufonormalizer 
   - python39-ujson 
   - python39-uncertainties 
+  - python39-unearth 
   - python39-unicodecsv 
   - python39-unicodedata2 
   - python39-unidiff 
@@ -31467,7 +31471,6 @@ unsorted:
   - python39-versioningit 
   - python39-versiontag 
   - python39-versiontools 
-  - python39-veusz: [x86_64] 
   - python39-vim-vint 
   - python39-vine 
   - python39-virtkey 
@@ -32565,7 +32568,7 @@ unsorted:
   - rtl-sdr-devel 
   - rtl-sdr-udev 
   - rtl8812au 
-  - rtl8812au-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - rtl8812au-kmp-default 
   - rtl8812au-kmp-pae: [i586] 
   - rtl_433 
   - rtl_433-devel 

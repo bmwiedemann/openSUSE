@@ -2422,14 +2422,12 @@
     <package name="python310-bleach" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-blinker" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python310-brotlipy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-cached-property" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-certifi" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-cffi" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-chardet" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-charset-normalizer" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-click" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-cmdln" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="python310-colorama" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-configobj" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python310-constantly" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-cryptography" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
@@ -2438,7 +2436,6 @@
     <package name="python310-decorator" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-defusedxml" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-dnspython" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-dragonmapper" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-editables" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-entrypoints" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-executing" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
@@ -2451,7 +2448,6 @@
     <package name="python310-greenlet" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-h11" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-h2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-hanzidentifier" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-hatchling" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-hiredis" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-hpack" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
@@ -2488,7 +2484,6 @@
     <package name="python310-kiwisolver" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-lark-parser" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-linux-procfs" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="python310-loguru" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-lxml" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-matplotlib" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-matplotlib-inline" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
@@ -2519,7 +2514,6 @@
     <package name="python310-pickleshare" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-platformdirs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-pluggy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-prettytable" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-prometheus-client" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-prompt_toolkit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-protobuf" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
@@ -2591,7 +2585,6 @@
     <package name="python310-widgetsnbextension" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-wrapt" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-yarl" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-zhon" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-zipp" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-zope.event" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-zope.interface" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
