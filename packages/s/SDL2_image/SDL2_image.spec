@@ -18,7 +18,7 @@
 
 Name:           SDL2_image
 %define lname	libSDL2_image-2_0-0
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        Simple DirectMedia Layer 2 image loading library
 License:        Zlib
@@ -27,13 +27,15 @@ URL:            https://libsdl.org/projects/SDL_image/
 
 #Hg-Clone:	http://hg.libsdl.org/SDL_image/
 Source:         https://github.com/libsdl-org/SDL_image/releases/download/release-%version/SDL2_image-%version.tar.gz
+BuildRequires:  SDL2-devel >= 2.24
 BuildRequires:  dos2unix
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libavif)
+BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebp)
-BuildRequires:  pkgconfig(sdl2) >= 2.0.8
 
 %description
 This is a simple library to load images of various formats as SDL
@@ -43,7 +45,6 @@ TIFF and WEBP formats.
 %package -n %lname
 Summary:        Simple DirectMedia Layer 2 image loading library
 Group:          System/Libraries
-Provides:       SDL2_image = %version-%release
 
 %description -n %lname
 This is a simple library to load images of various formats as SDL
