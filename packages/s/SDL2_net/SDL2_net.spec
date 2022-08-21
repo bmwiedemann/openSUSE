@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2_net
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define lname	libSDL2_net-2_0-0
 Name:           SDL2_net
-Version:        2.0.1
+Version:        2.2.0
 Release:        0
 Summary:        SDL2 networking library
 License:        Zlib
@@ -27,9 +27,9 @@ URL:            http://libsdl.org/projects/SDL_net/
 #Hg-Clone:	http://hg.libsdl.org/SDL_net/
 Source:         http://www.libsdl.org/projects/SDL_net/release/%name-%version.tar.gz
 Source2:        baselibs.conf
+BuildRequires:  SDL2-devel >= 2.24
 BuildRequires:  dos2unix
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(sdl2)
 
 %description
 This is a networking library for use with SDL.
@@ -42,21 +42,22 @@ Provides:       SDL2_net = %version
 %description -n %lname
 This is a networking library for use with SDL.
 
-%package -n libSDL2_net-devel
+%package devel
 Summary:        Development files for the SDL2 networking library
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %version
-Provides:       SDL2_net-devel = %version
+Requires:       %lname = %version-%release
+Obsoletes:      libSDL2_net-devel < %version-%release
+Provides:       libSDL2_net-devel = %version-%release
 
-%description -n libSDL2_net-devel
+%description devel
 This is a networking library for use with SDL.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 dos2unix CHANGES.txt README.txt
 
 %install
@@ -67,13 +68,14 @@ find %buildroot -type f -name "*.la" -delete -print
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%license COPYING.txt
-%doc CHANGES.txt README.txt
+%license LICENSE.txt
 %_libdir/libSDL2_net-2*.so.*
 
-%files -n libSDL2_net-devel
+%files devel
+%doc CHANGES.txt README.txt
 %_includedir/SDL2/
 %_libdir/libSDL2_net.so
 %_libdir/pkgconfig/SDL2_net.pc
+%_libdir/cmake/
 
 %changelog
