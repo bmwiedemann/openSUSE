@@ -82,4 +82,16 @@
     <comment></comment>
     <requestid>917675</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>64b24d7400d99806fe810c524a04efe9</srcmd5>
+    <version>0.9.6</version>
+    <time>1661083861</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python36 skiptest code
+- Add nbval-sanitize-figure-size.patch
+  * gh#computationalmodelling/nbval#183
+
+- Multibuild test flavor: avoid (possible) build cycle (forwarded request 998388 from bnavigator)</comment>
+    <requestid>998389</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
-# spec file for package python-nbval
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-Name:           python-nbval
+Name:           python-nbval%{psuffix}
 Version:        0.9.6
 Release:        0
 Summary:        A pytest plugin to validate Jupyter notebooks
@@ -31,38 +40,26 @@ Patch0:         nbval-filter-mpldeprecation.patch
 # PATCH-FIX-UPSTREAM 0001-Make-tests-pass-with-ipykernel-6.0.0.patch -- Taken from archlinux, yan12125@gmail.com
 # https://github.com/archlinux/svntogit-community/blob/0aeb3d7e25d351606f46becc33f79e1c369572d0/python-nbval/trunk/0001-Make-tests-pass-with-ipykernel-6.0.0.patch (with whitespace changes)
 Patch1:         0001-Make-tests-pass-with-ipykernel-6.0.0.patch
+# PATCH-FIX-UPSTREAM nbval-sanitize-figure-size.patch gh#computationalmodelling/nbval#183
+Patch2:         nbval-sanitize-figure-size.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-certifi
 Requires:       python-coverage
 Requires:       python-ipykernel
 Requires:       python-jupyter-client
-Requires:       python-nbdime
 Requires:       python-nbformat
 Requires:       python-pytest >= 2.8
-Recommends:     python-matplotlib
-Recommends:     python-pytest-cov
-Recommends:     python-pytest-timeout
-Recommends:     python-sympy
+Requires:       python-six
 Provides:       python-jupyter_nbval = %{version}
 Obsoletes:      python-jupyter_nbval < %{version}
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module certifi}
-BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module ipykernel}
-BuildRequires:  %{python_module jupyter-client}
-BuildRequires:  %{python_module nbdime}
-BuildRequires:  %{python_module nbformat}
-BuildRequires:  %{python_module notebook}
-BuildRequires:  %{python_module pyinotify}
-BuildRequires:  %{python_module pytest >= 2.8}
+%if %{with test}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module nbval = %{version}}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module sympy}
-BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
-# /SECTION
+%endif
 %if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-nbval = %{version}
 %endif
@@ -85,6 +82,7 @@ expected output will fail.
 %autosetup -p1 -n nbval-%{version}
 sed -i 's/\r$//' README.md
 
+%if ! %{with test}
 %build
 export LANG=en_US.UTF-8
 %python_build
@@ -93,20 +91,24 @@ export LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
-python36_donttest="(sample_notebook and 9) or (test_coalesce and 5)"
 # see dodo.py for call signature
 %{pytest tests/ --nbval \
                 --current-env \
                 --sanitize-with tests/sanitize_defaults.cfg \
-                --ignore tests/ipynb-test-samples \
-                ${$python_donttest:+ -k "not (${$python_donttest})"}
+                --ignore tests/ipynb-test-samples
 }
+%endif
 
+%if ! %{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/nbval
+%{python_sitelib}/nbval-%{version}*-info
+%endif
 
 %changelog

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 20 17:48:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove python36 skiptest code
+- Add nbval-sanitize-figure-size.patch
+  * gh#computationalmodelling/nbval#183
+
+-------------------------------------------------------------------
+Mon Nov 15 18:46:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Multibuild test flavor: avoid (possible) build cycle
+
+-------------------------------------------------------------------
 Sun Aug 29 13:12:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add 0001-Make-tests-pass-with-ipykernel-6.0.0.patch from Arch
