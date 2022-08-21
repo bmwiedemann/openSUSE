@@ -18,7 +18,7 @@
 
 Name:           SDL2_mixer
 %define lname	libSDL2_mixer-2_0-0
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        SDL2 sound mixer library
 License:        Zlib
@@ -27,6 +27,7 @@ URL:            http://libsdl.org/projects/SDL_mixer/
 
 #Git-Clone:     https://github.com/libsdl-org/SDL_mixer
 Source:         https://github.com/libsdl-org/SDL_mixer/releases/download/release-%version/SDL2_mixer-%version.tar.gz
+BuildRequires:  SDL2-devel >= 2.24
 BuildRequires:  dos2unix
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(flac)
@@ -34,7 +35,6 @@ BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libxmp)
 BuildRequires:  pkgconfig(opusfile)
-BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vorbis)
 Suggests:       timidity
 
