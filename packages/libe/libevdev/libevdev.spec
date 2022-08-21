@@ -18,12 +18,12 @@
 
 %define sonum	2
 Name:           libevdev
-Version:        1.12.1
+Version:        1.13.0
 Release:        0
 Summary:        A wrapper library for evdev devices
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            https://xorg.freedesktop.org/
+URL:            https://www.freedesktop.org/wiki/Software/libevdev/
 Source0:        https://www.freedesktop.org/software/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://www.freedesktop.org/software/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 17 18:56:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.0:
+  * include: sync event codes with kernel 5.19
+  * input: use named initializers for the event struct
+  * fix a few whitespace/coding style issues
+  * meson and other build system fixups
+
+-------------------------------------------------------------------
 Tue Mar 29 11:40:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.1:
