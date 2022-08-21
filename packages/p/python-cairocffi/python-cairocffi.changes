@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 19 15:40:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Reflect in the specfile that Python 3.6 is no longer supported
+  upstream
+- Unskip python38: required by other packages
+- Remove python36 flavor exceptions from specfile
+
+-------------------------------------------------------------------
+Sun Aug  7 12:09:38 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Move tests out of runtime package
+- Enable xcb tests
+
+-------------------------------------------------------------------
 Tue Jan  4 21:18:42 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Fix location of fduped directories

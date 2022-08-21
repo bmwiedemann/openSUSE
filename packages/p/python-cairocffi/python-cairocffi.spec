@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-cairocffi
 Version:        1.3.0
 Release:        0
@@ -26,21 +24,24 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/Kozea/cairocffi
 Source:         https://files.pythonhosted.org/packages/source/c/cairocffi/cairocffi-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module cffi >= 1.1.0}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 39.2.0}
 BuildRequires:  %{python_module xcffib >= 0.3.2}
 BuildRequires:  cairo
+Requires:       cairo
+Requires:       python-cffi >= 1.1.0
+Requires:       python-xcffib >= 0.3.2
+BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
-Requires:       cairo
-Requires:       python
-Requires:       python-cffi >= 1.1.0
-Requires:       python-xcffib >= 0.3.2
-BuildArch:      noarch
+BuildRequires:  xvfb-run
+# /SECTION
 %python_subpackages
 
 %description
@@ -72,6 +73,11 @@ sed -i -e 's/pytest-runner$/pytest/' \
        -e '/pytest-cov$/ d' \
        -e '/^addopts.*flake8.*isort$/ d' setup.cfg
 
+mkdir tests
+mv cairocffi/test_*.py tests/
+sed -i 's/^from \. /from cairocffi /' tests/*.py
+sed -i 's/^from \./from cairocffi./' tests/*.py
+
 %build
 %python_build
 
@@ -80,27 +86,22 @@ sed -i -e 's/pytest-runner$/pytest/' \
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Don't test with NumPy in the python36 flavor, because python36-numpy is not in TW anymore
-python36_ignore="--ignore %{buildroot}%{python36_sitelib}/cairocffi/test_numpy.py"
-%pytest --pyargs cairocffi ${$python_ignore}
+cd tests/
+%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" xvfb-run --server-args="-screen 0 1280x1024x16" $python -B -m pytest
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/cairocffi-%{version}-py*.egg-info
-%{python_sitelib}/cairocffi/
-%exclude %{python_sitelib}/cairocffi/test_pixbuf.py*
+%{python_sitelib}/cairocffi-%{version}*-info
+%{python_sitelib}/cairocffi
 %exclude %{python_sitelib}/cairocffi/pixbuf.py*
 %ifpycache
-%exclude %{python_sitelib}/cairocffi/__pycache__/test_pixbuf.*
 %exclude %{python_sitelib}/cairocffi/__pycache__/pixbuf.*
 %endif
 
 %files %{python_files pixbuf}
 %{python_sitelib}/cairocffi/pixbuf.py*
-%{python_sitelib}/cairocffi/test_pixbuf.py*
 %ifpycache
-%{python_sitelib}/cairocffi/__pycache__/test_pixbuf.*
 %{python_sitelib}/cairocffi/__pycache__/pixbuf.*
 %endif
 
