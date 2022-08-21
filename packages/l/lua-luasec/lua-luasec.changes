@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 20 18:06:06 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to version 1.2.0:
+  * Support passing DANE flags
+  * Add key material export method
+  * backguard compat for openssl on providers, like LTS linuxes
+
+-------------------------------------------------------------------
 Sat Dec 18 16:35:00 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - regenerate OpenSSL options for build version

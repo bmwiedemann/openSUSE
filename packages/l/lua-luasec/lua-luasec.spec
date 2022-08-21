@@ -1,7 +1,7 @@
 #
-# spec file for package lua-luasec
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,16 @@ ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-%{mod_name}
 %endif
-Version:        1.0.2
+Version:        1.2.0
 Release:        0
 Summary:        A Lua binding for OpenSSL
 License:        MIT
 URL:            https://github.com/brunoos/luasec
 Source:         https://github.com/brunoos/%{mod_name}/archive/v%{version}/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
-BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-luasocket
 BuildRequires:  libopenssl-devel
+BuildRequires:  lua-macros
 Requires:       %{flavor}
 Requires:       %{flavor}-luasocket
 %lua_provides
