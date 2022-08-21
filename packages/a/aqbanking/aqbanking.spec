@@ -38,6 +38,7 @@ URL:            https://www.aquamaniac.de/aqbanking/
 Source:         https://www.aquamaniac.de/rdm/attachments/download/467/aqbanking-%{version}.tar.gz
 Source1:        https://www.aquamaniac.de/rdm/attachments/download/466/aqbanking-%{version}.tar.gz.asc
 Source2:        aqbanking6-handbook-20190221.pdf
+Source3:        aqbanking.keyring
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
