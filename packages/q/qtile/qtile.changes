@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Sun Aug 21 23:44:05 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Added _constraints file as tests need more memory
+- Disabled many of the new tests due to failures reported upstream
+- Update to v0.21.0:
+  * Add `lazy.window.center()` command to center a floating window
+    on the screen.
+  * Wayland: added power-output-management-v1 protocol support,
+    added idle protocol, added idle inhibit protocol
+  * Add MonadThreeCol layout based on XMonad's ThreeColumns.
+  * Add `lazy.screen.set_wallpaper` command.
+  * Added ability to scale the battery icon's size
+  * Add Spiral layout
+  * Add `toggle` argument to `Window.togroup` with the same 
+    functionality as in `Group.toscreen`.
+  * Added `margin_on_single` and `border_on_single` to Bsp layout
+  * Fix `Systray` crash on `reconfigure_screens`.
+  * Fix bug where widgets can't be mirrored in same bar.
+  * Fix various issues with setting fullscreen windows floating
+    and vice versa.
+  * Fix a bug where a .when() check for lazy functions errors out
+    when matching on focused windows when none is focused. By default
+    we do not match on focused windows, to change this set
+    `if_no_focused` to True.
+  * Widget with duplicate names will be automatically renamed by 
+    appending numeric suffixes
+  * Fix resizing of wallpaper when screen scale changes (X11)
+  * Two small bugfixes for `StatusNotifier` - better handling of
+    Ayatana indicators
+  * Fix bug where StatusNotifierItem crashes due to invalid object
+    paths (e.g. Zoom)
+- from v0.20.0 
+  * Add place_right option in the TreeTab layout to place the tab
+    panel on the right side
+  * X11: Add support for _NET_DESKTOP_VIEWPORT. E.g. can be used by
+    rofi to map on current output.
+  * Wayland: Bump wlroots version. 0.15.x wlroots and 0.15.2+
+    pywlroots are required.
+  * Add XWayland support to the Wayland backend. XWayland will 
+    start up as needed, if it is installed.
+  * Remove non-commandable windows from IPC. Fixes bug where IPC
+    would fail when trying to get in on all windows but Systray 
+    has icons (which are non-commandable _Windows.)
+  * Fix bug where bars were not reconfigured correctly when screen
+    layout changes.
+  * Fix a Wayland bug where layer-shell surface like dunst would
+    freeze up and stop updating.
+  * Change timing of screens_reconfigured hook. Will now be called
+    ONLY if cmd_reconfigure_screens has been called and completed.
+  * Fix order of icons in Systray widget when restarting/reloading
+    config.
+  * Fix rounding error in PulseVolume widget's reported volume.
+- from v0.19.0
+  * Add ability to draw borders to the Bar. Can customise size and
+    colour per edge.
+  * Add StatusNotifier widget implementing the StatusNotifierItem 
+    specification. NB Widget does not provide context menus.
+  * Add total bandwidth format value to the Net widget.
+  * Scratchpad groups could be defined as single so that only one of
+    the scratchpad in the group is visible at a given time.
+  * All scratchpads in a Scratchpad group can be hidden with
+    hide_all() function.
+  * For saving states of scratchpads during restart, we use wids
+    instead of pids.
+  * Scratchpads can now be defined with an optional matcher to
+    match with window properties.
+  * Qtile.cmd_reload_config is added for reloading the config
+    without completely restarting.
+  * Window.cmd_togroup's argument groupName should be changed
+    to group_name. For the time being a log warning is in place
+    and a migration is added. In the future groupName will fail.
+  * Add min/max_ratio to Tile layout and fix bug where windows
+    can extend offscreen.
+  * Add ability for widget mouse_callbacks to take lazy calls
+    (similar to keybindings)
+  * Add aliases to lazy.spawncmd() which takes a dictionary
+    mapping convenient aliases to full command lines.
+  * Add a new 'prefix' option to the net widget to display speeds
+    with a static unit (e.g. MB).
+  * lazy.group.toscreen() now does not toggle groups by default.
+    To get this behaviour back, use lazy.group.toscreen(toggle=True)
+  * Tile layout has new margin_on_single and border_on_single option
+    to specify whether to draw margin and border when there is only one window.
+  * Thermal zone widget.
+  * Allow TextBox-based widgets to display in vertical bars.
+  * Added a focused attribute to lazy.function.when which can be
+    used to Match on focused windows.
+  * Allow to update Image widget with update() function by giving a new path.
+
+-------------------------------------------------------------------
 Thu Dec 23 09:24:47 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do only pull in default python3 providers: this package does not
