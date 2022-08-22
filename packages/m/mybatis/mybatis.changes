@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 19 14:18:33 UTC 2022 - Michael Calmer <mc@suse.com>
+
+- Obsolete apache-mybatis package
+
+-------------------------------------------------------------------
 Tue Feb 22 18:21:44 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages
