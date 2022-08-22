@@ -16,11 +16,6 @@
 #
 
 
-%if ! %{defined _distconfdir}
-%define _distconfdir %{_sysconfdir}
-%else
-%define use_usretc 1
-%endif
 Name:           sudo
 Version:        1.9.10
 Release:        0
@@ -133,9 +128,15 @@ make %{?_smp_mflags} V=1
 
 %install
 %make_install install_uid=`id -u` install_gid=`id -g`
-install -d -m 755 %{buildroot}%{_distconfdir}/pam.d
-install -m 644 %{SOURCE3} %{buildroot}%{_distconfdir}/pam.d/sudo
-install -m 644 %{SOURCE4} %{buildroot}%{_distconfdir}/pam.d/sudo-i
+%if %{defined _distconfdir}
+install -d -m 755 %{buildroot}%{_pam_vendordir}
+install -m 644 %{SOURCE3} %{buildroot}%{_pam_vendordir}/sudo
+install -m 644 %{SOURCE4} %{buildroot}%{_pam_vendordir}/sudo-i
+%else
+install -d -m 755 %{buildroot}%{_sysconfdir}/pam.d
+install -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/pam.d/sudo
+install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/sudo-i
+%endif
 rm -f %{buildroot}%{_bindir}/sudoedit
 ln -sf %{_bindir}/sudo %{buildroot}%{_bindir}/sudoedit
 install -d -m 755 %{buildroot}%{_sysconfdir}/openldap/schema
@@ -154,10 +155,9 @@ install -m 755 %{SOURCE6} %{buildroot}%{_localstatedir}/lib/tests/sudo
 install -m 755 %{SOURCE7} %{buildroot}%{_localstatedir}/lib/tests/sudo
 
 install -d %{buildroot}%{_licensedir}/%{name}
-install -m 644 %{buildroot}%{_docdir}/%{name}/LICENSE.md %{buildroot}%{_licensedir}/%{name}/LICENSE.md
 rm -fv %{buildroot}%{_docdir}/%{name}/LICENSE.md
 
-%if %{defined use_usretc}
+%if %{defined _distconfdir}
 %pre
 # move outdated pam.d/*.rpmsave files away
 for i in sudo sudo-i ; do
@@ -184,7 +184,7 @@ chmod 0440 %{_sysconfdir}/sudoers
 %verify_permissions -e %{_bindir}/sudo
 
 %files -f %{name}.lang
-%license doc/LICENSE.md
+%license LICENSE.md
 %doc %{_docdir}/%{name}
 %{_mandir}/man1/cvtsudoers.1%{?ext_man}
 %{_mandir}/man5/sudoers.5%{?ext_man}
@@ -204,9 +204,9 @@ chmod 0440 %{_sysconfdir}/sudoers
 %attr(0750,root,root) %dir %{_sysconfdir}/sudoers.d
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sudo.conf
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sudo_logsrvd.conf
-%if %{defined use_usretc}
-%{_distconfdir}/pam.d/sudo
-%{_distconfdir}/pam.d/sudo-i
+%if %{defined _distconfdir}
+%{_pam_vendordir}/sudo
+%{_pam_vendordir}/sudo-i
 %else
 %config(noreplace) %{_sysconfdir}/pam.d/sudo
 %config(noreplace) %{_sysconfdir}/pam.d/sudo-i
