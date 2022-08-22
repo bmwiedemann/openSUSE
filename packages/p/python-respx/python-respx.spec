@@ -52,7 +52,7 @@ Python library to mock httpx with request patterns and responses
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest --asyncio-mode=auto
 
 %files %{python_files}
 %license LICENSE.md
