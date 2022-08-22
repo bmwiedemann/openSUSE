@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 11 18:23:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- switch to gcc-go, bootstrap via gcc-go 11/12 which
+  should be available on leap, sle and factory
+- add gcc-go.patch to bootstrap with gcc-go any version
+- drop gcc6-go.patch, gcc7-go.patch: superseded by gcc-go.patch
+
+-------------------------------------------------------------------
 Fri Mar 11 23:37:41 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Add %define go_label as a configurable Go toolchain directory

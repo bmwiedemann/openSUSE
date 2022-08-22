@@ -368,4 +368,15 @@
   * Default go_label = go_api makes no changes to package layout (forwarded request 966740 from jfkw)</comment>
     <requestid>966743</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>0cd80e5430d7bd9afb15a8d293c5910d</srcmd5>
+    <version>1.16.15</version>
+    <time>1661159092</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to gcc-go, bootstrap via gcc-go 11/12 which
+  should be available on leap, sle and factory
+- add gcc-go.patch to bootstrap with gcc-go any version
+- drop gcc6-go.patch, gcc7-go.patch: superseded by gcc-go.patch (forwarded request 998265 from jfkw)</comment>
+    <requestid>998266</requestid>
+  </revision>
 </revisionlist>

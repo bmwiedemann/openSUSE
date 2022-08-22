@@ -25,30 +25,19 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true NO_BRP_AR=true
 
 %if 0%{?suse_version} == 1315
-%define gcc_go_version 6
 %define go_bootstrap_version go1.4
 %else
-%ifarch riscv64
 %define go_bootstrap_version go1.14
-%else
-%define go_bootstrap_version go1.9
 %endif
-%if 0%{?sle_version} == 150000
-# SLE15 or Leap 15.x
-%define gcc_go_version 7
+%if 0%{?suse_version} > 1550
+%define gcc_go_version 12
 %else
-%define gcc_go_version 9
-%endif
+%define gcc_go_version 11
 %endif
 
-# By default use go and not gccgo
-%bcond_with    gccgo
-
-# The fallback boostrap method via %%{go_bootstrap_version} would work for Leap
-# but we don't have %%{go_bootstrap_version} in there. Same for SLE15+
-#if ( 0%{?suse_version} < 1550 && 0%{?is_opensuse} ) || ( 0%{?suse_version} >= 1500 && ! 0%{?is_opensuse} )
-#bcond_without gccgo
-#endif
+# Bootstrap go toolchain using gccgo package gcc_go_version
+# To bootstrap using go use '--without gccgo'
+%bcond_without gccgo
 
 # The fallback bootstrap method via go1.4 doesn't work
 # for aarch64 nor ppc64le because go 1.4 did not support that architecture.
@@ -159,15 +148,11 @@ Source6:        go.gdbinit
 Source100:      llvm-%{tsan_commit}.tar.xz
 # PATCH-FIX-OPENSUSE: https://go-review.googlesource.com/c/go/+/391115
 Patch7:         dont-force-gold-on-arm64.patch
-# PATCH-FIX-UPSTREAM marguerite@opensuse.org - find /usr/bin/go-5 when bootstrapping with gcc5-go
-Patch8:         gcc6-go.patch
-Patch9:         gcc7-go.patch
+# PATCH-FIX-UPSTREAM marguerite@opensuse.org - find /usr/bin/go-8 when bootstrapping with gcc8-go
+Patch8:         gcc-go.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
 %if %{with gccgo}
-%ifnarch s390 s390x
-BuildRequires:  binutils-gold
-%endif
 BuildRequires:  gcc%{gcc_go_version}-go
 %else
 # no gcc-go
@@ -234,12 +219,12 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %setup -q -n go
 %patch7 -p1
 %if %{with gccgo}
-%if 0%{?gcc_go_version} == 6
+# Currently gcc-go does not manage an update-alternatives entry and will
+# never be symlinked as "go", even if gcc-go is the only installed go toolchain.
+# Patch go bootstrap scripts to find hardcoded go-(gcc-go-version) e.g. go-8
+# Substitute defined gcc_go_version into gcc-go.patch
+sed -i "s/\$gcc_go_version/%{gcc_go_version}/" $RPM_SOURCE_DIR/gcc-go.patch
 %patch8 -p1
-%endif
-%if 0%{?gcc_go_version} == 7
-%patch9 -p1
-%endif
 %endif
 
 cp %{SOURCE4} .
