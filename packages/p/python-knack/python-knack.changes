@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 20 08:15:46 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.0
+  * Enable Virtual Terminal mode on legacy Windows terminal
+    to support ANSI escape sequences (#265)
+  * Drop Python 3.6 support (#259)
+
+-------------------------------------------------------------------
 Wed Mar 23 10:46:06 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build
