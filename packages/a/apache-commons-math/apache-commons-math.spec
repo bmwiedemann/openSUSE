@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-math
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source:         http://www.apache.org/dist/commons/%{base_name}/source/%{short_n
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.commons:commons-parent:pom:)
+Provides:       apache-commons-math3 = %{version}
+Obsoletes:      apache-commons-math3 < %{version}
 BuildArch:      noarch
 
 %description
