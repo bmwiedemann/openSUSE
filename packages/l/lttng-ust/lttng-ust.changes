@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 19 14:30:31 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.13.3:
+  * Document ust lock async-signal-safety.
+  * Fix: don't use strerror() from ust lock nocheck.
+  * Fix: remove non-async-signal-safe fflush from ERR().
+  * Fix: Pointers are rejected by integer element compile time
+    assertion for array and sequence.
+  * Fix: statedump: invalid read during iter_end.
+  * Fix: bytecode interpreter context_get_index() leaves byte order
+    uninitialised.
+
+-------------------------------------------------------------------
 Wed May 18 20:23:14 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.13.2 (changes since 2.13.0):

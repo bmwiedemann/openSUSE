@@ -19,7 +19,7 @@
 %define sover   1
 %define sover_ctl 5
 Name:           lttng-ust
-Version:        2.13.2
+Version:        2.13.3
 Release:        0
 Summary:        Linux Trace Toolkit Userspace Tracer library
 License:        GPL-2.0-only
