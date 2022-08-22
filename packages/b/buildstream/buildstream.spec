@@ -17,7 +17,7 @@
 
 
 Name:           buildstream
-Version:        1.6.5
+Version:        1.6.7
 Release:        0
 Summary:        A framework for modelling build pipelines in YAML
 License:        LGPL-2.1-or-later
@@ -40,6 +40,8 @@ Requires:       python3-grpcio >= 1.34
 Requires:       python3-psutil
 Requires:       python3-ruamel.yaml >= 0.16
 Requires:       typelib-1_0-OSTree-1_0
+
+BuildArch:      noarch
 
 %description
 BuildStream is a flexible and extensible framework for the modelling of
