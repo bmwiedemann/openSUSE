@@ -386,4 +386,18 @@
   * [Doc] Split up manpages and extend them with examples.</comment>
     <requestid>995115</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7e432a8674eaabfc7b86d5051ee8ded2</srcmd5>
+    <version>1.7.5</version>
+    <time>1661159108</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.5:
+  * In DMenu sync mode, the separator is left in the string.
+  * On special crafted delayed input in dmenu it shows updates to the
+    list very slow.
+    It now forces to push update (if there) every 1/10 of a second.
+  * In the view some of the update/redraw policies are fixed to reduced
+    the perceived delay.</comment>
+    <requestid>998582</requestid>
+  </revision>
 </revisionlist>
