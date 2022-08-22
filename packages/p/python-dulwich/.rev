@@ -612,4 +612,12 @@
  * Support applying of URL rewriting using ``insteadOf`` / ``pushInsteadOf``.</comment>
     <requestid>991149</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>df000e8ab6aece8a005e275c3f3cb0a1</srcmd5>
+    <version>0.20.45</version>
+    <time>1661159089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998224</requestid>
+  </revision>
 </revisionlist>

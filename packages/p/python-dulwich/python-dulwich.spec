@@ -27,6 +27,9 @@ License:        Apache-2.0 OR GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://www.dulwich.io
 Source0:        https://files.pythonhosted.org/packages/source/d/dulwich/dulwich-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM rmtree-ignore-errors.patch gh#jelmer/dulwich#1000 mcepl@suse.com
+# shutil.rmtree should be more callous
+Patch0:         rmtree-ignore-errors.patch
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module fastimport}
