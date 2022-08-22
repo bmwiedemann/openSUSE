@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri Aug 19 16:09:19 UTC 2022 - mrueckert@suse.de
+
+- Update to version 2.6.3+git0.76f187b36:
+  * [RELEASE] Released version 2.6.3
+  * BUG/MAJOR: log-forward: Fix ssl layer not initialized on bind even if configured
+  * BUG/MAJOR: log-forward: Fix log-forward proxies not fully initialized
+  * BUG/MEDIUM: mux-h2: do not fiddle with ->dsi to indicate demux is idle
+  * BUG/MEDIUM: cli: always reset the service context between commands
+  * MINOR: applet: add a function to reset the svcctx of an applet
+  * BUG/MEDIUM: http-ana: fix crash or wrong header deletion by http-restrict-req-hdr-names
+  * MINOR: stick-table: Add table_expire() and table_idle() new converters
+  * BUG/MINOR: quic: memleak on wrong datagram receipt
+  * BUG/MEDIUM: ring: fix too lax 'size' parser
+  * BUG/MINOR: quic: Possible infinite loop in quic_build_post_handshake_frames()
+  * BUILD: debug: silence warning on gcc-5
+  * BUILD: stconn: fix build warning at -O3 about possible null sc
+  * BUG/MEDIUM: task: relax one thread consistency check in task_unlink_wq()
+  * BUG/MEDIUM: poller: use fd_delete() to release the poller pipes
+  * BUG/MEDIUM: quic: always remove the connection from the accept list on close
+  * CLEANUP: mux-quic: remove loop on sending frames
+  * BUG/MEDIUM: quic: Missing AEAD TAG check after removing header protection
+  * MINOR: quic: Too much useless traces in qc_build_frms()
+  * BUG/MEDIUM: quic: Wrong packet length check in qc_do_rm_hp()
+  * BUILD: cfgparse: always defined _GNU_SOURCE for sched.h and crypt.h
+  * CLEANUP: assorted typo fixes in the code and comments
+  * BUG/MEDIUM: quic: break out of the loop in quic_lstnr_dghdlr
+  * MINOR: quic: explicitely ignore sendto error
+  * BUG/MINOR: quic: Missing Initial packet dropping case
+  * BUG/MINOR: quic: do not reject datagrams matching minimum permitted size
+  * BUG/MINOR: sink: fix a race condition between the writer and the reader
+  * BUG/MEDIUM: sink: Set the sink ref for forwarders created during ring parsing
+  * BUG/MINOR: ring/cli: fix a race condition between the writer and the reader
+  * BUG/MINOR: quic: Avoid sending truncated datagrams
+  * BUILD: http: silence an uninitialized warning affecting gcc-5
+  * BUG/MEDIUM: quic: Floating point exception in cubic_root()
+  * BUG/MINOR: quic: Missing in flight ack eliciting packet counter decrement
+  * MINOR: peers: Add a warning about incompatible SSL config for the local peer
+  * BUG/MEDIUM: proxy: Perform a custom copy for default server settings
+  * REORG: server: Export srv_settings_cpy() function
+  * MINOR: server: Constify source server to copy its settings
+  * BUG/MINOR: backend: Don't increment conn_retries counter too early
+  * BUG/MEDIUM: dns: Properly initialize new DNS session
+  * BUG/MINOR: peers: Use right channel flag to consider the peer as connected
+  * BUG/MEDIUM: peers: limit reconnect attempts of the old process on reload
+  * MINOR: peers: Use a dedicated reconnect timeout when stopping the local peer
+  * BUG/MINOR: mux-quic: do not free conn if attached streams
+  * CLEANUP: mux-quic: remove useless app_ops is_active callback
+  * BUG/MINOR: mux-quic: prevent crash if conn released during IO callback
+  * BUG/MEDIUM: pattern: only visit equivalent nodes when skipping versions
+  * MINOR: ebtree: add ebmb_lookup_shorter() to pursue lookups
+  * BUG/MEDIUM: queue/threads: limit the number of entries dequeued at once
+  * MINOR: quic: Send packets as much as possible from qc_send_app_pkts()
+  * BUG/MAJOR: quic: Useless resource intensive loop qc_ackrng_pkts()
+  * MINOR: quic: Stop looking for packet loss asap
+  * BUG/MINOR: quic: loss time limit variable computed but not used
+  * MINOR: quic: New "quic-cc-algo" bind keyword
+  * MEDIUM: quic: Cubic congestion control algorithm implementation
+  * MINOR: quic: Congestion control architecture refactoring
+  * BUG/MEDIUM: mux-quic: fix missing EOI flag to prevent streams leaks
+  * BUG/MINOR: mworker: PROC_O_LEAVING used but not updated
+  * MEDIUM: resolvers: continue startup if network is unavailable
+  * DEBUG: fd: split the fd check
+  * Revert "BUG/MINOR: peers: set the proxy's name to the peers section name"
+  * BUG/MINOR: sockpair: wrong return value for fd_send_uxst()
+
+-------------------------------------------------------------------
 Thu Jul 28 20:04:58 UTC 2022 - dmueller@suse.com
 
 - Update to version 2.6.2+git0.16a3646fd:
