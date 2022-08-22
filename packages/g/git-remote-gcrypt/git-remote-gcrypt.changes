@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 22 08:36:40 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5:
+  * Pass --error-on-no-transfer to 'rclone copyto'.
+  * README.md:
+    - explain why the arbitrary <giturl> and sftp:// backends are
+      inappropriate for most git repositories
+    - use stronger language to say that one should use local or rsync://
+      instead, and also say it up in "Description".
+
+-------------------------------------------------------------------
 Fri Jan 22 09:17:33 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4:

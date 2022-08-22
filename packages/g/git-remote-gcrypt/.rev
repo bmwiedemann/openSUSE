@@ -63,4 +63,18 @@
   * Support rsync URIs like &quot;rsync://user@host/path&quot; (Closes: #980397).</comment>
     <requestid>865877</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4a4814fa93bc6b7e6bd91c676e9f583a</srcmd5>
+    <version>1.5</version>
+    <time>1661159109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5:
+  * Pass --error-on-no-transfer to 'rclone copyto'.
+  * README.md:
+    - explain why the arbitrary &lt;giturl&gt; and sftp:// backends are
+      inappropriate for most git repositories
+    - use stronger language to say that one should use local or rsync://
+      instead, and also say it up in &quot;Description&quot;.</comment>
+    <requestid>998584</requestid>
+  </revision>
 </revisionlist>
