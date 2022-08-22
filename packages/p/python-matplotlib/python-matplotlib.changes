@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Aug 14 14:47:16 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * removed pathc matplotlib-pr22975-fixarray.patch; included upstream
+
+- update to version 3.5.3:
+  * Fix alignment of over/under symbols
+  * Fix bugs in colorbars:
+    + alpha of extensions
+    + drawedges=True with extensions
+    + handling of panchor=False
+  * Fix builds on Cygwin and IBM i
+  * Fix contour labels in SubFigures
+  * Fix cursor output:
+    + for imshow with all negative values
+    + when using BoundaryNorm
+  * Fix interactivity in IPython/Jupyter
+  * Fix NaN handling in errorbar
+  * Fix NumPy conversion from AstroPy unit arrays
+  * Fix positional markerfmt passed to stem
+  * Fix unpickling:
+    + crash loading in a separate process
+    + incorrect DPI when HiDPI screens
+
+-------------------------------------------------------------------
 Thu May 26 16:23:46 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Skip a flaky leak test, move sigint test skip to all archs

@@ -31,7 +31,7 @@ ExclusiveArch:  x86_64 aarch64
 %bcond_with test
 %endif
 Name:           python-matplotlib%{psuffix}
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -41,8 +41,6 @@ Source1:        matplotlib-mplsetup.cfg
 # Bundled version of freetype and qhull for testing purposes only
 Source98:       http://www.qhull.org/download/qhull-2020-src-8.0.2.tgz
 Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6.1/freetype-2.6.1.tar.gz
-# PATCH-FIX-UPSTREAM matplotlib-pr22975-fixarray.patch -- gh#matplotlib/matplotlib#22975, required for astropy 5.1
-Patch1:         https://github.com/matplotlib/matplotlib/pull/22975.patch#/matplotlib-pr22975-fixarray.patch
 BuildRequires:  %{python_module Cycler >= 0.10}
 BuildRequires:  %{python_module FontTools >= 4.22.0}
 BuildRequires:  %{python_module devel}
@@ -115,7 +113,6 @@ application servers, and six graphical user interface toolkits.
 
 %package        cairo
 Summary:        Cairo backend for %{name}
-License:        SUSE-Matplotlib
 Requires:       %{name} = %{version}
 Requires:       python-cairo
 
@@ -125,7 +122,6 @@ for the %{name} plotting package
 
 %package        gtk3
 Summary:        GTK3 backends for %{name}
-License:        SUSE-Matplotlib
 Requires:       %{name} = %{version}
 Requires:       %{name}-gtk-common = %{version}
 
@@ -135,7 +131,6 @@ gtk3cairo backends for the %{name} plotting package
 
 %package        gtk4
 Summary:        GTK4 backends for %{name}
-License:        SUSE-Matplotlib
 Requires:       %{name} = %{version}
 Requires:       %{name}-gtk-common = %{version}
 
@@ -145,7 +140,6 @@ gtk4cairo backends for the %{name} plotting package
 
 %package        gtk-common
 Summary:        code common for GTK3 and GTK4 backends for %{name}
-License:        SUSE-Matplotlib
 Requires:       %{name} = %{version}
 Requires:       %{name}-cairo = %{version}
 Requires:       gdk-pixbuf-loader-rsvg
@@ -158,7 +152,6 @@ for the %{name} plotting package
 
 %package        latex
 Summary:        Allow rendering latex in %{name}
-License:        SUSE-Matplotlib
 Requires:       %{name} = %{version}
 # grep usepackage lib/matplotlib/texmanager.py lib/matplotlib/backends/backend_pgf.py
 # https://github.com/search?q=usepackage+repo%3Amatplotlib%2Fmatplotlib+path%3Alib&type=Code
@@ -194,7 +187,6 @@ and figures.
 
 %package        qt5
 Summary:        Qt5 backend for %{name}
-License:        SUSE-Matplotlib
 Requires:       %{name} = %{version}
 Requires:       python-qt5
 Provides:       %{name}-qt-shared = %{version}
@@ -206,7 +198,6 @@ for the %{name} plotting package
 
 %package        testdata
 Summary:        Test data for %{name}
-License:        SUSE-Matplotlib
 Requires:       %{name} = %{version}
 
 %description    testdata
@@ -215,7 +206,6 @@ for the %{name} plotting package
 
 %package        tk
 Summary:        Tk backend for %{name}
-License:        SUSE-Matplotlib
 Requires:       %{name} = %{version}
 Requires:       python-Pillow-tk
 Requires:       python-tk
@@ -227,7 +217,6 @@ for the %{name} plotting package
 
 %package        web
 Summary:        Web backend for %{name}
-License:        SUSE-Matplotlib
 Requires:       %{name} = %{version}
 Requires:       python-tornado
 
@@ -237,7 +226,6 @@ for the %{name} plotting package
 
 %package        wx
 Summary:        WxWidgets backend for %{name}
-License:        SUSE-Matplotlib
 Requires:       %{name} = %{version}
 Requires:       python-wxPython >= 4
 
@@ -246,7 +234,7 @@ This package includes the wxWidgets-based wxagg backend
 for %{name} plotting package
 
 %prep
-%autosetup -p1 -n matplotlib-%{version}
+%autosetup -n matplotlib-%{version}
 #copy freetype to the right location, so that matplotlib will not try to download it
 mkdir -p ~/.cache/matplotlib/
 SHA=($(sha256sum %{SOURCE98}))
