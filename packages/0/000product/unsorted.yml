@@ -3290,8 +3290,6 @@ unsorted:
   - eiskaltdcpp-daemon 
   - eiskaltdcpp-qt 
   - eiskaltdcpp-qt-lang 
-  - elektra 
-  - elektra-qt-gui 
   - element-desktop: [x86_64] 
   - element-web: [x86_64] 
   - elementary-cmake-modules 
@@ -6093,6 +6091,7 @@ unsorted:
   - gnumeric-lang 
   - gnuplot 
   - gnuplot-doc 
+  - gnuprumcu 
   - gnuradio 
   - gnuradio-devel 
   - gnuradio-doc 
@@ -10750,10 +10749,6 @@ unsorted:
   - libei-devel 
   - libei-suse2 
   - libeiskaltdcpp2_4 
-  - libelektra-augeas 
-  - libelektra-devel 
-  - libelektra-devel-doc 
-  - libelektra4 
   - libelf-devel 
   - libelf-devel-32bit: [x86_64] 
   - libelf1-32bit: [x86_64] 
@@ -32155,7 +32150,7 @@ unsorted:
   - qtermwidget-qt5-data 
   - qtermwidget-qt5-devel 
   - qtfm 
-  - qtile 
+  - qtile: [x86_64] 
   - qtkeychain-qt5-devel 
   - qtkeychain-qt6-devel 
   - qtkeychain-qt6-lang 
