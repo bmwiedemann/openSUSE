@@ -7,4 +7,12 @@
     <comment>Very popular package.</comment>
     <requestid>993531</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3606b61acb786defa291af4720d3056c</srcmd5>
+    <version>0.79.1</version>
+    <time>1661163560</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.79.1</comment>
+    <requestid>998602</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 18 22:57:21 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.79.1
+  * Fix jsonable_encoder using include and exclude parameters for
+    non-Pydantic objects
+  * Fix edge case with repeated aliases names not shown in OpenAPI
+  * Improved docs
+
+-------------------------------------------------------------------
 Fri Aug  5 05:28:18 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to 0.79.0
@@ -9,6 +18,6 @@ Sat Nov 28 23:42:11 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 - Update to v0.61.2
 
 -------------------------------------------------------------------
-Sat Jul 25 04:29:21 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+Sat Jul 25 04:29:21 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v0.60.1
