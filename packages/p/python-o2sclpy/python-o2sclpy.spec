@@ -1,7 +1,7 @@
 #
 # spec file for package python-o2sclpy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
+%define modname o2sclpy
 Name:           python-o2sclpy
-Version:        0.925
+Version:        0.926
 Release:        0
 Summary:        Python extensions for O2scl
 License:        GPL-3.0-only
 URL:            https://neutronstars.utk.edu/code/o2sclpy
-Source0:        https://files.pythonhosted.org/packages/source/o/o2sclpy/o2sclpy-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/o2sclpy/%{modname}-%{version}.tar.gz
+Source1:        %{name}-rpmlintrc
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module matplotlib >= 3.1}
@@ -34,7 +36,7 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       o2scl-devel >= 0.925
+Requires:       o2scl-devel >= %{version}
 Requires:       python-h5py
 Requires:       python-matplotlib >= 3.1
 Requires:       python-numpy
@@ -50,7 +52,7 @@ A high-level plotting script, o2graph, for quick matplotlib or yt plots for use
 with the O2scl C++ library and a set of python classes for convenient plotting.
 
 %prep
-%setup -q -n o2sclpy-%{version}
+%setup -q -n %{modname}-%{version}
 
 %build
 %python_build
@@ -70,6 +72,7 @@ with the O2scl C++ library and a set of python classes for convenient plotting.
 %license LICENSE
 %doc README.md
 %python_alternative %{_bindir}/o2graph
-%{python_sitelib}/*
+%{python_sitelib}/%{modname}/
+%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
 
 %changelog
