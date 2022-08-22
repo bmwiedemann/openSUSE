@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 17 11:08:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- fix import_failed.map to refer to the python 3.10 package versions
+
+-------------------------------------------------------------------
 Tue Aug  2 17:13:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.10.6:
