@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyct
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyct
-Version:        0.4.6
+Version:        0.4.8
 Release:        0
 Summary:        Python package for common tasks for users
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/pyviz/pyct
+URL:            https://github.com/pyviz/pyct
 Source0:        https://files.pythonhosted.org/packages/source/p/pyct/pyct-%{version}.tar.gz
 Source100:      python-pyct-rpmlintrc
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-PyYAML
+Requires:       python-param >= 1.7.0
+Requires:       python-requests
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module flake8}
@@ -37,11 +40,8 @@ BuildRequires:  %{python_module param >= 1.7.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 # /SECTION
-Requires:       python-PyYAML
-Requires:       python-param >= 1.7.0
-Requires:       python-requests
-BuildArch:      noarch
-
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -68,6 +68,13 @@ A utility package that includes:
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/pyct
+
+%post
+%python_install_alternative pyct
+
+%postun
+%python_uninstall_alternative pyct
 
 %check
 rm -rf build _build*
@@ -78,6 +85,10 @@ pytest-%{$python_bin_suffix}
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%python_alternative %{_bindir}/pyct
+%dir %{python_sitelib}/pyct
+%{python_sitelib}/pyct/*
+%{python_sitelib}/pyct/.version
+%{python_sitelib}/pyct-%{version}-py*.egg-info
 
 %changelog

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Aug 21 15:27:06 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * be more specific in %files section
+  * remove python-devel requirement
+  * use update-alternative to install binary
+
+- update to version 0.4.8:
+  * Fix version reporting command on linux
+  * Add pyct.report()
+  * Allow python -m pyct ... command form.
+
+- changes from version 0.4.7:
+  * Added version reporting command.
+
+-------------------------------------------------------------------
 Sat Dec 22 03:45:56 UTC 2018 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.4.6
