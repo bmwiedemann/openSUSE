@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Aug 18 06:33:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.24.0
+    * Technical overhaul of the "Smartphone as card reader" function.
+      The use of an ID card app2 older than 1.22.1 is no longer possible
+      in combination with 1.24.0.
+    * Various optimizations with regards to accessibility.
+    * Support for "IPv6 only" home networks.
+    * AusweisApp2 is now provided as a 64-bit application on Windows.
+    * Official support for Windows 11.
+    * Support for Windows 7 and Windows 8.1 has been discontinued.
+    * Support for macOS 10.13 and 10.14 has been discontinued.
+    * Support for Android 5 and 6 and has been discontinued.
+    * Added an integrated ID card simulator for testing.
+    * An automatic mode for authentication for tests is now possible.
+    * AusweisApp2 is now available as a container SDK or Docker image. This
+      can be controlled using WebSocket or the new automatic authentication.
+    * Command line parameters can now be passed in the iOS SDK.
+    * Support for SHA224 and SECP224 has been discontinued.
+    * The partially-embedded SDK on Android has been discontinued.
+    * The SDK now uses API level v2.
+    * Updated OpenSSL to version 3.0.5.
+    * Updated Qt to version 6.3.1.
+
+-------------------------------------------------------------------
 Sat May 28 07:37:37 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
