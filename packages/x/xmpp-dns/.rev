@@ -7,4 +7,16 @@
     <comment>xmpp-dns</comment>
     <requestid>993092</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c86de49c514aa22bd85bebb8db81af36</srcmd5>
+    <version>0.3.1</version>
+    <time>1661162522</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.1:
+  * Print error details if SRV lookup fails.
+  * Print error details if IP lookup fails.
+  * Respect CNAME records.
+  * Detect CNAME loops (max. 5 CNAMEs) (via xmppsrv &gt;= 0.2.4)</comment>
+    <requestid>998585</requestid>
+  </revision>
 </revisionlist>

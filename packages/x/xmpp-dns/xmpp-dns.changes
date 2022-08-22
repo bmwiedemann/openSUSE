@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 22 08:39:21 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.1:
+  * Print error details if SRV lookup fails.
+  * Print error details if IP lookup fails.
+  * Respect CNAME records.
+  * Detect CNAME loops (max. 5 CNAMEs) (via xmppsrv >= 0.2.4)
+
+-------------------------------------------------------------------
 Thu Aug  4 10:38:24 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Initial package of xmpp-dns 0.3.0 for openSUSE
