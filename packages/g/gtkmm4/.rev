@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>964110</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>65f0a6aaa919ff457224fabb27b3088d</srcmd5>
+    <version>4.7.1</version>
+    <time>1661163354</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release (forwarded request 998453 from iznogood)</comment>
+    <requestid>998594</requestid>
+  </revision>
 </revisionlist>
