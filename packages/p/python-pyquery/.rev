@@ -170,4 +170,12 @@ Can't create the python3 package in dlp, so whoever pulls this would have to do 
   * python2 is no longer supported</comment>
     <requestid>965832</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>657ba51246832b10fca6409351eb8ad6</srcmd5>
+    <version>1.4.3</version>
+    <time>1661159090</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998228</requestid>
+  </revision>
 </revisionlist>

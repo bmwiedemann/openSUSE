@@ -16,7 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -33,7 +34,6 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/pyquery
 Source:         https://files.pythonhosted.org/packages/source/p/pyquery/pyquery-%{version}.tar.gz
-BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module cssselect > 0.7.9}
 BuildRequires:  %{python_module lxml >= 2.1}
 BuildRequires:  %{python_module setuptools}
@@ -78,7 +78,7 @@ XML and HTML manipulation.
 %license LICENSE.txt
 %doc CHANGES.rst README.rst
 %{python_sitelib}/pyquery/
-%{python_sitelib}/pyquery-%{version}-py*.egg-info
+%{python_sitelib}/pyquery-%{version}*-info
 %endif
 
 %changelog
