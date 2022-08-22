@@ -280,4 +280,12 @@
     <comment>Update to version 2.36.1 (forwarded request 902545 from susnux)</comment>
     <requestid>902740</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>b0cedefffc40eca66b6788b95490808f</srcmd5>
+    <version>2.36.2</version>
+    <time>1661163352</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release (forwarded request 998335 from iznogood)</comment>
+    <requestid>998592</requestid>
+  </revision>
 </revisionlist>

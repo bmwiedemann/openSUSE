@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 11 07:46:04 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.36.2:
+  + Support building with Visual Studio 2022.
+  + Meson build:
+    - Specify 'check' option in run_command(). Will be necessary
+      with future versions of Meson.
+    - Perl is not required by new versions of mm-common.
+    - Avoid unnecessary configuration warnings.
+    - Require meson >= 0.55.0.
+  + Require atk >= 2.33.3. Not a new requirement, but previously
+    it was not specified in configure.ac and meson.build.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Remove erroneous executable bit from NEWS.
+
+-------------------------------------------------------------------
 Tue May 25 23:23:17 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.36.1

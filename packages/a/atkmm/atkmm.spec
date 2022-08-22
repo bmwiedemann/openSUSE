@@ -1,7 +1,7 @@
 #
 # spec file for package atkmm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,10 @@
 %define libname  lib%{name}-2_36-1
 
 Name:           atkmm
-Version:        2.36.1
+Version:        2.36.2
 Release:        0
 Summary:        C++ Binding for the ATK library
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-3.0-only
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://www.gtkmm.org/
 Source0:        https://download.gnome.org/sources/%{name}/%{base_ver}/%{name}-%{version}.tar.xz
@@ -34,10 +34,10 @@ BuildRequires:  c++_compiler
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  graphviz
-BuildRequires:  meson
+BuildRequires:  meson >= 0.55.0
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(atk) >= 1.18
+BuildRequires:  pkgconfig(atk) >= 2.33.3
 BuildRequires:  pkgconfig(glibmm-2.68)
 Recommends:     %{name}-doc = %{version}
 
@@ -87,6 +87,8 @@ C++ bindings.
 %autosetup -p1
 
 %build
+# NEWS should not be executable
+chmod -x NEWS
 %meson \
 	-Dbuild-documentation=true \
 	%{nil}
@@ -96,8 +98,7 @@ C++ bindings.
 %meson_install
 %fdupes %{buildroot}%{_datadir}
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license COPYING
@@ -115,7 +116,7 @@ C++ bindings.
 
 %files doc
 %license COPYING.tools
-%doc AUTHORS ChangeLog README
+%doc AUTHORS ChangeLog README.md
 %{_datadir}/devhelp/books/atkmm-%{base_ver}/
 %{_datadir}/doc/atkmm-%{base_ver}/
 # Avoid BuildRequires on devhelp
