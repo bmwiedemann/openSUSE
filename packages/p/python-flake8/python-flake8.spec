@@ -19,30 +19,30 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-flake8
-Version:        4.0.1
+Version:        5.0.4
 Release:        0
 Summary:        Modular source code checker: pep8, pyflakes and co
 License:        MIT
 URL:            https://gitlab.com/pycqa/flake8
 Source:         https://files.pythonhosted.org/packages/source/f/flake8/flake8-%{version}.tar.gz
-Patch0:         fix-mock-patch-with-python3.4.patch
-Patch1:         fix-recent-flake8-stdoutWriteHook-change.patch
+# workaround for https://github.com/PyCQA/flake8/pull/1669
+Source2:        https://raw.githubusercontent.com/PyCQA/flake8/5.0.4/bin/gen-pycodestyle-plugin
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-importlib-metadata
-Requires:       python-mccabe >= 0.6.0
-Requires:       python-pycodestyle >= 2.8.0
-Requires:       python-pyflakes >= 2.4.0
+Requires:       python-importlib-metadata >= 1.1.0
+Requires:       python-mccabe >= 0.7.0
+Requires:       python-pycodestyle >= 2.9.0
+Requires:       python-pyflakes >= 2.5.0
 Requires:       python-typing
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module importlib-metadata}
-BuildRequires:  %{python_module mccabe >= 0.6.0}
-BuildRequires:  %{python_module pycodestyle >= 2.8.0}
-BuildRequires:  %{python_module pyflakes >= 2.4.0}
+BuildRequires:  %{python_module importlib-metadata >= 1.1.0}
+BuildRequires:  %{python_module mccabe >= 0.7.0}
+BuildRequires:  %{python_module pycodestyle >= 2.9.0}
+BuildRequires:  %{python_module pyflakes >= 2.5.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing}
 %if %{with python2}
@@ -79,8 +79,8 @@ Flake8 is a modular extensible source code checker.
 This package provides documentation for %{name}.
 
 %prep
-%setup -q -n flake8-%{version}
-%autopatch -p1
+%autosetup -p1 -n flake8-%{version}
+install -m 0755 -D %{SOURCE2} bin/gen-pycodestyle-plugin
 
 %build
 %python_build
@@ -101,7 +101,6 @@ This package provides documentation for %{name}.
 
 %files %{python_files}
 %license LICENSE
-%doc docs/source/manpage.rst
 %python_alternative %{_bindir}/flake8
 %dir %{python_sitelib}/flake8
 %{python_sitelib}/flake8/*

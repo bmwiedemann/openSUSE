@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 18 08:44:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.4:
+  * Remove ``indent_size_str`` (See also :pull:`1411`).
+  * Remove some dead code (See also :pull:`1453`, :pull:`1540`, :pull:`1541`).
+  * Missing explicitly-specified configuration is now an error (See also
+  :issue:`1497`, :pull:`1498`).
+  * Always read configuration files as UTF-8 (See also :issue:`1532`,
+  :pull:`1533`).
+  * Remove manpage from docs -- use ``help2man`` or related tools instead (See
+  also :pull:`1557`).
+  * Forbid invalid plugin codes (See also :issue:`325`, :pull:`1579`).
+  * lots of bugfixes, see included changelog
+- drop fix-mock-patch-with-python3.4.patch fix-recent-flake8-stdoutWriteHook-change.patch (obsolete/upstream)
+
+-------------------------------------------------------------------
 Thu Mar 17 16:09:27 UTC 2022 - pgajdos@suse.com
 
 - python-mock is actually not needed for build
