@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Sat Aug 20 11:46:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.0
+  * Note: The 0.12.x series will be the final releases of nose2
+    which support Python 2.
+  * Passing --junit-xml-path now implies --junit-xml when using the
+    junitxml plugin. This means that the --junit-xml flag can be
+    omitted when --junit-xml-path is specified. (:issue:`521`)
+  * Remove the dependency on coverage. Use of the coverage plugin
+    now requires that you either install coverage independently, or
+    use the extra, nose2[coverage_plugin]. As a result, nose2 no
+    longer has any strict dependencies
+  * Remove the dependency on six, instead using a vendored copy.
+    This ensures that the dependency for nose2 doesn't conflict
+    with application dependencies
+  * nose2 no longer provides an entry-point named based on the
+    current python version, e.g. nose2-3.8 on python3.8 . Only the
+    nose2 command is provided.
+  * Remove support for setup.py test on nose2 itself. This usage is
+    deprecated by setuptools. Developers contributing to nose2 are
+    encouraged to use tox to run nose2's testsuite, per the
+    contributing guide.
+- Release 0.11.0
+  * Test classes now have their short description (first line of
+    docstring) printed in verbose output
+  * The junitxml plugin now sets timestamp on each testcase node as
+    an ISO-8601 timestamp. Thanks to :user:`deeplow` for the
+    contribution!
+  * Drop support for Python 3.5
+  * Python 3.10 is now officially supported. Python 3.11-dev will
+    be supported on a best-effort basis. Thanks to :user:`hugovk`
+    and :user:`tirkarthi` for their contributions!
+  * Add support for test classes when running with the
+    multiprocessing plugin. Thanks to :user:`ltfish` for the
+    initial contribution and :user:`stefanholek` for the refinement
+    to this change!
+- Release 0.10.0
+  * Support for subtests!
+  * Notes for plugin authors about subtest support:
+    - Subtest failures will produce a TestOutcomeEvent with outcome
+      = "subtest"
+    - Subtest events can be failures, but they do not indicate
+      success -- the containing test will send a success event if
+      no subtests fail
+  * Drop support for Python 3.4
+  * Python 3.8 and 3.9 are now officially supported
+  * Improve helptext for the multiprocess plugin's -N option
+  * When run with reduced verbosity (e.g. with -q), nose2 will no
+    longer print an empty line before test reports
+  * The plugin registry will no longer contain duplicate plugins
+    and or base event.Plugin instances
+  * Fix function test case implementation of id, __str__, and
+    __repr__. This removes the injected transplant_class.<locals>
+    from reporting output
+  * Doctest loading will now skip setup.py files in the project
+    root
+  * Class methods decorated (e.g. with mock.patch) are no longer
+    incorrectly picked up by the function loader
+- Drop patches
+  * remove_unittest2.patch
+  * ignore-warnings-doctests.patch
+  * fix-mock-dep.patch
+
+-------------------------------------------------------------------
 Wed May  4 11:04:22 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build

@@ -18,53 +18,50 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-nose2
-Version:        0.9.2
+Version:        0.12.0
 Release:        0
-Summary:        Second generation of the "nose" Python testing framework
+Summary:        The successor to the Python testing framework nose, based on unittest
 License:        BSD-2-Clause AND Python-2.0
 URL:            https://github.com/nose-devs/nose2
 Source:         https://files.pythonhosted.org/packages/source/n/nose2/nose2-%{version}.tar.gz
-Patch0:         remove_unittest2.patch
-Patch1:         fix-mock-dep.patch
-Patch2:         ignore-warnings-doctests.patch
-BuildRequires:  %{python_module coverage >= 4.4.1}
+BuildRequires:  %{python_module coverage}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-coverage >= 4.4.1
-Requires:       python-six >= 1.1
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Suggests:       python-coverage
 BuildArch:      noarch
 %python_subpackages
 
 %description
-nose2 is a new version of the nose unit testing framework,
-supporting Python 2.6+ and 3.x, but not 2.4.
-nose2 does not need a custom importer anymore and instead imports
-modules with __import__. nose2 does not support all of the
-test project layouts that nose did, and also does not
-support package-level fixtures. Almost all configuration for nose2
-is to be done through config files, not command-line options.
+nose2 is the successor to nose. It's unittest with plugins.
+nose2 is a new project and does not support all of the behaviors of nose.
+nose2's purpose is to extend unittest to make testing nicer and easier to understand.
 
 %prep
 %setup -q -n nose2-%{version}
-%autopatch -p1
-rm -rf *.egg-info/
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
-
+# -I : work around boo#1201041
+%pyproject_install -I
 %python_clone -a %{buildroot}%{_bindir}/nose2
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LC_CTYPE=C.UTF8
-%pyunittest discover -v
+%{python_expand # nose must test itself in an editable install
+$python -m venv editable-%{$python_bin_suffix} --system-site-packages
+. editable-%{$python_bin_suffix}/bin/activate
+pip install -e .
+nose2 -v --pretty-assert
+deactivate
+}
 
 %post
 %python_install_alternative nose2
@@ -76,6 +73,7 @@ export LC_CTYPE=C.UTF8
 %license license.txt
 %doc AUTHORS README.rst
 %python_alternative %{_bindir}/nose2
-%{python_sitelib}/*
+%{python_sitelib}/nose2
+%{python_sitelib}/nose2-%{version}*-info
 
 %changelog
