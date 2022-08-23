@@ -272,7 +272,7 @@ install -m 0644 ../README %{buildroot}%{_docdir}/%{name}/README
 %ifarch ppc64 ppc64le s390x
 %{_libdir}/libracket3m*
 %{_libdir}/%{name}/buildinfo
-%{_libdir}/%{name}/mzdyn3m.o
+%{_libdir}/%{name}/mzdyn3m.lo
 %endif
 %{_mandir}/man1/mz*
 %{_mandir}/man1/racket*
