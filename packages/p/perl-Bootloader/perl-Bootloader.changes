@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  2 12:19:13 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- move binaries from /sbin to /usr/sbin (boo#1191088)
+- remove /boot/boot.readme while at it so we stay out of there
+
+-------------------------------------------------------------------
 Mon Jun 20 12:41:29 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Moved logrotate files from user specific directory /etc/logrotate.d

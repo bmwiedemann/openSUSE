@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{suse_version} > 1550
+%define sbindir %{_sbindir}
+%else
+%define sbindir /sbin
+%endif
+
 Name:           perl-Bootloader
 Version:        0.939
 Release:        0
@@ -59,6 +65,11 @@ A command line interface to perl-Bootloader using YAML files for input and outpu
 
 %install
 make DESTDIR=$RPM_BUILD_ROOT install
+%if %{suse_version} > 1550
+mv %{buildroot}/sbin/* %{buildroot}%{_sbindir}
+ln -sf ../../sbin/pbl %{buildroot}/usr/lib/bootloader/bootloader_entry
+rm $RPM_BUILD_ROOT/boot/boot.readme
+%endif
 install -d -m 700 $RPM_BUILD_ROOT/var/log/YaST2
 touch $RPM_BUILD_ROOT/var/log/pbl.log
 %perl_process_packlist
@@ -102,15 +113,15 @@ chmod 600 /var/log/pbl.log
 %defattr(-, root, root)
 %license COPYING
 %doc %{_mandir}/man?/*
+%doc boot.readme
 %{perl_vendorarch}/auto/Bootloader
 %{perl_vendorlib}/Bootloader
 %if 0%{?suse_version} == 0 || 0%{?suse_version} <= 1130
 /var/adm/perl-modules/perl-Bootloader
 %endif
-/sbin/update-bootloader
-/sbin/pbl
+%{sbindir}/update-bootloader
+%{sbindir}/pbl
 /usr/lib/bootloader
-/boot/boot.readme
 %if 0%{?suse_version} > 1500
 %{_distconfdir}/logrotate.d/pbl
 %else
