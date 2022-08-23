@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Aug 05 13:33:05 UTC 2022 - jan.suse@zerebecki.de
+
+- Update to version 0.0.9~git5.75890b6:
+  * Don't run keepalive on reboot
+  * Use system-wide proxy settings (bsc#1200994)
+  * Add customer information about keepalive calls
+  * Add timer for SUSEConnect --keepalive (bsc#1196076)
+  * Add --keepalive to manpage
+  * Added support for the System-Token header
+  * Add Keepalive command line option
+  * Print nested zypper errors (bsc#1200803)
+  * Fix migration json error with SMT (bsc#1198625)
+  * Add option to run local scc tests
+  * Switch to jenkins-hosted credentials
+  * Fix "VCS stamping" problem
+  * Add missing import
+  * Remove redundant code + add comment
+
+-------------------------------------------------------------------
 Wed Apr 20 08:18:01 UTC 2022 - jan.suse@zerebecki.de
 
 - Update to version 0.0.8~git2.368ea44:
