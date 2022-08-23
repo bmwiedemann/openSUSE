@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 19 09:42:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add buildrequires for bsd/stdlib.h (bsc#1202222) 
+
+-------------------------------------------------------------------
+Tue Aug  9 12:34:33 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use %_pam_vendordir
+
+-------------------------------------------------------------------
 Thu Jun 30 12:18:41 UTC 2022 - Stefan Schubert <schubi@suse.de>
 
 - Moved logrotate files from user specific directory /etc/logrotate.d

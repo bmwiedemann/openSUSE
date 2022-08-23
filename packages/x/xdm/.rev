@@ -965,4 +965,14 @@
     <comment></comment>
     <requestid>986179</requestid>
   </revision>
+  <revision rev="95" vrev="3">
+    <srcmd5>80a418bb161f73b7c07bda71621f87af</srcmd5>
+    <version>1.1.13</version>
+    <time>1661257539</time>
+    <user>dimstar_suse</user>
+    <comment>- add buildrequires for bsd/stdlib.h (bsc#1202222) 
+
+- Use %_pam_vendordir</comment>
+    <requestid>998595</requestid>
+  </revision>
 </revisionlist>

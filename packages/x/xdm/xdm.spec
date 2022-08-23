@@ -45,6 +45,7 @@ BuildRequires:  libtool
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(libbsd)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xau)
 BuildRequires:  pkgconfig(xaw7)
@@ -131,7 +132,8 @@ mv etc/X11/xdm/* usr%{_sysconfdir}/X11/xdm
 for i in xdm-config Xservers; do
 	cp usr%{_sysconfdir}/X11/xdm/$i etc/X11/xdm/$i
 done
-mv etc/pam.d usr%{_sysconfdir}/
+mkdir -p ./%{_pam_vendordir}
+mv etc/pam.d/* ./%{_pam_vendordir}/
 %else
 patch -p0 < %{PATCH4}
 %endif
@@ -250,8 +252,8 @@ sed -i 's/DISPLAYMANAGER=.*//g' %{_sysconfdir}/sysconfig/displaymanager
 %config %{_sysconfdir}/logrotate.d/xdm
 %endif
 %if 0%{?UsrEtcMove}
-%{_distconfdir}/pam.d/xdm
-%{_distconfdir}/pam.d/xdm-np
+%{_pam_vendordir}/xdm
+%{_pam_vendordir}/xdm-np
 %else
 %config(noreplace) %{_sysconfdir}/pam.d/xdm
 %config(noreplace) %{_sysconfdir}/pam.d/xdm-np
