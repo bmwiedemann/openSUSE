@@ -15,4 +15,12 @@
     <comment>Fix build with maven-antrun-plugin 3.x</comment>
     <requestid>964407</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>57ae3a2991833ab9b43fb65d953a57f3</srcmd5>
+    <version>2.3.1</version>
+    <time>1661257781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998643</requestid>
+  </revision>
 </revisionlist>
