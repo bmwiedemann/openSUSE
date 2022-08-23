@@ -949,4 +949,12 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
   - Fixed typos</comment>
     <requestid>993808</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>ffcb7461a9cc7dee05f0e7a6d8724fff</srcmd5>
+    <version>4.0.1</version>
+    <time>1661257546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998705</requestid>
+  </revision>
 </revisionlist>
