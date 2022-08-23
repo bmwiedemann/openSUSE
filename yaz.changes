@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug  8 15:37:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.32.0:
+  * backtrace: allow gdb to operate on this process.
+  * backtrace: hard exit if backtrace hangs.
+  * yaz-marcdump: limit, offset options. Limit(-L), offset(-O) allows records
+    in range to be processed. 
+
+-------------------------------------------------------------------
 Mon Jan 31 13:31:44 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: no apparent reason detected why we need
