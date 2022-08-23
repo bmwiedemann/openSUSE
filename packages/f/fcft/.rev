@@ -164,4 +164,16 @@
     enabled.</comment>
     <requestid>978164</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>42b2fead9eda225201d597fb07874746</srcmd5>
+    <version>3.1.3</version>
+    <time>1661257779</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.3:
+  * Fixed bitmap font glyph advance width calculation when the user has
+    enabled 10-scale-bitmap-fonts.conf in fontconfig.
+- Fix libfcft package missing license file, and remove redundant copy of
+  doc files and license in $datadir/doc/fcft/</comment>
+    <requestid>998706</requestid>
+  </revision>
 </revisionlist>
