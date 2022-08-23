@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 Name:           python-stestr%{psuffix}
 Version:        3.2.1
 Release:        0
-Summary:        A test runner runner similar to testrepository
+Summary:        A parallel Python test runner built around subunit
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/mtreinish/stestr
@@ -42,30 +42,19 @@ Requires:       python-fixtures >= 3.0.0
 Requires:       python-future
 Requires:       python-pbr >= 2.0.0
 Requires:       python-python-subunit >= 1.4.0
-Requires:       python-six >= 1.10.0
 Requires:       python-testtools >= 2.2.0
 Requires:       python-voluptuous >= 0.8.9
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module PyYAML >= 3.10.0}
 BuildRequires:  %{python_module SQLAlchemy}
-BuildRequires:  %{python_module coverage >= 4.0}
 BuildRequires:  %{python_module ddt >= 1.0.1}
-BuildRequires:  %{python_module fixtures >= 3.0.0}
-BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-subunit >= 1.4.0}
-BuildRequires:  %{python_module six >= 1.10.0}
-BuildRequires:  %{python_module stestr >= %{version}}
-BuildRequires:  %{python_module testtools >= 2.2.0}
-BuildRequires:  %{python_module voluptuous >= 0.8.9}
+BuildRequires:  %{python_module stestr = %{version}}
 %endif
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
-Requires:       python-dbm
+# cliff, required for the cli, is only available for the python3 flavor
 Requires:       python3-cliff
+Requires:       python-dbm
 %endif
 %if !0%{?_no_weakdeps}
 Recommends:     python-SQLAlchemy
@@ -74,12 +63,18 @@ Recommends:     python-subunit2sql >= 1.8.0
 %python_subpackages
 
 %description
-stestr is a fork of the `testrepository`_ that concentrates on being a
-dedicated test runner for python projects. The generic abstraction
-layers which enabled testr to work with any subunit emitting runner are gone.
-stestr hard codes python-subunit-isms into how it works. The code base is also
-designed to try and be explicit, and to provide a python api that is documented
-and has examples.
+stestr is parallel Python test runner designed to execute unittest test suites
+using multiple processes to split up execution of a test suite. It also will
+store a history of all test runs to help in debugging failures and optimizing
+the scheduler to improve speed. To accomplish this goal it uses the subunit
+protocol to facilitate streaming and storing results from multiple workers.
+
+stestr originally started as a fork of the testrepository project. But, instead
+of being an interface for any test runner that used subunit, like testrepository,
+stestr concentrated on being a dedicated test runner for python projects. While
+stestr was originally forked from testrepository it is not backwards compatible
+with testrepository. At a high level the basic concepts of operation are shared
+between the two projects but the actual usage is not exactly the same.
 
 %prep
 %setup -q -n stestr-%{version}
@@ -89,7 +84,8 @@ rm stestr/tests/repository/test_sql.py
 %if %{with test}
 %check
 export LC_ALL="en_US.UTF8"
-python3 -m pytest stestr/tests -k 'not test_empty_with_pretty_out'
+# can only test in python3: cliff unavailable elsewhere
+python3 -B -m pytest stestr/tests -v -k 'not test_empty_with_pretty_out'
 %endif
 
 %if ! %{with test}
@@ -100,20 +96,16 @@ export LC_ALL="en_US.UTF8"
 %install
 export LC_ALL="en_US.UTF8"
 %python_install
-%python_clone -a %{buildroot}%{_bindir}/stestr
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%post
-%python_install_alternative stestr
-
-%postun
-%python_uninstall_alternative stestr
 
 %files %{python_files}
 %license LICENSE
 %doc ChangeLog README.rst
-%python_alternative %{_bindir}/stestr
-%{python_sitelib}/*
+%if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
+%{_bindir}/stestr
+%endif
+%{python_sitelib}/stestr
+%{python_sitelib}/stestr-%{version}*-info
 %endif
 
 %changelog
