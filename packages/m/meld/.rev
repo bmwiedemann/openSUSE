@@ -654,4 +654,24 @@
     <comment>Update to version 3.21.2 (forwarded request 983543 from stroeder)</comment>
     <requestid>983860</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>caaa67c4e7da29842213ef22d86d03f7</srcmd5>
+    <version>3.21.3</version>
+    <time>1661257600</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.21.3:
+  + Features:
+    - Add shortcut for open externally action.
+    - Add improved tooltips for tab labels.
+  + Fixes:
+    - Move horizontal-icon menu section to regular menu items.
+    - Fix chunk navigation actions sometimes not working after
+      chunk push/pull actions.
+    - Show more parent context in path label display.
+    - Update meson build to strip env from shebang line.
+    - Fix left-click chunk actions under certain window managers.
+    - Fix version control showing console windows on Windows.
+    - Fix path label display for very long filenames.</comment>
+    <requestid>998621</requestid>
+  </revision>
 </revisionlist>
