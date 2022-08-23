@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Aug 20 14:59:06 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.1.6:
+  * Return manager instead of None
+
+- changes from version 0.1.5:
+  * replace 0.1.4 on pypi, no changes
+
+- changes from version 0.1.4:
+  * Fix: always clear _draw_called
+  * Move draw_if_interactive logic to new_figure_manager_given_figure.
+  * Remove matplotlib rc overrides.
+  * Create __version__ attribute
+
+-------------------------------------------------------------------
 Sun Oct 17 19:39:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.3
