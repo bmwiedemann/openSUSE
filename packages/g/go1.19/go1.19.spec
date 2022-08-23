@@ -24,36 +24,25 @@
 %undefine _build_create_debug
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true NO_BRP_AR=true
 
+# Used to bootstrap go toolchain with specific existing package
+%define go_bootstrap_version go1.16
+
+# Used to bootstrap go toolchain using specific version of gcc-go
+%if 0%{?suse_version} > 1500
+# openSUSE Tumbleweed
+%define gcc_go_version 12
+%else
+%define gcc_go_version 11
+%endif
+
+# Bootstrap go toolchain using existing go package go_bootstrap_version
+# To bootstrap using gccgo use '--with gccgo'
+%bcond_with gccgo
+
+# Boostrapping using existing go package can fail on certain SLE-12 architectures
+# Override here as needed
 %if 0%{?suse_version} == 1315
-%define gcc_go_version 8
-%define go_bootstrap_version go1.4
-%else
-%ifarch riscv64
-%define go_bootstrap_version go1.14
-%else
-%define go_bootstrap_version go1.9
-%endif
-%if 0%{?sle_version} == 150000
-# SLE15 or Leap 15.x
-%define gcc_go_version 7
-%else
-%define gcc_go_version 9
-%endif
-%endif
-
-# By default use go and not gccgo
-%bcond_with    gccgo
-
-# The fallback boostrap method via %%{go_bootstrap_version} would work for Leap
-# but we don't have %%{go_bootstrap_version} in there. Same for SLE15+
-#if ( 0%{?suse_version} < 1550 && 0%{?is_opensuse} ) || ( 0%{?suse_version} >= 1500 && ! 0%{?is_opensuse} )
-#bcond_without gccgo
-#endif
-
-# The fallback bootstrap method via go1.4 doesn't work
-# for aarch64 nor ppc64le because go 1.4 did not support that architecture.
-%if 0%{?suse_version} == 1315
-%ifarch aarch64 ppc64le ppc64 s390x
+%ifarch aarch64 ppc64le ppc64
 %bcond_without gccgo
 %endif
 %endif
@@ -422,7 +411,6 @@ fi
 %endif
 
 %files doc
-%defattr(-,root,root,-)
 %doc %{_docdir}/go/%{go_label}/*.html
 
 %ifarch %{tsan_arch}

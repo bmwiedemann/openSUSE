@@ -25,4 +25,19 @@
   go/src/make.rc. Used for SLE-12 go bootstrap builds with gcc8. (forwarded request 994190 from jfkw)</comment>
     <requestid>994192</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>6b466c44d510badb39a2f9e80fae713c</srcmd5>
+    <version>1.19</version>
+    <time>1661257792</time>
+    <user>dimstar_suse</user>
+    <comment>- Define go_bootstrap_version go1.16 without suse_version checks
+- Simplify conditional gcc_go_version 12 on Tumbleweed, 11 elsewhere
+- Add _constraints for worker disk space 5G needed by SLE-15 x86_64
+- SLE-12 s390x use bcond_without gccgo to bootstrap using gcc11go
+  * Workaround for SLE-12 s390x build error while writing linker data:
+    bad carrier sym for symbol crypto/internal/nistec.p256OrdMul.args_stackmap
+    created by cmd/link/internal/ld.writeBlocks
+	/usr/lib64/go/1.19/src/cmd/link/internal/ld/data.go:958 (forwarded request 998733 from jfkw)</comment>
+    <requestid>998736</requestid>
+  </revision>
 </revisionlist>
