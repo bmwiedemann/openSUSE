@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 23 08:41:45 UTC 2022 - David Diaz <dgonzalez@suse.com>
+
+- Do not crash when reading active LSM modules returns nil
+  (related to jsc#SLE-22069)
+- 4.5.1
+
+-------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.5.0 (bsc#1198109)
