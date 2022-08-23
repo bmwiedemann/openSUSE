@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 23 00:13:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
+
+- drbd: build error against kernel v5.19 (bsc#1202600)
+  - add patch:
+    + bsc-1202600_01-remove-QUEUE_FLAG_DISCARD.patch
+    + bsc-1202600_02-dax-introduce-DAX_RECOVERY_WRITE-dax-access-mode.patch
+    + bsc-1202600_03-block-decouple-REQ_OP_SECURE_ERASE-from-REQ_OP_DISCA.patch
+    + bsc-1202600_04-remove-assign_p_sizes_qlim.patch
+  - For rpmbuild warning, modify symlink /usr/sbin/rcdrbd to relative path
+    + drbd.spec
+
+-------------------------------------------------------------------
 Fri Jul 08 12:47:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
 
 - drbd: build error against kernel v5.18 (bsc#1201335)

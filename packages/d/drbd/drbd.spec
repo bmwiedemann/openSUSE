@@ -52,6 +52,10 @@ Patch15:        bsc-1201335_05-bio_alloc.patch
 Patch16:        bsc-1201335_06-bdi.patch
 Patch17:        bsc-1201335_07-write-same.patch
 Patch18:        bsc-1201335_08-bio_clone_fast.patch
+Patch19:        bsc-1202600_01-remove-QUEUE_FLAG_DISCARD.patch
+Patch20:        bsc-1202600_02-dax-introduce-DAX_RECOVERY_WRITE-dax-access-mode.patch
+Patch21:        bsc-1202600_03-block-decouple-REQ_OP_SECURE_ERASE-from-REQ_OP_DISCA.patch
+Patch22:        bsc-1202600_04-remove-assign_p_sizes_qlim.patch
 Patch99:        suse-coccinelle.patch
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
 BuildRequires:  coccinelle >= 1.0.8
@@ -103,6 +107,10 @@ installed kernel.
 %patch16 -p1
 %patch17 -p1
 %patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
 %patch99 -p1
 
 mkdir source
@@ -142,7 +150,7 @@ for flavor in %{flavors_to_build}; do
 done
 
 mkdir -p %{buildroot}/%{_sbindir}
-ln -s -f %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
+ln -s service %{buildroot}/%{_sbindir}/rc%{name}
 rm -f drbd.conf
 
 %files
