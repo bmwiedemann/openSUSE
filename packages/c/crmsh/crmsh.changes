@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 23 01:26:47 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20220822.c2f5d204:
+  * fix: configure: refresh cib before showing or modifying if no pending changes has been made (bsc#1202465)
+
+-------------------------------------------------------------------
+Mon Aug 22 02:01:36 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20220822.10c65b3b:
+  * Revert "Dev: testcases: Update expected testcase with pacemaker update"
+  * Dev: CI: master branch change to use opensuse/leap:15.4 as docker image
+
+-------------------------------------------------------------------
+Fri Aug 12 08:25:29 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20220812.5acffe48:
+  * Dev: behave: Increase wait time for resource started
+
+-------------------------------------------------------------------
 Thu Aug 11 12:09:28 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20220811.e3a59fc7:
