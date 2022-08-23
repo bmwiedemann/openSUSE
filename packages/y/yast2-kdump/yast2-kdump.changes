@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug  1 11:53:29 UTC 2022 - David Diaz <dgonzalez@suse.com>
+
+- Allow using kdump auto resize (related to jsc#SLE-18441)
+- 4.5.3
+
+-------------------------------------------------------------------
+Tue Jul 26 15:20:39 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Removed kdump RPM dependency, the package is checked and
+  installed at runtime. This removes the package from the YaST
+  container (related to bsc#1199840)
+- For the inst-sys dependencies the respective skelcd-control-*
+  packages have been updated.
+- 4.5.2
+
+-------------------------------------------------------------------
 Tue May 10 10:04:49 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Do not limit to kdumptool MaxLow when using fadump (related
