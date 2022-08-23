@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Aug 23 08:06:56 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Update to v0.9.0
+  * Add separate internal read/write clients to RedisCache to
+    improve compatibility with flask-caching.
+  * Fix bug where cache entries would expire immediately when
+    RedisCache.add was called without timeout.
+  * Improve FileSystemCache.set compatibility with Windows systems.
+- from v0.8.0
+  * Remove deprecated RedisCache.load_object and RedisCache.dump_object.
+- from v0.7.0
+  * FileSystemCache now stores universal expiration timestamps
+    using python's struct module.
+  * Drop support for Python 3.6.
+- from v0.6.0
+  * A custom hash_method may now be provided to FileSystemCache
+    for hashing keys.
+  * Fix PermissionError issue with FileSystemCache on Windows.
+- from v0.5.0
+  * Cache types now have configurable serializers.
+- from v0.4.1
+  * Fix break in RedisCache when a host object was passed in
+    RedisCache.host instead of a string.
+- from v0.4.0
+  * All cache types now implement BaseCache interface both in
+    behavior and method return types.
+  * Add type information for static typing tools.
+  * FileNotFound exceptions will not be logged anymore in
+    FileSystemCache methods in order to avoid polluting
+    application log files.
+- from v0.3.0
+  * Optimize FileSystemCache pruning.
+  * Fix a bug in FileSystemCache where entries would not be
+    removed when the total was over the threshold, and the entry
+    count would be lost.
+  * FileSystemCache logs system-related exceptions.
+  * Removal of expired entries in FileSystemCache is only triggered
+    if the number of entries is over the threshhold when calling set.
+    get has still return None and False respectively for expired
+    entries, but will not remove the files. All removals happen at
+    pruning time or explicitly with clear and delete.
+- from v0.2.0
+  * Support for Python 2 has been dropped.
+  * Only Python 3.6 and above are supported.
+  * Fix FileSystemCache.set incorrectly considering value overrides
+    on existing keys as new cache entries.
+  * SimpleCache and FileSystemCache first remove expired entries,
+    followed by older entries, when cleaning up.
+  * Fix problem where file count was not being updated in 
+    FileSystemCache.get and FileSystemCache.has after removals.
+  * When attempting to access non-existent entries with Memcached,
+    these will now be initialized with a given value delta.
+- from v0.1.1
+  * Fix FileSystemCache on Windows.
+
+-------------------------------------------------------------------
 Fri Dec  6 20:50:56 UTC 2019 - Erico Mendonca <erico.mendonca@suse.com>
 
 - Initial version.

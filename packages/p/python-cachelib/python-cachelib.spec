@@ -1,7 +1,7 @@
 #
 # spec file for package python-cachelib
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,28 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cachelib
-Version:        0.1
+Version:        0.9.0
 Release:        0
 Summary:        A collection of cache libraries in the same API interface
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/pallets/cachelib
+URL:            https://github.com/pallets-eco/cachelib
 Source:         https://files.pythonhosted.org/packages/source/c/cachelib/cachelib-%{version}.tar.gz
+BuildRequires:  %{python_module pylibmc}
+BuildRequires:  %{python_module pytest-xprocess}
+BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  memcached
 BuildRequires:  python-rpm-macros
+BuildRequires:  redis
+Recommends:     python-pylibmc
+Recommends:     python-redis
 BuildArch:      noarch
 %python_subpackages
 
 %description
-A collection of cache libraries in the same API interface. Extracted from
-werkzeug.
+A collection of cache libraries in the same API interface.
 
 %prep
 %setup -q -n cachelib-%{version}
@@ -45,9 +51,15 @@ werkzeug.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+# Allow finding memcached
+export PATH="%{_sbindir}/:$PATH"
+%{_sbindir}/redis-server &
+%pytest -rs
+
 %files %{python_files}
-%license LICENSE
+%license LICENSE.rst
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/*cachelib*/
 
 %changelog
