@@ -1,7 +1,7 @@
 #
-# spec file for package lua-penlight
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define flavor @BUILD_FLAVOR@%{nil}
 %define mod_name penlight
 %define rname Penlight
@@ -28,14 +29,13 @@ ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-%{mod_name}
 %endif
-Version:        1.10.0
+Version:        1.13.1
 Release:        0
 Summary:        Generally useful modules inspired by the Python standard libraries
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://lunarmodules.github.io/Penlight/
 Source0:        https://github.com/lunarmodules/Penlight/archive/%{version}/%{rname}-%{version}.tar.gz
-Patch0:         lua5_4_3.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-ldoc
 BuildRequires:  %{flavor}-luafilesystem

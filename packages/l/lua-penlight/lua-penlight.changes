@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 20 18:37:57 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to version 1.13.1:
+  * fix tests on Lua 5.4.3
+  * fix(stringx) strip using wrong index if # > 200
+  * fix(path) currentdir does not accept parameters
+  * etc. https://github.com/lunarmodules/Penlight/compare/1.10.0...1.13.1
+- Removed lua5_4_3.patch: upstream
+
+-------------------------------------------------------------------
 Wed Apr 21 12:57:58 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 1.10.0:
