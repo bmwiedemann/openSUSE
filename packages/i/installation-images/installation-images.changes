@@ -1,4 +1,28 @@
 --------------------------------------------------------------------
+Mon Aug 22 12:26:50 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#612
+- shadow & /usr/lib/pam.d: fix also initrd
+- xdm Keyboard.map no longer exists
+- wireless-tools: /etc moved to /usr/lib
+- samba-client-libs: there is no libwinbind-client-samba4
+- 17.63
+
+--------------------------------------------------------------------
+Mon Aug 22 11:17:49 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#611
+- require glibc-locale explicitly
+- 17.62
+
+--------------------------------------------------------------------
+Mon Aug 22 10:53:43 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#610
+- Allow shadow to put pam files to /usr/lib/pam.d
+- 17.61
+
+--------------------------------------------------------------------
 Mon Aug 15 14:16:03 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#608

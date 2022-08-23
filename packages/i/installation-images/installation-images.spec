@@ -355,6 +355,7 @@ BuildRequires:  gamin-server
 BuildRequires:  gdb
 BuildRequires:  gettext-runtime-mini
 BuildRequires:  glibc-i18ndata
+BuildRequires:  glibc-locale
 BuildRequires:  gpart
 BuildRequires:  gpg2
 BuildRequires:  gpm
@@ -671,7 +672,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.60
+Version:        17.63
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
