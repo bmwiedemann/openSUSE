@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 16 17:42:49 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapt to new types of mount by in libstorage-ng. Skipped by now
+  as there is no request to support it. (bsc#1202225)
+- 4.5.8
+
+-------------------------------------------------------------------
 Tue May 31 13:04:11 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Partitioner: Allow min chunk size of 4 KiB (page size) for RAID0 /
