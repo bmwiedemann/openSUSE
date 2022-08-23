@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug  2 09:47:47 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix an error opening "User Logon" after removing pam_ldap
+- Drop a desktop file to remove the "LDAP and Kerberos" menu entry
+  after removing pam_ldap
+- 4.5.3
+
+-------------------------------------------------------------------
+Mon Aug  1 15:50:38 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Allow to define the dnsHostName attribute when joining to AD;
+  (bsc#1200964);
+- 4.5.2
+
+-------------------------------------------------------------------
 Wed Jul 27 00:50:39 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Remove nss_ldap and pam_ldap support in favour of SSSD
