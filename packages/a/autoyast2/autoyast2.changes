@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 22 11:31:20 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Revert the modification done in version 4.3.97 running the
+  initscripts before systed-user-sessions service again once
+  systemd fixed logind (bsc#1195059, bsc#1200780)
+- 4.5.3
+
+-------------------------------------------------------------------
 Mon Jul 11 15:54:15 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Run the registration step early only on the Online installation
