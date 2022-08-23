@@ -1,7 +1,7 @@
 #
-# spec file for package lua-luarocks
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,7 @@ ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-%{mod_name}
 %endif
-Version:        3.8.0
+Version:        3.9.1
 Release:        0
 Summary:        A deployment and management system for Lua modules
 License:        MIT
@@ -44,7 +44,7 @@ Requires:       unzip
 BuildArch:      noarch
 %lua_provides
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description
 LuaRocks allows you to install Lua modules as self-contained packages

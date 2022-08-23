@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 21 03:21:58 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to version 3.9.1:
+  * `builtin` build mode now always respects CC, CFLAGS and LDFLAGS
+  * Check that lua.h version matches the desired Lua version
+  * Check that the version of the Lua C library matches the desired Lua version
+  * Fixed deployment of non-wrapped binaries
+  * Fixed crash when `--lua-version` option is malformed
+  * Fixed help message for `--pin` option
+  * Unix: use native methods and don't always rely on $USER to determine user
+
+-------------------------------------------------------------------
 Sat Dec 18 15:07:53 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 3.8.0:
