@@ -1,4 +1,203 @@
 -------------------------------------------------------------------
+Fri Aug 19 16:03:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.1:
+  * x11_color: Simplify and fix error paths
+  * JPEG loader: Use mmap'ed file access
+  * modules: Eliminate __imlib_TrimLoaderList()
+  * Introduce strsplit()
+  * modules: Cosmetics, mostly
+  * modules: Enable setting multiple loader/filter paths
+  * test: Add test_misc
+  * modules: Fix signdness warning
+  * TIFF loader: Change default save compression type
+  * imlib2_load: Remove unused macro
+  * imlib2_conv: Cosmetic changes
+  * imlib2_conv: Drop obsolete .db stuff, simplify
+  * imlib2_conv: Enable passing attached data to saver
+  * check for some alloc failures
+  * check for alloc failures some more
+  * modules: check for filepath truncation
+  * Remove some deprecation comments
+  * Move API documentation to header file
+  * WEBP saver: Fix return code on success
+  * api.c: Cosmetics
+  * Refactor some image loading functions
+  * Refactor some image saving functions
+  * Image load: Change error code on zero file size
+  * Tweak __imlib_LoadImageData()
+  * Error code rework: Use errnos/new imlib2 error codes internally
+  * Add imlib_load/save_image_with_errno_return() and imlib_strerror()
+  * Switch to imlib_load/save_image_with_errno_return()
+  * Deprecate imlib_load/save_image_with_error_return()
+  * imlib2_load: Tweak verbose output
+  * Rename files with line etc. drawing functions
+  * Use stdint types instead of DATA32 etc.
+  * test_load: Check deferred loading too
+  * imlib2_load: Show load time per load too
+  * image.c: Correct loader probe loop
+  * image.c: Cosmetics (move function)
+  * GZ loader: Fix uncompressor exit code
+  * GIF loader: Use mmap'ed file access
+  * image.c: Loading tweaks
+  * imlib2_view: Verbose and debug message tweaks
+  * Loaders: Some trivial cosmetics
+  * Loaders: Remove unnecessary calls to __imlib_FreeData()
+  * debug: Enable using hex values in IMLIB2_DEBUG
+  * SVG loader: Requires librsvg-2.46
+  * TIFF loader: Use mmap'ed file access
+  * Add jxl loader
+  * test: Add basic jxl test
+  * test_save: Updates
+  * loaders: Ensure that found loader is ok for load/save
+  * image: Fix undesired change of format
+  * Drop deprecation noise from using the old DATA types
+  * Drop deprecation noise from using imlib_load/save_image_with_error_return()
+  * API doc corrections and tweaks for doxygen
+  * Revert a couple of unintended changes
+  * API doc updates
+  * doc: Drop most old doc stuff
+  * doc: New documentation build setup (doxygen)
+  * doc: Assorted documentation intro updates
+  * loaders: Fix typo, fix order
+  * SVG loader: Faster signature check
+  * build: Tweaks
+  * Add J2K (JPEG 2000) loader using openjpeg2 library
+  * test: Add some of JPEG 2000 tests
+  * Add PS/EPS loader using libspectre
+  * debug: Export __imlib_time_us()
+  * JXL loader: Multiframe support
+  * SVG loader: Avoid some warnings in rsvg.h
+  * SVG loader: Fix size when unit is percent
+  * SVG loader: Fix size when unit is percent some more
+  * v1.9.0
+  * PNM, XPM loaders: Fix trouble with non-ascii characters
+  * XPM loader: Reduce signature window size some more
+  * Refactor image flags stuff
+  * Remove some unused image flags and deprecate functions referencing them
+  * JPEG, XBM loaders: Drop pointless clearing of flag
+  * Deal consistently with including Imlib2.h
+  * Merge x11_draw.c/h into x11_pixmap.c/h
+  * x11_rgba.c: Add some missing static qualifiers
+  * x11_color.c: Make most __imlib_AllocColors*() functions static
+  * x11_...: Introduce palette type enum
+  * Loader includes tweaks
+  * Move some loader related function prototypes to loaders.h
+  * common.h: Drop round() macro
+  * debug.c/h: Move __EXPORT__ to .c file
+  * Remove system includes from common.h
+  * Move x_VAL() macros to common.h
+  * Introduce types.h
+  * Remove some unnecessary headers
+  * grad.c: Refactor __imlib_DrawGradient() and __imlib_DrawHsvaGradient()
+  * Only have one CLIP macro
+  * Mostly cosmetic tweaks around clipping checks
+  * test: Command line options tweak
+  * test_grab: Enable testing depths other than 24 and 32
+  * x11_grab.c: Correct 16 and 15 bit depth grabbing
+  * TIFF loader: Remove obsolete comment
+  * ID3 loader: Drop inline and likely stuff
+  * ID3 loader: Disable tags stuff
+  * Introduce __imlib_GetKey()
+  * Merge __imlib_FindBestLoader...() functions
+  * test: Properly include test.h in test SOURCES
+  * test: Exclude from tarball
+  * v1.8.1
+  * imlib2: saving progressive JPEG
+  * XPM Loader: limit signature check to first 4KiB
+  * imlib2: allow compilation without x headers
+  * imlib2_load: fix typo
+  * fix: possible memleak in rgba save on big endian systems
+  * test: Add context test
+  * Drop context image save/restore around __imlib_Load/SaveImage() calls
+  * Make initial context static
+  * Drop context check/init in API functions
+  * Use __func__ instead of open coded function names
+  * Pass parameters to __imlib_LoadImage() by struct
+  * Trivial cleanups
+  * imlib2_view: Cosmetics (if -> switch)
+  * imlib2_view: Add 'r' command to refresh
+  * imlib2_view: Move window background image init to separate function
+  * imlib2_view: Refactor pixmap rendering
+  * imlib2_view: Remove some pointless function calls
+  * imlib2_view: Tweaks around timeout
+  * debug: Add some image caching debug
+  * imlib2_view: Fix caching option
+  * Add support for multiframe (animated) images
+  * Enable caching for multiframe images
+  * imlib2_load: Add support for multiframe images
+  * imlib2_view: Add support for multiframe images
+  * debug: Add DL macro for additional loader debug
+  * WEBP loader: Multiframe support
+  * ICO loader: Multiframe support
+  * GIF loader: Some refactoring, add debug
+  * GIF loader: Multiframe support
+  * ICO loader: Debug tweaks
+  * Indent
+  * debug: Avoid use of uninitialized data
+  * Loader loading: Avoid access to uninitialized load() item
+  * updates: Reduce memory usage
+  * Drop some intermediate type definitions
+  * autofoo/loader cosmetics
+  * configure.ac: Simplify loader setup
+  * Updates for animated image handling
+  * imlib2_view: Fix(?) animated image frame dispose handling
+  * test: Add a couple of ico depth test images
+  * ICO loader: Minor optimization
+  * ICO loader: Mostly cosmetic changes (inline ico_read())
+  * GIF loader: Always set BLEND flag
+  * imlib2_view: Rework display of animated images
+  * Introduce more loader return codes
+  * BZ2, ZLIB loaders: Move duplicated code to separate file
+  * Add lzma loader
+  * imlib2_grab: Print error message if saving fails
+  * imlib2_view: Verbosity twaeks
+  * imlib2_load: Verbosity twaeks
+  * LZMA loader: Fix potential warning
+  * configure.ac: Correct simplification changes
+  * configure.ac: Correct simplification changes some more
+  * XBM loader: Correct load2() result when no header is found
+  * Add svg loader
+  * SVG loader: Avoid problems when loading the module more than once
+  * imlib2_load: Add no-data option
+  * Add dispose-to-previous frame handling
+  * PNG loader: Disable Imlib2-Comment stuff
+  * PNG loader: Rewrite to use callback API
+  * PNG loader: Add multiframe support
+  * test: Check __imlib_FileKey()
+  * Simplify __imlib_FileKey()
+  * Avoid redundant operations when non-existing file has no "key"
+  * Drop change log from before first version tag
+  * test: Move generated image files out of source dir
+  * test: Add makefile to generate test images
+  * PNM loader: Fix P1 when spaces are omitted
+  * PNM loader: Fix "XV thumbnail" (P7 332) loading
+  * test: Add some more PNM type loading tests
+  * image.c: Avoid potential compile error
+  * imlib2_view: Avoid clang error
+  * Drop/adjust a few comments
+  * Move some code as suggested in source
+  * HEIF loader: A couple of cleanups and fixes
+  * loaders.c: Add heif to known loaders
+  * autofoo: Sort loaders
+  * SVG loader: Fix memory leak on error
+  * HEIF loader: Avoid memory leak when module is loaded more than once
+  * Mark obsolete TTF encoding functions as deprecated
+  * test: Add basic heif loader check
+  * Refactoring around font glyph lookup
+  * imlib2.spec.in: Introduce acflags for configuration of rpmbuilds
+  * Add some missing const qualifiers
+  * Fix gcc12 warning in __imlib_ConsumeImage()
+  * Fix gcc12 warning in __imlib_stripwhitespace()
+  * TGA loader: Make function order same as in other loaders
+  * HEIF loader: Header cleanups
+  * Add imlib_version()
+  * test: Merge common stuff
+  * imlib2: added loader for HEIF files (uses libheif), implemented just `load2` for now
+  * ICO loader: Fix compilation on big endian architectures
+- drop bigendian.patch (upstream)
+
+-------------------------------------------------------------------
 Mon May 16 13:33:19 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
 
 - declare counter in for loop for big endian to unsignedint (loader_ico.c)

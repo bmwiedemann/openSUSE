@@ -362,4 +362,12 @@
   bigendian.patch</comment>
     <requestid>978088</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>51913bb46c412a46388784b1bd5ffe67</srcmd5>
+    <version>1.9.1</version>
+    <time>1661257534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998526</requestid>
+  </revision>
 </revisionlist>

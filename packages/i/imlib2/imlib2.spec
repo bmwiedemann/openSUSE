@@ -18,14 +18,14 @@
 
 %define lname	libImlib2-1
 Name:           imlib2
-Version:        1.7.5
+Version:        1.9.1
 Release:        0
 Summary:        Image handling and conversion library
 License:        BSD-3-Clause
 Group:          Development/Libraries/X11
 URL:            https://sourceforge.net/projects/enlightenment/
 Source:         https://downloads.sourceforge.net/project/enlightenment/imlib2-src/%{version}/%{name}-%{version}.tar.xz
-Patch0:         bigendian.patch
+BuildRequires:  doxygen
 BuildRequires:  giflib-devel
 BuildRequires:  libICE-devel
 BuildRequires:  libjpeg-devel
@@ -97,7 +97,6 @@ jpeg, png, pnm, tga, tiff, xpm
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure \
@@ -111,6 +110,7 @@ jpeg, png, pnm, tga, tiff, xpm
 %endif
 	--enable-shared \
 	--enable-visibility-hiding \
+        --enable-doc-build \
 	--disable-static
 %make_build
 
@@ -124,8 +124,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files
 %defattr(-,root,root,0755)
 %license COPYING
-%doc AUTHORS README doc/index.html
-%doc doc/imlib2.gif doc/blank.gif
+%doc AUTHORS README
 %{_bindir}/imlib2_bumpmap
 %{_bindir}/imlib2_colorspace
 %{_bindir}/imlib2_conv
