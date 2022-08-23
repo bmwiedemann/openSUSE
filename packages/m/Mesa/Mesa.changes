@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 22 09:35:53 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 22.1.7:
+  * fixes and cleanups all over the tree 
+  * most of the fixes are for zink
+  * nice batch of fixes for the gallium dx9 frontend
+  * some other fixes across the board
+
+-------------------------------------------------------------------
 Wed Aug 17 16:42:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.1.6:
@@ -7,6 +16,11 @@ Wed Aug 17 16:42:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Revert "pan/bi: Require ATEST coverage mask input in R60"
   * intel/dev: drop warning for unhandled hwconfig keys
   * anv: Use sampleLocationsEnable for sample locations
+
+-------------------------------------------------------------------
+Fri Aug 12 22:06:24 UTC 2022 - Xu Zhao <i@xuzhao.net>
+
+- Enable zink driver build on x86_64
 
 -------------------------------------------------------------------
 Sun Aug  7 18:41:56 UTC 2022 - Dirk Müller <dmueller@suse.com>

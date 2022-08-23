@@ -33,7 +33,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 22.1.6
+%define _version 22.1.7
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -106,7 +106,7 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        22.1.5
+Version:        22.1.7
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -166,6 +166,9 @@ BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(presentproto)
 %if "%{flavor}" == "drivers"
 BuildRequires:  pkgconfig(vdpau) >= 1.1
+%ifarch %{ix86} x86_64
+BuildRequires:  pkgconfig(vulkan)
+%endif
 %endif
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
@@ -824,7 +827,7 @@ egl_platforms=x11,wayland
 %endif
   %ifarch %{ix86} x86_64
             -Ddri-drivers= \
-            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,svga,virgl,iris,crocus,i915,d3d12 \
+            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,svga,virgl,iris,crocus,i915,d3d12,zink \
   %else
   %ifarch %{arm} aarch64
             -Ddri-drivers= \
