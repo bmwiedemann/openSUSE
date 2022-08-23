@@ -87,7 +87,10 @@ sed -i 's/^from \./from cairocffi./' tests/*.py
 
 %check
 cd tests/
-%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" xvfb-run --server-args="-screen 0 1280x1024x16" $python -B -m pytest
+# Don't test with NumPy in the python36 flavor, because python36-numpy is not in TW anymore
+# Switch off test_xcb tests gh#Kozea/cairocffi#203
+python36_ignore="--ignore test_numpy.py --ignore test_xcb.py"
+%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" xvfb-run --server-args="-screen 0 1280x1024x16" $python -m pytest ${$python_ignore}
 
 %files %{python_files}
 %license LICENSE

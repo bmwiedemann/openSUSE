@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 20 21:23:34 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Disable xcb tests (they are just too unstable,
+  gh#Kozea/cairocffi#203).
+
+-------------------------------------------------------------------
 Fri Aug 19 15:40:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Reflect in the specfile that Python 3.6 is no longer supported
