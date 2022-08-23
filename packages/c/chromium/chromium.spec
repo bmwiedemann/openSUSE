@@ -152,11 +152,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
-BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
 BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  util-linux
 BuildRequires:  wdiff
+BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
 BuildRequires:  perl(Switch)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bzip2)

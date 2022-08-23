@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 22 09:53:49 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Fix quoting in chrome-wrapper, don't put cwd on LD_LIBRARY_PATH
+
+-------------------------------------------------------------------
 Thu Aug 18 15:32:26 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 104.0.5112.101 (boo#1202509):
