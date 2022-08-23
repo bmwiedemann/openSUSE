@@ -2309,10 +2309,6 @@ unsorted:
   - coreboot-utils 
   - coredns 
   - coredns-extras 
-  - coredns-for-k8s1.18 
-  - coredns-for-k8s1.18-extras 
-  - coredns-for-k8s1.19 
-  - coredns-for-k8s1.19-extras 
   - coredns-for-k8s1.21 
   - coredns-for-k8s1.21-extras 
   - coredns-for-k8s1.22 
@@ -3106,7 +3102,6 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
-  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -3452,8 +3447,6 @@ unsorted:
   - espeakedit 
   - etc-update 
   - etcd: [x86_64] 
-  - etcd-for-k8s1.18: [x86_64] 
-  - etcd-for-k8s1.19: [x86_64] 
   - etcd-for-k8s1.22: [x86_64] 
   - etcd-for-k8s1.23: [x86_64] 
   - etcd-for-k8s1.24: [x86_64] 
@@ -6132,9 +6125,6 @@ unsorted:
   - go1.19 
   - go1.19-doc 
   - go1.19-race: [x86_64] 
-  - go1.4 
-  - go1.4-doc 
-  - go1.4-race: [x86_64] 
   - go1.9 
   - go1.9-doc 
   - go1.9-race: [x86_64] 
@@ -8558,24 +8548,6 @@ unsorted:
   - kubernetes-proxy-minus1: [x86_64] 
   - kubernetes-scheduler: [x86_64] 
   - kubernetes-scheduler-minus1: [x86_64] 
-  - kubernetes1.18-apiserver: [x86_64] 
-  - kubernetes1.18-client: [x86_64] 
-  - kubernetes1.18-client-common: [x86_64] 
-  - kubernetes1.18-controller-manager: [x86_64] 
-  - kubernetes1.18-kubeadm: [x86_64] 
-  - kubernetes1.18-kubelet: [x86_64] 
-  - kubernetes1.18-kubelet-common: [x86_64] 
-  - kubernetes1.18-proxy: [x86_64] 
-  - kubernetes1.18-scheduler: [x86_64] 
-  - kubernetes1.19-apiserver: [x86_64] 
-  - kubernetes1.19-client: [x86_64] 
-  - kubernetes1.19-client-common: [x86_64] 
-  - kubernetes1.19-controller-manager: [x86_64] 
-  - kubernetes1.19-kubeadm: [x86_64] 
-  - kubernetes1.19-kubelet: [x86_64] 
-  - kubernetes1.19-kubelet-common: [x86_64] 
-  - kubernetes1.19-proxy: [x86_64] 
-  - kubernetes1.19-scheduler: [x86_64] 
   - kubernetes1.20-apiserver: [x86_64] 
   - kubernetes1.20-client: [x86_64] 
   - kubernetes1.20-client-common: [x86_64] 
@@ -9505,10 +9477,6 @@ unsorted:
   - libSvtAv1Dec0: [x86_64] 
   - libTMCG-devel 
   - libTMCG18 
-  - libTutf-devel 
-  - libTutf1 
-  - libTw-devel 
-  - libTw5 
   - libUTF0_3 
   - libUil4 
   - libUil4-32bit: [x86_64] 
@@ -14081,7 +14049,7 @@ unsorted:
   - libspooles2_2-openmpi2 
   - libspqr2 
   - libspread-sheet-widget0 
-  - libsqlcipher-3_37_2-0 
+  - libsqlcipher-3_39_2-0 
   - libsqlite3-0-32bit: [x86_64] 
   - libsqlparser1 
   - libsratom-0-0-32bit: [x86_64] 
@@ -14440,6 +14408,7 @@ unsorted:
   - libtss2-tcti-tabrmd0: [i586] 
   - libtss2-tctildr0: [i586] 
   - libtss2-tctildr0-32bit: [x86_64] 
+  - libtstl1 
   - libttf2 
   - libttf2-32bit: [x86_64] 
   - libttsmimic0 
@@ -14450,7 +14419,11 @@ unsorted:
   - libturbojpeg0-32bit: [x86_64] 
   - libturris-spectator-devel 
   - libturris-spectator0 
+  - libtutf-devel 
+  - libtutf1 
   - libtvm: [x86_64] 
+  - libtw-devel 
+  - libtw1 
   - libtwolame-devel 
   - libtwolame0-32bit: [x86_64] 
   - libubsan0 
@@ -15488,6 +15461,7 @@ unsorted:
   - lua51-argparse 
   - lua51-bit32 
   - lua51-busted 
+  - lua51-cassowary 
   - lua51-cjson 
   - lua51-cliargs 
   - lua51-compat-5.3 
@@ -15540,6 +15514,7 @@ unsorted:
   - lua53-alt-getopt 
   - lua53-argparse 
   - lua53-busted 
+  - lua53-cassowary 
   - lua53-cjson 
   - lua53-cliargs 
   - lua53-compat-5.3 
@@ -15594,6 +15569,7 @@ unsorted:
   - lua54-argparse 
   - lua54-bit32 
   - lua54-busted 
+  - lua54-cassowary 
   - lua54-cjson 
   - lua54-cliargs 
   - lua54-compat-5.3 
@@ -23334,6 +23310,7 @@ unsorted:
   - python310-jaraco.path 
   - python310-jaraco.stream 
   - python310-jaraco.text 
+  - python310-jaraco.tidelift 
   - python310-javapackages 
   - python310-javaproperties 
   - python310-jdatetime 
@@ -26531,6 +26508,7 @@ unsorted:
   - python38-jaraco.path 
   - python38-jaraco.stream 
   - python38-jaraco.text 
+  - python38-jaraco.tidelift 
   - python38-javapackages 
   - python38-javaproperties 
   - python38-jdatetime 
@@ -29844,6 +29822,7 @@ unsorted:
   - python39-jaraco.path 
   - python39-jaraco.stream 
   - python39-jaraco.text 
+  - python39-jaraco.tidelift 
   - python39-javapackages 
   - python39-javaproperties 
   - python39-jdatetime 
@@ -33566,9 +33545,6 @@ unsorted:
   - synergy 
   - syntax-highlighting-devel 
   - sysbench 
-  - sysdig 
-  - sysdig-kmp-default 
-  - sysdig-kmp-pae: [i586] 
   - sysfsutils 
   - sysfsutils-devel 
   - sysinfo 
