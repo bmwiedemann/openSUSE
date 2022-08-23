@@ -18,12 +18,12 @@
 
 %define         libname libyaz5
 Name:           yaz
-Version:        5.31.1
+Version:        5.32.0
 Release:        0
 Summary:        Z39.50 protocol server and client
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://www.indexdata.dk/yaz/
+URL:            https://www.indexdata.com/resources/software/yaz/
 Source:         http://ftp.indexdata.dk/pub/yaz/yaz-%{version}.tar.gz
 BuildRequires:  gnutls-devel
 BuildRequires:  libicu-devel
