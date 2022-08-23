@@ -1,4 +1,66 @@
 --------------------------------------------------------------------
+Fri Aug 12 07:39:57 UTC 2022 - bittin@opensuse.org
+
+- Translated using Weblate (Swedish) (bsc#1149754)
+- 4.5.42
+
+--------------------------------------------------------------------
+Mon Aug 8 11:50:15 UTC 2022 - aschnell@suse.com
+
+- Translated using Weblate (Portuguese (Brazil)) (bsc#1149754)
+- 4.5.41
+
+--------------------------------------------------------------------
+Mon Aug 8 08:52:47 UTC 2022 - aschnell@suse.com
+
+- Translated using Weblate (Catalan) (bsc#1149754)
+- 4.5.40
+
+--------------------------------------------------------------------
+Fri Aug 5 20:59:54 UTC 2022 - freek@opensuse.org
+
+- Translated using Weblate (Dutch) (bsc#1149754)
+- 4.5.39
+
+--------------------------------------------------------------------
+Fri Aug 5 15:19:53 UTC 2022 - aschnell@suse.com
+
+- Translated using Weblate (Slovak) (bsc#1149754)
+- 4.5.38
+
+--------------------------------------------------------------------
+Fri Aug 5 14:50:07 UTC 2022 - aschnell@suse.com
+
+- Translated using Weblate (Catalan) (bsc#1149754)
+
+--------------------------------------------------------------------
+Fri Aug 5 10:24:42 UTC 2022 - aschnell@suse.com
+
+- Translated using Weblate (Japanese) (bsc#1149754)
+- 4.5.37
+
+--------------------------------------------------------------------
+Fri Aug 5 06:57:34 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#895
+- updated pot and po files
+- 4.5.36
+
+--------------------------------------------------------------------
+Mon Aug 1 15:15:16 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#894
+- do not allow to add already used lvm physical volume to volume group
+- 4.5.35
+
+--------------------------------------------------------------------
+Mon Aug 1 09:06:22 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#893
+- support mounting by partition uuid and label
+- 4.5.34
+
+--------------------------------------------------------------------
 Fri Jul 29 07:16:59 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#892
