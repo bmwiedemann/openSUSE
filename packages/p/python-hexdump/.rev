@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>726113</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c5402b6ec3da33496841e7da1d1d55c9</srcmd5>
+    <version>3.3</version>
+    <time>1661257795</time>
+    <user>dimstar_suse</user>
+    <comment>- Install the data file into the expected directories.</comment>
+    <requestid>998752</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-hexdump
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,10 @@ cp %{SOURCE1} .
 
 %install
 %python_install
+# Copy the data directory ourselves to the correct location
+%python_expand cp -av data %{buildroot}%{$python_sitelib}
+# and remove the other
+rm -rf %{buildroot}/usr/data
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
