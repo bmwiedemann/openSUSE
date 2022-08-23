@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 22 19:23:29 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1661179045.6cedcbd:
+  * generate-documentation: pin publix_suffic to 4.0.7
+  * Add support for pagure.io and gitlab.gnome.org trackers
+  * Don't try and log without importing the log function
+  * Add a check to detect when maintenance update has already been released
+
+-------------------------------------------------------------------
 Sat Aug 20 11:23:33 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1660819425.c8126a5:
