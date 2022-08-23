@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 22 19:44:28 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1661179507.eb3f483:
+  * Mark certain statements in baseclass as uncoverable
+  * Test `wait_serial` when it is a serial terminal
+  * Test bouncer functions of baseclass
+  * Test console functions of baseclass
+  * Test enqueuing data for external video encoder
+  * Avoid division by zero when making stopwatch-summary
+  * Remove "alive" check from isotovideo/backend
+  * Test starting external video encoder
+  * Test `do_capture` via `run_capture_loop` to cover its code as well
+
+-------------------------------------------------------------------
 Sat Aug 20 11:40:55 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1660819728.515dc27:
