@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 22 11:35:42 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- AutoYaST SecondStage: Revert changes introduced in 4.3.46 running
+  the initscript service before systemd-user-sessions again once
+  systemd patched logind (bsc#1195059, bsc#1200780)
+- 4.5.5
+
+-------------------------------------------------------------------
 Mon Jul 18 16:05:26 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Do not use "xrdb" for setting the "Xft.dpi" value, use a specific

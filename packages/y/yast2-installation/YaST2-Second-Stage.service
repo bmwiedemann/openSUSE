@@ -1,8 +1,6 @@
 [Unit]
 Description=YaST2 Second Stage
 After=apparmor.service local-fs.target plymouth-start.service
-# systemd-user-sessions is needed to allow ssh connection (bsc#1195059)
-After=systemd-user-sessions.service
 # Run after kernels are purged to prevent a zypper lock (bsc#1196431)
 After=purge-kernels.service
 Conflicts=plymouth-start.service
@@ -24,7 +22,6 @@ Type=oneshot
 # used correctly (see bnc#866692 and bnc#866692 for details).
 Environment=TERM=linux PX_MODULE_PATH=""
 # Block non-privileged user login (bsc#1195059)
-ExecStartPre=-/usr/bin/touch /run/nologin
 ExecStartPre=-/usr/bin/plymouth quit
 ExecStart=/usr/lib/YaST2/startup/YaST2.Second-Stage
 RemainAfterExit=yes
@@ -32,7 +29,6 @@ TimeoutSec=0
 # Initialize tty1 in order to remove old YaST output and to show the cursor
 # again (bnc#1018037)
 ExecStartPost=/bin/sh -c '/usr/bin/printf "\033c" > /dev/tty1'
-ExecStartPost=/usr/bin/rm -f /run/nologin
 ExecStartPost=/usr/bin/rm -f /var/lib/YaST2/runme_at_boot
 ExecStartPost=/usr/bin/systemctl restart systemd-vconsole-setup.service
 StandardInput=tty
