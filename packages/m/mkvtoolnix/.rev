@@ -1308,4 +1308,13 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>995032</requestid>
   </revision>
+  <revision rev="149" vrev="2">
+    <srcmd5>f7ed15c788f0d313c3d8331936d525ac</srcmd5>
+    <version>70.0.0</version>
+    <time>1661257796</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to Qt6 build for Tumbleweed (fixes boo#1202446)
+</comment>
+    <requestid>998770</requestid>
+  </revision>
 </revisionlist>

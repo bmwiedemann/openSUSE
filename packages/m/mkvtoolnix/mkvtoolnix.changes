@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 17 15:24:53 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Switch to Qt6 build for Tumbleweed (fixes boo#1202446)
+
+-------------------------------------------------------------------
 Sun Aug 14 11:08:52 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 70.0.0

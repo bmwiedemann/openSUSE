@@ -49,6 +49,16 @@ BuildRequires:  pugixml-devel
 BuildRequires:  ruby >= 1.9
 BuildRequires:  shared-mime-info
 BuildRequires:  utfcpp-devel
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Multimedia)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6Widgets)
+%else
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Core) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5DBus) >= 5.9.0
@@ -56,7 +66,7 @@ BuildRequires:  pkgconfig(Qt5Gui) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Network) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Svg) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9.0
+%endif
 BuildRequires:  pkgconfig(dvdread)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(fmt) >= 6.1.0
