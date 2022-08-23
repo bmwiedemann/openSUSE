@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 22 14:19:58 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- ppc64le: added some new math libraries (bsc#1202594)
+
+-------------------------------------------------------------------
 Wed Aug 17 21:05:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.80.0:

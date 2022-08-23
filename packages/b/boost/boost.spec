@@ -1824,7 +1824,7 @@ EOF
 %{package_libdir}/libboost_math_c99.so.%{version}
 %{package_libdir}/libboost_math_tr1f.so.%{version}
 %{package_libdir}/libboost_math_tr1.so.%{version}
-%ifnarch ppc ppc64 ppc64le
+%ifnarch ppc ppc64
 %{package_libdir}/libboost_math_c99l.so.%{version}
 %{package_libdir}/libboost_math_tr1l.so.%{version}
 %endif
@@ -1838,7 +1838,7 @@ EOF
 %{package_libdir}/libboost_math_c99.so
 %{package_libdir}/libboost_math_tr1f.so
 %{package_libdir}/libboost_math_tr1.so
-%ifnarch ppc ppc64 ppc64le
+%ifnarch ppc ppc64
 %{package_libdir}/libboost_math_c99l.so
 %{package_libdir}/libboost_math_tr1l.so
 %endif

@@ -1460,4 +1460,12 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
   boost-mp-locale-fix.patch: upstream</comment>
     <requestid>997616</requestid>
   </revision>
+  <revision rev="158" vrev="2">
+    <srcmd5>3299c9386a61e83711714d4411f06aa0</srcmd5>
+    <version>1.80.0</version>
+    <time>1661257542</time>
+    <user>dimstar_suse</user>
+    <comment>- ppc64le: added some new math libraries (bsc#1202594)</comment>
+    <requestid>998667</requestid>
+  </revision>
 </revisionlist>
