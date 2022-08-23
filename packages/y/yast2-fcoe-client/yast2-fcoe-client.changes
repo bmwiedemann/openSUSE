@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 21 10:07:04 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Use yast2-network to write the sysconfig files in order to be
+  aware of the new connections added during the installation
+  (bsc#1199554).
+- 4.5.1
+
+-------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.5.0 (bsc#1198109)
