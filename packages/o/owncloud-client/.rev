@@ -317,4 +317,15 @@
     <comment></comment>
     <requestid>978284</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d8bbf4c56a2dce0a97965de97528a344</srcmd5>
+    <version>2.11.0</version>
+    <time>1661257781</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new verion 2.11.0 with a bunch of bugfixes and 
+  improvements.
+- Removed patch fix-gcc12-build.patch which went upstream. 
+</comment>
+    <requestid>998710</requestid>
+  </revision>
 </revisionlist>

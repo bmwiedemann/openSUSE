@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 22 14:23:31 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to new verion 2.11.0 with a bunch of bugfixes and 
+  improvements.
+- Removed patch fix-gcc12-build.patch which went upstream. 
+
+-------------------------------------------------------------------
 Fri May 20 14:06:42 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
 
 - Add upstream patch fix-gcc12-build.patch to fix build with gcc12 
