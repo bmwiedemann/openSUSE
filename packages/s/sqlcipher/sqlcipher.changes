@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 17 19:43:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.2:
+  * Updates source code baseline to upstream SQLite 3.39.2
+  * Simplifies OpenSSL version conditional code
+  * Fixes issue where PRAGMA cipher_memory_security could report OFF when it was actually ON
+  * Fixes fix unfreed OpenSSL allocation when compiled against version 3
+  * Fixes support for building against recent versions of BoringSSL
+ 
+-------------------------------------------------------------------
 Thu Mar 24 07:48:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5.1:
