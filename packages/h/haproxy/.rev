@@ -1216,4 +1216,15 @@
     <comment>- Update to version 2.6.3+git0.76f187b36:</comment>
     <requestid>998214</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>a5cf8dd1ef0585e22e34373856a60177</srcmd5>
+    <version>2.6.4+git0.2a2078cba</version>
+    <time>1661257541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.4+git0.2a2078cba:
+  * [RELEASE] Released version 2.6.4
+  * BUG/MAJOR: mworker: fix infinite loop on master with no proxies.
+  * BUG/MINOR: ssl/cli: error when the ca-file is empty</comment>
+    <requestid>998660</requestid>
+  </revision>
 </revisionlist>
