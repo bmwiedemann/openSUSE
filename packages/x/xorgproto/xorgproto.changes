@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Aug 21 11:15:11 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Use xz tarball instead of gz, save a few bytes in size.
+
+-------------------------------------------------------------------
+Fri Aug 12 21:10:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add gpg validation of sources
+
+-------------------------------------------------------------------
+Thu Aug 11 10:16:02 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- xorgproto 2022.2
+  * DRI3: Add DRI3SetDRMDeviceInUse
+  * Add the XWAYLAND extension
+  * Build xz tarballs instead of bzip2
+
+-------------------------------------------------------------------
 Thu Apr 21 02:20:44 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - xorgproto 2022.1

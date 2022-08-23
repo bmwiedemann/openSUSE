@@ -17,7 +17,7 @@
 
 
 Name:           xorgproto
-Version:        2022.1
+Version:        2022.2
 Release:        0
 Summary:        The X11 Protocol collection
 License:        MIT
@@ -25,7 +25,9 @@ Group:          Development/Libraries/X11
 URL:            https://xorg.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xorg/proto/xorgproto
 #Git-Web:	http://cgit.freedesktop.org/xorg/proto/xorgproto/
-Source:         https://xorg.freedesktop.org/releases/individual/proto/%{name}-%{version}.tar.bz2
+Source0:        https://xorg.freedesktop.org/releases/individual/proto/%{name}-%{version}.tar.xz
+Source1:        https://xorg.freedesktop.org/releases/individual/proto/%{name}-%{version}.tar.xz.sig
+Source2:        xorgproto.keyring
 BuildRequires:  pkgconfig
 
 %description
@@ -76,7 +78,7 @@ Obsoletes:      xproto-devel <= 7.0.32
 Obsoletes:      xproxymngproto-devel <= 1.0.3
 
 %description devel
-The compelte X11 protocol headers for X11 development.
+The complete X11 protocol headers for X11 development.
 This package contains all previously split protocol packages:
 applewmproto, bigreqsproto, compositeproto, damageproto, dmxproto, dri2proto,
 dri3proto, fixesproto, fontsproto, glproto, inputproto, kbproto, presentproto,

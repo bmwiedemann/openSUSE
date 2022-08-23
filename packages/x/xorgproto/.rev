@@ -155,4 +155,12 @@ yesterday's tarball.</comment>
     new keysyms provided by the Linux kernel.</comment>
     <requestid>971274</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dffbef7eb96f30b4b21b9acf8de923be</srcmd5>
+    <version>2022.2</version>
+    <time>1661257561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998573</requestid>
+  </revision>
 </revisionlist>
