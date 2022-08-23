@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 18 08:07:00 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- Add properly glibc-locale as build dependency to test locale
+  dependent methods (related to change for bsc#1154405)
+- 4.5.2
+
+-------------------------------------------------------------------
 Tue May 24 08:37:42 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Added experimental infrastructure for managing system in
