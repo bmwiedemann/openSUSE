@@ -1,7 +1,7 @@
 #
 # spec file for package leechcraft
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,8 +52,7 @@ Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
-URL:            http://leechcraft.org
-
+URL:            https://leechcraft.org
 Source0:        https://dist.leechcraft.org/LeechCraft/0.6.75/leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
 Source4:        %{name}-rpmlintrc
 Source8:        leechcraft-session.1
@@ -120,6 +119,7 @@ BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavresample)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libchromaprint)
 %endif
@@ -1906,7 +1906,7 @@ support ( http://www.audioscrobbler.net/development/protocol )
 for sites other than last.fm (libre.fm for now). It can
 potentially handle arbitrary scrobbling URLs implementing the
 submissions protocol, but it is not exposed in the GUI (yet).
- 
+
 Scroblibre is a supplement for the LastFMScrobble module, and the
 latter is still the recommended one because of all the social
 features it offers which Scroblibre lacks.
@@ -2258,7 +2258,7 @@ XmlSettingsDialog LeechCraft subsystem.
 %setup -q -n leechcraft-%{LEECHCRAFT_VERSION}
 
 #removing non-free icons
-rm -rf src/plugins/azoth/share/azoth/iconsets/clients/default
+rm -r src/plugins/azoth/share/azoth/iconsets/clients/default
 
 #removing hidden files
 find src/plugins/azoth/plugins/adiumstyles/share/azoth/styles/adium/ -name ".?*" -delete
@@ -2526,17 +2526,16 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %postun -n libleechcraft-util-xsd%{xsd_postfix} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc CHANGELOG README.md
 %license LICENSE
 %{_bindir}/%{name}-qt5
-%{_mandir}/man1/%{name}-qt5.1.*
+%{_mandir}/man1/%{name}-qt5.1%{?ext_man}
 %{_bindir}/%{name}-add-file
-%{_mandir}/man1/%{name}-add-file.1.*
+%{_mandir}/man1/%{name}-add-file.1%{?ext_man}
 %{_bindir}/%{name}-handle-file
-%{_mandir}/man1/%{name}-handle-file.1.*
+%{_mandir}/man1/%{name}-handle-file.1%{?ext_man}
 %{_bindir}/lc_plugin_wrapper-qt5
-%{_mandir}/man1/lc_plugin_wrapper-qt5.1.*
+%{_mandir}/man1/lc_plugin_wrapper-qt5.1%{?ext_man}
 %{settings_dir}/coresettings.xml
 %{_datadir}/applications/%{name}-qt5.desktop
 %{_datadir}/icons/hicolor/*/*/*
@@ -2561,7 +2560,6 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{qml_dir}/common/
 
 %files advancednotifications
-%defattr(-,root,root)
 %{plugin_dir}/*craft_advancednotifications.so
 %{translations_dir}/*craft_advancednotifications*
 %{settings_dir}/advancednotificationssettings.xml
@@ -2569,7 +2567,6 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{_datadir}/leechcraft/sounds
 
 %files aggregator
-%defattr(-,root,root)
 %{settings_dir}/aggregatorsettings.xml
 %{translations_dir}/*craft_aggregator_??.qm
 %{translations_dir}/*craft_aggregator_??_??.qm
@@ -2578,32 +2575,27 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 
 %if %{with QtWebKit}
 %files aggregator-bodyfetch
-%defattr(-,root,root)
 %{plugin_dir}/*craft_aggregator_bodyfetch.so
 %{_datadir}/leechcraft/scripts/aggregator
 %endif
 
 %files aggregator-webaccess
-%defattr(-,root,root)
 %{plugin_dir}/*craft_aggregator_webaccess.so
 %{settings_dir}/aggregatorwebaccesssettings.xml
 %{translations_dir}/*craft_aggregator_webaccess*.qm
 
 %files anhero
-%defattr(-,root,root)
 %{_bindir}/lc_anhero_crashprocess*
 %{plugin_dir}/*craft_anhero.so
 %{translations_dir}/*craft_anhero*
-%doc %{_mandir}/man*/lc_anhero_crashprocess*
+%{_mandir}/man*/lc_anhero_crashprocess*
 
 %files auscrie
-%defattr(-,root,root)
 %{translations_dir}/*craft_auscrie_*.qm
 %{plugin_dir}/lib%{name}_auscrie.so
 
 %ifnarch ppc ppc64 ppc64le s390 s390x
 %files azoth
-%defattr(-,root,root)
 %dir %{_datadir}/leechcraft/azoth
 %dir %{_datadir}/leechcraft/azoth/styles
 %{_datadir}/leechcraft/azoth/emoticons
@@ -2614,13 +2606,11 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/*craft_azoth.so
 
 %files azoth-abbrev
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_abbrev.so
 %{translations_dir}/*craft_azoth_abbrev_??.qm
 %{translations_dir}/*craft_azoth_abbrev_??_??.qm
 
 %files azoth-acetamide
-%defattr(-,root,root)
 %{settings_dir}/azothacetamidesettings.xml
 %{translations_dir}/*craft_azoth_acetamide*
 %{plugin_dir}/*craft_azoth_acetamide.so
@@ -2633,157 +2623,130 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_azoth_adiumstyles_*.qm
 
 %files azoth-autoidler
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_autoidler*
 %{settings_dir}/azothautoidlersettings.xml
 %{translations_dir}/*craft_azoth_autoidler*
 
 %files azoth-autopaste
-%defattr(-,root,root)
 %{settings_dir}/azothautopastesettings.xml
 %{translations_dir}/*craft_azoth_autopaste*
 %{plugin_dir}/*craft_azoth_autopaste.so
 
 %files azoth-birthdaynotifier
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_birthdaynotifier.so
 %{settings_dir}/azothbirthdaynotifiersettings.xml
 %{translations_dir}/*craft_azoth_birthdaynotifier*
 
 %files azoth-chathistory
-%defattr(-,root,root)
 %{translations_dir}/*craft_azoth_chathistory*
 %{plugin_dir}/*craft_azoth_chathistory.so
 %{settings_dir}/azothchathistorysettings.xml
 
 %files azoth-depester
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_depester.so
 %{translations_dir}/*craft_azoth_depester*
 
 %files azoth-embedmedia
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_embedmedia.so
 %{_datadir}/leechcraft/azoth/embedmedia
 
 %files azoth-herbicide
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_herbicide.so
 %{translations_dir}/*craft_azoth_herbicide*
 %{settings_dir}/azothherbicidesettings.xml
 
 %files azoth-hili
-%defattr(-,root,root)
 %{settings_dir}/azothhilisettings.xml
 %{translations_dir}/*craft_azoth_hili*
 %{plugin_dir}/*craft_azoth_hili.so
 
 %files azoth-isterique
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_isterique*
 %{settings_dir}/azothisteriquesettings.xml
 %{translations_dir}/*craft_azoth_isterique*
 
 %files azoth-juick
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_juick.so
 %{translations_dir}/*craft_azoth_juick_*.qm
 
 %files azoth-keeso
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_keeso.so
 
 %files azoth-lastseen
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_lastseen*
 %{translations_dir}/*craft_azoth_lastseen*
 
 %files azoth-metacontacts
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_metacontacts*
 %{translations_dir}/*craft_azoth_metacontacts*
 
 %files azoth-modnok
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_modnok*
 %{settings_dir}/azothmodnoksettings.xml
 %{translations_dir}/*craft_azoth_modnok*
 %{_datadir}/leechcraft/azoth/lc_azoth_modnok_latexconvert.sh
 
 %files azoth-mucommands
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_mucommands.so
 %{translations_dir}/*craft_azoth_mucommands_??.qm
 %{translations_dir}/*craft_azoth_mucommands_??_??.qm
 
 %files azoth-murm
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_murm.so
 %{translations_dir}/*craft_azoth_murm*.qm
 %{settings_dir}/azothmurmsettings.xml
 %{_datadir}/leechcraft/azoth/murm
 
 %files azoth-nativeemoticons
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_nativeemoticons.so
 %{translations_dir}/*craft_azoth_nativeemoticons_*.qm
 
 %files azoth-otroid
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_otroid.so
 %{translations_dir}/*craft_azoth_otroid*.qm
 %{settings_dir}/azothotroidsettings.xml
 
 %files azoth-rosenthal
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_rosenthal.so
 %{translations_dir}/*craft_azoth_rosenthal*
 
 %files azoth-shx
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_shx.so
 %{settings_dir}/azothshxsettings.xml
 %{translations_dir}/*craft_azoth_shx_*.qm
 
 %files azoth-standardstyles
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_standardstyles.so
 %{_datadir}/leechcraft/azoth/styles/standard/
 %{translations_dir}/*craft_azoth_standardstyles_*.qm
 
 %files azoth-vader
-%defattr(-,root,root)
 %{translations_dir}/*craft_azoth_vader*
 %{settings_dir}/azothvadersettings.xml
 %{plugin_dir}/*craft_azoth_vader.so
 
 %files azoth-velvetbird
-%defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_velvetbird.so
 
 %files azoth-xoox
-%defattr(-,root,root)
 %{translations_dir}/*craft_azoth_xoox*
 %{plugin_dir}/*craft_azoth_xoox.so
 %{_datadir}/applications/%{name}-azoth-xoox-qt5.desktop
 %{settings_dir}/azothxooxsettings.xml
 
 %files azoth-xtazy
-%defattr(-,root,root)
 %{settings_dir}/azothxtazysettings.xml
 %{plugin_dir}/*craft_azoth_xtazy.so
 %{translations_dir}/*craft_azoth_xtazy*
 %endif
 
 %files bittorrent
-%defattr(-,root,root)
 %{settings_dir}/torrentsettings.xml
 %{translations_dir}/*craft_bittorrent_*.qm
 %{plugin_dir}/*craft_bittorrent.so
 %{_datadir}/applications/%{name}-bittorrent-qt5.desktop
 
 %files blasq
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_blasq.so
 %{settings_dir}/blasqsettings.xml
 %{qml_dir}/blasq
@@ -2791,23 +2754,19 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_blasq_??_??.qm
 
 %files blasq-deathnote
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_blasq_deathnote.so
 %{translations_dir}/*craft_blasq_deathnote*.qm
 
 %files blasq-rappor
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_blasq_rappor.so
 %{translations_dir}/*craft_blasq_rappor*.qm
 
 %files blasq-vangog
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_blasq_vangog.so
 %{translations_dir}/*craft_blasq_vangog*.qm
 
 %if %{with QtWebKit}
 %files blogique
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_blogique.so
 %{translations_dir}/*craft_blogique_??.qm
 %{translations_dir}/*craft_blogique_??_??.qm
@@ -2816,49 +2775,41 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{qml_dir}/blogique/*.js
 
 %files blogique-hestia
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_blogique_hestia.so
 %{settings_dir}/blogiquehestiasettings.xml
 %{translations_dir}/*craft_blogique_hestia*.qm
 
 %files blogique-metida
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_blogique_metida.so
 %{settings_dir}/blogiquemetidasettings.xml
 %{translations_dir}/*craft_blogique_metida*.qm
 %endif
 
 %files certmgr
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_certmgr.so
 %{settings_dir}/certmgrsettings.xml
 %{translations_dir}/*craft_certmgr*.qm
 
 %files cpuload
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_cpuload.so
 %{qml_dir}/cpuload
 %{translations_dir}/*craft_cpuload*.qm
 
 %files cstp
-%defattr(-,root,root)
 %{settings_dir}/cstpsettings.xml
 %{translations_dir}/*craft_cstp*.qm
 %{plugin_dir}/*leechcraft_cstp.so
 %{_datadir}/leechcraft/cstp
 
 %files dbusmanager
-%defattr(-,root,root)
 %{translations_dir}/*craft_dbusmanager*.qm
 %{plugin_dir}/*leechcraft_dbusmanager.so
 
 %files deadlyrics
-%defattr(-,root,root)
 %{translations_dir}/*craft_deadlyrics*.qm
 %{plugin_dir}/*craft_deadlyrics.so
 
 %files devel
-%defattr(-,root,root)
 %{_datadir}/leechcraft/cmake
 %{_includedir}/%{name}
 %{_libdir}/libleechcraft-util*.so
@@ -2866,33 +2817,28 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{_datadir}/cmake/Modules/InitLCPlugin.cmake
 
 %files devmon
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_devmon.so
 %{translations_dir}/*craft_devmon_*.qm
 
 %files dolozhee
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_dolozhee.so
 %{translations_dir}/*craft_dolozhee_*.qm
 
 %files dumbeep
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_dumbeep.so
 %{settings_dir}/dumbeepsettings.xml
 
 %files eleeminator
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_eleeminator.so
 %{translations_dir}/*craft_eleeminator_??.qm
 %{translations_dir}/*craft_eleeminator_??_??.qm
 %{settings_dir}/eleeminatorsettings.xml
 
 %files fenet
-%defattr(-,root,root)
 %{plugin_dir}/*craft_fenet.so
 %{settings_dir}/fenetsettings.xml
 %{_bindir}/%{name}-session
-%{_mandir}/man1/*-session.1.*
+%{_mandir}/man1/*-session.1%{?ext_man}
 %dir %{_datadir}/leechcraft/fenet
 %dir %{_datadir}/leechcraft/fenet/compositing
 %dir %{_datadir}/leechcraft/fenet/wms
@@ -2901,119 +2847,99 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{_datadir}/leechcraft/fenet/compositing/*compton*
 
 %files fenet-awesome
-%defattr(-,root,root)
 %dir %{_datadir}/leechcraft/fenet
 %dir %{_datadir}/leechcraft/fenet/wms
 %{_datadir}/leechcraft/fenet/wms/*awesome*
 
 %files fenet-kwin
-%defattr(-,root,root)
 %dir %{_datadir}/leechcraft/fenet
 %dir %{_datadir}/leechcraft/fenet/wms
 %{_datadir}/leechcraft/fenet/wms/*kwin*
 
 %files fenet-openbox
-%defattr(-,root,root)
 %dir %{_datadir}/leechcraft/fenet
 %dir %{_datadir}/leechcraft/fenet/wms
 %{_datadir}/leechcraft/fenet/wms/*openbox*
 
 %files gacts
-%defattr(-,root,root)
-%doc src/plugins/gacts/3rdparty/qxt/LICENSE
+%license src/plugins/gacts/3rdparty/qxt/LICENSE
 %{plugin_dir}/*craft_gacts.so
 %{translations_dir}/*craft_gacts_*.qm
 
 %files glance
-%defattr(-,root,root)
 %{plugin_dir}/*craft_glance.so
 %{translations_dir}/*craft_glance*
 
 %files gmailnotifier
-%defattr(-,root,root)
 %{plugin_dir}/*craft_gmailnotifier.so
 %{settings_dir}/gmailnotifiersettings.xml
 %{translations_dir}/*craft_gmailnotifier*
 %{qml_dir}/gmailnotifier/
 
 %files historyholder
-%defattr(-,root,root)
 %{plugin_dir}/*leechcraft_historyholder.so
 %{translations_dir}/*craft_historyholder*.qm
 
 %files hotstreams
-%defattr(-,root,root)
 %{plugin_dir}/*craft_hotstreams.so
 %{translations_dir}/*craft_hotstreams_*.qm
 
 %files htthare
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_htthare.so
 %{settings_dir}/httharesettings.xml
 %{translations_dir}/*craft_htthare_*.qm
 
 %files imgaste
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_imgaste.so
 %{translations_dir}/*craft_imgaste_*.qm
 
 %files intermutko
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_intermutko.so
 %{settings_dir}/intermutkosettings.xml
 %{translations_dir}/*craft_intermutko_??.qm
 %{translations_dir}/*craft_intermutko_??_??.qm
 
 %files kbswitch
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_kbswitch.so
 %{settings_dir}/kbswitchsettings.xml
 %{translations_dir}/*craft_kbswitch_*.qm
 %{qml_dir}/kbswitch
 
 %files kinotify
-%defattr(-,root,root)
 %{settings_dir}/kinotifysettings.xml
 %{plugin_dir}/*craft_kinotify.so
 %{translations_dir}/*craft_kinotify_*.qm
 
 %files knowhow
-%defattr(-,root,root)
 %{_datadir}/leechcraft/knowhow
 %{plugin_dir}/*craft_knowhow.so
 %{settings_dir}/knowhowsettings.xml
 
 %files krigstask
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_krigstask.so
 %{qml_dir}/krigstask
 %{translations_dir}/*craft_krigstask_*.qm
 
 %files lackman
-%defattr(-,root,root)
 %{plugin_dir}/*craft_lackman.so
 %{settings_dir}/lackmansettings.xml
 %{translations_dir}/*craft_lackman*
 
 %files lastfmscrobble
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_lastfmscrobble.so
 %{settings_dir}/lastfmscrobblesettings.xml
 %{translations_dir}/*craft_lastfmscrobble_*.qm
 
 %files laughty
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_laughty.so
 %{translations_dir}/*craft_laughty_*.qm
 
 %files launchy
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_launchy.so
 %{translations_dir}/*craft_launchy_*.qm
 %{qml_dir}/launchy
 
 %files lemon
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_lemon.so
 %{qml_dir}/lemon/
 %{translations_dir}/*craft_lemon_*.qm
@@ -3021,21 +2947,18 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 
 %if %{with QtWebKit}
 %files lhtr
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_lhtr.so
 %{translations_dir}/*craft_lhtr_*.qm
 %{settings_dir}/lhtrsettings.xml
 %endif
 
 %files liznoo
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_liznoo.so
 %{settings_dir}/liznoosettings.xml
 %{translations_dir}/*craft_liznoo_*.qm
 %{qml_dir}/liznoo
 
 %files lmp
-%defattr(-,root,root)
 %{settings_dir}/lmpsettings.xml
 %{settings_dir}/lmpfilterrgsettings.xml
 %{translations_dir}/*craft_lmp_??.qm
@@ -3047,81 +2970,68 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %exclude %{qml_dir}/lmp/brainslugz
 
 %files lmp-brainslugz
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_lmp_brainslugz.so
 %dir %{qml_dir}/lmp
 %{qml_dir}/lmp/brainslugz
 %{translations_dir}/*craft_lmp_brainslugz_*.qm
 
 %files lmp-dumbsync
-%defattr(-,root,root)
 %{plugin_dir}/*craft_lmp_dumbsync.so
 %{settings_dir}/lmpdumbsyncsettings.xml
 %{translations_dir}/*craft_lmp_dumbsync_??.qm
 %{translations_dir}/*craft_lmp_dumbsync_??_??.qm
 
 %files lmp-fradj
-%defattr(-,root,root)
 %{plugin_dir}/*craft_lmp_fradj.so
 %{translations_dir}/*craft_lmp_fradj_??.qm
 %{translations_dir}/*craft_lmp_fradj_??_??.qm
 
 %files lmp-graffiti
-%defattr(-,root,root)
 %{plugin_dir}/*craft_lmp_graffiti.so
 %{translations_dir}/*craft_lmp_graffiti_??.qm
 %{translations_dir}/*craft_lmp_graffiti_??_??.qm
 
 %files lmp-httstream
-%defattr(-,root,root)
 %{plugin_dir}/*craft_lmp_httstream.so
 %{settings_dir}/lmphttstreamfiltersettings.xml
 %{translations_dir}/*craft_lmp_httstream_??.qm
 %{translations_dir}/*craft_lmp_httstream_??_??.qm
 
 %files lmp-mp3tunes
-%defattr(-,root,root)
 %{plugin_dir}/*craft_lmp_mp3tunes.so
 %{settings_dir}/lmpmp3tunessettings.xml
 
 %files lmp-mtpsync
-%defattr(-,root,root)
 %{plugin_dir}/*craft_lmp_mtpsync.so
 
 %ifarch %ix86 x86_64 ppc64 ppc64le
 %files lmp-potorchu
-%defattr(-,root,root)
 %{plugin_dir}/*craft_lmp_potorchu.so
 %{translations_dir}/*craft_lmp_potorchu_??.qm
 %{translations_dir}/*craft_lmp_potorchu_??_??.qm
 %endif
 
 %files lmp-ppl
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_lmp_ppl.so
 %{translations_dir}/*craft_lmp_ppl_*.qm
 
 %files mellonetray
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_mellonetray.so
 %{qml_dir}/mellonetray/
 %{translations_dir}/*craft_mellonetray_*.qm
 
 %files monocle
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_monocle.so
 %{translations_dir}/*craft_monocle_??.qm
 %{translations_dir}/*craft_monocle_??_??.qm
 %{settings_dir}/monoclesettings.xml
 
 %files monocle-dik
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_monocle_dik.so
 %{translations_dir}/*craft_monocle_dik_??.qm
 %{translations_dir}/*craft_monocle_dik_??_??.qm
 
 %files monocle-fxb
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_monocle_fxb.so
 %{_datadir}/applications/%{name}-monocle-fxb-qt5.desktop
 %{settings_dir}/monoclefxbsettings.xml
@@ -3129,7 +3039,6 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_monocle_fxb_??_??.qm
 
 %files monocle-pdf
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_monocle_pdf.so
 %{_datadir}/applications/%{name}-monocle-pdf-qt5.desktop
 %{settings_dir}/monoclepdfsettings.xml
@@ -3137,31 +3046,26 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_monocle_pdf_??_??.qm
 
 %files monocle-postrus
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_monocle_postrus.so
 %{_datadir}/applications/%{name}-monocle-postrus-qt5.desktop
 %{translations_dir}/*craft_monocle_postrus_??.qm
 %{translations_dir}/*craft_monocle_postrus_??_??.qm
 
 %files monocle-seen
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_monocle_seen.so
 %{_datadir}/applications/%{name}-monocle-seen-qt5.desktop
 %{translations_dir}/*craft_monocle_seen_??.qm
 %{translations_dir}/*craft_monocle_seen_??_??.qm
 
 %files musiczombie
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_musiczombie.so
 %{translations_dir}/*craft_musiczombie_*.qm
 
 %files namauth
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_namauth.so
 %{translations_dir}/*craft_namauth_*.qm
 
 %files netstoremanager
-%defattr(-,root,root)
 %{plugin_dir}/*craft_netstoremanager.so
 %{settings_dir}/netstoremanagersettings.xml
 %{translations_dir}/*craft_netstoremanager_??.qm
@@ -3170,68 +3074,57 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %dir %{_datadir}/leechcraft/netstoremanager/services
 
 %files netstoremanager-googledrive
-%defattr(-,root,root)
 %{plugin_dir}/*craft_netstoremanager_googledrive.so
 %{settings_dir}/nsmgoogledrivesettings.xml
 %{translations_dir}/*craft_netstoremanager_googledrive_*.qm
 %{_datadir}/leechcraft/netstoremanager/services/googledrive.png
 
 %files networkmonitor
-%defattr(-,root,root)
 %{translations_dir}/*craft_networkmonitor*.qm
 %{plugin_dir}/*craft_networkmonitor.so
 
 %files newlife
-%defattr(-,root,root)
 %{translations_dir}/*craft_newlife*.qm
 %{plugin_dir}/*craft_newlife.so
 %{_datadir}/leechcraft/newlife
 
 %files ooronee
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_ooronee.so
 %{settings_dir}/ooroneesettings.xml
 %{qml_dir}/ooronee
 %{translations_dir}/*craft_ooronee_*.qm
 
 %files otlozhu
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_otlozhu.so
 %{translations_dir}/*craft_otlozhu_*.qm
 %{settings_dir}/otlozhusettings.xml
 
 %files pintab
-%defattr(-,root,root)
 %{plugin_dir}/*craft_pintab.so
 %{translations_dir}/*craft_pintab_*.qm
 
 %files pogooglue
-%defattr(-,root,root)
 %{plugin_dir}/*craft_pogooglue*
 %{translations_dir}/*craft_pogooglue*
 
 %ifnarch ppc ppc64 ppc64le s390 s390x
 %files poshuku
-%defattr(-,root,root)
 %{settings_dir}/poshukusettings.xml
 %{translations_dir}/*craft_poshuku_??.qm
 %{translations_dir}/*craft_poshuku_??_??.qm
 %{plugin_dir}/*craft_poshuku.so
 
 %files poshuku-autosearch
-%defattr(-,root,root)
 %{plugin_dir}/*craft_poshuku_autosearch.so
 %{translations_dir}/*craft_poshuku_autosearch_*.qm
 
 %files poshuku-cleanweb
-%defattr(-,root,root)
 %{settings_dir}/poshukucleanwebsettings.xml
 %{translations_dir}/*craft_poshuku_cleanweb*.qm
 %{plugin_dir}/*craft_poshuku_cleanweb.so
 
 %if %{with QtWebKit}
 %files poshuku-dcac
-%defattr(-,root,root)
 %{plugin_dir}/*craft_poshuku_dcac.so
 %{translations_dir}/*craft_poshuku_dcac_??.qm
 %{translations_dir}/*craft_poshuku_dcac_??_??.qm
@@ -3239,51 +3132,42 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %endif
 
 %files poshuku-fatape
-%defattr(-,root,root)
 %{settings_dir}/poshukufatapesettings.xml
 %{plugin_dir}/*craft_poshuku_fatape.so
 %{translations_dir}/*craft_poshuku_fatape_*.qm
 
 %files poshuku-filescheme
-%defattr(-,root,root)
 %{translations_dir}/*craft_poshuku_filescheme_*.qm
 %{plugin_dir}/*craft_poshuku_filescheme.so
 
 %files poshuku-fua
-%defattr(-,root,root)
 %{settings_dir}/poshukufuasettings.xml
 %{translations_dir}/*craft_poshuku_fua*.qm
 %{plugin_dir}/*craft_poshuku_fua.so
 
 %files poshuku-keywords
-%defattr(-,root,root,-)
 %{plugin_dir}/*craft_poshuku_keywords.so
 %{settings_dir}/poshukukeywordssettings.xml
 %{translations_dir}/*craft_poshuku_keywords_*.qm
 
 %files poshuku-onlinebookmarks
-%defattr(-,root,root)
 %{settings_dir}/poshukuonlinebookmarkssettings.xml
 %{translations_dir}/*craft_poshuku_onlinebookmarks*.qm
 %{plugin_dir}/*craft_poshuku_onlinebookmarks.so
 
 %files poshuku-onlinebookmarks-delicious
-%defattr(-,root,root)
 %{plugin_dir}/*craft_poshuku_onlinebookmarks_delicious*
 
 %files poshuku-onlinebookmarks-readitlater
-%defattr(-,root,root)
 %{plugin_dir}/*craft_poshuku_onlinebookmarks_readitlater.*
 
 %files poshuku-qrd
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_poshuku_qrd.so
 %{translations_dir}/*craft_poshuku_qrd_??.qm
 %{translations_dir}/*craft_poshuku_qrd_??_??.qm
 
 %if %{with QtWebKit}
 %files poshuku-speeddial
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_poshuku_speeddial.so
 %{settings_dir}/poshukuspeeddialsettings.xml
 %{translations_dir}/*craft_poshuku_speeddial_??.qm
@@ -3291,163 +3175,130 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %endif
 
 %files poshuku-webengineview
-%defattr(-,root,root)
 %{plugin_dir}/*craft_poshuku_webengineview.so
 %endif
 
 %files rosenthal
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_rosenthal.so
 %{translations_dir}/*craft_rosenthal*
 %{settings_dir}/rosenthalsettings.xml
 
 %files sb2
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_sb2.so
 %{qml_dir}/sb2/
 %{settings_dir}/sb2panelsettings.xml
 %{translations_dir}/*craft_sb2_*.qm
 
 %files scroblibre
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_scroblibre.so
 %{settings_dir}/scroblibresettings.xml
 %{translations_dir}/*craft_scroblibre_*.qm
 
 %files secman
-%defattr(-,root,root)
 %{plugin_dir}/*craft_secman.so
 %{translations_dir}/*craft_secman_*.qm
 
 %files secman-simplestorage
-%defattr(-,root,root)
 %{plugin_dir}/*craft_secman_simplestorage.so
 
 %files seekthru
-%defattr(-,root,root)
 %{settings_dir}/seekthrusettings.xml
 %{translations_dir}/*craft_seekthru*.qm
 %{plugin_dir}/*craft_seekthru.so
 
 %files summary
-%defattr(-,root,root)
 %{translations_dir}/*craft_summary*.qm
 %{plugin_dir}/*craft_summary.so
 
 %files sysnotify
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_sysnotify.so
 %{translations_dir}/*craft_sysnotify_*.qm
 
 %files tabsessionmanager
-%defattr(-,root,root)
 %{plugin_dir}/*craft_tabsessmanager.so
 %{translations_dir}/*craft_tabsessmanager_*.qm
 
 %files tabslist
-%defattr(-,root,root)
 %{plugin_dir}/*craft_tabslist.so
 %{translations_dir}/*craft_tabslist*
 
 %files textogroose
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_textogroose.so
 
 %files touchstreams
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_touchstreams.so
 %{translations_dir}/*craft_touchstreams*.qm
 %{settings_dir}/touchstreamssettings.xml
 
 %files tpi
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_tpi.so
 %{qml_dir}/tpi/
 
 %files vrooby
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_vrooby.so
 %{translations_dir}/*craft_vrooby_*.qm
 %{qml_dir}/vrooby
 
 %files xproxy
-%defattr(-,root,root)
 %{plugin_dir}/lib%{name}_xproxy.so
 %{settings_dir}/xproxysettings.xml
 %{translations_dir}/*craft_xproxy_*.qm
 %{_datadir}/leechcraft/scripts/xproxy
 
 %files xtazy
-%defattr(-,root,root)
 %{settings_dir}/xtazysettings.xml
 %{plugin_dir}/*craft_xtazy.so
 %{translations_dir}/*craft_xtazy_??.qm
 %{translations_dir}/*craft_xtazy_??_??.qm
 
 %files zalil
-%defattr(-,root,root)
 %{plugin_dir}/*craft_zalil.so
 %{translations_dir}/*craft_zalil_??.qm
 %{translations_dir}/*craft_zalil_??_??.qm
 
 %files -n libleechcraft-util-db%{db_postfix}
-%defattr(-,root,root)
 %{_libdir}/*-util-db*.so.*
 
 %files -n libleechcraft-util-gui%{gui_postfix}
-%defattr(-,root,root)
 %{_libdir}/*-util-gui*.so.*
 
 %files -n libleechcraft-util-models%{models_postfix}
-%defattr(-,root,root)
 %{_libdir}/*-util-models*.so.*
 
 %files -n libleechcraft-util-network%{network_postfix}
-%defattr(-,root,root)
 %{_libdir}/*-util-network*.so.*
 
 %files -n libleechcraft-util-qml%{qml_postfix}
-%defattr(-,root,root)
 %{_libdir}/*-util-qml*.so.*
 
 %files -n libleechcraft-util-shortcuts%{shortcuts_postfix}
-%defattr(-,root,root)
 %{_libdir}/*-util-shortcuts*.so.*
 
 %files -n libleechcraft-util-sll%{sll_postfix}
-%defattr(-,root,root)
 %{_libdir}/*-util-sll*.so.*
 
 %files -n libleechcraft-util-svcauth%{svcauth_postfix}
-%defattr(-,root,root)
 %{_libdir}/*-util-svcauth*.so.*
 
 %files -n libleechcraft-util-sys%{sys_postfix}
-%defattr(-,root,root)
 %{_libdir}/*-util-sys*.so.*
 
 %files -n libleechcraft-util-tags%{tags_postfix}
-%defattr(-,root,root)
 %{_libdir}/*-util-tags*.so.*
 
 %files -n libleechcraft-util-threads%{threads_postfix}
-%defattr(-,root,root)
 %{_libdir}/*-util-threads*.so.*
 
 %files -n libleechcraft-util-x11%{x11_postfix}
-%defattr(-,root,root)
 %{_libdir}/*-util-x11*.so.*
 
 %files -n libleechcraft-util-xdg%{xdg_postfix}
-%defattr(-,root,root)
 %{_libdir}/*-util-xdg*.so.*
 
 %files -n libleechcraft-util-xpc%{xpc_postfix}
-%defattr(-,root,root)
 %{_libdir}/*-util-xpc*.so.*
 
 %files -n libleechcraft-util-xsd%{xsd_postfix}
-%defattr(-,root,root)
 %{_libdir}/*-util-xsd*.so.*
 
 %changelog

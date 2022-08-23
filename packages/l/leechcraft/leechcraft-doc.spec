@@ -1,7 +1,7 @@
 #
 # spec file for package leechcraft-doc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Modular Internet Client Documentation
 License:        BSL-1.0
 Group:          Development/Libraries/Other
-URL:            http://leechcraft.org
+URL:            https://leechcraft.org
 Source0:        https://dist.leechcraft.org/LeechCraft/0.6.75/leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
 
 BuildRequires:  doxygen >= 1.8.3.1
@@ -105,15 +105,12 @@ cp -r * %{buildroot}%{_docdir}/leechcraft-monocle-doc
 %fdupes -s %{buildroot}%{_docdir}/leechcraft-monocle-doc/
 
 %files
-%defattr(-,root,root)
 %doc %{_docdir}/leechcraft-doc
 
 %files -n leechcraft-azoth-doc
-%defattr(-,root,root)
 %doc %{_docdir}/leechcraft-azoth-doc
 
 %files -n leechcraft-monocle-doc
-%defattr(-,root,root)
 %doc %{_docdir}/leechcraft-monocle-doc
 
 %changelog

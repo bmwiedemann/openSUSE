@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 23 08:17:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add the missing libavresample build dependency.
+  Needed to build leechcraft with FFmpeg 5.
+- Drop leechcraft-doc.changes. The build service no longer
+  complains when a package with different spec files only has one
+  changelog file
+- Partial spec cleanup
+
+-------------------------------------------------------------------
 Fri Oct 29 05:26:33 UTC 2021 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Updated to 0.6.70-14794.g33744ae6ce snapshot:
