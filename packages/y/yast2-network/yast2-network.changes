@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 21 08:38:40 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Added a class to generate the configuration needed for a FCoE
+  device being aware of it during the installation (bsc#1199554)
+- 4.5.5
+
+-------------------------------------------------------------------
 Mon Jul  4 11:54:34 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - AY: Added missing route extrapara element to the networking
