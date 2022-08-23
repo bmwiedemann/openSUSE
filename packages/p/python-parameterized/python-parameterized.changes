@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 19 18:54:32 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Disable testing with nose2
+  * nose2 is actively maintained, but not used much in the
+    distribution. No need to test it in Ring1.
+
+-------------------------------------------------------------------
 Thu Apr 14 17:07:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add parameterized-pr116-pytest4.patch for pytest 4 to 7 (!)

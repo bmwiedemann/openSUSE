@@ -16,6 +16,14 @@
 #
 
 
+%bcond_with ringdisabled
+%if %{with ringdisabled}
+# nose2 is actively maintained, but not used much in the distribution. No need to test it in ring1
+%bcond_with nose2
+%else
+%bcond_without nose2
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-parameterized
 Version:        0.8.1
@@ -29,12 +37,13 @@ Patch0:         parameterized-pr116-pytest4.patch
 # PATCH-FIX-OPENSUSE remove_nose.patch mcepl@suse.com
 # Remove nose dependency (patch is not very good, DO NOT SEND UPSTREAM!)
 Patch1:         remove_nose.patch
-BuildRequires:  %{python_module nose2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+%if %{with nose2}
+BuildRequires:  %{python_module nose2}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Suggests:       python-nose2
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,7 +65,9 @@ Parameterized testing with any Python test framework.
 # https://github.com/wolever/parameterized/issues/122
 sed -i 's:import mock:from unittest import mock:' parameterized/test.py
 export LANG=en_US.UTF8
+%if %{with nose2}
 %{python_expand nose2-%$python_version -v -B --pretty-assert}
+%endif
 %python_exec -m unittest parameterized.test
 # https://github.com/wolever/parameterized/issues/122
 %pytest parameterized/test.py -k 'not (test_with_docstring_1_v_l_ or test_with_docstring_0_value1)'
@@ -64,6 +75,7 @@ export LANG=en_US.UTF8
 %files %{python_files}
 %doc CHANGELOG.txt README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/parameterized
+%{python_sitelib}/parameterized-%{version}*-info
 
 %changelog
