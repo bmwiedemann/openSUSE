@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-Nuitka
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -52,6 +52,9 @@ ExclusiveArch:  do-not-build
 %if "%{flavor}" == "clang-test-py39"
 ExclusiveArch:  do-not-build
 %endif
+%if "%{flavor}" == "clang-test-py310"
+ExclusiveArch:  do-not-build
+%endif
 %if "%{flavor}" == "gcc-test-py2"
 %bcond_with     test_clang
 %bcond_without  test_gcc
@@ -66,6 +69,9 @@ ExclusiveArch:  do-not-build
 ExclusiveArch:  do-not-build
 %endif
 %if "%{flavor}" == "gcc-test-py39"
+ExclusiveArch:  do-not-build
+%endif
+%if "%{flavor}" == "gcc-test-py310"
 ExclusiveArch:  do-not-build
 %endif
 
@@ -90,6 +96,11 @@ ExclusiveArch:  do-not-build
 %bcond_with     test_gcc
 %define pythons python39
 %endif
+%if "%{flavor}" == "clang-test-py310"
+%bcond_without  test_clang
+%bcond_with     test_gcc
+%define pythons python310
+%endif
 %if "%{flavor}" == "gcc-test-py2"
 ExclusiveArch:  do-not-build
 %endif
@@ -109,12 +120,17 @@ ExclusiveArch:  do-not-build
 %bcond_without  test_gcc
 %define pythons python39
 %endif
+%if "%{flavor}" == "gcc-test-py310"
+%bcond_with     test_clang
+%bcond_without  test_gcc
+%define pythons python310
+%endif
 
 %endif
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Nuitka%{?psuffix}
-Version:        0.6.18.5
+Version:        1.0.1
 Release:        0
 Summary:        Python compiler with full language support and CPython compatibility
 License:        Apache-2.0
@@ -122,8 +138,14 @@ Group:          Development/Languages/Python
 URL:            https://nuitka.net
 Source:         https://files.pythonhosted.org/packages/source/N/Nuitka/Nuitka-%{version}.tar.gz
 Source1:        nuitka-rpmlintrc
+# PATCH-FIX-UPSTREAM no-binary-distribution.patch gh#Nuitka/Nuitka#1702 mcepl@suse.com
+# Do not pretend this is binary distribution
+Patch0:         no-binary-distribution.patch
+BuildRequires:  %{python_module boltons}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  scons
@@ -163,15 +185,11 @@ BuildRequires:  %{python_module atomicwrites}
 BuildRequires:  %{python_module boltons}
 BuildRequires:  %{python_module glfw}
 BuildRequires:  %{python_module glob2}
-BuildRequires:  %{python_module gtk if (%python-base with python-base)}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 BuildRequires:  %{python_module opengl-accelerate}
 BuildRequires:  %{python_module opengl}
-BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
 BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module pendulum}
 BuildRequires:  %{python_module pmw}
@@ -192,6 +210,10 @@ BuildRequires:  gdb
 BuildRequires:  patchelf
 BuildRequires:  strace
 BuildRequires:  tk
+BuildRequires:  %{python_module gtk if (%python-base with python-base)}
+BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
+BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
 %if %{with test_qt6}
 %if 0%{?suse_version} > 1500
 # Leap doesnt have PySide6, and it has old naming on Tumbleweed
@@ -215,7 +237,8 @@ code into compiled objects that are not second class at all. Instead they can be
 used in the same way as pure Python objects.
 
 %prep
-%setup -q -n Nuitka-%{version}
+%autosetup -p1 -n Nuitka-%{version}
+
 # De-vendor
 rm -r nuitka/build/inline_copy/appdirs/
 rm -r nuitka/build/inline_copy/atomicwrites/
@@ -239,14 +262,17 @@ rm -r nuitka/build/inline_copy/glob2/  # Only needed for Python <3.5
 # Ensure there are no other inline copies
 rm -r nuitka/build/inline_copy/clcache/  # Only needed for Windows
 rm -r nuitka/build/inline_copy/colorama/  # Only needed for Windows
+rm -r nuitka/build/inline_copy/pkg_resources/  # For ancient Pythons
 
 rmdir nuitka/build/inline_copy/bin/
 rmdir nuitka/build/inline_copy/lib/
+
 rmdir nuitka/build/inline_copy/ || (ls nuitka/build/inline_copy/ && exit 1)
 
 # De-vendor backwards compatibility https://github.com/Nuitka/Nuitka/issues/967
-echo 'from collections import OrderedDict' > nuitka/containers/odict.py
-echo 'from boltons.setutils import IndexedSet as OrderedSet' > nuitka/containers/oset.py
+# Not working; causes AttributeError: 'str' object has no attribute 'get'
+# echo 'from collections import OrderedDict' > nuitka/containers/OrderedDicts.py
+# echo 'from boltons.setutils import IndexedSet as OrderedSet' > nuitka/containers/OrderedSetsFallback.py
 
 sed -i '1{/^#!/d}' nuitka/tools/testing/*/__main__.py nuitka/tools/general/dll_report/__main__.py
 
@@ -261,15 +287,19 @@ rm tests/standalone/PandasUsing.py
 find nuitka -name __init__.py -exec touch -m -r nuitka/__init__.py {} ';'
 
 %build
-%python_build
+%pyproject_wheel
 
 %if ! %{with test_gcc} && ! %{with test_clang}
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%pyproject_install --ignore-installed
+%{python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -mnuitka --version
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
-mv %{buildroot}%{_bindir}/nuitka3 %{buildroot}%{_bindir}/nuitka
-mv %{buildroot}%{_bindir}/nuitka3-run %{buildroot}%{_bindir}/nuitka-run
+if [ -f %{buildroot}%{_bindir}/nuitka3 ]; then
+  mv %{buildroot}%{_bindir}/nuitka3 %{buildroot}%{_bindir}/nuitka
+  mv %{buildroot}%{_bindir}/nuitka3-run %{buildroot}%{_bindir}/nuitka-run
+fi
 
 rm -f %{buildroot}%{_bindir}/nuitka2
 rm -f %{buildroot}%{_bindir}/nuitka2-run
@@ -335,9 +365,12 @@ if [[ "$python" != "python2" ]]; then
   mv tests/standalone/NumpyUsing.py /tmp
 fi
 
+# OOM
+mv tests/standalone/PkgResourcesRequiresUsing.py /tmp
+
 export NUITKA_EXTRA_OPTIONS="--debug"
 
-CC=clang $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --no-other-python
+CC=clang $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --skip-reflection-test --no-other-python
 
 mv /tmp/*Using.py tests/standalone/ ||:
 %if 0%{?suse_version} >= 1550
@@ -361,9 +394,12 @@ if [[ "$python" == "python2" || "$python" == "python3" ]]; then
   mv tests/standalone/OpenGLUsing.py /tmp
 fi
 
+# OOM
+mv tests/standalone/PkgResourcesRequiresUsing.py /tmp
+
 export NUITKA_EXTRA_OPTIONS=""
 
-CC=clang $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --no-other-python
+CC=clang $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --skip-reflection-test --no-other-python
 
 mv /tmp/*Using.py tests/standalone/ ||:
 %if 0%{?suse_version} >= 1550
@@ -383,19 +419,13 @@ rm -r /tmp/* ||:
 # Please add/remove --debug periodically as many bugs
 # have been found with/without this flag.
 
-# https://github.com/Nuitka/Nuitka/issues/1338 is a current failure with `--debug`
-export NUITKA_EXTRA_OPTIONS=""
+# https://github.com/Nuitka/Nuitka/issues/1338 is a current failure with ``
+export NUITKA_EXTRA_OPTIONS="--debug"
 
-# A patchelf failure in Pandasusing on gcc Leap 15.2 py36 has occurred once
-# It may be the same problem as https://github.com/Nuitka/Nuitka/issues/1298
-# which will be fixed in the next patch release
+# OOM
+mv tests/standalone/MatplotlibUsing.py /tmp
 
-# https://github.com/Nuitka/Nuitka/issues/1338
-if [[ "$python" == "python2" ]]; then
-  mv tests/standalone/MatplotlibUsing.py /tmp
-fi
-
-CC=gcc $python ./tests/run-tests --no-other-python
+CC=gcc $python ./tests/run-tests --no-other-python --skip-reflection-test
 
 mv /tmp/*Using.py tests/standalone/ ||:
 %if 0%{?suse_version} >= 1550
@@ -422,7 +452,8 @@ rm -r /tmp/* ||:
 %files %{python_files}
 %doc Changelog.rst README.rst Developer_Manual.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/nuitka
+%{python_sitelib}/Nuitka-%{version}*-info
 %python_alternative %{_bindir}/nuitka-run
 %python_alternative %{_bindir}/nuitka
 %python_alternative %{_mandir}/man1/nuitka.1

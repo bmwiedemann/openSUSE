@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Aug 18 13:53:06 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-add --skip-reflection-test removed during v0.6.17.4 update
+- Increase memory constraint to 24Gb to fix clang tests
+
+-------------------------------------------------------------------
+Sat Aug  6 06:57:11 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add Python 3.10 to test matrix
+- Disable de-vendoring of nuitka/containers
+- Fix Leap 15.4 builds (some tests still failing)
+- Skip testing of PkgResourcesRequiresUsing on clang due to OOM
+- Update to v1.0.1
+  * See https://github.com/Nuitka/Nuitka/blob/develop/Changelog.rst
+
+-------------------------------------------------------------------
+Thu Jul 28 20:39:35 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Instead of doing strange moving of installation trees,
+  fix setup.py by adding no-binary-distribution.patch
+  (gh#Nuitka/Nuitka#1702).
+- Add _constraints.
+
+-------------------------------------------------------------------
+Tue Jul 26 16:20:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.9:
+  List of the changes is extremely long and it is better to read
+  it in Changelog included in the package.
+
+-------------------------------------------------------------------
 Mon Jan 10 08:28:57 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire generic distribution-release instead of
