@@ -456,4 +456,12 @@
     <comment>Update to database version 20220516</comment>
     <requestid>978781</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>e621847bb24dc3e40176630f3a19fa8f</srcmd5>
+    <version>20220727</version>
+    <time>1661257541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998620</requestid>
+  </revision>
 </revisionlist>

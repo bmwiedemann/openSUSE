@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  1 22:34:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20220727
+- drop: add-opensuse-leap-15.4-support.patch
+  add-sle15sp4-support.patch
+  add-slem5.1-support.patch
+  add-slem5.2-support.patch
+  opensuse-autoyast-desktop.patch: all upstream
+ 
+-------------------------------------------------------------------
 Mon May 23 15:40:45 MDT 2022 - carnold@suse.com
 
 - Update to database version 20220516

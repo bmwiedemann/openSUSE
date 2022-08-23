@@ -12,31 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           osinfo-db
-Version:        20220516
+Version:        20220727
 Release:        0
 Summary:        Osinfo database files
-License:        LGPL-2.1+ and GPL-2.0+
+License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          System/Management
-BuildArch:      noarch
-Url:            https://gitlab.com/libosinfo/osinfo-db
+URL:            https://gitlab.com/libosinfo/osinfo-db
 Source:         https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.xz
 Patch21:        add-oes-support.patch
 Patch22:        add-caasp40-support.patch
 Patch23:        add-win-2k19-media-info.patch
 Patch24:        fix-tumbleweed-order.patch
-Patch25:        add-opensuse-leap-15.4-support.patch
-Patch26:        add-sle15sp4-support.patch
-Patch27:        add-slem5.1-support.patch
-Patch28:        add-slem5.2-support.patch
-Patch29:        opensuse-autoyast-desktop.patch
-
 BuildRequires:  intltool
 BuildRequires:  osinfo-db-tools
+BuildArch:      noarch
 
 %description
 The osinfo database provides information about operating systems and
@@ -44,16 +38,7 @@ hypervisor platforms to facilitate the automated configuration and
 provisioning of new virtual machines
 
 %prep
-%setup -q
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch28 -p1
-%patch29 -p1
+%autosetup -p1
 
 %build
 cd %{_builddir}
@@ -63,7 +48,6 @@ tar -cJf x.tar.xz osinfo-db-%{version}
 osinfo-db-import --root %{buildroot} --dir %{_datadir}/osinfo "%{_builddir}/x.tar.xz"
 
 %files
-%defattr(-,root,root,-)
 %dir %{_datadir}/osinfo/
 %{_datadir}/osinfo/VERSION
 %{_datadir}/osinfo/LICENSE
