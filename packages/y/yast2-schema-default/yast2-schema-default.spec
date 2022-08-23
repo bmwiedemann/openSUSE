@@ -18,7 +18,7 @@
 
 Name:           yast2-schema-default
 # Keep versions in sync with yast2-schema-micro
-Version:        4.5.4
+Version:        4.5.5
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
