@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycodestyle
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%{?!python_module:%define python_module() python3-%{**}}
+%global skip_python2 1
 Name:           python-pycodestyle
-Version:        2.8.0
+Version:        2.9.1
 Release:        0
 Summary:        Python style guide checker
 License:        MIT
@@ -31,14 +31,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%ifpython2
-Provides:       %{oldpython}-pep8 = %{version}
-Obsoletes:      %{oldpython}-pep8 < %{version}
-%endif
 Provides:       python-pep8 = %{version}
 Obsoletes:      python-pep8 < %{version}
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description

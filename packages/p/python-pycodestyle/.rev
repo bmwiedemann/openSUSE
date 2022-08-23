@@ -73,4 +73,19 @@
     <comment></comment>
     <requestid>929832</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b958b58305cbf13c7fcecd8cddd759af</srcmd5>
+    <version>2.9.1</version>
+    <time>1661257536</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.1:
+  * E275: fix false positive for yield expressions.
+  * E221, E222, E223, E224: add support for := operator. PR #1032.
+  * Drop python 2.7 / 3.5.
+  * E262: consider non-breaking spaces (\xa0) as whitespace. PR #1035.
+  * Improve performance of _is_binary_operator. PR #1052.
+  * E275: requires whitespace around keywords. PR #1063.
+  * Add support for python 3.11. PR #1070.</comment>
+    <requestid>995145</requestid>
+  </revision>
 </revisionlist>
