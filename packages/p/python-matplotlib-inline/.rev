@@ -15,4 +15,23 @@
     <comment></comment>
     <requestid>925906</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1c781d3768f000ae2ae91b19e03e53da</srcmd5>
+    <version>0.1.6</version>
+    <time>1661257531</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile:
+  * update copyright year
+- update to version 0.1.6:
+  * Return manager instead of None
+- changes from version 0.1.5:
+  * replace 0.1.4 on pypi, no changes
+- changes from version 0.1.4:
+  * Fix: always clear _draw_called
+  * Move draw_if_interactive logic to new_figure_manager_given_figure.
+  * Remove matplotlib rc overrides.
+  * Create __version__ attribute
+</comment>
+    <requestid>998364</requestid>
+  </revision>
 </revisionlist>
