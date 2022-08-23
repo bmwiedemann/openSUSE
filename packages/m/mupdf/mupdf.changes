@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 17 19:15:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.20.3:
+  * return error, not success when unable to lock native device resource.
+  * Bug 705620: Start journal operation instead of pushing local xref.
+  * Ensure AndroidDrawDevice is destroyed, even upon exception.
+  * source/pdf/pdf-clean.c: fix segv from incorrect call to fz_drop_pixmap().
+  * Bug 705681: Enclose code in begin/end operation.
+  * Guard against SEGVs when calling archive functions with NULL archive.
+
+-------------------------------------------------------------------
 Mon Aug  1 21:28:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.20.0:
