@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 20 13:01:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Package only supports Python >= 3.7
+- Remove linter flake8 and static type checker mypy from build
+  requirements: Not used and not necessary during rpm packaging.
+- Remove stray build dependency for six
+- Remove entrypoint2 build dependency: only required for building
+  docs
+- Don't catchall in files section
+
+-------------------------------------------------------------------
 Wed Aug 10 07:46:11 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Fix build dependencies for test flavour

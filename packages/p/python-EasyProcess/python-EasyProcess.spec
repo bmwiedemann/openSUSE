@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -32,22 +31,19 @@ Summary:        Python subprocess interface
 License:        BSD-2-Clause
 URL:            https://github.com/ponty/easyprocess
 Source:         https://github.com/ponty/EasyProcess/archive/%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  iputils
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module EasyProcess = %{version}}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyVirtualDisplay}
-BuildRequires:  %{python_module entrypoint2}
-BuildRequires:  %{python_module flake8}
-BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  ImageMagick
+BuildRequires:  iputils
 %endif
 %python_subpackages
 
@@ -95,7 +91,8 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/easyprocess
+%{python_sitelib}/EasyProcess-%{version}*-info
 %endif
 
 %changelog
