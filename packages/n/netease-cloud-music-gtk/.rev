@@ -110,4 +110,16 @@
     <comment></comment>
     <requestid>987782</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7758468ea933aac899086f8f3cfa6edd</srcmd5>
+    <version>2.0.2</version>
+    <time>1661257769</time>
+    <user>dimstar_suse</user>
+    <comment>- Release version 2.0.2
+ + Fix setting bit rate doesn't work.
+ + Add log function.
+ + Updated instructions for use. 
+</comment>
+    <requestid>998626</requestid>
+  </revision>
 </revisionlist>
