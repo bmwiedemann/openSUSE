@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug 21 03:38:58 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+- Replace deprecated %makeinstall with %make_install 
+
+-------------------------------------------------------------------
+Sat Aug 20 18:56:29 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to version 1.4.1:
+  * Fix bad buffer size calculation in threat parser
+  * Improved Lua version support (5.1 - 5.4)
+  * Fix memory leak when callbacks reference a parser object
+  * etc. https://github.com/lunarmodules/luaexpat/releases/tag/1.4.0
+
+-------------------------------------------------------------------
 Thu Aug 12 14:22:20 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use GNU11 instead of C99

@@ -1,7 +1,7 @@
 #
-# spec file for package lua-luaexpat
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2009 florian.leparoux@gmail.com
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
@@ -20,13 +20,13 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name    luaexpat
-Version:        1.3.0
+Version:        1.4.1
 Release:        0
 Summary:        A SAX XML parser based on the Expat library
 License:        MIT
 Group:          Productivity/Networking/Other
 URL:            http://matthewwild.co.uk/projects/luaexpat/
-Source:         http://matthewwild.co.uk/projects/luaexpat/%{mod_name}-%{version}.tar.gz
+Source:         https://github.com/lunarmodules/luaexpat/archive/%{version}/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  libexpat-devel
 Requires:       %{flavor}
@@ -53,14 +53,14 @@ make %{?_smp_mflags} \
     CFLAGS="%{optflags} -DLUA_32BITS -std=gnu11"
 
 %install
-%makeinstall \
+%make_install \
     PREFIX="%{_prefix}" \
     LUA_CDIR="%{lua_archdir}" \
     LUA_LDIR="%{lua_noarchdir}"
 
 %files
 %defattr(-,root,root)
-%doc doc/us/license.html
+%license LICENSE
 %{lua_archdir}/lxp.so
 %{lua_noarchdir}/lxp
 
