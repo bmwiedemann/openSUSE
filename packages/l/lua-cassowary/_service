@@ -1,0 +1,16 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/sile-typesetter/cassowary.lua</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="scm">git</param>
+    <param name="revision">e33195f08438c15d725d283979165fda7c6c3321</param>
+    <param name="versionrewrite-pattern">v(\d+.\d+.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+</services>
