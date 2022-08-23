@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 22 15:14:24 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Version 4.0.1
+  - create_dirs_from_rpmdb: Just warn if no default SELinux context found
+    [gh#openSUSE/transactional-update#88], [bsc#1188215]
+  - create_dirs_from_rpmdb: Don't update the rpmdb cookie on failure
+    [gh#openSUSE/transactional-update#88]
+  - Handle directories owned by multiple packages
+    [gh#openSUSE/transactional-update#90], [bsc#1188215]
+
+-------------------------------------------------------------------
 Tue Aug  2 14:32:35 UTC 2022 - Ignaz Forster <iforster@suse.com>
 
 - Version 4.0.0
