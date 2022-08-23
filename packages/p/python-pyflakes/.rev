@@ -335,4 +335,20 @@ It is a dependency of the spyder python graphical environment, besides by a usef
     <comment></comment>
     <requestid>929017</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>19cd88e110331a76b4f5537eeada73ac</srcmd5>
+    <version>2.5.0</version>
+    <time>1661257537</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.0:
+  * mDrop support for EOL python 2.7 / 3.4 / 3.5
+  * mIgnore ``__all__`` when not directly assigned
+  * mHandle ``TypeAlias`` annotations as aliases (PEP 613)
+  * mAssignment expressions (``:=``) target outer scope in comprehensions
+  * mAdd support for new python 3.11 syntax
+  * mUnify output so it is always ``filename:lineno:col:  message``
+  * mProperly report ``SyntaxError`` from stdin in python &lt; 3.9
+  * mFix offsets of ``SyntaxError``s in pypy</comment>
+    <requestid>997690</requestid>
+  </revision>
 </revisionlist>
