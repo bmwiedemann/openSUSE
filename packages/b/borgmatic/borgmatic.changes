@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Aug 15 19:52:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.24:
+  * #431: Add "working_directory" option to support source directories with relative paths.
+  * #444: When loading a configuration file that is unreadable due to file permissions, warn instead
+    of erroring. This supports running borgmatic as a non-root user with configuration in ~/.config
+    even if there is an unreadable global configuration file in /etc.
+  * #469: Add "repositories" context to "before_" and "after_" command action hooks. See the
+    documentation for more information:
+    https://torsion.org/borgmatic/docs/how-to/add-preparation-and-cleanup-steps-to-backups/
+  * #486: Fix handling of "patterns_from" and "exclude_from" options to error instead of warning when
+    referencing unreadable files and "create" action is run.
+  * #507: Fix Borg usage error in the "compact" action when running "borgmatic --dry-run". Now, skip
+    "compact" entirely during a dry run.
+  * #394: Compact repository segments and free space with new "borgmatic compact" action. Borg 1.2+
+    only. Also run "compact" by default when no actions are specified, as "prune" in Borg 1.2 no
+    longer frees up space unless "compact" is run.
+  * #394: When using the "atime", "bsd_flags", "numeric_owner", or "remote_rate_limit" options,
+    tailor the flags passed to Borg depending on the Borg version.
+  * #480, #482: Fix traceback when a YAML validation error occurs.
+  * #288: Add database dump hook for MongoDB.
+  * #470: Move mysqldump options to the beginning of the command due to MySQL bug 30994.
+  * #471: When command-line configuration override produces a parse error, error cleanly instead of
+    tracebacking.
+  * #476: Fix unicode error when restoring particular MySQL databases.
+    Drop support for Python 3.6, which has been end-of-lifed.
+    Add support for Python 3.10.
+- avoid bashism in post scripts (bsc#1195391)
+- light modernization of spec file 
+
+-------------------------------------------------------------------
 Wed Mar 16 06:36:36 UTC 2022 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
 
 - Update 1.5.21 which is last that supports Python 3.6

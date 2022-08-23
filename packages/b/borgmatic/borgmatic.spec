@@ -17,7 +17,7 @@
 
 
 Name:           borgmatic
-Version:        1.5.21
+Version:        1.5.24
 Release:        0
 Summary:        Automation tool for borgbackup
 License:        GPL-3.0-only
@@ -29,6 +29,7 @@ Patch1:         skip-tests.patch
 BuildRequires:  borgbackup
 # To create the manpage
 BuildRequires:  pandoc
+BuildRequires:  pkgconfig
 BuildRequires:  python3 >= 3.6
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-appdirs
@@ -106,8 +107,8 @@ install -d %{buildroot}%{_unitdir}/
 install -m 0644 sample/systemd/borgmatic* %{buildroot}%{_unitdir}/
 
 install -D -m 0644 borgmatic.1 %{buildroot}%{_mandir}/man1/borgmatic.1
-mkdir -p %{buildroot}/usr/sbin
-ln -s /usr/sbin/service %{buildroot}/usr/sbin/rcborgmatic
+mkdir -p %{buildroot}%{_sbindir}
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcborgmatic
 
 %check
 # testing the build is a little awkward, since the original testsuite is based on tox and
@@ -123,13 +124,13 @@ PYTHONPATH=$(pwd) py.test -v --pyargs borgmatic tests
 
 %post
 %service_add_post borgmatic.service
-if [ "$1" == 1 -a ! -f "/etc/borgmatic/config.yaml" ]; then
-    /usr/bin/generate-borgmatic-config
-elif [ "$1" == 2 ]; then
-    if [ -f "/etc/borgmatic/config" -a ! -f "/etc/borgmatic/config.yaml" ]; then
-       echo "The configuration files have changed. /usr/bin/upgrade-borgmatic-config will be run now to upgrade the configuration to the new format."
+if [ "$1" = 1 -a ! -f "%{_sysconfdir}/borgmatic/config.yaml" ]; then
+    %{_bindir}/generate-borgmatic-config
+elif [ "$1" = 2 ]; then
+    if [ -f "%{_sysconfdir}/borgmatic/config" -a ! -f "%{_sysconfdir}/borgmatic/config.yaml" ]; then
+       echo "The configuration files have changed. %{_bindir}/upgrade-borgmatic-config will be run now to upgrade the configuration to the new format."
        echo ""
-       /usr/bin/upgrade-borgmatic-config
+       %{_bindir}/upgrade-borgmatic-config
     fi
 fi
 
