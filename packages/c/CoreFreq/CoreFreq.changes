@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 22 15:48:08 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 1.91.6
+  - [AMD/Zen][UMC] Fixed the Mem Clock and ECC regressions
+  - Designate the Package identifier in Power consumed readings
+  - [Intel/ADL/IMC] Guessing activated channel from the populated DIMM
+  - [AMD][UMC, IOMMU] Adding missing DID of family 19h devices
+  - [AMD_DataFabric_Cezanne] Removed the Experimental mode
+  - Intel/ADL/IMC: Fixing the Memory Channels count
+  - [AMD/Zen] Improved UMC mapping. Threadripper 3960X issue
+  - Avoid some NULL pointer strings during SMBIOS decoding
+  
+-------------------------------------------------------------------
 Wed Jun 22 19:35:21 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 1.91.3
