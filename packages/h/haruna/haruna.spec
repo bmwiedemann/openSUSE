@@ -17,7 +17,7 @@
 
 
 Name:           haruna
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Video player built with Qt/QML on top of libmpv
 License:        CC-BY-4.0 AND GPL-3.0-or-later AND WTFPL
@@ -26,8 +26,13 @@ Source0:        https://invent.kde.org/multimedia/haruna/-/archive/v%{version}/%
 BuildRequires:  cmake >= 3.15
 BuildRequires:  extra-cmake-modules >= 1.0.0
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  pkgconfig
+%if 0%{?sle_version} != 150300
+BuildRequires:  yt-dlp
+%else
 BuildRequires:  youtube-dl
+%endif
 BuildRequires:  cmake(Breeze)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
@@ -42,6 +47,7 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickControls2)
+BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
@@ -51,7 +57,11 @@ BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(mpv)
 Requires:       breeze5-icons
-Recommends:     youtube-dl
+%if 0%{?sle_version} != 150300
+Requires:       yt-dlp
+%else
+Requires:       youtube-dl
+%endif
 
 %description
 %{name} is a video player built with Qt/QML on top of libmpv.
@@ -75,7 +85,7 @@ rm -rf %{buildroot}%{_datadir}/icons/hicolor/44x44 \
        %{buildroot}%{_datadir}/icons/hicolor/310x310
 
 %files
-%license LICENSES/CC-BY-4.0.txt LICENSES/GPL-3.0-or-later.txt LICENSES/WTFPL.txt
+%license LICENSES/CC-BY-4.0.txt LICENSES/GPL-3.0-or-later.txt
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/org.kde.haruna.desktop
