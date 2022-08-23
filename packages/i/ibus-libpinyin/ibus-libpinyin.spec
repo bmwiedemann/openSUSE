@@ -20,7 +20,7 @@
 %define   with_cloud_input   1
 
 Name:           ibus-libpinyin
-Version:        1.12.91
+Version:        1.13.0
 Release:        0
 Summary:        Intelligent Pinyin engine based on libpinyin for IBus
 License:        GPL-3.0-or-later
@@ -102,7 +102,6 @@ NOCONFIGURE=1 ./autogen.sh
 %{_datadir}/%{name}/icons
 %{_datadir}/%{name}/setup
 %{_datadir}/%{name}/network.txt
-# %{_datadir}/%{name}/db/strokes.db
 %{_datadir}/ibus-libpinyin/db/table.db
 %{_datadir}/metainfo/libpinyin.appdata.xml
 %{_datadir}/ibus
