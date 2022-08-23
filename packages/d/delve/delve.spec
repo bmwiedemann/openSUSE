@@ -31,7 +31,7 @@ URL:            https://github.com/go-delve/delve
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang(API) >= 1.16
-ExcludeArch:    s390x
+ExcludeArch:    s390x ppc64le %arm
 
 %description
 Delve is a debugger for the Go programming language. The goal of
