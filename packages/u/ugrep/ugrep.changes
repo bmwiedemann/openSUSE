@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 22 05:41:38 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.9.2:
+  * Fixed an issue with invalid Unicode regex patterns
+
+-------------------------------------------------------------------
 Mon Aug 15 07:24:24 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.9.1:
