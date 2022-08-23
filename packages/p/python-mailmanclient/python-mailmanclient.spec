@@ -72,7 +72,10 @@ export LC_ALL=C.UTF-8
 #     self.socket.send(msg)
 # OSError: [Errno 9] Bad file descriptor
 export LC_ALL=C.UTF-8
-%pytest -k 'not using.rst'
+%if %{pkg_vcmp python3-pytest-asyncio >= 0.19}
+asynciomode="--asyncio-mode=auto"
+%endif
+%pytest -k 'not using.rst' $asynciomode
 
 %files %{python_files}
 %doc README.rst

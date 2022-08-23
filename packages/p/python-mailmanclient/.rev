@@ -82,4 +82,12 @@
     <comment>- Enable multiflavor so that we can pin mailman3 itself to python39 (forwarded request 986656 from bnavigator)</comment>
     <requestid>986715</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>16d2fd0c2555c5af344a3987557d014f</srcmd5>
+    <version>3.3.3</version>
+    <time>1661257796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998760</requestid>
+  </revision>
 </revisionlist>
