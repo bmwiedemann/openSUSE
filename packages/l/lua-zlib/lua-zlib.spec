@@ -1,7 +1,7 @@
 #
-# spec file for package lua-zlib
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name zlib
-Version:        1.1
+Version:        1.2+git29
 Release:        0
 Summary:        Simple streaming interface to zlib for Lua
 License:        MIT OR X11
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/brimworks/lua-zlib
-Source:         https://github.com/brimworks/lua-zlib/archive/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
+Source:         lua-%{mod_name}-%{version}.tar.xz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  zlib-devel
 Requires:       %{flavor}

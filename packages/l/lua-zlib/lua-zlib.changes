@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Aug 20 19:20:37 UTC 2022 - pirateclip@protonmail.com
+
+- Update to version 1.2+git29:
+  * avoid converting string to char *.
+  * ci: Update deps in test workflow
+  * ci: Drop superlinter
+  * ci: Use upstream luacheck action for Lua lint
+  * Update lua_zlib.c
+  * Correct spelling mistakes
+  * Update rockspecs/lua-zlib-1.2-2.rockspec
+  * fix unauthenticated git protocol on port 9418
+  * Add CI job to build and test across Lua versions matrix
+  * Fix low hanging Lua coding issues, ignore remaining lint warnings
+  * Add superlinter to check up on C code
+  * Add luacheck config & CI job to run in
+- add _service file
+- use +git versions as last version bump was in 2017 and there are
+  bug fixes as recent as 2 months ago
+
+-------------------------------------------------------------------
 Thu Feb 18 16:04:08 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %lua_provides macro for default lua versioning
