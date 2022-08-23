@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  9 20:24:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.3: 
+  * BUGFIX: Fix security issue that can lead to arbitrary code execution 
+  (b77e4f4, b77e4f4). Thanks to ANSSI - CERT-FR for the report.
+  * BUGFIX: Fix incorrect logic in expressions like <quantifier> of
+    <string_set> in (start..end (#1757). 
+
+-------------------------------------------------------------------
 Mon Jul 11 19:36:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.2:

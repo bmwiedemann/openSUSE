@@ -18,7 +18,7 @@
 
 %global soname 9
 Name:           yara
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        A malware identification and classification tool
 License:        BSD-3-Clause
