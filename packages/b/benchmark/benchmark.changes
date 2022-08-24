@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Mon Aug 15 11:19:19 UTC 2022 - dmueller@suse.com
+
+- Update to version 1.7.0:
+  * version bump
+  * simplified code (#1439)
+  * use target_compile_definitions (#1440)
+  * Stop generating the export header and just check it in (#1435)
+  * Also fix the SOVERSION for benchmark_main
+  * Fix SOVERSION of shared library
+  * v1.6.2 bump
+  * Expose google_benchmark.State for python bindings. (#1430)
+  * Suppress nvcc `offsetof` warning (#1429)
+  * Correct typo in Passing Arguments section
+  * cleanup comments
+  * fix sanitizer builds by using clang 13 (#1426)
+  * fix dependabot numpy version warning
+  * fix cmake warning for libcxx setup
+  * Expose default help printer function (#1425)
+  * Fix DoNotOptimize() GCC compile error with some types (#1340) (#1424)
+  * Remove redundant formatting tags (#1420)
+  * Revert "Add possibility to ask for libbenchmark version number (#1004) (#1403)" (#1417)
+  * Clarify that the cpu frequency is not used for benchmark timings. (#1414)
+  * Fix DoNotOptimize() GCC copy overhead (#1340) (#1410)
+  * Add possibility to ask for libbenchmark version number (#1004) (#1403)
+  * add multiple OSes to bazel workflow (#1412)
+  * fix some build warnings on type conversions
+  * fix typo in comment
+  * Report large numbers in scientific notation in console reporter (#1303) (#1402)
+  * Introduce warmup phase to BenchmarkRunner (#1130) (#1399)
+  * Add support to get clock for new architecture CSKY (#1400)
+  * Add option to get the verbosity provided by commandline flag -v (#1330) (#1397)
+  * fix some typos (#1393)
+  * Add installation and build instructions for Python bindings (#1392)
+  * Enable -Wconversion (#1390)
+  * Add benchmark labels to the output of the comparison tool (#1388)
+  * Filter out benchmarks that start with "DISABLED_" (#1387)
+  * Fix wheel job name for PyPI uploads (#1384)
+  * Shut down Bazel gracefully and revert wheel build strategy to job matrix (#1383)
+  * Small optimization to counter map management (#1382)
+  * getting sysinfo in line with Google style (#1381)
+  * Promote inclusive language. (#1360)
+  * [nfc] Reformat doc-string in generate_export_header (#1376)
+  * Fix Bazel build breakage caused by commit 6a894bd. (#1374)
+  * Build `//:benchmark` as a static library only. (#1373)
+  * add note about wheels action to releasing docs
+  * Change artifact download name to dist to match upload name (#1371)
+  * Remove conditional trigger from PyPI upload job (#1370)
+  * Add BENCHMARK_STATIC_DEFINE to the Python bindings' `cc_binary` local defines. (#1369)
+  * Update LICENSE file to clearly state which file needs BSD 3 (#1366)
+  * Fix float comparaison and add float comparison warning (#1368)
+  * Add PyPI upload job to wheel building workflow (#1359)
+  * Appended additional BSD 3-Clause to LICENSE (#1363)
+  * Add SetBenchmarkFilter() to set --benchmark_filter flag value in user code (#1362)
+  * Add long description and content type for proper PyPI presentation (#1361)
+  * Allow setting the default time unit globally (#1337)
+  * restore BENCHMARK_MAIN() (#1357)
+  * @platforms is magical; remove it from WORKSPACE. (#1356)
+  * Make generate_export_header.bzl work for Windows. (#1355)
+  * avoid case sensitive issues with duplicated names (#1354)
+  * move bzl file out of tools (#1352)
+  * Introduce the possibility to customize the help printer function (#1342)
+  * simplify reference to internal path (#1349)
+  * Check for macro existence before using (#1347)
+  * annotate and export public symbols (#1321)
+  * Expose default display reporter creation in public API (#1344)
+  * Avoid potential truncation issues for the integral type parameterized tests. (#1341)
+  * Add mutex when reading counters_ (Fixes #1335) (#1338)
+  * Use Win32 API only for Win32 apps (#1333)
+  * bump numby, as per dependabot (#1336)
+  * Fix cross compilation for macOS ARM builds in `cibuildwheel` (#1334)
+  * Cache PerfCounters instance in PerfCountersMeasurement (#1308)
+  * Fix some errors in Custom Statistics demo code. (#1332)
+  * Refine the User Guide CPU Frequency Scaling section (#1331)
+  * Refine docs on changing cpufreq governor (#1325)
+  * Expand documentation for unpacking arbitrary arguments. (#1324)
+  * Suppress GoogleTest warnings on windows (MSVC) too. (#1320)
+  * Add docs on Memory profiling (#1217). (#1319)
+  * Add docs for `ThreadRange`. (#1318)
+
+-------------------------------------------------------------------
 Mon Mar 14 08:41:35 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add gcc12-disable-Werror=maybe-uninitialized.patch in order
