@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 17 03:07:35 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.1.0
+   see /usr/share/doc/packages/perl-Carp-Assert-More/Changes
+
+
+  2.1.0   Mon Aug 15 19:54:27 CDT 2022
+          [ENHANCEMENTS]
+          Add diagnostic strings to the failures. For example:
+              assert_nonblank( [ 'foo' ], 'This should be nonblank' );
+          would fail with:
+              Assertion (This should be nonblank) failed!
+          but now fails with:
+              Assertion (This should be nonblank) failed!
+              Value is a reference to ARRAY.
+          Similar changes have been made to:
+          * assert_all_keys_in
+          * assert_keys_are
+          * assert_empty
+          * assert_nonempty
+
+-------------------------------------------------------------------
 Sat Aug 14 03:06:07 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.0.1
