@@ -71,4 +71,12 @@
     <comment></comment>
     <requestid>960301</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>bc48d9e736fdae3fc1259324805c088a</srcmd5>
+    <version>1.8.0</version>
+    <time>1661346689</time>
+    <user>dimstar_suse</user>
+    <comment>- Copy the heaers ourselves now that setuptools does not.</comment>
+    <requestid>998940</requestid>
+  </revision>
 </revisionlist>

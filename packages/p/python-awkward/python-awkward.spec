@@ -89,17 +89,16 @@ awkward.
 # Remove static libs
 %python_expand find %{buildroot}%{$python_sitearch}/%{modname}/ -name "*.a" -delete -print
 
-mkdir -p %{buildroot}%{_includedir}/awkward
-%{python_expand # Move headers to standard include dir for the primary python3 version and delete for the others
+%{python_expand # Create a symlink to shared library in _libdir for the C/C++ devel pkg
 if [ "$python_" = "python3_" -o "%{$python_provides}" = "python3" ]; then
-mv %{buildroot}%{$python_sitearch}/%{modname}/include/* %{buildroot}%{_includedir}/awkward/
-# Create a symlink to shared library in _libdir for the C/C++ devel pkg
 ln -s %{$python_sitearch}/libawkward.so %{buildroot}%{_libdir}/
 ln -s %{$python_sitearch}/libawkward-cpu-kernels.so %{buildroot}%{_libdir}/
-else
-rm -fr %{buildroot}%{$python_sitearch}/%{modname}/include
 fi
 }
+# setuptools no longer installs headers, copy them ourselves
+# The "build" directory is the result from the primary interpreter
+mkdir -p %{buildroot}%{_includedir}/awkward
+cp -a build/lib.linux-*/awkward/include %{buildroot}%{_includedir}/awkward
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
