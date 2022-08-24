@@ -1,23 +1,8 @@
-Index: lalapps-7.2.0/src/pulsar/Weave/Makefile.am
+Index: lalapps-9.0.0/configure.ac
 ===================================================================
---- lalapps-7.2.0.orig/src/pulsar/Weave/Makefile.am
-+++ lalapps-7.2.0/src/pulsar/Weave/Makefile.am
-@@ -75,5 +75,10 @@ if !CFITSIO
- skip_tests += $(test_scripts)
- endif
- 
-+# Skip Weave tests on non-x86_64
-+if SKIP_WEAVE_TESTS
-+skip_tests += $(test_scripts)
-+endif
-+
- # testWeave_reference_results.sh requires output from tests that compare against reference results
- testWeave_reference_results.log: testWeave_interpolating.log testWeave_non_interpolating.log testWeave_single_segment.log
-Index: lalapps-7.2.0/configure.ac
-===================================================================
---- lalapps-7.2.0.orig/configure.ac
-+++ lalapps-7.2.0/configure.ac
-@@ -318,6 +318,13 @@ AM_CPPFLAGS="-I\$(top_srcdir)/src ${AM_C
+--- lalapps-9.0.0.orig/configure.ac
++++ lalapps-9.0.0/configure.ac
+@@ -260,6 +260,13 @@ AM_CPPFLAGS="-I\$(top_srcdir)/src ${AM_C
  # RedHat-derived systems.
  AC_SUBST([pkgpythondir], ["\${pkgpyexecdir}"])
  

@@ -20,13 +20,13 @@
 # NEP 29: astropy, numpy, scipy do not have a python36 flavor package in TW
 %define skip_python36 1
 Name:           lalapps
-Version:        7.4.0
+Version:        9.0.0
 Release:        0
 Summary:        LSC Algorithm Library Applications
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
-Source:         http://software.ligo.org/lscsoft/source/lalsuite/%{name}-%{version}.tar.xz
+Source:         https://software.igwn.org/sources/source/lalsuite/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM lalapps-fix-uninitialised-var.patch badshah400@gmail.com -- Fix usage of uninitialised variable
 Patch0:         lalapps-fix-uninitialised-var.patch
 # PATCH-FIX-UPSTREAM lalapps-disable-testWeave-for-non-x86_64.patch badshah400@gmail.com -- Disable Weave related tests on all but x86_64 where tolerance errors show up, see https://git.ligo.org/lscsoft/lalsuite/-/issues/105
