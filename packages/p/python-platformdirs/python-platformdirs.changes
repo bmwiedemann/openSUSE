@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 22 21:59:19 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.5.2:
+  * Move packaging to hatchling from setuptools
+  * Treat android shells as unix
+- Disable building the docs.
+  * It's the only package in Ring1 pulling in
+    python-sphinx-autodoc-typehints and thus python-nptyping and
+    python-beartype. Avoid it. The online docs should be enough
+    nowadays.
+  * Drop no-furo.patch
+
+-------------------------------------------------------------------
 Sat Mar 26 18:42:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.1:
