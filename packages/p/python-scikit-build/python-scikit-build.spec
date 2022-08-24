@@ -85,7 +85,10 @@ sed -i '/addopts/ d' setup.cfg
 %check
 export PYTHONPATH=/tmp/fakepythonroot%{$python_sitelib}
 # test_pep518 needs a wheelhouse with downloaded wheels including platform dependent cmake
-%pytest -k "not test_pep518"
+donttest="test_pep518"
+# setuptools 62+ discovery fails here
+donttest="$donttest or (test_script_keyword and pure)"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst CONTRIBUTING.rst HISTORY.rst docs/

@@ -78,4 +78,13 @@
     <comment></comment>
     <requestid>966295</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>0d9f36978a1cf026a3cf1b13ddf2d131</srcmd5>
+    <version>0.13.1</version>
+    <time>1661346703</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip a test failing with setuptools 62+
+</comment>
+    <requestid>999014</requestid>
+  </revision>
 </revisionlist>
