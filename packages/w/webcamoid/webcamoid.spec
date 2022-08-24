@@ -25,7 +25,9 @@ Group:          System/GUI/KDE
 URL:            https://webcamoid.github.io/
 Source:         https://github.com/hipersayanX/Webcamoid/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM webcamoid-manpath.patch
-Patch1:         webcamoid-manpath.patch
+Patch0:         webcamoid-manpath.patch
+# PATCH-FIX-UPSTREAM https://github.com/webcamoid/webcamoid/pull/560
+Patch1:         webcamoid-ffmpeg5.patch
 BuildRequires:  bison
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -36,7 +38,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  kf5-filesystem
 BuildRequires:  libqt5-linguist
 BuildRequires:  perl-Text-Markdown
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Concurrent) >= 5.15
 BuildRequires:  cmake(Qt5Core) >= 5.15
 BuildRequires:  cmake(Qt5DBus) >= 5.15
@@ -96,17 +98,11 @@ Markdown.pl --html4 ../README.md > ../README.html
 
 %fdupes %{buildroot}%{_datadir}
 
-rm -f %{buildroot}%{_libdir}/libavkys.so
+rm %{buildroot}%{_libdir}/libavkys.so
 
-%post
-/sbin/ldconfig
-%icon_theme_cache_post
-%desktop_database_post
+%post -p /sbin/ldconfig
 
-%postun
-/sbin/ldconfig
-%icon_theme_cache_postun
-%desktop_database_postun
+%postun -p /sbin/ldconfig
 
 %files
 %doc AUTHORS ChangeLog README.html THANKS
