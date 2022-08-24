@@ -16,7 +16,18 @@
 #
 
 
-%define shlib lib%{name}23
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -test
+%else
+%bcond_with test
+%define psuffix %{nil}
+%endif
+
+%define pname lalpulsar
+
+%define shlib lib%{name}26
 # octave >= 6 is not supported
 %bcond_with octave
 
@@ -25,30 +36,40 @@
 # Py2 support drop by upstream
 %define skip_python2 1
 
-Name:           lalpulsar
-Version:        3.1.1
+Name:           %{pname}%{?psuffix}
+Version:        5.0.0
 Release:        0
 Summary:        LSC Algorithm Pulsar Library
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/LALSuite
-Source:         http://software.ligo.org/lscsoft/source/lalsuite/%{name}-%{version}.tar.xz
+Source:         https://software.igwn.org/sources/source/lalsuite/%{pname}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM lalpulsar-printf-type-mismatch.patch badshah400@gmail.com -- Fix type mismatch when passing variables to printf
 Patch0:         lalpulsar-printf-type-mismatch.patch
+# PATCH-FIX-OPENSUSE lalpulsar-disable-test_ssbtodetector.patch badshah400@gmail.com -- Disable a test that requires packages not yet availabe on openSUSE
+Patch1:         lalpulsar-disable-test_ssbtodetector.patch
+# PATCH-FIX-UPSTREAM lalpulsar-fix-uninitialized-var.patch badshah400@gmail.com -- Fix an uninitialised variable
+Patch2:         lalpulsar-fix-uninitialized-var.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lal >= 7.1.0}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  fdupes
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(lal)
-BuildRequires:  pkgconfig(lalframe)
-Requires:       python-lal
+BuildRequires:  pkgconfig(lal) >= 7.2.0
+BuildRequires:  pkgconfig(lalframe) >= 2.0.0
+BuildRequires:  pkgconfig(lalinference) >= 4.0.0
+BuildRequires:  pkgconfig(lalsimulation) >= 4.0.0
+Requires:       python-lal >= 7.2.0
+Requires:       python-lalframe >= 2.0.0
+Requires:       python-lalinference >= 4.0.0
+Requires:       python-lalsimulation >= 4.0.0
 Requires:       python-numpy
 Recommends:     %{name}-data = %{version}
 ExcludeArch:    %{ix86}
@@ -60,9 +81,16 @@ BuildRequires:  octave-lal
 BuildRequires:  pkgconfig(octave)
 %endif
 # SECTION For tests
+%if %{with test}
 BuildRequires:  %{python_module astropy}
+BuildRequires:  %{python_module h5py}
+BuildRequires:  %{python_module lal >= 7.2.0}
 BuildRequires:  %{python_module lalframe}
+BuildRequires:  %{python_module lalinference >= 4.0.0}
+BuildRequires:  %{python_module lalsimulation >= 4.0.0}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  bc
+%endif
 # /SECTION
 %python_subpackages
 
@@ -84,7 +112,10 @@ Requires:       %{shlib} = %{version}
 Requires:       pkgconfig(cfitsio)
 Requires:       pkgconfig(fftw3)
 Requires:       pkgconfig(gsl)
-Requires:       pkgconfig(lal)
+Requires:       pkgconfig(lal) >= 7.2.0
+Requires:       pkgconfig(lalframe) >= 2.0.0
+Requires:       pkgconfig(lalinference) >= 4.0.0
+Requires:       pkgconfig(lalsimulation) >= 4.0.0
 
 %description  -n %{name}-devel
 This package contains sources and header files needed to build applications
@@ -93,6 +124,7 @@ that use the LAL Pulsar library.
 %package  -n %{name}-data
 Summary:        Data files for use with LAL Pulsar
 Group:          Productivity/Scientific/Physics
+BuildArch:      noarch
 
 %description  -n %{name}-data
 This package provides auxiliary data useful for analyses with LAL Pulsar.
@@ -107,25 +139,30 @@ Requires:       octave-lal
 This package provides the necessary files for using LAL Pulsar with octave.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{pname}-%{version}
 
 %build
+# Patch1 needs autoreconf
+autoreconf -fvi
 %{python_expand # Necessary to run configure with multiple py3 flavors
-export PYTHON=$python
-mkdir ../${PYTHON}_build
-cp -pr ./ ../${PYTHON}_build
-pushd ../${PYTHON}_build
+export PYTHON=%{_bindir}/$python
+mkdir ../$python
+cp -pr ./ ../$python
+pushd ../$python
+export CFLAGS="%{optflags} -Wno-error=address"
+export CXXFLAGS=${CFLAGS}
 %configure \
   %{?with_octave:--enable-swig-octave} \
   %{!?with_octave:--disable-swig-octave}
-%make_build
+%make_build %{?with_test:test}
 popd
 }
 
 %install
+%if %{without test}
 %{python_expand # Multiple py3 flavors make_install
-export PYTHON=$python
-pushd ../${PYTHON}_build
+export PYTHON=%{_bindir}/$python
+pushd ../$python
 %make_install
 popd
 }
@@ -163,14 +200,9 @@ find %{buildroot}%{_libdir}/ -name "*.a" -delete -print
 find %{buildroot} -type f -name "*.la" -delete -print
 # /SECTION
 
-%python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
+sed -i "1s|/usr/bin/env tclsh|/usr/bin/tclsh|" %{buildroot}%{_bindir}/lalpulsar_CopySFTs
 
-%check
-%{python_expand export PYTHON=$python
-pushd ../${PYTHON}_build
-%make_build check
-popd
-}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
@@ -200,5 +232,16 @@ popd
 
 %files %{python_files}
 %{python_sitearch}/*
+
+%else
+
+%check
+%{python_expand export PYTHON=%{_bindir}/$python
+pushd ../$python
+%make_build check
+popd
+}
+
+%endif
 
 %changelog

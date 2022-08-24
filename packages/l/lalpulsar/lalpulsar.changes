@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Aug 23 23:50:58 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix multibuild package names.
+
+-------------------------------------------------------------------
+Sat Aug 20 11:26:04 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.0.0:
+  * No release notes.
+- New BuildRequires: pkgconfig(lalsimulation),
+  pkgconfig(lalinference).
+- Update source URL.
+- Pass "-Wno-error=address" to CFLAGS to disable errors on minor
+  warnings.
+- Testing takes rather long; split out tests as part of %check
+  into a separate _multibuild flavour so that it does not hold
+  up builds of dependent packages.
+- Add lalpulsar-disable-test_ssbtodetector.patch to disable a test
+  that we cannot run on openSUSE yet due to missing pkgs.
+- Add lalpulsar-fix-uninitialized-var.patch: Fix an uninitialised
+  variable.
+- Change build dir naming used to build the different python
+  flavours so that the env var PYTHON, which is also used to set
+  up script hashbangs, can be set to the full python executable.
+- Update so version to match upstream.
+- Fix an env-based hashbang in a script.
+
+-------------------------------------------------------------------
 Mon Jan  3 00:14:21 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.1.1:
