@@ -1,17 +1,16 @@
-Index: node-v16.15.1/tools/install.py
+Index: node-v18.7.0/tools/install.py
 ===================================================================
---- node-v16.15.1.orig/tools/install.py
-+++ node-v16.15.1/tools/install.py
-@@ -7,6 +7,8 @@ import errno
+--- node-v18.7.0.orig/tools/install.py
++++ node-v18.7.0/tools/install.py
+@@ -7,6 +7,7 @@ import errno
  import os
  import shutil
  import sys
 +from distutils import sysconfig
-+import re
+ import re
  
  # set at init time
- node_prefix = '/usr/local' # PREFIX variable from Makefile
-@@ -65,6 +67,10 @@ def try_copy(path, dst):
+@@ -66,6 +67,10 @@ def try_copy(path, dst):
    try_unlink(target_path) # prevent ETXTBSY errors
    return shutil.copy2(source_path, target_path)
  
@@ -22,7 +21,7 @@ Index: node-v16.15.1/tools/install.py
  def try_remove(path, dst):
    source_path, target_path = mkpaths(path, dst)
    print('removing %s' % target_path)
-@@ -80,7 +86,7 @@ def uninstall(paths, dst):
+@@ -81,7 +86,7 @@ def uninstall(paths, dst):
      try_remove(path, dst)
  
  def package_files(action, name, bins):
@@ -31,7 +30,7 @@ Index: node-v16.15.1/tools/install.py
  
    # don't install npm if the target path is a symlink, it probably means
    # that a dev version of npm is installed there
-@@ -100,7 +106,7 @@ def package_files(action, name, bins):
+@@ -101,7 +106,7 @@ def package_files(action, name, bins):
      if action == uninstall:
        action([link_path], 'bin/' + bin_name)
      elif action == install:
@@ -40,20 +39,20 @@ Index: node-v16.15.1/tools/install.py
      else:
        assert 0  # unhandled action type
  
-@@ -148,7 +154,7 @@ def files(action):
-     action([output_prefix + output_file], 'lib/' + output_file)
- 
+@@ -178,7 +183,7 @@ def files(action):
+       output_lib = 'libnode.' + variables.get('shlib_suffix')
+       action([output_prefix + output_lib], 'lib/' + output_lib)
    if 'true' == variables.get('node_use_dtrace'):
 -    action(['out/Release/node.d'], 'lib/dtrace/node.d')
 +    action(['out/Release/node.d'], libdir() + '/dtrace/node.d')
  
    # behave similarly for systemtap
    action(['src/node.stp'], 'share/systemtap/tapset/')
-Index: node-v16.15.1/lib/internal/modules/cjs/loader.js
+Index: node-v18.7.0/lib/internal/modules/cjs/loader.js
 ===================================================================
---- node-v16.15.1.orig/lib/internal/modules/cjs/loader.js
-+++ node-v16.15.1/lib/internal/modules/cjs/loader.js
-@@ -1240,7 +1240,7 @@ Module._initPaths = function() {
+--- node-v18.7.0.orig/lib/internal/modules/cjs/loader.js
++++ node-v18.7.0/lib/internal/modules/cjs/loader.js
+@@ -1255,7 +1255,7 @@ Module._initPaths = function() {
      path.resolve(process.execPath, '..') :
      path.resolve(process.execPath, '..', '..');
  

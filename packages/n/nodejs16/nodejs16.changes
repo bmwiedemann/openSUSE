@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 16 14:53:04 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- enable crypto-policies for SLE15 SP4+ and TW (bsc#1200303)
+- Update to LTS version 16.16.0:
+  * deps: upgrade npm to 8.15.0
+  * Improved interoperability of the Web Crypto API
+  * Updated Undici to 5.8.0
+  For full list of changes, see
+  https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V16.md#16.17.0
+
+- nodejs-libpath.patch, versioned.patch: refreshed patches
+
+-------------------------------------------------------------------
 Mon Jul 11 12:07:16 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - Update to LTS version 16.16.0:
@@ -12,7 +25,7 @@ Mon Jul 11 12:07:16 UTC 2022 - Adam Majer <adam.majer@suse.de>
 Thu Jun 23 13:42:03 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to LTS version 16.15.1
-  * upgrade npm to 8.11.0
+  * upgrade npm to 8.11.0 (bsc#1200517, CVE-2022-29244)
 - Update to LTS version 16.15.0
   * Add experimental support to the fetch API. This adds the 
     `--experimental-fetch` flag that installs the fetch, Request,

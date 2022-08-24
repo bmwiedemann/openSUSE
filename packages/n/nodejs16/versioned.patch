@@ -8,10 +8,10 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v16.15.1/Makefile
+Index: node-v16.17.0/Makefile
 ===================================================================
---- node-v16.15.1.orig/Makefile
-+++ node-v16.15.1/Makefile
+--- node-v16.17.0.orig/Makefile
++++ node-v16.17.0/Makefile
 @@ -55,7 +55,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
@@ -21,10 +21,10 @@ Index: node-v16.15.1/Makefile
  NODE ?= ./$(NODE_EXE)
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
-Index: node-v16.15.1/tools/install.py
+Index: node-v16.17.0/tools/install.py
 ===================================================================
---- node-v16.15.1.orig/tools/install.py
-+++ node-v16.15.1/tools/install.py
+--- node-v16.17.0.orig/tools/install.py
++++ node-v16.17.0/tools/install.py
 @@ -86,7 +86,7 @@ def uninstall(paths, dst):
      try_remove(path, dst)
  
@@ -58,7 +58,7 @@ Index: node-v16.15.1/tools/install.py
  #   Not the default just yet:
  #   'yarn': 'dist/yarn.js',
  #   'yarnpkg': 'dist/yarn.js',
-@@ -136,7 +136,7 @@ def subdir_files(path, dest, action):
+@@ -147,7 +147,7 @@ def subdir_files(path, dest, action):
  
  def files(action):
    is_windows = sys.platform == 'win32'
@@ -66,8 +66,8 @@ Index: node-v16.15.1/tools/install.py
 +  output_file = 'node16'
    output_prefix = 'out/Release/'
  
-   if 'false' == variables.get('node_shared'):
-@@ -157,7 +157,7 @@ def files(action):
+   if is_windows:
+@@ -186,7 +186,7 @@ def files(action):
      action(['out/Release/node.d'], libdir() + '/dtrace/node.d')
  
    # behave similarly for systemtap
@@ -76,7 +76,7 @@ Index: node-v16.15.1/tools/install.py
  
    action(['deps/v8/tools/gdbinit'], 'share/doc/node/')
    action(['deps/v8/tools/lldb_commands.py'], 'share/doc/node/')
-@@ -165,7 +165,7 @@ def files(action):
+@@ -194,7 +194,7 @@ def files(action):
    if 'freebsd' in sys.platform or 'openbsd' in sys.platform:
      action(['doc/node.1'], 'man/man1/')
    else:
@@ -85,7 +85,7 @@ Index: node-v16.15.1/tools/install.py
  
    if 'true' == variables.get('node_install_npm'):
      npm_files(action)
-@@ -209,28 +209,28 @@ def headers(action):
+@@ -238,28 +238,28 @@ def headers(action):
      'src/node_buffer.h',
      'src/node_object_wrap.h',
      'src/node_version.h',
@@ -122,10 +122,10 @@ Index: node-v16.15.1/tools/install.py
  
    if sys.platform == 'zos':
      zoslibinc = os.environ.get('ZOSLIB_INCLUDES')
-Index: node-v16.15.1/doc/node.1
+Index: node-v16.17.0/doc/node.1
 ===================================================================
---- node-v16.15.1.orig/doc/node.1
-+++ node-v16.15.1/doc/node.1
+--- node-v16.17.0.orig/doc/node.1
++++ node-v16.17.0/doc/node.1
 @@ -30,24 +30,24 @@
  .Dt NODE 1
  .
@@ -155,10 +155,10 @@ Index: node-v16.15.1/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v16.15.1/src/node.stp
+Index: node-v16.17.0/src/node.stp
 ===================================================================
---- node-v16.15.1.orig/src/node.stp
-+++ node-v16.15.1/src/node.stp
+--- node-v16.17.0.orig/src/node.stp
++++ node-v16.17.0/src/node.stp
 @@ -19,7 +19,7 @@
  // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  // USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -231,12 +231,12 @@ Index: node-v16.15.1/src/node.stp
  {
    scavenge = 1 << 0;
    compact = 1 << 1;
-Index: node-v16.15.1/deps/npm/man/man1/npm.1
+Index: node-v16.17.0/deps/npm/man/man1/npm.1
 ===================================================================
---- node-v16.15.1.orig/deps/npm/man/man1/npm.1
-+++ node-v16.15.1/deps/npm/man/man1/npm.1
+--- node-v16.17.0.orig/deps/npm/man/man1/npm.1
++++ node-v16.17.0/deps/npm/man/man1/npm.1
 @@ -1,6 +1,6 @@
- .TH "NPM" "1" "May 2022" "" ""
+ .TH "NPM" "1" "July 2022" "" ""
  .SH "NAME"
 -\fBnpm\fR \- javascript package manager
 +\fBnpm16\fR \- javascript package manager
@@ -306,10 +306,10 @@ Index: node-v16.15.1/deps/npm/man/man1/npm.1
 +npm16 help publish
  
  .RE
-Index: node-v16.15.1/src/node_main.cc
+Index: node-v16.17.0/src/node_main.cc
 ===================================================================
---- node-v16.15.1.orig/src/node_main.cc
-+++ node-v16.15.1/src/node_main.cc
+--- node-v16.17.0.orig/src/node_main.cc
++++ node-v16.17.0/src/node_main.cc
 @@ -122,6 +122,7 @@ int main(int argc, char* argv[]) {
  #endif
    // Disable stdio buffering, it interacts poorly with printf()
@@ -318,11 +318,11 @@ Index: node-v16.15.1/src/node_main.cc
    setvbuf(stdout, nullptr, _IONBF, 0);
    setvbuf(stderr, nullptr, _IONBF, 0);
    return node::Start(argc, argv);
-Index: node-v16.15.1/tools/test.py
+Index: node-v16.17.0/tools/test.py
 ===================================================================
---- node-v16.15.1.orig/tools/test.py
-+++ node-v16.15.1/tools/test.py
-@@ -935,7 +935,7 @@ class Context(object):
+--- node-v16.17.0.orig/tools/test.py
++++ node-v16.17.0/tools/test.py
+@@ -948,7 +948,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
      if arch == 'none':
@@ -331,11 +331,11 @@ Index: node-v16.15.1/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-v16.15.1/node.gyp
+Index: node-v16.17.0/node.gyp
 ===================================================================
---- node-v16.15.1.orig/node.gyp
-+++ node-v16.15.1/node.gyp
-@@ -23,8 +23,8 @@
+--- node-v16.17.0.orig/node.gyp
++++ node-v16.17.0/node.gyp
+@@ -24,8 +24,8 @@
      'node_use_openssl%': 'true',
      'node_shared_openssl%': 'false',
      'node_v8_options%': '',
@@ -346,12 +346,12 @@ Index: node-v16.15.1/node.gyp
      'node_intermediate_lib_type%': 'static_library',
      'node_builtin_modules_path%': '',
      # We list the deps/ files out instead of globbing them in js2c.py since we
-Index: node-v16.15.1/deps/npm/man/man1/npx.1
+Index: node-v16.17.0/deps/npm/man/man1/npx.1
 ===================================================================
---- node-v16.15.1.orig/deps/npm/man/man1/npx.1
-+++ node-v16.15.1/deps/npm/man/man1/npx.1
+--- node-v16.17.0.orig/deps/npm/man/man1/npx.1
++++ node-v16.17.0/deps/npm/man/man1/npx.1
 @@ -1,14 +1,14 @@
- .TH "NPX" "1" "May 2022" "" ""
+ .TH "NPX" "1" "July 2022" "" ""
  .SH "NAME"
 -\fBnpx\fR \- Run a command from a local or remote npm package
 +\fBnpx16\fR \- Run a command from a local or remote npm package
