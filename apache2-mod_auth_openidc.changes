@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 23 13:51:51 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.4.11.3
+  * Bugfixes
+    - avoid memory leak when using PCRE2 regular expressions with
+      array matching; closes #902
+    - avoid memory leak when cjose_jws_get_plaintext fails; closes #903
+    - fix handling of IPv6 based logout URLs
+  * Features
+    - Use optionally provided sid and iss request parameters during
+      front channel logout; see #855
+    - support Forwarded header in addition to X-Forwarded-*; see #853
+
+-------------------------------------------------------------------
 Mon Jul 25 09:25:37 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - removed obsolete BuildRequires autoconf and automake
