@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 23 15:57:35 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.4.4.
+  * Improve D-Bus notifications handling
+  Bug fixes:
+  * Correctly handle data decompression with Qt 6.3
+  * Fix wrong file names displayed in tooltip
+  * Fix incorrect "max outgoing port" setting
+  * Make working set limit available only on libtorrent 2.0.x
+    builds
+  * Try to recover missing tags
+  RSS:
+  * Clear RSS parsing error after use
+  Web API:
+  * Set HTTP method restriction on WebAPI actions
+
+-------------------------------------------------------------------
 Wed May 25 17:25:40 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.4.3.1
