@@ -16,7 +16,18 @@
 #
 
 
-%define shlib lib%{name}22
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -test
+%else
+%bcond_with test
+%define psuffix %{nil}
+%endif
+
+%define pname lalinference
+
+%define shlib lib%{name}23
 # octave >= 6 not supported
 %bcond_with octave
 
@@ -24,54 +35,51 @@
 %define skip_python2  1
 %define skip_python36 1
 
-Name:           lalinference
-Version:        3.0.1
+Name:           %{pname}%{?psuffix}
+Version:        4.0.0
 Release:        0
 Summary:        LSC Algorithm Inference Library
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
-Source:         http://software.ligo.org/lscsoft/source/lalsuite/%{name}-%{version}.tar.xz
+Source:         https://software.igwn.org/sources/source/lalsuite/%{pname}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM lalinference-printf-data-type-consistency.patch badshah400@gmail.com -- Cast data passed to printf from size_t to long to make it consistent with the format "%li"; this fixes build failures on i586
 Patch0:         lalinference-printf-data-type-consistency.patch
-# PATCH-FIX-UPSTREAM lalinference-import-MutableMapping.patch badshah400@gmail.com -- lalinference.wrapper: Update import of MutableMapping
-Patch1:         lalinference-import-MutableMapping.patch
-BuildRequires:  %{python_module Shapely}
-BuildRequires:  %{python_module astropy}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module glue >= 1.54.1}
-BuildRequires:  %{python_module lal >= 7.1.0}
-BuildRequires:  %{python_module lalburst >= 1.5.3}
-BuildRequires:  %{python_module lalframe >= 1.4.0}
-BuildRequires:  %{python_module lalinspiral >= 2.0.0}
-BuildRequires:  %{python_module lalmetaio >= 2.0.0}
-BuildRequires:  %{python_module lalpulsar >= 3.0.0}
-BuildRequires:  %{python_module lalsimulation >= 2.5.0}
-BuildRequires:  %{python_module matplotlib >= 1.2.0}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module scipy >= 0.9.0}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
 BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(lal)
-BuildRequires:  pkgconfig(lalburst)
-BuildRequires:  pkgconfig(lalframe)
-BuildRequires:  pkgconfig(lalinspiral)
-BuildRequires:  pkgconfig(lalmetaio)
-BuildRequires:  pkgconfig(lalpulsar)
-BuildRequires:  pkgconfig(lalsimulation)
-BuildRequires:  pkgconfig(libmetaio)
-# SECTION For tests (python3 only)
+BuildRequires:  pkgconfig(lal) >= 7.2.0
+BuildRequires:  pkgconfig(lalburst) >= 1.6.0
+BuildRequires:  pkgconfig(lalframe) >= 2.0.0
+BuildRequires:  pkgconfig(lalinspiral) >= 3.0.0
+BuildRequires:  pkgconfig(lalmetaio) >= 3.0.0
+BuildRequires:  pkgconfig(lalsimulation) >= 4.0.0
+# SECTION For tests
+%if %{with test}
+BuildRequires:  %{python_module Shapely}
+BuildRequires:  %{python_module astropy}
+BuildRequires:  %{python_module glue >= 1.54.1}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module healpy >= 1.9.1}
+BuildRequires:  %{python_module lal >= 7.2.0}
+BuildRequires:  %{python_module lalburst >= 1.6.0}
+BuildRequires:  %{python_module lalframe >= 2.0.0}
+BuildRequires:  %{python_module lalinspiral >= 3.0.0}
+BuildRequires:  %{python_module lalmetaio >= 3.0.0}
+BuildRequires:  %{python_module lalsimulation >= 4.0.0}
+BuildRequires:  %{python_module matplotlib >= 1.2.0}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy >= 0.9.0}
+BuildRequires:  pkgconfig(lalinference) = %{version}
+%endif
 # /SECTION
 %if %{with octave}
 BuildRequires:  octave-lal
-BuildRequires:  octave-lalburst
 BuildRequires:  octave-lalframe
 BuildRequires:  octave-lalinspiral
 BuildRequires:  octave-lalmetaio
@@ -80,12 +88,12 @@ BuildRequires:  octave-lalsimulation
 BuildRequires:  pkgconfig(octave)
 %endif
 Requires:       %{name}-data = %{version}
-Requires:       python-lal
-Requires:       python-lalframe
-Requires:       python-lalinspiral
-Requires:       python-lalmetaio
-Requires:       python-lalpulsar
-Requires:       python-lalsimulation
+Requires:       python-lal >= 7.2.0
+Requires:       python-lalburst >= 1.6.0
+Requires:       python-lalframe >= 2.0.0
+Requires:       python-lalinspiral >= 3.0.0
+Requires:       python-lalmetaio >= 3.0.0
+Requires:       python-lalsimulation >= 4.0.0
 ExcludeArch:    %{ix86}
 
 %python_subpackages
@@ -108,14 +116,12 @@ Group:          Development/Libraries/C and C++
 Requires:       %{name}-data = %{version}
 Requires:       %{shlib} = %{version}
 Requires:       pkgconfig(gsl)
-Requires:       pkgconfig(lal)
-Requires:       pkgconfig(lalburst)
-Requires:       pkgconfig(lalframe)
-Requires:       pkgconfig(lalinspiral)
-Requires:       pkgconfig(lalmetaio)
-Requires:       pkgconfig(lalpulsar)
-Requires:       pkgconfig(lalsimulation)
-Requires:       pkgconfig(libmetaio)
+Requires:       pkgconfig(lal) >= 7.2.0
+Requires:       pkgconfig(lalburst) >= 1.6.0
+Requires:       pkgconfig(lalframe) >= 2.0.0
+Requires:       pkgconfig(lalinspiral) >= 3.0.0
+Requires:       pkgconfig(lalmetaio) >= 3.0.0
+Requires:       pkgconfig(lalsimulation) >= 4.0.0
 
 %description -n %{name}-devel
 This package contains sources and header files needed to build applications
@@ -125,6 +131,7 @@ that use the LAL Inference library.
 Summary:        Data files for lalinference
 Group:          Productivity/Scientific/Physics
 Provides:       %{python_module lalinference-data}
+BuildArch:      noarch
 
 %description -n %{name}-data
 This package provides the data files for lalinference.
@@ -146,7 +153,7 @@ Requires:       octave-lalsimulation
 This package provides the necessary files for using LAL Inference with octave.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{pname}-%{version}
 
 %build
 %{python_expand # Necessary to run %%configure with all python flavors
@@ -157,11 +164,12 @@ pushd ../$python
 %configure \
   %{?with_octave:--enable-swig-octave} \
   %{!?with_octave:--disable-swig-octave}
-make %{?_smp_mflags}
+%make_build %{?with_test:test}
 popd
 }
 
 %install
+%if %{without test}
 %{python_expand # install for all python flavors
 export PYTHON=%{_bindir}/$python
 pushd ../$python
@@ -212,15 +220,6 @@ sed -E -i "1 s|^#\!\s*%{_bindir}/env\s*bash|#\!/bin/bash|" %{buildroot}%{_bindir
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
 
-%check
-%{python_expand # check for all python flavors
-export PYTHON=%{_bindir}/$python
-pushd ../$python
-export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
-%make_build check
-popd
-}
-
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
 
@@ -251,5 +250,15 @@ popd
 
 %files -n %{name}-data
 %{_datadir}/%{name}/
+
+%else
+
+%check
+%{python_expand # check for all python flavors
+export PYTHON=%{_bindir}/$python
+%make_build -C ../$python check
+}
+
+%endif
 
 %changelog

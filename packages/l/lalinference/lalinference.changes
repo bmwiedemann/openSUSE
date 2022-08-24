@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug 23 23:48:59 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix multibuild package names.
+
+-------------------------------------------------------------------
+Fri Aug 19 20:29:48 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.0.0:
+  * No release notes.
+- Drop lalinference-import-MutableMapping.patch: incorporated
+  upstream.
+- Drop BuildRequires on lalpulsar-devel and python-lalpulsar
+  (indeed now lalpulsar depends on lalinference-devel).
+- Update source URL.
+- Update so version to match upstream.
+- Re-organise list of BuildRequires to differentiate packages
+  needed for building proper vs those needed for tests only.
+- Tests can take a long time, split testing as part of %check
+  into its own _multibuild flavour.
+- Make %{name}-data a noarch package.
+- New BuildRequires for tests: python-h5py.
+
+-------------------------------------------------------------------
 Tue Apr 26 10:44:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve rpmlint report "liblalinference21.x86_64: E:
