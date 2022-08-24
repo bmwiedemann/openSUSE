@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Mon Aug 22 22:40:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.224.0 (09afdf642)
+  * Enable layer interception of unknown functions
+
+-------------------------------------------------------------------
+Mon Aug 15 20:38:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to branch snapshot SDK-1.3.224 (7fb19a4c8):
+  * Add issues to the apiext:VK_KHR_dynamic_rendering proposal document
+    discussing render area granularity (public issue 1899).
+  * Clarify external synchronization requirements for
+    ename:VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT and
+    ename:VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT
+    elink:VkDescriptorBindingFlagBits and flink:vkUpdateDescriptorSets
+    (public issue 1713).
+  * Add Vulkan 1.0 valid usage statement for *Subgroup* memory scope to
+    <<spirvenv-module-validation-standalone, Standalone SPIR-V Validation>>
+    (public merge request 1900).
+  * Move "`Hit Kind`" valid usage statement from standalone to runtime
+    SPIR-V validation statements (public merge request 1903).
+  * Use correct feature in
+    ename:VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2_EXT
+    description (public pull request 1892).
+  * GitHub CI: Regenerate and build-test Rust Vulkan bindings (Ash crate)
+    (public pull request 1894).
+  * Add dependency of apiext:VK_EXT_blend_operation_advanced on
+    apiext:VK_KHR_get_physical_device_properties2. (public merge request
+    1887).
+  * Update xrefs to features so the feature name is used as the link text,
+    and marked up consistently. Added a section to the style guide on markup
+    of feature xrefs (public issue 1889).
+    elink:VK_COLOR_SPACE_PASS_THROUGH_EXT for a linear or non-gamma transfer
+    function color space (public merge request 1729).
+  * Fix clamp expression for d_{lo} in the
+    <<textures-level-of-detail-operation, Level-of-Detail Operation>>
+    section (partial fix for public issue 1836).
+  * Update <<spirvenv-module-validation-standalone, Standalone SPIR-V
+    Validation>> to add explicit valid usage statements for code:Uniform
+    objects being read only, and for code:Block decorations (public merge
+    request 1879).
+  * Add an issue to apiext:VK_KHR_fragment_shader_barycentric for
+    interactions with MSAA (public merge request 1881).
+  * Fix XML tagging of slink:VkShaderModuleCreateInfo and add an explicit
+    valid usage statement so this structure can be validated both as an
+    explicit parameter, and as part of the pname:pNext chain of
+    slink:VkPipelineShaderStageCreateInfo (public issue 1883, but a broader
+    fix in the validation scripts for this case will eventually be
+    required).
+  * Update pipeline image to move push constants outside of descriptor sets
+    (public issue 1867).
+  * Correct code:StencilRefLessFrontEXT to code:DepthLess in the early depth
+    test portion of the <<fragops, Fragment Operations>> chapter (public
+    pull request 1876).
+  * Add new driver id ename:VK_DRIVER_ID_MESA_DOZEN (public pull request
+    1877).
+  * Relax slink:VkRenderPassCreateInfo valid usage statements 02517 and
+    02518 to allow ename:VK_SUBPASS_EXTERNAL (public pull request 1878).
+  * Add apiext:VK_KHR_maintenance4 relaxed interface valid usage statement
+    to the <<spirvenv-module-validation-runtime, Runtime SPIR-V Validation>>
+    section (public pull request 1860).
+  * Fix field name in slink:VkRenderingAttachmentInfo valid usage statement
+    (public pull request 1861).
+  * Fix typo in slink:VkFramebufferCreateInfo valid usage statements 04533 /
+    04544 (public pull request 1873).
+  * Remove duplicate valid usage statement 06060 (public pull request 1874).
+  * Rework <<fxvertex-input-address-calculation, Vertex Input Address
+    Calculation>> section (public pull request 1869).
+  * Split Github CI script into individual jobs to decrease run time (public
+    pull request 1870).
+  * Clarify meaning of "`private data slot`" for apiext:VK_EXT_private_data
+  * Minor markup fix in the <<spirvenv-module-validation-standalone>>
+    section (public merge request 1864). 
+
+-------------------------------------------------------------------
 Wed Jun 15 12:30:49 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.216
