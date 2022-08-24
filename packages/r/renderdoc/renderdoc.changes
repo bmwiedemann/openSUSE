@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Aug 24 07:15:54 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.21
+  * UI: Highlight the current event in the texture viewer context
+    menu that shows resource usage.
+  * UI: Improve handling of source-level shader debugging
+    breakpoints.
+  * All: Show status in mesh viewer when geometry data is not
+    available, e.g. when using multiview and geometry/tessellation
+    on vulkan.
+  * All: Tweaked the in-program overlay to be more readable and
+    better organised, especially around multiple windows.
+  * All: Handle applications that don't create any
+    graphics-compatible queues on Vulkan or D3D12 to still be able to
+    capture and replay correctly.
+  * Vulkan: Improve the clarity of error messages for incompatible
+    captures, showing the reason for the incompatibility and what
+    device was captured on and replayed on.
+  * Vulkan: Implemented tracking of printf statements from geometry
+    shaders.
+  * Vulkan: Allow buffer format re-interpreting of push constants.
+  * OpenGL: Display the 'intuitive' state of face culling winding,
+    rather than strictly following enums (e.g. when clip origin is
+    non-default, GL_CCW frontface means that clockwise wound
+    polygons are front-facing). 
+
+-------------------------------------------------------------------
 Tue Aug 16 12:12:44 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Added patch file 0001-Fix-install-rpaths.patch 
