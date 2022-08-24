@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 22 23:25:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 1.6.1+sdk224+git2.0bcc624
+  * Updated clspv reflection non-semantic instruction set
+  * Resolved missing update of spirv.bf
+
+-------------------------------------------------------------------
 Wed Jun 15 13:21:30 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to 1.6.1+sdk216 (b2a156e)

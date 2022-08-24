@@ -24,14 +24,15 @@
 # and the independently increasing toolchain release number (216).
 
 Name:           spirv-headers
-Version:        1.6.1+sdk216
+Version:        1.6.1+sdk224+git2.0bcc624
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Headers
 
-Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/sdk-1.3.216.0.tar.gz
+#Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/sdk-1.3.216.0.tar.gz
+Source:         %name-%version.tar.xz
 BuildArch:      noarch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
@@ -48,7 +49,7 @@ registry. This includes:
 * The XML registry file.
 
 %prep
-%autosetup -n SPIRV-Headers-sdk-1.3.216.0
+%autosetup
 
 %build
 %cmake

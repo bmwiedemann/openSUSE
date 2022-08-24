@@ -233,4 +233,12 @@
     <comment>- Update to 1.6.1+sdk216 (b2a156e)</comment>
     <requestid>982871</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0141c0e85751e91c68c54e9bf09d7a99</srcmd5>
+    <version>1.6.1+sdk224+git2.0bcc624</version>
+    <time>1661346652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998869</requestid>
+  </revision>
 </revisionlist>
