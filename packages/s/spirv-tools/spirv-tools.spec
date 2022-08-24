@@ -17,21 +17,21 @@
 
 
 %define _lto_cflags %nil
-%define lname libSPIRV-Tools-2022_3_sdk216
+%define lname libSPIRV-Tools-2022_3
 
 Name:           spirv-tools
-Version:        2022.3~sdk216
+Version:        2022.3
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Tools
 
-#Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/v%version.tar.gz
-Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/sdk-1.3.216.0.tar.gz
+Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v%version.tar.gz
 Source9:        baselibs.conf
 Patch1:         ver.diff
 Patch2:         gcc48.diff
+Patch3:         0001-Fix-array-copy-propagation-4890.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  gcc-c++
@@ -66,7 +66,7 @@ validator, and is used in the standalone tools whilst also enabling
 integration into other code bases directly.
 
 %prep
-%autosetup -p1 -n SPIRV-Tools-sdk-1.3.216.0
+%autosetup -p1 -n SPIRV-Tools-%version
 find . -type f -name CMakeLists.txt -exec \
 	perl -i -pe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt {} +
 
