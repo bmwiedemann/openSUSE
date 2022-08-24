@@ -50,7 +50,7 @@ make %{?_smp_mflags} \
     LUA_V=%{lua_version} \
     LUA_CDIR="%{lua_archdir}" \
     LUA_INC="-I%{lua_incdir}" \
-    CFLAGS="%{optflags} -DLUA_32BITS -std=gnu11"
+    CFLAGS="%{optflags}"
 
 %install
 %make_install \

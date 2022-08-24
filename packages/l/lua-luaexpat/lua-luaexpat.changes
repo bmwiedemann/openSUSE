@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 23 14:17:59 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Drop LUA_32BITS and GNU11 std - seems fixed now
+
+-------------------------------------------------------------------
 Sun Aug 21 03:38:58 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 - Replace deprecated %makeinstall with %make_install 
