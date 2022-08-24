@@ -16,7 +16,7 @@
 #
 
 
-%define shlib lib%{name}8
+%define shlib lib%{name}10
 # NEP 29: python36-numpy and co. in TW are no more
 %define skip_python36 1
 # Support for py2 dropped by uostream
@@ -24,13 +24,13 @@
 # octave >= 6 not supported
 %bcond_with    octave
 Name:           lalmetaio
-Version:        2.1.0
+Version:        3.0.0
 Release:        0
 Summary:        LSC Algorithm MetaIO Library
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
-Source:         http://software.ligo.org/lscsoft/source/lalsuite/%{name}-%{version}.tar.xz
+Source:         https://software.igwn.org/sources/source/lalsuite/%{name}-%{version}.tar.xz
 #Git-Clone:     https://git.ligo.org/lscsoft/lalsuite.git
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lal >= 7.1.0}
