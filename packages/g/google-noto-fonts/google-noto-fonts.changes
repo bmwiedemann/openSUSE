@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 22 21:57:20 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+fix: bsc#1202279 and gh#notofonts/Arimo#13
+- fix-arimo.patch
+
+-------------------------------------------------------------------
+Sun Aug 21 23:34:14 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+fix: summary and descriptions not mentioning font being Serif
+add: README.FAQ to answer some questions about Noto Fonts packaging
+
+-------------------------------------------------------------------
 Wed Jun 15 06:57:10 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 feat: create new metapackage noto-fonts with all Noto Fonts except CJK and Emoji

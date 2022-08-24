@@ -35,7 +35,10 @@ URL:            https://github.com/googlefonts/noto-fonts
 Source0:        ttf.tar.gz
 Source1:        generate-fonts-and-specfile.sh
 Source2:        LICENSE
+Source3:        README.FAQ
+Patch0:         fix-arimo.patch
 BuildRequires:  fontpackages-devel
+BuildRequires:  fonttools
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
@@ -57,6 +60,15 @@ most noto fonts except for CJK and Emoji.
 @SUBPACKAGE_HEADERS@
 %prep
 tar -xzf %{SOURCE0} -C .
+
+# Arimo BoldItalic has an extra "Italic" style
+# https://bugzilla.suse.com/show_bug.cgi?id=1202279 and https://github.com/notofonts/Arimo/issues/14
+# Fix weight too https://github.com/notofonts/Arimo/issues/13
+ttx ttf/Arimo/Arimo-BoldItalic.ttf
+%patch0
+ttx -f ttf/Arimo/Arimo-BoldItalic.ttx
+rm ttf/Arimo/Arimo-BoldItalic.ttx
+
 cp %{SOURCE2} .
 
 %build
@@ -75,7 +87,6 @@ install -Dm 644 -t %{buildroot}%{_ttfontsdir} ttf/*/*.ttf
 @SUBPACKAGE_SCRIPTLETS@
 %files -n noto-fonts
 %defattr(0644,root,root,755)
-%license LICENSE
 
 @SUBPACKAGE_FILELISTS@
 %changelog

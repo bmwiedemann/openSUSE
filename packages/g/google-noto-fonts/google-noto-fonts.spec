@@ -35,7 +35,10 @@ URL:            https://github.com/googlefonts/noto-fonts
 Source0:        ttf.tar.gz
 Source1:        generate-fonts-and-specfile.sh
 Source2:        LICENSE
+Source3:        README.FAQ
+Patch0:         fix-arimo.patch
 BuildRequires:  fontpackages-devel
+BuildRequires:  fonttools
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
@@ -2557,7 +2560,7 @@ heights and stroke thicknesses) across languages. This package contains
 Serif font, hinted.
 
 %package -n noto-serif-ahom-fonts
-Summary:        Noto Ahom Font
+Summary:        Noto Ahom Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-ahom < %{version}
 Provides:       noto-serif-ahom = %{version}
@@ -2566,10 +2569,10 @@ Provides:       noto-serif-ahom = %{version}
 %description -n noto-serif-ahom-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Ahom font, hinted.
+Ahom Serif font, hinted.
 
 %package -n noto-serif-armenian-fonts
-Summary:        Noto Armenian Font
+Summary:        Noto Armenian Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-armenian < %{version}
 Provides:       noto-serif-armenian = %{version}
@@ -2578,10 +2581,10 @@ Provides:       noto-serif-armenian = %{version}
 %description -n noto-serif-armenian-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Armenian font, hinted.
+Armenian Serif font, hinted.
 
 %package -n noto-serif-balinese-fonts
-Summary:        Noto Balinese Font
+Summary:        Noto Balinese Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-balinese < %{version}
 Provides:       noto-serif-balinese = %{version}
@@ -2590,10 +2593,10 @@ Provides:       noto-serif-balinese = %{version}
 %description -n noto-serif-balinese-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Balinese font, hinted.
+Balinese Serif font, hinted.
 
 %package -n noto-serif-bengali-fonts
-Summary:        Noto Bengali Font
+Summary:        Noto Bengali Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-bengali < %{version}
 Provides:       noto-serif-bengali = %{version}
@@ -2602,10 +2605,10 @@ Provides:       noto-serif-bengali = %{version}
 %description -n noto-serif-bengali-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Bengali font, hinted.
+Bengali Serif font, hinted.
 
 %package -n noto-serif-devanagari-fonts
-Summary:        Noto Devanagari Font
+Summary:        Noto Devanagari Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-devanagari < %{version}
 Provides:       noto-serif-devanagari = %{version}
@@ -2614,10 +2617,10 @@ Provides:       noto-serif-devanagari = %{version}
 %description -n noto-serif-devanagari-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Devanagari font, hinted.
+Devanagari Serif font, hinted.
 
 %package -n noto-serif-display-fonts
-Summary:        Noto Display Font
+Summary:        Noto Display Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-display < %{version}
 Provides:       noto-serif-display = %{version}
@@ -2626,10 +2629,10 @@ Provides:       noto-serif-display = %{version}
 %description -n noto-serif-display-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Display font, hinted.
+Display Serif font, hinted.
 
 %package -n noto-serif-divesakuru-fonts
-Summary:        Noto Dives Akuru Font
+Summary:        Noto Dives Akuru Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-divesakuru < %{version}
 Provides:       noto-serif-divesakuru = %{version}
@@ -2638,10 +2641,10 @@ Provides:       noto-serif-divesakuru = %{version}
 %description -n noto-serif-divesakuru-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-DivesAkuru font, hinted.
+DivesAkuru Serif font, hinted.
 
 %package -n noto-serif-dogra-fonts
-Summary:        Noto Dogra Font
+Summary:        Noto Dogra Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-dogra < %{version}
 Provides:       noto-serif-dogra = %{version}
@@ -2650,10 +2653,10 @@ Provides:       noto-serif-dogra = %{version}
 %description -n noto-serif-dogra-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Dogra font, hinted.
+Dogra Serif font, hinted.
 
 %package -n noto-serif-ethiopic-fonts
-Summary:        Noto Ethiopic Font
+Summary:        Noto Ethiopic Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-ethiopic < %{version}
 Provides:       noto-serif-ethiopic = %{version}
@@ -2662,10 +2665,10 @@ Provides:       noto-serif-ethiopic = %{version}
 %description -n noto-serif-ethiopic-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Ethiopic font, hinted.
+Ethiopic Serif font, hinted.
 
 %package -n noto-serif-georgian-fonts
-Summary:        Noto Georgian Font
+Summary:        Noto Georgian Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-georgian < %{version}
 Provides:       noto-serif-georgian = %{version}
@@ -2674,10 +2677,10 @@ Provides:       noto-serif-georgian = %{version}
 %description -n noto-serif-georgian-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Georgian font, hinted.
+Georgian Serif font, hinted.
 
 %package -n noto-serif-grantha-fonts
-Summary:        Noto Grantha Font
+Summary:        Noto Grantha Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-grantha < %{version}
 Provides:       noto-serif-grantha = %{version}
@@ -2686,10 +2689,10 @@ Provides:       noto-serif-grantha = %{version}
 %description -n noto-serif-grantha-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Grantha font, hinted.
+Grantha Serif font, hinted.
 
 %package -n noto-serif-gujarati-fonts
-Summary:        Noto Gujarati Font
+Summary:        Noto Gujarati Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-gujarati < %{version}
 Provides:       noto-serif-gujarati = %{version}
@@ -2698,10 +2701,10 @@ Provides:       noto-serif-gujarati = %{version}
 %description -n noto-serif-gujarati-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Gujarati font, hinted.
+Gujarati Serif font, hinted.
 
 %package -n noto-serif-gurmukhi-fonts
-Summary:        Noto Gurmukhi Font
+Summary:        Noto Gurmukhi Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-gurmukhi < %{version}
 Provides:       noto-serif-gurmukhi = %{version}
@@ -2710,10 +2713,10 @@ Provides:       noto-serif-gurmukhi = %{version}
 %description -n noto-serif-gurmukhi-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Gurmukhi font, hinted.
+Gurmukhi Serif font, hinted.
 
 %package -n noto-serif-hebrew-fonts
-Summary:        Noto Hebrew Font
+Summary:        Noto Hebrew Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-hebrew < %{version}
 Provides:       noto-serif-hebrew = %{version}
@@ -2722,10 +2725,10 @@ Provides:       noto-serif-hebrew = %{version}
 %description -n noto-serif-hebrew-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Hebrew font, hinted.
+Hebrew Serif font, hinted.
 
 %package -n noto-serif-kannada-fonts
-Summary:        Noto Kannada Font
+Summary:        Noto Kannada Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-kannada < %{version}
 Provides:       noto-serif-kannada = %{version}
@@ -2734,10 +2737,10 @@ Provides:       noto-serif-kannada = %{version}
 %description -n noto-serif-kannada-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Kannada font, hinted.
+Kannada Serif font, hinted.
 
 %package -n noto-serif-khmer-fonts
-Summary:        Noto Khmer Font
+Summary:        Noto Khmer Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-khmer < %{version}
 Provides:       noto-serif-khmer = %{version}
@@ -2746,10 +2749,10 @@ Provides:       noto-serif-khmer = %{version}
 %description -n noto-serif-khmer-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Khmer font, hinted.
+Khmer Serif font, hinted.
 
 %package -n noto-serif-khojki-fonts
-Summary:        Noto Khojki Font
+Summary:        Noto Khojki Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-khojki < %{version}
 Provides:       noto-serif-khojki = %{version}
@@ -2758,10 +2761,10 @@ Provides:       noto-serif-khojki = %{version}
 %description -n noto-serif-khojki-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Khojki font, hinted.
+Khojki Serif font, hinted.
 
 %package -n noto-serif-lao-fonts
-Summary:        Noto Lao Font
+Summary:        Noto Lao Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-lao < %{version}
 Provides:       noto-serif-lao = %{version}
@@ -2770,10 +2773,10 @@ Provides:       noto-serif-lao = %{version}
 %description -n noto-serif-lao-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Lao font, hinted.
+Lao Serif font, hinted.
 
 %package -n noto-serif-makasar-fonts
-Summary:        Noto Makasar Font
+Summary:        Noto Makasar Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-makasar < %{version}
 Provides:       noto-serif-makasar = %{version}
@@ -2782,10 +2785,10 @@ Provides:       noto-serif-makasar = %{version}
 %description -n noto-serif-makasar-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Makasar font, hinted.
+Makasar Serif font, hinted.
 
 %package -n noto-serif-malayalam-fonts
-Summary:        Noto Malayalam Font
+Summary:        Noto Malayalam Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-malayalam < %{version}
 Provides:       noto-serif-malayalam = %{version}
@@ -2794,10 +2797,10 @@ Provides:       noto-serif-malayalam = %{version}
 %description -n noto-serif-malayalam-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Malayalam font, hinted.
+Malayalam Serif font, hinted.
 
 %package -n noto-serif-myanmar-fonts
-Summary:        Noto Myanmar Font
+Summary:        Noto Myanmar Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-myanmar < %{version}
 Provides:       noto-serif-myanmar = %{version}
@@ -2806,10 +2809,10 @@ Provides:       noto-serif-myanmar = %{version}
 %description -n noto-serif-myanmar-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Myanmar font, hinted.
+Myanmar Serif font, hinted.
 
 %package -n noto-serif-nyiakengpuachuehmong-fonts
-Summary:        Noto Nyiakeng Puachue Hmong Font
+Summary:        Noto Nyiakeng Puachue Hmong Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-nyiakengpuachuehmong < %{version}
 Provides:       noto-serif-nyiakengpuachuehmong = %{version}
@@ -2818,10 +2821,10 @@ Provides:       noto-serif-nyiakengpuachuehmong = %{version}
 %description -n noto-serif-nyiakengpuachuehmong-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-NyiakengPuachueHmong font, hinted.
+NyiakengPuachueHmong Serif font, hinted.
 
 %package -n noto-serif-olduyghur-fonts
-Summary:        Noto Old Uyghur Font
+Summary:        Noto Old Uyghur Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-olduyghur < %{version}
 Provides:       noto-serif-olduyghur = %{version}
@@ -2830,10 +2833,10 @@ Provides:       noto-serif-olduyghur = %{version}
 %description -n noto-serif-olduyghur-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-OldUyghur font, hinted.
+OldUyghur Serif font, hinted.
 
 %package -n noto-serif-oriya-fonts
-Summary:        Noto Oriya Font
+Summary:        Noto Oriya Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-oriya < %{version}
 Provides:       noto-serif-oriya = %{version}
@@ -2842,10 +2845,10 @@ Provides:       noto-serif-oriya = %{version}
 %description -n noto-serif-oriya-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Oriya font, hinted.
+Oriya Serif font, hinted.
 
 %package -n noto-serif-sinhala-fonts
-Summary:        Noto Sinhala Font
+Summary:        Noto Sinhala Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-sinhala < %{version}
 Provides:       noto-serif-sinhala = %{version}
@@ -2854,10 +2857,10 @@ Provides:       noto-serif-sinhala = %{version}
 %description -n noto-serif-sinhala-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Sinhala font, hinted.
+Sinhala Serif font, hinted.
 
 %package -n noto-serif-tamil-fonts
-Summary:        Noto Tamil Font
+Summary:        Noto Tamil Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-tamil < %{version}
 Provides:       noto-serif-tamil = %{version}
@@ -2866,10 +2869,10 @@ Provides:       noto-serif-tamil = %{version}
 %description -n noto-serif-tamil-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Tamil font, hinted.
+Tamil Serif font, hinted.
 
 %package -n noto-serif-tamilslanted-fonts
-Summary:        Noto Tamil Slanted Font
+Summary:        Noto Tamil Slanted Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-tamilslanted < %{version}
 Provides:       noto-serif-tamilslanted = %{version}
@@ -2878,10 +2881,10 @@ Provides:       noto-serif-tamilslanted = %{version}
 %description -n noto-serif-tamilslanted-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-TamilSlanted font, hinted.
+TamilSlanted Serif font, hinted.
 
 %package -n noto-serif-tangut-fonts
-Summary:        Noto Tangut Font
+Summary:        Noto Tangut Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-tangut < %{version}
 Provides:       noto-serif-tangut = %{version}
@@ -2890,10 +2893,10 @@ Provides:       noto-serif-tangut = %{version}
 %description -n noto-serif-tangut-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Tangut font, hinted.
+Tangut Serif font, hinted.
 
 %package -n noto-serif-telugu-fonts
-Summary:        Noto Telugu Font
+Summary:        Noto Telugu Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-telugu < %{version}
 Provides:       noto-serif-telugu = %{version}
@@ -2902,10 +2905,10 @@ Provides:       noto-serif-telugu = %{version}
 %description -n noto-serif-telugu-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Telugu font, hinted.
+Telugu Serif font, hinted.
 
 %package -n noto-serif-thai-fonts
-Summary:        Noto Thai Font
+Summary:        Noto Thai Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-thai < %{version}
 Provides:       noto-serif-thai = %{version}
@@ -2914,10 +2917,10 @@ Provides:       noto-serif-thai = %{version}
 %description -n noto-serif-thai-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Thai font, hinted.
+Thai Serif font, hinted.
 
 %package -n noto-serif-tibetan-fonts
-Summary:        Noto Tibetan Font
+Summary:        Noto Tibetan Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-tibetan < %{version}
 Provides:       noto-serif-tibetan = %{version}
@@ -2930,10 +2933,10 @@ Provides:       noto-sans-tibetan-fonts = %{version}
 %description -n noto-serif-tibetan-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Tibetan font, hinted.
+Tibetan Serif font, hinted.
 
 %package -n noto-serif-toto-fonts
-Summary:        Noto Toto Font
+Summary:        Noto Toto Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-toto < %{version}
 Provides:       noto-serif-toto = %{version}
@@ -2942,10 +2945,10 @@ Provides:       noto-serif-toto = %{version}
 %description -n noto-serif-toto-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Toto font, hinted.
+Toto Serif font, hinted.
 
 %package -n noto-serif-vithkuqi-fonts
-Summary:        Noto Vithkuqi Font
+Summary:        Noto Vithkuqi Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-vithkuqi < %{version}
 Provides:       noto-serif-vithkuqi = %{version}
@@ -2954,10 +2957,10 @@ Provides:       noto-serif-vithkuqi = %{version}
 %description -n noto-serif-vithkuqi-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Vithkuqi font, hinted.
+Vithkuqi Serif font, hinted.
 
 %package -n noto-serif-yezidi-fonts
-Summary:        Noto Yezidi Font
+Summary:        Noto Yezidi Serif Font
 Group:          System/X11/Fonts
 Obsoletes:      noto-serif-yezidi < %{version}
 Provides:       noto-serif-yezidi = %{version}
@@ -2966,7 +2969,7 @@ Provides:       noto-serif-yezidi = %{version}
 %description -n noto-serif-yezidi-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
-Yezidi font, hinted.
+Yezidi Serif font, hinted.
 
 %package -n noto-tinos-fonts
 Summary:        Noto Tinos Font
@@ -2996,6 +2999,15 @@ TraditionalNushu font, hinted.
 
 %prep
 tar -xzf %{SOURCE0} -C .
+
+# Arimo BoldItalic has an extra "Italic" style
+# https://bugzilla.suse.com/show_bug.cgi?id=1202279 and https://github.com/notofonts/Arimo/issues/14
+# Fix weight too https://github.com/notofonts/Arimo/issues/13
+ttx ttf/Arimo/Arimo-BoldItalic.ttf
+%patch0
+ttx -f ttf/Arimo/Arimo-BoldItalic.ttx
+rm ttf/Arimo/Arimo-BoldItalic.ttx
+
 cp %{SOURCE2} .
 
 %build
@@ -3461,7 +3473,6 @@ install -Dm 644 -t %{buildroot}%{_ttfontsdir} ttf/*/*.ttf
 
 %files -n noto-fonts
 %defattr(0644,root,root,755)
-%license LICENSE
 
 %files -n noto-arimo-fonts
 %defattr(0644,root,root,755)

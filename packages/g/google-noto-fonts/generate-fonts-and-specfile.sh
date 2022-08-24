@@ -28,7 +28,7 @@ ls $font_dir/ | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.ttc::
   if [ $serif == "Sans" ]; then
     serif_dsc="Sans Serif "
   else
-    serif_dsc=""
+    serif_dsc="Serif "
   fi
   if [ $packagename == "noto-sans" ]; then
     OBSOLETES=($packagename 'noto-sans-display' 'noto-sans-display-fonts')
@@ -49,7 +49,7 @@ ls $font_dir/ | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.ttc::
   else
     summary=`echo "Noto $serif Font" | sed 's:\([a-z]\)\([A-Z]\):\1 \2:g'`
   fi
-  sed -i "s/@LIST_OF_SUBPACKAGES@/Requires:      $packagename\n@LIST_OF_SUBPACKAGES@/" $pkg_name.spec
+  sed -i "s/@LIST_OF_SUBPACKAGES@/Requires:       $packagename\n@LIST_OF_SUBPACKAGES@/" $pkg_name.spec
   sed -i "s/@SUBPACKAGE_HEADERS@/%package -n $packagename\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
   sed -i "s/@SUBPACKAGE_HEADERS@/Summary:        $summary\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
   sed -i "s;@SUBPACKAGE_HEADERS@;Group:          System/X11/Fonts\n@SUBPACKAGE_HEADERS@;" $pkg_name.spec
