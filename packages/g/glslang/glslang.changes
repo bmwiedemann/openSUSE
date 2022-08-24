@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 22 23:01:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.11.0
+  * CInterface: Add OpSource support.
+  * Add SPV_AMD_shader_early_and_late_fragment_tests
+  * Avoid double-free in functions cloned for vulkan relaxed mode
+
+-------------------------------------------------------------------
 Wed Jun 15 17:12:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.10.0

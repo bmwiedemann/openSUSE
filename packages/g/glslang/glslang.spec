@@ -18,7 +18,7 @@
 
 %define lname libglslang11
 Name:           glslang
-Version:        11.10.0
+Version:        11.11.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -111,5 +111,6 @@ ln -s libglslang.so "$b/%_libdir/libOSDependent.so"
 %_libdir/libSPVRemapper.so
 %_libdir/libglslang.so
 %_includedir/*
+%_datadir/%name/
 
 %changelog
