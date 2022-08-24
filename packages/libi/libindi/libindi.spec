@@ -30,6 +30,12 @@ Source0:        https://github.com/indilib/indi/archive/v%{version}.tar.gz#/indi
 Patch0:         fix-ioptron-timeout.patch
 # PATCH-FIX-UPSTREAM https://github.com/indilib/indi/commit/b717412dc649dfb2505d08931bd9efbfc04b8ff9
 Patch1:         fix-ioptron-meridian.patch
+# PATCH-FIX-UPSTREAM https://github.com/indilib/indi/commit/31176693ca947fe620bf1fb5a11180d70268c301
+Patch2:         add-hem27.patch
+# PATCH-FIX-UPSTREAM https://github.com/indilib/indi/commit/aabf47cf79bb603cc30a0b1ce3ae4bac81fff4cc
+Patch3:         fix-cfitsio.patch
+# PATCH-FIX-UPSTREAM https://github.com/indilib/indi/commit/4ed6ad8ef3c5e2bb97ba6c16c0d368d476b4862d
+Patch4:         fix-pegasus.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_system-devel

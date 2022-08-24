@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 17 06:07:40 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add fix-cfitsio.patch: FITS files produced by INDI are invalid because there is extra data at the end of the file.
+  Many software only read the first HDU are not affected, but other reject the file.
+- Add fix-pegasus.patch: Corrections for Pegasus Falcon Rotator.
+
+-------------------------------------------------------------------
+Sun Aug 14 15:42:23 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add add-hem27.patch: add support for iOptron HEM27 mount.
+
+-------------------------------------------------------------------
 Thu Aug  4 06:08:48 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add fix-ioptron-meridian.patch: add again in case a timeout is issued
