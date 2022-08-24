@@ -280,8 +280,8 @@ install -m 755 numlockbios %{buildroot}%{_libexecdir}/%{name}
 %endif
 %if %{defined _distconfdir}
 rm -rf %{buildroot}%{_sysconfdir}/pam.d
-install -d %{buildroot}%{_distconfdir}/pam.d
-install -m 644 %{SOURCE4} %{buildroot}%{_distconfdir}/pam.d/vlock
+install -d %{buildroot}%{_pam_vendordir}
+install -m 644 %{SOURCE4} %{buildroot}%{_pam_vendordir}/vlock
 %else
 install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/vlock
 %endif
@@ -527,7 +527,7 @@ test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vl
 %{_mandir}/man8/setvtrgb.8%{ext_man}
 %{_mandir}/man8/vcstime.8%{ext_man}
 %if %{defined _distconfdir}
-%{_distconfdir}/pam.d/vlock
+%{_pam_vendordir}/vlock
 %else
 %config(noreplace) %{_sysconfdir}/pam.d/vlock
 %endif
