@@ -342,7 +342,6 @@ Patch2027:      fix-for-gdb.base-solib-search.exp-test.patch
 Patch2028:      make-gdb.ada-float-bits.exp-more-generic.patch
 Patch2029:      gdb-testsuite-fix-gdb.threads-killed-outside.exp-on-aarch64.patch
 
-
 # Backports from master, not yet available in next release.
 
 #
@@ -383,7 +382,6 @@ Patch2114:      gdb-fix-watchpoints-triggered.patch
 # Debug patches.
 
 #
-
 
 BuildRequires:  bison
 BuildRequires:  flex
@@ -427,13 +425,12 @@ BuildRequires:  %{python}-devel
 %endif	# 0%{!?_without_python:1}
 %global have_libdebuginfod 0
 %if 0%{?suse_version} > 1500
-%ifarch %{ix86} x86_64 aarch64 armv7l ppc64 ppc64le s390x
 %global have_libdebuginfod 1
-%endif
 %endif
 %if 0%{have_libdebuginfod}
 BuildRequires:  libdebuginfod-devel
 BuildRequires:  libdebuginfod1
+Recommends:     libdebuginfod1
 %endif
 %global have_libipt 0
 %if 0%{suse_version} > 1110
@@ -789,7 +786,6 @@ find -name "*.info*"|xargs rm -f
 %patch2113 -p1
 %patch2114 -p1
 
-
 #unpack libipt
 %if 0%{have_libipt}
 tar xzf %{SOURCE7}
@@ -838,7 +834,7 @@ export CXX
 export CFLAGS="$RPM_OPT_FLAGS"
 
 # Add your -Wno-x/-Wno-error=y options here:
-for opt in -Wno-error=odr; do
+for opt in -Wno-error=odr -Wno-error=enum-int-mismatch; do
   # checking for acceptance of -Wno-foo is a bit wieldy: GCC doesn't
   # warn about unknown -Wno- flags, _except_ if there are other
   # diagnostics as well, so let's force an uninitialized use warning

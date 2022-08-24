@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 22 02:58:00 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Enable debuginfod for all archs as we index all TW RPM files.
+- Recommend libdebuginfod1 when one installs gdb so that
+  it can utilize debuginfod server by default.
+
+-------------------------------------------------------------------
+Tue Aug  2 12:01:23 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Fix build with gcc 13 by using -Wno-error=enum-int-mismatch.
+
+-------------------------------------------------------------------
 Sat Jul 30 07:24:23 UTC 2022 - Tom de Vries <tdevries@suse.com>
 
 - Maintenance script qa.sh:
