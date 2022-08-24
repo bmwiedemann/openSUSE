@@ -1,7 +1,7 @@
 #
 # spec file for package framel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,21 @@
 
 
 %define upstream_name Fr
-%define upstream_version v8r41p5
-%define ver %(echo %{upstream_version} | tr -d 'v' | sed 's/[p-r]/./g')
 %define skip_python2 1
 # Disable py 3.6: no numpy
 %define skip_python36 1
 %global shlib lib%{name}8
 Name:           framel
-Version:        %{ver}
+Version:        8.42.3
 Release:        0
 Summary:        Library to manipulate Gravitational Wave Detector data in frame format
 License:        LGPL-2.1-or-later
-URL:            https://lappweb.in2p3.fr/virgo/FrameL/
-Source:         https://git.ligo.org/virgo/virgoapp/Fr/-/archive/%{upstream_version}/Fr-%{upstream_version}.tar.gz
+URL:            https://git.ligo.org/virgo/virgoapp/Fr
+Source:         %{url}/-/archive/%{version}/Fr-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM framel-fix-pkgconfig.patch badshah400@gmail.com -- Fix include and lib dir paths in pkgconfig file
 Patch0:         framel-fix-pkgconfig.patch
+# PATCH-FIX-UPSTREAM framel-correct-python-platlib.patch badshah400@gmail.com -- Use sysconfig instead of distutils.sysconfig to correctly set python platlib
+Patch1:         framel-correct-python-platlib.patch
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake >= 3.12
@@ -67,14 +67,14 @@ This package property the headers and sources needed to develop applications
 against the frame library.
 
 %prep
-%autosetup -p1 -n %{upstream_name}-%{upstream_version}
+%autosetup -p1 -n %{upstream_name}-%{version}
 
 %build
 %{python_expand #for supported py3 flavours
 export PYTHON=%{_bindir}/$python
-mkdir ../{$python}_build
-cp -pr ./ ../{$python}_build
-pushd ../{$python}_build
+mkdir ../$python
+cp -pr ./ ../$python
+pushd ../$python
 %cmake \
   -DCMAKE_INSTALL_INCLUDEDIR=%{_includedir}/%{name} \
   -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} \
@@ -87,7 +87,7 @@ popd
 %install
 %{python_expand #for supported py3 flavours
 export PYTHON=%{_bindir}/$python
-pushd ../{$python}_build
+pushd ../$python
 %cmake_install
 popd
 }
