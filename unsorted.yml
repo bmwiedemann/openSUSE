@@ -7260,6 +7260,9 @@ unsorted:
   - imx-usb-loader 
   - in-toto 
   - inarpd 
+  - inchi 
+  - inchi-devel 
+  - inchi-doc 
   - incidenceeditor-devel 
   - include-what-you-use 
   - include-what-you-use-tools 
@@ -9462,7 +9465,7 @@ unsorted:
   - libSILLY1 
   - libSM-devel: [i586] # devel package of common_locks:libSM6 
   - libSM-devel-32bit: [x86_64] 
-  - libSPIRV-Tools-2022_3_sdk216-32bit: [x86_64] 
+  - libSPIRV-Tools-2022_3-32bit: [x86_64] 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -9484,7 +9487,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVkLayer_utils-1_3_216_0 
+  - libVkLayer_utils-1_3_224_0 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -11744,6 +11747,7 @@ unsorted:
   - libimobiledevice-glue-devel 
   - libinchi0 
   - libinchi0-32bit: [x86_64] 
+  - libinchi1 
   - libindi 
   - libindi-devel 
   - libindi-plugins 
@@ -11988,12 +11992,12 @@ unsorted:
   - libkyotocabinet16-32bit: [x86_64] 
   - liblal20: [x86_64] 
   - liblalburst6: [x86_64] 
-  - liblalframe11: [x86_64] 
-  - liblalinference22: [x86_64] 
-  - liblalinspiral16: [x86_64] 
-  - liblalmetaio8: [x86_64] 
-  - liblalpulsar23: [x86_64] 
-  - liblalsimulation29: [x86_64] 
+  - liblalframe13: [x86_64] 
+  - liblalinference23: [x86_64] 
+  - liblalinspiral17: [x86_64] 
+  - liblalmetaio10: [x86_64] 
+  - liblalpulsar26: [x86_64] 
+  - liblalsimulation31: [x86_64] 
   - liblalsupport14: [x86_64] 
   - liblammps0 
   - liblangtag-devel 
@@ -12170,6 +12174,7 @@ unsorted:
   - libmaa4 
   - libmad-devel 
   - libmad0-32bit: [x86_64] 
+  - libmaeparser1 
   - libmagic1-32bit: [x86_64] 
   - libmaia-devel 
   - libmaia1 
@@ -15752,6 +15757,7 @@ unsorted:
   - madplay 
   - madplay-lang 
   - maelstrom 
+  - maeparser-devel 
   - mage 
   - mailcommon-devel 
   - maildir-utils 
@@ -21513,7 +21519,6 @@ unsorted:
   - python-ovsdbapp-doc 
   - python-paramiko-doc 
   - python-peppercorn-doc 
-  - python-platformdirs-doc 
   - python-ply-doc 
   - python-polib-doc 
   - python-praatio-doc 
