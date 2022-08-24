@@ -1518,4 +1518,23 @@
     <comment></comment>
     <requestid>998114</requestid>
   </revision>
+  <revision rev="189" vrev="189">
+    <srcmd5>8ab992510f9a735e44a676e1cc84e3e4</srcmd5>
+    <version>unknown</version>
+    <time>1661362962</time>
+    <user>dimstar_suse</user>
+    <comment>- list-gnome: replace chrome-gnome-shell with gnome-browser-connector.</comment>
+  </revision>
+  <revision rev="190" vrev="190">
+    <srcmd5>f0bfc12d78803e8d445baa7b063b43f3</srcmd5>
+    <version>unknown</version>
+    <time>1661363011</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="191" vrev="191">
+    <srcmd5>55a19b5c86f303b87788d79d1d61cfed</srcmd5>
+    <version>unknown</version>
+    <time>1661364491</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
