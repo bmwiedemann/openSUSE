@@ -241,4 +241,13 @@
   * go#52961 cmd/compile: miscompilation in pointer operations (forwarded request 992076 from jfkw)</comment>
     <requestid>992080</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>bba4e9771397815a590e3c716b1ba0c0</srcmd5>
+    <version>1.18.5</version>
+    <time>1661346632</time>
+    <user>dimstar_suse</user>
+    <comment>- Define go_bootstrap_version go1.16 without suse_version checks
+- Simplify conditional gcc_go_version 12 on Tumbleweed, 11 elsewhere (forwarded request 998732 from jfkw)</comment>
+    <requestid>998735</requestid>
+  </revision>
 </revisionlist>
