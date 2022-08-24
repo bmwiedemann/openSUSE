@@ -70,6 +70,8 @@ Fri Apr  8 17:06:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
   - The `ftdump` demo  program shows more information  for Type1 fonts
     if option `-n` is given.
   - `ftgrid` can now display embedded bitmap strikes.
+  - fixes bsc#1198830 (CVE-2022-27404), bsc#1198832 (CVE-2022-27405),
+    bsc#1198823 (CVE-2022-27406)
 
 -------------------------------------------------------------------
 Thu Dec  2 22:07:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -107,8 +109,9 @@ Fri Jul 23 07:10:11 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
 Tue Oct 20 09:38:30 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 2.10.4
-  * Fix a heap buffer overflow has been found  in the handling of embedded
-    PNG bitmaps, introduced in FreeType version 2.6 (CVE-2020-15999 bsc#1177914)
+  * Fix a heap buffer overflow has been found  in the handling of
+    embedded PNG bitmaps, introduced in FreeType version 2.6
+    (CVE-2020-15999 bsc#1177914)
   * Minor improvements to the B/W rasterizer.
   * Auto-hinter support for Medefaidrin script.
   * Fix various  memory leaks (mainly  for CFF) and other  issues that

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 23 09:29:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Add CVE-2022-31782.patch
+  * Fix bsc#1200264, CVE-2022-31782: heap-based buffer overflow in
+    ftbench.c 
+
+-------------------------------------------------------------------
 Fri Aug 12 12:30:19 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Move ftpdump from ft2demos to freetype - it's required by other

@@ -40,6 +40,8 @@ NoSource:       1000
 Patch201:       overflow.patch
 # PATCH-FIX-OPENSUSE don-t-mark-libpng-as-required-library.patch -- it is private in .pc
 Patch202:       don-t-mark-libpng-as-required-library.patch
+# PATCH-FIX-UPSTREAM CVE-2022-31782.patch -- exit if face->num_glyphs is zero
+Patch203:       CVE-2022-31782.patch
 Patch308961:    bugzilla-308961-cmex-workaround.patch
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
@@ -173,6 +175,7 @@ This tool is part of the FreeType project
 %patch308961 -p 1
 pushd ../ft2demos-%{version}
 %patch201 -p1
+%patch203 -p1
 popd
 %patch202 -p1
 
