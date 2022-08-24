@@ -910,4 +910,12 @@ Fix version typo:
     <comment></comment>
     <requestid>960241</requestid>
   </revision>
+  <revision rev="113" vrev="10">
+    <srcmd5>5c88c7fd21cd3a5bbf33569080909bbd</srcmd5>
+    <version>2.4.0</version>
+    <time>1661346649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998803</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  8 06:54:58 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use %_pam_vendordir
+
+-------------------------------------------------------------------
 Tue Mar  8 10:58:26 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Refresh kbdsettings-nox86.patch to fix build on non-x86*
