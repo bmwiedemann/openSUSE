@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Aug 23 20:54:24 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add Conflicts with openbabel-devel <= 2.4.1: openbabel-devel
+  used to ship the headers of its bundled inchi.
+
+-------------------------------------------------------------------
+Mon Aug 15 18:03:55 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Initial package: inchi-1.06.
+
