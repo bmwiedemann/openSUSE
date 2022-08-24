@@ -18,7 +18,7 @@
 
 %define cpan_name LWP-ConsoleLogger
 Name:           perl-LWP-ConsoleLogger
-Version:        0.000044
+Version:        1.000000
 Release:        0
 License:        Artistic-2.0
 Summary:        LWP tracing and debugging
@@ -51,7 +51,7 @@ BuildRequires:  perl(Moo)
 BuildRequires:  perl(MooX::StrictConstructor)
 BuildRequires:  perl(Parse::MIME)
 BuildRequires:  perl(Path::Tiny)
-BuildRequires:  perl(Plack::Handler::HTTP::Server::Simple) >= 0.016
+BuildRequires:  perl(Plack::Handler::HTTP::Server::Simple)
 BuildRequires:  perl(Plack::Test)
 BuildRequires:  perl(Plack::Test::Agent)
 BuildRequires:  perl(Ref::Util)
@@ -80,7 +80,6 @@ Requires:       perl(HTTP::CookieMonster)
 Requires:       perl(HTTP::Request)
 Requires:       perl(HTTP::Response)
 Requires:       perl(JSON::MaybeXS) >= 1.003005
-Requires:       perl(LWP::UserAgent)
 Requires:       perl(List::AllUtils)
 Requires:       perl(Log::Dispatch) >= 2.56
 Requires:       perl(Module::Load::Conditional)
@@ -106,9 +105,6 @@ Requires:       perl(Term::Size::Any)
 # MANUAL END
 
 %description
-BETA BETA BETA. This is currently an experiment. Things could change.
-Please adjust accordingly.
-
 It can be hard (or at least tedious) to debug mechanize scripts. LWP::Debug
 is deprecated. It suggests you write your own debugging handlers, set up a
 proxy or install Wireshark. Those are all workable solutions, but this
