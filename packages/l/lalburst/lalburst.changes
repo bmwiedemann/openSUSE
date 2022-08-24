@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 19 20:05:45 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.6.0:
+  * No release notes.
+- Change how build dirs are set up for multiply py flavours: the
+  env variable PYTHON is used as the hashbang binary and must be
+  set to the full python executable.
+- Run test for all supported py flavours.
+- Update source URL.
+
+-------------------------------------------------------------------
 Mon Jan  3 00:06:33 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.5.10:

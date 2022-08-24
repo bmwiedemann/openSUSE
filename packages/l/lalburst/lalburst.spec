@@ -25,20 +25,20 @@
 # octave >= 6 not supported
 %bcond_with octave
 Name:           lalburst
-Version:        1.5.10
+Version:        1.6.0
 Release:        0
 Summary:        LSC Algorithm Burst Library
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/LALSuite
-Source:         http://software.ligo.org/lscsoft/source/lalsuite/%{name}-%{version}.tar.xz
+Source:         https://software.igwn.org/sources/source/lalsuite/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM lalburst-fix-uninitialised-variable.patch badshah400@gmail.com -- fix usage of an uninitialised variable
 Patch1:         lalburst-fix-uninitialised-variable.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module glue}
-BuildRequires:  %{python_module lal >= 7.1.0}
-BuildRequires:  %{python_module lalmetaio >= 2.0.0}
-BuildRequires:  %{python_module lalsimulation >= 2.5.0}
+BuildRequires:  %{python_module lal >= 7.2.0}
+BuildRequires:  %{python_module lalmetaio >= 3.0.0}
+BuildRequires:  %{python_module lalsimulation >= 4.0.0}
 BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
 BuildRequires:  %{python_module scipy}
@@ -47,13 +47,13 @@ BuildRequires:  pkgconfig >= 0.18.0
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig >= 3.0.10
 BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(lal) >= 7.1.0
-BuildRequires:  pkgconfig(lalmetaio) >= 2.0.0
-BuildRequires:  pkgconfig(lalsimulation) >= 3.0.0
+BuildRequires:  pkgconfig(lal) >= 7.2.0
+BuildRequires:  pkgconfig(lalmetaio) >= 3.0.0
+BuildRequires:  pkgconfig(lalsimulation) >= 4.0.0
 Requires:       python-glue
-Requires:       python-lal >= 7.1.0
-Requires:       python-lalmetaio >= 2.0.0
-Requires:       python-lalsimulation >= 2.5.0
+Requires:       python-lal >= 7.2.0
+Requires:       python-lalmetaio >= 3.0.0
+Requires:       python-lalsimulation >= 4.0.0
 Requires:       python-ligo-lw
 Requires:       python-numpy >= 1.7
 Requires:       python-scipy
@@ -62,9 +62,9 @@ ExcludeArch:    %{ix86}
 BuildRequires:  python-xml
 %endif
 %if %{with octave}
-BuildRequires:  octave-lal >= 7.1.0
-BuildRequires:  octave-lalmetaio >= 2.0.0
-BuildRequires:  octave-lalsimulation >= 2.5.0
+BuildRequires:  octave-lal >= 7.2.0
+BuildRequires:  octave-lalmetaio >= 3.0.0
+BuildRequires:  octave-lalsimulation >= 4.0.0
 BuildRequires:  pkgconfig(octave)
 %endif
 # SECTION For tests
@@ -90,10 +90,9 @@ Summary:        Development files for LAL Burst
 Group:          Development/Libraries/C and C++
 Requires:       %{shlib} = %{version}
 Requires:       pkgconfig(gsl)
-Requires:       pkgconfig(lal)
-Requires:       pkgconfig(lalmetaio)
-Requires:       pkgconfig(lalsimulation)
-Requires:       pkgconfig(libmetaio)
+Requires:       pkgconfig(lal) >= 7.2.0
+Requires:       pkgconfig(lalmetaio) >= 3.0.0
+Requires:       pkgconfig(lalsimulation) >= 4.0.0
 
 %description -n %{name}-devel
 This package contains sources and header files needed to build applications
@@ -115,10 +114,11 @@ This package provides the necessary files for using LAL Burst with octave.
 
 %build
 %{python_expand # Necessary to run configure with multiple py3 flavors
-export PYTHON=$python
-mkdir ../${PYTHON}_build
-cp -pr ./ ../${PYTHON}_build
-pushd ../${PYTHON}_build
+export PYTHON=%{_bindir}/$python
+builddir=../`basename ${PYTHON}`_build
+mkdir ${builddir}
+cp -pr ./ ${builddir}
+pushd ${builddir}
 %configure \
   %{?with_octave:--enable-swig-octave} \
   %{!?with_octave:--disable-swig-octave}
@@ -128,8 +128,9 @@ popd
 
 %install
 %{python_expand # py2 and py3 make_install
-export PYTHON=$python
-pushd ../${PYTHON}_build
+export PYTHON=%{_bindir}/$python
+builddir=../`basename ${PYTHON}`_build
+pushd ${builddir}
 %make_install
 popd
 }
@@ -170,14 +171,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
 
 %check
-%if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
-%{python_expand export PYTHON=$python
-pushd ../${PYTHON}_build
-export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
-%make_build check
-popd
+%{python_expand export PYTHON=%{_bindir}/$python
+LD_LIBRARY_PATH=%{buildroot}%{_libdir} %make_build -C ../`basename ${PYTHON}`_build check
 }
-%endif
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
