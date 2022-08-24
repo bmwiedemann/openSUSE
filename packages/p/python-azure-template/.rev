@@ -167,4 +167,15 @@
     CHANGELOG.md file provided with this package (forwarded request 991980 from glaubitz)</comment>
     <requestid>992123</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0450a86afee3b2c2360ca95c27adda2a</srcmd5>
+    <version>0.1.0b1798511</version>
+    <time>1661346673</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.1.0b1798511
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 998809 from glaubitz)</comment>
+    <requestid>998875</requestid>
+  </revision>
 </revisionlist>
