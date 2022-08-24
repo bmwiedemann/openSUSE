@@ -17,14 +17,8 @@
 
 
 %bcond_without released
-# Enable VC only on x86*
-%ifarch %{ix86} x86_64
-%bcond_without vc
-%else
-%bcond_with vc
-%endif
 Name:           krita
-Version:        5.0.8
+Version:        5.1.0
 Release:        0
 Summary:        Digital Painting Application
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.0-only
@@ -41,7 +35,12 @@ BuildRequires:  fftw3-devel
 BuildRequires:  giflib-devel
 BuildRequires:  gsl-devel
 BuildRequires:  kseexpr-devel
+%if 0%{?suse_version} > 1500
 BuildRequires:  libboost_system-devel
+%else
+BuildRequires:  libboost_system1_75_0-devel
+#!BuildIgnore:  libboost_headers1_66_0-devel 
+%endif
 BuildRequires:  libeigen3-devel
 BuildRequires:  libexiv2-devel
 %if 0%{?suse_version} > 1500 || (0%{?is_opensuse} && 0%{?sle_version} >= 150300)
@@ -95,9 +94,6 @@ BuildRequires:  pkgconfig(xi) >= 1.4.99.1
 Recommends:     python3-qt5
 Obsoletes:      calligra-krita < %{version}
 Provides:       calligra-krita = %{version}
-%if %{with vc}
-BuildRequires:  Vc-devel-static
-%endif
 Recommends:     krita-plugin-gmic
 
 %description
@@ -119,10 +115,6 @@ Development headers and libraries for Krita.
 %autosetup -p1
 
 %build
-%ifarch %{arm} aarch64
-# workaround to avoid build failure on ARM, see https://bugs.kde.org/show_bug.cgi?id=421136
-export CXXFLAGS="%{optflags} -DHAS_ONLY_OPENGL_ES"
-%endif
 # install translations to %%{_kf5_localedir} so they don't clash with the krita translations in calligra-l10n (KDE4 based)
 # can probably be changed back to the standard location when calligra is KF5 based...
 %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}

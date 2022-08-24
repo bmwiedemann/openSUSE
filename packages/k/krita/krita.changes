@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 23 15:25:29 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 5.1.0
+  * See https://krita.org/en/item/krita-5-1-0-released/
+  * Even more operations can handle multiple selected layers
+  * Improved support for WebP, Photoshop layered TIFF and Photoshop
+    files
+  * Now uses XSIMD instead of VC
+  * The fill tools have been extended with continuous fill and a
+    new Enclose and fill tool
+  * You can now configure touch controls in canvas input settings,
+    like "Tap to Undo"
+  * Bug fixes, performance improvements, user interface polishing
+- Increase minimum disksize in _constraints to avoid build failures
+  due to lack of disk space
+- Build with boost 1.75 on Leap, compilation fails with the default
+  version
+- Drop Vc build requirement, it's not used anymore
+- Remove no longer necessary workaround to fix build on ARM
+
+-------------------------------------------------------------------
 Fri May 27 06:38:23 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.0.8
