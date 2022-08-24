@@ -66,17 +66,17 @@ needed to develop applications that require these.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-sed -i -e 's|LUA=%{_prefix}/local|LUA=%{_prefix}|g' \
-    config
-sed -i -e 's|LUALIB=$(LUA)/lib|LUALIB=$(LUA)/%{_lib}|g' \
-    config
-sed -i -e 's|$(OPTFLAGS)|%{optflags} -I%{lua_incdir} -std=gnu11|g' {config,src/bin/Makefile}
 
 %build
-make %{?_smp_mflags}
+# no jobserver
+make -e \
+LUA=%{_prefix} \
+LUALIB=%{_libdir} \
+LUAINC=%{_includedir}/lua%{lua_version} \
+WARN='%{optflags}'
 
 %install
-make install DESTDIR=%{buildroot} LIB=%{_lib}
+%make_install LIBDIR=%{_libdir}
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

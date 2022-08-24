@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 23 14:18:35 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Make tolua-5.2.0-shared.patch more useful
+  * Remove LUA_C89_NUMBERS
+- Prevent ansi by overriding WARN
+- Add optflags by overriding WARN
+
+-------------------------------------------------------------------
 Thu Aug 12 14:23:00 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use GNU11 instead of C99

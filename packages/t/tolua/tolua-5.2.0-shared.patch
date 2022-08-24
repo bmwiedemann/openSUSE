@@ -8,8 +8,8 @@ Index: tolua-5.2.4/config
  #CPPFLAGS=  -O2 $(WARN) $(INC)
 -CFLAGS= -g $(WARN) $(INC)
 -CPPFLAGS=  -g $(WARN) $(INC)
-+CFLAGS= -fPIC -DLUA_C89_NUMBERS $(WARN) $(INC)
-+CPPFLAGS=  -fPIC -DLUA_C89_NUMBERS $(WARN) $(INC)
++CFLAGS= -fPIC $(WARN) $(INC)
++CPPFLAGS=  -fPIC $(WARN) $(INC)
 Index: tolua-5.2.4/src/bin/Makefile
 ===================================================================
 --- tolua-5.2.4.orig/src/bin/Makefile
@@ -65,10 +65,10 @@ Index: tolua-5.2.4/Makefile
 +VERSION = $(MAJOR).$(MINOR).$(REL)
 +
 +PREFIX = /usr
-+BINDIR = $(DESTDIR)$(PREFIX)/bin
++BINDIR = $(PREFIX)/bin
 +LIB = lib
-+LIBDIR = $(DESTDIR)$(PREFIX)/$(LIB)
-+INCLUDEDIR = $(DESTDIR)$(PREFIX)/include
++LIBDIR = $(PREFIX)/$(LIB)
++INCLUDEDIR = $(PREFIX)/include
 +
  tolua:
  	cd src/lib; make all
@@ -78,15 +78,15 @@ Index: tolua-5.2.4/Makefile
  	cd src/tests; make all
  
 +install:
-+	mkdir -p $(BINDIR)
-+	mkdir -p $(INCLUDEDIR)
-+	mkdir -p $(LIBDIR)
-+	install -m 0755 bin/tolua $(BINDIR)
-+	install -m 0644 include/tolua.h $(INCLUDEDIR)
-+	install -m 0644 lib/libtolua.so.$(VERSION) $(LIBDIR)
-+	ln -sf $(PREFIX)/$(LIB)/libtolua.so.$(VERSION) $(LIBDIR)/libtolua.so.$(MAJOR).$(MINOR)
-+	ln -sf $(PREFIX)/$(LIB)/libtolua.so.$(VERSION) $(LIBDIR)/libtolua.so.$(MAJOR)
-+	ln -sf $(PREFIX)/$(LIB)/libtolua.so.$(VERSION) $(LIBDIR)/libtolua.so
++	mkdir -p $(DESTDIR)$(BINDIR)
++	mkdir -p $(DESTDIR)$(INCLUDEDIR)
++	mkdir -p $(DESTDIR)$(LIBDIR)
++	install -m 0755 bin/tolua $(DESTDIR)$(BINDIR)
++	install -m 0644 include/tolua.h $(DESTDIR)$(INCLUDEDIR)
++	install -m 0755 lib/libtolua.so.$(VERSION) $(DESTDIR)$(LIBDIR)
++	ln -sf $(LIBDIR)/libtolua.so.$(VERSION) $(DESTDIR)$(LIBDIR)/libtolua.so.$(MAJOR).$(MINOR)
++	ln -sf $(LIBDIR)/libtolua.so.$(VERSION) $(DESTDIR)$(LIBDIR)/libtolua.so.$(MAJOR)
++	ln -sf $(LIBDIR)/libtolua.so.$(VERSION) $(DESTDIR)$(LIBDIR)/libtolua.so
 +
  all clean klean:
  	cd src/lib; make $@
