@@ -18,10 +18,10 @@
 
 %define cpan_name CryptX
 Name:           perl-CryptX
-Version:        0.076
+Version:        0.077
 Release:        0
-Summary:        Cryptographic toolkit
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Cryptographic toolkit
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml

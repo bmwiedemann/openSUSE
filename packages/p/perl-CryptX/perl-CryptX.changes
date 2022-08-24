@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 22 03:06:29 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.077
+   see /usr/share/doc/packages/perl-CryptX/Changes
+
+  0.077   2022-08-21
+          - fix #82 + #84 new t/mbi_ltm_big*.t failures
+          - fix #85 wrong linker options for aix
+
+-------------------------------------------------------------------
 Sat Jan  8 03:06:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.076
