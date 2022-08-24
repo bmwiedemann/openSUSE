@@ -18,7 +18,7 @@
 
 %define cpan_name Prima
 Name:           perl-Prima
-Version:        1.65
+Version:        1.66
 Release:        0
 #Upstream: SUSE-Public-Domain
 License:        AGPL-3.0-only AND BSD-2-Clause
