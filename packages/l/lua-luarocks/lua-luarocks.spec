@@ -41,6 +41,7 @@ Requires:       %{flavor}
 Requires:       curl
 Requires:       openssl
 Requires:       unzip
+Requires:       zip
 BuildArch:      noarch
 %lua_provides
 Requires(post): update-alternatives

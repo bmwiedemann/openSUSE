@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 23 07:36:14 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+- Add Requires: zip
+  * Without it, luarocks fails when passed with arguments: make --pack-binary-rock
+
+-------------------------------------------------------------------
 Sun Aug 21 03:21:58 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to version 3.9.1:
