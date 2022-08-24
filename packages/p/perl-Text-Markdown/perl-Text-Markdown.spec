@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Text-Markdown
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Convert Markdown syntax to (X)HTML
 License:        BSD-3-Clause
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Text-Markdown/
+URL:            http://search.cpan.org/dist/Text-Markdown/
 Source0:        https://cpan.metacpan.org/authors/id/B/BO/BOBTFISH/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -35,6 +35,8 @@ BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::Exception)
 %{perl_requires}
 # MANUAL BEGIN
+Requires(post): update-alternatives
+
 %post
 update-alternatives \
        --install %{_bindir}/markdown markdown %{_bindir}/Markdown.pl 30

@@ -8,6 +8,7 @@
 #  foo.patch: -p1
 #  bar.patch:
 preamble: |-
+ Requires(post): update-alternatives
  %post
  update-alternatives \
         --install %{_bindir}/markdown markdown %{_bindir}/Markdown.pl 30
