@@ -27,8 +27,13 @@ URL:            https://github.com/systemd/python-systemd
 Source:         https://github.com/systemd/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE iso-c-90.patch makes the building iso-c-90 compatible to allow building on SLE12 SP3
 Patch1:         iso-c-90.patch
+# PATCH-FIX-OPENSUSE OBS_missing_etc_machine_id.patch gh#systemd/python-systemd#118 mcepl@suse.com
+# build environment doesn't have /etc/machine-id
+Patch2:         OBS_missing_etc_machine_id.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -51,16 +56,15 @@ Python module for native access to the systemd facilities. Functionality is sepe
 %autosetup -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 # Not sure about the first exclusion,
-# the following ones are gh#systemd/python-systemd#118
-export PYTEST_ADDOPTS="-k 'not (test_reader_this_machine or test_get_machine or test_get_machine_app_specific)'"
+export PYTEST_ADDOPTS="-k 'not (test_reader_this_machine or test_get_machine)'"
 %python_expand make PYTHON=python%{$python_version} check
 
 %files %{python_files}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 17 09:03:29 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add OBS_missing_etc_machine_id.patch to partially fix
+  gh#systemd/python-systemd#118.
+
+-------------------------------------------------------------------
 Wed Aug 17 05:49:41 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to version 235:
