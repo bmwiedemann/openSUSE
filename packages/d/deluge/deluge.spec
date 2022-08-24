@@ -16,7 +16,7 @@
 #
 
 
-%global __requires_exclude typelib\\(GConf\\)
+%global __requires_exclude typelib\\(GConf|AyatanaAppIndicator3\\)
 
 %define _version 2.1
 Name:           deluge

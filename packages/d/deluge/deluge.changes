@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 19 12:21:52 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Add global typelib AyatanaAppIndicator3 exclude, filter out unneeded and
+  unwanted AyatanaAppIndicator3 runtime Requires. 
+
+-------------------------------------------------------------------
 Fri Aug  5 03:58:05 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 2.1.1 (changes since 2.1.0):
