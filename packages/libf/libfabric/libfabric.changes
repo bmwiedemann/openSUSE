@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug  1 20:01:18 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add disable-flatten-attr.patch that drops flatten attribute.
+  Note the flatten attribute results in huge compile time hog
+  in inliner (same the binary size would be huge).
+- Use %make_build and enable LTO (boo#1133235).
+- Synchronize used Patches.
+
+-------------------------------------------------------------------
 Thu Jun 23 10:36:09 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 1.15.1

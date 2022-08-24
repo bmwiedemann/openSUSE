@@ -29,6 +29,7 @@ Source:         %{name}-%{version}%{git_ver}.tar.bz2
 Source1:        baselibs.conf
 Patch0:         libfabric-libtool.patch
 Patch1:         prov-opx-Correctly-disable-OPX-if-unsupported.patch
+Patch2:         disable-flatten-attr.patch
 URL:            http://www.github.com/ofiwg/libfabric
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -72,9 +73,9 @@ services, such as RDMA. This package contains the development files.
 %setup -q -n  %{name}-%{version}%{git_ver}
 %patch0 -p1
 %patch1
+%patch2 -p1
 
 %build
-%define _lto_cflags %{nil}
 rm -f config/libtool.m4
 autoreconf -fi
 # defaults: with-dlopen and without-valgrind can be over-rode:
@@ -88,7 +89,7 @@ autoreconf -fi
     --enable-psm3 \
 %endif
     --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

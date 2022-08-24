@@ -27,6 +27,9 @@ Group:          Development/Tools/Other
 URL:            http://www.github.com/ofiwg/libfabric
 Source:         libfabric-%{version}%{git_ver}.tar.bz2
 Source1:        fabtests-rpmlintrc
+Patch0:         libfabric-libtool.patch
+Patch1:         prov-opx-Correctly-disable-OPX-if-unsupported.patch
+Patch2:         disable-flatten-attr.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libfabric-devel = %{version}
@@ -38,12 +41,15 @@ Fabtests provides a set of examples that uses libfabric, a fabric software libra
 
 %prep
 %setup -q -n  libfabric-%{version}%{git_ver}
+%patch0 -p1
+%patch1
+%patch2 -p1
 
 %build
 cd fabtests
 ./autogen.sh
 %configure %{?_with_libfabric}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install -C fabtests

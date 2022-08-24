@@ -533,4 +533,12 @@ Binary file libfabric-1.6.0.0.0e74cba7ad59.tar.bz2 (revision 11) deleted</commen
     <comment></comment>
     <requestid>989962</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>2587da1e3cc21b36c7138258d36c73d3</srcmd5>
+    <version>1.15.1</version>
+    <time>1661346649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998811</requestid>
+  </revision>
 </revisionlist>
