@@ -908,4 +908,34 @@
     case.</comment>
     <requestid>997718</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>d1378ac46eb8cf6267ca71ab9ecafd2d</srcmd5>
+    <version>2.10.2</version>
+    <time>1661346637</time>
+    <user>dimstar_suse</user>
+    <comment>- Corrrect some offsets of patch hunks
+- Remove change in get-mtime.c as mandb-symlink-target-timestamp
+  now catch the random format changes
+
+- update to 2.10.2:
+  * Regenerating man-db's build system now explicitly requires Automake &gt;=
+    1.14.  (This was already the case since at least man-db 2.10.0, but was
+    previously undocumented.)
+  * Make `man -H` sleep for a few seconds after starting the browser, since
+    it may background itself before loading files (Dr. Werner Fink).
+  * If an override directory is configured using `--with-override-dir`, it is
+    now applied more consistently when building the manpath, and whether a
+    page was found in an override directory is considered when sorting
+    candidates for display (Mihail Konev).
+  * Make the man-db manual build reproducible.
+  * Add some hardening options to the `systemd` service.
+  * `configure` now has a `--with-snapdir` option, for use on systems where
+    `snapd` is configured to use a directory other than `/snap`.
+  * Fix occasional `mandb-symlink-target-timestamp` test failure.
+  * Fix inadvertent reliance on a GCC extension that caused build failures
+    with Clang.
+  * Fix building without `iconv`.
+- drop man-db-2.7.1-firefox.dif (upstream)</comment>
+    <requestid>998765</requestid>
+  </revision>
 </revisionlist>

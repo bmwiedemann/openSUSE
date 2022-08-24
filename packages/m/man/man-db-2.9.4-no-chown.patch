@@ -1,7 +1,8 @@
-diff -Nur man-db-2.9.4/src/Makefile.am new/src/Makefile.am
---- man-db-2.9.4/src/Makefile.am	2020-01-01 16:11:59.000000000 +0100
-+++ new/src/Makefile.am	2021-05-31 23:36:22.062144466 +0200
-@@ -211,16 +211,7 @@
+Index: man-db-2.10.2/src/Makefile.am
+===================================================================
+--- man-db-2.10.2.orig/src/Makefile.am
++++ man-db-2.10.2/src/Makefile.am
+@@ -210,16 +210,7 @@ apropos$(EXEEXT): whatis$(EXEEXT)
  all-am: apropos$(EXEEXT)
  
  install-exec-hook:

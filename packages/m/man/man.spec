@@ -26,7 +26,7 @@
 %global optflags %{optflags} %{**}
 %bcond_without  sdtimer
 Name:           man
-Version:        2.10.0
+Version:        2.10.2
 Release:        0
 Summary:        A Program for Displaying man Pages
 License:        GPL-2.0-or-later
@@ -34,7 +34,7 @@ Group:          System/Base
 URL:            https://savannah.nongnu.org/projects/man-db
 Source0:        https://download.savannah.gnu.org/releases/man-db/man-db-%{version}.tar.xz
 Source1:        https://download.savannah.gnu.org/releases/man-db/man-db-%{version}.tar.xz.asc
-Source2:        https://savannah.nongnu.org/project/memberlist-gpgkeys.php?group=man-db&download=1#/%{name}.keyring
+Source2:        https://savannah.nongnu.org/people/viewgpg.php?user_id=10653#/%{name}.keyring
 Source3:        sysconfig.cron-man
 Source4:        cron.daily.do_mandb
 Source5:        wrapper.c
@@ -43,7 +43,6 @@ Source7:        man-db-create.service
 Source8:        manpath.csh
 Source9:        manpath.sh
 Patch0:         man-db-2.3.19deb4.0-groff.dif
-Patch2:         man-db-2.7.1-firefox.dif
 Patch3:         man-db-2.6.3-chinese.dif
 # PATCH-FEATURE-OPENSUSE man-db-2.7.1-zio.dif -- Allow using libzio for decompression
 Patch4:         man-db-2.7.1-zio.dif
@@ -99,7 +98,6 @@ printer (using groff).
 %prep
 %setup -q -n man-db-%{version}
 %patch0 -b .groff
-%patch2 -b .firefox
 %patch3 -b .chinese
 %patch4 -b .zio
 %patch5 -b .listall
@@ -166,7 +164,6 @@ find -name 'Makefile.*' | xargs \
 	--with-systemdtmpfilesdir=no \
 	--with-systemdsystemunitdir=no \
 %endif
-	--enable-dups \
 	--enable-cache-owner=man \
 	--with-device=utf8		\
 	--with-zio			\
@@ -174,15 +171,15 @@ find -name 'Makefile.*' | xargs \
 	--disable-rpath			\
 	--disable-automatic-create	\
 	--enable-automatic-update	\
+	--enable-mandirs=GNU		\
 	--disable-cats			\
 	--enable-threads=posix		\
 	--enable-mb-groff		\
 	--with-db=gdbm			\
 	--enable-nls			\
 	--with-config-file=%{_sysconfdir}/manpath.config \
-	--without-included-gettext	\
 	--with-sections="${SEC}"
-%make_build nls=all
+%make_build nls=all LOCALE_FR_UTF8=fr_FR.UTF-8
 # Fix coding
 for man in $(find man/ -type f -a -name '*.[0-9]'); do
 	pp="$(head -n 1 $man)"
@@ -215,7 +212,7 @@ fi
     export MKDIR_P="mkdir -p"
 %endif
 rm -rf   %{buildroot}%{_localstatedir}/cache/man
-%make_install nls=all
+%make_install nls=all LOCALE_FR_UTF8=fr_FR.UTF-8
 find %{buildroot} -type f -name "*.la" -delete -print
 # Move manual
 mkdir -p %{buildroot}%{_docdir}

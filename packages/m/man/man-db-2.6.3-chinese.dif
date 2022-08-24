@@ -4,7 +4,7 @@
 
 --- lib/encodings.c
 +++ lib/encodings.c	2016-12-15 14:07:01.072034899 +0000
-@@ -228,6 +228,7 @@ static struct charset_entry charset_tabl
+@@ -227,6 +227,7 @@ static struct charset_entry charset_tabl
  	{ "EUC-CN",		"nippon"	},
  	{ "EUC-JP",		"nippon"	},
  	{ "EUC-TW",		"nippon"	},
@@ -12,7 +12,7 @@
  	{ "GBK",		"nippon"	},
  # else /* !MULTIBYTE_GROFF */
  	/* If we have a smarter version of groff, this is better dealt with
-@@ -315,6 +316,7 @@ static struct less_charset_entry less_ch
+@@ -314,6 +315,7 @@ static struct less_charset_entry less_ch
  
  #ifdef MULTIBYTE_GROFF
  	{ "CP1251",		"windows",	NULL		},
@@ -20,7 +20,7 @@
  	{ "EUC-JP",		"iso8859",	"japanese-ujis"	},
  	{ "KOI8-R",		"koi8-r",	NULL		},
  	/* close enough? */
-@@ -453,6 +455,13 @@ char *get_page_encoding (const char *lan
+@@ -452,6 +454,13 @@ char *get_page_encoding (const char *lan
   *     roff encoding = ISO-8859-15
   *     output encoding = ISO-8859-15
   *     ISO-8859-15 -> groff -Tascii8 -> ISO-8859-15 -> iconv -> UTF-8
@@ -34,7 +34,7 @@
   */
  const char *get_source_encoding (const char *lang)
  {
-@@ -620,7 +629,7 @@ static int compatible_encodings (const c
+@@ -619,7 +628,7 @@ static int compatible_encodings (const c
  	 */
  	if ((STREQ (input, "BIG5") || STREQ (input, "BIG5HKSCS") ||
  	     STREQ (input, "EUC-JP") ||
@@ -43,7 +43,7 @@
  	     STREQ (input, "EUC-KR") ||
  	     STREQ (input, "EUC-TW")) &&
  	    STREQ (output, "UTF-8"))
-@@ -724,7 +733,7 @@ const char *get_roff_encoding (const cha
+@@ -723,7 +732,7 @@ const char *get_roff_encoding (const cha
  		    STRNEQ (ctype, "zh_HK", 5) ||
  		    STRNEQ (ctype, "zh_SG", 5) ||
  		    STRNEQ (ctype, "zh_TW", 5))

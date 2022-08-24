@@ -4,9 +4,11 @@
  src/decompress.c |   70 ++++++++++++++++++++++++++++++++++++++++++++++++++++++-
  3 files changed, 124 insertions(+), 1 deletion(-)
 
---- config.h.in
-+++ config.h.in	2022-08-18 06:45:49.997898305 +0000
-@@ -1003,6 +1003,9 @@
+Index: config.h.in
+===================================================================
+--- config.h.in.orig
++++ config.h.in
+@@ -1009,6 +1009,9 @@
  /* Define to 1 if you have the `z' library (-lz). */
  #undef HAVE_LIBZ
  
@@ -16,8 +18,10 @@
  /* Define to 1 if the bcrypt library is guaranteed to be present. */
  #undef HAVE_LIB_BCRYPT
  
---- configure.ac
-+++ configure.ac	2022-08-18 06:45:49.997898305 +0000
+Index: configure.ac
+===================================================================
+--- configure.ac.orig
++++ configure.ac
 @@ -35,6 +35,18 @@ MAN_ARG_DEVICE
  MAN_ARG_DB
  MAN_ARG_CONFIG_FILE
@@ -37,7 +41,7 @@
  MAN_ARG_AUTOMATIC_CREATE
  MAN_ARG_AUTOMATIC_UPDATE
  MAN_ARG_CATS
-@@ -388,6 +400,46 @@ AC_DEFINE_UNQUOTED([PROG_UNXZ], ["$unxz"
+@@ -400,6 +412,46 @@ AC_DEFINE_UNQUOTED([PROG_UNXZ], ["$unxz"
  AC_DEFINE_UNQUOTED([PROG_UNLZIP], ["$unlzip"], [Program to use as unlzip.])
  AC_DEFINE_UNQUOTED([PROG_UNZSTD], ["$unzstd"], [Program to use as unzstd.])
  MAN_COMPRESS_LIB([z], [gzopen])
@@ -84,8 +88,10 @@
  dnl To add more decompressors just follow the scheme above.
  
  # Check for various header files and associated libraries.
---- src/decompress.c
-+++ src/decompress.c	2022-08-18 06:54:42.008671417 +0000
+Index: src/decompress.c
+===================================================================
+--- src/decompress.c.orig
++++ src/decompress.c
 @@ -38,12 +38,17 @@
  #  include "zlib.h"
  #endif /* HAVE_LIBZ */
@@ -104,8 +110,8 @@
  #include "manconfig.h"
  #include "comp_src.h"
  #include "pipeline.h"
-@@ -183,6 +188,33 @@ static decompress *decompress_try_zlib (
- 
+@@ -186,6 +191,33 @@ static decompress *decompress_try_zlib (
+ #define OPEN_FLAGS_UNUSED MAYBE_UNUSED
  #endif /* HAVE_LIBZ */
  
 +#ifdef HAVE_ZIO
@@ -137,8 +143,8 @@
 +
  extern man_sandbox *sandbox;
  
- decompress *decompress_open (const char *filename, int flags)
-@@ -199,6 +231,38 @@ decompress *decompress_open (const char
+ decompress *decompress_open (const char *filename, int flags OPEN_FLAGS_UNUSED)
+@@ -202,6 +234,38 @@ decompress *decompress_open (const char
  	if (stat (filename, &st) < 0 || S_ISDIR (st.st_mode))
  		return NULL;
  
@@ -177,7 +183,7 @@
  #ifdef HAVE_LIBZ
  	filename_len = strlen (filename);
  	if (filename_len > 3 && STREQ (filename + filename_len - 3, ".gz")) {
-@@ -216,7 +280,11 @@ decompress *decompress_open (const char
+@@ -219,7 +283,11 @@ decompress *decompress_open (const char
  	}
  #endif /* HAVE_LIBZ */
  
@@ -189,7 +195,7 @@
  	if (ext) {
  		++ext;
  
-@@ -309,7 +377,7 @@ void decompress_inprocess_replace (decom
+@@ -312,7 +380,7 @@ void decompress_inprocess_replace (decom
  
  void decompress_start (decompress *d)
  {
