@@ -21,17 +21,17 @@
 # Py2 support dropped by upstream
 %define skip_python2 1
 
-%define shlib lib%{name}11
+%define shlib lib%{name}13
 # No support for octave >= 6
 %bcond_with octave
 Name:           lalframe
-Version:        1.6.0
+Version:        2.0.1
 Release:        0
 Summary:        LSC Algorithm Frame Library for gravitational wave data analysis
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/LALSuite
-Source:         http://software.ligo.org/lscsoft/source/lalsuite/lalframe-%{version}.tar.xz
+Source:         https://software.igwn.org/sources/source/lalsuite/lalframe-%{version}.tar.xz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lal >= 7.1.0}
 BuildRequires:  %{python_module numpy >= 1.7}
