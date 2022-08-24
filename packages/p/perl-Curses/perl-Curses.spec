@@ -18,7 +18,7 @@
 
 %define cpan_name Curses
 Name:           perl-Curses
-Version:        1.39
+Version:        1.41
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Terminal screen handling and optimization
@@ -64,7 +64,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc demo demo2 demo.form demo.menu demo.panel gdc gen.tar HISTORY list.syms MAINTENANCE README testcurses test.syms
+%doc ChangeLog demo demo2 demo.form demo.menu demo.panel gdc gen.tar HISTORY list.syms MAINTENANCE README testcurses test.syms
 %license Artistic Copying
 
 %changelog
