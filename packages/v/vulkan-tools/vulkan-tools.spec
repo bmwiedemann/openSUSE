@@ -17,15 +17,14 @@
 
 
 Name:           vulkan-tools
-Version:        1.3.216.0
+Version:        1.3.224.0
 Release:        0
 Summary:        Diagnostic utilities for Vulkan
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/KhronosGroup/Vulkan-Tools
 
-Source:         https://github.com/KhronosGroup/Vulkan-Tools/archive/sdk-%version.tar.gz
-Patch1:         0001-vulkaninfo-include-wayland-client-because-its-functi.patch
+Source:         https://github.com/KhronosGroup/Vulkan-Tools/archive/refs/tags/sdk-%version.tar.gz
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  glslang-devel >= 8.13.3743
