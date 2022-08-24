@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 22 13:37:53 UTC 2022 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Fix ibus-setup to support python3 (boo#1202063)
+  * Update setup-switch-im.patch
+- Remove X-GNOME-* from ibus-autostart.desktop
+  (boo#1201421, boo#1201728)
+  * ibus-autostart still does not work with
+    systemd-xdg-autostart-generator
+
+-------------------------------------------------------------------
 Tue Apr 19 03:36:44 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
 
 - Add patch ibus-fix-refcounting-issues.patch:

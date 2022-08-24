@@ -1,6 +1,5 @@
-diff -Nur ibus-1.5.25/setup/main.py ibus-1.5.25-new/setup/main.py
---- ibus-1.5.25/setup/main.py	2021-08-20 08:48:40.000000000 +0800
-+++ ibus-1.5.25-new/setup/main.py	2021-09-06 20:54:06.205651597 +0800
+--- ibus-1.5.26/setup/main.py.org	2022-03-14 14:15:48.000000000 +0900
++++ ibus-1.5.26/setup/main.py	2022-08-21 23:04:59.698814168 +0900
 @@ -508,11 +508,16 @@
          self.__engine_setup_exec_list[name] = os.spawnl(os.P_NOWAIT, *args)
  
@@ -19,7 +18,7 @@ diff -Nur ibus-1.5.25/setup/main.py ibus-1.5.25-new/setup/main.py
          dlg = Gtk.MessageDialog(message_type = Gtk.MessageType.QUESTION,
                                  buttons = Gtk.ButtonsType.YES_NO,
                                  text = message)
-@@ -522,39 +527,12 @@
+@@ -522,39 +527,11 @@
          if id != Gtk.ResponseType.YES:
              sys.exit(0)
  
@@ -57,10 +56,9 @@ diff -Nur ibus-1.5.25/setup/main.py ibus-1.5.25-new/setup/main.py
 -            self.__flush_gtk_events()
 -            sys.exit(0)
 +        filename = os.path.join(usr_home, filename)
-+        f=file(filename,"w+")
-+        cmd = 'export INPUT_METHOD=\"' + method_name + '\"'
-+        f.writelines(cmd)
-+        f.close()
++        with open(filename, "w+") as f:
++            cmd = 'export INPUT_METHOD=\"' + method_name + '\"'
++            f.writelines(cmd)
 +        sys.exit(0)
  
      def __shortcut_button_clicked_cb(self, button, name, section, _name, entry):
