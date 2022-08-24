@@ -19,13 +19,13 @@
 %define tarname Argyll
 
 Name:           argyllcms
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        ICC compatible color management system
 License:        AGPL-3.0-only AND GPL-2.0-or-later AND MIT
 Group:          System/X11/Utilities
-URL:            http://www.argyllcms.com/
-Source0:        http://www.argyllcms.com/%{tarname}_V%{version}_src.zip
+URL:            https://www.argyllcms.com/
+Source0:        https://www.argyllcms.com/%{tarname}_V%{version}_src.zip
 Source1:        19-color.fdi
 Source2:        color-device-file.policy
 Source3:        ajam-2.5.2-1.3.3.tgz

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 17 21:24:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * Added value sanity check & warning to chartread patch by patch mode.
+  * Fixed crash on 64 bit MSWin in spectro/aglob due to changing SDK
+    declarations for _findfirst().
+  * Fixed one remaining problem with not coping with "Colour" spelling rather
+    than "Color" in cxf2ti3.
+  * Add code in cgats write to check for float format problems when faced with
+    -inf or +inf value.
+  * Fix i1Pro3 highres in ccxxmake, dispcal & dispread.
+  * Changed OS X usb reset to re-enumerate instead, as reset does nothing on OS
+    X >= 10.8.
+  * Added spectro/instlib.api.txt file to public distribution.
+  * Fixed possible crashes in xicc/ccss.c and spectro/oeminst.c  
+
+-------------------------------------------------------------------
 Wed Jan 26 13:23:17 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 2.3.0:
