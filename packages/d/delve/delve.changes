@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Aug 23 16:22:46 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 1.9.1:
+  * v1.9.1 (#3116)
+  * proc: make sure logical breakpoints map exists (#3115)
+  * go.mod: update starlark dependency (#3112)
+  * terminal: send large output to pager (#3060)
+  * *: switch to int64 for goroutine IDs (#3110)
+  * proc: use stdlib to compute CRC for gnu_debuglink section (#3105)
+  * _scripts: fix CI on go1.19/linux/386 (#3100)
+  * service/dap: Add support for empty string in substitutePath (#3088)
+  * proc: fuse evalToplevelTypeCast and evalTypeCast (#3057)
+  * _scripts: fix command to download Go version (#3099)
+  * service/debugger: refactor state/collectBreakpointInfo for TargetGroup (#3064)
+  * proc: do not panic reading bad G struct (#3098)
+  * TeamCity,goversion: bump test matrix (#3092)
+  * pkg/dwarf/line: Fix parsing file table for DWARFv5 (#3090)
+  * :* Improve trace subcommand output (#3091)
+  * Documentation: fix documentation of examinemem (#3087)
+  * fix StepInstruction on 1 byte instruction with a software breackpoint (#3084)
+  * pkg/proc/internal/ebpf: Fix handling of entry / return (#3081)
+  * service/dap: fix indexing bug for maps (#3068)
+  * pkg/proc/internal/ebpf: Fix size of ebpf type for fn_addr (#3080)
+  * proc/native: refactor windows framework (#3079)
+  * terminal/command: 'goroutines' command add new flags '-exec command' (#3044)
+  * proc: support gnu_debuglink section (#3073)
+  * pkg/locspec: support exact match in SubstitutePath (#3075)
+  * proc/internal/ebpf: drop dependency on cgo (#3072)
+  * cmd/dlv,proc: misc improvements to trace subcommand (#3069)
+  * dwarf/op,proc: output register name when printing location exprs (#3052)
+  * service/dap: limit disassembly range (#3045)
+  * proc,service/debugger: introduce TargetGroup abstraction (#3030)
+  * terminal: add ability to show disassembly instead of source (#3047)
+  * terminal/command: add -per-g-hitcount option to condition command (#3055)
+  * _scripts: un-pin mingw version (#3046)
+
+-------------------------------------------------------------------
 Mon Aug 22 12:26:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update list of excluded archs with those that raise
