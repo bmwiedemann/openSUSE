@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 22 22:16:34 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Don't do mypy static type checking of the sources in order to
+  avoid mypy in Ring1. The functionality of the binary rpm package
+  is not affected by properly typed python sources.
+- Remove obsolete setup.py sed fix
+- Don't catchall sitearch files in %files section
+
+-------------------------------------------------------------------
 Tue Jul 19 12:26:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.18:

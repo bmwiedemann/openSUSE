@@ -90,4 +90,12 @@
   * consolidate mypy and pytest config into pyproject.toml</comment>
     <requestid>990245</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6f9d9fd50ddd9df46189a2d96fdfa25a</srcmd5>
+    <version>0.18</version>
+    <time>1661346645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998793</requestid>
+  </revision>
 </revisionlist>
