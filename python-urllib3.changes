@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 22 21:53:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.26.12:
+  * Deprecated the `urllib3[secure]` extra and the `urllib3.contrib.pyopenssl` module.
+    Both will be removed in v2.x. See this `GitHub issue <https://github.com/urllib3/urllib3/issues/2680>`_
+    for justification and info on how to migrate.
+
+-------------------------------------------------------------------
 Tue Aug  2 14:54:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - update to 1.26.11

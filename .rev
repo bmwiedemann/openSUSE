@@ -591,4 +591,15 @@
     <comment></comment>
     <requestid>992370</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>f30706bb5934e681e52cbdc1d8245566</srcmd5>
+    <version>1.26.12</version>
+    <time>1661346624</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.26.12:
+  * Deprecated the `urllib3[secure]` extra and the `urllib3.contrib.pyopenssl` module.
+    Both will be removed in v2.x. See this `GitHub issue &lt;https://github.com/urllib3/urllib3/issues/2680&gt;`_
+    for justification and info on how to migrate.</comment>
+    <requestid>998723</requestid>
+  </revision>
 </revisionlist>
