@@ -1,0 +1,49 @@
+From 8ac544cb063878809ef9c6622c18bd374b65e975 Mon Sep 17 00:00:00 2001
+From: "Mark E. Fuller" <mark.e.fuller@gmx.de>
+Date: Sun, 24 Apr 2022 21:58:58 +0300
+Subject: [PATCH 1/2] patch CMakeLists to place cmake config in e.g. lib64 when
+ appropriate
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5ac657f..d97c32f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -78,7 +78,7 @@ install(TARGETS maeparser
+ 
+ INSTALL(EXPORT maeparser-targets
+     FILE ${PROJECT_NAME}-config.cmake
+-    DESTINATION lib/cmake)
++    DESTINATION lib${LIB_SUFFIX}/cmake)
+ 
+ file(GLOB mae_headers "*.hpp")
+ install(FILES ${mae_headers} DESTINATION include/maeparser)
+
+From 4e7b6873e384b731f231b1acaade4e7ab001c096 Mon Sep 17 00:00:00 2001
+From: Mark E Fuller <mark.e.fuller@gmx.de>
+Date: Tue, 26 Apr 2022 19:03:50 +0300
+Subject: [PATCH 2/2] Update CMakeLists.txt
+
+use ${CMAKE_INSTALL_LIBDIR} variable
+
+Co-authored-by: Dan N <dan.nealschneider@schrodinger.com>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d97c32f..fcc5cda 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -78,7 +78,7 @@ install(TARGETS maeparser
+ 
+ INSTALL(EXPORT maeparser-targets
+     FILE ${PROJECT_NAME}-config.cmake
+-    DESTINATION lib${LIB_SUFFIX}/cmake)
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
+ 
+ file(GLOB mae_headers "*.hpp")
+ install(FILES ${mae_headers} DESTINATION include/maeparser)
