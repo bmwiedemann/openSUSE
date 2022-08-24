@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 22 15:38:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix build with newer gpgme:
+  * 0001-Use-ReceiveKeysJob-for-refreshing-OpenPGP-keys.patch
+
+-------------------------------------------------------------------
 Sun Aug 14 09:42:43 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 22.08.0

@@ -1,7 +1,7 @@
 #
 # spec file for package kleopatra
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Use-ReceiveKeysJob-for-refreshing-OpenPGP-keys.patch
 BuildRequires:  extra-cmake-modules
 # c++-20 required
 %if 0%{?suse_version} == 1500
