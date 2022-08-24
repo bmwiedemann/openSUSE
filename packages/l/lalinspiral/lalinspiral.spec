@@ -16,61 +16,76 @@
 #
 
 
-%define shlib lib%{name}16
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -test
+%else
+%bcond_with test
+%define psuffix %{nil}
+%endif
+
+%define pname lalinspiral
+
+%define shlib lib%{name}17
 # NEP 29: python36-numpy and co. in TW are no more
 %define skip_python36 1
 # Py2 dropped by upstream
 %define skip_python2 1
 # octave >= 6 not supported
 %bcond_with octave
-Name:           lalinspiral
-Version:        2.0.4
+Name:           %{pname}%{?psuffix}
+Version:        3.0.0
 Release:        0
 Summary:        LSC Algorithm Inspiral Library
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/LALSuite
-Source:         http://software.ligo.org/lscsoft/source/lalsuite/%{name}-%{version}.tar.xz
+Source:         https://software.igwn.org/sources/source/lalsuite/%{pname}-%{version}.tar.xz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module glue}
-BuildRequires:  %{python_module lal >= 7.1.0}
-BuildRequires:  %{python_module lalburst >= 1.5.3}
-BuildRequires:  %{python_module lalframe >= 1.5.0}
-BuildRequires:  %{python_module lalmetaio >= 2.0.0}
-BuildRequires:  %{python_module lalsimulation >= 2.5.0}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
 BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(lal) >= 7.1.0
-BuildRequires:  pkgconfig(lalburst) >= 1.5.3
-BuildRequires:  pkgconfig(lalframe) >= 1.5.0
-BuildRequires:  pkgconfig(lalmetaio) >= 2.0.0
-BuildRequires:  pkgconfig(lalsimulation) >= 2.5.0
+BuildRequires:  pkgconfig(lal) >= 7.2.0
+BuildRequires:  pkgconfig(lalburst) >= 1.6.0
+BuildRequires:  pkgconfig(lalframe) >= 2.0.0
+BuildRequires:  pkgconfig(lalmetaio) >= 3.0.0
+BuildRequires:  pkgconfig(lalsimulation) >= 4.0.0
 Requires:       python-glue
-Requires:       python-lal >= 7.1.0
-Requires:       python-lalburst >= 1.5.3
-Requires:       python-lalframe >= 1.5.0
-Requires:       python-lalmetaio >= 2.0.0
-Requires:       python-lalsimulation >= 2.5.0
+Requires:       python-lal >= 7.2.0
+Requires:       python-lalburst >= 1.6.0
+Requires:       python-lalframe >= 2.0.0
+Requires:       python-lalmetaio >= 3.0.0
+Requires:       python-lalsimulation >= 4.0.0
 Requires:       python-numpy >= 1.7
 ExcludeArch:    %{ix86}
 %if 0%{?suse_version} < 1550
 BuildRequires:  python-xml
 %endif
 %if %{with octave}
-BuildRequires:  octave-lal >= 7.1.0
-BuildRequires:  octave-lalburst >= 1.5.3
-BuildRequires:  octave-lalframe >= 1.5.0
-BuildRequires:  octave-lalmetaio >= 2.0.0
-BuildRequires:  octave-lalsimulation >= 2.5.0
+BuildRequires:  octave-lal >= 7.2.0
+BuildRequires:  octave-lalburst >= 1.6.0
+BuildRequires:  octave-lalframe >= 2.0.0
+BuildRequires:  octave-lalmetaio >= 3.0.0
+BuildRequires:  octave-lalsimulation >= 4.0.0
 BuildRequires:  pkgconfig(octave)
 %endif
 # SECTION For tests (python3 only)
+%if %{with test}
+BuildRequires:  %{python_module glue}
+BuildRequires:  %{python_module lal >= 7.2.0}
+BuildRequires:  %{python_module lalburst >= 1.6.0}
+BuildRequires:  %{python_module lalframe >= 2.0.0}
+BuildRequires:  %{python_module lalinspiral >= 3.0.0}
+BuildRequires:  %{python_module lalmetaio >= 3.0.0}
+BuildRequires:  %{python_module lalsimulation >= 4.0.0}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  pkgconfig(lalinspiral) = %{version}
+%endif
 # /SECTION
 %python_subpackages
 
@@ -90,11 +105,10 @@ Summary:        Development files for LAL Inspiral
 Group:          Development/Libraries/C and C++
 Requires:       %{shlib} = %{version}
 Requires:       pkgconfig(gsl)
-Requires:       pkgconfig(lal)
-Requires:       pkgconfig(lalframe)
-Requires:       pkgconfig(lalmetaio)
-Requires:       pkgconfig(lalsimulation)
-Requires:       pkgconfig(libmetaio)
+Requires:       pkgconfig(lal) >= 7.2.0
+Requires:       pkgconfig(lalframe) >= 2.0.0
+Requires:       pkgconfig(lalmetaio) >= 3.0.0
+Requires:       pkgconfig(lalsimulation) >= 4.0.0
 %if %{with octave}
 Requires:       pkgconfig(octave)
 %endif
@@ -106,35 +120,40 @@ that use the LAL Inspiral library.
 %package -n octave-lalinspiral
 Summary:        Octave bindings for LAL Inspiral
 Group:          Productivity/Scientific/Physics
-Requires:       octave-lal
-Requires:       octave-lalframe
-Requires:       octave-lalmetaio
-Requires:       octave-lalsimulation
+Requires:       octave-lal >= 7.2.0
+Requires:       octave-lalframe >= 2.0.0
+Requires:       octave-lalmetaio >= 3.0.0
+Requires:       octave-lalsimulation >= 4.0.0
 %requires_eq    octave-cli
 
 %description -n octave-lalinspiral
 This package provides the necessary files for using LAL Inspiral with octave.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{pname}-%{version}
 
 %build
 %{python_expand # Necessary to run configure with multiple py3 flavors
-export PYTHON=$python
-mkdir ../${PYTHON}_build
-cp -pr ./ ../${PYTHON}_build
-pushd ../${PYTHON}_build
+export PYTHON=%{_bindir}/$python
+builddir=../`basename ${PYTHON}`_build
+mkdir ${builddir}
+cp -pr ./ ${builddir}
+pushd ${builddir}
+export CFLAGS="%{optflags} -Wno-error=address"
+export CXXFLAGS=${CFLAGS}
 %configure \
   %{?with_octave:--enable-swig-octave} \
   %{!?with_octave:--disable-swig-octave}
-%make_build
+%make_build %{?with_test:test}
 popd
 }
 
 %install
+%if %{without test}
 %{python_expand # py2 and py3 make_install
-export PYTHON=$python
-pushd ../${PYTHON}_build
+export PYTHON=%{_bindir}/$python
+builddir=../`basename ${PYTHON}`_build
+pushd ${builddir}
 %make_install
 popd
 }
@@ -175,14 +194,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %python_expand sed -Ei "1{/^#!\/usr\/bin\/env python/d}" %{buildroot}%{$python_sitearch}/lalinspiral/sbank/bank.py
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
 
-%check
-%{python_expand export PYTHON=$python
-pushd ../${PYTHON}_build
-export LD_LIBRARY_PATH+=%{buildroot}%{_libdir}
-%make_build check
-popd
-}
-
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
 
@@ -208,5 +219,14 @@ popd
 
 %files %{python_files}
 %{python_sitearch}/*
+
+%else
+
+%check
+%{python_expand export PYTHON=%{_bindir}/$python
+%make_build -C ../`basename ${PYTHON}`_build check
+}
+
+%endif
 
 %changelog

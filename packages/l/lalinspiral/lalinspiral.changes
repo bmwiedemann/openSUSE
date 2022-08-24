@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 23 23:45:10 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix multibuild package names.
+
+-------------------------------------------------------------------
+Fri Aug 19 20:06:56 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.0.0:
+  * No release notes.
+- Update so version to match with upstream.
+- Change how build dirs are set up for multiple py flavours: the
+  env variable PYTHON is used as the hashbang binary and must be
+  set to the full python executable.
+- Pass "-Wno-error=address" to CFLAGS to avoid errors on a minor
+  warning.
+- Update source URL.
+- Split out testing as part of %check section to a multibuild
+  flavour; testing can take a long time slowing down builds for
+  dependent packages unnecessarily.
+
+-------------------------------------------------------------------
 Sun Jan  2 23:55:56 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.0.4:
