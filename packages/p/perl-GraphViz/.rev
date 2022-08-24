@@ -132,4 +132,12 @@
         - Clean up the code, including Build.PL and Makefile.PL.</comment>
     <requestid>533860</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>41423e36451444391d2d6314fd2ef7c3</srcmd5>
+    <version>2.25</version>
+    <time>1661346696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998971</requestid>
+  </revision>
 </revisionlist>
