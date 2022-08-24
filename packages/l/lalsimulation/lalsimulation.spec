@@ -21,18 +21,18 @@
 # Py2 support dropped upstream
 %define skip_python2 1
 
-%define shlib liblalsimulation29
+%define shlib liblalsimulation31
 # octave >= 6 not supported
 %bcond_with octave
 Name:           lalsimulation
-Version:        3.1.0
+Version:        4.0.0
 Release:        0
 Summary:        LSC Algorithm Simulation Library
 License:        GPL-2.0-only
 URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
-Source:         http://software.ligo.org/lscsoft/source/lalsuite/lalsimulation-%{version}.tar.xz
+Source:         https://software.igwn.org/sources/source/lalsuite/%{name}-%{version}.tar.xz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module lal >= 7.1.0}
+BuildRequires:  %{python_module lal >= 7.2.0}
 BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
 BuildRequires:  fdupes
@@ -44,16 +44,16 @@ BuildRequires:  python-xml
 %endif
 BuildRequires:  swig >= 3.0.10
 BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(lal) >= 7.1.0
+BuildRequires:  pkgconfig(lal) >= 7.2.0
 BuildRequires:  pkgconfig(zlib)
 %if %{with octave}
-BuildRequires:  octave-lal >= 7.1.0
+BuildRequires:  octave-lal >= 7.2.0
 BuildRequires:  pkgconfig(octave)
 %endif
 # SECTION For tests
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-lal >= 7.1.0
+Requires:       python-lal >= 7.2.0
 Requires:       python-numpy >= 1.7
 # FOR PYTHON PACKAGE
 Requires:       lalsimulation-data = %{version}
@@ -77,7 +77,7 @@ Summary:        Headers and source files for building against LALSimulation
 Requires:       %{name}-data = %{version}
 Requires:       %{shlib} = %{version}
 Requires:       pkgconfig(gsl)
-Requires:       pkgconfig(lal)
+Requires:       pkgconfig(lal) >= 7.2.0
 Requires:       pkgconfig(zlib)
 
 %description -n %{name}-devel
@@ -104,10 +104,10 @@ This package provides the necessary files for using LALSimulation with octave.
 
 %build
 %{python_expand # Necessary to run configure with multiple py3 flavors
-export PYTHON=$python
-mkdir ../${PYTHON}_build
-cp -pr ./ ../${PYTHON}_build
-pushd ../${PYTHON}_build
+export PYTHON=%{_bindir}/$python
+mkdir ../$python
+cp -pr ./ ../$python
+pushd ../$python
 %configure \
   %{?with_octave:--enable-swig-octave} \
   %{!?with_octave:--disable-swig-octave}
@@ -117,8 +117,8 @@ popd
 
 %install
 %{python_expand # py2 and py3 make_install
-export PYTHON=$python
-pushd ../${PYTHON}_build
+export PYTHON=%{_bindir}/$python
+pushd ../$python
 %make_install
 popd
 }
@@ -158,8 +158,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
 
 %check
-%{python_expand export PYTHON=$python
-pushd ../${PYTHON}_build
+%{python_expand export PYTHON=%{_bindir}/$python
+pushd ../$python
 %make_build check
 popd
 }
