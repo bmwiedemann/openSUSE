@@ -48,7 +48,7 @@ BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(openbabel-2.0)
+BuildRequires:  (pkgconfig(openbabel-2.0) or pkgconfig(openbabel-3))
 
 %description
 The purpose of this editor to help drawing molecules.
