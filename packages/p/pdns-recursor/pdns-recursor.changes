@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 23 14:11:52 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.7.2
+  * incomplete exception handling related to protobuf message generation.
+    (CVE-2022-37428, bsc#1202664)
+
+-------------------------------------------------------------------
 Fri Jul  8 10:07:40 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 4.7.1

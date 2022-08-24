@@ -659,4 +659,14 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
       DoT probes to run more promptly. #11692, PR#11748</comment>
     <requestid>987946</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>e6ededfd981d45daca659edaf38669d1</srcmd5>
+    <version>4.7.2</version>
+    <time>1661346699</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.7.2
+  * incomplete exception handling related to protobuf message generation.
+    (CVE-2022-37428, bsc#1202664)</comment>
+    <requestid>998985</requestid>
+  </revision>
 </revisionlist>
