@@ -2734,4 +2734,12 @@
     <comment>Several security bug fixes with this submission</comment>
     <requestid>991297</requestid>
   </revision>
+  <revision rev="320" vrev="1">
+    <srcmd5>1e999bcd36ca29888415965566b1d448</srcmd5>
+    <version>4.16.2_02</version>
+    <time>1661346619</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Xen version 4.16.2 bug fix release.</comment>
+    <requestid>998682</requestid>
+  </revision>
 </revisionlist>

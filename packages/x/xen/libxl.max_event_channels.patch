@@ -17,7 +17,7 @@ Index: xen-4.16.0-testing/tools/libs/light/libxl_create.c
  
      if (!b_info->event_channels)
 -        b_info->event_channels = 1023;
-+        b_info->event_channels = min(1023, 8 * b_info->max_vcpus + 511);
++        b_info->event_channels = max(1023, 8 * b_info->max_vcpus + 511);
  
      libxl__arch_domain_build_info_setdefault(gc, b_info);
      libxl_defbool_setdefault(&b_info->dm_restrict, false);

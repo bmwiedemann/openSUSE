@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Aug 18 14:18:46 MDT 2022 - carnold@suse.com
+
+- Update to Xen 4.16.2 bug fix release (bsc#1027519)
+  xen-4.16.2-testing-src.tar.bz2
+- Drop patches contained in new tarball
+  625fca42-VT-d-reserved-CAP-ND.patch
+  626f7ee8-x86-MSR-handle-P5-MC-reads.patch
+  627549d6-IO-shutdown-race.patch
+  62a1e594-x86-clean-up-_get_page_type.patch
+  62a1e5b0-x86-ABAC-race-in-_get_page_type.patch
+  62a1e5d2-x86-introduce-_PAGE_-for-mem-types.patch
+  62a1e5f0-x86-dont-change-cacheability-of-directmap.patch
+  62a1e60e-x86-split-cache_flush-out-of-cache_writeback.patch
+  62a1e62b-x86-AMD-work-around-CLFLUSH-ordering.patch
+  62a1e649-x86-track-and-flush-non-coherent.patch
+  62a99614-IOMMU-x86-gcc12.patch
+  62ab0fab-x86-spec-ctrl-VERW-flushing-runtime-cond.patch
+  62ab0fac-x86-spec-ctrl-enum-for-MMIO-Stale-Data.patch
+  62ab0fad-x86-spec-ctrl-add-unpriv-mmio.patch
+  62bdd840-x86-spec-ctrl-only-adjust-idle-with-legacy-IBRS.patch
+  62bdd841-x86-spec-ctrl-knobs-for-STIBP-and-PSFD.patch
+  62c56cc0-libxc-fix-compilation-error-with-gcc13.patch
+  62cc31ed-x86-honour-spec-ctrl-0-for-unpriv-mmio.patch
+  62cc31ee-cmdline-extend-parse_boolean.patch
+  62cc31ef-x86-spec-ctrl-fine-grained-cmdline-subopts.patch
+  62cd91d0-x86-spec-ctrl-rework-context-switching.patch
+  62cd91d1-x86-spec-ctrl-rename-SCF_ist_wrmsr.patch
+  62cd91d2-x86-spec-ctrl-rename-opt_ibpb.patch
+  62cd91d3-x86-spec-ctrl-rework-SPEC_CTRL_ENTRY_FROM_INTR_IST.patch
+  62cd91d4-x86-spec-ctrl-IBPB-on-entry.patch
+  62cd91d5-x86-cpuid-BTC_NO-enum.patch
+  62cd91d6-x86-spec-ctrl-enable-Zen2-chickenbit.patch
+  62cd91d7-x86-spec-ctrl-mitigate-Branch-Type-Confusion.patch
+  xsa408.patch
+
+-------------------------------------------------------------------
+Thu Jul 28 07:07:07 UTC 2022 - ohering@suse.de
+
+- bsc#1167608, bsc#1201631 - fix built-in default of max_event_channels
+  A previous change to the built-in default had a logic error,
+  effectively restoring the upstream limit of 1023 channels per domU.
+  Fix the logic to calculate the default based on the number of vcpus.
+  adjust libxl.max_event_channels.patch
+
+-------------------------------------------------------------------
 Wed Jul 13 11:10:03 MDT 2022 - carnold@suse.com
 
 - Added --disable-pvshim when running configure in xen.spec.
