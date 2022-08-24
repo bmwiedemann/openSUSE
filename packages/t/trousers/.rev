@@ -459,4 +459,13 @@ Should be handled together with sr#769061</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>970851</requestid>
   </revision>
+  <revision rev="52" vrev="5">
+    <srcmd5>b2142492a4d2b96ae8b30ae38d12e00c</srcmd5>
+    <version>0.3.15</version>
+    <time>1661346638</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire pkkconfig(udev) instead of udev: allow OBS to
+  shortcut through the -mini flavors. (forwarded request 998581 from dimstar)</comment>
+    <requestid>998773</requestid>
+  </revision>
 </revisionlist>
