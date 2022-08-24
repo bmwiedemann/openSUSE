@@ -1502,4 +1502,27 @@ If we cannot get this in, we need to push an security update for the current blu
     <comment></comment>
     <requestid>975698</requestid>
   </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>45b1c2facbf8f084580233752a0400fd</srcmd5>
+    <version>5.65</version>
+    <time>1661346623</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.65:
+  * Fix issue with A2DP cache invalidation handling.
+  * Fix issue with A2DP and not initialized SEP codec.
+  * Fix issue with A2DP and multiple SetConfiguration to same SEP
+  * Fix issue with AVRCP and not properly initialized volume.
+  * Fix issue with SDP records when operating in LE only mode.
+  * Fix issue with HoG and not reading report map of instances.
+  * Fix issue with GATT server crashing while disconnecting.
+  * Fix issue with not removing connected devices.
+  * Fix issue with enabling wake support without RPA Resolution.
+  * Fix issue with pairing failed due to the error of Already Paired.
+  * Add support for CONFIGURATION_DIRECTORY environment variable.
+  * Add support for STATE_DIRECTORY environment variable.
+  * Add support for &quot;Bonded&quot; property with Device API.
+  * Add experimental support for ISO socket.
+- drop bluez-test-2to3.diff (obsolete/upstream)</comment>
+    <requestid>998704</requestid>
+  </revision>
 </revisionlist>

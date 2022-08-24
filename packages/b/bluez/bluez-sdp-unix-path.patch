@@ -1,6 +1,8 @@
---- bluez-5.8.orig/lib/sdp.h
-+++ bluez-5.8/lib/sdp.h
-@@ -34,7 +34,7 @@ extern "C" {
+Index: bluez-5.65/lib/sdp.h
+===================================================================
+--- bluez-5.65.orig/lib/sdp.h
++++ bluez-5.65/lib/sdp.h
+@@ -21,7 +21,7 @@ extern "C" {
  #include <stdint.h>
  #include <bluetooth/bluetooth.h>
  

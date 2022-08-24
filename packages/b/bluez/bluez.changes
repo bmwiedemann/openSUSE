@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Aug 17 20:26:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.65:
+  * Fix issue with A2DP cache invalidation handling.
+  * Fix issue with A2DP and not initialized SEP codec.
+  * Fix issue with A2DP and multiple SetConfiguration to same SEP
+  * Fix issue with AVRCP and not properly initialized volume.
+  * Fix issue with SDP records when operating in LE only mode.
+  * Fix issue with HoG and not reading report map of instances.
+  * Fix issue with GATT server crashing while disconnecting.
+  * Fix issue with not removing connected devices.
+  * Fix issue with enabling wake support without RPA Resolution.
+  * Fix issue with pairing failed due to the error of Already Paired.
+  * Add support for CONFIGURATION_DIRECTORY environment variable.
+  * Add support for STATE_DIRECTORY environment variable.
+  * Add support for "Bonded" property with Device API.
+  * Add experimental support for ISO socket.
+- drop bluez-test-2to3.diff (obsolete/upstream)
+
+-------------------------------------------------------------------
 Sun May  8 16:12:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Upgrade bluez-test requirement of PyGObject from ancient version
