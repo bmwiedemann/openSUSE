@@ -18,12 +18,12 @@
 
 %define cpan_name Template-Toolkit
 Name:           perl-Template-Toolkit
-Version:        3.100
+Version:        3.101
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Comprehensive template processing system
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/A/AB/ABW/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -52,6 +52,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes HACKING README.md testrules.yml TODO
+%doc Changes README.md testrules.yml TODO
 
 %changelog
