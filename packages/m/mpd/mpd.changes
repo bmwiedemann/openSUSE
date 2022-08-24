@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 24 06:10:55 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Updated to 0.23.9
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.9/NEWS
+  * input: cdio_paranoia: added options "mode" and "skip"
+  * decoder: ffmpeg: added support FFmpeg 5.1
+  * filter: replay gain: fixed delayed volume display with handler=mixer
+  * output: pipewire: set app icon
+  * fixed bogus volume levels with multiple partitions
+  * improved iconv detection
+- Removed fix-build-ffmpeg5.patch. 
+
+-------------------------------------------------------------------
 Mon Aug  8 08:19:19 UTC 2022 - Cor Blom <cornelis@solcon.nl>
 
-- Add fix-build-ffmpeg5.patch to fix build with ffmpeg 5.1
+- Added fix-build-ffmpeg5.patch to fix build with ffmpeg 5.1
 
 -------------------------------------------------------------------
 Mon Aug  1 16:04:57 UTC 2022 - Илья Индиго <ilya@ilya.cf>

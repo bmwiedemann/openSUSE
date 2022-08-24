@@ -650,4 +650,20 @@
     <comment>- Add fix-build-ffmpeg5.patch to fix build with ffmpeg 5.1</comment>
     <requestid>993718</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>92b2a431f87f43b435d94c67b0c08657</srcmd5>
+    <version>0.23.9</version>
+    <time>1661346691</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.23.9
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.9/NEWS
+  * input: cdio_paranoia: added options &quot;mode&quot; and &quot;skip&quot;
+  * decoder: ffmpeg: added support FFmpeg 5.1
+  * filter: replay gain: fixed delayed volume display with handler=mixer
+  * output: pipewire: set app icon
+  * fixed bogus volume levels with multiple partitions
+  * improved iconv detection
+- Removed fix-build-ffmpeg5.patch.</comment>
+    <requestid>998961</requestid>
+  </revision>
 </revisionlist>
