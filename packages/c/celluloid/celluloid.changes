@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 23 13:42:51 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Fix source URL
+
+-------------------------------------------------------------------
+Sat Aug 20 19:05:55 UTC 2022 - Kirill Kirillov <kkirill@opensuse.org>
+
+- Update to version 0.24
+ * Add Malay translation by @dinazmi.
+ * Use libadwaita.
+ * Fix on_load hook in scripts not triggering.
+ * Add option to make the video area draggable.
+ * Fix autofit breaking when playing small videos.
+ * Make controls layout adaptive.
+ * Display chapter marks in the seek bar.
+ * Display chapter titles in the seek bar popover.
+
+-------------------------------------------------------------------
 Thu Mar 17 08:21:28 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Updated build requirements
@@ -6,7 +24,7 @@ Thu Mar 17 08:21:28 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 -------------------------------------------------------------------
 Mon Mar  7 11:20:17 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
-- Update to version 0.2.3
+- Update to version 0.23
   * Fix autofit triggering regardless of settings.
   * Fix window size shrinking across sessions.
   * Fix crash when playing files with names containing invalid

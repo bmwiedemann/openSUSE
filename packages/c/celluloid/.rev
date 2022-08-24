@@ -120,4 +120,12 @@
     <comment>Updated build requirements (forwarded request 962344 from alois)</comment>
     <requestid>962345</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>45d2810e7847251e18e1a18859a3b5df</srcmd5>
+    <version>0.24</version>
+    <time>1661346660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998846</requestid>
+  </revision>
 </revisionlist>
