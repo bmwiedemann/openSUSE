@@ -19,7 +19,7 @@
 Name:           starship
 Version:        1.10.2
 Release:        0
-Summary:        The minimal, blazing-fast, and infinitely customizable prompt for any shell
+Summary:        A customizable prompt for many shells
 License:        ISC
 URL:            https://starship.rs/
 Source0:        %{name}-%{version}.tar.gz
@@ -30,13 +30,13 @@ BuildRequires:  cmake
 BuildRequires:  pkgconfig(openssl)
 
 %description
-The minimal, blazing-fast, and infinitely customizable prompt for any shell!
-    Fast: it's fast – really really fast! rocket
-    Customizable: configure every aspect of your prompt.
-    Universal: works on any shell, on any operating system.
-    Intelligent: shows relevant information at a glance.
-    Feature rich: support for all your favorite tools.
-    Easy: quick to install – start using it in minutes.
+Starship generates shell code which modifies the current shell
+behavior to display an extravagant prompt. It installs a hook before
+every command invocation to gather additional information for the
+prompt, which increases the latency of the prompt (by about 5 ms with
+bash on a contemporary 3700X CPU).
+The default setup requires Nerd Font and a terminal in dark colors.
+dash is not supported as of 1.10.2.
 
 %prep
 %setup -qa1
