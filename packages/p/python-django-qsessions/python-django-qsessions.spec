@@ -33,6 +33,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.10
 Requires:       python-django-ipware >= 2.0.0
 Requires:       python-user-agents >= 1.1.0
+Recommends:     libgdal30
 Suggests:       python-geoip2 >= 3.0.0
 BuildArch:      noarch
 # SECTION test requirements
@@ -42,6 +43,7 @@ BuildRequires:  %{python_module geoip2 >= 3.0.0}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module user-agents >= 1.1.0}
+BuildRequires:  libgdal30
 # /SECTION
 %python_subpackages
 
@@ -69,6 +71,6 @@ export PYTHONPATH=${PWD}
 %files %{python_files}
 %doc README.rst CHANGELOG.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/*qsessions*/
 
 %changelog
