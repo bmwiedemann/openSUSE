@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 25 07:48:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20220822:
+  * --header 0 allows using {filename} as replacement string
+  * Bug fixes and man page updates.
+
+-------------------------------------------------------------------
 Fri Aug  5 14:58:48 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use full path for perl interpreter to fix

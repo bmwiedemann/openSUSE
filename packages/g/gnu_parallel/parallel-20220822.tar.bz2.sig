@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# To check the signature run:
+#   echo | gpg
+#   gpg --auto-key-locate keyserver --keyserver-options auto-key-retrieve parallel-20220822.tar.bz2.sig
+
+echo | gpg 2>/dev/null
+gpg --auto-key-locate keyserver --keyserver-options auto-key-retrieve $0
+exit $?
+
+-----BEGIN PGP SIGNATURE-----
+
+iQUHBAABCgAdFiEEzaAaQgjE90UGEH570atFFoiIiIgFAmMD1AsACgkQ0atFFoiI
+iIi5nyafa/h3jD8Up0/IoS35D800ychY/p7aYTgLlVPBtfRjPYBZf2VeqoySesOu
+XygoJ48jCtoC3zFdbyGdLZj4enFPWhk28E0DOXTnFzZyouHx/85u4qXFQLSm2skp
+bxPi1YjdJQv2L7N84+JytGN3JPFInB0U1NoDHBQh/KqhYhUDkb032ycclz3B3al2
+3FF6hbjnaxR+a8j4taJ3Qnoj3Wcz1d4a4NK3V7P7BeWairji1YqMBEPBg0Xy3wW5
+jyPgxN9xe+kgEMsjalB0E+rE6bCsBssU76HF2HZBEavipLAQaU2svRBQ6FZh5NmH
+E8VZJz98MxdgWcQMJdAQVNh7IzXe/RNY1GfEmZHMxzQgcC7pFx2h6fQLcwpgwZzN
+6zDHSp+mPbzjAmbbaZ91ikp7xP6TVOa6vX8bmbUxwRrfoiSi4H8VKhBNmCK3Xgie
+sWUYKJ5WNRW3RiTNRspWQnYjC7bZZDQ+uVczVelJoXdq8iFW5u9hvW1EtRVeOUL7
+nzC80c05bXwo+stvxkdu/PFWL0YWQsZ8ut2qPUFopvsWsP7iGxV/IvAnd/4LbdH7
+knF2s+mn8G6qbFEXJ1bKPM+dhS8fLkbYK5LBIFGhr+T9tlafWwAtY3eQ/Ng3EEGU
+VIX2weD1kxCu/eSp1SgyC9BnzhYvxWLJSXxW+WxSRWRZ6/48hhRmg59RUDWEguEP
+nNyy5WB4zclRzftBpNmW5OZjD4T6vlH9yQVJkz0eL8ZC9cgK9+35pFwj7UZ7Jj5k
+TnfemH4ktrs/M3nT+smQixCtjVyRTKVD9uyBitVrSq4iMMK8y583akn2wYnWbohK
+kEa6oKTc6OOgoWv+Uwa7dylSLIE+zmRqgsGZuqVD+CLR1O2B2Bn40J0aHwES93Du
+A7t7ei/z+xXboRgGu0AdhrB/eM9x30BJ6hwWUKXyWNgtrB7V2tjJYGAmNQkusvrM
+WmVPwqaaVnS3B3FOxoR/fP/NUkE2XFpRB53AAykNe+awsyZZXqblURo9ZPE45M7N
+YrogGlNKMlk9RMd3N8V9M67kDS4UHNOrOppikQ9ZPC6rF8HCdslMDAcUBCXFTw65
+w7oMdTtK6eNqjDbRA9EvPQca/3v9sTPOYquGJZwA/WvSi1s9NocydzXO70F78Tcm
+sReEiTDsVvjLwQ2FN5kpCJc3l1HYPvv//+g3AHvLRVt7nM+eHKUBiRwyyODGI4uM
+hzrCw81uKWiaTBwA7GCQKeTkbT9xUx/AhaUWfX64r/vBxhYDFQWtXs4eCrq8KFUs
+BnkwAkdta3tI0Ob8v7eCySE7U+UX0nJvhZfL/bQXIFCAwr8vNrcUAjK/pAHj6Rfv
+UN49HaV0h2i9RamsIsC0ABX8P/RSVUZYHmru6kPrDISlolEOz4uDrgh3qkFTSvwa
+zEYd17ncgN+/sfM7LBHP5s+VCCPqULA1FyMDeC0myUW3GBIjoxzrSjEMQYa11pED
+VDtpIrG09tOj6VZCwiQ/NgprQ4dREvBoQazpiGad2wPdORQ5SDUz7ILC6ajbGdjT
+J8+tjty6FarojASagu+vthJSWOFFCvrLZf7ewA2doCoYawqT4aWA5kATXX7vDvAW
+AlteQg+fJ7WaLn392arM5eblJUsKVqeOOLpmKYDgmkZMmeby813ugWwm
+=Sq19
+-----END PGP SIGNATURE-----
