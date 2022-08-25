@@ -1958,4 +1958,12 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     <comment></comment>
     <requestid>997728</requestid>
   </revision>
+  <revision rev="221" vrev="2">
+    <srcmd5>825037db61f32dfdc66d4fcc427d610f</srcmd5>
+    <version>3.24.1</version>
+    <time>1661434389</time>
+    <user>dimstar_suse</user>
+    <comment>- add glibc-236.patch (bsc#1202208)</comment>
+    <requestid>999013</requestid>
+  </revision>
 </revisionlist>

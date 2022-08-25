@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 23 15:05:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add glibc-236.patch (bsc#1202208)
+
+-------------------------------------------------------------------
 Thu Aug 18 09:04:40 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.24.1:
