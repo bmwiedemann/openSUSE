@@ -23,8 +23,12 @@ tar:
 	tar --format=posix -cf ../$$tar $$basename && \
 	cd $$basename && \
 	# Patches for the JS frontend go after here \
-	patch -p1 -i ../../0001-Add-source-code-reference.patch && \
+	patch --no-backup-if-mismatch -p1 -i ../../0001-Add-source-code-reference.patch && \
 	# End patches section \
+	# avoid ".git can't be found" \
+	git init && \
+	# avoid "FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory" \
+	export NODE_OPTIONS=--max_old_space_size=8192 && \
 	yarn install --immutable && \
 	yarn run build && \
 	cd .. && \
