@@ -18,11 +18,11 @@
 
 
 %undefine _build_create_debug
-%global openssl_version 1.1.1j
+%global openssl_version 1.1.1n
 %global softfloat_version b64af41c3276f
 
 Name:           ovmf
-Version:        202202
+Version:        202205
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
@@ -51,9 +51,14 @@ Patch3:         %{name}-pie.patch
 Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
 Patch6:         %{name}-disable-brotli.patch
-Patch7:         %{name}-bsc1196879-sev-fix.patch
-Patch8:         %{name}-ignore-spurious-GCC-12-warning.patch
-Patch9:         %{name}-tools_def-add-fno-omit-frame-pointer-to-GCC48_-IA32-.patch
+Patch7:         %{name}-ignore-spurious-GCC-12-warning.patch
+Patch8:         %{name}-tools_def-add-fno-omit-frame-pointer-to-GCC48_-IA32-.patch
+# PED-1359, because nasm-2.14 doesn't support corresponding instructions.
+Patch9:         %{name}-Revert-MdePkg-Remove-the-macro-definitions-regarding.patch  
+Patch10:        %{name}-Revert-UefiCpuPkg-Replace-Opcode-with-the-correspond.patch  
+Patch11:        %{name}-Revert-SourceLevelDebugPkg-Replace-Opcode-with-the-c.patch  
+Patch12:        %{name}-Revert-MdePkg-Replace-Opcode-with-the-corresponding-.patch
+Patch13:        %{name}-Revert-MdeModulePkg-Replace-Opcode-with-the-correspo.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -172,6 +177,10 @@ rm -rf $PKG_TO_REMOVE
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
@@ -307,7 +316,7 @@ collect_x86_64_debug_files()
 
 declare -A EXTRA_FLAGS_X64
 EXTRA_FLAGS_X64=(
-	[ovmf-x86_64]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_2MB"
+	[ovmf-x86_64]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_4MB"
 	[ovmf-x86_64-4m]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE"
 	[ovmf-x86_64-smm]="-a IA32 -p OvmfPkg/OvmfPkgIa32X64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE -D SMM_REQUIRE -D EXCLUDE_SHELL"
 )
