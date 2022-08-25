@@ -831,4 +831,15 @@ Should be copied to 12.2 if possible (it actually makes the bt stack work) (forw
     <comment>Scripted push from GNOME:Next (forwarded request 987418 from dimstar)</comment>
     <requestid>987491</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>3d24f24d78785e54a0130db0557c180c</srcmd5>
+    <version>42.3</version>
+    <time>1661434395</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 42.3:
+  + This version adds a new API for more precise adapter power
+    state, and fixes a number of small UI problems in
+    bluetooth-sendto. (forwarded request 999045 from iznogood)</comment>
+    <requestid>999076</requestid>
+  </revision>
 </revisionlist>
