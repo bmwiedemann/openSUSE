@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 25 01:56:41 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v6.1
+  * support Django 3.2 and 4.0
+  * do not gulp commit errors
+  * fixed precall key when a prefix is defined
+  * fixed m2o/m2m queries invalidation on object deletion
+
+-------------------------------------------------------------------
 Wed Apr 20 13:26:46 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - do not require mock
