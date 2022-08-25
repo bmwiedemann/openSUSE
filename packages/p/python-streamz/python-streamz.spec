@@ -19,17 +19,16 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-streamz
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
 Summary:        Tool to build continuous data pipelines
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/python-streamz/streamz/
 Source:         https://files.pythonhosted.org/packages/source/s/streamz/streamz-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM streamz-pr434-asyncdask.patch -- gh#python-streamz/streamz#434, gh#python-streamz/streamz#439
-Patch1:         streamz-pr434-asyncdask.patch
 # PATCH-FIX-OPENSUSE streamz-opensuse-python-exec.patch -- call tests with correct flavor
-Patch2:         streamz-opensuse-python-exec.patch
+Patch0:         streamz-opensuse-python-exec.patch
+# PATCH-FIX-OPENSUSE New distributed now requires to call cleanup with loop
+Patch1:         support-new-distributed.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -92,7 +91,7 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
 fi
 # flaky: some tests are very fragile when run server-side
 donttest+=" or test_tcp"
-%pytest -m "not network" --asyncio-mode=auto --force-flaky --max-runs=10 --no-success-flaky-report -rsfE ${$python_flags} -k "not ($donttest)"
+%pytest -m "not network" --asyncio-mode=auto --force-flaky --max-runs=10 --no-success-flaky-report -rsfE ${$python_flags} --ignore streamz/tests/test_graph.py -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.rst
