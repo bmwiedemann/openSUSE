@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 23 19:49:42 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Don't build with shared on riscv64 for < go1.18
+
+-------------------------------------------------------------------
 Mon Aug 22 20:44:19 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Define go_bootstrap_version go1.16 without suse_version checks

@@ -334,4 +334,12 @@
 - Simplify conditional gcc_go_version 12 on Tumbleweed, 11 elsewhere (forwarded request 998731 from jfkw)</comment>
     <requestid>998734</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>3335cd71f647843e9206c152a1dcd7e7</srcmd5>
+    <version>1.17.13</version>
+    <time>1661432931</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't build with shared on riscv64 for &lt; go1.18 (forwarded request 999102 from jfkw)</comment>
+    <requestid>999106</requestid>
+  </revision>
 </revisionlist>

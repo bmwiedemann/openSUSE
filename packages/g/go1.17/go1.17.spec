@@ -104,7 +104,7 @@
 %else
 %define with_shared 0
 %endif
-%ifarch ppc64
+%ifarch ppc64 riscv64
 %define with_shared 0
 %endif
 # setup go_arch (BSD-like scheme)
