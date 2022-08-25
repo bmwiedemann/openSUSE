@@ -32,6 +32,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pyenchant}
 BuildRequires:  %{python_module pygments}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-dri
 BuildRequires:  SDL2-devel
