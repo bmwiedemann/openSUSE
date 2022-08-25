@@ -33,6 +33,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/breeze-%{versi
 Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Look-at-QStyleOptionProgressBar-orientation-again.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= 0.0.13
 BuildRequires:  fdupes

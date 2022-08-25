@@ -1,0 +1,33 @@
+From 5647eaf512b61b96742dfece1146424978856f69 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 23 Aug 2022 14:31:53 +0200
+Subject: [PATCH] Look at QStyleOptionProgressBar::orientation again
+
+Some applications (KGet, DigiKam) use that and not QStyle::State_Horizontal.
+For compatibility, keep looking at it as long as it's available.
+
+
+(cherry picked from commit 5596fd9f2e014e59f3764023d6b1099ce1316028)
+---
+ kstyle/breezestyle.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/kstyle/breezestyle.cpp b/kstyle/breezestyle.cpp
+index 600d0164..57c502e5 100644
+--- a/kstyle/breezestyle.cpp
++++ b/kstyle/breezestyle.cpp
+@@ -162,7 +162,11 @@ private:
+ //_______________________________________________________________
+ bool isProgressBarHorizontal(const QStyleOptionProgressBar *option)
+ {
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+     return option && (option->state & QStyle::State_Horizontal);
++#else
++    return option && ((option->state & QStyle::State_Horizontal) || option->orientation == Qt::Horizontal);
++#endif
+ }
+ 
+ enum class ToolButtonMenuArrowStyle {
+-- 
+2.37.2
+

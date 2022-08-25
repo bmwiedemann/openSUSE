@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 23 12:33:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix progress bars in some applications:
+  * 0001-Look-at-QStyleOptionProgressBar-orientation-again.patch
+
+-------------------------------------------------------------------
 Tue Aug  2 14:07:08 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.4

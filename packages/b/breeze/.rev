@@ -1226,4 +1226,13 @@
     <comment>Plasma 5.25.4 (forwarded request 992383 from Vogtinator)</comment>
     <requestid>992475</requestid>
   </revision>
+  <revision rev="145" vrev="2">
+    <srcmd5>eec74bff2ae100d975dfee552259418b</srcmd5>
+    <version>5.25.4</version>
+    <time>1661434382</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix progress bars in some applications:
+  * 0001-Look-at-QStyleOptionProgressBar-orientation-again.patch</comment>
+    <requestid>998956</requestid>
+  </revision>
 </revisionlist>
