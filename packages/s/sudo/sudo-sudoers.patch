@@ -1,7 +1,7 @@
-Index: sudo-1.9.9/plugins/sudoers/sudoers.in
-===================================================================
---- sudo-1.9.9.orig/plugins/sudoers/sudoers.in
-+++ sudo-1.9.9/plugins/sudoers/sudoers.in
+diff --git a/plugins/sudoers/sudoers.in b/plugins/sudoers/sudoers.in
+index 5efda5d..ddd311a 100644
+--- a/plugins/sudoers/sudoers.in
++++ b/plugins/sudoers/sudoers.in
 @@ -32,30 +32,23 @@
  ##
  ## Defaults specification
@@ -50,12 +50,13 @@ Index: sudo-1.9.9/plugins/sudoers/sudoers.in
  ## Uncomment to use a hard-coded PATH instead of the user's to find commands
  # Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
  ##
-@@ -66,9 +59,15 @@
- ## sudoreplay and reboot.  Use sudoreplay to play back logged sessions.
+@@ -68,10 +61,16 @@
+ ## Set maxseq to a smaller number if you don't have unlimited disk space.
  # Defaults log_output
  # Defaults!/usr/bin/sudoreplay !log_output
 -# Defaults!/usr/local/bin/sudoreplay !log_output
  # Defaults!REBOOT !log_output
+ # Defaults maxseq = 1000
  
 +## In the default (unconfigured) configuration, sudo asks for the root password.
 +## This allows use of an ordinary user account for administration of a freshly
@@ -67,7 +68,7 @@ Index: sudo-1.9.9/plugins/sudoers/sudoers.in
  ##
  ## Runas alias specification
  ##
-@@ -84,13 +83,5 @@ root ALL=(ALL:ALL) ALL
+@@ -87,13 +86,5 @@ root ALL=(ALL:ALL) ALL
  ## Same thing without a password
  # %wheel ALL=(ALL:ALL) NOPASSWD: ALL
  

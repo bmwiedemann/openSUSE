@@ -17,7 +17,7 @@
 
 
 Name:           sudo
-Version:        1.9.10
+Version:        1.9.11p3
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC
@@ -33,6 +33,7 @@ Source6:        fate_313276_test.sh
 Source7:        README_313276.test
 # PATCH-OPENSUSE: the "SUSE" branding of the default sudo config
 Patch0:         sudo-sudoers.patch
+Patch1:         sudo-1.9.10-update_sudouser_to_utf8.patch
 BuildRequires:  audit-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  groff
@@ -235,13 +236,13 @@ chmod 0440 %{_sysconfdir}/sudoers
 %{_tmpfilesdir}/sudo.conf
 
 %files plugin-python
-%{_mandir}/man8/sudo_plugin_python.8%{?ext_man}
+%{_mandir}/man5/sudo_plugin_python.5%{?ext_man}
 %{_libexecdir}/%{name}/%{name}/python_plugin.so
 
 %files devel
 %doc plugins/sample/sample_plugin.c
 %{_includedir}/sudo_plugin.h
-%{_mandir}/man8/sudo_plugin.8%{?ext_man}
+%{_mandir}/man5/sudo_plugin.5%{?ext_man}
 %attr(0644,root,root) %{_libexecdir}/%{name}/libsudo_util.so
 %{_libexecdir}/%{name}/sudo/*.la
 %{_libexecdir}/%{name}/*.la
