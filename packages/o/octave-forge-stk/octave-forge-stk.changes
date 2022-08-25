@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Aug 21 22:21:17 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.7.0:
+  * Required Octave version number has been raised to 4.0.0.
+  * Prediction:
+    - stk_predict.m now officially supports a shorter calling
+      syntax: `[zp, ...] = skt_predict (model, x_prd)` that can be
+      used either to compute predictions from any type of model
+    - @stk_model_gpposterior/stk_predict.m: no longer exists. The
+      base stk_predict function now provides the recommended
+      interface for all possible types of models, and then
+      dispatches to the (new) internal function stk_predict_ to do
+      the actual computations.
+  * Models: Removed get_input_data, get_output_data,
+    get_prior_model.
+  * Arrays:
+    - stk_dataframe arrays now possess a sample_size property,
+      which can be read using the usual dot-indexing notation or
+      through the (slightly faster) getter stk_get_sample_size.
+    - stk_model_gpposterior objects also have a sample_size
+      property, which corresponds to the sample size of the
+      underlying data set and can be read similarly.
+    - stk_length: deprecated (use stk_get_sample_size instead).
+    - @stk_model_gpposterior/stk_{set,get}_optimizable_parameters.m:
+      Fix a bug (erroneous property name).
+  * Sequential design of experiments: @stk_sampcrit_akg/set.m:
+  * Remove replicated input points when the AKG reference grid is
+  * construted using Scott's original method (i.e., taking past
+  * observations points plus the candidate point).
+  * Examples:
+    - stk_example_kb07.m: Add a second figure where nu is fixed to
+      5/2 and rho varies.
+    - stk_example_doe05.m: Make it possible to use the exact KG
+      criterion instead of Scott's approximation.
+    - stk_example_doe06.m: New example script, which illustrates a
+      simple sequential design strategy to estimate an excursion
+      set (failure region) and its volume.
+  * Miscellaneous:
+    - stk_init.m: Make STK startup faster.
+    - startup.m: Run stk_init automatically for in-place use.
+    - stk_select_optimizer.m, stk_optim_hasfmincon.m: Removed.
+    - README.md: Explain how to initialize STK when using the
+      Parallel Computing Toolbox in Matlab, by means of the
+      pctRunOnAll function.
+    - Internal: source formatting, comments, etc.
+
+-------------------------------------------------------------------
 Wed Nov 27 12:06:45 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.6.1:
