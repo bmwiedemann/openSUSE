@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-communication-identity
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Microsoft Azure Communication Identity Service Client Library for Python
 License:        MIT
@@ -37,9 +37,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-communication-nspkg >= 0.0.0b1
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.19.1
+Requires:       python-azure-core >= 1.24.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.6.21
+Requires:       python-msrest >= 0.7.1
 Requires:       python-six >= 1.11.0
 BuildArch:      noarch
 %python_subpackages
