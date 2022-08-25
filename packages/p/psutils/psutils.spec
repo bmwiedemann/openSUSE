@@ -24,7 +24,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/PS
 URL:            https://github.com/rrthomas/psutils
 Source:         %{url}/releases/download/v%{version}/psutils-%{version}.tar.gz
-Requires:       paper
+Requires:       libpaper-tools
 Requires:       perl
 Requires:       perl(IPC::Run3)
 

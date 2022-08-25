@@ -158,4 +158,12 @@
 - Use current macros. (forwarded request 960755 from iznogood)</comment>
     <requestid>960767</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>14f50800df2895fc4a359cc8caba6a8c</srcmd5>
+    <version>2.08</version>
+    <time>1661432928</time>
+    <user>dimstar_suse</user>
+    <comment>Depends on SR#998580</comment>
+    <requestid>998598</requestid>
+  </revision>
 </revisionlist>
