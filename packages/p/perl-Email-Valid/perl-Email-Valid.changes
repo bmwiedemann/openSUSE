@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 24 09:33:38 UTC 2022 - Tina Müller <tina.mueller@suse.com>
+
+- Add fix-test.patch, see
+  https://github.com/Perl-Email-Project/Email-Valid/issues/53
+
+-------------------------------------------------------------------
+Mon May 30 03:06:15 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.203
+   see /usr/share/doc/packages/perl-Email-Valid/Changes
+
+  1.203     2022-05-29 15:22:36-04:00 America/New_York
+          - tiny packaging improvements
+          - detect published null MX records (thanks, Gene Hightower)
+
+-------------------------------------------------------------------
 Wed Sep 28 05:22:42 UTC 2016 - coolo@suse.com
 
 - updated to 1.202
