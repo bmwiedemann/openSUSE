@@ -895,7 +895,7 @@ Mon Mar 29 21:02:40 UTC 2021 - alexandre.vicenzi@suse.com
   * build(deps): bump github.com/containers/storage from 1.24.5 to 1.25.0
   * Use chown function for U volume flag from containers/common repository
   * --iidfile: print hash prefix
-  * bump containernetworking/cni to v0.8.1 - fix for CVE-2021-20206
+  * bump containernetworking/cni to v0.8.1 - fix for CVE-2021-20206 (bsc#1181961)
   * run: fix check for host pid namespace
   * Finish plumbing for buildah bud --manifest
   * buildah manifest add localimage should work
@@ -1226,7 +1226,7 @@ Mon Mar 29 21:02:40 UTC 2021 - alexandre.vicenzi@suse.com
   * Bump github.com/seccomp/containers-golang from 0.4.1 to 0.5.0
   * Bump github.com/stretchr/testify from 1.6.0 to 1.6.1
   * Bump github.com/opencontainers/runc from 1.0.0-rc9 to 1.0.0-rc90
-  * Add CVE-2020-10696 to CHANGELOG.md and changelog.txt
+  * Add CVE-2020-10696 to CHANGELOG.md and changelog.txt (bsc#1167864)
   * Bump github.com/stretchr/testify from 1.5.1 to 1.6.0
   * Bump github.com/onsi/ginkgo from 1.12.2 to 1.12.3
   * Vendor in containers/common v0.12.0
@@ -1497,7 +1497,7 @@ Fri Feb 12 08:54:54 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 1.19.4:
   * run: fix check for host pid namespace
-  * bump containernetworking/cni library to v0.8.1 - fix for CVE-2021-20206
+  * bump containernetworking/cni library to v0.8.1 - fix for CVE-2021-20206 (bsc#1181961)
   * Finish plumbing for buildah bud --manifest
   * buildah manifest add localimage should work
   * Fix build arg check
@@ -1839,7 +1839,7 @@ Mon Aug  3 06:39:53 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 Wed Jun 24 13:24:58 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Update to v1.15.0
-  * Add CVE-2020-10696 to CHANGELOG.md and changelog.txt
+  * Add CVE-2020-10696 to CHANGELOG.md and changelog.txt (bsc#1167864)
   * fix lighttpd example
   * remove dependency on openshift struct
   * Warn on unset build arguments
