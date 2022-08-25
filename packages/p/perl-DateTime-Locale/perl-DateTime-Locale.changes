@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug 21 03:07:01 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.36
+   see /usr/share/doc/packages/perl-DateTime-Locale/Changes
+
+  1.36     2022-08-20
+
+  - Fixed misparsing of the `be-tarask` locale code. This is a locale with just
+    a language name and a variant. The locale parsing code assumed that all
+    two-part locale codes had either a script or territory, not a variant. This
+    caused the catalog to show the name of this locale as "Belarusian", the same
+    as the `be` code. Reported by yvanzo. Fixes GH #32.
+
+-------------------------------------------------------------------
 Sun Apr 24 03:06:18 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.35
