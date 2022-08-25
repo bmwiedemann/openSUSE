@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 24 16:21:04 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Don't check the source code for lint with flake8
+  * pytest-flake8 does not work with flake8 >= 5
+    gh#tholo/pytest-flake8#87
+  * Source code linting should not be relevant for a functional rpm
+    package
+
+-------------------------------------------------------------------
 Tue Aug 09 18:01:17 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.4.0+git.20220809.f32223a:

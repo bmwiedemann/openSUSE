@@ -36,7 +36,6 @@ BuildRequires:  python3-Pebble
 BuildRequires:  python3-chardet
 BuildRequires:  python3-psutil
 BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-flake8
 BuildRequires:  unifdef
 Requires:       astyle
 Requires:       clang
@@ -63,6 +62,7 @@ and report bugs in compilers and other tools that process C/C++ or OpenCL code.
 %prep
 %setup -q
 %autopatch -p1
+sed -i '/addopts/ s/--flake8//' setup.cfg
 
 %build
 %define __builder ninja

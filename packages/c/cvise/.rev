@@ -741,4 +741,12 @@
   * Remove extra space in a message.</comment>
     <requestid>994178</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>2749e28c8280e2980478854e7bd8e115</srcmd5>
+    <version>2.4.0+git.20220809.f32223a</version>
+    <time>1661432940</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999107</requestid>
+  </revision>
 </revisionlist>
