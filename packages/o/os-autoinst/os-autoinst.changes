@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 25 03:23:52 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1661348972.dc704b7:
+  * testapi: Allow forcing worker ip in autoinst_url()
+  * Mark certain statements in baseclass as uncoverable
+  * Test `wait_serial` when it is a serial terminal
+  * Test bouncer functions of baseclass
+  * Test console functions of baseclass
+  * Test enqueuing data for external video encoder
+  * Avoid division by zero when making stopwatch-summary
+  * Remove "alive" check from isotovideo/backend
+
+-------------------------------------------------------------------
 Mon Aug 22 19:44:28 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1661179507.eb3f483:
