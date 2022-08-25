@@ -19,7 +19,7 @@
 %define skip_python2 1
 Name:           python-time-machine
 Group:          Development/Languages/Python
-Version:        2.6.0
+Version:        2.8.1
 Release:        0
 Summary:        Travel through time in your tests
 License:        MIT
@@ -29,10 +29,11 @@ Source:         https://github.com/adamchainz/time-machine/archive/refs/tags/%{v
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
-# SECTION
+# SECTION tests
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module pytzdata}
+BuildRequires:  python38-backports.zoneinfo
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
