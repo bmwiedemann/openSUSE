@@ -1,4 +1,0 @@
-# even if it's ugly: upstream wants this name
-addFilter("W: shlib-policy-missing-lib")
-# this docdir is owned by a subpackage
-addFilter("W: shlib-policy-nonversioned-dir.*/usr/share/doc/packages/libpaper")
