@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Aug 23 13:31:42 UTC 2022 - Tina Müller <tina.mueller@suse.com>
+
+- Fix patch IPC-Run-0.89-path.diff (add -p0)
+
+-------------------------------------------------------------------
+Mon Aug  8 03:09:37 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20220807.0
+   see /usr/share/doc/packages/perl-IPC-Run/Changelog
+
+  20220807.0 Mon Aug 1 2022
+   If your applications rely on portability to Windows, see new documentation
+   sections "argument-passing rules are program-specific" and "batch files".  This
+   release fixes bugs in runs of Windows programs that use standard command line
+   parsing rules.  Runs of non-standard programs may require changes.  Notable
+   non-standard programs include cmd.exe, cscript.exe, and Cygwin programs.
+   - #140 - skip t/pty.t test on NetBSD too
+   - Add strict/warnings
+   - #142 - Follow Windows argument quoting rules
+   - #146 - allow win32_newlines.t to actually run
+   - #150 - Make t/pty.t test pass on OpenBSD.
+   - #148 - Support Win32 commands having nonstandard command line parsing rules
+   - Support executing Win32 batch files.
+   - Add IPC::Run::Win32Process, for delivering nonstandard command lines.
+   - Fix reporting of Win32::Process::Create() errors.
+   - #156 - On Windows, avoid hang when closing read end of pipe.
+   - #155 - Ignore known test failure on msys. - t/windows_search_path.t
+   - Avoid warning with IPCRUNDEBUG, in Windows spawned children.
+   - Use $^X, not 'perl', in tests.
+   - Thanks to the New active developer: Noah Misch!
+
+-------------------------------------------------------------------
 Thu May  7 12:35:57 UTC 2020 - Tina Müller <tina.mueller@suse.com>
 
 - Rebase IPC-Run-0.89-path.diff
