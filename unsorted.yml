@@ -3668,6 +3668,8 @@ unsorted:
   - featherpad 
   - featherpad-lang 
   - fec-devel 
+  - feedbackd 
+  - feedbackd-devel 
   - feh 
   - feh-zsh-completion 
   - felix-bundlerepository 
@@ -6902,8 +6904,6 @@ unsorted:
   - helm-fish-completion 
   - helm-zsh-completion 
   - helmfile 
-  - helmfile-bash-completion 
-  - helmfile-zsh-completion 
   - help2man 
   - help2man-lang 
   - helvum: [x86_64] 
@@ -10843,6 +10843,7 @@ unsorted:
   - libfdt-devel-32bit: [x86_64] 
   - libfdt1-32bit: [x86_64] 
   - libfec3 
+  - libfeedback-0_0-0 
   - libff-1_0_0 
   - libff-devel 
   - libffado-devel 
@@ -12978,8 +12979,6 @@ unsorted:
   - libpano-utils 
   - libpano13-3 
   - libpaper-devel 
-  - libpaper-utils 
-  - libpaper1 
   - libpapi 
   - libpapi-32bit: [x86_64] 
   - libpapi-hpc 
@@ -13850,7 +13849,7 @@ unsorted:
   - libscalapack2_2_1_0-gnu-openmpi4-hpc-devel 
   - libscalapack2_2_1_0-gnu-openmpi4-hpc-devel-static 
   - libscamperfile-devel 
-  - libscamperfile2 
+  - libscamperfile3 
   - libscca-devel 
   - libscca-tools 
   - libscca1 
@@ -19953,6 +19952,7 @@ unsorted:
   - perl-Params-ValidationCompiler 
   - perl-Parse-ANSIColor-Tiny 
   - perl-Parse-CPAN-Packages 
+  - perl-Parse-Distname 
   - perl-Parse-MIME 
   - perl-Parse-Method-Signatures 
   - perl-Parse-PMFile 
@@ -42771,6 +42771,7 @@ unsorted:
   - typelib-1_0-Jsonrpc-1_0 
   - typelib-1_0-Keybinder-0_0 
   - typelib-1_0-Keybinder-3_0 
+  - typelib-1_0-Lfb-0_0 
   - typelib-1_0-Libags-4_0 
   - typelib-1_0-Libinsane-1_0 
   - typelib-1_0-Libmsi-1_0 

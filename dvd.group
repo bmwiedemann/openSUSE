@@ -328,6 +328,7 @@
     <package name="crypto-policies" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="crypto-policies-scripts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="cryptsetup" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="cryptsetup-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="cryptsetup-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="csmash" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ctags" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2383,6 +2384,9 @@
     <package name="libpagemaker-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpango-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpangomm-1_4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libpaper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libpaper-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libpaper1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libparted-fs-resize0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libparted2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libpath_utils1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -3164,7 +3168,6 @@
     <package name="pam_pwquality" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pam_ssh" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="pam_unix" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="paper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="paperkey" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="par" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="parallel-printer-support" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
