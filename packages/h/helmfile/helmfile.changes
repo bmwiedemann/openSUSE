@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Wed Aug 24 09:49:47 UTC 2022 - manfred.h@gmx.net
+
+- autocomplete files have been removed; obsolete bash-completion
+  and zsh-completion sub-packages older than this version.
+
+-------------------------------------------------------------------
+Wed Aug 24 09:26:33 UTC 2022 - manfred.h@gmx.net
+
+- Update to version 0.145.3:
+  * Bump github.com/hashicorp/go-version from 1.4.0 to 1.6.0 by
+    @dependabot in #183
+  * fix doc link error and style error by @yxxhero in #217
+  * fix(doc): add missing version field in the release template
+    example by @lemeurherve in #228
+  * update readme about image repo and fix link error by @yxxhero
+    in #224
+  * fix: use helm secrets view rather than helm secrets dec to
+    decrypt by @philomory in #201
+  * add Go lint by @yxxhero in #169
+  * Include the working helmfile ver in the bug report by
+    @mumoshu in #237
+  * update Readmd.md by @yxxhero in #236
+  * feat: bump chartify to v0.10.0 to support OCI registry for adhoc
+    dependencies by @toVersus in #238
+  * on canary build, version should show "0.0.0-dev" by @itscaro in
+    #162
+  * Add integration test for #238 with local docker registry as a
+    OCI-based helm chart repo by @mumoshu in #239
+  * chore: clean up snapshot test by @toVersus in #241
+  * doc: getting start adds repositories configuration by @xiaomudk
+    in #240
+  * Use cobra by @yxxhero in #234
+  * E2E helmfile-template testing with local chart repo server by
+    @mumoshu in #245
+  * correct --help cli arg regression by @jouve in #252
+  * revert environment long option from --env to --environment by
+    @jouve in #250
+  * test: Add unit tests for ChartExport by @xiaomudk in #256
+  * test: Add unit tests for ChartPull by @xiaomudk in #257
+  * fix: OCI Url and Version parse error by @xiaomudk in #258
+  * Implement readDirEntries method by @vasicvuk in #254
+  * remove selector override in cmd/apply by @jouve in #266
+  * update doccs/index.md about CLI ref by @yxxhero in #264
+  * fix: needs error with context that includes slash by @sergeief
+    in #268
+  * Bump k8s.io/apimachinery from 0.23.4 to 0.24.3 by @dependabot
+    in #230
+  * Add flags about need for lint subcmd by @yxxhero in #273
+  * fix go.mod by @yxxhero in #275
+  * Refactor cobra flag default values for readability by @yxxhero
+    in #274
+  * build(deps): bump go.uber.org/zap from 1.21.0 to 1.22.0 by
+    @dependabot in #280
+  * Add file existence check for remote values by @kuzaxak in #284
+  * Update ArchLinux installation instructions by @AnatolyRugalev
+    in #282
+  * Fix Inclusion of Releases for Other Environments by @dackroyd
+    in #276
+  * Cleanup pkg/config/config.go by @yxxhero in #287
+  * update golang lint by @yxxhero in #288
+  * Refactor 'images' workflow, include Ubuntu image to push by
+    @pathob in #262
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.14 to
+    0.0.16 by @dependabot in #293
+  * fix tag miss in docker build by @yxxhero in #294
+
+-------------------------------------------------------------------
 Tue Jul 26 07:50:07 UTC 2022 - manfred.h@gmx.net
 
 - Update to version 0.145.2:
