@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Mon Jan 31 16:19:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.0.0+git20211018:
+  * changelog: Bump changes line to a recent date too. It was still
+    stuck at 2021-10-07. Fixup version too while at that.
+- Changes from version 0.0.0+git20210426:
+  * implement fbd_dev_sound_stop
+    tracks the FdbFeedbackSounds in a GHashTable in the FdbDevSound
+  * fbd-dev-sound: Don't leak GError
+  * fbd-dev-sound: Don't warn when sound was cancelled. This is not
+    an error per se.
+  * lfb-event: Don't leak error.
+    Don't leak the error values in the success case
+  * tests: Run lfb_event_{get,set}_timeout
+  * test-lfb-integration: Test invocation error
+  * event: Make log-domain match source file name
+  * tests: Run event tests too
+  * event: Remove 'g' prefix from common C types.
+    This matchs phosh's style.
+  * fbd-event: Add sender property.
+    This allows us to store the DBus sender
+  * fbd-manager: Keep DBus sender around
+  * feedback-manager: Track DBus clients and end feedbacks if they
+    go away. When the client goes away we build up a list of events
+    to end feedback for to make sure the hash table isn't modified
+    in place. The alternative approach would be to disconnect the
+    on_event_feedbacks_ended handler, duplicate the DBus signal
+    emission and use g_hash_table_foreach_remove but that looks
+    less robust than using the same code path.
+  * Help emacs to indent properly
+  * fbd-feedback-theme: Don't leak JSON node
+  * fbd-dev-leds: Free actual FbdDevLed as well.
+    So far we only unref'ed the device.
+  * fbd-dev-leds: Don't leak enum_name
+    g_enum_to_string() is transfer full.
+  * fbd-dev-leds: Don't leak color
+    g_ascii_strdown() creates a copy already.
+  * fbd-dev-leds: Use automatic deep cleanup for device list.
+    The current logic was fragile and failed e.g. when the
+    FEEDBACKD_UDEV_VAL_LED would not match leaking the dev since
+    the g_object_unref() at the end of the loop was never hit.
+    Prevent that with automatic cleanup and explicitly ref'ing the
+    devs we want to use.
+  * fbd-dev-sound: Use correct cleanup for hash table.
+    This went unnoticed since the manager forgot to cleanup
+    this at all (see follow up commit).
+  * fbd-feedback-manager: Make sure to dispose sound device as
+    well. Fixes another leak.
+  * fbd-feedback-manager: Don't leak config_path. It's assigned
+    multiple times.
+  * fbd-feedback-manager: Don't leak device list
+  * fbd-ledctrl: fix matching of trigger in list of triggers.
+    If the trigger is the last thing in
+    sysfs_path/LED_TRIGGER_ATTR, then the new-line at the end of
+    the output causes g_strv_contains to fail to find the trigger
+    in the list. This strips the new-line before splitting the
+    output into a list for searching.
+  * README: Fix gdbus test command. It is TriggerFeedback and not
+    Feedback (anymore). Also add a note how to end the feedback in
+    order to prevent loss of hearing :-).
+- Switch to buildtime tarball generation, use cpio format. Also
+  switch to a explicit released tag, we like to know what we are
+  getting is the same every time. At the same strip v prefix from
+  version in upstream tag.
+- Split out shared library and typelib in separate packages, and
+  name them after their soname and typelibname, follow the SLPP!
+- Drop unneeded systemd-devel BuildRequires and
+  sound-theme-freedesktop Requires.
+- Replace gcc with generic c_compiler BuildRequires.
+
+-------------------------------------------------------------------
+Tue Apr 20 14:45:15 UTC 2021 - Adrian Campos Garrido <adriancampos@teachelp.com>
+
+- Change feedbackd to video in udev rules
+
+-------------------------------------------------------------------
+Mon Apr 12 11:08:15 UTC 2021 - Adrian Campos Garrido <adriancampos@teachelp.com>
+
+- Add haptic support in feedback via udev rule
+
+-------------------------------------------------------------------
+Sun Apr 11 18:16:15 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
+
+- Update to tag 0.0.0+git20210125
+
+-------------------------------------------------------------------
+Mon Oct 05 11:00:00 CET 2020 - Adrian Campos Garrido <adriancampos@teachelp.com>
+
+- Update feedbackd to add pinephone support
+
+-------------------------------------------------------------------
+Mon Sep 14 11:00:00 UST 2020 - Adrian Campos Garrido <adriancampos@teachelp.com>
+
+- Fix problem with fbd-ledctrl file
+
+-------------------------------------------------------------------
+Fri Jul 24 11:00:00 UTC 2020 - Adrian Campos Garrido <adriancampos@teachelp.com>
+
+- Update feedbackd
+
+-------------------------------------------------------------------
+Fri Jun 19 11:00:00 UTC 2020 - Adrian Campos Garrido <adriancampos@teachelp.com>
+
+- Initial packaging
+
+-------------------------------------------------------------------
+Tue Jan 19 17:00:00 CET 2020 - Adrian Campos Garrido <adriancampos@teachelp.com>
+
+- Update package
+
