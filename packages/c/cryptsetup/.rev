@@ -1038,4 +1038,41 @@ in future, e.g. &quot;Version: 2.0~beta1&quot; (forwarded request 160813 from je
     <comment></comment>
     <requestid>946915</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>5e4172ea1c1d0630ab09877a3f7dbd06</srcmd5>
+    <version>2.5.0</version>
+    <time>1661434390</time>
+    <user>dimstar_suse</user>
+    <comment>- cryptsetup 2.5.0:
+  * Split manual pages into per-action pages and use AsciiDoc format. 
+  * Remove cryptsetup-reencrypt tool from the project and move reencryption
+    to already existing &quot;cryptsetup reencrypt&quot; command.
+    If you need to emulate the old cryptsetup-reencrypt binary, use simple
+    wrappers script running &quot;exec cryptsetup reencrypt $@&quot;.
+  * LUKS2: implement --decryption option that allows LUKS removal.
+  * Fix decryption operation with --active-name option and restrict
+    it to be used only with LUKS2.
+  * Do not refresh reencryption digest when not needed.
+    This should speed up the reencryption resume process.
+  * Store proper resilience data in LUKS2 reencrypt initialization.
+    Resuming reencryption now does not require specification of resilience
+    type parameters if these are the same as during initialization.
+  * Properly wipe the unused area after reencryption with datashift in
+    the forward direction.
+  * Check datashift value against larger sector size.
+    For example, it could cause an issue if misaligned 4K sector appears
+    during decryption.
+  * Do not allow sector size increase reencryption in offline mode.
+  * Do not allow dangerous sector size change during reencryption.
+  * Ask the user for confirmation before resuming reencryption.
+  * Do not resume reencryption with conflicting parameters.
+  * Add --force-offline-reencrypt option.
+  * Do not allow nested encryption in LUKS reencrypt.
+  * Support all options allowed with luksFormat with encrypt action.
+  * Add resize action to integritysetup.
+  * Remove obsolete dracut plugin reencryption example.
+  * Fix possible keyslot area size overflow during conversion to LUKS2.
+  * Allow use of --header option for cryptsetup close. (forwarded request 999046 from lnussel)</comment>
+    <requestid>999047</requestid>
+  </revision>
 </revisionlist>

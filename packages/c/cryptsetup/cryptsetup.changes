@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Aug 22 08:38:16 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- cryptsetup 2.5.0:
+  * Split manual pages into per-action pages and use AsciiDoc format. 
+  * Remove cryptsetup-reencrypt tool from the project and move reencryption
+    to already existing "cryptsetup reencrypt" command.
+    If you need to emulate the old cryptsetup-reencrypt binary, use simple
+    wrappers script running "exec cryptsetup reencrypt $@".
+  * LUKS2: implement --decryption option that allows LUKS removal.
+  * Fix decryption operation with --active-name option and restrict
+    it to be used only with LUKS2.
+  * Do not refresh reencryption digest when not needed.
+    This should speed up the reencryption resume process.
+  * Store proper resilience data in LUKS2 reencrypt initialization.
+    Resuming reencryption now does not require specification of resilience
+    type parameters if these are the same as during initialization.
+  * Properly wipe the unused area after reencryption with datashift in
+    the forward direction.
+  * Check datashift value against larger sector size.
+    For example, it could cause an issue if misaligned 4K sector appears
+    during decryption.
+  * Do not allow sector size increase reencryption in offline mode.
+  * Do not allow dangerous sector size change during reencryption.
+  * Ask the user for confirmation before resuming reencryption.
+  * Do not resume reencryption with conflicting parameters.
+  * Add --force-offline-reencrypt option.
+  * Do not allow nested encryption in LUKS reencrypt.
+  * Support all options allowed with luksFormat with encrypt action.
+  * Add resize action to integritysetup.
+  * Remove obsolete dracut plugin reencryption example.
+  * Fix possible keyslot area size overflow during conversion to LUKS2.
+  * Allow use of --header option for cryptsetup close.
+  * Fix activation of LUKS2 device with integrity and detached header.
+  * Add ZEROOUT IOCTL support for crypt_wipe API call.
+  * VERITY: set loopback sector size according to dm-verity block sizes.
+  * veritysetup: dump device sizes.
+  * LUKS2 token: prefer token PIN query before passphrase in some cases.
+    When a user provides --token-type or specific --token-id, a token PIN
+    query is preferred to a passphrase query.
+  * LUKS2 token: allow tokens to be replaced with --token-replace option
+    for cryptsetup token command.
+  * LUKS2 token: do not continue operation when interrupted in PIN prompt.
+  * Add --progress-json parameter to utilities.
+  * Add support for --key-slot option in luksResume action.
+- move man pages to separate subpackage
+- drop backports handling
+
+-------------------------------------------------------------------
 Fri Jan 14 19:19:43 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cryptsetup 2.4.3:
