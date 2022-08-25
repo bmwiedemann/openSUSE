@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 24 12:30:14 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add torbrowser-launcher-gui-move-argtype.patch: Ensure arguments
+  to gui-move are integers, not floats (boo#1202693,
+  gh#micahflee/torbrowser-launcher#599).
+
+-------------------------------------------------------------------
 Tue May 24 09:18:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not recommend lang package: the lang package has smarter
