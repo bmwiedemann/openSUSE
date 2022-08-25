@@ -714,4 +714,12 @@
     <comment>July 2022 CPU + interim fix</comment>
     <requestid>992393</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>76d2d048face4a378f440c9f1728ddb1</srcmd5>
+    <version>1.8.0.345</version>
+    <time>1661434392</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999069</requestid>
+  </revision>
 </revisionlist>

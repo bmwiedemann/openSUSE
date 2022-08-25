@@ -180,6 +180,8 @@ Patch3:         java-atk-wrapper-security.patch
 Patch12:        adlc-parser.patch
 # Avoid triggering inactivity timeout while generating javadoc in zero VM
 Patch14:        zero-javadoc-verbose.patch
+# Fix detection of jobserver support
+Patch15:        make-jobserver-detection.patch
 #
 # OpenJDK specific patches
 #
@@ -515,6 +517,8 @@ patch -p0 -i %{PATCH12}
 %if %{with zero}
 patch -p0 -i %{PATCH14}
 %endif
+
+patch -p0 -i %{PATCH15}
 
 %ifarch ppc ppc64 ppc64le
 # PPC fixes

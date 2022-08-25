@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 24 10:48:55 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- make-jobserver-detection.patch: Fix detection of jobserver support
+
+-------------------------------------------------------------------
 Tue Aug  2 19:37:31 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u345 (icedtea-3.24.0)
