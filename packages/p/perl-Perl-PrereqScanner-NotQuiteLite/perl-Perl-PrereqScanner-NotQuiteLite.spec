@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Perl-PrereqScanner-NotQuiteLite
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Perl-PrereqScanner-NotQuiteLite
 Name:           perl-Perl-PrereqScanner-NotQuiteLite
-Version:        0.9914
+Version:        0.9916
 Release:        0
-Summary:        Tool to scan your Perl code for its prerequisites
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Tool to scan your Perl code for its prerequisites
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -35,11 +35,11 @@ BuildRequires:  perl(ExtUtils::MakeMaker::CPANfile) >= 0.09
 BuildRequires:  perl(Module::CPANfile) >= 1.1004
 BuildRequires:  perl(Module::CoreList) >= 3.11
 BuildRequires:  perl(Module::Find)
+BuildRequires:  perl(Parse::Distname)
 BuildRequires:  perl(Regexp::Trie)
 BuildRequires:  perl(Test::FailWarnings)
 BuildRequires:  perl(Test::More) >= 0.98
 BuildRequires:  perl(Test::UseAllModules) >= 0.17
-BuildRequires:  perl(URI::cpan)
 BuildRequires:  perl(parent)
 Requires:       perl(CPAN::Meta::Prereqs) >= 2.150010
 Requires:       perl(CPAN::Meta::Requirements) >= 2.140000
@@ -47,8 +47,8 @@ Requires:       perl(Data::Dump)
 Requires:       perl(Module::CPANfile) >= 1.1004
 Requires:       perl(Module::CoreList) >= 3.11
 Requires:       perl(Module::Find)
+Requires:       perl(Parse::Distname)
 Requires:       perl(Regexp::Trie)
-Requires:       perl(URI::cpan)
 Requires:       perl(parent)
 %{perl_requires}
 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr  9 03:08:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9916
+   see /usr/share/doc/packages/perl-Perl-PrereqScanner-NotQuiteLite/Changes
+
+  0.9916 2022/04/08
+    - Ignore core modules with undef version correctly
+    - Drop URI::cpan dependency and use Parse::Distname to parse cpan URI
+
+  0.9915 2022/04/01
+    - Add optional option
+
+-------------------------------------------------------------------
 Mon Sep 13 03:06:23 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9914
