@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Aug 18 06:36:07 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 20211212b:
+ - scamper:
+  * add an option (-O cafile=/path/to/file) to load CA certificates
+    from a specific file when starting scamper for validating a
+    remote controller's certificate (this was released in 20211212a)
+  * add options
+    -O client-certfile=/path/to/certfile and
+    -O client-privfile=/path/to/privfile
+    to have scamper present a client certificate during a TLS handshake
+    with a remote controller
+  * fix bugs that prevent scamper from reconnecting to a remote
+    controller
+  * fix -d debugfile when scamper is built with privilege separation
+  * fix bug when writing neighbordisc measurements to warts file that
+    prevents a neighbordisc measurement from being read
+  * fix bug when reading some tracelb measurements with unresponsive hops
+    from a warts file
+  * allow user to specify fractions of a second to ping timeout (-W)
+  * use a random source port / ICMP ID in ping if -F 0
+ - sc_remoted:
+  * add -C option to specify a CA PEM file to verify client certificates
+    presented by scamper instances.
+  * add -O skipnameverification option to tell sc_remoted to verify
+    scamper presents a certificate signed by the CA, but do not do
+    name verification
+
+-------------------------------------------------------------------
 Mon Apr 25 14:13:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop libscamperfile1 provides from the lib subpckage:
