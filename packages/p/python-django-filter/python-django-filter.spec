@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-filter
-Version:        21.1
+Version:        22.1
 Release:        0
 Summary:        Reusable Django app to allow users to filter queryset dynamically
 License:        BSD-3-Clause
@@ -40,8 +40,8 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Django-filter is a reusable Django application for allowing users to filter queryset dynamically. It
-requires Python 2.7 or higher. For usage and installation instructions, consult the docs directory.
+Django-filter is a reusable Django application for allowing users to filter queryset dynamically.
+For usage and installation instructions, consult the docs directory.
 
 %prep
 %setup -q -n django-filter-%{version}
