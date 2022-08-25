@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 25 06:50:19 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Added 0001-Compilation-fixes-for-wxWidgets-3.1.6.patch,
+  0001-Compilation-fix-for-wxWidgets-3.1.5.patch,
+  0001-Fix-a-wx-assert-complaining-that-a-panel-was-being-a.patch,
+  0001-Fix-a-wxAssert-when-showing-the-Command-line-termina.patch,
+  and
+  0001-Prevent-a-wx-build-warning-about-wxPATH_NORM_ALL-bei.patch
+  to fix build with wxWidgets 3.2
+
+-------------------------------------------------------------------
 Mon Dec  7 07:17:47 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 7.0

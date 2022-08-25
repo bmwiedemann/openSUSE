@@ -1,7 +1,7 @@
 #
 # spec file for package 4pane
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2016 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,6 +24,16 @@ Summary:        A multi-pane detailed-list file manager
 License:        GPL-3.0-only
 URL:            http://www.4pane.co.uk/
 Source0:        https://sourceforge.net/projects/fourpane/files/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 0001-Compilation-fixes-for-wxWidgets-3.1.6.patch
+Patch0:         0001-Compilation-fixes-for-wxWidgets-3.1.6.patch
+# PATCH-FIX-UPSTREAM 0001-Compilation-fix-for-wxWidgets-3.1.5.patch
+Patch1:         0001-Compilation-fix-for-wxWidgets-3.1.5.patch
+# PATCH-FIX-UPSTREAM 0001-Fix-a-wx-assert-complaining-that-a-panel-was-being-a.patch
+Patch2:         0001-Fix-a-wx-assert-complaining-that-a-panel-was-being-a.patch
+# PATCH-FIX-UPSTREAM 0001-Fix-a-wxAssert-when-showing-the-Command-line-termina.patch
+Patch3:         0001-Fix-a-wxAssert-when-showing-the-Command-line-termina.patch
+# PATCH-FIX-UPSTREAM 0001-Prevent-a-wx-build-warning-about-wxPATH_NORM_ALL-bei.patch
+Patch4:         0001-Prevent-a-wx-build-warning-about-wxPATH_NORM_ALL-bei.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -41,7 +51,7 @@ emulator and user-defined tools.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 sed -i -e "s|\$(datadir)/doc|%{_docdir}|g" Makefile.in
 sed -i -e "s|/usr/doc/4Pane/|%{_docdir}/4Pane/|g" Configure.cpp
 
