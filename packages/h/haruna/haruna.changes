@@ -1,129 +1,47 @@
 -------------------------------------------------------------------
+Wed Aug 24 16:53:39 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.1
+  Bugfixes:
+  * Fixed two broken actions in the global menu
+  * Fixed translations
+
+-------------------------------------------------------------------
 Mon Aug 22 17:55:37 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.9.0
-  * SubtitlesSettings: set default properties
-  * improve documentation
-  * mpvitem: initialize `ytdl-format` property
-  * PlaybackSettings: refactor `ytdl-format` setting
-  * SettingsWindow: remove `visible` property
-  * Settings: make text casing more consistent
-  * SubtitlesSettings: add settings for subtitle family and size
-  * use qFatal instead of throw
-  * build: fix build on bsd
-  * build: only use QtX11Extras on linux
-  * mpvcore: remove unused include
-  * mpvitem: remove unused include and variable
-  * mpvitem: refactor, code style changes
-  * AudioMenu: disable tracks menu when there are no tracks
-  * AudioMenu,SubtitlesMenu: set mpv models directly to the
-    instantiator
-  * Settings: remove footer from sidebar
-  * remove kxmlgui dependency
-  * mpv: don't set `ytdl-format` before loading a file
-  * ContextMenu: fix actions name
-  * Settings: make screenshot template field fill width
-  * Settings: move volume step option to audio page
-  * Settings: move seek options to playback page
-  * add option to restore window size and position
-  * SVN_SILENT made messages (.desktop file) - always resolve
-    ours
-  * GIT_SILENT made messages (after extraction)
-  * rename remaining actions instances to appActions
-  * MouseSettings: display action text
-  * actions: change actions context property name to appActions
-  * MouseSettings: use proxyActionsModel for the actions list
-  * SettingsWindow: change page when opening a settings page
-    through an action
-  * actions: map proxy row to source model row when saving a
-    shortcut
-  * Settings: set General as default window
-  * remove haction class and qaction includes
-  * CustomCommandsSettings: small refactoring
-  * remove ProxyCustomCommandsModel
-  * actionsmodel: add proxy model name filtering
-  * actionsmodel: handle shortcut clearing
-  * customcommandsmodel: update model on shortcut changes
-  * actionsmodel: add functions to edit and append custom actions
-  * refactor custom commands actions to use the ActionsModes
-  * remove ActionsManager class
-  * refactor actions to not use the KShortcutsDialog from KXmlGui
-  * main.qml: replace appActions with an alias to the actions
-    component
-  * add ListItem component
-  * PlaylistSettings: remove non-existent property
-  * ColorPickerButton: add border
-  * GeneralSettings: fix button bottom border being cut off
-  * SVN_SILENT made messages (.desktop file) - always resolve
-    ours
-  * GIT_SILENT made messages (after extraction)
-  * mpvrenderer: add display parameters to
-    mpv_render_context_create
-  * CustomCommands: show shortcut as buttons text, put shortcut
-    button in a loader
-  * add error message component to display errors coming from cpp
-  * mpvitem: return early with an error message if youtube
-    playlist is empty
-  * add option to pass error messages from cpp to qml
-  * customcommands: rename LoadOnStartup to SetOnStartup
-  * mpvcore: switch back to using ErrorReturn struct
-  * mpvcore: print errors instead of returning them
-  * MpvVideo: don't run timer when no file is loaded
-  * customcommands: add option to disable the loading of
-    commands at startup
-  * mpvitem: don't connect loadTracks to fileLoaded signal
-  * mpvcore: remove ErrorReturn struct and get_error method
-  * SVN_SILENT made messages (.desktop file) - always resolve
-    ours
-  * GIT_SILENT made messages (after extraction)
-  * SVN_SILENT made messages (.desktop file) - always resolve
-    ours
-  * GIT_SILENT made messages (after extraction)
-  * refactor(mpv): rename mpvobject to mpvitem
-  * refactor(mpv): some toUtf8().data() usage improvements
-  * refactor(mpv): use QMetaObject::invokeMethod with a pointer
-    to member function
-  * refactor(mpv): move mpv_set_wakeup_callback to mpvcore
-  * refactor(mpv): remove dup_qstring method
-  * chore: remove WTFPL license
-  * refactor(mpv) remove unnecessary includes
-  * refactor(mpv): move code from mpvqthelper into mpvcore
-  * chore: add license to mpvcore.cpp/h
-  * refactor(mpv): split core functionality from MpvObject into
-    MpvCore
-  * fix(mpv): call initProperties()
-  * refactor(mpv): move property initialization from qml to cpp
-  * chore: add license
-  * refactor: move MpvRederer class to own file
-  * refactor: move mpv files to own folder
-  * fix: close color picker window when closing the application
-  * feat: add tooltips to subtitle color picker and reset buttons
-  * chore: add license header to ColorPickerButton.qml
-  * feat: add settings to customize the subtitle
-  * feat(recentfiles): show correct youtube playlist title
-  * feat: add seek to start, seek to last position, load last
-    played file to menubar
-  * feat(recentfiles): add setting to set maximum number of
-    recent files
-  * feat(recentfiles): add option to clear recent files list
-  * fix: apply PlaybackSettings.playOnResume only to videos that
-    have been played before
-  * GIT_SILENT made messages (after extraction)
-  * GIT_SILENT made messages (after extraction)
-  * Fix minor typo
-  * fix: restore time position for youtube videos
-  * feat: add setting to start playback when resuming a file and
-    some other things
-  * feat: add mpv context menu
-  * GIT_SILENT made messages (after extraction)
-  * Improve hamburger menu
-  * GIT_SILENT made messages (after extraction)
-  * fix: more HamburgerMenu changes
-  * fix: some fixes for the menus
-  * fix: use KCONFIG_VERSION instead of
-    KFILEMETADATA_ENABLE_DEPRECATED_SINCE
-  * fix: save settings after toggling menubar/header
-  * Add hamburger menu in header
+  Features:
+  * Refactored the shortcuts configuration, now it's available
+    in the settings window with the other settings, instead of
+    opening another window
+  * Hamburger menu now only show a few actions, the rest are
+    available in a submenu
+  * When menubar is hidden the hamburger menu will be shown in
+    the header/toolbar and when the header is hidden it's shown
+    in the footer
+  * Added a proper context menu for the video
+  * Added setting to start playback when resuming playback of a
+    file
+  * Added setting to set maximum number of recent files
+  * Added option to clear recent files
+  * Added setting to restore window size and position
+  * Added settings to customize the subtitle font family, size,
+    style (bold, italic), color, shadow color, shadow offset,
+    border color, border width
+  * Moved seek settings to playback settings page
+  * Moved volume step setting to audio settings page
+  * Custom commands that run on startup can be turned off so
+    they are not set on next run
+  * In mouse settings the action text, which is translatable, is
+    shown instead of it's internal name
+  Bugfixes:
+  * Toggling menubar and header/toolbar through actions
+    remembers the state on next run
+  * Restore time position for youtube videos
+  * Improve mpv initialization to allow better hardware decoding
+    support
+  * Ytdl-format property can be overwritten by a custom command
+    action
 - Switch to yt-dlp where available
 
 -------------------------------------------------------------------
