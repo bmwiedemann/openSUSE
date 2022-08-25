@@ -1,2 +1,0 @@
-# Paper is the name and the medium - remove erroneous rpmlint warnings
-addFilter("name-repeated-in-summary paper")
