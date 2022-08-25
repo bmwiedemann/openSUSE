@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 23 03:06:37 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.10
+   see /usr/share/doc/packages/perl-HTML-Form/Changes
+
+  6.10      2022-08-22 13:20:12Z
+      - Use "croak" instead of "die" to show errors from the perspective of the
+        caller [RT#20499] (GH#29) (Julien Fiegehenn)
+      - Remove the executable bit from a couple of tests (GH#41) (James Raspass)
+      - <option>s within select fields without a name no longer get merged into
+        the previous select field (GH#2) (Julien Fiegehenn)
+      - find_input() can now take a reference to undef to explicitly find inputs
+        that have no name (GH#2) (Julien Fiegehenn)
+
+-------------------------------------------------------------------
 Tue Aug 16 03:07:42 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.09

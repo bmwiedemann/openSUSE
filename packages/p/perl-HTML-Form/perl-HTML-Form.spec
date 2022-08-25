@@ -18,7 +18,7 @@
 
 %define cpan_name HTML-Form
 Name:           perl-HTML-Form
-Version:        6.09
+Version:        6.10
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Class that represents an HTML form element
@@ -50,7 +50,6 @@ can be passed to the request() method of LWP::UserAgent.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
