@@ -40,7 +40,7 @@
 %define gmic_datadir %{_datadir}/gmic
 
 Name:           gmic
-Version:        3.1.2
+Version:        3.1.5
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
@@ -50,12 +50,10 @@ Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://gmic.eu
 # Git URL:      https://github.com/dtschump/gmic
 Source0:        https://gmic.eu/files/source/gmic_%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gmic-qt-make-it-work-without-gmic-cpp.patch - https://github.com/c-koi/gmic-qt/pull/134
-Patch0:         gmic-qt-make-it-work-without-gmic-cpp.patch
 # PATCH-FIX-UPSTREAM krita.patch - Will be sent upstream soon. For now https://github.com/darix/gmic-qt/tree/krita5
-Patch1:         krita5.patch
+Patch0:         krita5.patch
 # PATCH-FEATURE-OPENSUSE
-Patch2:         0001-Find-the-local-gmic-library.patch
+Patch1:         0001-Find-the-local-gmic-library.patch
 #
 # SECTION pkg_vcmp
 #

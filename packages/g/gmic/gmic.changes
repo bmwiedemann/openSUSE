@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 25 07:44:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.1.5. No changelog.
+- Drop patch, merged upstream:
+  * gmic-qt-make-it-work-without-gmic-cpp.patch
+
+-------------------------------------------------------------------
+Wed Jun 29 09:03:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.1.4. No changelog.
+- Rebase krita5.patch
+
+-------------------------------------------------------------------
 Wed May 11 14:24:36 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.2. No changelog.
