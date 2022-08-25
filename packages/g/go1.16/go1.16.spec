@@ -39,8 +39,8 @@
 # To bootstrap using go use '--without gccgo'
 %bcond_without gccgo
 
-# The fallback bootstrap method via go1.4 doesn't work
-# for aarch64 nor ppc64le because go 1.4 did not support that architecture.
+# Boostrapping using existing go package can fail on certain SLE-12 architectures
+# Override here as needed
 %if 0%{?suse_version} == 1315
 %ifarch aarch64 ppc64le ppc64 s390x
 %bcond_without gccgo
@@ -104,7 +104,7 @@
 %else
 %define with_shared 0
 %endif
-%ifarch ppc64
+%ifarch ppc64 riscv64
 %define with_shared 0
 %endif
 # setup go_arch (BSD-like scheme)
@@ -332,14 +332,14 @@ sed -i "s/\$go_label/%{go_label}/" $GOROOT/bin/gdbinit.d/go.gdb
 %endif
 
 # update-alternatives
- mkdir -p %{buildroot}%{_sysconfdir}/alternatives
- mkdir -p %{buildroot}%{_bindir}
- mkdir -p %{buildroot}%{_sysconfdir}/profile.d
- mkdir -p %{buildroot}%{_sysconfdir}/gdbinit.d
- touch %{buildroot}%{_sysconfdir}/alternatives/{go,gofmt,go.gdb}
- ln -sf %{_sysconfdir}/alternatives/go %{buildroot}%{_bindir}/go
- ln -sf %{_sysconfdir}/alternatives/gofmt %{buildroot}%{_bindir}/gofmt
- ln -sf %{_sysconfdir}/alternatives/go.gdb %{buildroot}%{_sysconfdir}/gdbinit.d/go.gdb
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+mkdir -p %{buildroot}%{_bindir}
+mkdir -p %{buildroot}%{_sysconfdir}/profile.d
+mkdir -p %{buildroot}%{_sysconfdir}/gdbinit.d
+touch %{buildroot}%{_sysconfdir}/alternatives/{go,gofmt,go.gdb}
+ln -sf %{_sysconfdir}/alternatives/go %{buildroot}%{_bindir}/go
+ln -sf %{_sysconfdir}/alternatives/gofmt %{buildroot}%{_bindir}/gofmt
+ln -sf %{_sysconfdir}/alternatives/go.gdb %{buildroot}%{_sysconfdir}/gdbinit.d/go.gdb
 
 # documentation and examples
 # fix documetation permissions (rpmlint warning)

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 23 19:49:42 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Don't build with shared on riscv64 for < go1.18
+
+-------------------------------------------------------------------
 Thu Aug 11 18:23:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - switch to gcc-go, bootstrap via gcc-go 11/12 which
