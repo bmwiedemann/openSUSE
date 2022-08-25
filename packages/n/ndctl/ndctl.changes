@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 24 07:57:14 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 74 (jsc#PED-1080):
+  * Many CXL fixes
+  * Some build system fixes
+  * monitor: Fix the monitor config file parsing
+  * ndctl/bus: Handle missing scrub commands more gracefully
+  * ndctl/dimm: Flush invalidated labels after overwrite
+  - Remove upstreamed patch
+    - ndctl-build-Fix-systemd-unit-directory-detection.patch
+    - ndctl-meson-make-modprobedatadir-an-option.patch
+
+-------------------------------------------------------------------
 Sun Apr 10 11:46:05 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Provide compatibility symlink for libdaxctl.h in the old location
@@ -6,7 +19,7 @@ Sun Apr 10 11:46:05 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 -------------------------------------------------------------------
 Tue Mar  8 12:57:40 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
-- Update to version 73 (jsc#PED-764):
+- Update to version 73:
   * Many CXL fixes
   * Fix shipped monitor.conf (bsc#1194696 https://github.com/pmem/ndctl/pull/189)
   * inject-smart: Add support for papr

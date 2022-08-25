@@ -25,7 +25,7 @@
 %define lname libndctl6
 %define dname libndctl-devel
 Name:           ndctl
-Version:        73
+Version:        74
 Release:        0
 Summary:        Manage "libnvdimm" subsystem devices (Non-volatile Memory)
 License:        GPL-2.0-only
@@ -34,8 +34,6 @@ URL:            https://github.com/pmem/ndctl
 Source0:        https://github.com/pmem/ndctl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        ndctl-rpmlintrc
 Patch14:        harden_ndctl-monitor.service.patch
-Patch15:        ndctl-build-Fix-systemd-unit-directory-detection.patch
-Patch16:        ndctl-meson-make-modprobedatadir-an-option.patch
 BuildRequires:  keyutils-devel
 BuildRequires:  libiniparser-devel
 BuildRequires:  libtool
