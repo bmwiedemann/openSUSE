@@ -34,7 +34,7 @@
 %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
 
 Name:           multipath-tools
-Version:        0.9.0+39+suse.51a2ab1
+Version:        0.9.0+55+suse.33d8854
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only
@@ -55,7 +55,6 @@ BuildRequires:  pkgconfig(devmapper)
 %if 0%{?with_libdmmp} == 1
 BuildRequires:  pkgconfig(json-c)
 %endif
-BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(liburcu)
@@ -83,6 +82,7 @@ multipath maps. multipathd sets up multipath maps automatically,
 monitors path devices for failure, removal, or addition, and applies
 the necessary changes to the multipath maps to ensure continuous
 availability of the map devices.
+
 
 
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 24 09:28:55 UTC 2022 - mwilck@suse.com
+
+- Update to version 0.9.0+55+suse.33d8854:
+  * Avoid linking to libreadline to avoid licensing issue
+    (bsc#1202616)
+
+-------------------------------------------------------------------
 Wed Jul 13 20:20:50 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.9.0+39+suse.51a2ab1:

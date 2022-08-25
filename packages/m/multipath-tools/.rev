@@ -1686,4 +1686,14 @@ see https://github.com/opensvc/multipath-tools/compare/2bdd3a14..79c3556f</comme
   * Allow compilation with -D_FORTIFY_SOURCE=3</comment>
     <requestid>989504</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>f51f96466b63d3101f5bb62e94fd95b9</srcmd5>
+    <version>0.9.0+55+suse.33d8854</version>
+    <time>1661434388</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.0+55+suse.33d8854:
+  * Avoid linking to libreadline to avoid licensing issue
+    (bsc#1202616)</comment>
+    <requestid>999007</requestid>
+  </revision>
 </revisionlist>
