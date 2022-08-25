@@ -57,6 +57,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip-api}
 BuildRequires:  %{python_module pipreqs}
 BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module pylama}
 BuildRequires:  %{python_module pytest > 6.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module toml >= 0.10.2}
@@ -91,8 +92,6 @@ hypothesis.settings.register_profile(
 sed -i 's/natsort = "^/natsort = ">=/' example_isort_sorting_plugin/pyproject.toml
 # unpin black in example plugin
 sed -i 's/black = "^/black = ">=/' example_isort_formatting_plugin/pyproject.toml
-# don't test pylama plugin
-sed -i '/import isort.pylama_isort/d' tests/unit/test_importable.py
 
 %build
 %pyproject_wheel
@@ -111,8 +110,6 @@ sed -i '/import isort.pylama_isort/d' tests/unit/test_importable.py
 ignoretests="--ignore tests/integration/test_projects_using_isort.py"
 # don't run benchmarks
 ignoretests+=" --ignore tests/benchmark"
-# no pylama in Ring1 desired
-ignoretests+=" --ignore tests/unit/test_pylama_isort.py"
 # test_setting_combinations.py::test_isort_is_idempotent
 # is flaky https://github.com/PyCQA/isort/issues/1466
 donttest="(test_setting_combinations and test_isort_is_idempotent)"

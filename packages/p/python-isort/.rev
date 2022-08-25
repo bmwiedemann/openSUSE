@@ -503,4 +503,12 @@ Let's see which package is missing in ringX for test flavor</comment>
     <comment>- remove unnecessary pylama buildrequires</comment>
     <requestid>994358</requestid>
   </revision>
+  <revision rev="36" vrev="8">
+    <srcmd5>89f423e8c77a65161736dc6e8e9c7609</srcmd5>
+    <version>5.10.1</version>
+    <time>1661432959</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert removal of pylama tests, we drop out of Ring1 instead</comment>
+    <requestid>999112</requestid>
+  </revision>
 </revisionlist>

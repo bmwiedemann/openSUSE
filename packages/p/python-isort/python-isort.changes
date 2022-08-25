@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 19 09:44:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Revert removal of pylama tests, we drop out of Ring1 instead
+
+-------------------------------------------------------------------
 Wed Aug 10 14:36:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - remove unnecessary pylama buildrequires
