@@ -26,7 +26,7 @@ Thu Jul 21 06:14:03 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 - Some tests are having issues when run in OBS. They seem to be
   due to race conditions, triggered by resource constraints of
   OBS workers. Let's disable them for now, while looking for a fix
-- Update to v7.0.0. For full release notese, see:
+- Update to v7.0.0 (bsc#1201307). For full release notes, see:
   * https://wiki.qemu.org/ChangeLog/7.0
   Be sure to also check the following pages:
   * https://qemu-project.gitlab.io/qemu/about/removed-features.html

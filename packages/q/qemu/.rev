@@ -3139,4 +3139,12 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
   * [ARM] The virt board now supports specifying the guest CPU topology</comment>
     <requestid>990725</requestid>
   </revision>
+  <revision rev="234" vrev="54">
+    <srcmd5>9f4807a092cfd45c0fee8e3764876dc8</srcmd5>
+    <version>7.0.0</version>
+    <time>1661432949</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v7.0.0 (bsc#1201307). For full release notes, see:</comment>
+    <requestid>999194</requestid>
+  </revision>
 </revisionlist>
