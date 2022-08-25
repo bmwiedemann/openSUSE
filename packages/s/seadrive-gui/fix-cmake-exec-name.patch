@@ -1,5 +1,5 @@
---- seadrive-gui-2.0.21/CMakeLists.txt.orig	2022-04-12 12:20:29.557115074 +0200
-+++ seadrive-gui-2.0.21/CMakeLists.txt	2022-04-12 13:10:13.406067595 +0200
+--- seadrive-gui-2.0.23/CMakeLists.txt.orig	2022-08-18 11:19:48.607313667 +0200
++++ seadrive-gui-2.0.23/CMakeLists.txt	2022-08-18 11:20:47.947849339 +0200
 @@ -128,7 +128,7 @@
  ###### BEGIN: QT configuration
  ####################
@@ -18,12 +18,3 @@
      OUTPUT_VARIABLE QT_VERSION_MAJOR
      OUTPUT_STRIP_TRAILING_WHITESPACE)
  MESSAGE("QT_VERSION_MAJOR: ${QT_VERSION_MAJOR}")
-@@ -615,7 +615,7 @@
-     TARGET_LINK_LIBRARIES(seadrive-gui PRIVATE Qt6::DBus)
- ELSE()
-     TARGET_LINK_LIBRARIES(seadrive-gui ${QT_QTDBUS_LIBRARIES})
--    QT5_USE_MODULES(seadrive-gui ${USE_QT_LIBRARY})
-+    QT5_USE_MODULES(seadrive-gui ${USE_QT_LIBRARIES})
- ENDIF()
- 
- ENDIF()

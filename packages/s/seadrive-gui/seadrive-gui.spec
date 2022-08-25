@@ -17,14 +17,12 @@
 
 
 Name:           seadrive-gui
-Version:        2.0.21
+Version:        2.0.23
 Release:        0
 Summary:        GUI part of seafile drive
 License:        GPL-3.0-only
 URL:            https://github.com/haiwen/seadrive-gui/
 Source0:        https://github.com/haiwen/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/haiwen/seadrive-gui/pull/292
-Patch0:         seadrive-gui_fix-compilation-glib2_68.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         fix-cmake-exec-name.patch
 BuildRequires:  autoconf
