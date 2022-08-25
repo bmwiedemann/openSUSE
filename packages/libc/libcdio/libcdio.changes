@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 22 04:18:33 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add fix-undefined-behavior-in-readlink.patch that fixes boo#1202214.
+
+-------------------------------------------------------------------
 Sat Oct 16 11:58:37 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Bump cdiopp_name libcdio++0 to libcdio++1, this was missed when

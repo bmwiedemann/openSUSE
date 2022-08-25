@@ -1,7 +1,7 @@
 #
 # spec file for package libcdio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Source0:        https://ftp.gnu.org/gnu/libcdio/%{name}-%{version}.tar.bz2
 Source1:        https://ftp.gnu.org/gnu/libcdio/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
+Patch0:         fix-undefined-behavior-in-readlink.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  help2man
@@ -117,6 +118,7 @@ applications that want to make use of the cdio libraries.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \

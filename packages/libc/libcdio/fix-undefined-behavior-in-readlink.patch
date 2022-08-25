@@ -1,0 +1,28 @@
+diff --git a/test/driver/realpath.c b/test/driver/realpath.c
+index 289253e4..4e85af96 100644
+--- a/test/driver/realpath.c
++++ b/test/driver/realpath.c
+@@ -175,14 +175,16 @@ main(int argc, const char *argv[])
+         rc = check_rc(symlink(psz_symlink_file, psz_symlink_file),
+                       "symlink", psz_symlink_file);
+         if (0 == rc) {
+-            cdio_realpath(psz_symlink_file, psz_file_check);
+-            if (0 != strncmp(psz_file_check, symlink_file, PATH_MAX)) {
+-                fprintf(stderr, "direct cdio_realpath cycle test failed. %s vs %s\n",
+-                        psz_file_check, symlink_file);
+-		rc = 5;
+-		goto err_exit;
++            char *retvalue = cdio_realpath(psz_symlink_file, psz_file_check);
++            if (0 != retvalue) {
++                if (0 != strncmp(psz_file_check, symlink_file, PATH_MAX)) {
++                  fprintf(stderr, "direct cdio_realpath cycle test failed. %s vs %s\n",
++                      psz_file_check, symlink_file);
++                  rc = 5;
++                  goto err_exit;
++                }
++                check_rc(unlink(psz_symlink_file), "unlink", psz_symlink_file);
+             }
+-            check_rc(unlink(psz_symlink_file), "unlink", psz_symlink_file);
+         }
+ 
+     }
