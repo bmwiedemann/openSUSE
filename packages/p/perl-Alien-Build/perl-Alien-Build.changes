@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Aug 17 03:06:03 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.59
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.59      2022-08-16 09:38:14 -0600
+    - Documentation improvements (gh#337, gh#341)
+    - Do not allow downgrading from SSL if start_url is https.  This is
+      done by filtering non-SSL URLs from the candidate listif the start_url
+      uses https (gh#190, gh#339)
+
+  2.58_01   2022-08-15 12:55:07 -0600
+    - Fix bug where properties could not be interpolated in environment
+      variables if meta.env_interpolate is on (gh#333)
+    - Can now pass an Alien::Build instance into Alien::Build::Interpolator's
+      interpolate method to use meta, install, runtime, etc. prroperites in
+      the template (gh#312, gh#333)
+
+  2.57_01   2022-08-15 11:09:52 -0600
+    - Added experimental plugin Digest::SHA and Digest::SHAPP for checking
+      signatures (gh#332)
+    - Added experimental check_digest method on Alien::Build (gh#332)
+    - Added experimental digest keyword for alienfile (gh#332)
+    - Removed long deprecated subplugin method from Alien::Build::Plugin (gh#331)
+
+-------------------------------------------------------------------
 Sun Aug 14 03:06:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.56
