@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 25 02:39:05 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip two tests, TestPosgresFieldsMapping.test_array_field and
+  TestViewNamesAndDescriptions.test_markdown
+- Add README.md to package
+- Be more precise about files included under site-packages
+
+-------------------------------------------------------------------
 Mon Jun 20 09:46:45 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add 8530-update-tests-new-Pygments.patch to allow working with
