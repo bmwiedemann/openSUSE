@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 25 02:26:12 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Trim package description
+- Update to v22.1
+  * Update supported Python and Django versions: minimal Python is
+    now 3.7, minimum Django is now 3.2
+  * Added testing for Python 3.10 and Django 4.1
+  * Removed outdated deprecated warnings for code removed in version 2.1
+  * The code base is now formatted with Black
+
+-------------------------------------------------------------------
 Fri May  6 06:15:52 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on mock. 
