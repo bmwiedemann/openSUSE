@@ -9,7 +9,7 @@ Wed Jul 27 14:00:55 UTC 2022 - Hu <cathy.hu@suse.com>
 Thu Jul 26 10:50:21 UTC 2022 - Zdenek Kubala <zkubala@suse.com>
 
 - Add fix_cloudform.patch to fix cloud-init runcmd issue with snapper 
-  (bnc#201015)
+  (bnc#1201015)
 
 -------------------------------------------------------------------
 Thu Jul 14 08:44:12 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
