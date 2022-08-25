@@ -18,7 +18,7 @@
 
 %define cpan_name WWW-Mechanize
 Name:           perl-WWW-Mechanize
-Version:        2.12
+Version:        2.15
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Handy web browsing in a Perl object
@@ -28,7 +28,7 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(HTML::Form) >= 1.00
+BuildRequires:  perl(HTML::Form) >= 6.08
 BuildRequires:  perl(HTML::HeadParser)
 BuildRequires:  perl(HTML::TokeParser)
 BuildRequires:  perl(HTML::TreeBuilder) >= 5
@@ -36,10 +36,9 @@ BuildRequires:  perl(HTTP::Cookies)
 BuildRequires:  perl(HTTP::Daemon) >= 6.12
 BuildRequires:  perl(HTTP::Request) >= 1.30
 BuildRequires:  perl(HTTP::Request::Common)
-BuildRequires:  perl(HTTP::Response)
 BuildRequires:  perl(LWP)
 BuildRequires:  perl(LWP::Simple)
-BuildRequires:  perl(LWP::UserAgent) >= 6.45
+BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Path::Tiny)
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::Exception)
@@ -55,14 +54,14 @@ BuildRequires:  perl(URI)
 BuildRequires:  perl(URI::Escape)
 BuildRequires:  perl(URI::URL)
 BuildRequires:  perl(URI::file)
-Requires:       perl(HTML::Form) >= 1.00
+Requires:       perl(HTML::Form) >= 6.08
 Requires:       perl(HTML::HeadParser)
 Requires:       perl(HTML::TokeParser)
 Requires:       perl(HTML::TreeBuilder) >= 5
 Requires:       perl(HTTP::Cookies)
 Requires:       perl(HTTP::Request) >= 1.30
 Requires:       perl(HTTP::Request::Common)
-Requires:       perl(LWP::UserAgent) >= 6.45
+Requires:       perl(LWP::UserAgent)
 Requires:       perl(URI::URL)
 Requires:       perl(URI::file)
 Recommends:     perl(Compress::Zlib)

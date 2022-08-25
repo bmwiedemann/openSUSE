@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Aug 22 03:08:47 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.15
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+
+  2.15      2022-08-21 07:47:35Z
+      [FIXED]
+      - There was a test suite failure on some Windows machines introduced in
+        2.14 that is now fixed. (GH#350) (Julien Fiegehenn)
+      [ENHANCEMENTS]
+      - form_with and all_forms_with() now support the "action" attribute to find
+        forms (GH#349) (Julien Fiegehenn)
+  2.14      2022-08-15 19:19:24Z
+      [FIXED]
+      - File upload fields now correctly handle overwriting the file name and
+        passing in content without a real file (GH#249) (Gil Magno and Julien
+        Fiegehenn)
+      - HTML::Form bumped to 6.08 (GH#347) (Julien Fiegehenn)
+      [ENHANCEMENTS]
+      - Add autocheck() to enable or disable autochecking at run time in
+        addition to setting it at object creation (GH#232) (Julien Fiegehenn)
+      - mech_dump now errors appropriately when it cannot open a URL or file
+        instead of claiming it has the wrong MIME type (GH#292) (Julien Fiegehenn)
+  2.13      2022-07-29 09:44:46Z
+      [ENHANCEMENTS]
+      - mech_dump now treats all local files like HTML regardless of what it
+        thinks their content types are (GH#63) (Julien Fiegehenn)
+      - We now consistently use our own die() method and therefore the onerror
+        handler wherever possible (GH#80) (Julien Fiegehenn)
+      [TESTS]
+      - Add tests for field() when working on a <textarea> (GH#220) (Julien
+        Fiegehenn)
+
+-------------------------------------------------------------------
 Thu Jul 21 03:07:07 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.12
