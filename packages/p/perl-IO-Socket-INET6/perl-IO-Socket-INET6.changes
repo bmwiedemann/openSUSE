@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 24 11:46:31 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 2.73
+   see /usr/share/doc/packages/perl-IO-Socket-INET6/ChangeLog
+
+  2021-12-10 Shlomi Fish <shlomif@shlomifish.org>
+  	* Deprecate in favour of L<IO::Socket::IP> .
+  	* New Release IO-Socket-INET6-2.73
+
+-------------------------------------------------------------------
 Sun Feb  9 13:31:47 UTC 2014 - coolo@suse.com
 
 - updated to 2.72
