@@ -582,4 +582,20 @@
     <comment></comment>
     <requestid>970779</requestid>
   </revision>
+  <revision rev="77" vrev="7">
+    <srcmd5>edf257e8f6900b5458984f4f6cec822f</srcmd5>
+    <version>1.34</version>
+    <time>1661432927</time>
+    <user>dimstar_suse</user>
+    <comment>- drop tar-recursive--files-from.patch (causes bsc#918487) 
+
+- bsc1200657.patch was previously incomplete leading to deadlocks
+  * bsc#1202436
+  * bsc1200657.patch updated
+
+- Fix race condition while creating intermediate subdirectories,
+  bsc#1200657
+  * bsc1200657.patch</comment>
+    <requestid>998566</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Aug 20 06:23:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- drop tar-recursive--files-from.patch (causes bsc#918487) 
+
+-------------------------------------------------------------------
+Wed Aug 17 05:09:11 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- bsc1200657.patch was previously incomplete leading to deadlocks
+  * bsc#1202436
+  * bsc1200657.patch updated
+
+-------------------------------------------------------------------
+Mon Jun 20 09:19:23 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix race condition while creating intermediate subdirectories,
+  bsc#1200657
+  * bsc1200657.patch
+
+-------------------------------------------------------------------
 Wed Apr 13 02:38:42 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Add recommends to zstd, a modern fast compression type.

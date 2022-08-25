@@ -36,12 +36,12 @@ Patch2:         paxutils-rtapelib_mtget.patch
 # the patch is used in Fedora and Debian
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=235820
 Patch3:         %{name}-ignore_lone_zero_blocks.patch
-# The next patch is disabled because it causes a regression:
-#https://bugzilla.opensuse.org/show_bug.cgi?id=918487
-Patch4:         %{name}-recursive--files-from.patch
 Patch5:         add_readme-tests.patch
 Patch6:         tar-PIE.patch
 Patch7:         tests-skip-time01-on-32bit-time_t.patch
+# PATCH-FIX-OPENSUSE danilo.spinella@suse.com bsc#1200657
+# fix race condition while creating intermediate subdirectories
+Patch8:         bsc1200657.patch
 BuildRequires:  automake >= 1.15
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel
@@ -109,10 +109,10 @@ it may as well access remote devices or files.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-#%patch4 -p1
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 %define my_cflags -W -Wall -Wpointer-arith -Wstrict-prototypes -Wformat-security -Wno-unused-parameter -fPIE
