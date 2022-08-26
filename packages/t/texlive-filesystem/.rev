@@ -518,4 +518,12 @@
 - Try to debug entries like boo#1194496</comment>
     <requestid>967550</requestid>
   </revision>
+  <revision rev="52" vrev="55">
+    <srcmd5>dd8cfd56237bdce647b533ad40dd0511</srcmd5>
+    <version>unknown</version>
+    <time>1661497673</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>999228</requestid>
+  </revision>
 </revisionlist>

@@ -24,8 +24,9 @@
 %define texlive_version  2022
 %define texlive_previous 2021
 %define texlive_release  20220321
-%define texlive_noarch   190
+%define texlive_noarch   196
 %define texlive_source   texlive-20220321-source
+%define biber_version    2.17
 
 %define __perl_requires		%{nil}
 %define __os_install_post	/usr/lib/rpm/brp-compress \\\
@@ -39,7 +40,7 @@ Release:        0
 Summary:        Basic file system of TeX Live
 License:        Apache-2.0 AND Artistic-1.0 AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND LPPL-1.3c AND LPPL-1.0 AND MIT AND BSD-3-Clause AND SUSE-TeX AND SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       cron
 Requires:       python3
 Requires(pre):  user(mktex)
@@ -180,7 +181,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Basic scheme (plain and latex)
 Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-collection-basic >= %{texlive_version}
 #!BuildIgnore: texlive-collection-basic
 Requires:       texlive-collection-latex >= %{texlive_version}
@@ -199,7 +200,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        ConTeXt scheme
 Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-antt >= %{texlive_version}
 #!BuildIgnore: texlive-antt
 Requires:       texlive-asana-math >= %{texlive_version}
@@ -254,7 +255,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Full scheme (everything)
 Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-collection-basic >= %{texlive_version}
 #!BuildIgnore: texlive-collection-basic
 Requires:       texlive-collection-bibtexextra >= %{texlive_version}
@@ -345,7 +346,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        GUST TeX Live scheme
 Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-amslatex-primer >= %{texlive_version}
 #!BuildIgnore: texlive-amslatex-primer
 Requires:       texlive-amstex >= %{texlive_version}
@@ -423,7 +424,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Infrastructure-only scheme (no TeX at all)
 Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-hyphen-base >= %{texlive_version}
 #!BuildIgnore: texlive-hyphen-base
 Requires:       texlive-kpathsea >= %{texlive_version}
@@ -446,7 +447,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Medium scheme (small + more packages and languages)
 Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-collection-basic >= %{texlive_version}
 #!BuildIgnore: texlive-collection-basic
 Requires:       texlive-collection-binextra >= %{texlive_version}
@@ -502,7 +503,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Minimal scheme (plain only)
 Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-collection-basic >= %{texlive_version}
 #!BuildIgnore: texlive-collection-basic
 BuildArch:      noarch
@@ -519,7 +520,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Small scheme (basic + xetex, metapost, a few languages)
 Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-babel-basque >= %{texlive_version}
 #!BuildIgnore: texlive-babel-basque
 Requires:       texlive-babel-czech >= %{texlive_version}
@@ -629,7 +630,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        TeTeX scheme (more than medium, but nowhere near full)
 Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-acronym >= %{texlive_version}
 #!BuildIgnore: texlive-acronym
 Requires:       texlive-amslatex-primer >= %{texlive_version}
@@ -761,7 +762,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Essential programs and files
 Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive <= %{texlive_previous}
 Requires:       texlive-amsfonts >= %{texlive_version}
 #!BuildIgnore: texlive-amsfonts
@@ -854,7 +855,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        BibTeX additional styles
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-aaai-named >= %{texlive_version}
 #!BuildIgnore: texlive-aaai-named
 Requires:       texlive-aichej >= %{texlive_version}
@@ -1189,7 +1190,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        TeX auxiliary programs
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      tetex-bin <= %{texlive_previous}
 Obsoletes:      texlive-bin <= %{texlive_previous}
 Obsoletes:      texlive-dvilj <= %{texlive_previous}
@@ -1404,7 +1405,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        ConTeXt and packages
 Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-context <= %{texlive_previous}
 Requires:       texlive-collection-basic >= %{texlive_version}
 #!BuildIgnore: texlive-collection-basic
@@ -1494,7 +1495,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Additional fonts
 Group:          Productivity/Publishing/TeX/Fonts
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-fonts-extra <= %{texlive_previous}
 Obsoletes:      texlive-fonts-extra-doc <= %{texlive_previous}
 Requires:       texlive-aboensis >= %{texlive_version}
@@ -2186,7 +2187,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Recommended fonts
 Group:          Productivity/Publishing/TeX/Fonts
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-avantgar >= %{texlive_version}
 #!BuildIgnore: texlive-avantgar
 Requires:       texlive-bookman >= %{texlive_version}
@@ -2268,7 +2269,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Graphics and font utilities
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       psutils
 Requires:       texlive-accfonts >= %{texlive_version}
 #!BuildIgnore: texlive-accfonts
@@ -2318,7 +2319,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Additional formats
 Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-aleph >= %{texlive_version}
 #!BuildIgnore: texlive-aleph
 Requires:       texlive-antomega >= %{texlive_version}
@@ -2376,7 +2377,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Games typesetting
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-bartel-chess-fonts >= %{texlive_version}
 #!BuildIgnore: texlive-bartel-chess-fonts
 Requires:       texlive-chess >= %{texlive_version}
@@ -2470,7 +2471,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Humanities packages
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-adtrees >= %{texlive_version}
 #!BuildIgnore: texlive-adtrees
 Requires:       texlive-bibleref >= %{texlive_version}
@@ -2589,7 +2590,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Arabic
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-arab <= %{texlive_previous}
 Requires:       texlive-alkalami >= %{texlive_version}
 #!BuildIgnore: texlive-alkalami
@@ -2660,7 +2661,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Chinese
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-arphic >= %{texlive_version}
 #!BuildIgnore: texlive-arphic
 Requires:       texlive-arphic-ttf >= %{texlive_version}
@@ -2738,7 +2739,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Chinese/Japanese/Korean (base)
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-cjk <= %{texlive_previous}
 Obsoletes:      texlive-cjk-latex-extras <= %{texlive_previous}
 Requires:       texlive-adobemapping >= %{texlive_version}
@@ -2790,7 +2791,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Cyrillic
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-babel-belarusian >= %{texlive_version}
 #!BuildIgnore: texlive-babel-belarusian
 Requires:       texlive-babel-bulgarian >= %{texlive_version}
@@ -2897,7 +2898,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Czech/Slovak
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-babel-czech >= %{texlive_version}
 #!BuildIgnore: texlive-babel-czech
 Requires:       texlive-babel-slovak >= %{texlive_version}
@@ -2941,7 +2942,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        US and UK English
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-amiweb2c-guide >= %{texlive_version}
 #!BuildIgnore: texlive-amiweb2c-guide
 Requires:       texlive-amscls-doc >= %{texlive_version}
@@ -3089,7 +3090,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Other European languages
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-armtex >= %{texlive_version}
 #!BuildIgnore: texlive-armtex
 Requires:       texlive-babel-albanian >= %{texlive_version}
@@ -3239,7 +3240,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        French
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-aeguill >= %{texlive_version}
 #!BuildIgnore: texlive-aeguill
 Requires:       texlive-annee-scolaire >= %{texlive_version}
@@ -3337,7 +3338,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        German
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-apalike-german >= %{texlive_version}
 #!BuildIgnore: texlive-apalike-german
 Requires:       texlive-babel-german >= %{texlive_version}
@@ -3441,7 +3442,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Greek
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-babel-greek >= %{texlive_version}
 #!BuildIgnore: texlive-babel-greek
 Requires:       texlive-begingreek >= %{texlive_version}
@@ -3503,7 +3504,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Italian
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-amsldoc-it >= %{texlive_version}
 #!BuildIgnore: texlive-amsldoc-it
 Requires:       texlive-amsmath-it >= %{texlive_version}
@@ -3553,7 +3554,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Japanese
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-ascmac >= %{texlive_version}
 #!BuildIgnore: texlive-ascmac
 Requires:       texlive-babel-japanese >= %{texlive_version}
@@ -3682,7 +3683,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Korean
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-baekmuk >= %{texlive_version}
 #!BuildIgnore: texlive-baekmuk
 Requires:       texlive-cjk-ko >= %{texlive_version}
@@ -3720,7 +3721,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Other languages
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-aalok >= %{texlive_version}
 #!BuildIgnore: texlive-aalok
 Requires:       texlive-akshar >= %{texlive_version}
@@ -3854,7 +3855,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Polish
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-babel-polish >= %{texlive_version}
 #!BuildIgnore: texlive-babel-polish
 Requires:       texlive-bredzenie >= %{texlive_version}
@@ -3904,7 +3905,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Portuguese
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-babel-portuges >= %{texlive_version}
 #!BuildIgnore: texlive-babel-portuges
 Requires:       texlive-beamer-tut-pt >= %{texlive_version}
@@ -3940,7 +3941,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Spanish
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-babel-catalan >= %{texlive_version}
 #!BuildIgnore: texlive-babel-catalan
 Requires:       texlive-babel-galician >= %{texlive_version}
@@ -3978,7 +3979,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX fundamental packages
 Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-latex <= %{texlive_previous}
 Obsoletes:      texlive-latex-doc <= %{texlive_previous}
 Requires:       texlive-ae >= %{texlive_version}
@@ -4108,7 +4109,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX additional packages
 Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-2up >= %{texlive_version}
 #!BuildIgnore: texlive-2up
 Requires:       texlive-a0poster >= %{texlive_version}
@@ -6976,7 +6977,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX recommended packages
 Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-anysize >= %{texlive_version}
 #!BuildIgnore: texlive-anysize
 Requires:       texlive-attachfile2 >= %{texlive_version}
@@ -7134,7 +7135,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        LuaTeX packages
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-addliga >= %{texlive_version}
 #!BuildIgnore: texlive-addliga
 Requires:       texlive-auto-pst-pdf-lua >= %{texlive_version}
@@ -7296,7 +7297,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Mathematics, natural sciences, computer science packages
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-12many >= %{texlive_version}
 #!BuildIgnore: texlive-12many
 Requires:       texlive-accents >= %{texlive_version}
@@ -7774,7 +7775,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        MetaPost and Metafont packages
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-metapost <= %{texlive_previous}
 Requires:       texlive-automata >= %{texlive_version}
 #!BuildIgnore: texlive-automata
@@ -7880,7 +7881,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Music packages
 Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-musictex <= %{texlive_previous}
 Requires:       texlive-abc >= %{texlive_version}
 #!BuildIgnore: texlive-abc
@@ -7962,7 +7963,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Graphics, pictures, diagrams
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-adigraph >= %{texlive_version}
 #!BuildIgnore: texlive-adigraph
 Requires:       texlive-aobs-tikz >= %{texlive_version}
@@ -8428,7 +8429,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Plain (La)TeX packages
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-abbr >= %{texlive_version}
 #!BuildIgnore: texlive-abbr
 Requires:       texlive-abstyles >= %{texlive_version}
@@ -8659,7 +8660,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        PSTricks
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-auto-pst-pdf >= %{texlive_version}
 #!BuildIgnore: texlive-auto-pst-pdf
 Requires:       texlive-bclogo >= %{texlive_version}
@@ -8898,7 +8899,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Publisher styles, theses, etcetera
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-aastex >= %{texlive_version}
 #!BuildIgnore: texlive-aastex
 Requires:       texlive-abnt >= %{texlive_version}
@@ -9430,7 +9431,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        XeTeX and packages
 Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-xetex <= %{texlive_previous}
 Requires:       texlive-arabxetex >= %{texlive_version}
 #!BuildIgnore: texlive-arabxetex
@@ -9529,7 +9530,7 @@ Release:        0
 Summary:        Auto-generated font map files
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -9585,7 +9586,7 @@ Release:        0
 Summary:        Basic development packages for TeXLive
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND SUSE-TeX
 Group:          Development/Languages/Other
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-kpathsea-devel = 6.3.4
 Requires:       texlive-ptexenc-devel = 1.4.0
 Requires:       texlive-synctex-devel = 1.21
@@ -9607,7 +9608,7 @@ Release:        0
 Summary:        Utilities like DviToDvi, PSToPS, and LaCheck
 License:        GPL-2.0-or-later AND LPPL-1.0 AND LGPL-2.1-or-later
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-tools <= %{texlive_previous}
 Requires:       psutils
 Requires:       texlive-dviasm >= %{texlive_version}
