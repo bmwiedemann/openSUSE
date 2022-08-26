@@ -1,7 +1,7 @@
 #
 # spec file for package python-pendulum
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,7 +62,9 @@ find %{buildroot}%{$python_sitearch} -name '*.c' -delete
 }
 
 %check
-%pytest_arch
+# https://github.com/sdispater/pendulum/issues/644
+donttest="(test_timezone and test_dst) or (test_behavior and test_proper_dst)"
+%pytest_arch -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.rst
