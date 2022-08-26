@@ -1,7 +1,7 @@
 #
 # spec file for package python-napalm-arubaos-switch
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,11 +27,14 @@ Summary:        NAPALM - ArubaOS network driver
 URL:            https://github.com/napalm-automation-community/napalm-arubaos-switch/
 Group:          Development/Languages/Python
 Source:         https://github.com/napalm-automation-community/napalm-arubaos-switch/archive/%{version}.tar.gz#/napalm-arubaos-switch-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh/napalm-automation-community/napalm-arubaos-switch/commit/ebd48e46 the driver needs to return the speed as float instead of an integer
+Patch0:         float-speed.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module napalm >= 3.3.0}
 BuildRequires:  %{python_module netaddr}
+BuildRequires:  %{python_module netutils}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-json-report}
 BuildRequires:  %{python_module pytest}
@@ -55,6 +58,7 @@ This Drivers uses the REST interface.
 
 %prep
 %setup -q -n napalm-arubaos-switch-%{version}
+%autopatch -p1
 
 %build
 %python_build
