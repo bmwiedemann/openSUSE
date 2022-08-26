@@ -7,4 +7,185 @@
     <comment>removed python3-setuptools: only python3-base is needed</comment>
     <requestid>984244</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>326e85ab31c6f90fd8559e7050aeb563</srcmd5>
+    <version>1.25.0</version>
+    <time>1661497683</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.25.0:
+  * BREAKING(ext/ffi): specialized buffer type (#15518)
+  * feat(ext/crypto): deriveBits P-384 (#15138)
+  * feat(ext/flash): An optimized http/1.1 server (#15405)
+  * feat(ext/flash): split upgradeHttp into two APIs (#15557)
+  * feat(ops): V8 Fast Calls (#15291)
+  * feat(repl): add color to functions for syntax highlighting (#15434)
+  * feat(runtime): add pre_execute_module_cb (#15485)
+  * feat(unstable): initial support for npm specifiers (#15484)
+  * feat: queueMicrotask() error handling (#15522)
+  * feat: add &quot;deno init&quot; subcommand (#15469)
+  * fix(cache): do not attempt to emit non-emitable files (#15562)
+  * fix(core/runtime): always cancel termination in exception handling (#15514)
+  * fix(coverage): ensure coverage is only collected in certain situations (#15467)
+  * fix(ext/fetch): ignore user content-length header (#15555)
+  * fix(ext/flash): concurrent response streams (#15493)
+  * fix(ext/flash): fix default onListen callback (#15533)
+  * fix(ext/flash): fix listening port (#15519)
+  * fix: Free up JsRuntime state global handles before snapshot (#15491)
+  * fix: resolve jsxImportSource relative to module (#15561)
+  * perf(runtime): optimize Deno.file open &amp; stream (#15496)
+  * perf: cache swc dependency analysis and don't hold onto ParsedSources in memory (#15502)
+  * perf: improve performance.now (#15481)
+- remove fix-cflags.patch (fix in upstream)
+- update to 1.24.3:
+  * fix(ext/fetch): add socks proxy support (#15372)
+  * feat(unstable/ext/ffi): add static method variants to Deno.UnsafePointerView
+    (#15146)
+  * fix(cli): allow configurations files to also be json modules (#15444)
+  * fix(ext/ffi): check CStr for UTF-8 validity on read (#15318)
+  * fix(ext/ffi): unstable op_ffi_unsafe_callback_ref (#15439)
+  * fix(permissions): ignore empty values (#15447)
+  * fix(task): subcommand parser skips global args (#15297)
+  * fix: allow setting globalThis.location when no --location is provided
+    (#15448)
+  * fix: update deno_graph to fix importing config as JSON module (#15388)
+  * fix: various formatting fixes (#15412)
+  * perf(ops): monomorphic sync op calls (#15337)
+- includes 1.24.2:
+  * feat(ext/ffi): Add support to get ArrayBuffers from UnsafePointerView (#15143)
+  * feat(ext/ffi): Safe number pointers (#15173)
+  * fix(compat): use mjs extension for stream/promises (#15341)
+  * fix(core): BorrowMutError in nested error (#15352)
+  * fix(ext/webgpu): use correct IDL key name (#15278)
+  * fix(lsp): remove excessive line breaks in status page (#15364)
+  * fix(lsp): use correct commit chars for completions (#15366)
+  * fix(test): output parallel test results independently (#15399)
+  * fix(test): race condition for cancelled tests (#15233)
+  * fix(vendor): error on dynamic imports that fail to load instead of panicking
+    (#15391)
+  * fix(vendor): existing import map with bare specifier in remote (#15390)
+  * fix: increase websocket message size (#15406)
+  * perf(ext/ffi): support Uint8Array in fast calls (#15319)
+  * perf(ext/ffi): use fast api calls for 64bit return types (#15313)
+- includes 1.24.1:
+  * fix(cli): unset jsxFragmentFactory &amp; jsxFactory options (#15264)
+  * fix(ext/fetch): resolve TODOs about WebIDL conversions in body init (#15312)
+  * fix(lsp): remove CompletionInfo.flags (#15288)
+  * fix(tools): upgrade to new Deno.spawn api (#15265)
+  * fix: Child.unref() unrefs stdio streams properly (#15275)
+  * fix: proper typings for unhandledrejection event (#15271)
+  * fix: unhandledrejection handling for sync throw in top level (#15279)
+  * perf(ext/ffi): Optimise common pointer related APIs (#15144)
+  * serde_v8: improvements to avoid hitting unimplemented codepaths (#13915)
+- includes 1.24.0:
+  * BREAKING(unstable): Improve Deno.spawn() stdio API (#14919)
+  * feat(cli): support configuring the test tool in the config file (#15079)
+  * feat(cli/lsp): Sort repl completions (#15171)
+  * feat(cli/test): add DENO_JOBS env variable for test subcommand (#14929)
+  * feat(ext/ffi): Support 64 bit parameters in Fast API calls (#15140)
+  * feat(fmt): do not add a newline between a template and its tag (#15195)
+  * feat(lsp): provide import map remapping diags and fixes (#15165)
+  * feat(test): add --parallel flag, soft deprecate --jobs (#15259)
+  * feat(unstable): Ability to ref/unref &quot;Child&quot; in &quot;Deno.spawnChild()&quot; API
+    (#15151)
+  * feat(web): add beforeunload event (#14830)
+  * feat: add &quot;unhandledrejection&quot; event support (#12994, #15211)
+  * feat: import.meta.resolve() (#15074)
+  * fix(cli): Improve error message in watch mode (#15184)
+  * fix(cli): expand tsc roots when using checkJs (#15164)
+  * fix(cli): synchronize async stdio/file reads and writes (#15092)
+  * fix(cli/dts): allow passing arguments to WebAssembly error constructors
+    (#15149)
+  * fix(core): unhandled rejection in top-level scope (#15204)
+  * fix(coverage): do not verify emit source hash for coverage (#15260)
+  * fix(ext/ffi): allow setting a custom lib path for libtcc.a (#15208)
+  * fix(ext/ffi): i64 arg to C mapping was wrong (#15162)
+  * fix(ext/web): align DOMException better with spec (#15097)
+  * fix(fmt): improve curried arrow functions (#15251)
+  * fix(repl): do not panic for import completions when the import specifier is
+    empty (#15177)
+  * fix(task): do not overflow attempting to parse large number as redirect
+    (#15249)
+  * fix(task): resolve deno configuration file first from specified --cwd arg
+    (#15257)
+  * fix: WebSocketStream ping event causes pending promises (#15235)
+  * fix: fallback to no type checking cache when db file can't be created (#15180)
+  * fix: revert changes to test output for uncaught errors (#15231)
+  * perf: emit files on demand and fix racy emit (#15220)
+  * perf: use emit from swc instead of tsc (#15118)
+- includes 1.23.4:
+  * feat(core): Re-export v8 use_custom_libcxx feature (#14475)
+  * fix(core): deflake WASM termination test (#15103)
+  * fix(coverage): better handling of multi-byte characters (#15159)
+  * fix(ext/console): Fix a typo in a warning when .timeEnd is called on an
+    unknown timer (#15135)
+  * fix(ext/crypto): Adjust typings for Crypto.getRandomValues() (#15130)
+  * fix(ext/ffi): Avoid keeping JsRuntimeState RefCell borrowed for event loop
+    middleware calls (#15116)
+  * fix(ext/ffi): allow opting out of fast ffi calls (#15131)
+  * fix(ext/ffi): trampoline for fast calls (#15139)
+  * fix(ext/http) nextRequest return type annotation from ResponseEvent to
+    RequestEvent (#15100)
+  * fix(ext/http): reading headers with ongoing body reader (#15161)
+  * fix(ext/url): missing primordial (#15096)
+  * fix(lsp): enable auto imports (#15145)
+  * fix(net): don't panic on failed UDS removal (#15157)
+  * fix: upgrade deno_ast to 0.17 (#15152)
+  * perf(cli/proc_state): Get error source lines from memory (#15031)
+  * perf(ext/ffi): leverage V8 Fast Calls (#15125)
+  * perf(ext/http): skip core.isProxy check for default ResponseInit (#15077)
+- includes 1.23.3:
+  * Revert &quot;refactor(snapshots): to their own crate (#14794)&quot; (#15076)
+  * fix(cli): handle collecting a directory with file:// (#15002)
+  * fix(core): handle exception from Wasm termination (#15014)
+  * fix(core): remove unsafe in OpsTracker (#15025)
+  * fix(dts): stop default export type behavior (#14977)
+  * fix: update to TypeScript 4.7.4 (#15022)
+  * perf(ext/http): lazy load headers (#15055)
+  * perf(ext/http): remove accept_encoding interior mutability (#15070)
+  * perf(ext/http): simplify op_http_accept (#15067)
+  * perf(ops): fast path for SMI return values (#15033)
+  * perf(serde_v8): avoid extra is_array_buffer_view check (#15056)
+- includes 1.23.2:
+  * feat(unstable/ffi): thread safe callbacks (#14942)
+  * fix(core): don't panic on non-existent cwd (#14957)
+  * fix(docs): --watch arg is stable (#14970)
+  * fix(dts/ffi): non-exact types break FFI inference (#14968)
+  * fix(ext/crypto): add EcdhKeyDeriveParams to deriveKey types (#15005)
+  * fix(ext/ffi): empty buffers error with index out of bounds on FFI (#14997)
+  * fix(ext/web): remove ErrorEventInit's error default (#14809)
+  * fix(lsp): restart TS language service when caching dependencies (#14979)
+  * fix(modules): immediately resolve follow-up dyn imports to a dyn imported
+    module (#14958)
+  * fix(runtime): derive default for deno_runtime::ExitCode (#15017)
+  * fix(task): remove --no-config as task subcommand argument (#14983)
+  * fix(test): typo ('finsihed') if text decoder not closed during test (#14996)
+  * fix(vendor): ignore import map in output directory instead of erroring
+    (#14998)
+  * fix: don't error if Deno.bench() or Deno.test() are used in run subcommand
+    (#14946)
+  * perf(ext/ffi): optimize synchronous calls (#14945)
+  * perf(ext/web): avoid reallocations in op_base64_atob (#15018)
+  * perf(ext/web): use base64-simd for atob/btoa (#14992)
+  * perf(serde_v8): smallvec ByteString (#15008)
+- update to 1.23.1:
+  * BREAKING(unstable/ffi): Remove Deno.UnsafePointer indirection (#14915)
+  * feat(unstable/ffi): Callbacks (#14663)
+  * fix(check): ignore TS2306 (#14940)
+  * fix(docs): update description of --check flag (#14890)
+  * fix(ext/fetch): add accept-language default header to fetch (#14882)
+  * fix(ext/web): add EventTarget brand checking (#14637)
+  * fix(ext/web): handle rid=0 in TextDecoder#decode (#14894)
+  * fix(fmt): ignore node_modules directory (#14943)
+  * fix(fmt): should fail --check on parse error (#14907)
+  * fix(repl): accept tab when previous character is whitespace (#14898)
+  * fix(repl): use spaces for tab handler on windows (#14931)
+  * fix: do not panic running .d.cts and .d.mts files (#14917)
+  * fix: make Performance global an EventTarget
+  * fix: upgrade swc via deno_ast 0.16 (#14930)
+  * perf(core): Cache source lookups (#14816)
+  * perf(ext/ffi): Optimize FFI Rust side type checks (#14923)
+- rebase fix-cflags.patch
+</comment>
+    <requestid>999287</requestid>
+  </revision>
 </revisionlist>

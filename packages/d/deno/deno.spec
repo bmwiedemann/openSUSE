@@ -19,7 +19,7 @@
 
 
 Name:           deno
-Version:        1.23.0
+Version:        1.25.0
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -28,8 +28,6 @@ URL:            https://github.com/denoland/deno
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source99:       revendor_source.sh
-# see https://github.com/denoland/chromium_build/pull/197
-Patch0:         fix-cflags.patch
 # gcc-c++ needed to build SPIRV-Cross
 BuildRequires:  clang
 BuildRequires:  gcc-c++
@@ -56,13 +54,12 @@ a linter, a language server protocol, a code formatter and
 a unit test runner.
 
 Remote code is fetched and cached on first execution, and only
-updated with the --reload flag.
+UPDATED With the --reload flag.
 
 %prep
 %autosetup -a1 -p1
 %define cargo_registry $(pwd)/vendor
 %{cargo_prep}
-
 
 %build
 # workaround to use python3
@@ -70,7 +67,6 @@ updated with the --reload flag.
 mkdir -p "$(pwd)/bin"
 ln -sf %{_bindir}/python3 "$(pwd)/bin/python"
 export PATH="$PATH:$(pwd)/bin"
-
 
 export V8_FROM_SOURCE=1
 export CLANG_BASE_PATH=%{_prefix}
