@@ -1278,4 +1278,14 @@
     <comment></comment>
     <requestid>997686</requestid>
   </revision>
+  <revision rev="164" vrev="7">
+    <srcmd5>48df17bd7a7a2ab275e063f05fd3b1d5</srcmd5>
+    <version>84.87</version>
+    <time>1661497681</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert last change, fr should be used like we do for all languages
+  in all packages, no excpetion for xz with fr_FR.
+</comment>
+    <requestid>998636</requestid>
+  </revision>
 </revisionlist>

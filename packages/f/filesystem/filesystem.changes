@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 22 12:13:42 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Revert last change, fr should be used like we do for all languages
+  in all packages, no excpetion for xz with fr_FR.
+
+-------------------------------------------------------------------
 Tue Aug 16 18:34:38 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add French(France) (fr_FR) man pages directory - seen in xz
