@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 26 06:11:18 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.7:
+  * Fix running tests as root. (#1224)
+  * Fix parsing of status.showUntrackedFiles. (#1219)
+  * Avoid incorrect history path when $XDG_DATA_HOME is valid. (#1215,
+    #1217)
+
+-------------------------------------------------------------------
 Wed Jul 13 20:31:12 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tig 2.5.5 added pcre2 support. Actually build with it.

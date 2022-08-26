@@ -445,4 +445,16 @@
     <comment></comment>
     <requestid>989095</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>08f12906a18f57ab1a90029cfaf845f5</srcmd5>
+    <version>2.5.7</version>
+    <time>1661498027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.7:
+  * Fix running tests as root. (#1224)
+  * Fix parsing of status.showUntrackedFiles. (#1219)
+  * Avoid incorrect history path when $XDG_DATA_HOME is valid. (#1215,
+    #1217)</comment>
+    <requestid>999333</requestid>
+  </revision>
 </revisionlist>
