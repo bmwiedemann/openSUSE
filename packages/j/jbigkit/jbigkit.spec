@@ -1,7 +1,7 @@
 #
 # spec file for package jbigkit
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Name:           jbigkit
 Version:        %{ver_maj}.%{ver_min}
 Release:        0
 Summary:        JBIG1 lossless image compression tools
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Convertors
-Url:            http://www.cl.cam.ac.uk/~mgk25/jbigkit/
+URL:            http://www.cl.cam.ac.uk/~mgk25/jbigkit/
 Source0:        http://www.cl.cam.ac.uk/~mgk25/download/%{name}-%{version}.tar.gz
 Source42:       baselibs.conf
 Patch0:         %{name}-%{version}-shlib.patch
@@ -56,12 +56,12 @@ netpbm).
 JBIG-KIT implements the specification:
     ISO/IEC 11544:1993 and ITU-T Recommendation T.82(1993):
      Information technology — Coded representation of picture and audio
-     information — Progressive bi-level image compression 
+     information — Progressive bi-level image compression
 
 which is commonly referred to as the “JBIG1 standard”
 
 %description -n %devpkg
-The libjbig-devel package contains files needed for development using 
+The libjbig-devel package contains files needed for development using
 the JBIG-KIT image compression library.
 
 %description
@@ -74,7 +74,8 @@ formats.
 
 %build
 export CFLAGS="%optflags -I../libjbig" CXXFLAGS="%optflags"
-%__make %{?_smp_mflags}
+# Makefile is not parallel-safe
+%__make
 
 %check
 %__make test
