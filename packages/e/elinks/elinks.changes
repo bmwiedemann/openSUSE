@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 24 10:44:19 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Makefile is not parallel-safe
+
+-------------------------------------------------------------------
 Mon Jun 13 12:48:36 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require perl in the same version as we built against: elinks

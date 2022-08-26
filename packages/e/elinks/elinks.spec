@@ -116,7 +116,8 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
     --with-ruby \
     --without-gnutls \
     --without-x
-make %{?_smp_mflags}
+# Makefile is not parallel-safe
+make MAKE_COLOR= V=1
 
 %install
 %make_install
