@@ -1,6 +1,7 @@
 #
 # spec file for package python-gsm0338
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,12 +26,11 @@ License:        MIT
 URL:            https://github.com/dsch/gsm0338
 #GIT-Clone:     https://github.com/dsch/gsm0338.git
 Source:         https://github.com/dsch/gsm0338/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-flake8}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-six
@@ -60,6 +60,7 @@ codec get's automatically registered.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/gsm0338*
+%{python_sitelib}/gsm0338
+%{python_sitelib}/gsm0338-%{version}*-info
 
 %changelog
