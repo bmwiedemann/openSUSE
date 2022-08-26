@@ -27,7 +27,7 @@ Index: src/useradd.c
  static const char *def_create_mail_spool = "yes";
  static const char *def_log_init = "yes";
  
-@@ -185,6 +189,7 @@ static bool home_added = false;
+@@ -188,6 +192,7 @@ static bool home_added = false;
  #define DINACT			"INACTIVE="
  #define DEXPIRE			"EXPIRE="
  #define DSKEL			"SKEL="
@@ -35,7 +35,7 @@ Index: src/useradd.c
  #define DCREATE_MAIL_SPOOL	"CREATE_MAIL_SPOOL="
  #define DLOG_INIT	"LOG_INIT="
  
-@@ -458,6 +463,29 @@ static void get_defaults (void)
+@@ -461,6 +466,29 @@ static void get_defaults (void)
  		}
  
  		/*
@@ -45,7 +45,7 @@ Index: src/useradd.c
 +			if ('\0' == *cp) {
 +				cp = USRSKELDIR;	/* XXX warning: const */
 +			}
-+			
++
 +			if(prefix[0]) {
 +				size_t len;
 +				int wlen;
@@ -65,7 +65,7 @@ Index: src/useradd.c
  		 * Create by default user mail spool or not ?
  		 */
  		else if (MATCH (buf, DCREATE_MAIL_SPOOL)) {
-@@ -499,6 +527,7 @@ static void show_defaults (void)
+@@ -502,6 +530,7 @@ static void show_defaults (void)
  	printf ("EXPIRE=%s\n", def_expire);
  	printf ("SHELL=%s\n", def_shell);
  	printf ("SKEL=%s\n", def_template);
@@ -73,7 +73,7 @@ Index: src/useradd.c
  	printf ("CREATE_MAIL_SPOOL=%s\n", def_create_mail_spool);
  	printf ("LOG_INIT=%s\n", def_log_init);
  }
-@@ -527,6 +556,7 @@ static int set_defaults (void)
+@@ -530,6 +559,7 @@ static int set_defaults (void)
  	bool out_expire = false;
  	bool out_shell = false;
  	bool out_skel = false;
@@ -81,7 +81,7 @@ Index: src/useradd.c
  	bool out_create_mail_spool = false;
  	bool out_log_init = false;
  	size_t len;
-@@ -640,6 +670,9 @@ static int set_defaults (void)
+@@ -643,6 +673,9 @@ static int set_defaults (void)
  		} else if (!out_skel && MATCH (buf, DSKEL)) {
  			fprintf (ofp, DSKEL "%s\n", def_template);
  			out_skel = true;
@@ -91,7 +91,7 @@ Index: src/useradd.c
  		} else if (!out_create_mail_spool
  			   && MATCH (buf, DCREATE_MAIL_SPOOL)) {
  			fprintf (ofp,
-@@ -675,6 +708,8 @@ static int set_defaults (void)
+@@ -678,6 +711,8 @@ static int set_defaults (void)
  		fprintf (ofp, DSHELL "%s\n", def_shell);
  	if (!out_skel)
  		fprintf (ofp, DSKEL "%s\n", def_template);
@@ -100,7 +100,7 @@ Index: src/useradd.c
  
  	if (!out_create_mail_spool)
  		fprintf (ofp, DCREATE_MAIL_SPOOL "%s\n", def_create_mail_spool);
-@@ -2739,6 +2774,8 @@ int main (int argc, char **argv)
+@@ -2756,6 +2791,8 @@ int main (int argc, char **argv)
  		if (home_added) {
  			copy_tree (def_template, prefix_user_home, false, true,
  			           (uid_t)-1, user_id, (gid_t)-1, user_gid);
@@ -113,22 +113,22 @@ Index: libmisc/copydir.c
 ===================================================================
 --- libmisc/copydir.c.orig
 +++ libmisc/copydir.c
-@@ -395,6 +395,14 @@ static int copy_entry (const char *src,
- 			                old_uid, new_uid, old_gid, new_gid);
+@@ -453,6 +453,14 @@ static int copy_entry (const struct path
  		}
  
-+		/*
+ 		/*
 +		 * If the destination already exists do nothing.
 +		 * This is after the copy_dir above to still iterate into subdirectories.
 +		 */
-+		if (LSTAT (dst, &sb) != -1) {
++		if (fstatat(dst->dirfd, dst->name, &sb, AT_SYMLINK_NOFOLLOW) != -1) {
 +			return 0;
 +		}
 +
- #ifdef	S_IFLNK
- 		/*
++		/*
  		 * Copy any symbolic links
-@@ -456,6 +464,7 @@ static int copy_dir (const char *src, co
+ 		 */
+ 
+@@ -511,6 +519,7 @@ static int copy_dir (const struct path_i
                       gid_t old_gid, gid_t new_gid)
  {
  	int err = 0;
@@ -136,20 +136,20 @@ Index: libmisc/copydir.c
  
  	/*
  	 * Create a new target directory, make it owned by
-@@ -467,6 +476,16 @@ static int copy_dir (const char *src, co
+@@ -522,6 +531,16 @@ static int copy_dir (const struct path_i
  		return -1;
  	}
  #endif				/* WITH_SELINUX */
 +
-+	/*
-+	 * If the destination is already a directory, don't change it
-+	 * but copy into it (recursively).
-+	 */
-+	if (LSTAT (dst, &dst_sb) == 0 && S_ISDIR(dst_sb.st_mode)) {
-+		return (copy_tree (src, dst, false, reset_selinux,
-+	                   old_uid, new_uid, old_gid, new_gid) != 0);
-+	}
++        /*
++         * If the destination is already a directory, don't change it
++         * but copy into it (recursively).
++        */
++        if (fstatat(dst->dirfd, dst->name, &dst_sb, AT_SYMLINK_NOFOLLOW) == 0 && S_ISDIR(dst_sb.st_mode)) {
++            return (copy_tree (src, dst, false, reset_selinux,
++                           old_uid, new_uid, old_gid, new_gid) != 0);
++        }
 +
- 	if (   (mkdir (dst, statp->st_mode) != 0)
- 	    || (chown_if_needed (dst, statp,
+ 	if (   (mkdirat (dst->dirfd, dst->name, statp->st_mode) != 0)
+ 	    || (chownat_if_needed (dst, statp,
  	                         old_uid, new_uid, old_gid, new_gid) != 0)

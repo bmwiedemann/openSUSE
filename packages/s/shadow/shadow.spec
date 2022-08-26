@@ -22,20 +22,20 @@
   %define no_config 1
 %endif
 Name:           shadow
-Version:        4.11.1
+Version:        4.12.3
 Release:        0
 Summary:        Utilities to Manage User and Group Accounts
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          System/Base
 URL:            https://github.com/shadow-maint/shadow
-Source:         https://github.com/shadow-maint/shadow/releases/download/v%{version}/shadow-%{version}.tar.xz
+Source:         https://github.com/shadow-maint/shadow/releases/download/%{version}/shadow-%{version}.tar.xz
 Source1:        pamd.tar.bz2
 Source3:        useradd.local
 Source4:        userdel-pre.local
 Source5:        userdel-post.local
 Source6:        shadow.service
 Source7:        shadow.timer
-Source42:       https://github.com/shadow-maint/shadow/releases/download/v%{version}/shadow-%{version}.tar.xz.asc
+Source42:       https://github.com/shadow-maint/shadow/releases/download/%{version}/shadow-%{version}.tar.xz.asc
 Source43:       %{name}.keyring
 # SOURCE-FEATURE-SUSE shadow-login_defs-check.sh sbrabec@suse.com -- Supplementary script that verifies coverage of variables in shadow-login_defs-unused-by-pam.patch and other patches.
 Source44:       shadow-login_defs-check.sh
@@ -231,9 +231,11 @@ rm %{buildroot}/%{_libdir}/libsubid.{la,a}
 # Move /etc to /usr/etc
 if [ ! -d %{buildroot}%{_distconfdir} ]; then
     mkdir -p %{buildroot}%{_distconfdir}
-    mv %{buildroot}%{_sysconfdir}/{login.defs,pam.d} %{buildroot}%{_distconfdir}
-    mkdir -p %{buildroot}%{_sysconfdir}/login.defs.d
+    mkdir -p %{buildroot}%{_pam_vendordir}
+    mv %{buildroot}%{_sysconfdir}/login.defs %{buildroot}%{_distconfdir}
+    mv %{buildroot}%{_sysconfdir}/pam.d/* %{buildroot}%{_pam_vendordir}/
 fi
+mkdir -p %{buildroot}%{_sysconfdir}/login.defs.d
 
 %find_lang shadow
 
@@ -299,19 +301,18 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/subuid
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/subgid
 %if %{defined no_config}
-%{_distconfdir}/pam.d/chage
-%{_distconfdir}/pam.d/chfn
-%{_distconfdir}/pam.d/chsh
-%{_distconfdir}/pam.d/passwd
-%{_distconfdir}/pam.d/useradd
-%{_distconfdir}/pam.d/chpasswd
-%{_distconfdir}/pam.d/groupadd
-%{_distconfdir}/pam.d/groupdel
-%{_distconfdir}/pam.d/groupmod
-%{_distconfdir}/pam.d/newusers
-%{_distconfdir}/pam.d/useradd
-%{_distconfdir}/pam.d/userdel
-%{_distconfdir}/pam.d/usermod
+%{_pam_vendordir}/chage
+%{_pam_vendordir}/chfn
+%{_pam_vendordir}/chsh
+%{_pam_vendordir}/passwd
+%{_pam_vendordir}/chpasswd
+%{_pam_vendordir}/groupadd
+%{_pam_vendordir}/groupdel
+%{_pam_vendordir}/groupmod
+%{_pam_vendordir}/newusers
+%{_pam_vendordir}/useradd
+%{_pam_vendordir}/userdel
+%{_pam_vendordir}/usermod
 %else
 %config %{_sysconfdir}/pam.d/chage
 %config %{_sysconfdir}/pam.d/chfn
@@ -389,8 +390,8 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %{_unitdir}/*
 
 %files -n login_defs
-%if %{defined no_config}
 %dir %{_sysconfdir}/login.defs.d
+%if %{defined no_config}
 %attr(0644,root,root) %{_distconfdir}/login.defs
 %else
 %attr(0644,root,root) %config %{_sysconfdir}/login.defs

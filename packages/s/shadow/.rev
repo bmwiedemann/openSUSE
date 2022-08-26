@@ -721,4 +721,41 @@
   * Fix default value SHA_get_salt_rounds</comment>
     <requestid>946483</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a85b39b2f4b50b690cea10be2f9669b7</srcmd5>
+    <version>4.12.3</version>
+    <time>1661497683</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.12.3:
+  Revert removal of subid_init, which should have bumped soname.
+  So note that 4.12 through 4.12.2 were broken for subid users.
+
+- Update to 4.12.2:
+  * Address CVE-2013-4235 (TOCTTOU when copying directories) [bsc#916845]
+- Refresh useradd-userkeleton.patch:
+  LSTAT() was removed with https://github.com/shadow-maint/shadow/pull/545
+  Let's use fstatat() now.
+
+- Update to 4.12.1:
+  * Fix uk manpages
+- Remove shadow-4.12-remove-uk.patch: fixed upstream
+
+- Update to 4.12:
+  * Add absolute path hint to --root
+  * Various cleanups
+  * Fix Ubuntu release used in CI tests
+  * add -F options to userad
+  * useradd manpage updates
+  * Check for ownerid (not just username) in subid ranges
+  * Declare file local functions static
+  * Use strict prototypes
+  * Do not drop const qualifier for Basename
+  * Constify various pointers
+  * Don't return uninitialized memory
+  * Don't let compiler optimize away memory cleaning
+  * Remove many obsolete compatibility checks  and defines
+  * Modify ID range check in useradd
+  * Use &quot;extern &quot;C&quot;&quot; to make libsubid easier to use from C++</comment>
+    <requestid>999092</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Mon Aug 22 13:59:35 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.12.3:
+  Revert removal of subid_init, which should have bumped soname.
+  So note that 4.12 through 4.12.2 were broken for subid users.
+
+-------------------------------------------------------------------
+Fri Aug 19 06:32:28 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.12.2:
+  * Address CVE-2013-4235 (TOCTTOU when copying directories) [bsc#916845]
+- Refresh useradd-userkeleton.patch:
+  LSTAT() was removed with https://github.com/shadow-maint/shadow/pull/545
+  Let's use fstatat() now.
+
+-------------------------------------------------------------------
+Mon Aug 15 17:42:01 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.12.1:
+  * Fix uk manpages
+- Remove shadow-4.12-remove-uk.patch: fixed upstream
+
+-------------------------------------------------------------------
+Fri Aug 12 06:05:35 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.12:
+  * Add absolute path hint to --root
+  * Various cleanups
+  * Fix Ubuntu release used in CI tests
+  * add -F options to userad
+  * useradd manpage updates
+  * Check for ownerid (not just username) in subid ranges
+  * Declare file local functions static
+  * Use strict prototypes
+  * Do not drop const qualifier for Basename
+  * Constify various pointers
+  * Don't return uninitialized memory
+  * Don't let compiler optimize away memory cleaning
+  * Remove many obsolete compatibility checks  and defines
+  * Modify ID range check in useradd
+  * Use "extern "C"" to make libsubid easier to use from C++
+  * French translation updates
+  * Fix s/with-pam/with-libpam/
+  * Spanish translation updates
+  * French translation fixes
+  * Default max group name length to 32
+  * Fix PAM service files without-selinux
+  * Improve manpages
+    - groupadd, useradd, usermod
+    - groups and id
+    - pwck
+  * Add fedora to CI builds
+  * Fix condition under which pw_dir check happens
+  * logoutd: switch to strncat
+  * AUTHORS: improve markdown output
+  * Handle ERANGE errors correctly
+  * Check for fopen NULL return
+  * Split get_salt() into its own fn juyin)
+  * Get salt before chroot to ensure /dev/urandom.
+  * Chpasswd code cleanup
+  * Work around git safe.directory enforcement
+  * Alphabetize order in usermod help
+  * Erase password copy on error branches
+  * Suggest using --badname if needed
+  * Update translation files
+  * Correct badnames option to badname
+  * configure: replace obsolete autoconf macros
+  * tests: replace egrep with grep -E
+  * Update Ukrainian translations
+  * Cleanups
+    - Remove redeclared variable
+    - Remove commented out code and FIXMEs
+    - Add header guards
+    - Initialize local variables
+  * CI updates
+    - Create github workflow to install dependencies
+    - Enable CodeQL
+    - Update actions version
+  * libmisc: use /dev/urandom as fallback if other methods fail
+- Add shadow-4.12-remove-uk.patch:
+  Disable non working Ukranian translation for now
+  https://github.com/shadow-maint/shadow/issues/547
+
+-------------------------------------------------------------------
+Tue Aug  9 06:29:07 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove duplicate pam.d/useradd entry
+- Provide /etc/login.defs.d on SLE15 since we support and use it
+
+-------------------------------------------------------------------
+Mon Aug  8 13:00:46 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use %_pam_vendordir macro
+
+-------------------------------------------------------------------
 Wed Jan 12 16:52:39 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
 
 - The legacy code does not support /etc/login.defs.d used by YaST.
