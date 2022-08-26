@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 26 01:19:00 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires as this package contains no tests. 
+
+-------------------------------------------------------------------
 Mon Aug 22 21:52:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - initial package (1.5.0) 

@@ -23,16 +23,11 @@ Version:        1.5.0
 Release:        0
 Summary:        Tools to work with Tidelift
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/jaraco.tidelift
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.tidelift/jaraco.tidelift-%{version}.tar.gz
-BuildRequires:  %{python_module autocommand}
-BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module importlib-resources}
 BuildRequires:  %{python_module jaraco.base}
 BuildRequires:  %{python_module keyring}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module requests-toolbelt}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

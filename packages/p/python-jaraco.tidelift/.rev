@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>998720</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>105c9069892874cb95860dccba51ef23</srcmd5>
+    <version>1.5.0</version>
+    <time>1661497693</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires as this package contains no tests.</comment>
+    <requestid>999307</requestid>
+  </revision>
 </revisionlist>
