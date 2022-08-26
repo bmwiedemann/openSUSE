@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 22 14:16:48 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.63.1:
+  + add_project_dependencies() function.
+  + Coverage targets now respect tool config files.
+  + D compiler checks.
+  + Deprecate an option and replace it with a new one.
+  + Running Windows executables with Wine in meson devenv.
+  + Diff files for wraps.
+  + Added preserve_path arg to install_headers.
+  + Support for mold linker added.
+  + Added debug function.
+  + Compiler options can be set per subproject.
+  + Per-subproject languages.
+  + Installed pkgconfig files can now be relocatable.
+  + New prefer_static built-in option.
+  + Python extension modules now depend on the python library by
+    default.
+  + Python extension modules now build with hidden visibility.
+  + Added support for multiline fstrings.
+- Drop 0001-gnome-Use-doc-install_tag-for-gnome.yelp.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Wed Aug 10 10:52:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - mono-core is available on s390x now

@@ -30,7 +30,7 @@
 %define _name   mesonbuild
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 Name:           meson%{name_ext}
-Version:        0.62.2
+Version:        0.63.1
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -41,8 +41,6 @@ Source1:        https://github.com/%{_name}/meson/releases/download/%{version}/m
 Source2:        meson.keyring
 # PATCH-FIX-OPENSUSE meson-test-installed-bin.patch dimstar@opensuse.org -- We want the test suite to run against /usr/bin/meson coming from our meson package.
 Patch0:         meson-test-installed-bin.patch
-# PATCH-FEATURE-UPSTREAM 0001-gnome-Use-doc-install_tag-for-gnome.yelp.patch -- https://github.com/mesonbuild/meson/pull/10304
-Patch1:         0001-gnome-Use-doc-install_tag-for-gnome.yelp.patch
 # PATCH-FIX-OPENSUSE meson-distutils.patch -- meson is ring0 and therefor setuptools is not available
 Patch2:         meson-distutils.patch
 BuildRequires:  fdupes
@@ -152,7 +150,6 @@ This package provides support for meson.build files in Vim.
 %prep
 %setup -q -n meson-%{version}
 %patch0 -p1
-%patch1 -p1
 %if !%{with setuptools}
 %patch2 -p1
 %endif
