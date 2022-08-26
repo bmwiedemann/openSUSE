@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 25 11:30:10 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Rebase fix-undefined-behavior-in-readlink.patch to the upstream
+  version (only a different formatting is used).
+
+-------------------------------------------------------------------
 Mon Aug 22 04:18:33 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add fix-undefined-behavior-in-readlink.patch that fixes boo#1202214.
