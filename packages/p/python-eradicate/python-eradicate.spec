@@ -1,7 +1,7 @@
 #
 # spec file for package python-eradicate
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-eradicate
-Version:        1.0
+Version:        2.1.0
 Release:        0
 Summary:        Python utility for removing commented-out code
 License:        MIT
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -62,12 +62,13 @@ cp %{SOURCE1} .
 %python_uninstall_alternative eradicate
 
 %check
-export PYTHONPATH=.
-%python_exec %{SOURCE1}
+%pyunittest -v
 
 %files %{python_files}
 %doc README.rst
 %python_alternative %{_bindir}/eradicate
-%{python_sitelib}/*
+%{python_sitelib}/eradicate.py*
+%pycache_only %{python_sitelib}/__pycache__/eradicate*.pyc
+%{python_sitelib}/eradicate-%{version}*-info
 
 %changelog
