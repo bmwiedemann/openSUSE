@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 18 11:44:49 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.6.0 to match up minetest version
+  * Improved cart movement behavior
+  * Dynamic shadow intensity increases with cloud density
+  * Allow mods to override player animation globalstep
+  * Log API added
+  * New translation: Polish
+  * Translation updates: Ukrainian, Russian, German, Lojban, and Esperanto
+  * Various bug fixes
+
+-------------------------------------------------------------------
 Sat Jul 30 22:36:49 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 5.5.0 & 5.5.1:
