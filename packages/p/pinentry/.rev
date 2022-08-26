@@ -475,4 +475,24 @@
     <comment></comment>
     <requestid>958695</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>386fd6795cdb80459a607866d2b080e0</srcmd5>
+    <version>1.2.1</version>
+    <time>1661497672</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1:
+  * qt: Support building with Qt 5.9.  [T5592]
+  * curses: Handle an error at curses initialization.  [T5623]
+  * curses: Specify fg/bg when an extention of Ncurses is not available.
+  * qt: Fix translation of context menu entries.  [T5786]
+  * qt: Further improve the accessibility.  [T5863]
+  * qt: Fix moving focus to second input field when pressing Enter in
+    first input field.  [T5866]
+  * qt: Update the cursor position when reformatting the text.  [T5972]
+  * qt: Use foreground raising code also with the confirm prompt.
+  * Make the legacy qt4 version build again.  [T5569]
+  * Make sure an entered PIN is always cleared from memory.  [T5977]
+  * Build fixes for Windows.  [T5893]</comment>
+    <requestid>999186</requestid>
+  </revision>
 </revisionlist>

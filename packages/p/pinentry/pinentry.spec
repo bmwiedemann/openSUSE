@@ -24,7 +24,7 @@
 %endif
 
 Name:           pinentry%{?nsuffix}
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Collection of Simple PIN or Passphrase Entry Dialogs
 License:        GPL-2.0-or-later
