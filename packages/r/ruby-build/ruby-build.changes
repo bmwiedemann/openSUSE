@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 25 21:47:59 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20220825.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20220825
+  * Show the log file to make it easy to follow progress
+    * Fixes #1721
+  * Add JRuby 9.3.7.0 (#2026)
+
+-------------------------------------------------------------------
 Tue Jul 26 21:58:12 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20220726.
