@@ -407,22 +407,6 @@ Patch881:       0029-fs-btrfs-Fix-several-fuzz-issues-with-invalid-dir-it.patch
 Patch882:       0030-fs-btrfs-Fix-more-ASAN-and-SEGV-issues-found-with-fu.patch
 Patch883:       0031-fs-btrfs-Fix-more-fuzz-issues-related-to-chunks.patch
 Patch884:       0032-Use-grub_loader_set_ex-for-secureboot-chainloader.patch
-Patch885:       0001-luks2-Add-debug-message-to-align-with-luks-and-geli-.patch
-Patch886:       0002-cryptodisk-Refactor-to-discard-have_it-global.patch
-Patch887:       0003-cryptodisk-Return-failure-in-cryptomount-when-no-cry.patch
-Patch888:       0004-cryptodisk-Improve-error-messaging-in-cryptomount-in.patch
-Patch889:       0005-cryptodisk-Improve-cryptomount-u-error-message.patch
-Patch890:       0006-cryptodisk-Add-infrastructure-to-pass-data-from-cryp.patch
-Patch891:       0007-cryptodisk-Refactor-password-input-out-of-crypto-dev.patch
-Patch892:       0008-cryptodisk-Move-global-variables-into-grub_cryptomou.patch
-Patch893:       0009-cryptodisk-Improve-handling-of-partition-name-in-cry.patch
-Patch894:       0010-protectors-Add-key-protectors-framework.patch
-Patch895:       0011-tpm2-Add-TPM-Software-Stack-TSS.patch
-Patch896:       0012-protectors-Add-TPM2-Key-Protector.patch
-Patch897:       0013-cryptodisk-Support-key-protectors.patch
-Patch898:       0014-util-grub-protect-Add-new-tool.patch
-Patch899:       fix-tpm2-build.patch
-Patch900:       0001-crytodisk-fix-cryptodisk-module-looking-up.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -691,9 +675,9 @@ CD_MODULES="all_video boot cat configfile echo true \
 		password password_pbkdf2 png reboot search search_fs_uuid \
 		search_fs_file search_label sleep test video fat loadenv"
 PXE_MODULES="tftp http"
-CRYPTO_MODULES="luks luks2 gcry_rijndael gcry_sha1 gcry_sha256 gcry_sha512"
+CRYPTO_MODULES="luks gcry_rijndael gcry_sha1 gcry_sha256"
 %ifarch %{efi}
-CD_MODULES="${CD_MODULES} chain efifwsetup efinet read tpm tpm2"
+CD_MODULES="${CD_MODULES} chain efifwsetup efinet read"
 PXE_MODULES="${PXE_MODULES} efinet"
 %else
 CD_MODULES="${CD_MODULES} net"
@@ -731,6 +715,10 @@ echo "grub.%{sbat_distro},%{sbat_generation},%{sbat_distro_summary},%{name},%{ve
 
 ./grub-mkimage -O %{grubefiarch} -o grub.efi --prefix= %{?sbat_generation:--sbat sbat.csv} \
 		-d grub-core ${GRUB_MODULES}
+%ifarch x86_64
+./grub-mkimage -O %{grubefiarch} -o grub-tpm.efi --prefix= %{?sbat_generation:--sbat sbat.csv} \
+		-d grub-core ${GRUB_MODULES} tpm
+%endif
 
 %ifarch x86_64 aarch64
 if test -e %{_sourcedir}/_projectcert.crt ; then
@@ -910,7 +898,7 @@ cd build-efi
 %make_install
 install -m 644 grub.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/.
 %ifarch x86_64
-ln -srf %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/grub.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/grub-tpm.efi
+install -m 644 grub-tpm.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/.
 %endif
 
 # Create grub.efi link to system efi directory
@@ -932,6 +920,9 @@ EoM
 
 %ifarch x86_64 aarch64
 export BRP_PESIGN_FILES="%{_datadir}/%{name}/%{grubefiarch}/grub.efi"
+%ifarch x86_64
+BRP_PESIGN_FILES="${BRP_PESIGN_FILES} %{_datadir}/%{name}/%{grubefiarch}/grub-tpm.efi"
+%endif
 install -m 444 grub.der %{buildroot}/%{sysefidir}/
 %endif
 
@@ -1258,7 +1249,6 @@ fi
 %{_bindir}/%{name}-render-label
 %{_bindir}/%{name}-script-check
 %{_bindir}/%{name}-syslinux2cfg
-%{_bindir}/%{name}-protect
 %if 0%{?has_systemd:1}
 %{_unitdir}/grub2-once.service
 %endif
