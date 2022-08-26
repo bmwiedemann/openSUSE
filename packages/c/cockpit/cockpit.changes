@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 24 07:37:46 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Use a list of available brandings to include in cockpit-ws
+  package instead of resolving by symlinks.
+
+-------------------------------------------------------------------
 Thu Jul 28 08:41:13 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
 
 - Update suse-microos-branding.patch for new /etc/os-release ID.

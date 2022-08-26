@@ -208,4 +208,13 @@
     <comment></comment>
     <requestid>991570</requestid>
   </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>bce232fe4e98518349071457b3af6180</srcmd5>
+    <version>271</version>
+    <time>1661497674</time>
+    <user>dimstar_suse</user>
+    <comment>- Use a list of available brandings to include in cockpit-ws
+  package instead of resolving by symlinks.</comment>
+    <requestid>999246</requestid>
+  </revision>
 </revisionlist>
