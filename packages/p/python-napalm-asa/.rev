@@ -29,4 +29,12 @@
 - Refresh {Build,}Requires on python-naplam.</comment>
     <requestid>917392</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6db4d635c9c22a42800e4c701bda2220</srcmd5>
+    <version>0.1.4</version>
+    <time>1661497694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999338</requestid>
+  </revision>
 </revisionlist>

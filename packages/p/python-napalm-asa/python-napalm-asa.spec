@@ -1,7 +1,7 @@
 #
 # spec file for package python-napalm-asa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,8 @@ Summary:        NAPALM - Cisco ASA Driver network driver
 License:        Apache-2.0
 URL:            https://github.com/napalm-automation-community/napalm-asa
 Source:         https://github.com/napalm-automation-community/napalm-asa/archive/v%{version}.tar.gz#/napalm-asa-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/napalm-automation-community/napalm-asa/pull/33 float speed
+Patch0:         float-speed.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,6 +50,7 @@ ASAv, ASA on Firepower and ISA 3000 platforms.
 
 %prep
 %setup -q -n napalm-asa-%{version}
+%autopatch -p1
 
 %build
 %python_build
