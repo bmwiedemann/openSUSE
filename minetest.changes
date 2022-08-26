@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 18 11:39:41 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.6.0
+  * Fix CVE-2022-35978 ( boo#1202423 ): Mod scripts can escape
+    sandbox in single player mode
+  * `name` in game.conf is deprecated for the game title, use `title` instead
+  * Add depth sorting for node faces
+  * Various bug fixes
+  * Full changes: https://dev.minetest.net/Changelog#5.5.0_.E2.86.92_5.6.0
+
+-------------------------------------------------------------------
 Mon Aug 15 05:18:47 UTC 2022 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Introduced mbranch-protection=none CXX flag to resolve bnc#1193141

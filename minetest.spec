@@ -18,12 +18,12 @@
 
 %define minetestuser %{name}
 %define minetestgroup %{name}
-%define irrlichtmt_version 1.9.0mt5
+%define irrlichtmt_version 1.9.0mt7
 %bcond_without leveldb
 %bcond_without redis
 %bcond_without postgresql
 Name:           minetest
-Version:        5.5.1
+Version:        5.6.0
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
 License:        CC-BY-SA-3.0 AND LGPL-2.1-or-later
@@ -69,6 +69,7 @@ BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?sle_version} > 0 && 0%{?sle_version} <= 150400
 BuildRequires:  desktop-file-utils
