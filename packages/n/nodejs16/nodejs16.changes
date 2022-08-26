@@ -1,11 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 25 14:10:41 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- undici_5.8.1.patch, undici_5.8.2.patch: update undici to 5.8.2
+  (bsc#1202382, CVE-2022-35949, bsc#1202383, CVE-2022-35948)
+
+-------------------------------------------------------------------
 Tue Aug 16 14:53:04 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - enable crypto-policies for SLE15 SP4+ and TW (bsc#1200303)
 - Update to LTS version 16.16.0:
   * deps: upgrade npm to 8.15.0
   * Improved interoperability of the Web Crypto API
-  * Updated Undici to 5.8.0
+  * Updated Undici to 5.8.0 (bsc#1201710, CVE-2022-31150)
   For full list of changes, see
   https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V16.md#16.17.0
 

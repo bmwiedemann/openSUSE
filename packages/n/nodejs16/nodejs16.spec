@@ -154,6 +154,10 @@ Patch133:       rsa-pss-revert.patch
 # Use versioned binaries and paths
 Patch200:       versioned.patch
 
+Patch301:       undici_5.8.1.patch
+Patch302:       undici_5.8.2.patch
+
+
 BuildRequires:  fdupes
 BuildRequires:  pkg-config
 BuildRequires:  procps
@@ -188,8 +192,8 @@ BuildRequires:  gcc48-c++
 # for SLE-12:Update targets
 %if 0%{?suse_version} == 1315
 %if %node_version_number >= 17
-BuildRequires:  gcc10-c++
-%define forced_gcc_version 10
+BuildRequires:  gcc12-c++
+%define forced_gcc_version 12
 %else
 %if %node_version_number >= 14
 BuildRequires:  gcc9-c++
@@ -205,8 +209,8 @@ BuildRequires:  gcc7-c++
 
 %if 0%{?suse_version} == 1500
 %if %node_version_number >= 17
-BuildRequires:  gcc10-c++
-%define forced_gcc_version 10
+BuildRequires:  gcc12-c++
+%define forced_gcc_version 12
 %endif
 %endif
 # compiler selection
@@ -639,6 +643,9 @@ tar Jxf %{SOURCE11}
 %patch133 -p1
 %endif
 %patch200 -p1
+
+%patch301 -p1
+%patch302 -p1
 
 %if %{node_version_number} <= 12
 # minimist security update - patch50

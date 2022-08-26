@@ -288,4 +288,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>998877</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>47cec7186354cfbc8e713f98373ae523</srcmd5>
+    <version>16.17.0</version>
+    <time>1661497679</time>
+    <user>dimstar_suse</user>
+    <comment>- undici_5.8.1.patch, undici_5.8.2.patch: update undici to 5.8.2
+  (bsc#1202382, CVE-2022-35949, bsc#1202383, CVE-2022-35948)
+
+  * Updated Undici to 5.8.0 (bsc#1201710, CVE-2022-31150)</comment>
+    <requestid>999257</requestid>
+  </revision>
 </revisionlist>
