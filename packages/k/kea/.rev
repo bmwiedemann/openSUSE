@@ -77,4 +77,12 @@
     <comment>- Update to release 2.0.0</comment>
     <requestid>923205</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>adecb66ed26d1193f76b60c5dc64a0a8</srcmd5>
+    <version>2.2.0</version>
+    <time>1661497688</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>999255</requestid>
+  </revision>
 </revisionlist>

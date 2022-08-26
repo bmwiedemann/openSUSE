@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 18 12:53:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.0
+  * Kea now features full native support for TLS in HA
+  * PostgreSQL configuration backend
+  * A new hook is dedicated to RBAC.
+  * A new hook limits the rate and number of leases.
+  * A new DDNS Tuning library adds custom behaviors related to
+    Dynamic DNS updates on a per-client basis.
+  * The subnet_cmds hook has been expanded with several new
+    commands: `subnet4-delta-add`, `subnet4-delta-del`,
+    `subnet6-delta-add`, and `subnet6-delta-del`.
+
+-------------------------------------------------------------------
 Mon Oct  4 23:33:08 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.0

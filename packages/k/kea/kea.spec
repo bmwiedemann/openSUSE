@@ -1,7 +1,7 @@
 #
 # spec file for package kea
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,35 @@
 #
 
 
-%define asiodns_sover 13
-%define asiolink_sover 27
-%define cc_sover 25
-%define cfgclient_sover 25
-%define cryptolink_sover 16
-%define d2srv_sover 3
-%define database_sover 23
-%define dhcppp_sover 36
-%define dhcp_ddns_sover 17
-%define dhcpsrv_sover 50
-%define dnspp_sover 19
-%define eval_sover 27
+%define asiodns_sover 24
+%define asiolink_sover 40
+%define cc_sover 39
+%define cfgclient_sover 36
+%define cryptolink_sover 28
+%define d2srv_sover 16
+%define database_sover 35
+%define dhcppp_sover 54
+%define dhcp_ddns_sover 29
+%define dhcpsrv_sover 69
+%define dnspp_sover 30
+%define eval_sover 39
 %define exceptions_sover 13
-%define hooks_sover 38
-%define http_sover 29
-%define log_sover 22
-%define mysql_sover 26
-%define pgsql_sover 20
-%define process_sover 29
+%define hooks_sover 57
+%define http_sover 42
+%define log_sover 35
+%define mysql_sover 38
+%define pgsql_sover 36
+%define process_sover 40
 %define stats_sover 18
 %define util_io_sover 0
-%define util_sover 36
+%define util_sover 52
 %if 0%{?suse_version} >= 1500
 %bcond_without regen_files
 %else
 %bcond_with    regen_files
 %endif
 Name:           kea
-Version:        2.0.0
+Version:        2.2.0
 Release:        0
 Summary:        Dynamic Host Configuration Protocol daemon
 License:        MPL-2.0
