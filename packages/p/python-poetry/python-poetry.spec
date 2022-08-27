@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-poetry
-Version:        1.1.14
+Version:        1.1.15
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
@@ -37,33 +37,36 @@ BuildRequires:  %{python_module CacheControl >= 0.12.9}
 BuildRequires:  %{python_module cachy >= 0.3.0}
 BuildRequires:  %{python_module cleo >= 0.8.1}
 BuildRequires:  %{python_module clikit >= 0.6.2}
+BuildRequires:  %{python_module crashtest >= 0.3.0}
 BuildRequires:  %{python_module html5lib >= 1.0}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.6}
 BuildRequires:  %{python_module keyring >= 21.2.0}
 # cachecontrol[filecache]
 BuildRequires:  %{python_module lockfile >= 0.9}
 BuildRequires:  %{python_module packaging >= 20.4}
+BuildRequires:  %{python_module pexpect >= 4.7.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pkginfo >= 1.5}
+BuildRequires:  %{python_module pkginfo >= 1.4}
 BuildRequires:  %{python_module poetry-core >= 1.0.7}
 BuildRequires:  %{python_module requests >= 2.18}
 BuildRequires:  %{python_module requests-toolbelt >= 0.9.1}
 BuildRequires:  %{python_module shellingham >= 1.1}
 BuildRequires:  %{python_module tomlkit >= 0.7.0}
-BuildRequires:  %{python_module virtualenv}
+BuildRequires:  %{python_module virtualenv >= 20.0.26}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-CacheControl >= 0.12.9
 Requires:       python-cachy >= 0.3.0
-Requires:       python-cleo >= 0.8.0
+Requires:       python-cleo >= 0.8.1
 Requires:       python-clikit >= 0.6.2
+Requires:       python-crashtest >= 0.3.0
 Requires:       python-html5lib >= 1.0
 Requires:       python-keyring >= 21.2.0
 # cachecontrol[filecache]
 Requires:       python-lockfile >= 0.9
 Requires:       python-packaging >= 20.4
 Requires:       python-pexpect >= 4.7.0
-Requires:       python-pkginfo >= 1.5
+Requires:       python-pkginfo >= 1.4
 Requires:       python-poetry-core >= 1.0.7
 Requires:       python-requests >= 2.18
 Requires:       python-requests-toolbelt >= 0.9.1

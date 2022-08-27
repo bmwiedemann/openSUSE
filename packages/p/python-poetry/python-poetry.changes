@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 26 16:23:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.15
+  * Poetry now fallback to gather metadata for dependencies via
+    pep517 if parsing pyproject.toml fail (#6206)
+  * Extras and extras dependencies are now sorted in lock file
+    (#6207)
+
+-------------------------------------------------------------------
 Fri Jul  8 19:37:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.1.14

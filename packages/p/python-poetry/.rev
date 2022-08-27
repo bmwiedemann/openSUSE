@@ -138,4 +138,16 @@
     when locking due to a breaking change on PyPI JSON API (#5973) (forwarded request 987967 from bnavigator)</comment>
     <requestid>987968</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1bb6c49d93bd1329e6ae7669df0e2154</srcmd5>
+    <version>1.1.15</version>
+    <time>1661593806</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.15
+  * Poetry now fallback to gather metadata for dependencies via
+    pep517 if parsing pyproject.toml fail (#6206)
+  * Extras and extras dependencies are now sorted in lock file
+    (#6207)</comment>
+    <requestid>999443</requestid>
+  </revision>
 </revisionlist>
