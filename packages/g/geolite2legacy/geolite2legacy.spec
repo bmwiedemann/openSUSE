@@ -1,7 +1,7 @@
 #
 # spec file for package geolite2legacy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           geolite2legacy
-Version:        0+git20200101.56d8a4f
+Version:        0+git20210326.05733c4
 Release:        0
 Summary:        GeoLite2 (CSV) to Legacy format converter
 License:        MIT
-URL:            https://github.com/sherpya/geolite2legacy 
+URL:            https://github.com/sherpya/geolite2legacy
 Source:         %{name}-%{version}.tar.xz
-Patch0:         0001-Automatically-determine-output-file-name.patch
-Patch1:         0001-Use-realpath-to-determine-fips-file-location.patch
 Requires:       python3-ipaddr
 BuildArch:      noarch
 
@@ -46,7 +44,8 @@ install -m 644 geoname2fips.csv pygeoip_const.py %{buildroot}%{_datadir}/geolite
 ln -s %{_datadir}/geolite2legacy/geolite2legacy.py %{buildroot}%{_bindir}/geolite2legacy
 
 %files
-%doc README.md LICENSE
+%license LICENSE
+%doc README.md
 %{_bindir}/geolite2legacy
 %{_datadir}/geolite2legacy
 

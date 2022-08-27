@@ -15,4 +15,28 @@
     <comment></comment>
     <requestid>785653</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b2d78691b78ac4c62113ed6aa5a32cc7</srcmd5>
+    <version>0+git20210326.05733c4</version>
+    <time>1661593791</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0+git20210326.05733c4:
+  * cleanup
+  * conditional ipaddr only for python &lt; 3.3
+  * Use correct docker image name on README
+  * fix ASN
+  * add python3 compatibility using built-in module ipaddress
+  * use custom comment in country file
+  * geolite2legacy: pep8
+  * geoname2fips: added tipical filenames to help
+  * geoname2fips: some country names changed after 20200505
+  * geoname2fips: fixed Vlaams-Brabant spelling
+  * Dockerfile to run the converter inside Docker container
+  * Use realpath to determine fips file location
+  * Automatically determine output file name
+- remove patches fixed in upstream
+  * 0001-Automatically-determine-output-file-name.patch
+  * 0001-Use-realpath-to-determine-fips-file-location.patch (forwarded request 999369 from vlefebvre)</comment>
+    <requestid>999372</requestid>
+  </revision>
 </revisionlist>
