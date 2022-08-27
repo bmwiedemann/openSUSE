@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 25 18:52:11 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.1:
+  * Fixed:
+    + Fix default file inclusion for wheel build targets when both
+      the project name and package directory name are not
+      normalized
+
+-------------------------------------------------------------------
 Thu Aug 18 15:44:17 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.0:
