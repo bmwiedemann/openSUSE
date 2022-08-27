@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 26 19:17:59 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git.20220826.b11db4d:
+  * Run flake8 directly due to broken pytest-flake8.
+  * Add new line.
+  * List tested LLVM versions in Installation page.
+- Remove extra removal of pytest-flake8 in spec file.
+
+-------------------------------------------------------------------
 Wed Aug 24 16:21:04 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Don't check the source code for lint with flake8

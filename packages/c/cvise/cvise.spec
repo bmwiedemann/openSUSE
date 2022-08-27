@@ -17,7 +17,7 @@
 
 
 Name:           cvise
-Version:        2.4.0+git.20220809.f32223a
+Version:        2.4.0+git.20220826.b11db4d
 Release:        0
 Summary:        Super-parallel Python port of the C-Reduce
 License:        BSD-3-Clause
@@ -62,7 +62,6 @@ and report bugs in compilers and other tools that process C/C++ or OpenCL code.
 %prep
 %setup -q
 %autopatch -p1
-sed -i '/addopts/ s/--flake8//' setup.cfg
 
 %build
 %define __builder ninja

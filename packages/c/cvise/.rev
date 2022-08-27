@@ -749,4 +749,16 @@
     <comment></comment>
     <requestid>999107</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>e7f4cd915723683ecb74ff001e389c0c</srcmd5>
+    <version>2.4.0+git.20220826.b11db4d</version>
+    <time>1661593815</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git.20220826.b11db4d:
+  * Run flake8 directly due to broken pytest-flake8.
+  * Add new line.
+  * List tested LLVM versions in Installation page.
+- Remove extra removal of pytest-flake8 in spec file.</comment>
+    <requestid>999469</requestid>
+  </revision>
 </revisionlist>
