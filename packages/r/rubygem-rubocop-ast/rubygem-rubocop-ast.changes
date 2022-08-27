@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 26 16:44:18 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.21.0
+
+  ### New features
+
+  * [#231](https://github.com/rubocop/rubocop-ast/pull/231): Add a type predicate `dot?` to Token. ([@nobuyo][])
+
+-------------------------------------------------------------------
 Thu Aug  4 13:26:45 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.19.1
