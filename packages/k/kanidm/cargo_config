@@ -1,15 +1,5 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."https://github.com/Firstyear/authenticator-rs.git"]
-git = "https://github.com/Firstyear/authenticator-rs.git"
-branch = "webauthn-authenticator-rs"
-replace-with = "vendored-sources"
-
-[source."https://github.com/kanidm/webauthn-rs.git"]
-git = "https://github.com/kanidm/webauthn-rs.git"
-rev = "7a8e6c6b351ab7544f08cf8ba48424baacee1360"
-replace-with = "vendored-sources"
-
 [source.vendored-sources]
 directory = "vendor"
