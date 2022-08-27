@@ -40,8 +40,8 @@
 Name:           open-vm-tools
 %define subname open-vm-tools
 %define tarname open-vm-tools
-%define bldnum  19345655
-Version:        12.0.0
+%define bldnum  20219665
+Version:        12.1.0
 Release:        0
 Summary:        Open Virtual Machine Tools
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -148,7 +148,6 @@ Obsoletes:      open-vm-tools-deploypkg <= 10.0.5
 Supplements:    modalias(pci:v000015ADd*sv*sd*bc*sc*i*)
 ExclusiveArch:  %ix86 x86_64 aarch64
 #Upstream patches
-Patch1:         gcc_size_t.patch
 
 #SUSE specific patches
 Patch0:         pam-vmtoolsd.patch
@@ -240,7 +239,6 @@ if you intend to create own plugins for vmtoolsd.
 # fix for an rpmlint warning regarding wrong line feeds
 sed -i -e "s/\r//" README
 #Upstream patches
-%patch1 -p2
 
 #SUSE specific patches
 %patch0 -p2

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 25 15:57:57 UTC 2022 - Kirk Allan <kallan@suse.com>
+
+- Update to 12.1.0 (build 20219665) (boo#1202733)
+  + New/Updated features:
+    - Contains security update fix for (bsc#1202657) - (CVE-2022-31676)
+      VUL-0: CVE-2022-31676: open-vm-tools:
+      local privilege escalation vulnerability
+  + A number of Coverity reported issues have been addressed.
+  + [FTBFS] Fix the build of the ContainerInfo plugin for a 32-bit Linux
+    release:
+      https://github.com/vmware/open-vm-tools/pull/588
+  + Make HgfsConvertFromNtTimeNsec aware of 64-bit time_t on i386 (32-bit)
+    This change incorporates the support of 64 bit time epoch conversion
+    from Windows NT time to Unix Epoch time on i386.
+      https://github.com/vmware/open-vm-tools/pull/387
+- Drop patch now contained in 12.1.0:
+  + gcc_size_t.patch
+
+-------------------------------------------------------------------
 Mon Mar 28 15:09:44 UTC 2022 - Kirk Allan <kallan@suse.com>
 
 - Update to 12.0.0 (build 19345655) (boo#1196803)
