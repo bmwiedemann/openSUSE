@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 26 05:23:10 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Install manual page in the correct man section
+
+-------------------------------------------------------------------
 Tue Dec  7 15:27:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - fix duplicate src package name issue on multibuild 

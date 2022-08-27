@@ -1,7 +1,7 @@
 #
 # spec file for package libcbor-doc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,8 +87,9 @@ sed -i 's|${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/pkgconfig|${CMAKE_INST
 
 %install
 %if "%{flavor}" == "doc"
-mkdir -p %{buildroot}%{_mandir}/man1
-cp doc/build/man/* %{buildroot}%{_mandir}/man1
+mkdir -p %{buildroot}%{_mandir}/man3
+cp doc/build/man/*.3 %{buildroot}%{_mandir}/man3
+
 %else
 
 %cmake_install
