@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 20 06:36:15 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Bump version to 0.31.3:
+  * HOTFIX: fix up-arrow regression
+  * from 0.31.2:
+    - fix: crash when attaching to a session without the first tab (#1648)
+    - fix: race crash on startup when server is not ready (#1651)
+    - Terminal compatibility: forward OSC52 clipboard copy events from terminals (#1644)
+    - refactor: terminal characters (#1663)
+    - Terminal compatibility: properly send mouse clicks and drags to terminal panes (#1664)
+
+
+-------------------------------------------------------------------
 Mon Aug  1 07:38:35 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add _constraints to avoid OOM

@@ -18,7 +18,7 @@
 
 %bcond_with     test
 Name:           zellij
-Version:        0.31.0
+Version:        0.31.3
 Release:        0
 Summary:        Terminal workspace with batteries included
 License:        MIT
@@ -27,8 +27,8 @@ Source0:        https://github.com/zellij-org/zellij/archive/refs/tags/v%{versio
 Source1:        vendor.tar.gz
 Source2:        cargo_config
 Source3:        README.suse-maint.md
-BuildRequires:  rust+cargo >= 1.62
 BuildRequires:  cargo-packaging
+BuildRequires:  rust+cargo >= 1.62
 ExclusiveArch:  %{rust_tier1_arches}
 %if %{with test}
 BuildRequires:  pkgconfig(openssl)
