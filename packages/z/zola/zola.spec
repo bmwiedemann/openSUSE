@@ -17,7 +17,7 @@
 
 
 Name:           zola
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 Summary:        Fast static site generator
 License:        MIT
@@ -44,12 +44,22 @@ mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
+%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
+export RUSTC_BOOTSTRAP=1
+%endif
 %{cargo_build}
 
 %install
+%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
+export RUSTC_BOOTSTRAP=1
+%endif
+
 %{cargo_install}
 
 %check
+%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
+export RUSTC_BOOTSTRAP=1
+%endif
 %{cargo_test}
 
 %files
