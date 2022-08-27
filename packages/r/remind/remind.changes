@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 19 07:52:25 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.0 Patch 3 - 2022-08-16
+
+- IMPROVEMENT: remind: add plain_body and calendar_body JSON keys in -pp...
+  output.
+
+- BUG FIX: tkremind: Don't create empty files called '&1' when creating
+  a new reminder.
+
+- BUG FIX: remind: Don't call signal-unsafe functions from signal handler
+
+-------------------------------------------------------------------
 Tue Aug  2 21:54:06 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 4.0 Patch 2 - 2022-08-02
