@@ -28,6 +28,9 @@ Patch21:        add-oes-support.patch
 Patch22:        add-caasp40-support.patch
 Patch23:        add-win-2k19-media-info.patch
 Patch24:        fix-tumbleweed-order.patch
+Patch25:        add-opensuse-leap-15.5-support.patch
+Patch26:        add-sle15sp5-support.patch
+Patch27:        add-slem5.3-support.patch
 BuildRequires:  intltool
 BuildRequires:  osinfo-db-tools
 BuildArch:      noarch
