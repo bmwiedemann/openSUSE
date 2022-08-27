@@ -19,18 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname nptyping
 Name:           python-nptyping
-Version:        2.0.1
+Version:        2.2.0
 Release:        0
 Summary:        Type hints for NumPy
 License:        MIT
 URL:            https://github.com/ramonhagenaars/nptyping
 Source:         https://github.com/ramonhagenaars/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM use_system_packages.patch gh#ramonhagenaars/nptyping#72 mcepl@suse.com
-# When creating venv allow use of system packages
+# PATCH-FIX-OPENSUSE use_system_packages.patch gh#ramonhagenaars/nptyping#72 mcepl@suse.com
+# Don't need to build the wheel a second time, when creating venv for install check, allow use of system packages
 Patch0:         use_system_packages.patch
 # PATCH-FIX-UPSTREAM skip_on_other_archs.patch gh#ramonhagenaars/nptyping#73 mcepl@suse.com
 # test_instance_check_performance doesn't seem to work well on some architectures
 Patch1:         skip_on_other_archs.patch
+# PATCH-FIX-OPENSUSE skip-pyright-tests.patch code@bnavigator.de -- pyright is a nodejs package and nobody dares to package it for openSUSE
+Patch2:         skip-pyright-tests.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -38,28 +40,17 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-numpy >= 1.20.0
-Suggests:       python-autoflake
-Suggests:       python-beartype < 0.10.0
-Suggests:       python-beartype >= 0.10.0
-Suggests:       python-black
-Suggests:       python-codecov >= 2.1.0
-Suggests:       python-coverage
-Suggests:       python-invoke >= 1.6.0
-Suggests:       python-isort
-Suggests:       python-mypy
-Suggests:       python-pip-tools >= 6.5.0
-Suggests:       python-pylint
-Suggests:       python-setuptools
-Suggests:       python-typeguard
-Suggests:       python-typing_extensions
-Suggests:       python-wheel
+%if 0%{python_version_nodots} < 310
+Requires:       python-typing_extensions >= 4.0.0
+%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module beartype}
+BuildRequires:  %{python_module feedparser}
 BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module numpy >= 1.20.0}
 BuildRequires:  %{python_module typeguard}
-BuildRequires:  %{python_module typing_extensions if %python-base < 3.10}
+BuildRequires:  %{python_module typing_extensions >= 4.0.0 if %python-base < 3.10}
 # /SECTION
 %python_subpackages
 
@@ -69,8 +60,6 @@ Type hints for NumPy.
 %prep
 %autosetup -p1 -n nptyping-%{version}
 
-sed -i -e 's/typing-extensions/typing_extensions/' constraints.txt
-
 %build
 %pyproject_wheel
 
@@ -79,6 +68,9 @@ sed -i -e 's/typing-extensions/typing_extensions/' constraints.txt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# wheel in dist/ used by test/test_wheel.py
+mkdir -p dist/
+cp build/nptyping-%{version}-py3-none-any.whl dist/
 %pyunittest -v
 
 %files %{python_files}
