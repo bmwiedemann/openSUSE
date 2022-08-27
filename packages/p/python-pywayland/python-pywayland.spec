@@ -1,5 +1,5 @@
 #
-# spec file python-pywayland
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -19,7 +19,7 @@
 %bcond_without  test
 %define pyname  pywayland
 Name:           python-%{pyname}
-Version:        0.4.13
+Version:        0.4.14
 Release:        0
 Summary:        Python binding to the wayland library using cffi
 License:        NCSA
@@ -39,9 +39,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(wayland-client) >= 1.21
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.21
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.25
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.26
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
