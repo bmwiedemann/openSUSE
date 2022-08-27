@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sat Aug 20 06:42:51 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 4.2.1:
+  * Bump version to v4.2.1
+  * Downgrade anyhow due to yanked version
+  * Bump chrono from 0.4.20-rc.1 to 0.4.20 (#717)
+  * Bump serde_repr from 0.1.8 to 0.1.9 (#714)
+  * Bump serde from 1.0.140 to 1.0.142 (#715)
+  * Bump clap from 3.2.15 to 3.2.16 (#709)
+  * Bump insta from 1.17.0 to 1.17.1 (#710)
+  * Bump anyhow from 1.0.58 to 1.0.60 (#713)
+  * Bump serde_json from 1.0.82 to 1.0.83 (#716)
+  * Update chrono crate
+  * Update changelog
+  * Copy both ".chktexrc" and "chktexrc" to temp dir
+  * Test for less targets in CI
+  * Create file watcher on main thread
+  * Run "cargo update"
+  * Bump clap from 3.2.14 to 3.2.15 (#698)
+  * Bump human_name from 1.3.2 to 1.3.4 (#703)
+  * Bump insta from 1.16.0 to 1.17.0 (#706)
+  * Use chktexrc directory if found when linting
+  * Always use server-side file watching
+  * Use current dir as fallback watch location
+  * Only trigger dependabot for direct dependencies
+  * Fix parsing options when some values are missing
+  * Re-add auxiliary directory to watch list
+  * Use notify for file watching if no client support
+  * Fix working directory of ChkTeX
+  * Update dependencies using "cargo update"
+  * Bump regex from 1.5.6 to 1.6.0 (#668)
+  * Bump criterion-plot from 0.4.4 to 0.4.5 (#681)
+  * Bump human_name from 1.0.3 to 1.0.5 (#682)
+  * Bump rowan from 0.15.5 to 0.15.6 (#675)
+  * Bump plotters from 0.3.1 to 0.3.2 (#672)
+  * Bump clap from 3.2.8 to 3.2.12 (#680)
+  * Bump ucd-trie from 0.1.3 to 0.1.4 (#670)
+  * Bump regex-syntax from 0.6.26 to 0.6.27 (#671)
+  * Bump plotters-backend from 0.3.2 to 0.3.4 (#673)
+  * Bump criterion from 0.3.5 to 0.3.6 (#674)
+  * Bump serde_yaml from 0.8.24 to 0.8.25 (#676)
+  * Bump hashbrown from 0.12.1 to 0.12.2 (#677)
+  * Bump serde from 1.0.138 to 1.0.139 (#678)
+  * Bump once_cell from 1.12.0 to 1.13.0 (#667)
+  * Generate CTAN documentation in CI
+  * Bump dashmap from 5.2.0 to 5.3.4 (#638)
+  * Bump fixedbitset from 0.4.1 to 0.4.2 (#666)
+  * Always enable completion feature
+  * Bump MSRV to 1.59
+  * Remove dead code
+  * Compile documentation required by CTAN in CI
+  * Do not attempt to install gtar on macOS runner
+
+-------------------------------------------------------------------
 Fri Jul 15 14:08:51 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 4.2.0:

@@ -17,7 +17,7 @@
 
 
 Name:           texlab
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        Implementation of the Language Server Protocol for LaTeX
 License:        ( 0BSD OR MIT OR Apache-2.0 ) AND ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 OR Apache-2.0 OR MIT ) AND ( CC0-1.0 OR Artistic-2.0 ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( MIT OR Zlib OR Apache-2.0 ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-3-Clause AND GPL-3.0 AND GPL-3.0+ AND ISC AND MIT AND MPL-2.0 AND MPL-2.0+ AND GPL-3.0
@@ -27,6 +27,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
+BuildRequires:  rust+cargo >= 1.59
 ExclusiveArch:  %{rust_arches}
 
 %description
@@ -43,7 +44,9 @@ cp %{SOURCE2} .cargo/config
 
 %install
 %{cargo_install}
-install -Dm644 texlab.1 -t %{buildroot}%{_mandir}/man1/
+
+# They deleted it.
+# install -Dm644 texlab.1 -t %{buildroot}%{_mandir}/man1/
 
 #%%check
 #%%{cargo_test}
@@ -52,6 +55,6 @@ install -Dm644 texlab.1 -t %{buildroot}%{_mandir}/man1/
 %{_bindir}/texlab
 %license LICENSE
 %doc docs README.md CHANGELOG.md
-%{_mandir}/man1/texlab.1%{?ext_man}
+# %{_mandir}/man1/texlab.1%{?ext_man}
 
 %changelog
