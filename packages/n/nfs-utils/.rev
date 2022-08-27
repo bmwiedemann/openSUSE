@@ -1674,4 +1674,17 @@
 - Sort man page entries in %files section</comment>
     <requestid>995255</requestid>
   </revision>
+  <revision rev="174" vrev="35">
+    <srcmd5>df5dd770b8300d278afc9541fef5b675</srcmd5>
+    <version>unknown</version>
+    <time>1661593672</time>
+    <user>dimstar_suse</user>
+    <comment>- sysconfig.nfs, nfs.conf: allow NFSv4 grace time to be set
+  via sysconfig.
+  SLE12 allowed this, SLE15 lost the ability.  Add it back
+  with the name NFSV4GRACETIME.  Also improve description
+  for NFSV4LEASETIME.
+  (bsc#1202592)</comment>
+    <requestid>999331</requestid>
+  </revision>
 </revisionlist>

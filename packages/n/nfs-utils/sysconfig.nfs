@@ -121,17 +121,49 @@ STATD_OPTIONS=""
 ## Path:                Network/File systems/NFS server
 ## Description:         Lease time for NFSv4 leases
 ## Type:                integer
-## Default:             ""
+## Default:             "90"
 #
-# Set the lease time for the NFSv4 server.  This allows new locks
-# to be taken sooner after a server restart, so it is useful for
-# servers which need to recover quickly after a failure, particularly
-# in fail-over configurations.  Reducing the lease time can be a
-# problem is some clients connect over high latency networks.
-# The default is 90 seconds.  A number like 15 might be appropriate
-# in a fail-over configuration with all clients on well connected
-# low latency links.
-NFSV4LEASETIME=""
+# Set the lease time for the NFSv4 server.  When a client
+# crashes or is separated from the server by a network problem,
+# this indicates how long the server will continue to honor
+# locks it held and when it will allow other clients to take
+# conflicting locks.  A shorter time means network problems are
+# more likely to hurt filesystem functionality, but genuine
+# client crash are detected more quickly.
+# The NFSV4GRACETIME setting must be not less than the lease
+# time, so another benefit of short lease times is that server
+# reboots will disrupt filesystem traffic for a shorter period
+# of time.
+# This choice is primarily a trade-off between surviving
+# transient network problems, and expediting completion of
+# server reboot or fail-over.
+# The default is 90 second.  A practical minimum is about 15
+# seconds.
+#
+NFSV4LEASETIME="90"
+
+## Path:                Network/File systems/NFS server
+## Description:         Grace time for NFSv4 server restart
+## Type:                integer
+## Default:             "90"
+#
+# Set the NFSv4 server grace time.  When the server restarts it
+# waits this long for pre-existing clients to re-establish any
+# locks that they held before the restart.  During this time
+# new locks cannot be granted and new file opens cannot be
+# allowed.
+# A shorter time allows fast restart or fail-over completion,
+# but requires the NFSV4LEASETIME to be shorter which may
+# increase the impact of temporary network problems.
+# The default is 90 seconds.  The value must not be less than
+# NFSV4LEASETIME.
+# When NFSv4.1 or later is in use, and when all clients report
+# when they finish reclaiming locks, the grace time can finish
+# early and so a large value has little cost.  The
+# NFSV4LEASETIME is then most significant in managing restart
+# timing.
+#
+NFSV4GRACETIME="90"
 
 ## Path:                Network/File systems/NFS server
 ## Description:         Alternate mount point for rpc_pipefs filesystem
