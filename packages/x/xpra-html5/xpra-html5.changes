@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Aug 19 19:43:48 UTC 2022 - scott.bradnick@suse.com
+
+- Updating uglifyjs to '3.17.0'
+- Update to version 5.0+git20220805.f4e08d5:
+  * update revision no
+  * downmerg
+  * linting
+  * redraw
+  * linting
+  * linting
+  * trailing comma
+  * width/height
+  * resizeQuality
+  * requestAnimationFrame in worker
+  * fix void and scroll
+  * restore compatibility with older servers
+  * use the new keyboard mapping attributes
+  * VPX
+  * XpraImageDecoder
+  * ImageDecoder
+  * 2 spaces
+  * WIP
+
+-------------------------------------------------------------------
 Tue Jul 19 17:56:29 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 5.0+git20220718.17c39ca:
