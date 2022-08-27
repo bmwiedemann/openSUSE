@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 26 12:33:22 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add package mingw32-libstdc++-gdb-printer which provides pretty
+  printer for gdb that can be added to debug packages from installer
+  and portable packages
+  To use this pretty printer with gdb, the automatic load path
+  'safe path' must be turned off either with the gdb command 
+  'set auto-load safe path /' or by adding the command option
+  '-ex "set auto-load safe-path /"'.
+- Add gcc-12.1.0-fix-install-gdb-support-files.patch
+
+-------------------------------------------------------------------
 Wed Jun 29 10:32:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to version 12.1.0

@@ -1,0 +1,54 @@
+diff -ubBr gcc-12.1.0.orig/libstdc++-v3/python/hook.in gcc-12.1.0/libstdc++-v3/python/hook.in
+--- gcc-12.1.0.orig/libstdc++-v3/python/hook.in	2022-05-06 09:31:00.000000000 +0200
++++ gcc-12.1.0/libstdc++-v3/python/hook.in	2022-08-26 11:44:28.008527478 +0200
+ # This file might be loaded when there is no current objfile.  This
+ # can happen if the user loads it manually.  In this case we don't
+diff -ubBr gcc-12.1.0.orig/libstdc++-v3/python/Makefile.am gcc-12.1.0/libstdc++-v3/python/Makefile.am
+--- gcc-12.1.0.orig/libstdc++-v3/python/Makefile.am	2022-05-06 09:31:00.000000000 +0200
++++ gcc-12.1.0/libstdc++-v3/python/Makefile.am	2022-08-26 11:44:38.108503139 +0200
+@@ -45,16 +45,20 @@
+ 
+ gdb.py: hook.in Makefile
+ 	sed -e 's,@pythondir@,$(pythondir),' \
+-	    -e 's,@toolexeclibdir@,$(toolexeclibdir),' < $(srcdir)/hook.in > $@
++	    -e 's,@toolexeclibdir@,$(toolexeclibdir)/../../..,' < $(srcdir)/hook.in > $@
+ 
+ install-data-local: gdb.py
+ 	@$(mkdir_p) $(DESTDIR)$(toolexeclibdir)
+ ## We want to install gdb.py as SOMETHING-gdb.py.  SOMETHING is the
+ ## full name of the final library.  We use the libtool .la file to get
+ ## the correct name.
+-	@libname=`sed -ne "/^library_names=/{s/.*='//;s/'$$//;s/ .*//;p;}" \
++	@libname=`sed -ne "/^dlname=/{s/.*='//;s/'$$//;s/ .*//;p;}" \
+ 	          $(DESTDIR)$(toolexeclibdir)/libstdc++.la`; \
+ 	if [ -z "$$libname" ]; then \
++	  libname=`sed -ne "/^library_names=/{s/.*='//;s/'$$//;s/ .*//;p;}" \
++	          $(DESTDIR)$(toolexeclibdir)/libstdc++.la`; \
++	fi; \
++	if [ -z "$$libname" ]; then \
+ 	  libname=`sed -ne "/^old_library=/{s/.*='//;s/'$$//;s/ .*//;p;}" \
+ 		  $(DESTDIR)$(toolexeclibdir)/libstdc++.la`; \
+ 	fi; \
+diff -ubBr gcc-12.1.0.orig/libstdc++-v3/python/Makefile.in gcc-12.1.0/libstdc++-v3/python/Makefile.in
+--- gcc-12.1.0.orig/libstdc++-v3/python/Makefile.in	2022-05-06 09:31:00.000000000 +0200
++++ gcc-12.1.0/libstdc++-v3/python/Makefile.in	2022-08-26 12:05:39.077464550 +0200
+@@ -613,13 +613,17 @@
+ 
+ gdb.py: hook.in Makefile
+ 	sed -e 's,@pythondir@,$(pythondir),' \
+-	    -e 's,@toolexeclibdir@,$(toolexeclibdir),' < $(srcdir)/hook.in > $@
++	    -e 's,@toolexeclibdir@,$(toolexeclibdir)/../../..,' < $(srcdir)/hook.in > $@
+ 
+ install-data-local: gdb.py
+ 	@$(mkdir_p) $(DESTDIR)$(toolexeclibdir)
+-	@libname=`sed -ne "/^library_names=/{s/.*='//;s/'$$//;s/ .*//;p;}" \
++	@libname=`sed -ne "/^dlname=/{s/.*='//;s/'$$//;s/ .*//;p;}" \
+ 	          $(DESTDIR)$(toolexeclibdir)/libstdc++.la`; \
+ 	if [ -z "$$libname" ]; then \
++	  libname=`sed -ne "/^library_names=/{s/.*='//;s/'$$//;s/ .*//;p;}" \
++	          $(DESTDIR)$(toolexeclibdir)/libstdc++.la`; \
++	fi; \
++	if [ -z "$$libname" ]; then \
+ 	  libname=`sed -ne "/^old_library=/{s/.*='//;s/'$$//;s/ .*//;p;}" \
+ 		  $(DESTDIR)$(toolexeclibdir)/libstdc++.la`; \
+ 	fi; \
