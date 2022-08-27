@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 24 17:19:04 UTC 2022 - michael@stroeder.com
+
+- Update to version 2.33.0:
+  * New Features
+    - add PKCE support to device code flow by @bobcallaway in #2575
+  * Enhancements
+    - Limit the amount of objects we attempt to GC on each cycle by @kellyma2 in #2524
+    - Use GitLab's refresh_token during Refresh. by @dhaus67 in #2352
+    - Add domainHint parameter to Microsoft Connector by @josephtknight in #2586
+    - add config to explicitly set scopes for microsoft connector by @bobcallaway in #2582
+  * Bug Fixes
+    - fix: prevent cross-site scripting for the device flow by @nabokihms in #2468
+    - grpc-client: Do not crash on empty response by @bbusse in #2584
+  * Various dependency updates
+
+-------------------------------------------------------------------
 Mon Jul 11 08:14:11 UTC 2022 - michael@stroeder.com
 
 - Update to version 2.32.0:
