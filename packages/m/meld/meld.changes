@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 25 20:03:43 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add meld-3.21.3-fix-executable-permission.patch: Restore
+  executable permission of application.
+- Don't strip env from shebang line in %prep: It's performed via
+  meson since 3.21.3.
+
+-------------------------------------------------------------------
 Sun Aug 14 10:28:14 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 3.21.3:

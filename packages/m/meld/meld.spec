@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            http://meldmerge.org/
 Source0:        https://download.gnome.org/sources/meld/3.21/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM meld-3.21.3-fix-executable-permission.patch -- Fix missing executable permission 
+Patch0:         meld-3.21.3-fix-executable-permission.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -70,7 +72,6 @@ Subversion, Bazaar-ng and Mercurial can be browsed and viewed.
 
 %prep
 %autosetup -p1
-sed -i "s|/usr/bin/env python3|%{_bindir}/python3|g" bin/meld
 
 %build
 %meson
