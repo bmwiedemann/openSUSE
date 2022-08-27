@@ -2,9 +2,24 @@
  tests/test_wheel.py |    9 +++++----
  1 file changed, 5 insertions(+), 4 deletions(-)
 
---- a/tests/test_wheel.py
-+++ b/tests/test_wheel.py
-@@ -93,10 +93,9 @@ class WheelTest(TestCase):
+Index: nptyping-2.2.0/tests/test_wheel.py
+===================================================================
+--- nptyping-2.2.0.orig/tests/test_wheel.py
++++ nptyping-2.2.0/tests/test_wheel.py
+@@ -80,12 +80,8 @@ class WheelTest(TestCase):
+ 
+     def test_wheel_is_built_correctly(self):
+         with working_dir(_ROOT):
+-            subprocess.check_output(f"{sys.executable} -m invoke wheel", shell=True)
+             wheel_files = glob(f"dist/*{__version__}*.whl")
+-            src_files = glob(f"dist/*{__version__}*.tar.gz")
+-
+             self.assertEqual(1, len(wheel_files))
+-            self.assertEqual(1, len(src_files))
+ 
+         with ZipFile(_ROOT / Path(wheel_files[0]), "r") as zip_:
+             files_in_wheel = set(
+@@ -98,10 +94,9 @@ class WheelTest(TestCase):
  
      def test_wheel_can_be_installed(self):
          with working_dir(Path(self.temp_dir.name)):
