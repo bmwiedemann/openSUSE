@@ -1,0 +1,64 @@
+From e7d53b1409dcdf983995e227fb9cfc200ed1cf87 Mon Sep 17 00:00:00 2001
+From: Carlos Garcia Campos <cgarcia@igalia.com>
+Date: Thu, 28 Jul 2022 14:25:22 +0200
+Subject: [PATCH] web-app: do not show the search suggestions settings in web
+ app mode
+
+Part-of: <https://gitlab.gnome.org/GNOME/epiphany/-/merge_requests/1178>
+
+
+(cherry picked from commit 8d5130cb13fb9a0609ce6c9f7b826fcbc260df28)
+---
+ src/preferences/prefs-privacy-page.c    | 7 +++++++
+ src/resources/gtk/prefs-privacy-page.ui | 2 +-
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/src/preferences/prefs-privacy-page.c b/src/preferences/prefs-privacy-page.c
+index d8caea0e9..94f95efb0 100644
+--- a/src/preferences/prefs-privacy-page.c
++++ b/src/preferences/prefs-privacy-page.c
+@@ -45,6 +45,7 @@ struct _PrefsPrivacyPage {
+   GtkWidget *enable_website_data_storage_switch;
+ 
+   /* Search Suggestions */
++  GtkWidget *search_suggestions_box;
+   GtkWidget *enable_google_search_suggestions_switch;
+ 
+   /* Passwords */
+@@ -152,6 +153,7 @@ prefs_privacy_page_class_init (PrefsPrivacyPageClass *klass)
+   gtk_widget_class_bind_template_child (widget_class, PrefsPrivacyPage, enable_website_data_storage_switch);
+ 
+   /* Search Suggestions */
++  gtk_widget_class_bind_template_child (widget_class, PrefsPrivacyPage, search_suggestions_box);
+   gtk_widget_class_bind_template_child (widget_class, PrefsPrivacyPage, enable_google_search_suggestions_switch);
+ 
+   /* Passwords */
+@@ -165,7 +167,12 @@ prefs_privacy_page_class_init (PrefsPrivacyPageClass *klass)
+ static void
+ prefs_privacy_page_init (PrefsPrivacyPage *privacy_page)
+ {
++  EphyEmbedShellMode mode = ephy_embed_shell_get_mode (ephy_embed_shell_get_default ());
++
+   gtk_widget_init_template (GTK_WIDGET (privacy_page));
+ 
+   setup_privacy_page (privacy_page);
++
++  gtk_widget_set_visible (privacy_page->search_suggestions_box,
++                          mode != EPHY_EMBED_SHELL_MODE_APPLICATION);
+ }
+diff --git a/src/resources/gtk/prefs-privacy-page.ui b/src/resources/gtk/prefs-privacy-page.ui
+index bf61d6b91..f8a5aa8b9 100644
+--- a/src/resources/gtk/prefs-privacy-page.ui
++++ b/src/resources/gtk/prefs-privacy-page.ui
+@@ -61,7 +61,7 @@
+       </object>
+     </child>
+     <child>
+-      <object class="HdyPreferencesGroup">
++      <object class="HdyPreferencesGroup" id="search_suggestions_box">
+         <property name="title" translatable="yes">Search Suggestions</property>
+         <property name="visible">True</property>
+         <child>
+-- 
+GitLab
+

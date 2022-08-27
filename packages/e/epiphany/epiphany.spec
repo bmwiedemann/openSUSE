@@ -24,6 +24,10 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Web
 Source0:        https://download.gnome.org/sources/epiphany/42/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM e7d53b1409dcdf983995e227fb9cfc200ed1cf87.patch -- web-app: do not show the search suggestions settings in web app mode
+Patch0:         https://gitlab.gnome.org/GNOME/epiphany/-/commit/e7d53b1409dcdf983995e227fb9cfc200ed1cf87.patch
+# PATCH-FIX-UPSTREAM epiphany-fix-nb-translation.patch -- Spellfix for Norwegian Bokmål translation
+Patch1:         epiphany-fix-nb-translation.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.47.0

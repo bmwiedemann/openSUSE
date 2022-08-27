@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 26 11:42:05 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add epiphany-fix-nb-translation.patch: Spellfix for Norwegian
+  Bokmål translation.
+  https://gitlab.gnome.org/Teams/Translation/no/-/issues/8
+
+-------------------------------------------------------------------
+Wed Aug 24 13:43:52 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add e7d53b1409dcdf983995e227fb9cfc200ed1cf87.patch: web-app: do
+  not show the search suggestions settings in web app mode.
+
+-------------------------------------------------------------------
 Sun Aug  7 10:59:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.4:
