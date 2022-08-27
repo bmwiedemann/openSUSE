@@ -19,7 +19,7 @@
 %define __builder Ninja
 
 Name:           QMPlay2
-Version:        22.06.16
+Version:        22.08.21
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
@@ -28,6 +28,8 @@ URL:            https://github.com/zaps166/QMPlay2
 Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE
 Patch1:         0001-add-opensuse-customizations.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-fix-older-qt-compilation.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  gcc-c++
 # Use gcc 10 for openSUSE Leap 15.3+ and SLE15SP3+
@@ -62,6 +64,10 @@ BuildRequires:  pkgconfig(libswscale) >= 5.1.100
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libva-glx)
 BuildRequires:  pkgconfig(portaudio-2.0)
+# Enable rubberband support on openSUSE Tumbleweed
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(rubberband) >= 3.0.0
+%endif
 BuildRequires:  pkgconfig(shaderc)
 BuildRequires:  pkgconfig(taglib) >= 1.9
 BuildRequires:  pkgconfig(vdpau)
@@ -111,6 +117,11 @@ It's a development package for %{name}.
   -DUSE_GLSLC=ON \
   -DUSE_PORTAUDIO=ON \
   -DUSE_PIPEWIRE=ON \
+%if 0%{?suse_version} >= 1550
+  -DUSE_RUBBERBAND=ON \
+%else
+  -DUSE_RUBBERBAND=OFF \
+%endif
   -DUSE_UPDATES=OFF
 
 %ninja_build
