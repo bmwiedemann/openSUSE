@@ -29,6 +29,7 @@ Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version
 Source1:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz.sig
 Source2:        krita.keyring
 %endif
+Patch0:         0001-TIFF-fix-missing-SOVERSION-for-the-TIFF-PSD-library.patch
 BuildRequires:  OpenEXR-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fftw3-devel

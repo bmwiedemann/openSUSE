@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 26 16:59:21 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Replace add-missing-so-version.patch with upstream patch:
+  0001-TIFF-fix-missing-SOVERSION-for-the-TIFF-PSD-library.patch
+
+-------------------------------------------------------------------
+Fri Aug 26 01:22:03 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added add-missing-so-version.patch: (boo#1202795)
+  One of the newly added libraries had no so-version set and
+  therefor ended up in the devel package
+
+-------------------------------------------------------------------
 Tue Aug 23 15:25:29 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 5.1.0
