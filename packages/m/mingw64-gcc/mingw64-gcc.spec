@@ -28,6 +28,7 @@ URL:            http://www.mingw.org/
 Source0:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
 Source100:      %{name}-rpmlintrc
 Patch1:         gcc-make-xmmintrin-header-cplusplus-compatible.patch
+Patch2:         gcc-12.1.0-fix-install-gdb-support-files.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  mingw64-cross-binutils
@@ -133,6 +134,7 @@ MinGW Windows C Preprocessor
 %package c++
 Summary:        MinGW Windows compiler for C++
 Group:          Development/Languages/C and C++
+Requires:       mingw64-libstdc++-gdb-printer = %{version}-%{release}
 
 %description c++
 MinGW Windows compiler for C++
@@ -145,6 +147,13 @@ Provides:       mingw64-libstdc++ = %{version}-%{release}
 
 %description -n mingw64-libstdc++6
 MinGW Windows compiler for C++ shared libraries
+
+%package -n mingw64-libstdc++-gdb-printer
+Summary:        MinGW Windows compiler for C++ gdb pretty printer for libstdc++
+Group:          System/Libraries
+
+%description -n mingw64-libstdc++-gdb-printer
+MinGW Windows compiler for C++ gdb pretty printer for libstdc++
 
 %package fortran
 Summary:        MinGW Windows compiler for Fortran
@@ -200,6 +209,7 @@ MinGW Windows compiler for Objective-C and Objective-C++ shared libraries
 %setup -q -c
 pushd gcc-%{version}
 %patch1
+%patch2 -p1
 popd
 
 %build
@@ -265,8 +275,6 @@ cd build
 %make_install
 
 rm -f %{buildroot}%{_mingw64_infodir}/dir
-
-find %{buildroot} -name \*.py -exec rm {} +
 
 mv %{buildroot}%{_mingw64_libdir}/gcc/%{_mingw64_target}/lib/libgcc_s.a \
    %{buildroot}%{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/
@@ -374,6 +382,10 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 
 %files -n mingw64-libstdc++6
 %{_mingw64_bindir}/libstdc++-6.dll
+
+%files -n mingw64-libstdc++-gdb-printer
+%{_mingw64_bindir}/*-gdb.py
+%{_mingw64_datadir}/gcc-%{version}/python
 
 %files fortran
 %{_mingw64_bindir}/gfortran.exe
