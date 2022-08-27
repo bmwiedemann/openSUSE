@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sat Aug 20 06:20:08 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220807.113146.c2fee766+git39:
+  * macos: report max_fps in ScreenInfo
+  * macos: implement max_fps
+  * docs: changelog for #2434
+  * Add control key in docs
+  * Add missing license files
+  * cargo update
+  * background: avoid weird wraparound in radial gradients
+  * docs: changelog for https://github.com/wez/wezterm/pull/2394
+  * chore: Sync color schemes with nightfox changes
+  * pty: fix doc example
+  * fixup build for pty api change
+  * pty: fixup for macos
+  * pty: try_clone_writer -> take_writer
+  * term: hook flush up to ThreadedWriter
+  * Fix `alias` for Flatpak: command wasn't quoted
+  * docs: add stable download links for suse and alpine
+  * fix bypass_mouse_reporting_modifiers
+  * add update-status event. deprecates update-right-status
+  * fix overly truncated tab titles
+  * apply executable checks to $SHELL and /etc/passwd lookup
+  * pty: cmdbuilder: check for executable access when resolving program
+  * fix fedora download links
+  * docs: update info about number of color schemes
+  * docs: add missing COMMANDS entry for ShowLauncherArgs
+  * docs: clarify ShowLauncherArgs flags behavior
+  * docs: wezterm is now on flathub
+  * ActivatePaneDirection uses recency to resolve ambiguous moves
+  * sync color schemes with nightfox
+  * remove flatpak-unsupported link types
+  * fix typo in appdata id tag
+  * flesh out appdata a bit more
+  * add content rating and release info to appdata
+  * docs: remove not yet bit
+  * cargo update
+  * cleanup log files older than 1 week
+  * don't recompile dependencies we've already got
+  * disambiguate which "git" we want
+  * color schemes: update version in .rs, re-sync, add helper for changelog
+  * docs: 20220807-113146-c2fee766 release
+  * ci: nth time's the charm for winget tag pr thing
+  * ci: format with black
+  * ci: tweak winget pr stuff a bit more
+  * ci: maybe fixup winget pr submission when tagging a release
+  * wayland: disable use of wlr-output-management protocol
+  * add window:set_left_status
+  * refine dual source blending / subpixel aa and RGBA color interaction
+  * fix positioning of visual bell
+  * boxmodel: fix missing bearing_x / x_offset
+  * add `wezterm ls-fonts --rasterize-ascii --text foo`
+  * mux: adjust window size after attach
+
+-------------------------------------------------------------------
 Fri Aug 05 06:43:44 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 20220624.141144.bd1b7c5d+git307:
@@ -7,6 +62,8 @@ Fri Aug 05 06:43:44 UTC 2022 - socvirnyl.estela@gmail.com
   * fix potential panic when computing hyperlink rules
   * docs: a bit more detail for RGBA sequences
   * wezterm show-keys --lua to print a lua version of the config
+  
+- add wezterm-20220624.141144.bd1b7c5d+git307.tar.gz 
 
 -------------------------------------------------------------------
 Thu Jul 28 03:04:12 UTC 2022 - socvirnyl.estela@gmail.com
