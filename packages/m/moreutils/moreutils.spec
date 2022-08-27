@@ -20,16 +20,17 @@ Name:           moreutils
 Version:        0.67
 Release:        0
 Summary:        Additional Unix Utilities
-License:        GPL-2.0-only AND GPL-2.0-or-later AND MIT
+# sponge — GPL2
+# isutf8 — BSD-2-Clause
+# mispipe — GPL2+ or MIT
+# lckdo — Public domain
+# everything else — GPL2+
+License:        GPL-2.0-only AND GPL-2.0-or-later AND (GPL-2.0-or-later OR MIT) AND BSD-2-Clause AND SUSE-Public-Domain
 Group:          Productivity/File utilities
 URL:            https://joeyh.name/code/moreutils/
-Source:         https://git.joeyh.name/index.cgi/moreutils.git/snapshot/%{name}-%{version}.tar.gz
+Source0:         https://git.joeyh.name/index.cgi/moreutils.git/snapshot/%{name}-%{version}.tar.gz
+Patch0:         makefile.patch
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  libxslt
-Requires:       perl
-Requires:       perl-IPC-Run
-Requires:       perl-Time-Duration
-Requires:       perl-TimeDate
 
 %description
 This is a growing collection of the Unix tools that nobody thought to write long ago, when Unix was young.
@@ -52,25 +53,98 @@ So far, it includes the following utilities:
   - vipe: insert a text editor into a pipe
   - zrun: automatically uncompress arguments to command
 
+The `moreutils` package includes errno, ifdata, ifne, isutf8, lckdo, mispipe, pee and sponge.
+The remaining programs are included in the `moreutils-parallel`, `moreutils-perl`, `chronic` and `ts` packages.
+
 %package parallel
-Summary:        Additional unix utility - parallel command
-Group:          Productivity/File utilities
-Requires:       %{name} = %{version}-%{release}
+Summary:        Run multiple jobs at once
+License:        GPL-2.0-only
 Conflicts:      gnu_parallel
 
 %description parallel
- This is a growing collection of the Unix tools that nobody thought to write long ago, when Unix was young.
+parallel [options] [command]-- [argument ...]
 
- This is a sub package containing the parallel command only
+parallel runs the specified command, passing it a single one of the specified arguments.
+This is repeated for each argument. Jobs may be run in parallel. The default is to run one job per CPU.
 
-  - parallel: run multiple jobs at once
+%package perl
+# Utils with only a perl-base requirment should end up here
+Summary:        Additional Unix Utilities — Perl scripts
+License:        GPL-2.0-or-later
+Requires:       perl(File::Basename)
+Requires:       perl(File::Path)
+Requires:       perl(File::Spec)
+Requires:       perl(File::Temp)
+Requires:       perl(Getopt::Long)
+Requires:       perl(IO::Handle)
+Requires:       perl(strict)
+Requires:       perl(warnings)
+Provides:       moreutils:%{_bindir}/combine
+Provides:       moreutils:%{_bindir}/vidir
+Provides:       moreutils:%{_bindir}/vipe
+Provides:       moreutils:%{_bindir}/zrun
+BuildArch:      noarch
+
+%description perl
+This is a growing collection of the Unix tools that nobody thought to write long ago, when Unix was young.
+
+This subpackage includes the following utilities:
+
+  - combine: combine the lines in two files using boolean operations
+  - vidir: edit a directory in your text editor
+  - vipe: insert a text editor into a pipe
+  - zrun: automatically uncompress arguments to command
+
+%package -n chronic
+#requires perl-IPC-Run
+Summary:        Runs a command quietly unless it fails
+License:        GPL-2.0-or-later
+Requires:       perl(Getopt::Std)
+Requires:       perl(IPC::Run)
+Requires:       perl(strict)
+Requires:       perl(warnings)
+Provides:       moreutils:%{_bindir}/chronic
+BuildArch:      noarch
+
+%description -n chronic
+chronic runs a command, and arranges for its standard out and standard
+error to only be displayed if the command fails (exits nonzero or crashes).
+If the command succeeds, any extraneous output will be hidden.
+
+A common use for chronic is for running a cron job. Rather than
+trying to keep the command quiet, and having to deal with mails containing
+accidental output when it succeeds, and not verbose enough output when it
+fails, you can just run it verbosely always, and use chronic to hide
+the successful output.
+
+%package -n ts
+#requires perl, perl-TimeDate and perl-Time-Duration
+Summary:        Timestamp standard input
+License:        GPL-2.0-or-later
+Requires:       perl(Getopt::Long)
+Requires:       perl(POSIX)
+Requires:       perl(strict)
+Requires:       perl(warnings)
+Requires:       perl(Date::Parse)
+Requires:       perl(Time::Duration)
+Requires:       perl(Time::HiRes)
+Provides:       moreutils:%{_bindir}/ts
+BuildArch:      noarch
+
+%description -n ts
+ts adds a timestamp to the beginning of each line of input.
+
+It supports custom time formats as in the strftime function. It also supports converting existing timestamps in input to relative ones.
 
 %prep
-%setup -q
-sed -e 's/^CFLAGS =/CFLAGS ?=/' -i is_utf8/Makefile
+%autosetup -p1
+
 
 %build
 export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
+export LDFLAGS="%{?build_ldflags}"
+
 %if 0%{?suse_version}
 export DOCBOOKXSL="%{_datadir}/xml/docbook/stylesheet/nwalsh/current"
 %endif
@@ -84,25 +158,21 @@ echo "### before install ###"
 %make_install
 echo "### after install ###"
 
+%check
+cd is_utf8
+./test.sh
+
 %files
-%license COPYING
-%doc README
-%attr(644, root, root) %{_mandir}/man1/chronic.1*
-%attr(644, root, root) %{_mandir}/man1/combine.1*
-%attr(644, root, root) %{_mandir}/man1/errno.1*
-%attr(644, root, root) %{_mandir}/man1/ifdata.1*
-%attr(644, root, root) %{_mandir}/man1/ifne.1*
-%attr(644, root, root) %{_mandir}/man1/isutf8.1*
-%attr(644, root, root) %{_mandir}/man1/lckdo.1*
-%attr(644, root, root) %{_mandir}/man1/mispipe.1*
-%attr(644, root, root) %{_mandir}/man1/pee.1*
-%attr(644, root, root) %{_mandir}/man1/sponge.1*
-%attr(644, root, root) %{_mandir}/man1/ts.1*
-%attr(644, root, root) %{_mandir}/man1/vidir.1*
-%attr(644, root, root) %{_mandir}/man1/vipe.1*
-%attr(644, root, root) %{_mandir}/man1/zrun.1*
-%{_bindir}/chronic
-%{_bindir}/combine
+%license COPYING debian/copyright
+%doc README is_utf8/README.md
+%{_mandir}/man1/errno.1*
+%{_mandir}/man1/ifdata.1*
+%{_mandir}/man1/ifne.1*
+%{_mandir}/man1/isutf8.1*
+%{_mandir}/man1/lckdo.1*
+%{_mandir}/man1/mispipe.1*
+%{_mandir}/man1/pee.1*
+%{_mandir}/man1/sponge.1*
 %{_bindir}/errno
 %{_bindir}/ifdata
 %{_bindir}/ifne
@@ -111,15 +181,35 @@ echo "### after install ###"
 %{_bindir}/mispipe
 %{_bindir}/pee
 %{_bindir}/sponge
-%{_bindir}/ts
+
+%files parallel
+%doc README
+%license COPYING debian/copyright
+%{_mandir}/man1/parallel.1.gz
+%{_bindir}/parallel
+
+%files perl
+%doc README
+%license COPYING
+%{_mandir}/man1/combine.1*
+%{_mandir}/man1/vidir.1*
+%{_mandir}/man1/vipe.1*
+%{_mandir}/man1/zrun.1*
+%{_bindir}/combine
 %{_bindir}/vidir
 %{_bindir}/vipe
 %{_bindir}/zrun
 
-%files parallel
+%files -n chronic
 %doc README
 %license COPYING
-%attr(644, root, root) %{_mandir}/man1/parallel.1.gz
-%{_bindir}/parallel
+%{_mandir}/man1/chronic.1.gz
+%{_bindir}/chronic
+
+%files -n ts
+%doc README
+%license COPYING
+%{_mandir}/man1/ts.1.gz
+%{_bindir}/ts
 
 %changelog
