@@ -1,7 +1,7 @@
 #
 # spec file for package python-radon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-radon
-Version:        4.5.2
+Version:        5.1.0
 Release:        0
 Summary:        Code Metrics in Python
 License:        MIT
@@ -28,16 +28,14 @@ Source:         https://files.pythonhosted.org/packages/source/r/radon/radon-%{v
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-colorama >= 0.4
-Requires:       python-flake8-polyfill
+Requires:       python-colorama >= 0.4.1
 Requires:       python-future
 Requires:       python-mando >= 0.6
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module colorama >= 0.4.1}
-BuildRequires:  %{python_module flake8-polyfill}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module mando >= 0.6}
 BuildRequires:  %{python_module pytest >= 2.7}
@@ -56,10 +54,11 @@ Radon can compute:
 
 %prep
 %setup -q -n radon-%{version}
+# unpin mando
+sed -i -E 's/(mando.*),<0\.7/\1/' setup.py
 
 %build
 %python_build
-rm -r */lib/radon/tests
 
 %install
 %python_install
@@ -80,6 +79,7 @@ rm -r */lib/radon/tests
 %doc CHANGELOG README.rst
 %license LICENSE
 %python_alternative %{_bindir}/radon
-%{python_sitelib}/*
+%{python_sitelib}/radon
+%{python_sitelib}/radon-%{version}*-info
 
 %changelog
