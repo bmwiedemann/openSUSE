@@ -7,4 +7,12 @@
     <comment>I want to maintain python-pywlroots in opensuse:Factory</comment>
     <requestid>990313</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>07df71023a9820c157c185f9ea567ac2</srcmd5>
+    <version>0.15.19</version>
+    <time>1661593850</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>999526</requestid>
+  </revision>
 </revisionlist>

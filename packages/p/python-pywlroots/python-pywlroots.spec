@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           python-pywlroots
-Version:        0.15.18
+Version:        0.15.19
 Release:        0
 Summary:        Python binding to the wlroots library using cffi
 License:        NCSA
@@ -27,19 +27,19 @@ URL:            https://github.com/flacjacket/pywlroots
 Source0:        https://files.pythonhosted.org/packages/source/p/pywlroots/pywlroots-%{version}.tar.gz
 Source1:        python-pywlroots-rpmlintrc
 Patch0:         fix-include-paths.patch
-BuildRequires:  fdupes
-BuildRequires:  libwlroots10
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{pythons}
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module cffi}
+BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module distutils-extra}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pywayland}
+BuildRequires:  %{python_module pywayland >= 0.4.14}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xkbcommon}
+BuildRequires:  %{pythons}
+BuildRequires:  fdupes
+BuildRequires:  libwlroots10
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(wlroots)
 BuildRequires:  pkgconfig(xkbcommon)
