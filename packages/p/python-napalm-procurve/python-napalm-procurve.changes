@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 27 09:43:54 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Fix the tests with float-speed.patch, sent upstream.
+
+-------------------------------------------------------------------
 Mon Sep 13 08:51:26 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Skip failing tests gh#ixs/napalm-procurve#19.

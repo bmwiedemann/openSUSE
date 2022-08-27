@@ -1,7 +1,7 @@
 #
 # spec file for package python-napalm-procurve
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,8 @@ License:        Apache-2.0
 URL:            https://github.com/ixs/napalm-procurve
 Source:         https://github.com/ixs/napalm-procurve/archive/%{version}.tar.gz#/napalm-procurve-%{version}.tar.gz
 Patch0:         setup-parse-requirements.patch
+#PATCH-FIX-UPSTREAM https://github.com/ixs/napalm-procurve/pull/29 float speed
+Patch1:         float-speed.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
