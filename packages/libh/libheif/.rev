@@ -71,4 +71,14 @@
     <comment></comment>
     <requestid>995038</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>d5a8d23effce87677048abf39409b4e0</srcmd5>
+    <version>1.12.0</version>
+    <time>1661593700</time>
+    <user>dimstar_suse</user>
+    <comment>- Support version 1.0.0 of dav1d
+- Added 0f8496f22d284e1a69df12fe0b72f375aed31315.patch
+</comment>
+    <requestid>999410</requestid>
+  </revision>
 </revisionlist>

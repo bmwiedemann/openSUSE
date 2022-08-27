@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 26 12:51:15 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Support version 1.0.0 of dav1d
+- Added 0f8496f22d284e1a69df12fe0b72f375aed31315.patch
+
+-------------------------------------------------------------------
 Fri Aug 12 16:13:06 UTC 2022 - David Haller <dnh@opensuse.org>
 
 - Fix rpath error for the examples sub-package

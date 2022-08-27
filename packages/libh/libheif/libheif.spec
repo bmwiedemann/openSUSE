@@ -31,6 +31,7 @@ URL:            https://github.com/strukturag/libheif
 #
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+Patch0:         https://github.com/strukturag/libheif/commit/0f8496f22d284e1a69df12fe0b72f375aed31315.patch
 #
 BuildRequires:  cmake
 BuildRequires:  fdupes
