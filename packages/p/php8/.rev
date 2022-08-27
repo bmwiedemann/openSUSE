@@ -291,4 +291,12 @@
 - fixes CVE-2022-31627 [bsc#1201499]</comment>
     <requestid>989872</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>bd93e50c0999bb46e452f4e37708ee71</srcmd5>
+    <version>8.1.9</version>
+    <time>1661593699</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>999388</requestid>
+  </revision>
 </revisionlist>
