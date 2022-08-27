@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          103
-%define mainver        %major.0.2
-%define orig_version   103.0.2
+%define major          104
+%define mainver        %major.0
+%define orig_version   104.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -106,8 +106,8 @@ BuildRequires:  rust >= 1.59
 # minimal requirement:
 BuildRequires:  rust+cargo >= 1.59
 # actually used upstream:
-BuildRequires:  cargo1.61
-BuildRequires:  rust1.61
+BuildRequires:  cargo1.62
+BuildRequires:  rust1.62
 %endif
 %if 0%{useccache} != 0
 BuildRequires:  ccache
@@ -117,8 +117,8 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
-BuildRequires:  mozilla-nspr-devel >= 4.34
-BuildRequires:  mozilla-nss-devel >= 3.80
+BuildRequires:  mozilla-nspr-devel >= 4.34.1
+BuildRequires:  mozilla-nss-devel >= 3.81
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Aug 21 11:12:14 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 104.0
+  * https://www.mozilla.org/en-US/firefox/104.0/releasenotes
+  MFSA 2022-33 (bsc#1202645)
+  * CVE-2022-38472 (bmo#1769155)
+    Address bar spoofing via XSLT error handling
+  * CVE-2022-38473 (bmo#1771685)
+    Cross-origin XSLT Documents would have inherited the parent's
+    permissions
+  * CVE-2022-38474 (bmo#1719511)
+    Recording notification not shown when microphone was
+    recording on Android
+  * CVE-2022-38475 (bmo#1773266)
+    Attacker could write a value to a zero-length array
+  * CVE-2022-38477 (bmo#1760611, bmo#1770219, bmo#1771159, bmo#1773363)
+    Memory safety bugs fixed in Firefox 104 and Firefox ESR 102.2
+  * CVE-2022-38478 (bmo#1770630, bmo#1776658)
+    Memory safety bugs fixed in Firefox 104, Firefox ESR 102.2,
+    and Firefox ESR 91.13
+- requires
+  NSPR 4.34.1
+  NSS 3.81
+  rust 1.62
+
+-------------------------------------------------------------------
 Sat Aug 13 06:25:20 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - added mozilla-glibc236.patch (bmo#1782988, boo#1202323)
