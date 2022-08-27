@@ -58,4 +58,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>895369</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>45e8520e02fec75fe4f7085ec2885bec</srcmd5>
+    <version>1.0.0</version>
+    <time>1661593850</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable i586 builds (forwarded request 999419 from lukasstraub)</comment>
+    <requestid>999533</requestid>
+  </revision>
 </revisionlist>

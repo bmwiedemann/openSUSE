@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- OBS-ExcludeArch: i586 s390 -->
+<!-- OBS-ExcludeArch: s390 -->
 
 <image schemaversion="6.9" name="opensuse-toolbox-image" xmlns:suse_label_helper="com.suse.label_helper">
   <description type="system">
