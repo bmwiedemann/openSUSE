@@ -93,43 +93,6 @@ ExcludeArch:    %{cross_arch}
 %define name_suffix -%{flavor}-src
 %endif
 
-Name:           glibc%{name_suffix}
-Summary:        Standard Shared Libraries (from the GNU C Library)
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0
-Group:          System/Libraries
-BuildRequires:  audit-devel
-BuildRequires:  bison
-BuildRequires:  fdupes
-BuildRequires:  libcap-devel
-BuildRequires:  libselinux-devel
-BuildRequires:  makeinfo
-BuildRequires:  python3-base
-BuildRequires:  shadow
-BuildRequires:  systemd-rpm-macros
-BuildRequires:  systemtap-headers
-BuildRequires:  xz
-%if %{build_testsuite}
-BuildRequires:  gcc-c++
-BuildRequires:  gdb
-BuildRequires:  glibc-devel-static
-BuildRequires:  libidn2-0
-BuildRequires:  libstdc++-devel
-BuildRequires:  python3-pexpect
-%endif
-%if %{build_utils}
-BuildRequires:  gd-devel
-BuildRequires:  libpng-devel
-BuildRequires:  zlib-devel
-%endif
-%if %{build_cross}
-BuildRequires:  cross-%{cross_arch}-gcc%{gcc_version}-bootstrap
-BuildRequires:  cross-%{cross_arch}-linux-glibc-devel
-%endif
-%if "%flavor" == "i686"
-ExclusiveArch:  i586 i686
-BuildArch:      i686
-%endif
-
 %define __filter_GLIBC_PRIVATE 1
 %ifarch i686
 # For i686 let's only build what's different from i586, so
@@ -170,10 +133,14 @@ BuildArch:      i686
 %define enablekernel 4.15
 %endif
 
-Version:        2.35
+Name:           glibc%{name_suffix}
+Summary:        Standard Shared Libraries (from the GNU C Library)
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0
+Group:          System/Libraries
+Version:        2.36
 Release:        0
 %if !%{build_snapshot}
-%define git_id f94f6d8a35
+%define git_id c804cd1c00
 %define libversion %version
 %else
 %define git_id %(echo %version | sed 's/.*\.g//')
@@ -181,11 +148,9 @@ Release:        0
 %endif
 URL:            https://www.gnu.org/software/libc/libc.html
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if !%{build_snapshot}
 Source:         https://ftp.gnu.org/pub/gnu/glibc/glibc-%{version}.tar.xz
+%if !%{build_snapshot}
 Source1:        https://ftp.gnu.org/pub/gnu/glibc/glibc-%{version}.tar.xz.sig
-%else
-Source:         glibc-%{version}.tar.xz
 %endif
 Source2:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=libc&download=1#/glibc.keyring
 Source4:        manpages.tar.bz2
@@ -228,7 +193,38 @@ Provides:       rtld(GNU_HASH)
 Requires:       glibc = %{version}
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-#
+BuildRequires:  audit-devel
+BuildRequires:  bison
+BuildRequires:  fdupes
+BuildRequires:  libcap-devel
+BuildRequires:  libselinux-devel
+BuildRequires:  makeinfo
+BuildRequires:  python3-base
+BuildRequires:  shadow
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  systemtap-headers
+BuildRequires:  xz
+%if %{build_testsuite}
+BuildRequires:  gcc-c++
+BuildRequires:  gdb
+BuildRequires:  glibc-devel-static
+BuildRequires:  libidn2-0
+BuildRequires:  libstdc++-devel
+BuildRequires:  python3-pexpect
+%endif
+%if %{build_utils}
+BuildRequires:  gd-devel
+BuildRequires:  libpng-devel
+BuildRequires:  zlib-devel
+%endif
+%if %{build_cross}
+BuildRequires:  cross-%{cross_arch}-gcc%{gcc_version}-bootstrap
+BuildRequires:  cross-%{cross_arch}-linux-glibc-devel
+%endif
+%if "%flavor" == "i686"
+ExclusiveArch:  i586 i686
+BuildArch:      i686
+%endif
 
 ###
 # Patches are ordered in the following groups:
@@ -283,28 +279,12 @@ Patch306:       glibc-fix-double-loopback.diff
 ###
 # Patches from upstream
 ###
-# PATCH-FIX-UPSTREAM linux: __get_nprocs_sched: do not feed CPU_COUNT_S with garbage (BZ #28850)
-Patch1000:      get-nprocs-sched-uninit-read.patch
-# PATCH-FIX-UPSTREAM linux: fix accuracy of get_nprocs and get_nprocs_conf (BZ #28865)
-Patch1001:      get-nprocs-inaccurate.patch
-# PATCH-FIX-UPSTREAM x86: Fallback {str|wcs}cmp RTM in the ncmp overflow case (BZ #28896)
-Patch1002:      strcmp-rtm-fallback.path
-# PATCH-FIX-UPSTREAM elf: Check invalid hole in PT_LOAD segments (BZ #28838)
-Patch1003:      pt-load-invalid-hole.patch
-# PATCH-FIX-UPSTREAM localedef: Update LC_MONETARY handling (BZ #28845)
-Patch1004:      localedef-ld-monetary.patch
-# PATCH-FIX-UPSTREAM nptl: Handle spurious EINTR when thread cancellation is disabled (BZ #29029)
-Patch1005:      nptl-spurious-eintr.patch
-# PATCH-FIX-UPSTREAM powerpc: Fix VSX register number on __strncpy_power9 (BZ #29197)
-Patch1006:      strncpy-power9-vsx.patch
-# PATCH-FIX-UPSTREAM nptl: Fix __libc_cleanup_pop_restore asynchronous restore (BZ #29214)
-Patch1007:      nptl-cleanup-async-restore.patch
-# PATCH-FIX-UPSTREAM debug: make __read_chk a cancellation point (BZ #29274)
-Patch1008:      read-chk-cancel.patch
-# PATCH-FIX-UPSTREAM wcrtomb: Make behavior POSIX compliant
-Patch1009:      wcrtomb-fortify.patch
-# PATCH-FIX-UPSTREAM nptl: Fix ___pthread_unregister_cancel_restore asynchronous restore (BZ #29214)
-Patch1010:      nptl-cleanup-async-restore-2.patch
+# PATCH-FIX-OPENSUSE glibcextract.py: Add compile_c_snippet
+Patch1000:      glibcextract-compile-c-snippet.patch
+# PATCH-FIX-OPENSUSE linux: Mimic kernel definition for BLOCK_SIZE
+Patch1001:      sys-mount-kernel-definition.patch
+# PATCH-FIX-OPENSUSE linux: Fix sys/mount.h usage with kernel headers
+Patch1002:      sys-mount-usage.patch
 
 ###
 # Patches awaiting upstream approval
@@ -528,17 +508,11 @@ library in a cross compilation setting.
 %patch304 -p1
 %patch306 -p1
 
+%if !%{build_snapshot}
 %patch1000 -p1
 %patch1001 -p1
 %patch1002 -p1
-%patch1003 -p1
-%patch1004 -p1
-%patch1005 -p1
-%patch1006 -p1
-%patch1007 -p1
-%patch1008 -p1
-%patch1009 -p1
-%patch1010 -p1
+%endif
 
 %patch2000 -p1
 %patch2001 -p1

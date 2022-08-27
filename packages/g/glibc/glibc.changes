@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Aug 15 09:21:34 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- glibcextract-compile-c-snippet.patch: glibcextract.py: Add
+  compile_c_snippet
+- sys-mount-kernel-definition.patch: linux: Mimic kernel definition for
+  BLOCK_SIZE
+- sys-mount-usage.patch: linux: Fix sys/mount.h usage with kernel headers
+
+-------------------------------------------------------------------
+Tue Aug  2 07:41:38 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Update to glibc 2.36
+  Major new features:
+  * Support for DT_RELR relative relocation format has been added to
+    glibc
+  * On Linux, the pidfd_open, pidfd_getfd, and pidfd_send_signal functions
+    have been added
+  * On Linux, the process_madvise function has been added
+  * On Linux, the process_mrelease function has been added
+  * The “no-aaaa” DNS stub resolver option has been added
+  * On Linux, the fsopen, fsmount, move_mount, fsconfig, fspick, open_tree,
+    and mount_setattr have been added
+  * localedef now accepts locale definition files encoded in UTF-8
+  * Support for the mbrtoc8 and c8rtomb multibyte/UTF-8 character conversion
+    functions has been added per the ISO C2X N2653 and C++20 P0482R6 proposals
+  * The functions arc4random, arc4random_buf, and arc4random_uniform have been
+    added
+  Deprecated and removed features, and other changes affecting compatibility:
+  * Support for prelink will be removed in the next release
+  * The Linux kernel version check has been removed along with the
+    LD_ASSUME_KERNEL environment variable
+  * On Linux, The LD_LIBRARY_VERSION environment variable has been removed
+- get-nprocs-sched-uninit-read.patch, get-nprocs-inaccurate.patch,
+  strcmp-rtm-fallback.path, pt-load-invalid-hole.patch,
+  localedef-ld-monetary.patch, nptl-spurious-eintr.patch,
+  strncpy-power9-vsx.patch, nptl-cleanup-async-restore.patch,
+  read-chk-cancel.patch, wcrtomb-fortify.patch,
+  nptl-cleanup-async-restore-2.patch: Removed
+
+-------------------------------------------------------------------
 Thu Jul 14 11:21:34 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - nptl-cleanup-async-restore-2.patch: nptl: Fix
