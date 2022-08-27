@@ -26,7 +26,6 @@ License:        MIT
 URL:            https://github.com/jaraco/jaraco.tidelift
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.tidelift/jaraco.tidelift-%{version}.tar.gz
 BuildRequires:  %{python_module jaraco.base}
-BuildRequires:  %{python_module keyring}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
