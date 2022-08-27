@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 26 07:15:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.5.2:
+  + Fix time labels display on RTL languages
+  + Improved GL/GLES context automatic selection
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Jun  9 14:20:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.5.1:

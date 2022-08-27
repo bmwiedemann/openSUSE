@@ -22,7 +22,7 @@
 %define appname  com.github.rafostar.Clapper
 
 Name:           clapper
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        A GNOME media player built using GJS with GTK4
 License:        GPL-3.0-or-later
