@@ -26,6 +26,8 @@ Summary:        An object wrapper for JSON Schema definitions
 License:        MIT
 URL:            https://python-jsonschema-objects.readthedocs.org/
 Source:         https://files.pythonhosted.org/packages/source/p/python_jsonschema_objects/python_jsonschema_objects-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pso-markdown-version.patch gh#cwacek/python-jsonschema-objects#230
+Patch0:         pso-markdown-version.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,7 +50,7 @@ BuildRequires:  %{python_module six >= 1.5.2}
 An object wrapper for JSON Schema definitions
 
 %prep
-%setup -q -n python_jsonschema_objects-%{version}
+%autosetup -p1 -n python_jsonschema_objects-%{version}
 
 %build
 %python_build
