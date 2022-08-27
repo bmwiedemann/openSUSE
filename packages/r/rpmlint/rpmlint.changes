@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 26 06:42:09 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220826.4e835ede:
+  * Increase badness for missing-hash-section check (boo#1202520).
+  * add missing-hash-section check for HASH ELF sections
+  * Silent stdout and stderr for appstream-util command.
+
+-------------------------------------------------------------------
 Thu Aug 18 21:26:31 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Enhance disable-flake.patch to disable-flake-and-cov.patch

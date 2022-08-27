@@ -3953,4 +3953,15 @@ oddjob-gpupdate isn't blocked)</comment>
     <comment></comment>
     <requestid>998076</requestid>
   </revision>
+  <revision rev="410" vrev="1">
+    <srcmd5>59b09c5c42bdd691190f73af5f3f449b</srcmd5>
+    <version>2.3.0+git20220826.4e835ede</version>
+    <time>1661593664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git20220826.4e835ede:
+  * Increase badness for missing-hash-section check (boo#1202520).
+  * add missing-hash-section check for HASH ELF sections
+  * Silent stdout and stderr for appstream-util command.</comment>
+    <requestid>999346</requestid>
+  </revision>
 </revisionlist>
