@@ -7,6 +7,10 @@
 target="mingw32"
 host="i686-w64-mingw32"
 
+# speed up running objdump, see bug https://bugzilla.opensuse.org/show_bug.cgi?id=1202431
+export MALLOC_CHECK_=0
+export MALLOC_PERTURB_=0
+
 BUILDDIR=.
 if [ -n "$1" ]; then
 	BUILDDIR="$1"
