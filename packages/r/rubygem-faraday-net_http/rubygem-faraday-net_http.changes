@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 26 16:22:52 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 3.0.0
+
+  * Add support for the new Faraday streaming API by @iMacTia in #26
+
+-------------------------------------------------------------------
 Thu Aug  4 13:10:10 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.1.0

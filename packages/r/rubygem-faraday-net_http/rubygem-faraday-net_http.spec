@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-faraday-net_http
-Version:        2.1.0
+Version:        3.0.0
 Release:        0
 %define mod_name faraday-net_http
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.4.0}
+BuildRequires:  %{ruby >= 2.6.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/lostisland/faraday-net_http
