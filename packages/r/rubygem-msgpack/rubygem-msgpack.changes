@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 26 16:30:50 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.5.6
+
+  * No actual code change, just re-release the `java` version properly.
+
+-------------------------------------------------------------------
 Thu Aug  4 13:19:05 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.5.4
