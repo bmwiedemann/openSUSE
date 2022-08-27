@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Fri Aug 19 23:32:14 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 2022.08.15:
+  * Remove redundant --pre-release flag from publish
+  * Pad empty diagnostic messages in relatedInformation as well
+  * Move VSCode diagnostics workaroudn into client code
+  * Simplify `GlobalState::handle_event`
+  * Do not unconditionally succeed RUSTC_WRAPPER checks when run by build scripts
+  * Take into account renamed extension id when launching
+  * Upgrade npm lockfile
+  * Use Node 16 in CI workflows
+  * Fix panic in no_such_field when using tuple fields on record structs
+  * Add test for runnables with raw identifiers
+  * Make `ModPath` display escaped path
+  * Make tests pass
+  * Remove `EscapedName`
+  * Add `UnescapedName` and make `Name` hold escaped name
+  * fix: infer byte string pattern as `&[u8]` when matched against slices
+  * Fixes tests
+  * Improve insert whitespace in mbe
+  * Re-try build script building with --keep-going
+  * Remove incomplete 1.64 ABI
+  * Recover from missing ellipsis in record literals for path expressions
+  * Add some more `cov_mark`s
+  * Fix pattern field completions not working for unions
+  * Use `--keep-going` cargo flag when building build scripts
+  * remove imports that are also in edition 2021's prelude
+  * Corrected order of printing op and `=`
+  * Parse range patterns in let statement with type annotation
+  * [code] make toggleInlayHints understand {off,on}UntilPressed
+  * Parse range patterns in struct and slice without trailing comma
+  * Import serde derives on converting json to struct
+  * Document CLI flag stability
+  * minor: align with rustc on escaping characters in macro expansion
+  * fix: make `concat!` work with char
+  * Fixed up for loops, added fixme with problem
+  * Shortened fixup for match, added cases for for
+  * Tidy formatted
+  * Added fixup for for loops w/ missing parts
+  * Added fixup for match statements w/ missing parts
+  * Generate rust type from json
+  * add debug impl for AnyDiagnostic
+
+-------------------------------------------------------------------
+Sun Aug 14 06:15:25 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 2022.08.08:
+  * Fix test_rainbow_highlighting gate
+  * Returns the old value for la_arena::ArenaMap::insert
+  * Impl more methods and traits for la_arena::ArenaMap
+  * run stable fmt through rustup
+  * fix: Fix incorrect token pick rankings
+  * Simplify
+  * Fix visibilities
+  * feat: Handle operators like their trait functions in the IDE
+  * Don't switch workspace on vfs file changes from libraries
+  * Update bug_report.md
+  * Update bug_report.md
+  * Don't flycheck while the workspace is being loaded
+  * tidy formatting
+  * Trigger flycheck on all transitive dependencies as well
+  * on hover fallback error, adds ast::type as possible node
+  * Add a setting to disable comment continuation in VSCode
+  * Use an empty expander for ignored non-attribute proc-macros
+  * Impl entry-API for la_arena::ArenaMap
+  * Add more constructors for la-arena
+  * Use the release branch in xtask promote
+  * Support PathPat paths in generate_enum_variant
+  * Be more strict about supported Paths in generate_enum_variant
+  * Support record fields in generate_enum_variant
+  * Support tuple fields in generate_enum_variant
+  * convert generate_enum_variant to use add_variant
+  * Support adding variants via structural editing
+  * Don't run on PRs
+  * Upload arm-unknown-linux-gnueabihf build artifact
+  * Fix linker env var name
+  * Fix target check
+  * Set linker
+  * Publish extension for 32-bit ARM systems
+  * Fix r-a spelling in some places
+  * fix: remove whitespaces from doctest names
+  * Add syntax fixup for `loop`
+  * Add syntax fixup for while loops
+  * Don't filter flychecks by package member status
+  * Only clear diagnostics of workspaces who have been flychecked
+  * feat: Only flycheck workspace that belongs to saved file
+
+-------------------------------------------------------------------
 Fri Aug 05 06:35:38 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 2022.08.01:
