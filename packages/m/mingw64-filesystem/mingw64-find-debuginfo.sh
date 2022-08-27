@@ -9,6 +9,10 @@ if [ -n "$1" ]; then
 	BUILDDIR="$1"
 fi
 
+# speed up running objdump, see bug https://bugzilla.opensuse.org/show_bug.cgi?id=1202431
+export MALLOC_CHECK_=0
+export MALLOC_PERTURB_=0
+
 # generate separate debuginfo and debugsource or single debug package combining both
 if [ -n "$2" ]; then
 	SINGLE_DEBUG_PACKAGE=1

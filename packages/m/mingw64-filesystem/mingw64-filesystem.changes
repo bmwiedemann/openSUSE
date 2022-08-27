@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 26 07:36:18 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to 20220826
+- Speed up objdump scanning binaries for source files (boo#1202431)
+
+-------------------------------------------------------------------
 Wed Aug 10 12:38:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop dependency on breakpad, since we now have our own
