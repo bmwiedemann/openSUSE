@@ -1955,6 +1955,7 @@ unsorted:
   - chromium: [x86_64] 
   - chromium-bsu 
   - chromium-uget-integrator 
+  - chronic 
   - chrony-pool-empty 
   - chrony-pool-suse 
   - chrpath 
@@ -6653,6 +6654,7 @@ unsorted:
   - gtkhtml-4_0-lang 
   - gtkhtml-devel 
   - gtkimageview-devel 
+  - gtklock 
   - gtkmm2-devel 
   - gtkmm2-tutorial 
   - gtkmm2-tutorial-lang 
@@ -16351,6 +16353,7 @@ unsorted:
   - mingw32-libobjc4 
   - mingw32-libquadmath0 
   - mingw32-libssp0 
+  - mingw32-libstdc++-gdb-printer 
   - mingw32-libstdc++6 
   - mingw32-libwinpthread1 
   - mingw32-libz 
@@ -16403,6 +16406,7 @@ unsorted:
   - mingw64-libobjc4 
   - mingw64-libquadmath0 
   - mingw64-libssp0 
+  - mingw64-libstdc++-gdb-printer 
   - mingw64-libstdc++6 
   - mingw64-libwinpthread1 
   - mingw64-libz 
@@ -16587,6 +16591,7 @@ unsorted:
   - mopac7 
   - moreutils 
   - moreutils-parallel 
+  - moreutils-perl 
   - morfologik-stemming 
   - morfologik-stemming-javadoc 
   - morris 
@@ -17969,7 +17974,6 @@ unsorted:
   - ocfs2-tools-devel-static 
   - ocfs2-tools-o2cb 
   - oci-cli 
-  - oci-seccomp-bpf-hook: [x86_64] 
   - ocl-icd-devel 
   - ocl-icd-devel-32bit: [x86_64] 
   - ocli 
@@ -22427,6 +22431,7 @@ unsorted:
   - python310-azure-mgmt-msi 
   - python310-azure-mgmt-netapp 
   - python310-azure-mgmt-network 
+  - python310-azure-mgmt-nginx 
   - python310-azure-mgmt-notificationhubs 
   - python310-azure-mgmt-nspkg 
   - python310-azure-mgmt-oep 
@@ -25550,6 +25555,7 @@ unsorted:
   - python38-azure-mgmt-msi 
   - python38-azure-mgmt-netapp 
   - python38-azure-mgmt-network 
+  - python38-azure-mgmt-nginx 
   - python38-azure-mgmt-notificationhubs 
   - python38-azure-mgmt-nspkg 
   - python38-azure-mgmt-oep 
@@ -28867,6 +28873,7 @@ unsorted:
   - python39-azure-mgmt-msi 
   - python39-azure-mgmt-netapp 
   - python39-azure-mgmt-network 
+  - python39-azure-mgmt-nginx 
   - python39-azure-mgmt-notificationhubs 
   - python39-azure-mgmt-nspkg 
   - python39-azure-mgmt-oep 
@@ -42546,6 +42553,7 @@ unsorted:
   - trytond_stock 
   - trytond_stock_lot 
   - trytond_stock_supply 
+  - ts 
   - tsctp 
   - tslib 
   - tslib-devel 
@@ -43940,7 +43948,7 @@ unsorted:
   - xpp3-minimal 
   - xpr 
   - xpra: [x86_64] 
-  - xpra-html5 
+  - xpra-html5: [x86_64] 
   - xprehashprinterlist 
   - xprintidle 
   - xprompt 
