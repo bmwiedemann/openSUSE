@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 26 16:33:32 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 3.1.2.1
+
+  Bugs fixed:
+   * ruby31.y: fix preparing the state for one-line patterns without braces (#864) (Vladimir Dementyev)
+
+-------------------------------------------------------------------
 Thu Apr 28 05:40:35 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.1.2.0
