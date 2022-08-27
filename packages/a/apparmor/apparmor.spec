@@ -86,6 +86,9 @@ Patch9:         zgrep-profile-mr870.diff
 # add missing r permissions for dnsmasc//libvirt-leaseshelper (submitted upstream 2022-08-08 https://gitlab.com/apparmor/apparmor/-/merge_requests/905)
 Patch10:        dnsmasq.diff
 
+# permit php-fpm pid files under run (merged upstream 2022-08-26 https://gitlab.com/apparmor/apparmor/-/merge_requests/914)
+Patch11:        profiles-permit-php-fpm-pid-files-directly-under-run.patch
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
@@ -353,6 +356,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch6
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 %build
 export SUSE_ASNEEDED=0

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 26 11:37:21 UTC 2022 - David Disseldorp <ddiss@suse.com>
+
+- add profiles-permit-php-fpm-pid-files-directly-under-run.patch
+  https://gitlab.com/apparmor/apparmor/-/merge_requests/914 (bsc#1202344)
+
+-------------------------------------------------------------------
 Mon Aug  8 18:51:26 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 
 - add dnsmasq.diff: missing r permissions for dnsmasq//libvirt-leaseshelper

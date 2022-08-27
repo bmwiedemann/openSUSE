@@ -2446,4 +2446,13 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   (boo#1202161) (forwarded request 993843 from cboltz)</comment>
     <requestid>993844</requestid>
   </revision>
+  <revision rev="180" vrev="3">
+    <srcmd5>0f267fbaea7df4315a56df53d4df269d</srcmd5>
+    <version>3.0.6</version>
+    <time>1661593701</time>
+    <user>dimstar_suse</user>
+    <comment>- add profiles-permit-php-fpm-pid-files-directly-under-run.patch
+  https://gitlab.com/apparmor/apparmor/-/merge_requests/914 (bsc#1202344) (forwarded request 999408 from dmdiss)</comment>
+    <requestid>999414</requestid>
+  </revision>
 </revisionlist>
