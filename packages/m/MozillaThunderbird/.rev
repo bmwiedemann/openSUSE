@@ -4338,4 +4338,29 @@ I cannot test locally unfortunately.
 </comment>
     <requestid>995033</requestid>
   </revision>
+  <revision rev="286" vrev="1">
+    <srcmd5>c9f4be2444c3fb1cd765dedf91409f3a</srcmd5>
+    <version>102.2.0</version>
+    <time>1661593684</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.2.0
+  * https://www.thunderbird.net/en-US/thunderbird/102.2.0/releasenotes/
+  MFSA 2022-36 (bsc#1202645)
+  * CVE-2022-38472 (bmo#1769155)
+    Address bar spoofing via XSLT error handling
+  * CVE-2022-38473 (bmo#1771685)
+    Cross-origin XSLT Documents would have inherited the parent's
+    permissions
+  * CVE-2022-38476 (bmo#1760998)
+    Data race and potential use-after-free in PK11_ChangePW
+  * CVE-2022-38477 (bmo#1760611, bmo#1770219, bmo#1771159, bmo#1773363)
+    Memory safety bugs fixed in Thunderbird 102.2
+  * CVE-2022-38478 (bmo#1770630, bmo#1776658)
+    Memory safety bugs fixed in Thunderbird 102.2, and
+    Thunderbird 91.13
+- disabled automatic usage of wayland because of known issues
+  using MOZ_ENABLE_WAYLAND=1 in environment would still enable it
+  (boo#1202606)</comment>
+    <requestid>999347</requestid>
+  </revision>
 </revisionlist>
