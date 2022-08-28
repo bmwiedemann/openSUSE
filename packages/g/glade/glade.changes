@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 25 16:09:37 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.40.0:
+  + Remove survey
+  + Add user manual menu item
+  + 'Clear' action in "Setup Text Attributes" dialog now clears
+    only selected attributes
+  + Fix Segfault in gnome-builder when widget doesn't have a name
+  + Fix build against Python 3.9
+  + Bugs fixed: glgo#GNOME/glade#502, glgo#GNOME/glade#499,
+    glgo#GNOME/glade#509, glgo#GNOME/glade#373,
+    glgo#GNOME/glade#484, glgo#GNOME/glade#194,
+    glgo#GNOME/glade#53, glgo#GNOME/glade#98, glgo#GNOME/glade#491.
+- Package docs sub-package as noarch.
+- Drop patches fixed upstream:
+  + 117.patch
+  + 9db1fba1fa93905c9169c1e29049e4b2f6337c39.patch
+
+-------------------------------------------------------------------
 Wed Feb  2 11:35:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 117.patch: Fix build with meson 0.61.0 and newer.

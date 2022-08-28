@@ -19,17 +19,13 @@
 %define soname libgladeui-2-13
 
 Name:           glade
-Version:        3.38.2
+Version:        3.40.0
 Release:        0
 Summary:        User Interface Builder for GTK+ 3
 License:        GPL-2.0-or-later
 Group:          Development/Tools/GUI Builders
 URL:            https://glade.gnome.org/
-Source0:        https://download.gnome.org/sources/glade/3.38/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 9db1fba1fa93905c9169c1e29049e4b2f6337c39.patch -- GladeProject: Segfault in gnome-builder when widget doesn't have a name
-Patch0:         https://gitlab.gnome.org/GNOME/glade/-/commit/9db1fba1fa93905c9169c1e29049e4b2f6337c39.patch
-# PATCH-FIX-UPSTREAM  117.patch -- Fix build with meson 0.61.0 and newer
-Patch1:         https://gitlab.gnome.org/GNOME/glade/-/merge_requests/117.patch
+Source0:        https://download.gnome.org/sources/glade/3.40/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
@@ -89,6 +85,7 @@ applications that want to make use of libgladeui.
 
 %package docs
 Summary:        Documentation for GLADE User Interface Builder
+BuildArch:      noarch
 
 %description docs
 Glade is a RAD tool to develop user interfaces for the Gtk+ 3 toolkit
