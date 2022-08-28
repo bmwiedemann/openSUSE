@@ -66,6 +66,7 @@ Patch39:        file-5.28-btrfs-image.dif
 Patch42:        file-boo1201350.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
+%global         magicdir    %{_datadir}/file
 %global         _miscdir    %{_datadir}/misc
 
 %description
@@ -138,7 +139,7 @@ rm -f Magdir/*,v Magdir/*~
 rm -f ltcf-c.sh ltconfig ltmain.sh
 autoreconf -fiv
 export CFLAGS="%{optflags} -DHOWMANY=69632 -fPIE $(pkg-config libseccomp --cflags)"
-%configure --disable-silent-rules --datadir=%{_miscdir} \
+%configure --disable-silent-rules --datadir=%{magicdir} \
 	--disable-static \
 	--enable-fsect-man5
 make %{?_smp_mflags} pkgdatadir='$(datadir)' LDFLAGS="-pie"
@@ -150,8 +151,11 @@ mkdir  %{buildroot}/etc
 make DESTDIR=%{buildroot} install pkgdatadir='$(datadir)'
 rm -vf %{buildroot}%{_sysconfdir}/magic
 echo '# Localstuff: file(1) magic(5) for locally observed files' > %{buildroot}%{_sysconfdir}/magic
-echo '#     global magic file is %{_miscdir}/magic(.mgc)'	>> %{buildroot}%{_sysconfdir}/magic
+echo '#     global magic file is %{magicdir}/magic(.mgc)'	>> %{buildroot}%{_sysconfdir}/magic
 # Does not build
+mkdir -p %{buildroot}%{_miscdir}
+ln -s %{magicdir}/magic %{buildroot}%{_miscdir}/magic
+ln -s %{magicdir}/magic.mgc %{buildroot}%{_miscdir}/magic.mgc
 %if %{with decore}
 install -s dcore %{buildroot}%{_bindir}
 %endif
@@ -182,6 +186,9 @@ unset LD_LIBRARY_PATH
 %config(noreplace) %{_sysconfdir}/magic
 %{_miscdir}/magic
 %{_miscdir}/magic.mgc
+%dir %{magicdir}
+%{magicdir}/magic
+%{magicdir}/magic.mgc
 %doc %{_mandir}/man5/magic.5.gz
 
 %files

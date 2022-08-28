@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 25 19:31:39 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move magic files to /usr/share/file from /usr/share/misc, and
+  then create symlinks from /usr/share/misc back to /usr/share/file
+  as per FHS 3.0
+
+-------------------------------------------------------------------
 Wed Jul 13 11:01:16 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream patch to fix boo#1201350

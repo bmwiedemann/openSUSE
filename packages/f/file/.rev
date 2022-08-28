@@ -1539,4 +1539,14 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
     441ac2b15508909e82ad467960df4ac0adf9644c</comment>
     <requestid>990574</requestid>
   </revision>
+  <revision rev="130" vrev="3">
+    <srcmd5>31bd5ea0a24f66c23adee28c6a5e44c4</srcmd5>
+    <version>5.42</version>
+    <time>1661685128</time>
+    <user>dimstar_suse</user>
+    <comment>- Move magic files to /usr/share/file from /usr/share/misc, and
+  then create symlinks from /usr/share/misc back to /usr/share/file
+  as per FHS 3.0 (forwarded request 999290 from gmbr3)</comment>
+    <requestid>999552</requestid>
+  </revision>
 </revisionlist>
