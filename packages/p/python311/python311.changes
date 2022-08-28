@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Sat Aug 20 21:31:40 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- fix import_failed.map to refer to the python 3.11 package versions
+
+-------------------------------------------------------------------
+Sat Aug 20 14:05:21 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.11.0rc1:
+  - Core and Builtins
+    - Update code object hashing and equality to consider all
+      debugging and exception handling tables. This fixes an
+      issue where certain non-identical code objects could be
+      “deduplicated” during compilation.
+    - _PyPegen_Parser_New now properly detects token memory
+      allocation errors. Patch by Honglin Zhu.
+    - Run Python code in tracer/profiler function at full
+      speed. Fixes slowdown in earlier versions of 3.11.
+    - Emit a warning in debug mode if an object does not call
+      PyObject_GC_UnTrack() before deallocation. Patch by Pablo
+      Galindo.
+    - Prevented crashes in the AST constructor when
+      compiling some absurdly long expressions like
+      "+0"*1000000. RecursionError is now raised instead. Patch
+      by Pablo Galindo
+    - ast.AST node positions are now validated when provided to
+      compile() and other related functions. If invalid positions
+      are detected, a ValueError will be raised.
+    - Fix error detection in some builtin functions when keyword
+      argument name is an instance of a str subclass with
+      overloaded __eq__ and __hash__. Previously it could cause
+      SystemError or other undesired behavior.
+  - Library
+    - Update bundled pip to 22.2.2.
+    - Fix asyncio.TaskGroup to propagate exception when
+      asyncio.CancelledError was replaced with another exception
+      by a context manger. Patch by Kumar Aditya and Guido van
+      Rossum.
+    - Update bundled pip to 22.2.1.
+    - Fix GC crash when deallocating _lsprof.Profiler by
+      untracking it before calling any callbacks. Patch by Kumar
+      Aditya.
+    - Fix asyncio.run() for asyncio.Task implementations without
+      uncancel() method. Patch by Kumar Aditya.
+    - Fix check for existence of os.EFD_CLOEXEC, os.EFD_NONBLOCK
+      and os.EFD_SEMAPHORE flags on older kernel versions where
+      these flags are not present. Patch by Kumar Aditya.
+    - Fix concurrent.futures.Executor.map() to cancel the
+      currently waiting on future on an error - e.g. TimeoutError
+      or KeyboardInterrupt.
+    - Ensure that timeouts scheduled with asyncio.Timeout that
+      have already expired are delivered promptly.
+    - Suppress writing an XML declaration in open files
+      in ElementTree.write() with encoding='unicode' and
+      xml_declaration=None.
+    - Fix findtext in the xml module to only give an empty string
+      when the text attribute is set to None.
+  - Documentation
+    - Fix stylesheet not working in Windows CHM htmlhelp docs
+      and add warning that they are deprecated. Contributed by
+      C.A.M. Gerlach.
+    - Update library documentation with availability information
+      on WebAssembly platforms wasm32-emscripten and wasm32-wasi.
+    - Use consistent syntax for platform availability. The
+      directive now supports a content body and emits a warning
+      when it encounters an unknown platform.
+    - Document a limitation in ThreadPoolExecutor where its exit
+      handler is executed before any handlers in atexit.
+  - Tests
+    - Lib/test/test_asyncio/test_ssl.py exposed a bug in the
+      macOS kernel where intense concurrent load on non-blocking
+      sockets occasionally causes errno.ENOBUFS (“No buffer space
+      available”) to be emitted. FB11063974 filed with Apple, in
+      the mean time as a workaround buffer size used in tests on
+      macOS is decreased to avoid intermittent failures. Patch by
+      Fantix King.
+    - Fix problem with test_ssl test_get_ciphers on systems that
+      require perfect forward secrecy (PFS) ciphers.
+    - Add a regression test for re exponentional slowdown when
+      using rjsmin.
+  - Build
+    - Fix a regression in configure script that caused some
+      header checks to ignore custom CPPFLAGS. The regression was
+      introduced in gh-94802.
+    - wasm32-wasi builds no longer depend on WASIX’s pthread
+      stubs. Python now has its own stubbed pthread API.
+    - Python now detects missing dup function in WASI and works
+      around some missing errno, select, and socket constants.
+    - Python now skips missing socket functions and methods on
+      WASI. WASI can only create sockets from existing fd /
+      accept and has no netdb.
+    - Platforms wasm32-unknown-emscripten and wasm32-unknown-wasi
+      have been promoted to PEP 11 tier 3 platform support.
+  - IDLE
+    - Document handling of extensions in Save As dialogs.
+    - Include prompts when saving Shell (interactive input and
+      output).
+    - Fix the Shell context menu copy-with-prompts bug of copying
+      an extra line when one selects whole lines.
+    - In the Edit menu, move Select All and add a new separator.
+    - Enable using IDLE’s module browser with .pyw files.
+    - Add .pyi as a recognized extension for IDLE on macOS. This
+      allows opening stub files by double clicking on them in the
+      Finder.
+  - C API
+    - Restore the 3.10 behavior for multiple inheritance of C
+      extension classes that store their dictionary at the end of
+      the struct.
+    - Added PyCode_GetVarnames(), PyCode_GetCellvars() and
+      PyCode_GetFreevars() for accessing co_varnames, co_cellvars
+      and co_freevars respectively via the C API.
+
+-------------------------------------------------------------------
 Tue Jul 26 10:37:31 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.11.0b5:
