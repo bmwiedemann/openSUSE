@@ -58,4 +58,16 @@
   * Fix use after free when font server connection lost</comment>
     <requestid>909739</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0a6d80343b33e91d3aa85b34ca0f25c3</srcmd5>
+    <version>2.0.6</version>
+    <time>1661685139</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.6
+  * gitlab CI: add a basic build test
+  * Fix spelling/wording issues
+  * configure: Use pkg-config to handle zlib dependency if possible
+  * Fix comments to reflect removal of OS/2 support</comment>
+    <requestid>999540</requestid>
+  </revision>
 </revisionlist>

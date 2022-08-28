@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 27 09:04:20 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.0.6
+  * gitlab CI: add a basic build test
+  * Fix spelling/wording issues
+  * configure: Use pkg-config to handle zlib dependency if possible
+  * Fix comments to reflect removal of OS/2 support
+
+-------------------------------------------------------------------
 Mon Aug  2 09:57:36 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.0.5

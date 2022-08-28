@@ -1,7 +1,7 @@
 #
 # spec file for package libXfont2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libXfont2
 %define lname   libXfont2-2
-Version:        2.0.5
+Version:        2.0.6
 Release:        0
 Summary:        X font handling library for server and utilities
 License:        MIT
@@ -27,7 +27,7 @@ URL:            http://xorg.freedesktop.org/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXfont
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXfont/
-Source:         %{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
