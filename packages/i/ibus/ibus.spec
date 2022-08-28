@@ -35,7 +35,7 @@
 
 %define _name   ibus
 Name:           %{_name}%{?nsuffix}
-Version:        1.5.26
+Version:        1.5.27
 Release:        0
 Summary:        The "Intelligent Input Bus" input method
 License:        LGPL-2.1-or-later
@@ -53,7 +53,7 @@ Source99:       baselibs.conf
 # Fix lost XIM input after screenlock
 Patch4:         ibus-xim-fix-re-focus-after-lock.patch
 # PATCH-FIX-UPSTREAM ftake@geeko.jp
-# Select an IM engine at the first login
+# Select an IM engine instead of xkb engine at the first login
 Patch8:         im-engines-precede-xkb.patch
 # PATCH-FIX-OPENSUSE ibus-fix-Signal-does-not-exist.patch hillwood@opensuse.org
 # panel.vala: The name `Signal' does not exist in the context of `Posix' in Leap 15.1 and below
@@ -72,10 +72,8 @@ Patch12:        ibus-disable-engines-preload-in-GNOME.patch
 # Qt5 does not be update to the new version and patch for ibus on Leap 15,
 # it still needs this patch on leap 15. (boo#1187202)
 Patch15:        ibus-socket-name-compatibility.patch
-# PATCH-FIX-UPSTREAM ibus-fix-refcounting-issues.patch gh#ibus/ibus#2387, gh#ibus/ibus#2393 yfjiang@suse.com
-# Fix refcounting issues and address possible glib warnings
-Patch16:        ibus-fix-refcounting-issues.patch
 BuildRequires:  pkgconfig(iso-codes)
+BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(systemd)
 %if ! 0%{?with_gtk4}
 BuildRequires:  fdupes
@@ -99,7 +97,6 @@ BuildRequires:  vala >= 0.31.1
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  x11-tools
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(xkbcommon)
 %if %{with_emoji}
@@ -232,7 +229,6 @@ cp -r %{SOURCE11} .
 %if 0%{?suse_version} <= 1500
 %patch15 -p1
 %endif
-%patch16 -p1
 
 %build
 %configure --disable-static \

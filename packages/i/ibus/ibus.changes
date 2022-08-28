@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Aug 27 03:24:19 UTC 2022 - Fuminobu Takeyama <ftake@geeko.jp> - 1.5.27
+
+- Upstream update to 1.5.27
+  * Disable XKB engines in Plasma Wayland
+  * ibusimcontext keycode - 8 for gtk3 keycode generation
+  * client/gtk2: Revert CCedilla change for pt-BR
+  * Add IBUS_CAP_OSK to IBusCapabilite
+  * Enable ibus restart in GNOME desktop
+  * Add ibus im-module command
+  * Implement new process_key_event for GTK4
+  * src/ibusengine: Add focus_in_id()/focus_out_id() class methods
+  * Delete xkb:latam:: in denylist.txt
+  * Enhance Xutf8TextListToTextProperty
+  * Revert Emoji shoftcut key to Super-space
+  * Update simple.xml with xkeyboard-config 2.36
+  * Fix refcounting issues
+    * Drop ibus-fix-refcounting-issues.patch
+  * Fix bashisms in org.freedesktop.IBus.session.GNOME.service
+  * Update xkb-latin-layouts in gschema
+  * Use our own prefix to look up systemd user services dir
+  * Add functionality to change IBus panel themes with available GTK themes
+  * Update translation
+- Refresh im-engines-precede-xkb.patch
+- Add pkgconfig(libnotify) for the GTK4 flavor
+
+-------------------------------------------------------------------
 Mon Aug 22 13:37:53 UTC 2022 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Fix ibus-setup to support python3 (boo#1202063)
