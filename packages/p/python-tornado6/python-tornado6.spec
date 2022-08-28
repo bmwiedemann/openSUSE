@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-tornado6
-Version:        6.1
+Version:        6.2
 Release:        0
 Summary:        Open source version of scalable, non-blocking web server that power FriendFeed
 License:        Apache-2.0
@@ -30,9 +30,7 @@ Source99:       python-tornado6-rpmlintrc
 Patch0:         ignore-resourcewarning-doctests.patch
 # PATCH-FIX-OPENSUSE ignore-py310-deprecation-warnings.patch -- gh#tornadoweb/tornado#3033
 Patch1:         ignore-py310-deprecation-warnings.patch
-# PATCH-FIX-OPENSUSE Remove broken multi-line HTTP header test
-Patch2:         remove-multiheader-http-test.patch
-BuildRequires:  %{python_module base >= 3.5}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pycares}
 BuildRequires:  %{python_module pycurl}

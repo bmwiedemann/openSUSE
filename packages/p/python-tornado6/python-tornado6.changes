@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 19 16:29:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2:
+  * https://www.tornadoweb.org/en/stable/releases/v6.2.0.html
+- drop remove-multiheader-http-test.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Apr 28 07:13:53 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-multiheader-http-test.patch:

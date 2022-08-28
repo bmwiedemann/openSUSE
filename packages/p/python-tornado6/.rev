@@ -78,4 +78,12 @@
   * Do not test multi-line headers.</comment>
     <requestid>973568</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f1499154d0ca8bc4322aed70822aeb47</srcmd5>
+    <version>6.2</version>
+    <time>1661685131</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>999454</requestid>
+  </revision>
 </revisionlist>
