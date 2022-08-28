@@ -131,6 +131,7 @@ mv %{buildroot}%{_sysconfdir}/bash_completion.d/* %{buildroot}%{_datadir}/bash-c
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
+export PYTHONPATH=%{buildroot}%{python3_sitearch}
 %make_build check
 
 %post   -n %{so_name} -p /sbin/ldconfig

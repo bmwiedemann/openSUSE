@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 24 22:12:43 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Set PYTHONPATH to buildroot's python3_sitearch before testing to
+  allow importing of yoda module.
+
+-------------------------------------------------------------------
 Fri Jul 15 22:52:01 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.9.6:
@@ -446,7 +452,7 @@ Thu Sep 18 02:01:15 UTC 2014 - badshah400@gmail.com
     yoda2root
   + Add +=, -=, *-, /=, ++ and -- operators to Counter, along
     with an (implicit) constructor from a double -- all for user
-    convenience so Counter can be used in lieu of a simple number 
+    convenience so Counter can be used in lieu of a simple number
 - Changes from version 1.2.0:
   + Many changes from 1.1.0 version, please see installed
     ChangeLog file
@@ -520,8 +526,8 @@ Sat Jun 21 21:59:18 UTC 2014 - badshah400@gmail.com
 - Packaging changes:
   + Package new binaries yodacnv, yodadiff, yodahist
   + Package new pkgconfig file (buildrequires pkg-config).
- 
+
 -------------------------------------------------------------------
 Tue Dec 10 00:39:02 UTC 2013 - badshah400@gmail.com
 
-- Initial version 
+- Initial version
