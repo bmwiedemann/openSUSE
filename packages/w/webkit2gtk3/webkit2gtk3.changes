@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 26 13:40:08 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.36.7 (boo#1202807):
+  - Fix several crashes and rendering issues.
+  + Security fixes: CVE-2022-32893.
+
+-------------------------------------------------------------------
 Sun Aug  7 14:40:05 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2.36.6
