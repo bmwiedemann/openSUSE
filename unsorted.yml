@@ -9064,7 +9064,7 @@ unsorted:
   - libKSeExpr4 
   - libLASi-devel 
   - libLASi2 
-  - libLHAPDF-6_5_1 
+  - libLHAPDF-6_5_2 
   - libLLVM11 
   - libLLVM11-32bit: [x86_64] 
   - libLLVM12 
@@ -33706,8 +33706,6 @@ unsorted:
   - telegram-theme-adapta: [x86_64] 
   - telepathy-accounts-signon 
   - telepathy-farstream-devel 
-  - telepathy-gabble 
-  - telepathy-gabble-xmpp-console 
   - telepathy-glib-devel 
   - telepathy-glib-doc 
   - telepathy-logger-devel 
