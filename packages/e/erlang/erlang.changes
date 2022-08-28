@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Aug 09 08:24:52 UTC 2022 - matwey.kornilov@gmail.com
+
+- Changes for 25.0.3:
+  * erts: Distributed exit signals could be lost under the
+    following conditions:
+  * erts: A race could cause process_info(Pid, message_queue_len)
+    on other processes to return invalid results.
+  * erts: Fixed reduction counting for handling process system
+    tasks.
+  * erts: Priority elevation of terminating processes did not work
+    which could cause execution of such processes to be delayed.
+  * erts: An unlink operation made by a process that terminated
+    before the unlink operation completed, i.e., before it had
+    received an unlink-ack signal from the linked process, caused
+    an exit signal to erroneously be sent from the terminating
+    process to the process being unlinked. This exit signal would
+    most often be ignored by the receiver, but if the receiver of
+    the exit signal concurrently set up a new link, it could
+    receive the exit signal with the actual exit reason of the
+    terminating process instead of a noproc exit reason. It is
+    however very hard to detect that this has happened and has no
+    obvious negative consequences, so it should be considered
+    harmless. A distributed unlink-ack signal received by a
+    terminating process was also not properly removed which could
+    cause a minor memory leak.
+  * ssl: The link to crypto:engine_load refered the function with
+    wrong arity.
+
+-------------------------------------------------------------------
 Sun Jul 03 09:28:47 UTC 2022 - matwey.kornilov@gmail.com
 
 - Changes for 25.0.2:
