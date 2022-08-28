@@ -79,5 +79,8 @@ popd
 %license LICENSE
 %{python_sitearch}/ligo/
 %{python_sitearch}/ligo_segments-%{version}-py%{python_version}.egg-info
+%if 0%{?suse_version} >= 1550
+%{python_sitearch}/ligo_segments-%{version}-py%{python_version}-nspkg.pth
+%endif
 
 %changelog
