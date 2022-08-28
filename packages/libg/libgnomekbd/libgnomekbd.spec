@@ -1,7 +1,7 @@
 #
 # spec file for package libgnomekbd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,25 @@
 
 %define sover 8
 Name:           libgnomekbd
-Version:        3.26.1
+Version:        3.28.0
 Release:        0
 Summary:        GNOME Keyboard Library
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/libgnomekbd
-Source0:        https://download.gnome.org/sources/libgnomekbd/3.26/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libgnomekbd/3.28/%{name}-%{version}.tar.xz
+
 # PATCH-FIX-UPSTREAM libgnomekbd-avoid-coredump-on-ibus-engines.patch bnc#1160963, glgo#GNOME/libgnomekbd!6 qzhao@suse.com -- To avoid crash when working with ibus.
 Patch0:         libgnomekbd-avoid-coredump-on-ibus-engines.patch
 # PATCH-FIX-OPENSUSE libgnomekbd-set-default-indicator.patch bnc#1034390 qzhao@suse.com -- set the common keyboard layout indicator as default to avoid misleading.
 Patch1:         libgnomekbd-set-default-indicator.patch
-# PATCH-FIX-UPSTREAM libgnomekbd_avoid_implicit_definition.patch bnc#1160963 bnc#1034390 glgo#GNOME/libgnomekbd!7 qzhao@suse.com -- To avoid inplicit definition warning in building.
-Patch2:         libgnomekbd_avoid_implicit_definition.patch
+
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  intltool
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libxklavier) >= 5.2
@@ -94,10 +95,11 @@ applications that want to make use of libgnomekbd.
 %autosetup -p1
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--disable-static \
 	%{nil}
-%make_build V=1
+%make_build
 
 %install
 %make_install
@@ -106,8 +108,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 
-%post -n libgnomekbd%{sover} -p /sbin/ldconfig
-%postun -n libgnomekbd%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgnomekbd%{sover}
 
 %files -n gnomekbd-tools
 %{_bindir}/gkbd-keyboard-display

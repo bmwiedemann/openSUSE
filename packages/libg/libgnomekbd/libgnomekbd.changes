@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 24 20:34:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Rebase patches with quilt.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
+Fri Aug 19 08:56:58 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.28.0:
+  + Require GLib 2.44
+  + Modernize the codebase
+  + Avoid several crashes
+  + Fix RTL issues
+  + Add meson build system
+  + Updated translations.
+- Add libtool BuildRequires and call autgen.sh in build phase: the
+  tarball was geneated using meson and does not contain configure.
+  It is not possible (yet) to use meson as build system though, as
+  the installation turns out to be incomplete.
+- Drop libgnomekbd_avoid_implicit_definition.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Thu Sep 16 01:58:47 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
@@ -18,7 +40,7 @@ Mon May 24 15:13:24 UTC 2021 - Cliff Zhao <qzhao@suse.com>
 
 - Add libgnomekbd-set-default-indicator.patch: set the common
   keyboard layout indicator as "default" to avoid misleading
-  (bnc#1034390). 
+  (bnc#1034390).
 
 -------------------------------------------------------------------
 Fri Apr  2 12:03:02 UTC 2021 - Cliff Zhao <qzhao@suse.com>

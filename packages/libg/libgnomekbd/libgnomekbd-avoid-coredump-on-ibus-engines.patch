@@ -1,7 +1,8 @@
-diff -Nura libgnomekbd-3.26.1/libgnomekbd/gkbd-keyboard-display.c libgnomekbd-3.26.1_new/libgnomekbd/gkbd-keyboard-display.c
---- libgnomekbd-3.26.1/libgnomekbd/gkbd-keyboard-display.c	2019-02-07 06:18:56.000000000 +0800
-+++ libgnomekbd-3.26.1_new/libgnomekbd/gkbd-keyboard-display.c	2021-04-02 19:56:19.587280314 +0800
-@@ -81,7 +81,7 @@
+Index: libgnomekbd-3.28.0/libgnomekbd/gkbd-keyboard-display.c
+===================================================================
+--- libgnomekbd-3.28.0.orig/libgnomekbd/gkbd-keyboard-display.c
++++ libgnomekbd-3.28.0/libgnomekbd/gkbd-keyboard-display.c
+@@ -82,7 +82,7 @@ main (int argc, char **argv)
  	dlg = gkbd_keyboard_drawing_dialog_new ();
  	registry = xkl_config_registry_get_instance (engine);
  	xkl_config_registry_load (registry, TRUE);
