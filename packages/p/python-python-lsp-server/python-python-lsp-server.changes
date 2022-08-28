@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 27 09:41:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add python-lsp-server-advanceflake8.patch
+  * gh#python-lsp/python-lsp-server#257
+- Add python-lsp-server-pylint-syntax-error.patch
+  * gh#python-lsp/python-lsp-server#258
+
+-------------------------------------------------------------------
 Mon Jul 25 12:52:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.5.0

@@ -23,6 +23,10 @@ Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM python-lsp-server-advanceflake8.patch gh#python-lsp/python-lsp-server#257
+Patch0:         python-lsp-server-advanceflake8.patch
+# PATCH-FEATURE-UPSTREAM python-lsp-server-pylint-syntax-error.patch gh#python-lsp/python-lsp-server#258
+Patch1:         python-lsp-server-pylint-syntax-error.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -33,17 +37,15 @@ BuildRequires:  python-rpm-macros >= 20210628
 # SECTION test requirements
 BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module autopep8 >= 1.6.0 with %python-autopep8 < 1.7.0}
-BuildRequires:  %{python_module flake8 >= 4.0.0 with %python-flake8 < 4.1.0}
+# flake8 and its dependencies in a particular range, see Patch0
+BuildRequires:  %{python_module flake8 >= 5.0.0 with %python-flake8 < 5.1.0}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module jedi >= 0.17.2 with %python-jedi < 0.19.0}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module mccabe >= 0.6.0}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pluggy}
-BuildRequires:  %{python_module pycodestyle >= 2.8.0 with %python-pycodestyle < 2.9.0}
 BuildRequires:  %{python_module pydocstyle >= 2.0.0}
-BuildRequires:  %{python_module pyflakes >= 2.4.0 with %python-pyflakes < 2.5.0}
 BuildRequires:  %{python_module pylint >= 2.5.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.0.0}
@@ -60,19 +62,21 @@ Requires:       python-ujson >= 3.0.0
 Requires:       (python-jedi >= 0.17.2 with python-jedi < 0.19.0)
 Suggests:       python-autopep8 >= 1.6.0
 Conflicts:      python-autopep8 >= 1.7.0
-Suggests:       python-flake8 >= 4.0.0
-Conflicts:      python-flake8 >= 4.1.0
-Suggests:       python-mccabe >= 0.6.0
-Conflicts:      python-mccabe >= 0.7.0
-Suggests:       python-pycodestyle >= 2.8.0
-Conflicts:      python-pycodestyle >= 2.9.0
 Suggests:       python-pydocstyle >= 2.0.0
-Suggests:       python-pyflakes >= 2.4.0
-Conflicts:      python-pyflakes >= 2.5.0
 Suggests:       python-pylint >= 2.5.0
 Suggests:       python-rope >= 0.10.5
 Suggests:       python-yapf
 Suggests:       python-whatthepatch
+# SECTION flake8 pins -- see Patch0
+Suggests:       python-flake8 >= 5.0.0
+Conflicts:      python-flake8 >= 5.1.0
+Suggests:       python-mccabe >= 0.7.0
+Conflicts:      python-mccabe >= 0.8.0
+Suggests:       python-pycodestyle >= 2.9.0
+Conflicts:      python-pycodestyle >= 2.10.0
+Suggests:       python-pyflakes >= 2.5.0
+Conflicts:      python-pyflakes >= 2.6.0
+# SECTION
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
