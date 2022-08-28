@@ -58,25 +58,29 @@ Simplistic and highly configurable status panel for X and Wayland.
 %autosetup -n %{name}
 
 %package devel
-Summary:  Development files for %{name}
-Group:    Development/Libraries
-Requires: %{name}
+Summary:        Development files for %{name}
+Group:          Development/Libraries
+Requires:       %{name}
 
 %description devel
 Modules for interacting and modifying yambar.
 
 %package zsh-completion
-Summary: Zsh Completion for %{name}
-Group: System/Shells
-Supplements: (%name and zsh)
-Requires: zsh
-BuildArch: noarch
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Supplements:    (%name and zsh)
+Requires:       zsh
+BuildArch:      noarch
 
 %description zsh-completion
 Zsh command-line completion support for %{name}.
 
 %build
+%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
+%{meson} -Dc_std=none
+%else
 %{meson}
+%endif
 %{meson_build}
 
 %install

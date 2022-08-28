@@ -7,4 +7,13 @@
     <comment>I want to maintain yambar in openSUSE:Factory</comment>
     <requestid>979696</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a89727615d470a2b0abf02936ec8755f</srcmd5>
+    <version>1.8.0</version>
+    <time>1661685145</time>
+    <user>dimstar_suse</user>
+    <comment>- set C standard to none if suse version is 15.4
+</comment>
+    <requestid>999556</requestid>
+  </revision>
 </revisionlist>
