@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 27 08:55:26 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.10
+  * gitlab CI: add a basic build test
+  * Fix spelling/wording issues
+  * Autest.c: Fix -Wdiscarded-qualifiers warnings
+  * Remove unnnecessary casts from malloc() and free() calls
+  * XauReadAuth: move failure handling code to a common code block
+
+-------------------------------------------------------------------
 Mon Feb 11 11:15:25 UTC 2019 - sndirsch@suse.com
 
 - Update to version 1.0.9:
