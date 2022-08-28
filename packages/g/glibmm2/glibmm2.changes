@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Aug 24 11:37:28 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.72.1:
+  + Glib: ustring_Iterator: Don't declare copy constructor
+    =default. A fix in the 2.72.0 release broke ABI.
+- Changes from version 2.72.0:
+  + Glib: MainContext: Add create(MainContextFlags flags).
+  + Gio:
+    - Add AppInfoMonitor
+    - DBus::Proxy: signal_signal() accepts a signal name
+    - File: Add move_async() and move_finish()
+    - SocketClient: Deprecate
+      set/get/property_tls_validation_flags()
+    - TlsCertificate: Add properties private_key, private_key_pem,
+      pkcs11_uri, private_key_pkcs11_uri. Fix the create*()
+      methods.
+    - TlsClientConnection.hg: Deprecate
+      set/get/property_validation_flags().
+  + gmmproc: Add "ignore_deprecations" argument in _WRAP_METHOD().
+  + Build:
+    - Require glib-2.0 >= 2.71.2.
+    - MSVC build: Support VS2022 builds.
+    - Meson build: Specify 'check' option in run_command(). Require
+      Meson >= 0.55.0.
+- Changes from version 2.70.0:
+  + Glib:
+    - Timer: Add resume() and is_active()
+    - Add the Environ class
+    - Binding: Add dup_source(), dup_target(). Deprecate
+      get_source(), get_target(). TimeZone: Add operator bool(),
+      create_identifier(). Deprecate create().
+  + Gio:
+    - FileInfo: Add get/set_access_date(), get/set_creation_date().
+    - Notification: Add set_category().
+    - TlsCertificate: Add property/get_not_valid_before(),
+      property/get_not_valid_after(), property/get_subject_name(),
+      property/get_issuer_name(). 
+    - TlsConnection: Add property/get_protocol_version(),
+      property/get_ciphersuite_name().
+  + Tests: Add test of Glib::Environ
+  + gmmproc: Handle gi-docgen syntax in C documentation.
+  + Build: Require glib-2.0 >= 2.69.1.
+
+-------------------------------------------------------------------
 Thu Oct  7 05:32:00 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.68.2:
