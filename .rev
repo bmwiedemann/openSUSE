@@ -84,4 +84,17 @@
     wrong Unicode mappings for the iso8859-7 codepage.</comment>
     <requestid>677971</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0919072544f9d7f5d2e464448754e200</srcmd5>
+    <version>1.1.5</version>
+    <time>1661685134</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.5
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Import reallocarray() from libX11 (originally from OpenBSD)
+  * Convert code to use Xmallocarray() &amp; Xreallocarray()
+  * configure: Use AC_USE_SYSTEM_EXTENSIONS to set GNU_SOURCE &amp; other defines</comment>
+    <requestid>999537</requestid>
+  </revision>
 </revisionlist>
