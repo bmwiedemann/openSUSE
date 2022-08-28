@@ -906,4 +906,12 @@ I would be grateful.
     <comment>KDE Release Gear 22.08.0 (forwarded request 997667 from cgiboudeaux)</comment>
     <requestid>997812</requestid>
   </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>5630833378e60cd054c6fb184d38afa7</srcmd5>
+    <version>22.08.0</version>
+    <time>1661685157</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend installation of the mediainfo executable (boo#1202848)</comment>
+    <requestid>999634</requestid>
+  </revision>
 </revisionlist>

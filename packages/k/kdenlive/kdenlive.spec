@@ -86,6 +86,7 @@ Recommends:     %{_bindir}/dvgrab
 Recommends:     %{_bindir}/ffmpeg
 Recommends:     %{_bindir}/ffplay
 Recommends:     %{_bindir}/genisoimage
+Recommends:     %{_bindir}/mediainfo
 Recommends:     frei0r-plugins
 Recommends:     libv4l
 Obsoletes:      kdenlive5 < %{version}
