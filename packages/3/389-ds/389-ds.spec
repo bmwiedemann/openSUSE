@@ -68,6 +68,7 @@ BuildRequires:  libtalloc-devel
 BuildRequires:  libtevent-devel
 BuildRequires:  libtool
 BuildRequires:  lmdb-devel
+BuildRequires:  procps
 BuildRequires:  sysuser-tools
 # net-snmp-devel is needed to build the snmp ldap-agent
 BuildRequires:  net-snmp-devel >= 5.1.2
@@ -226,6 +227,11 @@ uses the facilities provided by NSS.
 cp Cargo.lock src/Cargo.lock
 # Setup support utils
 %setup -q -n %{name}-base-%{version} -D -T -a 4
+
+# Debugging for if anything goes south.
+lscpu
+free -h
+df -h
 
 %build
 %sysusers_generate_pre %{SOURCE10} %{user_group} %{user_group}-user.conf

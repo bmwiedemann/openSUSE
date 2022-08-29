@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<constraints>
+  <hardware>
+    <disk>
+      <!-- Needed because PPC chronically runs out of disk because sigghhh -->
+      <size unit="G">25</size>
+    </disk>
+  </hardware>
+</constraints>
