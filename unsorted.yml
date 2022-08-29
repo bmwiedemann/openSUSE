@@ -7994,13 +7994,12 @@ unsorted:
   - jupyter-octave-kernel 
   - jupyter-panel 
   - jupyter-plotly 
-  - jupyter-pythreejs 
-  - jupyter-pythreejs-jupyterlab 
   - jupyter-qgrid 
-  - jupyter-qtconsole: [i586] 
   - jupyter-rpm-macros 
   - jupyter-server-mathjax 
   - jupyter-sidecar-jupyterlab 
+  - jupyter-threejs 
+  - jupyter-threejs-jupyterlab 
   - jupyter-vispy 
   - jupyter-voila 
   - jupyter-widgetsnbextension: [i586] 
@@ -9489,7 +9488,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVkLayer_utils-1_3_224_0 
+  - libVkLayer_utils-1_3_224_1 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -15130,7 +15129,7 @@ unsorted:
   - libz-ng2 
   - libz-ng2-32bit: [x86_64] 
   - libz1-32bit: [x86_64] 
-  - libz3-4_10 
+  - libz3-4_11 
   - libzapojit-0_0-0 
   - libzapojit-devel 
   - libzbar-devel 
@@ -25347,7 +25346,6 @@ unsorted:
   - python38-autobahn 
   - python38-autocommand 
   - python38-autodocsumm 
-  - python38-autoflake 
   - python38-autopage 
   - python38-autopep8 
   - python38-autoray 
@@ -44247,6 +44245,9 @@ unsorted:
   - znc-python3 
   - znc-tcl 
   - zola: [x86_64] 
+  - zola-bash-completion: [x86_64] 
+  - zola-fish-completion: [x86_64] 
+  - zola-zsh-completion: [x86_64] 
   - zonefs-tools 
   - zopfli 
   - zoxide 
