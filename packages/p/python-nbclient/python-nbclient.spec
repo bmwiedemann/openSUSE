@@ -30,7 +30,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-nbclient%{psuffix}
-Version:        0.6.6
+Version:        0.6.7
 Release:        0
 Summary:        A client library for executing notebooks
 License:        BSD-3-Clause

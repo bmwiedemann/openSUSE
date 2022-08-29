@@ -221,4 +221,13 @@
     <comment></comment>
     <requestid>988045</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>595ee2a0ee47798e2c53800c87a16e09</srcmd5>
+    <version>0.6.7</version>
+    <time>1661758974</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.7
+  * Fix tests for ipywidgets 8 #246 (@frenzymadness)</comment>
+    <requestid>999713</requestid>
+  </revision>
 </revisionlist>
