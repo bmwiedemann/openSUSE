@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Sat Aug 20 14:50:46 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update required versions
+  * require python >= 3.7
+
+- update to version 8.0.1:
+  * Deserialize state before setting it, as is done elsewhere
+    set_state i…
+  * Update to lerna 5.4.3
+
+- changes from version 8.0.0:
+  * changes
+    + Add a cookiecutter-based tutorial to build a custom widget
+      (#2919)
+    + Change media widgets to use memory views. (#2723)
+    + Upgrade to FontAwesome 5 in html-manager (#2713)
+    + Play widget now toggles between play and pause button as needed
+      (#2703, #2671)
+    + Drop support for mapping types as selection options (#2679,
+      #1958)
+    + Focus or blur a widget. (#2664, #2692, #2691, #2690)
+    + Drop notebook dependency from widgetsnbextension (#2590)
+    + Cast ‘value’ in range sliders to a tuple (#2441)
+    + Play widget: expose playing and repeat (#2283, #1897)
+    + Fix debouncing and throttling code (#3060)
+    + Fix regression on spinning icons (#2685, #2477)
+    + Fix selection container default index (#1823)
+    + Remove deprecated overflow properties (#2688)
+    + Select: Do not force a selection if there is currently no
+      selection and the options list changes (#3284)
+    + Add support for localization to the lab extension (#3286)
+    + Drop support for Python 2.7, 3.4, and 3.5 (#2558, #2655, #3131,
+      #3120)
+    + Fix character escapes in combobox options (#2972)
+    + Modify outputs to use a comm if IPython is not available (#2954)
+    + Bugfix/parameters in the from_file method to be passed along in
+      the media class (#3074)
+    + Widgetsnbextension: throw error on failure to render (#3280)
+    + Fix memory leak from Image widget not releasing object urls
+      (#3171, #3170)
+    + ErrorWidget as fallback when widgets models or views fail -
+      Following up (#3304)
+    + Fix matplotlib plots in interact (#3277)
+    + Fix selection equality checking (#2897)
+    + Remove the on_displayed Python callback mechanism (#2021)
+  * Python
+    + Widget.widgets and Widget.widget_types are now private variables
+      (#3122, #3173)
+    + Generate the widget data spec as JSON (#2193)
+    + Use _repr_mimebundle_ and require ipython 6.1 or later. (#2021,
+      #1811)
+    + Hold sync during set_state + fix selection widgets flakiness
+      (#3271)
+    + Remove deprecated handle_kernel alias (#2694)
+    + Removed deprecated signature of the register decorator (#2695)
+  * Javascript
+    + Fix CSS variable names to match JupyterLab names (#2801, #2062)
+    + Delete display_model and display_view (#2752, #2751)
+    + Drop underscore usage (#2742)
+    + Upgrade to es2017 javascript (#2725)
+    + Split base manager into separate packages (#2710, #2561)
+    + Change Phosphor to Lumino (#2681, #3267)
+    + Widgetmanagerbase: improve create_view return type (#2662)
+    + Refactor the JupyterLab widget manager so it can be reused
+      (#2532)
+    + Make more of lab manager dependencies optional (#2528)
+    + Remove class jupyter-widgets from jp-outputarea-output node
+      (#2500)
+    + Rename pWidget to luminoWidget and deprecate pWidget (#3118,
+      #3141, #3358,)
+    + Add layout, style, and shown events (#3300)
+    + Implement jupyter.widget.control comm channel (#3313)
+    + Update to TypeScript 4.3 (#3162)
+    + Add event listener for resize events (#3124)
+    + Remove process.cwd polyfill (#3315)
+    + Make sure buffer is a DataView (#3127)
+    + Deprecate the overly broad CSS class widget and introduce a
+      similar jupyter-widget CSS class (#3146)
+    + Fetch the full widget state via a control Comm (#3021)
+    + Export LabWidgetManager and KernelWidgetManager (#3166)
+    + More helpful semver range message (#3185)
+    + Make the base widget manager .get_model() method always return a
+      Promise, which is rejected if the requested model is not
+      registered. To test if a model is registered, use the new
+      .has_model() method (#3389)
+  * Documentation improvements
+    + Documentation overhaul (#3104, #3096, #3099, #3076, #2824,
+      #3246, #3243, #3103, #3165, #3283, #2927, #3062, #3129, #3130,
+      #3155, )
+    + Remove step parameter from widget list notebook (#3106)
+    + Remove extra requirements from doc to fix RTD build (#3098)
+    + Align doc requirements for 7.x branch with master (#3094)
+    + Remove defunct deep-links from install in README (#3225)
+    + Fix documentation about embedding widget in HTML (#3224)
+    + Fix example web3 missing process during runtime (#3223)
+    + Complete docstring for interactive. (#3169)
+    + Unpin ipykernel<6 for the docs (#3168)
+    + Checking milestone and generating changelog (#3125)
+    + Change graph example to receive a tuple instead of a dict
+      (#3117)
+    + Fix debouncing and throttling code (#3060)
+    + Variable Inspector example used a wrong callback argument
+      signature (#3302)
+  * Repo maintenance
+    + Visual regression testing using Galata (#3172, #3279)
+    + Reorganize packages in the monorepo, moving the python packages
+      to the python folder (#3301, #3316)
+    + Use new custom widget label on issue template (#3176)
+    + Create and upload reference screenshots on CI failure (#3227)
+    + Allow generate-spec to take optional output file (#3174)
+    + Update to Jupyter Packaging 0.10 (#3194)
+    + Update bug report test environment (#3156)
+    + Create links out to gitter and discourse from the new issue
+      options (#3153)
+    + Adapt the milestone_check script from JupyterLab for
+      ipywidgets. (#3091)
+    + Fix spec generation for traitlets 5 (#3234)
+    + Add documentation issue template (#3095)
+    + Add Binder links and badges (#3164, #3212, #3151, #3148, #2701)
+
+-------------------------------------------------------------------
 Mon Aug  1 17:41:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 7.7.1
