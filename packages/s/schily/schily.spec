@@ -1,7 +1,7 @@
 #
 # spec file for package schily
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -705,7 +705,7 @@ fi
 %post rmt
 "%_sbindir/update-alternatives" \
 	--install "%_bindir/rmt" rmt "%_bindir/srmt" 10 \
-	--slave "%_mandir/man8/rmt.1%ext_man" "rmt.1%ext_man" "%_mandir/man8/srmt.1%ext_man"
+	--slave "%_mandir/man1/rmt.1%ext_man" "rmt.1%ext_man" "%_mandir/man1/srmt.1%ext_man"
 "%_sbindir/update-alternatives" --auto rmt
 
 %postun rmt
