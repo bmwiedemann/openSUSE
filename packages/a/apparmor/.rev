@@ -2455,4 +2455,17 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   https://gitlab.com/apparmor/apparmor/-/merge_requests/914 (bsc#1202344) (forwarded request 999408 from dmdiss)</comment>
     <requestid>999414</requestid>
   </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>4910bd8bba8ed39d7ca53dcfe3c15636</srcmd5>
+    <version>3.0.7</version>
+    <time>1661758942</time>
+    <user>dimstar_suse</user>
+    <comment>- update to AppArmor 3.0.7
+  - fix setuptools version detection in buildpath.py
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.0.7
+    for the detailed upstream changelog
+- add dnsmasq-cpu-possible.diff: allow reading /sys/devices/system/cpu/possible
+  in dnsmasc//libvirt-leaseshelper profile (boo#1202849) (forwarded request 999637 from cboltz)</comment>
+    <requestid>999638</requestid>
+  </revision>
 </revisionlist>

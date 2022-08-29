@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 28 10:41:29 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 3.0.7
+  - fix setuptools version detection in buildpath.py
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.0.7
+    for the detailed upstream changelog
+- add dnsmasq-cpu-possible.diff: allow reading /sys/devices/system/cpu/possible
+  in dnsmasc//libvirt-leaseshelper profile (boo#1202849)
+
+-------------------------------------------------------------------
 Fri Aug 26 11:37:21 UTC 2022 - David Disseldorp <ddiss@suse.com>
 
 - add profiles-permit-php-fpm-pid-files-directly-under-run.patch

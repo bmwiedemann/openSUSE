@@ -45,7 +45,7 @@
 %define JAR_FILE changeHatValve.jar
 
 Name:           apparmor
-Version:        3.0.6
+Version:        3.0.7
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -83,11 +83,14 @@ Patch6:         apache-extra-profile-include-if-exists.diff
 #                               + merged upstream 2022-06-29 https://gitlab.com/apparmor/apparmor/-/merge_requests/892 - master only)
 Patch9:         zgrep-profile-mr870.diff
 
-# add missing r permissions for dnsmasc//libvirt-leaseshelper (submitted upstream 2022-08-08 https://gitlab.com/apparmor/apparmor/-/merge_requests/905)
+# add missing r permissions for dnsmasc//libvirt-leaseshelper (merged upstream 2022-08-22 https://gitlab.com/apparmor/apparmor/-/merge_requests/905)
 Patch10:        dnsmasq.diff
 
 # permit php-fpm pid files under run (merged upstream 2022-08-26 https://gitlab.com/apparmor/apparmor/-/merge_requests/914)
 Patch11:        profiles-permit-php-fpm-pid-files-directly-under-run.patch
+
+# allow reading /sys/devices/system/cpu/possible in dnsmasc//libvirt-leaseshelper (boo#1202849, submitted upstream 2022-08-28 https://gitlab.com/apparmor/apparmor/-/merge_requests/917)
+Patch12:        dnsmasq-cpu-possible.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -357,6 +360,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 
 %build
 export SUSE_ASNEEDED=0
