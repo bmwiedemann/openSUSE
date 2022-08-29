@@ -16,23 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# gh#PyCQA/autoflake#100
+%define skip_python38 1
 Name:           python-autoflake
-Version:        1.4
+Version:        1.5.1
 Release:        0
 Summary:        Program to removes unused Python imports and variables
 License:        MIT
 URL:            https://github.com/myint/autoflake
 Source:         https://files.pythonhosted.org/packages/source/a/autoflake/autoflake-%{version}.tar.gz
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pyflakes >= 1.1.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module toml >= 0.10.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyflakes >= 1.1.0
+Requires:       python-toml >= 0.10.2
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
-BuildRequires:  %{python_module pyflakes >= 1.1.0}
 %python_subpackages
 
 %description
@@ -48,24 +51,19 @@ autoflake also removes useless pass statements.
 
 %prep
 %setup -q -n autoflake-%{version}
+sed -i '1{/env python/d}' autoflake.py
 
 %build
 %python_build
 
 %install
 %python_install
-
-%{python_expand chmod a-x %{buildroot}%{$python_sitelib}/autoflake.py
-%fdupes %{buildroot}%{$python_sitelib}
-}
-
 %python_clone -a %{buildroot}%{_bindir}/autoflake
+%fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export $LANG=en_US.UTF-8
-# gh#PyCQA/autoflake#104
-python310_skiptests='not test_is_literal_or_name'
-%pytest -k "${$python_skiptests}"
+export LANG=en_US.UTF-8
+%pyunittest -v test_autoflake
 
 %post
 %python_install_alternative autoflake
@@ -74,9 +72,11 @@ python310_skiptests='not test_is_literal_or_name'
 %python_uninstall_alternative autoflake
 
 %files %{python_files}
-%doc AUTHORS.rst README.rst
+%doc AUTHORS.rst README.md
 %license LICENSE
 %python_alternative %{_bindir}/autoflake
-%{python_sitelib}/*
+%{python_sitelib}/autoflake.py*
+%pycache_only %{python_sitelib}/__pycache__/autoflake*.pyc
+%{python_sitelib}/autoflake-%{version}*-info
 
 %changelog

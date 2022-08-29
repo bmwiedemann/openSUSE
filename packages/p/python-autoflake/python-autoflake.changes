@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 28 10:41:19 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v1.5.1
+  * support for reading configuration from setup.cfg and
+    pyproject.toml
+  * new flag `--quiet`
+  * drop support for old versions of Python (<3.7)
+  * support for reading contents from stdin (prints the output to
+    stdout, ideal for integration with editors)
+  * support for parallel execution with `--jobs`
+- Skip building Python 3.8: gh#PyCQA/autoflake#100
+
+-------------------------------------------------------------------
 Wed Feb 23 14:04:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Skip failing test for Python 3.10 (gh#PyCQA/autoflake#104)
