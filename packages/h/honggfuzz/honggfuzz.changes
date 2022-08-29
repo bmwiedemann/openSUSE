@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 25 12:48:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.5
+  * fixed build for Android NDK >= 23
+  * fixed build for CygWin
+  * improved hfuzz-cc, so it supports -x correctly
+  * error returned if unknown cmd-line parameters are provided
+  * support for thread CPU pinning
+  * various fixes for *BSD
+  * increased number of dictionary entries (to 8192)
+- Add upstream changes to fix build with recent binutils:
+  * 0001-Always-pass-4-arguments-to-init_disassemble_info-no-.patch
+  * 0002-linux-bfd-use-DIAGNOSTIC_ERROR_SWITCH-define-to-figu.patch
+  * 0003-linux-bfd-cover-include-diagnostics.h-with-__has_inc.patch
+
+-------------------------------------------------------------------
 Thu Apr 22 07:31:18 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.4:

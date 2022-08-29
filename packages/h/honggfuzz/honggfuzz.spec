@@ -1,7 +1,7 @@
 #
 # spec file for package honggfuzz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,17 @@
 
 
 Name:           honggfuzz
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        Security-oriented fuzzer with various analysis options
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://honggfuzz.com
 Source:         https://github.com/google/honggfuzz/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- binutils compatibility changes
+Patch0:         0001-Always-pass-4-arguments-to-init_disassemble_info-no-.patch
+Patch1:         0002-linux-bfd-use-DIAGNOSTIC_ERROR_SWITCH-define-to-figu.patch
+Patch2:         0003-linux-bfd-cover-include-diagnostics.h-with-__has_inc.patch
 BuildRequires:  binutils-devel
 BuildRequires:  libunwind-devel
 BuildRequires:  zlib-devel
@@ -34,7 +38,7 @@ evolutionary, feedback-driven fuzzing based on code coverage
 (software and hardware).
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"
