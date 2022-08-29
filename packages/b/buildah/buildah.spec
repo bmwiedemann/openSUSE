@@ -26,6 +26,7 @@ Group:          System/Management
 URL:            https://%{project}
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
+Patch0:         https://github.com/containers/buildah/commit/f0b2d39b83cd3bae8a6d0ef8c05fd384f81412a0.patch#./add-container-gid-to-additional-groups.patch
 BuildRequires:  bash-completion
 BuildRequires:  device-mapper-devel
 BuildRequires:  fdupes
@@ -65,7 +66,7 @@ Buildah provides a command line tool which can be used to:
 - Delete a working container or an image
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # We can't use symlinks here because go-list gets confused by symlinks, so we

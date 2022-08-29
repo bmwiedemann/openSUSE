@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 26 12:13:12 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Add fix for CVE-2022-2990 / bsc#1202812
+  add: add-container-gid-to-additional-groups.patch
+
+-------------------------------------------------------------------
 Tue Aug 09 06:54:52 UTC 2022 - dcermak@suse.com
 
 - Update to version 1.27.0:
