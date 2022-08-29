@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 27 22:47:33 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Bump version to 20220827
+- Remove Recommends: obconf, no good reason to have both the GTK and Qt versions installed.
+
+-------------------------------------------------------------------
 Thu Aug 18 14:59:44 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Bump version to 20220818
