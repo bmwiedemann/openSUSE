@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 28 16:45:30 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tree 2.0.3:
+  * Fix segfault when filelimit is used and tree encounters a
+    directory it cannot enter
+  * Fixed broken -x option (stops recursing.)
+  * Fix use after free (causing segfault) for dir/subdir in list.c
+  * Multiple fixes for .gitignore functionality
+  * Fixed segfault when an unknown directory is given with -X
+  * Fixed output up for -X and -J options
+
+-------------------------------------------------------------------
 Thu Feb 17 19:27:53 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tree 2.0.2:

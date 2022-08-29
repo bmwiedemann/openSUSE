@@ -17,13 +17,13 @@
 
 
 Name:           tree
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        File listing as a tree
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
-URL:            http://mama.indstate.edu/users/ice/tree/
-Source0:        http://mama.indstate.edu/users/ice/tree/src/%{name}-%{version}.tgz
+URL:            https://mama.indstate.edu/users/ice/tree/
+Source0:        https://mama.indstate.edu/users/ice/tree/src/%{name}-%{version}.tgz
 
 %description
 Tree is a recursive directory listing command that produces a depth
