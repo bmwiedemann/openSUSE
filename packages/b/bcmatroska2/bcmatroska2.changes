@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 14 12:21:42 UTC 2022 - thod_@gmx.de
+
+- Remove RPATH to be able to build on Fedora
+
+-------------------------------------------------------------------
+Mon Jul 26 13:19:10 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 0.23+git.20210209
+
+- changed version from 0.23~git.20210209 to 0.23+git.20210209,
+  0.23~git.20210209 is considered older than the previous version 0.23
+  and could cause the package not being updated automatically
+- fix several RPMLINT warning
+
+-------------------------------------------------------------------
 Wed Jul 14 08:47:34 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to latest commit in order to be able to build the

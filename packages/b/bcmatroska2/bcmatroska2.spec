@@ -1,7 +1,7 @@
 #
 # spec file for package bcmatroska2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 %define sover   0
 Name:           bcmatroska2
-Version:        0.23~git.20210209
+Version:        0.23+git.20210209
 Release:        0
 Summary:        C Library to Deal with Matroska Files
 License:        BSD-3-Clause AND Zlib AND GPL-2.0-or-later
+Group:          Development/Libraries/C and C++
 URL:            https://gitlab.linphone.org/BC/public/bcmatroska2
 Source:         bcmatroska2-%{version}.tar.xz
 Source1:        baselibs.conf
 Patch0:         bcmatroska2-include-subdir.patch
+BuildRequires:  chrpath
 BuildRequires:  cmake
 
 %description
@@ -33,12 +35,14 @@ Bcmatroska2 is a C library to parse Matroska files (.mkv and .mka).
 
 %package -n lib%{name}-%{sover}
 Summary:        C Library to Deal with Matroska Files
+Group:          Development/Libraries/C and C++
 
 %description -n lib%{name}-%{sover}
 Bcmatroska2 is a C library to parse Matroska files (.mkv and .mka).
 
 %package devel
 Summary:        Development files for bcmatroska2
+Group:          Development/Libraries/C and C++
 Requires:       lib%{name}-%{sover} = %{version}
 # Needed by mediastreamer2. This is a fake minor version because upstream didn't release
 # a '.1', therefore we've gotta use this workaround.
@@ -60,6 +64,8 @@ applications which will use libbcmatroska2.
 
 %install
 %cmake_install
+
+chrpath -d %{buildroot}%{_libdir}/lib%{name}.so.%{sover}*
 
 %post -n lib%{name}-%{sover} -p /sbin/ldconfig
 %postun -n lib%{name}-%{sover} -p /sbin/ldconfig
