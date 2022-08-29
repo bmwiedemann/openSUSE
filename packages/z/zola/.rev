@@ -23,4 +23,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>999516</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>bafd2d41691c47f41357d7e38142b718</srcmd5>
+    <version>0.16.1</version>
+    <time>1661758945</time>
+    <user>dimstar_suse</user>
+    <comment>- fix specfile. require and supplement bash-completion instead of bash
+- add shell completions
+- add docs README.md CHANGELOG.md
+</comment>
+    <requestid>999676</requestid>
+  </revision>
 </revisionlist>

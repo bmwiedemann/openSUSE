@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 28 10:21:51 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- fix specfile. require and supplement bash-completion instead of bash
+
+-------------------------------------------------------------------
+Sun Aug 28 01:59:39 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- add shell completions
+- add docs README.md CHANGELOG.md
+
+-------------------------------------------------------------------
 Sat Aug 20 00:18:47 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 0.16.1:

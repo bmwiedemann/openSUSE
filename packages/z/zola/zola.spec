@@ -43,6 +43,36 @@ a strongly defined, highly compatible specification of Markdown.
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
+%package        fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and fish)
+Requires:       fish
+BuildArch:      noarch
+
+%description    fish-completion
+Fish command-line completion support for %{name}.
+
+%package        zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+Requires:       zsh
+BuildArch:      noarch
+
+%description    zsh-completion
+Zsh command-line completion support for %{name}.
+
+%package        bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and bash-completion)
+Requires:       bash-completion
+BuildArch:      noarch
+
+%description    bash-completion
+Bash command-line completion support for %{name}.
+
 %build
 %if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
 export RUSTC_BOOTSTRAP=1
@@ -55,6 +85,9 @@ export RUSTC_BOOTSTRAP=1
 %endif
 
 %{cargo_install}
+install -Dm 0644 completions/%{name}.bash -t %{buildroot}%{_datadir}/bash-completion/completions/
+install -Dm 0644 completions/%{name}.fish -t %{buildroot}%{_datadir}/fish/vendor_completions.d/
+install -Dm 0644 completions/_%{name} -t %{buildroot}%{_datadir}/zsh/site-functions/
 
 %check
 %if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
@@ -65,6 +98,37 @@ export RUSTC_BOOTSTRAP=1
 %files
 %{_bindir}/zola
 %license LICENSE
+%doc docs README.md CHANGELOG.md
+
+%files bash-completion
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/zola.bash
+
+%files fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/zola.fish
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_zola
+
+%files bash-completion
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/zola.bash
+
+%files fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/zola.fish
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_zola
 
 %doc README.md
 
