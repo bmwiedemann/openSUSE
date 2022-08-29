@@ -17,23 +17,16 @@
 
 
 Name:           wasm-pack
-#               This will be set by osc services, that will run after this.
-Version:        0.10.2~0
+Version:        0.10.3~0
 Release:        0
 Summary:        Your favorite Rust → Wasm workflow tool!
-#               If you know the license, put it's SPDX string here.
-#               Alternately, you can use cargo lock2rpmprovides to help generate this.
-License:        ( 0BSD OR MIT OR Apache-2.0 ) AND ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR MIT ) AND ( MIT OR Apache-2.0 AND BSD-2-Clause ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( MIT OR Zlib OR Apache-2.0 ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT
-#               Select a group from this link:
-#               https://en.opensuse.org/openSUSE:Package_group_guidelines
+License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT
 Group:          Development/Languages/Rust
 URL:            https://github.com/rustwasm/wasm-pack
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
-# Disable this line if you wish to support all platforms.
-# In most situations, you will likely only target tier1 arches for user facing components.
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
@@ -46,14 +39,11 @@ alongside any javascript packages in workflows that you already use, such as web
 %autosetup -a1
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
-# Remove exec bits to prevent an issue in fedora shebang checking. Uncomment only if required.
-# find vendor -type f -name \*.rs -exec chmod -x '{}' \;
 
 %build
 %{cargo_build}
 
 %install
-# using cargo_install (only supports bindir)
 %{cargo_install}
 
 %files

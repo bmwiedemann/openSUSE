@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 24 19:55:52 UTC 2022 - elimat@opensuse.org
+
+- Update to version 0.10.3~0:
+  * 0.10.3
+  * chore(deps): bump regex from 1.5.4 to 1.5.6
+  * chore(deps): bump openssl-src from 111.17.0+1.1.1m to 111.20.0+1.1.1o
+  * Update release.yml
+  * Clean up package.json from previous runs
+  * Do not remove the pkg directory
+  * 0.10.2
+
+-------------------------------------------------------------------
+Mon Jun 20 03:34:49 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
 Tue May 24 06:35:43 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
