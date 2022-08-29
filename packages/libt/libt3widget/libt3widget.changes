@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 29 09:52:30 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.2
+  * Fix incorrect computation of the number of endchars in a
+    text_line when the end of the line truncated a double-width
+    character. This would cause a segmentation fault in the
+    t3window library.
+  * This release fixes a bug which makes Tilde crash on start up,
+    due to a typo in a copy-assignment operator signature which
+    causes an infinite recursion.
+
+-------------------------------------------------------------------
 Thu Dec 19 23:52:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.0

@@ -77,4 +77,12 @@
     <comment>- Update to release 1.2.0</comment>
     <requestid>758356</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>17ac8f356b6f24a0c91edf6509dd875c</srcmd5>
+    <version>1.2.2</version>
+    <time>1661778994</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>999939</requestid>
+  </revision>
 </revisionlist>

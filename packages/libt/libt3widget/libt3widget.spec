@@ -1,7 +1,7 @@
 #
 # spec file for package libt3widget
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libt3widget
 %define lname	libt3widget2
-Version:        1.2.0
+Version:        1.2.2
 Release:        0
 Summary:        The Tilde terminal dialog toolkit
 License:        GPL-3.0-only
@@ -77,8 +77,8 @@ applications that want to make use of libt3widget.
 %autosetup -p1
 
 %build
-%configure --docdir="%_docdir/%name"
-make %{?_smp_mflags}
+./configure --prefix="%_prefix" --libdir="%_libdir" --docdir="%_docdir/%name"
+%make_build
 
 %install
 %make_install
@@ -93,7 +93,7 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %license COPYING
 
 %files devel
-%_includedir/t3/
+%_includedir/t3widget/
 %_libdir/libt3widget.so
 %_libdir/pkgconfig/libt3widget.pc
 %_libdir/libt3widget/
