@@ -1,7 +1,7 @@
 #
 # spec file for package opencensus-proto
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,12 @@
 %define src_install_dir /usr/src/%{name}
 
 Name:           opencensus-proto
-Version:        0.2.1+git.20190826
+Version:        0.3.0+git.20200721
 Release:        0
 Summary:        Protocol buffers for OpenCensus
 License:        Apache-2.0
 Group:          Development/Languages/Golang
-Url:            https://%{provider_prefix}
+URL:            https://%{provider_prefix}
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
