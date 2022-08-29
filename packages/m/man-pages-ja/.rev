@@ -301,4 +301,12 @@
   * Added and improved manual pages (forwarded request 976112 from susnux)</comment>
     <requestid>976201</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>565b0d84f03515da8d24ccd010c953a4</srcmd5>
+    <version>20220815</version>
+    <time>1661782823</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 1000004 from jengelh)</comment>
+    <requestid>1000012</requestid>
+  </revision>
 </revisionlist>

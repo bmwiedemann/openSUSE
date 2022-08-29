@@ -17,7 +17,7 @@
 
 
 Name:           man-pages-ja
-Version:        20220415
+Version:        20220815
 Release:        0
 Summary:        LDP Manual Pages (Japanese)
 License:        BSD-3-Clause AND GPL-2.0-only AND GFDL-1.1-only AND GFDL-1.2-only AND GFDL-1.3-only
@@ -40,7 +40,7 @@ Note that they are normally older than the English versions.  For
 reference, you should use the English versions.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 
@@ -207,7 +207,6 @@ done
 %fdupes -s %{buildroot}/%{_prefix}
 
 %files
-%defattr(-,root,root)
 %{_mandir}/ja
 %doc README
 
