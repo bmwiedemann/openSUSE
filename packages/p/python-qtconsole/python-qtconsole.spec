@@ -24,14 +24,13 @@
 %bcond_with libalternatives
 %endif
 Name:           python-qtconsole
-Version:        5.3.1
+Version:        5.3.2
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/qtconsole
 Source0:        https://files.pythonhosted.org/packages/source/q/qtconsole/qtconsole-%{version}.tar.gz
-Source100:      python-qtconsole-rpmlintrc
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module setuptools}
@@ -43,19 +42,23 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 # QtPy does note require or depend on one of the frameworks itself
-Requires:       (python-qt5 or python-pyside2)
-Requires:       jupyter-qtconsole = %{version}
+Requires:       (python-qt5 or python-pyside2 or python-PyQt6 or python-pyside6)
 Requires:       python-Pygments
 Requires:       python-QtPy >= 2.0.1
 Requires:       python-ipykernel >= 4.1
 Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 4.1
 Requires:       python-jupyter-core
+Requires:       python-pyzmq >= 17.1
 Requires:       python-traitlets
 Conflicts:      python-traitlets = 5.2.1
 Conflicts:      python-traitlets = 5.2.2
 Provides:       python-jupyter_qtconsole = %{version}
 Obsoletes:      python-jupyter_qtconsole < %{version}
+%if "%{python_flavor}" == "%{primary_python}"
+Provides:       jupyter-qtconsole = %{version}-%{release}
+Obsoletes:      jupyter-qtconsole < %{version}-%{release}
+%endif
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -72,7 +75,9 @@ BuildRequires:  %{python_module ipykernel >= 4.1}
 BuildRequires:  %{python_module ipython_genutils}
 BuildRequires:  %{python_module jupyter-client >= 4.1}
 BuildRequires:  %{python_module pytest-qt}
+BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pyzmq >= 17.1}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module traitlets}
 # /SECTION
@@ -81,30 +86,6 @@ BuildRequires:  %{python_module traitlets}
 %description
 A rich Qt-based console for working with Jupyter kernels,
 supporting rich media output, session export, and more.
-
-This package provides the python components.
-
-%package     -n jupyter-qtconsole
-Summary:        Jupyter Qt console
-Group:          Development/Languages/Python
-Requires:       jupyter-ipykernel >= 4.1
-Requires:       jupyter-jupyter-client >= 4.1
-Requires:       jupyter-jupyter-core
-Requires:       python3-jupyter-core
-Requires:       python3-qtconsole = %{version}
-Conflicts:      python3-jupyter_qtconsole < 4.4.4
-Provides:       jupyter-qtconsole-doc = %{version}
-Obsoletes:      jupyter-qtconsole-doc < %{version}
-Provides:       %{python_module jupyter_qtconsole-doc = %{version}}
-Provides:       %{python_module qtconsole-doc = %{version}}
-Provides:       python-qtconsole-doc = %{version}
-Obsoletes:      %{python_module jupyter_qtconsole-doc < %{version}}
-
-%description -n jupyter-qtconsole
-A rich Qt-based console for working with Jupyter kernels,
-supporting rich media output, session export, and more.
-
-This package provides the jupyter components.
 
 %prep
 %setup -q -n qtconsole-%{version}
@@ -117,23 +98,25 @@ export LANG=en_US.UTF-8
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%python_clone -a %{buildroot}%{_bindir}/jupyter-qtconsole
+
 # Install icon
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
-cp qtconsole/resources/icon/JupyterConsole.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/JupyterQtConsole.svg
+%python_expand cp qtconsole/resources/icon/JupyterConsole.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/JupyterQtConsole-%{$python_bin_suffix}.svg
 
 # Modify and install .desktop file
 pushd examples
-desktop-file-edit --set-icon="JupyterQtConsole" jupyter-qtconsole.desktop
-%suse_update_desktop_file -i -r jupyter-qtconsole "System;TerminalEmulator;"
+%{python_expand # clone desktop file for flavors
+cp jupyter-qtconsole.desktop jupyter-qtconsole-%{$python_bin_suffix}.desktop
+desktop-file-edit \
+  --set-icon="JupyterQtConsole-%{$python_bin_suffix}" \
+  --set-key=Exec --set-value="jupyter-qtconsole-%{$python_bin_suffix}" jupyter-qtconsole-%{$python_bin_suffix}.desktop
+%suse_update_desktop_file -i -r jupyter-qtconsole-%{$python_bin_suffix} "System;TerminalEmulator;"
+}
 popd
 
-%python_clone -a %{buildroot}%{_bindir}/jupyter-qtconsole
-
 %check
-export QT_QPA_PLATFORM="offscreen"
-# test skips: https://github.com/jupyter/qtconsole/issues/443
-# now with test_input too. But does not seem to happen on the build server, only locally.
-%pytest -ra -k "not (test_00 and (test_scroll or test_debug or test_input))"
+%pytest -ra
 
 %pre
 %python_libalternatives_reset_alternative jupyter-qtconsole
@@ -147,12 +130,9 @@ export QT_QPA_PLATFORM="offscreen"
 %files %{python_files}
 %license LICENSE
 %python_alternative %{_bindir}/jupyter-qtconsole
-%{python_sitelib}/qtconsole-%{version}-py*.egg-info
+%{_datadir}/applications/jupyter-qtconsole-%{python_bin_suffix}.desktop
+%{_datadir}/icons/hicolor/scalable/apps/JupyterQtConsole-%{python_bin_suffix}.svg
+%{python_sitelib}/qtconsole-%{version}*-info
 %{python_sitelib}/qtconsole/
-
-%files -n jupyter-qtconsole
-%license LICENSE
-%{_datadir}/applications/jupyter-qtconsole.desktop
-%{_datadir}/icons/hicolor/scalable/apps/JupyterQtConsole.svg
 
 %changelog

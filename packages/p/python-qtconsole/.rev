@@ -206,4 +206,19 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
 </comment>
     <requestid>984518</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4d8d4a0c78b55b3ecf2d881de022670a</srcmd5>
+    <version>5.3.2</version>
+    <time>1661758977</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.3.2
+  * Fix syntax highlighting with multiline inputs.
+- Test with xvfb display
+- Remove skip of previously segfaulting tests
+- Allow PyQt6 and Pyside6 as backend
+- Add missing pyzmq requirement (was already transitive)
+- Remove obsolete jupyter package, provide desktop files and icon
+  for every flavor</comment>
+    <requestid>999724</requestid>
+  </revision>
 </revisionlist>
