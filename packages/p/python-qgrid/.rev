@@ -127,4 +127,13 @@
 </comment>
     <requestid>976215</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>c8373f991150bb8c7ccabfd6e042e13f</srcmd5>
+    <version>1.3.1</version>
+    <time>1661758975</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix ipywidgets8 registration
+  * gh#quantopian/qgrid#376</comment>
+    <requestid>999716</requestid>
+  </revision>
 </revisionlist>

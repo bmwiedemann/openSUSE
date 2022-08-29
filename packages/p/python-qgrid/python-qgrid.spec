@@ -1,7 +1,7 @@
 #
 # spec file for package python-qgrid
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,8 @@ This package provides the jupyter notebook extension.
 
 %prep
 %setup -q -n qgrid-%{version}
+# gh#quantopian/qgrid#376
+sed -i 's/\(widgets.register\)()/\1/' qgrid/grid.py
 
 %build
 %python_build

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 28 21:16:28 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix ipywidgets8 registration
+  * gh#quantopian/qgrid#376
+
+-------------------------------------------------------------------
 Sat May  7 23:05:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix fdupes and distconfig errors
