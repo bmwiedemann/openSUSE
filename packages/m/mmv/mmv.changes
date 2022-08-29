@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 29 10:54:34 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3
+  * Lift restriction that mmv could not work on directories
+    (except with -r)
+  * Remove the ability to read output back on standard input
+- Delete allow-non-ascii.patch, mmv-1.01b-include.dif,
+  mmv-1.01b-options.patch, mmv-1.01b.dif (no longer applicable)
+
+-------------------------------------------------------------------
 Sun Jul 12 19:26:49 UTC 2015 - mpluskal@suse.com
 
 - Cleanup spec file with spec-cleaner
