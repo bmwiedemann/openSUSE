@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Aug 28 21:33:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.4.1
+  * no release notes
+  * jupyter-threejs 2.4.0
+  * jupyter-threejs-jupyterlab 2.4.0
+- Obsolete old names:
+  * jupyter-pythreejs
+  * jupyter-pythreejs-jupyterlab
+
+-------------------------------------------------------------------
+Sun Aug 21 20:11:26 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.3.0
+  * no release notes
+  * jupyter lab 3.0 federated bundle support
+
+-------------------------------------------------------------------
 Sat Apr 10 20:28:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip python36 build: no numpy and datawidgets for python36 on

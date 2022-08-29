@@ -1,7 +1,7 @@
 #
 # spec file for package python-pythreejs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
-%define mainver 2.2.1
-%define labver  2.2.0
+%define mainver 2.4.1
+%define jupver  2.4.0
 Name:           python-pythreejs
 Version:        %{mainver}
 Release:        0
@@ -31,17 +28,19 @@ URL:            https://github.com/jupyter-widgets/pythreejs
 # Get examples for testing from GitHub
 Source0:        https://github.com/jupyter-widgets/pythreejs/archive/%{version}.tar.gz#/pythreejs-%{version}-gh.tar.gz
 # but install from wheel for bundles js stuff
-Source1:        https://files.pythonhosted.org/packages/py2.py3/p/pythreejs/pythreejs-%{version}-py2.py3-none-any.whl
+Source1:        https://files.pythonhosted.org/packages/py3/p/pythreejs/pythreejs-%{version}-py3-none-any.whl
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  python-rpm-macros
-Recommends:     jupyter-pythreejs-jupyterlab = %{labver}
-Requires:       jupyter-pythreejs = %{version}
+Recommends:     jupyter-threejs-jupyterlab = %{jupver}
+Requires:       jupyter-threejs = %{jupver}
 Requires:       python-ipydatawidgets >= 1.1.1
 Requires:       python-ipywidgets >= 7.2.1
 Requires:       python-numpy >= 1.14
+Requires:       python-traitlets
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module ipydatawidgets >= 1.1.1}
@@ -53,6 +52,7 @@ BuildRequires:  %{python_module numpy >= 1.14}
 BuildRequires:  %{python_module pytest-check-links}
 BuildRequires:  %{python_module scikit-image}
 BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module traitlets}
 # /SECTION
 %python_subpackages
 
@@ -62,30 +62,35 @@ using Three.js from Jupyter interactive widgets.
 
 This package provides the python interface.
 
-%package     -n jupyter-pythreejs
+%package     -n jupyter-threejs
+Version:        %{jupver}
 Summary:        A Python/ThreeJS bridge utilizing the Jupyter widget infrastructure
 Group:          Development/Languages/Python
 Requires:       jupyter-ipydatawidgets >= 1.1.1
 Requires:       jupyter-ipywidgets >= 7.2.1
 Requires:       jupyter-notebook
 Requires:       python3-pythreejs = %{mainver}
+Provides:       jupyter-pythreejs = %{jupver}-%{release}
+Obsoletes:      jupyter-pythreejs < %{jupver}-%{release}
 
-%description -n jupyter-pythreejs
+%description -n jupyter-threejs
 Interactive 3d graphics for the Jupyter notebook,
 using Three.js from Jupyter interactive widgets.
 
 This package provides the jupyter notebook extension.
 
-%package     -n jupyter-pythreejs-jupyterlab
+%package     -n jupyter-threejs-jupyterlab
 Summary:        A Python/ThreeJS bridge utilizing the Jupyter widget infrastructure
 Group:          Development/Languages/Python
-Version:        %{labver}
+Version:        %{jupver}
 Release:        0
 Requires:       jupyter-ipydatawidgets-jupyterlab >= 1.1.1
 Requires:       jupyter-jupyterlab
 Requires:       python3-pythreejs = %{mainver}
+Provides:       jupyter-pythreejs-jupyterlab = %{jupver}-%{release}
+Obsoletes:      jupyter-pythreejs-jupyterlab < %{jupver}-%{release}
 
-%description -n jupyter-pythreejs-jupyterlab
+%description -n jupyter-threejs-jupyterlab
 Interactive 3d graphics for the Jupyter notebook,
 using Three.js from Jupyter interactive widgets.
 
@@ -110,22 +115,21 @@ cp %{buildroot}%{python3_sitelib}/pythreejs-%{mainver}.dist-info/LICENSE .
 %fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{python3_sitelib}
 
 %check
-# these require packages from the NEP 29 family (Python > 3.6)
-python36_donttest="Examples.ipynb or Picker.ipynb or superellipsoid.ipynb"
-%pytest -l --nbval-lax --current-env examples ${$python_donttest:+ -k "not (${$python_donttest})"}
+%pytest -l --nbval-lax --current-env examples
 
 %files %{python_files}
 %license LICENSE
 %{python_sitelib}/pythreejs/
 %{python_sitelib}/pythreejs-%{mainver}.dist-info/
 
-%files -n jupyter-pythreejs
+%files -n jupyter-threejs
 %license LICENSE
-%config %{_jupyter_nb_notebook_confdir}/jupyter-threejs.json
+%_jupyter_config %{_jupyter_nb_notebook_confdir}/jupyter-threejs.json
 %{_jupyter_nbextension_dir}/jupyter-threejs/
 
-%files -n jupyter-pythreejs-jupyterlab
+%files -n jupyter-threejs-jupyterlab
 %license LICENSE
-%{_jupyter_labextensions_dir}/jupyter-threejs-%{labver}.tgz
+%{_jupyter_labextensions_dir}/jupyter-threejs-%{jupver}.tgz
+%{_jupyter_labextensions_dir3}/jupyter-threejs/
 
 %changelog
