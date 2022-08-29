@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-AMQP-RabbitMQ
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define cpan_name Net-AMQP-RabbitMQ
 Name:           perl-Net-AMQP-RabbitMQ
-Version:        2.40009
+Version:        2.40010
 Release:        0
 #Upstream: MPL
-Summary:        Interact with RabbitMQ over AMQP using librabbitmq
 License:        MPL-1.1
+Summary:        Interact with RabbitMQ over AMQP using librabbitmq
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MS/MSTEMLE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -46,6 +46,7 @@ you appropriately catch the errors.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
@@ -61,7 +62,7 @@ perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING.md README.md
+%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
 %license LICENSE LICENSE-MIT
 
 %changelog
