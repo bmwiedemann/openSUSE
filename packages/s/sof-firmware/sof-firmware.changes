@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 28 04:34:38 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add sof-tplg-v2.2.1
+  * https://github.com/thesofproject/sof/releases/tag/v2.2.1
+  * topology updates for SoundWire, Intel APL/GLK platform with ES8336 codec,
+    and Intel RPL platform
+
+-------------------------------------------------------------------
 Sun Jul 17 04:40:36 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to version 2.2:

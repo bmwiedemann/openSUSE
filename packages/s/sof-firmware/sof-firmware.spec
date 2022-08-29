@@ -20,15 +20,19 @@
 %define _firmwaredir /lib/firmware
 %endif
 
+%define sofversion  2.2
+%define tplgversion 2.2.1
+
 Name:           sof-firmware
 Summary:        Firmware Data Files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        2.2
+Version:        %tplgversion
 Release:        0
 URL:            https://github.com/thesofproject/sof-bin
 BuildRequires:  fdupes
-Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{version}/sof-bin-v%{version}.tar.gz
+Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{sofversion}/sof-bin-v%{sofversion}.tar.gz
+Source2:        https://github.com/thesofproject/sof-bin/releases/download/v%tplgversion/sof-tplg-v%tplgversion.tar.gz
 BuildArch:      noarch
 # Merrifield
 Supplements:    modalias(pci:v00008086d0000119Asv*sd*bc*sc*i*)
@@ -76,16 +80,17 @@ Conflicts:      filesystem < 84
 Various firmware data files for SOF drivers.
 
 %prep
-%setup -q -n sof-bin-v%{version}
+%setup -q -n sof-bin-v%{sofversion}
+tar xf %{SOURCE2}
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_firmwaredir}/intel
 # due to the upgrade problem, we can't make sof-v* -> sof symlink
-cp -a sof-v%{version} %{buildroot}%{_firmwaredir}/intel/sof
-cp -a sof-tplg-v%{version} %{buildroot}%{_firmwaredir}/intel/
-ln -s sof-tplg-v%{version} %{buildroot}%{_firmwaredir}/intel/sof-tplg
+cp -a sof-v%{sofversion} %{buildroot}%{_firmwaredir}/intel/sof
+cp -a sof-tplg-v%{tplgversion} %{buildroot}%{_firmwaredir}/intel/
+ln -s sof-tplg-v%{tplgversion} %{buildroot}%{_firmwaredir}/intel/sof-tplg
 %fdupes -s %{buildroot}
 
 %files
