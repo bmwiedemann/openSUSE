@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 26 21:18:56 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add llvm-lifetime-for-rust.patch to have Rust memory management
+  functions considered as lifetime markers. This should aid dead
+  store elimination to dynamically allocated memory in Rust code.
+
+-------------------------------------------------------------------
+Tue Aug 23 21:20:47 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Don't declare python3-clang as noarch: Python packages are
+  installed into %{_libdir}.
+
+-------------------------------------------------------------------
+Sat Aug 13 21:53:05 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Use black RPM macro magic to deduplicate binary lists. This
+  should have no effect on the generated RPM but shaves ~400 lines
+  off the specfile and hopefully makes future maintenance easier.
+
+-------------------------------------------------------------------
 Wed Aug 10 20:21:59 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add WebAssembly support for all architectures.

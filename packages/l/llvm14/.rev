@@ -116,4 +116,20 @@ disable the corresponding tests.
 - Add llvm-glibc-2-36.patch in order to address boo#1202215.</comment>
     <requestid>994402</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>4c3e9601bc16ff45d70e58b1e00ed530</srcmd5>
+    <version>14.0.6</version>
+    <time>1661758937</time>
+    <user>dimstar_suse</user>
+    <comment>- Add llvm-lifetime-for-rust.patch to have Rust memory management
+  functions considered as lifetime markers. This should aid dead
+  store elimination to dynamically allocated memory in Rust code.
+- Don't declare python3-clang as noarch: Python packages are
+  installed into %{_libdir}.
+- Use black RPM macro magic to deduplicate binary lists. This
+  should have no effect on the generated RPM but shaves ~400 lines
+  off the specfile and hopefully makes future maintenance easier.
+</comment>
+    <requestid>999576</requestid>
+  </revision>
 </revisionlist>

@@ -111,6 +111,210 @@
         test "$max_%{1}_jobs" -le 0 && max_%{1}_jobs=1 && echo "Warning: Not %{1}ing in parallel at all because of memory limits" \
     fi
 
+# Recursion utils.
+%global _stop0 1
+%define _lapply_rec(p:f:) %{expand:%{%{-p*} %{-f*}} %%{?!_stop%#:%%{_lapply_rec -p %{-p*} -f %*}}}
+
+# Usage:
+#   %%global pattern foo_%%1
+#   %%{lapply -p pattern a b c}
+# produces foo_a foo_b foo_c.
+%define lapply(p:) %{_lapply_rec -p %{-p*} -f %{shrink:%*}}
+
+%define comment() %{nil}
+
+# Due to RPMs recursion limit, we have to split the lists into portions of ≤ 20.
+%global llvm_ua_anchor llvm-ar
+%global llvm_tools \
+%{comment Optimizer, compiler, interpreter, linker} \
+    llc \
+    lli \
+    llvm-jitlink \
+    llvm-link \
+    llvm-lto \
+    llvm-lto2 \
+    llvm-rtdyld \
+    opt \
+%{comment LLVM IR tools} \
+    llvm-as \
+    llvm-bcanalyzer \
+    llvm-bitcode-strip \
+    llvm-cat \
+    llvm-diff \
+    llvm-dis \
+    llvm-extract \
+    llvm-modextract \
+    llvm-sim \
+    llvm-split
+%global llvm_elf_dwarf_tools \
+%{comment ELF tools} \
+    llvm-cfi-verify \
+    llvm-nm \
+    llvm-objcopy \
+    llvm-objdump \
+    llvm-ranlib \
+    llvm-readelf \
+    llvm-readobj \
+    llvm-size \
+    llvm-strip \
+%{comment Debug info tools} \
+    dsymutil \
+    llvm-addr2line \
+    llvm-debuginfod-find \
+    llvm-dwarfdump \
+    llvm-dwp \
+    llvm-gsymutil
+%global llvm_abi_coff_macho_tools \
+%{comment ABI tools} \
+    llvm-cxxdump \
+    llvm-cxxfilt \
+    llvm-cxxmap \
+    llvm-ifs \
+%{comment Windows/COFF} \
+    llvm-cvtres \
+    llvm-dlltool \
+    llvm-lib \
+    llvm-ml \
+    llvm-mt \
+    llvm-pdbutil \
+    llvm-rc \
+    llvm-undname \
+    llvm-windres \
+%{comment Apple/Mach-O} \
+    llvm-install-name-tool \
+    llvm-libtool-darwin \
+    llvm-lipo \
+    llvm-otool \
+    llvm-tapi-diff
+%global llvm_instr_devel_tools \
+%{comment Instrumentation and introspection} \
+    llvm-cov \
+    llvm-opt-report \
+    llvm-profdata \
+    llvm-profgen \
+    llvm-symbolizer \
+    llvm-xray \
+    sancov \
+    sanstats \
+%{comment Development utilities} \
+    bugpoint \
+    llvm-c-test \
+    llvm-mc \
+    llvm-mca \
+    llvm-reduce \
+    llvm-stress \
+    llvm-strings \
+    llvm-tblgen \
+    llvm-tli-checker \
+    split-file \
+    verify-uselistorder
+
+%global clang_ua_anchor clang
+%global clang_binfiles \
+    c-index-test \
+    clang++ \
+    clang-check \
+    clang-cl \
+    clang-extdef-mapping \
+    clang-format \
+    clang-linker-wrapper \
+    clang-nvlink-wrapper \
+    clang-offload-bundler \
+    clang-offload-wrapper \
+    clang-refactor \
+    clang-rename \
+    clang-repl \
+    clang-scan-deps \
+    diagtool
+%global clang_tools_extra_binfiles \
+    clang-apply-replacements \
+    clang-change-namespace \
+    clang-include-fixer \
+    clang-move \
+    clang-query \
+    clang-reorder-fields \
+    clang-tidy \
+    clangd \
+    find-all-symbols \
+    modularize \
+    pp-trace
+%if %{with lld}
+%global lld_ua_anchor lld
+%global lld_binfiles \
+    ld.lld \
+    lld-link \
+    ld64.lld \
+    wasm-ld
+%endif
+%if %{with lldb}
+%global lldb_ua_anchor lldb
+%global lldb_binfiles \
+    lldb-argdumper \
+    lldb-instr \
+    lldb-server \
+    lldb-vscode
+%endif
+%global binfiles \
+    %{llvm_ua_anchor} %{llvm_tools} %{llvm_elf_dwarf_tools} \
+    %{llvm_abi_coff_macho_tools} %{llvm_instr_devel_tools} \
+    %{clang_ua_anchor} %{clang_binfiles} %{clang_tools_extra_binfiles} \
+    %{?lld_ua_anchor} %{?lld_binfiles} %{?lldb_ua_anchor} %{?lldb_binfiles}
+
+%global llvm_man \
+%{comment Optimizer, compiler, interpreter, linker} \
+    llc \
+    lli \
+    llvm-link \
+    opt \
+%{comment LLVM IR tools} \
+    llvm-as \
+    llvm-bcanalyzer \
+    llvm-dis \
+    llvm-extract \
+%{comment Instrumentation and introspection} \
+    llvm-cov \
+    llvm-profdata \
+    llvm-profgen \
+    llvm-symbolizer
+%global llvm_bin_utils_man \
+%{comment ELF tools} \
+    llvm-ar \
+    llvm-nm \
+    llvm-objcopy \
+    llvm-objdump \
+    llvm-ranlib \
+    llvm-readelf \
+    llvm-readobj \
+    llvm-size \
+    llvm-strip \
+%{comment Debug info tools} \
+    dsymutil \
+    llvm-addr2line \
+    llvm-dwarfdump \
+%{comment Windows/COFF} \
+    llvm-lib \
+    llvm-pdbutil \
+%{comment Apple/Mach-O} \
+    llvm-install-name-tool \
+    llvm-libtool-darwin \
+    llvm-lipo \
+    llvm-otool
+%global llvm_devel_utils_man \
+%{comment ABI tools} \
+    llvm-cxxfilt \
+    llvm-cxxmap \
+%{comment Development utilities} \
+    bugpoint \
+    llvm-diff \
+    llvm-mca \
+    llvm-stress \
+    llvm-strings \
+    llvm-tblgen \
+    llvm-tli-checker
+
+%global clang_manfiles clang diagtool
+%global manfiles %{llvm_man} %{llvm_bin_utils_man} %{llvm_devel_utils_man} %{clang_manfiles}
+
 %define _dwz_low_mem_die_limit  40000000
 %define _dwz_max_die_limit     200000000
 
@@ -140,6 +344,8 @@ Source100:      %{name}-rpmlintrc
 Source101:      baselibs.conf
 # PATCH-FIX-OPENSUSE lto-disable-cache.patch -- Disable ThinLTO cache
 Patch0:         lto-disable-cache.patch
+# PATCH-FIX-OPENSUSE -- Consider Rust memory management functions as lifetime markers. (From https://github.com/rust-lang/llvm-project.)
+Patch1:         llvm-lifetime-for-rust.patch
 # PATCH-FIX-OPENSUSE assume-opensuse.patch idoenmez@suse.de -- Always enable openSUSE/SUSE features
 Patch2:         assume-opensuse.patch
 # PATCH-FIX-OPENSUSE default-to-i586.patch -- Use i586 as default target for 32bit
@@ -464,7 +670,6 @@ Requires:       libclang%{_soclang} >= %{version}
 Requires:       python3-base
 Conflicts:      %{python3_sitearch}/clang/
 Provides:       %{python3_sitearch}/clang/
-BuildArch:      noarch
 
 %description -n python3-clang%{_sonum}
 This package contains the Python bindings to clang (C language)
@@ -587,6 +792,7 @@ This package contains the development files for Polly.
 %prep
 %setup -q -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -b 50 -b 51 -n llvm-%{_version}.src
 %patch0 -p2
+%patch1 -p2
 %patch5 -p1
 %patch13 -p1
 %patch14 -p1
@@ -1006,37 +1212,6 @@ rm %{buildroot}%{_libdir}/libarcher_static.a
 
 # Prepare for update-alternatives usage
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-binfiles=( bugpoint dsymutil llc lli \
-           llvm-addr2line llvm-ar llvm-as llvm-bcanalyzer llvm-bitcode-strip llvm-c-test llvm-cat llvm-cfi-verify
-           llvm-cov llvm-cxxdump llvm-cxxfilt llvm-cxxmap llvm-debuginfod-find llvm-cvtres llvm-diff llvm-dis \
-           llvm-dlltool llvm-dwarfdump llvm-dwp llvm-extract llvm-gsymutil llvm-ifs \
-           llvm-install-name-tool llvm-jitlink llvm-lib llvm-libtool-darwin \
-           llvm-link llvm-lipo llvm-lto llvm-lto2 llvm-mc llvm-mca \
-           llvm-ml llvm-mt llvm-modextract llvm-nm llvm-objcopy llvm-objdump llvm-opt-report llvm-otool \
-           llvm-pdbutil llvm-profdata llvm-profgen llvm-ranlib llvm-rc llvm-readelf llvm-readobj llvm-reduce \
-           llvm-rtdyld llvm-sim llvm-size llvm-split llvm-stress llvm-strings llvm-strip \
-           llvm-symbolizer llvm-tapi-diff llvm-tblgen llvm-tli-checker llvm-undname llvm-windres \
-           llvm-xray opt sancov sanstats split-file verify-uselistorder \
-           c-index-test clang clangd clang++ clang-apply-replacements \
-           clang-change-namespace clang-check clang-cl clang-extdef-mapping clang-format \
-           clang-include-fixer clang-linker-wrapper clang-move clang-nvlink-wrapper clang-offload-bundler \
-           clang-offload-wrapper clang-query clang-refactor clang-repl clang-scan-deps clang-rename \
-           clang-reorder-fields clang-tidy diagtool find-all-symbols modularize pp-trace \
-%if %{with lldb}
-           lldb lldb-argdumper lldb-instr lldb-server lldb-vscode \
-%endif
-%if %{with lld}
-           ld.lld lld lld-link ld64.lld wasm-ld \
-%endif
-	   )
-manfiles=( bugpoint dsymutil llc lli \
-           llvm-addr2line llvm-ar llvm-as llvm-bcanalyzer llvm-cov llvm-cxxfilt llvm-cxxmap llvm-diff \
-           llvm-dis llvm-dwarfdump llvm-extract llvm-install-name-tool \
-           llvm-lib llvm-libtool-darwin llvm-link llvm-lipo llvm-mca \
-           llvm-nm llvm-objcopy llvm-objdump llvm-otool llvm-pdbutil \
-           llvm-profdata llvm-profgen llvm-ranlib llvm-readelf llvm-readobj \
-           llvm-size llvm-stress llvm-strings llvm-strip llvm-symbolizer llvm-tblgen llvm-tli-checker opt \
-           clang diagtool )
 
 # Fix the clang -> clang-X.Y symlink to work with update-alternatives
 mv %{buildroot}%{_bindir}/clang-%{_sonum} %{buildroot}%{_bindir}/clang
@@ -1049,23 +1224,23 @@ ln -s %{_bindir}/clang++-%{_relver} %{buildroot}%{_bindir}/clang++-%{_sonum}
 ln -s %{_bindir}/clang++-%{_relver} %{buildroot}%{_bindir}/clang++-%{_minor}
 
 # Rewrite symlinks to point to new location
-for p in "${binfiles[@]}" ; do
+for p in %{shrink:%binfiles} ; do
     if [ -h "%{buildroot}%{_bindir}/$p" ] ; then
         ln -f -s %{_bindir}/$(readlink %{buildroot}%{_bindir}/$p)-%{_relver} %{buildroot}%{_bindir}/$p
     fi
 done
-for p in "${binfiles[@]}" ; do
+for p in %{shrink:%binfiles} ; do
     mv %{buildroot}%{_bindir}/$p %{buildroot}%{_bindir}/$p-%{_relver}
     ln -s -f %{_sysconfdir}/alternatives/$p %{buildroot}%{_bindir}/$p
 done
-for p in "${manfiles[@]}" ; do
+for p in %{shrink:%manfiles} ; do
     mv %{buildroot}%{_mandir}/man1/$p.1 %{buildroot}%{_mandir}/man1/$p-%{_relver}.1
     ln -s -f %{_sysconfdir}/alternatives/$p.1%{ext_man} %{buildroot}%{_mandir}/man1/$p.1%{ext_man}
 done
 
 # Also rewrite the CMake files referring to the binaries.
 sed -i "$(
-    for p in "${binfiles[@]}"; do
+    for p in %{shrink:%binfiles}; do
         echo "s|\"\${_IMPORT_PREFIX}/bin/$p\"|\"\${_IMPORT_PREFIX}/bin/$p-%{_relver}\"|g"
     done
 )" %{buildroot}%{_libdir}/cmake/{llvm/LLVMExports,clang/ClangTargets}-relwithdebinfo.cmake
@@ -1245,175 +1420,47 @@ rm -rf ./stage1 ./build
 %postun polly-devel -p /sbin/ldconfig
 %endif
 
+%global ua_install() %{_sbindir}/update-alternatives \\\
+    --install %{_bindir}/%1 %1 %{_bindir}/%1-%{_relver} %{_uaver}
+%global ua_bin_slave() \\\
+    --slave %{_bindir}/%1 %1 %{_bindir}/%1-%{_relver}
+%global ua_man_slave() \\\
+    --slave %{_mandir}/man1/%1.1%{ext_man} %1.1%{ext_man} %{_mandir}/man1/%1-%{_relver}.1%{ext_man}
+%global ua_remove() \
+if [ ! -f %{_bindir}/%1-%{_relver} ] ; then \
+    %{_sbindir}/update-alternatives --remove %1 %{_bindir}/%1-%{_relver} \
+fi
+
 %post
-%{_sbindir}/update-alternatives \
-   --install %{_bindir}/llvm-ar llvm-ar %{_bindir}/llvm-ar-%{_relver} %{_uaver} \
-   --slave %{_bindir}/bugpoint bugpoint %{_bindir}/bugpoint-%{_relver} \
-   --slave %{_bindir}/dsymutil dsymutil %{_bindir}/dsymutil-%{_relver} \
-   --slave %{_bindir}/llc llc %{_bindir}/llc-%{_relver} \
-   --slave %{_bindir}/lli lli %{_bindir}/lli-%{_relver} \
-   --slave %{_bindir}/llvm-addr2line llvm-addr2line %{_bindir}/llvm-addr2line-%{_relver} \
-   --slave %{_bindir}/llvm-as llvm-as %{_bindir}/llvm-as-%{_relver} \
-   --slave %{_bindir}/llvm-bcanalyzer llvm-bcanalyzer %{_bindir}/llvm-bcanalyzer-%{_relver} \
-   --slave %{_bindir}/llvm-bitcode-strip llvm-bitcode-strip %{_bindir}/llvm-bitcode-strip-%{_relver} \
-   --slave %{_bindir}/llvm-c-test llvm-c-test %{_bindir}/llvm-c-test-%{_relver} \
-   --slave %{_bindir}/llvm-cat llvm-cat %{_bindir}/llvm-cat-%{_relver} \
-   --slave %{_bindir}/llvm-cfi-verify llvm-cfi-verify %{_bindir}/llvm-cfi-verify-%{_relver} \
-   --slave %{_bindir}/llvm-cov llvm-cov %{_bindir}/llvm-cov-%{_relver} \
-   --slave %{_bindir}/llvm-cvtres llvm-cvtres %{_bindir}/llvm-cvtres-%{_relver} \
-   --slave %{_bindir}/llvm-cxxdump llvm-cxxdump %{_bindir}/llvm-cxxdump-%{_relver} \
-   --slave %{_bindir}/llvm-cxxfilt llvm-cxxfilt %{_bindir}/llvm-cxxfilt-%{_relver} \
-   --slave %{_bindir}/llvm-cxxmap llvm-cxxmap %{_bindir}/llvm-cxxmap-%{_relver} \
-   --slave %{_bindir}/llvm-debuginfod-find llvm-debuginfod-find %{_bindir}/llvm-debuginfod-find-%{_relver} \
-   --slave %{_bindir}/llvm-diff llvm-diff %{_bindir}/llvm-diff-%{_relver} \
-   --slave %{_bindir}/llvm-dis llvm-dis %{_bindir}/llvm-dis-%{_relver} \
-   --slave %{_bindir}/llvm-dlltool llvm-dlltool %{_bindir}/llvm-dlltool-%{_relver} \
-   --slave %{_bindir}/llvm-dwarfdump llvm-dwarfdump %{_bindir}/llvm-dwarfdump-%{_relver} \
-   --slave %{_bindir}/llvm-dwp llvm-dwp %{_bindir}/llvm-dwp-%{_relver} \
-   --slave %{_bindir}/llvm-extract llvm-extract %{_bindir}/llvm-extract-%{_relver} \
-   --slave %{_bindir}/llvm-gsymutil llvm-gsymutil %{_bindir}/llvm-gsymutil-%{_relver} \
-   --slave %{_bindir}/llvm-ifs llvm-ifs %{_bindir}/llvm-ifs-%{_relver} \
-   --slave %{_bindir}/llvm-install-name-tool llvm-install-name-tool %{_bindir}/llvm-install-name-tool-%{_relver} \
-   --slave %{_bindir}/llvm-jitlink llvm-jitlink %{_bindir}/llvm-jitlink-%{_relver} \
-   --slave %{_bindir}/llvm-lib llvm-lib %{_bindir}/llvm-lib-%{_relver} \
-   --slave %{_bindir}/llvm-libtool-darwin llvm-libtool-darwin %{_bindir}/llvm-libtool-darwin-%{_relver} \
-   --slave %{_bindir}/llvm-link llvm-link %{_bindir}/llvm-link-%{_relver} \
-   --slave %{_bindir}/llvm-lipo llvm-lipo %{_bindir}/llvm-lipo-%{_relver} \
-   --slave %{_bindir}/llvm-lto llvm-lto %{_bindir}/llvm-lto-%{_relver} \
-   --slave %{_bindir}/llvm-lto2 llvm-lto2 %{_bindir}/llvm-lto2-%{_relver} \
-   --slave %{_bindir}/llvm-mc llvm-mc %{_bindir}/llvm-mc-%{_relver} \
-   --slave %{_bindir}/llvm-mca llvm-mca %{_bindir}/llvm-mca-%{_relver} \
-   --slave %{_bindir}/llvm-ml llvm-ml %{_bindir}/llvm-ml-%{_relver} \
-   --slave %{_bindir}/llvm-mt llvm-mt %{_bindir}/llvm-mt-%{_relver} \
-   --slave %{_bindir}/llvm-modextract llvm-modextract %{_bindir}/llvm-modextract-%{_relver} \
-   --slave %{_bindir}/llvm-nm llvm-nm %{_bindir}/llvm-nm-%{_relver} \
-   --slave %{_bindir}/llvm-objcopy llvm-objcopy %{_bindir}/llvm-objcopy-%{_relver} \
-   --slave %{_bindir}/llvm-objdump llvm-objdump %{_bindir}/llvm-objdump-%{_relver} \
-   --slave %{_bindir}/llvm-opt-report llvm-opt-report %{_bindir}/llvm-opt-report-%{_relver} \
-   --slave %{_bindir}/llvm-otool llvm-otool %{_bindir}/llvm-otool-%{_relver} \
-   --slave %{_bindir}/llvm-pdbutil llvm-pdbutil %{_bindir}/llvm-pdbutil-%{_relver} \
-   --slave %{_bindir}/llvm-profdata llvm-profdata %{_bindir}/llvm-profdata-%{_relver} \
-   --slave %{_bindir}/llvm-profgen llvm-profgen %{_bindir}/llvm-profgen-%{_relver} \
-   --slave %{_bindir}/llvm-ranlib llvm-ranlib %{_bindir}/llvm-ranlib-%{_relver} \
-   --slave %{_bindir}/llvm-rc llvm-rc %{_bindir}/llvm-rc-%{_relver} \
-   --slave %{_bindir}/llvm-readelf llvm-readelf %{_bindir}/llvm-readelf-%{_relver} \
-   --slave %{_bindir}/llvm-readobj llvm-readobj %{_bindir}/llvm-readobj-%{_relver} \
-   --slave %{_bindir}/llvm-reduce llvm-reduce %{_bindir}/llvm-reduce-%{_relver} \
-   --slave %{_bindir}/llvm-rtdyld llvm-rtdyld %{_bindir}/llvm-rtdyld-%{_relver} \
-   --slave %{_bindir}/llvm-sim llvm-sim %{_bindir}/llvm-sim-%{_relver} \
-   --slave %{_bindir}/llvm-size llvm-size %{_bindir}/llvm-size-%{_relver} \
-   --slave %{_bindir}/llvm-split llvm-split %{_bindir}/llvm-split-%{_relver} \
-   --slave %{_bindir}/llvm-stress llvm-stress %{_bindir}/llvm-stress-%{_relver} \
-   --slave %{_bindir}/llvm-strings llvm-strings %{_bindir}/llvm-strings-%{_relver} \
-   --slave %{_bindir}/llvm-strip llvm-strip %{_bindir}/llvm-strip-%{_relver} \
-   --slave %{_bindir}/llvm-symbolizer llvm-symbolizer %{_bindir}/llvm-symbolizer-%{_relver} \
-   --slave %{_bindir}/llvm-tapi-diff llvm-tapi-diff %{_bindir}/llvm-tapi-diff-%{_relver} \
-   --slave %{_bindir}/llvm-tblgen llvm-tblgen %{_bindir}/llvm-tblgen-%{_relver} \
-   --slave %{_bindir}/llvm-tli-checker llvm-tli-checker %{_bindir}/llvm-tli-checker-%{_relver} \
-   --slave %{_bindir}/llvm-undname llvm-undname %{_bindir}/llvm-undname-%{_relver} \
-   --slave %{_bindir}/llvm-windres llvm-windres %{_bindir}/llvm-windres-%{_relver} \
-   --slave %{_bindir}/llvm-xray llvm-xray %{_bindir}/llvm-xray-%{_relver} \
-   --slave %{_bindir}/opt opt %{_bindir}/opt-%{_relver} \
-   --slave %{_bindir}/sancov sancov %{_bindir}/sancov-%{_relver} \
-   --slave %{_bindir}/sanstats sanstats %{_bindir}/sanstats-%{_relver} \
-   --slave %{_bindir}/split-file split-file %{_bindir}/split-file-%{_relver} \
-   --slave %{_bindir}/verify-uselistorder verify-uselistorder %{_bindir}/verify-uselistorder-%{_relver} \
-   --slave %{_mandir}/man1/bugpoint.1%{ext_man} bugpoint.1%{ext_man} %{_mandir}/man1/bugpoint-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/dsymutil.1%{ext_man} dsymutil.1%{ext_man} %{_mandir}/man1/dsymutil-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llc.1%{ext_man} llc.1%{ext_man} %{_mandir}/man1/llc-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/lli.1%{ext_man} lli.1%{ext_man} %{_mandir}/man1/lli-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-addr2line.1%{ext_man} llvm-addr2line.1%{ext_man} %{_mandir}/man1/llvm-addr2line-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-ar.1%{ext_man} llvm-ar.1%{ext_man} %{_mandir}/man1/llvm-ar-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-as.1%{ext_man} llvm-as.1%{ext_man} %{_mandir}/man1/llvm-as-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-bcanalyzer.1%{ext_man} llvm-bcanalyzer.1%{ext_man} %{_mandir}/man1/llvm-bcanalyzer-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-cov.1%{ext_man} llvm-cov.1%{ext_man} %{_mandir}/man1/llvm-cov-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-cxxfilt.1%{ext_man} llvm-cxxfilt.1%{ext_man} %{_mandir}/man1/llvm-cxxfilt-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-cxxmap.1%{ext_man} llvm-cxxmap.1%{ext_man} %{_mandir}/man1/llvm-cxxmap-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-diff.1%{ext_man} llvm-diff.1%{ext_man} %{_mandir}/man1/llvm-diff-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-dis.1%{ext_man} llvm-dis.1%{ext_man} %{_mandir}/man1/llvm-dis-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-dwarfdump.1%{ext_man} llvm-dwarfdump.1%{ext_man} %{_mandir}/man1/llvm-dwarfdump-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-extract.1%{ext_man} llvm-extract.1%{ext_man} %{_mandir}/man1/llvm-extract-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-install-name-tool.1%{ext_man} llvm-install-name-tool.1%{ext_man} %{_mandir}/man1/llvm-install-name-tool-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-lib.1%{ext_man} llvm-lib.1%{ext_man} %{_mandir}/man1/llvm-lib-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-libtool-darwin.1%{ext_man} llvm-libtool-darwin.1%{ext_man} %{_mandir}/man1/llvm-libtool-darwin-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-link.1%{ext_man} llvm-link.1%{ext_man} %{_mandir}/man1/llvm-link-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-lipo.1%{ext_man} llvm-lipo.1%{ext_man} %{_mandir}/man1/llvm-lipo-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-mca.1%{ext_man} llvm-mca.1%{ext_man} %{_mandir}/man1/llvm-mca-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-nm.1%{ext_man} llvm-nm.1%{ext_man} %{_mandir}/man1/llvm-nm-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-objcopy.1%{ext_man} llvm-objcopy.1%{ext_man} %{_mandir}/man1/llvm-objcopy-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-objdump.1%{ext_man} llvm-objdump.1%{ext_man} %{_mandir}/man1/llvm-objdump-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-otool.1%{ext_man} llvm-otool.1%{ext_man} %{_mandir}/man1/llvm-otool-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-pdbutil.1%{ext_man} llvm-pdbutil.1%{ext_man} %{_mandir}/man1/llvm-pdbutil-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-profdata.1%{ext_man} llvm-profdata.1%{ext_man} %{_mandir}/man1/llvm-profdata-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-profgen.1%{ext_man} llvm-profgen.1%{ext_man} %{_mandir}/man1/llvm-profgen-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-ranlib.1%{ext_man} llvm-ranlib.1%{ext_man} %{_mandir}/man1/llvm-ranlib-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-readelf.1%{ext_man} llvm-readelf.1%{ext_man} %{_mandir}/man1/llvm-readelf-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-readobj.1%{ext_man} llvm-readobj.1%{ext_man} %{_mandir}/man1/llvm-readobj-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-size.1%{ext_man} llvm-size.1%{ext_man} %{_mandir}/man1/llvm-size-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-stress.1%{ext_man} llvm-stress.1%{ext_man} %{_mandir}/man1/llvm-stress-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-strings.1%{ext_man} llvm-strings.1%{ext_man} %{_mandir}/man1/llvm-strings-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-strip.1%{ext_man} llvm-strip.1%{ext_man} %{_mandir}/man1/llvm-strip-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-symbolizer.1%{ext_man} llvm-symbolizer.1%{ext_man} %{_mandir}/man1/llvm-symbolizer-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-tblgen.1%{ext_man} llvm-tblgen.1%{ext_man} %{_mandir}/man1/llvm-tblgen-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/llvm-tli-checker.1%{ext_man} llvm-tli-checker.1%{ext_man} %{_mandir}/man1/llvm-tli-checker-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/opt.1%{ext_man} opt.1%{ext_man} %{_mandir}/man1/opt-%{_relver}.1%{ext_man}
+%{ua_install %llvm_ua_anchor} \
+    %{lapply -p ua_bin_slave %llvm_tools} \
+    %{lapply -p ua_bin_slave %llvm_elf_dwarf_tools} \
+    %{lapply -p ua_bin_slave %llvm_abi_coff_macho_tools} \
+    %{lapply -p ua_bin_slave %llvm_instr_devel_tools} \
+    %{lapply -p ua_man_slave %llvm_man} \
+    %{lapply -p ua_man_slave %llvm_bin_utils_man} \
+    %{lapply -p ua_man_slave %llvm_devel_utils_man}
 
 %postun
-if [ ! -f %{_bindir}/llvm-ar-%{_relver} ] ; then
-    %{_sbindir}/update-alternatives --remove llvm-ar %{_bindir}/llvm-ar-%{_relver}
-fi
+%{ua_remove %llvm_ua_anchor}
 
 %post -n clang%{_sonum}
-%{_sbindir}/update-alternatives \
-   --install %{_bindir}/clang clang %{_bindir}/clang-%{_relver} %{_uaver} \
-   --slave %{_bindir}/clangd clangd %{_bindir}/clangd-%{_relver} \
-   --slave %{_bindir}/c-index-test c-index-test %{_bindir}/c-index-test-%{_relver} \
-   --slave %{_bindir}/clang++ clang++ %{_bindir}/clang++-%{_relver} \
-   --slave %{_bindir}/clang-apply-replacements clang-apply-replacements %{_bindir}/clang-apply-replacements-%{_relver} \
-   --slave %{_bindir}/clang-change-namespace clang-change-namespace %{_bindir}/clang-change-namespace-%{_relver} \
-   --slave %{_bindir}/clang-check clang-check %{_bindir}/clang-check-%{_relver} \
-   --slave %{_bindir}/clang-cl clang-cl %{_bindir}/clang-cl-%{_relver} \
-   --slave %{_bindir}/clang-extdef-mapping clang-extdef-mapping %{_bindir}/clang-extdef-mapping-%{_relver} \
-   --slave %{_bindir}/clang-format clang-format %{_bindir}/clang-format-%{_relver} \
-   --slave %{_bindir}/clang-include-fixer clang-include-fixer %{_bindir}/clang-include-fixer-%{_relver} \
-   --slave %{_bindir}/clang-linker-wrapper clang-linker-wrapper %{_bindir}/clang-linker-wrapper-%{_relver} \
-   --slave %{_bindir}/clang-move clang-move %{_bindir}/clang-move-%{_relver} \
-   --slave %{_bindir}/clang-nvlink-wrapper clang-nvlink-wrapper %{_bindir}/clang-nvlink-wrapper-%{_relver} \
-   --slave %{_bindir}/clang-offload-bundler clang-offload-bundler %{_bindir}/clang-offload-bundler-%{_relver} \
-   --slave %{_bindir}/clang-offload-wrapper clang-offload-wrapper %{_bindir}/clang-offload-wrapper-%{_relver} \
-   --slave %{_bindir}/clang-query clang-query %{_bindir}/clang-query-%{_relver} \
-   --slave %{_bindir}/clang-refactor clang-refactor %{_bindir}/clang-refactor-%{_relver} \
-   --slave %{_bindir}/clang-repl clang-repl %{_bindir}/clang-repl-%{_relver} \
-   --slave %{_bindir}/clang-rename clang-rename %{_bindir}/clang-rename-%{_relver} \
-   --slave %{_bindir}/clang-reorder-fields clang-reorder-fields %{_bindir}/clang-reorder-fields-%{_relver} \
-   --slave %{_bindir}/clang-scan-deps clang-scan-deps %{_bindir}/clang-scan-deps-%{_relver} \
-   --slave %{_bindir}/clang-tidy clang-tidy %{_bindir}/clang-tidy-%{_relver} \
-   --slave %{_bindir}/diagtool diagtool %{_bindir}/diagtool-%{_relver} \
-   --slave %{_bindir}/find-all-symbols find-all-symbols %{_bindir}/find-all-symbols-%{_relver} \
-   --slave %{_bindir}/modularize modularize %{_bindir}/modularize-%{_relver} \
-   --slave %{_bindir}/pp-trace pp-trace %{_bindir}/pp-trace-%{_relver} \
-   --slave %{_mandir}/man1/clang.1%{ext_man} clang.1%{ext_man} %{_mandir}/man1/clang-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/diagtool.1%{ext_man} diagtool.1%{ext_man} %{_mandir}/man1/diagtool-%{_relver}.1%{ext_man}
+%{ua_install %clang_ua_anchor} \
+    %{lapply -p ua_bin_slave %clang_binfiles} \
+    %{lapply -p ua_bin_slave %clang_tools_extra_binfiles} \
+    %{lapply -p ua_man_slave %clang_manfiles}
 
 %postun -n clang%{_sonum}
-if [ ! -f %{_bindir}/clang-%{_relver} ] ; then
-    %{_sbindir}/update-alternatives --remove clang %{_bindir}/clang-%{_relver}
-fi
+%{ua_remove %clang_ua_anchor}
 
 %if %{with lld}
 %post -n lld%{_sonum}
-%{_sbindir}/update-alternatives \
-   --install %{_bindir}/lld lld %{_bindir}/lld-%{_relver} %{_uaver} \
-   --slave %{_bindir}/ld.lld ld.lld %{_bindir}/ld.lld-%{_relver} \
-   --slave %{_bindir}/ld64.lld ld64.lld %{_bindir}/ld64.lld-%{_relver} \
-   --slave %{_bindir}/lld-link lld-link %{_bindir}/lld-link-%{_relver} \
-   --slave %{_bindir}/wasm-ld wasm-ld %{_bindir}/wasm-ld-%{_relver}
+%{ua_install %lld_ua_anchor} \
+    %{lapply -p ua_bin_slave %lld_binfiles}
 %{_sbindir}/update-alternatives --install %{_bindir}/ld ld %{_bindir}/ld.lld 1
 
 %postun -n lld%{_sonum}
-if [ ! -f %{_bindir}/lld-%{_relver} ] ; then
-    %{_sbindir}/update-alternatives --remove lld %{_bindir}/lld-%{_relver}
-fi
+%{ua_remove %lld_ua_anchor}
 if [ ! -f %{_bindir}/lld ] ; then
     %{_sbindir}/update-alternatives --remove ld %{_bindir}/ld.lld
 fi
@@ -1421,355 +1468,50 @@ fi
 
 %if %{with lldb}
 %post -n lldb%{_sonum}
-%_sbindir/update-alternatives \
-   --install %{_bindir}/lldb lldb %{_bindir}/lldb-%{_relver} %{_uaver} \
-   --slave %{_bindir}/lldb-argdumper lldb-argdumper %{_bindir}/lldb-argdumper-%{_relver} \
-   --slave %{_bindir}/lldb-instr lldb-instr %{_bindir}/lldb-instr-%{_relver} \
-   --slave %{_bindir}/lldb-server lldb-server %{_bindir}/lldb-server-%{_relver} \
-   --slave %{_bindir}/lldb-vscode lldb-vscode %{_bindir}/lldb-vscode-%{_relver}
+%{ua_install %lldb_ua_anchor} \
+    %{lapply -p ua_bin_slave %lldb_binfiles}
 
 %postun -n lldb%{_sonum}
-if [ $1 -eq 0 ] ; then
-    %_sbindir/update-alternatives --remove lldb %{_bindir}/lldb-%{_relver}
-fi
+%{ua_remove %lldb_ua_anchor}
 %endif
+
+%global bin_path() \
+%{_bindir}/%1
+%global bin_relver_path() \
+%{_bindir}/%1-%{_relver}
+%global ghost_ua_bin_link() \
+%ghost %{_sysconfdir}/alternatives/%1
+%global man_path() \
+%{_mandir}/man1/%1.1%{ext_man}
+%global man_relver_path() \
+%{_mandir}/man1/%1-%{_relver}.1%{ext_man}
+%global ghost_ua_man_link() \
+%ghost %{_sysconfdir}/alternatives/%1.1%{ext_man}
 
 %files
 %license CREDITS.TXT LICENSE.TXT
+%{lapply -p bin_path %llvm_ua_anchor %llvm_tools}
+%{lapply -p bin_path %llvm_elf_dwarf_tools}
+%{lapply -p bin_path %llvm_abi_coff_macho_tools}
+%{lapply -p bin_path %llvm_instr_devel_tools}
+%{lapply -p bin_relver_path %llvm_ua_anchor %llvm_tools}
+%{lapply -p bin_relver_path %llvm_elf_dwarf_tools}
+%{lapply -p bin_relver_path %llvm_abi_coff_macho_tools}
+%{lapply -p bin_relver_path %llvm_instr_devel_tools}
+%{lapply -p ghost_ua_bin_link %llvm_ua_anchor %llvm_tools}
+%{lapply -p ghost_ua_bin_link %llvm_elf_dwarf_tools}
+%{lapply -p ghost_ua_bin_link %llvm_abi_coff_macho_tools}
+%{lapply -p ghost_ua_bin_link %llvm_instr_devel_tools}
 
-%{_bindir}/bugpoint
-%{_bindir}/dsymutil
-%{_bindir}/llc
-%{_bindir}/lli
-%{_bindir}/llvm-addr2line
-%{_bindir}/llvm-ar
-%{_bindir}/llvm-as
-%{_bindir}/llvm-bcanalyzer
-%{_bindir}/llvm-bitcode-strip
-%{_bindir}/llvm-c-test
-%{_bindir}/llvm-cat
-%{_bindir}/llvm-cfi-verify
-%{_bindir}/llvm-cov
-%{_bindir}/llvm-cvtres
-%{_bindir}/llvm-cxxdump
-%{_bindir}/llvm-cxxfilt
-%{_bindir}/llvm-cxxmap
-%{_bindir}/llvm-debuginfod-find
-%{_bindir}/llvm-diff
-%{_bindir}/llvm-dis
-%{_bindir}/llvm-dlltool
-%{_bindir}/llvm-dwarfdump
-%{_bindir}/llvm-dwp
-%{_bindir}/llvm-extract
-%{_bindir}/llvm-gsymutil
-%{_bindir}/llvm-ifs
-%{_bindir}/llvm-install-name-tool
-%{_bindir}/llvm-jitlink
-%{_bindir}/llvm-lib
-%{_bindir}/llvm-libtool-darwin
-%{_bindir}/llvm-link
-%{_bindir}/llvm-lipo
-%{_bindir}/llvm-lto
-%{_bindir}/llvm-lto2
-%{_bindir}/llvm-mc
-%{_bindir}/llvm-mca
-%{_bindir}/llvm-ml
-%{_bindir}/llvm-mt
-%{_bindir}/llvm-modextract
-%{_bindir}/llvm-nm
-%{_bindir}/llvm-objcopy
-%{_bindir}/llvm-objdump
-%{_bindir}/llvm-opt-report
-%{_bindir}/llvm-otool
-%{_bindir}/llvm-pdbutil
-%{_bindir}/llvm-profdata
-%{_bindir}/llvm-profgen
-%{_bindir}/llvm-ranlib
-%{_bindir}/llvm-rc
-%{_bindir}/llvm-readelf
-%{_bindir}/llvm-readobj
-%{_bindir}/llvm-reduce
-%{_bindir}/llvm-rtdyld
-%{_bindir}/llvm-sim
-%{_bindir}/llvm-size
-%{_bindir}/llvm-split
-%{_bindir}/llvm-stress
-%{_bindir}/llvm-strings
-%{_bindir}/llvm-strip
-%{_bindir}/llvm-symbolizer
-%{_bindir}/llvm-tapi-diff
-%{_bindir}/llvm-tblgen
-%{_bindir}/llvm-tli-checker
-%{_bindir}/llvm-undname
-%{_bindir}/llvm-windres
-%{_bindir}/llvm-xray
-%{_bindir}/opt
-%{_bindir}/sancov
-%{_bindir}/sanstats
-%{_bindir}/split-file
-%{_bindir}/verify-uselistorder
-
-%{_bindir}/bugpoint-%{_relver}
-%{_bindir}/dsymutil-%{_relver}
-%{_bindir}/llc-%{_relver}
-%{_bindir}/lli-%{_relver}
-%{_bindir}/llvm-addr2line-%{_relver}
-%{_bindir}/llvm-ar-%{_relver}
-%{_bindir}/llvm-as-%{_relver}
-%{_bindir}/llvm-bcanalyzer-%{_relver}
-%{_bindir}/llvm-bitcode-strip-%{_relver}
-%{_bindir}/llvm-c-test-%{_relver}
-%{_bindir}/llvm-cat-%{_relver}
-%{_bindir}/llvm-cfi-verify-%{_relver}
-%{_bindir}/llvm-cov-%{_relver}
-%{_bindir}/llvm-cvtres-%{_relver}
-%{_bindir}/llvm-cxxdump-%{_relver}
-%{_bindir}/llvm-cxxfilt-%{_relver}
-%{_bindir}/llvm-cxxmap-%{_relver}
-%{_bindir}/llvm-debuginfod-find-%{_relver}
-%{_bindir}/llvm-diff-%{_relver}
-%{_bindir}/llvm-dis-%{_relver}
-%{_bindir}/llvm-dlltool-%{_relver}
-%{_bindir}/llvm-dwarfdump-%{_relver}
-%{_bindir}/llvm-dwp-%{_relver}
-%{_bindir}/llvm-extract-%{_relver}
-%{_bindir}/llvm-gsymutil-%{_relver}
-%{_bindir}/llvm-ifs-%{_relver}
-%{_bindir}/llvm-install-name-tool-%{_relver}
-%{_bindir}/llvm-jitlink-%{_relver}
-%{_bindir}/llvm-lib-%{_relver}
-%{_bindir}/llvm-libtool-darwin-%{_relver}
-%{_bindir}/llvm-link-%{_relver}
-%{_bindir}/llvm-lipo-%{_relver}
-%{_bindir}/llvm-lto-%{_relver}
-%{_bindir}/llvm-lto2-%{_relver}
-%{_bindir}/llvm-mc-%{_relver}
-%{_bindir}/llvm-mca-%{_relver}
-%{_bindir}/llvm-ml-%{_relver}
-%{_bindir}/llvm-mt-%{_relver}
-%{_bindir}/llvm-modextract-%{_relver}
-%{_bindir}/llvm-nm-%{_relver}
-%{_bindir}/llvm-objcopy-%{_relver}
-%{_bindir}/llvm-objdump-%{_relver}
-%{_bindir}/llvm-opt-report-%{_relver}
-%{_bindir}/llvm-otool-%{_relver}
-%{_bindir}/llvm-pdbutil-%{_relver}
-%{_bindir}/llvm-profdata-%{_relver}
-%{_bindir}/llvm-profgen-%{_relver}
-%{_bindir}/llvm-ranlib-%{_relver}
-%{_bindir}/llvm-rc-%{_relver}
-%{_bindir}/llvm-readelf-%{_relver}
-%{_bindir}/llvm-readobj-%{_relver}
-%{_bindir}/llvm-reduce-%{_relver}
-%{_bindir}/llvm-rtdyld-%{_relver}
-%{_bindir}/llvm-sim-%{_relver}
-%{_bindir}/llvm-size-%{_relver}
-%{_bindir}/llvm-split-%{_relver}
-%{_bindir}/llvm-stress-%{_relver}
-%{_bindir}/llvm-strings-%{_relver}
-%{_bindir}/llvm-strip-%{_relver}
-%{_bindir}/llvm-symbolizer-%{_relver}
-%{_bindir}/llvm-tapi-diff-%{_relver}
-%{_bindir}/llvm-tblgen-%{_relver}
-%{_bindir}/llvm-tli-checker-%{_relver}
-%{_bindir}/llvm-undname-%{_relver}
-%{_bindir}/llvm-windres-%{_relver}
-%{_bindir}/llvm-xray-%{_relver}
-%{_bindir}/opt-%{_relver}
-%{_bindir}/sancov-%{_relver}
-%{_bindir}/sanstats-%{_relver}
-%{_bindir}/split-file-%{_relver}
-%{_bindir}/verify-uselistorder-%{_relver}
-
-%ghost %{_sysconfdir}/alternatives/bugpoint
-%ghost %{_sysconfdir}/alternatives/dsymutil
-%ghost %{_sysconfdir}/alternatives/llc
-%ghost %{_sysconfdir}/alternatives/lli
-%ghost %{_sysconfdir}/alternatives/llvm-addr2line
-%ghost %{_sysconfdir}/alternatives/llvm-ar
-%ghost %{_sysconfdir}/alternatives/llvm-as
-%ghost %{_sysconfdir}/alternatives/llvm-bcanalyzer
-%ghost %{_sysconfdir}/alternatives/llvm-bitcode-strip
-%ghost %{_sysconfdir}/alternatives/llvm-c-test
-%ghost %{_sysconfdir}/alternatives/llvm-cat
-%ghost %{_sysconfdir}/alternatives/llvm-cfi-verify
-%ghost %{_sysconfdir}/alternatives/llvm-cov
-%ghost %{_sysconfdir}/alternatives/llvm-cvtres
-%ghost %{_sysconfdir}/alternatives/llvm-cxxdump
-%ghost %{_sysconfdir}/alternatives/llvm-cxxfilt
-%ghost %{_sysconfdir}/alternatives/llvm-cxxmap
-%ghost %{_sysconfdir}/alternatives/llvm-debuginfod-find
-%ghost %{_sysconfdir}/alternatives/llvm-diff
-%ghost %{_sysconfdir}/alternatives/llvm-dis
-%ghost %{_sysconfdir}/alternatives/llvm-dlltool
-%ghost %{_sysconfdir}/alternatives/llvm-dwarfdump
-%ghost %{_sysconfdir}/alternatives/llvm-dwp
-%ghost %{_sysconfdir}/alternatives/llvm-extract
-%ghost %{_sysconfdir}/alternatives/llvm-gsymutil
-%ghost %{_sysconfdir}/alternatives/llvm-ifs
-%ghost %{_sysconfdir}/alternatives/llvm-install-name-tool
-%ghost %{_sysconfdir}/alternatives/llvm-jitlink
-%ghost %{_sysconfdir}/alternatives/llvm-lib
-%ghost %{_sysconfdir}/alternatives/llvm-libtool-darwin
-%ghost %{_sysconfdir}/alternatives/llvm-link
-%ghost %{_sysconfdir}/alternatives/llvm-lipo
-%ghost %{_sysconfdir}/alternatives/llvm-lto
-%ghost %{_sysconfdir}/alternatives/llvm-lto2
-%ghost %{_sysconfdir}/alternatives/llvm-mc
-%ghost %{_sysconfdir}/alternatives/llvm-mca
-%ghost %{_sysconfdir}/alternatives/llvm-ml
-%ghost %{_sysconfdir}/alternatives/llvm-mt
-%ghost %{_sysconfdir}/alternatives/llvm-modextract
-%ghost %{_sysconfdir}/alternatives/llvm-nm
-%ghost %{_sysconfdir}/alternatives/llvm-objcopy
-%ghost %{_sysconfdir}/alternatives/llvm-objdump
-%ghost %{_sysconfdir}/alternatives/llvm-opt-report
-%ghost %{_sysconfdir}/alternatives/llvm-otool
-%ghost %{_sysconfdir}/alternatives/llvm-pdbutil
-%ghost %{_sysconfdir}/alternatives/llvm-profdata
-%ghost %{_sysconfdir}/alternatives/llvm-profgen
-%ghost %{_sysconfdir}/alternatives/llvm-ranlib
-%ghost %{_sysconfdir}/alternatives/llvm-rc
-%ghost %{_sysconfdir}/alternatives/llvm-readelf
-%ghost %{_sysconfdir}/alternatives/llvm-readobj
-%ghost %{_sysconfdir}/alternatives/llvm-reduce
-%ghost %{_sysconfdir}/alternatives/llvm-rtdyld
-%ghost %{_sysconfdir}/alternatives/llvm-sim
-%ghost %{_sysconfdir}/alternatives/llvm-size
-%ghost %{_sysconfdir}/alternatives/llvm-split
-%ghost %{_sysconfdir}/alternatives/llvm-stress
-%ghost %{_sysconfdir}/alternatives/llvm-strings
-%ghost %{_sysconfdir}/alternatives/llvm-strip
-%ghost %{_sysconfdir}/alternatives/llvm-symbolizer
-%ghost %{_sysconfdir}/alternatives/llvm-tapi-diff
-%ghost %{_sysconfdir}/alternatives/llvm-tblgen
-%ghost %{_sysconfdir}/alternatives/llvm-tli-checker
-%ghost %{_sysconfdir}/alternatives/llvm-undname
-%ghost %{_sysconfdir}/alternatives/llvm-windres
-%ghost %{_sysconfdir}/alternatives/llvm-xray
-%ghost %{_sysconfdir}/alternatives/opt
-%ghost %{_sysconfdir}/alternatives/sancov
-%ghost %{_sysconfdir}/alternatives/sanstats
-%ghost %{_sysconfdir}/alternatives/split-file
-%ghost %{_sysconfdir}/alternatives/verify-uselistorder
-
-%{_mandir}/man1/bugpoint.1%{ext_man}
-%{_mandir}/man1/dsymutil.1%{ext_man}
-%{_mandir}/man1/llc.1%{ext_man}
-%{_mandir}/man1/lli.1%{ext_man}
-%{_mandir}/man1/llvm-addr2line.1%{ext_man}
-%{_mandir}/man1/llvm-ar.1%{ext_man}
-%{_mandir}/man1/llvm-as.1%{ext_man}
-%{_mandir}/man1/llvm-bcanalyzer.1%{ext_man}
-%{_mandir}/man1/llvm-cov.1%{ext_man}
-%{_mandir}/man1/llvm-cxxfilt.1%{ext_man}
-%{_mandir}/man1/llvm-cxxmap.1%{ext_man}
-%{_mandir}/man1/llvm-diff.1%{ext_man}
-%{_mandir}/man1/llvm-dis.1%{ext_man}
-%{_mandir}/man1/llvm-dwarfdump.1%{ext_man}
-%{_mandir}/man1/llvm-extract.1%{ext_man}
-%{_mandir}/man1/llvm-install-name-tool.1%{ext_man}
-%{_mandir}/man1/llvm-lib.1%{ext_man}
-%{_mandir}/man1/llvm-libtool-darwin.1%{ext_man}
-%{_mandir}/man1/llvm-link.1%{ext_man}
-%{_mandir}/man1/llvm-lipo.1%{ext_man}
-%{_mandir}/man1/llvm-mca.1%{ext_man}
-%{_mandir}/man1/llvm-nm.1%{ext_man}
-%{_mandir}/man1/llvm-objcopy.1%{ext_man}
-%{_mandir}/man1/llvm-objdump.1%{ext_man}
-%{_mandir}/man1/llvm-otool.1%{ext_man}
-%{_mandir}/man1/llvm-pdbutil.1%{ext_man}
-%{_mandir}/man1/llvm-profdata.1%{ext_man}
-%{_mandir}/man1/llvm-profgen.1%{ext_man}
-%{_mandir}/man1/llvm-ranlib.1%{ext_man}
-%{_mandir}/man1/llvm-readelf.1%{ext_man}
-%{_mandir}/man1/llvm-readobj.1%{ext_man}
-%{_mandir}/man1/llvm-size.1%{ext_man}
-%{_mandir}/man1/llvm-stress.1%{ext_man}
-%{_mandir}/man1/llvm-strings.1%{ext_man}
-%{_mandir}/man1/llvm-strip.1%{ext_man}
-%{_mandir}/man1/llvm-symbolizer.1%{ext_man}
-%{_mandir}/man1/llvm-tblgen.1%{ext_man}
-%{_mandir}/man1/llvm-tli-checker.1%{ext_man}
-%{_mandir}/man1/opt.1%{ext_man}
-%{_mandir}/man1/bugpoint-%{_relver}.1%{ext_man}
-%{_mandir}/man1/dsymutil-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llc-%{_relver}.1%{ext_man}
-%{_mandir}/man1/lli-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-addr2line-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-ar-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-as-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-bcanalyzer-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-cov-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-cxxfilt-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-cxxmap-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-diff-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-dis-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-dwarfdump-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-extract-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-install-name-tool-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-lib-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-libtool-darwin-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-link-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-lipo-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-mca-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-nm-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-objcopy-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-objdump-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-otool-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-pdbutil-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-profdata-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-profgen-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-ranlib-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-readelf-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-readobj-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-size-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-stress-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-strings-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-strip-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-symbolizer-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-tblgen-%{_relver}.1%{ext_man}
-%{_mandir}/man1/llvm-tli-checker-%{_relver}.1%{ext_man}
-%{_mandir}/man1/opt-%{_relver}.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/bugpoint.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/dsymutil.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llc.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/lli.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-addr2line.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-ar.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-as.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-bcanalyzer.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-cov.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-cxxfilt.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-cxxmap.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-diff.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-dis.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-dwarfdump.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-extract.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-install-name-tool.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-lib.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-libtool-darwin.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-link.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-lipo.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-mca.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-nm.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-objcopy.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-objdump.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-otool.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-pdbutil.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-profdata.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-profgen.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-ranlib.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-readelf.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-readobj.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-size.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-stress.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-strings.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-strip.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-symbolizer.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-tblgen.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-tli-checker.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/opt.1%{ext_man}
+%{lapply -p man_path %llvm_man}
+%{lapply -p man_path %llvm_bin_utils_man}
+%{lapply -p man_path %llvm_devel_utils_man}
+%{lapply -p man_relver_path %llvm_man}
+%{lapply -p man_relver_path %llvm_bin_utils_man}
+%{lapply -p man_relver_path %llvm_devel_utils_man}
+%{lapply -p ghost_ua_man_link %llvm_man}
+%{lapply -p ghost_ua_man_link %llvm_bin_utils_man}
+%{lapply -p ghost_ua_man_link %llvm_devel_utils_man}
 
 %files -n clang%{_sonum}
 %license CREDITS.TXT LICENSE.TXT
@@ -1777,94 +1519,18 @@ fi
 %{_bindir}/clang-%{_sonum}
 %{_bindir}/clang++-%{_minor}
 %{_bindir}/clang++-%{_sonum}
-%{_bindir}/c-index-test
-%{_bindir}/clang
-%{_bindir}/clangd
-%{_bindir}/clang++
-%{_bindir}/clang-apply-replacements
-%{_bindir}/clang-change-namespace
-%{_bindir}/clang-check
-%{_bindir}/clang-cl
 %{_bindir}/clang-cpp
-%{_bindir}/clang-extdef-mapping
-%{_bindir}/clang-format
-%{_bindir}/clang-include-fixer
-%{_bindir}/clang-linker-wrapper
-%{_bindir}/clang-move
-%{_bindir}/clang-nvlink-wrapper
-%{_bindir}/clang-offload-bundler
-%{_bindir}/clang-offload-wrapper
-%{_bindir}/clang-query
-%{_bindir}/clang-refactor
-%{_bindir}/clang-repl
-%{_bindir}/clang-rename
-%{_bindir}/clang-reorder-fields
-%{_bindir}/clang-scan-deps
-%{_bindir}/clang-tidy
-%{_bindir}/diagtool
-%{_bindir}/find-all-symbols
-%{_bindir}/modularize
-%{_bindir}/pp-trace
-%{_bindir}/c-index-test-%{_relver}
-%{_bindir}/clang-%{_relver}
-%{_bindir}/clangd-%{_relver}
-%{_bindir}/clang++-%{_relver}
-%{_bindir}/clang-apply-replacements-%{_relver}
-%{_bindir}/clang-change-namespace-%{_relver}
-%{_bindir}/clang-check-%{_relver}
-%{_bindir}/clang-cl-%{_relver}
-%{_bindir}/clang-extdef-mapping-%{_relver}
-%{_bindir}/clang-format-%{_relver}
-%{_bindir}/clang-include-fixer-%{_relver}
-%{_bindir}/clang-linker-wrapper-%{_relver}
-%{_bindir}/clang-move-%{_relver}
-%{_bindir}/clang-nvlink-wrapper-%{_relver}
-%{_bindir}/clang-offload-bundler-%{_relver}
-%{_bindir}/clang-offload-wrapper-%{_relver}
-%{_bindir}/clang-query-%{_relver}
-%{_bindir}/clang-refactor-%{_relver}
-%{_bindir}/clang-repl-%{_relver}
-%{_bindir}/clang-rename-%{_relver}
-%{_bindir}/clang-reorder-fields-%{_relver}
-%{_bindir}/clang-scan-deps-%{_relver}
-%{_bindir}/clang-tidy-%{_relver}
-%{_bindir}/diagtool-%{_relver}
-%{_bindir}/find-all-symbols-%{_relver}
-%{_bindir}/modularize-%{_relver}
-%{_bindir}/pp-trace-%{_relver}
-%ghost %{_sysconfdir}/alternatives/c-index-test
-%ghost %{_sysconfdir}/alternatives/clang
-%ghost %{_sysconfdir}/alternatives/clangd
-%ghost %{_sysconfdir}/alternatives/clang++
-%ghost %{_sysconfdir}/alternatives/clang-apply-replacements
-%ghost %{_sysconfdir}/alternatives/clang-change-namespace
-%ghost %{_sysconfdir}/alternatives/clang-check
-%ghost %{_sysconfdir}/alternatives/clang-cl
-%ghost %{_sysconfdir}/alternatives/clang-extdef-mapping
-%ghost %{_sysconfdir}/alternatives/clang-format
-%ghost %{_sysconfdir}/alternatives/clang-include-fixer
-%ghost %{_sysconfdir}/alternatives/clang-linker-wrapper
-%ghost %{_sysconfdir}/alternatives/clang-move
-%ghost %{_sysconfdir}/alternatives/clang-nvlink-wrapper
-%ghost %{_sysconfdir}/alternatives/clang-offload-bundler
-%ghost %{_sysconfdir}/alternatives/clang-offload-wrapper
-%ghost %{_sysconfdir}/alternatives/clang-query
-%ghost %{_sysconfdir}/alternatives/clang-refactor
-%ghost %{_sysconfdir}/alternatives/clang-repl
-%ghost %{_sysconfdir}/alternatives/clang-rename
-%ghost %{_sysconfdir}/alternatives/clang-reorder-fields
-%ghost %{_sysconfdir}/alternatives/clang-scan-deps
-%ghost %{_sysconfdir}/alternatives/clang-tidy
-%ghost %{_sysconfdir}/alternatives/diagtool
-%ghost %{_sysconfdir}/alternatives/find-all-symbols
-%ghost %{_sysconfdir}/alternatives/modularize
-%ghost %{_sysconfdir}/alternatives/pp-trace
-%{_mandir}/man1/clang.1%{ext_man}
-%{_mandir}/man1/diagtool.1%{ext_man}
-%{_mandir}/man1/clang-%{_relver}.1%{ext_man}
-%{_mandir}/man1/diagtool-%{_relver}.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/clang.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/diagtool.1%{ext_man}
+%{lapply -p bin_path %clang_ua_anchor %clang_binfiles}
+%{lapply -p bin_path %clang_tools_extra_binfiles}
+%{lapply -p bin_relver_path %clang_ua_anchor %clang_binfiles}
+%{lapply -p bin_relver_path %clang_tools_extra_binfiles}
+%{lapply -p ghost_ua_bin_link %clang_ua_anchor %clang_binfiles}
+%{lapply -p ghost_ua_bin_link %clang_tools_extra_binfiles}
+
+%{lapply -p man_path %clang_manfiles}
+%{lapply -p man_relver_path %clang_manfiles}
+%{lapply -p ghost_ua_man_link %clang_manfiles}
+
 %dir %{_libdir}/clang/
 %dir %{_libdir}/clang/%{_relver}/
 %ifarch aarch64 x86_64
@@ -2016,41 +1682,17 @@ fi
 %if %{with lld}
 %files -n lld%{_sonum}
 %license CREDITS.TXT LICENSE.TXT
-%{_bindir}/ld.lld
-%{_bindir}/ld64.lld
-%{_bindir}/lld
-%{_bindir}/lld-link
-%{_bindir}/wasm-ld
-%{_bindir}/ld.lld-%{_relver}
-%{_bindir}/ld64.lld-%{_relver}
-%{_bindir}/lld-%{_relver}
-%{_bindir}/lld-link-%{_relver}
-%{_bindir}/wasm-ld-%{_relver}
-%ghost %{_sysconfdir}/alternatives/ld.lld
-%ghost %{_sysconfdir}/alternatives/ld64.lld
-%ghost %{_sysconfdir}/alternatives/lld
-%ghost %{_sysconfdir}/alternatives/lld-link
-%ghost %{_sysconfdir}/alternatives/wasm-ld
+%{lapply -p bin_path %lld_ua_anchor %lld_binfiles}
+%{lapply -p bin_relver_path %lld_ua_anchor %lld_binfiles}
+%{lapply -p ghost_ua_bin_link %lld_ua_anchor %lld_binfiles}
 %endif
 
 %if %{with lldb}
 %files -n lldb%{_sonum}
 %license CREDITS.TXT LICENSE.TXT
-%{_bindir}/lldb
-%{_bindir}/lldb-argdumper
-%{_bindir}/lldb-instr
-%{_bindir}/lldb-server
-%{_bindir}/lldb-vscode
-%{_bindir}/lldb-%{_relver}
-%{_bindir}/lldb-argdumper-%{_relver}
-%{_bindir}/lldb-instr-%{_relver}
-%{_bindir}/lldb-server-%{_relver}
-%{_bindir}/lldb-vscode-%{_relver}
-%ghost %{_sysconfdir}/alternatives/lldb
-%ghost %{_sysconfdir}/alternatives/lldb-argdumper
-%ghost %{_sysconfdir}/alternatives/lldb-instr
-%ghost %{_sysconfdir}/alternatives/lldb-server
-%ghost %{_sysconfdir}/alternatives/lldb-vscode
+%{lapply -p bin_path %lldb_ua_anchor %lldb_binfiles}
+%{lapply -p bin_relver_path %lldb_ua_anchor %lldb_binfiles}
+%{lapply -p ghost_ua_bin_link %lldb_ua_anchor %lldb_binfiles}
 
 %if %{with lldb_python}
 %files -n python3-lldb%{_sonum}
