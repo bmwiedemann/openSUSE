@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 29 09:49:32 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.4.1
+  * Fix incorrect length computation of buffer in t3_win_clrtoeol
+    when the current paint position is in the middle of a
+    double-width character. This could cause segmentation faults.
+
+-------------------------------------------------------------------
 Thu Dec 19 23:54:10 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update eto release 0.4.0

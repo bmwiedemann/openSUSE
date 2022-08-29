@@ -1,7 +1,7 @@
 #
 # spec file for package libt3window
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libt3window
 %define lname	libt3window0
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        The Tilde Toolkit's window-based terminal program library
 License:        GPL-3.0-only
@@ -68,12 +68,12 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libt3window.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 export CC=gcc
-%configure --docdir="%_docdir/%name"
-make %{?_smp_mflags}
+./configure --prefix="%_prefix" --libdir="%_libdir" --docdir="%_docdir/%name"
+%make_build
 
 %install
 %make_install
@@ -84,13 +84,11 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -p /sbin/ldconfig -n %lname
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libt3window.so.0*
-%doc COPYING
+%license COPYING
 
 %files devel
-%defattr(-,root,root)
-%_includedir/t3/
+%_includedir/t3window/
 %_libdir/libt3window.so
 %_libdir/pkgconfig/libt3window.pc
 %_docdir/%name/
