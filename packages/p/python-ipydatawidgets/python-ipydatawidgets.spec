@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipydatawidgets
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
-%define mainver 4.2.0
-%define labver  7.0.0
-%define jupver  5.4.0
+%define mainver 4.3.2
+%define labver  7.1.2
+%define jupver  5.5.2
 Name:           python-ipydatawidgets
 Version:        %{mainver}
 Release:        0
@@ -30,14 +27,13 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/vidartf/ipydatawidgets
 Source:         https://files.pythonhosted.org/packages/py2.py3/i/ipydatawidgets/ipydatawidgets-%{mainver}-py2.py3-none-any.whl
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module ipywidgets >= 7.0.0}
-BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module traittypes >= 0.2.0}
 BuildRequires:  fdupes
-BuildRequires:  jupyter-jupyterlab-filesystem
+BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module nbval}
@@ -45,13 +41,10 @@ BuildRequires:  %{python_module pytest}
 # /SECTION
 Requires:       jupyter-ipydatawidgets = %{jupver}
 Requires:       python-ipywidgets >= 7.0.0
-Requires:       python-notebook
 Requires:       python-numpy
-Requires:       python-six
 Requires:       python-traittypes >= 0.2.0
 Provides:       python-jupyter_ipydatawidgets = %{mainver}
 Obsoletes:      python-jupyter_ipydatawidgets < %{mainver}
-Recommends:     python-ipyscales >= 0.1.1
 BuildArch:      noarch
 %python_subpackages
 
@@ -100,8 +93,7 @@ This package provides the JupyterLab extension.
 # Not Needed
 
 %install
-cp -a %{SOURCE0} .
-%pyproject_install
+%pyproject_install %{SOURCE0}
 %{jupyter_move_config}
 %python_expand find %{buildroot}%{$python_sitelib}/ipydatawidgets/ -type f -name "*.py" -exec sed -i 's/\r$//' {} +
 %python_expand find %{buildroot}%{$python_sitelib}/ipydatawidgets/ -type f -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} +
@@ -121,7 +113,7 @@ export LANG=en_US.UTF-8
 %files -n jupyter-ipydatawidgets
 %license LICENSE.txt
 %{_jupyter_nbextension_dir}/jupyter-datawidgets/
-%config %{_jupyter_nb_notebook_confdir}/jupyter-datawidgets.json
+%_jupyter_config %{_jupyter_nb_notebook_confdir}/jupyter-datawidgets.json
 
 %files -n jupyter-ipydatawidgets-jupyterlab
 %license LICENSE.txt

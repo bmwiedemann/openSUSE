@@ -83,4 +83,24 @@
     <comment></comment>
     <requestid>884594</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>6f8bc42c21aec60b8d9e64b3f4b4b4ea</srcmd5>
+    <version>unknown</version>
+    <time>1661758950</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.3.2
+  * jupyter-datawidgets 5.5.2
+  * jupyerlab-datawidgets 7.1.2
+  * no release notes
+  * Drop Python2 and Python 3.6 support
+- fixes failures with recent ipywidgets 8.0.1
+
+- Update to 4.3.1.post1
+  * jupyter-datawidgets 5.5.1
+  * jupyerlab-datawidgets 7.1.1.
+  * no release notes
+  * ipywidgets 8 support
+  * typing changes</comment>
+    <requestid>999712</requestid>
+  </revision>
 </revisionlist>
