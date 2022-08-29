@@ -17,9 +17,9 @@
 
 
 Name:           vulkan-validationlayers
-Version:        1.3.224.0
+Version:        1.3.224.1
 Release:        0
-%define lname libVkLayer_utils-1_3_224_0
+%define lname libVkLayer_utils-1_3_224_1
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
 Group:          Development/Tools/Other
