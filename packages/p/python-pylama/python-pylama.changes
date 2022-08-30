@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Aug 25 09:18:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.4.1
+  * Support TOML configuration (thank you
+    https://github.com/villainy)
+  * Fix pylint integration
+  * Fix linting for empty files
+- Version 8.3.8
+  * Better pytest integration
+- Version 8.3.6
+  * Fixed processing of linters params
+- Version 8.3.0
+  * Added support for default config file `~/.pylama.ini`
+- Version 8.2.0
+  * Added `--max-line-length` to setup max line length for
+    pycodestyle and pylint
+  * Support for linters options in command line
+- Version 8.1.4
+  * Support json format
+  * Support `--from-stdin` option
+  * Changed: pylama only allows to check python files (--force is
+    removed)
+  * Changed: mccabe argument `complexity` -> `max-complexity`
+- Version 8.0.5
+  * Drop support for python 2
+  * Support python 3.7, 3.8, 3.9
+  * Support mccabe==0.6.1, pycodestyle==2.8.0, pydocstyle==6.1.1,
+    pyflakes==2.4.0, eradicate==2.0.0, radon==5.1.0, pylint==2.11.1
+  * Support vulture
+  * Support 'convention' for pydocstyle
+  * License changed to MIT (see LICENSE file for details)
+  * Fix Radon message format
+- Drop support-pytest-6.patch
+
+-------------------------------------------------------------------
 Wed Aug 10 14:33:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - remove unnecessary dependency on pylint

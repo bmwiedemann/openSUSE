@@ -16,54 +16,63 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pylama
-Version:        7.7.1
+Version:        8.4.1
 Release:        0
 Summary:        Code audit tool for python
-License:        LGPL-3.0-only
+License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/klen/pylama
-Source:         https://files.pythonhosted.org/packages/source/p/pylama/pylama-%{version}.tar.gz
-# https://github.com/klen/pylama/issues/147
-Source1:        https://raw.githubusercontent.com/klen/pylama/develop/dummy.py
-# PATCH-FIX-UPSTREAM support-pytest-6.patch gh#klen/pylama#189
-Patch0:         support-pytest-6.patch
-BuildRequires:  %{python_module eradicate >= 0.2}
-BuildRequires:  %{python_module mccabe >= 0.5.2}
-BuildRequires:  %{python_module pycodestyle >= 2.3.1}
-BuildRequires:  %{python_module pydocstyle >= 2.0.0}
-BuildRequires:  %{python_module pyflakes >= 1.5.0}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module radon >= 1.4.2}
+Source:         https://github.com/klen/pylama/archive/refs/tags/%{version}.tar.gz#/pylama-%{version}-gh.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module mccabe      >= 0.7.0}
+BuildRequires:  %{python_module pycodestyle >= 2.9.1}
+BuildRequires:  %{python_module pydocstyle  >= 6.1.1}
+BuildRequires:  %{python_module pyflakes    >= 2.5.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  mypy
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Recommends:     mypy
-Recommends:     python-mccabe >= 0.5.2
-Recommends:     python-pycodestyle >= 2.3.1
-Recommends:     python-pydocstyle >= 2.0.0
-Recommends:     python-pyflakes >= 1.5.0
-Recommends:     python-radon >= 1.4.2
+Requires:       python-mccabe      >= 0.7.0
+Requires:       python-pycodestyle >= 2.9.1
+Requires:       python-pydocstyle  >= 6.1.1
+Requires:       python-pyflakes    >= 2.5.0
+Suggests:       python-pylint
+Suggests:       python-eradicate
+Suggests:       python-radon
+Suggests:       python-mypy
+Suggests:       python-vulture
+Recommends:     python-toml >= 0.10.2
+# SECTION test
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module eradicate >= 2}
+BuildRequires:  %{python_module mypy}
+BuildRequires:  %{python_module pylint >= 2.11.1}
+BuildRequires:  %{python_module radon >= 5.1.0}
+BuildRequires:  %{python_module toml >= 0.10.2}
+BuildRequires:  %{python_module vulture}
+# /SECTION
 BuildArch:      noarch
 %python_subpackages
 
 %description
-Audit tool for Python and JavaScript. Pylama wraps these tools:
-* PEP8
-* PEP257
-* PyFlakes
-* Mccabe
+Code audit tool for Python. Pylama wraps these tools:
+
+- pycodestyle (formerly pep8) © 2012-2013, Florent Xicluna;
+- pydocstyle (formerly pep257 by Vladimir Keleshev) © 2014, Amir Rachum;
+- PyFlakes © 2005-2013, Kevin Watters;
+- Mccabe © Ned Batchelder;
+- Pylint © 2013, Logilab;
+- Radon © Michele Lacchia
+- eradicate © Steven Myint;
+- Mypy © Jukka Lehtosalo and contributors;
+- Vulture © Jendrik Seipp and contributors;
 
 %prep
-%setup -q -n pylama-%{version}
-cp %{SOURCE1} .
-%autopatch -p1
+%autosetup -p1 -n pylama-%{version}
 
 %build
 export LANG=en_US.UTF-8
@@ -72,17 +81,14 @@ export LANG=en_US.UTF-8
 %install
 export LANG=en_US.UTF-8
 %python_install
-%python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
-
 %python_clone -a %{buildroot}%{_bindir}/pylama
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
-# test_ignore_select - relies on number of errors reported by pyflakes/etc.
-# mypy as module is only available for default python3 provider
-%python_exec -c 'import mypy' || $python_skiptest+=" or test_mypy"
-%pytest -k "not (test_ignore_select ${$python_skiptest})"
+# pylama-quotes is on PyPI but has no active Website or repository for code maintenance
+donttest="test_quotes"
+%pytest -k "not ($donttest)"
 
 %post
 %python_install_alternative pylama
@@ -91,7 +97,7 @@ export LANG=en_US.UTF-8
 %python_uninstall_alternative pylama
 
 %files %{python_files}
-%doc AUTHORS Changelog README.rst
+%doc Changelog README.rst
 %license LICENSE
 %python_alternative %{_bindir}/pylama
 %{python_sitelib}/pylama
