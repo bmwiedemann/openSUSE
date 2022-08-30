@@ -28,15 +28,15 @@ Source0:        %{name}-%{version}.tar.xz
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  git-core
-BuildRequires:  python3-dkimpy
-BuildRequires:  python3-dnspython
-BuildRequires:  python3-patatt
-BuildRequires:  python3-requests
+BuildRequires:  python3-dkimpy >= 1.0.5
+BuildRequires:  python3-dnspython >= 2.0.0
+BuildRequires:  python3-patatt >= 0.5
+BuildRequires:  python3-requests >= 2.24.0
 # /SECTION
 BuildRequires:  python3-setuptools
 Requires:       python3-dkimpy >= 1.0.5
 Requires:       python3-dnspython >= 2.0.0
-Requires:       python3-patatt >= 0.4
+Requires:       python3-patatt >= 0.5
 Requires:       python3-requests >= 2.24.0
 
 %description
@@ -62,7 +62,6 @@ sed -i.old '1{/#!.*/d}' b4/*.py
 
 %install
 %python3_install
-mv %{buildroot}/%{_mandir}/man5 %{buildroot}/%{_mandir}/man.5
 
 %check
 python3 setup.py check
@@ -77,8 +76,7 @@ test "$THEIRS" = "$OURS"
 %doc README.rst
 %license COPYING
 %{_bindir}/%{name}
-%dir %{_mandir}/man.5/
-%{_mandir}/man.5/b4.5.gz
+%{_mandir}/man5/b4.5.gz
 %{python_sitelib}/%{name}*
 
 %changelog
