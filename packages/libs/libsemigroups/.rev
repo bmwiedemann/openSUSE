@@ -119,4 +119,12 @@
     <comment>- Update to release 2.2.0</comment>
     <requestid>986365</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b43945482a4948cde5268c08e003410c</srcmd5>
+    <version>2.2.1</version>
+    <time>1661863757</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>999994</requestid>
+  </revision>
 </revisionlist>
