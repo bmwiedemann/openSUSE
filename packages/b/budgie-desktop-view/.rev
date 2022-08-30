@@ -59,4 +59,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>963068</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2cc8ef89f1a2d1f095fe28b5144419d2</srcmd5>
+    <version>1.2+0</version>
+    <time>1661863794</time>
+    <user>dimstar_suse</user>
+    <comment>- Move autostart back to /etc until aaa_base is fixed
+</comment>
+    <requestid>1000092</requestid>
+  </revision>
 </revisionlist>

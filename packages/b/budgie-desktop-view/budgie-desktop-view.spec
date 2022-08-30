@@ -42,7 +42,7 @@ Budgie Desktop View is the official Budgie desktop icons application / implement
 %autosetup
 
 %build
-%meson -Dxdg-appdir=%{_distconfdir}/xdg/autostart
+%meson -Dxdg-appdir=%{_sysconfdir}/xdg/autostart
 %meson_build
 
 %install
@@ -51,7 +51,7 @@ Budgie Desktop View is the official Budgie desktop icons application / implement
 %files
 %license LICENSE.md
 %{_bindir}/%{org}.budgie-desktop-view
-%{_distconfdir}/xdg/autostart/%{org}.budgie-desktop-view-autostart.desktop
+%{_sysconfdir}/xdg/autostart/%{org}.budgie-desktop-view-autostart.desktop
 %{_datadir}/applications/%{org}.budgie-desktop-view.desktop
 %{_datadir}/glib-2.0/schemas/%{org}.budgie-desktop-view.gschema.xml
 
