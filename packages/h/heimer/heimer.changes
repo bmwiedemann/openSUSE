@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 29 07:14:43 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.6.0:
+  * Usability improvements:
+    + Show a dummy edge label with '...' when the actual label won't fit
+    + Stack edge text edits on top of nodes
+
+-------------------------------------------------------------------
 Mon Aug  1 07:22:13 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.5.0:

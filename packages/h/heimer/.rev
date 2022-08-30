@@ -53,4 +53,15 @@
   * Update German and Dutch translations</comment>
     <requestid>991944</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>010611dd1cc504b27182078ee9af47e5</srcmd5>
+    <version>3.6.0</version>
+    <time>1661863724</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.0:
+  * Usability improvements:
+    + Show a dummy edge label with '...' when the actual label won't fit
+    + Stack edge text edits on top of nodes</comment>
+    <requestid>999857</requestid>
+  </revision>
 </revisionlist>
