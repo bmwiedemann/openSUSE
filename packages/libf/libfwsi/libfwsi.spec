@@ -18,7 +18,7 @@
 
 %define lname	libfwsi1
 Name:           libfwsi
-Version:        20210419
+Version:        20220123
 Release:        0
 Summary:        Library to access the Windows Shell Item format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
