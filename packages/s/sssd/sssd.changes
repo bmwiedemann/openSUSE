@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 26 20:54:33 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.7.4
+  * Lock-free client support will be only built if libc provides
+    pthread_key_create() and pthread_once(). For glibc this means
+    version 2.34+.
+
+-------------------------------------------------------------------
 Mon Jul  4 12:11:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.7.3
