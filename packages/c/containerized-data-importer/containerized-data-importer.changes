@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 30 06:33:01 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.54.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.54.0
+
+-------------------------------------------------------------------
 Tue Jul 26 16:50:25 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Include additional tools used by cdi-importer:
