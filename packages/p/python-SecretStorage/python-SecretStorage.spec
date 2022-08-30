@@ -1,5 +1,5 @@
 #
-# spec file for package python-SecretStorage
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -18,22 +18,33 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-Name:           python-SecretStorage
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-SecretStorage%{psuffix}
 Version:        3.3.2
 Release:        0
 Summary:        Python bindings to FreeDesktoporg Secret Service API
 License:        BSD-3-Clause
 URL:            https://github.com/mitya57/secretstorage
 Source:         https://files.pythonhosted.org/packages/source/S/SecretStorage/SecretStorage-%{version}.tar.gz
-BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module jeepney >= 0.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  gnome-keyring
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography
 Requires:       python-jeepney >= 0.6
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module SecretStorage = %{version}}
+BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module jeepney >= 0.6}
+BuildRequires:  gnome-keyring
+%endif
 %python_subpackages
 
 %description
@@ -62,17 +73,23 @@ The documentation can be found on `pythonhosted.org`_.
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 # gnome-keyring "forgets" to create this directory under certain conditions
 mkdir -p $HOME/.cache
 %python_expand dbus-run-session -- $python -m unittest discover -s tests
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc changelog README.rst
 %{python_sitelib}/*
+%endif
 
 %changelog
