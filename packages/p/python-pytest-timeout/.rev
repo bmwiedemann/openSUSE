@@ -103,4 +103,12 @@
   * Dropped support for Python 2, minimum pytest version upported is 5.0.0.</comment>
     <requestid>944139</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f30c5b3278297e91fa399351ed8c9a30</srcmd5>
+    <version>2.1.0</version>
+    <time>1661863708</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999928</requestid>
+  </revision>
 </revisionlist>
