@@ -1,7 +1,7 @@
 #
 # spec file for package libtsm
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %global sover   4
 %global lname   libtsm%{sover}
 Name:           libtsm
-Version:        4.0.0
+Version:        4.0.2
 Release:        0
 Summary:        DEC-VT terminal emulator state machine
-License:        MIT AND LGPL-2.1-or-later
+License:        LGPL-2.1-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/Aetf/libtsm
-Source:         https://github.com/Aetf/libtsm/archive/libtsm-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+Source:         https://github.com/Aetf/libtsm/archive/refs/tags/v%{version}.tar.gz
+Patch1:         0001-Add-new-palette-with-standard-VGA-colors.patch
+BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(check)
-# PATCH-FIX-UPSTREAM (https://github.com/Aetf/libtsm/pull/9)
-Patch1:         0001-Fix-filename-in-test_common.h.patch
-# PATCH-FIX-UPSTREAM (https://github.com/Aetf/libtsm/pull/10)
-Patch2:         0001-Add-new-palette-with-standard-VGA-colors.patch
+BuildRequires:  pkgconfig(xkbcommon)
 
 %description
 TSM is a state machine for DEC VT100-VT520 compatible terminal
@@ -72,31 +67,27 @@ This package contains the development headers for the library found
 in %{lname}.
 
 %prep
-# The version contains a "libtsm-" prefix...
-%autosetup -p1 -n libtsm-libtsm-%{version}
+%autosetup -p1
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure --disable-static
-
-%check
-make check
+%cmake
+%make_build
 
 %install
-make install DESTDIR="%{buildroot}"
-rm %{buildroot}%{_libdir}/libtsm.la
+%cmake_install
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%doc README
 %license COPYING LICENSE_htable
 %{_libdir}/libtsm.so.%{sover}*
 
 %files devel
+%doc README
 %{_includedir}/libtsm.h
 %{_libdir}/libtsm.so
 %{_libdir}/pkgconfig/*.pc
+%{_libdir}/cmake/
 
 %changelog
