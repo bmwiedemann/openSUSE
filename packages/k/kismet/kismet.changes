@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 17 21:50:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022-08-R1:
+  * Initial support for Wi-Fi 6e support
+    6GHz channels now have initial support, and can be captured from. 6e APs will
+    show up in Kismet, but currently the UI won’t classify them quite right.
+    For Intel based 6e cards, you must run iw dev <xyz> scan before starting
+    Kismet! Intel ignores the regdb and will only enable 6GHz channels after a
+    scan!
+    For other cards, you must set the regdomain to US via iw reg set US.
+  * GPS magnetic heading support on hardware which provides it
+  * New graph line in packets UI showing the packets per second processed
+  * New BPF filter programs for wardrive and remote capture mode
+  * Fix 802.11r records not being initialized which could cause a crash
+  * Initial support for modern droneID v2 data
+  * Lots of performance improvements
+
+-------------------------------------------------------------------
 Tue Jun 21 15:53:44 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Add missing Requires: python-websockets

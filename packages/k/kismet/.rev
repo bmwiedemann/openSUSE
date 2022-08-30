@@ -580,4 +580,12 @@ better packaging for distros, and various other quirks.
     <comment></comment>
     <requestid>985223</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>8ef28eba7bdb495397a93d9e714c73db</srcmd5>
+    <version>2022_08_R1</version>
+    <time>1661863731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999878</requestid>
+  </revision>
 </revisionlist>
