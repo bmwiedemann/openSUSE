@@ -53,4 +53,12 @@
   (Can't have AM_INIT_AUTOMAKE twice!)</comment>
     <requestid>939975</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8fb181c7b095cd6a3fd02d773557d97c</srcmd5>
+    <version>3.1</version>
+    <time>1661863749</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>999987</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 28 22:06:52 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.1
+- Delete skip-validation.patch (obsolete),
+  gjiten-automake-fix.diff (duplicate of configure-set-foreign.patch),
+  stop-using-libgnome-ui.patch (obsolete/inapplicable),
+  switch-to-GtkBuilder.patch (obsolete/inapplicable),
+  port-to-GSettings.patch (obsolete),
+  bugzilla-348100-empty-radicals-window.patch (obsolete/inapplicable)
+- Delete configure-set-foreign.patch (not needed)
+
+-------------------------------------------------------------------
 Sat Dec 11 20:14:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Fix broken configure-set-foreign.patch introduced on 2019-08-08.
