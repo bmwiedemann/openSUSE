@@ -19,7 +19,7 @@
 %define include_ada 0
 %_mingw64_package_header_debug
 Name:           mingw64-gcc
-Version:        12.1.0
+Version:        12.2.0
 Release:        0
 Summary:        MinGW Windows compiler (GCC) for C
 License:        GPL-3.0-or-later
