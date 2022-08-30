@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyOgg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyOgg
-Version:        0.6.12a1
+Version:        0.6.14a1
 Release:        0
 Summary:        Python bindings for Xiphorg's Ogg Vorbis, Opus and FLAC
 License:        BSD-3-Clause
@@ -37,13 +37,13 @@ BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(vorbisfile)
 # Automatically get so numbers
 Recommends:     %( ls %{_libdir}/libogg.so.*.*.* | sed -r 's/.*(libogg)\.so\.([0-9]*)\..*/\1\2/g' )
+Recommends:     libflac
+Recommends:     libvorbis
 Recommends:     %( ls %{_libdir}/libopus.so.*.*.* | sed -r 's/.*(libopus)\.so\.([0-9]*)\..*/\1\2/g' )
 Recommends:     %( ls %{_libdir}/libopusenc.so.*.*.* | sed -r 's/.*(libopusenc)\.so\.([0-9]*)\..*/\1\2/g' )
 Recommends:     %( ls %{_libdir}/libopusfile.so.*.*.* | sed -r 's/.*(libopusfile)\.so\.([0-9]*)\..*/\1\2/g' )
 Recommends:     %( ls %{_libdir}/libvorbisenc.so.*.*.* | sed -r 's/.*(libvorbisenc)\.so\.([0-9]*)\..*/\1\2/g' )
 Recommends:     %( ls %{_libdir}/libvorbisfile.so.*.*.* | sed -r 's/.*(libvorbisfile)\.so\.([0-9]*)\..*/\1\2/g' )
-Recommends:     libflac
-Recommends:     libvorbis
 BuildArch:      noarch
 %python_subpackages
 
