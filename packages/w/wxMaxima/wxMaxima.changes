@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jul 22 14:57:51 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 22.05.0:
+  * Added guess_exact_value to the numeric menu.
+  * Added lapack to the matrix menu.
+  * Added linpack to the numeric menu.
+  * Added a "declare facts" right-click menu entry to variables.
+  * We no more reserve space for hidden input.
+  * A better logexpand section in the numeric menu.
+  * Many wizards have a more modern look and feel, now.
+  * The modern-style wizards are now dockable by default.
+  * Undo and redo buttons for the toolbar.
+  * A "construct fraction" wizard
+    (gh#wxMaxima-developers/wxmaxima#1664).
+  * Printing multiple-page documents now should work again on
+    Linux (gh#wxMaxima-developers/wxmaxima#1671).
+  * The selection should now no more overwrite test
+    (gh#wxMaxima-developers/wxmaxima#1665).
+  * Hidden code cells now are correctly sent to maxime
+    (gh#wxMaxima-developers/wxmaxima#1674).
+  * Support for wxWidgets 3.1.6.
+- Disable testing until issues sorted
+  (gh#wxMaxima-developers/wxmaxima#1699).
+
+-------------------------------------------------------------------
 Sat Apr 16 21:36:53 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 22.04.0:
