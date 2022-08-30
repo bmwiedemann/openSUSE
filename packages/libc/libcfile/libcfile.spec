@@ -1,7 +1,7 @@
 #
 # spec file for package libcfile
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 Name:           libcfile
 %define lname	libcfile1
-Version:        20210409
+Version:        20220106
 Release:        0
 Summary:        Library for C file functions
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libcfile
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libcfile/releases/download/%version/%name-alpha-%version.tar.gz
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
