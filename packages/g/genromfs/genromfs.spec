@@ -17,14 +17,13 @@
 
 
 Name:           genromfs
-Version:        0.5.2
+Version:        0.5.7
 Release:        0
 Summary:        Utility for Creating romfs File Systems
 License:        GPL-2.0-or-later
 Group:          System/Boot
 URL:            http://romfs.sourceforge.net
-Source:         https://downloads.sf.net/romfs/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         https://github.com/chexum/genromfs/archive/refs/tags/%version.tar.gz
 
 %description
 Genromfs is a tool for creating romfs file systems, which are
@@ -33,17 +32,17 @@ Romfs file systems were traditionally used for the initial RAM disks
 used during installation.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-make %{?_smp_mflags} CC="gcc" CFLAGS="%{optflags} -DVERSION=\\\"%{version}\\\"" LDFLAGS=
+%make_build CC="gcc" CFLAGS="%{optflags} -DVERSION=\\\"%{version}\\\"" LDFLAGS=
 
 %install
-make PREFIX=%{buildroot} mandir=%{_mandir} install
+%make_install PREFIX="%{buildroot}" mandir="%{_mandir}"
 
 %files
-%defattr(-,root,root)
-%doc COPYING NEWS ChangeLog genromfs.lsm romfs.txt
+%license COPYING
+%doc NEWS ChangeLog genromfs.lsm romfs.txt
 %doc %{_mandir}/man8/genromfs.8.gz
 %{_bindir}/genromfs
 

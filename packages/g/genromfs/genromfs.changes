@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 27 11:52:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.5.7
+  * Make extension options really able to copy the current data.
+  * Detect unparseable numbers in the extended options.
+  * Tags were stored in an incorrect order, making any value of
+    uids, gids and timestamps larger than 4095 ending up with a
+    wrong value.
+
+-------------------------------------------------------------------
 Sat May  7 12:23:00 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - use https source url
