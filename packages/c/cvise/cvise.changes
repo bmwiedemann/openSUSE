@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 30 09:09:14 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.5.0+git.20220830.f61c4b6:
+  * Bump to 2.5.0.
+  * Reduce MAX_PASS_INCREASEMENT_THRESHOLD to 3.
+
+-------------------------------------------------------------------
 Fri Aug 26 19:17:59 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.4.0+git.20220826.b11db4d:

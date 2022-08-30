@@ -761,4 +761,14 @@
 - Remove extra removal of pytest-flake8 in spec file.</comment>
     <requestid>999469</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>5a63c713abeb33b08b2d3e61a484830a</srcmd5>
+    <version>2.5.0+git.20220830.f61c4b6</version>
+    <time>1661863840</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.0+git.20220830.f61c4b6:
+  * Bump to 2.5.0.
+  * Reduce MAX_PASS_INCREASEMENT_THRESHOLD to 3.</comment>
+    <requestid>1000197</requestid>
+  </revision>
 </revisionlist>
