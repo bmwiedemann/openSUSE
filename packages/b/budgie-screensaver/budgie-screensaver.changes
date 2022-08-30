@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 29 17:51:21 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move autostart back to /etc until aaa_base is fixed
+
+-------------------------------------------------------------------
 Thu Jul 14 13:20:21 UTC 2022 - gmbr3@opensuse.org
 
 - Update to version 5.0.2+0:

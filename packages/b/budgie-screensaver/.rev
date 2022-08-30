@@ -141,4 +141,13 @@
 </comment>
     <requestid>989177</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>5797ca700a60af83d91eb61edff2ad57</srcmd5>
+    <version>5.0.2+0</version>
+    <time>1661863795</time>
+    <user>dimstar_suse</user>
+    <comment>- Move autostart back to /etc until aaa_base is fixed
+</comment>
+    <requestid>1000094</requestid>
+  </revision>
 </revisionlist>
