@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 29 03:39:05 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.1.1 
+  * Change to "Ctrl+F" because PyQt6 doesn't support Modifier + Key by @kumattau in #183
+  * Update README docs badge, Copyright year and sponsors logo by @dalthviz in #184
+  * Add DeprecationWarning for FontAwesome 4.7 icon set by @dalthviz in #185
+  * Try calling newer Qt methods first before falling back to deprecated/removed ones by @kumattau in #186
+
+
+-------------------------------------------------------------------
 Sat Oct 16 09:04:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.0.3
