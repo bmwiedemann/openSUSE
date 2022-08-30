@@ -1,0 +1,37 @@
+From f361c2a1034c02ba8059648f9a04662d6e2b5553 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Tue, 23 Nov 2021 08:44:06 +0000
+Subject: [PATCH] tests/TestTestRunner.cpp: avoid referencing yet unitialized
+ member
+
+On recent gcc-12 snapshot build fails as:
+
+    [ 52%] Building CXX object CMakeFiles/TestUnitTest++.dir/tests/TestTestRunner.cpp.o
+    unittest-cpp/tests/TestTestRunner.cpp:
+      In constructor '{anonymous}::FixtureBase::FixtureBase()':
+    unittest-cpp/tests/TestTestRunner.cpp:48:19:
+      error: member '{anonymous}::FixtureBase::reporter' is used uninitialized [-Werror=uninitialized]
+       48 |          : runner(reporter)
+          |                   ^~~~~~~~
+    cc1plus: all warnings being treated as errors
+
+On https://gcc.gnu.org/PR103375 Andrew suggested to match order of class
+members to avoid picking a member reference to yet unconstructed object.
+---
+ tests/TestTestRunner.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/TestTestRunner.cpp b/tests/TestTestRunner.cpp
+index 86c672d..eb7a918 100644
+--- a/tests/TestTestRunner.cpp
++++ b/tests/TestTestRunner.cpp
+@@ -60,8 +60,8 @@ namespace
+          return result;
+       }
+ 
+-      TestRunner runner;
+       RecordingReporter reporter;
++      TestRunner runner;
+    };
+ 
+    struct TestRunnerFixture : public FixtureBase

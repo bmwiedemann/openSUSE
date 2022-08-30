@@ -1,7 +1,7 @@
 #
 # spec file for package unittest-cpp
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           unittest-cpp
 %define lname	libUnitTest++-2_0_0
+Name:           unittest-cpp
 Version:        2.0.0
 Release:        0
 Summary:        A unit testing framework for C++
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/unittest-cpp
+URL:            https://github.com/unittest-cpp
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM correct lib64 install pathes
 Patch1:         fix-install.patch
 Patch2:         shared.patch
+# PATCH-FIX-UPSTREAM unittest-cpp-2.0.0-gcc12.patch -- Fix build with GCC 12 (https://github.com/unittest-cpp/unittest-cpp/pull/185)
+Patch3:         unittest-cpp-2.0.0-gcc12.patch
 BuildRequires:  cmake
-BuildRequires:  pkgconfig
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 
 %description
 UnitTest++ is a unit testing framework for C++. It was designed
@@ -60,9 +62,7 @@ This package contains header files and libraries needed to develop
 application that use %{name}.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %cmake
@@ -79,12 +79,11 @@ perl -i -lpe 's{^Version:\s*$}{Version: %{version}}' "%{buildroot}/%{_libdir}/pk
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
 %{_libdir}/libUnitTest++-2*.so
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS LICENSE README.md
+%license LICENSE
+%doc AUTHORS README.md
 %{_includedir}/UnitTest++
 %{_libdir}/pkgconfig/UnitTest++.pc
 %{_libdir}/cmake/
