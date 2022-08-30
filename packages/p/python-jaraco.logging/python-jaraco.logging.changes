@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 29 13:18:26 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.1.2
+  * Refresh packaging. Require Python 3.7 or later.
+- v3.1.1: Rely on PEP 420 for namespace package.
+- v3.1.0: Refresh packaging. Remove unneeded dependency on six.
+- Switch to PEP517 and remove obsolete jaraco.base requirement
+
+-------------------------------------------------------------------
 Mon Mar  9 14:19:58 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.0.0
