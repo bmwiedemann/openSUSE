@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 26 05:36:32 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't change the correct manual page path into an invalid one
+
+-------------------------------------------------------------------
 Thu Jun 23 11:39:42 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix _service: Do not add +0 to version when we are directly on a
