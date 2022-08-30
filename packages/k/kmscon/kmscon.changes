@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 29 07:48:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.0.0
+  * uxkb: add Compose (dead-key) support
+  * Add --xkb-compose-file option
+  * Custom palette support
+- Delete kmscon-x-linking.patch (obsolete)
+- Add 0001-Use-correct-systemd-system-unit-directory.patch
+
+-------------------------------------------------------------------
 Thu Mar  7 13:17:43 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Update to git 01dd0a2:

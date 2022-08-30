@@ -1,7 +1,7 @@
 #
 # spec file for package kmscon
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Adam Mizerski <adam@mizerski.pl>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,26 +13,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           kmscon
-Version:        8.1~1536176839
+Version:        9.0.0
 Release:        0
 Summary:        Linux KMS/DRM based virtual Console Emulator
 License:        MIT
 Group:          System/Console
 URL:            https://github.com/Aetf/kmscon/
-Source:         kmscon-%{version}.tar.xz
+Source:         https://github.com/Aetf/kmscon/releases/download/v%version/kmscon-%version.tar.xz
 Patch1:         kmscon-no-date-time.patch
-Patch2:         kmscon-x-linking.patch
-BuildRequires:  autoconf >= 2.68
-BuildRequires:  automake >= 1.11
+Patch2:         0001-Use-correct-systemd-system-unit-directory.patch
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  libtool >= 2.2
-BuildRequires:  libtsm-devel >= 4.0.0
-BuildRequires:  pkgconfig
+BuildRequires:  libtsm-devel >= 4.0.2
+BuildRequires:  meson
+BuildRequires:  pkg-config
 BuildRequires:  xsltproc
 BuildRequires:  xz
 BuildRequires:  pkgconfig(egl)
@@ -44,7 +42,8 @@ BuildRequires:  pkgconfig(libudev) >= 172
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(pixman-1)
-BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(xkbcommon) >= 0.5.0
 # O/P added for 13.1
 Obsoletes:      %{name}-service < %{version}-%{release}
 Provides:       %{name}-service = %{version}-%{release}
@@ -58,16 +57,13 @@ console.
 %autosetup -p1
 
 %build
-autoreconf -fvi
-# fbdev is broken by design, drm2d is the most compatible
-%configure --enable-debug --disable-static --with-fonts=pango --with-video=drm2d \
-           --with-renderers=bbulk --with-sessions=terminal
-make %{?_smp_mflags}
+# Work around https://github.com/Aetf/kmscon/issues/63
+export CFLAGS="%{optflags} $(pkg-config xkbcommon --cflags) $(pkg-config libtsm --cflags) -Wno-error"
+%meson
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
-install -m 644 -D -t %{buildroot}%{_unitdir} docs/*.service
+%meson_install
 
 %pre
 %service_add_pre %{name}.service
@@ -82,15 +78,12 @@ install -m 644 -D -t %{buildroot}%{_unitdir} docs/*.service
 %service_del_postun %{name}.service
 
 %files
-%doc README
 %license COPYING
 %{_bindir}/%{name}
-%dir %{_libdir}/kmscon
-%{_libdir}/kmscon/mod-bbulk.so
-%{_libdir}/kmscon/mod-pango.so
+%{_libdir}/kmscon/
 %dir %{_libexecdir}/kmscon
 %{_libexecdir}/kmscon/kmscon
 %{_mandir}/man1/kmscon.1%{?ext_man}
-%{_unitdir}/kmscon*.service
+%{_unitdir}/*.service
 
 %changelog
