@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Aug 26 17:51:42 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update 22.8.23:
+  * Add B024 error code to message for B024 (#276)
+  * Add B024: abstract base class with no abstract methods (#273)
+  * Implement late-binding loop check (#265)
+  * late-binding closures are a classic gotcha.
+  * Don't crash when select / extend_select are None (#261)
+  * Ignore lambda arguments for B020 (#259)
+  * Fix missing space typos in B021, B022 error messages (#257)
+  * Ignore black formatting for b013 test case (#251)
+  * B010 Fix lambda flase positive (#246)
+  * B008 Fix edge case with lambda functions (#243)
+  * B006 and B008: Detect function calls at any level of the default expression (#239)
+  * B020: Fix comprehension false postives (#238)
+  * Tweak B019 desc (#237)
+  * B022: No arguments passed to contextlib.suppress (#231)
+  * B021: f-string used as docstring. (#230)
+  * B020: ensure loop control variable doesn't overrides iterable it iterates (#220)
+  * B019: check to find cache decorators on class methods (#218)
+  * Fix crash on long empty string (#223)
+  * B018: Ignore JoinedStr (#216)
+  * Build universal Python 3 wheels (#214)
+  * B950: Add same special cases as E501 (#213)
+  * B018: Disable strings from check for now (#209)
+  * B904: ensure the raise is in the same context with the except (#191)
+  * Add Option to extend the list of immutable calls (#204)
+  * Update B014: binascii.Error is now treated as a subclass of ValueError (#206)
+  * add simple pre-commit config (#205)
+  * Test with 3.10 official
+  * Add B018 check to find useless declarations (#196, #202)
+  * Fix crash on call in except statement in _to_name_str (#187)
+  * Update B006: list, dictionary, and set comprehensions are now also disallowed (#186)
+  * Update B008: Whitelist more immutable function calls (#173)
+  * Remove Python Compatibility Warnings (#182)
+  * Add B904: check for raise without from in an except clause (#181)
+  * Add Python 3.10 tests to ensure we pass (#183)
+  * Verify the element in item_context.args is of type ast.Name for b017
+  * Add another hasattr() check to b017 visit for .func
+  * Add B017: check for gotta-catch-em-all assertRaises(Exception)
+  * Fix crash on tuple expansion in try/except block (#161)
+  * Fix grammar in B015 (#150)
+  * Make sure float infinity/NaN does not trigger B008 (#155)
+  * Handle positional-only args in class methods (#158)
+  * Support exception aliases properly in B014 (#129)
+  * Add B015: Pointless comparison (#130)
+  * Remove check for # noqa comments (#134)
+  * Ignore exception classes which are not types (#135)
+  * Introduce B016 to check for raising a literal. (#141)
+  * Exclude types.MappingProxyType() from B008. (#144)
+
+-------------------------------------------------------------------
 Thu Apr 16 11:09:56 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 20.1.4:

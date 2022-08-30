@@ -64,4 +64,12 @@
   * Removed a colon from the descriptive message in B008. (#96)</comment>
     <requestid>794563</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>05e5fa094abf39f27511e4a663e0f4c4</srcmd5>
+    <version>22.8.23</version>
+    <time>1661863740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999909</requestid>
+  </revision>
 </revisionlist>
