@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Aug 13 21:43:23 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.0.7
+  * Fix "ID resumption test failed" bug under Darwin
+  * Fix "locale error message when en_US.UTF-8 isn't available" bug
+  * Fix "Darwin / LibreSSL startup problem" which leads to a question upfront
+  * Make upfront handshake tests more compatible by adding </dev/null
+  * Take 'HTTP Age' HTTP header into account when determine HTTP time
+  * Fix JSON header (structured JSON output) name
+  * Robustness: Update reset_hostdepended_vars() for mass tests
+  * Simplify determination of git stuff
+  * Fix "newline to spaces" in JSON and CSV findings
+  * Fix "Bad file descriptor with --connect-timeout option"
+  * SSLv2 fixes, OpenSSL fixes 3.X
+  * Improve cipher_pref_check() for detecting prioritization of ChaCha ciphers
+  * Simplify + speed up pre-check
+  * Addressing lame DNS responses on WSL
+  * Fix big serial # issue in certs
+  * Fix invalid JSON when certificate issuer containing non-ASCII chars
+
+-------------------------------------------------------------------
 Sun Oct  3 14:02:29 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.6
@@ -198,7 +219,7 @@ Wed Dec 11 21:11:28 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
   * Session ticket fixes
   * Fixes for STARTTLS MySQL and PostgreSQL
   * Unit tests for (almost) every STARTTLS protocol supported
-  * A lot of minor fixes 
+  * A lot of minor fixes
 
 -------------------------------------------------------------------
 Sat Apr 27 09:55:54 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
@@ -220,10 +241,10 @@ Sat Apr 27 09:55:54 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
 Tue Feb 19 10:43:36 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Update to testssl.sh 2.9.94 (aka 3.0rc4)
-  * Documentation fixes and additions 
+  * Documentation fixes and additions
   * Add new openssl helper binaries
   * Bug fix: Scan continues if one of multiple IP addresses per
-    hostname has a problem 
+    hostname has a problem
   * "eTLS" detection ("visibility information")
   * Minimize initial warning "doesn't seem to be a TLS/SSL enabled
     server" by using sockets
@@ -232,7 +253,7 @@ Tue Feb 19 10:43:36 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
   * Clarify & improve Standard Cipher check (potentially breaking
     change)
   * Improve SWEET32 test
-  * Finding certificates is faster and independent on openssl 
+  * Finding certificates is faster and independent on openssl
 
 -------------------------------------------------------------------
 Sat Dec  1 15:58:11 UTC 2018 - Matthias Fehring <buschmann23@opensuse.org>
