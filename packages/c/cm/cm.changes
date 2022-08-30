@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Aug 27 06:27:27 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0.4.0+gb2b8d4bd
+  * Fix 32-bit testsuite run
+
+-------------------------------------------------------------------
+Thu Jun 16 21:20:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.4.0
+  * Add a decomposition of the class field into a tower of prime
+    degree extensions following the algorithm described in A.
+    Enge and F. Morain, Fast Decomposition of Polynomials with
+    Known Galois Group.
+  * Add an implementation of the fastECPP primality proving
+    algorithm, complete with a version running over MPI.
+
+-------------------------------------------------------------------
 Mon Sep 28 19:46:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.3.1
