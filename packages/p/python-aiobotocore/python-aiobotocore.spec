@@ -94,8 +94,8 @@ donttest+=" or test_dynamodb"
 donttest+=" or test_can_delete_urlencoded_object"
 # fail to fetch fake AWS credentials https://github.com/aio-libs/aiobotocore/issues/948
 donttest+=" or (test_credentials and (sso or test_required_config_not_set))"
-
-%pytest -m moto -n auto -k "not ($donttest)"
+# https://github.com/pytest-dev/pytest-asyncio/issues/390
+%pytest -m moto -n auto -k "not ($donttest)" --asyncio-mode=legacy
 
 %files %{python_files}
 %doc CHANGES.rst README.rst

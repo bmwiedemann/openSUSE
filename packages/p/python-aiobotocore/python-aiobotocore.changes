@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 18 10:34:03 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Enforce pytest-asyncio legacy mode (upstream pins to 0.14)
+  * gh#pytest-dev/pytest-asyncio#390
+
+-------------------------------------------------------------------
 Wed Jun 29 08:28:49 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.3.4
