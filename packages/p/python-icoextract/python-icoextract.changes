@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 30 09:23:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Don't use %{python_module FOO} on Requires/Recommends/Suggests.
+
+-------------------------------------------------------------------
 Sat Jul 16 11:15:56 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Cleanup the SPEC file.

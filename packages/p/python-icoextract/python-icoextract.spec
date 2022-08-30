@@ -41,10 +41,10 @@ BuildRequires:  mingw32-cross-gcc
 BuildRequires:  mingw64-cross-gcc
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-Requires:       %{python_module pefile}
+Requires:       python-pefile
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Suggests:       %{python_module Pillow}
+Suggests:       python-Pillow
 BuildArch:      noarch
 %python_subpackages
 
