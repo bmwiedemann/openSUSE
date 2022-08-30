@@ -1,7 +1,7 @@
 #
-# spec file for package python-WSGIProxy2
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-WSGIProxy2%{psuffix}
-Version:        0.4.6
+Version:        0.5.1
 Release:        0
 Summary:        WSGI Proxy Implementation
 License:        MIT

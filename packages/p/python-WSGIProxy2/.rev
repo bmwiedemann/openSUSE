@@ -92,4 +92,12 @@
     <comment>- Switch to pytest and skip one failing test</comment>
     <requestid>744511</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0a86f89665fcf351da1bea1a24c55e9c</srcmd5>
+    <version>0.5.1</version>
+    <time>1661863707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999913</requestid>
+  </revision>
 </revisionlist>
