@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 29 14:23:55 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1195421: Add lxqt-build-tools-symbolic.patch
+  Thanks to Fabian Vogt
+
+-------------------------------------------------------------------
 Wed Apr 20 19:09:51 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 0.11.0
