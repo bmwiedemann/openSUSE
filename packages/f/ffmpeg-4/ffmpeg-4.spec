@@ -120,6 +120,7 @@ Patch8:         vmaf-trim-usr-local.patch
 Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
 Patch10:        ffmpeg-chromium.patch
 Patch11:        ffmpeg-libglslang-detection.patch
+Patch12:        ffmpeg-sdl2-detection.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel
@@ -807,7 +808,23 @@ done
 
 %files
 %doc Changelog CREDITS README.md
-%_bindir/*
+%_bindir/aviocat
+%_bindir/cws2fws
+%_bindir/ffescape
+%_bindir/ffeval
+%_bindir/ffhash
+%_bindir/ffmpeg
+%_bindir/ffplay
+%_bindir/ffprobe
+%_bindir/fourcc2pixfmt
+%_bindir/graph2dot
+%_bindir/ismindex
+%_bindir/pktdumper
+%_bindir/probetest
+%_bindir/qt-faststart
+%_bindir/seek_print
+%_bindir/sidxindex
+%_bindir/trasher
 %_mandir/man1/ff*.1*
 %_datadir/ffmpeg/
 %_libdir/libavcodec.so.58
