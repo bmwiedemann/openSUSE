@@ -47,4 +47,12 @@
     <comment>- Force make -j1 during build because of object file corruption.</comment>
     <requestid>984148</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dd665e662d9424c5a942caca9de60b3b</srcmd5>
+    <version>1.4.2</version>
+    <time>1661863751</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>999936</requestid>
+  </revision>
 </revisionlist>

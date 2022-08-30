@@ -18,7 +18,7 @@
 
 Name:           libtracefs
 %define lname   libtracefs1
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Linux kernel trace file system library
 License:        LGPL-2.1-only
@@ -53,12 +53,10 @@ This subpackage contains the header files.
 %autosetup -p1
 
 %build
-# Not parallel safe - to the point where there is silent corruption
-# (compared to a more common "file not found" in other packages)
-%make_build -j1 V=1 prefix="%_prefix"
+%make_build V=1 prefix="%_prefix"
 
 %install
-%make_install -j1 V=1 prefix="%_prefix" \
+%make_install V=1 prefix="%_prefix" \
 	pkgconfig_dir=%{_libdir}/pkgconfig \
         %nil
 # always the same issues
