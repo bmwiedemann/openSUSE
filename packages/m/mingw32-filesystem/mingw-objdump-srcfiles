@@ -15,7 +15,11 @@ state == 1 && $2 ~ /DW_AT_name/ {
 
 state == 1 && $2 ~ /DW_AT_comp_dir/ {
     atdir = $NF
-    if (atdir != "" && atname != "") {
+    # atname is absolute
+    if (atname ~ /^\//) {
+        print atname
+        state = 0
+    } else if (atdir != "" && atname != "") {
         print atdir "/" atname
         state = 0
     }
