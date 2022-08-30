@@ -16,22 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-jaraco.classes
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Tools to work with classes
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.classes
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.classes/jaraco.classes-%{version}.tar.gz
-BuildRequires:  %{python_module jaraco.base >= 6.1}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module more-itertools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 56}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-jaraco.base >= 6.1
+Requires:       python-more-itertools
 BuildArch:      noarch
 %python_subpackages
 
@@ -40,14 +41,13 @@ jaraco.classes Tools for working with classes.
 
 %prep
 %setup -q -n jaraco.classes-%{version}
-sed -i 's/--flake8//' pytest.ini
-sed -i 's/--black --cov//' pytest.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
@@ -55,7 +55,8 @@ sed -i 's/--black --cov//' pytest.ini
 %files %{python_files}
 %license LICENSE
 %doc docs/*.rst README.rst CHANGES.rst
-%{python_sitelib}/jaraco.classes-%{version}-py*.egg-info
+%dir %{python_sitelib}/jaraco
 %{python_sitelib}/jaraco/classes
+%{python_sitelib}/jaraco.classes-%{version}*-info
 
 %changelog
