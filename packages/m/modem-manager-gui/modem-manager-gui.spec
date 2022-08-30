@@ -1,7 +1,7 @@
 #
 # spec file for package modem-manager-gui
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Source:         http://download.tuxfamily.org/gsf/source/modem-manager-gui-%{ver
 # Alternatively, if the file should not be executed, then ensure that it is not
 # marked as executable or don't install it in a path that is reserved for executables.
 Patch0:         95-mmgui-timestamp-notifier.diff
+# PATCH-FIX-OPENSUSE fix_segfault_on_DNS_entries.patch -- from https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1004258#30
+Patch1:         fix_segfault_on_DNS_entries.patch
 BuildRequires:  fdupes
 BuildRequires:  gdbm-devel
 BuildRequires:  itstool >= 1.2
@@ -64,6 +66,7 @@ Current features:
 %prep
 %setup -q -n %{name}
 %patch0
+%patch1 -p1
 
 %build
 %configure

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 19 10:10:54 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- added patch fix_segfault_on_DNS_entries.patch
+
+-------------------------------------------------------------------
 Tue May 24 09:17:50 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not recommend lang package: the lang package has already
