@@ -44,6 +44,8 @@ Patch0:         wxStl.patch
 Patch1:         fix_node_env-script-interpreter.patch
 # PATCH-FIX-UPSTREAM  wxStl.patch conrad@quisquis.de -- Fix problem with wx version 3.1.0 and 3.1.1
 Patch2:         wxVersion.patch
+# PATCH-FIX-UPSTREAM codelite_wxwidgets_3_1_7.patch -- Fix build issues with wx >= 3.1.7
+Patch3:         codelite_wxwidgets_3_1_7.patch
 BuildRequires:  cmake
 BuildRequires:  ctags
 BuildRequires:  fdupes
