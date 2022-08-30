@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 26 16:02:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.1:
+  + Fixed a crash caused by trying to deallocate already freed
+    graphics buffers in certain situations.
+
+-------------------------------------------------------------------
 Thu Nov 25 21:11:54 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.12.0:
