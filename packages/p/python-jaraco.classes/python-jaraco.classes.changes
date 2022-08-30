@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 29 11:46:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- update to 3.2.2
+  * Refreshed package metadata.
+  * Enrolled with Tidelift.
+- Switch to PEP517 and remove obsolete jaraco.base requirement
+
+-------------------------------------------------------------------
+Mon Aug 29 08:55:57 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing more-itertools to {Build,}Requires. 
+
+-------------------------------------------------------------------
 Sun Mar 27 11:09:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.1:
