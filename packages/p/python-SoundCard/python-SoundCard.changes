@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 29 03:52:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.4.2: 
+  * adds compatibility with NixOS library naming (Thank you, shithead!)
+  * fixes deprecation for Python 3.10 (Thank you, Nekyo!)
+  * fixes deprecation in recent Numpy
+
+-------------------------------------------------------------------
 Wed Aug 25 08:51:57 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.4.1:
