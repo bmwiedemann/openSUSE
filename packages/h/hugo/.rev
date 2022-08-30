@@ -268,4 +268,12 @@
   * resources: Add a Gif source file to golden tests (forwarded request 983164 from jfkw)</comment>
     <requestid>983166</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b84b99e2b46557eec519012479b700d7</srcmd5>
+    <version>0.102.1</version>
+    <time>1661863791</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.102.1: (forwarded request 1000079 from jfkw)</comment>
+    <requestid>1000081</requestid>
+  </revision>
 </revisionlist>

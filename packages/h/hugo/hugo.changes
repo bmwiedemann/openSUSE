@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Aug 29 14:45:35 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.102.1:
+  * release: Fix the Deb archives
+  * Add linux/arm64 extended to release setup
+  * license: Add copyright info
+  * build(deps): bump go.uber.org/atomic from 1.9.0 to 1.10.0
+  * build(deps): bump github.com/kyokomi/emoji/v2 from 2.2.9 to 2.2.10
+  * build(deps): bump github.com/getkin/kin-openapi from 0.97.0 to 0.98.0
+  * deps: Update github.com/pelletier/go-toml/v2 v2.0.2 => v2.0.4
+  * build(deps): bump github.com/spf13/afero from 1.8.2 to 1.9.2
+  * build(deps): bump github.com/tdewolff/parse/v2 from 2.6.1 to 2.6.2
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.14 to 0.0.16
+  * build(deps): bump github.com/rogpeppe/go-internal from 1.8.1 to 1.9.0
+  * build(deps): bump github.com/yuin/goldmark from 1.4.12 to 1.4.13
+  * build(deps): bump github.com/spf13/cobra from 1.4.0 to 1.5.0
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.11.10 to 2.12.0
+  * build(deps): bump github.com/evanw/esbuild from 0.14.43 to 0.15.5
+  * Update README.md
+  * github: Use GitHub's Choco-Install function to retry installs
+  * common/hugio: One more fix for non-OS fs
+  * common/hugio: Fix CopyDir when fs is not OS
+  * snap: Delete obsolete custom x-nodejs plugins
+  * livereload: Inject script without head or body tag
+  * Update to Go 1.19
+  * markup/goldmark/codeblock: Fix attributes when no language identifier in CodeBlock
+  * commands: Fix embed in livereload.go
+  * Externalise and embed livereload.js string
+  * Cache when not found in LookupLayout
+  * parser/pageparser: Don't store the byte slices
+  * Make the baseline benchmark's test files stable
+  * Accept vendor-specified build date if .git/ is unavailable
+  * snap: Replace mage with "go build" and set VendorInfo=snap
+  * snap: Use interface names etc-gitconfig and gitconfig, Take 2
+  * Extract the baseline benchmark to a test
+  * Add a baseline benchmark
+  * snap: Use interface names etc-gitconfig and gitconfig
+
+-------------------------------------------------------------------
 Thu Jun 16 15:34:32 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.101.0:
