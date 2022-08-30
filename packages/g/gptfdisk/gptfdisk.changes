@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug 27 11:58:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.9
+  * Added support for aligning partitions' end points, as well as
+    their start points. This support affects the default
+    partition size when using 'n' in gdisk; it affects the
+    default partition size in cgdisk; and it is activated by the
+    new `-I` option in sgdisk.
+  * Added check for too-small disks (most likely to be an issue
+    when trying to use a too-small disk image); program now
+    aborts if this happens.
+  * Added new parition type codes.
+
+-------------------------------------------------------------------
 Thu Jun 10 08:23:55 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.0.8
