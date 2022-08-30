@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 29 10:24:31 MDT 2022 - carnold@suse.com
+
+- bsc#1201994 - Xen DomU unable to emulate audio device
+  62fde97e-tools-libxl-Replace-deprecated-soundhw-on-QEMU-command-line.patch
+
+-------------------------------------------------------------------
+Tue Aug 23 08:52:05 MDT 2022 - carnold@suse.com
+
+- Things are compiling fine now with gcc12.
+  Drop gcc12-fixes.patch
+
+-------------------------------------------------------------------
 Thu Aug 18 14:18:46 MDT 2022 - carnold@suse.com
 
 - Update to Xen 4.16.2 bug fix release (bsc#1027519)

@@ -119,7 +119,7 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.16.2_02
+Version:        4.16.2_04
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -155,6 +155,7 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
+Patch1:         62fde97e-tools-libxl-Replace-deprecated-soundhw-on-QEMU-command-line.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch
@@ -228,7 +229,6 @@ Patch602:       xenwatchdogd-restart.patch
 Patch621:       xen.build-compare.doc_html.patch
 # Build patches
 Patch99996:     xen.stubdom.newlib.patch
-Patch99997:     gcc12-fixes.patch
 URL:            http://www.cl.cam.ac.uk/Research/SRG/netos/xen/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define pyver %(python3 -c "import sys; print(sys.version.rpartition('.')[0])")
