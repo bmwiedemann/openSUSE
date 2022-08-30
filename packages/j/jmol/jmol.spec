@@ -17,14 +17,14 @@
 
 
 Name:           jmol
-Version:        14.32.55
+Version:        14.32.73
 Release:        0
 Summary:        3D Viewer for chemical structures
 License:        LGPL-2.1-only
 Group:          Productivity/Scientific/Chemistry
 URL:            http://jmol.sf.net/
 
-#Source:         https://downloads.sf.net/jmol/Jmol-%version-binary.tar.gz
+#XSource:         https://downloads.sf.net/jmol/Jmol-%version-binary.tar.gz
 Source:         jmol-%version.tar.xz
 Source2:        https://wiki.jmol.org/images/1/1c/Jmol_icon13.png
 Source3:        %name.man

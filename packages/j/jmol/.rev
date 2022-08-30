@@ -49,4 +49,12 @@
     <comment>- Update to release 14.32.55</comment>
     <requestid>977611</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3cf198b578706d9ad0c129b56a11fa7e</srcmd5>
+    <version>14.32.73</version>
+    <time>1661863755</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>999991</requestid>
+  </revision>
 </revisionlist>

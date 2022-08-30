@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 29 07:27:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.32.73
+  * XSF surface files with over about 267 atoms were not
+    recognizing presence of surface data
+
+-------------------------------------------------------------------
 Mon May 16 20:48:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 14.32.55
