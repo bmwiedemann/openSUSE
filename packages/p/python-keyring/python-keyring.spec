@@ -1,5 +1,5 @@
 #
-# spec file for package python-keyring
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -18,7 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-Name:           python-keyring
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-keyring%{psuffix}
 Version:        23.7.0
 Release:        0
 Summary:        System keyring service access from Python
@@ -26,13 +34,8 @@ License:        MIT AND Python-2.0
 URL:            https://github.com/jaraco/keyring
 Source:         https://files.pythonhosted.org/packages/source/k/keyring/keyring-%{version}.tar.gz
 Patch0:         support-new-importlib.patch
-BuildRequires:  %{python_module SecretStorage >= 3}
-BuildRequires:  %{python_module entrypoints}
-BuildRequires:  %{python_module importlib-metadata}
-BuildRequires:  %{python_module pytest >= 3.5}
 BuildRequires:  %{python_module setuptools >= 17.1}
 BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
-BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-SecretStorage >= 3
@@ -43,6 +46,14 @@ Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module SecretStorage >= 3}
+BuildRequires:  %{python_module entrypoints}
+BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module keyring = %{version}}
+BuildRequires:  %{python_module pytest >= 3.5}
+BuildRequires:  %{python_module toml}
+%endif
 %python_subpackages
 
 %description
@@ -65,13 +76,18 @@ sed -i -e 's,--flake8,,' -e 's,--black,,' -e 's,--cov,,' pytest.ini
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/keyring
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 %pytest
+%endif
 
+%if !%{with test}
 %post
 %python_install_alternative keyring
 
@@ -84,5 +100,6 @@ sed -i -e 's,--flake8,,' -e 's,--black,,' -e 's,--cov,,' pytest.ini
 %python_alternative %{_bindir}/keyring
 %{python_sitelib}/keyring-%{version}-py*.egg-info
 %{python_sitelib}/keyring/
+%endif
 
 %changelog

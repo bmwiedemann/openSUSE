@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 29 04:50:09 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Inject multibuild to prevent a build cycle 
+
+-------------------------------------------------------------------
 Sun Jul 24 09:11:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.7.0:

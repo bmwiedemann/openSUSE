@@ -522,4 +522,12 @@
   * #582: Suppress KeyringErrors for devpi client.</comment>
     <requestid>990874</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>787c862bff40508f723288503faf23f4</srcmd5>
+    <version>23.7.0</version>
+    <time>1661863690</time>
+    <user>dimstar_suse</user>
+    <comment>- Inject multibuild to prevent a build cycle</comment>
+    <requestid>999759</requestid>
+  </revision>
 </revisionlist>
