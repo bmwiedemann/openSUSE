@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 29 17:32:42 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 10.6.3+0:
+  * Bump to 10.6.3
+  * Add setting for workspace item size
+  * Obtain custom timezone using the schema key name
+  * Builtin theme: Dim labels in menu when submenus are revealed
+  * Add support for Mutter 11 (GNOME 43)
+  * Improve scaling change message to request further user action
+- Move autostart back to /etc until aaa_base is fixed
+
+-------------------------------------------------------------------
+Mon Aug 29 16:44:57 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add Recommends xdg-desktop-portal-gnome for flatpak and snapd
+  users
+
+-------------------------------------------------------------------
 Thu Jul 14 13:20:52 UTC 2022 - gmbr3@opensuse.org
 
 - Update to version 10.6.2+0:

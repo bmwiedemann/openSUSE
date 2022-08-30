@@ -22,7 +22,7 @@
 %define _distconfdir %{_sysconfdir}
 %endif
 Name:           budgie-desktop
-Version:        10.6.2+0
+Version:        10.6.3+0
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -48,7 +48,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libgnome-menu-3.0)
-BuildRequires:  (pkgconfig(libmutter-9) or pkgconfig(libmutter-10))
+BuildRequires:  (pkgconfig(libmutter-10) or pkgconfig(libmutter-11))
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpeas-gtk-1.0)
 BuildRequires:  pkgconfig(libpulse)
@@ -58,6 +58,8 @@ BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vapigen)
+# flatpak/snap
+Recommends:     (xdg-desktop-portal-gnome if (flatpak or snapd))
 # https://discuss.getsol.us/d/6970-cant-lock-my-screen/3
 Conflicts:      gnome-shell
 #
@@ -154,7 +156,7 @@ Private library for Budgie desktop to link against.
 
 %build
 export CFLAGS="$CFLAGS -Wno-pedantic"
-%meson -Dc_std=none -Dxdg-appdir=%{_distconfdir}/xdg/autostart
+%meson -Dc_std=none -Dxdg-appdir=%{_sysconfdir}/xdg/autostart
 %meson_build
 
 %install
@@ -165,7 +167,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
-rm %{buildroot}%{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
+rm %{buildroot}%{_sysconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 
 %find_lang %{name}
 
@@ -200,7 +202,7 @@ rm %{buildroot}%{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 %{_datadir}/xsessions/budgie-desktop.desktop
 %{_libdir}/budgie-desktop
 %{_datadir}/budgie
-%{_distconfdir}/xdg/autostart/budgie-desktop-nm-applet.desktop
+%{_sysconfdir}/xdg/autostart/budgie-desktop-nm-applet.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 %ghost %{_sysconfdir}/alternatives/default.desktop
 
