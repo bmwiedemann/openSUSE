@@ -18,7 +18,7 @@
 
 %define src_name CPU-X-%version
 Name:           cpu-x
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        Hardware overview utility
 License:        GPL-3.0-or-later
@@ -39,7 +39,9 @@ BuildRequires:  pkgconfig(libcpuid) >= 0.5.0
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libprocps)
 BuildRequires:  pkgconfig(ncursesw)
-Provides:       bundled(dmidecode) = 3.3.20201210
+# https://github.com/X0rg/CPU-X/issues/105
+Provides:       bundled(bandwidth) = 1.5.1
+Provides:       bundled(dmidecode) = 3.4.20220719.ga1a2258
 
 %description
 CPU-X is a software that gathers information about CPU, motherboard
