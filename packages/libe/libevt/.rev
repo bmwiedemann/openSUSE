@@ -143,4 +143,12 @@ Part of summer 2013 libyal refresh for opensuse 13.1</comment>
   * Build with newer libwrc</comment>
     <requestid>993980</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>3cdfdfd12675542960163152bcc599ae</srcmd5>
+    <version>20220808</version>
+    <time>1661863763</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>999947</requestid>
+  </revision>
 </revisionlist>
