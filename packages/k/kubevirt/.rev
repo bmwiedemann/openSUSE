@@ -442,4 +442,12 @@ SLE identical and thus derived from a common source. Thanks!
     <comment></comment>
     <requestid>990688</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>069a6a210ef87dece495511bf5720264</srcmd5>
+    <version>0.56.0</version>
+    <time>1661863811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000169</requestid>
+  </revision>
 </revisionlist>
