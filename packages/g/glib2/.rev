@@ -2008,4 +2008,12 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 987171 from dimstar)</comment>
     <requestid>987346</requestid>
   </revision>
+  <revision rev="255" vrev="2">
+    <srcmd5>e48b75827948f3d75b78345a16312631</srcmd5>
+    <version>2.72.3</version>
+    <time>1661863692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999786</requestid>
+  </revision>
 </revisionlist>

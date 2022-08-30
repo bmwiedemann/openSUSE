@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 25 11:24:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 99783e0408f8ae9628d2c7a30eb99806087da711.patch:
+  gsocketclient: Fix passing NULL to g_task_get_cancellable().
+  Fix a regression from commit abddb42d14, where it could pass
+  `NULL` to `g_task_get_cancellable()`, triggering a critical
+  warning. This could happen because the lifetime of `data->task`
+  is not as long as the lifetime of the `ConnectionAttempt`, but
+  the code assumed it was.
+  Fix the problem by keeping a strong ref to that `GCancellable`
+  around until the `ConnectionAttempt` is finished being destroyed.
+
+-------------------------------------------------------------------
 Sun Jul  3 23:43:59 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Update to version 2.72.3
