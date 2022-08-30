@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 29 14:52:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- update to 5.3.0 
+  * Remove tests for the asyncio/mtacceptor module, it appears unused and presents a maintenance
+    burden. The module will be removed in ZEO version 6.
+  * Remove GitHub Actions testing for Python 3.5, it has reached end of life.
+  * Add support for Python 3.8 and Python 3.9.
+  * Add more accurate error handling for asyncio.CancelledError. See issue 165.
+  * Fix bug related to blobs stored by ZEO #150.
+
+-------------------------------------------------------------------
 Mon Feb 28 14:09:54 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Set ZEO4_SERVER env. variable to skip expected failing tests.

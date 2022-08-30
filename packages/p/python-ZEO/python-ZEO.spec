@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-ZEO
-Version:        5.2.3
+Version:        5.3.0
 Release:        0
 Summary:        Client-Server storage implementation for ZODB
 License:        ZPL-2.1
