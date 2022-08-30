@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Fri Aug 26 20:05:18 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Don't define %upstream version from %version: %upstream_version
+  is used in Source tag and osc download service does not evaluate
+  %() nor %{lua:} in Source tags for security reasons.
+- Drop entirely baselibs.conf: 32bit libraries seem unnecessary.
+
+-------------------------------------------------------------------
+Tue Aug 23 18:56:50 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Remove libinchi0 from baselibs.conf: Bundled inchi is not built
+  anymore.
+
+-------------------------------------------------------------------
+Sun Aug 14 16:02:16 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 3.1.1:
+  * Fixes for packaging.
+  * No features or significant bug fixes were involved.
+- Changes from version 3.1.0:
+  * This version represents additional API and is
+    backwards-compatible with the 3.0 release.
+  * For a full list of changes, see:
+    https://open-babel.readthedocs.io/en/latest/ReleaseNotes/ob310.html
+- Changes from version 3.0.0:
+  * This release represents a major update and is strongly
+    recommended for all users.
+  * It also removes deprecated components and breaks the API in a
+    few places. For information on migrating from the previous
+    version, please see:
+    https://open-babel.readthedocs.io/en/latest/UseTheLibrary/migration.html#migrating-to-3-0
+  * A sample of major new features:
+    + Code for handling implicit hydrogens and kekulization has
+      been entirely replaced. As well as being accurate, the new
+      approach is much faster.
+    + Speed of reading and writing SMILES has been improved by
+      more  than 50-fold.
+    + Removal of the old 'babel' binary in favor of the newer
+      'obabel' command-line tool.
+    + New improved fragment-based 3D coordinate generation code.
+    + New API for handling reactions stored as molecules (e.g.
+      Reaction InChI, etc.).
+    + New API for copying part of an OBMol as a substructure.
+    + Support for Maestro file format.
+  * For a full list of changes, see:
+    https://open-babel.readthedocs.io/en/latest/ReleaseNotes/ob300.html
+- Remove upstreamed patches:
+  * fix_narrowing.patch
+  * fix_yasara.patch
+- Add patches:
+  * openbabel-3.1.1-test-python3-escape-chars.patch: Fix python
+    test failure (gh#openbabel/openbabel#2217).
+  * openbabel-3.1.1-test-python3-imports.patch: Fix ImportError in
+    python tests (gh#openbabel/openbabel!2378).
+  * openbabel-3.1.1-version-number.patch: Fix version number.
+  * openbabel-3.1.1-gcc-12.patch: Fix build with GCC 12
+    (gh#openbabel/openbabel!2493).
+  * openbabel-3.1.1-wx-stl-compat.patch: Fix GUI build against
+    wxWidgets compiled with STL (gh#openbabel/openbabel!2527).
+- Build against system's inchi library instead of the bundled one.
+- Add maeparser-devel as build dependency: Needed for Maestro
+  support.
+- Update subpackages:
+  * Compile and package GUI.
+  * Move plugins from CLI package (i.e. main package) to library
+    package: They should be available to other library clients
+    without requiring the CLI tools.
+  * Move data files from CLI package to library package: Some are
+    required by the library, some are required by its plugins,
+    let's move everything to library package for now.
+- Drop __DATE__ and __TIME__ tweaks for reproducibility: These GCC
+  macros now use SOURCE_DATE_EPOCH.
+- Enable tests.
+
+-------------------------------------------------------------------
 Mon Mar 30 11:23:08 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file
