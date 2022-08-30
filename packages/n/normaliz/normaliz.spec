@@ -18,7 +18,7 @@
 
 Name:           normaliz
 %define lname	libnormaliz3
-Version:        3.9.2
+Version:        3.9.4
 Release:        0
 Summary:        Tools for computations in affine monoids and rational cones
 License:        GPL-3.0-or-later
@@ -78,7 +78,7 @@ the Normaliz computations from C++ programs.
 %build
 autoreconf -fi
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -90,6 +90,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %files
 %_bindir/normaliz
 %license COPYING
+%doc doc/*.pdf
 
 %files -n %lname
 %_libdir/libnormaliz.so.3*

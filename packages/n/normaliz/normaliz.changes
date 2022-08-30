@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug 25 15:09:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.9.4
+  * New: A variant of project-and-lift for "positive systems",
+    i.e. diophantine linear systems whose solutions are
+    nonnegative and for which Normaliz can derive upper bounds
+    for all coordinates directly from the input inequalities and
+    equations.
+  * Lattice points in polytopes can be constrained by polynomial
+    equations and inequalities.
+
+-------------------------------------------------------------------
+Wed Apr 20 09:34:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.9.3
+  * Build system updates
+  * New reference manual, NmzShortRef.pdf
+- Ship documentation.
+
+-------------------------------------------------------------------
 Mon Feb  7 15:02:49 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.9.2
