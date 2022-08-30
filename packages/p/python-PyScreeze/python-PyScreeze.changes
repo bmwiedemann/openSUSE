@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 29 02:58:53 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- update to 0.1.28 
+  * Fix for DC Release error that happened when calling pixel()
+    after calling screenshot() on Windows.
+
+-------------------------------------------------------------------
 Wed Jan 15 15:02:19 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.1.26
