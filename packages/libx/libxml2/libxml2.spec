@@ -25,12 +25,12 @@
 %endif
 
 Name:           libxml2%{?dash}%{flavor}
-Version:        2.9.14
+Version:        2.10.1
 Release:        0
 License:        MIT
 Summary:        A Library to Manipulate XML Files
 URL:            https://gitlab.gnome.org/GNOME/libxml2
-Source0:        https://download.gnome.org/sources/%{name}/2.9/libxml2-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/2.10/libxml2-%{version}.tar.xz
 Source1:        baselibs.conf
 #
 ### -- Upstream patches range from 0 to 999 -- ###
@@ -208,7 +208,7 @@ chmod a-x python/tests/*.py
 
 %files -n %{libname}
 %{_libdir}/lib*.so.*
-%license COPYING* Copyright
+%license Copyright
 %doc %dir %{_docdir}/%{base_name}
 %doc %{_docdir}/%{base_name}/[ANRCT]*
 
@@ -226,16 +226,15 @@ chmod a-x python/tests/*.py
 %{_includedir}/libxml
 %{_includedir}/libxml2
 %{_libdir}/lib*.so
-%{_libdir}/*.sh
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/cmake
 %{_mandir}/man1/xml2-config.1%{?ext_man}
-%{_mandir}/man3/libxml.3%{?ext_man}
 
 %files -n %{base_name}-doc
 %{_datadir}/gtk-doc/html/*
 %doc %{_docdir}/%{base_name}/examples
-%doc %{_docdir}/%{base_name}/html
+%doc %{_docdir}/%{base_name}/tutorial
+%doc %{_docdir}/%{base_name}/*.html
 # owning these directories prevents gtk-doc <-> libxml2 build loop:
 %dir %{_datadir}/gtk-doc
 %dir %{_datadir}/gtk-doc/html
@@ -246,7 +245,7 @@ chmod a-x python/tests/*.py
 %doc python/TODO
 %doc python/libxml2class.txt
 %doc doc/*.py
-%doc doc/python.html
+%doc python/README
 %pycache_only %{python_sitearch}/__pycache__/*libxml2*
 %{python_sitearch}/*libxml2*
 %endif
