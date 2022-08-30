@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 29 09:40:25 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update build requirement on libcfile, libfwsi
+
+-------------------------------------------------------------------
 Mon Aug  8 11:37:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add forced symvers
