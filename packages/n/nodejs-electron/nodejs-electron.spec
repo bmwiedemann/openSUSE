@@ -114,16 +114,20 @@ BuildArch:      i686
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora_version}
 %bcond_without system_crc32c
 %bcond_without system_nghttp2
-%bcond_without system_jxl
 %bcond_without system_nvctrl
 %else
 %bcond_with system_crc32c
 %bcond_with system_nghttp2
-%bcond_with system_jxl
 %bcond_with system_nvctrl
 %endif
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora} >= 37
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora_version}
+%bcond_without system_jxl
+%else
+%bcond_with system_jxl
+%endif
+
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora} >= 37
 %bcond_without system_dav1d
 %else
 %bcond_with system_dav1d
@@ -135,7 +139,7 @@ BuildArch:      i686
 
 
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora} >= 37
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora} >= 37
 %bcond_without system_spirv
 %else
 %bcond_with system_spirv
@@ -200,13 +204,13 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        19.0.11
+Version:        19.0.14
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        MIT AND BSD-3-Clause AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://github.com/electron/electron
-Source0:        %{mod_name}-%{version}.tar.zst
+Source0:        %{mod_name}-%{version}.tar.xz
 Source1:        create_tarball.sh
 Source10:       electron-launcher.sh
 Source11:       electron.desktop
@@ -444,7 +448,6 @@ BuildRequires:  update-desktop-files
 %endif
 BuildRequires:  util-linux
 BuildRequires:  vulkan-headers
-BuildRequires:   zstd
 %if %{with system_abseil}
 BuildRequires:  pkgconfig(absl_algorithm_container) >= 20211000
 BuildRequires:  pkgconfig(absl_base)
@@ -578,7 +581,7 @@ BuildRequires:  libjpeg-turbo-devel
 BuildRequires:  pkgconfig(vpx) >= 1.8.2
 %endif
 %if %{without clang}
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora}
 BuildRequires:  gcc >= 10
 BuildRequires:  gcc-c++ >= 10
 %else
@@ -729,7 +732,7 @@ export RANLIB=llvm-ranlib
 
 
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora}
 export CC=gcc
 export CXX=g++
 export AR=gcc-ar
@@ -908,7 +911,6 @@ find third_party/electron_node/deps/histogram -type f ! -name "*.gn" -a ! -name 
 %if %{with system_llvm}
 rm -rf third_party/swiftshader/third_party/llvm-10.0
 %endif
-
 
 
 # Create the configuration for GN
@@ -1126,7 +1128,7 @@ popd
 rsync -av third_party/icu/common/icudtl.dat %{buildroot}%{_libdir}/electron/
 %endif
 
-echo -n "%{version}" > %{buildroot}%{_libdir}/electron/version
+install -pTm644 electron/ELECTRON_VERSION  %{buildroot}%{_libdir}/electron/version
 
 # Install folders required for webapps
 mkdir -p "%{buildroot}%{_sysconfdir}/webapps"

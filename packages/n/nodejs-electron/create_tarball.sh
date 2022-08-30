@@ -116,23 +116,21 @@ python3 src/tools/update_pgo_profiles.py \
     --gs-url-base=chromium-optimization-profiles/pgo_profiles
 
 
-#The following commands overwrite this file which is needed during build.
-#The precise content is unimportant, but we cache the original one for reproducibility.
-mv -v src/third_party/node/node_modules.tar.gz.sha1{,.bak}
 # Needed to get typescript compiler
-echo ">>>>>> Get node modules for third_party/node"
-bash src/third_party/node/update_npm_deps
+echo ">>>>>> Download and unpack webui-node-modules tarball for third_party/node"
+python3 src/third_party/depot_tools/download_from_google_storage.py \
+    --no_resume --extract --no_auth --bucket chromium-nodejs \
+    -s src/third_party/node/node_modules.tar.gz.sha1
 if [ $? -ne 0 ]; then
-    echo "ERROR: npm ci failed"
+    echo "ERROR: download_from_google_storage failed"
     cleanup_and_exit 1
 fi
-mv -v src/third_party/node/node_modules.tar.gz.sha1{.bak,}
-# Remove unnecessary repack of node_modules
+# we don't need the orig tarball
 rm -v src/third_party/node/node_modules.tar.gz
 
 echo ">>>>>> Get node modules for electron"
 pushd src/electron || cleanup_and_exit 1
-yarn install --frozen-lockfile --ignore-scripts
+yarn install --frozen-lockfile --ignore-engines --ignore-scripts
 if [ $? -ne 0 ]; then
     echo "ERROR: yarn install failed"
     cleanup_and_exit 1
@@ -393,8 +391,8 @@ find . -type d -empty -print -delete
 popd || cleanup_and_exit 1
 
 echo ">>>>>> Create tarball"
-#Use zst, it decompresses faster.
-ZSTD_CLEVEL=19 ZSTD_NBTHREADS="$(nproc)" tar --zstd -vvcf "${ELECTRON_PKGDIR}/${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}.tar.zst" src
+#I would like to use zst, as it decompresses MUCH faster, but unfortunately it is not supported by OBS diff view yet
+XZ_OPT="-T$(nproc) -e9 -vv" tar -vvcJf "${ELECTRON_PKGDIR}/${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}.tar.xz" src
 if [ $? -ne 0 ]; then
     echo "ERROR: tar cf failed"
     cleanup_and_exit 1

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 24 21:56:28 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream version 19.0.14
+  * Picture-In-Picture mode no longer becomes a red rectangle on hover.
+
+-------------------------------------------------------------------
+Sat Aug 20 22:23:53 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 19.0.13
+  * Fixed crash in renderer when resuming system from sleep.
+  * backported fix for CVE-2022-2618
+  * backported fix for CVE-2022-2624
+- New upstream release 19.0.12
+  * Fixed an issue where app.relaunch loses args when execPath is specified.
+  * Fixed support for Wayland client-side decorations.
+  * backported fix for CVE-2022-2610
+  * backported fix for CVE-2022-2615
+
+-------------------------------------------------------------------
 Fri Aug  5 13:52:55 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 19.0.11
   * Fixed webContents.getUserAgent() incorrectly returning an empty string unless previously set.
