@@ -18,7 +18,7 @@
 
 Name:           libfdata
 %define lname	libfdata1
-Version:        20211023
+Version:        20220111
 Release:        0
 Summary:        Library to provide generic file data functions
 License:        LGPL-3.0-or-later
