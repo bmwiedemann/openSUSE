@@ -126,4 +126,14 @@
     <comment></comment>
     <requestid>988031</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0482169685b718d92dc8460e54bd7342</srcmd5>
+    <version>20220829.3</version>
+    <time>1661863796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220829.3:
+  * fix Gnome Terminal color issues
+</comment>
+    <requestid>1000104</requestid>
+  </revision>
 </revisionlist>
