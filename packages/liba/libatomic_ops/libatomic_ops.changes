@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 25 21:50:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.6.14
+  * Avoid AO_stack_t to cross CPU cache line boundary
+
+-------------------------------------------------------------------
 Mon Sep 13 10:45:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.6.12
