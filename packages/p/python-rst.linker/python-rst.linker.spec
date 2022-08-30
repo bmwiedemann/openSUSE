@@ -1,7 +1,7 @@
 #
 # spec file for package python-rst.linker
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,29 @@
 
 
 %define _name   rst.linker
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rst.linker
-Version:        2.0.0
+Version:        2.3.1
 Release:        0
 Summary:        Changelog link and timestamp adding Sphinx plugin
 License:        MIT
 URL:            https://github.com/jaraco/rst.linker
 Source:         https://files.pythonhosted.org/packages/source/r/%{_name}/%{_name}-%{version}.tar.gz
-BuildRequires:  %{python_module importlib-metadata}
-BuildRequires:  %{python_module jaraco.packaging >= 3.2}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module importlib-metadata if %python-version < 3.8}
 BuildRequires:  %{python_module path}
-BuildRequires:  %{python_module pytest >= 3.5}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module setuptools >= 56}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
+%if 0%{python_version_nodots} < 38
 Requires:       python-importlib-metadata
+%endif
 Requires:       python-python-dateutil
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,23 +49,22 @@ changelog.
 
 %prep
 %setup -q -n %{_name}-%{version}
-sed -i -e 's/--flake8//' -e 's/--black//' -e 's/--cov//' pytest.ini
 
 %build
-%python_build
-python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest test_all.py
+%pytest
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGES.rst README.rst
-%doc build/sphinx/html
-%{python_sitelib}/*
+# This needs a fix if there will be any more rst.* namespace packages (none on PyPI so far)
+%{python_sitelib}/rst
+%{python_sitelib}/rst.linker-%{version}*-info
 
 %changelog

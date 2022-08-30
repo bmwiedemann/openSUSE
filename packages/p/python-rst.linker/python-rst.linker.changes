@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 29 13:59:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.3.1
+  * Packaging refresh.
+  + #12: Added locale stability for tests.
+- v2.3.0:
+  * #9: Fixed syntax errors in docs.
+  * Require Python 3.7 or later.
+- v2.2.0
+  * #8: Prefer author date to committer date when adding SCM
+    timestamps, reverting change in 2.1, and this time tracking the
+    motivation more carefully.
+- v2.1.1: Fix Github Actions badge.
+- v2.1.0 Prefer committer date to author date when adding SCM
+  timestamps.
+- Don't build the docs
+
+-------------------------------------------------------------------
 Sat Sep 26 11:26:01 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Replace python-patrh.py with python-path
