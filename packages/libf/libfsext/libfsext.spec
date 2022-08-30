@@ -18,7 +18,7 @@
 
 %define lname	libfsext1
 Name:           libfsext
-Version:        20220112
+Version:        20220822
 Release:        0
 Summary:        Library and tools to access the Extended File System
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -37,7 +37,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20220120
 BuildRequires:  pkgconfig(libcdata) >= 20220115
 BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libcfile) >= 20220106
 BuildRequires:  pkgconfig(libclocale) >= 20220107
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcpath) >= 20220108
