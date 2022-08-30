@@ -353,4 +353,12 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     installed on macOS via Homebrew).</comment>
     <requestid>946671</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>25fc08e00fff30c40bbecc05ddfcb702</srcmd5>
+    <version>2.12.4</version>
+    <time>1661863709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999930</requestid>
+  </revision>
 </revisionlist>
