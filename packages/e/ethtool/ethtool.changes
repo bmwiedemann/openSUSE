@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 21 23:31:47 UTC 2022 - Michal Kubeček <mkubecek@suse.cz>
+
+- update to upstream release 5.19
+  * Feature: get/set tx push (-g and -G)
+  * Feature: register dump support for TI CPSW
+  * Feature: register dump support for lan743x chipset
+  * Fix: fix missing sff-8472 output in netlink path
+  * Fix: fix EEPROM byte write
+
+-------------------------------------------------------------------
 Mon Jun 13 23:07:06 UTC 2022 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to upstream release 5.18
