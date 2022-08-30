@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Aug 26 21:20:08 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.81.0
+  * Features
+    - Add ReDoc <noscript> warning when JS is disabled. PR #5074
+    - Add support for FrozenSet in parameters (e.g. query). PR #2938
+    - Allow custom middlewares to raise HTTPExceptions and propagate them. PR #2036
+    - Preserve json.JSONDecodeError information when handling invalid JSON
+      in request body, to support custom exception handlers that
+      use its information. PR #4057
+  * Fixes
+    - Fix jsonable_encoder for dataclasses with pydantic-compatible fields. PR #3607
+    - Fix support for extending openapi_extras with parameter lists. PR #4267
+
+-------------------------------------------------------------------
+Tue Aug 23 15:37:25 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.80.0
+  * Breaking Changes - Fixes
+    - Fix response_model not invalidating None. PR #2725
+  * Fixes
+    - Upgrade Swagger UI copy of oauth2-redirect.html to include
+      fixes for flavors of authorization code flows in Swagger UI. PR #3439
+    - Strip empty whitespace from description extracted from
+      docstrings. PR #2821
+    - Fix cached dependencies when using a dependency in Security() and 
+      other places (e.g. Depends()) with different OAuth2 scopes. PR #2945
+    - Update type annotations for response_model, allow things like
+      Union[str, None]. PR #5294
+  * Translations
+    - Fix typos in German translation for docs/de/docs/features.md. PR #4533
+    - Add missing navigator for encoder.md in Korean translation. PR #5238
+      (Empty PR merge by accident) #4913.
+
+-------------------------------------------------------------------
 Thu Aug 18 22:57:21 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 0.79.1
