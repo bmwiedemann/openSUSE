@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 28 12:49:10 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.16 development release
+  - Wow64 support in X11 driver.
+  - Session storage in MSHTML.
+  - Unicode regexp fixes in MSXML.
+  - IME improvements in Edit control.
+  - Various bug fixes.
+- update staging to 7.16 release
+
+-------------------------------------------------------------------
 Sun Aug 14 12:18:56 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.15 development release

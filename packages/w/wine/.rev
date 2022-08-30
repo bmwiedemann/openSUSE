@@ -4532,4 +4532,18 @@
 - update staging to 7.15 release</comment>
     <requestid>995034</requestid>
   </revision>
+  <revision rev="385" vrev="1">
+    <srcmd5>6e06cf887aa8372b205a865c35f16998</srcmd5>
+    <version>7.16</version>
+    <time>1661863786</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.16 development release
+  - Wow64 support in X11 driver.
+  - Session storage in MSHTML.
+  - Unicode regexp fixes in MSXML.
+  - IME improvements in Edit control.
+  - Various bug fixes.
+- update staging to 7.16 release</comment>
+    <requestid>1000068</requestid>
+  </revision>
 </revisionlist>
