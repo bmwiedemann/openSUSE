@@ -43,7 +43,7 @@ BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcdatetime) >= 20220104
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 %if "@BUILD_FLAVOR@" != "mini"
-BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libcfile) >= 20220106
 %endif
 BuildRequires:  pkgconfig(libclocale) >= 20220107
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
