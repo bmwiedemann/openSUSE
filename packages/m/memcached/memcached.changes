@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Aug 17 19:11:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.16:
+  * proxy: add req:flag_token("F")
+  * proxy: mcp.response code and rline API
+  * proxy: add r:has_flag(), fix r:token() length
+  * proxy: mcp.request() improvements
+  * proxy: mcplib_request_token() doesn't delimit the final token in a request
+  * tls: Disable TLS re-negotiation from SSL context
+  * Fix undefined behavior and warning with clang
+  * proxy: fix the hashstring size for evcache ketama
+  * core: Fix FTBFS with GCC 12 on ppc64el
+  * proxy: fix race crash from io obj use-after-free
+  * proxy: fix mcp.await() when using extended args
+  * proxy: add missing errno.h include to proxy.h
+  * proxy: fix potential corruption on partial write
+  * proxy: rework backend buffer handling to fix protocol desync bug
+  * tests: skip whitespace on vendor/*
+  * tls: Add switch to opt-in to kernel TLS on OpenSSL 3.0.0+
+  * core: checks port number at start time
+  * Add a command to dump keys for memcached-tool
+  * proxy: 'proxyreqs' does not work unless 'proxyuser' also provided
+  * proxy: replace proxycmds stream with proxyreqs
+  * proxy: mcp.log_req* API interface
+
+-------------------------------------------------------------------
 Tue Apr 19 14:34:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.15:
