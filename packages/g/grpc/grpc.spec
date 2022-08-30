@@ -16,11 +16,11 @@
 #
 
 
-%define lver 24
-%define lverp 1_46
+%define lver 26
+%define lverp 1_48
 %define src_install_dir /usr/src/%name
 Name:           grpc
-Version:        1.46.3
+Version:        1.48.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -28,13 +28,11 @@ Group:          Development/Tools/Building
 URL:            https://grpc.io/
 Source:         https://github.com/grpc/grpc/archive/v%version.tar.gz
 Source2:        %name-rpmlintrc
-Patch1:         grpc-correct-pkgconfig-path.patch
-Patch2:         grpc-cxx17.patch
-Patch3:         grpc-no-return-from-non-void-function.patch
 BuildRequires:  abseil-cpp-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  opencensus-proto-source
 BuildRequires:  pkg-config
 BuildRequires:  zypper
 BuildRequires:  pkgconfig(libcares)
@@ -137,6 +135,7 @@ rm -Rf third_party/abseil-cpp/
 # protoc is invoked strangely; make it happy with this dir or it will assert()
 mkdir -p third_party/protobuf/src
 
+cp -a /usr/src/opencensus-proto third_party/
 export CFLAGS="%optflags -Wno-error"
 export CXXFLAGS="$CFLAGS"
 %cmake -DgRPC_INSTALL=ON                  \
@@ -148,7 +147,8 @@ export CXXFLAGS="$CFLAGS"
        -DgRPC_RE2_PROVIDER=package        \
        -DgRPC_SSL_PROVIDER=package        \
        -DZLIB_LIBRARY=%{_libdir}/libz.so  \
-       -DgRPC_ZLIB_PROVIDER=package
+       -DgRPC_ZLIB_PROVIDER=package \
+	-DCMAKE_CXX_STANDARD=17
 %cmake_build
 
 %install

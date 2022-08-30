@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 27 12:02:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.48.0
+  * C++14 is now required
+  * xDS: Workaround to get gRPC clients working with istio
+- Drop grpc-correct-pkgconfig-path.patch (merged)
+- Drop grpc-cxx17.patch, grpc-no-return-from-non-void-function.patch
+
+-------------------------------------------------------------------
 Fri May 20 21:20:13 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to release 1.46.3
