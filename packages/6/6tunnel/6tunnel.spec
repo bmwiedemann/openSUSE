@@ -1,7 +1,7 @@
 #
 # spec file for package 6tunnel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,9 +26,10 @@ Group:          Productivity/Networking/System
 URL:            https://github.com/wojtekka/6tunnel
 #Git-Clone:     https://github.com/wojtekka/6tunnel.git
 Source:         https://github.com/wojtekka/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch1:         https://github.com/wojtekka/6tunnel/commit/9e4119f03f57eec67b97dddbf09d363b638791dc.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  python2
+BuildRequires:  python3
 
 %description
 6tunnel allows using services provided by IPv6 hosts with IPv4-only
@@ -39,18 +40,18 @@ It can be used, for example, as an IPv6-capable IRC proxy.
 
 %prep
 %setup -q
-sed -i 's|#!/usr/bin/env python|#!/usr/bin/python2|' test.py
+%patch1 -p1
 
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %files
 %license COPYING
