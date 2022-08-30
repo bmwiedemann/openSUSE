@@ -93,4 +93,12 @@
     <comment>- Update to version 2.13.3.</comment>
     <requestid>998198</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>36c8bba227d6b19f719c8e4fac2a1f8d</srcmd5>
+    <version>2.13.4</version>
+    <time>1661863720</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000074</requestid>
+  </revision>
 </revisionlist>

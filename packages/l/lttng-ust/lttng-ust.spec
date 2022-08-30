@@ -19,7 +19,7 @@
 %define sover   1
 %define sover_ctl 5
 Name:           lttng-ust
-Version:        2.13.3
+Version:        2.13.4
 Release:        0
 Summary:        Linux Trace Toolkit Userspace Tracer library
 License:        GPL-2.0-only
@@ -75,7 +75,7 @@ tracepoints within the kernel LTT subsystem.
 
 This package provides the LLTng-UST Python 3 agent.
 
-%package -n %{name}-devel
+%package devel
 Summary:        Linux Trace Toolkit Userspace Tracer library
 Group:          Development/Languages/C and C++
 Requires:       liblttng-ust%{sover} = %{version}
@@ -86,11 +86,11 @@ Requires:       pkgconfig(liburcu)
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 
-%description -n %{name}-devel
+%description devel
 This library provides support for developing programs using LTTng
 userspace tracing.
 
-%package -n %{name}-doc
+%package doc
 Summary:        Linux Trace Toolkit Userspace Tracer Documentation
 Group:          Documentation/Other
 Requires:       liblttng-ust%{sover} = %{version}
@@ -99,6 +99,7 @@ Requires:       liblttng-ust-python-agent%{sover} = %{version}
 # lttng-ust-docs was last used in openSUSE Leap 42.3.
 Provides:       %{name}-docs = %{version}
 Obsoletes:      %{name}-docs < %{version}
+BuildArch:      noarch
 
 %description -n %{name}-doc
 This package includes documentation and examples for developing
@@ -158,14 +159,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{python3_sitelib}/lttngust/
 %{python3_sitelib}/lttngust-*
 
-%files -n %{name}-devel
+%files devel
 %{_includedir}/lttng/
 %{_bindir}/lttng-gen-tp
 %{_mandir}/man1/lttng-gen-tp.1%{?ext_man}
 %{_libdir}/liblttng-ust*.so
 %{_libdir}/pkgconfig/lttng-ust*.pc
 
-%files -n %{name}-doc
+%files doc
 %doc %{_docdir}/%{name}/
 %{_mandir}/man3/lttng-ust.3%{?ext_man}
 %{_mandir}/man3/lttng-ust-cyg-profile.3%{?ext_man}

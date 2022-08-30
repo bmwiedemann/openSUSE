@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 29 10:24:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.13.4
+  * Added missing closedir in _get_max_cpuid_from_sysfs()
+  * File descriptor was leaked in get_possible_cpu_mask_from_sysfs
+  * sessiond wait futex: handle spurious futex wakeups
+
+-------------------------------------------------------------------
 Fri Aug 19 14:30:31 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.13.3:
