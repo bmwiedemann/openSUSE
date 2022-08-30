@@ -1038,4 +1038,23 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>991156</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>b53828ed3bf30ccdc15d8ac2c45588d6</srcmd5>
+    <version>1.0.8</version>
+    <time>1661863788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.8
+ + Bugfixes:
+ + Fixed backslash being appended to filter text when switching playlist (#1005).
+ + Fixed OSD notifications service registering taking too long to timeout when not available.
+ + Fixed radio stream added twice when double-clicked (#1015).
+ + Fixed translating undo and redo buttons (#1017).
+ + Enhancements:
+ + Use ICU instead of iconv to transliterate characters for filenames.
+ + Make separating albums by grouping tag optional in collection group by album.
+ + Added support for video game music formats VGM and SPC.
+ + Added setting for explicitly turning on HTTP/2 for streaming. Strawberry will set the libsoup SOUP_FORCE_HTTP1 environment variable when the HTTP/2 is not checked (#1016).
+</comment>
+    <requestid>1000072</requestid>
+  </revision>
 </revisionlist>

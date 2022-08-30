@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
@@ -76,6 +76,8 @@ BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
+BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libchromaprint)
 BuildRequires:  pkgconfig(libgpod-1.0)
