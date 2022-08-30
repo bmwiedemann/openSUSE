@@ -1,7 +1,7 @@
 #
 # spec file for package sarg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -92,8 +92,8 @@ install -d %{buildroot}%{_sysconfdir}/cron.monthly
 ln -s %{_libexecdir}/%{name}/suse.de-sarg %{buildroot}%{_sysconfdir}/cron.daily/
 ln -s %{_libexecdir}/%{name}/suse.de-sarg %{buildroot}%{_sysconfdir}/cron.weekly/
 ln -s %{_libexecdir}/%{name}/suse.de-sarg %{buildroot}%{_sysconfdir}/cron.monthly/
-install -d -m 755 %{buildroot}%{_mandir}/man8
-install -m 644 %{SOURCE8} %{buildroot}%{_mandir}/man8
+install -d -m 755 %{buildroot}%{_mandir}/man1
+install -m 644 %{SOURCE8} %{buildroot}%{_mandir}/man1
 
 %post
 %{fillup_only -n sarg}
@@ -129,7 +129,7 @@ install -m 644 %{SOURCE8} %{buildroot}%{_mandir}/man8
 %defattr(0644,root,root,0755)
 /srv/www/htdocs/sarg-php
 %{_mandir}/man1/%{name}*
-%{_mandir}/man8/%{name}-report*
+%{_mandir}/man1/%{name}-report*
 %license COPYING LICENSE
 %doc CONTRIBUTORS ChangeLog DONATIONS README
 

@@ -263,4 +263,12 @@
 - Spec file modernisation using spec-cleaner</comment>
     <requestid>815365</requestid>
   </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>c40c6e3e3e6e6c1521b585a9cf58989c</srcmd5>
+    <version>2.4.0</version>
+    <time>1661863735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999886</requestid>
+  </revision>
 </revisionlist>

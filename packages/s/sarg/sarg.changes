@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 26 06:33:56 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Install sarg-reports.1 in the correct man section
+
+-------------------------------------------------------------------
 Wed Jun 17 06:43:01 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building with gcc10
