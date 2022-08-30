@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 30 11:34:06 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add --no-warn-rwx-segment to LDFLAGS on Tumbleweed, as a
+  workaround for binutils 2.39
+  See https://developer.trustedfirmware.org/T996
+
+-------------------------------------------------------------------
 Wed Jul 13 11:25:48 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build of zynqmp with gcc7 (Leap 15.4)

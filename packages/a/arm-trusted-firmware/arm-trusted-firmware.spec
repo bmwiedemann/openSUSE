@@ -300,6 +300,8 @@ for dram_size in one_gig two_gig; do
 # Workaround for GCC12 bug - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105523
 export TF_CFLAGS="$TF_CFLAGS --param=min-pagesize=0"
 export CFLAGS="$CFLAGS --param=min-pagesize=0"
+# Workaround for binutils 2.39 https://developer.trustedfirmware.org/T996
+export LDFLAGS="$LDFLAGS --no-warn-rwx-segment"
 %endif
 make \
 %if "%{platform}" != "a3700" && "%{platform}" != "a80x0_mcbin"
