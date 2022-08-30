@@ -163,4 +163,12 @@
   * Removed compatibility code.</comment>
     <requestid>979729</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4172bdd3863b424e9d0115556ac9a88c</srcmd5>
+    <version>3.8.1</version>
+    <time>1661863691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999761</requestid>
+  </revision>
 </revisionlist>

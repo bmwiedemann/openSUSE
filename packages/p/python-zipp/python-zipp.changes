@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 26 21:07:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove deprecated setup.py hack: move to PEP517 build
+- Fix requirements
+  * Neither jaraco.itertools nor jaraco.tidelift are used outside
+    testing or documentation building
+- Ignore that upstream requires Python 3.7 or later since version
+  3.7.0
+
+-------------------------------------------------------------------
+Tue Aug 23 20:33:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.1:
+  * enrolled in tidelift
+
+-------------------------------------------------------------------
 Sun May 29 19:02:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.8.0:
