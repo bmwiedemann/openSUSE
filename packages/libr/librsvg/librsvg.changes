@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 26 22:08:17 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.54.5:
+  + Accept patterns with userSpaceOnUse units for the stroke of
+    axis-aligned lines.
+
+-------------------------------------------------------------------
 Fri Jul  8 02:52:20 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Replace dependency on unmaintained rust-packaging with
