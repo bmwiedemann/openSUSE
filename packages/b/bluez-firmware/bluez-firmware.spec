@@ -1,7 +1,7 @@
 #
 # spec file for package bluez-firmware
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,9 @@ Name:           bluez-firmware
 Version:        1.2
 Release:        0
 Summary:        Bluetooth(TM) Firmware
-License:        GPL-2.0-or-later AND GPL-2.0-only AND SUSE-Firmware
+License:        GPL-2.0-only AND GPL-2.0-or-later AND SUSE-Firmware
 Group:          Hardware/Mobile
-URL:            http://bluez.sourceforge.net
+URL:            http://www.bluez.org/
 Source0:        http://bluez.sf.net/download/%{name}-%{version}.tar.gz
 Source1:        bfusb.tar.bz2
 BuildRequires:  automake
@@ -30,7 +30,6 @@ BuildRequires:  automake
 Supplements:    modalias(usb:v057Cp2200d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v0A5Cp2033d*dc*dsc*dp*ic*isc*ip*)
 Obsoletes:      bluez-bluefw
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Generated with: extract-modaliases -i bcm203x -i bfusb kernel-default.rpm
 
 %description
@@ -49,16 +48,16 @@ The BLUETOOTH trademarks are owned by Bluetooth SIG, Inc., USA.
 autoreconf -fi
 %configure \
 	--libdir=%{_firmwaredir}/../
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install
+%make_install
 rm %{buildroot}%{_firmwaredir}/BCM-LEGAL.txt
 install -D -m 644 ../bfusb/bfubase.frm %{buildroot}%{_firmwaredir}/bfubase.frm
 
 %files
-%defattr(-, root, root)
 %{_firmwaredir}/*
-%doc AUTHORS COPYING INSTALL ChangeLog README broadcom/BCM-LEGAL.txt
+%license COPYING
+%doc AUTHORS INSTALL ChangeLog README broadcom/BCM-LEGAL.txt
 
 %changelog
