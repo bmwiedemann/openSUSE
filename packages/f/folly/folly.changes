@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 27 07:30:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 2022.08.29
+  * No chngelog provided
+- Delete fix-asm-execstack.patch (merged)
+- Add 0001-Fix-iouring-under-32-bit-linux.patch
+
+-------------------------------------------------------------------
 Thu Jul  7 00:12:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Cure rpmlint "E: executable-stack (Badness: 10000)" by

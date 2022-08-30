@@ -16,15 +16,15 @@
 #
 
 
-%define lname libfolly-v2022_05_23_00
+%define lname libfolly-v2022_08_29_00
 Name:           folly
-Version:        2022.05.23.00
+Version:        2022.08.29.00
 Release:        0
 Summary:        A C++ utility library
 License:        MIT
 URL:            https://github.com/facebook/folly
 Source:         https://github.com/facebook/folly/releases/download/v%version/folly-v%version.tar.gz
-Patch1:         fix-asm-execstack.patch
+Patch1:         0001-Fix-iouring-under-32-bit-linux.patch
 BuildRequires:  binutils-devel
 BuildRequires:  boost-devel
 BuildRequires:  cmake
@@ -88,7 +88,8 @@ Development files library for folly, a C++ utility library.
 # again modified *sigh*
 #
 %cmake -DCMAKE_CXX_FLAGS="%optflags -ffat-lto-objects" \
-	-DBUILD_SHARED_LIBS:BOOL=ON -DPACKAGE_VERSION="v%version"
+	-DBUILD_SHARED_LIBS:BOOL=ON -DPACKAGE_VERSION="v%version" \
+	-DCMAKE_LIBRARY_ARCHITECTURE="%_target_cpu"
 %cmake_build
 
 %install

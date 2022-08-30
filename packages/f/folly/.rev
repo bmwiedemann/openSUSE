@@ -23,4 +23,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>989064</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>af7aaf9a2a89fcf915767ceebd74b1c0</srcmd5>
+    <version>2022.08.29.00</version>
+    <time>1661863751</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2022.08.29
+- Add 0001-Fix-iouring-under-32-bit-linux.patch</comment>
+    <requestid>1000138</requestid>
+  </revision>
 </revisionlist>
