@@ -18,7 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%if "%{flavor}" == "addons"
+%if "%{flavor}" != ""
 %define psuffix -%{flavor}
 %else
 %define psuffix %{nil}
@@ -102,7 +102,6 @@ Requires:       graphviz-plugins-core = %{version}
 Recommends:     graphviz-gd = %{version}
 %if "%{flavor}" == "addons"
 BuildRequires:  freeglut-devel
-
 BuildRequires:  ghostscript
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
@@ -116,9 +115,6 @@ BuildRequires:  php5-devel
 BuildRequires:  swig
 %endif
 BuildRequires:  ruby-devel
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2) >= 2
@@ -147,11 +143,17 @@ BuildRequires:  ocaml
 %else
 BuildRequires:  ghostscript_any
 %endif
+%if "%{flavor}" == "qt5"
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Widgets)
+%endif
 
 %description
 A collection of tools and tcl packages for the manipulation and layout
 of graphs (as in nodes and edges, not as in bar charts).
 
+%if "%{flavor}" == "qt5"
 %package -n graphviz-gvedit
 Summary:        Graph editor based on Qt
 Group:          Productivity/Graphics/Visualization/Graph
@@ -159,6 +161,7 @@ Requires:       graphviz
 
 %description -n graphviz-gvedit
 The Qt5 graph editor included with graphviz.
+%endif
 
 %package -n graphviz-smyrna
 Summary:        Large graph viewer
@@ -502,7 +505,9 @@ EOF
 cp -a %{buildroot}%{_datadir}/%{mname}/doc %{buildroot}%{_defaultdocdir}/%{mname}-doc
 %fdupes %{buildroot}%{_defaultdocdir}/%{mname}-doc
 %fdupes %{buildroot}%{_datadir}/graphviz/demo
+%endif
 
+%if "%{flavor}" == "addons" || "%{flavor}" == "qt5"
 # Prune all the content of the base graphviz package
 rm -rf %{buildroot}%{_libdir}/pkgconfig
 rm -rf %{buildroot}%{_includedir}
@@ -523,6 +528,8 @@ done
 # libraries removal
 rm -f %{buildroot}%{_sysconfdir}/ld.so.conf.d/graphviz.conf
 rm -f %{buildroot}%{_libdir}/lib{cdt,cgraph,gvc,gvpr,pathplan,xdot,lab_gamut}.so*
+%endif
+%if "%{flavor}" == "addons"
 # Fix tcl locations
 for lib in libgdtclft* libgv_tcl.so libtcldot* libtclplan* ; do
    mv %{buildroot}%{_libdir}/%{mname}/tcl/${lib} %{buildroot}%{_libdir}
@@ -540,12 +547,14 @@ rm -rf %{buildroot}%{_libdir}/graphviz/perl
 rm -rf %{buildroot}%{_libdir}/graphviz/php
 rm -rf %{buildroot}%{_libdir}/graphviz/python*
 rm -rf %{buildroot}%{_libdir}/graphviz/ruby
-%else
+%endif
+%if "%{flavor}" == "" || "%{flavor}" == "qt5"
 # These are part of gnome subpkg
 rm -f %{buildroot}%{_libdir}/graphviz/libgvplugin_pango*
 rm -f %{buildroot}%{_libdir}/graphviz/libgvplugin_xlib*
 # This is part of the gd subpkg only
 rm -f %{buildroot}%{_mandir}/man1/{diffimg.1*,dotty.1*,lefty.1*,lneato.1*}
+rm -f %{buildroot}%{_bindir}/{dotty,lneato}
 # This is part of the x11 subpkg only
 rm -rf %{buildroot}%{_datadir}/graphviz/lefty
 %endif
@@ -585,14 +594,16 @@ test -s %{_libdir}/graphviz/%{config_file} || echo "%{_libdir}/graphviz/%{config
 
 %postun -n liblab_gamut%{lab_gamut_soversion} -p /sbin/ldconfig
 
-%if "%{flavor}" == "addons"
+%if "%{flavor}" == "qt5"
 %files -n graphviz-gvedit
 %license epl-v10.txt
 %{_bindir}/gvedit
 %dir %{_datadir}/%{mname}/gvedit
 %{_datadir}/%{mname}/gvedit/attrs.txt
 %{_mandir}/man1/gvedit.1%{ext_man}
+%endif
 
+%if "%{flavor}" == "addons"
 %files -n graphviz-smyrna
 %license epl-v10.txt
 %{_bindir}/smyrna
@@ -701,8 +712,9 @@ if test -x %{_bindir}/dot; then %{_bindir}/dot -c ; fi
 %{_defaultdocdir}/%{mname}-doc
 %{_datadir}/graphviz/demo
 
-%else
+%endif
 
+%if "%{flavor}" == ""
 %files
 %doc doc/FAQ.html AUTHORS README NEWS ChangeLog
 %license epl-v10.txt

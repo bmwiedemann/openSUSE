@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 12 13:33:05 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Split the Qt5 dependencies from addons flavor - it's just gvedit
+
+-------------------------------------------------------------------
 Mon Jan 10 00:17:55 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove pointless libgraphviz6 subpackage only containing broken
