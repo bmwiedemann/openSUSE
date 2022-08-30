@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 29 10:08:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.15
+  * protocol/lldp: accept unknown TLVs on known orgs
+  * client: Added support to override system capabilities
+  * netlink: ignore IPv6 temporary addresses
+
+-------------------------------------------------------------------
 Sat May 21 21:42:16 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Upate to version 1.0.14
