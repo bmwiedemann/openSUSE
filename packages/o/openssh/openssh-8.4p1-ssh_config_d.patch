@@ -2,20 +2,20 @@ Index: openssh-8.9p1/ssh_config
 ===================================================================
 --- openssh-8.9p1.orig/ssh_config
 +++ openssh-8.9p1/ssh_config
-@@ -16,6 +16,13 @@
- # Site-wide defaults for some commonly used options.  For a comprehensive
+@@ -17,6 +17,13 @@
  # list of available options, their meanings and defaults, please see the
  # ssh_config(5) man page.
-+Include /usr/etc/ssh/ssh_config.d/*.conf
-+
+ 
 +# To modify the system-wide ssh configuration, create a "*.conf" file under
 +# "/etc/ssh/ssh_config.d/" which will be automatically included below.
 +# Don't edit this configuration file itself if possible to avoid update
 +# problems.
 +Include /etc/ssh/ssh_config.d/*.conf
- 
++Include /usr/etc/ssh/ssh_config.d/*.conf
++
  Host *
  #   ForwardAgent no
+ #   ForwardX11 no
 Index: openssh-8.9p1/sshd_config
 ===================================================================
 --- openssh-8.9p1.orig/sshd_config

@@ -311,8 +311,8 @@ export LDFLAGS CFLAGS CXXFLAGS CPPFLAGS
 %install
 %make_install
 %if %{defined _distconfdir}
-install -d -m 755 %{buildroot}%{_distconfdir}/pam.d
-install -m 644 %{SOURCE2} %{buildroot}%{_distconfdir}/pam.d/sshd
+install -d -m 755 %{buildroot}%{_pam_vendordir}
+install -m 644 %{SOURCE2} %{buildroot}%{_pam_vendordir}/sshd
 %else
 install -d -m 755 %{buildroot}%{_sysconfdir}/pam.d
 install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/sshd
@@ -447,7 +447,7 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %attr(0755,root,root) %dir /usr/etc/ssh/sshd_config.d
 %attr(0640,root,root) %{_distconfdir}/ssh/sshd_config
 %if %{defined _distconfdir}
-%attr(0644,root,root) %{_distconfdir}/pam.d/sshd
+%attr(0644,root,root) %{_pam_vendordir}/sshd
 %else
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/pam.d/sshd
 %endif

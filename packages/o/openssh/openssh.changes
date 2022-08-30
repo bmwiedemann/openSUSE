@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  8 07:36:55 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use %_pam_vendordir
+
+-------------------------------------------------------------------
 Wed Jul  6 12:15:29 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - openssh-8.4p1-ssh_config_d.patch: admin overrides should take
