@@ -1,7 +1,7 @@
 #
 # spec file for package foma
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname	libfoma0
 Name:           foma
-Version:        0.9.18+git20210604.180b6fe
+Version:        0.10.0
 Release:        0
 Summary:        Finite-state compiler and C library
 License:        Apache-2.0
