@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 29 10:22:01 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.13.8
+  * futex wait: handle spurious futex wakeups
+  * agent port file was o+w when launching as root
+  * sessiond: handle empty scheduled rotations
+  * sessiond: size-based rotations never triggered
+  * lttng-snapshot: fixed use after free of max size argument
+  * liblttng-ctl: non-packed structure was used for tracker
+    serialization
+  * test: lttng kernel modules were still loaded after running
+    test_clock_override
+  * Plug some memory leaks
+
+-------------------------------------------------------------------
 Wed May 18 20:23:14 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.13.7:

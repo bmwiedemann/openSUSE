@@ -20,7 +20,7 @@
 %define soname_ctl liblttng-ctl
 %define sover_ctl 0
 Name:           lttng-tools
-Version:        2.13.7
+Version:        2.13.8
 Release:        0
 Summary:        Linux Trace Toolkit Next Generation userspace tools
 License:        GPL-2.0-only AND LGPL-2.1-only
@@ -56,12 +56,12 @@ This package provides a userspace library for controlling the LTTng
 subsystem. It is primarily intended for use by the lttng-tools
 package.
 
-%package -n %{name}-devel
+%package devel
 Summary:        Linux Trace Toolkit Next Generation userspace tools
 Group:          Development/Languages/C and C++
-Requires:       %{soname_ctl}%{sover_ctl} >= %{_version}
+Requires:       %{soname_ctl}%{sover_ctl} >= %{_version}-%{release}
 
-%description -n %{name}-devel
+%description devel
 This package provides the userspace tools for controlling the LTTng
 subsystem from userspace.
 
@@ -103,7 +103,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license LICENSE
 %{_libdir}/%{soname_ctl}.so.%{sover_ctl}*
 
-%files -n %{name}-devel
+%files devel
 %{_includedir}/lttng/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/lttng-ctl.pc
