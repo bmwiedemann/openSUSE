@@ -38,9 +38,9 @@ BuildRequires:  python-rpm-macros %{python_module devel}
 BuildRequires:  pkgconfig(fuse) >= 2.6
 BuildRequires:  pkgconfig(libbfio) >= 20220120
 BuildRequires:  pkgconfig(libcdata) >= 20220115
-BuildRequires:  pkgconfig(libcdirectory) >= 20200702
+BuildRequires:  pkgconfig(libcdirectory) >= 20220105
 BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libcfile) >= 20201229
+BuildRequires:  pkgconfig(libcfile) >= 20220106
 BuildRequires:  pkgconfig(libclocale) >= 20220107
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcpath) >= 20220108
