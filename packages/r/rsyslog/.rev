@@ -1542,4 +1542,12 @@ Last accepted SR#253447 from opensuse132-syncer to rsyslog 8.4.1 contained an in
     <comment>rsyslog 8.2204.1 CVE-2022-24903 boo#1199061 (forwarded request 975635 from AndreasStieger)</comment>
     <requestid>975639</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>93adabf0ba13023ba762f5bd919ddcaf</srcmd5>
+    <version>8.2208.0</version>
+    <time>1661863701</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999882</requestid>
+  </revision>
 </revisionlist>

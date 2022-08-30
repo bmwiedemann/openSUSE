@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Aug  9 17:29:59 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- added libzstd-devel as build dependency
+- Upgrade to rsyslog 8.2208.0
+  * 2022-08-09: ksi bugfix: request cache size and send timeout issue fixed.
+  * 2022-08-09: imjournal bugfix: segmentation fault in close journal
+  * 2022-08-09: net subsystem: support sha256 for StreamDriverAuthMode="x509/fingerprint"
+  * 2022-08-05: imfile bugfix: message loss/duplication when monitored file is rotated
+  * 2022-08-05: ksi bugfix: optimize processing of signer queue to fix delays.
+  * 2022-08-04: ksi bugfix: possible crash fixed when several log files are opened.
+  * 2022-08-04: openssl: add support to split tls commands by semicolon
+  * 2022-08-04: openssl subsystem bugfix: build issue on Solaris
+  * 2022-08-04: openssl: add more details to error messages
+  * 2022-08-04: omclickhouse: capture additional exceptions
+  * 2022-08-04: mmanon bugfix: Simplified and fixed IPv4 digit detection.
+  * 2022-07-21: imptcp: slight tuning
+  * 2022-07-20: template procesing/json: performance optimization
+  * 2022-07-19: core bugfix: memory leak when free action worker data table
+  * 2022-07-13: omfile: support for zstd compression
+  * 2022-07-07: stream cleanup: move error message to debug log, only
+  * 2022-07-04: mmdblookup bugfix: Don't crash Rsyslog on mmdb file errors
+  * 2022-06-28: build error fix: libbson requires out-of-date language constructs
+  * 2022-06-27: OpenSSL: fix depreacted API issues for OpenSSL 3.x
+
+-------------------------------------------------------------------
+Tue Jun 14 22:33:46 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Upgrade to rsyslog 8.2206.0
+  * 2022-05-25: omelastisearch: allow omitting _type field
+  * 2022-05-18: tcpsrv/imtcp: slight performance improvements
+  * 2022-05-12: imptcp bugfix: worker thread starvation on extreme traffic
+  * 2022-05-11: omelasticsearch: several support option for ElasticSearch 8
+    - config params searchIndex and documentType can be empty
+    - support for Data Stream API
+    - new config param esVersion.major
+  * 2022-05-09: tcp receiver bugfix: delay/potential hang on some error conditions
+  * 2022-05-05: net bugfix: potential buffer overrun
+    fixes CVE-2022-24903
+    Advisory:
+      https://github.com/rsyslog/rsyslog/security/advisories/GHSA-ggw7-xr6h-mmr8#advisory-comment-72243
+  * 2022-05-05: imptcp: set OS worker thread name
+  * 2022-04-26: mmanon bugfix: shortened IPv6 form not always anonymized
+  * 2022-04-22: mmdblookup fix: wrong copy of buffer
+  * 2022-04-22: mmdblookup: several enhancements
+    - support arrays in MMDB entry
+    - support escaped quotes '"' in MMDB entry
+    - support '<' characters in MMDB entry, when in a field
+    - support '}' characters in MMDB entry, when in a field
+
+-------------------------------------------------------------------
 Sun May  8 13:50:31 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - rsyslog 8.2204.1:

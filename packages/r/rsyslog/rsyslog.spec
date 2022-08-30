@@ -22,8 +22,8 @@
 %endif
 
 # drop this with next release when doc tarball version lines up
-%define rsyslog_major 8.2204
-%define rsyslog_patch 1
+%define rsyslog_major 8.2208
+%define rsyslog_patch 0
 Name:           rsyslog
 Summary:        The enhanced syslogd for Linux and Unix
 License:        Apache-2.0 AND GPL-3.0-or-later
@@ -94,6 +94,7 @@ BuildRequires:  libtool
 BuildRequires:  bison
 BuildRequires:  curl-devel
 BuildRequires:  flex
+BuildRequires:  libzstd-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
