@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Mon Aug 29 12:29:14 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.0313, fixes the following problems
+  * Using NULL pointer when skipping compiled code.
+  * Using freed memory with multiple line breaks in expression.
+  * job_start() test may fail under valgrind.
+  * Cannot read error message when abort() is called.
+  * Crash when pattern looks below the last line.
+  * Vim9: error message for missing type is not clear.
+  * No error for comma missing in list in :def function.
+  * Expanding "**" may loop forever with directory links.
+  * Test with BufNewFile autocmd is flaky.
+  * Removing multiple text properties takes many calls.
+  * Cannot make difference between the end of :normal and a character  in
+  its argument.
+  * 'autoshelldir' does not work with chunked respose.
+  * Popup menu not removed when 'wildmenu' reset while it is visible.
+  * Mac: cannot build if dispatch.h is not available.
+  * Shift-Tab shows matches on cmdline when 'wildmenu' is off.
+  * Build failure without the +wildmenu feature.
+  * Crash when using ":mkspell" with an empty .dic file.
+  * "make install" does not install shared syntax file. (James McCoy)
+  * "make install" still fails. (Wilhelm Payne)
+  * Text properties "below" sort differently on MS-Windows.
+  * Cannot easily get the list of sourced scripts.
+  * Mechanism to prevent recursive screen updating is incomplete.
+  * Using freed memory when 'tagfunc' deletes the buffer.
+  * Cannot add padding to virtual text without highlight.
+  * Duplicate code in finding a script in the execution stack.
+  * No test for what 9.0.0234 fixes.
+  * Slightly inconsistent error messages.
+  * Test output shows up in git.
+  * Cursor in wrong place after virtual text.
+  * A symlink to an autoload script results in two entries in the list of
+  scripts, items expected in one are actually in the other.
+  * Typo in function name.
+  * Build failure without the eval feature.
+  * Compiler warning for uninitialized variables.
+  * "->" in ":scriptnames" output not tested yet.
+  * Crash with mouse click when not initialized.
+  * Using freed memory when using 'quickfixtextfunc' recursively.
+  * bufload() reads a file even if the name is not a file name. (Cyker Way)
+  * Build failure without the +quickfix feature.
+  * Too many #ifdefs.
+  * No good reason why the "gf" command is not in the tiny version.
+  * Compiler warning for unused argument.
+  * Build error without the +eval feature.
+  * getscriptinfo() does not include the version.  Cannot select entries by
+  script name.
+  * Some values of 'path' and 'tags' do not work in the tiny version.
+  * Using INIT() in non-header files.
+  * BufReadCmd not triggered when loading a "nofile" buffer. (Maxim Kim)
+  * Konsole termresponse not recognized.
+  * Netrw plugin does not show remote files.
+  * BufEnter not triggered when using ":edit" in "nofile" buffer.
+  * 'buftype' values not sufficiently tested.
+  * Coverity CI: update-alternatives not needed with Ubuntu 20.04.
+  * The +wildignore feature is nearly always available.
+  * The tiny version has the popup menu but not 'wildmenu'.
+  * The builtin termcap list depends on the version.
+  * Build failure without the +eval feature.
+  * A nested timout stops the previous timeout.
+  * Cannot complete "syn list @cluster".
+  * Using static buffer for multiple completion functions.
+  * It is not easy to change the command line from a plugin.
+  * Using freed memory when location list changed in autocmd.
+  * Irix systems no longer exist.
+  * When 'cmdheight' is zero some messages are not displayed.
+  * Invalid memory write.
+  * Compiler warning for variable set but not used.
+  * Test failing.
+  * Test causes another test to fail.
+  * Messages window not hidden when starting a command line.
+  * Crash when 'cmdheight' is 0 and popup_clear() used.
+  * GUI drop files test sometimes fails.
+  * Message in popup is shortened unnecessary.
+  * Cursor position wrong after right aligned virtual text. (Iizuka Masashi)
+  * Compiler warning for size_t to int conversion.
+  * Error messages for setcmdline() could be better.
+  * 'cpoptions' tests are flaky.
+  * The message window popup is delayed after an error message.
+  * CI for Coverity is bothered by deprecation warnings.
+  * It is not easy to get information about a script.
+  * WinScrolled is not triggered when only skipcol changes.
+  * CI lists useless deprecation warnings.
+  * Buffer write message is two lines in message popup window.
+  * :echomsg doesn't work properly with cmdheight=0.
+  * When cmdheight is zero the attention prompt doesn't show.
+  * Invalid memory access when cmdheight is zero.
+  * Output of :messages dissappears when cmdheight is zero.
+  * Test for hit-Enter prompt fails.
+  * Test for cmdheight zero fails.
+  * Using common name in tests leads to flaky tests.
+
+-------------------------------------------------------------------
 Thu Aug 18 08:18:06 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0224, fixes the following problems

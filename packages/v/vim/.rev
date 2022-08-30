@@ -6219,4 +6219,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Typo in diffmode test.</comment>
     <requestid>997693</requestid>
   </revision>
+  <revision rev="320" vrev="1">
+    <srcmd5>129ddcbd49c681aedfde1e855438ffcb</srcmd5>
+    <version>9.0.0313</version>
+    <time>1661863719</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.0313, fixes the following problems
+  * Using NULL pointer when skipping compiled code.
+  * Using freed memory with multiple line breaks in expression.
+  * job_start() test may fail under valgrind.
+  * Cannot read error message when abort() is called.
+  * Crash when pattern looks below the last line.
+  * Vim9: error message for missing type is not clear.
+  * No error for comma missing in list in :def function.
+  * Expanding &quot;**&quot; may loop forever with directory links.
+  * Test with BufNewFile autocmd is flaky.
+  * Removing multiple text properties takes many calls.
+  * Cannot make difference between the end of :normal and a character  in
+  its argument.
+  * 'autoshelldir' does not work with chunked respose.
+  * Popup menu not removed when 'wildmenu' reset while it is visible.
+  * Mac: cannot build if dispatch.h is not available.
+  * Shift-Tab shows matches on cmdline when 'wildmenu' is off.
+  * Build failure without the +wildmenu feature.
+  * Crash when using &quot;:mkspell&quot; with an empty .dic file.
+  * &quot;make install&quot; does not install shared syntax file. (James McCoy)
+  * &quot;make install&quot; still fails. (Wilhelm Payne)
+  * Text properties &quot;below&quot; sort differently on MS-Windows.
+  * Cannot easily get the list of sourced scripts.
+  * Mechanism to prevent recursive screen updating is incomplete.
+  * Using freed memory when 'tagfunc' deletes the buffer.
+  * Cannot add padding to virtual text without highlight.
+  * Duplicate code in finding a script in the execution stack.
+  * No test for what 9.0.0234 fixes.
+  * Slightly inconsistent error messages.
+  * Test output shows up in git.</comment>
+    <requestid>1000020</requestid>
+  </revision>
 </revisionlist>
