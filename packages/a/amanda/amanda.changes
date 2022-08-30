@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Aug 25 20:17:24 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 3.5.2:
+  * amstatus
+    + new --[no]taped argument, useful when running
+      'watch amstatus CONF --summary --notaped' if the run have
+      many tapes
+  * amvault
+    + new --uniq, --no-uniq argument
+    + Behavior change: The default is --uniq
+    + new --delayed argument
+    + new --run-delayed argument
+- Switch sources from Sourceforge to Github.
+- Drop amanda-timestamp.patch: Makefile now handles
+  SOURCE_DATE_EPOCH.
+- Refresh patches on Perl bindings so that they apply on swig files
+  since generated C files are not included in sources anymore:
+  * amanda-2.6.1p1-return_val.patch
+  * amanda-3.5-no_return_in_nonvoid_fnc.patch
+- Add amanda-3.5.2-fix-tests.patch: Fix tests on Tumbleweed
+  (gh#zmanda/amanda#167).
+- Add build dependencies on swig and rpcgen: Generated files are
+  not included in sources anymore.
+- Remove redundant %configure options.
+
+-------------------------------------------------------------------
 Mon Jun  8 13:04:22 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - add amanda-3.5.1-GCC10_extern.patch to fix build with GCC10

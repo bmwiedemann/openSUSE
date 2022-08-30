@@ -1,12 +1,12 @@
-Index: perl/Amanda/MainLoop.c
+Index: perl/Amanda/MainLoop.swg
 ===================================================================
---- perl/Amanda/MainLoop.c.orig
-+++ perl/Amanda/MainLoop.c
-@@ -1581,6 +1581,7 @@ void quit(void) {
-  static void amglue_source_remove(amglue_Source *self); 
- SWIGINTERN amglue_Source *new_amglue_Source(void){
+--- perl/Amanda/MainLoop.swg.orig
++++ perl/Amanda/MainLoop.swg
+@@ -362,6 +362,7 @@ typedef struct {
+ 	/* Constructor: use one of the package-level functions, below */
+ 	amglue_Source() {
  	    die("Amanda::MainLoop::Source is an abstract base class");
 +	    return NULL;
  	}
- SWIGINTERN void delete_amglue_Source(amglue_Source *self){
- 	    amglue_source_unref(self);
+ 
+ 	/* Destructor: just unref the object */

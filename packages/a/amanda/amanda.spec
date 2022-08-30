@@ -1,7 +1,7 @@
 #
 # spec file for package amanda
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %define amanda_group amanda
+%define upstreamver tag-community-%{version}
 Name:           amanda
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        Network Disk Archiver
 License:        GPL-3.0-or-later
 URL:            http://www.amanda.org/
-Source:         http://downloads.sourceforge.net/amanda/amanda-%{version}.tar.gz
+Source:         https://github.com/zmanda/amanda/archive/%{upstreamver}/%{name}-%{version}.tar.gz
 #amanda-SUSE.tar.bz2 contains init scripts, config examples
 Source1:        amanda-SUSE.tar.bz2
 Source2:        amanda-howto-collection.pdf.tar.bz2
@@ -31,10 +32,11 @@ Patch1:         amanda-2.6.1p1-shellbang.patch
 Patch2:         amanda-2.6.1p1-return_val.patch
 Patch3:         amanda-2.6.1p1-avoid-perl-provides.patch
 Patch4:         amanda-3.3.2-returnvalues.patch
-Patch5:         amanda-timestamp.patch
 Patch6:         amanda-3.5-no_return_in_nonvoid_fnc.patch
 Patch7:         amanda-libnsl.patch
 Patch8:         amanda-3.5.1-GCC10_extern.patch
+# PATCH-FIX-UPSTREAM amanda-3.5.2-fix-tests.patch -- gh#zmanda/amanda#167
+Patch9:         amanda-3.5.2-fix-tests.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -57,8 +59,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
 BuildRequires:  procps
 BuildRequires:  readline-devel
+BuildRequires:  rpcgen
 BuildRequires:  samba-client
 BuildRequires:  sendmail
+BuildRequires:  swig
 BuildRequires:  perl(ExtUtils::Embed)
 BuildRequires:  perl(Test::Simple)
 BuildRequires:  pkgconfig(libcrypto)
@@ -82,16 +86,15 @@ and/or GNU tar) and can back up a large number of servers and workstations
 running multiple versions of Linux or Unix.
 
 %prep
-%setup -q -a 1 -a 2
-rm -r patches
+%setup -q -n %{name}-%{upstreamver} -a 1 -a 2
 %patch1
 %patch2
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 ./autogen
@@ -99,18 +102,11 @@ rm -r patches
 export CFLAGS="%{optflags} -fno-strict-aliasing -fPIC -fPIE"
 export CXXFLAGS="%{optflags} -fno-strict-aliasing -fPIC -fPIE"
 export LDFLAGS="-pie"
-%configure --mandir=%{_mandir} \
-           --with-bsdtcp-security \
+%configure --with-bsdtcp-security \
            --with-bsdudp-security \
            --with-ssh-security \
            --with-rsh-security \
            --with-krb5-security \
-           --prefix=%{_prefix} \
-           --infodir=%{_infodir} \
-           --sysconfdir=%{_sysconfdir} \
-           --libdir=%{_libdir} \
-           --libexecdir=%{_libexecdir} \
-           --localstatedir=%{_localstatedir}/lib \
            --with-index-server=localhost \
            --with-gnutar-listdir=%{_localstatedir}/lib/amanda/gnutar-lists \
            --with-smbclient=%{_bindir}/smbclient \
