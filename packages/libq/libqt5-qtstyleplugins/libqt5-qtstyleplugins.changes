@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 22 08:00:47 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Edit qtstyleplugins-fix-deprecations.patch to use the older more
+  reliable method for progress bar orientation (boo#1202611)
+
+-------------------------------------------------------------------
 Sat Feb  6 14:27:59 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Add qtstyleplugins-gtksettings.patch: Align Qt with GTK settings

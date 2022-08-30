@@ -1,5 +1,7 @@
---- a/src/plugins/platformthemes/gtk2/gtk2.pro
-+++ b/src/plugins/platformthemes/gtk2/gtk2.pro
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/platformthemes/gtk2/gtk2.pro
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/platformthemes/gtk2/gtk2.pro
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/platformthemes/gtk2/gtk2.pro
 @@ -1,10 +1,13 @@
  TARGET = qgtk2
  
@@ -18,8 +20,10 @@
  
  CONFIG += X11
  CONFIG += link_pkgconfig
---- a/src/plugins/platformthemes/gtk2/qgtk2dialoghelpers.cpp
-+++ b/src/plugins/platformthemes/gtk2/qgtk2dialoghelpers.cpp
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/platformthemes/gtk2/qgtk2dialoghelpers.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/platformthemes/gtk2/qgtk2dialoghelpers.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/platformthemes/gtk2/qgtk2dialoghelpers.cpp
 @@ -568,7 +568,11 @@ static QFont qt_fontFromString(const QSt
          font.setFamily(family);
  
@@ -32,8 +36,10 @@
  
      PangoStyle style = pango_font_description_get_style(desc);
      if (style == PANGO_STYLE_ITALIC)
---- a/src/plugins/styles/cleanlooks/qcleanlooksstyle.cpp
-+++ b/src/plugins/styles/cleanlooks/qcleanlooksstyle.cpp
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/cleanlooks/qcleanlooksstyle.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/cleanlooks/qcleanlooksstyle.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/cleanlooks/qcleanlooksstyle.cpp
 @@ -686,7 +686,7 @@ void QCleanlooksStyle::drawPrimitive(Pri
      dark.setHsv(button.hue(),
                  qMin(255, (int)(button.saturation()*1.9)),
@@ -506,8 +512,10 @@
              break;
          }
      case SH_ComboBox_Popup:
---- a/src/plugins/styles/cleanlooks/qcleanlooksstyle.h
-+++ b/src/plugins/styles/cleanlooks/qcleanlooksstyle.h
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/cleanlooks/qcleanlooksstyle.h
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/cleanlooks/qcleanlooksstyle.h
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/cleanlooks/qcleanlooksstyle.h
 @@ -45,8 +45,6 @@
  #include <QtWidgets/qproxystyle.h>
  #include <QtCore/qelapsedtimer.h>
@@ -524,8 +532,10 @@
 -QT_END_HEADER
 -
  #endif // QCLEANLOOKSSTYLE_H
---- a/src/plugins/styles/gtk2/qgtk2painter.cpp
-+++ b/src/plugins/styles/gtk2/qgtk2painter.cpp
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/gtk2/qgtk2painter.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/gtk2/qgtk2painter.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/gtk2/qgtk2painter.cpp
 @@ -146,7 +146,7 @@ void QGtk2Painter::paintBoxGap(GtkWidget
                           % HexString<gint>(width)
                           % HexString<gint>(x);
@@ -661,8 +671,10 @@
          DRAW_TO_CACHE(gtk_paint_check (style,
                                           pixmap,
                                           state,
---- a/src/plugins/styles/gtk2/qgtkstyle.cpp
-+++ b/src/plugins/styles/gtk2/qgtkstyle.cpp
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/gtk2/qgtkstyle.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/gtk2/qgtkstyle.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/gtk2/qgtkstyle.cpp
 @@ -386,15 +386,17 @@ QPalette QGtkStyle::standardPalette() co
  
          palette.setColor(QPalette::Window, bg);
@@ -842,16 +854,20 @@
  
                  if (resolve_mask & (1 << QPalette::Base)) // Palette overridden by user
                      painter->fillRect(editRect, option->palette.base().color());
-@@ -2658,7 +2684,7 @@ void QGtkStyle::drawControl(ControlEleme
+@@ -2658,7 +2684,12 @@ void QGtkStyle::drawControl(ControlEleme
              QColor alternateTextColor= QColor(gdkText.red>>8, gdkText.green>>8, gdkText.blue>>8);
  
              painter->save();
--            bool vertical = (bar->orientation == Qt::Vertical);
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++            // Also available in Qt 5, but not reliably set by applications
 +            bool vertical = !(bar->state & QStyle::State_Horizontal);
++#else
+             bool vertical = (bar->orientation == Qt::Vertical);
++#endif
              bool inverted = bar->invertedAppearance;
              if (vertical)
                  rect = QRect(rect.left(), rect.top(), rect.height(), rect.width()); // flip width and height
-@@ -3213,7 +3239,7 @@ void QGtkStyle::drawControl(ControlEleme
+@@ -3213,7 +3244,7 @@ void QGtkStyle::drawControl(ControlEleme
                      QStyleOption opt = *option;
  
                      if (act) {
@@ -860,7 +876,7 @@
                                                            option->palette.highlight().color());
                          opt.palette.setBrush(QPalette::Button, activeColor);
                      }
-@@ -3227,7 +3253,11 @@ void QGtkStyle::drawControl(ControlEleme
+@@ -3227,7 +3258,11 @@ void QGtkStyle::drawControl(ControlEleme
              GdkColor gdkText = style->fg[GTK_STATE_NORMAL];
              GdkColor gdkDText = style->fg[GTK_STATE_INSENSITIVE];
              GdkColor gdkHText = style->fg[GTK_STATE_PRELIGHT];
@@ -872,7 +888,7 @@
              QColor textColor = QColor(gdkText.red>>8, gdkText.green>>8, gdkText.blue>>8);
              QColor disabledTextColor = QColor(gdkDText.red>>8, gdkDText.green>>8, gdkDText.blue>>8);
              if (resolve_mask & (1 << QPalette::ButtonText)) {
-@@ -3247,7 +3277,11 @@ void QGtkStyle::drawControl(ControlEleme
+@@ -3247,7 +3282,11 @@ void QGtkStyle::drawControl(ControlEleme
  
              int x, y, w, h;
              menuitem->rect.getRect(&x, &y, &w, &h);
@@ -884,16 +900,20 @@
              int xm = QGtkStylePrivate::menuItemFrame + checkcol + windowsItemHMargin;
              int xpos = menuitem->rect.x() + xm + 1;
              QRect textRect(xpos, y + windowsItemVMargin, w - xm - QGtkStylePrivate::menuRightBorder - tab + 1, h - 2 * windowsItemVMargin);
-@@ -3433,7 +3467,7 @@ void QGtkStyle::drawControl(ControlEleme
+@@ -3433,7 +3472,12 @@ void QGtkStyle::drawControl(ControlEleme
              int xt = style->xthickness;
              int yt = style->ythickness;
              QRect rect = bar->rect.adjusted(xt, yt, -xt, -yt);
--            bool vertical = (bar->orientation == Qt::Vertical);
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++            // Also available in Qt 5, but not reliably set by applications
 +            bool vertical = !(bar->state & QStyle::State_Horizontal);
++#else
+             bool vertical = (bar->orientation == Qt::Vertical);
++#endif
              bool inverted = bar->invertedAppearance;
              bool indeterminate = (bar->minimum == 0 && bar->maximum == 0);
  
-@@ -3841,7 +3875,11 @@ QSize QGtkStyle::sizeFromContents(Conten
+@@ -3841,7 +3885,11 @@ QSize QGtkStyle::sizeFromContents(Conten
              QFont font = gb->font();
              font.setBold(true);
              QFontMetrics metrics(font);
@@ -905,7 +925,7 @@
              if (gb->isCheckable()) {
                  baseWidth += proxy()->pixelMetric(QStyle::PM_IndicatorWidth, option, widget);
                  baseWidth += proxy()->pixelMetric(QStyle::PM_CheckBoxLabelSpacing, option, widget);
-@@ -3965,7 +4003,11 @@ QSize QGtkStyle::sizeFromContents(Conten
+@@ -3965,7 +4013,11 @@ QSize QGtkStyle::sizeFromContents(Conten
                  QFont fontBold = menuItem->font;
                  fontBold.setBold(true);
                  QFontMetrics fmBold(fontBold);
@@ -917,8 +937,10 @@
              }
  
              int checkcol = qMax<int>(maxpmw, QGtkStylePrivate::menuCheckMarkWidth); // Windows always shows a check column
---- a/src/plugins/styles/gtk2/qgtkstyle_p.cpp
-+++ b/src/plugins/styles/gtk2/qgtkstyle_p.cpp
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/gtk2/qgtkstyle_p.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/gtk2/qgtkstyle_p.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/gtk2/qgtkstyle_p.cpp
 @@ -508,7 +508,9 @@ void QGtkStyleUpdateScheduler::updateThe
        if (oldTheme != QGtkStylePrivate::getThemeName()) {
            oldTheme = QGtkStylePrivate::getThemeName();
@@ -950,8 +972,10 @@
  }
  
  // copied from qHash.cpp
---- a/src/plugins/styles/motif/qcdestyle.cpp
-+++ b/src/plugins/styles/motif/qcdestyle.cpp
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/motif/qcdestyle.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/motif/qcdestyle.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/motif/qcdestyle.cpp
 @@ -215,7 +215,7 @@ void QCDEStyle::drawPrimitive(PrimitiveE
              if (opt->state & State_NoChange)
                  p->setPen(opt->palette.dark().color());
@@ -970,8 +994,10 @@
              p->setPen(fillColor);
              p->setBrush(on ? opt->palette.brush(QPalette::Dark) :
                           opt->palette.brush(QPalette::Window));
---- a/src/plugins/styles/motif/qcdestyle.h
-+++ b/src/plugins/styles/motif/qcdestyle.h
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/motif/qcdestyle.h
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/motif/qcdestyle.h
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/motif/qcdestyle.h
 @@ -45,8 +45,6 @@
  
  #include "qmotifstyle.h"
@@ -988,8 +1014,10 @@
 -QT_END_HEADER
 -
  #endif // QCDESTYLE_H
---- a/src/plugins/styles/motif/qmotifstyle.cpp
-+++ b/src/plugins/styles/motif/qmotifstyle.cpp
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/motif/qmotifstyle.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/motif/qmotifstyle.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/motif/qmotifstyle.cpp
 @@ -765,7 +765,7 @@ void QMotifStyle::drawPrimitive(Primitiv
      case PE_IndicatorProgressChunk:
          {
@@ -1140,8 +1168,10 @@
  
              if (pb->textAlignment == Qt::AlignLeft || pb->textAlignment == Qt::AlignCenter) {
                  rect = opt->rect;
---- a/src/plugins/styles/motif/qmotifstyle.h
-+++ b/src/plugins/styles/motif/qmotifstyle.h
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/motif/qmotifstyle.h
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/motif/qmotifstyle.h
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/motif/qmotifstyle.h
 @@ -43,11 +43,9 @@
  #define QMOTIFSTYLE_H
  
@@ -1171,8 +1201,10 @@
 -QT_END_HEADER
 -
  #endif // QMOTIFSTYLE_H
---- a/src/plugins/styles/plastique/qplastiquestyle.cpp
-+++ b/src/plugins/styles/plastique/qplastiquestyle.cpp
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/plastique/qplastiquestyle.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/plastique/qplastiquestyle.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/plastique/qplastiquestyle.cpp
 @@ -492,7 +492,7 @@ static void qBrushSetAlphaF(QBrush *brus
          QString name = QLatin1String("qbrushtexture-alpha")
                         % HexString<qreal>(alpha)
@@ -1785,8 +1817,10 @@
                  QTextOption option((tooWide ? Qt::AlignLeft : Qt::AlignHCenter) | Qt::AlignVCenter);
                  option.setWrapMode(QTextOption::NoWrap);
  
---- a/src/plugins/styles/plastique/qplastiquestyle.h
-+++ b/src/plugins/styles/plastique/qplastiquestyle.h
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/plastique/qplastiquestyle.h
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/plastique/qplastiquestyle.h
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/plastique/qplastiquestyle.h
 @@ -44,8 +44,7 @@
  
  #include <QtWidgets/qproxystyle.h>
@@ -1804,8 +1838,10 @@
 -QT_END_HEADER
 -
  #endif // QPLASTIQUESTYLE_H
---- a/src/plugins/styles/shared/qstylecache_p.h
-+++ b/src/plugins/styles/shared/qstylecache_p.h
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/shared/qstylecache_p.h
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/shared/qstylecache_p.h
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/shared/qstylecache_p.h
 @@ -80,7 +80,7 @@ inline QPixmap styleCachePixmap(const QS
      int txType = painter->deviceTransform().type() | painter->worldTransform().type(); \
      bool doPixmapCache = (txType <= QTransform::TxTranslate) \
