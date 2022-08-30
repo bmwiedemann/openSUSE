@@ -17,46 +17,36 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-flake8
 Version:        5.0.4
 Release:        0
 Summary:        Modular source code checker: pep8, pyflakes and co
 License:        MIT
-URL:            https://gitlab.com/pycqa/flake8
+URL:            https://flake8.pycqa.org
 Source:         https://files.pythonhosted.org/packages/source/f/flake8/flake8-%{version}.tar.gz
 # workaround for https://github.com/PyCQA/flake8/pull/1669
 Source2:        https://raw.githubusercontent.com/PyCQA/flake8/5.0.4/bin/gen-pycodestyle-plugin
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION test requirements
+BuildRequires:  %{python_module importlib-metadata >= 1.1.0 if %python-version < 3.8}
+BuildRequires:  %{python_module mccabe >= 0.7.0 with %python-mccabe < 0.8.0}
+BuildRequires:  %{python_module pycodestyle >= 2.9.0 with %python-pycodestyle < 2.10.0}
+BuildRequires:  %{python_module pyflakes >= 2.5.0 with %python-pyflakes < 2.6.0}
+BuildRequires:  %{python_module pytest}
+# /SECTION
+BuildArch:      noarch
+# https://flake8.pycqa.org/en/latest/faq.html#why-does-flake8-use-ranges-for-its-dependencies
+Requires:       (python-mccabe >= 0.7.0 with python-mccabe < 0.8.0)
+Requires:       (python-pycodestyle >= 2.9.0 with python-pycodestyle < 2.10.0)
+Requires:       (python-pyflakes >= 2.5.0 with python-pyflakes < 2.6.0)
+%if 0%{?python_version_nodots} < 38
 Requires:       python-importlib-metadata >= 1.1.0
-Requires:       python-mccabe >= 0.7.0
-Requires:       python-pycodestyle >= 2.9.0
-Requires:       python-pyflakes >= 2.5.0
-Requires:       python-typing
+%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module importlib-metadata >= 1.1.0}
-BuildRequires:  %{python_module mccabe >= 0.7.0}
-BuildRequires:  %{python_module pycodestyle >= 2.9.0}
-BuildRequires:  %{python_module pyflakes >= 2.5.0}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typing}
-%if %{with python2}
-BuildRequires:  python2-configparser >= 3.7.0
-BuildRequires:  python2-enum34
-BuildRequires:  python2-functools32
-BuildRequires:  python2-mock
-%endif
-# /SECTION
-%ifpython2
-Requires:       python-configparser >= 3.7.0
-Requires:       python-enum34
-Requires:       python-functools32
-%endif
 %python_subpackages
 
 %description
@@ -102,9 +92,8 @@ install -m 0755 -D %{SOURCE2} bin/gen-pycodestyle-plugin
 %files %{python_files}
 %license LICENSE
 %python_alternative %{_bindir}/flake8
-%dir %{python_sitelib}/flake8
-%{python_sitelib}/flake8/*
-%{python_sitelib}/flake8-%{version}-py*.egg-info
+%{python_sitelib}/flake8
+%{python_sitelib}/flake8-%{version}*-info
 
 %files -n %{name}-doc
 %doc README.rst

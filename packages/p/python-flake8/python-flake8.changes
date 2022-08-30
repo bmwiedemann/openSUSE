@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 27 09:12:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Pin to upstream's ranges in dependendcies in order to not break
+  downstream packages all the time
+  https://flake8.pycqa.org/en/latest/faq.html#why-does-flake8-use-ranges-for-its-dependencies
+- Remove obsolete python2 packaging directives
+
+-------------------------------------------------------------------
 Thu Aug 18 08:44:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.4:

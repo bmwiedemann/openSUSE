@@ -390,4 +390,12 @@
 - drop fix-mock-patch-with-python3.4.patch fix-recent-flake8-stdoutWriteHook-change.patch (obsolete/upstream)</comment>
     <requestid>997695</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>361551691b4fcc57ea722a22005a3f8b</srcmd5>
+    <version>5.0.4</version>
+    <time>1661863740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999905</requestid>
+  </revision>
 </revisionlist>
