@@ -1059,4 +1059,12 @@ from the squid 3.x changelog</comment>
     <comment></comment>
     <requestid>985925</requestid>
   </revision>
+  <revision rev="105" vrev="3">
+    <srcmd5>346171509f5b34b8743af71be5920590</srcmd5>
+    <version>5.6</version>
+    <time>1661863746</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999925</requestid>
+  </revision>
 </revisionlist>

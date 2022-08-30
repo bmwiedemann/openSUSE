@@ -121,7 +121,7 @@ export LDFLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,relro,-z,now -pie"
 	--datadir=%{_datadir}/squid \
 	--sharedstatedir=%{_localstatedir}/squid \
 	--with-logdir=%{_localstatedir}/log/squid \
-	--with-pidfile=/run/squid.pid \
+	--with-pidfile=%{_rundir}/%{name}/squid.pid \
 	--with-dl \
 	--enable-disk-io \
 	--enable-storeio \

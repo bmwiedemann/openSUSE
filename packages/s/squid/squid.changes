@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 29 08:25:53 UTC 2022 - chris@computersalat.de
+
+- fix PIDFile
+  * NOT needed in service file
+    (squid.service: Can't open PID file /run/squid.pid)
+  * placed to tmpfilesdir
+
+-------------------------------------------------------------------
 Wed Jun 29 11:31:00 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Moved logrotate files from user specific directory /etc/logrotate.d

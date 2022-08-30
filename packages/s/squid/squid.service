@@ -22,7 +22,6 @@ ExecStartPre=%{_libexecdir}/squid/initialize_cache_if_needed.sh
 ExecStart=/usr/sbin/squid -FC
 ExecReload=/usr/bin/kill -HUP $MAINPID
 LimitNOFILE=4096
-PIDFile=/run/squid.pid
 
 [Install]
 WantedBy=multi-user.target
