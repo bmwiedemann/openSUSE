@@ -49,7 +49,7 @@ RestrictSUIDSGID=yes
 RestrictRealtime=true
 # end of automatic additions 
 SystemCallArchitectures=native
-SystemCallFilter=~@clock @debug @module @mount @raw-io @reboot @swap @privileged @resources @cpu-emulation @obsolete
+SystemCallFilter=~@clock @debug @module @mount @raw-io @reboot @swap @resources @cpu-emulation @obsolete
 
 [Install]
 WantedBy=multi-user.target

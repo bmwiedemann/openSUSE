@@ -1,12 +1,13 @@
 Configuration files:
-  * /etc/coturn/turnserver.conf is the mail configuration file
+  * /etc/coturn/turnserver.conf is the main configuration file
   * /etc/sysconfig/coturn can be used to set additional command line parameters
 
-To allow traffic going thru the firewall use
+Allow traffic through the firewall:
 ```
-firewall-cmd --zone=public --add-service=coturn [--permanent]
+firewall-cmd --zone=<zone> --add-service=coturn [--permanent]
 ```
 
+Notes:
 * /etc/syconfig/coturn has the option '--no-software-attribute' enabled to hide 
   the software version for production issue.
 

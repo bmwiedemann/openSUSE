@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 19 19:25:35 UTC 2022 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Drop @privileged SystemCallFilter, can prevent service from starting (status=31/SYS)
+
+-------------------------------------------------------------------
 Mon Oct 18 14:55:57 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Dropped harden_coturn.service.patch because systemd units are
