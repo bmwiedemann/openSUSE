@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asciimatics
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        Package to replace curses and create ASCII animations
 License:        Apache-2.0
