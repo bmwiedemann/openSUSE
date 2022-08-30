@@ -1,7 +1,7 @@
 #
-# spec file for package python-wafw00f
+# spec file for package wafw00f
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           wafw00f
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        The Web Application Firewall Detection and Fingerprinting Toolkit
 License:        BSD-3-Clause
 URL:            https://github.com/enablesecurity/wafw00f
 Source:         https://files.pythonhosted.org/packages/source/w/wafw00f/wafw00f-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pluginbase}
 BuildRequires:  %{python_module requests}
