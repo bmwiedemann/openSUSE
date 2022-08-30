@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 29 19:29:13 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1661770536.d8c6a21:
+  * Improve dewebsockify test
+  * Add test for empty password
+  * Check if SSH password is defined explicitly
+  * testapi: Allow forcing worker ip in autoinst_url()
+  * Mark certain statements in baseclass as uncoverable
+  * Test `wait_serial` when it is a serial terminal
+
+-------------------------------------------------------------------
 Sat Aug 27 11:23:40 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1661423925.9ac2f89:
