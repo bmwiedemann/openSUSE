@@ -1,7 +1,7 @@
 #
 # spec file for package tcpd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -138,7 +138,8 @@ to compile and link programs against the TCP wrapper library.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-make %{?_smp_mflags} linux CC="cc"
+# Makefile is not parallel-safe
+make linux CC="cc"
 
 %install
 install -d -m 755 %{buildroot}%{_includedir}
