@@ -1,7 +1,7 @@
 #
 # spec file for package xonsh
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,17 @@
 
 %define pythons python3
 Name:           xonsh
-Version:        0.12.4
+Version:        0.13.1
 Release:        0
 Summary:        A general purpose, Python-powered shell
-License:        BSD-3-Clause AND BSD-2-Clause
+License:        BSD-2-Clause AND BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://xon.sh/
 Source0:        https://github.com/xonsh/xonsh/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# SECTION docs
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-cloud-sptheme
-BuildRequires:  python3-numpydoc
-BuildRequires:  python3-myst-parser
-BuildRequires:  python3-runthis-sphinxext
-BuildRequires:  python3-markdown-it-py
-# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python3-base >= 3.5
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 Recommends:     python3-Pygments >= 2.2
 Recommends:     python3-distro
 Recommends:     python3-ply
@@ -59,17 +52,12 @@ HTML documentation on the API and examples for %name.
 
 %prep
 %setup -q -n xonsh-%{version}
-sed -i '1s/^#!.*//' xonsh/xoreutils/_which.py xonsh/webconfig/main.py
+sed -i '1s/^#!.*//' xonsh/xoreutils/_which.py xonsh/webconfig/main.py xonsh/xoreutils/uname.py
+rm docs/api/.gitignore
 
 %build
 %python_build
-pushd docs
-LANG=C.UTF-8 PYTHONPATH=.. setarch -R make html
-# work around a rpmlint error file-contains-buildroot
-find _build -name '*.doctree' -exec sed -i 's#/home/abuild/rpmbuild/BUILD#_WORKDIR_#g' {} \+
-rm _build/html/.buildinfo
-rm -r _build/doctrees
-popd
+# docs require unavailable theme 'furo'
 
 %install
 %python_install
@@ -78,17 +66,19 @@ popd
 %fdupes -s docs/_build/html/
 
 %files
-%{python3_sitelib}/*
+%{python3_sitelib}/xonsh/
+%{python3_sitelib}/xontrib/
+%{python3_sitelib}/xompletions/
+%{python3_sitelib}/xonsh-%{version}*-info
 %{_bindir}/xonsh
 %{_bindir}/xonsh-cat
-%{_bindir}/xon.sh
 %{_bindir}/xonsh-uptime
 %{_bindir}/xonsh-uname
 %doc README.rst logo.txt CHANGELOG.rst
 %doc xontrib
 %license license
 
-%files -n %{name}-doc
-%doc docs/_build/html
+%files doc
+%doc docs
 
 %changelog
