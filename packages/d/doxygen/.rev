@@ -1034,4 +1034,20 @@
     <comment></comment>
     <requestid>987157</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>57b910a68f470f717233a616777ca7ca</srcmd5>
+    <version>1.9.5</version>
+    <time>1661962106</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.5: See https://doxygen.nl/manual/changelog.html.
+- Remove upstreamed patches:
+  * doxygen-modify_footer.patch
+  * doxygen-gcc12.patch
+  * doxygen-1.9.4-fix-symlink-detection.patch
+- Add doxygen-1.9.4-fix-symlink-detection.patch: Fix symlink
+  detection issue leading to givaro build to hang
+  (gh#doxygen/doxygen#9491).
+</comment>
+    <requestid>1000099</requestid>
+  </revision>
 </revisionlist>

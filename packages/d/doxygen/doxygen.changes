@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 26 19:05:07 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.9.5: See https://doxygen.nl/manual/changelog.html.
+- Remove upstreamed patches:
+  * doxygen-modify_footer.patch
+  * doxygen-gcc12.patch
+  * doxygen-1.9.4-fix-symlink-detection.patch
+
+-------------------------------------------------------------------
+Tue Aug 23 23:16:27 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add doxygen-1.9.4-fix-symlink-detection.patch: Fix symlink
+  detection issue leading to givaro build to hang
+  (gh#doxygen/doxygen#9491).
+
+-------------------------------------------------------------------
 Mon Jun 27 11:12:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.9.4. Check https://doxygen.nl/manual/changelog.html
