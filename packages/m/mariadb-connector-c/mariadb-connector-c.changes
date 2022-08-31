@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 29 10:35:12 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.3.2
+  * Enhanced mysql_close() and other related parts to prevent
+    memory leaks when terminating an initiated but unestablished
+    connection
+
+-------------------------------------------------------------------
 Thu Jul  7 08:35:59 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 3.3.1:
