@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 29 15:18:08 UTC 2022 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Do not run ibus-autostart with xdg-autostart-generator (KDE etc.)
+  * A workaround for boo#1202841
+  * Please use org.freedesktop.IBus.session.generic.service instead
+    (See boo#1201421)
+
+-------------------------------------------------------------------
 Sat Aug 27 03:24:19 UTC 2022 - Fuminobu Takeyama <ftake@geeko.jp> - 1.5.27
 
 - Upstream update to 1.5.27
