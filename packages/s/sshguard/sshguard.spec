@@ -42,6 +42,7 @@ Source4:        sshguard.whitelist
 # PATCH-FIX-UPSTREAM sshguard-gcc5.patch
 Patch0:         sshguard-gcc5.patch
 Patch1:         harden_sshguard.service.patch
+Patch2:         sshguard-overflow.patch
 Requires:       openssh
 Requires(pre):  %fillup_prereq
 
@@ -55,6 +56,7 @@ attacker's address with a firewall rule.
 %patch0 -p1
 find . -type f -iname "*.swp" -print -exec rm {} \;
 %patch1 -p1
+%patch2 -p1
 
 %build
 %configure \

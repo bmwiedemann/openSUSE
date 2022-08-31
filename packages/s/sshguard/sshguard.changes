@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 30 15:19:17 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- sshguard-overflow.patch: fixed 1 byte 0x00 overwrite in a memset
+  (bsc#1202944)
+
+-------------------------------------------------------------------
 Mon Jan 24 21:22:20 UTC 2022 - Joop Boonen <joop.boonen@opensuse.org>
 
 - Corrected the BACKEND in /etc/sshguard.conf
