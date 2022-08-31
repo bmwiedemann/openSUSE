@@ -24,4 +24,14 @@
   bsc#1036967</comment>
     <requestid>578712</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8979d8e81e78646a86f7d3d8707a060e</srcmd5>
+    <version>0.15.1b</version>
+    <time>1661962114</time>
+    <user>dimstar_suse</user>
+    <comment>- length-check.patch: repaces frame_length.diff. Fixes now also
+  bsc#1036968 (CVE-2017-8373)
+- use %license for the license</comment>
+    <requestid>1000150</requestid>
+  </revision>
 </revisionlist>

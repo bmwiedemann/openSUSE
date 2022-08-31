@@ -1,7 +1,7 @@
 #
 # spec file for package libmad
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Name:           libmad
 Version:        0.15.1b
 Release:        0
 Summary:        An MPEG audio decoder library
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
-Url:            http://www.underbit.com/products/mad/
+URL:            http://www.underbit.com/products/mad/
 Source:         https://sourceforge.net/projects/mad/files/libmad/%{version}/libmad-%{version}.tar.gz
 Source1000:     baselibs.conf
 Patch0:         libmad-0.15.1b-automake.patch
@@ -33,7 +33,7 @@ Patch2:         libmad-0.15.1b-gcc43.patch
 Patch3:         Provide-Thumb-2-alternative-code-for-MAD_F_MLN.diff
 Patch4:         libmad.thumb.diff
 Patch5:         libmad-0.15.1b-ppc.patch
-Patch6:         frame_length.diff
+Patch6:         length-check.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -111,12 +111,11 @@ install -D -m0644 mad.pc "%{buildroot}%{_libdir}/pkgconfig/mad.pc"
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%defattr(-,root,root)
-%doc CHANGES COPYING COPYRIGHT CREDITS README TODO VERSION
+%license COPYING
+%doc CHANGES COPYRIGHT CREDITS README TODO VERSION
 %{_libdir}/libmad.so.%{sover}*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/mad.h
 %{_libdir}/libmad.so
 %{_libdir}/pkgconfig/mad.pc
