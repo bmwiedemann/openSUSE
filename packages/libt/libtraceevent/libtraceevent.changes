@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 29 09:56:33 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.2
+  * Add API tep_get_function_count()
+  * Reset right arg when copying TEP_PRINT_OP
+  * Reset field properly in event_read_fields()
+  * Fix memleak in make_bprint_args()
+  * Add processing of __get_sockaddr() and __get_sockaddr_rel()
+
+-------------------------------------------------------------------
 Tue Apr  5 15:44:56 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to latest upstream version (1.5.3)
