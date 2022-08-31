@@ -674,4 +674,13 @@
     <comment>- new package for minimal base containers (jsc#SLE-22162) (forwarded request 923227 from lnussel)</comment>
     <requestid>923405</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>00fc6a69821caf2828c0b9420690eb01</srcmd5>
+    <version>2.56</version>
+    <time>1661962121</time>
+    <user>dimstar_suse</user>
+    <comment>- Create /var/lib/ca-certificates during build to ensure rpm gives
+  the %ghost'ed directory proper mode attributes. (forwarded request 1000216 from dimstar)</comment>
+    <requestid>1000222</requestid>
+  </revision>
 </revisionlist>

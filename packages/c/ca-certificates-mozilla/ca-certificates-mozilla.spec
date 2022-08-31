@@ -1,7 +1,7 @@
 #
 # spec file for package ca-certificates-mozilla
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@
 Name:           ca-certificates-mozilla
 # Version number is NSS_BUILTINS_LIBRARY_VERSION in this file:
 # http://hg.mozilla.org/projects/nss/file/default/lib/ckfw/builtins/nssckbi.h
-Version:        2.52
+Version:        2.56
 Release:        0
 Summary:        CA certificates for OpenSSL
 License:        MPL-2.0
@@ -53,8 +53,8 @@ URL:            https://www.mozilla.org
 #   to output of compareoldnew
 # - Watch out that blacklisted or untrusted certificates are not
 #   accidentally included!
-Source:         http://hg.mozilla.org/projects/nss/raw-file/default/lib/ckfw/builtins/certdata.txt
-Source1:        http://hg.mozilla.org/projects/nss/raw-file/default/lib/ckfw/builtins/nssckbi.h
+Source:         https://hg.mozilla.org/projects/nss/raw-file/default/lib/ckfw/builtins/certdata.txt
+Source1:        https://hg.mozilla.org/projects/nss/raw-file/default/lib/ckfw/builtins/nssckbi.h
 #Source10:       https://src.fedoraproject.org/rpms/ca-certificates/raw/master/f/certdata2pem.py
 Source10:       certdata2pem.py
 Source11:       %{name}.COPYING
@@ -95,8 +95,6 @@ fi
 export LANG=en_US.UTF-8
 cd certs
 python3 %{SOURCE10}
-# temporary remove expired CA
-rm DST_Root_CA_X3:2.16.68.175.176.128.214.163.39.186.137.48.57.134.46.248.64.107.tmp-p11-kit
 cd ..
 (
   cat <<-EOF

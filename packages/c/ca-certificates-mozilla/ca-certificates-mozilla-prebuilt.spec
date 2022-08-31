@@ -1,7 +1,7 @@
 #
 # spec file for package ca-certificates-mozilla-prebuilt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,7 @@ cp /usr/share/licenses/ca-certificates-mozilla/COPYING .
 
 %install
 mkdir -p %{buildroot}/etc/ssl
+mkdir -p %{buildroot}/var/lib/ca-certificates
 ln -s /var/lib/ca-certificates/pem %{buildroot}/etc/ssl/certs
 ln -s /var/lib/ca-certificates/ca-bundle.pem %{buildroot}/etc/ssl/ca-bundle.pem
 mkdir -p %{buildroot}/usr/share/factory/var/lib
