@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.packaging
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,31 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-jaraco.packaging
-Version:        8.1.0
+Version:        9.0.0
 Release:        0
 Summary:        Supplement packaging Python releases
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.packaging
 Source:         https://files.pythonhosted.org/packages/source/j/jaraco.packaging/jaraco.packaging-%{version}.tar.gz
-BuildRequires:  %{python_module jaraco.base >= 6.1}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module importlib-metadata if %python-version < 3.8}
+BuildRequires:  %{python_module pep517}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 56}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-jaraco.base >= 6.1
-Requires:       python-six
-Requires(post): update-alternatives
-Requires(preun):update-alternatives
+# SECTION test and docs
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module rst.linker >= 1.9}
+# /SECTION
+Requires:       python-pep517
+%if 0%{?python_version_nodots} < 38
+Requires:       python-importlib-metadata
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,38 +49,23 @@ Tools to supplement packaging Python releases.
 
 %prep
 %setup -q -n jaraco.packaging-%{version}
-sed -i 's/--flake8//' pytest.ini
-sed -i 's/--black --cov//' pytest.ini
 rm -rf jaraco.packaging.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-# We will package the namespace __init__.py separately
-%{python_expand rm %{buildroot}%{$python_sitelib}/jaraco/__init__.py*
-rm -rf %{buildroot}%{$python_sitelib}/jaraco/__pycache__/
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%python_clone -a %{buildroot}%{_bindir}/dependency-tree
-
-%post
-%python_install_alternative dependency-tree upload-package
-
-%postun
-%python_uninstall_alternative dependency-tree
-
-%check
-# the test depends on accessing PyPI
-%pytest -k 'not test_revived_distribution'
+#%%check
+# Upstream removed their test suite from the repository, only checking for correct typing and lint
 
 %files %{python_files}
 %license LICENSE
 %doc docs/*.rst CHANGES.rst README.rst
-%python_alternative %{_bindir}/dependency-tree
-%{python_sitelib}/jaraco.packaging-%{version}-py*.egg-info
+%{python_sitelib}/jaraco.packaging-%{version}*-info
+%dir %{python_sitelib}/jaraco
 %{python_sitelib}/jaraco/packaging/
 
 %changelog

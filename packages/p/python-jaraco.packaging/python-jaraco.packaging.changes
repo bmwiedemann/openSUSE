@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 29 19:50:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove stray python3.inv
+
+-------------------------------------------------------------------
+Mon Aug 29 10:11:16 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v9.0.0
+  * Use pep517.meta to load package metadata. Adds support
+    for packages without setup.py.
+  * Removed info module (and setuptools show command).
+  * Removed depends module. Use other packaging tools instead.
+- v8.2.1: Rely on PEP 420 for namespace package.
+- v8.2.0: Inject rst_epilog to include ``|project|`` substitution.
+- Remove jaraco.base: PEP420 namespace packages do not use that
+  kind of scheme anymore.
+
+-------------------------------------------------------------------
 Mon Nov  8 11:07:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add missing six dependency declaration 
