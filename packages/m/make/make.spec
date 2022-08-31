@@ -29,13 +29,16 @@ Source1:        https://ftp.gnu.org/gnu/make/make-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Patch1:         make-testcases_timeout.diff
 Patch2:         fix-57962.patch
+Patch3:         jobserver-noinherit.patch
+Patch4:         jobserver-fifo.patch
 Patch5:         test-driver.patch
 Patch64:        make-library-search-path.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 Provides:       gmake
 
 %description
@@ -47,6 +50,8 @@ The GNU make command with extensive documentation.
 %setup -q
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
 %patch5 -p1
 if [ %{_lib} = lib64 ]; then
 %patch64 -p1

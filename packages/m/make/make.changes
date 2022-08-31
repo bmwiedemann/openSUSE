@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 17 15:05:38 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- jobserver-noinherit.patch: Disable inheritance of jobserver FDs for
+  recursive make
+- jobserver-fifo.patch: Add support for jobserver using named pipes
+
+-------------------------------------------------------------------
 Tue Apr 19 13:30:15 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - use https urls
