@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f2fa1884ff79998bdc21a2de5a23e139</srcmd5>
+    <version>0.09</version>
+    <time>1661962130</time>
+    <user>dimstar_suse</user>
+    <comment>New dependency for openQA (used with perl-Mojolicious-Plugin-OAuth2 to support OpenID Connect)</comment>
+    <requestid>1000303</requestid>
+  </revision>
+</revisionlist>
