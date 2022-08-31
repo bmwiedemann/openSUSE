@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 30 12:50:27 UTC 2022 - David Disseldorp <ddiss@suse.com>
+
+- Add back Wants=pmcd from pmlogger and pmie services; (bsc#1202896)
+  + 0011-Revert-systemd-remove-Wants-pmcd-from-pmlogger-and-p.patch
+
+-------------------------------------------------------------------
 Wed Jun  8 21:33:14 UTC 2022 - David Disseldorp <ddiss@suse.com>
 
 - Workaround intermittent build-time package preun failures by dropping

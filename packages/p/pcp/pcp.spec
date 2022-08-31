@@ -90,6 +90,8 @@ Patch6:         0006-pmsnap-control-var-www-srv-www.patch
 Patch9:         0009-remove-rundir-install.patch
 # PATCH-FIX-UPSTREAM, ddiss@suse.de
 Patch10:        0010-services-switch-logutil-and-pmieutil-scripts-from-ty.patch
+# PATCH-FIX-UPSTREAM, ddiss@suse.de
+Patch11:        0011-Revert-systemd-remove-Wants-pmcd-from-pmlogger-and-p.patch
 
 %if 0%{?fedora} || 0%{?rhel}
 %global disable_selinux 0
@@ -2510,6 +2512,7 @@ updated policy package.
 %patch6 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 autoconf
 
