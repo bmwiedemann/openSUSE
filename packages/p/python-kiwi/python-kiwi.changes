@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 23 11:48:16 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.47 → 9.24.48
+
+-------------------------------------------------------------------
 Wed Aug 10 20:40:42 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.24.46 → 9.24.47
@@ -28,6 +33,17 @@ Tue Aug 09 15:43:44 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
   extract/trim them from the uri object. The urlparse
   class does not recognize this information as a valid
   URI and throws an exception
+
+-------------------------------------------------------------------
+Tue Aug 09 15:17:55 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed kexec options setup in kiwi-dump-reboot
+
+  The dracut module 99kiwi-dump-reboot creates an options
+  list for kexec. Under certain conditions the options
+  list can contain multiple spaces which leads to an error
+  when calling kexec. This commit makes sure to trim
+  white spaces. This Fixes #2178
 
 -------------------------------------------------------------------
 Sun Aug 07 19:14:01 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
