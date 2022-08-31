@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 29 11:56:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.2.1:
+  #15: Fixed broken test in ensure_unique.
+- v6.2.0: Added accumulate function.
+- v6.1.1: Fixed typo in ensure_unique doctest.
+- v6.1.0: Add ensure_unique function.
+- v6.0.3: #13: Fixed doc build errors.
+- v6.0.2: Minor fixes.
+- v6.0.1: Switch to PEP 420 for namespace package.
+- v6.0.0: Remove Counter.GetCount. Remove flatten and iflatten.
+- Switch to PEP517 and remove obsolete jaraco.base requirement
+
+-------------------------------------------------------------------
 Mon Nov  8 11:05:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add six dependency for testsuite 
