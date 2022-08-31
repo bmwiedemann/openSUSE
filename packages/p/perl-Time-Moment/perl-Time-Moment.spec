@@ -26,6 +26,7 @@ Group:          Development/Libraries/Perl
 Url:            http://search.cpan.org/dist/Time-Moment/
 Source0:        https://cpan.metacpan.org/authors/id/C/CH/CHANSEN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Patch0:         fix2038.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -49,6 +50,7 @@ within '0001-01-01T00:00:00Z' to '9999-12-31T23:59:59Z'.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+%patch0 -p1
 find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 
 %build
