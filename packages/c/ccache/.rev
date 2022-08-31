@@ -692,4 +692,12 @@ mtime and ctime values are now stored in the manifest files only when sloppy_fil
   * Support Redis URL without host (meaning localhost).</comment>
     <requestid>980818</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>861e3adca41cde076fb76babe91a77aa</srcmd5>
+    <version>4.6.1</version>
+    <time>1661962117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000203</requestid>
+  </revision>
 </revisionlist>

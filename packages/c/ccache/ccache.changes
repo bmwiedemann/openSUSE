@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 30 04:03:21 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add fix2038.patch to make tests pass after 2038
+
+-------------------------------------------------------------------
 Sat Jun  4 23:58:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.1:

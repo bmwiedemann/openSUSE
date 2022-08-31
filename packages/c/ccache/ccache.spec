@@ -25,6 +25,9 @@ URL:            https://ccache.dev/
 Source0:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz
 Source1:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+%ifnarch %ix86 %arm
+Patch0:         fix2038.patch
+%endif
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libzstd-devel >= 1.1.2
