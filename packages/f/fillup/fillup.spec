@@ -73,7 +73,8 @@ ln -sf %{_bindir}/fillup $RPM_BUILD_ROOT/bin
 %endif
 
 %check
-make %{?_smp_mflags} test    OPTISPLUS="%{optflags}"
+# Makefile is not parallel-safe
+make test    OPTISPLUS="%{optflags}"
 
 %files
 %defattr(-,root,root)
