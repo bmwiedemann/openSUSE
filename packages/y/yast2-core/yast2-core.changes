@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 30 09:28:44 UTC 2022 - Martin Vidner <mvidner@suse.com>
+
+- Fix a test that would fail in the year 2038
+  (gh#yast/yast-core#160)
+- 4.5.3
+
+-------------------------------------------------------------------
 Mon Jul  4 13:46:48 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Fix building with GCC 13 and GCC 12.x (gh#yast/yast-core#156)
