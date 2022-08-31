@@ -76,7 +76,7 @@ Python binding part.
 
 %build
 %meson \
-    -Ddocs=man
+    -Ddocs=man -Ddocs-build=true
 %meson_build
 
 %install
@@ -99,7 +99,7 @@ Python binding part.
 %{_libdir}/%{name}*.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/pkgconfig/%{name}-mi.pc
-%{_mandir}/*/*
+%{_mandir}/*/*.gz
 
 %files -n %{name}-mi%{sover}
 %license COPYING
