@@ -18,7 +18,7 @@
 
 Name:           libfsxfs
 %define lname	libfsxfs1
-Version:        20220706
+Version:        20220829
 Release:        0
 Summary:        Library and tools for accessing the SGI X File System (XFS)
 License:        LGPL-3.0-or-later
@@ -30,7 +30,7 @@ Source3:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  %python_module devel
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  gettext-tools >= 0.21
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
