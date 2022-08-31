@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug 29 11:37:21 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v3.5.2
+  * Packaging refresh.
+  * Enrolled with Tidelift.
+- v3.5.1
+  * Fixed DictStack.__len__ and addressed recursion error on PyPy
+    in __getitem__.
+- v3.5.0
+  * DictStack now supports the following Mapping behaviors:
+    - .items()
+    - casting to a dict
+    - __contains__ (i.e. "x in stack")
+  * Require Python 3.7 or later.
+- v3.4.0: Add WeightedLookup.
+- v3.3.0: Add FreezableDefaultDict.
+- v3.2.0: Rely on PEP 420 for namespace package.
+
+-------------------------------------------------------------------
 Sat Dec  5 22:16:50 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - compile cache for all python3 flavors, remove unused python2
