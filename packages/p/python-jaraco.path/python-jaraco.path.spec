@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.path
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jaraco.path
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
-Summary:        miscellaneous path functions for jaraco packages
+Summary:        Miscellaneous path functions for jaraco packages
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.path
 Source:         https://files.pythonhosted.org/packages/source/j/jaraco.path/jaraco.path-%{version}.tar.gz
-BuildRequires:  %{python_module jaraco.base}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module singledispatch}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-singledispatch
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,19 +42,23 @@ and other miscellaneous path helper functions.
 %setup -q -n jaraco.path-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+#  work around for gh#pytest-dev/pytest#3396 until gh#pytest-dev/pytest#10088 lands in a pytest release
+touch jaraco/__init__.py
 %pytest
 
 %files %{python_files}
 %license LICENSE
 %dir %{python_sitelib}/jaraco/
 %{python_sitelib}/jaraco/path.py
-%{python_sitelib}/jaraco.path-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/jaraco.path-%{version}*-info
+%pycache_only %dir %{python_sitelib}/jaraco/__pycache__
 %pycache_only %{python_sitelib}/jaraco/__pycache__/path*.py*
 
 %changelog
