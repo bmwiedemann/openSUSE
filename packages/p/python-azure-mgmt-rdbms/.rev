@@ -205,4 +205,15 @@
 - Update Requires from setup.py (forwarded request 992764 from glaubitz)</comment>
     <requestid>992768</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>88df6fa2efb1ba4e829bf37107c72df8</srcmd5>
+    <version>10.2.0b3</version>
+    <time>1661962135</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 10.2.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1000143 from glaubitz)</comment>
+    <requestid>1000311</requestid>
+  </revision>
 </revisionlist>
