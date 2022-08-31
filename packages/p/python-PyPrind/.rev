@@ -25,4 +25,15 @@
     <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>738308</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a0cee255cbb1db8ccde43e0a8e1db1be</srcmd5>
+    <version>2.11.3</version>
+    <time>1661962156</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unnecessary tarball PyPrind-2.11.2.tar.gz
+- Update to 2.11.3:  
+  * Fixes and issue where newlines appeared everywhere on certain machines
+</comment>
+    <requestid>1000419</requestid>
+  </revision>
 </revisionlist>
