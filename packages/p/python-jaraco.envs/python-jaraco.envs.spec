@@ -16,9 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# requires python-path
-%define skip_python2 1
 Name:           python-jaraco.envs
 Version:        2.4.0
 Release:        0
@@ -31,7 +28,6 @@ BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
-BuildRequires:  %{python_module tomli}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -68,6 +64,9 @@ sed -i '/tox/d' setup.cfg
 %license LICENSE
 %doc docs/*.rst README.rst CHANGES.rst
 %{python_sitelib}/jaraco.envs-%{version}*info
-%{python_sitelib}/jaraco
+%dir %{python_sitelib}/jaraco
+%{python_sitelib}/jaraco/envs.py*
+%pycache_only %dir %{python_sitelib}/jaraco/__pycache__
+%pycache_only %{python_sitelib}/jaraco/__pycache__/envs*.py*
 
 %changelog
