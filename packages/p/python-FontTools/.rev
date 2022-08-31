@@ -126,4 +126,12 @@ This version fixes the conflict from the previous version.</comment>
     <comment></comment>
     <requestid>976012</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c4e531b42b931cc37fb0a1ec56f53694</srcmd5>
+    <version>4.37.1</version>
+    <time>1661962113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000146</requestid>
+  </revision>
 </revisionlist>

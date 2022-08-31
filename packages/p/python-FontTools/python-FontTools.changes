@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Aug 29 16:55:08 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 4.37.1
+  * [subset] Fixed regression introduced with v4.37.0 while subsetting
+    the VarStore of HVAR and VVAR tables, whereby an
+    AttributeError: subset_varidxes was thrown because an apparently
+    unused import statement (with the side-effect of dynamically binding
+    that subset_varidxes method to the VarStore class) had been
+    accidentally deleted in an unrelated PR
+  * [pens] Added cairoPen
+  * [gvar] Read gvar more lazily by not parsing all of the glyf table
+  * [ttGlyphSet] Make drawPoints(pointPen) method work for CFF fonts
+    as well via adapter pen
+  * [cff.specializer] Fixed issue in charstring generalizer with the
+    blend operator
+  * [varLib.models] Added support for extrapolation
+  * [ttGlyphSet] Ensure the newly added _TTVarGlyphSet inherits from
+    _TTGlyphSet to keep backward compatibility with existing API
+  * [kern] Allow compiling legacy kern tables with more than 64k entries
+  * [visitor] Added new visitor API to traverse tree of objects and
+    dispatch based on the attribute type: cf. fontTools.misc.visitor
+    and fontTools.ttLib.ttVisitor. Added fontTools.ttLib.scaleUpem
+    module that uses the latter to change a font's units-per-em and
+    scale all the related fields accordingly
+  * Etc. https://github.com/fonttools/fonttools/compare/4.33.3...4.37.1
+
+-------------------------------------------------------------------
 Sat May  7 14:59:54 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.33.3
