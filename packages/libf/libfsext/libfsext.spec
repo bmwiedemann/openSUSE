@@ -18,7 +18,7 @@
 
 %define lname	libfsext1
 Name:           libfsext
-Version:        20220822
+Version:        20220829
 Release:        0
 Summary:        Library and tools to access the Extended File System
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
