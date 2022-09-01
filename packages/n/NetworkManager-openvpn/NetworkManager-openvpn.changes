@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 29 19:14:47 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.10.0:
+  + Add support for "allow-compression" parameter.
+  + Fix a regression in preserving the "tls-auth" settings.
+  + Add support for "tls-min" and "tls-cipher" parameters.
+  + Include the new gnome-control-center name in the AppData file.
+  + Drop libnm-glib support, nobody is likely using it anymore.
+  + Fix importing profiles with a PKCS#12 CA.
+  + Make sure the plugin object links with glib.
+  + Dropped dependency on intltool.
+  + Updated translations.
+- Drop intltool BuildRequires following upstream changes.
+- Rebase patch with quilt.
+
+-------------------------------------------------------------------
 Sat Mar 12 16:35:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.18:
