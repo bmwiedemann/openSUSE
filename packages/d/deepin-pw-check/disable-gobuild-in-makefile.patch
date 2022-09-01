@@ -1,27 +1,18 @@
-diff -Nur deepin-pw-check-5.1.8/Makefile deepin-pw-check-5.1.8-new/Makefile
---- deepin-pw-check-5.1.8/Makefile	2022-01-13 16:48:23.000000000 +0800
-+++ deepin-pw-check-5.1.8-new/Makefile	2022-04-03 22:54:58.432709730 +0800
-@@ -6,7 +6,7 @@
- PAM_MODULE_DIR := /etc/pam.d
- endif
- ifeq (${PKG_FILE_DIR},)
--PKG_FILE_DIR := /usr/local/lib/pkgconfig
-+PKG_FILE_DIR := /usr/lib/pkgconfig
- endif
- BINARIES = deepin-pw-check
- LIBRARIES = libdeepin_pw_check.so.1.1
-@@ -25,7 +25,7 @@
+diff -Nurp deepin-pw-check-5.1.16/Makefile deepin-pw-check-5.1.16-new/Makefile
+--- deepin-pw-check-5.1.16/Makefile	2022-08-15 11:11:11.000000000 +0800
++++ deepin-pw-check-5.1.16-new/Makefile	2022-08-24 21:55:43.659287279 +0800
+@@ -25,7 +25,7 @@ prepare:
  	@mkdir -p out/bin
  
  out/bin/%: prepare
--	env GOPATH="${GOPATH}" ${GOBUILD} -o $@  ${GOPKG_PREFIX}/*.go
-+#	env GOPATH="${GOPATH}" ${GOBUILD} -o $@  ${GOPKG_PREFIX}/*.go
+-	env GOPATH="${GOPATH}" ${GOBUILD} -o $@ ${GOBUILD_OPTIONS} ${GOPKG_PREFIX}/*.go
++#	env GOPATH="${GOPATH}" ${GOBUILD} -o $@ ${GOBUILD_OPTIONS} ${GOPKG_PREFIX}/*.go
  
  out/${LIBRARIES}:
  	gcc lib/*.c ${SECURITY_BUILD_OPTIONS} -shared -DIN_CRACKLIB -W -Wall -Wl,-soname,libdeepin_pw_check.so.1 -o $@ $^ -lcrypt -lcrack -liniparser
-@@ -48,13 +48,13 @@
+@@ -48,13 +48,13 @@ out/${PAM_MODULE}: out/${LIBRARIES}
  build_tool: prepare
- 	gcc tool/*.c -liniparser -W -Wall -o out/${TOOL_BINARAY}
+ 	gcc tool/*.c -liniparser -W -Wall ${SECURITY_BUILD_OPTIONS} -o out/${TOOL_BINARAY}
  
 -build: prepare $(addprefix out/bin/, ${BINARIES}) out/${LIBRARIES} static_lib out/${PAM_MODULE} build_tool ts_to_policy
 +build: prepare out/${LIBRARIES} static_lib out/${PAM_MODULE} build_tool ts_to_policy
