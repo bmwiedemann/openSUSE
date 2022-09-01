@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 31 14:28:57 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- pbosh.1: replace broken ".so sh.1" refernce with a symlink to bosh.1 
+
+-------------------------------------------------------------------
 Sat Aug 27 12:20:10 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix update-alternatives for rmt.1

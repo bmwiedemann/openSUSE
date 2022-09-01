@@ -513,6 +513,7 @@ mv -fv "$b/%_bindir/sh" "$b/%_bindir/bosh"
 mv -fv "$b/%_mandir/man1/sh.1" "$b/%_mandir/man1/bosh.1"
 ln -fsv bosh.1 "$b/%_mandir/man1/jsh.1"
 ln -fsv bosh.1 "$b/%_mandir/man1/pfsh.1"
+ln -fsv bosh.1 "$b/%_mandir/man1/pbosh.1"
 ln -fsv bosh "$b/%_bindir/jsh"
 ln -fsv bosh "$b/%_bindir/pfsh"
 
