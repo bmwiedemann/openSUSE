@@ -46,4 +46,21 @@
     documentation improvements.</comment>
     <requestid>303790</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>43f20b07f14a88c0df1700c4649de9dd</srcmd5>
+    <version>1.0.4</version>
+    <time>1662063055</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.0.4
+  * Update README for gitlab migration
+   * Update configure.ac bug URL for gitlab migration
+   * Fix spelling/wording issues
+   * Trim trailing whitespace from lines
+   * gitlab CI: add a basic build test
+   * unifdef -UUSG
+   * unifdef -USYSV
+   * unifdef -UDGUX
+   * Convert vfork checks from Imake-style to autoconf-style</comment>
+    <requestid>1000409</requestid>
+  </revision>
 </revisionlist>
