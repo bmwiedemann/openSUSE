@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 01 03:23:59 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1661858178.a6c1811:
+  * Fix nr. of keys sent in send_key_until_needlematch
+  * Improve dewebsockify test
+  * Add test for empty password
+  * Check if SSH password is defined explicitly
+  * testapi: Allow forcing worker ip in autoinst_url()
+
+-------------------------------------------------------------------
 Mon Aug 29 19:29:13 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1661770536.d8c6a21:
