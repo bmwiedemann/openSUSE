@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 30 19:26:25 UTC 2022 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- add keyring to spec file as source to suppress factory-auto error
+
+-------------------------------------------------------------------
+Tue Aug 23 09:51:40 UTC 2022 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- use upstream service file that requires less privileges
+- add keyring to actually verify the signature
+
+-------------------------------------------------------------------
+Tue Aug 23 09:19:05 UTC 2022 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- update to version 3.2.0, see:
+  https://www.knot-dns.cz/2022-08-22-version-320.html 
+
+-------------------------------------------------------------------
 Thu Apr 28 20:42:34 UTC 2022 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - update to version 3.1.8, see:

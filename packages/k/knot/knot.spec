@@ -16,8 +16,8 @@
 #
 
 
-%define libdnssec   libdnssec8
-%define libknot     libknot12
+%define libdnssec   libdnssec9
+%define libknot     libknot13
 %define libzscanner libzscanner4
 %define pkg_name knot
 %bcond_without  dnstap
@@ -35,17 +35,17 @@ BuildRequires:  systemd-devel
 %{?systemd_requires}
 %endif
 Name:           knot
-Version:        3.1.8
+Version:        3.2.0
 Release:        0
 Summary:        An authoritative DNS daemon
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/DNS/Servers
 URL:            https://www.knot-dns.cz/
 Source0:        https://secure.nic.cz/files/knot-dns/%{pkg_name}-%{version}.tar.xz
-Source1:        knot.service
 Source2:        knot-tmp.conf
 Source3:        https://secure.nic.cz/files/knot-dns/%{pkg_name}-%{version}.tar.xz.asc
 Source4:        system-user-knot.conf
+Source99:       knot.keyring
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libedit-devel
 BuildRequires:  liburcu-devel
@@ -185,7 +185,7 @@ rm %{buildroot}%{_sysconfdir}/%{pkg_name}/*
 install -p -m644 samples/knot.sample.conf %{buildroot}%{_sysconfdir}/%{pkg_name}/%{pkg_name}.conf
 %if %{with systemd}
 install -d %{buildroot}%{_unitdir} %{buildroot}%{_tmpfilesdir}
-install -p -m644 %{SOURCE1} %{buildroot}%{_unitdir}/%{pkg_name}.service
+install -p -m644 distro/common/knot.service %{buildroot}%{_unitdir}/%{pkg_name}.service
 install -p -m644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/knot.conf
 ln -s service %{buildroot}%{_sbindir}/rcknot
 %endif
