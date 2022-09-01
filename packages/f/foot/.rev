@@ -297,4 +297,17 @@
 - Remove redundant copy of doc files and license in $datadir/doc/foot/</comment>
     <requestid>993625</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>dfe4ba4d4d5bbc8cacded1ed01c892ee</srcmd5>
+    <version>1.13.1</version>
+    <time>1662063066</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.13.1:
+  * Window is now dimmed while in Unicode input mode.
+  * Fix crash on some compositors like GNOME.
+  * Fix crash when resizing the window or scrolling in scrollback history.
+  * Fix empty cells being highlighted as selected when they shouldn't be.
+  * Fix separate URLs being connected in URL mode if they have the same ID.</comment>
+    <requestid>1000508</requestid>
+  </revision>
 </revisionlist>

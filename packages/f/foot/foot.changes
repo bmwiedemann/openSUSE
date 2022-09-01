@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 31 17:38:33 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.13.1:
+  * Window is now dimmed while in Unicode input mode.
+  * Fix crash on some compositors like GNOME.
+  * Fix crash when resizing the window or scrolling in scrollback history.
+  * Fix empty cells being highlighted as selected when they shouldn't be.
+  * Fix separate URLs being connected in URL mode if they have the same ID.
+
+-------------------------------------------------------------------
 Sun Aug  7 16:16:41 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.13.0:
