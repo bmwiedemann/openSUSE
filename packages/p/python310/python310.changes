@@ -10,7 +10,7 @@ Tue Aug  2 17:13:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
   - gh-87389: http.server: Fix an open redirection vulnerability
     in the HTTP server when an URI path starts with //.
     Vulnerability discovered, and initial fix proposed, by Hamza
-    Avvan.
+    Avvan. (bsc#1202624, CVE-2021-28861)
   - gh-92888: Fix memoryview use after free when accessing the
     backing buffer in certain cases.
   - gh-95355: _PyPegen_Parser_New now properly detects token

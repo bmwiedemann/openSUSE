@@ -453,4 +453,12 @@
     <comment></comment>
     <requestid>998410</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>465fe249cbdac8e57e9d3c832c55c947</srcmd5>
+    <version>3.10.6</version>
+    <time>1662063016</time>
+    <user>dimstar_suse</user>
+    <comment>Add references to bsc#1202624, CVE-2021-28861</comment>
+    <requestid>1000538</requestid>
+  </revision>
 </revisionlist>
