@@ -22,7 +22,7 @@
 # %define pkg_ver 5.5
 
 Name:           dtkgui
-Version:        5.5.22
+Version:        5.5.25
 Release:        0
 Summary:        Deepin Toolkit GUI
 License:        LGPL-3.0
@@ -41,6 +41,7 @@ BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Widgets)
+# BuildRequires:  pkgconfig(Qt5XdgIconLoader)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  libQt5PlatformSupport-private-headers-devel
 BuildRequires:  libQt5Gui-private-headers-devel
@@ -91,7 +92,6 @@ You should first read the "Deepin Application Specification".
 %{_libdir}/libdtk-%{apiver}/DGui/bin/deepin-gui-settings
 %{_libdir}/libdtk-%{apiver}/DGui/bin/dde-kwin-debug
 %{_libdir}/libdtk-%{apiver}/DGui/bin/dnd-test-*
-# %{_libdir}/libdtk-%{apiver}/DGui/bin/taskbar
 
 %files -n lib%{name}%{libver}
 %{_libdir}/lib%{name}.so.*

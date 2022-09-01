@@ -1,9 +1,9 @@
-diff -Nur dtkgui-5.4.13/src/src.pro dtkgui-5.4.13-new/src/src.pro
---- dtkgui-5.4.13/src/src.pro	2021-03-24 14:29:42.000000000 +0800
-+++ dtkgui-5.4.13-new/src/src.pro	2021-05-05 17:31:38.943722934 +0800
+diff -Nur dtkgui-5.5.24/src/src.pro dtkgui-5.5.24-new/src/src.pro
+--- dtkgui-5.5.24/src/src.pro	2022-06-06 14:53:24.000000000 +0800
++++ dtkgui-5.5.24-new/src/src.pro	2022-06-25 17:10:54.071182664 +0800
 @@ -9,6 +9,8 @@
  # don't link library
- QMAKE_CXXFLAGS += $$system(pkg-config --cflags-only-I librsvg-2.0)
+ QMAKE_CXXFLAGS += $$system($$pkgConfigExecutable() --cflags-only-I librsvg-2.0)
  
 +LIBS += -lglib-2.0
 +
