@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 22 07:07:33 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch +20220820
+  + fix some cppcheck warnings, mostly style, in ncurses and c++
+    libraries and progs directory.
+  + add curses_trace to ifdef's for START_TRACE in test/test.priv.h
+  + update config.guess
+
+-------------------------------------------------------------------
 Mon Aug 15 07:43:16 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20220813

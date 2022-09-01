@@ -3783,4 +3783,12 @@
   + improve pthread-configuration for test/worm.c</comment>
     <requestid>995133</requestid>
   </revision>
+  <revision rev="223" vrev="27">
+    <srcmd5>b29619b6641dbe9cd58eff8409fd9a81</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1662062961</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>999868</requestid>
+  </revision>
 </revisionlist>
