@@ -1,7 +1,7 @@
 #
 # spec file for package tamago
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,7 +27,7 @@ BuildRequires:  emacs-nox >= 23
 Requires:       emacs >= 23
 Version:        5.0.7.1
 Release:        0
-Url:            http://sourceforge.jp/projects/tamago-tsunagi/
+URL:            http://sourceforge.jp/projects/tamago-tsunagi/
 # Other useful, tamago related URLs:
 #     http://emacs-20.ki.nu/tamago/
 #     http://cgi18.plala.or.jp/~nyy/canna/
@@ -44,10 +44,12 @@ Source3:        http://iij.dl.sourceforge.jp/tamago-tsunagi/62684/ISFST99.pdf.bz
 Source4:        http://iij.dl.sourceforge.jp/tamago-tsunagi/62685/LC99.pdf.bz2
 Source5:        suse-start.el
 Patch0:         eggrc.patch
+# PATCH-FIX-UPSTREAM tamago-5.0.7.1-make-coding-system.patch -- Fix build with Emacs 28
+Patch1:         tamago-5.0.7.1-make-coding-system.patch
 #BuildRoot:      %%{_tmppath}/%%{name}-%%{version}-build
 BuildArch:      noarch
 Summary:        Multilingual input method for Emacs
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/I18n/Japanese
 
 %description
@@ -58,6 +60,7 @@ It is completely written in Emacs Lisp and can use the backends FreeWnn
 %prep
 %setup -q -n %{tsunagiName}-%{version}
 %patch0 -p1
+%patch1
 
 cp -p $RPM_SOURCE_DIR/suse-start.el .
 #cp -p $RPM_SOURCE_DIR/egg-canna.el.bz2 . # deleted 2013-08-27 .

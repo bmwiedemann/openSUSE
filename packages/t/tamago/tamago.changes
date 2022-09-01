@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 29 20:34:04 UTC 2022 - antoine.belvire@opensuse.org
+
+- Add tamago-5.0.7.1-make-coding-system.patch: Fix build with Emacs
+  28.
+
+-------------------------------------------------------------------
 Wed Feb 11 21:02:21 UTC 2015 - bkbin005@rinku.zaq.ne.jp
 
 - suse-start.el: removed (load "egg-canna.el") to fix boo#917480.
