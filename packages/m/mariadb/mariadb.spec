@@ -52,7 +52,7 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        10.7.3
+Version:        10.8.3
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -80,8 +80,6 @@ Patch6:         mariadb-10.4.12-harden_setuid.patch
 Patch7:         mariadb-10.4.12-fix-install-db.patch
 Patch9:         func_math_tests_MDEV-26645.diff
 Patch10:        fix-pamdir.patch
-# PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1194828 MDEV-26645
-Patch11:        bsc1194828.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -367,7 +365,6 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %if 0%{?suse_version} > 1500
 %patch10 -p1
 %endif
-%patch11 -p1
 
 cp %{_sourcedir}/suse-test-run .
 
@@ -423,7 +420,7 @@ export CXXFLAGS="$CFLAGS -felide-constructors"
        -DWITH_COMMENT="MariaDB rpm"                                 \
        -DWITH_EXTRA_CHARSET=all                                     \
        -DDEFAULT_CHARSET=utf8mb4                                    \
-       -DDEFAULT_COLLATION=utf8mb4_general_ci                       \
+       -DDEFAULT_COLLATION=utf8mb4_unicode_520_ci                   \
        -DWITH_INNOBASE_STORAGE_ENGINE=1                             \
        -DWITH_PERFSCHEMA_STORAGE_ENGINE=1                           \
 %if 0%{with_oqgraph} < 1
@@ -611,10 +608,10 @@ fi
 
 %if %{with galera}
 # mariadb-galera.files
-filelist galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariabackup wsrep_sst_mysqldump wsrep_sst_rsync wsrep_sst_rsync_wan >mariadb-galera.files
+filelist galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariabackup wsrep_sst_mysqldump wsrep_sst_rsync wsrep_sst_rsync_wan wsrep_sst_backup >mariadb-galera.files
 touch mariadb-galera-exclude.files
 %else
-filelist_excludes galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariabackup wsrep_sst_mysqldump wsrep_sst_rsync wsrep_sst_rsync_wan >mariadb-galera-exclude.files
+filelist_excludes galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariabackup wsrep_sst_mysqldump wsrep_sst_rsync wsrep_sst_rsync_wan wsrep_sst_backup >mariadb-galera-exclude.files
 echo "%exclude %{_datadir}/mysql/systemd/use_galera_new_cluster.conf" >>mariadb-galera-exclude.files
 echo "%exclude %{_datadir}/mysql/wsrep_notify" >>mariadb-galera-exclude.files
 %endif
@@ -941,6 +938,7 @@ exit 0
 
 %files bench -f mariadb-bench.files
 %{_datadir}/sql-bench
+%{_datadir}/mysql/mini-benchmark
 
 %files test -f mariadb-test.files
 %{_bindir}/test-connect-t

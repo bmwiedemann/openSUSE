@@ -80,3 +80,10 @@ main.selectivity_no_engine                       : since 10.7.3 - x86_64
 main.mysql_upgrade                               : since 10.7.3 - x86_64
 perfschema.privilege_table_io                    : since 10.7.3 - x86_64
 
+perfschema.threads_mysql                         : since 10.8.3 - x86_64 (MDEV-28674)
+disks.disks                                      : since 10.8.3 - x86_64
+disks.disks_notembedded                          : since 10.8.3 - x86_64
+innodb.row_size_error_log_warnings_3             : since 10.8.3 - s390x
+main.func_json_notembedded                       : since 10.8.3 - s390x, ppc64
+main.func_math                                   : since 10.8.3 - ppc64le
+

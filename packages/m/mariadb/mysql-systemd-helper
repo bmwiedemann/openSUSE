@@ -23,7 +23,7 @@ read_config() {
 
 	# Read options - important for multi setup
 	if [[ -n "$INSTANCE" ]]; then
-		opts="$(/usr/bin/my_print_defaults mysqld mysqld_multi "$INSTANCE" --defaults-extra-file=/etc/my${INSTANCE}.cnf)"
+		opts="$(/usr/bin/my_print_defaults --defaults-extra-file=/etc/my${INSTANCE}.cnf mysqld mysqld_multi "$INSTANCE")"
 		tmp_opts="$opts"
 		config="/etc/my${INSTANCE}.cnf"
 	else
@@ -39,6 +39,7 @@ read_config() {
 			--socket=*)    socket="$(echo "$arg"             | sed -e 's/^[^=]*=//')" ;;
 			--datadir=*)   datadir="$(echo "$arg"            | sed -e 's/^[^=]*=//')" ;;
 			--user=*)      mysql_daemon_user="$(echo "$arg"  | sed -e 's/^[^=]*=//')" ;;
+			--group=*)      mysql_daemon_group="$(echo "$arg"  | sed -e 's/^[^=]*=//')" ;;
 		esac
 	done
 
@@ -171,7 +172,8 @@ mysql_start() {
 	exec /usr/sbin/mysqld \
 		--defaults-file="$config" \
 		$ignore_db_dir \
-		--user="$mysql_daemon_user"
+		--user="$mysql_daemon_user" \
+		--socket="$socket"
 }
 
 # We rely on output in english at some points

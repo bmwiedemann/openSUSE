@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Aug 31 15:06:37 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update mysql-systemd-helper to be aware of custom group, bsc#1200105
+- Respect socket setting in mysql-systemd-helper
+- Fix my_print_defaults call in mysql-system-helper
+
+-------------------------------------------------------------------
+Tue Aug  2 23:36:11 UTC 2022 - chris@computersalat.de
+
+- use the better collation as default
+  * DDEFAULT_COLLATION=utf8mb4_unicode_520_ci
+
+-------------------------------------------------------------------
+Wed Jul 27 06:19:45 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update list of skipped tests
+  * suse_skipped_tests.list
+
+-------------------------------------------------------------------
+Mon May 23 09:03:33 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 10.8.3:
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-1083-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1083-changelog
+    https://mariadb.com/kb/en/library/mariadb-1082-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1082-changelog
+    https://mariadb.com/kb/en/library/mariadb-1081-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1081-changelog
+    https://mariadb.com/kb/en/library/mariadb-1080-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1080-changelog
+- Remove upstreamed patch:
+  * bsc1194828.patch
+
+-------------------------------------------------------------------
 Tue Mar  8 09:35:54 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Do not include mariadb-galera files in the main package when
