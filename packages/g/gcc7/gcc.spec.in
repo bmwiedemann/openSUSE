@@ -326,6 +326,10 @@ Patch32:	gcc7-pr81942.patch
 Patch33:	gcc7-sanitizer-cyclades.patch
 Patch34:	gcc7-ada-MINSTKSZ.patch
 Patch35:	gcc7-pr55917.patch
+Patch36:	gcc7-ada-Target_Name.patch
+Patch37:        gcc7-pr78263.patch
+Patch38:  gcc7-libsanitizer-cherry-pick-9cf13067cb5088626ba7-from-u.patch
+Patch39:  gcc7-libgo-don-t-include-linux-fs.h-when-building-gen-sys.patch
 # A set of patches from the RH srpm
 Patch51:	gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -1124,6 +1128,10 @@ ln -s nvptx-newlib/newlib .
 %patch33 -p1
 %patch34 -p1
 %patch35 -p1
+%patch36 -p1
+%patch37 -p1
+%patch38 -p1
+%patch39 -p1
 %patch51
 %patch60
 %patch61
@@ -1736,6 +1744,7 @@ rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/bits/statx.h
 rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/pthread.h
 rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/bits/unistd_ext.h
 rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/sys/rseq.h
+rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/sys/mount.h
 %if !%{enable_plugins}
 # no plugins
 rm -rf $RPM_BUILD_ROOT%{libsubdir}/plugin

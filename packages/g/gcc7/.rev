@@ -554,4 +554,41 @@ This is in preparation of Pointer Authentication enablement in Tumbleweed. (forw
   gcc7-pfe-0021-Backport-rs6000-Avoid-fpatchable-function-entry-regr.patch,</comment>
     <requestid>958058</requestid>
   </revision>
+  <revision rev="37" vrev="12">
+    <srcmd5>d4dab956e317b26296499cd1275aa8e1</srcmd5>
+    <version>7.5.0+r278197</version>
+    <time>1662063147</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc7-libsanitizer-cherry-pick-9cf13067cb5088626ba7-from-u.patch
+  and gcc7-libgo-don-t-include-linux-fs.h-when-building-gen-sys.patch
+  in order to support glibc 2.36.
+- Enable format_spec_file otherwise one gets huge diff after
+  running change_spec.
+- Remove fixed sys/mount.h.
+
+- Add patch from upstream to fix altivec.h redefining bool in C++
+  which makes bool unusable (boo#1195517):
+  * gcc7-pr78263.patch
+
+- Add gcc7-ada-Target_Name.patch to adjust gnats idea of the
+  target, fixing the build of gprbuild.  [bsc#1196861]
+
+- Add gcc7-libsanitizer-cherry-pick-9cf13067cb5088626ba7-from-u.patch
+  and gcc7-libgo-don-t-include-linux-fs.h-when-building-gen-sys.patch
+  in order to support glibc 2.36.
+- Enable format_spec_file otherwise one gets huge diff after
+  running change_spec.
+- Remove fixed sys/mount.h.
+
+- Add patch from upstream to fix altivec.h redefining bool in C++
+  which makes bool unusable (boo#1195517):
+  * gcc7-pr78263.patch
+
+- Add gcc7-ada-Target_Name.patch to adjust gnats idea of the
+  target, fixing the build of gprbuild.  [bsc#1196861]
+
+- Add gcc7-libsanitizer-cherry-pick-9cf13067cb5088626ba7-from-u.patch
+  and gcc7-libgo-don-t-include-linux-fs.h-when-building-gen-sys.patch</comment>
+    <requestid>1000697</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep  1 10:15:12 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add gcc7-libsanitizer-cherry-pick-9cf13067cb5088626ba7-from-u.patch
+  and gcc7-libgo-don-t-include-linux-fs.h-when-building-gen-sys.patch
+  in order to support glibc 2.36.
+- Enable format_spec_file otherwise one gets huge diff after
+  running change_spec.
+- Remove fixed sys/mount.h.
+
+-------------------------------------------------------------------
+Fri Apr 29 04:47:58 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix altivec.h redefining bool in C++
+  which makes bool unusable (boo#1195517):
+  * gcc7-pr78263.patch
+
+-------------------------------------------------------------------
+Fri Mar 11 07:10:31 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-ada-Target_Name.patch to adjust gnats idea of the
+  target, fixing the build of gprbuild.  [bsc#1196861]
+
+-------------------------------------------------------------------
 Mon Feb 28 07:21:45 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Remove include-fixed/sys/rseq.h to fix build on openSUSE:Factory.
