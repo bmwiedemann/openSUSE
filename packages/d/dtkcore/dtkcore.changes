@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 26 12:13:00 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.33
+  * Support abc field for os-version
+  * Check value field while loading dconfigfile
+
+-------------------------------------------------------------------
+Sat Jun 25 08:32:26 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.32
+  * Fix dtkcore_config.h miss include some Class
+  * Fix DConfig can't find resource
+  * Fix application crash when dconfig is invalid
+
+-------------------------------------------------------------------
 Mon Apr  4 13:15:19 UTC 2022 - Hillwood Yang <hillwoodroc@gmail.com>
 
 - Update version to 5.5.30

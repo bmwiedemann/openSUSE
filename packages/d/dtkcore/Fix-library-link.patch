@@ -1,12 +1,11 @@
-diff -Nur dtkcore-5.4.13/src/src.pro dtkcore-5.4.13-new/src/src.pro
---- dtkcore-5.4.13/src/src.pro	2021-03-22 11:30:44.000000000 +0800
-+++ dtkcore-5.4.13-new/src/src.pro	2021-05-05 16:26:36.431155423 +0800
-@@ -24,6 +24,8 @@
- include($$PWD/filesystem/filesystem.pri)
- include($$PWD/settings/settings.pri)
+diff -Nur dtkcore-5.5.32/src/src.pro dtkcore-5.5.32-new/src/src.pro
+--- dtkcore-5.5.32/src/src.pro	2022-05-25 15:33:48.000000000 +0800
++++ dtkcore-5.5.32-new/src/src.pro	2022-06-25 16:38:52.055431074 +0800
+@@ -71,6 +71,7 @@
  
-+LIBS += -ldl
-+
  DTK_MODULE_NAME = $$TARGET
  load(dtk_build)
++LIBS += -ldl
+ 
+ INSTALLS += includes target
  

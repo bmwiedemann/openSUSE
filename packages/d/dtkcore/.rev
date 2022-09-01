@@ -197,4 +197,19 @@
     <comment></comment>
     <requestid>971801</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>13193bd7e5266962222b0f31249dd018</srcmd5>
+    <version>5.5.33</version>
+    <time>1662063028</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.5.33
+  * Support abc field for os-version
+  * Check value field while loading dconfigfile
+
+- Update version to 5.5.32
+  * Fix dtkcore_config.h miss include some Class
+  * Fix DConfig can't find resource
+  * Fix application crash when dconfig is invalid</comment>
+    <requestid>1000262</requestid>
+  </revision>
 </revisionlist>

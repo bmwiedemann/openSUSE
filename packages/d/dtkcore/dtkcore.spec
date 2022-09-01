@@ -22,17 +22,15 @@
 %define pkg_ver 5.5
 
 Name:           dtkcore
-Version:        5.5.30
+Version:        5.5.33
 Release:        0
 Summary:        Deepin Tool Kit Core
-License:        LGPL-3.0-only
+License:        LGPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/dtkcore
 Source0:        https://github.com/linuxdeepin/dtkcore/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTEAM Fix-library-link.patch hillwood@opensuse.org - Need link to dl
 Patch0:         Fix-library-link.patch
-# PATCH-FIX-UPSTEAM fix-return-type.patch hillwood@opensuse.org - fix return type error
-# Patch1:         fix-return-type.patch
 BuildRequires:  dtkcommon
 BuildRequires:  fdupes
 BuildRequires:  gtest
@@ -88,6 +86,7 @@ sed -i 's|#!/usr/bin/env python3|#!/usr/bin/python3|g' tools/script/dtk-translat
 
 %install
 %qmake5_install
+
 # Remove useless files
 rm -rf %{buildroot}/usr/tests
 chmod +x %{buildroot}%{_libdir}/libdtk-5.5.0/DCore/bin/*.py
