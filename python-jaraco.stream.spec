@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.stream
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,19 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-jaraco.stream
-Version:        3.0.0
+Version:        3.0.3
 Release:        0
 Summary:        Routines for dealing with data streams
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.stream
 Source:         https://files.pythonhosted.org/packages/source/j/%{_name}/%{_name}-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 56}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-jaraco.base >= 6.1
 Requires:       python-more-itertools
 BuildArch:      noarch
 # SECTION test requirements
@@ -39,7 +41,7 @@ BuildRequires:  %{python_module pytest}
 # /SECTION
 # SECTION documentation requirements
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module jaraco.packaging >= 6.1}
+BuildRequires:  %{python_module jaraco.packaging >= 8.2}
 BuildRequires:  %{python_module pylons-sphinx-themes}
 BuildRequires:  %{python_module rst.linker >= 1.9}
 # /SECTION
@@ -58,30 +60,28 @@ This package contains documentation files for %{name}.
 
 %prep
 %setup -q -n %{_name}-%{version}
-sed -i 's/--flake8//' pytest.ini
-sed -i 's/--black --cov//' pytest.ini
 rm -rf jaraco.stream.egg-info
 
 %build
-%python_build
-python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
+%pyproject_wheel
 
 %install
-%python_install
-# We will package the namespace __init__.py separately
-%{python_expand rm %{buildroot}%{$python_sitelib}/jaraco/__init__.py*
-rm -rf %{buildroot}%{$python_sitelib}/jaraco/__pycache__/
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 
 %check
+#  work around for gh#pytest-dev/pytest#3396 until gh#pytest-dev/pytest#10088 lands in a pytest release
+touch jaraco/__init__.py
+cp -r %{python3_sitelib}/jaraco/* jaraco/
 %pytest
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGES.rst README.rst
-%{python_sitelib}/jaraco.stream-%{version}-py*.egg-info
+%dir %{python_sitelib}/jaraco
 %{python_sitelib}/jaraco/stream/
+%{python_sitelib}/jaraco.stream-%{version}*-info
 
 %files -n %{name}-doc
 %doc build/sphinx/html

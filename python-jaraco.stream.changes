@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 29 13:32:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.3
+  * Refreshed package metadata.
+  * #3: Fixed issue in tests where the connection to the test
+    server would fail on hosts where localhost resolved to ::1. Now
+    the test server binds to IPv6 when available and appropriate.
+- v3.0.2: Rely on PEP 420 for namespace packages.
+- v3.0.1: Refresh package metadata.
+- Switch to PEP517 and remove obsolete jaraco.base requirement
+
+-------------------------------------------------------------------
 Mon Mar  9 15:39:06 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.0.0
