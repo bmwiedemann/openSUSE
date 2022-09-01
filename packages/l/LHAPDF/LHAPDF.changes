@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  1 01:37:41 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.5.3:
+  * Fix linker arguments in Python-extension build.
+- Drop LHAPDF-python-build-fix.patch: incorporated upstream.
+
+-------------------------------------------------------------------
 Wed Aug 24 00:04:44 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.5.2:

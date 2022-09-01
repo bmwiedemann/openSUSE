@@ -16,10 +16,10 @@
 #
 
 
-%define so_name libLHAPDF-6_5_2
+%define so_name libLHAPDF-6_5_3
 %define execname lhapdf
 Name:           LHAPDF
-Version:        6.5.2
+Version:        6.5.3
 Release:        0
 Summary:        A library for unified interface to PDF sets
 License:        GPL-3.0-only
@@ -28,8 +28,6 @@ Source:         http://www.hepforge.org/archive/lhapdf/%{name}-%{version}.tar.gz
 Patch1:         sover.diff
 # PATCH-FIX-UPSTREAM LHAPDF-python-platlib.patch badshah400@gmail.com -- Correct system platlib determination in configure.ac
 Patch2:         LHAPDF-python-platlib.patch
-# PATCH-FIX-UPSTREAM badshah400@gmail.com -- Python build fix, upstream git commit f30f345
-Patch3:         LHAPDF-python-build-fix.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
