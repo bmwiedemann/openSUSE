@@ -369,4 +369,12 @@ See changelog in:
   * fixes #11142 missing array length check on release</comment>
     <requestid>994401</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ccad7e29874cd49d9a184bd4068df76f</srcmd5>
+    <version>3.9.4</version>
+    <time>1662063087</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1000601</requestid>
+  </revision>
 </revisionlist>
