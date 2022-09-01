@@ -214,4 +214,12 @@
   suite. -- https://gitlab.com/mailman/mailman/-/issues/936 (forwarded request 986649 from bnavigator)</comment>
     <requestid>986717</requestid>
   </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>98699794cbbd35e01eb3a4612c279a85</srcmd5>
+    <version>3.3.5</version>
+    <time>1662063134</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000644</requestid>
+  </revision>
 </revisionlist>

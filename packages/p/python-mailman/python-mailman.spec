@@ -168,7 +168,6 @@ sed '/importlib_resources/d' -i src/mailman.egg-info/requires.txt setup.py
 
 install -d -m 0755 \
             %{buildroot}%{_sysconfdir} \
-            %{buildroot}%{_sysconfdir}/logrotate.d \
             %{buildroot}%{_sysconfdir}/%{mailman_name}.d \
             %{buildroot}%{_tmpfilesdir} \
             %{buildroot}%{_sbindir} \
@@ -180,12 +179,21 @@ install -d -m 0755 \
             %{buildroot}%{mailman_logdir} \
             %{buildroot}%{mailman_spooldir}
 
-install -m 0640 %{SOURCE10} %{buildroot}%{_sysconfdir}/%{mailman_name}.cfg
-install -m 0644 %{SOURCE11} %{buildroot}%{_unitdir}/%{mailman_name}.service
-install -m 0644 %{SOURCE12} %{buildroot}%{_tmpfilesdir}/%{mailman_name}.conf
+%if 0%{?suse_version} > 1500
+install -d -m 0755  %{buildroot}%{_distconfdir}/logrotate.d
+install -m 0644 %{SOURCE13} %{buildroot}%{_distconfdir}/logrotate.d/%{mailman_name}
+sed -i 's,@LOGDIR@,%{mailman_logdir},g;s,@BINDIR@,%{_bindir},g' \
+        %{buildroot}%{_distconfdir}/logrotate.d/%{mailman_name}
+%else
+install -d -m 0755  %{buildroot}%{_sysconfdir}/logrotate.d
 install -m 0644 %{SOURCE13} %{buildroot}%{_sysconfdir}/logrotate.d/%{mailman_name}
 sed -i 's,@LOGDIR@,%{mailman_logdir},g;s,@BINDIR@,%{_bindir},g' \
         %{buildroot}%{_sysconfdir}/logrotate.d/%{mailman_name}
+%endif
+
+install -m 0640 %{SOURCE10} %{buildroot}%{_sysconfdir}/%{mailman_name}.cfg
+install -m 0644 %{SOURCE11} %{buildroot}%{_unitdir}/%{mailman_name}.service
+install -m 0644 %{SOURCE12} %{buildroot}%{_tmpfilesdir}/%{mailman_name}.conf
 
 install -m 0644 %{SOURCE20} %{buildroot}%{_unitdir}/%{mailman_name}-digests.service
 install -m 0644 %{SOURCE21} %{buildroot}%{_unitdir}/%{mailman_name}-digests.timer
@@ -231,6 +239,20 @@ getent passwd %{mailman_user} >/dev/null || \
     -c "mailman daemon user" -d %{mailman_homedir} %{mailman_user}
 %{_sbindir}/usermod -g %{mailman_group} %{mailman_user} >/dev/null
 %service_add_pre %{mailman_services}
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/%{mailman_name} ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
+
+%if 0%{?suse_version} > 1500
+%posttrans  -n mailman3
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/%{mailman_name} ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post -n mailman3
 %tmpfiles_create %{_tmpfilesdir}/%{mailman_name}.conf
@@ -258,7 +280,11 @@ getent passwd %{mailman_user} >/dev/null || \
 %{_unitdir}/%{mailman_name}-notify.timer
 %{_tmpfilesdir}/%{mailman_name}.conf
 %config(noreplace) %attr(640,root,mailman) %{_sysconfdir}/mailman.cfg
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/%{mailman_name}
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{mailman_name}
+%endif
 %dir %attr(750,root,mailman) %{_sysconfdir}/%{mailman_name}.d
 %dir %attr(750,mailman,mailman) %{mailman_homedir}
 %dir %attr(750,mailman,mailman) %{mailman_homedir}/data

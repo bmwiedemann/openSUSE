@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 31 08:52:38 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d.
+
+-------------------------------------------------------------------
 Mon Jul  4 13:14:27 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Go back to Python 3.9 for mailman. Python 3.10 is not supported
