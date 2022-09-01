@@ -21,7 +21,7 @@
 
 Name:           sbcl
 #!BuildIgnore:  gcc-PIE
-Version:        2.2.7
+Version:        2.2.8
 Release:        0
 Summary:        Steel Bank Common Lisp
 License:        BSD-3-Clause AND SUSE-Public-Domain
@@ -104,8 +104,6 @@ Patch0:         sbcl-1.1.2-install.patch
 Patch1:         strip-arm-CFLAGS.patch
 # PATCH-FEATURE-OPENSUSE sbcl-use-SOURCE_DATE_EPOCH-for-build-id.patch badshah400@gmail.com -- Use SOURCE_DATE_EPOCH for build-id instead of hostname+build-date to avoid rebuilds of dependencies purely due to build-id differences
 Patch2:         sbcl-use-SOURCE_DATE_EPOCH-for-build-id.patch
-# PATCH-FIX-UPSTREAM sbcl-allow-value-cell-value-in-RO-space.patch lp#1983218 badshah400@gmail.com -- Accept that value-cell-value can move to R/O space fixing build failures for maxima and other sbcl dependencies; patch taken from upstream git commit
-Patch3:         sbcl-allow-value-cell-value-in-RO-space.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    s390x
 
@@ -127,7 +125,6 @@ ln -s "$(basename -- %{S:%{sbcl_bootstrap_src}} -binary.tar.bz2)" BOOTSTRAP
 %patch0 -p1 -b install
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 cp %{S:1} .
 cp %{S:2} .
