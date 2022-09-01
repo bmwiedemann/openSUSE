@@ -19,15 +19,13 @@
 %define _name dde-polkit-agent
 
 Name:           deepin-polkit-agent
-Version:        5.5.7
+Version:        5.5.21
 Release:        0
 Summary:        Deepin Polkit Agent
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/dde-polkit-agent
 Source0:        https://github.com/linuxdeepin/dde-polkit-agent/archive/%{version}/%{_name}-%{version}.tar.gz
-# https://github.com/deepincn/repo/blob/master/deepincn/git/deepin-polkit-agent-git/fix.patch
-Patch0:         polkit-qt5.patch
 BuildRequires:  dtkcore
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig(Qt5Concurrent)

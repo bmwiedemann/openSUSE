@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 26 03:21:03 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.21
+  * Fix bugs 
+- Drop polkit-qt5.patch, merged
+
+-------------------------------------------------------------------
+Thu Jun 30 08:53:22 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.19
+  * Fix bugs
+  * Update translations
+
+-------------------------------------------------------------------
 Wed Apr  6 07:14:43 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.5.7
