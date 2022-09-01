@@ -1,8 +1,7 @@
-Index: dde-api-5.4.9/misc/systemd/system/deepin-login-sound.service
-===================================================================
---- dde-api-5.4.9.orig/misc/systemd/system/deepin-login-sound.service
-+++ dde-api-5.4.9/misc/systemd/system/deepin-login-sound.service
-@@ -4,6 +4,20 @@ Requires=sound.target
+diff -Nurp dde-api-5.5.25/misc/systemd/system/deepin-login-sound.service dde-api-5.5.25-new/misc/systemd/system/deepin-login-sound.service
+--- dde-api-5.5.25/misc/systemd/system/deepin-login-sound.service	2022-04-18 13:40:18.000000000 +0800
++++ dde-api-5.5.25-new/misc/systemd/system/deepin-login-sound.service	2022-08-13 16:29:10.631634682 +0800
+@@ -4,6 +4,19 @@ Requires=sound.target
  After=dbus.service lightdm.service
  
  [Service]
@@ -11,7 +10,6 @@ Index: dde-api-5.4.9/misc/systemd/system/deepin-login-sound.service
 +ProtectSystem=full
 +ProtectHome=true
 +PrivateDevices=true
-+DeviceAllow=char-snd rw
 +ProtectHostname=true
 +ProtectClock=true
 +ProtectKernelTunables=true
@@ -21,5 +19,5 @@ Index: dde-api-5.4.9/misc/systemd/system/deepin-login-sound.service
 +RestrictRealtime=true
 +# end of automatic additions 
  Type=oneshot
- ExecStart=/usr/bin/dbus-send --system --dest=com.deepin.api.SoundThemePlayer --print-reply /com/deepin/api/SoundThemePlayer com.deepin.api.SoundThemePlayer.PlaySoundDesktopLogin
+ ExecStart=/usr/bin/dbus-send --system --print-reply --dest=com.deepin.api.SoundThemePlayer /com/deepin/api/SoundThemePlayer com.deepin.api.SoundThemePlayer.PlaySoundDesktopLogin
  RemainAfterExit=yes
