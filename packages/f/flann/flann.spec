@@ -1,7 +1,7 @@
 #
 # spec file for package flann
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,18 @@
 
 %define sover   1_9
 Name:           flann
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        Fast Library for Approximate Nearest Neighbors
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Other
-Url:            https://www.cs.ubc.ca/research/flann/
-Source0:        https://github.com/mariusmuja/flann/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         0001-src-cpp-fix-cmake-3.11-build.patch
+URL:            https://www.cs.ubc.ca/research/flann/
+Source:         https://github.com/tkircher/flann/releases/download/%version/flann-%version.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  googletest-devel
 BuildRequires:  hdf5-devel
+BuildRequires:  liblz4-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(zlib)
 
@@ -60,8 +60,7 @@ This package contains the header files and libraries needed to develop
 application that use %{name}.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake \
@@ -90,5 +89,6 @@ find %{buildroot} -type f -name \*.a -delete -print
 %{_includedir}/%{name}/
 %{_libdir}/lib%{name}*so
 %{_libdir}/pkgconfig/%{name}.pc
+/usr/lib/cmake/
 
 %changelog

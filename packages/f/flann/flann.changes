@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 27 07:07:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.2
+  * Added out of bounds check
+  * Fixed CUDA crash - guarantee prealloc > 0
+- Delete 0001-src-cpp-fix-cmake-3.11-build.patch (obsolete/merged)
+
+-------------------------------------------------------------------
 Sat Aug 24 14:21:34 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update descriptions.
