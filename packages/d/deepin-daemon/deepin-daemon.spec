@@ -19,7 +19,7 @@
 %define   import_path github.com/linuxdeepin/dde-daemon
 
 Name:           deepin-daemon
-Version:        5.14.18
+Version:        5.14.45
 Release:        0
 Summary:        Daemon handling the DDE session settings
 License:        GPL-3.0+
@@ -69,6 +69,7 @@ BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xkbfile)
+BuildRequires:  pkgconfig(ddcutil)
 BuildRequires:  golang-github-linuxdeepin-go-dbus-factory
 BuildRequires:  golang-github-linuxdeepin-dde-api
 %if 0%{?sle_version} == 150200
@@ -316,10 +317,9 @@ fi
 %{_datadir}/dde/
 %{_datadir}/icons/hicolor/*/status/*
 %dir %{_datadir}/dsg
-%dir %{_datadir}/dsg/apps
-%dir %{_datadir}/dsg/apps/dde-session-daemon
-%dir %{_datadir}/dsg/apps/dde-session-daemon/configs
-%{_datadir}/dsg/apps/dde-session-daemon/configs/gesture.json
+%dir %{_datadir}/dsg/configs
+%dir %{_datadir}/dsg/configs/org.deepin.dde.daemon
+%{_datadir}/dsg/configs/org.deepin.dde.daemon/org.deepin.dde.daemon.gesture.json
 %{_unitdir}/deepin-accounts-daemon.service
 %{_sbindir}/rcdeepin-accounts-daemon
 %{_sbindir}/rchwclock_stop

@@ -93,4 +93,12 @@
     <comment>- Drop fix-login_defs-path.patch, merged by upstream (forwarded request 971852 from hillwood)</comment>
     <requestid>971853</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d6b7a5c9a913f13d64094e4f2c2079a3</srcmd5>
+    <version>5.14.45</version>
+    <time>1662062995</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>999680</requestid>
+  </revision>
 </revisionlist>

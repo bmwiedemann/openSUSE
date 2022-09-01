@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 20 13:46:13 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.14.45
+  * Fix bugs
+  * Add HasAirplaneMode profile
+  * New feature: disable sleep on VM 
+
+-------------------------------------------------------------------
 Sun Apr  3 14:10:23 UTC 2022 - Hillwood Yang <hillwoodroc@gmail.com>
 
 - Update version to 5.14.18
