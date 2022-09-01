@@ -60,4 +60,18 @@
     <comment></comment>
     <requestid>971774</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1040e3d98b6f73bbaf20c018b9419369</srcmd5>
+    <version>5.12.8</version>
+    <time>1662063019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.12.8
+  * Fix bugs
+  * Support rename by right click
+- Drop 001-fix-libdir.patch, fixed by upstream
+
+- Update version to 5.12.6
+  * Change qDebug to qInfo</comment>
+    <requestid>1000251</requestid>
+  </revision>
 </revisionlist>
