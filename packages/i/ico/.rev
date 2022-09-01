@@ -61,4 +61,19 @@
   * Fix more sign-compare warnings</comment>
     <requestid>593758</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>50d4dc8d36493fee1f29c305dc66b8e2</srcmd5>
+    <version>1.0.6</version>
+    <time>1662063055</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.6
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * man page: remove out-of-date COPYRIGHT section
+  * Apply scope reduction suggestions from cppcheck
+  * Rename global &quot;poly&quot; to fix gcc -Wshadow warnings
+  * Add cast to clear -Wsign-compare warning</comment>
+    <requestid>1000410</requestid>
+  </revision>
 </revisionlist>

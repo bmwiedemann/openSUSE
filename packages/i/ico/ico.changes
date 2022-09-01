@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 31 09:09:39 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.6
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * man page: remove out-of-date COPYRIGHT section
+  * Apply scope reduction suggestions from cppcheck
+  * Rename global "poly" to fix gcc -Wshadow warnings
+  * Add cast to clear -Wsign-compare warning
+
+-------------------------------------------------------------------
 Thu Apr  5 10:40:38 UTC 2018 - sndirsch@suse.com
 
 - Update to version 1.0.5
