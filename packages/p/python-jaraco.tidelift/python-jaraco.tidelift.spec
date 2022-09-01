@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-jaraco.tidelift
 Version:        1.5.0
 Release:        0
@@ -25,15 +23,20 @@ Summary:        Tools to work with Tidelift
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.tidelift
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.tidelift/jaraco.tidelift-%{version}.tar.gz
-BuildRequires:  %{python_module jaraco.base}
+BuildRequires:  %{python_module autocommand}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module importlib-resources >= 1.6}
+BuildRequires:  %{python_module keyring}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module requests-toolbelt}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-autocommand
-Requires:       python-importlib-resources
+Requires:       python-importlib-resources >= 1.6
 Requires:       python-keyring
 Requires:       python-requests-toolbelt
 BuildArch:      noarch
@@ -44,8 +47,6 @@ jaraco.tidelift Tools for Tidelift
 
 %prep
 %setup -q -n jaraco.tidelift-%{version}
-sed -i 's/--flake8//' pytest.ini
-sed -i 's/--black --cov//' pytest.ini
 rm -rf jaraco.tidelift.egg-info
 
 %build
@@ -53,20 +54,16 @@ rm -rf jaraco.tidelift.egg-info
 
 %install
 %pyproject_install
-
-%{?python_compileall}
-%{!?python_compileall: # if we haven no python_compileall we are for sure still without multiple python3 flavors.
-%py3_compile %{buildroot}%{python3_sitelib}/jaraco/
-%py3_compile -O %{buildroot}%{python3_sitelib}/jaraco/
-}
-
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+#%%check
+# there are no unittests or doctest-modules
 
 %files %{python_files}
 %license LICENSE
 %doc docs/*.rst README.rst CHANGES.rst
-%{python_sitelib}/jaraco.tidelift-%{version}*dist-info
+%dir %{python_sitelib}/jaraco
 %{python_sitelib}/jaraco/tidelift
-%pycache_only %{python_sitelib}/jaraco/tidelift/__pycache__
+%{python_sitelib}/jaraco.tidelift-%{version}*-info
 
 %changelog

@@ -23,4 +23,12 @@
     <comment> - Remove unneeded BuildRequires as this package contains no tests.</comment>
     <requestid>999352</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e42ed9528d19862ee2cd94e9406d94fc</srcmd5>
+    <version>1.5.0</version>
+    <time>1662016845</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000124</requestid>
+  </revision>
 </revisionlist>
