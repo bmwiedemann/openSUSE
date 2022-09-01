@@ -26,7 +26,7 @@ License:        Apache-2.0
 URL:            https://gitlab.com/warsaw/flufl.lock
 Source:         https://files.pythonhosted.org/packages/source/f/flufl.lock/flufl.lock-%{version}.tar.gz
 BuildRequires:  %{python_module pdm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
