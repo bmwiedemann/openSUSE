@@ -1,7 +1,7 @@
 #
 # spec file for package m4
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,16 +51,17 @@ GNU m4 is an implementation of the traditional Unix macro processor.
 	gl_cv_func_printf_directive_n=yes \
 	gl_cv_func_printf_infinite_long_double=yes
 %if %{do_profiling}
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}" V=1
-  make check %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}"
-  make %{?_smp_mflags} clean
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}" V=1
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
+  # run profiling check sequentially to have it reproducible
+  %make_build -j1 check CFLAGS="%{optflags} %{cflags_profile_generate}"
+  %make_build clean
+  %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
-  make %{?_smp_mflags} V=1
+  %make_build
 %endif
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install

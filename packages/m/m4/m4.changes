@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 31 08:10:20 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Use %make_build macro and make sure we run the profiling run with -j1
+
+-------------------------------------------------------------------
 Mon Jul 19 12:48:42 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - gnulib-c-stack.patch: c-stack: stop using SIGSTKSZ
