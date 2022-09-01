@@ -1,0 +1,151 @@
+-------------------------------------------------------------------
+Tue Aug 30 12:02:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.31
+  * kdb2mt: add a size column to the disambiguation table
+  * exmdb_provider: added the "exmdb_search_yield" and
+    "exmdb_search_nice" config directives
+  * exmdb_provider: add a vacuum RPC (and expose via
+    gromox-mbop(8gx))
+  * emsmdb: implement cached mode cross-store move support
+
+-------------------------------------------------------------------
+Mon Jul 25 16:45:33 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.28
+  * freebusy: do not publicize private recurrence exceptions
+  * Delayed Sending had left messages in Outbox
+  * emsmdb: the contact folder list erroneously rejected sort
+    requests that grouped and sorted by the same column
+
+-------------------------------------------------------------------
+Sun Jun 12 21:49:52 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.25
+  * exmdb_provider: repair PR_MEMBER_NAME transition (ACL table
+    contents)
+  * zcore: fix randomly occurring set_permission failures
+  * autodiscover: resolve & in displaynames being misrepresented
+  * autodiscover: force-remove single quotes from ini values
+  * imap: improved the tokenization for unusual values found in
+    the From/To/Reply-To etc. headers
+  * imap: stop emitting excess parenthesis pairs for RFC822 field
+    values during FETCH
+  * imap: stop offering the STARTTLS capability keyword when the
+    STARTTLS command can, at the same time, not be issued anyway
+  * imap: IMAP commands emitted to the log (under imap_cmd_debug)
+    were truncated sometimes
+  * midb: resolve potential crash when the IMAP SEARCH command
+    is used
+
+-------------------------------------------------------------------
+Wed Jun  1 19:42:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.24
+  * exmdb_provider: lifted the folder limit from 10k to 28 billion
+  * oxcmail: cease excessive base64 encoding.
+  * Messages are now preferably encoded as quoted-printable
+    during conversion to Internet Mail format. This might help
+    with spam classification.
+
+-------------------------------------------------------------------
+Thu May 12 15:27:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.22
+  * service_loader: resolve crash when first module is unloadable
+  * eml2mt, exm2eml: rectify wrong serivce plugin search path
+  * eml2mt: add iCalendar and vCard file import
+  * kdb2mt: skip IPM.MessageManager FAI messages (cause Outlook
+    to sometimes refuse opening a folder)
+  * The /usr/libexec/gromox/autodiscover command has been renamed
+    to just gromox-dscli.
+
+-------------------------------------------------------------------
+Sat Apr 30 12:26:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.20
+  * Resolve a use-after-free in gromox-eml2mt
+  * oxcmail: conversion of Reply-To MAPI field to Internet Mail
+    had only used the last ONEOFF-type recipient, now it uses all
+    ONEOFF recipients.
+  * oxcmail: set IPM.Note.SMIME.MultipartSigned only for incoming
+    S/MIME mails, not for OpenPGP mails.
+  * autodiscover: Change the way autodiscover.ini is parsed. This
+    allows a few more non-alphanumeric characters in the MariaDB
+    password. ';' is still unusable.
+  * exmdb_provider: Evaluate restrictions against absent values
+    differently; this makes messages without a sensitivity tag
+    and which are located in a non-default store visible in
+    Outlook again.
+
+-------------------------------------------------------------------
+Sat Apr 16 14:31:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.19
+  * kdb2mt: added the --with-acl option for partial conversion of ACLs
+  * pff2mt: added the --only-obj option to extract a specific object
+  * mt2exm: added the -B option for the placement of unanchored messages
+  * eml2mt: new utility to import mails from files
+  * exmdb_provider: new config directive "exmdb_schema_upgrades"
+  * midb: new config directive "midb_schema_upgrades"
+  * mkprivate, mkpublic and mkmidb now recognize the -U option to
+    upgrade SQLite database schemas
+  * mbop: new utility
+  * rebuild: added progress indicator
+  * zcore: new config directive "zcore_max_obh_per_session"
+  * emsmdb: new config directives "emsmdb_max_obh_per_session",
+    "emsmdb_max_cxh_per_user" to allow higher resource use when a
+    lot of stores are used by an Outlook profile (warning
+    W-1580).
+
+-------------------------------------------------------------------
+Fri Feb 11 15:59:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.16
+  * zcore: allow setting Out Of Office status of other mailboxes
+  * zcore: enhance mapi_getmsgstoretable to show all stores with
+    access permissions
+  * kdb2mt, pff2mt: add --with-hidden/--without-hidden
+
+-------------------------------------------------------------------
+Tue Jan 18 18:01:59 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.13
+  * mt2exm: perform named property translation on folder
+    properties, message recipient properties and attachment
+    properties.
+  * pff2mt: support reading multi-value variable-length property
+    types, and obscure single-value types.
+  * kdb2mt: analyze Receive Folder Table and map inbox to inbox
+    when ``-s`` is used.
+  * pam_gromox: Additional service mode checks. One can now use
+    e.g. auth required pam_gromox.so service=chat in
+    /etc/pam.d/xyz to test for the CHAT privilege bit.
+
+-------------------------------------------------------------------
+Tue Dec  7 18:00:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.10
+  * exmdb_provider: cease adding a broken recipient when deleting
+    last recipient
+  * exmdb_provider: synthesize mandatory recipient properties
+    essential for MSMAPI (the source of incomplete recipients is
+    from imported KGWC databases)
+  * emsmdb: work around Outlook not displaying any body in Cached
+    Mode when there is no HTML body
+  * mapi_lib: avoid making underscores in subjects when there are
+    umlauts
+
+-------------------------------------------------------------------
+Fri Oct  8 19:36:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4
+  * The event(8gx) and timer(8gx) daemons now run unprivileged.
+  * gromox-pff2mt now skips over unrecognizable MAPI properties
+    rather than exiting.
+  * gromox-mt2exm now supports storing to public mailboxes.
+
+-------------------------------------------------------------------
+Wed Sep  1 10:03:05 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial entry for build.opensuse.org (gromox-1.1.43.566b624e)
