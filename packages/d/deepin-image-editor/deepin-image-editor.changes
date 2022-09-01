@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 26 02:32:45 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.0.19
+  * Add C-Style api to get video Thumbnail
+  * Fix bugs 
+
+-------------------------------------------------------------------
+Thu Jun 30 08:45:06 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.0.15
+  * Fix bugs
+
+-------------------------------------------------------------------
 Tue Apr 12 07:04:45 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - initial package for version 1.0.13

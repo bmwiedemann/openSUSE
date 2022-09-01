@@ -7,4 +7,17 @@
     <comment></comment>
     <requestid>972205</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bfb245eb5ac56988037bda4ba004b294</srcmd5>
+    <version>1.0.19</version>
+    <time>1662063022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.0.19
+  * Add C-Style api to get video Thumbnail
+  * Fix bugs 
+
+- Update version to 1.0.15
+  * Fix bugs</comment>
+    <requestid>1000254</requestid>
+  </revision>
 </revisionlist>

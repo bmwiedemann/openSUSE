@@ -20,7 +20,7 @@
 %define    sover    0_1
 
 Name:           deepin-image-editor
-Version:        1.0.13
+Version:        1.0.19
 Release:        0
 Summary:        Libraries of Deepin Image editor
 License:        GPL-3.0-or-later
@@ -47,6 +47,8 @@ BuildRequires:  pkgconfig(opencv)
 BuildRequires:  pkgconfig(dtkcore)
 BuildRequires:  pkgconfig(dtkwidget)
 BuildRequires:  pkgconfig(dtkgui)
+BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(libmediainfo)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
