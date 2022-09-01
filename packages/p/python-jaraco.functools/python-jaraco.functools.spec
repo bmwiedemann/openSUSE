@@ -19,22 +19,29 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-jaraco.functools
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        Tools to work with functools
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/jaraco.functools
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.functools/jaraco.functools-%{version}.tar.gz
-BuildRequires:  %{python_module jaraco.base >= 6.1}
+BuildRequires:  %{python_module jaraco.packaging >= 9}
 BuildRequires:  %{python_module jaraco.classes}
 BuildRequires:  %{python_module more-itertools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 56}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
+BuildRequires:  %{python_module wheel}
+# SECTION test and docs
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module rst.linker >= 1.9}
+BuildRequires:  %{python_module jaraco.tidelift >= 1.4}
+# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-jaraco.base >= 6.1
+Requires:       python-jaraco.packaging >= 9
 Requires:       python-more-itertools
 BuildArch:      noarch
 %python_subpackages
@@ -50,17 +57,10 @@ sed -i 's/--black --cov//' pytest.ini
 rm -rf jaraco.functools.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-
-%{?python_compileall}
-%{!?python_compileall: # if we haven no python_compileall we are for sure still without multiple python3 flavors.
-%py3_compile %{buildroot}%{python3_sitelib}/jaraco/
-%py3_compile -O %{buildroot}%{python3_sitelib}/jaraco/
-}
-
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -70,8 +70,9 @@ rm -rf jaraco.functools.egg-info
 %files %{python_files}
 %license LICENSE
 %doc docs/*.rst README.rst CHANGES.rst
-%{python_sitelib}/jaraco.functools-%{version}-py*.egg-info
+%{python_sitelib}/jaraco.functools-%{version}*-info
 %{python_sitelib}/jaraco/functools.py*
+%dir %{python_sitelib}/jaraco/__pycache__
 %pycache_only %{python_sitelib}/jaraco/__pycache__/functools*.py*
 
 %changelog
