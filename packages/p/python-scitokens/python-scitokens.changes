@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  1 00:45:32 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not use python_module for Requires. 
+
+-------------------------------------------------------------------
 Sun May  1 22:27:16 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.7.0:

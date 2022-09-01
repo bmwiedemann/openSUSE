@@ -33,8 +33,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       %{python_module PyJWT}
-Requires:       %{python_module six}
+Requires:       python-PyJWT
+Requires:       python-six
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
