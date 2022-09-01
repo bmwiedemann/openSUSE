@@ -36,6 +36,8 @@ Source1:        macros.gdk-pixbuf
 Source2:        README.SUSE
 Source3:        gdk-pixbuf-rpmlintrc
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM 0001-jpeg-Increase-memory-limit-for-loading-image-data.patch mgorse@suse.com -- fix loading of larger images.
+Patch0:         0001-jpeg-Increase-memory-limit-for-loading-image-data.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docutils
@@ -136,6 +138,7 @@ unzip -P gecko %{SOURCE0}
 %if "%{_lib}" == "lib64"
 cp -a %{SOURCE2} .
 %endif
+%autopatch -p1
 
 %build
 %meson \
