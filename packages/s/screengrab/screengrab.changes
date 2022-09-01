@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Aug 28 18:27:32 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Add patch to correct failing build.  [gh#lxqt/screengrab#310]
+  * fix-no-undefined-builderror.patch
+- Cleaned up %build section
+- Modified %files, due to new additions from upstream
+
+-------------------------------------------------------------------
+Fri Apr 29 06:31:47 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.4.0:
+  * Used an SVG icon instead of the blurry PNG icon.
+  * Fixed several problems in calling external editors or default app.
+  * Added metadata file.
+- Use -DSG_EXT_EDIT=ON
+- Add screengrab-link.patch
+
+-------------------------------------------------------------------
 Mon Nov  8 10:15:23 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.3.0:

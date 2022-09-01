@@ -1,7 +1,7 @@
 #
 # spec file for package screengrab
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           screengrab
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Qt tool for creating screenshots
 License:        GPL-2.0-only
@@ -26,6 +26,9 @@ URL:            https://github.com/lxqt/screengrab
 Source:         https://github.com/lxqt/screengrab/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/lxqt/screengrab/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+Patch0:         screengrab-link.patch
+# PATCH-FIX-UPSTREAM fix-no-undefined-builderror.patch gh#lxqt/screengrab#310
+Patch1:         fix-no-undefined-builderror.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -38,7 +41,8 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Xdg) >= 3.8.0
+BuildRequires:  pkgconfig(Qt5Xdg) >= 3.9.0
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb)
@@ -53,15 +57,12 @@ Screenshot taker with the ability to publish them via hosting services.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
-%cmake \
-    -DCMAKE_SKIP_RPATH:BOOL=ON \
-    -DSG_DBUS_NOTIFY=ON \
-    -DSG_EXT_EDIT=OFF \
-    -DSG_EXT_UPLOADS=OFF \
-    -DSG_GLOBALSHORTCUTS=OFF \
-    -DUPDATE_TRANSLATIONS=OFF
+%cmake
+%cmake_build
 
 %install
 %cmake_install
@@ -76,6 +77,7 @@ rm -rf %{buildroot}%{_datadir}/doc
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.??g
 %{_datadir}/screengrab/screengrab.conf
+%{_datadir}/metainfo/%{name}.metainfo.xml
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/%{name}
