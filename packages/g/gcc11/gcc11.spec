@@ -994,11 +994,9 @@ Summary:        GNU Ada Runtime Libraries
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Libraries
 Provides:       libgnarl-11 = %{version}-%{release}
-# FIXME: remove %{after} service-format_spec_file is fixed
-# https://github.com/openSUSE/obs-service-format_spec_file/issues/46
-Conflicts:      %selfconflict libgnarl-11%{nil}
+Conflicts:      %selfconflict libgnarl-11
 Provides:       libgnat-11 = %{version}-%{release}
-Conflicts:      %selfconflict libgnat-11%{nil}
+Conflicts:      %selfconflict libgnat-11
 
 %description -n libada11
 This package contains the shared libraries required to run programs
@@ -1017,11 +1015,9 @@ Summary:        GNU Ada Runtime Libraries
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Libraries
 Provides:       libgnarl-11-32bit = %{version}-%{release}
-# FIXME: remove %{after} service-format_spec_file is fixed
-# https://github.com/openSUSE/obs-service-format_spec_file/issues/46
-Conflicts:      %selfconflict libgnarl-11-32bit%{nil}
+Conflicts:      %selfconflict libgnarl-11-32bit
 Provides:       libgnat-11-32bit = %{version}-%{release}
-Conflicts:      %selfconflict libgnat-11-32bit%{nil}
+Conflicts:      %selfconflict libgnat-11-32bit
 
 %description -n libada11-32bit
 This package contains the shared libraries required to run programs
@@ -1040,11 +1036,9 @@ Summary:        GNU Ada Runtime Libraries
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Libraries
 Provides:       libgnarl-11-64bit = %{version}-%{release}
-# FIXME: remove %{after} service-format_spec_file is fixed
-# https://github.com/openSUSE/obs-service-format_spec_file/issues/46
-Conflicts:      %selfconflict libgnarl-11-64bit%{nil}
+Conflicts:      %selfconflict libgnarl-11-64bit
 Provides:       libgnat-11-64bit = %{version}-%{release}
-Conflicts:      %selfconflict libgnat-11-64bit%{nil}
+Conflicts:      %selfconflict libgnat-11-64bit
 
 %description -n libada11-64bit
 This package contains the shared libraries required to run programs
@@ -2672,6 +2666,7 @@ rm -f %{buildroot}/%{libsubdir}/include-fixed/sys/ucontext.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/bits/statx.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/pthread.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/sys/rseq.h
+rm -f %{buildroot}/%{libsubdir}/include-fixed/sys/mount.h
 %if !%{enable_plugins}
 # no plugins
 rm -rf %{buildroot}/%{libsubdir}/plugin

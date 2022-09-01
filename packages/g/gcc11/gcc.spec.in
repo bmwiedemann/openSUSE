@@ -712,11 +712,9 @@ Summary:      GNU Ada Runtime Libraries
 License:      GPL-3.0-or-later WITH GCC-exception-3.1
 Group:        System/Libraries
 Provides: libgnarl-@base_ver@@variant@ = %{version}-%{release}
-# FIXME: remove %{after} service-format_spec_file is fixed
-# https://github.com/openSUSE/obs-service-format_spec_file/issues/46
-Conflicts:	%selfconflict libgnarl-@base_ver@@variant@%{nil}
+Conflicts:	%selfconflict libgnarl-@base_ver@@variant@
 Provides: libgnat-@base_ver@@variant@ = %{version}-%{release}
-Conflicts:	%selfconflict libgnat-@base_ver@@variant@%{nil}
+Conflicts:	%selfconflict libgnat-@base_ver@@variant@
 
 %description -n libada@base_ver@@variant@
 This package contains the shared libraries required to run programs
@@ -1873,6 +1871,7 @@ rm -f %{buildroot}/%{libsubdir}/include-fixed/sys/ucontext.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/bits/statx.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/pthread.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/sys/rseq.h
+rm -f %{buildroot}/%{libsubdir}/include-fixed/sys/mount.h
 %if !%{enable_plugins}
 # no plugins
 rm -rf %{buildroot}/%{libsubdir}/plugin
