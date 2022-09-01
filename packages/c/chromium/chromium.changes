@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  1 07:39:28 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update chromium-symbolic.svg: this fixes bsc#1202403.
+
+-------------------------------------------------------------------
 Mon Aug 22 09:53:49 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Fix quoting in chrome-wrapper, don't put cwd on LD_LIBRARY_PATH
