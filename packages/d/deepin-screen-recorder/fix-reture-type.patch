@@ -1,0 +1,12 @@
+diff -Nur deepin-screen-recorder-5.11.6/src/camera/LPF_V4L2.c deepin-screen-recorder-5.11.6-new/src/camera/LPF_V4L2.c
+--- deepin-screen-recorder-5.11.6/src/camera/LPF_V4L2.c	2022-08-16 15:08:06.000000000 +0800
++++ deepin-screen-recorder-5.11.6-new/src/camera/LPF_V4L2.c	2022-08-26 16:39:29.649775852 +0800
+@@ -131,6 +131,8 @@
+ 
+     if (vd)
+         close_v4l2_device_handler();
++    
++    return 0;
+ }
+ 
+ #ifdef __cplusplus

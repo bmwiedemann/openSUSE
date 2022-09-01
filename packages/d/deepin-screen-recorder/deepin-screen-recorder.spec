@@ -19,13 +19,17 @@
 %define    procps_version    %(rpm -q --queryformat '%%{VERSION}' procps-devel)
 
 Name:           deepin-screen-recorder
-Version:        5.10.22
+Version:        5.11.6
 Release:        0
 Summary:        Deepin Screen Recorder
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://github.com/linuxdeepin/deepin-screen-recorder
 Source0:        https://github.com/linuxdeepin/deepin-screen-recorder/archive/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-include-path.patch hillwood@opensuse.org - Add ffmpeg include path
+Patch0:         fix-include-path.patch
+# PATCH-FIX-UPSTREAM fix-reture-type.patch hillwood@opensuse.org
+Patch1:         fix-reture-type.patch
 # fdupes macro works
 Source1:        %{name}-rpmlintrc
 %ifarch ppc ppc64 ppc64le s390 s390x
@@ -60,11 +64,20 @@ BuildRequires:  pkgconfig(dframeworkdbus)
 BuildRequires:  pkgconfig(dtkgui) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwm)
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(opencv4)
 %else
 BuildRequires:  pkgconfig(opencv)
 %endif
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libffmpegthumbnailer)
+BuildRequires:  pkgconfig(libimagevisualresult)
+BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(libv4l1)
+BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-util)
@@ -89,6 +102,15 @@ Requires:       deepin-dock
 %description -n deepin-dock-plugin-screen-recorder
 The deepin screen recorder plugin of deepin dock
 
+%package -n deepin-dock-plugin-shot-start
+Summary:        The shot start plugin of deepin dock
+Group:          Productivity/Multimedia/Video/Editors and Convertors
+Requires:       %{name} = %{version}
+Requires:       deepin-dock
+
+%description -n deepin-dock-plugin-shot-start
+The shot start of deepin dock
+
 %lang_package
 
 %prep
@@ -102,7 +124,8 @@ sed -i 's/dframeworkdbus/dframeworkdbus opencv/' src/src.pro
 sed -i '/include <X11.extensions.XTest.h>/a #undef min' src/event_monitor.cpp
 # sed -i '/#include <iostream>/d;1i #include <iostream>' src/screen_shot_event.cpp
 # sed -i '/include <X11.extensions.shape.h>/a #undef None' src/utils.cpp
-sed -i 's|/usr/lib|$$LIB_INSTALL_DIR|g' src/dde-dock-plugins/recordtime/recordtime.pro
+sed -i 's|/usr/lib|$$LIB_INSTALL_DIR|g' src/dde-dock-plugins/recordtime/recordtime.pro \
+src/dde-dock-plugins/shotstart/shotstart.pro
 sed -i "s^cat /etc/os-version | grep 'Community'^echo 'Community'^" src/src.pro
 
 %if "%{procps_version}" >= "4.0.0"
@@ -122,6 +145,7 @@ sed -i '/find_library/s|procps|proc-2|' src/CMakeLists.txt
 
 find %{buildroot}%{_datadir}/deepin-manual -name '*.svg' -type f -print -exec chmod -x {} \;
 find %{buildroot}%{_datadir}/deepin-manual -name '*.md' -type f -print -exec chmod -x {} \;
+chmod -x %{buildroot}%{_datadir}/dbus-1/services/com.deepin.PinScreenShots.service
 
 %suse_update_desktop_file %{name}
 
@@ -130,11 +154,11 @@ find %{buildroot}%{_datadir}/deepin-manual -name '*.md' -type f -print -exec chm
 %license LICENSE
 %{_bindir}/%{name}
 %{_bindir}/deepin-pin-screenshots
-%{_datadir}/dbus-1/services/com.deepin.PinScreenShots.service
 %{_datadir}/applications/*.desktop
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/*.svg
+%{_datadir}/dbus-1/services/com.deepin.PinScreenShots.service
 %{_datadir}/dbus-1/services/com.deepin.ScreenRecorder.service
 %{_datadir}/dbus-1/services/com.deepin.Screenshot.service
 %{_datadir}/deepin-manual/manual-assets/application/%{name}
@@ -142,8 +166,12 @@ find %{buildroot}%{_datadir}/deepin-manual -name '*.md' -type f -print -exec chm
 %files -n deepin-dock-plugin-screen-recorder
 %{_libdir}/dde-dock/plugins/libdeepin-screen-recorder-plugin.so
 
+%files -n deepin-dock-plugin-shot-start
+%{_libdir}/dde-dock/plugins/libshot-start-plugin.so
+%{_datadir}/glib-2.0/schemas/com.deepin.dde.dock.module.shot-start-plugin.gschema.xml
+
 %files lang
 %{_datadir}/%{name}
-%{_datadir}/deepin-pin-screenshots
+# %{_datadir}/deepin-pin-screenshots
 
 %changelog

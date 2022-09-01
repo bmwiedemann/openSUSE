@@ -67,4 +67,15 @@
     <comment></comment>
     <requestid>982205</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4c9c993688a2250cdba9ced879fd42cf</srcmd5>
+    <version>5.11.6</version>
+    <time>1662063035</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-include-path.patch, add ffmpeg include path
+- Add fix-reture-type.patch 
+
+- Update version to 5.11.2 (forwarded request 1000280 from hillwood)</comment>
+    <requestid>1000281</requestid>
+  </revision>
 </revisionlist>

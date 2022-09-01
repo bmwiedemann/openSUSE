@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 26 08:47:08 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.11.6
+  * Add event tracking feature
+  * Optimize shortcut keys
+  * Fix bugs
+- Add fix-include-path.patch, add ffmpeg include path
+- Add fix-reture-type.patch 
+
+-------------------------------------------------------------------
+Wed Jun 29 14:36:14 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.11.2
+  * Add a new plugin for deepin dock
+  * Use gstreamer backend
+  * Optimize wayland support
+  * Fix memory leak
+  * Fix bugs 
+
+-------------------------------------------------------------------
 Sun May 29 08:25:45 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.10.22
