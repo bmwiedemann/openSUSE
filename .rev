@@ -65,4 +65,16 @@
     <comment></comment>
     <requestid>971778</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>61decb989ee2b5f63ce849946d6bceff</srcmd5>
+    <version>5.10.11</version>
+    <time>1662063028</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.10.11
+  * Optimize ui
+  * Fix bugs 
+
+- Update version to 5.10.11. Nothing changes in tool package</comment>
+    <requestid>1000261</requestid>
+  </revision>
 </revisionlist>
