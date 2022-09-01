@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 31 09:56:14 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix rpmlint warnings and errors:
+  + Add prep and build sections: Even if some packages don't
+    directly need it, section markers may be overridden in rpm's
+    configuration to provide additional 'under the hood'
+    functionality.
+  + Do not package unused shell sctips (convert.sh and mklinks).
+  + Do not package backup file #default.theme#
+  + De-duplicate files using fdupes.
+
+-------------------------------------------------------------------
 Fri Nov 10 09:18:58 UTC 2017 - dimstar@opensuse.org
 
 - Really drop the Helix theme.
