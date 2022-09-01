@@ -771,4 +771,13 @@
   * Reduce MAX_PASS_INCREASEMENT_THRESHOLD to 3.</comment>
     <requestid>1000197</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>7dad26abf5092debe26a600bacfd72db</srcmd5>
+    <version>2.5.0+git.20220831.cf6747b</version>
+    <time>1662063062</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.0+git.20220831.cf6747b:
+  * Change gcdabinary to GCC 12 and newer.</comment>
+    <requestid>1000428</requestid>
+  </revision>
 </revisionlist>
