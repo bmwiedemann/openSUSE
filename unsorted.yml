@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
+  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -10243,10 +10243,10 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
   - libcephfs2: [x86_64] 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -13519,8 +13519,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
+  - librados-devel: [x86_64] # devel package of dvd:librados2 
+  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
   - libraft2 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13543,7 +13543,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib400 
-  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
+  - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13729,7 +13729,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librgw2: [x86_64] 
   - librhash0 
   - librime-devel 
@@ -14934,7 +14934,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of common_locks:libxcb-xinerama0 
+  - libxcb-devel: [i586] # devel package of common_locks:libxcb-randr0 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
@@ -19784,6 +19784,7 @@ unsorted:
   - perl-Module-Util 
   - perl-Mojo-DOM58 
   - perl-Mojo-IOLoop-ReadWriteProcess 
+  - perl-Mojo-JWT 
   - perl-Mojo-Log-Colored 
   - perl-Mojo-Pg 
   - perl-Mojo-RabbitMQ-Client: [x86_64] 
@@ -23301,7 +23302,6 @@ unsorted:
   - python310-itypes 
   - python310-iwlib 
   - python310-j2gen 
-  - python310-jaraco.base 
   - python310-jaraco.classes 
   - python310-jaraco.collections 
   - python310-jaraco.context 
@@ -26500,7 +26500,6 @@ unsorted:
   - python38-itypes 
   - python38-iwlib 
   - python38-j2gen 
-  - python38-jaraco.base 
   - python38-jaraco.classes 
   - python38-jaraco.collections 
   - python38-jaraco.context 
@@ -29815,7 +29814,6 @@ unsorted:
   - python39-itypes 
   - python39-iwlib 
   - python39-j2gen 
-  - python39-jaraco.base 
   - python39-jaraco.classes 
   - python39-jaraco.collections 
   - python39-jaraco.context 
@@ -32202,7 +32200,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
   - rage-encryption: [x86_64] 
