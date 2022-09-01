@@ -20,7 +20,7 @@
 %define import_path github.com/linuxdeepin/startdde
 
 Name:           deepin-start
-Version:        5.9.15.1
+Version:        5.9.49
 Release:        0
 Summary:        Starter of deepin desktop
 License:        GPL-3.0-or-later
@@ -132,7 +132,7 @@ fi
 %doc README.md CHANGELOG.md
 %license LICENSE
 %{_bindir}/startdde
-%{_bindir}/wl_display_daemon
+# %{_bindir}/wl_display_daemon
 %{_bindir}/greeter-display-daemon
 %{_sbindir}/deepin-fix-xauthority-perm
 %{_datadir}/xsessions/deepin.desktop
@@ -141,6 +141,10 @@ fi
 %{_datadir}/startdde/memchecker.json
 %{_datadir}/startdde/*.conf
 %{_datadir}/glib-2.0/schemas/com.deepin.*.xml
+%dir %{_datadir}/dsg
+%dir %{_datadir}/dsg/configs
+%dir %{_datadir}/dsg/configs/org.deepin.startdde
+%{_datadir}/dsg/configs/org.deepin.startdde/org.deepin.startdde.StartManager.json
 %dir %{_prefix}/lib/deepin-daemon
 %{_prefix}/lib/deepin-daemon/greeter-display-daemon
 %config %{_sysconfdir}/profile.d/deepin-xdg-dir.sh
