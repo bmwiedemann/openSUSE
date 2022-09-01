@@ -1,7 +1,7 @@
 #
 # spec file for package microos-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           microos-tools
-Version:        2.12
+Version:        2.15
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/kubic-project/microos-tools
-Source:         microos-tools-%{version}.tar.xz
+Source:         https://github.com/openSUSE/microos-tools/releases/download/v%{version}/microos-tools-%{version}.tar.xz
 Source1:        tmp.mount
 Source2:        microos-tmp.conf
 Source99:       microos-tools-rpmlintrc
@@ -45,7 +45,7 @@ Summary:        Tools to develop MicroOS
 This package contains tools to make developing of MicroOS easier.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
@@ -114,5 +114,6 @@ install -m 0644 %{SOURCE2} %{buildroot}/%{_tmpfilesdir}
 %{_sbindir}/microos-rw
 %{_sbindir}/rpm-sortbysize
 %{_sbindir}/rpmorphan
+%{_sbindir}/sysext-add-debug
 
 %changelog

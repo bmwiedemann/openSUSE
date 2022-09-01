@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Aug 31 06:53:58 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 2.15
+  - 98selinux-microos: Add grep as dependency
+
+-------------------------------------------------------------------
+Tue Aug 30 15:28:55 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.14
+  - Fix Makefile to install sysext-add-debug
+
+-------------------------------------------------------------------
+Tue Aug 30 13:51:58 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.13
+  - 98selinux-microos: Don't rely on selinux=1 [bsc#1202449]
+  - Add sysext-add-debug
+  - Make sure /var/lib/overlay exists before relabeling
+
+-------------------------------------------------------------------
 Thu Sep  9 11:45:19 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.12
