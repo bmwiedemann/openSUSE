@@ -5,15 +5,15 @@ Some dirs are not present in snapshots directly generated from git
 (nor are they marked as a submodule). Patch it out, since we have
 them as system libs.
 ---
- Makefile.am  |   29 -----------------------------
+ Makefile.am  |   31 -------------------------------
  configure.ac |   15 ---------------
- 2 files changed, 44 deletions(-)
+ 2 files changed, 46 deletions(-)
 
-Index: libfshfs/Makefile.am
+Index: libfshfs-20220831/Makefile.am
 ===================================================================
---- libfshfs.orig/Makefile.am
-+++ libfshfs/Makefile.am
-@@ -3,22 +3,7 @@ ACLOCAL_AMFLAGS = -I m4
+--- libfshfs-20220831.orig/Makefile.am
++++ libfshfs-20220831/Makefile.am
+@@ -3,23 +3,7 @@ ACLOCAL_AMFLAGS = -I m4
  SUBDIRS = \
  	include \
  	common \
@@ -31,12 +31,13 @@ Index: libfshfs/Makefile.am
 -	libfdata \
 -	libfdatetime \
 -	libfguid \
+-	libfmos \
  	libfshfs \
 -	libhmac \
  	fshfstools \
  	pyfshfs \
  	pyfshfs-python2 \
-@@ -79,20 +64,6 @@ lib: library
+@@ -79,21 +63,6 @@ lib: library
  
  library:
  	(cd $(srcdir)/common && $(MAKE) $(AM_MAKEFLAGS))
@@ -54,14 +55,15 @@ Index: libfshfs/Makefile.am
 -	(cd $(srcdir)/libfdata && $(MAKE) $(AM_MAKEFLAGS))
 -	(cd $(srcdir)/libfdatetime && $(MAKE) $(AM_MAKEFLAGS))
 -	(cd $(srcdir)/libfguid && $(MAKE) $(AM_MAKEFLAGS))
+-	(cd $(srcdir)/libfmos && $(MAKE) $(AM_MAKEFLAGS))
  	(cd $(srcdir)/libfshfs && $(MAKE) $(AM_MAKEFLAGS))
  	(cd $(srcdir)/po && $(MAKE) $(AM_MAKEFLAGS))
  
-Index: libfshfs/configure.ac
+Index: libfshfs-20220831/configure.ac
 ===================================================================
---- libfshfs.orig/configure.ac
-+++ libfshfs/configure.ac
-@@ -177,25 +177,10 @@ dnl Generate Makefiles
+--- libfshfs-20220831.orig/configure.ac
++++ libfshfs-20220831/configure.ac
+@@ -182,21 +182,6 @@ dnl Generate Makefiles
  AC_CONFIG_FILES([Makefile])
  AC_CONFIG_FILES([include/Makefile])
  AC_CONFIG_FILES([common/Makefile])
@@ -79,11 +81,7 @@ Index: libfshfs/configure.ac
 -AC_CONFIG_FILES([libfdata/Makefile])
 -AC_CONFIG_FILES([libfdatetime/Makefile])
 -AC_CONFIG_FILES([libfguid/Makefile])
+-AC_CONFIG_FILES([libfmos/Makefile])
  AC_CONFIG_FILES([libfshfs/Makefile])
  AC_CONFIG_FILES([pyfshfs/Makefile])
  AC_CONFIG_FILES([pyfshfs-python2/Makefile])
- AC_CONFIG_FILES([pyfshfs-python3/Makefile])
--AC_CONFIG_FILES([libhmac/Makefile])
- AC_CONFIG_FILES([fshfstools/Makefile])
- AC_CONFIG_FILES([po/Makefile.in])
- AC_CONFIG_FILES([po/Makevars])

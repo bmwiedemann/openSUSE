@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  1 08:12:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220831
+  * Unspecified updates to API and fallback DEFLATE support
+
+-------------------------------------------------------------------
 Mon Aug 29 09:30:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update build requirement on libcfile
