@@ -81,4 +81,47 @@ It would be nice to have this application available in the default repos. </comm
     <comment></comment>
     <requestid>982157</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>791dbe0d719fa981cf7cffd1d4362f4f</srcmd5>
+    <version>11.23</version>
+    <time>1662063052</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 11.23
+  - Format local file times with no limits on time span
+  - Deferred child item failure when traversing MTP folder
+  - Fixed occasional wrong thumbnail orientation for MTP
+  - Support additional image formats for MTP preview (e.g. CR2)
+  - Fixed folder pair window being squashed after text size increase
+  - Fixed wrong folder pair order when loading config (Linux)
+  - Fixed some images being stretched on high-DPI monitors
+  - Fixed config panel tab text being mirrored in RTL layout
+  - Fixed parsing file times one second before Unix epoch (Gdrive, FTP)
+- Changes from 11.22
+  - Allow to change default log folder in global settings
+  - Fixed sort order when items existing on one side only
+  - Consider HOME environment variable for home path (Linux)
+  - Fixed config selection using shift and arrow keys
+  - Start comparison, then sync by only pressing Enter after startup
+  - Fall back to default path when failing to save log file
+  - Improved relative config path handling in portable mode
+- Changes from 11.21
+  - Support volume GUID as path: \\?\Volume{01234567-89ab-cdef-0123-456789abcdef} (Windows)
+  - Avoid Two-Way conflict when changing folder name upper/lower-case
+  - List hidden warning messages in options dialog
+  - Fixed buffer overflow while receiving SFTP server banner
+  - Create crash dumps even if FFS-internal crash handling doesn't kick in
+  - Log time when error occured, not when it is reported
+  - Swap sides: Require confirmation only after comparison
+  - Updated translation files
+- Changes from 11.20
+  - Fixed broken icon scaling on high-DPI displays
+  - Fixed user language set to English after update
+- Drop obsolete FreeFileSync-build-with-gcc12.patch
+- Drop obsolete FreeFileSync-build-with-wx3.1.5.patch
+- Update FreeFileSync-disable-in-app-updates.patch for version 11.23
+- Update FreeFileSync-icon-loader.patch for version 11.23
+- Update FreeFileSync-resources.patch for version 11.23
+</comment>
+    <requestid>1000395</requestid>
+  </revision>
 </revisionlist>

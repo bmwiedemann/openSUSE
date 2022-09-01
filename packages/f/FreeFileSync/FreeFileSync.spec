@@ -17,7 +17,7 @@
 
 
 Name:           FreeFileSync
-Version:        11.19
+Version:        11.23
 Release:        0
 Summary:        Backup software to synchronize files and folders
 License:        GPL-3.0-or-later
@@ -33,10 +33,6 @@ Patch1:         FreeFileSync-resources.patch
 Patch2:         FreeFileSync-icon-loader.patch
 Patch3:         FreeFileSync-disable-in-app-updates.patch
 Patch4:         FreeFileSync-openssl-1.1.1.patch
-# can be droped once wx 3.1.6 is available
-Patch5:         FreeFileSync-build-with-wx3.1.5.patch
-# can be droped with 11.21
-Patch6:         FreeFileSync-build-with-gcc12.patch
 BuildRequires:  boost-devel >= 1.54
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
