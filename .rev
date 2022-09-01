@@ -97,4 +97,16 @@
   * configure: Use AC_USE_SYSTEM_EXTENSIONS to set GNU_SOURCE &amp; other defines</comment>
     <requestid>999537</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>823bd91007aae1ca5d93b02a9b60cb60</srcmd5>
+    <version>1.1.6</version>
+    <time>1662062967</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.6
+  * This quick update fixes build failures in libfontenc 1.1.5 on
+    platforms that require setting a #define such as _GNU_SOURCE,
+    _OPENBSD_SOURCE, or __EXTENSIONS__ to expose the reallocarray()
+    prototype in their headers.</comment>
+    <requestid>1000406</requestid>
+  </revision>
 </revisionlist>

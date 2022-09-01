@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 31 09:07:03 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.6
+  * This quick update fixes build failures in libfontenc 1.1.5 on
+    platforms that require setting a #define such as _GNU_SOURCE,
+    _OPENBSD_SOURCE, or __EXTENSIONS__ to expose the reallocarray()
+    prototype in their headers.
+
+-------------------------------------------------------------------
 Sat Aug 27 08:47:48 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.5
