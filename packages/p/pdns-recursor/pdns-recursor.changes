@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 24 15:06:22 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Bump requires to newer Boost, effectively disabling support for SLE-12
+
+-------------------------------------------------------------------
 Tue Aug 23 14:11:52 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 4.7.2

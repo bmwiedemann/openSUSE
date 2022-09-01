@@ -669,4 +669,12 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
     (CVE-2022-37428, bsc#1202664)</comment>
     <requestid>998985</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>cc172cf71dd78958802e9fabc7284df8</srcmd5>
+    <version>4.7.2</version>
+    <time>1662063065</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1000494</requestid>
+  </revision>
 </revisionlist>

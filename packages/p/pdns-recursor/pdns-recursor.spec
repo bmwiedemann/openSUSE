@@ -47,7 +47,7 @@ BuildRequires:  libboost_context-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 %else
-BuildRequires:  boost-devel
+BuildRequires:  boost-devel >= 1.66
 %endif
 
 BuildRequires:  libsodium-devel
