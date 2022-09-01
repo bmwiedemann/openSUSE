@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul  2 03:08:04 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.7.21
+  * Fix bugs
+  * Update translations 
+
+-------------------------------------------------------------------
 Thu Apr 21 06:24:23 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
-- Update version to 5.10.20
+- Update version to 5.7.20
   * Update documents
   * Fix bugs
   * Add test-prj-running.sh 
