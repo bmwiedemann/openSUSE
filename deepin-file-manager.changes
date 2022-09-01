@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 29 02:24:30 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.6.4
+  * Optimize text box length
+  * Optimize draging for list mode
+  * Fix bugs
+  * Update translations
+
+-------------------------------------------------------------------
 Tue May 31 13:46:08 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add gcc-12.patch, fix gcc 12 build 

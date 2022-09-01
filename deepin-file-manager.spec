@@ -20,7 +20,7 @@
 %define sover 5
 
 Name:           deepin-file-manager
-Version:        5.5.10
+Version:        5.6.4
 Release:        0
 Summary:        Deepin File Manager
 License:        GPL-3.0-or-later AND MIT
@@ -30,9 +30,9 @@ Source0:        https://github.com/linuxdeepin/dde-file-manager/archive/%{versio
 Source1:        deepin-file-dbus-installer.in
 Source2:        deepin-file-polkit-installer.in
 # PATCH-FIX-UPSTEAM fix-header-include.patch hillwood@opensuse.org - dfsearch is necessary
-Patch2:         fix-header-include.patch
+Patch1:         fix-header-include.patch
 # PATCH-FIX-UPSTEAM gcc12.patch hillwood@opensuse.org - fix gcc 12 build
-Patch4:         gcc-12.patch
+Patch2:         gcc-12.patch
 Patch3:         harden_dde-filemanager-daemon.service.patch
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
