@@ -1,7 +1,7 @@
 #
 # spec file for package grilo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           grilo
-Version:        0.3.14
+Version:        0.3.15
 Release:        0
 Summary:        Framework for browsing and searching media content
 License:        LGPL-2.1-or-later
@@ -37,7 +37,8 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.41.3
+BuildRequires:  pkgconfig(libsoup-2.4)
+#BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(oauth)
 BuildRequires:  pkgconfig(totem-plparser) >= 3.4.1
@@ -139,7 +140,7 @@ various sources using a single API.
 
 %build
 %meson \
-	-Denable-gtk-doc=true \
+	-D soup3=false \
 	%{nil}
 %meson_build
 
@@ -155,12 +156,9 @@ install -d %{buildroot}%{_datadir}/grilo-0.3/plugins
 %check
 %meson_test
 
-%post -n libgrilo-0_3-0 -p /sbin/ldconfig
-%postun -n libgrilo-0_3-0 -p /sbin/ldconfig
-%post -n libgrlnet-0_3-0 -p /sbin/ldconfig
-%postun -n libgrlnet-0_3-0 -p /sbin/ldconfig
-%post -n libgrlpls-0_3-0 -p /sbin/ldconfig
-%postun -n libgrlpls-0_3-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgrilo-0_3-0
+%ldconfig_scriptlets -n libgrlnet-0_3-0
+%ldconfig_scriptlets -n libgrlpls-0_3-0
 
 %files -n libgrilo-0_3-0
 %license COPYING

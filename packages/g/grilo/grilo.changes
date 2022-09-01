@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug 29 18:00:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add back pkgconfig(libsoup-2.4) and disable
+  pkgconfig(libsoup-3.0) BuildRequires, and pass soup3=false to
+  meson, grilo will not be ready to use new soup3 this cycle.
+
+-------------------------------------------------------------------
+Tue Aug 16 11:18:28 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.15:
+  + Increase glib requirement to 2.66 so we can use GUri.
+  + net:
+    - Add libsoup3 support with compile-time option.
+    - Add documentation on throttling property in libsoup3.
+  + Build fixes and cleanups.
+  + Updated translations.
+- Replace pkgconfig(libsoup-2.4) with pkgconfig(libsoup-3.0)
+  BuildRequires, build with soup3 support.
+- Stop passing enable-gtk-doc=true to meson, it is the default
+  anyway.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Wed Oct  6 13:26:48 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.3.14:
