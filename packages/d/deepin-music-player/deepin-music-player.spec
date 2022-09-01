@@ -24,7 +24,7 @@
 %endif
 
 Name:           deepin-music-player
-Version:        6.2.13
+Version:        6.2.18
 Release:        0
 Summary:        Deepin Music Player
 License:        GPL-3.0-or-later
@@ -110,7 +110,7 @@ rm -rf %{buildroot}%{_libdir}/deepin-aiassistant
 %files
 %defattr(-,root,root,-)
 %doc CHANGELOG.md README.md
-%license LICENSE COPYING
+%license LICENSE
 %{_bindir}/deepin-music
 %{_datadir}/applications/deepin-music.desktop
 %{_datadir}/icons/hicolor/scalable/apps/deepin-music.svg
