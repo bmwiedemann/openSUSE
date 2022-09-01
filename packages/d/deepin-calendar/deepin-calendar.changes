@@ -1,9 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul  2 14:38:17 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.8.30
+  * Optimmze ui
+  * Fix bugs
+  * Update translations
+
+-------------------------------------------------------------------
 Thu Mar 31 06:47:21 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.8.29
   * Add a systemd timer
-  * Optmize ui
+  * Optimize ui
   * Fix bugs
   * Update translations
 

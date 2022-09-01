@@ -25,7 +25,7 @@
 %endif
 
 Name:           deepin-calendar
-Version:        5.8.29
+Version:        5.8.30
 Release:        0
 Summary:        A calendar application for Deepin Desktop
 License:        GPL-3.0-or-later
