@@ -23,7 +23,7 @@
 %define   repo            deepin-desktop-schemas
 
 Name:           deepin-override-tool
-Version:        5.10.6
+Version:        5.10.11
 Release:        0
 Summary:        Deepin override tool
 License:        GPL-3.0-or-later
