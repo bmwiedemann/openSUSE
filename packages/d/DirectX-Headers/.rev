@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>997435</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6bce3a7dd9f8692754fdb3c2da07d8ef</srcmd5>
+    <version>1.606.4</version>
+    <time>1662062987</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.606.4:
+  * Update D3DX12.H to support new ABI for MinGW (#73)
+  * dxguids: Add new GUIDs from the last several releases</comment>
+    <requestid>1000484</requestid>
+  </revision>
 </revisionlist>

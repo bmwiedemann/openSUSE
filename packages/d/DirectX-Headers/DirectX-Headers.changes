@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 30 23:51:37 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 1.606.4:
+  * Update D3DX12.H to support new ABI for MinGW (#73)
+  * dxguids: Add new GUIDs from the last several releases
+
+-------------------------------------------------------------------
 Tue Aug 16 18:42:14 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to 1.606.3:

@@ -11,21 +11,23 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
+
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           DirectX-Headers
-Version:        1.606.3
+Version:        1.606.4
 Release:        0
 Summary:        DirectX Headers for Mesa
 License:        MIT
 URL:            https://github.com/microsoft/DirectX-Headers
+# osc service runall download_files
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson
-BuildRequires:  fdupes
 ExclusiveArch:  %{ix86} x86_64
 
 %description
