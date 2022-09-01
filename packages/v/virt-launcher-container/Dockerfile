@@ -33,7 +33,7 @@ RUN zypper -n install \
               kubevirt-virt-launcher \
               libcap-progs \
               libvirt-client \
-              libvirt-daemon-qemu \
+              libvirt-daemon-driver-qemu \
               nftables \
               qemu-hw-usb-redirect \
               qemu-tools \

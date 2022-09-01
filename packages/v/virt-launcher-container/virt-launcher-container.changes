@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  1 08:23:01 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Install only libvirt-daemon-driver-qemu and do not pull unneeded deps
+
+-------------------------------------------------------------------
 Thu Aug  4 06:27:58 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Use standard LABEL directive to add mandatory labels
