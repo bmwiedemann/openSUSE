@@ -79,4 +79,17 @@
     <comment></comment>
     <requestid>971797</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>aea3b0ad30635e1b57fff7e5fd075636</srcmd5>
+    <version>5.4.33</version>
+    <time>1662063015</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.4.33
+  * New feature: delete redundant log every 2 seconds
+  * Fix bugs
+
+- Update version to 5.4.30
+  * Optimize ui</comment>
+    <requestid>1000248</requestid>
+  </revision>
 </revisionlist>

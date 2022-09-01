@@ -29,7 +29,7 @@
 %endif
 
 Name:           deepin-terminal
-Version:        5.4.29
+Version:        5.4.33
 Release:        0
 Summary:        Deepin terminal
 License:        GPL-3.0-only
