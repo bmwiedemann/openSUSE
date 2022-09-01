@@ -20,19 +20,14 @@
 %define vim_plugin_dir %{_datadir}/vim/vimfiles/plugin/
 
 Name:           devhelp
-Version:        41.2
+Version:        41.3
 Release:        0
 Summary:        Developer's Help Program for GNOME
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Devhelp
 Source0:        https://download.gnome.org/sources/devhelp/41/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 281bade14c1925cf9e7329fa8e9cf2d82512c66f.patch -- Fix build with meson 0.61.0 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/devhelp/-/commit/281bade14c1925cf9e7329fa8e9cf2d82512c66f.patch
-# PATCH-FIX-UPSTREAM 03b9b6b55ab1e1376b314ac7f99693512e42d80b.patch -- Fix build with meson 0.61.0 and newer
-Patch1:         https://gitlab.gnome.org/GNOME/devhelp/-/commit/03b9b6b55ab1e1376b314ac7f99693512e42d80b.patch
-# PATCH-FIX-UPSTREAM e6c644683fbb34ac4ceb31150ef20a2536512149.patch glgo#GNOME/devhelp#60 -- Disable HW acceleration to prevent blank pages
-Patch2:         https://gitlab.gnome.org/GNOME/devhelp/-/commit/e6c644683fbb34ac4ceb31150ef20a2536512149.patch
+
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.30.0
 BuildRequires:  itstool

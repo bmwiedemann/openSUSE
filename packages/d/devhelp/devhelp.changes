@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 26 19:37:43 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.3:
+  + Disable hardware acceleration for WebKitGTK
+  + Update the location of the app screenshots
+  + Fix build with Meson ≥ 0.60
+  + Appdata validation fixes
+  + Updated translations.
+- Drop patches fixed upstream:
+  + e6c644683fbb34ac4ceb31150ef20a2536512149.patch
+  + 281bade14c1925cf9e7329fa8e9cf2d82512c66f.patch
+  + 03b9b6b55ab1e1376b314ac7f99693512e42d80b.patch
+
+-------------------------------------------------------------------
 Wed Jul 13 21:17:04 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add e6c644683fbb34ac4ceb31150ef20a2536512149.patch -- Disable HW
