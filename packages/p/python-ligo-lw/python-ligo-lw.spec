@@ -1,5 +1,5 @@
 #
-# spec file for python-ligo-lw
+# spec file for package python-ligo-lw
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -25,9 +25,6 @@
 %define psuffix %{nil}
 %endif
 
-# NEP29: TW does not have python36-scipy anymore, numpy and all lal packages follow
-%define         skip_python36 1
-
 # Dependency ligo-segments does not build for python2
 %define         skip_python2 1
 
@@ -35,7 +32,7 @@
 %define srcname python-ligo-lw
 
 Name:           python-ligo-lw%{?psuffix}
-Version:        1.8.0
+Version:        1.8.3
 Release:        0
 Summary:        Python LIGO Light-Weight XML I/O Library
 License:        GPL-3.0-only
