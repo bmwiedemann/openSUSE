@@ -749,4 +749,12 @@
     <comment>- avoid bashism in baselibs postscript (bsc#1195391) (forwarded request 995215 from dirkmueller)</comment>
     <requestid>997731</requestid>
   </revision>
+  <revision rev="91" vrev="3">
+    <srcmd5>70c0f5e99a1633bae53ee4c0e5c3a679</srcmd5>
+    <version>2.42.9</version>
+    <time>1662062982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000473</requestid>
+  </revision>
 </revisionlist>
