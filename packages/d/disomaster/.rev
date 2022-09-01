@@ -16,4 +16,14 @@
   * Update api</comment>
     <requestid>891669</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>207a3f70830827e774581ef929fbb074</srcmd5>
+    <version>5.0.8</version>
+    <time>1662063005</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.0.8
+  * impl 'dumpISO'
+  * Fix bugs</comment>
+    <requestid>1000238</requestid>
+  </revision>
 </revisionlist>
