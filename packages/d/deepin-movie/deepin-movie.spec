@@ -24,7 +24,7 @@
 %define sover 0_1
 
 Name:           deepin-movie
-Version:        5.9.8
+Version:        5.10.8
 Release:        0
 Summary:        Deepin Video Players
 License:        GPL-3.0-or-later AND OpenSSL
@@ -38,22 +38,9 @@ Patch0:         Fix-library-link.patch
 # PATCH-FIX-UPSTEAM fix-build-on-ARM.patch hillwood@opensuse.org
 Patch1:         fix-build-on-ARM.patch
 %endif
-# PATCH-FIX-UPSTEAM drop-MPV_EVENT_TRACKS_CHANGED.patch hillwood@opensuse.org
-# MPV_EVENT_TRACKS_CHANGED have been dropped by upstream
-# https://github.com/linuxdeepin/deepin-movie-reborn/pull/83
-Patch2:         drop-MPV_EVENT_TRACKS_CHANGED.patch
-# PATCH-FIX-UPSTEAM fix-mpv_opengl_init_params.patch hillwood@opensuse.org
-# Upstream of MPV changed this api
-# https://github.com/linuxdeepin/deepin-movie-reborn/pull/83
-Patch3:         fix-mpv_opengl_init_params.patch
-# PATCH-FIX-UPSTEAM drop-setCanShowInUI.patch
-# https://github.com/linuxdeepin/deepin-movie-reborn/pull/80/files
-Patch4:         drop-setCanShowInUI.patch
-# # PATCH-FIX-UPSTEAM fix-build-on-mpv-0_34_1.patch
-# https://github.com/linuxdeepin/developer-center/issues/2233
-Patch5:         fix-build-on-mpv-0_34_1.patch
 BuildRequires:  dtkcore >= 5.0.0
 BuildRequires:  fdupes
+BuildRequires:  libQt5Gui-private-headers-devel
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
 %else
@@ -68,6 +55,7 @@ BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
 BuildRequires:  pkgconfig(dtkgui) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
@@ -91,6 +79,9 @@ BuildRequires:  pkgconfig(xcb-shape)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(mpris-qt5)
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:  cmake(Qt5MultimediaWidgets)
 BuildRequires:  pkgconfig(dbusextended-qt5)
 %if 0%{?suse_version} <= 1500
 BuildRequires:  qtdbusextended-devel < 3.1.2
@@ -128,6 +119,9 @@ deepin movie.
 %prep
 %autosetup -p1 -n %{name}-reborn-%{version}
 sed -i 's/Exec=deepin-movie/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-movie/g' %{name}.desktop
+%if %{?suse_version} > 1500
+sed -i 's/MPV_EVENT_TRACKS_CHANGED/MP_EVENT_TRACKS_CHANGED/g' src/backends/mpv/mpv_proxy.cpp
+%endif
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=Release \

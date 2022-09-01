@@ -105,4 +105,23 @@
     <comment></comment>
     <requestid>971787</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bed86f0e019c988e53566a1b5bad75dc</srcmd5>
+    <version>5.10.8</version>
+    <time>1662063017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.10.8
+  * Support gstreamer
+  * Fix bugs
+- Drop drop-MPV_EVENT_TRACKS_CHANGED.patch, fix-mpv_opengl_init_params.patch,
+  drop-setCanShowInUI.patch and fix-build-on-mpv-0_34_1.patch, fixed by
+  Upstream
+
+- Update version to 5.9.18
+  * Support feiteng graphics card
+  * Fix bugs
+  * Optimzize wayland support
+  * Update documents</comment>
+    <requestid>1000249</requestid>
+  </revision>
 </revisionlist>

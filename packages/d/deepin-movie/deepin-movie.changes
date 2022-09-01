@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 25 08:19:47 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.8
+  * Support gstreamer
+  * Fix bugs
+- Drop drop-MPV_EVENT_TRACKS_CHANGED.patch, fix-mpv_opengl_init_params.patch,
+  drop-setCanShowInUI.patch and fix-build-on-mpv-0_34_1.patch, fixed by
+  Upstream
+
+-------------------------------------------------------------------
+Sat Jul  2 14:07:07 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.9.18
+  * Support feiteng graphics card
+  * Fix bugs
+  * Optimzize wayland support
+  * Update documents 
+
+-------------------------------------------------------------------
 Thu Apr 14 14:52:23 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add drop-MPV_EVENT_TRACKS_CHANGED.patch, drop the api
