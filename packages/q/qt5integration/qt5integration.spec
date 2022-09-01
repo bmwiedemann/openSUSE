@@ -17,7 +17,7 @@
 
 
 Name:           qt5integration
-Version:        5.5.17
+Version:        5.5.24
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Qt platform theme integration plugins
