@@ -1,8 +1,8 @@
 #
 # spec file for package deepin-session-shell
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
+# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,16 @@
 %define _name dde-session-shell
 
 Name:           deepin-session-shell
-Version:        5.5.24
+Version:        5.5.48
 Release:        0
 Summary:        Deepin desktop-environment - Session UI Shell
 License:        GPL-3.0+
 URL:            https://github.com/linuxdeepin/dde-session-shell
 Source0:        https://github.com/linuxdeepin/dde-session-shell/archive/%{version}/%{_name}-%{version}.tar.gz
 Source1:        https://github.com/linuxdeepin/startdde/raw/master/misc/lightdm.conf
+# PATCH-FOR-OPENSUSE remove-invalid-dependence.patch hillwood@opensuse.org
+# https://github.com/linuxdeepin/developer-center/issues/3266
+Patch0:         remove-invalid-dependence.patch
 Group:          System/GUI/Other
 BuildRequires:  gtest
 BuildRequires:  update-desktop-files
@@ -39,6 +42,7 @@ BuildRequires:  lightdm-gtk-greeter
 %endif
 BuildRequires:  pkgconfig(dtkwidget) >= 5.5.0
 BuildRequires:  libdframeworkdbus-devel >= 5.4.20
+BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  pkgconfig(dde-dock)
 BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(gtk+-2.0)
@@ -106,6 +110,9 @@ src/widgets/fullscreenbackground.cpp
 sed -i 's|backgrounds/deepin/desktop.jpg|wallpapers/openSUSEdefault/contents/images/1920x1080.jpg|g' \
 src/session-widgets/lockcontent.cpp
 cp %{_datadir}/icons/hicolor/scalable/apps/openSUSE-distributor-logo.svg src/widgets/img/logo.svg
+sed -i "/PIXMAP_WIDTH/s|128|284|" src/widgets/logowidget.cpp
+sed -i "/PIXMAP_HEIGHT/s|132|396|" src/widgets/logowidget.cpp
+sed -i "s|KF5/KWayland/Client|KF5/KWayland/KWayland/Client|g" src/global_util/keyboardmonitor/keyboardplantform_wayland.cpp
 
 %build
 %cmake
@@ -131,8 +138,11 @@ chmod +x %{buildroot}%{_bindir}/*
 %dir %{_datadir}/deepin-authentication/privileges
 %{_datadir}/deepin-authentication/privileges/lightdm-deepin-greeter.conf
 %dir %{_datadir}/dsg
-%dir %{_datadir}/dsg/apps/
-%{_datadir}/dsg/apps/dde-lock
+%dir %{_datadir}/dsg/configs
+%dir %{_datadir}/dsg/configs/org.deepin.dde.lightdm-deepin-greeter
+%dir %{_datadir}/dsg/configs/org.deepin.dde.lock
+%{_datadir}/dsg/configs/org.deepin.dde.lightdm-deepin-greeter/org.deepin.dde.lightdm-deepin-greeter.json
+%{_datadir}/dsg/configs/org.deepin.dde.lock/org.deepin.dde.lock.json
 
 %files -n lightdm-deepin-greeter
 %license LICENSE
@@ -141,12 +151,9 @@ chmod +x %{buildroot}%{_bindir}/*
 %{_bindir}/lightdm-deepin-greeter
 %{_sysconfdir}/deepin/greeters.d/lightdm-deepin-greeter
 %{_sysconfdir}/deepin/greeters.d/10-cursor-theme
-# %dir %{_datadir}/lightdm
-# %dir %{_datadir}/lightdm/lightdm.conf.d
 %{_datadir}/lightdm/lightdm.conf.d/60-deepin.conf
 %dir %{_datadir}/xgreeters
 %{_datadir}/xgreeters/lightdm-deepin-greeter.desktop
-%{_datadir}/dsg/apps/lightdm-deepin-greeter
 
 %files devel
 %{_includedir}/%{_name}

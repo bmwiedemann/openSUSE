@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 29 09:03:08 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.48
+  * Fix bugs
+- Add remove-invalid-dependence.patch
+
+-------------------------------------------------------------------
+Sun May  8 11:28:48 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.31
+  * Optimize wayland support
+  * Fix bugs
+  * Add info log
+  * Support disable logout button
+  * Add configuration of screen keyboard
+
+-------------------------------------------------------------------
 Wed Apr  6 13:53:11 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.5.24
