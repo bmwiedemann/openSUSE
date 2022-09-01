@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 13 10:49:21 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.10.20
+  * Update org.kde.kwin interface
+  * Add org.desktopspec.ConfigManager interface
+
+-------------------------------------------------------------------
 Sat Apr  2 07:50:05 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.10.9
