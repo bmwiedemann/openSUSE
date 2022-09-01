@@ -45,7 +45,7 @@
 %bcond_with paralleltests
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2022.7.0
+Version:        2022.8.1
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -56,6 +56,8 @@ Source99:       python-distributed-rpmlintrc
 Patch1:         distributed-ignore-offline.patch
 # PATCH-FIX-OPENSUSE distributed-ignore-thread-leaks.patch -- ignore leaking threads on obs, code@bnavigator.de
 Patch2:         distributed-ignore-thread-leaks.patch
+# PATCh-FIX-OPENSUSE Ignore two deprecations introduced by Tornado 6.2
+Patch3:         support-tornado-6-2.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -72,9 +74,9 @@ Requires:       python-psutil >= 5.0
 Requires:       python-sortedcontainers
 Requires:       python-tblib
 Requires:       python-toolz >= 0.8.2
+Requires:       python-tornado >= 6.2
 Requires:       python-urllib3
 Requires:       python-zict >= 0.1.3
-Requires:       (python-tornado >= 6.0.3 with python-tornado < 6.2)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -138,7 +140,7 @@ donttest="test_git_revision"
 # logger error
 donttest+=" or test_version_warning_in_cluster"
 # invalid task state
-donttest+=" or test_fail_to_pickle_target_2"
+donttest+=" or test_fail_to_pickle_execute_2"
 
 # Some tests randomly fail server-side -- too slow for obs (?)
 # see also https://github.com/dask/distributed/issues/5818
@@ -163,7 +165,7 @@ if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   # OverflowError -- https://github.com/dask/distributed/issues/5252
   donttest+=" or test_ensure_spilled_immediately"
   donttest+=" or test_value_raises_during_spilling"
-  donttest+=" or test_fail_to_pickle_target_1"
+  donttest+=" or test_fail_to_pickle_execute_1"
   # https://github.com/dask/distributed/issues/6718
   python310_donttest+=" or (test_profile and test_basic)"
 fi

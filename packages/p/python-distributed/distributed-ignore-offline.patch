@@ -1,11 +1,11 @@
-Index: distributed-2022.6.1/setup.cfg
+Index: distributed-2022.8.1/setup.cfg
 ===================================================================
---- distributed-2022.6.1.orig/setup.cfg
-+++ distributed-2022.6.1/setup.cfg
-@@ -60,7 +60,7 @@ filterwarnings =
-     ignore:unclosed file <_io.TextIOWrapper.*:ResourceWarning
+--- distributed-2022.8.1.orig/setup.cfg
++++ distributed-2022.8.1/setup.cfg
+@@ -66,7 +66,7 @@ filterwarnings =
      ignore:unclosed transport <_SelectorSocketTransport.*:ResourceWarning
      ignore:unclosed transport <asyncio\.sslproto\..*:ResourceWarning
+     ignore:unclosed cluster SSHCluster.*:ResourceWarning
 -    ignore:Couldn't detect a suitable IP address for reaching '2001.4860.4860..8888', defaulting to hostname. \[Errno 65\] No route to host:RuntimeWarning
 +    ignore:Couldn't detect a suitable IP address.*:RuntimeWarning
      ignore:Dashboard and Scheduler are using the same server on port.*:RuntimeWarning

@@ -588,4 +588,41 @@
     <comment></comment>
     <requestid>988740</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>c5bee854e6e80743e121a52f9b2d5e92</srcmd5>
+    <version>2022.8.1</version>
+    <time>1662063048</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2022.8.1:
+  * Display unexpected state in Worker.execute validation (:pr:`6856`)
+    James Bourbeau
+  * cancelled / resumed -&gt; rescheduled transition (:pr:`6913`) crusaderky
+  * Fix resource deallocation for resumed tasks (:pr:`6914`) crusaderky
+  * Only close scheduler in SpecCluster if it exists (:pr:`6888`)
+    Matthew Rocklin
+  * Always close BatchedSend write coroutines (:pr:`6865`) Gabe Joseph
+  * Harden preamble of Worker.execute against race conditions (:pr:`6878`)
+    crusaderky
+  * Duplicated code: in_flight_tasks validation (:pr:`6917`) crusaderky
+  * Overhaul transitions for the resumed state (:pr:`6699`) crusaderky
+  * Clean up cluster process reaping (:pr:`6840`) Gabe Joseph
+  * Don't use bokeh Figure in tests (:pr:`6721`) Bryan Van de Ven
+  * Work around incompatibility of crick with setuptools 65 (:pr:`6887`)
+    crusaderky
+  * Replace port = random.randint( with port = d.utils.open_port (:pr:`6883`)
+    Thomas Grainger
+  * Fix flaky test_wall_clock (:pr:`6879`) crusaderky
+  * Add descriptive error message to assert (:pr:`6871`) Hendrik Makait
+  * Increase timeout in test_quiet_process (:pr:`6857`) Florian Jetter
+  * Remove redundant use of with clean(): (:pr:`6852`) Thomas Grainger
+  * Update pre-commit dependencies (:pr:`6851`) Hendrik Makait
+  * Call exit callback even if AsyncProcess is reaped elsewhere (:pr:`6684`)
+    Thomas Grainger
+  * Avoid function calls in argument defaults (:pr:`6812`) Hendrik Makait
+  * Add Cluster.get_client() method (:pr:`6745`) Julia Signell
+  * Start bokeh app to activate bokeh's clean session callbacks (:pr:`6728`)
+    Martí Zamora
+  * Don't connect to cluster subprocesses at shutdown (:pr:`6829`) Gabe Joseph</comment>
+    <requestid>1000573</requestid>
+  </revision>
 </revisionlist>
