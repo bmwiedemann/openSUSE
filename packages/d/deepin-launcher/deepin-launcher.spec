@@ -19,7 +19,7 @@
 %define _name dde-launcher
 
 Name:           deepin-launcher
-Version:        5.5.11
+Version:        5.5.31
 Release:        0
 Summary:        Deepin Launcher
 License:        GPL-3.0-or-later
@@ -49,16 +49,6 @@ Requires:       deepin-start
 %description
 Deepin desktop-environment - Launcher module
 
-%package devel
-Summary:        Development tools for deepin-launchers
-Group:          Development/Libraries/C and C++
-
-%description devel
-Deepin desktop-environment - Launcher module
-
-The deepin-launcher-devel package contains the header files and developer
-docs for deepin-launcher.
-
 %lang_package
 
 %prep
@@ -86,11 +76,9 @@ sed -i 's|lrelease|lrelease-qt5|g' translate_generation.sh
 %dir %{_datadir}/%{_name}/translations
 %{_datadir}/%{_name}/translations/dde-launcher.qm
 %dir %{_datadir}/dsg
-%dir %{_datadir}/dsg/apps
-%{_datadir}/dsg/apps/dde-launcher
-
-%files devel
-# %{_includedir}/%{_name}
+%dir %{_datadir}/dsg/configs
+%dir %{_datadir}/dsg/configs/org.deepin.dde.launcher
+%{_datadir}/dsg/configs/org.deepin.dde.launcher/org.deepin.dde.launcher.json
 
 %files lang -f %{_name}.lang
 %if 0%{?suse_version} <= 1500
