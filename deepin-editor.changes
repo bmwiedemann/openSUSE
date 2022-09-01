@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug 27 11:58:56 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version tp 5.10.35
+  * Add event tracking feature
+  * Fix bugs
+- Drop Fix-return-type.patch 
+
+-------------------------------------------------------------------
+Wed Jun 29 13:09:41 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.23
+  * Optimize ui
+  * Fix bugs 
+
+-------------------------------------------------------------------
 Fri May 20 06:36:58 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix build on Tumbleweed 

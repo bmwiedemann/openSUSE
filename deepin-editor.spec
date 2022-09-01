@@ -23,15 +23,13 @@
 %endif
 
 Name:           deepin-editor
-Version:        5.10.19
+Version:        5.10.35
 Release:        0
 Summary:        A text editor for the Deepin environment
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://github.com/linuxdeepin/deepin-editor
 Source0:        https://github.com/linuxdeepin/deepin-editor/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Fix-return-type.patch hillwood@opensuse.org - Fix a return type error
-Patch0:         Fix-return-type.patch
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
 %else
