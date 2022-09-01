@@ -34,4 +34,14 @@
     <comment></comment>
     <requestid>978520</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f658edce057af51152d7098d2bcf2ece</srcmd5>
+    <version>1.7.8</version>
+    <time>1662063070</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.8
+  * No longer display &quot;HIBP API error&quot; for some passwords in online
+    mode</comment>
+    <requestid>1000515</requestid>
+  </revision>
 </revisionlist>
