@@ -403,7 +403,7 @@
         <description></description>
     </key>
     <key type="i" name="dtk-window-radius">
-      <default>18</default>
+      <default>8</default>
       <summary>The window radius last time</summary>
     </key>
     <key type="s" name="primary-monitor-name">

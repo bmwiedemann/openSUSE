@@ -31,4 +31,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>959456</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e26d09018f6da2787a988b78bb470042</srcmd5>
+    <version>15.4</version>
+    <time>1662063027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update com.deepin.dde.dock.gschema.xml and com.deepin.xsettings.gschema.xml 
+
+- Update com.deepin.dde.dock.gschema.xml</comment>
+    <requestid>1000260</requestid>
+  </revision>
 </revisionlist>

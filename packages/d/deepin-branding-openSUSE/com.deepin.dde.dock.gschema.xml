@@ -8,7 +8,6 @@
     <enum id="com.deepin.dde.dock.DisplayMode">
         <value value="0" nick="fashion" />
         <value value="1" nick="efficient" />
-        <value value="2" nick="classic" />
     </enum>
 
     <enum id="com.deepin.dde.dock.Position">
@@ -98,7 +97,7 @@
         </key>
 
        <key type="i" name="wireless-scan-interval">
-            <default>5</default>
+            <default>10</default>
             <summary></summary>
             <description>wireless scan interval</description>
         </key>
