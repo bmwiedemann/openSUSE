@@ -19,7 +19,7 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.25.2
+Version:        0.26.1
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
@@ -47,6 +47,7 @@ BuildRequires:  librsync-devel
 BuildRequires:  libwayland-egl-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  libxkbcommon-x11-devel
+BuildRequires:  openssl-devel
 # for 'tic'
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
