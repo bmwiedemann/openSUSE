@@ -60,4 +60,14 @@
     <comment></comment>
     <requestid>986974</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>46b7981b92b300adce2571eedc83ce08</srcmd5>
+    <version>5.0.68</version>
+    <time>1662063006</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.0.68
+  * Support Qt 5.15.5
+  * Fix bugs</comment>
+    <requestid>1000239</requestid>
+  </revision>
 </revisionlist>

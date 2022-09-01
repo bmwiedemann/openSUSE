@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 24 12:07:38 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.0.68
+  * Support Qt 5.15.5
+  * Fix bugs 
+
+-------------------------------------------------------------------
 Wed Jul  6 06:54:44 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix build on Tumbleweed 

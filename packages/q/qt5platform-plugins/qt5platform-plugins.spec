@@ -21,7 +21,7 @@
 # %define   qt_version      5.15.5
 
 Name:           qt5platform-plugins
-Version:        5.0.65
+Version:        5.0.68
 Release:        0
 Summary:        Qt platform integration plugins
 License:        GPL-3.0-or-later
@@ -104,9 +104,6 @@ elif [ "`rpm -q --queryformat '%%{VERSION}' libQt5Core5`" = "5.12.7" ]; then
 # elif [ "`rpm -q --queryformat '%%{VERSION}' libQt5Core5`" = "5.15.5+kde165" ]; then
 #    cp -r xcb/libqt5xcbqpa-dev/5.15.1 xcb/libqt5xcbqpa-dev/5.15.5
 fi
-%if 0%{?suse_version} > 1500
-    cp -r xcb/libqt5xcbqpa-dev/5.15.1 xcb/libqt5xcbqpa-dev/5.15.5
-%endif
 
 # Disable wayland for now: https://github.com/linuxdeepin/qt5platform-plugins/issues/47
 sed -i '/wayland/d' qt5platform-plugins.pro
