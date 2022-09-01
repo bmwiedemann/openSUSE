@@ -1,7 +1,7 @@
 #
 # spec file for package python-dqsegdb2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,9 @@
 # PYTHON2 NOT SUPPORTED FOR DEPENDENCY python-gwdatafind - TESTS FAIL
 %define skip_python2 1
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname dqsegdb2
 Name:           python-dqsegdb2
-Version:        1.0.1
+Version:        1.1.2
 Release:        0
 Summary:        Simplified python interface to the DQSEGDB API
 License:        GPL-3.0-only
@@ -30,6 +29,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/duncanmmacleod/dqsegdb2
 Source:         https://files.pythonhosted.org/packages/source/d/dqsegdb2/dqsegdb2-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,6 +40,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module gwdatafind}
 BuildRequires:  %{python_module ligo-segments}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests-mock}
 # /SECTION
 %python_subpackages
 

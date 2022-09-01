@@ -7,4 +7,15 @@
     <comment>Simplified python interface to the DQSEGDB API (needed for some upcoming gravitational wave studies related packages).</comment>
     <requestid>947746</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7e2872cb735177f2831d3bbddf4845a2</srcmd5>
+    <version>1.1.2</version>
+    <time>1662063142</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.2.
+- New BuildRequires: python-setuptools_scm needed to correctly  set version to egg-info dir.
+- New BuildRequires for tests: python-requests-mock.
+- Drop obsolote re-definition of python macros.</comment>
+    <requestid>1000656</requestid>
+  </revision>
 </revisionlist>
