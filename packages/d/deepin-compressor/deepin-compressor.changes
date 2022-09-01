@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 25 13:47:07 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.12.8
+  * Fix bugs
+  * Support rename by right click
+- Drop 001-fix-libdir.patch, fixed by upstream
+
+-------------------------------------------------------------------
+Sat Jul  2 02:49:03 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.12.6
+  * Change qDebug to qInfo 
+
+-------------------------------------------------------------------
 Thu Apr 21 08:37:15 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.12.5

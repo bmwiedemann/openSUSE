@@ -23,15 +23,13 @@
 %endif
 
 Name:           deepin-compressor
-Version:        5.12.5
+Version:        5.12.8
 Release:        0
 License:        GPL-3.0+
 Summary:        Archive Manager for Deepin Desktop
 Url:            https://github.com/linuxdeepin/deepin-compressor
 Group:          Productivity/Archiving/Compression
 Source0:        https://github.com/linuxdeepin/deepin-compressor/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 001-fix-libdir.patch hillwood@opensuse.org - Don't hardcode the libraries path
-Patch0:         001-fix-libdir.patch
 # PATCH-FIX-UPSTREAM 002-install-compressor-ChardetDetector.patch hillwood@opensuse.org 
 # Install libcompressor-ChardetDetector.so
 Patch1:         002-install-compressor-ChardetDetector.patch
