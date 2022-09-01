@@ -25,13 +25,13 @@
 %endif
 
 Name:           python-mautrix
-Version:        0.16.8
+Version:        0.17.8
 Release:        0
 Summary:        A Python 3 asyncio Matrix framework
 License:        MPL-2.0
 URL:            https://github.com/mautrix/python
 # The GitHub Archive has json data required for the test suite
-Source:         https://github.com/mautrix/python/archive/refs/tags/v0.16.8.tar.gz#/mautrix-python-%{version}-gh.tar.gz
+Source:         https://github.com/mautrix/python/archive/refs/tags/v%{version}.tar.gz#/mautrix-python-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -53,6 +53,9 @@ BuildRequires:  %{python_module asyncpg}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module aiosqlite}
 BuildRequires:  %{python_module sqlalchemy}
+BuildRequires:  %{python_module olm}
+BuildRequires:  %{python_module unpaddedbase64}
+BuildRequires:  %{python_module pycryptodomex}
 %endif
 %python_subpackages
 

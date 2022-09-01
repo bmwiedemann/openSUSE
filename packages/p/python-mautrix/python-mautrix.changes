@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Wed Aug 31 10:34:08 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.17.8:
+  - (crypto) Fixed parsing /keys/claim responses with no failures
+    field.
+  - (bridge) Fixed parsing e2ee key sharing allow/minimum level
+    config.
+  - (util.async_db) Added init_commands to run commands on
+    each SQLite connection (e.g. to enable PRAGMAs). No-op on
+    Postgres.
+  - (bridge) Added check to make sure e2ee keys are intact on
+    server. If they aren't, the crypto database will be wiped and
+    the bridge will stop.
+  - (bridge) Added hidden option to use appservice login for
+    double puppeting.
+  - (client) Fixed sync handling throwing an error if event
+    parsing failed.
+  - (errors) Added M_UNKNOWN_ENDPOINT error code from MSC3743
+  - (appservice) Updated MSC3202 support to handle one time keys
+    correctly.
+  - (types) Added m.read.private to receipt types.
+  - (appservice) Stopped ensure_registered and invite_user
+    raising IntentErrors (now they raise the original Matrix
+    error instead).
+  - (bridge) Started rejecting reusing access tokens when
+    enabling double puppeting. Reuse is detected by presence of
+    encryption keys on the device.
+  - (client.api) Added wrapper method for the /context API.
+  - (api, errors) Implemented new error codes from MSC3848.
+  - (types) Disabled deserializing m.direct content (it didn't
+    work and it wasn't really necessary).
+  - (client.state_store) Updated set_encryption_info to allow raw
+    dicts. This fixes the bug where sending a m.room.encryption
+    event with a raw dict as the content would throw an error
+    from the state store.
+  - (crypto) Fixed error when fetching keys for user with no
+    cross-signing keys (thanks to @maltee1 in #109).
+  - (types) Updated BeeperMessageStatusEventContent fields.
+  - (api) Updated request logging to log full URL instead of only
+    path.
+  - (bridge) Fixed migrating key sharing allow flag to new config
+    format.
+  - (appservice) Added beeper_new_messages flag for batch_send
+    method.
+  - (crypto) Fixed Python 3.8/9 compatibility broken in v0.17.0.
+  - (crypto) Added some tests for attachments and store code.
+  - (crypto) Improved logging when device change validation
+    fails.
+  - Breaking change (bridge) Added options to check cross-signing
+    status for bridge users. This requires changes to the base
+    config.
+        New options include requiring cross-signed devices (with
+        TOFU) for sending and/or receiving messages, and an
+        option to drop any unencrypted messages.
+  - Breaking change (crypto) Removed sender_key parameter from
+    CryptoStore's has_group_session and put_group_session, and
+    also OlmMachine's wait_for_session.
+  - Breaking change (crypto.store.memory) Updated the key of the
+    _inbound_sessions dict to be (room_id, session_id), removing
+    the identity key in the middle. This only affects custom
+    stores based on the memory store.
+  - (crypto) Added basic cross-signing validation code.
+  - (crypto) Marked device_id and sender_key as deprecated in
+    Megolm events as per Matrix 1.3.
+  - (api) Bumped request logs to DEBUG level.
+        Also added new sensitive parameter to the request method
+        to prevent logging content in sensitive requests. The
+        login method was updated to mark the content as sensitive if a
+        password or token is provided.
+  - (bridge.commands) Switched the order of the user ID parameter
+    in set-pl, set-avatar and set-displayname.
+  - (bridge) Started requiring Matrix v1.1 support from
+    homeservers.
+  - (bridge) Added hack to automatically send a read receipt for
+    messages sent to Matrix with double puppeting (to work around
+    weird unread count issues).
+  - (client) Added support for knocking on rooms (thanks to
+    @maltee1 in #105).
+  - (bridge) Added config option to set key rotation settings
+    with e2be.
+  - (bridge) Updated e2be helper to stop bridge if syncing fails.
+  - (util.async_db) Updated asyncpg connector to stop program
+    if an asyncpg InternalClientError is thrown. These errors
+    usually cause everything to get stuck.
+        The behavior can be disabled by passing meow_exit_on_ice
+        = false in the db_args.
+
+-------------------------------------------------------------------
 Tue Jun 21 09:43:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Enable test suite for TW. The do have one.
