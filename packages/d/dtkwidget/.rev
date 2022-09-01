@@ -226,4 +226,19 @@
     <comment></comment>
     <requestid>971803</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1f2e07f95a5b8254ae195199f2e68f73</srcmd5>
+    <version>5.5.52</version>
+    <time>1662063023</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.4.52
+  * Add EventLoop for ut
+  * Add a plugin to control property of printer
+  * Fix bugs
+
+- Update version to 5.4.46
+  * Fix bugs
+  * Drop some apis</comment>
+    <requestid>1000257</requestid>
+  </revision>
 </revisionlist>

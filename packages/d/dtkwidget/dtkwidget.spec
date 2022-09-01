@@ -22,7 +22,7 @@
 # %define pkg_ver 5.5
 
 Name:           dtkwidget
-Version:        5.5.44
+Version:        5.5.52
 Release:        0
 Summary:        Deepin graphical user interface library
 License:        LGPL-3.0-only

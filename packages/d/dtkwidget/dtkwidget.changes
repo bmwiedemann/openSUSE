@@ -1,5 +1,20 @@
 -------------------------------------------------------------------
-Mon Apr  4 14:07:06 UTC 2022 - Hillwood Yang <hillwoodroc@gmail.com>
+Fri Aug 26 12:29:56 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.52
+  * Add EventLoop for ut
+  * Add a plugin to control property of printer
+  * Fix bugs
+
+-------------------------------------------------------------------
+Sat Jun 25 08:48:45 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.46
+  * Fix bugs
+  * Drop some apis
+
+-------------------------------------------------------------------
+Mon Apr  4 14:07:06 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.5.44
   * Fix bugs 
