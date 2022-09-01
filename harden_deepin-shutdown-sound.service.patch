@@ -1,9 +1,8 @@
-Index: dde-api-5.4.9/misc/systemd/system/deepin-shutdown-sound.service
-===================================================================
---- dde-api-5.4.9.orig/misc/systemd/system/deepin-shutdown-sound.service
-+++ dde-api-5.4.9/misc/systemd/system/deepin-shutdown-sound.service
-@@ -5,6 +5,20 @@ After=sound.target local-fs.target
- Before=systemd-logind.service
+diff -Nurp dde-api-5.5.25/misc/systemd/system/deepin-shutdown-sound.service dde-api-5.5.25-new/misc/systemd/system/deepin-shutdown-sound.service
+--- dde-api-5.5.25/misc/systemd/system/deepin-shutdown-sound.service	2022-04-18 13:40:18.000000000 +0800
++++ dde-api-5.5.25-new/misc/systemd/system/deepin-shutdown-sound.service	2022-08-13 16:31:17.223356184 +0800
+@@ -6,6 +6,19 @@ Conflicts=shutdown.target
+ Before=shutdown.target
  
  [Service]
 +# added automatically, for details please see
@@ -11,7 +10,6 @@ Index: dde-api-5.4.9/misc/systemd/system/deepin-shutdown-sound.service
 +ProtectSystem=full
 +ProtectHome=true
 +PrivateDevices=true
-+DeviceAllow=char-snd rw
 +ProtectHostname=true
 +ProtectClock=true
 +ProtectKernelTunables=true

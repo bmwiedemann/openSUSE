@@ -23,7 +23,7 @@
 %define   import_path     %{provider_prefix}
 
 Name:           deepin-api
-Version:        5.5.12
+Version:        5.5.25
 Release:        0
 Summary:        Go-lang bingding for dde-daemon
 License:        GPL-3.0+
