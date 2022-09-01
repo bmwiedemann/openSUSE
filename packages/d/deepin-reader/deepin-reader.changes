@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 25 14:08:05 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.23
+  * Adjust minimum size of window
+  * Fix bugs
+- Drop fix-return-type.patch 
+
+-------------------------------------------------------------------
+Fri Jul  1 08:20:10 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.16
+  * Update ut
+  * Optimize ui
+  * Optimize pdf support
+  * Update documents
+- Add fix-return-type.patch
+
+-------------------------------------------------------------------
 Sat Jun 11 13:57:29 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix build on openjpeg 2.5.0 and later 

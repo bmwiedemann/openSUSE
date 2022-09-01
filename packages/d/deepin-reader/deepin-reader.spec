@@ -23,7 +23,7 @@
 %define    openjpeg_min     2.4.0
 
 Name:           deepin-reader
-Version:        5.10.13
+Version:        5.10.23
 Release:        0
 Summary:        The deepin Document Viewer
 License:        GPL-3.0+
@@ -137,3 +137,4 @@ find %{buildroot}%{_datadir}/deepin-manual -name '*.txt' -type f -print -exec ch
 %{_datadir}/%{name}/translations/%{name}.qm
 
 %changelog
+
