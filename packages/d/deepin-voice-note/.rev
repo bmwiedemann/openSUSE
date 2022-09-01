@@ -40,4 +40,17 @@
     <comment></comment>
     <requestid>971798</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>03141569e71384e3f2bc28ad83722ddd</srcmd5>
+    <version>5.10.18</version>
+    <time>1662063029</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.10.18
+  * Fix bugs
+  * Optimize ui
+
+- Update version to 5.10.17
+  * Drop invalid dependences</comment>
+    <requestid>1000263</requestid>
+  </revision>
 </revisionlist>

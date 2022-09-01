@@ -23,7 +23,7 @@
 %endif
 
 Name:           deepin-voice-note
-Version:        5.10.15
+Version:        5.10.18
 Release:        0
 License:        GPL-3.0+
 Summary:        Deepin Voice Note 
@@ -72,7 +72,7 @@ sed -i 's/lupdate/lupdate-qt5/g;s/lrelease/lrelease-qt5/g' assets/translate_gene
 %cmake -DCMAKE_BUILD_TYPE=Release \
        -DAPP_VERSION=%{version}-%{distribution} \
        -DVERSION=%{version}-%{distribution}
-%make_build
+%cmake_build
 
 %install
 %cmake_install
