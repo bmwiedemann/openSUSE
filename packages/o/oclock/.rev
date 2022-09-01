@@ -43,4 +43,19 @@
     <comment></comment>
     <requestid>583787</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>29efd14c00c2d95178a83cbb11dab7a6</srcmd5>
+    <version>1.0.5</version>
+    <time>1662063053</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.5:
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Pass -D_CONST_X_STRING to make libXt declare String as const char *
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Declare bitmap data as const
+  * Add cast to clear -Wsign-compare warning</comment>
+    <requestid>1000407</requestid>
+  </revision>
 </revisionlist>

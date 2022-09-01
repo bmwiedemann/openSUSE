@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 31 09:14:38 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 1.0.5:
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Pass -D_CONST_X_STRING to make libXt declare String as const char *
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Declare bitmap data as const
+  * Add cast to clear -Wsign-compare warning
+
+-------------------------------------------------------------------
 Wed Mar  7 09:57:21 UTC 2018 - mvetter@suse.com
 
 - Update to 1.0.4:
