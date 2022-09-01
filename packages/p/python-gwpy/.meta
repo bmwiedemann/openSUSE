@@ -1,0 +1,14 @@
+<package name="python-gwpy" project="openSUSE:Factory">
+  <title>A python package for gravitational-wave astrophysics</title>
+  <description>GWpy is a collaboration-driven Python package providing tools for
+studying data from ground-based gravitational-wave detectors.
+
+GWpy provides a user-friendly, intuitive interface to the common
+time-domain and frequency-domain data produced by the LIGO and Virgo
+observatories and their analyses, with easy-to-follow tutorials at each
+step.
+
+</description>
+  <devel project="science" package="python-gwpy"/>
+  <url>https://gwpy.github.io/</url>
+</package>
