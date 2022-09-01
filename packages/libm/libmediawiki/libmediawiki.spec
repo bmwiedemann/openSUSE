@@ -1,7 +1,7 @@
 #
 # spec file for package libmediawiki
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,24 @@
 #
 
 
+%bcond_without released
 Name:           libmediawiki
-Version:        5.37.0
+Version:        5.38.0
 Release:        0
 Summary:        Interface for MediaWiki based web services
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/KDE
 URL:            https://invent.kde.org/libraries/libmediawiki
 Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         Fix-compilation-error-with-Qt-5.15.patch
-BuildRequires:  extra-cmake-modules
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Test)
+%if %{with released}
+Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
+Source2:        %{name}.keyring
+%endif
+BuildRequires:  extra-cmake-modules >= 5.85.0
+BuildRequires:  cmake(KF5CoreAddons) >= 5.85.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5Network) >= 5.15.0
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
 
 %description
 libmediawiki is a KDE C++ interface for MediaWiki based web services as
@@ -52,6 +55,9 @@ This package contains the shared library.
 Summary:        Development files for libmediawiki
 Group:          Development/Libraries/KDE
 Requires:       libKF5MediaWiki5 = %{version}
+Requires:       cmake(Qt5Core) >= 5.15.0
+Requires:       cmake(Qt5Network) >= 5.15.0
+Requires:       cmake(KF5CoreAddons) >= 5.85.0
 
 %description devel
 libmediawiki is a KDE C++ interface for MediaWiki based web services as
