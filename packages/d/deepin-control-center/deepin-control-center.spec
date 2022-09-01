@@ -24,7 +24,7 @@
 %endif
 
 Name:           deepin-control-center
-Version:        5.5.16.2
+Version:        5.5.143
 Release:        0
 Summary:        New control center for Linux Deepin
 License:        LGPL-3.0-or-later
@@ -36,11 +36,12 @@ Patch0:         %{name}-no-user-experience.patch
 # PATCH-FOR-OPENSUSE systeminfo-deepin-icon.patch hillwood@opensuse.org - Use deepin icons instead of UOS
 Patch1:         systeminfo-deepin-icon.patch
 # PATCH-FOR-OPENSUSE remove-auth.patch
-Patch3:         remove-auth.patch
+# Patch3:         remove-auth.patch
+# PATCH-FOR-UPSTREAM fix-include-directories.patch hillwood@opensuse.org - Fix boo#1200959
+# Patch4:         fix-include-directories.patch
 Group:          System/GUI/Other
 BuildRequires:  cmake
 BuildRequires:  deepin-desktop-base
-# BuildRequires:  deepin-dock-devel > 5.5.9
 BuildRequires:  deepin-pw-check-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  dtkcommon >= 5.5.20
@@ -50,25 +51,32 @@ BuildRequires:  gtest
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libQt5Widgets-private-headers-devel
 BuildRequires:  libqt5-linguist
+BuildRequires:  libqt5-qtwayland-private-headers-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5NetworkManagerQt)
+BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  cmake(PolkitQt5-1)
+BuildRequires:  cmake(Qt5XkbCommonSupport)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(dareader)
 BuildRequires:  pkgconfig(dde-network-utils)
 BuildRequires:  pkgconfig(dframeworkdbus) >= 2.0
 BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
 BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(udisks2-qt5)
+BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xkbcommon)
 Requires:       deepin-account-faces
 Requires:       deepin-api
 Requires:       deepin-daemon
@@ -87,6 +95,7 @@ The deepin-control-center is the control panel of Deepin Desktop.
 %package data
 Summary:        Data of deepin-control-center
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description data
 The deepin-control-center is the control panel of Deepin Desktop.
@@ -122,22 +131,23 @@ sed -i '/set(VERSION/s|4.0|%{version}-%{distribution}|' abrecovery/CMakeLists.tx
        -DCC_DISABLE_LANGUAGE=YES \
        -DCVERSION=%{version}-%{distribution}
 
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
 
 sed -i 's/OnlyShowIn=/X-DEEPIN-OnlyShowIn/g' \
 %{buildroot}%{_datadir}/applications/%{_name}.desktop
-chmod 0644 %{buildroot}%{_datadir}/applications/%{_name}.desktop
+chmod -x %{buildroot}%{_datadir}/applications/%{_name}.desktop
 %suse_update_desktop_file -r %{_name} Settings DesktopSettings X-SuSE-Core-System
 rm -rf %{buildroot}%{_datadir}/polkit-1/actions/com.deepin.controlcenter.develop.policy
+rm -rf %{buildroot}%{_datadir}/dman
 
 %fdupes %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc README.md CHANGELOG.md
+%doc README.md CHANGELOG.md docs/internaltest.md
 %license LICENSE
 %{_bindir}/%{_name}
 %{_bindir}/%{_name}-wapper
@@ -153,8 +163,12 @@ rm -rf %{buildroot}%{_datadir}/polkit-1/actions/com.deepin.controlcenter.develop
 %{_datadir}/%{_name}/%{_name}.conf
 %{_datadir}/glib-2.0/schemas/com.deepin.dde.control-center.gschema.xml
 %dir %{_datadir}/dsg
-%dir %{_datadir}/dsg/apps
-%{_datadir}/dsg/apps/dde-control-center
+%dir %{_datadir}/dsg/configs
+# %dir %{_datadir}/dsg/configs/dde-control-center
+%dir %{_datadir}/dsg/configs/org.deepin.dde.control-center
+# %{_datadir}/dsg/configs/dde-control-center/*.json
+%{_datadir}/dsg/configs/org.deepin.dde.control-center/*.json
+# %{_datadir}/dsg/apps/dde-control-center
 # %{_datadir}/polkit-1/actions/com.deepin.controlcenter.develop.policy
 
 %files data

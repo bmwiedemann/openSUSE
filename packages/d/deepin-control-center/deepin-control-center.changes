@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 24 14:38:30 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.143
+  * Add switch-kdb-layout shortcut
+  * Add dconfig configuration for airplane mode
+  * Change password policy
+  * Update translations
+  * Fix bugs
+- Drop remove-auth.patch and fix-include-directories.patch, fixed by
+  upstream.
+
+-------------------------------------------------------------------
+Tue Jun 28 08:59:54 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.83
+  * Optimize wayland support
+  * Fix bugs
+  * Update documents
+  * Update translations
+- Add fix-include-directories.patch, fix boo#1200959
+
+-------------------------------------------------------------------
 Tue Apr  5 09:02:35 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.5.16.2
