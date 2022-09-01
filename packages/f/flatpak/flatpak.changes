@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Aug 30 19:50:38 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.14.0:
+  + Improved support for sideloading.
+  + Allow sub-sandboxes to own MPRIS names on the session bus.
+  + Commands that accept "--user" will now also take "-u" as an alias
+    for that.
+  + The CLI now properly informs the user of which apps are
+    (indirectly) using end-of-life runtime extensions in end-of-life
+    info messages.
+  + The CLI now takes into account operations in the pending
+    transaction when printing end-of-life messages.
+  + The uninstall command now asks for confirmation before removing
+    in-use runtimes or runtime extensions.
+  + A "--socket=gpg-agent" option is now recognized by "flatpak run"
+    and related commands.
+  + Curl supported as default HTTP backend.
+  + Uses Fuse 3.
+  + Implement support for rewriting dynamic launchers when an app
+    is renamed.
+  + Add --include-sdk/debug options to install command to install
+    SDK/debuginfo along with a ref.
+  + defense in depth against arbitrary file deletion by
+    flatpak-system-helper when using very old libostree
+    (boo#1202639).
+  + Updated translations.
+- Replace pkgconfig(fuse) BuildRequires with pkgconfig(fuse3):
+  Follow upstreams port to fuse3.
+- Add pkgconfig(libcurl) BuildRequires: enable the new HTTP
+  backend.
+- Drop gtk-doc BuildRequires and no longer pass --enable-gtk-doc to
+  configure: no longer supported.
+- Drop libtool BuildRequires: no need to bootstrap the tarball.
+- Replace pkgconfig(appstream-glib) BuildRequires with
+  pkgconfig(appstream): match what configure checks for.
+- Add pkgconfig(gdk-pixbuf-2.0): verified dependency that was
+  implicitly included by appstream-glib before.
+
+-------------------------------------------------------------------
 Fri Jul 15 14:05:05 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
 
 - variant-schema-compiler requires the Python module pyparsing

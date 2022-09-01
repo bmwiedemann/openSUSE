@@ -782,4 +782,12 @@ This is required because the transitive requirement is broken in
 two places:   gtk-doc --&gt; python3-Pygments -/-&gt; python3-setuptools -/-&gt; python3-pyparsing (forwarded request 989460 from bnavigator)</comment>
     <requestid>992691</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>daa4afb4b52c142bffa328c4b6091996</srcmd5>
+    <version>1.14.0</version>
+    <time>1662062967</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.14.0:</comment>
+    <requestid>1000418</requestid>
+  </revision>
 </revisionlist>

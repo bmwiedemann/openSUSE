@@ -30,7 +30,7 @@
 %define support_environment_generators 1
 %endif
 Name:           flatpak
-Version:        1.12.7
+Version:        1.14.0
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -41,30 +41,30 @@ Source1:        update-system-flatpaks.service
 Source2:        update-system-flatpaks.timer
 Patch0:         polkit_rules_usability.patch
 BuildRequires:  bison
-BuildRequires:  bubblewrap >= 0.4.1
+BuildRequires:  bubblewrap >= 0.5.0
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  gtk-doc
 BuildRequires:  intltool >= 0.35.0
 BuildRequires:  libcap-devel
 BuildRequires:  libgpg-error-devel
 BuildRequires:  libgpgme-devel >= 1.1.8
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-pyparsing
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  xdg-dbus-proxy >= 0.1.0
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(appstream-glib)
+BuildRequires:  pkgconfig(appstream) >= 0.12.0
 BuildRequires:  pkgconfig(dconf) >= 0.26
-BuildRequires:  pkgconfig(fuse) >= 2.9.2
+BuildRequires:  pkgconfig(fuse3) >= 3.1.1
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44
+BuildRequires:  pkgconfig(glib-2.0) >= 2.46
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.40.0
 BuildRequires:  pkgconfig(gobject-introspection-no-export-1.0) >= 1.40.0
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libarchive) >= 2.8.0
+BuildRequires:  pkgconfig(libcurl) >= 7.29.0
 BuildRequires:  pkgconfig(libelf) >= 0.8.12
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsoup-2.4)
@@ -150,7 +150,6 @@ sed -i -e '1s,#!%{_bindir}/env python3,#!%{_bindir}/python3,' scripts/flatpak-*
 %build
 %configure \
 	--disable-silent-rules \
-	--enable-gtk-doc \
 	--with-system-bubblewrap \
 	--with-priv-mode=none \
 	--with-dbus-config-dir=%{_dbusconfigdir} \
@@ -225,6 +224,8 @@ fi
 %{_libexecdir}/revokefs-fuse
 %{_datadir}/bash-completion/completions/flatpak
 %dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_conf.d
+%{_datadir}/fish/vendor_conf.d/flatpak.fish
 %dir %{_datadir}/fish/vendor_completions.d
 %{_datadir}/fish/vendor_completions.d/flatpak.fish
 # # Own dirs so we don't have to depend on dbus for building.
@@ -293,7 +294,6 @@ fi
 %{_bindir}/flatpak-bisect
 %{_bindir}/flatpak-coredumpctl
 %{_libdir}/pkgconfig/flatpak.pc
-%{_datadir}/gtk-doc/
 %{_includedir}/%{name}/
 %{_libdir}/libflatpak.so
 %{_datadir}/gir-1.0/Flatpak-1.0.gir
