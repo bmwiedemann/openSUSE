@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 30 15:44:45 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.1:
+  * Fix resolving the path to caja-extensions.mo on guix system.
+  * Fixed caja-share not working under Arch Linux.
+  * Update translations.
+
+-------------------------------------------------------------------
 Wed Aug 11 01:25:53 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.0
