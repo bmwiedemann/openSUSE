@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 30 16:40:09 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add more upstream patches:
+  * luabugs6.patch
+  * luabugs7.patch
+
+-------------------------------------------------------------------
 Sat Jun  4 13:49:42 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Added more numbered patches from upstream:
