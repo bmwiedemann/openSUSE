@@ -1,7 +1,7 @@
 #
 # spec file for package libpst
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2008 Bharath Acharya
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,20 +18,20 @@
 
 
 Name:           libpst
-Version:        0.6.75
+Version:        0.6.76
 Release:        0
 Summary:        Library and utilities for reading Personal Storage Table files
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Utilities
 URL:            http://www.gnome.org/projects/evolution/
 Source0:        http://www.five-ten-sg.com/libpst/packages/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM libpst-glib-2.68.patch dimstar@opensuse.org -- Fix build against glib 2.68
-Patch0:         libpst-glib-2.68.patch
+
 BuildRequires:  gcc-c++
 BuildRequires:  gd-devel
 BuildRequires:  libgsf-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
+Suggests:       %{name}-doc
 
 %description
 The libpst utilities include readpst, which can convert email messages
@@ -60,6 +60,15 @@ libpst is a library that can decode the email messages stored in a
 This subpackage contains the header files for developing
 applications that want to make use of libpst.
 
+%package doc
+Summary:        Documentation for the pst utilities in html format
+BuildArch:      noarch
+
+%description doc
+The libpst-doc package contains the html documentation for the pst
+utilities.  You do not need to install it if you just want to use
+the libpst utilities.
+
 %prep
 %autosetup -p1
 
@@ -68,17 +77,15 @@ applications that want to make use of libpst.
         --disable-static \
         --enable-libpst-shared \
         --disable-python
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libpst4 -p /sbin/ldconfig
-%postun -n libpst4 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libpst4
 
 %files
-%doc %{_datadir}/doc/%{name}-%{version}
 %{_mandir}/man?/*
 %{_bindir}/lspst
 %{_bindir}/nick2ldif
@@ -86,11 +93,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/readpst
 
 %files -n libpst4
+%license COPYING
 %{_libdir}/libpst.so.*
 
 %files devel
 %{_includedir}/libpst-4/
 %{_libdir}/pkgconfig/libpst.pc
 %{_libdir}/libpst.so
+
+%files doc
+%doc %{_datadir}/doc/%{name}-%{version}
 
 %changelog
