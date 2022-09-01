@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 30 18:55:56 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.4.5
+  Bug fixes:
+  * Fix missing trackers when adding magnet link. Affects
+    libtorrent 2.0.x builds.
+
+-------------------------------------------------------------------
 Tue Aug 23 15:57:35 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.4.4.
