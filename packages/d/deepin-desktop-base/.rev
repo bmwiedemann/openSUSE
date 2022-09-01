@@ -65,4 +65,12 @@
     <comment></comment>
     <requestid>971777</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c66f53a1ceb4ec03451230f39fdadc52</srcmd5>
+    <version>20.6</version>
+    <time>1662063004</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2022.07.26, Deepin version is 20.6</comment>
+    <requestid>1000236</requestid>
+  </revision>
 </revisionlist>

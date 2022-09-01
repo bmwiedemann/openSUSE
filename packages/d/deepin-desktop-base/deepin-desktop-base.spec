@@ -16,10 +16,10 @@
 #
 
 
-%define _version 2022.03.07
+%define _version 2022.07.26
 
 Name:           deepin-desktop-base
-Version:        20.5
+Version:        20.6
 Release:        0
 Summary:        Base component for Deepin
 License:        GPL-3.0-or-later
