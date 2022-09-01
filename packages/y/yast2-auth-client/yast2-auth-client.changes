@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 31 07:27:37 UTC 2022 - Michal Filka <mfilka@suse.com>
+
+- bsc#1202919
+  - fixed internal error. Do not call function removed in 4.4.3
+- 4.5.4
+
+-------------------------------------------------------------------
 Tue Aug  2 09:47:47 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Fix an error opening "User Logon" after removing pam_ldap
