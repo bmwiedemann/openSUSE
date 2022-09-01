@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 25 08:28:45 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.23
+  * use $${TARGET} for QRC_PATH
+  * modify dconfig's file install path  
+
+-------------------------------------------------------------------
 Tue Apr  5 09:26:36 UTC 2022 - Hillwood Yang <hillwoodroc@gmail.com>
 
 - Update version to 5.5.21

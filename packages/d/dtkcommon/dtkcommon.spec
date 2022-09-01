@@ -17,7 +17,7 @@
 #
 
 Name:           dtkcommon
-Version:        5.5.21
+Version:        5.5.23
 Release:        0
 Summary:        The DTK Tools
 License:        GPL-3.0+
@@ -25,7 +25,6 @@ Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/dtkcommon
 Source0:        https://github.com/linuxdeepin/dtkcommon/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  glib2-tools 
 BuildRequires:  libQt5Core-private-headers-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
