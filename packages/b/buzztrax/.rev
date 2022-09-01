@@ -164,4 +164,12 @@ ghosted xml files from %{_datadir}/mime/audio to fix
 </comment>
     <requestid>807345</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>d86bb34e008855d689cd79dd6fb09fe8</srcmd5>
+    <version>0.10.2+git20191209</version>
+    <time>1662063086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000549</requestid>
+  </revision>
 </revisionlist>

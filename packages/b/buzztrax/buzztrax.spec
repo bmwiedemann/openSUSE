@@ -240,7 +240,7 @@ export CXXFLAGS="$CFLAGS"
     --enable-gtk-doc
 cp -v docs/version.entities docs/help/bt-edit/C/
 
-make %{?_smp_mflags}
+make # non-parallel for https://github.com/Buzztrax/buzztrax/issues/89
 
 %install
 %make_install
