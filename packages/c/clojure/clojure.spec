@@ -1,7 +1,7 @@
 #
 # spec file for package clojure
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           clojure
-Version:        1.10.3.855
+Version:        1.11.1.1155
 Release:        0
 Summary:        A dynamic programming language that targets the JVM
 License:        EPL-1.0
@@ -46,6 +46,7 @@ can avoid reflection.
 sed -i "s/#!\/usr\/bin\/env bash/#!\/bin\/bash/" clj
 sed -i "s/#!\/usr\/bin\/env bash/#!\/bin\/bash/" clojure
 sed -i "s|PREFIX|%{_datadir}/clojure|" clojure
+sed -i "s|BINDIR|%{_bindir}|" clj
 
 %build
 

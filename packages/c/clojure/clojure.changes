@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 28 19:17:20 UTC 2022 - Chris Coutinho <chrisbcoutinho@gmail.com>
+
+- Update to 1.11.1.1155
+  * Fix `clj`: replace BINDIR with 'bindir' during install
+
+-------------------------------------------------------------------
 Thu May 27 05:49:14 UTC 2021 - Petr Cervinka <petr@cervinka.net>
 
 - Update to 1.10.3.855:
