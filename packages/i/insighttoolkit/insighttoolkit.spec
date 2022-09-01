@@ -29,6 +29,13 @@
 %bcond_without system_eigen
 %endif
 
+# Python bindings must be turned off until https://github.com/InsightSoftwareConsortium/ITK/issues/3506 is resolved
+%if 0%{?suse_version} >= 1550
+%bcond_with python
+%else
+%bcond_without python
+%endif
+
 Name:           insighttoolkit
 Version:        5.2.1
 Release:        0
@@ -36,6 +43,8 @@ Summary:        Toolkit for scientific image processing, segmentation, and regis
 License:        Apache-2.0
 URL:            https://www.itk.org
 Source:         https://github.com/InsightSoftwareConsortium/ITK/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM insighttoolkit-fno-sized-deallocation.patch gh#InsightSoftwareConsortium/ITK#3452 badshah400@gmail.com -- Add -fno-sized-deallocation for GCC 12 to fix build failures; patch taken from upstream commit
+Patch0:         https://github.com/InsightSoftwareConsortium/ITK/commit/8f5e2618c2dee584e53ad13899384af82fbb77d9.patch#/insighttoolkit-fno-sized-deallocation.patch
 BuildRequires:  CastXML-devel
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -49,15 +58,10 @@ BuildRequires:  hdf5-devel
 BuildRequires:  libnsl-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
-BuildRequires:  swig
 BuildRequires:  vtk-devel
 BuildRequires:  vtk-qt
 BuildRequires:  xz
 BuildRequires:  cmake(double-conversion)
-%if %{with system_eigen}
-BuildRequires:  pkgconfig(eigen3)
-%endif
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(libjpeg)
@@ -68,6 +72,13 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(zlib)
 # https://github.com/InsightSoftwareConsortium/ITK/issues/2529
 ExcludeArch:    %{ix86}
+%if %{with python}
+BuildRequires:  python3-devel
+BuildRequires:  swig
+%endif
+%if %{with system_eigen}
+BuildRequires:  pkgconfig(eigen3)
+%endif
 
 %description
 The Insight Toolkit (ITK) is a toolkit for N-dimensional scientific
@@ -145,7 +156,7 @@ This package provides the modules for ITK's python bindings.
   -DVXL_BUILD_CORE_NUMERICS:BOOL=OFF \
   -DVCL_INCLUDE_CXX_0X:BOOL=ON \
   -DITK_FORBID_DOWNLOADS=ON \
-  -DITK_WRAP_PYTHON:BOOL=ON
+  -DITK_WRAP_PYTHON:BOOL=%{?with_python:ON}%{!?with_python:OFF}
 
 %cmake_build
 
@@ -169,9 +180,11 @@ This package provides the modules for ITK's python bindings.
 %{_bindir}/itkTestDriver
 %doc %{_docdir}/%{name}/
 
+%if %{with python}
 %files -n python3-itk
 %license LICENSE NOTICE
 %{python3_sitearch}/*.py
 %{python3_sitearch}/itk/
+%endif
 
 %changelog

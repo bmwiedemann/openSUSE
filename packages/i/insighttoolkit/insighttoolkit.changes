@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 29 05:28:58 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable python bindings for openSUSE >= 1550 until swig related
+  issues are sorted [gh#InsightSoftwareConsortium/ITK#3452].
+- Add insighttoolkit-fno-sized-deallocation.patch: Add
+  -fno-sized-deallocation for GCC 12; patch taken from upstream
+  commit.
+
+-------------------------------------------------------------------
 Wed Apr 27 09:24:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve rpmlint report "libinsighttoolkit5.x86_64: E:
