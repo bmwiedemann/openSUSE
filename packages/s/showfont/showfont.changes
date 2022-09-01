@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 31 09:17:21 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.6
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * man page: remove out-of-date COPYRIGHT section
+  * Reduce variable scopes as suggested by cppcheck
+  * Take care of -Wsign-compare warnings
+
+-------------------------------------------------------------------
 Sat Jan  3 17:57:37 UTC 2015 - tobias.johannes.klausmann@mni.thm.de
 
 - Update to version 1.0.5:
