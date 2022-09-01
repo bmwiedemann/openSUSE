@@ -1,7 +1,7 @@
 #
 # spec file for package grilo-plugins
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define plugin_dir %(pkg-config --variable plugindir grilo-0.3)
 Name:           grilo-plugins
-Version:        0.3.14
+Version:        0.3.15
 Release:        0
 Summary:        Media and metadata plugins for the Grilo framework
 License:        LGPL-2.1-or-later
@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(avahi-glib)
 BuildRequires:  pkgconfig(avahi-gobject)
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.36
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(goa-1.0) >= 3.17.91
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -52,6 +52,7 @@ BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libgdata) >= 0.9.1
 BuildRequires:  pkgconfig(libmediaart-2.0)
 BuildRequires:  pkgconfig(libsoup-2.4)
+#BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lua) >= 5.3.0
 BuildRequires:  pkgconfig(oauth)
@@ -79,7 +80,7 @@ Jamendo, Vimeo, YouTube.
 %package -n grilo-plugin-tracker
 Summary:        Tracker plugin for the Grilo framework
 Group:          Productivity/Multimedia/Other
-Supplements:    packageand(grilo-plugins:tracker)
+Supplements:    (grilo-plugins and tracker)
 
 %description -n grilo-plugin-tracker
 Grilo is a framework for browsing and searching media content from
@@ -104,7 +105,7 @@ This package provides a plugin for accessing content from a DLNA
 %package -n grilo-plugin-youtube
 Summary:        Youtube plugin for the Grilo media framework
 Group:          Productivity/Multimedia/Other
-Supplements:    packageand(grilo-plugins:libgdata)
+Supplements:    (grilo-plugins and libgdata)
 
 %description -n grilo-plugin-youtube
 Grilo is a framework for browsing and searching media content from

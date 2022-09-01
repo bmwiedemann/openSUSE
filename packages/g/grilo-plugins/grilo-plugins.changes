@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 29 18:04:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add back pkgconfig(libsoup-2.4) and disable
+  pkgconfig(libsoup-3.0) BuildRequires, build youtube and
+  opensubtile plugins again, grilo and grilo plugins are not ready
+  to move to soup3.
+
+-------------------------------------------------------------------
+Mon Aug 22 10:59:38 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.3.15:
+  + Detect libsoup version from grl-net and adds support to
+    libsoup3.
+  + youtube: port to API v3 by using libgdata 0.17.0.
+  + tmdb: port to GUri, remove libsoup dependency.
+  + dleyna: port to GUri, remove libsoup dependency.
+- youtube and opensubtile plugins currently not being built, as
+  they are not yet compatible with libsoup 3.
+
+-------------------------------------------------------------------
 Wed Oct  6 13:35:09 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.3.14:
