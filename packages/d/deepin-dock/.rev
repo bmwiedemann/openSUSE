@@ -71,4 +71,21 @@
     <comment></comment>
     <requestid>971779</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9fa1bb05f84fef5461329bcf05b3e55b</srcmd5>
+    <version>5.5.65</version>
+    <time>1662063008</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.5.65
+  * Always show airplane mode
+  * Add sort format for date
+  * Fix bugs 
+
+- Update version to 5.5.51
+  * Fix bugs
+  * Optimize wayland support 
+
+- Drop deepin-dock-link-libraries.patch, merged by upstream</comment>
+    <requestid>1000241</requestid>
+  </revision>
 </revisionlist>

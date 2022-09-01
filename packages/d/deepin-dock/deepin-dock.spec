@@ -20,15 +20,13 @@
 %define _name dde-dock
 
 Name:           deepin-dock
-Version:        5.5.12
+Version:        5.5.65
 Release:        0
 Summary:        Deepin dock
 License:        LGPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/dde-dock
 Source0:        https://github.com/linuxdeepin/dde-dock/archive/%{version}/%{_name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM deepin-dock-link-libraries.patch hillwood@opensuse.org - link some libraries to fix build
-Patch0:         %{name}-link-libraries.patch
 BuildRequires:  cmake
 BuildRequires:  dtkcommon >= 5.5.20
 BuildRequires:  dtkcore >= 5.0.0
@@ -117,9 +115,11 @@ rm -rf %{buildroot}%{_datadir}/polkit-1
 %dir %{_sysconfdir}/dde-dock/indicator
 %config %{_sysconfdir}/dde-dock/indicator/keybord_layout.json
 %dir %{_datadir}/dsg
-%dir %{_datadir}/dsg/apps
-%{_datadir}/dsg/apps/%{_name}
-%{_datadir}/dsg/apps/dde-control-center
+%dir %{_datadir}/dsg/configs
+%dir %{_datadir}/dsg/configs/org.deepin.dde.control-center
+%dir %{_datadir}/dsg/configs/org.deepin.dde.dock
+%{_datadir}/dsg/configs/org.deepin.dde.control-center/*.json
+%{_datadir}/dsg/configs/org.deepin.dde.dock/*.json
 %dir %{_libdir}/dde-control-center
 %dir %{_libdir}/dde-control-center/modules
 %{_libdir}/dde-control-center/modules/libdcc-dock-plugin.so

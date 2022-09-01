@@ -1,9 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug 24 12:34:49 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.65
+  * Always show airplane mode
+  * Add sort format for date
+  * Fix bugs 
+
+-------------------------------------------------------------------
+Tue Jun 28 12:07:01 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.51
+  * Fix bugs
+  * Optimize wayland support 
+
+-------------------------------------------------------------------
 Tue Apr  5 09:18:18 UTC 2022 - Hillwood Yang <<hillwood@opensuse.org>
 
 - Update version to 5.5.12
   * Optimize launch time
   * Fix bugs
+- Drop deepin-dock-link-libraries.patch, merged by upstream
 
 -------------------------------------------------------------------
 Wed Feb 23 12:05:20 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
