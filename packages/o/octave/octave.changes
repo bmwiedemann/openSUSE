@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 22 10:55:29 UTC 2022 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 7.2.0:
+  * Long list of changes, see
+    <https://octave.org/news/release/2022/07/28/octave-7.2.0-released.html>
+- Drop upstreamed patches:
+  * 0001-Add-explicit-ctime-include-required-for-clock.patch
+  * fix_build_unlink_failed.patch
+
+-------------------------------------------------------------------
 Mon Jul 11 21:16:21 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with latest TW, add

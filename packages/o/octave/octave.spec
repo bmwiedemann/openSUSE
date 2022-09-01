@@ -18,7 +18,7 @@
 
 %define apiver  v57
 # Required for RC builds, in this case version contains ~rc, src_ver -rc
-%define pkg_ver 7.1.0
+%define pkg_ver 7.2.0
 %define src_ver %{pkg_ver}
 
 # Use native graphics or gnuplot
@@ -63,10 +63,6 @@ Source3:        octave.macros
 Patch0:         octave_tools_pie.patch
 # PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?54607
 Patch1:         0001-Disable-signal-handler-thread-avoid-duplicate-signal.patch
-# PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?func=detailitem&item_id=62436
-Patch2:         https://hg.savannah.gnu.org/hgweb/octave/raw-rev/6e91c61f626f#/fix_build_unlink_failed.patch
-# PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/index.php?62750
-Patch3:         0001-Add-explicit-ctime-include-required-for-clock.patch
 BuildRequires:  arpack-ng-devel
 # Required for Patch0
 BuildRequires:  autoconf
