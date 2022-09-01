@@ -689,4 +689,12 @@ See SR#946556</comment>
     <comment>- Update to version 1.62.0 - for details see the rust1.62 package</comment>
     <requestid>987768</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>d94f360a77e60f756063ac68ad706954</srcmd5>
+    <version>1.63.0</version>
+    <time>1662062963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000360</requestid>
+  </revision>
 </revisionlist>
