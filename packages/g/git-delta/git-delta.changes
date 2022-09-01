@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep  1 11:58:39 UTC 2022 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.14.0:
+  * Update color-moved-support.md
+  * Tweak some words improved representation
+  * Only trigger git show handler if a file extension was parsed
+  * Fix commit hyperlink formatting
+  * Avoid lockup when running without arguments and stdin is connected to a tty
+  * Fix whole-file changes being attributed to the wrong commit in "git log" output
+  * Update README.md to include git 2.37.0 workaround
+  * Don't attempt to process ANSI sequences in non-UTF8 input
+  * Update clap
+  * Recreate highlighter on each line of git show $commit:$path output
+  * Fix git-grep match-highlighting at line-start
+  * Update to chameleon theme
+  * Fix typos
+  * Support configurable timestamps in git blame output
+  * Added auto completions for fish shell
+
+-------------------------------------------------------------------
 Tue Jun 14 05:01:54 UTC 2022 - socvirnyl.estela@gmail.com
 
 - remove bump-regex.patch
