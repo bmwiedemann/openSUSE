@@ -187,6 +187,11 @@ This package contains the fish completion script for borgbackup.
 %if ! %{with borg_guzzle}
 %patch0 -p1
 %endif
+
+%ifnarch %ix86 %arm
+  # https://github.com/borgbackup/borg/issues/6996
+  sed -i 's/SUPPORT_32BIT_PLATFORMS = True/SUPPORT_32BIT_PLATFORMS = False/' src/borg/helpers/time.py
+%endif
 # remove bundled libraries, that we don't want to be included
 rm -rf src/borg/algorithms/{lz4,zstd}
 # remove bundled blake2 library, if appropriate

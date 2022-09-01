@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 29 05:35:09 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Support dates beyond 2038 on 64-bit platforms
+
+-------------------------------------------------------------------
 Fri Aug 12 21:42:01 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Fix package %checks
