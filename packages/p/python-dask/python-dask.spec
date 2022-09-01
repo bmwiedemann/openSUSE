@@ -43,7 +43,7 @@
 %define         skip_python2 1
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2022.7.0
+Version:        2022.8.1
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -351,6 +351,7 @@ donttest+=" or (test_parquet and (test_chunksize or test_extra_file))"
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   # https://github.com/dask/dask/issues/8620
   donttest+=" or test_query_with_meta"
+  donttest+=" or test_repartition_npartitions"
 fi
 # (rarely) flaky on obs
 donttest+=" or test_local_scheduler"
