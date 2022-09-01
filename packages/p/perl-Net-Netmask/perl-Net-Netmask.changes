@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  1 03:07:12 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.0002
+   see /usr/share/doc/packages/perl-Net-Netmask/Changes
+
+  2.0002 2022-08-31
+   - Documentation fixes (thanks, Breno G. de Oliveira!)
+
+-------------------------------------------------------------------
 Tue Mar 30 09:41:52 UTC 2021 - Tina Müller <tina.mueller@suse.com>
 
 - Remove manual license from cpanspec.yml, the correct one is now
