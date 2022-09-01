@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 30 23:56:51 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Correct a Requires into a BuildRequires, as was meant. 
+
+-------------------------------------------------------------------
 Mon Jul 18 22:39:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.4

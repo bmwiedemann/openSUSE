@@ -23,15 +23,15 @@ Summary:        Doing dirty (but useful) things with equals
 License:        MIT
 URL:            https://dirty-equals.helpmanual.io
 Source:         https://github.com/samuelcolvin/dirty-equals/archive/refs/tags/v%{version}.tar.gz#/dirty-equals-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module pytz >= 2021.3}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-mock}
-Requires:       %{python_module python-typing-extensions >= 4.0.1 if %python-base < 3.8}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-typing-extensions >= 4.0.1 if %python-base < 3.8}
+BuildRequires:  %{python_module pytz >= 2021.3}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-pytz >= 2021.3
 %if 0%{?python_version_nodots} < 38
 Requires:       python-typing-extensions >= 4.0.1

@@ -7,4 +7,12 @@
     <comment>For python-watchfiles</comment>
     <requestid>990109</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>93e974a6f83eda2033ea0e19fb44586a</srcmd5>
+    <version>0.4</version>
+    <time>1662063050</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct a Requires into a BuildRequires, as was meant.</comment>
+    <requestid>1000358</requestid>
+  </revision>
 </revisionlist>
