@@ -57,13 +57,13 @@
 %endif
 
 Name:           NetworkManager
-Version:        1.38.4
+Version:        1.40.0
 Release:        0
 Summary:        Network Link Manager and user applications for it
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.gnome.org/projects/NetworkManager/
-Source0:        https://download.gnome.org/sources/NetworkManager/1.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/NetworkManager/1.40/%{name}-%{version}.tar.xz
 Source1:        nfs
 Source2:        NetworkManager.conf
 Source3:        baselibs.conf
@@ -87,7 +87,6 @@ Patch7:         nm-add-CAP_SYS_ADMIN-permission.patch
 BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
 BuildRequires:  fdupes
-BuildRequires:  intltool
 BuildRequires:  iptables
 BuildRequires:  meson
 BuildRequires:  ncurses-devel
@@ -307,7 +306,6 @@ export PYTHON=%{_bindir}/python3
     -Ddbus_conf_dir=%{_dbusconfdir} \
     -Diptables=%{_sbindir}/iptables \
     -Ddnsmasq=%{_sbindir}/dnsmasq \
-    -Ddnssec_trigger=%{_libexecdir}/dnssec-trigger-script \
     -Ddist_version=%{version} \
     -Dpolkit_agent_helper_1=%{_libexecdir}/polkit-1/polkit-agent-helper-1 \
     -Dhostname_persist=suse \
