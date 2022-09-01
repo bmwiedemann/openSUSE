@@ -613,4 +613,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment>Fix build with gcc 12 (required for Factory submission) (forwarded request 976266 from susnux)</comment>
     <requestid>976437</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>1d5dd713a6a14fd2d3406baabe961c87</srcmd5>
+    <version>1.4.274</version>
+    <time>1662063155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000712</requestid>
+  </revision>
 </revisionlist>

@@ -28,7 +28,7 @@
 # versions.
 %bcond_with     system_celt
 Name:           mumble
-Version:        1.4.230
+Version:        1.4.274
 Release:        0
 Summary:        Voice Communication Client for Gamers
 # For Legal: the bundled opus and speex subdirectories are not built.
@@ -43,9 +43,8 @@ Source3:        murmur.apparmor
 Source4:        https://raw.githubusercontent.com/mumble-voip/mumble-gpg-signatures/master/mumble-auto-build-2022.asc#/%{name}.keyring
 Source5:        mumble-server.service
 Source6:        baselibs.conf
-#PATCH-FIX-UPSTREAM 73d8a4d5.patch -- https://github.com/mumble-voip/mumble/commit/73d8a4d5
-Patch0:         73d8a4d5.patch
-Patch1:         https://github.com/mumble-voip/mumble/commit/36398fb.patch
+# PATCH-FIX-UPSTREAM fix-64bit-only-plugins.patch -- Requires 64bit memory alignment ( https://github.com/mumble-voip/mumble/issues/5849 )
+Patch0:         fix-64bit-only-plugins.patch
 BuildRequires:  cmake >= 3.15
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
@@ -136,7 +135,7 @@ characters, and has echo cancellation so the sound from your loudspeakers
 won't be audible to other players.
 
 %prep
-%autosetup -p1 -n %{name}-%{version}.src
+%autosetup -p1 -n %{name}-src
 
 %build
 %cmake \
@@ -205,7 +204,6 @@ systemd-tmpfiles --create %{_tmpfilesdir}/mumble-server.conf || true
 
 %files
 %exclude %{_docdir}/%{name}/scripts/murmur.ini
-%exclude %{_docdir}/%{name}/scripts/org.mumble_voip.mumble.desktop
 %doc %{_docdir}/%{name}
 %{_bindir}/mumble
 %{_bindir}/mumble-overlay
@@ -225,9 +223,9 @@ systemd-tmpfiles --create %{_tmpfilesdir}/mumble-server.conf || true
 %config(noreplace) %{_sysconfdir}/mumble-server.ini
 %{_tmpfilesdir}/mumble-server.conf
 %{_unitdir}/mumble-server.service
-%{_mandir}/man1/murmurd.*
-%{_mandir}/man1/murmur-user-wrapper.*
-%{_datadir}/metainfo/org.mumble_voip.mumble.appdata.xml
+%{_mandir}/man1/mumble-server.*
+%{_mandir}/man1/mumble-server-user-wrapper.*
+%{_datadir}/metainfo/info.mumble.Mumble.appdata.xml
 %dir %{_sysconfdir}/apparmor.d
 %config %{_sysconfdir}/apparmor.d/usr.sbin.murmurd
 

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Sep  1 09:11:05 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Add fix-64bit-only-plugins.patch to fix build on i586
+
+-------------------------------------------------------------------
+Sun Aug 21 21:03:15 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to 1.4.274:
+  - Client:
+    * Changed: Disable RNNoise by default
+    * Changed: Don’t hard block shortcuts on Wayland
+    * Fixed: Context and identity not getting cleared
+    * Fixed: Don’t display unsupported ACL
+    * Fixed: Fix PipeWire not being usable in Flatpaks
+    * Fixed: Icon not used on Plasma Wayland session
+    * Fixed: Improve appstream metadata
+    * Fixed: Minimal view not always working
+    * Fixed: PFS information being incorrect
+    * Fixed: Percent encoded links not clickable
+    * Fixed: Prefer selected tree item for context menu creation
+    * Fixed: Prevent endless loop when disconnecting PipeWire stream
+    * Fixed: Register simultaneous mouse button presses separately
+    * Fixed: Show friendlier text when displaying notifications
+    * Fixed: Properly verify certificates when SRV records are used
+    * Fixed: Resolve list tags, etc. polluting log
+    * Fixed: Remove duplicate entry for “What’s this?” in UserModel
+    * Fixed: User and channel status icons now take display scaling into account
+  - Server:
+    * Fixed: Add missing line breaks to –help output
+    * Fixed: Improve rememberchannelduration compare logic
+    * Fixed: Update suppress state on ACL change
+  - Positional audio plugins:
+    * Fixed: Fix Quake Live plugin
+    * Fixed: Update Among Us plugin to work with v2022.3.29s (1864)
+- Remove upstreamed:
+  * 36398fb.patch
+  * 73d8a4d5.patch
+
+-------------------------------------------------------------------
 Wed May 11 09:42:59 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add 36398fb.patch from upstream to fix build with gcc 12
