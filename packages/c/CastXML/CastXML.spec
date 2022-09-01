@@ -17,14 +17,16 @@
 
 
 Name:           CastXML
-Version:        0.4.5
+Version:        0.4.6
 Release:        0
 Summary:        C-family Abstract Syntax Tree XML Output
 License:        Apache-2.0
 URL:            https://github.com/CastXML/CastXML
-Source:         https://github.com/CastXML/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/CastXML/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        %{name}-rpmlintrc
 BuildRequires:  clang-devel
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python3-Sphinx
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -57,6 +59,8 @@ CastXML is a C-family abstract syntax tree XML output tool.
 
 # REMOVE FILES TO BE INSTALLED USING %%doc OR %%license
 rm %{buildroot}%{_docdir}/%{name}/LICENSE
+
+%fdupes %{buildroot}%{_datadir}/castxml/clang/include/
 
 %check
 %ctest
