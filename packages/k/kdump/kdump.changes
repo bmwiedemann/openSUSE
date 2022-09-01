@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 31 12:04:40 UTC 2022 - Jiri Bohac <jbohac@suse.com>
+
+- mkdumprd: replace mkinitrd with native dracut (bsc#1202443) 
+
+-------------------------------------------------------------------
 Fri Jul  8 19:05:10 UTC 2022 - Jiri Bohac <jbohac@suse.com>
 
 - fix network-related dracut options handling for fadump case

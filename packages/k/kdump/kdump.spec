@@ -49,7 +49,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        1.0.2+git17.g491c742
+Version:        1.0.2+git19.g0c60ffb
 Release:        0
 Summary:        Script for kdump
 License:        GPL-2.0-or-later

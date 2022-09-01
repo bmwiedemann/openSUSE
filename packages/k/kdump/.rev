@@ -1091,4 +1091,12 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>989496</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>fbd964ff76197a93274754e1d8c3e7ab</srcmd5>
+    <version>1.0.2+git19.g0c60ffb</version>
+    <time>1662062985</time>
+    <user>dimstar_suse</user>
+    <comment>- mkdumprd: replace mkinitrd with native dracut (bsc#1202443)</comment>
+    <requestid>1000481</requestid>
+  </revision>
 </revisionlist>
