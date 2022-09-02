@@ -279,12 +279,14 @@ Patch306:       glibc-fix-double-loopback.diff
 ###
 # Patches from upstream
 ###
-# PATCH-FIX-OPENSUSE glibcextract.py: Add compile_c_snippet
+# PATCH-FIX-UPSTREAM glibcextract.py: Add compile_c_snippet
 Patch1000:      glibcextract-compile-c-snippet.patch
-# PATCH-FIX-OPENSUSE linux: Mimic kernel definition for BLOCK_SIZE
+# PATCH-FIX-UPSTREAM linux: Mimic kernel definition for BLOCK_SIZE
 Patch1001:      sys-mount-kernel-definition.patch
-# PATCH-FIX-OPENSUSE linux: Fix sys/mount.h usage with kernel headers
+# PATCH-FIX-UPSTREAM linux: Fix sys/mount.h usage with kernel headers
 Patch1002:      sys-mount-usage.patch
+# PATCH-FIX-UPSTREAM nscd: Fix netlink cache invalidation if epoll is used (BZ #29415)
+Patch1003:      nscd-netlink-cache-invalidation.patch
 
 ###
 # Patches awaiting upstream approval
@@ -512,6 +514,7 @@ library in a cross compilation setting.
 %patch1000 -p1
 %patch1001 -p1
 %patch1002 -p1
+%patch1003 -p1
 %endif
 
 %patch2000 -p1

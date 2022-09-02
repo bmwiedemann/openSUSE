@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 24 09:29:02 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- nscd-netlink-cache-invalidation.patch: nscd: Fix netlink cache
+  invalidation if epoll is used (boo#1199964, BZ #29415)
+
+-------------------------------------------------------------------
 Mon Aug 15 09:21:34 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - glibcextract-compile-c-snippet.patch: glibcextract.py: Add
