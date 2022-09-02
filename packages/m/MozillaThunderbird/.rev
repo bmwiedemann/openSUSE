@@ -4363,4 +4363,25 @@ I cannot test locally unfortunately.
   (boo#1202606)</comment>
     <requestid>999347</requestid>
   </revision>
+  <revision rev="287" vrev="1">
+    <srcmd5>e0b79bf7074709b756ef0ec80830d864</srcmd5>
+    <version>102.2.1</version>
+    <time>1662148572</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.2.1
+  MFSA 2022-38 (bsc#1203007)
+  * CVE-2022-3033 (bmo#1784838)
+    Leaking of sensitive information when composing a response to
+    an HTML email with a META refresh tag
+  * CVE-2022-3032 (bmo#1783831)
+    Remote content specified in an HTML document that was nested
+    inside an iframe's srcdoc attribute was not blocked
+  * CVE-2022-3034 (bmo#1745751)
+    An iframe element in an HTML email could trigger a network
+    request
+  * CVE-2022-36059 (bmo#1787741)
+    Matrix SDK bundled with Thunderbird vulnerable to denial-of-
+    service attack</comment>
+    <requestid>1000596</requestid>
+  </revision>
 </revisionlist>
