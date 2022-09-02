@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 02 06:51:37 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20220902.dceb5b92:
+  * Add SAN
+  * Apply proposed changes.
+  * Do not provide senceless default values for IPAddr2. Fix command line to verify and setup cluster group.
+  * Fix typos
+  * Add documetation to the script
+  * move missplaced directory
+  * Initial version of cryptctl setup script.
+
+-------------------------------------------------------------------
 Tue Aug 30 08:19:38 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20220830.5a63c85f:
