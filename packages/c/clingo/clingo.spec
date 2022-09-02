@@ -1,7 +1,7 @@
 #
 # spec file for package clingo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,10 +74,10 @@ binaries are available at: http://potassco.org/
 %package -n python3-%{name}
 Summary:        Python 3 bindings for Clingo
 Requires:       %{name} = %{version}-%{release}
-Requires:       %{python_module cffi}
-BuildRequires:  %{python_module cffi}
+Requires:       python3-cffi
 BuildRequires:  make
 BuildRequires:  python3
+BuildRequires:  python3-cffi
 BuildRequires:  python3-devel
 
 %description -n python3-%{name}
@@ -126,7 +126,8 @@ rm $RPM_BUILD_ROOT/%{python3_sitearch}/%{name}/py.typed
 %postun -n %{lib_name}%{major} -p /sbin/ldconfig
 
 %files
-%doc README.md INSTALL.md LICENSE.md
+%doc README.md INSTALL.md
+%license LICENSE.md
 %attr(0755,root,root) %{_bindir}/clasp
 %attr(0755,root,root) %{_bindir}/clingo
 %attr(0755,root,root) %{_bindir}/gringo
@@ -134,7 +135,8 @@ rm $RPM_BUILD_ROOT/%{python3_sitearch}/%{name}/py.typed
 %attr(0755,root,root) %{_bindir}/reify
 
 %files -n %{lib_name}%{major}
-%doc README.md INSTALL.md LICENSE.md
+%doc README.md INSTALL.md
+%license LICENSE.md
 %defattr(-,root,root)
 %{_libdir}/libclingo.so.4*
 
