@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 29 12:13:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.96:
+  * Minor changes from 0.1.94, fixing build.
+  * Fix of crash on non-aligned data for SIMD, add commandline tool, improve vala
+    compatibility of introspection info.
+- drop patches 2dc7fc40.patch, b05b2826.patch (upstream)
+
+-------------------------------------------------------------------
 Tue May  3 12:57:14 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add patches, backported from git, to fix build with meson 0.62:
