@@ -1211,4 +1211,12 @@ This is a bug fix only release.
 - readd ebtables too, as there is no builtin support.</comment>
     <requestid>992210</requestid>
   </revision>
+  <revision rev="73" vrev="6">
+    <srcmd5>cc784df847a3425d0d0d3b3024a0de76</srcmd5>
+    <version>1.2.0</version>
+    <time>1662148585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000604</requestid>
+  </revision>
 </revisionlist>

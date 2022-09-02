@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  1 07:55:30 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration to /usr/etc: Saving user changed configuration files
+  in /etc and restoring them while an RPM update.
+
+-------------------------------------------------------------------
 Tue Aug  2 09:17:56 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - readd ipset buildrequires to reenable ipset support (bsc#1202043)

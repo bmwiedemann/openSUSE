@@ -1,7 +1,7 @@
 #
 # spec file for package firewalld
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,14 +43,14 @@ BuildRequires:  docbook-xsl-stylesheets
 # Adding tools to BuildRequires as well so they can be autodetected
 # Else the configure tool will set them to /bin/false
 BuildRequires:  fdupes
+BuildRequires:  ebtables
 BuildRequires:  gettext
 BuildRequires:  glib2-devel
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
-BuildRequires:  iptables
-BuildRequires:  ebtables
 BuildRequires:  ipset
+BuildRequires:  iptables
 BuildRequires:  libxslt-tools
 BuildRequires:  python3-devel
 BuildRequires:  systemd-rpm-macros
@@ -208,6 +208,12 @@ for _f in %{?modprobe_d_files}; do
     [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
         mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
 done
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/firewalld ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
 
 %post
 %service_add_post firewalld.service
@@ -229,6 +235,12 @@ for _f in %{?modprobe_d_files}; do
     [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
         mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
 done
+%if 0%{?suse_version} > 1500
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/firewalld ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post -n firewall-applet
 /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
