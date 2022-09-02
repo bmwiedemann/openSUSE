@@ -2,6 +2,7 @@
 Wed Mar 30 09:26:35 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the standalone JavaEE modules inconditionally
+  (jsc#SLE-23217)
 
 -------------------------------------------------------------------
 Thu Mar 17 13:26:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
