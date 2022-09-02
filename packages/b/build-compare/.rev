@@ -1061,4 +1061,12 @@ In home:RedDwarf/kdenlive makes a difference. You can see the openSUSE_Factory/x
 - Remove warning about python mtime mismatch, a republish will not help (bsc#915948)</comment>
     <requestid>984012</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>760460b6c9687b892edf4a0094681427</srcmd5>
+    <version>20220823T100012.86340a1</version>
+    <time>1662148564</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1000215</requestid>
+  </revision>
 </revisionlist>

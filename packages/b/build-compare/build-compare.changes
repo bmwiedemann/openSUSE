@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 23 06:53:29 UTC 2022 - Martin Kampas <martin.kampas@jolla.com>
+
+- handle more setuid/setgid ELF variants (#54)
+
+-------------------------------------------------------------------
 Mon Jun 20 12:34:56 UTC 2022 - olaf@aepfle.de
 
 - fix objdump parsing for non-executable sections (#53)

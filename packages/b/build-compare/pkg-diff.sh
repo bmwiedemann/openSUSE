@@ -916,7 +916,9 @@ check_single_file()
        fi
        ;;
     ELF*executable*|\
+    set?id\ ELF*executable*|\
     ELF*[LM]SB\ relocatable*|\
+    set?id\ ELF*[LM]SB\ relocatable*|\
     ELF*[LM]SB\ shared\ object*|\
     set?id\ ELF*[LM]SB\ shared\ object*|\
     ELF*[LM]SB\ pie\ executable*|\
