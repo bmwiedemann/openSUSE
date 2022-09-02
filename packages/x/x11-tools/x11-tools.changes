@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  1 14:33:56 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- nvidia-pre-install
+  * mkinitrd will be removed from TW; /etc/sysconfig/kernel no
+    longer exits anyway since a long time (boo#1203025)
+
+-------------------------------------------------------------------
 Mon Oct 19 03:10:18 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - move skeleton files to /usr/etc/skel on Tumbleweed (boo#1176431) 
