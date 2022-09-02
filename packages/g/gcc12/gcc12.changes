@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Aug 31 12:38:20 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Prune invalid-license rpmlint warnings, the SLE12 codestream
+  doesn't get fixed but FF applies there, too.  [bsc#1185337]
+
+-------------------------------------------------------------------
+Tue Aug 30 10:09:37 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-12 branch head, e927d1cf141f221c5a32574bde0, git416 
+  * includes GCC 12.2 release
+  * includes recent fixes backported from trunk
+
+-------------------------------------------------------------------
+Mon Aug 29 07:48:00 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add gcc12-fifo-jobserver-support.patch that adds support
+  for FIFO jobserver for make.
+
+-------------------------------------------------------------------
+Sun Aug 21 09:31:35 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Allow cross-pru-gcc12-bootstrap for armv7l architecture.
+  PRU architecture is used for real-time MCUs embedded into TI
+  armv7l and aarch64 SoCs. We need to have cross-pru-gcc12 for
+  armv7l in order to build both host applications and PRU firmware
+  during the same build.
+
+-------------------------------------------------------------------
 Fri Aug 12 11:06:04 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-12 branch head, 6b7d570a5001bb79e34c0d1626a, git372

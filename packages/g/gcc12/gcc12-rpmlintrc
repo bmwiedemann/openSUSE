@@ -15,4 +15,5 @@ addFilter ("shlib-legacy-policy-name-error")
 # Packages provide libgcc_s1 = $version and conflict with other providers
 # of libgcc_s1
 addFilter ("conflicts-with-provides")
-
+# SLE12 rpmlint complains about valid SPDX licenses
+addFilter ("invalid-license")

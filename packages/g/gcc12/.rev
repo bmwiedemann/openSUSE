@@ -85,4 +85,26 @@ to release my review on the gcc package now.
 - Remove workaround for obs-service-format_spec_file.</comment>
     <requestid>995120</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>749760c3c760d0fd4cbcead103c41c6e</srcmd5>
+    <version>12.2.1+git416</version>
+    <time>1662148559</time>
+    <user>dimstar_suse</user>
+    <comment>- Prune invalid-license rpmlint warnings, the SLE12 codestream
+  doesn't get fixed but FF applies there, too.  [bsc#1185337]
+
+- Update to gcc-12 branch head, e927d1cf141f221c5a32574bde0, git416 
+  * includes GCC 12.2 release
+  * includes recent fixes backported from trunk
+
+- Add gcc12-fifo-jobserver-support.patch that adds support
+  for FIFO jobserver for make.
+
+- Allow cross-pru-gcc12-bootstrap for armv7l architecture.
+  PRU architecture is used for real-time MCUs embedded into TI
+  armv7l and aarch64 SoCs. We need to have cross-pru-gcc12 for
+  armv7l in order to build both host applications and PRU firmware
+  during the same build.</comment>
+    <requestid>1000443</requestid>
+  </revision>
 </revisionlist>

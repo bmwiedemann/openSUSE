@@ -186,7 +186,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        12.1.1+git372
+Version:        12.2.1+git416
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -367,6 +367,7 @@ Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch18:        gcc10-amdgcn-llvm-as.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
+Patch21:        gcc12-fifo-jobserver-support.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -2022,6 +2023,7 @@ cd ..
 %patch15
 %patch16
 %patch17 -p1
+%patch21 -p1
 # These patches are needed only for llvm11
 %if "%{TARGET_ARCH}" == "amdgcn" && %{suse_version} < 1550
 %patch18 -p1
