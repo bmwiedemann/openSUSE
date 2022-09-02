@@ -27,7 +27,7 @@ Index: contrib/dist/rpm/proftpd.logrotate
 ===================================================================
 --- contrib/dist/rpm/proftpd.logrotate.orig
 +++ contrib/dist/rpm/proftpd.logrotate
-@@ -1,10 +1,16 @@
+@@ -1,10 +1,15 @@
 -/var/log/proftpd/*.log /var/log/xferlog {
 +/var/log/proftpd/xferlog /var/log/proftpd/*.log {
      compress
@@ -42,8 +42,7 @@ Index: contrib/dist/rpm/proftpd.logrotate
      sharedscripts
      postrotate
 -        test -f /var/lock/subsys/proftpd && /usr/bin/killall -HUP proftpd || :
-+     /usr/sbin/rcproftpd reload
-+     #/etc/init.d/xinetd reload
++      /usr/sbin/rcproftpd reload
      endscript
  }
  
@@ -56,18 +55,23 @@ Index: contrib/dist/rpm/xinetd
  service ftp
  {
 -	flags           = REUSE
- 	socket_type     = stream
-+	protocol        = tcp
- 	wait            = no
-+#	bind            = IP
-+	instances       = 30
- 	user            = root
- 	server          = /usr/sbin/in.proftpd
+-	socket_type     = stream
+-	wait            = no
+-	user            = root
+-	server          = /usr/sbin/in.proftpd
 -	log_on_success  += DURATION
 -	log_on_failure  += USERID
 -	nice		= 10
-+	log_on_success  += PID HOST USERID EXIT DURATION
-+	log_on_failure  += HOST USERID ATTEMPT
-+#	nice		= 10
- 	disable         = yes
+-	disable         = yes
++  socket_type     = stream
++  protocol        = tcp
++  wait            = no
++# bind            = IP
++  instances       = 30
++  user            = root
++  server          = /usr/sbin/in.proftpd
++  log_on_success  += PID HOST USERID EXIT DURATION
++  log_on_failure  += HOST USERID ATTEMPT
++# nice            = 10
++  disable         = yes
  }
