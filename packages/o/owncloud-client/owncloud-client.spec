@@ -18,7 +18,7 @@
 
 Name:           owncloud-client
 
-Version:        2.11.0
+Version:        2.11.1
 Release:        0
 
 Summary:        The ownCloud synchronization client
