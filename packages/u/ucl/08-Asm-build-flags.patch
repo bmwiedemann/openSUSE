@@ -1,0 +1,27 @@
+From: Robert Luberda <robert@debian.org>
+Date: Mon, 11 Jan 2021 08:45:08 +0100
+Subject: Pass C*FLAGS while compiling assembly
+
+Make build log checker happy by passing CPPFLAGS and CFLAGS
+to gcc calls that compile assembly code.
+---
+ src/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index bdb99a0..043b8af 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -56,10 +56,10 @@ UCL_ASM_OBJECTS = \
+ 	n2e_d_s1.lo n2e_d_s2.lo n2e_d_s3.lo n2e_d_s4.lo n2e_d_s5.lo n2e_d_s6.lo
+ 
+ .S.o:
+-	$(CC) -c $<
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c $<
+ 
+ .S.lo:
+-	$(LIBTOOL) --mode=compile $(CC) -c $<
++	$(LIBTOOL) --mode=compile $(CC) $(CPPFLAGS) $(CFLAGS) -c $<
+ 
+ endif
+ 

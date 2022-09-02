@@ -1,0 +1,13 @@
+Index: ucl-1.03/asm/i386/src_gas/asminit.def
+===================================================================
+--- ucl-1.03.orig/asm/i386/src_gas/asminit.def
++++ ucl-1.03/asm/i386/src_gas/asminit.def
+@@ -48,5 +48,7 @@
+ #ifndef db
+ #  define db            .byte
+ #endif
+-
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
+ .text

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Aug 31 19:39:05 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Remove upx-207.patch not mentioned in spec file as patch:
+  Replaced by 05-Fix-double-free.patch.
+- Start patch list at index 0.
+
+-------------------------------------------------------------------
+Mon Jun 27 02:18:55 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Import debian patch sets. This fixes some bugs and 
+  allows us to build the library without any special CFLAGS:
+  * ucl-noexecstack.patch
+  * 01-Examples.patch
+  * 02-Autoreconf.patch
+  * 03-Reproducible-build.patch
+  * 04-Static-assert.patch
+  * 05-Fix-double-free.patch
+  * 06-Fix-memory-errors.patch
+  * 07-Fix-FTBFS-on-x32.patch
+  * 08-Asm-build-flags.patch
+
+-------------------------------------------------------------------
+Sun Jun 26 01:15:00 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Add ucl-noexecstack.patch: Fix FTBS on i586 due to executable
+  stack
+
+-------------------------------------------------------------------
 Thu Jan 23 23:35:45 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add upx-207.patch

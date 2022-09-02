@@ -1,7 +1,7 @@
 #
 # spec file for package ucl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,15 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.oberhumer.com/opensource/ucl/
 Source0:        http://www.oberhumer.com/opensource/ucl/download/ucl-%{version}.tar.gz
-Patch1:         upx-207.patch
+Patch0:         ucl-noexecstack.patch
+Patch1:         01-Examples.patch
+Patch2:         02-Autoreconf.patch
+Patch3:         03-Reproducible-build.patch
+Patch4:         04-Static-assert.patch
+Patch5:         05-Fix-double-free.patch
+Patch6:         06-Fix-memory-errors.patch
+Patch7:         07-Fix-FTBFS-on-x32.patch
+Patch8:         08-Asm-build-flags.patch
 BuildRequires:  gcc-c++
 
 %description
@@ -57,8 +65,6 @@ Headers and other development files for UCL library.
 %autosetup -p1
 
 %build
-export CFLAGS="%{optflags} -std=c90"
-export CXXFLAGS="%{optflags} -std=c90"
 %configure \
   --disable-static \
   --enable-shared

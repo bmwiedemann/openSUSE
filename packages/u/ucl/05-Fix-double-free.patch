@@ -1,0 +1,52 @@
+From: John Reiser <jreiser@users.sourceforge.net>
+Date: Mon, 27 Aug 2018 20:32:39 +0200
+Subject: Fix double free (memory clobbered) bug visible in upx
+
+Patch from https://github.com/upx/upx/issues/207
+to fix a crash in upx occurring on malformed input.
+
+The "m_len + 1" in
+
+        fail(olen + (m_len + 1) > oend, UCL_E_OUTPUT_OVERRUN);
+
+should match the "m_len + 1" in
+
+         olen += m_len + 1;
+
+because it is the number of increments of olen in the copy step:
+
+            dst[olen++] = *m_pos++;
+            do dst[olen++] = *m_pos++; while (--m_len > 0);
+
+Bugs-Debian: https://bugs.debian.org/907426
+---
+ src/n2b_d.c | 2 +-
+ src/n2e_d.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/n2b_d.c b/src/n2b_d.c
+index 26b6ca5..2725c59 100644
+--- a/src/n2b_d.c
++++ b/src/n2b_d.c
+@@ -101,7 +101,7 @@
+             m_len += 2;
+         }
+         m_len += (m_off > 0xd00);
+-        fail(olen + m_len > oend, UCL_E_OUTPUT_OVERRUN);
++        fail(olen + m_len + 1> oend, UCL_E_OUTPUT_OVERRUN);
+         fail(m_off > olen, UCL_E_LOOKBEHIND_OVERRUN);
+ #ifdef TEST_OVERLAP
+         olen += m_len + 1;
+diff --git a/src/n2e_d.c b/src/n2e_d.c
+index efddb49..d40059d 100644
+--- a/src/n2e_d.c
++++ b/src/n2e_d.c
+@@ -109,7 +109,7 @@
+             m_len += 3;
+         }
+         m_len += (m_off > 0x500);
+-        fail(olen + m_len > oend, UCL_E_OUTPUT_OVERRUN);
++        fail(olen + m_len + 1> oend, UCL_E_OUTPUT_OVERRUN);
+         fail(m_off > olen, UCL_E_LOOKBEHIND_OVERRUN);
+ #ifdef TEST_OVERLAP
+         olen += m_len + 1;
