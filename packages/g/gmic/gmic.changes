@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  2 07:08:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.1.6
+  * HiDPI support added to gmic-qt
+- Rebase krita5.patch
+
+-------------------------------------------------------------------
 Thu Aug 25 07:44:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 3.1.5. No changelog.

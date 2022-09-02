@@ -43,9 +43,9 @@ index 3c3fd21..dcd3564 100644
 --- a/gmic-qt/CMakeLists.txt
 +++ b/gmic-qt/CMakeLists.txt
 @@ -22,7 +22,7 @@ endif()
- 
+
  message("Build type is " ${CMAKE_BUILD_TYPE})
- 
+
 -set (GMIC_QT_HOST "gimp" CACHE STRING "Define for which host gmic-qt will be built: gimp, gimp3 (experimental), krita, none, paintdotnet or 8bf.")
 +set (GMIC_QT_HOST "gimp" CACHE STRING "Define for which host gmic-qt will be built: gimp, gimp3 (experimental), krita, krita-plugin, none, paintdotnet or 8bf.")
  if (${GMIC_QT_HOST} STREQUAL "none")
@@ -120,17 +120,17 @@ index 3c3fd21..dcd3564 100644
 +      )
 +    endif()
 +    install(TARGETS krita_gmic_qt DESTINATION ${KRITA_PLUGIN_INSTALL_DIR}) # plugin
- 
+
  elseif (${GMIC_QT_HOST} STREQUAL "none")
- 
+
 @@ -666,7 +731,7 @@ elseif (${GMIC_QT_HOST} STREQUAL "8bf")
        )
- 
+
  else()
 -    message(FATAL_ERROR "GMIC_QT_HOST is not defined as gimp, gimp3, krita, none, paintdotnet or 8bf")
 +    message(FATAL_ERROR "GMIC_QT_HOST is not defined as gimp, gimp3, krita, krita-plugin, none, paintdotnet or 8bf")
  endif()
- 
+
  feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 diff --git a/gmic-qt/gmic_krita_qt.desktop b/gmic-qt/gmic_krita_qt.desktop
 new file mode 100644
@@ -148,7 +148,7 @@ index 0000000..579d427
 +Categories=Qt;KDE;Graphics;
 +StartupNotify=false
 diff --git a/gmic-qt/src/DialogSettings.cpp b/gmic-qt/src/DialogSettings.cpp
-index 5f49314..2bc8b9b 100644
+index e89eafb..051122e 100644
 --- a/gmic-qt/src/DialogSettings.cpp
 +++ b/gmic-qt/src/DialogSettings.cpp
 @@ -56,11 +56,7 @@ DialogSettings::DialogSettings(QWidget * parent) : QDialog(parent), ui(new Ui::D
@@ -161,11 +161,11 @@ index 5f49314..2bc8b9b 100644
 -    }
 -  }
 +  ui->cbUpdatePeriodicity->setCurrentIndex(ui->cbUpdatePeriodicity->findData(Settings::updatePeriodicity()));
- 
+
    ui->outputMessages->setToolTip(tr("Output messages"));
    ui->outputMessages->addItem(tr("Quiet (default)"), (int)OutputMessageMode::Quiet);
 @@ -81,9 +77,12 @@ DialogSettings::DialogSettings(QWidget * parent) : QDialog(parent), ui(new Ui::D
- 
+
    ui->rbLeftPreview->setChecked(Settings::previewPosition() == MainWindow::PreviewPosition::Left);
    ui->rbRightPreview->setChecked(Settings::previewPosition() == MainWindow::PreviewPosition::Right);
 -  const bool savedDarkTheme = QSettings().value(DARK_THEME_KEY, GmicQtHost::DarkThemeIsDefault).toBool();
@@ -178,8 +178,8 @@ index 5f49314..2bc8b9b 100644
    ui->cbNativeColorDialogs->setChecked(Settings::nativeColorDialogs());
    ui->cbNativeColorDialogs->setToolTip(tr("Check to use Native/OS color dialog, uncheck to use Qt's"));
    ui->cbShowLogos->setChecked(Settings::visibleLogos());
-@@ -93,22 +92,41 @@ DialogSettings::DialogSettings(QWidget * parent) : QDialog(parent), ui(new Ui::D
- 
+@@ -94,23 +93,42 @@ DialogSettings::DialogSettings(QWidget * parent) : QDialog(parent), ui(new Ui::D
+
    connect(ui->pbOk, &QPushButton::clicked, this, &DialogSettings::onOk);
    connect(ui->rbLeftPreview, &QRadioButton::toggled, this, &DialogSettings::onRadioLeftPreviewToggled);
 +#ifdef _GMIC_QT_DISABLE_UPDATES_
@@ -208,28 +208,29 @@ index 5f49314..2bc8b9b 100644
 +#else
    connect(ui->cbNotifyFailedUpdate, &QCheckBox::toggled, this, &DialogSettings::onNotifyStartupUpdateFailedToggle);
 +#endif
- 
+   connect(ui->cbHighDPI, &QCheckBox::toggled, this, &DialogSettings::onHighDPIToggled);
+
 +#ifdef _GMIC_QT_DISABLE_TRANSLATION_
 +  ui->languageSelector->setEnabled(false);
 +#else
    ui->languageSelector->selectLanguage(Settings::languageCode());
    ui->languageSelector->enableFilterTranslation(Settings::filterTranslationEnabled());
 +#endif
- 
+
 +#ifndef _GMIC_QT_DISABLE_THEMING_
    if (Settings::darkThemeEnabled()) {
      QPalette p = ui->cbNativeColorDialogs->palette();
      p.setColor(QPalette::Text, Settings::CheckBoxTextColor);
-@@ -123,6 +141,7 @@ DialogSettings::DialogSettings(QWidget * parent) : QDialog(parent), ui(new Ui::D
-     ui->cbShowLogos->setPalette(p);
+@@ -126,6 +144,7 @@ DialogSettings::DialogSettings(QWidget * parent) : QDialog(parent), ui(new Ui::D
      ui->cbNotifyFailedUpdate->setPalette(p);
+     ui->cbHighDPI->setPalette(p);
    }
 +#endif
    ui->pbOk->setFocus();
    ui->tabWidget->setCurrentIndex(0);
  }
-@@ -139,7 +158,7 @@ void DialogSettings::onOk()
- 
+@@ -142,7 +161,7 @@ void DialogSettings::onOk()
+
  void DialogSettings::done(int r)
  {
 -  QSettings settings;
@@ -281,7 +282,7 @@ index 0bdcba7..2a657c0 100644
 --- a/gmic-qt/src/FilterParameters/IntParameter.cpp
 +++ b/gmic-qt/src/FilterParameters/IntParameter.cpp
 @@ -80,12 +80,14 @@ bool IntParameter::addTo(QWidget * widget, int row)
- 
+
    _spinBox = new CustomSpinBox(widget, _min, _max);
    _spinBox->setValue(_value);
 +#ifndef _GMIC_QT_DISABLE_THEMING_
@@ -302,7 +303,7 @@ index 7ba97f1..b45c58d 100644
 @@ -89,12 +89,14 @@ bool NoteParameter::initFromText(const QString & /* filterName */, const char *
    _text.remove(QRegExp("^\"")).remove(QRegExp("\"$")).replace(QString("\\\""), "\"");
    _text.replace(QString("\\n"), "<br/>");
- 
+
 +#ifndef _GMIC_QT_DISABLE_THEMING_
    if (Settings::darkThemeEnabled()) {
      _text.replace(QRegExp("color\\s*=\\s*\"purple\""), QString("color=\"#ff00ff\""));
@@ -311,7 +312,7 @@ index 7ba97f1..b45c58d 100644
      _text.replace(QRegExp("foreground\\s*=\\s*\"blue\""), QString("foreground=\"#9b9bff\""));
    }
 +#endif
- 
+
    _text.replace(QRegExp("color\\s*=\\s*\""), QString("style=\"color:"));
    _text.replace(QRegExp("foreground\\s*=\\s*\""), QString("style=\"color:"));
 diff --git a/gmic-qt/src/FilterParameters/SeparatorParameter.cpp b/gmic-qt/src/FilterParameters/SeparatorParameter.cpp
@@ -344,10 +345,10 @@ index 7ea2564..0719e17 100644
    }
  }
 diff --git a/gmic-qt/src/Globals.h b/gmic-qt/src/Globals.h
-index 9d38982..782a732 100644
+index 0515a52..7781e4b 100644
 --- a/gmic-qt/src/Globals.h
 +++ b/gmic-qt/src/Globals.h
-@@ -55,7 +55,13 @@ const char WarningPrefix = '!';
+@@ -56,7 +56,13 @@ const char WarningPrefix = '!';
  #define ONE_WEEK_HOURS (7 * 24)
  #define TWO_WEEKS_HOURS (14 * 24)
  #define ONE_MONTH_HOURS (30 * 24)
@@ -358,13 +359,13 @@ index 9d38982..782a732 100644
  #define INTERNET_DEFAULT_PERIODICITY ONE_MONTH_HOURS
 +#define INTERNET_DEFAULT_REFRESH_UPDATE 1
 +#endif
- 
+
  #define PREVIEW_MAX_ZOOM_FACTOR 40.0
- 
-@@ -64,4 +70,17 @@ const char WarningPrefix = '!';
+
+@@ -65,4 +71,17 @@ const char WarningPrefix = '!';
  #define KEYPOINTS_INTERACTIVE_MIDDLE_DELAY_MS ((KEYPOINTS_INTERACTIVE_LOWER_DELAY_MS + KEYPOINTS_INTERACTIVE_UPPER_DELAY_MS) / 2)
  #define KEYPOINTS_INTERACTIVE_AVERAGING_COUNT 6
- 
+
 +#ifdef _GMIC_USE_HOSTED_SETTINGS_
 +#ifdef Q_OS_MACOS
 +#define GMIC_SETTINGS(x) QSettings x(GMIC_QT_ORGANISATION_DOMAIN, GMIC_QT_APPLICATION_NAME)
@@ -386,7 +387,7 @@ index b3c177d..a288193 100644
 @@ -192,6 +192,11 @@ bool GmicProcessor::isIdle() const
    return !_filterThread;
  }
- 
+
 +bool GmicProcessor::isInputImagesEmpty() const
 +{
 +  return _gmicImages->is_empty();
@@ -400,15 +401,15 @@ index caf4c2f..55f8a2a 100644
 --- a/gmic-qt/src/GmicProcessor.h
 +++ b/gmic-qt/src/GmicProcessor.h
 @@ -92,6 +92,7 @@ public:
- 
+
    bool isProcessing() const;
    bool isIdle() const;
 +  bool isInputImagesEmpty() const;
    bool hasUnfinishedAbortedThreads() const;
- 
+
    const cimg_library::CImg<float> & previewImage() const;
 diff --git a/gmic-qt/src/GmicQt.cpp b/gmic-qt/src/GmicQt.cpp
-index 646aac1..ab889fa 100644
+index 080514f..7bbc877 100644
 --- a/gmic-qt/src/GmicQt.cpp
 +++ b/gmic-qt/src/GmicQt.cpp
 @@ -90,7 +90,7 @@ RunParameters lastAppliedFilterRunParameters(ReturnedRunParametersFlag flag)
@@ -429,19 +430,18 @@ index 646aac1..ab889fa 100644
        mainWindow.showMaximized();
      } else {
        mainWindow.show();
-@@ -548,10 +548,12 @@ namespace
- 
+@@ -548,9 +548,11 @@ namespace
+
  void configureApplication()
  {
 +#ifndef _GMIC_USE_HOSTED_SETTINGS_
    QCoreApplication::setOrganizationName(GMIC_QT_ORGANISATION_NAME);
    QCoreApplication::setOrganizationDomain(GMIC_QT_ORGANISATION_DOMAIN);
    QCoreApplication::setApplicationName(GMIC_QT_APPLICATION_NAME);
-   QCoreApplication::setAttribute(Qt::AA_DontUseNativeMenuBar);
 +#endif
- }
- 
- void disableModes(const std::list<GmicQt::InputMode> & disabledInputModes, //
+   QCoreApplication::setAttribute(Qt::AA_DontUseNativeMenuBar);
+   if (QSettings().value(HIGHDPI_KEY, false).toBool()) {
+     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 diff --git a/gmic-qt/src/HeadlessProcessor.cpp b/gmic-qt/src/HeadlessProcessor.cpp
 index 0f88b32..c7ed61b 100644
 --- a/gmic-qt/src/HeadlessProcessor.cpp
@@ -455,7 +455,7 @@ index 0f88b32..c7ed61b 100644
  #include "FilterParameters/FilterParametersWidget.h"
  #include "FilterSelector/FiltersPresenter.h"
 @@ -74,7 +75,7 @@ HeadlessProcessor::~HeadlessProcessor()
- 
+
  bool HeadlessProcessor::setPluginParameters(const RunParameters & parameters)
  {
 -  QSettings settings;
@@ -480,7 +480,7 @@ index 0f88b32..c7ed61b 100644
    QCoreApplication::exit(!errorMessage.isEmpty());
 +#endif
  }
- 
+
  } // namespace GmicQt
 diff --git a/gmic-qt/src/Host/KritaPlugin/gmicqttoolplugin.cpp b/gmic-qt/src/Host/KritaPlugin/gmicqttoolplugin.cpp
 new file mode 100644
@@ -1010,15 +1010,15 @@ index b351994..d92386d 100644
 +
  int JpegQualityDialog::_permanentQuality = -1;
  int JpegQualityDialog::_selectedQuality = -1;
- 
+
 @@ -14,7 +16,7 @@ JpegQualityDialog::JpegQualityDialog(QWidget * parent) : QDialog(parent), ui(new
    ui->spinBox->setRange(0, 100);
- 
+
    if (_selectedQuality == -1) {
 -    _selectedQuality = QSettings().value(JPEG_QUALITY_KEY, 85).toInt();
 +    _selectedQuality = GMIC_SETTINGS_INLINE.value(JPEG_QUALITY_KEY, 85).toInt();
    }
- 
+
    ui->slider->setValue(_selectedQuality);
 @@ -24,7 +26,7 @@ JpegQualityDialog::JpegQualityDialog(QWidget * parent) : QDialog(parent), ui(new
    connect(ui->spinBox, QOverload<int>::of(&QSpinBox::valueChanged), ui->slider, &QSlider::setValue);
@@ -1036,13 +1036,13 @@ index 6da4d84..05d8b4b 100644
 @@ -23,6 +23,7 @@
   *
   */
- 
+
 +#include "Globals.h"
  #include "LanguageSettings.h"
  #include <QApplication>
  #include <QDebug>
 @@ -66,7 +67,11 @@ const QMap<QString, QString> & LanguageSettings::availableLanguages()
- 
+
  QString LanguageSettings::configuredTranslator()
  {
 -  QString code = QSettings().value(LANGUAGE_CODE_KEY, QString()).toString();
@@ -1079,11 +1079,11 @@ index f0e0b66..713b162 100644
 +#endif
      ui->tbUpdateFilters->setToolTip(updateText);
    }
- 
+
 @@ -279,6 +283,7 @@ void MainWindow::setIcons()
    ui->tbExpandCollapse->setIcon(_expandIcon);
  }
- 
+
 +#ifndef _GMIC_QT_DISABLE_THEMING_
  void MainWindow::setDarkTheme()
  {
@@ -1093,7 +1093,7 @@ index f0e0b66..713b162 100644
    Settings::UnselectedFilterTextColor = Settings::UnselectedFilterTextColor.darker(150);
  }
 +#endif
- 
+
  void MainWindow::setPluginParameters(const RunParameters & parameters)
  {
 @@ -385,7 +391,7 @@ void MainWindow::buildFiltersTree()
@@ -1103,12 +1103,12 @@ index f0e0b66..713b162 100644
 -    QSettings().setValue(FAVES_IMPORT_KEY, true);
 +    GMIC_SETTINGS_INLINE.setValue(FAVES_IMPORT_KEY, true);
    }
- 
+
    _filtersPresenter->toggleSelectionMode(withVisibility);
 @@ -495,7 +501,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
    } else if (status == (int)Updater::UpdateStatus::NotNecessary) {
    }
- 
+
 -  if (QSettings().value(FAVES_IMPORT_KEY, false).toBool() || !FavesModelReader::gmicGTKFaveFileAvailable()) {
 +  if (GMIC_SETTINGS_INLINE.value(FAVES_IMPORT_KEY, false).toBool() || !FavesModelReader::gmicGTKFaveFileAvailable()) {
      _gtkFavesShouldBeImported = false;
@@ -1116,7 +1116,7 @@ index f0e0b66..713b162 100644
      _gtkFavesShouldBeImported = askUserForGTKFavesImport();
 @@ -512,7 +518,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
    }
- 
+
    // Retrieve and select previously selected filter
 -  QString hash = QSettings().value("SelectedFilter", QString()).toString();
 +  QString hash = GMIC_SETTINGS_INLINE.value("SelectedFilter", QString()).toString();
@@ -1140,7 +1140,7 @@ index f0e0b66..713b162 100644
 +#ifndef _GMIC_QT_DISABLE_UPDATES_
    ui->tbUpdateFilters->setEnabled(false);
 +#endif
- 
+
    const FiltersPresenter::Filter currentFilter = _filtersPresenter->currentFilter();
    GmicProcessor::FilterContext context;
 @@ -740,7 +750,9 @@ void MainWindow::onPreviewImageAvailable()
@@ -1154,7 +1154,7 @@ index f0e0b66..713b162 100644
      close();
    }
 @@ -748,9 +760,19 @@ void MainWindow::onPreviewImageAvailable()
- 
+
  void MainWindow::onPreviewError(const QString & message)
  {
 +  // if Krita is too busy generating the images, restart the
@@ -1190,25 +1190,25 @@ index f0e0b66..713b162 100644
 -  Updater::getInstance()->startUpdate(ageLimit, 4, useNetwork);
 +  Updater::getInstance()->startUpdate(ageLimit, 60, useNetwork);
  }
- 
+
  void MainWindow::setZoomConstraint()
 @@ -997,7 +1023,7 @@ void MainWindow::saveCurrentParameters()
- 
+
  void MainWindow::saveSettings()
  {
 -  QSettings settings;
 +  GMIC_SETTINGS(settings);
- 
+
    _filtersPresenter->saveSettings(settings);
- 
+
 @@ -1039,7 +1065,7 @@ void MainWindow::saveSettings()
- 
+
  void MainWindow::loadSettings()
  {
 -  QSettings settings;
 +  GMIC_SETTINGS(settings);
    _filtersPresenter->loadSettings(settings);
- 
+
    _lastExecutionOK = settings.value("LastExecution/ExitedNormally", true).toBool();
 @@ -1055,9 +1081,11 @@ void MainWindow::loadSettings()
    if (settings.value("Config/PreviewPosition", "Left").toString() == "Left") {
@@ -1225,11 +1225,11 @@ index f0e0b66..713b162 100644
 @@ -1101,7 +1129,7 @@ void MainWindow::loadSettings()
      ui->splitter->setSizes(sizes);
    }
- 
+
 -  ui->cbInternetUpdate->setChecked(settings.value("Config/RefreshInternetUpdate", true).toBool());
 +  ui->cbInternetUpdate->setChecked(settings.value(REFRESH_USING_INTERNET_KEY, INTERNET_DEFAULT_REFRESH_UPDATE).toBool());
  }
- 
+
  void MainWindow::setPreviewPosition(MainWindow::PreviewPosition position)
 @@ -1163,7 +1191,7 @@ void MainWindow::setPreviewPosition(MainWindow::PreviewPosition position)
  void MainWindow::adjustVerticalSplitter()
@@ -1273,14 +1273,14 @@ index 8e5bc09..abd9727 100644
    void setDarkTheme();
 +#endif
    void setPluginParameters(const RunParameters & parameters);
- 
+
  public slots:
 diff --git a/gmic-qt/src/Settings.cpp b/gmic-qt/src/Settings.cpp
-index 4ca42ef..72461e9 100644
+index 18b24f8..79ed316 100644
 --- a/gmic-qt/src/Settings.cpp
 +++ b/gmic-qt/src/Settings.cpp
-@@ -66,7 +66,7 @@ QString Settings::NegativeSign('-');
- 
+@@ -67,7 +67,7 @@ QString Settings::NegativeSign('-');
+
  void Settings::load(UserInterfaceMode userInterfaceMode)
  {
 -  QSettings settings;
@@ -1288,8 +1288,8 @@ index 4ca42ef..72461e9 100644
    _visibleLogos = settings.value("LogosAreVisible", true).toBool();
    _darkThemeEnabled = settings.value(DARK_THEME_KEY, GmicQtHost::DarkThemeIsDefault).toBool();
    _languageCode = settings.value(LANGUAGE_CODE_KEY, QString()).toString();
-@@ -107,7 +107,11 @@ void Settings::setVisibleLogos(bool on)
- 
+@@ -109,7 +109,11 @@ void Settings::setVisibleLogos(bool on)
+
  bool Settings::darkThemeEnabled()
  {
 +#ifdef _GMIC_QT_DISABLE_THEMING_
@@ -1298,9 +1298,9 @@ index 4ca42ef..72461e9 100644
    return _darkThemeEnabled;
 +#endif
  }
- 
+
  void Settings::setDarkThemeEnabled(bool on)
-@@ -210,8 +214,10 @@ void Settings::save(QSettings & settings)
+@@ -222,8 +226,10 @@ void Settings::save(QSettings & settings)
    removeObsoleteKeys(settings);
    settings.setValue("LogosAreVisible", _visibleLogos);
    settings.setValue(DARK_THEME_KEY, _darkThemeEnabled);
@@ -1309,7 +1309,7 @@ index 4ca42ef..72461e9 100644
    settings.setValue(ENABLE_FILTER_TRANSLATION, _filterTranslationEnabled);
 +#endif
    settings.setValue("Config/PreviewPosition", (_previewPosition == MainWindow::PreviewPosition::Left) ? "Left" : "Right");
- 
+
    settings.setValue("Config/NativeColorDialogs", _nativeColorDialogs);
 diff --git a/gmic-qt/src/Tags.cpp b/gmic-qt/src/Tags.cpp
 index fae4d99..6b721ce 100644
@@ -1325,7 +1325,7 @@ index fae4d99..6b721ce 100644
 +    action->setIconVisibleInMenu(true);
 +  return action;
  }
- 
+
  QString TagAssets::colorName(TagColor color)
 diff --git a/gmic-qt/src/Widgets/InOutPanel.cpp b/gmic-qt/src/Widgets/InOutPanel.cpp
 index 6d77179..4fc20cd 100644
@@ -1334,14 +1334,14 @@ index 6d77179..4fc20cd 100644
 @@ -157,10 +157,12 @@ void InOutPanel::onResetButtonClicked()
    setState(InputOutputState::Default, true);
  }
- 
+
 +#ifndef _GMIC_QT_DISABLE_THEMING_
  void InOutPanel::setDarkTheme()
  {
    ui->tbReset->setIcon(LOAD_ICON("view-refresh"));
  }
 +#endif
- 
+
  void InOutPanel::setDefaultInputMode()
  {
 diff --git a/gmic-qt/src/Widgets/InOutPanel.h b/gmic-qt/src/Widgets/InOutPanel.h
@@ -1355,7 +1355,7 @@ index 381bc64..7939d3a 100644
 +#ifndef _GMIC_QT_DISABLE_THEMING_
    void setDarkTheme();
 +#endif
- 
+
  private:
    static void setDefaultInputMode();
 diff --git a/gmic-qt/src/Widgets/ProgressInfoWindow.cpp b/gmic-qt/src/Widgets/ProgressInfoWindow.cpp
@@ -1365,19 +1365,19 @@ index 1cb8437..8d27f9f 100644
 @@ -62,9 +62,11 @@ ProgressInfoWindow::ProgressInfoWindow(HeadlessProcessor * processor) : QMainWin
    connect(processor, &HeadlessProcessor::done, this, &ProgressInfoWindow::onProcessingFinished);
    _isShown = false;
- 
+
 +#ifndef _GMIC_QT_DISABLE_THEMING_
    if (Settings::darkThemeEnabled()) {
      setDarkTheme();
    }
 +#endif
  }
- 
+
  ProgressInfoWindow::~ProgressInfoWindow()
 @@ -88,6 +90,7 @@ void ProgressInfoWindow::closeEvent(QCloseEvent * event)
    event->accept();
  }
- 
+
 +#ifndef _GMIC_QT_DISABLE_THEMING_
  void ProgressInfoWindow::setDarkTheme()
  {
@@ -1387,7 +1387,7 @@ index 1cb8437..8d27f9f 100644
    qApp->setPalette(p);
  }
 +#endif
- 
+
  void ProgressInfoWindow::onCancelClicked(bool)
  {
 diff --git a/gmic-qt/src/Widgets/ProgressInfoWindow.h b/gmic-qt/src/Widgets/ProgressInfoWindow.h
@@ -1401,11 +1401,11 @@ index 2fe13cd..d1c67ad 100644
 +#ifndef _GMIC_QT_DISABLE_THEMING_
    void setDarkTheme();
 +#endif
- 
+
  public slots:
    void onCancelClicked(bool);
 diff --git a/gmic-qt/ui/dialogsettings.ui b/gmic-qt/ui/dialogsettings.ui
-index 8345152..17d8bb8 100644
+index 3ce2ecc..ab5f10e 100644
 --- a/gmic-qt/ui/dialogsettings.ui
 +++ b/gmic-qt/ui/dialogsettings.ui
 @@ -108,7 +108,7 @@
@@ -1417,6 +1417,6 @@ index 8345152..17d8bb8 100644
           <property name="title">
            <string>Theme</string>
           </property>
--- 
+--
 2.37.2
 

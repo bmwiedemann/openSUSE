@@ -261,4 +261,14 @@
 - Rebase krita5.patch</comment>
     <requestid>999216</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>de24070fcc8d12845a67afe29dc8254f</srcmd5>
+    <version>3.1.6</version>
+    <time>1662148604</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.6
+  * HiDPI support added to gmic-qt
+- Rebase krita5.patch</comment>
+    <requestid>1000834</requestid>
+  </revision>
 </revisionlist>
