@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ruqola
-Version:        1.7.4
+Version:        1.8.0
 Release:        0
 Summary:        Rocket.chat Client
 License:        GPL-2.0-or-later
@@ -29,10 +29,12 @@ Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.x
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 %endif
+# PATCH-FIX-OPENSUSE: Keep the build of the TTS plugin enabled
+Patch0:         keep_tts_plugin.patch
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons) >= 5.84.0
+BuildRequires:  cmake(KF5DBusAddons) >= 5.91.0
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
@@ -103,6 +105,7 @@ It's a native alternative to the official embedded browser type of desktop app a
 %{_kf5_notifydir}/ruqola.notifyrc
 %{_kf5_appstreamdir}/org.kde.ruqola.appdata.xml
 %{_kf5_debugdir}/ruqola.categories
+%{_kf5_debugdir}/ruqola.renamecategories
 
 %if %{with released}
 %files lang -f %{name}.lang

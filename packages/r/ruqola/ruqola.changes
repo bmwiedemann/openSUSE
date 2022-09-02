@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep  1 13:37:27 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.8.0
+  * Add full screen support
+  * Add Notification history
+  * Room avatars
+  * Video conferencing
+  * bug fixes and code cleanup
+- Add keep_tts_plugin.patch to keep the build of the TTS plugin enabled
+
+-------------------------------------------------------------------
 Mon Aug 15 13:59:59 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.7.4
