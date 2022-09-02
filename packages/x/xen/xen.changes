@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  1 06:21:39 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration to /usr/etc: Saving user changed configuration files
+  in /etc and restoring them while an RPM update.
+
+-------------------------------------------------------------------
 Mon Aug 29 10:24:31 MDT 2022 - carnold@suse.com
 
 - bsc#1201994 - Xen DomU unable to emulate audio device

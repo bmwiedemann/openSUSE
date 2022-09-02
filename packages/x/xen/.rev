@@ -2750,4 +2750,12 @@
     <comment>Fix for bsc#1201994 Xen DomU unable to emulate audio device. When qemu version 7.1 becomes available this will not just give a warning as it does now but fail to start the guest.</comment>
     <requestid>1000083</requestid>
   </revision>
+  <revision rev="322" vrev="2">
+    <srcmd5>2969dea3f5fbfeadf11d61c3f6462ca9</srcmd5>
+    <version>4.16.2_04</version>
+    <time>1662148586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000665</requestid>
+  </revision>
 </revisionlist>
