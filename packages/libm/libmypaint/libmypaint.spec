@@ -20,6 +20,7 @@
 %define sonum  0
 %define girver 1.6
 %define shlib %{name}%{sonum}
+%bcond_with introspection
 Name:           libmypaint
 Version:        1.6.1
 Release:        0
@@ -32,7 +33,9 @@ BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gegl-0.4)
 BuildRequires:  pkgconfig(gobject-2.0)
+%if %{with introspection}
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+%endif
 BuildRequires:  pkgconfig(json-c)
 
 %description
@@ -54,7 +57,9 @@ This package provides the shared libraries for %{name}.
 Summary:        Header files for %{name}, a brushstroke creation library
 Group:          Development/Libraries/C and C++
 Requires:       %{shlib} = %{version}
+%if %{with introspection}
 Requires:       typelib-1_0-MyPaint-%{girver} = %{version}
+%endif
 Provides:       mypaint-devel = %{version}
 Obsoletes:      mypaint-devel < %{version}
 
@@ -79,7 +84,9 @@ Summary:        Header files for %{name}, a brushstroke creation library
 Group:          Development/Libraries/C and C++
 Requires:       %{geglshlib} = %{version}
 Requires:       %{shlib} = %{version}
+%if %{with introspection}
 Requires:       typelib-1_0-MyPaintGegl-%{girver} = %{version}
+%endif
 
 %description gegl-devel
 libmypaint, a.k.a. "brushlib", is a library for making brushstrokes which
@@ -118,6 +125,9 @@ chmod -x README.md
 %configure \
 	--enable-gegl \
 	--enable-openmp \
+%if %{without introspection}
+	--disable-introspection \
+%endif
 	%{nil}
 %make_build
 
@@ -142,7 +152,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/libmypaint.pc
 %{_includedir}/%{name}/
+%if %{with introspection}
 %{_datadir}/gir-1.0/MyPaint-%{girver}.gir
+%endif
 
 %files -n %{geglshlib}
 %{_libdir}/%{name}-gegl.so.*
@@ -151,12 +163,16 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}-gegl.so
 %{_libdir}/pkgconfig/libmypaint-gegl.pc
 %{_includedir}/%{name}-gegl/
+%if %{with introspection}
 %{_datadir}/gir-1.0/MyPaintGegl-%{girver}.gir
+%endif
 
+%if %{with introspection}
 %files -n typelib-1_0-MyPaint-%{girver}
 %{_libdir}/girepository-1.0/MyPaint-%{girver}.typelib
 
 %files -n typelib-1_0-MyPaintGegl-%{girver}
 %{_libdir}/girepository-1.0/MyPaintGegl-%{girver}.typelib
+%endif
 
 %changelog
