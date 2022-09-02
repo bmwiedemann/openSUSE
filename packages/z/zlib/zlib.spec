@@ -17,35 +17,39 @@
 
 
 Name:           zlib
-Version:        1.2.11
+Version:        1.2.12
 Release:        0
 Summary:        Library implementing the DEFLATE compression algorithm
 License:        Zlib
-URL:            http://www.zlib.net/
-Source0:        http://zlib.net/zlib-%{version}.tar.gz
-Source1:        http://zlib.net/zlib-%{version}.tar.gz.asc
+URL:            https://www.zlib.net/
+Source0:        https://zlib.net/zlib-%{version}.tar.gz
+Source1:        https://zlib.net/zlib-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source4:        LICENSE
 Source5:        baselibs.conf
 Source6:        zlib-rpmlintrc
-#PATCH-FIX-SUSE: fate#314093, sent upstream by IBM
-Patch0:         zlib-1.2.11-optimized-s390.patch
 #PATCH-FIX-SUSE: compiler check of varguments passed to gzprintf
 Patch1:         zlib-format.patch
 #PATCH-FIX-UPSTREAM do not store negative values in uInt
 Patch2:         0001-Do-not-try-to-store-negative-values-in-unsigned-int.patch
-#PATCH-FIX-UPSTREAM https://github.com/madler/zlib/pull/335
-Patch3:         zlib-power8-fate325307.patch
 #PATCH-FIX-SUSE do not check exact version match as the lib can be updated
 #               we should simply rely on soname versioning to protect us
-Patch5:         zlib-no-version-check.patch
-Patch6:         bsc1174736-DFLTCC_LEVEL_MASK-set-to-0x1ff.patch
+Patch3:         zlib-no-version-check.patch
+#PATCH-FIX-UPSTREAM https://github.com/madler/zlib/commit/ec3df00224d4
+Patch4:         zlib-1.2.12-correct-inputs-provided-to-crc-func.patch
+#PATCH-FIX-UPSTREAM https://github.com/madler/zlib/commit/1eb7682f845ac9e9bf9ae35bbfb3bad5dacbd91d
+Patch5:         zlib-1.2.12-fix-CVE-2022-37434.patch
 #PATCH-FIX-UPSTREAM https://github.com/madler/zlib/pull/229
-Patch10:        minizip-dont-install-crypt-header.patch
-#PATCH-FIX-UPSTREAM https://github.com/madler/zlib/commit/5c44459c3b28a9bd3283aaceab7c615f8020c531
-Patch11:        bsc1197459.patch
-#PATCH-FIX-UPSTREAM https://github.com/madler/zlib/pull/410
-Patch101:       410.patch
+Patch6:         minizip-dont-install-crypt-header.patch
+# The following patches are taken from https://github.com/iii-i/zlib/commits/crc32vx-v3
+Patch7:         zlib-1.2.5-minizip-fixuncrypt.patch
+Patch8:         zlib-1.2.11-optimized-s390.patch
+Patch9:         zlib-1.2.12-IBM-Z-hw-accelerated-deflate-s390x.patch
+Patch10:        zlib-1.2.11-covscan-issues.patch
+Patch11:        zlib-1.2.11-covscan-issues-rhel9.patch
+Patch12:        zlib-1.2.12-optimized-crc32-power8.patch
+Patch13:        zlib-1.2.12-fix-configure.patch
+Patch14:        zlib-1.2.12-s390-vectorize-crc32.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -130,15 +134,20 @@ It should exit 0
 
 %prep
 %setup -q
-%patch0
 %patch1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
+%patch8
+%patch9 -p1
 %patch10 -p1
 %patch11 -p1
-%patch101 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
 cp %{SOURCE4} .
 
 %build
@@ -155,14 +164,16 @@ CC="cc" ./configure \
 %endif
     %{nil}
 
-%if %{do_profiling}
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}"
-  make check %{?_smp_mflags}
-  make %{?_smp_mflags} clean
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}"
-%else
+# Profiling flags breaks tests, as of 1.2.12
+# In particular, gzseek does not work as intended
+#%if %{do_profiling}
+#  #make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}"
+#  make check %{?_smp_mflags}
+#  #make %{?_smp_mflags} clean
+#  #make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}"
+#%else
   make %{?_smp_mflags}
-%endif
+#%endif
 
 # And build minizip
 cd contrib/minizip

@@ -1,0 +1,22 @@
+From e4c0c07385f80e260f1f1aa2a80c41c62754b9d4 Mon Sep 17 00:00:00 2001
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+Date: Wed, 27 Apr 2022 14:37:39 +0200
+Subject: [PATCH] zlib-1.2.11-covscan-issues.patch
+
+---
+ deflate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/deflate.c b/deflate.c
+index ac0b865a4..49f056a00 100644
+--- a/deflate.c
++++ b/deflate.c
+@@ -1062,7 +1062,7 @@ int ZEXPORT deflate (strm, flush)
+      */
+     if (strm->avail_in != 0 || s->lookahead != 0 ||
+         (flush != Z_NO_FLUSH && s->status != FINISH_STATE)) {
+-        block_state bstate;
++        block_state bstate = 0;
+ 
+         bstate = DEFLATE_HOOK(strm, flush, &bstate) ? bstate :
+                  s->level == 0 ? deflate_stored(s, flush) :

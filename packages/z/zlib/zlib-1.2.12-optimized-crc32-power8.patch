@@ -1,26 +1,450 @@
-From 25cd259b18b2dc7192837594556644a300dbf5d1 Mon Sep 17 00:00:00 2001
-From: Daniel Black <daniel@linux.vnet.ibm.com>
-Date: Wed, 10 Jan 2018 10:50:39 +1100
-Subject: [PATCH 1/8] Add Power8+ optimized crc32-vpmsum from
- https://github.com/antonblanchard/crc32-vpmsum/
+From 8c6fc7cb5f408f1fb92eaf8cee8ce571c174b5e0 Mon Sep 17 00:00:00 2001
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+Date: Wed, 27 Apr 2022 14:38:11 +0200
+Subject: [PATCH] zlib-1.2.12-optimized-crc32-power8.patch
 
-This is the C implementation created by Rogerio Alves <rogealve@br.ibm.com>
-Bruce R. - Tweaked patch to have type of crc32_vpmsum conform to usage
-(see bsc#1141059)
 ---
- power8-crc/clang_workaround.h |   69 +++
- power8-crc/crc32_constants.h  | 1206 +++++++++++++++++++++++++++++++++++++++++
- power8-crc/vec_crc32.c        |  672 +++++++++++++++++++++++
- 3 files changed, 1947 insertions(+)
- create mode 100644 power8-crc/clang_workaround.h
- create mode 100644 power8-crc/crc32_constants.h
- create mode 100644 power8-crc/vec_crc32.c
+ CMakeLists.txt                   |   72 ++
+ Makefile.in                      |   43 +-
+ configure                        |   69 ++
+ contrib/README.contrib           |    9 +
+ contrib/gcc/zifunc.h             |   60 ++
+ contrib/power/clang_workaround.h |   87 +++
+ contrib/power/crc32_constants.h  | 1206 ++++++++++++++++++++++++++++++
+ contrib/power/crc32_z_power8.c   |  679 +++++++++++++++++
+ contrib/power/crc32_z_resolver.c |   15 +
+ contrib/power/power.h            |    8 +
+ crc32.c                          |   12 +
+ test/crc32_test.c                |  205 +++++
+ 12 files changed, 2455 insertions(+), 10 deletions(-)
+ create mode 100644 contrib/gcc/zifunc.h
+ create mode 100644 contrib/power/clang_workaround.h
+ create mode 100644 contrib/power/crc32_constants.h
+ create mode 100644 contrib/power/crc32_z_power8.c
+ create mode 100644 contrib/power/crc32_z_resolver.c
+ create mode 100644 contrib/power/power.h
+ create mode 100644 test/crc32_test.c
 
-Index: zlib-1.2.11/contrib/power8-crc/clang_workaround.h
-===================================================================
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e6fbb37d1..581e1fa6d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,6 +7,7 @@ set(VERSION "1.2.12")
+ 
+ option(ASM686 "Enable building i686 assembly implementation")
+ option(AMD64 "Enable building amd64 assembly implementation")
++option(POWER "Enable building power implementation")
+ 
+ set(INSTALL_BIN_DIR "${CMAKE_INSTALL_PREFIX}/bin" CACHE PATH "Installation directory for executables")
+ set(INSTALL_LIB_DIR "${CMAKE_INSTALL_PREFIX}/lib" CACHE PATH "Installation directory for libraries")
+@@ -140,6 +141,73 @@ if(CMAKE_COMPILER_IS_GNUCC)
+ 		add_definitions(-DASMV)
+ 		set_source_files_properties(${ZLIB_ASMS} PROPERTIES LANGUAGE C COMPILE_FLAGS -DNO_UNDERLINE)
+ 	endif()
++
++    # test to see if we can use a GNU indirect function to detect and load optimized code at runtime
++    CHECK_C_SOURCE_COMPILES("
++    static int test_ifunc_native(void)
++    {
++       return 1;
++    }
++    static int (*(check_ifunc_native(void)))(void)
++    {
++       return test_ifunc_native;
++    }
++    int test_ifunc(void) __attribute__ ((ifunc (\"check_ifunc_native\")));
++    int main(void)
++    {
++       return 0;
++    }
++    " HAS_C_ATTR_IFUNC)
++
++    if(HAS_C_ATTR_IFUNC)
++        add_definitions(-DHAVE_IFUNC)
++        set(ZLIB_PRIVATE_HDRS ${ZLIB_PRIVATE_HDRS} contrib/gcc/zifunc.h)
++    endif()
++
++    if(POWER)
++        # Test to see if we can use the optimizations for Power
++        CHECK_C_SOURCE_COMPILES("
++        #ifndef _ARCH_PPC
++            #error \"Target is not Power\"
++        #endif
++        #ifndef __BUILTIN_CPU_SUPPORTS__
++            #error \"Target doesn't support __builtin_cpu_supports()\"
++        #endif
++        int main() { return 0; }
++        " HAS_POWER_SUPPORT)
++
++        if(HAS_POWER_SUPPORT AND HAS_C_ATTR_IFUNC)
++            add_definitions(-DZ_POWER_OPT)
++
++            set(CMAKE_REQUIRED_FLAGS -mcpu=power8)
++            CHECK_C_SOURCE_COMPILES("int main(void){return 0;}" POWER8)
++
++            if(POWER8)
++                add_definitions(-DZ_POWER8)
++                set(ZLIB_POWER8
++                  contrib/power/crc32_z_power8.c)
++
++                set_source_files_properties(
++                    ${ZLIB_POWER8}
++                    PROPERTIES COMPILE_FLAGS -mcpu=power8)
++            endif()
++
++            set(CMAKE_REQUIRED_FLAGS -mcpu=power9)
++            CHECK_C_SOURCE_COMPILES("int main(void){return 0;}" POWER9)
++
++            if(POWER9)
++                add_definitions(-DZ_POWER9)
++                set(ZLIB_POWER9 )
++
++                set_source_files_properties(
++                    ${ZLIB_POWER9}
++                    PROPERTIES COMPILE_FLAGS -mcpu=power9)
++            endif()
++
++            set(ZLIB_PRIVATE_HDRS ${ZLIB_PRIVATE_HDRS} contrib/power/power.h)
++            set(ZLIB_SRCS ${ZLIB_SRCS} ${ZLIB_POWER8} ${ZLIB_POWER9})
++        endif()
++    endif()
+ endif()
+ 
+ if(MSVC)
+@@ -234,6 +302,10 @@ add_executable(example test/example.c)
+ target_link_libraries(example zlib)
+ add_test(example example)
+ 
++add_executable(crc32_test test/crc32_test.c)
++target_link_libraries(crc32_test zlib)
++add_test(crc32_test crc32_test)
++
+ add_executable(minigzip test/minigzip.c)
+ target_link_libraries(minigzip zlib)
+ 
+diff --git a/Makefile.in b/Makefile.in
+index 6c1d28223..2e78f3844 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -75,11 +75,11 @@ PIC_OBJS = $(PIC_OBJC) $(PIC_OBJA)
+ 
+ all: static shared
+ 
+-static: example$(EXE) minigzip$(EXE)
++static: crc32_test$(EXE) example$(EXE) minigzip$(EXE)
+ 
+-shared: examplesh$(EXE) minigzipsh$(EXE)
++shared: crc32_testsh$(EXE) examplesh$(EXE) minigzipsh$(EXE)
+ 
+-all64: example64$(EXE) minigzip64$(EXE)
++all64: crc32_test64$(EXE) example64$(EXE) minigzip64$(EXE)
+ 
+ check: test
+ 
+@@ -87,7 +87,7 @@ test: all teststatic testshared
+ 
+ teststatic: static
+ 	@TMPST=tmpst_$$; \
+-	if echo hello world | ./minigzip | ./minigzip -d && ./example $$TMPST ; then \
++	if echo hello world | ./minigzip | ./minigzip -d && ./example $$TMPST && ./crc32_test; then \
+ 	  echo '		*** zlib test OK ***'; \
+ 	else \
+ 	  echo '		*** zlib test FAILED ***'; false; \
+@@ -100,7 +100,7 @@ testshared: shared
+ 	DYLD_LIBRARY_PATH=`pwd`:$(DYLD_LIBRARY_PATH) ; export DYLD_LIBRARY_PATH; \
+ 	SHLIB_PATH=`pwd`:$(SHLIB_PATH) ; export SHLIB_PATH; \
+ 	TMPSH=tmpsh_$$; \
+-	if echo hello world | ./minigzipsh | ./minigzipsh -d && ./examplesh $$TMPSH; then \
++	if echo hello world | ./minigzipsh | ./minigzipsh -d && ./examplesh $$TMPSH && ./crc32_testsh; then \
+ 	  echo '		*** zlib shared test OK ***'; \
+ 	else \
+ 	  echo '		*** zlib shared test FAILED ***'; false; \
+@@ -109,7 +109,7 @@ testshared: shared
+ 
+ test64: all64
+ 	@TMP64=tmp64_$$; \
+-	if echo hello world | ./minigzip64 | ./minigzip64 -d && ./example64 $$TMP64; then \
++	if echo hello world | ./minigzip64 | ./minigzip64 -d && ./example64 $$TMP64 && ./crc32_test64; then \
+ 	  echo '		*** zlib 64-bit test OK ***'; \
+ 	else \
+ 	  echo '		*** zlib 64-bit test FAILED ***'; false; \
+@@ -151,12 +151,18 @@ dfltcc.lo: $(SRCDIR)contrib/s390/dfltcc.c $(SRCDIR)zlib.h zconf.h
+ 	$(CC) $(SFLAGS) $(ZINC) -DPIC -c -o objs/dfltcc.o $(SRCDIR)contrib/s390/dfltcc.c
+ 	-@mv objs/dfltcc.o $@
+ 
++crc32_test.o: $(SRCDIR)test/crc32_test.c $(SRCDIR)zlib.h zconf.h
++	$(CC) $(CFLAGS) $(ZINCOUT) -c -o $@ $(SRCDIR)test/crc32_test.c
++
+ example.o: $(SRCDIR)test/example.c $(SRCDIR)zlib.h zconf.h
+ 	$(CC) $(CFLAGS) $(ZINCOUT) -c -o $@ $(SRCDIR)test/example.c
+ 
+ minigzip.o: $(SRCDIR)test/minigzip.c $(SRCDIR)zlib.h zconf.h
+ 	$(CC) $(CFLAGS) $(ZINCOUT) -c -o $@ $(SRCDIR)test/minigzip.c
+ 
++crc32_test64.o: $(SRCDIR)test/crc32_test.c $(SRCDIR)zlib.h zconf.h
++	$(CC) $(CFLAGS) $(ZINCOUT) -D_FILE_OFFSET_BITS=64 -c -o $@ $(SRCDIR)test/crc32_test.c
++
+ example64.o: $(SRCDIR)test/example.c $(SRCDIR)zlib.h zconf.h
+ 	$(CC) $(CFLAGS) $(ZINCOUT) -D_FILE_OFFSET_BITS=64 -c -o $@ $(SRCDIR)test/example.c
+ 
+@@ -170,6 +176,9 @@ adler32.o: $(SRCDIR)adler32.c
+ crc32.o: $(SRCDIR)crc32.c
+ 	$(CC) $(CFLAGS) $(ZINC) -c -o $@ $(SRCDIR)crc32.c
+ 
++crc32_z_power8.o: $(SRCDIR)contrib/power/crc32_z_power8.c
++	$(CC) $(CFLAGS) -mcpu=power8 $(ZINC) -c -o $@ $(SRCDIR)contrib/power/crc32_z_power8.c
++
+ deflate.o: $(SRCDIR)deflate.c
+ 	$(CC) $(CFLAGS) $(ZINC) -c -o $@ $(SRCDIR)deflate.c
+ 
+@@ -220,6 +229,11 @@ crc32.lo: $(SRCDIR)crc32.c
+ 	$(CC) $(SFLAGS) $(ZINC) -DPIC -c -o objs/crc32.o $(SRCDIR)crc32.c
+ 	-@mv objs/crc32.o $@
+ 
++crc32_z_power8.lo: $(SRCDIR)contrib/power/crc32_z_power8.c
++	-@mkdir objs 2>/dev/null || test -d objs
++	$(CC) $(SFLAGS) -mcpu=power8 $(ZINC) -DPIC -c -o objs/crc32_z_power8.o $(SRCDIR)contrib/power/crc32_z_power8.c
++	-@mv objs/crc32_z_power8.o $@
++
+ deflate.lo: $(SRCDIR)deflate.c
+ 	-@mkdir objs 2>/dev/null || test -d objs
+ 	$(CC) $(SFLAGS) $(ZINC) -DPIC -c -o objs/deflate.o $(SRCDIR)deflate.c
+@@ -293,18 +307,27 @@ placebo $(SHAREDLIBV): $(PIC_OBJS) libz.a
+ 	ln -s $@ $(SHAREDLIBM)
+ 	-@rmdir objs
+ 
++crc32_test$(EXE): crc32_test.o $(STATICLIB)
++	$(CC) $(CFLAGS) -o $@ crc32_test.o $(TEST_LDFLAGS)
++
+ example$(EXE): example.o $(STATICLIB)
+ 	$(CC) $(CFLAGS) -o $@ example.o $(TEST_LDFLAGS)
+ 
+ minigzip$(EXE): minigzip.o $(STATICLIB)
+ 	$(CC) $(CFLAGS) -o $@ minigzip.o $(TEST_LDFLAGS)
+ 
++crc32_testsh$(EXE): crc32_test.o $(SHAREDLIBV)
++	$(CC) $(CFLAGS) -o $@ crc32_test.o -L. $(SHAREDLIBV)
++
+ examplesh$(EXE): example.o $(SHAREDLIBV)
+ 	$(CC) $(CFLAGS) -o $@ example.o -L. $(SHAREDLIBV)
+ 
+ minigzipsh$(EXE): minigzip.o $(SHAREDLIBV)
+ 	$(CC) $(CFLAGS) -o $@ minigzip.o -L. $(SHAREDLIBV)
+ 
++crc32_test64$(EXE): crc32_test64.o $(STATICLIB)
++	$(CC) $(CFLAGS) -o $@ crc32_test64.o $(TEST_LDFLAGS)
++
+ example64$(EXE): example64.o $(STATICLIB)
+ 	$(CC) $(CFLAGS) -o $@ example64.o $(TEST_LDFLAGS)
+ 
+@@ -374,8 +397,8 @@ zconf: $(SRCDIR)zconf.h.in
+ mostlyclean: clean
+ clean:
+ 	rm -f *.o *.lo *~ \
+-	   example$(EXE) minigzip$(EXE) examplesh$(EXE) minigzipsh$(EXE) \
+-	   example64$(EXE) minigzip64$(EXE) \
++	   crc32_test$(EXE) example$(EXE) minigzip$(EXE) crc32_testsh$(EXE) examplesh$(EXE) minigzipsh$(EXE) \
++	   crc32_test64$(EXE) example64$(EXE) minigzip64$(EXE) \
+ 	   infcover \
+ 	   libz.* foo.gz so_locations \
+ 	   _match.s maketree contrib/infback9/*.o
+@@ -397,7 +420,7 @@ tags:
+ 
+ adler32.o zutil.o: $(SRCDIR)zutil.h $(SRCDIR)zlib.h zconf.h
+ gzclose.o gzlib.o gzread.o gzwrite.o: $(SRCDIR)zlib.h zconf.h $(SRCDIR)gzguts.h
+-compress.o example.o minigzip.o uncompr.o: $(SRCDIR)zlib.h zconf.h
++compress.o crc32_test.o example.o minigzip.o uncompr.o: $(SRCDIR)zlib.h zconf.h
+ crc32.o: $(SRCDIR)zutil.h $(SRCDIR)zlib.h zconf.h $(SRCDIR)crc32.h
+ deflate.o: $(SRCDIR)deflate.h $(SRCDIR)zutil.h $(SRCDIR)zlib.h zconf.h
+ infback.o inflate.o: $(SRCDIR)zutil.h $(SRCDIR)zlib.h zconf.h $(SRCDIR)inftrees.h $(SRCDIR)inflate.h $(SRCDIR)inffast.h $(SRCDIR)inffixed.h
+@@ -407,7 +430,7 @@ trees.o: $(SRCDIR)deflate.h $(SRCDIR)zutil.h $(SRCDIR)zlib.h zconf.h $(SRCDIR)tr
+ 
+ adler32.lo zutil.lo: $(SRCDIR)zutil.h $(SRCDIR)zlib.h zconf.h
+ gzclose.lo gzlib.lo gzread.lo gzwrite.lo: $(SRCDIR)zlib.h zconf.h $(SRCDIR)gzguts.h
+-compress.lo example.lo minigzip.lo uncompr.lo: $(SRCDIR)zlib.h zconf.h
++compress.lo crc32_test.lo example.lo minigzip.lo uncompr.lo: $(SRCDIR)zlib.h zconf.h
+ crc32.lo: $(SRCDIR)zutil.h $(SRCDIR)zlib.h zconf.h $(SRCDIR)crc32.h
+ deflate.lo: $(SRCDIR)deflate.h $(SRCDIR)zutil.h $(SRCDIR)zlib.h zconf.h
+ infback.lo inflate.lo: $(SRCDIR)zutil.h $(SRCDIR)zlib.h zconf.h $(SRCDIR)inftrees.h $(SRCDIR)inflate.h $(SRCDIR)inffast.h $(SRCDIR)inffixed.h
+diff --git a/configure b/configure
+index a21be36af..cff6207ec 100755
+--- a/configure
++++ b/configure
+@@ -857,6 +857,75 @@ else
+     echo "Checking for sys/sdt.h ... No." | tee -a configure.log
+ fi
+ 
++# test to see if we can use a gnu indirection function to detect and load optimized code at runtime
++echo >> configure.log
++cat > $test.c <<EOF
++static int test_ifunc_native(void)
++{
++  return 1;
++}
++
++static int (*(check_ifunc_native(void)))(void)
++{
++  return test_ifunc_native;
++}
++
++int test_ifunc(void) __attribute__ ((ifunc ("check_ifunc_native")));
++EOF
++
++if tryboth $CC -c $CFLAGS $test.c; then
++  SFLAGS="${SFLAGS} -DHAVE_IFUNC"
++  CFLAGS="${CFLAGS} -DHAVE_IFUNC"
++  echo "Checking for attribute(ifunc) support... Yes." | tee -a configure.log
++else
++  echo "Checking for attribute(ifunc) support... No." | tee -a configure.log
++fi
++
++# Test to see if we can use the optimizations for Power
++echo >> configure.log
++cat > $test.c <<EOF
++#ifndef _ARCH_PPC
++  #error "Target is not Power"
++#endif
++#if !(defined(__PPC64__) || defined(__powerpc64__))
++  #error "Target is not 64 bits"
++#endif
++#ifndef HAVE_IFUNC
++  #error "Target doesn't support ifunc"
++#endif
++#ifndef __BUILTIN_CPU_SUPPORTS__
++  #error "Target doesn't support __builtin_cpu_supports()"
++#endif
++EOF
++
++if tryboth $CC -c $CFLAGS $test.c; then
++  echo "int main(void){return 0;}" > $test.c
++
++  if tryboth $CC -c $CFLAGS -mcpu=power8 $test.c; then
++    POWER8="-DZ_POWER8"
++    PIC_OBJC="${PIC_OBJC} crc32_z_power8.lo"
++    OBJC="${OBJC} crc32_z_power8.o"
++    echo "Checking for -mcpu=power8 support... Yes." | tee -a configure.log
++  else
++    echo "Checking for -mcpu=power8 support... No." | tee -a configure.log
++  fi
++
++  if tryboth $CC -c $CFLAGS -mcpu=power9 $test.c; then
++    POWER9="-DZ_POWER9"
++    PIC_OBJC="${PIC_OBJC}"
++    OBJC="${OBJC}"
++    echo "Checking for -mcpu=power9 support... Yes." | tee -a configure.log
++  else
++    echo "Checking for -mcpu=power9 support... No." | tee -a configure.log
++  fi
++
++  SFLAGS="${SFLAGS} ${POWER8} ${POWER9} -DZ_POWER_OPT"
++  CFLAGS="${CFLAGS} ${POWER8} ${POWER9} -DZ_POWER_OPT"
++  echo "Checking for Power optimizations support... Yes." | tee -a configure.log
++else
++  echo "Checking for Power optimizations support... No." | tee -a configure.log
++fi
++
+ # show the results in the log
+ echo >> configure.log
+ echo ALL = $ALL >> configure.log
+diff --git a/contrib/README.contrib b/contrib/README.contrib
+index 130a28bdb..1199184b7 100644
+--- a/contrib/README.contrib
++++ b/contrib/README.contrib
+@@ -11,6 +11,10 @@ ada/        by Dmitriy Anisimkov <anisimkov@yahoo.com>
+ blast/      by Mark Adler <madler@alumni.caltech.edu>
+         Decompressor for output of PKWare Data Compression Library (DCL)
+ 
++gcc/        by Matheus Castanho <msc@linux.ibm.com>
++            and Rogerio Alves <rcardoso@linux.ibm.com>
++        Optimization helpers using GCC-specific extensions
++
+ delphi/     by Cosmin Truta <cosmint@cs.ubbcluj.ro>
+         Support for Delphi and C++ Builder
+ 
+@@ -42,6 +46,11 @@ minizip/    by Gilles Vollant <info@winimage.com>
+ pascal/     by Bob Dellaca <bobdl@xtra.co.nz> et al.
+         Support for Pascal
+ 
++power/      by Daniel Black <daniel@linux.ibm.com>
++               Matheus Castanho <msc@linux.ibm.com>
++            and Rogerio Alves <rcardoso@linux.ibm.com>
++        Optimized functions for Power processors
++
+ puff/       by Mark Adler <madler@alumni.caltech.edu>
+         Small, low memory usage inflate.  Also serves to provide an
+         unambiguous description of the deflate format.
+diff --git a/contrib/gcc/zifunc.h b/contrib/gcc/zifunc.h
+new file mode 100644
+index 000000000..daf4fe442
 --- /dev/null
-+++ zlib-1.2.11/contrib/power8-crc/clang_workaround.h
-@@ -0,0 +1,82 @@
++++ b/contrib/gcc/zifunc.h
+@@ -0,0 +1,60 @@
++/* Copyright (C) 2019 Matheus Castanho <msc@linux.ibm.com>, IBM
++ *               2019 Rogerio Alves    <rogerio.alves@ibm.com>, IBM
++ * For conditions of distribution and use, see copyright notice in zlib.h
++ */
++
++#ifndef Z_IFUNC_H_
++#define Z_IFUNC_H_
++
++/* Helpers for arch optimizations */
++
++#define Z_IFUNC(fname) \
++    typeof(fname) fname __attribute__ ((ifunc (#fname "_resolver"))); \
++    local typeof(fname) *fname##_resolver(void)
++/* This is a helper macro to declare a resolver for an indirect function
++ * (ifunc). Let's say you have function
++ *
++ *    int foo (int a);
++ *
++ * for which you want to provide different implementations, for example:
++ *
++ *    int foo_clever (int a) {
++ *      ... clever things ...
++ *    }
++ *
++ *    int foo_smart (int a) {
++ *      ... smart things ...
++ *    }
++ *
++ * You will have to declare foo() as an indirect function and also provide a
++ * resolver for it, to choose between foo_clever() and foo_smart() based on
++ * some criteria you define (e.g. processor features).
++ *
++ * Since most likely foo() has a default implementation somewhere in zlib, you
++ * may have to rename it so the 'foo' symbol can be used by the ifunc without
++ * conflicts.
++ *
++ *    #define foo foo_default
++ *    int foo (int a) {
++ *      ...
++ *    }
++ *    #undef foo
++ *
++ * Now you just have to provide a resolver function to choose which function
++ * should be used (decided at runtime on the first call to foo()):
++ *
++ *    Z_IFUNC(foo) {
++ *        if (... some condition ...)
++ *          return foo_clever;
++ *
++ *        if (... other condition ...)
++ *          return foo_smart;
++ *
++ *        return foo_default;
++ *    }
++ *
++ * All calls to foo() throughout the code can remain untouched, all the magic
++ * will be done by the linker using the resolver function.
++ */
++
++#endif /* Z_IFUNC_H_ */
+diff --git a/contrib/power/clang_workaround.h b/contrib/power/clang_workaround.h
+new file mode 100644
+index 000000000..915f7e528
+--- /dev/null
++++ b/contrib/power/clang_workaround.h
+@@ -0,0 +1,87 @@
 +#ifndef CLANG_WORKAROUNDS_H
 +#define CLANG_WORKAROUNDS_H
 +
@@ -62,7 +486,12 @@ Index: zlib-1.2.11/contrib/power8-crc/clang_workaround.h
 +	return __v;
 +}
 +
-+#ifndef vec_xxpermdi
++/*
++ * Clang 7 changed the behavior of vec_xxpermdi in order to provide the same
++ * behavior of GCC. That means code adapted to Clang >= 7 does not work on
++ * Clang <= 6.  So, fallback to __builtin_unpack_vector() on Clang <= 6.
++ */
++#if !defined vec_xxpermdi || __clang_major__ <= 6
 +
 +static inline
 +unsigned long __builtin_unpack_vector (__vector unsigned long long __v,
@@ -85,9 +514,9 @@ Index: zlib-1.2.11/contrib/power8-crc/clang_workaround.h
 +unsigned long __builtin_unpack_vector_0 (__vector unsigned long long __v)
 +{
 +	#if defined(__BIG_ENDIAN__)
-+	return vec_xxpermdi(__v, __v, 0x0)[1];
-+	#else
 +	return vec_xxpermdi(__v, __v, 0x0)[0];
++	#else
++	return vec_xxpermdi(__v, __v, 0x3)[0];
 +	#endif
 +}
 +
@@ -95,18 +524,19 @@ Index: zlib-1.2.11/contrib/power8-crc/clang_workaround.h
 +unsigned long __builtin_unpack_vector_1 (__vector unsigned long long __v)
 +{
 +	#if defined(__BIG_ENDIAN__)
-+	return vec_xxpermdi(__v, __v, 0x3)[1];
-+	#else
 +	return vec_xxpermdi(__v, __v, 0x3)[0];
++	#else
++	return vec_xxpermdi(__v, __v, 0x0)[0];
 +	#endif
 +}
 +#endif /* vec_xxpermdi */
 +
 +#endif
-Index: zlib-1.2.11/contrib/power8-crc/crc32_constants.h
-===================================================================
+diff --git a/contrib/power/crc32_constants.h b/contrib/power/crc32_constants.h
+new file mode 100644
+index 000000000..58088dcc0
 --- /dev/null
-+++ zlib-1.2.11/contrib/power8-crc/crc32_constants.h
++++ b/contrib/power/crc32_constants.h
 @@ -0,0 +1,1206 @@
 +/*
 +*
@@ -1314,10 +1744,11 @@ Index: zlib-1.2.11/contrib/power8-crc/crc32_constants.h
 +#endif /* POWER8_INTRINSICS */
 +
 +#endif /* __ASSEMBLER__ */
-Index: zlib-1.2.11/contrib/power8-crc/vec_crc32.c
-===================================================================
+diff --git a/contrib/power/crc32_z_power8.c b/contrib/power/crc32_z_power8.c
+new file mode 100644
+index 000000000..7858cfe0e
 --- /dev/null
-+++ zlib-1.2.11/contrib/power8-crc/vec_crc32.c
++++ b/contrib/power/crc32_z_power8.c
 @@ -0,0 +1,679 @@
 +/*
 + * Calculate the checksum of data that is 16 byte aligned and a multiple of
@@ -1351,6 +1782,8 @@ Index: zlib-1.2.11/contrib/power8-crc/vec_crc32.c
 + */
 +
 +#include <altivec.h>
++#include "../../zutil.h"
++#include "power.h"
 +
 +#define POWER8_INTRINSICS
 +#define CRC_TABLE
@@ -1360,8 +1793,6 @@ Index: zlib-1.2.11/contrib/power8-crc/vec_crc32.c
 +#else
 +#include "crc32_constants.h"
 +#endif
-+
-+#include <stdlib.h>
 +
 +#define VMX_ALIGN	16
 +#define VMX_ALIGN_MASK	(VMX_ALIGN-1)
@@ -1387,19 +1818,18 @@ Index: zlib-1.2.11/contrib/power8-crc/vec_crc32.c
 +static unsigned int __attribute__ ((aligned (32)))
 +__crc32_vpmsum(unsigned int crc, const void* p, unsigned long len);
 +
-+#ifndef CRC32_FUNCTION
-+#define CRC32_FUNCTION  crc32_vpmsum
-+#endif
-+
-+unsigned long CRC32_FUNCTION(unsigned long crc_l, const unsigned char *p,
-+			    unsigned long len)
++unsigned long ZLIB_INTERNAL _crc32_z_power8(uLong _crc, const Bytef *_p,
++			    z_size_t _len)
 +{
-+	unsigned int prealign, crc = (unsigned int)crc_l;
++	unsigned int prealign;
 +	unsigned int tail;
 +
-+	/* For zlib API */
-+	if (p == NULL) return 0UL;
++	/* Map zlib API to crc32_vpmsum API */
++	unsigned int crc = (unsigned int) (0xffffffff & _crc);
++	const unsigned char *p = _p;
++	unsigned long len = (unsigned long) _len;
 +
++	if (p == (const unsigned char *) 0x0) return 0;
 +#ifdef CRC_XOR
 +	crc ^= 0xffffffff;
 +#endif
@@ -1429,7 +1859,8 @@ Index: zlib-1.2.11/contrib/power8-crc/vec_crc32.c
 +	crc ^= 0xffffffff;
 +#endif
 +
-+	return (unsigned long)crc;
++	/* Convert to zlib API */
++	return (unsigned long) crc;
 +}
 +
 +#if defined (__clang__)
@@ -1998,268 +2429,279 @@ Index: zlib-1.2.11/contrib/power8-crc/vec_crc32.c
 +
 +	return result;
 +}
-Index: zlib-1.2.11/Makefile.in
-===================================================================
---- zlib-1.2.11.orig/Makefile.in
-+++ zlib-1.2.11/Makefile.in
-@@ -162,6 +162,9 @@ adler32.o: $(SRCDIR)adler32.c
- crc32.o: $(SRCDIR)crc32.c
- 	$(CC) $(CFLAGS) $(ZINC) -c -o $@ $(SRCDIR)crc32.c
- 
-+crc32_power8.o: $(SRCDIR)contrib/power8-crc/vec_crc32.c
-+	$(CC) $(CFLAGS) $(ZINC) -c -o $@ $(SRCDIR)contrib/power8-crc/vec_crc32.c
+diff --git a/contrib/power/crc32_z_resolver.c b/contrib/power/crc32_z_resolver.c
+new file mode 100644
+index 000000000..f4e9aa491
+--- /dev/null
++++ b/contrib/power/crc32_z_resolver.c
+@@ -0,0 +1,15 @@
++/* Copyright (C) 2019 Matheus Castanho <msc@linux.ibm.com>, IBM
++ * For conditions of distribution and use, see copyright notice in zlib.h
++ */
 +
- deflate.o: $(SRCDIR)deflate.c
- 	$(CC) $(CFLAGS) $(ZINC) -c -o $@ $(SRCDIR)deflate.c
- 
-@@ -212,6 +215,11 @@ crc32.lo: $(SRCDIR)crc32.c
- 	$(CC) $(SFLAGS) $(ZINC) -DPIC -c -o objs/crc32.o $(SRCDIR)crc32.c
- 	-@mv objs/crc32.o $@
- 
-+crc32_power8.lo: $(SRCDIR)contrib/power8-crc/vec_crc32.c
-+	-@mkdir objs 2>/dev/null || test -d objs
-+	$(CC) $(SFLAGS) $(ZINC) -DPIC -c -o objs/crc32_power8.o $(SRCDIR)contrib/power8-crc/vec_crc32.c
-+	-@mv objs/crc32_power8.o $@
++#include "../gcc/zifunc.h"
++#include "power.h"
 +
- deflate.lo: $(SRCDIR)deflate.c
- 	-@mkdir objs 2>/dev/null || test -d objs
- 	$(CC) $(SFLAGS) $(ZINC) -DPIC -c -o objs/deflate.o $(SRCDIR)deflate.c
-Index: zlib-1.2.11/configure
-===================================================================
---- zlib-1.2.11.orig/configure
-+++ zlib-1.2.11/configure
-@@ -826,6 +826,91 @@ EOF
-   fi
- fi
- 
-+# test to see if Power8+ implementation is compile time possible
-+echo >> configure.log
-+cat > $test.c <<EOF
-+#if _ARCH_PWR8==1
-+
-+#if __BYTE_ORDER == __BIG_ENDIAN && defined(__clang__)
-+#error "Clang vector instructions aren't big endian compatible"
++Z_IFUNC(crc32_z) {
++#ifdef Z_POWER8
++    if (__builtin_cpu_supports("arch_2_07"))
++        return _crc32_z_power8;
 +#endif
 +
-+#if defined(__BUILTIN_CPU_SUPPORTS__)
-+/* good and easy */
-+#else
-+#include <sys/auxv.h>
-+#include <bits/hwcap.h>
-+int main()
-+{
-+  return (getauxval(AT_HWCAP2) & PPC_FEATURE2_ARCH_2_07);
++    return crc32_z_default;
 +}
-+#endif
+diff --git a/contrib/power/power.h b/contrib/power/power.h
+new file mode 100644
+index 000000000..79123aa90
+--- /dev/null
++++ b/contrib/power/power.h
+@@ -0,0 +1,8 @@
++/* Copyright (C) 2019 Matheus Castanho <msc@linux.ibm.com>, IBM
++ *               2019 Rogerio Alves    <rogerio.alves@ibm.com>, IBM
++ * For conditions of distribution and use, see copyright notice in zlib.h
++ */
 +
-+#else
-+#error No Power 8 or newer architecture, may need -mcpu=power8
-+#endif
-+EOF
++#include "../../zconf.h"
 +
-+if tryboth $CC -c $CFLAGS $test.c; then
-+  OBJC="$OBJC crc32_power8.o"
-+  PIC_OBJC="$PIC_OBJC crc32_power8.lo"
-+  echo "Checking for runtime cpu detection and Power 8 (or newer) Architecture support... Yes." | tee -a configure.log
-+else
-+  echo "Checking for runtime cpu detection and Power 8 (or newer) Architecture support... No." | tee -a configure.log
-+fi
-+
-+# test to see if we can use a gnu indirection function to detect and load optimized code at runtime
-+echo >> configure.log
-+cat > $test.c <<EOF
-+static unsigned int crc32_real_optimized(unsigned int crc, unsigned char *p,
-+                          unsigned long len)
-+{
-+        return 1;
-+}
-+
-+static unsigned int (*(crc32_ifunc(void)))(unsigned int, unsigned char *,unsigned long)
-+{
-+  return crc32_real_optimized;
-+}
-+
-+unsigned int crc32(unsigned int, unsigned char *,unsigned long)
-+                    __attribute__ ((ifunc ("crc32_ifunc")));
-+EOF
-+
-+if tryboth $CC -c $CFLAGS $test.c; then
-+  SFLAGS="${SFLAGS} -DZ_IFUNC_NATIVE"
-+  echo "Checking for attribute(ifunc) support... Yes." | tee -a configure.log
-+else
-+  echo "Checking for attribute(ifunc) support... No." | tee -a configure.log
-+
-+  # alternately can we can use a gnu indirection using __asm__ attributes to detect and load optimized code at runtime
-+  echo >> configure.log
-+  cat > $test.c <<EOF
-+static unsigned int crc32_real_optimized(unsigned int crc, unsigned char *p,
-+                          unsigned long len)
-+{
-+        return 1;
-+}
-+
-+static unsigned int (*(crc32_ifunc(void)))(unsigned int, unsigned char *,unsigned long)
-+       __asm__ ("crc32");
-+
-+static unsigned int (*(crc32_ifunc(void)))(unsigned int, unsigned char *,unsigned long)
-+{
-+  return crc32_real_optimized;
-+}
-+
-+__asm__(".type crc32, %gnu_indirect_function");
-+EOF
-+
-+  if tryboth $CC -c $CFLAGS $test.c; then
-+    SFLAGS="${SFLAGS} -DZ_IFUNC_ASM"
-+    echo "Checking for asm .type %gnu_indirect_function support... Yes." | tee -a configure.log
-+  else
-+    echo "Checking for asm .type %gnu_indirect_function support... No." | tee -a configure.log
-+  fi
-+fi
-+
- # show the results in the log
- echo >> configure.log
- echo ALL = $ALL >> configure.log
-Index: zlib-1.2.11/crc32.c
-===================================================================
---- zlib-1.2.11.orig/crc32.c
-+++ zlib-1.2.11/crc32.c
-@@ -199,13 +199,78 @@ const z_crc_t FAR * ZEXPORT get_crc_tabl
- #define DO8 DO1; DO1; DO1; DO1; DO1; DO1; DO1; DO1
++unsigned long _crc32_z_power8(unsigned long, const Bytef *, z_size_t);
+diff --git a/crc32.c b/crc32.c
+index a1bdce5c2..ae7b7e792 100644
+--- a/crc32.c
++++ b/crc32.c
+@@ -736,6 +736,13 @@ local z_word_t crc_word_big(data)
+ #endif
  
  /* ========================================================================= */
--unsigned long ZEXPORT crc32_z(crc, buf, len)
-+local
-+unsigned long ZEXPORT crc32_table_lookup(crc, buf, len)
++#ifdef Z_POWER_OPT
++/* Rename function so resolver can use its symbol. The default version will be
++ * returned by the resolver if the host has no support for an optimized version.
++ */
++#define crc32_z crc32_z_default
++#endif /* Z_POWER_OPT */
++
+ unsigned long ZEXPORT crc32_z(crc, buf, len)
      unsigned long crc;
      const unsigned char FAR *buf;
-     z_size_t len;
- {
-     if (buf == Z_NULL) return 0UL;
- 
-+    crc = crc ^ 0xffffffffUL;
-+    while (len >= 8) {
-+        DO8;
-+        len -= 8;
-+    }
-+    if (len) do {
-+        DO1;
-+    } while (--len);
-+    return crc ^ 0xffffffffUL;
-+}
-+
-+/* Small helper function to compare optfun against the reference table lookup
-+ * return test_ref_comparision_##optfn in crc32_z_ifunc
-+#include <assert.h>
-+#define TEST_COMPARE(optfn) \
-+   static unsigned long test_ref_comparision_ ## optfn(unsigned long crc, const unsigned char FAR *p, z_size_t len) \
-+   { \
-+     unsigned long crc_tbl_lookup = crc32_table_lookup(crc, p, len); \
-+     unsigned long optcrc = optfn(crc, p, len); \
-+     assert( optcrc == crc_tbl_lookup ); \
-+     return optcrc; \
-+   }
-+*/
-+
-+#ifdef Z_IFUNC_ASM
-+unsigned long (*(crc32_z_ifunc(void)))(unsigned long, const unsigned char FAR *, z_size_t)
-+    __asm__ ("crc32_z");
-+__asm__(".type crc32_z, %gnu_indirect_function");
-+#elif defined(Z_IFUNC_NATIVE)
-+unsigned long ZEXPORT crc32_z(
-+    unsigned long crc,
-+    const unsigned char FAR *buf,
-+    z_size_t len)
-+  __attribute__ ((ifunc ("crc32_z_ifunc")));
-+#endif
-+
-+#if _ARCH_PWR8==1
-+unsigned long crc32_vpmsum(unsigned long, const unsigned char FAR *, z_size_t);
-+/* for testing TEST_COMPARE(crc32_vpmsum) */
-+#ifndef __BUILTIN_CPU_SUPPORTS__
-+#include <sys/auxv.h>
-+#include <bits/hwcap.h>
-+#endif
-+#endif
-+
-+/* due to a quirk of gnu_indirect_function - "local" (aka static) is applied to
-+ * crc32_z which is not desired. crc32_z_ifunc is implictly "local" */
-+#ifndef Z_IFUNC_ASM
-+local
-+#endif
-+unsigned long (*(crc32_z_ifunc(void)))(unsigned long, const unsigned char FAR *, z_size_t)
-+{
-+#if _ARCH_PWR8==1
-+#if defined(__BUILTIN_CPU_SUPPORTS__)
-+    if (__builtin_cpu_supports("arch_2_07"))
-+        return crc32_vpmsum;
-+#else
-+    if (getauxval(AT_HWCAP2) & PPC_FEATURE2_ARCH_2_07)
-+        return crc32_vpmsum;
-+#endif
-+#endif /* _ARCH_PWR8 */
-+
-+/* return a function pointer for optimized arches here */
-+
- #ifdef DYNAMIC_CRC_TABLE
-     if (crc_table_empty)
-         make_crc_table();
-@@ -217,22 +282,31 @@ unsigned long ZEXPORT crc32_z(crc, buf,
- 
-         endian = 1;
-         if (*((unsigned char *)(&endian)))
--            return crc32_little(crc, buf, len);
-+            return crc32_little;
-         else
--            return crc32_big(crc, buf, len);
-+            return crc32_big;
-     }
- #endif /* BYFOUR */
--    crc = crc ^ 0xffffffffUL;
--    while (len >= 8) {
--        DO8;
--        len -= 8;
--    }
--    if (len) do {
--        DO1;
--    } while (--len);
--    return crc ^ 0xffffffffUL;
-+
-+    return crc32_table_lookup;
-+}
-+
-+#if !defined(Z_IFUNC_ASM) && !defined(Z_IFUNC_NATIVE)
-+
-+unsigned long ZEXPORT crc32_z(crc, buf, len)
-+    unsigned long crc;
-+    const unsigned char FAR *buf;
-+    z_size_t len;
-+{
-+    static unsigned long ZEXPORT (*crc32_func)(unsigned long, const unsigned char FAR *, z_size_t) = NULL;
-+
-+    if (!crc32_func)
-+        crc32_func = crc32_z_ifunc();
-+    return (*crc32_func)(crc, buf, len);
+@@ -1057,6 +1064,11 @@ unsigned long ZEXPORT crc32_z(crc, buf, len)
+     return crc ^ 0xffffffff;
  }
  
-+#endif /* defined(Z_IFUNC_ASM) || defined(Z_IFUNC_NATIVE) */
++#ifdef Z_POWER_OPT
++#undef crc32_z
++#include "contrib/power/crc32_z_resolver.c"
++#endif /* Z_POWER_OPT */
 +
+ #endif
+ 
  /* ========================================================================= */
- unsigned long ZEXPORT crc32(crc, buf, len)
-     unsigned long crc;
-@@ -271,6 +345,7 @@ local unsigned long crc32_little(crc, bu
-     register z_crc_t c;
-     register const z_crc_t FAR *buf4;
- 
-+    if (buf == Z_NULL) return 0UL;
-     c = (z_crc_t)crc;
-     c = ~c;
-     while (len && ((ptrdiff_t)buf & 3)) {
-@@ -311,6 +386,7 @@ local unsigned long crc32_big(crc, buf,
-     register z_crc_t c;
-     register const z_crc_t FAR *buf4;
- 
-+    if (buf == Z_NULL) return 0UL;
-     c = ZSWAP32((z_crc_t)crc);
-     c = ~c;
-     while (len && ((ptrdiff_t)buf & 3)) {
+diff --git a/test/crc32_test.c b/test/crc32_test.c
+new file mode 100644
+index 000000000..3155553e6
+--- /dev/null
++++ b/test/crc32_test.c
+@@ -0,0 +1,205 @@
++/* crc32_tes.c -- unit test for crc32 in the zlib compression library
++ * Copyright (C) 1995-2006, 2010, 2011, 2016, 2019 Rogerio Alves
++ * For conditions of distribution and use, see copyright notice in zlib.h
++ */
++
++#include "zlib.h"
++#include <stdio.h>
++
++#ifdef STDC
++#  include <string.h>
++#  include <stdlib.h>
++#endif
++
++void test_crc32  OF((uLong crc, Byte* buf, z_size_t len, uLong chk, int line));
++int main         OF((void));
++
++typedef struct {
++    int line;
++    uLong crc;
++    char* buf;
++    int len;
++    uLong expect;
++} crc32_test;
++
++void test_crc32(crc, buf, len, chk, line)
++    uLong crc;
++    Byte *buf;
++    z_size_t len;
++    uLong chk;
++    int line;
++{
++    uLong res = crc32(crc, buf, len);
++    if (res != chk) {
++        fprintf(stderr, "FAIL [%d]: crc32 returned 0x%08X expected 0x%08X\n",
++                line, (unsigned int)res, (unsigned int)chk);
++        exit(1);
++    }
++}
++
++static const crc32_test tests[] = {
++  {__LINE__, 0x0, 0x0, 0, 0x0},
++  {__LINE__, 0xffffffff, 0x0, 0, 0x0},
++  {__LINE__, 0x0, 0x0, 255, 0x0}, /*  BZ 174799.  */
++  {__LINE__, 0x0, 0x0, 256, 0x0},
++  {__LINE__, 0x0, 0x0, 257, 0x0},
++  {__LINE__, 0x0, 0x0, 32767, 0x0},
++  {__LINE__, 0x0, 0x0, 32768, 0x0},
++  {__LINE__, 0x0, 0x0, 32769, 0x0},
++  {__LINE__, 0x0, "", 0, 0x0},
++  {__LINE__, 0xffffffff, "", 0, 0xffffffff},
++  {__LINE__, 0x0, "abacus", 6, 0xc3d7115b},
++  {__LINE__, 0x0, "backlog", 7, 0x269205},
++  {__LINE__, 0x0, "campfire", 8, 0x22a515f8},
++  {__LINE__, 0x0, "delta", 5, 0x9643fed9},
++  {__LINE__, 0x0, "executable", 10, 0xd68eda01},
++  {__LINE__, 0x0, "file", 4, 0x8c9f3610},
++  {__LINE__, 0x0, "greatest", 8, 0xc1abd6cd},
++  {__LINE__, 0x0, "hello", 5, 0x3610a686},
++  {__LINE__, 0x0, "inverter", 8, 0xc9e962c9},
++  {__LINE__, 0x0, "jigsaw", 6, 0xce4e3f69},
++  {__LINE__, 0x0, "karate", 6, 0x890be0e2},
++  {__LINE__, 0x0, "landscape", 9, 0xc4e0330b},
++  {__LINE__, 0x0, "machine", 7, 0x1505df84},
++  {__LINE__, 0x0, "nanometer", 9, 0xd4e19f39},
++  {__LINE__, 0x0, "oblivion", 8, 0xdae9de77},
++  {__LINE__, 0x0, "panama", 6, 0x66b8979c},
++  {__LINE__, 0x0, "quest", 5, 0x4317f817},
++  {__LINE__, 0x0, "resource", 8, 0xbc91f416},
++  {__LINE__, 0x0, "secret", 6, 0x5ca2e8e5},
++  {__LINE__, 0x0, "test", 4, 0xd87f7e0c},
++  {__LINE__, 0x0, "ultimate", 8, 0x3fc79b0b},
++  {__LINE__, 0x0, "vector", 6, 0x1b6e485b},
++  {__LINE__, 0x0, "walrus", 6, 0xbe769b97},
++  {__LINE__, 0x0, "xeno", 4, 0xe7a06444},
++  {__LINE__, 0x0, "yelling", 7, 0xfe3944e5},
++  {__LINE__, 0x0, "zlib", 4, 0x73887d3a},
++  {__LINE__, 0x0, "4BJD7PocN1VqX0jXVpWB", 20, 0xd487a5a1},
++  {__LINE__, 0x0, "F1rPWI7XvDs6nAIRx41l", 20, 0x61a0132e},
++  {__LINE__, 0x0, "ldhKlsVkPFOveXgkGtC2", 20, 0xdf02f76},
++  {__LINE__, 0x0, "5KKnGOOrs8BvJ35iKTOS", 20, 0x579b2b0a},
++  {__LINE__, 0x0, "0l1tw7GOcem06Ddu7yn4", 20, 0xf7d16e2d},
++  {__LINE__, 0x0, "MCr47CjPIn9R1IvE1Tm5", 20, 0x731788f5},
++  {__LINE__, 0x0, "UcixbzPKTIv0SvILHVdO", 20, 0x7112bb11},
++  {__LINE__, 0x0, "dGnAyAhRQDsWw0ESou24", 20, 0xf32a0dac},
++  {__LINE__, 0x0, "di0nvmY9UYMYDh0r45XT", 20, 0x625437bb},
++  {__LINE__, 0x0, "2XKDwHfAhFsV0RhbqtvH", 20, 0x896930f9},
++  {__LINE__, 0x0, "ZhrANFIiIvRnqClIVyeD", 20, 0x8579a37},
++  {__LINE__, 0x0, "v7Q9ehzioTOVeDIZioT1", 20, 0x632aa8e0},
++  {__LINE__, 0x0, "Yod5hEeKcYqyhfXbhxj2", 20, 0xc829af29},
++  {__LINE__, 0x0, "GehSWY2ay4uUKhehXYb0", 20, 0x1b08b7e8},
++  {__LINE__, 0x0, "kwytJmq6UqpflV8Y8GoE", 20, 0x4e33b192},
++  {__LINE__, 0x0, "70684206568419061514", 20, 0x59a179f0},
++  {__LINE__, 0x0, "42015093765128581010", 20, 0xcd1013d7},
++  {__LINE__, 0x0, "88214814356148806939", 20, 0xab927546},
++  {__LINE__, 0x0, "43472694284527343838", 20, 0x11f3b20c},
++  {__LINE__, 0x0, "49769333513942933689", 20, 0xd562d4ca},
++  {__LINE__, 0x0, "54979784887993251199", 20, 0x233395f7},
++  {__LINE__, 0x0, "58360544869206793220", 20, 0x2d167fd5},
++  {__LINE__, 0x0, "27347953487840714234", 20, 0x8b5108ba},
++  {__LINE__, 0x0, "07650690295365319082", 20, 0xc46b3cd8},
++  {__LINE__, 0x0, "42655507906821911703", 20, 0xc10b2662},
++  {__LINE__, 0x0, "29977409200786225655", 20, 0xc9a0f9d2},
++  {__LINE__, 0x0, "85181542907229116674", 20, 0x9341357b},
++  {__LINE__, 0x0, "87963594337989416799", 20, 0xf0424937},
++  {__LINE__, 0x0, "21395988329504168551", 20, 0xd7c4c31f},
++  {__LINE__, 0x0, "51991013580943379423", 20, 0xf11edcc4},
++  {__LINE__, 0x0, "*]+@!);({_$;}[_},?{?;(_?,=-][@", 30, 0x40795df4},
++  {__LINE__, 0x0, "_@:_).&(#.[:[{[:)$++-($_;@[)}+", 30, 0xdd61a631},
++  {__LINE__, 0x0, "&[!,[$_==}+.]@!;*(+},[;:)$;)-@", 30, 0xca907a99},
++  {__LINE__, 0x0, "]{.[.+?+[[=;[?}_#&;[=)__$$:+=_", 30, 0xf652deac},
++  {__LINE__, 0x0, "-%.)=/[@].:.(:,()$;=%@-$?]{%+%", 30, 0xaf39a5a9},
++  {__LINE__, 0x0, "+]#$(@&.=:,*];/.!]%/{:){:@(;)$", 30, 0x6bebb4cf},
++  {__LINE__, 0x0, ")-._.:?[&:.=+}(*$/=!.${;(=$@!}", 30, 0x76430bac},
++  {__LINE__, 0x0, ":(_*&%/[[}+,?#$&*+#[([*-/#;%(]", 30, 0x6c80c388},
++  {__LINE__, 0x0, "{[#-;:$/{)(+[}#]/{&!%(@)%:@-$:", 30, 0xd54d977d},
++  {__LINE__, 0x0, "_{$*,}(&,@.)):=!/%(&(,,-?$}}}!", 30, 0xe3966ad5},
++  {__LINE__, 0x0, "e$98KNzqaV)Y:2X?]77].{gKRD4G5{mHZk,Z)SpU%L3FSgv!Wb8MLAFdi{+fp)c,@8m6v)yXg@]HBDFk?.4&}g5_udE*JHCiH=aL", 100, 0xe7c71db9},
++  {__LINE__, 0x0, "r*Fd}ef+5RJQ;+W=4jTR9)R*p!B;]Ed7tkrLi;88U7g@3v!5pk2X6D)vt,.@N8c]@yyEcKi[vwUu@.Ppm@C6%Mv*3Nw}Y,58_aH)", 100, 0xeaa52777},
++  {__LINE__, 0x0, "h{bcmdC+a;t+Cf{6Y_dFq-{X4Yu&7uNfVDh?q&_u.UWJU],-GiH7ADzb7-V.Q%4=+v!$L9W+T=bP]$_:]Vyg}A.ygD.r;h-D]m%&", 100, 0xcd472048},
++  {__LINE__, 0x7a30360d, "abacus", 6, 0xf8655a84},
++  {__LINE__, 0x6fd767ee, "backlog", 7, 0x1ed834b1},
++  {__LINE__, 0xefeb7589, "campfire", 8, 0x686cfca},
++  {__LINE__, 0x61cf7e6b, "delta", 5, 0x1554e4b1},
++  {__LINE__, 0xdc712e2, "executable", 10, 0x761b4254},
++  {__LINE__, 0xad23c7fd, "file", 4, 0x7abdd09b},
++  {__LINE__, 0x85cb2317, "greatest", 8, 0x4ba91c6b},
++  {__LINE__, 0x9eed31b0, "inverter", 8, 0xd5e78ba5},
++  {__LINE__, 0xb94f34ca, "jigsaw", 6, 0x23649109},
++  {__LINE__, 0xab058a2, "karate", 6, 0xc5591f41},
++  {__LINE__, 0x5bff2b7a, "landscape", 9, 0xf10eb644},
++  {__LINE__, 0x605c9a5f, "machine", 7, 0xbaa0a636},
++  {__LINE__, 0x51bdeea5, "nanometer", 9, 0x6af89afb},
++  {__LINE__, 0x85c21c79, "oblivion", 8, 0xecae222b},
++  {__LINE__, 0x97216f56, "panama", 6, 0x47dffac4},
++  {__LINE__, 0x18444af2, "quest", 5, 0x70c2fe36},
++  {__LINE__, 0xbe6ce359, "resource", 8, 0x1471d925},
++  {__LINE__, 0x843071f1, "secret", 6, 0x50c9a0db},
++  {__LINE__, 0xf2480c60, "ultimate", 8, 0xf973daf8},
++  {__LINE__, 0x2d2feb3d, "vector", 6, 0x344ac03d},
++  {__LINE__, 0x7490310a, "walrus", 6, 0x6d1408ef},
++  {__LINE__, 0x97d247d4, "xeno", 4, 0xe62670b5},
++  {__LINE__, 0x93cf7599, "yelling", 7, 0x1b36da38},
++  {__LINE__, 0x73c84278, "zlib", 4, 0x6432d127},
++  {__LINE__, 0x228a87d1, "4BJD7PocN1VqX0jXVpWB", 20, 0x997107d0},
++  {__LINE__, 0xa7a048d0, "F1rPWI7XvDs6nAIRx41l", 20, 0xdc567274},
++  {__LINE__, 0x1f0ded40, "ldhKlsVkPFOveXgkGtC2", 20, 0xdcc63870},
++  {__LINE__, 0xa804a62f, "5KKnGOOrs8BvJ35iKTOS", 20, 0x6926cffd},
++  {__LINE__, 0x508fae6a, "0l1tw7GOcem06Ddu7yn4", 20, 0xb52b38bc},
++  {__LINE__, 0xe5adaf4f, "MCr47CjPIn9R1IvE1Tm5", 20, 0xf83b8178},
++  {__LINE__, 0x67136a40, "UcixbzPKTIv0SvILHVdO", 20, 0xc5213070},
++  {__LINE__, 0xb00c4a10, "dGnAyAhRQDsWw0ESou24", 20, 0xbc7648b0},
++  {__LINE__, 0x2e0c84b5, "di0nvmY9UYMYDh0r45XT", 20, 0xd8123a72},
++  {__LINE__, 0x81238d44, "2XKDwHfAhFsV0RhbqtvH", 20, 0xd5ac5620},
++  {__LINE__, 0xf853aa92, "ZhrANFIiIvRnqClIVyeD", 20, 0xceae099d},
++  {__LINE__, 0x5a692325, "v7Q9ehzioTOVeDIZioT1", 20, 0xb07d2b24},
++  {__LINE__, 0x3275b9f, "Yod5hEeKcYqyhfXbhxj2", 20, 0x24ce91df},
++  {__LINE__, 0x38371feb, "GehSWY2ay4uUKhehXYb0", 20, 0x707b3b30},
++  {__LINE__, 0xafc8bf62, "kwytJmq6UqpflV8Y8GoE", 20, 0x16abc6a9},
++  {__LINE__, 0x9b07db73, "70684206568419061514", 20, 0xae1fb7b7},
++  {__LINE__, 0xe75b214, "42015093765128581010", 20, 0xd4eecd2d},
++  {__LINE__, 0x72d0fe6f, "88214814356148806939", 20, 0x4660ec7},
++  {__LINE__, 0xf857a4b1, "43472694284527343838", 20, 0xfd8afdf7},
++  {__LINE__, 0x54b8e14, "49769333513942933689", 20, 0xc6d1b5f2},
++  {__LINE__, 0xd6aa5616, "54979784887993251199", 20, 0x32476461},
++  {__LINE__, 0x11e63098, "58360544869206793220", 20, 0xd917cf1a},
++  {__LINE__, 0xbe92385, "27347953487840714234", 20, 0x4ad14a12},
++  {__LINE__, 0x49511de0, "07650690295365319082", 20, 0xe37b5c6c},
++  {__LINE__, 0x3db13bc1, "42655507906821911703", 20, 0x7cc497f1},
++  {__LINE__, 0xbb899bea, "29977409200786225655", 20, 0x99781bb2},
++  {__LINE__, 0xf6cd9436, "85181542907229116674", 20, 0x132256a1},
++  {__LINE__, 0x9109e6c3, "87963594337989416799", 20, 0xbfdb2c83},
++  {__LINE__, 0x75770fc, "21395988329504168551", 20, 0x8d9d1e81},
++  {__LINE__, 0x69b1d19b, "51991013580943379423", 20, 0x7b6d4404},
++  {__LINE__, 0xc6132975, "*]+@!);({_$;}[_},?{?;(_?,=-][@", 30, 0x8619f010},
++  {__LINE__, 0xd58cb00c, "_@:_).&(#.[:[{[:)$++-($_;@[)}+", 30, 0x15746ac3},
++  {__LINE__, 0xb63b8caa, "&[!,[$_==}+.]@!;*(+},[;:)$;)-@", 30, 0xaccf812f},
++  {__LINE__, 0x8a45a2b8, "]{.[.+?+[[=;[?}_#&;[=)__$$:+=_", 30, 0x78af45de},
++  {__LINE__, 0xcbe95b78, "-%.)=/[@].:.(:,()$;=%@-$?]{%+%", 30, 0x25b06b59},
++  {__LINE__, 0x4ef8a54b, "+]#$(@&.=:,*];/.!]%/{:){:@(;)$", 30, 0x4ba0d08f},
++  {__LINE__, 0x76ad267a, ")-._.:?[&:.=+}(*$/=!.${;(=$@!}", 30, 0xe26b6aac},
++  {__LINE__, 0x569e613c, ":(_*&%/[[}+,?#$&*+#[([*-/#;%(]", 30, 0x7e2b0a66},
++  {__LINE__, 0x36aa61da, "{[#-;:$/{)(+[}#]/{&!%(@)%:@-$:", 30, 0xb3430dc7},
++  {__LINE__, 0xf67222df, "_{$*,}(&,@.)):=!/%(&(,,-?$}}}!", 30, 0x626c17a},
++  {__LINE__, 0x74b34fd3, "e$98KNzqaV)Y:2X?]77].{gKRD4G5{mHZk,Z)SpU%L3FSgv!Wb8MLAFdi{+fp)c,@8m6v)yXg@]HBDFk?.4&}g5_udE*JHCiH=aL", 100, 0xccf98060},
++  {__LINE__, 0x351fd770, "r*Fd}ef+5RJQ;+W=4jTR9)R*p!B;]Ed7tkrLi;88U7g@3v!5pk2X6D)vt,.@N8c]@yyEcKi[vwUu@.Ppm@C6%Mv*3Nw}Y,58_aH)", 100, 0xd8b95312},
++  {__LINE__, 0xc45aef77, "h{bcmdC+a;t+Cf{6Y_dFq-{X4Yu&7uNfVDh?q&_u.UWJU],-GiH7ADzb7-V.Q%4=+v!$L9W+T=bP]$_:]Vyg}A.ygD.r;h-D]m%&", 100, 0xbb1c9912},
++  {__LINE__, 0xc45aef77, "h{bcmdC+a;t+Cf{6Y_dFq-{X4Yu&7uNfVDh?q&_u.UWJU],-GiH7ADzb7-V.Q%4=+v!$L9W+T=bP]$_:]Vyg}A.ygD.r;h-D]m%&"
++                         "h{bcmdC+a;t+Cf{6Y_dFq-{X4Yu&7uNfVDh?q&_u.UWJU],-GiH7ADzb7-V.Q%4=+v!$L9W+T=bP]$_:]Vyg}A.ygD.r;h-D]m%&"
++                         "h{bcmdC+a;t+Cf{6Y_dFq-{X4Yu&7uNfVDh?q&_u.UWJU],-GiH7ADzb7-V.Q%4=+v!$L9W+T=bP]$_:]Vyg}A.ygD.r;h-D]m%&"
++                         "h{bcmdC+a;t+Cf{6Y_dFq-{X4Yu&7uNfVDh?q&_u.UWJU],-GiH7ADzb7-V.Q%4=+v!$L9W+T=bP]$_:]Vyg}A.ygD.r;h-D]m%&"
++                         "h{bcmdC+a;t+Cf{6Y_dFq-{X4Yu&7uNfVDh?q&_u.UWJU],-GiH7ADzb7-V.Q%4=+v!$L9W+T=bP]$_:]Vyg}A.ygD.r;h-D]m%&"
++                         "h{bcmdC+a;t+Cf{6Y_dFq-{X4Yu&7uNfVDh?q&_u.UWJU],-GiH7ADzb7-V.Q%4=+v!$L9W+T=bP]$_:]Vyg}A.ygD.r;h-D]m%&", 600, 0x888AFA5B}
++};
++
++static const int test_size = sizeof(tests) / sizeof(tests[0]);
++
++int main(void)
++{
++    int i;
++    for (i = 0; i < test_size; i++) {
++        test_crc32(tests[i].crc, (Byte*) tests[i].buf, tests[i].len,
++                   tests[i].expect, tests[i].line);
++    }
++    return 0;
++}

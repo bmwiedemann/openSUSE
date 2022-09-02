@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Aug 23 16:22:59 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 1.2.12:
+  * A lot of bug fixes
+  * Improve speed of crc32 functions
+  * Use ARM crc32 instructions if the ARM architecture has them
+  For the complete changes, see ChangeLog
+- Fixes CVE-2022-37434,  heap-based buffer over-read or buffer overflow in
+  inflate.c via a large gzip header extra field
+  (CVE-2022-37434, bsc#1202175)
+- Added patches:
+  * zlib-1.2.11-covscan-issues-rhel9.patch
+  * zlib-1.2.11-covscan-issues.patch
+  * zlib-1.2.12-s390-vectorize-crc32.patch
+  * zlib-1.2.12-optimized-crc32-power8.patch
+  * zlib-1.2.12-IBM-Z-hw-accelerated-deflate-s390x.patch
+  * zlib-1.2.12-fix-configure.patch
+  * zlib-1.2.12-correct-inputs-provided-to-crc-func.patch
+  * zlib-1.2.12-fix-CVE-2022-37434.patch
+  * zlib-1.2.5-minizip-fixuncrypt.patch
+- Removed patches:
+  * bsc1197459.patch (upstreamed)
+  * zlib-power8-fate325307.patch
+    (replaced by zlib-1.2.12-optimized-crc32-power8.patch)
+  * bsc1174736-DFLTCC_LEVEL_MASK-set-to-0x1ff.patch
+    (replaced by zlib-1.2.12-IBM-Z-hw-accelrated-deflate-s390x.patch)
+  * 410.patch
+    (replaced by zlib-1.2.12-IBM-Z-hw-accelrated-deflate-s390x.patch)
+- Refreshed patches:
+  * zlib-format.patch
+  * zlib-no-version-check.patch
+- Disable profiling since it breaks tests
+- Update zlib-rpmlintrc
+
+-------------------------------------------------------------------
+Sat Jul  2 10:00:46 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- switch to https urls
+
+-------------------------------------------------------------------
 Fri Mar 25 14:59:29 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix memory corruption on deflate, bsc#1197459
