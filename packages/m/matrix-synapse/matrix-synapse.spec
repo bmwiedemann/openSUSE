@@ -67,6 +67,7 @@
 %global hiredis_version               2.0.0
 %global txredisapi_version            1.4.7
 %global Pympler_version               1.0.1
+%global pydantic_version              1.9.1
 %else
 # some version locks based on poetry.lock
 %global Jinja2_version                3.0
@@ -116,6 +117,7 @@
 %global hiredis_version               2.0.0
 %global txredisapi_version            1.4.7
 %global Pympler_version               1.0.1
+%global pydantic_version              1.7.4
 %endif
 
 %define requires_peq() %(echo '%*' | LC_ALL=C xargs -r rpm -q --whatprovides --qf 'Requires: %%{name} = %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
@@ -153,7 +155,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.64.0
+Version:        1.66.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -260,6 +262,8 @@ BuildRequires:  %{use_python}-matrix-synapse-ldap3 >= %{matrix_synapse_ldap3_ver
 %endif
 BuildRequires:  %{use_python}-packaging >= %{packaging_version}
 %requires_peq   %{use_python}-packaging
+BuildRequires:  %{use_python}-pydantic >= %{pydantic_version}
+%requires_peq   %{use_python}-pydantic
 BuildRequires:  %{use_python}-psycopg2 >= %{psycopg2_version}
 %requires_peq   %{use_python}-psycopg2
 BuildRequires:  %{use_python}-pysaml2 >= %{pysaml2_version}
