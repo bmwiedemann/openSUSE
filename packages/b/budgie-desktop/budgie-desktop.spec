@@ -22,7 +22,7 @@
 %define _distconfdir %{_sysconfdir}
 %endif
 Name:           budgie-desktop
-Version:        10.6.3+0
+Version:        10.6.4+0
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

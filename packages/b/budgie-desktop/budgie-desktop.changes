@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 02 12:18:40 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 10.6.4+0:
+  * Bump to 10.6.4
+  * Add missing gio-unix-2.0 dependencies
+  * Update timezone if no custom timezone set
+  * Resolve numerous issues with the Workspace Applet
+
+-------------------------------------------------------------------
 Mon Aug 29 17:32:42 UTC 2022 - gmbr3@opensuse.org
 
 - Update to version 10.6.3+0:
