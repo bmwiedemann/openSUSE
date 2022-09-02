@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 01 15:49:20 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.102.3:
+  * Fix shortcode parser regression with quoted param values
+
+-------------------------------------------------------------------
 Wed Aug 31 15:03:38 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.102.2:

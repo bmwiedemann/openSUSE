@@ -289,4 +289,13 @@
   * release: Add the releaser commits to the ignore list (forwarded request 1000506 from jfkw)</comment>
     <requestid>1000507</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0930f809c2774015314ce119131336c0</srcmd5>
+    <version>0.102.3</version>
+    <time>1662148618</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.102.3:
+  * Fix shortcode parser regression with quoted param values (forwarded request 1000945 from jfkw)</comment>
+    <requestid>1000946</requestid>
+  </revision>
 </revisionlist>
