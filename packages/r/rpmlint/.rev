@@ -3964,4 +3964,24 @@ oddjob-gpupdate isn't blocked)</comment>
   * Silent stdout and stderr for appstream-util command.</comment>
     <requestid>999346</requestid>
   </revision>
+  <revision rev="411" vrev="1">
+    <srcmd5>f3a3918629b44671d196874e2a8532b8</srcmd5>
+    <version>2.3.0+git20220901.67701476</version>
+    <time>1662148567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git20220901.67701476:
+  * fix _check_manpage crash
+
+- Update to version 2.3.0+git20220831.4064cfd1:
+  * Relax bad-manual-page-folder
+
+- Update to version 2.3.0+git20220830.66066a42:
+  * extend checks related to manual pages
+
+- Update to version 2.3.0+git20220826.38402552:
+  * Revert &quot;Temporarily remove fedora:rawhide as it has broken Python stack.&quot;
+  * Run flake8 directly as pytest-flake8 is broken.
+- Rebase disable-flake-and-cov.patch patch.</comment>
+    <requestid>1000593</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Sep 01 07:32:04 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220901.67701476:
+  * fix _check_manpage crash
+
+-------------------------------------------------------------------
+Wed Aug 31 09:44:20 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220831.4064cfd1:
+  * Relax bad-manual-page-folder
+
+-------------------------------------------------------------------
+Tue Aug 30 09:21:19 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220830.66066a42:
+  * extend checks related to manual pages
+
+-------------------------------------------------------------------
+Sun Aug 28 15:21:58 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220826.38402552:
+  * Revert "Temporarily remove fedora:rawhide as it has broken Python stack."
+  * Run flake8 directly as pytest-flake8 is broken.
+- Rebase disable-flake-and-cov.patch patch.
+
+-------------------------------------------------------------------
 Fri Aug 26 06:42:09 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.3.0+git20220826.4e835ede:
