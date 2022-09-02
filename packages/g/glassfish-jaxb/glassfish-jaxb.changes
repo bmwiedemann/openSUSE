@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Mar 23 23:23:13 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
-- Fix build with maven-antrun-plugin 3.x
+- Fix build with maven-antrun-plugin 3.x (jsc#SLE-23217)
 - Add: txw2-args4j.patch
 
 -------------------------------------------------------------------
