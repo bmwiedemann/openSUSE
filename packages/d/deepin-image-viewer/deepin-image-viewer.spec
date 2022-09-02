@@ -2,7 +2,7 @@
 # spec file for package deepin-image-viewer
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2017-2021 Hillwood Yang <hillwood@opensuse.org>
+# Copyright (c) 2017-2022 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,14 @@
 %endif
 
 Name:           deepin-image-viewer
-Version:        5.8.13
+Version:        5.9.4
 Release:        0
 Summary:        Deepin Image Viewer
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://github.com/linuxdeepin/deepin-image-viewer
 Source0:        https://github.com/linuxdeepin/deepin-image-viewer/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:         fix-library-link.patch
 Source99:       %{name}.appdata.xml
 BuildRequires:  deepin-gettext-tools
 %ifarch ppc ppc64 ppc64le s390 s390x
@@ -64,6 +65,7 @@ BuildRequires:  pkgconfig(gio-qt)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libraw)
+BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(udisks2-qt5)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
@@ -83,6 +85,7 @@ sed -i 's/Exec=deepin-image-viewer/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-i
 src/%{name}.desktop
 sed -i 's|"../libimageviewer/image-viewer_global.h"|<libimageviewer/image-viewer_global.h>|g' \
 src/src/module/view/homepagewidget.cpp
+sed -i '/target_link_libraries/s/imageviewer/imageviewer tiff/g' src/CMakeLists.txt
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=Release \

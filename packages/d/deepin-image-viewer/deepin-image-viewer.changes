@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 26 02:07:21 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.9.4
+  * Add event tracking feature
+
+-------------------------------------------------------------------
+Thu Jun 30 13:41:34 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.9.2
+  * Fix bugs
+- Add fix-library-link.patch
+
+-------------------------------------------------------------------
 Tue Apr 12 14:55:58 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.8.13
