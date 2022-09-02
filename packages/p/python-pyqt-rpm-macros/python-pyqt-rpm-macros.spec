@@ -26,7 +26,7 @@ Source0:        macros.pyqt
 Source1:        LICENSE
 Requires:       fdupes
 Requires:       python-rpm-macros
-Recommends:     %{python_module sip-devel}
+Recommends:     python3-sip-devel
 BuildArch:      noarch
 
 %description
