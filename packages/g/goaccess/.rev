@@ -668,4 +668,18 @@
     date.</comment>
     <requestid>989347</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c5040207d387668d4071773c92e23cb5</srcmd5>
+    <version>1.6.3</version>
+    <time>1662148605</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.3:
+  * Enabled DNS thread when resolving a host and outputting real-time HTML.
+    This helps avoid stalling the WS server on busy connections.
+  * Fixed issue where it would not properly parse an XFF if the '%h' specifier
+    was already set.
+  * Fixed possible XSS issues when using '--html-custom-css' and
+    '--html-custom-js' by allowing valid filenames.</comment>
+    <requestid>1000839</requestid>
+  </revision>
 </revisionlist>

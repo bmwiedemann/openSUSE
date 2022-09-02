@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep  2 08:36:25 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.3:
+  * Enabled DNS thread when resolving a host and outputting real-time HTML.
+    This helps avoid stalling the WS server on busy connections.
+  * Fixed issue where it would not properly parse an XFF if the '%h' specifier
+    was already set.
+  * Fixed possible XSS issues when using '--html-custom-css' and
+    '--html-custom-js' by allowing valid filenames.
+
+-------------------------------------------------------------------
 Fri Jul 15 07:30:15 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.2:
