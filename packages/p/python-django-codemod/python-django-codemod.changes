@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 31 23:03:56 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Added conftest.py from upstream
+- Update to v1.11.0
+  * Add tests to sdist
+- from v1.10.1
+  * Revert to libCST old parser
+- from v1.10.0
+  * Add support for Python 3.10 (92e9bcd)
+  * Use libCST's native parser
+- from v1.9.0
+  * Integrate rich-click
+- from v1.8.0
+  * Drop support for Python 3.6
+
+-------------------------------------------------------------------
 Mon Jan 10 22:39:58 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v1.7.0

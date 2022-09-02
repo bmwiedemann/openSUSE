@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-codemod
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-codemod
-Version:        1.7.0
+Version:        1.11.0
 Release:        0
 Summary:        Collections of libCST codemodders to upgrade Django
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/browniebroke/django-codemod
-Source:         https://github.com/browniebroke/django-codemod/archive/v%{version}.tar.gz#/django-codemod-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django-codemod/django-codemod-%{version}.tar.gz
+Source1:        conftest.py
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
 BuildRequires:  fdupes
@@ -33,19 +34,19 @@ BuildRequires:  python-rpm-macros
 Requires:       python-click
 Requires:       python-libcst
 Requires:       python-pathspec
-Requires:       python-rich
+Requires:       python-rich-click
 Recommends:     python-setuptools
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module pathspec}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module libcst}
 BuildRequires:  %{python_module parameterized}
+BuildRequires:  %{python_module pathspec}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module rich}
+BuildRequires:  %{python_module rich-click}
 # /SECTION
 %python_subpackages
 
@@ -54,6 +55,7 @@ Collections of libCST codemodders to upgrade Django.
 
 %prep
 %setup -q -n django-codemod-%{version}
+cp %{SOURCE1} .
 sed -i 's/rich = ".*"/rich = "*"/' pyproject.toml
 sed -i '/addopts/d' pyproject.toml
 
@@ -75,9 +77,9 @@ sed -i '/addopts/d' pyproject.toml
 %pytest
 
 %files %{python_files}
-%doc CHANGELOG.md README.md docs/*.md
+%doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/djcodemod
-%{python_sitelib}/*
+%{python_sitelib}/*django[_-]codemod*/
 
 %changelog

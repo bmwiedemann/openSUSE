@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>945447</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>74624601e366bec1c1e5336fb6b98d74</srcmd5>
+    <version>1.11.0</version>
+    <time>1662148593</time>
+    <user>dimstar_suse</user>
+    <comment>- Added conftest.py from upstream
+- Update to v1.11.0</comment>
+    <requestid>1000763</requestid>
+  </revision>
 </revisionlist>
