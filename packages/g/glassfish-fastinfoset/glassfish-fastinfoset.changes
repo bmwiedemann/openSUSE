@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Mar 22 09:11:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
-- Build with source and target levels 8
+- Build with source and target levels 8 (jsc#SLE-23217)
 - Re-enable javadoc
 - Add:
   * glassfish-fastinfoset-1.2.12-utilities-FastInfosetWriterSAXBufferProcessor.patch
