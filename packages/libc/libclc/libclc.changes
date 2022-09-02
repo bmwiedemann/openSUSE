@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 25 13:33:10 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed build on Leap 15.3 by buildrequiring clang13/llvm13
+
+-------------------------------------------------------------------
 Fri Apr  1 21:44:03 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.2.0+14.0.0.
