@@ -1,0 +1,171 @@
+From b74697b6151f78b3952c8378f98ecbff3b6f9f73 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Wed, 13 Jul 2022 15:58:16 +0200
+Subject: [PATCH] Include filesystem from experimental for GCC 7
+
+---
+ libsrc/core/archive.hpp      | 16 +++++++++++-----
+ libsrc/core/utils.cpp        |  6 ++----
+ libsrc/core/utils.hpp        | 13 +++++++------
+ libsrc/general/mystring.hpp  |  5 +++++
+ libsrc/meshing/meshclass.hpp |  7 ++++++-
+ 5 files changed, 31 insertions(+), 16 deletions(-)
+
+diff --git a/libsrc/core/archive.hpp b/libsrc/core/archive.hpp
+index 4271e725..a4dee54b 100644
+--- a/libsrc/core/archive.hpp
++++ b/libsrc/core/archive.hpp
+@@ -5,7 +5,13 @@
+ #include <array>                // for array
+ #include <complex>              // for complex
+ #include <cstring>              // for size_t, strlen
+-#include <filesystem>           // for path
++#if defined(__GNUC__) && (__GNUC__ < 8)
++#include <experimental/filesystem>
++namespace filesystem = std::experimental::filesystem;
++#else
++#include <filesystem>           // for filesystem::path
++namespace filesystem = std::filesystem;
++#endif
+ #include <fstream>              // for ifstream, ofstream
+ #include <functional>           // for function
+ #include <map>                  // for map
+@@ -741,7 +747,7 @@ namespace ngcore
+     BinaryOutArchive(std::shared_ptr<std::ostream>&& astream)
+       : Archive(true), stream(std::move(astream))
+     { }
+-    BinaryOutArchive(const std::filesystem::path& filename)
++    BinaryOutArchive(const filesystem::path& filename)
+       : BinaryOutArchive(std::make_shared<std::ofstream>(filename)) {}
+     ~BinaryOutArchive () override { FlushBuffer(); }
+ 
+@@ -829,7 +835,7 @@ namespace ngcore
+     BinaryInArchive (std::shared_ptr<std::istream>&& astream)
+       : Archive(false), stream(std::move(astream))
+     { }
+-    BinaryInArchive (const std::filesystem::path& filename)
++    BinaryInArchive (const filesystem::path& filename)
+       : BinaryInArchive(std::make_shared<std::ifstream>(filename)) { ; }
+ 
+     using Archive::operator&;
+@@ -904,7 +910,7 @@ namespace ngcore
+     TextOutArchive (std::shared_ptr<std::ostream>&& astream)
+       : Archive(true), stream(std::move(astream))
+     { }
+-    TextOutArchive (const std::filesystem::path& filename) :
++    TextOutArchive (const filesystem::path& filename) :
+       TextOutArchive(std::make_shared<std::ofstream>(filename)) { }
+ 
+     using Archive::operator&;
+@@ -959,7 +965,7 @@ namespace ngcore
+     TextInArchive (std::shared_ptr<std::istream>&& astream) :
+       Archive(false), stream(std::move(astream))
+     { }
+-    TextInArchive (const std::filesystem::path& filename)
++    TextInArchive (const filesystem::path& filename)
+       : TextInArchive(std::make_shared<std::ifstream>(filename)) {}
+ 
+     using Archive::operator&;
+diff --git a/libsrc/core/utils.cpp b/libsrc/core/utils.cpp
+index 62d4d136..184342ae 100644
+--- a/libsrc/core/utils.cpp
++++ b/libsrc/core/utils.cpp
+@@ -7,8 +7,6 @@
+ #include <cxxabi.h>
+ #endif
+ #include <array>
+-#include <filesystem>
+-#include <iostream>
+ #include <regex>
+ 
+ #include "ngstream.hpp"
+@@ -112,10 +110,10 @@ namespace ngcore
+ #endif
+   }
+ 
+-  NGCORE_API std::filesystem::path GetTempFilename()
++  NGCORE_API filesystem::path GetTempFilename()
+   {
+       static int counter = 0;
+-      auto path = std::filesystem::temp_directory_path();
++      auto path = filesystem::temp_directory_path();
+       path += ".temp_netgen_file_"+ToString(counter++)+"_"+ToString(GetTimeCounter());
+       return path;
+   }
+diff --git a/libsrc/core/utils.hpp b/libsrc/core/utils.hpp
+index d072be47..32f4c9f6 100644
+--- a/libsrc/core/utils.hpp
++++ b/libsrc/core/utils.hpp
+@@ -3,7 +3,13 @@
+ 
+ #include <atomic>
+ #include <chrono>
++#if defined(__GNUC__) && (__GNUC__ < 8)
++#include <experimental/filesystem>
++namespace filesystem = std::experimental::filesystem;
++#else
+ #include <filesystem>
++namespace filesystem = std::filesystem;
++#endif
+ #include <map>
+ #include <ostream>
+ #include <sstream>
+@@ -96,11 +102,6 @@ namespace ngcore
+     return res;
+   }
+ 
+-  inline std::string ToLower( const std::filesystem::path & p )
+-  {
+-    return ToLower(p.string());
+-  }
+-
+   template<typename T1, typename T2>
+   std::ostream& operator << (std::ostream& ost, const std::map<T1,T2>& map)
+   {
+@@ -221,7 +222,7 @@ namespace ngcore
+   NGCORE_API int GetCompiledSIMDSize();
+   NGCORE_API bool IsRangeCheckEnabled();
+ 
+-  NGCORE_API std::filesystem::path GetTempFilename();
++  NGCORE_API filesystem::path GetTempFilename();
+ 
+ } // namespace ngcore
+ 
+diff --git a/libsrc/general/mystring.hpp b/libsrc/general/mystring.hpp
+index ee364d77..5eb39df9 100644
+--- a/libsrc/general/mystring.hpp
++++ b/libsrc/general/mystring.hpp
+@@ -19,7 +19,12 @@
+ #ifndef MYSTRING__H
+ #define MYSTRING__H
+ 
++#if defined(__GNUC__) && (__GNUC__ < 8)
++#include <experimental/filesystem>
++namespace filesystem = std::experimental::filesystem;
++#else
+ #include <filesystem>
++#endif
+ 
+ namespace netgen
+ {
+diff --git a/libsrc/meshing/meshclass.hpp b/libsrc/meshing/meshclass.hpp
+index 0d063963..5f278107 100644
+--- a/libsrc/meshing/meshclass.hpp
++++ b/libsrc/meshing/meshclass.hpp
+@@ -11,7 +11,12 @@
+   The mesh class
+ */
+ 
+-#include<filesystem>
++#if defined(__GNUC__) && (__GNUC__ < 8)
++#include <experimental/filesystem>
++namespace filesystem = std::experimental::filesystem;
++#else
++#include <filesystem>
++#endif
+ 
+ namespace netgen
+ {
+-- 
+2.37.0
+

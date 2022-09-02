@@ -16,7 +16,6 @@
 #
 
 
-%bcond_with need_clang
 %bcond_with openmpi
 %bcond_without ffmpeg
 %bcond_without opencascade
@@ -24,27 +23,31 @@
 %bcond_with pytest
 
 Name:           netgen
-Version:        6.2.2105
+Version:        6.2.2203
 Release:        0
 Summary:        Automatic 3D tetrahedral mesh generator
 License:        LGPL-2.1-only
 Group:          Productivity/Graphics/CAD
 URL:            https://ngsolve.org/
 Source0:        https://github.com/NGSolve/netgen/archive/refs/tags/v%{version}.tar.gz#/netgen-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Set-explicit-OBJECT-library-type-for-internal-togl.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Disable-backtrace-generation.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Throw-in-case-enum-value-is-unhandled.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-Throw-Exception-when-shape-has-invalid-type.patch
 # PATCH-FIX-OPENSUSE -- Allow to disable download of Catch2
 Patch4:         0001-Optionally-use-system-provided-Catch2.patch
 # PATCH-FIX-UPSTREAM
 Patch5:         0001-Optionally-prefer-system-wide-pybind11.patch
 # PATCH-FIX-UPSTREAM
-Patch6:         0001-Fix-signedness-for-ARM-Neon-mask-type.patch
+Patch6:         0001-Link-nggui-to-FFMPEG-und-JPEG-libraries-when-needed.patch
+# PATCH-FIX-UPSTREAM
+Patch7:         0001-Avoid-installation-of-Togl-static-library.patch
+# PATCH-FIX-UPSTREAM
+Patch8:         0001-Fix-use-of-unitialized-stlgeometry-member-in-constru.patch
+# PATCH-FIX-OPENSUSE
+Patch9:         0001-Include-filesystem-from-experimental-for-GCC-7.patch
+# PATCH-FIX-UPSTREAM
+Patch10:        0001-Fix-netgen-executable-and-library-RUNPATHs.patch
+# PATCH-FIX-OPENSUSE
+Patch11:        0001-Ignore-invalid-unknown-types-in-pybind11-docstrings.patch
 %if %{with opencascade}
 BuildRequires:  occt-devel
 BuildRequires:  pkgconfig(fontconfig)
@@ -52,12 +55,14 @@ BuildRequires:  pkgconfig(xi)
 %endif
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++ >= 7
 BuildRequires:  git-core
 BuildRequires:  libjpeg-devel
 BuildRequires:  python3-devel
-BuildRequires:  python3-pybind11-devel
-%if %{with pytest}
 BuildRequires:  python3-numpy
+BuildRequires:  python3-pybind11-devel >= 2.7.0
+BuildRequires:  python3-pybind11-stubgen
+%if %{with pytest}
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-check
 %endif
@@ -80,12 +85,6 @@ BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
-%endif
-%if %{with need_clang}
-BuildRequires:  llvm
-BuildRequires:  llvm-clang
-%else
-BuildRequires:  gcc-c++ >= 7
 %endif
 BuildRequires:  xz
 # x86 (32bit) is no longer supported upstream. Also exclude other 32 bit archs
@@ -146,11 +145,7 @@ Python bindings for NETGEN.
 %autosetup -p1
 
 %build
-%if %{with need_clang}
-    OPTFLAGS="$(echo %{optflags} | sed "s:-grecord-gcc-switches::g") -flto"
-%else
-    OPTFLAGS="%{optflags}"
-%endif
+%global optflags %{optflags} -DPYBIND11_HAS_FILESYSTEM_IS_OPTIONAL=1
 
 # Work around broken version detection
 echo "v%{version}-0-0" > ./version.txt
@@ -168,14 +163,6 @@ echo "v%{version}-0-0" > ./version.txt
     -DCMAKE_SKIP_BUILD_RPATH=ON \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
     -DCMAKE_INSTALL_RPATH_USE_LINK_PATH:BOOL=ON \
-%if %{with need_clang}
-    -DCMAKE_C_COMPILER=clang \
-    -DCMAKE_CXX_COMPILER=clang++ \
-    -DCMAKE_AR=%{_bindir}/llvm-ar \
-    -DCMAKE_RANLIB=%{_bindir}/llvm-ranlib \
-    -DCMAKE_NM=%{_bindir}/llvm-nm \
-    -DCMAKE_OBJDUMP=%{_bindir}/llvm-objdump \
-%endif
     -DENABLE_UNIT_TESTS=ON \
     -DDOWNLOAD_DEPENDENCIES=OFF \
     -DUSE_NATIVE_ARCH=OFF \
@@ -199,8 +186,14 @@ echo "v%{version}-0-0" > ./version.txt
 %cmake_build
 
 %install
+# Stubgen imports the just created netgen bindings -- https://github.com/NGSolve/netgen/issues/132
+export PYTHONPATH=%{buildroot}%{python3_sitearch}
 %cmake_install
 rm -Rf %{buildroot}%{_datadir}/%{name}/doc
+# https://github.com/NGSolve/netgen/issues/126
+find %{buildroot}%{_libdir}/ -iname \*.a -print -delete
+# Remove private attributes from stubs
+find %{buildroot}%{python3_sitearch} -iname \*.pyi -exec sed -i -e '/^_[^_].*=/ d' '{}' \;
 
 %fdupes %{buildroot}/%{_prefix}
 
@@ -217,11 +210,12 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}/%{name}
 %{_datadir}/netgen
 
 %files -n netgen-libs
-%{_libdir}/netgen
+%dir %{_libdir}/netgen
+%{_libdir}/netgen/*.so
 
 %files -n python3-%{name}
 %{python3_sitearch}/netgen
-%{python3_sitearch}/pyngcore*.so
+%{python3_sitearch}/pyngcore
 
 %files devel
 %dir %{_prefix}/lib/cmake

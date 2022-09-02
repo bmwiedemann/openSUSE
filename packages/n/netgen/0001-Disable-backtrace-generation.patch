@@ -1,4 +1,4 @@
-From ea050b5974992228f0bb46d8d4108d15880b5120 Mon Sep 17 00:00:00 2001
+From 1934071e77efc2ab471c330afda2fe0dece074f8 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
 Date: Mon, 1 Mar 2021 19:18:22 +0100
 Subject: [PATCH] Disable backtrace generation
@@ -37,5 +37,5 @@ index b89d721e..335e3411 100644
    }
  } // namespace ngcore
 -- 
-2.30.1
+2.36.1
 

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug  2 22:07:26 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Generate python stubs, add
+  0001-Ignore-invalid-unknown-types-in-pybind11-docstrings.patch
+
+-------------------------------------------------------------------
+Fri Jul 15 16:35:18 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to version 6.2.2203
+  * no changelog provided
+- Drop obsolete/upstream patches:
+  * 0001-Set-explicit-OBJECT-library-type-for-internal-togl.patch
+  * 0001-Throw-in-case-enum-value-is-unhandled.patch
+  * 0001-Throw-Exception-when-shape-has-invalid-type.patch
+  * 0001-Fix-signedness-for-ARM-Neon-mask-type.patch
+- Add patches:
+  * 0001-Link-nggui-to-FFMPEG-und-JPEG-libraries-when-needed.patch
+  * 0001-Avoid-installation-of-Togl-static-library.patch
+  * 0001-Fix-use-of-unitialized-stlgeometry-member-in-constru.patch
+  * 0001-Include-filesystem-from-experimental-for-GCC-7.patch
+  * 0001-Fix-netgen-executable-and-library-RUNPATHs.patch
+
+-------------------------------------------------------------------
 Fri Mar  4 17:15:57 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix RUNPATH also for Leap/SLE 15.4, which now uses
