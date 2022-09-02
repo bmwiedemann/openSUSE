@@ -20,7 +20,7 @@
 %define import_path github.com/restic/restic
 
 Name:           restic
-Version:        0.13.1
+Version:        0.14.0
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        BSD-2-Clause
@@ -33,7 +33,7 @@ Source3:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  golang-packaging
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.14
+BuildRequires:  golang(API) >= 1.15
 
 %description
 restic is a backup program. It supports verification, encryption,

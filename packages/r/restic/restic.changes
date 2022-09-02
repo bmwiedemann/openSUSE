@@ -1,4 +1,279 @@
 -------------------------------------------------------------------
+Thu Aug 25 22:52:37 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.14.0:
+  * doc: Improve/clarify preparing and versions of repositories
+  * rclone: Return a permanent error if rclone already exited
+  * restic: Cleanup xattr error handling for Solaris
+  * downgrade bazil/fuse again to retain macOS support
+  * Add note that larger packs increase disk wear
+  * repository: Do not report ignored packs in EachByPack
+  * helper: download modules as first step
+  * helper: Reduce number of parallel builds a bit
+  * helper: don't setup cmd paths twice
+  * doc: document aws session token
+  * mount: Only remember successful snapshot refreshes
+  * copy: replace --repo2 with --from-repo
+  * mount: Map slashes in tags to underscores
+  * forget: Fail test if duration parsing error is missing
+  * forget: Error when invalid unit is given in duration policy
+  * doc: Update link to GCS documentation
+  * stats: Add snapshots count to json output
+  * restic: Use stable sorting in snapshot policy
+  * Bump golangci-lint version
+  * Update tests to Go 1.19
+  * mount: Fix parent inode used by snapshots dir
+  * mount: remove unused inode field from root node
+  * Mention --snapshot-template and --time-template in changelog
+  * fuse: Redesign snapshot dirstruct
+  * Add changelog for DEBUG_LOG available in release builds
+  * update documentation to reflect DEBUG_LOG for release builds
+  * debug: support roundtripper logging also for release builds
+  * debug: enable debug support for release builds
+  * Remove unused hooks mechanism
+  * repository: StreamPack in parts if there are too large gaps
+  * Reword prune --repack-small description
+  * Add note that pack-size is not an exact limit
+  * s3: Disable multipart uploads below 200MB
+  * Always repack very small pack files
+  * Only repack small files if there are multiple of them
+  * rename option to --pack-size
+  * Add changelog for packsize option
+  * update restic help snippets in documentation
+  * rework pack size parameter documentation
+  * document minPackSize
+  * repository: prevent header overfill
+  * prune: reduce priority of repacking small packs
+  * prune: add repack-small parameter
+  * add option for setting min pack size
+  * fuse: remove unused MetaDir
+  * Make snapshots dirs in mount command customizable
+  * Generalize fuse snapshot dirs implemetation
+  * Add possibility to set snapshot ID (used in test)
+  * internal/restic: Handle EINVAL for xattr on Solaris
+  * Add changelog for #3837/#3840
+  * repository: Test fallback to existing blobs
+  * prune: move code
+  * repository: try to recover from invalid blob while repacking
+  * prune: Add internal integrity check
+  * prune: split into smaller functions
+  * prune: separate collecting/printing/pruning
+  * Add environment variable RESTIC_COMPRESSION
+  * Speed up restic init over slow SFTP links
+  * Remove stale comments from backend/sftp
+  * Add changelog for the optimized tree serialization
+  * archiver: reduce memory usage for large files
+  * archiver: Incrementally serialize tree nodes
+  * archiver: unify FutureTree/File into futureNode
+  * archiver: remove unused fileInfo from progress callback
+  * archiver: remove dead attribute from FutureNode
+  * Add changelog for stricter checks
+  * Fix S3 legacy layout migration
+  * checker: Fix S3 legacy layout detection
+  * check: Deprecate `--check-unused`
+  * check: Complain about usage of s3 legacy layout
+  * check: complain about mixed pack files
+  * backend: extract readerat from restic package
+  * restorer: extract hardlinks index from restic package
+  * crypto: move crypto buffer helpers
+  * limiter: move to internal/backend
+  * mock: move to internal/backend
+  * repository: extract Load/StoreJSONUnpacked
+  * repository: extract LoadTree/SaveTree
+  * prune: handle very high duplication of some blobs
+  * prune: Enhance treatment of duplicates
+  * backup: clarify usage string
+  * azure: Strip ? prefix from sas token
+  * azure: add SAS authentication option
+  * doc: Add note about using rclone for Google Drive
+  * doc: Rework hint to repack with max compression
+  * Wording: replace further repo occurrences with repository
+  * Added hint for --compression max in migration process
+  * Add changelog entry
+  * Fix wording in changelog template
+  * Test restore fails when using invalid patterns
+  * Add testRunRestoreAssumeFailure function
+  * Restore: validate provided patterns
+  * Wording: change repo to repository
+  * Fix data race in blob_saver
+  * Document automatic CPU/IO-concurrency
+  * adapt workers based on whether an operation is CPU or IO-bound
+  * Add changelog for async pack uploads
+  * Document connections and compression option
+  * repository: Limit to a single pending pack file
+  * archiver: Reduce tree saver concurrency
+  * archiver: Limit blob saver count to GOMAXPROCS
+  * repository: Rework blob saving to use an async pack uploader
+  * tag: Remove unnecessary flush call
+  * Don't crash if SecretString is uninitialized
+  * check: remove dead code
+  * check: Print full ids
+  * rebuild-index: correctly rebuild index for mixed packs
+  * extend compression feature changelog entry
+  * Account for pack header overhead at each entry
+  * stats: return storage size for raw-data mode
+  * Print number of bytes added to the repo
+  * Return real size from SaveBlob
+  * redact swift auth token in debug output
+  * redacted keys/token in backend config debug log
+  * redact http authorization header in debug log output
+  * drop unused repository.Loader interface
+  * repository: remove unused packIDToIndex field
+  * repository: simplify CreateIndexFromPacks
+  * repository: hide MasterIndex.FinalizeFullIndexes / FinalizeNotFinalIndexes
+  * repository: remove MasterIndex.All()
+  * repository: Properly set id for finalized index
+  * repository: remove unused (Master)Index.Count
+  * repository: remove unused index.ListPack
+  * repository: inline index.encode
+  * repository: remove unused index.Store
+  * repository: make flushPacks private
+  * repository: add Save method to MasterIndex interface
+  * repository: index saving belongs into the MasterIndex
+  * Revert "restic prune: Merge three loops over the index"
+  * cmd/restic, limiter: Move config knowledge to internal packages
+  * restic prune: Merge three loops over the index
+  * backend: Move semaphores to a dedicated package
+  * all: Move away from pkg/errors, easy cases
+  * tweak password test count changelog
+  * fix flaky key test
+  * fix handling of maxKeys in SearchKey
+  * internal/repository: Fix LoadBlob + fuzz test
+  * backend/sftp: Support atomic rename
+  * get rid of tomb package
+  * archiver: free workers once finished
+  * archiver: remove tomb usage
+  * migrate: Cleanup option to request repository check
+  * cmd/restic: Remove trailing "..." from progress messages
+  * archiver: Remove cleanup goroutine from BufferPool
+  * Fix linter check
+  * internal/restic: Custom ID.MarshalJSON
+  * Update gopkg.in/yaml
+  * Update github.com/minio/minio-go/v7 to v7.0.27
+  * prune: Don't print stack trace if snapshot can't be loaded
+  * prune: Fix crash on empty snapshot
+  * Update 030_preparing_a_new_repo.rst
+  * Add changelog entry for validating exclude patterns
+  * Add tests for validating exclude patterns
+  * hashing: Fix up comments
+  * repository: Re-tune indexmap allocation strategy
+  * local: Ignore additional errors for directory syncing
+  * hashing: Remove io.WriterTo implementation
+  * repository: Remove RunWorkers, report ctx.Err()
+  * cache: Don't Lstat before creating the tag file
+  * Fix error on temp file deletion on windows
+  * Add compression migration support to changelog
+  * migrate: Allow migrations to request a check run
+  * check: Better differentiate between warnings and errors
+  * checker: convert error type to use pointer-receivers
+  * doc: Describe repository upgrade process
+  * upgrade_repo_v2: Use atomic replace for supported backends
+  * Document repository version and minimum restic version
+  * prune: Add option to repack uncompressed data
+  * prune: Automatically repack uncompressed trees for repo v2
+  * Add migration to compress all data
+  * Add tests for upgrade migration
+  * Try to make repo upgrade migration more failsafe
+  * Add repo upgrade migration
+  * Improve migrate command
+  * init: Enable compression support by default
+  * stats: hardlinks only reduce restore within a snapshot
+  * Validate exclude patterns
+  * Keep original pattern for later use
+  * DOCS: Incorrectly used SI units when IEC units were meant (fix #3669)
+  * doc: specify AWS Region via AWS_DEFAULT_REGION
+  * debug: Support pack ID prefixes in `debug examine`
+  * debug: Add switch to upload blobs extracted by debug examine
+  * Tidy go.sum
+  * prune: Add unsafe option to recover from no free space
+  * repository: Use existing method to collect pack ids
+  * repository: Refactor index IDs collection
+  * Use config file modes to derive new dir/file modes
+  * Add changelog for local/sftp connection limit
+  * Add documentation for --repository-version
+  * repository: Test compressed blobs in StreamPack
+  * pack: slightly expand testing of compressed blobs
+  * repository: test uncompressedLength field and index example
+  * repository: run blackbox tests using old and new repo version
+  * repository: unify repository version-specific initialization
+  * Leave allocating slices to the decompress code
+  * Configure zstd encoder/decoder
+  * Cleanup pack header check
+  * Amend changelog
+  * Add option global --compression
+  * Add basic changelog for compression support
+  * Print repository version when opening a repo
+  * repository: Increase index size for repo version 2
+  * debug: Add support for compressed blobs
+  * debug: Reduce code duplication
+  * repository: Alloc zstd encoder/decoder on demand
+  * repository: recalibrate index batch allocation size
+  * repository: implement pack compression
+  * init: Add flag to specify created repository version
+  * repository: Implement index/snapshot/lock compression
+  * doc: Add repository compression support documentation
+  * doc: Describe repository read/write order
+  * doc: sftp with password actually works
+  * add missing streamPacks changelog
+  * fix changelog name
+  * prune: Fail early if too few backend connections
+  * repository: Reduce repack workers to prevent deadlock
+  * backend/mem: Actually enforce connection limit
+  * Backend: Expose connections parameter
+  * Print password error message on stderr
+  * doc: Clarify and make grouping in forget more noticeable
+  * doc: fix missing "init" in rest-server example
+  * Set development version for 0.13.1
+  * Add simple test for fs.TempFile on windows
+  * Simplify and comment TempFile implementation for windows
+  * Print used key name if config fails to load
+  * Refactor file handing for self-update.
+  * Check in integration test that snapshots are listed before the index
+  * copy: Load snapshots before indexes
+  * diff: list snapshots only once
+  * add changelogs
+  * test that TestFindListOnce calls List only once
+  * Fix O(n) backend list calls in FindFilteredSnapshots
+  * copy/find/ls/recover/stats: Memorize snapshot listing before index
+  * backup/diff/dump/restore/stats: List snapshots before index
+  * sftp: Limit concurrent backend operations
+  * local: Limit concurrent backend operations
+  * backends: clean reader closing
+  * Better temp file cleanup on Windows.
+  * doc: Link to CACHEDIR.TAG specification
+  * Fix rclone (scoop shim) and sftp issue due to detached console on Windows
+  * Cast unix.Statfs_t.Type to int64 when checking for btrfs
+  * Require Go 1.15 or later
+  * added documentation for zsh autocompletion
+  * golangci-lint: replace deprecated golint with revive
+  * bloblru: Fix comment for New function
+  * switch to golang.org/x/term
+  * add go:build headers everywhere
+  * pack: Hide more implementation details
+  * pack: cleanup header size calculation
+  * repository: Simplify Blob equality check
+  * crypto: Use helpers for size calculations
+  * repository: Remove pack implementation details from MasterIndex
+  * repository: make saveAndEncrypt private
+  * repository: Rename LoadAndDecrypt to LoadUnpacked
+  * errors: Ensure that errors.IsFatal(errors.Fatal("err")) == true
+  * copy: Implement by reusing repack
+  * Set development version for 0.13.0
+  * Add tests for StreamPack
+  * restorer: Remove dead code
+  * repository: cancel streampack context after error
+  * repository: Fix error handling in repack
+  * checker: cleanup header extraction
+  * checker: reuse bufio reader
+  * repository: don't crash if blob size is too short
+  * repository: remove unused DownloadAndHash
+  * checker: rewrite ReadData to stream packs
+  * restorer: convert to use StreamPack
+  * repository: stream packs during repacking
+  * repository: Add StreamPacks function
+  * repository: Implement lisiting blobs per pack file
+
+-------------------------------------------------------------------
 Thu Apr 21 08:11:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.1:
