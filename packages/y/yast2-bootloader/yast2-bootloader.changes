@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 11 13:04:27 UTC 2022 - Steffen Winterfeldt <snwint@suse.com>
+
+- adjust trusted boot help text (bsc#1197608)
+- 4.5.3
+
+-------------------------------------------------------------------
 Mon Jul 25 15:26:05 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Execute the command grub2-mkpasswd-pbkdf2 in the target system
