@@ -1791,6 +1791,7 @@ unsorted:
   - cargo1.60 
   - cargo1.61 
   - cargo1.62 
+  - cargo1.63 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -2697,6 +2698,7 @@ unsorted:
   - dapl-utils 
   - dapper 
   - daps 
+  - dareader-devel 
   - darktable: [x86_64] 
   - darktable-tools-basecurve: [x86_64] 
   - darktable-tools-noise: [x86_64] 
@@ -2810,6 +2812,7 @@ unsorted:
   - deepin-dock-devel 
   - deepin-dock-lang 
   - deepin-dock-plugin-screen-recorder 
+  - deepin-dock-plugin-shot-start 
   - deepin-draw 
   - deepin-draw-lang 
   - deepin-editor 
@@ -2833,7 +2836,6 @@ unsorted:
   - deepin-launcher 
   - deepin-launcher-branding-openSUSE 
   - deepin-launcher-branding-upstream 
-  - deepin-launcher-devel 
   - deepin-launcher-lang 
   - deepin-manual 
   - deepin-movie 
@@ -6420,6 +6422,7 @@ unsorted:
   - gromacs-doc 
   - gromacs-openmpi 
   - gromit-mpx 
+  - gromox 
   - gron 
   - groovy 
   - groovy-ant 
@@ -9064,7 +9067,7 @@ unsorted:
   - libKSeExpr4 
   - libLASi-devel 
   - libLASi2 
-  - libLHAPDF-6_5_2 
+  - libLHAPDF-6_5_3 
   - libLLVM11 
   - libLLVM11-32bit: [x86_64] 
   - libLLVM12 
@@ -10500,6 +10503,7 @@ unsorted:
   - libdSFMT2_2 
   - libdaemon-devel 
   - libdar-devel 
+  - libdareader1 
   - libdat2-2 
   - libdat2-2-32bit: [x86_64] 
   - libdataquay0 
@@ -10625,7 +10629,7 @@ unsorted:
   - libdnnl2: [x86_64] 
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
-  - libdnssec8 
+  - libdnssec9 
   - libdocparser1 
   - libdouble-conversion3-32bit: [x86_64] 
   - libdpdk-22: [x86_64] 
@@ -10937,6 +10941,8 @@ unsorted:
   - libfm4 
   - libfmapi-devel 
   - libfmapi1 
+  - libfmos-devel 
+  - libfmos1 
   - libfmt8: [i586] 
   - libfmt8-32bit: [x86_64] 
   - libfole-devel 
@@ -11967,7 +11973,7 @@ unsorted:
   - libknet1-crypto-plugins-all 
   - libknet1-devel 
   - libknet1-plugins-all 
-  - libknot12 
+  - libknot13 
   - libkokkos3_3_0: [x86_64] 
   - libkolabxml-devel 
   - libkomparediff2-devel 
@@ -13240,6 +13246,7 @@ unsorted:
   - libpspell15-32bit: [x86_64] 
   - libpst 
   - libpst-devel 
+  - libpst-doc 
   - libpst4 
   - libpsx2 
   - libpsx2-32bit: [x86_64] 
@@ -21688,7 +21695,6 @@ unsorted:
   - python3-ipa_hbac 
   - python3-ironic-inspector-client 
   - python3-ironicclient 
-  - python3-itk: [x86_64] 
   - python3-kea 
   - python3-keystoneauth1 
   - python3-keystoneclient 
@@ -22912,6 +22918,7 @@ unsorted:
   - python310-django-tastypie 
   - python310-django-timezone-field 
   - python310-django-treebeard 
+  - python310-django-upgrade 
   - python310-django-user-agents 
   - python310-django-utils-six 
   - python310-django-webpack-loader 
@@ -23179,6 +23186,7 @@ unsorted:
   - python310-gwcs 
   - python310-gwdatafind 
   - python310-gwosc 
+  - python310-gwpy: [x86_64] 
   - python310-gwyfile 
   - python310-gyp 
   - python310-h5netcdf 
@@ -23445,6 +23453,7 @@ unsorted:
   - python310-libevtx 
   - python310-libewf 
   - python310-libexe 
+  - python310-libfmos 
   - python310-libfsapfs 
   - python310-libfsext 
   - python310-libfshfs 
@@ -23943,6 +23952,7 @@ unsorted:
   - python310-pybars3 
   - python310-pybeam 
   - python310-pybind11-devel 
+  - python310-pybind11-stubgen 
   - python310-pyblake2 
   - python310-pybluez 
   - python310-pybtex 
@@ -24419,6 +24429,7 @@ unsorted:
   - python310-retryrequests 
   - python310-rfc3987 
   - python310-rfc6555 
+  - python310-rich-click 
   - python310-rjsmin 
   - python310-rnc2rng 
   - python310-rnginline 
@@ -26066,6 +26077,7 @@ unsorted:
   - python38-django-tastypie 
   - python38-django-timezone-field 
   - python38-django-treebeard 
+  - python38-django-upgrade 
   - python38-django-user-agents 
   - python38-django-utils-six 
   - python38-django-webpack-loader 
@@ -26357,6 +26369,7 @@ unsorted:
   - python38-gwcs 
   - python38-gwdatafind 
   - python38-gwosc 
+  - python38-gwpy: [x86_64] 
   - python38-gwyfile 
   - python38-gyp 
   - python38-h11 
@@ -26650,6 +26663,7 @@ unsorted:
   - python38-libevtx 
   - python38-libewf 
   - python38-libexe 
+  - python38-libfmos 
   - python38-libfsapfs 
   - python38-libfsext 
   - python38-libfshfs 
@@ -27191,6 +27205,7 @@ unsorted:
   - python38-pybeam 
   - python38-pybind11 
   - python38-pybind11-devel 
+  - python38-pybind11-stubgen 
   - python38-pyblake2 
   - python38-pybluez 
   - python38-pybtex 
@@ -27699,6 +27714,7 @@ unsorted:
   - python38-rfc3987 
   - python38-rfc6555 
   - python38-rich 
+  - python38-rich-click 
   - python38-rjsmin 
   - python38-rnc2rng 
   - python38-rnginline 
@@ -29381,6 +29397,7 @@ unsorted:
   - python39-django-tastypie 
   - python39-django-timezone-field 
   - python39-django-treebeard 
+  - python39-django-upgrade 
   - python39-django-user-agents 
   - python39-django-utils-six 
   - python39-django-webpack-loader 
@@ -29671,6 +29688,7 @@ unsorted:
   - python39-gwcs 
   - python39-gwdatafind 
   - python39-gwosc 
+  - python39-gwpy: [x86_64] 
   - python39-gwyfile 
   - python39-gyp 
   - python39-h11 
@@ -29964,6 +29982,7 @@ unsorted:
   - python39-libevtx 
   - python39-libewf 
   - python39-libexe 
+  - python39-libfmos 
   - python39-libfsapfs 
   - python39-libfsext 
   - python39-libfshfs 
@@ -30507,6 +30526,7 @@ unsorted:
   - python39-pybeam 
   - python39-pybind11 
   - python39-pybind11-devel 
+  - python39-pybind11-stubgen 
   - python39-pyblake2 
   - python39-pybluez 
   - python39-pybtex 
@@ -31014,6 +31034,7 @@ unsorted:
   - python39-rfc3987 
   - python39-rfc6555 
   - python39-rich 
+  - python39-rich-click 
   - python39-rjsmin 
   - python39-rnc2rng 
   - python39-rnginline 
@@ -32192,8 +32213,6 @@ unsorted:
   - radamsa 
   - radare2 
   - radare2-devel 
-  - radare2-iaito 
-  - radare2-iaito-devel 
   - radare2-zsh-completion 
   - radcli 
   - radcli-compat-devel 
@@ -32592,6 +32611,7 @@ unsorted:
   - rust1.60 
   - rust1.61 
   - rust1.62 
+  - rust1.63 
   - rustscan 
   - rustup: [x86_64] 
   - rxp 
@@ -33576,6 +33596,8 @@ unsorted:
   - system-group-ne: [x86_64] 
   - system-group-obsolete 
   - system-user-grafana 
+  - system-user-grommunio 
+  - system-user-gromox 
   - system-user-libvirt-dbus 
   - system-user-loki 
   - system-user-mktex 
