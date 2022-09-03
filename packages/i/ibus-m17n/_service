@@ -3,7 +3,7 @@
     <param name="url">https://github.com/ibus/ibus-m17n</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">48793c25847f6bd6c4fd58572e335ada51b3c645</param>
+    <param name="revision">cb0a10990c5a879d2b8c11901a95f6b9bbdf18cb</param>
     <param name="versionrewrite-pattern">Release (\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>

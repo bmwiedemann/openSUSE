@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep  3 17:07:56 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 1.4.10 -> 1.4.11
+- Added translation using Weblate (Arabic, 100%)
+- Add 256x256 icon to m17n.appdata.xml
+
+-------------------------------------------------------------------
 Fri Aug  5 21:15:04 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 feat: use _service files to automate fetching sources

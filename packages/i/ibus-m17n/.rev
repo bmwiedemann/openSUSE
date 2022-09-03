@@ -230,4 +230,14 @@
     <comment></comment>
     <requestid>993650</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>469aa73e7af4b061ee6bc09d68ab1c39</srcmd5>
+    <version>1.4.11</version>
+    <time>1662239967</time>
+    <user>dimstar_suse</user>
+    <comment>update: 1.4.10 -&gt; 1.4.11
+- Added translation using Weblate (Arabic, 100%)
+- Add 256x256 icon to m17n.appdata.xml</comment>
+    <requestid>1001045</requestid>
+  </revision>
 </revisionlist>
