@@ -66,6 +66,8 @@ Patch9:         PackageKit-zypp-restore-pool-status-after-simulating-update.patc
 Patch10:        PackageKit-zypp-fix-is-tumbleweed-check.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-update-libzypp-dependency-version.patch gh#PackageKit/PackageKit/commit/58c7c0285, bsc#1199895 sckang@suse.com -- zypp: update libzypp dependency version
 Patch11:        PackageKit-zypp-update-libzypp-dependency-version.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-dont-refresh-before-searching.patch gh#PackageKit/PackageKit/commit/7e700e217, bsc#1202796 sckang@suse.com -- zypp: Don't refresh repos before searching
+Patch12:        PackageKit-zypp-dont-refresh-before-searching.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  2 01:16:56 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-dont-refresh-before-searching.patch:
+  zypp: Don't refresh repos before searching
+  (gh#PackageKit/PackageKit/commit/58c7c0285, bsc#1199895).
+
+-------------------------------------------------------------------
 Wed Aug  3 03:27:36 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Modified PackageKit.spec: bump libzypp dependency version to
