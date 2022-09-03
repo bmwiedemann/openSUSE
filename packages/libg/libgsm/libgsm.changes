@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 28 22:32:54 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.22
+  * Build system updates only
+- Move documentation out of libgsm1, no one reads it if it's
+  implicitly installed for something else.
+
+-------------------------------------------------------------------
 Tue Jul 26 09:07:00 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.0.20:

@@ -17,9 +17,9 @@
 
 
 %define _name gsm
-%define _version 1.0-pl20
+%define _version 1.0-pl22
 Name:           libgsm
-Version:        1.0.20
+Version:        1.0.22
 Release:        0
 Summary:        GSM 06.10 Lossy Speech Compressor Library and Utilities
 License:        ISC
@@ -40,7 +40,7 @@ samples (8 kHz sampling rate) into 260 bits.
 
 %package -n libgsm1
 Summary:        GSM 06.10 Lossy Speech Compressor Library and Utilities
-Group:          Productivity/Multimedia/Sound/Editors and Convertors
+Group:          System/Libraries
 
 %description -n libgsm1
 Contains the library for a GSM speech compressor.
@@ -70,7 +70,7 @@ The front-end is modeled after the historic compress(1) utility.
 %package devel
 Summary:        GSM 06.10 Lossy Speech Compressor Library and Utilities
 Group:          Development/Libraries/C and C++
-Requires:       libgsm1 = %{version}
+Requires:       libgsm1 = %{version}-%{release}
 
 %description devel
 Contains the development kit for the libgsm speech compressor.
@@ -105,6 +105,8 @@ cp -d lib/libgsm.so* %{buildroot}%{_libdir}
 ( cd %{buildroot}%{_libdir} ; ln -sf libgsm.so.1 libgsm.so )
 cp inc/{private.h,proto.h,unproto.h} %{buildroot}%{_includedir}/gsm/
 rm -f %{buildroot}%{_libdir}/*.a
+ln -fsv toast %{buildroot}/%{_bindir}/untoast
+ln -fsv toast %{buildroot}/%{_bindir}/tcat
 
 %post -n libgsm1 -p /sbin/ldconfig
 %postun -n libgsm1 -p /sbin/ldconfig
@@ -115,10 +117,10 @@ rm -f %{buildroot}%{_libdir}/*.a
 
 %files -n libgsm1
 %license COPYRIGHT
-%doc ChangeLog MACHINES README
 %{_libdir}/*.so.*
 
 %files devel
+%doc ChangeLog MACHINES README
 %{_libdir}/*.so
 %{_mandir}/man3/*.*
 %{_includedir}/gsm
