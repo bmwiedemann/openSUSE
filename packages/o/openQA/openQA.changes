@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 02 16:01:31 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1662134472.4423be7:
+  * Use regex in `_translate_cond`
+  * Avoid 500 response (and log message) if needle route is used wrongly
+  * Fix AJAX/parsing error in needle tables
+  * Re-write `_translate_date_format` more compactly
+  * Use signatures in code for parsing timestamps of needle table filtering
+  * Avoid race condition when creating result directories
+
+-------------------------------------------------------------------
 Mon Aug 29 14:58:17 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1661784564.0b6acba:
