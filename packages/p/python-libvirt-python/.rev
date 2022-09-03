@@ -639,4 +639,16 @@ fix a jira reference in the changelog.
   - Add all new APIs and constants in libvirt 8.6.0</comment>
     <requestid>992408</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>07d246402cd46e98c46c8570ba815048</srcmd5>
+    <version>8.7.0</version>
+    <time>1662239910</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 8.7.0.
+
+- Update to 8.7.0
+  - Add all new APIs and constants in libvirt 8.7.0
+  - jsc#PED-620, jsc#PED-1540</comment>
+    <requestid>1000756</requestid>
+  </revision>
 </revisionlist>
