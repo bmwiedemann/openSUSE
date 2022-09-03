@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  1 13:52:25 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.10.5
+  * small bug fixes.
+- Update to 4.10.4
+  * improved graphical window tooltips
+  * small bug fixes.
+  * New API function: mesh/removeDuplicateElements
+
+-------------------------------------------------------------------
 Sat Jun 18 16:45:10 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 4.10.3
