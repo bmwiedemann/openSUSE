@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-openid_connect
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 %define mod_name openid_connect
 %define mod_full_name %{mod_name}-%{version}
