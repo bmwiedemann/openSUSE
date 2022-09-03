@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  1 16:01:08 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 0.22.1
+  * Fix collections import (needed for Python 3.10)
+
+-------------------------------------------------------------------
 Thu Mar  3 18:35:17 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove some unnecessary she-bangs from installed module

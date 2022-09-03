@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
 Name:           python-PyBindGen
-Version:        0.22.0
+Version:        0.22.1
 Release:        0
 Summary:        Python Bindings Generator
 License:        LGPL-2.1-only
