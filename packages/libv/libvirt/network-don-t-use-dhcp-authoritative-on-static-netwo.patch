@@ -1,7 +1,7 @@
-From 15c7f9a6e7678238ef06f5d805984addb6f8bcdb Mon Sep 17 00:00:00 2001
-From: Martin Wilck <mwilck@suse.com>
-Date: Thu, 15 Dec 2016 10:17:05 +0100
-Subject: [PATCH] network: don't use dhcp-authoritative on static networks
+From ec5427d1007477b746dde3ba24b7951a6e14a3d7 Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Tue, 5 Jul 2022 11:19:41 -0600
+Subject: network: don't use dhcp-authoritative on static networks
 
 "Static" DHCP networks are those where no dynamic DHCP range is
 defined, only a list of host entries is used to serve permanent
@@ -17,11 +17,11 @@ Signed-off-by: Martin Wilck <mwilck@suse.com>
  tests/networkxml2confdata/dhcp6host-routed-network.conf | 1 -
  2 files changed, 8 insertions(+), 2 deletions(-)
 
-Index: libvirt-8.6.0/src/network/bridge_driver.c
+Index: libvirt-8.7.0/src/network/bridge_driver.c
 ===================================================================
---- libvirt-8.6.0.orig/src/network/bridge_driver.c
-+++ libvirt-8.6.0/src/network/bridge_driver.c
-@@ -1080,7 +1080,14 @@ networkDnsmasqConfDHCP(virBuffer *buf,
+--- libvirt-8.7.0.orig/src/network/bridge_driver.c
++++ libvirt-8.7.0/src/network/bridge_driver.c
+@@ -1043,7 +1043,14 @@ networkDnsmasqConfDHCP(virBuffer *buf,
      if (VIR_SOCKET_ADDR_IS_FAMILY(&ipdef->address, AF_INET)) {
          if (ipdef->nranges || ipdef->nhosts) {
              virBufferAddLit(buf, "dhcp-no-override\n");
@@ -37,10 +37,10 @@ Index: libvirt-8.6.0/src/network/bridge_driver.c
          }
  
          if (ipdef->bootfile) {
-Index: libvirt-8.6.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
+Index: libvirt-8.7.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
 ===================================================================
---- libvirt-8.6.0.orig/tests/networkxml2confdata/dhcp6host-routed-network.conf
-+++ libvirt-8.6.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
+--- libvirt-8.7.0.orig/tests/networkxml2confdata/dhcp6host-routed-network.conf
++++ libvirt-8.7.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
 @@ -10,7 +10,6 @@ bind-dynamic
  interface=virbr1
  dhcp-range=192.168.122.1,static

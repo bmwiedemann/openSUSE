@@ -1,12 +1,19 @@
-https://bugzilla.novell.com/show_bug.cgi?id=879425
----
- src/libxl/libxl_conf.c |   25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
+From 9b37c98cf768eb02afb384522a72ec36850876bf Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Tue, 5 Jul 2022 11:27:47 -0600
+Subject: libxl: Allow setting disk cache mode
 
-Index: libvirt-8.6.0/src/libxl/libxl_conf.c
+https://bugzilla.novell.com/show_bug.cgi?id=879425
+
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+---
+ src/libxl/libxl_conf.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+Index: libvirt-8.7.0/src/libxl/libxl_conf.c
 ===================================================================
---- libvirt-8.6.0.orig/src/libxl/libxl_conf.c
-+++ libvirt-8.6.0/src/libxl/libxl_conf.c
+--- libvirt-8.7.0.orig/src/libxl/libxl_conf.c
++++ libvirt-8.7.0/src/libxl/libxl_conf.c
 @@ -941,6 +941,28 @@ libxlDiskSetDiscard(libxl_device_disk *x
      }
  }

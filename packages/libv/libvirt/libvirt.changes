@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep  1 20:37:17 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 8.7.0
+  - jsc#PED-620, jsc#PED-1540
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v8-7-0-2022-09-01
+  - Dropped patches:
+    9493c9b7-lxc-containter-fix-build-with-glibc-2.36.patch,
+    c0d9adf2-virfile-Fix-build-with-glibc-2.36.patch
+
+-------------------------------------------------------------------
+Wed Aug 24 23:07:12 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- spec: Suppress error messages about nonexistent or unreadable
+  files from grep
+
+-------------------------------------------------------------------
 Fri Aug 19 18:43:03 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - spec: Place 'Requires:' on compression binaries instead of their

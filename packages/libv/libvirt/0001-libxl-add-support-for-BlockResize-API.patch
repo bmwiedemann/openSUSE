@@ -1,28 +1,44 @@
-From 661298572a5499ccfafcd36d30d66d091a5be9b6 Mon Sep 17 00:00:00 2001
+From 914c37ca3f0af956e69179d49e87e8390560c2b3 Mon Sep 17 00:00:00 2001
 From: Jim Fehlig <jfehlig@suse.com>
-Date: Fri, 23 Mar 2018 17:41:51 -0600
-Subject: [PATCH] libxl: add support for BlockResize API
+Date: Tue, 5 Jul 2022 11:36:37 -0600
+Subject: libxl: add support for BlockResize API
 
 Add support in the libxl driver for the BlockResize API. Use libxl's
 libxl_qemu_monitor_command API to issue the block_resize command to qemu.
 
 Signed-off-by: Jim Fehlig <jfehlig@suse.com>
-
-Note: In its current form, this patch is not upstream material IMO. It uses
-the unsupported libxl_qemu_monitor_command() API. Before it can be considered
-upstream, we need an upstream solution in qemu and Xen. Bruce will work on
-the qemu part. Once done we can consider how to do the Xen part. And only
-after we have a supported blockresize API in Xen (libxl) can we consider
-reworking this patch and submitting it to upstream libvirt.
-
 ---
- src/libxl/libxl_driver.c | 91 ++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 91 insertions(+)
+ src/libxl/libxl_api_wrapper.h | 15 ++++++
+ src/libxl/libxl_driver.c      | 90 +++++++++++++++++++++++++++++++++++
+ 2 files changed, 105 insertions(+)
 
-Index: libvirt-8.6.0/src/libxl/libxl_driver.c
+Index: libvirt-8.7.0/src/libxl/libxl_api_wrapper.h
 ===================================================================
---- libvirt-8.6.0.orig/src/libxl/libxl_driver.c
-+++ libvirt-8.6.0/src/libxl/libxl_driver.c
+--- libvirt-8.7.0.orig/src/libxl/libxl_api_wrapper.h
++++ libvirt-8.7.0/src/libxl/libxl_api_wrapper.h
+@@ -215,3 +215,18 @@ libxlSetMemoryTargetWrapper(libxl_ctx *c
+ 
+     return ret;
+ }
++
++static inline int
++libxlQemuMonitorCommandWrapper(libxl_ctx *ctx, uint32_t domid,
++                               const char *command_line, char **output)
++{
++    int ret;
++
++#if LIBXL_API_VERSION < 0x041300
++    ret = libxl_qemu_monitor_command(ctx, domid, command_line, output);
++#else
++    ret = libxl_qemu_monitor_command(ctx, domid, command_line, output, NULL);
++#endif
++
++    return ret;
++}
+Index: libvirt-8.7.0/src/libxl/libxl_driver.c
+===================================================================
+--- libvirt-8.7.0.orig/src/libxl/libxl_driver.c
++++ libvirt-8.7.0/src/libxl/libxl_driver.c
 @@ -5257,6 +5257,95 @@ libxlDomainMemoryStats(virDomainPtr dom,
  
  #undef LIBXL_SET_MEMSTAT
@@ -127,26 +143,3 @@ Index: libvirt-8.6.0/src/libxl/libxl_driver.c
      .domainGetJobInfo = libxlDomainGetJobInfo, /* 1.3.1 */
      .domainGetJobStats = libxlDomainGetJobStats, /* 1.3.1 */
      .domainMemoryStats = libxlDomainMemoryStats, /* 1.3.0 */
-Index: libvirt-8.6.0/src/libxl/libxl_api_wrapper.h
-===================================================================
---- libvirt-8.6.0.orig/src/libxl/libxl_api_wrapper.h
-+++ libvirt-8.6.0/src/libxl/libxl_api_wrapper.h
-@@ -215,3 +215,18 @@ libxlSetMemoryTargetWrapper(libxl_ctx *c
- 
-     return ret;
- }
-+
-+static inline int
-+libxlQemuMonitorCommandWrapper(libxl_ctx *ctx, uint32_t domid,
-+                               const char *command_line, char **output)
-+{
-+    int ret;
-+
-+#if LIBXL_API_VERSION < 0x041300
-+    ret = libxl_qemu_monitor_command(ctx, domid, command_line, output);
-+#else
-+    ret = libxl_qemu_monitor_command(ctx, domid, command_line, output, NULL);
-+#endif
-+
-+    return ret;
-+}

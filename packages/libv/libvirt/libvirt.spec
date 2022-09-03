@@ -158,7 +158,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        8.6.0
+Version:        8.7.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -300,8 +300,6 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         9493c9b7-lxc-containter-fix-build-with-glibc-2.36.patch
-Patch1:         c0d9adf2-virfile-Fix-build-with-glibc-2.36.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -1169,7 +1167,7 @@ if test "$DISABLE_RESTART_ON_UPDATE" != yes -a \
   "$DISABLE_RESTART_ON_UPDATE" != 1; then
     # See if user has previously modified their install to
     # tell libvirtd to use --listen
-    if grep -q -E '^LIBVIRTD_ARGS=.*--listen' %{_sysconfdir}/sysconfig/libvirtd; then
+    if grep -q -s -E '^LIBVIRTD_ARGS=.*--listen' %{_sysconfdir}/sysconfig/libvirtd; then
         # Keep honouring --listen and *not* use systemd socket activation.
         # Switching things might confuse management tools that expect the old
         # style libvirtd

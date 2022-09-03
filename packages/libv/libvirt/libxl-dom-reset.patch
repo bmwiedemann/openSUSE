@@ -1,17 +1,21 @@
-commit 3ac6e50943a775c545aa7d4e4bde5fcb8a163b64
-Author: Jim Fehlig <jfehlig@suse.com>
-Date:   Mon Jun 23 15:51:20 2014 -0600
+From 02cd96b46167b2b9c27a388ec25d4ffdae6508ba Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Tue, 5 Jul 2022 11:07:05 -0600
+Subject: libxl: support domainReset
 
-    libxl: support domainReset
-    
-    Currently, libxl_send_trigger() does not implement the LIBXL_TRIGGER_RESET
-    option, but domainReset can be implemented in the libxl driver by
-    forcibly destroying the domain and starting it again.
+Currently, libxl_send_trigger() does not implement the LIBXL_TRIGGER_RESET
+option, but domainReset can be implemented in the libxl driver by
+forcibly destroying the domain and starting it again.
 
-Index: libvirt-8.6.0/src/libxl/libxl_driver.c
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+---
+ src/libxl/libxl_driver.c | 58 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 58 insertions(+)
+
+Index: libvirt-8.7.0/src/libxl/libxl_driver.c
 ===================================================================
---- libvirt-8.6.0.orig/src/libxl/libxl_driver.c
-+++ libvirt-8.6.0/src/libxl/libxl_driver.c
+--- libvirt-8.7.0.orig/src/libxl/libxl_driver.c
++++ libvirt-8.7.0/src/libxl/libxl_driver.c
 @@ -1354,6 +1354,63 @@ libxlDomainReboot(virDomainPtr dom, unsi
  }
  

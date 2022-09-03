@@ -1,9 +1,17 @@
-Adjust libvirt-guests service to conform to SUSE standards
+From b447f2a3042a206bebb897874af20fdd7d897347 Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Tue, 5 Jul 2022 11:41:58 -0600
+Subject: Adjust libvirt-guests service to conform to SUSE standards
 
-Index: libvirt-8.6.0/tools/libvirt-guests.sh.in
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+---
+ tools/libvirt-guests.sh.in | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+Index: libvirt-8.7.0/tools/libvirt-guests.sh.in
 ===================================================================
---- libvirt-8.6.0.orig/tools/libvirt-guests.sh.in
-+++ libvirt-8.6.0/tools/libvirt-guests.sh.in
+--- libvirt-8.7.0.orig/tools/libvirt-guests.sh.in
++++ libvirt-8.7.0/tools/libvirt-guests.sh.in
 @@ -20,10 +20,6 @@ sysconfdir="@sysconfdir@"
  localstatedir="@localstatedir@"
  libvirtd="@sbindir@"/libvirtd

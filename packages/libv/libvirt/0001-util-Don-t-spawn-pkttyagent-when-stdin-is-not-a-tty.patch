@@ -1,7 +1,7 @@
-From 306f15c98fb5626f35f876b1f3fa39dee37e5810 Mon Sep 17 00:00:00 2001
-From: Martin Kletzander <mkletzan@redhat.com>
-Date: Sat, 11 Dec 2021 14:23:11 +0100
-Subject: [PATCH] util: Don't spawn pkttyagent when stdin is not a tty
+From be595e5e9e9bc8fa3fdd94358b1c92bd8b30b0eb Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Tue, 5 Jul 2022 11:21:45 -0600
+Subject: util: Don't spawn pkttyagent when stdin is not a tty
 
 My idea was that running pkttyagent unconditionally, modulo checks that
 pkttyagent itself does to make sure it does not fail, is not going to be an
@@ -18,10 +18,10 @@ Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
  src/util/virpolkit.c | 3 +++
  1 file changed, 3 insertions(+)
 
-Index: libvirt-8.6.0/src/util/virpolkit.c
+Index: libvirt-8.7.0/src/util/virpolkit.c
 ===================================================================
---- libvirt-8.6.0.orig/src/util/virpolkit.c
-+++ libvirt-8.6.0/src/util/virpolkit.c
+--- libvirt-8.7.0.orig/src/util/virpolkit.c
++++ libvirt-8.7.0/src/util/virpolkit.c
 @@ -235,6 +235,9 @@ virPolkitAgentAvailable(void)
      const char *termid = ctermid(NULL);
      VIR_AUTOCLOSE fd = -1;
