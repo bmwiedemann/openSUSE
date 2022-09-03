@@ -1057,4 +1057,14 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1000072</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>136d76a65169f78636ce56d8ecc113ab</srcmd5>
+    <version>1.0.9</version>
+    <time>1662239969</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.9
+ + Fixed parsing album title from radio stream metadata (#1023).
+</comment>
+    <requestid>1001049</requestid>
+  </revision>
 </revisionlist>
