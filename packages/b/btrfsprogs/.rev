@@ -1161,4 +1161,12 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment></comment>
     <requestid>993694</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>a410e0556b4e95090c3314fcf2f64a15</srcmd5>
+    <version>5.19</version>
+    <time>1662239908</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.19: (forwarded request 1000743 from dsterba)</comment>
+    <requestid>1000745</requestid>
+  </revision>
 </revisionlist>
