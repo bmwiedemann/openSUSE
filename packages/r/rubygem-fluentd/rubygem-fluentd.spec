@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-fluentd
-Version:        1.15.1
+Version:        1.15.2
 Release:        0
 %define mod_name fluentd
 %define mod_full_name %{mod_name}-%{version}
