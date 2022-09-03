@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 29 10:16:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.19
+  * Added support for sctp_peeloff_flags function
+  * Added macro definitions indicating which kernel features were
+    detected during build
+  * Fixes ignored parameter on sctp_sendv
+
+-------------------------------------------------------------------
 Mon Mar 28 10:26:08 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.17

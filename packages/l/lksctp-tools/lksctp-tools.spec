@@ -17,13 +17,14 @@
 
 
 Name:           lksctp-tools
-Version:        1.0.17
+Version:        1.0.19
 Release:        0
 Summary:        Utilities for SCTP (Stream Control Transmission Protocol)
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Other
 URL:            http://lksctp.sourceforge.net
-Source0:        http://downloads.sourceforge.net/project/lksctp/lksctp-tools/%{name}-%{version}.tar.gz
+#Git-Clone:     https://github.com/sctp/lksctp-tools
+Source:         https://github.com/sctp/lksctp-tools/archive/refs/tags/v%version.tar.gz
 BuildRequires:  libtool
 
 %description
@@ -37,7 +38,7 @@ transparent multihoming, and multiple ordered streams of messages.
 %package devel
 Summary:        Development files for SCTP (Stream Control Transmission Protocol)
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{version}-%{release}
 Requires:       glibc-devel
 
 %description devel
@@ -53,6 +54,7 @@ transparent multi-homing, and multiple ordered streams of messages.
 
 %build
 %define _lto_cflags %{nil}
+autoreconf -fi
 %configure --prefix=%{_prefix} \
 	--enable-shared \
 	--disable-static
