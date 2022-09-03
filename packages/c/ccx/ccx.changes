@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep  1 10:12:59 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 2.20:
+  Too many changes to list, a full list of changes is available in
+  available in the included LOGFILE.
+- Drop upstream patches:
+  * ccx-2.16-abaqus-shell-heat-transfer-elements-read.patch
+  * 0001-Add-missing-argument-for-inputerror-function-call.patch
+  * 0001-Fix-wrong-parameter-passed-to-us3_materialdata_me.patch
+  * 0001-Fix-wrong-scalar-declaration-for-2x2-inverse-Jacobia.patch
+  * 0001-Pass-rank-1-dummy-for-auxiliary-array-in-isortii.patch
+
+-------------------------------------------------------------------
 Thu Jul 14 16:22:01 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix bad calling convention found by recent GFortran:
