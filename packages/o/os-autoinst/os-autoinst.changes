@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 03 11:39:43 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1662114056.d3ebb59:
+  * tools/container_run_ci: Call bash instead of sh
+  * t: Quit early on zypper failure
+  * tools/tidy: Do not overwrite path to root dir
+  * Avoid problems with `baseclass.pm` test in OBS
+  * Add test for case when new screenshot is very similar to last
+  * Add tests for child process handling of baseclass
+  * Extend tests of SSH handling in baseclass
+  * Add tests for certain special cases in `baseclass.pm`
+
+-------------------------------------------------------------------
 Thu Sep 01 03:23:59 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1661858178.a6c1811:
