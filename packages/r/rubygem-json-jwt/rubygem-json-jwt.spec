@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-json-jwt
-Version:        1.14.0
+Version:        1.15.3
 Release:        0
 %define mod_name json-jwt
 %define mod_full_name %{mod_name}-%{version}
