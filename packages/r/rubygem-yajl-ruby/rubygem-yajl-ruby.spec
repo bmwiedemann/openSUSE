@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-yajl-ruby
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,33 +24,26 @@
 #
 
 Name:           rubygem-yajl-ruby
-Version:        1.4.1
+Version:        1.4.3
 Release:        0
 %define mod_name yajl-ruby
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 1.8.6}
+BuildRequires:  %{rubydevel >= 2.6.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-URL:            http://github.com/brianmario/yajl-ruby
+URL:            https://github.com/brianmario/yajl-ruby
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-yajl-ruby-rpmlintrc
 Source2:        gem2rpm.yml
-# MANUAL
-Patch0:         silence-gcc-warnings.patch
-# /MANUAL
 Summary:        Ruby C bindings to the excellent Yajl JSON stream-based parser
-License:        MIT AND BSD-3-Clause
+License:        BSD-3-Clause AND MIT
 Group:          Development/Languages/Ruby
 
 %description
 Ruby C bindings to the excellent Yajl JSON stream-based parser library.
 
 %prep
-%gem_unpack
-%patch0 -p1
-find -type f -print0 | xargs -0 touch -r %{S:0}
-%gem_build
 
 %build
 

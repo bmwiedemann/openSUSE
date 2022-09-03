@@ -1,5 +1,3 @@
 :license: MIT AND BSD-3-Clause
-:patches:
-  silence-gcc-warnings.patch: -p1
 :sources:
   - rubygem-yajl-ruby-rpmlintrc
