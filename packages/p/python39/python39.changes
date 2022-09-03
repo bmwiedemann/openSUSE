@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  1 03:48:37 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch CVE-2021-28861-double-slash-path.patch:
+  * http.server: Fix an open redirection vulnerability in the HTTP server
+    when an URI path starts with //. (bsc#1202624, CVE-2021-28861)
+
+-------------------------------------------------------------------
 Thu Jul 21 14:19:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Switch from %primary_interpreter to prjconf-defined

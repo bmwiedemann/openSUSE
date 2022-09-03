@@ -674,4 +674,14 @@
 </comment>
     <requestid>990683</requestid>
   </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>1dfb156052b564f85a6d963ef655dac4</srcmd5>
+    <version>3.9.13</version>
+    <time>1662239912</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch CVE-2021-28861-double-slash-path.patch:
+  * http.server: Fix an open redirection vulnerability in the HTTP server
+    when an URI path starts with //. (bsc#1202624, CVE-2021-28861)</comment>
+    <requestid>1000771</requestid>
+  </revision>
 </revisionlist>
