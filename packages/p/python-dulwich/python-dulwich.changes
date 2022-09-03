@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 31 10:32:01 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Adjust rmtree-ignore-errors patch according to upstream review.
+
+-------------------------------------------------------------------
 Fri Aug 19 16:17:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add rmtree-ignore-errors.patch to make shutil.rmtree to be more
