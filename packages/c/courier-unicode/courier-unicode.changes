@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 20 19:00:06 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 2.2.4
+  * configure.ac: gcc 12, autotool updates.
+  * Add scripts to create installable .deb packages, update
+    documentation.
+
+-------------------------------------------------------------------
 Sat Mar 27 14:48:41 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 2.2.3
