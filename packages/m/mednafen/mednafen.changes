@@ -1,17 +1,23 @@
 -------------------------------------------------------------------
-Thu Jan 20 04:46:23 UTC 2022 - Илья Индиго <ilya@ilya.pp.ua>
+Sat Sep  3 09:41:34 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Update to 1.31.0
+  * https://mednafen.github.io/documentation/ChangeLog.txt
+
+-------------------------------------------------------------------
+Thu Jan 20 04:46:23 UTC 2022 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.29.0
   * https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Mon Jun 14 14:09:59 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Mon Jun 14 14:09:59 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.27.1
   * https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Fri Apr  2 10:11:35 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Fri Apr  2 10:11:35 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Refreshed spec-file via spec-cleaner and manual optimizations.
   * Remove BuildRequires Mesa-libGL-devel (it was never needed).
@@ -24,55 +30,55 @@ Fri Apr  2 10:11:35 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
   * Fixed crashes snes_faust module with comiled with newer gcc.
 
 -------------------------------------------------------------------
-Wed Nov 11 09:07:54 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Nov 11 09:07:54 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.26.1
   * https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Wed May  6 23:02:32 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Wed May  6 23:02:32 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.24.3
   * https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Fri May  1 02:38:25 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Fri May  1 02:38:25 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to mednafen 1.24.2
   * https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Fri Mar 20 08:16:51 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Fri Mar 20 08:16:51 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to mednafen 1.24.1
   * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Sat Dec 28 21:43:19 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+Sat Dec 28 21:43:19 UTC 2019 - Илья Индиго <ilya@ilya.cf>
 
 - Update to mednafen 1.24.0
   * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Thu Apr 25 06:34:29 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+Thu Apr 25 06:34:29 UTC 2019 - Илья Индиго <ilya@ilya.cf>
 
 - Update to mednafen 1.22.2
   * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Tue Jan 29 09:42:24 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+Tue Jan 29 09:42:24 UTC 2019 - Илья Индиго <ilya@ilya.cf>
 
 - Update to mednafen 1.22.1
   * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Thu May  3 16:24:19 UTC 2018 - ilya@ilya.pp.ua
+Thu May  3 16:24:19 UTC 2018 - ilya@ilya.cf
 
 - Update to mednafen 1.21.3
   * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Mon Apr 16 17:35:08 UTC 2018 - ilya@ilya.pp.ua
+Mon Apr 16 17:35:08 UTC 2018 - ilya@ilya.cf
 
 - Update to mednafen 1.21.2
   * https://mednafen.github.io/documentation/ChangeLog.txt
@@ -81,79 +87,79 @@ Mon Apr 16 17:35:08 UTC 2018 - ilya@ilya.pp.ua
 - Remove CFLAGS and CXXFLAGS modifications.
 
 -------------------------------------------------------------------
-Mon Mar 12 18:29:18 UTC 2018 - ilya@ilya.pp.ua
+Mon Mar 12 18:29:18 UTC 2018 - ilya@ilya.cf
 
 - Remove -O3 flag (build success but not run).
 - Add %defattr(0644,root,root,-) to %files macro.
 
 -------------------------------------------------------------------
-Fri Mar  9 21:17:21 UTC 2018 - ilya@ilya.pp.ua
+Fri Mar  9 21:17:21 UTC 2018 - ilya@ilya.cf
 
 - Refresh spec-file via spec-cleaner.
 - Add %license macro.
 - Return -O3 flag.
 
 -------------------------------------------------------------------
-Mon Sep 18 22:19:52 UTC 2017 - ilya@ilya.pp.ua
+Mon Sep 18 22:19:52 UTC 2017 - ilya@ilya.cf
 
 - Update to mednafen 0.9.48
   * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Sun Sep  3 08:56:39 UTC 2017 - ilya@ilya.pp.ua
+Sun Sep  3 08:56:39 UTC 2017 - ilya@ilya.cf
 
 - Remove devel files from doc.
 
 -------------------------------------------------------------------
-Tue Aug 29 17:34:51 UTC 2017 - ilya@ilya.pp.ua
+Tue Aug 29 17:34:51 UTC 2017 - ilya@ilya.cf
 
 - Fix run (remove -O3, probably in the future I will return).
 - Fix sound (add alsa-devel to Build require).
 - Add separate packages for doc and lang.
 
 -------------------------------------------------------------------
-Sun Aug 27 21:52:03 UTC 2017 - ilya@ilya.pp.ua
+Sun Aug 27 21:52:03 UTC 2017 - ilya@ilya.cf
 
 - Update to mednafen 0.9.47
   * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Thu Aug 10 22:54:03 UTC 2017 - ilya@ilya.pp.ua
+Thu Aug 10 22:54:03 UTC 2017 - ilya@ilya.cf
 
 - Update to mednafen 0.9.46
   * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Sat Jul 15 20:36:27 UTC 2017 - ilya@ilya.pp.ua
+Sat Jul 15 20:36:27 UTC 2017 - ilya@ilya.cf
 
 - Update spec-file
 
 -------------------------------------------------------------------
-Sat Jun 10 14:49:06 UTC 2017 - ilya@ilya.pp.ua
+Sat Jun 10 14:49:06 UTC 2017 - ilya@ilya.cf
 
 - update to mednafen 0.9.45.1
   * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Fri Jun  2 22:58:19 UTC 2017 - ilya@ilya.pp.ua
+Fri Jun  2 22:58:19 UTC 2017 - ilya@ilya.cf
 
 - update to mednafen 0.9.45
   * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Sat Apr 22 21:25:34 UTC 2017 - 13ilya@gmail.com
+Sat Apr 22 21:25:34 UTC 2017 - ilya@ilya.cf
 
 - update to mednafen 0.9.44.1
   * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Sat Apr 22 00:07:34 UTC 2017 - 13ilya@gmail.com
+Sat Apr 22 00:07:34 UTC 2017 - ilya@ilya.cf
 
 - update to mednafen 0.9.44
   * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Mon Feb 27 12:12:26 UTC 2017 - 13ilya@gmail.com
+Mon Feb 27 12:12:26 UTC 2017 - ilya@ilya.cf
 
 - update to mednafen 0.9.43
   * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
@@ -164,19 +170,19 @@ Sat Feb 11 13:18:53 UTC 2017 - jengelh@inai.de
 - Update description. Simplify %build steps.
 
 -------------------------------------------------------------------
-Wed Feb  8 00:52:59 UTC 2017 - 13ilya@gmail.com
+Wed Feb  8 00:52:59 UTC 2017 - ilya@ilya.cf
 
 - update to mednafen 0.9.42
   * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Sat Jan 21 14:39:50 UTC 2017 - 13ilya@gmail.com
+Sat Jan 21 14:39:50 UTC 2017 - ilya@ilya.cf
 
 - update to mednafen 0.9.41
   * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
 
 -------------------------------------------------------------------
-Sun Sep 25 20:55:11 EEST 2016 - 13ilya@gmail.com
+Sun Sep 25 20:55:11 EEST 2016 - ilya@ilya.cf
 
 - update to 0.9.39.2,
   removed old fix patches
