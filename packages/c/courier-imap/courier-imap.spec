@@ -19,7 +19,7 @@
 %bcond_with     valgrind
 
 Name:           courier-imap
-Version:        5.1.7
+Version:        5.1.8
 Release:        0
 Summary:        An IMAP and POP3 Server for Maildir MTAs
 License:        GPL-3.0-or-later
@@ -98,7 +98,6 @@ install the entire Courier server.
 %autosetup -p0
 
 # For %%doc macro
-mv libs/imap/README{,.imap}
 mv libs/maildir/README.sharedfolders{.txt,}
 mv libs/maildir/README.maildirquota{.txt,}
 
@@ -182,7 +181,7 @@ make check
 %defattr(-,root,root,755)
 %license COPYING*
 %doc AUTHORS README
-%doc libs/imap/ChangeLog libs/imap/BUGS libs/imap/README.imap libs/imap/README.proxy
+%doc libs/imap/ChangeLog libs/imap/BUGS libs/imap/README.proxy
 %doc libs/maildir/README.sharedfolders libs/maildir/README.maildirquota
 %config %attr(644,root,root) %{_sysconfdir}/pam.d/imap
 %config %attr(644,root,root) %{_sysconfdir}/pam.d/pop3

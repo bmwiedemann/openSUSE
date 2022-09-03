@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Aug 20 19:07:14 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.1.8
+  * gcc 12 and autotools update. OpenSSL 3.0 update.
+  * courier, courier-imap: remove the --disable-root-check configure
+    option, now that make check can deal with it.
+  * Add scripts to create installable .deb packages, update
+    documentation.
+  * imap/authenticate_auth.c: Fix broken SASL authentication.
+  * Adjust behavior of inherited ACLs. After deleting and recreating
+    a folder, have the recreated folder inherit its parent folder's ACLs,
+    normally, instead of mysteriously restoring whatever ACLs the folder
+    had when it was deleted.
+  * Fixes to Makefile to workaround test suite failures related to
+    permission checking when make check runs as root.
+  * Fix minor memory leaks.
+
+-------------------------------------------------------------------
 Mon Jan 17 07:29:18 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.1.7
