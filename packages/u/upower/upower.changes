@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep  2 08:18:42 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- update to 1.90.0:
+  * Refactor internal battery handling into separate classes
+  * Guess charging/discharging state based on energy rate (#196)
+  * Fix polling after resume (#198)
+  * Fix battery state guessing (#146)
+  * Reload history when battery ID changes
+  * Test fixes
+- Drop upower-sle15.patch, systemd is recent enough for SLE15 SP3+.
+
+-------------------------------------------------------------------
 Sun Jul 17 15:36:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.99.20:

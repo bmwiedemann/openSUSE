@@ -23,15 +23,13 @@
 %endif
 
 Name:           upower
-Version:        0.99.20
+Version:        1.90.0
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://upower.freedesktop.org/
-Source:         https://gitlab.freedesktop.org/upower/upower/-/archive/v%{version}/upower-v%{version}.tar.gz
-# PATCH-FEATURE-SLE upower-sle15.patch fcrozat@suse.com -- Disable some hardenings, don't work on SLE15 SP2+
-Patch1:         upower-sle15.patch
+Source:         https://gitlab.freedesktop.org/upower/upower/-/archive/v%{version}/upower-v%{version}.tar.bz2
 BuildRequires:  gobject-introspection-devel >= 0.9.9
 BuildRequires:  gtk-doc >= 1.11
 BuildRequires:  intltool
@@ -106,9 +104,6 @@ system) are restricted using PolicyKit.
 
 %prep
 %setup -q -n %{name}-v%{version}
-%if 0%{?sle_version}
-%patch1 -p1
-%endif
 
 %build
 %meson \
