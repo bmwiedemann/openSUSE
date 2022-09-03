@@ -17,7 +17,7 @@
 
 
 Name:           courier-authlib
-Version:        0.71.4
+Version:        0.71.5
 Release:        0
 Summary:        Courier authentication library
 License:        SUSE-GPL-3.0-with-openssl-exception
@@ -227,7 +227,6 @@ fi
 %{_sbindir}/makeuserdb
 %{_sbindir}/pw2userdb
 %{_sbindir}/userdb
-%{_sbindir}/userdb-test-cram-md5
 %{_sbindir}/userdbpw
 %{_libdir}/libauthuserdb.so.*
 %{_mandir}/man8/*userdb*

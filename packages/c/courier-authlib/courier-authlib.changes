@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 20 18:44:48 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 0.71.5:
+  * gcc 12 and autotools update.
+  * Add scripts to create installable .deb packages, update
+    documentation.
+
+-------------------------------------------------------------------
 Tue Mar  8 13:47:40 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 0.71.4:
