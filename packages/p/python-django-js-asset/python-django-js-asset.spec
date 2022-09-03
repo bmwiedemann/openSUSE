@@ -17,16 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %define skip_python36 1
 Name:           python-django-js-asset
-Version:        1.2.2
+Version:        2.0
 Release:        0
 Summary:        Script tag with additional attributes for django.formsMedia
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/matthiask/django-js-asset/
 Source:         https://github.com/matthiask/django-js-asset/archive/%{version}.tar.gz
-Patch0:         changes-in-Django.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
@@ -43,7 +43,6 @@ injection.)
 
 %prep
 %setup -q -n django-js-asset-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -58,6 +57,7 @@ injection.)
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/js_asset/
+%{python_sitelib}/*django_js_asset*/
 
 %changelog
