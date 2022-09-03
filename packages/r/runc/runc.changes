@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 31 13:00:31 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to runc v1.1.4. Upstream changelog is available from
+  https://github.com/opencontainers/runc/releases/tag/v1.1.4.
+
+  * Fix mounting via wrong proc fd. When the user and mount namespaces are
+    used, and the bind mount is followed by the cgroup mount in the spec,
+    the cgroup was mounted using the bind mount's mount fd.
+  * Switch kill() in libcontainer/nsenter to sane_kill().
+  * Fix "permission denied" error from runc run on noexec fs.
+  * Fix failed exec after systemctl daemon-reload. Due to a regression
+    in v1.1.3, the DeviceAllow=char-pts rwm rule was no longer added and
+    was causing an error open /dev/pts/0: operation not permitted: unknown when systemd was reloaded.
+    (boo#1202821)
+
+-------------------------------------------------------------------
 Thu Jun  9 00:22:16 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.1.3. Upstream changelog is available from

@@ -26,8 +26,8 @@
 %define project github.com/opencontainers/runc
 
 Name:           runc
-Version:        1.1.3
-%define _version 1.1.3
+Version:        1.1.4
+%define _version 1.1.4
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
