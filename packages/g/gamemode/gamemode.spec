@@ -113,6 +113,9 @@ built-in GameMode support.
 
 cp %{SOURCE3} .
 
+# Work around broken pidfd_open detection on Tumbleweed
+sed -i 's/pidfd_open = .*/pidfd_open = false/' meson.build
+
 %build
 %meson -Dwith-examples=false
 %meson_build

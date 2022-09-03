@@ -85,4 +85,13 @@
   * Run executables from PATH instead of /usr/bin</comment>
     <requestid>990718</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>0a5ab09cb016b840fb20bfb69bf3677b</srcmd5>
+    <version>1.7</version>
+    <time>1662239963</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a workaround for building on Tumbleweed where detection of
+  the pidfd_open function does not work properly.</comment>
+    <requestid>1001031</requestid>
+  </revision>
 </revisionlist>

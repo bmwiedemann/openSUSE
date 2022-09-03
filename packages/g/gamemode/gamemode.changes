@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep  3 11:47:40 UTC 2022 - Matthias Bach <marix@marix.org> - 1.7
+
+- Add a workaround for building on Tumbleweed where detection of
+  the pidfd_open function does not work properly.
+
+-------------------------------------------------------------------
 Fri Jul 22 18:27:05 UTC 2022 - Matthias Bach <marix@marix.org> - 1.7
 
 - Update to version 1.7
