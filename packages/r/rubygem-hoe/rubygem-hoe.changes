@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug 29 06:51:36 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.25.0
+ see installed History.rdoc
+
+  === 3.25.0 / 2022-08-18
+  
+  * 1 minor enhancement:
+  
+    * Added otp_command config option for OTP auth on gem push.
+  
+  * 1 bug fix:
+  
+    * Use sh instead of system during gem install to raise on error.
+  
+
+-------------------------------------------------------------------
 Thu Aug  4 13:14:17 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.24.0
