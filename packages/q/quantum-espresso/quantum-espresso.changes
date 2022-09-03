@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  1 10:03:54 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add quantum-espresso-rpmlintrc file to disable false positives
+  about executable stacks in binaries.
+- Parallel make leads to race issues causing build failures;
+  enforce -j1 when running %make_build.
+
+-------------------------------------------------------------------
 Sun Nov 21 13:31:34 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.8:

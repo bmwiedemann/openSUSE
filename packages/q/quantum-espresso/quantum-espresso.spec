@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package quantum-espresso
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -108,6 +108,7 @@ Group:          Productivity/Scientific/Physics
 URL:            http://www.quantum-espresso.org
 Source0:        https://gitlab.com/QEF/q-e/-/archive/qe-%{version}/q-e-qe-%{version}.tar.bz2
 Source1:        https://gitlab.com/max-centre/components/devicexlib/-/archive/%{devlibx_version}/devicexlib-%{devlibx_version}.tar.gz
+Source2:        %{pname}-rpmlintrc
 # PATCH-FEATURE-OPENSUSE quantum-espresso-devxlib-no-download.patch badshah400@gmail.com -- Do not try to download devxlib, use SOURCE1 instead.
 Patch1:         quantum-espresso-devxlib-no-download.patch
 BuildRequires:  blas-devel
@@ -177,7 +178,7 @@ export LAPACK_LIBS="-L%{_libdir} -llapack"
 export FFT_LIBS="-lfftw3"
 %configure --disable-parallel
 %endif
-%make_build all
+%make_build -j1 all
 
 %install
 mkdir -p %{buildroot}%{my_bindir}

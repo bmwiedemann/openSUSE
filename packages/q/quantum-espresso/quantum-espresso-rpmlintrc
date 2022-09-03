@@ -1,0 +1,2 @@
+# Executable stack is needed
+addFilter("E: executable-stack")
