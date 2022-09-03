@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Sep  2 21:29:11 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Patch buildmode-pie.patch was added per go's request during build.
+
+-------------------------------------------------------------------
+Fri Aug 26 18:47:10 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Excluding patch from ppc64: "-buildmode=pie not supported on linux/ppc64"
+
+-------------------------------------------------------------------
+Fri Aug 26 16:03:07 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding Group definition
+- Removing unnecessary 'golang' requirement which isn't present in 15.3
+
+-------------------------------------------------------------------
+Tue Aug 23 20:43:11 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version v6.4.0+git20220823.cdbe8b82e:
+  * Account for varying mlr locations (#1086)
+  * Restore --quote-all for CSV output (#1084)
+  * Restore the --jvquoteall flag (#1083)
+  * forgot to make a branch/PR for --quote-all
+  * make dev: for doc-build artifacts
+  * unit-test case
+  * Restore --quote-all flag for CSV output
+  * post-6.4.0
+  * 6.4.0 release (#1081)
+  * codespell
+
+-------------------------------------------------------------------
 Wed Nov 17 06:58:21 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.10.3

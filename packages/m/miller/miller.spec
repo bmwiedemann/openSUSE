@@ -1,7 +1,7 @@
 #
 # spec file for package miller
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,24 @@
 
 
 Name:           miller
-Version:        5.10.3
+Version:        6.4.0+git20220823.cdbe8b82e
 Release:        0
 Summary:        Name-indexed data processing tool
 # c/lib/netbsd_strptime.c is BSD-4-Clause
 License:        BSD-2-Clause AND BSD-4-Clause
+Group:          Productivity/Text/Utilities
 URL:            http://johnkerl.org/miller/doc
 Source0:        https://github.com/johnkerl/miller/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  automake
-BuildRequires:  flex >= 2.5.35
-BuildRequires:  libtool
+Source1:        vendor.tar.gz
+Patch0:         buildmode-pie.patch
+#BuildRequires:  golang
+BuildRequires:  golang-packaging
+BuildRequires:  gcc
+BuildRequires:  systemd-rpm-macros
+# Switched to a golang build sometime after 5.10.3
+#BuildRequires:  automake
+#BuildRequires:  flex >= 2.5.35
+#BuildRequires:  libtool
 
 %description
 Miller (mlr) allows name-indexed data such as CSV and JSON files to be
@@ -36,22 +44,26 @@ streams data where possible so its memory requirements stay small. It works
 well with pipes and can feed "tail -f".
 
 %prep
-%setup -q
-%ifarch %ix86
-sed -e 's/-pg//' -i c/Makefile.am
+%setup -q -a 1
+%if "%{_arch}" != "ppc64"
+%patch0
 %endif
+# Not sure if this is still required
+#%%ifarch %%ix86
+#sed -e 's/-pg//' -i c/Makefile.am
+#%%endif
 
 %build
-autoreconf -fiv
-%configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-%make_install
+%make_install PREFIX=%{_prefix}
+# Add provided example.csv
+cp -v %{_builddir}/%{name}-%{version}/docs/src/example.csv %{_builddir}/%{name}-%{version}
 
 %files
 %license LICENSE.txt
-%doc README.md c/draft-release-notes.md
+%doc README.md example.csv
 %{_bindir}/mlr
 %{_mandir}/man1/mlr.1%{ext_man}
 

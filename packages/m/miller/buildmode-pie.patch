@@ -1,0 +1,11 @@
+--- Makefile.orig	2022-08-23 18:21:08.562516337 -0400
++++ Makefile	2022-08-23 18:21:17.490516712 -0400
+@@ -7,7 +7,7 @@
+ # This must remain the first target in this file, which is what 'make' with no
+ # arguments will run.
+ build:
+-	go build github.com/johnkerl/miller/cmd/mlr
++	go build -buildmode=pie github.com/johnkerl/miller/cmd/mlr
+ 	@echo "Build complete. The Miller executable is ./mlr (or .\mlr.exe on Windows)."
+ 	@echo "You can use 'make check' to run tests".
+ 
