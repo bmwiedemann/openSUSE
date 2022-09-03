@@ -1,7 +1,7 @@
 #
 # spec file for package lsscsi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define         distver 030r154
 Name:           lsscsi
-Version:        0.30
+Version:        0.32
 Release:        0
 Summary:        List all SCSI devices in the system
 License:        GPL-2.0-or-later
@@ -32,7 +31,7 @@ Provides:       scsi:%{_bindir}/lsscsi
 The lsscsi command lists information about SCSI devices in Linux.
 
 %prep
-%setup -q -n %{name}-%{distver}
+%autosetup
 
 %build
 %configure

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 29 10:19:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.32
+  * improve NVMe device parsing (e.g. /dev/nvme0c1n2)
+  * print nr_hw_queues when available for SCSI hosts
+  * make WWN printing for NVMe more consistent with
+    output from SCSI devices (e.g. with -u and -t)
+  * logic to select best SCSI id (--scsi_id) to output
+  * fix issue where host managed ZBC devices don't
+    output their size. [Fix also for RBC and CD/DVD.]
+  * exclude NVMe listings when --classic given
+  * supply "-" for generic NVMe device one line output
+    so 'lsscsi -gb' output is consistent
+
+-------------------------------------------------------------------
 Thu Aug  2 12:42:31 UTC 2018 - mpluskal@suse.com
 
 - Update to version 0.30:
