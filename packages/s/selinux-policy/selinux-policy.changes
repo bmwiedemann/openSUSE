@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 26 06:08:23 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Move SUSE directory from manual page section to html docu
+
+-------------------------------------------------------------------
 Wed Jul 27 14:00:55 UTC 2022 - Hu <cathy.hu@suse.com>
 
 - fix_networkmanager.patch: Allow NetworkManager_dispatcher_tlp_t 
