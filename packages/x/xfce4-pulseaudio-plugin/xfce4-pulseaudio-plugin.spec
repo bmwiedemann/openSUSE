@@ -1,7 +1,7 @@
 #
-# spec file for package xfce4-pulseaudio-plugin
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define plugin pulseaudio
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        Pulseaudio Volume Control Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
@@ -98,7 +98,7 @@ rm -f %{buildroot}%{_libdir}/xfce4/panel/plugins/libpulseaudio-plugin.la
 %find_lang %{name} %{?no_lang_C}
 
 %files
-%doc ChangeLog README
+%doc ChangeLog README.md
 %license COPYING
 %{_libdir}/xfce4/panel/plugins/libpulseaudio-plugin.so
 %{_datadir}/xfce4/panel/plugins/pulseaudio.desktop

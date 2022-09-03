@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep  3 10:51:40 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 0.4.4
+  - Add a recording indicator
+  - Filter out multiple button press events
+  - Bump urls
+  - Fix make distcheck
+  - autoconf: AC_OUTPUT -> AC_CONFIG_FILES + AC_OUTPUT
+  - Update `.gitignore`
+  - Create new README.md. Update configure.ac.in
+  - Add basic GitLab pipeline
+  - Translation Updates 
+
+-------------------------------------------------------------------
 Thu Feb 25 11:53:18 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Require the pulseaudio-daemon capability instead of the
