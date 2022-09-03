@@ -1074,4 +1074,12 @@ goes in line with 946250</comment>
     <comment>update</comment>
     <requestid>999973</requestid>
   </revision>
+  <revision rev="122" vrev="2">
+    <srcmd5>f47160e4b5cdeebc5cc50dd2ae52d0e2</srcmd5>
+    <version>2.7.4</version>
+    <time>1662239907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000721</requestid>
+  </revision>
 </revisionlist>

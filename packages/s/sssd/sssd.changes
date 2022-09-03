@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  1 13:45:36 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration to /usr/etc: Saving user changed configuration files
+  in /etc and restoring them while an RPM update. 
+
+-------------------------------------------------------------------
 Fri Aug 26 20:54:33 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.7.4

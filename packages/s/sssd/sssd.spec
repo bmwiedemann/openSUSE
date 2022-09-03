@@ -487,6 +487,20 @@ fi
 
 %pre kcm
 %service_add_pre sssd-kcm.service sssd-kcm.socket
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/sssd ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
+
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/sssd ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post kcm
 %service_add_post sssd-kcm.service sssd-kcm.socket
