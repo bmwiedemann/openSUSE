@@ -822,4 +822,12 @@ to have a hook to perform appstream-util install &lt;xml&gt; &lt;iconset&gt; and
   * update to spdx 3.16 (forwarded request 987190 from dimstar)</comment>
     <requestid>987357</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>e9735cb56732a62c8cd858dd71bec2a4</srcmd5>
+    <version>0.8.1</version>
+    <time>1662239915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000821</requestid>
+  </revision>
 </revisionlist>

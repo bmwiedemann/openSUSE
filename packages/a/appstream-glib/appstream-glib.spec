@@ -18,7 +18,7 @@
 
 
 Name:           appstream-glib
-Version:        0.7.18+37
+Version:        0.8.1
 Release:        0
 Summary:        AppStream Abstraction Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -43,8 +43,8 @@ BuildRequires:  pkgconfig(gmodule-2.0) >= 2.45.8
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.1.2
 BuildRequires:  pkgconfig(libarchive)
+BuildRequires:  pkgconfig(libcurl) >= 7.56.0
 BuildRequires:  pkgconfig(libgcab-1.0)
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.51.92
 BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(yaml-0.1)
@@ -159,8 +159,7 @@ else
   exit 0
 fi
 
-%post -n libappstream-glib8 -p /sbin/ldconfig
-%postun -n libappstream-glib8 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libappstream-glib8
 
 %files
 %doc AUTHORS NEWS
