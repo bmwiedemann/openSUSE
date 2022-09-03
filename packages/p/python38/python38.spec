@@ -164,6 +164,12 @@ Patch32:        sphinx-update-removed-function.patch
 # Use of 'complex' as a C variable name confuses Sphinx; change it to 'num'
 # The same goes for 'default', which I had to change to 'def_size'
 Patch33:        bpo44426-complex-keyword-sphinx.patch
+# PATCH-FIX-UPSTREAM bpo34990-2038-problem-compileall.patch gh#python/cpython#79171 mcepl@suse.com
+# Make compileall.py compatible with year 2038
+Patch34:        bpo34990-2038-problem-compileall.patch
+# PATCH-FIX-UPSTREAM CVE-2021-28861 bsc#1202624 gh#python/cpython#94094
+# Coerce // to / in Lib/http/server.py
+Patch35:        CVE-2021-28861-double-slash-path.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -172,8 +178,10 @@ BuildRequires:  lzma-devel
 BuildRequires:  netcfg
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} >= 1550
 # The provider for python(abi) is in rpm-build-python
 BuildRequires:  rpm-build-python
+%endif
 BuildRequires:  xz
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(expat)
@@ -426,6 +434,8 @@ other applications.
 %patch29 -p1
 %patch32 -p1
 %patch33 -p1
+%patch34 -p1
+%patch35 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

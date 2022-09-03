@@ -495,4 +495,20 @@ Core and Builtins
 </comment>
     <requestid>990680</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>d91d04abc174c41108765908ab05d2fb</srcmd5>
+    <version>3.8.13</version>
+    <time>1662239913</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch CVE-2021-28861-double-slash-path.patch:
+  * http.server: Fix an open redirection vulnerability in the HTTP server
+    when an URI path starts with //. (bsc#1202624, CVE-2021-28861)
+
+- Add bpo34990-2038-problem-compileall.patch making compileall.py
+  compliant with year 2038 (bsc#1202666, gh#python/cpython#79171),
+  backport of fix to Python 3.8.
+- Add conditional for requiring rpm-build-python, so we should be
+  compilable on SLE/Leap.</comment>
+    <requestid>1000772</requestid>
+  </revision>
 </revisionlist>

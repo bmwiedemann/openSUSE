@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep  1 04:20:04 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch CVE-2021-28861-double-slash-path.patch:
+  * http.server: Fix an open redirection vulnerability in the HTTP server
+    when an URI path starts with //. (bsc#1202624, CVE-2021-28861)
+
+-------------------------------------------------------------------
+Wed Aug 31 08:47:57 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add bpo34990-2038-problem-compileall.patch making compileall.py
+  compliant with year 2038 (bsc#1202666, gh#python/cpython#79171),
+  backport of fix to Python 3.8.
+- Add conditional for requiring rpm-build-python, so we should be
+  compilable on SLE/Leap.
+
+-------------------------------------------------------------------
 Thu Jul 21 14:19:54 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Switch from %primary_interpreter to prjconf-defined
