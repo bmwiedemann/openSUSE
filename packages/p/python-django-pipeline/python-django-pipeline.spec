@@ -49,6 +49,8 @@ and optional data-URI image and font embedding.
 
 %prep
 %setup -q -n django-pipeline-%{version}
+# Make one test compatible with Django 4.1
+sed -i 's/type="text\/css" //' tests/tests/test_forms.py
 
 %build
 %pyproject_wheel
@@ -66,6 +68,7 @@ export DJANGO_SETTINGS_MODULE=tests.settings
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pipeline/
+%{python_sitelib}/*django_pipeline*/
 
 %changelog
