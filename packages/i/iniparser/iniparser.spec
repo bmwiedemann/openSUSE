@@ -1,7 +1,7 @@
 #
 # spec file for package iniparser
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,6 +28,9 @@ URL:            http://ndevilla.free.fr/iniparser/
 Source:         https://github.com/ndevilla/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
 Patch00:        iniparser_remove_rpath.patch
+Patch01:        Fail-testrun-on-test-failure.patch
+Patch02:        Fix-buffer-overflow-from-sprintf.patch
+Patch03:        Fix-tests-on-32bit.patch
 
 %description
 Libiniparser offers parsing of ini files from the C level.
@@ -70,7 +73,7 @@ Libraries and Header Files to Develop Programs with iniparser Support.
 
 %prep
 %setup -q
-%patch00 -p1
+%autopatch -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags} -fPIC"

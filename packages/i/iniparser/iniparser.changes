@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 24 18:26:33 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Add fixes since 4.1
+  + Fail-testrun-on-test-failure.patch
+  + Fix-buffer-overflow-from-sprintf.patch
+- Fix tests failing on 32bit architectures
+  + Fix-tests-on-32bit.patch
+
+-------------------------------------------------------------------
 Sat Nov 11 05:21:56 UTC 2017 - aavindraa@gmail.com
 
 - Update to 4.1 (stable release)
