@@ -261,4 +261,17 @@
 - Run tests in parallel.</comment>
     <requestid>997709</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5ef0b01a5febffcea9be8dea6ea08dd8</srcmd5>
+    <version>1.4.2</version>
+    <time>1662322302</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.2
+  * [RV32] We've fixed several issues for 32-bit RISC-V.
+    mold can now build complex programs including itself for the target.
+  * [ARM32] mold gained range extension thunks so that it can now link programs whose
+    .text is larger than 16 MiB. Previously, mold couldn't link such large programs.
+    We've also fixed general stability issues for ARM32.</comment>
+    <requestid>1001085</requestid>
+  </revision>
 </revisionlist>

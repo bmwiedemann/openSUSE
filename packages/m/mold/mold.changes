@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep  4 06:29:52 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 1.4.2
+  * [RV32] We've fixed several issues for 32-bit RISC-V.
+    mold can now build complex programs including itself for the target.
+  * [ARM32] mold gained range extension thunks so that it can now link programs whose
+    .text is larger than 16 MiB. Previously, mold couldn't link such large programs.
+    We've also fixed general stability issues for ARM32.
+
+-------------------------------------------------------------------
 Thu Aug 18 09:28:25 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 1.4.1
