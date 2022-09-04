@@ -18,7 +18,7 @@
 
 %define sigil_doc_version 2022.05.17
 Name:           sigil
-Version:        1.9.10
+Version:        1.9.20
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only
@@ -30,8 +30,6 @@ Source1:        https://github.com/Sigil-Ebook/sigil-user-guide/releases/downloa
 Source2:        %{name}.desktop
 # PATCH-FIX-OPENSUSE Disabled __DATE__ and __TIME__ which is replaced later in pre section
 Patch0:         %{name}-gt-0.9.0-Dialogs-About.cpp.patch
-# PATCH-UPSTREAM - Fix Sigil EBUP editor terminates with SIGSEGV on startup
-Patch1:         %{name}-lto.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake >= 3.0
 BuildRequires:  dos2unix
@@ -119,7 +117,6 @@ specification and create a hierarchical Table of Contents.
 %prep
 %setup -q -n Sigil-%{version}
 %patch0 -p1
-%patch1 -p1
 cp -v %{SOURCE1} .
 cp -v %{SOURCE2} .
 # rpmlint
