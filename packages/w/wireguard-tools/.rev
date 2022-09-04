@@ -123,4 +123,15 @@
 </comment>
     <requestid>957145</requestid>
   </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>3284104d46eae99973cfcb0a8bb01f44</srcmd5>
+    <version>1.0.20210914</version>
+    <time>1662322304</time>
+    <user>dimstar_suse</user>
+    <comment>Add missing changelog entry
+
+- Support multiple DNS search domains
+  * Support-systemd-resolved-split-dns-setup.patch (forwarded request 1000450 from dheidler)</comment>
+    <requestid>1001083</requestid>
+  </revision>
 </revisionlist>

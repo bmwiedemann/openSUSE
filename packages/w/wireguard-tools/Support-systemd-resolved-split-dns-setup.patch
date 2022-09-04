@@ -32,7 +32,7 @@ index bc4d090..db44842 100644
 +		cmd resolvectl dns "$INTERFACE" "${DNS[@]}"
 +		# Prefix each domain with '~' which will tell resolvectl to use that domain
 +		# for dns routing but not as a search domain
-+		cmd resolvectl domain "$INTERFACE" "${DNS_SEARCH[*]/#/\~}"
++		cmd resolvectl domain "$INTERFACE" ${DNS_SEARCH[*]/#/\~}
 +	fi
  	HAVE_SET_DNS=1
  }

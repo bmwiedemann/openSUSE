@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 31 13:40:41 UTC 2022 - Dominik Heidler <dheidler@suse.de>
+
+- Support multiple DNS search domains
+  * Support-systemd-resolved-split-dns-setup.patch
+
+-------------------------------------------------------------------
 Tue Feb 22 10:44:56 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop harden_wg-quick@.service.patch. The currrent logic for setting
