@@ -16,19 +16,21 @@
 #
 
 
-%define _build 482
-%define _tag V_2_10_1_BUILD_%{_build}
+%define _build 484
+%define _buildreleases 484
+%define _tag V_2_10_2_BUILD_%{_build}
 Name:           jameica
-Version:        2.10.1
+Version:        2.10.2
 Release:        0
 Summary:        Runtime environment for Java applications like Hibiscus
 License:        Apache-2.0 AND GPL-2.0-only AND LGPL-2.0-only AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
 Group:          Productivity/Office/Finance
 URL:            http://www.willuhn.de/products/jameica/
 Source:         https://github.com/willuhn/jameica/archive/%{_tag}.tar.gz
+BuildArch:      noarch
 BuildRequires:  ant
 BuildRequires:  dos2unix
-#BuildRequires:  eclipse-swt >= 4.20
+#BuildRequires:  eclipse-swt
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
@@ -128,7 +130,7 @@ ant -f build/build.xml init compile jar zip src javadoc
 
 %install
 mkdir -p %{buildroot}%{_prefix}/lib/jameica/plugins
-cp -r releases/%{version}-%{_build}/%{name} %{buildroot}%{_prefix}/lib
+cp -r releases/%{version}-%{_buildreleases}/%{name} %{buildroot}%{_prefix}/lib
 chmod +x %{buildroot}%{_prefix}/lib/%{name}/rcjameica
 chmod +x %{buildroot}%{_prefix}/lib/%{name}/jameicaserver.sh
 chmod +x %{buildroot}%{_prefix}/lib/%{name}/jameica.sh
@@ -160,9 +162,9 @@ ln -sf %{_prefix}/lib/%{name}/jameicaserver.sh %{buildroot}%{_bindir}/jameicaser
 cp -r src %{buildroot}%{_prefix}/lib/jameica
 
 mkdir -p %{buildroot}%{_javadocdir}/%{name}-%{version}
-cp -r releases/%{version}-%{_build}/javadoc/* %{buildroot}%{_javadocdir}/%{name}-%{version}
+cp -r releases/%{version}-%{_buildreleases}/javadoc/* %{buildroot}%{_javadocdir}/%{name}-%{version}
 
-%fdupes %{buildroot}%{_prefix}
+%fdupes %{buildroot}%{_prefix}/lib/%{name}
 
 %files
 %doc build/ChangeLog README.md

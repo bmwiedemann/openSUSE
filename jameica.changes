@@ -1,23 +1,47 @@
 -------------------------------------------------------------------
-Sat Mar  5 10:07:12 UTC 2022 - Matthias Mailänder <mailaender@opensuse.org>
+Wed Jun  8 15:56:44 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.10.2
+  - NEW: 0152 JRE-Update auf 11.0.15 (Windows 32/64Bit und MacOS 64Bit)
+  - BUG: 0151 Macos AArch64 Pfade korrigiert
+  - NEW: 0150 Kalender auf dunklen Themes farbig passend gestalten
+  - NEW: 0149 Support für Java 18 - Security-Manager nicht mehr im
+    System registrieren. Java 18+ unterstützt keinen Security-Manager mehr
+  - NEW: 0148 Support für CTRL+A in Tabellen und Trees unter Windows
+    zum Markieren aller Datensätze (funktionierte bisher nur unter Linux)
+  - BUG: 0147 Scripting-Plugins bei der Wiederherstellung eines Backups korrekt anzeigen
+  - NEW: 0146 Trust-Manager-Implementierung nicht mehr anhand „java.vendor“ auswählen 
+    sondern erst SunX509 versuchen. Wenn das fehlschlägt, dann Fallback auf IbmX509
+  - NEW: 0145 Nachtrag zu #0144 - CMD-Taste statt STRG unter MacOS und Timeout
+    für Logfenster von 30 auf 60 Sekunden erhöht
+  - NEW: 0144 STRG+A im Logfenster möglich sowie Button „Text kopieren“
+  - NEW: 0143 Referenz auf JAR-File in jameica-macosaarch64.sh falsch
+
+-------------------------------------------------------------------
+Tue Jan  4 13:01:22 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.10.1
-  * NEW: 0142 Update auf SWT 4.20 für linux64, linux-arm64, win64, macos64
-  * NEW: 0141 Support für Macos-aarch64 (SWT 4.20)
-  * NEW: 0140 JRE-Update für Windows und Mac auf 11.0.13_8
-  * NEW: 0139 MySQL-Treiber auf 5.1.49 aktualisiert
-  - siehe https://homebanking-hilfe.de/forum/topic.php?t=24614
-  * NEW: 0138 Update auf SWT 4.19M3 für macos64
-  - das Druckproblem https://bugs.eclipse.org/bugs/show_bug.cgi?id=569185 scheint dort behoben zu sein
-  * NEW: 0137 Update auf SWT 4.18 für linux64, linux-arm64, win64 und macos64
+  - NEW: 0142 Update auf SWT 4.20 für linux64, linux-arm64, win64, macos64
+  - NEW: 0141 Support für Macos-aarch64 (SWT 4.20)
+  - NEW: 0140 JRE-Update für Windows und Mac auf 11.0.13_8
+  - NEW: 0139 MySQL-Treiber auf 5.1.49 aktualisiert - siehe 
+    https://homebanking-hilfe.de/forum/topic.php?t=24614
+  - NEW: 0138 Update auf SWT 4.19M3 für macos64 - das Druckproblem
+    https://bugs.eclipse.org/bugs/show_bug.cgi?id=569185 scheint dort behoben zu sein
+  - NEW: 0137 Update auf SWT 4.18 für linux64, linux-arm64, win64 und macos64
 
 -------------------------------------------------------------------
 Sun Nov 29 12:18:26 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.10.0
+  - NEW: 0136 Neue Launcher für Windows mit aktualisierter
+    Versionsnummer
   - NEW: 0135 JRE-Update für Windows und Mac auf 11.0.9.1_1
   - NEW: 0134 Update auf SWT 4.17 für für linux64, linux-arm64
     (jetzt offiziell von Eclipse untestützt), win64 und macos64
+  - NEW: 0133 Parameter „-Dsun.security.smartcardio.library“ zu
+    jameica-macos64.sh hinzugefügt - für MacOS Big Sur nötig 
+    - siehe https://homebanking-hilfe.de/forum/topic.php?p=157884#real157884
   - NEW: 0132 Fenster-Position auch im Maximiert-Zustand speichern
     - siehe https://homebanking-hilfe.de/forum/topic.php?p=157397#real157397
   - NEW: 0131 Sprache wieder per Datei→Einstellungen konfigurierbar
