@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep  2 13:32:05 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.37.3:
+  * Plug memory leaks in the failure code path in the "merge-ort"
+    merge strategy backend.
+  * "vimdiff3" regression has been corrected
+  * "git fsck" improvements  
+  * Fixes to sparse index compatibility work for "reset" and
+    "checkout" commands
+  * Documentation for "git add --renormalize" has been improved
+  * developer visible fixes
+
+-------------------------------------------------------------------
 Mon Aug 15 07:32:12 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.37.2:
