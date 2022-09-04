@@ -1,0 +1,17 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/ToxicFrog/vstruct</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
+    <param name="scm">git</param>
+    <param name="revision">b6889e3b275e9f9532b5dff4917e903b17e22730</param>
+    <param name="versionrewrite-pattern">v(\d+.\d+.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+</services>
+

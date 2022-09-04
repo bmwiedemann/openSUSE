@@ -1,0 +1,7 @@
+<package name="lua-vstruct" project="openSUSE:Factory">
+  <title>Lua library to manipulate binary data</title>
+  <description>A Lua library for packing and unpacking binary data, supporting arbitrary
+(byte-aligned) widths, named fields, and repetition.</description>
+  <devel project="devel:languages:lua" package="lua-vstruct"/>
+  <url>https://github.com/ToxicFrog/vstruct</url>
+</package>
