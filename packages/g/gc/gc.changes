@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 26 19:56:22 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.2.2
+  * Avoid potential race in GC_init_real_syms after
+    GC_allow_register_threads
+  * Do not count unmapped regions if GC_unmap is madvise-based
+    (Linux)
+  * Fix assertion violation of GC_thread_key alignment if
+    pthread-based TLS
+  * Fix hang on sem_wait in GC_suspend_thread if thread was
+    resumed recently
+- Delete 0001-Distribute-gc_gcj.h-and-some-other-headers-in-single.patch
+  (applied)
+
+-------------------------------------------------------------------
 Thu Dec  2 17:28:08 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Distribute-gc_gcj.h-and-some-other-headers-in-single.patch
