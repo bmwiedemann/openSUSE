@@ -15491,6 +15491,7 @@ unsorted:
   - lua51-ldoc 
   - lua51-lgi 
   - lua51-lgi-doc 
+  - lua51-linenoise 
   - lua51-loadkit 
   - lua51-lpeg 
   - lua51-lpeg-doc 
@@ -15515,6 +15516,7 @@ unsorted:
   - lua51-luasystem 
   - lua51-luaterm 
   - lua51-luaunbound 
+  - lua51-luautf8 
   - lua51-luv 
   - lua51-markdown 
   - lua51-mediator_lua 
@@ -15525,6 +15527,7 @@ unsorted:
   - lua51-readline 
   - lua51-say 
   - lua51-slaxml 
+  - lua51-vstruct 
   - lua51-zlib 
   - lua53 
   - lua53-alt-getopt 
@@ -15545,6 +15548,7 @@ unsorted:
   - lua53-ldoc 
   - lua53-lgi 
   - lua53-lgi-doc 
+  - lua53-linenoise 
   - lua53-loadkit 
   - lua53-lpeg 
   - lua53-lpeg-doc 
@@ -15569,6 +15573,7 @@ unsorted:
   - lua53-luasystem 
   - lua53-luaterm 
   - lua53-luaunbound 
+  - lua53-luautf8 
   - lua53-luv 
   - lua53-markdown 
   - lua53-mediator_lua 
@@ -15579,6 +15584,7 @@ unsorted:
   - lua53-readline 
   - lua53-say 
   - lua53-slaxml 
+  - lua53-vstruct 
   - lua53-zlib 
   - lua54 
   - lua54-alt-getopt 
@@ -15600,6 +15606,7 @@ unsorted:
   - lua54-ldoc 
   - lua54-lgi 
   - lua54-lgi-doc 
+  - lua54-linenoise 
   - lua54-loadkit 
   - lua54-lpeg 
   - lua54-lpeg-doc 
@@ -15624,6 +15631,7 @@ unsorted:
   - lua54-luasystem 
   - lua54-luaterm 
   - lua54-luaunbound 
+  - lua54-luautf8 
   - lua54-luv 
   - lua54-markdown 
   - lua54-mediator_lua 
@@ -15634,6 +15642,7 @@ unsorted:
   - lua54-readline 
   - lua54-say 
   - lua54-slaxml 
+  - lua54-vstruct 
   - lua54-zlib 
   - luabind-devel 
   - luacheck 
@@ -16780,7 +16789,6 @@ unsorted:
   - mscgen 
   - msgpack-c-devel 
   - msgpack-cxx-devel 
-  - msgpack-devel 
   - msitools 
   - msitools-devel 
   - msitools-lang 
