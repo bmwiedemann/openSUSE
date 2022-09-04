@@ -25,6 +25,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Visualization
 URL:            http://xjadeo.sourceforge.net/
 Source0:        https://sourceforge.net/projects/xjadeo/files/xjadeo/v%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 973f0046.patch -- ffmpeg 5.1 compat
+Patch0:         https://github.com/x42/xjadeo/commit/973f0046.patch
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
