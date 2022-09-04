@@ -21,7 +21,7 @@
 # flaky for obs, only test locally
 %bcond_with dasktest
 Name:           python-spyder-kernels
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT

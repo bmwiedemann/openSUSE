@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep  4 08:50:21 UTC 2022 - andy great <andythe_great@pm.me>
+
+- Update to version 2.3.3.
+  * Use get_size to get variable length for get_var_properties to
+    prevent triggering Dask tasks, by @dalthviz
+  * Use debugging namespace when curframe is active, by @impact27
+    (405)
+
+-------------------------------------------------------------------
 Mon Jul 25 12:31:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.3.2
