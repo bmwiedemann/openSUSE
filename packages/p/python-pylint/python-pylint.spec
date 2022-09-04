@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylint
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %bcond_without tests
-%define skip_python2 1
 Name:           python-pylint
-Version:        2.12.2
+Version:        2.15.0
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
@@ -28,28 +26,46 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pycqa/pylint
 # Tests are no longer packaged in the PyPI sdist, use GitHub archive
 Source:         https://github.com/PyCQA/pylint/archive/refs/tags/v%{version}.tar.gz#/pylint-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM gh#PyCQA/pylint#7367
+Patch0:         pylint-pr7367-pythonpathtest.patch
+BuildRequires:  %{python_module base >= 3.7.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astroid >= 2.9
-Requires:       python-isort >= 4.2.5
-Requires:       python-mccabe >= 0.6
+Requires:       python-dill >= 0.2
 Requires:       python-platformdirs >= 2.2
-Requires:       python-toml >= 0.9.2
+Requires:       python-tomlkit >= 0.10.1
+Requires:       (python-astroid >= 2.12.4 with python-astroid < 2.14.0~dev0)
+Requires:       (python-isort >= 4.2.5 with python-isort < 6)
+Requires:       (python-mccabe >= 0.6 with python-mccabe < 0.8)
+%if 0%{?python_version_nodots} < 311
+Requires:       python-tomli >= 1.1.0
+%endif
 %if 0%{?python_version_nodots} < 310
 Requires:       python-typing-extensions >= 3.10
 %endif
 %if %{with tests}
-BuildRequires:  %{python_module GitPython > 3}
-BuildRequires:  %{python_module astroid >= 2.9}
-BuildRequires:  %{python_module isort >= 4.2.5}
-BuildRequires:  %{python_module mccabe >= 0.6}
+# SECTION pylint deps
+BuildRequires:  %{python_module astroid >= 2.12.4 with %python-astroid < 2.14.0~dev0}
+BuildRequires:  %{python_module dill >= 0.2}
+BuildRequires:  %{python_module isort >= 4.2.5 with %python-isort < 6}
+BuildRequires:  %{python_module mccabe >= 0.6 with %python-mccabe < 0.8}
 BuildRequires:  %{python_module platformdirs >= 2.2}
+BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}
+BuildRequires:  %{python_module tomlkit >= 0.10.1}
+# typing-extensions for python310 required for tests only, same as gh#PyCQA/astroid#1585
+BuildRequires:  %{python_module typing-extensions >= 3.10}
+# /SECTION
+# SECTION test deps
+BuildRequires:  %{python_module GitPython > 3}
 BuildRequires:  %{python_module pytest-benchmark}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module toml >= 0.9.2}
-BuildRequires:  %{python_module typing-extensions >= 3.10 if %python-base < 3.10}
+BuildRequires:  %{python_module requests}
+# /SECTION
 %endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -75,17 +91,15 @@ feature.
 %prep
 %autosetup -p1 -n pylint-%{version}
 sed -i '1{/^#!/ d}' pylint/__main__.py
-# unpin upper bounds for astroid and mccabe
-sed -i -e 's/\(mccabe>=.*\),<.*/\1/' -e 's/\(astroid>=.*\),<.*/\1/' setup.cfg
 
 %build
 export LC_ALL="en_US.UTF-8"
-%python_build
+%pyproject_wheel
 
 %install
 export LC_ALL="en_US.UTF-8"
-%python_install
-for p in pylint epylint pyreverse symilar ; do
+%pyproject_install
+for p in pylint epylint pyreverse symilar pylint-config ; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -93,32 +107,25 @@ done
 %if %{with tests}
 %check
 export LC_ALL="en_US.UTF-8"
-# The test suite tampers with the PYTHONPATH, e.g. upstreams fix for
-# https://github.com/PyCQA/pylint/issues/3636
-# so make sure that the macro set PYTHONPATH does not result in conflicting imports
-mv pylint pylint.tmp
-%pytest --benchmark-disable --ignore tests/test_epylint.py
-# result of the mentioned tampering: other tests must not have pwd in PYTHONPATH, but test_epylint needs it
-export PYTHONPATH=$PWD
-%pytest --benchmark-disable tests/test_epylint.py
-mv pylint.tmp pylint
+%pytest --benchmark-disable
 %endif
 
 %post
-%python_install_alternative pylint epylint pyreverse symilar
+%python_install_alternative pylint epylint pyreverse symilar pylint-config
 
 %postun
 %python_uninstall_alternative pylint
 
 %files %{python_files}
 %license LICENSE
-%doc ChangeLog README.rst
+%doc README.rst
 %doc examples/
 %python_alternative %{_bindir}/pylint
+%python_alternative %{_bindir}/pylint-config
 %python_alternative %{_bindir}/epylint
 %python_alternative %{_bindir}/pyreverse
 %python_alternative %{_bindir}/symilar
 %{python_sitelib}/pylint/
-%{python_sitelib}/pylint-%{version}-py*.egg-info
+%{python_sitelib}/pylint-%{version}*-info
 
 %changelog

@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Sat Aug 27 10:01:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.15.0
+  * In pylint 2.15.0, we added a new check missing-timeout to warn
+    of default timeout values that could cause a program to be
+    hanging indefinitely.
+  * We improved pylint's handling of namespace packages. More
+    packages should be linted without resorting to using the
+    --recursive=y option.
+- Release highlights from 2.14
+  * With 2.14 pylint only supports Python version 3.7.2 and above.
+  * We introduced several new checks among which duplicate-value
+    for sets, comparison-of-constants, and checks related to
+    lambdas. We removed no-init and made no-self-use optional as
+    they were too opinionated. We also added an option to generate
+    a toml configuration: --generate-toml-config.
+  * We migrated to argparse from optparse and refactored the
+    configuration handling thanks to Daniël van Noord. On the user
+    side it should change the output of the --help command, and
+    some inconsistencies and bugs should disappear. The behavior
+    between options set in a config file versus on the command line
+    will be more consistent. For us, it will permit to maintain
+    this part of the code easily in the future and anticipate
+    optparse's removal in Python 3.12.
+  * As a result of the refactor there are a lot of internal
+    deprecations. If you're a library maintainer that depends on
+    pylint, please verify that you're ready for pylint 3.0 by
+    activating deprecation warnings.
+  * We continued the integration of pylint-error and are now at
+    33%!. We still welcome any community effort to help review,
+    integrate, and add good/bad examples
+    <https://github.com/PyCQA/pylint/issues/5953>`_. This should be
+    doable without any pylint or astroid knowledge, so this is the
+    perfect entrypoint if you want to contribute to pylint or open
+    source without any experience with our code!
+- Release highlights from 2.13
+  * In 2.13, we introduced a new check to deal with unicode
+    security issues. On top of that a lot of work was done inside
+    the unicode checker by @CarliJoy. We also introduced a new
+    check when importing private name and for unnecessary ellipsis
+    among other.
+  * We fixed long standing issues related to duplicate code that
+    could not be disabled, line numbers that were not accurate some
+    of the time, and added the ability to lint all files in a
+    directory without specifying each one. One of the most
+    anticipated issue from the repository. Thank you @matusvalo !
+  * A lot of undefined-variables and used-before-assignment issues
+    were resolved thanks to @jacobtylerwalls.
+  * We started integrating pylint-error the documentation created
+    by @vald-phoenix a developer from Hlyniane, Ukraine. We hope
+    he's doing well despite the current situation. The deployment
+    is set up but there's still a lot to do so we welcome any
+    community effort help to review, integrate, and add good/bad
+    examples. This should be doable without any pylint or astroid
+    knowledge, so this is the perfect entrypoint if you want to
+    contribute to pylint without investing any time learning the
+    internals.
+  * This release is the last one to support interpreter below
+    3.7.2, 3.6 end of life was reached in december 2021.
+- Add pylint-pr7367-pythonpathtest.patch
+  * gh#PyCQA/pylint#7367
+
+-------------------------------------------------------------------
 Sat Dec 11 14:54:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.12.2
