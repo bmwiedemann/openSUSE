@@ -472,4 +472,12 @@
     <comment>Add support to the database for Leap 15.5, SLE15-SP5, and SLE Micro 5.3</comment>
     <requestid>999291</requestid>
   </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>6c069be5d215b28a4cf5adcbe56fc845</srcmd5>
+    <version>20220727</version>
+    <time>1662322294</time>
+    <user>dimstar_suse</user>
+    <comment>Fix short-id in definition for sle15sp5 - bsc#1202827</comment>
+    <requestid>1000965</requestid>
+  </revision>
 </revisionlist>

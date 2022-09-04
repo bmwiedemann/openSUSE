@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  2 10:28:17 MDT 2022 - carnold@suse.com
+
+- bsc#1202827 - Fail to deploy sle15sp5 guest via virt-install with
+  osinfo
+  add-sle15sp5-support.patch
+
+-------------------------------------------------------------------
 Thu Aug 25 11:41:48 MDT 2022 - carnold@suse.com
 
 - Add support for openSUSE Leap 15.5, SLES 15.5, and SLE Micro 5.3

@@ -8,7 +8,7 @@ Index: osinfo-db-20220727/os/suse.com/sle-15.5.xml
 +  <!-- Licensed under the GNU General Public License version 2 or later.
 +     See http://www.gnu.org/licenses/ for a copy of the license text -->
 +  <os id="http://suse.com/sle/15.5">
-+    <short-id>sle15sp4</short-id>
++    <short-id>sle15sp5</short-id>
 +    <name>SUSE Linux Enterprise 15 SP5</name>
 +    <name xml:lang="ko">&#xC218;&#xC138; &#xB9AC;&#xB205;&#xC2A4; &#xAE30;&#xC5C5;&#xC6A9; 15 SP5</name>
 +    <name xml:lang="uk">SUSE Linux Enterprise 15 SP5</name>
