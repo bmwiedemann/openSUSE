@@ -37,4 +37,12 @@
 (requires changes in prjconfig to prefer NM-branding-upstream for building) (forwarded request 991574 from fcrozat)</comment>
     <requestid>992694</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>fb91a032f78f4f3f90a43b79f1ec3b92</srcmd5>
+    <version>42.1</version>
+    <time>1662322317</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001153</requestid>
+  </revision>
 </revisionlist>

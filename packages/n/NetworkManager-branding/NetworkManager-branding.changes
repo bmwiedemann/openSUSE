@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 12 06:14:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Expliciltly BuildRequire NetworkManager-branding-upstream:
+  branding-upstream is produced by NetworkManager and is guaranteed
+  to be the same version. Breaks a self-cycle.
+
+-------------------------------------------------------------------
 Thu Jul 28 14:12:37 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Move conncheck config file out of /etc. No longer

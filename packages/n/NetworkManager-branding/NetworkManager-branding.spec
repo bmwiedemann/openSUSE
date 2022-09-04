@@ -39,6 +39,7 @@ URL:            http://www.gnome.org/projects/NetworkManager/
 Source0:        NetworkManager.conf.in
 Source1:        NetworkManager-branding-COPYING
 BuildRequires:  NetworkManager
+BuildRequires:  NetworkManager-branding-upstream
 %requires_eq    NetworkManager
 Supplements:    packageand(NetworkManager:branding-%{branding_name})
 Conflicts:      NetworkManager-branding
