@@ -33,6 +33,7 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            https://luarocks.org
 Source0:        https://luarocks.org/releases/%{mod_name}-%{version}.tar.gz
+Patch0:         lib64.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  curl
 BuildRequires:  openssl
@@ -57,7 +58,7 @@ correct version is loaded. LuaRocks supports both local and remote
 repositories, and multiple local rocks trees.
 
 %prep
-%autosetup -n %{mod_name}-%{version}
+%autosetup -n %{mod_name}-%{version} -p1
 
 %build
 # Not an autotools based system
@@ -77,6 +78,9 @@ touch %{buildroot}%{_sysconfdir}/alternatives/luarocks
 ln -sf %{_sysconfdir}/alternatives/luarocks %{buildroot}%{_bindir}/luarocks
 touch %{buildroot}%{_sysconfdir}/alternatives/luarocks-admin
 ln -sf %{_sysconfdir}/alternatives/luarocks %{buildroot}%{_bindir}/luarocks-admin
+
+# rockstree
+mkdir -p %{buildroot}%{luarocks_treedir}
 
 %post
 %{_sbindir}/update-alternatives --install %{_bindir}/luarocks luarocks %{_bindir}/luarocks-%{lua_version} %{lua_value} \
@@ -99,5 +103,7 @@ fi
 %{_bindir}/luarocks-%{lua_version}
 %{_bindir}/luarocks-admin-%{lua_version}
 %{lua_noarchdir}/luarocks
+%dir %{_prefix}/lib/luarocks/rocks-%{lua_version}
+%dir %{_prefix}/lib/luarocks
 
 %changelog
