@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Fri Sep 2 15:07:51 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#896
+- avoid problems with duplicate MD device names during activation
+  (bsc#1199307)
+- 4.5.43
+
+--------------------------------------------------------------------
 Fri Aug 12 07:39:57 UTC 2022 - bittin@opensuse.org
 
 - Translated using Weblate (Swedish) (bsc#1149754)
