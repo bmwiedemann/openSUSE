@@ -1,0 +1,17 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/starwing/luautf8</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
+    <param name="scm">git</param>
+    <param name="revision">4e15359829f8c911de3a78ea8d4c5b945260256a</param>
+    <param name="versionrewrite-pattern">(\d+.\d+.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+</services>
+

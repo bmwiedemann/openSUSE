@@ -1,0 +1,11 @@
+<package name="lua-luautf8" project="openSUSE:Factory">
+  <title>A utf-8 support module for Lua and LuaJIT</title>
+  <description>This module adds UTF-8 support to Lua. It use data extracted from
+Unicode Character Database, and tested on Lua 5.2.3, Lua 5.3.0 and LuaJIT.
+parseucd.lua is a pure Lua script generate unidata.h, to support convert
+characters and check characters' category. It mainly used to compatible
+with Lua's own string module, it passed all string and pattern matching
+test in lua test suite2.</description>
+  <devel project="devel:languages:lua" package="lua-luautf8"/>
+  <url>https://github.com/starwing/luautf8</url>
+</package>
