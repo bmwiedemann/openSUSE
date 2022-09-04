@@ -39,3 +39,14 @@ Obsoletes: lua-%{mod_name} < %{version}-%{release} \
 %endif \
 %endif \
 %{nil}
+
+# LuaRocks
+%luarocks_build \
+luarocks --lua-version "%{lua_version}" \\\
+make --pack-binary-rock --deps-mode none
+
+%luarocks_install \
+luarocks --lua-version="%{lua_version}" --tree="%{buildroot}%{_prefix}" \\\
+install --deps-mode=none --no-manifest
+
+%luarocks_treedir %{_prefix}/lib/luarocks/rocks-%{lua_version}

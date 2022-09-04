@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep  2 15:13:06 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add LuaRocks macros:
+  * %luarocks_build
+  * %luarocks_install
+  * %luarocks_treedir
+
+-------------------------------------------------------------------
 Sat Aug 28 09:42:55 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change usage of math to string.gsub to prevent extra decimal
