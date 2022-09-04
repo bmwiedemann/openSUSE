@@ -43,7 +43,7 @@
 %bcond_with enable_preview_single_rpmtrans_as_default_for_zypper
 
 Name:           libzypp
-Version:        17.31.0
+Version:        17.31.1
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -314,74 +314,34 @@ cd ..
 # Create filelist with translations
 %{find_lang} zypp
 
+%if %{defined _distconfdir}
+# Move logratate files form /etc/logrotate.d to /usr/etc/logrotate.d
+mkdir -p %{buildroot}/%{_distconfdir}/logrotate.d
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/zypp-history.lr %{buildroot}%{_distconfdir}/logrotate.d
+%endif
+
 %check
 pushd build/tests
 LD_LIBRARY_PATH="$(pwd)/../zypp:$LD_LIBRARY_PATH" ctest --output-on-failure .
 popd
 
-%post
-/sbin/ldconfig
-if [ -f /var/cache/zypp/zypp.db ]; then rm /var/cache/zypp/zypp.db; fi
+%if %{defined _distconfdir}
+%pre
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/zypp-history.lr; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
 
-# convert old lock file to new
-# TODO make this a separate file?
-# TODO run the sript only when updating form pre-11.0 libzypp versions
-LOCKSFILE=%{_sysconfdir}/zypp/locks
-OLDLOCKSFILE=%{_sysconfdir}/zypp/locks.old
+%if %{defined _distconfdir}
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/zypp-history.lr; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
-is_old(){
-  # if no such file, exit with false (1 in bash)
-  test -f ${LOCKSFILE} || return 1
-  TEMP_FILE=`mktemp`
-  cat ${LOCKSFILE} | sed '/^\#.*/ d;/.*:.*/d;/^[^[a-zA-Z\*?.0-9]*$/d' > ${TEMP_FILE}
-  if [ -s ${TEMP_FILE} ]
-  then
-    RES=0
-  else
-    RES=1
-  fi
-  rm -f ${TEMP_FILE}
-  return ${RES}
-}
-
-append_new_lock(){
-  case "$#" in
-    1 )
-  echo "
-solvable_name: $1
-match_type: glob
-" >> ${LOCKSFILE}
-;;
-    2 ) #TODO version
-  echo "
-solvable_name: $1
-match_type: glob
-Version:        $2
-" >> ${LOCKSFILE}
-;;
-    3 ) #TODO version
-  echo "
-solvable_name: $1
-match_type: glob
-Version:        $2 $3
-" >> ${LOCKSFILE}
-  ;;
-esac
-}
-
-die() {
-  echo $1
-  exit 1
-}
-
-if is_old ${LOCKSFILE}
-  then
-  mv -f ${LOCKSFILE} ${OLDLOCKSFILE} || die "cannot backup old locks"
-  cat ${OLDLOCKSFILE}| sed "/^\#.*/d"| while read line
-  do
-    append_new_lock $line
-  done
-fi
+%post -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
 
@@ -406,7 +366,11 @@ fi
 %dir               %{_sysconfdir}/zypp/credentials.d
 %config(noreplace) %{_sysconfdir}/zypp/zypp.conf
 %config(noreplace) %{_sysconfdir}/zypp/systemCheck
+%if %{defined _distconfdir}
+%{_distconfdir}/logrotate.d/zypp-history.lr
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/zypp-history.lr
+%endif
 %dir               %{_var}/lib/zypp
 %if "%{_libexecdir}" != "%{_prefix}/lib"
 %dir               %{_libexecdir}/zypp
