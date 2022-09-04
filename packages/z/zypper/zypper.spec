@@ -46,7 +46,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Command line software manager using libzypp
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        1.14.55
+Version:        1.14.56
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
@@ -167,8 +167,31 @@ cd ..
 %{__install} -d -m755 $RPM_BUILD_ROOT%{_var}/log
 touch $RPM_BUILD_ROOT%{_var}/log/zypper.log
 
+%if %{defined _distconfdir}
+# Move logratate files form /etc/logrotate.d to /usr/etc/logrotate.d
+mkdir -p %{buildroot}/%{_distconfdir}/logrotate.d
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/zypper.lr %{buildroot}%{_distconfdir}/logrotate.d
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/zypp-refresh.lr %{buildroot}%{_distconfdir}/logrotate.d
+%endif
+
 %clean
 rm -rf "$RPM_BUILD_ROOT"
+
+%if %{defined _distconfdir}
+%pre
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/zypper.lr logrotate.d/zypp-refresh.lr; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
+
+%if %{defined _distconfdir}
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/zypper.lr logrotate.d/zypp-refresh.lr; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %files -f zypper.lang
 %defattr(-,root,root)
@@ -176,8 +199,13 @@ rm -rf "$RPM_BUILD_ROOT"
 %license COPYING
 %endif
 %config(noreplace) %{_sysconfdir}/zypp/zypper.conf
+%if %{defined _distconfdir}
+%{_distconfdir}/logrotate.d/zypper.lr
+%{_distconfdir}/logrotate.d/zypp-refresh.lr
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/zypper.lr
 %config(noreplace) %{_sysconfdir}/logrotate.d/zypp-refresh.lr
+%endif
 %{_sysconfdir}/bash_completion.d/zypper.sh
 %{_bindir}/zypper
 %{_bindir}/yzpper
