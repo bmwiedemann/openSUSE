@@ -22,7 +22,7 @@
 %bcond_without vala
 %endif
 Name:           AppStream
-Version:        0.15.4
+Version:        0.15.5
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later
@@ -100,6 +100,7 @@ compile and link applications using AppStream.
 Summary:        Documentation for AppStream
 License:        GPL-2.0-or-later
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description doc
 AppStream-Core makes it easy to access application information from the
@@ -143,10 +144,8 @@ rm -r %{buildroot}%{_datadir}/installed-tests
 
 %find_lang appstream %{name}.lang
 
-%post -n libappstream%{libappstream_sover} -p /sbin/ldconfig
-%postun -n libappstream%{libappstream_sover} -p /sbin/ldconfig
-%post -n libAppStreamQt%{libAppStreamQt_sover} -p /sbin/ldconfig
-%postun -n libAppStreamQt%{libAppStreamQt_sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libappstream%{libappstream_sover}
+%ldconfig_scriptlets -n libAppStreamQt%{libAppStreamQt_sover}
 
 %files lang -f %{name}.lang
 

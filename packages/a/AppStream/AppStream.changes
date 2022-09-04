@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Sep  2 18:07:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.15.5:
+  * Features:
+    + validator:
+      - Allow severity downgrade of releases-not-in-order for GNOME
+      - Perform stricter integer validation
+      - Check for url redefinitions
+      - Validate the "internet" relation item
+      - Add validation for memory relation
+    + Implement the "replaces" tag
+    + Add convenience function that check if component is free by
+      license and origin
+    + qt: Add wrappers for AsComponent isFree/supports/replaces
+    + Always add untranslated component names to the search index
+    + Implement internet relation item
+  * Specification:
+    + spec:
+      - Specify a proper "replaces" tag
+      - Add an <internet/> kind to requires/recommends/supports
+  * Bugfixes:
+    + validator:
+      - Don't permit overriding the unknown root tag issue
+      - Distinguish translatable from not-translatable tags in
+        duplicate checks
+    + compose:
+      - Don't crash if metainfo file contains an invalid stock icon
+      - Don't synthesize components for desktop files of settings
+        apps
+    + spdx: Fix possible crash when NULL is passed to
+      is_free_license
+    + Return the correct values in as_display_length_kind_from_px()
+  * Miscellaneous:
+    + Silence static analyzer false-positives based on GCC version
+    + data: use lxml to get the XDG categories
+- Package doc sub-package as noarch.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Wed Jul  6 17:54:45 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - AppStream 0.15.4:
