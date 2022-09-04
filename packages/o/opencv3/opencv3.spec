@@ -35,7 +35,7 @@
 %bcond_without python3
 %bcond_without openblas
 Name:           opencv3
-Version:        3.4.16
+Version:        3.4.18
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
@@ -49,7 +49,6 @@ Source1:        https://github.com/opencv/opencv_contrib/archive/%{version}.tar.
 Patch0:         opencv3-pr19384-tbb2021.patch
 # PATCH-FIX-OPENSUSE opencv-build-compare.patch -- avoid republish if some random external version number changes
 Patch1:         opencv-build-compare.patch
-Patch2:         https://github.com/opencv/opencv/commit/302d14adefb98e02c2110eaa898cf04adb5564cd.patch#/gcc12-buildfixes.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
