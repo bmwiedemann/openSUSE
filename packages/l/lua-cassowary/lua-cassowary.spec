@@ -52,21 +52,11 @@ and find the values of unknown variables which satisfy those inequalities.
 %autosetup -n %{mod_name}.lua-%{version}
 
 %build
+%luarocks_build "rockspecs/%{mod_name}-%{rock_version}.rockspec"
 
 %install
-luarocks --lua-version="%{lua_version}" --tree="%{buildroot}/usr/" \
- make --deps-mode=none --no-manifest "rockspecs/%{mod_name}-%{rock_version}.rockspec"
+%luarocks_install *.rock
 
-# Seperate out documentation and licence
-mv %{buildroot}/usr/lib/luarocks/rocks-%{lua_version}/%{mod_name}/%{rock_version}/doc/LICENSE .
-mkdir -p docs
-mv %{buildroot}/usr/lib/luarocks/rocks-%{lua_version}/%{mod_name}/%{rock_version}/doc/* docs/
-rmdir %{buildroot}/usr/lib/luarocks/rocks-%{lua_version}/%{mod_name}/%{rock_version}/doc
-
-# Move pure lua modules to noarchdir
-mkdir -p %{buildroot}%{lua_noarchdir}/luarocks/rocks-%{lua_version}/%{mod_name}/%{rock_version}
-mv %{buildroot}/usr/lib/luarocks/rocks-%{lua_version}/%{mod_name}/%{rock_version}/* \
-%{buildroot}%{lua_noarchdir}/luarocks/rocks-%{lua_version}/%{mod_name}/%{rock_version}
 
 %if %{with test}
 %check
@@ -74,8 +64,9 @@ busted
 %endif
 
 %files
-%license LICENSE
-%doc docs/*
-%{lua_noarchdir}
+%{lua_noarchdir}/%{mod_name}
+%{luarocks_treedir}/%{mod_name}
+%docdir %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc
+%license %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc/LICENSE
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  2 15:15:21 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use new luarocks macros
+- Keep luarocks data in the correct place
+
+-------------------------------------------------------------------
 Sun Aug 21 03:32:01 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 - Initial commit 
