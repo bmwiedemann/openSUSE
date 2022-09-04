@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon Aug 29 15:14:50 UTC 2022 - Elisei Roca <eroca@mailbox.org>
+
+- Update to version 1.3.1 (2022-07-19)
+  * Release 1.3.1 (#2895)
+  * Requirements: pin Markdown version to <3.4 (#2893)
+  * When a Markdown extension fails to load, print its name and traceback (#2894)
+  * Italian translation for mkdocs and readthedocs themes (#2860)
+  * Docs: `site_url` is optional (#2863)
+  * Check only for uppercase README.md file (#2852)
+  * Clean up code style (#2825)
+  * Fix typo in configuration.md (#2844)
+  * Added an extra space to the readthedocs theme breadcrumbs (#2810)
+
+- update fontawesome unbundling section in spec file
+
+-------------------------------------------------------------------
+Sun Jun 12 20:09:59 UTC 2022 - Elisei Roca <eroca@mailbox.org>
+
+- update to version 1.3.0 (2022-03-26)
+  * Release 1.3.0 (#2806)
+  * Revert to disregarding the mount path for /livereload/ endpoint (#2804)
+  * Ensure that the `edit_uri` option does not modify the `repo_url` (#2733)
+  * Revert "SubConfig now catches failures and warnings (#2710)"
+  * Prevent XSS searching in builtin themes (#2791)
+  * SubConfig now catches failures and warnings (#2710)
+  * Add Persian (fa) translation to the default themes (#2787)
+  * Make Jinja2 errors and OSErrors produce a clearer message (#2801)
+  * Add --no-history option to not push parent history for gh_deploy (#2594)
+  * Bump importlib_metadata to at least 4.3 to support Python 3.10 (#2802)
+  * dev-guide: document page.file (#2763)
+  * add GitHub URL for PyPi (#2785)
+  * Compatibility with Jinja2 3.1.0 (#2800)
+  * Fix documentation error in Developing Themes (#2781)
+  * Pin MarkupSafe to <= 2.0.1 to support Jinja2 in minimum requirements (#2778)
+  * Docs: fix relative link (#2756)
+  * Fix PyPy version in MacOS CI workflow (#2755)
+  * Fix imports to get tests passing (#2751)
+  * Don't inject javascript poll script if livereload is disabled (#2742)
+  * Move livereload endpoint under the mount path (#2740)
+  * Don't define __ne__ methods, they're implicit since Py3 (#2735)
+  * Declare support for Python 3.10 (#2617)
+  * Don't import unused commands (#2714)
+  * Reuse Jinja2 `tojson` builtin filter (#2713)
+  * Drop needless assert from `FilesystemObject` config option (#2712)
+  * Update ja translation for readthedocs theme (#2708)
+  * Update brazilian portuguese translation for readthedocs Theme (#2705)
+  * Update readthedocs theme French translation (#2699)
+  * Update Spanish translation for Readthedocs theme (#2698)
+  * Allow CI to run when pushing to a branch (#2439)
+  * Turn the deprecated 'pages' config into an error on use (#2652)
+  * Recursively validate `Nav` config option types (#2680)
+  * Provide german locale file for readthedocs theme (#2633)
+  * zh_CN: Update the translation of readthedocs (#2673)
+  * Support custom directories to watch when running mkdocs serve (#2642)
+  * Upgrade readthedocs theme to v1.0.0 (#2585)
+  * Remove duplicated sentences in docs/deploying (#2667)
+  * Add latest members of MkDocs maintenance team (#2661)
+  * Fix typo (#2663)
+  * Fix typo `mkdocs-theme.yml` (`mkdocs_theme.yml`) (#2654)
+  * Modernize usages of assertRaises in tests (#2653)
+  * Remove line length limit from Markdown documents (#2626)
+  * Fix mistake in docs about nav configuration (#2636)
+  * Update codebase to Python >= 3.6 (#2612)
+  * Rewrite `test_build_page_empty` test (#2613)
+  * Refactor `Nav` config option (#2622)
+
+- changes in version 1.2.4 (2022-03-26)
+  * Release 1.2.4 (#2805)
+  * Compatibility with Jinja2 3.1.0 (#2800)
+
+-------------------------------------------------------------------
 Thu Nov 17 20:32:38 UTC 2021 - Elisei Roca <eroca@mailbox.org>
 
 - do not build for python2; mkdocs is python3-only since 1.1

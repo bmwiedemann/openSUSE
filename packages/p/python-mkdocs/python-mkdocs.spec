@@ -1,7 +1,7 @@
 #
 # spec file for package python-mkdocs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mkdocs
-Version:        1.2.3
+Version:        1.3.1
 Release:        0
 Summary:        Project documentation with Markdown
 License:        BSD-2-Clause
@@ -79,16 +79,16 @@ find . -type f -name "*.svg" -exec chmod -x {} +
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/mkdocs
 
-# unbundle where possible
+# unbundle fontawesome where possible
 %if 0%{?suse_version} <= 1500
-rm %{buildroot}%{python_sitelib}/mkdocs/themes/mkdocs/fonts/fontawesome-webfont.woff
-ln -sf %{_datadir}/fonts/truetype/fontawesome-webfont.woff %{buildroot}%{python_sitelib}/mkdocs/themes/mkdocs/fonts/fontawesome-webfont.woff
-rm %{buildroot}%{python_sitelib}/mkdocs/themes/mkdocs/fonts/fontawesome-webfont.svg
-ln -sf %{_datadir}/font-awesome-web/fontawesome-webfont.svg %{buildroot}%{python_sitelib}/mkdocs/themes/mkdocs/fonts/fontawesome-webfont.svg
-rm %{buildroot}%{python_sitelib}/mkdocs/themes/readthedocs/fonts/fontawesome-webfont.svg
-ln -sf %{_datadir}/font-awesome-web/fontawesome-webfont.svg %{buildroot}%{python_sitelib}/mkdocs/themes/readthedocs/fonts/fontawesome-webfont.svg
-rm %{buildroot}%{python_sitelib}/mkdocs/themes/readthedocs/fonts/fontawesome-webfont.ttf
-ln -sf %{_datadir}/fonts/truetype/fontawesome-webfont.ttf %{buildroot}%{python_sitelib}/mkdocs/themes/readthedocs/fonts/fontawesome-webfont.ttf
+rm %{buildroot}%{python_sitelib}/mkdocs/themes/mkdocs/css/font-awesome.min.css
+ln -sf %{_datadir}/fontawesome-web/css/fontawesome.min.css %{buildroot}%{python_sitelib}/mkdocs/themes/mkdocs/css/font-awesome.min.css
+for filetype in eot svg ttf woff woff2; do
+  rm %{buildroot}%{python_sitelib}/mkdocs/themes/mkdocs/fonts/fontawesome-webfont.$filetype
+  ln -sf %{_datadir}/fontawesome-web/webfonts/fa-regular-400.$filetype %{buildroot}%{python_sitelib}/mkdocs/themes/mkdocs/fonts/fontawesome-webfont.$filetype
+  rm %{buildroot}%{python_sitelib}/mkdocs/themes/readthedocs/css/fonts/fontawesome-webfont.$filetype
+  ln -sf %{_datadir}/fontawesome-web/webfonts/fa-regular-400.$filetype %{buildroot}%{python_sitelib}/mkdocs/themes/readthedocs/fonts/fontawesome-webfont.$filetype
+done
 %endif
 
 # inconsistent permissions prohibited fdupes from being effective
