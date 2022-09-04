@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 26 01:04:09 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix compatibility with LLVM >= 14.0, add
+  0001-Fix-compatibility-with-LLVM-14.patch
+
+-------------------------------------------------------------------
 Sun Apr 24 17:13:32 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Fix build by requiring llvm and clang 12 versions

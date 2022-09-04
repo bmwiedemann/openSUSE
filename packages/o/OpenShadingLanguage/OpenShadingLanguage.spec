@@ -31,23 +31,19 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
 Source0:        https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://creativecommons.org/licenses/by/3.0/legalcode.txt#/CC-BY-3.0.txt
+# PATCH-FIX-UPSTREAM - Extracted from https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/pull/1492
+Patch0:         0001-Fix-compatibility-with-LLVM-14.patch
 BuildRequires:  OpenEXR-devel
 BuildRequires:  OpenImageIO
 BuildRequires:  bison
-%if 0%{suse_version} > 1500
-# llvm 13 removed some interfaces
-BuildRequires:  clang12-devel
-BuildRequires:  llvm12-devel
-%else
 BuildRequires:  clang-devel > 7
-BuildRequires:  llvm-devel > 7
-%endif
 BuildRequires:  cmake >= 3.12
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
+BuildRequires:  llvm-devel > 7
 %ifnarch %{arm}
 # Build fails with partio on armv7/armv6
 BuildRequires:  partio-devel
