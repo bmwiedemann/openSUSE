@@ -474,4 +474,24 @@
   * fix: upgrade defsec to v0.71.7 for elb scan panic (#2720)</comment>
     <requestid>997437</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>75c948547a7345f2858e59fbd192b6f0</srcmd5>
+    <version>0.31.3</version>
+    <time>1662405737</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.31.3:
+  * fix: handle empty OS family (#2768)
+  * fix: fix k8s summary report (#2777)
+  * fix: don't skip packages that don't contain vulns, when using --list-all-pkgs flag (#2767)
+  * chore: bump trivy-kubernetes (#2770)
+  * fix(secret): Consider secrets in rpc calls (#2753)
+  * fix(java): check depManagement from upper pom's (#2747)
+  * fix(php): skip `composer.lock` inside `vendor` folder (#2718)
+  * fix: fix k8s rbac filter (#2765)
+  * feat(misconf): skipping misconfigurations by AVD ID (#2743)
+  * chore(deps): Upgrade Alpine to 3.16.2 to fix zlib issue (#2741)
+  * docs: add MacPorts install instructions (#2727)
+  * docs: typo (#2730)</comment>
+    <requestid>1001263</requestid>
+  </revision>
 </revisionlist>
