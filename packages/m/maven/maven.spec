@@ -341,8 +341,6 @@ build-jar-repository -p %{buildroot}%{homedir}/boot \
 
 xmvn-subst -R %{buildroot} -s %{buildroot}%{homedir}
 
-install -p -m 644 %{SOURCE2} %{buildroot}%{homedir}/bin/
-gzip -9 %{buildroot}%{homedir}/bin/mvn.1
 install -p -m 644 %{SOURCE1} %{buildroot}%{_datadir}/bash-completion/completions/mvn%{?maven_version_suffix}
 mv %{buildroot}%{homedir}/bin/m2.conf %{buildroot}%{_sysconfdir}/m2%{?maven_version_suffix}.conf
 ln -sf %{_sysconfdir}/m2%{?maven_version_suffix}.conf %{buildroot}%{homedir}/bin/m2.conf
@@ -355,7 +353,7 @@ install -d -m 0755 %{buildroot}%{_bindir}
 ln -sf %{homedir}/bin/mvn %{buildroot}%{_bindir}/
 ln -sf %{homedir}/bin/mvnDebug %{buildroot}%{_bindir}/
 install -d -m 755 %{buildroot}%{_mandir}/man1/
-ln -sf %{homedir}/bin/mvn.1.gz %{buildroot}%{_mandir}/man1/
+install -p -m 644 %{SOURCE2} %{buildroot}%{_mandir}/man1/
 
 %files lib -f .mfiles
 %doc README.md

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 29 08:50:39 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Move mvn.1 from bin to man directory
+
+-------------------------------------------------------------------
 Mon Jul 25 12:13:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.8.6

@@ -103,4 +103,12 @@
     <comment>upgrade + misc. sec. issue</comment>
     <requestid>991028</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3caf02f02f9ac66543449f48c4839e14</srcmd5>
+    <version>3.8.6</version>
+    <time>1662405736</time>
+    <user>dimstar_suse</user>
+    <comment>manpages position fix</comment>
+    <requestid>1001264</requestid>
+  </revision>
 </revisionlist>
