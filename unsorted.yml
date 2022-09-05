@@ -3106,6 +3106,7 @@ unsorted:
   - dracut-kiwi-overlay 
   - dracut-sshd 
   - dracut-tools 
+  - dragonbox-devel 
   - drawing 
   - drawing-lang 
   - drbd-formula 
@@ -12840,7 +12841,6 @@ unsorted:
   - libopenssl1_0_0-steam 
   - libopenssl1_0_0-steam-32bit: [x86_64] 
   - libopenssl1_1-hmac-32bit: [x86_64] 
-  - libopenssl3 
   - libopenssl3-32bit: [x86_64] 
   - libopentracing-cpp1 
   - libopenvas_wincmd-devel 
@@ -13580,7 +13580,7 @@ unsorted:
   - librealsense 
   - librealsense-devel 
   - librealsense-examples 
-  - librealsense2_50 
+  - librealsense2_51 
   - librecad 
   - librecad-parts 
   - librecode3 
