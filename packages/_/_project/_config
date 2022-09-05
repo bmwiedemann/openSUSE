@@ -65,7 +65,8 @@ Macros:
   BuildFlags: logidlelimit:5400
 %endif
 
-%if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:NonFree" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:Live" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:Rings" || "%_project" == "openSUSE:Factory:Rings:0-Bootstrap" || "%_project" == "openSUSE:Factory:Rings:1-MinimalX" || "%_project" == "openSUSE:Factory:Rings:2-TestDVD" || "%_project" == "openSUSE:Factory:Containers"
+%if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:NonFree" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:Live" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:Rings" || "%_project" == "openSUSE:Factory:Rings:0-Bootstrap" || "%_project" == "openSUSE:Factory:Rings:1-MinimalX" || "%_project" == "openSUSE:Factory:Containers" || "%_project" == "openSUSE:Factory:RISCV" || "%_project" == "openSUSE:Factory:zSystems"
+BuildFlags: excludebuild:openh264
 Macros:
 %vendor openSUSE
 %distribution openSUSE Tumbleweed
