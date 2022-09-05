@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  5 08:55:51 UTC 2022 - Robert Frohl <rfrohl@suse.com>
+
+- update to 1.1.2
+  * Fixed
+    - Polkit: Always allow getParameter/listDevices/listRules in active sessions
+    - D-Bus: Send reply on auth failure
+    - Polkit: Unreference PolkitAuthorizationResult and PolkitAuthority structs if needed
+
+-------------------------------------------------------------------
 Tue Apr  5 12:26:09 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - When running autoreconf, do it complete so that it does not trip

@@ -19,7 +19,7 @@
 %global _hardened_build 1
 %define lname libusbguard1
 Name:           usbguard
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        A tool for implementing USB device usage policy
 ## Not installed
