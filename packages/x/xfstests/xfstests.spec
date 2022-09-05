@@ -1,7 +1,7 @@
 #
 # spec file for package xfstests
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,9 @@
 %define need_dmapi 1
 %endif
 
-%define version_unconverted 1.1.1+git.20211203
+%define version_unconverted 1.1.1+git.20220820
 Name:           xfstests
-Version:        1.1.1+git.20211203
+Version:        1.1.1+git.20220820
 Release:        0
 Summary:        Filesystem regression test suite
 License:        GPL-2.0-or-later

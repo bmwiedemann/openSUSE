@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>936061</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>57feecefd27b03b0fb9d6572cb4efa90</srcmd5>
+    <version>1.1.1+git.20220820</version>
+    <time>1662405729</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1+git.20220820: (forwarded request 1001251 from dsterba)</comment>
+    <requestid>1001253</requestid>
+  </revision>
 </revisionlist>
