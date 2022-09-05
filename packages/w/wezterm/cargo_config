@@ -1,11 +1,6 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."https://github.com/khvzak/mlua"]
-git = "https://github.com/khvzak/mlua"
-branch = "master"
-replace-with = "vendored-sources"
-
 [source."https://github.com/wez/libssh-rs.git"]
 git = "https://github.com/wez/libssh-rs.git"
 replace-with = "vendored-sources"

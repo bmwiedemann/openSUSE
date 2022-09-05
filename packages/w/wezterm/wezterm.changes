@@ -1,5 +1,85 @@
 -------------------------------------------------------------------
-Sat Aug 20 06:20:08 UTC 2022 - socvirnyl.estela@gmail.com
+Mon Aug 29 06:43:55 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220807.113146.c2fee766+git109:
+  * deps: tiny-skia 0.7 -> 0.8
+  * cargo update
+  * Adjust render caching; switch to LFU caches from LRU
+
+-------------------------------------------------------------------
+Sun Aug 28 00:34:09 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 20220807.113146.c2fee766+git106:
+  * add user-var-changed event
+  * improve error message in case wezterm-gui cannot be run
+  * fixup invalidation of blinking cursor, and on focus change
+  * cargo fmt
+  * track fps and recent frame duration for diagnostic purposes
+  * invalidate shape cache when reverse video mode changes
+  * Add some comments about new Pane methods and helpers
+  * flesh out some todos with new pane trait methods
+  * implement new pane trait methods for copy and quickselect overlays
+  * move shape & quad caching to hang off Line appdata
+  * revise Pane line related funcs
+  * termwiz: use interior mutability for Line::set_appdata
+  * cargo fmt
+  * disable some of the recent caching stuff
+  * termwiz: remove reverse video attribute from Line
+  * mux: remove stale portion of comment from Pane::get_lines
+  * termwiz: associate appdata with a Line
+  * fix copymode and quickselect overlays
+  * trim down lru cache sizes
+  * allow cursor_fg = "none" to use text fg color
+  * gui: cache get_lines_with_hyperlinks_applied
+  * optimize Pane::get_lines_with_hyperlinks_applied for empty rules case
+  * gui: factor out background rect calc
+  * fix blinking text
+  * fixup retro tab bar
+  * macos: make us run again on Mojave
+  * docs: mention CPU utilization improvements in changelog
+  * ssh: correctly expand %h tokens in ssh config
+  * scroll to bottom on mouse input when mouse is grabbed
+  * Avoid full path canonicalization when resolving cwd
+  * Add official dracula color scheme
+  * add focus state to cache key
+  * treat Constant ease-in-and-out as equivalent to "1 fps" case
+  * improve blink easing scheduling
+  * perf: cache quads by line
+  * Abstract quad and layer allocation
+  * add cheaper to cache shape info
+  * start building out box model based render of pane
+  * revise how uniforms are passed to shader
+  * cargo update
+  * conpty: work around mangled tmux title sequence
+  * Add Sequoia color schemes
+  * docs: changelog for max_fps https://github.com/wez/wezterm/discussions/2419
+  * compensate for flickery TUI programs by going slower(!)
+  * add pane select screenshot to appstream data
+  * docs: fix typo
+  * docs: CopyMode assignments now have their own individual pages
+  * docs: changelog for https://github.com/wez/wezterm/issues/2350
+  * respect close confirmation prompt when middle clicking a tab
+  * deps: update zbus
+  * cargo update
+  * Add `fig` to shells for shell completion
+  * macos: fixup CI build
+  * macos: NSScreen::maximumFramesPerSecond is newish
+  * docs: changelog for https://github.com/wez/wezterm/issues/2399
+  * tab bar: force x and + buttons to be square
+  * win32: implement max_fps option
+  * win32: set ScreenInfo::max_fps
+  * docs: fix link
+  * add border size and color config
+  * colors now override color_scheme
+  * gui-startup event now also works for `wezterm ssh`.
+  * fixup boundary condition for MoveBackwardZoneOfType
+  * Fixup ActivatePaneDirection to respect edge intersection
+  * x11: populate ScreenInfo::max_fps from xrandr
+  * docs: changelog for https://github.com/wez/wezterm/pull/2402
+  * Cache xdg-desktop-portal appearance
+
+-------------------------------------------------------------------
+Sat Aug 20 06:20:08 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 20220807.113146.c2fee766+git39:
   * macos: report max_fps in ScreenInfo
@@ -348,7 +428,7 @@ Thu Jun 23 14:49:14 UTC 2022 - socvirnyl.estela@gmail.com
   * github hyperlink example
 
 -------------------------------------------------------------------
-Thu Jun 16 13:04:52 UTC 2022 - socvirnyl.estela@gmail.com
+Thu Jun 16 13:04:52 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 20220408.101518.b908e2dd^git356:
   * macos: use shift-tab hack with ctrl-shift-tab as well
@@ -367,7 +447,7 @@ Thu Jun 16 13:04:52 UTC 2022 - socvirnyl.estela@gmail.com
   * make enable_wayland = true the default
 
 -------------------------------------------------------------------
-Tue Jun 14 14:41:05 UTC 2022 - socvirnyl.estela@gmail.com
+Tue Jun 14 14:41:05 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - add completions for bash, fish, and zsh
 
@@ -388,7 +468,7 @@ Tue Jun 14 14:41:05 UTC 2022 - socvirnyl.estela@gmail.com
   * fonts: fix automatic bold synthesis
 
 -------------------------------------------------------------------
-Sat Jun 04 23:15:57 UTC 2022 - socvirnyl.estela@gmail.com
+Sat Jun 04 23:15:57 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 20220408.101518.b908e2dd^git328:
   * x11: more hacks to deal with missing CONFIGURE_NOTIFY
@@ -419,7 +499,7 @@ Wed Jun  1 06:12:16 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
   * Use clap::derive::Parser::parse() to fix deprecated warning
 
 -------------------------------------------------------------------
-Sat May 21 04:07:29 UTC 2022 - socvirnyl.estela@gmail.com
+Sat May 21 04:07:29 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 20220408.101518.b908e2dd~232:
   * dynamic: allow defaulting to None for enum struct fields

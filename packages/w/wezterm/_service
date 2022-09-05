@@ -3,7 +3,7 @@
     <param name="url">https://github.com/wez/wezterm.git</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">4fead3171ecdd1513d420af040c9ff75b9cefe41</param>
+    <param name="revision">b9d0843b710cecc08c27c36064fa19a47fea650a</param>
     <param name="versionrewrite-pattern">(\d+)-(\d+)-(\w+)</param>
     <param name="versionrewrite-replacement">\1.\2.\3</param>
     <param name="changesgenerate">enable</param>
