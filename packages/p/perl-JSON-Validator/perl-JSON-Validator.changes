@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 31 03:07:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.11
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  5.11 2022-08-30T15:41:16+0900
+   - Fix sorting routes with placeholders on different positions
+
+-------------------------------------------------------------------
 Fri Aug 19 03:07:53 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.10
