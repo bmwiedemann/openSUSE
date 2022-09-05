@@ -42,6 +42,7 @@ SDL applications.
 %package -n %lname
 Summary:        Simple DirectMedia Layer 2 Truetype library
 Group:          System/Libraries
+Provides:       SDL2_ttf = %version
 
 %description -n %lname
 This is a sample library that allows you to use TrueType fonts in your

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  5 07:44:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add back Provides: SDL2_ttf = %version to library package: the
+  python bindings somewhat rely on the name to find the right
+  library.
+
+-------------------------------------------------------------------
 Sat Aug 20 08:13:36 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.20.1

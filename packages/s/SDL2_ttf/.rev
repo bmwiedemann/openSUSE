@@ -70,4 +70,12 @@
     <comment>- Update to release 2.20.1</comment>
     <requestid>998299</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>3b3708b643ec97cb1fcdb5b4265b4c3c</srcmd5>
+    <version>2.20.1</version>
+    <time>1662405721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001215</requestid>
+  </revision>
 </revisionlist>
