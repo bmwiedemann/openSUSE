@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep  3 11:24:50 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- msgpack-devel has split into c and cxx variants,
+  update BuildRequires accordingly.
+
+-------------------------------------------------------------------
 Wed Jun 29 11:21:18 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.7.2

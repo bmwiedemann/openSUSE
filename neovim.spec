@@ -63,7 +63,7 @@ BuildRequires:  libuv-devel
 BuildRequires:  libvterm-devel >= 0.1
 BuildRequires:  lua-macros
 BuildRequires:  make
-BuildRequires:  msgpack-devel
+BuildRequires:  msgpack-c-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  tree-sitter-devel
