@@ -16,9 +16,9 @@
 #
 
 
-%define libver 2_50
+%define libver 2_51
 Name:           librealsense
-Version:        2.50.0
+Version:        2.51.1
 Release:        0
 Summary:        Library for Intel RealSense depth cameras
 License:        Apache-2.0
@@ -76,6 +76,7 @@ Examples from the librealsense library.
 %define __builder ninja
 # there is a *lot* of those warnings
 export CXXFLAGS='%optflags -Wno-reorder -Wno-unused-variable -Wno-sign-compare -Wno-unknown-pragmas'
+sed -i "s/‘\|\’/\'/g" %{_builddir}/%{name}-%{version}/src/libusb/libusb.h
 %cmake \
 	-DOpenGL_GL_PREFERENCE=GLVND \
 	-DCHECK_FOR_UPDATES=OFF
