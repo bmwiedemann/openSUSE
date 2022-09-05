@@ -32,12 +32,17 @@ BuildRequires:  gettext
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
-BuildRequires:  python3-devel
+BuildRequires:  python3-cairo
+BuildRequires:  python3-configobj
+BuildRequires:  python3-gobject-Gdk
+BuildRequires:  python3-psutil
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
+BuildRequires:  typelib(Vte)
 Requires:       python3-cairo
 Requires:       python3-configobj
+Requires:       python3-dbus-python
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-psutil
@@ -78,6 +83,10 @@ desktop-file-install --vendor="" --dir=%{buildroot}%{_datadir}/applications data
 %fdupes %{buildroot}
 %find_lang %{name}
 
+%check
+# All but one test in test_prefseditor_keybindings.py causes segfault
+python3 -m pytest -k 'not (test_message_dialog_is_shown_on_duplicate_accel_assignment or test_duplicate_accels_not_possible_to_set or test_keybinding_edit_produce_expected_accels or test_keybinding_successfully_reassigned_after_clearing)' tests/
+
 %files
 %license COPYING
 %dir %{_datadir}/icons/HighContrast
@@ -99,7 +108,8 @@ desktop-file-install --vendor="" --dir=%{buildroot}%{_datadir}/applications data
 %{_bindir}/remotinator
 %{_mandir}/man1/%{name}.*
 %{_mandir}/man5/%{name}_config.*
-%{python3_sitelib}/*
+%{python3_sitelib}/terminatorlib/
+%{python3_sitelib}/terminator-*.egg-info
 %{_datadir}/metainfo/%{name}.metainfo.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/*/%{name}*.png
