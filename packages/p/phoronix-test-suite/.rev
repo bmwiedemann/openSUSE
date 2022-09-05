@@ -103,4 +103,31 @@
     <comment></comment>
     <requestid>926881</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>300718f0076931353e09ce2ed0a4c76b</srcmd5>
+    <version>10.8.4</version>
+    <time>1662405728</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ownership of man1 folder.
+
+- Update to version 10.8.4:
+  * pts-core: Allow sub-folders within PTS_EXTRA_SYSTEM_LOGS_DIR when uploading to Phoromatic server
+  * pts-core: Fix TOTAL_LOOP_TIME handling
+  * pts-core: openSUSE external dependency handling fixes
+  * phodevi: Support for reporting video BIOS version
+  * phodevi: Budgie desktop version detection
+  * phodevi: Avoid deprecated wmic usage on Windows
+  * phoromatic: Input sanitization updates in the result viewer
+- Add fix-shebang.patch that fixes a bad shebang.
+- Use autosetup.
+
+- version update to 10.8.2
+  * Fix CVE-2022-0157: Improper Neutralization of Input During Web
+    Page Generation ('Cross-site Scripting')
+  * Fix CVE-2022-0196, CVE-2022-0197, CVE-2022-0238:
+    Cross-Site Request Forgery
+  * Fix CVE-2022-0571: Cross-site Scripting (XSS)
+  * For detailed list of changes see ChangeLog</comment>
+    <requestid>1001260</requestid>
+  </revision>
 </revisionlist>

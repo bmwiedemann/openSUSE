@@ -1,7 +1,7 @@
 #
 # spec file for package phoronix-test-suite
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           phoronix-test-suite
-Version:        10.4.0
+Version:        10.8.4
 Release:        0
 Summary:        Comprehensive test and benchmarking platform
 License:        GPL-3.0-only
 Group:          System/Benchmark
 URL:            http://www.phoronix-test-suite.com/
 Source0:        https://phoronix-test-suite.com/releases/phoronix-test-suite-%{version}.tar.gz
-Patch0:	harden_phoromatic-client.service.patch
-Patch1:	harden_phoromatic-server.service.patch
-Patch2:	harden_phoronix-result-server.service.patch
+Patch0:         harden_phoromatic-client.service.patch
+Patch1:         harden_phoromatic-server.service.patch
+Patch2:         harden_phoronix-result-server.service.patch
+Patch3:         fix-shebang.patch
 # https://github.com/phoronix-test-suite/phoronix-test-suite/issues/505 [bsc#1175508]
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -59,11 +60,8 @@ computer hardware vendors. The Phoronix Test Suite ships with over 50
 tests and 20 suites.
 
 %prep
-%setup -q -n %{name}
+%autosetup -p1 -n %{name}
 find ob-cache -type f -name *.sh -exec chmod +x {} \;
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 
@@ -107,7 +105,7 @@ rm  %{buildroot}%{_datadir}/%{name}/pts-core/external-test-dependencies/scripts/
 %license COPYING
 %doc AUTHORS ChangeLog README.md
 %doc %{_datadir}/doc/%{name}
-%{_mandir}/man1/%{name}.1.gz
+%doc %{_mandir}/man1/%{name}.1.gz
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/applications/*
