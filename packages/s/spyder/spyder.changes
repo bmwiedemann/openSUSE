@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 31 10:48:32 UTC 2022 - andy great <andythe_great@pm.me>
+
+- Update to 5.3.3.
+  * New features
+    * Printing files now uses a light syntax highlighting theme to
+      prevent printing files with dark backgrounds.
+  * Important fixes
+    * Fix several bugs related with the Layout plugin
+      (save visible plugins to restore their visiility and tabify
+      behavior for external plugins).
+    * Fix several bugs related with the focus management between
+      the Editor and other panes.
+    * Improve Find and Replace speed on the Editor.
+
+-------------------------------------------------------------------
 Sat Jul 23 10:02:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.3.2

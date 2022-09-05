@@ -21,7 +21,7 @@
 # your live system before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        5.3.2
+Version:        5.3.3
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -79,8 +79,8 @@ Requires:       python3-yapf
 Requires:       (python3-QDarkStyle >= 3.0.2 with python3-QDarkStyle < 3.1.0)
 Requires:       (python3-pylint >= 2.5.0 with python3-pylint < 3)
 Requires:       (python3-python-lsp-server >= 1.5.0 with python3-python-lsp-server < 1.6)
-Requires:       (python3-qtconsole >= 5.3.0 with python3-qtconsole < 5.4.0)
-Requires:       (python3-spyder-kernels >= 2.3.2 with python3-spyder-kernels < 2.4.0)
+Requires:       (python3-qtconsole >= 5.3.2 with python3-qtconsole < 5.4.0)
+Requires:       (python3-spyder-kernels >= 2.3.3 with python3-spyder-kernels < 2.4.0)
 Recommends:     %{name}-dicom
 Recommends:     %{name}-hdf5
 Recommends:     python3-Cython >= 0.21
@@ -173,8 +173,8 @@ BuildRequires:  xvfb-run
 BuildRequires:  (python3-QDarkStyle >= 3.0.2 with python3-QDarkStyle < 3.1.0)
 BuildRequires:  (python3-pylint >= 2.5.0 with python3-pylint < 3)
 BuildRequires:  (python3-python-lsp-server >= 1.5 with python3-python-lsp-server < 1.6)
-BuildRequires:  (python3-qtconsole >= 5.3.0 with python3-qtconsole < 5.4.0)
-BuildRequires:  (python3-spyder-kernels >= 2.3.2 with python3-spyder-kernels < 2.4.0)
+BuildRequires:  (python3-qtconsole >= 5.3.2 with python3-qtconsole < 5.4.0)
+BuildRequires:  (python3-spyder-kernels >= 2.3.3 with python3-spyder-kernels < 2.4.0)
 # /SECTION
 
 %description
@@ -415,7 +415,7 @@ xvfb-run --server-args "-screen 0 1920x1080x24" bash runtests.sh
 %{_bindir}/spyder
 %{_datadir}/applications/spyder.desktop
 %{python3_sitelib}/spyder/
-%{python3_sitelib}/spyder-%{version}-py*.egg-info
+%{python3_sitelib}/spyder-%{version}*-info
 %exclude %{python3_sitelib}/spyder/locale/
 %exclude %{python3_sitelib}/spyder/plugins/io_dcm/
 %exclude %{python3_sitelib}/spyder/plugins/io_hdf5/
