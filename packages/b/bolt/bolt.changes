@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 24 06:07:41 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.9.3:
+  * Work around a glib fix that changed behavior of the log API where now
+    calling `g_log_set_writer_func` results in an hard error, which broke
+    the test suite since aforementioned function was indeed called more
+    than once. Nothing a level of indirection couldn't fix.
+
+-------------------------------------------------------------------
 Fri Jan 28 08:53:51 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.9.2
