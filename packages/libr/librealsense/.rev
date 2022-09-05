@@ -74,4 +74,14 @@ D435.</comment>
   expected package suffix: 2_44&quot;</comment>
     <requestid>973447</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>65d036fdf1109fc0c053d2bd92875775</srcmd5>
+    <version>2.51.1</version>
+    <time>1662405700</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.51.1
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.51.1</comment>
+    <requestid>1001165</requestid>
+  </revision>
 </revisionlist>
