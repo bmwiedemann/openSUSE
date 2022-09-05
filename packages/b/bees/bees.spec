@@ -1,7 +1,7 @@
 #
 # spec file for package bees
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          System/Filesystems
 URL:            https://github.com/Zygo/bees
 Source:         https://github.com/Zygo/bees/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         fix-Makefile-version.diff
+Patch2:         0001-fs-fix-FIEMAP_MAX_OFFSET-type-silliness-in-fiemap.h.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libbtrfs-devel
 BuildRequires:  libuuid-devel
@@ -50,6 +51,7 @@ Hilights:
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 
 %build
 cat >localconf <<-EOF

@@ -15,4 +15,12 @@
     <comment>- Update to 0.7 (forwarded request 923546 from dsterba)</comment>
     <requestid>923550</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bb01363c0738302b83735988bade9d1f</srcmd5>
+    <version>0.7</version>
+    <time>1662405735</time>
+    <user>dimstar_suse</user>
+    <comment>fix build on ppc64le (forwarded request 1001258 from dsterba)</comment>
+    <requestid>1001259</requestid>
+  </revision>
 </revisionlist>

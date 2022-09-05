@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  5 00:00:00 CEST 2022 - dsterba@suse.cz
+
+- Added patch: 0001-fs-fix-FIEMAP_MAX_OFFSET-type-silliness-in-fiemap.h.patch
+  (fix build on ppc64le)
+
+-------------------------------------------------------------------
 Wed Oct  6 00:00:00 CEST 2021 - dsterba@suse.cz
 
 - Update to 0.7
