@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep  2 13:15:29 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.2:
+  Bug Fixes:
+  * FIXED: Could not change language in portable mode
+  * FIXED: Crashed during paste from context menu
+  * FIXED: First line indent was lost on empty paragraphs
+  Code Improvements:
+  * Always write RTF as Latin1
+  * Replaced ICU with iconv
+  * Improved Linux deployment
+  Translation Updates:
+  * German, Korean, Portuguese (Brazil), Russian, Swedish
+
+-------------------------------------------------------------------
 Mon Jul 11 08:14:29 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.1:

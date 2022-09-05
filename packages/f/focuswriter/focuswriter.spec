@@ -18,13 +18,13 @@
 
 
 Name:           focuswriter
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        A fullscreen, distraction-free writing program
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Word Processor
 URL:            https://gottcode.org/focuswriter
-Source:         http://gottcode.org/focuswriter/%{name}-%{version}-src.tar.bz2
+Source:         http://gottcode.org/focuswriter/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -48,8 +48,8 @@ BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(zlib)
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
+Requires(postun):hicolor-icon-theme
+Requires(postun):update-desktop-files
 Recommends:     %{name}-lang
 
 %description
