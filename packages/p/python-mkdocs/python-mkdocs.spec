@@ -80,16 +80,20 @@ find . -type f -name "*.svg" -exec chmod -x {} +
 %python_clone -a %{buildroot}%{_bindir}/mkdocs
 
 # unbundle fontawesome where possible
-%if 0%{?suse_version} <= 1500
-rm %{buildroot}%{python_sitelib}/mkdocs/themes/mkdocs/css/font-awesome.min.css
-ln -sf %{_datadir}/fontawesome-web/css/fontawesome.min.css %{buildroot}%{python_sitelib}/mkdocs/themes/mkdocs/css/font-awesome.min.css
+if [ -f %{buildroot}%{python_sitelib}/mkdocs/themes/mkdocs/css/font-awesome.min.css ]; then
+  if [ -f %{_datadir}/fontawesome-web/css/fontawesome.min.css ]; then
+    rm %{buildroot}%{python_sitelib}/mkdocs/themes/mkdocs/css/font-awesome.min.css
+    ln -sf %{_datadir}/fontawesome-web/css/fontawesome.min.css %{buildroot}%{python_sitelib}/mkdocs/themes/mkdocs/css/font-awesome.min.css
+  fi
+fi
 for filetype in eot svg ttf woff woff2; do
-  rm %{buildroot}%{python_sitelib}/mkdocs/themes/mkdocs/fonts/fontawesome-webfont.$filetype
-  ln -sf %{_datadir}/fontawesome-web/webfonts/fa-regular-400.$filetype %{buildroot}%{python_sitelib}/mkdocs/themes/mkdocs/fonts/fontawesome-webfont.$filetype
-  rm %{buildroot}%{python_sitelib}/mkdocs/themes/readthedocs/css/fonts/fontawesome-webfont.$filetype
-  ln -sf %{_datadir}/fontawesome-web/webfonts/fa-regular-400.$filetype %{buildroot}%{python_sitelib}/mkdocs/themes/readthedocs/fonts/fontawesome-webfont.$filetype
+  for theme in mkdocs readthedocs; do
+    [ -f %{_datadir}/fontawesome-web/webfonts/fa-regular-400.$filetype ] || continue
+    [ -f %{buildroot}%{python_sitelib}/mkdocs/themes/$theme/fonts/fontawesome-webfont.$filetype ] || continue
+    rm %{buildroot}%{python_sitelib}/mkdocs/themes/$theme/fonts/fontawesome-webfont.$filetype
+    ln -sf %{_datadir}/fontawesome-web/webfonts/fa-regular-400.$filetype %{buildroot}%{python_sitelib}/mkdocs/themes/$theme/fonts/fontawesome-webfont.$filetype
+  done
 done
-%endif
 
 # inconsistent permissions prohibited fdupes from being effective
 find "%{buildroot}" -type f "(" -name "*.eot" -o -name "*.ttf" -o \
