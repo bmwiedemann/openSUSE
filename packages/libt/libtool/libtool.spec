@@ -38,6 +38,8 @@ Source4:        libtool-rpmlintrc
 Patch0:         libtool-reproducible-hostname.patch
 # PATCH-FIX-OPENSUSE: workaround irrelevant compiler warning
 Patch1:         handle-Werror-return-type.patch
+# PATCH-FIX-OPENSUSE -- fix tests with GNU grep 3.8 boo#1203097
+Patch2:         libtool-2.4.7-grep-3.8.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran

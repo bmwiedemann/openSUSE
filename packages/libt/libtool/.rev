@@ -491,4 +491,12 @@ insprired by a patch in https://bugs.debian.org/819767 (forwarded request 605522
   - Removed some deprecated tests related to 'Makefile.inc' files.</comment>
     <requestid>965668</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>672223a2ba5a1fe7b6e1d01f5643c58e</srcmd5>
+    <version>2.4.7</version>
+    <time>1662405693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001204</requestid>
+  </revision>
 </revisionlist>

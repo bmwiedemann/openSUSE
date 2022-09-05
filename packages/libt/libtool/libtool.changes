@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep  4 19:47:46 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- allow tests to pass with GNU grep 3.8 boo#1203097
+  add libtool-2.4.7-grep-3.8.patch
+
+-------------------------------------------------------------------
 Tue Mar 29 13:46:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add handle-Werror-return-type.patch
