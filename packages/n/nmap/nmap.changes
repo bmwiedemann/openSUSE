@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep  5 08:53:23 UTC 2022 - Robert Frohl <rfrohl@suse.com>
+
+- Update to 7.93:
+  * This release commemorates Nmap's 25th anniversary! It all started with this September 1, 1997 Phrack article by Fyodor: https://nmap.org/p51-11.html.
+  * Ensure Nmap builds with OpenSSL 3.0 using no deprecated API functions. Binaries for this release include OpenSSL 3.0.5.
+  * Upgrade included libraries: libssh2 1.10.0, zlib 1.2.12, Lua 5.3.6, libpcap 1.10.1
+  * Fix a bug that prevented Nmap from discovering interfaces on Linux when no IPv4 addresses were configured.
+  * NSE "exception handling" with nmap.new_try() will no longer result in a stack traceback in debug output
+  * Update the Nmap output DTD to match actual output since the `<hosthint>` element was added in Nmap 7.90.
+  * Fix newtargets support: since Nmap 7.92, scripts could not add targets in script pre-scanning phase.
+  * Scripts dhcp-discover and broadcast-dhcp-discover now support setting a client identifier.
+  * Script oracle-tns-version was not reporting the version correctly for Oracle 19c or newer
+  * Script redis-info was crashing or producing inaccurate information about client connections and/or cluster nodes.
+  * Script ipidseq was broken due to calling an unreachable library function.
+  * Support for EC crypto was not properly enabled if Nmap was compiled with OpenSSL in a custom location.
+  * Improvements to event handling and pcap socket garbage collection, fixing potential hangs and crashes.
+  * Fix TDS7 password encoding for mssql.lua, which had been assuming ASCII input even though other parts of the library had been passing it Unicode.
+  * Replace deprecated CPEs for IIS with their updated identifier, cpe:/a:microsoft:internet_information_services
+  * Fix script-terminating error when unknown BSON data types are encountered. Added parsers for most standard data types.
+  * Fix hostname/certificate comparison and matching to handle ASN.1 strings without null terminators, a similar bug to OpenSSL's CVE-2021-3712.
+  * Added support for SOCKS5 proxies that return bind addresses as hostnames, instead of IPv4/IPv6 addresses.
+
+-------------------------------------------------------------------
 Mon Oct  4 17:06:13 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Do not build with python2 support for SLE15-SP4, bsc#1190997
