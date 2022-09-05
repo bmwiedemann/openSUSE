@@ -1,7 +1,7 @@
 #
 # spec file for package lsd
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           lsd
-Version:        0.22.0
+Version:        0.23.0
 Release:        0
 Summary:        Ls command with a lot of pretty colors and some other stuff
 License:        Apache-2.0
-Url:            https://crates.io/crates/lsd
+URL:            https://crates.io/crates/lsd
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
@@ -41,11 +42,9 @@ cp %{SOURCE2} .cargo/config
 %install
 %cargo_install
 
-
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/lsd
 
 %changelog
-

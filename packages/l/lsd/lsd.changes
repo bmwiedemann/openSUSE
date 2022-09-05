@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  5 10:09:26 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.23.0:
+  * Add icon for Zstandard.
+  * Reduce the binary size and improve the performance.
+
+-------------------------------------------------------------------
 Sun Jun 12 16:46:50 UTC 2022 - dead_mozay@opensuse.org
 
 - Update to version 0.22.0:
