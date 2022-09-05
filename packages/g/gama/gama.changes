@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep  4 08:42:30 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Gama 2.22:
+  * fixes to XML adjustment ouput format
+  * New gama-local adjustment XML output definition
+    gama-local-adjustment.xsd version 1.02
+
+-------------------------------------------------------------------
 Wed Jul 13 04:15:32 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Gama 2.21:

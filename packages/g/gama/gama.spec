@@ -17,7 +17,7 @@
 
 
 Name:           gama
-Version:        2.21
+Version:        2.22
 Release:        0
 Summary:        Adjustment of geodetic networks
 License:        GPL-3.0-or-later
@@ -43,8 +43,6 @@ Adjustment in local Cartesian coordinate systems is fully supported by a command
 
 %prep
 %setup -q
-# spurious-executable-perm
-chmod -v a-x COPYING ChangeLog* README NEWS TODO AUTHORS
 
 %build
 %configure
