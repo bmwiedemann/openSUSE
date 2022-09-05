@@ -2,8 +2,8 @@
 # spec file for package deno
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2020-2021 Avindra Goolcharan <avindra@opensuse.org>
-# Copyright (c) 2018-2021 the Deno authors
+# Copyright (c) 2020-2022 Avindra Goolcharan <avindra@opensuse.org>
+# Copyright (c) 2018-2022 the Deno authors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 
 Name:           deno
-Version:        1.25.0
+Version:        1.25.1
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -47,14 +47,14 @@ BuildRequires:  pkgconfig(gthread-2.0)
 ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le s390x
 
 %description
-A JavaSript and TypeScript platform built on V8 with sandboxed defaults.
+A JavaSript and TypeScript platform built on V8
 
-Deno has standard modules and comes with various utilities like
+Deno has standard library and has features such as
 a linter, a language server protocol, a code formatter and
 a unit test runner.
 
 Remote code is fetched and cached on first execution, and only
-UPDATED With the --reload flag.
+updated with the --reload flag.
 
 %prep
 %autosetup -a1 -p1
@@ -64,14 +64,14 @@ UPDATED With the --reload flag.
 %build
 # workaround to use python3
 # where "python" is invoked
-mkdir -p "$(pwd)/bin"
+mkdir "$(pwd)/bin"
 ln -sf %{_bindir}/python3 "$(pwd)/bin/python"
 export PATH="$PATH:$(pwd)/bin"
 
 export V8_FROM_SOURCE=1
 export CLANG_BASE_PATH=%{_prefix}
 # https://www.chromium.org/developers/gn-build-configuration
-export GN_ARGS="enable_nacl = false blink_symbol_level = 0"
+export GN_ARGS="enable_nacl = false blink_symbol_level = 0 v8_symbol_level = 0"
 # enable binary stripping
 export RUSTFLAGS="%{__global_rustflags} -Clink-arg=-s"
 %{cargo_build}
