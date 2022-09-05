@@ -45,6 +45,7 @@ TIFF and WEBP formats.
 %package -n %lname
 Summary:        Simple DirectMedia Layer 2 image loading library
 Group:          System/Libraries
+Provides:       SDL2_image = %version-%release
 
 %description -n %lname
 This is a simple library to load images of various formats as SDL
