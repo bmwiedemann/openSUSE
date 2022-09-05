@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep  5 03:08:04 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.3.3
+  * Static types and Mypy static type check
+- from v0.3.2
+  * type validator error msg formatting fix
+- from v0.3.1
+  * OpenAPI 3.1 validator's JSONSchema subclassing deprecation fix
+  * OpenAPI 3.0 validator's JSONSchema subclassing deprecation workaround
+- from v0.3.0
+  * OpenAPI 3.1 validator #18
+  * drop python 3.6 support #18
+  * make jsonschema4 compatible (DeprecationWarning fix) reintroduced
+  * 0.2.1 changes
+    + Revert "make jsonschema4 compatible (DeprecationWarning fix)"
+    + drop python 3.6 support part 2
+    + Limit jsonschema dependency
+  * Validate oneOf, anyOf and allOf with discriminator OAS30 and OAS31
+
+-------------------------------------------------------------------
 Mon Mar 28 10:45:14 UTC 2022 - pgajdos@suse.com
 
 - version update to 0.2.3

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-openapi-schema-validator
-Version:        0.2.3
+Version:        0.3.3
 Release:        0
 Summary:        OpenAPI schema validator for Python
 License:        BSD-3-Clause
@@ -64,12 +64,11 @@ Wright Draft 00.
 %check
 sed -i 's:tool.pytest.ini_options:hide:' pyproject.toml
 # no rfc3339-validator installed
-sed -i 's:\(DATETIME_HAS_RFC3339_VALIDATOR.*\)True:\1False:' tests/integration/test_validators.py
-%pytest
+%pytest -k 'not test_string_format_datetime_rfc3339_validator'
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/*openapi_schema_validator*/
 
 %changelog
