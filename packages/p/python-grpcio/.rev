@@ -163,4 +163,12 @@
   * This release contains refinements, improvements, and bug fixes.</comment>
     <requestid>980774</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f563758d82b32f80338bd5c951a31304</srcmd5>
+    <version>1.48.0</version>
+    <time>1662405730</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001240</requestid>
+  </revision>
 </revisionlist>

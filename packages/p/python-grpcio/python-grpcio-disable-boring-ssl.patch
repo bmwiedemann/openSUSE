@@ -7,11 +7,11 @@ Subject: [PATCH] Make enabling system ssl disable boring ssl
  setup.py | 1 +
  1 file changed, 1 insertion(+)
 
-Index: grpcio-1.45.0/setup.py
+Index: grpcio-1.48.0/setup.py
 ===================================================================
---- grpcio-1.45.0.orig/setup.py
-+++ grpcio-1.45.0/setup.py
-@@ -285,6 +285,7 @@ if BUILD_WITH_SYSTEM_OPENSSL:
+--- grpcio-1.48.0.orig/setup.py
++++ grpcio-1.48.0/setup.py
+@@ -291,6 +291,7 @@ if BUILD_WITH_SYSTEM_OPENSSL:
                            CORE_C_FILES)
      CORE_C_FILES = filter(lambda x: 'src/boringssl' not in x, CORE_C_FILES)
      SSL_INCLUDE = (os.path.join('/usr', 'include', 'openssl'),)
