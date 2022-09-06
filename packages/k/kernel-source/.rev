@@ -5994,4 +5994,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.19.2 &amp; separate vdso &amp; other fixes</comment>
     <requestid>997675</requestid>
   </revision>
+  <revision rev="655" vrev="1">
+    <srcmd5>bb0d7b36e456091598b39c48576e3c0d</srcmd5>
+    <version>5.19.7</version>
+    <time>1662462039</time>
+    <user>dimstar_suse</user>
+    <comment>microos fix (btrfs revert) &amp; 5.19.7 &amp; 5.19.6 &amp; 5.19.5 &amp; 5.19.4 &amp; 5.19.3 &amp; many other fixes</comment>
+    <requestid>1001256</requestid>
+  </revision>
 </revisionlist>

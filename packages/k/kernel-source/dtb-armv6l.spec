@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.19
-%define patchversion 5.19.2
+%define patchversion 5.19.7
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,9 +29,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv6l
-Version:        5.19.2
+Version:        5.19.7
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g6c252ef
+Release:        <RELEASE>.g2b3da49
 %else
 Release:        0
 %endif
@@ -114,6 +114,73 @@ Source111:      patches.rt.tar.bz2
 Source113:      patches.kabi.tar.bz2
 Source120:      kabi.tar.bz2
 Source121:      sysctl.tar.bz2
+# These files are found in the kernel-source package:
+NoSource:       0
+NoSource:       3
+NoSource:       14
+NoSource:       16
+NoSource:       17
+NoSource:       21
+NoSource:       23
+NoSource:       33
+NoSource:       35
+NoSource:       36
+NoSource:       37
+NoSource:       38
+NoSource:       39
+NoSource:       40
+NoSource:       46
+NoSource:       47
+NoSource:       48
+NoSource:       49
+NoSource:       50
+NoSource:       51
+NoSource:       52
+NoSource:       53
+NoSource:       54
+NoSource:       55
+NoSource:       56
+NoSource:       57
+NoSource:       58
+NoSource:       60
+NoSource:       61
+NoSource:       62
+NoSource:       63
+NoSource:       64
+NoSource:       65
+NoSource:       67
+NoSource:       68
+NoSource:       69
+NoSource:       70
+NoSource:       71
+NoSource:       72
+NoSource:       73
+NoSource:       74
+NoSource:       75
+NoSource:       76
+NoSource:       77
+NoSource:       78
+NoSource:       79
+NoSource:       80
+NoSource:       81
+NoSource:       82
+NoSource:       83
+NoSource:       84
+NoSource:       85
+NoSource:       100
+NoSource:       101
+NoSource:       102
+NoSource:       103
+NoSource:       104
+NoSource:       105
+NoSource:       106
+NoSource:       108
+NoSource:       109
+NoSource:       110
+NoSource:       111
+NoSource:       113
+NoSource:       120
+NoSource:       121
 
 %description
 Device Tree files for $MACHINES.

@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.19
-%define patchversion 5.19.2
+%define patchversion 5.19.7
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -31,9 +31,9 @@
 %endif
 
 Name:           kernel-source
-Version:        5.19.2
+Version:        5.19.7
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g6c252ef
+Release:        <RELEASE>.g2b3da49
 %else
 Release:        0
 %endif
@@ -50,10 +50,14 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-6c252efa6215101fc5985edaddc903198d01a2d8
+Provides:       %name-srchash-2b3da4915c03713f32e48582d3a1130238586489
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
+%if "https://www.kernel.org/pub/linux/kernel/v5.x/" != ""
+Source1:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.sign
+Source2:        linux.keyring
+%endif
 Source3:        kernel-source.rpmlintrc
 Source14:       series.conf
 Source16:       guards
@@ -217,7 +221,7 @@ pushd %{buildroot}/usr/src
 
 # Unpack the vanilla kernel sources
 tar -xf %{S:0}
-find . -type l | while read f; do test -e "$f" || rm -v "$f"; done
+find . -xtype l -delete -printf "deleted '%f'\n"
 if test "%srcversion" != "%kernelrelease%variant"; then
 	mv linux-%srcversion linux-%kernelrelease%variant
 fi

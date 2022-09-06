@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.19
-%define patchversion 5.19.2
+%define patchversion 5.19.7
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -110,9 +110,9 @@ Name:           kernel-default
 Summary:        The Standard Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.19.2
+Version:        5.19.7
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g6c252ef
+Release:        <RELEASE>.g2b3da49
 %else
 Release:        0
 %endif
@@ -239,10 +239,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-6c252efa6215101fc5985edaddc903198d01a2d8
-Provides:       kernel-srchash-6c252efa6215101fc5985edaddc903198d01a2d8
+Provides:       kernel-%build_flavor-base-srchash-2b3da4915c03713f32e48582d3a1130238586489
+Provides:       kernel-srchash-2b3da4915c03713f32e48582d3a1130238586489
 # END COMMON DEPS
-Provides:       %name-srchash-6c252efa6215101fc5985edaddc903198d01a2d8
+Provides:       %name-srchash-2b3da4915c03713f32e48582d3a1130238586489
 %ifarch %ix86
 Provides:       kernel-smp = 2.6.17
 Obsoletes:      kernel-smp <= 2.6.17
@@ -362,20 +362,6 @@ Source111:      patches.rt.tar.bz2
 Source113:      patches.kabi.tar.bz2
 Source120:      kabi.tar.bz2
 Source121:      sysctl.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  aarch64 armv6hl armv7hl %ix86 ppc64 ppc64le riscv64 s390x x86_64
-%define kmp_target_cpu %_target_cpu
-%ifarch %ix86
-# Only i386/default supports i586, mark other flavors' packages as i686
-%if ! %build_default
-BuildArch:      i686
-# KMPs are always built as i586, because rpm does not allow to build
-# subpackages for different architectures. Therefore, we change the
-# /usr/src/linux-obj/<arch> symlink to i586.
-%define kmp_target_cpu i586
-%endif
-%endif
-
 # These files are found in the kernel-source package:
 NoSource:       0
 NoSource:       3
@@ -443,6 +429,21 @@ NoSource:       111
 NoSource:       113
 NoSource:       120
 NoSource:       121
+
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+ExclusiveArch:  aarch64 armv6hl armv7hl %ix86 ppc64 ppc64le riscv64 s390x x86_64
+%define kmp_target_cpu %_target_cpu
+%ifarch %ix86
+# Only i386/default supports i586, mark other flavors' packages as i686
+%if ! %build_default
+BuildArch:      i686
+# KMPs are always built as i586, because rpm does not allow to build
+# subpackages for different architectures. Therefore, we change the
+# /usr/src/linux-obj/<arch> symlink to i586.
+%define kmp_target_cpu i586
+%endif
+%endif
+
 
 # Will modules not listed in supported.conf abort the kernel build (0/1)?
 %define supported_modules_check 0
