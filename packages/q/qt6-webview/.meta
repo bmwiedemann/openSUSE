@@ -1,0 +1,10 @@
+<package name="qt6-webview" project="openSUSE:Factory">
+  <title>Qt 6 WebView library</title>
+  <description>Qt WebView lets you display web content inside a QML application. To avoid
+including a full web browser stack, Qt WebView uses native APIs where
+appropriate.
+
+</description>
+  <devel project="KDE:Qt6" package="qt6-webview"/>
+  <url>https://www.qt.io</url>
+</package>
