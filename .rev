@@ -242,4 +242,12 @@
     <comment>Use %_libexecdir</comment>
     <requestid>960080</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>dd712cb7d1e20a74dc0ff4add4382e8a</srcmd5>
+    <version>20220307</version>
+    <time>1662462041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001102</requestid>
+  </revision>
 </revisionlist>
