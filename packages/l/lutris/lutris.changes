@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  6 08:50:00 UTC 2022 - Kostadin Shishmanov <kocelfc@tutanota.com>
+
+- Remove unneeded line in the spec file which makes lutris
+  appear in the "Internet" subcategory instead of "Games" in
+  the KDE application launcher
+
+-------------------------------------------------------------------
 Thu Aug 25 20:56:32 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to 0.5.11:

@@ -69,7 +69,6 @@ sed -i "s|!%{_bindir}/env python3|!%{_bindir}/python3|" share/lutris/bin/lutris-
 
 %install
 %py3_install
-%suse_update_desktop_file -r -i %{appid} Network FileTransfer
 %fdupes %{buildroot}%{_prefix}
 
 %if 0%{?suse_version} < 1330
