@@ -24,18 +24,15 @@
 %bcond_with memcached
 Name:           python-Django
 # We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
-Version:        4.1
+Version:        4.1.1
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
 URL:            https://www.djangoproject.com
 Source:         https://www.djangoproject.com/m/releases/4.1/Django-%{version}.tar.gz
-# For 4.1 the signature file seems to be invalid, but the SHA1 match the published one
-Source1:        https://media.djangoproject.com/pgp/Django-%{version}.checksum.txt#/Django-%{version}.tar.gz.asc.INVALID
+Source1:        https://media.djangoproject.com/pgp/Django-%{version}.checksum.txt
 Source2:        %{name}.keyring
 Source99:       python-Django-rpmlintrc
-# PATCH-FIX-UPSTREAM 0001-Fixed-33887-Added-version-in-asserted-test-URL.patch gh#django/django#15908 aplanas@suse.com
-Patch0:         0001-Fixed-33887-Added-version-in-asserted-test-URL.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}
@@ -52,6 +49,7 @@ BuildRequires:  %{python_module sqlparse >= 0.2.2}
 BuildRequires:  %{python_module tblib >= 1.5.0}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
+BuildRequires:  gpg2
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module backports.zoneinfo if (%python-base with python38-base)}
 Requires:       python
@@ -96,7 +94,11 @@ BuildRequires:  xvfb-run
 Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.
 
 %prep
-# The publisher doesn't sign the source tarball, but a signatures file containing multiple hashes.
+# The publisher doesn't sign the source tarball, but a signatures file
+# containing multiple hashes.
+gpg --import %{SOURCE2}
+gpg --verify %{SOURCE1}
+#
 # Verify hashes in that file against source tarball.
 echo "`grep -e '^[0-9a-f]\{32\}  Django-%{version}.tar.gz' %{SOURCE1} | cut -c1-32`  %{SOURCE0}" | md5sum -c
 echo "`grep -e '^[0-9a-f]\{40\}  Django-%{version}.tar.gz' %{SOURCE1} | cut -c1-40`  %{SOURCE0}" | sha1sum -c

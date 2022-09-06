@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Sep  5 11:14:19 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.1.1
+  + Reallowed, following a regression in Django 4.1, using GeoIP2()
+    when GEOS is not installed
+  + Fixed a regression in Django 4.1 that caused a crash of admin’s
+    autocomplete widgets when translations are deactivated
+  + Fixed a regression in Django 4.1 that caused a crash of the test
+    management command when running in parallel and multiprocessing
+    start method is spawn
+  + Fixed a regression in Django 4.1 that caused an incorrect
+    redirection to the admin changelist view when using "Save and
+    continue editing" and "Save and add another" options
+  + Fixed a regression in Django 4.1 that caused a crash of Window
+    expressions with ArrayAgg
+  + Fixed a regression in Django 4.1 that caused a migration crash on
+    SQLite 3.35.5+ when removing an indexed field
+  + Fixed a bug in Django 4.1 that caused a crash of model validation
+    on UniqueConstraint() with field names in expressions
+  + Fixed a bug in Django 4.1 that caused an incorrect validation of
+    CheckConstraint() with range fields on PostgreSQL
+  + Fixed a regression in Django 4.1 that caused an incorrect
+    migration when adding AutoField, BigAutoField, or SmallAutoField
+    on PostgreSQL
+  + Fixed a regression in Django 4.1 that caused a migration crash on
+    PostgreSQL when altering AutoField, BigAutoField, or
+    SmallAutoField to OneToOneField
+  + Fixed a migration crash on ManyToManyField fields with through
+    referencing models in different apps
+  + Fixed a regression in Django 4.1 that caused an incorrect
+    migration when renaming a model with ManyToManyField and db_table
+  + Reallowed, following a regression in Django 4.1, creating reverse
+    foreign key managers on unsaved instances
+  + Fixed a regression in Django 4.1 that caused a migration crash on
+    SQLite < 3.20
+  + Fixed a regression in Django 4.1 that caused an admin crash when
+    the admindocs app was used
+- Remove 0001-Fixed-33887-Added-version-in-asserted-test-URL.patch
+  (already upstream)
+- Verify the tarball with gpg
+
+-------------------------------------------------------------------
 Wed Aug  3 13:20:52 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 4.1:
