@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  5 09:11:54 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.28.1:
+  + Land several fixes to meson build definitions to align with
+    autotools.
+- Switch to meson build system:
+  + Add meson BuildRequires.
+  + Replace %configure/%make%make_install macros with meson
+    equivalents %meson/%meson_build/%meson_install
+  + Drop libtool BuildRequires and no longer call autogen.sh
+
+-------------------------------------------------------------------
 Wed Aug 24 20:34:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Rebase patches with quilt.

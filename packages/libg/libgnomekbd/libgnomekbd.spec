@@ -18,7 +18,7 @@
 
 %define sover 8
 Name:           libgnomekbd
-Version:        3.28.0
+Version:        3.28.1
 Release:        0
 Summary:        GNOME Keyboard Library
 License:        LGPL-2.1-or-later
@@ -34,7 +34,7 @@ Patch1:         libgnomekbd-set-default-indicator.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  intltool
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
@@ -95,16 +95,12 @@ applications that want to make use of libgnomekbd.
 %autosetup -p1
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-	--disable-static \
-	%{nil}
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
-find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 
