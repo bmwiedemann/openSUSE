@@ -28,9 +28,9 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libavcodec) <= 58.134.100
+BuildRequires:  pkgconfig(libavformat) <= 58.76.100
+BuildRequires:  pkgconfig(libavutil) <= 56.70.100
 BuildRequires:  pkgconfig(sndfile)
 
 %description
