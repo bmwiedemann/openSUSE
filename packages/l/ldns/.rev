@@ -375,4 +375,12 @@ Index: ldns-1.7.1.tar.gz.asc
 ------END PGP SIGNATURE-----</comment>
     <requestid>950786</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4ade6950c3506913fe41fb4d3617b83c</srcmd5>
+    <version>1.8.3</version>
+    <time>1662462050</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001227</requestid>
+  </revision>
 </revisionlist>

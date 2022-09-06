@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Sep  2 19:37:42 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- use HTTPS URLs for URL and Source
+
+-------------------------------------------------------------------
+Mon Aug 15 19:23:59 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- new version 1.8.3
+  + 1.8.3 2022-08-15
+    * bugfix #183: Assertion failure with OPT record without rdata.
+      This caused packet creation with only a DO bit (for DNSSEC OK) to crash.
+    * Fix for syntax error in pyldns
+  + 1.8.2 2022-08-12
+    * bugfix #147: Allow for tabs in whitespace before quoted rdata fields.
+    * bugfix #149: Add some missing [out] annotations to doxygen parameters.
+    * Fix build error on Solaris 10 with inet_ntop redeclaration error.
+    * Fix -U flag with ldns-signzone.
+    * Enable compile of SVCB and HTTPS support by default.
+    * bugfix #179: Free line memory even if zone file parsing fails
+    * bugfix #166: Grow buffer when writing chars and fixed size
+      strings when converting to presentation format, preventing
+      potential assersion errors.
+    * bugfix #46: Print network errors when secure tracing.
+    * EDNS0 Option handling and conversion into presentation format.
+    * bugfix #145: ldns-verify-zone should not call occluded records glue.
+
+-------------------------------------------------------------------
 Fri Dec  3 18:15:35 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - new version 1.8.1

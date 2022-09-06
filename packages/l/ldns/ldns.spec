@@ -18,14 +18,14 @@
 
 %define libname libldns3
 Name:           ldns
-Version:        1.8.1
+Version:        1.8.3
 Release:        0
 Summary:        A library for developing the Domain Name System
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://www.nlnetlabs.nl/projects/ldns/
-Source:         http://www.nlnetlabs.nl/downloads/ldns/ldns-%{version}.tar.gz
-Source1:        http://www.nlnetlabs.nl/downloads/ldns/ldns-%{version}.tar.gz.asc
+URL:            https://www.nlnetlabs.nl/projects/ldns/
+Source:         https://www.nlnetlabs.nl/downloads/ldns/ldns-%{version}.tar.gz
+Source1:        https://www.nlnetlabs.nl/downloads/ldns/ldns-%{version}.tar.gz.asc
 Source2:        ldns.keyring
 BuildRequires:  doxygen
 BuildRequires:  fdupes
