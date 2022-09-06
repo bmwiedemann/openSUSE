@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 30 09:44:25 UTC 2022 - Klaus Kämpf <kkaempf@suse.com>
+
+- fix build
+
+-------------------------------------------------------------------
 Mon Feb  3 14:47:23 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
