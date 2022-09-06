@@ -29,7 +29,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 #Source:         https://files.pythonhosted.org/packages/source/m/mdit-py-plugins/mdit-py-plugins-%%{version}.tar.gz
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Sphinx
 Requires:       python-markdown-it-py
 BuildArch:      noarch
 %python_subpackages
@@ -42,7 +41,6 @@ Collection of core plugins for markdown-it-py.
 
 %build
 %python_build
-# building the docs would require myst-parser
 
 %install
 %python_install
@@ -52,10 +50,9 @@ Collection of core plugins for markdown-it-py.
 %pyunittest
 
 %files %{python_files}
-%doc README.md CHANGELOG.md
+%doc README.md CHANGELOG.md docs/index.md
 %license LICENSE
 %{python_sitelib}/mdit_py_plugins/
 %{python_sitelib}/mdit_py_plugins-%{version}*-info
-%doc docs/index.md
 
 %changelog

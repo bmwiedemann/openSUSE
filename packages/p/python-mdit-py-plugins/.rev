@@ -7,4 +7,12 @@
     <comment>Required to build the docs of xonsh (wasn't necessary before, but new dependencies were introduced with version 0.12).</comment>
     <requestid>973589</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f5579aed44d68e155b03a50af4387c05</srcmd5>
+    <version>0.3.0</version>
+    <time>1662464769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001441</requestid>
+  </revision>
 </revisionlist>
