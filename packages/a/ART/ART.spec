@@ -17,14 +17,12 @@
 
 
 Name:           ART
-Version:        1.15
+Version:        1.16.2
 Release:        0
 Summary:        Rawtherapee fork with masks and simplified UI
 License:        GPL-3.0-only
 URL:            https://bitbucket.org/agriggio/art/wiki/Home
 Source:         https://bitbucket.org/agriggio/art/downloads/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM https://bitbucket.org/agriggio/art/pull-requests/11
-Patch0:         fix-ppc-cflags.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

@@ -21,4 +21,27 @@
 </comment>
     <requestid>997981</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c7515bcd231c6dec50ede121b2811189</srcmd5>
+    <version>1.16.2</version>
+    <time>1662462063</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.16.2:
+  * Fixed bug in fast-path for output profile application.
+  * Fixed segfault when the thumb cache contains an invalid date.
+  * Update camera matrices.
+  * Update translations.
+  * LUT: protect against NaN indices.
+  * Img out: added custom ICC profile conversion to avoid clamping to [0,1].
+  * Color correction: added LUT mode.
+  * Handle linear DNG as other raw images.
+  * Tonecurve: improved range for the saturation2 curve.
+  * Denoise: some tweaks to the detail mask.
+  * Filmsimulation: added support for ACES clf LMT LUTs using OpenColorIOv2.
+  * Logenc: added highlight precompression.
+  * Tonecurve: allow whitepoint to go up to 100 (~10000 nits).
+- Drop fix-ppc-cflags.patch
+</comment>
+    <requestid>1001335</requestid>
+  </revision>
 </revisionlist>

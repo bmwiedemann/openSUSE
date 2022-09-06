@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep  6 05:41:01 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.16.2:
+  * Fixed bug in fast-path for output profile application.
+  * Fixed segfault when the thumb cache contains an invalid date.
+  * Update camera matrices.
+  * Update translations.
+  * LUT: protect against NaN indices.
+  * Img out: added custom ICC profile conversion to avoid clamping to [0,1].
+  * Color correction: added LUT mode.
+  * Handle linear DNG as other raw images.
+  * Tonecurve: improved range for the saturation2 curve.
+  * Denoise: some tweaks to the detail mask.
+  * Filmsimulation: added support for ACES clf LMT LUTs using OpenColorIOv2.
+  * Logenc: added highlight precompression.
+  * Tonecurve: allow whitepoint to go up to 100 (~10000 nits).
+- Drop fix-ppc-cflags.patch
+
+-------------------------------------------------------------------
 Thu Aug 18 12:59:51 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Disable LTO, since it makes the program crashing.
