@@ -1,7 +1,7 @@
 #
-# spec file for package %{package_name}%{?testsuite:-testsuite}
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2004-2005 The Trustees of Indiana University and Indiana
 #                         University Research and Technology
 #                         Corporation.  All rights reserved.
@@ -41,9 +41,9 @@
 # To enable them, simply uncomment:
 # % define build_static_devel 1
 
-%define pname openmpi
-%define vers 4.1.1
-%define _vers 4_1_1
+%global pname openmpi
+%global vers 4.1.4
+%define _vers 4_1_4
 %define m_f_ver 4
 %bcond_with ringdisabled
 
@@ -119,7 +119,7 @@ ExclusiveArch:  do_not_build
 %global hpc_openmpi_pack_version %{hpc_openmpi_dep_version}
 %endif
 
-%define git_ver .0.a8dd8708d8b6
+%define git_ver .0.ffb0adcdd6
 
 #############################################################################
 #
@@ -133,8 +133,8 @@ Release:        0
 Summary:        An implementation of MPI/SHMEM (Version %{m_f_ver})
 License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
-URL:            http://www.open-mpi.org/
-Source0:        openmpi-%{version}%{git_ver}.tar.bz2
+URL:            https://www.open-mpi.org/
+Source0:        openmpi-%{version}%{git_ver}.tar.zst
 Source2:        openmpi4-rpmlintrc
 Source3:        macros.hpc-openmpi
 Source4:        mpivars.sh
@@ -146,11 +146,11 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  flex
+BuildRequires:  hostname
 BuildRequires:  libibumad-devel
 BuildRequires:  libibverbs-devel
 BuildRequires:  libtool
-# net-tools is required to run hostname
-BuildRequires:  net-tools
+BuildRequires:  zstd
 %if 0%{?testsuite}
 BuildArch:      noarch
 BuildRequires:  %{package_name} = %{version}

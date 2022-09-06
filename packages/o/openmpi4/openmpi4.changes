@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Wed Aug  3 08:18:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.4:
+  * Fix possible length integer overflow in numerous non-blocking collective
+  operations.
+  * Fix segmentation fault in UCX if MPI Tool interface is finalized before
+  MPI_Init is called.
+  * Remove /usr/bin/python dependency in configure.
+  * Fix OMPIO issue with long double etypes.
+  * Update treematch topology component to fix numerous correctness issues.
+  * Fix memory leak in UCX MCA parameter registration.
+  * Fix long operation closing file descriptors on non-Linux systems that
+  can appear as a hang to users.
+  * Fix for attribute handling on GCC 11 due to pointer aliasing.
+  * Fix multithreaded race in UCX PML's datatype handling.
+  * Fix a correctness issue in CUDA Reduce algorithm.
+  * Fix compilation issue with CUDA GPUDirect RDMA support.
+  * Fix to make shmem_calloc(..., 0) conform to the OpenSHMEM specification.
+  * Add UCC collectives component.
+  * Fix divide by zero issue in OMPI IO component.
+  * Fix compile issue with libnl when not in standard search locations.
+  * Fixed a seg fault in the smcuda BTL.  Thanks to Moritz Kreutzer and
+  @Stadik for reporting the issue.
+  * Added support for ELEMENTAL to the MPI handle comparison functions
+  in the mpi_f08 module.  Thanks to Salvatore Filippone for raising
+  the issue.
+  * Minor datatype performance improvements in the CUDA-based code paths.
+  * Fix MPI_ALLTOALLV when used with MPI_IN_PLACE.
+  * Fix MPI_BOTTOM handling for non-blocking collectives.  Thanks to
+  Lisandro Dalcin for reporting the problem.
+  * Enable OPAL memory hooks by default for UCX.
+  * Many compiler warnings fixes, particularly for newer versions of
+  GCC.
+  * Fix intercommunicator overflow with large payload collectives.  Also
+  fixed MPI_REDUCE_SCATTER_BLOCK for similar issues with large payload
+  collectives.
+  * Back-port ROMIO 3.3 fix to use stat64() instead of stat() on GPFS.
+  * Fixed several non-blocking MPI collectives to not round fractions
+  based on float precision.
+  * Fix compile failure for --enable-heterogeneous.  Also updated the
+  README to clarify that --enable-heterogeneous is functional, but
+  still not recomended for most environments.
+  * Minor fixes to OMPIO, including:
+  - Fixing the open behavior of shared memory shared file pointers.
+    Thanks to Axel Huebl for reporting the issue
+  - Fixes to clean up lockfiles when closing files.  Thanks to Eric
+    Chamberland for reporting the issue.
+  * Update LSF configure failure output to be more clear (e.g., on RHEL
+  platforms).
+  * Update if_[in|ex]clude behavior in btl_tcp and oob_tcp to select
+  *all* interfaces that fall within the specified subnet range.
+  * ROMIO portability fix for OpenBSD
+  * Fix handling of MPI_IN_PLACE with MPI_ALLTOALLW and improve performance
+  of MPI_ALLTOALL and MPI_ALLTOALLV for MPI_IN_PLACE.
+  * Fix one-sided issue with empty groups in Post-Start-Wait-Complete
+  synchronization mode.
+  * Fix Fortran status returns in certain use cases involving
+  Generalized Requests
+  * Romio datatype bug fixes.
+  * Fix oshmem_shmem_finalize() when main() returns non-zero value.
+  * Fix wrong affinity under LSF with the membind option.
+  * Fix count==0 cases in MPI_REDUCE and MPI_IREDUCE.
+  * Fix ssh launching on Bourne-flavored shells when the user has "set
+  -u" set in their shell startup files.
+  * Correctly process 0 slots with the mpirun --host option.
+  * Ensure to unlink and rebind socket when the Open MPI session
+  directory already exists.
+  * Fix a segv in mpirun --disable-dissable-map.
+  * Fix a potential hang in the memory hook handling.
+  * Slight performance improvement in MPI_WAITALL when running in
+  MPI_THREAD_MULTIPLE.
+  * Fix hcoll datatype mapping and rooted operation behavior.
+  * Correct some operations modifying MPI_Status.MPI_ERROR when it is
+  disallowed by the MPI standard.
+  * UCX updates:
+  - Fix datatype reference count issues.
+  - Detach dynamic window memory when freeing a window.
+  - Fix memory leak in datatype handling.
+  * Fix various atomic operations issues.
+  * mpirun: try to set the curses winsize to the pty of the spawned
+  task.  Thanks to Stack Overflow user @Seriously for reporting the
+  issue.
+  * PMIx updates:
+  - Fix compatibility with external PMIx v4.x installations.
+  - Fix handling of PMIx v3.x compiler/linker flags.  Thanks to Erik
+    Schnetter for reporting the issue.
+  - Skip SLURM-provided PMIx detection when appropriate.  Thanks to
+    Alexander Grund for reporting the issue.
+  * Fix handling by C++ compilers when they #include the STL "<version>"
+  header file, which ends up including Open MPI's text VERSION file
+  (which is not C code).  Thanks to @srpgilles for reporting the
+  issue.
+  * Fix MPI_Op support for MPI_LONG.
+  * Make the MPI C++ bindings library (libmpi_cxx) explicitly depend on
+  the OPAL internal library (libopen-pal).  Thanks to Ye Luo for
+  reporting the issue.
+  * Fix configure handling of "--with-libevent=/usr".
+  * Fix memory leak when opening Lustre files.  Thanks to Bert Wesarg
+  for submitting the fix.
+  * Fix MPI_SENDRECV_REPLACE to correctly process datatype errors.
+  Thanks to Lisandro Dalcin for reporting the issue.
+  * Fix MPI_SENDRECV_REPLACE to correctly handle large data.  Thanks
+  Jakub Benda for reporting this issue and suggesting a fix.
+  * Add workaround for TCP "dropped connection" errors to drastically
+  reduce the possibility of this happening.
+  * OMPIO updates:
+  - Fix handling when AMODE is not set.  Thanks to Rainer Keller for
+    reporting the issue and supplying the fix.
+  - Fix FBTL "posix" component linking issue.  Thanks for Honggang Li
+    for reporting the issue.
+  - Fixed segv with MPI_FILE_GET_BYTE_OFFSET on 0-sized file view.
+  - Thanks to GitHub user @shanedsnyder for submitting the issue.
+  * OFI updates:
+  - Multi-plane / Multi-Nic nic selection cleanups
+  - Add support for exporting Open MPI memory monitors into
+    Libfabric.
+  - Ensure that Cisco usNIC devices are never selected by the OFI
+    MTL.
+  - Fix buffer overflow in OFI networking setup.  Thanks to Alexander
+    Grund for reporting the issue and supplying the fix.
+  * Fix SSEND on tag matching networks.
+  * Fix error handling in several MPI collectives.
+  * Fix the ordering of MPI_COMM_SPLIT_TYPE.  Thanks to Wolfgang
+  Bangerth for raising the issue.
+  * No longer install the orted-mpir library (it's an internal / Libtool
+  convenience library).  Thanks to Andrew Hesford for the fix.
+  * PSM2 updates:
+  - Allow advanced users to disable PSM2 version checking.
+  - Fix to allow non-default installation locations of psm2.h.
+
+-------------------------------------------------------------------
 Wed Apr 28 11:08:54 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - openmpi4 is now the default openmpi for releases > 15.3
