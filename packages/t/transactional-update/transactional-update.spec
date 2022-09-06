@@ -191,10 +191,24 @@ mv %{buildroot}/%{_sysconfdir}/logrotate.d/transactional-update %{buildroot}%{_d
 %pre
 %systemd_pre %{name}.service %{name}.timer
 %systemd_pre %{name}-cleanup.service %{name}-cleanup.timer
+%if 0%{?suse_version} > 1500
+# Prepare for migration of logrotate configuration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/transactional-update ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
 
 %post
 %systemd_post %{name}.service %{name}.timer
 %systemd_post %{name}-cleanup.service %{name}-cleanup.timer
+
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration of logrotate configuration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/transactional-update ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %preun
 %systemd_preun %{name}.service %{name}.timer

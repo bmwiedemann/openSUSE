@@ -957,4 +957,12 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
     <comment></comment>
     <requestid>998705</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>8eaec1281f2f4634e3bddcc8262177e4</srcmd5>
+    <version>4.0.1</version>
+    <time>1662462035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001287</requestid>
+  </revision>
 </revisionlist>
