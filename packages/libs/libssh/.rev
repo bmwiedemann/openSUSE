@@ -678,4 +678,24 @@ ProxyCommand parsing in ssh configuration files:
     <comment></comment>
     <requestid>944781</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>dbb53dcee78967a1089a4a3bf70cfa76</srcmd5>
+    <version>0.10.3</version>
+    <time>1662462034</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.3
+  * https://git.libssh.org/projects/libssh.git/tag/?h=libssh-0.10.3
+- Update to version 0.10.2
+  * https://git.libssh.org/projects/libssh.git/tag/?h=libssh-0.10.2
+- Removed libssh-weak-attribute.patch
+- Update to version 0.10.1
+  * https://git.libssh.org/projects/libssh.git/tag/?h=libssh-0.10.1
+- Enable client and server testing
+  * Added libssh-weak-attribute.patch
+- Update to version 0.10.0
+  * https://git.libssh.org/projects/libssh.git/tag/?h=libssh-0.10.0
+- Removed 0001-Soften-behaviour-of-the-Compression-no-yes-option.patch
+</comment>
+    <requestid>1001276</requestid>
+  </revision>
 </revisionlist>

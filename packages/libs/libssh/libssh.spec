@@ -30,7 +30,7 @@
 %bcond_with test
 %endif
 Name:           libssh%{pkg_suffix}
-Version:        0.9.6
+Version:        0.10.3
 Release:        0
 Summary:        The SSH library
 License:        LGPL-2.1-or-later
@@ -43,8 +43,6 @@ Source3:        libssh_client.config
 Source4:        libssh_server.config
 Source99:       baselibs.conf
 Patch0:         0001-disable-timeout-test-on-slow-buildsystems.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Soften-behaviour-of-the-Compression-no-yes-option.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  krb5-devel
@@ -57,6 +55,12 @@ Obsoletes:      %{name}-devel-doc <= 0.8.6
 %if %{with test}
 BuildRequires:  libcmocka-devel
 BuildRequires:  openssh
+%if 0%{?suse_version} > 1550
+BuildRequires:  nss_wrapper
+BuildRequires:  pam_wrapper
+BuildRequires:  socket_wrapper
+BuildRequires:  uid_wrapper
+%endif
 %endif
 
 %description
@@ -105,6 +109,10 @@ Development headers for the SSH library.
 %if %{with test}
     -DUNIT_TESTING="ON" \
     -DSLOW_TEST_SYSTEM=%{slow_test_system} \
+%if 0%{?suse_version} > 1550
+    -DCLIENT_TESTING=ON \
+    -DSERVER_TESTING=ON \
+%endif
 %endif
     -DWITH_GSSAPI=ON \
     -DWITH_EXAMPLES="OFF" \
@@ -124,6 +132,8 @@ install -m644 %{SOURCE4} %{buildroot}%{_sysconfdir}/libssh/libssh_server.config
 
 %check
 %if %{with test}
+# Tests are randomly failing when run in parallel
+%define _smp_mflags %{nil}
 %ctest
 %endif
 
@@ -132,7 +142,7 @@ install -m644 %{SOURCE4} %{buildroot}%{_sysconfdir}/libssh/libssh_server.config
 %postun -n libssh4 -p /sbin/ldconfig
 
 %files -n libssh4
-%doc AUTHORS README ChangeLog
+%doc AUTHORS README CHANGELOG
 %{_libdir}/libssh.so.*
 
 %files config

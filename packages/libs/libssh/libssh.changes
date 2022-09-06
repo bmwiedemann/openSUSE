@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Sep  5 13:00:07 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.10.3
+  * https://git.libssh.org/projects/libssh.git/tag/?h=libssh-0.10.3
+
+-------------------------------------------------------------------
+Fri Sep  2 08:51:23 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.10.2
+  * https://git.libssh.org/projects/libssh.git/tag/?h=libssh-0.10.2
+- Removed libssh-weak-attribute.patch
+
+-------------------------------------------------------------------
+Tue Aug 30 14:29:51 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.10.1
+  * https://git.libssh.org/projects/libssh.git/tag/?h=libssh-0.10.1
+- Enable client and server testing
+  * Added libssh-weak-attribute.patch
+
+-------------------------------------------------------------------
+Fri Aug 26 12:16:13 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.10.0
+  * https://git.libssh.org/projects/libssh.git/tag/?h=libssh-0.10.0
+- Removed 0001-Soften-behaviour-of-the-Compression-no-yes-option.patch
+
+-------------------------------------------------------------------
 Wed Jan  5 13:58:56 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to make the compression option more compatible (boo#1192731):

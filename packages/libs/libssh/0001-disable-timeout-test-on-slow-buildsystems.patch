@@ -1,7 +1,7 @@
-Index: libssh-0.9.6/tests/unittests/torture_misc.c
+Index: libssh-0.10.0/tests/unittests/torture_misc.c
 ===================================================================
---- libssh-0.9.6.orig/tests/unittests/torture_misc.c	2021-08-26 15:14:47.337264821 +0200
-+++ libssh-0.9.6/tests/unittests/torture_misc.c	2021-08-26 15:15:24.513466534 +0200
+--- libssh-0.10.0.orig/tests/unittests/torture_misc.c	2022-07-07 15:53:51.000000000 +0200
++++ libssh-0.10.0/tests/unittests/torture_misc.c	2022-08-26 14:19:01.827866890 +0200
 @@ -211,11 +211,13 @@ static void torture_timeout_elapsed(void
      ssh_timestamp_init(&ts);
      usleep(30000);
@@ -30,22 +30,22 @@ Index: libssh-0.9.6/tests/unittests/torture_misc.c
  }
  
  static void torture_ssh_analyze_banner(void **state) {
-Index: libssh-0.9.6/DefineOptions.cmake
+Index: libssh-0.10.0/DefineOptions.cmake
 ===================================================================
---- libssh-0.9.6.orig/DefineOptions.cmake	2021-08-26 15:14:47.337264821 +0200
-+++ libssh-0.9.6/DefineOptions.cmake	2021-08-26 15:14:50.093279775 +0200
-@@ -22,6 +22,7 @@ option(WITH_ABI_BREAK "Allow ABI break"
- option(WITH_GEX "Enable DH Group exchange mechanisms" ON)
- option(FUZZ_TESTING "Build with fuzzer for the server" OFF)
+--- libssh-0.10.0.orig/DefineOptions.cmake	2022-07-07 15:53:51.000000000 +0200
++++ libssh-0.10.0/DefineOptions.cmake	2022-08-26 14:19:41.500119198 +0200
+@@ -25,6 +25,7 @@ option(WITH_GEX "Enable DH Group exchang
+ option(WITH_INSECURE_NONE "Enable insecure none cipher and MAC algorithms (not suitable for production!)" OFF)
+ option(FUZZ_TESTING "Build with fuzzer for the server and client (automatically enables none cipher!)" OFF)
  option(PICKY_DEVELOPER "Build with picky developer flags" OFF)
 +option(SLOW_TEST_SYSTEM "Disable tests that fail on slow systems" OFF)
  
  if (WITH_ZLIB)
      set(WITH_LIBZ ON)
-@@ -53,3 +54,8 @@ endif (NOT GLOBAL_BIND_CONFIG)
- if (NOT GLOBAL_CLIENT_CONFIG)
-   set(GLOBAL_CLIENT_CONFIG "/etc/ssh/ssh_config")
- endif (NOT GLOBAL_CLIENT_CONFIG)
+@@ -60,3 +61,8 @@ endif (NOT GLOBAL_CLIENT_CONFIG)
+ if (FUZZ_TESTING)
+   set(WITH_INSECURE_NONE ON)
+ endif (FUZZ_TESTING)
 +
 +if (SLOW_TEST_SYSTEM)
 +  set (SLOW_TEST_SYSTEM ON)
