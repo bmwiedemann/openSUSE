@@ -971,7 +971,6 @@
     <package name="jfsutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="jhead" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="jmdict" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="joe" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="json-glib-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="juk" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="juk-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -2973,6 +2972,7 @@
     <package name="metatheme-greybird-geeko-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
     <package name="metatheme-sonar-common" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="mgopen-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="microos-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="milou5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="milou5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="minicom" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -5032,7 +5032,6 @@
     <package name="bison" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="bison-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="cppcheck" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="crash-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="dpdk-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->

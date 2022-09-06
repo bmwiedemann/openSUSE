@@ -2277,9 +2277,11 @@ unsorted:
   - console-lang 
   - console-setup 
   - consoleet-darwin-fonts 
+  - consoleet-fixedsys-fonts 
   - consoleet-kbd-fonts 
   - consoleet-oldschoolpc-fonts 
   - consoleet-terminus-fonts 
+  - consoleet-xorg-fonts 
   - container-build-checks 
   - container-build-checks-strict 
   - container-build-checks-vendor-SUSE 
@@ -2399,7 +2401,7 @@ unsorted:
   - crash-doc 
   - crash-eppic 
   - crash-gcore 
-  - crash-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - crash-kmp-default 
   - crash-kmp-pae: [i586] 
   - crawl 
   - crawl-data 
@@ -7880,6 +7882,7 @@ unsorted:
   - joda-convert-javadoc 
   - joda-time 
   - joda-time-javadoc 
+  - joe 
   - jogl2 
   - john 
   - jomolhari-fonts 
@@ -8289,6 +8292,7 @@ unsorted:
   - kidletime-devel 
   - kigo 
   - kigo-lang 
+  - kika-fixedsys-fonts 
   - kile 
   - kile-lang 
   - killbots 
@@ -9420,6 +9424,8 @@ unsorted:
   - libQt6WebEngineQuick6: [x86_64] 
   - libQt6WebEngineWidgets6: [x86_64] 
   - libQt6WebSockets6 
+  - libQt6WebView6: [x86_64] 
+  - libQt6WebViewQuick6: [x86_64] 
   - libQt6Widgets6 
   - libQt6WlShellIntegration6 
   - libQt6Xml6 
@@ -12807,7 +12813,7 @@ unsorted:
   - libopenmpi_1_10_7-gnu-hpc 
   - libopenmpi_2_1_6-gnu-hpc 
   - libopenmpi_3_1_6-gnu-hpc 
-  - libopenmpi_4_1_1-gnu-hpc 
+  - libopenmpi_4_1_4-gnu-hpc 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
   - libopenmpt0-32bit: [x86_64] 
@@ -13920,6 +13926,9 @@ unsorted:
   - libshout3-32bit: [x86_64] 
   - libshp-devel 
   - libshp2 
+  - libshumate-1_0-1 
+  - libshumate-devel 
+  - libshumate-lang 
   - libsidplayfp-devel 
   - libsidplayfp6 
   - libsigc++2-devel 
@@ -15099,7 +15108,6 @@ unsorted:
   - libyajl-devel-static 
   - libyajl2-32bit: [x86_64] 
   - libyami-devel 
-  - libyami-utils: [x86_64] 
   - libyami1 
   - libyaml-devel 
   - libyang-devel 
@@ -16320,7 +16328,6 @@ unsorted:
   - microcom 
   - microdnf: [i586] 
   - microos-devel-tools 
-  - microos-tools: [i586] 
   - micropython: [x86_64] 
   - miller 
   - miltertest 
@@ -18426,12 +18433,12 @@ unsorted:
   - openmpi_3_1_6-gnu-hpc-docs 
   - openmpi_3_1_6-gnu-hpc-macros-devel 
   - openmpi_3_1_6-gnu-hpc-testsuite 
-  - openmpi_4_1_1-gnu-hpc 
-  - openmpi_4_1_1-gnu-hpc-devel 
-  - openmpi_4_1_1-gnu-hpc-devel-static 
-  - openmpi_4_1_1-gnu-hpc-docs 
-  - openmpi_4_1_1-gnu-hpc-macros-devel 
-  - openmpi_4_1_1-gnu-hpc-testsuite 
+  - openmpi_4_1_4-gnu-hpc 
+  - openmpi_4_1_4-gnu-hpc-devel 
+  - openmpi_4_1_4-gnu-hpc-devel-static 
+  - openmpi_4_1_4-gnu-hpc-docs 
+  - openmpi_4_1_4-gnu-hpc-macros-devel 
+  - openmpi_4_1_4-gnu-hpc-testsuite 
   - openmpt123 
   - openmw 
   - opennlp 
@@ -21108,6 +21115,9 @@ unsorted:
   - postgresql14-test 
   - postgresql14-timescaledb 
   - postgrey 
+  - postorius 
+  - postorius-web 
+  - postorius-web-uwsgi 
   - postsrsd 
   - potrace 
   - potrace-devel 
@@ -32153,6 +32163,15 @@ unsorted:
   - qt6-websockets-examples 
   - qt6-websockets-imports 
   - qt6-websockets-private-devel 
+  - qt6-webview: [x86_64] 
+  - qt6-webview-devel: [x86_64] 
+  - qt6-webview-docs-html: [x86_64] 
+  - qt6-webview-docs-qch: [x86_64] 
+  - qt6-webview-examples: [x86_64] 
+  - qt6-webview-imports: [x86_64] 
+  - qt6-webview-private-devel: [x86_64] 
+  - qt6-webviewquick-devel: [x86_64] 
+  - qt6-webviewquick-private-devel: [x86_64] 
   - qt6-widgets-devel 
   - qt6-widgets-private-devel 
   - qt6-wlshellintegration-private-devel 
@@ -42844,6 +42863,7 @@ unsorted:
   - typelib-1_0-RygelRenderer-2_6 
   - typelib-1_0-RygelRendererGst-2_6 
   - typelib-1_0-RygelServer-2_6 
+  - typelib-1_0-Shumate-1_0 
   - typelib-1_0-Signon-2_0 
   - typelib-1_0-Skk-1_0 
   - typelib-1_0-TelepathyFarstream-0_6 
