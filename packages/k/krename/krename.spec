@@ -1,7 +1,7 @@
 #
 # spec file for package krename
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           krename
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 Summary:        A Batch Renamer by KDE
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
-URL:            https://userbase.kde.org/KRename
+URL:            https://apps.kde.org/krename
 Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
+Source1:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        %{name}.keyring
 # PATCH-FIX-UPSTREAM servicemenus-files.patch asterios.dramis@gmail.com -- Make the desktop files KDE and XDG compatible
 Patch0:         servicemenus-files.patch
 # PATCH-FIX-UPSTREAM remove-gplv2-code.diff dmueller@suse.de -- Remove GPLv2 only code (only used for self-testing)
@@ -60,8 +62,9 @@ creation date or Exif information of an image.
 
 %prep
 %autosetup -p1
+
 # GPLv2 only code, not really needed, lets avoid the license discussion
-rm -rf src/modeltest.*
+rm src/modeltest.*
 
 %build
 %cmake_kf5 -d build
@@ -76,16 +79,10 @@ rm -rf src/modeltest.*
 %files -f %{name}.lang
 %license COPYING
 %doc AUTHORS README.md TODO
-%dir %{_kf5_iconsdir}/locolor
-%dir %{_kf5_iconsdir}/locolor/16x16
-%dir %{_kf5_iconsdir}/locolor/16x16/apps
-%dir %{_kf5_iconsdir}/locolor/32x32
-%dir %{_kf5_iconsdir}/locolor/32x32/apps
 %{_kf5_applicationsdir}/org.kde.krename.desktop
 %{_kf5_appstreamdir}/org.kde.krename.appdata.xml
 %{_kf5_bindir}/krename
 %{_kf5_iconsdir}/hicolor/*/apps/krename.png
-%{_kf5_iconsdir}/locolor/*/apps/krename.png
 %{_kf5_servicesdir}/ServiceMenus/
 
 %changelog

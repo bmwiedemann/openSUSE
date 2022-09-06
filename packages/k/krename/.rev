@@ -320,4 +320,22 @@
   kf5-filesystem doesn't own these folders anymore.</comment>
     <requestid>842808</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>10bafa450f6abe714dbcec1da81a46f2</srcmd5>
+    <version>5.0.2</version>
+    <time>1662462076</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.2:
+  * Prevent resizing issues with huge history entries (kde#398980)
+  * cmake: stop shipping app icons as locolor
+  * cmake: install 16px locolor icon as hicolor
+  * Add additional information to Appstream metadata
+  * Port away from deprecated KMessageBox::sorry
+  * Use action terms instead of Yes/No buttons in dialogs
+  * Remove the handbook entry leading into nowhere
+  * Fix starting from app launcher on Wayland (kde#427207)
+  * Updated translations (with newly included Estonian and Indonesian)
+- Add signature file and keyring (forwarded request 1001391 from wolfi323)</comment>
+    <requestid>1001397</requestid>
+  </revision>
 </revisionlist>
