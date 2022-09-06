@@ -64,7 +64,10 @@ BuildRequires:  openvdb-tools
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  wxGTK3-devel >= 3.1
+# Quoting Lucas Matena (see gh#prusa3d/PrusaSlicer#8299, issue 2):
+# if you link PrusaSlicer 2.5.x with wxWidgets 3.2, you will most likely break it.
+BuildRequires:  wxWidgets-3_0-devel
+BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libudev)
 Requires:       noto-sans-fonts
 
@@ -102,7 +105,8 @@ sed -i tests/libslic3r/CMakeLists.txt -e '\@test_voronoi.cpp@d'
 
 %cmake \
   -DSLIC3R_FHS=1 \
-  -DSLIC3R_GTK=3 \
+  -DSLIC3R_GTK=2 \
+  -DSLIC3R_WX_STABLE=1 \
   -DOPENVDB_FIND_MODULE_PATH=%{_libdir}/cmake/OpenVDB
 %cmake_build
 

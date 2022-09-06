@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  5 17:17:49 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Quoting Lucas Matena (see gh#prusa3d/PrusaSlicer#8299, issue 2): 
+  if you link PrusaSlicer 2.5.x with wxWidgets 3.2, you will most
+  likely break it: link against wxWidgets 3.0.5
+
+-------------------------------------------------------------------
 Mon Aug  1 15:42:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add PrusaSlicer-cereal.patch -- gh#prusa3d/PrusaSlicer#7809
