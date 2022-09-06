@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Mon Sep  5 07:42:36 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.0381, fixes the following problems
+  * Using common name in tests leads to flaky tests.
+  * VDM files are not recognized.
+  * Shell command is displayed in message window.
+  * Screen flickers when 'cmdheight' is zero.
+  * When updating the whole screen a popup may not be redrawn.
+  * Clearing screen causes flicker.
+  * Godot shader files are not recognized.
+  * Command line type of CmdlineChange differs from getcmdtype().
+  * Cannot use the message popup window directly.
+  * Crash when no errors and 'quickfixtextfunc' is set.
+  * Using common name in tests leads to flaky tests.
+  * Some changes for cmdheight=0 are not needed.
+  * items() does not work on a list. (Sergey Vlasov)
+  * OLD_DIGRAPHS is unused.
+  * ":highlight" hangs when 'cmdheight' is zero.
+  * Method tests fail.
+  * Cannot use items() on a string.
+  * Overwrite check may block BufWriteCmd.
+  * Method test fails.
+  * Test does not properly clean up.
+  * Checks for Dictionary argument often give a vague error message.
+  * Tests are flaky because of using a common file name.
+  * Flicker when resetting cmdline_row after updating the screen.
+  * Return value of list_append_list() not always checked.
+  * No check if the return value of XChangeGC() is NULL.
+  * The 'cmdheight' zero support causes too much trouble.
+  * mapset() does not restore <Nop> mapping properly.
+  * ":wincmd =" equalizes in two directions.
+  * ColorScheme autocommand triggered when colorscheme is not found. (Romain
+  Lafourcade)
+  * Error message for list argument could be clearer.
+  * :horizontal modifier not fully supported.
+  * Filetype of *.sil files not well detected.
+  * :echowindow does not work in a compiled function.
+  * Message window may obscure the command line.
+  * using :echowindow in a timer clears part of message
+  * Missing entry in switch.
+  * Check for uppercase char in autoload name is wrong, it checks the name
+  of the script.
+  * :echowindow sets the in_echowindow flag too early.
+  * 'linebreak' interferes with text property highlight if there is syntax
+  highlighting.
+  * 'breakindent' does not indent non-lists with "breakindentopt=list:-1".
+  * Error message for wrong argument type is not specific.
+  * Crash when invalid line number on :for is ignored.
+  * Removing a listener may result in a memory leak and remove subsequent
+  listerns.
+  * Expanding ":e %" does not work for remote files.
+  * Common names in test files causes tests to be flaky.
+  * Clang static analyzer gives warnings.
+  * File name used in test is unusual.
+  * Cannot use import->Func() in lambda. (Israel Chauca Fuentes)
+  * Coverity complains about dropping sign of character.
+  * Old Coverity warning for using NULL pointer.
+  * A failing flaky test doesn't mention the time.
+  * Cleaning up afterwards can make a function messy.
+  * Compiler warning for uninitialized variable.
+  * Coverity warns for NULL check and unused return value.
+  * Coverity still complains about dropping sign of character.
+  * The footer feature is unused.
+  * Clang warns for dead assignments.
+  * Argument assignment does not work.
+  * Compiler warning for uninitialized variable. (Tony Mechelynck)
+  * Cleaning up after writefile() is a hassle.
+  * Deleting files in tests is a hassle.
+  * Writefile test leaves files behind.
+
+-------------------------------------------------------------------
+Tue Aug 30 11:28:55 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- ignore-flaky-test-failure.patch: Ignore failure of flaky tests
+- disable-unreliable-tests-arch.patch: Removed
+
+-------------------------------------------------------------------
 Mon Aug 29 12:29:14 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0313, fixes the following problems

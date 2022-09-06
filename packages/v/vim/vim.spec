@@ -17,7 +17,7 @@
 
 
 %define pkg_version 9.0
-%define patchlevel 0313
+%define patchlevel 0381
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim90
 %define site_runtimepath %{_datadir}/vim/site
@@ -73,7 +73,7 @@ Patch21:        %{name}-7.3-filetype_changes.patch
 Patch22:        %{name}-7.4-filetype_mine.patch
 Patch23:        vim-8.0-ttytype-test.patch
 Patch24:        disable-unreliable-tests.patch
-Patch25:        disable-unreliable-tests-arch.patch
+Patch25:        ignore-flaky-test-failure.patch
 Patch100:       vim73-no-static-libpython.patch
 Patch101:       vim-8.0.1568-defaults.patch
 # https://github.com/vim/vim/issues/3348 - problem more probadly in buildenv than in test
@@ -213,9 +213,7 @@ cp %{SOURCE23} runtime/syntax/apparmor.vim
 %patch22 -p1
 %patch23 -p1
 %patch24 -p1
-%ifarch s390x %{arm} aarch64 riscv64
 %patch25 -p1
-%endif
 %patch100 -p1
 %patch101 -p1
 %patch102 -p1
@@ -480,12 +478,7 @@ sed -i "s@%{_bindir}/env perl@%{_bindir}/perl@" %{buildroot}%{_datadir}/vim/%{VI
 export TERM=xterm
 # Reset the terminal scrolling region left behind by the testsuite
 trap "printf '\e[r'" EXIT
-# Look for "TEST FAILURE" in the build log
-%ifarch ppc ppc64 ppc64le
-LC_ALL=en_US.UTF-8 make -j1 test || { echo "Ignore transient errors for PowerPC. boo#1072651"; }
-%else
-LC_ALL=en_US.UTF-8 make -j1 test
-%endif
+TEST_IGNORE_FLAKY=1 LC_ALL=en_US.UTF-8 make -j1 test
 
 %if %{with libalternatives}
 # with libalternatives

@@ -6256,4 +6256,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Test output shows up in git.</comment>
     <requestid>1000020</requestid>
   </revision>
+  <revision rev="321" vrev="1">
+    <srcmd5>2ea69e6fd807e3254fc2185ddbb27a53</srcmd5>
+    <version>9.0.0381</version>
+    <time>1662462047</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.0381, fixes the following problems
+  * Using common name in tests leads to flaky tests.
+  * VDM files are not recognized.
+  * Shell command is displayed in message window.
+  * Screen flickers when 'cmdheight' is zero.
+  * When updating the whole screen a popup may not be redrawn.
+  * Clearing screen causes flicker.
+  * Godot shader files are not recognized.
+  * Command line type of CmdlineChange differs from getcmdtype().
+  * Cannot use the message popup window directly.
+  * Crash when no errors and 'quickfixtextfunc' is set.
+  * Using common name in tests leads to flaky tests.
+  * Some changes for cmdheight=0 are not needed.
+  * items() does not work on a list. (Sergey Vlasov)
+  * OLD_DIGRAPHS is unused.
+  * &quot;:highlight&quot; hangs when 'cmdheight' is zero.
+  * Method tests fail.
+  * Cannot use items() on a string.
+  * Overwrite check may block BufWriteCmd.
+  * Method test fails.
+  * Test does not properly clean up.
+  * Checks for Dictionary argument often give a vague error message.
+  * Tests are flaky because of using a common file name.
+  * Flicker when resetting cmdline_row after updating the screen.
+  * Return value of list_append_list() not always checked.
+  * No check if the return value of XChangeGC() is NULL.
+  * The 'cmdheight' zero support causes too much trouble.
+  * mapset() does not restore &lt;Nop&gt; mapping properly.
+  * &quot;:wincmd =&quot; equalizes in two directions.
+  * ColorScheme autocommand triggered when colorscheme is not found. (Romain</comment>
+    <requestid>1001211</requestid>
+  </revision>
 </revisionlist>
