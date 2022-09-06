@@ -46,8 +46,8 @@ get_device() {
     fi
 
     cd $NETWORKDIR
-    interfaces=$($LS ifcfg-ppp* 2>/dev/null | egrep -v '(~|\.bak)$' | \
-                 egrep -v '(rpmsave|rpmorig|rpmnew)' | sed 's/^ifcfg-//g')
+    interfaces=$($LS ifcfg-ppp* 2>/dev/null | grep -E -v '(~|\.bak)$' | \
+                 grep -E -v '(rpmsave|rpmorig|rpmnew)' | sed 's/^ifcfg-//g')
 
     for i in $interfaces ; do
         test -f ifcfg-$i && . ifcfg-$i 2>/dev/null
@@ -466,9 +466,9 @@ else
     cp /dev/null $CHAPFILE.bak
 fi
 
-egrep -v "^$USER|^\"$USER\"" $PAPFILE.bak > $PAPFILE
+grep -E -v "^$USER|^\"$USER\"" $PAPFILE.bak > $PAPFILE
 $ECHO "\"$USER\"	*	\"$PWD1\"" >> $PAPFILE
-egrep -v "^$USER|^\"$USER\"" $CHAPFILE.bak > $CHAPFILE
+grep -E -v "^$USER|^\"$USER\"" $CHAPFILE.bak > $CHAPFILE
 $ECHO "\"$USER\"	*	\"$PWD1\"" >> $CHAPFILE
 
 $ECHO ""

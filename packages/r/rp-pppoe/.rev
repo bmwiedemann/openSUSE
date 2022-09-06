@@ -209,4 +209,12 @@
     <comment>- Removed Wants=network.target from pppoe.service (bsc#1196359).</comment>
     <requestid>960800</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>196ef5a16ca5e4c7fdcac6998668062c</srcmd5>
+    <version>3.15</version>
+    <time>1662462042</time>
+    <user>dimstar_suse</user>
+    <comment>- Converted usage of egrep to &quot;grep -E&quot; (boo#1203092).</comment>
+    <requestid>1001160</requestid>
+  </revision>
 </revisionlist>

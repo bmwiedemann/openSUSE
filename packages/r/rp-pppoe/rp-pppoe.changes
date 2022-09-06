@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep  4 17:53:20 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Converted usage of egrep to "grep -E" (boo#1203092).
+
+-------------------------------------------------------------------
 Thu Mar 10 13:47:22 UTC 2022 - Илья Индиго <ilya@ilya.cf>
 
 - Removed Wants=network.target from pppoe.service (bsc#1196359).

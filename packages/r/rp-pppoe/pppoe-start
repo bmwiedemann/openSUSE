@@ -40,8 +40,8 @@ get_device() {
     fi
 
     cd $NETWORKDIR
-    interfaces=$($LS ifcfg-ppp* 2>/dev/null | egrep -v '(~|\.bak)$' | \
-                 egrep -v '(rpmsave|rpmorig|rpmnew)' | sed 's/^ifcfg-//g')
+    interfaces=$($LS ifcfg-ppp* 2>/dev/null | grep -E -v '(~|\.bak)$' | \
+                 grep -E -v '(rpmsave|rpmorig|rpmnew)' | sed 's/^ifcfg-//g')
 
     for i in $interfaces ; do
         test -f ifcfg-$i && . ifcfg-$i 2>/dev/null
