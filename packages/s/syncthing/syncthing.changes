@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep  6 08:25:10 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.21.0
+  * Bugfixes:
+    #8219: REST API: db/completion no output when one folder is paused
+    #8479: Panic in failure reporting
+
+  * Enhancements:
+    #1329: Add support for syncing ownership of files
+    #7981: Show likely status of disconnected devices
+    #8296: Auto-accepted receive-encrypted folders should have more sensible defaults
+    #8323: Show internally used paths in the GUI for debugging
+    #8448: Remove "restart on wakeup" functionality
+
+-------------------------------------------------------------------
 Wed Aug  3 08:27:37 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.20.4

@@ -1124,4 +1124,22 @@
 </comment>
     <requestid>992531</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>ee1cb8851d393a4bdc6c57721c1424c6</srcmd5>
+    <version>1.21.0</version>
+    <time>1662462071</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.21.0
+  * Bugfixes:
+    #8219: REST API: db/completion no output when one folder is paused
+    #8479: Panic in failure reporting
+  * Enhancements:
+    #1329: Add support for syncing ownership of files
+    #7981: Show likely status of disconnected devices
+    #8296: Auto-accepted receive-encrypted folders should have more sensible defaults
+    #8323: Show internally used paths in the GUI for debugging
+    #8448: Remove &quot;restart on wakeup&quot; functionality
+</comment>
+    <requestid>1001383</requestid>
+  </revision>
 </revisionlist>
