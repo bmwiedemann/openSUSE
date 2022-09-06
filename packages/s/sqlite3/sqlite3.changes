@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep  5 15:09:48 UTC 2022 - Reinhard Max <max@suse.com>
+
+- update to 3.39.3:
+  * Use a statement journal on DML statement affecting two or more
+    database rows if the statement makes use of a SQL functions
+    that might abort.
+  * Use a mutex to protect the PRAGMA temp_store_directory and
+    PRAGMA data_store_directory statements, even though they are
+    decremented and documented as not being threadsafe.
+
+-------------------------------------------------------------------
 Thu Jul 21 17:02:27 UTC 2022 - Reinhard Max <max@suse.com>
 
 - update to 3.39.2:

@@ -1410,4 +1410,18 @@ CVE-2020-13871 boo#1172646</comment>
     <comment></comment>
     <requestid>991047</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>23be9730829d57ea96681daef13019e6</srcmd5>
+    <version>3.39.3</version>
+    <time>1662462037</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.39.3:
+  * Use a statement journal on DML statement affecting two or more
+    database rows if the statement makes use of a SQL functions
+    that might abort.
+  * Use a mutex to protect the PRAGMA temp_store_directory and
+    PRAGMA data_store_directory statements, even though they are
+    decremented and documented as not being threadsafe.</comment>
+    <requestid>1001301</requestid>
+  </revision>
 </revisionlist>
