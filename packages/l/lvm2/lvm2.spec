@@ -21,7 +21,7 @@
 %define libname_event libdevmapper-event1_03
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define cmdlib liblvm2cmd2_03
-%define lvm2_version              2.03.15
+%define lvm2_version              2.03.16
 %define device_mapper_version     1.02.185
 %define thin_provisioning_version 0.7.0
 %define _supportsanlock 0
@@ -32,23 +32,28 @@
 %define lvm2_cmirrord_version 2.03
 %define liblvm2app2_2_version 2.03
 %define liblvm2cmd2_02_version 2.03
+
 %if 0%{_supportsanlock} == 1
-%define sanlock_version 3.3.0
+  %define sanlock_version 3.3.0
 %endif
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %define psuffix %{nil}
+
 %if "%{flavor}" == "devicemapper"
-%define psuffix -device-mapper
-%bcond_without devicemapper
+  %define psuffix -device-mapper
+  %bcond_without devicemapper
 %else
-%bcond_with devicemapper
+  %bcond_with devicemapper
 %endif
+
 %if "%{flavor}" == "lockd"
-%define psuffix -lvmlockd
-%bcond_without lockd
+  %define psuffix -lvmlockd
+  %bcond_without lockd
 %else
-%bcond_with lockd
+  %bcond_with lockd
 %endif
+
 Name:           lvm2%{psuffix}
 Version:        %{lvm2_version}
 Release:        0
@@ -63,31 +68,20 @@ Source42:       ftp://sourceware.org/pub/lvm2/LVM2.%{version}.tgz.asc
 Source99:       baselibs.conf
 
 # Upstream patches
-Patch0001:      0001-post-release.patch
-Patch0002:      0002-asan-fix-some-reports-from-libasan.patch
-Patch0003:      0003-make-generate.patch
-Patch0004:      0004-tests-udev-pvscan-vgchange-fix-service-wait.patch
-Patch0005:      0005-devices-file-do-not-clear-PVID-of-unread-devices.patch
-Patch0006:      0006-tests-skip-vgchange-pvs-online.sh-on-rhel5.patch
-Patch0007:      0007-dev_manager-fix-dm_task_get_device_list.patch
-Patch0008:      0008-dev_manager-failing-status-is-not-internal-error.patch
-Patch0009:      0009-clang-add-extra-check.patch
-Patch0010:      0010-clang-possible-better-compilation-with-musl-c.patch
-Patch0011:      0011-dev_manager-do-not-query-for-open_count.patch
-Patch0012:      0012-dev_manager-use-list-info-for-preset-devs.patch
-Patch0013:      0013-man-lvmcache-add-more-writecache-cachesettings-info.patch
-Patch0014:      0014-man-update-cachesettings-option-description.patch
-Patch0015:      0015-man-lvmcache-mention-writecache-memory-usage.patch
-Patch0016:      0016-writecache-display-block-size-from-lvs.patch
-Patch0017:      0017-devices-simplify-dev_cache_get_by_devt.patch
-Patch0018:      0018-devices-drop-incorrect-paths-from-aliases-list.patch
-Patch0019:      0019-devices-initial-use-of-existing-option.patch
-Patch0020:      0020-devices-fix-dev_name-assumptions.patch
-Patch0021:      0021-devices-use-dev-cache-aliases-handling-from-label-sc.patch
-Patch0022:      0022-devices-only-close-PVs-on-LVs-when-scan_lvs-is-enabl.patch
-Patch0023:      0023-writecache-check-memory-usage.patch
-Patch0024:      0024-pvscan-don-t-use-udev-for-external-device-info.patch
-Patch0025:      0025-vgchange-monitor-don-t-use-udev-info.patch
+Patch0001:      0001-devices-file-move-clean-up-after-command-is-run.patch
+Patch0002:      0002-devices-file-fail-if-devicesfile-filename-doesn-t-ex.patch
+Patch0003:      0003-filter-mpath-handle-other-wwid-types-in-blacklist.patch
+Patch0004:      0004-filter-mpath-get-wwids-from-sysfs-vpd_pg83.patch
+Patch0005:      0005-pvdisplay-restore-reportformat-option.patch
+Patch0006:      0006-exit-with-error-when-devicesfile-name-doesn-t-exist.patch
+Patch0007:      0007-report-fix-pe_start-column-type-from-NUM-to-SIZ.patch
+Patch0008:      0008-_vg_read_raw_area-fix-segfault-caused-by-using-null-.patch
+Patch0009:      0009-mm-remove-libaio-from-being-skipped.patch
+Patch0010:      0010-dmsetup-check-also-for-ouf-of-range-value.patch
+Patch0011:      0011-devices-drop-double-from-sysfs-path.patch
+Patch0012:      0012-devices-file-fix-pvcreate-uuid-matching-pvid-entry-w.patch
+Patch0013:      0013-vgimportdevices-change-result-when-devices-are-not-a.patch
+Patch0014:      0014-vgimportdevices-fix-locking-when-creating-devices-fi.patch
 # SUSE patches: 1000+ for LVM
 # Never upstream
 Patch1001:      cmirrord_remove_date_time_from_compilation.patch
@@ -117,6 +111,7 @@ Requires(postun):coreutils
 Provides:       lvm = %{version}
 Obsoletes:      lvm2-cmirrord <= %{lvm2_cmirrord_version}
 %{?systemd_requires}
+
 %if %{with devicemapper}
 BuildRequires:  gcc-c++
 BuildRequires:  suse-module-tools
@@ -161,17 +156,6 @@ Volume Manager.
 %patch0012 -p1
 %patch0013 -p1
 %patch0014 -p1
-%patch0015 -p1
-%patch0016 -p1
-%patch0017 -p1
-%patch0018 -p1
-%patch0019 -p1
-%patch0020 -p1
-%patch0021 -p1
-%patch0022 -p1
-%patch0023 -p1
-%patch0024 -p1
-%patch0025 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1
@@ -191,23 +175,22 @@ Volume Manager.
 %if !%{with devicemapper} && !%{with lockd}
 extra_opts="
     --enable-blkid_wiping
-    --enable-realtime
     --with-cache=internal
-	--with-writecache=internal
+    --with-writecache=internal
+    --with-integrity=internal
     --with-default-locking-dir=/run/lock/lvm
     --with-default-pid-dir=/run
     --with-default-run-dir=/run/lvm
-    --enable-cmirrord
     --enable-fsadm
     --enable-write_install
     --with-vdo=internal
     --with-vdo-format=%{_bindir}/vdoformat
 "
 %endif
+
 %if %{with lockd}
 extra_opts="
     --enable-blkid_wiping
-    --enable-realtime
     --with-default-locking-dir=/run/lock/lvm
     --with-default-pid-dir=/run
     --with-default-run-dir=/run/lvm
@@ -226,6 +209,7 @@ export PATH=$PATH:/sbin:%{_sbindir}
 sed -ie "s/%{device_mapper_version}/1.03.01/g" VERSION_DM
 %configure \
     --enable-dmeventd \
+    --enable-dmfilemapd \
     --enable-lvmpolld \
     --enable-cmdlib \
     --enable-udev_rules \
@@ -245,121 +229,131 @@ sed -ie "s/%{device_mapper_version}/1.03.01/g" VERSION_DM
     --with-thin-check=%{_sbindir}/thin_check \
     --with-thin-dump=%{_sbindir}/thin_dump \
     --with-thin-repair=%{_sbindir}/thin_repair \
-    --with-integrity=internal \
     --disable-silent-rules \
     $extra_opts
 ### COMMON-CONFIG-END ###
 
 %if %{with devicemapper}
-%make_build device-mapper
+  %make_build device-mapper
 %else
-%make_build
+  %make_build
 %endif
 
 %install
 %if %{with devicemapper}
-make DESTDIR=%{buildroot} \
-    install_device-mapper \
-    install_systemd_units
+  make DESTDIR=%{buildroot} \
+      install_device-mapper \
+      install_systemd_units
 
-ln -s service %{buildroot}/%{_sbindir}/rcdm-event
+  ln -s service %{buildroot}/%{_sbindir}/rcdm-event
 
-# provide 1.02 compat links for the shared libraries
-# this is needed for various binary packages
-ln -s libdevmapper.so.1.03 %{buildroot}/%{_libdir}/libdevmapper.so.1.02
-ln -s libdevmapper-event.so.1.03 %{buildroot}/%{_libdir}/libdevmapper-event.so.1.02
+  # provide 1.02 compat links for the shared libraries
+  # this is needed for various binary packages
+  ln -s libdevmapper.so.1.03 %{buildroot}/%{_libdir}/libdevmapper.so.1.02
+  ln -s libdevmapper-event.so.1.03 %{buildroot}/%{_libdir}/libdevmapper-event.so.1.02
 
-# remove blkd, will be in lvm2 proper
-# without force on purpose to detect changes and fail if it happens
-rm %{buildroot}%{_sbindir}/blkdeactivate
-rm %{buildroot}%{_unitdir}/blk-availability.service
-rm %{buildroot}%{_unitdir}/lvm2-monitor.service
-rm %{buildroot}%{_mandir}/man8/blkdeactivate.8
+  # remove blkd, will be in lvm2 proper
+  # without force on purpose to detect changes and fail if it happens
+  rm %{buildroot}%{_sbindir}/blkdeactivate
+  rm %{buildroot}%{_unitdir}/blk-availability.service
+  rm %{buildroot}%{_unitdir}/lvm2-monitor.service
+  rm %{buildroot}%{_mandir}/man8/blkdeactivate.8
 
-# compat symlinks in /sbin remove with Leap 43
-%if !0%{?usrmerged}
-mkdir -p %{buildroot}/sbin
-ln -s %{_sbindir}/dmsetup %{buildroot}/sbin/dmsetup
-%endif
+  # remove files, which will be in lvm2 & lockd packages
+  rm %{buildroot}%{_unitdir}/lvm2-lvmpolld.service
+  rm %{buildroot}%{_unitdir}/lvm2-lvmpolld.socket
+  rm %{buildroot}%{_unitdir}/lvmlockd.service
+  rm %{buildroot}%{_unitdir}/lvmlocks.service
+
+  # compat symlinks in /sbin remove with Leap 43
+  %if !0%{?usrmerged}
+  mkdir -p %{buildroot}/sbin
+  ln -s %{_sbindir}/dmsetup %{buildroot}/sbin/dmsetup
+  %endif
+
 %else
-%if %{with lockd}
-make DESTDIR=%{buildroot} \
-    install_systemd_units install_systemd_generators
-make DESTDIR=%{buildroot} install -C daemons/lvmlockd
 
-# lvmlockd does not have separate target install the mans by hand for now
-install -m0644 -D man/lvmlockd.8 %{buildroot}%{_mandir}/man8/lvmlockd.8
-install -m0644 -D man/lvmlockctl.8 %{buildroot}%{_mandir}/man8/lvmlockctl.8
+  %if %{with lockd}
+    make DESTDIR=%{buildroot} \
+        install_systemd_units install_systemd_generators
+    make DESTDIR=%{buildroot} install -C daemons/lvmlockd
 
-# rc services symlinks
-ln -s service %{buildroot}%{_sbindir}/rclvm2-lvmlockd
-ln -s service %{buildroot}%{_sbindir}/rclvm2-lvmlocking
+    # lvmlockd does not have separate target install the mans by hand for now
+    install -m0644 -D man/lvmlockd.8 %{buildroot}%{_mandir}/man8/lvmlockd.8
+    install -m0644 -D man/lvmlockctl.8 %{buildroot}%{_mandir}/man8/lvmlockctl.8
 
-# remove files from lvm2 split due to systemd_generators picking them up
-rm %{buildroot}%{_unitdir}/blk-availability.service
-rm %{buildroot}%{_unitdir}/dm-event.service
-rm %{buildroot}%{_unitdir}/dm-event.socket
-rm %{buildroot}%{_unitdir}/lvm2-monitor.service
-rm %{buildroot}%{_unitdir}/lvm2-lvmpolld.service
-rm %{buildroot}%{_unitdir}/lvm2-lvmpolld.socket
-%else
-%make_install
-make install_system_dirs DESTDIR=%{buildroot}
-make install_systemd_units DESTDIR=%{buildroot}
-make install_systemd_generators DESTDIR=%{buildroot}
-make install_tmpfiles_configuration DESTDIR=%{buildroot}
-# Install configuration file
-install -m 644 %{SOURCE1} "%{buildroot}/%{_sysconfdir}/lvm/"
-# Install testsuite
-make -C test install DESTDIR=%{buildroot}
+    # rc services symlinks
+    ln -s service %{buildroot}%{_sbindir}/rclvm2-lvmlockd
+    ln -s service %{buildroot}%{_sbindir}/rclvm2-lvmlocking
 
-pushd "%{buildroot}/%{_libdir}"
-ln -sf liblvm2cmd.so.2.03 liblvm2cmd.so
-for i in libdevmapper-event-lvm2{mirror,raid,snapshot,thin}; do
-    ln -sf "device-mapper/$i.so" "$i.so"
-    ln -sf "device-mapper/$i.so" "$i.so.2.03"
-done
-popd
+    # remove files from lvm2 split due to systemd_generators picking them up
+    rm %{buildroot}%{_unitdir}/blk-availability.service
+    rm %{buildroot}%{_unitdir}/dm-event.service
+    rm %{buildroot}%{_unitdir}/dm-event.socket
+    rm %{buildroot}%{_unitdir}/lvm2-monitor.service
+    rm %{buildroot}%{_unitdir}/lvm2-lvmpolld.service
+    rm %{buildroot}%{_unitdir}/lvm2-lvmpolld.socket
+  %else
+    %make_install
+    make install_system_dirs DESTDIR=%{buildroot}
+    make install_systemd_units DESTDIR=%{buildroot}
+    make install_systemd_generators DESTDIR=%{buildroot}
+    make install_tmpfiles_configuration DESTDIR=%{buildroot}
+    # Install configuration file
+    install -m 644 %{SOURCE1} "%{buildroot}/%{_sysconfdir}/lvm/"
+    # Install testsuite
+    make -C test install DESTDIR=%{buildroot}
 
-#rc compat symlinks
-ln -s service %{buildroot}%{_sbindir}/rcblk-availability
-ln -s service %{buildroot}%{_sbindir}/rclvm2-monitor
-ln -s service %{buildroot}%{_sbindir}/rclvm2-lvmpolld
+    pushd "%{buildroot}/%{_libdir}"
+    ln -sf liblvm2cmd.so.2.03 liblvm2cmd.so
+    for i in libdevmapper-event-lvm2{mirror,raid,snapshot,thin}; do
+        ln -sf "device-mapper/$i.so" "$i.so"
+        ln -sf "device-mapper/$i.so" "$i.so.2.03"
+    done
+    popd
 
-# Remove devicemapper binaries, plain rm so we fail if something change
-rm %{buildroot}%{_sbindir}/dmsetup
-rm %{buildroot}%{_sbindir}/dmeventd
-rm %{buildroot}%{_sbindir}/dmstats
-rm %{buildroot}%{_udevrulesdir}/10-dm.rules
-rm %{buildroot}%{_udevrulesdir}/13-dm-disk.rules
-rm %{buildroot}%{_udevrulesdir}/95-dm-notify.rules
-rm %{buildroot}%{_unitdir}/dm-event.socket
-rm %{buildroot}%{_unitdir}/dm-event.service
-# See bsc#1037309 for more info
-rm %{buildroot}%{_unitdir}/lvmlockd.service
-rm %{buildroot}%{_unitdir}/lvmlocks.service
-rm %{buildroot}%{_includedir}/libdevmapper*.h
-rm %{buildroot}%{_libdir}/libdevmapper.so.*
-rm %{buildroot}%{_libdir}/libdevmapper-event.so.*
-rm %{buildroot}%{_libdir}/libdevmapper.so
-rm %{buildroot}%{_libdir}/libdevmapper-event.so
-rm %{buildroot}%{_libdir}/pkgconfig/devmapper*.pc
-rm %{buildroot}%{_mandir}/man8/lvmlockctl.8
-rm %{buildroot}%{_mandir}/man8/lvmlockd.8
-rm %{buildroot}%{_mandir}/man8/dmstats.8
-rm %{buildroot}%{_mandir}/man8/dmsetup.8
-rm %{buildroot}%{_mandir}/man8/dmeventd.8
+    #rc compat symlinks
+    ln -s service %{buildroot}%{_sbindir}/rcblk-availability
+    ln -s service %{buildroot}%{_sbindir}/rclvm2-monitor
+    ln -s service %{buildroot}%{_sbindir}/rclvm2-lvmpolld
 
-%if !0%{?usrmerged}
-# compat symlinks in /sbin remove with Leap 43
-mkdir -p %{buildroot}/sbin
-pushd %{buildroot}/%{_sbindir}
-for i in {vg,pv,lv}*; do
-    ln -s %{_sbindir}/$i %{buildroot}/sbin/$i
-done
-popd
-%endif
-%endif
+    # Remove devicemapper binaries, plain rm so we fail if something change
+    rm %{buildroot}%{_sbindir}/dmsetup
+    rm %{buildroot}%{_sbindir}/dmeventd
+    rm %{buildroot}%{_sbindir}/dmstats
+    rm %{buildroot}%{_sbindir}/dmfilemapd
+    rm %{buildroot}%{_udevrulesdir}/10-dm.rules
+    rm %{buildroot}%{_udevrulesdir}/13-dm-disk.rules
+    rm %{buildroot}%{_udevrulesdir}/95-dm-notify.rules
+    rm %{buildroot}%{_unitdir}/dm-event.socket
+    rm %{buildroot}%{_unitdir}/dm-event.service
+    # See bsc#1037309 for more info
+    rm %{buildroot}%{_unitdir}/lvmlockd.service
+    rm %{buildroot}%{_unitdir}/lvmlocks.service
+    rm %{buildroot}%{_includedir}/libdevmapper*.h
+    rm %{buildroot}%{_libdir}/libdevmapper.so.*
+    rm %{buildroot}%{_libdir}/libdevmapper-event.so.*
+    rm %{buildroot}%{_libdir}/libdevmapper.so
+    rm %{buildroot}%{_libdir}/libdevmapper-event.so
+    rm %{buildroot}%{_libdir}/pkgconfig/devmapper*.pc
+    rm %{buildroot}%{_mandir}/man8/lvmlockctl.8
+    rm %{buildroot}%{_mandir}/man8/lvmlockd.8
+    rm %{buildroot}%{_mandir}/man8/dmstats.8
+    rm %{buildroot}%{_mandir}/man8/dmsetup.8
+    rm %{buildroot}%{_mandir}/man8/dmeventd.8
+    rm %{buildroot}%{_mandir}/man8/dmfilemapd.8
+
+    %if !0%{?usrmerged}
+      # compat symlinks in /sbin remove with Leap 43
+      mkdir -p %{buildroot}/sbin
+      pushd %{buildroot}/%{_sbindir}
+      for i in {vg,pv,lv}*; do
+          ln -s %{_sbindir}/$i %{buildroot}/sbin/$i
+      done
+      popd
+    %endif
+
+  %endif
 %endif
 
 %if %{with devicemapper}
@@ -401,9 +395,11 @@ Programs and man pages for configuring and using the device mapper.
 %{_sbindir}/dmsetup
 %{_sbindir}/dmeventd
 %{_sbindir}/dmstats
+%{_sbindir}/dmfilemapd
 %{_mandir}/man8/dmstats.8%{?ext_man}
 %{_mandir}/man8/dmsetup.8%{?ext_man}
 %{_mandir}/man8/dmeventd.8%{?ext_man}
+%{_mandir}/man8/dmfilemapd.8%{?ext_man}
 %{_udevrulesdir}/10-dm.rules
 %{_udevrulesdir}/13-dm-disk.rules
 %{_udevrulesdir}/95-dm-notify.rules
@@ -557,7 +553,6 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %{_sbindir}/lvmdump
 %{_sbindir}/lvmpolld
 %{_sbindir}/lvm_import_vdo
-# Other files
 %{_sbindir}/lvchange
 %{_sbindir}/lvconvert
 %{_sbindir}/lvcreate
@@ -607,11 +602,11 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 # compat symlinks in /sbin
 %if !0%{?usrmerged}
 /sbin/lvm
-/sbin/lvm_import_vdo
 /sbin/lvmconfig
 /sbin/lvmdevices
 /sbin/lvmdump
 /sbin/lvmpolld
+/sbin/lvm_import_vdo
 /sbin/lvchange
 /sbin/lvconvert
 /sbin/lvcreate
@@ -718,6 +713,7 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %{_mandir}/man8/blkdeactivate.8%{?ext_man}
 %{_mandir}/man8/lvmpolld.8%{?ext_man}
 %{_mandir}/man8/lvm-lvpoll.8%{?ext_man}
+%{_mandir}/man8/lvm_import_vdo.8%{?ext_man}
 %{_udevdir}/rules.d/11-dm-lvm.rules
 %{_udevdir}/rules.d/69-dm-lvm.rules
 %dir %{_sysconfdir}/lvm

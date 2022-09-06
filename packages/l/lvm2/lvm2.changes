@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Thu Sep  1 02:50:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
+
+- Update lvm2 from LVM2.2.03.15 to LVM2.2.03.16
+
+  *** WHATS_NEW for 2.03.16 ***
+
+  Version 2.03.16 - 18th May 2022
+  ===============================
+    Fix segfault when handling selection with historical LVs.
+    Add support --vdosettings with lvcreate, lvconvert, lvchange.
+    Filtering multipath devices respects blacklist setting from multipath configuration.
+    lvmdevices support for removing by device id using --deviceidtype and --deldev.
+    Display writecache block size with lvs -o writecache_block_size.
+    Improve cachesettings description in man lvmcache.
+    Fix lossing of delete message on thin-pool extension.
+
+- Drop patches that have been merged into upstream
+  - 0001-post-release.patch
+  - 0002-asan-fix-some-reports-from-libasan.patch
+  - 0003-make-generate.patch
+  - 0004-tests-udev-pvscan-vgchange-fix-service-wait.patch
+  - 0005-devices-file-do-not-clear-PVID-of-unread-devices.patch
+  - 0006-tests-skip-vgchange-pvs-online.sh-on-rhel5.patch
+  - 0007-dev_manager-fix-dm_task_get_device_list.patch
+  - 0008-dev_manager-failing-status-is-not-internal-error.patch
+  - 0009-clang-add-extra-check.patch
+  - 0010-clang-possible-better-compilation-with-musl-c.patch
+  - 0011-dev_manager-do-not-query-for-open_count.patch
+  - 0012-dev_manager-use-list-info-for-preset-devs.patch
+  - 0013-man-lvmcache-add-more-writecache-cachesettings-info.patch
+  - 0014-man-update-cachesettings-option-description.patch
+  - 0015-man-lvmcache-mention-writecache-memory-usage.patch
+  - 0016-writecache-display-block-size-from-lvs.patch
+  - 0017-devices-simplify-dev_cache_get_by_devt.patch
+  - 0018-devices-drop-incorrect-paths-from-aliases-list.patch
+  - 0019-devices-initial-use-of-existing-option.patch
+  - 0020-devices-fix-dev_name-assumptions.patch
+  - 0021-devices-use-dev-cache-aliases-handling-from-label-sc.patch
+  - 0022-devices-only-close-PVs-on-LVs-when-scan_lvs-is-enabl.patch
+  - 0023-writecache-check-memory-usage.patch
+  - 0024-pvscan-don-t-use-udev-for-external-device-info.patch
+  - 0025-vgchange-monitor-don-t-use-udev-info.patch
+
+- Add upstream patch
+  - 0001-devices-file-move-clean-up-after-command-is-run.patch
+  - 0002-devices-file-fail-if-devicesfile-filename-doesn-t-ex.patch
+  - 0003-filter-mpath-handle-other-wwid-types-in-blacklist.patch
+  - 0004-filter-mpath-get-wwids-from-sysfs-vpd_pg83.patch
+  - 0005-pvdisplay-restore-reportformat-option.patch
+  - 0006-exit-with-error-when-devicesfile-name-doesn-t-exist.patch
+  - 0007-report-fix-pe_start-column-type-from-NUM-to-SIZ.patch
+  - 0008-_vg_read_raw_area-fix-segfault-caused-by-using-null-.patch
+  - 0009-mm-remove-libaio-from-being-skipped.patch
+  - 0010-dmsetup-check-also-for-ouf-of-range-value.patch
+  - 0011-devices-drop-double-from-sysfs-path.patch
+  - 0012-devices-file-fix-pvcreate-uuid-matching-pvid-entry-w.patch
+  - 0013-vgimportdevices-change-result-when-devices-are-not-a.patch
+  - 0014-vgimportdevices-fix-locking-when-creating-devices-fi.patch
+
+- Update patch
+  - bug-1184687_Add-nolvm-for-kernel-cmdline.patch
+
+- update lvm2.spec
+  - indent some lines for easy read
+  - add new man: lvm_import_vdo.8 dmfilemapd.8
+  - remove config item '--enable-cmirrord', which was obsoleted.
+  - remove config item '--enable-realtime', which became default setting.
+  - add config item "--enable-dmfilemapd" for new daemon dmfilemapd
+
+- lvm.conf
+  - align upstream style, comment out default values
+
+-------------------------------------------------------------------
 Wed Mar 30 10:11:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
 
 -  lvm2-monitor.service reported warning messages for udev didn't finish to set up device database (bsc#1197183)

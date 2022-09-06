@@ -12,14 +12,10 @@ allow user to enable lvm2 devices by manual.
 
 Signed-off-by: Heming Zhao <heming.zhao@suse.com>
 ---
- scripts/lvm2-pvscan.service.in | 1 +
- udev/69-dm-lvm-metad.rules.in  | 3 +++
- 2 files changed, 4 insertions(+)
 
-diff --git a/scripts/lvm2-pvscan.service.in b/scripts/lvm2-pvscan.service.in
-index 09753e8c9ef1..1977e4e215fb 100644
---- a/scripts/lvm2-pvscan.service.in
-+++ b/scripts/lvm2-pvscan.service.in
+diff -Nupr a/scripts/lvm2-pvscan.service.in b/scripts/lvm2-pvscan.service.in
+--- a/scripts/lvm2-pvscan.service.in	2022-09-02 14:05:03.706825230 +0800
++++ b/scripts/lvm2-pvscan.service.in	2022-09-02 14:04:09.115063287 +0800
 @@ -7,6 +7,7 @@ BindsTo=dev-block-%i.device
  After=multipathd.service
  Before=shutdown.target
@@ -28,11 +24,10 @@ index 09753e8c9ef1..1977e4e215fb 100644
  
  [Service]
  Type=oneshot
-diff --git a/udev/69-dm-lvm-metad.rules.in b/udev/69-dm-lvm-metad.rules.in
-index 78f506520c45..16e8536e8a2a 100644
---- a/udev/69-dm-lvm-metad.rules.in
-+++ b/udev/69-dm-lvm-metad.rules.in
-@@ -19,6 +19,9 @@ SUBSYSTEM!="block", GOTO="lvm_end"
+diff -Nupr a/udev/69-dm-lvm-metad.rules.in b/udev/69-dm-lvm-metad.rules.in
+--- a/udev/69-dm-lvm-metad.rules.in	2022-09-02 14:04:42.618917180 +0800
++++ b/udev/69-dm-lvm-metad.rules.in	2022-09-02 14:03:39.707191529 +0800
+@@ -12,6 +12,9 @@ SUBSYSTEM!="block", GOTO="lvm_end"
  
  ENV{DM_UDEV_DISABLE_OTHER_RULES_FLAG}=="1", GOTO="lvm_end"
  
@@ -42,6 +37,16 @@ index 78f506520c45..16e8536e8a2a 100644
  # Detect removed PV label by comparing previous ID_FS_TYPE value with current one.
  ENV{.ID_FS_TYPE_NEW}="$env{ID_FS_TYPE}"
  IMPORT{db}="ID_FS_TYPE"
--- 
-1.8.3.1
-
+diff -Nupr a/udev/69-dm-lvm.rules.in b/udev/69-dm-lvm.rules.in
+--- a/udev/69-dm-lvm.rules.in	2022-09-02 14:04:51.074880312 +0800
++++ b/udev/69-dm-lvm.rules.in	2022-09-02 14:07:19.978230990 +0800
+@@ -10,6 +10,9 @@ SUBSYSTEM!="block", GOTO="lvm_end"
+ 
+ ENV{DM_UDEV_DISABLE_OTHER_RULES_FLAG}=="1", GOTO="lvm_end"
+ 
++IMPORT{cmdline}="nolvm"
++ENV{nolvm}=="?*", GOTO="lvm_end"
++
+ # Only process devices already marked as a PV - this requires blkid to be called before.
+ ENV{ID_FS_TYPE}!="LVM2_member", GOTO="lvm_end"
+ ENV{DM_MULTIPATH_DEVICE_PATH}=="1", GOTO="lvm_end"
