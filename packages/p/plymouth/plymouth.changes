@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  31 14:31:39 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 22.02.122+70.614d2db:
+  drm: ignore non-desktop outputs
+  It doesn't make sense to display a boot screen on virtual reality 
+  headsets.
+
+-------------------------------------------------------------------
 Fri Aug 12 13:50:33 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
 - Update to version 22.02.122+64.0b0e93c:
