@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep  4 12:05:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix build with ffmpeg-5, add patches from debian:
+  + 0005-avcodec-include.patch
+  + 0006-uncast-warnings.patch
+  + 0007-cur-dts.patch
+
+-------------------------------------------------------------------
 Tue Mar 29 20:42:31 UTC 2022 - Victorhck <victorhck@opensuse.org>
 
 - Added patch moc.crash.GLIB-2.35-1.patch to fix bug with 

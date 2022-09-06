@@ -1,7 +1,7 @@
 #
 # spec file for package moc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,9 @@ Source0:        trunk-%{version}.tar.xz
 Patch1:         moc.timestamp.patch
 Patch2:         moc.TiMidity_Config.patch
 Patch3:         moc.crash.GLIB-2.35-1.patch
+Patch4:         0005-avcodec-include.patch
+Patch5:         0006-uncast-warnings.patch
+Patch6:         0007-cur-dts.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
