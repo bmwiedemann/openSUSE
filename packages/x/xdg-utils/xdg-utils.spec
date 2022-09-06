@@ -31,6 +31,7 @@ Patch0:         install-some-more-scripts.diff
 Patch1:         0001-Don-t-run-kreadconfig-if-KDE_SESSION_VERSION-is-5.patch
 # PATCH-FIX-OPENSUSE support-deepin-desktop.patch hillwood@opensuse.org
 Patch2:         support-deepin-desktop.patch
+Patch3:         xdg-utils-egrep.patch
 BuildRequires:  make
 # for xmlto to be able to generate text from html
 BuildRequires:  w3m
