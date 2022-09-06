@@ -377,7 +377,6 @@ Recommends:     initviocons
 # ping is required for network tests
 Recommends:     iputils
 Recommends:     irqbalance
-Recommends:     joe
 Recommends:     kmod-compat
 # #303857
 Recommends:     kpartx
@@ -474,7 +473,6 @@ Recommends:     powerpc32
 Recommends:     dmraid
 Recommends:     dosfstools
 Recommends:     ifplugd
-Recommends:     joe
 Recommends:     klogd
 Recommends:     mpt-status
 # boo#1034493
@@ -738,6 +736,8 @@ Requires:       rebootmgr
 Requires:       systemd-presets-branding-transactional-server
 Requires:       transactional-update
 Requires:       transactional-update-zypp-config
+# Useful outside of MicroOS and needed for e.g. SELinux relabelling
+Requires:       microos-tools
 Requires:       pattern() = base
 Suggests:       health-checker
 

@@ -115,7 +115,6 @@ Recommends:     info-32bit
 Recommends:     initviocons-32bit
 Recommends:     iputils-32bit
 Recommends:     irqbalance-32bit
-Recommends:     joe-32bit
 Recommends:     kmod-compat-32bit
 Recommends:     kpartx-32bit
 Recommends:     krb5-32bit
@@ -171,7 +170,6 @@ Recommends:     powerpc32-32bit
 Recommends:     dmraid-32bit
 Recommends:     dosfstools-32bit
 Recommends:     ifplugd-32bit
-Recommends:     joe-32bit
 Recommends:     klogd-32bit
 Recommends:     mpt-status-32bit
 Recommends:     nano-32bit
