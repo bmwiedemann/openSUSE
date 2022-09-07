@@ -43,7 +43,7 @@ dns_reachable() {
 
   # If there is no local nameserver and no we have no global ip addresses
   # then we can't reach any nameservers
-  if ! $(egrep -q "nameserver 127.0.0.1|::1" /etc/resolv.conf); then 
+  if ! $(grep -E -q "nameserver 127.0.0.1|::1" /etc/resolv.conf); then 
     if [ -x "$(which ip)" ]; then
       ADDRS=$(ip addr show scope global | grep inet)
       ROUTES=$(ip route show 0.0.0.0/0)
@@ -51,7 +51,7 @@ dns_reachable() {
       # Get addresses of all running interfaces
       ADDRS=$(LC_ALL=C ifconfig | grep ' addr:')
       # Filter out all local addresses
-      ADDRS=$(echo "${ADDRS}" | egrep -v ':127|Scope:Host|Scope:Link')
+      ADDRS=$(echo "${ADDRS}" | grep -E -v ':127|Scope:Host|Scope:Link')
       # Check we have a default route
       ROUTES=$(route -n | grep '^0.0.0.0 ')
     fi
@@ -76,7 +76,7 @@ dns_has_local() {
   # Use timeout when calling host as workaround for LP: #1752411
   OUT=`LC_ALL=C timeout 5 host -t soa local. 2>&1`
   if [ $? -eq 0 ] ; then
-    if echo "$OUT" | egrep -vq 'has no|not found'; then
+    if echo "$OUT" | grep -E -vq 'has no|not found'; then
       return 0
     fi
   else 

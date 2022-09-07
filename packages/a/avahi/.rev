@@ -1177,4 +1177,13 @@ https://github.com/openSUSE/python-rpm-macros/issues/107 (forwarded request 9273
     <comment></comment>
     <requestid>990091</requestid>
   </revision>
+  <revision rev="153" vrev="19">
+    <srcmd5>045c45a009029390c2d0c39bf0d26c7d</srcmd5>
+    <version>0.8</version>
+    <time>1662541525</time>
+    <user>dimstar_suse</user>
+    <comment>- avahi-daemon-check-dns.sh: convert obsolete egrep call to grep -E
+  (boo#1203092) (forwarded request 1001132 from AndreasStieger)</comment>
+    <requestid>1001366</requestid>
+  </revision>
 </revisionlist>
