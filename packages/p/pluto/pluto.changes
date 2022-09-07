@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 07 06:20:25 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.10.6:
+  * update helm (#371)
+  * Bump k8s.io/client-go from 0.24.3 to 0.24.4 (#368)
+
+-------------------------------------------------------------------
+Wed Sep 07 06:19:44 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.10.5:
+  * Add CSIStorageCapacity deprecation (#365)
+
+-------------------------------------------------------------------
+Wed Sep 07 06:18:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.10.4:
+  * Update dependencies. Move to insights autoscan (#364)
+  * Bump alpine from 3.16.0 to 3.16.2 (#362)
+  * Bump helm.sh/helm/v3 from 3.9.2 to 3.9.3 (#361)
+
+-------------------------------------------------------------------
 Wed Jul 27 18:17:56 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 5.10.3:
