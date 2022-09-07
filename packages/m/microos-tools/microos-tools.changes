@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  5 13:41:53 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 2.16:
+  - 98selinux-microos: Make the btrfs subvolume writable temporarily [boo#1202395]
+
+-------------------------------------------------------------------
 Wed Aug 31 06:53:58 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 2.15
