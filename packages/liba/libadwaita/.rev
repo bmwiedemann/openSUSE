@@ -93,4 +93,20 @@
     <comment>New stable release (forwarded request 993359 from iznogood)</comment>
     <requestid>993945</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>186b7b1e5a116a9f14945e502c5e9e3a</srcmd5>
+    <version>1.1.5</version>
+    <time>1662541526</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.5:
+  + AdwCarousel: Fix a crash when removing a child while it's
+    animating.
+  + AdwSqueezer: Sizing fixes.
+  + AdwTabBar:
+    - Fix long press handling.
+    - Fix a crash when clicking empty space while a tab is
+      animating.
+  + AdwTabView: Fix set_menu_model() input check. (forwarded request 1001141 from iznogood)</comment>
+    <requestid>1001367</requestid>
+  </revision>
 </revisionlist>
