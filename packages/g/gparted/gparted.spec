@@ -60,7 +60,6 @@ Recommends:     hfsutils
 Recommends:     jfsutils
 Recommends:     nilfs-utils
 Recommends:     ntfsprogs
-Recommends:     reiserfs
 Recommends:     udftools
 Recommends:     xfsprogs
 Recommends:     pkexec
