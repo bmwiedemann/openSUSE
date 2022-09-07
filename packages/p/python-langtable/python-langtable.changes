@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  6 11:05:16 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 0.0.58 -> 0.0.59
+- Add ibus/m17n:ar:kbd as input method for Arabic and fix iso639-1 code for Arabic
+- Add new translations and changes to translations from CLDR
+
+-------------------------------------------------------------------
 Sun Jun 26 20:07:21 UTC 2022 - Gordon Leung <pirateclip@protonmail.com> - 0.0.58
 
 update: 0.0.51 -> 0.0.58
