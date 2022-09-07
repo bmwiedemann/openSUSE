@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Sep  5 17:48:54 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.5.2
+  CI
+  * Update all test jobs to more recent actions
+  volk_8u_x4_conv_k7_r2_8u
+  * Add NEON implementation neonspiral via sse2neon.h
+  Fixes
+  * Fix out-of-bounds reads
+  * Fix broken neon kernels
+  * Fix float to int conversion
+  CMake
+  * Suppress superfluous warning
+  * Fix Python install path calculation and documentation
+  cpu_features
+  * Update submodule pointer
+  VOLK 3.0 release preparations
+  * Use SPDX license identifiers everywhere
+  * Re-arrange files in top-level folder
+  * Update Doxygen and all Doxygen related tasks into docs
+
+-------------------------------------------------------------------
+Sat Feb 12 12:59:47 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.5.1
+  Kernels
+  * Fixup underperforming GENERIC kernel for volk_8u_x4_conv_k7_r2_8u
+  * volk_32fc_x2_conjugate_dot_prod_32fc: New generic implementation
+  * Add volk_32f(c)_index_min_16/32u
+  * Fix volk_32fc_index_min_32u_neon
+  * Fix volk_32fc_index_min_32u_neon
+  Misc
+  * Fix volk_malloc alignment bug
+  * qa: Remove repeating tests
+  * python: Switch to sysconfig module
+  * deprecate: Add attribute deprecated
+  * deprecate: Exclude warnings on Windows
+  * docs: Update docs
+  * Add the list of contributors agreeing to LGPL licensing
+  * Add a script to count the lines that are pending resubmission
+  * Testing: Add test for LGPL licensing
+  * Update CODE_OF_CONDUCT file
+  Boost
+  * boost: Remove boost dependency
+  * c++: Require C++17 for std::filesystem
+  cpu_features
+  * cpu_features: Update submodule pointer
+  * cpu_features: Make cpu_features submodule optional
+  Zenodo
+  * zenodo: Add metadata file
+  * zenodo: Re-organize .zenodo.json
+- Patch volk-fix-cpu_features-compilation-error.patch removed (not
+  needed
+
+-------------------------------------------------------------------
 Thu Jul 22 20:11:16 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - fixed build for s390x (no cpu_features)

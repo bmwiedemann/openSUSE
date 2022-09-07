@@ -19,16 +19,15 @@
 %global sonum 2
 %global soname 2_5
 Name:           volk
-Version:        2.5.0
+Version:        2.5.2
 Release:        0
 Summary:        Vector-Optimized Library of Kernels
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://libvolk.org/
 Source:         https://github.com/gnuradio/volk/releases/download/v%{version}/%{name}-%{version}.tar.xz
-Source98:       https://github.com/gnuradio/volk/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc#/%{name}-%{version}.tar.xz.sig
+Source98:       https://github.com/gnuradio/volk/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc#/%{name}-%{version}.tar.xz.asc
 Source99:       https://github.com/gnuradio/volk/releases/download/v%{version}/gpg_volk_release_key.asc#/volk.keyring
-Patch0:         volk-fix-cpu_features-compilation-error.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -73,7 +72,6 @@ VOLK kernels.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake
@@ -99,7 +97,7 @@ rm %{buildroot}%{_libdir}/libcpu_features.a
 
 %files
 %license COPYING
-%doc CHANGELOG.md README.md
+%doc docs/CHANGELOG.md README.md
 %{_bindir}/volk_profile
 
 %files devel
