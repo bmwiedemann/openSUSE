@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  5 07:05:35 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Don't hide behind bcond_with stuff, just clean the SPEC (if you
+  want to recover we have versioning system for that).
+
+-------------------------------------------------------------------
 Wed Jan 20 14:18:35 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Use libplist-2.0 on Tumbleweed:

@@ -1,7 +1,7 @@
 #
 # spec file for package libgpod
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,6 @@
 
 %define libsoname  %{name}4
 %define _udevdir %(pkg-config --variable udevdir udev)
-%bcond_with    mono
-%bcond_with    python2
 %if 0%{?suse_version} > 1500
 %define libplist2 1
 %else
@@ -43,7 +41,6 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
 BuildRequires:  gtk-doc
-BuildRequires:  gtk2-devel
 BuildRequires:  intltool
 BuildRequires:  libimobiledevice-devel
 BuildRequires:  libusb-1_0-devel
@@ -54,23 +51,14 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  swig
 BuildRequires:  taglib-devel
 BuildRequires:  update-desktop-files
-%if %libplist2
+BuildRequires:  pkgconfig(udev)
+%if %{libplist2}
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(libplist-2.0)
 %else
 BuildRequires:  pkgconfig(libplist)
-%endif
-BuildRequires:  pkgconfig(udev)
-%if %{with python2}
-BuildRequires:  python-devel
-BuildRequires:  python-gobject2-devel
-BuildRequires:  python-mutagen
-%endif
-%if %{with mono}
-BuildRequires:  gtk-sharp2
-BuildRequires:  mono-devel
 %endif
 
 %description
@@ -115,37 +103,10 @@ playlists stored on an iPod, modify them, and save them back to the iPod.
 
 This package provides development documentation for libgpod.
 
-%package -n python2-gpod
-Summary:        Python bindings for libgpod, a library to edit songs and playlists on an iPod
-Group:          Development/Languages/Python
-Requires:       python-mutagen
-Provides:       libgpod-python = %{version}
-Obsoletes:      libgpod-python < %{version}
-Provides:       python-gpod = %{version}
-
-%description -n python2-gpod
-libgpod is a library meant to abstract access to iPod content. It
-provides an API to retrieve the list of files and
-playlists stored on an iPod, modify them, and save them back to the iPod.
-
-This package provides python2 bindings.
-
-%package sharp
-Summary:        .NET bindings for libgpod, a library to edit songs and playlists on an iPod
-Group:          Development/Languages/Mono
-Requires:       %{libsoname} = %{version}
-
-%description sharp
-libgpod is a library meant to abstract access to iPod content. It
-provides an API to retrieve the list of files and
-playlists stored on an iPod, modify them, and save them back to the iPod.
-
-This package provides .NET bindings.
-
 %package tools
 Summary:        Tools for libgpod
 Group:          Productivity/Multimedia/Other
-Supplements:    packageand(%{libsoname}:udev)
+Supplements:    (%{libsoname} and udev)
 
 %description tools
 libgpod is a library meant to abstract access to iPod content. It
@@ -162,40 +123,35 @@ This package includes support tools for libgpod.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%if %libplist2
+%if %{libplist2}
 %patch4 -p1
 %endif
 
 %build
-%if %libplist2
+%if %{libplist2}
 autoreconf -fvi
 %endif
 %configure --disable-silent-rules \
            --disable-static \
            --with-udev-dir=%{_udevdir} \
-%if %{with python2}
-           --with-python=yes \
-%else
            --with-python=no \
-%endif
            --without-hal
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 %find_lang libgpod
 rm bindings/python/examples/Makefile*
 find %{buildroot} -type f -name "*.la" -delete -print
-%if %{without mono}
 rm %{buildroot}%{_libdir}/pkgconfig/libgpod-sharp.pc
-%endif
 %fdupes -s %{buildroot}
 
 %post   -n %{libsoname} -p /sbin/ldconfig
 %postun -n %{libsoname} -p /sbin/ldconfig
 
 %files -n %{libsoname}
-%doc AUTHORS COPYING ChangeLog NEWS README README.SysInfo
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README README.SysInfo
 %{_libdir}/libgpod.so.4*
 
 %files tools
@@ -211,20 +167,6 @@ rm %{buildroot}%{_libdir}/pkgconfig/libgpod-sharp.pc
 
 %files doc
 %doc %{_datadir}/gtk-doc/html/libgpod/
-
-%if %{with python2}
-%files -n python2-gpod
-%doc COPYING bindings/python/examples
-%{python_sitearch}/gpod/
-%endif
-
-%if %{with mono}
-%files sharp
-%dir %{_libdir}/libgpod
-%{_libdir}/libgpod/libgpod-sharp.dll*
-%{_libdir}/libgpod/libgpod-sharp-test.exe*
-%{_libdir}/pkgconfig/libgpod-sharp.pc
-%endif
 
 %files lang -f libgpod.lang
 
