@@ -618,4 +618,12 @@
     <comment></comment>
     <requestid>999728</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>ae60b8e9259f07b2fed9b2d4368853d7</srcmd5>
+    <version>2.3.0~git0.3db81913e</version>
+    <time>1662541583</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001541</requestid>
+  </revision>
 </revisionlist>

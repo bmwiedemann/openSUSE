@@ -33,7 +33,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        2.2.2~git11.f002e9e09
+Version:        2.3.0~git0.3db81913e
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -93,7 +93,7 @@ BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libcrypto)
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(nspr)
 BuildRequires:  pkgconfig(nss)

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 07 01:45:06 UTC 2022 - william.brown@suse.com
+
+- Update to version 2.3.0~git0.3db81913e:
+  * Bump version to 2.3.0
+  * Issue 5012 - Migrate pcre to pcre2 - remove match limit
+  * Update CI tests
+  * Issue 5356 - Make Rust non-optional and update default password storage scheme
+  * Issue 5012 - Migrate pcre to pcre2
+  * Issue 5428 - Fix regression with nscpEntryWsi computation
+  * Fix missing 'not' in description (closes #5423) (#5424)
+  * Issue 5421 - CI - makes replication/acceptance_test.py::test_modify_entry more robust (#5422)
+  * Issue 3903 - fix repl keep alive event interval
+  * Issue 5418 - Sync_repl may crash while managing invalid cookie (#5420)
+
+-------------------------------------------------------------------
 Wed Aug 10 23:26:35 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Update _constraints due to random build failures caused by OBS environmental
