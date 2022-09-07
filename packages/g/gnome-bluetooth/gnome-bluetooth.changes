@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  6 06:23:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.4:
+  + This version switches the power state API added in version 42.3
+    to be backed by the experimental PowerState property in
+    bluetoothd. The API will not show transitional states if the
+    version of bluetoothd is too old.
+  + The battery API now exports the battery information for all
+    Bluetooth devices listed in UPower, not just the ones
+    re-exported from bluetoothd.
+
+-------------------------------------------------------------------
 Wed Aug 24 11:23:09 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.3:

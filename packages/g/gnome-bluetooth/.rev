@@ -842,4 +842,12 @@ Should be copied to 12.2 if possible (it actually makes the bt stack work) (forw
     bluetooth-sendto. (forwarded request 999045 from iznogood)</comment>
     <requestid>999076</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>7ee50c4e1c7b7a3be35a632a7c8be824</srcmd5>
+    <version>42.4</version>
+    <time>1662541526</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 1001358 from iznogood)</comment>
+    <requestid>1001369</requestid>
+  </revision>
 </revisionlist>
