@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Sep 07 05:39:15 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.49.0:
+  * docs: improve Singularity image source docs (#910)
+  * Add Singularity image source (#908)
+  * Update grype bootstrap tools to latest versions. (#907)
+  * Update Syft to v0.55.0 (#906)
+  * Update grype bootstrap tools to latest versions. (#905)
+  * Update grype bootstrap tools to latest versions. (#903)
+  * Update grype bootstrap tools to latest versions. (#896)
+  * Add blurbs about building and running from source (#893)
+  * Fix docker build typo (#891)
+
+-------------------------------------------------------------------
+Wed Sep 07 05:36:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.48.0:
+  * disable CPE match filtering based on target software component for java packages (#889)
+  * Update grype bootstrap tools to latest versions. (#886)
+  * fix getting latest gosimports version (#885)
+  * workflow to create automated PRs to update bootstrap tools (#883)
+  * Add s390x build support (#720)
+  * fix: only show distro warning if distro packages exist (#875)
+
+-------------------------------------------------------------------
+Wed Sep 07 05:33:41 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.47.0:
+  * Update Syft to v0.54.0 (#881)
+  * Update README.md (#871)
+  * Update README.md (#868)
+
+-------------------------------------------------------------------
+Wed Sep 07 05:30:47 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.46.0:
+  * test: rm mustConst since unused (#860)
+  * Update Syft to v0.53.4 (#856)
+  * feat: enrich db check cmd feedback (#853)
+  * update syft version location for Makefile (#865)
+
+-------------------------------------------------------------------
+Wed Sep 07 05:28:51 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.45.0:
+  * remove env variable dependencies and keychain from signing script (#864)
+  * macos-latest for signing (#863)
+  * move docker release into separate release workflow (#862)
+  * revert to old docker action (#861)
+  * additional readOptions added  per 855 (#857)
+  * Ensure database access is readonly (#854)
+  * push older version for mac runner stability (#852)
+  * bump bouncer to v0.4.0 (#851)
+  * feat: simple input case to request vulnerability data via purl (#795)
+  * update golanci-lint, goreleaser, cosign (#850)
+  * fix: db diff default has flipped base/target url (#845)
+
+-------------------------------------------------------------------
 Tue Jul 26 11:28:54 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.44.0:
