@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep  1 15:17:41 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 2.0
+  + GTK2 no longer supported
+  + Configuration system moved from Autotools to Meson
+  + Spelling checks for metadata
+  + When navigation folders, on return to a folder select last
+    image viewed
+  + Search facility in Exif window
+  + Display keyboard shortcuts in popup menus
+  + LIRC deleted
+  + renderer-clutter() deleted
+- Add new build requirement gspell for spell checking support
+- Add new build requirement vim as the build needs xxd
+- Remove no longer needed build requirements lirc-devel and clutter
+- Replace build requirements libtool and intltool with meson
+- Enable build requirements for ffmpegthumbnailer and libjxl
+- Update the build requirement of lua to 5.3
+
+-------------------------------------------------------------------
 Fri May 27 15:34:12 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
 
 - Enable support for HEIF (bsc#1199987), JP2, RAW, WEBP, PDF.
