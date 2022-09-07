@@ -19,13 +19,13 @@
 %global sover   3
 %global libname lib%{name}%{sover}
 Name:           rem
-Version:        2.4.0
+Version:        2.6.0
 Release:        0
 Summary:        Audio and Video processing media library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/baresip/rem
-Source:         %{URL}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libre) >= 2.4.0
 
@@ -52,7 +52,7 @@ Features:
 %package devel
 Summary:        Librem development files
 Group:          Development/Libraries/C and C++
-Requires:       %{libname} = %{version}
+Requires:       %{libname} = %{version}-%{release}
 
 %description devel
 Librem is a generic library for real-time audio
