@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Tue Aug 16 15:09:07 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream version 3.2.0
+  * give better hints when failing due to bad links
+- Use github tarball and use yarn to download vendored dependencies per yarn.lock
+
+-------------------------------------------------------------------
+Thu Mar 03 00:00:00 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Resurrect package and update to 3.1.0
+- Use local-npm-registry to install dependencies
+
+-------------------------------------------------------------------
+Sun Feb 14 15:11:12 UTC 2016 - i@marguerite.su
+
+- initial version 0.9.1
+
