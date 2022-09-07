@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  6 04:15:26 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Because 5 revert patches in edk2-stable202205 for nasm-2.14 is against
+  15-SP4/Leap 15.4 and earlier version. So add suse_version and sle_version
+  checking logic in ovmf.spec when applying revert patches. (jsc#PED-1359) 
+
+-------------------------------------------------------------------
 Tue Aug 23 13:00:42 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Removed patches in ovmf-bsc1196879-sev-fix.patch which are merged to
@@ -353,7 +360,7 @@ Tue Aug 16 05:20:44 UTC 2022 - Joey Lee <jlee@suse.com>
         ovmf-Revert-SourceLevelDebugPkg-Replace-Opcode-with-the-c.patch  
         ovmf-Revert-MdePkg-Replace-Opcode-with-the-corresponding-.patch
         ovmf-Revert-MdeModulePkg-Replace-Opcode-with-the-correspo.patch
-    - They reverted 5 patches in 84338c0d49~..bbaa00dd01
+    - Then reverted 5 patches in 84338c0d49~..bbaa00dd01
         MdeModulePkg: Replace Opcode with the corresponding
         MdePkg: Replace Opcode with the corresponding
         SourceLevelDebugPkg: Replace Opcode with the

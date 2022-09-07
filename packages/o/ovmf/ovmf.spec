@@ -54,9 +54,9 @@ Patch6:         %{name}-disable-brotli.patch
 Patch7:         %{name}-ignore-spurious-GCC-12-warning.patch
 Patch8:         %{name}-tools_def-add-fno-omit-frame-pointer-to-GCC48_-IA32-.patch
 # PED-1359, because nasm-2.14 doesn't support corresponding instructions.
-Patch9:         %{name}-Revert-MdePkg-Remove-the-macro-definitions-regarding.patch  
-Patch10:        %{name}-Revert-UefiCpuPkg-Replace-Opcode-with-the-correspond.patch  
-Patch11:        %{name}-Revert-SourceLevelDebugPkg-Replace-Opcode-with-the-c.patch  
+Patch9:         %{name}-Revert-MdePkg-Remove-the-macro-definitions-regarding.patch
+Patch10:        %{name}-Revert-UefiCpuPkg-Replace-Opcode-with-the-correspond.patch
+Patch11:        %{name}-Revert-SourceLevelDebugPkg-Replace-Opcode-with-the-c.patch
 Patch12:        %{name}-Revert-MdePkg-Replace-Opcode-with-the-corresponding-.patch
 Patch13:        %{name}-Revert-MdeModulePkg-Replace-Opcode-with-the-correspo.patch
 BuildRequires:  bc
@@ -176,11 +176,13 @@ rm -rf $PKG_TO_REMOVE
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150500
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
+%endif
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
