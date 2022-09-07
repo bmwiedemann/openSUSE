@@ -45,6 +45,8 @@ Patch3:         0003-babeld-fix-10487-by-adding-a-check-on-packet-length.patch
 Patch4:         0004-babeld-fix-10502-10503-by-repairing-the-checks-on-le.patch
 Patch5:         0005-isisd-fix-router-capability-TLV-parsing-issues.patch
 Patch6:         0006-isisd-fix-10505-using-base64-encoding.patch
+Patch7:         0007-bgpd-Make-sure-hdr-length-is-at-a-minimum-of-what-is.patch
+Patch8:         0008-isisd-Ensure-rcap-is-freed-in-error-case.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 2.7
@@ -191,6 +193,8 @@ gzip -d tests/isisd/test_fuzz_isis_tlv_tests.h.gz
 %patch5 -p1
 gzip -9 tests/isisd/test_fuzz_isis_tlv_tests.h
 %patch6 -p1
+%patch7 -p1
+%patch8 -p1
 
 %build
 # GCC LTO objects must be "fat" to avoid assembly errors

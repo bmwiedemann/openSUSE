@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep  5 11:48:25 UTC 2022 - Marius Tomaschewski <mt@suse.com>
+
+- Apply upstream fix for out-of-bounds read in the BGP daemon
+  that may lead to information disclosure or denial of service
+  (bsc#1202023,CVE-2022-37032)
+  [+ 0007-bgpd-Make-sure-hdr-length-is-at-a-minimum-of-what-is.patch]
+- Apply upstream fix for a memory leak in the IS-IS daemon that
+  may lead to server memory exhaustion (bsc#1202022,CVE-2019-25074)
+  [+ 0008-isisd-Ensure-rcap-is-freed-in-error-case.patch]
+
+-------------------------------------------------------------------
 Thu Mar 17 11:45:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Make build a bit cheaper: do only BuildRequire the primary python
