@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Sep  6 07:25:23 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.80.1
+  * Support for opting out of guest VM event collection, health metrics,
+    diagnostics logs, and traces in the Database service
+  * Support for in-place upgrades for software-defined data centers
+    in the VMWare Solution service
+  * Support for single-client access name protocol as a data source
+    for private access channels in the Analytics Cloud service
+  * Support for network security groups, egress control on public
+    datasources, and GitHub access in the Analytics Cloud service
+  * Support for performance-based autotuning of block and boot
+    volumes in the Block Storage service
+- from version 2.80.0
+  * Support for the Enterprise Manager Warehouse service
+  * Support for additional configuration variables in the MySQL Database service
+  * Support for file filters in the DevOps service
+  * Support for support rewards redemption summaries in the Usage service
+  * Support for the parent tenancy of an organization to view child tenancy
+    categories, recommendations, and resource actions in the Optimizer service
+  * Support for choosing prior versions during infrastructure maintenance on
+    Exadata Cloud at Customer in the Database service
+  * `EmDataLakeClient` was renamed to `EmWarehouseClient` in the Enterprise
+    Manager Warehouse service
+  * `EmDataLakeClientCompositeOperations` was renamed to
+    `EmWarehouseClientCompositeOperations` in the Enterprise
+    Manager Warehouse service
+
+-------------------------------------------------------------------
 Mon Aug 22 09:43:13 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.79.0
