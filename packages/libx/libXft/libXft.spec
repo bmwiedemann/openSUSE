@@ -1,7 +1,7 @@
 #
 # spec file for package libXft
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libXft
 %define lname	libXft2
-Version:        2.3.4
+Version:        2.3.5
 Release:        0
 Summary:        X FreeType library
 License:        MIT
@@ -27,7 +27,7 @@ URL:            http://xorg.freedesktop.org/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXft
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXft/
-Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.bz2
+Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 # ft2build include. Positive sideeffect is that this patch makes it build with both freetype2 2.5.1, and older versions
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 

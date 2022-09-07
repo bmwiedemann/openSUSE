@@ -117,4 +117,13 @@
     minor cleanups for compiler warnings and man pages.</comment>
     <requestid>909746</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ed4eae2c8c99175550bf0ba574812ae7</srcmd5>
+    <version>2.3.5</version>
+    <time>1662541531</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.4
+  * bugfix release</comment>
+    <requestid>1001386</requestid>
+  </revision>
 </revisionlist>
