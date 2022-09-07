@@ -25,6 +25,7 @@ Summary:        Minimal mDNS resolver library
 License:        LGPL-2.1-or-later
 URL:            https://github.com/videolabs/libmicrodns
 Source:         %{name}-%{version}.tar.xz
+Source99:       baselibs.conf
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 
@@ -33,7 +34,7 @@ Minimal mDNS resolver (and announcer) library.
 
 %package -n     %{libname}
 Summary:        Shared library files for %{name}
- 
+
 %description -n     %{libname}
 Minimal mDNS resolver (and announcer) library.
 The %{libname} package contains shared libraries files for %{name}.
@@ -41,7 +42,7 @@ The %{libname} package contains shared libraries files for %{name}.
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{libname} = %{version}
- 
+
 %description    devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
@@ -58,13 +59,13 @@ developing applications that use %{name}.
 
 %check
 %meson_test
- 
+
 %ldconfig_scriptlets -n %{libname}
 
-%files -n %{libname} 
+%files -n %{libname}
 %license COPYING
 %{_libdir}/libmicrodns.so.*
- 
+
 %files devel
 %doc AUTHORS NEWS README.md
 %{_includedir}/microdns
@@ -72,4 +73,3 @@ developing applications that use %{name}.
 %{_libdir}/pkgconfig/microdns.pc
 
 %changelog
-
