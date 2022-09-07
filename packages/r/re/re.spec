@@ -16,16 +16,16 @@
 #
 
 
-%global sover   6
+%global sover   7
 %global libname lib%{name}%{sover}
 Name:           re
-Version:        2.4.0
+Version:        2.6.0
 Release:        0
-Summary:        Library for real-time communications with async IO support
+Summary:        Library for real-time communications with async I/O support
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/baresip/re
-Source:         %{URL}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 
@@ -40,17 +40,17 @@ Group:          System/Libraries
 
 %description -n %{libname}
 Libre is a library for real-time communications
-with async IO support and a complete SIP stack with support for protocols
+with async I/O support and a complete SIP stack with support for protocols
 such as SDP, RTP/RTCP, STUN/TURN/ICE, BFCP, HTTP and DNS Client.
 
 %package devel
 Summary:        Development files for libre
 Group:          Development/Libraries/C and C++
-Requires:       %{libname} = %{version}
+Requires:       %{libname} = %{version}-%{release}
 
 %description devel
 Libre is a portable and generic library for real-time communications
-with async IO support and a complete SIP stack with support for protocols
+with async I/O support and a complete SIP stack with support for protocols
 such as SDP, RTP/RTCP, STUN/TURN/ICE, BFCP, HTTP and DNS Client.
 
 This subpackage contains libraries and header files for developing
