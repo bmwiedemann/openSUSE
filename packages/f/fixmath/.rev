@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c69da487c3df7af7a946a91a950a2224</srcmd5>
+    <version>2022.07.20</version>
+    <time>1662541598</time>
+    <user>dimstar_suse</user>
+    <comment>Add new package fixmath, needed by Libreoffice 7.4</comment>
+    <requestid>1001660</requestid>
+  </revision>
+</revisionlist>
