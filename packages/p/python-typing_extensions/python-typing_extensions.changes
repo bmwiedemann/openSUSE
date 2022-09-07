@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  5 06:47:51 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add _typed_dict_test_helper.py missing from PyPI release
+- Update to v4.3.0
+  * Add typing_extensions.NamedTuple, allowing for generic NamedTuples
+    on Python <3.11 (backport from python/cpython#92027, by Serhiy Storchaka)
+  * Adjust typing_extensions.TypedDict to allow for generic TypedDicts
+    on Python <3.11 (backport from python/cpython#27663, by Samodya Abey)
+
+-------------------------------------------------------------------
 Wed Apr 20 09:54:10 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 4.2.0

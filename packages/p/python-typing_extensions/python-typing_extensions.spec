@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for python-typing_extensions
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -28,12 +28,14 @@
 %bcond_with test
 %endif
 Name:           python-typing_extensions%{psuffix}
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Backported and Experimental Type Hints for Python 35+
 License:        Python-2.0
 URL:            https://github.com/python/typing/
 Source0:        https://files.pythonhosted.org/packages/source/t/typing_extensions/%{modname}-%{version}.tar.gz
+# See https://github.com/python/typing_extensions/issues/61
+Source1:        https://raw.githubusercontent.com/python/typing_extensions/main/src/_typed_dict_test_helper.py
 BuildRequires:  %{python_module flit-core < 4}
 BuildRequires:  %{python_module flit-core >= 3.4}
 BuildRequires:  %{python_module pip}
@@ -72,6 +74,11 @@ Python versions or requires experimental types.
 
 %prep
 %setup -q -n %{modname}-%{version}
+# This should not be necessary in the next release
+if [ -f src/_typed_dict_test_helper.py ]; then
+  exit 1
+fi
+cp %{SOURCE1} src/
 
 %build
 %pyproject_wheel
@@ -90,7 +97,7 @@ Python versions or requires experimental types.
 %if ! %{with test}
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc CHANGELOG.md README.md
 %{python_sitelib}/typing_extensions.py*
 %pycache_only %{python_sitelib}/__pycache__/typing_extensions*
 %{python_sitelib}/typing_extensions-%{version}*-info
