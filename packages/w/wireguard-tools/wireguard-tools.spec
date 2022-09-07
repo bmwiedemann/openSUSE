@@ -30,7 +30,7 @@ Source99:       https://www.zx2c4.com/keys/AB9942E6D4A4CFC3412620A749FC7012A5DE0
 Patch1:         Support-systemd-resolved-split-dns-setup.patch
 BuildRequires:  bash-completion
 BuildRequires:  pkgconfig
-%systemd_requires
+%{?systemd_ordering}
 
 %description
 WireGuard is a novel VPN that runs inside the Linux Kernel and uses
