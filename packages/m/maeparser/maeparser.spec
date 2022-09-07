@@ -18,14 +18,12 @@
 
 %define abiver 1
 Name:           maeparser
-Version:        1.2.4
+Version:        1.3.0
 Release:        0
 Summary:        Maestro file parser
 License:        MIT
 URL:            https://github.com/schrodinger/maeparser
 Source:         https://github.com/schrodinger/maeparser/archive/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM maeparser-1.2.4-cmake-config-installdir.patch -- gh#schrodinger/maeparser!73
-Patch0:         maeparser-1.2.4-cmake-config-installdir.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  libboost_filesystem-devel

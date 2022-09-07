@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  6 19:51:16 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.3.0:
+  * Add two methods to get sub-block names:
+    + std::vector<std::string> Block::getBlockNames() const;
+    + std::vector<std::string> Block::getIndexedBlockNames() const;
+  * Fix some build issues.
+- Remove upstreamed maeparser-1.2.4-cmake-config-installdir.patch.
+
+-------------------------------------------------------------------
 Mon Aug 22 17:39:20 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Drop irrelevant Obsoletes/Provides on shared library.
