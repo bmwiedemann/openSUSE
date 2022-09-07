@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20220906" schemaversion="4.1">
+<image name="OBS__MicroOS___20220907" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220906</productvar>
+      <productvar name="VERSION">20220907</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220906,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220907,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220906/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220907/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -57,9 +57,6 @@
       <repopackage name="7zip" arch="x86_64"/>
       <repopackage name="aaa_base"/>
       <repopackage name="aaa_base-extras"/>
-      <repopackage name="accerciser" arch="x86_64"/>
-      <repopackage name="accerciser-lang" arch="x86_64"/>
-      <repopackage name="accerciser-plugin-IPython" arch="x86_64"/>
       <repopackage name="accountsservice" arch="x86_64"/>
       <repopackage name="accountsservice-lang" arch="x86_64"/>
       <repopackage name="acl" arch="x86_64"/>
@@ -504,10 +501,6 @@
       <repopackage name="gpm" arch="x86_64"/>
       <repopackage name="gptfdisk"/>
       <repopackage name="grantlee5" arch="x86_64"/>
-      <repopackage name="graphviz" arch="x86_64"/>
-      <repopackage name="graphviz-gd" arch="x86_64"/>
-      <repopackage name="graphviz-gnome" arch="x86_64"/>
-      <repopackage name="graphviz-plugins-core" arch="x86_64"/>
       <repopackage name="grep"/>
       <repopackage name="grep-lang"/>
       <repopackage name="groff" arch="x86_64"/>
@@ -659,20 +652,6 @@
       <repopackage name="javapackages-tools"/>
       <repopackage name="jmdict"/>
       <repopackage name="json-glib-lang"/>
-      <repopackage name="jupyter-ipyparallel" arch="x86_64"/>
-      <repopackage name="jupyter-jupyter-client" arch="x86_64"/>
-      <repopackage name="jupyter-jupyter_core-filesystem" arch="x86_64"/>
-      <repopackage name="jupyter-jupyterlab" arch="x86_64"/>
-      <repopackage name="jupyter-jupyterlab-filesystem" arch="x86_64"/>
-      <repopackage name="jupyter-jupyterlab-pygments" arch="x86_64"/>
-      <repopackage name="jupyter-jupyterlab-widgets" arch="x86_64"/>
-      <repopackage name="jupyter-nbclassic" arch="x86_64"/>
-      <repopackage name="jupyter-nbconvert" arch="x86_64"/>
-      <repopackage name="jupyter-nbformat" arch="x86_64"/>
-      <repopackage name="jupyter-notebook" arch="x86_64"/>
-      <repopackage name="jupyter-notebook-filesystem" arch="x86_64"/>
-      <repopackage name="jupyter-notebook-shim" arch="x86_64"/>
-      <repopackage name="jupyter-widgetsnbextension" arch="x86_64"/>
       <repopackage name="kaccounts-integration" arch="x86_64"/>
       <repopackage name="kaccounts-integration-lang" arch="x86_64"/>
       <repopackage name="kaccounts-providers" arch="x86_64"/>
@@ -903,7 +882,6 @@
       <repopackage name="libbrlapi0_8" arch="x86_64"/>
       <repopackage name="libbrotlicommon1"/>
       <repopackage name="libbrotlidec1"/>
-      <repopackage name="libbrotlienc1" arch="x86_64"/>
       <repopackage name="libbs2b0"/>
       <repopackage name="libbsd0" arch="x86_64"/>
       <repopackage name="libbtrfs0" arch="x86_64"/>
@@ -1176,7 +1154,6 @@
       <repopackage name="libgtksourceview-5-0" arch="x86_64"/>
       <repopackage name="libgtop-2_0-11" arch="x86_64"/>
       <repopackage name="libgtop-lang" arch="x86_64"/>
-      <repopackage name="libgts-0_7-5" arch="x86_64"/>
       <repopackage name="libgudev-1_0-0"/>
       <repopackage name="libgupnp-1_2-1"/>
       <repopackage name="libgupnp-av-1_0-3" arch="x86_64"/>
@@ -1185,7 +1162,6 @@
       <repopackage name="libgupnp-igd-1_0-4"/>
       <repopackage name="libgusb2" arch="x86_64"/>
       <repopackage name="libgvc6" arch="x86_64"/>
-      <repopackage name="libgvpr2" arch="x86_64"/>
       <repopackage name="libgweather-3-16" arch="x86_64"/>
       <repopackage name="libgweather-4-0" arch="x86_64"/>
       <repopackage name="libgweather-lang" arch="x86_64"/>
@@ -1369,7 +1345,6 @@
       <repopackage name="libKUserFeedbackWidgets1" arch="x86_64"/>
       <repopackage name="libkwalletbackend5-5" arch="x86_64"/>
       <repopackage name="libkyotocabinet16"/>
-      <repopackage name="liblab_gamut1" arch="x86_64"/>
       <repopackage name="liblangtag1"/>
       <repopackage name="liblapack3" arch="x86_64"/>
       <repopackage name="liblayout"/>
@@ -1411,6 +1386,7 @@
       <repopackage name="libmemcached11" arch="x86_64"/>
       <repopackage name="libmetalink3" arch="x86_64"/>
       <repopackage name="libmfx1" arch="x86_64"/>
+      <repopackage name="libmicrodns1"/>
       <repopackage name="libminizip1"/>
       <repopackage name="libmjpegutils-2_2-0"/>
       <repopackage name="libmm-glib0"/>
@@ -1567,7 +1543,6 @@
       <repopackage name="libqrtr-glib0" arch="x86_64"/>
       <repopackage name="libqt5-qdbus" arch="x86_64"/>
       <repopackage name="libqt5-qtbase-platformtheme-gtk3"/>
-      <repopackage name="libqt5-qtconnectivity-tools" arch="x86_64"/>
       <repopackage name="libqt5-qtgraphicaleffects"/>
       <repopackage name="libqt5-qtimageformats" arch="x86_64"/>
       <repopackage name="libqt5-qtpaths" arch="x86_64"/>
@@ -1581,29 +1556,20 @@
       <repopackage name="libqt5-qtwayland" arch="x86_64"/>
       <repopackage name="libqt5-qtwebengine"/>
       <repopackage name="libqt5-qtxmlpatterns-imports"/>
-      <repopackage name="libQt5Bluetooth5" arch="x86_64"/>
-      <repopackage name="libQt5Bluetooth5-imports" arch="x86_64"/>
       <repopackage name="libQt5Concurrent5" arch="x86_64"/>
       <repopackage name="libQt5Core5"/>
       <repopackage name="libQt5DBus5"/>
-      <repopackage name="libQt5Designer5" arch="x86_64"/>
       <repopackage name="libQt5Gui5"/>
-      <repopackage name="libQt5Help5" arch="x86_64"/>
       <repopackage name="libQt5HunspellInputMethod5" arch="x86_64"/>
-      <repopackage name="libQt5Location5" arch="x86_64"/>
       <repopackage name="libQt5Multimedia5" arch="x86_64"/>
       <repopackage name="libQt5Network5"/>
-      <repopackage name="libQt5Nfc5" arch="x86_64"/>
-      <repopackage name="libQt5Nfc5-imports" arch="x86_64"/>
       <repopackage name="libQt5OpenGL5" arch="x86_64"/>
       <repopackage name="libQt5Positioning5"/>
-      <repopackage name="libQt5PositioningQuick5" arch="x86_64"/>
       <repopackage name="libQt5PrintSupport5"/>
       <repopackage name="libQt5QuickControls2-5"/>
       <repopackage name="libQt5QuickTemplates2-5"/>
       <repopackage name="libQt5Sensors5" arch="x86_64"/>
       <repopackage name="libQt5Sensors5-imports" arch="x86_64"/>
-      <repopackage name="libQt5SerialPort5" arch="x86_64"/>
       <repopackage name="libQt5Sql5"/>
       <repopackage name="libQt5Sql5-sqlite"/>
       <repopackage name="libQt5Svg5" arch="x86_64"/>
@@ -1614,8 +1580,6 @@
       <repopackage name="libQt5WaylandCompositor5" arch="x86_64"/>
       <repopackage name="libQt5WebChannel5"/>
       <repopackage name="libQt5WebChannel5-imports"/>
-      <repopackage name="libQt5WebSockets5" arch="x86_64"/>
-      <repopackage name="libQt5WebSockets5-imports" arch="x86_64"/>
       <repopackage name="libQt5Widgets5"/>
       <repopackage name="libQt5X11Extras5" arch="x86_64"/>
       <repopackage name="libQt5Xml5" arch="x86_64"/>
@@ -2063,12 +2027,9 @@
       <repopackage name="nfs-client"/>
       <repopackage name="nftables" arch="x86_64"/>
       <repopackage name="nkf"/>
-      <repopackage name="nodejs-common" arch="x86_64"/>
-      <repopackage name="nodejs17" arch="x86_64"/>
       <repopackage name="notification-daemon"/>
       <repopackage name="notification-daemon-lang"/>
       <repopackage name="noto-sans-fonts" arch="x86_64"/>
-      <repopackage name="npm17" arch="x86_64"/>
       <repopackage name="nscd" arch="x86_64"/>
       <repopackage name="nss-mdns" arch="x86_64"/>
       <repopackage name="ntfs-3g" arch="x86_64"/>
@@ -2118,7 +2079,6 @@
       <repopackage name="pam-manpages"/>
       <repopackage name="pam_pwquality"/>
       <repopackage name="pam_unix"/>
-      <repopackage name="pandoc" arch="x86_64"/>
       <repopackage name="parallel-printer-support" arch="x86_64"/>
       <repopackage name="paratype-pt-mono-fonts"/>
       <repopackage name="paratype-pt-sans-fonts"/>
@@ -2312,9 +2272,6 @@
       <repopackage name="purge-kernels-service" arch="x86_64"/>
       <repopackage name="purpose" arch="x86_64"/>
       <repopackage name="purpose-lang" arch="x86_64"/>
-      <repopackage name="python-rpm-generators" arch="x86_64"/>
-      <repopackage name="python-rpm-macros" arch="x86_64"/>
-      <repopackage name="python-tqdm-bash-completion" arch="x86_64"/>
       <repopackage name="python3-apparmor" arch="x86_64"/>
       <repopackage name="python3-audit" arch="x86_64"/>
       <repopackage name="python3-brlapi" arch="x86_64"/>
@@ -2333,35 +2290,20 @@
       <repopackage name="python3-tdb" arch="x86_64"/>
       <repopackage name="python3-tevent" arch="x86_64"/>
       <repopackage name="python310"/>
-      <repopackage name="python310-aiodns" arch="x86_64"/>
-      <repopackage name="python310-aiohttp" arch="x86_64"/>
-      <repopackage name="python310-aiohttp_cors" arch="x86_64"/>
-      <repopackage name="python310-aiosignal" arch="x86_64"/>
       <repopackage name="python310-alembic" arch="x86_64"/>
       <repopackage name="python310-anyio" arch="x86_64"/>
       <repopackage name="python310-apipkg" arch="x86_64"/>
-      <repopackage name="python310-appdirs" arch="x86_64"/>
-      <repopackage name="python310-argon2-cffi" arch="x86_64"/>
-      <repopackage name="python310-argon2-cffi-bindings" arch="x86_64"/>
-      <repopackage name="python310-asttokens" arch="x86_64"/>
       <repopackage name="python310-async_timeout" arch="x86_64"/>
       <repopackage name="python310-atspi" arch="x86_64"/>
       <repopackage name="python310-attrs" arch="x86_64"/>
       <repopackage name="python310-Automat" arch="x86_64"/>
       <repopackage name="python310-Babel" arch="x86_64"/>
-      <repopackage name="python310-backcall" arch="x86_64"/>
       <repopackage name="python310-base"/>
       <repopackage name="python310-Beaker" arch="x86_64"/>
-      <repopackage name="python310-beautifulsoup4" arch="x86_64"/>
-      <repopackage name="python310-black" arch="x86_64"/>
-      <repopackage name="python310-bleach" arch="x86_64"/>
       <repopackage name="python310-blinker" arch="x86_64"/>
-      <repopackage name="python310-Bottleneck" arch="x86_64"/>
       <repopackage name="python310-Brotli" arch="x86_64"/>
-      <repopackage name="python310-brotlipy" arch="x86_64"/>
       <repopackage name="python310-certifi" arch="x86_64"/>
       <repopackage name="python310-cffi" arch="x86_64"/>
-      <repopackage name="python310-chardet" arch="x86_64"/>
       <repopackage name="python310-charset-normalizer" arch="x86_64"/>
       <repopackage name="python310-click" arch="x86_64"/>
       <repopackage name="python310-cmdln" arch="x86_64"/>
@@ -2369,26 +2311,13 @@
       <repopackage name="python310-configobj" arch="x86_64"/>
       <repopackage name="python310-constantly" arch="x86_64"/>
       <repopackage name="python310-cryptography" arch="x86_64"/>
-      <repopackage name="python310-cssselect" arch="x86_64"/>
       <repopackage name="python310-curses"/>
-      <repopackage name="python310-Cycler" arch="x86_64"/>
       <repopackage name="python310-dbm"/>
       <repopackage name="python310-dbus-python"/>
-      <repopackage name="python310-debugpy" arch="x86_64"/>
       <repopackage name="python310-decorator" arch="x86_64"/>
-      <repopackage name="python310-defusedxml" arch="x86_64"/>
       <repopackage name="python310-Deprecated" arch="x86_64"/>
       <repopackage name="python310-dnspython" arch="x86_64"/>
-      <repopackage name="python310-editables" arch="x86_64"/>
-      <repopackage name="python310-entrypoints" arch="x86_64"/>
-      <repopackage name="python310-executing" arch="x86_64"/>
-      <repopackage name="python310-fastjsonschema" arch="x86_64"/>
-      <repopackage name="python310-FontTools" arch="x86_64"/>
-      <repopackage name="python310-frozenlist" arch="x86_64"/>
-      <repopackage name="python310-fs" arch="x86_64"/>
-      <repopackage name="python310-Genshi" arch="x86_64"/>
       <repopackage name="python310-gevent" arch="x86_64"/>
-      <repopackage name="python310-gmpy" arch="x86_64"/>
       <repopackage name="python310-gobject"/>
       <repopackage name="python310-gobject-cairo"/>
       <repopackage name="python310-gobject-Gdk"/>
@@ -2396,130 +2325,69 @@
       <repopackage name="python310-greenlet" arch="x86_64"/>
       <repopackage name="python310-h11" arch="x86_64"/>
       <repopackage name="python310-h2" arch="x86_64"/>
-      <repopackage name="python310-hatchling" arch="x86_64"/>
       <repopackage name="python310-hiredis" arch="x86_64"/>
       <repopackage name="python310-hpack" arch="x86_64"/>
-      <repopackage name="python310-html5lib" arch="x86_64"/>
       <repopackage name="python310-httpcore" arch="x86_64"/>
       <repopackage name="python310-httpx" arch="x86_64"/>
       <repopackage name="python310-hyperframe" arch="x86_64"/>
       <repopackage name="python310-hyperlink" arch="x86_64"/>
       <repopackage name="python310-idna" arch="x86_64"/>
-      <repopackage name="python310-importlib-metadata" arch="x86_64"/>
       <repopackage name="python310-incremental" arch="x86_64"/>
       <repopackage name="python310-iniconfig" arch="x86_64"/>
       <repopackage name="python310-ipaddr" arch="x86_64"/>
-      <repopackage name="python310-ipykernel" arch="x86_64"/>
-      <repopackage name="python310-ipyparallel" arch="x86_64"/>
-      <repopackage name="python310-ipython" arch="x86_64"/>
-      <repopackage name="python310-ipython_genutils" arch="x86_64"/>
-      <repopackage name="python310-ipywidgets" arch="x86_64"/>
-      <repopackage name="python310-jedi" arch="x86_64"/>
       <repopackage name="python310-Jinja2" arch="x86_64"/>
-      <repopackage name="python310-json5" arch="x86_64"/>
       <repopackage name="python310-jsonpatch" arch="x86_64"/>
       <repopackage name="python310-jsonpointer" arch="x86_64"/>
       <repopackage name="python310-jsonschema" arch="x86_64"/>
-      <repopackage name="python310-jupyter" arch="x86_64"/>
-      <repopackage name="python310-jupyter-client" arch="x86_64"/>
-      <repopackage name="python310-jupyter-core" arch="x86_64"/>
-      <repopackage name="python310-jupyter-jupyterlab-server" arch="x86_64"/>
-      <repopackage name="python310-jupyter-server" arch="x86_64"/>
-      <repopackage name="python310-jupyter_console" arch="x86_64"/>
-      <repopackage name="python310-jupyterlab" arch="x86_64"/>
-      <repopackage name="python310-jupyterlab-pygments" arch="x86_64"/>
-      <repopackage name="python310-jupyterlab-widgets" arch="x86_64"/>
       <repopackage name="python310-keylime" arch="x86_64"/>
-      <repopackage name="python310-kiwisolver" arch="x86_64"/>
       <repopackage name="python310-lark-parser" arch="x86_64"/>
       <repopackage name="python310-linux-procfs" arch="x86_64"/>
-      <repopackage name="python310-lxml" arch="x86_64"/>
       <repopackage name="python310-M2Crypto" arch="x86_64"/>
       <repopackage name="python310-Mako" arch="x86_64"/>
       <repopackage name="python310-MarkupSafe" arch="x86_64"/>
-      <repopackage name="python310-matplotlib" arch="x86_64"/>
-      <repopackage name="python310-matplotlib-inline" arch="x86_64"/>
-      <repopackage name="python310-mpmath" arch="x86_64"/>
-      <repopackage name="python310-multidict" arch="x86_64"/>
-      <repopackage name="python310-mypy_extensions" arch="x86_64"/>
-      <repopackage name="python310-nbclassic" arch="x86_64"/>
-      <repopackage name="python310-nbclient" arch="x86_64"/>
-      <repopackage name="python310-nbconvert" arch="x86_64"/>
-      <repopackage name="python310-nbformat" arch="x86_64"/>
-      <repopackage name="python310-nest-asyncio" arch="x86_64"/>
       <repopackage name="python310-netifaces" arch="x86_64"/>
-      <repopackage name="python310-networkx" arch="x86_64"/>
-      <repopackage name="python310-notebook" arch="x86_64"/>
-      <repopackage name="python310-notebook-shim" arch="x86_64"/>
       <repopackage name="python310-notify2" arch="x86_64"/>
-      <repopackage name="python310-numexpr" arch="x86_64"/>
       <repopackage name="python310-numpy" arch="x86_64"/>
       <repopackage name="python310-oauthlib" arch="x86_64"/>
-      <repopackage name="python310-olefile" arch="x86_64"/>
       <repopackage name="python310-packaging" arch="x86_64"/>
-      <repopackage name="python310-pandas" arch="x86_64"/>
-      <repopackage name="python310-pandocfilters" arch="x86_64"/>
-      <repopackage name="python310-parso" arch="x86_64"/>
-      <repopackage name="python310-pathspec" arch="x86_64"/>
       <repopackage name="python310-pexpect" arch="x86_64"/>
-      <repopackage name="python310-pickleshare" arch="x86_64"/>
-      <repopackage name="python310-Pillow" arch="x86_64"/>
       <repopackage name="python310-pip"/>
-      <repopackage name="python310-platformdirs" arch="x86_64"/>
-      <repopackage name="python310-pluggy" arch="x86_64"/>
-      <repopackage name="python310-prometheus-client" arch="x86_64"/>
-      <repopackage name="python310-prompt_toolkit" arch="x86_64"/>
       <repopackage name="python310-protobuf" arch="x86_64"/>
       <repopackage name="python310-psutil" arch="x86_64"/>
       <repopackage name="python310-ptyprocess" arch="x86_64"/>
-      <repopackage name="python310-pure-eval" arch="x86_64"/>
       <repopackage name="python310-py" arch="x86_64"/>
       <repopackage name="python310-pyasn1" arch="x86_64"/>
       <repopackage name="python310-pyasn1-modules" arch="x86_64"/>
-      <repopackage name="python310-pybind11" arch="x86_64"/>
       <repopackage name="python310-pycairo"/>
       <repopackage name="python310-pycares" arch="x86_64"/>
       <repopackage name="python310-pycparser" arch="x86_64"/>
       <repopackage name="python310-pycryptodome" arch="x86_64"/>
       <repopackage name="python310-pycups" arch="x86_64"/>
       <repopackage name="python310-pycurl" arch="x86_64"/>
-      <repopackage name="python310-pydot" arch="x86_64"/>
-      <repopackage name="python310-pyftpdlib" arch="x86_64"/>
       <repopackage name="python310-Pygments" arch="x86_64"/>
-      <repopackage name="python310-pygraphviz" arch="x86_64"/>
       <repopackage name="python310-PyJWT" arch="x86_64"/>
       <repopackage name="python310-pylibmc" arch="x86_64"/>
       <repopackage name="python310-pymongo" arch="x86_64"/>
       <repopackage name="python310-pyOpenSSL" arch="x86_64"/>
       <repopackage name="python310-pyparsing" arch="x86_64"/>
       <repopackage name="python310-pyrsistent" arch="x86_64"/>
-      <repopackage name="python310-pysendfile" arch="x86_64"/>
       <repopackage name="python310-pyserial" arch="x86_64"/>
       <repopackage name="python310-pysmbc" arch="x86_64"/>
       <repopackage name="python310-PySocks" arch="x86_64"/>
-      <repopackage name="python310-pytest" arch="x86_64"/>
       <repopackage name="python310-python-dateutil" arch="x86_64"/>
       <repopackage name="python310-python-memcached" arch="x86_64"/>
-      <repopackage name="python310-python-xlib" arch="x86_64"/>
       <repopackage name="python310-pytz" arch="x86_64"/>
       <repopackage name="python310-pyudev" arch="x86_64"/>
       <repopackage name="python310-PyYAML" arch="x86_64"/>
       <repopackage name="python310-pyzmq" arch="x86_64"/>
-      <repopackage name="python310-qt5" arch="x86_64"/>
-      <repopackage name="python310-qt5-sip" arch="x86_64"/>
-      <repopackage name="python310-qtconsole" arch="x86_64"/>
-      <repopackage name="python310-QtPy" arch="x86_64"/>
       <repopackage name="python310-redis" arch="x86_64"/>
       <repopackage name="python310-regex" arch="x86_64"/>
-      <repopackage name="python310-reportlab" arch="x86_64"/>
       <repopackage name="python310-requests" arch="x86_64"/>
       <repopackage name="python310-requests-toolbelt" arch="x86_64"/>
       <repopackage name="python310-rfc3986" arch="x86_64"/>
       <repopackage name="python310-rich" arch="x86_64"/>
       <repopackage name="python310-rpm" arch="x86_64"/>
-      <repopackage name="python310-scipy" arch="x86_64"/>
       <repopackage name="python310-semanage" arch="x86_64"/>
-      <repopackage name="python310-Send2Trash" arch="x86_64"/>
       <repopackage name="python310-service_identity" arch="x86_64"/>
       <repopackage name="python310-setools" arch="x86_64"/>
       <repopackage name="python310-setuptools"/>
@@ -2528,31 +2396,15 @@
       <repopackage name="python310-slip" arch="x86_64"/>
       <repopackage name="python310-slip-dbus" arch="x86_64"/>
       <repopackage name="python310-sniffio" arch="x86_64"/>
-      <repopackage name="python310-soupsieve" arch="x86_64"/>
       <repopackage name="python310-SQLAlchemy" arch="x86_64"/>
-      <repopackage name="python310-stack-data" arch="x86_64"/>
-      <repopackage name="python310-sympy" arch="x86_64"/>
-      <repopackage name="python310-terminado" arch="x86_64"/>
-      <repopackage name="python310-tinycss2" arch="x86_64"/>
-      <repopackage name="python310-tomli" arch="x86_64"/>
       <repopackage name="python310-tornado6" arch="x86_64"/>
-      <repopackage name="python310-tqdm" arch="x86_64"/>
-      <repopackage name="python310-traitlets" arch="x86_64"/>
       <repopackage name="python310-Twisted" arch="x86_64"/>
       <repopackage name="python310-Twisted-tls" arch="x86_64"/>
       <repopackage name="python310-typing_extensions" arch="x86_64"/>
-      <repopackage name="python310-unicodedata2" arch="x86_64"/>
       <repopackage name="python310-urllib3" arch="x86_64"/>
-      <repopackage name="python310-wcwidth" arch="x86_64"/>
-      <repopackage name="python310-webencodings" arch="x86_64"/>
-      <repopackage name="python310-websocket-client" arch="x86_64"/>
-      <repopackage name="python310-widgetsnbextension" arch="x86_64"/>
       <repopackage name="python310-wrapt" arch="x86_64"/>
-      <repopackage name="python310-yarl" arch="x86_64"/>
-      <repopackage name="python310-zipp" arch="x86_64"/>
       <repopackage name="python310-zope.event" arch="x86_64"/>
       <repopackage name="python310-zope.interface" arch="x86_64"/>
-      <repopackage name="python310-zopfli" arch="x86_64"/>
       <repopackage name="qalculate-data" arch="x86_64"/>
       <repopackage name="qca-qt5" arch="x86_64"/>
       <repopackage name="qca-qt5-plugins" arch="x86_64"/>
