@@ -32,6 +32,7 @@ Source100:      mount-rootfs-and-chroot.sh
 Source101:      README
 
 # Patches
+Patch1:         f162e47e-m4-Fix-configure-disable-ocaml.patch
 
 BuildRequires:  bison
 BuildRequires:  file-devel
