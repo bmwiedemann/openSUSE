@@ -151,16 +151,16 @@ mkdir -p %{buildroot}%{_sysconfdir}/xdg/menus/
 install -m 0644 *.menu %{buildroot}%{_sysconfdir}/xdg/menus/
 # MATE Desktop GSchemas branding part.
 install -Dm 0644 zz-mate-desktop-openSUSE-branding.gschema.override \
-  %{buildroot}%{_datadir}/glib-2.0/schemas/zz-mate-desktop-openSUSE-branding.gschema.override
+  %{buildroot}%{_datadir}/glib-2.0/schemas/20_zz-mate-desktop-openSUSE-branding.gschema.override
 # MATE Panel branding part.
 install -Dm 0644 zz-mate-panel-openSUSE-branding.gschema.override \
-  %{buildroot}%{_datadir}/glib-2.0/schemas/zz-mate-panel-openSUSE-branding.gschema.override
+  %{buildroot}%{_datadir}/glib-2.0/schemas/20_zz-mate-panel-openSUSE-branding.gschema.override
 mkdir -p %{buildroot}%{_datadir}/pixmaps/
 install -m 0644 mate-*.png %{buildroot}%{_datadir}/pixmaps/
 # MATE Session Manager branding part.
 install -Dm 0644 mate_defaults.conf %{buildroot}%{_sysconfdir}/mate_defaults.conf
 install -Dm 0644 zz-mate-session-openSUSE-branding.gschema.override \
-  %{buildroot}%{_datadir}/glib-2.0/schemas/zz-mate-session-openSUSE-branding.gschema.override
+  %{buildroot}%{_datadir}/glib-2.0/schemas/20_zz-mate-session-openSUSE-branding.gschema.override
 # Remove unwanted menu file.
 rm -f %{buildroot}%{_sysconfdir}/xdg/menus/mate-{settings,preferences-categories}.menu
 
@@ -184,7 +184,7 @@ rm -f %{buildroot}%{_sysconfdir}/xdg/menus/mate-{settings,preferences-categories
 
 %files -n mate-desktop-gschemas-branding-openSUSE
 %defattr(-,root,root)
-%{_datadir}/glib-2.0/schemas/zz-mate-desktop-openSUSE-branding.gschema.override
+%{_datadir}/glib-2.0/schemas/20_zz-mate-desktop-openSUSE-branding.gschema.override
 
 %files -n mate-control-center-branding-openSUSE
 %defattr (-,root,root)
@@ -196,12 +196,12 @@ rm -f %{buildroot}%{_sysconfdir}/xdg/menus/mate-{settings,preferences-categories
 
 %files -n mate-panel-branding-openSUSE
 %defattr(-,root,root)
-%{_datadir}/glib-2.0/schemas/zz-mate-panel-openSUSE-branding.gschema.override
+%{_datadir}/glib-2.0/schemas/20_zz-mate-panel-openSUSE-branding.gschema.override
 %{_datadir}/pixmaps/mate-*.png
 
 %files -n mate-session-manager-branding-openSUSE
 %defattr(-,root,root)
 %config (noreplace) %{_sysconfdir}/mate_defaults.conf
-%{_datadir}/glib-2.0/schemas/zz-mate-session-openSUSE-branding.gschema.override
+%{_datadir}/glib-2.0/schemas/20_zz-mate-session-openSUSE-branding.gschema.override
 
 %changelog
