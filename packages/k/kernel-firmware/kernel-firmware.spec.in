@@ -158,6 +158,7 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %exclude %{_firmwaredir}/amd-ucode/*
 
 %files -n ucode-amd
+%doc amd-ucode/README
 %license LICENSE.amd-ucode
 %dir %{_firmwaredir}
 %{_firmwaredir}/amd-ucode

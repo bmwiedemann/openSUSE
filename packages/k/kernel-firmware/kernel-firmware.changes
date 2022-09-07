@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep 06 10:43:53 UTC 2022 - tiwai@suse.com
+
+- Update to version 20220902 (git commit 2f2f0181581d):
+  * Mellanox: Add new mlxsw_spectrum firmware xx.2010.3146
+  * amdgpu: update beige goby VCN firmware
+  * amdgpu: update dimgrey cavefish VCN firmware
+  * amdgpu: update navy flounder VCN firmware
+  * amdgpu: update sienna cichlid VCN firmware (bsc#1202707)
+  * rtl_bt: Update RTL8852C BT USB firmware to 0xDFB8_5A33
+  * mediatek: reference the LICENCE file for MediaTek firmwares
+  * mediatek: Add new mt8186 SOF firmware
+  * ice: Update package to 1.3.30.0
+  * QCA: Update Bluetooth WCN685x 2.1 firmware to 2.1.0-00438
+  * brcm: Add nvram for Lenovo Yoga Tablet 2 830F/L and 1050F/L tablets
+  * brcm: Add nvram for the Xiaomi Mi Pad 2 tablet
+  * brcm: Add nvram for the Asus TF103C tablet
+  * Add amd-ucode README file
+  * qca: Update firmware files for BT chip WCN6750.      This commit will update required firmware files for WCN6750.
+  * amdgpu: Update Yellow Carp VCN firmware
+  * qcom: Add firmware for Lenovo ThinkPad X13s
+- Update aliases from 6.0-rc
+- Update topics list for mtk-sof
+
+-------------------------------------------------------------------
 Fri Aug 05 06:02:43 UTC 2022 - tiwai@suse.com
 
 - Update to version 20220804 (git commit e6185d5197fd):

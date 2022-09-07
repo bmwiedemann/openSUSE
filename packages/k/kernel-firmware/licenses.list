@@ -150,7 +150,8 @@ wilc1000:	network		LICENSE.atmel
 hfi1:		intel		LICENSE.hfi1_firmware
 knav_qmss_queue: ti		LICENCE.ti-keystone
 mwlwifi:	marvell		LICENCE.Marvell
-mtk-vpu:	media
+mtk-vpu:	media		LICENCE.mediatek
+mtk_scp:	mediatek	LICENCE.mediatek
 btmtk:		mediatek	LICENCE.mediatek
 rk3399-dptx:	platform	LICENCE.rockchip
 mt76x0:		mediatek	LICENCE.mediatek
@@ -178,3 +179,4 @@ wave5:		platform	LICENCE.cnm
 rvu_cptpf:	platform	LICENCE.Marvell
 amphion:	platform	LICENSE.amphion_vpu
 cs35l41_hda:	sound		LICENSE.cirrus
+mtk-sof:	sound		LICENCE.mediatek
