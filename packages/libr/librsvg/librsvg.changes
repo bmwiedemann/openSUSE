@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Sep  6 06:18:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.55.1:
+  + As an experiment, I'll move librsvg from even-odd versioning
+    (odd minor version is unstable, even minor version is stable),
+    to the versioning scheme that GNOME uses these days. So, 2.55.x
+    is the new stable series.
+  + There is a new development guide for librsvg, for people who
+    want to help in its development. I hope this will be especially
+    useful to Outreachy and Summer of Code interns:
+    https://gnome.pages.gitlab.gnome.org/librsvg/devel-docs/index.html
+  + Define missing crate metadata for Cargo.toml.
+  + Add some tests that were missing for the C API.
+  + Fix the basic test suite in Windows.
+  + Miscellaneous fixes for the build and CI.
+
+-------------------------------------------------------------------
+Mon Aug 29 14:43:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update of vendored dependencies.
+
+-------------------------------------------------------------------
+Fri Aug 26 22:08:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.55.0:
+  + The Minimum Supported Rust Version (MSRV) is now Rust 1.58.
+  + The release tarball no longer contains vendored Rust
+    dependencies. Most distributions now have infrastructure to
+    pull these themselves, so let's make the tarball smaller.
+  + Accept patterns with userSpaceOnUse units for the stroke of
+    axis-aligned lines.
+  + Small reductions in memory consumption of the DOM tree.
+  + Updates for the gtk-rs API.
+
+-------------------------------------------------------------------
 Fri Aug 26 22:08:17 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.54.5:
