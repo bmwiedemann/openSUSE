@@ -187,4 +187,12 @@ C API
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>999586</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d8a6c1ce879f6e215e2d9270d5cf80b7</srcmd5>
+    <version>3.11.0rc1</version>
+    <time>1662541545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001451</requestid>
+  </revision>
 </revisionlist>

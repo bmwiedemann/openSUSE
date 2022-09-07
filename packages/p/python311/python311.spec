@@ -576,7 +576,7 @@ export PYTHONPATH="$(pwd -P)/Lib"
 # Use timeout, like make target buildbottest
 # We cannot run tests parallel, because osc build environment doesn’t
 # have /dev/shm
-%make_build -j1 test TESTOPTS="-u curses -v -x $EXCLUDE --timeout=3000"
+%make_build -j1 test TESTOPTS="-u curses -v -x $EXCLUDE --timeout=5400"
 # use network, be verbose:
 #make test TESTOPTS="-l -u network -v"
 %endif

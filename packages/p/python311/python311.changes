@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  5 08:43:49 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Increase testsuite timeout for test_freeze_simple_script
+
+-------------------------------------------------------------------
 Sat Aug 20 21:31:40 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - fix import_failed.map to refer to the python 3.11 package versions
