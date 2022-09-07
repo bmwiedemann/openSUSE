@@ -176,4 +176,13 @@
   doc files and license in $datadir/doc/fcft/</comment>
     <requestid>998706</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>94c9f8381e2578fcd630765b9d6e3a8c</srcmd5>
+    <version>3.1.4</version>
+    <time>1662541576</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.4:
+  * Fixed crash when failing to load an SVG glyph with multiple sub-glyphs.</comment>
+    <requestid>1001514</requestid>
+  </revision>
 </revisionlist>

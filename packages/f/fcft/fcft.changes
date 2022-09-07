@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  6 16:48:06 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 3.1.4:
+  * Fixed crash when failing to load an SVG glyph with multiple sub-glyphs.
+
+-------------------------------------------------------------------
 Mon Aug 22 18:19:13 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 3.1.3:
