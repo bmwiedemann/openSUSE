@@ -20,7 +20,7 @@
 %global sover 2
 
 Name:           libyang
-Version:        2.0.194
+Version:        2.0.231
 Release:        0
 Summary:        Parser toolkit for IETF YANG data modeling
 License:        BSD-3-Clause
@@ -142,6 +142,7 @@ export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}
 %{_bindir}/yangre
 %{_mandir}/man1/yanglint.1%{?ext_man}
 %{_mandir}/man1/yangre.1%{?ext_man}
+%{_datadir}/yang/
 
 %files devel
 %dir %{_includedir}/libyang/
