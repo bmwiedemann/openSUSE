@@ -31,4 +31,12 @@
     <comment>syncing changelog with older sle versions</comment>
     <requestid>894352</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1db118b091372974334fd627d117c191</srcmd5>
+    <version>1.31</version>
+    <time>1662541593</time>
+    <user>dimstar_suse</user>
+    <comment>1.31 = misc. security fixes + changes stuffed up</comment>
+    <requestid>1001658</requestid>
+  </revision>
 </revisionlist>

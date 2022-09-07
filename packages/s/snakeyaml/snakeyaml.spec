@@ -1,7 +1,7 @@
 #
 # spec file for package snakeyaml
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%global vertag b28f0b4d87c6
+%global vertag 04401a88fa9b
 %bcond_with tests
 Name:           snakeyaml
-Version:        1.28
+Version:        1.31
 Release:        0
 Summary:        YAML parser and emitter for the Java programming language
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            https://bitbucket.org/asomov/snakeyaml/
-Source0:        https://bitbucket.org/asomov/snakeyaml/get/%{name}-%{version}.tar.bz2
+URL:            https://bitbucket.org/%{name}/%{name}
+Source0:        https://bitbucket.org/%{name}/%{name}/get/%{name}-%{version}.tar.bz2
 Source1:        %{name}-build.xml
 # Upstream has forked gdata-java and base64 and refuses [1] to
 # consider replacing them by external dependencies.  Bundled libraries
@@ -76,7 +76,7 @@ Group:          Documentation/HTML
 This package contains %{summary}.
 
 %prep
-%setup -q -n asomov-%{name}-%{vertag}
+%setup -q -n %{name}-%{name}-%{vertag}
 cp %{SOURCE1} build.xml
 %patch0 -p1
 %patch1 -p1

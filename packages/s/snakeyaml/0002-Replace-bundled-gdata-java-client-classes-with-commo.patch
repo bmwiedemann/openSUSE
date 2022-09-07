@@ -1,4 +1,4 @@
-From f06ff492f18d7c9cdf861a79293279e5ed55823f Mon Sep 17 00:00:00 2001
+From 4e09236b88488cfc222d8e3419e344092548117b Mon Sep 17 00:00:00 2001
 From: Michal Srb <msrb@redhat.com>
 Date: Fri, 26 Apr 2013 07:32:04 +0200
 Subject: [PATCH 2/2] Replace bundled gdata-java-client classes with
@@ -16,7 +16,7 @@ Subject: [PATCH 2/2] Replace bundled gdata-java-client classes with
 
 diff --git a/src/main/java/org/yaml/snakeyaml/external/com/google/gdata/util/common/base/Escaper.java b/src/main/java/org/yaml/snakeyaml/external/com/google/gdata/util/common/base/Escaper.java
 deleted file mode 100644
-index c26e3cb..0000000
+index c26e3cb6..00000000
 --- a/src/main/java/org/yaml/snakeyaml/external/com/google/gdata/util/common/base/Escaper.java
 +++ /dev/null
 @@ -1,97 +0,0 @@
@@ -119,7 +119,7 @@ index c26e3cb..0000000
 -}
 diff --git a/src/main/java/org/yaml/snakeyaml/external/com/google/gdata/util/common/base/PercentEscaper.java b/src/main/java/org/yaml/snakeyaml/external/com/google/gdata/util/common/base/PercentEscaper.java
 deleted file mode 100644
-index 5e2f902..0000000
+index 5e2f902d..00000000
 --- a/src/main/java/org/yaml/snakeyaml/external/com/google/gdata/util/common/base/PercentEscaper.java
 +++ /dev/null
 @@ -1,281 +0,0 @@
@@ -406,7 +406,7 @@ index 5e2f902..0000000
 -}
 diff --git a/src/main/java/org/yaml/snakeyaml/external/com/google/gdata/util/common/base/UnicodeEscaper.java b/src/main/java/org/yaml/snakeyaml/external/com/google/gdata/util/common/base/UnicodeEscaper.java
 deleted file mode 100644
-index 5403185..0000000
+index 54031850..00000000
 --- a/src/main/java/org/yaml/snakeyaml/external/com/google/gdata/util/common/base/UnicodeEscaper.java
 +++ /dev/null
 @@ -1,506 +0,0 @@
@@ -917,7 +917,7 @@ index 5403185..0000000
 -    };
 -}
 diff --git a/src/main/java/org/yaml/snakeyaml/util/UriEncoder.java b/src/main/java/org/yaml/snakeyaml/util/UriEncoder.java
-index 4cc18b4..b6a1992 100644
+index de7849d4..d6140bb4 100644
 --- a/src/main/java/org/yaml/snakeyaml/util/UriEncoder.java
 +++ b/src/main/java/org/yaml/snakeyaml/util/UriEncoder.java
 @@ -23,27 +23,46 @@ import java.nio.charset.CharacterCodingException;
@@ -977,5 +977,5 @@ index 4cc18b4..b6a1992 100644
  
      /**
 -- 
-2.20.1
+2.37.3
 
