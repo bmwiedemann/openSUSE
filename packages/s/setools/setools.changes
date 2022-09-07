@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep  2 09:24:56 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Added README.SUSE and drop recommend for python3-networkx altogether
+  (bsc#1202676)
+
+-------------------------------------------------------------------
 Tue Feb 22 09:13:19 UTC 2022 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
-- Add make-networkx-optional.patch to cut down installation requirements
+- Add make_networkx_optional.patch to cut down installation requirements
 - Change python3-networkx from require into recommend
 
 -------------------------------------------------------------------
