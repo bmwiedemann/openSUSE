@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -324,6 +324,9 @@ unsorted:
   - acarsdec 
   - accel-config: [x86_64] 
   - accel-config-devel: [x86_64] 
+  - accerciser 
+  - accerciser-lang 
+  - accerciser-plugin-IPython 
   - accounts-qml-module 
   - accounts-qml-module-doc 
   - accountsservice-devel 
@@ -795,6 +798,7 @@ unsorted:
   - artikulate 
   - artikulate-lang 
   - as10k1 
+  - asar 
   - asciidoc 
   - asciidoc-examples 
   - asciidoc-latex-backend 
@@ -1030,6 +1034,7 @@ unsorted:
   - awf-gtk3 
   - awf-gtk4 
   - awkward-devel 
+  - aws-cli 
   - aws-efs-utils 
   - aws-nitro-enclaves-binaryblobs-upstream: [x86_64] 
   - aws-nitro-enclaves-cli: [x86_64] 
@@ -3818,6 +3823,7 @@ unsorted:
   - five-or-more 
   - five-or-more-doc 
   - five-or-more-lang 
+  - fixmath-devel 
   - fkwnn 
   - fkwnn-devel 
   - flac-devel 
@@ -5169,7 +5175,7 @@ unsorted:
   - ghc-optparse-simple: [x86_64] 
   - ghc-optparse-simple-devel: [x86_64] 
   - ghc-pandoc: [x86_64] 
-  - ghc-pandoc-devel: [x86_64] # devel package of opensuse_microos_desktop:pandoc 
+  - ghc-pandoc-devel: [x86_64] 
   - ghc-pandoc-lua-marshal: [x86_64] 
   - ghc-pandoc-lua-marshal-devel: [x86_64] 
   - ghc-pandoc-types: [x86_64] 
@@ -6394,13 +6400,17 @@ unsorted:
   - grantleetheme-devel 
   - graphite2 
   - graphite2-devel 
+  - graphviz 
   - graphviz-devel 
   - graphviz-doc 
+  - graphviz-gd 
+  - graphviz-gnome 
   - graphviz-guile 
   - graphviz-gvedit 
   - graphviz-lua 
   - graphviz-perl 
   - graphviz-php 
+  - graphviz-plugins-core 
   - graphviz-ruby 
   - graphviz-smyrna 
   - graphviz-tcl 
@@ -6815,6 +6825,7 @@ unsorted:
   - hda-verb 
   - hdajackretask 
   - hdajacksensetest 
+  - hdf5 
   - hdf5-devel 
   - hdf5-devel-32bit: [x86_64] 
   - hdf5-devel-data 
@@ -7969,39 +7980,40 @@ unsorted:
   - jupyter-ipyevents 
   - jupyter-ipyevents-jupyterlab 
   - jupyter-ipyleaflet 
-  - jupyter-ipyparallel: [i586] 
+  - jupyter-ipyparallel 
   - jupyter-ipyscales 
   - jupyter-ipyvolume 
   - jupyter-ipywebrtc 
+  - jupyter-jupyter-client 
   - jupyter-jupyter-wysiwyg 
-  - jupyter-jupyter_core-filesystem: [i586] 
+  - jupyter-jupyter_core-filesystem 
   - jupyter-jupyter_highlight_selected_word 
   - jupyter-jupyter_latex_envs 
   - jupyter-jupyter_nbextensions_configurator 
-  - jupyter-jupyterlab: [i586] 
-  - jupyter-jupyterlab-filesystem: [i586] 
+  - jupyter-jupyterlab 
+  - jupyter-jupyterlab-filesystem 
   - jupyter-jupyterlab-ipyscales 
   - jupyter-jupyterlab-latex 
-  - jupyter-jupyterlab-pygments: [i586] 
+  - jupyter-jupyterlab-pygments 
   - jupyter-jupyterlab-templates 
-  - jupyter-jupyterlab-widgets: [i586] 
+  - jupyter-jupyterlab-widgets 
   - jupyter-lineup-widget 
   - jupyter-matlab-kernel 
   - jupyter-matplotlib 
   - jupyter-matplotlib-jupyterlab 
-  - jupyter-nbclassic: [i586] 
-  - jupyter-nbconvert: [i586] 
+  - jupyter-nbclassic 
+  - jupyter-nbconvert 
   - jupyter-nbconvert-latex 
   - jupyter-nbdime 
   - jupyter-nbdime-git 
   - jupyter-nbdime-hg 
   - jupyter-nbdime-jupyterlab 
-  - jupyter-nbformat: [i586] 
-  - jupyter-notebook: [i586] 
-  - jupyter-notebook-filesystem: [i586] 
+  - jupyter-nbformat 
+  - jupyter-notebook 
+  - jupyter-notebook-filesystem 
   - jupyter-notebook-lang 
   - jupyter-notebook-latex 
-  - jupyter-notebook-shim: [i586] 
+  - jupyter-notebook-shim 
   - jupyter-octave-kernel 
   - jupyter-panel 
   - jupyter-plotly 
@@ -8013,7 +8025,7 @@ unsorted:
   - jupyter-threejs-jupyterlab 
   - jupyter-vispy 
   - jupyter-voila 
-  - jupyter-widgetsnbextension: [i586] 
+  - jupyter-widgetsnbextension 
   - jvnet-parent 
   - jvyamlb 
   - jwnl 
@@ -9984,6 +9996,7 @@ unsorted:
   - libblkid-devel-32bit: [x86_64] 
   - libblkid-devel-static 
   - libblockdev-devel 
+  - libblosc1 
   - libbluetooth3-32bit: [x86_64] 
   - libbluray-bdj 
   - libbluray-devel 
@@ -10603,7 +10616,7 @@ unsorted:
   - libdhash-devel-32bit: [x86_64] 
   - libdhash1-32bit: [x86_64] 
   - libdico2 
-  - libdigikamcore7_7_0 
+  - libdigikamcore7_8_0 
   - libdirac_decoder0 
   - libdirac_decoder0-32bit: [x86_64] 
   - libdirac_encoder0 
@@ -11414,6 +11427,7 @@ unsorted:
   - libgtpnl-devel 
   - libgtpnl-tools 
   - libgtpnl0 
+  - libgts-0_7-5 
   - libgudev-1_0-0-32bit: [x86_64] 
   - libgudev-1_0-devel 
   - libguess-devel 
@@ -11457,6 +11471,7 @@ unsorted:
   - libgviewv4l2core-2_1-2 
   - libgviewv4l2core-lang 
   - libgvncpulse-1_0-0 
+  - libgvpr2 
   - libgweather-3-16-32bit: [x86_64] 
   - libgweather-devel 
   - libgweather4-devel 
@@ -11488,6 +11503,7 @@ unsorted:
   - libhashcat6_2_5 
   - libhcrypto4 
   - libhdb9 
+  - libhdf5-200 
   - libhdf5-200-32bit: [x86_64] 
   - libhdf5-200-mvapich2 
   - libhdf5-200-mvapich2-32bit: [x86_64] 
@@ -11520,6 +11536,7 @@ unsorted:
   - libhdf5_cpp-gnu-openmpi2-hpc 
   - libhdf5_cpp-gnu-openmpi3-hpc 
   - libhdf5_cpp-gnu-openmpi4-hpc 
+  - libhdf5_cpp200 
   - libhdf5_cpp200-32bit: [x86_64] 
   - libhdf5_cpp200-mvapich2 
   - libhdf5_cpp200-mvapich2-32bit: [x86_64] 
@@ -11545,6 +11562,7 @@ unsorted:
   - libhdf5_fortran-gnu-openmpi2-hpc 
   - libhdf5_fortran-gnu-openmpi3-hpc 
   - libhdf5_fortran-gnu-openmpi4-hpc 
+  - libhdf5_fortran200 
   - libhdf5_fortran200-32bit: [x86_64] 
   - libhdf5_fortran200-mvapich2 
   - libhdf5_fortran200-mvapich2-32bit: [x86_64] 
@@ -11570,6 +11588,7 @@ unsorted:
   - libhdf5_hl-gnu-openmpi2-hpc 
   - libhdf5_hl-gnu-openmpi3-hpc 
   - libhdf5_hl-gnu-openmpi4-hpc 
+  - libhdf5_hl200 
   - libhdf5_hl200-32bit: [x86_64] 
   - libhdf5_hl200-mvapich2 
   - libhdf5_hl200-mvapich2-32bit: [x86_64] 
@@ -11595,6 +11614,7 @@ unsorted:
   - libhdf5_hl_cpp-gnu-openmpi2-hpc 
   - libhdf5_hl_cpp-gnu-openmpi3-hpc 
   - libhdf5_hl_cpp-gnu-openmpi4-hpc 
+  - libhdf5_hl_cpp200 
   - libhdf5_hl_cpp200-32bit: [x86_64] 
   - libhdf5_hl_cpp200-mvapich2 
   - libhdf5_hl_cpp200-mvapich2-32bit: [x86_64] 
@@ -11620,6 +11640,7 @@ unsorted:
   - libhdf5_hl_fortran-gnu-openmpi2-hpc 
   - libhdf5_hl_fortran-gnu-openmpi3-hpc 
   - libhdf5_hl_fortran-gnu-openmpi4-hpc 
+  - libhdf5hl_fortran200 
   - libhdf5hl_fortran200-32bit: [x86_64] 
   - libhdf5hl_fortran200-mvapich2 
   - libhdf5hl_fortran200-mvapich2-32bit: [x86_64] 
@@ -12006,6 +12027,7 @@ unsorted:
   - libkwnn0 
   - libkyotocabinet-devel 
   - libkyotocabinet16-32bit: [x86_64] 
+  - liblab_gamut1 
   - liblal20: [x86_64] 
   - liblalburst6: [x86_64] 
   - liblalframe13: [x86_64] 
@@ -12307,7 +12329,7 @@ unsorted:
   - libmhash2 
   - libmicro 
   - libmicrodns-devel 
-  - libmicrodns1 
+  - libmicrodns1-32bit: [x86_64] 
   - libmicrohttpd-devel 
   - libmicrohttpd12 
   - libmikmod-devel 
@@ -13574,7 +13596,7 @@ unsorted:
   - librdmacm-utils 
   - librdmacm1-32bit: [x86_64] 
   - libre2-9-32bit: [x86_64] 
-  - libre6 
+  - libre7 
   - libreadline-java 
   - libreadline-java-32bit: [x86_64] 
   - libreadline-java-javadoc 
@@ -13605,6 +13627,7 @@ unsorted:
   - libreiser4-2_0-5 
   - libreiser4-minimal-2_0-5 
   - libreiserfscore-devel 
+  - libreiserfscore0 
   - librelp-devel 
   - librelp0 
   - librem3 
@@ -14784,11 +14807,13 @@ unsorted:
   - libwmf-devel 
   - libwmf-gnome 
   - libwmf-gnome-32bit: [x86_64] 
+  - libwnck-1-22 
   - libwnck-1-22-32bit: [x86_64] 
   - libwnck-3-0-32bit: [x86_64] 
   - libwnck-devel 
   - libwnck-tools 
   - libwnck2-devel 
+  - libwnck2-lang 
   - libwnn0 
   - libwoff2common1_0_2-32bit: [x86_64] 
   - libwoff2dec1_0_2-32bit: [x86_64] 
@@ -15487,6 +15512,7 @@ unsorted:
   - lua51-busted 
   - lua51-cassowary 
   - lua51-cjson 
+  - lua51-cldr 
   - lua51-cliargs 
   - lua51-compat-5.3 
   - lua51-copas 
@@ -15543,6 +15569,7 @@ unsorted:
   - lua53-busted 
   - lua53-cassowary 
   - lua53-cjson 
+  - lua53-cldr 
   - lua53-cliargs 
   - lua53-compat-5.3 
   - lua53-copas 
@@ -15601,6 +15628,7 @@ unsorted:
   - lua54-busted 
   - lua54-cassowary 
   - lua54-cjson 
+  - lua54-cldr 
   - lua54-cliargs 
   - lua54-compat-5.3 
   - lua54-copas 
@@ -17750,7 +17778,7 @@ unsorted:
   - nss-pam-ldapd-32bit: [x86_64] 
   - nss-shared-helper-devel 
   - nss-systemd 
-  - nss_synth: [x86_64] 
+  - nss_synth 
   - nss_wrapper 
   - ntfsprogs-extra 
   - ntl-devel 
@@ -18768,6 +18796,7 @@ unsorted:
   - pamixer 
   - pan 
   - pan-lang 
+  - pandoc: [x86_64] 
   - pango-devel 
   - pango-devel-32bit: [x86_64] 
   - pango-tools 
@@ -21575,8 +21604,8 @@ unsorted:
   - python-rcssmin-docs 
   - python-rdflib-doc 
   - python-renderspec-doc 
-  - python-rpm-generators: [i586] 
-  - python-rpm-macros: [i586] 
+  - python-rpm-generators 
+  - python-rpm-macros 
   - python-rpm-packaging 
   - python-rtslib-fb-common 
   - python-saharaclient-doc 
@@ -21594,6 +21623,7 @@ unsorted:
   - python-tables-doc 
   - python-tk 
   - python-tooz-doc 
+  - python-tqdm-bash-completion 
   - python-translationstring-doc 
   - python-typeshed 
   - python-zope.deprecation-doc 
@@ -21915,6 +21945,7 @@ unsorted:
   - python310-BTrees-devel 
   - python310-Beaker: [i586] 
   - python310-BitVector 
+  - python310-Bottleneck 
   - python310-CCColUtils 
   - python310-CacheControl 
   - python310-CairoSVG 
@@ -21924,6 +21955,7 @@ unsorted:
   - python310-CherryPy 
   - python310-ConfigArgParse 
   - python310-ConfigUpdater 
+  - python310-Cycler 
   - python310-Cython 
   - python310-DataProperty 
   - python310-DataShape 
@@ -21962,7 +21994,9 @@ unsorted:
   - python310-Flask-Testing 
   - python310-Flask-WTF 
   - python310-Flask-doc 
+  - python310-FontTools 
   - python310-FormEncode 
+  - python310-Genshi 
   - python310-GitPython 
   - python310-Glances 
   - python310-Gloo 
@@ -22008,6 +22042,7 @@ unsorted:
   - python310-PeachPy: [x86_64] 
   - python310-PeakUtils 
   - python310-Pebble 
+  - python310-Pillow-tk 
   - python310-Pint 
   - python310-Protego 
   - python310-PsyLab 
@@ -22035,6 +22070,8 @@ unsorted:
   - python310-PyMeta3 
   - python310-PyMsgBox 
   - python310-PyMuPDF 
+  - python310-PyMySQL 
+  - python310-PyNaCl 
   - python310-PyNamecheap 
   - python310-PyOgg 
   - python310-PyOpenAL 
@@ -22074,15 +22111,16 @@ unsorted:
   - python310-QDarkStyle 
   - python310-QR-Code-generator 
   - python310-QtAwesome 
-  - python310-QtPy: [i586] 
+  - python310-QtPy 
   - python310-RegexOrder 
   - python310-Routes 
   - python310-Rtree 
   - python310-SPARQLWrapper 
+  - python310-SQLAlchemy: [i586] 
   - python310-SQLAlchemy-Utils 
   - python310-Scrapy 
   - python310-SecretStorage 
-  - python310-Send2Trash: [i586] 
+  - python310-Send2Trash 
   - python310-Shapely 
   - python310-SimpleWebSocketServer 
   - python310-SoundCard 
@@ -22125,6 +22163,7 @@ unsorted:
   - python310-XStatic-objectpath 
   - python310-XStatic-term.js 
   - python310-XStatic-tv4 
+  - python310-XlsxWriter 
   - python310-Yapsy 
   - python310-ZConfig 
   - python310-ZConfig-doc 
@@ -22156,16 +22195,22 @@ unsorted:
   - python310-agate-sql 
   - python310-agate-stats 
   - python310-aina 
+  - python310-aiobotocore 
   - python310-aiodataloader 
+  - python310-aiodns 
   - python310-aioeventlet 
   - python310-aiofiles 
   - python310-aioftp 
+  - python310-aiohttp 
   - python310-aiohttp-jinja2 
   - python310-aiohttp-socks 
   - python310-aiohttp-theme 
+  - python310-aiohttp_cors 
+  - python310-aioitertools 
   - python310-aioquic 
   - python310-aioresponses 
   - python310-aiorpcX 
+  - python310-aiosignal 
   - python310-aiosmtpd 
   - python310-aiosmtplib 
   - python310-aiosqlite 
@@ -22197,6 +22242,7 @@ unsorted:
   - python310-apfel 
   - python310-apiron 
   - python310-apns2 
+  - python310-appdirs 
   - python310-application 
   - python310-applicationinsights 
   - python310-apptools 
@@ -22206,8 +22252,8 @@ unsorted:
   - python310-arf 
   - python310-argcomplete: [i586] 
   - python310-argh 
-  - python310-argon2-cffi: [i586] 
-  - python310-argon2-cffi-bindings: [i586] 
+  - python310-argon2-cffi 
+  - python310-argon2-cffi-bindings 
   - python310-argparse-manpage: [i586] 
   - python310-args 
   - python310-arrow 
@@ -22230,8 +22276,11 @@ unsorted:
   - python310-astroid 
   - python310-astropy 
   - python310-astropy-healpix 
+  - python310-asttokens 
   - python310-astunparse 
   - python310-asv 
+  - python310-async_generator 
+  - python310-async_timeout: [i586] 
   - python310-asyncpg 
   - python310-asyncssh 
   - python310-atlassian-python-api 
@@ -22557,6 +22606,7 @@ unsorted:
   - python310-azure-synapse-spark 
   - python310-azure-template 
   - python310-babelfish 
+  - python310-backcall 
   - python310-backoff 
   - python310-backports.entry_points_selectable 
   - python310-baron 
@@ -22564,7 +22614,9 @@ unsorted:
   - python310-base58 
   - python310-bashate 
   - python310-basictracer 
+  - python310-bcrypt 
   - python310-beartype 
+  - python310-beautifulsoup4 
   - python310-before-after 
   - python310-behave 
   - python310-bencode 
@@ -22583,7 +22635,8 @@ unsorted:
   - python310-bitstring 
   - python310-bitstruct 
   - python310-bjoern 
-  - python310-bleach: [i586] 
+  - python310-black 
+  - python310-bleach 
   - python310-blessed 
   - python310-blessings 
   - python310-blinker: [i586] 
@@ -22601,6 +22654,8 @@ unsorted:
   - python310-boolean.py 
   - python310-booleanOperations 
   - python310-boost-histogram 
+  - python310-boto3 
+  - python310-botocore 
   - python310-bottle 
   - python310-bowler 
   - python310-bpython 
@@ -22610,6 +22665,7 @@ unsorted:
   - python310-breathe 
   - python310-brewer2mpl 
   - python310-brotlicffi 
+  - python310-brotlipy 
   - python310-bsddb3 
   - python310-bsddb3-devel 
   - python310-bson 
@@ -22760,6 +22816,7 @@ unsorted:
   - python310-cpplint 
   - python310-cppy 
   - python310-cracklib 
+  - python310-cramjam 
   - python310-crashtest 
   - python310-crayons 
   - python310-crcmod 
@@ -22781,6 +22838,7 @@ unsorted:
   - python310-ctypescrypto 
   - python310-cu2qu 
   - python310-cufflinks 
+  - python310-curio 
   - python310-curlylint 
   - python310-curtsies 
   - python310-cwcwidth 
@@ -22820,10 +22878,11 @@ unsorted:
   - python310-ddg3 
   - python310-ddt 
   - python310-deap 
+  - python310-debugpy 
   - python310-deepdiff 
   - python310-deepmerge 
   - python310-defcon 
-  - python310-defusedxml: [i586] 
+  - python310-defusedxml 
   - python310-delegator 
   - python310-delegator.py 
   - python310-dennis 
@@ -22969,6 +23028,7 @@ unsorted:
   - python310-dockerpty 
   - python310-docopt 
   - python310-docrepr 
+  - python310-docutils 
   - python310-docutils-ast-writer 
   - python310-dogslow 
   - python310-dominate 
@@ -23000,6 +23060,7 @@ unsorted:
   - python310-ecdsa 
   - python310-ed25519 
   - python310-edgegrid-python 
+  - python310-editables 
   - python310-editdistance 
   - python310-editdistance-devel 
   - python310-efilter 
@@ -23019,6 +23080,7 @@ unsorted:
   - python310-encore 
   - python310-enrich 
   - python310-entrypoint2 
+  - python310-entrypoints 
   - python310-environ-config 
   - python310-environmental-override 
   - python310-envisage 
@@ -23029,6 +23091,7 @@ unsorted:
   - python310-eradicate 
   - python310-espeak 
   - python310-esptool 
+  - python310-et_xmlfile 
   - python310-etcd: [x86_64] 
   - python310-ethtool 
   - python310-evdev 
@@ -23037,6 +23100,7 @@ unsorted:
   - python310-evtx 
   - python310-exam 
   - python310-execnet 
+  - python310-executing 
   - python310-exiv2 
   - python310-expects 
   - python310-expiringdict 
@@ -23057,8 +23121,9 @@ unsorted:
   - python310-fastcluster 
   - python310-fasteners 
   - python310-fastimport 
-  - python310-fastjsonschema: [i586] 
+  - python310-fastjsonschema 
   - python310-fastnumbers 
+  - python310-fastparquet 
   - python310-fastremap 
   - python310-fasttext 
   - python310-fb-re2 
@@ -23112,6 +23177,7 @@ unsorted:
   - python310-flufl.i18n 
   - python310-flufl.lock 
   - python310-flufl.testing 
+  - python310-fluidity-sm 
   - python310-flup 
   - python310-flynt 
   - python310-folium 
@@ -23125,6 +23191,9 @@ unsorted:
   - python310-freetype-py 
   - python310-freezegun 
   - python310-frozendict 
+  - python310-frozenlist 
+  - python310-fs 
+  - python310-fsspec 
   - python310-ftfy 
   - python310-ftputil 
   - python310-fudge 
@@ -23166,6 +23235,7 @@ unsorted:
   - python310-glfw 
   - python310-glob2 
   - python310-glucat 
+  - python310-gmpy 
   - python310-gmpy2 
   - python310-gns3fy 
   - python310-gobject-devel 
@@ -23195,6 +23265,7 @@ unsorted:
   - python310-graphene-django 
   - python310-graphql-core 
   - python310-graphql-relay 
+  - python310-graphviz 
   - python310-greenlet-devel 
   - python310-grpc-google-iam-v1 
   - python310-grpcio 
@@ -23204,6 +23275,7 @@ unsorted:
   - python310-gscholar 
   - python310-gsm0338 
   - python310-gspread 
+  - python310-gssapi 
   - python310-gst 
   - python310-gsw 
   - python310-guessit 
@@ -23230,6 +23302,7 @@ unsorted:
   - python310-hashids 
   - python310-hatch 
   - python310-hatch_vcs 
+  - python310-hatchling 
   - python310-hawkauthlib 
   - python310-hcloud 
   - python310-hdf5storage: [x86_64] 
@@ -23249,6 +23322,7 @@ unsorted:
   - python310-hstspreload 
   - python310-html2text 
   - python310-html5-parser 
+  - python310-html5lib 
   - python310-htmlmin 
   - python310-httmock 
   - python310-http-ece 
@@ -23310,6 +23384,7 @@ unsorted:
   - python310-intervals 
   - python310-intervaltree 
   - python310-invocations 
+  - python310-invoke 
   - python310-iocapture 
   - python310-ipdb 
   - python310-iptables 
@@ -23317,14 +23392,17 @@ unsorted:
   - python310-ipydatawidgets 
   - python310-ipyevents 
   - python310-ipyfilechooser 
+  - python310-ipykernel 
   - python310-ipyleaflet 
   - python310-ipympl 
+  - python310-ipyparallel 
   - python310-ipyscales 
   - python310-ipysheet 
-  - python310-ipython_genutils: [i586] 
+  - python310-ipython 
+  - python310-ipython_genutils 
   - python310-ipyvolume 
   - python310-ipywebrtc 
-  - python310-ipywidgets: [i586] 
+  - python310-ipywidgets 
   - python310-irc 
   - python310-isc_dhcp_leases 
   - python310-iso3166 
@@ -23352,6 +23430,8 @@ unsorted:
   - python310-javapackages 
   - python310-javaproperties 
   - python310-jdatetime 
+  - python310-jdcal 
+  - python310-jedi 
   - python310-jedihttp 
   - python310-jeepney 
   - python310-jellyfish 
@@ -23363,6 +23443,7 @@ unsorted:
   - python310-jinja2-time 
   - python310-jira 
   - python310-jirafs 
+  - python310-jmespath 
   - python310-joblib 
   - python310-josepy 
   - python310-jplephem 
@@ -23370,7 +23451,7 @@ unsorted:
   - python310-jschema-to-python 
   - python310-jsmin 
   - python310-json-rpc 
-  - python310-json5: [i586] 
+  - python310-json5 
   - python310-json_tricks 
   - python310-jsondiff 
   - python310-jsonlines 
@@ -23387,27 +23468,29 @@ unsorted:
   - python310-junit-xml 
   - python310-junitxml 
   - python310-junos-eznc 
-  - python310-jupyter: [i586] 
-  - python310-jupyter-jupyterlab-server: [i586] 
+  - python310-jupyter 
+  - python310-jupyter-client 
+  - python310-jupyter-core 
+  - python310-jupyter-jupyterlab-server 
   - python310-jupyter-jupyterlab-server-openapi 
   - python310-jupyter-jupyterlab-server-test 
   - python310-jupyter-kernel-test 
   - python310-jupyter-nbutils 
   - python310-jupyter-packaging 
-  - python310-jupyter-server: [i586] 
+  - python310-jupyter-server 
   - python310-jupyter-server-mathjax 
   - python310-jupyter-server-test 
   - python310-jupyter-sphinx 
   - python310-jupyter-telemetry 
-  - python310-jupyter_console: [i586] 
+  - python310-jupyter_console 
   - python310-jupyter_contrib_core 
   - python310-jupyter_highlight_selected_word 
   - python310-jupyter_latex_envs 
   - python310-jupyter_nbextensions_configurator 
-  - python310-jupyterlab: [i586] 
-  - python310-jupyterlab-pygments: [i586] 
+  - python310-jupyterlab 
+  - python310-jupyterlab-pygments 
   - python310-jupyterlab-templates 
-  - python310-jupyterlab-widgets: [i586] 
+  - python310-jupyterlab-widgets 
   - python310-jwcrypto 
   - python310-k5test 
   - python310-kafka-python 
@@ -23425,6 +23508,7 @@ unsorted:
   - python310-kismetdb 
   - python310-kiss-headers 
   - python310-kitchen 
+  - python310-kiwisolver 
   - python310-kmatch 
   - python310-kmod 
   - python310-knack 
@@ -23465,6 +23549,7 @@ unsorted:
   - python310-leglight 
   - python310-lesscpy 
   - python310-leveldb 
+  - python310-lexicon 
   - python310-lfdfiles 
   - python310-lhafile 
   - python310-lib3to6 
@@ -23529,10 +23614,12 @@ unsorted:
   - python310-line_profiler 
   - python310-lineup-widget 
   - python310-link-traits 
+  - python310-linkify-it-py 
   - python310-linode-cli 
   - python310-linstor 
   - python310-linstor-client 
   - python310-lit 
+  - python310-littleutils 
   - python310-livereload 
   - python310-llfuse 
   - python310-llvmlite 
@@ -23573,13 +23660,16 @@ unsorted:
   - python310-marshmallow-enum 
   - python310-mathgl 
   - python310-mathics-pygments 
+  - python310-matplotlib 
   - python310-matplotlib-cairo 
   - python310-matplotlib-gtk-common 
   - python310-matplotlib-gtk3 
   - python310-matplotlib-gtk4 
+  - python310-matplotlib-inline 
   - python310-matplotlib-latex 
   - python310-matplotlib-qt5 
   - python310-matplotlib-testdata 
+  - python310-matplotlib-tk 
   - python310-matplotlib-web 
   - python310-matplotlib-wx 
   - python310-matrix-nio 
@@ -23636,6 +23726,7 @@ unsorted:
   - python310-mpl-animators 
   - python310-mplcursors 
   - python310-mpld3 
+  - python310-mpmath 
   - python310-mrcz 
   - python310-msal 
   - python310-msal-extensions 
@@ -23649,6 +23740,7 @@ unsorted:
   - python310-mujson 
   - python310-mulpyplexer 
   - python310-multi_key_dict 
+  - python310-multidict 
   - python310-multipledispatch 
   - python310-munch 
   - python310-munkres 
@@ -23661,6 +23753,7 @@ unsorted:
   - python310-mygpoclient 
   - python310-mypy 
   - python310-mypy-protobuf 
+  - python310-mypy_extensions 
   - python310-mysql-connector-python 
   - python310-mysql-to-sqlite3 
   - python310-myst-parser 
@@ -23673,11 +23766,11 @@ unsorted:
   - python310-natsort 
   - python310-nautilus 
   - python310-nautilus-devel 
-  - python310-nbclassic: [i586] 
-  - python310-nbclient: [i586] 
-  - python310-nbconvert: [i586] 
+  - python310-nbclassic 
+  - python310-nbclient 
+  - python310-nbconvert 
   - python310-nbdime 
-  - python310-nbformat: [i586] 
+  - python310-nbformat 
   - python310-nbindex-jupyter 
   - python310-nbsmoke 
   - python310-nbsphinx 
@@ -23689,12 +23782,14 @@ unsorted:
   - python310-ndg-httpsclient 
   - python310-neovim 
   - python310-neovim-remote 
+  - python310-nest-asyncio 
   - python310-nested-lookup 
   - python310-net-snmp 
   - python310-netCDF4 
   - python310-netmiko 
   - python310-netpbmfile 
   - python310-netutils 
+  - python310-networkx 
   - python310-nibabel 
   - python310-nilearn 
   - python310-nine 
@@ -23706,9 +23801,9 @@ unsorted:
   - python310-nodeenv 
   - python310-nornir 
   - python310-nose2 
-  - python310-notebook: [i586] 
+  - python310-notebook 
   - python310-notebook-lang 
-  - python310-notebook-shim: [i586] 
+  - python310-notebook-shim 
   - python310-nox 
   - python310-npTDMS 
   - python310-nptyping 
@@ -23722,6 +23817,7 @@ unsorted:
   - python310-numba-devel 
   - python310-numcodecs 
   - python310-numericalunits 
+  - python310-numexpr 
   - python310-numpy-devel 
   - python310-numpy-gnu-hpc 
   - python310-numpy-gnu-hpc-devel 
@@ -23764,6 +23860,7 @@ unsorted:
   - python310-opengl-accelerate 
   - python310-openidc-client 
   - python310-openmesh 
+  - python310-openpyxl 
   - python310-openqa_client 
   - python310-opentelemetry-api 
   - python310-opentracing 
@@ -23780,6 +23877,7 @@ unsorted:
   - python310-osmviz 
   - python310-ospd 
   - python310-ospd-openvas 
+  - python310-outcome 
   - python310-ovirt-engine-sdk 
   - python310-ovs 
   - python310-pa-ringbuffer 
@@ -23791,15 +23889,17 @@ unsorted:
   - python310-pamela 
   - python310-pamqp 
   - python310-pan-python 
+  - python310-pandas 
   - python310-pandas-datareader 
   - python310-pandas-ext 
-  - python310-pandocfilters: [i586] 
+  - python310-pandocfilters 
   - python310-panel 
   - python310-panflute 
   - python310-papermill 
   - python310-parallax 
   - python310-param 
   - python310-parameterized 
+  - python310-paramiko 
   - python310-paramiko-expect 
   - python310-parfive 
   - python310-parse 
@@ -23807,6 +23907,7 @@ unsorted:
   - python310-parsedatetime 
   - python310-parsel 
   - python310-parsimonious 
+  - python310-parso 
   - python310-parsy 
   - python310-partd 
   - python310-parted 
@@ -23820,6 +23921,7 @@ unsorted:
   - python310-patatt 
   - python310-patchy 
   - python310-path 
+  - python310-pathspec 
   - python310-pathtools 
   - python310-pathvalidate 
   - python310-patiencediff 
@@ -23855,6 +23957,7 @@ unsorted:
   - python310-phue 
   - python310-physt 
   - python310-pick 
+  - python310-pickleshare 
   - python310-pifpaf 
   - python310-pika 
   - python310-pika-pool 
@@ -23877,12 +23980,15 @@ unsorted:
   - python310-pkgutil-resolve-name 
   - python310-plaster 
   - python310-plaster-pastedeploy 
+  - python310-platformdirs 
   - python310-platformio 
   - python310-plette 
   - python310-plotly 
   - python310-plotly-jupyter 
+  - python310-pluggy 
   - python310-pluginbase 
   - python310-plumbum 
+  - python310-ply 
   - python310-plyvel 
   - python310-pmw 
   - python310-pname 
@@ -23924,8 +24030,9 @@ unsorted:
   - python310-progress 
   - python310-progressbar 
   - python310-progressbar2 
-  - python310-prometheus-client: [i586] 
+  - python310-prometheus-client 
   - python310-promise 
+  - python310-prompt_toolkit 
   - python310-prompt_toolkit1 
   - python310-proselint 
   - python310-proto-plus 
@@ -23936,6 +24043,7 @@ unsorted:
   - python310-psautohint 
   - python310-pscript 
   - python310-psychtoolbox 
+  - python310-psycopg2 
   - python310-psycopg2cffi 
   - python310-ptpython 
   - python310-ptpython-ptipython 
@@ -23945,6 +24053,7 @@ unsorted:
   - python310-publicsuffixlist 
   - python310-pudb 
   - python310-pulsectl 
+  - python310-pure-eval 
   - python310-pure-sasl 
   - python310-purl 
   - python310-py-cpuinfo 
@@ -23978,6 +24087,7 @@ unsorted:
   - python310-pyannotate 
   - python310-pybars3 
   - python310-pybeam 
+  - python310-pybind11 
   - python310-pybind11-devel 
   - python310-pybind11-stubgen 
   - python310-pyblake2 
@@ -24009,6 +24119,7 @@ unsorted:
   - python310-pydle 
   - python310-pydocstyle 
   - python310-pydocumentdb 
+  - python310-pydot 
   - python310-pydot3 
   - python310-pydotplus 
   - python310-pydrive2 
@@ -24025,6 +24136,7 @@ unsorted:
   - python310-pyfeyn 
   - python310-pyfiglet 
   - python310-pyflakes 
+  - python310-pyftpdlib 
   - python310-pyfuse3 
   - python310-pygal 
   - python310-pygaljs 
@@ -24036,6 +24148,7 @@ unsorted:
   - python310-pygments-pytest 
   - python310-pygments-style-railscasts 
   - python310-pygn 
+  - python310-pygraphviz 
   - python310-pyhcl 
   - python310-pyhibp 
   - python310-pyicumessageformat 
@@ -24117,6 +24230,7 @@ unsorted:
   - python310-pyramid-chameleon 
   - python310-pyramid-debugtoolbar 
   - python310-pyramid-mako 
+  - python310-pyreadstat 
   - python310-pyroma 
   - python310-pyroomacoustics 
   - python310-pyroute2 
@@ -24131,6 +24245,7 @@ unsorted:
   - python310-pysaml2 
   - python310-pyscard 
   - python310-pyscreenshot 
+  - python310-pysendfile 
   - python310-pyserial: [i586] 
   - python310-pysha3 
   - python310-pyshark 
@@ -24149,6 +24264,7 @@ unsorted:
   - python310-pytaglib 
   - python310-pyte 
   - python310-pytesseract 
+  - python310-pytest 
   - python310-pytest-aiohttp 
   - python310-pytest-arraydiff 
   - python310-pytest-astropy 
@@ -24260,6 +24376,7 @@ unsorted:
   - python310-python-crontab 
   - python310-python-daemon 
   - python310-python-datamatrix 
+  - python310-python-dateutil: [i586] 
   - python310-python-dbusmock 
   - python310-python-debian 
   - python310-python-docs-theme 
@@ -24283,6 +24400,7 @@ unsorted:
   - python310-python-lsp-black 
   - python310-python-lsp-jsonrpc 
   - python310-python-lsp-server 
+  - python310-python-lzo 
   - python310-python-magic 
   - python310-python-memcached: [i586] 
   - python310-python-mpd2 
@@ -24319,6 +24437,7 @@ unsorted:
   - python310-python-utils 
   - python310-python-vlc 
   - python310-python-whois 
+  - python310-python-xlib 
   - python310-python-yubico 
   - python310-python3-openid 
   - python310-pythondialog 
@@ -24380,7 +24499,7 @@ unsorted:
   - python310-qtcharts-qt5-api 
   - python310-qtcharts-qt5-doc 
   - python310-qtcharts-qt5-sip 
-  - python310-qtconsole: [i586] 
+  - python310-qtconsole 
   - python310-qtdatavis3d-qt5 
   - python310-qtdatavis3d-qt5-api 
   - python310-qtdatavis3d-qt5-doc 
@@ -24454,6 +24573,7 @@ unsorted:
   - python310-retry_decorator 
   - python310-retrying 
   - python310-retryrequests 
+  - python310-rfc3339-validator 
   - python310-rfc3987 
   - python310-rfc6555 
   - python310-rich-click 
@@ -24464,6 +24584,7 @@ unsorted:
   - python310-robotframework 
   - python310-roifile 
   - python310-rollbar 
+  - python310-roman 
   - python310-rope 
   - python310-rpcq 
   - python310-rply 
@@ -24472,6 +24593,7 @@ unsorted:
   - python310-rpy2 
   - python310-rpyc 
   - python310-rq 
+  - python310-rsa 
   - python310-rss2email 
   - python310-rst.linker 
   - python310-rstcheck 
@@ -24484,6 +24606,8 @@ unsorted:
   - python310-ruamel.yaml.convert 
   - python310-ruffus 
   - python310-runthis-sphinxext 
+  - python310-s3fs 
+  - python310-s3transfer 
   - python310-sadisplay 
   - python310-safe-netrc 
   - python310-samplerate 
@@ -24507,6 +24631,7 @@ unsorted:
   - python310-scikit-sound 
   - python310-scikit-sparse: [x86_64] 
   - python310-scikit-umfpack: [x86_64] 
+  - python310-scipy 
   - python310-scipy-gnu-hpc: [x86_64] 
   - python310-scipy_1_8_0-gnu-hpc: [x86_64] 
   - python310-scitokens 
@@ -24587,8 +24712,10 @@ unsorted:
   - python310-softlayer-zeep 
   - python310-sorl-thumbnail 
   - python310-sortedcollections 
+  - python310-sortedcontainers 
   - python310-sortinghat 
   - python310-sounddevice 
+  - python310-soupsieve 
   - python310-sox 
   - python310-spake2 
   - python310-spark_parser 
@@ -24651,6 +24778,7 @@ unsorted:
   - python310-ssdeep 
   - python310-sshpubkeys 
   - python310-sshtunnel 
+  - python310-stack-data 
   - python310-starlette 
   - python310-statsd 
   - python310-statsmodels 
@@ -24681,13 +24809,16 @@ unsorted:
   - python310-swapper 
   - python310-swifter 
   - python310-sybil 
+  - python310-sympy 
   - python310-synr 
   - python310-system_hotkey 
   - python310-systemd 
   - python310-tableauserverclient 
   - python310-tableprint 
+  - python310-tables 
   - python310-tablib 
   - python310-tabpy 
+  - python310-tabulate 
   - python310-tap.py 
   - python310-targetcli-fb 
   - python310-tasklib 
@@ -24704,7 +24835,7 @@ unsorted:
   - python310-tensorpac 
   - python310-term-background 
   - python310-termcolor 
-  - python310-terminado: [i586] 
+  - python310-terminado 
   - python310-terminaltables 
   - python310-termstyle 
   - python310-tesserocr 
@@ -24735,7 +24866,7 @@ unsorted:
   - python310-time-travel 
   - python310-timeout-decorator 
   - python310-tinyarray 
-  - python310-tinycss2: [i586] 
+  - python310-tinycss2 
   - python310-tinydb 
   - python310-tinyrecord 
   - python310-tinyrpc 
@@ -24745,6 +24876,7 @@ unsorted:
   - python310-tldextract 
   - python310-tmx 
   - python310-tokenize-rt 
+  - python310-tomli 
   - python310-tomli-w 
   - python310-tomlkit 
   - python310-tools 
@@ -24758,6 +24890,8 @@ unsorted:
   - python310-tox-no-internet 
   - python310-tox-wheel 
   - python310-tpfd 
+  - python310-tqdm 
+  - python310-traitlets 
   - python310-traits 
   - python310-traitsui 
   - python310-traittypes 
@@ -24771,12 +24905,14 @@ unsorted:
   - python310-treq 
   - python310-tri.declarative 
   - python310-tri.struct 
+  - python310-trio 
   - python310-trove-classifiers 
   - python310-trustme 
   - python310-truststore 
   - python310-tsk 
   - python310-tweepy 
   - python310-twine 
+  - python310-twitter 
   - python310-twitter.common.finagle-thrift 
   - python310-twitter.common.lang 
   - python310-twitter.common.rpc 
@@ -24788,6 +24924,7 @@ unsorted:
   - python310-txtorcon 
   - python310-typed-ast 
   - python310-typedload 
+  - python310-typeguard 
   - python310-typepy 
   - python310-typer 
   - python310-typing-inspect 
@@ -24796,6 +24933,7 @@ unsorted:
   - python310-u-msgpack-python 
   - python310-ua-parser 
   - python310-uamqp 
+  - python310-uc-micro-py 
   - python310-ufoLib2 
   - python310-ufoProcessor 
   - python310-ufonormalizer 
@@ -24876,16 +25014,18 @@ unsorted:
   - python310-watermark 
   - python310-wcag-contrast-ratio 
   - python310-wcmatch 
+  - python310-wcwidth 
   - python310-weasyprint 
   - python310-web.py 
   - python310-web_cache 
   - python310-webassets 
   - python310-webcolors 
+  - python310-webencodings 
   - python310-weblate-language-data 
   - python310-weblate-schemas 
   - python310-weblib 
   - python310-webruntime 
-  - python310-websocket-client: [i586] 
+  - python310-websocket-client 
   - python310-websockets 
   - python310-websockify 
   - python310-wfuzz 
@@ -24896,13 +25036,14 @@ unsorted:
   - python310-whichcraft 
   - python310-whitenoise 
   - python310-whois_similarity_distance 
-  - python310-widgetsnbextension: [i586] 
+  - python310-widgetsnbextension 
   - python310-wikipedia 
   - python310-wirerope 
   - python310-wiring 
   - python310-wmctrl 
   - python310-wolframalpha 
   - python310-wptools 
+  - python310-wrapt: [i586] 
   - python310-ws4py 
   - python310-wsaccel 
   - python310-wsgi_intercept 
@@ -24914,6 +25055,7 @@ unsorted:
   - python310-xapian 
   - python310-xapian-haystack 
   - python310-xapp 
+  - python310-xarray 
   - python310-xattr 
   - python310-xcffib 
   - python310-xdg 
@@ -24924,6 +25066,8 @@ unsorted:
   - python310-xkbcommon 
   - python310-xkbgroup 
   - python310-xkcdpass 
+  - python310-xlrd 
+  - python310-xlwt 
   - python310-xmldiff 
   - python310-xmlschema 
   - python310-xmltodict 
@@ -24945,6 +25089,7 @@ unsorted:
   - python310-yappi 
   - python310-yara 
   - python310-yarg 
+  - python310-yarl 
   - python310-yaspin 
   - python310-yaswfp 
   - python310-yg.lockfile 
@@ -24982,6 +25127,7 @@ unsorted:
   - python310-zope.testbrowser-test 
   - python310-zope.testing 
   - python310-zope.testrunner 
+  - python310-zopfli 
   - python310-zstandard 
   - python310-zstd 
   - python310-zxcvbn 
@@ -26742,6 +26888,7 @@ unsorted:
   - python38-linecache2 
   - python38-lineup-widget 
   - python38-link-traits 
+  - python38-linkify-it-py 
   - python38-linode-cli 
   - python38-linstor 
   - python38-linstor-client 
@@ -27737,6 +27884,7 @@ unsorted:
   - python38-retry_decorator 
   - python38-retrying 
   - python38-retryrequests 
+  - python38-rfc3339-validator 
   - python38-rfc3986 
   - python38-rfc3987 
   - python38-rfc6555 
@@ -28091,6 +28239,7 @@ unsorted:
   - python38-tvm: [x86_64] 
   - python38-tweepy 
   - python38-twine 
+  - python38-twitter 
   - python38-twitter.common.finagle-thrift 
   - python38-twitter.common.lang 
   - python38-twitter.common.rpc 
@@ -28112,6 +28261,7 @@ unsorted:
   - python38-u-msgpack-python 
   - python38-ua-parser 
   - python38-uamqp 
+  - python38-uc-micro-py 
   - python38-ufoLib2 
   - python38-ufoProcessor 
   - python38-ufonormalizer 
@@ -30061,6 +30211,7 @@ unsorted:
   - python39-linecache2 
   - python39-lineup-widget 
   - python39-link-traits 
+  - python39-linkify-it-py 
   - python39-linode-cli 
   - python39-linstor 
   - python39-linstor-client 
@@ -31057,6 +31208,7 @@ unsorted:
   - python39-retry_decorator 
   - python39-retrying 
   - python39-retryrequests 
+  - python39-rfc3339-validator 
   - python39-rfc3986 
   - python39-rfc3987 
   - python39-rfc6555 
@@ -31410,6 +31562,7 @@ unsorted:
   - python39-tsk 
   - python39-tweepy 
   - python39-twine 
+  - python39-twitter 
   - python39-twitter.common.finagle-thrift 
   - python39-twitter.common.lang 
   - python39-twitter.common.rpc 
@@ -31431,6 +31584,7 @@ unsorted:
   - python39-u-msgpack-python 
   - python39-ua-parser 
   - python39-uamqp 
+  - python39-uc-micro-py 
   - python39-ufoLib2 
   - python39-ufoProcessor 
   - python39-ufonormalizer 
@@ -32369,6 +32523,7 @@ unsorted:
   - rehex 
   - reiser4progs 
   - reiser4progs-devel 
+  - reiserfs 
   - rekor 
   - relaxngDatatype 
   - relaxngcc 
@@ -42812,6 +42967,7 @@ unsorted:
   - typelib-1_0-GstVulkanWayland-1_0 
   - typelib-1_0-GstVulkanXCB-1_0 
   - typelib-1_0-GstWebRTC-1_0 
+  - typelib-1_0-Gtk-2_0 
   - typelib-1_0-GtkLayerShell-0_1 
   - typelib-1_0-GtkSpell-3_0 
   - typelib-1_0-Gucharmap-2_90 
@@ -42880,6 +43036,7 @@ unsorted:
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-WebKit2WebExtension-4_1 
   - typelib-1_0-WebKit2WebExtension-5_0 
+  - typelib-1_0-Wnck-1_0 
   - typelib-1_0-Workrave-1_0 
   - typelib-1_0-Wp-0_4 
   - typelib-1_0-XApp-1_0 
@@ -44030,6 +44187,7 @@ unsorted:
   - xscope 
   - xsd 
   - xsd-doc 
+  - xsel 
   - xselection 
   - xsession 
   - xsetmode 

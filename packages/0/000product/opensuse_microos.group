@@ -609,6 +609,7 @@
     <package name="libmagic1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libmanette-0_2-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libmariadb3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="libmicrodns1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libminizip1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libmjpegutils-2_2-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libmm-glib0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -1096,9 +1097,6 @@
     <package name="QGnomePlatform" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="WebKit2GTK-4.1-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="WebKit2GTK-5.0-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
-    <package name="accerciser" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="accerciser-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="accerciser-plugin-IPython" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="accountsservice" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="accountsservice-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="acl" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -1217,9 +1215,9 @@
     <package name="cronie" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="cryptsetup-doc" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="ctags" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="cups" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="cups-client" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="cups-filters" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="cups" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="cups-client" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="cups-filters" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="cups-pk-helper" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="cups-pk-helper-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="cyrus-sasl" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
@@ -1302,12 +1300,12 @@
     <package name="gedit-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="geocode-glib" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="gettext-runtime" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="ghostscript" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="ghostscript" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="ghostscript-fonts-grops" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="ghostscript-fonts-other" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="ghostscript-fonts-std" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="ghostscript-fonts-std-converted" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="ghostscript-x11" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="ghostscript-x11" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="gjs" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="gmenudbusmenuproxy" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="gnome-bluetooth" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
@@ -1382,10 +1380,6 @@
     <package name="gpgme" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="gpm" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="grantlee5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="graphviz" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="graphviz-gd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="graphviz-gnome" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="graphviz-plugins-core" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="groff" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="groff-full" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="growpart" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
@@ -1448,20 +1442,6 @@
     <package name="iscsiuio" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="iso_ent" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="issue-generator" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="jupyter-ipyparallel" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="jupyter-jupyter-client" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="jupyter-jupyter_core-filesystem" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="jupyter-jupyterlab" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="jupyter-jupyterlab-filesystem" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="jupyter-jupyterlab-pygments" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="jupyter-jupyterlab-widgets" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="jupyter-nbclassic" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="jupyter-nbconvert" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="jupyter-nbformat" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="jupyter-notebook" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="jupyter-notebook-filesystem" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="jupyter-notebook-shim" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="jupyter-widgetsnbextension" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="kaccounts-integration" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="kaccounts-integration-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="kaccounts-providers" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -1688,32 +1668,21 @@
     <package name="libKUserFeedbackWidgets1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libMagickCore-7_Q16HDRI10" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libMagickWand-7_Q16HDRI10" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libQt5Bluetooth5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="libQt5Bluetooth5-imports" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="libQt5Concurrent5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libQt5Designer5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="libQt5Help5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="libQt5HunspellInputMethod5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libQt5Location5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="libQt5Multimedia5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="libQt5Nfc5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="libQt5Nfc5-imports" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="libQt5OpenGL5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="libQt5PositioningQuick5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libQt5Multimedia5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libQt5OpenGL5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libQt5Sensors5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libQt5Sensors5-imports" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libQt5SerialPort5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="libQt5Svg5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="libQt5TextToSpeech5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libQt5Svg5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libQt5TextToSpeech5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libQt5VirtualKeyboard5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libQt5WaylandClient5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libQt5WaylandCompositor5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libQt5WebSockets5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="libQt5WebSockets5-imports" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="libQt5X11Extras5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="libQt5Xml5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libQt5X11Extras5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libQt5Xml5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libSvtAv1Enc1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="libXRes1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libXRes1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libXaw7" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libXdmcp6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libXfont2-2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -1740,21 +1709,20 @@
     <package name="libavfilter7_110" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libavresample4_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libbasicobjects0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
-    <package name="libblas3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libblas3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libbreezecommon5-5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libbrlapi0_8" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
-    <package name="libbrotlienc1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="libbsd0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="libbtrfs0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libcairo-script-interpreter2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libcairomm-1_0-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libcamel-1_2-63" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
-    <package name="libcares2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="libcblas3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libcares2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
+    <package name="libcblas3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="libcdrdeflt1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libcdt5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="libcgraph6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libcdt5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libcgraph6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libcheese-common" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libcheese-gtk25" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libcheese8" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
@@ -1775,7 +1743,7 @@
     <package name="libcryptui-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libcryptui0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libcue2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
-    <package name="libcupsimage2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libcupsimage2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libdaemon0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libdazzle-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libdazzle-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
@@ -1806,7 +1774,7 @@
     <package name="libell0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libepub0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libespeak-ng1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
-    <package name="libev4" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libev4" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="libevdocument3-4" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libevview3-3" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libexempi8" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
@@ -1826,7 +1794,7 @@
     <package name="libgdm1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libgeocode-glib0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libgexiv2-2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
-    <package name="libgfortran5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libgfortran5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="libgiomm-2_4-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libgjs0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libglibmm-2_4-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
@@ -1861,13 +1829,11 @@
     <package name="libgtksourceview-5-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libgtop-2_0-11" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libgtop-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
-    <package name="libgts-0_7-5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="libgupnp-av-1_0-3" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libgupnp-dlna-2_0-4" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libgupnp-dlna-backend-gstreamer" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libgusb2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libgvc6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="libgvpr2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libgvc6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libgweather-3-16" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libgweather-4-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libgweather-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
@@ -1882,7 +1848,7 @@
     <package name="libical3" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libid3tag0_16_2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libimaevm3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-ima_evm -->
-    <package name="libimagequant0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libimagequant0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libimobiledevice-1_0-6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libimobiledevice-glue-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libini_config5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
@@ -1909,8 +1875,7 @@
     <package name="libksysguard5-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libksysguard5-plugins" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libkwalletbackend5-5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="liblab_gamut1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="liblapack3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="liblapack3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="libldapcpp0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="liblldp_clif1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
     <package name="liblmdb-0_9_29" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -1950,7 +1915,7 @@
     <package name="libnuma1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
     <package name="libnvme1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="libobjc4" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
-    <package name="libopenblas_pthreads0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libopenblas_pthreads0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="libopeniscsiusr0_2_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="libosinfo" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libosinfo-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
@@ -1964,7 +1929,7 @@
     <package name="libpaper-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libpaper1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libpath_utils1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
-    <package name="libpathplan4" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libpathplan4" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libpcap1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libpcaudio0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libpci3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -1999,17 +1964,16 @@
     <package name="libqca-qt5-2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libqmi-glib5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libqmi-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="libqpdf28" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libqpdf28" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libqrtr-glib0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libqt5-qdbus" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libqt5-qtconnectivity-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="libqt5-qtimageformats" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libqt5-qtpaths" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libqt5-qtspeech-plugin-speechd" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
+    <package name="libqt5-qtspeech-plugin-speechd" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:expansion -->
     <package name="libqt5-qtvirtualkeyboard" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libqt5-qtvirtualkeyboard-hunspell" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libqt5-qtwayland" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libquadmath0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libquadmath0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="libraw20" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libref_array1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
     <package name="libreoffice-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -2045,7 +2009,7 @@
     <package name="libsss_certmap0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
     <package name="libsss_idmap0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
     <package name="libsss_nss_idmap0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
-    <package name="libstartup-notification-1-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libstartup-notification-1-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libstdc++6-pp" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libstorage-ng-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libstorage-ng-ruby" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -2072,8 +2036,8 @@
     <package name="libvte-2_91-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libwebkit2gtk-4_1-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libwebkit2gtk-5_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
-    <package name="libwnck-3-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="libwnck-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="libwnck-3-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
+    <package name="libwnck-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libx86emu3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
     <package name="libxapian30" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libxcb-composite0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -2167,10 +2131,7 @@
     <package name="netcat-openbsd" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="netpbm" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="nftables" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
-    <package name="nodejs-common" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="nodejs17" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="noto-sans-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="npm17" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="nscd" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="nss-mdns" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="ntfs-3g" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -2195,8 +2156,7 @@
     <package name="os-prober" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="osinfo-db" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="oxygen5-sounds" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="pandoc" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="parallel-printer-support" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
+    <package name="parallel-printer-support" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="parted" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="parted-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="patterns-base-base" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -2340,7 +2300,7 @@
     <package name="polkit-gnome-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="polkit-kde-agent-5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="polkit-kde-agent-5-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="poppler-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="poppler-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="postfix" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="power-profiles-daemon" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="powerdevil5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -2359,9 +2319,6 @@
     <package name="purge-kernels-service" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="purpose" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="purpose-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="python-rpm-generators" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python-rpm-macros" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python-tqdm-bash-completion" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="python3-apparmor" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="python3-audit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python3-brlapi" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
@@ -2379,216 +2336,111 @@
     <package name="python3-talloc" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="python3-tdb" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="python3-tevent" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
-    <package name="python310-Automat" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-Babel" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-Automat" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-Babel" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python310-Beaker" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
-    <package name="python310-Bottleneck" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-Brotli" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-CommonMark" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-Cycler" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-Brotli" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="python310-CommonMark" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-Deprecated" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
-    <package name="python310-FontTools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-Genshi" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-Jinja2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-Jinja2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python310-M2Crypto" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-Mako" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
-    <package name="python310-MarkupSafe" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-Pillow" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-MarkupSafe" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python310-PyJWT" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
-    <package name="python310-PySocks" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-PyYAML" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-Pygments" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-QtPy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-PySocks" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="python310-PyYAML" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="python310-Pygments" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-SQLAlchemy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
-    <package name="python310-Send2Trash" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-Twisted" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-Twisted-tls" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-aiodns" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-aiohttp" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-aiohttp_cors" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-aiosignal" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-Twisted" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-Twisted-tls" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-alembic" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
-    <package name="python310-anyio" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-apipkg" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-appdirs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-argon2-cffi" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-argon2-cffi-bindings" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-asttokens" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-async_timeout" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-atspi" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-attrs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-backcall" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-beautifulsoup4" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-black" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-bleach" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-anyio" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-apipkg" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="python310-async_timeout" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-atspi" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
+    <package name="python310-attrs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python310-blinker" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
-    <package name="python310-brotlipy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-certifi" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-cffi" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-chardet" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-charset-normalizer" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-click" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-certifi" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="python310-cffi" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="python310-charset-normalizer" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="python310-click" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-cmdln" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="python310-configobj" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
-    <package name="python310-constantly" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-cryptography" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-cssselect" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-debugpy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-decorator" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-defusedxml" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-dnspython" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-editables" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-entrypoints" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-executing" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-fastjsonschema" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-frozenlist" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-fs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-gevent" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-gmpy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-constantly" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-cryptography" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="python310-decorator" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
+    <package name="python310-dnspython" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-gevent" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-gpg" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
-    <package name="python310-greenlet" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-h11" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-h2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-hatchling" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-greenlet" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-h11" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-h2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-hiredis" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
-    <package name="python310-hpack" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-html5lib" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-httpcore" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-httpx" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-hyperframe" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-hyperlink" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-idna" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-importlib-metadata" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-incremental" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-iniconfig" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-hpack" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-httpcore" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-httpx" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-hyperframe" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-hyperlink" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-idna" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="python310-incremental" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-iniconfig" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python310-ipaddr" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
-    <package name="python310-ipykernel" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-ipyparallel" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-ipython" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-ipython_genutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-ipywidgets" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-jedi" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-json5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-jsonpatch" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python310-jsonpointer" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
-    <package name="python310-jsonschema" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-jupyter" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-jupyter-client" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-jupyter-core" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-jupyter-jupyterlab-server" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-jupyter-server" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-jupyter_console" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-jupyterlab" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-jupyterlab-pygments" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-jupyterlab-widgets" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-jsonschema" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python310-keylime" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
-    <package name="python310-kiwisolver" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-lark-parser" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-linux-procfs" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="python310-lxml" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-matplotlib" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-matplotlib-inline" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-mpmath" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-multidict" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-mypy_extensions" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-nbclassic" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-nbclient" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-nbconvert" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-nbformat" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-nest-asyncio" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-netifaces" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
-    <package name="python310-networkx" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-notebook" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-notebook-shim" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-notify2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
-    <package name="python310-numexpr" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-numpy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-numpy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-oauthlib" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
-    <package name="python310-olefile" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-packaging" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pandas" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pandocfilters" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-parso" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pathspec" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pexpect" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pickleshare" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-platformdirs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pluggy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-prometheus-client" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-prompt_toolkit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-packaging" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-pexpect" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-protobuf" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
-    <package name="python310-psutil" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-ptyprocess" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pure-eval" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-py" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pyOpenSSL" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pyasn1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pyasn1-modules" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pybind11" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pycares" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pycparser" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-psutil" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
+    <package name="python310-ptyprocess" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-py" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="python310-pyOpenSSL" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="python310-pyasn1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-pyasn1-modules" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-pycares" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-pycparser" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python310-pycryptodome" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-pycups" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="python310-pycurl" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pydot" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pyftpdlib" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pygraphviz" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-pycurl" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-pylibmc" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-pymongo" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
-    <package name="python310-pyparsing" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pyrsistent" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pysendfile" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-pyparsing" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-pyrsistent" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python310-pyserial" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python310-pysmbc" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="python310-pytest" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-python-dateutil" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-python-dateutil" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-python-memcached" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
-    <package name="python310-python-xlib" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-pytz" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-pytz" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python310-pyudev" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="python310-pyzmq" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-qt5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-qt5-sip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-qtconsole" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-pyzmq" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-redis" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-regex" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
-    <package name="python310-reportlab" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-requests" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-requests-toolbelt" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-rfc3986" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-rich" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-requests" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="python310-requests-toolbelt" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-rfc3986" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-rich" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-rpm" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="python310-scipy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python310-semanage" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-service_identity" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-service_identity" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python310-setools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-simplejson" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-six" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-simplejson" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-six" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python310-slip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="python310-slip-dbus" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
-    <package name="python310-sniffio" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-soupsieve" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-stack-data" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-sympy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-terminado" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-tinycss2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-tomli" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-tornado6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-tqdm" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-traitlets" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-typing_extensions" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-unicodedata2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-urllib3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-wcwidth" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-webencodings" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-websocket-client" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-widgetsnbextension" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-sniffio" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-tornado6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-typing_extensions" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-urllib3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python310-wrapt" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
-    <package name="python310-yarl" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-zipp" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-zope.event" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-zope.interface" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python310-zopfli" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python310-zope.event" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="python310-zope.interface" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="qalculate-data" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="qca-qt5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="qca-qt5-plugins" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -2750,7 +2602,7 @@
     <package name="tuned" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="typelib-1_0-AccountsService-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-Adw-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
-    <package name="typelib-1_0-Atspi-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="typelib-1_0-Atspi-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-EvinceDocument-3_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-EvinceView-3_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-Fwupd-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -2779,7 +2631,7 @@
     <package name="typelib-1_0-Peas-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-PeasGtk-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-Polkit-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="typelib-1_0-Rsvg-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="typelib-1_0-Rsvg-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-Secret-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="typelib-1_0-Soup-2_4" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-Soup-3_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
@@ -2787,7 +2639,7 @@
     <package name="typelib-1_0-TelepathyLogger-0_2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-UpowerGlib-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-WebKit2-5_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
-    <package name="typelib-1_0-Wnck-3_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="typelib-1_0-Wnck-3_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="ucode-amd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="ucode-intel" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="udev-configure-printer" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
