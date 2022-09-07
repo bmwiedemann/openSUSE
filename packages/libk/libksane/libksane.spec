@@ -55,10 +55,7 @@ scanners and other imaging devices supported by SANE.
 Summary:        Development files for the KDE scanning library
 Group:          Development/Libraries/KDE
 Requires:       %{lname}%{_so} = %{version}
-Requires:       pkgconfig
-Requires:       sane-backends-devel
-Requires:       cmake(KF5Wallet)
-Requires:       cmake(KF5WidgetsAddons)
+Requires:       cmake(KSaneCore)
 Requires:       cmake(Qt5Widgets)
 Obsoletes:      libksane-kf5-devel < %{version}
 Provides:       libksane-kf5-devel = %{version}
