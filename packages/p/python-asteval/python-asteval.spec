@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-asteval
-Version:        0.9.26
+Version:        0.9.27
 Release:        0
 Summary:        Safe, minimalistic evaluator of python expression using ast module
 License:        MIT
@@ -33,6 +33,7 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 # /SECTION
 %python_subpackages
