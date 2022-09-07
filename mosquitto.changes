@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Aug 22 21:15:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.15:
+  * Deleting the group configured as the anonymous group in the Dynamic Security
+    plugin, would leave a dangling pointer that could lead to a single crash.
+    This is considered a minor issue - only administrative users should have
+    access to dynsec, the impact on availability is one-off, and there is no
+    associated loss of data. It is now forbidden to delete the group configured
+    as the anonymous group.
+  * Fix memory leak when a plugin modifies the topic of a message in
+    MOSQ_EVT_MESSAGE.
+  * Fix bridge `restart_timeout` not being honoured.
+  * Fix potential memory leaks if a plugin modifies the message in the
+    MOSQ_EVT_MESSAGE event.
+  * Fix unused flags in CONNECT command being forced to be 0, which is not
+    required for MQTT v3.1. Closes #2522.
+  * Improve documentation of `persistent_client_expiration` option.
+    Closes #2404.
+  * Add clients to session expiry check list when restarting and reloading from
+   persistence. Closes #2546.
+  * Fix bridges not sending failure notification messages to the local broker if
+    the remote bridge connection fails. Closes #2467. Closes #1488.
+  * Fix some PUBLISH messages not being counted in $SYS stats. Closes #2448.
+  * Fix incorrect return code being sent in DISCONNECT when a client session is
+    taken over. Closes #2607.
+  * Fix confusing "out of memory" error when a client is kicked in the dynamic
+    security plugin. Closes #2525.
+  * Fix confusing error message when dynamic security config file was a
+    directory. Closes #2520.
+  * Fix bridge queued messages not being persisted when local_cleansession is
+    set to false and cleansession is set to true. Closes #2604.
+  * Dynamic security: Fix modifyClient and modifyGroup commands to not modify
+    the client/group if a new group/client being added is not valid.
+  * Dynamic security: Fix the plugin being able to be loaded twice. Currently
+    only a single plugin can interact with a unique $CONTROL topic. Using
+    multiple instances of the plugin would produce duplicate entries in the
+    config file. Closes #2601. Closes #2470.
+  * Fix case where expired messages were causing queued messages not to be
+    delivered. Closes #2609.
+  * Fix websockets not passing on the X-Forwarded-For header.
+  * Fix use of `MOSQ_OPT_TLS_ENGINE` being unable to be used due to the openssl
+    ctx not being initialised until starting to connect. Closes #2537.
+  * Fix incorrect use of SSL_connect. Closes #2594.
+  * Don't set SIGPIPE to ignore, use MSG_NOSIGNAL instead. Closes #2564.
+  * Add documentation of struct mosquitto_message to header. Closes #2561.
+  * Fix documentation omission around mosquitto_reinitialise. Closes #2489.
+  * Fix use of MOSQ_OPT_SSL_CTX when used in conjunction with
+    MOSQ_OPT_SSL_CTX_DEFAULTS. Closes #2463.
+  * Fix failure to close thread in some situations. Closes #2545.
+  * Fix mosquitto_pub incorrectly reusing topic aliases when reconnecting.
+  * Fix `-o` not working in `mosquitto_ctrl`, and typo in related documentation.
+
+-------------------------------------------------------------------
 Thu Nov 18 21:02:34 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.14
