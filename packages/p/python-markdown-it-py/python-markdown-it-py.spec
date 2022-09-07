@@ -26,22 +26,21 @@ URL:            https://github.com/executablebooks/markdown-it-py/
 Source:         https://github.com/executablebooks/markdown-it-py/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #Source:         https://files.pythonhosted.org/packages/source/m/markdown-it-py/markdown-it-py-%%{version}.tar.gz
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module flit}
-# SECTION tests
 BuildRequires:  %{python_module mdurl}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pip}
+# SECTION tests
+BuildRequires:  %{python_module linkify-it-py}
 BuildRequires:  %{python_module pytest-regressions}
-BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-mdurl
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+Suggests:       python-mdit-py-plugins
 BuildArch:      noarch
 %python_subpackages
-#BuildRequires:  python3-Sphinx
 
 %description
 This is a Python port of [markdown-it], and some of its associated plugins.
@@ -54,11 +53,6 @@ sed -i '1{/\/usr\/bin\/env python*/d;}' markdown_it/cli/parse.py
 
 %build
 %pyproject_wheel
-# building docs requires myst_parser, which depends on this package. Can be activated later
-#pushd docs
-#PYTHONPATH=.. make html
-#rm _build/html/.buildinfo
-#popd
 
 %install
 %pyproject_install
@@ -66,8 +60,7 @@ sed -i '1{/\/usr\/bin\/env python*/d;}' markdown_it/cli/parse.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# linkify is an optional dependency, not in openSUSE available
-%pytest tests -k 'not test_linkify'
+%pytest tests
 
 %post
 %python_install_alternative markdown-it
@@ -76,8 +69,10 @@ sed -i '1{/\/usr\/bin\/env python*/d;}' markdown_it/cli/parse.py
 %python_uninstall_alternative markdown-it
 
 %files %{python_files}
-%{python_sitelib}/markdown_it/
-%{python_sitelib}/markdown_it_py-%{version}*-info
+%doc CHANGELOG.md README.md
+%license LICENSE LICENSE.markdown-it
+%{python_sitelib}/markdown_it
+%{python_sitelib}/markdown_it_py-%{version}.dist-info
 %python_alternative %{_bindir}/markdown-it
 
 %changelog
