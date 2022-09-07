@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>388cdb75172e79cc9c466984336e7a02</srcmd5>
+    <version>1.0.1</version>
+    <time>1662541561</time>
+    <user>dimstar_suse</user>
+    <comment>Add python-uc-micro-py needed by python-linkify-it-py (which in turn needed by python-markdown-it-py)</comment>
+    <requestid>1001471</requestid>
+  </revision>
+</revisionlist>
