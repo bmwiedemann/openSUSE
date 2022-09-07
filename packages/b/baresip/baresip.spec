@@ -17,17 +17,16 @@
 
 
 Name:           baresip
-Version:        2.4.0
+Version:        2.6.0
 Release:        0
 Summary:        Modular SIP useragent
 License:        BSD-3-Clause
 Group:          Productivity/Telephony/SIP/Clients
 URL:            https://github.com/baresip/baresip
-Source:         %{URL}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  ilbc-devel
 BuildRequires:  jack-devel
-BuildRequires:  libgsm-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sndio-devel
@@ -48,8 +47,8 @@ BuildRequires:  pkgconfig(libmosquitto)
 BuildRequires:  pkgconfig(libmp3lame)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(libre) >= 2.4.0
-BuildRequires:  pkgconfig(librem) >= 2.4.0
+BuildRequires:  pkgconfig(libre) >= 2.6.0
+BuildRequires:  pkgconfig(librem) >= 2.6.0
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(portaudio-2.0)
@@ -70,7 +69,7 @@ such as SIP, SDP, RTP/RTCP, STUN, TURN, and ICE.
 Supports both IPv4 and IPv6, and the following features.
  * Audio codecs: AMR, G.711, G.722, G.726, GSM, L16, MPA, OPUS.
  * Video codecs: H.263, H.264, H.265, MPEG4, VP8, VP9.
- * Audio drivers: Alsa, GStreamer, JACK, OSS, Portaudio, sndio.
+ * Audio drivers: Alsa, JACK, OSS, Portaudio, sndio.
  * Video sources: FFmpeg avformat, Video4Linux2, X11 Grabber.
  * Video output: SDL2, X11, DirectFB.
  * NAT Traversal: STUN, TURN, ICE, NATBD, NAT-PMP, PCP.
@@ -92,7 +91,7 @@ such as SIP, SDP, RTP/RTCP, STUN, TURN, and ICE.
 Supports both IPv4 and IPv6, and the following features.
  * Audio codecs: AMR, G.711, G.722, G.726, GSM, L16, MPA, OPUS.
  * Video codecs: H.263, H.264, H.265, MPEG4, VP8, VP9.
- * Audio drivers: Alsa, GStreamer, JACK, OSS, Portaudio, sndio.
+ * Audio drivers: Alsa, JACK, OSS, Portaudio, sndio.
  * Video sources: FFmpeg avformat, Video4Linux2, X11 Grabber.
  * Video output: SDL2, X11, DirectFB.
  * NAT Traversal: STUN, TURN, ICE, NATBD, NAT-PMP, PCP.
@@ -112,9 +111,10 @@ sed 's|/usr/local/lib|%{_libdir}/|g' -i docs/examples/config
 sed 's|/usr/local/share|%{_datadir}/|g' -i docs/examples/config
 
 %build
-export CFLAGS="%{optflags} -fpie -I/usr/include/ffmpeg"
 export LFLAGS="%{optflags} -pie"
-%make_build \
+# Ugh. The Makefile uses CLFAGS+=, which is really awkward to
+# deal with because you can't use `make CFLAGS=` and it's not obvious.
+CFLAGS="%{optflags} -fpie -I/usr/include/ffmpeg" %make_build \
     RELEASE=1 \
     USE_TLS=1 \
     PREFIX=%{_prefix}/ \
@@ -153,7 +153,6 @@ export LFLAGS="%{optflags} -pie"
 %{_libdir}/baresip/modules/g711.so
 %{_libdir}/baresip/modules/g722.so
 %{_libdir}/baresip/modules/g726.so
-%{_libdir}/baresip/modules/gsm.so
 %{_libdir}/baresip/modules/gtk.so
 %{_libdir}/baresip/modules/httpd.so
 %{_libdir}/baresip/modules/httpreq.so
@@ -175,6 +174,7 @@ export LFLAGS="%{optflags} -pie"
 %{_libdir}/baresip/modules/presence.so
 %{_libdir}/baresip/modules/portaudio.so
 %{_libdir}/baresip/modules/pulse.so
+%{_libdir}/baresip/modules/pulse_async.so
 %{_libdir}/baresip/modules/rtcpsummary.so
 %{_libdir}/baresip/modules/serreg.so
 %{_libdir}/baresip/modules/snapshot.so
@@ -196,7 +196,6 @@ export LFLAGS="%{optflags} -pie"
 %{_libdir}/baresip/modules/avformat.so
 %{_libdir}/baresip/modules/fakevideo.so
 %{_libdir}/baresip/modules/gst.so
-%{_libdir}/baresip/modules/gst_video.so
 %{_libdir}/baresip/modules/sdl.so
 %{_libdir}/baresip/modules/selfview.so
 %{_libdir}/baresip/modules/swscale.so

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 25 23:07:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.0
+  * Removed deprecated modules: gsm, gst, gst_video
+  * Added modules: pulse_async
+
+-------------------------------------------------------------------
 Tue Jun 28 21:15:18 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 2.4.0:
