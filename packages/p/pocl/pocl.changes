@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  6 16:34:33 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 3.0
+  * Minimal OpenCL 3.0 feature set should be now supported
+    (official conformance stamp still to apply for).
+  * Support for Clang/LLVM 14.0.
+  * Improved tracing and visualization.
+  * Support for generating specialized work-group functions and
+    include them in the PoCL kernel program binaries.
+  * Fixed printf for SPIR-V.
+  * A lot of other fixes and improvements.
+
+-------------------------------------------------------------------
 Sat Jun  4 14:33:49 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Use LLVM 13 on Tumbleweed, since LLVM 14 does not yet work

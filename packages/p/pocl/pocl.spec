@@ -17,25 +17,21 @@
 #
 
 
-%define sover  2.8.0
+%define sover  2
+
 Name:           pocl
-Version:        1.8
+Version:        3.0
 Release:        0
 Summary:        Portable Computing Language - an OpenCL implementation
 # The whole code is under MIT
-# except include/utlist.h which is under BSD (and unbundled) and
-# except lib/kernel/vecmath which is under GPLv3+ or LGPLv3+ (and unbundled in future)
+# except include/utlist.h which is under BSD (and unbundled)
 License:        MIT
 Group:          Development/Tools/Other
 URL:            http://portablecl.org/
 Source0:        https://github.com/pocl/pocl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       pocl-rpmlintrc
 Patch0:         link_against_libclang-cpp_so.patch
-%if 0%{?suse_version} > 1500
-BuildRequires:  clang13-devel
-%else
 BuildRequires:  clang-devel >= 6.0.0
-%endif
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
@@ -43,11 +39,9 @@ BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(hwloc)
-# Autoreq does not look into the ICD file
-Requires:       libpocl2
 # PPC has limited support/testing from upstream
 # s390(x) is also not supported, so use ExclusiveArch
-ExclusiveArch:  %{ix86} x86_64 %arm aarch64
+ExclusiveArch:  %{ix86} x86_64 %arm aarch64 riscv64
 
 %description
 Portable Computing Language (pocl) is an implementation of the OpenCL standard
@@ -63,11 +57,11 @@ can generate multi-work-item work-group functions that exploit various types of
 parallel hardware resources, such as VLIW, superscalar, SIMD, SIMT, multicore
 and multithread.
 
-%package -n libpocl2
+%package -n libpocl%{sover}
 Summary:        Shared Library part of pocl
 Group:          System/Libraries
 
-%description -n libpocl2
+%description -n libpocl%{sover}
 Portable Computing Language (pocl) is an implementation of the OpenCL standard
 which can be adapted for new targets and devices, both for homogeneous CPU and
 heterogenous GPUs/accelerators.
@@ -77,8 +71,8 @@ This subpackage contains the shared library part of pocl.
 %package devel
 Summary:        Development files for the Portable Computing Language
 Group:          Development/Languages/Other
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       libpocl2 = %{version}-%{release}
+Requires:       %{name} = %{version}
+Requires:       libpocl%{sover} = %{version}
 Requires:       opencl-headers >= 2.2
 
 %description devel
@@ -91,11 +85,6 @@ This subpackage provides the development files needed for pocl.
 %prep
 %setup -q
 %patch0 -p1
-
-%if 0%{?suse_version} > 1500
-# Make sure we use the right LLVM version.
-sed -i 's/find_program_or_die( *\([^ ]*\) *"\([^"]*\)" *"\([^"]*\)" *)/find_program_or_die(\1 "\2-%{pkg_version clang13-devel}" "\3")/g' cmake/LLVM.cmake
-%endif
 
 %build
 %define __builder ninja
@@ -117,20 +106,13 @@ sed -i 's/find_program_or_die( *\([^ ]*\) *"\([^"]*\)" *"\([^"]*\)" *)/find_prog
 %endif
   -DWITH_LLVM_CONFIG=%{_bindir}/llvm-config
 
-sed -i 's/-Wl,--no-undefined//g' CMakeCache.txt
-sed -i 's/-Wl,--no-undefined//g' build.ninja
-
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
-# Unbundle vecmath
-#rm -vf %%{buildroot}/%%{_libdir}/pocl/vecmath/
-#ln -vs %%{_includedir}/vecmath %%{buildroot}/%%{_libdir}/pocl/vecmath
-# <visit0r> but you need to run the .py to generate the files under the pocl dir
 
-%post -n libpocl2 -p /sbin/ldconfig
-%postun -n libpocl2 -p /sbin/ldconfig
+%post -n libpocl%{sover} -p /sbin/ldconfig
+%postun -n libpocl%{sover} -p /sbin/ldconfig
 
 %files
 %doc CHANGES README doc/sphinx/source/*.rst
@@ -140,14 +122,12 @@ sed -i 's/-Wl,--no-undefined//g' build.ninja
 %{_datadir}/OpenCL/vendors/pocl.icd
 %{_bindir}/poclcc
 %dir %{_libdir}/pocl/
-%{_libdir}/pocl/libllvmopencl.so
 %{_libdir}/pocl/libpocl-devices-basic.so
 %{_libdir}/pocl/libpocl-devices-pthread.so
 %{_datadir}/pocl/
 
-%files -n libpocl2
-%{_libdir}/libpocl.so.2
-%{_libdir}/libpocl.so.%{sover}
+%files -n libpocl%{sover}
+%{_libdir}/libpocl.so.%{sover}*
 
 %files devel
 %{_libdir}/libpocl.so
