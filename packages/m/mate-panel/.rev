@@ -357,4 +357,12 @@
   * struts: add support for _GNOME_WM_STRUT_AREA (forwarded request 951842 from hillwood)</comment>
     <requestid>951848</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>878ea8b9d77523d151acc2a01c33c08d</srcmd5>
+    <version>1.26.2</version>
+    <time>1662541569</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001497</requestid>
+  </revision>
 </revisionlist>

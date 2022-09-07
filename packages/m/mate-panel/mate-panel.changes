@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  6 16:00:52 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Install gschema override with distribution default priority of
+  20
+
+-------------------------------------------------------------------
 Sun Feb  6 07:03:58 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.2

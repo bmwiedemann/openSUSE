@@ -142,7 +142,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # And install schema override file to get it applied.
 mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas/
 install -pm 0644 zz-mate-panel-upream-branding.gschema.override \
-  %{buildroot}%{_datadir}/glib-2.0/schemas/
+  %{buildroot}%{_datadir}/glib-2.0/schemas/20_zz-mate-panel-upream-branding.gschema.override
 
 %post -n %{soname}-%{sover} -p /sbin/ldconfig
 
@@ -166,10 +166,10 @@ install -pm 0644 zz-mate-panel-upream-branding.gschema.override \
 %{_datadir}/icons/hicolor/*/apps/%{name}*
 %{_datadir}/%{name}/
 # Files from branding-upstream.
-%exclude %{_datadir}/glib-2.0/schemas/zz-mate-panel-upream-branding.gschema.override
+%exclude %{_datadir}/glib-2.0/schemas/20_zz-mate-panel-upream-branding.gschema.override
 
 %files branding-upstream
-%{_datadir}/glib-2.0/schemas/zz-mate-panel-upream-branding.gschema.override
+%{_datadir}/glib-2.0/schemas/20_zz-mate-panel-upream-branding.gschema.override
 
 %files -n %{soname}-%{sover}
 %dir %{_datadir}/mate
