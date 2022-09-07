@@ -322,4 +322,13 @@
 - Ensure pulseaudio is part of the DVD.</comment>
     <requestid>987247</requestid>
   </revision>
+  <revision rev="39" vrev="39">
+    <srcmd5>14a347462aee17386390a9de84775afe</srcmd5>
+    <version>20170319</version>
+    <time>1662541539</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer recommend reiserfs: the openSUSE kernel has disabled
+  support for this fs, upstream kernel will follow.</comment>
+    <requestid>1001481</requestid>
+  </revision>
 </revisionlist>

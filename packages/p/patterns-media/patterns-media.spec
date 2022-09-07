@@ -40,6 +40,7 @@ such as DVD's
 
 
 ################################################################################
+
 %package rest_cd_core
 %pattern_desktopfunctions
 Summary:        Remaining Software
@@ -132,8 +133,6 @@ Recommends:     ppp
 Recommends:     pptp
 # yast can configure quota - if present on medium (#348336)
 Recommends:     quota
-# filesystem(reiserfs)
-Recommends:     reiserfs
 # adding to LiveCD (bnc#419201)
 Recommends:     rsync
 # LiveCD accessible? (bnc#391327)
@@ -445,8 +444,6 @@ Recommends:     lvm2
 Recommends:     notification-daemon
 # filesystem(ntfs-3g)
 Recommends:     ntfs-3g
-# filesystem(reiserfs)
-Recommends:     reiserfs
 # We need to ensure that systemd-32bit ends up on the DVD
 Recommends:     systemd-32bit
 Recommends:     systemd-coredump

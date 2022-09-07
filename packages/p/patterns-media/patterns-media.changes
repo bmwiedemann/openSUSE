@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  6 13:53:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend reiserfs: the openSUSE kernel has disabled
+  support for this fs, upstream kernel will follow.
+
+-------------------------------------------------------------------
 Wed Jul  6 14:56:09 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Recommend instead of require xfce* and network_admin patterns on
