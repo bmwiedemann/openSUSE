@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 31 17:08:45 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+- Add %check section and test.lua
+
+-------------------------------------------------------------------
+Sun Aug 28 14:26:14 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+- noarch the doc package
+
+-------------------------------------------------------------------
+Fri Aug 26 02:54:52 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+- Add previously unpackaged re.lua module
+
+-------------------------------------------------------------------
 Tue Feb  9 14:56:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %lua_provides: add the lua-mod_name provides/obsoletes to

@@ -1,7 +1,7 @@
 #
-# spec file for package lua-lpeg
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,7 @@ LPeg is a new pattern-matching library for Lua, based on Parsing Expression Gram
 Summary:        Lua Documentation for %{mod_name}
 Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description doc
 Documentation and examples included with the library, sometimes
@@ -66,12 +67,17 @@ sed -i \
 
 mkdir -p %{buildroot}%{_docdir}/%{name}
 mkdir -p %{buildroot}%{lua_archdir}
+mkdir -p %{buildroot}%{lua_noarchdir}
 
 install lpeg.so %{buildroot}%{lua_archdir}
+install -Dm 644 re.lua %{buildroot}%{lua_noarchdir}
+
+%check
+lua test.lua
 
 %files
-%dir %{lua_archdir}
-%{lua_archdir}/*
+%{lua_archdir}
+%{lua_noarchdir}
 
 %files doc
 %doc re.html lpeg.html HISTORY
