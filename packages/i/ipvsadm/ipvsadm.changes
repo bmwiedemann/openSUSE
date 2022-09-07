@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  6 14:21:39 UTC 2022 - Marius Tomaschewski <mt@suse.com>
+
+- Finish UsrMerge and move binaries /usr/sbin (bsc#1191064)
+- Re-add changes to zero-byte ipvsadm-print_largenum.patch file
+
+-------------------------------------------------------------------
 Sat Apr 23 23:38:34 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.31

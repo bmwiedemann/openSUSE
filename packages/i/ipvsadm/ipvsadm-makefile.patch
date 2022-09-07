@@ -1,19 +1,21 @@
-diff -Nur ipvsadm-1.31/Makefile new/Makefile
---- ipvsadm-1.31/Makefile	2019-12-24 14:20:30.000000000 +0100
-+++ new/Makefile	2022-04-24 01:42:51.839729180 +0200
-@@ -38,9 +38,9 @@
+--- ipvsadm/Makefile
++++ ipvsadm/Makefile	2022/09/06 11:41:13
+@@ -37,10 +37,11 @@ RPMSPECDIR	= $(shell rpm --eval '%_specd
+ 
  CC		= gcc
  INCLUDE		=
- SBIN		= $(BUILD_ROOT)/sbin
--MANDIR		= usr/man
-+MANDIR		= usr/share/man
- MAN		= $(BUILD_ROOT)/$(MANDIR)/man8
+-SBIN		= $(BUILD_ROOT)/sbin
++SBINDIR		= /sbin
++SBIN		= $(BUILD_ROOT)$(SBINDIR)
+ MANDIR		= usr/man
+-MAN		= $(BUILD_ROOT)/$(MANDIR)/man8
 -INIT		= $(BUILD_ROOT)/etc/rc.d/init.d
++MAN		= $(BUILD_ROOT)$(MANDIR)/man8
 +INIT		= $(BUILD_ROOT)/etc/init.d
  MKDIR		= mkdir
  INSTALL		= install
  STATIC_LIBS	= libipvs/libipvs.a
-@@ -87,7 +87,7 @@
+@@ -87,7 +88,7 @@ libs:
  		make -C libipvs
  
  ipvsadm:	$(OBJS) $(STATIC_LIBS)
@@ -22,7 +24,7 @@ diff -Nur ipvsadm-1.31/Makefile new/Makefile
  
  install:        all
  		if [ ! -d $(SBIN) ]; then $(MKDIR) -p $(SBIN); fi
-@@ -99,7 +99,7 @@
+@@ -99,7 +100,7 @@ install:        all
  		$(INSTALL) -m 0644 ipvsadm-save.8 $(MAN)
  		$(INSTALL) -m 0644 ipvsadm-restore.8 $(MAN)
  		[ -d $(INIT) ] || $(MKDIR) -p $(INIT)

@@ -199,4 +199,13 @@
     <comment></comment>
     <requestid>977477</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>d3d21348c083fc8a79302d8010574f4d</srcmd5>
+    <version>1.31</version>
+    <time>1662541541</time>
+    <user>dimstar_suse</user>
+    <comment>- Finish UsrMerge and move binaries /usr/sbin (bsc#1191064)
+- Re-add changes to zero-byte ipvsadm-print_largenum.patch file</comment>
+    <requestid>1001486</requestid>
+  </revision>
 </revisionlist>

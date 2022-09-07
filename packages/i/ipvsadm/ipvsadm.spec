@@ -73,12 +73,17 @@ make POPT_LIB="-lpopt" CFLAGS="%{optflags} -fPIC -DHAVE_POPT -DLIBIPVS_USE_NL -I
 
 %install
 mkdir -p %{buildroot}/{sbin,%{_sbindir},%{_mandir}/man8,%{_unitdir},%{_fillupdir}}
-make BUILD_ROOT=%{buildroot} MANDIR=%{_mandir} install
+make BUILD_ROOT=%{buildroot} MANDIR=%{_mandir} SBINDIR=%{_sbindir} install
+%if !0%{?usrmerged}
+for binary in ipvsadm ipvsadm-save ipvsadm-restore ; do
+  ln -sf %{_sbindir}/$binary            %{buildroot}/sbin/$binary ;
+done
+%endif
 # Sysvinit support dropping
 rm -rf %{buildroot}/etc/init.d
 # install SuSE init script
 install -m 644 %{S:1}           	%{buildroot}%{_unitdir}/%{name}.service
-ln -sf /sbin/service	            %{buildroot}%{_sbindir}/rc%{name}
+ln -sf %_sbindir/service	        %{buildroot}%{_sbindir}/rc%{name}
 install -m 644 sysconfig.ipvsadm	%{buildroot}%{_fillupdir}/sysconfig.%{name}
 install -m 644 ipvsadm.rules		%{buildroot}%{_sysconfdir}/%{name}.rules
 
@@ -100,9 +105,12 @@ install -m 644 ipvsadm.rules		%{buildroot}%{_sysconfdir}/%{name}.rules
 %doc README
 %config %{_sysconfdir}/%{name}.rules
 %{_unitdir}/%{name}.service
-/sbin/*
-%{_sbindir}/*
-/%{_mandir}/man*/*
+%if !0%{?usrmerged}
+/sbin/ipvsadm*
+%endif
+%{_sbindir}/ipvsadm*
+%{_sbindir}/rcipvsadm*
+/%{_mandir}/man*/ipvsadm*
 %{_fillupdir}/sysconfig.%{name}
 
 %changelog
