@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 31 19:03:41 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.5
+  * Added alias CRC-16/BLUETOOTH from the CRC Catalogue.
+- Update to version 3.0.4
+  * Added algorithm CRC-64/REDIS from the CRC Catalogue.
+
+-------------------------------------------------------------------
 Sun May  8 15:47:48 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.3
