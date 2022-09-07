@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep  4 18:08:28 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- aa-decode: use grep -E instead of deprecated egrep (boo#1203092)
+  add apparmor-3.0.7-egrep.patch
+
+-------------------------------------------------------------------
 Sun Aug 28 10:41:29 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 3.0.7

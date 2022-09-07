@@ -2468,4 +2468,12 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   in dnsmasc//libvirt-leaseshelper profile (boo#1202849) (forwarded request 999637 from cboltz)</comment>
     <requestid>999638</requestid>
   </revision>
+  <revision rev="182" vrev="2">
+    <srcmd5>589ff5218beab6a92f3f7ee7e55ba839</srcmd5>
+    <version>3.0.7</version>
+    <time>1662541517</time>
+    <user>dimstar_suse</user>
+    <comment>- aa-decode: use grep -E instead of deprecated egrep (boo#1203092) (forwarded request 1001150 from AndreasStieger)</comment>
+    <requestid>1001316</requestid>
+  </revision>
 </revisionlist>

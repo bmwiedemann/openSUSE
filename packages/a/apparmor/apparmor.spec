@@ -92,6 +92,9 @@ Patch11:        profiles-permit-php-fpm-pid-files-directly-under-run.patch
 # allow reading /sys/devices/system/cpu/possible in dnsmasc//libvirt-leaseshelper (boo#1202849, submitted upstream 2022-08-28 https://gitlab.com/apparmor/apparmor/-/merge_requests/917)
 Patch12:        dnsmasq-cpu-possible.diff
 
+# avoid warnings with GNU grep 3.8 (boo#1203092, from upstream)
+Patch13:        apparmor-3.0.7-egrep.patch
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
@@ -361,6 +364,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
 
 %build
 export SUSE_ASNEEDED=0
