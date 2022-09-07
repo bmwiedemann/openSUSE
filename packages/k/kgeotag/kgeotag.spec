@@ -1,7 +1,7 @@
 #
 # spec file for package kgeotag
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 Name:           kgeotag
-Version:        1.2.0
+Version:        1.3.1
 Release:        0
 Summary:        A photo geotagging utility
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://kgeotag.kde.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 %endif
@@ -34,6 +34,7 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KExiv2)
 BuildRequires:  cmake(KF5XmlGui)
@@ -64,7 +65,7 @@ images' Exif header and/or in XMP sidecar files.
 %install
 %kf5_makeinstall -C build
 
-%if %{with lang}
+%if %{with released}
 %find_lang %{name}
 %endif
 
@@ -74,11 +75,12 @@ images' Exif header and/or in XMP sidecar files.
 %{_kf5_applicationsdir}/org.kde.kgeotag.desktop
 %{_kf5_appstreamdir}/org.kde.kgeotag.appdata.xml
 %{_kf5_bindir}/kgeotag
+%{_kf5_htmldir}/en/kgeotag/
 %{_kf5_iconsdir}/hicolor/*/apps/kgeotag.png
 %{_kf5_kxmlguidir}/kgeotag/
 %{_kf5_sharedir}/kgeotag/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 

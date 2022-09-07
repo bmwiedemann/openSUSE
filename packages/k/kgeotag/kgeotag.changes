@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Sep  6 13:15:39 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.3.1
+  * Hotfix: Due to a problem with the tarme.rb releaseme script,
+    the 1.3.0 tarball lacked all l10n data. We thus had to withdraw
+    the release and tag a new one.
+  * New: When using the split images list view and tagging images
+    manually, the "assigned" image list now scrolls to the last (or
+    only) tagged image and highlights it, so that it's immediately
+    accessible for e.g. further corrections.
+  * New: Allow setting coordinates directly from the clipboard. As
+    of now, Google Maps' format as well as OpenStreetMap's Geo URI
+    scheme is supported. (kde#458537)
+  * New: It is now possible to open an image with the system's
+    default image viewer (for closer inspection), either from the
+    image list(s), or from the preview widget.
+  * Bugfix: Use "Folder", not "Directory" according to KDE's
+    style/vocabulary guidelines. (kde#457020)
+  * New: Files and/or directories given on the command line are now
+    loaded after startup (which can e.g. also be triggered via
+    "Open with" from a file manager like Dolphin).
+  * Update: Updated the timezones data files to 2021c.
+  * Change: As Marble now has a decent versioning scheme (at least
+    since the KDE Apps release 21.12.3), KGeoTag now has a defined
+    dependency for Marble: It now depends on at least Marble
+    21.12.3. It actually can be built against older versions as
+    well, but due to the lack of proper version bumps, there was no
+    way to define a definitive version to depend on until now.
+  * New/Bugfix: Added a handbook stub. (kde#452534)
+
+-------------------------------------------------------------------
 Sun Nov 14 14:46:37 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 1.2.0
