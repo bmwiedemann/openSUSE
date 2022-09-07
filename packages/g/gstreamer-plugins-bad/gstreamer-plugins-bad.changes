@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 29 10:48:21 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Build microdns support. Following this add pkgconfig(microdns)
+  BuildRequires and pass microdns=enabled to meson.
+
+-------------------------------------------------------------------
+Thu Aug 25 20:05:26 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add va-allocator-fix.patch: va: allocator: Fix translation of
+  VADRMPRIMESurfaceDescriptor + va: allocator: Use always lseek to
+  get dmabuf size.
+  https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/2657
+
+-------------------------------------------------------------------
 Wed Jun 22 10:18:08 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 1.20.3:

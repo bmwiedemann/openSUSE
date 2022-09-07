@@ -74,6 +74,8 @@ Source99:       baselibs.conf
 Patch0:         fix-build-with-srt-1.3.4.patch
 # PATCH-FIX-OPENSUSE spandsp3.patch jengelh@inai.de -- Fix build against spandsp 3.x. Patch is not upstreamable in this form
 Patch2:         spandsp3.patch
+# PATCH-FIX-UPSTREAM va-allocator-fix.patch -- Fix translation of VADRMPRIMESurfaceDescriptor + Use always lseek to get dmabuf size
+Patch3:         va-allocator-fix.patch
 
 %if %{with fdk_aac}
 BuildRequires:  pkgconfig(fdk-aac) >= 0.1.4
@@ -144,6 +146,7 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lilv-0) >= 0.16
 BuildRequires:  pkgconfig(lrdf)
+BuildRequires:  pkgconfig(microdns)
 BuildRequires:  pkgconfig(mjpegtools)
 BuildRequires:  pkgconfig(neon)
 BuildRequires:  pkgconfig(nice) >= 0.1.14
@@ -649,6 +652,7 @@ making use of the GStreamer Transcoding API.
 %if %{pkg_vcmp spandsp-devel >= 3}
 %patch2 -p1
 %endif
+%patch3 -p1
 
 %build
 %global optflags %{optflags} -fcommon
@@ -709,7 +713,7 @@ export PYTHON=%{_bindir}/python3
 	-Diqa=disabled \
 	-Dkate=disabled \
 	-Dmagicleap=disabled \
-	-Dmicrodns=disabled \
+	-Dmicrodns=enabled \
 	-Dopencv=disabled \
 	-Dopenni2=disabled \
 	-Dopensles=disabled \
@@ -834,6 +838,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstjpegformat.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstkms.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstladspa.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstmicrodns.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmidi.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmpeg2enc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmpegpsdemux.so
