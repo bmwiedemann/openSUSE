@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Sep  6 10:53:35 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 7.8.0
+  * https://www.digikam.org/news/2022-09-03-7.8.0_release_announcement/
+- New features (from NEWS):
+  * General : HIF files recognized as HEIF images.
+  * IconView: Add support of GrayScale and 16 bits PSD images.
+  * General : Libraw updated to 2022-07-14 snapshot.
+              Camera format support:
+                  Phase One/Leaf IIQ-S v2 support
+                  Canon CR3 filmrolls/RawBurst
+                  Canon CRM (movie) files
+                  iled bit-packed (and 16-bit unpacked) DNGs
+                  (non-standard) Deflate-compressed integer
+                      DNG files are allowed
+              Camera support:
+                  Canon EOS R3, R7 and R10
+                  Fujifilm X-H2S, X-T30 II
+                  OM System OM-1
+                  Leica M11
+                  Sony A7-IV (ILCE-7M4)
+                  DJI Mavic 3
+                  Nikon Z9: standard compression formats only
+  * Plugins : GMicQt tool updated to last version 3.1.
+- 49 bugs fixed
+- Add libheif build dependency to enable the HEIF decoder
+- Use macro for soversion
+- Remove no longer needed conflict with libdigikamcore7
+- Remove explicitly versioned libopencv_dnn dependency, should no
+  longer be needed with opencv's new soversion rules
+- Explicitly enable kfilemetadata and akonadi-contact support, they
+  are disabled by default now
+
+-------------------------------------------------------------------
 Mon Aug  1 11:03:57 UTC 2022 - Cor Blom <cornelis@solcon.nl>
 
 - Updated 0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
