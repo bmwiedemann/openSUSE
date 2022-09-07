@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  6 13:51:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend reiserfs: the openSUSE kernel has disabled
+  support for this fs, upstream kernel will follow.
+
+-------------------------------------------------------------------
 Mon Aug  8 16:15:42 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Revert 'removal of upstream pokit action', but rather

@@ -1132,4 +1132,12 @@
   installed or not.</comment>
     <requestid>993908</requestid>
   </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>638f850d57ed57cf1e627b86a7d6abe0</srcmd5>
+    <version>1.4.0</version>
+    <time>1662541564</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001482</requestid>
+  </revision>
 </revisionlist>
