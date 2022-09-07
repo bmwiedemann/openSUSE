@@ -26,7 +26,8 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
-ExclusiveArch:  %{rust_tier1_arches}
+# For SUSE BCI containers we need to support other arches.
+# ExclusiveArch:  pct brkt rust_tier1_arches brkt
 
 %description
 NSS Synth is a module that synthesises uids/gids into real groups. This means that when you have a
