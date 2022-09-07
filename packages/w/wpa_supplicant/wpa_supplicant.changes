@@ -1,8 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep  1 13:52:19 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration to /usr/etc: Saving user changed configuration files
+  in /etc and restoring them while an RPM update. 
+
+-------------------------------------------------------------------
 Tue Jul  5 11:29:50 UTC 2022 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Add dbus-Fix-property-DebugShowKeys-and-DebugTimestamp.patch
   (bsc#1201219)
+
+-------------------------------------------------------------------
+Tue Jun 21 10:11:36 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Removed %config flag for files in /usr directory.
 
 -------------------------------------------------------------------
 Tue Jun 21 07:29:22 UTC 2022 - Stefan Schubert <schubi@suse.com>
