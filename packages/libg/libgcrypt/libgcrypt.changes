@@ -1,9 +1,50 @@
 -------------------------------------------------------------------
+Tue Aug 23 09:19:00 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: gpg/gpg2 gets out of core handler in FIPS mode while
+  typing Tab key to Auto-Completion. [bsc#1182983]
+  * Add libgcrypt-out-of-core-handler.patch
+
+-------------------------------------------------------------------
+Mon Aug  8 11:33:03 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Port libgcrypt to use jitterentropy [bsc#1202117, jsc#SLE-24941]
+  * Enable the jitter based entropy generator by default in random.conf
+    - Add libgcrypt-jitterentropy-3.3.0.patch
+  * Update the internal jitterentropy to version 3.4.0
+    - Add libgcrypt-jitterentropy-3.4.0.patch
+
+-------------------------------------------------------------------
 Mon Aug  1 07:27:35 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Fix reproducible build problems:
    - Do not use %release in binaries (but use SOURCE_DATE_EPOCH)
    - Fix date call messed up by spec-cleaner
+
+-------------------------------------------------------------------
+Thu Apr 14 12:30:36 UTC 2022 - Dennis Knorr <dennis.knorr@suse.com>
+
+- FIPS: extend the service indicator [bsc#1190700]
+  * introduced a pk indicator function
+  * adapted the approved and non approved ciphersuites
+  * Add libgcrypt_indicators_changes.patch
+  * Add libgcrypt-indicate-shake.patch
+
+-------------------------------------------------------------------
+Tue Mar 22 12:32:09 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Implement a service indicator for asymmetric ciphers [bsc#1190700]
+  * Mark RSA public key encryption and private key decryption with
+    padding (e.g. OAEP, PKCS) as non-approved since RSA-OAEP lacks
+    peer key assurance validation requirements per SP800-56Brev2.
+  * Mark ECC as approved only for NIST curves P-224, P-256, P-384
+    and P-521 with check for common NIST names and aliases.
+  * Mark DSA, ELG, EDDSA, ECDSA and ECDH as non-approved.
+  * Add libgcrypt-FIPS-SLI-pk.patch
+  * Rebase libgcrypt-FIPS-service-indicators.patch
+- Run the regression tests also in FIPS mode.
+  * Disable tests for non-FIPS approved algos.
+  * Rebase: libgcrypt-FIPS-verify-unsupported-KDF-test.patch
 
 -------------------------------------------------------------------
 Tue Feb  1 11:28:51 UTC 2022 - Pedro Monreal <pmonreal@suse.com>

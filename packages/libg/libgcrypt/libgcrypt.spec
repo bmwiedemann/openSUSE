@@ -96,6 +96,17 @@ Patch39:        libgcrypt-FIPS-HMAC-short-keylen.patch
 Patch40:        libgcrypt-FIPS-service-indicators.patch
 #PATCH-FIX-UPSTREAM bsc#1195385 FIPS: Disable DSA in FIPS mode
 Patch41:        libgcrypt-FIPS-disable-DSA.patch
+#PATCH-FIX-UPSTREAM bsc#1190700 FIPS: Provide a service-level indicator for PK
+Patch42:        libgcrypt-FIPS-SLI-pk.patch
+#PATCH-FIX-SUSE bsc#1190700 FIPS add indicators
+Patch43:        libgcrypt_indicators_changes.patch
+#PATCH-FIX-SUSE bsc#1190700 FIPS allow shake
+Patch44:        libgcrypt-indicate-shake.patch
+#PATCH-FIX-UPSTREAM bsc#1202117 jsc#SLE-24941 FIPS: Port libgcrypt to use jitterentropy
+Patch45:        libgcrypt-jitterentropy-3.3.0.patch
+Patch46:        libgcrypt-jitterentropy-3.4.0.patch
+#PATCH-FIX-SUSE bsc#1182983 gpg: out of core handler ignored in FIPS mode while typing Tab key to Auto-Completion
+Patch47:        libgcrypt-out-of-core-handler.patch
 BuildRequires:  automake >= 1.14
 BuildRequires:  fipscheck
 BuildRequires:  libgpg-error-devel >= 1.27
@@ -212,6 +223,9 @@ export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
 %check
 fipshmac src/.libs/libgcrypt.so.??
 %make_build check
+
+# run the regression tests also in FIPS mode
+LIBGCRYPT_FORCE_FIPS_MODE=1 make -k check VERBOSE=1 || true
 
 %install
 %make_install

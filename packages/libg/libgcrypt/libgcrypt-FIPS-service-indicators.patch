@@ -2,7 +2,7 @@ Index: libgcrypt-1.9.4/src/fips.c
 ===================================================================
 --- libgcrypt-1.9.4.orig/src/fips.c
 +++ libgcrypt-1.9.4/src/fips.c
-@@ -437,6 +437,59 @@ _gcry_fips_test_operational (void)
+@@ -437,6 +437,54 @@ _gcry_fips_test_operational (void)
  }
  
  
@@ -14,11 +14,6 @@ Index: libgcrypt-1.9.4/src/fips.c
 +
 +  switch (alg)
 +    {
-+   case GCRY_CIPHER_AES:
-+    case GCRY_CIPHER_AES192:
-+    case GCRY_CIPHER_AES256:
-+      mode = va_arg (arg_ptr, enum gcry_cipher_modes);
-+      switch (mode)
 +    case GCRY_CIPHER_AES:
 +    case GCRY_CIPHER_AES192:
 +    case GCRY_CIPHER_AES256:

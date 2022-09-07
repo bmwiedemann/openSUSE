@@ -1,0 +1,238 @@
+diff --git a/doc/gcrypt.texi b/doc/gcrypt.texi
+index afb8a05..c613577 100644
+--- a/doc/gcrypt.texi
++++ b/doc/gcrypt.texi
+@@ -968,23 +968,39 @@ is approved under the current FIPS 140-3 certification. If the
+ combination is approved, this function returns @code{GPG_ERR_NO_ERROR}.
+ Otherwise @code{GPG_ERR_NOT_SUPPORTED} is returned.
+ 
++@item GCRYCTL_FIPS_SERVICE_INDICATOR_HASH; Arguments: enum gcry_md_algos
++
++Check if the given HASH is approved under the current FIPS 140-3
++certification. If the HASH is approved, this function returns
++@code{GPS_ERR_NO_ERROR}. Otherwise @code{GPG_ERR_NOT_SUPPORTED}
++is returned.
++
++@item GCRYCTL_FIPS_SERVICE_INDICATOR_MAC; Arguments: enum gcry_mac_algos [, unsigned int]
++
++Check if the given MAC is approved under the current FIPS 140-3
++certification. The second parameter provides the keylen (if the
++algorithm supports different key sizes). If the MAC is approved,
++this function returns @code{GPS_ERR_NO_ERROR}. Otherwise @code{GPG_ERR_NOT_SUPPORTED}
++is returned.
++
+ @item GCRYCTL_FIPS_SERVICE_INDICATOR_KDF; Arguments: enum gcry_kdf_algos
+ 
+ Check if the given KDF is approved under the current FIPS 140-3
+-certification. If the KDF is approved, this function returns
+-@code{GPG_ERR_NO_ERROR}. Otherwise @code{GPG_ERR_NOT_SUPPORTED}
+-is returned.
++certification. If the KDF is approved, this function returns @code{GPG_ERR_NO_ERROR}.
++Otherwise @code{GPG_ERR_NOT_SUPPORTED} is returned.
+ 
+ @item GCRYCTL_FIPS_SERVICE_INDICATOR_PK; Arguments: enum gcry_pk_algos
+-[, enum pk_operation (only for GCRY_PK_RSA)] [, const char * (only for
+-GCRY_PK_ECC, GCRY_PK_ECDH or GCRY_PK_ECDSA)]
++[, constants GCRY_PK_USAGE_ENCR or GCRY_PK_USAGE_SIGN, unsigned int (only for GCRY_PK_RSA)]
++[, const char * (only for GCRY_PK_ECC, GCRY_PK_ECDH or GCRY_PK_ECDSA)]
+ 
+ Check if the given asymmetric cipher is approved under the current FIPS
+-140-3 certification. For GCRY_PK_RSA, an additional parameter for the
+-operation mode @code{enum pk_operation} is required. For GCRY_PK_ECC,
+-GCRY_PK_ECDH and GCRY_PK_ECDSA, the additional parameter is the curve
+-name or its alias as @code{const char *}. If the combination is
+-approved, this function returns @code{GPG_ERR_NO_ERROR}. Otherwise
++140-3 certification. For GCRY_PK_RSA, two additional parameter are required:
++first describes the purpose of the algorithm through one of the constants
++(GCRY_PK_USAGE_ENCR for encryption or decryption operations; GCRY_PK_USAGE_SIGN for
++sign or verify operations).
++Second one is the key length. For GCRY_PK_ECC, GCRY_PK_ECDH and GCRY_PK_ECDSA,
++only a single parameter is needed: the curve name or its alias as @code{const char *}.
++If the combination is approved, this function returns @code{GPG_ERR_NO_ERROR}. Otherwise
+ @code{GPG_ERR_NOT_SUPPORTED} is returned.
+ 
+ @end table
+diff --git a/src/fips.c b/src/fips.c
+index f523e7d..d5ca482 100644
+--- a/src/fips.c
++++ b/src/fips.c
+@@ -452,6 +452,7 @@ _gcry_fips_indicator_cipher (va_list arg_ptr)
+       mode = va_arg (arg_ptr, enum gcry_cipher_modes);
+       switch (mode)
+         {
++        case GCRY_CIPHER_MODE_AESWRAP:
+         case GCRY_CIPHER_MODE_ECB:
+         case GCRY_CIPHER_MODE_CBC:
+         case GCRY_CIPHER_MODE_CFB:
+@@ -459,7 +460,6 @@ _gcry_fips_indicator_cipher (va_list arg_ptr)
+         case GCRY_CIPHER_MODE_OFB:
+         case GCRY_CIPHER_MODE_CTR:
+         case GCRY_CIPHER_MODE_CCM:
+-        case GCRY_CIPHER_MODE_GCM:
+         case GCRY_CIPHER_MODE_XTS:
+           return GPG_ERR_NO_ERROR;
+         default:
+@@ -519,11 +519,25 @@ static const struct
+     { NULL, NULL}
+   };
+ 
++enum pk_operation convert_from_pk_usage(unsigned int pk_usage)
++{
++  switch (pk_usage)
++    {
++    case GCRY_PK_USAGE_SIGN:
++      return PUBKEY_OP_SIGN;
++    case GCRY_PK_USAGE_ENCR:
++      return PUBKEY_OP_ENCRYPT;
++    default:
++      return PUBKEY_OP_DECRYPT;
++    }
++}
++
+ int
+ _gcry_fips_indicator_pk (va_list arg_ptr)
+ {
+   enum gcry_pk_algos alg = va_arg (arg_ptr, enum gcry_pk_algos);
+   enum pk_operation oper;
++  unsigned int keylen;
+   const char *curve_name;
+ 
+   switch (alg)
+@@ -531,13 +545,17 @@ _gcry_fips_indicator_pk (va_list arg_ptr)
+     case GCRY_PK_RSA:
+     case GCRY_PK_RSA_E:
+     case GCRY_PK_RSA_S:
+-      oper = va_arg (arg_ptr, enum pk_operation);
++      oper = convert_from_pk_usage(va_arg (arg_ptr, unsigned int));
+       switch (oper)
+         {
+         case PUBKEY_OP_ENCRYPT:
+         case PUBKEY_OP_DECRYPT:
+           return GPG_ERR_NOT_SUPPORTED;
+         default:
++          keylen = va_arg (arg_ptr, unsigned int);
++          if (keylen < 2048) {
++            return GPG_ERR_NOT_SUPPORTED;
++          }
+           return GPG_ERR_NO_ERROR;
+         }
+     case GCRY_PK_ECC:
+@@ -557,6 +575,60 @@ _gcry_fips_indicator_pk (va_list arg_ptr)
+     }
+ }
+ 
++int
++_gcry_fips_indicator_hash (va_list arg_ptr)
++{
++  enum gcry_md_algos alg = va_arg (arg_ptr, enum gcry_md_algos);
++
++  switch (alg)
++    {
++    case GCRY_MD_SHA1:
++    case GCRY_MD_SHA224:
++    case GCRY_MD_SHA256:
++    case GCRY_MD_SHA384:
++    case GCRY_MD_SHA512:
++    case GCRY_MD_SHA512_224:
++    case GCRY_MD_SHA512_256:
++    case GCRY_MD_SHA3_224:
++    case GCRY_MD_SHA3_256:
++    case GCRY_MD_SHA3_384:
++    case GCRY_MD_SHA3_512:
++      return GPG_ERR_NO_ERROR;
++    default:
++      return GPG_ERR_NOT_SUPPORTED;
++    }
++}
++
++int
++_gcry_fips_indicator_mac (va_list arg_ptr)
++{
++  enum gcry_mac_algos alg = va_arg (arg_ptr, enum gcry_mac_algos);
++  unsigned int keylen = va_arg (arg_ptr, unsigned int);
++
++  switch (alg)
++    {
++    case GCRY_MAC_HMAC_SHA1:
++    case GCRY_MAC_HMAC_SHA224:
++    case GCRY_MAC_HMAC_SHA256:
++    case GCRY_MAC_HMAC_SHA384:
++    case GCRY_MAC_HMAC_SHA512:
++    case GCRY_MAC_HMAC_SHA512_224:
++    case GCRY_MAC_HMAC_SHA512_256:
++    case GCRY_MAC_HMAC_SHA3_224:
++    case GCRY_MAC_HMAC_SHA3_256:
++    case GCRY_MAC_HMAC_SHA3_384:
++    case GCRY_MAC_HMAC_SHA3_512:
++        if (keylen >= 112) {
++          return GPG_ERR_NO_ERROR;
++        }
++    case GCRY_MAC_CMAC_AES:
++        if (keylen == 128 || keylen == 192 || keylen == 256) {
++          return GPG_ERR_NO_ERROR;
++        }
++    default:
++      return GPG_ERR_NOT_SUPPORTED;
++    }
++}
+ 
+ /* This is a test on whether the library is in the error or
+    operational state. */
+diff --git a/src/g10lib.h b/src/g10lib.h
+index 9fc868b..92c24a5 100644
+--- a/src/g10lib.h
++++ b/src/g10lib.h
+@@ -488,7 +488,9 @@ void _gcry_fips_signal_error (const char *srcfile,
+ #endif
+ 
+ int _gcry_fips_indicator_cipher (va_list arg_ptr);
++int _gcry_fips_indicator_hash (va_list arg_ptr);
+ int _gcry_fips_indicator_kdf (va_list arg_ptr);
++int _gcry_fips_indicator_mac (va_list arg_ptr);
+ int _gcry_fips_indicator_pk (va_list arg_ptr);
+ 
+ int _gcry_fips_is_operational (void);
+diff --git a/src/gcrypt.h.in b/src/gcrypt.h.in
+index 7704d17..344f879 100644
+--- a/src/gcrypt.h.in
++++ b/src/gcrypt.h.in
+@@ -337,7 +337,9 @@ enum gcry_ctl_cmds
+     GCRYCTL_SET_ALLOW_WEAK_KEY = 79,
+     GCRYCTL_FIPS_SERVICE_INDICATOR_CIPHER = 81,
+     GCRYCTL_FIPS_SERVICE_INDICATOR_KDF = 82,
+-    GCRYCTL_FIPS_SERVICE_INDICATOR_PK = 83
++    GCRYCTL_FIPS_SERVICE_INDICATOR_PK = 83,
++    GCRYCTL_FIPS_SERVICE_INDICATOR_HASH = 84,
++    GCRYCTL_FIPS_SERVICE_INDICATOR_MAC = 85
+   };
+ 
+ /* Perform various operations defined by CMD. */
+diff --git a/src/global.c b/src/global.c
+index c01b424..03756ea 100644
+--- a/src/global.c
++++ b/src/global.c
+@@ -762,12 +762,24 @@ _gcry_vcontrol (enum gcry_ctl_cmds cmd, va_list arg_ptr)
+       rc = _gcry_fips_indicator_cipher (arg_ptr);
+       break;
+ 
++    case GCRYCTL_FIPS_SERVICE_INDICATOR_HASH:
++      /* Get FIPS Service Indicator for a given HASH. Returns GPG_ERR_NO_ERROR
++       * if algorithm is allowed or GPG_ERR_NOT_SUPPORTED otherwise */
++      rc = _gcry_fips_indicator_hash (arg_ptr);
++      break;
++
+     case GCRYCTL_FIPS_SERVICE_INDICATOR_KDF:
+       /* Get FIPS Service Indicator for a given KDF. Returns GPG_ERR_NO_ERROR
+        * if algorithm is allowed or GPG_ERR_NOT_SUPPORTED otherwise */
+       rc = _gcry_fips_indicator_kdf (arg_ptr);
+       break;
+ 
++    case GCRYCTL_FIPS_SERVICE_INDICATOR_MAC:
++      /* Get FIPS Service Indicator for a given HMAC. Returns GPG_ERR_NO_ERROR
++       * if algorithm is allowed or GPG_ERR_NOT_SUPPORTED otherwise */
++      rc = _gcry_fips_indicator_mac (arg_ptr);
++      break;
++
+     case GCRYCTL_FIPS_SERVICE_INDICATOR_PK:
+       /* Get FIPS Service Indicator for a given asymmetric algorithm. For
+        * GCRY_PK_RSA, an additional parameter for the operation mode is
