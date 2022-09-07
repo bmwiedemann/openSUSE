@@ -1,4 +1,163 @@
 -------------------------------------------------------------------
+Wed Sep 07 06:26:08 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.33:
+  * feat: improve windows install script, added optional parameters (#2903)
+  * build(deps): bump @docusaurus/preset-classic in /website
+  * build(deps): bump @docusaurus/core from 2.0.1 to 2.1.0 in /website
+  * build(deps): bump amplitude-js from 8.20.0 to 8.20.1 in /website
+  * build(deps): bump sass from 1.54.7 to 1.54.8 in /website
+  * feat: fetch azure vault secret (#2987)
+  * build(deps): bump github.com/rs/zerolog from 1.27.0 to 1.28.0 (#2983)
+  * build(deps): bump sass from 1.54.5 to 1.54.7 in /website (#2988)
+  * chore: use the standard personal bash completion's dir
+  * chore: Add shell completion instructions to install.sh
+  * fix: fix path to work correctly on debian derived system
+  * feature: install completion script for bash, zsh and fish
+
+-------------------------------------------------------------------
+Wed Sep 07 06:24:34 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.32:
+  * docs: update reference to jreleaser package
+  * feat: aks specific helm action (#2914)
+  * feat(universe): add jreleaser to alpha (#2979)
+  * Update f44rm-how-it-works.mdx
+  * Update 1242-install.mdx
+  * Update 1242-install.mdx
+  * build(deps): bump google.golang.org/grpc from 1.48.0 to 1.49.0 (#2974)
+  * [Docs] Refactor Docs Redesign
+  * docs: update cloud image + convert webp images to png (#2977)
+  * build(deps): bump amplitude-js from 8.19.0 to 8.20.0 in /website
+  * docs: fix typo for dagger cloud documentation (#2971)
+  * build(deps): bump github.com/moby/buildkit from 0.10.3 to 0.10.4 (#2969)
+  * website: use posthog to get users analysis path (#2968)
+
+-------------------------------------------------------------------
+Wed Sep 07 06:22:49 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.31:
+  * build(deps): bump sass from 1.54.4 to 1.54.5 in /website (#2965)
+  * [Docs] Throw error on broken links
+  * [Docs] Fix Navbar Styling on Mobile Devices
+  * docs: UI Feedback Implementation (#2952)
+  * docs: Add Debugging Section to the README (#2961)
+  * [Docs] Update Bottom Pagination (#2960)
+  * feat: added npm pkg (#2908)
+  * fix: dagger project init <something> does not display useful command information #2538 (#2959)
+  * build(deps): bump github.com/tliron/kutil from 0.1.61 to 0.1.62
+  * ci: Do not run bats jobs in parallel
+  * chore: Use a consistent approach to Terraform tests
+  * fix: linter not working in git-worktrees
+  * fix: make the URL work in github and locally (#2954)
+  * added a release section (#2953)
+  * Revert "fix: Increase Universe action timeout"
+  * fix: Increase Universe action timeout
+  * tests: Added test workflow for terraform custom docker image
+  * fix: move version to #Image to prevent breaking custom docker.#Image
+  * fix: Default to a specific Terraform version by default
+  * feat: Add ability to use custom terraform version
+  * Add go action to install/configure go into image (#2936)
+  * docs: design pattern - how to build actions with customizable images (#2924)
+  * docs: Add project update to local dev docs
+
+-------------------------------------------------------------------
+Wed Sep 07 06:20:42 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.30:
+  * docs: Add FAQ on tests/secrets_sops.yaml (#2916)
+  * build(deps): bump github.com/mattn/go-colorable from 0.1.12 to 0.1.13 (#2944)
+  * ci: Disable GHA cache for Test Universe / Universe Tests
+  * ci: Temporarily disable GHA cache for experimental universe tests
+  * chore(universe/docker): rename p to path
+  * fix(universe/docker): import path under alternative name
+  * Mention in help that `do action` supports an optional number of subactions
+  * chore: Bump bats to 1.7.0
+  * chore: Fix yarn.lock
+  * Hint that action is not optional for the do command
+  * fix: dagger do help should indicate where to insert action name #2582
+  * docs: fix link to todoapp example
+  * chore(universe/docker): remove quotes around key path
+  * chore(universe/docker): remove quotes around key test
+  * fix(universe/docker): support exporting relative to working directory
+  * docs: fix typo, shadowing not shodowing
+  * refactor: use base pattern in goreleaser
+  * [Docs] Update README explaining new UUID generation (#2934)
+  * docs: env var reference (#2931)
+
+-------------------------------------------------------------------
+Wed Sep 07 06:19:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.29:
+  * [Docs] Fix Tutorial Card and Buttons (#2935)
+  * added button to tutorial card (#2933)
+  * fix: autorelease missing gh secret (#2930)
+  * docs: Optimize Images (#2929)
+  * build(deps): bump sass from 1.54.3 to 1.54.4 in /website
+  * [Docs] Fix Navbar Styling and Links
+  * fix: remove unnecessary left oauth2 comment (#2925)
+  * fix: use correct oauth auth style (#2922)
+  * feat: Terraform Workspace Action (#2919)
+  * docs: fix broken links (#2915)
+  * [Docs] Redesign (#2853)
+  * fix: helm login action (#2896)
+  * docs: Azure Pipelines Docs (#2904)
+  * docs: fix typo in `what-is-cue` docs (#2906)
+  * feat: Terraform Import Action (#2900)
+  * AWS SAM package improvements (#2890)
+  * build(deps): bump sass from 1.54.1 to 1.54.3 in /website
+  * Change docs incremental index to use short UUID instead
+  * add debug capabilities
+  * docs: explain universe packages / clarify usage of sub-action term (#2897)
+  * dont use pipe to let the script failed of a curl request was not successful
+  * build(deps): bump sass from 1.54.0 to 1.54.1 in /website
+  * Fix changes for homebrew-core PR (#2893)
+  * ci: Add test-auto-release workflow
+  * ci: Set tag-name explicitly for homebrew-core PR
+  * implement aks auth
+
+-------------------------------------------------------------------
+Wed Sep 07 05:51:09 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.28:
+  * ci: Open a homebrew-core PR when we release (#2888)
+  * fix: LSP aliased import + single file error handling (#2889)
+  * Add support for headless authentication
+  * docs: Fix link to PR
+  * docs: Expand on how to run the linters
+  * docs: Make the section on links in docs clearer
+  * chore: Update caniuse yarn dep
+  * [Docs] bump docusaurus-preset-classic version
+  * docs: rename plan docs title (#2880)
+  * docs: raw strings use - example (#2882)
+  * build(deps): bump react-social-login-buttons in /website
+  * build(deps): bump @docusaurus/core from 2.0.0-rc.1 to 2.0.1 in /website
+  * CUE docs gotchas updates
+  * feat: new tty logger (#2751)
+  * Update docs/guides/logdebug/1243-dagger-cloud-debugging.md
+  * added clarification
+  * refactor(golangci): split up action definitions into template and pre-configured image
+  * docs: explain how to run single actions
+  * fix: goreleaser key shadowing issue
+  * fix: go cache race condition
+  * fix: disjunction error on go.#Container + update tests accordingly
+  * feat(universe/go): copy source instead of using a mount
+  * test(universe/go): add missing go.sum
+  * test(universe/go): don't write to /tmp for passing data between runs
+  * test: add more way to avoid conflicts
+  * test: fix go.#Build tests that rebase broke (deleting core import)
+  * feat: deprecate package; with packages set, it takes the precedence
+  * fix: add -e to "sh" invocation to error on the first one
+  * chore: fix `go.#Test`
+  * fix: add missing testutil package
+  * fix: update from TomChv review
+  * feat: deprecate go.#Test.package, add go.#Test.packages as [...string]
+  * docs: clarify what data gets sent to dagger cloud
+  * website: update embargoes compliance only for Crimea
+  * build(deps): bump amplitude-js from 8.18.5 to 8.19.0 in /website
+  * build(deps): bump sass from 1.53.0 to 1.54.0 in /website
+
+-------------------------------------------------------------------
 Wed Jul 27 18:16:56 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.27:
