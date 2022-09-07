@@ -19,28 +19,25 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname google-crc32c
 Name:           python-google-crc32c
-Version:        1.3.0
+Version:        1.5.0
 Release:        0
 Summary:        A python wrapper of the C library 'Google CRC32C'
 License:        Apache-2.0
 URL:            https://github.com/googleapis/python-crc32c
-Source:         https://github.com/googleapis/python-crc32c/archive/refs/tags/v%{version}.tar.gz#/python-crc32c-%{version}.tar.gz
+Source:         https://github.com/googleapis/python-crc32c/archive/refs/tags/v%{version}.tar.gz#/google-crc32c-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  libcrc32c-devel
 BuildRequires:  python-rpm-macros
-Requires:       python-cffi >= 1.0.0
-Suggests:       python-pytest
 # SECTION test requirements
-BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
 %description
-A python wrapper of the C library 'Google CRC32C'
+A python wrapper of the C library 'Google CRC32C'.
 
 %prep
 %autosetup -p1 -n python-crc32c-%{version}
@@ -59,6 +56,6 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/google_crc32c*/
 
 %changelog
