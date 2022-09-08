@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  6 16:56:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.5
+- Changes since 5.25.4:
+  * Add FreeBSD Qt6 CI support
+
+-------------------------------------------------------------------
 Tue Aug  2 14:07:12 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.4
