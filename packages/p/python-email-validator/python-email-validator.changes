@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep  8 07:24:18 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.2.1:
+  * Rejecting domains with NULL MX records (when deliverability checks are
+    turned on).
+  * Rejecting unsafe unicode characters. (Some of these checks you should be
+    doing on all of your user inputs already!)
+  * Rejecting most special-use reserved domain names. A new test_environment
+    option is added for using @*.test domains.
+  * example and example.com/net/org are removed from the special-use domains
+    list.
+  * SPECIAL_USE_DOMAIN_NAMES is now a documented part of the API (and it is a
+    list instead of a tuple)
+  * New module-level attributes ALLOW_SMTPUTF8, CHECK_DELIVERABILITY,
+    TEST_ENVIRONMENT, and DEFAULT_TIMEOUT can be used to change the default
+    values of the keyword arguments.
+- Add patch ignore-urllib3-pyopenssl-warning.patch:
+  * Ignore warning as error from requests-toolbelt via dnspython. 
+
+-------------------------------------------------------------------
 Tue Apr 19 17:42:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Fix the name of the package (it should be email-validator, not

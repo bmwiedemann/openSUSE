@@ -19,13 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-email-validator
-Version:        1.1.3
+Version:        1.2.1
 Release:        0
 Summary:        A robust email syntax and deliverability validation library for Python
 License:        CC0-1.0
-Group:          Development/Languages/Python
 URL:            https://github.com/JoshData/python-email-validator
 Source:         https://github.com/JoshData/python-email-validator/archive/refs/tags/v%{version}.tar.gz#/email_validator-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Ignore DeprecationWarning until requests-toolbelt is fixed
+# (Pulled in by dnspython)
+Patch0:         ignore-urllib3-pyopenssl-warning.patch
 BuildRequires:  %{python_module dnspython >= 1.15.0}
 BuildRequires:  %{python_module idna >= 2.0.0}
 BuildRequires:  %{python_module pytest >= 5.0}
@@ -69,7 +71,7 @@ Key features:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests -k 'not (test_deliverability_no_records or test_deliverability_found or test_deliverability_fails or test_deliverability_dns_timeout or test_main_single_good_input or test_main_multi_input or test_main_input_shim or test_validate_email__with_caching_resolver or test_validate_email__with_configured_resolver)'
+%pytest tests -k 'not (test_deliverability_no_records or test_deliverability_found or test_deliverability_fails or test_deliverability_dns_timeout or test_main_single_good_input or test_main_multi_input or test_main_input_shim or test_validate_email__with_caching_resolver or test_validate_email__with_configured_resolver or test_email_example_reserved_domain)'
 
 %post
 %python_install_alternative email_validator

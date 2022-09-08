@@ -1,0 +1,9 @@
+Index: python-email-validator-1.2.1/setup.cfg
+===================================================================
+--- python-email-validator-1.2.1.orig/setup.cfg
++++ python-email-validator-1.2.1/setup.cfg
+@@ -43,3 +43,4 @@ max-line-length = 120
+ testpaths = tests
+ filterwarnings =
+     error
++    ignore:.*urllib3.contrib.pyopenssl.*:DeprecationWarning
