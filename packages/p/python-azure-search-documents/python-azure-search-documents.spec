@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-search-documents
-Version:        11.2.2
+Version:        11.3.0
 Release:        0
 Summary:        Microsoft Azure Service Bus Runtime Client Library
 License:        Apache-2.0
@@ -38,10 +38,11 @@ BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.14.0
+Requires:       python-azure-core >= 1.19.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-search-nspkg >= 1.0.0
 Requires:       python-msrest >= 0.6.21
+Requires:       python-typing_extensions >= 3.7.4.3
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
