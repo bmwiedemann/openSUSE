@@ -280,4 +280,12 @@
   postrun-hooks after the split.</comment>
     <requestid>987893</requestid>
   </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>f94d365cd7b4db77790f426ddd2ce351</srcmd5>
+    <version>0.7.0</version>
+    <time>1662639797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001792</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul 23 07:56:50 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add postrun hook scripts for apache+nginx
+
+-------------------------------------------------------------------
 Fri Jul  8 11:38:36 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Target should not PartOf on itself.

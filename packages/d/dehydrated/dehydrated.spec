@@ -202,6 +202,14 @@ install -m 0755 -d %{buildroot}%{_challengedir}
 install -m 0755 -d %{buildroot}%{_sysconfdir}/%{_apache}/conf.d
 sed "s,@CHALLENGEDIR@,%{_challengedir},g" %{SOURCE1} > acme-challenge.conf
 install -m 0644 acme-challenge.conf %{buildroot}%{_sysconfdir}/%{_apache}/conf.d
+cat > %{buildroot}%{_sysconfdir}/dehydrated/postrun-hooks.d/reload-apache2.sh << EOF
+#!/bin/sh
+systemctl reload apache2.service
+EOF
+cat > %{buildroot}%{_sysconfdir}/dehydrated/postrun-hooks.d/reload-nginx.sh << EOF
+#!/bin/sh
+systemctl reload nginx.service
+EOF
 
 %if %{with nginx}
 install -m 0755 -d %{buildroot}%{_sysconfdir}/nginx
@@ -297,11 +305,13 @@ diff -urN docs/examples/config %{buildroot}%{_home}/config ||:
 %files %{_apache}
 %defattr(-,root,root)
 %config %{_sysconfdir}/%{_apache}/conf.d/acme-challenge.conf
+%attr(755,root,root) %{_sysconfdir}/dehydrated/postrun-hooks.d/reload-apache2.sh
 
 %if %{with nginx}
 %files nginx
 %defattr(-,root,root)
 %config %attr(640,root,nginx) %{_sysconfdir}/nginx/acme-challenge
+%attr(755,root,root) %{_sysconfdir}/dehydrated/postrun-hooks.d/reload-nginx.sh
 %endif #with nginx
 
 %changelog
