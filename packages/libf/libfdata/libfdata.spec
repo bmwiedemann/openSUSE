@@ -35,10 +35,10 @@ BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfcache) >= 20200708
+BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libcnotify) >= 20220108
+BuildRequires:  pkgconfig(libcthreads) >= 20220102
+BuildRequires:  pkgconfig(libfcache) >= 20220110
 
 %description
 Library to provide generic file data functions for the libyal family of libraries.
