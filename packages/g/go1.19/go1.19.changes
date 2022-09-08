@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Sep  6 19:24:28 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.19.1 (released 2022-09-06) includes security fixes to the
+  net/http and net/url packages, as well as bug fixes to the
+  compiler, the go command, the pprof command, the linker, the
+  runtime, and the crypto/tls and crypto/x509 packages.
+  Refs boo#1200441 go1.19 release tracking
+  CVE-2022-27664 CVE-2022-32190
+  * go#54376 bsc#1203185 CVE-2022-27664 net/http: handle server errors after sending GOAWAY
+  * go#54635 bsc#1203186 CVE-2022-32190 net/url: JoinPath doesn't strip relative path components in all circumstances
+  * go#54736 cmd/go: cannot find package when importing dependencies with the unix build constraint
+  * go#54734 cmd/go: git fetch errors dropped when producing pseudo-versions for commits
+  * go#54726 cmd/compile: compile failed with "Value live at entry"
+  * go#54697 cmd/compile: ICE at composite literal assignment with alignment > PtrSize
+  * go#54675 runtime: morestack_noctxt missing SPWRITE, causes "traceback stuck" assert
+  * go#54665 runtime: segfault running ppc64/linux binaries with kernel 5.18
+  * go#54660 cmd/go: go test -race does not set implicit race build tag
+  * go#54643 crypto/tls: support ECDHE key exchanges when ec_point_formats is missing in ClientHello extension
+  * go#54637 cmd/go: data race in TestScript
+  * go#54633 cmd/go/internal/modfetch/codehost: racing writes to Origin fields
+  * go#54629 cmd/compile: miscompilation of partially-overlapping array assignments
+  * go#54420 cmd/pprof: graphviz node names are funny with generics
+  * go#54406 cmd/link: trampoline insertion breaks DWARF Line Program Table output on Darwin/ARM64
+  * go#54309 cmd/compile: internal compiler error: panic: runtime error: invalid memory address or nil pointer dereference
+  * go#54295 crypto/x509: panics on invalid curve instead of returning error
+  * go#54243 cmd/compile: internal compiler error when compiling code with unbound method of generic type
+  * go#54239 misc/cgo: TestSignalForwardingExternal sometimes fails with wrong signal SIGINT
+  * go#54235 cmd/compile: internal compiler error of atomic type and offsetof
+
+-------------------------------------------------------------------
 Mon Aug 22 20:44:19 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Define go_bootstrap_version go1.16 without suse_version checks
