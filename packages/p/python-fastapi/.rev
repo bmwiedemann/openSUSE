@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1000255</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7fa4d287af5139947b861dffa17a5e70</srcmd5>
+    <version>0.81.0</version>
+    <time>1662639821</time>
+    <user>dimstar_suse</user>
+    <comment>- Use email-validator package instead of email_validator.</comment>
+    <requestid>1001875</requestid>
+  </revision>
 </revisionlist>

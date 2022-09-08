@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  8 07:30:26 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use email-validator package instead of email_validator. 
+
+-------------------------------------------------------------------
 Fri Aug 26 21:20:08 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 0.81.0

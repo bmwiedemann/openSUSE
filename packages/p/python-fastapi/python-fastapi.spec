@@ -39,7 +39,7 @@ BuildRequires:  %{python_module SQLAlchemy >= 1.3.18}
 BuildRequires:  %{python_module aiosqlite}
 BuildRequires:  %{python_module anyio >= 3.2.1}
 BuildRequires:  %{python_module databases}
-BuildRequires:  %{python_module email_validator >= 1.1.1}
+BuildRequires:  %{python_module email-validator >= 1.1.1}
 BuildRequires:  %{python_module httpx >= 0.14.0}
 BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module peewee >= 3.13.0}
