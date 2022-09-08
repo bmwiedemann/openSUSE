@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 07 08:03:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 3.3.0:
+  * update alpine (#144)
+  * Bump k8s.io/api from 0.24.2 to 0.24.4 (#142)
+  * Bump k8s.io/klog/v2 from 2.70.0 to 2.70.1 (#129)
+  * Bump github.com/stretchr/testify from 1.7.2 to 1.8.0 (#127)
+  * update example command (#133)
+  * Bump helm.sh/helm/v3 from 3.9.0 to 3.9.3 (#138)
+  * Bump alpine from 3.16.0 to 3.16.2 (#139)
+  * Use oss-docs orb to publish docs (#128)
+  * Added format flag option and enable file output to be CSV (#120)
+  * Update dependencies (#126)
+
+-------------------------------------------------------------------
 Sat Jun 04 18:58:11 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 3.2.0:
