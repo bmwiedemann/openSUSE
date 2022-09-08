@@ -119,4 +119,12 @@ This is a maintained fork of python-Flask-Security</comment>
     <comment></comment>
     <requestid>970480</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>d2080f7f2ebcaa9584d610948753cc45</srcmd5>
+    <version>4.1.3</version>
+    <time>1662639815</time>
+    <user>dimstar_suse</user>
+    <comment>- Use email-validator, not email_validator package name.</comment>
+    <requestid>1001868</requestid>
+  </revision>
 </revisionlist>

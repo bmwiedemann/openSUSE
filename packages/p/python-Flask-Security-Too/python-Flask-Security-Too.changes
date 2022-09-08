@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  8 06:45:05 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use email-validator, not email_validator package name. 
+
+-------------------------------------------------------------------
 Sat Apr 16 22:35:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add endswith-assert.patch to overcome incompatibilities with
