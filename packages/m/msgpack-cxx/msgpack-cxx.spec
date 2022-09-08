@@ -36,6 +36,7 @@ exchange structured objects between many languages like JSON.
 %package devel
 Summary:        Development headers for libmsgpack C++ library
 Group:          Development/Libraries/C and C++
+Requires:       libboost_headers-devel
 Requires:       msgpack-c-devel >= 4
 Provides:       libmsgpack-devel = %{version}-%{release}
 Conflicts:      msgpack-devel < 4
