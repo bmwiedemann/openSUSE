@@ -17,7 +17,7 @@
 
 
 Name:           ipmitool
-Version:        1.8.18.249.g4d25a93
+Version:        1.8.19.0.g19d7878
 Release:        0
 Summary:        Utility for IPMI Control
 License:        BSD-3-Clause

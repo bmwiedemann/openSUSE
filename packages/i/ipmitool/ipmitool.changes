@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 07 03:06:48 UTC 2022 - trenn@suse.de
+
+- Update to version 1.8.19.0.g19d7878:
+  * Release Version 1.8.19
+  * Cast type before the left shift
+  * sel: Fix the deasserted thresholds inequality
+
+-------------------------------------------------------------------
 Tue May 10 08:12:53 UTC 2022 - moritz.kodytek@suse.com
 
 - Update to version 1.8.18.249.g4d25a93:
