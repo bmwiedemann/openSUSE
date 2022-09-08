@@ -64,4 +64,12 @@
 </comment>
     <requestid>914989</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f767e313af1ac45df4a95e35d91fc92c</srcmd5>
+    <version>5.0.0</version>
+    <time>1662639808</time>
+    <user>dimstar_suse</user>
+    <comment>- Add more-itertools to BuildRequires.</comment>
+    <requestid>1001817</requestid>
+  </revision>
 </revisionlist>

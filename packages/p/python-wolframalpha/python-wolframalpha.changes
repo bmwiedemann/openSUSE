@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  8 04:23:32 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add more-itertools to BuildRequires. 
+
+-------------------------------------------------------------------
 Mon Aug 30 10:02:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Fix name of the python-more-itertools package.
