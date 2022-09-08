@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 07 06:59:32 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.7.3:
+  * Cherry-pick #4398 - bump cosign to 1.11.0 (#4399)
+  * Release v1.7.3 (#4394)
+  * Fix deprecated  api policy issue (#4349) (#4350)
+  * precondition failure will skip rule independent of audit or enforce mode (#4163) (#4296)
+
+-------------------------------------------------------------------
 Mon Jul 25 11:08:18 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.7.2:
