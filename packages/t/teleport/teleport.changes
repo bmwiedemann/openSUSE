@@ -1,4 +1,273 @@
 -------------------------------------------------------------------
+Wed Sep 07 06:53:32 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 10.2.0:
+  * Release 10.2.0 (#16172)
+  * upgrade notifications
+  * implements IRP_MJ_LOCK_CONTROL (#16139)
+  * [v10] Generalize private keys in tsh (PIV integration) (#15890)
+  * [v10] Replace quay.io with amazon ECR where appropriate (#15713)
+  * Rename web JSON field names and wrap traits (#14611) (#16173)
+  * Auditd integration (#14948) (#16140)
+  * [auto] Update webassets in teleport/branch/v10 from webassets/teleport-v10 (#16169)
+  * [v10] Add OS compatibility checker (#16141)
+  * [v10] Add section on teleport.cluster.local (#16153)
+  * [v10] Update buildbox to push to ECR  (#15725)
+  * [v10] Update user traits when renew session (#16122)
+  * Plugin ECR Documenation updates (#15719)
+  * [v10] Docs: Update Contributing Page (#16115)
+  * [v10] Add retries on operation denied in fido2 (#16085)
+  * Restrict Google JSON creds to service_account (#16042)
+  * Add support for `--browser none` to `tctl sso test`. (#16086)
+  * [v10] ConnectionDiagnostics: SSH Tester (#15413)  (#16087)
+  * Forward flags to "tsh ssh" and "tsh aws" (#16058) (#16094)
+  * Support AWS Console for US GovCloud Partition (#13442) (#16067)
+  * [v10] Make `tctl bots add` display the proxy address  (#16089)
+  * Fix outdated CHANGELOG links (#16110)
+  * Increase dynamo get limit (#16103)
+  * [v10] Use regional STS endpoints for IAM join method (#15915)
+  * [v10] Update Library for new systemd install  (#16030)
+  * Drop libudev-dev from buildbox dependencies (#16102)
+  * Fix username in example (#14276) (#16077)
+  * Add omitempty for GitHub teams_to_roles (#16012)
+  * Add comment and import cycle proto linters (#16092)
+  * Fix infinite session heartbeat failures (#16065)
+  * [v10] Correct links to tracks (#16078)
+  * dronegen: Enable verbose logs for electron tooling on macOS (#15836) (#15894)
+  * [v10] Add an `is_empty` field to `FileSystemObject` (#16059)
+  * [v10] Add support for `FileNamesInformation` (#16054)
+  * Added 09/01 Upcoming Releases Update
+  * [v10] Backport TLS routing Ping connection (#16017)
+  * [v10] azure mysql postgres auto discovery watchers (#15992)
+  * [v10] Add Access Request ID to response for UserContext (#15962)
+  * [v10] Add architecture guide for Machine ID (#16036)
+  * [v10] Avoid wrongly filtering Yubikey4 devices (#16011)
+  * [v10] Update on-prem version to 10.1.9 (#16020)
+  * [v10] Remove deprecated upsert password endpoint (#15855) (#15938)
+  * [v10] Fix a flaky operator test (#16010)
+  * [v10] NodeJoin script: fix when no labels are provided (#15755)
+  * improve semaphore flakiness test
+  * fncache test improvements
+  * github releases scraper
+  * [v10] Add lock target to lock.create event (#15981)
+  * Added section on Cloud upgrades.
+  * [v10] azure mysql postgres auto discovery api (#15991)
+  * [v10] azure mysql postgres auto discovery proto (#15989)
+  * [v10] Azure mysql postgres auto discovery config create (#15990)
+  * [v10] Apply linters to legacy protos (#15961)
+  * [v10] Azure mysql postgres auto discovery configuration (#15988)
+
+-------------------------------------------------------------------
+Wed Sep 07 06:48:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 10.1.9:
+  * Release 10.1.9 (#15980)
+  * [v10] Add default debug setting for install.sh AMI script (#15936)
+  * [v10] Record when a session recording is accessed (#15729)
+  * [v10] backports for 13630 14267 14959 15289 15364 15789 15743 (directory sharing) (#15767)
+
+-------------------------------------------------------------------
+Wed Sep 07 06:44:22 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 10.1.8:
+  * Release 10.1.8 (#15952)
+  * [v10] Fix race in `reversetunnel.remoteConn` (#15943)
+  * [v10] Organize docs guide sections chronologically (#15735)
+  * [v10] Fix link in Authentication options docs (#15276)
+  * [v10] Connect: Add tests for ParseClusterURI (#15942)
+  * [v10] Use Buf linters and formatter on lib/teleterm protos (#15919)
+  * [v10] Use Buf to build/lint/format lib/ protos (#15913)
+  * [v10] Add omitempty for deprecated teams_to_logins field (#15933)
+  * [v10] Added sles as another identifier for suse in auto install (#15702)
+  * [v10] Build Teleport Connect for Windows (#15292) (#15899)
+  * [v10] moved redirect path param to RawQuery and added escaping (#15628) (#15908)
+
+-------------------------------------------------------------------
+Wed Sep 07 06:40:07 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 10.1.7:
+  * Release 10.1.7 (#15931)
+  * [v10] Edit the Mattermost guide (#15508)
+  * [v10] Add redirect from /user-manual (#15525)
+  * [v10] Authenticated pulls to build artifacts  (#15791)
+  * [v10] Replace `Tile` components with lists of links (#15423)
+
+-------------------------------------------------------------------
+Wed Sep 07 06:36:39 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 10.1.6:
+  * Release 10.1.6 (#15914)
+  * [v10] Default debug to false in aws AMI scripts (#15909)
+  * Fix SAML alternate redirects (#15868)
+  * [v10] Backport #13924 (#15733)
+  * [v10] Use to Buf to lint, format and generate api/ protos  (#15875)
+  * cluster alerts
+  * [v10] Correctly handle Firestore pagination with DocumentID cursors (#13756)
+
+-------------------------------------------------------------------
+Wed Sep 07 06:34:23 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 10.1.5:
+  * Release 10.1.5 (#15866)
+  * [v10] Use Debug flag in aws scripts (#15431)
+  * [v10] Increase missing tunnels check interval  (#15802)
+  * Merge pull request #15853 from gravitational/capnspacehook/backport/v10/15144
+  * [v10] Fix an issue `tsh aws s3` fails when using path with special characters (#15819)
+  * Added 08/25 Upcoming Releases Update
+  * [v10] Update deprecated pty dependency (#15857)
+  * [v10] Update fpm images to use amazon ECR (#15561)
+  * [v10] Ensure watchers are using cache when applicable (#15838)
+  * [v10] Documentation for AWS API access (#14429) (#15807)
+  * [v10] Add Machine ID FAQ section on per-session MFA (#15831)
+  * [v10] Remove TestMux/Timeout reliance on real time (#15827)
+  * [v10] Add drone pipeline for building Connect with signed tsh.app (#15832)
+  * [v10] Check if user has access to any registered resource (#15637) (#15814)
+  * [v10] Deflake TestEC2Hostname (#15809)
+  * [v10] Backport Teleport Connect Linux Builds (#15783)
+  * [v10] Teleport Operator ECR (#15438)
+  * [v10] update e & webassets (#15785)
+  * [v10] Ignore Logins when listing Nodes (#15597) (#15797)
+  * [v10] backport #14326 (Remove check for `local_auth` when creating privilege token) (#15776)
+  * [V10] Show proper error message when "tsh db env/config" are not supported (#15734)
+  * [v10] (buddy) Pass JWT headers on websocket requests (#15738)
+  * [v10] upgrade window events (#15732)
+  * [v10] Fix race condition to sessions map in K8S proxy (#15456)
+  * [v10] Fix invalid Write implementation on K8S join stream (#15657)
+  * [v10] Improve error logging on reconnect node (#15639)
+  * [v10] ci: Reduce CodeQL max goroutines to address failed extraction (#15698)
+  * [v10] Fix table formatting in the SOC 2 guide (#15692)
+  * [v10] Span improvements (#15670)
+  * [v10] Fix race in EC2 label warning (#15685)
+  * [v10] Delete touch_id credentials during tsh mfa rm (#15675)
+  * [v10] Remove duplicate words in trusted cluster overview (#15663)
+  * [v10] helm: allow to disable local auth in teleport-cluster chart (#15595)
+  * Added 08/18 Upcoming Releases Update
+  * [v10] Update on-prem and cloud in docs to 10.1.4 (#15666)
+  * [v10] Stop validating schema for labels in k8s operator (#15600)
+  * [v10] Add an Email Access Request guide (#15414)
+  * [v10] Improve K8S session join error propagation (#15492)
+  * [v10] Reorganize approach to cluster names in Connect (#15200) (#15638)
+  * [v10] Document `teleport.dev/database_name` tag. (#14923) (#15604)
+  * [v10] Make tctl auth sign to write out kube TLS server name if TLS routing is enabled (#15632)
+  * [v10] Fix 'get-kubeconfig.sh' to work with Kubernetes v1.24+ (#15617)
+  * [v10] Connection Diagnostic: update, traces and ConnectionTester (#15158) (#15551)
+  * Attempt to connect to other proxies on failure (#14954) (#15313)
+  * [v10] Store AuthConnector in profile (#15552)
+  * [v10] Reorganise Machine ID docs (#15522) (#15570)
+  * [v10] Alias support for `tsh` (#13305, #14931) (#14919)
+  * [v10] Add info to login command about passwordless (#15548)
+  * [v10] Support China and GovCloud for database access (#15583)
+  * [v10] Fix OS package repo promotion parallelism issue (#15531)
+  * Lower EC2 label log frequency (#15179)
+  * [v10] Publish to Release API on release promotion (#15153) (#15251)
+  * [v10] Document multi-role-behavior for `create_host_user` option (#15587)
+  * Backport #15268: Added docs for new RPM repos (#15268) (#15533)
+  * [v10] misc docs fixes (#15539)
+  * [v10] Add AWS troubleshooting page and add into applicable pages (#15568)
+  * Fix cloud scope for db configure command. (#15567)
+  * Allow reverse tunnel join without exposing the web API (#13598)
+
+-------------------------------------------------------------------
+Wed Sep 07 06:26:31 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 10.1.4:
+  * Release 10.1.4 (#15527)
+  * (v10) Update Cloud package repo instructions (#15007)
+  * [v10] Add Machine ID Kubernetes and Apps guides (#15501)
+  * [v10] Fix inverted check for `join_params` and `auth_token` mutual exclusion (#15517)
+  * Backport/branch/v10/pr 12763 (#15429)
+  * [v10] Machine ID support for Logins trait (#15117) (#15470)
+  * [v10] Fix TLS usage across multiple protocols (#15464)
+  * Backport "Added YUM implementation of OS package build tool" (#14203) into branch/v10 (#15127)
+  * [auto] Update webassets in teleport/branch/v10 from webassets/teleport-v10 (#15504)
+  * [v10] docs: Improve cloud security/compliance documentation (#15460)
+
+-------------------------------------------------------------------
+Wed Sep 07 06:23:56 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 10.1.3:
+  * Release 10.1.3 (#15499)
+  * [v10] Add instructions for backporting PRs (#15420)
+  * [v10] Remove tctl access ls from cli ref (#15496)
+  * [v10] helm: Add support for mounting existing TLS root CA (#15347)
+  * [v10] auditlog: fix panic during concurrent streams of the same session (#15360)
+  * [v10] Add RBAC instructions for DB tctl auth sign (#15451)
+  * [v10] Use the absolute path of the teleport binary in node join script (#15473)
+  * Added 08/11 Upcoming Releases Update
+  * [v10] Add support for variable playback speed for Desktop Access recordings (#15326)
+  * [v10] Remove deprecated GenerateUserCerts HTTP endpoint (#15412)
+  * [v10] Pick correct cert when signing Connect (#15344) (#15411)
+  * [v10] Add better handling for common libfido2 errors (#15395)
+  * [branch/v10] Update docs to use the latest Cloud version number (#15418)
+  * [v10] Document teleport-operator (#15320)
+  * [v10] Documentation for AWS DynamoDB guide (#14319) (#15387)
+  * [auto] Update webassets in teleport/branch/v10 from webassets/teleport-v10 (#15406)
+  * [v10] Adjust Machine ID generated ssh cert path to align with convention (#15297)
+  * [v10] Update last report date for SOC 2 report (#15377)
+  * fix peer addr for in-memory control stream
+  * [v10] backport #15012 (Add `teleport install systemd` command) (#15270)
+  * [v10] Connect docs: Add section about insecure mode (#15340)
+  * [v10] Use a getter/setter for reading the token value from the config (#15372)
+  * [v10] Add "RDP connection fail" section to desktop access troubleshooting docs (#15324)
+  * [backport v10] Make dir before trying to open config file on `teleport configure --output=/some/dir ` (#15352)
+  * [v10] Tag forwarded spans with custom attributes  (#15215)
+  * Fix cert renewal by recovering certbot state (#3610)
+  * Fix bash examples in terraform README
+  * Support terraform v1 (#15087)
+  * [v10] Trace ssh sessions (#15228)
+  * [v10] Create and List Connection Diagnostics (#14781) (#15080)
+  * [v10] Add passwordless login capabilities to teleterm (#15265)
+  * [v10] Add Suggested Labels to Provision Tokens (#15114) (#15319)
+  * [v10] Use `waitForError` instead of `require.Eventually` in SessionRecordingModes integration tests (#15221)
+  * [v10] Shutdown TCP socket on Go-side close (#14996)
+  * [v10] Machine ID docs: Trusted Cluster support (#15295)
+  * [v10] ci: Implement code scanning with CodeQL (#15279)
+  * [v10] docs: Add additional known issues to BPF-based enhanced session recording security warning (#15308)
+  * [v10] Add more general information to our SSO guide (#15307)
+  * [v10] desktop access: send full websocket messages to the browser (#15314)
+  * [v10] Add directory sharing to the ACL (#14653)
+  * [v10] Move Access Requests guides to Access Controls (#15138)
+  * [v10] docs: add a note about desktop session recording RBAC (#15290)
+  * [v10] Add calls to action for Teleport Cloud (#15139)
+  * [v10] desktop access: try using system DNS resolver first (#15255)
+  * [v10] Fix missing cluster name on session.upload via Upload Completer (#15239)
+  * [v10] [doc] Remove "tsh db login" from database guides (#15240)
+  * [v10] Add FAQ and Troubleshooting docs for Machine ID (#15226)
+  * [v10] Detect M1/M2 ARM CPUs when using the install script (#15233)
+  * [v10] Revert "Use high CPU pool for unit & integration (#13875)" (#15229)
+  * [v10] Minor updates to FedRAMP documentation (#15273)
+  * Backport #12815 to branch/v10 (#15261)
+  * [v10] Remove incorrect URLs from config.json (#15219)
+  * [v10] Update instructions on checking version (#15071)
+  * Backport #14852 to branch/v10 (#15084)
+  * Backport #15099 to branch/v10 (#15260)
+  * Backport #15191 to branch/v10 (#15257)
+  * [v10] Fix data race on shutdown (#15248)
+  * [v10] Add custom unmarshal for second_type factor (#15201)
+  * [v10] Backport #13507 (#14456)
+  * [v10] Fix session join requirements documentation (#14416) (#15130)
+  * [v10] Actually use the cache for Snowflake sessions (#15193)
+  * Added 08/04 Upcoming Releases Update
+  * [v10] Add a version to the role in the GitHub CA guide (#14901)
+  * [v10] AWS session audit log (#13288) (#15207)
+  * [v10] [docs] AWS external ID support (#15161)
+  * [v10] Skip cache during CreateBot RPC (#15116)
+  * [v10] Don't reset eventID to 0 when out of events in the Postgres backend (#15165)
+  * [v10] Fix the behavior of `tsh mfa add --allow-passwordless` (#15137)
+  * [v10] helm: configure dynamoDB autoscaling in teleport-cluster  (#15122)
+  * [v10] backport #14698 (embed auth.Cache in auth.Server) (#14984)
+  * [v10]Update docs version (#15132)
+  * [v10] helm: configure session recording in teleport-cluster (#15003)
+  * [v10] reduce sensitivity of fncache cancellation test (#15069)
+  * [V10] Proxy Protocol support for Proxy SSH listener (#14712) (#15086)
+  * [v10] Clarify when HTTP_PROXY applies (#14673)
+  * [v10] `tctl` - Add --set flags for every trait (#14552) (#15108)
+  * [v10] Add docs for TCP apps access (#15125)
+  * [v10] fix help output for --access-request flag. (#15052)
+  * [v10] Backport #14564 (#14992)
+  * Amend 10.1.2 changelog (#15112)
+
+-------------------------------------------------------------------
 Tue Aug 02 07:25:30 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 10.1.2:
