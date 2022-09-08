@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  6 14:03:36 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.0:
+  * new netCDF 4.9.0 features for filters and quantization.
+  * ncremap fix for sub-sub-gridscale regridding
+- Cleanup spec file
+
+-------------------------------------------------------------------
 Mon Feb 21 13:23:14 UTC 2022 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Update to version 5.0.6:

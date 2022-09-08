@@ -17,8 +17,8 @@
 
 
 Name:           nco
-Version:        5.0.6
-%define  soname 5_0_6
+Version:        5.1.0
+%define  soname 5_1_0
 %define  major  5
 Release:        0
 Summary:        Suite of programs for manipulating NetCDF/HDF files
@@ -38,7 +38,6 @@ BuildRequires:  libsz2-devel
 BuildRequires:  netcdf
 BuildRequires:  pkgconfig
 BuildRequires:  texinfo
-BuildRequires:  texlive
 BuildRequires:  udunits2-devel
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(libcurl)
@@ -112,6 +111,7 @@ build packages that use the lib%{name} HDF and netCDF library.
 %package        doc
 Summary:        Documentation for %{name}
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description    doc
 The netCDF Operators, NCO, are a suite of command line programs to
@@ -147,12 +147,8 @@ export QA_RPATHS=$((0x0001))  # check-rpaths: ignore standard RPATHs, for Fedora
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -f %{buildroot}%{_infodir}/dir
-# Fix shebangs -- Leap 15.2 does not have /usr/bin/bash
-%if 0%{?is_opensuse} && 0%{?sle_version} <= 150200
-sed -i '1 s|.*env bash|#!/bin/bash|' %{buildroot}%{_bindir}/{ncclimo,ncremap}
-%else
+# Fix shebangs
 sed -i '1 s|.*env bash|#!/usr/bin/bash|' %{buildroot}%{_bindir}/{ncclimo,ncremap}
-%endif
 
 %check
 %make_build check
