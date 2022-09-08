@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Sep 07 13:03:34 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220828T200811Z:
+  * Fix `support callhome status` command (#4222)
+  * change progress unicode style, simplify progress bar init() (#4224)
+  * Fix mb with-versioning (#4223)
+  * Fix `support logs status` command (#4221)
+  * Fix config parsing with updated madmin helper (#4220)
+  * feat: support head with --zip (#4219)
+  * trim response to two-decimal places in ping command (#4214)
+
+-------------------------------------------------------------------
+Wed Sep 07 13:01:03 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220823T054520Z:
+  * Enhancements in registration and diagnostics (#4200)
+  * remove 'mc mb' short flag to avoid confusion
+  * Add `od` command (#4180)
+  * feat: --with-versioning flag to create bucket as versioned (#4216)
+  * Introduce disk IO statistics UI (#4201)
+  * Update madmin dep to fix a crash (#4215)
+  * Move config parsing logic to madmin (#4212)
+  * Add --disable, --enable and --prefix to ilm commands (#4209)
+  * fix: ping must call AdminInfo only with '--distributed' (#4208)
+  *  Update github.com/minio/cli version (#4192)
+  * Update config output JSON format (#4207)
+  * Clarify error when user has no policy (#4206)
+
+-------------------------------------------------------------------
+Wed Sep 07 12:59:33 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220811T003048Z:
+  * Make environment variables output highlighted (#4205)
+  * rename mc admin top to mc support top  (#4191)
+  * update minio-go/v7 v7.0.34 (#4203)
+  * Add trace support for decommissioning (#4195)
+  * upgrade CI/CD go1.19 (#4204)
+  *  Change the JSON output of mc support perf (#4198)
+  * Print a better error msg when net perf is unsupported (#4194)
+  * restart: Use health check instead of service info API (#4190)
+  * Fix example description for `mc support perf` (#4193)
+  * apply --status-code only for HTTP traces if present (#4189)
+  * update ping command with new terminal UI (#4163)
+  * rename Remove -> Removed in 'mc rm' (#4187)
+  * Update examples for admin-config-reset (#4160)
+
+-------------------------------------------------------------------
+Wed Sep 07 12:57:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220805T080128Z:
+  * Change ui for admin cluster bucket import (#4184)
+  * rb: Better error message when the user passes an object name (#4183)
+  * rm: Fix successful message for operations on the filesystem (#4182)
+  * support in-place rewrite of objects in heal and convert the format (#4175)
+  * remove sysinfo from errorIf with globalDebug (#4178)
+  * add errors to admin top api command (#4176)
+  * Save api key passed as argument in config (#4157)
+
+-------------------------------------------------------------------
 Mon Aug 01 11:13:22 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20220729T191716Z:
