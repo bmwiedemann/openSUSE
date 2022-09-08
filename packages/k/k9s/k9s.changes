@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep 07 11:41:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.26.3:
+  * hotfix: windoze
+
+-------------------------------------------------------------------
+Wed Sep 07 11:40:20 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.26.2:
+  * K9s/rel v0.26.2 (#1691)
+
+-------------------------------------------------------------------
+Wed Sep 07 11:33:20 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.26.1:
+  * K9s/rel v0.26.1 (#1685)
+  * Fix persistentvolumes not showing terminating status (#1682)
+  * Show UsedBy for PriorityClasses (#1666)
+  * feat: allow disable CTRL-C behavior (#1672)
+  * Fix PF delete with no container (#1668)
+
+-------------------------------------------------------------------
 Mon Jul 18 05:44:25 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.26.0:
