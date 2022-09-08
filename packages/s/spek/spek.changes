@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Sep  6 08:57:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.8.4:
+  + New features since 0.8.2:
+    - Add 2 more palettes and change the default.
+    - Allow changing the DFT window size and function.
+    - Allow switching between audio streams and channels.
+    - Add translations for 14 additional languages.
+  + Enhancements:
+    - Remove dependency on intltool.
+    - Fix FFmpeg build warnings.
+    - Detect AR tool.
+    - Use Homebrew for macOS dependencies.
+    - Improve test coverage.
+  + Bugfixes:
+    - Remove association with .mod and MIDI files.
+    - Fix autoconf errors.
+    - Fix an AVX-related crash.
+- Drop patches fixed upstream:
+  + ffmpeg_2.9.patch
+  + fix-compilation-with-libav-8.patch
+- Changes in BuildRequires:
+  + Added: libtool and explicit gettext (since version 0.21 or
+    newer is needed).
+  + Dropped: intltool.
+- Workaround upstreams issue:
+  https://github.com/alexkay/spek/issues/149
+  export CXXFLAGS="$CXXFLAGS -std=gnu++11 -Wall -Wextra -I/usr/include/ffmpeg"
+- Limit ffmpeg dependencies to ffmpeg-4 and older variant.
+
+-------------------------------------------------------------------
 Thu Apr 16 18:45:46 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Complete specfile overhaul
