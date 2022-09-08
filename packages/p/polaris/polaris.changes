@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 07 07:02:05 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 7.0.2:
+  * fix polaris cves (#824)
+  * Fix namespace checking when validating additional schemas which are not namespaced (#822)
+  * Bump github.com/sirupsen/logrus from 1.8.1 to 1.9.0 (#815)
+  * Bump sigs.k8s.io/controller-runtime from 0.12.1 to 0.12.3 (#814)
+  * Bump k8s.io/client-go from 0.24.1 to 0.24.3 (#806)
+  * FWI-2509: Add sensitiveContainerEnvVar and sensitiveConfigMapContent checks (#817)
+  * FWI-2476: Add missingNetworkPolicy, automountServiceAccountToken, and linuxHardening checks (#816)
+  * `target: container` also populates `.Polaris.PodSpec|PodTemplate` + a new `.Polaris.Container` representing the currently checked container, `GetPodTemplate` serializes data to work around a DeepCopy bug with type int (#812)
+  * fix: properly remove emojis in pretty format with no color (#765)
+  * Bump github.com/stretchr/testify from 1.7.1 to 1.8.0 (#786)
+  * Bump github.com/spf13/cobra from 1.4.0 to 1.5.0 (#813)
+  * Bump k8s.io/api from 0.24.1 to 0.24.3 (#808)
+  * Suppress empty results when --only-show-failed-tests is passed (#811)
+  * Bump alpine from 3.16.0 to 3.16.1 (#810)
+  * Fix `resourceKindMap.addResource()` to not assume every Kind has an APIGroup (#805)
+  * Update docs to reflect `target: PodTemplate` RE: PR #801 (#804)
+  * Add `target PodTemplate` which exposes the full Pod (not only the spec) (#801)
+  * expose `Polaris.PodSpec` for PodSpec targeted checks (#793)
+
+-------------------------------------------------------------------
 Sat Jul 16 19:27:30 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 7.0.1:
