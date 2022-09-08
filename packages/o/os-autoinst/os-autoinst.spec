@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1662114056.d3ebb59
+Version:        4.6.1662465492.44da018
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -181,9 +181,7 @@ rm xt/00-tidy.t
 # Remove test relying on a git working copy
 rm xt/30-make.t
 # https://progress.opensuse.org/issues/114881
-%ifarch ppc64le
 rm t/27-consoles-vmware.t
-%endif
 
 %build
 %define __builder ninja
