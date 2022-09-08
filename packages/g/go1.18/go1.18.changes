@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Sep  6 19:24:28 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.18.6 (released 2022-09-06) includes security fixes to the
+  net/http package, as well as bug fixes to the compiler, the go
+  command, the pprof command, the runtime, and the crypto/tls,
+  encoding/xml, and net packages.
+  Refs boo#1193742 go1.18 release tracking
+  CVE-2022-27664
+  * go#53977 bsc#1203185 CVE-2022-27664 net/http: handle server errors after sending GOAWAY
+  * go#54733 cmd/go: git fetch errors dropped when producing pseudo-versions for commits
+  * go#54725 cmd/compile: compile failed with "Value live at entry"
+  * go#54674 runtime: morestack_noctxt missing SPWRITE, causes "traceback stuck" assert
+  * go#54664 runtime: segfault running ppc64/linux binaries with kernel 5.18
+  * go#54659 cmd/go: go test -race does not set implicit race build tag
+  * go#54642 crypto/tls: support ECDHE key exchanges when ec_point_formats is missing in ClientHello extension
+  * go#54636 cmd/go: data race in TestScript
+  * go#54603 cmd/compile: miscompilation of partially-overlapping array assignments
+  * go#54502 cmd/link: Trampoline insertion breaks DWARF Line Program Table output on Darwin/ARM64
+  * go#54464 cmd/pprof: graphviz node names are funny with generics
+  * go#54128 encoding/xml: crash on android/arm64 due to https://go.dev/cl/417062
+  * go#54074 net: WriteMsgUDPAddrPort should accept IPv4 destination addresses on IPv6 UDP sockets
+  * go#54056 misc/cgo: TestSignalForwardingExternal sometimes fails with wrong signal SIGINT
+  * go#53397 go/reflect: Incorrect behavior on arm64 when using MakeFunc / Call
+
+-------------------------------------------------------------------
 Mon Aug 22 20:44:19 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Define go_bootstrap_version go1.16 without suse_version checks
