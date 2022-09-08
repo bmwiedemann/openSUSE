@@ -1,7 +1,7 @@
 #
 # spec file for package mmtf-cpp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ BuildRequires:  cmake >= 3.5
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  msgpack-devel
+BuildRequires:  msgpack-cxx-devel
 BuildArch:      noarch
 
 %description
@@ -41,7 +41,7 @@ Macromolecular transmission format documentation, including README, license and 
 %package  devel
 Summary:        Development files of %{name}
 Group:          Development/Libraries/C and C++
-Requires:       msgpack-devel
+Requires:       msgpack-cxx-devel
 
 %description devel
 This package contains libraries and header files for developing

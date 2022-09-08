@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep  3 11:25:33 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- msgpack has split into c and cxx variants,
+  update BuildRequires accordingly.
+
+-------------------------------------------------------------------
 Wed May 26 10:18:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add msgpack dependency to devel package
