@@ -132,4 +132,20 @@ disable the corresponding tests.
 </comment>
     <requestid>999576</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>abc41b764e2ac21a24606ce46d52ca12</srcmd5>
+    <version>14.0.6</version>
+    <time>1662639698</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure we keep -DNDEBUG. At some point %{optflags} must have
+  lost it, perhaps because CMake usually adds it on top. So when
+  overriding CMAKE_{C,CXX}_FLAGS_RELWITHDEBINFO, we make sure to
+  take over the other flags. We drop LLVM_ENABLE_ASSERTIONS=OFF,
+  because that's the default anyway and hasn't helped here.
+- Add llvm-scev-fix-isImpliedViaMerge.patch: fixes a miscompilation
+  caused by mixing up values of the current and previous iteration.
+  (See gh#llvm/llvm-project#56242.)
+</comment>
+    <requestid>1001713</requestid>
+  </revision>
 </revisionlist>

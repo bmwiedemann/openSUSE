@@ -368,6 +368,8 @@ Patch24:        opt-viewer-Find-style-css-in-usr-share.patch
 Patch25:        check-no-llvm-exegesis.patch
 # PATCH-FIX-OPENSUSE lld-default-sha1.patch
 Patch26:        lld-default-sha1.patch
+# Fix for https://github.com/llvm/llvm-project/issues/56242.
+Patch27:        llvm-scev-fix-isImpliedViaMerge.patch
 # Fix lookup of targets in installed CMake files. (boo#1180748, https://reviews.llvm.org/D96670)
 Patch33:        CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch
 # Make link dependencies of clang-repl private (https://reviews.llvm.org/D122546).
@@ -801,6 +803,7 @@ This package contains the development files for Polly.
 %patch22 -p1
 %patch24 -p1
 %patch25 -p2
+%patch27 -p2
 %patch33 -p2
 
 pushd clang-%{_version}.src
@@ -938,7 +941,6 @@ avail_mem=$(awk '/MemAvailable/ { print $2 }' /proc/meminfo)
     -DLLVM_TOOL_CLANG_TOOLS_EXTRA_BUILD:BOOL=OFF \
     -DLLVM_INCLUDE_BENCHMARKS:BOOL=OFF \
     -DLLVM_INCLUDE_TESTS:BOOL=OFF \
-    -DLLVM_ENABLE_ASSERTIONS=OFF \
     -DLLVM_TARGETS_TO_BUILD=Native \
     -DCLANG_ENABLE_ARCMT:BOOL=OFF \
     -DCLANG_ENABLE_STATIC_ANALYZER:BOOL=OFF \
@@ -1010,14 +1012,13 @@ export LD_LIBRARY_PATH=%{sourcedir}/build/%{_lib}
 %endif
 %endif
 %ifarch %arm ppc s390 %{ix86}
-    -DCMAKE_C_FLAGS_RELWITHDEBINFO="-g1" \
-    -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-g1" \
+    -DCMAKE_C_FLAGS_RELWITHDEBINFO="-O2 -g1 -DNDEBUG" \
+    -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O2 -g1 -DNDEBUG" \
 %endif
     -DENABLE_LINKER_BUILD_ID=ON \
     -DLLVM_TABLEGEN="%{sourcedir}/stage1/bin/llvm-tblgen" \
     -DCLANG_TABLEGEN="%{sourcedir}/stage1/bin/clang-tblgen" \
     -DLLVM_ENABLE_RTTI:BOOL=ON \
-    -DLLVM_ENABLE_ASSERTIONS=OFF \
     -DLLVM_ENABLE_PIC=ON \
     -DLLVM_BINUTILS_INCDIR=%{_includedir} \
     -DLLVM_TARGETS_TO_BUILD=%{llvm_targets} \
