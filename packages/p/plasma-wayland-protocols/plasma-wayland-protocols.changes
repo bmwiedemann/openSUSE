@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  6 17:13:48 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.8.0:
+  * Fix some reuse warnings
+  * Increase org_kde_plasma_window_management version
+  * Introduce the kde_lockscreen_overlay_v1 protocol
+  * Add FreeBSD Qt6 CI support
+  * Make explicit that kde-output-management-v2 is onetime only
+  * Fix typos in plasma-virtual-desktop.xml
+  * kde-primary-output-v1: Fix DTD violation
+
+-------------------------------------------------------------------
 Sat May  7 14:10:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 1.7.0:
