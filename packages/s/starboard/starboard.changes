@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 07 12:21:46 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.15.8:
+  * release: prepare v0.15.8 (#1255)
+  * chore(deps): bump k8s.io/code-generator from 0.24.1 to 0.24.3 (#1233)
+  * chore(deps): bump k8s.io/client-go from 0.24.1 to 0.24.3 (#1231)
+  * chore(deps): bump github.com/open-policy-agent/opa from 0.40.0 to 0.43.0 (#1235)
+  * Updating license to correct location in ubi image (#1244)
+
+-------------------------------------------------------------------
+Wed Sep 07 12:19:41 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.15.7:
+  * fix: fix goreleaser to include LICENSE (#1242)
+  * release: prepare v0.15.7 (#1241)
+  * chore(deps): bump kube-bench from v0.6.6 to v0.6.9 (#1240)
+  * Adding existing starboard license in ubi image (#1238)
+  * docs(operator): add what next for trivy Q&A (#1213)
+  * docs: deprecation notice (#1211)
+
+-------------------------------------------------------------------
 Sat Jun 04 18:53:58 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.15.6:
