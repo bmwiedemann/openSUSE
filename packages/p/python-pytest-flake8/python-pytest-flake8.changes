@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep  8 04:38:54 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.1.1:
+  * Update classifiers to indicate older versions are no longer supported
+  * No longer use deprecated pytest constructs
+  * Bump requirements to more accurately indicate what is currently needed
+  * Drop Python 2 support and dependency on py; from @erikkemperman
+  * Drop support for Python 3.5, 3.6
+  * Add a `flake8-max-doc-length` option; from @rodrigomologni
+- Add patch support-flake8-5.patch:
+  * Support flake8 >= 5.0, adjust {Build,}Requires. 
+
+-------------------------------------------------------------------
 Mon Aug 16 14:37:49 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Update to 1.0.7:
