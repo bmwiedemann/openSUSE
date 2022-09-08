@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  7 11:01:29 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- Fix for kernel 6.0
+  * add perf-6.0-don-t-install-headers-with-x-permissions.patch
+  * add python3-setuptools to BuildRequires
+
+-------------------------------------------------------------------
 Wed Apr 20 13:51:45 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Enable debuginfod support.

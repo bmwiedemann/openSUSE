@@ -33,7 +33,9 @@ Summary:        Performance Monitoring Tools for Linux
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://perf.wiki.kernel.org/
+# remove once 6.0 reaches Tumbleweed (incl. the if below)
 Patch0:         perf-5.15-don-t-install-headers-with-x-permissions.patch
+Patch1:         perf-6.0-don-t-install-headers-with-x-permissions.patch
 BuildRequires:  OpenCSD-devel
 BuildRequires:  audit-devel
 %ifnarch %{arm}
@@ -56,6 +58,7 @@ BuildRequires:  llvm
 BuildRequires:  newt-devel
 BuildRequires:  openssl-devel
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 BuildRequires:  rubygem(asciidoctor)
@@ -101,7 +104,11 @@ sed -i 's@ignored "-Wstrict-prototypes"@&\n#pragma GCC diagnostic ignored "-Wdep
 # skip info-from-txt generation (it's the same as man anyway)
 sed -i.old 's@\(all: .*\)info@\1@' tools/perf/Documentation/Makefile
 
+%if %{version_pure} == 519
 %patch0 -p1
+%else
+%patch1 -p1
+%endif
 
 %build
 cd tools/perf
