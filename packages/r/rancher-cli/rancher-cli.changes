@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 07 12:17:47 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.6.7:
+  * Fix index out of bounds when installing hidden chart
+  * if no servers are configured, state such when running servers ls, switch, or delete
+  * Update dependencies and fix golangci-lint issue (#317)
+  * improve clusters create description
+  * fix the issue that RKE2 or K3S clusters are recognized properly in the output of the 'cluster list' command
+  * Implement drone-plugin-fossa
+- skipping non-existent release 2.6.6
+
+-------------------------------------------------------------------
 Fri May 13 19:42:00 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.6.5:
