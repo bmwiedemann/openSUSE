@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Wed Sep 07 06:58:58 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.3:
+  * Prepare for v0.12.3 release
+  * go.mod, vendor: update for cilium charts for v1.13.0-rc0
+  * Clustermesh secrets inconsistency with Helm
+  * ci: bump external workloads workflow timeouts
+  * build(deps): bump github.com/cloudflare/cfssl from 1.6.1 to 1.6.2
+  * Update stable release to v0.12.2
+
+-------------------------------------------------------------------
+Wed Sep 07 06:57:21 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.2:
+  * Prepare for v0.12.2 release
+  * gha: Skip deny policies for multi-cluster
+  * gha: Increase the timeout for tests
+  * connectivity: Add policy test for service account
+  * connectivity: Add policy test for matched expression
+  * connectivity: Add policy test for name ports
+  * connectivity: Add connectivity with deny policies
+  * deployment: Add named port for all test workload
+  * connectivity: Add service account for each deployment
+  * scenario: Add filtering source and dest labels
+  * Update comment for ICMP test
+  * manifest: Remove prefix k8s in policy labels
+  * build(deps): bump google.golang.org/grpc from 1.48.0 to 1.49.0
+  * build(deps): bump helm.sh/helm/v3 from 3.9.3 to 3.9.4
+  * Enable kube-proxy replacement if no kube-proxy is detected in a cluster
+  * build(deps): bump actions/setup-go from 3.2.1 to 3.3.0
+  * ci: Remove Slack notifications
+  * all: remove year from copyright notice
+  * build(deps): bump library/busybox from `9526219` to `5b1ae0b`
+  * dependabot: Monitor Dockerfile
+  * Push workflow run results to Loki
+  * Revert "Push workflow run results to Loki"
+  * Push workflow run results to Loki
+  * build(deps): bump 8398a7/action-slack from 3.13.0 to 3.13.2
+  * build(deps): bump azure/setup-helm from 1.1 to 3.3
+  * ci: bump Cilium version to v1.12.1
+  * defaults: update default Cilium version to v1.12.1
+  * go.mod, vendor: pull in latest cilium charts for v1.12.1, v1.11.8, v1.10.14
+  * go.mod, vendor: update cilium to v1.12.1
+  * sysdump: add tetragon bugtool output
+  * sysdump: rename submitBugtoolTasks
+  * build(deps): bump helm.sh/helm/v3 from 3.9.2 to 3.9.3
+  * Update stable release to v0.12.1
+  * sysdump: Trim ls output
+  * connectivity: Get rid of host reachable svc
+  * Update Go to 1.19
+  * ci: update golangci-lint to 1.48.0
+  * all: gofmt with Go 1.19
+  * connectivity: switch to net/netip package in ipCache.findPodID
+  * sysdump: replace use of deprecated io/ioutil package
+  * build(deps): bump nick-invision/retry from 2.8.0 to 2.8.1
+  * connectivity: Add --datapath for DP e2e conformance suite
+  * connectivity: Add feature check for nodes w/o cilium
+  * install: Add --nodes-without-cilium
+  * ci: bump Cilium version to v1.12.0
+  * install: use aksbyocni.enabled helm option for Cilium ≥ 1.12.0
+  * connectivity: Fix CNI chaning feature detection on v1.12+
+  * connectivity: Use agent-runtime-config.json for feature detection
+  * fix(install): exit before helm secret generation in --helm-auto-gen-values mode
+  * build(deps): bump docker/build-push-action from 3.1.0 to 3.1.1
+  * connectivity: Add ICMP policy test from client to client
+  * connectivity: trim whitespaces from `cilium version` output
+  * connectivity: Fall back on ConfigMap for CNI chaining
+  * workflows/kind: Enable HostPort support
+  * connectivity: Introduce pod-to-hostport scenario
+  * connectivity: Add AltDstIP flow requirement
+  * connectivity: Rename FlowParameters.NodePort to AltDstPort
+  * connectivity: Introduce conditional scenarios
+  * connectivity: Add hostPort to deployment
+  * connectivity: Derive HostPort feature
+  * connectivity/feature: Add Kube-Proxy Replacement features
+  * build(deps): bump nick-invision/retry from 2.7.0 to 2.8.0
+  * .github: update dependabot open PR limit for GH actions
+
+-------------------------------------------------------------------
+Wed Sep 07 06:53:21 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.1:
+  * Prepare for v0.12.1 release
+  * build(deps): bump aws-actions/configure-aws-credentials
+  * sysdump: Add kvstore data to dumps.
+  * connectivity: Add -t to prefix log msg with timestamp
+  * internal: add missing types when generating helm template command
+  * go.mod, vendor: update Hubble to v0.10.0
+  * connectivity: remove unused (*ConnectivityTest).FetchCiliumPodImageTag
+  * Update Go to 1.18.5
+  * connectivity: debug log detected features
+  * connectivity: add feature detection unit tests
+  * connectivity: Introduce feature requirements
+  * connectivity: Use features to detect flow aggregation
+  * connectivity: Add feature detection
+  * connectivity: Split out cilium pod initialization
+  * upgrade: also bump clustermesh-apiserver
+  * connectivity: Add node-local-dns match labels
+  * CODEOWNERS: update teams following removal of non-sig teams
+  * RELEASE.md: bump version in stable.txt after release
+  * [connectivity] Retry deleting namespace while waiting
+  * Update RELEASE.md
+  * connectivity: Detect version from cilium pods
+  * build(deps): bump helm.sh/helm/v3 from 3.9.1 to 3.9.2
+  * clustermesh: Validate cluster-id value as per requirement
+  * connectivity: Add --assume-cilium-version flag
+  * ci: explicitly wait for cilium status after enabling Hubble relay on GKE
+  * build(deps): bump docker/build-push-action from 3.0.0 to 3.1.0
+
+-------------------------------------------------------------------
 Tue Jul 19 16:09:04 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.12.0:
