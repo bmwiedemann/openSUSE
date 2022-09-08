@@ -127,4 +127,18 @@
 </comment>
     <requestid>972709</requestid>
   </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>f48db42e54023b9d343f62ff01abb0a6</srcmd5>
+    <version>11.0.1</version>
+    <time>1662639759</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure we keep -DNDEBUG. At some point %{optflags} must have
+  lost it, perhaps because CMake usually adds it on top. So when
+  overriding CMAKE_{C,CXX}_FLAGS_RELWITHDEBINFO, we make sure to
+  take over the other flags. We drop LLVM_ENABLE_ASSERTIONS=OFF,
+  because that's the default anyway and hasn't helped here.
+- Add llvm-glibc-2-36.patch in order to address boo#1202215.
+</comment>
+    <requestid>1001716</requestid>
+  </revision>
 </revisionlist>
