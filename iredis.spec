@@ -17,7 +17,7 @@
 
 
 Name:           iredis
-Version:        1.11.1
+Version:        1.12.1
 Release:        0
 Summary:        Terminal client for Redis with auto-completion and syntax highlighting
 License:        BSD-3-Clause
