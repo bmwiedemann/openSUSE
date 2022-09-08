@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep  6 16:56:04 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.5
+- Changes since 5.25.4:
+  * wallpapers/potd: convert ms to h in debug info
+  * wallpapers/potd: add downloading debug info to `PotdClient`
+  * wallpapers/potd: skip updating when another updating process is running
+  * wallpapers/potd: do not match colon in regex (kde#457823)
+  * applets/weather: Make desktop widget big enough to fit Configure button (kde#419591)
+
+-------------------------------------------------------------------
 Tue Aug  2 14:07:12 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.4
