@@ -1,4 +1,159 @@
 -------------------------------------------------------------------
+Fri Sep  2 08:19:55 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.0:
+  Features:
+  * Redesigned the top status area to allow for user-specified
+    messages and added a second line that displays an interactive
+    breadcrumb bar. The top status line now shows the clock and
+    the remaining area displays whatever messages are inserted
+    into the lnav_user_notifications table. The information that
+    was originally on top is now in a second line and organized
+    as breadcrumbs. Pressing ENTER will activate the breadcrumb bar
+    and the left/right cursor keys can be used to select a particular
+    crumb while the up/down keys can select a value to switch to.
+    While a crumb is selected, you can also type in some text to do
+    a fuzzy search on the possibilities or, if the crumb represents
+    an array of values, enter the index to jump to.
+  * The pretty-print view will now show breadcrumbs that indicate the
+    location of the top line in the view with the prettified structure.
+  * Markdown files (those with a .md extension) are now rendered in the
+    TEXT view. The breadcrumb bar at the top will also be updated
+    depending on the section of the document that you are in and you
+    can use it to jump to different parts of the doc.
+  * The ":goto" command will now accept anchor links (i.e. #section-id)
+    as an argument when the text file being viewed has sections. You
+    can also specify an anchor when opening a file by appending
+    "#". For example, "README.md#screenshot".
+  * Log message comments are now treated as markdown and rendered
+    accordingly in the overlay. Multi-line comments are now supported
+    as well.
+  * Metadata embedded in files can now be accessed by the
+    "lnav_file_metadata" table. Currently, only the front-matter in
+    Markdown files is supported.
+  * Added an integration with regex101.com to make it easier to edit
+    log message regular expressions. Using the new "management CLI"
+    (activated by the -m option), a log format can be created from
+    a regular expression entry on regex101.com and existing patterns
+    can be edited.
+  * In the spectrogram view, the selected value range is now shown by
+    an overlay that includes a summary of the range and the number of
+    values that fall in that range. There is also a detail panel at
+    the bottom that shows the log-messages/DB-rows whose values are in
+    that range. You can then press TAB to focus on the detail view
+    and scroll around.
+  * Add initial support for pcap(3) files using tshark(1).
+  * SQL statement execution can now be canceled by pressing CTRL+]
+    (same as canceling out of a prompt).
+  * To make it possible to automate some operations, there is now an
+    "lnav_events" table that is updated when internal events occur
+    within lnav (e.g. opening a file, format is detected). You
+    can then add SQLite TRIGGERs to this table that can perform a
+    task by updating other tables.
+  * Tags can automatically be added to messages by defining a pattern
+    in a log format. Under a format definition, add the tag name
+    into the "tags" object in a format definition. The "pattern"
+    property specifies the regular expression to match against a line
+    in a file that matches the format. If a match is found, the tag
+    will be applied to the log message. To restrict matches to
+    certain files, you can add a "paths" array whose object elements
+    contain a "glob" property that will be matched against file names.
+  * Log messages can now be detected automatically via "watch
+    expressions". These are SQL expressions that are executed for
+    each log message. If the expressions evaluates to true, an
+    event is published to the "lnav_events" table that includes the
+    message contents.
+  * Added the "regexp_capture_into_json()" table-valued-function that
+    is similar to "regexp_capture()", but returns a single row with a
+    JSON value for each match instead of a row for each capture.
+  * Added a "top_meta" column to the lnav_views table that contains
+    metadata related to the top line in the view.
+  * Added a "log_opid" hidden column to all log tables that contains
+    the "operation ID" as specified in the log format.
+  * Moved the "log_format" column from the all_logs table to a hidden
+    column on all tables.
+  * Add format for UniFi gateway.
+  * Added a "glob" property to search tables defined in log formats
+    to constrain searches to log messages from files that have a
+    matching log_path value.
+  * Initial indexing of large files should be faster. Decompression
+    and searching for line-endings are now pipelined, so they happen
+    in a thread that is separate from the regular expression matcher.
+  * Writing to the clipboard now falls back to OSC 52 escape sequence
+    if none of the clipboard commands could be detected. Your
+    terminal software will need to support the sequence and you may
+    need to explicitly enable it in the terminal.
+  * Added the ":export-session-to " command that writes the
+    current session state to a file as a list of commands/SQL
+    statements. This script file can be executed to restore the
+    majority of the current state.
+  * Added the "echoln()" SQL function that behaves similarly to the
+    ":echo" command, writing its first argument to the current
+    output.
+  * Added "encode()" and "decode()" SQL functions for transcoding
+    blobs or text values using one of the following algorithms:
+    base64, hex, or uri.
+  * In regular expressions, capture group names are now semantically
+    highlighted (e.g. in the capture, (?\w+), "name" would
+    have a unique color). Also, operations or previews that use
+    that regular expression will highlight the matched data with
+    the same color.
+  * Added an lnav_views_echo table that is a real SQLite table that
+    you can create TRIGGERs on in order to perform actions when
+    scrolling in a view.
+  * Added a "yaml_to_json()" SQL function that converts a YAML
+    document to the equivalent JSON.
+  Breaking Changes:
+  * Formats definitions are now checked to ensure that values have a
+    corresponding capture in at least one pattern.
+  * Added a 'language' column to the lnav_view_filters table that
+    specifies the language of the 'pattern' column, either 'regex'
+    or 'sql'.
+  * Timestamps that do not have a day or month are rewritten to a
+    full timestamp like YYYY-MM-DD HH:MM:SS.
+  * Removed the summary overlay at the bottom of the log view that
+    displayed things like "Error rate" and the time span. It doesn't
+    seem like anyone used it.
+  * Removed the "log_msg_instance" column from the logline and search
+    tables since it causes problems with performance.
+  * Search tables now search for multiple matches within a message
+    instead of stopping at the first hit. Each additional match is
+    returned as a separate row. A "match_index" column has been
+    added to capture the index of the match within the message.
+    The table regex is also compiled with the "multiline" flag enabled
+    so the meaning of the '^' and '$' metacharacters are changed
+    to match the start/end of a line instead of the start/end of
+    the entire message string.
+  * Search tables defined in formats are now constrained to only
+    match log messages that are in that log format instead of all
+    log messages. As a benefit, the search table now includes
+    the columns that are defined as part of the format.
+  * The lnav_view_filters table will treats the tuple of
+    (view_name, type, language, pattern) as a UNIQUE index and
+    will raise a conflict error on an INSERT. Use "REPLACE INTO"
+    instead of "INSERT INTO" to ignore conflict error.
+  * The types of SQL values stored as local variables in scripts
+    is now preserved when used as bound variables at a later point
+    in the script.
+  Fixes:
+  * Toggling enabled/disabled filters when there is a SQL expression
+    no longer causes a crash.
+  * Fix a crash related to long lines that are word wrapped.
+  * Multiple SQL statements in a SQL block of a script are now
+    executed instead of just the first one.
+  * In cases where there were many different colors on screen, some
+    text would be colored incorrectly.
+  * The pretty-print view now handles ANSI escape sequences.
+  * The "overstrike" convention for doing bold and underline is now
+    supported. (Overstrike is a character followed by a backspace
+    and then the same character for bold or an underscore for
+    underline.)
+  * The ":eval" command now works with searching (using the '/'
+    prefix).
+
+- Remove gcc12-includes.patch fix-for-upstream-sources.patch
+
+-------------------------------------------------------------------
 Tue Jun  7 20:42:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add gcc12-includes.patch to fix build with gcc 12 
