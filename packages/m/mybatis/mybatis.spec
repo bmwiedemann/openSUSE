@@ -38,6 +38,7 @@ BuildRequires:  mvn(org.javassist:javassist)
 BuildRequires:  mvn(org.mybatis:mybatis-parent:pom:)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.slf4j:slf4j-log4j12)
+#!BuildRequires: slf4j-reload4j
 Provides:       apache-mybatis = %{version}
 Obsoletes:      apache-mybatis < %{version}
 BuildArch:      noarch

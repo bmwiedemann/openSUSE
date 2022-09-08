@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  7 10:59:38 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Help the build to chose slf4j-reload4j if it exists
+
+-------------------------------------------------------------------
 Sun Jun 19 14:18:33 UTC 2022 - Michael Calmer <mc@suse.com>
 
 - Obsolete apache-mybatis package (jsc#SLE-23217)
