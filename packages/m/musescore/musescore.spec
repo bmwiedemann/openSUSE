@@ -1,7 +1,7 @@
 #
 # spec file for package musescore
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,13 @@ Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://musescore.org
 Source0:        https://github.com/musescore/MuseScore/archive/v%{version}/MuseScore-%{version}.tar.gz
 Source1:        %{rname}.desktop
+# MuseScore expect to be able to download the latest version of its soundfonts
+# They are downloaded from the link conteinde in CMakeLists.text
+# They are newer versions than the one included in the MuseScore tarball itself
+Source2:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General_Changelog.md
+Source3:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General_License.md
+Source4:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General_Readme.md
+Source5:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General.sf3
 # PATCH-FIX-OPENSUSE: openSUSE has qmake-qt5 qmake was reserved for qt4, which is no longer present
 Patch0:         use-qtmake-qt5.patch
 # PATCH-FIX-OPENSUSE: don't install qtwebengine files, they are not needed
@@ -112,6 +119,7 @@ Additional fonts for use by the MuseScore music notation program.
 
 %prep
 %autosetup -p1 -n MuseScore-%{version}
+cp %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} share/sound/
 
 # fix EOL encoding
 sed 's/\r$//' fonts/bravura/OFL-FAQ.txt > tmpfile
@@ -138,6 +146,8 @@ mv -f tmpfile thirdparty/portmidi/README.txt
        -DUSE_SYSTEM_FREETYPE="ON" \
 %if %qtwebengine
        -DBUILD_WEBENGINE="ON" \
+%else
+       -DBUILD_WEBENGINE="OFF" \
 %endif
        -DBUILD_TELEMETRY_MODULE=OFF \
        -DMUSESCORE_REVISION=%{revision}

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug 27 20:06:56 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Add soundfont and related files that cmake tries to
+  download during build (MuseScore_General_Changelog.md,
+  MuseScore_General_License.md, MuseScore_General_Readme.md,
+  MuseScore_General.sf3) which contain newer versions of the
+  MuseScore soundfont
+
+-------------------------------------------------------------------
+Tue Apr 27 09:13:28 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Explicit cmake flag -DBUILD_WEBENGINE="OFF" is needed to build
+  without qtwebengine
+
+-------------------------------------------------------------------
 Sun Apr 25 12:38:29 UTC 2021 - Cor Blom <cornelis@solcon.nl>
 
 - Do not build with qtwebengine on ppc64 and ppc64le
