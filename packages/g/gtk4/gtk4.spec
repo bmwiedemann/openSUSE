@@ -22,14 +22,14 @@
 %define _name gtk
 
 Name:           gtk4
-Version:        4.7.2
+Version:        4.8.0
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.gtk.org/
 
-Source:         https://download.gnome.org/sources/gtk/4.7/%{_name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gtk/4.8/%{_name}-%{version}.tar.xz
 Source2:        settings.ini
 Source3:        macros.gtk4
 Source99:       gtk4-rpmlintrc
@@ -86,7 +86,6 @@ BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(pango) >= 1.49.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.14.0
 BuildRequires:  pkgconfig(pangoft2)
-BuildRequires:  pkgconfig(rest-0.7)
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
 BuildRequires:  pkgconfig(wayland-client) >= 1.14.91
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.9.91

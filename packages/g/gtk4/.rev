@@ -569,4 +569,12 @@
 - Add pkgconfig(harfbuzz) BuildRequires: new dependency. (forwarded request 997588 from iznogood)</comment>
     <requestid>997734</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>876258a927df54be5ac8b1f01f3bbd6b</srcmd5>
+    <version>4.8.0</version>
+    <time>1662639695</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001679</requestid>
+  </revision>
 </revisionlist>
