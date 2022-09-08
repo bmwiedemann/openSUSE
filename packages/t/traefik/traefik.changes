@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Sep 07 10:11:41 UTC 2022 - alexandre.vicenzi@suse.com
+
+- Update to version 2.8.4:
+  * Enhancements
+    * [consul,consulcatalog] Support multiple namespaces for Consul and ConsulCatalog providers
+    * [logs] Add destination address to debug log
+    * [middleware,provider,tls] Deprecate caOptional option in client TLS configuration
+    * [middleware] Support URL replacement in errors middleware
+    * [middleware] Allow config of additional CircuitBreaker params
+    * [provider] Implement Traefik provider for Nomad orchestrator
+    * [server] Allow HTTP/2 max concurrent stream configuration
+    * [tls,k8s/crd] Support certificates configuration in TLSStore CRD
+    * [webui,pilot,hub] Add Traefik Hub button and deprecate Pilot
+    * [webui,plugins] Reach the catalog of plugins from the Traefik dashboard
+  * Bug fixes
+    * [docker,docker/swarm] Fix Docker provider mem leak on operation retries
+    * [middleware] Fix retry middleware on panic
+    * [plugins] Allow Traefik starting even if plugin service is unavailable
+    * [marathon] Add missing context in backoff for Marathon
+    * [k8s/ingress,k8s] Place namespace before name in router key for Ingress
+    * [logs,middleware,tracing] Remove request dump from IPWhitelist debug log and tracing message
+    * [metrics] Control allocation and copy of labelNamesValues type
+    * [metrics] Fix service up gauge for Prometheus metrics
+    * [yaml] Add missing inline tag for YAML serialization
+    * [middleware,metrics] Improve performances when Prometheus metrics are enabled
+    * [middleware] Support forwarded websocket protocol in RedirectScheme
+    * [nomad] Use configured token in the Nomad client
+    * [metrics] Ensure Datadog client is cleanly stopped
+    * [healthcheck,service] Do not make multiple requests to the same URL for balancer healthcheck
+    * [healthcheck,service] Add log when missing path in health check
+    * [k8s/gatewayapi] Allow multiple listeners on same port in Gateway API provider
+    * [middleware] RedirectScheme redirects based on X-Forwarded-Proto header
+    * [rules] Fix HostRegexp and Query muxers
+    * [logs] Fix invalid placeholder in log message
+
+-------------------------------------------------------------------
 Tue Jun 07 08:27:42 UTC 2022 - alexandre.vicenzi@suse.com
 
 - Update to version 2.7.0:
