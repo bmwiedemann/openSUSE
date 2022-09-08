@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Sep 07 11:30:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.18.2:
+  * Fix Dockerfile to align with new GoReleaser Path format (#933)
+  * Release Sealed Secrets 0.18.2 (#927)
+  * Remove non-inclusive references (#930)
+  * Include gotestsum dependency in the Release process (#931)
+  * Upgrade VIB action to 0.4.0 (#926)
+  * Rebase of Refactor flag handling (#920)
+  * Add josvazg to the maintainer list (#922)
+  * Add kubectl command to alter deployment (#919)
+  * Use inclusive terminology (#917)
+  * instruction about kubeseal installation on Linux distribution like ubuntu (#913)
+  * Update README.md - changed the example secret (#910)
+  * Allow skipping ClusterRole creation (#906)
+  * Upgrade code-generator tool and update generated code (#905)
+  * Remove clientconfig and related global variables (#901)
+  * Rename package folders to sealedsecrets (#902)
+  * Qualify RSA replacement recommendation (#899)
+  * Update CI to support Go 1.19 (#904)
+  * Use gotestsum for better test reporting. (#900)
+  * Replace ioutil with io or os (#895)
+  * Update CODEOWNERS to add myself (#903)
+  * Fix some minor issues in Readme (#897)
+  * fix honorLabels (#889)
+  * Fix rateLimit values (#893)
+  * Include additionalNamespace option in our chart (#892)
+  * Release chart v2.4.0 (#886)
+  * feat(kubernetes/chart): explicitly mount service-account-token in deployment (#885)
+  * feat: override rate limit for chart (#876)
+
+-------------------------------------------------------------------
 Sat Jul 16 19:16:04 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.18.1:
