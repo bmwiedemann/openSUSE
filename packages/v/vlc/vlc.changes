@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  7 12:10:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Make vlc-vdpau supplement vlc, not vlc-noX: vdpau itself is based
+  on top of the graphical stack.
+- Move video_output/libegl_wl_plugin.so from vlc-noX to vlc: links
+  GUI stack.
+
+-------------------------------------------------------------------
 Mon Aug  8 12:44:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Also limit lua interpreter to < 5.4 (boo#1200944).

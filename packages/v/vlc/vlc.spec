@@ -366,7 +366,7 @@ Group:          Productivity/Multimedia/Video/Players
 Requires:       %{name}-noX = %{version}
 # We need the noX package first, as it contains vlc-cache-gen
 Requires(post): %{name}-noX
-Supplements:    %{name}-noX
+Supplements:    %{name}
 
 %description vdpau
 This package enhances the functionality of the VLC media player by
@@ -668,6 +668,7 @@ fi
 %{_libdir}/vlc/plugins/video_output/libcaca_plugin.so
 %{_libdir}/vlc/plugins/video_output/libegl_x11_plugin.so
 %if 0%{?suse_version} >= 1500 && 0%{?is_opensuse}
+%{_libdir}/vlc/plugins/video_output/libegl_wl_plugin.so
 %{_libdir}/vlc/plugins/video_output/libglconv_vaapi_wl_plugin.so
 %endif
 %if %{with opengles}
@@ -1146,7 +1147,6 @@ fi
 %{_libdir}/vlc/plugins/video_filter/libvhs_plugin.so
 %{_libdir}/vlc/plugins/video_filter/libwave_plugin.so
 %if 0%{?suse_version} >= 1500 && 0%{?is_opensuse}
-%{_libdir}/vlc/plugins/video_output/libegl_wl_plugin.so
 %{_libdir}/vlc/plugins/video_output/libwl_shell_plugin.so
 %{_libdir}/vlc/plugins/video_output/libwl_shm_plugin.so
 %{_libdir}/vlc/plugins/video_output/libxdg_shell_plugin.so
