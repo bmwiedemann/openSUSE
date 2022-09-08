@@ -1,4 +1,171 @@
 -------------------------------------------------------------------
+Wed Sep 07 11:55:39 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.9.1:
+  * buildx: prevent duplicate "failed to find driver" message
+  * docs: update buildx inspect reference with buildkit version
+  * inspect: add buildkit version information to command output
+  * bake: test compose file validation
+  * bake: test for unknown extensions
+  * bake(compose): fix unskipped services without build context
+  * docs: add experimental options to build command reference
+  * build: ensure consistent help messages for experimental cli help
+
+-------------------------------------------------------------------
+Wed Sep 07 11:54:28 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.9.0:
+  * vendor: update buildkit to 55ba9d14
+  * create: improve interface when attempting to create docker driver
+  * commands: use buildx env for experimental opt-in
+  * build: update outline fallback image
+  * bake: load .env file from working dir for compose files
+  * test: misplaced expected value in assert
+  * enable other exporters if docker driver uses containerd
+  * add formatting support to print function
+  * build: add fallback to outline requests if not supported by frontend
+  * build: add experimental support for print flag
+  * detect moby worker supports multiplatform feature through containerd snapshotter
+  * build: fix issues with leaving invoke containers running
+  * docs: add correct definition of prune --all flag
+  * invoke: add messages
+  * prune: cleanup variable names for clarity
+  * buildx: warn on editing nodes
+  * bake: contexts support with x-bake
+  * vendor: v20.10.3-0.20220803220330-418ca3b4d46f (v22.06.0-dev)
+  * ci: enhanced build workflow
+  * docs: fix dead link to color output controls guide
+  * ci: upstream docs conformance validation
+  * prune: fix filter until option
+  * update github.com/compose-spec/compose-go to v1.4.0
+  * buildx: forbid mismatched drivers
+  * kubernetes: error about unused endpoint argument
+  * add jedevc to maintainers
+  * ci: open pr on docs repo only on release
+  * kubernetes: enable azure auth
+  * update github.com/compose-spec/compose-go to v1.3.0
+  * chore: fix readme
+  * bake(compose): allow dot in target name
+  * docs: add minimal docker driver docs
+  * check context builder endpoint
+  * imagetools: support cross-repo mounting
+  * imagetools: give imagetools create a progress bar
+  * imagetools: copy manifests between repositories
+  * imagetools: refactor combining repository logic
+  * docs: fix link to docs website
+  * docs: fix link
+  * docs: add further reading section for drivers
+  * docs: add basic docker-container driver guide
+  * docs: create dedicated drivers section
+  * docs(bake): set experimental note
+  * docs(bake): fix target fields and show type
+  * buildx: rollback configuration if create fails
+  * docs: update cli-docs-tool to v0.5.0
+  * docs: remove frontmatter section
+  * docs(guide): color output controls
+  * docs: replace links with ones from docs.docker.com
+  * ci: release workflow to open a PR on docs repo with latest changes
+  * vendor: update docker/cli to f1615fa
+  * Update buildkit w/ customizable output colors, etc.
+  * Update xx to 1.1.2
+  * docs(guides): fix links
+  * add support for oci-layout build-context
+  * bake: add timestamp function
+  * docs: add new kubernetes build driver docs
+  * fix: correct determnistic word
+  * buildx: log errors in initializing builders
+  * docs: fixup remote builder typos
+  * bake: add tests for missing attributes in userfuncs
+  * bake: forbid empty result and params in userfuncs
+  * kubernetes: add error when no pods available
+  * vendor: bump buildkit to master
+  * bake: dedup compose main and extension fields values
+  * bake: merge cache-from field from compose and x-bake
+  * bake: support compose build cache_to
+  * bake: fix compose consistency check
+  * chore: remove yamllint
+  * Add `--invoke` option to launch a container from the build result
+  * bake: better handling of compose extension interface
+  * bake: support compose build tags
+  * bake: support compose secrets env
+  * ci: add concurrency check
+  * docs: rework bake compose file definition
+  * update github.com/compose-spec/compose-go to v1.2.7
+  * docs: rework bake "Configuring builds" page
+  * docs: bake specification intro
+  * docs: guide page to configure bake builds
+  * docs: changes to bake file definition guide
+  * docs: bake guides and refactor reference
+  * build: enhance warning message when no output specified
+  * build(deps): bump crazy-max/ghaction-github-runtime from 1.0.0 to 2
+  * docs: add connhelpers info to remote-builder guide
+  * remote: add additional connhelpers to buildx
+  * vendor: update moby/buildkit
+  * ls: move builder/node status error msg below table
+  * imagetools: handle manifest with nil platform
+  * Update golint to revive
+  * cli: uppercase level to match logrus one
+  * rm: display name of removed builder
+  * rm: disallow removing context builders
+  * create: warn if instance name already exists as context builder
+  * docs: fix typo in docker-container remote driver instructions
+  * build: allow external Dockerfile on remote context
+  * ls: dedup instances from store and context
+  * Clarify inspect documentation
+  * create: load default buildkit config if none specified
+  * ci: pin external/untrusted github actions
+  * ci: bump official actions to latest major
+  * ci: remove godev workflow
+  * ci: bump docker actions to latest major
+  * build(deps): bump codecov/codecov-action from 2 to 3
+  * Add remote driver guide
+  * docs: update ls output example
+  * vendor: vendor with -compat=1.17
+  * ls: adds fallback if buildkit version info unimplemented
+  * remote: use --bootstrap to wait for remote to become active
+  * ls: display buildkit version of the nodes
+  * vendor: update buildkit to c78f696
+  * chore: dependabot to keep gha up to date
+  * dockerfile: use gobase for test stage
+  * ci: enable cache
+  * ci: add check remote buildkitd step in e2e tests
+  * release: fix checksum file
+  * docs: fix guides for docs.docker.com
+  * Add remote driver documentation
+  * root: ignore SSH CloseRead warning
+  * Complete remote driver
+  * feat: env driver
+  * ci: enhance e2e workflow
+  * hclparser: strip out blocks for json files
+  * hack: update linters
+  * Dockerfile: update to go 1.18
+  * cli: fix standalone command behavior
+  * Fix tolerations not parsing its options correctly, add tests
+  * bake: support compose build secrets
+  * update github.com/compose-spec/compose-go to v1.2.4
+  * imagetools: respect --builder flag
+  * inspect: fix printing of driver options
+  * Only set default rootless image if it is not already customized
+  * Dockerfile: update to tonistiigi/xx:1.1.0
+  * Dockerfile: update DOCKERD_VERSION to v20.10.14
+  * kubernetes: replace deprecated seccomp annotations with securityContext
+  * bake: merge vars from multiple JSON files
+  * bake: merge targets from multiple JSON files
+  * Add support for defining kubernetes tolerations
+  * vendor: update buildkit to 3e38a2d
+  * compose: add test for port mapping
+  * update github.com/compose-spec/compose-go to v1.2.1
+  * bake: fix skipped group when already visited by another one
+  * vendor: github.com/docker/distribution v2.8.1
+  * feat: printing driver options
+  * vendor: update fsutil to 9ed61262
+  * dockerfile: update frontend to 1.4
+  * chore: use no-cache-filter for outdated stage
+  * imagetools inspect: use buildinfo helper
+  * golangci-lint: prevent io/ioutil from being used
+  * Remove uses of deprecated io/ioutil
+
+-------------------------------------------------------------------
 Mon Apr 04 06:57:18 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.8.2:

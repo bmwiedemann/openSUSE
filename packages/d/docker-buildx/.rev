@@ -7,4 +7,12 @@
     <comment>new package docker-buildx: Docker CLI plugin for extended build capabilities with BuildKit</comment>
     <requestid>966751</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8ef94a2ba7849b2d2a4b54ea54cd9bbf</srcmd5>
+    <version>0.9.1</version>
+    <time>1662639782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001749</requestid>
+  </revision>
 </revisionlist>
