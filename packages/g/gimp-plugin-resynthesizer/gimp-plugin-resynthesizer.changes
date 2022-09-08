@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  8 06:22:53 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.3~git.20220422:
+  * Fix Filter>Render>Texture improperly yields a transparent image
+    for an input image with alpha channel.
+
+-------------------------------------------------------------------
 Wed Nov 10 06:40:10 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.0.3.20210530:

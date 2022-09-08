@@ -1,7 +1,7 @@
 #
 # spec file for package gimp-plugin-resynthesizer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gimp-plugin-resynthesizer
-Version:        2.0.3.20210530
+Version:        2.0.3~git.20220422
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Suite of gimp plugins for texture synthesis
 URL:            https://github.com/bootchk/resynthesizer
 Group:          Productivity/Graphics/Bitmap Editors
-Source:         %{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
@@ -59,7 +59,8 @@ rm -rf %{buildroot}
 
 %files -f resynthesizer.lang
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README
+%license COPYING
 %{_libdir}/gimp/2.0/plug-ins/*
 %{_datadir}/resynthesizer/
 
