@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Wed Sep  7 14:40:48 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.6.0
+  - desktop#3461 Fix crash in cldapi.dll
+  - desktop#4526 Updating command-rebase.yml workflow from template
+  - desktop#4577 Reply button size should be same as the input field, smaller + text color
+  - desktop#4616 Fix crashing when selecting user status and predefined statuses not appearing
+  - desktop#4624 Make user status dialog look in line with the rest of the desktop client tray and Nextcloud
+  - desktop#4628 Add a placeholder message for the recents tab of the emoji picker
+  - desktop#4631 Add SVG icon styled for macOS Big Sur
+  - desktop#4643 Ensure the dispatch source only gets deallocated after the dispatch_source_cancel is done,
+    avoiding crashing of the Finder Sync Extension on macOS
+  - desktop#4650 Properly adapt the UserStatusSelectorModel to QML, eliminate hacks, make code more declarative
+  - desktop#4655 Fix the system tray menu not being correctly replaced in setupContextMenu on GNOME
+  - desktop#4663 Make the share dialog resizeable
+  - desktop#4667 Make client language gender-neutral and more clear
+  - desktop#4671 Use an en-dash for the userstatus panel
+  - desktop#4672 Close call notifications when the call has been joined by the user, or the call has ended
+  - desktop#4678 Correct spelling
+  - desktop#4679 Print sync direction in SyncFileStatusTracker::slotAboutToPropagate
+  - desktop#4682 Windows CI. Use specific Craft revision.
+  - desktop#4683 Add 'db/local/remote' reference to log string.
+  - desktop#4685 Work around issues with window positioning on Linux DEs,
+    hardcode tray window to screen center when new account added
+  - desktop#4686 Add a custom back button to the account wizard's advanced setup page
+  - desktop#4687 Clean up systray methods, make more QML-friendly
+  - desktop#4688 Refactor tray window opening code for clarity and efficiency
+  - desktop#4693 Increase the call state checking interval to not overload the server
+  - desktop#4700 Fix bad quote in CMakeLists PNG generation message
+  - desktop#4703 Only set _FORTIFY_SOURCE when a higher level of this flag has not been set
+  - desktop#4704 Switch to using the main client CI image based on ubuntu 22.04
+  - desktop#4706 Limit concurrent notifications
+  - desktop#4707 Use macOS-specific application icon
+  - desktop#4710 QML-ify the UserModel, use properties rather than setter methods
+  - desktop#4712 Take ints by value rather than reference in UserModel methods
+  - desktop#4713 Feature/vfs windows thumbnails
+  - desktop#4717 Respect skipAutoUpdateCheck in nextcloud.cfg with Sparkle on macOS
+  - desktop#4718 Restyle unified search skeleton items animation and simplify their code
+  - desktop#4719 Stop styling QML unified search items hierarchically, use global Style constants
+  - desktop#4720 Use preprocessor directive rather than normal 'if' for UNNotification types
+  - desktop#4723 Make apps menu scrollable when content taller than available vertical space,
+    preventing borking of layout
+  - desktop#4734 Ensure that throttled notifications still appear in tray activity model
+  - desktop#4735 Stop clearing notifications when new notifications are received
+  - desktop#4738 Fix ActivityItemContent QML paintedWidth errors
+  - desktop#4748 Clicking on an activity list item for a file opens the local file if available
+  - desktop#4753 Replace unified search text field busy indicator with custom indicator
+  - desktop#4755 Update macOS Info.plist
+  - desktop#4756 Ensure debug archive contents are readable by any user
+  - desktop#4758 Remove Ubuntu Impish, add Kinetic
+  - desktop#4760 Make UserStatusSelector a dismissible page pushed onto the tray window
+  - desktop#4771 Feature/handle edit locally
+  - desktop#4773 Add Debian Bullseye build
+  - desktop#4774 Double-clicking tray icon opens currently-selected user's local folder (if available)
+  - desktop#4790 Clean up TalkReplyTextField, remove unnecessary parent Item
+  - desktop#4797 Refactor user line
+  - desktop#4799 Do not reboot PC when running an MSI via autoupdate.
+  - desktop#4801 Always run MSI with full UI.
+  - desktop#4802 Eliminate padding around the menu separator in the account menu
+  - desktop#4804 Feature/enable more warnings also for gcc
+  - desktop#4810 Move CFAPI shell extensions variables to root CMakeLists.
+  - desktop#4815 Move URI scheme variable from Nextcloud.cmake to root CMakeListsts.
+  - desktop#4816 Ensure SyncEngine use an initialized instance of SyncOptions
+  - desktop#4818 Fix QML warnings
+  - desktop#4820 I18n: Spelling unification
+  - desktop#4821 Fix crash: 'Failed to create OpenGL context'.
+  - desktop#4822 Fix bugs with setting 'Away' user status
+  - desktop#4827 Fix greek translation for application name in menu
+  - desktop#4829 Align, resize, and layout everything uniformly in the unified search view
+  - desktop#4830 Remove libglib-2.0.so.0 and libgobject-2.0.so.0 from Appimage.
+  - desktop#4831 Fix unified search item placeholder image source
+  - desktop#4833 Use same tooltip component everywhere, fix tooltip clipping bugs
+  - desktop#4834 Bump version and year.
+  - desktop#4839 Fix account switching and hover issues with UserLine component
+  - desktop#4840 Remove Ubuntu Focal
+  - desktop#4842 Add a ScrollView to the predefined statuses area of the UserStatusSelector
+  - desktop#4843 Prevent the 'Cancel' button of the user status selector getting squashed
+  - desktop#4844 Ensure that clear status message combo box is at least implicit width
+  - desktop#4845 Fix alignment of predefined status contents regardless of emoji fonts
+  - desktop#4850 Prevent crashing when trying to create error-ing QML component in systray.cpp, output error to log
+  - desktop#4852 Add CHANGELOG.md.
+  - desktop#4853 Ensure file activity dialog is centered on screen and appears at top of window stack
+  - desktop#4866 Build script for AppImage should not assume Nextcloud is the name
+  - desktop#4867 Fix File Activities dialog not showing up.
+  - desktop#4869 Reads and store fileId and remote permissions during bulk upload
+  - desktop#4882 Do not build qt keychain already included in the CI images
+  - desktop#4884 Bugfix/web engine on win11
+  - desktop#4885 Update CHANGELOG for the 3.6.0 release.
+  - desktop#4900 Fix script that upload AppImage to go in correct path
+
+-------------------------------------------------------------------
 Tue Aug  2 17:22:48 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.5.4
