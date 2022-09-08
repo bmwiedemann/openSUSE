@@ -105,4 +105,16 @@
 - We really don't need mock BR at all.</comment>
     <requestid>970481</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ee22c0489488d61371bc11814df4ab9d</srcmd5>
+    <version>2.3.2</version>
+    <time>1662639826</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.2:
+  * require python 3.7+ (#201)
+- from version 2.3.1:
+  * fix changelog header to consistent size (#194)
+- Update BuildRequires and Requires from setup.py (forwarded request 1001882 from glaubitz)</comment>
+    <requestid>1001904</requestid>
+  </revision>
 </revisionlist>

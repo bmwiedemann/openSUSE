@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  8 08:37:03 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.3.2:
+  * require python 3.7+ (#201)
+- from version 2.3.1:
+  * fix changelog header to consistent size (#194)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Sat Apr 16 08:53:50 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.3.0:
