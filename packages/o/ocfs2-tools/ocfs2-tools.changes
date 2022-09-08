@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  7 10:26:00 UTC 2022 - heming.zhao@suse.com
+
+- enable defragfs.ocfs2 and honor upstream patch dump_fs_locks support v4 (bsc#1203166)
+  + modify ocfs2_tools.spec to enable defragfs
+  + bug-1203166-dump_fs_locks-support-v4.patch
+
+-------------------------------------------------------------------
 Tue Mar 22 14:40:00 UTC 2022 - heming.zhao@suse.com
 
 - fsck.ocfs2: do not try locking after replaying journals if -F is given (bsc#1196705)

@@ -55,10 +55,12 @@ Patch225:       0004-mkfs.ocfs2-Abort-if-cluster-information-is-not-detec.patch
 Patch228:       0007-Improve-error-message-if-DLM-service-is-unavailable.patch
 Patch405:       0007-vendor-Add-vendor-files-for-sles12.patch
 Patch406:       0008-ocfs2-tools-add-systemd-support-fix.patch
+# below are upstream patches
 Patch501:       fixed-mounted.ocfs2-output-when-some-devices-are-Not.patch
 Patch502:       update-mounted.ocfs2-mounted.c.patch
 Patch503:       libocfs2-roll-back-when-dir_index-creation-fails.patch
 Patch504:       fsck.ocfs2-do-not-try-locking-after-replaying-journa.patch
+Patch505:       bug-1203166-dump_fs_locks-support-v4.patch
 
 BuildRequires:  autoconf
 BuildRequires:  e2fsprogs-devel
@@ -170,6 +172,7 @@ OCFS2 filesystem.
 %patch502 -p1
 %patch503 -p1
 %patch504 -p1
+%patch505 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -218,8 +221,6 @@ cd reflink
 make DESTDIR="%{buildroot}" install
 cd ..
 
-rm %{buildroot}/sbin/defragfs.ocfs2
-rm %{buildroot}/%{_mandir}/man8/defragfs.ocfs2.8
 mv %{buildroot}/{,/usr}/sbin/o2image
 mv %{buildroot}/{,/usr}/sbin/debugfs.ocfs2
 #mv %{buildroot}/{,/usr}/sbin/ocfs2_controld.pcmk
@@ -272,6 +273,7 @@ python -c "import compileall; compileall.compile_dir('%{buildroot}/%{py_sitedir}
 /sbin/mount.ocfs2
 /sbin/ocfs2_hb_ctl
 /sbin/o2cluster
+/sbin/defragfs.ocfs2
 %{_sbindir}/o2image
 %{_sbindir}/debugfs.ocfs2
 %{_sbindir}/o2hbmonitor
@@ -289,6 +291,7 @@ python -c "import compileall; compileall.compile_dir('%{buildroot}/%{py_sitedir}
 %{_mandir}/man8/o2image.8.gz
 %{_mandir}/man8/o2cluster.8.gz
 %{_mandir}/man8/o2hbmonitor.8.gz
+%{_mandir}/man8/defragfs.ocfs2.8*
 %{_mandir}/man5/o2cb.sysconfig.5.gz
 %{_mandir}/man5/ocfs2.cluster.conf.5.gz
 %{_mandir}/man7/ocfs2.7.gz
