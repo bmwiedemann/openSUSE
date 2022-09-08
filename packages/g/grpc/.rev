@@ -401,4 +401,12 @@ put together with abseil-cpp</comment>
     <comment>- Update to release 1.48.0</comment>
     <requestid>1000009</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>43ae839e5ca254dbac30de9064311a5b</srcmd5>
+    <version>1.48.1</version>
+    <time>1662639823</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1001886</requestid>
+  </revision>
 </revisionlist>
