@@ -1,7 +1,7 @@
 #
 # spec file for package log4net
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,6 +26,8 @@ URL:            http://logging.apache.org/log4net/
 Source:         incubating-log4net-1.2.10.zip
 Source1:        log4net.key
 Source2:        log4net.pc
+# PATCH-FIX-UPSTREAM log4net-fix-CVE-2018-1285.patch bsc#1172193 yfjiang@suse.com -- Fix the vulnerability by not allowing dtd processing
+Patch1:         log4net-fix-CVE-2018-1285.patch
 BuildRequires:  mono-basic
 BuildRequires:  mono-data-sqlite
 BuildRequires:  mono-devel
@@ -41,6 +43,7 @@ framework to the .NET runtime
 
 %prep
 %setup -q -c
+%patch1 -p1
 sed -i "s|@VERSION@|%{version}|" %{SOURCE2}
 #=============================================================================
 

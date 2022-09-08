@@ -128,4 +128,12 @@
   dynamically updated to %{version} (boo#880273). (forwarded request 588464 from dimstar)</comment>
     <requestid>590336</requestid>
   </revision>
+  <revision rev="20" vrev="78">
+    <srcmd5>6c84ad878b5eca92c1a39a30cf65b43f</srcmd5>
+    <version>1.2.10</version>
+    <time>1662639697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001681</requestid>
+  </revision>
 </revisionlist>
