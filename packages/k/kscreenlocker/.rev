@@ -1026,4 +1026,12 @@
     <comment>- Use %_pam_vendordir (forwarded request 994058 from kukuk)</comment>
     <requestid>994146</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>b5844a2b3252099b83d80ca7343a712d</srcmd5>
+    <version>5.25.5</version>
+    <time>1662639645</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.5 (forwarded request 1001509 from Vogtinator)</comment>
+    <requestid>1001609</requestid>
+  </revision>
 </revisionlist>
