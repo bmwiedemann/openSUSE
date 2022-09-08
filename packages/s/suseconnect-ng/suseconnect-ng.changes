@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 31 10:38:59 UTC 2022 - jan.suse@zerebecki.de
+
+- Update to version 0.0.9~git8.f9adb71:
+  * Use standard buildconditionals
+  * Strip the binaries (saves ~ 30%)
+
+-------------------------------------------------------------------
 Fri Aug 05 13:33:05 UTC 2022 - jan.suse@zerebecki.de
 
 - Update to version 0.0.9~git5.75890b6:
