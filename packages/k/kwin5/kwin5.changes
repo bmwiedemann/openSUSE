@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Sep  6 16:55:51 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.5
+- Changes since 5.25.4:
+  * backends/drm: Fix software cursor fallback in DrmOutput::renderCursorOpengl() (kde#458036)
+  * Fix loading xcursor themes with invalid Inherits field (kde#457926)
+  * wayland: Prevent sending xdg_output properties if wl_output is removed
+  * xwayland: Remove text/x-moz-url and _NETSCAPE_URL mime converters (kde#458226)
+  * plugins/nightcolor: fix wrong transition time update in location mode (kde#412211)
+  * plugins/nightcolor: change time handling to allow for arbitrary morning and evening times (kde#445758)
+  * wayland: Fix lease termination in wp_lease_v1_destroy()
+  * effects/desktopgrid: Fix grid's size and scale w.r.t. row/column spacing
+  * effects/desktopgrid: Replace PlasmaCore.Units.largeSpacing with gridUnit
+  * drm_gpu: don't bother trying to assign a crtc to a connector that isn't connected (kde#457002)
+  * plugins/qpa: Assume there's current context when swapBuffers() is called
+  * backends/drm: add stricter checks for direct scanout (kde#457851)
+  * window: expose "output" property
+  * wayland: Setup window management when starting to manage X11 window
+  * backends/drm: don't crash if beginFrame fails
+  * effects/colorpicker: Fix off-by-one error during coordinates conversion
+  * effects/colorpicker: Factor out effects->renderTargetRect() constant
+  * wayland: Remove surface() check in Window::setupWindowManagement() (kde#444325)
+  * wayland: Fix touch event delivery to subsurfaces (kde#452967)
+  * wayland: Do not allocate a full list just to check if there's values
+  * effects/private: Fix ExpoLayout reflowing in Desktop Grid while dragging
+  * backends/drm: fix blob updating (kde#449285)
+  * effects/private: Prevent fading windows from moving downward in WindowView effect
+  * effects/desktopgrid: Fix panel opacity animation during transition
+
+-------------------------------------------------------------------
 Tue Aug  2 14:07:11 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.4
