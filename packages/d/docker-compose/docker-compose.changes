@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 07 06:51:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.10.2:
+  * Makefile: mutualize local and Dockerfile build opts (#9776)
+  * Revert "Apply newly loaded envvars to `DockerCli` and `APIClient`" (#9792)
+
+-------------------------------------------------------------------
+Wed Sep 07 06:50:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.10.1:
+  * ci: bring back individual checksum files
+  * build(deps): bump github.com/moby/buildkit from 0.10.3 to 0.10.4 (#9780)
+  * ci: fix checksums checking
+  * Pull image regardless of whether it exists locally if `tag=latest`
+  * Remove error message showing exit code when using --exit-code-from
+  * pull: only skip pull when policy is `missing`/`if_not_present`
+  * Wake up!
+
+-------------------------------------------------------------------
 Fri Aug 19 14:58:42 UTC 2022 - dmueller@suse.com
 
 - Update to version 2.10.0:

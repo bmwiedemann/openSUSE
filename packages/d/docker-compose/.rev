@@ -52,4 +52,12 @@
   * docs: remove extra whitespaces in help text (#9710)</comment>
     <requestid>998191</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>41f81d61d0a670b85cbd1c386d3e8efc</srcmd5>
+    <version>2.10.2</version>
+    <time>1662639728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001678</requestid>
+  </revision>
 </revisionlist>
