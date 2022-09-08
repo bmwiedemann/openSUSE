@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  8 04:58:33 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch image-size.patch:
+  * Change image sizes since they are now rounded up. 
+
+-------------------------------------------------------------------
 Mon May 17 16:49:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Sanitize absolute import path for Python 3.9 nbval test

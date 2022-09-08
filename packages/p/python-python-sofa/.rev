@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>893817</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>b6e02f2f4248891755b311946792e8b3</srcmd5>
+    <version>0.2.0</version>
+    <time>1662639809</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch image-size.patch:
+  * Change image sizes since they are now rounded up.</comment>
+    <requestid>1001821</requestid>
+  </revision>
 </revisionlist>

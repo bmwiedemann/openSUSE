@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-sofa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ URL:            https://github.com/spatialaudio/python-sofa
 Source:         %{url}/archive/v%{version}.tar.gz#/python-sofa-%{version}-gh.tar.gz
 # PATCH-FIX-UPSTREAM python-sofa-pr4-scipy1_6.patch gh#spatialaudio/python-sofa#4
 Patch0:         https://github.com/spatialaudio/python-sofa/pull/4.patch#/python-sofa-pr4-scipy1_6.patch
+# PATCH-FIX-OPENSUSE Change image sizes since they are now rounded up
+Patch1:         image-size.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
