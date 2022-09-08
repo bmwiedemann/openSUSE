@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           kubie
-Version:        0.17.2
+Version:        0.19.0
 Release:        0
 Summary:        A Kubernetes context switcher
 License:        Zlib
@@ -65,7 +65,7 @@ mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
-RUSTFLAGS=%{rustflags} cargo build --release
+RUSTFLAGS=%{rustflags} cargo build --release --no-default-features
 
 %install
 RUSTFLAGS=%{rustflags} cargo install --root=%{buildroot}%{_prefix} --path .

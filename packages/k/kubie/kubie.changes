@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Sep 07 05:36:12 UTC 2022 - kastl@b1-systems.de
+
+- follow the build instructions from the README to exclude
+  the self-update functionality:
+  cargo build --release --no-default-feature
+- Update to version 0.19.0:
+  * Version 0.19.0
+  * Clarify comments for distro maintainers
+  * Run cargo update
+  * Apply clippy lints
+  * Make the download subcommand optional
+  * Use native cargo strip feature instead of GNU strip
+
+-------------------------------------------------------------------
+Wed Sep 07 05:31:49 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.18.0:
+  * Version 0.18.0
+  * Restore --version flag, fixes #118
+  * Set opt-level = "s" to reduce binary size
+  * Update attohttpc
+  * Update Cargo.lock
+  * use skim to select context and namespace instead of fzf (#117)
+
+-------------------------------------------------------------------
 Thu Jul 28 19:54:42 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.17.2:
