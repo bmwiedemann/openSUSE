@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Sep  6 16:56:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.5
+- Changes since 5.25.4:
+  * kcms/users: don't let "Choose File…" text overflow (kde#458614)
+  * [kcms/style] Fix setting to default and apply button enablement
+  * kcms/users : Fix focus for new user input (kde#458377)
+  * kcms/nightcolor: fix checks for manual timing errors
+  * [kcms/style] Consider GTK theme setting when computing default state (kde#458292)
+  * applets/kicker: fix app icon loading logic to better handle relative paths (kde#457965)
+  * kcminit: Allow running modules by their name
+  * Take the pluginId from the kpackage metadata (kde#457657)
+  * applets/notifications: Fix displaying header progress indicator on different DPI (kde#435004)
+  * [panelview] Avoid assert if max < min (kde#454064)
+  * ScreenPool: Ensure that primaryScreenChanged is emitted always after screenAdded
+  * [libtaskmanager] Fix null check for window (kde#456094,kde#457690)
+  * lookandfeelmanager: Write colors before color scheme (kde#421745)
+  * Fix appstream runner results appearing before apps/kcms (kde#457600)
+  * [dataengines/weather/dwd] Check if jobs failed
+  * [dataengines/weather/dwd] Properly detect empty reply (kde#457606)
+  * applets/clipboard: press Ctrl+S to save in the edit page
+  * applets/appmenu: do not update menu when panel gets focus (kde#455520)
+  * Fix systemmonitor preferences being reset (kde#454004)
+  * KRunner: Set location before showing (kde#447096)
+
+-------------------------------------------------------------------
 Tue Aug  2 14:07:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.4
