@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyPDF2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyPDF2
-Version:        1.26.0
+Version:        2.10.5
 Release:        0
 Summary:        PDF toolkit
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://mstamy2.github.com/PyPDF2
-Source:         https://files.pythonhosted.org/packages/source/P/PyPDF2/PyPDF2-%{version}.tar.gz
+URL:            https://github.com/py-pdf/PyPDF2
+Source:         https://github.com/py-pdf/PyPDF2/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -57,11 +57,11 @@ sed -i '/^#!/ d' PyPDF2/pagerange.py
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-chmod a-x CHANGELOG LICENSE README.md
+chmod a-x CHANGELOG.md LICENSE README.md
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGELOG README.md
+%doc CHANGELOG.md README.md
 %{python_sitelib}/*
 
 %changelog
