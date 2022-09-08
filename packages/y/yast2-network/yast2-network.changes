@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  1 08:30:47 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- At the end of the installation, force an enablement of the
+  selected network service even when the selected one has not been
+  modified and ensure other backends are disabled (bsc#1202479)
+- 4.5.6
+
+-------------------------------------------------------------------
 Thu Jul 21 08:38:40 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Added a class to generate the configuration needed for a FCoE
