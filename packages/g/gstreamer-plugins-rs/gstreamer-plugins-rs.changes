@@ -1,4 +1,140 @@
 -------------------------------------------------------------------
+Mon Aug 29 23:16:32 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 0.8.4+git20220824.052092cd:
+  * Add RaptorQ RTP FEC plugins
+  * audioloudnorm: Drain on segment event
+  * audio: Use gst_audio::AudioCapsBuilder in some plugins
+  * audio, video: Use AudioCapsBuilder::new_interleaved where
+    applicable
+  * aws: Document the s3hlssink element in README
+  * aws: s3sink: Add a deprecation warning for retry duration
+    properties
+  * aws: s3sink,s3src,transcriber: Add property to set temporary
+    credentials
+  * aws_transcriber: expose filtering related properties
+  * aws_transcriber: Fix regression with credentials mechanism
+  * aws: Update to aws 0.17/0.47
+  * ci: Update image version
+  * ci: Update to cargo-c 0.9.11
+  * deny: Update
+  * fallbackswitch: fix gap processing regression
+  * fallbackswitch: Remove unused libc dependency/feature
+  * Fix a couple of new 1.62 clippy warnings
+  * Fix build after glib SignalBuilder::param_types() API change
+  * Fix/silence a couple new clippy warnings
+  * fmp4mux: Add debug output for each fragment's start PTS
+  * fmp4mux: Consider invalid running times as zero and before
+    anything else
+  * fmp4mux: Dequeue as many buffers as are available in each
+    aggregate call
+  * fmp4mux: Dequeue the earliest buffer from any pad first instead
+    of dequeueing up to a whole fragment from the same pad
+  * fmp4mux: Ensure that DTS (or PTS for intra-only streams) are
+    monotonically increasing
+  * fmp4mux: Fix draining if there are no GOPs for a stream
+  * fmp4mux: Fix some clippy warnings
+  * fmp4mux: Fix usage of first_sample_flags/default_sample_flags
+  * fmp4mux: Handle PTS<segment.start when requesting keyframes
+  * fmp4mux: Refactor timestamp handling for writing out data
+  * fmp4mux: Remove obsolete `#[allow(clippy::too_many_arguments)]`
+  * fmp4mux: Require parsed ONVIF timed metadata
+  * fmp4mux: Use UTC times from reference timestamp meta in ONVIF
+    mode
+  * fmp4mux: Write header as late as possible
+  * fmp4mux: Write ONVIF Export File Format CorrectStartTime box
+    for ONVIF variant
+  * fmp4mux: Write `tref` box for ONVIF timed metadata tracks to
+    reference the first video track
+  * fmp4: Update to m3u8-rs 5
+  * generic/fmp4: update Signed return type
+  * generic/fmp4: use opt_ops
+  * hlssink3: convert playlist type to an enum
+  * hlssink3: Dont reset end_list after stop is called.
+  * hlssink3: Put EXT-X-ENDLIST for vod playlist-type.
+  * hlssink3: Update to m3u8-rs 5
+  * Migrate s3src and s3sink to use AWS SDK
+  * Migrate transcriber to aws sdk
+  * net/aws: Add support for S3 HLS sink
+  * net/aws: Add support for specifying endpoint
+  * net/aws/aws_transcriber: Fix clippy warning
+  * net/aws: Clean up pending rusoto references
+  * net/rusoto: Drop rusoto crates
+  * net/rusoto: Rename to aws
+  * onvif: Add onvifmetadataparse element
+  * onvifaggregator: Add support for UNIX reference timestamp
+    metadata
+  * onvifaggregator: refactor, expect parsed metadata
+  * onvif: Disable default features for the chrono dependency
+  * onvifmetadataparse: Only define the namespace prefix once for
+    the top-level element
+  * onvifmetadataparse: use NTP epoch everywhere instead of mixing
+    UNIX/NTP epochs
+  * onvifmetadataparse: Use NTP reference timestamp meta
+  * onvifmetadata: removing encoding field
+  * onvifoverlay: render polygons when present
+  * onvif: Update to minidom 0.15
+  * plugins: Simplify code using ParamSpecBuilder
+  * raptorq: Derive `Eq` for some more structs
+  * README.md: Add various new plugins
+  * README: mention cargo update to resolve dep issues after git
+    updates
+  * Remove unnecessary `unsafe` blocks for `Buffer::as_ptr()`
+  * Rename rusoto to aws
+  * Revert "fmp4mux: Dequeue as many buffers as are available in
+    each aggregate call"
+  * roundedcorners: Ensure alpha_mem is mutable when updating
+    radius
+  * roundedcorners: Logging improvement
+  * Simplify Formatted value handling
+  * sodium: Update to no-deprecated clap 3.2 API
+  * textahead: generate a buffer with ahead text at segment start
+  * threadshare: Fix some new clippy beta warnings
+  * tracers: Add new tracer for logging the lateness of each buffer
+    when it leaves a pad
+  * tracers: Add queue levels tracer and Python script for plotting
+  * tracers: buffer_lateness: log when file is being written
+  * tracers: buffer_lateness.py: cycle colors
+  * tracers: Enable PipelineSnapshot only for unix target
+  * tracers: queue-levels: Add support for multiqueue and queue2
+  * tracers: queue-levels: Fix analysis script if only a single
+    plot should be created
+  * tracers: queue_levels: log when file is being written
+  * tracers: queue-levels: Output bytes/buffers/time graphs in
+    separate plots
+  * tracers: queue_levels.py: cycle colors
+  * transcriberbin: remove print statement
+  * ts: add test pipeline::socket_play_null_play
+  * ts/appsrc: reduce sync primitives in async hot path
+  * ts/async_wrapper: remove fd from reactor before dropping its
+    handle
+  * ts/examples: introduce a standalone pipeline test
+  * ts: migrate elements to try_next / handle_item
+  * ts: Queue & Proxy: minor cleanups
+  * ts/runtime: slight optimizations for sub tasks related
+    operations
+  * ts/scheduler: rename awake / wake_up as unpark
+  * ts/Task: return a future for state transitions
+  * ts/Task: spawn StateMachine on ts Context
+  * ts/Task: split iterate into try_next and handle_item
+  * ts/Task: wake up after the triggering event is pushed
+  * ts/tcpclientsrc: reduce sync primitives in async hot path
+  * ts/tests/pad: minor ckeanups
+  * ts/udpsink: fix default clients not leading to socket
+    configuration
+  * ts/udpsink: move sync on buffer to try_next
+  * ts/udpsink: reduce sync primitives in async hot path
+  * ts-udpsrc: align default port with C counterpart
+  * ts/udpsrc: reduce sync primitives in async hot path
+  * ts: update elements for new TransitionStatus
+  * Update per glib::SignalBuilder changes
+  * video: Use gst_video::VideoCapsBuilder in some plugins
+- Add define _lto_cflags {nil}, disable LTO for now. The port to
+  aws-sdk from rusoto causes the build to fail with LTO.
+- Bump minimum hdd in _costraints to 22G.
+- Modernize _service, use obs_scm and add cargo_audit.
+
+-------------------------------------------------------------------
 Fri Jun 17 10:01:13 UTC 2022 - bjorn.lie@gmail.com
 
 - Move the service to use the main git branch, explicit commit.
@@ -175,7 +311,8 @@ Fri Jun 17 10:01:13 UTC 2022 - bjorn.lie@gmail.com
   * rusoto:
     - Add missing license file
     - Export AwsTranscriberResultStability enum
-    - s3sink: Expose property to control all timeout/retry durations
+    - s3sink: Expose property to control all timeout/retry
+      durations
     - s3sink: Implement timeout/retry for part uploads
     - s3sink: Make remaining requests bounded in time
     - s3sink, s3src: Retry on server errors
@@ -198,7 +335,8 @@ Fri Jun 17 10:01:13 UTC 2022 - bjorn.lie@gmail.com
     - Fix deadlock
     - make audioqueue leaky
     - Protect runtime "passthrough=false" change
-  * ts/examples: add rtp mode with jitter-buffer & trace stop duration
+  * ts/examples: add rtp mode with jitter-buffer & trace stop
+    duration
   * ts/jitterbuffer:
     - don't wake up immediately...
     - set jbuf delay when instantiating it
@@ -207,7 +345,8 @@ Fri Jun 17 10:01:13 UTC 2022 - bjorn.lie@gmail.com
     - awake the iteration loop when it needs to be aborted
     - use light weight executor blocking on ack or join handle
   * tttocea608: expose roll-up timeout property
-  * tutorial/sinesrc: Use pushsrc as direct superclass in the glib::wrapper macro too
+  * tutorial/sinesrc: Use pushsrc as direct superclass in the
+    glib::wrapper macro too
   * Update for event/message/query view API changes
   * Update license text in the README.md
   * Update minimum supported GStreamer version to 1.14

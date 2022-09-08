@@ -16,6 +16,8 @@
 #
 
 
+%define _lto_cflags %{nil}
+
 %define _name gstreamer-plugins-rs
 %define gst_branch 1.0
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
@@ -23,7 +25,7 @@
 #%%global __requires_exclude pkgconfig\\(csound\\)
 
 Name:           gstreamer-plugins-rs
-Version:        0.8.4+git20220607.b1b3930e
+Version:        0.8.4+git20220824.052092cd
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -115,6 +117,7 @@ cp %{SOURCE3} %{buildroot}%{_datadir}/appdata/
 %license LICENSE-APACHE LICENSE-LGPLv2 LICENSE-MIT
 %doc README.md
 %dir %{_libdir}/gstreamer-%{gst_branch}
+%{_libdir}/gstreamer-%{gst_branch}/libgstaws.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcdg.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstclaxon.so
 # Disable csound for now, bring issue upstream
@@ -127,6 +130,7 @@ cp %{SOURCE3} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgsthlssink3.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsthsv.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstlewton.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstraptorq.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrav1e.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstreqwest.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsaudiofx.so
@@ -141,7 +145,6 @@ cp %{SOURCE3} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgstrstextwrap.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrstracers.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrswebp.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstrusoto.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstsodium.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstspotify.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsttextahead.so
