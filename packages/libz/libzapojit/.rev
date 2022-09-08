@@ -52,4 +52,12 @@
     <comment>Add upstream patch, fix CVE-2021-39360 (forwarded request 933901 from iznogood)</comment>
     <requestid>934070</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>cb7ee9172cede4b89fb82dda9bf3b4f5</srcmd5>
+    <version>0.0.3</version>
+    <time>1662639727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001680</requestid>
+  </revision>
 </revisionlist>
