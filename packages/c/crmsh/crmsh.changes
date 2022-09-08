@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Sep 08 06:30:59 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20220908.d668787c:
+  * Dev: add remote_auth to known stages of cluster init
+  * Dev: add unit tests for SBDTimeout.initialize_timeout
+  * Dev: refactor timeout caculation for sbd
+
+-------------------------------------------------------------------
+Thu Sep 08 02:00:33 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20220908.88a9f0c9:
+  * Dev: GH-workflows: Add a general check to check if data-manifest changed
+
+-------------------------------------------------------------------
+Mon Sep 05 14:51:59 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20220905.311a0a0d:
+  * Dev: testcases: adjust origin testcases based on previous changes
+  * Dev: data-manifest: Update content of data-manifest since #1022 added new files
+
+-------------------------------------------------------------------
 Fri Sep 02 06:51:37 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20220902.dceb5b92:
