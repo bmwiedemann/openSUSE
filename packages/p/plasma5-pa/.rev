@@ -1030,4 +1030,12 @@ and test it with openQA
     <comment>Plasma 5.25.4 (forwarded request 992383 from Vogtinator)</comment>
     <requestid>992506</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>3cad8a05379df48560f34dc574e0f69e</srcmd5>
+    <version>5.25.5</version>
+    <time>1662639663</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.5 (forwarded request 1001509 from Vogtinator)</comment>
+    <requestid>1001634</requestid>
+  </revision>
 </revisionlist>
