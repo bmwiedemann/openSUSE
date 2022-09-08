@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep  4 22:38:13 CEST 2022 - tumic@cbox.cz
+
+- Update to version 11.4
+  * Added support for KMZ data files.
+  * Multiple KML format parser fixes and improvements.
+  * Added support for non-SQL Orux maps.
+
+-------------------------------------------------------------------
 Thu Aug 11 00:49:04 CEST 2022 - tumic@cbox.cz
 
 - Update to version 11.3
