@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  6 11:48:15 UTC 2022 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to 2.2.9:
+  * Fix regression in WinMIDI driver introduced in 2.2.8
+  * Tracks cannot be restarted in MIDI player after reaching EOT
+  * Add a system-wide configuration file for Windows
+  * Harden systemd service file
+  * Dependency libs for precompiled Android binaries have been updated
+- Remove harden_fluidsynth.service.patch as it has been addressed upstream
+
+-------------------------------------------------------------------
 Sun Jul 10 16:25:37 UTC 2022 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to 2.2.8:
