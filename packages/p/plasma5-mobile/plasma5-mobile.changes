@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  6 16:56:11 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.5
+- Changes since 5.25.4:
+  * components: Attempt to fix some cyclic dependencies
+- Drop patches, now upstream:
+  * 0001-components-Attempt-to-fix-some-cyclic-dependencies.patch
+
+-------------------------------------------------------------------
 Fri Aug  5 09:00:26 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to drop runtime dependency on QtFeedback (boo#1202002):
