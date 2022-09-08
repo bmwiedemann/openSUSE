@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 07 11:06:00 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.9:
+  * Improve partial parsing HCL strings by adding cache (#2204)
+
+-------------------------------------------------------------------
+Wed Sep 07 11:04:41 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.8:
+  * #2245: Add option to skip state bucket public access blocking (#2246)
+  * fix(docs): use correct link (#2250)
+  * Update render json tests to use different directories and avoid parallel execution errors (#2248)
+  * fix(docs): correct spelling (#2238)
+
+-------------------------------------------------------------------
+Wed Sep 07 10:57:44 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.7:
+  * Fix bug where terragrunt run-all render-json overwrites all files (#2230)
+  * Remove commercial-support page and references (#2197)
+  * Fix typo (#2213)
+
+-------------------------------------------------------------------
 Fri Jul 22 17:39:05 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.38.6:
