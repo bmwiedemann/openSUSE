@@ -698,4 +698,14 @@ ProxyCommand parsing in ssh configuration files:
 </comment>
     <requestid>1001276</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>64eff83f3fde08c0ef0bd8e4ae300be6</srcmd5>
+    <version>0.10.4</version>
+    <time>1662639706</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.4
+  * https://git.libssh.org/projects/libssh.git/tag/?h=libssh-0.10.4
+</comment>
+    <requestid>1001774</requestid>
+  </revision>
 </revisionlist>
