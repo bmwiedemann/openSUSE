@@ -682,4 +682,12 @@
     <comment></comment>
     <requestid>999500</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>612a0ee61cdbb0d7926fb045e9b1fe8e</srcmd5>
+    <version>3.22.0</version>
+    <time>1662639792</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1001590 from iznogood)</comment>
+    <requestid>1001768</requestid>
+  </revision>
 </revisionlist>

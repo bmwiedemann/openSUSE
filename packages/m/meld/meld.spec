@@ -17,15 +17,13 @@
 
 
 Name:           meld
-Version:        3.21.3
+Version:        3.22.0
 Release:        0
 Summary:        Visual diff and merge tool
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            http://meldmerge.org/
-Source0:        https://download.gnome.org/sources/meld/3.21/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM meld-3.21.3-fix-executable-permission.patch -- Fix missing executable permission 
-Patch0:         meld-3.21.3-fix-executable-permission.patch
+Source0:        https://download.gnome.org/sources/meld/3.22/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
