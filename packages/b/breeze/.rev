@@ -1235,4 +1235,12 @@
   * 0001-Look-at-QStyleOptionProgressBar-orientation-again.patch</comment>
     <requestid>998956</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>05493319f4ec44b625907c11f4107d2d</srcmd5>
+    <version>5.25.5</version>
+    <time>1662639627</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.5 (forwarded request 1001509 from Vogtinator)</comment>
+    <requestid>1001595</requestid>
+  </revision>
 </revisionlist>

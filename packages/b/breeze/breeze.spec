@@ -22,7 +22,7 @@
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           breeze
-Version:        5.25.4
+Version:        5.25.5
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
@@ -33,8 +33,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/breeze-%{versi
 Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Look-at-QStyleOptionProgressBar-orientation-again.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= 0.0.13
 BuildRequires:  fdupes

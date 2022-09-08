@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  6 16:55:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.5
+- Changes since 5.25.4:
+  * kstyle: Fix class name to fix indeterminate progress bars animations
+  * Look at QStyleOptionProgressBar::orientation again
+- Drop patches, now upstream:
+  * 0001-Look-at-QStyleOptionProgressBar-orientation-again.patch
+
+-------------------------------------------------------------------
 Tue Aug 23 12:33:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix progress bars in some applications:
