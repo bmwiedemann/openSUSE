@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Sep 07 07:01:21 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.6.0:
+  * Add PreUpdate hook to newSpinner (#3023) (#3024)
+  * fix: add error message deploying compose (#3002)
+  * fix: backoff limit message (#3013)
+  * Fix resolve previous tags in release-branch (#3004)
+  * Fix race conditions at unit tests (#2994)
+  * Update help for deploy command to indicate that the execution of commands is locally and also removed the hidden flag for the pipeline. I think we added it when we were thinking on deprecating the command but we didn't remove the flag (#2998)
+  * Jlopezbarb/link how to tests from contribution guide (#2986)
+  * fix: if image is set, we should return the image (#2997)
+  * Handle bad equal quantity (#2992)
+  * fix: redeploy tests e2e (#2989)
+  * fix: redeploy service with different name (#2943)
+  * Fix spelling (#2971)
+  * docs: pull request scope (#2981)
+  * fix: check if resources been destroyed after destroy command (#2979)
+  * feat: ResourceEphemeralStorage (#2902)
+  * build(deps): Bump github/super-linter from 4.9.5 to 4.9.6 (#2980)
+  * Add docs for stable release process (#2982)
+  * fix: use a different random seed generator (#2978)
+  * fix: volumes not being deleted (#2955)
+  * fix: panic on non existen svc (#2956)
+  * Enable endpoints at okteto manifest (#2918)
+  * Fix okteto destroy manifest not found with k8s.yml (#2969)
+  * build(deps): Bump github/super-linter from 4.9.4 to 4.9.5 (#2958)
+  * Fix release-branch workflow (#2962)
+  * consider the context when calculating the path of the Dockerfile (#2875)
+  * Remove paragraph in error template (#2959)
+  * Account for previous versions in release-branch (#2940) (#2941)
+  * Fallback to Preview endpoint for waiting for dependencies (#2954)
+  * Fix release notes (#2942) (#2944)
+  * fix: vanilla clusters (#2949)
+
+-------------------------------------------------------------------
+Wed Sep 07 07:00:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.5.3:
+  * fix: if image is set, we should return the image (#2997) (#3003)
+
+-------------------------------------------------------------------
 Mon Aug 01 11:06:14 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.5.2:
