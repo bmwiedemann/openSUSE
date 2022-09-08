@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep  6 16:56:07 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.5
+- Changes since 5.25.4:
+  * applets/kickoff: set initial appsModelRow to 0
+  * toolboxes: set default position to topcenter
+  * Fix KCM duplicates in landingpage (kde#449563)
+  * Disable Drag and Drop for touch, fix drag and drop icons (kde#450448)
+  * [kicker] Fix baloo runner name (kde#456562)
+  * taskmanager: Use proper QUrls for recent document actions (kde#457685)
+  * [desktop/package] Fix inconsistent press-to-enter-edit-mode behavior (kde#456994)
+  * Fix emojier displaying a blank window with ibus 1.5.26 (kde#457521)
+  * Revert "Use onEntered in KickoffItemDelegate" (kde#454349,kde#455674,kde#456993)
+
+-------------------------------------------------------------------
 Tue Aug  2 14:07:13 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.4
