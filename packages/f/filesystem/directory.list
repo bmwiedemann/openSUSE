@@ -47,6 +47,7 @@
 0555 root root /usr/lib
 0755 root root /usr/libexec
 0755 root root /usr/lib/X11
+0755 root root /usr/lib/environment.d
 0755 root root /usr/lib/modprobe.d
 0555 root root /usr/lib/pkgconfig
 0755 root root /usr/lib/browser-plugins

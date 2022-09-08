@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  7 06:50:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add /usr/lib/environment.d: new base directory for
+  XDG_CONFIG_DIRS (boo#1201802).
+
+-------------------------------------------------------------------
 Mon Aug 22 12:13:42 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Revert last change, fr should be used like we do for all languages
