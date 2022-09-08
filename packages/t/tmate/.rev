@@ -60,4 +60,13 @@ sharing capabilities.</comment>
     <comment></comment>
     <requestid>845421</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>1c81892a2832998bde8d277d334f0393</srcmd5>
+    <version>2.4.0</version>
+    <time>1662639736</time>
+    <user>dimstar_suse</user>
+    <comment>- Change msgpack BuildRequires to use pkgconfig
+</comment>
+    <requestid>1001687</requestid>
+  </revision>
 </revisionlist>

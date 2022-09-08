@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  7 09:10:27 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Change msgpack BuildRequires to use pkgconfig
+
+-------------------------------------------------------------------
 Sun Nov  1 22:59:55 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - fix url

@@ -1,7 +1,7 @@
 #
 # spec file for package tmate
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,10 @@ URL:            https://tmate.io
 Source:         https://github.com/tmate-io/tmate/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  libmsgpack-devel >= 1.1.0
-BuildRequires:  libmsgpackc-devel >= 1.1.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libssh) >= 0.6.1
+BuildRequires:  pkgconfig(msgpack) >= 3.0.0
 BuildRequires:  pkgconfig(tinfo)
 
 %description
