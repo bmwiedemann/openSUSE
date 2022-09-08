@@ -117,6 +117,8 @@ Patch13:        llvm-normally-versioned-libllvm.patch
 Patch14:        llvm-do-not-install-static-libraries.patch
 # PATCH-FIX-UPSTREAM tablegen-test-link-static.patch -- https://reviews.llvm.org/D74588
 Patch15:        tablegen-test-link-static.patch
+# Cherry pick patch from LLVM 15: https://github.com/llvm/llvm-project/issues/56421
+Patch17:        llvm-glibc-2-36.patch
 Patch20:        llvm_build_tablegen_component_as_shared_library.patch
 Patch21:        tests-use-python3.patch
 Patch22:        llvm-better-detect-64bit-atomics-support.patch
@@ -576,6 +578,10 @@ pushd clang-tools-extra-%{_version}.src
 %patch10 -p2
 popd
 
+pushd compiler-rt-%{_version}.src
+%patch17 -p2
+popd
+
 pushd lld-%{_version}.src
 %patch26 -p1
 # lld got a compile-time dependency on libunwind that we don't want. (https://reviews.llvm.org/D86805)
@@ -707,7 +713,6 @@ avail_mem=$(awk '/MemAvailable/ { print $2 }' /proc/meminfo)
     -DLLVM_POLLY_BUILD:BOOL=OFF \
     -DLLVM_TOOL_CLANG_TOOLS_EXTRA_BUILD:BOOL=OFF \
     -DLLVM_INCLUDE_TESTS:BOOL=OFF \
-    -DLLVM_ENABLE_ASSERTIONS=OFF \
     -DLLVM_TARGETS_TO_BUILD=Native \
     -DCLANG_ENABLE_ARCMT:BOOL=OFF \
     -DCLANG_ENABLE_STATIC_ANALYZER:BOOL=OFF \
@@ -792,14 +797,13 @@ export LD_LIBRARY_PATH=${PWD}/build/%{_lib}
     -DCMAKE_LINKER=%{_bindir}/ld \
 %endif
 %ifarch %arm ppc s390 %{ix86}
-    -DCMAKE_C_FLAGS_RELWITHDEBINFO="-g1" \
-    -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-g1" \
+    -DCMAKE_C_FLAGS_RELWITHDEBINFO="-O2 -g1 -DNDEBUG" \
+    -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O2 -g1 -DNDEBUG" \
 %endif
     -DENABLE_LINKER_BUILD_ID=ON \
     -DLLVM_TABLEGEN="${LLVM_TABLEGEN}" \
     -DCLANG_TABLEGEN="${CLANG_TABLEGEN}" \
     -DLLVM_ENABLE_RTTI:BOOL=ON \
-    -DLLVM_ENABLE_ASSERTIONS=OFF \
     -DLLVM_ENABLE_PIC=ON \
     -DLLVM_BINUTILS_INCDIR=%{_includedir} \
     -DLLVM_TARGETS_TO_BUILD=${TARGETS_TO_BUILD} \

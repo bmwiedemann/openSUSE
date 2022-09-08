@@ -104,4 +104,18 @@
   it in libomp-devel if we port that back.</comment>
     <requestid>993564</requestid>
   </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>636957bfac05990489a88b05d02bc8f0</srcmd5>
+    <version>12.0.1</version>
+    <time>1662639755</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure we keep -DNDEBUG. At some point %{optflags} must have
+  lost it, perhaps because CMake usually adds it on top. So when
+  overriding CMAKE_{C,CXX}_FLAGS_RELWITHDEBINFO, we make sure to
+  take over the other flags. We drop LLVM_ENABLE_ASSERTIONS=OFF,
+  because that's the default anyway and hasn't helped here.
+- Add llvm-glibc-2-36.patch in order to address boo#1202215.
+</comment>
+    <requestid>1001715</requestid>
+  </revision>
 </revisionlist>

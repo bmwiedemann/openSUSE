@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep  3 15:15:10 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Make sure we keep -DNDEBUG. At some point %{optflags} must have
+  lost it, perhaps because CMake usually adds it on top. So when
+  overriding CMAKE_{C,CXX}_FLAGS_RELWITHDEBINFO, we make sure to
+  take over the other flags. We drop LLVM_ENABLE_ASSERTIONS=OFF,
+  because that's the default anyway and hasn't helped here.
+- Add llvm-glibc-2-36.patch in order to address boo#1202215.
+
+-------------------------------------------------------------------
 Sat Aug  6 21:51:40 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add openmp-Remove-omptarget-soname.patch to fix rpmlint issue:
