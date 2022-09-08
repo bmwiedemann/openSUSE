@@ -39,4 +39,16 @@
     <comment></comment>
     <requestid>994724</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ea17bc359ae1f877573e0af483dc2eb9</srcmd5>
+    <version>0.6.2</version>
+    <time>1662639749</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.2
+  * Better fix for non-writable GNUPGHOME
+  * Use NamedTemporaryFile for gpg keyring creation
+  * Call git-mailinfo with line endings normalized to LF
+  * Make patatt more python API friendly</comment>
+    <requestid>1001696</requestid>
+  </revision>
 </revisionlist>
