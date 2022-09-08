@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} >= 1550
+%bcond_without test
+%else
+%bcond_with test
+%endif
+
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
@@ -30,27 +36,27 @@ Source0:        https://files.pythonhosted.org/packages/source/d/dulwich/dulwich
 # PATCH-FIX-UPSTREAM rmtree-ignore-errors.patch gh#jelmer/dulwich#1000 mcepl@suse.com
 # shutil.rmtree should be more callous
 Patch0:         rmtree-ignore-errors.patch
-BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools >= 17.1}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+%if %{with test}
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module fastimport}
 BuildRequires:  %{python_module geventhttpclient}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module gpg}
-BuildRequires:  %{python_module setuptools >= 17.1}
 BuildRequires:  %{python_module urllib3 >= 1.24.1}
 %if 0%{?suse_version} <= 1500
 BuildRequires:  python-mock
 %endif
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Sphinx
+%endif
 Requires:       python-certifi
 Requires:       python-urllib3 >= 1.24.1
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
 Recommends:     python-fastimport
-Recommends:     python-gevent
-Recommends:     python-geventhttpclient
 Recommends:     python-gpg
 Obsoletes:      %{oldpython}-dulwich-doc < 0.20.5
 %python_subpackages
@@ -76,7 +82,9 @@ export CFLAGS="%{optflags}"
 %python_clone -a %{buildroot}%{_bindir}/dul-upload-pack
 
 %check
+%if %{with test}
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m unittest dulwich.tests.test_suite
+%endif
 
 %post
 %python_install_alternative dulwich

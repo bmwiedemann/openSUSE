@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  6 23:57:31 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Disable tests on Leap.
+- Remove gevent and geventhttpclient from Recommends since they are only required for tests.
+
+-------------------------------------------------------------------
 Wed Aug 31 10:32:01 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Adjust rmtree-ignore-errors patch according to upstream review.
