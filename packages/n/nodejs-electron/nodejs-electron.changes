@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  6 13:18:29 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Use system libaom on Tumbleweed
+
+-------------------------------------------------------------------
+Fri Sep  2 06:57:39 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream version 19.0.15
+  * Fixed a potential crash on WebWorker destruction.
+  * Vulkan: Fix garbage collection vs outside-RP-only flush (CVE-2022-2854)
+  * Vulkan: Fix xfb buffer redefine to smaller size (CVE-2022-2855)
+- Add reproducible-config.gypi.patch
+
+-------------------------------------------------------------------
 Wed Aug 24 21:56:28 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream version 19.0.14
   * Picture-In-Picture mode no longer becomes a red rectangle on hover.

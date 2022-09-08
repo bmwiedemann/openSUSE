@@ -104,8 +104,7 @@ BuildArch:      i686
 
 %bcond_without system_freetype
 
-# requires 3.4 (not in factory yet)
-%if 0%{?fedora} >= 37
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora} >= 37
 %bcond_without system_aom
 %else
 %bcond_with system_aom
@@ -204,7 +203,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        19.0.14
+Version:        19.0.15
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        MIT AND BSD-3-Clause AND LGPL-2.1-or-later
@@ -361,6 +360,7 @@ Patch3062:      attribution_manager_impl-missing-absl-WrapUnique.patch
 Patch3064:      nested-nested-nested-nested-nested-nested-regex-patterns.patch
 # Fedora patch to fix build with python3.11
 Patch3066:      chromium-103.0.5060.53-python3-do-not-use-deprecated-mode-U.patch
+Patch3067:      reproducible-config.gypi.patch
 
 %if %{with clang}
 BuildRequires:  clang
