@@ -1177,4 +1177,12 @@
     <comment>Plasma 5.25.4 (forwarded request 992383 from Vogtinator)</comment>
     <requestid>992513</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>b61cbfbf457975bf3b46d6277f5c2afa</srcmd5>
+    <version>5.25.5</version>
+    <time>1662639667</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.5 (forwarded request 1001509 from Vogtinator)</comment>
+    <requestid>1001642</requestid>
+  </revision>
 </revisionlist>
