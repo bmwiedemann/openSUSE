@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 07 11:15:35 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.39.2:
+  * release: v1.39.2
+  * fix: do not replace every string matching image names (#7591)
+
+-------------------------------------------------------------------
 Tue Jun 28 06:25:53 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.39.1:
