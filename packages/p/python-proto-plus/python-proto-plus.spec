@@ -28,7 +28,7 @@
 %define skip_python2 1
 %define modname proto-plus
 Name:           python-proto-plus%{psuffix}
-Version:        1.20.3
+Version:        1.22.1
 Release:        0
 Summary:        Pythonic Protocol Buffers
 License:        Apache-2.0
@@ -38,19 +38,19 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{modname}/%{mo
 # workaround for the problem with pytest 7.0
 Patch0:         pytest-staticmethod.patch
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module protobuf >= 3.12.0}
+BuildRequires:  %{python_module protobuf >= 3.19.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module google-api-core >= 1.22.2}
+BuildRequires:  %{python_module google-api-core >= 1.31.5}
 BuildRequires:  %{python_module proto-plus}
 BuildRequires:  %{python_module pytest}
 %endif
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-protobuf >= 3.12.0
+Requires:       python-protobuf >= 3.19.0
 BuildArch:      noarch
 %python_subpackages
 

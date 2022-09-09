@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  9 10:36:44 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Remove executable bits from systemd service otherwise it
+  complains
+
+-------------------------------------------------------------------
 Fri Sep  4 11:20:02 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Update to version 0.3.1:

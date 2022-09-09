@@ -344,4 +344,14 @@
     <comment></comment>
     <requestid>997465</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>bbb49f126c5207577a90d0b153797041</srcmd5>
+    <version>5.1.58</version>
+    <time>1662740894</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.58 (no changelog)
+- Remove document generation until upstream fixes all issues
+</comment>
+    <requestid>1002266</requestid>
+  </revision>
 </revisionlist>

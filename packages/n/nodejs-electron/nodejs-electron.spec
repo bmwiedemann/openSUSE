@@ -203,10 +203,10 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        19.0.15
+Version:        19.0.16
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
-License:        MIT AND BSD-3-Clause AND LGPL-2.1-or-later
+License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-3-Clause-Modification AND BSD-Protection AND BSD-Source-Code AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-advertising AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SUSE-Public-Domain
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://github.com/electron/electron
 Source0:        %{mod_name}-%{version}.tar.xz
@@ -1089,8 +1089,13 @@ myconf_gn+=" ffmpeg_branding=\"Chrome\""
 # GN does not support passing cflags:
 #  https://bugs.chromium.org/p/chromium/issues/detail?id=642016
 gn gen out/Release --args="import(\"//electron/build/args/release.gn\") ${myconf_gn}"
-ninja -v %{?_smp_mflags} -C out/Release electron
+
+#Build the supplementary stuff first to notice errors earlier bc building electron itself takes several hours.
+ninja -v %{?_smp_mflags} -C out/Release chromium_licenses
 ninja -v %{?_smp_mflags} -C out/Release copy_headers
+
+ninja -v %{?_smp_mflags} -C out/Release electron
+
 
 
 %install
@@ -1136,8 +1141,9 @@ mkdir -p "%{buildroot}%{_datadir}/webapps"
 
 rsync -av out/Release/gen/node_headers/include/node/* %{buildroot}%{_includedir}/electron
 
+
 %files
-%license electron/LICENSE electron/chromium_src/LICENSE.chromium third_party/blink/LICENSE_FOR_ABOUT_CREDITS
+%license electron/LICENSE out/Release/LICENSES.chromium.html
 %doc electron/README.md
 %{_bindir}/electron
 %{_datadir}/pixmaps/electron.png

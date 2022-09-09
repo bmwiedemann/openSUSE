@@ -17,7 +17,7 @@
 
 
 Name:           starship
-Version:        1.10.2
+Version:        1.10.3
 Release:        0
 Summary:        A customizable prompt for many shells
 License:        ISC
@@ -39,7 +39,7 @@ The default setup requires Nerd Font and a terminal in dark colors.
 dash is not supported as of 1.10.2.
 
 %prep
-%setup -qa1
+%autosetup -a1
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 

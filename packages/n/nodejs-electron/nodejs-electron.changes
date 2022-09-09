@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  8 13:42:03 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 19.0.16
+  * Fix heap-overflow in blink::TableLayoutAlgorithmAuto::InsertSpanCell (CVE-2022-3040)
+  * sqlite: Simplify the logic that converts the "1" expression in "ORDER BY 1" into a
+    copy of the expression that defines the first output column. (CVE-2022-3041)
+- Cleanup source tarball some more.
+- Actually ship the list of third-party code included (LICENSES.chromium.html)
+- Correct the RPM licence metadata per the above list.
+
+-------------------------------------------------------------------
 Tue Sep  6 13:18:29 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Use system libaom on Tumbleweed
 

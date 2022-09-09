@@ -1,7 +1,7 @@
 #
 # spec file for package manaplus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           manaplus
-Version:        1.9.3.23
+Version:        2.1.3.17
 Release:        0
 Summary:        A client for Evol Online and The Mana World: 2D MMORPG
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/RPG
 URL:            https://manaplus.org/
 Source:         https://download.tuxfamily.org/manaplus/download/%{version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM fix-include-time_h.patch -- Fix missing include for time.h when not using clang
+Patch0:         fix-include-time_h.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  dejavu-fonts
@@ -31,6 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  fontpackages-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  liberation-fonts
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
@@ -60,7 +63,7 @@ effort to create an MMORPG. TMW uses 2D graphics and creates a large
 and diverse interactive world.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --enable-unittests
@@ -68,7 +71,10 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-%fdupes %{buildroot}%{_datadir}
+chmod -x %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+%if 0%{?suse_version} <= 1500
+%fdupes -s %{buildroot}%{_datadir}
+%endif
 %find_lang %{name}
 
 rm -f %{buildroot}%{_datadir}/%{name}/data/fonts/dejavu*.ttf
@@ -85,8 +91,10 @@ ln -s %{_ttfontsdir}/LiberationMono-Regular.ttf %{buildroot}%{_datadir}/%{name}/
 ln -s %{_ttfontsdir}/LiberationSans-Bold.ttf %{buildroot}%{_datadir}/%{name}/data/fonts/liberationsans-bold.ttf
 ln -s %{_ttfontsdir}/LiberationSans-Regular.ttf %{buildroot}%{_datadir}/%{name}/data/fonts/liberationsans.ttf
 
+%if 0%{?suse_version} <= 1500
 %check
 make %{?_smp_mflags} check || ( cat "src/test-suite.log" && false )
+%endif
 
 %files
 %license COPYING
@@ -94,12 +102,11 @@ make %{?_smp_mflags} check || ( cat "src/test-suite.log" && false )
 %{_bindir}/manaplus
 %{_bindir}/dyecmd
 %{_datadir}/%{name}
-%{_datadir}/pixmaps/%{name}.png
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/manaplustest.desktop
 %{_mandir}/man6/%{name}*
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/%{name}.metainfo.xml
 
 %files lang -f %{name}.lang
 

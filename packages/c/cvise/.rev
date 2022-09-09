@@ -780,4 +780,16 @@
   * Change gcdabinary to GCC 12 and newer.</comment>
     <requestid>1000428</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>8984a64608f0faa9badcb5f8996089f0</srcmd5>
+    <version>2.5.0+git.20220909.31fe1f8</version>
+    <time>1662740895</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.0+git.20220909.31fe1f8:
+  * class-template-to-class transformation was not working with out-of-line method definitions
+
+- Update to version 2.5.0+git.20220909.3c7e8c6:
+  * Add c++2b C++ standard.</comment>
+    <requestid>1002313</requestid>
+  </revision>
 </revisionlist>

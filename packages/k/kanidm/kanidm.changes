@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 09 02:33:47 UTC 2022 - william.brown@suse.com
+
+- Update to version 1.1.0~alpha9~git6.b20d5312:
+  * Resolve upgrade in place error with cbor to json (#1028)
+
+-------------------------------------------------------------------
 Fri Aug 26 06:03:26 UTC 2022 - william.brown@suse.com
 
 - Update to version 1.1.0~alpha9~git5.98546259:

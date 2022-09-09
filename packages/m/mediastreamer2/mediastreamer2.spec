@@ -28,6 +28,7 @@ URL:            https://linphone.org/technical-corner/mediastreamer2
 Source:         https://gitlab.linphone.org/BC/public/mediastreamer2/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Patch0:         mediastreamer2-fix-pkgconfig.patch
 Patch1:         fix-srtp2-linphone.patch
+Patch2:         fix-build-ffmpeg5.patch
 BuildRequires:  bcmatroska2-devel >= 0.23.1
 BuildRequires:  broadvoice16-devel
 BuildRequires:  cmake
@@ -122,7 +123,12 @@ This package contains header files and development libraries needed to
 develop programs using the mediastreamer2 library.
 
 %prep
-%autosetup -p1
+%autosetup -N
+%patch0 -p1
+%patch1 -p1
+if pkg-config --atleast-version 59.37.100 libavcodec; then
+%patch2 -p1
+fi
 
 %build
 export CFLAGS="%(echo %{optflags}) -fcommon -Wno-implicit-function-declaration"

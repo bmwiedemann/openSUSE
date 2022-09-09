@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Sep  9 12:39:29 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.22.1
+  * Add no-pretty print option (#336)
+- from version 1.22.0
+  * Add support for protobuf v4 (#327)
+  * Fix Timestamp, Duration and FieldMask marshaling
+    in REST transport (a2e7300)
+  * fixes bug in the test. (#332)
+- from version 1.20.6
+  * **deps:** allow protobuf < 5.0.0 (#324)
+  * fix changelog header to consistent size (#319)
+- from version 1.20.5
+  * **deps:** require google-api-core[grpc] >= 1.31.5 (1d13c41)
+  * **deps:** require protobuf>= 3.15.0, <4.0.0dev (#315)
+- from version 1.20.4
+  * default proto package name is the module name, not "" (#309)
+  * lookup attribute instead of performing a deepcopy (#226)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Apr 25 17:45:27 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.20.3:

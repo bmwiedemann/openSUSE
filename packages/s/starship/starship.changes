@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  9 03:19:47 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.10.3:
+  * git_commit: only use exact match for tag by default. 
+
+-------------------------------------------------------------------
 Thu Aug 25 10:20:55 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Use setup instead of autosetup. 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 28 09:26:59 UTC 2022 - pgajdos@suse.com
+
+- Update to version 1.0+20220724.dce51f9:
+  * ticket: Fix compiler warning
+  * rpm: use new package name for pacemaker devel on opensuse
+  * Revert "Refactor: main: substitute is_auth_req macro"
+  * doc: Describe debug config file option
+  * handler: Use only signal-safe functions
+  * main: Use only signal-safe functions
+  * fix bashisms (use printf instead of echo)
+- fixes CVE-2022-2553 [bsc#1201946]
+
+-------------------------------------------------------------------
 Tue Sep 28 06:20:13 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Use Python 3 for -test subpackage.

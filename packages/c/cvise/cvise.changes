@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 09 13:03:27 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.5.0+git.20220909.31fe1f8:
+  * class-template-to-class transformation was not working with out-of-line method definitions
+
+-------------------------------------------------------------------
+Fri Sep 09 10:20:56 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.5.0+git.20220909.3c7e8c6:
+  * Add c++2b C++ standard.
+
+-------------------------------------------------------------------
 Wed Aug 31 11:34:14 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.5.0+git.20220831.cf6747b:

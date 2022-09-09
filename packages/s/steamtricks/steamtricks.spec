@@ -58,6 +58,7 @@ fixes.
 
 %install
 %make_install VERSION="%{version}"
+chmod -x %{buildroot}%{_userunitdir}/%{name}d.service
 
 %files
 %license COPYING

@@ -20,7 +20,7 @@
 %define soname  libortp
 %define sover   15
 Name:           ortp
-Version:        5.1.45
+Version:        5.1.58
 Release:        0
 Summary:        Real-time Transport Protocol Stack
 License:        GPL-3.0-or-later
@@ -32,7 +32,6 @@ Source99:       baselibs.conf
 Patch0:         deps.diff
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.0
-BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  pkgconfig
@@ -66,7 +65,9 @@ develop programs using the oRTP library.
 %autosetup -p1
 
 %build
-%cmake -DENABLE_STATIC=OFF
+%cmake \
+  -DENABLE_STATIC=OFF \
+  -DENABLE_DOC=OFF
 %cmake_build
 
 %install

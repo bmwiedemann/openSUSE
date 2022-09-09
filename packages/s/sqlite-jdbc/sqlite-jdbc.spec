@@ -17,8 +17,8 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%global version 3.39.2.0
-%global amalgamation_version 3390200
+%global version 3.39.3.0
+%global amalgamation_version 3390300
 %global debug_package %{nil}
 Name:           sqlite-jdbc
 Version:        %{version}
@@ -60,7 +60,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q
-%{mvn_file} : %{name}-%{version} %{name}
+%{mvn_file} : %{name}
 %pom_remove_plugin org.sonatype.plugins:nexus-staging-maven-plugin
 dos2unix SQLiteJDBC.wiki
 mkdir target
@@ -75,8 +75,8 @@ cp %{SOURCE1} target/sqlite-$(sed -e 's/^version=//' VERSION)-amal.zip
 %fdupes %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
-%doc CHANGELOG README.md Usage.md SQLiteJDBC.wiki
 %license LICENSE* NOTICE
+%doc CHANGELOG README.md USAGE.md SQLiteJDBC.wiki
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE* NOTICE

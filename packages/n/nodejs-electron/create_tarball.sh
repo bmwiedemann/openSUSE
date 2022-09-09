@@ -46,7 +46,11 @@ PATH="$(pwd)/depot_tools:$PATH"
 export PATH
 
 # HACK to make gclient much faster, do not download entire history
-sed -i 's/remote or self.remote,$/remote or self.remote, "--depth=1"/' depot_tools/gclient_scm.py
+sed -i "s/, '--progress']$/, '--progress', '--filter=tree:0']/" depot_tools/gclient_scm.py
+sed -i 's/remote or self.remote,$/remote or self.remote, "--depth=1", "--filter=tree:0"/' depot_tools/gclient_scm.py
+
+# HACK I want to see progress from git checkout to ensure it does not hang
+sed -i 's/if quiet is None:$/if True:/' depot_tools/gclient_scm.py
 
 
 echo ">>>>>> Create gclient config"
@@ -365,6 +369,7 @@ rm -rf tools/disable_tests #6MB
 rm -rf tools/perf/{page_sets,testdata} #55MB
 rm -rf third_party/blink/web_tests # 1.6GB
 rm -rf third_party/catapult/tracing/test_data # 200MB
+find chrome/test/data -type f ! -name "*.gn" -a ! -name "*.gni" -delete #249MB, thanks Mageia
 
 
 find . -type d -name .git -print0 | xargs -0 rm -rf
