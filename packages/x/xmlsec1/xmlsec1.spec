@@ -143,6 +143,9 @@ Libraries, includes, etc. for developing XML Security applications with NSS.
 %autosetup -p1
 
 %build
+# Allow for deprecations
+export CFLAGS="-Wno-error=deprecated-declarations"
+export CXXFLAGS="-Wno-error=deprecated-declarations"
 %configure \
     --disable-static \
     --disable-silent-rules \

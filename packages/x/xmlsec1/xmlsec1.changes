@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  8 07:25:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add export CFLAGS/CXXFLAGS="-Wno-error=deprecated-declarations"
+  inbefore configure. We pass --enable-werror to configure, and
+  that leads to warnings about deprecations failing build. As
+  deprecations is mainly a consern for upstream, stop failing on
+  those.
+
+-------------------------------------------------------------------
 Mon May 23 09:49:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.34:
