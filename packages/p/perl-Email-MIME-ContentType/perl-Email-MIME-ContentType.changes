@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep  5 03:07:15 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.027
+   see /usr/share/doc/packages/perl-Email-MIME-ContentType/Changes
+
+  1.027     2022-09-04 04:11:43-05:00 America/Chicago
+          - add a (for now undocumented) $PRE_2231_FORM package variable; if set
+            to false, when RFC2231-style parameters are used, a pre-RFC2231-style
+            version will *not* also be provided; this variable is true by default
+
+-------------------------------------------------------------------
 Mon Jan 11 03:08:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.026

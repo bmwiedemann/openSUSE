@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Email-MIME-ContentType
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Email-MIME-ContentType
 Name:           perl-Email-MIME-ContentType
-Version:        1.026
+Version:        1.027
 Release:        0
-Summary:        Parse and build a MIME Content-Type or Content-Disposition Header
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Parse and build a MIME Content-Type or Content-Disposition Header
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -29,6 +29,7 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Encode) >= 2.87
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Text::Unidecode)
 Requires:       perl(Encode) >= 2.87
