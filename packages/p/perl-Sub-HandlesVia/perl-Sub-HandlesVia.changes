@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Aug 27 03:07:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.036
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.036	2022-08-26
+   [ Bug Fixes ]
+   - Fix integration issues with newer versions of Mite.
+   [ Documentation ]
+   - Examples for a few methods.
+   - More tests for a few methods.
+   [ Other ]
+   - Added: Add a delete_where method for hashes.
+   - Added: Add execute_list, execute_scalar, execute_void, and corresponding
+     _method variants for coderefs.
+   - Added: The flatten_deep, natatime, and first_index methods for arrayrefs
+     no longer use callbacks.
+
+-------------------------------------------------------------------
 Sat Aug 13 03:12:43 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.035
