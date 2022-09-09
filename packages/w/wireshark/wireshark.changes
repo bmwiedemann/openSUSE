@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  8 07:45:05 UTC 2022 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 3.6.8:
+  * F5 Ethernet Trailer dissector infinite loop.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.6.8.html
+
+-------------------------------------------------------------------
 Thu Jul 28 06:48:07 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 3.6.7:

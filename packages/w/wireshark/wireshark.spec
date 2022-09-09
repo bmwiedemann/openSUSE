@@ -28,14 +28,14 @@
 %bcond_with lz4
 %endif
 Name:           wireshark
-Version:        3.6.7
+Version:        3.6.8
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Networking/Diagnostic
 URL:            https://www.wireshark.org/
 Source:         https://www.wireshark.org/download/src/%{name}-%{version}.tar.xz
-Source2:        https://www.wireshark.org/download/SIGNATURES-%{version}.txt#/%{name}-%{version}.tar.xz.asc
+Source2:        https://www.wireshark.org/download/SIGNATURES-%{version}.txt#/%{name}-%{version}.tar.xz.hash
 Source3:        https://www.wireshark.org/download/gerald_at_wireshark_dot_org.gpg#/wireshark.keyring
 # PATCH-FIX-UPSTREAM wireshark-0000-wsutil-implicit_declaration_memcpy.patch
 Patch0:         wireshark-0000-wsutil-implicit_declaration_memcpy.patch
