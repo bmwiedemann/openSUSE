@@ -27,7 +27,7 @@
 %endif
 %define         skip_python2 1
 Name:           python-google-api-core
-Version:        2.8.1
+Version:        2.10.0
 Release:        0
 Summary:        Google API client core library
 License:        Apache-2.0
@@ -41,7 +41,7 @@ BuildRequires:  %{python_module grpcio >= 1.33.2}
 BuildRequires:  %{python_module grpcio-gcp >= 0.2.2}
 BuildRequires:  %{python_module grpcio-status >= 1.33.2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module protobuf >= 3.12.0}
+BuildRequires:  %{python_module protobuf >= 3.20.1}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.18.0}
 BuildRequires:  %{python_module setuptools >= 40.3.0}
@@ -60,7 +60,7 @@ Requires:       python-google-auth >= 1.25.0
 Requires:       python-googleapis-common-protos >= 1.53.0
 Requires:       python-grpcio >= 1.33.2
 Requires:       python-grpcio-status >= 1.33.2
-Requires:       python-protobuf >= 3.12.0
+Requires:       python-protobuf >= 3.20.1
 Requires:       python-pytz
 Requires:       python-requests >= 2.18.0
 Requires:       python-setuptools >= 40.3.0

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep  8 11:26:12 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.10.0
+  * Add 'strict' to flatten_query_params to lower-case bools (#433)
+  * Make grpc transcode logic work in terms of protobuf python objects (#428)
+  * Require python 3.7+ (#410)
+  * Restore support for grpcio-gcp (#418)
+- from version 2.8.2
+  * **deps:** allow protobuf < 5.0.0 (#400)
+  * drop support for grpc-gcp (#401)
+  * fix changelog header to consistent size (#394)
+  * Fix typo in the BackgroundConsumer docstring (#395)
+- Refresh patches for new version
+  * python-google-api-core-no-mock.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Jun  8 09:11:04 UTC 2022 - pgajdos@suse.com
 
 - version update to 2.8.1
