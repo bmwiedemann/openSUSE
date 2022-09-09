@@ -1,7 +1,7 @@
 #
 # spec file for package LibVNCServer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ Patch12:        0003-libvncserver-auth-don-t-keep-security-handlers-from-.patch
 Patch13:        0004-zlib-Clear-buffer-pointers-on-cleanup-444.patch
 # PATCH-FIX-UPSTREAM Fix another crasher glgo#GNOME/gnome-remote-desktop#45 rh#1882718
 Patch14:        0001-libvncserver-don-t-NULL-out-internal-of-the-default-.patch
+# CVE-2020-29260 [bsc#1203106], memory leakage via rfbClientCleanup()
+Patch15:        LibVNCServer-CVE-2020-29260.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libavahi-devel

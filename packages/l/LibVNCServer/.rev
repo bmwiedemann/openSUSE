@@ -450,4 +450,15 @@
   * CVE-2020-14404 [bsc#1173701]</comment>
     <requestid>919689</requestid>
   </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>9960b3e776eaf960a003a2e1f790dd9e</srcmd5>
+    <version>0.9.13</version>
+    <time>1662740539</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+- added patches
+  fix CVE-2020-29260 [bsc#1203106], memory leakage via rfbClientCleanup()
+  + LibVNCServer-CVE-2020-29260.patch</comment>
+    <requestid>1001885</requestid>
+  </revision>
 </revisionlist>

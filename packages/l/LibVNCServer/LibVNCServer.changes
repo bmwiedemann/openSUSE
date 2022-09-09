@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  8 08:26:25 UTC 2022 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2020-29260 [bsc#1203106], memory leakage via rfbClientCleanup()
+  + LibVNCServer-CVE-2020-29260.patch
+
+-------------------------------------------------------------------
 Fri Sep 17 07:14:46 UTC 2021 - pgajdos@suse.com
 
 - purposedly adding just this changelog entry
