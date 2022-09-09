@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Sep  1 04:58:08 UTC 2022 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Drop Detect-new-BTF-api-btf_dump__new-btf_dump__new_v0_6_0.patch, which is
+  incorporated since 0.16.0
+- Update to 0.16.0
+  + Add builtin: numaid
+  + Add helper verifier error handling
+  + Add builtin: pton
+  + Add builtin: debugf
+  + Add builtin: strerror
+  + Move from BCC to libbpf (although BCC is still a dependency)
+  + Add non-uprobe based BEGIN/END implementation
+  + Helper errors (-k, -kk options) are now emitted to text or json output
+  + kprobe offset verification is now optional, without requiring --unsafe
+  + Disallow different lhist bounds in a single map
+  + Serialize empty histogram as an empty JSON array
+  + Handle enum values in tracepoint format defs
+  + Fix compound assignments with non-unary expr
+  + Fix invalid LLVM IR in join builtin
+  + Fix lexer buffer size check
+  + Fix invalid LLVM IR as detected by tests
+  + Fix builds against libbfd(binutils) >=2.39
+  + Fix access to ctx
+  + Add sslsnoop and ssllatency tools
+  + Add undump tool.
+- Update to 0.15.0
+  + Add option for unconditional hex output
+  + Add builtin function: cgroup_path
+  + Limit number of generated BPF programs
+  + Support the octal format specifier (%o) in printf
+  + Improve include paths resolution
+  + Automatic type resolution from DWARF
+  + Add builtin function: bswap
+  + Print all maps to stdout on SIGUSR1
+  + Use auto-resolution of library paths for tools
+  + Improve handling empty attach points
+  + Fix precedence of multiplicative operations
+  + Fix probe matching for uprobes with absolute address
+  + Fix tools to work on new kernel versions
+  + Fix uprobe target resolution
+  + Fix using wildcards in kfunc
+  + Improve handling of format strings
+  + Fix codegen for buf
+  + Update biosnoop.bt for kernel >=5.17 
+
+-------------------------------------------------------------------
 Tue Jun 21 08:36:57 UTC 2022 - pgajdos@suse.com
 
 - do not link against the shared BFD libraries [bsc#1200630]

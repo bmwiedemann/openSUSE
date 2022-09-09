@@ -31,15 +31,13 @@
 %endif
 
 Name:           bpftrace
-Version:        0.14.1
+Version:        0.16.0
 Release:        0
 Summary:        High-level tracing language for Linux eBPF
 License:        Apache-2.0
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/iovisor/bpftrace
 Source:         https://github.com/iovisor/bpftrace/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# Upstream https://github.com/iovisor/bpftrace/pull/2190
-Patch1:         Detect-new-BTF-api-btf_dump__new-btf_dump__new_v0_6_0.patch
 BuildRequires:  binutils
 BuildRequires:  binutils-devel
 BuildRequires:  bison
@@ -103,6 +101,7 @@ export CXX="clang++"
 %cmake_install
 # Set executable bit for tools.
 chmod +x %{buildroot}%{_datadir}/bpftrace/tools/*.bt
+chmod +x %{buildroot}%{_datadir}/bpftrace/tools/old/*.bt
 
 %files
 %{_bindir}/bpftrace
@@ -115,6 +114,8 @@ chmod +x %{buildroot}%{_datadir}/bpftrace/tools/*.bt
 %dir %{_datadir}/bpftrace/
 %dir %{_datadir}/bpftrace/tools
 %{_datadir}/bpftrace/tools/*.bt
+%dir %{_datadir}/bpftrace/tools/old
+%{_datadir}/bpftrace/tools/old/*.bt
 %dir %{_datadir}/bpftrace/tools/doc
 %{_datadir}/bpftrace/tools/doc/*_example.txt
 %{_mandir}/man8/*.8%{?ext_man}
