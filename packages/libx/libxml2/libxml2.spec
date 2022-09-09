@@ -25,7 +25,7 @@
 %endif
 
 Name:           libxml2%{?dash}%{flavor}
-Version:        2.10.1
+Version:        2.10.2
 Release:        0
 License:        MIT
 Summary:        A Library to Manipulate XML Files
@@ -152,6 +152,7 @@ either at parse time or later once the document has been modified.
 
 %prep
 %autosetup -p1 -n libxml2-%{version}
+sed -i '1 s|/usr/bin/env python|/usr/bin/python3|' doc/apibuild.py
 
 %build
 %if ! 0%{?buildpython}
@@ -170,10 +171,13 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
     --with-regexps \
     --with-threads \
     --with-reader \
-    --with-http
+    --with-ftp \
+    --with-http \
+    --with-legacy
 
 %make_build BASE_DIR="%{_docdir}" DOC_MODULE="%{base_name}"
 %else
+%configure --with-python=%{__python3}
 pushd python
 %python_build
 popd
