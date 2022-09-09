@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBIx-Connector
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name DBIx-Connector
 Name:           perl-DBIx-Connector
-Version:        0.57
+Version:        0.58
 Release:        0
-Summary:        Fast, safe DBI connection and transaction management
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Fast, safe DBI connection and transaction management
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -34,7 +34,17 @@ Recommends:     perl(DBI) >= 1.614
 %{perl_requires}
 
 %description
-Fast, safe DBI connection and transaction management
+DBIx::Connector provides a simple interface for fast and safe DBI
+connection and transaction management. Connecting to a database can be
+expensive; you don't want your application to re-connect every time you
+need to run a query. The efficient thing to do is to hang on to a database
+handle to maintain a connection to the database in order to minimize that
+overhead. DBIx::Connector lets you do that without having to worry about
+dropped or corrupted connections.
+
+You might be familiar with Apache::DBI and with the DBI's
+'connect_cached()' constructor. DBIx::Connector serves a similar need, but
+does a much better job. How is it different? I'm glad you asked!
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
@@ -52,6 +62,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes
+%doc Changes README
+%license LICENSE
 
 %changelog
