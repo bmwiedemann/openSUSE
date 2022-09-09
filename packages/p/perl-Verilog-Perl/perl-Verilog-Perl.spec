@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Verilog-Perl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Verilog-Perl
 Name:           perl-Verilog-Perl
-Version:        3.478
+Version:        3.480
 Release:        0
-Summary:        Verilog language utilities and parsing
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Verilog language utilities and parsing
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/W/WS/WSNYDER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
