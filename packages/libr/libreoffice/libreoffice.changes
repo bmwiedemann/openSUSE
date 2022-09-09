@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Aug 31 07:45:42 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 7.4.1.1:
+  https://wiki.documentfoundation.org/Releases/7.4.1/RC1
+
+-------------------------------------------------------------------
+Tue Aug 23 13:46:00 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 7.4.0.3:
+  You can check for 7.4 release notes here:
+  https://wiki.documentfoundation.org/ReleaseNotes/7.4
+  You can check for each minor release notes here:
+  https://wiki.documentfoundation.org/Releases/7.4.0/RC3
+  https://wiki.documentfoundation.org/Releases/7.4.0/RC2
+  https://wiki.documentfoundation.org/Releases/7.4.0/RC1
+- Updated bundled libraries:
+  * boost_1_77_0.tar.xz -> boost_1_79_0.tar.xz
+  * icu4c-70_1-data.zip -> icu4c-71_1-data.zip
+  * icu4c-70_1-src.tgz -> icu4c-71_1-src.tgz
+  * pdfium-4699.tar.gz2 -> pdfium-5058.tar.bz2
+  * poppler-21.11.0.tar.xz -> poppler-22.01.0.tar.xz
+  * poppler-data-0.4.10.tar.gz -> poppler-data-0.4.11.tar.gz
+  * skia-m97-a7230803d64ae9d44f4e1282444801119a3ae967.tar.xz
+    -> skia-m103-b301ff025004c9cd82816c86c547588e6c24b466.tar.xz
+- Remove upstreamed patches:
+  * bsc1198665.patch
+  * poppler-22-03-0.patch
+  * poppler-22-04-0.patch
+
+-------------------------------------------------------------------
 Mon Jul 18 14:23:35 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Use system jars by specifying the path for each jar. Fixes bsc#1195634

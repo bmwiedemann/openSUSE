@@ -49,7 +49,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.3.4.2
+Version:        7.4.1.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -90,11 +90,11 @@ Source2005:     %{external_url}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zi
 Source2006:     https://dev-www.libreoffice.org/extern/8249374c274932a21846fa7629c2aa9b-officeotron-0.7.4-master.jar
 Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-0.9.0-RC2-SNAPSHOT-jar-with-dependencies-2726ab578664434a545f8379a01a9faffac0ae73.jar
 # PDFium is bundled everywhere
-Source2008:     %{external_url}/pdfium-4699.tar.bz2
+Source2008:     %{external_url}/pdfium-5058.tar.bz2
 # Single C file with patches from LO
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
-Source2010:     %{external_url}/skia-m97-a7230803d64ae9d44f4e1282444801119a3ae967.tar.xz
+Source2010:     %{external_url}/skia-m103-b301ff025004c9cd82816c86c547588e6c24b466.tar.xz
 Source2012:     %{external_url}/libcmis-0.5.2.tar.xz
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
@@ -107,18 +107,12 @@ Patch3:         mediawiki-no-broken-help.diff
 Patch6:         gcc11-fix-error.patch
 Patch9:         fix_math_desktop_file.patch
 Patch10:        fix_gtk_popover_on_3.20.patch
-# Bug 1198665 - LO-L3: PPTX: text on top of circular object misplaced
-Patch15:        bsc1198665.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
 Patch991:       libreoffice-no-destdircheck.patch
-# PATCH-FIX-UPSTRAM poppler-22-03-0.patch
-Patch992:       poppler-22-03-0.patch
-# PATCH-FIX-SUSE poppler-22-04-0.patch
-Patch993:       poppler-22-04-0.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -128,6 +122,8 @@ BuildRequires:  bison
 BuildRequires:  bsh2
 BuildRequires:  commons-logging
 BuildRequires:  cups-devel
+BuildRequires:  fixmath-devel
+BuildRequires:  libwebp-devel
 %if %{with system_curl}
 BuildRequires:  curl-devel >= 7.68.0
 %else
@@ -151,7 +147,6 @@ BuildRequires:  junit4
 BuildRequires:  libassuan0
 BuildRequires:  libbase
 BuildRequires:  libcppunit-devel >= 1.14.0
-BuildRequires:  libcuckoo-devel
 BuildRequires:  liberation-fonts
 BuildRequires:  libexif
 BuildRequires:  libfonts
@@ -178,6 +173,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  xml-commons-apis
 BuildRequires:  xz
 BuildRequires:  zip
+BuildRequires:  cmake(dragonbox)
 BuildRequires:  perl(Archive::Zip)
 BuildRequires:  perl(Digest::MD5)
 BuildRequires:  pkgconfig(apr-util-1)
@@ -210,7 +206,7 @@ BuildRequires:  pkgconfig(libexttextcat) >= 3.4.1
 BuildRequires:  pkgconfig(libfreehand-0.1)
 BuildRequires:  pkgconfig(liblangtag)
 BuildRequires:  pkgconfig(libmspub-0.1) >= 0.1
-BuildRequires:  pkgconfig(libmwaw-0.3) >= 0.3.19
+BuildRequires:  pkgconfig(libmwaw-0.3) >= 0.3.21
 BuildRequires:  pkgconfig(libnumbertext) >= 1.0.6
 BuildRequires:  pkgconfig(libodfgen-0.1) >= 0.1.4
 BuildRequires:  pkgconfig(liborcus-0.17)
@@ -271,9 +267,9 @@ Obsoletes:      %{name}-icon-theme-oxygen < %{version}
 ExclusiveArch:  aarch64 %{ix86} x86_64 ppc64le
 %if 0%{?suse_version} < 1550
 # Too old boost on the system
-Source2020:     %{external_url}/boost_1_77_0.tar.xz
-Source2023:     %{external_url}/poppler-21.11.0.tar.xz
-Source2024:     %{external_url}/poppler-data-0.4.10.tar.gz
+Source2020:     %{external_url}/boost_1_79_0.tar.xz
+Source2023:     %{external_url}/poppler-22.01.0.tar.xz
+Source2024:     %{external_url}/poppler-data-0.4.11.tar.gz
 %else
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
@@ -285,8 +281,8 @@ BuildRequires:  pkgconfig(poppler-cpp)
 %endif
 %if 0%{?suse_version} < 1500
 # Too old icu on the system
-Source2021:     %{external_url}/icu4c-70_1-src.tgz
-Source2022:     %{external_url}/icu4c-70_1-data.zip
+Source2021:     %{external_url}/icu4c-71_1-src.tgz
+Source2022:     %{external_url}/icu4c-71_1-data.zip
 BuildRequires:  gcc7
 BuildRequires:  gcc7-c++
 BuildRequires:  java-devel >= 1.8
@@ -1020,15 +1016,12 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch3
 %patch6 -p1
 %patch9 -p1
-%patch15 -p1
 %if 0%{?suse_version} < 1500
 %patch10 -p1
 %patch101 -p1
 %endif
 %patch990 -p1
 %patch991 -p1
-%patch992 -p1
-%patch993 -p1
 
 # Disable some of the failing tests (some are random)
 %if 0%{?suse_version} < 1330
@@ -1212,7 +1205,7 @@ export NOCONFIGURE=yes
 # no coinormp packages for coinmp
 
 # just call make here as we added the jobs in configure
-make verbose=t build-nocheck
+make verbose=t build
 
 %check
 export LANG=C.UTF-8
@@ -1385,22 +1378,23 @@ cp uno.py %{buildroot}%{_libdir}/%{name}/program/uno.py
 %py3_compile %{buildroot}/%{_libdir}/libreoffice/share/extensions/
 %py3_compile %{buildroot}/%{_libdir}/libreoffice/share/Scripts/python/
 %py3_compile %{buildroot}/%{_libdir}/libreoffice/sdk/examples/python/
-# Move python cache to respective filelist
-for i in file-lists/*.txt; do
-    if [ `cat "${i}" | grep '\.py$' |wc -l` -gt 0 ]; then
-        cat "${i}" | grep '\.py$' > pyfiles.txt
-        for j in `cat pyfiles.txt`; do
-            # python3 has __pycache__ dir while py2 does not
-            pydir="${j%/*}"
-            pyname="${j##*/}"
-            if compgen -G "%{buildroot}${pydir}/__pycache__/${pyname%.*}*.pyc" > /dev/null; then
-                echo "%dir ${pydir}/__pycache__/" >> "${i}"
-                echo "${pydir}/__pycache__/${pyname%.*}*.pyc" >> "${i}"
-            fi
-        done
-    fi
+# Add python cache dir to respective filelist
+for filelist in file-lists/*.txt; do
+    echo "filelist: ${filelist}"
+    # For each python file in the filelist
+    for pyfile in `cat "${filelist}" | grep '\.py$'`; do
+        echo "pyfile: ${pyfile}"
+        pydir=`dirname ${pyfile}`
+        pyname=`basename ${pyfile}`
+        # If the bytecode for this python file exists, add it to the filelist
+        if compgen -G "%{buildroot}${pydir}/__pycache__/${pyname%.*}*.pyc" > /dev/null; then
+            echo "%dir ${pydir}/__pycache__/" >> "${filelist}"
+            #echo "%dir ${pydir}/__pycache__/" >> pycache.txt
+            echo "${pydir}/__pycache__/${pyname%.*}*.pyc" >> "${filelist}"
+            echo "adding: ${pydir}/__pycache__/${pyname%.*}*.pyc"
+        fi
+    done
 done
-rm pyfiles.txt
 
 # Install color palette
 cp %{SOURCE6} %{buildroot}%{_libdir}/libreoffice/share/palette/SUSE.soc
@@ -1613,7 +1607,6 @@ exit 0
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/share
 %dir %{_libdir}/%{name}/share/extensions
-%{_libdir}/%{name}/share/extensions/ConvertTextToNumber
 %{_libdir}/%{name}/share/extensions/nlpsolver
 %{_libdir}/%{name}/share/extensions/numbertext
 
