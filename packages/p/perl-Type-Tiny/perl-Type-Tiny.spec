@@ -18,7 +18,7 @@
 
 %define cpan_name Type-Tiny
 Name:           perl-Type-Tiny
-Version:        1.016008
+Version:        1.016010
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tiny, yet Moo(se)-compatible type constraint

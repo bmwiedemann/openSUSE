@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep  1 03:08:14 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.016010
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.016010	2022-08-31
+   [ Bug Fixes ]
+   - Fix an uninitialized warning when calling compile_named_oo outside a
+     sub.
+     Diab Jerius++
+   [ Documentation ]
+   - List which versions of Perl Type::Tiny requires in
+     Type::Tiny::Manual::Policies.
+  1.016009	2022-08-27
+   [ Bug Fixes ]
+   - Parameterizable type constraints have a name generator, which is a
+     coderef that generates the names of their parameterized child type
+     constraints. The default name generator now strips ASCII control
+     characters (such as null, tab, and new line) from names it generates.
+     sbuggles++
+
+-------------------------------------------------------------------
 Mon Aug 15 03:09:19 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.016008
