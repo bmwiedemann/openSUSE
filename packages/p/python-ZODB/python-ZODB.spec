@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ZODB
-Version:        5.6.0
+Version:        5.7.0
 Release:        0
 Summary:        Zope Object Database: object database and persistence
 License:        ZPL-2.1
@@ -110,6 +110,6 @@ rm -f src/ZODB/tests/testdocumentation.py
 %python_alternative %{_bindir}/repozo
 
 %files -n %{name}-doc
-%doc doc/
+%doc docs/
 
 %changelog
