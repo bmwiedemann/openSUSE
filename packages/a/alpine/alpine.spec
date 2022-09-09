@@ -203,7 +203,8 @@ perl -i -pe 's{(define SYSTYPE) "LNX"}{$1 "'"$tag"'"}g' include/config.h
 #
 # imap does not use CFLAGS from configure, needs EXTRACFLAGS/EXTRALDFLAGS:
 #
-%make_build EXTRACFLAGS="$CFLAGS" EXTRALDFLAGS="$EXTRALDFLAGS" MAILSPOOL="%{_localstatedir}/mail"
+%make_build EXTRACFLAGS="$CFLAGS" EXTRALDFLAGS="$EXTRALDFLAGS" \
+	MAILSPOOL="%{_localstatedir}/mail" -j1
 
 %install
 %make_install

@@ -462,4 +462,16 @@
     <comment>- Update to release 2.26</comment>
     <requestid>986005</requestid>
   </revision>
+  <revision rev="57" vrev="27">
+    <srcmd5>cc52ad21a2e750ccd8e54294340db4a1</srcmd5>
+    <version>unknown</version>
+    <time>1662740881</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable parallel build, fails to produce a result
+
+  * bsc#1189316, CVE-2021-38370: The c-client library parses
+    information from an IMAP server during non-authenticated state
+    which could lead to denial of service.</comment>
+    <requestid>1002258</requestid>
+  </revision>
 </revisionlist>

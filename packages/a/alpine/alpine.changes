@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  8 22:29:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable parallel build, fails to produce a result
+
+-------------------------------------------------------------------
 Fri Jun 10 15:51:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.26
@@ -61,6 +66,9 @@ Sun Sep 19 12:26:48 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
     that is an incomplete utf8 string in a local folder.
   * Fixed: When forwarding a message, replacing an attachment
     might make Alpine re-attach the original attachment.
+  * bsc#1189316, CVE-2021-38370: The c-client library parses
+    information from an IMAP server during non-authenticated state
+    which could lead to denial of service.
 
 -------------------------------------------------------------------
 Tue May 25 11:44:38 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
