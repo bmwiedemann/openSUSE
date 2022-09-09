@@ -1,7 +1,7 @@
 #
 # spec file for package python-ordered-set
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,11 +32,11 @@
 %endif
 %define skip_python2 1
 Name:           python-%{modname}%{psuffix}
-Version:        4.0.2
+Version:        4.1.0
 Release:        0
 Summary:        Custom MutableSet that remembers its order
 License:        MIT
-URL:            https://github.com/LuminosoInsight/ordered-set
+URL:            https://github.com/rspeer/ordered-set
 Source:         https://files.pythonhosted.org/packages/source/o/%{modname}/%{modname}-%{version}.tar.gz
 # this package is build dependency of setuptools
 BuildRequires:  %{python_module base}
@@ -69,25 +69,21 @@ sed -i -e 's:from setuptools :from distutils.core :g' setup.py
 %install
 %if !%{with test}
 %python_install
-# ensure egg-info is a directory
-%{python_expand rm -rf %{buildroot}%{$python_sitelib}/*.egg-info
-cp -r ordered_set.egg-info %{buildroot}%{$python_sitelib}/ordered_set-%{version}-py%{$python_version}.egg-info
-}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %check
 %if %{with test}
-%pytest test.py
+%pytest
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %license MIT-LICENSE
 %doc README.md
-%{python_sitelib}/%{dir_name}-*
-%{python_sitelib}/%{dir_name}.py*
-%pycache_only %{python_sitelib}/__pycache__/%{dir_name}.*
+%{python_sitelib}/%{dir_name}/
+# Note: The distutils generated egg-info is not a directory
+%{python_sitelib}/%{dir_name}-%{version}-py%{python_version}.egg-info
 %endif
 
 %changelog

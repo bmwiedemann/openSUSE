@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep  8 05:02:48 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update URL to https://github.com/rspeer/ordered-set
+- The egg-info is now a single file instead of a directory
+- Update to v4.1.0
+  * Packaged using flit. Wheels now exist, and setuptools is no longer required.
+  * The code is in ordered_set/__init__.py instead of ordered_set.py.
+  * There is an ordered_set/py.typed so that type checkers know about the types.
+  * Use the type aliases SetLike[T] and OrderedSetInitializer[T] to simplify some types.
+  * Updated the way overloaded type signatures are written to what MyPy currently expects.
+  * Minimum Python version is 3.7.
+
+-------------------------------------------------------------------
 Tue Dec 28 10:51:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Do not disable python36 here. This package is so deep in the
