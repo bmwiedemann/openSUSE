@@ -18,7 +18,7 @@
 
 %define cpan_name Proc-Fork
 Name:           perl-Proc-Fork
-Version:        0.807
+Version:        0.808
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple, intuitive interface to the fork() system call
