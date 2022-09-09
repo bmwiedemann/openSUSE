@@ -585,4 +585,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>KDE Release Gear 22.08.0 (forwarded request 997667 from cgiboudeaux)</comment>
     <requestid>997781</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>20ff159cb051c425340ba96f2636c2b6</srcmd5>
+    <version>22.08.1</version>
+    <time>1662740749</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.08.1</comment>
+    <requestid>1001973</requestid>
+  </revision>
 </revisionlist>
