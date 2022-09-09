@@ -835,4 +835,12 @@ Fri May  9 17:13:53 UTC 2014 - tittiatcoke@gmail.com
     <comment>KDE Release Gear 22.08.0 (forwarded request 997667 from cgiboudeaux)</comment>
     <requestid>997753</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>375aa4f39f9d70edcd8df24ad9856363</srcmd5>
+    <version>22.08.1</version>
+    <time>1662740721</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.08.1</comment>
+    <requestid>1001944</requestid>
+  </revision>
 </revisionlist>
