@@ -1500,4 +1500,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE Release Gear 22.08.0 (forwarded request 997667 from cgiboudeaux)</comment>
     <requestid>997970</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>5ec5a1e4750773034f63c317573c16b0</srcmd5>
+    <version>22.08.1</version>
+    <time>1662740854</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.08.1</comment>
+    <requestid>1002164</requestid>
+  </revision>
 </revisionlist>
