@@ -61,11 +61,6 @@ pushd doc
 po4a -k 0 --rm-backups --variable "srcdir=../doc/" po4a/po4a.cfg
 popd
 
-for file in ./doc/{*.1,*/*.1}; do
-  iconv -f latin1 -t utf8 < $file > $file.new && \
-  mv -f $file.new $file
-done
-
 for type in sysv tcp; do
   mkdir obj-$type
   cd obj-$type

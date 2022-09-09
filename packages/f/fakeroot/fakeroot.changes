@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  1 11:20:13 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- The manual pages are already in UTF-8 format, so don't convert
+  them from latin1 to UTF-8, this will break the encoding
+  [bsc#1203020]
+
+-------------------------------------------------------------------
 Thu Jul  7 19:23:17 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 1.29
