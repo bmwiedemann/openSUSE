@@ -659,4 +659,12 @@ Newer versions will have the correct headers.</comment>
     <comment>KDE Release Gear 22.08.0 (forwarded request 997667 from cgiboudeaux)</comment>
     <requestid>997813</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>acafcaa548da63e97e17eae581e9dd10</srcmd5>
+    <version>22.08.1</version>
+    <time>1662740600</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.08.1</comment>
+    <requestid>1002004</requestid>
+  </revision>
 </revisionlist>
