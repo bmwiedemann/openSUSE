@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep  2 03:09:19 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.36
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.36      2022-08-31 22:36:10Z
+      - Detect Firefox for iOS (GH#194) (altblue)
+
+-------------------------------------------------------------------
 Wed Oct 20 14:44:09 UTC 2021 - Tina Müller <tina.mueller@suse.com>
 
 - Add precious.toml to skip_doc
