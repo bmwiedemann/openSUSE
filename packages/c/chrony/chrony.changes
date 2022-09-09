@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Sep  1 14:40:46 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Update to 4.3:
+  * Add local option to refclock directive to stabilise system
+    clock with more stable free-running clock (e.g. TCXO, OCXO).
+  * Add maxdelayquant option to server/pool/peer directive to
+    replace maxdelaydevratio filter with long-term quantile-based
+    filtering.
+  * Add selection option to log directive.
+  * Allow external PPS in PHC refclock without configurable pin.
+  * Don't accept first interleaved response to minimise error in
+    delay.
+  * Don't use arc4random on Linux to avoid server performance loss.
+  * Improve filter option to better handle missing NTP samples.
+  * Improve stability with hardware timestamping and PHC refclock.
+  * Update seccomp filter
+- Update clknetsim to snapshot f00531b.
+- Use a more specific conditional for the /usr/etc stuff.
+
+-------------------------------------------------------------------
+Wed Jun 15 14:41:05 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d.
+
+-------------------------------------------------------------------
 Thu May 12 14:33:50 UTC 2022 - Stefan Schubert <schubi@suse.de>
 
 - Moved 20-chrony file from user specif directory
