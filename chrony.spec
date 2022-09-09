@@ -26,11 +26,14 @@
 %bcond_without sysusers
 %bcond_without pps
 %endif
+%if 0%{?suse_version} > 1500
+%bcond_without usr_etc
+%endif
 
 %bcond_without testsuite
 
 %define _systemdutildir %(pkg-config --variable systemdutildir systemd)
-%global clknetsim_ver 470b5e9
+%global clknetsim_ver f00531b
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -38,7 +41,7 @@
 %define chrony_helper %{_libexecdir}/chrony/helper
 %define chrony_rundir %{_rundir}/%{name}
 Name:           chrony
-Version:        4.2
+Version:        4.3
 Release:        0
 Summary:        System Clock Synchronization Client and Server
 License:        GPL-2.0-only
@@ -231,8 +234,14 @@ install -Dpm 0755 examples/chrony.nm-dispatcher.onoffline \
   %{buildroot}%{_prefix}/lib/NetworkManager/dispatcher.d/20-chrony
 install -Dpm 0755 %{SOURCE3} \
   %{buildroot}%{_sysconfdir}/dhcp/dhclient.d/chrony.sh
+%if %{with usr_etc}
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+install -Dpm 0644 examples/chrony.logrotate \
+  %{buildroot}%{_distconfdir}/logrotate.d/chrony
+%else
 install -Dpm 0644 examples/chrony.logrotate \
   %{buildroot}%{_sysconfdir}/logrotate.d/chrony
+%endif
 install -Dpm 0644 examples/chronyd.service \
   %{buildroot}%{_unitdir}/chronyd.service
 install -Dpm 0644 examples/chrony-wait.service \
@@ -286,6 +295,20 @@ make %{?_smp_mflags} check
 
 %pre -f chrony.pre
 %service_add_pre chronyd.service chrony-wait.service
+%if %{with usr_etc}
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/chrony ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
+
+%if %{with usr_etc}
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/chrony ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %preun
 %service_del_preun chronyd.service chrony-wait.service
@@ -309,7 +332,11 @@ make %{?_smp_mflags} check
 %doc examples
 %config(noreplace) %attr(0640,root,%{name}) %{_sysconfdir}/chrony.conf
 %config(noreplace) %attr(0640,root,%{name}) %verify(not md5 size mtime) %{_sysconfdir}/chrony.keys
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/chrony
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/chrony
+%endif
 %attr(0755,root,root) %{_prefix}/lib/NetworkManager/dispatcher.d/20-chrony
 %dir %{_sysconfdir}/chrony.d/
 %dir %{_sysconfdir}/dhcp/
