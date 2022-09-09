@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kleopatra
-Version:        22.08.0
+Version:        22.08.1
 Release:        0
 Summary:        Certificate manager and GUI for OpenPGP and CMS cryptography
 License:        GPL-2.0-or-later
@@ -31,8 +31,6 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Use-ReceiveKeysJob-for-refreshing-OpenPGP-keys.patch
 BuildRequires:  extra-cmake-modules
 # c++-20 required
 %if 0%{?suse_version} == 1500
