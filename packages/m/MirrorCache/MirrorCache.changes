@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Sep  1 14:29:10 UTC 2022 - Elisei Roca <eroca@suse.com>
+
+- Update assets cache
+
+-------------------------------------------------------------------
+Thu Sep  1 14:09:37 UTC 2022 - Elisei Roca <eroca@suse.com>
+
+- Add temporary patch to avoid by and ru mirrors for ua requests
+  * 0001-Avoid-by-and-ru-mrrors-for-ua-requests.patch
+
+-------------------------------------------------------------------
+Fri Aug 26 13:17:22 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.039:
+  * Fix editing columns with underscore in /app (#297)
+  * Fix mirror report links in header (#297)
+
+-------------------------------------------------------------------
+Wed Aug 24 08:12:10 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.038:
+  * Control order of projects in mirrors report (#294)
+  * Include subsidiary url into region in /report/mirrors (#295)
+  * Add mirror report links to header in openSUSE template (#296)
+  * Add operator to mirrors report (#296)
+  * Add column sponsor to server table (#296)
+
+-------------------------------------------------------------------
 Thu Aug 11 15:10:05 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.037:
@@ -8,10 +36,10 @@ Thu Aug 11 15:10:05 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
 Fri Aug 05 12:14:42 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.036:
- * Fix mirrors report when missing folders (#288)
- * Tweak systemd files (#291)
- * Rework mirrors report (#290)
- * Rescan if no country hit (#292)
+  * Fix mirrors report when missing folders (#288)
+  * Tweak systemd files (#291)
+  * Rework mirrors report (#290)
+  * Rescan if no country hit (#292)
 
 -------------------------------------------------------------------
 Thu Jun 23 04:55:11 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
