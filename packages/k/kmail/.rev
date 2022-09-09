@@ -599,4 +599,12 @@
     <comment>KDE Release Gear 22.08.0 (forwarded request 997667 from cgiboudeaux)</comment>
     <requestid>997857</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>81ccde50770215fa4e50f077fcff578e</srcmd5>
+    <version>22.08.1</version>
+    <time>1662740611</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.08.1</comment>
+    <requestid>1002048</requestid>
+  </revision>
 </revisionlist>
