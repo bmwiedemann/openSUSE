@@ -1,4 +1,161 @@
 -------------------------------------------------------------------
+Thu Sep  8 10:47:58 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.24.4+rke2r1:
+  * This release updates Kubernetes to v1.24.4, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.24.4+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 09:53:32 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.24.3+rke2r1:
+  * This release updates Kubernetes to v1.24.3, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.24.3+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 09:15:34 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.24.2+rke2r1:
+  * This release updates Kubernetes to v1.24.2, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.24.2+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 08:29:05 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.24.1+rke2r1:
+  * This release updates Kubernetes to v1.24.1, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.24.1+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 08:26:12 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.23.10+rke2r1:
+  * This release updates Kubernetes to v1.23.10, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.23.10+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 07:47:56 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.23.9+rke2r1:
+  * This release updates Kubernetes to v1.23.9, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.23.9+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 07:24:11 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.23.8+rke2r1:
+  * This release updates Kubernetes to v1.23.8, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.23.8+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 07:16:49 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.23.7+rke2r1:
+  * This release updates Kubernetes to v1.23.7, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.23.7+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 07:08:17 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.23.6+rke2r1:
+  * This release updates Kubernetes to v1.23.6, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.23.6+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 07:07:23 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.23.5+rke2r1:
+  * This release updates Kubernetes to v1.23.5, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.23.5+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 07:06:15 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.23.4+rke2r1:
+  * This release updates Kubernetes to v1.23.4, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.23.4+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 06:56:02 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- build using -buildmode=pie
+
+-------------------------------------------------------------------
+Thu Sep  8 06:45:41 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.23.3+rke2r1:
+  * This release updates Kubernetes to v1.23.3, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.23.3+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 06:39:09 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.23.2+rke2r1:
+  * This release updates Kubernetes to v1.23.2, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.23.2+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 06:37:24 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.23.1+rke2r1:
+  * This release updates Kubernetes to v1.23.1, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.23.1+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 06:29:58 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go1.16, as upstream does in go.mod
+
+-------------------------------------------------------------------
+Thu Sep  8 06:20:59 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.22.11+rke2r1:
+  * This release updates Kubernetes to v1.22.11, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.22.11+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 06:20:43 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.22.11+rke2r1:
+  * This release updates Kubernetes to v1.22.11, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.22.11+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 06:20:11 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.22.10+rke2r1:
+  * This release updates Kubernetes to v1.22.10, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.22.10+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 06:18:30 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.22.9+rke2r1:
+  * This release updates Kubernetes to v1.22.9, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.22.9+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 06:16:37 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.22.8+rke2r1:
+  * This release updates Kubernetes to v1.22.8, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.22.8+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 06:13:40 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.22.7+rke2r1:
+  * This release updates Kubernetes to v1.22.7, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.22.7+rke2r1
+
+-------------------------------------------------------------------
+Thu Sep  8 06:11:30 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.22.6+rke2r1:
+  * This release updates Kubernetes to v1.22.6, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.22.6+rke2r1
+
+-------------------------------------------------------------------
 Wed Jan  5 11:25:25 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - Update to version 1.22.5+rke2r1:
