@@ -914,4 +914,12 @@ I would be grateful.
     <comment>- Recommend installation of the mediainfo executable (boo#1202848)</comment>
     <requestid>999634</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>4f97d94b336d0465c564fd34b0836308</srcmd5>
+    <version>22.08.1</version>
+    <time>1662740768</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.08.1</comment>
+    <requestid>1002003</requestid>
+  </revision>
 </revisionlist>
