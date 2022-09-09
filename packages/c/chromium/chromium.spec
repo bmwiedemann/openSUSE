@@ -67,7 +67,7 @@
 %endif
 
 Name:           chromium
-Version:        104.0.5112.101
+Version:        105.0.5195.102
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -101,8 +101,7 @@ Patch9:         system-libdrm.patch
 Patch10:        chromium-disable-parallel-gold.patch
 Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
-Patch12:        chromium-78-protobuf-RepeatedPtrField-export.patch
-Patch15:        chromium-104-compiler.patch
+Patch15:        chromium-105-compiler.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch21:        chromium-gcc11.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
@@ -117,8 +116,13 @@ Patch87:        chromium-98-gtk4-build.patch
 Patch90:        chromium-100-InMilliseconds-constexpr.patch
 Patch98:        chromium-102-regex_pattern-array.patch
 Patch103:       chromium-103-VirtualCursor-std-layout.patch
-Patch104:       chromium-104-ContentRendererClient-type.patch
 Patch105:       chromium-104-tflite-system-zlib.patch
+Patch106:       chromium-105-AdjustMaskLayerGeometry-ceilf.patch
+Patch107:       chromium-105-Bitmap-include.patch
+Patch108:       chromium-105-browser_finder-include.patch
+Patch109:       chromium-105-raw_ptr-noexcept.patch
+Patch110:       chromium-105-Trap-raw_ptr.patch
+Patch111:       chromium-105-wayland-1.20.patch
 Patch201:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
@@ -418,6 +422,7 @@ keeplibs=(
     third_party/crashpad/crashpad/third_party/zlib
     third_party/crc32c
     third_party/cros_system_api
+    third_party/content_analysis_sdk
     third_party/dav1d
     third_party/dawn
     third_party/dawn/third_party
@@ -516,10 +521,10 @@ keeplibs=(
     third_party/pdfium/third_party/bigint
     third_party/pdfium/third_party/freetype
     third_party/pdfium/third_party/lcms
-    third_party/pdfium/third_party/libopenjpeg20
     third_party/pdfium/third_party/libpng16
     third_party/pdfium/third_party/libtiff
     third_party/pdfium/third_party/skia_shared
+    third_party/pdfium/third_party/libopenjpeg
     third_party/perfetto
     third_party/perfetto/protos/third_party/chromium
     third_party/pffft

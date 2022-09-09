@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Sep  8 10:46:42 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Chromium 105.0.5195.102 (boo#1203102):
+  * CVE-2022-3075: Insufficient data validation in Mojo
+- Chromium 105.0.5195.52 (boo#1202964):
+  * CVE-2022-3038: Use after free in Network Service
+  * CVE-2022-3039: Use after free in WebSQL
+  * CVE-2022-3040: Use after free in Layout
+  * CVE-2022-3041: Use after free in WebSQL
+  * CVE-2022-3042: Use after free in PhoneHub
+  * CVE-2022-3043: Heap buffer overflow in Screen Capture
+  * CVE-2022-3044: Inappropriate implementation in Site Isolation
+  * CVE-2022-3045: Insufficient validation of untrusted input in V8
+  * CVE-2022-3046: Use after free in Browser Tag
+  * CVE-2022-3071: Use after free in Tab Strip
+  * CVE-2022-3047: Insufficient policy enforcement in Extensions API
+  * CVE-2022-3048: Inappropriate implementation in Chrome OS lockscreen
+  * CVE-2022-3049: Use after free in SplitScreen
+  * CVE-2022-3050: Heap buffer overflow in WebUI
+  * CVE-2022-3051: Heap buffer overflow in Exosphere
+  * CVE-2022-3052: Heap buffer overflow in Window Manager
+  * CVE-2022-3053: Inappropriate implementation in Pointer Lock
+  * CVE-2022-3054: Insufficient policy enforcement in DevTools
+  * CVE-2022-3055: Use after free in Passwords
+  * CVE-2022-3056: Insufficient policy enforcement in Content Security Policy
+  * CVE-2022-3057: Inappropriate implementation in iframe Sandbox
+  * CVE-2022-3058: Use after free in Sign-In Flow
+- Added patches:
+  * chromium-105-AdjustMaskLayerGeometry-ceilf.patch
+  * chromium-105-Bitmap-include.patch
+  * chromium-105-browser_finder-include.patch
+  * chromium-105-raw_ptr-noexcept.patch
+  * chromium-105-Trap-raw_ptr.patch
+  * chromium-105-wayland-1.20.patch
+  * chromium-105-compiler.patch
+- Removed patches:
+  * chromium-104-compiler.patch
+  * chromium-104-ContentRendererClient-type.patch
+  * chromium-78-protobuf-RepeatedPtrField-export.patch
+
+-------------------------------------------------------------------
 Thu Sep  1 07:39:28 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update chromium-symbolic.svg: this fixes bsc#1202403.
