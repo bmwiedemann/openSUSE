@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep  3 03:08:58 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20220902
+   see /usr/share/doc/packages/perl-Test-PerlTidy/Changes
+
+  20220902        2022-09-02
+
+              * Fix the tests with latest Perl::Tidy
+
+-------------------------------------------------------------------
 Sat Jul 10 03:09:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20210709

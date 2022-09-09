@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-PerlTidy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Test-PerlTidy
 Name:           perl-Test-PerlTidy
-Version:        20210709
+Version:        20220902
 Release:        0
-Summary:        Check that all your files are tidy
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Check that all your files are tidy
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -30,12 +30,12 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Build) >= 0.280000
 BuildRequires:  perl(Path::Tiny) >= 0.100
-BuildRequires:  perl(Perl::Tidy) >= 20201001
+BuildRequires:  perl(Perl::Tidy) >= 20220613
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Text::Diff)
 BuildRequires:  perl(parent)
 Requires:       perl(Path::Tiny) >= 0.100
-Requires:       perl(Perl::Tidy) >= 20201001
+Requires:       perl(Perl::Tidy) >= 20220613
 Requires:       perl(Text::Diff)
 Requires:       perl(parent)
 %{perl_requires}
