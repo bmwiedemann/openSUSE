@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Struct-Dumb
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-Struct-Dumb
-Version:        0.12
-Release:        0
 %define cpan_name Struct-Dumb
-Summary:        Make simple lightweight record-like structures
+Name:           perl-Struct-Dumb
+Version:        0.13
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+Summary:        Make simple lightweight record-like structures
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Build) >= 0.400400
@@ -58,22 +56,27 @@ accidentally passing in the new value as an argument, or attempting to
 invoke a stored 'CODE' reference by passing argument values directly to the
 accessor.)
 
- $ perl -E 'use Struct::Dumb; struct Point => [qw( x y )]; Point(30)'
- usage: main::Point($x, $y) at -e line 1
+   $ perl -E 'use Struct::Dumb; struct Point => [qw( x y )]; Point(30)'
+   usage: main::Point($x, $y) at -e line 1
 
- $ perl -E 'use Struct::Dumb; struct Point => [qw( x y )]; Point(10,20)->z'
- main::Point does not have a 'z' field at -e line 1
+   $ perl -E 'use Struct::Dumb; struct Point => [qw( x y )]; Point(10,20)->z'
+   main::Point does not have a 'z' field at -e line 1
 
- $ perl -E 'use Struct::Dumb; struct Point => [qw( x y )]; Point(1,2)->x(3)'
- main::Point->x invoked with arguments at -e line 1.
+   $ perl -E 'use Struct::Dumb; struct Point => [qw( x y )]; Point(1,2)->x(3)'
+   main::Point->x invoked with arguments at -e line 1.
 
 Objects in this class are (currently) backed by an ARRAY reference store,
 though this is an internal implementation detail and should not be relied
 on by using code. Attempting to dereference the object as an ARRAY will
 throw an exception.
 
+_Note_: That on development perls that support 'use feature 'class'', this
+is used instead of a blessed ARRAY reference. This implementation choice
+should be transparent to the end-user, as all the same features are
+supported.
+
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Build.PL installdirs=vendor
@@ -87,7 +90,6 @@ perl Build.PL installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 

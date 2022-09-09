@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 28 03:06:37 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.13
+   see /usr/share/doc/packages/perl-Struct-Dumb/Changes
+
+  0.13    2022-08-27
+          [CHANGES]
+           * Use `feature 'class'` instead of blessed ARRAYrefs on perls which
+             support that, as an experiment to test how well that works
+
+-------------------------------------------------------------------
 Tue Apr 21 03:12:17 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.12
