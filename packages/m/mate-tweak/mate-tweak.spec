@@ -86,6 +86,8 @@ python3 setup.py install \
 # Give gi-find-deps.sh a bait.
 ln -s %{_bindir}/%{name} %{buildroot}%{_prefix}/lib/%{name}/%{name}.py
 
+rm -rf %{buildroot}%{_prefix}/lib/python3.10/site-packages/setup.py
+
 %fdupes %{buildroot}%{python3_sitelib}/
 %find_lang %{name}
 
@@ -96,6 +98,7 @@ ln -s %{_bindir}/%{name} %{buildroot}%{_prefix}/lib/%{name}/%{name}.py
 %{_bindir}/marco-*
 %{_prefix}/lib/%{name}/
 %{python3_sitelib}/%{_name}-*
+%pycache_only %{python_sitelib}/__pycache__
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/marco-*.desktop
 %{_mandir}/man?/%{name}.?%{?ext_man}
