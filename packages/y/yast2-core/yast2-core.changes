@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  8 06:28:05 UTC 2022 - Michal Filka <mchf@suse.cz>
+
+- bsc#1203227
+  - replaced obsolete fgrep by grep -F
+- 4.5.4
+
+-------------------------------------------------------------------
 Tue Aug 30 09:28:44 UTC 2022 - Martin Vidner <mvidner@suse.com>
 
 - Fix a test that would fail in the year 2038
