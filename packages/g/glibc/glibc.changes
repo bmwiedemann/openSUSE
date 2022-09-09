@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  6 11:22:46 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- syslog-large-messages.patch: syslog: Fix large messages (CVE-2022-39046,
+  bsc#1203011, BZ #29536)
+- dlmopen-libc-early-init.patch: elf: Call __libc_early_init for reused
+  namespaces (BZ #29528)
+- ldd-vdso-dependency.patch: elf: Restore how vDSO dependency is printed
+  with LD_TRACE_LOADED_OBJECTS (BZ #29539)
+- syslog-extra-whitespace.patch: syslog: Remove extra whitespace between
+  timestamp and message (BZ #29544)
+
+-------------------------------------------------------------------
 Wed Aug 24 09:29:02 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - nscd-netlink-cache-invalidation.patch: nscd: Fix netlink cache

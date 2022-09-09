@@ -2688,4 +2688,19 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   invalidation if epoll is used (boo#1199964, BZ #29415) (forwarded request 1000398 from Andreas_Schwab)</comment>
     <requestid>1000399</requestid>
   </revision>
+  <revision rev="265" vrev="3">
+    <srcmd5>d1f047c14714e735090f58e528c4090c</srcmd5>
+    <version>2.36</version>
+    <time>1662740528</time>
+    <user>dimstar_suse</user>
+    <comment>- syslog-large-messages.patch: syslog: Fix large messages (CVE-2022-39046,
+  bsc#1203011, BZ #29536)
+- dlmopen-libc-early-init.patch: elf: Call __libc_early_init for reused
+  namespaces (BZ #29528)
+- ldd-vdso-dependency.patch: elf: Restore how vDSO dependency is printed
+  with LD_TRACE_LOADED_OBJECTS (BZ #29539)
+- syslog-extra-whitespace.patch: syslog: Remove extra whitespace between
+  timestamp and message (BZ #29544) (forwarded request 1001591 from Andreas_Schwab)</comment>
+    <requestid>1001592</requestid>
+  </revision>
 </revisionlist>

@@ -287,6 +287,14 @@ Patch1001:      sys-mount-kernel-definition.patch
 Patch1002:      sys-mount-usage.patch
 # PATCH-FIX-UPSTREAM nscd: Fix netlink cache invalidation if epoll is used (BZ #29415)
 Patch1003:      nscd-netlink-cache-invalidation.patch
+# PATCH-FIX-UPSTREAM syslog: Fix large messages (CVE-2022-39046, BZ #29536)
+Patch1004:      syslog-large-messages.patch
+# PATCH-FIX-UPSTREAM elf: Call __libc_early_init for reused namespaces (BZ #29528)
+Patch1005:      dlmopen-libc-early-init.patch
+# PATCH-FIX-UPSTREAM elf: Restore how vDSO dependency is printed with LD_TRACE_LOADED_OBJECTS (BZ #29539)
+Patch1006:      ldd-vdso-dependency.patch
+# PATCH-FIX-UPSTREAM syslog: Remove extra whitespace between timestamp and message (BZ #29544)
+Patch1007:      syslog-extra-whitespace.patch
 
 ###
 # Patches awaiting upstream approval
@@ -515,6 +523,10 @@ library in a cross compilation setting.
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1
+%patch1004 -p1
+%patch1005 -p1
+%patch1006 -p1
+%patch1007 -p1
 %endif
 
 %patch2000 -p1
