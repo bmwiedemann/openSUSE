@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Sep  7 13:52:36 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.1+48+suse.9c6c435:
+  * Upstream version update
+  * kpartx_id: remove bashism
+  * Doc: add multipathc.8 manual page
+
+-------------------------------------------------------------------
+Sat Sep  3 11:30:11 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.0+134+suse.dbf2e2d:
+  * Add multipathc command under GPL3.0, and split off libmpathutil
+    (bsc#1202616)
+  * Fix command completion in interactive mode (bsc#1201483)
+  * multipathd: fix use-after-free in handle_path_wwid_change()
+    (bsc#1201483)
+  * Improve startup time for very large multipath.conf (bsc#1200523)
+  * Avoid checker blocking event handling for huge number of devices
+    (boo#1203085)
+  * Cleanup sysfs accessors in libmultipath
+  * Minor upstream bug fixes
+  * Spelling fixes
+  * Documentation: add ALUA info to README.md, delete README.alua
+
+-------------------------------------------------------------------
 Wed Aug 24 09:28:55 UTC 2022 - mwilck@suse.com
 
 - Update to version 0.9.0+55+suse.33d8854:

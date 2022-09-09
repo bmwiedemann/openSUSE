@@ -1696,4 +1696,12 @@ see https://github.com/opensvc/multipath-tools/compare/2bdd3a14..79c3556f</comme
     (bsc#1202616)</comment>
     <requestid>999007</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>f50dd56d1c104ae1d0587bbc730f2397</srcmd5>
+    <version>0.9.1+48+suse.9c6c435</version>
+    <time>1662740534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001782</requestid>
+  </revision>
 </revisionlist>

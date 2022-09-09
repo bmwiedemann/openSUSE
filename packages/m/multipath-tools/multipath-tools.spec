@@ -1,7 +1,7 @@
 #
 # spec file for package multipath-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,10 +34,10 @@
 %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
 
 Name:           multipath-tools
-Version:        0.9.0+55+suse.33d8854
+Version:        0.9.1+48+suse.9c6c435
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
-License:        GPL-2.0-only
+License:        GPL-2.0-only and GPL-3.0-or-later
 Group:          System/Base
 URL:            http://christophe.varoqui.free.fr/
 Source:         multipath-tools-%{version}.tar.xz
@@ -55,6 +55,7 @@ BuildRequires:  pkgconfig(devmapper)
 %if 0%{?with_libdmmp} == 1
 BuildRequires:  pkgconfig(json-c)
 %endif
+BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(liburcu)
@@ -82,8 +83,6 @@ multipath maps. multipathd sets up multipath maps automatically,
 monitors path devices for failure, removal, or addition, and applies
 the necessary changes to the multipath maps to ensure continuous
 availability of the map devices.
-
-
 
 
 
@@ -178,7 +177,7 @@ mkdir -p %{buildroot}%{_defaultlicensedir}
 mkdir -p %{buildroot}/usr/sbin
 mkdir -p %{buildroot}/usr/%{_lib}
 %if 0%{?suse_version} < 1550
-for x in multipath mpathpersist mpathcmd mpathvalid; do
+for x in mpathutil multipath mpathpersist mpathcmd mpathvalid; do
     rm -f %{buildroot}/%{_lib}/lib$x.so
     ln -sf /%{_lib}/lib$x.so.0  %{buildroot}/usr/%{_lib}/lib$x.so
 done
@@ -217,13 +216,14 @@ exit 0
 %{?regenerate_initrd_posttrans}
 
 %files
-%defattr(-,root,root)
-%doc README.md README.alua
+%doc README.md
 %license LICENSES/GPL-2.0
+%license LICENSES/GPL-3.0
 %{_udevrulesdir}/11-dm-mpath.rules
 %{_udevrulesdir}/56-multipath.rules
 %{sbindir}/multipath
 %{sbindir}/multipathd
+%{sbindir}/multipathc
 %{sbindir}/mpathpersist
 /usr/sbin/rcmultipathd
 %{_unitdir}/multipathd.service
@@ -236,6 +236,7 @@ exit 0
 %{_mandir}/man8/multipath.8*
 %{_mandir}/man5/multipath.conf.5*
 %{_mandir}/man8/multipathd.8*
+%{_mandir}/man8/multipathc.8*
 %{_mandir}/man8/mpathpersist.8*
 
 %files -n libmpath0
@@ -243,6 +244,7 @@ exit 0
 %{libdir}/libmpathcmd.so.0
 %{libdir}/libmpathpersist.so.0
 %{libdir}/libmpathvalid.so.0
+%{libdir}/libmpathutil.so.0
 %{libdir}/multipath
 %license LICENSES/GPL-2.0
 %license LICENSES/LGPL-2.0
@@ -250,11 +252,11 @@ exit 0
 %license README.licenses
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/libmultipath.so
 %{_libdir}/libmpathcmd.so
 %{_libdir}/libmpathpersist.so
 %{_libdir}/libmpathvalid.so
+%{_libdir}/libmpathutil.so
 /usr/include/mpath_cmd.h
 /usr/include/mpath_persist.h
 /usr/include/mpath_valid.h
@@ -263,7 +265,6 @@ exit 0
 %doc libmpathpersist-example-old.c
 
 %files -n kpartx
-%defattr(-,root,root)
 %license LICENSES/GPL-2.0
 %{sbindir}/kpartx
 %{_udevrulesdir}/00-dont-del-part-nodes.rules
