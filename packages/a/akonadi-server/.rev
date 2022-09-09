@@ -815,4 +815,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE Release Gear 22.08.0 (forwarded request 997667 from cgiboudeaux)</comment>
     <requestid>997748</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>c9152c3525f01f2f299d4b7cf1ae72fb</srcmd5>
+    <version>22.08.1</version>
+    <time>1662740579</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.08.1</comment>
+    <requestid>1001939</requestid>
+  </revision>
 </revisionlist>
