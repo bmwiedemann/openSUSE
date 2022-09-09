@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Sep  8 21:11:24 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.16.0.
+  * The guard checker (see `Guarded`) now ensures strong
+    normalization under any reduction strategy.
+  * Irrelevant terms (in the `SProp` sort) are now squashed to a
+    dummy value during conversion, fixing a subject reduction 
+    issue and making proof conversion faster.
+  * Introduction of reversible coercions, which allow coercions 
+    relying on meta-level resolution such as type-classes or 
+    canonical structures. Also allow coercions that do not fullfill
+    the uniform inheritance condition.
+  * Generalized rewriting support for rewriting with `Type`-valued 
+    relations and in `Type` contexts, using the
+    `Classes.CMorphisms` library.
+  * Added the boolean equality scheme command for decidable 
+    inductive types.
+  * Added a `Print Notation` command.
+  * Incompatibilities in name generation for Program obligations,
+    `eauto` treatment of tactic failure levels, use of `ident` in
+    notations, parsing of module expressions.
+  * Standard library reorganization and deprecations.
+  * Improve the treatment of standard library numbers by
+    `Extraction`.
+- Coq requires ocamlfind at runtime now.
+
+-------------------------------------------------------------------
 Wed Jun  1 21:41:11 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.15.2.

@@ -20,7 +20,7 @@
 %bcond_without ide
 
 Name:           coq
-Version:        8.15.2
+Version:        8.16.0
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only
@@ -35,7 +35,7 @@ Source51:       coq-stdlib-%{version}.tar.xz
 Source100:      %{name}-rpmlintrc
 BuildRequires:  desktop-file-utils
 BuildRequires:  make >= 3.81
-BuildRequires:  ocaml >= 4.05.0
+BuildRequires:  ocaml >= 4.09.0
 BuildRequires:  ocaml-camlp5-devel >= 5.08
 BuildRequires:  ocaml-dune >= 2.5.1
 BuildRequires:  ocamlfind(findlib)
@@ -44,6 +44,7 @@ BuildRequires:  ocamlfind(zarith)
 BuildRequires:  update-desktop-files
 BuildRequires:  ocamlfind(lablgtk3-sourceview3)
 %endif
+Requires:       ocamlfind
 
 %description
 Proof assistant which allows to handle calculus assertions, check mechanically
@@ -65,8 +66,7 @@ The Coq Integrated Development Interface is a graphical interface for the Coq pr
 Summary:        Development files for coq
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
-Requires:       ocaml >= 4.05.0
-Requires:       ocamlfind(findlib)
+Requires:       ocaml >= 4.09.0
 
 %description devel
 This package contains development files for Coq.
