@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep  4 20:45:29 UTC 2022 - Christoph G <foss@grueninger.de>
+
+- update to 5.13.0
+  * GraphBLAS v7.2.0:  see GraphBLAS/Doc/ChangeLog for details.
+    - performance:  more compact serialization (ZSTD added, now the
+        default compression method).
+    - MATLAB interface: faster linear indexing, reshape, bandwidth,
+        istril, istriu, isbanded, isdiag.  C(I,J)=A can now grow the
+        size of C.
+    - features: reshape methods, cube root operator, isStoredElement
+    - bugs: a minor bug; user-defined types were incorrectly limited to
+        128 bytes in size in v7.0.3.
+- remove unused rules from rpmlintrc
+
+-------------------------------------------------------------------
 Wed Apr 13 08:41:01 UTC 2022 - David Anes <david.anes@suse.com>
 
 - update to 5.12.0:

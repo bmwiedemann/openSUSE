@@ -1,7 +1,2 @@
-# False positives
-addFilter("shlib-unversioned-lib")
-addFilter("shlib-policy-missing-lib")
-
 # rpmlint could be smarter
-addFilter("shlib-policy-nonversioned-dir")
 addFilter("no-binary")
