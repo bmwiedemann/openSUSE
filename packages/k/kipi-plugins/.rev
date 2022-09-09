@@ -324,4 +324,12 @@ kipi-plugins will not be part of digikam 6.0.0 anymore, but it is still used by 
     <comment>KDE Release Gear 22.08.0 (forwarded request 997667 from cgiboudeaux)</comment>
     <requestid>997844</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>994e1cfe4d8636d8709c3f56fbdf54f1</srcmd5>
+    <version>22.08.1</version>
+    <time>1662740789</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.08.1</comment>
+    <requestid>1002035</requestid>
+  </revision>
 </revisionlist>
