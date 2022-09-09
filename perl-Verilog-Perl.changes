@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep  2 03:12:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.480
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+
+  * Verilog-Perl 3.480 2022-09-01
+
+  ****  Fix vrename ignoring % (#1674). [Wenjun]
+
+-------------------------------------------------------------------
 Mon Jun  7 03:09:20 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.478
