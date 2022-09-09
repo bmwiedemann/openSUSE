@@ -453,4 +453,12 @@ Replaces sr#890404</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>994168</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>c83e320a4643d37aaa432e0299a5f18b</srcmd5>
+    <version>2.86.1</version>
+    <time>1662740532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001781</requestid>
+  </revision>
 </revisionlist>

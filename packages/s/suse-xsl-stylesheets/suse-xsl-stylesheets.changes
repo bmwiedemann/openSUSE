@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  7 12:15:04 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.86.1
+
+- Update 2.86.1
+  - Add missing elements to fix #484
+  - Use new jQuery syntax (report bug links)
+
+-------------------------------------------------------------------
 Tue Aug  2 11:53:48 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.86.0
 
 - Update 2.86.0
