@@ -1,0 +1,12 @@
+Index: pydantic-1.10.2/setup.cfg
+===================================================================
+--- pydantic-1.10.2.orig/setup.cfg
++++ pydantic-1.10.2/setup.cfg
+@@ -11,6 +11,7 @@ filterwarnings =
+     # for Python 3.11
+     ignore:path is deprecated.*:DeprecationWarning:certifi
+     ignore:module 'sre_constants' is deprecated:DeprecationWarning:pkg_resources
++    ignore:.*urllib3.contrib.pyopenssl.*:DeprecationWarning
+ 
+ [flake8]
+ max-line-length = 120
