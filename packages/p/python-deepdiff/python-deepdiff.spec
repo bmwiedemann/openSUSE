@@ -28,7 +28,7 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module jsonpickle}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module ordered-set >= 4.0.2 with %python-ordered-set < 4.2}
+BuildRequires:  %{python_module ordered-set >= 4.1.0 with %python-ordered-set < 4.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
@@ -37,7 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Requires:       (python-ordered-set >= 4.0.2 with python-ordered-set < 4.2)
+Requires:       (python-ordered-set >= 4.1.0 with python-ordered-set < 4.2)
 Recommends:     python-clevercsv
 Recommends:     python-click
 Recommends:     python-jsonpickle
