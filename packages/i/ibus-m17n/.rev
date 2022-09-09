@@ -240,4 +240,13 @@
 - Add 256x256 icon to m17n.appdata.xml</comment>
     <requestid>1001045</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e8ef59e3439902469b4401a042320fa1</srcmd5>
+    <version>1.4.13</version>
+    <time>1662740857</time>
+    <user>dimstar_suse</user>
+    <comment>update: 1.4.11 -&gt; 1.4.13
+- Added translations using Weblate (Arabic updated, Georgian added)</comment>
+    <requestid>1001924</requestid>
+  </revision>
 </revisionlist>
