@@ -18,7 +18,7 @@
 
 %define cpan_name Test-File-Contents
 Name:           perl-Test-File-Contents
-Version:        0.241
+Version:        0.242
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Test routines for examining the contents of files

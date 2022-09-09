@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep  2 03:11:33 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.242
+   see /usr/share/doc/packages/perl-Test-File-Contents/Changes
+
+  0.242 Thu 01 Sep 2022
+        - No functional changes
+        - Corrected test dependencies
+          (Test::Builder::Tester and Test::Builder::Tester::Color were missing)
+
+-------------------------------------------------------------------
 Thu Aug 11 03:11:53 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.241
