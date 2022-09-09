@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep  3 19:13:07 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to version 56.1 
+  * Support format 5 for bitmap glyphs
+  * #1666: Fix reproducible PDF generation with embedded images
+  * #1668: Fix @page:nth() selector
+  * #1674: Follow max-height on footnot area, with financial support from Code & Co.
+  * #1678: Fix gradients with opacity set
+
+-------------------------------------------------------------------
 Mon May 16 11:21:00 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 55.0 

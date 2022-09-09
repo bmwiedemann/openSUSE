@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-weasyprint
-Version:        55.0
+Version:        56.1
 Release:        0
 Summary:        Python module to convert web documents to PDF
 License:        BSD-3-Clause
@@ -36,9 +36,9 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Requires:       libgobject-2_0-0
 Requires:       pango
-Requires:       python-base >= 3.7
 Requires:       python-Pillow >= 4.0.0
 Requires:       python-Pyphen >= 0.9.1
+Requires:       python-base >= 3.7
 Requires:       python-cffi >= 0.6
 Requires:       python-cssselect2 >= 0.1
 Requires:       python-html5lib >= 1.1

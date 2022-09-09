@@ -88,4 +88,17 @@
 </comment>
     <requestid>977518</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2310850bc7d8f013c7d9feffed9840f9</srcmd5>
+    <version>56.1</version>
+    <time>1662740858</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 56.1 
+  * Support format 5 for bitmap glyphs
+  * #1666: Fix reproducible PDF generation with embedded images
+  * #1668: Fix @page:nth() selector
+  * #1674: Follow max-height on footnot area, with financial support from Code &amp; Co.
+  * #1678: Fix gradients with opacity set</comment>
+    <requestid>1001923</requestid>
+  </revision>
 </revisionlist>
