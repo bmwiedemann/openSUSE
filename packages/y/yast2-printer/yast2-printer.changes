@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  9 08:24:35 UTC 2022 - Michal Filka <mfilka@suse.com>
+
+- bsc#1203227
+  - Replaced egrep with grep -E.
+- 4.5.2
+
+-------------------------------------------------------------------
 Tue Jul 19 11:03:57 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Removed the libX11 dependency (bsc#1201641)
