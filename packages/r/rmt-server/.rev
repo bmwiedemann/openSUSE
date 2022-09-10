@@ -1175,4 +1175,12 @@ PubCloud:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>994171</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>02b0cb1a8bbe0116da4dd94ab5b69050</srcmd5>
+    <version>2.9</version>
+    <time>1662833835</time>
+    <user>dimstar_suse</user>
+    <comment>- Release version 2.9: Implement `System-Token` header handling to improve unique system reporting.</comment>
+    <requestid>1002350</requestid>
+  </revision>
 </revisionlist>
