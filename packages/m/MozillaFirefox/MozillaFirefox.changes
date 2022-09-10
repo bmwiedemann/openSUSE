@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  9 05:59:03 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Adjust memory requirements to fix build on aarch64
+
+-------------------------------------------------------------------
 Wed Sep  7 06:50:24 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 104.0.2 (boo#1203177)

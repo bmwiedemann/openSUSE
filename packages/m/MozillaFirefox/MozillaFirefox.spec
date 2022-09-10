@@ -401,7 +401,7 @@ EOF
 source ./.obsenv.sh
 
 %ifarch aarch64 %arm ppc64 ppc64le
-%limit_build -m 2000
+%limit_build -m 2500
 %endif
 
 # Generating mozconfig

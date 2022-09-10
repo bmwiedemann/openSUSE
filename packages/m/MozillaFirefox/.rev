@@ -5810,4 +5810,12 @@
     affecting some users (boo#1203003)</comment>
     <requestid>1001583</requestid>
   </revision>
+  <revision rev="375" vrev="2">
+    <srcmd5>15dcfa7223d9d11bffa31a253d45b848</srcmd5>
+    <version>104.0.2</version>
+    <time>1662833811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002272</requestid>
+  </revision>
 </revisionlist>
