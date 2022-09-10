@@ -193,8 +193,6 @@ Recommends:     wol-32bit
 Recommends:     acpica-32bit
 Recommends:     mcelog-32bit
 Recommends:     numactl-32bit
-Recommends:     ucode-amd-32bit
-Recommends:     ucode-intel-32bit
 Provides:       pattern() = enhanced_base%2d32bit
 Group:          Metapackages
 Supplements:    packageand(patterns-base-32bit:patterns-base-enhanced_base)

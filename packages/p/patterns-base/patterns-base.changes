@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep  9 11:00:03 CEST 2022 - ro@suse.de
+
+- drop recommends for ucode-intel and ucode-amd, these packages
+  have supplements to be pulled in on the respective cpus and
+  there is no point having both installed (doubling the number
+  of reboot-needed updates) 
+
+-------------------------------------------------------------------
 Mon Sep  5 10:56:58 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Add microos-tools to transactional_base (boo#1199520)

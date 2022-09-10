@@ -528,10 +528,6 @@ Recommends:     mcelog
 %ifarch aarch64 x86_64
 Recommends:     numactl
 %endif
-%ifarch %{ix86} x86_64
-Recommends:     ucode-amd
-Recommends:     ucode-intel
-%endif
 # #754959
 %ifarch %{ix86} x86_64
 Suggests:       hyper-v
