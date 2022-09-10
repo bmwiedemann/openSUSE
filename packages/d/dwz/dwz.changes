@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  8 17:53:27 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add dwz-use-grep-E-instead-of-egrep.patch in order
+  to fix build with latest grep package.
+
+-------------------------------------------------------------------
 Thu Apr 28 10:08:03 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Drop binutils-gold dependency for testsuite as binutils-gold

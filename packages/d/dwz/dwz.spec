@@ -83,6 +83,7 @@ Patch2:         dwz-handle-reordered-dup-chains-in-create-import-tree.patch
 Patch3:         dwz-enable-odr-by-default.patch
 Patch4:         dwz-testsuite-fix-pr27463.sh-on-riscv64.patch
 Patch5:         dwz-remove-odr-struct-multifile.sh.patch
+Patch6:         dwz-use-grep-E-instead-of-egrep.patch
 
 %if %{build_main}
 %description
@@ -116,6 +117,7 @@ This package contains the testsuite results from DWZ.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 cp ../../SOURCES/tramp3d-v4.cpp.xz .
 xz -d tramp3d-v4.cpp.xz
 
