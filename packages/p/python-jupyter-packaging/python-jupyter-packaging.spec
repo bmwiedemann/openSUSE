@@ -17,13 +17,13 @@
 
 
 Name:           python-jupyter-packaging
-Version:        0.12.2
+Version:        0.12.3
 Release:        0
 Summary:        Jupyter Packaging Utilities
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/jupyter-packaging
-Source:         https://files.pythonhosted.org/packages/source/j/jupyter-packaging/jupyter_packaging-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/j/jupyter_packaging/jupyter_packaging-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module deprecation}
 BuildRequires:  %{python_module hatchling}
