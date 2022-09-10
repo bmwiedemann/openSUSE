@@ -38,10 +38,11 @@ Requires:       perl
 URL:            http://savannah.nongnu.org/projects/quilt
 Source:         %{name}-%{version}.tar.bz2
 Source1:        suse-start-quilt-mode.el
-Patch1:         expand.diff
-Patch2:         quilt-support-vimdiff.patch
-Patch3:         test-faildiff-workaround-order-bug.patch
-Patch4:         suse-workaround-pseudo-release.patch
+Patch1:         avoid-warnings-with-grep-3.8.patch
+Patch81:        expand.diff
+Patch82:        quilt-support-vimdiff.patch
+Patch83:        test-faildiff-workaround-order-bug.patch
+Patch84:        suse-workaround-pseudo-release.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %if 0%{?suse_version}
@@ -62,9 +63,10 @@ un-applied, refreshed, and more.
 %prep
 %setup -q
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%patch81 -p1
+%patch82 -p1
+%patch83 -p1
+%patch84 -p1
 
 %build
 # --with-rpmbuild=/usr/lib/rpm/rpmb:

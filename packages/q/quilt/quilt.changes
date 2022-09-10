@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep  9 08:18:31 UTC 2022 - Jean Delvare <jdelvare@suse.com>
+
+- avoid-warnings-with-grep-3.8.patch: Avoid warnings with grep
+  3.8. GNU grep version 3.8 became more strict about needless
+  quoting in patterns. There was an occurrence of that in quilt,
+  which broke the test suite (boo#1203230).
+
+-------------------------------------------------------------------
 Tue Feb 15 14:07:30 UTC 2022 - Jean Delvare <jdelvare@suse.com>
 
 - Update to version 0.67:

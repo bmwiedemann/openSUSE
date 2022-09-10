@@ -571,4 +571,12 @@ patches/vrss.patch (forwarded request 226944 from jdelvare)</comment>
   * quilt.el: Fix quilt-editable when QUILT_PATCHES_PREFIX is set</comment>
     <requestid>955039</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>1f955f2a75c22bca086857ba40212d53</srcmd5>
+    <version>0.67</version>
+    <time>1662833834</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002352</requestid>
+  </revision>
 </revisionlist>
