@@ -20289,6 +20289,7 @@ unsorted:
   - perl-Test-Object 
   - perl-Test-Output 
   - perl-Test-Perl-Critic 
+  - perl-Test-PerlTidy 
   - perl-Test-Pod 
   - perl-Test-Pod-Coverage 
   - perl-Test-Refcount 
@@ -23074,7 +23075,6 @@ unsorted:
   - python310-eliot 
   - python310-email-reply-parser 
   - python310-email-validator 
-  - python310-email_validator 
   - python310-emcee 
   - python310-emoji 
   - python310-empy 
@@ -26321,7 +26321,6 @@ unsorted:
   - python38-eliot 
   - python38-email-reply-parser 
   - python38-email-validator 
-  - python38-email_validator 
   - python38-emcee 
   - python38-emoji 
   - python38-empy 
@@ -29645,7 +29644,6 @@ unsorted:
   - python39-eliot 
   - python39-email-reply-parser 
   - python39-email-validator 
-  - python39-email_validator 
   - python39-emcee 
   - python39-emoji 
   - python39-empy 
