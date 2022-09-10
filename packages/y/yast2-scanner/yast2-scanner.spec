@@ -20,7 +20,7 @@
 # which are pulled in by Autoreqprov because of the displaytest tool:
 %define my_requires /tmp/my-requires
 Name:           yast2-scanner
-Version:        4.5.0
+Version:        4.5.1
 Release:        0
 Summary:        YaST2 - Scanner Configuration
 License:        GPL-2.0-only
