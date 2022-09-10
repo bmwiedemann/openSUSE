@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep  9 13:43:08 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12.4:
+  * chore: release 0.12.4
+  * chore: add license headers
+  * fix: regenerate pb2 using latest protos
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Sep 12 10:07:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.12.3:

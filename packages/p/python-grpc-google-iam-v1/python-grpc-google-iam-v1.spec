@@ -1,7 +1,7 @@
 #
 # spec file for package python-grpc-google-iam-v1
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-grpc-google-iam-v1
-Version:        0.12.3
+Version:        0.12.4
 Release:        0
 Summary:        GRPC library for the google-iam-v1 service
 License:        Apache-2.0
@@ -28,11 +28,11 @@ Source:         https://files.pythonhosted.org/packages/source/g/grpc-google-iam
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-googleapis-common-protos >= 1.5.2
+Requires:       python-googleapis-common-protos >= 1.56.0
 Requires:       python-grpcio >= 1.0.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module googleapis-common-protos >= 1.5.2}
+BuildRequires:  %{python_module googleapis-common-protos >= 1.56.0}
 BuildRequires:  %{python_module grpcio >= 1.0.0}
 # /SECTION
 %python_subpackages
