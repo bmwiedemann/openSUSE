@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  9 08:21:11 UTC 2022 - Michal Filka <mfilka@suse.com>
+
+- bsc#1203227 
+  - Replaced egrep with grep -E.
+- 4.5.5
+
+-------------------------------------------------------------------
 Mon May 16 07:03:10 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Extract the translatable strings also from the Qt *.ui files
