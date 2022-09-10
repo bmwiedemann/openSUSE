@@ -18,10 +18,10 @@
 
 %define cpan_name Path-Tiny
 Name:           perl-Path-Tiny
-Version:        0.122
+Version:        0.124
 Release:        0
-Summary:        File path utility
 License:        Apache-2.0
+Summary:        File path utility
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
