@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Sep 08 18:40:34 UTC 2022 - lduncan@suse.com
+
+- Update to version 0.102:
+  * Preparing for version v0.102
+  * meson: just specify subdir for header-file install.
+  * build: only specify version in one place
+  * Fix two compiler warnings in slp.c
+  * meson: update README
+  * meson: small option usage cleanup
+  * meson: several updates based on review
+  * meson: fix error building shared lib with version
+  * meson: convert some args to 'features'
+  * meson: update README with meson info
+  * Add a decprecation warning to configure script.
+  * meson: Add ability to disable static library build
+  * meson builds now working
+  * git: ignore all shared library files
+  * build: Remove these two files, no longer used
+  * Add a package config file for libisns.a
+  * isnsd: socket: Make sure to create IPv6 socket default
+  * isnsadm: Fix unparse command line options "-V" and "-r"
+  * Typo: s/overried/override/
+  * Removed bash-specific function definitions.
+
+  Also, added patch to quiet compiler (soon upstream):
+  * Quiet-a-commpiler-warning.patch
+
+  This changes the SPEC file to use the new meson build system,
+  supported in open-isns starting with version 0.102, instead of
+  autoconf/make.
+
+  Changes in the code:
+  * no longer deliver isnsetup script or man page (development only)
+  * now deliver a package config file for the library
+  * now deliver both the static library and a shared library
+
+-------------------------------------------------------------------
 Mon Feb 01 18:23:30 UTC 2021 - lduncan@suse.com
 
 - Update to version 0.101:

@@ -1,7 +1,7 @@
 #
 # spec file for package open-isns
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,18 @@ Name:           open-isns
 Summary:        Partial Implementation of iSNS iSCSI registration
 License:        LGPL-2.1-or-later
 Group:          System/Kernel
-Version:        0.101
+Version:        0.102
 Release:        0
 Source:         %{name}-%{version}.tar.xz
+Patch1:         Quiet-a-commpiler-warning.patch
 URL:            https://github.com/open-iscsi/%{name}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  glibc-devel
 BuildRequires:  make
+BuildRequires:  meson >= 0.55.0
+BuildRequires:  openslp-devel
 BuildRequires:  openssl-devel
 BuildRequires:  systemd-rpm-macros
 %{?systemd_requires}
@@ -46,38 +49,33 @@ iSNS, iSCSI targets can be registered to a central iSNS server and
 initiators can be configured to discover the targets by asking the
 iSNS server.
 
-%package -n open-isns-devel
+%package devel
 Summary:        Development files for open-isns
 Group:          Development/Libraries/C and C++
-Requires:       open-isns = %{version}
+Requires:       %{name} = %{version}
 
-%description -n open-isns-devel
+%description devel
 Files to develop an application using the open-isns library.
 
 %prep
-%setup -n %{name}-%{version}
+%autosetup -p1
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
-autoconf
-autoheader
-%configure --prefix=%{_prefix} --with-security
-make OPTFLAGS="%{optflags}"
+%meson --default-library=both
+%meson_build
 
 %install
-make DESTDIR="%{buildroot}" install
-if [ ! -d "%{buildroot}/usr/sbin" ] ; then
-	mkdir -p %{buildroot}/usr/sbin
-fi
+%meson_install
 ln -sf /usr/sbin/service %{buildroot}/usr/sbin/rcisnsd
-make DESTDIR="%{buildroot}" install_hdrs install_lib
-install -m 755 isnssetup %{buildroot}%{_sbindir}
 
 %post
+%{run_ldconfig}
 %{service_add_post isnsd.socket isnsd.service}
 
 %postun
 %{service_del_postun isnsd.socket isnsd.service}
+%{run_ldconfig}
 
 %pre
 %{service_add_pre isnsd.socket isnsd.service}
@@ -85,12 +83,14 @@ install -m 755 isnssetup %{buildroot}%{_sbindir}
 %preun
 %{service_del_preun isnsd.socket isnsd.service}
 
+%post devel -p %{run_ldconfig}
+%postun devel -p %{run_ldconfig}
+
 %files
 %defattr(-,root,root)
 %{_sbindir}/isnsd
 %{_sbindir}/isnsadm
 %{_sbindir}/isnsdd
-%{_sbindir}/isnssetup
 %dir %{_sysconfdir}/isns
 %attr(0600,root,root) %config(noreplace) %{_sysconfdir}/isns/isnsd.conf
 %attr(0600,root,root) %config(noreplace) %{_sysconfdir}/isns/isnsadm.conf
@@ -101,12 +101,12 @@ install -m 755 isnssetup %{buildroot}%{_sbindir}
 %doc %{_mandir}/man8/isnsd.8%{?ext_man}
 %doc %{_mandir}/man8/isnsadm.8%{?ext_man}
 %doc %{_mandir}/man8/isnsdd.8%{?ext_man}
-%doc %{_mandir}/man8/isnssetup.8%{?ext_man}
 %doc %{_mandir}/man5/isns_config.5%{?ext_man}
 %{_unitdir}/isnsd.service
 %{_unitdir}/isnsd.socket
+%{_libdir}/libisns.so.0
 
-%files -n open-isns-devel
+%files devel
 %defattr(-,root,root)
 %dir %{_includedir}/libisns
 %{_includedir}/libisns/attrs.h
@@ -119,5 +119,7 @@ install -m 755 isnssetup %{buildroot}%{_sbindir}
 %{_includedir}/libisns/types.h
 %{_includedir}/libisns/util.h
 %{_libdir}/libisns.a
+%{_libdir}/libisns.so
+%{_libdir}/pkgconfig/libisns.pc
 
 %changelog
