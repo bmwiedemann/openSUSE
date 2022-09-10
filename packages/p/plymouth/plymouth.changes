@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  8 08:12:03 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 22.02.122+73.9826df5:
+  * Update Makefile.am
+  * Add README in .md format.
+
+-------------------------------------------------------------------
 Wed Aug  31 14:31:39 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
 - Update to version 22.02.122+70.614d2db:

@@ -23,7 +23,7 @@
 %global soversion 5
 
 Name:           plymouth
-Version:        22.02.122+70.614d2db
+Version:        22.02.122+73.9826df5
 Release:        0
 Summary:        Graphical Boot Animation and Logger
 License:        GPL-2.0-or-later
@@ -547,7 +547,7 @@ fi
 %{_unitdir}/*
 %ghost %{_localstatedir}/log/boot.log
 %{_libexecdir}/plymouth/plymouthd-fd-escrow
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md ply_header.svg
 %license COPYING
 
 %files lang -f %{name}.lang
