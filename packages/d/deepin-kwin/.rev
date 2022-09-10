@@ -73,4 +73,41 @@
     <comment></comment>
     <requestid>982815</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>320a7526817c3910ef6da10610ab2725</srcmd5>
+    <version>5.5.11</version>
+    <time>1662833853</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.5.11
+  * Add the 'test-prj-running.sh' script
+  * Add API to capture window data
+  * Add API to record and shot screen
+  * Add func about maxi button long press
+  * Remove qt deps for windowtool
+- Drop fix-build-on-5_18_6.patch, no longer support old kwin
+- Add fix-build-on-5_25_3.patch instead of dde-kwin.5.4.26.patch
+
+- Update version 5.4.26
+  * update window raduis for effects
+  * Add splitmenu translate
+  * Add a dependency on 'kwin-wayland'
+  * Add func about maxi button long press
+  * Modify code based on code review results
+  * Fix bugs
+- Add dde-kwin.5.4.26.patch, fix build on kwin 5.24+
+- Add drop-nonexistent-translations.patch
+- No longer need kwayland-server (boo#1200318)
+- Drop deepin-kwin-crash.patch
+
+  
+
+- Add fix-build-on-5_18_6.patch for leap 
+
+- Update version 5.4.19
+  * Frees heap memory when the program exits
+  * Disable multitasking
+  * disable effects by default
+  * Support DDE Wayland (forwarded request 1002409 from hillwood)</comment>
+    <requestid>1002410</requestid>
+  </revision>
 </revisionlist>
