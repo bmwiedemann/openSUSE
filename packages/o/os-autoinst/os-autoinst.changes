@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 10 11:23:57 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1662625276.a9cb3fd:
+  * Extend tests of IPMI backend or mark lines as uncoverable
+  * Fix overriding die-handler in IPMI backend
+  * Move loop to wait for screen change from autotest to backend
+  * Disable VMWare test for all archs as it is generally unstable
+  * Make lowercase settings fatal
+  * Extend unit tests of backend driver
+
+-------------------------------------------------------------------
 Tue Sep 06 11:58:20 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1662465492.44da018:
