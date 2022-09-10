@@ -18,7 +18,7 @@
 
 %define cpan_name Log-Log4perl
 Name:           perl-Log-Log4perl
-Version:        1.55
+Version:        1.56
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Log4j implementation for Perl
