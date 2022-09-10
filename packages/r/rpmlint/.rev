@@ -3984,4 +3984,18 @@ oddjob-gpupdate isn't blocked)</comment>
 - Rebase disable-flake-and-cov.patch patch.</comment>
     <requestid>1000593</requestid>
   </revision>
+  <revision rev="412" vrev="1">
+    <srcmd5>41103ef253d91a753422bcf619a2c243</srcmd5>
+    <version>2.3.0+git20220907.165f9c76</version>
+    <time>1662833797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git20220907.165f9c76:
+  * Fix a flake8 issue.
+  * tools/generate-fedora-users-groups: output in desired format
+  * tools/generate-fedora-users-groups: skip comment lines
+  * non-conffile-in-etc: skip for /etc/ld.so.conf.d/* files
+  * Update Fedora config
+  * Ignore one bugbear error.</comment>
+    <requestid>1001894</requestid>
+  </revision>
 </revisionlist>

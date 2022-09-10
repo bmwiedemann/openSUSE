@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 08 10:33:18 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220907.165f9c76:
+  * Fix a flake8 issue.
+  * tools/generate-fedora-users-groups: output in desired format
+  * tools/generate-fedora-users-groups: skip comment lines
+  * non-conffile-in-etc: skip for /etc/ld.so.conf.d/* files
+  * Update Fedora config
+  * Ignore one bugbear error.
+
+-------------------------------------------------------------------
 Thu Sep 01 07:32:04 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.3.0+git20220901.67701476:
