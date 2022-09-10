@@ -1,7 +1,7 @@
 #
 # spec file for package bs1770gain
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,15 @@
 
 
 Name:           bs1770gain
-Version:        0.7.0
+Version:        0.8.4.1
 Release:        0
 Summary:        A loudness scanner compliant with ITU-R BS.1770
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
-URL:            https://sourceforge.net/projects/bs1770gain/
-Source:         https://sourceforge.net/projects/bs1770gain/files/%{name}/%{version}/%{name}-%{version}.tar.gz
+URL:            http://pbelkner.de/projects/web/bs1770gain
+Source0:        http://pbelkner.de/count/download.php?path=projects/files/%{name}/%{name}/%{version}&file=%{name}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         remove-inappropriate-text.patch
+
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
@@ -42,12 +43,13 @@ It helps normalizing the loudness of audio and video files to the same
 level.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CPPFLAGS="$CPPFLAGS $(pkg-config --cflags libavutil)"
-%configure
+%configure \
+	--with-ffmpeg=%{_prefix} \
+	%{nil}
 %make_build
 
 %install
