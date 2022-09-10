@@ -247,7 +247,6 @@ Requires:       bash
 Requires:       git-core = %{version}
 Requires(pre):  %fillup_prereq
 %if 0%{?suse_version} >= 1500
-Requires(pre):  group(nogroup)
 %{?sysusers_requires}
 %{?systemd_requires}
 %else
