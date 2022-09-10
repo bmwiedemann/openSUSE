@@ -79,7 +79,6 @@ compressor's dictionary can find better cross module commonality.
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %cmake_install
 b="%buildroot"
-find "$b" -type f -name "*.a" -print -delete
 mkdir -p "$b/%_includedir"
 cp -a SPIRV glslang "$b/%_includedir/"
 find "$b/%_includedir/" -type f ! -iname "*.h" -a ! -iname "*.hpp" -print -delete
@@ -87,10 +86,14 @@ ln -s SPIRV/spirv.hpp "$b/%_includedir/"
 find "$b/%_includedir/" -type f -exec chmod a-x "{}" "+"
 cp build/StandAlone/libglslang-default-resource-limits.so "$b/%_libdir/"
 
-# 3rd party programs use -lOGLCompiler (because pristine glslang ships .a files),
+# 3rd party programs use -lOGLCompiler (because pristine glslang shipped .a files),
 # so satisfy them under our shared build.
-ln -s libglslang.so "$b/%_libdir/libOGLCompiler.so"
-ln -s libglslang.so "$b/%_libdir/libOSDependent.so"
+for i in libOGLCompiler libOSDependent libGenericCodeGen libMachineIndependent; do
+	ln -s libglslang.so "$b/%_libdir/$i.so"
+	rm -f "$b/%_libdir/$i.a"
+done
+sed -i 's,\.a",\.so",g' %buildroot%{_datadir}/glslang/glslang-targets-*.cmake
+
 %fdupes %buildroot/%_prefix
 
 %post   -n %lname -p /sbin/ldconfig
@@ -104,7 +107,9 @@ ln -s libglslang.so "$b/%_libdir/libOSDependent.so"
 %_bindir/spirv*
 %_libdir/cmake/
 %_libdir/*resource*.so
+%_libdir/libGenericCodeGen.so
 %_libdir/libHLSL.so
+%_libdir/libMachineIndependent.so
 %_libdir/libOGLCompiler.so
 %_libdir/libOSDependent.so
 %_libdir/libSPIRV.so
