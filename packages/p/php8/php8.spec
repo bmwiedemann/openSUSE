@@ -53,7 +53,7 @@
 %define build_argon2 1
 %endif
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.1.9
+Version:        8.1.10
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        PHP-3.01
@@ -65,7 +65,7 @@ Source2:        %{php_name}-fpm.conf
 Source5:        README.macros
 Source6:        macros.php
 Source8:        https://secure.php.net/distributions/php-%{version}.tar.xz.asc
-#Source9:       https://www.php.net/distributions/php-keyring.gpg#/%{php_name}.keyring
+#Source9:       https://www.php.net/distributions/php-keyring.gpg#/%%{php_name}.keyring
 Source9:        %{php_name}.keyring
 Source11:       %{php_name}.rpmlintrc
 Source12:       php-fpm.tmpfiles.d
