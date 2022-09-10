@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 09 10:16:30 UTC 2022 - trenn@suse.de
+
+- Update to version 2.0.15.0.g01a39cb:
+  * Create codeql.yml
+  * Create makefile.yml
+  * Fix crash when memhog uses local policy
+  * Fix memhog uses the wrong policy but still works properly
+  * Fix the example usage in the man manual.
+  * fix memory and file handle leaks
+  * Do not reuse variable names in subscopes and delete useless blank lines
+  * Delete unused header files
+  * Limit the scope of function
+  * avoid declaring a global variable
+  * Fix build error on riscv64 by linking libatomic
+
+-------------------------------------------------------------------
 Tue May 10 09:48:02 UTC 2022 - moritz.kodytek@suse.com
 
 - Update to version 2.0.14.39.g8b18345:
