@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Sep  9 13:42:37 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.3.0:
+  * Added change history which can display document changes
+    (modified, saved, ...) in the margin or in the text.
+  * Add SC_MARK_BAR marker and INDIC_POINT_TOP indicator.
+  * Improve drawing of rounded rectangles on Direct2D.
+  * Line state optimized to avoid excess allocations by always
+    allocating for every line.
+  * Add SC_FOLDACTION_CONTRACT_EVERY_LEVEL option to contract
+    every level for SCI_FOLDALL [Bug #2340].
+  * Enable multiline regex for gcc and clang when REGEX_MULTILINE
+  * defined [Bug #2338].
+  * Stop including STYLE_CALLTIP when calculating line height [Bug
+    #2341].
+  * Fix incorrect display of selection when printing in some modes
+    [Bug #2335].
+  * Fix crash on Qt when showing autocompletion and the caret
+    isn't on a screen.
+- Update so versions to match upstream's.
+
+-------------------------------------------------------------------
 Wed Jul 13 02:35:24 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.2.4:
