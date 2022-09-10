@@ -1,7 +1,7 @@
 #
 # spec file for package shorewall
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
+%{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 Name:           shorewall
 Version:        5.2.8
 Release:        0
@@ -47,6 +48,8 @@ Patch1:         shorewall-init-fillup-install.patch
 Patch2:         shorewall-fillup-install.patch
 # PATCH-FIX-OPENSUSE Shorewall-lite (6) use of fillup template
 Patch3:         shorewall-lite-fillup-install.patch
+# PATH-FIX-OPENSUSE invalid manpage boo#1203006
+Patch4:         shorewall-fix-install-manpages.patch
 BuildRequires:  bash >= 4
 BuildRequires:  perl-base
 BuildRequires:  pkgconfig
@@ -177,16 +180,18 @@ This package contains the core libraries for Shorewall.
 %setup -q -c -a1 -a2 -a3 -a4 -a5 -a6
 #PATCH-FIX-OPENSUSE geo_ip has no LE
 #We keep it with this dynamic form to avoid maintaining manual patch
-find . \( -name shorewall*.conf -or -name shorewall*.conf.annotated \) -exec sed -i "s,GEOIPDIR=/usr/share/xt_geoip/LE,GEOIPDIR=/usr/share/xt_geoip,g" {} \;
+find . \( -name shorewall*.conf -or -name shorewall*.conf.annotated \) -exec sed -i "s,GEOIPDIR=%{_datadir}/xt_geoip/LE,GEOIPDIR=%{_datadir}/xt_geoip,g" {} \;
 #PATCH-FIX-OPENSUSUSE for fillup
 pushd %{name}-init-%{version}
 %patch1 -p1
 popd
 pushd %{name}-%{version}
 %patch2 -p1
+%patch4 -p1
 popd
 pushd %{name}6-%{version}
 %patch2 -p1
+%patch4 -p1
 popd
 pushd %{name}-lite-%{version}
 %patch3 -p1
@@ -245,20 +250,27 @@ for i in $targets; do
 
     if [ $i != shorewall-init ];
     then
-       DESTDIR=%{buildroot} FILLUPDIR=%{_fillupdir} ./install.sh shorewallrc
+        BUILD=suse DESTDIR=%{buildroot} FILLUPDIR=%{_fillupdir} ./install.sh shorewallrc
     else
-       install -d %buildroot/%{_sysconfdir}/NetworkManager/dispatcher.d
-               %if 0%{?suse_version}
-               BUILD=suse \
-               %endif
-               DESTDIR=%{buildroot} FILLUPDIR=%{_fillupdir} ./install.sh shorewallrc
+        install -d %buildroot/%{_sysconfdir}/NetworkManager/dispatcher.d
+        BUILD=suse DESTDIR=%{buildroot} FILLUPDIR=%{_fillupdir} ./install.sh shorewallrc
 
-      if [ -f ${DESTDIR}%{_sysconfdir}/ppp ]; then
+        if [ -f ${DESTDIR}%{_sysconfdir}/ppp ]; then
             for directory in ip-up.d ip-down.d ipv6-up.d ipv6-down.d; do
                 mkdir -p ${DESTDIR}%{_sysconfdir}/ppp/$directory #SuSE doesn't create the IPv6 directories
                 cp -fp ${DESTDIR}${LIBEXEC}/shorewall-init/ifupdown ${DESTDIR}%{_sysconfdir}/ppp/$directory/shorewall
             done
-      fi
+        fi
+        # Move Networkmanager to _prefix
+        if [ -d "%buildroot/%{_sysconfdir}/NetworkManager/dispatcher.d" ]; then
+            install -d "%buildroot/%{_prefix}/lib/NetworkManager/"
+            mv -v "%buildroot/%{_sysconfdir}/NetworkManager/dispatcher.d" "%buildroot/%{_prefix}/lib/NetworkManager/dispatcher.d"
+        fi
+        # Move logrotate.d files to _prefix
+        if [ -d "%{buildroot}%{_sysconfdir}/logrotate.d" ]; then
+            install -d "%{buildroot}%{_distconfdir}"
+            mv -v "%{buildroot}%{_sysconfdir}/logrotate.d" "%{buildroot}%{_distconfdir}/logrotate.d"
+        fi
     fi
     popd
 done
@@ -275,6 +287,7 @@ rm -rf %buildroot%_initddir
 # Since 5.12 we need to remove them again
 rm -f %{buildroot}/%{_sysconfdir}/sysconfig/%{name}*
 
+# Move
 %pre
 %service_add_pre shorewall.service
 %if %conf_need_update
@@ -391,7 +404,9 @@ rm -f %{_sysconfdir}/%{name}/startup_disabled
 %dir %{_datadir}/%{name}/deprecated
 %dir %{_datadir}/%{name}/Shorewall
 %attr(0700,root,root) %dir %{_localstatedir}/lib/%{name}
-%config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
+%dir %{_distconfdir}
+%dir %{_distconfdir}/logrotate.d/
+%{_distconfdir}/logrotate.d/%{name}
 %{_datadir}/%{name}/version
 %{_datadir}/%{name}/actions.std
 %{_datadir}/%{name}/action.*
@@ -422,7 +437,9 @@ rm -f %{_sysconfdir}/%{name}/startup_disabled
 %dir %{_datadir}/%{name}-lite
 %dir %{_libexecdir}/%{name}-lite
 %attr(0700,root,root) %dir %{_localstatedir}/lib/%{name}-lite
-%config(noreplace) %{_sysconfdir}/logrotate.d/%{name}-lite
+%dir %{_distconfdir}
+%dir %{_distconfdir}/logrotate.d/
+%{_distconfdir}/logrotate.d/%{name}-lite
 %{_datadir}/%{name}-lite/version
 %{_datadir}/%{name}-lite/configpath
 %attr(- ,root,root) %{_datadir}/%{name}-lite/functions
@@ -447,7 +464,9 @@ rm -f %{_sysconfdir}/%{name}/startup_disabled
 %dir %{_datadir}/%{name}6/configfiles
 %dir %{_datadir}/%{name}6/deprecated
 %attr(0700,root,root) %dir %{_localstatedir}/lib/%{name}6
-%config(noreplace) %{_sysconfdir}/logrotate.d/%{name}6
+%dir %{_distconfdir}
+%dir %{_distconfdir}/logrotate.d/
+%{_distconfdir}/logrotate.d/%{name}6
 %{_datadir}/%{name}6/version
 %{_datadir}/%{name}6/actions.std
 %{_datadir}/%{name}6/action.*
@@ -475,7 +494,9 @@ rm -f %{_sysconfdir}/%{name}/startup_disabled
 %dir %{_datadir}/%{name}6-lite
 %dir %{_libexecdir}/%{name}6-lite
 %attr(0700,root,root) %dir %{_localstatedir}/lib/%{name}6-lite
-%config(noreplace) %{_sysconfdir}/logrotate.d/%{name}6-lite
+%dir %{_distconfdir}
+%dir %{_distconfdir}/logrotate.d/
+%{_distconfdir}/logrotate.d/%{name}6-lite
 %{_datadir}/%{name}6-lite/version
 %{_datadir}/%{name}6-lite/configpath
 %attr(- ,root,root) %{_datadir}/%{name}6-lite/functions
@@ -492,15 +513,17 @@ rm -f %{_sysconfdir}/%{name}/startup_disabled
 %attr(0755,root,root) %{_sbindir}/shorewall-init
 %dir %{_datadir}/%{name}-init
 %dir %{_libexecdir}/%{name}-init
-%dir %attr(0755,root,root) %{_sysconfdir}/NetworkManager
-%dir %attr(0755,root,root) %{_sysconfdir}/NetworkManager/dispatcher.d
-%attr(0755,root,root) %{_sysconfdir}/NetworkManager/dispatcher.d/01-%{name}
+%dir %attr(0755,root,root) %{_prefix}/lib//NetworkManager
+%dir %attr(0755,root,root) %{_prefix}/lib//NetworkManager/dispatcher.d
+%attr(0755,root,root) %{_prefix}/lib/NetworkManager/dispatcher.d/01-%{name}
 %{_datadir}/%{name}-init/version
 %attr(0544,root,root) %{_libexecdir}/%{name}-init/ifupdown
 %attr(0544,root,root) %{_sysconfdir}/sysconfig/network/if-down.d/%{name}
 %attr(0755,root,root) %{_sysconfdir}/sysconfig/network/if-up.d/%{name}
 %{_mandir}/man8/%{name}-init.8*
-%config(noreplace) %{_sysconfdir}/logrotate.d/%{name}-init
+%dir %{_distconfdir}
+%dir %{_distconfdir}/logrotate.d/
+%{_distconfdir}/logrotate.d/%{name}-init
 %attr(644,root,root) %{_unitdir}/%{name}-init.service
 
 %files core
