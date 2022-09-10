@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep  9 10:00:42 UTC 2022 - Jean Delvare <jdelvare@suse.de>
+
+2 recommended fixes from upstream:
+- news-fix-typo.patch: We ship the NEWS file so avoid including a
+  typo in it.
+- dmioem-fix-segmentation-fault-in-dmi_hp_240_attr.patch: Passing
+  NULL to a %s printf conversion specifier is illegal, and can
+  result in a segmentation fault. Current version of glibc doesn't
+  mind, but alternative, past or future libc implementations could
+  crash, so let's fix it.
+
+-------------------------------------------------------------------
 Mon Jun 27 15:48:12 UTC 2022 - Jean Delvare <jdelvare@suse.de>
 
 - Update to upstream version 3.4:
