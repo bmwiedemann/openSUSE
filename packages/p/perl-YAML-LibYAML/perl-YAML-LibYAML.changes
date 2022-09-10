@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep  4 03:13:51 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.84
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes
+
+  0.84 Sat 03 Sep 2022 09:20:20 PM CEST
+   - Add option ForbidDuplicateKeys (PR#105 tinita)
+
+-------------------------------------------------------------------
 Sun May  9 03:10:35 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.83
