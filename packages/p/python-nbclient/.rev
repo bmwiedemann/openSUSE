@@ -230,4 +230,12 @@
   * Fix tests for ipywidgets 8 #246 (@frenzymadness)</comment>
     <requestid>999713</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fa15ffaf727ad754fb6a04f9f7109cc3</srcmd5>
+    <version>0.6.8</version>
+    <time>1662833843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002372</requestid>
+  </revision>
 </revisionlist>

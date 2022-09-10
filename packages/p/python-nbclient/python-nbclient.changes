@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  9 16:47:56 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.6.8:
+  * Merged PRs
+    + Fix tests compatibility with IPython 8.5.0 #251 (@frenzymadness)
+
+-------------------------------------------------------------------
 Sun Aug 28 20:59:32 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6.7
