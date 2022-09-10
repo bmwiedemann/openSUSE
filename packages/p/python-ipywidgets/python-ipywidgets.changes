@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep  8 14:49:13 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 8.0.2:
+  * Add a regression test for time and datetime cross validation
+  * datetime test lint
+  * Accept None for Date[time]Picker widgets
+  * Export the NaiveDatetimePicker as well
+  * Delete unused import.
+  * Rename check_widgets -> check_widget_children to be more clear
+  * Fix tests#
+  * Allow Mappings to be given as the options in a selection widget
+    again.
+
+-------------------------------------------------------------------
 Sat Aug 20 14:50:46 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
