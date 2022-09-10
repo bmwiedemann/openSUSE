@@ -14,4 +14,12 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a1889a3d758065b58e224e71daaa6251</srcmd5>
+    <version>0.81</version>
+    <time>1662833848</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1002402</requestid>
+  </revision>
 </revisionlist>

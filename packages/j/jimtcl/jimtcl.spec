@@ -1,7 +1,7 @@
 #
 # spec file for package jimtcl
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define libjim_name libjim0_75
+
+%define libjim_name libjim0_81
 
 Name:           jimtcl
-Version:        0.75
+Version:        0.81
 Release:        0
 Summary:        A small embeddable Tcl interpreter
 License:        BSD-2-Clause
 Group:          Development/Languages/Tcl
-Url:            http://jim.tcl.tk
-Source:         jimtcl-%{version}.tar.gz
-Patch0:         jimtcl-fix_doc_paths.patch
+URL:            http://jim.tcl.tk
+Source:         https://github.com/msteveb/jimtcl/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  asciidoc
+BuildRequires:  hostname
 
 %description
 Jim is an opensource small-footprint implementation of the Tcl programming
@@ -38,8 +39,8 @@ UTF-8 support.
 %package        devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/Tcl
-Requires:       %{name} = %{version}
 Requires:       %{libjim_name} = %{version}
+Requires:       %{name} = %{version}
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
@@ -54,7 +55,7 @@ Jim is an opensource small-footprint implementation of the Tcl programming langu
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0
+
 iconv --from=ISO-8859-1 --to=UTF-8 AUTHORS > AUTHORS.new ; mv AUTHORS.new AUTHORS
 iconv --from=ISO-8859-1 --to=UTF-8 LICENSE > LICENSE.new ; mv LICENSE.new LICENSE
 
@@ -73,7 +74,7 @@ make test
 
 %install
 %make_install
-rm -rf %{buildroot}%{_datadir}/doc/%{name}
+rm -rf %{buildroot}%{_prefix}/docs
 pushd %{buildroot}%{_libdir}/
 ln -s libjim.so.* libjim.so
 popd
@@ -84,19 +85,26 @@ popd
 
 %files
 %defattr(-,root,root,-)
-%doc LICENSE AUTHORS README Tcl.html
+%license LICENSE
+%doc AUTHORS README
 %{_bindir}/jimsh
+%{_bindir}/jimdb
 
 %files -n %{libjim_name}
 %defattr(-,root,root,-)
-%doc LICENSE
+%license LICENSE
 %{_libdir}/libjim.so.*
+%dir %{_libdir}/jim
+%{_libdir}/jim/README.extensions
+%{_libdir}/jim/tcltest.tcl
 
 %files devel
 %defattr(-,root,root,-)
-%doc DEVELOPING README.extensions README.metakit README.namespaces README.oo README.utf-8 STYLE
+%license LICENSE
+%doc DEVELOPING README.metakit README.namespaces README.oo README.utf-8 STYLE Tcl.html
 %{_includedir}/*
 %{_bindir}/build-jim-ext
 %{_libdir}/libjim.so
+%{_libdir}/pkgconfig/jimtcl.pc
 
 %changelog
