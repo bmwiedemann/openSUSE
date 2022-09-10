@@ -17,7 +17,7 @@
 
 
 Name:           python-jupyterlab
-Version:        3.4.5
+Version:        3.4.6
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause

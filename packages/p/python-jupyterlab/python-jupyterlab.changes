@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep  8 14:56:13 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.4.6:
+  * Bugs fixed
+    + Update Python icon to be PSF Trademark compliant #13044
+      (@fcollonval)
+    + Reorder of webpackConfig merge #13042 (@fcollonval)
+    + Update xterm.js dependency #13036 (@fcollonval)
+    + Support stateStorage for API calls #13015 (@fcollonval)
+    + Conditional call to waitIsReady in reload #13011 (@fcollonval)
+    + Add scrolling to debugger variable renderer #12968 (@firai)
+    + Fix resizing and selection of debugger variable explorer grid
+      #12943 (@firai)
+  * Maintenance and upkeep improvements
+    + Fix lumino API documentation links #13021 (@fcollonval)
+  * Documentation improvements
+    + Fix lumino API documentation links #13021 (@fcollonval)
+
+-------------------------------------------------------------------
 Thu Aug 11 13:59:58 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 3.4.5:
