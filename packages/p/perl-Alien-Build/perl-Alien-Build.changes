@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Sep  6 03:06:13 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.68
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.68      2022-09-05 09:05:18 -0600
+    - Documentation improvements (gh#367)
+    - alien_diag from Test::Alien::Diag now can optionaly take a
+      hash reference as its last argument (gh#365, gh#366)
+    - alien_diag supports two new options properties and
+      list_properties (gh#365, gh#366)
+    - Document that alien_diag may take more than one alien as
+      an argument (this has always been the case, but never
+      documented (gh#366)
+  2.67      2022-09-03 17:07:40 -0600
+    - Test::Alien::Diag should now handle undef fields more
+      gracefully (gh#363, gh#364)
+  2.66      2022-09-01 13:29:15 -0600
+    - Validate SSL certificates for Fetch::HTTPTiny plugin if
+      ALIEN_DOWNLOAD_RULE is one of encrypt, digest_or_encrypt
+      or digest_and_encrypt (gh#362)
+  2.65      2022-08-30 11:17:41 -0600
+    - Fix POD name for Alien::Build::Manual::Security (gh#360)
+  2.64      2022-08-30 10:09:42 -0600
+    - Production release identical to 2.63.01
+    - !!! Notice of Change of Behavior !!!
+      In the near future, AB will require by default one of:
+       1. Secure https connection
+       2. Bundled pacakge (ie file:// URL)
+       3. Cryptographic signature
+      before extracting archives fetched off the internet.  You can test
+      the new behavior yourself by setting
+      ALIEN_DOWNLOAD_RULE to `digest_or_encrypt`.  More details can
+      be found in the Alien::Build::Manual::Security POD
+      !!! Notice of Change of Behavior !!!
+  2.63_01   2022-08-30 00:44:54 -0600
+    - New documentation Alien::Build::Manual::Security (gh#357)
+    - Compute $build->donwload_rule as soon as possible (gh#190, gh#358)
+    - ALIEN_DOWNLOAD_RULE=default is now a legal value.  It is currently
+      the same as 'warn' but will probably become 'digest_or_encrypt' in
+      the future (gh#356)
+    - Added notice in change of behavior (gh#190, gh#359)
+  2.62_01   2022-08-29 15:03:53 -0600
+    - Fixed bug introduced in 2.60_01 where file URLs were not considered
+      safe (gh#351, gh#355)
+  2.61_01   2022-08-28 15:49:06 -0600
+    - Added preload_plugin and postload_plugin to Alien::Build::rc
+      (gh#348, gh#349)
+  2.60_01   2022-08-28 10:37:01 -0600
+    - Documentation improvements (gh#333, gh#334, gh#342, gh#343, gh#344)
+    - Fixed a number of broken links in POD (gh#344)
+    - Added download_detail install property (gh#190, gh#344)
+    - Added download_rule method (gh#190, gh#344)
+    - The fetch hook and other plugins that use the same file hash can
+      and now should include a protocol field (gh#190, gh#344)
+
+-------------------------------------------------------------------
 Wed Aug 17 03:06:03 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.59
