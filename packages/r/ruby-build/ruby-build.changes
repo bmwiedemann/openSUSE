@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 10 12:15:54 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20220910.1.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20220910.1
+  * enable YJIT with 3.2.0-preview2
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20220910
+  * Fixed regex pattern for YJIT
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20220909
+  * YJIT support arm64 and aarch64 arch
+  * Added 3.2.0-preview2
+- Add dependency on libyaml-devel for building Ruby 3.2.0+.
+- Add missing dependencies on tar and make.
+
+-------------------------------------------------------------------
 Thu Aug 25 21:47:59 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20220825.

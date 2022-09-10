@@ -24,7 +24,7 @@
 %endif
 
 Name:           ruby-build
-Version:        20220825
+Version:        20220910.1
 Release:        0
 BuildArch:      noarch
 License:        MIT
@@ -39,6 +39,8 @@ BuildRequires:  bats
 Requires:       bash
 Requires:       curl
 Requires:       gcc
+Requires:       make
+Requires:       tar
 # ruby MRI BuildRequires
 Requires:       bison
 Requires:       automake
@@ -47,6 +49,7 @@ Requires:       gperf
 Requires:       graphviz
 Requires:       libffi-devel
 Requires:       libjpeg-devel
+Requires:       libyaml-devel
 Requires:       openssl-devel
 Requires:       readline-devel
 Requires:       tk-devel
