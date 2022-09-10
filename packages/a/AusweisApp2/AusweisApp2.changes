@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  7 07:39:34 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.24.2
+    * Fixed crashes on Android.
+    * Fixed a bug with changing the transport PIN on desktop systems.
+
+-------------------------------------------------------------------
 Mon Sep  5 10:54:45 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
