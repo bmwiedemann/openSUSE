@@ -2727,4 +2727,14 @@ However, upstream development now focuses on 3.x series.
 </comment>
     <requestid>981989</requestid>
   </revision>
+  <revision rev="172" vrev="23">
+    <srcmd5>bf1c6be82093eb8555b37b658be01791</srcmd5>
+    <version>2.7.18</version>
+    <time>1662833798</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch CVE-2021-28861-double-slash-path.patch:
+  * BaseHTTPServer: Fix an open redirection vulnerability in the HTTP server
+    when an URI path starts with //. (bsc#1202624, CVE-2021-28861)</comment>
+    <requestid>1001544</requestid>
+  </revision>
 </revisionlist>

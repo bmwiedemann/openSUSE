@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  7 04:46:44 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch CVE-2021-28861-double-slash-path.patch:
+  * BaseHTTPServer: Fix an open redirection vulnerability in the HTTP server
+    when an URI path starts with //. (bsc#1202624, CVE-2021-28861)
+
+-------------------------------------------------------------------
 Thu Jun  9 16:43:30 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2015-20107-mailcap-unsafe-filenames.patch to avoid
