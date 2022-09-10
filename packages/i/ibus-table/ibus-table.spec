@@ -17,7 +17,7 @@
 
 
 Name:           ibus-table
-Version:        1.16.11
+Version:        1.16.12
 Release:        0
 Summary:        The Table engine for IBus platform
 License:        LGPL-2.1-or-later
@@ -57,7 +57,7 @@ NOCONFIGURE=1 ./autogen.sh
 %configure --disable-static \
            --enable-additional \
            --libexecdir=%{_libdir}/ibus
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install NO_INDEX=true

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep  9 21:13:07 UTC 2022 - Gordon Leung <pirateclip@protonmail.com> - 1.16.12
+
+update: 1.16.11 -> 1.16.12
+- Stop using locale.getdefaultlocale() because it is deprecated in Python 3.11
+  and will be removed in Python 3.13
+- Add 128x128, 256x256, and svg (remote) icons to ibus-table.appdata.xml
+
+-------------------------------------------------------------------
 Sat Aug  6 15:27:27 UTC 2022 - Gordon Leung <pirateclip@protonmail.com> - 1.16.11
 
 update: 1.16.10 -> 1.16.11

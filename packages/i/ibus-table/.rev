@@ -361,4 +361,15 @@ update: 1.16.9 -&gt; 1.6.10
 feat: use _service files to automate fetching sources</comment>
     <requestid>993546</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>54a0f08b69759d88b3c8e5a2a9fa61ee</srcmd5>
+    <version>1.16.12</version>
+    <time>1662833841</time>
+    <user>dimstar_suse</user>
+    <comment>update: 1.16.11 -&gt; 1.16.12
+- Stop using locale.getdefaultlocale() because it is deprecated in Python 3.11
+  and will be removed in Python 3.13
+- Add 128x128, 256x256, and svg (remote) icons to ibus-table.appdata.xml</comment>
+    <requestid>1002359</requestid>
+  </revision>
 </revisionlist>
