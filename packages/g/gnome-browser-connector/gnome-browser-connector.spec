@@ -17,13 +17,13 @@
 
 
 Name:           gnome-browser-connector
-Version:        42.0
+Version:        42.1
 Release:        0
 Summary:        GNOME Shell integration for Chrome Extension compatible browsers
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/action/show/Projects/GnomeShellIntegration
-Source:         https://gitlab.gnome.org/nE0sIghT/gnome-browser-connector/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
+Source:         https://gitlab.gnome.org/GNOME/gnome-browser-connector/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  python3-gobject
@@ -50,11 +50,6 @@ corresponding extensions repository https://extensions.gnome.org.
 
 %install
 %meson_install
-
-# Fix python script hashbangs
-sed -i "1s|/usr/bin/env python|%{_bindir}/python3|" \
-  %{buildroot}%{_bindir}/gnome-browser-connector \
-  %{buildroot}%{_bindir}/gnome-browser-connector-host
 
 %files
 %license LICENSE
