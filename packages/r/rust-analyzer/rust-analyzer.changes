@@ -1,5 +1,98 @@
 -------------------------------------------------------------------
-Fri Aug 19 23:32:14 UTC 2022 - socvirnyl.estela@gmail.com
+Sat Sep 03 13:58:30 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 2022.08.29:
+  * Move empty diagnostics workaround back into the server
+  * minor: Simplify
+  * Update test fixtures
+  * Remove u/i128 hashing overloads from NoHashHasher::Hasher impl
+  * Make use of NoHash hashing for FileId and CrateId
+  * Remove unused UpdatesChannel type
+  * style: run tidy tests
+  * extract const generic in ArrayType
+  * add test
+  * Re-export standard semantic token types and mods
+  * Resolve doc links on impl blocks
+  * Register decorator token type to avoid panic
+  * Add a short blurb about VS Code Live Share to the manual
+  * Allow leading `|` in more pattern positions
+  * ForGoT tO RuN prEttIeR¿
+  * Avoid error popup when using in Live Share
+  * fix: Fix reference autocompletions using incorrect offsets in macro inputs
+  * Use lsp-types DECORATOR token type
+  * Remove unused default semantic modifiers
+  * Regen docs
+  * Add config for macro bang token highlighting, disable by default
+  * Change attribute semantic token type to decorator
+  * Make doc comment highlight injection configurable
+  * Move highlight configuration from protocol into the feature
+  * Make operator highlighting configurable, disable it by default
+  * Make punctuation highlighting configurable, disable it by default
+  * Do not substitute `Self` when in same impl block
+  * feat: emit SCIP via rust-analyzer
+  * Pop an error notification when flycheck can't be restarted
+  * Remove auto-config patching from the VSCode client
+  * Replace crossbeam with std's scoped threads
+  * internal: remove unnecessary stream writer try_clone in lsp-server
+  * Expect the test to panic by catching the unwind
+  * fix: formatting
+  * remove push_diagnostic methods weren't used in the end
+  * make impl and trait inactive diagnostics work
+  * fix: Fix panics on GATs involving const generics
+  * make diagnostic function public
+  * try adding diagnostrics for AssocItems
+  * activate assoc item test
+
+-------------------------------------------------------------------
+Sun Aug 28 05:17:09 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 2022.08.22:
+  * Consider bounds on inherent impl in method resolution
+  * Switch to ubuntu-20.04 runners
+  * Bump notify
+  * Bump chalk
+  * Bump deps
+  * explain how to re-generate the package.json
+  * document interaction of checkOnSave.overrideCommand and multiple linked projects
+  * Log rustfmt parsing errors as warnings
+  * Implement lsp extension for cancelling running flychecks
+  * fix: use functional programming
+  * feat: Improved inline_call to replace `Self`
+  * Introduce and use get_fn_target_info
+  * Generate and use TargetInfo::new
+  * Cleanup inline
+  * inline assoc_fn_target
+  * Remove mut out params via assoc_fn_target_info
+  * Reorder args with flip_comma
+  * Replace tuple with TargetInfo struct
+  * extract fn_target_info
+  * use fn_name instead of name_ref.text()
+  * Rename static_method_target -> assoc_fn_target
+  * fix: resolve path `Self` alone in value namespace
+  * fix: resolve associated types of bare dyn types
+  * feat: Run test mod from anywhere in parent file
+  * fix: a bunch of typos
+  * fixup! feat: add inline_type_alias_uses assist
+  * fix: escape keywords used as names in earlier editions
+  * minor: Change tracing event level in apply_change
+  * Find IntoFuture::IntoFuture's poll method
+  * feat: Generate static method using Self::assoc() syntax
+  * chore: remove unused `currentExtensionIsNightly()` in config.ts
+  * Revert #12947, trigger workspace switches on all structure changes again
+  * Add `.enable` suffix
+  * fixup! feat: add inline_type_alias_uses assist
+  * Add a setting for keyword hover popups
+  * feat: add inline_type_alias_uses assist
+  * fix: format literal lookup
+  * Fix lowering of empty macro expressions in trailing position
+  * Make resolve_name_in_module a bit more lazy
+  * Simplify
+  * Add an HIR pretty-printer
+  * Suggest `.await` when type impls IntoFuture
+  * Implement IntoFuture type inference
+
+-------------------------------------------------------------------
+Fri Aug 19 23:32:14 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 2022.08.15:
   * Remove redundant --pre-release flag from publish
@@ -43,7 +136,7 @@ Fri Aug 19 23:32:14 UTC 2022 - socvirnyl.estela@gmail.com
   * add debug impl for AnyDiagnostic
 
 -------------------------------------------------------------------
-Sun Aug 14 06:15:25 UTC 2022 - socvirnyl.estela@gmail.com
+Sun Aug 14 06:15:25 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 2022.08.08:
   * Fix test_rainbow_highlighting gate
@@ -87,7 +180,7 @@ Sun Aug 14 06:15:25 UTC 2022 - socvirnyl.estela@gmail.com
   * feat: Only flycheck workspace that belongs to saved file
 
 -------------------------------------------------------------------
-Fri Aug 05 06:35:38 UTC 2022 - socvirnyl.estela@gmail.com
+Fri Aug 05 06:35:38 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 2022.08.01:
   * Give variables more descriptive names
@@ -138,7 +231,7 @@ Fri Aug 05 06:35:38 UTC 2022 - socvirnyl.estela@gmail.com
   * Spawn a proc-macro-srv instance per workspace
 
 -------------------------------------------------------------------
-Thu Jul 28 02:55:24 UTC 2022 - socvirnyl.estela@gmail.com
+Thu Jul 28 02:55:24 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 2022.07.25:
   * fix: Autocomplete for struct fields includes receiver
@@ -280,7 +373,7 @@ Thu Jul 28 02:55:24 UTC 2022 - socvirnyl.estela@gmail.com
   * instanciate_empty_structs
 
 -------------------------------------------------------------------
-Fri Jul 15 13:57:57 UTC 2022 - socvirnyl.estela@gmail.com
+Fri Jul 15 13:57:57 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 2022.07.11:
   * Bump transitive npm deps
@@ -314,7 +407,7 @@ Fri Jul 15 13:57:57 UTC 2022 - socvirnyl.estela@gmail.com
   * fix: Extract function from trait impl
 
 -------------------------------------------------------------------
-Fri Jul 08 07:02:53 UTC 2022 - socvirnyl.estela@gmail.com
+Fri Jul 08 07:02:53 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 2022.07.04:
   * Bump the rest of the deps
@@ -367,7 +460,7 @@ Fri Jul 08 07:02:53 UTC 2022 - socvirnyl.estela@gmail.com
   * Add `Expr::Underscore`
 
 -------------------------------------------------------------------
-Fri Jul 01 02:26:58 UTC 2022 - socvirnyl.estela@gmail.com
+Fri Jul 01 02:26:58 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 2022.06.27:
   * Fix typo in build.rs
@@ -396,7 +489,7 @@ Fri Jul 01 02:26:58 UTC 2022 - socvirnyl.estela@gmail.com
   * internal: Bring back JodChild into flychecking for cancellation
 
 -------------------------------------------------------------------
-Fri Jun 24 05:08:38 UTC 2022 - socvirnyl.estela@gmail.com
+Fri Jun 24 05:08:38 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 2022.06.20:
   * fix: attribute macros not being properly diagnosed
@@ -408,7 +501,7 @@ Fri Jun 24 05:08:38 UTC 2022 - socvirnyl.estela@gmail.com
   * Move `CompletionContext::function_def` into `PathKind::Expr`
 
 -------------------------------------------------------------------
-Tue Jun 14 06:39:35 UTC 2022 - socvirnyl.estela@gmail.com
+Tue Jun 14 06:39:35 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 2022.06.13:
   * fix: Pass the build data to rustc_private crates
@@ -441,7 +534,7 @@ Tue Jun 14 06:39:35 UTC 2022 - socvirnyl.estela@gmail.com
   * Bring the version command output in line with other rust tools
 
 -------------------------------------------------------------------
-Wed Jun 08 15:39:26 UTC 2022 - socvirnyl.estela@gmail.com
+Wed Jun 08 15:39:26 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 2022.06.06:
   * fix: Fix trait impl completions using wrong insert position
@@ -491,7 +584,7 @@ Wed Jun 08 15:39:26 UTC 2022 - socvirnyl.estela@gmail.com
   * Order auto-imports by relevance
 
 -------------------------------------------------------------------
-Wed Jun 01 03:50:05 UTC 2022 - socvirnyl.estela@gmail.com
+Wed Jun 01 03:50:05 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 2022.05.30:
   * fix overflow during tuple struct type inference
@@ -504,7 +597,7 @@ Wed Jun 01 03:50:05 UTC 2022 - socvirnyl.estela@gmail.com
   * add failing test
 
 -------------------------------------------------------------------
-Tue May 17 16:29:42 UTC 2022 - socvirnyl.estela@gmail.com
+Tue May 17 16:29:42 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 2022.05.17~0:
   * Bump extension version
