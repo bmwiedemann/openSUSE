@@ -41,6 +41,8 @@ Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspa
 Source2:        plasma.keyring
 %endif
 Source3:        xprop-kde-full-session.desktop
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-widgetexplorer-Don-t-recurse-into-applet-s-containme.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
