@@ -18,7 +18,7 @@
 
 %define   sonum 2
 Name:           htscodecs
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        C library for custom compression for CRAM and other formats
 License:        MIT
@@ -26,6 +26,9 @@ Group:          Productivity/Scientific/Other
 URL:            https://github.com/samtools/htscodecs
 Source0:        https://github.com/samtools/htscodecs/releases/download/v%{version}/htscodecs-%{version}.tar.gz
 Source100:      baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         https://github.com/samtools/htscodecs/commit/843d4f63b1c64905881b4648916a4d027baa1a1c.patch#/fix_ix86_build.patch
+BuildRequires:  autoconf
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
@@ -58,9 +61,11 @@ Requires:       lib%{name}%{sonum} = %{version}
 Header files and libraries of the samtools project for compiling against %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+# Rebuild configure script after Patch0
+autoconf
 %configure --disable-static
 %make_build
 
@@ -76,7 +81,7 @@ rm %{buildroot}%{_libdir}/lib%{name}.la
 %{_libdir}/lib%{name}.so.*
 
 %files devel
-%doc README.md NEWS
+%doc README.md NEWS.md
 %{_includedir}/htscodecs
 %{_libdir}/lib%{name}.so
 
