@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 26 22:11:10 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.16
+  * New plugin `bcftools +variant-distance` to annotate records
+    with distance to the nearest variant.
+  * The -i/-e filtering expression gained support for multiple
+    filters, e.g. `-i FILTER="A;B"`.
+- Resolve "file packaged twice" rpmlint warnings
+
+-------------------------------------------------------------------
 Thu Apr 21 15:34:00 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.15.1

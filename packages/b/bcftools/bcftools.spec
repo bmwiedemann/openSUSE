@@ -17,9 +17,8 @@
 
 
 Name:           bcftools
-Version:        1.15.1
+Version:        1.16
 Release:        0
-%define minor   %(cut -d '.' -f 1,2 <<< %{version})
 Summary:        Tools for manipulating variant calls in the Variant Call Format (VCF)
 License:        MIT
 Group:          Productivity/Scientific/Other
@@ -31,7 +30,7 @@ Patch0:         use_python3.patch
 BuildRequires:  automake
 BuildRequires:  gsl-devel
 BuildRequires:  libbz2-devel
-BuildRequires:  libhts-devel >= %{minor}
+BuildRequires:  libhts-devel >= %{version}
 BuildRequires:  lzma-devel
 BuildRequires:  zlib-devel
 Requires:       bgzip
@@ -53,7 +52,7 @@ of samtools. BCFtools are meant as a faster replacement for most of the perl VCF
 %build
 autoreconf -fi
 %configure --with-htslib=system
-make USE_GSL=1 %{?_smp_mflags}
+%make_build USE_GSL=1
 
 %install
 %make_install prefix=%{_prefix} libexecdir=%{_libdir} libdir=%{_libdir}
@@ -69,8 +68,7 @@ sed -i -E "s:/usr/bin/env python3?:%{_bindir}/python3:" %{buildroot}/%{_bindir}/
 %{_bindir}/*.py
 %{_bindir}/*.pl
 %{_bindir}/plot-vcfstats
-%{_libdir}/bcftools
-%{_libdir}/bcftools/*
+%{_libdir}/bcftools/
 %{_mandir}/man1/*
 
 %changelog
