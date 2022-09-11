@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Sep 04 07:51:52 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 4.2.2:
+  * Bump serde from 1.0.143 to 1.0.144
+  * Bump insta from 1.18.2 to 1.19.0 (#734)
+  * Bump serde_json from 1.0.83 to 1.0.85 (#733)
+  * Bump lsp-types from 0.93.0 to 0.93.1 (#736)
+  * Do not watch the same directory multiple times
+  * Bump insta from 1.17.1 to 1.18.2
+  * Remove unused Cargo features
+  * Bump chrono from 0.4.20 to 0.4.22 (#728)
+  * Bump notify from 5.0.0-pre.15 to 5.0.0-pre.16 (#727)
+  * Bump serde from 1.0.142 to 1.0.143 (#722)
+  * Bump once_cell from 1.13.0 to 1.13.1 (#731)
+  * Bump clap from 3.2.16 to 3.2.17 (#729)
+  * Bump anyhow from 1.0.59 to 1.0.62 (#732)
+  * Log the command when executing forward search
+  * Do not treat links to packages as bidirectional
+  * Fix reloading when the file watcher reports a change (#730)
+
+-------------------------------------------------------------------
 Sat Aug 20 06:42:51 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 4.2.1:
