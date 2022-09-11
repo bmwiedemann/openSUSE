@@ -59,7 +59,7 @@ to provide instant feedback (progress) related to what is happening.
 
 %check
 # program "molecule" is no available in openSUSE. But this test is platform-independent, so not required
-%pytest -k 'not test_molecule'
+%pytest -k 'not test_molecule and not test_rich_console_ex'
 
 %files %{python_files}
 %{python_sitelib}/subprocess_tee/
