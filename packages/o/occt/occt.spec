@@ -16,10 +16,10 @@
 #
 
 
-%define OCCT_TAG 7_6_2
+%define OCCT_TAG 7_6_3
 
 Name:           occt
-Version:        7.6.2
+Version:        7.6.3
 Release:        0
 %define soname 7_6
 %define sover  7.6
