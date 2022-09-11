@@ -281,4 +281,15 @@
     <comment></comment>
     <requestid>988928</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e3257d11d4803b22e81f1ab5fb434ff8</srcmd5>
+    <version>6.15.2</version>
+    <time>1662926235</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.15.2:
+  * Bugs fixed
+    + _abort_queues is no longer async #942 (@rhelmot)
+</comment>
+    <requestid>1002371</requestid>
+  </revision>
 </revisionlist>

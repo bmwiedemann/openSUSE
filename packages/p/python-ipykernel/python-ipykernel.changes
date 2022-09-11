@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  8 14:36:10 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.15.2:
+  * Bugs fixed
+    + _abort_queues is no longer async #942 (@rhelmot)
+
+-------------------------------------------------------------------
 Sat Jul  9 13:30:40 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
