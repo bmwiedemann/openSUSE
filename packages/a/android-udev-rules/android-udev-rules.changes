@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep  4 02:12:25 UTC 2022 - munix9@googlemail.com
+
+- Update to version 20220903
+  Bug Fixes
+  * Avoid wrong detections of controller devices (#234)
+
+  Features
+  * Add rules for ZTE MF286* series internal modems (#231)
+  * Add product ID for CDC-NCM+ADB for Tensor Pixels (#236)
+
+  Miscellaneous Tasks
+  * Install.sh: use /bin/sh interp within shebang (#232)
+  * Remove commented universal rule
+  * Change fast to adbfast for Pixel C (#235)
+
+-------------------------------------------------------------------
 Wed Jun 29 18:02:37 UTC 2022 - munix9@googlemail.com
 
 - Update to version 20220611
