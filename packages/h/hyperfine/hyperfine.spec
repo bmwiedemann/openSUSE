@@ -17,7 +17,7 @@
 
 
 Name:           hyperfine
-Version:        1.14.0
+Version:        1.14.0+git34
 Release:        0
 Summary:        Command-line benchmarking tool
 License:        Apache-2.0 OR MIT

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Sep 04 07:45:37 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.14.0+git34:
+  * Bump clap_complete from 3.2.3 to 3.2.4
+  * Bump nix from 0.24.2 to 0.25.0
+  * Bump serde from 1.0.140 to 1.0.144
+  * Bump serde_json from 1.0.82 to 1.0.85
+  * Bump thiserror from 1.0.31 to 1.0.33
+  * Fix user and kernel times on Windows
+  * Update deb package version on README
+  * Shrink unsafe block
+  * Bump serde from 1.0.137 to 1.0.140
+  * Bump nix from 0.24.1 to 0.24.2
+  * Bump clap from 3.2.8 to 3.2.16
+  * Add full stop after help messages
+  * Add spaces and shorten prompt
+  * Remove single space character
+  * Correct default of the --time-unit option in help text
+  * Remove possible ambiguity
+  * Make --time-unit help text more generic.
+  * Add hints to all export options
+  * Add hint to --time-unit
+  * Bump serde_json from 1.0.81 to 1.0.82
+  * Bump clap from 3.2.6 to 3.2.8
+  * Bump clap_complete from 3.2.2 to 3.2.3
+  * Update dependencies
+  * Bump clap from 3.1.14 to 3.1.18
+  * Bump clap_complete from 3.1.1 to 3.1.4
+  * Bump serde_json from 1.0.80 to 1.0.81
+  * Bump rust_decimal from 1.23.1 to 1.24.0
+  * Bump libc from 0.2.125 to 0.2.126
+  * Bump serde from 1.0.136 to 1.0.137
+  * Refactor AsciiDocExporter emitting using the MarkupExporter trait
+  * Remove extraneous characters from code sample
+  * Fixed typo
+  * Add new unreleased section
+  * Fix clippy warnings
+
+-------------------------------------------------------------------
 Mon Jun 20 03:24:01 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
@@ -9,7 +48,7 @@ Tue May 24 06:31:35 UTC 2022 - William Brown <william.brown@suse.com>
 - Automatic update of vendored dependencies
 
 -------------------------------------------------------------------
-Wed May 18 14:46:40 UTC 2022 - socvirnyl.estela@gmail.com
+Wed May 18 14:46:40 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.14.0:
   * Bump version
