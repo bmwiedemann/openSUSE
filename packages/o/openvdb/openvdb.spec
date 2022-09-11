@@ -1,8 +1,8 @@
 #
 # spec file for package openvdb
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2019-2020 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2019-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,8 @@
 #
 
 
+%bcond_without nanovdb
+
 %define libname libopenvdb9_0
 
 Name:           openvdb
@@ -30,18 +32,18 @@ Source:         https://github.com/AcademySoftwareFoundation/%{name}/archive/v%{
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
-BuildRequires:  glu-devel
 BuildRequires:  libboost_atomic-devel >= 1.70
 BuildRequires:  libboost_iostreams-devel >= 1.70
 BuildRequires:  libboost_regex-devel >= 1.70
 BuildRequires:  libboost_system-devel >= 1.70
 BuildRequires:  libboost_thread-devel >= 1.70
-BuildRequires:  libglfw-devel
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
 BuildRequires:  xorg-x11-devel
 BuildRequires:  pkgconfig(blosc)
+BuildRequires:  pkgconfig(glfw3)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(jemalloc)
 
 %description
@@ -79,15 +81,20 @@ library: vdb_lod, vdb_print, vdb_render, vdb_view
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %limit_build -m 3072
 # -DCMAKE_NO_SYSTEM_FROM_IMPORTED:BOOL=TRUE is needed,
 # will bail out with: stdlib.h not found otherwise
 %cmake \
+    -DCMAKE_CXX_STANDARD=14 \
     -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC " \
     -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC " \
     -DCMAKE_NO_SYSTEM_FROM_IMPORTED:BOOL=TRUE \
+%if %{with nanovdb}
+    -DUSE_NANOVDB=ON \
+%endif
     -DOPENVDB_BUILD_VDB_PRINT=ON \
     -DOPENVDB_BUILD_VDB_LOD=ON \
     -DOPENVDB_BUILD_VDB_VIEW=ON \
@@ -113,6 +120,10 @@ rm %{buildroot}%{_libdir}/libopenvdb.a
 %files devel
 %license LICENSE
 %{_includedir}/%{name}
+%if %{with nanovdb}
+%{_includedir}/nanovdb
+%{_includedir}/nanovdb/util
+%endif
 %{_libdir}/cmake/OpenVDB
 %{_libdir}/*.so
 
@@ -122,5 +133,9 @@ rm %{buildroot}%{_libdir}/libopenvdb.a
 %{_bindir}/vdb_print
 %{_bindir}/vdb_view
 %{_bindir}/vdb_render
+%if %{with nanovdb}
+%{_bindir}/nanovdb_print
+%{_bindir}/nanovdb_validate
+%endif
 
 %changelog
