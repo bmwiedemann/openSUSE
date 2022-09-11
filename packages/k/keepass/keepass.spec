@@ -18,7 +18,7 @@
 
 %define _name KeePass
 Name:           keepass
-Version:        2.51.1
+Version:        2.52
 Release:        0
 Summary:        Password Manager
 License:        GPL-2.0-or-later
