@@ -192,4 +192,15 @@
 - Remove a non-existent Recommends: in non-HPC package. (forwarded request 881593 from eeich)</comment>
     <requestid>881878</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>1800fa66aaebfb5ce5045e208e7852b2</srcmd5>
+    <version>5.3.5</version>
+    <time>1662926239</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing conflicts to old library package.
+- Cleanup obsolete parts from spec file.
+- Correct name of library packages to match SONAME.
+</comment>
+    <requestid>1002510</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  6 17:23:51 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add missing conflicts to old library package.
+- Cleanup obsolete parts from spec file.
+
+-------------------------------------------------------------------
+Sat Sep  3 22:07:56 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Correct name of library packages to match SONAME.
+
+-------------------------------------------------------------------
 Fri Mar 26 20:24:52 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Fix name of compat library package (bsc#1184057).

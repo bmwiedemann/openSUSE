@@ -1,7 +1,7 @@
 #
 # spec file for package mumps
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define pname mumps
 %define ver 5.3.5
-%define so_ver 5
+%define so_ver 5_3_5
 %define openblas_vers 0.3.6
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
@@ -421,11 +421,6 @@ ExclusiveArch:  do_not_build
 
 %{?mpi_family:%{bcond_without mpi}}%{!?mpi_family:%{bcond_with mpi}}
 
-# openmpi 1 was called just "openmpi" in Leap 15.x/SLE15
-%if 0%{?suse_version} >= 1550 || "%{mpi_family}" != "openmpi" || "%{mpi_ver}" != "1"
-%define mpi_ext %{?mpi_ver}
-%endif
-
 %if %{with scotch}
  %if %{with mpi}
   %define scotch ptscotch
@@ -442,8 +437,8 @@ ExclusiveArch:  do_not_build
 %define my_incdir %_includedir
 %define my_datadir %_datadir
 %else
-%define my_suffix  -%{mpi_family}%{?mpi_ext}
-%define my_prefix %{_libdir}/mpi/gcc/%{mpi_family}%{?mpi_ext}
+%define my_suffix  -%{mpi_family}%{?mpi_ver}
+%define my_prefix %{_libdir}/mpi/gcc/%{mpi_family}%{?mpi_ver}
 %define my_bindir %{my_prefix}/bin
 %define my_libdir %{my_prefix}/%{_lib}/
 %define my_incdir %{my_prefix}/include/
@@ -476,11 +471,11 @@ Source0:        http://mumps.enseeiht.fr/MUMPS_%{version}.tar.gz#/%{pname}-%{ver
 Source1:        Makefile.inc
 %if %{without hpc}
 BuildRequires:  gcc-fortran
-%{?with_scotch:BuildRequires:  %{scotch}%{?with_mpi:-%{mpi_family}%{?mpi_ext}}-devel}
+%{?with_scotch:BuildRequires:  %{scotch}%{?with_mpi:-%{mpi_family}%{?mpi_ver}}-devel}
  %if %{with mpi}
-BuildRequires:  %{mpi_family}%{?mpi_ext}-devel
-BuildRequires:  libblacs2-%{mpi_family}%{?mpi_ext}-devel
-BuildRequires:  scalapack-%{mpi_family}%{?mpi_ext}-devel
+BuildRequires:  %{mpi_family}%{?mpi_ver}-devel
+BuildRequires:  libblacs2-%{mpi_family}%{?mpi_ver}-devel
+BuildRequires:  scalapack-%{mpi_family}%{?mpi_ver}-devel
  %endif # mpi
 BuildRequires:  blas-devel
 BuildRequires:  lapack-devel
@@ -506,12 +501,15 @@ Group:          System/Libraries
 %{?with_mpi:Recommends:       %{libname}-compat = %{version}}
 # Explicitly include this library here:
 # the solver doesn't have enough information to pick the correct MPI flavor
-%{?with_mpi:Requires:         libblacs2-%{mpi_family}%{?mpi_ext}}
+%{?with_mpi:Requires:         libblacs2-%{mpi_family}%{?mpi_ver}}
  %else
 %{requires_eq libscalapack2-%{compiler_family}-%{mpi_family}%{?mpi_ver}-hpc}
 %hpc_requires
 Requires:       lua-lmod >= 7.6.1
  %endif
+%if %{without hpc}
+Conflicts:      lib%{pname}%{?scotch:-%{scotch}}5%{?my_suffix} >= 5.3.5 
+%endif
 
 %description -n %{libname}
 MUMPS implements a direct solver for large sparse linear systems, with a
@@ -522,7 +520,7 @@ C interfaces, and can interface with ordering tools such as Scotch.
 %if %{!with mpi}
 This package contains the sequential library%{?scotch: with Scotch support enabled}.
 %else
-This package contains the parallel library%{?with_mpi: with %{mpi_family}%{?mpi_ver}}%{?scotch: with Scotch support enabled}.
+This package contains the parallel library with %{mpi_family}%{?mpi_ver} and %{?scotch: with Scotch support enabled}.
 %endif
 
 %package -n %{libname}-compat
@@ -560,7 +558,7 @@ This package provides Documentation for %{package_name}.
 %if %{!with mpi}
 This package contains the sequential library%{?scotch: with Scotch support enabled}.
 %else
-This package contains the parallel library%{?with_mpi: with %{mpi_family}%{?mpi_ver}}%{?scotch: with Scotch support enabled}.
+This package contains the parallel library with %{mpi_family}%{?mpi_ver} and %{?scotch: with Scotch support enabled}.
 %endif
 
 %package devel
@@ -572,14 +570,11 @@ Requires:       %{libname} = %version
 Requires:       mumps-devel = %{version}
  %endif
  %if %{with mpi}
-Requires:       %{mpi_family}%{?mpi_ext}-devel
-Requires:       scalapack-%{mpi_family}%{?mpi_ext}-devel
+Requires:       %{mpi_family}%{?mpi_ver}-devel
+Requires:       scalapack-%{mpi_family}%{?mpi_ver}-devel
   %if %{with scotch}
 Requires:       mumps-scotch-devel = %{version}
-Requires:       ptscotch-%{mpi_family}%{?mpi_ext}-devel
-  %endif
-  %if "%{mpi_family}%{?mpi_ext}" == "openmpi1"
-Provides:       %{pname}%{?scotch:-%{scotch}}-openmpi-devel
+Requires:       ptscotch-%{mpi_family}%{?mpi_ver}-devel
   %endif
  %else # mpi
 Requires:       blas-devel
