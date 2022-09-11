@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Sep 10 17:12:00 UTC 2022 - michael@stroeder.com
+
+- Update to version 0.6:
+  * Version the protocol: the handshake message now contains a version
+    number, and the server will warn if it is incorrect.  This will become
+    a hard error in the future.
+  * Rework the peer-to-peer file transfer protocol.  It now lives in
+    protocol.js, which makes it easy to use by third-party clients.
+  * Extend the authorization protocol to allow the authorization server to
+    request that the client fall back to password authorization.
+  * Make it possible to run the web server on a Unix domain socket.
+    Thanks to Martin Pépin.
+  * Check that a given group exists before redirecting from the landing
+    page.  This avoids an unsightly 404 error when the user makes a typo.
+  * Publish the group name end websocket endpoint in the group status.
+    This avoids hardwirint the server structure in the client.
+  * Fix a race condition that could cause chathistory messages to be sent
+    before the joined status.
+
+-------------------------------------------------------------------
 Sat Jul 23 19:58:33 UTC 2022 - michael@stroeder.com
 
 - Update to version 0.5.5:
