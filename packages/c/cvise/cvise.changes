@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 11 18:48:13 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.5.0+git.20220911.4c7ce7f:
+  * instantiate-template-param was not working for parameters inside anonymous templates
+
+-------------------------------------------------------------------
 Fri Sep 09 13:03:27 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.5.0+git.20220909.31fe1f8:
