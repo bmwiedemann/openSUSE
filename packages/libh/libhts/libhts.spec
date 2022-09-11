@@ -16,8 +16,11 @@
 #
 
 
+# Upstream does not bump htscodecs SOVERSION on backwards incompatible changes
+%define htscodecsminversion 1.3.0
+
 Name:           libhts
-Version:        1.15.1
+Version:        1.16
 Release:        0
 %define   sonum 3
 Summary:        C library for high-throughput sequencing data formats
@@ -27,7 +30,7 @@ URL:            https://github.com/samtools/htslib/
 Source0:        https://github.com/samtools/htslib/releases/download/%{version}/htslib-%{version}.tar.bz2
 Source100:      baselibs.conf
 BuildRequires:  gcc-c++
-BuildRequires:  htscodecs-devel >= 1.2.2
+BuildRequires:  htscodecs-devel >= %{htscodecsminversion}
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(liblzma)
@@ -45,6 +48,7 @@ the bgzip compression utility.
 %package -n libhts%{sonum}
 Summary:        C library for high-throughput sequencing data formats
 Group:          System/Libraries
+Requires:       libhtscodecs2 >= %{htscodecsminversion}
 
 %description -n libhts%{sonum}
 HTSlib is an implementation of a unified C library for accessing common file formats, such as
@@ -101,8 +105,6 @@ the bgzip compression utility.
 Summary:        Header files and libraries for compiling against %{name}
 Group:          Development/Libraries/C and C++
 Requires:       libhts%{sonum} = %{version}
-Provides:       libhts1-devel = %{version}
-Obsoletes:      libhts1-devel < 1.5
 Requires:       pkgconfig(bzip2)
 Requires:       pkgconfig(libcurl)
 Requires:       pkgconfig(liblzma)

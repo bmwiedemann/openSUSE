@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Sep  8 21:40:07 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.16
+  * Make hfile_s3 refresh AWS credentials on expiry in order to make
+    HTSlib work better with AWS IAM credentials, which have a
+    limited lifespan.
+  * Allow BAM headers between 2GB and 4GB in size once more.
+  * Improve error message when failing to load an index.
+  * Permit MM (base modification) tags containing . and ? suffixes.
+  * Warn if spaces instead of tabs are detected in a VCF file to
+    prevent confusion.
+  * Add an sclen filter expression keyword.
+  * Improve error messages for CRAM reference mismatches.
+  * Expose more of the CRAM API and add new functionality to extract
+    the reference from a CRAM file.
+  * Improvements to the implementation of embedded references in CRAM
+    where no external reference is specified.
+  * The CRAM writer now allows alignment records with RG:Z: aux tags
+    that don't have a corresponding @RG ID in the file header.
+  * Set tab delimiter in man page for tabix GFF3 sort.
+  * When using libdeflate, the 1...9 scale of BGZF compression levels
+    is now remapped to the 1...12 range used by libdeflate instead of
+    being passed directly.
+  * The VCF variant API has been extended so that it can return separate
+    flags for INS and DEL variants as well as the existing INDEL one.
+  * The missing, but trivial, le_to_u8() function has been added
+    to hts_endian.
+  * bcf_format_gt() now works properly on big-endian platforms.
+  * Update htscodecs to version 1.3.0 for new SIMD code + various fixes.
+  * Detect ARM Neon support and only build appropriate SIMD object files.
+  * make print-config now reports extra CFLAGS that are needed to build
+    the SIMD parts of htscodecs.
+  * Fixed some Makefile dependency issues for the check/test targets
+    and plugins.
+  * Fix bug when reading position -1 in BCF (0 in VCF), which is used
+    to indicate telomeric regions.
+  * Various bugs and quirks have been fixed in the filter expression
+    engine, mostly related to the handling of absent tags, and
+    the is_true flag.
+  * Fix buffer overrun in bam_plp_insertion_mod.
+  * Remove limit of returned size from fai_retrieve().
+  * Cap hts_getline() return value at INT_MAX.
+  * Fix breakend detection and test bcf_set_variant_type().
+  * Prevent arrays of BCF_BT_NULL values found in BCF files from
+    causing bcf_fmt_array() to call exit() as the type is unsupported.
+  * Improved detection of fasta and fastq files that have very long
+    comments following identifiers.
+  * Fixed a SEGV triggered by giving a SAM file to samtools import.
+
+-------------------------------------------------------------------
 Wed Apr 20 19:32:52 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Use system provided libhtscodecs

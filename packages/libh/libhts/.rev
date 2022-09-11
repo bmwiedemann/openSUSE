@@ -34,4 +34,12 @@ Dependency of python-biopython, which is already in openSUSE:Factory.</comment>
 - Update to version 1.15.1</comment>
     <requestid>974395</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b3a3593dc5cb24fc206708bc69303237</srcmd5>
+    <version>1.16</version>
+    <time>1662926246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002325</requestid>
+  </revision>
 </revisionlist>
