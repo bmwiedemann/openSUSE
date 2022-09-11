@@ -18,7 +18,7 @@
 
 Name:           libXft
 %define lname	libXft2
-Version:        2.3.5
+Version:        2.3.6
 Release:        0
 Summary:        X FreeType library
 License:        MIT

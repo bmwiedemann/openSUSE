@@ -126,4 +126,13 @@
   * bugfix release</comment>
     <requestid>1001386</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3fcd0d2f0337cb557e49a5fa56cd478e</srcmd5>
+    <version>2.3.6</version>
+    <time>1662926237</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.6
+  * Fixes a regression in 2.3.5 for XftTextExtents* length-checks.</comment>
+    <requestid>1002441</requestid>
+  </revision>
 </revisionlist>
