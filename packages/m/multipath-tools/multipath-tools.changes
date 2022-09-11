@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  9 19:38:03 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.1+52+suse.be8809e:
+  * Code-identical to 0.9.1+48+suse.9c6c435 (merge in git repo
+    to preserve history; fix revision in _service file). 
+
+-------------------------------------------------------------------
 Wed Sep  7 13:52:36 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.9.1+48+suse.9c6c435:

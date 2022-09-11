@@ -1,7 +1,7 @@
 #
 # spec file for package multipath-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,10 +34,10 @@
 %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
 
 Name:           multipath-tools
-Version:        0.9.1+48+suse.9c6c435
+Version:        0.9.1+52+suse.be8809e
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
-License:        GPL-2.0-only and GPL-3.0-or-later
+License:        GPL-2.0-only AND GPL-3.0-or-later
 Group:          System/Base
 URL:            http://christophe.varoqui.free.fr/
 Source:         multipath-tools-%{version}.tar.xz
@@ -83,6 +83,7 @@ multipath maps. multipathd sets up multipath maps automatically,
 monitors path devices for failure, removal, or addition, and applies
 the necessary changes to the multipath maps to ensure continuous
 availability of the map devices.
+
 
 
 
