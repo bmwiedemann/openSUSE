@@ -2843,6 +2843,8 @@ unsorted:
   - deepin-image-viewer 
   - deepin-image-viewer-lang 
   - deepin-kwin 
+  - deepin-kwin-devel 
+  - deepin-kwin-lang 
   - deepin-launcher 
   - deepin-launcher-branding-openSUSE 
   - deepin-launcher-branding-upstream 
@@ -11891,7 +11893,7 @@ unsorted:
   - libjbig2dec0 
   - libjbig2dec0-32bit: [x86_64] 
   - libjcat-devel 
-  - libjim0_75 
+  - libjim0_81 
   - libjitterentropy3 
   - libjitterentropy3-32bit: [x86_64] 
   - libjpeg62 
@@ -12024,6 +12026,7 @@ unsorted:
   - libktoblzcheck1 
   - libktorrent-devel 
   - libktpaccountskcminternal9 
+  - libkwin-xcb0 
   - libkwnn0 
   - libkyotocabinet-devel 
   - libkyotocabinet16-32bit: [x86_64] 
@@ -12402,6 +12405,7 @@ unsorted:
   - libmovit8 
   - libmowgli-2-0 
   - libmowgli2-devel 
+  - libmozjs-102-0 
   - libmozjs-78-0 
   - libmp3lame-devel 
   - libmp3lame0-32bit: [x86_64] 
@@ -16676,6 +16680,8 @@ unsorted:
   - mozilla-nss-sysinit-32bit: [x86_64] 
   - mozilla-nss-tools: [i586] 
   - mozilla-zilla-slab-fonts 
+  - mozjs102 
+  - mozjs102-devel 
   - mozjs78 
   - mozjs78-devel 
   - mozjs91 
@@ -43066,6 +43072,8 @@ unsorted:
   - uchardet 
   - ucl-devel 
   - ucm 
+  - ucode-amd: [i586] 
+  - ucode-intel: [i586] 
   - ucommon 
   - ucommon-devel 
   - ucpp 
