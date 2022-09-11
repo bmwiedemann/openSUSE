@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep  4 16:30:51 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v16.1.0
+  * Changes of version 16.1.0
+    = Add characters:
+      ~ HEAVY ROUND-TIPPED RIGHTWARDS ARROW (U+279C) (#1401).
+    = Add ligation sets for Julia and Raku (#1386, #1391).
+
+-------------------------------------------------------------------
 Wed Aug 31 07:35:23 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v16.0.2
