@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 12 02:33:07 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Disable test that relies on static PIE for Leap/SLE.
+  * 0001-remove-test-that-relies-on-static-PIE.patch
+
+-------------------------------------------------------------------
 Tue Aug 23 02:52:54 UTC 2022 - William Brown <william.brown@suse.com>
 
 Version 1.63.0 (2022-08-11)

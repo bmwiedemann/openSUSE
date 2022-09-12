@@ -237,7 +237,10 @@ Patch0:         ignore-Wstring-conversion.patch
 # PATCH-FIX-OPENSUSE: let wasm target use the system lld by default, rust-lld might not be available.
 Patch1:         wasm-use-system-lld.patch
 %endif
-# Patch2:         0001-fix-tests.patch
+# We only need to disable this test on LEAP/SLE
+%if 0%{?sle_version} <= 150300 && 0%{?suse_version} < 1599
+Patch2:         0001-remove-test-that-relies-on-static-PIE.patch
+%endif
 BuildRequires:  chrpath
 BuildRequires:  curl
 BuildRequires:  fdupes
