@@ -625,4 +625,12 @@
   * Don't connect to cluster subprocesses at shutdown (:pr:`6829`) Gabe Joseph</comment>
     <requestid>1000573</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>706d7822520d6ab8dea6e935fdd716c0</srcmd5>
+    <version>2022.9.0</version>
+    <time>1663002506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002731</requestid>
+  </revision>
 </revisionlist>

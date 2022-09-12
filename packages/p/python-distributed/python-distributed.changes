@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat Sep 10 15:18:16 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2022.9.0:
+  * Enhancements
+    + Limit incoming data transfers by amount of data (GH#6975)
+      Hendrik Makait
+    + Expose transfer-related metrics in Worker.get_metrics and
+      WorkerMetricCollector (GH#6936) Hendrik Makait
+    + Withhold root tasks (no co assignment) (GH#6614) Gabe Joseph
+    + Improve differentiation between incoming/outgoing connections
+      and transfers (GH#6933) Hendrik Makait
+    + Change memory bars color on spilling/paused status (GH#6959)
+      crusaderky
+    + Ensure restart clears taskgroups et al (GH#6944) Florian Jetter
+    + Optimise scheduler.get_comm_cost set difference (GH#6931)
+      Lawrence Mitchell
+    + Expose setting multiple protocols and ports via the
+      dask-scheduler CLI (GH#6898) Jacob Tomlinson
+    + Make TextProgressBar clear the line when finished (GH#5968)
+      Vincenzo Eduardo Padulano
+  * Bug Fixes
+    + Revert getaddrinfo fast path for Python 3.8 (GH#6978) Florian
+      Jetter
+    + cancelled/resumed->long-running transitions (GH#6916) crusaderky
+  * Deprecations
+    + Deprecate default value for Client.wait_for_workers (GH#6942)
+      Florian Jetter
+  * Documentation
+    + Document Scheduler and Worker state machine (GH#6948) crusaderky
+    + Insert memory_limit parameter into LocalCluster docstring
+      (GH#6839) Crislana Rafael
+  * Maintenance
+    + Revert “Limit incoming data transfers by amount of data”
+      (GH#6994) Florian Jetter
+    + Cache conda environment between CI test runs (GH#6855) Charles
+      Blackmon-Luca
+    + Revert “Fix co-assignment for binary operations” (GH#6985) Gabe
+      Joseph
+    + Cache test_report shelves in CI (GH#6937) Florian Jetter
+    + Cleanup ipywidgets mocking (GH#6918) Thomas Grainger
+    + Improve testing of {Scheduler|Worker}MetricCollector (GH#6945)
+      Hendrik Makait
+    + Clean up nanny WorkerProcess.kill (GH#6972) Gabe Joseph
+    + Rewrite test_reconnect to use subprocess to kill scheduler
+      reliably (GH#6967) Florian Jetter
+    + Task state domain on the scheduler side (GH#6929) crusaderky
+    + Remove @avoid_ci from test_steal (GH#6872) crusaderky
+    + Use async with Worker in tests (GH#6958) crusaderky
+    + Ignore spurious warnings in test_quiet_close_process (GH#6955)
+      crusaderky
+    + Fix tests on Windows (GH#6954) Hendrik Makait
+    + Prevent duplicates in HeapSet.sorted() (GH#6952) crusaderky
+    + Propagate worker address and improve _remove_from_processing
+      behavior (GH#6946) Hendrik Makait
+    + Add HeapSet._sorted internal flag (GH#6949) Gabe Joseph
+    + Add HeapSet.peekn (GH#6947) Gabe Joseph
+    + Fix pyright error when importing from distributed (GH#6904) Ian
+      Liu Rodrigues
+    + Always return ws.address from _remove_from_processing (GH#6884)
+      Hendrik Makait
+    + Use async with Client: in tests (GH#6921) Thomas Grainger
+    + Ensure relative memory limits work as percentage of system
+      memory (GH#6923) Florian Jetter
+
+-------------------------------------------------------------------
 Thu Sep  1 06:53:01 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2022.8.1:
