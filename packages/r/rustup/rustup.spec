@@ -45,6 +45,12 @@ BuildRequires:  pkgconfig(openssl)
 Requires:       gcc
 ExclusiveArch:  %{rust_tier1_arches}
 
+# Rustup now provides rust-analyzer which we take over.
+Provides:       rust-analyzer = 2022.09.11
+Obsoletes:      rust-analyzer < 2022.09.11
+
+# Ensure we can upgrate from ancient versions of rust that used
+# to ship these tools. We can probably remove this in the future.
 %obsolete_rust_versioned rls
 %obsolete_rust_versioned rust doc
 %obsolete_rust_versioned rust src
@@ -92,6 +98,7 @@ install -m 0755 %{_builddir}/%{name}-%{version}/target/release/rustup-init %{bui
 ln -sf rustup %{buildroot}%{_bindir}/rustc
 ln -sf rustup %{buildroot}%{_bindir}/rustdoc
 ln -sf rustup %{buildroot}%{_bindir}/cargo
+ln -sf rustup %{buildroot}%{_bindir}/rust-analyzer
 ln -sf rustup %{buildroot}%{_bindir}/rust-lldb
 ln -sf rustup %{buildroot}%{_bindir}/rust-gdb
 ln -sf rustup %{buildroot}%{_bindir}/rust-gdbgui
@@ -119,6 +126,7 @@ install -D -d -m 0755 %{buildroot}%{_datadir}/zsh/site-functions
 %{_bindir}/rustc
 %{_bindir}/rustdoc
 %{_bindir}/cargo
+%{_bindir}/rust-analyzer
 %{_bindir}/rust-lldb
 %{_bindir}/rust-gdb
 %{_bindir}/rust-gdbgui

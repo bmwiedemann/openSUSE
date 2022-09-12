@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 09 01:44:21 UTC 2022 - william.brown@suse.com
+
+- boo#1203257 - Add missing link for rust-analyzer
+- Replace rust-analyzer via provides
+- Update vendored dependencies
+
+-------------------------------------------------------------------
 Wed Jul 20 02:13:49 UTC 2022 - william.brown@suse.com
 
 - Update to version 1.25.1~0:
