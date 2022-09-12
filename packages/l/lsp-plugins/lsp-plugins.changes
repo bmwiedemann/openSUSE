@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 12 02:03:46 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- remove patches, now upstream:
+  02-Fixed-the-improper-use-of-nanosleep.patch
+  01-Append-CXXFLAGS.patch
+
+- Version 1.2.3
+
+  * Graphic Toolkit Library lsp-tk-lib has been ported to Windows.
+  * Updated compressor plugin bundles: added negative boosting gain
+    option in 'Boosting' mode.
+  * Updated gate plugin bundles: added negative gain option for
+    ducking gateway option.
+  * Assigned more correct names for sidechain types of dynamic
+    processing plugins.
+  * Introduced several workarounds for the support of UI by the OBS host.
+  * Fixed build of i386 DSP code under FreeBSD with Clang compiler.
+  * Better support of building code for ARMv6, ARMv7 and AArch64
+    under FreeBSD with Clang compiler.
+  * Added basic CI tests introduced by GitHub CI.
+  * Several bugfixes in core libraries.
+
+-------------------------------------------------------------------
 Tue Jun 28 23:23:00 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - add upstream patch:
