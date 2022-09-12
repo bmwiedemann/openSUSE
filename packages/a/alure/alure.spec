@@ -25,13 +25,14 @@ Summary:        Audio Library Tools REloaded
 # ALURE code is LGPL-2.0+; note -devel subpackage has its own license tag
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/kcat/alure
-Source0:        %{name}-%{version}.tar.bz2
+URL:            https://kcat.tomasu.net/alure.html
+Source0:        https://kcat.tomasu.net/alure-releases/%{name}-%{version}.tar.bz2
 Patch0:         fix-cmake_minimum_required.patch
 Patch1:         fix-missing-include.patch
 Patch2:         fix-lib-suffix.patch
 Patch3:         fix-link-flac.patch
 Patch4:         fix-FLUIDSYNTH_CFLAGS.patch
+Patch5:         fix-dumb2.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
@@ -75,7 +76,6 @@ developing applications that use %{name}.
 
 %build
 %define __builder ninja
-export CXXFLAGS="%{optflags} -fpermissive"
 %cmake \
 	-DBUILD_STATIC=OFF	\
 	-DDYNLOAD=OFF		\
