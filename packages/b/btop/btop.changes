@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Aug 28 16:40:11 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.2.9+git20220828.26ac007:
+  * Fixed: Process tree filtering not case insensitive
+  * v1.2.9 Bug fixes + new features and themes
+  * Fixed: Memory values not clearing properly when not in graph mode in mem box
+  * Cleaning up snap
+  * Instructions for btop-desktop
+  * Update snapcraft.yaml
+  * Removing desktop launch
+  * Add FreeBSD installation command
+  * Update snapcraft.yaml
+  * Update snapcraft.yaml
+  * Update snapcraft.yaml
+  * Update btop.desktop
+  * Update btop.desktop
+  * Add files via upload
+  * Create btop.desktop
+  * Update snapcraft.yaml
+  * Update snapcraft.yaml
+  * Update snapcraft.yaml
+  * Update snapcraft.yaml
+  * Update snapcraft.yaml
+  * Update snapcraft.yaml
+  * Maybe
+  * updated color change
+  * Added: Option to hide the small cpu graphs for processes
+  * Add Fedora/RHEL install docs
+  * [fix] Color correction
+  * Changed: Small graphs now show colors for each character
+  * [feature] Created 'Elementarish' theme
+  * Fixed: Getting selfpath on macos (fix for finding theme folder)
+  * switch Logger calls to debug() to avoid filling up the logfile
+  * rename zfs_pools_only option to zfs_hide_datasets, make its description clearer
+  * check if at least one object was read before updating ZFS pool io in zfs_collect_pool_total_stats(), use try-catch to prevent possible crashes from int_64t conversions
+  * add "?" to see help
+  * Fixed: Logo transparency
+  * Use fs::directory_iterator() instead of readdir() in ZFS functions, use fs::path instead of strings.
+  * Move get_zfs_stat_file() and zfs_collect_pool_total_stats() functions declarations to btop_collect.cpp so they aren't included when compiling for macos and freebsd
+  * Made ZFS stats collection compatible with zfs_pools_only option. ZFS pool's stat filepath points to the objset-* file when the option is disabled, otherwise it points to the pool's stats directory. Made ZFS total pool stat collection into a separate function for clean code. Also removed an unnecessary variable in the default ZFS stat collection, and changed io_ticks to track the number of reads/writes, reducing unnecessary calculations.
+  * Re-implemented ZFS stat collection to be compatible with new ZFS versions, now it uses files "/proc/spl/kstat/zfs/*pool_name*/objset*". Needs additional work to be compatible with the option "zfs_pools_only".
+  * Pass const string ref
+  * Changed: Rewrite of process sorting and tree generation including fixes for tree sorting and mouse support
+  * Add solarized_light theme
+  * Add zfs_pools_only option
+
+-------------------------------------------------------------------
 Wed Jun 29 17:02:08 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 1.2.8+git20220629.102b6db:
