@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 12 09:13:45 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.3.2:
+    - Bugfix: ETM4x / ETE - 64 bit timestamp value - MS bit
+      incorrectly masked to 1b0 during extraction from packet.
+
+-------------------------------------------------------------------
 Wed Aug  3 06:53:47 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.3.1:
