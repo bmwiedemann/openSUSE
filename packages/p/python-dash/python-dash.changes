@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sun Aug 21 15:33:31 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.6.1:
+  * Fixed
+    + #2175 Fix #2173 callback output of ndarray and no_update check.
+    + #2146 Remove leftover debug console.log statement.
+    + #2168 Reverts #2126 (supporting redirect from root when using
+       pages) until the new bugs introduced by that PR are fixed.
+  * Updated
+    + #2167 Update Plotly.js to v2.13.3 (from v2.13.1) including patch
+       release v2.13.2 and patch release v2.13.3.
+       o Emit plotly_selected event on plot API calls and GUI edits.
+       o Fix sankey select error (regression introduced in 2.13.0).
+       o Handle missing drag layer of invisible sankey traces to fix select error.
+       o Emit selection event in shape drawing dragmodes when an existing selection is modified.
+
+- changes from version 2.6.0:
+  * Added
+    + #2109 Add maxHeight to Dropdown options menu.
+    + #2039 Long callback changes:
+      o  Add background=False to dash.callback to use instead of app.long_callback.
+      o  Add previous app.long_callback arguments to dash.callback (interval, running,
+         cancel, progress, progress_default, cache_args_to_ignore, manager)
+    + #2110 Add search prop to dcc.Dropdown options, allowing to
+       search the dropdown options with something other than the label
+       or value.
+  * Fixed
+    + #2126 Fix bug where it was not possible to redirect from root
+       when using pages.
+    + #2114 Fix bug #1978 where text could not be copied from cells in
+       tables with cell_selectable=False.
+    + #2102 Fix bug as reported in dash-labs #113 where files starting
+       with . were not excluded when building dash.page_registry.
+    + #2100 Fixes bug where module name in for a custom not_found_404
+       page is incorrect in the dash.page_registry when not using the
+       pages folder.
+    + #2098 Accept HTTP code 400 as well as 401 for JWT expiry
+    + #2097 Fix bug #2095 with TypeScript compiler and React.FC empty
+       valueDeclaration error & support empty props components.
+    + #2104 Fix bug #2099 with Dropdown clearing search value when a
+       value is selected.
+    + #2039 Fix bugs in long callbacks:
+       o Fix #1769 and #1852 short interval makes job run in loop.
+       o Fix #1974 returning no_update or raising PreventUpdate not supported with celery.
+       o Fix use of the callback context in celery long callbacks.
+       o Fix support of pattern matching for long callbacks.
+    + #2110 Fix dcc.Dropdown search with component as prop for option
+       label.
+    + #2131 Add encoding to file open calls. Fix bug #2127.
+  * Changed
+    + #2116 Rename long callbacks to background callbacks
+       o Deprecated dash.long_callback.managers.CeleryLongCallbackManager,
+         use dash.CeleryManager instead.
+       o Deprecated dash.long_callback.managers.DiskcacheLongCallbackManager,
+         use dash.DiskcacheManager instead.
+       o Deprecated dash constructor argument long_callback_manager in favor
+         of background_callback_manager.
+  * Updated
+    + #2134 Upgrade Plotly.js to v2.13.1 (from v2.12.1) including
+       feature release 2.13.0 and patch release 2.13.1
+      o Add persistent selections via layout attributes selections, newselection,
+        and activeselection, along with an updated UI allowing you to modify a
+	selection you created.
+      o Add unselected line styling to parcoords traces.
+      o Add more quartile algorithms to violin traces.
+      o More flexible axis automargin behavior.
+      o And several other enhancements and bug fixes.
+
+-------------------------------------------------------------------
 Mon Jul 11 02:46:42 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
