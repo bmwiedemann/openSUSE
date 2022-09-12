@@ -1,9 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 12 11:10:13 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Modified ovmf.changes log, using PED-1410 instead of PED-1359 for
+  pushing to SLE15-SP5.  
+
+-------------------------------------------------------------------
 Tue Sep  6 04:15:26 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Because 5 revert patches in edk2-stable202205 for nasm-2.14 is against
   15-SP4/Leap 15.4 and earlier version. So add suse_version and sle_version
-  checking logic in ovmf.spec when applying revert patches. (jsc#PED-1359) 
+  checking logic in ovmf.spec when applying revert patches. (jsc#PED-1410) 
 
 -------------------------------------------------------------------
 Tue Aug 23 13:00:42 UTC 2022 - Joey Lee <jlee@suse.com>
@@ -354,7 +360,7 @@ Tue Aug 16 05:20:44 UTC 2022 - Joey Lee <jlee@suse.com>
                 - f1d1c337e7	edk2-stable202205-rc1~290
 - Add the following patches for building edk2-stable202205 with nasm-2.14 on
   SLE15-SP3/SP4 and Leap 15.3/15.4. Those patches add marco back because
-  nasm-2.14 doesn't support corresponding instructions. (jsc#PED-1359)
+  nasm-2.14 doesn't support corresponding instructions. (jsc#PED-1410)
     - ovmf-Revert-MdePkg-Remove-the-macro-definitions-regarding.patch  
         ovmf-Revert-UefiCpuPkg-Replace-Opcode-with-the-correspond.patch  
         ovmf-Revert-SourceLevelDebugPkg-Replace-Opcode-with-the-c.patch  
