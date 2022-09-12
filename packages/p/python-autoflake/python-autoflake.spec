@@ -16,10 +16,8 @@
 #
 
 
-# gh#PyCQA/autoflake#100
-%define skip_python38 1
 Name:           python-autoflake
-Version:        1.5.1
+Version:        1.5.3
 Release:        0
 Summary:        Program to removes unused Python imports and variables
 License:        MIT

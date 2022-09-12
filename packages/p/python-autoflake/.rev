@@ -65,4 +65,25 @@
     <comment></comment>
     <requestid>999934</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8005c0cb779c56020a28d4751d58e701</srcmd5>
+    <version>1.5.3</version>
+    <time>1663002503</time>
+    <user>dimstar_suse</user>
+    <comment>- reenable build for python38, issue got fixed in current release 
+
+- Update to v1.5.3
+  * test_autoflake: use os.linesep in assertion
+  * Make sure messages use os.linesep
+  * test_autoflake: add a test for #129
+  * autoflake: propagate the exit status instead of calling sys.exit
+  * Renamed the head branch
+  * Remove Makefile and reference to travis.yml
+- Update to v1.5.2 
+  * Remove usage of deprecated distutils module
+  * Also add support for removing RHS of unused variables.
+  * Use the new sysconfig module instead of distutils
+  * added option to remove RHS also when removing unused variables (#92)</comment>
+    <requestid>1002737</requestid>
+  </revision>
 </revisionlist>
