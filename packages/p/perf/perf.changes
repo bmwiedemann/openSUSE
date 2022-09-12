@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 12 05:20:02 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- remove perf-6.0-don-t-install-headers-with-x-permissions.patch
+  It is a part of 6.0-rc5, finally!
+
+-------------------------------------------------------------------
 Wed Sep  7 11:01:29 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - Fix for kernel 6.0
