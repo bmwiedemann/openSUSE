@@ -1,7 +1,7 @@
 #
 # spec file for package sbd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 Lars Marowsky-Bree
 #
 # All modifications and additions to the file contributed by third parties
@@ -47,7 +47,7 @@
 %global sync_resource_startup_sysconfig ""
 
 Name:           sbd
-Version:        1.5.1+20211210.92ff8d8
+Version:        1.5.1+20220716.c43276f
 Release:        0
 Summary:        Storage-based death
 License:        GPL-2.0-or-later
@@ -156,13 +156,13 @@ fi
 %{_unitdir}/sbd.service
 %{_unitdir}/sbd_remote.service
 %{_fillupdir}/sysconfig.sbd
-%doc COPYING
+%license COPYING
 
 %files devel
 %defattr(-,root,root)
 %dir %{_datadir}/sbd
 %{_datadir}/sbd/regressions.sh
 %{_libdir}/libsbdtestbed*
-%doc COPYING
+%license COPYING
 
 %changelog

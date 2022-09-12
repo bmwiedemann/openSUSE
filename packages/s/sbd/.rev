@@ -509,4 +509,14 @@ the sources.</comment>
   * harden_sbd_remote.service.patch (forwarded request 940717 from yan_gao)</comment>
     <requestid>940718</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>aac4df41e09b38d0527c800f789d5c95</srcmd5>
+    <version>1.5.1+20220716.c43276f</version>
+    <time>1663002528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.1+20220716.c43276f:
+- Be a bit more descriptive on issues opening watchdog-devices
+- test: a few tweaks regarding setup of test-environment (forwarded request 1002776 from yan_gao)</comment>
+    <requestid>1002779</requestid>
+  </revision>
 </revisionlist>

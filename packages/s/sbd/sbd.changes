@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 09 07:39:28 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.5.1+20220716.c43276f:
+- Be a bit more descriptive on issues opening watchdog-devices
+- test: a few tweaks regarding setup of test-environment
+
+-------------------------------------------------------------------
 Mon Dec 13 14:47:20 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - Update to version 1.5.1+20211210.92ff8d8:
