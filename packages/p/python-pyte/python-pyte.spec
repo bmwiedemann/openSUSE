@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyte
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pyte
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        VTXXX-compatible linux terminal emulator
 License:        LGPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/selectel/pyte
 Source:         https://files.pythonhosted.org/packages/source/p/pyte/pyte-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wcwidth}
@@ -59,6 +61,8 @@ sed -i '/pytest-runner/d' setup.py
 %files %{python_files}
 %license LICENSE
 %doc README AUTHORS CHANGES docs/*rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/pyte
+%{python_sitelib}/pyte/*
+%{python_sitelib}/pyte-%{version}-py*.egg-info
 
 %changelog
