@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug 29 11:38:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.4.6
+  * Fix passing of error message from substream callback
+  * Fix regression in 0.4.3 where generator did not find all
+    dependencies
+  * Fix double-definition errors with size_union
+  * Fix generator error with same inner message name
+  * Fix infinite recursion in generator/protoc script
+  * Use C11 static assert mechanism by default
+  * Support --proto-path as alias to -I
+  * Use memcpy instead of iterating on buf_read/write
+  * Add generator support for PlatformIO
+  * Improve handling of varint overflows
+  * Improve optimization for little-endian platforms
+
+-------------------------------------------------------------------
 Wed Oct  6 03:10:34 UTC 2021 - Jonathan Papineau <jonathan@jontech.app>
 
 - Install nanopb also under /usr/bin/nanopb_generator.py - this fixes an

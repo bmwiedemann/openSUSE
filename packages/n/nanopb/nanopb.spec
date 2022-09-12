@@ -1,7 +1,7 @@
 #
 # spec file for package nanopb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 0
 %define src_install_dir %{_prefix}/src/%{name}
 Name:           nanopb
-Version:        0.4.5
+Version:        0.4.6
 Release:        0
 Summary:        Protocol Buffers with small code size
 License:        Zlib
@@ -64,7 +64,7 @@ Source code of nanopb - a C implementation of Google's Protocol Buffers data
 format.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake
