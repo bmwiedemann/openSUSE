@@ -4546,4 +4546,16 @@
 - update staging to 7.16 release</comment>
     <requestid>1000068</requestid>
   </revision>
+  <revision rev="386" vrev="1">
+    <srcmd5>658e9dee02fd587f61611b1d551ad5f9</srcmd5>
+    <version>7.17</version>
+    <time>1663002521</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.17 development release
+  - High Unicode planes support in DirectWrite.
+  - Some work towards Wow64 support in the Vulkan driver.
+  - Various bug fixes.
+- update staging to 7.17 release</comment>
+    <requestid>1002758</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 12 07:02:48 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.17 development release
+  - High Unicode planes support in DirectWrite.
+  - Some work towards Wow64 support in the Vulkan driver.
+  - Various bug fixes.
+- update staging to 7.17 release
+
+-------------------------------------------------------------------
 Sun Aug 28 12:49:10 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.16 development release
