@@ -498,4 +498,12 @@ eplacement for google-api-python-client, follow our naming convention</comment>
 - Refresh patches.</comment>
     <requestid>995084</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>03c41079a87cfb15802d63aff4bf06f3</srcmd5>
+    <version>2.60.0</version>
+    <time>1663002543</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003003</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Mon Sep 12 12:42:37 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.60.0:
+  * **apigeeregistry:** update the api
+  * **baremetalsolution:** update the api
+  * **bigquery:** update the api
+  * **chat:** update the api
+  * **cloudidentity:** update the api
+  * **compute:** update the api
+  * **datacatalog:** update the api
+  * **dataproc:** update the api
+  * **dialogflow:** update the api
+  * **documentai:** update the api
+  * **gkehub:** update the api
+  * **identitytoolkit:** update the api
+  * **managedidentities:** update the api
+  * **playintegrity:** update the api
+  * **servicemanagement:** update the api
+  * **testing:** update the api
+  * **adsense:** update the api
+  * **policysimulator:** update the api
+  * **samples:** Replace APPENGINE_RUNTIME with GAE_ENV (#1893)
+- from version 2.59.0:
+  * **analyticsadmin:** update the api
+  * **analyticsdata:** update the api
+  * **assuredworkloads:** update the api
+  * **baremetalsolution:** update the api
+  * **cloudbuild:** update the api
+  * **compute:** update the api
+  * **datamigration:** update the api
+  * **datastream:** update the api
+  * **dialogflow:** update the api
+  * **documentai:** update the api
+  * **iap:** update the api
+  * **monitoring:** update the api
+  * **mybusinessplaceactions:** update the api
+  * **paymentsresellersubscription:** update the api
+  * **serviceconsumermanagement:** update the api
+  * **servicenetworking:** update the api
+  * **serviceusage:** update the api
+  * **speech:** update the api
+  * **firebase:** update the api
+- from verson 2.58.0:
+  * **adsense:** update the api
+  * **apigee:** update the api
+  * **chromepolicy:** update the api
+  * **cloudsearch:** update the api
+  * **compute:** update the api
+  * **dataflow:** update the api
+  * **dataproc:** update the api
+  * **dlp:** update the api
+  * **documentai:** update the api
+  * **drive:** update the api
+  * **firebase:** update the api
+  * **gkehub:** update the api
+  * **managedidentities:** update the api
+  * **networkmanagement:** update the api
+  * **orgpolicy:** update the api
+  * **playintegrity:** update the api
+  * **retail:** update the api
+  * **secretmanager:** update the api
+  * **serviceconsumermanagement:** update the api
+  * **servicemanagement:** update the api
+  * **servicenetworking:** update the api
+  * **serviceusage:** update the api
+  * **tagmanager:** update the api
+  * **transcoder:** update the api
+  * **dfareporting:** update the api
+- from version 2.57.0:
+  * **admin:** update the api
+  * **apigee:** update the api
+  * **artifactregistry:** update the api
+  * **bigquery:** update the api
+  * **certificatemanager:** update the api
+  * **cloudidentity:** update the api
+  * **cloudsearch:** update the api
+  * **compute:** update the api
+  * **connectors:** update the api
+  * **containeranalysis:** update the api
+  * **content:** update the api
+  * **dataflow:** update the api
+  * **documentai:** update the api
+  * **gkehub:** update the api
+  * **manufacturers:** update the api
+  * **mybusinessplaceactions:** update the api
+  * **run:** update the api
+  * **securitycenter:** update the api
+  * **sqladmin:** update the api
+  * **toolresults:** update the api
+  * **translate:** update the api
+  * **vision:** update the api
+
+-------------------------------------------------------------------
 Mon Aug 15 05:38:58 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.56.0:
