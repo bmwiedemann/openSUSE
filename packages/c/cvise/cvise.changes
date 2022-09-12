@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 12 07:46:52 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.5.0+git.20220912.e2268dd:
+  * Added member-to-global pass that moves declarations within a record (class or struct) in front of the record
+
+-------------------------------------------------------------------
+Mon Sep 12 07:17:11 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.5.0+git.20220912.c56e8a0:
+  * Replaced everywhere TypedefDecl by TypedefNameDecl to supporting typedef-like using declarations
+  * Hopefully compatible with old libclang
+  * return-void transformation discarded function specifiers, attributes and scope qualifiers
+  * class-template-to-class transformation was not working with out-of-line method definitions
+  * Add c++2b C++ standard.
+
+-------------------------------------------------------------------
 Sun Sep 11 18:48:13 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.5.0+git.20220911.4c7ce7f:

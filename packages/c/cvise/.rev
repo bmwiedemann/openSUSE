@@ -801,4 +801,20 @@
   * instantiate-template-param was not working for parameters inside anonymous templates</comment>
     <requestid>1002529</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>b92a015746b1c7b56375ab3fffe170f5</srcmd5>
+    <version>2.5.0+git.20220912.e2268dd</version>
+    <time>1663002511</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.0+git.20220912.e2268dd:
+  * Added member-to-global pass that moves declarations within a record (class or struct) in front of the record
+
+- Update to version 2.5.0+git.20220912.c56e8a0:
+  * Replaced everywhere TypedefDecl by TypedefNameDecl to supporting typedef-like using declarations
+  * Hopefully compatible with old libclang
+  * return-void transformation discarded function specifiers, attributes and scope qualifiers
+  * class-template-to-class transformation was not working with out-of-line method definitions
+  * Add c++2b C++ standard.</comment>
+    <requestid>1002720</requestid>
+  </revision>
 </revisionlist>
