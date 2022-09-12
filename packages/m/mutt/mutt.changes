@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 12 08:50:33 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Refresh offsets of patches
+  * aw.listreply.diff
+  * mutt-1.10.1-imap.patch
+  * mutt-1.5.15-wrapcolumn.diff
+  * mutt-1.5.20-sendgroupreplyto.diff
+  * mutt-1.6.1-opennfs.dif
+  * patch-1.5.24.vk.pgp_verbose_mime
+
+-------------------------------------------------------------------
+Wed Sep  7 15:52:06 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enable optional verbose debugging at run-time (boo#1203184)
+
+-------------------------------------------------------------------
 Tue Aug  9 19:05:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.7:

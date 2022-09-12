@@ -73,7 +73,7 @@
        {
 --- mutt.h
 +++ mutt.h	2020-01-14 13:28:45.787807571 +0000
-@@ -1217,4 +1217,7 @@ typedef struct
+@@ -1222,4 +1222,7 @@ typedef struct
  #include "lib.h"
  #include "globals.h"
  
@@ -83,7 +83,7 @@
  #endif /*MUTT_H*/
 --- muttlib.c
 +++ muttlib.c	2020-01-14 13:28:45.787807571 +0000
-@@ -2542,6 +2542,10 @@ int safe_open (const char *path, int fla
+@@ -2562,6 +2562,10 @@ int safe_open (const char *path, int fla
    BUFFER *safe_file = NULL;
    BUFFER *safe_dir = NULL;
  
@@ -94,7 +94,7 @@
    if (flags & O_EXCL)
    {
      safe_file = mutt_buffer_pool_get ();
-@@ -2570,7 +2574,7 @@ int safe_open (const char *path, int fla
+@@ -2590,7 +2594,7 @@ int safe_open (const char *path, int fla
  
    if ((fd = open (path, flags & ~O_EXCL, 0600)) < 0)
      goto cleanup;
@@ -230,7 +230,7 @@
 +}
 --- sendlib.c
 +++ sendlib.c	2020-01-14 13:28:45.787807571 +0000
-@@ -2565,7 +2565,11 @@ send_msg (const char *path, char **args,
+@@ -2580,7 +2580,11 @@ send_msg (const char *path, char **args,
        if (SendmailWait >= 0 && tempfile && *tempfile)
        {
  	/* *tempfile will be opened as stdout */

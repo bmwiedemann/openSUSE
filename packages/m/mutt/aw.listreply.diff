@@ -8,7 +8,7 @@ ask when sending list message replies to author only - Armin Wolfermann (aw)
 
 --- init.h
 +++ init.h	2022-04-19 10:39:30.991318589 +0000
-@@ -2004,6 +2004,13 @@ struct option_t MuttVars[] = {
+@@ -2005,6 +2005,13 @@ struct option_t MuttVars[] = {
    ** your local timezone. If unset a UTC date will be used instead to avoid
    ** leaking information about your current location.
    */

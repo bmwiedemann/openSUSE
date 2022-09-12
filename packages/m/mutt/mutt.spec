@@ -244,6 +244,7 @@ $KRB5CFGPATH --version
 	--with-curses=%{_prefix} \
 	--enable-smtp \
 	--enable-hcache \
+	--enable-debug \
 %if 0%{?suse_version} > 1315
 	--with-idn2
 %else
