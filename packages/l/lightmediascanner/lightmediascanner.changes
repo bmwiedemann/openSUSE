@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  8 10:39:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Limit ffmpeg dependencies to ffmpeg-4 and older variant.
+
+-------------------------------------------------------------------
 Tue Aug 27 19:37:42 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 0.5.2:

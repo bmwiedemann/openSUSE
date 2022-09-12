@@ -36,8 +36,8 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(vorbis)
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavcodec) <= 58.134.100
+BuildRequires:  pkgconfig(libavformat) <=  58.76.100
 
 %description
 Lightweight media scanner meant to be used in not-so-powerful devices,
