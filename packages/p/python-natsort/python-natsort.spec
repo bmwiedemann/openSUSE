@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-natsort
-Version:        8.1.0
+Version:        8.2.0
 Release:        0
 Summary:        Natural sorting in Python
 License:        MIT

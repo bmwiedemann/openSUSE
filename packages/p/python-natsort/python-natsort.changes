@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 10 15:30:31 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 8.2.0:
+  * Changed
+    + Auto-coerce pathlib.Path objects to str since it is the least
+      astonishing behavior (@Gilthans, issues #152, #153)
+    + Reduce strictness of type hints to avoid over-constraining
+      client code (issues #154, #155)
+
+-------------------------------------------------------------------
 Thu Aug 18 19:35:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Clean specfile: remove code coverage check
