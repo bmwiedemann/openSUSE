@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 10 15:48:54 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * skip python 3.6
+  * require python-blessed
+
+- update to version 0.4.0:
+  * Clean up both wakeup_fds
+  * Drop support for Python 3.6
+  * Switch to blessed
+  * Typing: add more annotations
+
+-------------------------------------------------------------------
 Sun Mar 27 10:58:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.10:
