@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-ai-formrecognizer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-ai-formrecognizer
-Version:        3.1.2
+Version:        3.2.0
 Release:        0
 Summary:        Microsoft Azure Form Recognizer Client Library for Python
 License:        MIT
@@ -38,9 +38,9 @@ Requires:       python-azure-ai-nspkg >= 1.0.0
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.13.0
+Requires:       python-azure-core >= 1.23.0
 Requires:       python-msrest >= 0.6.21
-Requires:       python-six >= 1.11.0
+Requires:       python-typing_extensions >= 4.0.1
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 %python_subpackages
