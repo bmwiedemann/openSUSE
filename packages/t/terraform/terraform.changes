@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Sep  8 05:45:20 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.2.9:
+  * ENHANCEMENTS:
+    - terraform init: add link to documentation when a checksum is missing from the lock file. (#31726)
+
+-------------------------------------------------------------------
+Wed Sep  7 09:12:41 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.2.8:
+  * BUG FIXES:
+    - config: The flatten function will no longer panic if given a null value that has been explicitly converted to or implicitly inferred as having a list, set, or tuple type. Previously Terraform would panic in such a situation because it tried to "flatten" the contents of the null value into the result, which is impossible. (#31675)
+    - config: The tolist, toset, and tomap functions, and various automatic conversions that include similar logic, will no longer panic when asked to infer an element type that is convertable from both a tuple type and a list type whose element type is not yet known. (#31675)
+
+-------------------------------------------------------------------
+Wed Sep  7 09:11:41 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.2.7:
+  * ENHANCEMENTS:
+    - config: Check for direct references to deprecated computed attributes. (#31576)
+  * BUG FIXES:
+    - config: Fix an crash if a submodule contains a resource whose implied provider local name contains invalid characters, by adding additional validation rules to turn it into a real error. (#31573)
+    - core: Fix some handling of provider schema attributes which use the newer "structural typing" mechanism introduced with protocol version 6, and therefore with the new Terraform Plugin Framework (#31532)
+    - command: Add missing output text for applyable refresh plans. (#31469)
+
+-------------------------------------------------------------------
 Wed Jul 27 16:18:39 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.2.6:
