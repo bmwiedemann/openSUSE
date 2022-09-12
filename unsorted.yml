@@ -6121,9 +6121,6 @@ unsorted:
   - go-md2man 
   - go-race: [x86_64] 
   - go-sendxmpp 
-  - go1.12 
-  - go1.12-doc 
-  - go1.12-race: [x86_64] 
   - go1.13 
   - go1.13-doc 
   - go1.13-race: [x86_64] 
@@ -8236,6 +8233,7 @@ unsorted:
   - keybinder-devel 
   - keybinder-lua 
   - keychain 
+  - keyd 
   - keylime-agent 
   - keylime-config: [i586] 
   - keylime-firewalld: [i586] 
@@ -11166,7 +11164,7 @@ unsorted:
   - libgendersplusplus2 
   - libgeners0 
   - libgensio0 
-  - libgensiocpp1 
+  - libgensiocpp2 
   - libgeocode-glib-2-0 
   - libgeocode-glib0-32bit: [x86_64] 
   - libgeos3_11_0 
@@ -25545,6 +25543,7 @@ unsorted:
   - python38-autobahn 
   - python38-autocommand 
   - python38-autodocsumm 
+  - python38-autoflake 
   - python38-autopage 
   - python38-autopep8 
   - python38-autoray 
@@ -32781,6 +32780,11 @@ unsorted:
   - rubberband-vamp-32bit: [x86_64] 
   - ruby-apparmor 
   - ruby-build 
+  - ruby-build-dependencies-jruby 
+  - ruby-build-dependencies-mri 
+  - ruby-build-dependencies-mruby 
+  - ruby-build-dependencies-picoruby 
+  - ruby-build-dependencies-truffleruby 
   - ruby-bundled-gems-rpmhelper 
   - ruby-common-rails 
   - ruby-devel 
