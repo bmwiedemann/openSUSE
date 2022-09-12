@@ -1,7 +1,7 @@
 #
 # spec file for package python-zarr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,14 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-zarr
-Version:        2.9.5
+Version:        2.12.0
 Release:        0
 Summary:        An implementation of chunked, compressed, N-dimensional arrays for Python
 License:        MIT
 URL:            https://github.com/zarr-developers/zarr-python
 Source:         https://files.pythonhosted.org/packages/source/z/zarr/zarr-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 38.6.0}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools_scm > 1.5.4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Needs full python stdlib, base is not enough
@@ -43,8 +43,6 @@ Suggests:       python-msgpack
 Suggests:       python-notebook
 BuildArch:      noarch
 # SECTION test requirements
-# Needs full python stdlib, base is not enough
-BuildRequires:  %pythons >= 3.7
 BuildRequires:  %{python_module asciitree}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module fasteners}
@@ -53,6 +51,8 @@ BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module numcodecs >= 0.6.4}
 BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module pytest}
+# Needs full python stdlib, base is not enough
+BuildRequires:  %{pythons} >= 3.7
 # /SECTION
 %python_subpackages
 

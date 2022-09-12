@@ -1,4 +1,157 @@
 -------------------------------------------------------------------
+Sun Aug 21 15:21:17 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 2.12.0:
+  * Enhancements
+    + Add support for reading and writing Zarr V3. The new
+      zarr._store.v3 package has the necessary classes and functions
+      for evaluating Zarr V3. Since the format is not yet finalized,
+      the classes and functions are not automatically imported into
+      the regular zarr name space. Setting the
+      ZARR_V3_EXPERIMENTAL_API environment variable will activate
+      them. By Greggory Lee; #898, #1006, and #1007 as well as by Josh
+      Moore #1032.
+    + Create FSStore from an existing fsspec filesystem. If you have
+      created an fsspec filesystem outside of Zarr, you can now pass
+      it as a keyword argument to FSStore. By Ryan Abernathey; #911.
+    + Add numpy encoder class for json.dumps By Eric Prestat; #933.
+    + Appending performance improvement to Zarr arrays, e.g., when
+      writing to S3. By hailiangzhang; #1014.
+    + Add number encoder for json.dumps to support numpy intergers in
+      chunks arguments. By Eric Prestat #697.
+  * Bug fixes
+    + Fix bug that made it impossible to create an FSStore on
+      unlistable filesystems (e.g. some HTTP servers). By Ryan
+      Abernathey; #993.
+  * Documentation
+    + Update resize doc to clarify surprising behavior. By
+      hailiangzhang; #1022.
+  * Maintenance
+    + Added Pre-commit configuration, incl. Yaml Check. By Shivank
+      Chaudhary; #1015, #1016.
+    + Fix URL to renamed file in Blosc repo. By Andrew Thomas #1028.
+    + Activate Py 3.10 builds. By Josh Moore #1027.
+    + Make all unignored zarr warnings errors. By Josh Moore #1021.
+
+- changes from version 2.11.3:
+  * Bug fixes
+    + Fix missing case to fully revert change to default
+      write_empty_chunks. By Tom White; #1005.
+
+- changes from version 2.11.2:
+  * Bug fixes
+    + Changes the default value of write_empty_chunks to True to
+      prevent unanticipated data losses when the data types do not
+      have a proper default value when empty chunks are read back
+      in. By Vyas Ramasubramani; #965, #1001.
+
+- changes from version 2.11.1:
+  * Bug fixes
+    + Fix bug where indexing with a scalar numpy value returned a
+      single-value array. By Ben Jeffery #967.
+    + Removed clobber argument from normalize_store_arg. This enables
+      to change data within a opened consolidated group using mode
+      “r+” (i.e region write). By Tobias Kölling #975.
+
+- changes from version 2.11.0:
+  * Enhancements
+    + Sparse changes with performance impact! One of the advantages of
+      the Zarr format is that it is sparse, which means that chunks
+      with no data (more precisely, with data equal to the fill value,
+      which is usually 0) don’t need to be written to disk at
+      all. They will simply be assumed to be empty at read
+      time. However, until this release, the Zarr library would write
+      these empty chunks to disk anyway. This changes in this version:
+      a small performance penalty at write time leads to significant
+      speedups at read time and in filesystem operations in the case
+      of sparse arrays. To revert to the old behavior, pass the
+      argument write_empty_chunks=True to the array creation
+      function. By Juan Nunez-Iglesias; #853 and Davis Bennett; #738.
+    + Fancy indexing. Zarr arrays now support NumPy-style fancy
+      indexing with arrays of integer coordinates. This is equivalent
+      to using zarr.Array.vindex. Mixing slices and integer arrays is
+      not supported. By Juan Nunez-Iglesias; #725.
+    + New base class. This release of Zarr Python introduces a new
+      BaseStore class that all provided store classes implemented in
+      Zarr Python now inherit from. This is done as part of
+      refactoring to enable future support of the Zarr version 3
+      spec. Existing third-party stores that are a MutableMapping
+      (e.g. dict) can be converted to a new-style key/value store
+      inheriting from BaseStore by passing them as the argument to the
+      new zarr.storage.KVStore class. For backwards compatibility,
+      various higher-level array creation and convenience functions
+      still accept plain Python dicts or other mutable mappings for
+      the store argument, but will internally convert these to a
+      KVStore. By Greggory Lee; #839, #789, and #950.
+    + Allow to assign array fill_values and update metadata
+      accordingly. By Ryan Abernathey, #662.
+    + Allow to update array fill_values By Matthias Bussonnier #665.
+  * Bug fixes
+    + Fix bug where the checksum of zipfiles is wrong By Oren Watson
+      #930.
+    + Fix consolidate_metadata with FSStore. By Joe Hamman #916.
+    + Unguarded next inside generator. By Dimitri Papadopoulos Orfanos
+      #889.
+  * Documentation
+    + Update docs creation of dev env. By Ray Bell #921.
+    + Update docs to use python -m pytest. By Ray Bell #923.
+    + Fix versionadded tag in zarr.core.Array docstring. By Juan
+      Nunez-Iglesias #852.
+    + Doctest seem to be stricter now, updating tostring() to
+      tobytes(). By John Kirkham #907.
+    + Minor doc fix. By Mads R. B. Kristensen #937.
+  * Maintenance
+    + Upgrade MongoDB in test env. By Joe Hamman #939.
+    + Pass dimension_separator on fixture generation. By Josh Moore
+      #858.
+    + Activate Python 3.9 in GitHub Actions. By Josh Moore #859.
+    + Drop shortcut fsspec[s3] for dependency. By Josh Moore #920.
+    + and a swath of code-linting improvements by Dimitri Papadopoulos
+      Orfanos:
+       o Unnecessary comprehension (#899)
+       o Unnecessary None provided as default (#900)
+       o use an if expression instead of and/or (#888)
+       o Remove unnecessary literal (#891)
+       o Decorate a few method with @staticmethod (#885)
+       o Drop unneeded return (#884)
+       o Drop explicit object inheritance from class-es (#886)
+       o Unnecessary comprehension (#883)
+       o Codespell configuration (#882)
+       o Fix typos found by codespell (#880)
+       o Proper C-style formatting for integer (#913)
+       o Add LGTM.com / DeepSource.io configuration files (#909)
+
+- changes from version 2.10.3:
+  * Bug fixes
+    + N5 keywords now emit UserWarning instead of raising a
+      ValueError. By Boaz Mohar; #860.
+    + blocks_to_decompress not used in read_part function. By Boaz
+      Mohar; #861.
+    + defines blocksize for array, updates hexdigest values. By Andrew
+      Fulton; #867.
+    + Fix test failure on Debian and conda-forge builds. By Josh
+      Moore; #871.
+
+- changes from version 2.10.2:
+  * Bug fixes
+    + Fix NestedDirectoryStore datasets without dimension_separator
+      metadata. By Josh Moore; #850.
+
+- changes from version 2.10.1:
+  * Bug fixes
+    + Fix regression by setting normalize_keys=False in fsstore
+      constructor. By Davis Bennett; #842.
+
+- changes from version 2.10.0:
+  * Enhancements
+    + Add N5FSStore. By Davis Bennett; #793.
+  * Bug fixes
+    + Ignore None dim_separators in save_array. By Josh Moore; #831.
+
+-------------------------------------------------------------------
 Wed Sep  1 09:34:16 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.9.5:
