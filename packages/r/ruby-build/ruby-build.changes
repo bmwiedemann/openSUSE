@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 12 00:17:02 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Add dependency packages for more Ruby interpreters.
+
+-------------------------------------------------------------------
+Sun Sep 11 21:27:04 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Split dependencies for building different Ruby versions in dedicated packages.
+
+-------------------------------------------------------------------
 Sat Sep 10 12:15:54 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20220910.1.

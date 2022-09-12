@@ -38,12 +38,20 @@ BuildRequires:  bats
 %endif
 Requires:       bash
 Requires:       curl
-Requires:       gcc
+Requires:       gzip
 Requires:       make
 Requires:       tar
-# ruby MRI BuildRequires
-Requires:       bison
+# Maybe Requires would be better.
+Recommends:     %{name}-dependencies-mri
+
+%description
+ruby-build provides a simple way to compile and install different versions of Ruby on UNIX-like systems.
+
+%package dependencies-mri
+Summary:        ruby-build dependencies for building MRI
 Requires:       automake
+Requires:       bison
+Requires:       gcc
 Requires:       gdbm-devel
 Requires:       gperf
 Requires:       graphviz
@@ -54,8 +62,39 @@ Requires:       openssl-devel
 Requires:       readline-devel
 Requires:       tk-devel
 
-%description
-ruby-build provides a simple way to compile and install different versions of Ruby on UNIX-like systems.
+%description dependencies-mri
+ruby-build dependencies for building MRI.
+
+%package dependencies-jruby
+Summary:        ruby-build dependencies for building JRuby
+Requires:       gcc-c++
+
+%description dependencies-jruby
+ruby-build dependencies for building JRuby.
+
+%package dependencies-truffleruby
+Summary:        ruby-build dependencies for building TruffleRuby
+Requires:       gcc
+Requires:       openssl-devel
+
+%description dependencies-truffleruby
+ruby-build dependencies for building TruffleRuby.
+
+%package dependencies-mruby
+Summary:        ruby-build dependencies for building mruby
+Requires:       gcc
+Requires:       git
+
+%description dependencies-mruby
+ruby-build dependencies for building mruby.
+
+%package dependencies-picoruby
+Summary:        ruby-build dependencies for building PicoRuby
+Requires:       gcc
+Requires:       git
+
+%description dependencies-picoruby
+ruby-build dependencies for building PicoRuby.
 
 %prep
 %setup -q
@@ -80,5 +119,15 @@ bats test
 %{_bindir}/*
 %dir %{_datadir}/ruby-build
 %{_datadir}/ruby-build/*
+
+%files dependencies-mri
+
+%files dependencies-jruby
+
+%files dependencies-truffleruby
+
+%files dependencies-mruby
+
+%files dependencies-picoruby
 
 %changelog
