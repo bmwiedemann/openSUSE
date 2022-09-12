@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Sat Sep  3 11:48:06 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- fixed upgrades cluttering libinput overrides file
+
+-------------------------------------------------------------------
+Sat Sep  3 10:44:50 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- added missing Python requires for keyd-application-mapper 
+
+-------------------------------------------------------------------
+Fri Sep  2 13:27:08 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- initial version v2.4.2
