@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Sep 10 15:32:53 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * skip python 3.6
+  * update requirement for curtsies
+  * removed patch  syntaxerror_failing_test.patch and typing_extensions.patch: included upstream
+
+- update to version 0.23:
+  * General information:
+    + More and more type annotations have been added to the bpython
+      code base.
+    + Some work has been performed to stop relying on blessings.
+  * New features:
+    + #905: Auto-closing brackets option added. To enable, add
+       brackets_completion = True in the bpython config Thanks to
+       samuelgregorovic
+  * Fixes:
+    + Improve handling of SyntaxErrors
+    + #948: Fix crash on Ctrl-Z
+    + #952: Fix tests for Python 3.10.1 and newer
+    + #955: Handle optional readline parameters in stdin emulation
+       Thanks to thevibingcat
+    + #959: Fix handling of __name__
+    + #966: Fix function signature completion for classmethod
+  * Changes to dependencies:
+    + curtsies 0.4 or newer is now required
+  * Support for Python 3.6 has been dropped.
+
+-------------------------------------------------------------------
 Sat Feb  5 21:57:02 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - This version actually installs manpages on its own.

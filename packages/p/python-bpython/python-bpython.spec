@@ -18,21 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 %bcond_without     test
 Name:           python-bpython
-Version:        0.22.1
+Version:        0.23
 Release:        0
 Summary:        Fancy Interface to the Python Interpreter
 License:        MIT
 URL:            https://www.bpython-interpreter.org/
 Source:         https://files.pythonhosted.org/packages/source/b/bpython/bpython-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM typing_extensions.patch gh#bpython/bpython#940 mcepl@suse.com
-# We actually don't need typing_extensions (all objects are in 3.8+)
-Patch0:         typing_extensions.patch
-# PATCH-FIX-UPSTREAM syntaxerror_failing_test.patch gh#bpython/bpython#952 mcepl@suse.com
-# This is actually fixed in the post-0.22.1 development, but waiting on it.
-# https://github.com/bpython/bpython/compare/fdd4ad9..4d33cc6.patch
-Patch1:         syntaxerror_failing_test.patch
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pip}
@@ -43,7 +37,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
 Requires:       %{name}-common = %{version}
-Requires:       python-curtsies >= 0.3.5
+Requires:       python-curtsies >= 0.4
 Requires:       python-greenlet
 Requires:       python-pygments
 Requires:       python-pyxdg
@@ -60,7 +54,7 @@ Recommends:     python-urwid
 Recommends:     python-watchdog
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module curtsies >= 0.3.5}
+BuildRequires:  %{python_module curtsies >= 0.4}
 BuildRequires:  %{python_module greenlet}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pyxdg}
