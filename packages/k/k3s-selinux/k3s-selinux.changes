@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 07 12:38:10 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.2.stable.2:
+  * Bump pip/setuptools version; switch to https for git clone
+  * Use SHA256 to sign packages instead of default SHA1
+
+-------------------------------------------------------------------
 Wed Mar 16 17:40:02 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.1.stable.1:
