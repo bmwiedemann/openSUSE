@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 24 12:35:50 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.10.2
+
+## [0.10.2](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.10.2) (2022-08-22)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.10.1...0.10.2)
+
+**Closed issues:**
+
+- Running `vagrant up` twice \(on two `Vagrantfiles`\) causes one of the VMs to loose connectivity [\#1535](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1535)
+
+**Merged pull requests:**
+
+- Allow bridges referenced by libvirt networks [\#1554](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1554) ([electrofelix](https://github.com/electrofelix))
+
+-------------------------------------------------------------------
 Thu Aug 18 07:44:35 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.10.1
