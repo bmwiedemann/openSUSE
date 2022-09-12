@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep  7 11:57:21 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.4
+  * Ratelimit - limit the data throughput on the write side of
+    the gensio stack. This is useful if you have a slow device on
+    a serial port that doesn't have flow control.
+  * Sound - Yes, you can access sound on Linux
+  * Fixed multiple bugs
+  * This release adds a workaround for non-compliant AX.25 stacks.
+  * It also fixes a long-standing bug with blocking I/O; in
+    certain situations it can crash. This will not affect
+    ser2net, but if you are using blocking I/O, it could affect you.
+
+-------------------------------------------------------------------
 Fri May 20 10:53:14 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Udpate to version 2.4.1

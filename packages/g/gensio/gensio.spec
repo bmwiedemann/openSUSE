@@ -18,7 +18,7 @@
 
 
 %global sover   0
-%global sover_cpp 1
+%global sover_cpp 2
 %global libname libgensio%{sover}
 %global libname_cpp libgensiocpp%{sover_cpp}
 %if 0%{?suse_version} > 1500
@@ -27,7 +27,7 @@
 %bcond_with    openipmi
 %endif
 Name:           gensio
-Version:        2.4.1
+Version:        2.5.4
 Release:        0
 Summary:        Library to abstract stream and packet I/O
 # examples/* is licenced under Apache-2.0
@@ -147,12 +147,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc AUTHORS ChangeLog NEWS README.rst
 %{_bindir}/gensiot
 %{_bindir}/gmdns
+%{_bindir}/greflector
+%{_bindir}/gsound
 %{_bindir}/gtlssh
 %{_bindir}/gtlssh-keygen
 %{_bindir}/gtlssync
-%{_bindir}/greflector
 %{_mandir}/man1/gensiot.1%{?ext_man}
 %{_mandir}/man1/gmdns.1%{?ext_man}
+%{_mandir}/man1/greflector.1%{?ext_man}
+%{_mandir}/man1/gsound.1%{?ext_man}
 %{_mandir}/man1/gtlssh-keygen.1%{?ext_man}
 %{_mandir}/man1/gtlssh.1%{?ext_man}
 %{_mandir}/man1/gtlssync.1%{?ext_man}
