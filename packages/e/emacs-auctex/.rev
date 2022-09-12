@@ -423,4 +423,41 @@
   * More bugs fixed, other minor features implemented.</comment>
     <requestid>925236</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b693cdd2d3de0e35b17891969ab41b30</srcmd5>
+    <version>13.1</version>
+    <time>1663002534</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 13.1
+  * In math environments 'gather', 'gather*', 'gathered', 'multline'
+    and 'multline*', fill commands such as 'M-q' and 'C-c C-q C-e' are
+    disabled.  This sorts out the inconsistency between those and
+    'equation', 'displaymath' environments, in latter of which filling
+    is already disabled.
+    If you want filling in such environments, customize
+    'LaTeX-indent-environment-list' to remove them.
+    Auto fill continues to work in such environment anyway.
+    In addition, AUCTeX adds support of alignment at '&amp;' sign in
+    'align'-like environments such as 'alignat', 'aligned' and so on,
+    as well as 'matrix'-like environments such as 'pmatrix', 'bmatrix'
+    and so on.
+  * Now two commands 'Texindex' and 'Texi2dvi' are available when you
+    type 'C-c C-c' in Texinfo mode.  The command 'Texindex' runs
+    'texindex' on index files and 'Texi2dvi' runs 'pdftexi2dvi' or
+    'texi2dvi' according to the value of 'TeX-PDF-mode'.
+    So you can typeset Texinfo documents into PDF or DVI format from
+    within AUCTeX.
+  * AUCTeX's own help messages for LaTeX errors are now shown only for
+    LaTeX runs.  AUCTeX shows raw error/warning messages found in
+    '.log' files for runs of formats other than LaTeX, such as plain
+    TeX, ConTeXt and Texinfo, as it does even for LaTeX runs when it
+    can't find a matching entry in its own help message catalogue.
+    Due to this change, customize option 'TeX-error-description-list'
+    can no longer have a fallback entry that matches any error.  If
+    your customized value includes such entry, typically '(&quot;.*&quot; . &quot;No
+    help available&quot;)', please remove it.
+  * Two functions 'TeX-split-string' and 'TeX-assoc' are now obsolete
+    and will be removed in future release.  If your personal code uses</comment>
+    <requestid>1002783</requestid>
+  </revision>
 </revisionlist>

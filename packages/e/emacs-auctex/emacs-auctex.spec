@@ -1,7 +1,7 @@
 #
 # spec file for package emacs-auctex
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,14 +34,14 @@ BuildRequires:  texinfo
 BuildRequires:  texlive-collection-latexextra
 BuildRequires:  texlive-tex
 BuildRequires:  texlive-texinfo
-Version:        12.3
+Version:        13.1
 Release:        0
 Summary:        AUC TeX: An Emacs Extension
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 Group:          Productivity/Editors/Emacs
-Source0:        http://ftp.gnu.org/pub/gnu/auctex/auctex-%{version}.tar.gz
-Source1:        http://ftp.gnu.org/pub/gnu/auctex/auctex-%{version}.tar.gz.sig
-URL:            http://www.gnu.org/software/auctex
+Source0:        https://ftp.gnu.org/pub/gnu/auctex/auctex-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/pub/gnu/auctex/auctex-%{version}.tar.gz.sig
+URL:            https://www.gnu.org/software/auctex
 # Allows to select printer instance
 # PATCH-FEATURE-UPSTREAM dvips.patch
 Patch0:         dvips.patch
@@ -85,16 +85,16 @@ you cannot use this package for XEmacs.
 	--with-doc-dir=/tmp/auctex/doc/preview	\
 	--with-tex-dir=/tmp/auctex/latex/preview
     find , -name '*.elc' | xargs -r rm -f
-    make %{?_smp_mflags}
-    make -C doc clean
-    make -C doc %{?_smp_mflags}
-    make -C doc extradist
+    %make_build
+    %{__make} %{_make_output_sync} -C doc clean
+    %{__make} %{_make_output_sync} -C doc %{?_smp_mflags}
+    %{__make} %{_make_output_sync} -C doc extradist
     rm -rf /tmp/auctex
 
 %install
     export LC_CTYPE=ISO-8859-1
     mkdir -p %{buildroot}%{_sitedir}/site-start.d
-    make install DESTDIR=%{buildroot}
+    %make_install DESTDIR=%{buildroot}
     rm -rf %{buildroot}%{_aucdir}/auto
     pushd %{buildroot}%{_aucdir}/
 	emacs --no-site -batch -L %{buildroot}%{_sitedir}/auctex 		\

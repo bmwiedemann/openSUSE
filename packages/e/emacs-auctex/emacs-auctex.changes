@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Mon Sep 12 08:33:25 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to 13.1
+  * In math environments 'gather', 'gather*', 'gathered', 'multline'
+    and 'multline*', fill commands such as 'M-q' and 'C-c C-q C-e' are
+    disabled.  This sorts out the inconsistency between those and
+    'equation', 'displaymath' environments, in latter of which filling
+    is already disabled.
+
+    If you want filling in such environments, customize
+    'LaTeX-indent-environment-list' to remove them.
+
+    Auto fill continues to work in such environment anyway.
+
+    In addition, AUCTeX adds support of alignment at '&' sign in
+    'align'-like environments such as 'alignat', 'aligned' and so on,
+    as well as 'matrix'-like environments such as 'pmatrix', 'bmatrix'
+    and so on.
+
+  * Now two commands 'Texindex' and 'Texi2dvi' are available when you
+    type 'C-c C-c' in Texinfo mode.  The command 'Texindex' runs
+    'texindex' on index files and 'Texi2dvi' runs 'pdftexi2dvi' or
+    'texi2dvi' according to the value of 'TeX-PDF-mode'.
+
+    So you can typeset Texinfo documents into PDF or DVI format from
+    within AUCTeX.
+
+  * AUCTeX's own help messages for LaTeX errors are now shown only for
+    LaTeX runs.  AUCTeX shows raw error/warning messages found in
+    '.log' files for runs of formats other than LaTeX, such as plain
+    TeX, ConTeXt and Texinfo, as it does even for LaTeX runs when it
+    can't find a matching entry in its own help message catalogue.
+
+    Due to this change, customize option 'TeX-error-description-list'
+    can no longer have a fallback entry that matches any error.  If
+    your customized value includes such entry, typically '(".*" . "No
+    help available")', please remove it.
+
+  * Two functions 'TeX-split-string' and 'TeX-assoc' are now obsolete
+    and will be removed in future release.  If your personal code uses
+    these functions, use 'split-string' and 'assoc-string' instead.
+
+  * The function 'TeX-read-key-val' now accepts a function call as
+    second argument.  This change should help AUCTeX style writers who
+    use 'TeX-arg-key-val' and have to deal with dynamic key-values.
+    Example of usage:
+         (TeX-add-style-hook "foo"
+          (lambda ()
+            (TeX-add-symbols
+             '("bar" (TeX-arg-key-val (function-returning-key-val))))))
+
+  * Since AUCTeX 12.2, 'C-x C-w' accidentally disabled the parse on
+    save in that buffer, even when you enabled 'TeX-auto-save' option.
+    This bug was fixed.
+
+  * AUCTeX now requires GNU Emacs 24.3 or higher.
++
+  * Old implementations for viewers were discarded, as announced long
+    before.  The variables 'TeX-output-view-style' and 'TeX-view-style'
+    have no effect now.  The former placeholders '%v' and '%vv' in
+    'TeX-command-list' are ignored.
+
+  * AUCTeX now uses lexical binding which has been introduced in Emacs
+    24.  This change should have no user-visible effect and require no
+    manual adaptions except in the following cases.
+
+       - Entries added to the customization variable 'TeX-expand-list'
+         also had access to variables 'command' and 'pos'.  Those are
+         now properly declared and named 'TeX-expand-command' and
+         'TeX-expand-pos'.
+
+       - Entries added to the customization variable 'TeX-expand-list'
+         had access to a variable 'file' which was bound to
+         'TeX-active-master', i.e., it evaluated to either the master
+         or region file.  This usage must be replaced with either
+         'TeX-active-master' or 'TeX-active-master-with-quotes'.
+
+       - Viewer entries in 'TeX-view-program-list' also had access to a
+         variable 'file' which was bound to the name of the master or
+         region file without extension.  Instead, the function
+         'TeX-active-master' has to be used now.
+
+       - Macro argument parsing functions could set a variable
+         'exit-mark' to the buffer position where point should be left
+         after all arguments have been read.  This variable is now
+         named 'TeX-exit-mark'.
+
+       - The functions in 'LaTeX-section-hook' had access or modified
+         the previously undeclared variables 'title', 'name', 'level',
+         'done-mark', and 'toc'.  These variables are now properly
+         declared and have the 'LaTeX-' prefix, e.g.,
+         'LaTeX-done-mark'.
+
+       - The functions in 'ConTeXt-numbered-section-hook' and
+         'ConTeXt-unnumbered-section-hook' had access or modified the
+         previously undeclared variables 'title', 'name', 'level',
+         'done-mark', and 'reference'.  These variables are now
+         properly declared and have the 'ConTeXt-' prefix, e.g.,
+         'ConTeXt-title'.
+
+       - The functions in 'TeX-translate-location-hook' could access
+         and modify the free variables 'file', 'line', 'error',
+         'offset', 'context', and 'string'.  Those are now properly
+         declared variables with the prefix 'TeX-translate-location-',
+         e.g., 'TeX-translate-location-file'.
+
+  * The constant 'LaTeX-dialect' has been renamed to 'TeX-dialect' and
+    moved from 'latex.el' to 'tex.el'.  'LaTeX-dialect' now is an
+    obsolete alias.
+
+  * The style 'latexinfo.el' is removed from AUCTeX.  'latexinfo.el'
+    was meant to support latexinfo which in return was a LaTeX-2.09
+    extension of Texinfo, but didn't manage to replace Texinfo.
+
+  * The style 'siunitx.el' is updated to support package version 3.
+    Key-value options provided by older package versions are removed,
+    deprecated macros and units are not supported anymore.
+
+  * AUCTeX has preliminary support for LaTeX-hooks.  Hooks provided by
+    LaTeX kernel are known and available for completion in
+    '\AddToHook', '\RemoveFromHook' and '\AddToHookNext'.
+
+  * AUCTeX is now able to place all generated output files, including
+    those that are produced by applications running under AUCTeX,
+    temporary files related to region processing and preview-latex
+    files, in an output directory.  To use this feature, set the new
+    user option 'TeX-output-dir' to the absolute path of the output
+    directory or a relative path which would be interpreted as being
+    relative to the master file in a multifile document.
+
+    Note that this feature doesn't work if the document includes sub
+    file placed in sub directory below the main file via '\include'
+    command.
+
+  * Many other bugs were fixed.
+- Port patch dvips.patch
+
+-------------------------------------------------------------------
 Thu Oct 14 10:07:35 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Update to 12.3
