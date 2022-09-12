@@ -41,6 +41,9 @@ URL:            https://github.com/voila-dashboards/voila
 Source:         https://files.pythonhosted.org/packages/source/v/voila/voila-%{version}.tar.gz
 Source1:        https://github.com/voila-dashboards/voila/archive/refs/tags/v%{version}.tar.gz#/voila-%{version}-gh.tar.gz
 Source99:       python-voila-rpmlintrc
+# PATCH-FIX-UPSTREAM Support ipywidgets 8, based on
+# gh#voila-dashboards/voila#1193
+Patch0:         support-ipywidgets-8.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jupyter-packaging >= 0.10}
 BuildRequires:  %{python_module setuptools}
@@ -117,6 +120,7 @@ sed -i s/mistune.Renderer/nbconvert.vendor.mistune.Renderer/ voila/exporter.py
 sed -i '/nbclient/ s/,<0.6//' setup.cfg
 # '.' is now considered 'hidden', which is not allowed.
 sed -i 's|./jupyter.svg|jupyter.svg|' tests/notebooks/images.ipynb
+%patch0 -p1
 
 %build
 %python_build

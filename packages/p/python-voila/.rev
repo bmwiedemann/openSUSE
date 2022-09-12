@@ -119,4 +119,13 @@
     <comment></comment>
     <requestid>990958</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>5b2ab49b0ee47cc784a27bcb278fe7ce</srcmd5>
+    <version>0.3.6</version>
+    <time>1663002489</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-ipywidgets-8.patch:
+  * Support ipywidgets &gt;= 8</comment>
+    <requestid>1002583</requestid>
+  </revision>
 </revisionlist>
