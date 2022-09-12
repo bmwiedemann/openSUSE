@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-ai-textanalytics
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,18 @@
 #
 
 
-%define realversion 5.1.0
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-ai-textanalytics
-Version:        5.1.0.0
+Version:        5.2.0
 Release:        0
 Summary:        Azure Text Analytics client library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-ai-textanalytics/azure-ai-textanalytics-%{realversion}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-ai-textanalytics/azure-ai-textanalytics-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-ai-nspkg >= 1.0.0}
 BuildRequires:  %{python_module setuptools}
@@ -40,9 +38,9 @@ Requires:       python-azure-ai-nspkg >= 1.0.0
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.14.0
-Requires:       python-msrest >= 0.6.21
-Requires:       python-six >= 1.11.0
+Requires:       python-azure-core >= 1.24.0
+Requires:       python-msrest >= 0.7.0
+Requires:       python-typing_extensions >= 4.0.1
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 %python_subpackages
@@ -59,10 +57,10 @@ processing over raw text, and includes six main functions:
 * Key Phrase Extraction
 
 %prep
-%setup -q -n azure-ai-textanalytics-%{realversion}
+%setup -q -n azure-ai-textanalytics-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-ai-textanalytics-%{realversion}
+install -m 644 %{SOURCE1} %{_builddir}/azure-ai-textanalytics-%{version}
 %python_build
 
 %install
