@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-SecretStorage%{psuffix}
-Version:        3.3.2
+Version:        3.3.3
 Release:        0
 Summary:        Python bindings to FreeDesktoporg Secret Service API
 License:        BSD-3-Clause

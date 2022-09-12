@@ -112,4 +112,16 @@
     <comment>- Inject multibuild to prevent a build cycle</comment>
     <requestid>999750</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1a73fbb8af9137e652de1dd5c5550d10</srcmd5>
+    <version>3.3.3</version>
+    <time>1663002480</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.3:
+  * Handle case when CreateItem method returns a prompt [`#39`_].
+  * Reformatted code in accordance with :PEP:`8` standard.
+  * _`#39`: https://github.com/mitya57/secretstorage/issues/39 
+- Add missing file to enable multibuild</comment>
+    <requestid>1002554</requestid>
+  </revision>
 </revisionlist>
