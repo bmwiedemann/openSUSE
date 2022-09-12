@@ -203,4 +203,17 @@
 - Update Requires from setup.py (forwarded request 990641 from glaubitz)</comment>
     <requestid>990682</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>67f300559edf6cfd04a01c51ee476878</srcmd5>
+    <version>8.0.0</version>
+    <time>1663002529</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 8.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from setup.py (forwarded request 1002586 from glaubitz)</comment>
+    <requestid>1002786</requestid>
+  </revision>
 </revisionlist>
