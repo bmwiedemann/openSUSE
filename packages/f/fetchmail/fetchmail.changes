@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 31 15:47:06 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration to /usr/etc: Saving user changed configuration files
+  in /etc and restoring them while an RPM update. 
+
+-------------------------------------------------------------------
 Sat Jul 30 19:10:08 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 6.4.32:
