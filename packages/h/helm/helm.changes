@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Aug 25 07:43:29 UTC 2022 - dmueller@suse.com
 
-- Update to version 3.9.4:
+- Update to version 3.9.4 (bsc#1203054, CVE-2022-36055):
   * Updating the certificates used for testing
   * Updating index handling
 

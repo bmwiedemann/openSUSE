@@ -377,4 +377,12 @@ See changelog in:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1000601</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>70630c9f8dda029015fb22c64d67b6c5</srcmd5>
+    <version>3.9.4</version>
+    <time>1663002451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.9.4 (bsc#1203054, CVE-2022-36055):</comment>
+    <requestid>1002901</requestid>
+  </revision>
 </revisionlist>
