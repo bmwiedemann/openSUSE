@@ -55,6 +55,8 @@ Summary:        Registry server following OCI Distribution Specification
 Group:          System/Management
 Provides:       docker-distribution-registry = %{version}
 Obsoletes:      docker-distribution-registry < %{version}
+# shell of the registry user we create on %%pre
+Requires(pre):  /usr/sbin/nologin
 %sysusers_requires
 %{?systemd_ordering}
 

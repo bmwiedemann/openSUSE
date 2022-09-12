@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  9 14:16:41 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Explicitly require nologin shell which is needed for registry
+  system user (bsc#1203324)
+
+-------------------------------------------------------------------
 Wed Jun  8 15:53:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - switch to go 1.16 for 2.8.1 (jsc#SLE-24963)
