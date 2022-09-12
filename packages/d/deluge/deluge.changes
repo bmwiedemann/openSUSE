@@ -7,7 +7,7 @@ Fri Aug 19 12:21:52 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
 -------------------------------------------------------------------
 Fri Aug  5 03:58:05 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Update to version 2.1.1 (changes since 2.1.0):
+- Update to version 2.1.1 (changes since 2.1.0) (bsc#1203162, CVE-2021-3427):
   * Core:
     + Fix missing trackers added via magnet.
     + Fix handling magnets with tracker tiers.
