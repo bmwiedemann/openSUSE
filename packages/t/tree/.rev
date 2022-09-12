@@ -248,4 +248,12 @@
   * Fixed output up for -X and -J options</comment>
     <requestid>999908</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>847a9f2b9a1e16c31ce8136da36abbc2</srcmd5>
+    <version>2.0.4</version>
+    <time>1663002493</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002708</requestid>
+  </revision>
 </revisionlist>
