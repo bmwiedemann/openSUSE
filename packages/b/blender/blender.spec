@@ -67,7 +67,7 @@
 %bcond_with openxr
 
 Name:           blender
-Version:        3.2.2
+Version:        3.3.0
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -150,10 +150,12 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(python-3.9)
 BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(vpl)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xi)
@@ -449,7 +451,9 @@ cmake ../ \
 %endif
       -DWITH_CYCLES_CUDA_BINARIES:BOOL=OFF \
       -DWITH_CYCLES_CUBIN_COMPILER:BOOL=OFF \
-      -DWITH_CYCLES_HIP_BINARIES:BOOL=ON
+      -DWITH_CYCLES_HIP_BINARIES:BOOL=ON \
+      -DWITH_CYCLES_DEVICE_ONEAPI:BOOL=ON \
+      -DWITH_CYCLES_ONEAPI_BINARIES:BOOL=ON
 
 make %{?_smp_mflags}
 

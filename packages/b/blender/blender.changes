@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep  9 21:22:03 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.3.0:
+  way to many to be listed here, check:
+  https://www.blender.org/download/releases/3-3/
+  https://wiki.blender.org/wiki/Reference/Release_Notes/3.3
+- Add OneAPI libs and build flags
+- Add webp build dependency
+
+-------------------------------------------------------------------
 Sun Aug 14 11:23:58 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 3.2.2:
