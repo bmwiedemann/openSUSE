@@ -1,6 +1,6 @@
-From 02dac25422b9b8f594dc4426bfaa8604f37ec74d Mon Sep 17 00:00:00 2001
+From dfe3df27f265e7e6bc903ffca5181818cdecea6e Mon Sep 17 00:00:00 2001
 From: Johannes Kastl <kastl@b1-systems.de>
-Date: Fri, 7 Jan 2022 13:40:30 +0100
+Date: Wed, 7 Sep 2022 14:43:08 +0200
 Subject: [PATCH] kured-ds.yaml: set imagePullPolicy to Always
 
 Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
@@ -9,11 +9,11 @@ Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/kured-ds.yaml b/kured-ds.yaml
-index 15869c4..b226865 100644
+index d3bd85e..6afce93 100644
 --- a/kured-ds.yaml
 +++ b/kured-ds.yaml
-@@ -34,7 +34,7 @@
-           image: docker.io/weaveworks/kured:1.10.1
+@@ -34,7 +34,7 @@ spec:
+           image: docker.io/weaveworks/kured:1.10.2
                   # If you find yourself here wondering why there is no
                   # :latest tag on Docker Hub,see the FAQ in the README
 -          imagePullPolicy: IfNotPresent
@@ -21,3 +21,6 @@ index 15869c4..b226865 100644
            securityContext:
              privileged: true # Give permission to nsenter /proc/1/ns/mnt
            env:
+-- 
+2.37.2
+

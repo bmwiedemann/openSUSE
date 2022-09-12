@@ -22,7 +22,7 @@
 # Project upstream commit.
 %define commit 685f328
 Name:           kured
-Version:        1.10.1
+Version:        1.10.2
 Release:        0
 Summary:        Kubernetes daemonset to perform safe automatic node reboots
 License:        Apache-2.0
