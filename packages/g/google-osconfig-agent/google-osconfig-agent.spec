@@ -56,7 +56,6 @@ CGO_ENABLED=0 go build -ldflags="-s -w -X main.version=%{version}-%{release}" -m
 %install
 install -d %{buildroot}%{_bindir}
 install -d %{buildroot}%{_sbindir}
-install -d %{buildroot}%{_var}/lib/google_osconfig_agent
 install -d %{buildroot}/etc/osconfig
 install -p -m 0755 google_osconfig_agent %{buildroot}%{_bindir}/google_osconfig_agent
 install -d %{buildroot}%{_unitdir}
@@ -75,7 +74,7 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
     if [ "$1" = "2" ] && ! [ -e /.buildenv ]; then
       # If the old directory exists make sure we set the file there.
       [ -e %{_sysconfdir}/osconfig ] && touch %{_sysconfdir}/osconfig/osconfig_agent_restart_required
-      touch %{_var}/lib/google_osconfig_agent/osconfig_agent_restart_required
+      install -D /dev/null %{_var}/lib/google_osconfig_agent/osconfig_agent_restart_required
     fi
 
 %postun

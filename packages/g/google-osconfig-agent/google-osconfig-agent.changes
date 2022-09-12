@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep  7 10:46:32 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Use install command in %post section to create state file (bsc#1202826)
+- Remove useless creation of state file directory in /var/lib
+
+-------------------------------------------------------------------
 Mon Aug 15 19:22:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- avoid bashim in post install scripts (bsc#1195391) 
+- avoid bashim in post install scripts (bsc#1195391)
 
 -------------------------------------------------------------------
 Wed Aug  3 10:25:55 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
