@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 11 18:50:02 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- version 1.9.9
+  * SCardEstablishContext() may return SCARD_W_SECURITY_VIOLATION if
+    refused by Polkit
+  * Fix SCardReleaseContext() failure on orphan handles
+  * Fix SCardDisconnect() on orphan handle
+  * pcsc-spy: log the pioSendPci & pioRecvPci SCardTransmit() parameters
+  * Improve the log from pcscd: log the return code in text instead of hex
+  * Some other minor improvements
+
+-------------------------------------------------------------------
 Sun Jun 12 09:56:11 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.9.8
