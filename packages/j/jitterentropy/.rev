@@ -31,4 +31,16 @@ It is filled with the time delta containing entropy and auxiliary data that does
 - added a -devel-static package to be able to link it static. (forwarded request 992611 from msmeissn)</comment>
     <requestid>992612</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>137ae25bd5ad1fb156e026c096c015c5</srcmd5>
+    <version>3.4.1</version>
+    <time>1663002508</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.4.1
+ * add FIPS 140 hints to man page
+ * simplify the test tool to search for optimal configurations
+ * fix: jent_loop_shuffle: re-add setting the time that was lost with 3.4.0
+ * enhancement: add ARM64 assembler code to read high-res timer</comment>
+    <requestid>1002712</requestid>
+  </revision>
 </revisionlist>

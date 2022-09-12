@@ -20,7 +20,7 @@ Name:           jitterentropy
 Summary:        A userspace library for jitter entropy generation
 License:        BSD-3-Clause OR GPL-2.0-or-later
 Group:          Development/Tools/Other
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 URL:            https://github.com/smuellerDD/jitterentropy-library
 Source0:        https://github.com/smuellerDD/jitterentropy-library/archive/refs/tags/v%{version}.tar.gz
@@ -91,6 +91,6 @@ This package contains the static library.
 %files -n libjitterentropy3
 %license LICENSE.gplv2 LICENSE LICENSE.bsd
 %_libdir/libjitterentropy.so.3
-%_libdir/libjitterentropy.so.3.4.0
+%_libdir/libjitterentropy.so.%version
 
 %changelog
