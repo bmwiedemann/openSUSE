@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 12 13:14:03 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 1.0.10
+- Add reproducible.patch to make generated policy files reproducible
+
+-------------------------------------------------------------------
 Mon Jun 21 01:50:12 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop unneeded BuildRequires on python. 

@@ -23,4 +23,14 @@
     <comment>- Drop unneeded BuildRequires on python. (forwarded request 901050 from StevenK)</comment>
     <requestid>901169</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a5c1b925c1ae75e80f6b2d7ecc0f12ec</srcmd5>
+    <version>1.0.10</version>
+    <time>1663075440</time>
+    <user>dimstar_suse</user>
+    <comment>fixup .changes
+Update to 1.0.10
+- Add reproducible.patch to make generated policy files reproducible (forwarded request 1002975 from bmwiedemann)</comment>
+    <requestid>1003314</requestid>
+  </revision>
 </revisionlist>
