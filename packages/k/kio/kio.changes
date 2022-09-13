@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Sep  6 07:17:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * Install WidgetsAskUserActionHandler header
+  * file_unix: optimize copy (kde#458001)
+  * Add FreeBSD Qt6 CI support
+  * KFilePlacesItem: Remove unused enum
+  * KFilePlacesModel: Don't show error message on UserCanceled
+  * Add overloads for Utils::concatPaths()
+  * Use AskUserActionInterface (async) in UserNotificationHandler (kde#451834)
+  * Ensure iconForStandardPath() returns user-home for QStandardPaths::HomeLocation (kde#447238)
+  * trash:/ set the UDS_LOCAL_PATH (kde#368104)
+  * KUrlNavigator: check if typed text matches a relative dir first (kde#353883)
+  * FileUndoManager: for copyjob only add undo if it copied something (kde#454226)
+  * Use Functors with QMetaObject::invokeMethod()
+  * DesktopExecParser: don't kioexec if there is a handler for scheme (kde#442721)
+  * force admin worker to run in a thread
+  * install workerfactory header
+  * introduce RealWorkerFactory
+  * revise jobuidelegate factorization
+  * [kfileitemactions] Show desktop file actions more prominently (kde#417012)
+  * clear state after timeout'd special call
+  * make loading UDSEntries from streams thread safe
+  * Remove ServiceType from KDED metadata
+  * Drop obsolete X11 dependency, introduce WITH_X11 option instead
+  * KProcessRunner: fix OpenUrlJob and CommandLauncherJob unittests
+  * Don't install service type definition for properties plugins when building without deprecated things
+  * Remove service type definition for DnD plugins
+  * Sync QT_MIN_VERSION with KF's REQUIRED_QT_VERSION
+  * disable state validation
+
+-------------------------------------------------------------------
 Sun Aug  7 22:27:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.97.0
