@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 12 10:04:01 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- Allow bootloader to run on transactional systems (bsc#1128853)
+- 4.5.4
+
+-------------------------------------------------------------------
 Thu Aug 11 13:04:27 UTC 2022 - Steffen Winterfeldt <snwint@suse.com>
 
 - adjust trusted boot help text (bsc#1197608)
