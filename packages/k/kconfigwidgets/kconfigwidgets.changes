@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep  6 07:16:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * Deduplicate color loading code
+  * refresh git-blame-ignore-revs for latest clang-format run
+  * automatic clang-format run (clang 14)
+  * Fix build after cmakedefine01-related changes
+  * Add FreeBSD Qt6 CI support
+  * [KCommandBar] Add action to clear command history
+
+-------------------------------------------------------------------
 Sun Aug  7 22:27:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.97.0
