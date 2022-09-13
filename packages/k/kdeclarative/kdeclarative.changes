@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep  6 07:16:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * KQuickAddons::ConfigModule: Call QmlObject constructor with shared pointer directly
+  * KDeclarative::setupEngine: Use KQuickIconProvider
+  * Deprecate KDeclarative::setupEngine
+  * Do not build kpackagelauncherqml when building without deprecations
+  * Deprecate KPackage related methods in QmlObject
+  * Add FreeBSD Qt6 CI support
+  * fallbacktaphandler remove duplicate parentheses
+  * Deprecate KDeclarative::setupQmlJsDebugger
+  * KDeclarative::setupEngine: Wrap code that uses deprecated method in deprecation wrappers
+  * Deprecate KDeclarative::runtimePlatform and related methods
+  * Port tests away from QQC1
+
+-------------------------------------------------------------------
 Sun Aug  7 22:27:18 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.97.0
