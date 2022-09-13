@@ -503,4 +503,41 @@
   --enable-icons switch was renamed to --enable-icons-and-clipboard</comment>
     <requestid>992036</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c1452299a6f83c4e9d85ab89d9c2bae5</srcmd5>
+    <version>0.13.0</version>
+    <time>1663074611</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.0:
+  * Print OMEMO verification QR code (#1320, #1568, #1718, #1720)
+    /omemo qrcode
+  * Add option to configure stamp (#1663)
+  * Allow bold for default colors (#1674)
+  * Add irssi theme (#1680)
+  * Include useful aliases in profrc example (#1683)
+  * Improve man pages (#1688, #1703)
+  * Show return symbol for embedded newlines in multiline messages (#1690)
+  * Fix xscreensaver detection (#1696)
+  * Add support for offline MUC notifications (#1697)
+    /notify room offline on|off
+  * Fix SIGABRT when using wrong argument order for receiving ox key (#1689, #1699)
+  * Use 3 digits for rotated log files (#1701)
+  * Fix autocomplete for /ox discover. (#1702)
+  * Fix segfault on /ox discover (#1713, #1715)
+  * Fix OX rpad generation (#1703)
+  * Don't forget encryption status for OX and PGP. (#733, #1694, #1722)
+  * Several OX improvements (#1703, #1705)
+  * Fix room name not updating. (#1710, #1711)
+  * Update capabilities of muc on available presence (#1347, #1712)
+  * Add /avatar set command to publish avatar (#1687, #1714)
+  * Respect silent nick change in mucs (#757, #1716)
+  * Fix duplicate messages in chat with oneself. (#1595, #1717)
+  * Improve cmd argument parser (#497, #1721)
+  * Make display of user mood optional (#1725)
+  * Switch log level while running (#1726)
+  * Split chatlog and log functions in separate files (#1727)
+  * Split pgp and ox into separate files (#1728)
+  * Various cleanups (#1729)</comment>
+    <requestid>1003287</requestid>
+  </revision>
 </revisionlist>
