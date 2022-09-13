@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 12 15:28:13 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.23:
+  * cert-script: skip cert handling if efivarfs is not writable
+    (bsc#1201066)
+  * driver-check.sh, unblacklist: convert egrep to grep -E (bsc#1203092)
+
+-------------------------------------------------------------------
 Thu Jul 14 09:54:09 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.22:

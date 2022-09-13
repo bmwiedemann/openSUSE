@@ -590,4 +590,15 @@ source service setup which messed up my spec file.
   (boo#1201387) (forwarded request 989122 from mwilck)</comment>
     <requestid>989123</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>86e4de55c7081b53a977f4026ca7e0cb</srcmd5>
+    <version>16.0.23</version>
+    <time>1663074480</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.23:
+  * cert-script: skip cert handling if efivarfs is not writable
+    (bsc#1201066)
+  * driver-check.sh, unblacklist: convert egrep to grep -E (bsc#1203092) (forwarded request 1003009 from mwilck)</comment>
+    <requestid>1003010</requestid>
+  </revision>
 </revisionlist>
