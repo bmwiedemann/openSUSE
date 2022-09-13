@@ -8986,8 +8986,8 @@ unsorted:
   - libEMF1 
   - libFAudio0 
   - libFAudio0-32bit: [x86_64] 
-  - libFLAC++6-32bit: [x86_64] 
-  - libFLAC8-32bit: [x86_64] 
+  - libFLAC++10-32bit: [x86_64] 
+  - libFLAC12-32bit: [x86_64] 
   - libFOX-1_6-0 
   - libFS-devel 
   - libFS-devel-32bit: [x86_64] 
@@ -9101,7 +9101,7 @@ unsorted:
   - libLTO12-32bit: [x86_64] 
   - libLTO13 
   - libLTO14 
-  - libLimeSuite20_10-1 
+  - libLimeSuite22_09-1 
   - libMagick++-7_Q16HDRI5 
   - libMagick++-7_Q16HDRI5-32bit: [x86_64] 
   - libMagick++-devel 
@@ -15142,6 +15142,7 @@ unsorted:
   - libyajl2-32bit: [x86_64] 
   - libyami-devel 
   - libyami1 
+  - libyaml-0-2-32bit: [x86_64] 
   - libyaml-devel 
   - libyang-devel 
   - libyang-doc 
@@ -44303,7 +44304,6 @@ unsorted:
   - yaru-icon-theme 
   - yasm 
   - yasm-devel 
-  - yast-in-container: [x86_64] 
   - yast2-adcommon-python 
   - yast2-adsi 
   - yast2-aduc 

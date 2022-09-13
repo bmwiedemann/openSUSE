@@ -300,7 +300,7 @@
     <package name="keyutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="kmod" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="krb5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="libFLAC8" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="libFLAC12" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libICE6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libIex-3_1-30" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libIlmThread-3_1-30" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -870,6 +870,7 @@
     <package name="libxshmfence1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libxslt1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libxtables12" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="libyaml-0-2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libyuv0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libz-ng-compat1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libzbar0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -2056,7 +2057,6 @@
     <package name="libxslt-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libxxhash0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-microdnf -->
     <package name="libyajl2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="libyaml-0-2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-microdnf -->
     <package name="libyaml-cpp0_7" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libyelp0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libyui-ncurses-pkg16" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
