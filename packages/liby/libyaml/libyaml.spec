@@ -1,7 +1,7 @@
 #
 # spec file for package libyaml
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://pyyaml.org/wiki/LibYAML
 Source:         http://pyyaml.org/download/libyaml/yaml-%{version}.tar.gz
+Source99:       baselibs.conf
 BuildRequires:  pkgconfig
 
 %description

@@ -159,4 +159,12 @@
   * A couple patches to improve test suite support</comment>
     <requestid>826902</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>4b226862ea50fff506eabac1244bbe49</srcmd5>
+    <version>0.2.5</version>
+    <time>1663074457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002707</requestid>
+  </revision>
 </revisionlist>
