@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  1 07:14:57 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 6.4.33:
+  - Turns out the snapd version of HTMLDOC 1.9.16 is broken, so I
+    have added a wrapper script that uses the flatpak version of
+    HTMLDOC, for the benefit of rebuilding on distros that do not
+    ship HTMLDOC natively.
+- Remove upstreamed 44-uncorrupt_runfetchmail.patch
+
+-------------------------------------------------------------------
 Wed Aug 31 15:47:06 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration to /usr/etc: Saving user changed configuration files

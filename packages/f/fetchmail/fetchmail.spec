@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           fetchmail
-Version:        6.4.32
+Version:        6.4.33
 Release:        0
 Summary:        Full-Featured POP and IMAP Mail Retrieval Daemon
 License:        GPL-2.0-or-later
@@ -49,9 +49,6 @@ Patch10:        fetchmail-oauth2-c-calculate-and-pass-in-correct-buffer-size-to-
 Patch11:        fetchmail-increase-max-password-length-to-handle-oauth-tokens.patch
 Patch12:        fetchmail-bump-max-passwordlen-to-1bytes.patch
 Patch13:        fetchmail-add-readme-oauth2-issue-27.patch
-# PATCH-FIX-UPSTREAM 44-uncorrupt_runfetchmail.patch gl#fetchmail/fetchmail#44 mcepl@suse.com
-# it seems like the script went through some kind of HTML conversion or something
-Patch14:        44-uncorrupt_runfetchmail.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  fdupes
