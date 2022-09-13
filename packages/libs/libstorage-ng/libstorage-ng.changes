@@ -1,4 +1,16 @@
 --------------------------------------------------------------------
+Fri Sep 9 18:48:20 UTC 2022 - aschnell@suse.com
+
+- Translated using Weblate (Czech) (bsc#1149754)
+- 4.5.44
+
+--------------------------------------------------------------------
+Fri Sep 9 14:26:30 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#897
+- fixed resizing of luks (bsc#1202893)
+
+--------------------------------------------------------------------
 Fri Sep 2 15:07:51 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#896
