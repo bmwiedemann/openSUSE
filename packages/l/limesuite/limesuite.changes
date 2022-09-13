@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  8 18:01:07 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 22.09.0
+  * Fix FFTviewer crash when forwarding X11 over SSH
+  * Add LimeSDR-mini-v2 support
+  * Workaround crash with libusb-1.0.25
+  * Fix wxWidgets assertions, GUI sizers and alignments
+
+-------------------------------------------------------------------
 Mon Jul 12 11:41:13 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - SoapySDR version bumped to 0.8

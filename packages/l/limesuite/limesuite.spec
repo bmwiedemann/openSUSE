@@ -1,8 +1,8 @@
 #
 # spec file for package limesuite
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2017-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 #
 
 
-%define sover 20_10-1
+%define sover 22_09-1
 %define libname libLimeSuite%{sover}
 %define soapy_modver 0.8
 Name:           limesuite
-Version:        20.10.0
+Version:        22.09.0
 Release:        0
 Summary:        Collection of software supporting LMS7-based hardware
 License:        Apache-2.0
@@ -103,6 +103,7 @@ sed -i 's|MODE="660"|MODE="666"|g' udev-rules/64-limesuite.rules
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun  -n %{libname} -p /sbin/ldconfig
+
 %post udev
 %udev_rules_update
 
