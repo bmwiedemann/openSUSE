@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Sep  5 13:13:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.17:
+  * release TLS read and write buffers when idle
+  * Find perl via /usr/bin/env instead of directly
+  * Mac M1 build update. detects arm64 crc32 h/w support.
+  * DTrace build fix on Mac
+  * core: fix strncat warning
+  * configure.ac: use pkg-config to retrieve openssl
+  * proxy: fix missing md5.h from tarball dist
+  * docs: don't rebuild binprot XML anymore
+  * Do memory bound check for some C string operations
+  * proxy: allow mcp.pool to ignore a nil second arg
+  * Improve Slab Automove behavior
+  * proxy: allow booleans in pool structure
+  * proxy: backend object cache was broken
+  * log: fix obscure crashes due to size_t promotion
+  * Fix race leads to deadlock during shutdown (sigterm/sigusr1)
+  * proxy: req:flag_token("F", "Freplacement")
+  * New Features
+  * sock ip filtering tagging support for FBSD/OBSD
+  * MacOS drop privileges support
+  * core: make large item storage more reliable
+  * extstore: make defaults more aggressive 
+
+-------------------------------------------------------------------
 Wed Aug 17 19:11:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.16:

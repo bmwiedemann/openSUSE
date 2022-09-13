@@ -28,7 +28,7 @@
 %endif
 
 Name:           memcached
-Version:        1.6.16
+Version:        1.6.17
 Release:        0
 Summary:        A high-performance, distributed memory object caching system
 License:        BSD-3-Clause
