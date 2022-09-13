@@ -1,3 +1,64 @@
+------------------------------------------------------------------
+Tue Sep 06 11:44:03 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Add _constraints file to avoid memory exhaustion.
+- Update to version 20220905.102802.7d4b8249+git3:
+  * shaper: restart presentation=None from font_idx=0
+  * docs: publish release
+  * docs for switch_to_last_active_tab_when_closing_tab
+  * add switch_to_last_active_tab_when_closing_tab config option
+  * docs: slightly clarify language in ActivateLastTab
+  * docs: link to SpawnCommandInNewTab from SpawnTab
+  * docs: changelog
+  * Search incrementally in chunks of 1000 lines, show progress
+  * fix quad cache top pixel value
+  * cargo update
+  * Fix typo in harfbuzz.rs
+  * fix hangul NFC shaping
+  * lua: patch os.getenv with our own function
+  * termwiz: remove assertions
+  * docs: charselect and paneselect font & size config
+  * ci: expand auto-generated release description
+  * fontconfig: allow proportional fallbacks for codepoints
+  * docs: changelog for 20220904-064125-9a6cee2b
+  * font: fix the function signature for log_buffer_message ...
+  * docs: update for latest release
+  * docs: pane:get_metadata
+  * cargo update
+  * docs: explain about ~ in default_cwd docs
+  * docs: refine CharSelect docs
+  * charselect: options to control copy behavior, + docs
+  * delete old record/replay scripts
+  * correctly invalidate line shape data when fallback fonts load async
+  * adventures in shaping
+  * harfbuzz: allow creating an OT Face + Font
+  * harfbuzz: revise build and bindings
+  * fix build on windows
+  * deps: xkbcommon-rs released 0.5
+  * change text cursor to fa_lock when entering passwords
+  * add Pane::get_metadata
+  * reset mouse cursor to arrow when mouse leaves the window
+  * docs: update default assignments
+  * update shell completion info
+  * charselect: add explicit recent category, show category in UI
+  * cargo fmt
+  * pty: fix build on windows
+  * pty: set SHELL to the shell we selected
+  * pty: actually return the shell we found
+  * char selector: track recently selected emoji and use frecency to show it
+  * ssh: add trace logging when we send a signal
+  * ssh: reduce some redundant logging around AcceptEnv
+  * posix: prefer to resolve shell via the password database
+  * Add CharSelect modal for emoji/nerdfont/unicode input
+  * new color scheme: poimandres
+  * codec: bump version
+  * add pane_id and active state to render cache key
+  * ssh: close stdout, stderr bridges if child is done and there is no data
+  * add cursor shape/visibility to quad cache key
+  * mux: gracefully handle socketpair failure
+  * mux: refactor emit_output_for_pane and use it for exit_behavior
+  * update conpty to v1.14.2281.0 release
+
 -------------------------------------------------------------------
 Mon Aug 29 06:43:55 UTC 2022 - socvirnyl.estela@gmail.com
 
