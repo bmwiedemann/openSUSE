@@ -173,4 +173,12 @@
   * Accelerate the Merge vertex post processing step</comment>
     <requestid>977885</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>21d8928f9169b16d440cec7bc5dd1956</srcmd5>
+    <version>5.2.5</version>
+    <time>1663074601</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.2.5</comment>
+    <requestid>1003264</requestid>
+  </revision>
 </revisionlist>

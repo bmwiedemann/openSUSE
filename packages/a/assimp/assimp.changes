@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Mon Sep 12 13:37:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.5:
+  * Add unittest to reproduce undefined behavior
+  * Cleanups
+  * Link static linkage for std_image.
+  * fix msvc warnings-as-errors
+  * Remove dll-export tags from static library builds.
+  * Fix Import a specific FBX model will freeze the app
+  * Create SECURITY.md
+  * Pragma warnings cause build fail with MinGW
+  * Fixed FBXConverter build error when using double precision
+  * Fix possible nullptr exception
+  * [Experimental] New skeleton container for bones
+  * Add support for GCC v12
+  * Remove unused variable.
+  * Infinite loop on bad import files
+  * Utilize AI_CONFIG_IMPORT_REMOVE_EMPTY_BONES flag for Collada meshes.
+  * Fix Windows 32-bit builds
+  * Fix GNUC check on Windows
+  * Update the name of the package
+  * Kimkulling/fix invalid opengex token match
+  * Disable build for tools per default
+  * Use mingw.include
+  * Fix a memory leak
+  * Fix nested animation name being lost in Collada
+  * Fix possible bad_alloc exception for an invalid file
+  * Bump JesseTG/rm from 1.0.2 to 1.0.3
+  * Bump actions/cache from 2 to 3
+  * Kimkulling/fix texture loading 3MF, reladed issue-4568
+  * Bump actions/upload-artifact from 2 to 3
+  * Bump actions/checkout from 2 to 3
+  * Remove assertion test
+  * Fix memory leak in D3MFOpcPackage
+  * Fix typo in installation instructions for ubuntu.
+  * Build fix for compiling against minizip.
+  * Fix stl for over 4 GB
+  * Fix uninitialized variable.
+  * Fixes Crash in Assimp::ObjFileMtlImporter::getFloatValue
+  * Fixes Heap-buffer-overflow in Assimp::ObjFileParser::getFace
+  * Fixes Heap-buffer-overflow in std::__1::basic_string<char, std::__1::…
+  * Fixes Heap-use-after-free in Assimp::DXFImporter::ExpandBlockReferences
+  * Fixes Heap-buffer-overflow in SuperFastHash
+  * ColladaParser - Store sid in mSID field
+  * Fix mingw include in assimp_cmd.rc
+  * Fix warnings that are causing build fails with specific build flags
+  * Update version tag
+  * Improvements and optimizations for the obj-parsers.
+  * Experiment: try to enable parallel build
+  * Fixed typo
+  * Use [[fallthrough]]; to mark whished fallthroughs
+  * Kimkulling/do not add dot when the extension is empty
+  * Fixes Heap-buffer-overflow READ in Assimp::ASE::Parser::ParseLV1SoftSkinBlock
+  * Use unqualified uint32_t everywhere in FBXBinaryTokenizer
+  * Fix problems setting DirectX_LIBRARY
+  * Added support for more bone weights in GLTF2
+  * (Mostly) Blender fixes
+  * [WIP] Use ai_Real to write correct accuracy
+  * SMD fixes
+  * Remove exception on glTF 2.0 loading
+  * Fix out-of-bounds reads in X3D importer
+  * Apply the modernize-use-emplace clang-tidy rule
+  * The Wrong object is created here!
+  * [WIP] Code cleanup and some new unittests for edge-cases.
+  * clang-tidy: explicitly default all empty ctors and dtors
+  * fix vertices being joined duplicating weights
+  * add missing light data to assbin import/export
+  * Fix aiBone.mOffsetMatrix documentation
+  * Minor obj export bugfix
+  * Kimkulling/cleanup after reviewing
+- drop 0001-Fix-build-with-zlib.patch (upstream)
+
+-------------------------------------------------------------------
 Wed May 18 06:22:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.2.4
