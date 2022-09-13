@@ -330,7 +330,6 @@
 %{_mandir}/man8/halt.8.gz
 %{_mandir}/man8/pam_systemd.8.gz
 %{_mandir}/man8/poweroff.8.gz
-%{_mandir}/man8/rc-local.service.8.gz
 %{_mandir}/man8/reboot.8.gz
 %{_mandir}/man8/shutdown.8.gz
 %{_mandir}/man8/systemd-ask-password-console.path.8.gz

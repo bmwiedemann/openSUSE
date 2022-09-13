@@ -4,7 +4,7 @@
 %config(noreplace) %{_sysconfdir}/systemd/pstore.conf
 %config(noreplace) %{_sysconfdir}/udev/udev.conf
 %if %{without bootstrap}
-# %%dir %{_libdir}/cryptsetup
+%dir %{_libdir}/cryptsetup
 %dir %{_modulesloaddir}
 %endif
 %dir %{_prefix}/lib/udev
@@ -35,9 +35,9 @@
 %{_datadir}/zsh/site-functions/_udevadm
 %endif
 %if %{without bootstrap}
-# %%{_libdir}/cryptsetup/libcryptsetup-token-systemd-fido2.so
-# %%{_libdir}/cryptsetup/libcryptsetup-token-systemd-pkcs11.so
-# %%{_libdir}/cryptsetup/libcryptsetup-token-systemd-tpm2.so
+%{_libdir}/cryptsetup/libcryptsetup-token-systemd-fido2.so
+%{_libdir}/cryptsetup/libcryptsetup-token-systemd-pkcs11.so
+%{_libdir}/cryptsetup/libcryptsetup-token-systemd-tpm2.so
 %{_mandir}/man1/systemd-cryptenroll.1.gz
 %{_mandir}/man5/crypttab.5.gz
 %{_mandir}/man5/integritytab.5.gz

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep  5 06:56:51 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- rc-local.service.8 belongs to the systemd-sysvcompat sub-package (bsc#1203053)
+
+-------------------------------------------------------------------
+Fri Sep  2 20:17:01 UTC 2022 - Bob Haley <fawz@use.startmail.com>
+
+- Enable building and include libcryptsetup-plugins provided by systemd
+
+  Now that dracut 057 has been released we can enable building libcryptsetup
+  plugins. These can be used by cryptsetup to extend functionality including
+  fido2, pkcs11 and tpm2 support.
+
+-------------------------------------------------------------------
+Mon Aug 29 08:00:09 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Let systemd trust the RTC for 30 years after the last update instead of 15 (bsc#1202356)
+
+  To allow for our systems to be used in edge locations without systemd updates
+  for a long time.
+
+-------------------------------------------------------------------
 Tue Aug 16 15:55:26 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Import commit 532faa39ebaa6f56e493cc938a91a40df082b74f (merge of v251.4)

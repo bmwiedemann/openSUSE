@@ -6,6 +6,7 @@
 %dir %{_unitdir}/runlevel3.target.wants
 %dir %{_unitdir}/runlevel4.target.wants
 %dir %{_unitdir}/runlevel5.target.wants
+%{_mandir}/man8/rc-local.service.8.gz
 %{_mandir}/man8/runlevel.8.gz
 %{_mandir}/man8/systemd-initctl.8.gz
 %{_mandir}/man8/systemd-initctl.service.8.gz

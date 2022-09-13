@@ -6082,4 +6082,21 @@ handle manual pages that consist only of a .so directive such as
   So `machinectl import-tar` always works flawlessly. systemd-container already</comment>
     <requestid>997974</requestid>
   </revision>
+  <revision rev="363" vrev="2">
+    <srcmd5>7382f8f348b557082ec7ff6b6fcf8f85</srcmd5>
+    <version>251.4</version>
+    <time>1663074471</time>
+    <user>dimstar_suse</user>
+    <comment>- rc-local.service.8 belongs to the systemd-sysvcompat sub-package (bsc#1203053)
+
+- Enable building and include libcryptsetup-plugins provided by systemd
+  Now that dracut 057 has been released we can enable building libcryptsetup
+  plugins. These can be used by cryptsetup to extend functionality including
+  fido2, pkcs11 and tpm2 support.
+
+- Let systemd trust the RTC for 30 years after the last update instead of 15 (bsc#1202356)
+  To allow for our systems to be used in edge locations without systemd updates
+  for a long time.</comment>
+    <requestid>1002990</requestid>
+  </revision>
 </revisionlist>
