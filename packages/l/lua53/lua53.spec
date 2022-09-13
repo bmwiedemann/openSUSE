@@ -33,6 +33,7 @@ Patch0:         lua-build-system.patch
 #Patch1:        upstream-bugs.patch
 # PATCH-FIX-UPSTREAM https://www.lua.org/bugs.html#5.4.0
 #Patch2:        upstream-bugs-backport-lua54.patch
+Patch3:         shared-link.patch
 BuildRequires:  libtool
 BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
@@ -142,7 +143,6 @@ make install \
     V=%{major_version} \
     INSTALL_TOP="%{buildroot}%{_prefix}" \
     INSTALL_LIB="%{buildroot}%{_libdir}"
-
 find %{buildroot} -type f -name "*.la" -delete -print
 
 # create pkg-config file
@@ -241,7 +241,6 @@ fi
 %{_includedir}/lua%{major_version}/lua.hpp
 %{_includedir}/lua%{major_version}/luaconf.h
 %{_includedir}/lua%{major_version}/lualib.h
-%{_libdir}/liblua%{major_version}.a
 %{_libdir}/liblua%{major_version}.so
 %{_libdir}/pkgconfig/lua%{major_version}.pc
 # alternatives

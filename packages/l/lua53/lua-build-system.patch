@@ -40,9 +40,10 @@ Index: lua-5.3.4/Makefile
  # How to install. If your install program does not support "-p", then
  # you may have to run ranlib on the installed liblua.a.
  INSTALL= install -p
- INSTALL_EXEC= $(INSTALL) -m 0755
+-INSTALL_EXEC= $(INSTALL) -m 0755
++INSTALL_EXEC= $(LIBTOOL) --mode=install install -m 0755
  INSTALL_DATA= $(INSTALL) -m 0644
-+INSTALL_LIBTOOL= $(LIBTOOL) --mode=install install -m 0644
++INSTALL_LIBTOOL= $(LIBTOOL) --mode=install install -m 0755
  #
  # If you don't have "install" you can use "cp" instead.
  # INSTALL= cp -p
@@ -134,15 +135,15 @@ Index: lua-5.3.4/src/Makefile
  $(LUA_A): $(BASE_O)
 -	$(AR) $@ $(BASE_O)
 -	$(RANLIB) $@
-+	$(LIBTOOL) --mode=link --tag=CC  $(CC)  $(LDFLAGS) -lm -ldl $(BASE_O:.o=.lo) -rpath /usr/lib -version-info 8:0:3 -o liblua$(V).la
++	$(LIBTOOL) --mode=link --tag=CC  $(CC)  $(LDFLAGS) -lm -ldl $(BASE_O:.o=.lo) -rpath /usr/lib -shared -version-info 8:0:3 -o liblua$(V).la
  
  $(LUA_T): $(LUA_O) $(LUA_A)
 -	$(CC) -o $@ $(LDFLAGS) $(LUA_O) $(LUA_A) $(LIBS)
-+	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) $(LIBS) -static liblua$(V).la -Wl,-E lua.lo -o $@
++	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) $(LIBS) $(LUA_A) -Wl,-E lua.lo -o $@
  
  $(LUAC_T): $(LUAC_O) $(LUA_A)
 -	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) $(LUA_A) $(LIBS)
-+	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) -static liblua$(V).la luac.lo -o $@
++	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) $(LUA_A) luac.lo -o $@
  
  clean:
  	$(RM) $(ALL_T) $(ALL_O)

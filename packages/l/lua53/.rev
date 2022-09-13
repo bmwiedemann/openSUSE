@@ -45,4 +45,14 @@
     <comment></comment>
     <requestid>837825</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3a873e55c967bcd304e202cbedf2fa20</srcmd5>
+    <version>5.3.6</version>
+    <time>1663074461</time>
+    <user>dimstar_suse</user>
+    <comment>- Add shared-link.patch: fix dynamic linking executable
+- Stop building static library
+</comment>
+    <requestid>1002894</requestid>
+  </revision>
 </revisionlist>
