@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 12 08:24:53 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- Allow kdump to run on transactional systems (bsc#1128853)
+- 4.5.4
+
+-------------------------------------------------------------------
 Mon Aug  1 11:53:29 UTC 2022 - David Diaz <dgonzalez@suse.com>
 
 - Allow using kdump auto resize (related to jsc#SLE-18441)
