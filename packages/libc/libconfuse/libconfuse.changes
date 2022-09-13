@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 12 11:02:59 CEST 2022 - ro@suse.de
+
+- add fix from upstream git
+  libconfuse-d73777c2c3566fb2647727bb56d9a2295b81669b.patch
+  cfg_tilde_expand in confuse.c has a heap-based buffer over-read
+  (CVE-2022-40320 boo#1203326) 
+
+-------------------------------------------------------------------
 Thu Jun 25 07:08:53 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.3:

@@ -1,7 +1,7 @@
 #
 # spec file for package libconfuse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.nongnu.org/confuse/
 Source:         https://github.com/martinh/libconfuse/releases/download/v%{version}/confuse-%{version}.tar.xz
+# PATCH-FIX_UPSTREAM
+Patch0:         libconfuse-d73777c2c3566fb2647727bb56d9a2295b81669b.patch
 BuildRequires:  check-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
@@ -67,7 +69,7 @@ This package holds the development files for libconfuse.
 %lang_package -r %{library_name}
 
 %prep
-%setup -q -n confuse-%{version}
+%autosetup -n confuse-%{version} -p1
 
 %build
 %configure --enable-shared --disable-static
