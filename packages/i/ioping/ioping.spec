@@ -1,7 +1,7 @@
 #
 # spec file for package ioping
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ioping
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        A tool to monitor I/O latency in real time
 License:        GPL-3.0-or-later
