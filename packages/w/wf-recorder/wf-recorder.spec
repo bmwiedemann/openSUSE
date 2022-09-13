@@ -18,31 +18,25 @@
 
 
 Name:           wf-recorder
-Version:        0.3.0
+Version:        0.3.0+git7
 Release:        0%{?dist}
 Summary:        Utility program for screen recording of wlroots-based compositors
 License:        MIT
 Group:          System/Management
 URL:            https://github.com/ammen99/wf-recorder
-Source0:        https://github.com/ammen99/wf-recorder/archive/v%{version}.tar.gz
-BuildRequires:  cmake
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  libavcodec-devel
-BuildRequires:  libavdevice-devel
-BuildRequires:  libavformat-devel
-BuildRequires:  libavutil-devel
-BuildRequires:  libpulse-devel
-BuildRequires:  libswscale-devel
-BuildRequires:  meson
-BuildRequires:  ninja
-BuildRequires:  opencl-cpp-headers
-BuildRequires:  opencl-headers
-BuildRequires:  pkg-config
-BuildRequires:  wayland-devel
-BuildRequires:  wayland-protocols-devel
-BuildRequires:  pkgconfig(OpenCL)
-BuildRequires:  pkgconfig(scdoc)
+BuildRequires:  meson >= 0.47.0
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavdevice)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libpulse-simple)
+BuildRequires:  pkgconfig(libswresample)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
 
 %description
 Utility program for screen recording of wlroots-based compositors

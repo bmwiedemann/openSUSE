@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 13 12:15:24 UTC 2022 - llyyr.public@gmail.com
+
+- Update to version 0.3.0+git7:
+  * fix formatting for muxer option in the manpage
+  * Fix manpage formatting
+  * remove redundant --force-yuv option
+  * fix buffersink pix_fmt handling
+  * docs: fix help and examples regarding -a & --audio (#180)
+  * Remove unused variable (#178)
+  * Support for configuring audio codec and video framerate (#177)
+  * bump version in meson.build to 0.3.0
+  * Fix: Crash when output is switched on (#168)
+  * Add support for xrgb/xbgr 2101010 formats
+
+-------------------------------------------------------------------
 Wed Jun 29 13:28:11 UTC 2022 - llyyr <thighsaspillows@gmail.com>
 
 - Update to version v0.3.0
