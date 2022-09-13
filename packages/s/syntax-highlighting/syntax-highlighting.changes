@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Sep  6 07:17:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * cmake.xml: Add `CMAKE_FILES_DIRECTORY` as undocumented
+  * Use C-style indenting for GLSL
+  * bash.xml: Enable multiline comments and RST documentation
+  * bash.xml: Reformat for better looking
+  * VHDL: fix some highlighting and folding errors
+  * Python: when strings are not closed, mark only the following line as error
+  * Change singleLineComments to be AfterWhiteSpace for c-like langs (kde#438744, kde#456819)
+  * Add FreeBSD Qt6 CI support
+  * Indexer: ignore attribute with lookAhead in suggestRuleMerger() and check attribute only used with lookAhead or IncludeRules
+  * detect .gcode files as G-Code (kde#457753)
+  * Asciidoc: fix section block continuation that should not be highlighted
+  * Asciidoc: optimize rendering time by about 35%
+  * Asciidoc: fix title highlighting when not starting at level 0 (kde#452238)
+  * Bash/Zsh: add -o and -a logical operators with [ ... ]
+  * G-Code: fix number pattern, Mnnn as M-word or M-word (user), add String and... (kde#457754)
+  * Fortran: Interpret percent sign as operator
+  * RPM Spec: fix #20: support of ${expand:...}, ${lua:...}, lua section and some...
+  * VHDL: (#21) fix instantiating component in architecture
+  * CartoCSS: fix the last statement in curly braces when it does not terminate with a semicolon
+  * C: support of C23 and synchronization with cpp.xml
+  * C++: bump version number
+  * C++: Symbol style for LineContinue in String and # in Define
+  * C++: various optimizations and minor improvements
+  * C++: add assume attribute
+  * C++: add z/Z number suffix
+  * C++: add extensions for printf (C23): wN, wfN, H, D, and DD length modifiers, b format
+  * C++: add elifdef/elifndef ; add Char/String Literal Prefix style ; check extra hexadecimal char in String8
+  * Optimize AbstractHighlighter
+  * Resolve regexp rules lazily
+
+-------------------------------------------------------------------
 Sun Aug  7 22:27:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.97.0
