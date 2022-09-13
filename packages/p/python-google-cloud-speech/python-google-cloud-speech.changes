@@ -1,16 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep 13 09:29:35 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.15.1
+  * **deps:** allow protobuf < 5.0.0 (#425)
+  * **deps:** require proto-plus >= 1.22.0 (1ad5df9)
+- from version 2.15.0
+  * add audience parameter (068f8e8)
+  * **deps:** require google-api-core>=1.32.0,>=2.8.0 (#416)
+  * require python 3.7+ (#414)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Jun  9 06:32:16 UTC 2022 - pgajdos@suse.com
 
 - version update to 2.14.1
   ## [2.14.1]
-  * **deps:** require protobuf <4.0.0dev 
-  * fix changelog header to consistent size 
-  * **samples:** resolve library deprecation warnings 
+  * **deps:** require protobuf <4.0.0dev
+  * fix changelog header to consistent size
+  * **samples:** resolve library deprecation warnings
   ## [2.14.0]
-  * Add adaptation proto for v1 api 
-  * Add documentation for latest models to RecognitionConfig 
-  * Update client libraries for v1p1beta1 api 
-  * update docstrings to use absolute links 
+  * Add adaptation proto for v1 api
+  * Add documentation for latest models to RecognitionConfig
+  * Update client libraries for v1p1beta1 api
+  * update docstrings to use absolute links
 - do not require python-mock for build
 - added patches
   fix https://github.com/googleapis/python-speech/issues/406

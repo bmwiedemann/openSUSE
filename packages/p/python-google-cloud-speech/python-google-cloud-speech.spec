@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-cloud-speech
-Version:        2.14.1
+Version:        2.15.1
 Release:        0
 Summary:        Google Cloud Speech API client library
 License:        Apache-2.0
@@ -27,15 +27,17 @@ URL:            https://github.com/googleapis/python-speech
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-speech/google-cloud-speech-%{version}.tar.gz
 # https://github.com/googleapis/python-speech/issues/406
 Patch0:         python-google-cloud-speech-no-mock.patch
-BuildRequires:  %{python_module google-api-core >= 1.31.5}
-BuildRequires:  %{python_module proto-plus >= 1.15.0}
+BuildRequires:  %{python_module google-api-core >= 1.32.0}
+BuildRequires:  %{python_module proto-plus >= 1.22.0}
+BuildRequires:  %{python_module protobuf >= 3.19.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-api-core >= 1.31.5
-Requires:       python-proto-plus >= 1.15.0
+Requires:       python-google-api-core >= 1.32.0
+Requires:       python-proto-plus >= 1.22.0
+Requires:       python-protobuf >= 3.19.0
 BuildArch:      noarch
 %python_subpackages
 
