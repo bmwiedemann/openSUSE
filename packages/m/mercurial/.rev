@@ -1504,4 +1504,21 @@
     <comment></comment>
     <requestid>991726</requestid>
   </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>7f0ed36f656e86b72c83aafbbd836a7f</srcmd5>
+    <version>6.2.2</version>
+    <time>1663074466</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.2.2:
+  * fsmonitor: restore functionality by moving to new dirstate APIs
+  * dirstate-v2: fix data file transaction handling (issue6730)
+  * rust: fix behavior when matching files with multiple includes
+  * rust: widen range of compatible crates to help with packaging
+  * rust-status: ignored directories are now correctly only listed if opted into
+  * automation: improve Windows packaging tooling
+  * contrib: update Mercurial install in bootstrap environment
+  * Remove flakiness in some tests
+  * Improve portability of certain tar uses in tests</comment>
+    <requestid>1002932</requestid>
+  </revision>
 </revisionlist>

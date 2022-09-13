@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 12 13:13:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.2:
+  * fsmonitor: restore functionality by moving to new dirstate APIs
+  * dirstate-v2: fix data file transaction handling (issue6730)
+  * rust: fix behavior when matching files with multiple includes
+  * rust: widen range of compatible crates to help with packaging
+  * rust-status: ignored directories are now correctly only listed if opted into
+  * automation: improve Windows packaging tooling
+  * contrib: update Mercurial install in bootstrap environment
+  * Remove flakiness in some tests
+  * Improve portability of certain tar uses in tests 
+
+-------------------------------------------------------------------
 Fri Jul 29 13:36:34 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to Mercurial 6.2.1.
