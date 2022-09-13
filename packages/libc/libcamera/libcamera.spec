@@ -18,7 +18,7 @@
 
 %define lname   libcamera-suse7
 Name:           libcamera
-Version:        0.0.0+g3381.1db1e31e
+Version:        0.0.0+g3887.f1776100
 Release:        0
 Summary:        A complex camera support library in C++
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -31,6 +31,10 @@ Patch1:         vers.diff
 Patch2:         fix-ppc64.patch
 BuildRequires:  boost-devel
 BuildRequires:  c++_compiler
+%if 0%{?suse_version} <= 1500
+BuildRequires:  gcc9
+BuildRequires:  gcc9-c++
+%endif
 BuildRequires:  libQt5Core-devel
 BuildRequires:  libQt5Gui-devel
 BuildRequires:  libQt5Widgets-devel
@@ -47,6 +51,7 @@ BuildRequires:  pkgconfig(libevent_pthreads)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(yaml-0.1)
 
 %description
 libcamera is an experimental camera user-space API.
@@ -105,6 +110,10 @@ This is its integration plugin for gstreamer.
 %endif
 
 %build
+%if %{pkg_vcmp gcc < 8}
+export CC=gcc-9
+export CXX=g++-9
+%endif
 export CFLAGS="%optflags -Wno-error"
 export CXXFLAGS="$CFLAGS"
 %meson \
