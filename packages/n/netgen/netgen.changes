@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  8 05:40:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Limit dependencies to ffmpeg-4 variant and older, see upstream
+  issue https://github.com/NGSolve/netgen/issues/112
+
+-------------------------------------------------------------------
 Tue Aug  2 22:07:26 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Generate python stubs, add

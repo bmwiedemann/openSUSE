@@ -81,10 +81,12 @@ BuildRequires:  metis-devel
 BuildRequires:  openmpi-devel
 %endif
 %if %{with ffmpeg}
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(libswscale)
+# Limit to ffmpeg-4 and older, see upstream issue
+# https://github.com/NGSolve/netgen/issues/112
+BuildRequires:  pkgconfig(libavcodec) <= 58.134.100
+BuildRequires:  pkgconfig(libavformat) <= 58.76.100
+BuildRequires:  pkgconfig(libavutil) <= 56.70.100
+BuildRequires:  pkgconfig(libswscale) <= 5.9.100
 %endif
 BuildRequires:  xz
 # x86 (32bit) is no longer supported upstream. Also exclude other 32 bit archs
