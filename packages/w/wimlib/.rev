@@ -58,4 +58,12 @@
   * Fixed build errors with the latest version of Mingw-w64.</comment>
     <requestid>948499</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>16094ec9d7c609b7745557ef07e7f305</srcmd5>
+    <version>1.13.6</version>
+    <time>1663074594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003121</requestid>
+  </revision>
 </revisionlist>
