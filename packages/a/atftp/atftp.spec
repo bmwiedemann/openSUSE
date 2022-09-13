@@ -93,6 +93,12 @@ if [ -f %{_sysconfdir}/sysconfig/atftpd ]; then
   sed -i -e "s@^\(ATFTPD_DIRECTORY=\"/tftpboot\"\)@#\1@" %{_sysconfdir}/sysconfig/atftpd
 fi
 %service_add_pre atftpd.service atftpd.socket
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/%{name} ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
 
 %preun
 %service_del_preun atftpd.service atftpd.socket
@@ -103,6 +109,14 @@ fi
 
 %postun
 %service_del_postun atftpd.service atftpd.socket
+
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/%{name} ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %files
 %defattr(-,root,root)
