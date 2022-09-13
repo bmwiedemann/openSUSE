@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep  6 07:16:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * ECMGenerateExportHeader: fix & document CUSTOM_CONTENT_FROM_VARIABLE
+  * Work around exiv2 still using std::auto_ptr
+  * Add FreeBSD Qt 6 CI
+  * Add OpenBSD support
+  * Sync QT_MIN_VERSION with KF's REQUIRED_QT_VERSION
+  * [FindXCB] Remove special treatment for XINPUT
+
+-------------------------------------------------------------------
 Sun Aug  7 22:27:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.97.0
