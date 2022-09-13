@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  6 07:17:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * [qtquickdialogwrapper] Fix finding parent window
+  * Add FreeBSD Qt6 CI support
+  * Render GIFs in entry details (kde#458046)
+  * Fix appstream id for vokoscreenNG (kde#458064)
+
+-------------------------------------------------------------------
 Sun Aug  7 22:27:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.97.0
