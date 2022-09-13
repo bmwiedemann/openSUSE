@@ -1,7 +1,7 @@
 #
 # spec file for package moe
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           moe
-Version:        1.11
+Version:        1.12
 Release:        0
 Summary:        A Text Editor
 License:        GPL-2.0-or-later
@@ -43,11 +43,11 @@ removal from prompt histories, delimiter matching, text conversion from/to
 UTF-8 and romanization.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure
-make %{?_smp_mflags} CXXFLAGS="%{optflags}"
+%make_build CXXFLAGS="%{optflags}"
 
 %install
 %make_install install-man

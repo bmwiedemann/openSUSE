@@ -31,4 +31,30 @@
     <comment></comment>
     <requestid>860416</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>69f47a738344234968ce8041874849df</srcmd5>
+    <version>1.12</version>
+    <time>1663074589</time>
+    <user>dimstar_suse</user>
+    <comment>- Use distribution CFLAGS
+
+- Update to release 1.12
+  * A '+' alone (without line number) before a file name in the
+    command line puts the cursor at end-of-buffer.
+  * In case of error in an argument to a command line option, moe
+    now shows the name of the option as parsed from the command
+    line.
+  * The new command 'C-o b' (reformat paragraphs in block) has
+    been added.
+  * Moe now centers the cursor the first time each handle is
+    displayed.
+  * 'F2' (save) now can write an unnamed read-only buffer to a
+    file without setting the buffer name.
+  * 'undo' and 'redo' now show feedback (&quot;undoing...&quot;,
+    &quot;redoing...&quot;).
+  * The UTF-8 decoder now converts some more characters ('numero
+    sign', 'arrow with tip', 'double arrow', 'Kelvin sign',
+    'Angstrom sign').</comment>
+    <requestid>1003309</requestid>
+  </revision>
 </revisionlist>

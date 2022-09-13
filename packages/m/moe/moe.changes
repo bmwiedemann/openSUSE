@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep 13 11:33:05 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Use distribution CFLAGS
+
+-------------------------------------------------------------------
+Mon Aug 29 11:01:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.12
+  * A '+' alone (without line number) before a file name in the
+    command line puts the cursor at end-of-buffer.
+  * In case of error in an argument to a command line option, moe
+    now shows the name of the option as parsed from the command
+    line.
+  * The new command 'C-o b' (reformat paragraphs in block) has
+    been added.
+  * Moe now centers the cursor the first time each handle is
+    displayed.
+  * 'F2' (save) now can write an unnamed read-only buffer to a
+    file without setting the buffer name.
+  * 'undo' and 'redo' now show feedback ("undoing...",
+    "redoing...").
+  * The UTF-8 decoder now converts some more characters ('numero
+    sign', 'arrow with tip', 'double arrow', 'Kelvin sign',
+    'Angstrom sign').
+
+-------------------------------------------------------------------
 Tue Jan  5 09:03:48 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU moe 1.11:
