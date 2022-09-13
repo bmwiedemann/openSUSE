@@ -28,6 +28,7 @@ Source1:        https://ftp.gnu.org/gnu/gsasl/%{name}-%{version}.tar.gz.sig
 Source2:        https://josefsson.org/54265e8c.txt#/%{name}.keyring
 # https://lists.gnu.org/archive/html/help-gsasl/2022-01/msg00002.html
 Patch1:         0001-Fix-build-issues-with-GCC-12-s-Werror-address.patch
+Patch2:         https://gitlab.com/gsasl/gsasl/-/commit/796e4197f696261c1f872d7576371232330bcc30.patch#/boundary-check-CVE-2022-2469.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel >= 0.19.8
 BuildRequires:  pkgconfig
@@ -72,7 +73,9 @@ from clients, and in clients to authenticate against servers.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
+%patch1 -p1
+%patch2 -p2
 
 %build
 %configure \
@@ -100,12 +103,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/*.so.*
 
 %files devel
-%license COPYING*
 %{_includedir}/gsas*.h
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 
 %files lang -f %{name}.lang
-%license COPYING*
 
 %changelog

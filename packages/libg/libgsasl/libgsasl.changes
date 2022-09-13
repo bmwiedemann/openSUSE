@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 12 09:45:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add boundary-check-CVE-2022-2469.patch (bsc#1201715)
+- avoid duplicate packaging of license
+
+-------------------------------------------------------------------
 Mon Jan 31 18:54:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add 0001-Fix-build-issues-with-GCC-12-s-Werror-address.patch 
