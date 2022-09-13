@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep  6 07:17:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * Fix KMessageBoxes buttons not having the contents they should the first time (kde#458335)
+  * Improve code quality
+  * Disable test for accepting short date format on Windows
+  * Support dates in ISO format
+  * Avoid usage of ambiguous two-digit year in date picker
+  * Share helper returning 4-digit date format with other classes
+  * Add FreeBSD Qt6 CI support
+  * only remove ... not &
+  * Paint frame before contents
+  * Add manual test for kgradientselector
+  * ensure consistent ... removal in iconText (kde#428372)
+  * KMessageWidget: Ensure correct tab order of action buttons
+
+-------------------------------------------------------------------
 Sun Aug  7 22:27:42 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.97.0
