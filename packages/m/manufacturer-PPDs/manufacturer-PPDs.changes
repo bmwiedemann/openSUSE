@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 12 13:24:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use grep -E instead of egrep to be compatible with newer grep versions 
+
+-------------------------------------------------------------------
 Thu Jun 25 12:33:39 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - BuildRequires cups-rpm-helper to fix printer driver provides (boo#1172407)

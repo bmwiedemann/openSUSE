@@ -1,7 +1,7 @@
 #
 # spec file for package manufacturer-PPDs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -99,7 +99,7 @@ Source2:        sharp.ppd.tar.bz2
 # 1. mail (new release because before they had a modified non-free MIT license):
 #   From: vipa <vipa@eitc.epson.com>
 #   Date: Wed, 3 Mar 2004 11:44:14 -0800
-#   Subject: New Release of PostScriptTM printer description (PPD) files for Epson laser printers 
+#   Subject: New Release of PostScriptTM printer description (PPD) files for Epson laser printers
 # 2. mail:
 #   From: "Nichapanich, Vipaporn" <vipaporn.nichapanich@eitc.epson.com>
 #   Date: Mon, 27 Jun 2005 15:57:55 -0700
@@ -109,7 +109,7 @@ Source2:        sharp.ppd.tar.bz2
 # as http://lx1.avasys.jp/ppd/v111/epson_ppd-1.1.1.run which must be run as root,
 # then it installs PPDs into /usr/share/cups/model/epson_ppd/ where only epalc420.ppd was new.
 # After unpacking them and storing all PPDs in the same sub-directory "epson":
-# Add a trailing blank to "are " in the license text in epalc260.ppd to have it same in all PPDs. 
+# Add a trailing blank to "are " in the license text in epalc260.ppd to have it same in all PPDs.
 # Make a bzip2 compressed tar-archive of them:
 #   tar -cjvf epson.ppd.tar.bz2 epson/*.ppd
 Source3:        epson.ppd.tar.bz2
@@ -362,7 +362,7 @@ done
 # than to be rigorous regarding enforcing compliance to the PPD specification:
 for d in hp oce epson kyocera oki ricoh gestetner infotec lanier nrg savin brother toshiba
 do for p in $d/*.ppd
-   do egrep -v '^\*UIConstraints:|^\*NonUIConstraints:' $p | cupstestppd - || true
+   do grep -E -v '^\*UIConstraints:|^\*NonUIConstraints:' $p | cupstestppd - || true
       gzip -n -9 $p
    done
 done
@@ -384,7 +384,7 @@ done
 # to provide all PPDs so that the matching printers can be used
 # than to be rigorous regarding enforcing compliance to the PPD specification:
 for p in sharp/*.ppd
-do egrep -v '^\*UIConstraints:|^\*NonUIConstraints:|DuplexBooklet' $p | cupstestppd - || true
+do grep -E -v '^\*UIConstraints:|^\*NonUIConstraints:|DuplexBooklet' $p | cupstestppd - || true
    gzip -n -9 $p
 done
 # For each manufacturer check and warn for duplicate NickName entries.
@@ -423,8 +423,5 @@ the file was altered in any way from its original form.
 If you have a PostScript printer and there is no PPD file included in
 this package, ask your printer manufacturer for a PPD file or visit
 http://www.linuxprinting.org/ppd-doc.html.
-
-
-
 
 %changelog
