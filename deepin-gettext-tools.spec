@@ -17,13 +17,14 @@
 
 
 Name:           deepin-gettext-tools
-Version:        1.0.8
+Version:        1.0.10
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Deepin wrapper for gettext
 URL:            https://github.com/linuxdeepin/deepin-gettext-tools
 Group:          Development/Tools/Other
 Source:         https://github.com/linuxdeepin/deepin-gettext-tools/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:         reproducible.patch
 BuildArch:      noarch
 Requires:       gettext
 Requires:       python3
@@ -39,7 +40,7 @@ The tools of gettext function wrapper.
 Currently supported languages: Python, QML, Go lang
 
 %prep
-%setup -q
+%autosetup -p1
 # fix shebang
 find -iname "*.py" | xargs sed -i '1s|.*|#!%{_bindir}/python3|'
 sed -i '1s|.*|#!%{__perl}|' src/desktop_ts_convert.pl
