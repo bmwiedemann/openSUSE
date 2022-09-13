@@ -54,7 +54,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.56
+Version:        0.3.57
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -64,12 +64,6 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
-# PATCH-FIX-UPSTREAM 0001-avb-fix-compilation-on-big-endian.patch
-Patch1:         0001-avb-fix-compilation-on-big-endian.patch
-# PATCH-FIX-UPSTREAM 0002-avb-fix-compilation-on-big-endian.patch
-Patch2:         0002-avb-fix-compilation-on-big-endian.patch
-# PATCH-FIX-UPSTREAM 0003-avb-fix-compilation-on-big-endian.patch
-Patch3:         0003-avb-fix-compilation-on-big-endian.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -113,7 +107,7 @@ BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 %if %{with libcamera}
-BuildRequires:  pkgconfig(libcamera) >= 0.0.0+g3381.1db1e31e
+BuildRequires:  libcamera-devel >= 0.0.0+g3887.f1776100
 %endif
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcap)
@@ -128,6 +122,7 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(lilv-0)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(sbc)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
@@ -340,9 +335,6 @@ This package provides a PulseAudio implementation based on PipeWire
 %if 0%{?sle_version} <= 150300
 %patch0 -p1
 %endif
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
@@ -528,6 +520,7 @@ fi
 %{_bindir}/pipewire-avb
 %{_userunitdir}/pipewire.service
 %{_userunitdir}/pipewire.socket
+%{_userunitdir}/filter-chain.service
 %{_mandir}/man1/pipewire.1%{?ext_man}
 %{_mandir}/man5/pipewire.conf.5%{?ext_man}
 %dir %{_datadir}/pipewire/
