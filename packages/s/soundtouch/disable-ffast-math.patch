@@ -1,0 +1,33 @@
+-ffast-math changes the floating point rounding mode globally, which
+is undesirable for shared libraries. 
+
+see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=55522
+for details.
+
+--- soundtouch/CMakeLists.txt	2021-09-07 17:26:53.000000000 +0200
++++ soundtouch/CMakeLists.txt	2022-09-11 10:52:23.945515340 +0200
+@@ -3,13 +3,6 @@
+ 
+ include(GNUInstallDirs)
+ 
+-if(MSVC)
+-  set(COMPILE_DEFINITIONS /O2 /fp:fast)
+-  set(COMPILE_OPTIONS )
+-else()
+-  set(COMPILE_OPTIONS -Ofast)
+-endif()
+-
+ #####################
+ # SoundTouch library
+ 
+--- soundtouch/configure.ac	2021-09-07 17:26:53.000000000 +0200
++++ soundtouch/configure.ac	2022-09-11 10:52:44.845868245 +0200
+@@ -33,7 +33,7 @@
+ 
+ # Compiler flags. Apply -ffast-math to allow gcc autovectorization
+ # generate effective SIMD code.
+-CXXFLAGS+=" -O3 -ffast-math"
++CXXFLAGS+=" -O3 "
+ 
+ # Set AR_FLAGS to avoid build warning "ar: `u' modifier ignored since `D' is the default (see `U')"
+ AR_FLAGS='cr'

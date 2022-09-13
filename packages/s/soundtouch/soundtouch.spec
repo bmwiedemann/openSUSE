@@ -1,7 +1,7 @@
 #
 # spec file for package soundtouch
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://www.surina.net/soundtouch
 Source:         https://codeberg.org/soundtouch/soundtouch/archive/%{version}.tar.gz
 Source1:        https://salsa.debian.org/multimedia-team/soundtouch/raw/master/debian/soundstretch.1
 Source99:       baselibs.conf
+Patch1:         disable-ffast-math.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  dos2unix
@@ -71,6 +72,7 @@ SoundTouch.
 
 %prep
 %setup -q -n %{name}
+%patch1 -p1
 dos2unix README.html
 
 %build
