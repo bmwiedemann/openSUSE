@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  6 07:17:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Too many changes since 5.97.0, only listing bugfixes:
+  * Workaround apps that assume flickable exists before component completition (kde#458099)
+  * FormLayout: Explicitly round up implicit sizes (kde#457675)
+
+-------------------------------------------------------------------
 Sun Aug  7 22:27:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.97.0
