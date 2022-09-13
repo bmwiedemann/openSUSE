@@ -143,4 +143,12 @@
   - Handle UCT and Zulu as synonyms for UTC, while treating GMT and</comment>
     <requestid>970819</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b015e313f2d036c3c2038bb724d0ff94</srcmd5>
+    <version>4.2</version>
+    <time>1663074478</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002999</requestid>
+  </revision>
 </revisionlist>

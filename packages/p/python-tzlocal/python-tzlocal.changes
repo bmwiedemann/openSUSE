@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 12 14:44:51 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only BuildRequire python38-backports.zoneinfo if python38-base is
+  also present (i.e. do not require this when python38 is not a
+  built python flavor).
+
+-------------------------------------------------------------------
 Tue Apr 19 11:54:54 UTC 2022 - pgajdos@suse.com
 
 - version update to 4.2

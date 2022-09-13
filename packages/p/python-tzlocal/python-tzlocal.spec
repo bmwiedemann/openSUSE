@@ -33,7 +33,7 @@ BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python38-backports.zoneinfo
+BuildRequires:  (python38-backports.zoneinfo if python38-base)
 Requires:       python-pytz
 Requires:       python-pytz-deprecation-shim
 BuildArch:      noarch
