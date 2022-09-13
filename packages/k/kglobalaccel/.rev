@@ -907,4 +907,29 @@
     <comment></comment>
     <requestid>997587</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>44af47a75ee74346ee84f55b056b01b6</srcmd5>
+    <version>5.98.0</version>
+    <time>1663074571</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * Only build kglobalshortcuttest with BUILD_RUNTIME=TRUE
+  * Add FreeBSD Qt6 CI support
+  * GlobalShortcutsRegistry: use std::unique_ptr to manage Components
+  * Let GlobalShortcutsRegistry manage all components
+  * Use KFileUtils::findAllUniqueFiles for listing desktop files
+  * GlobalShortcutsRegistry: add two methods providing info about components
+  * Set QGuiApplication::desktopSettingsAware to false
+  * Treat key sequence string as PortableText when parsing
+  * Avoid iterating a container while it's being mutated
+  * Don't set NoDisplay when cleaning up service components (kde#454396)
+  * Don't pass Exec arguments to kstart when launching via desktop entry name (kde#440507)
+- Drop patch, fixed upstream:
+  * 0001-Avoid-iterating-a-container-while-it-s-being-mutated.patch</comment>
+    <requestid>1002911</requestid>
+  </revision>
 </revisionlist>
