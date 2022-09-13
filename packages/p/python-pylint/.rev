@@ -382,4 +382,24 @@
     <comment></comment>
     <requestid>1001087</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0ee69a2b369197743d9ba58ed60c10f1</srcmd5>
+    <version>2.15.2</version>
+    <time>1663074578</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.15.2:
+  * Fixed a case where custom plugins specified by command line could silently fail.
+  * Fix ``used-before-assignment`` for functions/classes defined in type checking guard.
+  * Update ``modified_iterating`` checker to fix a crash with ``for`` loops on empty list.
+  * The ``docparams`` extension now considers typing in Numpy style docstrings
+  * Fix false positive for ``unused-variable`` and ``unused-import`` when a name is only used in a string literal type annotation.
+  * Fix false positive for ``too-many-function-args`` when a function call is assigned to a class attribute inside the class where the function is defined.
+  * Fix ``used-before-assignment`` for functions/classes defined in type checking guard.
+  * Fix ignored files being linted when passed on stdin.
+  * ``missing-return-doc``, ``missing-raises-doc`` and ``missing-yields-doc`` now respect
+  * Don't crash on ``OSError`` in config file discovery.
+  * ``disable-next`` is now correctly scoped to only the succeeding line.
+  * Update ``modified_iterating`` checker to fix a crash with ``for`` loops on empty list.</comment>
+    <requestid>1003053</requestid>
+  </revision>
 </revisionlist>

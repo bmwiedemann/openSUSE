@@ -18,7 +18,7 @@
 
 %bcond_without tests
 Name:           python-pylint
-Version:        2.15.0
+Version:        2.15.2
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
