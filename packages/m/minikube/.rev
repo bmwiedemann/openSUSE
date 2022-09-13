@@ -465,4 +465,28 @@
     <comment>- build against go1.18 to fix arm64 build</comment>
     <requestid>988383</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>5246a329b9f525c566140f968241046d</srcmd5>
+    <version>1.26.1</version>
+    <time>1663074596</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.26.1:
+  * Check for cri-dockerd &amp; dockerd runtimes when using none-driver on Kubernetes 1.24+ #14555
+  * Add solution message for when cri-docker is missing #14483
+  * Limit number of audit entries #14695
+  * Optimize audit logging #14596
+  * Show the container runtime when running without kubernetes #13432 #14200
+  * Add warning when enabling thrid-party addons #14499
+  * Fix url index out of range error in service #14658
+  * Fix incorrect user and profile in audit logging #14562
+  * Fix overwriting err for OCI &quot;minikube start&quot; #14506
+  * Fix panic when environment variables are empty #14415
+  * Bump Kubernetes version default: v1.24.3 and latest: v1.24.3 #14606
+  * ISO: Update Docker from 20.10.16 to 20.10.17 #14534
+  * ISO/Kicbase: Update cri-o from v1.22.3 to v1.24.1 #14420
+  * ISO: Update conmon from v2.0.24 to v2.1.2 #14545
+  * Update gcp-auth-webhook from v0.0.9 to v0.0.10 #14670
+  * ISO/Kicbase: Update base images #14481</comment>
+    <requestid>1003279</requestid>
+  </revision>
 </revisionlist>
