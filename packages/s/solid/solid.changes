@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  6 07:17:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * Add FreeBSD Qt6 CI support
+  * Add explanation for enum value 'Smb3'.
+  * Improve SMB3 filesystem integration.
+  * Add Samba's SMB3 filesystem to Solid.
+
+-------------------------------------------------------------------
 Sun Aug  7 22:27:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.97.0
