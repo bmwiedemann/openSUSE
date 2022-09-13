@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 12 16:02:14 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.8.2
+  * **samples:** Fixing file saving for local documents translation (#419)
+- from version 3.8.1
+  * **deps:** allow protobuf < 5.0.0 (#425)
+  * **deps:** require proto-plus >= 1.22.0 (ba884c6)
+- from version 3.8.0
+  * add audience parameter (b665051)
+  * **deps:** require google-api-core>=1.32.0,>=2.8.0 (#409)
+  * require python 3.7+ (#411)
+- Drop patches for issues fixed upstream
+  * python-google-cloud-translate-no-mock.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Jun  9 07:57:58 UTC 2022 - pgajdos@suse.com
 
 - version update to 3.7.4
