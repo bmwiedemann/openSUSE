@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep  6 07:16:50 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * kcoreaddons_add_plugin: Add cmake option to skip plugin installation in autotests
+  * Remove extra semi colon
+  * Add FreeBSD Qt 6 CI
+  * kfuzzymatchertest replace "QStringLiteral("")" with "QString("")"
+  * Fix KUrlMimeData::exportUrlsToPortal for mixed files-and-directories URIs
+
+-------------------------------------------------------------------
 Sun Aug  7 22:27:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.97.0
