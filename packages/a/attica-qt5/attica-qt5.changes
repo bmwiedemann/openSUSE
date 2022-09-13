@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  6 07:16:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * Remove CTestConfig.cmake, the repo isn't using my.cdash.org
+  * Add FreeBSD Qt6 CI support
+
+-------------------------------------------------------------------
 Sun Aug  7 22:27:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.97.0
