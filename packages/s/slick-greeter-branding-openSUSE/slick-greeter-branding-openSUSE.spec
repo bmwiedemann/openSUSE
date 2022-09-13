@@ -70,7 +70,7 @@ sed -e "s|@@WALLPAPER_URI@@|$bg|" \
 
 %install
 install -Dpm 0644 slick-greeter-branding.gschema.override \
-  %{buildroot}%{_datadir}/glib-2.0/schemas/slick-greeter-branding.gschema.override
+  %{buildroot}%{_datadir}/glib-2.0/schemas/20_slick-greeter-branding.gschema.override
 
 %if 0%{?suse_version} <= 1500
 %post -n lightdm-slick-greeter-branding-openSUSE
@@ -82,6 +82,6 @@ install -Dpm 0644 slick-greeter-branding.gschema.override \
 
 %files -n lightdm-slick-greeter-branding-openSUSE
 %license COPYING
-%{_datadir}/glib-2.0/schemas/slick-greeter-branding.gschema.override
+%{_datadir}/glib-2.0/schemas/20_slick-greeter-branding.gschema.override
 
 %changelog
