@@ -29,7 +29,7 @@
 %define _fwdefdir %{_prefix}/lib/firewalld/services
 
 Name:           booth
-Version:        1.0+20220724.dce51f9
+Version:        1.0+20220815.f40c2d5
 Release:        0
 Summary:        Ticket Manager for Multi-site Clusters
 License:        GPL-2.0-or-later
@@ -40,9 +40,10 @@ Source1:        %{name}-rpmlintrc
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  firewall-macros
 BuildRequires:  libgcrypt-devel
 %if 0%{?with_glue}
-BuildRequires:  libglue-devel
+BuildRequires:  cluster-glue-devel
 %else
 # logging provider
 BuildRequires:  pkgconfig(libqb)
