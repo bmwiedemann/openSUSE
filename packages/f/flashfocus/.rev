@@ -196,4 +196,20 @@
   * Fixed: Relax PyYaml dependency</comment>
     <requestid>988277</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4f63b1ed313184e2ec9a02fb0fabbe3d</srcmd5>
+    <version>2.3.0</version>
+    <time>1663074586</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0:
+  * Added: #74 pyproject.toml config
+  * Fixed: #77 Rare race condition when detecting the current workspace
+  * Fixed: #78 Traceback when the current workspace is null
+  * Not user facing:
+    + #74 Misc. code cleanup/ linter fixes
+    + #75 Fix bug in Dockerfile
+    + #77 Add github action for running tests and fix some flakey tests
+    + #76 Add CODEOWNERS file</comment>
+    <requestid>1003078</requestid>
+  </revision>
 </revisionlist>
