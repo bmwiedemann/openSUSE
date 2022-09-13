@@ -2,7 +2,7 @@
 # spec file for package vkmark
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2018-2019 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2018-2022 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Vulkan benchmark utility
 License:        LGPL-2.1-or-later
 URL:            https://github.com/vkmark/vkmark
 Source0:        %{name}-%{version}.tar.xz
+#PATCH-FIX-OPENSUSE vkmark-fix-missing-include.patch malcolmlewis@opensuse.org -- Add missing memory include to fix building
+Patch0:         vkmark-fix-missing-include.patch
 BuildRequires:  gcc-c++
 BuildRequires:  glm-devel
 BuildRequires:  meson >= 0.45
@@ -44,7 +46,7 @@ BuildRequires:  Mesa-libVulkan-devel
 An extensible Vulkan benchmarking suite with targeted, configurable scenes.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson
