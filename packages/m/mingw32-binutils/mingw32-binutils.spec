@@ -16,6 +16,8 @@
 #
 
 
+%global _default_patch_fuzz 2
+
 Name:           mingw32-binutils
 Version:        2.39
 Release:        0
@@ -26,6 +28,8 @@ URL:            http://www.gnu.org/software/binutils/
 Source:         http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz
 Source99:       mingw32-binutils-rpmlintrc
 Patch0:         0001-PR29362-some-binutils-memory-leaks.patch
+Patch1:         0001-Fix-bug-not-showing-correct-path-with-objdump-WL-wit.patch
+Patch2:         0001-dllwrap-windres-and-dlltools-use-mktemp-which-should.patch
 #!BuildIgnore: post-build-checks
 BuildRequires:  bison
 BuildRequires:  flex
@@ -33,8 +37,8 @@ BuildRequires:  mingw32-cross-binutils
 BuildRequires:  mingw32-cross-gcc
 BuildRequires:  mingw32-filesystem
 BuildRequires:  texinfo
-%_mingw32_package_header_debug
 BuildArch:      noarch
+%_mingw32_package_header_debug
 
 %description
 The GNU Binutils are a collection of binary tools.
@@ -75,7 +79,7 @@ rm -f %{buildroot}%{_mingw32_infodir}/dir
 %{_mingw32_bindir}/*.exe
 %{_mingw32_prefix}/%{_mingw32_target}/bin/*.exe
 %{_mingw32_prefix}/%{_mingw32_target}/lib/ldscripts/
-%dir %{_mingw32_prefix}/lib/bfd-plugins
+%dir %{_mingw32_prefix}/lib/bfd-plugins/
 %{_mingw32_prefix}/lib/bfd-plugins/libdep.dll
 %{_mingw32_mandir}/man1/*
 %{_mingw32_infodir}/*.info*

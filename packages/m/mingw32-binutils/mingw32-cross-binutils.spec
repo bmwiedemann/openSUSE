@@ -16,6 +16,8 @@
 #
 
 
+%global _default_patch_fuzz 2
+
 Name:           mingw32-cross-binutils
 Version:        2.39
 Release:        0
@@ -25,10 +27,12 @@ Group:          Development/Libraries
 URL:            http://www.gnu.org/software/binutils/
 Source:         http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz
 Patch0:         0001-PR29362-some-binutils-memory-leaks.patch
+Patch1:         0001-Fix-bug-not-showing-correct-path-with-objdump-WL-wit.patch
+Patch2:         0001-dllwrap-windres-and-dlltools-use-mktemp-which-should.patch
 #!BuildIgnore: post-build-checks
 BuildRequires:  bison
 BuildRequires:  flex
-BuildRequires:  mingw32-filesystem
+BuildRequires:  mingw32-cross-gcc-c++
 BuildRequires:  texinfo
 # NB: This must be left in.
 Requires:       mingw32-filesystem
