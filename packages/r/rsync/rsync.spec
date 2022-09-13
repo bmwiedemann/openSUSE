@@ -134,6 +134,20 @@ ln -sf service %{buildroot}%{_sbindir}/rcrsyncd
 
 %pre
 %service_add_pre rsyncd.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/rsync ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
+
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/rsync ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %preun
 %service_del_preun rsyncd.service

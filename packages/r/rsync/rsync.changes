@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  1 13:11:01 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration to /usr/etc: Saving user changed configuration files
+  in /etc and restoring them while an RPM update. 
+
+-------------------------------------------------------------------
 Tue Aug 16 08:19:20 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Add upstream patch rsync-3.2.5-slp.patch, as the one included in
