@@ -5,6 +5,13 @@ Mon Aug 22 14:08:05 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 - Add patch to fix memory leak in objdump bug, see 
   https://sourceware.org/bugzilla/show_bug.cgi?id=29505 for details
   * 0001-PR29362-some-binutils-memory-leaks.patch
+- Add patch to fix issue with objdump -WL, see
+   https://sourceware.org/bugzilla/show_bug.cgi?id=29523
+  * 0001-Fix-bug-not-showing-correct-path-with-objdump-WL-wit.patch
+- Add patch to fix warning: 'call-to-mktemp ...'
+   https://sourceware.org/bugzilla/show_bug.cgi?id=29534
+  * 0001-dllwrap-windres-and-dlltools-use-mktemp-which-should.patch
+- Sync with mingw32 variant
 
 -------------------------------------------------------------------
 Wed Jun 29 11:07:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>

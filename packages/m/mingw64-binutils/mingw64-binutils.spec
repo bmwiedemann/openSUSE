@@ -16,6 +16,8 @@
 #
 
 
+%global _default_patch_fuzz 2
+
 Name:           mingw64-binutils
 Version:        2.39
 Release:        0
@@ -26,6 +28,8 @@ URL:            http://www.gnu.org/software/binutils/
 Source:         http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz
 Source99:       mingw64-binutils-rpmlintrc
 Patch0:         0001-PR29362-some-binutils-memory-leaks.patch
+Patch1:         0001-Fix-bug-not-showing-correct-path-with-objdump-WL-wit.patch
+Patch2:         0001-dllwrap-windres-and-dlltools-use-mktemp-which-should.patch
 #!BuildIgnore: post-build-checks
 BuildRequires:  bison
 BuildRequires:  flex
@@ -86,7 +90,7 @@ rm -f %{buildroot}%{_mingw64_infodir}/dir
 %{_mingw64_libdir}/libctf.a
 %{_mingw64_libdir}/libctf-nobfd.a
 %{_mingw64_libdir}/libopcodes.a
-# required by libbfd
+# required by libbfd.a
 %{_mingw64_libdir}/libiberty.a
 
 %changelog
