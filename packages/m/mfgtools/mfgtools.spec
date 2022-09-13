@@ -17,21 +17,22 @@
 
 
 Name:           mfgtools
-Version:        1.4.127.6
+Version:        1.4.243.7
 Release:        0
 Summary:        Freescale/NXP I.MX Chip image deploy tools
 License:        BSD-3-Clause
 Group:          System/Management
 URL:            https://github.com/NXPmicro/mfgtools.git
 Source0:        %{name}-%{version}.tar
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
+BuildRequires:  libbz2-devel
+BuildRequires:  libopenssl-devel
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  libzip-devel
-BuildRequires:  zlib-devel
-BuildRequires:  libbz2-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  pkg-config
-BuildRequires:  cmake
-BuildRequires:  libopenssl-devel
-BuildRequires:  gcc-c++
+BuildRequires:  zlib-devel
 
 %description
 Freescale/NXP I.MX Chip image deploy tools. This package holds the evolution of MFGTools (aka MFGTools v3), which is called the UUU (Universal Update Utility).
