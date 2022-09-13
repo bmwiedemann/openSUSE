@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 13 07:17:18 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- oneVPL only available on x86_64 atm, so disable it on all other
+  architectures
+
+-------------------------------------------------------------------
 Fri Sep  9 21:22:03 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 3.3.0:

@@ -155,7 +155,10 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(python-3.9)
 BuildRequires:  pkgconfig(sndfile)
+%ifarch x86_64
+# oneVPL only available on x86_64 atm
 BuildRequires:  pkgconfig(vpl)
+%endif
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xi)
