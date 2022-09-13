@@ -16,7 +16,7 @@
 #
 
 
-%define llvm_version_major 13
+%define llvm_version_major 14
 %define llvm_version %{llvm_version_major}
 
 %ifarch x86_64
@@ -31,7 +31,7 @@ Name:           klee
 Summary:        LLVM Execution Engine
 License:        NCSA
 Group:          Development/Languages/Other
-Version:        2.3+20220506
+Version:        2.3+20220826
 Release:        0
 URL:            http://klee.github.io/
 Source0:        %{name}-%{version}.tar.xz
@@ -39,7 +39,10 @@ Source1:        %{name}-rpmlintrc
 Source2:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/not/not.cpp
 Source3:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/FileCheck/FileCheck.cpp
 Patch0:         0001-test-disable-until-it-is-fixed.patch
-
+Patch1:         0001-llvm14-Add-LLVM-14-to-lit.cfg.patch
+Patch2:         0001-Module-InstructionOperandTypeCheckPass-Fix-Wbitwise-.patch
+Patch3:         0002-llvm14-TargetRegistry.h-was-moved-from-Support-to-MC.patch
+Patch4:         0003-llvm14-PointerType-getElementType-was-deprecated.patch
 BuildRequires:  clang%{llvm_version}
 BuildRequires:  cmake
 BuildRequires:  gperftools-devel

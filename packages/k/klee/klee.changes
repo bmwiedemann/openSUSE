@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Sep  6 09:21:23 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- add llvm 14 support
+  * 0001-llvm14-Add-LLVM-14-to-lit.cfg.patch
+  * 0001-Module-InstructionOperandTypeCheckPass-Fix-Wbitwise-.patch
+  * 0002-llvm14-TargetRegistry.h-was-moved-from-Support-to-MC.patch
+  * 0003-llvm14-PointerType-getElementType-was-deprecated.patch
+- switch to llvm 14
+
+-------------------------------------------------------------------
+Mon Sep 05 09:12:26 UTC 2022 - jslaby@suse.cz
+
+- Update to version 2.3+20220826:
+  * Use true instead of Z3_TRUE (removed in z3 4.11.0)
+  * Corrected wrong usage of klee_report_error in __cxa_atexit handler
+  * Support arguments of width 128, 256 and 512 bits for external calls
+  * POSIX runtime: fstatat: check for nonnull path APIs
+  * Inline asm external call
+  * Fix memory leak in crosscheck core solver mechanism
+  * checkout KLEE with depth > 1 when running codecov
+  * rename CallSite to CallBase
+  * remove LLVM < 9
+  * Perform coverage analysis for z3 as well
+  * Remove the CI target metaSMT(Boolector).  metaSMT(STP) already runs the
+    test suite with all solvers supported by metaSMT, so the extra target
+    provides marginal benefits.
+  * Implement getArrayForUpdate iteratively
+  * Fix error with empty EntryPoint
+  * Intrinsics: Add support for @llvm.f{ma,muladd}.f*
+  * Use `klee` user to install system dependencies
+  * Spelling Fixes
+  * tests: add StackTraceOutput.c
+  * .err files: minor readability changes to stack trace output
+  * Update SpecialFunctionHandler.cpp
+  * tests: invoke LLVM tools through their corresponding macros
+
+-------------------------------------------------------------------
 Tue May 10 09:23:08 UTC 2022 - jslaby@suse.cz
 
 - Update to version 2.3+20220506:
