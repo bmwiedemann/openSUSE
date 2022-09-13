@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Sep  6 07:17:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * Fix dataengine loading in Qt6 code path
+  * PC3/Slider: Enable hover events (kde#454714)
+  * PlasmaDialog: Don't constantly reset cursor when resizable edges are ON (kde#454714)
+  * Add FreeBSD Qt6 CI support
+  * PC3: Support RTL layouts in controls
+  * extras/ListItem: Fix undefined reference error to properties from newer controls
+  * PC3: Improve support for RTL sliders
+  * extras/Highlight: Fix code style and explicitness
+  * Port from KDeclarative::runtimePlatform to KRuntimePlatform::runtimePlatform
+  * BusyIndicator: Fix initialization of the running property
+  * extras/ExpandableListItem: Remove 'currentIndex' state when unhovering
+  * Doc: Fix typo in a comment
+  * Add missing break in switch-case statement
+  * PC3/CheckBox: Fix hover animation repeated on press
+  * TextField: fix height change when password dot appears
+  * Port away from KDeclarative::runtimePlatform
+  * ExpandableListItem: add `expanded` property to indicate the view is visible
+  * Synchronise busy indicator start points
+  * themetest fix a possible memory leak
+  * datamodel.cpp 'then' statement is equivalent to the 'else'
+  * Fix typo in comment
+  * a11y: toolbuttons are pressable
+  * a11y: roundbuttons are buttons too
+
+-------------------------------------------------------------------
 Sun Aug  7 22:27:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.97.0
