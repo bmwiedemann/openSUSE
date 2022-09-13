@@ -28,6 +28,7 @@ Source:         https://github.com/qpdf/qpdf/releases/download/release-qpdf-%{ve
 Source1:        https://github.com/qpdf/qpdf/releases/download/release-qpdf-%{version}/qpdf-%{version}.tar.gz.asc
 Source2:        qpdf.keyring
 Patch1:         disable-newpdf-renderer.patch
+Patch2:         qpdf-10.6.3-grep-3.8.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ghostscript
 BuildRequires:  libjpeg8-devel

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  8 20:18:10 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build with GNU grep 3.8 (boo#1203231)
+  add qpdf-10.6.3-grep-3.8.patch
+
+-------------------------------------------------------------------
 Tue Jul 19 16:15:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add disable-newpdf-renderer.patch (bsc#1201642)
