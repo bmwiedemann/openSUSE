@@ -12,7 +12,7 @@ Wed Aug 17 19:15:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Aug  1 21:28:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- update to 1.20.0:
+- update to 1.20.0 (bsc#1202858, CVE-2021-4216):
   * Experimental C# bindings
   * Cross compilation should no longer need a host compiler
   * Major additions to JNI bindings
