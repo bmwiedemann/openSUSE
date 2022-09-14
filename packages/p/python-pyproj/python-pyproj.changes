@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Sep 11 18:53:24 UTC 2022 - Libor Pechacek <lpechacek@gmx.com>
+
+- Update to 3.4.0
+  * DEP: Add python 3.11 support by @snowman2 in #1121
+  * DEP: Minimum PROJ version 8.2 by @snowman2 in #1122
+  * DEP: Update wheels with PROJ 9.1.0 by @snowman2 in #1132
+  * ENH: Added authority, accuracy, and allow_ballpark kwargs to
+    TransformerGroup by @snowman2 in #1076
+  * ENH: Added force_over kwarg to Transformer.from_crs by
+    @snowman2 in #1123
+  * ENH: Added Transformer.get_last_used_operation by @snowman2
+    in #1124
+  * BUG: Fix transformer list for 3D transformations in
+    TransformerGroup by @snowman2 in #1075
+  * BUG: Mercator A defined only for lat_0 = 0 by @kdpenner in
+    #1095
+  * BUG: Add support for PROJ_DATA environment variable by
+    @snowman2 in #1099
+  * BUG: Ensure numpy masked arrays stay masked after projection
+    by @paultcochrane in #1103
+  * BLD: Don't specify runtime_library_dirs on Cygwin by @DWesl
+    in #1120
+  * BUG: Fix finding PROJ version with PROJ_LIB and PROJ 9.1+ by
+    @snowman2 in #1128
+  * CLN: Remove deprecated 'skip_equivalent' kwarg from
+    transformers and 'errcheck' kwarg from CRS.from_cf by
+    @snowman2 in #1077
+  * REF: use regex to process PROJ strings in CRS.to_dict() by
+    @snowman2 in #1086
+  * DOC: Fix typo in installation docs by @paultcochrane in #1101
+  * DOC: Fix issues in transformation grids docs by
+    @paultcochrane in #1104
+
+-------------------------------------------------------------------
 Fri May  6 06:52:52 UTC 2022 - Libor Pechacek <lpechacek@suse.com>
 
 - Update to 3.3.1
