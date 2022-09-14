@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-taskw
-Version:        1.3.1
+Version:        2.0.0
 Release:        0
 Summary:        Python bindings for taskwarrior
 License:        GPL-3.0-or-later
@@ -31,7 +31,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-kitchen
 Requires:       python-python-dateutil
 Requires:       python-pytz
-Requires:       python-six
 Requires:       taskwarrior
 BuildArch:      noarch
 # SECTION test requirements
@@ -39,7 +38,6 @@ BuildRequires:  %{python_module kitchen}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module six}
 BuildRequires:  taskwarrior
 # /SECTION
 %python_subpackages
