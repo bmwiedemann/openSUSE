@@ -25,7 +25,7 @@ TLS/SSL support, IPv6 support, and more.
 }
 %bcond_with gnome-keyring
 Name:           mpop
-Version:        1.4.16
+Version:        1.4.17
 Release:        0
 Summary:        Lightweight and featureful POP3 Client
 License:        GPL-3.0-or-later
