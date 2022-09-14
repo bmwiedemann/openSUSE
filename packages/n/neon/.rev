@@ -446,4 +446,21 @@
     <comment></comment>
     <requestid>948982</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>2b1ea0a48284fa742de62bdb6ab8da29</srcmd5>
+    <version>0.32.4</version>
+    <time>1663155876</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.32.4:
+  * Fix Digest regression in allowing implicit algorithm= (issue #88)
+  * Fix Digest to safely allow spaces in usernames (without userhash)
+  * ne_ssl_trust_default_ca() now uses the system's trusted CAs
+    with GnuTLS where supported (matching behaviour of OpenSSL)
+  * Improvements and fixes to Windows build (Chun-wei Fan)
+  * Fix finding pkg-config when cross-compiling (Hugh McMaster)
+  * Fix Digest cnonce entropy sources in non-SSL builds
+  * Fix cases where Digest usernames were rejected as non-ASCII
+  * Fix build failures with OpenSSL 1.1 on some platforms</comment>
+    <requestid>1003280</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 13 09:47:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.32.4:
+  * Fix Digest regression in allowing implicit algorithm= (issue #88)
+  * Fix Digest to safely allow spaces in usernames (without userhash)
+  * ne_ssl_trust_default_ca() now uses the system's trusted CAs
+    with GnuTLS where supported (matching behaviour of OpenSSL)
+  * Improvements and fixes to Windows build (Chun-wei Fan)
+  * Fix finding pkg-config when cross-compiling (Hugh McMaster)
+  * Fix Digest cnonce entropy sources in non-SSL builds
+  * Fix cases where Digest usernames were rejected as non-ASCII
+  * Fix build failures with OpenSSL 1.1 on some platforms
+
+-------------------------------------------------------------------
 Sun Jan 23 08:59:28 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.32.2:
