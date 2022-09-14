@@ -19,7 +19,8 @@
 %define apptainerpath src/github.com/apptainer/
 %define _buildshell /bin/bash
 
-%define vers_suffix -rc.2
+%define vers_suffix -rc.3
+%global squashfuse_version 0.1.105
 
 Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL
@@ -34,7 +35,11 @@ Source1:        README.SUSE
 Source2:        SLE-12SP5.def
 Source3:        SLE-15SP3.def
 Source5:        %{name}-rpmlintrc
-Source10:       vendor.tar.gz
+Source9:        vendor.tar.gz
+%if "%{?squashfuse_version}" != ""
+Source10:       https://github.com/vasi/squashfuse/archive/%{squashfuse_version}/squashfuse-%{squashfuse_version}.tar.gz
+Patch10:        https://github.com/vasi/squashfuse/pull/70.patch
+%endif
 BuildRequires:  cryptsetup
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -48,6 +53,14 @@ BuildRequires:  sysuser-tools
 BuildRequires:  binutils-gold
 %endif
 BuildRequires:  libseccomp-devel
+%if "%{?squashfuse_version}" != ""
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  fuse3-devel
+BuildRequires:  libtool
+BuildRequires:  pkgconfig
+BuildRequires:  zlib-devel
+%endif
 Requires:       squashfs
 PreReq:         permissions
 
@@ -63,6 +76,12 @@ Singularity provides functionality to make portable
 containers that can be used across host environments.
 
 %prep
+%if "%{?squashfuse_version}" != ""
+# the default directory for other steps is where the %prep section ends
+# so do main package last
+%setup -b 10 -n squashfuse-%{squashfuse_version}
+%patch -P 10 -p1
+%endif
 %setup -q -n gopath/%{apptainerpath} -c
 cp %{S:1} %{S:2} %{S:3} .
 mv %{name}-%{version}%{?vers_suffix} %{name}
@@ -74,7 +93,7 @@ cd %{name}
 echo %version > VERSION
 # Not all of these parameters currently have an effect, but they might be
 # used someday.  They are the same parameters as in the configure macro.
-tar xzf %{S:10}
+tar xzf %{S:9}
 ./mconfig -V %{version}-%{release} \
         -P release \
         --prefix=%{_prefix} \

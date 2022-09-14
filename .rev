@@ -75,4 +75,12 @@
   * Add additional options to the build command for testing different fakeroot (forwarded request 998137 from mslacken)</comment>
     <requestid>998138</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>1927f7a08f2c07137a7ca63b2cd0ec9b</srcmd5>
+    <version>1.1.0</version>
+    <time>1663155918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003477</requestid>
+  </revision>
 </revisionlist>
