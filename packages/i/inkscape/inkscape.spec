@@ -31,6 +31,9 @@ Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
 Source98:       https://media.inkscape.org/media/resources/sigs/inkscape-%{_version}.tar.xz.sig
 Source99:       https://inkscape.org/~MarcJeanmougin/gpg#/%name.keyring
+# PATCH-FIX-UPSTREAM 2f3101417.patch -- Fix build with Poppler 22.09.0
+Patch0:         https://gitlab.com/inkscape/inkscape/-/commit/2f3101417.patch
+
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
