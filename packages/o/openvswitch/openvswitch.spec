@@ -60,6 +60,7 @@ Patch3:         Use-double-hash-for-OVS_USER_ID-comment.patch
 Patch4:         install-ovsdb-tools.patch
 Patch5:         0001-openvswitch-merge-compiler.h-files-into-one-file.patch
 Patch6:         0002-build-Seperated-common-used-headers.patch
+Patch7:         openvswitch-2.17.2-Fix-tests-with-GNU-grep-3.8.patch
 # Python subpackage
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
