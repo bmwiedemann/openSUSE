@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 14 07:20:38 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Fix build with glibc 2.36: backports of two upstream fixes
+  criu-fix-conflicting-headers.patch
+  mount-add-definition-for-FSOPEN_CLOEXEC.patch
+
+-------------------------------------------------------------------
 Thu Aug 11 07:06:26 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
 - Update to criu 3.17.1:

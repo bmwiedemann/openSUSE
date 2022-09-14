@@ -45,6 +45,9 @@ Patch1:         criu-py-install-fix.diff
 Patch2:         0002-Fix-build-with-nftables-installed-in-different-direc.patch
 Patch3:         criu-amdgpu-plugin-fix.patch
 Patch4:         plugin-dir-path.patch
+# upstream fixes
+Patch5:         criu-fix-conflicting-headers.patch
+Patch6:         mount-add-definition-for-FSOPEN_CLOEXEC.patch
 BuildRequires:  libcap-devel
 %if %{with_amdgpu_plugin}
 BuildRequires:  libdrm-devel
@@ -125,6 +128,8 @@ to develop applications with CRIU library.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
+%patch6 -p1
 # default off
 echo "BINFMT_MISC_VIRTUALIZED" > .config
 
