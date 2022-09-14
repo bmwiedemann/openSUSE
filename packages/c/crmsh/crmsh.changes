@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 13 07:53:14 UTC 2022 - zzhou@suse.com
+
+- Update to version 4.4.1+20220913.57fa9d96:
+  * Dev: unittest: Adjust unit test based on previous changes
+  * Dev: utils: Refactor class ServiceManager, to show all nodes' status when running in parallel
+  * Dev: bootstrap: Add delay to start corosync when node list larger than 5
+
+-------------------------------------------------------------------
 Thu Sep 08 06:30:59 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20220908.d668787c:
