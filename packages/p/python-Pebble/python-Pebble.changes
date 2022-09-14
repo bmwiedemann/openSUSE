@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep 13 11:09:36 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to 5.0.0
+  * Backward incompatible changes:
+   + issue #93: Python 2 is no longer compatible. Minimum supported
+     version is now 3.7.
+
+  * Deprecations:
+   + issue #90: pools `schedule` method is now deprecated, use `submit`
+     instead.
+
+  * Features:
+   + issue #90: pools are now compatible with asyncio APIs.
+   + issue #94: asynchronous function decorators
+   + issue #102: type hints have been added to all functionalities
+   + issue #103: support alternative multiprocessing.context
+     implementations
+
+  * Fixes:
+   + issue #99: fix deadlock when closing a full pipe on Windows in pool
+- Require Python >= 3.7.
+- Drop Python 2 support.
+
+-------------------------------------------------------------------
 Tue Aug 16 23:32:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 4.6.3

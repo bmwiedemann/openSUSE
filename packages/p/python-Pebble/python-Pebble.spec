@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-Pebble
-Version:        4.6.3
+Version:        5.0.0
 Release:        0
 Summary:        Threading and multiprocessing eye-candy for Python
 License:        LGPL-3.0-only
@@ -29,16 +27,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base >= 3.7
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-futures
-%endif
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-%ifpython2
-Requires:       python-futures
-%endif
 %python_subpackages
 
 %description
