@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 14 05:40:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.37.1:
+  * Allow empty body to be valid for jrpc.HandleCall/Deserialize; allow method override in client (#623)
+
+-------------------------------------------------------------------
+Tue Sep 13 12:43:10 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.37.0:
+  * Better names for CallNoPayload -> Get and CallWithPayload -> Fetch (#622)
+
+-------------------------------------------------------------------
 Thu Sep 08 05:44:52 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.36.0:
