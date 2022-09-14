@@ -1,8 +1,8 @@
 #
 # spec file for package timeshift
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2017-2021 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2017-2022 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 
 Name:           timeshift
-Version:        21.09.1
+Version:        22.06.5
 Release:        0
 Summary:        System restore utility
 License:        GPL-3.0-only
-URL:            https://teejeetech.in/timeshift/
-Source0:        https://github.com/teejee2008/timeshift/archive/refs/tags/v%{version}.tar.gz
+URL:            https://github.com/linuxmint/timeshift
+Source0:        https://codeload.github.com/linuxmint/timeshift/tar.gz/refs/tags/%{version}#/%{name}-%{version}.tar.gz
 BuildRequires:  chrpath
-BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala
@@ -50,7 +49,7 @@ using BTRFS tools.
 %autosetup -p1
 
 %build
-%make_build
+make -j1 V=1
 
 %install
 %make_install
@@ -70,7 +69,6 @@ install -d %{buildroot}%{_localstatedir}/log/timeshift
 install -d %{buildroot}%{_localstatedir}/log/timeshift-btrfs
 %suse_update_desktop_file -r timeshift-gtk Utility Archiving
 %find_lang %{name} %{?no_lang_C}
-%fdupes -s %{buildroot}
 
 %files
 %license LICENSE.md
@@ -82,6 +80,7 @@ install -d %{buildroot}%{_localstatedir}/log/timeshift-btrfs
 %{_mandir}/man1/timeshift.1%{?ext_man}
 %{_datadir}/metainfo/timeshift.appdata.xml
 %{_datadir}/polkit-1/actions/in.teejeetech.pkexec.timeshift.policy
+%{_datadir}/pixmaps/timeshift.png
 %{_datadir}/timeshift/
 %attr(0750,root,root) %dir %{_localstatedir}/log/timeshift
 %attr(0750,root,root) %dir %{_localstatedir}/log/timeshift-btrfs

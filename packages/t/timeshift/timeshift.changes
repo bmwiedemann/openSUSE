@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Sep 14 12:57:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix Source0 URL: valid URL is mandatory for source validation
+  checkers.
+
+-------------------------------------------------------------------
+Sun Sep 11 15:24:27 UTC 2022 - malcolmlewis@opensuse.org
+
+- Updated to version 22.06.5:
+  * Translation updates.
+- Changes from version 22.06.4:
+  * Disable selection of the btrfs backend when there are no btrfs
+    filesystems found.
+- Changes from version 22.06.3:
+  * settings: Clear the initial snapshot size and file count when
+    all snapshots are deleted.
+  * rsync: Calculate required space before attempting to perform an
+    incremental snapshot, (gh#/linuxmint/timeshift#19).
+  * Translation updates.
+- Changes from version 22.06.2:
+  * Fix various typos in the source.
+  * Removes lines about paypal account.
+  * Remove donation window.
+  * About: Update info and use a Gtk.AboutDialog.
+  * Translation updates.
+- Changes from version 22.06.1:
+  * Fix unmount devices that were mounted by Timeshift before exit,
+    (gh#/linuxmint/timeshift#895, gh#/linuxmint/timeshift#809,
+    gh#/linuxmint/timeshift#689, gh#/linuxmint/timeshift#653 and
+    gh#/linuxmint/timeshift#10).
+  * Fix do not create or remove Qgroups when snapshots are created
+    or removed, (gh#/linuxmint/timeshift#865,
+    gh#/linuxmint/timeshift#839 and gh#/linuxmint/timeshift#680).
+  * Fix force C locale for Rsync, (gh#/linuxmint/timeshift#900 and
+    gh#/linuxmint/timeshift#891)
+  * Install app icon in /usr/share/pixmaps directory.
+  * Remove columns 'Size' and 'Unshared Size' for BTRFS snapshots.
+  * Rsync: Restore: Delete files using --delete-before instead of
+    --delete-after.
+  * Fix no text on Summary page under 'Warning' and 'Disclaimer'
+    heading, (gh#/linuxmint/timeshift#260).
+  * Rsync: Restore: Improve UI for the device selection page.
+  * Code cleanup: Remove unused functions and code.
+  * Update donation windo.
+  * Update translations.
+  * Fix a build failure.
+- Update URL abd sources as maintenance has now moved to LinuxMint.
+- Disable parallel building.
+
+-------------------------------------------------------------------
 Thu Nov 25 22:48:01 UTC 2021 - malcolmlewis@opensuse.org
 
 - Updated to version 21.09.1:
