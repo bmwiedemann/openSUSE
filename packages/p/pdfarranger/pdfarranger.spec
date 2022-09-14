@@ -37,6 +37,7 @@ Requires:       python3-cairo
 Requires:       python3-dateutil >= 2.4.0
 Requires:       python3-gobject-Gdk
 Requires:       python3-pikepdf >= 1.7.0
+Requires:       typelib-1_0-Gtk-3_0
 Requires:       typelib-1_0-Poppler-0_18
 Recommends:     python3-img2pdf >= 0.3.4
 BuildArch:      noarch
