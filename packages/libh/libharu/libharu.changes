@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 12 08:53:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.2:
+  * Fixed library name
+  * Set correct version number
+  * Add support for free-form triangle shading objects.
+  * Fix config constant to match use in hpdf_mmgr.c
+  * Improve small number writing in HPDF_FToA.
+  * Fix missing /CapHeight key in font definition
+  * Change HPDF_Page_CreateXObjectFromImage zoom parameter type to HPDF…
+  * Fix another case of png files with background mask save uncompressed
+  * Avoid issue with libtiff duplicate symbols
+  * Reajust bit_depth of png image after striping depth from 16 to 8.
+  * Fixed typo in Japanese font name: Mincyo -> Mincho
+  * Fix various typos
+  * hpdf.h: add missing HPDF_Boolean typedef
+  * Moved to a CMake only build environment.
+  * Fix bad unicode in comment
+  * Fix various typos
+- package license
+- drop upstream patches: libharu-cmake.patch, libharu-link-libm.patch
+
+-------------------------------------------------------------------
 Fri Dec 29 00:35:47 UTC 2017 - jengelh@inai.de
 
 - Trim filler words from descriptions.
