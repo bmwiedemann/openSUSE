@@ -1,7 +1,7 @@
 #
 # spec file for package python-cssutils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,22 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
 Name:           python-cssutils
-Version:        1.0.2
+Version:        2.6.0
 Release:        0
 Summary:        A CSS Cascading Style Sheets library for Python
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-URL:            http://cthedot.de/cssutils/
-Source:         https://files.pythonhosted.org/packages/source/c/cssutils/cssutils-%{version}.tar.gz
+URL:            https://github.com/jaraco/cssutils
+Source0:        https://files.pythonhosted.org/packages/source/c/cssutils/cssutils-%{version}.tar.gz
+Source1:        %{name}.rpmlintrc
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
-%ifpython2
-Provides:       %{oldpython}-css-utils-doc = %{version}
-Obsoletes:      %{oldpython}-css-utils-doc < %{version}
-%endif
 %python_subpackages
 
 %description
@@ -42,8 +40,16 @@ A Python package to parse and build CSS Cascading Style Sheets. DOM only, not an
 
 %prep
 %setup -q -n cssutils-%{version}
-sed -i "1d" src/cssutils/{parse,codec,sac,serialize,scripts/csscapture,_codec2,errorhandler,scripts/cssparse,_codec3,scripts/csscombine,tokenize2,__init__}.py # Fix non-executable scripts
-sed -i "s/\r//" src/cssutils/{sac,scripts/csscombine,tokenize2}.py COPYING COPYING.LESSER examples/{website,minify,imports,cssencodings,style,testutil,codec}.py # Fix EOL encodings
+
+# SECTION Generate a basic setup.py as upstream only supplies setup.cfg
+cat << EOF > setup.py
+import setuptools
+
+if __name__ == "__main__":
+    setuptools.setup()
+
+EOF
+# /SECTION
 
 %build
 %python_build
@@ -54,6 +60,8 @@ sed -i "s/\r//" src/cssutils/{sac,scripts/csscombine,tokenize2}.py COPYING COPYI
 %python_clone -a %{buildroot}%{_bindir}/csscombine
 %python_clone -a %{buildroot}%{_bindir}/cssparse
 
+%python_expand %fdupes %{buildroot}%{$python_sitelib}/
+
 %post
 %{python_install_alternative csscapture csscombine cssparse}
 
@@ -62,11 +70,11 @@ sed -i "s/\r//" src/cssutils/{sac,scripts/csscombine,tokenize2}.py COPYING COPYI
 
 %files %{python_files}
 %license COPYING COPYING.LESSER
-%doc README.txt examples
+%doc README.rst examples
 %python_alternative %{_bindir}/csscapture
 %python_alternative %{_bindir}/csscombine
 %python_alternative %{_bindir}/cssparse
-%{python_sitelib}/cssutils-%{version}-py*.egg-info/
+%{python_sitelib}/cssutils-%{version}-py%{python_version}.egg-info/
 %{python_sitelib}/cssutils/
 %{python_sitelib}/encutils/
 

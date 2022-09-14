@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep  9 08:34:38 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.6:
+  * [gh#jaraco/cssutils#14] Added support for custom CSS
+    variables with -- prefix.
+- Generate a basic setup.py file in-place to use with
+  %%python_setup; upstream no longer supplies one.
+- Use fdupes to link duplicate files.
+- Add %{name}.rpmlintrc file to suppress errors about zero-length
+  files which are nevertheless required.
+- Update URL to new upstream home.
+
+-------------------------------------------------------------------
 Tue Dec  4 12:47:04 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
