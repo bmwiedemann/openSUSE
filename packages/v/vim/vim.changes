@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Tue Sep 13 07:41:04 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.0453, fixes the following problems
+- boo#1203194 - CVE-2022-3134
+- boo#1203110 - CVE-2022-3099
+  * Writefile test leaves files behind.
+  * Freeing the wrong string on failure.
+  * Coverity complains about unused value.
+  * Covertity still complains about using return value of getc().
+  * GUI: when CTRL-D is mapped in Insert mode it gets inserted. (Yasuhiro
+  Matsumoto)
+  * Some code blocks are nested too deep.
+  * repeating a <ScriptCmd> mapping does not use the right script context.
+  * The do_arg_all() function is too long.
+  * Crash when 'tagfunc' closes the window.
+  * Cannot use a partial with :defer.
+  * Using separate delete() call instead of writefile() 'D' flag.
+  * Inverted condition is a bit confusing.
+  * Signals test often fails on FreeBSD.
+  * Cygwin: multibyte characters may be broken in terminal window.
+  * Clang warnings for function prototypes.
+  * :findrepl does not escape '&' and '~' properly.
+  * :defer not tested with exceptions and ":qa!".
+  * Members of funccall_T are inconsistently named.
+  * Using :defer in expression funcref not tested.
+  * GUI test sometimes hangs on CI.
+  * CI uses older clang version.
+  * Javascript module files are not recoginzed.
+  * 'equalalways' may be off when 'laststatus' is zero.
+  * Crash when passing invalid arguments to assert_fails().
+  * Arguments in a partial not used by a :def function.
+  * Deferred functions not invoked when partial func exits.
+  * matchstr() does match column offset. (Yasuhiro Matsumoto)
+  * GUI test sometimes fails on MS-Windows.
+  * #{g:x} was seen as a curly-braces expression.
+  * Struct member cts_lnum is unused.
+  * Only created files can be cleaned up with one call.
+  * Compiler warning for unused argument.
+  * ASAN reports a memory leak.
+  * matchstr() still does not match column offset when done after a text
+  search.
+  * ml_get error when appending lines in popup window.
+  * Jsonnet files are not recognized.
+  * Manually deleting temp test files.
+  * The :defer command does not check the function argument count and types.
+  * Function went missing.
+  * Not enough testing of the :all command.
+  * "for" and "while" not recognized after :vim9cmd and :legacy. (Emanuele
+  Torre)
+  * gitattributes files are not recognized.
+  * Autocmd test is a bit flaky on MS-Windows.
+  * Failed flaky tests report only start time.
+  * Drupal theme files are not recognized.
+  * Autocmd test uses common file name.
+  * Not all keys are tested for the MS-Windows GUI.
+  * Cannot use repeat() with a blob.
+  * Current mode shows in message window.
+  * Crash when using for loop variable in closure.
+  * Coverity warns for not checking allocation failure.
+  * gitignore files are not recognized.
+  * Compiler warning for uninitialized variable.
+  * CI: running tests in parallel causes flakiness.
+  * No error when a custom completion function returns something else than
+  the expected list.
+  * Cannot put virtual text above a line.
+  * Cursor wrong if inserting before line with virtual text above.
+  * Crash when using mkdir() with "R" flag in compiled function.
+  * Closure in for loop test fails on some systems.
+  * Virtual text "above" doesn't handel line numbers.
+  * Blueprint files are not recognized.
+  * Trying to declare g:variable gives confusing error.
+  * When opening/closing window text moves up/down.
+  * Message window may be positioned too low.
+  * Using :echowin while at the hit-enter prompt causes problems.
+  * SubRip files are not recognized.
+  * There is no easy way to translate a string with a key code into a
+  readable string.
+  * Return value of argument check functions is inconsistent.
+  * Virtual text "above" does not work with 'nowrap'.
+  * Visual highlighting extends into virtual text prop.
+  * On an AZERTY keyboard digit keys get the shift modifier.
+
+-------------------------------------------------------------------
 Mon Sep  5 07:42:36 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0381, fixes the following problems

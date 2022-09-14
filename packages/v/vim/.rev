@@ -6293,4 +6293,41 @@ always built-in because vim has direct perl dependencies anyway.
   * ColorScheme autocommand triggered when colorscheme is not found. (Romain</comment>
     <requestid>1001211</requestid>
   </revision>
+  <revision rev="322" vrev="1">
+    <srcmd5>953056af29e3a8bf6e2fe3c6fb11985f</srcmd5>
+    <version>9.0.0453</version>
+    <time>1663155872</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.0453, fixes the following problems
+- boo#1203194 - CVE-2022-3134
+- boo#1203110 - CVE-2022-3099
+  * Writefile test leaves files behind.
+  * Freeing the wrong string on failure.
+  * Coverity complains about unused value.
+  * Covertity still complains about using return value of getc().
+  * GUI: when CTRL-D is mapped in Insert mode it gets inserted. (Yasuhiro
+  Matsumoto)
+  * Some code blocks are nested too deep.
+  * repeating a &lt;ScriptCmd&gt; mapping does not use the right script context.
+  * The do_arg_all() function is too long.
+  * Crash when 'tagfunc' closes the window.
+  * Cannot use a partial with :defer.
+  * Using separate delete() call instead of writefile() 'D' flag.
+  * Inverted condition is a bit confusing.
+  * Signals test often fails on FreeBSD.
+  * Cygwin: multibyte characters may be broken in terminal window.
+  * Clang warnings for function prototypes.
+  * :findrepl does not escape '&amp;' and '~' properly.
+  * :defer not tested with exceptions and &quot;:qa!&quot;.
+  * Members of funccall_T are inconsistently named.
+  * Using :defer in expression funcref not tested.
+  * GUI test sometimes hangs on CI.
+  * CI uses older clang version.
+  * Javascript module files are not recoginzed.
+  * 'equalalways' may be off when 'laststatus' is zero.
+  * Crash when passing invalid arguments to assert_fails().
+  * Arguments in a partial not used by a :def function.
+  * Deferred functions not invoked when partial func exits.</comment>
+    <requestid>1003244</requestid>
+  </revision>
 </revisionlist>
