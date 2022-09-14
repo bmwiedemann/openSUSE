@@ -1,7 +1,7 @@
 #
 # spec file for package trace-cmd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,52 +17,69 @@
 
 
 Name:           trace-cmd
-Version:        2.8.3
+Version:        3.1.2
 Release:        0
 Summary:        Configuration tool for Ftrace
-License:        GPL-2.0-only AND LGPL-2.1-only
+License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
-URL:            https://elinux.org/Ftrace
-Source0:        trace-cmd-%{version}.tar.bz2
-Source1:        trace-cmd-rpmlintrc
-Patch1:         makefile-lib64.patch
-Patch2:         makefile-bash.patch
-Patch3:         0001-trace-cmd-fix-multiple-definition-compiler-errors.patch
+URL:            https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git
+Source0:        trace-cmd-v%{version}.tar.gz
+Patch1:         0001-build-Only-consider-trace-cmd-documentation.patch
+Patch2:         0002-build-Obey-package-guidelines-for-bash-completions.patch
 BuildRequires:  asciidoc
-BuildRequires:  audit-devel
-BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  swig
-%if 0%{?suse_version} > 1200
-BuildRequires:  xsltproc
-%else
-BuildRequires:  libxslt
-%endif
+BuildRequires:  fdupes
+BuildRequires:  libtracecmd-devel
+BuildRequires:  libtraceevent-devel
+BuildRequires:  libtracefs-devel
+BuildRequires:  source-highlight
+BuildRequires:  xmlto
+Recommends:     libtraceevent1-plugins
 
 %description
 trace-cmd is a command-line tool for configuring Ftrace.
 
+%package python3
+Summary:        Python plugin support for trace-cmd
+Group:          Development/Libraries/Python
+Requires:       %{name} = %{version}-%{release}
+Requires:       python3
+BuildRequires:  python3-devel
+BuildRequires:  swig
+Provides:       %{name}-python = %{version}
+
+%description  python3
+Python plugin support for trace-cmd
+
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n trace-cmd-v%{version}
 
 %build
-make %{?_smp_mflags} prefix=%{_prefix} trace-cmd
-make %{?_smp_mflags} MANPAGE_DOCBOOK_XSL=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl doc
+%make_build -j1 V=1 prefix=%{_prefix} libdir=%{_libdir} PYTHON_VERS=python3 all_cmd doc
+for i in python/*.py ; do
+    sed -i 's/env python2/python3/g' $i
+done
+%make_build -j1 V=1 MANPAGE_DOCBOOK_XSL=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl doc
 
 %install
-%make_install prefix=%{_prefix} install_cmd
-%make_install prefix=%{_prefix} install_doc
-rm %{buildroot}/%{_mandir}/man1/kernelshark.1
-rm -rf %{buildroot}/%{_datadir}/kernelshark
+%make_install V=1 libdir=%{_libdir} prefix=%{_prefix} \
+    pkgconfig_dir=%{_libdir}/pkgconfig \
+    htmldir=%{_docdir}/%{name} pdfdir=%{_docdir}/%{name} \
+    PYTHON_VERS=python3 \
+    install install_doc install_python install_bash_completion
+%fdupes %buildroot/%_prefix
 
 %files
 %{_bindir}/trace-cmd
-%{_libdir}/trace-cmd
 %{_mandir}/man1/trace-cmd*
 %{_mandir}/man5/trace-cmd.dat*
+%{_docdir}/%{name}/*.html
 %{_datadir}/bash-completion/completions/trace-cmd.bash
 %license COPYING
+%doc README
+
+%files python3
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/python
+%doc Documentation/README.PythonPlugin
 
 %changelog

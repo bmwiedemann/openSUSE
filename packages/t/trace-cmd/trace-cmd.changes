@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Aug 24 07:51:55 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to latest upstream version (3.1.2)
+  Splitted libtracecmd into a seperate project as it has
+  a different release cycle and doesn't align with the
+  trace-cmd frontend.
+   - Drop 0001-libtracecmd-use-major-version-as-SONAME.patch
+   - Drop 0002-trace-cmd-Remove-last-elements-of-local-libtracefs-a.patch
+   - Add 0001-build-Only-consider-trace-cmd-documentation.patch
+   - Rename makefile-bash.patch to 0002-build-Obey-package-guidelines-for-bash-completions.patch
+
+-------------------------------------------------------------------
+Tue Feb 22 12:34:56 UTC 2022 - olaf@aepfle.de
+
+- Force correct pkgconfig_dir location to fix build
+- Force python3 during build
+
+-------------------------------------------------------------------
+Thu Jan 20 17:21:13 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- New package, with python plugins
+  - Add 0002-trace-cmd-Remove-last-elements-of-local-libtracefs-a.patch
+
+-------------------------------------------------------------------
+Thu Jan 20 12:27:39 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest upstream version (2.9.6)
+  - Drop makefile-lib64.patch (not necessary any longer)
+- Depend on libtraceevent and libtracefs own package, instead
+  of building (a copy of, at least potentially) them ourselves
+- Build libtracecmd (and -devel) as separate package
+  - Add 0001-libtracecmd-use-major-version-as-SONAME.patch
+  - Drop trace-cmd-rpmlintrc (no more lint errors)
+- Some spec file cleanup, e.g.:
+  - %setup --> %autosetup
+  - make --> %make_build
+
+-------------------------------------------------------------------
+Thu Sep 24 08:23:29 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- Upgrade to version 2.9.1
+  - Drop 0001-trace-cmd-fix-multiple-definition-compiler-errors.patch
+    - Patch is upstream, no backport needed any longer
+  - Update plugins location (trace-cmd --> traceevent)
+  - No need to explicitly remove kernelshark and its docs
+    - They're no longer build with trace-cmd
+
+-------------------------------------------------------------------
 Mon Jun  8 08:25:32 UTC 2020 - Mel Gorman <mgorman@suse.de>
 
 - Add 0001-trace-cmd-fix-multiple-definition-compiler-errors.patch
