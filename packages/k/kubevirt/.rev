@@ -450,4 +450,12 @@ SLE identical and thus derived from a common source. Thanks!
     <comment></comment>
     <requestid>1000169</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>cd1bfa210403900cca2b7fe74e0c74b0</srcmd5>
+    <version>0.57.0</version>
+    <time>1663155905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003446</requestid>
+  </revision>
 </revisionlist>
