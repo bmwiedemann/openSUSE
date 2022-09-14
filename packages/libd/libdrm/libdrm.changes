@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep 13 10:34:04 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- disabled intel driver on s390x 
+
+-------------------------------------------------------------------
+Mon Sep 12 19:11:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.113:
+  * amdgpu: update marketing names
+  * sync i915_pciids with kernel
+  * atomic: fix atomic_add_unless() fallback's return value 
+  * intel: Avoid aliasing violation
+  * intel: Hook up new platforms IDs
+  * meson: auto-enable etnaviv on arm, arc, mips and loongarch architectures 
+  * modetest: use drmGetFormatName() 
+  * lots of testsuite and CI improvements
+- enable intel support everywhere as there are now discrete intel GPUs
+- enable vc4 support on armv7/aarch64
+- simplify valgrind support ifdefery
+
+-------------------------------------------------------------------
 Fri Jul 22 21:42:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.112:

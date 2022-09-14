@@ -1546,4 +1546,25 @@ Man pages are disabled for this build, upstream disabled them for this release. 
     <comment></comment>
     <requestid>990773</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>eb500358703832953f4e29067c18bfcb</srcmd5>
+    <version>2.4.113</version>
+    <time>1663155879</time>
+    <user>dimstar_suse</user>
+    <comment>- disabled intel driver on s390x 
+
+- update to 2.4.113:
+  * amdgpu: update marketing names
+  * sync i915_pciids with kernel
+  * atomic: fix atomic_add_unless() fallback's return value 
+  * intel: Avoid aliasing violation
+  * intel: Hook up new platforms IDs
+  * meson: auto-enable etnaviv on arm, arc, mips and loongarch architectures 
+  * modetest: use drmGetFormatName() 
+  * lots of testsuite and CI improvements
+- enable intel support everywhere as there are now discrete intel GPUs
+- enable vc4 support on armv7/aarch64
+- simplify valgrind support ifdefery</comment>
+    <requestid>1003300</requestid>
+  </revision>
 </revisionlist>

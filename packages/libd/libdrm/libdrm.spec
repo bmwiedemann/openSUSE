@@ -16,8 +16,14 @@
 #
 
 
+%ifarch %{ix86} x86_64 ppc ppc64 ppc64le s390x %{arm}
+%bcond_without valgrind_support
+%else
+%bcond_with valgrind_support
+%endif
+
 Name:           libdrm
-Version:        2.4.112
+Version:        2.4.113
 Release:        0
 Summary:        Userspace Interface for Kernel DRM Services
 License:        MIT
@@ -36,15 +42,8 @@ BuildRequires:  python3-docutils
 BuildRequires:  pkgconfig(pciaccess) >= 0.10
 Provides:       libdrm23 = %{version}
 Obsoletes:      libdrm23 < %{version}
-%if 0%{?with_valgrind_support:1}
-%ifarch %{ix86} x86_64 ppc ppc64 ppc64le s390x %{arm}
+%if %{with valgrind_support}
 BuildRequires:  pkgconfig(valgrind)
-%endif
-%endif
-# bug437293
-%ifarch ppc64
-Obsoletes:      libdrm-64bit < %{version}
-Provides:       libdrm-64bit = %{version}
 %endif
 
 %description
@@ -83,7 +82,7 @@ Requires:       libdrm_tegra0 = %{version}
 %ifarch %{arm}
 Requires:       libdrm_omap1 = %{version}
 %endif
-%ifarch %{ix86} x86_64
+%ifnarch s390x
 Requires:       libdrm_intel1 = %{version}
 %endif
 # bug437293
@@ -223,21 +222,28 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 	--default-library=shared \
 	-Dinstall-test-programs=true \
 	-Dudev=true \
+	-Dcairo-tests=disabled \
 %ifarch %{arm}
-	-Domap=true \
+	-Domap=enabled \
 %endif
 %ifarch %{arm} aarch64
-	-Detnaviv=true \
-	-Dexynos=true \
-	-Dfreedreno=true \
-	-Dtegra=true \
-%endif
-%ifnarch %{ix86} x86_64 ppc ppc64 ppc64le s390x %{arm}
-	-Dvalgrind=false \
+	-Detnaviv=enabled \
+	-Dexynos=enabled \
+	-Dfreedreno=enabled \
+	-Dvc4=enabled \
+	-Dtegra=enabled \
 %else
-%if 0%{!?with_valgrind_support:1}
-	-Dvalgrind=false \
+	-Detnaviv=disabled \
+	-Dfreedreno=disabled \
+	-Dvc4=disabled \
 %endif
+%ifarch s390x
+	-Dintel=disabled \
+%endif
+%if %{with valgrind_support}
+	-Dvalgrind=enabled \
+%else
+	-Dvalgrind=disabled \
 %endif
 	%{nil}
 %meson_build
@@ -254,8 +260,10 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %post   -n libdrm2 -p /sbin/ldconfig
 %postun -n libdrm2 -p /sbin/ldconfig
+%ifnarch s390x
 %post   -n libdrm_intel1 -p /sbin/ldconfig
 %postun -n libdrm_intel1 -p /sbin/ldconfig
+%endif
 %post   -n libdrm_nouveau2 -p /sbin/ldconfig
 %postun -n libdrm_nouveau2 -p /sbin/ldconfig
 %post   -n libdrm_radeon1 -p /sbin/ldconfig
@@ -316,7 +324,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %{_libdir}/libdrm.so.2*
 %dir %{_datarootdir}/libdrm
 
-%ifarch %{ix86} x86_64
+%ifnarch s390x
 %files -n libdrm_intel1
 %{_libdir}/libdrm_intel.so.1*
 %endif
