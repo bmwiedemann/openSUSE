@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 12 07:27:17 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Remove extra %make_build arguments.
+
+-------------------------------------------------------------------
+Mon Sep  5 16:50:16 UTC 2022 - Christopher Yeleighton <giecrilj@stegny.2a.pl>
+
+- Copy libraries required by _rpm.cpython to the testing root (boo#1203093).
+
+-------------------------------------------------------------------
 Mon Jul 25 08:02:16 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Replace toml library with tomli.

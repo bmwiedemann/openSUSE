@@ -955,4 +955,14 @@ undo bootstrap workaround</comment>
     <comment>- Replace toml library with tomli.</comment>
     <requestid>990957</requestid>
   </revision>
+  <revision rev="115" vrev="8">
+    <srcmd5>300fe3880270489e26cfee4d65054889</srcmd5>
+    <version>MACRO</version>
+    <time>1663155865</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove extra %make_build arguments.
+
+- Copy libraries required by _rpm.cpython to the testing root (boo#1203093).</comment>
+    <requestid>1002662</requestid>
+  </revision>
 </revisionlist>

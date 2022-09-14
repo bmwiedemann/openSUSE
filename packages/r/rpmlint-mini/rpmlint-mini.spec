@@ -62,13 +62,13 @@ source packages can be checked.
 
 %prep
 %setup -q -n desktop-file-utils-0.24
-[ -r COPYING ]
+<COPYING
 
 %build
 %configure
-pushd src
-make %{?_smp_mflags} desktop-file-validate V=1 DESKTOP_FILE_UTILS_LIBS="%{_libdir}/libglib-2.0.a -lpthread -lrt"
-popd
+cd src
+%make_build desktop-file-validate \
+DESKTOP_FILE_UTILS_LIBS="%{_libdir}/libglib-2.0.a -lpthread -lrt"
 
 %install
 # Check that rpmlint works at all, with the primary flavor
@@ -100,7 +100,13 @@ for file in $(cat %{SOURCE1}); do
   install -D -m 644 $exp %{buildroot}/opt/testing/lib/python%{python_version}/$exp
 done
 popd
-cp -a %{python_sitearch}/{rpm,zstandard}* %{buildroot}/opt/testing/lib/python%{python_version}/site-packages
+ldd %{python_sitearch}/rpm/*.so | while read L T R A
+do cp '-aLt%{buildroot}/opt/testing/lib' "${R}" || # is it a virtual library?
+! <"${R}" || # it is a real library and still could not be copied
+false # this is necessary to really fail
+done
+cp -a %{python_sitearch}/{rpm,zstandard}* \
+%{buildroot}/opt/testing/lib/python%{python_version}/site-packages
 cp -a %{python_sitelib} %{buildroot}/opt/testing/lib/python%{python_version}
 cp -a %{python3_sitelib}/rpmlint* %{buildroot}/opt/testing/lib/python%{python_version}
 cp -a %{_libdir}/libpython%{python_version}*.so.* %{buildroot}/opt/testing/lib
@@ -125,10 +131,11 @@ install -m 755 -D %{SOURCE2} %{buildroot}/opt/testing/bin/rpmlint
 
 %check
 # check rpmlint-mini with the custom flavor
+%make_build check
 sed -e 's|/opt|%{buildroot}/opt|' -e 's|exec|%my_python|' %{buildroot}/opt/testing/bin/rpmlint > myrpmlint
 chmod +x myrpmlint
 set +e
-./myrpmlint -i rpmlint
+sh -x myrpmlint -i rpmlint
 test $? -gt 0 -a $? -lt 60 && exit 1
 set -e
 
