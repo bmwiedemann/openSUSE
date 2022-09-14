@@ -14,7 +14,7 @@ Index: scripts/find-debuginfo.in
 +find "$RPM_BUILD_ROOT" ! -path "${debugdir}/*.debug" -type f \( -perm /111 -or -name "*.so*" -or -name "*.ko" \) ! -name "*.a" -print0 | LC_ALL=C sort -z |
 +xargs --no-run-if-empty -0 stat -c '%h %D_%i %n' |
  while read nlinks inum f; do
-+  case $(objdump -h $f 2>/dev/null | egrep -o '(debug[\.a-z_]*|gnu.version)') in
++  case $(objdump -h $f 2>/dev/null | grep -E -o '(debug[\.a-z_]*|gnu.version)') in
 +    *debuglink*) continue ;;
 +    *debug*) ;;
 +    *gnu.version*)

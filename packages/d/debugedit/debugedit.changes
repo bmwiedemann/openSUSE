@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep  4 10:29:29 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- finddebuginfo.patch: convert obsolete egrep to grep -E
+  (boo#1203092)
+
+-------------------------------------------------------------------
 Wed Jul  6 12:43:49 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - move find-debuginfo and sepdebugcrcfix which are basically tools
