@@ -467,4 +467,17 @@ SPDX syntax describing the COPYING file statesments (forwarded request 96657 fro
 - suggests english dictionary [bsc#1193627]</comment>
     <requestid>976068</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>2e23a95cb0ce147725b5af7c65c61534</srcmd5>
+    <version>1.7.1</version>
+    <time>1663155868</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.1:
+  * Merge chromium fix for #714 OOB string write in hunspell
+  * Merge firefox fix for #756 various issues parsing incomplete aff files
+  * Fix #492 crash with hunspell -l -r
+  * Merge in weblate translations
+- drop hunspell-CVE-2019-16707.patch (upstream) (forwarded request 1003035 from dirkmueller)</comment>
+    <requestid>1003106</requestid>
+  </revision>
 </revisionlist>

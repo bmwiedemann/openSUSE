@@ -19,7 +19,7 @@
 %define ver     1.7
 %define libname lib%{name}-1_7-0
 Name:           hunspell
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        A spell checker and morphological analyzer library
 License:        (GPL-2.0-or-later OR LGPL-2.1-or-later OR MPL-1.1+) AND LGPL-2.1-or-later
@@ -27,8 +27,6 @@ Group:          Productivity/Office/Other
 URL:            https://hunspell.github.io
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# CVE-2019-16707 [bsc#1151867], invalid read operation in SuggestMgr:leftcommonsubstring in suggestmgr.cxx
-Patch0:         hunspell-CVE-2019-16707.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -84,7 +82,6 @@ Includes and definitions for developing with hunspell.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 # latest released tarball does not contain generated configure

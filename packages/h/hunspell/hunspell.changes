@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 12 19:04:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.1:
+  * Merge chromium fix for #714 OOB string write in hunspell
+  * Merge firefox fix for #756 various issues parsing incomplete aff files
+  * Fix #492 crash with hunspell -l -r
+  * Merge in weblate translations
+- drop hunspell-CVE-2019-16707.patch (upstream)
+
+-------------------------------------------------------------------
 Tue May 10 08:55:30 UTC 2022 - pgajdos@suse.com
 
 - requires english dictionary [bsc#1199209]
