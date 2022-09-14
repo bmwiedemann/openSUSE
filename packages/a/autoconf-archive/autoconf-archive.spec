@@ -17,7 +17,7 @@
 
 
 Name:           autoconf-archive
-Version:        2022.02.11
+Version:        2022.09.03
 Release:        0
 Summary:        A Collection of macros for GNU autoconf
 License:        GPL-3.0-or-later WITH Autoconf-exception-3.0

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  5 20:07:23 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2022.09.03:
+  * AX_PYTHON_DEVEL: Improved Python version support
+  * ax_boost_json: implement for Boost::JSON library
+  * AX_LIB_MYSQL: try pkg-config before mysql_config
+  * AX_LUA_HEADERS: update to use AC_COMPUTE_INT
+  * ax_lib_netcdf4: enable NF_CONFIG run-time definition.
+  * Make assembler-finding macros more portable
+  * ax_prog_cc_for_build: Properly restore ac_cv_c_compiler_gnu
+
+-------------------------------------------------------------------
 Fri Feb 11 18:38:03 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2022.02.11:
