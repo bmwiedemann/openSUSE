@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Sep 13 20:30:34 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.66:
+  * a number of bug fixes
+  * Fix HTTP/2 downloads >= 4GiB
+  * Fix SIGUSR1 graceful restart with TLS
+  * futher bug fixes
+  * CVE-2022-37797: null pointer dereference in mod_wstunnel,
+    possibly a remotely triggerable crash (boo#1203358)
+  * In an upcoming release the TLS modules will default to using
+    stronger, modern chiphers and will default to allow client
+    preference in selecting ciphers.
+    “CipherString” => “EECDH+AESGCM:AES256+EECDH:CHACHA20:SHA256:!SHA384”,
+    “Options” => “-ServerPreference”
+    old defaults:
+    “CipherString” => “HIGH”,
+    “Options” => “ServerPreference”
+  * A number of TLS options are how deprecated and will be removed
+    in a future release:
+    – ssl.honor-cipher-order
+    – ssl.dh-file
+    – ssl.ec-curve
+    – ssl.disable-client-renegotiation
+    – ssl.use-sslv2
+    – ssl.use-sslv3
+    The replacement option is ssl.openssl.ssl-conf-cmd, but lighttpd
+    defaults should be prefered
+  * A number of modules are now deprecated and will be removed in a
+    future release: mod_evasive, mod_secdownload, mod_uploadprogress,
+    mod_usertrack can be replaced by mod_magnet and a few lines of lua.
+
+-------------------------------------------------------------------
 Tue Jun 21 20:30:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.65:
