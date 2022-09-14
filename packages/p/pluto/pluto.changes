@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 13 12:44:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.10.7:
+  * Bump sigs.k8s.io/controller-runtime from 0.12.3 to 0.13.0 (#376)
+  * Bump github.com/rogpeppe/go-internal from 1.8.1 to 1.9.0 (#372)
+  * Bump k8s.io/client-go from 0.24.4 to 0.25.0 (#375)
+  * Updated docs for Target Versions (#356)
+
+-------------------------------------------------------------------
 Wed Sep 07 06:20:25 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 5.10.6:
