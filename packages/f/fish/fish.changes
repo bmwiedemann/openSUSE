@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 22 21:30:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.1:
+  * Cursor shaping for Vi mode is enabled by default in tmux,
+    and will be used if the outer terminal is capable
+  * ``printf`` returns a better error when used with arguments
+    interpreted as octal numbers
+  * ``history merge`` when in private mode is now an error,
+    rather than wiping out other sessions' history
+  * The error message when launching a command that is built
+    for the wrong architecture on macOS is more helpful
+- setup fish.keyring
+
+-------------------------------------------------------------------
 Mon Jul 11 19:33:02 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - version update to 3.5.0

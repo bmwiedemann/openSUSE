@@ -17,7 +17,7 @@
 
 
 Name:           fish
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        The "friendly interactive shell"
 License:        GPL-2.0-only
@@ -25,6 +25,7 @@ Group:          System/Shells
 URL:            https://fishshell.com/
 Source:         https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz
 Source1:        https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz.asc
+Source100:      fish.keyring
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
