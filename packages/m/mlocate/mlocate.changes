@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 14 13:16:44 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Pass "--shell=/bin/sh" to "su" when running the "updatedb"
+  command so that we don't depend on the "${RUN_UPDATEDB_AS}"
+  user's login shell. Since that user is "nobody" by default, the
+  login shell will oftentimes be "/bin/false". [jsc#PED-1717]
+
+-------------------------------------------------------------------
 Wed Oct  6 14:16:25 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
@@ -7,7 +15,7 @@ Wed Oct  6 14:16:25 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 -------------------------------------------------------------------
 Fri Sep 11 16:14:56 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
-- require apparmor-abstractions, because apparmor.service fails with 
+- require apparmor-abstractions, because apparmor.service fails with
   Could not open 'tunables/global' error otherwise
 
 -------------------------------------------------------------------

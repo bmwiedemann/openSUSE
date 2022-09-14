@@ -15,11 +15,11 @@ ProtectKernelModules=true
 ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
-# end of automatic additions 
+# end of automatic additions
 Type=oneshot
 ExecStart=/bin/sh -c \
           "chown -R ${RUN_UPDATEDB_AS}:root /var/lib/mlocate && \
-          su ${RUN_UPDATEDB_AS} -c /usr/bin/updatedb"
+          su --shell=/bin/sh ${RUN_UPDATEDB_AS} -c /usr/bin/updatedb"
 
 # Ensure we have proper umask bnc#941296
 UMask=0022

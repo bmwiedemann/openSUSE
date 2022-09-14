@@ -250,4 +250,12 @@ The group warning is fixed in rpmlint devel project already.</comment>
     <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 923728 from jsegitz)</comment>
     <requestid>925265</requestid>
   </revision>
+  <revision rev="29" vrev="31">
+    <srcmd5>4c79a8cf15850257c7e6930c7a83d7be</srcmd5>
+    <version>0.26</version>
+    <time>1663164107</time>
+    <user>dimstar_suse</user>
+    <comment>Don't depend on nobody's login shell to execute updatedb. [jsc#PED-1717].</comment>
+    <requestid>1003535</requestid>
+  </revision>
 </revisionlist>
