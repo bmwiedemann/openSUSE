@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 12 13:03:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add egrep-deprecation.patch (bsc#1203241) 
+
+-------------------------------------------------------------------
 Sun May 15 17:44:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.9:

@@ -40,6 +40,8 @@ Source5:        zprofile
 Patch1:         trim-unneeded-completions.patch
 # PATCH-FIX-OPENSUSE zsh-osc-completion.patch -- Fix openSUSE versions in osc completion
 Patch2:         zsh-osc-completion.patch
+# PATCH-FIX-OPENSUSE: taken from https://www.zsh.org/mla/workers/2022/msg00956.html
+Patch3:         egrep-deprecation.patch
 BuildRequires:  groff
 BuildRequires:  libcap-devel
 BuildRequires:  ncurses-devel
@@ -99,6 +101,7 @@ This package contains the Zsh manual in HTML format.
 %patch1 -p1
 %endif
 %patch2 -p1
+%patch3 -p1
 
 # Remove executable bit
 chmod 0644 Etc/changelog2html.pl
