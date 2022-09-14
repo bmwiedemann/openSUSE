@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 13 12:42:32 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.56.0:
+  * warn on errors from RPM DB parsing (#1200)
+  * docs: improve Singularity image source docs (#1190)
+  * Add RPM file scanning support (#1188)
+  * Normalize syft-json output (#1194)
+  * Revert "External sources configuration (#1158)" (#1191)
+  * Update syft bootstrap tools to latest versions. (#1186)
+  * Fix RPM DB license handling (#1184)
+  * Update syft bootstrap tools to latest versions. (#1182)
+
+-------------------------------------------------------------------
 Wed Sep 07 05:42:57 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.55.0:
