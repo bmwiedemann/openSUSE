@@ -2,7 +2,7 @@
 Thu Sep  8 07:45:05 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 3.6.8:
-  * F5 Ethernet Trailer dissector infinite loop.
+  * CVE-2022-3190: F5 Ethernet Trailer dissector infinite loop (boo#1203388).
 - Further features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-3.6.8.html
 
@@ -113,6 +113,7 @@ Thu Dec 30 09:41:01 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 Tue Dec 20 12:45:39 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 3.6.0:
+  * CVE-2021-4186: Gryphon dissector crash (boo#1194165).
   * Several changes have been made to the display filter syntax:
     - The expression "a != b" now always has the same meaning as
       "!(a == b)". In particular this means filter expressions with
