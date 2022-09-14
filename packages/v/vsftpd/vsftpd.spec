@@ -96,11 +96,16 @@ Patch41:        revert-undocumented-config-file-format-changes.patch
 Patch42:        use-system-wide-tls-cipher-policy.patch
 Patch43:        vsftpd-allow-dev-log-socket.patch
 Patch44:        vsftpd-enable-sendto-for-prelogin-syslog.patch
+Patch45:        disable-tls13-to-support-older-openssl-versions.patch
 BuildRequires:  libcap-devel
 %if 0%{?suse_version} == 1315
 BuildRequires:  libopenssl-1_1-devel >= 1.1.1
 %else
+%if 0%{?sle_version} == 150000
+BuildRequires:  libopenssl-1_1-devel >= 1.1.0
+%else
 BuildRequires:  libopenssl-devel >= 1.1.1
+%endif
 %endif
 BuildRequires:  pam-devel
 Requires:       logrotate
@@ -133,7 +138,52 @@ vsftpd was always faster, supporting over twice as many users in some
 tests.
 
 %prep
-%autosetup -p1
+%setup -q
+%patch1 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
+%patch27 -p1
+%patch28 -p1
+%patch29 -p1
+%patch30 -p1
+%patch31 -p1
+%patch32 -p1
+%patch33 -p1
+%patch35 -p1
+%patch36 -p1
+%patch37 -p1
+%patch38 -p1
+%patch39 -p1
+%patch40 -p1
+%patch41 -p1
+%patch42 -p1
+%patch43 -p1
+%patch44 -p1
+
+%if 0%{?sle_version} == 150000
+%patch45 -p1
+%endif
 
 %build
 %define seccomp_opts -D_GNU_SOURCE -DUSE_SECCOMP

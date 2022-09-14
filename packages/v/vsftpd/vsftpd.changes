@@ -1,14 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug 25 08:23:08 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Apply "disable-tls13-to-support-older-openssl-versions.patch"
+  when building on SLE-15. This is necessary, because openssl_1_1
+  on that codestream is version 1.1.0 rather than 1.1.1 and that
+  older version has no TLSv1.3 support. [bsc#1187686]
+
+-------------------------------------------------------------------
 Wed Jun 29 13:53:16 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
-- Moved logrotate files from user specific directory /etc/logrotate.d
-  to vendor specific directory /usr/etc/logrotate.d.
+- When building on Tumbleweed, move logrotate files from user
+  specific directory /etc/logrotate.d to vendor specific directory
+  /usr/etc/logrotate.d. Builds on other codestreams still use the
+  original location.
 
 -------------------------------------------------------------------
 Tue Mar  3 16:44:28 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Use rpm conditional to build against the proper OpenSSL version
-  on all distributions. [jsc#PM-3322]
+  on all distributions. [jsc#PM-3322, bsc#1187686]
 
 -------------------------------------------------------------------
 Tue Feb  1 18:42:41 UTC 2022 - Peter Simons <psimons@suse.com>
