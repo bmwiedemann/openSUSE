@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 14 07:04:09 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.5.0+git.20220914.93cb973:
+  * Added rename-operator pass that converts operator functions (e.g. operator +) to regular functions
+
+-------------------------------------------------------------------
 Mon Sep 12 07:46:52 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.5.0+git.20220912.e2268dd:
