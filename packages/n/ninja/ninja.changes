@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 31 05:32:49 UTC 2022 - Christoph G <foss@grueninger.de>
+
+- update to 1.11.1:
+  * A fix for a potential SIGFPE in the new (Docker-compatible)
+    default number of jobs detection.
+
+-------------------------------------------------------------------
 Wed May 18 08:46:55 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 1.11.0:

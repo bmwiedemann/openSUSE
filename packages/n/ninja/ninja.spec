@@ -17,13 +17,13 @@
 
 
 Name:           ninja
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        A small build system closest in spirit to Make
 License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            https://ninja-build.org/
-Source0:        https://github.com/ninja-build/ninja/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/ninja-build/ninja/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        macros.ninja
 Patch1:         ninja-disable-maxprocs-test.patch
 Patch2:         ninja-re2c-g.patch
