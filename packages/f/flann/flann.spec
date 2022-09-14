@@ -25,6 +25,8 @@ License:        BSD-3-Clause
 Group:          Productivity/Scientific/Other
 URL:            https://www.cs.ubc.ca/research/flann/
 Source:         https://github.com/tkircher/flann/releases/download/%version/flann-%version.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Cleanup-library-build-make-static-library-optional.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  googletest-devel
@@ -70,12 +72,10 @@ application that use %{name}.
     -DBUILD_EXAMPLES=OFF \
     -DBUILD_DOC=OFF
 
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
-
-find %{buildroot} -type f -name \*.a -delete -print
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
@@ -89,6 +89,6 @@ find %{buildroot} -type f -name \*.a -delete -print
 %{_includedir}/%{name}/
 %{_libdir}/lib%{name}*so
 %{_libdir}/pkgconfig/%{name}.pc
-/usr/lib/cmake/
+%{_prefix}/lib/cmake/
 
 %changelog

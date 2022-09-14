@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 11 16:59:36 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Make sure the static libflann_cpp is neither installed nor
+  added to the CMake EXPORT set. Add
+  0001-Cleanup-library-build-make-static-library-optional.patch
+
+-------------------------------------------------------------------
 Sat Aug 27 07:07:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.9.2
