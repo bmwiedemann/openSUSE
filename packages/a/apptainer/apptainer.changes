@@ -1,7 +1,40 @@
 -------------------------------------------------------------------
+Fri Sep  9 08:50:33 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- Updated to version 1.1.0-rc3 with following changes:
+  * added squashfuse-0.1.105.tar.gz and 70.patch for the build of squashfuse_ll
+    which will be removed as soon as the multithread patch is incoperated
+  * Change squash mounts to prefer to use squashfuse_ll instead of squashfuse,
+    if available, for improved performance. squashfuse_ll is not available
+    in factory.
+  * Also, for even better parallel performance, include a patched
+    multithreaded version of squashfuse_ll in
+  * Imply adding ${prefix}/libexec/apptainer/bin to the binary path in
+    apptainer.conf, which is used for searching for helper executables. It is
+    implied as the first directory of $PATH if present (which is at the
+    beginning of binary path by default) or just as the first directory if
+    $PATH is not included in binary path.
+    ${prefix}/libexec/apptainer/bin.
+  * Add --unsquash action flag to temporarily convert a SIF file to a sandbox
+    before running. In previous versions this was the default when running a
+    SIF file without setuid or with fakeroot, but now the default is to instead
+    mount with squashfuse.
+  * Add --sparse flag to overlay create command to allow generation of a sparse
+    ext3 overlay image.
+  * Support for a custom hashbang in the %test section of an Apptainer recipe
+    (akin to the runscript and start sections).
+  * When using fakeroot in setuid mode, have the image drivers first enter the
+    the container's user namespace to avoid write errors with overlays.
+  * Skip trying to use kernel overlayfs when using writable overlay and the
+    lower layer is FUSE, because of a kernel bug introduced in kernel 5.15.
+  * Add additional hidden options to the action command for testing different
+    fakeroot modes with --fakeroot: --ignore-subuid, --ignore-fakeroot-command,
+    and --ignore-userns.
+
+-------------------------------------------------------------------
 Fri Aug 19 10:07:20 UTC 2022 - Christian Goll <cgoll@suse.com>
 
-- Udpated to version 1.1.0-rc2 with following changes:
+- Updated to version 1.1.0-rc2 with following changes:
   * Fixed longstanding bug in the underlay logic when there are nested bind
     points separated by more than one path level, for example /var and
     /var/lib/yum, and the path didn't exist in the container image. The bug
