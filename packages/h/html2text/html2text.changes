@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 29 07:24:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.1
+  * Try and detect encoding from HTML source
+  * Fixes a spurious crash with `-from_encoding UTF-8//TRANSLIT`
+
+-------------------------------------------------------------------
 Tue Apr 13 10:48:40 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Switch to new project url

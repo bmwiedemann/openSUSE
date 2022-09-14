@@ -1,7 +1,7 @@
 #
 # spec file for package html2text
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           html2text
-Version:        2.0.0
+Version:        2.1.1
 Release:        0
 Summary:        HTML to ASCII Converter
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/HTML/Tools
 URL:            https://github.com/grobian/html2text
-Source0:        https://github.com/grobian/html2text/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/grobian/html2text/archive/refs/tags/v%{version}.tar.gz
 Source1:        html2text.1.gz
 BuildRequires:  gcc-c++
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 
 %description
 A tool for converting from HTML to ASCII. It can reasonably handle
@@ -64,7 +64,6 @@ fi
 
 %files
 %license COPYING
-%doc CHANGES TODO CREDITS KNOWN_BUGS RELEASE_NOTES
 %{_bindir}/html2text
 %{_bindir}/html2text-cpp
 %ghost %{_sysconfdir}/alternatives/html2text
