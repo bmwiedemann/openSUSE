@@ -138,8 +138,10 @@ rm %{buildroot}%{_libexecdir}/%{name}/trust-extract-compat
 ln -s ../../sbin/update-ca-certificates %{buildroot}%{_libexecdir}/%{name}/p11-kit-extract-trust
 export NO_BRP_STALE_LINK_ERROR=yes # *grr*
 
+%if !0%{?qemu_user_space_build}
 %check
 %make_build check
+%endif
 
 %post -n libp11-kit0 -p /sbin/ldconfig
 %postun -n libp11-kit0 -p /sbin/ldconfig

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  8 16:03:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip testsuite on qemu arches, it fails 
+
+-------------------------------------------------------------------
 Wed Mar  9 16:19:28 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - make sure p11-kit components have matching versions (boo#1196812)
