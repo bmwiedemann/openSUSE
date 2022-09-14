@@ -1,7 +1,7 @@
 #
 # spec file for package python-allpairspy
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -21,17 +22,17 @@ Version:        2.5.0
 Release:        0
 License:        MIT
 Summary:        Pairwise test combinations generator
-Url:            https://github.com/thombashi/allpairspy
+URL:            https://github.com/thombashi/allpairspy
 Group:          Development/Languages/Python
 Source:         https://github.com/thombashi/allpairspy/archive/v%{version}.tar.gz#/allpairspy-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+# https://github.com/thombashi/allpairspy/commit/f6dcb1f3e5bc50b98422fee9c6d6fa8d5e7bc038
+Patch0:         python-allpairspy-no-six.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-six >= 1.10.0
 Suggests:       python-twine
 Suggests:       python-wheel
 Suggests:       python-releasecmd >= 0.0.18
@@ -43,7 +44,7 @@ BuildArch:      noarch
 Pairwise test combinations generator.
 
 %prep
-%setup -q -n allpairspy-%{version}
+%autosetup -p1 -n allpairspy-%{version}
 
 %build
 %python_build
