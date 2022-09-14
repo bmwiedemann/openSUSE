@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 14 05:40:23 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.50.1:
+  * Update Syft to v0.56.0 (#919)
+
+-------------------------------------------------------------------
+Tue Sep 13 12:42:49 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.50.0:
+  * Add support for scanning RPM files (#917)
+  * remove arch typo - add debug/reg s390x (#915)
+  * grype release message update (#914)
+  * feat: extract use cpes in matching logic to be configurable (#911)
+  * docs: add Singularity to "features" in README (#912)
+
+-------------------------------------------------------------------
 Wed Sep 07 05:39:15 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.49.0:
