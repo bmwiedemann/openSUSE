@@ -1,7 +1,7 @@
 #
 # spec file for package onednn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,16 +31,13 @@
 
 %define libname libdnnl2
 Name:           onednn
-Version:        2.2.4
+Version:        2.6.2
 Release:        0
 Summary:        Intel Math Kernel Library for Deep Neural Networks
 License:        Apache-2.0
 URL:            https://01.org/onednn
 Source0:        https://github.com/oneapi-src/oneDNN/archive/v%{version}/oneDNN-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM onednn-1045.patch -- https://github.com/oneapi-src/oneDNN/pull/1045
-Patch0:         onednn-1045.patch
-# PATCH-FIX-UPSTREAM - https://github.com/oneapi-src/oneDNN/issues/1085
-Patch1:         onednn-xbyak-aarch64.patch
+BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -135,7 +132,7 @@ to implement deep neural networks (DNN) with C and C++ interfaces.
   -DDNNL_BUILD_TESTS=ON \
   -DDNNL_WERROR=OFF
 %cmake_build
-%cmake_build doc
+%cmake_build doc_doxygen
 
 %install
 %cmake_install
@@ -151,9 +148,11 @@ ln -s . mkl-dnn
 popd
 # install the benchmark
 install -D build/tests/benchdnn/benchdnn %{buildroot}/%{_bindir}/benchdnn
-#move install shared lib
+# move install shared lib
 mkdir -vp %{buildroot}%{_datadir}/benchdnn
 cp -vr build/tests/benchdnn/inputs  %{buildroot}%{_datadir}/benchdnn
+
+chrpath -d %{buildroot}/%{_bindir}/benchdnn
 
 %check
 # do not use macro so we can exclude all gpu and cross (gpu and cpu) tests (they need gpu set up)
@@ -171,18 +170,15 @@ popd
 
 %files devel
 %doc README.md
+%license LICENSE
 %{_includedir}/mkl-dnn
-%{_includedir}/mkldnn*.h*
 %{_includedir}/dnnl*.h*
 %dir %{_includedir}/oneapi
 %dir %{_includedir}/oneapi/dnnl
 %{_includedir}/oneapi/dnnl/dnnl*.h*
 %{_libdir}/libdnnl.so
-%{_libdir}/libmkldnn.so
 %dir %{_libdir}/cmake/dnnl
 %{_libdir}/cmake/dnnl/*.cmake
-%dir %{_libdir}/cmake/mkldnn
-%{_libdir}/cmake/mkldnn/*.cmake
 
 %files doc
 %{_docdir}/%{name}
@@ -190,6 +186,5 @@ popd
 %files -n %{libname}
 %license LICENSE
 %{_libdir}/libdnnl.so.*
-%{_libdir}/libmkldnn.so.*
 
 %changelog

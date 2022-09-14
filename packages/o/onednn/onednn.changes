@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 13 05:22:52 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.6.2:
+  * https://github.com/oneapi-src/oneDNN/releases
+- Removed onednn-1045.patch.
+- Removed onednn-xbyak-aarch64.patch.
+
+-------------------------------------------------------------------
 Tue Jun 15 12:10:39 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64:
