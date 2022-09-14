@@ -73,4 +73,23 @@
   + Remove fallback for _XEatDataWords, require libX11 1.6 for it.</comment>
     <requestid>290002</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dcf0d54d3890229380559c23455d6a53</srcmd5>
+    <version>1.0.4</version>
+    <time>1663155866</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.4
+  * Fix a memory leak on the error path in XpGetLocaleNetString
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * XpNotifyPdm.c: fix -Wmisleading-indentation warning
+  * XpExtVer.c: fix -Wredundant-decls warning
+  * Add deprecation notice to README
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>1003056</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 12 21:09:41 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.4
+  * Fix a memory leak on the error path in XpGetLocaleNetString
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * XpNotifyPdm.c: fix -Wmisleading-indentation warning
+  * XpExtVer.c: fix -Wredundant-decls warning
+  * Add deprecation notice to README
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+ 
+-------------------------------------------------------------------
 Mon Mar  9 10:05:14 UTC 2015 - sndirsch@suse.com
 
 - added baselibs.conf as source to specfile in order to make
