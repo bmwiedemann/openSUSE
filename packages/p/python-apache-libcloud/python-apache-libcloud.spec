@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-apache-libcloud
-Version:        3.5.1
+Version:        3.6.0
 Release:        0
 Summary:        Abstraction over multiple cloud provider APIs
 License:        Apache-2.0
@@ -32,9 +32,6 @@ Source1:        https://downloads.apache.org/libcloud/apache-libcloud-%{version}
 Source2:        https://www.apache.org/dist/libcloud/KEYS#/%{name}.keyring
 Patch1:         gce_image_projects.patch
 Patch2:         ec2_create_node.patch
-Patch3:         skip-some-tests-for-older-paramiko-versions.patch
-# PATCH-FIX-UPSTREAM https://github.com/Kami/libcloud/commit/e62bb28cdbd685203d44a9a4028f311ea155476c Use unittest.mock library from stdlib instead of using 3rd party mock dependency.
-Patch4:         mock.patch
 BuildRequires:  %{python_module libvirt-python}
 BuildRequires:  %{python_module lockfile}
 BuildRequires:  %{python_module lxml}
