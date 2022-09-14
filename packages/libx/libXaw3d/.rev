@@ -79,4 +79,24 @@
     <comment></comment>
     <requestid>915704</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>62792a52c7c2c27725e618e83d962c87</srcmd5>
+    <version>1.6.4</version>
+    <time>1663155881</time>
+    <user>dimstar_suse</user>
+    <comment>- Move https to https even for URLs in comments
+- Drop not existing URL 
+
+- update to 1.6.4:
+  * convert ISO8859-1 encoded source files to UTF-8
+  * Fix spelling/wording issues
+  * Build xz tarballs instead of bzip2
+  * fix configure doesn't fail if flex is not installed
+  * build-fixes when _CONST_X_STRING is defined
+  * Pass correct number of atoms from SelectSave to _XawTextSaltAwaySelection
+  * Fix fd leak when write() fails in WriteToFile()
+  * Bug 24635: File Descriptor leaks in libxaw-1.0.7
+- add keyring and signature validation</comment>
+    <requestid>1003316</requestid>
+  </revision>
 </revisionlist>

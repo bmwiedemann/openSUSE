@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 13 12:21:28 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Move https to https even for URLs in comments
+- Drop not existing URL 
+
+-------------------------------------------------------------------
+Mon Aug 29 09:46:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.4:
+  * convert ISO8859-1 encoded source files to UTF-8
+  * Fix spelling/wording issues
+  * Build xz tarballs instead of bzip2
+  * fix configure doesn't fail if flex is not installed
+  * build-fixes when _CONST_X_STRING is defined
+  * Pass correct number of atoms from SelectSave to _XawTextSaltAwaySelection
+  * Fix fd leak when write() fails in WriteToFile()
+  * Bug 24635: File Descriptor leaks in libxaw-1.0.7
+- add keyring and signature validation
+
+-------------------------------------------------------------------
 Fri Jun 18 14:29:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop --with-pic (no effect with --disable-static)

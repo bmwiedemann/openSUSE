@@ -1,7 +1,7 @@
 #
 # spec file for package libXaw3d
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 Name:           libXaw3d
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        The 3D Athena Widget Set
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://xorg.freedesktop.org/
-
+URL:            https://xorg.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXaw3d
-#Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXaw3d/
-#Freecode-URL:	http://freecode.com/projects/xaw3d
-Source:         http://xorg.freedesktop.org/releases/individual/lib/%name-%version.tar.bz2
+#Git-Web:	https://cgit.freedesktop.org/xorg/lib/libXaw3d/
+Source:         https://xorg.freedesktop.org/releases/individual/lib/%name-%version.tar.xz
+Source1:        https://xorg.freedesktop.org/releases/individual/lib/%name-%version.tar.xz.sig
 Source2:        README.SuSE
 Source3:        baselibs.conf
+Source9:        libXaw3d.keyring
 Patch1:         xaw3d-secure.patch
 Patch2:         xaw3d-thumb.patch
 Patch3:         xaw3d-hsbar.patch
