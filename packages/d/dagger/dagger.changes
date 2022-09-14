@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 14 05:41:15 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.34:
+  * feat: add tags support to `go` pkg (#3005)
+  * Remove stdout tty check since dagger supports headless auth. (#3003)
+  * build(deps): bump sass from 1.54.8 to 1.54.9 in /website
+  * build(deps): bump amplitude-js from 8.20.1 to 8.21.0 in /website
+  * docs: Disable medium-zoom on non-illustrative imgs
+  * docs: Add Docusaurus medium-zoom plugin
+  * build(deps): bump github.com/spf13/viper from 1.12.0 to 1.13.0 (#2998)
+
+-------------------------------------------------------------------
 Wed Sep 07 06:26:08 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.33:
