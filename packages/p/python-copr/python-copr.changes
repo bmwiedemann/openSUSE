@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 15 10:42:44 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.122
+  - no upstream changelog file found
+- does not require python-six
+
+-------------------------------------------------------------------
 Fri Apr 22 12:08:48 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.119:
