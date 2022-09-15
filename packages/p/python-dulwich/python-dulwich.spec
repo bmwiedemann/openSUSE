@@ -26,23 +26,19 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dulwich
-Version:        0.20.45
+Version:        0.20.46
 Release:        0
 Summary:        Pure-Python Git Library
 License:        Apache-2.0 OR GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://www.dulwich.io
 Source0:        https://files.pythonhosted.org/packages/source/d/dulwich/dulwich-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM rmtree-ignore-errors.patch gh#jelmer/dulwich#1000 mcepl@suse.com
-# shutil.rmtree should be more callous
-Patch0:         rmtree-ignore-errors.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools >= 17.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module fastimport}
 BuildRequires:  %{python_module geventhttpclient}
 BuildRequires:  %{python_module gevent}
@@ -52,7 +48,6 @@ BuildRequires:  %{python_module urllib3 >= 1.24.1}
 BuildRequires:  python-mock
 %endif
 %endif
-Requires:       python-certifi
 Requires:       python-urllib3 >= 1.24.1
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
