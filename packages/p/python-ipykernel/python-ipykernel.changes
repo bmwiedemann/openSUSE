@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 13 15:42:50 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.15.3:
+  * Bugs fixed
+    + PR: Close memory leak #990 (@impact27)
+    + Handle all possible exceptions when trying to import the
+      debugger #987 (@JohanMabille)
+  * Maintenance and upkeep improvements
+    + Add python logo in svg format #984 (@steff456)
+
+-------------------------------------------------------------------
 Thu Sep  8 14:36:10 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 6.15.2:
