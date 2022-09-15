@@ -22,15 +22,21 @@
 %bcond_with xxhash
 %endif
 
+%if 0%{?suse_version} < 1550
+%bcond_without gcc11
+%else
+%bcond_with gcc11
+%endif
+
 Name:           rsync
-Version:        3.2.5
+Version:        3.2.6
 Release:        0
 Summary:        Versatile tool for fast incremental file transfer
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://rsync.samba.org/
-Source:         http://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz
-Source1:        http://rsync.samba.org/ftp/rsync/src/rsync-patches-%{version}.tar.gz
+Source:         https://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz
+Source1:        https://rsync.samba.org/ftp/rsync/src/rsync-patches-%{version}.tar.gz
 Source2:        logrotate.rsync
 Source3:        rsyncd.socket
 Source4:        rsyncd.rc
@@ -38,14 +44,10 @@ Source5:        rsyncd.conf
 Source6:        rsyncd.secrets
 Source8:        rsyncd.service
 Source9:        rsyncd@.service
-Source10:       http://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz.asc
-Source11:       http://rsync.samba.org/ftp/rsync/src/rsync-patches-%{version}.tar.gz.asc
+Source10:       https://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz.asc
+Source11:       https://rsync.samba.org/ftp/rsync/src/rsync-patches-%{version}.tar.gz.asc
 Source12:       %{name}.keyring
-# PATCH-FIX-UPSTREAM: slp.diff included in distribution tar file does not apply
-#  cleanly, therefore we use the upstream patch directly (for 3.2.5)
-Source13:       https://raw.githubusercontent.com/WayneD/rsync-patches/d899304ea5daa125417f296bdd6f8bff0ed342ca/slp.diff#:/rsync-3.2.5-slp.patch
 Patch0:         rsync-no-libattr.patch
-Patch1:         rsync-3.2.5-slp.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler
@@ -59,6 +61,9 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 %if %{with xxhash}
 BuildRequires:  pkgconfig(libxxhash) >= 0.8.0
+%endif
+%if %{with gcc11}
+BuildRequires:  gcc11-c++
 %endif
 BuildRequires:  pkgconfig(openssl)
 Requires(post): grep
@@ -77,19 +82,20 @@ for backups and mirroring and as an improved copy command for everyday use.
 
 %prep
 %setup -q -b 1
-rm -f zlib/*.h
+rm -f zlib/*.h zlib/*.c
 
-# TODO: (See Source13/Patch1) we have to re-enable the patching of SLP using
-#   the patch included in the distributed tar file for next version, for now
-#   we apply latest upstream patch (for 3.2.5) from Github, the one included
-#   in tar fiel desn't apply cleanly
-# patch -p1 < patches/slp.diff
+patch -p1 < patches/slp.diff
 
 %autopatch -p1
 
 %build
 autoreconf -fiv
+%if %{with gcc11}
+export CC=gcc-11
+export CXX=g++-11
+%endif
 export CFLAGS="%{optflags} -fPIC -DPIC -fPIE"
+export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-Wl,-z,relro,-z,now -fPIE -pie"
 %configure \
   --with-included-popt=no \
