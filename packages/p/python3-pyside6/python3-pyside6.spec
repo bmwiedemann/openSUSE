@@ -25,7 +25,7 @@
 %endif
 #
 Name:           python3-%{pyside_flavor}
-Version:        6.3.1
+Version:        6.3.2
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
