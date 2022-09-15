@@ -18,12 +18,12 @@
 
 %define octpkg  symbolic
 Name:           octave-forge-%{octpkg}
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Octave Symbolic Package using SymPy
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io
+URL:            https://octave.sourceforge.io/%{octpkg}/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  octave-devel

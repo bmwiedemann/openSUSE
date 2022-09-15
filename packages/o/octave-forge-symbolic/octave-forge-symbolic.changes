@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 15 00:48:38 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 3.0.1:
+  * New `@double` numerical functions; these are wrappers around SymPy,
+    so they are slower than native floating-point implementations.
+    - adjoint
+  * Misc bug fixes and improvements in error handling.
+  * `.oct-config` files indicate source is UTF-8 encoded and should improve
+    any locale or encoding problems on Octave 7 and above.
+  * Fixes some errors when Python is running in Cygwin-like environment.
+    But there could still be errors in other places (issue #1182).
+
+-------------------------------------------------------------------
 Fri Jul  8 17:26:50 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.0.0:
