@@ -1,7 +1,7 @@
 #
 # spec file for package python-blinker
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-blinker
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Object-to-object and broadcast signaling in Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pythonhosted.org/blinker/
 Source:         https://files.pythonhosted.org/packages/source/b/blinker/blinker-%{version}.tar.gz
-# https://github.com/jek/blinker/pull/60
-Patch0:         python-blinker-remove-nose.patch
+BuildRequires:  %{python_module Pallets-Sphinx-Themes}
+BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -57,27 +57,31 @@ This sub-package contains the HTML documentation.
 
 %prep
 %setup -q -n blinker-%{version}
-%patch0 -p1
-# remove unneded doc file that trigger rpmlint
-rm docs/html/objects.inv
 
 %build
 %python_build
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%{python_expand pushd docs
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+make html
+popd
+
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
 %pytest
 
 %files %{python_files}
-%license LICENSE
-%doc AUTHORS CHANGES README.md
+%license LICENSE.rst
+%doc CHANGES.rst README.rst
 %{python_sitelib}/blinker-%{version}-py%{python_version}.egg-info
 %{python_sitelib}/blinker
 
 %files -n python-blinker-doc
-%doc docs/html
+%doc docs/_build/html
 
 %changelog

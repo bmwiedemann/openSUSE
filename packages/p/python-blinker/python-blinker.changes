@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 14 13:56:07 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix documentation generation.
+
+-------------------------------------------------------------------
+Mon Sep 12 14:44:36 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * remove patch python-blinker-remove-nose.patch; included upstream
+  * docs and license changed to .rst
+  * build docs using Sphinx
+
+- update to version 1.5:
+  * Support Python >= 3.7 and PyPy. Python 2, Python < 3.7, and Jython
+    may continue to work, but the next release will make incompatible
+    changes.
+
+-------------------------------------------------------------------
 Wed Jul  8 13:23:59 UTC 2020 - pgajdos@suse.com
 
 - use pytest instead of deprecated nose
