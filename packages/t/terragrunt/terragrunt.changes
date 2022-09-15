@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 15 07:52:16 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.12:
+  * Adds retryable error regex to match rate limit message from CodeCommit (#2276)
+
+-------------------------------------------------------------------
+Thu Sep 15 07:49:43 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.11:
+  * Uses partition from session when constructing the KMS Key ARN (#2257)
+
+-------------------------------------------------------------------
 Tue Sep 13 12:46:18 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.38.10:
