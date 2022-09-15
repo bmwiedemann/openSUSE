@@ -2,7 +2,7 @@
 Thu Sep  1 15:13:08 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Build for now with --with-legacy to enable APIs that have been
-  deprecated recently.
+  deprecated recently. (bsc#1202965)
 
 -------------------------------------------------------------------
 Tue Aug 30 14:39:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
