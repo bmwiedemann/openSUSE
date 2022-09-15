@@ -1,7 +1,7 @@
 #
 # spec file for package netpbm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,8 @@ Patch6:         signed-char.patch
 Patch7:         big-endian.patch
 # bsc#1144255 disable jpeg2k support due to removal of jasper
 Patch8:         netpbm-disable-jasper.patch
+# PATCH-FIX-UPSTREAM fix ppmforge test to avoid float overflow
+Patch9:         ppmforge-test.patch
 BuildRequires:  flex
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel

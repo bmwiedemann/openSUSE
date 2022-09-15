@@ -865,4 +865,12 @@ trigered by: https://build.opensuse.org/request/show/312207 (forwarded request 3
     <comment></comment>
     <requestid>942825</requestid>
   </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>be01cf5b19287115584d38259afeb916</srcmd5>
+    <version>10.96.4</version>
+    <time>1663275472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003558</requestid>
+  </revision>
 </revisionlist>
