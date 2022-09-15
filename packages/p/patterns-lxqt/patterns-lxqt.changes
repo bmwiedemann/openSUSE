@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 14 20:23:49 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Bump version to 20220914
+- Added Recommends: picom, to provide desktop compositor within openbox
+- Added Recommends: compton-conf, so you can configure picom from the desktop (picom is compton replacment)
+- Added Recommends: screengrab, actual screenshot functionality has been moved from lximage-qt to screengrab, upstream
+
+-------------------------------------------------------------------
 Sat Aug 27 22:47:33 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
 - Bump version to 20220827

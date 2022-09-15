@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-lxqt
-Version:        20220827
+Version:        20220914
 Release:        0
 Summary:        Patterns for Installation (LXQt)
 License:        MIT
@@ -39,6 +39,7 @@ This particular package contains the LXQt patterns.
 
 
 ################################################################################
+
 %package lxqt
 %pattern_graphicalenvironments
 Summary:        LXQt Desktop Environment
@@ -67,13 +68,16 @@ Requires:       pattern() = x11
 Recommends:     xdg-desktop-portal-lxqt
 Recommends:     pattern() = multimedia
 # non core packages belonging to LXQt organization
-Recommends:     pcmanfm-qt
+Recommends:     compton-conf
 Recommends:     featherpad
 Recommends:     lximage-qt
 Recommends:     lxqt-archiver
 Recommends:     obconf-qt
 Recommends:     pavucontrol-qt
+Recommends:     pcmanfm-qt
+Recommends:     picom
 Recommends:     qterminal
+Recommends:     screengrab
 
 Suggests:       qps
 Suggests:       qlipper
