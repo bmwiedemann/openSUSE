@@ -30,9 +30,9 @@
 %define _modprobedir /lib/modprobe.d
 %endif
 
-%define         git_ver .0.f291942cf7c9
+%define         git_ver .0.196bad56ed06
 Name:           rdma-core
-Version:        38.1
+Version:        42.0
 Release:        0
 Summary:        RDMA core userspace libraries and daemons
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -77,12 +77,13 @@ Patch1:         Revert-Update-kernel-headers.patch
 Patch2:         disable-rdma-interface-renaming.patch
 Patch3:         cxgb3-fix-declaration-of-free_context.patch
 Patch4:         cxgb3-fix-support-for-new-uquery-API.patch
-Patch5:         srp_daemon-Detect-proper-path-to-systemctl.patch
-Patch6:         cmake-Make-modprobe.d-path-configurable.patch
-Patch7:         util-Add-barriers-support-for-RISC-V.patch
 BuildRequires:  binutils
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc
+# perl is needed for the proper rpm macros
+%if %{?suse_version} > 1550
+BuildRequires:  perl
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(libsystemd)
@@ -423,9 +424,6 @@ easy, object-oriented access to IB verbs.
 %patch2
 %patch3
 %patch4
-%patch5
-%patch6
-%patch7 -p1
 
 %build
 
@@ -450,7 +448,7 @@ easy, object-oriented access to IB verbs.
          -DCMAKE_INSTALL_INCLUDEDIR:PATH=include \
          -DCMAKE_INSTALL_INFODIR:PATH=%{_infodir} \
          -DCMAKE_INSTALL_MANDIR:PATH=%{_mandir} \
-	 -DCMAKE_INSTALL_MODPROBEDIR:PATH=%{_modprobedir} \
+		 -DCMAKE_INSTALL_MODPROBEDIR:PATH=%{_modprobedir} \
          -DCMAKE_INSTALL_SYSCONFDIR:PATH=%{_sysconfdir} \
          -DCMAKE_INSTALL_SYSTEMD_SERVICEDIR:PATH=%{_unitdir} \
          -DCMAKE_INSTALL_SYSTEMD_BINDIR:PATH=%{_prefix}/lib/systemd \

@@ -1,7 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep 13 17:47:24 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v42.0
+ - Fixes for all providers
+- Dropped patches merged upstream:
+  - util-Add-barriers-support-for-RISC-V.patch
+  - cmake-Make-modprobe.d-path-configurable.patch
+- Update gen-pandoc.sh to support python3
+
+-------------------------------------------------------------------
 Mon Aug  8 16:07:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - skip valgrind on riscv64 
+
+-------------------------------------------------------------------
+Tue Mar 29 07:32:26 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v39.1
+  - Major fixes for hns provider
+  - Bug fixes for all providers
+  - systemd hardening
+  - NDR rate support
+- Dropped srp_daemon-Detect-proper-path-to-systemctl.patch
+  as it was fixed upstream
 
 -------------------------------------------------------------------
 Thu Mar 17 13:41:47 UTC 2022 - Andreas Schwab <schwab@suse.de>

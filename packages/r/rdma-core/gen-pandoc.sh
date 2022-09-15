@@ -3,11 +3,11 @@
 TARBALL=$(rpmspec --parse rdma-core.spec | grep Source: |  awk '{ print $NF}')
 OUTDIR=$(tar tf $TARBALL | head -n 1)
 PATCHES=$(rpmspec --parse rdma-core.spec | egrep '^Patch[0-9]+:' | awk '{ print $NF}')
-BUILD_CMDS=$(python -c "
+BUILD_CMDS=$(python3 -c "
 import rpm
 
 spec = rpm.spec(\"rdma-core.spec\")
-print '%s' % (getattr(spec, \"build\"),)
+print('%s' % (getattr(spec, \"build\"),))
 ")
 
 CMAKE_CMD=$(echo "$BUILD_CMDS" |  sed -e :a -e '/\\$/N; s/\\\n//; ta' | grep /bin/cmake | sed -e 's/-GNinja//' -e 's/$OLDPWD\/./../')
