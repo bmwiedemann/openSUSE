@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 15 16:30:04 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 2.7.8 (jsc#PED-536)
+- Remove upstreamed patch
+  - ppc64-diag-Directories-should-be-created-executable.patch
+- Use new libvpd
+
+-------------------------------------------------------------------
 Thu Jul 15 16:07:50 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to version 2.7.7 (jsc#SLE-18191).

@@ -1,7 +1,7 @@
 #
 # spec file for package ppc64-diag
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ppc64-diag
-Version:        2.7.7
+Version:        2.7.8
 Release:        0
 Summary:        Linux for Power Platform Diagnostics
 License:        GPL-2.0-or-later
@@ -26,8 +26,6 @@ URL:            https://github.com/power-ras/ppc64-diag
 Source0:        https://github.com/power-ras/ppc64-diag/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #PATCH-FIX-OPENSUSE - ppc64-diag.varunused.patch - fix unused variables
 Patch1:         ppc64-diag.varunused.patch
-#PATCH-FIX-OPENSUSE - ppc64-diag.varunused.patch - fix unused variables
-Patch2:         ppc64-diag-Directories-should-be-created-executable.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -37,11 +35,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  librtas-devel >= 1.4.0
 BuildRequires:  libservicelog-devel
 BuildRequires:  libtool
+BuildRequires:  libvpd-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(libvpd-2)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(sqlite3)
 Requires:       cron
