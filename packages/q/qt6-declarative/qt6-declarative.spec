@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.1
+%define real_version 6.3.2
 %define short_version 6.3
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.3.1
+Version:        6.3.2
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -572,6 +572,7 @@ The Qt 6 QuickDialogs2 library.
 Summary:        Qt6 QuickDialogs2 library - Development files
 Requires:       libQt6QuickDialogs2-6 = %{version}
 Requires:       qt6-qml-private-devel = %{version}
+Requires:       qt6-quickcontrols2impl-devel = %{version}
 Requires:       qt6-quickdialogs2quickimpl-private-devel = %{version}
 Requires:       qt6-quickdialogs2utils-private-devel = %{version}
 Requires:       cmake(Qt6Gui)
@@ -598,6 +599,7 @@ The Qt 6 QuickDialogs2Impl library.
 Summary:        Qt6 QuickDialogs2Impl library - Development files
 Requires:       libQt6QuickDialogs2QuickImpl6 = %{version}
 Requires:       qt6-qml-private-devel = %{version}
+Requires:       qt6-quickcontrols2impl-private-devel = %{version}
 Requires:       qt6-quickdialogs2utils-private-devel = %{version}
 Requires:       qt6-quicktemplates2-private-devel = %{version}
 Requires:       cmake(Qt6Gui)
@@ -866,6 +868,7 @@ The Qt6 QmlLint static library.
 %package -n qt6-quickcontrolstestutils-devel-static
 Summary:        Qt6 QuickControlsTestUtils static library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+Requires:       qt6-quickdialogs2quickimpl-private-devel = %{version}
 Requires:       cmake(Qt6Qml) = %{real_version}
 Requires:       cmake(Qt6Quick) = %{real_version}
 Requires:       cmake(Qt6QuickControls2) = %{real_version}
@@ -1378,7 +1381,6 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 
 %files -n qt6-quicklayouts-private-devel
 %{_qt6_includedir}/QtQuickLayouts/%{real_version}/
-%{_qt6_libdir}/libQt6QuickLayouts.so
 %{_qt6_mkspecsdir}/modules/qt_lib_quicklayouts_private.pri
 
 %files -n libQt6QuickTemplates2-6
