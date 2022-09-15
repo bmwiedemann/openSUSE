@@ -146,4 +146,41 @@
     <comment> (forwarded request 991394 from msmeissn)</comment>
     <requestid>991395</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>27320a784cc8521ba7219a2e5452431d</srcmd5>
+    <version>0.12.0</version>
+    <time>1663275605</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to rekor 0.12.0 (jsc#SLE-23476):
+  - check supportedVersions list rather than directly reading from version map by @bobcallaway in #1003
+  - enable blocking specific pluggable type versions from being inserted into the log by @bobcallaway in #1004
+  - api.SearchLogQueryHandler thread safety by @cdris in #1006
+  - 'docker compose' to 'docker-compose' by @bobcallaway in #1009
+  - Intoto v0.0.2 by @pxp928 in #973
+  - Add bounds on number of elements in api/v1/log/entries/retrieve by @priyawadhwa in #1011
+  - Change Checkpoint origin to be &quot;Hostname - Tree ID&quot; by @haydentherapper in #1013
+  - feat: add verification functions by @asraa in #986
+  - Validate tree ID on calls to /api/v1/log/entries/retrieve by @priyawadhwa in #1017
+  - Include checkpoint (STH) in entry upload and retrieve responses by @haydentherapper in #1015
+  - fix: use entry uuid uniformly in return responses by @asraa in #1012
+  - remove /api/v1/version endpoint by @bobcallaway in #1022
+  - Fix rekor-cli backwards incompatibility &amp; run harness tests against HEAD by @priyawadhwa in #1030
+  - Fix harness tests @ main by @priyawadhwa in #1038
+  - Fetch all tags in harness tests by @priyawadhwa in #1039
+  - fix retrieve endpoint response code and add testing by @asraa in #1043
+- updated to rekor 0.11.0:
+  - Add rekor harness tests by @priyawadhwa in #945
+  - Persist and check attestations across harness tests by @priyawadhwa in #952
+  - Add harness test for getting all entries by UUID and EntryID by @priyawadhwa in #957
+  - api: fix inclusion proof verification flake by @asraa in #956
+  - change default value for rekor_server.hostname to server's hostname by @bobcallaway in #963
+  - fix nil-pointer error when artifact-hash is passed without artifact by @dsa0x in #965
+  - Add prometheus summary to track metric latency by @priyawadhwa in #966
+  - compute payload and envelope hashes upon validating intoto proposed entries by @bobcallaway in #967
+  - update field documentation on publicKey for hashedrekord by @bobcallaway in #969
+  - Allow sharding config to be written in yaml or json by @priyawadhwa in #974
+  - fix incorrect schema id for cose type by @bobcallaway in #979
+  - fix: make rekor verify work with sharded uuids by @asraa in #970 (forwarded request 1003862 from msmeissn)</comment>
+    <requestid>1003863</requestid>
+  </revision>
 </revisionlist>
