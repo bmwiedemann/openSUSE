@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Sep 13 09:17:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.9:
+  * Permit percentages to have comma's in icesh.
+  * Keep accurate track of window changes in workspace buttons for
+    PagerShowPreview.  Only redraw affected workspace buttons, which reduces
+    the total number of workspace button redraws, especially for larges
+    number of workspace buttons.
+  * Add key bindings for single window tiling operations for issues
+    bbidulock/icewm#335, ice-wm/icewm#74 and ice-wm/icewm#84.
+  * Complete -e option.
+  * WindowMaker dock apps are supported.
+  * Support more HTML entities in icehelp.
+  * Remove dependency on asciidoc and prefer markdown format for the manual.
+  * Prevent warnings.
+  * Also install markdown.
+  * Try srcdir.
+  * Cleanup test and prefer markdown manual.
+  * Cleanup key grabs.
+  * Drop obsolete wmOccupyAll().
+  * Accept either markdown or asciidoc to generate manual html with CMake.
+  * Add markdown and icesh.
+  * Automatically detect and prevent race conditions in icesh relating to
+    moving and sizing windows for issue #335. Improve the accuracy of the
+    "sizeto" command in icesh for issue #335. Add "extents" command to
+    icesh. Add "workarea" command to icesh.
+  * Get rid of the frameContext.
+  * Prefer findClient in two cases: unmap notify and recv ping.
+- spec-cleaner run
+
+-------------------------------------------------------------------
 Sat Jul 23 07:04:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.8:

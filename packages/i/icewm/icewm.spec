@@ -18,7 +18,7 @@
 
 %global lites icewm icewmhint icewmbg icesh icewm-session
 Name:           icewm
-Version:        2.9.8
+Version:        2.9.9
 Release:        0
 Summary:        Window Manager with a Taskbar
 License:        LGPL-2.1-or-later
@@ -37,12 +37,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  lzip
 BuildRequires:  pkgconfig
-# Needed for documentation.
-%if 0%{?suse_version} <= 1320
-BuildRequires:  asciidoc
-%else
-BuildRequires:  rubygem(asciidoctor)
-%endif
 BuildRequires:  update-alternatives
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
@@ -65,11 +59,6 @@ BuildRequires:  pkgconfig(xrandr)
 Requires:       alsa-utils
 Requires:       desktop-data
 Requires:       icewm-bin
-%if !0%{?sle_version}
-Requires:       icewm-configuration-files
-%else
-Requires:       icewm-theme-branding
-%endif
 Requires:       imlib2-loaders
 Requires:       xdg-menu
 Requires(post): update-alternatives
@@ -77,15 +66,26 @@ Requires(postun):update-alternatives
 # If you have the choice, prefer the big one.
 Recommends:     icewm-default
 Recommends:     icewm-lang = %{version}
+Recommends:     xclock
 # For locking you need xscreensaver
 Recommends:     xscreensaver
-Recommends:     xclock
-%if 0%{?sle_version}
-Recommends:     polkit-gnome
-%endif
 Provides:       icewm-gnome = %{version}
 Obsoletes:      icewm-gnome < %{version}
 Provides:       windowmanager
+# Needed for documentation.
+%if 0%{?suse_version} <= 1320
+BuildRequires:  asciidoc
+%else
+BuildRequires:  rubygem(asciidoctor)
+%endif
+%if !0%{?sle_version}
+Requires:       icewm-configuration-files
+%else
+Requires:       icewm-theme-branding
+%endif
+%if 0%{?sle_version}
+Recommends:     polkit-gnome
+%endif
 %if 0%{?suse_version} > 1315
 Requires:       xterm-bin
 %else
@@ -102,9 +102,9 @@ mailbox status, and a digital clock. It is fast and small.
 %package config-upstream
 Summary:        Window Manager with a Taskbar -- Default configuration
 Group:          System/GUI/Other
+Conflicts:      icewm-theme-branding
 Provides:       icewm-configuration-files = %{version}
 BuildArch:      noarch
-Conflicts:      icewm-theme-branding
 
 %description config-upstream
 A window manager for the X Window System that can emulate the look
@@ -172,13 +172,13 @@ autoreconf -fi
   --disable-menus-fdo                \
   --disable-menus-mate               \
   --disable-fribidi
-make %{?_smp_mflags}
+%make_build
 # Grab the lite content.
 mkdir lite
 for file in %{lites}; do
     mv -f src/$file lite/$file-lite
 done
-make %{?_smp_mflags} clean
+%make_build clean
 # Configure for full deployment.
 %configure \
   --docdir=%{_docdir}/%{name}        \
@@ -194,7 +194,7 @@ make %{?_smp_mflags} clean
   --enable-shaped-decorations        \
   --enable-menus-fdo                 \
   --enable-i18n
-make %{?_smp_mflags}
+%make_build
 %if !0%{?sle_version}
 # Patch generated lib/preferences file.
 patch -p1 -i %{PATCH99}
@@ -224,7 +224,7 @@ ln -sf icewm.html %{buildroot}/%{_docdir}/icewm/index.html
 
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
 for file in %{lites}; do
-    mv -f lite/$file-lite %{buildroot}%{_prefix}/bin
+    mv -f lite/$file-lite %{buildroot}%{_bindir}
     mv -f %{buildroot}%{_bindir}/$file %{buildroot}%{_bindir}/$file-default
 
     # Dummy.
