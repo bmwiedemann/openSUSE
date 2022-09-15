@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 11 18:47:58 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix python_files macro invocation on Leap 15.4/SLE 15SP4.
+
+-------------------------------------------------------------------
 Wed May 26 13:23:37 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fix python subpackages

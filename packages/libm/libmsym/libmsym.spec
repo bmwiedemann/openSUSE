@@ -1,7 +1,7 @@
 #
 # spec file for package libmsym
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,10 +32,10 @@ License:        MIT
 Group:          System/Libraries
 URL:            https://github.com/mcodev31/libmsym
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module numpy}
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module numpy}
 
 %define python_subpackage_only 1
 %python_subpackages
@@ -98,13 +98,13 @@ popd
 %{_includedir}/libmsym/
 %{_libdir}/libmsym.so
 
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 %files %{python_files %name}
 %{python_sitelib}/*
 %else
+
 %files %{python_files}
 %{python_sitelib}/*
 %endif
-
 
 %changelog
