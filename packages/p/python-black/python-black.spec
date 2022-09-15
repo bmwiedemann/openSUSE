@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-black
-Version:        22.6.0
+Version:        22.8.0
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
