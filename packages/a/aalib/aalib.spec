@@ -1,7 +1,7 @@
 #
 # spec file for package aalib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -108,7 +108,7 @@ cd ..
 %build
 %{?suse_update_config}
 autoreconf -fiv
-export CFLAGS="%{optflags} -fstrength-reduce -ffast-math -fomit-frame-pointer"
+export CFLAGS="%{optflags} -fstrength-reduce -fomit-frame-pointer"
 %ifarch %ix86
 export CFLAGS="$CFLAGS -falign-loops=2 -falign-jumps=2 -falign-functions=2"
 %endif
