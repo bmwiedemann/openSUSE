@@ -22,7 +22,7 @@
 %define skip_python38 1
 %define _name   nbxmpp
 Name:           python-nbxmpp
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        XMPP library by Gajim team
 License:        GPL-3.0-or-later
@@ -36,6 +36,7 @@ BuildRequires:  python-rpm-macros >= 20200714
 # For testing
 BuildRequires:  %{python_module gobject-Gdk}
 BuildRequires:  %{python_module idna}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module precis-i18n}
 BuildRequires:  typelib(Soup) = 2.4
 Recommends:     python-gssapi
