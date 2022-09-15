@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep 14 11:02:03 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to version 0.8.0 
+  * test.sh: add MTFTP tests
+  * Fix MTFTP support for atftp
+  * Fix multicast download.
+  * Fix algorithm in case of packet loss in the last window.
+  * Improve the robustness of the atftp-client in case of package loss or duplication
+  * Implement PCRE tests.
+  * Improve upstream test script. Include tests for windowsize option.
+  * Fix/update minor issues in upstream
+  * Fix the 'windowsize' option for write requests
+  * FAQ INSTALL README.CVS README.PCRE: cosmetic and spelling fixes
+  * *.h: cosmetic and spelling fixes
+  * configure.ac: more fixes, also for libpcre2 detection
+  * Port to maintained PCRE2 API
+  * Changelog: update the recent changes
+  * autoconf: modify autogen.sh
+  * atftp.1: add more examples for options
+  * Add a simple congestion control
+  * Do some cosmetic changes
+  * Add windowsize option as described in RFC7440
+
+-------------------------------------------------------------------
 Thu Sep  1 06:13:32 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration to /usr/etc: Saving user changed configuration files

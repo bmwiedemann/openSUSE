@@ -23,7 +23,7 @@
 %endif
 
 Name:           atftp
-Version:        0.7.5
+Version:        0.8.0
 Release:        0
 Summary:        Advanced TFTP Server and Client
 License:        GPL-2.0-or-later
