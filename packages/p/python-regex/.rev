@@ -142,4 +142,15 @@
   * Fix Scoped inline flags 'a', 'u', and 'L' affecting global flags</comment>
     <requestid>989685</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>884ea3a56c784223a7bfa4cd1d412658</srcmd5>
+    <version>2022.9.11</version>
+    <time>1663275454</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2022.9.11:
+  * fix issue 474: regex has no equivalent to re.Match.groups() for captures 
+  * fix segmentation fault when using conditional pattern (issue 479)
+  * use \v for vertical spacing</comment>
+    <requestid>1003049</requestid>
+  </revision>
 </revisionlist>

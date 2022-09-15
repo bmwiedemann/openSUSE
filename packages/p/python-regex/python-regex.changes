@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 12 20:17:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.9.11:
+  * fix issue 474: regex has no equivalent to re.Match.groups() for captures 
+  * fix segmentation fault when using conditional pattern (issue 479)
+  * use \v for vertical spacing
+
+-------------------------------------------------------------------
 Sun Jul 17 08:17:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2022.7.9:
