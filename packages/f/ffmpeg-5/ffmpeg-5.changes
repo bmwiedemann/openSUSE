@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep  4 11:45:19 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.1.1
+  * avformat/asfdec_o: limit recursion depth in asf_read_unknown()
+  * libavformat/iff: Check for overflow in body_end calculation
+  * avformat/avidec: Prevent entity expansion attacks
+  * avcodec/h263dec: Sanity check against minimal I/P frame size
+  * avcodec/libvpx: fix assembling vp9 packets with alpha channel
+  * avcodec/libspeexdec: Fix use of uninitialized value
+  * avcodec/alac: don't fail if channels aren't set during init()
+    when extradata is valid
+  * avformat/mov: Check count sums in build_open_gop_key_points()
+    [CVE-2022-2566] [boo#1203441]
+
+-------------------------------------------------------------------
 Tue Jul 26 18:55:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable libjxl

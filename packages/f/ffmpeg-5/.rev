@@ -29,4 +29,12 @@
   * PCM-Bluray encoder support</comment>
     <requestid>991461</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5fb1b97886daf2c2ea22fb2a2b9804ca</srcmd5>
+    <version>5.1.1</version>
+    <time>1663275549</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.1.1</comment>
+    <requestid>1003761</requestid>
+  </revision>
 </revisionlist>
