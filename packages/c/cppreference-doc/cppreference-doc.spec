@@ -27,6 +27,12 @@ Source0:        https://github.com/PeterFeicht/%{name}/releases/download/v%{vers
 BuildRequires:  devhelp
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qttools
+%if 0%{?suse_version} < 1550
+BuildRequires:  python3-cssutils
+%else
+# At least version 2.0.0 of cssutils is required for building on oS 1550
+BuildRequires:  python3-cssutils >= 2.0.0
+%endif
 BuildRequires:  python3-lxml
 BuildRequires:  python3-premailer
 BuildArch:      noarch

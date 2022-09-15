@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 15 02:54:34 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add BuildRequires: python3-cssutils for all openSUSE versions,
+  but specifically require version 2.0.0 and above for oS 1550 to
+  avoid build failures.
+
+-------------------------------------------------------------------
 Wed Aug 10 19:53:18 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 20220730:
