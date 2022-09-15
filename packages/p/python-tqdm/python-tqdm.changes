@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 10 15:29:24 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to 4.64.1:
+  * support ipywidgets>=8 (#1366, #1361 <- #1310, #1359, #1360, #1364)
+    + fix jupyter lab display
+    + update notebook tests
+
+-------------------------------------------------------------------
 Sat Apr  9 01:57:42 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.64.0:

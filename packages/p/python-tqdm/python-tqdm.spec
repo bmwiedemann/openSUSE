@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-tqdm%{pkg_suffix}
-Version:        4.64.0
+Version:        4.64.1
 Release:        0
 Summary:        An extensible progress meter
 License:        MIT AND MPL-2.0
