@@ -1,7 +1,7 @@
 #
 # spec file for package vym
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,31 @@
 
 
 Name:           vym
-Version:        2.8.8
+Version:        2.8.41
 Release:        0
 Summary:        Tool to generate and manipulate thought maps
 License:        GPL-2.0-only
 Group:          Productivity/Office/Other
 URL:            http://www.insilmaril.de/vym/index.html
 Source0:        %{name}-%{version}.tar.bz2
-Source1:        %{name}.xml
-Source2:        %{name}.desktop
-Source3:        x-%{name}.desktop
-Source4:        debian.dirs
-Source5:        debian.docs
-Source6:        makedist.config
-%if 0%{?fedora_version}
-BuildRequires:  qt5-qtbase-devel
-BuildRequires:  qt5-qtsvg-devel
-BuildRequires:  qt5-qttools-devel
-%else
-BuildRequires:  libQt5Core-devel
-BuildRequires:  libQt5Gui-devel
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libqt5-qtscript-devel
-BuildRequires:  libqt5-qtsvg-devel
+Source1:        debian.dirs
+Source2:        debian.docs
+Source3:        makedist.config
+
+BuildRequires:  cmake
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(dbus-1)
+
+BuildRequires:  cmake(Qt5Core) >= 5.15.2
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Script)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Xml)
+
+%if 0%{?suse_version}
 BuildRequires:  update-desktop-files
 %endif
 
@@ -58,28 +59,24 @@ overview over complex contexts, to sort ideas etc.
 %setup -q
 
 %build
-lrelease-qt5 vym.pro
-qmake-qt5 -o Makefile vym.pro PREFIX=%{_datadir} BINDIR=%{_bindir} CONFIG+=RELEASE
-make %{?_smp_mflags}
+%global cmake_options \\\
+    -DCMAKE_INSTALL_DATAROOTDIR="share/vym" \\\
+    -DCMAKE_INSTALL_MANDIR="%{_mandir}/man1" \\\
+    -DCMAKE_INSTALL_DOCDIR="%{_defaultdocdir}/%{name}"
+
+%cmake %{cmake_options}
+%cmake_build
 
 %install
-mkdir -p %{buildroot}%{_datadir}/vym
-mkdir -p %{buildroot}%{_datadir}/pixmaps
-install -m 0644 icons/vym.png %{buildroot}%{_datadir}/pixmaps
-mkdir -p %{buildroot}%{_defaultdocdir}/%{name}
-install -m 0644 README.md LICENSE.txt %{buildroot}%{_defaultdocdir}/%{name}
-install -m 0644 doc/*.pdf %{buildroot}%{_defaultdocdir}/%{name}
-make %{?_smp_mflags} DESTDIR=%{buildroot} install INSTALL_ROOT=%{buildroot}
+%cmake_install
 
-mkdir -p %{buildroot}%{_datadir}/applications
-install -Dm644 %{SOURCE2} %{buildroot}%{_datadir}/applications
-
-mkdir -p %{buildroot}%{_mandir}/man1
-install -m 0644 doc/vym.1.gz %{buildroot}%{_mandir}/man1
-
-mkdir -p %{buildroot}%{_datadir}/mime/packages
-install -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/mime/packages/
+%if 0%{?suse_version}
 %suse_update_desktop_file -i vym Office ProjectManagement
+%endif
+
+# Make scripts executable already installed with cmake above
+chmod 755 %{buildroot}%{_datadir}/%{name}/scripts/vivym
+chmod 755 %{buildroot}%{_datadir}/%{name}/scripts/vym-addmail.rb
 
 %post
 if test -x usr/bin/update-mime-database ; then
@@ -89,7 +86,12 @@ fi
 %files
 %defattr(-,root,root)
 %{_datadir}/applications/*
-%{_datadir}/pixmaps/*
+
+# Directories can be owned by multiple packages:
+%dir %{_datadir}/icons/hicolor/48x48
+%dir %{_datadir}/icons/hicolor/48x48/apps
+
+%{_datadir}/icons/*/*/*/*.*
 %{_bindir}/vym
 %{_datadir}/vym
 

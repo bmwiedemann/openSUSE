@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  8 12:09:50 UTC 2022 - Uwe Drechsel <vym@insilmaril.de>
+
+- Update to upstream version 2.8.41
+- bugfixes, some features
+- switch to cmake
+
+-------------------------------------------------------------------
 Tue Aug 17 09:29:43 UTC 2021 - Uwe Drechsel <vym@insilmaril.de>
 
 - Update to upstream version 2.8.8 (Bugfixes)
