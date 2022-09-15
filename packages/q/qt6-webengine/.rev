@@ -81,4 +81,12 @@
     <comment>- Remove python2 from buildrequires - it's a left over from qt5</comment>
     <requestid>993776</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5741ce36a8888d09083ea035aa25d034</srcmd5>
+    <version>6.3.2</version>
+    <time>1663275580</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.3.2 (forwarded request 1003797 from cgiboudeaux)</comment>
+    <requestid>1003829</requestid>
+  </revision>
 </revisionlist>

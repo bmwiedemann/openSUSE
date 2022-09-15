@@ -1,5 +1,5 @@
 #
-# spec file for qt6-webengine
+# spec file for package qt6-webengine
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.1
+%define real_version 6.3.2
 %define short_version 6.3
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
@@ -42,7 +42,7 @@
 %bcond_without system_minizip
 #
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.3.1
+Version:        6.3.2
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -52,12 +52,6 @@ Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
-# PATCH-FIX-OPENSUSE -- disable-gpu-when-using-nouveau-boo-1005323.diff
-# PATCH-NEEDS-REBASE
-%if 0
-Patch101:       disable-gpu-when-using-nouveau-boo-1005323.diff
-%endif
-#
 # Chromium/blink don't support PowerPC and zSystems and build fails on
 # 32 bits archs (https://bugreports.qt.io/browse/QTBUG-102143)
 ExclusiveArch:  aarch64 x86_64 riscv64

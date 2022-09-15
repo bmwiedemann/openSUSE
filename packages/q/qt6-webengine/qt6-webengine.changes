@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep  9 12:41:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.2:
+  * https://www.qt.io/blog/qt-6.3.2-released
+- Drop disable-gpu-when-using-nouveau-boo-1005323.diff
+  Patch was not updated for Qt6
+
+-------------------------------------------------------------------
 Mon Aug  8 12:03:18 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Remove python2 from buildrequires - it's a left over from qt5
