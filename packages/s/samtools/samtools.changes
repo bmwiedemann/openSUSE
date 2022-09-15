@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Sep 15 00:59:03 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.16.1
+  * Fixed a bug with the template-coordinate sort which caused
+    incorrect ordering when using threads, or processing large
+    files that don't fit completely in memory.
+  * Fixed a crash that occurred when trying to use samtools merge
+  in template-coordinate mode.
+- Update to version 1.16.0
+  * New work and changes:
+    - samtools reference command added. This subcommand extracts
+      the embedded reference out of a CRAM file.
+    - samtools import now adds grouped by query-name to the header
+    - Made samtools view read error messages more generic. Former
+      error message would claim that there was a "truncated file
+      or corrupt BAM index file" with no real justification. Also
+      reset errno in stream_view which could lead to confusing
+      error messages.
+    - Make samtools view -p also clear mqual, tlen and cigar.
+    - Add bedcov option -c to report read count.
+    - Add UMI/barcode handling to samtools markdup.
+    - Add a new template coordinate sort order to samtools sort
+      and samtools merge. This is useful when working with unique
+      molecular identifiers (UMIs).
+    - Rename mpileup --ignore-overlaps to
+      --ignore-overlaps-removal or --disable-overlap-removal.
+    - The dict command can now read BWA's .alt file and add AH:*
+      tags indicating reference sequences that represent
+      alternate loci.
+    - The samtools index command can now accept multiple alignment
+      filenames with the new -M option, and will index each of
+      them separately.
+    - Allow samtools fastq -T "*". This allows all tags from SAM
+      records to be written to fastq headers.
+  * Bug Fixes:
+    - Re-enable --reference option for samtools depth. The
+      reference is not used but this makes the command line
+      usage compatible with older releases.
+    - Fix regex coordinate bug in samtools markdup.
+    - Fix divide by zero in plot-bamstats -m, on unmapped data.
+    - Fix missing RG headers when using samtools merge -r.
+    - Fix a possible unaligned access in samtools reference.
+  * Documentation:
+    - Add documentation on CRAM compression profiles and some
+      of the newer options that appear in CRAM 3.1 and above.
+    - Add sclen filter expression keyword documentation.
+    - Extend FILTER EXPRESSION man page section to match the
+      changes made in HTSlib.
+
+
+-------------------------------------------------------------------
 Wed Apr 20 20:13:07 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.15.1

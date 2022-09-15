@@ -16,8 +16,10 @@
 #
 
 
+%define htsminversion 1.16
+
 Name:           samtools
-Version:        1.15.1
+Version:        1.16.1
 Release:        0
 Summary:        Tools for manipulating next-generation sequencing data
 License:        MIT
@@ -26,11 +28,11 @@ URL:            https://github.com/samtools/samtools
 Source:         https://github.com/samtools/samtools/releases/download/%{version}/samtools-%{version}.tar.bz2
 BuildRequires:  ncurses-utils
 BuildRequires:  perl
-BuildRequires:  pkgconfig(htslib) >= %{version}
+BuildRequires:  pkgconfig(htslib) >= %{htsminversion}
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(zlib)
 Requires:       bgzip
-Requires:       htsfile >= %{version}
+Requires:       libhts3 >= %{htsminversion}
 Requires:       perl
 Requires:       tabix
 
