@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Sep 13 15:51:54 UTC 2022 - jorik.cronenberg@suse.com
+
+- Update to version 0.22.1:
+  - v0.22.1
+    * Bugfixes
+      - Bring back pre-processing of ANSI escape characters to so that some
+        common bat use cases starts working again. See #2308 (@Enselic)
+
+  - v0.22.0
+    * Features
+      - Make the default macOS theme depend on Dark Mode.
+        See #2197, #1746 (@Enselic)
+      - Support for separate system and user config files.
+        See #668 (@patrickpichler)
+    * Bugfixes
+      - Prevent fork nightmare with PAGER=batcat. See #2235 (@johnmatthiggins)
+      - Make --no-paging/-P override --paging=... if passed as a later arg,
+        see #2201 (@themkat)
+      - --map-syntax and --ignored-suffix now works together, see #2093 (@czzrr)
+      - Strips byte order mark from output when in non-loop-through mode.
+        See #1922 (@dag-h)
+    * Other
+      - Relaxed glibc requirements on amd64, see #2106 and #2194 (@sharkdp)
+      - Improved fish completions. See #2275 (@zgracem)
+      - Stop pre-processing ANSI escape characters. Syntax highlighting on ANSI
+        escaped input is not supported. See #2185 and #2189 (@Enselic)
+    * Syntaxes
+      - NSE (Nmap Scripting Engine) is mapped to Lua, see #2151 (@Cre3per)
+      - Correctly color fstab dump and pass fields, see #2246 (@yuvalmo)
+      - Update Command Help syntax, see #2255
+      - Julia: Fix syntax highlighting for function name starting with struct,
+        see #2230
+      - Minor update to LiveScript, see #2291
+      - Associate .mts and .cts files with the TypeScript syntax.
+        See #2236 (@kidonng)
+      - Fish history is mapped to YAML. See #2237 (@kidonng)
+    * bat as a library
+      - Make bat::PrettyPrinter::syntaxes() iterate over new bat::Syntax struct
+        instead of &syntect::parsing::SyntaxReference. See #2222 (@Enselic)
+      - Clear highlights after printing, see #1919 and #1920 (@rhysd)
+
+-------------------------------------------------------------------
 Mon May 30 17:48:40 UTC 2022 - Jan Baier <jbaier@suse.com>
 
 - Update to version 0.21.0:

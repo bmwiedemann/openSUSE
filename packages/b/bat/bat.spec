@@ -17,7 +17,7 @@
 
 
 Name:           bat
-Version:        0.21.0
+Version:        0.22.1
 Release:        0
 Summary:        A cat(1) clone with syntax highlighting and Git integration
 License:        Apache-2.0 OR MIT
