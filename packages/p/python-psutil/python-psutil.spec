@@ -24,7 +24,7 @@
 %endif
 %bcond_without python2
 Name:           python-psutil
-Version:        5.9.1
+Version:        5.9.2
 Release:        0
 Summary:        A process utilities module for Python
 License:        BSD-3-Clause
@@ -44,11 +44,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       procps
 %if %{with test}
-%if 0%{suse_version} < 1550
-BuildRequires:  %{python_module unittest2}
-%endif
 BuildRequires:  net-tools
 BuildRequires:  procps
+%if 0%{?suse_version} < 1550
+BuildRequires:  %{python_module unittest2}
+%endif
 %if %{with python2}
 BuildRequires:  python-ipaddress
 BuildRequires:  python-mock

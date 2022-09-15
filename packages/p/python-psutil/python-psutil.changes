@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Sep 10 15:41:34 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.9.2:
+  * Bug fixes
+    + 2093_, [FreeBSD], **[critical]**: `pids()`_ may fail with
+      ENOMEM. Dynamically increase the "malloc()" buffer size until
+      it's big enough.
+    + 2095_, [Linux]: `net_if_stats()`_ returns incorrect interface
+      speed for 100GbE network cards.
+    + 2113_, [FreeBSD], **[critical]**: `virtual_memory()`_ may raise
+      ENOMEM due to missing "#include <sys/param.h>" directive.
+      (patch by Peter Jeremy)
+    + 2128_, [NetBSD]: `swap_memory()`_ was miscalculated.  (patch by
+      Thomas Klausner)
+
+-------------------------------------------------------------------
 Fri Jul 15 07:59:26 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix tests: setuptools changed the builddir library path and does
