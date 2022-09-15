@@ -975,4 +975,12 @@
 - Use %_pam_vendordir</comment>
     <requestid>998595</requestid>
   </revision>
+  <revision rev="96" vrev="4">
+    <srcmd5>69cb8a6267862c4a94826ee830d5e829</srcmd5>
+    <version>1.1.13</version>
+    <time>1663275468</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003539</requestid>
+  </revision>
 </revisionlist>

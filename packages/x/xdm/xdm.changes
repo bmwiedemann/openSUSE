@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  9 09:53:34 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add u_glibc-2.36.patch: use glibc's arc4random instead of
+  libbsd's (bsc#1202222)
+
+-------------------------------------------------------------------
 Fri Aug 19 09:42:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add buildrequires for bsd/stdlib.h (bsc#1202222) 

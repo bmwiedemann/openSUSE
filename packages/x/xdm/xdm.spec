@@ -40,12 +40,12 @@ Patch1:         xdm-tolerant-hostname-changes.diff
 Patch2:         xdm-tarball.patch
 Patch3:         n_Allow-the-greeter-to-set-the-input-fields-bg-color.patch
 Patch4:         xinit-UsrEtcMove.patch
+Patch5:         u_glibc-2.36.patch
 BuildRequires:  firewall-macros
 BuildRequires:  libtool
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(libbsd)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xau)
 BuildRequires:  pkgconfig(xaw7)
@@ -102,6 +102,7 @@ cp %{SOURCE2} .
 pushd xdm
 %patch1 -p1
 popd
+%patch5 -p1
 # reverse apply (boo#1130321)
 %patch3 -p1 -R
 
