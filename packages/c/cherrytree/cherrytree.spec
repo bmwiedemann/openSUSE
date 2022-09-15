@@ -17,7 +17,7 @@
 
 
 Name:           cherrytree
-Version:        0.99.48
+Version:        0.99.49+3
 Release:        0
 Summary:        A hierarchical note taking application
 License:        GPL-3.0-or-later AND LGPL-2.1-only
@@ -27,6 +27,7 @@ Source0:        %{name}-%{version}.tar.xz
 #PATCH-FIX-OPENSUSE cherrytree-set-git-version.patch malcolmlewis@opensuse.org -- Set git version in help about.
 Patch0:         cherrytree-set-git-version.patch
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  python3-lxml
@@ -64,6 +65,7 @@ file with extension ".ctd".
 rm %{buildroot}%{_datadir}/mime-info/cherrytree.*
 %suse_update_desktop_file -G "Hierarchical Notes Utility" cherrytree TextEditor
 %find_lang %{name} %{?no_lang_C}
+%fdupes -s %{buildroot}%{_datadir}
 
 %files
 %license license.txt

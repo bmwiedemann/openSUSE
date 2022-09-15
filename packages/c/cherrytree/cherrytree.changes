@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Sep 15 02:31:01 UTC 2022 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.49+3:
+  * Legacy_canonicalize_filename: manage empty filename,
+    (gh#giuspen/cherrytree#2118)
+  * added command line option '--anchor AnchorName' that in
+    addition to existing '--node NodeName' allows to open a
+    document focusing an anchor in a node.
+  * Changed non configurable keyboard shortcuts for codebox width
+    and table column width to use parenthesis open instead of
+    backslash, (gh#giuspen/cherrytree#2113).
+  * Fixed crash on double exit from systray icon right click menu,
+    (gh#giuspen/cherrytree#2114).
+  * Added keyboard shortcuts to toolbar tooltips,
+    (gh#giuspen/cherrytree#2106).
+  * Fixed export to HTML crash, (gh#giuspen/cherrytree#2109).
+  * Force turning off portal usage since it does not work on all
+    distros, (gh#giuspen/cherrytree#2111).
+  * Improved dialog confirmation before executing the code.
+  * Additonal changes for core22, (gh#giuspen/cherrytree#2110).
+  * Allow to disable the dialog asking for confirmation before
+    executing the code.
+  * Fixed bulleted list unindent (Shift+Tab) crash,
+    (gh#giuspen/cherrytree#2103).
+  * Add home plug, (gh#giuspen/cherrytree#2101 and
+    gh#giuspen/cherrytree#2102).
+  * Linux menu launcher run cherrytree in a new instance,
+    (gh#giuspen/cherrytree#2077).
+  * Fixed crash on print/export as pdf of a sequence of characters
+    without spaces longer that the page width, such as a very long
+    URL, (gh#giuspen/cherrytree#2045).
+  * Fixed wrongly entering column mode when using keyboard
+    shortcuts with <Ctrl><Alt> such as insert codebox,
+    (gh#giuspen/cherrytree#2075).
+  * Added syntax highlighting support for GDScript.
+  * Fixed tooltip and cursor not reset after hovering link and then
+    navigating to non rich text node.
+  * Support for accent insensitive search - added letters with
+    subordinate dots, (gh#giuspen/cherrytree#1981).
+  * Translation updates.
+- Fix duplicate file warnings, add fdupes build requires and macro.
+- Developer advised fixed cross-site scripting (XSS) vulnerability
+  that allows attackers to execute arbitrary web scripts or HTML
+  via a crafted payload injected into the Name text field when
+  creating a node, (#boo1202513, gh#giuspen/cherrytree#2099 and
+  CVE-2022-35133).
+
+-------------------------------------------------------------------
 Wed Jun 29 23:50:37 UTC 2022 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.48:
