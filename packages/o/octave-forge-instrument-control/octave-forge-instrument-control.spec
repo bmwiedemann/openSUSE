@@ -18,19 +18,19 @@
 
 %define octpkg  instrument-control
 Name:           octave-forge-%{octpkg}
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Instrument Control for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io
+URL:            https://octave.sourceforge.io/%{octpkg}/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM instrument-control-no-return-in-nonvoid-function.patch badshah400@gmail.com -- Fix non-void functions not returning data typically at the end of an if-elseif-else block.
 Patch0:         instrument-control-no-return-in-nonvoid-function.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
-BuildRequires:  octave-devel >= 3.8.0
-Requires:       octave-cli >= 3.8.0
+BuildRequires:  octave-devel >= 4.0.0
+Requires:       octave-cli >= 4.0.0
 
 %description
 Low level I/O functions for serial, i2c, parallel, tcp, gpib, vxi11 and usbtmc interfaces.
