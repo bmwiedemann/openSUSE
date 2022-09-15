@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 13 12:09:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace 1165.patch with 1178.patch: Solve the problem in a
+  different way.
+
+-------------------------------------------------------------------
+Mon Sep  5 10:42:51 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add explicit pkgconfig(libsoup-2.4) BuildRequires: needed for
+  geniuspaste.
+- Add explicit pkgconfig(webkit2gtk-4.0) BuildRequires: needed for
+  the markdown plugin.
+
+-------------------------------------------------------------------
 Tue Feb 22 10:52:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 1165.patch: GitChangeBar: Support libgit2 1.4.x

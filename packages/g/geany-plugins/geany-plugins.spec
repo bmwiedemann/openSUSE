@@ -28,8 +28,8 @@ License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://plugins.geany.org/geany-plugins/
 Source:         http://plugins.geany.org/geany-plugins/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM 1165.patch -- GitChangeBar: Support libgit2 1.4.x
-Patch:          https://patch-diff.githubusercontent.com/raw/geany/geany-plugins/pull/1165.patch
+# PATCH-FIX-UPSTREAM 1178.patch -- GitChangeBar: Support libgit2 1.4.x
+Patch:          https://patch-diff.githubusercontent.com/raw/geany/geany-plugins/pull/1178.patch
 
 BuildRequires:  devhelp-devel
 BuildRequires:  fdupes
@@ -53,7 +53,9 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.16
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtkspell3-3.0)
 BuildRequires:  pkgconfig(libgit2) >= 0.21
+BuildRequires:  pkgconfig(libsoup-2.4) >= 2.4.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.27
+BuildRequires:  pkgconfig(webkit2gtk-4.0)
 # Disable this as we do not want to use this unsupported version of webkit.
 # Leaving it in place to remind us to enable for newer versions if upstream ports it.
 # See https://github.com/geany/geany-plugins/issues/655

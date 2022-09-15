@@ -362,4 +362,18 @@
     <comment></comment>
     <requestid>956670</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>134bd38fc59c7cb139f42be36f10fe85</srcmd5>
+    <version>1.38</version>
+    <time>1663275536</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace 1165.patch with 1178.patch: Solve the problem in a
+  different way.
+- Add explicit pkgconfig(libsoup-2.4) BuildRequires: needed for
+  geniuspaste.
+- Add explicit pkgconfig(webkit2gtk-4.0) BuildRequires: needed for
+  the markdown plugin.
+</comment>
+    <requestid>1003699</requestid>
+  </revision>
 </revisionlist>
