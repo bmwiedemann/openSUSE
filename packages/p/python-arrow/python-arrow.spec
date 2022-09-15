@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-arrow%{?psuffix}
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Better dates and times for Python
 License:        Apache-2.0
