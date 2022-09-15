@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-ncarray
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define octpkg  ncarray
 Name:           octave-forge-%{octpkg}
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        Access to NetCDF files as a multi-dimensional array from Octave
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io
+URL:            https://octave.sourceforge.io/%{octpkg}/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  octave-devel
@@ -55,7 +55,6 @@ This is part of Octave-Forge project.
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
 
 %changelog
