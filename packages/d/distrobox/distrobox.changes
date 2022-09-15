@@ -1,7 +1,33 @@
 -------------------------------------------------------------------
+Wed Sep 14 09:24:10 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest version (1.4.0)
+- Patches removed:
+   0001-enter-fix-automatic-container-creation-when-r-is-use.patch
+   0002-distrobox-handle-situations-with-weird-manpages-setu.patch
+   0002-opensuse-check-for-the-config-file-in-usr-etc-too.patch
+   0003-distrobox-if-no-command-is-specified-default-to-ente.patch
+   0004-opensuse-check-for-the-config-file-in-usr-etc-too.patch
+- Patches added:
+   0001-distrobox-if-no-command-is-specified-default-to-ente.patch
+- Changes in 1.4.0:
+  * New distrobox upgrade command, to update all the containers at once
+  * New distrobox generate-entry command, to add your distrobox to the app list
+    note that from 1.4.0 onwards this will be the default behaviour for all the
+    new containers created
+  * New distrobox ephemeral command, to quickly spawn, use and delete a container.
+    All-in-one.
+  * New install-podman script to install Podman in $HOME. Handy for @ValveSoftware
+    SteamDeck users
+  * Distrobox-host-exec now uses exclusively the host-spawn command from @1player
+  * Better support for AD/LDap and Kerberos usernames
+  * Better support for Nix/Guix hosts
+  * Plenty of bug fixes and CI/Test improvements smile
+
+-------------------------------------------------------------------
 Thu Jul 28 09:48:32 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
-- Fix a (potential) problem with man and manpages
+- Fix a (potential0 problem with man and manpages
   * Patch added:
     0002-distrobox-handle-situations-with-weird-manpages-setu.patch
 - Default to distrobox-enter when only typing distrobox

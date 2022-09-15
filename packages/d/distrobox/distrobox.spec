@@ -16,26 +16,22 @@
 #
 
 Name:           distrobox
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Use any linux distribution inside your terminal
 License:        GPL-3.0
 URL:            https://github.com/89luca89/distrobox
 Source:         distrobox-%{version}.tar.gz
 Source1:        distrobox.conf
-# Fix a problem with automatic rootful container creation (from upstream)
-Patch1:         0001-enter-fix-automatic-container-creation-when-r-is-use.patch
-# Fix a problem if man is there but actual manpages are stripped (from upstream PR)
-Patch2:         0002-distrobox-handle-situations-with-weird-manpages-setu.patch
 # Default to distrobox-enter when just distrobox is used
-Patch3:         0003-distrobox-if-no-command-is-specified-default-to-ente.patch
-# Read the config from vendor specific directory (/usr/etc/distrobox) too
-Patch4:         0004-opensuse-check-for-the-config-file-in-usr-etc-too.patch
+Patch1:         0001-distrobox-if-no-command-is-specified-default-to-ente.patch
 Requires:       %{_bindir}/basename
 Requires:       %{_bindir}/find
 Requires:       %{_bindir}/grep
 Requires:       %{_bindir}/sed
 Requires:       (%{_bindir}/podman or %{_bindir}/docker)
+BuildRequires:	hicolor-icon-theme
+BuildRequires:  ImageMagick
 BuildArch:      noarch
 
 %description
@@ -51,10 +47,11 @@ external USB devices and graphical apps (X11/Wayland), and audio.
 %build
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-mkdir -p %{buildroot}%{_docdir}/%{name}
 ./install --prefix %{buildroot}/%{_prefix}
+
+install -d -m0755 %{buildroot}%{_docdir}/%{name}
 install -m 0644 docs/*.md %{buildroot}%{_docdir}/%{name}
+
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_distconfdir}/distrobox
 install -m 0644 %{SOURCE1} %{buildroot}%{_distconfdir}/distrobox/distrobox.conf
@@ -62,6 +59,19 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_distconfdir}/distrobox/distrobox.conf
 mkdir -p %{buildroot}%{_sysconfdir}/distrobox
 install -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/distrobox/distrobox.conf
 %endif
+
+# Move the icon
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/1200x1200/apps
+mv %{buildroot}%{_datadir}/icons/terminal-distrobox-icon.png \
+   %{buildroot}%{_datadir}/icons/hicolor/1200x1200/apps
+
+# Generate all the other icon sizes
+for sz in 16 22 24 32 36 48 64 72 96 128 256; do
+    mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${sz}x${sz}/apps
+    convert terminal-distrobox-icon.png -resize ${sz}x${sz} \
+        %{buildroot}%{_datadir}/icons/hicolor/${sz}x${sz}/apps/terminal-distrobox-icon.png
+done
+
 %files
 %license COPYING.md
 %doc %{_docdir}/%{name}
@@ -70,13 +80,14 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/distrobox/distrobox.conf
 %{_mandir}/man1/%{name}.1.gz
 %{_mandir}/man1/%{name}-*.1.gz
 %if 0%{?suse_version} > 1500
-%{_distconfdir}/distrobox
-%else
-%config %{_sysconfdir}/distrobox
-%endif
-%if 0%{?suse_version} > 1500
+%dir %{_distconfdir}/distrobox
 %{_distconfdir}/distrobox/distrobox.conf
 %else
+%config %{_sysconfdir}/distrobox
 %config(noreplace) %{_sysconfdir}/distrobox/distrobox.conf
 %endif
+%dir %{_datadir}/icons/hicolor/
+%dir %{_datadir}/icons/hicolor/*x*/
+%dir %{_datadir}/icons/hicolor/*x*/apps/
+%{_datadir}/icons/hicolor/*/apps/terminal-distrobox-icon.png
 %changelog
