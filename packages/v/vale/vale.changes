@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 14 21:44:10 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 2.20.2:
+  * chore: fix main package
+  * chore: fix Go version for GoReleaser
+  * refactor: remove old doc.go
+  * refactor: remove old doc.go
+  * Consistent color reporting
+  * refactor: remove unused error
+  * refactor: remove `internal/cli`
+  * refactor: remove `internal/cli`
+  * fix: support numbers in Vocab entries
+
+-------------------------------------------------------------------
 Sun Jul 24 17:32:44 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 2.20.1:

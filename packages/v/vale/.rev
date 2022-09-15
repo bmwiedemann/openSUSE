@@ -39,4 +39,21 @@
   * docs: add Org support (forwarded request 990897 from jfkw)</comment>
     <requestid>990899</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>17d7d4d846e93426b98014c9c3aa43da</srcmd5>
+    <version>2.20.2</version>
+    <time>1663275515</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.20.2:
+  * chore: fix main package
+  * chore: fix Go version for GoReleaser
+  * refactor: remove old doc.go
+  * refactor: remove old doc.go
+  * Consistent color reporting
+  * refactor: remove unused error
+  * refactor: remove `internal/cli`
+  * refactor: remove `internal/cli`
+  * fix: support numbers in Vocab entries (forwarded request 1003635 from jfkw)</comment>
+    <requestid>1003636</requestid>
+  </revision>
 </revisionlist>
