@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 15 07:47:22 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.25.0+rke2r1:
+  * This release updates Kubernetes to v1.25.0, and fixes a number of issues.
+  * Details see https://github.com/rancher/rke2/releases/tag/v1.25.0+rke2r1
+
+-------------------------------------------------------------------
 Thu Sep  8 10:47:58 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - Update to version 1.24.4+rke2r1:
