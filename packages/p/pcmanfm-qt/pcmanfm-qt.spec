@@ -28,6 +28,8 @@ Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{n
 Source2:        %{name}.keyring
 #bsc#1100208 - mvetter@suse.de - set default openSUSE wallpaper
 Patch0:         pcmanfm-qt-default-wallpaper.patch
+#gh#lxqt/pcmanfm-qt#1522 - sfalken@cloverleaf-linux.org - fix default terminal for lxqt desktop
+Patch1:         pcmanfm-qt-default-terminal.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -56,6 +58,7 @@ PCManFM-Qt is the Qt port of the LXDE file manager PCManFM
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p0
 
 %build
 %cmake -DPULL_TRANSLATIONS=No
@@ -74,8 +77,8 @@ make %{?_smp_mflags}
 %{_bindir}/%{name}
 %{_datadir}/applications/*.desktop
 %{_mandir}/man?/%{name}.?%{ext_man}
-%{_sysconfdir}/xdg/autostart/lxqt-desktop.desktop
-%config %{_datadir}/pcmanfm-qt/lxqt/settings.conf
+%config %{_sysconfdir}/xdg/autostart/lxqt-desktop.desktop
+%{_datadir}/pcmanfm-qt/lxqt/settings.conf
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/pcmanfm-qt

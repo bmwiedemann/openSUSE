@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 14 21:55:49 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- fix default terminal, affects the right-click open terminal on desktop (gh#lxqt/pcmanfm-qt#1522)
+  * pcmanfm-qt-default-terminal.patch
+- minor cleanup in %files to fix rpmlint errors
+
+-------------------------------------------------------------------
 Wed Apr 27 21:43:10 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.1.0:
