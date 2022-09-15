@@ -339,4 +339,12 @@
     with threading.current_thread, name and daemon.</comment>
     <requestid>989492</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b03e1bcfc4615e3131699a484b018087</srcmd5>
+    <version>3.5.2</version>
+    <time>1663275449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002727</requestid>
+  </revision>
 </revisionlist>
