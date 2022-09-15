@@ -12898,4 +12898,11 @@ Switch to repomd for 42.1, its susetags are bugged</comment>
     <user>staging-bot</user>
     <comment>Automatic update</comment>
   </revision>
+  <revision rev="2085" vrev="2085">
+    <srcmd5>2fdb84c431a86b06f09ae34c917a2390</srcmd5>
+    <version>unknown</version>
+    <time>1663228772</time>
+    <user>dimstar_suse</user>
+    <comment>Cleanup 42.x weakremovers</comment>
+  </revision>
 </revisionlist>
