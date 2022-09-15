@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 14 18:09:26 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 105.0.5195.127 (boo#1203419):
+  * CVE-2022-3195: Out of bounds write in Storage
+  * CVE-2022-3196: Use after free in PDF
+  * CVE-2022-3197: Use after free in PDF
+  * CVE-2022-3198: Use after free in PDF
+  * CVE-2022-3199: Use after free in Frames
+  * CVE-2022-3200: Heap buffer overflow in Internals
+  * CVE-2022-3201: Insufficient validation of untrusted input in DevTools
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Thu Sep  8 10:46:42 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Chromium 105.0.5195.102 (boo#1203102):
