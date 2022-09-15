@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Sep 15 00:35:16 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- add README-suse-maint.md in the specfile's sources.
+
+-------------------------------------------------------------------
+Wed Sep  7 22:11:47 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Move tutor to helix instead of including it to helix-runtime.
+
+-------------------------------------------------------------------
+Sat Sep  3 12:35:29 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 22.08.1:
+  * Patch release that fixes a panic caused by closing splits or buffers (#3633)
+- Other changes before the patch release (22.08):
+  * Breaking changes:
+    - Special keymap names for +, ; and % have been replaced with those literal characters (#2677, #3556)
+    - A-Left and A-Right have become C-Left and C-Right for word-wise motion (#2500)
+    - The catppuccin theme's name has been corrected from catpuccin (#2713)
+    - catppuccin has been replaced by its variants, catppuccin_frappe, catppuccin_latte, 
+      catppuccin_macchiato, catppuccin_mocha (#3281)
+    - C-n and C-p have been removed from the default insert mode keymap (#3340)
+    - The extend_line command has been replaced with extend_line_below and 
+      a new extend_line command now exists (#3046)
+  * Features:
+    - Add an integration testing harness (#2359)
+    - Indent guides (#1796, 906259c)
+    - Cursorline (#2170, fde9e03)
+    - Select all instances of the symbol under the cursor (<space>h) (#2738)
+    - A picker for document and workspace LSP diagnostics (<space>g/<space>G) (#2013, #2984)
+    - Allow styling the mode indicator per-mode (#2676)
+    - Live preview for the theme picker (#1798)
+    - Configurable statusline (#2434)
+    - LSP SignatureHelp (#1755, a8b123f)
+    - A picker for the jumplist (#3033)
+    - Configurable external formatter binaries (#2942)
+    - Bracketed paste support (#3233, 12ddd03)
+  * Commands:
+    - :insert-output and :append-output which insert/append output from a shell command (#2589)
+    - The t textobject (]t/[t/mit/mat) for navigating tests (#2807)
+    - C-Backspace and C-Delete for word-wise deletion in prompts and pickers (#2500)
+    - A-Delete for forward word-wise deletion in insert mode (#2500)
+    - C-t for toggling the preview pane in pickers (#3021)
+    - extend_line now extends in the direction of the cursor (#3046)
+  * More of the changes listed in https://github.com/helix-editor/helix/blob/master/CHANGELOG.md#2208-2022-08-31
+
+------------------------------------------------------------------
+Sun Aug 28 23:10:31 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update vendored dependencies
+- add README-suse-maint.md
+
+-------------------------------------------------------------------
+Sun Aug 28 13:21:54 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Separate runtime files. They make this whole package too huge.
+- Update service file
+- Update of vendored dependencies
+- fix problems with sources to use rpmdev-spectool
+- fix specfile to create a top-level directory to extract tarball to
+
+-------------------------------------------------------------------
 Mon Jun 20 03:28:41 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies

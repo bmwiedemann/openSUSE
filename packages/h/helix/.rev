@@ -55,4 +55,14 @@ This will increase possible helix users.</comment>
     <comment></comment>
     <requestid>983821</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0d566430a9353107562f88301ab3fe68</srcmd5>
+    <version>22.08.1</version>
+    <time>1663275518</time>
+    <user>dimstar_suse</user>
+    <comment>- update specfile sources:
+  * add README-suse-maint.md
+</comment>
+    <requestid>1003641</requestid>
+  </revision>
 </revisionlist>
