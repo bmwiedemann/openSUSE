@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.1
+%define real_version 6.3.2
 %define short_version 6.3
 %define short_name qtdatavis3d
 %define tar_name qtdatavis3d-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-datavis3d%{?pkg_suffix}
-Version:        6.3.1
+Version:        6.3.2
 Release:        0
 Summary:        Qt 6 data visualization framework
 License:        GPL-3.0-or-later
@@ -96,6 +96,7 @@ The Qt 6 DataVisualizationQml library.
 %package -n qt6-datavisualizationqml-devel
 Summary:        Qt 6 DataVisualizationQml library - Development files
 Requires:       libQt6DataVisualizationQml6 = %{version}
+Requires:       qt6-datavisualization-private-devel = %{real_version}
 Requires:       cmake(Qt6Gui)
 Requires:       cmake(Qt6OpenGL)
 Requires:       cmake(Qt6Qml)
