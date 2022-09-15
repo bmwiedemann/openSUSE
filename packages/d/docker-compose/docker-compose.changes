@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Sep 15 07:50:53 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.11.0:
+  * update compose-go version to v1.5.1
+  * add license to file
+  * small cleanup + godoc
+  * down: refactor image pruning
+  * pull: improve output for services with both image+build (#9829)
+  * build(deps): bump go.opentelemetry.io/otel from 1.9.0 to 1.10.0
+  * build(deps): bump github.com/AlecAivazis/survey/v2 from 2.3.5 to 2.3.6 (#9830)
+  * Update README.md
+  * logs: filter to services from current Compose file (#9811)
+  * convert: do not escape $ into $$ when using the --no-interpolate option (#9703)
+  * Cleanup E2E tests
+  * Add unit tests to graph building logic in `dependencies.go`
+  * Restrict compose project to selected services and dependencies on `compose start`
+  * Apply newly loaded envvars to "DockerCli" and "APIClient"
+  * build(deps): bump go.opentelemetry.io/otel from 1.4.1 to 1.9.0
+  * build: label built images for reliable cleanup on `down`
+  * ci: upgrade golangci-lint
+  * ci: upgrade to Go 1.19.1
+  * Cleanup E2E tests
+  * patch: build.go access custom labels directly cause panic
+  * build(deps): bump github.com/cnabio/cnab-to-oci from 0.3.6 to 0.3.7
+  * always use 'docker' export entry when building with 'up' or 'run' commands
+  * don't push images at the end of multi-arch build (and simplify e2e tests) support DOCKER_DEFAULT_PLATFORM when 'compose up --build' add tests to check behaviour when DOCKER_DEFAULT_PLATFORM is defined
+  * add a test with multiple service builds using platforms in the same compose file
+  * fix panic when using 'compose up --build'
+  * add support of platforms in build section
+  * build(deps): bump github.com/docker/go-units from 0.4.0 to 0.5.0
+  * api: fix typo on Push godoc (#9798)
+  * ci: reduce noise from dependabot on Docker deps (#9770)
+  * Add E2E tests for starting/stopping single services
+  * Fix `down` with `--rmi`
+  * Only capture exit codes from `exit` events
+  * Add E2E tests for `up --exit-code-from`
+
+-------------------------------------------------------------------
 Wed Sep 07 06:51:12 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.10.2:
