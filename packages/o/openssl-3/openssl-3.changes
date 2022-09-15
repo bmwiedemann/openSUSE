@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 14 09:22:14 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Do not make libopenssl3-32bit obsolete libopenssl1_1-32bit.
+  They are independent libraries and can be installed simultaneously.
+
+-------------------------------------------------------------------
 Thu Jul 21 09:09:07 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.0.5:
