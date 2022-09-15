@@ -498,4 +498,15 @@
   * Fix probleem with mu4e~view-message being nillified when it shouldn't.</comment>
     <requestid>996446</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a95a0714cea3c0b4c504cd9a4ef38150</srcmd5>
+    <version>1.8.10</version>
+    <time>1663275539</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.10:
+  * Fix build with emacs 29 snapshots
+  * Use save-excursion around toggling html
+  * Install guile scripts and fix bindings</comment>
+    <requestid>1003709</requestid>
+  </revision>
 </revisionlist>

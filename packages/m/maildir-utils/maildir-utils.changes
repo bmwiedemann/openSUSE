@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 15 07:01:30 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.10:
+  * Fix build with emacs 29 snapshots
+  * Use save-excursion around toggling html
+  * Install guile scripts and fix bindings
+
+-------------------------------------------------------------------
 Tue Aug 16 08:26:01 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.9:
