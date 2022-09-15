@@ -277,4 +277,41 @@
   - Correct the type used for attest by @mattmoor in #2128 (forwarded request 993341 from msmeissn)</comment>
     <requestid>993342</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>25fd61f7fbbe15f0bcc0d7de319d300f</srcmd5>
+    <version>1.12.0</version>
+    <time>1663275606</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.12.0 (jsc#SLE-23879)
+  - CVE-2022-36056: Fixed verify-blob could successfully verify an artifact when verification should have failed (bsc#1203430)
+  - Support non-ECDSA key types for verify-blob by @haydentherapper in #2203
+  - feat: integrate Alibaba Cloud Container Registry cred helper by @mozillazg in #2008
+  - remove double quotes, looks like it is passing as a single string to cosign and not as an array by @cpanato in #2205
+  - Clarify error when KMS provider fails to load by @znewman01 in #2220
+  - feat: set annotations to generate additional bash completion information by @dirien in #2221
+  - Add deprecation warning for sget CLI and packages by @imjasonh in #2019
+  - upgrade setup-ko to point to new repo by @imjasonh in #2225
+  - Temp fix for e2e test by @haydentherapper in #2247
+  - update kind to use release v0.15.0 and some version comments by @cpanato in #2246
+  - Fix e2e test failure, add test for local bundle without rekor bundle by @haydentherapper in #2248
+  - fix: fix secret test, non-experimental bundle should pass by @asraa in #2249
+- updated to 1.11.1
+  - add stale workflow using the workflow template by @cpanato in #2175
+  - Update Scorecard action to v2:alpha by @azeemshaikh38 in #2177
+  - add release cadence section in the readme by @cpanato in #2179
+  - feat: Rework fig autocomplete command by @dirien in #2187
+  - fix: fix typo that caused attestation verification failure by @asraa in #2199
+- updated to 1.11.0
+  - Verify the certificate chain against the Fulcio root trust by default by @wata727 in #2139
+  - Add notes to clarify registry use. by @bendory in #2145
+  - Use TUF from scaffolding for validating cosign. by @vaikas in #2146
+  - docs: clarify wording in spec about usage of certificate chain by @asraa in #2152
+  - fix: fix blob verification output with sharded rekor tlogs by @asraa in #2157
+  - fix: adds envelope hash to in-toto entries in tlog entry creation by @nkreiger in #2118
+  - fix handling of verify-attestation types for URIs by @otms61 in #2159
+  - fix oidc post-merge job by @cpanato in #2164
+  - Remove third_party by @imjasonh in #2166
+  - use updated device flow logic with PKCE by @bobcallaway in #2163 (forwarded request 1003867 from msmeissn)</comment>
+    <requestid>1003868</requestid>
+  </revision>
 </revisionlist>
