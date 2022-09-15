@@ -1204,4 +1204,18 @@ Now with build cycle removed.</comment>
   * util: gTLD data autopull updates for 2022-06-02T15:16:31 UTC (#1579)</comment>
     <requestid>994259</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>e92ca04ca5c65dfddbd6ddd2ff7b6def</srcmd5>
+    <version>20220903</version>
+    <time>1663275463</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220903:
+  * util: gTLD data autopull updates for 2022-09-03T15:15:24 UTC (#1606)
+  * Update public_suffix_list.dat (#1594)
+  * Add streamlitapp.com (#1591)
+  * Update public_suffix_list.dat (#1573)
+  * Add Framer Sites domains to PSL (#1570)
+  * new TLD .ישראל and SLDs for Israel by ISOC-IL (#1595)</comment>
+    <requestid>1003463</requestid>
+  </revision>
 </revisionlist>

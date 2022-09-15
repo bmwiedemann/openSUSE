@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 14 07:47:24 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20220903:
+  * util: gTLD data autopull updates for 2022-09-03T15:15:24 UTC (#1606)
+  * Update public_suffix_list.dat (#1594)
+  * Add streamlitapp.com (#1591)
+  * Update public_suffix_list.dat (#1573)
+  * Add Framer Sites domains to PSL (#1570)
+  * new TLD .ישראל and SLDs for Israel by ISOC-IL (#1595)
+
+-------------------------------------------------------------------
 Wed Aug 10 07:16:46 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20220805:
