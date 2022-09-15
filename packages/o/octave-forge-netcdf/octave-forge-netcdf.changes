@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 15 00:43:41 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.0.15:
+  * Update license to use GPLv3+
+  * Add NC_VLEN processing as a user type
+  * Add user manual
+  * add warning in getVar if try to read negative
+  * minor doc updates
+  * Update requirement of octave version to 4.0+
+
+-------------------------------------------------------------------
 Fri Oct 23 15:47:03 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.0.14:
