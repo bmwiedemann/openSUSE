@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Sep 14 15:25:46 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Run the CFB8 cipher selftest without offset [bsc#1203245]
+  * CFB8 list of ciphers: GNUTLS_CIPHER_AES_{128,192,256}_CFB8
+  * Add gnutls-FIPS-Run-CFB8-without-offset.patch
+
+-------------------------------------------------------------------
+Tue Sep 13 18:08:03 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- provide a libgnutls30-hmac-32bit to avoid uninstallable wine
+  when pattern-base-fips is installed [boo#1203353]
+
+-------------------------------------------------------------------
+Tue Sep  6 16:17:12 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Additional modifications to the SLI. [bsc#1190698]
+  * Mark CMAC and GMAC and non-approved in gnutls_pbkfd2().
+  * Mark HMAC keylength less than 112 bits as non-approved in
+    gnutls_pbkfd2().
+  * Adapt the pbkdf2 selftest and the regression tests accordingly.
+  * Add gnutls-FIPS-SLI-pbkdf2-verify-keylengths-only-SHA.patch
+
+-------------------------------------------------------------------
+Mon Aug  8 16:41:19 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Port GnuTLS to use jitterentropy [bsc#1202146, jsc#SLE-24941]
+  * Add new dependency on jitterentropy
+  * Add gnutls-FIPS-jitterentropy.patch
+
+-------------------------------------------------------------------
 Fri Jul 29 14:29:17 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.7.7: [bsc#1202020, CVE-2022-2509]
@@ -46,6 +76,15 @@ Fri Jul 29 14:29:17 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
   * Remove patch merged upstream:
     - gnutls-FIPS-PBKDF2-KAT-requirements.patch
     - https://gitlab.com/gnutls/gnutls/merge_requests/1561
+
+-------------------------------------------------------------------
+Wed Jun 29 15:56:59 UTC 2022 - Richard Costa <richard.costa@suse.com>
+
+- FIPS:
+  * Add gnutls_ECDSA_signing.patch [bsc#1190698]
+    - Check minimum keylength for symmetric key generation
+    - Only allows ECDSA signature with valid set of hashes
+      (SHA2 and SHA3)
 
 -------------------------------------------------------------------
 Fri May 27 16:56:26 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>

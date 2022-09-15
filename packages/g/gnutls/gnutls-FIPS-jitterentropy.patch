@@ -1,0 +1,195 @@
+Index: gnutls-3.7.3/lib/nettle/sysrng-linux.c
+===================================================================
+--- gnutls-3.7.3.orig/lib/nettle/sysrng-linux.c
++++ gnutls-3.7.3/lib/nettle/sysrng-linux.c
+@@ -49,6 +49,12 @@
+ get_entropy_func _rnd_get_system_entropy = NULL;
+ 
+ #if defined(__linux__)
++# ifdef ENABLE_FIPS140
++#  define HAVE_JENT
++#  include <jitterentropy.h>
++static int jent_initialized = 0;
++static struct rand_data* ec = NULL;
++# endif
+ # ifdef HAVE_GETRANDOM
+ #  include <sys/random.h>
+ # else
+@@ -66,6 +72,96 @@ static ssize_t _getrandom0(void *buf, si
+ #  endif
+ # endif
+ 
++# if defined(HAVE_JENT)
++/* check whether the CPU Jitter entropy collector is available. */
++static unsigned FIPS_jent_entropy_init(void)
++{
++	unsigned int rv = 1;
++	unsigned int osr = 1;    /* <OSR> Oversampling rate */
++	unsigned int flags = 0;  /* JENT_FORCE_FIPS
++							  * JENT_DISABLE_MEMORY_ACCESS
++							  * JENT_DISABLE_INTERNAL_TIMER
++							  * JENT_FORCE_INTERNAL_TIMER
++							  * JENT_MAX_MEMSIZE_{32,64,128,256,512}kB
++							  * JENT_MAX_MEMSIZE_{1,2,4,8,16,32,64,128,256,512}MB
++							  */
++
++	/* Set the FIPS flag. */
++	flags |= JENT_FORCE_FIPS;
++
++	/* Do not re-initialize jent. */
++	if (jent_initialized == 0) {
++		if (jent_entropy_init_ex(osr, flags))
++			return 0;
++		jent_initialized = 1;
++	}
++
++	/* Allocate the entropy collector. */
++	if (ec == NULL) {
++		ec = jent_entropy_collector_alloc(osr, flags);
++		if (ec == NULL) {
++			rv = 0;
++		}
++	}
++
++	return rv;
++}
++
++void FIPS_jent_entropy_deinit(void)
++{
++	/* Free the entropy collector. */
++	if (ec != NULL) {
++		jent_entropy_collector_free(ec);
++		ec = NULL;
++	}
++
++	return;
++}
++
++/* returns exactly the amount of bytes requested */
++static int force_jent(void *buf, size_t buflen, unsigned int flags,
++		      unsigned int osr)
++{
++	static int jent_bytes = -1;
++
++	if (buf == NULL || buflen == 0) {
++		return -1;
++	}
++
++	/* Ensure the entropy source has been fully initiated. */
++	if (jent_initialized == 0 || ec == NULL) {
++		if (!FIPS_jent_entropy_init()) {
++			return -1;
++		}
++	}
++
++	/* Get entropy bytes. */
++	jent_bytes = jent_read_entropy_safe(&ec, (char *)buf, buflen);
++
++	return jent_bytes;
++}
++
++static int _rnd_get_system_entropy_jent(void* _rnd, size_t size)
++{
++	int ret;
++	unsigned int osr = 1;
++	unsigned int flags = 0;
++
++	/* Set the FIPS flag. */
++	flags |= JENT_FORCE_FIPS;
++
++	ret = force_jent(_rnd, size, flags, osr);
++	if (ret < 0) {
++		int e = errno;
++		gnutls_assert();
++		_gnutls_debug_log("Failed to use jent: %s\n", strerror(e));
++		FIPS_jent_entropy_deinit();
++		return GNUTLS_E_RANDOM_DEVICE_ERROR;
++	}
++
++	return 0;
++}
++# endif
+ 
+ static unsigned have_getrandom(void)
+ {
+@@ -164,6 +260,16 @@ int _rnd_system_entropy_init(void)
+ 	int urandom_fd;
+ 
+ #if defined(__linux__)
++# if defined(HAVE_JENT)
++	/* Enable jitterentropy usage if available */
++	if (FIPS_jent_entropy_init()) {
++		_rnd_get_system_entropy = _rnd_get_system_entropy_jent;
++		_gnutls_debug_log("jitterentropy random generator was selected\n");
++		return 0;
++	} else {
++		_gnutls_debug_log("jitterentropy is not available\n");
++	}
++# endif
+ 	/* Enable getrandom() usage if available */
+ 	if (have_getrandom()) {
+ 		_rnd_get_system_entropy = _rnd_get_system_entropy_getrandom;
+@@ -193,6 +299,11 @@ int _rnd_system_entropy_init(void)
+ void _rnd_system_entropy_deinit(void)
+ {
+ 	/* A no-op now when we open and close /dev/urandom every time */
++#if defined(__linux__)
++# if defined(HAVE_JENT)
++	FIPS_jent_entropy_deinit();
++# endif
++#endif
+ 	return;
+ }
+ 
+Index: gnutls-3.7.3/lib/nettle/Makefile.in
+===================================================================
+--- gnutls-3.7.3.orig/lib/nettle/Makefile.in
++++ gnutls-3.7.3/lib/nettle/Makefile.in
+@@ -398,7 +398,7 @@ am__v_CC_1 =
+ CCLD = $(CC)
+ LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+ 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+-	$(AM_LDFLAGS) $(LDFLAGS) -o $@
++	$(AM_LDFLAGS) $(LDFLAGS) -ljitterentropy -o $@
+ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
+ am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
+ am__v_CCLD_0 = @echo "  CCLD    " $@;
+Index: gnutls-3.7.3/lib/nettle/Makefile.am
+===================================================================
+--- gnutls-3.7.3.orig/lib/nettle/Makefile.am
++++ gnutls-3.7.3/lib/nettle/Makefile.am
+@@ -20,7 +20,7 @@
+ 
+ include $(top_srcdir)/lib/common.mk
+ 
+-AM_CFLAGS += $(HOGWEED_CFLAGS) $(GMP_CFLAGS)
++AM_CFLAGS += $(HOGWEED_CFLAGS) $(GMP_CFLAGS) -ljitterentropy
+ 
+ AM_CPPFLAGS = \
+ 	-I$(srcdir)/int		\
+Index: gnutls-3.7.3/lib/nettle/rnd-fips.c
+===================================================================
+--- gnutls-3.7.3.orig/lib/nettle/rnd-fips.c
++++ gnutls-3.7.3/lib/nettle/rnd-fips.c
+@@ -129,6 +129,10 @@ static int drbg_init(struct fips_ctx *fc
+ 	uint8_t buffer[DRBG_AES_SEED_SIZE];
+ 	int ret;
+ 
++	ret = _rnd_get_system_entropy(buffer, sizeof(buffer));
++	if (ret < 0)
++		return gnutls_assert_val(ret);
++
+ 	ret = get_entropy(fctx, buffer, sizeof(buffer));
+ 	if (ret < 0) {
+ 		_gnutls_switch_fips_state(GNUTLS_FIPS140_OP_ERROR);
+@@ -153,6 +157,10 @@ static int drbg_reseed(struct fips_ctx *
+ 	uint8_t buffer[DRBG_AES_SEED_SIZE];
+ 	int ret;
+ 
++	ret = _rnd_get_system_entropy(buffer, sizeof(buffer));
++	if (ret < 0)
++		return gnutls_assert_val(ret);
++
+ 	ret = get_entropy(fctx, buffer, sizeof(buffer));
+ 	if (ret < 0) {
+ 		_gnutls_switch_fips_state(GNUTLS_FIPS140_OP_ERROR);

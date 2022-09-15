@@ -1580,4 +1580,12 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
     <comment></comment>
     <requestid>991995</requestid>
   </revision>
+  <revision rev="141" vrev="2">
+    <srcmd5>db1d217e0d8bfe7eecb3d079f880bcaa</srcmd5>
+    <version>3.7.7</version>
+    <time>1663275472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003575</requestid>
+  </revision>
 </revisionlist>

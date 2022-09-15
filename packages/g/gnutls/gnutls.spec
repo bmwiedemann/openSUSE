@@ -50,6 +50,15 @@ Patch0:         gnutls-3.5.11-skip-trust-store-tests.patch
 Patch1:         gnutls-3.6.6-set_guile_site_dir.patch
 Patch2:         gnutls-FIPS-TLS_KDF_selftest.patch
 Patch3:         gnutls-FIPS-disable-failing-tests.patch
+Patch4:         gnutls_ECDSA_signing.patch
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+#PATCH-FIX-SUSE bsc#1202146 FIPS: Port gnutls to use jitterentropy
+Patch5:         gnutls-FIPS-jitterentropy.patch
+%endif
+#PATCH-FIX-SUSE bsc#1190698 FIPS: SLI gnutls_pbkdf2: verify keylengths and allow SHA only
+Patch6:         gnutls-FIPS-SLI-pbkdf2-verify-keylengths-only-SHA.patch
+#PATCH-FIX-SUSE bsc#1203245 FIPS: Run the CFB8 cipher selftests without offset
+Patch7:         gnutls-FIPS-Run-CFB8-without-offset.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge
@@ -94,6 +103,8 @@ BuildRequires:  guile-devel > 1.8
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 BuildRequires:  crypto-policies
 Requires:       crypto-policies
+BuildRequires:  jitterentropy-devel >= 3.4.0
+Requires:       libjitterentropy3 >= 3.4.0
 %endif
 
 %description
