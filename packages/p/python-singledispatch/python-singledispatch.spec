@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-singledispatch
-Version:        3.6.1
+Version:        3.7.0
 Release:        0
 Summary:        Provides functools.singledispatch for Python 2.x
 License:        MIT AND Python-2.0

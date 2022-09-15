@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 15 18:27:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.7.0:
+  * Add ``singledispatchmethod`` from Python 3.8.
+  * bpo-23572: Fix behavior when metaclass implements bool.
+
+-------------------------------------------------------------------
 Tue Jan 11 09:45:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add python-rpm-macros dependency 

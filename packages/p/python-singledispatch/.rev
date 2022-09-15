@@ -15,4 +15,14 @@
     <comment>- add python-rpm-macros dependency</comment>
     <requestid>945539</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f02666ccd1ea9002260ee27409e920cb</srcmd5>
+    <version>3.7.0</version>
+    <time>1663275614</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.7.0:
+  * Add ``singledispatchmethod`` from Python 3.8.
+  * bpo-23572: Fix behavior when metaclass implements bool.</comment>
+    <requestid>1003957</requestid>
+  </revision>
 </revisionlist>
