@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 13 15:52:52 UTC 2022 - Luca Boccassi <luca.boccassi@gmail.com>
+
+- Add virtual provides for 'integritysetup' and 'veritysetup' to match
+  package names provided by Fedora/RHEL, to allow the same set of
+  dependencies to be used across all RPM distributions.
+
+-------------------------------------------------------------------
 Mon Aug 22 08:38:16 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - cryptsetup 2.5.0:

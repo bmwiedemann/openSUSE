@@ -50,6 +50,8 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  rubygem(asciidoctor)
 Requires(post): coreutils
 Requires(postun):coreutils
+Provides:       integritysetup = %{version}-%{release}
+Provides:       veritysetup = %{version}-%{release}
 %if %{?suse_version} >= 1550
 # LUKS2 used as default format, which GRUB < 2.06 can't read
 Conflicts:      grub2 < 2.06
