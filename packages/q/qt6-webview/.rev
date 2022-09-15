@@ -7,4 +7,12 @@
     <comment>Add the missing qt6-webview module</comment>
     <requestid>1001360</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8b2543ba9b9426c99a7e29650dd89e55</srcmd5>
+    <version>6.3.2</version>
+    <time>1663275589</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.3.2 (forwarded request 1003797 from cgiboudeaux)</comment>
+    <requestid>1003831</requestid>
+  </revision>
 </revisionlist>
