@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 12 14:34:49 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.4.0:
+  * Fix version_info
+  * Make generated config files more lintable
+  * Fix union trait from string
+  * Add security.md, and tidelift bage
+
+-------------------------------------------------------------------
 Wed Jun 22 14:01:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.3.0
