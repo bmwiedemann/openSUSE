@@ -1,7 +1,7 @@
 #
 # spec file for package mythes
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libname libmythes-1_2-0
 Name:           mythes
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        A simple thesaurus for Libreoffice
-License:        BSD-2-Clause and MIT
+License:        BSD-2-Clause AND MIT
 Group:          System/Libraries
-Url:            http://hunspell.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/hunspell/%{name}-%{version}.tar.gz
+URL:            https://github.com/hunspell/mythes
+Source0:        https://github.com/hunspell/mythes/releases/download/v%{version}/mythes-%{version}.tar.xz
 BuildRequires:  gcc-c++
 BuildRequires:  hunspell-devel
 BuildRequires:  pkgconfig

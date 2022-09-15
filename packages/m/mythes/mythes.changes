@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 13 12:49:41 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Version bump to 1.2.5
+  * Fix use of deprecated hunspell apis in demo
+  * Fix some compilation warnings
+
+-------------------------------------------------------------------
 Thu Nov 13 12:18:08 UTC 2014 - tchvatal@suse.com
 
 - Version bump to 1.2.4:
