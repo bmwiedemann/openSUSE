@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Thu Sep 15 05:24:41 UTC 2022 - asn@cryptomilk.org
+
+- Update to version 1.1.5:
+  * release 1.1.5
+  * docs: add several device descriptions
+  * device: add G213 Prodigy Gaming Keyboard
+  * po: Update Croatian translation (#1759)
+  * po: update zh_CN translation
+  * po: update Polish translation
+  * chore: clean a redundant space in a UI label
+  * release 1.1.5rc1
+  * po: Turkish translate completed (#1752)
+  * docs: move old device descriptions to new locations and fix up
+  * settings: increase minimum stopped time betweeen mouse movements
+  * rules: fix bug with non-recognized empty mouse movement
+  * docs: fix typos in Solaar options documentation
+  * ui: allow config panel to scroll
+  * doc: descriptions for K360 4004 and MX Master 4071
+  * doc: descriptions for Lightspeed Receiver C541 and G915 WIRELESS RGB Mechanical Gaming Keyboard 407E
+  * ui: change security tooltip for unencrypted wireless connections
+  * po: Norwegian Bokmal
+  * doc: add known issue for key presses and changing hosts
+  * docs: add known issue about diverted keys
+  * docs: state that the Solaar GUI should run continously
+  * cli: don't apply settings in solaar config
+  * settings: move rawXY patch to new code for both sliding dpi and mouse gestures
+  * ui: use device list in Active condition
+  * ui: add description of rule components to rule editor
+  * docs: add information on enhancement requests to add new devices
+  * settings: ignore first movement for mouse gestures when reprog controls version is 5 or more
+  * ui: add Active condition to rule editor
+  * docs: document Active rule condition
+  * rules: add rule condition to test whether a device is active
+  * docs: update ERGO M575 Trackball 4096 description
+  * docs: add Wireless Mobile Mouse MX Anywhere 2S 406A description
+  * cli: terminate iteration over receiver devices when all have been found
+  * rules: downgrade Set prolem messages from error to warning
+  * ui: log informational messages and above to a temporary file
+  * docs: add device information for ERGO M575 Trackball
+  * ui: don't produce warnings when editing rules in rule editor
+  * rules: save rules file even if there are no rules to save
+  * docs: device documentation for MX Keys Keyboard and Wireless Mouse Pebble M350
+  * device: get extended pairing information early and allow for unknown WPID
+  * receiver: return null values if no pairing information available
+  * receiver: use last_id as maximum device number not max_devices
+  * cli: show more registers in solaar probe
+  * docs: reflect change from json to yaml in capabilities documention
+  * cli: show features versions in solaar show (#1709)
+  * device: don't use field that may require communication with device in equality test
+  * device: fix exception when removing device not in instance list
+  * po: Use German word Gestentaste in translation
+  * docs: update device documentation for MX Keys Mini and MX Master 3S
+  * docs: update device directory documentation
+  * docs: remove superceeded device documentation files
+  * docs: update device documentation files
+  * docs: new conventions for device documentation files
+  * po: Added Serbian translation (#1687)
+  * device: add desccriptor for G935 headset
+  * device: add G502 Proteus Spectrum Optical Mouse
+  * device: keep track of feature versions
+  * po: update zh_TW translation (#1681)
+  * rules: require gtk 3.0
+  * rules: Fix circular import (#1673)
+  * rules: find devices using method in Device
+  * device: keep track of devices in list
+  * po: update zh_CN translation
+  * settings: convert old-style mouse gestures and dpi sliding settings to new style
+  * docs: document changed Smart Shift and Mouse Gestures processing
+  * settings: allow multiple keys for mouse gestures and dpi sliding
+  * Fix release date in io.github.pwr_solaar.solaar.metainfo.xml
+  * cli: explicitly save configuration at end of solaar config if no GUI running
+  * configuration: defer configuration file writes for up to 5 seconds
+  * device: use correct Solaar functions for unified and voltage battery functions
+  * settings: defensive check for missing keys array in mouse gestures setting
+  * device: compute approximate charge level for adc measurement feature
+  * device: fix bugs in battery notification processing
+  * ui: better presentation of battery information
+  * device: add support for ADC MEASUREMENT battery feature
+  * device: regularize and improve battery status gathering and reporting
+  * doc: add information on how to find divertable key names in solaar show output
+  * device: better warnings for feature call errors with reprogrammable key and gesture settings
+  * ui: increase entry size for ChoiceControlBig
+
+-------------------------------------------------------------------
 Mon Jul 04 14:39:07 UTC 2022 - asn@cryptomilk.org
 
 - Update to version 1.1.4:
