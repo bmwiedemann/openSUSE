@@ -1,8 +1,8 @@
 diff --git a/plugins/sudoers/sudoers.in b/plugins/sudoers/sudoers.in
-index 5efda5d..ddd311a 100644
+index 5efda5d..e757da4 100644
 --- a/plugins/sudoers/sudoers.in
 +++ b/plugins/sudoers/sudoers.in
-@@ -32,30 +32,23 @@
+@@ -32,32 +32,23 @@
  ##
  ## Defaults specification
  ##
@@ -30,11 +30,11 @@ index 5efda5d..ddd311a 100644
 -## this may allow users to subvert the command being run via sudo.
 -# Defaults env_keep += "XMODIFIERS GTK_IM_MODULE QT_IM_MODULE QT_IM_SWITCHER"
 -##
+-## Uncomment to use a hard-coded PATH instead of the user's to find commands
+-# Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 +## Prevent environment variables from influencing programs in an
 +## unexpected or harmful way (CVE-2005-2959, CVE-2005-4158, CVE-2006-0151)
 +Defaults always_set_home
-+## Path that will be used for every command run from sudo
-+Defaults secure_path="/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/bin:/usr/local/sbin"
 +Defaults env_reset
 +## Change env_reset to !env_reset in previous line to keep all environment variables
 +## Following list will no longer be necessary after this change
@@ -47,10 +47,12 @@ index 5efda5d..ddd311a 100644
 +## Do not insult users when they enter an incorrect password.
 +Defaults !insults
 +
- ## Uncomment to use a hard-coded PATH instead of the user's to find commands
- # Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
++## Use this PATH instead of the user's to find commands.
++Defaults secure_path="/usr/sbin:/usr/bin:/sbin:/bin"
  ##
-@@ -68,10 +61,16 @@
+ ## Uncomment to send mail if the user does not enter the correct password.
+ # Defaults mail_badpass
+@@ -68,10 +59,16 @@
  ## Set maxseq to a smaller number if you don't have unlimited disk space.
  # Defaults log_output
  # Defaults!/usr/bin/sudoreplay !log_output
@@ -68,7 +70,7 @@ index 5efda5d..ddd311a 100644
  ##
  ## Runas alias specification
  ##
-@@ -87,13 +86,5 @@ root ALL=(ALL:ALL) ALL
+@@ -87,13 +84,5 @@ root ALL=(ALL:ALL) ALL
  ## Same thing without a password
  # %wheel ALL=(ALL:ALL) NOPASSWD: ALL
  

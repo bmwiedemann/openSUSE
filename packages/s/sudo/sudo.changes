@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 10 01:48:29 UTC 2022 - Jason Sikes <jsikes@suse.com>
+
+- Modified sudo-sudoers.patch
+  * bsc#1177578
+  * Removed redundant and confusing 'secure_path' settings in
+    sudo-sudoers file.
+
+-------------------------------------------------------------------
 Sat Aug 20 02:04:06 UTC 2022 - Jason Sikes <jsikes@suse.com>
 
 - Update to 1.9.11p3:
