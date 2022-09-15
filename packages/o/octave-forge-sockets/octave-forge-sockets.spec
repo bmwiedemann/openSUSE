@@ -18,13 +18,13 @@
 
 %define octpkg  sockets
 Name:           octave-forge-%{octpkg}
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Socket Octave functions for networking
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+URL:            https://octave.sourceforge.io/%{octpkg}/
+Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
 BuildRequires:  octave-devel
@@ -54,7 +54,6 @@ This is part of Octave-Forge project.
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
 %{octlib_dir}/%{octpkg}-%{version}
 
