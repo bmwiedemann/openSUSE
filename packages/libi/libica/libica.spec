@@ -1,7 +1,7 @@
 #
 # spec file for package libica
 #
-# Copyright (c) 2018-2021 SUSE LLC
+# Copyright (c) 2018-2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           libica
-Version:        3.9.0
+Version:        4.0.3
 Release:        0
 Summary:        Library interface for the IBM Cryptographic Accelerator device driver
 License:        CPL-1.0
@@ -38,7 +38,7 @@ Source5:        z90crypt.service
 Source6:        baselibs.conf
 Source7:        %{name}-rpmlintrc
 Patch01:        libica-FIPS-make-it-possible-to-specify-fipshmac-binary.patch
-Patch99:        libica-sles15sp2-FIPS-hmac-key.patch
+Patch99:        libica-sles15sp5-FIPS-hmac-key.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -54,12 +54,12 @@ This package contains the interface library routines used by IBM
 modules to interface with the IBM eServer Cryptographic Accelerator
 (ICA).
 
-%package -n libica3
+%package -n libica4
 Summary:        Library interface for the IBM Cryptographic Accelerator
 Group:          System/Libraries
 Recommends:     libica-tools
 
-%description -n libica3
+%description -n libica4
 This package contains the interface library routines used by IBM
 modules to interface with the IBM eServer Cryptographic Accelerator
 (ICA).
@@ -68,10 +68,14 @@ modules to interface with the IBM eServer Cryptographic Accelerator
 Summary:        Utilities for the IBM Cryptographic Accelerator
 Group:          Hardware/Other
 Obsoletes:      libica < %{version}-%{release}
-Obsoletes:      libica-2_3_0
-Obsoletes:      libica2
+Obsoletes:      libica-2_3_0 < %{version}-%{release}
+Obsoletes:      libica2 < %{version}-%{release}
+Obsoletes:      libica3 < %{version}-%{release}
 Provides:       libica = %{version}-%{release}
+Provides:       libica-2_3_0 = %{version}-%{release}
 Provides:       libica-plugin = %{version}-%{release}
+Provides:       libica2 = %{version}-%{release}
+Provides:       libica3 = %{version}-%{release}
 
 %description tools
 This package contains command-line utilities to inspect the IBM
@@ -80,7 +84,7 @@ eServer Cryptographic Accelerator (ICA).
 %package        devel
 Summary:        Development files for the ICA device driver interface library
 Group:          Development/Libraries/C and C++
-Requires:       libica3 = %{version}
+Requires:       libica4 = %{version}
 Requires:       libopenssl-devel
 Obsoletes:      libica-2_1_0-devel < %{version}-%{release}
 Provides:       libica-2_1_0-devel = %{version}-%{release}
@@ -127,6 +131,7 @@ autoreconf --force --install
 
 %install
 %make_install FIPSHMAC=fipshmac
+make fipsinstall FIPSHMAC=fipshmac DESTDIR=%{buildroot}
 mkdir -p %{buildroot}%{_includedir}
 cp -p include/ica_api.h %{buildroot}%{_includedir}
 mkdir -p %{buildroot}%{_sbindir}
@@ -160,10 +165,10 @@ rmdir %{buildroot}%{_datadir}/doc/libica
 %postun tools
 %service_del_postun z90crypt.service
 
-%post   -n libica3 -p /sbin/ldconfig
-%postun -n libica3 -p /sbin/ldconfig
+%post   -n libica4 -p /sbin/ldconfig
+%postun -n libica4 -p /sbin/ldconfig
 
-%files -n libica3
+%files -n libica4
 %{_libdir}/libica.so.%{version}
 %{_libdir}/libica.so.%{major}
 %{_libdir}/.libica.so.%{version}.hmac
@@ -177,7 +182,7 @@ rmdir %{buildroot}%{_datadir}/doc/libica
 %license LICENSE
 %doc README.SUSE
 %{_sbindir}/rcz90crypt
-%{_fillupdir}/sysconfig.z90crypt
+%attr(644,root,root) %{_fillupdir}/sysconfig.z90crypt
 %{_bindir}/icainfo
 %{_bindir}/icainfo-cex
 %{_bindir}/icastats

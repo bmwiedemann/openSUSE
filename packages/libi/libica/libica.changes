@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep 12 19:09:59 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 4.0.3 (jsc#PED-581, jsc#PED-621, jsc#PED-629)
+  v4.0.3
+   - [PATCH] Reduce the number of open file descriptors
+   - [PATCH] Various bug fixes
+  v4.0.2
+   - [PATCH] Various bug fixes
+  v4.0.1
+   - [PATCH] Various bug fixes
+   - [PATCH] Compute HMAC from installed library
+  v4.0.0
+   - [UPDATE] NO_SW_FALLBACKS is now the default for libica.so
+     [UPDATE] Removed deprecated API functions including tests
+     [UPDATE] Introduced 'const' for some API function parameters
+     [FEATURE] icastats: new parm -k to display detailed counters
+- Replaced libica-sles15sp2-FIPS-hmac-key.patch with an updated
+  version named libica-sles15sp5-FIPS-hmac-key.patch.
+- Updated the libica-rpmlintrc file to suppress warnings about the 
+  libica-cex hmac files being hidden.
+- Updated the spec file to properly both obsolete and provide two
+  older versions of the package.
+
+-------------------------------------------------------------------
 Tue Oct 19 21:20:22 UTC 2021 - Mark Post <mpost@suse.com>
 
 - Upgrade to version 3.9.0 (jsc#SLE-18454, jsc#SLE-18564)

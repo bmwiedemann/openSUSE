@@ -32,13 +32,15 @@ diff --git a/src/Makefile.am b/src/Makefile.am
 index 4a1ef14..2be01a5 100644
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
-@@ -46,13 +46,13 @@ mp.S	: mp.pl
+@@ -47,6 +47,7 @@
  	./mp.pl mp.S
  
  if ICA_FIPS
 +FIPSHMAC ?= ${top_srcdir}/openssl-fipshmac
- hmac-file-lnk: hmac-file
- 	$(AM_V_GEN) cd ${top_builddir}/src/.libs && ln -sf .libica.so.$(VERSION1).hmac .libica.so.$(MAJOR).hmac
+ fipsinstall:
+ 	$(AM_V_GEN) openssl dgst -sha256 -mac hmac -macopt hexkey:00000000 $(DESTDIR)$(libdir)/libica.so.$(VERSION1) | sed -e 's/^.* //' > $(DESTDIR)$(libdir)/.libica.so.$(VERSION1).hmac
+ 	$(AM_V_GEN) cd $(DESTDIR)$(libdir) && ln -sf .libica.so.$(VERSION1).hmac .libica.so.$(MAJOR).hmac
+@@ -58,8 +59,7 @@
  	$(AM_V_GEN) cd ${top_builddir}/src/.libs && ln -sf .libica-cex.so.$(VERSION1).hmac .libica-cex.so.$(MAJOR).hmac
  
  hmac-file: libica.la libica-cex.la

@@ -447,4 +447,12 @@ Changed Jira reference to the Epic and not the Team task.</comment>
     <comment></comment>
     <requestid>926840</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a883508c35548f08304e9e9f9f4621a4</srcmd5>
+    <version>4.0.3</version>
+    <time>1663275517</time>
+    <user>dimstar_suse</user>
+    <comment>Updated package for jsc#PED-581, jsc#PED-621, jsc#PED-629</comment>
+    <requestid>1003633</requestid>
+  </revision>
 </revisionlist>
