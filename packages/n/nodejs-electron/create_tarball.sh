@@ -80,23 +80,25 @@ echo -n "LASTCHANGE=$(git log -1 --format=format:%H HEAD)" > build/util/LASTCHAN
 source build/util/LASTCHANGE
 echo -n "$(git log -1 --date=unix --format=format:%cd "$LASTCHANGE")" > build/util/LASTCHANGE.committime
 
-popd
+
 
 echo ">>>>>> Generate GPU_LISTS_VERSION"
-python3 src/build/util/lastchange.py -m GPU_LISTS_VERSION \
-    --revision-id-only --header src/gpu/config/gpu_lists_version.h
+python3 build/util/lastchange.py -m GPU_LISTS_VERSION \
+    --revision-id-only --header gpu/config/gpu_lists_version.h
 if [ $? -ne 0 ]; then
     echo "ERROR: lastchange.py -m GPU_LISTS_VERSION failed"
     cleanup_and_exit 1
 fi
 
 echo ">>>>>> Generate SKIA_COMMIT_HASH"
-python3 src/build/util/lastchange.py -m SKIA_COMMIT_HASH \
-    -s src/third_party/skia --header src/skia/ext/skia_commit_hash.h
+python3 build/util/lastchange.py -m SKIA_COMMIT_HASH \
+    -s third_party/skia --header skia/ext/skia_commit_hash.h
 if [ $? -ne 0 ]; then
     echo "ERROR: lastchange.py -m SKIA_COMMIT_HASH failed"
     cleanup_and_exit 1
 fi
+
+popd
 
 echo ">>>>>> Apply electron-${ELECTRON_PKGVERSION} patches"
 python3 src/electron/script/apply_all_patches.py \
@@ -201,25 +203,10 @@ keeplibs=(
     third_party/dav1d #Leap and fc36 too old
     third_party/dawn #Integral part of chrome, Needed even if you're building chrome without webgpu
     third_party/dawn/third_party/gn/webgpu-cts #Integral part of chrome, Needed even if you're building chrome without webgpu
-    #Javascript code, integral part of chrome
-    third_party/devtools-frontend
-    third_party/devtools-frontend/src/front_end/third_party
-    third_party/devtools-frontend/src/front_end/third_party/acorn
-    third_party/devtools-frontend/src/front_end/third_party/axe-core
-    third_party/devtools-frontend/src/front_end/third_party/chromium
-    third_party/devtools-frontend/src/front_end/third_party/codemirror
-    third_party/devtools-frontend/src/front_end/third_party/diff
-    third_party/devtools-frontend/src/front_end/third_party/i18n
-    third_party/devtools-frontend/src/front_end/third_party/intl-messageformat
-    third_party/devtools-frontend/src/front_end/third_party/lighthouse
-    third_party/devtools-frontend/src/front_end/third_party/lit-html
-    third_party/devtools-frontend/src/front_end/third_party/lodash-isequal
-    third_party/devtools-frontend/src/front_end/third_party/marked
-    third_party/devtools-frontend/src/front_end/third_party/puppeteer
-    third_party/devtools-frontend/src/front_end/third_party/wasmparser
-    third_party/devtools-frontend/src/third_party
-    third_party/devtools-frontend/src/test/unittests/front_end/third_party/i18n
-    #
+    third_party/devtools-frontend #Javascript code, integral part of chrome
+    third_party/devtools-frontend/src/front_end/third_party #various javascript code compiled into chrome, see README.md
+    third_party/devtools-frontend/src/test/unittests/front_end/third_party/i18n # javascript
+    third_party/devtools-frontend/src/third_party/typescript #Chromium added code
     third_party/distributed_point_functions #not in any distro
     third_party/dom_distiller_js #javascript
     #third_party/eigen3 #Used only by tflite which is not used in electron
@@ -245,14 +232,14 @@ keeplibs=(
     third_party/libgav1 #not in Factory yet, but available in unofficial repos. CONSIDER UNBUNDLING when any distro has it.
     third_party/libjxl #not in Leap
     third_party/libphonenumber #Depends on protobuf which cannot be unbundled
-    third_party/libsrtp #Use of private headers
+    third_party/libsrtp #Use of private headers. they were public in libsrtp1
     third_party/libsync #not yet in any distro
     third_party/libudev #Headers for a optional delay-loaded dependency
     third_party/liburlpattern #Derived code, not vendored dep.
     third_party/libva_protected_content #ChromeOS header not available separately. needed for build.
-    third_party/libvpx #Use of private headers
+    third_party/libvpx #Use of private headers in VAAPI code only.
     third_party/libvpx/source/libvpx/third_party/x86inc
-    third_party/libwebm #not in Factory or Rawhide. Is in Debian
+    third_party/libwebm #Usage of private headers (mkvparser/mkvmuxer)
     third_party/libx11 #Derived code, not vendored dep
     third_party/libxcb-keysyms #Derived code, not vendored dep
     third_party/libxml/chromium #added chromium code
@@ -291,7 +278,7 @@ keeplibs=(
     third_party/skia/include/third_party/skcms #part of skia, not available as a separate library
     third_party/skia/third_party/skcms #part of skia, not available as a separate library
     third_party/smhasher #not in Rawhide or Factory. AltLinux has it (libsmhasher) CONSIDER UNBUNDLING if we have it
-	third_party/speech-dispatcher #Headers for a delay-loaded optional dependency
+    third_party/speech-dispatcher #Headers for a delay-loaded optional dependency
     third_party/sqlite #heavily forked version
     third_party/swiftshader #not available as a shared library
     third_party/swiftshader/third_party/astc-encoder #not in rawhide or factory. Debian has it (astc-encoder)

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 14 20:08:49 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 19.0.17
+  * Fixed issue with history.back() in sandboxed iframes affecting parent browsing context
+  * Fixed session.getBlobData never resolves with blob sizes > 65536
+  * Mojo: Validate response message type (CVE-2022-3075)
+- Use system nghttp2 also on Leap
+- Correct mistake in licence metadata
+- Change package group to a more sensible one.
+
+-------------------------------------------------------------------
 Thu Sep  8 13:42:03 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 19.0.16
   * Fix heap-overflow in blink::TableLayoutAlgorithmAuto::InsertSpanCell (CVE-2022-3040)

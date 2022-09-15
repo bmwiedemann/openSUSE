@@ -103,8 +103,9 @@ BuildArch:      i686
 %endif
 
 %bcond_without system_freetype
+%bcond_without system_nghttp2
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora} >= 37
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora} >= 37
 %bcond_without system_aom
 %else
 %bcond_with system_aom
@@ -112,11 +113,9 @@ BuildArch:      i686
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora_version}
 %bcond_without system_crc32c
-%bcond_without system_nghttp2
 %bcond_without system_nvctrl
 %else
 %bcond_with system_crc32c
-%bcond_with system_nghttp2
 %bcond_with system_nvctrl
 %endif
 
@@ -175,7 +174,9 @@ BuildArch:      i686
 %bcond_with system_avif
 %endif
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora} >= 37
+# Abseil is broken in Leap
+# enable this when boo#1203378 and boo#1203379 get fixed
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora} >= 37
 %if %{without clang}
 # Clang has several problems with std::optional used by system abseil
 %bcond_without system_abseil
@@ -190,7 +191,6 @@ BuildArch:      i686
 # Name         | Path in tarball                   | Reason
 # -------------+-----------------------------------+---------------------------------------
 # boringssl    | third_party/boringssl             | The openSUSE package is unmaintained.
-# flatbuffers  | third_party/flatbuffers           | The static library is only used during build, only header code is present in the Chromium binary.
 # hunspell     | third_party/hunspell/src          | Fork.
 # leveldb      | third_party/leveldatabase/src     | Internal api use.
 # protobuf     | third_party/protobuf              | Fork.
@@ -203,11 +203,11 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        19.0.16
+Version:        19.0.17
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
-License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-3-Clause-Modification AND BSD-Protection AND BSD-Source-Code AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-advertising AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SUSE-Public-Domain
-Group:          Productivity/Networking/Web/Browsers
+License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
+Group:          Development/Languages/NodeJS
 URL:            https://github.com/electron/electron
 Source0:        %{mod_name}-%{version}.tar.xz
 Source1:        create_tarball.sh
@@ -628,9 +628,6 @@ Development headers for Electron projects.
 %autosetup -n src -p1
 
 patch -R -p1 < %{SOURCE400}
-
-
-
 
 
 # Link system wayland-protocols-devel into where chrome expects them
