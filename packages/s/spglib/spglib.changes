@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 11 19:23:56 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.0.1:
+  See https://spglib.github.io/spglib/releases.html
+- Drop upstreamed 0001-Install-spglib-pkgconfig-into-LIBDIR.patch
+
+-------------------------------------------------------------------
 Sun Aug  7 20:03:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.16.5:

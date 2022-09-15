@@ -18,14 +18,13 @@
 
 %define shlib libsymspg1
 Name:           spglib
-Version:        1.16.5
+Version:        2.0.1
 Release:        0
 Summary:        Find and handle crystal symmetries
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Physics
 URL:            https://spglib.github.io/spglib/
 Source0:        https://github.com/spglib/spglib/archive/v%{version}.tar.gz#/spglib-%{version}.tar.gz
-Patch1:         0001-Install-spglib-pkgconfig-into-LIBDIR.patch
 BuildRequires:  cmake
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
@@ -100,7 +99,7 @@ popd
 %{_libdir}/libsymspg.so.*
 
 %files devel
-%doc ChangeLog example ruby
+%doc example ruby
 %{_includedir}/spglib.h
 %{_includedir}/spglib_f08.f90
 %{_libdir}/libsymspg.so
