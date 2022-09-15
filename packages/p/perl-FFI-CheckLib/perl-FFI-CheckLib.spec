@@ -1,7 +1,7 @@
 #
 # spec file for package perl-FFI-CheckLib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name FFI-CheckLib
 Name:           perl-FFI-CheckLib
-Version:        0.28
+Version:        0.29
 Release:        0
-Summary:        Check that a library is available for FFI
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Check that a library is available for FFI
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -30,9 +30,9 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(List::Util) >= 1.33
 BuildRequires:  perl(Test2::API) >= 1.302015
-BuildRequires:  perl(Test2::Require::EnvVar) >= 0.000060
-BuildRequires:  perl(Test2::Require::Module) >= 0.000060
-BuildRequires:  perl(Test2::V0) >= 0.000060
+BuildRequires:  perl(Test2::Require::EnvVar) >= 0.000121
+BuildRequires:  perl(Test2::Require::Module) >= 0.000121
+BuildRequires:  perl(Test2::V0) >= 0.000121
 Requires:       perl(List::Util) >= 1.33
 %{perl_requires}
 

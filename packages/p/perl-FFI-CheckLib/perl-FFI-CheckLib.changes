@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 11 03:06:13 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.29
+   see /usr/share/doc/packages/perl-FFI-CheckLib/Changes
+
+  0.29      2022-09-10 01:46:05 -0600
+    - Handle Windows DLLs using underscores instead of dashes in version
+      numbers (gh#44, gh#45, shawnlaffan++)
+
+-------------------------------------------------------------------
 Mon May 17 03:06:58 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.28
