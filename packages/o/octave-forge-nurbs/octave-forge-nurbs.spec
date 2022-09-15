@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-nurbs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define octpkg  nurbs
 Name:           octave-forge-%{octpkg}
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        Routines for Non-Uniform Rational B-Splines for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            http://octave.sourceforge.net
-Source0:        %{octpkg}-%{version}.tar.xz
+URL:            https://octave.sourceforge.io/%{octpkg}/
+Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM nurbs-openmp.patch -- Fix build with openmp
 Patch1:         nurbs-openmp.patch
 BuildRequires:  gcc-c++
@@ -60,7 +60,6 @@ popd
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
 %{octlib_dir}/%{octpkg}-%{version}
 

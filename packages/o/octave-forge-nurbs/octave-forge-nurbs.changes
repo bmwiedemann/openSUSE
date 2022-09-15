@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 15 00:45:21 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.4.3:
+  * inst/nrbctrlplot: allow the number of points for the plot as input
+  * inst/nrbkntplot: allow the number of points for the plot as input
+  * inst/nrbmak: added consistency check
+
+-------------------------------------------------------------------
 Thu Mar 25 11:59:37 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.4.2:
