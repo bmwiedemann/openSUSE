@@ -50,6 +50,8 @@ Patch1:         missing_size_t.patch
 Patch2:         hdf5.patch
 # PATCH-FIX-OPENSUSE rpath.patch boo#1198352
 Patch3:         rpath.patch
+# PATCH-FIX-UPSTREAM fix-broken-fft-check.patch gh#espressomd/espresso#4567
+Patch4:         fix-broken-fft-check.patch
 # According to gh#espressomd/espresso#4537 32bit architectures are not supported any more
 ExcludeArch:    %{ix86}
 BuildRequires:  cmake
