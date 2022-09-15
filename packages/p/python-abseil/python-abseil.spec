@@ -1,7 +1,7 @@
 #
 # spec file for package python-abseil
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-abseil
-Version:        1.0.0
+Version:        1.2.0
 Release:        0
 Summary:        Abseil Python Common Libraries
 License:        Apache-2.0
 URL:            https://github.com/abseil/abseil-py
 Source0:        https://github.com/abseil/abseil-py/archive/v%{version}.tar.gz#/abseil-py-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 Provides:       python-absl-py = %{version}
 Obsoletes:      python-absl-py < %{version}
 BuildArch:      noarch

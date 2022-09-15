@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 15 10:14:55 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.2.0
+  ## 1.2.0 (2022-07-18)
+  *   Fixed a crash in Python 3.11 when `TempFileCleanup.SUCCESS` is used.
+  ## 1.1.0 (2022-06-01)
+  *   `Flag` instances now raise an error if used in a bool context. This prevents
+      the occasional mistake of testing an instance for truthiness rather than
+      testing `flag.value`.
+  *   `absl-py` no longer depends on `six`.
+- do not require python-six
+
+-------------------------------------------------------------------
 Thu Dec  9 14:06:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.0.0 
