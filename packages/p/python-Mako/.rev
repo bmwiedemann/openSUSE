@@ -479,4 +479,14 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
 - Remove python2 gubbins, since it is no longer supported.</comment>
     <requestid>989969</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>8397919d88c97fdb8fbd952e86faf65b</srcmd5>
+    <version>1.2.2</version>
+    <time>1663275443</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.2:
+  * Fixed issue in lexer where the regexp used to match tags would not
+    correctly interpret quoted sections individually</comment>
+    <requestid>1002487</requestid>
+  </revision>
 </revisionlist>
