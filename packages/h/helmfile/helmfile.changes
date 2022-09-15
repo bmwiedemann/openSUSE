@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Sep 15 08:42:13 UTC 2022 - manfred.h@gmx.net
+
+- Update to version 0.145.5:
+  This patch release is mainly for fixing the default --skip-needs
+  setting. If you had to add --skip-needs to every helmfile run
+  since v0.145.0, this fixes that- you no longer need to explicitly
+  set --skip-needs. To be clear, --skip-needs has been the default
+  since v0.139.2. We just unintentionally broke it in v0.145.0!
+  See #339 for more details. Thanks a lot for filing the detailed
+  issue @strainovic, and thanks a lot for fixing the issue @yxxhero!
+  * chore: update Jenkins's main helmfile repository in USERS by
+    @lemeurherve in #320
+  * fix ci error in issue.2118.yaml by @yxxhero in #319
+  * Add Users information in Readme.md by @yxxhero in #317
+  * build(deps): bump go.uber.org/zap from 1.22.0 to 1.23.0 by
+    @dependabot in #322
+  * Fix typos in docs by @dreglad in #329
+  * Add --interactive option to sync, delete and destroy / Remove
+    --interactive from global options by @yxxhero in #328
+  * use helmfile testdata by @yxxhero in #326
+  * chore: remove 'OSS' from Jenkins name by @lemeurherve in #331
+  * add subshell to USERS.md by @philmtd in #335
+  * add NDR to USERS.md by @muffl0n in #336
+  * feat: honor concurrency in withPreparedCharts by @stek29 in #345
+  * feat: dont prepare on list by @stek29 in #346
+  * docs: add docs for helmfile list by @stek29 in #350
+  * build(deps): bump github.com/urfave/cli from 1.22.9 to 1.22.10
+    by @dependabot in #351
+  * build(deps): bump github.com/google/go-cmp from 0.5.8 to 0.5.9
+    by @dependabot in #353
+  * fixed: selector help msg style by @yxxhero in #348
+  * update docs for CLI by @yxxhero in #356
+  * Fix --skip-needs regression introduced in v0.145.0 by @yxxhero
+    in #342
+  * fix github ci matrix config by @yxxhero in #361
+  * Fix incorrent exit code issue introduced in v0.145.0 by @yxxhero
+    in #359
+
+- Update to version 0.145.4:
+  This patch release is mainly about fixing readDirEntries added
+  in 0.145.3. @arkaitzj did a lot of awesome work along the way!
+  We appreciate your contribution ❤️
+  In addition to the fix, this release also covers fixes for a
+  few diff-related flags that were not working since v0.145.0's
+  move to cobra as the CLI library.
+  * Fix for readDir selection, currently any template that uses
+    readDir* functions seems to break by @arkaitzj in #297
+  * Bring back --set flag to apply subcommand by @mjura in #298
+  * fix: return diff output config value by @mikelorant in #303
+  * fix: return diff context config value by @mikelorant in #301
+  * Fix some multi-value flags to not accept comma-separated
+    values by @yxxhero in #300
+  * build(deps): bump k8s.io/apimachinery from 0.24.3 to 0.24.4
+    by @dependabot in #306
+  * Add logo as .png and .ai (Adobe Illustrator) files by
+    @pathob in #263
+  * Introduce Helmfile's own filesystem abstraction to correctly
+    unit test some components by @arkaitzj in #307
+  * fix typo for readme.md by @thenam153 in #312
+
+-------------------------------------------------------------------
 Wed Aug 24 09:49:47 UTC 2022 - manfred.h@gmx.net
 
 - autocomplete files have been removed; obsolete bash-completion
