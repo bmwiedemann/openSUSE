@@ -17,7 +17,7 @@
 
 
 Name:           hwdata
-Version:        0.361
+Version:        0.362
 Release:        0
 Summary:        Hardware identification and configuration data
 License:        GPL-2.0-or-later
@@ -70,6 +70,7 @@ fi
 %files
 %license LICENSE COPYING
 %{_bindir}/merge-pciids
+%{_datadir}/pkgconfig/hwdata.pc
 %dir %{_datadir}/%{name}
 %{_datadir}/hwdata/iab.txt
 %{_datadir}/hwdata/oui.txt

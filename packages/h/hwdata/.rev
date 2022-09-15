@@ -553,4 +553,13 @@
     <comment></comment>
     <requestid>988702</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>7e4b2361e1c884df2224a65562246a68</srcmd5>
+    <version>0.362</version>
+    <time>1663275463</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.362:
+  + Updated pci, usb and vendor ids.</comment>
+    <requestid>1003464</requestid>
+  </revision>
 </revisionlist>
