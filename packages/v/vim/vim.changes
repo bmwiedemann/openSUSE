@@ -2,6 +2,7 @@
 Tue Sep 13 07:41:04 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0453, fixes the following problems
+- boo#1203272 - CVE-2022-3153
 - boo#1203194 - CVE-2022-3134
 - boo#1203110 - CVE-2022-3099
   * Writefile test leaves files behind.
@@ -85,6 +86,7 @@ Tue Sep 13 07:41:04 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 Mon Sep  5 07:42:36 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0381, fixes the following problems
+- boo#1202962 - CVE-2022-3037
   * Using common name in tests leads to flaky tests.
   * VDM files are not recognized.
   * Shell command is displayed in message window.
@@ -162,6 +164,12 @@ Tue Aug 30 11:28:55 UTC 2022 - Andreas Schwab <schwab@suse.de>
 Mon Aug 29 12:29:14 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0313, fixes the following problems
+- boo#1202862 - CVE-2022-3016
+- boo#1203155 - CVE-2022-2980
+- boo#1203152 - CVE-2022-2982
+- boo#1202689 - CVE-2022-2946
+- boo#1202687 - CVE-2022-2923
+- boo#1202599 - CVE-2022-2889
   * Using NULL pointer when skipping compiled code.
   * Using freed memory with multiple line breaks in expression.
   * job_start() test may fail under valgrind.
@@ -257,7 +265,13 @@ Mon Aug 29 12:29:14 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 Thu Aug 18 08:18:06 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0224, fixes the following problems
-- fix boo#1202515 - CVE-2022-2845
+- boo#1202552 - CVE-2022-2874
+- boo#1202512 - CVE-2022-2849
+- boo#1202511 - CVE-2022-2862
+- boo#1202515 - CVE-2022-2845
+- boo#1202421 - CVE-2022-2816
+- boo#1202420 - CVE-2022-2817
+- boo#1202414 - CVE-2022-2819
   * indexof() may leak memory.
   * Cursor in wrong position when inserting after virtual text. (Ben Jackson)
   * Redraw flags are not named specifically.
@@ -373,6 +387,10 @@ Wed Aug 10 09:38:28 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 Wed Aug  3 12:39:37 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0135, fixes the following problems
+- boo#1202046 - CVE-2022-2571
+- boo#1202049 - CVE-2022-2580
+- boo#1202050 - CVE-2022-2581
+- boo#1202051 - CVE-2022-2598
   * Coverity warns for double free.
   * Some compilers warn for using an uninitialized variable. (Tony Mechelynck)
   * No test for what patch 8.1.1424 fixes.
@@ -439,7 +457,10 @@ Wed Aug  3 12:39:37 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 Tue Jul 26 09:40:08 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0073, fixes the following problems
-- fix CVE-2022-2522 - boo#1201863
+- CVE-2022-2522 - boo#1201863
+- CVE-2022-2345 - boo#1201363 
+- CVE-2022-2343 - boo#1201356
+- CVE-2022-2344 - boo#1201359
   * In the quickfix window 'cursorline' overrules QuickFixLine highlighting.
   * On a Belgian keyboard CTRL-[ does not work.
   * Spell tests do not always clear the word list.
@@ -523,6 +544,18 @@ Mon Jul  4 10:06:35 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 Tue Jun 28 17:52:07 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0000, fixes the following problems
+- CVE-2022-2304 - boo#1201249
+- CVE-2022-2289 - boo#1201139
+- CVE-2022-2288 - boo#1201137
+- CVE-2022-2287 - boo#1201136
+- CVE-2022-2286 - boo#1201135
+- CVE-2022-2284 - boo#1201133
+- CVE-2022-2264 - boo#1201132
+- CVE-2022-2231 - boo#1201150
+- CVE-2022-2210 - boo#1201151
+- CVE-2022-2207 - boo#1201153
+- CVE-2022-2208 - boo#1201152
+- CVE-2022-2206 - boo#1201155
   * Reading beyond the end of the line with lisp indenting.
   * search() gets stuck with "c" and skip evaluates to true.
   * "make uninstall" does not remove colors/lists.
@@ -548,6 +581,9 @@ Fri Jun 24 07:47:35 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.5154, fixes the following problems
 - fixed boo#1200184
+- CVE-2022-2175 - boo#1200904
+- CVE-2022-2182 - boo#1200903
+- CVE-2022-2183 - boo#1200902
   * Debugger test fails when run with valgrind.
   * Cannot build without the +channel feature. (Dominique Pellé)
   * Various small issues.
@@ -573,6 +609,10 @@ Fri Jun 24 07:47:35 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 Mon Jun 20 08:06:56 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.5136, fixes the following problems
+- CVE-2022-2129 - boo#1200701
+- CVE-2022-2124 - boo#1200697
+- CVE-2022-2125 - boo#1200698
+- CVE-2022-2126 - boo#1200700 
   * Autocmd test still fails on MS-Windows.
   * When the GUI shows a dialog tests get stuck.
   * Gcc gives warning for signed/unsigned difference.
@@ -623,6 +663,10 @@ Mon Jun 20 08:06:56 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 Mon Jun 13 13:00:22 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.5083, fixes the following problems
+- CVE-2022-2042 - boo#1200471
+- CVE-2022-2000 - boo#1200405 
+- CVE-2022-1968 - boo#1200270
+- CVE-2022-1942 - boo#1200125
   * A finished terminal in a popup window does not show a scrollbar.
   * Confusing error if first argument of popup_create() is wrong.
   * Scrollbar thumb in scrolled popup not visible.
@@ -671,6 +715,24 @@ Mon Jun 13 13:00:22 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 Sun May 29 16:30:57 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.5038, fixes the following problems
+- CVE-2022-1927 - boo#1200012
+- CVE-2022-1897 - boo#1200010
+- CVE-2022-1898 - boo#1200011
+- CVE-2022-1886 - boo#1199969
+- CVE-2022-1851 - boo#1199936
+- CVE-2022-1796 - boo#1199747
+- CVE-2022-1785 - boo#1199745
+- CVE-2022-1771 - boo#1199693
+- CVE-2022-1733 - boo#1199655
+- CVE-2022-1769 - boo#1199658
+- CVE-2022-1735 - boo#1199651
+- CVE-2022-1720 - boo#1200732
+- CVE-2022-1674 - boo#1199502
+- CVE-2022-1621 - boo#1199435
+- CVE-2022-1629 - boo#1199436
+- CVE-2022-1619 - boo#1199333
+- CVE-2022-1620 - boo#1199334
+- CVE-2022-1616 - boo#1199331
   * Valgrind warning for using uninitialized variable.
   * Screendump test may fail when using valgrind.
   * Vim9: misplaced elseif causes invalid memory access.
@@ -832,7 +894,8 @@ Sun May 29 16:30:57 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 Fri May  6 09:48:06 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.4877, fixes the following problems
-- fixes CVE-2022-1381 ( boo#1198596 )
+- CVE-2022-1420 - boo#1198748
+- CVE-2022-1381 - boo#1198596
   * Using wrong flag for using bell in the terminal.
   * Supercollider filetype not recognized.
   * No filetype override for .sys files.
@@ -973,6 +1036,8 @@ Tue Apr 19 21:19:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Wed Apr 13 13:59:49 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.4745, fixes the following problems
+- CVE-2022-1160 - boo#1197814
+- CVE-2022-1154 - boo#1197813
   * Vim9: not enough test coverage for executing :def function.
   * Sourcing buffer lines is too complicated.
   * Error for redefining a script item may be confusing.
@@ -1127,6 +1192,7 @@ Wed Apr 13 13:59:49 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 Mon Mar 21 12:00:59 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 -  Updated to version 8.2.4602, fixes the following problems
+- CVE-2022-0943 - boo#1197225
   * Vim9: "break" inside try/catch not handled correctly.
   * Coverity warning for refactored tag search code.
   * Coverity warnings for not using returned value.
@@ -1283,8 +1349,11 @@ Fri Mar 11 09:22:50 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 Wed Feb 23 16:05:16 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.4456, fixes the following problems
+- boo#1196226 - CVE-2022-0629
+- boo#1196227 - CVE-2022-0685
 - boo#1196361 - CVE-2022-0696
 - boo#1196358 - CVE-2022-0714
+- boo#1196437 - CVE-2022-0729
   * ctx_imports is not used.
   * Not enough tests for command line completion.
   * CI steps for Windows are a bit unorganized.
@@ -1380,7 +1449,9 @@ Sun Feb 20 12:32:08 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 -------------------------------------------------------------------
 Mon Feb 14 10:32:53 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
--  Updated to version 8.2.4375, fixes the following problems
+- Updated to version 8.2.4375, fixes the following problems
+- CVE-2022-0572 - boo#1196023 
+- CVE-2022-0554 - boo#1195846
   * Vim9: strict type checking after copy() and deepcopy().
   * Cannot assign empty list with any list type to variable with specific
   list type.
@@ -1497,9 +1568,18 @@ Thu Feb  3 12:18:46 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Mon Jan 31 11:21:06 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- fixes boo#1195499 CVE-2022-0417
-- fixes boo#1195336 CVE-2022-0393
 - Updated to version 8.2.4266, fixes the following problems
+- CVE-2022-0417 - boo#1195499
+- CVE-2022-0413 - boo#1195356
+- CVE-2022-0408 - boo#1195359
+- CVE-2022-0407 - boo#1195354
+- CVE-2022-0393 - boo#1195336
+- CVE-2022-0392 - boo#1195332
+- CVE-2022-0368 - boo#1195205 
+- CVE-2022-0361 - boo#1195202
+- CVE-2022-0359 - boo#1195203
+- CVE-2022-0351 - boo#1195126
+- CVE-2022-0319 - boo#1195066
   * Cannot use an import in 'patchexpr'.
   * Gnuplot file not recognized.
   * Not all gitconfig files are recognized.
@@ -1579,6 +1659,9 @@ Mon Jan 31 11:21:06 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 Sun Jan 23 15:43:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - Updated to version 8.2.4186, fixes the following problems
+- CVE-2022-0318 - boo#1195004
+- CVE-2022-0261 - boo#1194872
+- CVE-2022-0213 - boo#1194885
   * Vim9: exported function in autoload script not found. (Yegappan Lakshmanan)
   * Foam files are not detected.
   * Computation overflow with large count for :yank.
@@ -1799,6 +1882,7 @@ Tue Jan  4 14:54:47 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.3995, fixes the following problems
 - fixed boo#1194219
+- CVE-2021-46059 - boo#1194556
   * Various build flags accidentally enabled.
   * Cannot disable requesting key codes from xterm.
   * Vim9: compiler complains about using "try" as a struct member.

@@ -6330,4 +6330,12 @@ always built-in because vim has direct perl dependencies anyway.
   * Deferred functions not invoked when partial func exits.</comment>
     <requestid>1003244</requestid>
   </revision>
+  <revision rev="323" vrev="2">
+    <srcmd5>4473cf2794a606b39e2614e4a18d2ff2</srcmd5>
+    <version>9.0.0453</version>
+    <time>1663275479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003566</requestid>
+  </revision>
 </revisionlist>
