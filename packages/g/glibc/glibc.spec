@@ -295,6 +295,8 @@ Patch1005:      dlmopen-libc-early-init.patch
 Patch1006:      ldd-vdso-dependency.patch
 # PATCH-FIX-UPSTREAM syslog: Remove extra whitespace between timestamp and message (BZ #29544)
 Patch1007:      syslog-extra-whitespace.patch
+# PATCH-FIX-UPSTREAM errlist: add missing entry for EDEADLOCK (BZ #29545)
+Patch1008:      errlist-edeadlock.patch
 
 ###
 # Patches awaiting upstream approval
@@ -527,6 +529,7 @@ library in a cross compilation setting.
 %patch1005 -p1
 %patch1006 -p1
 %patch1007 -p1
+%patch1008 -p1
 %endif
 
 %patch2000 -p1

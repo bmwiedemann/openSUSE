@@ -2703,4 +2703,13 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   timestamp and message (BZ #29544) (forwarded request 1001591 from Andreas_Schwab)</comment>
     <requestid>1001592</requestid>
   </revision>
+  <revision rev="266" vrev="4">
+    <srcmd5>e0a67280cfc69af222355f3c58ed3027</srcmd5>
+    <version>2.36</version>
+    <time>1663275441</time>
+    <user>dimstar_suse</user>
+    <comment>- errlist-edeadlock.patch: errlist: add missing entry for EDEADLOCK (BZ
+  #29545) (forwarded request 1002733 from Andreas_Schwab)</comment>
+    <requestid>1002734</requestid>
+  </revision>
 </revisionlist>

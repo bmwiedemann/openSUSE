@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  8 09:44:00 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- errlist-edeadlock.patch: errlist: add missing entry for EDEADLOCK (BZ
+  #29545)
+
+-------------------------------------------------------------------
 Tue Sep  6 11:22:46 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - syslog-large-messages.patch: syslog: Fix large messages (CVE-2022-39046,
