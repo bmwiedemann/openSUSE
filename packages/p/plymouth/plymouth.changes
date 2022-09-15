@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 13 03:51:04 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 22.02.122+75.6f5dc63:
+  * Fix build after README changes
+
+-------------------------------------------------------------------
 Thu Sep  8 08:12:03 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
 - Update to version 22.02.122+73.9826df5:
@@ -127,7 +133,7 @@ Thu Feb 10 22:09:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update plymouth-install-label-library-and-font-file-to-initrd.patch:
   avoid aborting on multiple font path match, pick the first one
-  (boo#1183425).
+  (boo#1183425, 1195400).
 
 -------------------------------------------------------------------
 Sun Jan 30 05:12:13 UTC 2022 - Cliff Zhao <qzhao@suse.com>
