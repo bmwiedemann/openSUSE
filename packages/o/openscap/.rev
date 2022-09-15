@@ -1153,4 +1153,12 @@
   openSUSE Tumbleweed, build without gconf2 support. (forwarded request 956097 from iznogood)</comment>
     <requestid>956318</requestid>
   </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>df08e52c4eae0b0f556aec2aaa938676</srcmd5>
+    <version>1.3.6</version>
+    <time>1663275590</time>
+    <user>dimstar_suse</user>
+    <comment>- added Leap 15.4 and 15.5 dictionary entries. (bsc#1203408)</comment>
+    <requestid>1003839</requestid>
+  </revision>
 </revisionlist>

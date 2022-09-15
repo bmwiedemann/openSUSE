@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 15 08:29:25 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- added Leap 15.4 and 15.5 dictionary entries. (bsc#1203408)
+
+-------------------------------------------------------------------
 Sat Feb 19 13:46:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Conditionally drop optional gconf2-devel BuildRequires for
