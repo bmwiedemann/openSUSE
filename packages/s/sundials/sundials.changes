@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Sep 14 05:05:44 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.3.0:
+  * Added GetUserData functions in each package to retrieve the
+    user data pointer provided to SetUserData functions
+  * Fixed a bug in ERKStepReset, ERKStepReInit, ARKStepReset,
+    ARKStepReInit, MRIStepReset, and MRIStepReInit where a
+    previously-set value of tstop (from a call to
+    ERKStepSetStopTime, ARKStepSetStopTime, or MRIStepSetStopTime,
+    respectively) would not be cleared.
+  * Updated MRIStepReset to call the corresponding
+    MRIStepInnerResetFn with the same (tR,yR) arguments for the
+    MRIStepInnerStepper object that is used to evolve the MRI
+    "fast" time scale subproblems.
+  * Added a new example which demonstrates using CVODE with a
+    discontinuous right-hand-side function and rootfinding.
+  * Added a variety of embedded DIRK methods from [Kennedy &
+    Carpenter, NASA TM-2016-219173, 2016] and [Kennedy &
+    Carpenter, Appl. Numer. Math., 146, 2019] to ARKODE.
+  * Fixed the unintuitive behavior of the USE_GENERIC_MATH CMake
+    option which caused the double precision math functions to be
+    used regardless of the value of SUNDIALS_PRECISION.
+  * Changed SUNDIALS_LOGGING_ENABLE_MPI CMake option default to be
+   'OFF'.
+- Split off sundials-sunlibs (previously libsundials4) into
+  individual shared lib packages: libsundials_sunlinsol4_3_0,
+  libsundials_sunmatrix4, and libsundials_sunnonlin3_3_0.
+
+-------------------------------------------------------------------
+Fri Sep  9 12:46:04 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Rename libsundials4 to sundials-sunlibs as it packages multiple
+  shared libs pertaining to the main sundials library; shlib
+  naming guidelines do not apply in this case.
+- Drop no longer needed rpmlintrc file.
+- Make -doc package into noarch.
+
+-------------------------------------------------------------------
 Thu Jul  7 07:58:18 UTC 2022 - Klaus Kämpf <kkaempf@suse.com>
 
 - add _constraints (boo#1201273)

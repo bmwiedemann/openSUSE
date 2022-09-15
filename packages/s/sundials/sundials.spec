@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package sundials
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -95,18 +95,20 @@ ExclusiveArch:  do_not_build
 
 # /SECTION
 
-%define shlib_main libsundials4%{?my_suffix}
-%define shlib_arkode libsundials_arkode5%{?my_suffix}
-%define shlib_cvode libsundials_cvode6%{?my_suffix}
-%define shlib_cvodes libsundials_cvodes6%{?my_suffix}
-%define shlib_generic libsundials_generic6%{?my_suffix}
-%define shlib_ida libsundials_ida6%{?my_suffix}
-%define shlib_idas libsundials_idas5%{?my_suffix}
-%define shlib_kinsol libsundials_kinsol6%{?my_suffix}
-%define shlib_nvec libsundials_nvec6%{?my_suffix}
+%define shlib_arkode    libsundials_arkode5%{?my_suffix}
+%define shlib_cvode     libsundials_cvode6%{?my_suffix}
+%define shlib_cvodes    libsundials_cvodes6%{?my_suffix}
+%define shlib_generic   libsundials_generic6%{?my_suffix}
+%define shlib_ida       libsundials_ida6%{?my_suffix}
+%define shlib_idas      libsundials_idas5%{?my_suffix}
+%define shlib_kinsol    libsundials_kinsol6%{?my_suffix}
+%define shlib_nvec      libsundials_nvec6%{?my_suffix}
+%define shlib_sunlinsol libsundials_sunlinsol4_3_0%{?my_suffix}
+%define shlib_sunmatrix libsundials_sunmatrix4%{?my_suffix}
+%define shlib_sunnonlin libsundials_sunnonlin3_3_0%{?my_suffix}
 
 Name:           %{package_name}
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        Suite of nonlinear solvers
 # SUNDIALS is licensed under BSD with some additional (but unrestrictive) clauses.
@@ -114,7 +116,6 @@ Summary:        Suite of nonlinear solvers
 License:        BSD-3-Clause
 URL:            https://computing.llnl.gov/projects/sundials
 Source0:        https://github.com/LLNL/%{pname}/releases/download/v%{version}/%{pname}-%{version}.tar.gz
-Source99:       sundials-rpmlintrc
 # PATCH-FIX-UPSTREAM sundials-link-pthread.patch badshah400@gmail.com -- Explicitly link against pthread to fix linking errors when `-Wl,--no-undefined` is added to the linker flags
 Patch0:         sundials-link-pthread.patch
 Group:          Development/Libraries/Parallel
@@ -152,8 +153,10 @@ Requires:       %{shlib_generic} = %{version}
 Requires:       %{shlib_idas} = %{version}
 Requires:       %{shlib_ida} = %{version}
 Requires:       %{shlib_kinsol} = %{version}
-Requires:       %{shlib_main} = %{version}
 Requires:       %{shlib_nvec} = %{version}
+Requires:       %{shlib_sunlinsol} = %{version}
+Requires:       %{shlib_sunmatrix} = %{version}
+Requires:       %{shlib_sunnonlin} = %{version}
 
 %description devel
 SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
@@ -163,21 +166,13 @@ This package contains the developer files (.so file, header files)
 
 %package doc
 Summary:        Suite of nonlinear solvers (documentation)
+BuildArch:      noarch
 
 %description doc
 SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
 for use in writing mathematical software.
 
 This package contains the documentation files
-
-%package -n %{shlib_main}
-Summary:        Suite of nonlinear solvers - main shared libraries
-
-%description -n %{shlib_main}
-SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
-for use in writing mathematical software.
-
-This package provides the main shared libraries for SUNDIALS.
 
 %package -n %{shlib_arkode}
 Summary:        Suite of nonlinear solvers - arkode shared libraries
@@ -251,6 +246,35 @@ for use in writing mathematical software.
 
 This package provides the shared libraries for SUNDIALS' nvec solvers.
 
+%package -n %{shlib_sunlinsol}
+Summary:        Suite of nonlinear solvers - sunlinsol shared libraries
+
+%description -n %{shlib_sunlinsol}
+SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
+for use in writing mathematical software.
+
+This package provides the sunlinsol shared libraries for SUNDIALS.
+
+%package -n %{shlib_sunmatrix}
+Summary:        Suite of nonlinear solvers - sunmatrix shared libraries
+Conflicts:      libsundials4%{?my_suffix}
+
+%description -n %{shlib_sunmatrix}
+SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
+for use in writing mathematical software.
+
+This package provides the sunmatrix shared libraries for SUNDIALS.
+
+%package -n %{shlib_sunnonlin}
+Summary:        Suite of nonlinear solvers - sunnonlin shared libraries
+Conflicts:      libsundials4%{?my_suffix}
+
+%description -n %{shlib_sunnonlin}
+SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
+for use in writing mathematical software.
+
+This package provides the sunnonlin shared libraries for SUNDIALS.
+
 %prep
 %autosetup -p1 -n %{pname}-%{version}
 
@@ -301,9 +325,6 @@ export LD_LIBRARY_PATH=%{my_libdir}
 %ctest --quiet --output-log test-output.log --exclude-regex "test_sunlinsol_lapack*" || ( grep "Fail" test-output.log; exit 1; )
 %endif
 
-%post -n %{shlib_main} -p /sbin/ldconfig
-%postun -n %{shlib_main} -p /sbin/ldconfig
-
 %post -n %{shlib_arkode} -p /sbin/ldconfig
 %postun -n %{shlib_arkode} -p /sbin/ldconfig
 
@@ -328,6 +349,15 @@ export LD_LIBRARY_PATH=%{my_libdir}
 %post -n %{shlib_nvec} -p /sbin/ldconfig
 %postun -n %{shlib_nvec} -p /sbin/ldconfig
 
+%post -n %{shlib_sunlinsol} -p /sbin/ldconfig
+%postun -n %{shlib_sunlinsol} -p /sbin/ldconfig
+
+%post -n %{shlib_sunmatrix} -p /sbin/ldconfig
+%postun -n %{shlib_sunmatrix} -p /sbin/ldconfig
+
+%post -n %{shlib_sunnonlin} -p /sbin/ldconfig
+%postun -n %{shlib_sunnonlin} -p /sbin/ldconfig
+
 %if %{without mpi}
 %files doc
 %doc doc/cvode/cv_examples.pdf
@@ -350,11 +380,6 @@ export LD_LIBRARY_PATH=%{my_libdir}
 %dir %{my_libdir}/cmake
 %endif
 %{my_libdir}/cmake/sundials/
-
-%files -n %{shlib_main}
-%{my_libdir}/libsundials_sun*.so.*
-%if %{with mpi}
-%endif
 
 %files -n %{shlib_arkode}
 %{my_libdir}/libsundials_arkode.so.*
@@ -379,5 +404,14 @@ export LD_LIBRARY_PATH=%{my_libdir}
 
 %files -n %{shlib_nvec}
 %{my_libdir}/libsundials_nvec*.so.*
+
+%files -n %{shlib_sunlinsol}
+%{my_libdir}/libsundials_sunlinsol*.so.*
+
+%files -n %{shlib_sunmatrix}
+%{my_libdir}/libsundials_sunmatrix*.so.*
+
+%files -n %{shlib_sunnonlin}
+%{my_libdir}/libsundials_sunnonlin*.so.*
 
 %changelog
