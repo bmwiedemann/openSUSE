@@ -58,4 +58,19 @@
     <comment></comment>
     <requestid>956604</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>be3753c175553c54107e8777ec6e24e9</srcmd5>
+    <version>0.5.12</version>
+    <time>1663275602</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 0.5.12
+  * Fix the close button focus behavior
+  * Fix the behavior of the &quot;OSD/visible&quot; config
+  * Fix the behavior of hiding the OSD when playter is stopped
+  * Fix position update when seeking
+  * fix show/hide glitch
+  * save/restore window position
+  * fix content-reproducibility (forwarded request 1003852 from hillwood)</comment>
+    <requestid>1003855</requestid>
+  </revision>
 </revisionlist>

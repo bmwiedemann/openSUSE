@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 15 12:46:59 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.5.12
+  * Fix the close button focus behavior
+  * Fix the behavior of the "OSD/visible" config
+  * Fix the behavior of hiding the OSD when playter is stopped
+  * Fix position update when seeking
+  * fix show/hide glitch
+  * save/restore window position
+  * fix content-reproducibility 
+
+-------------------------------------------------------------------
 Mon Feb 21 13:56:35 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 0.5.10
