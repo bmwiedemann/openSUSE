@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 12 13:31:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.66:
+  * Fixed building on machines without pkg-config.
+  * Added the missing "environ" declaration for BSD-based operating systems.
+  * Fixed the passphrase dialog with OpenSSL 3.0.
+- package license
+- remove non-systemd case from spec file
+
+-------------------------------------------------------------------
 Mon Jul 18 13:59:13 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 5.65:

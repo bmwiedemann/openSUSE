@@ -17,22 +17,16 @@
 
 
 %define VENDORAFFIX openSUSE
-
-%define has_systemd 1
-BuildRequires:  pkgconfig(systemd)
-%{?systemd_ordering}
-
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           stunnel
-Version:        5.65
+Version:        5.66
 Release:        0
 Summary:        Universal TLS Tunnel
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-Recommends:     stunnel-doc = %version
 URL:            https://www.stunnel.org/
 Source:         https://www.stunnel.org/downloads/%{name}-%{version}.tar.gz
 Source1:        https://www.stunnel.org/downloads/%{name}-%{version}.tar.gz.asc
@@ -44,17 +38,21 @@ Source7:        stunnel.README
 Patch1:         stunnel-5.59_service_always_after_network.patch
 Patch2:         harden_stunnel.service.patch
 BuildRequires:  libopenssl-devel
+# test dependencies
+BuildRequires:  netcat
+BuildRequires:  pkgconfig
+BuildRequires:  procps
 BuildRequires:  python3
 BuildRequires:  tcpd-devel
 BuildRequires:  zlib-devel
-# test dependencies
-BuildRequires:  netcat
-BuildRequires:  procps
+BuildRequires:  pkgconfig(systemd)
 #
 Requires(pre):  %fillup_prereq
 Requires(pre):  %{_sbindir}/useradd
 Requires(pre):  fileutils
 Requires(pre):  textutils
+Recommends:     stunnel-doc = %{version}
+%{?systemd_ordering}
 %if 0%{?suse_version} >= 1500
 Requires(pre):  group(nogroup)
 %endif
@@ -85,7 +83,7 @@ sed -i 's/-m 1770//g' tools/Makefile.in
 %configure \
 	--disable-static \
 	--bindir=%{_sbindir}
-make %{?_smp_mflags} LDADD="-pie -Wl,-z,defs,-z,relro,-z,now"
+%make_build LDADD="-pie -Wl,-z,defs,-z,relro,-z,now"
 
 %install
   %make_install
@@ -95,14 +93,8 @@ mv %{buildroot}%{_datadir}/doc/stunnel %{buildroot}%{_docdir}/
 mkdir -p %{buildroot}%{_docdir}/stunnel/tools
 mkdir -p %{buildroot}%{_fillupdir}
 cp -p %{SOURCE3} %{buildroot}%{_fillupdir}/
-%if 0%{?has_systemd}
 install -D -m 0644 %{buildroot}%{_docdir}/stunnel/examples/stunnel.service %{buildroot}/%{_unitdir}/stunnel.service
 ln -s service %{buildroot}%{_sbindir}/rcstunnel
-%else
-mkdir -p %{buildroot}%{_initddir}/
-install -m 744 %{_sourcedir}/stunnel.rc %{buildroot}/%{_initddir}/stunnel
-ln -s ../..%{_initddir}/stunnel %{buildroot}%{_sbindir}/rcstunnel
-%endif
 sed -i "s/^;setuid = nobody/setuid = stunnel/" %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf-sample
 sed -i "s/^;setgid =/setgid =/" %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf-sample
 sed -i "s/^;include =/include =/" %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf-sample
@@ -125,7 +117,7 @@ install -d %{buildroot}%{_sysconfdir}/%{name}/conf.d
 # only works in Tumbleweed as of 2021-04-08
 %if 0%{?suse_version} > 1500
   rm tests/plugins/*fips*.py
-  make %{?_smp_mflags} test
+  %make_build test
 %endif
 
 %pre
@@ -134,38 +126,25 @@ if ! %{_bindir}/getent passwd stunnel >/dev/null; then
    -d %{_localstatedir}/lib/stunnel stunnel
 fi
 
-%if 0%{?has_systemd}
 %service_add_pre %{name}.service
-%endif
 
 %post
-%if 0%{?has_systemd}
 %service_add_post %{name}.service
-%else
-%{fillup_and_insserv -f}
-%endif
 %{fillup_only -ans syslog stunnel}
 
 %preun
-%if 0%{?has_systemd}
 %service_del_preun %{name}.service
-%else
-%stop_on_removal stunnel
-%endif
 
 %postun
-%if 0%{?has_systemd}
 %service_del_postun %{name}.service
-%else
-%restart_on_update stunnel
-%insserv_cleanup
-%endif
 
 %files
-%defattr(-,root,root)
-%{_sbindir}/*
+%license COPYING.md
+%{_sbindir}/rcstunnel
+%{_sbindir}/stunnel
+%{_sbindir}/stunnel3
 %{_libdir}/%{name}/
-%{_mandir}/man8/*
+%{_mandir}/man8/stunnel*8%{?ext_man}
 %dir %attr(700,root,root) %{_sysconfdir}/%{name}/
 %dir %attr(700,root,root) %{_sysconfdir}/%{name}//conf.d
 %config(noreplace) %{_sysconfdir}/%{name}/stunnel.conf
@@ -178,15 +157,9 @@ fi
 %dir %attr(755,root,root) %{_localstatedir}/lib/stunnel%{_localstatedir}
 %dir %attr(755,stunnel,root) %{_localstatedir}/lib/stunnel%{_localstatedir}/run
 %{_fillupdir}/sysconfig.syslog-stunnel
-%if 0%{?has_systemd}
 %{_unitdir}/stunnel.service
-%else
-%config %{_initddir}/*
-%endif
-%{_datadir}/bash-completion/completions/%{name}.bash
 
 %files doc
-%defattr(-,root,root)
 %doc %{_docdir}/%{name}
 
 %changelog
