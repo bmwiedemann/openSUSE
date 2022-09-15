@@ -39,4 +39,41 @@
     <comment></comment>
     <requestid>891393</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a4415abc722cbc6bfb2a2053effad397</srcmd5>
+    <version>3.3.0</version>
+    <time>1663275519</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on pytest-timeout 
+
+- Update to 3.3.0:
+  * gracefully handle error when QPU unavailable for engagement (#1457)
+  * `QAMExecutionResult` now includes `execution_duration_microseconds`,
+     providing the amount of time a job held exclusive hardware access.
+  * Upgrade `qcs-api-client` so that clients can specify a QCS account on
+    their profile, which `qcs-api-client` will in turn use to set
+    `X-QCS-ACCOUNT-{ID/TYPE}` headers on outgoing QCS requests, most notably
+    during engagement creation. (@erichulburd, #1439)
+  * `setup.py` has been removed and will no longer be generated as part of
+    the automated release process.
+  * Function `pyquil.quilatom.substitute()` now supports substitution of
+    classical `MemoryReference` objects such as `theta[4]` with their
+    parameter values, enabling user-side parameter substitution.
+  * The CompilerISA of physical QPUs now assigns a fidelity of 1 to virtual
+    RZs.
+  * Fixed typo where `scale` was being used as the `phase` in generation of
+    several waveforms.
+  * Both `get_qc` and `QPU` now accept an `endpoint_id` argument which is
+    used to engage against a specific QCS quantum processor endpoint.
+  * Allow `np.ndarray` when writing QAM memory. Disallow non-integer and
+    non-float types.
+  * Fix typo where `qc.compiler.calibration_program` should be
+    `qc.compiler.get_calibration_program()`.
+  * `DefFrame` string-valued fields that contain JSON strings now round trip
+    to valid Quil and back to JSON via `DefFrame.out` and `parse`. Quil and
+    JSON both claim `&quot;` as their only string delimiter, so the JSON `&quot;`s are
+    escaped in the Quil.
+  * Python 3.6 is no longer supported. Python 3.7, 3.8, and 3.9 are supported.</comment>
+    <requestid>1003657</requestid>
+  </revision>
 </revisionlist>
