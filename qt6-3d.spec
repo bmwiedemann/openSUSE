@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.1
+%define real_version 6.3.2
 %define short_version 6.3
 %define tar_name qt3d-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-3d%{?pkg_suffix}
-Version:        6.3.1
+Version:        6.3.2
 Release:        0
 Summary:        Qt 6 3D Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -312,6 +312,7 @@ Summary:        Development files for the Qt 6 3DQuickInput library
 Requires:       libQt63DQuickInput6 = %{version}
 Requires:       cmake(Qt63DCore) = %{real_version}
 Requires:       cmake(Qt63DInput) = %{real_version}
+Requires:       cmake(Qt63DQuick) = %{real_version}
 Requires:       cmake(Qt6Gui)
 Requires:       cmake(Qt6Qml)
 
