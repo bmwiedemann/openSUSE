@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 17 12:09:55 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to latest upstream version (2.1.1)
+  - Drop 0001-trace-cmd-fix-multiple-definition-compiler-errors.patch
+  - Drop cmake-link-glut-libraries.patch
+  - Drop makefile-bash.patch
+  - Drop makefile-lib64.patch
+  - Drop kernelshark-make-fontheight.patch
+  - Add 0001-kernel-shark-Build-missed_event-as-GUI-plugin.patch
+
+-------------------------------------------------------------------
 Thu Jan 20 19:25:56 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to latest upstream version (1.3)
