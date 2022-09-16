@@ -7,4 +7,6 @@ RPM can be used to install and remove software packages. With rpm, it
 is easy to update packages.  RPM keeps track of all these manipulations
 in a central database.	This way it is possible to get an overview of
 all installed packages.  RPM also supports database queries.</description>
+  <devel project="openSUSE:Factory" package="rpm"/>
+  <bcntsynctag>rpm</bcntsynctag>
 </package>
