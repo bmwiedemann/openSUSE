@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 14 22:01:12 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Tidelift is a good and interesting company, but we really don’t
+  need to have python-jaraco.tidelit as a dependency.
+
+-------------------------------------------------------------------
 Wed Aug 31 12:31:24 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
 - update to 3.5.1

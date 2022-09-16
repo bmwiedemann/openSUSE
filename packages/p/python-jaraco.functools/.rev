@@ -86,4 +86,14 @@
     <comment></comment>
     <requestid>1000488</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>337696c8d8e55b4945e3191a8085b478</srcmd5>
+    <version>3.5.1</version>
+    <time>1663327920</time>
+    <user>dimstar_suse</user>
+    <comment>- Tidelift is a good and interesting company, but we really don’t
+  need to have python-jaraco.tidelit as a dependency.
+</comment>
+    <requestid>1003627</requestid>
+  </revision>
 </revisionlist>
