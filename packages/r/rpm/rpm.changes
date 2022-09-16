@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 12 08:15:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to rpm-4.17.1.1
+  * Fix upstream branch setting in "%autosetup -S git"
+  * Revert "Strip the target triplet GNU suffix more precisely."
+
+-------------------------------------------------------------------
+Sun Sep  4 10:05:12 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- remove-translations.diff: convert deprecated egrep to grep -E
+  (boo#1203092)
+
+-------------------------------------------------------------------
 Thu Jul 21 16:11:22 CEST 2022 - mls@suse.de
 
 - update to rpm-4.17.1

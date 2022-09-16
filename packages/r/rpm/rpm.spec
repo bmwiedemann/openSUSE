@@ -58,7 +58,7 @@ Requires:       /usr/bin/awk
 Summary:        The RPM Package Manager
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        4.17.1
+Version:        4.17.1.1
 Release:        0
 URL:            https://rpm.org/
 #Git-Clone:     https://github.com/rpm-software-management/rpm

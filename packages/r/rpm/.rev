@@ -2369,4 +2369,17 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>991573</requestid>
   </revision>
+  <revision rev="301" vrev="1">
+    <srcmd5>891bc4844e62a49895e3866f2e92b986</srcmd5>
+    <version>4.17.1.1</version>
+    <time>1663327907</time>
+    <user>dimstar_suse</user>
+    <comment>- update to rpm-4.17.1.1
+  * Fix upstream branch setting in &quot;%autosetup -S git&quot;
+  * Revert &quot;Strip the target triplet GNU suffix more precisely.&quot;
+
+- remove-translations.diff: convert deprecated egrep to grep -E
+  (boo#1203092)</comment>
+    <requestid>1002926</requestid>
+  </revision>
 </revisionlist>
