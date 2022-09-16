@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 14 12:50:06 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.63.2:
+  + make add_project_dependencies respect build version of include
+    dirs.
+  + minstall: do not trample install_mode by rpath fixer.
+  + fix linker regression for compilers that don't accept LDFLAGS
+    directly.
+  + tests/7 gnome: Fix incorrect unref of GResource.
+
+-------------------------------------------------------------------
 Mon Aug 22 14:16:48 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.63.1:

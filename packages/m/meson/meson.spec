@@ -30,7 +30,7 @@
 %define _name   mesonbuild
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 Name:           meson%{name_ext}
-Version:        0.63.1
+Version:        0.63.2
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
