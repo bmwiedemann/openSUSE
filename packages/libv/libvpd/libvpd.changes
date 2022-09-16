@@ -24,6 +24,7 @@ Thu Apr 14 19:06:30 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
   - Update libtool version info
   - Drop upstreamed patch
     - 0001-Remove-dynamic-exception-specification.patch
+- Package name change from libvpd2 to libvpd
 
 -------------------------------------------------------------------
 Tue Jun  1 08:43:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
