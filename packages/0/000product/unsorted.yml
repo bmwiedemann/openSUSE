@@ -5956,8 +5956,6 @@ unsorted:
   - gnome-doc-utils 
   - gnome-doc-utils-devel 
   - gnome-doc-utils-lang 
-  - gnome-documents 
-  - gnome-documents-lang 
   - gnome-dvb-daemon 
   - gnome-dvb-daemon-lang 
   - gnome-epub-thumbnailer 
@@ -6018,7 +6016,6 @@ unsorted:
   - gnome-shell-extension-terminus 
   - gnome-shell-extension-user-theme 
   - gnome-shell-search-provider-boxes 
-  - gnome-shell-search-provider-documents 
   - gnome-shell-search-provider-eolie 
   - gnome-shell-search-provider-epiphany 
   - gnome-shell-search-provider-gnome-calendar 
@@ -6915,6 +6912,7 @@ unsorted:
   - heimdall-frontend 
   - heimer 
   - helix 
+  - helix-runtime 
   - hello 
   - hello-kubic: [x86_64] 
   - hello-kubic-k8s-yaml: [x86_64] 
@@ -8224,6 +8222,7 @@ unsorted:
   - kernel-vanilla-devel 
   - kernel-vanilla-vdso 
   - kernelshark 
+  - kernelshark-devel 
   - ketchup 
   - kexi 
   - kexi-lang 
@@ -11268,6 +11267,7 @@ unsorted:
   - libgnutls-dane-devel 
   - libgnutls-devel 
   - libgnutls-devel-32bit: [x86_64] 
+  - libgnutls30-hmac-32bit: [x86_64] 
   - libgnutlsxx-devel 
   - libgnutlsxx30 
   - libgo11 
@@ -11891,8 +11891,6 @@ unsorted:
   - libjbig2dec0-32bit: [x86_64] 
   - libjcat-devel 
   - libjim0_81 
-  - libjitterentropy3 
-  - libjitterentropy3-32bit: [x86_64] 
   - libjpeg62 
   - libjpeg62-32bit: [x86_64] 
   - libjpeg62-devel 
@@ -14183,12 +14181,6 @@ unsorted:
   - libsubtitleeditor0 
   - libsubunit0 
   - libsuil-0-0: [i586] 
-  - libsundials4 
-  - libsundials4-mvapich2 
-  - libsundials4-openmpi1 
-  - libsundials4-openmpi2 
-  - libsundials4-openmpi3 
-  - libsundials4-openmpi4 
   - libsundials_arkode5 
   - libsundials_arkode5-mvapich2 
   - libsundials_arkode5-openmpi1 
@@ -14237,6 +14229,24 @@ unsorted:
   - libsundials_nvec6-openmpi2 
   - libsundials_nvec6-openmpi3 
   - libsundials_nvec6-openmpi4 
+  - libsundials_sunlinsol4_3_0 
+  - libsundials_sunlinsol4_3_0-mvapich2 
+  - libsundials_sunlinsol4_3_0-openmpi1 
+  - libsundials_sunlinsol4_3_0-openmpi2 
+  - libsundials_sunlinsol4_3_0-openmpi3 
+  - libsundials_sunlinsol4_3_0-openmpi4 
+  - libsundials_sunmatrix4 
+  - libsundials_sunmatrix4-mvapich2 
+  - libsundials_sunmatrix4-openmpi1 
+  - libsundials_sunmatrix4-openmpi2 
+  - libsundials_sunmatrix4-openmpi3 
+  - libsundials_sunmatrix4-openmpi4 
+  - libsundials_sunnonlin3_3_0 
+  - libsundials_sunnonlin3_3_0-mvapich2 
+  - libsundials_sunnonlin3_3_0-openmpi1 
+  - libsundials_sunnonlin3_3_0-openmpi2 
+  - libsundials_sunnonlin3_3_0-openmpi3 
+  - libsundials_sunnonlin3_3_0-openmpi4 
   - libsuperlu-gnu-hpc 
   - libsuperlu5 
   - libsuperlu5-32bit: [x86_64] 
@@ -14512,7 +14522,7 @@ unsorted:
   - libudunits2-0 
   - libuev-devel 
   - libuev3 
-  - libuhd4_2_0 
+  - libuhd4_3_0 
   - libuhttpmock-0_0-0 
   - libulfius2_7 
   - libulockmgr1 
@@ -15075,11 +15085,13 @@ unsorted:
   - libxml++-2_6-2-32bit: [x86_64] 
   - libxml++-3_0-1 
   - libxml++-3_0-1-32bit: [x86_64] 
+  - libxml++-4_0-1 
   - libxml++-5_0-1 
   - libxml++-5_0-1-32bit: [x86_64] 
   - libxml++-devel 
   - libxml++26-devel 
   - libxml++30-devel 
+  - libxml++40-devel 
   - libxml-security-c-devel 
   - libxml-security-c20 
   - libxml2-devel 
@@ -22413,6 +22425,8 @@ unsorted:
   - python310-azure-functions-devops-build 
   - python310-azure-graphrbac 
   - python310-azure-identity 
+  - python310-azure-iot-deviceupdate 
+  - python310-azure-iot-nspkg 
   - python310-azure-keyvault 
   - python310-azure-keyvault-administration 
   - python310-azure-keyvault-certificates 
@@ -25639,6 +25653,8 @@ unsorted:
   - python38-azure-functions-devops-build 
   - python38-azure-graphrbac 
   - python38-azure-identity 
+  - python38-azure-iot-deviceupdate 
+  - python38-azure-iot-nspkg 
   - python38-azure-keyvault 
   - python38-azure-keyvault-administration 
   - python38-azure-keyvault-certificates 
@@ -28965,6 +28981,8 @@ unsorted:
   - python39-azure-functions-devops-build 
   - python39-azure-graphrbac 
   - python39-azure-identity 
+  - python39-azure-iot-deviceupdate 
+  - python39-azure-iot-nspkg 
   - python39-azure-keyvault 
   - python39-azure-keyvault-administration 
   - python39-azure-keyvault-certificates 
