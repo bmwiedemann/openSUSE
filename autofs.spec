@@ -137,7 +137,7 @@ install -D -m 755 %{SOURCE7} %{buildroot}%{_prefix}/lib/NetworkManager/dispatche
 ln -s %{_mandir}/man8/autofs.8.gz %{buildroot}/%{_mandir}/man8/rcautofs.8.gz
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcautofs
 %if %{with_udisks}
-install -D -m 644 %{SOURCE42} %{buildroot}%{_sysconfdir}/dbus-1/system.d/org.freedesktop.AutoMount.conf
+install -D -m 644 %{SOURCE42} %{buildroot}%{_datadir}/dbus-1/system.d/org.freedesktop.AutoMount.conf
 %endif
 # will be installed by fillup scripts
 rm -f %{buildroot}%{_sysconfdir}/sysconfig/autofs
@@ -167,7 +167,7 @@ rm -f %{buildroot}%{_sysconfdir}/sysconfig/autofs
 %config(noreplace) %{_sysconfdir}/auto.smb
 %config(noreplace) %{_sysconfdir}/autofs_ldap_auth.conf
 %if %{with_udisks}
-%config %{_sysconfdir}/dbus-1/system.d/org.freedesktop.AutoMount.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.AutoMount.conf
 %endif
 %dir %{_sysconfdir}/auto.master.d
 %dir %{_prefix}/lib/NetworkManager
