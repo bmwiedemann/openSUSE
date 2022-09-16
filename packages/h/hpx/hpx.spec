@@ -1,7 +1,7 @@
 #
 # spec file for package hpx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,14 @@
 
 
 Name:           hpx
-Version:        1.6.0
+Version:        1.8.1
 Release:        0
 Summary:        General Purpose C++ Runtime System
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
 URL:            https://stellar.cct.lsu.edu/tag/hpx/
 Source0:        https://github.com/STEllAR-GROUP/hpx/archive/%{version}.tar.gz#/%{name}_%{version}.tar.gz
+BuildRequires:  asio-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
