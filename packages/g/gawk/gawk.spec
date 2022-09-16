@@ -1,7 +1,7 @@
 #
 # spec file for package gawk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gawk
-Version:        5.1.1
+Version:        5.2.0
 Release:        0
 Summary:        Domain-specific language for text processing
 License:        GPL-3.0-or-later
@@ -27,7 +27,9 @@ Source:         http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source2:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        http://savannah.gnu.org/people/viewgpg.php?user_id=80653#/gawk.keyring
 Source4:        gawk.rpmlintrc
-Patch0:         gawk-5.1.1-Disable-racy-test-in-test-iolint.awk.patch
+Patch0:         pma.patch
+Patch1:         nan-tests.patch
+Patch2:         upref.patch
 Provides:       awk
 BuildRequires:  mpfr-devel
 BuildRequires:  readline-devel
@@ -47,7 +49,12 @@ almost completely POSIX 1003.2 compliant.
 %make_build
 
 %check
-%make_build check
+# Disable pma tests when running in linux-user emulation (bsc#1203140)
+%make_build check \
+%if 0%{?qemu_user_space_build}
+  NEED_PMA= \
+%endif
+  %nil
 
 %install
 %make_install
@@ -78,12 +85,15 @@ ln -sfv %{_mandir}/man1/gawk.1%{?ext_man} %{buildroot}%{_mandir}/man1/awk.1%{?ex
 %license COPYING*
 %doc AUTHORS NEWS POSIX.STD README ChangeLog*
 %{_bindir}/gawk
+%{_bindir}/gawkbug
 %{_libexecdir}/awk
 %{_libdir}/gawk
 %{_datadir}/awk
 %{_includedir}/gawkapi.h
 %{_infodir}/*.info%{?ext_info}
 %{_mandir}/man1/gawk.1%{?ext_man}
+%{_mandir}/man1/gawkbug.1%{?ext_man}
+%{_mandir}/man1/pm-gawk.1%{?ext_man}
 %{_mandir}/man3/*%{?ext_man}
 
 %changelog

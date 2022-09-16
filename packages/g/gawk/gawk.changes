@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Sep 13 17:43:05 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- upref.patch: Add missing UPREF
+
+-------------------------------------------------------------------
+Mon Sep  5 08:49:14 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Update to gawk 5.2.0
+  * Numeric scalars now compare in the same way as C for the relational
+    operators. Comparison order for sorting has not changed
+  * If the AWK_HASH environment variable is set to "fnv1a" gawk will
+    use the FNV1-A hash function for associative arrays
+  * There is now a new function, mkbool(), that creates Boolean-typed
+    values
+  * As BWK awk has supported interval expressions since 2019, they are
+    now enabled even if --traditional is supplied
+  * The rwarray extension has two new functions, writeall() and readall()
+  * The new `gawkbug' script should be used for reporting bugs
+  * The manual page (doc/gawk.1) has been considerably reduced in size
+  * Gawk now supports Terence Kelly's "persistent malloc" (pma),
+    allowing gawk to preserve its variables, arrays and user-defined
+    functions between runs
+  * Some subtle issues with untyped array elements being passed to
+    functions have been fixed
+  * Syntax errors are now immediately fatal
+- gawk-5.1.1-Disable-racy-test-in-test-iolint.awk.patch: removed
+- pma.patch: Handle hole bigger than half the address space
+- nan-tests.patch: fix non-portable NaN tests
+
+-------------------------------------------------------------------
 Sun Nov 14 17:10:48 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - disable racy iolint tests boo#1192521

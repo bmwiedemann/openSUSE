@@ -1,0 +1,12 @@
+Index: gawk-5.2.0/support/pma.c
+===================================================================
+--- gawk-5.2.0.orig/support/pma.c
++++ gawk-5.2.0/support/pma.c
+@@ -346,6 +346,7 @@ static void * addrgap(off_t n) {  // fin
+   for (U = 1; ; U *= 2)  // double upper bound until failure
+     if (MAP_FAILED == (A = MMAP(U))) break;
+     else                   MUNMAP(A, U);
++  if (U == 0) U = -1;
+   while (1 + L < U) {  // binary search between bounds
+     size_t M = L + (U - L) / 2;  // avoid overflow
+     if (MAP_FAILED == (A = MMAP(M))) {      U = M; }
