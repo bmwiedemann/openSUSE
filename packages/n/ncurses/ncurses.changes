@@ -1,7 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep 12 10:35:22 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220910
+  + amend verbose-option change to make this affect level 3, e.g., using 
+    "tic -cv3 terminfo".
+  + work around musl's nonstandard use of feature test macros by adding
+    a definition for NCURSES_WIDECHAR to the generated ".pc" and *-config
+    files (report by Sam James).
+- Add ncurses patch 20220903
+  + modify verbose-option of infocmp, tic, toe to enable debug-tracing
+    if that is configured.
+- Add ncurses patch 20220827
+  + modify configure scripts to use overlooked cases for LD and
+    PKG_CONFIG variables (report by Alan Webb, Gentoo #866398).
+  + modify nsterm to use xterm+alt1049 (report by Paul Handly) -TD
+  + modify putty to use xterm+alt1049 -TD
+- Correct offsets of patches
+  * ncurses-5.9-ibm327x.dif
+  * ncurses-6.3.dif
+
+-------------------------------------------------------------------
 Mon Aug 22 07:07:33 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
-- Add ncurses patch +20220820
+- Add ncurses patch 20220820
   + fix some cppcheck warnings, mostly style, in ncurses and c++
     libraries and progs directory.
   + add curses_trace to ifdef's for START_TRACE in test/test.priv.h
