@@ -55,6 +55,7 @@ Release:        0
 Source0:        cockpit-%{version}.tar
 Source1:        cockpit.pam
 Source2:        cockpit-rpmlintrc
+Source3:        cockpit-suse-theme.tar
 Source99:       README.packaging
 Source98:       package-lock.json
 Source97:       node_modules.spec.inc
@@ -64,6 +65,9 @@ Patch2:         hide-docs.patch
 Patch3:         suse-microos-branding.patch
 Patch4:         css-overrides.patch
 Patch5:         storage-btrfs.patch
+Patch6:         kdump-close.patch
+Patch7:         kdump-refactor.patch
+Patch8:         kdump-suse.patch
 # SLE Micro specific patches
 Patch100:       remove-pwscore.patch
 Patch101:       hide-pcp.patch
@@ -179,12 +183,15 @@ Requires: subscription-manager-cockpit
 %endif
 
 %prep
-%setup -q -n cockpit-%{version}
+%setup -q -n cockpit-%{version} -a 3
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
 
 %if 0%{?sle_version}
 %patch100 -p1
@@ -229,6 +236,13 @@ mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/pam.d
 install -p -m 644 tools/cockpit.pam $RPM_BUILD_ROOT%{_sysconfdir}/pam.d/cockpit
 rm -f %{buildroot}/%{_libdir}/cockpit/*.so
 install -D -p -m 644 AUTHORS COPYING README.md %{buildroot}%{_docdir}/cockpit/
+
+mkdir -p %{buildroot}%{_datadir}/cockpit/branding/suse
+pushd cockpit-suse-theme
+cp src/css-overrides.css %{buildroot}%{_datadir}/cockpit/branding/suse
+cp src/fonts.css %{buildroot}%{_datadir}/cockpit/branding/suse
+cp -a src/fonts %{buildroot}%{_datadir}/cockpit/branding/suse
+popd
 
 # only ship deprecated PatternFly API for stable releases
 %if 0%{?rhel} == 8
@@ -343,7 +357,7 @@ rm %{buildroot}/%{_prefix}/share/metainfo/org.cockpit-project.cockpit-selinux.me
 # remove brandings with stale symlinks. Means they don't match
 # the distro.
 pushd %{buildroot}/%{_datadir}/cockpit/branding
-ls --hide={default,kubernetes,opensuse,registry,sle-micro} | xargs rm -rv
+ls --hide={default,kubernetes,opensuse,registry,sle-micro,suse} | xargs rm -rv
 popd
 # need this in SUSE as post build checks dislike stale symlinks
 install -m 644 -D /dev/null %{buildroot}/run/cockpit/motd
@@ -697,14 +711,16 @@ Dummy package from building optional packages only; never install or publish me.
 Summary: Cockpit user interface for storage, using udisks
 Requires: cockpit-shell >= 266
 Requires: udisks2 >= 2.9
+Requires: %{__python3}
+%if 0%{?suse_version}
+Requires: libudisks2-0_lvm2 >= 2.9
+Recommends: multipath-tools
+Requires: python3-dbus-python
+%else
 Recommends: udisks2-lvm2 >= 2.9
 Recommends: udisks2-iscsi >= 2.9
 Recommends: device-mapper-multipath
 Recommends: clevis-luks
-Requires: %{__python3}
-%if 0%{?suse_version}
-Requires: python3-dbus-python
-%else
 Requires: python3-dbus
 %endif
 BuildArch: noarch

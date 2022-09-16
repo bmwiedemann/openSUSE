@@ -1,5 +1,15 @@
 <services>
   <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/dgdavid/cockpit-suse-theme.git</param>
+    <param name="versionformat"></param>
+    <param name="scm">git</param>
+    <param name="revision">main</param>
+  </service>
+  <service mode="buildtime" name="tar">
+    <param name="obsinfo">cockpit-suse-theme.obsinfo</param>
+  </service>
+
+  <service name="obs_scm" mode="manual">
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="url">http://github.com/cockpit-project/cockpit.git</param>
     <param name="scm">git</param>
@@ -17,4 +27,6 @@
   <service mode="buildtime" name="set_version">
     <param name="basename">cockpit</param>
   </service>
+
+
 </services>

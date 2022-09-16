@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 13 09:46:17 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Fix cockpit-storage dependencies
+- Merge SUSE branding into cockpit package
+
+-------------------------------------------------------------------
+Mon Sep  5 08:09:56 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Update kdump-suse.patch to match upstream.
+
+-------------------------------------------------------------------
+Wed Aug 24 12:25:42 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Add kdump-close.patch required by patches below.
+- Add kdump-refactor.patch and kdump-suse.patch to support SUSE
+  kdump config management in cockpit.
+
+-------------------------------------------------------------------
 Wed Aug 24 07:37:46 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - Use a list of available brandings to include in cockpit-ws
