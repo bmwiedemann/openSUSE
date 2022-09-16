@@ -17,7 +17,7 @@
 
 
 Name:           pdf2djvu
-Version:        0.9.18.2
+Version:        0.9.19
 Release:        0
 Summary:        PDF to DjVu Converter
 License:        GPL-2.0-only
@@ -26,18 +26,13 @@ URL:            https://jwilk.net/software/pdf2djvu
 Source0:        https://github.com/jwilk/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/jwilk/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM poppler...
-Patch0:         0001-pdf-backend-fix-compat-with-Poppler-22.02.patch
-Patch1:         0002-main-use-pdf-link-Destination-copy-constructor.patch
-Patch2:         0003-pdf-backend-fix-compat-with-Poppler-22.02.patch
-Patch3:         0004-pdf-backend-simplify-Poppler-22.03-compat-code.patch
 BuildRequires:  djvulibre
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(GraphicsMagick++)
 BuildRequires:  pkgconfig(ddjvuapi) >= 3.5.25
 BuildRequires:  pkgconfig(exiv2)
-BuildRequires:  pkgconfig(poppler) >= 0.35
+BuildRequires:  pkgconfig(poppler) >= 0.62
 BuildRequires:  pkgconfig(uuid)
 Requires:       djvulibre
 
