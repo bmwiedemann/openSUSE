@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 15 21:51:05 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- update to 0.2.0 
+  * Bump version: 0.2.0rc1 → 0.2.0
+  * Bump version: 0.1.1 → 0.2.0rc1
+  * CI: Add libxcb-shape0 to list of linux system packages
+  * CI: Add PySide2 to CI tests
+  * PySide2: Fix for PYSIDE-237 bug
+  * PySide2: Add compatible QPdfWriter.setPageSize overload
+  * test_qaction_set_menu: PySide2 compatibility
+  * QtCore: Expose cast/wrap/unwrapinstance, ...
+  * QtCore: Add BoundSignal type
+  * PySide2: alias missing exec methods
+  * PySide2: Add missing QActionEvent.{action,before}
+  * PySide2: Import missing pieces
+  * pyside2: drawPixmapFragments compatibility
+  * pyside2: QtTest compatibility
+  * pyside2: QSettings compatibility
+
+-------------------------------------------------------------------
 Tue Aug  2 09:46:16 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - update to 0.1.1
