@@ -1416,4 +1416,14 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
     <comment></comment>
     <requestid>993693</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>0910aa1959ebd1b6dfd51b0b69a9d8f3</srcmd5>
+    <version>1599_20220912</version>
+    <time>1663327910</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220912:
+  * chkstat: also consider group controlled paths (bsc#1203018,
+    CVE-2022-31252)</comment>
+    <requestid>1003262</requestid>
+  </revision>
 </revisionlist>
