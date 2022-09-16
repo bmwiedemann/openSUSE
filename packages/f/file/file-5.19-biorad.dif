@@ -2,9 +2,11 @@
  magic/Magdir/images |    2 ++
  1 file changed, 2 insertions(+)
 
---- magic/Magdir/images
-+++ magic/Magdir/images	2022-06-13 08:30:37.596139595 +0000
-@@ -1951,6 +1951,8 @@
+Index: magic/Magdir/images
+===================================================================
+--- magic/Magdir/images.orig
++++ magic/Magdir/images
+@@ -1969,6 +1969,8 @@
  # https://web.archive.org/web/20050317223257/www.cs.ubc.ca/spider/ladic/text/biorad.txt
  # Samples: https://www.loci.wisc.edu/software/sample-data
  14	uleshort	<2

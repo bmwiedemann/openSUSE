@@ -1,6 +1,8 @@
---- file-5.39/src/file.c.orig	2020-06-17 16:13:36.625305367 +0200
-+++ file-5.39/src/file.c	2020-06-17 16:15:12.429553163 +0200
-@@ -254,6 +254,8 @@
+Index: file-5.43/src/file.c
+===================================================================
+--- file-5.43.orig/src/file.c
++++ file-5.43/src/file.c
+@@ -260,6 +260,8 @@ main(int argc, char *argv[])
  			break;
  		case 'e':
  		case OPT_EXCLUDE_QUIET:
@@ -9,7 +11,7 @@
  			for (i = 0; i < __arraycount(nv); i++)
  				if (strcmp(nv[i].name, optarg) == 0)
  					break;
-@@ -266,7 +268,7 @@
+@@ -272,7 +274,7 @@ main(int argc, char *argv[])
  			break;
  
  		case 'f':
@@ -18,7 +20,7 @@
  				usage();
  			if (magic == NULL)
  				if ((magic = load(magicfile, flags)) == NULL)
-@@ -276,6 +278,8 @@
+@@ -282,6 +284,8 @@ main(int argc, char *argv[])
  			++didsomefiles;
  			break;
  		case 'F':
@@ -27,7 +29,7 @@
  			separator = optarg;
  			break;
  		case 'i':
-@@ -288,6 +292,8 @@
+@@ -294,6 +298,8 @@ main(int argc, char *argv[])
  			action = FILE_LIST;
  			break;
  		case 'm':

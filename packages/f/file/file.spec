@@ -25,6 +25,7 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libseccomp)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 URL:            http://www.darwinsys.com/file/
 # bug437293
@@ -33,7 +34,7 @@ Obsoletes:      file-64bit
 %endif
 #
 # Set Version also in python-magic.spec
-Version:        5.42
+Version:        5.43
 Release:        0
 Summary:        A Tool to Determine File Types
 License:        BSD-2-Clause
@@ -62,8 +63,8 @@ Patch31:        file-5.19-biorad.dif
 Patch32:        file-5.19-clicfs.dif
 Patch37:        file-secure_getenv.patch
 Patch39:        file-5.28-btrfs-image.dif
-# Upstream commits as patch
-Patch42:        file-boo1201350.patch
+# Upstream mailing list
+Patch42:        file-zstd.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
 %global         magicdir    %{_datadir}/file
@@ -108,7 +109,7 @@ to develop applications that require the magic "file" interface.
 
 %prep
 %setup -q -n file-%{version}
-%patch42 -p0
+%patch42 -p1
 %patch1  -p0 -b .misc
 %patch4  -p0 -b .conf
 %patch5  -p0 -b .tex
@@ -162,6 +163,8 @@ install -s dcore %{buildroot}%{_bindir}
 rm -f %{buildroot}%{_libdir}/*.la
 
 %check
+# Standard checks
+make check
 # Check out that the binary does not bail out:
 LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 export LD_LIBRARY_PATH

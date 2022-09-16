@@ -13,9 +13,10 @@ contained within the image.
  magic/Magdir/filesystems |   37 +++++++++++++++++++++++--------------
  1 file changed, 23 insertions(+), 14 deletions(-)
 
-diff --git a/magic/Magdir/filesystems b/magic/Magdir/filesystems
---- a/magic/Magdir/filesystems
-+++ b/magic/Magdir/filesystems
+Index: file-5.43/magic/Magdir/filesystems
+===================================================================
+--- file-5.43.orig/magic/Magdir/filesystems
++++ file-5.43/magic/Magdir/filesystems
 @@ -2302,20 +2302,29 @@
  >>0x10060        string          >\0             lockproto %s)
  

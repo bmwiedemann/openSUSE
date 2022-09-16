@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 14 08:58:50 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch file-zstd.patch from upstream mailing list
+  * Add zstd decompression support
+- Run also upstream standard checks
+
+-------------------------------------------------------------------
+Tue Sep 13 20:09:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.43:
+  * Add octal indirect magic
+  * avoid infinite loop in non-wide code 
+  * Obey MAGIC_CONTINUE with multiple magic files
+  * Fix bug with large flist
+  * PR/364: Detect non-nul-terminated core filenames from QEMU
+  * PR/359: Add support for http://ndjson.org/ 
+  * PR/362: Fix wide printing 
+  * PR/358: Fix width for -f -
+- drop file-boo1201350.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Aug 25 19:31:39 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move magic files to /usr/share/file from /usr/share/misc, and

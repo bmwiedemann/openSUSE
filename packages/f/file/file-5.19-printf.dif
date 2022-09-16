@@ -2,9 +2,11 @@
  src/apprentice.c |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
---- src/apprentice.c
-+++ src/apprentice.c	2021-10-19 08:52:01.991343421 +0000
-@@ -2608,7 +2608,7 @@ check_format_type(const char *ptr, int t
+Index: src/apprentice.c
+===================================================================
+--- src/apprentice.c.orig
++++ src/apprentice.c
+@@ -2619,7 +2619,7 @@ check_format_type(const char *ptr, int t
  			}
  		} else
  			h = 0;
