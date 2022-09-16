@@ -17,7 +17,7 @@
 
 
 Name:           grep
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        Print lines matching a pattern
 License:        GPL-3.0-or-later
@@ -32,7 +32,7 @@ Source5:        %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  glibc-locale
 BuildRequires:  makeinfo
-BuildRequires:  pcre-devel
+BuildRequires:  pkgconfig(libpcre2-8)
 Provides:       base:%{_bindir}/grep
 
 %description
@@ -90,8 +90,6 @@ ln -sf %{_bindir}/grep %{buildroot}/bin/grep
 %{_bindir}/egrep
 %{_bindir}/fgrep
 %{_bindir}/grep
-%{_mandir}/man1/egrep.1%{?ext_man}
-%{_mandir}/man1/fgrep.1%{?ext_man}
 %{_mandir}/man1/grep.1%{?ext_man}
 %{_infodir}/grep.info%{?ext_info}
 

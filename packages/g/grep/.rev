@@ -703,4 +703,26 @@ also requires -fno-profile-values to avoid ~3 differing bits (forwarded request 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>994329</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>4911f94db675b6da8a21a70ee67108eb</srcmd5>
+    <version>3.8</version>
+    <time>1663327917</time>
+    <user>dimstar_suse</user>
+    <comment>- GNU grep 3.8:
+  * The -P option is now based on PCRE2 instead of the older PCRE
+    (boo#1201803)
+  * egrep and fgrep commands, deprecated since release 2.5.3 (2007), now
+    warn that they are obsolescent and should be replaced by grep -E and
+    grep -F
+  * The confusing GREP_COLOR environment variable is now obsolescent
+  * Regular expressions with stray backslashes now cause warnings
+  * Regular expressions like [:space:] are now errors even if
+    POSIXLY_CORRECT is set, since POSIX now allows the GNU behavior
+  * In locales using UTF-8 encoding, the regular expression '.' no
+    longer sometimes fails to match Unicode characters
+  * The -s option no longer suppresses &quot;binary file matches&quot; 
+    messages.
+- doc: fix man page syntax errors (bsc#1201001) (forwarded request 1001672 from Andreas_Schwab)</comment>
+    <requestid>1001674</requestid>
+  </revision>
 </revisionlist>
