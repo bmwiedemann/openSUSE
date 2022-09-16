@@ -3998,4 +3998,23 @@ oddjob-gpupdate isn't blocked)</comment>
   * Ignore one bugbear error.</comment>
     <requestid>1001894</requestid>
   </revision>
+  <revision rev="413" vrev="1">
+    <srcmd5>d41361359e52ce928ad41709e1ed4fda</srcmd5>
+    <version>2.3.0+git20220914.1a7345a1</version>
+    <time>1663327914</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version rpmlint-2.3.0+git20220914.1a7345a1:
+  * Whitelist /var/spool/mail in postfix, sendmail and exim (bsc#1179574)
+
+- Update to version 2.3.0+git20220913.d905dc70:
+  * dbus-services: autofs: move from /etc to /usr
+
+- Update to version 2.3.0+git20220913.c8d069d7:
+  * dbus-services: adjust/extend kdiskmark whitelisting (bsc#1202725)
+
+- Update to version 2.3.0+git20220913.bb2ec481:
+  * no-library-dependency-on: consider %_isa dependencies
+  * configs/Fedora: sync user/groups with setup-2.14.1</comment>
+    <requestid>1003484</requestid>
+  </revision>
 </revisionlist>

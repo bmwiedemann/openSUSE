@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Sep 14 08:55:28 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version rpmlint-2.3.0+git20220914.1a7345a1:
+  * Whitelist /var/spool/mail in postfix, sendmail and exim (bsc#1179574)
+
+-------------------------------------------------------------------
+Tue Sep 13 15:07:56 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220913.d905dc70:
+  * dbus-services: autofs: move from /etc to /usr
+
+-------------------------------------------------------------------
+Tue Sep 13 15:01:53 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220913.c8d069d7:
+  * dbus-services: adjust/extend kdiskmark whitelisting (bsc#1202725)
+
+-------------------------------------------------------------------
+Tue Sep 13 06:46:41 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220913.bb2ec481:
+  * no-library-dependency-on: consider %_isa dependencies
+  * configs/Fedora: sync user/groups with setup-2.14.1
+
+-------------------------------------------------------------------
 Thu Sep 08 10:33:18 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.3.0+git20220907.165f9c76:
