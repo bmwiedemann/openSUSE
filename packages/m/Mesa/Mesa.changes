@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 14 13:45:41 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- llvm15.patch: backport of commits 2037c34f245, 301bcbac0e5, 6983c8580a2
+  to support LLVM 15
+
+-------------------------------------------------------------------
 Mon Aug 22 09:35:53 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 22.1.7:
