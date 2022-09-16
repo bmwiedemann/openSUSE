@@ -49,7 +49,7 @@
 %define snipmate_version	0.83
 %define supertab_version	2.1
 %define taglist_version		4.6
-%define tlib_version		1.27
+%define tlib_version		1.28
 %define tregisters_version	0.2
 %define tselectbuffer_version	0.7
 %define tselectfiles_version	0.11

@@ -375,4 +375,14 @@
     <comment></comment>
     <requestid>995266</requestid>
   </revision>
+  <revision rev="43" vrev="50">
+    <srcmd5>e6af5d81f0431d7137e2528b76d089de</srcmd5>
+    <version>unknown</version>
+    <time>1663327945</time>
+    <user>dimstar_suse</user>
+    <comment>- update
+  * tlib           1.28
+- fixes boo#1203460 (forwarded request 1003883 from mimi_vx)</comment>
+    <requestid>1003987</requestid>
+  </revision>
 </revisionlist>

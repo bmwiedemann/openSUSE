@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 15 14:27:41 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update
+  * tlib           1.28
+- fixes boo#1203460
+
+-------------------------------------------------------------------
 Mon Aug 15 19:41:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - avoid bashism in post scripts (bsc#1195391) 
