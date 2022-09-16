@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 13 04:06:02 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add bpo34990-2038-problem-compileall.patch making compileall.py
+  compliant with year 2038 (bsc#1202666, gh#python/cpython#79171),
+  backport of fix to Python 2.7.
+
+-------------------------------------------------------------------
 Wed Sep  7 04:46:44 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch CVE-2021-28861-double-slash-path.patch:

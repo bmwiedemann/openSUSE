@@ -132,6 +132,7 @@ Patch70:        CVE-2015-20107-mailcap-unsafe-filenames.patch
 # PATCH-FIX-UPSTREAM CVE-2021-28861 bsc#1202624
 # Coerce // to / in Lib/BaseHTTPServer.py
 Patch71:        CVE-2021-28861-double-slash-path.patch
+Patch72:        bpo34990-2038-problem-compileall.patch
 # COMMON-PATCH-END
 BuildRequires:  automake
 BuildRequires:  db-devel
@@ -323,6 +324,7 @@ that rely on earlier non-verification behavior.
 %patch69 -p1
 %patch70 -p1
 %patch71 -p1
+%patch72 -p1
 
 # For patch 66
 cp -v %{SOURCE66} Lib/test/recursion.tar
