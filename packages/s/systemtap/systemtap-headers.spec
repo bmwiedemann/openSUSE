@@ -24,28 +24,19 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           systemtap-headers
-Version:        4.6
+Version:        4.7
 Release:        0
 Summary:        SystemTap headers
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            http://sourceware.org/systemtap/
 Source0:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz
-Source1:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz.asc
+Source1:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz.sig
 Source2:        systemtap.keyring
 Source3:        README-BEFORE-ADDING-PATCHES
 Source4:        README-KEYRING
 Source5:        stap-server.conf
 Patch1:         systemtap-build-source-dir.patch
-Patch2:         sys-sdt.h-fp-constraints-arm32.patch
-Patch3:         sys-sdt.h-fp-constraints-x86_64.patch
-Patch4:         sys-sdt.h-fp-constraints-aarch64-s390.patch
-Patch5:         Handle-user-supplied-sdt-probe-argument-template.patch
-Patch6:         PR28778-gcc-warning-tweak-for-sprintf-precision-parameter.patch
-Patch7:         gcc12-c-compatibility-tweak-use-lambdas-instead-of-ptr_fun.patch
-Patch8:         gcc12-c-compatibility-re-tweak-for-rhel6-use-function-pointer-instead-of-lambdas-instead-of-ptr_fun.patch
-Patch9:         buildrun-for-LKM-backend-add-Wno-infinite-recursion.patch
-Patch10:        gcc12-warning-suppression.patch
 
 # sdt-devel provides the same header files as us, so we
 # must conflict

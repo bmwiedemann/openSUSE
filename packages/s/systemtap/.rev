@@ -864,4 +864,38 @@ Most projects for this reason don't even carry the generated configure script in
     <comment></comment>
     <requestid>971957</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>fe047ca54d858f54f27adf1f1370caf1</srcmd5>
+    <version>4.7</version>
+    <time>1663327908</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 4.7. See systemtap.spec for changelog 
+- Upgrade to version 4.7. See systemtap.spec for changelog 
+- Upgrade to version 4.7. See systemtap.spec for changelog 
+- Remove patches (upstream):
+    Handle-user-supplied-sdt-probe-argument-template.patch
+    PR28778-gcc-warning-tweak-for-sprintf-precision-parameter.patch
+    buildrun-for-LKM-backend-add-Wno-infinite-recursion.patch
+    gcc12-c-compatibility-re-tweak-for-rhel6-use-function-pointer-instead-of-lambdas-instead-of-ptr_fun.patch
+    gcc12-c-compatibility-tweak-use-lambdas-instead-of-ptr_fun.patch
+    gcc12-warning-suppression.patch
+    sys-sdt.h-fp-constraints-aarch64-s390.patch
+    sys-sdt.h-fp-constraints-arm32.patch
+    sys-sdt.h-fp-constraints-x86_64.patch
+- Update to version 4.7
+  Release notes: https://sourceware.org/pipermail/systemtap/2022q2/027491.html
+- Remove patches (upstream):
+    Handle-user-supplied-sdt-probe-argument-template.patch
+    PR28778-gcc-warning-tweak-for-sprintf-precision-parameter.patch
+    buildrun-for-LKM-backend-add-Wno-infinite-recursion.patch
+    gcc12-c-compatibility-re-tweak-for-rhel6-use-function-pointer-instead-of-lambdas-instead-of-ptr_fun.patch
+    gcc12-c-compatibility-tweak-use-lambdas-instead-of-ptr_fun.patch
+    gcc12-warning-suppression.patch
+    sys-sdt.h-fp-constraints-aarch64-s390.patch
+    sys-sdt.h-fp-constraints-arm32.patch
+    sys-sdt.h-fp-constraints-x86_64.patch
+- Update systemtap.keyring
+</comment>
+    <requestid>1003071</requestid>
+  </revision>
 </revisionlist>

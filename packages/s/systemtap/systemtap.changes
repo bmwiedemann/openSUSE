@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 13 00:13:36 UTC 2022 - Tony Jones <tonyj@suse.com>
+
+- Update to version 4.7
+  Release notes: https://sourceware.org/pipermail/systemtap/2022q2/027491.html
+
+- Remove patches (upstream):
+    Handle-user-supplied-sdt-probe-argument-template.patch
+    PR28778-gcc-warning-tweak-for-sprintf-precision-parameter.patch
+    buildrun-for-LKM-backend-add-Wno-infinite-recursion.patch
+    gcc12-c-compatibility-re-tweak-for-rhel6-use-function-pointer-instead-of-lambdas-instead-of-ptr_fun.patch
+    gcc12-c-compatibility-tweak-use-lambdas-instead-of-ptr_fun.patch
+    gcc12-warning-suppression.patch
+    sys-sdt.h-fp-constraints-aarch64-s390.patch
+    sys-sdt.h-fp-constraints-arm32.patch
+    sys-sdt.h-fp-constraints-x86_64.patch
+
+- Update systemtap.keyring
+
+-------------------------------------------------------------------
 Wed Mar  2 19:19:36 UTC 2022 - Tony Jones <tonyj@suse.com>
 
 - Add gcc12 support (bsc#1196583)
