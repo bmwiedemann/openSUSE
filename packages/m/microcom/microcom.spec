@@ -17,13 +17,13 @@
 
 
 Name:           microcom
-Version:        2019.01.0
+Version:        2019.01.0.11
 Release:        0
 Summary:        Minimalistic terminal program
 License:        GPL-2.0-only
 Group:          System/Console
 URL:            https://github.com/pengutronix/microcom.git
-Source0:        https://github.com/pengutronix/microcom/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source0:        microcom-%{version}.tar
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  readline-devel
