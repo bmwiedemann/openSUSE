@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 15 17:34:53 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 1.97.0
+  https://github.com/OpenChemistry/avogadroapp/releases/tag/1.97.0
+  Highlights:
+  * Adds molecular surfaces, solvent-accessible, and
+    solvent-excluded surfaces
+  * Adds support for a range of partial charge models, including
+    coloring electrostatic potentials on surfaces.
+  * This includes writing Python scripts to assign atomic charges
+    or electrostatic potential
+  * Adds improved hydrogen-bond, chalcogen, and halogen bond
+    rendering.
+  * Add improved close-contact and salt-bridge rendering
+  * Significantly improves interface translation, properly loading
+    translation files, and including a dialog to choose your
+    preferred user interface language
+
+
+-------------------------------------------------------------------
 Thu Oct 14 09:32:07 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.95.1

@@ -1,7 +1,7 @@
 #
 # spec file for package avogadro
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,17 @@
 %define i18n_rev 3b8a86cc37e988b043d1503d2f11068389b0aca3
 
 Name:           avogadro
-Version:        1.95.1
+Version:        1.97.0
 Release:        0
 Summary:        A Molecular design tool
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Chemistry
 URL:            https://two.avogadro.cc/
 Source0:        https://github.com/OpenChemistry/avogadroapp/archive/refs/tags/%{version}.tar.gz#/%{src_name}.tar.gz
-Source1:        https://github.com/OpenChemistry/avogadro-i18n/archive/%{i18n_rev}.tar.gz#/avogadro-i18n-%{i18n_rev}.tar.gz
+Source1:        https://github.com/OpenChemistry/avogadro-i18n/archive/refs/tags/%{version}.tar.gz#/avogadro-i18n-%{version}.tar.gz
 BuildRequires:  cmake >= 3.3
 BuildRequires:  fdupes
-BuildRequires:  cmake(AvogadroLibs) >= 1.95.1
+BuildRequires:  cmake(AvogadroLibs) >= 1.97.0
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(eigen3)
@@ -47,13 +47,13 @@ a powerful plugin architecture.
 
 %prep
 %setup -qn %{src_name} -b 1
-ln -s avogadro-i18n-%{i18n_rev} ../avogadro-i18n
+ln -s avogadro-i18n-%{version} ../avogadro-i18n
 
 %build
 %cmake \
   -DAvogadro_ENABLE_RPC=ON \
   -DCMAKE_SKIP_INSTALL_RPATH=ON
-%make_build
+%cmake_build
 
 %install
 %cmake_install
@@ -68,6 +68,7 @@ rm -rfv %{buildroot}%{_datadir}/doc/AvogadroApp
 %dir %{_datadir}/avogadro2/i18n
 %{_datadir}/pixmaps/avogadro2.png
 %{_datadir}/applications/avogadro2.desktop
+%{_datadir}/metainfo/avogadro2.appdata.xml
 
 %files lang
 %{_datadir}/avogadro2/i18n/*
