@@ -489,4 +489,23 @@
   * ISO/Kicbase: Update base images #14481</comment>
     <requestid>1003279</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>0ef62e5c7cbb71961bb13863a917b1b1</srcmd5>
+    <version>1.27.0</version>
+    <time>1663327954</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.27.0:
+  * Bump default Kubernetes version to v1.25.0 and resolve /etc/resolv.conf regression #14848
+  * Skip metallb PodSecurityPolicy object for kubernetes 1.25+ #14903
+  * The DefaultKubernetesRepo changed for 1.25.0 #14768
+  * Fix QEMU delete errors #14950
+  * Fix containerd configuration issue with insecure registries #14482
+  * Fix registry when custom images provided #14690
+  * ISO: Update Docker from 20.10.17 to 20.10.18 #14935
+  * Update kicbase base image to Ubuntu:focal-20220826 #14904
+  * Update registry addon image from 2.7.1 to 2.8.1 #14886
+  * Update gcp-auth-webhook addon from v0.0.10 to v0.0.11 #14847
+  * Update Headlamp addon image from v0.9.0 to v0.11.1 #14802</comment>
+    <requestid>1004055</requestid>
+  </revision>
 </revisionlist>
