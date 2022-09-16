@@ -47,12 +47,12 @@ Qt C++ framework, based and pretty much like the same of QjackCtl.
 %setup -q -n %{name}-v%{version}
 
 %build
-%cmake \
+%cmake_qt6 \
   -DCONFIG_ALSA_MIDI=ON
-%cmake_build
+%qt6_build
 
 %install
-%cmake_install
+%qt6_install
 
 %files
 %license LICENSE.md

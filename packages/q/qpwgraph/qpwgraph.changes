@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 15 21:40:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use the Qt6 build macros to fix the Leap 15.4 build
+
+-------------------------------------------------------------------
 Sat Aug 20 13:45:52 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.3.5:
