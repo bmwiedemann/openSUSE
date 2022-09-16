@@ -21,7 +21,7 @@
 %define skip_python2 1
 
 Name:           python-ldap
-Version:        3.4.2
+Version:        3.4.3
 Release:        0
 Summary:        Python LDAP interface
 License:        Python-2.0

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 16 01:06:45 UTC 2022 - William Brown <william.brown@suse.com>
+
+- up to upstream release 3.4.3
+
+  This is a minor release to bring back the removed OPT_X_TLS option.
+  Please note, it's still a deprecated option and it will be removed in 3.5.0.
+
+  The following deprecated option has been brought back:
+
+  * OPT_X_TLS
+  * Fixes:
+
+  - Sphinx documentation is now successfully built
+  _ pypy3 tests stability was improved
+  _ setup.py deprecation warning is now resolved
+
+-------------------------------------------------------------------
 Sun Jul 24 17:36:21 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to upstream release 3.4.2
