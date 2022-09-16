@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 14 09:15:05 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 9.65:
+  * Fixed "hdparm --Istdin" to not attempt reading LOG data from a non-existent drive.
+- Refresh avoid-linux-includes.patch
+
+-------------------------------------------------------------------
 Tue Aug  9 11:52:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add avoid-linux-includes.patch (bsc#1202212) 
