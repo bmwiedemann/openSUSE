@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Sep 09 22:20:00 UTC 2022 - Dmitry Sidorov <jonmagon@gmail.com>
+
+- Update to version 3.1.1
+  * Fixed helper crash on completion of benchmarking
+
+-------------------------------------------------------------------
+Tue Sep 06 21:51:53 UTC 2022 - Dmitry Sidorov <jonmagon@gmail.com>
+
+- Update to version 3.1.0
+  * Prevent multiple instances from being opened
+  * Progress bar styles: Fusion, for light/dark theme and system one
+  * Stylized design of the storage list
+  * Update the storage list by changing the language
+  * Prevent a line break in the dialog for a path contains a hyphen
+  * Optional O_DIRECT flag
+  * Migrated from KAuth to PolicyKit
+  * The helper runs only if necessary
+  * Pre-create a benchmark file only once before tests
+  * Bring back the ability to specify the directory manually
+  * Localization updated
+  
+-------------------------------------------------------------------
+Wed Aug 24 18:43:14 UTC 2022 - Dmitry Sidorov <jonmagon@gmail.com>
+
+- Update to version 3.0.0
+  * Benchmarking is performed within the helper
+  * Stored configuration
+  * Configurable pattern of each test
+  * Region-specific numeric formatting
+  * Default and NVMe presets
+  * Changeable test data: random or zeros
+  * Demo profile
+  * Ability to perform read and write tests separately
+  * Button to refresh the storage list
+  * Turkish and Hungarian localization
+  * The occupied space is displayed instead of free space
+  
+-------------------------------------------------------------------
 Sun Mar 20 14:42:32 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Spec cleanup.
