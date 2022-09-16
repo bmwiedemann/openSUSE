@@ -19,17 +19,17 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hatchling
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        Build backend used by Hatch
 License:        MIT
 URL:            https://hatch.pypa.io/latest/
 Source0:        https://files.pythonhosted.org/packages/source/h/hatchling/hatchling-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module editables >= 0.3}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module packaging >= 21.3}
-BuildRequires:  %{python_module pathspec >= 0.9}
+BuildRequires:  %{python_module pathspec >= 0.10.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pluggy >= 1.0.0}
 BuildRequires:  %{python_module tomli >= 1.2.2 if %python-base < 3.11}
@@ -37,7 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-editables >= 0.3
 Requires:       python-packaging >= 21.3
-Requires:       python-pathspec >= 0.9
+Requires:       python-pathspec >= 0.10.1
 Requires:       python-pluggy >= 1.0.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives

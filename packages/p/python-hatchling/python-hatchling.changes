@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Sep 13 20:05:14 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.9.0:
+  * Changed:
+    + File pattern matching now more closely resembles Git's
+      behavior
+  * Added:
+    + Implement a minimal version of
+      prepare_metadata_for_build_wheel and
+      prepare_metadata_for_build_editable for non-frontend tools
+      that only need to inspect a project's metadata
+    + Add metadata command to view PEP 621 project metadata
+    + Improve error messages for SPDX license errors
+    + Retroactively support License-File for core metadata starting
+      at version 2.1
+    + Bump the minimum supported version of pathspec to 0.10.1
+  * Fixed:
+    + Allow the valid non-SPDX license values
+      LicenseRef-Public-Domain and LicenseRef-Proprietary
+    + Show the help text of the CLI when no subcommand is selected
+- requires python-base to set the minimum python version, -devel is
+  not needed
+- requires pathspec >= 0.10.1
+
+-------------------------------------------------------------------
 Thu Aug 25 18:52:11 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.1:
