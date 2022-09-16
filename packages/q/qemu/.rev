@@ -3147,4 +3147,12 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
     <comment>- Update to v7.0.0 (bsc#1201307). For full release notes, see:</comment>
     <requestid>999194</requestid>
   </revision>
+  <revision rev="235" vrev="55">
+    <srcmd5>1bdd2d6e381921161e6006615ca8f45c</srcmd5>
+    <version>7.0.0</version>
+    <time>1663327929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003904</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 15 09:44:38 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- pcre-devel-static is only needed when building against
+  glib2 < 2.73. After that, glib2 was migrated to pcre2.
+
+-------------------------------------------------------------------
 Thu Jul 21 12:14:28 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
-- Substantial rework of the spec file: 
+- Substantial rework of the spec file:
   * the 'make check' testsuite now runs in the %check section of
     the main package, not in a subpackage
   * switched from %setup to %autosetup

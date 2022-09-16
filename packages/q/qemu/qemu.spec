@@ -248,8 +248,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Build dependencies exclusive to qemu-linux-user
 BuildRequires:  glib2-devel-static >= 2.56
 BuildRequires:  glibc-devel-static
-BuildRequires:  pcre-devel-static
 BuildRequires:  zlib-devel-static
+BuildRequires:  (pcre-devel-static if glib2-devel-static < 2.73 else pcre2-devel-static)
 # we must not install the qemu-linux-user package when under QEMU build
 %if 0%{?qemu_user_space_build:1}
 #!BuildIgnore:  post-build-checks
