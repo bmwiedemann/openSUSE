@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 16 08:18:08 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.15.0:
+  * Fix remove/up/down rows when lower selected first.
+  * Use Cal6 get_icons() so icon themes apply
+  * Add check for multiple toc.ncx files, use last to match Calibre viewer.
+  * Explicitly set --output-profile=tablet when doing epub3->epub2 autoconvert
+    in BG.
+  * Changes for upcoming Qt6 Calibre
+  * Do merging in a BG ground.
+  * Do merge in temp files instead of memory.
+  * Automatically convert input epub3s to epub2s before merging.
+  * Bump min Calibre version.
+  * Fix FFF one-chapter story check
+- Create package directory layout using find and cp so new setuptools no
+  longer dies horribly.
+
+-------------------------------------------------------------------
 Tue Apr 21 09:20:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use update-alternatives for the binary
