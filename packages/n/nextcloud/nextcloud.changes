@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 16 05:47:01 UTC 2022 - Petr Vanek <petr@yarpen.cz>
+
+- Fix php-bcmath package version recommendation in case of PHP 8
+
+-------------------------------------------------------------------
 Thu Sep  8 15:37:59 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 24.0.5

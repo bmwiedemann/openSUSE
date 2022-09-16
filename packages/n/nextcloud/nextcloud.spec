@@ -120,7 +120,7 @@ Recommends:     php-exif
 Recommends:     php-gmp
 # For enhanced server performance:
 Recommends:     php-APCu
-Recommends:     php7-bcmath
+Recommends:     php-bcmath
 # For preview generation:
 Recommends:     php-imagick
 Recommends:     php-ffmpeg
