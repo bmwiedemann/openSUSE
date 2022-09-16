@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 15 14:04:42 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Don't set QT_SCALE_FACTOR unless > 1 (bsc#1199020)
+  to avoid forcing QA to recreate all needles for all standard cases
+- 4.5.7
+
+-------------------------------------------------------------------
+Tue Sep 13 12:13:19 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Directly calculate the Qt scale factor, no longer rely on the
+  Xft.dpi X resource (bsc#1199020)
+- Support YAST_MON_WIDTH_MM=xx at installation boot prompt
+- Support YaST2.call script debugging with FAKE_MON_WIDTH_MM=xx
+- Support up to 392 dpi (up to scale factor 4.0)
+  More details: https://github.com/yast/yast-installation/pull/1057
+- No more console warnings if no EDID (bsc#1203161)
+- 4.5.6
+
+-------------------------------------------------------------------
 Fri Jul 22 11:35:42 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - AutoYaST SecondStage: Revert changes introduced in 4.3.46 running
