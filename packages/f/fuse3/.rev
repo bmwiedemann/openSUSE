@@ -182,4 +182,12 @@
   * Fixed returning an error condition to ioctl(2) (forwarded request 975065 from polslinux)</comment>
     <requestid>975132</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3880246b552d866efa134707e27bddd6</srcmd5>
+    <version>3.12.0</version>
+    <time>1663327928</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1003860</requestid>
+  </revision>
 </revisionlist>

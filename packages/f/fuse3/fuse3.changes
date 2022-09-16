@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep  8 12:41:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.12.0
+  * The max_idle_threads parameter has been deprecated in favor
+    of the new max_threads* parameter
+  * struct fuse_loop_config is now private and has to be
+    constructed using fuse_loop_cfg_create()
+  * fuse_session_loop_mt() now accepts struct fuse_loop_config *
+    as NULL pointer.
+  * fuse_parse_cmdline() now accepts a max_threads option.
+
+-------------------------------------------------------------------
 Thu May  5 07:31:46 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 3.11.0:
