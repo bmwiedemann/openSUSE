@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Jul 26 21:44:46 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Disable tests on Leap.
+
+-------------------------------------------------------------------
+Mon Jun 20 16:27:59 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Add patch to skip a broken test in TW with Python 3.10.
+
+-------------------------------------------------------------------
+Thu Apr 28 16:06:03 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Create initial package.
