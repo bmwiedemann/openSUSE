@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 16 08:53:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.9.19
+  * Fix build failure with Poppler ≥ 22.03.
+  * When converting PDF strings to UTF-8, keep non-characters
+    intact.
+  * Improve warning message for (unhandled) reset-form actions.
+  * Improve handling of Poppler memory allocation failures.
+  * Update the Polish translation.
+  * Drop support for Poppler < 0.62.
+  * Improve the configure script
+  * Improve the test suite
+- Drop patches, no longer needed:
+  * 0001-pdf-backend-fix-compat-with-Poppler-22.02.patch
+  * 0002-main-use-pdf-link-Destination-copy-constructor.patch
+  * 0003-pdf-backend-fix-compat-with-Poppler-22.02.patch
+  * 0004-pdf-backend-simplify-Poppler-22.03-compat-code.patch
+
+-------------------------------------------------------------------
 Thu Apr 14 08:24:32 UTC 2022 - Max Lin <mlin@suse.com>
 
 - Use C++17 for fix Leap build
