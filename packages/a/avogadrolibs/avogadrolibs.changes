@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Sep 11 18:39:13 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 1.97.0
+  https://github.com/OpenChemistry/avogadrolibs/releases/tag/1.97.0
+  Highlights:
+  * Adds molecular surfaces, solvent-accessible, and
+    solvent-excluded surfaces
+  * Adds support for a range of partial charge models, including
+    coloring electrostatic potentials on surfaces.
+  * This includes writing Python scripts to assign atomic charges
+    or electrostatic potential
+  * Adds improved hydrogen-bond, chalcogen, and halogen bond
+    rendering.
+  * Add improved close-contact and salt-bridge rendering
+  * Significantly improves interface translation, properly loading
+    translation files, and including a dialog to choose your
+    preferred user interface language
+- Add Fix_qtplugins_surfaces_linking.patch
+
+-------------------------------------------------------------------
 Tue Oct 19 13:08:05 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Workaround for Arm/openGL ES, until overlayaxes fixed upstream
