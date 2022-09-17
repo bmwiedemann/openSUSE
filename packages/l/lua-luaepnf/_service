@@ -1,0 +1,17 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/siffiejoe/lua-luaepnf</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
+    <param name="scm">git</param>
+    <param name="revision">0f7e644f0af988cf986797a76fe2f1c5f3f9dd5b</param>
+    <param name="versionrewrite-pattern">v(\d+.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+</services>
+
