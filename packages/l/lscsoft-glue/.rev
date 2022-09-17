@@ -42,4 +42,22 @@
     <comment></comment>
     <requestid>946764</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>68df366eab080e9e73334c13ee0024f3</srcmd5>
+    <version>3.0.1</version>
+    <time>1663438255</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.1:
+- Drop patches incorporated upstream
+- Use pytest to run tests; drop a network dependent test.
+- Add BuildRequires: python-pyRXP for test flavor; needed for one
+  of the new tests.
+- Split out new package, lscsoft-glue-data, with data files
+  needed by all lscsoft-glue binaries; required by all
+  python-lscsoft-glue flavors.
+- Redefine ligocommands macro to refer to updated binaries
+  installed.
+</comment>
+    <requestid>1004357</requestid>
+  </revision>
 </revisionlist>

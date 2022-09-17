@@ -27,34 +27,30 @@ ExcludeArch:    %{ix86}
 %define psuffix %{nil}
 %endif
 
+%define pname lscsoft-glue
 # NEP 29: numpy, matplotlib do not have a python36 flavor package in TW
 %define skip_python36 1
+# Support dropped for python2 by upstream
+%define skip_python2 1
 
-%define ligocommands ligolw_print_tables dmtdq_seg_insert ldbdc ldbdd ldg_submit_dax \
-        ligolw_cbc_glitch_page ligolw_combine_segments ligolw_diff ligolw_dq_active ligolw_dq_active_cats \
-        ligolw_dq_grapher ligolw_dq_query ligolw_geo_fr_to_dq ligolw_inspiral2mon \
-        ligolw_publish_dqxml ligolw_segment_diff ligolw_segment_insert ligolw_segment_intersect \
-        ligolw_segment_query ligolw_segment_union ligolw_segments_from_cats ligolw_segments_from_cats_split \
-        ligolw_veto_def_check ligolw_veto_sngl_trigger segdb_coalesce
+%define ligocommands ligolw_combine_segments ligolw_diff ligolw_dq_active ligolw_dq_active_cats ligolw_inspiral2mon ligolw_print_tables
 
 %define modname glue
 Name:           lscsoft-glue%{psuffix}
-Version:        2.1.0
+Version:        3.0.1
 Release:        0
 Summary:        Grid LSC User Environment
 License:        GPL-2.0-only
 URL:            http://software.ligo.org/lscsoft
-Source:         http://software.ligo.org/lscsoft/source/lscsoft-glue-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM lscsoft-glue-python-3.10-fixes.patch badshah400@gmail.com -- Fix python3.10 compatibility; patch taken from upstream merge request [https://git.ligo.org/lscsoft/glue/-/merge_requests/83]
-Patch0:         lscsoft-glue-python-3.10-fixes.patch
-# PATCH-FIX-UPSTREAM lscsoft-glue-disable-doctest.patch badshah400@gmail.com -- Disable some doctests not yet ready for python 3.10
-Patch1:         lscsoft-glue-disable-doctest.patch
+Source:         https://files.pythonhosted.org/packages/source/l/lscsoft-glue/%{pname}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       %{pname}-data = %{version}
 Requires:       python-ligo-segments
 Requires:       python-numpy
+Requires:       python-pyRXP
 Provides:       python-glue = %{version}-%{release}
 Obsoletes:      python-glue < %{version}-%{release}
 %define oldpython python
@@ -66,6 +62,8 @@ BuildRequires:  %{python_module ligo-segments}
 BuildRequires:  %{python_module lscsoft-glue = %{version}}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pyRXP}
+BuildRequires:  %{python_module pytest}
 %endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -77,11 +75,24 @@ for online and offline analysis as well as accessing various grid
 utilities.  It also provides the infrastructure for the segment
 database.
 
+%package -n %{pname}-data
+Summary:        Collection of data files for use by %{name}
+
+%description -n %{pname}-data
+Glue is a collection of utilities for running data analysis pipelines
+for online and offline analysis as well as accessing various grid
+utilities.  It also provides the infrastructure for the segment
+database.
+
+This package provides a common set of data files for %{name}.
+
 %prep
-%autosetup -p1 -n lscsoft-glue-%{version}
+%autosetup -p1 -n %{pname}-%{version}
 
 %build
+%if ! %{with test}
 %python_build
+%endif
 
 %install
 %if ! %{with test}
@@ -99,15 +110,10 @@ end}
 %python_expand %fdupes -s %{buildroot}%{$python_sitearch}
 %endif
 
-%check
 %if %{with test}
-%{python_expand export PYTHON=$python
-export PYTHONDONTWRITEBYTECODE=1
-cp -r test test-%{$python_bin_suffix}
-pushd test-%{$python_bin_suffix}
-%make_build check
-popd
-}
+%check
+# test_ldbd.py requires network; disable
+%pytest_arch -k 'not test_ldbd'
 %endif
 
 %if ! %{with test}
@@ -117,6 +123,9 @@ popd
 %postun
 # arguments after the master item are ignored
 %python_uninstall_alternative %ligocommands
+
+%files -n %{pname}-data
+%{_datadir}/%{name}/
 
 %files %{python_files}
 %doc README.md
