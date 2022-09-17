@@ -1,7 +1,7 @@
 #
 # spec file for package python-ansel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ansel
-Version:        0.2.0
+Version:        1.0.0
 Release:        0
 Summary:        Codecs for reading/writing documents in the ANSEL character set
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/haney/python-ansel
-Source:         https://files.pythonhosted.org/packages/source/a/ansel/ansel-%{version}.tar.gz
+Source:         https://github.com/haney/python-ansel/archive/refs/tags/v1.0.0.tar.gz#/ansel-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pyfakefs}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
@@ -41,15 +41,13 @@ BuildRequires:  %{python_module six}
 Codecs for reading/writing documents in the ANSEL character set.
 
 %prep
-%setup -q -n ansel-%{version}
-# https://github.com/haney/python-ansel/issues/109
-sed -i 's:.pytest-runner.::' setup.py
+%setup -q -n python-ansel-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
