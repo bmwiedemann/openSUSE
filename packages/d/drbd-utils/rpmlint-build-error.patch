@@ -32,7 +32,7 @@ diff -Naur drbd-utils-9.19.0.orig/scripts/Makefile.in drbd-utils-9.19.0/scripts/
 -	mkdir -p $(DESTDIR)$(sysconfdir)/bash_completion.d
 -	install -m 644 drbdadm.bash_completion $(DESTDIR)$(sysconfdir)/bash_completion.d/drbdadm$(BASH_COMPLETION_SUFFIX)
 +	mkdir -p $(DESTDIR)$(datadir)/bash-completion/completions
-+	install -m 644 drbdadm.bash_completion $(DESTDIR)$(datadir)/bash-completion/completions/drbdadm$(BASH_COMPLETION_SUFFIX)
++	install -m 644 drbdadm.bash_completion $(DESTDIR)$(datadir)/bash-completion/completions/drbdadm
  endif
  
  clean:
@@ -41,7 +41,7 @@ diff -Naur drbd-utils-9.19.0.orig/scripts/Makefile.in drbd-utils-9.19.0/scripts/
  	rm -f $(DESTDIR)$(sysconfdir)/ha.d/resource.d/drbdupper
  	rm -f $(DESTDIR)$(sysconfdir)/xen/scripts/block-drbd
 -	rm -f $(DESTDIR)$(sysconfdir)/bash_completion.d/drbdadm$(BASH_COMPLETION_SUFFIX)
-+	rm -f $(DESTDIR)$(datadir)/bash-completion/completions/drbdadm$(BASH_COMPLETION_SUFFIX)
++	rm -f $(DESTDIR)$(datadir)/bash-completion/completions/drbdadm
  	! test -L $(DESTDIR)/sbin/rcdrbd || rm $(DESTDIR)/sbin/rcdrbd
  
  .PHONY: install uninstall clean distclean

@@ -1,7 +1,7 @@
 #
 # spec file for package drbd-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,8 @@
 %define services drbd.service drbd-lvchange@.service drbd-promote@.service drbd-reconfigure-suspend-or-error@.service drbd-services@.target drbd-wait-promotable@.service drbd@.service drbd@.target ocf.ra@.service
 %if !0%{?usrmerged}
 %define sbindir /sbin
-%define libdir  /lib
+# see bsc#1203220 & usrmerge_move_lib_to_prefix_lib.patch for %{libdir}
+%define libdir  /usr/lib
 %else
 %define sbindir %{_sbindir}
 %define libdir  %{_prefix}/lib
@@ -111,10 +112,11 @@ PATH=/sbin:$PATH ./configure \
     --with-initscripttype=systemd \
     --with-systemdunitdir=%{_prefix}/lib/systemd/system \
 %if !0%{?usrmerged}
-    --prefix=/ \
+    --prefix=/usr \
     --sbindir=/sbin \
 %else
     --prefix=%{_prefix} \
+    --sbindir=%{_sbindir} \
 %endif
 %if 0%{?is_opensuse}
     --localstatedir=%{_localstatedir} \
@@ -123,6 +125,7 @@ PATH=/sbin:$PATH ./configure \
     --sysconfdir=%{_sysconfdir} \
     --datarootdir=%{_datadir} \
     --datadir=%{_datadir} \
+    --libdir=%{_prefix}/lib \
     --exec_prefix=%{_prefix}/lib \
     %{?with_drbdmon:   --with-drbdmon}     \
     %{?with_prebuiltman: --with-prebuiltman} \
@@ -132,6 +135,10 @@ PATH=/sbin:$PATH ./configure \
 
 %install
 %make_install
+
+%if !0%{?usrmerged}
+mkdir -p %{buildroot}%{_localstatedir}/lib/drbd
+%endif
 
 %ifnarch %{ix86} x86_64
 rm -rf %{buildroot}%{_sysconfdir}/xen
@@ -166,7 +173,7 @@ ln -sf drbdmon-9.0.8.gz %{_mandir}/ja/man8/drbdmon.8.gz
 %config(noreplace) %{_sysconfdir}/drbd.conf
 %config(noreplace) %{_sysconfdir}/drbd.d/global_common.conf
 %config(noreplace) %{_sysconfdir}/multipath/conf.d/drbd.conf
-%{_datadir}/bash-completion/completions/drbdadm.sh
+%{_datadir}/bash-completion/completions/drbdadm
 %{_tmpfilesdir}/drbd.conf
 %{_mandir}/man5/drbd.*
 %{_mandir}/man8/drbd*
