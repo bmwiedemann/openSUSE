@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Sep 13 17:13:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean some unused python2 python36 code from specfile
+- Move MarkupSafe to runtime requirement. Versioned. This is
+  checked in multibuild test flavor as build requirement.
+
+-------------------------------------------------------------------
+Mon Sep 12 16:14:15 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- test failed due to markupsafe module missing
+  Included markupsafe module
+
+-------------------------------------------------------------------
+Fri Sep  9 15:52:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2.2.2:
+  * Fix router to restore the 2.1 strict_slashes == False behaviour whereby leaf-requests match branch rules and vice versa. #2489
+  * Fix router to identify invalid rules rather than hang parsing them, and to correctly parse / within converter arguments. #2489
+  * Update subpackage imports in werkzeug.routing to use the import as syntax for explicitly re-exporting public attributes. #2493
+  * Parsing of some invalid header characters is more robust. #2494
+  * When starting the development server, a warning not to use it in a production deployment is always shown. #2480
+  * LocalProxy.__wrapped__ is always set to the wrapped object when the proxy is unbound, fixing an issue in doctest that would cause it to fail. #2485
+  * Address one ResourceWarning related to the socket used by run_simple. #2421
+
+- Update to Version 2.2.1:
+  * Fix router so that /path/ will match a rule /path if strict slashes mode is disabled for the rule. #2467
+  * Fix router so that partial part matches are not allowed i.e. /2df does not match /<int>. #2470
+  * Fix router static part weighting, so that simpler routes are matched before more complex ones. #2471
+  * Restore ValidationError to be importable from werkzeug.routing. #2465
+
+- Update to Version 2.2.0
+  * Deprecated get_script_name, get_query_string, peek_path_info, pop_path_info, and extract_path_info. #2461
+  * Remove previously deprecated code. #2461
+  * Add MarkupSafe as a dependency and use it to escape values when rendering HTML. #2419
+  * Added the werkzeug.debug.preserve_context mechanism for restoring context-local data for a request when running code in the debug console. #2439
+  * Fix compatibility with Python 3.11 by ensuring that end_lineno and end_col_offset are present on AST nodes. #2425
+  * Add a new faster matching router based on a state machine. #2433
+  * Fix branch leaf path masking branch paths when strict-slashes is disabled. #1074
+  * Names within options headers are always converted to lowercase. This matches RFC 6266 that the case is not relevant. #2442
+  * AnyConverter validates the value passed for it when building URLs. #2388
+  * The debugger shows enhanced error locations in tracebacks in Python 3.11. #2407
+  * Added Sans-IO is_resource_modified and parse_cookie functions based on WSGI versions. #2408
+  * Added Sans-IO get_content_length function. #2415
+  * Don’t assume a mimetype for test responses. #2450
+  * Type checking FileStorage accepts os.PathLike. #2418 
+
+-------------------------------------------------------------------
 Fri Jul 29 10:58:49 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
 - enable multibuild for test
