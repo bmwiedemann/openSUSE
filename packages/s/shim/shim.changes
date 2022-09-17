@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 12 12:30:54 UTC 2022 - Kilian Hanich <khanich.opensource@gmx.de>
+
+- Add logic to shim.spec to only set sbat policy when efivarfs is writeable.
+  (bsc#1201066)
+
+-------------------------------------------------------------------
 Fri Aug  5 05:25:16 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Add logic to shim.spec for detecting --set-sbat-policy option before
