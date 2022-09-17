@@ -1,3 +1,8 @@
+Mon Sep 12 12:00:00 UTC 2022 - cunix@mail.de
+
+- Heap-buffer-overflow in bundled thirdparty tool tinyexr
+  * added tinyexr_thirdparty_upstream.patch from upstream tinyexr (boo#1203278)
+
 -------------------------------------------------------------------
 Sat Aug 6 12:00:00 UTC 2022 - cunix@mail.de
 

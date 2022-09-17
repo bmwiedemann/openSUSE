@@ -262,4 +262,13 @@
     <comment>Update to 3.5</comment>
     <requestid>995068</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>75e4ec87957a47470ed66ca48dd1dd37</srcmd5>
+    <version>3.5</version>
+    <time>1663438240</time>
+    <user>dimstar_suse</user>
+    <comment>- Heap-buffer-overflow in bundled thirdparty tool tinyexr
+  * added tinyexr_thirdparty_upstream.patch from upstream tinyexr (boo#1203278)</comment>
+    <requestid>1004169</requestid>
+  </revision>
 </revisionlist>

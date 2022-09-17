@@ -36,6 +36,8 @@ Source1:        https://downloads.tuxfamily.org/godotengine/%{version}/%{name}-%
 Patch0:         linker_pie_flag.patch
 # Use system certificates as fallback for certificates
 Patch1:         certs_fallback.patch
+# Heap-buffer-overflow in bundled tinyexr
+Patch2:         tinyexr_thirdparty_upstream.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -243,6 +245,7 @@ Bash command line completion support for %{name}, %{name}-headless,
 %setup -q -n %{name}-%{version}-stable
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 cp thirdparty/README.md thirdparty_README.md
 
