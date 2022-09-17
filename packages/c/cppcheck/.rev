@@ -277,4 +277,37 @@
   * fix whole program analysis</comment>
     <requestid>989720</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>378f0bedcbf815be014745a5660df0ea</srcmd5>
+    <version>2.9</version>
+    <time>1663438254</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9:
+  * restored check for negative allocation (new[]) and negative VLA sizes from
+    cppcheck 1.87 (LCppC backport)
+  * replaced hardcoded check for pipe() buffer size by library configuration
+    option (LCppC backport)
+  * on Windows the callstack is now being written to the output specific via
+    &quot;--exception-handling&quot;
+  * make it possible to disable the various exception handling parts via the
+    CMake options &quot;NO_UNIX_SIGNAL_HANDLING&quot;, &quot;NO_UNIX_BACKTRACE_SUPPORT&quot; and
+    &quot;NO_WINDOWS_SEH&quot;
+  * detect more redundant calls of std::string::c_str(), std::string::substr(),
+    and unnecessary copies of containers
+  * Add a match function to addon similiar to Token::Match used internally by
+    cppcheck:
+  * | for either-or tokens(ie struct|class to match either struct or class)
+  * !! to negate a token
+  * It supports the %any%, %assign%, %comp%, %name%, %op%, %or%, %oror%, and %var% keywords
+  * It supports (*), {*}, [*], and &lt;*&gt; to match links
+  * @ can be added to bind the token to a name
+  * ** can be used to match until a token
+  * Add math functions which can be used in library function definition. This
+    enables evaluation of more math functions in ValueFlow
+  * Further improve lifetime analysis with this pointers
+  * Propagate condition values from outer function calls
+  * Add debug intrinsics debug_valueflow and debug_valuetype to show more
+    detail including source backtraces</comment>
+    <requestid>1004372</requestid>
+  </revision>
 </revisionlist>
