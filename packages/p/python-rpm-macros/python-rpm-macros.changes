@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 13 06:11:03 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 20220912.f91cae2:
+  * fix double expanded compileall in %{$python_pyproject_install}
+  * forgotten '%'
+
+-------------------------------------------------------------------
+Mon Sep 12 03:10:25 UTC 2022 - code@bnavigator.de
+
+- Update to version 20220911.111e4c9:
+  * fix gh#openSUSE/python-rpm-macros#141: allow parameters in sections
+  * more compact alternative scriptlets without newline
+  * Update flavor sets in README
+  * Document flavored PEP517 macros
+  * flavorize pyproject macros
+  * Avoid to install incorrect PEP610 metadata
+
+-------------------------------------------------------------------
 Mon Aug 15 06:05:08 UTC 2022 - mcepl@cepl.eu
 
 - Update to version 20220809.cf8a7b8 (bsc#1201041):

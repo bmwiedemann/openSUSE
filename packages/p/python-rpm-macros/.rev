@@ -529,4 +529,22 @@ prerequisite for new python submission</comment>
     <comment>- Update to version 20220809.cf8a7b8 (bsc#1201041):</comment>
     <requestid>998165</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>bf552f54643a57428b80d401ec0d9803</srcmd5>
+    <version>20220912.f91cae2</version>
+    <time>1663438096</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220912.f91cae2:
+  * fix double expanded compileall in %{$python_pyproject_install}
+  * forgotten '%'
+
+- Update to version 20220911.111e4c9:
+  * fix gh#openSUSE/python-rpm-macros#141: allow parameters in sections
+  * more compact alternative scriptlets without newline
+  * Update flavor sets in README
+  * Document flavored PEP517 macros
+  * flavorize pyproject macros
+  * Avoid to install incorrect PEP610 metadata</comment>
+    <requestid>1003105</requestid>
+  </revision>
 </revisionlist>
