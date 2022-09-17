@@ -168,4 +168,17 @@
     <comment></comment>
     <requestid>995222</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>610e96ea150fcf991baf34405f873e25</srcmd5>
+    <version>20220824.00</version>
+    <time>1663438238</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220824.00
+  * Workload certs (#177)
+- from version 20220823.00
+  * add members to OWNERS (#178)
+  * Expired key tests (#176)
+  * correct expired key handling (#175) (forwarded request 1004155 from glaubitz)</comment>
+    <requestid>1004182</requestid>
+  </revision>
 </revisionlist>

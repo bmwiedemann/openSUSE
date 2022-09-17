@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 16 15:27:23 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220824.00
+  * Workload certs (#177)
+- from version 20220823.00
+  * add members to OWNERS (#178)
+  * Expired key tests (#176)
+  * correct expired key handling (#175)
+
+-------------------------------------------------------------------
 Mon Aug 15 19:21:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- avoid bashism in post-install scripts (bsc#1195391) 
+- avoid bashism in post-install scripts (bsc#1195391)
 
 -------------------------------------------------------------------
 Wed Aug  3 10:24:30 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
