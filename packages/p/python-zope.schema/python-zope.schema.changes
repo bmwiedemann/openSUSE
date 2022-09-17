@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 16 12:03:45 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.2.1
+  * Fix incompatibility introduced in 6.1.0: The Bool field constructor 
+    implicitly set required to False if not given. 
+  * Add support for Python 3.10.
+  * Fix outsized integer test values that break tests on newer Python versions.
+
+-------------------------------------------------------------------
+Mon Sep 12 14:02:56 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Skip tests which broke with https://github.com/python/cpython/issues/95778
+
+-------------------------------------------------------------------
 Fri Jul  9 20:45:19 UTC 2021 - Jason Craig <os@jacraig.com>
 
 - Update to 6.1.0
