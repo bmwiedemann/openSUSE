@@ -84,16 +84,25 @@ code uses to construct the grammar directly in Python code.
 
 %if !%{with test}
 %build
-%{python_expand # use pythonXX-base bundled pip as PEP517 frontend for flit-core
+%{python_expand # use pythonXX-base bundled pip as PEP517 frontend for flit-core for every flavor to install
 mkdir -p build
 $python -m venv build/buildenv --system-site-packages
 }
+# building pure wheel once is enough
 export PATH=$PWD/build/buildenv/bin:$PATH
-%pyproject_wheel
+python -mpip wheel --verbose --progress-bar off \
+  --disable-pip-version-check --use-pep517 --no-build-isolation \
+  --no-deps --wheel-dir ./dist .
 
 %install
 export PATH=$PWD/build/buildenv/bin:$PATH
-%pyproject_install
+%{python_expand # install into every active flavored sitelib
+python -mpip install \
+  --verbose --progress-bar off --disable-pip-version-check \
+  --root %{buildroot} \
+  --ignore-installed --no-deps \
+  --no-index --find-links ./dist pyparsing==%{version}
+}
 # fix venv install path
 mv %{buildroot}/$PWD/build/buildenv %{buildroot}%{_prefix}
 rm -r %{buildroot}/home
