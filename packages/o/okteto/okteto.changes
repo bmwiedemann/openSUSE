@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Sep 16 11:57:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.7.0:
+  * fix: deploy with build flag (#3098) (#3104)
+  * Change logic for which images to build when deploying (#3057) (#3093)
+  * fix: show warning only when secret value is different (#3079) (#3080)
+  * fix: use specific terminal (#3019)
+  * Fix TestListDevModeOn (#3070)
+  * Okteto down and exec selector only active options (#3053)
+  * fix: visual bug (#3069)
+  * add build depends on okteto manifest v2  (#3064)
+  * Sanitize uppercase srv names (#3055)
+  * fix secrets replacement when okteto build (#3051)
+  * allow okteto destroy on deploy cmd (#3037)
+  * TrackReconnect new param to track dev pod recreation (#3050)
+  * chore: fix template for pull request (#3054)
+  * Audit workflows (#3036)
+  * Refactor selector (#3034)
+  * Fix dev selector typo (#3033)
+  * fix: warn when a secret is being overridden by local-env (#3032)
+  * Log syncthing api error before return (#3040)
+  * fix: show warning msg when sanitize dev (#3021)
+  * fix: delete te wrong folder (#3028)
+  * added link to blog for using okteto cli with vanilla clusters (#3027)
+  * Add okteto context to dockerfile build args (#2996)
+  * Add PreUpdate hook to newSpinner (#3023)
+  * Upgrade go to 1.18 (#3016)
+  * fix context checking when no manifest found (#3008)
+  * golang-ci-lint-fixes (#2952)
+
+-------------------------------------------------------------------
 Wed Sep 07 07:01:21 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.6.0:
