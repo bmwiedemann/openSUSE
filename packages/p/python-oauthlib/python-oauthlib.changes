@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 12 14:39:20 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update requirements
+
+- update to version 3.2.1:
+  * OAuth2.0 Provider: * #803: Metadata endpoint support of non-HTTPS
+    * CVE-2022-36087, bugzilla # 1203333
+  * OAuth1.0: * #818: Allow IPv6 being parsed by signature
+  * General: * Improved and fixed documentation warnings. * Cosmetic
+    changes based on isort
+
+-------------------------------------------------------------------
 Thu Feb  3 20:02:09 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

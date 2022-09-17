@@ -19,23 +19,23 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-oauthlib
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        A Generic Implementation of the OAuth Request-Signing Logic
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/oauthlib/oauthlib
 Source:         https://files.pythonhosted.org/packages/source/o/oauthlib/oauthlib-%{version}.tar.gz
-BuildRequires:  %{python_module PyJWT >= 1.0.0}
-BuildRequires:  %{python_module blinker}
-BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module PyJWT >= 2.0.0}
+BuildRequires:  %{python_module blinker >= 1.4}
+BuildRequires:  %{python_module cryptography >= 3.0.0 }
 BuildRequires:  %{python_module pyasn1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyJWT >= 1.0.0
-Requires:       python-blinker
-Requires:       python-cryptography
+Requires:       python-PyJWT >= 2.0.0
+Requires:       python-blinker >= 1.4
+Requires:       python-cryptography >= 3.0.0
 BuildArch:      noarch
 %python_subpackages
 
