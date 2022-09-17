@@ -43,7 +43,7 @@
 %endif
 %bcond_with extratest
 Name:           python-scikit-learn%{psuffix}
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause

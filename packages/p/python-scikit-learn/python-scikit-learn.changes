@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sat Sep 10 13:32:25 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.1.2:
+  * Changes
+    + Fix A default HTML representation is shown for meta-estimators
+      with invalid parameters. #24015 by Thomas Fan.
+    + Fix Add support for F-contiguous arrays for estimators and
+      functions whose back-end have been changed in 1.1. #23990 by
+      Julien Jerphanion.
+    + Fix Wheels are now available for MacOS 10.9 and greater. #23833
+      by Thomas Fan.
+  * sklearn.base
+    + Fix The get_params method of the BaseEstimator class now
+      supports estimators with type-type params that have the
+      get_params method. #24017 by Henry Sorsky.
+  * sklearn.cluster
+    + Fix Fixed a bug in cluster.Birch that could trigger an error
+      when splitting a node if there are duplicates in the
+      dataset. #23395 by Jérémie du Boisberranger.
+  * sklearn.feature_selection
+    + Fix feature_selection.SelectFromModel defaults to selection
+      threshold 1e-5 when the estimator is either
+      linear_model.ElasticNet or linear_model.ElasticNetCV with
+      l1_ratio equals 1 or linear_model.LassoCV. #23636 by Hao Chun
+      Chang.
+  * sklearn.impute
+    + Fix impute.SimpleImputer uses the dtype seen in fit for
+      transform when the dtype is object. #22063 by Thomas Fan.
+  * sklearn.linear_model
+    + Fix Use dtype-aware tolerances for the validation of gram
+      matrices (passed by users or precomputed). #22059 by Malte
+      S. Kurz.
+    + Fix Fixed an error in linear_model.LogisticRegression with
+      solver="newton-cg", fit_intercept=True, and a single
+      feature. #23608 by Tom Dupre la Tour.
+  * sklearn.manifold
+    + Fix manifold.TSNE now throws a ValueError when fit with
+      perplexity>=n_samples to ensure mathematical correctness of the
+      algorithm. #10805 by Mathias Andersen and #23471 by Meekail
+      Zain.
+  * sklearn.metrics
+    + Fix Fixed error message of metrics.coverage_error for 1D array
+      input. #23548 by Hao Chun Chang.
+  * sklearn.preprocessing
+    + Fix preprocessing.OrdinalEncoder.inverse_transform correctly
+      handles use cases where unknown_value or encoded_missing_value
+      is nan. #24087 by Thomas Fan.
+  * sklearn.tree
+    + Fix Fixed invalid memory access bug during fit in
+      tree.DecisionTreeRegressor and
+      tree.DecisionTreeClassifier. #23273 by Thomas Fan.
+
+-------------------------------------------------------------------
 Tue May 31 03:09:03 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile
