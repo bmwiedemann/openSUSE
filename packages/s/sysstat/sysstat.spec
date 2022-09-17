@@ -36,6 +36,8 @@ Patch3:         sysstat-service.patch
 Patch4:         harden_sysstat.service.patch
 BuildRequires:  findutils
 BuildRequires:  gettext-runtime
+BuildRequires:  libpcp-devel
+BuildRequires:  libpcp_import1
 BuildRequires:  pkgconfig
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
@@ -93,6 +95,7 @@ export sadc_options="-S ALL"
            --enable-copy-only \
            --disable-file-attr \
            --enable-debug-info \
+           --enable-pcp \
 %ifnarch s390 s390x
            --enable-sensors \
 %endif

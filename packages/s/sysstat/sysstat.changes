@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 15 14:49:20 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Add support for PCP (Performance Co-Pilot). [bsc#1203065]
+
+-------------------------------------------------------------------
 Mon May 30 08:53:57 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Rebased patches:
