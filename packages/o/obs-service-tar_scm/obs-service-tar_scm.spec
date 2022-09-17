@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?fedora_version}%{?centos_version}%{?rhel_version}%{?almalinux}
+%if 0%{?fedora_version}%{?rhel}
 %define _pkg_base %nil
 %else
 %define _pkg_base -base
@@ -40,7 +40,7 @@
 ExclusiveArch:  skip-build
 %endif
 
-%if 0%{?suse_version} >= 1315 || 0%{?fedora_version} >= 29 || 0%{?centos_version} >= 800 || 0%{?rhel_version} >= 800 || 0%{?almalinux} >= 8
+%if 0%{?suse_version} >= 1315 || 0%{?fedora_version} >= 29 || 0%{?rhel} >= 8
 %bcond_without python3
 %else
 %bcond_with    python3
@@ -71,14 +71,14 @@ ExclusiveArch:  skip-build
 %endif
 %endif
 
-%if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?scientificlinux_version} || 0%{?almalinux}
-%if 0%{?fedora_version} >= 29 || 0%{?rhel_version} >= 800 || 0%{?centos_version} >= 800 || 0%{?almalinux} >= 8
+%if 0%{?fedora_version} || 0%{?rhel}
+%if 0%{?fedora_version} >= 29 || 0%{?rhel} >= 8
 %define pyyaml_package %{use_python}-PyYAML
 %else
 %define pyyaml_package PyYAML
 %endif
 
-%if 0%{?fedora_version} >= 24 || 0%{?rhel_version} >= 800 || 0%{?centos_version} >= 800 || 0%{?almalinux} >= 8
+%if 0%{?fedora_version} >= 24 || 0%{?rhel} >= 8
 %define locale_package glibc-langpack-en
 %else
 %define locale_package glibc-common
@@ -92,7 +92,7 @@ ExclusiveArch:  skip-build
 
 # Mageia 8 has package names python-*
 # but requires python3 in shebang
-%if 0%{?mageia} >= 8 || 0%{?centos_version} >= 800 || 0%{?rhel_version} >= 800 || 0%{?almalinux} >= 8
+%if 0%{?mageia} >= 8 || 0%{?rhel} >= 8
 %define python_path %{_bindir}/python3
 %else
 %define python_path %{_bindir}/%{use_python}
@@ -119,8 +119,8 @@ Recommends:     %{use_python}-keyrings.alt                      \
 
 %define pkg_name obs-service-tar_scm
 Name:           %{pkg_name}%{nsuffix}
-%define version_unconverted 0.10.30.1641990734.bdad8f9
-Version:        0.10.30.1641990734.bdad8f9
+%define version_unconverted 0.10.32.1662712308.31d1884
+Version:        0.10.32.1662712308.31d1884
 Release:        0
 Summary:        An OBS source service: create tar ball from svn/git/hg
 License:        GPL-2.0-or-later
@@ -137,13 +137,15 @@ BuildRequires:  %{locale_package}
 BuildRequires:  %{pkg_name} = %{version}
 BuildRequires:  %{use_python}-keyring
 BuildRequires:  %{use_python}-keyrings.alt
-BuildRequires:  %{use_python}-mock
 BuildRequires:  %{use_python}-six
 BuildRequires:  %{use_python}-unittest2
 BuildRequires:  bzr
 BuildRequires:  git-core
 BuildRequires:  mercurial
 BuildRequires:  subversion
+%if !%{with python3}
+BuildRequires:  %{use_python}-mock
+%endif
 %endif
 
 BuildRequires:  %{locale_package}
@@ -169,6 +171,7 @@ BuildRequires:  python >= 2.6
 #
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
+Requires:       %{python_path}
 
 %description
 This is a source service for openSUSE Build Service.

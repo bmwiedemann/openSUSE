@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Sep 09 09:09:06 UTC 2022 - FSchreiner@suse.com
+
+- Update to version 0.10.32.1662712308.31d1884:
+  * [dist] added Requires to python_path
+  * improve tar service to handle multiple obsinfo files to create tarball from obscpio
+  * new ENV 'TAR_SCM_SKIP_CLEANUP' to make test development/debugging easier
+  * staple pylint version lower than 2.14 because of breaking changes in config
+  * do not use python mock
+  * fix pylint errors in commontests.py
+  * Fixed testing
+  * use extra cache dir for partial clone
+  * fix cache update in case of partial clone
+  * disable partial clone when subdir is set
+  * do not set default subdir to '.'
+  * fixes to pass pylint
+  * enable partial clone feature in git scm
+  * partial clone feature
+  * simplify locking to avoid race conditions
+  * TarSCM.cli: set some defaults to make usage in testing easier
+  * unlink .lock file after unlocking the cache
+
+-------------------------------------------------------------------
+Thu Jan 13 11:33:51 UTC 2022 - FSchreiner@suse.com
+
+- Update to version 0.10.30.1641993356.a87e7af:
+  * Simplifiy conditions for all rhel like distros
+  * Changed gendered pronoun to be gender neutral
+
+-------------------------------------------------------------------
 Wed Jan 12 12:45:18 UTC 2022 - FSchreiner@suse.com
 
 - Update to version 0.10.30.1641990734.bdad8f9:
