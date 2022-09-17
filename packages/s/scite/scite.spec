@@ -17,10 +17,10 @@
 #
 
 
-%define tar_ver 524
+%define tar_ver 530
 
 Name:           scite
-Version:        5.2.4
+Version:        5.3.0
 Release:        0
 Summary:        Source Code Editor based on Scintilla
 License:        MIT
@@ -30,7 +30,7 @@ Source0:        http://download.sourceforge.net/scintilla/%{name}%{tar_ver}.tgz
 Patch0:         scite-use-system-scintilla.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  libscintilla-devel >= 5.2.2
+BuildRequires:  libscintilla-devel >= 5.3.0
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gail-3.0)
 BuildRequires:  pkgconfig(gdk-3.0)
