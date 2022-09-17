@@ -25,7 +25,7 @@
 %endif
 
 Name:           dracut
-Version:        057+suse.309.gb71946f6
+Version:        057+suse.315.gd210fc38
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -138,7 +138,7 @@ Call dracut directly instead.
 %build
 %configure \
   --systemdsystemunitdir=%{_unitdir} \
-  --bashcompletiondir=%{_datarootdir}/bash-completion/completions \
+  --bashcompletiondir=%{_datadir}/bash-completion/completions \
   --libdir=%{_prefix}/lib \
   --enable-dracut-cpio
 %make_build all CFLAGS="%{optflags}" %{?_smp_mflags}
@@ -146,20 +146,42 @@ Call dracut directly instead.
 %install
 %make_install
 
-echo -e "#!/bin/bash\nDRACUT_VERSION=%{version}-%{release}" > %{buildroot}/%{dracutlibdir}/dracut-version.sh
+echo -e "#!/bin/bash\nDRACUT_VERSION=%{version}-%{release}" > %{buildroot}%{dracutlibdir}/dracut-version.sh
+
+# remove architecture specific modules
+%ifnarch ppc ppc64 ppc64le ppc64p7
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/90ppcmac
+%endif
+%ifnarch s390 s390x
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/80cms
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/81cio_ignore
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/91zipl
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/95dasd
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/95dasd_mod
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/95dasd_rules
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/95dcssblk
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/95qeth_rules
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/95zfcp
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/95zfcp_rules
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/95znet
+%else
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/00warpclock
+%endif
 
 mkdir -p %{buildroot}/boot/dracut
 mkdir -p %{buildroot}%{_localstatedir}/lib/dracut/overlay
 mkdir -p %{buildroot}%{_localstatedir}/log
 touch %{buildroot}%{_localstatedir}/log/dracut.log
 
-install -D -m 0644 dracut.conf.d/suse.conf.example %{buildroot}/usr/lib/dracut/dracut.conf.d/01-dist.conf
+install -D -m 0644 dracut.conf.d/suse.conf.example %{buildroot}%{dracutlibdir}/dracut.conf.d/01-dist.conf
 install -m 0644 suse/99-debug.conf %{buildroot}%{_sysconfdir}/dracut.conf.d/99-debug.conf
 install -m 0644 dracut.conf.d/fips.conf.example %{buildroot}%{_sysconfdir}/dracut.conf.d/40-fips.conf
 install -m 0644 dracut.conf.d/ima.conf.example %{buildroot}%{_sysconfdir}/dracut.conf.d/40-ima.conf
 # bsc#915218
 %ifarch s390 s390x
-install -m 0644 suse/s390x_persistent_device.conf %{buildroot}%{_sysconfdir}/dracut.conf.d/10-s390x_persistent_device.conf
+install -m 0644 suse/s390x_persistent_policy.conf %{buildroot}%{_sysconfdir}/dracut.conf.d/10-persistent_policy.conf
+%else
+install -m 0644 suse/persistent_policy.conf %{buildroot}%{_sysconfdir}/dracut.conf.d/10-persistent_policy.conf
 %endif
 
 install -D -m 0755 suse/mkinitrd-suse.sh %{buildroot}/%{dracut_sbindir}/mkinitrd
@@ -167,15 +189,15 @@ install -D -m 0755 suse/mkinitrd-suse.sh %{buildroot}/%{dracut_sbindir}/mkinitrd
 mv %{buildroot}%{_mandir}/man8/mkinitrd-suse.8 %{buildroot}%{_mandir}/man8/mkinitrd.8
 
 %if 0%{?suse_version}
-rm -f %{buildroot}/%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh
-ln -s %{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-suse.sh %{buildroot}/%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh
+rm -f %{buildroot}%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh
+ln -s %{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-suse.sh %{buildroot}%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh
 %else
-mv %{buildroot}/%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh %{buildroot}/%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-redhat.sh
-ln -s %{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-redhat.sh %{buildroot}/%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh
+mv %{buildroot}%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh %{buildroot}%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-redhat.sh
+ln -s %{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-redhat.sh %{buildroot}%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh
 %endif
 
 # create a link to dracut-util to be able to parse kernel command line arguments at generation time
-ln -s %{dracutlibdir}/dracut-util %{buildroot}/%{dracutlibdir}/dracut-getarg
+ln -s %{dracutlibdir}/dracut-util %{buildroot}%{dracutlibdir}/dracut-getarg
 
 %post
 # check whether /var/run has been converted to a symlink
@@ -248,12 +270,15 @@ fi
 %{dracutlibdir}/modules.d/02caps
 %{dracutlibdir}/modules.d/00dash
 %{dracutlibdir}/modules.d/05busybox
+%ifarch ppc ppc64 ppc64le ppc64p7
 %{dracutlibdir}/modules.d/90ppcmac
-
+%endif
+%ifarch s390 s390x
 # RH-specific s390 modules, we take another approach
 %{dracutlibdir}/modules.d/95dasd
 %{dracutlibdir}/modules.d/95zfcp
 %{dracutlibdir}/modules.d/95znet
+%endif
 
 %files mkinitrd-deprecated
 %{dracut_sbindir}/mkinitrd
@@ -266,19 +291,18 @@ fi
 %doc docs/HACKING.md docs/dracut.png docs/dracut.svg
 %{_bindir}/dracut
 %{_bindir}/lsinitrd
-%{_datarootdir}/bash-completion/completions/lsinitrd
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/dracut
+%{_datadir}/bash-completion/completions/lsinitrd
 %{_datadir}/pkgconfig/dracut.pc
 
 %config(noreplace) %{_sysconfdir}/dracut.conf
 %dir %{_sysconfdir}/dracut.conf.d
-%dir /usr/lib/dracut/dracut.conf.d
+%dir %{dracutlibdir}/dracut.conf.d
+%{dracutlibdir}/dracut.conf.d/01-dist.conf
 %config %{_sysconfdir}/dracut.conf.d/99-debug.conf
-%if 0%{?fedora} || 0%{?suse_version} || 0%{?rhel}
-/usr/lib/dracut/dracut.conf.d/01-dist.conf
-%endif
-%ifarch s390 s390x
-%config %{_sysconfdir}/dracut.conf.d/10-s390x_persistent_device.conf
-%endif
+%config %{_sysconfdir}/dracut.conf.d/10-persistent_policy.conf
 
 %{_mandir}/man8/dracut.8*
 %{_mandir}/man1/lsinitrd.1*
@@ -318,7 +342,9 @@ fi
 %{dracutlibdir}/modules.d/00bash
 %{dracutlibdir}/modules.d/00systemd
 %{dracutlibdir}/modules.d/00systemd-network-management
+%ifnarch s390 s390x
 %{dracutlibdir}/modules.d/00warpclock
+%endif
 %{dracutlibdir}/modules.d/01systemd-ac-power
 %{dracutlibdir}/modules.d/01systemd-ask-password
 %{dracutlibdir}/modules.d/01systemd-coredump
@@ -340,7 +366,6 @@ fi
 %{dracutlibdir}/modules.d/01systemd-tmpfiles
 %{dracutlibdir}/modules.d/01systemd-udevd
 %{dracutlibdir}/modules.d/01systemd-veritysetup
-
 %{dracutlibdir}/modules.d/03modsign
 %{dracutlibdir}/modules.d/03rescue
 %{dracutlibdir}/modules.d/04watchdog
@@ -361,10 +386,14 @@ fi
 %{dracutlibdir}/modules.d/50drm
 %{dracutlibdir}/modules.d/50plymouth
 %{dracutlibdir}/modules.d/62bluetooth
+%ifarch s390 s390x
 %{dracutlibdir}/modules.d/80cms
+%endif
 %{dracutlibdir}/modules.d/80lvmmerge
 %{dracutlibdir}/modules.d/80lvmthinpool-monitor
+%ifarch s390 s390x
 %{dracutlibdir}/modules.d/81cio_ignore
+%endif
 %{dracutlibdir}/modules.d/90btrfs
 %{dracutlibdir}/modules.d/90crypt
 %{dracutlibdir}/modules.d/90dm
@@ -387,11 +416,15 @@ fi
 %{dracutlibdir}/modules.d/91pcsc
 %{dracutlibdir}/modules.d/91pkcs11
 %{dracutlibdir}/modules.d/91tpm2-tss
+%ifarch s390 s390x
 %{dracutlibdir}/modules.d/91zipl
+%endif
 %{dracutlibdir}/modules.d/95cifs
+%ifarch s390 s390x
 %{dracutlibdir}/modules.d/95dasd_mod
 %{dracutlibdir}/modules.d/95dasd_rules
 %{dracutlibdir}/modules.d/95dcssblk
+%endif
 %{dracutlibdir}/modules.d/95debug
 %{dracutlibdir}/modules.d/95fcoe
 %{dracutlibdir}/modules.d/95fcoe-uefi
@@ -401,7 +434,9 @@ fi
 %{dracutlibdir}/modules.d/95nbd
 %{dracutlibdir}/modules.d/95nfs
 %{dracutlibdir}/modules.d/95nvmf
+%ifarch s390 s390x
 %{dracutlibdir}/modules.d/95qeth_rules
+%endif
 %{dracutlibdir}/modules.d/95resume
 %{dracutlibdir}/modules.d/95rootfs-block
 %{dracutlibdir}/modules.d/95ssh-client
@@ -409,7 +444,9 @@ fi
 %{dracutlibdir}/modules.d/95udev-rules
 %{dracutlibdir}/modules.d/95virtfs
 %{dracutlibdir}/modules.d/95virtiofs
+%ifarch s390 s390x
 %{dracutlibdir}/modules.d/95zfcp_rules
+%endif
 %{dracutlibdir}/modules.d/97biosdevname
 %{dracutlibdir}/modules.d/98dracut-systemd
 %{dracutlibdir}/modules.d/98ecryptfs
@@ -431,6 +468,5 @@ fi
 %dir %{_unitdir}/sysinit.target.wants
 %{_unitdir}/*.service
 %{_unitdir}/*/*.service
-%{_datarootdir}/bash-completion/completions/dracut
 
 %changelog

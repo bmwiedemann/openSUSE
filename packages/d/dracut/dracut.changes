@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 14 08:30:53 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 057+suse.315.gd210fc38:
+  * chore(suse): update spec
+      Fix "directories not owned by a package" caused by bash-completion directories not owned by dracut.
+      Do not install modules incompatible with the system architecture.
+  * chore(suse): change default persistent policy
+  * ci(suse.conf.example): update SUSE-specific config
+  * chore(suse): fix 99-debug.conf
+
+-------------------------------------------------------------------
 Thu Aug 18 07:14:21 UTC 2022 - antonio.feijoo@suse.com
 
 - Update to version 057+suse.309.gb71946f6:
