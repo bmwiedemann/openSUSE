@@ -133,4 +133,25 @@ providing the results. (forwarded request 695023 from mcepl)</comment>
     search_keys() to allow passing options relating to key servers.</comment>
     <requestid>980771</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>66463982d56cd31f689efeaf05f0bfcd</srcmd5>
+    <version>0.5.0</version>
+    <time>1663438248</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.0:
+  * Fixed #181: Added the ability to pass file paths to encrypt_file, decrypt_file,
+    sign_file, verify_file, get_recipients_file and added import_keys_file.
+  * Fixed #183: Handle FAILURE and UNEXPECTED conditions correctly. Thanks to sebbASF for
+    the patch.
+  * Fixed #185: Handle VALIDSIG arguments more robustly.
+  * Fixed #188: Remove handling of DECRYPTION_FAILED from Verify code, as not required
+    there. Thanks to sebbASF for the patch.
+  * Fixed #190: Handle KEY_CREATED more robustly.
+  * Fixed #191: Handle NODATA messages during verification.
+  * Fixed #196: Don't log chunk data by default, as it could contain sensitive
+    information (during decryption, for example).
+  * Added the ability to pass an environment to the gpg executable. Thanks to Edvard
+    Rejthar for the patch.</comment>
+    <requestid>1004263</requestid>
+  </revision>
 </revisionlist>
