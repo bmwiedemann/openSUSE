@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 16 04:54:22 UTC 2022 - William Brown <william.brown@suse.com>
+
+- bsc#1203433 - CVE-2022-36113 - resolve symlink hijack
+  * 0003-CVE-2022-36113-avoid-unpacking-.cargo-ok-from-the-cr.patch
+- bsc #1203431 - CVE-2022-36114 - resolve zip bomb attack
+  * 0002-CVE-2022-36114-limit-the-maximum-unpacked-size-of-a-.patch
+
+-------------------------------------------------------------------
 Mon Sep 12 02:33:07 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Disable test that relies on static PIE for Leap/SLE.

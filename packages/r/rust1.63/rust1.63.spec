@@ -241,6 +241,11 @@ Patch1:         wasm-use-system-lld.patch
 %if 0%{?sle_version} <= 150300 && 0%{?suse_version} < 1599
 Patch2:         0001-remove-test-that-relies-on-static-PIE.patch
 %endif
+# IMPORTANT - To generate patches for submodules in git so they apply relatively you can use
+#  git format-patch --dst-prefix=b/src/tools/cargo/  HEAD~2
+Patch3:         0002-CVE-2022-36114-limit-the-maximum-unpacked-size-of-a-.patch
+Patch4:         0003-CVE-2022-36113-avoid-unpacking-.cargo-ok-from-the-cr.patch
+
 BuildRequires:  chrpath
 BuildRequires:  curl
 BuildRequires:  fdupes

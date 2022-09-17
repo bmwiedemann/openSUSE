@@ -16,4 +16,12 @@
   * 0001-remove-test-that-relies-on-static-PIE.patch</comment>
     <requestid>1002551</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7d10e528cc134d9df3172b39bc0da70a</srcmd5>
+    <version>1.63.0</version>
+    <time>1663438116</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003997</requestid>
+  </revision>
 </revisionlist>
