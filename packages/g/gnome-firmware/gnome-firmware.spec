@@ -17,12 +17,12 @@
 
 
 Name:           gnome-firmware
-Version:        42.2
+Version:        43.0
 Release:        0
 Summary:        Install firmware on devices
 License:        GPL-2.0-or-later
 Group:          System/Management
-URL:            https://gitlab.gnome.org/hughsie/gnome-firmware-updater
+URL:            https://gitlab.gnome.org/World/gnome-firmware
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  help2man
 BuildRequires:  meson >= 0.46.0

@@ -45,4 +45,16 @@
     <comment>Update to 42.2 (forwarded request 980060 from dimstar)</comment>
     <requestid>980076</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2c64968a5dd7c967459af2ecc992e29f</srcmd5>
+    <version>43.0</version>
+    <time>1663438237</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.0:
+  + Use the new usb-receiver icon.
+  + Add a Windows msys2 build for future use.
+  + Updated translations.
+- Update _service and URL to new home.</comment>
+    <requestid>1004141</requestid>
+  </revision>
 </revisionlist>
