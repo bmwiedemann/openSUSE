@@ -1,7 +1,7 @@
 #
-# spec file for package erlang-sd_notify
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@ install -m 644 -p ebin/%{app_name}.beam %{buildroot}%{erlang_libdir}/%{app_name}
 
 %files
 %defattr(-,root,root,-)
-%doc LICENSE
+%license LICENSE
 %dir %{erlang_libdir}/%{app_name}-%{app_ver}
 %dir %{erlang_libdir}/%{app_name}-%{app_ver}/ebin
 %{erlang_libdir}/%{app_name}-%{app_ver}/ebin/%{app_name}.app
