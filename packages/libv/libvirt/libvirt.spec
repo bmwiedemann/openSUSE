@@ -952,9 +952,24 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %if 0%{?suse_version} > 1500
     %define logrotate_prefix %nil
     %define logrotate_dir %{_distconfdir}/logrotate.d
+    # Prepare for migration to /usr/etc; save any old .rpmsave
+    %define libvirt_logrotate_pre() \
+        for sc in %{?*} ; do \
+            test -f "%{_sysconfdir}/logrotate.d/${sc}.rpmsave" || continue ; \
+            mv -v "%{_sysconfdir}/logrotate.d/${sc}.rpmsave" "%{_sysconfdir}/logrotate.d/${sc}.rpmsave.old" ; \
+        done \
+        %{nil}
+    %define libvirt_logrotate_posttrans() \
+        for sc in %{?*} ; do \
+            test -f "%{_sysconfdir}/logrotate.d/${sc}.rpmsave" || continue ; \
+            mv -v "%{_sysconfdir}/logrotate.d/${sc}.rpmsave" "%{_sysconfdir}/logrotate.d/${sc}" ; \
+        done \
+        %{nil}
 %else
     %define logrotate_prefix %config(noreplace)
     %define logrotate_dir %{_sysconfdir}/logrotate.d
+    %define libvirt_logrotate_pre() %nil
+    %define libvirt_logrotate_posttrans() %nil
 %endif
 
 %meson \
@@ -1134,6 +1149,7 @@ VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check
 %pre daemon
 %libvirt_sysconfig_pre libvirtd virtproxyd virtlogd virtlockd libvirt-guests
 %service_add_pre libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket
+%libvirt_logrotate_pre libvirtd
 
 %post daemon
 /sbin/ldconfig
@@ -1154,6 +1170,7 @@ fi
 %service_del_postun_without_restart libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket
 
 %posttrans daemon
+%libvirt_logrotate_posttrans libvirtd
 %libvirt_sysconfig_posttrans libvirtd virtproxyd virtlogd virtlockd libvirt-guests
 # virtlockd and virtlogd must not be restarted, particularly virtlockd since the
 # locks it uses to protect VM resources would be lost. Both are safe to re-exec.
@@ -1285,9 +1302,13 @@ fi
 
 %pre daemon-driver-qemu
 %service_add_pre virtqemud.service virtqemud.socket virtqemud-ro.socket virtqemud-admin.socket
+%libvirt_logrotate_pre libvirtd.qemu
 
 %post daemon-driver-qemu
 %service_add_post virtqemud.service virtqemud.socket virtqemud-ro.socket virtqemud-admin.socket
+
+%posttrans daemon-driver-qemu
+%libvirt_logrotate_posttrans libvirtd.qemu
 
 %preun daemon-driver-qemu
 %service_del_preun virtqemud.service virtqemud.socket virtqemud-ro.socket virtqemud-admin.socket
@@ -1297,9 +1318,13 @@ fi
 
 %pre daemon-driver-lxc
 %service_add_pre virtlxcd.service virtlxcd.socket virtlxcd-ro.socket virtlxcd-admin.socket
+%libvirt_logrotate_pre libvirtd.lxc
 
 %post daemon-driver-lxc
 %service_add_post virtlxcd.service virtlxcd.socket virtlxcd-ro.socket virtlxcd-admin.socket
+
+%posttrans daemon-driver-lxc
+%libvirt_logrotate_posttrans libvirtd.lxc
 
 %preun daemon-driver-lxc
 %service_del_preun virtlxcd.service virtlxcd.socket virtlxcd-ro.socket virtlxcd-admin.socket
@@ -1309,9 +1334,13 @@ fi
 
 %pre daemon-driver-libxl
 %service_add_pre virtxend.service virtxend.socket virtxend-ro.socket virtxend-admin.socket
+%libvirt_logrotate_pre libvirtd.libxl
 
 %post daemon-driver-libxl
 %service_add_post virtxend.service virtxend.socket virtxend-ro.socket virtxend-admin.socket
+
+%posttrans daemon-driver-libxl
+%libvirt_logrotate_posttrans libvirtd.libxl
 
 %preun daemon-driver-libxl
 %service_del_preun virtxend.service virtxend.socket virtxend-ro.socket virtxend-admin.socket

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 15 12:16:26 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration to /usr/etc: Saving user changed configuration files
+  in /etc and restoring them while an RPM update.
+
+-------------------------------------------------------------------
 Thu Sep  1 20:37:17 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 8.7.0
