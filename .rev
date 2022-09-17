@@ -461,4 +461,41 @@
     <comment>Add references to bsc#1202624, CVE-2021-28861</comment>
     <requestid>1000538</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>02217475b20c7c277c782e28dd397a36</srcmd5>
+    <version>3.10.7</version>
+    <time>1663438087</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.10.7:
+  - Fix for CVE-2020-10735 (bsc#1203125) Converting between int
+    and str in bases other than 2 (binary), 4, 8 (octal), 16
+    (hexadecimal), or 32 such as base 10 (decimal) now raises
+    a ValueError if the number of digits in string form is above
+    a limit to avoid potential denial of service attacks due to
+    the algorithmic complexity.
+  - Other bug fixes:
+    - Fixed a bug that caused _PyCode_GetExtra to return garbage
+      for negative indexes.
+    - Fix format string in _PyPegen_raise_error_known_location
+      that can lead to memory corruption on some 64bit systems.
+      The function was building a tuple with i (int) instead of
+      n (Py_ssize_t) for Py_ssize_t arguments.
+    - Fix misleading contents of error message when converting an
+      all-whitespace string to float.
+    - coroutine.throw() now properly initializes the frame.f_back
+      when resuming a stack of coroutines. This allows e.g.
+      traceback.print_stack() to work correctly when an exception
+      (such as CancelledError) is thrown into a coroutine.
+    - ast.parse() will no longer parse function definitions with
+      positional-only params when passed feature_version less
+      than (3, 8).
+    - Correct conversion of numbers.Rational’s to float.
+    - Fix a performance regression in logging
+      TimedRotatingFileHandler. Only check for special files when
+      the rollover time has passed.
+    - Fix unused localName parameter in the Attr class in
+      xml.dom.minidom.
+    - Update bundled pip to 22.2.2.</comment>
+    <requestid>1002508</requestid>
+  </revision>
 </revisionlist>
