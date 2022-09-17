@@ -41,7 +41,7 @@
 %bcond_with     borg_sysblake2
 %endif
 Name:           borgbackup
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Deduplicating backup program with compression and authenticated encryption
 License:        BSD-3-Clause
@@ -60,7 +60,7 @@ BuildRequires:  fdupes
 BuildRequires:  fish
 BuildRequires:  gcc-c++
 BuildRequires:  libacl-devel
-BuildRequires:  openssl-devel >= 1.0.0
+BuildRequires:  openssl-devel >= 1.1.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Cython
 BuildRequires:  python3-base >= 3.8
