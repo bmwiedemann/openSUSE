@@ -88,4 +88,15 @@
     <comment>- Make it work with old python-rpm-macros (forwarded request 945131 from bnavigator)</comment>
     <requestid>945132</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9c3069938e52294264b4cbcceb4ef19d</srcmd5>
+    <version>0.13.0</version>
+    <time>1663438095</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.0:
+  - Remove support for end-of-life Pythons. Now requires Python3.6+.
+  - Remove support for ``toml`` package. Now requires ``tomli``.
+  - Rely on preferred &quot;files&quot; API on Python 3.9 and later (#140).</comment>
+    <requestid>1003052</requestid>
+  </revision>
 </revisionlist>

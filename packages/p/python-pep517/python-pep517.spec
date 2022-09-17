@@ -27,7 +27,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pep517%{psuffix}
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Wrappers to build Python packages using PEP 517 hooks
 License:        MIT
@@ -54,11 +54,7 @@ BuildRequires:  python-xml
 %ifpython2
 Requires:       python-xml
 %endif
-%if 0%{?python_version_nodots} < 36
-Requires:       python-toml
-%else
 Requires:       python-tomli
-%endif
 %if 0%{?python_version_nodots} < 38
 Requires:       python-importlib-metadata
 Requires:       python-zipp
