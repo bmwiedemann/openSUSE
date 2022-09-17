@@ -31,4 +31,36 @@ It does NOT conflict with python38 standard library.</comment>
     which versions correspond to which behavior in CPython.</comment>
     <requestid>929912</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e4dbcc8b2ee05850b5fa5ae13f83549e</srcmd5>
+    <version>5.9.0</version>
+    <time>1663438097</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.9.0:
+  - #228: as_file now also supports a Traversable representing
+    a directory and (when needed) renders the full tree to a
+    temporary directory.
+  - #253: In MultiplexedPath, restore expectation that a compound
+    path with a non-existent directory does not raise an
+    exception.
+  - #250: Now Traversable.joinpath provides a concrete
+    implementation, replacing the implementation in .simple and
+    converging with the behavior in MultiplexedPath.
+  - #249: In simple.ResourceContainer.joinpath, honor names split
+    by posixpath.sep.
+  - #248: abc.Traversable.joinpath now allows for multiple
+    arguments and specifies that posixpath.sep is allowed
+    in any argument to accept multiple arguments, matching
+    the behavior found in zipfile.Path and pathlib.Path
+    simple.ResourceContainer now honors this behavior
+  - #244: Add type declarations in ABCs Require Python 3.7 or
+    later
+  - #243: Fix error when no __pycache__ directories exist when
+    testing update-zips.
+- Remove BR on python-zipp to break a dependency cycle; it is
+  strictly not needed for build (although it is Requires),
+  because ZipReader is not tested.
+</comment>
+    <requestid>1003114</requestid>
+  </revision>
 </revisionlist>

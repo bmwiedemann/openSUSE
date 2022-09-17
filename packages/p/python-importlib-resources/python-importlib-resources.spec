@@ -1,7 +1,7 @@
 #
 # spec file for package python-importlib-resources
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,21 @@
 %{?!python_module:%define python3-%{**}}
 %define skip_python2 1
 Name:           python-importlib-resources
-Version:        5.4.0
+Version:        5.9.0
 Release:        0
 Summary:        Read resources from Python packages
 License:        Apache-2.0
 URL:            https://importlib-resources.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/i/importlib_resources/importlib_resources-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module toml}
-BuildRequires:  %{python_module zipp >= 3.1.0 if %python-base < 3.10}
+BuildRequires:  %{python_module wheel}
+# Breaking the depcycle; not absolutely needed as ZipReader is not executed in tests.
+# BuildRequires:  %%{python_module zipp >= 3.1.0 if %%python-base < 3.10}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-importlib_resources = %{version}
@@ -56,10 +59,10 @@ consistent semantics.
 %setup -q -n importlib_resources-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
