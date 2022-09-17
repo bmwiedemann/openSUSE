@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 17 07:56:00 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v4.4.1 fixed potential SIGSEGV while adjusting
+  buffer size and using AgsSF2Synth.
+- fixed premature stop of playback after audio export.
+
+-------------------------------------------------------------------
 Sat Jul 23 11:37:02 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v4.2.13 fixed don't initialize playback recall
