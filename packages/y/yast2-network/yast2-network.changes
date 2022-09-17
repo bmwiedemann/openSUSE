@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 16 08:23:21 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Activate s390 devices before importing and reading the network
+  configuration or otherwise the related linux devices will not be
+  present and could be ignored (bsc#1199746)
+- 4.5.7
+
+-------------------------------------------------------------------
 Thu Sep  1 08:30:47 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - At the end of the installation, force an enablement of the
