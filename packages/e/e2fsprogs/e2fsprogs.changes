@@ -1,14 +1,33 @@
 -------------------------------------------------------------------
+Thu Sep 15 10:23:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Refresh e2fsprogs.keyring based on currently provided keys.
+
+-------------------------------------------------------------------
+Wed Sep 14 14:47:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Spec file cleanup:
+  + Drop remainders regarding -mini packages, which was not a thing
+    since Jan 2014.
+  + Split build of fuse2fs out into a sep build (_multibuild
+    enabled).
+
+-------------------------------------------------------------------
+Tue Sep 13 13:47:21 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- enabled fuse2fs build which enable to mount ext2/3/4 via FUSE
+
+-------------------------------------------------------------------
 Tue Apr 19 20:51:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- avoid empty preuninstall script 
+- avoid empty preuninstall script
 
 -------------------------------------------------------------------
 Fri Jan 28 15:40:35 UTC 2022 - Jan Kara <jack@suse.cz>
 
 - Update to 1.46.5:
   * better handling for resizing to fs sizes which would exceed inode limits
-  * fix crash in e2fsck fastcommit handling 
+  * fix crash in e2fsck fastcommit handling
   * fix possibly lost quota limits when e2fsck corrects quota files
   * fix tune2fs to properly transfer quota limits when convertion quota files
   * add support for handling of version 0 quota files in tune2fs

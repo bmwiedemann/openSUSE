@@ -16,72 +16,31 @@
 #
 
 
-%define build_mini 0
+%define flavor @BUILD_FLAVOR@%nil
 
+%if "%{flavor}" == ""
 Name:           e2fsprogs
+Summary:        Utilities for the Second Extended File System
+License:        GPL-2.0-only
 %if 0%{?suse_version} >= 1010
 # Hint for ZYPP
 Supplements:    filesystem(ext2) filesystem(ext3) filesystem(ext4)
 %endif
-%if 0%{?suse_version} >= 1210
-%bcond_without systemd
 %else
-%bcond_with systemd
+Name:           fuse2fs
+Summary:        FUSE file system client for ext2/ext3/ext4 file systems
+License:        MIT
+BuildRequires:  fuse-devel
 %endif
-BuildRequires:  libblkid-devel
-BuildRequires:  libuuid-devel
-BuildRequires:  pkg-config
-BuildRequires:  xz
-%if ! %{build_mini}
-%if 0%{?suse_version} > 1220
-BuildRequires:  makeinfo
-%endif
-# Define info macros if missing (for Fedora builds)
-%if ! 0%{?suse_version}
-%define install_info_prereq info
-%define install_info sbin/install-info
-%define install_info_delete sbin/install-info --delete
-Requires(post): %install_info_prereq
-Requires(preun):%install_info_prereq
-%endif
-%endif
-# bug437293
-%ifarch ppc64
-Obsoletes:      e2fsprogs-64bit
-%endif
-
-%if %{build_mini}
-Conflicts:      e2fsprogs
-Conflicts:      e2fsprogs-devel
-Conflicts:      libcom_err-devel
-Conflicts:      libcom_err2
-Conflicts:      libext2fs-devel
-Conflicts:      libext2fs2
-%else
-Conflicts:      e2fsprogs-mini
-Conflicts:      e2fsprogs-mini-devel
-Conflicts:      libcom_err-mini-devel
-Conflicts:      libcom_err2-mini
-Conflicts:      libext2fs-mini-devel
-Conflicts:      libext2fs2-mini
-%endif
-#
 Version:        1.46.5
 Release:        0
-Summary:        Utilities for the Second Extended File System
-License:        GPL-2.0-only
 Group:          System/Filesystems
 URL:            http://e2fsprogs.sourceforge.net
-# For regenerate_initrd_post macro
-Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires:       libcom_err2 >= %{version}
-Requires:       libext2fs2 >= %{version}
-Suggests:       e2fsprogs-scrub
 Source:         http://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v%{version}/e2fsprogs-%{version}.tar.xz
 Source2:        README.SUSE
 Source3:        baselibs.conf
 Source4:        http://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v%{version}/e2fsprogs-%{version}.tar.sign
-Source5:        https://thunk.org/tytso/tytso-key.asc#/%{name}.keyring
+Source5:        https://thunk.org/tytso/tytso-key.asc#/e2fsprogs.keyring
 #
 # e2fsprogs patches
 #
@@ -93,6 +52,37 @@ Patch6:         harden_e2scrub@.service.patch
 Patch7:         harden_e2scrub_all.service.patch
 Patch8:         harden_e2scrub_fail@.service.patch
 Patch9:         harden_e2scrub_reap.service.patch
+BuildRequires:  libblkid-devel
+BuildRequires:  libuuid-devel
+BuildRequires:  pkg-config
+BuildRequires:  xz
+%if "%{flavor}" == ""
+%if 0%{?suse_version} >= 1210
+%bcond_without systemd
+%else
+%bcond_with systemd
+%endif
+%if 0%{?suse_version} > 1220
+BuildRequires:  makeinfo
+%endif
+# Define info macros if missing (for Fedora builds)
+%if ! 0%{?suse_version}
+%define install_info_prereq info
+%define install_info sbin/install-info
+%define install_info_delete sbin/install-info --delete
+Requires(post): %install_info_prereq
+Requires(preun):%install_info_prereq
+%endif
+# bug437293
+%ifarch ppc64
+Obsoletes:      e2fsprogs-64bit
+%endif
+#
+# For regenerate_initrd_post macro
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires:       libcom_err2 >= %{version}
+Requires:       libext2fs2 >= %{version}
+Suggests:       e2fsprogs-scrub
 # Do not suppress make commands
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -100,6 +90,13 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Utilities needed to create and maintain ext2 and ext3 file systems
 under Linux. Included in this package are: chattr, lsattr, mke2fs,
 mklost+found, tune2fs, e2fsck, resize2fs, and badblocks.
+%else
+
+%description
+fuse2fs is a FUSE file system client that supports reading and
+writing from devices or image files containing ext2, ext3, and
+ext4 file systems.
+%endif
 
 %package devel
 Summary:        Dummy development package
@@ -117,12 +114,7 @@ Requires:       libuuid-devel
 %description devel
 Dummy development package for backwards compatibility.
 
-%if %{build_mini}
-%package -n e2fsprogs-scrub-mini
-%else
-
 %package -n e2fsprogs-scrub
-%endif
 Summary:        Ext2fs scrubbing scripts and service files
 License:        GPL-2.0-only
 Group:          System/Filesystems
@@ -139,45 +131,24 @@ Requires:       util-linux
 Scripts and systemd service files for background scrubbing of LVM volumes
 with ext2, ext3, and ext4 filesystems.
 
-%if %{build_mini}
-%package -n libext2fs2-mini
-%else
-
 %package -n libext2fs2
-%endif
 Summary:        Ext2fs library
 License:        LGPL-2.0-only
 Group:          System/Filesystems
 
-%if %{build_mini}
-%description -n libext2fs2-mini
-%else
-
 %description -n libext2fs2
-%endif
 The basic Ext2fs shared library.
 
-%if %{build_mini}
-%package -n libext2fs-mini-devel
-%else
-
 %package -n libext2fs-devel
-%endif
 Summary:        Development files for libext2fs
 License:        LGPL-2.0-only
 Group:          Development/Libraries/C and C++
 Requires:       libcom_err-devel
 Requires:       libext2fs2 = %version
 
-%if %{build_mini}
-%description -n libext2fs-mini-devel
-%else
-
 %description -n libext2fs-devel
-%endif
 Development files for libext2fs.
 
-%if ! %{build_mini}
 %package -n libext2fs-devel-static
 Summary:        Development files for libext2fs
 License:        LGPL-2.0-only
@@ -188,14 +159,8 @@ Provides:       libext2fs-devel:%{_libdir}/libext2fs.a
 
 %description -n libext2fs-devel-static
 Development files for libext2fs. Static libraries.
-%endif
-
-%if %{build_mini}
-%package -n libcom_err2-mini
-%else
 
 %package -n libcom_err2
-%endif
 Summary:        E2fsprogs error reporting library
 # bug437293
 License:        MIT
@@ -208,20 +173,10 @@ Obsoletes:      libcom_err2-64bit
 Provides:       libcom_err = %{version}
 Obsoletes:      libcom_err <= 1.40
 
-%if %{build_mini}
-%description -n libcom_err2-mini
-%else
-
 %description -n libcom_err2
-%endif
 com_err is an error message display library.
 
-%if %{build_mini}
-%package -n libcom_err-mini-devel
-%else
-
 %package -n libcom_err-devel
-%endif
 Summary:        Development files for libcom_err
 # bug437293
 License:        MIT
@@ -233,15 +188,9 @@ Obsoletes:      libcom_err-devel-64bit
 Requires:       glibc-devel
 Requires:       libcom_err2 = %version
 
-%if %{build_mini}
-%description -n libcom_err-mini-devel
-%else
-
 %description -n libcom_err-devel
-%endif
 Development files for the com_err error message display library.
 
-%if ! %{build_mini}
 %package -n libcom_err-devel-static
 Summary:        Development files for libcom_err, static libraries
 License:        MIT
@@ -257,7 +206,6 @@ Obsoletes:      libcom_err-devel-64bit
 
 %description -n libcom_err-devel-static
 Development files for the com_err error message display library. Static libraries.
-%endif
 
 %prep
 %setup -q -n e2fsprogs-%{version}
@@ -283,14 +231,12 @@ cp %{SOURCE2} .
   --without-crond-dir \
   --with-systemd-unit-dir=%{?_unitdir} \
   CFLAGS="$RPM_OPT_FLAGS"
-%if %{build_mini}
-rm -rf doc
-%endif
 make %{?_smp_mflags} V=1
 #Guarantee that tranlations match the source messages
 make -C po update-po
 
 %install
+%if "%{flavor}" == ""
 make install install-libs DESTDIR=$RPM_BUILD_ROOT ELF_INSTALL_DIR=/%{_libdir}
 
 %{find_lang} e2fsprogs
@@ -327,92 +273,51 @@ done
 %endif
 
 %if %{with systemd}
-%if %{build_mini}
-%pre -n e2fsprogs-scrub-mini
-%else
-
 %pre -n e2fsprogs-scrub
-%endif
 %service_add_pre e2scrub@.service e2scrub_all.service e2scrub_all.timer e2scrub_fail@.service e2scrub_reap.service
 %endif
 
 %post
 /sbin/ldconfig
-%if ! %{build_mini}
 %if 0%{?suse_version} <= 1530
 %install_info --info-dir=%{_infodir} %{_infodir}/libext2fs.info.gz
 %endif
 %{?regenerate_initrd_post}
-%endif
 
 %if %{with systemd}
-%if %{build_mini}
-%post -n e2fsprogs-scrub-mini
-%else
-
 %post -n e2fsprogs-scrub
-%endif
 %service_add_post e2scrub@.service e2scrub_all.service e2scrub_all.timer e2scrub_fail@.service e2scrub_reap.service
 %endif
 
 %if %{with systemd}
-%if %{build_mini}
-%preun -n e2fsprogs-scrub-mini
-%else
 %if 0%{?suse_version} <= 1530
 %preun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/libext2fs.info.gz
 %endif
 
 %preun -n e2fsprogs-scrub
-%endif
 %service_del_preun e2scrub@.service e2scrub_all.service e2scrub_all.timer e2scrub_fail@.service e2scrub_reap.service
 %endif
 
 %postun
 /sbin/ldconfig
-%if ! %{build_mini}
 %{?regenerate_initrd_post}
-%endif
 
 %if %{with systemd}
-%if %{build_mini}
-%postun -n e2fsprogs-scrub-mini
-%else
-
 %postun -n e2fsprogs-scrub
-%endif
 %service_del_postun e2scrub@.service e2scrub_all.service e2scrub_all.timer e2scrub_fail@.service e2scrub_reap.service
 %endif
 
-%if ! %{build_mini}
 %posttrans
 %{?regenerate_initrd_posttrans}
-%endif
 
-%if %{build_mini}
-%post -n libext2fs2-mini -p /sbin/ldconfig
-%else
 %post -n libext2fs2 -p /sbin/ldconfig
-%endif
 
-%if %{build_mini}
-%postun -n libext2fs2-mini -p /sbin/ldconfig
-%else
 %postun -n libext2fs2 -p /sbin/ldconfig
-%endif
 
-%if %{build_mini}
-%post -n libcom_err2-mini -p /sbin/ldconfig
-%else
 %post -n libcom_err2 -p /sbin/ldconfig
-%endif
 
-%if %{build_mini}
-%postun -n libcom_err2-mini -p /sbin/ldconfig
-%else
 %postun -n libcom_err2 -p /sbin/ldconfig
-%endif
 
 %files -f e2fsprogs.lang
 %defattr(-, root, root)
@@ -466,9 +371,7 @@ done
 %{_sbindir}/e2freefrag
 %{_sbindir}/e4defrag
 %{_sbindir}/e4crypt
-%if ! %{build_mini}
 %{_infodir}/libext2fs.info.gz
-%endif
 %{_mandir}/man1/chattr.1.gz
 %{_mandir}/man1/lsattr.1.gz
 %{_mandir}/man5/ext?.5.gz
@@ -480,12 +383,7 @@ done
 %defattr(-,root,root)
 %doc README.SUSE
 
-%if %{build_mini}
-%files -n e2fsprogs-scrub-mini
-%else
-
 %files -n e2fsprogs-scrub
-%endif
 %defattr(-,root,root)
 %config /etc/e2scrub.conf
 %{_sbindir}/e2scrub
@@ -500,12 +398,7 @@ done
 %{_unitdir}/e2scrub_reap.service
 %endif
 
-%if %{build_mini}
-%files -n libext2fs2-mini
-%else
-
 %files -n libext2fs2
-%endif
 %defattr(-, root, root)
 %if !0%{?usrmerged}
 /%{_lib}/libext2fs.so.*
@@ -514,12 +407,7 @@ done
 %{_libdir}/libext2fs.so.*
 %{_libdir}/libe2p.so.*
 
-%if %{build_mini}
-%files -n libext2fs-mini-devel
-%else
-
 %files -n libext2fs-devel
-%endif
 %defattr(-, root, root)
 %{_libdir}/libext2fs.so
 %{_libdir}/libe2p.so
@@ -528,12 +416,7 @@ done
 %_libdir/pkgconfig/e2p.pc
 %_libdir/pkgconfig/ext2fs.pc
 
-%if %{build_mini}
-%files -n libcom_err2-mini
-%else
-
 %files -n libcom_err2
-%endif
 %defattr(-, root, root)
 %if !0%{?usrmerged}
 /%{_lib}/libcom_err.so.*
@@ -542,12 +425,7 @@ done
 %{_libdir}/libcom_err.so.*
 %{_libdir}/libss.so.*
 
-%if %{build_mini}
-%files -n libcom_err-mini-devel
-%else
-
 %files -n libcom_err-devel
-%endif
 %defattr(-, root, root)
 %_bindir/compile_et
 %_bindir/mk_cmds
@@ -564,7 +442,6 @@ done
 %{_mandir}/man1/mk_cmds.1.gz
 %{_mandir}/man3/com_err.3.gz
 
-%if ! %{build_mini}
 %files -n libcom_err-devel-static
 %defattr(-, root, root)
 %{_libdir}/libcom_err.a
@@ -574,6 +451,14 @@ done
 %defattr(-, root, root)
 %{_libdir}/libext2fs.a
 %{_libdir}/libe2p.a
+
+%else
+%make_install
+(cd %{buildroot}; find -L -type f | grep -v fuse2fs | xargs rm)
+
+%files
+%_bindir/fuse2fs
+%{_mandir}/man1/fuse2fs.1.gz
 %endif
 
 %changelog
