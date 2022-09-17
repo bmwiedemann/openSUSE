@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 14 09:11:38 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.4.7:
+  * No relevant changes
+- Update to version 3.4.6.5:
+  * Add Zcompress32, Zdecompress32, Compress and Decompress test
+  * Add Zcompress16 and Zdecompress16 to IAA test
+  * Add operation CRC64 into IAA test
+  * Bug fixes
+
+-------------------------------------------------------------------
 Mon May 16 09:24:48 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 3.4.6.4:
