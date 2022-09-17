@@ -684,4 +684,41 @@
     when an URI path starts with //. (bsc#1202624, CVE-2021-28861)</comment>
     <requestid>1000771</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>142a11c4a73278980f377c9c6ea59f53</srcmd5>
+    <version>3.9.14</version>
+    <time>1663438093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.14:
+  - (CVE-2020-10735, bsc#1203125). Converting between int
+    and str in bases other than 2 (binary), 4, 8 (octal), 16
+    (hexadecimal), or 32 such as base 10 (decimal) now raises a
+    ValueError if the number of digits in string form is above a
+    limit to avoid potential denial of service attacks due to the
+    algorithmic complexity.
+    This new limit can be configured or disabled by environment
+    variable, command line flag, or sys APIs. See the integer
+    string conversion length limitation documentation. The
+    default limit is 4300 digits in string form.
+  - Also other bug fixes:
+    - http.server: Fix an open redirection vulnerability in the
+      HTTP server when an URI path starts with //. Vulnerability
+      discovered, and initial fix proposed, by Hamza Avvan.
+    - Fix contextvars HAMT implementation to handle iteration
+      over deep trees. The bug was discovered and fixed by Eli
+      Libman. See MagicStack/immutables#84 for more details.
+    - Fix binding of unix socket to empty address on Linux to use
+      an available address from the abstract namespace, instead
+      of “0”.
+    - Suppress writing an XML declaration in open files
+      in ElementTree.write() with encoding='unicode' and
+      xml_declaration=None.
+    - Fix the formatting for await x and not x in the operator
+      precedence table when using the help() system.
+    - Fix ensurepip environment isolation for subprocess running
+      pip.
+    - Fix problem with test_ssl test_get_ciphers on systems that
+      require perfect forward secrecy (PFS) ciphers.</comment>
+    <requestid>1003029</requestid>
+  </revision>
 </revisionlist>

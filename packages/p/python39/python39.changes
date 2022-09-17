@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Sep 11 08:49:43 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.9.14:
+  - (CVE-2020-10735, bsc#1203125). Converting between int
+    and str in bases other than 2 (binary), 4, 8 (octal), 16
+    (hexadecimal), or 32 such as base 10 (decimal) now raises a
+    ValueError if the number of digits in string form is above a
+    limit to avoid potential denial of service attacks due to the
+    algorithmic complexity.
+    This new limit can be configured or disabled by environment
+    variable, command line flag, or sys APIs. See the integer
+    string conversion length limitation documentation. The
+    default limit is 4300 digits in string form.
+  - Also other bug fixes:
+    - http.server: Fix an open redirection vulnerability in the
+      HTTP server when an URI path starts with //. Vulnerability
+      discovered, and initial fix proposed, by Hamza Avvan.
+    - Fix contextvars HAMT implementation to handle iteration
+      over deep trees. The bug was discovered and fixed by Eli
+      Libman. See MagicStack/immutables#84 for more details.
+    - Fix binding of unix socket to empty address on Linux to use
+      an available address from the abstract namespace, instead
+      of “0”.
+    - Suppress writing an XML declaration in open files
+      in ElementTree.write() with encoding='unicode' and
+      xml_declaration=None.
+    - Fix the formatting for await x and not x in the operator
+      precedence table when using the help() system.
+    - Fix ensurepip environment isolation for subprocess running
+      pip.
+    - Fix problem with test_ssl test_get_ciphers on systems that
+      require perfect forward secrecy (PFS) ciphers.
+    - test_ssl is now checking for supported TLS version and
+      protocols in more tests.
+- Removed upstreamed patches:
+  - CVE-2021-28861-double-slash-path.patch
+- Realign patches:
+  - bpo-31046_ensurepip_honours_prefix.patch
+  - sphinx-update-removed-function.patch
+
+-------------------------------------------------------------------
 Thu Sep  1 03:48:37 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch CVE-2021-28861-double-slash-path.patch:

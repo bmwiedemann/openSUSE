@@ -4,7 +4,7 @@
 
 --- a/Doc/tools/extensions/pyspecific.py
 +++ b/Doc/tools/extensions/pyspecific.py
-@@ -362,7 +362,12 @@ class DeprecatedRemoved(Directive):
+@@ -385,7 +385,12 @@ class DeprecatedRemoved(Directive):
                                     translatable=False)
              node.append(para)
          env = self.state.document.settings.env

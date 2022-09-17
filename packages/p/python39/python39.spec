@@ -57,7 +57,7 @@
 %define tarversion %{version}
 %endif
 # We don't process beta signs well
-%define         folderversion 3.9.13
+%define         folderversion %{version}
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
@@ -93,7 +93,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.9.13
+Version:        3.9.14
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -161,9 +161,6 @@ Patch35:        support-expat-CVE-2022-25236-patched.patch
 # PATCH-FIX-UPSTREAM CVE-2015-20107-mailcap-unsafe-filenames.patch bsc#1198511 mcepl@suse.com
 # avoid the command injection in the mailcap module.
 Patch36:        CVE-2015-20107-mailcap-unsafe-filenames.patch
-# PATCH-FIX-UPSTREAM CVE-2021-28861 bsc#1202624 gh#python/cpython#94093
-# Coerce // to / in Lib/http/server.py
-Patch37:        CVE-2021-28861-double-slash-path.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -423,7 +420,6 @@ other applications.
 %endif
 %patch35 -p1
 %patch36 -p1
-%patch37 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
