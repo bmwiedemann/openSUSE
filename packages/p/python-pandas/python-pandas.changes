@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sat Sep 10 13:25:41 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update required version
+
+- update to version 1.4.4:
+  * Fixed regressions
+    + Fixed regression in DataFrame.fillna() not working on a
+      DataFrame with a MultiIndex (GH47649)
+    + Fixed regression in taking NULL objects from a DataFrame causing
+      a segmentation violation. These NULL values are created by
+      numpy.empty_like() (GH46848)
+    + Fixed regression in concat() materializing the Index during
+      sorting even if the Index was already sorted (GH47501)
+    + Fixed regression in concat() or merge() handling of all-NaN
+      ExtensionArrays with custom attributes (GH47762)
+    + Fixed regression in calling bitwise numpy ufuncs (for example,
+      np.bitwise_and) on Index objects (GH46769)
+    + Fixed regression in cut() when using a datetime64 IntervalIndex
+      as bins (GH46218)
+    + Fixed regression in DataFrame.select_dtypes() where
+      include="number" included BooleanDtype (GH46870)
+    + Fixed regression in DataFrame.loc() raising error when indexing
+      with a NamedTuple (GH48124)
+    + Fixed regression in DataFrame.loc() not updating the cache
+      correctly after values were set (GH47867)
+    + Fixed regression in DataFrame.loc() not aligning index in some
+      cases when setting a DataFrame (GH47578)
+    + Fixed regression in DataFrame.loc() setting a length-1 array
+      like value to a single value in the DataFrame (GH46268)
+    + Fixed regression when slicing with DataFrame.loc() with
+      DatetimeIndex with a DateOffset object for its freq (GH46671)
+    + Fixed regression in setting None or non-string value into a
+      string-dtype Series using a mask (GH47628)
+    + Fixed regression in updating a DataFrame column through Series
+      __setitem__ (using chained assignment) not updating column
+      values inplace and using too much memory (GH47172)
+    + Fixed regression in DataFrame.select_dtypes() returning a view
+      on the original DataFrame (GH48090)
+    + Fixed regression using custom Index subclasses (for example,
+      used in xarray) with reset_index() or Index.insert() (GH47071)
+    + Fixed regression in intersection() when the DatetimeIndex has
+      dates crossing daylight savings time (GH46702)
+    + Fixed regression in merge() throwing an error when passing a
+      Series with a multi-level name (GH47946)
+    + Fixed regression in DataFrame.eval() creating a copy when
+      updating inplace (GH47449)
+    + Fixed regression where getting a row using DataFrame.iloc() with
+      SparseDtype would raise (GH46406)
+  * Bug fixes
+    + The FutureWarning raised when passing arguments (other than
+      filepath_or_buffer) as positional in read_csv() is now raised at
+      the correct stacklevel (GH47385)
+    + Bug in DataFrame.to_sql() when method was a callable that did
+      not return an int and would raise a TypeError (GH46891)
+    + Bug in DataFrameGroupBy.value_counts() where subset had no
+      effect (GH46383)
+    + Bug when getting values with DataFrame.loc() with a list of keys
+      causing an internal inconsistency that could lead to a
+      disconnect between frame.at[x, y] vs frame[y].loc[x] (GH22372)
+    + Bug in the Series.dt.strftime() accessor return a float instead
+      of object dtype Series for all-NaT input, which also causes a
+      spurious deprecation warning (GH45858)
+  * Other
+    + The minimum version of Cython needed to compile pandas is now
+      0.29.32 (GH47978)
+
+-------------------------------------------------------------------
 Sat Jul  9 13:43:53 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.4.3:

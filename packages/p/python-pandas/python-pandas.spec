@@ -42,14 +42,14 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-pandas%{psuffix}
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://pandas.pydata.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/pandas/pandas-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.29.24}
+BuildRequires:  %{python_module Cython >= 0.29.32}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= 1.18.5}
@@ -100,7 +100,7 @@ BuildRequires:  %{python_module Bottleneck >= 1.3.1}
 BuildRequires:  %{python_module SQLAlchemy >= 1.4.0}
 BuildRequires:  %{python_module XlsxWriter >= 1.2.2}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.8.2}
-BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module hypothesis >= 5.5.3}
 BuildRequires:  %{python_module lxml >= 4.5.0}
 BuildRequires:  %{python_module matplotlib >= 3.3.2}
 BuildRequires:  %{python_module numexpr >= 2.7.1}
@@ -109,7 +109,7 @@ BuildRequires:  %{python_module pandas = %{version}}
 BuildRequires:  %{python_module pytest >= 6.0}
 BuildRequires:  %{python_module pytest-asyncio >= 0.17}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest-xdist >= 1.31}
 BuildRequires:  %{python_module scipy >= 1.4.1}
 BuildRequires:  %{python_module xlrd >= 2.0.1}
 BuildRequires:  memory-constraints
