@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 12 11:52:11 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Skip test_huge_int due to new security feature in Python
+  * https://github.com/python/cpython/issues/95778
+
+-------------------------------------------------------------------
 Sun Dec 12 18:45:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Also skip convert_stdlib in python310: still not fixed

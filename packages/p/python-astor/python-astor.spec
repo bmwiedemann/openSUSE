@@ -1,7 +1,7 @@
 #
 # spec file for package python-astor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,8 +82,10 @@ chmod a-x astor/rtrip.py
 %python_expand chmod 755 %{buildroot}%{$python_sitelib}/astor/rtrip.py
 
 %check
+# https://github.com/berkerpeksag/astor/issues/212
+python38_donttest="test_huge_int"
 # https://github.com/berkerpeksag/astor/issues/196
-python39_donttest="test_convert_stdlib"
+python39_donttest="${python38_donttest} or test_convert_stdlib"
 python310_donttest=${python39_donttest}
 %pytest tests ${$python_donttest:+ -k "not (${$python_donttest})"}
 

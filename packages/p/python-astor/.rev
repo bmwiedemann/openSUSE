@@ -85,4 +85,13 @@
     <comment></comment>
     <requestid>941565</requestid>
   </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>043de3df315df2ab6cf3fccb9b3b24fe</srcmd5>
+    <version>0.8.1</version>
+    <time>1663438092</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test_huge_int due to new security feature in Python
+  * https://github.com/python/cpython/issues/95778</comment>
+    <requestid>1002922</requestid>
+  </revision>
 </revisionlist>
