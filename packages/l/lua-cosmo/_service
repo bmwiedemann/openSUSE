@@ -1,0 +1,17 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/mascarenhas/cosmo</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="scm">git</param>
+    <param name="revision">e6118c8850b0ba1fc22b66294beb40c591d2a752</param>
+    <param name="versionrewrite-pattern">v(\d+.\d+.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+</services>
+
