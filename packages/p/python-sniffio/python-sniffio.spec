@@ -1,7 +1,7 @@
 #
 # spec file for package python-sniffio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-sniffio
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Module to sniff which async library code runs under
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/python-trio/sniffio
 Source:         https://github.com/python-trio/sniffio/archive/v%{version}.tar.gz#/sniffio-%{version}.tar.gz
-BuildRequires:  %{python_module contextvars >= 2.1 if %python-base < 3.7}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210127.3a18043
-%if 0%{?python_version_nodots} < 37
-Requires:       python-contextvars >= 2.1
-%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module curio}
