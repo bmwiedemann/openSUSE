@@ -237,7 +237,11 @@ Patch0:         ignore-Wstring-conversion.patch
 # PATCH-FIX-OPENSUSE: let wasm target use the system lld by default, rust-lld might not be available.
 Patch1:         wasm-use-system-lld.patch
 %endif
-# Patch2:         0001-fix-tests.patch
+# IMPORTANT - To generate patches for submodules in git so they apply relatively you can use
+#  git format-patch --dst-prefix=b/src/tools/cargo/  HEAD~2
+Patch3:         0002-CVE-2022-36114-limit-the-maximum-unpacked-size-of-a-.patch
+Patch4:         0003-CVE-2022-36113-avoid-unpacking-.cargo-ok-from-the-cr.patch
+
 BuildRequires:  chrpath
 BuildRequires:  curl
 BuildRequires:  fdupes
