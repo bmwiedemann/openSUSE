@@ -39,6 +39,7 @@ BuildRequires:  findutils
 BuildRequires:  gawk
 BuildRequires:  grep
 BuildRequires:  gzip
+BuildRequires:  hexedit
 BuildRequires:  hostname
 BuildRequires:  iproute2
 BuildRequires:  iputils
@@ -57,6 +58,7 @@ BuildRequires:  psmisc
 BuildRequires:  sed
 BuildRequires:  selinux-tools
 BuildRequires:  sendmail
+BuildRequires:  sha3sum
 BuildRequires:  shadow
 BuildRequires:  sharutils
 BuildRequires:  sysvinit-tools
@@ -90,6 +92,7 @@ Requires:       busybox-findutils = %{version}
 Requires:       busybox-gawk = %{version}
 Requires:       busybox-grep = %{version}
 Requires:       busybox-gzip = %{version}
+Requires:       busybox-hexedit = %{version}
 Requires:       busybox-hostname = %{version}
 Requires:       busybox-iproute2 = %{version}
 Requires:       busybox-iputils = %{version}
@@ -349,6 +352,14 @@ Conflicts:      syslogd
 %description -n busybox-syslogd
 This package contains the symlinks to provide syslogd with busybox.
 
+%package -n busybox-hexedit
+Summary:        Busybox applets replacing hexedit
+Requires:       busybox = %{version}
+Conflicts:      hexedit
+
+%description -n busybox-hexedit
+This package contains the symlinks to replace hexedit with busybox.
+
 %package -n busybox-hostname
 Summary:        Busybox applets replacing hostname
 Requires:       busybox = %{version}
@@ -429,6 +440,15 @@ Conflicts:      shadow
 %description -n busybox-adduser
 This package contains the symlinks for adduser and some tools from the
 shadow suite.
+
+%package -n busybox-sha3sum
+Summary:        Busybox applets replacing sha3sum
+Requires:       busybox = %{version}
+Conflicts:      perl-Digest-SHA3
+Conflicts:      sha3sum
+
+%description -n busybox-sha3sum
+This package contains the symlinks to replace sha3sum with busybox.
 
 %package -n busybox-whois
 Summary:        Busybox applets replacing whois
@@ -575,7 +595,7 @@ rm -f apps/rpm apps/rpm2cpio
 rm -f apps/linuxrc
 # Does not really fit
 rm apps/[[
-for package in coreutils diffutils findutils grep util-linux util-linux-systemd iputils iproute2 gzip sed cpio procps xz bzip2 psmisc kbd sharutils hostname net-tools net-tools-deprecated traceroute ncurses-utils kmod tar gawk patch attr which bind-utils man sendmail shadow less whois unzip vim wget ed bc netcat-openbsd dos2unix telnet tftp time tunctl vlan sysvinit-tools selinux-tools policycoreutils; do
+for package in coreutils diffutils findutils grep util-linux util-linux-systemd iputils iproute2 gzip sed cpio procps xz bzip2 psmisc kbd sharutils hexedit hostname net-tools net-tools-deprecated traceroute ncurses-utils kmod tar gawk patch attr which bind-utils man sendmail sha3sum shadow less whois unzip vim wget ed bc netcat-openbsd dos2unix telnet tftp time tunctl vlan sysvinit-tools selinux-tools policycoreutils; do
     for i in `rpm -ql $package |grep "bin/"` ; do
 	prog=`basename $i`
 	if [ -f apps/$prog ]; then
@@ -678,6 +698,8 @@ install -m 755 %{SOURCE3} %{buildroot}%{_bindir}/zgrep
 %{_bindir}/zless
 %{_bindir}/zmore
 
+%files -n busybox-hexedit -f filelist-hexedit.txt
+
 %files -n busybox-hostname -f filelist-hostname.txt
 
 %files -n busybox-iproute2 -f filelist-iproute2.txt
@@ -713,6 +735,8 @@ install -m 755 %{SOURCE3} %{buildroot}%{_bindir}/zgrep
 %files -n busybox-selinux-tools -f filelist-selinux-tools.txt
 
 %files -n busybox-sendmail -f filelist-sendmail.txt
+
+%files -n busybox-sha3sum -f filelist-sha3sum.txt
 
 %files -n busybox-sharutils -f filelist-sharutils.txt
 

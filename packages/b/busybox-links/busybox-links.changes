@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 16 13:14:35 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create sub-package "hexedit" [bsc#1203399]
+- Create sub-package "sha3sum" [bsc#1203397]
+
+-------------------------------------------------------------------
 Tue Mar 15 12:58:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - replace copy from buildroot's gzip with a reimplementation

@@ -189,4 +189,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>965960</requestid>
   </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>fc351d1276caf283f01d90b55adb92ca</srcmd5>
+    <version>MACRO</version>
+    <time>1663438214</time>
+    <user>dimstar_suse</user>
+    <comment>- Create sub-package &quot;hexedit&quot; [bsc#1203399]
+- Create sub-package &quot;sha3sum&quot; [bsc#1203397] (forwarded request 1004138 from kukuk)</comment>
+    <requestid>1004139</requestid>
+  </revision>
 </revisionlist>
