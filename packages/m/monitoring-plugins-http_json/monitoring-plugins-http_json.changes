@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 16 17:55:16 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to 2.1.2:
+  * Fix missing type conversion for --data by @K0nne in #77
+  * Add CLI Flag to change HTTP method by @martialblog in #79
+  * Update Makefile and Workflows by @martialblog in #78
+
+-------------------------------------------------------------------
 Tue Mar  8 11:12:18 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 -  Skip build for Python 3.8.

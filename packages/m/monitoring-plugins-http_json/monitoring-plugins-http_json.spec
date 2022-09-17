@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-http_json
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define skip_python39 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           monitoring-plugins-http_json
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Plugin for Nagios which checks json values from a given HTTP endpoint
 License:        Apache-2.0
