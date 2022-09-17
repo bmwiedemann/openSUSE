@@ -92,7 +92,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.8.13
+Version:        3.8.14
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -108,7 +108,8 @@ Source10:       pre_checkin.sh
 Source11:       skipped_tests.py
 Source19:       idle3.desktop
 Source20:       idle3.appdata.xml
-Source99:       https://www.python.org/static/files/pubkeys.txt#/python.keyring
+# Used to be https://www.python.org/static/files/pubkeys.txt#/python.keyring
+Source99:       python.keyring
 # The following files are not used in the build.
 # They are listed here to work around missing functionality in rpmbuild,
 # which would otherwise exclude them from distributed src.rpm files.
@@ -167,9 +168,9 @@ Patch33:        bpo44426-complex-keyword-sphinx.patch
 # PATCH-FIX-UPSTREAM bpo34990-2038-problem-compileall.patch gh#python/cpython#79171 mcepl@suse.com
 # Make compileall.py compatible with year 2038
 Patch34:        bpo34990-2038-problem-compileall.patch
-# PATCH-FIX-UPSTREAM CVE-2021-28861 bsc#1202624 gh#python/cpython#94094
-# Coerce // to / in Lib/http/server.py
-Patch35:        CVE-2021-28861-double-slash-path.patch
+# PATCH-FIX-UPSTREAM gh#python/cpython#90967 gh#python/cpython#93900  mcepl@suse.com
+# NOTE: SUSE version of expat 2.4.4 is patched in SUSE for CVE-2022-25236
+Patch36:        support-expat-CVE-2022-25236-patched.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -435,7 +436,7 @@ other applications.
 %patch32 -p1
 %patch33 -p1
 %patch34 -p1
-%patch35 -p1
+%patch36 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

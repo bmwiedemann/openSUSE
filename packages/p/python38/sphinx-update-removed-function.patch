@@ -5,12 +5,12 @@ Subject: [PATCH] Fix sphinx deprecation warning about env.note_versionchange()
  (GH-13236)
 
 ---
- Doc/tools/extensions/pyspecific.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ Doc/tools/extensions/pyspecific.py |    7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 --- a/Doc/tools/extensions/pyspecific.py
 +++ b/Doc/tools/extensions/pyspecific.py
-@@ -361,7 +361,12 @@ class DeprecatedRemoved(Directive):
+@@ -384,7 +384,12 @@ class DeprecatedRemoved(Directive):
                                     translatable=False)
              node.append(para)
          env = self.state.document.settings.env
