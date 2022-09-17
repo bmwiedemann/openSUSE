@@ -25,7 +25,7 @@
 # of those fields
 #
 Name:           rubygem-ruby-libvirt
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Ruby bindings for LIBVIRT
 License:        LGPL-2.1-or-later
@@ -41,18 +41,11 @@ BuildRequires:  ruby-macros >= 5
 BuildRequires:  libvirt-devel
 BuildRequires:  pkgconfig
 # /MANUAL
-# MANUAL
-Patch0:         0001-Fix-include-of-st.h-to-ruby-st.h.patch
-# /MANUAL
 
 %description
 Ruby bindings for libvirt.
 
 %prep
-%gem_unpack
-%patch0 -p1
-find -type f -print0 | xargs -0 touch -r %{SOURCE0}
-%{gem_build}
 
 %build
 

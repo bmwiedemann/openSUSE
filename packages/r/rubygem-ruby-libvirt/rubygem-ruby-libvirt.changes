@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 16 13:19:13 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.8.0
+  * Fix default values for node_cpu_stats and node_memory_stats
+  * Fix cpumap allocation for virDomainGetVcpus
+  * Enforce UTF8 for strings and exceptions
+  * Drop local have_const
+  * Use sensible default for libvirt_domain_qemu_agent_command
+
+- Drop 0001-Fix-include-of-st.h-to-ruby-st.h.patch,
+  https://gitlab.com/libvirt/libvirt-ruby/-/merge_requests/7 was merged upstream
+
+-------------------------------------------------------------------
 Thu Jan 13 09:02:13 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Drop BuildRequires: libvirt, not necessary and very expensive

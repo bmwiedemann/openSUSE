@@ -21,8 +21,8 @@
 #   BuildRequires: foobar
 #   Requires: foobar
 # ## used by gem2rpm
- :patches:
-   0001-Fix-include-of-st.h-to-ruby-st.h.patch: -p1
+# :patches:
+#   0001-Fix-include-of-st.h-to-ruby-st.h.patch: -p1
 #   bar.patch:
 # ## used by gem2rpm
  :sources:
