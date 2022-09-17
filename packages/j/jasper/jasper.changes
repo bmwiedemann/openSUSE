@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 16 11:34:42 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- security update:
+  * CVE-2022-2963 [bsc#1202642]
+    + jasper-CVE-2022-2963.patch
+
+-------------------------------------------------------------------
 Thu Jul 14 07:24:38 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.0.6:

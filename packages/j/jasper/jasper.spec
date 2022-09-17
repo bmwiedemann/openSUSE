@@ -28,6 +28,7 @@ Group:          Productivity/Graphics/Convertors
 URL:            https://jasper-software.github.io/jasper
 Source:         https://github.com/jasper-software/jasper/archive/version-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch0:         jasper-CVE-2022-2963.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -66,6 +67,7 @@ image compression standard Part 1.
 
 %prep
 %setup -q -n %{name}-version-%{version}
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags} -Wall -std=c99 -D_BSD_SOURCE"

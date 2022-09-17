@@ -227,4 +227,14 @@
   * Fix bug in manual deployment script.</comment>
     <requestid>989093</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>0c2c89f0c6648f6634960823daa5e970</srcmd5>
+    <version>3.0.6</version>
+    <time>1663438212</time>
+    <user>dimstar_suse</user>
+    <comment>- security update:
+  * CVE-2022-2963 [bsc#1202642]
+    + jasper-CVE-2022-2963.patch</comment>
+    <requestid>1004089</requestid>
+  </revision>
 </revisionlist>
