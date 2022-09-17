@@ -259,4 +259,24 @@
   * Added Wheel packages for macOS (issue #96).</comment>
     <requestid>976286</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2827ace9af7c04b72e052d8c420b634b</srcmd5>
+    <version>1.3.2</version>
+    <time>1663438239</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.2:
+  * Restore import-time initialization of macOS to avoid crash on thread+fork
+  * Fixed segfault on macOS 12.5 in forked processes (issue #111).
+    Note that, as a workaround, Activity Monitor will show the title of the
+    parent.
+  * Added fallback no-op implementation if building the extension fails.
+  * Added support for displaying title as the process name in MacOS Activity
+    Monitor (issue #10).
+  * Fixed &quot;Symbol not found: _Py_GetArgcArgv&quot; error when using Xcode provided
+    Python (issues #82, #103).
+  * Fixed FreeBSD support, broken in 1.2 (issue #94).
+  * Added package type annotations (issue #101).
+  * Dropped support for Python 3.6.</comment>
+    <requestid>1004177</requestid>
+  </revision>
 </revisionlist>

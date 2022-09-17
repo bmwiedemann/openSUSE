@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 16 18:19:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.2:
+  * Restore import-time initialization of macOS to avoid crash on thread+fork
+  * Fixed segfault on macOS 12.5 in forked processes (issue #111).
+    Note that, as a workaround, Activity Monitor will show the title of the
+    parent.
+  * Added fallback no-op implementation if building the extension fails.
+  * Added support for displaying title as the process name in MacOS Activity
+    Monitor (issue #10).
+  * Fixed "Symbol not found: _Py_GetArgcArgv" error when using Xcode provided
+    Python (issues #82, #103).
+  * Fixed FreeBSD support, broken in 1.2 (issue #94).
+  * Added package type annotations (issue #101).
+  * Dropped support for Python 3.6.
+
+-------------------------------------------------------------------
 Wed May 11 10:43:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.3:
