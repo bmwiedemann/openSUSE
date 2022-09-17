@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 16 11:56:56 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 3.4.0:
+  * add `--helm` flag to `find` command (#154)
+
+-------------------------------------------------------------------
 Thu Sep 15 07:52:02 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 3.3.2:
