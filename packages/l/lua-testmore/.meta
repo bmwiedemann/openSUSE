@@ -1,0 +1,12 @@
+<package name="lua-testmore" project="openSUSE:Factory">
+  <title>A Lua port of the Perl Test::More unit testing framework</title>
+  <description>lua-TestMore is a port of the Perl5 module Test::More. It uses the
+Test Anything Protocol as output, that allows a compatibility with
+the Perl QA ecosystem. It's an extensible framework.
+See lua-TestAssertion an extension which provides many Lua friendly
+assertions. It allows a simple and efficient way to write tests
+(without OO style). Some tests could be marked as TODO or skipped.
+Errors could be fully checked with error_like().</description>
+  <devel project="devel:languages:lua" package="lua-testmore"/>
+  <url>https://framagit.org/fperrad/lua-TestMore</url>
+</package>

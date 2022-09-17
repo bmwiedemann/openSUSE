@@ -1,0 +1,16 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://framagit.org/fperrad/lua-TestMore.git</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
+    <param name="scm">git</param>
+    <param name="revision">e441547009f891a259c6324ef50d9ed9fee39538</param>
+    <param name="versionrewrite-pattern">(\d+.\d+.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+</services>
