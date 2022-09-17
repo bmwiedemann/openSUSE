@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 12 15:31:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- build with enable-iproute2 again to have root-less mode working (bsc#1202792) 
+
+-------------------------------------------------------------------
 Sun Jun  5 00:08:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.7:

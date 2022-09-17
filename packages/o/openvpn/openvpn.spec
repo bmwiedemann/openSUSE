@@ -42,6 +42,7 @@ Source10:       %{name}-tmpfile.conf
 Source11:       rc%{name}
 Patch1:         %{name}-2.3-plugin-man.dif
 Patch6:         %{name}-fips140-2.3.2.patch
+BuildRequires:  iproute2
 BuildRequires:  libselinux-devel
 BuildRequires:  lzo-devel
 BuildRequires:  openssl-devel
@@ -52,6 +53,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
+Requires:       iproute2
 Requires:       pkcs11-helper >= 1.11
 Requires:       sysvinit-tools
 %systemd_ordering
@@ -139,6 +141,7 @@ export LDFLAGS
 export IPROUTE="%{_sbindir}/ip"
 %endif
 %configure \
+	--enable-iproute2		\
 	--enable-x509-alt-username	\
 	--enable-pkcs11			\
 	--enable-systemd		\
