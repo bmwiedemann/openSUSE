@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Sep 11 08:32:53 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.10.7:
+  - Fix for CVE-2020-10735 (bsc#1203125) Converting between int
+    and str in bases other than 2 (binary), 4, 8 (octal), 16
+    (hexadecimal), or 32 such as base 10 (decimal) now raises
+    a ValueError if the number of digits in string form is above
+    a limit to avoid potential denial of service attacks due to
+    the algorithmic complexity.
+  - Other bug fixes:
+    - Fixed a bug that caused _PyCode_GetExtra to return garbage
+      for negative indexes.
+    - Fix format string in _PyPegen_raise_error_known_location
+      that can lead to memory corruption on some 64bit systems.
+      The function was building a tuple with i (int) instead of
+      n (Py_ssize_t) for Py_ssize_t arguments.
+    - Fix misleading contents of error message when converting an
+      all-whitespace string to float.
+    - coroutine.throw() now properly initializes the frame.f_back
+      when resuming a stack of coroutines. This allows e.g.
+      traceback.print_stack() to work correctly when an exception
+      (such as CancelledError) is thrown into a coroutine.
+    - ast.parse() will no longer parse function definitions with
+      positional-only params when passed feature_version less
+      than (3, 8).
+    - Correct conversion of numbers.Rational’s to float.
+    - Fix a performance regression in logging
+      TimedRotatingFileHandler. Only check for special files when
+      the rollover time has passed.
+    - Fix unused localName parameter in the Attr class in
+      xml.dom.minidom.
+    - Update bundled pip to 22.2.2.
+    - Fail gracefully if EPERM or ENOSYS is raised when loading
+      crypt methods. This may happen when trying to load MD5 on
+      a Linux kernel with FIPS enabled.
+    - Improve discoverability of the higher level
+      concurrent.futures module by providing clearer links from
+      the lower level threading and multiprocessing modules.
+    - Update the default RFC base URL from deprecated
+      tools.ietf.org to datatracker.ietf.org
+    - Fix stylesheet not working in Windows CHM htmlhelp docs.
+    - The documentation now lists which members of C structs are
+      part of the Limited API/Stable ABI.
+    - Mitigate the inherent race condition from using
+      find_unused_port() in testSockName() by trying to find an
+      unused port a few times before failing.
+    - Build and test with OpenSSL 1.1.1q
+    - Document handling of extensions in Save As dialogs.
+    - Include prompts when saving Shell (interactive input and
+      output).
+
+-------------------------------------------------------------------
 Wed Aug 17 11:08:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - fix import_failed.map to refer to the python 3.10 package versions
@@ -204,6 +256,12 @@ Tue Aug  2 17:13:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
   -  fix_configure_rst.patch
   -  no-skipif-doctests.patch
   -  skip-test_pyobject_freed_is_freed.patch
+
+-------------------------------------------------------------------
+Sun Jul 31 09:41:30 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Extend distutils-reproducible-compile.patch with a workaround
+  for non reproducible pyc files issue 93317
 
 -------------------------------------------------------------------
 Thu Jul 21 14:19:52 UTC 2022 - Matej Cepl <mcepl@suse.com>

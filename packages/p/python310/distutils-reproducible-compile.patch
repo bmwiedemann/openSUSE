@@ -1,9 +1,24 @@
----
- Lib/distutils/util.py |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
---- a/Lib/distutils/util.py
-+++ b/Lib/distutils/util.py
+Index: Python-3.10.5/Lib/compileall.py
+===================================================================
+--- Python-3.10.5.orig/Lib/compileall.py
++++ Python-3.10.5/Lib/compileall.py
+@@ -96,6 +96,12 @@ def compile_dir(dir, maxlevels=None, ddi
+         maxlevels = sys.getrecursionlimit()
+     files = _walk_dir(dir, quiet=quiet, maxlevels=maxlevels)
+     success = True
++    # work around https://github.com/python/cpython/issues/93317
++    sys.intern('{')
++    sys.intern('{{')
++    sys.intern('}')
++    sys.intern('}}')
++
+     if workers != 1 and ProcessPoolExecutor is not None:
+         # If workers == 0, let ProcessPoolExecutor choose
+         workers = workers or None
+Index: Python-3.10.5/Lib/distutils/util.py
+===================================================================
+--- Python-3.10.5.orig/Lib/distutils/util.py
++++ Python-3.10.5/Lib/distutils/util.py
 @@ -436,7 +436,7 @@ byte_compile(files, optimize=%r, force=%
      else:
          from py_compile import compile
