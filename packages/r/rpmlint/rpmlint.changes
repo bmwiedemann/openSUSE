@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 16 14:42:45 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220916.67eb412d:
+  * dbus-services: autofs: file digests (bsc#1203362)
+  * fix bugzilla url as novell.com is dead
+  * Whitelist /var/spool/mail in postfix, sendmail and exim (bsc#1179574)
+
+-------------------------------------------------------------------
 Wed Sep 14 08:55:28 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version rpmlint-2.3.0+git20220914.1a7345a1:

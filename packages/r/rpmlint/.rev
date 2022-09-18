@@ -4017,4 +4017,15 @@ oddjob-gpupdate isn't blocked)</comment>
   * configs/Fedora: sync user/groups with setup-2.14.1</comment>
     <requestid>1003484</requestid>
   </revision>
+  <revision rev="414" vrev="1">
+    <srcmd5>409e400ab0f9165de2aa318bb2c4e5ec</srcmd5>
+    <version>2.3.0+git20220916.67eb412d</version>
+    <time>1663515123</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git20220916.67eb412d:
+  * dbus-services: autofs: file digests (bsc#1203362)
+  * fix bugzilla url as novell.com is dead
+  * Whitelist /var/spool/mail in postfix, sendmail and exim (bsc#1179574)</comment>
+    <requestid>1004144</requestid>
+  </revision>
 </revisionlist>
