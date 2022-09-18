@@ -108,4 +108,12 @@
 - Update Requires from setup.py (forwarded request 1000183 from glaubitz)</comment>
     <requestid>1000286</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3dbf66fffad22ead49b2e0b7939f8d1b</srcmd5>
+    <version>3.1.1</version>
+    <time>1663515142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004482</requestid>
+  </revision>
 </revisionlist>
