@@ -345,4 +345,24 @@
 </comment>
     <requestid>985062</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c67f548c6bb38882e71254f55126e330</srcmd5>
+    <version>0.39.1</version>
+    <time>1663515139</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable test_service_browser_expire_callbacks: Should be fixed
+  with 0.39.0 (gh#jstasiak/python-zeroconf!1084).
+- Add missing dependency on python-async_timeout at run time.
+- Added build dependency python-async_timeout in order to fix build
+  failure.
+- Update to 0.39.1:
+  * Performance improvements for constructing outgoing packet data. 
+- Changes from 0.39.0:
+  * Switch to using async_timeout for timeouts: Significantly
+    reduces the number of asyncio tasks that are created when using
+    ServiceInfo or AsyncServiceInfo
+    (gh#jstasiak/python-zeroconf!1081).
+</comment>
+    <requestid>1004384</requestid>
+  </revision>
 </revisionlist>

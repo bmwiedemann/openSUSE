@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Sep 17 18:38:52 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Re-enable test_service_browser_expire_callbacks: Should be fixed
+  with 0.39.0 (gh#jstasiak/python-zeroconf!1084).
+- Add missing dependency on python-async_timeout at run time.
+
+-------------------------------------------------------------------
+Sat Sep 17 16:40:31 UTC 2022 - marec <marec@detebe.org>
+
+- Added build dependency python-async_timeout in order to fix build
+  failure.
+
+-------------------------------------------------------------------
+Sat Sep 17 07:29:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update to 0.39.1:
+  * Performance improvements for constructing outgoing packet data. 
+- Changes from 0.39.0:
+  * Switch to using async_timeout for timeouts: Significantly
+    reduces the number of asyncio tasks that are created when using
+    ServiceInfo or AsyncServiceInfo
+    (gh#jstasiak/python-zeroconf!1081).
+
+-------------------------------------------------------------------
 Sat Jun 25 15:21:12 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Ignore flakey test (gh#jstasiak/python-zeroconf#1077).
