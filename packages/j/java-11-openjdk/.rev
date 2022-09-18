@@ -439,4 +439,12 @@
     <comment>July 2022 CPU</comment>
     <requestid>990559</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>cb944a7609c2dc1e3dca2b8d41cfd3be</srcmd5>
+    <version>11.0.16.0</version>
+    <time>1663515111</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1203476</comment>
+    <requestid>1004355</requestid>
+  </revision>
 </revisionlist>

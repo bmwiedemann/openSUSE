@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 17 15:32:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Package the JAVA_HOME/release files in *-headless package
+  * fixes boo#1203476
+
+-------------------------------------------------------------------
 Thu Jul 21 07:52:04 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-11.0.16+8 (July 2022 CPU)
