@@ -58,11 +58,12 @@ dos2unix README.rst
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# https://github.com/miracle2k/django-assets/issues/101
+%pytest -k 'not TestLoader'
 
 %files %{python_files}
 %doc CHANGES README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/django_assets*
 
 %changelog
