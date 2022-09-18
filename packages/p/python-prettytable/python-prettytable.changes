@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 17 07:34:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.1:
+  * Add option to specify line break character used in pagination
+
+-------------------------------------------------------------------
 Sat Jun  4 11:42:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.0:
