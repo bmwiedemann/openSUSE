@@ -1620,6 +1620,7 @@ unsorted:
   - busybox-cpio 
   - busybox-diffutils 
   - busybox-dos2unix 
+  - busybox-hexedit 
   - busybox-hostname: [i586] 
   - busybox-iproute2 
   - busybox-iputils 
@@ -1638,6 +1639,7 @@ unsorted:
   - busybox-procps 
   - busybox-selinux-tools 
   - busybox-sh 
+  - busybox-sha3sum 
   - busybox-sharutils 
   - busybox-syslogd 
   - busybox-sysvinit-tools 
@@ -1797,7 +1799,6 @@ unsorted:
   - cargo-c 
   - cargo-packaging 
   - cargo1.60 
-  - cargo1.61 
   - cargo1.62 
   - cargo1.63 
   - caribou 
@@ -2641,18 +2642,12 @@ unsorted:
   - cwstudio 
   - cxref 
   - cxxtools-devel 
-  - cyradm 
   - cyreal-alice-fonts 
   - cyreal-junge-fonts 
   - cyreal-lora-fonts 
   - cyreal-marko-horobchyk-fonts 
   - cyreal-marmelad-fonts 
   - cyreal-wire-fonts 
-  - cyrus-imapd 
-  - cyrus-imapd-devel 
-  - cyrus-imapd-snmp 
-  - cyrus-imapd-snmp-mibs 
-  - cyrus-imapd-utils 
   - cyrus-sasl-32bit: [x86_64] 
   - cyrus-sasl-bdb 
   - cyrus-sasl-bdb-crammd5 
@@ -4071,6 +4066,7 @@ unsorted:
   - fuse-exfat 
   - fuse-oscfs 
   - fuse-overlayfs: [i586] 
+  - fuse2fs 
   - fuse3-devel 
   - fuse3-doc 
   - fuseiso 
@@ -15496,6 +15492,7 @@ unsorted:
   - lrslib 
   - lrslib-devel 
   - lsb 
+  - lscsoft-glue-data 
   - lsd 
   - lsdvd 
   - lshw 
@@ -15542,11 +15539,13 @@ unsorted:
   - lua51-cliargs 
   - lua51-compat-5.3 
   - lua51-copas 
+  - lua51-cosmo 
   - lua51-coxpcall 
   - lua51-cyrussasl 
   - lua51-devel 
   - lua51-dkjson 
   - lua51-doc 
+  - lua51-fluent 
   - lua51-ldbus 
   - lua51-ldoc 
   - lua51-lgi 
@@ -15561,11 +15560,13 @@ unsorted:
   - lua51-lua-ev-devel 
   - lua51-lua-mpris 
   - lua51-luadbi 
+  - lua51-luaepnf 
   - lua51-luaevent 
   - lua51-luaexpat 
   - lua51-luafilesystem 
   - lua51-lualdap 
   - lua51-luaposix 
+  - lua51-luarepl 
   - lua51-luarocks 
   - lua51-luasec 
   - lua51-luasocket 
@@ -15587,6 +15588,7 @@ unsorted:
   - lua51-readline 
   - lua51-say 
   - lua51-slaxml 
+  - lua51-testmore 
   - lua51-vstruct 
   - lua51-zlib 
   - lua53 
@@ -15599,12 +15601,14 @@ unsorted:
   - lua53-cliargs 
   - lua53-compat-5.3 
   - lua53-copas 
+  - lua53-cosmo 
   - lua53-coxpcall 
   - lua53-cyrussasl 
   - lua53-devel 
   - lua53-dkjson 
   - lua53-doc 
   - lua53-editorconfig-core-lua 
+  - lua53-fluent 
   - lua53-ldbus 
   - lua53-ldoc 
   - lua53-lgi 
@@ -15619,11 +15623,13 @@ unsorted:
   - lua53-lua-ev-devel 
   - lua53-lua-mpris 
   - lua53-luadbi 
+  - lua53-luaepnf 
   - lua53-luaevent 
   - lua53-luaexpat 
   - lua53-luafilesystem 
   - lua53-lualdap 
   - lua53-luaposix 
+  - lua53-luarepl 
   - lua53-luarocks 
   - lua53-luasec 
   - lua53-luasocket 
@@ -15645,6 +15651,7 @@ unsorted:
   - lua53-readline 
   - lua53-say 
   - lua53-slaxml 
+  - lua53-testmore 
   - lua53-vstruct 
   - lua53-zlib 
   - lua54 
@@ -15658,12 +15665,14 @@ unsorted:
   - lua54-cliargs 
   - lua54-compat-5.3 
   - lua54-copas 
+  - lua54-cosmo 
   - lua54-coxpcall 
   - lua54-cyrussasl 
   - lua54-devel 
   - lua54-dkjson 
   - lua54-doc 
   - lua54-editorconfig-core-lua 
+  - lua54-fluent 
   - lua54-ldbus 
   - lua54-ldoc 
   - lua54-lgi 
@@ -15678,11 +15687,13 @@ unsorted:
   - lua54-lua-ev-devel 
   - lua54-lua-mpris 
   - lua54-luadbi 
+  - lua54-luaepnf 
   - lua54-luaevent 
   - lua54-luaexpat 
   - lua54-luafilesystem 
   - lua54-lualdap 
   - lua54-luaposix 
+  - lua54-luarepl 
   - lua54-luarocks 
   - lua54-luasec 
   - lua54-luasocket 
@@ -15704,6 +15715,7 @@ unsorted:
   - lua54-readline 
   - lua54-say 
   - lua54-slaxml 
+  - lua54-testmore 
   - lua54-vstruct 
   - lua54-zlib 
   - luabind-devel 
@@ -19414,8 +19426,6 @@ unsorted:
   - perl-Curses 
   - perl-CursesWidgets 
   - perl-Cwd-Guard 
-  - perl-Cyrus-IMAP 
-  - perl-Cyrus-SIEVE-managesieve 
   - perl-DBD-CSV 
   - perl-DBD-MariaDB 
   - perl-DBD-ODBC 
@@ -22504,6 +22514,7 @@ unsorted:
   - python310-azure-mgmt-devtestlabs 
   - python310-azure-mgmt-digitaltwins 
   - python310-azure-mgmt-dns 
+  - python310-azure-mgmt-dnsresolver 
   - python310-azure-mgmt-documentdb 
   - python310-azure-mgmt-dynatrace 
   - python310-azure-mgmt-edgegateway 
@@ -25732,6 +25743,7 @@ unsorted:
   - python38-azure-mgmt-devtestlabs 
   - python38-azure-mgmt-digitaltwins 
   - python38-azure-mgmt-dns 
+  - python38-azure-mgmt-dnsresolver 
   - python38-azure-mgmt-documentdb 
   - python38-azure-mgmt-dynatrace 
   - python38-azure-mgmt-edgegateway 
@@ -29060,6 +29072,7 @@ unsorted:
   - python39-azure-mgmt-devtestlabs 
   - python39-azure-mgmt-digitaltwins 
   - python39-azure-mgmt-dns 
+  - python39-azure-mgmt-dnsresolver 
   - python39-azure-mgmt-documentdb 
   - python39-azure-mgmt-dynatrace 
   - python39-azure-mgmt-edgegateway 
@@ -32850,7 +32863,6 @@ unsorted:
   - rust-packaging 
   - rust-srpm-macros 
   - rust1.60 
-  - rust1.61 
   - rust1.62 
   - rust1.63 
   - rustscan 
