@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 17 05:39:34 UTC 2022 - Christoph G <foss@grueninger.de>
+
+- Update to 3.24.2:
+  * FindBoost: Add support for Boost 1.80
+  * Check link libraries properties: fix performances regression
+
+-------------------------------------------------------------------
 Tue Aug 23 15:05:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add glibc-236.patch (bsc#1202208)
