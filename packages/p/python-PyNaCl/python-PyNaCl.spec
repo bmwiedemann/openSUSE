@@ -31,14 +31,12 @@ BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pycparser}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libsodium) >= 1.0.18
 Requires:       python-cffi
-Requires:       python-six
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis >= 3.27.0}
 BuildRequires:  %{python_module pytest >= 3.2.1}
