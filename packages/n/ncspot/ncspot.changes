@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Sep 18 12:57:30 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Update to version 0.11.1
+  Maintenance
+  * Fix theming in context menus
+  * Fix ListView scrollbar behavior
+  * Switch to Termion backend by default for true color support
+  * Fix references to pancurses backend in README
+  * Changes to README capitalized in playlists
+  * Fixed clipboard not working on GNOME Wayland.by
+  * Fix: don't crash on empty command line input
+  * Other refactoring and cleanups
+  * Fix back button mouse left click
+  * Fix librespot audio cache path
+  * Fix: set track position only for clicks, not hold
+  * Fix: Use buffered backend to prevent flickering with Termion
+  * Fix: remove broken album cache staleness detection
+  * Fix: Re-request album tracks if it has >50 tracks
+  * Fixed pagination bug that caused items not to load when
+    scrolling with mouse
+  * Fix pagination in "Browse" screen
+  Features
+  * Add category browsing to library
+  * Add customization of notification message texts
+  * Improved mouse support
+  * Mouse wheel: scroll up/down without changing focus
+
+-------------------------------------------------------------------
 Sun Jul 31 14:24:01 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
 
 - Update to version 0.10.1
