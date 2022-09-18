@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Sep 17 13:55:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.1.1
+  * See https://krita.org/en/item/krita-5-1-1-released/
+  * Several issues with the MyPaint brush engine were fixed.
+    The MyPaint eraser now uses the proper brush settings, and
+    the unusable blend mode selector is now disabled if a
+    MyPaint brush has been selected. (kde#453054, kde#445206)
+  * For Animation, the “start numbering at” when exporting an
+    image sequence has been fixed. (kde#458997)
+  * Krita no longer crashes if the user has removed the
+    kritadefault.profile canvas input profile from both the
+    installation and the runtime folder
+  * On reading ACO palettes, the color swatch name is now read
+    and set on the swatch. (kde#458209)
+  * Fix a crash when selecting a layer in the layerbox. (kde#458546)
+  * Improve slider steps for the fade, ratio and similar color
+    selection threshold
+  * When moving paintable nodes, the canvas is updated only once.
+  * Provide the workaround for OpenGL canvas showing black
+    rectangles if there’s more than one assistant visible to
+    all platforms. (kde#401940)
+  * Improve the performance of working with ZIP files, like .kra
+    and .ora files.
+  * Fix opening single-layer PSD files. (kde#458556)
+  * Make the Update link in the welcome widget clickable (kde#458034)
+  * JPEG-XL: Fix linear HDR export and float 16 import (kde#458054)
+- Drop patch, merged upstream:
+  * 0001-TIFF-fix-missing-SOVERSION-for-the-TIFF-PSD-library.patch
+
+-------------------------------------------------------------------
 Fri Aug 26 16:59:21 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Replace add-missing-so-version.patch with upstream patch:

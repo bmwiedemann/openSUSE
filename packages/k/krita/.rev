@@ -692,4 +692,12 @@
   therefor ended up in the devel package</comment>
     <requestid>999479</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>ed8c623e1d7b94c6400751312b0dd541</srcmd5>
+    <version>5.1.1</version>
+    <time>1663515133</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.1.1</comment>
+    <requestid>1004349</requestid>
+  </revision>
 </revisionlist>

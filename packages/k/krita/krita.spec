@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           krita
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        Digital Painting Application
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.0-only
@@ -29,7 +29,6 @@ Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version
 Source1:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz.sig
 Source2:        krita.keyring
 %endif
-Patch0:         0001-TIFF-fix-missing-SOVERSION-for-the-TIFF-PSD-library.patch
 BuildRequires:  OpenEXR-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fftw3-devel
@@ -40,7 +39,7 @@ BuildRequires:  kseexpr-devel
 BuildRequires:  libboost_system-devel
 %else
 BuildRequires:  libboost_system1_75_0-devel
-#!BuildIgnore:  libboost_headers1_66_0-devel 
+#!BuildIgnore:  libboost_headers1_66_0-devel
 %endif
 BuildRequires:  libeigen3-devel
 BuildRequires:  libexiv2-devel
