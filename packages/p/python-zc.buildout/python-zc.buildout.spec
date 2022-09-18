@@ -1,7 +1,7 @@
 #
 # spec file for package python-zc.buildout
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zc.buildout
-Version:        2.13.6
+Version:        2.13.7
 Release:        0
 Summary:        System for managing development buildouts
 License:        ZPL-2.1
