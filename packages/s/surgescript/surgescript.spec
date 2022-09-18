@@ -1,7 +1,7 @@
 #
 # spec file for package surgescript
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Artur Iwicki <fedora@svgames.pl>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,16 +17,14 @@
 #
 
 
-%define _sover  0_5_5
+%define _sover  0_5_6
 Name:           surgescript
-Version:        0.5.5
+Version:        0.5.6
 Release:        0
 Summary:        A scripting language for games
 License:        Apache-2.0
 URL:            https://opensurge2d.org
 Source0:        https://github.com/alemart/surgescript/archive/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE surgescript-fix_nonvoid.patch -- https://github.com/alemart/surgescript/issues/5
-Patch0:         surgescript-fix_nonvoid.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -70,7 +68,7 @@ This package contains files required for
 developing applications using %{name}.
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 %cmake \

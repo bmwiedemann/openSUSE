@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 17 12:11:21 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.6
+  * Improved the SurgeScript CLI with a time limit option, the
+    ability to run scripts from stdin and optional multithreading
+    support
+  * Added Emscripten support
+  * Updated docs
+  * General improvements
+- Drop patch:
+  * surgescript-fix_nonvoid.patch
+
+-------------------------------------------------------------------
 Fri Mar 12 15:40:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.5.5
