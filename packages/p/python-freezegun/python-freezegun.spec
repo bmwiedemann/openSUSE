@@ -17,14 +17,14 @@
 
 
 %{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-freezegun
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Mock time date for Python
 License:        Apache-2.0
 URL:            https://github.com/spulec/freezegun
 Source:         https://files.pythonhosted.org/packages/source/f/freezegun/freezegun-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil > 2.7}
 BuildRequires:  %{python_module setuptools}

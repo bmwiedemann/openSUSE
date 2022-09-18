@@ -144,4 +144,16 @@
   * Dropped support for python 3.5</comment>
     <requestid>980773</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7ffcb0ae2b0f35a8edee2b0b42871688</srcmd5>
+    <version>1.2.2</version>
+    <time>1663515120</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.2:
+  * Removes Python 3.6 support
+  * Improved static typing definitions
+  * Don't freeze pytest timings. This avoids class-level decorator usage
+  * messing with pytest timings.  Pass through all setUp and tearDown arguments</comment>
+    <requestid>1004362</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 17 15:53:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.2:
+  * Removes Python 3.6 support
+  * Improved static typing definitions
+  * Don't freeze pytest timings. This avoids class-level decorator usage
+  * messing with pytest timings.  Pass through all setUp and tearDown arguments
+ 
+-------------------------------------------------------------------
 Sat Jun  4 14:46:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.1:
