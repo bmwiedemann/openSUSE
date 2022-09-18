@@ -20,13 +20,12 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-django-haystack
-Version:        3.1.1
+Version:        3.2.1
 Release:        0
 Summary:        Pluggable search for Django
 License:        BSD-3-Clause
-URL:            https://haystacksearch.org/
+URL:            https://github.com/django-haystack/django-haystack
 Source:         https://files.pythonhosted.org/packages/source/d/django-haystack/django-haystack-%{version}.tar.gz
-BuildRequires:  %{python_module django-codemod}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -57,8 +56,6 @@ Pluggable search for Django.
 %setup -q -n django-haystack-%{version}
 sed -i 's:==:>=:' setup.py
 
-djcodemod run --removed-in 4.0 haystack/{admin,forms}.py
-
 # This causes errors with pytest
 sed -i '/django.setup()/d' test_haystack/__init__.py
 echo 'import django; django.setup()' > conftest.py
@@ -75,7 +72,7 @@ export DJANGO_SETTINGS_MODULE=test_haystack.settings
 # elasticsearch and solr tests require running services
 # test_ensure_wgs84 is broken with some GDAL issues
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}:${PWD}
-$python -m pytest -k 'not (elasticsearch or solr or test_ensure_wgs84)'
+$python -m pytest -rs -k 'not (elasticsearch or solr or test_ensure_wgs84)'
 }
 
 %files %{python_files}
