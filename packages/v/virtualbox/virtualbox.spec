@@ -52,7 +52,7 @@
 %endif
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        6.1.36
+Version:        6.1.38
 Release:        0
 Summary:        %{package_summary}
 # FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
@@ -300,11 +300,8 @@ the terms of the GNU Public License (GPL).
 
 
 
-
-
-
-
 ##########################################
+
 %package qt
 Summary:        Qt GUI part for %{name}
 Group:          System/Emulators/PC
@@ -324,11 +321,8 @@ This package contains the code for the GUI used to control VMs.
 
 
 
-
-
-
-
 #########################################
+
 %package websrv
 Summary:        WebService GUI part for %{name}
 Group:          System/Emulators/PC
@@ -345,7 +339,6 @@ The VirtualBox web server is used to control headless VMs using a browser.
 
 
 ###########################################
-
 %package guest-tools
 Summary:        VirtualBox guest tools
 Group:          System/Emulators/PC
@@ -369,11 +362,8 @@ VirtualBox guest addition tools.
 
 
 
-
-
-
-
 ###########################################
+
 %package -n python3-%{name}
 Summary:        Python bindings for %{name}
 Group:          Development/Libraries/Python
@@ -394,11 +384,8 @@ Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
 
-
-
-
-
 ###########################################
+
 %package devel
 Summary:        Devel files for %{name}
 Group:          Development/Libraries/Other
@@ -414,11 +401,8 @@ Development file for %{name}
 
 
 
-
-
-
-
 ###########################################
+
 %package host-source
 Summary:        Source files for %{name} host kernel modules
 Group:          Development/Sources
@@ -451,11 +435,8 @@ sudo %{_sbindir}/vboxguestconfig
 
 
 
-
-
-
-
 ###########################################
+
 %package guest-desktop-icons
 Summary:        Icons for guest desktop files
 Group:          System/Emulators/PC
@@ -469,11 +450,8 @@ This package contains icons for guest desktop files that were created on the des
 
 
 
-
-
-
-
 ###########################################
+
 %package vnc
 Summary:        VNC desktop sharing
 Group:          System/Emulators/PC
@@ -654,7 +632,7 @@ install -d %{buildroot}%{_unitdir}/multi-user.target.wants
 install -d -m 755 %{buildroot}%{_sysconfdir}/vbox
 install -d -m 755 %{buildroot}%{_sysconfdir}/vbox/autostart.d
 install -d -m 755 %{buildroot}%{_udevrulesdir}
-install -d -m 755 %{buildroot}/etc/X11/xinit/xinitrc.d
+install -d -m 755 %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d
 
 ###########################################
 echo "entering guest-tools install section"
@@ -673,9 +651,9 @@ install -p -m 0644 -D %{SOURCE13} %{buildroot}%{_unitdir}/vboxservice.service
 install -m 755 out/linux.*/release/bin/additions/VBoxClient	%{buildroot}%{_bindir}
 install -m 755 out/linux.*/release/bin/additions/VBoxDRMClient	%{buildroot}%{_bindir}
 # install init script which start VBoxClient daemon (support for clipboard,autoresize,seamless windows)
-install -m 755 src/VBox/Additions/x11/Installer/98vboxadd-xclient %{buildroot}/etc/X11/xinit/xinitrc.d/
+install -m 755 src/VBox/Additions/x11/Installer/98vboxadd-xclient %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d/
 install -d %{buildroot}%{_sysconfdir}/xdg/autostart/
-install -m 644 %{SOURCE25} %{buildroot}/etc/xdg/autostart/vboxclient.desktop
+install -m 644 %{SOURCE25} %{buildroot}%{_sysconfdir}/xdg/autostart/vboxclient.desktop
 %if 0%{?suse_version} > 1320 || 0%{?sle_version} == 120300
 install -d -m 755 %{buildroot}/media
 %endif
@@ -822,6 +800,7 @@ pushd out/linux.*/release/bin
 install -m 755 vboxwebsrv %{buildroot}%{_vbox_instdir}
 install -m 755 webtest %{buildroot}%{_vbox_instdir}
 popd
+ln -sf %{_unitdir}/vboxweb-service.service %{buildroot}%{_unitdir}/multi-user.target.wants/vboxweb-service.service
 
 #
 ######################################################
@@ -1040,6 +1019,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_unitdir}/vboxautostart-service.service
 %{_unitdir}/multi-user.target.wants/vboxdrv.service
 %{_unitdir}/multi-user.target.wants/vboxautostart-service.service
+%{_unitdir}/multi-user.target.wants/vboxweb-service.service
 %{_sbindir}/rcvboxdrv
 %{_sbindir}/rcvboxautostart
 %{_sbindir}/vboxconfig
@@ -1098,17 +1078,17 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %dir %{_libdir}/xorg/modules/drivers
 %dir %{_libdir}/xorg/modules/input
 %dir %{_libdir}/dri/
-%dir /etc/X11
-%dir /etc/X11/xinit
-%dir /etc/X11/xinit/xinitrc.d
+%dir %{_sysconfdir}/X11
+%dir %{_sysconfdir}/X11/xinit
+%dir %{_sysconfdir}/X11/xinit/xinitrc.d
 %{_bindir}/VBoxClient
 %{_bindir}/VBoxDRMClient
-/etc/X11/xinit/xinitrc.d/98vboxadd-xclient
+%{_sysconfdir}/X11/xinit/xinitrc.d/98vboxadd-xclient
 %{_unitdir}/vboxclient.service
 %{_unitdir}/vboxservice.service
-%dir /etc/xdg
-%dir /etc/xdg/autostart
-/etc/xdg/autostart/vboxclient.desktop
+%dir %{_sysconfdir}/xdg
+%dir %{_sysconfdir}/xdg/autostart
+%{_sysconfdir}/xdg/autostart/vboxclient.desktop
 %if 0%{?suse_version} > 1320 || 0%{?sle_version} == 120300
 %dir /media
 %endif

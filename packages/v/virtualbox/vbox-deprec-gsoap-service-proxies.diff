@@ -1,8 +1,8 @@
-Index: VirtualBox-5.1.4/src/VBox/Main/webservice/Makefile.kmk
+Index: VirtualBox-6.1.38/src/VBox/Main/webservice/Makefile.kmk
 ===================================================================
---- VirtualBox-5.1.4.orig/src/VBox/Main/webservice/Makefile.kmk
-+++ VirtualBox-5.1.4/src/VBox/Main/webservice/Makefile.kmk
-@@ -724,7 +724,7 @@ $(VBOXWEB_OUT_DIR)/gsoap_generate_all_ts
+--- VirtualBox-6.1.38.orig/src/VBox/Main/webservice/Makefile.kmk
++++ VirtualBox-6.1.38/src/VBox/Main/webservice/Makefile.kmk
+@@ -772,7 +772,7 @@ $(VBOXWEB_OUT_DIR)/gsoap_generate_all_ts
  		$(RECOMPILE_ON_MAKEFILE_CURRENT) | $$(dir $$@)
  	$(call MSG_GENERATE,,lots of files,$(GSOAPH_RELEVANT))
  	$(RM) -f $@

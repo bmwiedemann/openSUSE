@@ -1,8 +1,8 @@
-Index: VirtualBox-5.2.0/configure
+Index: VirtualBox-6.1.38/configure
 ===================================================================
---- VirtualBox-5.2.0.orig/configure
-+++ VirtualBox-5.2.0/configure
-@@ -429,8 +429,13 @@ check_gcc()
+--- VirtualBox-6.1.38.orig/configure
++++ VirtualBox-6.1.38/configure
+@@ -442,8 +442,13 @@ check_gcc()
          log_failure "cannot execute '$CXX -dumpversion'"
          fail really
        fi

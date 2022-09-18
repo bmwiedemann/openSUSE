@@ -1,8 +1,8 @@
-Index: VirtualBox-6.0.0/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsUpdate.cpp
+Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsUpdate.cpp
 ===================================================================
---- VirtualBox-6.0.0.orig/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsUpdate.cpp
-+++ VirtualBox-6.0.0/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsUpdate.cpp
-@@ -110,8 +110,8 @@ void UIGlobalSettingsUpdate::getFromCach
+--- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsUpdate.cpp
++++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsUpdate.cpp
+@@ -104,8 +104,8 @@ void UIGlobalSettingsUpdate::getFromCach
      /* Get old update data from the cache: */
      const UIDataSettingsGlobalUpdate &oldUpdateData = m_pCache->base();
  
@@ -13,11 +13,11 @@ Index: VirtualBox-6.0.0/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlob
      if (m_pCheckBoxUpdate->isChecked())
      {
          m_pComboBoxUpdatePeriod->setCurrentIndex(oldUpdateData.m_periodIndex);
-Index: VirtualBox-6.0.0/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
+Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
 ===================================================================
---- VirtualBox-6.0.0.orig/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
-+++ VirtualBox-6.0.0/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
-@@ -91,8 +91,6 @@ void UISettingsDialogGlobal::retranslate
+--- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
++++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
+@@ -86,8 +86,6 @@ void UISettingsDialogGlobal::retranslate
      m_pSelector->setItemText(GlobalSettingsPageType_Input, tr("Input"));
  
  #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
@@ -26,7 +26,7 @@ Index: VirtualBox-6.0.0/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDia
  #endif
  
      /* Language page: */
-@@ -208,16 +206,6 @@ void UISettingsDialogGlobal::prepare()
+@@ -203,16 +201,6 @@ void UISettingsDialogGlobal::prepare()
                              iPageIndex, "#input", pSettingsPage);
                      break;
                  }

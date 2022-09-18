@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.13/src/VBox/Additions/linux/sharedfolders/regops.c
+Index: VirtualBox-6.1.38/src/VBox/Additions/linux/sharedfolders/regops.c
 ===================================================================
---- VirtualBox-6.1.13.orig/src/VBox/Additions/linux/sharedfolders/regops.c
-+++ VirtualBox-6.1.13/src/VBox/Additions/linux/sharedfolders/regops.c
-@@ -1432,7 +1432,7 @@ DECLINLINE(int) vbsf_lock_user_pages(uin
+--- VirtualBox-6.1.38.orig/src/VBox/Additions/linux/sharedfolders/regops.c
++++ VirtualBox-6.1.38/src/VBox/Additions/linux/sharedfolders/regops.c
+@@ -1451,7 +1451,7 @@ DECLINLINE(int) vbsf_lock_user_pages(uin
  # elif RTLNX_VER_MIN(4,6,0)
      ssize_t cPagesLocked = get_user_pages_unlocked(uPtrFrom, cPages, fWrite, 1 /*force*/, papPages);
  # elif RTLNX_VER_RANGE(4,4,168,  4,5,0)

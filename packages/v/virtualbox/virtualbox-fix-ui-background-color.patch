@@ -1,7 +1,7 @@
-Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/tools/UITools.cpp
+Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/tools/UITools.cpp
 ===================================================================
---- VirtualBox-6.1.14.orig/src/VBox/Frontends/VirtualBox/src/manager/tools/UITools.cpp
-+++ VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/tools/UITools.cpp
+--- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/manager/tools/UITools.cpp
++++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/tools/UITools.cpp
 @@ -124,10 +124,6 @@ void UITools::preparePalette()
  {
      /* Setup palette: */
@@ -13,10 +13,10 @@ Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/tools/UITools
  }
  
  void UITools::prepareLayout()
-Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/UIVirtualBoxManager.cpp
+Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/UIVirtualBoxManager.cpp
 ===================================================================
---- VirtualBox-6.1.14.orig/src/VBox/Frontends/VirtualBox/src/manager/UIVirtualBoxManager.cpp
-+++ VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/UIVirtualBoxManager.cpp
+--- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/manager/UIVirtualBoxManager.cpp
++++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/UIVirtualBoxManager.cpp
 @@ -1323,7 +1323,7 @@ void UIVirtualBoxManager::prepareMenuBar
          /* Make sure menu-bar fills own solid background: */
          menuBar()->setAutoFillBackground(true);
@@ -26,10 +26,10 @@ Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/UIVirtualBoxM
          pal.setColor(QPalette::Active, QPalette::Button, color);
          menuBar()->setPalette(pal);
      }
-Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooser.cpp
+Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooser.cpp
 ===================================================================
---- VirtualBox-6.1.14.orig/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooser.cpp
-+++ VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooser.cpp
+--- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooser.cpp
++++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooser.cpp
 @@ -121,10 +121,6 @@ void UIChooser::preparePalette()
  {
      /* Setup palette: */
@@ -41,10 +41,10 @@ Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/chooser/UICho
  }
  
  void UIChooser::prepareLayout()
-Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemMachine.cpp
+Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemMachine.cpp
 ===================================================================
---- VirtualBox-6.1.14.orig/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemMachine.cpp
-+++ VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemMachine.cpp
+--- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemMachine.cpp
++++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemMachine.cpp
 @@ -909,7 +909,7 @@ void UIChooserItemMachine::paintBackgrou
      else
      {
@@ -81,10 +81,10 @@ Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/chooser/UICho
  
      /* Create/assign pen: */
      QPen pen(strokeColor);
-Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/tools/UIToolsItem.cpp
+Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/tools/UIToolsItem.cpp
 ===================================================================
---- VirtualBox-6.1.14.orig/src/VBox/Frontends/VirtualBox/src/manager/tools/UIToolsItem.cpp
-+++ VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/tools/UIToolsItem.cpp
+--- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/manager/tools/UIToolsItem.cpp
++++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/tools/UIToolsItem.cpp
 @@ -716,7 +716,7 @@ void UIToolsItem::paintBackground(QPaint
          /* Prepare color: */
          const QColor backgroundColor = isEnabled()
@@ -123,10 +123,10 @@ Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/tools/UITools
  
      /* Create/assign pen: */
      QPen pen(strokeColor);
-Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/UIVirtualBoxManagerWidget.cpp
+Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/UIVirtualBoxManagerWidget.cpp
 ===================================================================
---- VirtualBox-6.1.14.orig/src/VBox/Frontends/VirtualBox/src/manager/UIVirtualBoxManagerWidget.cpp
-+++ VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/UIVirtualBoxManagerWidget.cpp
+--- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/manager/UIVirtualBoxManagerWidget.cpp
++++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/UIVirtualBoxManagerWidget.cpp
 @@ -352,14 +352,6 @@ void UIVirtualBoxManagerWidget::prepare(
  {
      /* Configure palette: */
@@ -151,10 +151,10 @@ Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/UIVirtualBoxM
              /* Set the initial distribution. The right site is bigger. */
              m_pSplitter->setStretchFactor(0, 2);
              m_pSplitter->setStretchFactor(1, 3);
-Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItem.cpp
+Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItem.cpp
 ===================================================================
---- VirtualBox-6.1.14.orig/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItem.cpp
-+++ VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItem.cpp
+--- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItem.cpp
++++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItem.cpp
 @@ -646,7 +646,7 @@ void UIChooserItem::paintFlatButton(QPai
  
      /* Prepare colors: */
@@ -164,10 +164,10 @@ Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/chooser/UICho
  
      /* Prepare pen: */
      QPen pen;
-Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserView.cpp
+Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserView.cpp
 ===================================================================
---- VirtualBox-6.1.14.orig/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserView.cpp
-+++ VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserView.cpp
+--- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserView.cpp
++++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserView.cpp
 @@ -245,10 +245,6 @@ void UIChooserView::prepare()
  void UIChooserView::preparePalette()
  {
@@ -179,10 +179,10 @@ Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/chooser/UICho
  }
  
  void UIChooserView::resizeEvent(QResizeEvent *pEvent)
-Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/tools/UIToolsView.cpp
+Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/tools/UIToolsView.cpp
 ===================================================================
---- VirtualBox-6.1.14.orig/src/VBox/Frontends/VirtualBox/src/manager/tools/UIToolsView.cpp
-+++ VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/tools/UIToolsView.cpp
+--- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/manager/tools/UIToolsView.cpp
++++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/tools/UIToolsView.cpp
 @@ -182,10 +182,6 @@ void UIToolsView::prepare()
  void UIToolsView::preparePalette()
  {
@@ -194,10 +194,10 @@ Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/tools/UITools
  }
  
  void UIToolsView::resizeEvent(QResizeEvent *pEvent)
-Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsElement.cpp
+Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsElement.cpp
 ===================================================================
---- VirtualBox-6.1.14.orig/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsElement.cpp
-+++ VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsElement.cpp
+--- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsElement.cpp
++++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsElement.cpp
 @@ -1185,7 +1185,7 @@ void UIDetailsElement::paintBackground(Q
      const QPalette pal = palette();
  
@@ -216,10 +216,10 @@ Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/details/UIDet
      QPen pen(strokeColor);
      pen.setWidth(0);
      pPainter->setPen(pen);
-Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/widgets/UIToolBar.cpp
+Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/widgets/UIToolBar.cpp
 ===================================================================
---- VirtualBox-6.1.14.orig/src/VBox/Frontends/VirtualBox/src/widgets/UIToolBar.cpp
-+++ VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/widgets/UIToolBar.cpp
+--- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/widgets/UIToolBar.cpp
++++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/widgets/UIToolBar.cpp
 @@ -110,7 +110,7 @@ void UIToolBar::paintEvent(QPaintEvent *
          const QRect rectangle = pEvent->rect();
  
@@ -229,11 +229,11 @@ Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/widgets/UIToolBar.cpp
          QLinearGradient gradient(rectangle.topLeft(), rectangle.bottomLeft());
          gradient.setColorAt(0,   backgroundColor.lighter(130));
          gradient.setColorAt(1,   backgroundColor.lighter(125));
-Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsSet.cpp
+Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsSet.cpp
 ===================================================================
---- VirtualBox-6.1.14.orig/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsSet.cpp
-+++ VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsSet.cpp
-@@ -700,7 +700,7 @@ void UIDetailsSet::paintBackground(QPain
+--- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsSet.cpp
++++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsSet.cpp
+@@ -706,7 +706,7 @@ void UIDetailsSet::paintBackground(QPain
      const QRect optionRect = pOptions->rect;
  
      /* Paint default background: */
@@ -242,10 +242,10 @@ Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/details/UIDet
      pPainter->fillRect(optionRect, defaultColor);
  
      /* Restore painter: */
-Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemGlobal.cpp
+Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemGlobal.cpp
 ===================================================================
---- VirtualBox-6.1.14.orig/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemGlobal.cpp
-+++ VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemGlobal.cpp
+--- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemGlobal.cpp
++++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemGlobal.cpp
 @@ -639,7 +639,7 @@ void UIChooserItemGlobal::paintBackgroun
          pPainter->fillRect(rectangle, bgGrad);
  #else
@@ -264,10 +264,10 @@ Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/chooser/UICho
  
      /* Create/assign pen: */
      QPen pen(strokeColor);
-Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsGroup.cpp
+Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsGroup.cpp
 ===================================================================
---- VirtualBox-6.1.14.orig/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsGroup.cpp
-+++ VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsGroup.cpp
+--- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsGroup.cpp
++++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/details/UIDetailsGroup.cpp
 @@ -283,7 +283,7 @@ void UIDetailsGroup::paintBackground(QPa
  #ifdef VBOX_WS_MAC
      const QColor defaultColor = palette().color(QPalette::Active, QPalette::Mid).lighter(145);
@@ -277,10 +277,10 @@ Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/details/UIDet
  #endif
      pPainter->fillRect(optionRect, defaultColor);
  
-Index: VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemGroup.cpp
+Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemGroup.cpp
 ===================================================================
---- VirtualBox-6.1.14.orig/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemGroup.cpp
-+++ VirtualBox-6.1.14/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemGroup.cpp
+--- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemGroup.cpp
++++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/manager/chooser/UIChooserItemGroup.cpp
 @@ -1500,7 +1500,7 @@ void UIChooserItemGroup::paintBackground
      const QPalette pal = palette();
      const QColor headerColor = pal.color(QPalette::Active,

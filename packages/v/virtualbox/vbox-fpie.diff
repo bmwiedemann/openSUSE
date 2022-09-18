@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.4/Config.kmk
+Index: VirtualBox-6.1.38/Config.kmk
 ===================================================================
---- VirtualBox-6.1.4.orig/Config.kmk
-+++ VirtualBox-6.1.4/Config.kmk
-@@ -5533,6 +5532,9 @@ TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS.darwi
+--- VirtualBox-6.1.38.orig/Config.kmk
++++ VirtualBox-6.1.38/Config.kmk
+@@ -5663,6 +5663,9 @@ TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS.darwi
  ifeq ($(KBUILD_TARGET),linux)
  # not necessary except USE_LIB_PCAP is defined in SUPR3HardenedMain.cpp
  # TEMPLATE_VBOXR3HARDENEDEXE_LIBS += cap
@@ -12,7 +12,7 @@ Index: VirtualBox-6.1.4/Config.kmk
  endif
  ifeq ($(KBUILD_TARGET),win) # No CRT!
   TEMPLATE_VBOXR3HARDENEDEXE_SDKS          = VBOX_NTDLL $(TEMPLATE_VBOXR3EXE_SDKS)
-@@ -5554,8 +5556,8 @@ ifeq ($(KBUILD_TARGET),win) # No CRT!
+@@ -5684,8 +5687,8 @@ ifeq ($(KBUILD_TARGET),win) # No CRT!
   TEMPLATE_VBOXR3HARDENEDEXE_LIBS.amd64     = $(NOT_SUCH_VARIABLE)
  else ifn1of ($(KBUILD_TARGET), os2 solaris)
   # We want to keep the RPATH on Solaris to be able to find libgcc_1/libstdc++ within $(VBOX_WITH_RUNPATH)

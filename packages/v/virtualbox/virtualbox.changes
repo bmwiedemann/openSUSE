@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 16 15:03:48 UTC 2022 - Larry Rainey <llrainey15@gmail.com>
+
+- Version bump to 6.1.38r86 released by Oracle September 02 2022
+  This is a maintenance release. The following items were fixed and/or added:
+
+  GUI: Improvements in Native Language Support area
+  Main: OVF Export: Added support for exporting VMs containing Virtio-SCSI controllers
+  Recording settings: Fixed a regression which could cause not starting the COM server (VBoxSVC) under certain circumstances (bug #21034)
+  Recording: More deterministic naming for recorded files (will now overwrite old .webm files if present)
+  Linux Host and Guest Additions installer: Improved check for systemd presence in the system (bug #19033)
+  Linux Guest Additions: Introduced initial support for kernel 6.0
+  Linux Guest Additions: Additional fixes for kernel RHEL 9.1 (bug #21065)
+  Windows Guest Additions: Improvements in Drag and Drop area
+  
+  Fixes permission problem with /dev/vboxuser (boo#1203370)
+  Fixes boo#1203306 - 6.1.38 is available
+  Fixes missing firewall opening (boo#1203086)
+  Fixes boo#1201720 CVE items for CVE-2022-21571, CVE-2022-21554
+
+-------------------------------------------------------------------
 Fri Aug 12 00:18:58 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
 
 - Modified the spec file to remove package virtualbox-guest-x11, which is no longer needed. 

@@ -1,7 +1,7 @@
-Index: VirtualBox-6.1.36/src/VBox/Installer/linux/vboxdrv.sh
+Index: VirtualBox-6.1.38/src/VBox/Installer/linux/vboxdrv.sh
 ===================================================================
---- VirtualBox-6.1.36.orig/src/VBox/Installer/linux/vboxdrv.sh
-+++ VirtualBox-6.1.36/src/VBox/Installer/linux/vboxdrv.sh
+--- VirtualBox-6.1.38.orig/src/VBox/Installer/linux/vboxdrv.sh
++++ VirtualBox-6.1.38/src/VBox/Installer/linux/vboxdrv.sh
 @@ -19,11 +19,12 @@
  #
  ### BEGIN INIT INFO
