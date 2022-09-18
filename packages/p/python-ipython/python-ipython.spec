@@ -24,17 +24,15 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-# extra tests are skipped automatically, don't require these packages for Ring1
-%bcond_with localtest
-
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
-
+# extra tests are skipped automatically, don't require these packages for Ring1
+%bcond_with localtest
 Name:           python-ipython%{psuffix}
-Version:        8.4.0
+Version:        8.5.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -42,16 +40,14 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipython
 Source:         https://files.pythonhosted.org/packages/source/i/ipython/ipython-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtconsole/resources/icon/JupyterConsole.svg
-# PATCH-FIX-UPSTREAM ipython-pr13714-xxlimited.patch gh#ipython/ipython#13714
-Patch0:         ipython-pr13714-xxlimited.patch
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module setuptools >= 18.5}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module setuptools >= 51.0.0}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       (python-prompt_toolkit >= 2.0 with python-prompt_toolkit < 3.1)
+Requires:       (python-prompt_toolkit > 3.0.1 with python-prompt_toolkit < 3.1)
 # requires the full stdlib including sqlite3
-Requires:       python >= 3.7
+Requires:       python >= 3.8
 Requires:       python-backcall
 Requires:       python-black
 Requires:       python-decorator
@@ -59,8 +55,7 @@ Requires:       python-jedi >= 0.16
 Requires:       python-matplotlib-inline
 Requires:       python-pexpect >= 4.3
 Requires:       python-pickleshare
-Requires:       python-pygments
-Requires:       python-setuptools >= 18.5
+Requires:       python-pygments >= 2.4.0
 Requires:       python-stack-data
 Requires:       python-traitlets >= 5
 Recommends:     jupyter
@@ -89,7 +84,7 @@ BuildRequires:  %{python_module ipython = %{version}}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy >= 1.19}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module pygments}
+BuildRequires:  %{python_module pygments >= 2.4.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Sep  8 14:37:43 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * remove patch ipython-pr13714-xxlimited.patch; included upstream
+  * update required versions
+
+- update to version 8.5.0:
+  * Added shortcut for accepting auto suggestion. The End key shortcut
+    for accepting auto-suggestion This binding works in Vi mode too,
+    provided TerminalInteractiveShell.emacs_bindings_in_vi_insert_mode
+    is set to be True :ghpull:`13566`.
+  * No popup in window for latex generation w hen generating latex
+    (e.g. via _latex_repr_) no popup window is shows under
+    Windows. :ghpull:`13679`
+  * Fixed error raised when attempting to tab-complete an input string
+    with consecutive periods or forward slashes (such as
+    "file:///var/log/..."). :ghpull:`13675`
+  * Relative filenames in Latex rendering : The latex_to_png_dvipng
+    command internally generates input and output file arguments to
+    latex and dvipis. These arguments are now generated as relative
+    files to the current working directory instead of absolute file
+    paths. This solves a problem where the current working directory
+    contains characters that are not handled properly by latex and
+    dvips. There are no changes to the user API. :ghpull:`13680`
+  * Stripping decorators bug: Fixed bug which meant that ipython code
+    blocks in restructured text documents executed with the
+    ipython-sphinx extension skipped any lines of code containing
+    python decorators. :ghpull:`13612`
+  * Allow some modules with frozen dataclasses to be
+    reloaded. :ghpull:`13732`
+  * Fix paste magic on wayland. :ghpull:`13671`
+  * show maxlen in deque's repr. :ghpull:`13648`
+
+-------------------------------------------------------------------
 Fri Aug  5 13:54:20 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add ipython-pr13714-xxlimited.patch gh#ipython/ipython#13714
