@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 17 02:50:46 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.1.2a
+  * A minor version bump to fix OpenCV warnings on Windows
+- Update to version 0.1.2
+  * This release incorporates the community PRs for the past three
+    years & mainly serves for OpenCV new compilers support as
+    requested.
+
+-------------------------------------------------------------------
 Wed Jan 12 15:45:28 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Don't leave an empty %check section if building without tests

@@ -23,7 +23,7 @@
 %bcond_with tutorials
 
 Name:           ade
-Version:        0.1.1f
+Version:        0.1.2a
 Release:        0
 Summary:        Graph construction, manipulation, and processing framework
 License:        Apache-2.0
