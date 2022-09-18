@@ -939,4 +939,41 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
     <comment></comment>
     <requestid>997497</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>0049eb445fb6d531629c1d5ff3f30722</srcmd5>
+    <version>1.4.41</version>
+    <time>1663515106</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.41:
+  * Fixed issue where use of the :func:`_sql.table` construct, passing a string
+    for the :paramref:`_sql.table.schema` parameter, would fail to take the
+    &quot;schema&quot; string into account when producing a cache key, thus leading to
+    caching collisions if multiple, same-named :func:`_sql.table` constructs
+    with different schemas were used.
+  * Fixed event listening issue where event listeners added to a superclass
+    would be lost if a subclass were created which then had its own listeners
+    associated. The practical example is that of the :class:`.sessionmaker`
+    class created after events have been associated with the
+    :class:`_orm.Session` class.
+  * Hardened the cache key strategy for the :func:`_orm.aliased` and
+    :func:`_orm.with_polymorphic` constructs. While no issue involving actual
+    statements being cached can easily be demonstrated (if at all), these two
+    constructs were not including enough of what makes them unique in their
+    cache keys for caching on the aliased construct alone to be accurate.
+  * Fixed regression appearing in the 1.4 series where a joined-inheritance
+    query placed as a subquery within an enclosing query for that same entity
+    would fail to render the JOIN correctly for the inner query. The issue
+    manifested in two different ways prior and subsequent to version 1.4.18
+    (related issue :ticket:`6595`), in one case rendering JOIN twice, in the
+    other losing the JOIN entirely. To resolve, the conditions under which
+    &quot;polymorphic loading&quot; are applied have been scaled back to not be invoked
+    for simple joined inheritance queries.
+  * Fixed issue in :mod:`sqlalchemy.ext.mutable` extension where collection
+    links to the parent object would be lost if the object were merged with
+    :meth:`.Session.merge` while also passing :paramref:`.Session.merge.load`
+    as False.
+  * Fixed issue involving :func:`_orm.with_loader_criteria` where a closure
+    variable used as bound parameter value within the lambda would not carry</comment>
+    <requestid>1004264</requestid>
+  </revision>
 </revisionlist>
