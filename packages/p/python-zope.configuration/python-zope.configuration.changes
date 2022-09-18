@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 16 22:38:51 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update to 4.4.1 
+  * Avoid creating reference cycles through tracebacks in reraise (change imported from six).
+  * Add support for Python 3.9, 3.10.
+
+-------------------------------------------------------------------
 Tue Mar 24 14:50:27 UTC 2020 - pgajdos@suse.com
 
 - version update to 4.4.0
