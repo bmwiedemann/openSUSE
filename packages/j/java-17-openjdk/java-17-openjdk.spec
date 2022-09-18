@@ -951,6 +951,7 @@ fi
 %{_jvmdir}/%{jrelnk}
 %{_jvmprivdir}/*
 
+%{_jvmdir}/%{sdkdir}/release
 %{_jvmdir}/%{sdkdir}/bin/java
 %{_jvmdir}/%{sdkdir}/bin/jfr
 %{_jvmdir}/%{sdkdir}/bin/keytool
@@ -1125,7 +1126,6 @@ fi
 
 %files jmods
 %dir %{_jvmdir}/%{sdkdir}/jmods
-%{_jvmdir}/%{sdkdir}/release
 %{_jvmdir}/%{sdkdir}/jmods/*.jmod
 %{_jvmdir}/%{sdkdir}/jmods/java-atk-wrapper.jar
 
