@@ -11485,9 +11485,7 @@ unsorted:
   - libhal1 
   - libhamlib++4 
   - libhamlib4 
-  - libhandy-0_0-0 
   - libhandy-devel 
-  - libhandy0-devel 
   - libhangul-devel 
   - libhangul1-32bit: [x86_64] 
   - libharfbuzz-gobject0-32bit: [x86_64] 
@@ -14253,7 +14251,7 @@ unsorted:
   - libsuperlu5 
   - libsuperlu5-32bit: [x86_64] 
   - libsuperlu_5_3_0-gnu-hpc 
-  - libsurgescript0_5_5 
+  - libsurgescript0_5_6 
   - libsuseconnect 
   - libsvm-devel 
   - libsvm-java 
@@ -43034,7 +43032,6 @@ unsorted:
   - typelib-1_0-GtkLayerShell-0_1 
   - typelib-1_0-GtkSpell-3_0 
   - typelib-1_0-Gucharmap-2_90 
-  - typelib-1_0-Handy-0_0 
   - typelib-1_0-Hex-4 
   - typelib-1_0-Hinawa-2_0 
   - typelib-1_0-ICal-3_0 
