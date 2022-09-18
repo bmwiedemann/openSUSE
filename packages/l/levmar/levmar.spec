@@ -1,7 +1,7 @@
 #
 # spec file for package levmar
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,18 @@
 #
 
 
-%define major 2
-%define minor 6
-%define libname liblevmar%{major}
+# Somewhat arbitrary SOVERSION. Bump whenever ABI changes, which has
+# not happed for several years (since 2.6 release in 2011).
+%define sover 2
+%define libname liblevmar%{sover}
 Name:           levmar
-Version:        %{major}.%{minor}
+Version:        2.6
 Release:        0
 Summary:        Levenberg-Marquardt nonlinear least squares algorithm
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://www.ics.forth.gr/~lourakis/levmar/
-Source:         http://www.ics.forth.gr/~lourakis/levmar/levmar-%{version}.tgz
+URL:            http://users.ics.forth.gr/~lourakis/levmar/
+Source:         http://users.ics.forth.gr/~lourakis/levmar/levmar-%{version}.tgz
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
@@ -79,24 +80,23 @@ sed -i \
     -e 's:ADD_LIBRARY(levmar STATIC:ADD_LIBRARY(levmar SHARED:' \
     CMakeLists.txt
 
-# Add missing math link
-sed -i \
-    -e 's:SET(LIBS levmar):SET(LIBS levmar -lm):' \
-    CMakeLists.txt
-
-echo "set_target_properties(levmar PROPERTIES SOVERSION %{major})" >> CMakeLists.txt
+echo "set_target_properties(levmar PROPERTIES SOVERSION %{sover})" >> CMakeLists.txt
 echo "target_link_libraries(levmar m blas lapack)" >> CMakeLists.txt
 
 %build
-%cmake -DNEED_F2C:BOOL=false
+# no install target/command, so CMake won't remove the RPATH on install
+# instead, do not add it at all (i.e. during build)
+%cmake \
+  -DNEED_F2C:BOOL=false \
+  -DCMAKE_SKIP_RPATH:bool=true \
+  %{nil}
 %cmake_build
 
 %install
-install -D -p -m 755 build/liblevmar.so %{buildroot}%{_libdir}/liblevmar.so.%{major}.%{minor}
+install -D -p -m 755 build/liblevmar.so %{buildroot}%{_libdir}/liblevmar.so.%{sover}
 install -D -p -m 644 levmar.h %{buildroot}%{_includedir}/levmar.h
 install -D -p -m 755 build/lmdemo %{buildroot}%{_bindir}/lmdemo
-ln -s liblevmar.so.%{major}.%{minor} %{buildroot}%{_libdir}/liblevmar.so.%{major}
-ln -s liblevmar.so.%{major}.%{minor} %{buildroot}%{_libdir}/liblevmar.so
+ln -s liblevmar.so.%{sover} %{buildroot}%{_libdir}/liblevmar.so
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -104,8 +104,7 @@ ln -s liblevmar.so.%{major}.%{minor} %{buildroot}%{_libdir}/liblevmar.so
 %files -n %{libname}
 %license LICENSE
 %doc README.txt
-%{_libdir}/liblevmar.so.%{major}.%{minor}
-%{_libdir}/liblevmar.so.%{major}
+%{_libdir}/liblevmar.so.%{sover}
 
 %files devel
 %{_includedir}/levmar.h

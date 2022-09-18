@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 16 22:49:56 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove RPATH from library, only uses libs from standard libdir.
+
+-------------------------------------------------------------------
+Tue Nov  3 16:54:40 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove library symlink with minor version, only use a major
+  version. The (arbitrary) major version is kept, the ABI has not
+  changed for the last 9 years.
+- Fix URL and Source, wrong subdomain (should be users, not www)
+- Spec file cleanup
+
+-------------------------------------------------------------------
 Fri Oct 30 14:46:35 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Notify the build our blas does not require any f2c library,
