@@ -249,4 +249,16 @@
 - Added translations using Weblate (Arabic updated, Georgian added)</comment>
     <requestid>1001924</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>528fb0bf39f55e7c71a9651af348fbeb</srcmd5>
+    <version>1.4.17</version>
+    <time>1663515138</time>
+    <user>dimstar_suse</user>
+    <comment>update: 1.4.13 -&gt; 1.4.17
+- Fix problem that sa-IAST input method cannot be activated and make settings of sa-IAST work
+  * https://github.com/ibus/ibus-m17n/issues/52
+- Let IBusM17nEngine inherit from IBusEngineSimple to enable compose support 
+  * https://github.com/ibus/ibus-m17n/issues/51</comment>
+    <requestid>1004408</requestid>
+  </revision>
 </revisionlist>

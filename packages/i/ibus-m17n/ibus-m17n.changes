@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 18 05:53:54 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 1.4.13 -> 1.4.17
+- Fix problem that sa-IAST input method cannot be activated and make settings of sa-IAST work
+  * https://github.com/ibus/ibus-m17n/issues/52
+- Let IBusM17nEngine inherit from IBusEngineSimple to enable compose support 
+  * https://github.com/ibus/ibus-m17n/issues/51
+
+-------------------------------------------------------------------
 Thu Sep  8 15:16:39 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 update: 1.4.11 -> 1.4.13
