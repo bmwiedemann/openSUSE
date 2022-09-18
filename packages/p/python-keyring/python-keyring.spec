@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-keyring%{psuffix}
-Version:        23.7.0
+Version:        23.9.1
 Release:        0
 Summary:        System keyring service access from Python
 License:        MIT AND Python-2.0

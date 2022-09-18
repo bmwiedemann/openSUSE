@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Sep 17 08:34:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.9.1:
+  * #593: Restore ``keyring.util.properties`` with deprecation warning for
+    backward compatibility.
+  * #588: Project now depends on ``jaraco.classes`` for class property support.
+  * #581: Corrected regression in ``libsecret`` tests (``.collection`` property).
+  * #587: Fix regression in ``libsecret``.
+  * #448: ``SecretService`` and ``libsecret`` backends now support a
+    new ``SelectableScheme``, allowing the keys for "username" and
+    "service" to be overridden for compatibility with other schemes
+    such as KeePassXC.
+  * Introduced a new ``.with_properties`` method on backends to
+    produce a new keyring with different properties. Use for example
+    to get a keyring with a different ``keychain`` (macOS) or
+    ``scheme`` (SecretService/libsecret). e.g.::
+      keypass = keyring.get_keyring().with_properties(scheme='KeePassXC')
+  * ``.with_keychain`` method on macOS is superseded by ``.with_properties``
+    and so is now deprecated.
+
+-------------------------------------------------------------------
 Mon Aug 29 04:50:09 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Inject multibuild to prevent a build cycle 

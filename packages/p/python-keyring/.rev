@@ -530,4 +530,28 @@
     <comment>- Inject multibuild to prevent a build cycle</comment>
     <requestid>999759</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>39d31e19036065beeecc764c7a06009b</srcmd5>
+    <version>23.9.1</version>
+    <time>1663515118</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.9.1:
+  * #593: Restore ``keyring.util.properties`` with deprecation warning for
+    backward compatibility.
+  * #588: Project now depends on ``jaraco.classes`` for class property support.
+  * #581: Corrected regression in ``libsecret`` tests (``.collection`` property).
+  * #587: Fix regression in ``libsecret``.
+  * #448: ``SecretService`` and ``libsecret`` backends now support a
+    new ``SelectableScheme``, allowing the keys for &quot;username&quot; and
+    &quot;service&quot; to be overridden for compatibility with other schemes
+    such as KeePassXC.
+  * Introduced a new ``.with_properties`` method on backends to
+    produce a new keyring with different properties. Use for example
+    to get a keyring with a different ``keychain`` (macOS) or
+    ``scheme`` (SecretService/libsecret). e.g.::
+      keypass = keyring.get_keyring().with_properties(scheme='KeePassXC')
+  * ``.with_keychain`` method on macOS is superseded by ``.with_properties``
+    and so is now deprecated.</comment>
+    <requestid>1004358</requestid>
+  </revision>
 </revisionlist>
