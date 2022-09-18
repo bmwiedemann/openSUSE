@@ -17,21 +17,17 @@
 
 
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-django-extensions
-Version:        3.1.5
+Version:        3.2.1
 Release:        0
 Summary:        Extensions for Django
 License:        BSD-3-Clause
 URL:            https://github.com/django-extensions/django-extensions
 Source:         https://github.com/django-extensions/django-extensions/archive/%{version}.tar.gz#/django-extensions-%{version}.tar.gz
-# https://github.com/django-extensions/django-extensions/pull/1698
-Patch0:         pr_1698.patch
-Patch1:         remove-mock.patch
-# https://github.com/django-extensions/django-extensions/pull/1718
-Patch2:         support-werkzeug-2-1.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-Requires:       python-Django >= 2.2
+Requires:       python-Django >= 3.2
 Recommends:     python-Pygments
 Recommends:     python-Werkzeug
 Recommends:     python-django-json-widget
@@ -46,7 +42,7 @@ BuildArch:      noarch
 # SECTION test requirements
 # See https://github.com/django-extensions/django-extensions/issues/1617
 # for optional dependency django-pdb
-BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module django-json-widget}
@@ -87,9 +83,17 @@ export LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 export DJANGO_SETTINGS_MODULE=tests.testapp.settings
 export PYTHONPATH=${PWD}
+
+skips="(PipCheckerTests and not test_pipchecker_when_requirements_file_does_not_exist)"
 # test_should_colorize_noclasses_with_default_lexer - minor html output differences
+skips="$skips or test_should_colorize_noclasses_with_default_lexer"
 # test_no_models_dot_py fails to generate a .dot file
-%pytest -rs -v -k 'not ((PipCheckerTests and not test_pipchecker_when_requirements_file_does_not_exist) or test_should_colorize_noclasses_with_default_lexer or test_no_models_dot_py)'
+skips="$skips or test_no_models_dot_py"
+# missing fixtures in sdist
+skips="$skips or test_migration_is_last_applied or test_syncdata or test_validate_templates"
+
+# test_export_emails, test_set_fake_emails and test_set_fake_emails fail in setup due to missing fixtures in sdist
+%pytest -rs -v -k "not ($skips)" --ignore tests/management/commands/test_set_fake_passwords.py --ignore tests/management/commands/test_set_fake_emails.py --ignore tests/management/commands/test_export_emails.py
 
 %files %{python_files}
 %license LICENSE

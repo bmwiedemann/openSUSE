@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Sep 18 01:41:37 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove patches merged upstream:
+  * pr_1698.patch
+  * remove-mock.patch
+  * support-werkzeug-2-1.patch
+- Add skips for tests depending on missing test data
+- Update to v3.2.1
+  * Improvement: fix translation interpolation in prospective arabic translations
+  * Improvement: runserver_plus, Add option to ignore files on runserver_plus reload
+  * Improvement: docs: Fix a few typos
+  * Improvement: drop python 3.5 as it is EOL
+  * Improvement: sqldiff, Added support for meta indexes and constraints in sqldiff
+  * Improvement: show_urls, Ensure consistent output in show_urls for django 4.0+
+  * Fix: dumpscript, make_aware should not be called if aware already
+  * Fix: Use list values for requires_system_checks
+- from v3.2.0
+  * Improvement: Django 4 support
+  * Improvement: Accept both --no-input and --noinput
+  * Improvement: sqldsn, Added more styles to the sqldsn management command
+  * Improvement: graph_models, Flag for to color code relations based on on_delete
+  * Improvement: graph_models, Add --relation-fields-only flag
+  * Improvement: RandomCharField, allow keeping default values
+  * Fix: HexValidator, Max length validation
+  * Fix: runserver_plus, Fix KeyError: 'werkzeug.server.shutdown'
+  * New: managestate, Saves current applied migrations to a file or applies migrations from file
+
+-------------------------------------------------------------------
 Fri May  6 05:19:17 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-mock.patch:

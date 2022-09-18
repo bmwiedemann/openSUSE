@@ -155,4 +155,12 @@
   * Support Werkzeug &gt;= 2.1.0</comment>
     <requestid>975280</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>66796e0b16e74d72a6ecf041cc70201e</srcmd5>
+    <version>3.2.1</version>
+    <time>1663515144</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004399</requestid>
+  </revision>
 </revisionlist>
