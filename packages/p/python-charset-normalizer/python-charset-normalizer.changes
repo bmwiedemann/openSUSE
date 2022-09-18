@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 17 15:46:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Function `normalize` scheduled for removal in 3.0
+  * Removed useless call to decode in fn is_unprintable (#206)
+
+-------------------------------------------------------------------
 Thu Aug 18 15:34:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Clean requirements: We don't need anything

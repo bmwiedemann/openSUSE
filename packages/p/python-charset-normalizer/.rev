@@ -191,4 +191,14 @@
     <comment></comment>
     <requestid>998090</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fb31a344ba8903d5725f60b5350f56ce</srcmd5>
+    <version>2.1.1</version>
+    <time>1663515118</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.1:
+  * Function `normalize` scheduled for removal in 3.0
+  * Removed useless call to decode in fn is_unprintable (#206)</comment>
+    <requestid>1004361</requestid>
+  </revision>
 </revisionlist>
