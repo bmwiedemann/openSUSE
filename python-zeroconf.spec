@@ -20,19 +20,21 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-zeroconf
-Version:        0.38.7
+Version:        0.39.1
 Release:        0
 Summary:        Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 License:        LGPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/jstasiak/python-zeroconf
 Source:         %{name}-%{version}.tar.xz
+BuildRequires:  %{python_module async_timeout >= 4.0.1}
 BuildRequires:  %{python_module ifaddr >= 0.1.7}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-async_timeout >= 4.0.1
 Requires:       python-ifaddr >= 0.1.7
 BuildArch:      noarch
 %python_subpackages
@@ -60,8 +62,7 @@ does not force you to use a particular event loop or python-twisted.
 # - test_integration_with_listener_ipv6: Requires network access
 # - test_launch*: Require network access
 # - test_close_multiple_times: Requires network access
-# - test_service_browser_expire_callbacks: Flakey (gh#jstasiak/python-zeroconf#1077)
-%pytest tests -k 'not (test_integration_with_listener_ipv6 or test_launch or test_close_multiple_times or test_service_browser_expire_callbacks)'
+%pytest tests -k 'not (test_integration_with_listener_ipv6 or test_launch or test_close_multiple_times)'
 
 %files %{python_files}
 %doc README.rst
