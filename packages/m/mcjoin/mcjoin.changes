@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 18 10:39:13 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.11
+  * Fix issue with spurious timer expiry on Aarch64 (Arm64)
+  * Fix #26: sender takes 100% CPU usage in daemon mode
+- Update to version 2.10
+  * Minor bug fixes, found by Coverity Scan
+  * Fix #18: optional trailing group port arguments ip4/ip6.
+  * Fix #19: setsid() problem causing mcjoin to exit when
+    daemonized.
+  * regression introduced in v2.7.
+  * Fix #23: fix uptime display in old output mode.
+  * Document alternative use-case.
+
+-------------------------------------------------------------------
 Fri Jan 15 19:11:16 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.9
