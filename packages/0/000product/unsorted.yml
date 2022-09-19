@@ -9156,25 +9156,26 @@ unsorted:
   - libOpenThreads-devel 
   - libOpenThreads21 
   - libPDAL13 
-  - libPocoActiveRecord83 
-  - libPocoCppParser83 
-  - libPocoCrypto83 
-  - libPocoData83 
-  - libPocoDataMySQL83 
-  - libPocoDataODBC83 
-  - libPocoDataSQLite83 
-  - libPocoEncodings83 
-  - libPocoFoundation83 
-  - libPocoJSON83 
-  - libPocoJWT83 
-  - libPocoMongoDB83 
-  - libPocoNet83 
-  - libPocoNetSSL83 
-  - libPocoPDF83 
-  - libPocoRedis83 
-  - libPocoUtil83 
-  - libPocoXML83 
-  - libPocoZip83 
+  - libPocoActiveRecord92 
+  - libPocoCppParser92 
+  - libPocoCrypto92 
+  - libPocoData92 
+  - libPocoDataMySQL92 
+  - libPocoDataODBC92 
+  - libPocoDataSQLite92 
+  - libPocoEncodings92 
+  - libPocoFoundation92 
+  - libPocoJSON92 
+  - libPocoJWT92 
+  - libPocoMongoDB92 
+  - libPocoNet92 
+  - libPocoNetSSL92 
+  - libPocoPDF92 
+  - libPocoPrometheus92 
+  - libPocoRedis92 
+  - libPocoUtil92 
+  - libPocoXML92 
+  - libPocoZip92 
   - libQCSXCAD0 
   - libQCoro5Core0 
   - libQCoro5DBus0 
@@ -9773,9 +9774,9 @@ unsorted:
   - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
   - libargtable2-devel 
-  - libarm_compute26: [x86_64] 
-  - libarm_compute_core26: [x86_64] 
-  - libarm_compute_graph26: [x86_64] 
+  - libarm_compute28: [x86_64] 
+  - libarm_compute_core28: [x86_64] 
+  - libarm_compute_graph28: [x86_64] 
   - libarmadillo11 
   - libarmadillo11-32bit: [x86_64] 
   - libarmnn28: [x86_64] 
@@ -11257,7 +11258,7 @@ unsorted:
   - libgnt0 
   - libgnt0-32bit: [x86_64] 
   - libgnuastro16 
-  - libgnuradio-3_10_3 
+  - libgnuradio-3_10_4 
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_9_0 
   - libgnutls-dane-devel 
@@ -18570,7 +18571,6 @@ unsorted:
   - openssl_tpm2_engine 
   - openssl_tpm_engine 
   - openstack-macros 
-  - openstack-utils 
   - opensurge 
   - opensuse-welcome-lang 
   - opentest4j 
@@ -23403,7 +23403,6 @@ unsorted:
   - python310-ifaddr 
   - python310-ifconfig-parser 
   - python310-igwn-auth-utils 
-  - python310-igwn-auth-utils-requests 
   - python310-ijson 
   - python310-imagecodecs 
   - python310-imageio 
@@ -23738,6 +23737,7 @@ unsorted:
   - python310-meld3 
   - python310-memory_profiler 
   - python310-mergedeep 
+  - python310-meson-python 
   - python310-metaextract 
   - python310-metakernel 
   - python310-metamagic.json 
@@ -23990,6 +23990,7 @@ unsorted:
   - python310-pelican: [x86_64] 
   - python310-pem 
   - python310-pendulum 
+  - python310-pep440 
   - python310-pep517 
   - python310-pep8-naming 
   - python310-peppercorn 
@@ -24267,6 +24268,7 @@ unsorted:
   - python310-pyprel 
   - python310-pyprimes 
   - python310-pyproj 
+  - python310-pyproject-metadata 
   - python310-pypsexec 
   - python310-pypubsub 
   - python310-pypuppetdb 
@@ -26672,7 +26674,6 @@ unsorted:
   - python38-ifaddr 
   - python38-ifconfig-parser 
   - python38-igwn-auth-utils 
-  - python38-igwn-auth-utils-requests 
   - python38-ijson 
   - python38-imagecodecs 
   - python38-imageio 
@@ -27018,6 +27019,7 @@ unsorted:
   - python38-meld3 
   - python38-memory_profiler 
   - python38-mergedeep 
+  - python38-meson-python 
   - python38-metaextract 
   - python38-metakernel 
   - python38-metamagic.json 
@@ -27276,6 +27278,7 @@ unsorted:
   - python38-pelican: [x86_64] 
   - python38-pem 
   - python38-pendulum 
+  - python38-pep440 
   - python38-pep517 
   - python38-pep8-naming 
   - python38-peppercorn 
@@ -27569,6 +27572,7 @@ unsorted:
   - python38-pyprel 
   - python38-pyprimes 
   - python38-pyproj 
+  - python38-pyproject-metadata 
   - python38-pypsexec 
   - python38-pypubsub 
   - python38-pypuppetdb 
@@ -29998,7 +30002,6 @@ unsorted:
   - python39-ifaddr 
   - python39-ifconfig-parser 
   - python39-igwn-auth-utils 
-  - python39-igwn-auth-utils-requests 
   - python39-ijson 
   - python39-imagecodecs 
   - python39-imageio 
@@ -30344,6 +30347,7 @@ unsorted:
   - python39-meld3 
   - python39-memory_profiler 
   - python39-mergedeep 
+  - python39-meson-python 
   - python39-metaextract 
   - python39-metakernel 
   - python39-metamagic.json 
@@ -30604,6 +30608,7 @@ unsorted:
   - python39-pelican: [x86_64] 
   - python39-pem 
   - python39-pendulum 
+  - python39-pep440 
   - python39-pep517 
   - python39-pep8-naming 
   - python39-peppercorn 
@@ -30897,6 +30902,7 @@ unsorted:
   - python39-pyprel 
   - python39-pyprimes 
   - python39-pyproj 
+  - python39-pyproject-metadata 
   - python39-pypsexec 
   - python39-pypubsub 
   - python39-pypuppetdb 
@@ -43117,6 +43123,7 @@ unsorted:
   - tzdb 
   - u-boot-tools 
   - u3-tool 
+  - uacme 
   - ubi_reader 
   - ubridge 
   - ubuntu-fonts 
