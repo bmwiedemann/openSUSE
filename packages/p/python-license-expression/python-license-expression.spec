@@ -1,7 +1,7 @@
 #
 # spec file for package python-license-expression
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-license-expression
-Version:        1.2
+Version:        30.0.0
 Release:        0
 Summary:        Library to parse, compare, simplify and normalize license expressions
 License:        Apache-2.0
@@ -28,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/l/license-express
 BuildRequires:  %{python_module boolean.py >= 3.6}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-boolean.py >= 3.6
@@ -55,11 +56,11 @@ containment, equivalence and can be normalized or simplified.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest tests
 
 %files %{python_files}
 %license apache-2.0.LICENSE NOTICE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/license[_-]expression*
 
 %changelog
