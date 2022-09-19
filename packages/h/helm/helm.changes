@@ -207,7 +207,7 @@ Sat May 29 07:20:19 UTC 2021 - jenting.hsiao@suse.com
   * Define GPG_PUBRING to make pubring configurable
   * Bump github.com/mattn/go-shellwords from 1.0.10 to 1.0.11
   * Bump k8s.io/klog/v2 from 2.4.0 to 2.5.0
-  * Upgrade to oras v0.9.0 (#9269)
+  * Upgrade to oras v0.9.0 (#9269) (bsc#1181419, CVE-2021-21272)
   * use kube libraries v0.20.2
   * print warning message instead of debug message when ~/.config exists but is not accessible
   * Update default ingress values section to correspond with template
