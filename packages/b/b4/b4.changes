@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 19 05:31:24 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 0.10.0:
+  * Developer-oriented features (prep, send, trailers commands)
+  * Patchwork integration
+  * The "trailer-order" setting now only reorders the trailers
+  * Web submission endpoint support for "b4 send"
+  * Adds a "trailers-ignore-from" configuration option
+  * Bugfixes and improved tests.
+- switch from _service to standard releases (they are often enough)
+
+-------------------------------------------------------------------
 Fri Aug 26 05:36:32 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Don't change the correct manual page path into an invalid one
