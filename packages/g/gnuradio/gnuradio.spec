@@ -16,14 +16,14 @@
 #
 
 
-%define sover  3_10_3
+%define sover  3_10_4
 %ifarch %{arm}
 # boo#1182440
 %define _lto_cflags %{nil}
 %endif
 %bcond_without docs
 Name:           gnuradio
-Version:        3.10.3.0
+Version:        3.10.4.0
 Release:        0
 Summary:        GNU software radio
 License:        GPL-3.0-or-later
