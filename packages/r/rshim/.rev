@@ -70,4 +70,12 @@ via the virtual console or network interface.</comment>
     <comment></comment>
     <requestid>990389</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aaffe0c0fdbdb414c94ab8029246d975</srcmd5>
+    <version>2.0.6.13.7</version>
+    <time>1663596259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004722</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 15 08:56:34 UTC 2022 - Matthias Brugger <mbrugger@suse.com>
+
+- update to 2.0.6.13.7
+  * make use of rshim with several devices more efficient
+  * support 32 bit CR space possible on BF3 USB access
+  * support more transfer sizes
+  * add new device ID for BF3
+  * allow to en/disable VFIO/UIO support via rshim.conf
+  * make restart of rshim process more robust fixing potential race
+  * set default boot timeout to 150 seconds
+
+-------------------------------------------------------------------
 Thu Jul 14 14:16:25 UTC 2022 - Matthias Brugger <mbrugger@suse.com>
 
 - update to 2.0.6.11.5
