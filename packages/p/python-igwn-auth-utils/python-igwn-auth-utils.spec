@@ -20,7 +20,7 @@
 %define skip_python2 1
 %global srcname igwn-auth-utils
 Name:           python-igwn-auth-utils
-Version:        0.2.3
+Version:        0.3.1
 Release:        0
 Summary:        Auth Utils for International Gravitational-Wave Observatory Network (IGWN)
 License:        BSD-3-Clause
@@ -32,6 +32,8 @@ BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 2.3
+Requires:       python-requests >= 2.14
+Requires:       python-safe-netrc >= 1.0.0
 Requires:       python-scitokens >= 1.7.0
 BuildArch:      noarch
 # SECTION test requirements
@@ -42,6 +44,9 @@ BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module safe-netrc >= 1.0.0}
 BuildRequires:  %{python_module scitokens >= 1.7.0}
 # /SECTION
+# The [requests] extra was a subpackage but is included into the main requirements since 0.3
+Provides:       python-igwn-auth-utils-requests = %{version}-%{release}
+Obsoletes:      python-igwn-auth-utils-requests <= 0.3
 %python_subpackages
 
 %description
@@ -50,15 +55,6 @@ Observatory Network (IGWN) authorisation credentials.
 
 This project is primarily aimed at discovering X.509 credentials and
 SciTokens for use with HTTP(S) requests to IGWN-operated services.
-
-%package requests
-Summary:        Authorisation utilities for IGWN - requests extra
-Requires:       python-igwn-auth-utils = %{version}
-Requires:       python-requests >= 2.14
-Requires:       python-safe-netrc >= 1.0.0
-
-%description requests
-The [requests] extra requirements for python-igwn-auth-utils
 
 %prep
 %setup -q -n %{srcname}-%{version}
@@ -79,8 +75,5 @@ sed -i 's/--color=yes//' pyproject.toml
 %license LICENSE
 %{python_sitelib}/igwn_auth_utils
 %{python_sitelib}/igwn_auth_utils-%{version}*-info
-
-%files %{python_files requests}
-%license LICENSE
 
 %changelog

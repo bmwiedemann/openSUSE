@@ -7,4 +7,17 @@
     <comment>required by new version of gwdatafind</comment>
     <requestid>987408</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e798b42246f1dab4579c99235e3ae98e</srcmd5>
+    <version>0.3.1</version>
+    <time>1663596195</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.3.1
+  * [!41] Python Requests interface is now not optional
+  * [!44] New .token attribute for the Session wrapper
+  * [!46] Improvements to token discovery to handle   mismatching
+    audiences
+- Remove and obsolete -requests meta subpackage</comment>
+    <requestid>1004516</requestid>
+  </revision>
 </revisionlist>

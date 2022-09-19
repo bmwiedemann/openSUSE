@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 18 19:49:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.3.1
+  * [!41] Python Requests interface is now not optional
+  * [!44] New .token attribute for the Session wrapper
+  * [!46] Improvements to token discovery to handle   mismatching
+    audiences
+- Remove and obsolete -requests meta subpackage
+
+-------------------------------------------------------------------
 Sun Jul  3 19:53:49 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.2.3
