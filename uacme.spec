@@ -18,7 +18,7 @@
 
 
 Name:           uacme
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        A minimal ACMEv2 client
 License:        GPL-3.0-or-later
@@ -28,11 +28,11 @@ Source:         https://github.com/ndilieto/uacme/archive/v%{version}.tar.gz#/%{
 # PATCH-FIX-OPENSUSE suse-www-path.patch
 # find . -type f -exec sed -i 's|/var/www|/srv/www/htdocs|g' {} \;
 Patch1:         suse-www-path.patch
+Patch2:         %{name}-fix-incorrect-return-types.patch
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
-BuildRequires:  libev-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gnutls) >= 3.3.30
 BuildRequires:  pkgconfig(libcurl) >= 7.38.0
@@ -48,6 +48,7 @@ certificate management functions, such as certificate revocation.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 
 %build
 autoreconf -fi

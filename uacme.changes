@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug  8 08:10:43 UTC 2022 - Yasuhiko Kamata <belphegor@belbel.or.jp>
+
+- Update to version 1.7.2
+  * uacme: exponential backoff for status polling instead
+           of constant 5s delay (reduces load on server)
+  * uacme: new -r option to allow specifying revocation code
+  * uacme: fix silent failure in nsupdate.sh
+           closes https://github.com/ndilieto/uacme/issues/45
+  * uacme: replace 'echo' with 'printf' in uacme.sh
+           closes https://github.com/ndilieto/uacme/issues/48
+  * uacme: fix -Wsign-compare warning
+  * compatibility with mbedTLS v3.2
+  * compatibility with LibreSSL (with some limitations)
+    see https://github.com/ndilieto/uacme/commit/32546c7c
+  * embed ax_check_compile_flag.m4 from autoconf-archive as
+    requested in https://github.com/ndilieto/uacme/pull/57
+  * minor documentation changes including copyright year
+- Removed libev-devel from BuildRequires which causes conflict in
+  Tumbleweed.
+- Added uacme-fix-incorrect-return-types.patch to be able to build
+  in Tumbleweed (original patch is at
+  https://github.com/socketry/nio4r/pull/276).
+
+-------------------------------------------------------------------
 Tue Apr 19 13:43:24 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.7.1
