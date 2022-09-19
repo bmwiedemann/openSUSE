@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Sep 16 22:52:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update to 2.2.0
+  * New class zict.Cache (#65)
+  * Add absolufy-imports to CI (#66)
+  * Descope pickled outputs sooner (#64)
+  * Type annotations (#62)
+  * Add `python_requires` to `setup.py` (#60)
+
+- version update to 2.1.0
+  * Run `isort` to fix lint (#58)
+  * Allow file `mmap`ing (#51)
+  * Update `README` badges (#57)
+  * Run `isort` and `pyupgrade` in CI (#56)
+  * Drop Python 3.6; add 3.9 and 3.10; use pre-commit (#55)
+  * LRU raises (#48)
+  * Avoid deprecated `pytest.yield_fixture` usage (#50)
+  * Update LICENSE.txt (#46)
+  * Bump GHA setup-miniconda version (#41)
+  * MNT Migrate to GitHub actions (#40)
+
+-------------------------------------------------------------------
 Mon Mar  9 10:51:00 UTC 2020 - pgajdos@suse.com
 
 - version update to 2.0.0
