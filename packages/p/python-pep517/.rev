@@ -99,4 +99,12 @@
   - Rely on preferred &quot;files&quot; API on Python 3.9 and later (#140).</comment>
     <requestid>1003052</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>466b02d659cc401af5be55208e252e7b</srcmd5>
+    <version>0.13.0</version>
+    <time>1663596166</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004387</requestid>
+  </revision>
 </revisionlist>

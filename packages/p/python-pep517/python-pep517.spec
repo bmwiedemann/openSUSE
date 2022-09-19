@@ -24,37 +24,31 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-pep517%{psuffix}
 Version:        0.13.0
 Release:        0
 Summary:        Wrappers to build Python packages using PEP 517 hooks
 License:        MIT
-URL:            https://github.com/takluyver/pep517
+URL:            https://github.com/pypa/pep517
 Source:         https://files.pythonhosted.org/packages/source/p/pep517/pep517-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module flit-core >= 2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-flit-core >= 2
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module flit-core >= 2 if %python-base >= 3}
-BuildRequires:  %{python_module mock if %python-base < 3.6}
 BuildRequires:  %{python_module pep517 = %{version}}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 30}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module wheel}
 %endif
-%if %{with python2}
-# for pip
-BuildRequires:  python-xml
+%if 0%{?python_version_nodots} < 311
+Requires:       python-tomli >= 1.1.0
 %endif
-%ifpython2
-Requires:       python-xml
-%endif
-Requires:       python-tomli
 %if 0%{?python_version_nodots} < 38
 Requires:       python-importlib-metadata
 Requires:       python-zipp
@@ -76,17 +70,7 @@ sed -i "s/'--ignore-installed',//" pep517/envbuild.py
 
 %if ! %{with test}
 %build
-# only build once for all flavors using python3-flit-core as backend
-# even usable by python2 if necessary
-mkdir dist
-python3 -m pip wheel \
-  --no-deps \
-  --disable-pip-version-check \
-  --use-pep517 \
-  --no-build-isolation \
-  --progress-bar off \
-  --verbose \
-  -w . .
+%pyproject_wheel
 
 %install
 %pyproject_install
@@ -95,9 +79,7 @@ python3 -m pip wheel \
 
 %if %{with test}
 %check
-#
-python2_params=("-k" "not test_meta")
-%pytest "${$python_params[@]}"
+%pytest
 %endif
 
 %if ! %{with test}
