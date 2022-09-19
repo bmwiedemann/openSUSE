@@ -16,11 +16,11 @@
 #
 
 
-%define sover  83
+%define sover  92
 # disabled for now as 4 of them fail
 %bcond_with tests
 Name:           poco
-Version:        1.11.3
+Version:        1.12.2
 Release:        0
 Summary:        C++ Framework for Network-based Applications
 License:        BSL-1.0
@@ -32,10 +32,10 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  mysql-devel
 BuildRequires:  ninja
+BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  unixODBC-devel
 BuildRequires:  pkgconfig(expat)
-BuildRequires:  pkgconfig(libpcrecpp)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3) >= 3.7
 BuildRequires:  pkgconfig(zlib)
@@ -61,6 +61,7 @@ Requires:       libPocoMongoDB%{sover} = %{version}
 Requires:       libPocoNet%{sover} = %{version}
 Requires:       libPocoNetSSL%{sover} = %{version}
 Requires:       libPocoPDF%{sover} = %{version}
+Requires:       libPocoPrometheus%{sover} = %{version}
 Requires:       libPocoRedis%{sover} = %{version}
 Requires:       libPocoUtil%{sover} = %{version}
 Requires:       libPocoXML%{sover} = %{version}
@@ -217,6 +218,15 @@ Group:          System/Libraries
 Provides:       poco-pdf = %{version}
 
 %description -n libPocoPDF%{sover}
+C++ class libraries and frameworks for building
+network- and Internet-based applications.
+
+%package -n libPocoPrometheus%{sover}
+Summary:        C++ Framework for Network-based Applications
+Group:          System/Libraries
+Provides:       poco-prometheus = %{version}
+
+%description -n libPocoPrometheus%{sover}
 C++ class libraries and frameworks for building
 network- and Internet-based applications.
 
@@ -385,6 +395,12 @@ export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:$(pwd)/build/lib:$LD_LIBRARY_PATH
 
 %post   -n libPocoPDF%{sover} -p /sbin/ldconfig
 %postun -n libPocoPDF%{sover} -p /sbin/ldconfig
+
+%files -n libPocoPrometheus%{sover}
+%{_libdir}/libPocoPrometheus.so.%{sover}
+
+%post   -n libPocoPrometheus%{sover} -p /sbin/ldconfig
+%postun -n libPocoPrometheus%{sover} -p /sbin/ldconfig
 
 %files -n libPocoRedis%{sover}
 %{_libdir}/libPocoRedis.so.%{sover}

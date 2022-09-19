@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Sep 18 10:57:23 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.12.2
+  * fix(Platform): LoongArch support
+  * Linking Crypto-testrunner fails
+  * SIGABRT in OSSL_PROVIDER_unload with static OpenSSL3
+  * POSIX Event state need not be atomic
+  * Release script must include build_vs170.cmd
+  * wakeup fd is never read
+  * lowercase winsock2 and iphlpapi to allow cross compile
+  * Only support extracting JSON fields when the SDK supports it
+  * PocoNet Project File does not support Visual Studio 2022
+  * Added missing Crypto Header to ProGen source
+  * Crypto: Progen again to add new files and bring back ARM64
+    configuration
+  * Add how to install using Conan section on README
+  * Poco::format and C++20
+  * g++ C++20 warnings
+- Update to version 1.12.1
+  * PocoFoundationConfig.cmake should now check for PCRE2
+  * SIGSEGV in OSSL_PROVIDER_unload with static OpenSSL3
+- Update to version 1.12.0
+  * This release introduces Prometheus library
+  * Small object optimization for Any and Dynamic::Var
+    (compile-time option, enabled by default)
+  * All swap operations are noexcept now
+  * PollSet::add() is mode-cumulative now
+  * UDPServer now requires explicit starting
+  * Move semantics for sockets and SocketAddress
+    (compile-time option, disabled by default)
+
+-------------------------------------------------------------------
 Sat Jun 18 16:18:47 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.11.3
