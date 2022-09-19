@@ -66,4 +66,18 @@
   * Update solarized-dark theme</comment>
     <requestid>904730</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ed15fca584d64b73334d620b7d3ae683</srcmd5>
+    <version>0.12</version>
+    <time>1663596196</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12:
+  Add new color scheme: ansa
+  Add new color scheme: monochrome
+  Add new color scheme: crown_24bit
+  Add new color scheme: nord
+  Add new color scheme: fargo
+  Add new color scheme: paper</comment>
+    <requestid>1004518</requestid>
+  </revision>
 </revisionlist>
