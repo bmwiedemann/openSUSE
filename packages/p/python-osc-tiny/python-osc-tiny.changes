@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep 19 12:11:43 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.3
+  * Consider "boolean" parameters of specific API endpoints (fixes #97)
+    Workaround for
+    https://github.com/openSUSE/open-build-service/issues/9715
+
+-------------------------------------------------------------------
+Mon Sep 19 07:45:03 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.2
+  * Suppress logging of response content when streaming
+  * Fixed error in docstring
+  * Removed Python2 support libararies (closes #81)
+  * Removed warning about boolean query params
+  * Fixed issues in `Project.put_meta` (fixes #84)
+  * Deprecated `projects.put_meta` in favor of using `set_meta` (fixes #85)
+
+-------------------------------------------------------------------
 Tue Aug 16 12:34:34 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.7.1
