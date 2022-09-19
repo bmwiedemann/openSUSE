@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep 18 10:42:55 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 4.1.2:
+  New Driver
+  * Audiocode Driver.
+  Bugs and Improvements
+  * Improve disconnect behavior.
+  * Improve encoding behavior.
+  * Fix textfsm dependency issue by pinning to 1.1.2.
+  * Proposed Cisco WLC fix for session_preparation().
+  * Added Versa FlexVNF platform to SSH autodetect.
+  * Nokia global_cmd_verify default fix.
+  * Fix issue with redispatch not working due to no data.
+  * Fix generator bug in send_config_set.
+  * Fix to accommodate single character prompts in set_base_prompt.
+  * Adding check that key_file exists if use_keys is True.
+  * Minor session_log test updates.
+
+-------------------------------------------------------------------
 Tue Jul 19 12:03:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.1:
