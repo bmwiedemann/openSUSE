@@ -1,7 +1,7 @@
 #
 # spec file for package libksba
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define soname 8
 Name:           libksba
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        A X.509 Library
 License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later AND MIT
@@ -49,8 +49,7 @@ certificates, CMS data, and related data.
 %package devel
 Summary:        A X.509 Library
 Group:          Development/Libraries/C and C++
-Requires:       libgpg-error-devel
-Requires:       libksba = %{version}
+Requires:       libksba%{soname} = %{version}
 Provides:       libksba:%{_includedir}/ksba.h
 
 %description devel
@@ -61,7 +60,7 @@ This package contains the needed files to compile and link against the
 libksba.
 
 %prep
-%setup -q -n libksba-%{version}
+%autosetup -p1
 
 %build
 build_timestamp=$(date -u +%{Y}-%{m}-%{dT}%{H}:%{M}+0000 -r %{SOURCE4})

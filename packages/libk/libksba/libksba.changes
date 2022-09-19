@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 18 09:55:37 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libksba 1.6.1:
+  * Allow an OCSP server not to return the sent nonce
+- fix rpmlint warnings
+
+-------------------------------------------------------------------
 Fri Jun 11 13:28:18 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - libksba 1.6.0:
