@@ -1,7 +1,7 @@
 #
 # spec file for package goss
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define dcgoss_name dcgoss
 
 Name:           goss
-Version:        0.3.15
+Version:        0.3.18
 Release:        0
 Summary:        Quick and Easy server testing/validation
 License:        Apache-2.0

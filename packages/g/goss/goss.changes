@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 10 20:06:45 UTC 2022 - Jochen Breuer <brejoc@gmail.com> - 0.3.18
+
+- Update to version 0.3.18 with updated dependencies in vendor file
+  * Update all dependencies to latest versions
+  * dgoss - Add support for podman as the container backend (gh#748)
+
+-------------------------------------------------------------------
 Tue Dec 15 08:09:43 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
 
 - Scripts for dgoss, kgoss and dcgoss are now also included.
