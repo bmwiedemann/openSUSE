@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 15 12:48:47 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20220915.afcd88e6:
+  * Dev: behave: Add functional test case based on previous changes
+  * Dev: bootstrap: Adjust sbd related timeout when add/remove qdevice
+
+-------------------------------------------------------------------
+Wed Sep 14 06:00:41 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20220914.fa29aa2c:
+  * Fix: crash_test: do not use firewalld to isolate a cluster node (bsc#1192467)
+
+-------------------------------------------------------------------
 Tue Sep 13 07:53:14 UTC 2022 - zzhou@suse.com
 
 - Update to version 4.4.1+20220913.57fa9d96:
