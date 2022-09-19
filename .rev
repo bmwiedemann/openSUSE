@@ -360,4 +360,19 @@
     <comment></comment>
     <requestid>999861</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>41e2e174e8e5a733594dadc1b0ea6232</srcmd5>
+    <version>0.10.0</version>
+    <time>1663596226</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.0:
+  * Developer-oriented features (prep, send, trailers commands)
+  * Patchwork integration
+  * The &quot;trailer-order&quot; setting now only reorders the trailers
+  * Web submission endpoint support for &quot;b4 send&quot;
+  * Adds a &quot;trailers-ignore-from&quot; configuration option
+  * Bugfixes and improved tests.
+- switch from _service to standard releases (they are often enough)</comment>
+    <requestid>1004535</requestid>
+  </revision>
 </revisionlist>

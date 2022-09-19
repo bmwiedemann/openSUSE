@@ -16,17 +16,17 @@
 #
 
 
-%define version_unconverted 0.9.0
 Name:           b4
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://git.kernel.org/pub/scm/utils/b4/b4.git
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://github.com/mricon/b4/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python3-dkimpy >= 1.0.5
 BuildRequires:  python3-dnspython >= 2.0.0
@@ -62,6 +62,7 @@ sed -i.old '1{/#!.*/d}' b4/*.py
 
 %install
 %python3_install
+%fdupes %{buildroot}%python3_sitelib
 
 %check
 python3 setup.py check
@@ -69,7 +70,7 @@ export PYTHONPATH="./"
 THEIRS=`%{buildroot}/%{_bindir}/b4 --version`
 OURS=`sed -n "s/__VERSION__ = '\(.*\)'/\1/p" b4/__init__.py`
 test "$THEIRS" = "$OURS"
-%{buildroot}/%{_bindir}/b4 --help |grep -q 'mbox,am,shazam,attest'
+%{buildroot}/%{_bindir}/b4 --help | grep -q 'mbox,am,shazam,pr'
 %{buildroot}/%{_bindir}/b4 mbox abc |& grep -q 'Grabbing thread from lore.kernel.org/all/abc/t.mbox.gz'
 
 %files
