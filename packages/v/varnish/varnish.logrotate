@@ -5,6 +5,6 @@
     sharedscripts
     delaycompress
     postrotate
-        /etc/init.d/varnish reload
+        /usr/bin/systemctl restart varnishlog
     endscript
 }

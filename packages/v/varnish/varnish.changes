@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 19 02:44:04 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix varnish.service stop
+
+-------------------------------------------------------------------
+Sun Sep 18 03:26:45 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix logrotate
+- Add service reload
+
+-------------------------------------------------------------------
 Fri Aug 12 10:32:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.1.1 [boo#1202350] [CVE-2022-38150]

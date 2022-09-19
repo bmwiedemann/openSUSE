@@ -37,6 +37,7 @@ Source3:        varnish.sysconfig
 Source5:        varnish.logrotate
 Source7:        varnish.service
 Source8:        varnishlog.service
+Source9:        varnish_reload_vcl
 Patch1:         varnish-5.1.2-add-fallthrough-comments.patch
 Patch2:         uninit.patch
 BuildRequires:  libxslt-devel
@@ -120,6 +121,7 @@ install -Dpm 0644 "%SOURCE8" "$b/%_unitdir/varnishlog.service"
 mkdir -p "$b/%_sbindir"
 ln -s service "$b/%_sbindir/rcvarnish"
 ln -s service "$b/%_sbindir/rcvarnishlog"
+install -Dpm 0755 "%SOURCE9" "$b/%_sbindir/varnish_reload_vcl"
 #
 ##config files
 mkdir -p "$b/%_sysconfdir/%name"

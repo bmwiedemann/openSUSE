@@ -315,4 +315,12 @@
     <comment>- Update to release 7.1.1 [boo#1202350] [CVE-2022-38150]</comment>
     <requestid>994770</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>1293d6c3743dcb57dbb4d3cbdbe7b96e</srcmd5>
+    <version>7.1.1</version>
+    <time>1663596195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004579</requestid>
+  </revision>
 </revisionlist>
