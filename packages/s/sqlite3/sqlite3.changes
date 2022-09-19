@@ -211,6 +211,8 @@ Tue Nov 30 09:08:31 UTC 2021 - Reinhard Max <max@suse.com>
     interfaces.
   * Added the SQLITE_OPEN_EXRESCODE flag option to sqlite3_open_v2().
   * Use less memory to hold the database schema.
+  * bsc#1189802, CVE-2021-36690: Fix an issue with the SQLite Expert
+    extension when a column has no collating sequence.
 
 -------------------------------------------------------------------
 Tue Jun 22 08:55:36 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
