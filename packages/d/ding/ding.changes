@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 18 11:58:12 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * use-grep-instead-of-egrep.patch
+    This prevents the egrep obsolescent warning message introduced
+    with grep 3.8:
+    "egrep: warning: egrep is obsolescent; using grep -E"
+- Install man-page
+- Use https instead of http/ftp for Source/URL
+
+-------------------------------------------------------------------
 Wed May 12 12:42:37 UTC 2021 - Daniel Donisa <daniel.donisa@suse.com>
 
 - Update to 1.9

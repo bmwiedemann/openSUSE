@@ -1,7 +1,7 @@
 #
 # spec file for package ding
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,12 @@ Release:        0
 Summary:        An X Window System Dictionary Tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Dictionary
-URL:            http://www-user.tu-chemnitz.de/~fri/ding/
-Source:         ftp://ftp.tu-chemnitz.de/pub/Local/urz/%{name}/%{name}-%{version}.tar.gz
+URL:            https://www-user.tu-chemnitz.de/~fri/ding/
+Source:         https://ftp.tu-chemnitz.de/pub/Local/urz/%{name}/%{name}-%{version}.tar.gz
 Source1:        ding.desktop
 Patch0:         ding-install.diff
 Patch1:         ding-tk-version.diff
+Patch2:         use-grep-instead-of-egrep.patch
 BuildRequires:  tk
 BuildRequires:  update-desktop-files
 Requires:       ding-dict-de_en
@@ -37,7 +38,6 @@ Recommends:     ispell
 Recommends:     ispell-american
 Recommends:     ispell-ngerman
 Suggests:       fortune
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -58,6 +58,7 @@ A recommended graphical frontend for using this dictionary is "ding".
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 
@@ -70,16 +71,17 @@ mkdir -p "%{buildroot}/%{_bindir}" "%{buildroot}/%{_datadir}/dict" \
 y
 EOF
 install -m 644 %{SOURCE1} "%{buildroot}/%{_datadir}/applications/%{name}.desktop"
+install -D -m 0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 %suse_update_desktop_file %{name} Office Dictionary
 
 %files
-%defattr(-,root,root)
-%doc COPYING README.md CHANGES
+%license COPYING
+%doc README.md CHANGES
 %{_bindir}/ding
 %{_datadir}/applications/%{name}.desktop
+%{_mandir}/man1/ding.1%{?ext_man}
 
 %files -n ding-dict-de_en
-%defattr(-,root,root)
 %{_datadir}/dict/de-en.txt
 
 %changelog
