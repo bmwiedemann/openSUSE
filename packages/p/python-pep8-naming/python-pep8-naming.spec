@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pep8-naming
-Version:        0.12.1
+Version:        0.13.2
 Release:        0
 Summary:        Flake8 plugin for checking PEP-8 naming conventions
 License:        MIT
 URL:            https://github.com/PyCQA/pep8-naming
 Source:         https://files.pythonhosted.org/packages/source/p/pep8-naming/pep8-naming-%{version}.tar.gz
-Patch0:         add-missing-option-for-testsuite.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

@@ -93,4 +93,16 @@
   * Merged commit from upstream to make tests pass.</comment>
     <requestid>952002</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>41abd22a1b61787e5b65ce0db879774b</srcmd5>
+    <version>0.13.2</version>
+    <time>1663596218</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.2:
+  * Formally require Python 3.7 or later using ``python_requires``.
+  * Fix warnings related to deprecated options syntax.
+  * ``setUpModule`` and ``tearDownModule`` are now exempted by default.
+- drop add-missing-option-for-testsuite.patch (obsolete)</comment>
+    <requestid>1004620</requestid>
+  </revision>
 </revisionlist>
