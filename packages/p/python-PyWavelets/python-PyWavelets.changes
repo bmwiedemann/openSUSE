@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Sep 17 15:22:43 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update required numpy version
+
+- update to version 1.4.1:
+  * This patch release updates setup.py to use python_requires>=3.8
+    and adds 3.11 to the trove classifiers.
+
+- changes from version 1.4.0:
+  * adds wheels for Python 3.11 and drops support for Python 3.7.
+  * There is one new utility function, pywt.frequency2scale, that can
+    be used to determine CWT scale factors corresponding to a given
+    (normalized) frequency. It is the inverse of the existing
+    pywt.scale2frequency.
+
+-------------------------------------------------------------------
 Sat Mar 12 05:35:27 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.3.0:

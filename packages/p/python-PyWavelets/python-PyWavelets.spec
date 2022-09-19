@@ -20,8 +20,9 @@
 %define         skip_python2 1
 # no python36-numpy in Tumbleweed (NEP 29)
 %define         skip_python36 1
+%define         skip_python37 1
 Name:           python-PyWavelets
-Version:        1.3.0
+Version:        1.4.1
 Release:        0
 Summary:        PyWavelets is a Python wavelet transforms module
 License:        MIT
@@ -30,12 +31,12 @@ URL:            https://github.com/PyWavelets/pywt
 Source0:        https://files.pythonhosted.org/packages/source/P/PyWavelets/PyWavelets-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.13.3}
+BuildRequires:  %{python_module numpy-devel >= 1.17.3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-numpy >= 1.13.3
+Requires:       python-numpy >= 1.17.3
 Provides:       python-PyWavelets-doc = %{version}
 Obsoletes:      python-PyWavelets-doc < %{version}
 # SECTION test requirements
