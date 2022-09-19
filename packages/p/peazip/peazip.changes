@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 19 11:19:46 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 8.8.0 (bsc#1202690):
+  BACKEND
+    * 7z 22.01
+    * Pea 1.09
+  CODE
+    * Various fixes and improvements
+  FILE MANAGER
+    * Improved GUI for more flexibility to better adapt to multiple environments with different visual styles
+  EXTRACTION and ARCHIVING
+    * Added option to test archive after creation, for formats supporting test routine, in Options > Settings, Archive manager tab
+    * Added timestamp precision option in Archiving screen, Advanced tab, applies to ZIP and TAR/pax formats
+    * Added timestamp precision option in Archiving screen, Advanced tab, applies to ZIP and TAR/pax formats
+    * Added options to save owner/group ids and names, available in Archiving screen, Advanced tab
+- Set correct category in the desktop file (bsc#1202690)
+
+-------------------------------------------------------------------
 Sun Jun 26 13:12:27 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 8.7.0:

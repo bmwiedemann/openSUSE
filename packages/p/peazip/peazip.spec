@@ -17,9 +17,9 @@
 
 
 %define         _peazipinstalldir %{_libdir}/peazip
-%define         _helpver 8.7.0
+%define         _helpver 8.8.0
 Name:           peazip
-Version:        8.7.0
+Version:        8.8.0
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -138,6 +138,8 @@ cp %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peaz
 rm %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peazip.desktop
 # Remove duplicate comment line
 sed -i '/Comment=PeaZip/d' %{buildroot}%{_datadir}/applications/peazip.desktop
+# Set correct category
+sed -i 's/Categories=Qt;KDE;Utility;System;Archiving;/Categories=Qt;KDE;Utility;Archiving;/' %{buildroot}%{_datadir}/applications/peazip.desktop
 mkdir -p %{buildroot}%{_datadir}/pixmaps/
 cp %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peazip.png %{buildroot}%{_datadir}/pixmaps/
 rm %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peazip.png
