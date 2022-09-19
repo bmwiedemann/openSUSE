@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 12 20:07:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.13.1:
+  * fix im7 feature detection in meson
+  * add a summary table at the end of configure in meson
+  * fix libpng fallback when spng is disabled in meson
+  * add "unlimited" to jpegload
+  * better 0 detection in unpremultiply
+  * fix low bitdepth spng save [jeffska]
+  * fix PNG low bitdepth save of high bitdepth images
+  * add support for libjxl 0.7 [kleisauke]
+  * improve compatibility with older libgsf versions [kleisauke]
+
+-------------------------------------------------------------------
 Mon Jul 25 21:18:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.13.0: 
