@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 11 17:10:47 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v16.2.0
+  * Changes of version 16.2.0
+    = Add ligation set for HTML/XML/React tags (<>, </, /> and </>)
+      (#1413).
+
+-------------------------------------------------------------------
 Sun Sep  4 16:30:51 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v16.1.0
