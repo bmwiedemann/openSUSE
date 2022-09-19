@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(gtk4) >= 4.6.1
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(mpv) >= 1.107
 Recommends:     %{name}-lang
-Recommends:     youtube-dl
+Recommends:     yt-dlp
 Obsoletes:      gnome-mpv < %{version}
 Provides:       gnome-mpv = %{version}
 
