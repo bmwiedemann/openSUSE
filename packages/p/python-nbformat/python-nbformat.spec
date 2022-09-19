@@ -20,7 +20,7 @@
 %define doc_ver 5.2.0
 %bcond_without libalternatives
 Name:           python-nbformat
-Version:        5.4.0
+Version:        5.5.0
 Release:        0
 Summary:        The Jupyter Notebook format
 License:        BSD-3-Clause
@@ -29,7 +29,9 @@ URL:            https://github.com/jupyter/nbformat
 # PyPI sdist has only some schema tests, get the full test suite from GitHub sources
 Source:         https://github.com/jupyter/nbformat/archive/%{version}.tar.gz#/nbformat-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module flit-core >= 3.2}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       jupyter-nbformat = %{version}
@@ -48,13 +50,14 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %endif
 # SECTION test requirements
-BuildRequires:  %{pythons}
 BuildRequires:  %{python_module fastjsonschema}
 BuildRequires:  %{python_module jsonschema > 2.6}
 BuildRequires:  %{python_module jupyter_core}
+BuildRequires:  %{python_module pep440}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module traitlets >= 5.1}
+BuildRequires:  %{pythons}
 # /SECTION
 %python_subpackages
 
@@ -84,10 +87,10 @@ This package provides the jupyter components.
 sed -i 's/--color=yes//' pyproject.toml
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/jupyter-trust
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -110,8 +113,8 @@ sed -i 's/--color=yes//' pyproject.toml
 %license COPYING.md
 %doc README.md
 %python_alternative jupyter-trust
-%{python_sitelib}/nbformat-%{version}-py*.egg-info
 %{python_sitelib}/nbformat/
+%{python_sitelib}/nbformat-%{version}.dist-info/
 
 %files -n jupyter-nbformat
 %license COPYING.md
