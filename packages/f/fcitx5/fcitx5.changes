@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 19 07:43:09 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix the fcitx 4 obsoletes - obsoleting fcitx <= 4.2.9.8 does not suffice, we
+  are at fcitx-4.2.9.9-1.2
+
+-------------------------------------------------------------------
 Tue Jul  5 11:29:25 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 5.0.18

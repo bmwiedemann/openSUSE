@@ -81,7 +81,7 @@ BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  appstream-glib-devel
 %endif
 Provides:       fcitx = %{version}
-Obsoletes:      fcitx <= 4.2.9.8
+Obsoletes:      fcitx < 5
 Provides:       inputmethod
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
 BuildRequires:  rsvg-convert
@@ -101,7 +101,7 @@ Requires:       libFcitx5Config6 = %{version}
 Requires:       libFcitx5Core7 = %{version}
 Requires:       libFcitx5Utils2 = %{version}
 Provides:       fcitx-devel = %{version}
-Obsoletes:      fcitx-devel <= 4.2.9.8
+Obsoletes:      fcitx-devel < 5
 
 %description devel
 This package provides development files for fcitx5.
@@ -111,7 +111,7 @@ Summary:        Configuration library for fcitx5
 Group:          System/Libraries
 Provides:       libFcitx5Config5 = %{version}
 Obsoletes:      libFcitx5Config5 < %{version}
-Obsoletes:      libfcitx-config4 <= 4.2.9.8
+Obsoletes:      libfcitx-config4 < 5
 
 %description -n libFcitx5Config6
 This package provides configuration libraries for fcitx5.
@@ -120,11 +120,11 @@ This package provides configuration libraries for fcitx5.
 Summary:        Core library for fcitx5
 Group:          System/Libraries
 Provides:       libfcitx-4_2_9 = %{version}
-Obsoletes:      libfcitx-4_2_9 <= 4.2.9.8
+Obsoletes:      libfcitx-4_2_9 < 5
 Provides:       libFcitx5Core5 = %{version}
 Obsoletes:      libFcitx5Core5 < %{version}
 Provides:       libfcitx-core0 = %{version}
-Obsoletes:      libfcitx-core0 <= 4.2.9.8
+Obsoletes:      libfcitx-core0 < 5
 
 %description -n libFcitx5Core7
 This package provides core libraries for fcitx5.
@@ -135,7 +135,7 @@ Group:          System/Libraries
 Provides:       libFcitx5Utils1 = %{version}
 Obsoletes:      libFcitx5Utils1 < %{version}
 Provides:       libfcitx-utils0 = %{version}
-Obsoletes:      libfcitx-utils0 <= 4.2.9.8
+Obsoletes:      libfcitx-utils0 < 5
 
 %description -n libFcitx5Utils2
 This package provides utility libraries for fcitx5.
