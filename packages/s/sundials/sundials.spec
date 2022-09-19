@@ -248,6 +248,7 @@ This package provides the shared libraries for SUNDIALS' nvec solvers.
 
 %package -n %{shlib_sunlinsol}
 Summary:        Suite of nonlinear solvers - sunlinsol shared libraries
+Requires:       %{shlib_sunmatrix} = %{version}
 
 %description -n %{shlib_sunlinsol}
 SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers

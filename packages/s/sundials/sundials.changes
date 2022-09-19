@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 17 09:07:55 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add Requires: libsundials_sunmatrix4 explicitly for
+  libsundials_sunlinsol4_3_0; automatic deps fails to distinguish
+  between serial and mpi flavors causing resolving issues when
+  building apps dependent on libsundials_sunlinsol.
+
+-------------------------------------------------------------------
 Wed Sep 14 05:05:44 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.3.0:
