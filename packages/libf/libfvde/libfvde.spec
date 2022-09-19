@@ -18,7 +18,7 @@
 
 %define lname	libfvde1
 Name:           libfvde
-Version:        20220807
+Version:        20220915
 Release:        0
 Summary:        Library to access the File Vault Drive Encryption format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfcache) >= 20220110
-BuildRequires:  pkgconfig(libfdata) >= 20211023
+BuildRequires:  pkgconfig(libfdata) >= 20220111
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfplist) >= 20220116
 BuildRequires:  pkgconfig(libfvalue) >= 20220120

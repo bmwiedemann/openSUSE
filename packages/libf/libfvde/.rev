@@ -81,4 +81,12 @@
     <comment>update</comment>
     <requestid>999955</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0849764a8797618fa5b56a8289864ae9</srcmd5>
+    <version>20220915</version>
+    <time>1663596234</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220915</comment>
+    <requestid>1004578</requestid>
+  </revision>
 </revisionlist>
