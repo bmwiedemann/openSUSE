@@ -47,4 +47,17 @@
     <comment></comment>
     <requestid>979798</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ca60629d7eb243bf746d0f2b47e3cb0e</srcmd5>
+    <version>0.23.0</version>
+    <time>1663596237</time>
+    <user>dimstar_suse</user>
+    <comment>- remove giada-gcc12.patch and giada-findFLTK.patch (obsolete by upstream changes)
+-------------------------------------------------------------
+- add 003-cmake-exclude-juce-from-all.patch to avoid juce stuff install 
+- disable giada-gcc12.patch (now upstream)
+- Update to version 0.23.0
+</comment>
+    <requestid>1004658</requestid>
+  </revision>
 </revisionlist>

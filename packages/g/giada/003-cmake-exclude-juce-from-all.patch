@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3a909989..ac1cffeb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -544,7 +544,7 @@ endif()
+ # Extra parameters for audio plug-ins support.
+ # ------------------------------------------------------------------------------
+ 
+-add_subdirectory(${CMAKE_SOURCE_DIR}/src/deps/juce)
++add_subdirectory(${CMAKE_SOURCE_DIR}/src/deps/juce EXCLUDE_FROM_ALL)
+ 
+ list(APPEND LIBRARIES 
+ 	juce::juce_audio_utils

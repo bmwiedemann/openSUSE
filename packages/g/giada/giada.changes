@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 19 09:34:22 UTC 2022 - Edgar Aichinger <edogawa@aon.at>
+
+- remove giada-gcc12.patch and giada-findFLTK.patch (obsolete by upstream changes)
+
+-------------------------------------------------------------
+Sun Sep 18 02:18:23 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- add 003-cmake-exclude-juce-from-all.patch to avoid juce stuff install 
+- disable giada-gcc12.patch (now upstream)
+
+-------------------------------------------------------------------
+Sat Sep 17 11:38:10 UTC 2022 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to version 0.23.0
+
+-------------------------------------------------------------------
 Sun May 29 08:45:50 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add giada-gcc12.patch to fix Factory build
