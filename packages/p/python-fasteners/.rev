@@ -88,4 +88,21 @@
   * Move from travis and appveyor to github actions</comment>
     <requestid>909594</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>70f7ee822760af58255c3f36f317fa90</srcmd5>
+    <version>0.17.3</version>
+    <time>1663596217</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.17.3:
+  * Allow writer to become a reader in thread ReaderWriter lock
+  * Remove unnecessary setuptools pin
+  * Switch to the modern python package build infrastructure
+  * Remove support for python 3.5 and earlier, including 2.7
+  * Add support for python 3.9 and 3.10
+  * Fix a conflict with django lock
+  * Add __version__ and __all__ attributes
+  * Fix a failure to parse README as utf-8
+  * Move from nosetest to pytest and cleanup testing infrastructure</comment>
+    <requestid>1004619</requestid>
+  </revision>
 </revisionlist>

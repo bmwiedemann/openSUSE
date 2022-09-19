@@ -1,7 +1,7 @@
 #
 # spec file for package python-fasteners
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,21 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-fasteners
-Version:        0.16.3
+Version:        0.17.3
 Release:        0
 Summary:        A python package that provides useful locks
 License:        Apache-2.0
 URL:            https://github.com/harlowja/fasteners
-Source:         https://files.pythonhosted.org/packages/source/f/fasteners/fasteners-%{version}.tar.gz
+Source:         https://github.com/harlowja/fasteners/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}-gh.tar.gz
 BuildRequires:  %{python_module diskcache}
+BuildRequires:  %{python_module more-itertools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-more-itertools
 Requires:       python-six
 BuildArch:      noarch
 %if %{with python2}
@@ -50,10 +53,10 @@ It includes the following.
 %setup -q -n fasteners-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,7 +64,7 @@ It includes the following.
 
 %files %{python_files}
 %license LICENSE
-%doc ChangeLog README.md
+%doc CHANGELOG README.md
 %{python_sitelib}/*
 
 %changelog

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 19 08:15:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.3:
+  * Allow writer to become a reader in thread ReaderWriter lock
+  * Remove unnecessary setuptools pin
+  * Switch to the modern python package build infrastructure
+  * Remove support for python 3.5 and earlier, including 2.7
+  * Add support for python 3.9 and 3.10
+  * Fix a conflict with django lock
+  * Add __version__ and __all__ attributes
+  * Fix a failure to parse README as utf-8
+  * Move from nosetest to pytest and cleanup testing infrastructure
+
+-------------------------------------------------------------------
 Sun Aug  1 09:35:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.3:
