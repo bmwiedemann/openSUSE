@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 16 15:12:44 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add missing new requires for busybox-sha3sum
+
+-------------------------------------------------------------------
 Fri Sep 16 13:14:35 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Create sub-package "hexedit" [bsc#1203399]

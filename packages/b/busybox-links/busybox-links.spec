@@ -111,6 +111,7 @@ Requires:       busybox-sed = %{version}
 Requires:       busybox-selinux-tools = %{version}
 Requires:       busybox-sendmail = %{version}
 Requires:       busybox-sh = %{version}
+Requires:       busybox-sha3sum = %{version}
 Requires:       busybox-sharutils = %{version}
 Requires:       busybox-syslogd = %{version}
 Requires:       busybox-sysvinit-tools = %{version}
