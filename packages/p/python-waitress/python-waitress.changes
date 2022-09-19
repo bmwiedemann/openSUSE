@@ -9,7 +9,7 @@ Tue May 31 03:16:03 UTC 2022 - Arun Persaud <arun@gmx.de>
 - specfile:
   * be more specific in %files section
 
-- update to version 2.1.2:
+- update to version 2.1.2 (bsc#1200126, CVE-2022-31015):
   * Bugfix
     + When expose_tracebacks is enabled waitress would fail to
       properly encode unicode thereby causing another error during

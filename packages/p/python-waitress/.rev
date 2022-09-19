@@ -267,4 +267,12 @@
     <comment></comment>
     <requestid>998078</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>bdce79e2e4e79ef6ade3de509229a7f8</srcmd5>
+    <version>2.1.2</version>
+    <time>1663598378</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.1.2 (bsc#1200126, CVE-2022-31015):</comment>
+    <requestid>1004640</requestid>
+  </revision>
 </revisionlist>
