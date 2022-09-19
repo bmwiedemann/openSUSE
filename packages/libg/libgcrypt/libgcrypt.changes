@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep  8 10:34:53 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Get most of the entropy from rndjent_poll [bsc#1202117]
+  * Add libgcrypt-FIPS-rndjent_poll.patch
+  * Rebase libgcrypt-jitterentropy-3.4.0.patch
+
+-------------------------------------------------------------------
+Wed Sep  7 22:03:51 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Check keylength in gcry_fips_indicator_kdf() [bsc#1190700]
+  * Consider approved keylength greater or equal to 112 bits.
+  * Add libgcrypt-FIPS-kdf-leylength.patch
+
+-------------------------------------------------------------------
+Wed Sep  7 12:53:14 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Zeroize buffer and digest in check_binary_integrity()
+  * Add libgcrypt-FIPS-Zeroize-hmac.patch [bsc#1191020]
+
+-------------------------------------------------------------------
 Tue Aug 23 09:19:00 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - FIPS: gpg/gpg2 gets out of core handler in FIPS mode while

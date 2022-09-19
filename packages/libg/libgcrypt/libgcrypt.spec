@@ -107,6 +107,12 @@ Patch45:        libgcrypt-jitterentropy-3.3.0.patch
 Patch46:        libgcrypt-jitterentropy-3.4.0.patch
 #PATCH-FIX-SUSE bsc#1182983 gpg: out of core handler ignored in FIPS mode while typing Tab key to Auto-Completion
 Patch47:        libgcrypt-out-of-core-handler.patch
+#PATCH-FIX-SUSE bsc#1191020 FIPS: Zeroize buffer and digest in check_binary_integrity()
+Patch48:        libgcrypt-FIPS-Zeroize-hmac.patch
+#PATCH-FIX-SUSE bsc#1190700 FIPS: Check keylength in gcry_fips_indicator_kdf()
+Patch49:        libgcrypt-FIPS-kdf-leylength.patch
+#PATCH-FIX-SUSE bsc#1202117 FIPS: Get most of the entropy from rndjent_poll
+Patch50:        libgcrypt-FIPS-rndjent_poll.patch
 BuildRequires:  automake >= 1.14
 BuildRequires:  fipscheck
 BuildRequires:  libgpg-error-devel >= 1.27

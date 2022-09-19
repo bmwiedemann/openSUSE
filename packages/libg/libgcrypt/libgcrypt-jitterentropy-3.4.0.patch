@@ -57,9 +57,8 @@ Index: libgcrypt-1.9.4/random/jitterentropy-base.c
 +	 * pros and cons considering that the SHA3 operation is not that
 +	 * expensive.
  	 */
--#ifndef JENT_CPU_JITTERENTROPY_SECURE_MEMORY
+ #ifndef JENT_CPU_JITTERENTROPY_SECURE_MEMORY
 -	jent_random_data(ec);
-+#ifndef CONFIG_CRYPTO_CPU_JITTERENTROPY_SECURE_MEMORY
 +	jent_read_random_block(ec, NULL, 0);
  #endif
  
@@ -72,19 +71,16 @@ Index: libgcrypt-1.9.4/random/jitterentropy-base.c
  
  	/*
  	 * Requesting disabling and forcing of internal timer
-@@ -405,9 +415,8 @@ static struct rand_data
+@@ -405,7 +415,7 @@ static struct rand_data
  		return NULL;
  
  	if (!(flags & JENT_DISABLE_MEMORY_ACCESS)) {
 -		uint32_t memsize = jent_memsize(flags);
--
--		entropy_collector->mem = _gcry_calloc (1, memsize);
 +		memsize = jent_memsize(flags);
-+		entropy_collector->mem = (unsigned char *)jent_zalloc(memsize);
  
- #ifdef JENT_RANDOM_MEMACCESS
- 		/*
-@@ -431,13 +440,19 @@ static struct rand_data
+ 		entropy_collector->mem = _gcry_calloc (1, memsize);
+ 
+@@ -431,13 +441,19 @@ static struct rand_data
  		entropy_collector->memaccessloops = JENT_MEMORY_ACCESSLOOPS;
  	}
  
@@ -105,7 +101,7 @@ Index: libgcrypt-1.9.4/random/jitterentropy-base.c
  		entropy_collector->fips_enabled = 1;
  
  	/* Initialize the APT */
-@@ -469,7 +484,7 @@ static struct rand_data
+@@ -469,7 +485,7 @@ static struct rand_data
  
  err:
  	if (entropy_collector->mem != NULL)
@@ -114,7 +110,7 @@ Index: libgcrypt-1.9.4/random/jitterentropy-base.c
  	jent_zfree(entropy_collector, sizeof(struct rand_data));
  	return NULL;
  }
-@@ -511,6 +526,7 @@ JENT_PRIVATE_STATIC
+@@ -511,6 +527,7 @@ JENT_PRIVATE_STATIC
  void jent_entropy_collector_free(struct rand_data *entropy_collector)
  {
  	if (entropy_collector != NULL) {
@@ -122,7 +118,7 @@ Index: libgcrypt-1.9.4/random/jitterentropy-base.c
  		jent_notime_disable(entropy_collector);
  		if (entropy_collector->mem != NULL) {
  			jent_zfree(entropy_collector->mem,
-@@ -664,6 +680,7 @@ static inline int jent_entropy_init_comm
+@@ -664,6 +681,7 @@ static inline int jent_entropy_init_comm
  	int ret;
  
  	jent_notime_block_switch();
@@ -130,7 +126,7 @@ Index: libgcrypt-1.9.4/random/jitterentropy-base.c
  
  	if (sha3_tester())
  		return EHASH;
-@@ -710,6 +727,8 @@ int jent_entropy_init_ex(unsigned int os
+@@ -710,6 +728,8 @@ int jent_entropy_init_ex(unsigned int os
  	if (ret)
  		return ret;
  
@@ -139,17 +135,10 @@ Index: libgcrypt-1.9.4/random/jitterentropy-base.c
  	/* Test without internal timer unless caller does not want it */
  	if (!(flags & JENT_FORCE_INTERNAL_TIMER))
  		ret = jent_time_entropy_init(osr,
-@@ -725,10 +744,14 @@ int jent_entropy_init_ex(unsigned int os
- 	return jent_entropy_init_common_post(ret);
- }
- 
--#ifdef JENT_CONF_ENABLE_INTERNAL_TIMER
- JENT_PRIVATE_STATIC
- int jent_entropy_switch_notime_impl(struct jent_notime_thread *new_thread)
- {
+@@ -732,3 +752,9 @@ int jent_entropy_switch_notime_impl(stru
  	return jent_notime_switch(new_thread);
  }
--#endif
+ #endif
 +
 +JENT_PRIVATE_STATIC
 +int jent_set_fips_failure_callback(jent_fips_failure_cb cb)
@@ -383,7 +372,7 @@ Index: libgcrypt-1.9.4/random/jitterentropy-noise.c
  }
  
  #define MAX_ACC_LOOP_BIT 7
-@@ -184,37 +202,37 @@ static inline uint32_t xoshiro128starsta
+@@ -184,13 +202,12 @@ static inline uint32_t xoshiro128starsta
  
  static void jent_memaccess(struct rand_data *ec, uint64_t loop_cnt)
  {
@@ -395,11 +384,10 @@ Index: libgcrypt-1.9.4/random/jitterentropy-noise.c
  	} prngState = { .u = {0x8e93eec0, 0xce65608a, 0xa8d46b46, 0xe83cef69} };
  	uint32_t addressMask;
 -        uint64_t acc_loop_cnt;
--
--	if (NULL == ec || NULL == ec->mem)
--		return;
--
--	addressMask =  ec->memmask;
+ 
+ 	if (NULL == ec || NULL == ec->mem)
+ 		return;
+@@ -199,7 +216,7 @@ static void jent_memaccess(struct rand_d
  
  	/* Ensure that macros cannot overflow jent_loop_shuffle() */
  	BUILD_BUG_ON((MAX_ACC_LOOP_BIT + MIN_ACC_LOOP_BIT) > 63);
@@ -407,18 +395,8 @@ Index: libgcrypt-1.9.4/random/jitterentropy-noise.c
 +	uint64_t acc_loop_cnt =
  		jent_loop_shuffle(ec, MAX_ACC_LOOP_BIT, MIN_ACC_LOOP_BIT);
  
-+	if (NULL == ec || NULL == ec->mem)
-+		return;
-+	addressMask = ec->memmask;
-+
  	/*
- 	 * Mix the current data into prngState
- 	 *
- 	 * Any time you see a PRNG in a noise source, you should be concerned.
- 	 *
- 	 * The PRNG doesn't directly produce the raw noise, it just adjusts the
- 	 * location being updated. The timing of the update is part of the raw
- 	 * sample. The main thing this process gets you isn't better
+@@ -213,8 +230,10 @@ static void jent_memaccess(struct rand_d
  	 * "per-update: timing, it gets you mostly independent "per-update"
  	 * timing, so we can now benefit from the Central Limit Theorem!
  	 */
@@ -431,7 +409,7 @@ Index: libgcrypt-1.9.4/random/jitterentropy-noise.c
  
  	/*
  	 * testing purposes -- allow test app to set the counter, not
-@@ -358,21 +376,21 @@ unsigned int jent_measure_jitter(struct
+@@ -358,21 +377,21 @@ unsigned int jent_measure_jitter(struct
  
  /**
   * Generator of one 256 bit random number
@@ -458,7 +436,7 @@ Index: libgcrypt-1.9.4/random/jitterentropy-noise.c
  		/* If a stuck measurement is received, repeat measurement */
  		if (jent_measure_jitter(ec, 0, NULL))
  			continue;
-@@ -385,3 +403,22 @@ void jent_random_data(struct rand_data *
+@@ -385,3 +404,22 @@ void jent_random_data(struct rand_data *
  			break;
  	}
  }
@@ -561,18 +539,7 @@ Index: libgcrypt-1.9.4/random/jitterentropy.h
 ===================================================================
 --- libgcrypt-1.9.4.orig/random/jitterentropy.h
 +++ libgcrypt-1.9.4/random/jitterentropy.h
-@@ -42,6 +42,10 @@
- #ifndef _JITTERENTROPY_H
- #define _JITTERENTROPY_H
- 
-+#ifdef __cplusplus
-+extern "C" {
-+#endif
-+
- /***************************************************************************
-  * Jitter RNG Configuration Section
-  *
-@@ -49,7 +53,7 @@
+@@ -49,7 +49,7 @@
   ***************************************************************************/
  
  /*
@@ -581,7 +548,7 @@ Index: libgcrypt-1.9.4/random/jitterentropy.h
   *
   * In case the hardware is identified to not provide a high-resolution time
   * stamp, this option enables a built-in high-resolution time stamp mechanism.
-@@ -166,7 +173,7 @@ struct rand_data
+@@ -166,7 +166,7 @@ struct rand_data
  	 * of the RNG are marked as SENSITIVE. A user must not
  	 * access that information while the RNG executes its loops to
  	 * calculate the next random value. */
@@ -590,7 +557,7 @@ Index: libgcrypt-1.9.4/random/jitterentropy.h
  	uint64_t prev_time;		/* SENSITIVE Previous time stamp */
  #define DATA_SIZE_BITS (SHA3_256_SIZE_DIGEST_BITS)
  
-@@ -378,29 +389,34 @@ int jent_entropy_init(void);
+@@ -378,28 +379,34 @@ int jent_entropy_init(void);
  JENT_PRIVATE_STATIC
  int jent_entropy_init_ex(unsigned int osr, unsigned int flags);
  
@@ -627,19 +594,9 @@ Index: libgcrypt-1.9.4/random/jitterentropy.h
  };
  
 -#ifdef JENT_CONF_ENABLE_INTERNAL_TIMER
--
+ 
  JENT_PRIVATE_STATIC
  int jent_notime_init(void **ctx);
- 
-@@ -448,4 +464,8 @@ uint64_t jent_lfsr_var_stat(struct rand_
- 
- /* -- END of statistical test function -- */
- 
-+#ifdef __cplusplus
-+}
-+#endif
-+
- #endif /* _JITTERENTROPY_H */
 Index: libgcrypt-1.9.4/random/jitterentropy-base-user.h
 ===================================================================
 --- libgcrypt-1.9.4.orig/random/jitterentropy-base-user.h
