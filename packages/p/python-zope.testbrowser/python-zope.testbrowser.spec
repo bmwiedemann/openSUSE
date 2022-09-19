@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.testbrowser%{psuffix}
-Version:        5.5.1
+Version:        5.6.1
 Release:        0
 Summary:        Programmable browser for functional black-box tests
 License:        ZPL-2.1
