@@ -494,4 +494,41 @@
   * docs: typo (#2730)</comment>
     <requestid>1001263</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>8674d3b9097c620ba613452ee02b8bd4</srcmd5>
+    <version>0.32.0</version>
+    <time>1663596204</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0:
+  * docs: add Rekor SBOM attestation scanning (#2893)
+  * chore: narrow the owner scope (#2894)
+  * fix: remove a patch number from the recommendation link (#2891)
+  * fix: enable parsing of UUID-only rekor entry ID (#2887)
+  * docs(sbom): add SPDX scanning (#2885)
+  * docs: restructure docs and add tutorials (#2883)
+  * feat(sbom): scan sbom attestation in the rekor record (#2699)
+  * feat(k8s): support outdated-api (#2877)
+  * chore(deps): bump github.com/moby/buildkit from 0.10.3 to 0.10.4 (#2815)
+  * fix(c): support revisions in Conan parser (#2878)
+  * feat: dynamic links support for scan results (#2838)
+  * chore(deps): bump go.uber.org/zap from 1.22.0 to 1.23.0 (#2818)
+  * docs: update archlinux commands (#2876)
+  * feat(secret): add line from dockerfile where secret was added to secret result (#2780)
+  * feat(sbom): Add unmarshal for spdx (#2868)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/config (#2827)
+  * fix: revert asff arn and add documentation (#2852)
+  * docs: batch-import-findings limit (#2851)
+  * chore(deps): bump golang from 1.19.0 to 1.19.1 (#2872)
+  * feat(sbom): Add marshal for spdx (#2867)
+  * build: checkout before setting up Go (#2873)
+  * chore: bump Go to 1.19 (#2861)
+  * docs: azure doc and trivy (#2869)
+  * fix: Scan tarr'd dependencies (#2857)
+  * chore(helm): helm test with ingress (#2630)
+  * feat(report): add secrets to sarif format (#2820)
+  * chore(deps): bump azure/setup-helm from 1.1 to 3.3 (#2807)
+  * refactor: add a new interface for initializing analyzers (#2835)
+  * chore(deps): bump github.com/aws/aws-sdk-go from 1.44.77 to 1.44.92 (#2840)</comment>
+    <requestid>1004582</requestid>
+  </revision>
 </revisionlist>

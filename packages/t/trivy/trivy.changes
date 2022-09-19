@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Sep 19 07:17:00 UTC 2022 - dmueller@suse.com
+
+- Update to version 0.32.0:
+  * docs: add Rekor SBOM attestation scanning (#2893)
+  * chore: narrow the owner scope (#2894)
+  * fix: remove a patch number from the recommendation link (#2891)
+  * fix: enable parsing of UUID-only rekor entry ID (#2887)
+  * docs(sbom): add SPDX scanning (#2885)
+  * docs: restructure docs and add tutorials (#2883)
+  * feat(sbom): scan sbom attestation in the rekor record (#2699)
+  * feat(k8s): support outdated-api (#2877)
+  * chore(deps): bump github.com/moby/buildkit from 0.10.3 to 0.10.4 (#2815)
+  * fix(c): support revisions in Conan parser (#2878)
+  * feat: dynamic links support for scan results (#2838)
+  * chore(deps): bump go.uber.org/zap from 1.22.0 to 1.23.0 (#2818)
+  * docs: update archlinux commands (#2876)
+  * feat(secret): add line from dockerfile where secret was added to secret result (#2780)
+  * feat(sbom): Add unmarshal for spdx (#2868)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/config (#2827)
+  * fix: revert asff arn and add documentation (#2852)
+  * docs: batch-import-findings limit (#2851)
+  * chore(deps): bump golang from 1.19.0 to 1.19.1 (#2872)
+  * feat(sbom): Add marshal for spdx (#2867)
+  * build: checkout before setting up Go (#2873)
+  * chore: bump Go to 1.19 (#2861)
+  * docs: azure doc and trivy (#2869)
+  * fix: Scan tarr'd dependencies (#2857)
+  * chore(helm): helm test with ingress (#2630)
+  * feat(report): add secrets to sarif format (#2820)
+  * chore(deps): bump azure/setup-helm from 1.1 to 3.3 (#2807)
+  * refactor: add a new interface for initializing analyzers (#2835)
+  * chore(deps): bump github.com/aws/aws-sdk-go from 1.44.77 to 1.44.92 (#2840)
+  * fix: update ProductArn with account id (#2782)
+  * feat(helm): make cache TTL configurable (#2798)
+  * build(): Sign releaser artifacts, not only container manifests (#2789)
+  * chore: improve doc about azure devops (#2795)
+  * chore(deps): bump sigstore/cosign-installer from 2.5.0 to 2.5.1 (#2804)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/sts (#2825)
+  * docs: don't push patch versions (#2824)
+  * feat: add support for conan.lock file (#2779)
+  * feat: cache merged layers
+  * chore(deps): bump helm/chart-testing-action from 2.2.1 to 2.3.0 (#2805)
+  * chore(deps): bump actions/cache from 3.0.5 to 3.0.8 (#2806)
+  * chore(deps): bump github.com/caarlos0/env/v6 from 6.9.3 to 6.10.0 (#2811)
+  * chore(deps): bump github.com/aquasecurity/table from 1.7.2 to 1.8.0 (#2810)
+  * chore(deps): bump github.com/samber/lo from 1.27.0 to 1.27.1 (#2808)
+  * chore(deps): bump github.com/alicebob/miniredis/v2 from 2.22.0 to 2.23.0 (#2814)
+  * feat: add support for gradle.lockfile (#2759)
+  * chore(mod): updates wazero to 1.0.0-pre.1 #2791
+  * feat: move file patterns to a global level to be able to use it on any analyzer (#2539)
+  * Fix url validaton failures (#2783)
+  * fix(image): add logic to detect empty layers (#2790)
+  * feat(rust): add dependency graph from Rust binaries (#2771)
+
+-------------------------------------------------------------------
 Mon Sep 05 12:12:16 UTC 2022 - dmueller@suse.com
 
 - Update to version 0.31.3:
