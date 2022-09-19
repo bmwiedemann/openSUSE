@@ -1,7 +1,7 @@
 #
 # spec file for package python-k5test
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-k5test
-Version:        0.9.2
+Version:        0.10.1
 Release:        0
 Summary:        A library for testing Python applications in krb5 environments
 License:        MIT
@@ -26,10 +26,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pythongssapi/k5test
 Source:         https://files.pythonhosted.org/packages/source/k/k5test/k5test-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
+Requires:       krb5-client
+Requires:       krb5-server
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,6 +53,6 @@ the file of the same name found alongside the MIT Kerberos 5 unit tests.
 %files %{python_files}
 %license *LICENSE*
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/k5test*
 
 %changelog
