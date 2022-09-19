@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 19 11:58:41 UTC 2022 - pgajdos@suse.com
+
+- does not require python3-six
+  https://trello.com/c/MO53MocR/143-remove-python3-six
+
+-------------------------------------------------------------------
 Fri Sep 16 21:15:04 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 3.10.4.0

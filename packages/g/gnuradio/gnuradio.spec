@@ -74,7 +74,6 @@ BuildRequires:  python3-pyaml >= 3.11
 BuildRequires:  python3-pybind11-devel >= 2.4.3
 BuildRequires:  python3-pycairo
 BuildRequires:  python3-qt5-devel
-BuildRequires:  python3-six
 BuildRequires:  python3-thrift
 BuildRequires:  qwt6-qt5-devel
 BuildRequires:  soapy-sdr-devel
