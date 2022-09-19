@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 17 15:58:07 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.5.0:
+  * Added
+    + Add support for Python 3.11 and PyPy3.9 (#564) @hugovk
+    + Add separators encoding parameter (#557) @JustAnotherArchivist
+  * Fixed
+    + Fix encoding of infinity (#80). (#562) @bwoodsend
+
+-------------------------------------------------------------------
 Fri Jul  8 11:55:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.4.0 (CVE-2022-31116, bsc#1201255, CVE-2022-31117, bsc#1201254):

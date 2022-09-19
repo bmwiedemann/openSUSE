@@ -147,4 +147,12 @@
   * Fix handling of surrogates on encoding</comment>
     <requestid>987903</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>31c1d000c22b521eb5eb1c4aeca94867</srcmd5>
+    <version>5.5.0</version>
+    <time>1663596210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004588</requestid>
+  </revision>
 </revisionlist>

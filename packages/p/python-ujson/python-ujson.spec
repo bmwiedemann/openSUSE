@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-ujson
-Version:        5.4.0
+Version:        5.5.0
 Release:        0
 Summary:        JSON encoder and decoder for Python
 License:        BSD-3-Clause
@@ -46,7 +46,7 @@ bindings for Python 2.7 and 3.5+
 %build
 rm -r deps
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-export UJSON_BUILD_DC_INCLUDES='/usr/include/double-conversion'
+export UJSON_BUILD_DC_INCLUDES='%{_includedir}/double-conversion'
 export UJSON_BUILD_DC_LIBS='-ldouble-conversion'
 %python_build
 
