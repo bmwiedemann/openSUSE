@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Sep 16 07:42:11 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.4.5
+  * Use Source Output Info for recording indicator
+    to reduce flickering (gxo#panel-plugins/xfce4-pulseaudio-plugin#81)
+    and to hide it with pavucontrol
+    (gxo#panel-plugins/xfce4-pulseaudio-plugin#80)
+  * Display notification on mic volume changes
+    (gxo#panel-plugins/xfce4-pulseaudio-plugin#42)
+  * Fix accidental toggling of the mute switch
+    (gxo#panel-plugins/xfce4-pulseaudio-plugin#64)
+  * Show notification even when volume is already at max/min
+    (gxo#panel-plugins/xfce4-pulseaudio-plugin#52)
+  * Optionally play system sound on volume changes
+    (gxo#panel-plugins/xfce4-pulseaudio-plugin#4)
+  * Fix menu position when panel autohide is enabled
+  * Fix compilation with gcc 10
+  * about: Bump copyright year
+  * Fix typos
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Sep  3 10:51:40 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update to version 0.4.4
