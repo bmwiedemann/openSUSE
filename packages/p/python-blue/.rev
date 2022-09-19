@@ -67,4 +67,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>976476</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>34e21a90f4b890e7cef80d2957d82d11</srcmd5>
+    <version>0.9.0</version>
+    <time>1663596255</time>
+    <user>dimstar_suse</user>
+    <comment>- Add flake8-v5-compatibility.patch wich makes it work with flake8 v5
+  gh#grantjenks/blue#78</comment>
+    <requestid>1004677</requestid>
+  </revision>
 </revisionlist>

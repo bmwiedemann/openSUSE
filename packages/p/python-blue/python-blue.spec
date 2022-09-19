@@ -29,6 +29,8 @@ Source:         https://github.com/grantjenks/blue/archive/v%{version}.tar.gz#/b
 Patch0:         unpin-black.patch
 # PATCH-FIX-OPENSUSE unpin-tomli.patch -- gh#grantjenks/blue#66
 Patch1:         unpin-tomli.patch
+# PATCH-FIX-UPSTREAM flake8-v5-compatibility.patch -- gh#grantjenks/blue#78
+Patch2:         flake8-v5-compatibility.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module black >= 21.7}

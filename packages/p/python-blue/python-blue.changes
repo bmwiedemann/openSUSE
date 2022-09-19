@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 19 10:14:39 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add flake8-v5-compatibility.patch wich makes it work with flake8 v5
+  gh#grantjenks/blue#78
+
+-------------------------------------------------------------------
 Wed May  4 17:28:34 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Upgrade to 0.9.0:

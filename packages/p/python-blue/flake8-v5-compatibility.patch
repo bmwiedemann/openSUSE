@@ -1,0 +1,17 @@
+--- a/blue/__init__.py
++++ b/blue/__init__.py
+@@ -397,9 +397,12 @@ def format_file_in_place(*args, **kws):
+ 
+ 
+ try:
+-    BaseConfigParser = flake8_config.ConfigParser              # flake8 v4
++    BaseConfigParser = flake8_config.configparser.ConfigParser     # flake8 v5
+ except AttributeError:
+-    BaseConfigParser = flake8_config.MergedConfigParser        # flake8 v3
++    try:
++        BaseConfigParser = flake8_config.ConfigParser              # flake8 v4
++    except AttributeError:
++        BaseConfigParser = flake8_config.MergedConfigParser        # flake8 v3
+ 
+ 
+ class MergedConfigParser(BaseConfigParser):
