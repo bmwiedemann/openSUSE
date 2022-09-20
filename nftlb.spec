@@ -1,7 +1,7 @@
 #
 # spec file for package nftlb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nftlb
-Version:        0.6
+Version:        1.0.6
 Release:        0
 Summary:        nftables load balancer
 License:        AGPL-3.0-or-later
@@ -64,7 +64,7 @@ traffic distributor using nftables.
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
