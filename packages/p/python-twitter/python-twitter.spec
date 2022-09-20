@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-twitter
-Version:        1.19.4
+Version:        1.19.6
 Release:        0
 Summary:        An API and command-line toolset for Twitter
 License:        MIT
@@ -28,6 +28,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 # SECTION tests
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module certifi}
 # /SECTION
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
