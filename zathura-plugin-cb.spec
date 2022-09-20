@@ -1,7 +1,7 @@
 #
 # spec file for package zathura-plugin-cb
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define realname zathura-cb
 Name:           zathura-plugin-cb
-Version:        0.1.8
+Version:        0.1.10
 Release:        0
 Summary:        Comic book support for zathura
 License:        Zlib
 Group:          Productivity/Office/Other
 URL:            http://pwmt.org/projects/zathura/plugins/zathura-cb/
-Source:         http://pwmt.org/projects/zathura/plugins/download/%{realname}-%{version}.tar.xz
+Source:         https://pwmt.org/projects/zathura-cb/download/%{realname}-%{version}.tar.xz
 BuildRequires:  meson > 0.43
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(girara-gtk3)
