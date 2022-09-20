@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Sep 20 12:26:39 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.16.0:
+  - Update embedded certifi to 2022.06.15.1
+  - Add use_ssl_default_seclevelone option for aneroticstory
+  - adapter_storiesonlinenet: Fix for empty scores. #882
+  - Update translations.
+  - Add flaresolverr_proxy_timeout (default 60000ms) #703
+  - storiesonline / finestories / scifistories : Change story
+    URL scheme to keep story-title & use to detect story ID
+    reuse. #882
+  - Fix for remove from update & rejects lists when lower
+    selected first.
+  - adapter_wattpadcom: Add include_chapter_banner_images
+    feature, defaults on
+  - Clear metadata cache on numWords set from plugin for derived
+    values.
+  - Deprecate 'Update EPUB Cover?' Download Option. See #878 and
+    Cover Settings Calibre Plugin
+  - Add force_cover_image setting
+  - Add use_old_cover setting
+  - Add 'Set Calibre Cover Only for New Books' checkbox
+  - Remove RSS link from threadmarks_title (XF2)
+  - Also include threadmarks_title in tagsfromtitle (XF)
+  - nsapa_proxy: detect proxy protocol violation - Fix #865 -
+    thanks, nsapa
+  - Make series name/comment area scrollable for when lengthy.
+
+-------------------------------------------------------------------
 Sat Aug 20 07:27:45 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.15.0:
