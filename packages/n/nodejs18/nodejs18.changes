@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Thu Sep 15 15:00:25 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Update to Nodejs 18.9.0:
+  * lib - add diagnostics channel for process and worker
+  * os - add machine method
+  * report - expose report public native apis
+  * src - expose environment RequestInterrupt api
+  * vm - include vm context in the embedded snapshot
+
+- Changes in 18.8.0:
+  * bootstrap: implement run-time user-land snapshots via
+    --build-snapshot and --snapshot-blob. See
+  * crypto:
+    + allow zero-length IKM in HKDF and in webcrypto PBKDF2
+    + allow zero-length secret KeyObject
+  * deps: upgrade npm to 8.18.0
+  * http: make idle http parser count configurable
+  * net: add local family
+  * src: print source map error source on demand
+  * tls: pass a valid socket on tlsClientError
+
+- dns.patch: upstreamed, removed
+- nodejs-libpath.patch, versioned.patch: refreshed
+- fix_ci_tests.patch: partially upstreamed
+- openssl3_fixups.patch: fix unit tests with openssl 1.1.1
+- new_python3.patch: enable python 3.11 as valid interpreter
+
+-------------------------------------------------------------------
+Thu Aug 18 10:41:57 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Update to Nodejs 18.7.0:
+  * events: add CustomEvent
+  * http: add drop request event for http server
+  * lib: improved diagnostics_channel subscribe/unsubscribe
+  * util: add tokens to parseArgs
+
+- enable crypto policy ciphers for TW and SLE15 SP4+ (bsc#1200303)
+
+-------------------------------------------------------------------
+Sun Jul 31 15:37:05 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- dns.patch: fix regression
+  https://github.com/nodejs/node/issues/44003
+
+-------------------------------------------------------------------
+Sun Jul 24 09:47:19 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Update to Nodejs 18.6.0:
+  * Experimental ESM Loader Hooks API. For details see,
+    https://nodejs.org/api/esm.html
+  * dns: export error code constants from dns/promises
+  * esm: add chaining to loaders
+  * http: add diagnostics channel for http client
+  * http: add perf_hooks detail for http request and client
+  * module: add isBuiltIn method
+  * net: add drop event for net server
+  * test_runner: expose describe and it
+  * v8: add v8.startupSnapshot utils
+
+  For details, see
+  https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V18.md#18.6.0
+
+-------------------------------------------------------------------
+Mon Jul 11 12:00:48 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Update to Nodejs 18.5.0:
+  * http: stricter Transfer-Encoding and header separator parsing
+    (bsc#1201325, bsc#1201326, bsc#1201327,
+     CVE-2022-32213, CVE-2022-32214, CVE-2022-32215)
+  * src: fix IPv4 validation in inspector_socket
+    (bsc#1201328, CVE-2022-32212)
+  For details, see
+  https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V18.md#18.5.0
+
+-------------------------------------------------------------------
+Tue Jun 28 13:06:23 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Update to Nodejs 18.4.0. For detailed changes see,
+  https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V18.md#18.4.0
+- refreshed: versioned.patch, linker_lto_jobs.patch, nodejs-libpath.patch
+
+-------------------------------------------------------------------
+Thu May 19 15:01:09 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Initial packaging of Nodejs 18.2.0. For detailed changes
+  since previous versions, see
+
+  https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V18.md#18.2.0
+
