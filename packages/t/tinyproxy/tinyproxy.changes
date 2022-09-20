@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 20 08:55:30 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-prevent-junk-from-showing-up-in-error-page-in-invali.patch
+  [CVE-2022-40468] [boo#1203553]
+
+-------------------------------------------------------------------
 Mon Jun  6 16:38:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Move tinyproxy program to /usr/bin.

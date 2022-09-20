@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 17 15:20:46 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.0.10:
+  * Bugfixes
+    + #1684 Image files not closed when workbooks are saved
+    + #1778 Problem with missing scope attribute in Pivot Table
+       formats
+    + #1821 Excel unhappy when multiple sorts are defined
+
+-------------------------------------------------------------------
 Sat Feb 12 23:30:53 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

@@ -106,4 +106,13 @@
     <comment>- Update to release 1.11.1</comment>
     <requestid>981024</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>e2dc6f56e33b45af22d3a520f63390a4</srcmd5>
+    <version>1.11.1</version>
+    <time>1663694645</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-prevent-junk-from-showing-up-in-error-page-in-invali.patch
+  [CVE-2022-40468] [boo#1203553]</comment>
+    <requestid>1004923</requestid>
+  </revision>
 </revisionlist>

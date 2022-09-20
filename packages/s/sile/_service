@@ -1,0 +1,12 @@
+<services>
+  <service mode="manual" name="download_url">
+    <param name="protocol">https</param>
+    <param name="host">github.com</param>
+    <param name="path">/sile-typesetter/sile/releases/download/v0.14.3/sile-0.14.3.tar.xz</param>
+  </service>
+  <service mode="manual" name="verify_file">
+    <param name="file">sile-0.14.3.tar.xz</param>
+    <param name="verifier">sha256</param>
+    <param name="checksum">7f9735bb2bdea5004b226037baa85bbb684d9de1653d65faa5d1dc0677a6f6d8</param>
+  </service>
+</services>

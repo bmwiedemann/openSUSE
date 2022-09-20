@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Sep 20 09:23:13 UTC 2022 - Martin Winter <me@letsfindaway.de>
+
+- fix file list in spec file
+  - do not include /usr/share/mime/packages directory owned by
+    filesystem
+
+-------------------------------------------------------------------
+Wed Sep 14 06:24:01 UTC 2022 - Martin Winter <me@letsfindaway.de>
+
+- update to version 1.7.0~git20220914.47a96e1
+- feat: user configurable shortcuts
+  * add 0460-shortcut-configuration.patch
+- fix: boxing in single screen mode
+  * update 0633-improve-displaymanager.patch
+- fix: PDF background export
+  * update 0637-fix-pdf-background-export.patch
+- fix: font handling
+  * update 0641-fix-font-handling.patch
+- fix: PDF export scaling
+  * add 0649-fix-pdf-export-scaling.patch
+- refactor: Linux build and installation
+  * add 0651-chore-reorganize-linux-build.patch
+  * replaces 0001-Rewrite-libs.pri.patch
+  * replaces 0002-Install-to-correct-directories-on-linux.patch
+  * replaces 0003-podcast.pri-port-to-pkgconfig.patch
+  * replaces 0004-Use-QStandardPaths-to-locate-resources.patch
+  * replaces 0005-Add-svg-icon.patch
+  * replaces 0006-pro-Remove-UB_THIRDPARTY_INTERACTIVE.patch
+  * replaces 0007-Linux-Only-use-onboard-by-default-if-it-s-installed.patch
+  * replaces 0008-install-fonts.patch
+  * add mimespec for .ubz files
+  * also improve handling of onboard on-screen keyboard
+- refactor: clean spec file
+
+-------------------------------------------------------------------
 Fri Jun 24 09:56:26 UTC 2022 - Martin Winter <me@letsfindaway.de>
 
 - minor changes in spec file

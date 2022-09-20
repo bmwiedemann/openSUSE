@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 16 23:39:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- update to 3.0.0 
+  * New set algorithms_available lists all implemented algorithms in xxhash package.
+  * Upgrade xxHash to v0.8.1.
+  * Drop support for EOL Python versions, require python >= 3.6 from now on.
+  * Migrate to github actions and build arm64 wheels for macOS.
+  * Always release GIL.
+
+-------------------------------------------------------------------
 Fri Aug 27 12:21:23 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

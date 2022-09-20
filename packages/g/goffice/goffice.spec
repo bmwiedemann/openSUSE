@@ -17,7 +17,7 @@
 
 
 Name:           goffice
-Version:        0.10.52
+Version:        0.10.53
 Release:        0
 Summary:        GLib/GTK+ Set of Document-Centric Objects and Utilities
 License:        GPL-2.0-only OR GPL-3.0-only

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep 18 09:45:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.53:
+  + Fix xlsx import of T.INV.
+  + Fix inter-process array paste problem.
+  + Fix problem with xlsx number format 14.
+  + Fix problems with complex number rendering.
+  + Fix near-denormal parsing case.
+  + Fix mildly crazy ROUND edge cases.
+  + Fix dialog reuse problem.
+  + Fix sc import problem.
+  + Work a little hard at avoiding -0.
+  + Fix html import problem.
+  + Fix reading localc extension for engineering format.
+  + Fix strict-conformance ods problem with E-notation.
+  + Improve test suite.
+
+-------------------------------------------------------------------
 Tue Apr 19 20:09:16 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Update to version 1.12.52

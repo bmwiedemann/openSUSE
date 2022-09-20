@@ -298,4 +298,27 @@
   * Fix shortcode parser regression with quoted param values (forwarded request 1000945 from jfkw)</comment>
     <requestid>1000946</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6651288423e1bb8bb9f1f5388cbb98ae</srcmd5>
+    <version>0.103.1</version>
+    <time>1663694623</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.103.1:
+  * server: Fix redirects when file path contains bytes &gt; 0x80
+  * Use standard GOOS/GOARCH values in release archives
+  * Filter out any duplicate files to post process
+  * Support PostProcess for all file types
+  * build(deps): bump github.com/gobuffalo/flect from 0.2.5 to 0.3.0
+  * server: Add 404 support
+  * build(deps): bump github.com/getkin/kin-openapi from 0.98.0 to 0.100.0
+  * build(deps): bump github.com/evanw/esbuild from 0.15.5 to 0.15.7
+  * build(deps): bump github.com/yuin/goldmark from 1.4.13 to 1.4.14
+  * Feat/sponsors in readme (#10273)
+  * Squashed 'docs/' changes from e5aa641a6..392668f4f
+  * Fix usage description
+  * Add `--force` to `hugo new`
+  * scss: Handle single-file sourcemaps correctly
+  * Update stale.yml (forwarded request 1004740 from jfkw)</comment>
+    <requestid>1004745</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define modname mistune
 %define skip_python2 1
 Name:           python-%{modname}
-Version:        2.0.2
+Version:        2.0.4
 Release:        0
 Summary:        Python Markdown parser with renderers and plugins
 License:        BSD-3-Clause

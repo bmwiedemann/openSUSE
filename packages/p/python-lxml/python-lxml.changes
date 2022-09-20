@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 19 11:33:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update BR for libxml2-devel to the current version.
+- Add missing BR for python-base.
+
+-------------------------------------------------------------------
 Sat Jul  9 14:10:48 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.9.1 (bsc#1201253, CVE-2022-2309):

@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?suse_version} >= 1315 || 0%{?fedora} >= 29 || 0%{?rhel} >= 7 || 0%{?mageia} >= 8
+%if 0%{?suse_version} >= 1500 || 0%{?fedora} >= 29 || 0%{?rhel} >= 7 || 0%{?mageia} >= 8
 %bcond_without python3
 %else
 %bcond_with    python3
@@ -37,7 +37,7 @@
 %define use_pythonpkg python
 %endif
 
-%define version_unconverted 0.181.0
+%define version_unconverted 0.182.0
 %define osc_plugin_dir %{_prefix}/lib/osc-plugins
 %define macros_file macros.osc
 %if ! %{defined _rpmmacrodir}
@@ -45,7 +45,7 @@
 %endif
 
 Name:           osc
-Version:        0.181.0
+Version:        0.182.0
 Release:        0
 Summary:        Open Build Service Commander
 License:        GPL-2.0-or-later
@@ -75,6 +75,7 @@ Requires:       rpm-python
 BuildArch:      noarch
 %endif
 %if 0%{?suse_version}
+Recommends:     openssh
 Requires:       %{use_pythonpkg}
 Recommends:     %{use_pythonpkg}-progressbar
 BuildRequires:  %{use_pythonpkg}-xml

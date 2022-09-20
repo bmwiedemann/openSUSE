@@ -16,4 +16,12 @@
   patch texi2roff-2.0.dif</comment>
     <requestid>729701</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b05f7b04b38ef83f3e7ee37f8d7b8448</srcmd5>
+    <version>2.0</version>
+    <time>1663694653</time>
+    <user>dimstar_suse</user>
+    <comment>- Move http to https</comment>
+    <requestid>1004969</requestid>
+  </revision>
 </revisionlist>

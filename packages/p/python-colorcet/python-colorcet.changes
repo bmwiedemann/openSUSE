@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Sep 19 22:01:56 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 3.0.0:
+  * New features:
+    + Added new upstream colormaps (#65):
+      o Rainbow: rainbow_bgyr_10_90_c83 (called rainbow4, a much
+        closer match to Jet's color range than rainbow while remaining
+        perceptually uniform)
+      o Linear: linear_kbgoy_20_95_c57 (called gouldian, an improved
+        version of Matlab's parula colormap), linear_kbgyw_10_98_c63
+      o Cyclic: circle_mgbm_67_c31, circle_mgbm_67_c31_s25,
+        cyclic_bgrmb_35_70_c75, cyclic_bgrmb_35_70_c75_s25,
+        cyclic_isoluminant, cyclic_mybm_20_100_c48,
+        cyclic_mybm_20_100_c48_s25, cyclic_mygbm_50_90_c46,
+        cyclic_mygbm_50_90_c46_s25, cyclic_rygcbmr_50_90_c64,
+        cyclic_rygcbmr_50_90_c64_s25, cyclic_wrkbw_10_90_c43,
+        cyclic_wrkbw_10_90_c43_s25, cyclic_ymcgy_60_90_c67,
+        cyclic_ymcgy_60_90_c67_s25
+      o Colorblind-safe:
+        diverging_linear_protanopic_deuteranopic_bjy_57_89_c34,
+        linear_protanopic_deuteranopic_kbw_5_95_c34,
+        linear_protanopic_deuteranopic_kyw_5_95_c49,
+        linear_tritanopic_kcw_5_95_c22, linear_tritanopic_krw_5_95_c46
+    + CI fixes and improvements, including testing for python 3.9
+      (#71, #72, #75, #77)
+    + Clarified docs to indicate that all maps have an original
+      list-of-numeric-triples form, typically but not always with a
+      long name, that all those starting with b_ are Bokeh colormaps
+      in hex format, and that only the subset of shorter names that
+      are aliases for longer names are Bokeh colormaps (as some other
+      original list names like glasbey_bw just happen to be short
+      (#79)
+  * Compatibility:
+    + For categorical (Glasbey) maps, now uses a Matplotlib
+      ListedColormap (with distinct colors) instead of a
+      LinearSegmentedColormap (discrete approximation to a continuous
+      map) (#79)
+
+-------------------------------------------------------------------
 Sat Jan 30 06:01:29 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - specfile:

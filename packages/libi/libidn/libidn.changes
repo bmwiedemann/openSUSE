@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 18 09:24:14 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.41:
+  * fix detecting current locale
+  * developer visible changes
+
+-------------------------------------------------------------------
 Tue May 24 14:10:44 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Update keyring from source URL

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Sep 17 15:29:28 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * removed patch sympy_printing_ccode.patch; included upstream
+  * requires python >= 3.8 (skip 3.7)
+
+- update to version 1.11.1:
+  * The 1.11 release introduced a regression when using lambdify with
+    the cse=True option (introduced in 1.9) resulting in a list being
+    returned for a lambdified expression that was not a list. This bug
+    is now fixed in the 1.11.1 release.
+
+- changes from version 1.11.0:
+  * Highlights:
+    + Better support for integrating several different types of
+      expressions.
+    + The series expansion has seen several improvements.
+    + The assumption system is now fully deterministic, so it should
+      work in multi-threaded environments.
+    + A new and improved Mathematica parser.
+  * full changelog at
+    https://github.com/sympy/sympy/wiki/Release-Notes-for-1.11
+
+-------------------------------------------------------------------
 Thu Aug  4 19:58:36 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Switch off tests (they run 7h53m47s).

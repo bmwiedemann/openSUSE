@@ -23,4 +23,14 @@
     <comment>- Drop running tests (there are no tests in the tarball)</comment>
     <requestid>908082</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ed831f70d12b24c1ca392bbdcbfb003f</srcmd5>
+    <version>1.4.0</version>
+    <time>1663694650</time>
+    <user>dimstar_suse</user>
+    <comment>- Add authlib.patch to remove the oauth2client dependency
+  gh#puiterwijk/flask-oidc#138
+</comment>
+    <requestid>1004947</requestid>
+  </revision>
 </revisionlist>

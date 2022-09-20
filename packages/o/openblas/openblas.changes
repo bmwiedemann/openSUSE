@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 14 06:08:40 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- The toolchain and 'make' in TW have been updated to handle parallel
+  makes spawned by gcc (for LTO optimization) properly. Thus, remove
+  restrictions.
+- Disable lto when linking test programs to speeds up building.
+
+-------------------------------------------------------------------
 Thu May  5 11:56:20 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Dynamically generate baselibs.conf for openblas flavors; this

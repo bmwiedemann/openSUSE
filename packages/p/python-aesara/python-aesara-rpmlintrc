@@ -1,2 +1,0 @@
-# The devel files identified by rpmlint are mandatory for Aesara
-addFilter("devel-file-in-non-devel-package")

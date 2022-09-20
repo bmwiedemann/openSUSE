@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 12 15:21:04 UTC 2022 - msabate@suse.com
+
+- Update to version 0.0.9~git10.de887da7231f:
+  * Respect the PROXY_ENABLED environment variable
+
+-------------------------------------------------------------------
 Wed Aug 31 10:38:59 UTC 2022 - jan.suse@zerebecki.de
 
 - Update to version 0.0.9~git8.f9adb71:

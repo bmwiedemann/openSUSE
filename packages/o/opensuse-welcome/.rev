@@ -80,4 +80,16 @@
   locales in zypp. (forwarded request 980116 from dimstar)</comment>
     <requestid>980875</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>36449c5006eccaab33210c52e0f98a36</srcmd5>
+    <version>0.1.9+git.0.66be0d8</version>
+    <time>1663694602</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1.9+git.0.66be0d8:
+  * fix: it's called Plasma
+  * fix: make openSUSE welcome work again (boo#1194380)
+  * fix: undead the URLs to Telegram groups
+  * Translation updates (forwarded request 1004690 from tux93)</comment>
+    <requestid>1004713</requestid>
+  </revision>
 </revisionlist>

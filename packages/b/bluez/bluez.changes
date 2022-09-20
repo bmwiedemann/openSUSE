@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Sep 14 07:56:19 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- For pushing bluez 5.65 to 15-SP5 (bluez-5.62), sync the patches and
+  log: (jsc#PED-1407)
+    - hcidump-fixed-hci-frame-dump-stack-buffer-overflow.patch patch
+      be merged to 5.51 mainline. So 5.65 bluez already includes it.
+    - Add the following patches from the bluez-5.62 of 15-SP5:
+        - disable_some_obex_tests.patch
+            - disable tests for bypass boo#1078285
+        - hcidump-Add-assoc-dump-function-assoc-date-length-ch.patch
+            - bsc#1013708 CVE-2016-9797
+            - Al Cho has sent it to upstream but it not be merged:
+                https://lore.kernel.org/all/20181031081508.25927-1-acho@suse.com/T/
+        - hcidump-Fix-memory-leak-with-malformed-packet.patch
+            - bsc#1015171 CVE-2016-9917
+            - Al Cho has sent it to upstream but it not be merged:
+              https://www.spinics.net/lists/linux-bluetooth/msg79852.html 
+        - hcidump-Fixed-malformed-segment-frame-length.patch
+            - bsc#1013712 CVE-2016-9798
+            - Did not send to upstream.
+        - 0001-rpi3-bcm43xx-The-UART-speed-must-be-reset-after-the-firmw.patch
+            - Move 43xx firmware path for RPi3 bluetooth support bsc#1140688 bsc#995059 bsc#1094902 
+            - From https://www.yoctoproject.org/pipermail/yocto/2016-April/029424.html
+    - Respin the following patches
+        - bluez-test-2to3.diff
+            - Removed some parts of patch because those codes be included
+              in a1939bd51e0faba9a8550eea2590d99cb63a33c1 since 5.65.
+    - The following patches are the same between SLE15-SP5 with openSUSE TW:
+        - bluez-5.45-disable-broken-tests.diff in 15-SP5 matchs with
+          bluez-disable-broken-tests.diff in openSUSE TW.
+        - 0002-rpi3-Move-the-43xx-firmware-into-lib-firmware.patch in 15-SP5
+          matchs with RPi-Move-the-43xx-firmware-into-lib-firmware.patch in
+          openSUSE TW.
+
+-------------------------------------------------------------------
 Wed Aug 17 20:26:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.65:

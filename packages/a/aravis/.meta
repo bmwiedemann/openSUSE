@@ -1,0 +1,5 @@
+<package name="aravis" project="openSUSE:Factory">
+  <title>Glib/gobject based library implementing a Genicam interface</title>
+  <description>Aravis is a glib/gobject based library implementing a Genicam interface, which can be used for the acquisition of video streams coming from either ethernet, firewire or USB cameras. It currently only implements an ethernet camera protocol used for industrial cameras.</description>
+  <devel project="multimedia:libs" package="aravis"/>
+</package>

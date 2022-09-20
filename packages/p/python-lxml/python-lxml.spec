@@ -27,10 +27,11 @@ URL:            https://lxml.de/
 Source0:        https://files.pythonhosted.org/packages/source/l/lxml/lxml-%{version}.tar.gz
 Source1:        https://lxml.de/lxmldoc-4.5.2.pdf
 BuildRequires:  %{python_module Cython >= 0.29.7}
+BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
 BuildRequires:  %{python_module setuptools >= 18.0.1}
 BuildRequires:  fdupes
-BuildRequires:  libxml2-devel >= 2.9.5
+BuildRequires:  libxml2-devel >= 2.10.2
 BuildRequires:  libxslt-devel >= 1.1.23
 BuildRequires:  python-rpm-macros
 Requires:       python-cssselect >= 0.9.1

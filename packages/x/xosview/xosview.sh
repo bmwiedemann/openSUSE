@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 net="-net"
 if   test -e /proc/net/ip_acct ; then

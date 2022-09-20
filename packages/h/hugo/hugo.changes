@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Sep 19 05:22:43 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.103.1:
+  * server: Fix redirects when file path contains bytes > 0x80
+  * Use standard GOOS/GOARCH values in release archives
+
+-------------------------------------------------------------------
+Mon Sep 19 05:18:49 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.103.0:
+  * Use standard GOOS/GOARCH values in release archives
+  * Filter out any duplicate files to post process
+  * Support PostProcess for all file types
+  * build(deps): bump github.com/gobuffalo/flect from 0.2.5 to 0.3.0
+  * server: Add 404 support
+  * build(deps): bump github.com/getkin/kin-openapi from 0.98.0 to 0.100.0
+  * build(deps): bump github.com/evanw/esbuild from 0.15.5 to 0.15.7
+  * build(deps): bump github.com/yuin/goldmark from 1.4.13 to 1.4.14
+  * Feat/sponsors in readme (#10273)
+  * Squashed 'docs/' changes from e5aa641a6..392668f4f
+  * Fix usage description
+  * Add `--force` to `hugo new`
+  * scss: Handle single-file sourcemaps correctly
+  * Update stale.yml
+
+-------------------------------------------------------------------
 Thu Sep 01 15:49:20 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.102.3:

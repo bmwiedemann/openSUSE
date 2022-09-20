@@ -23,4 +23,39 @@ I want to make OpenBoard available again in TW (and later also Leap) and therefo
 </comment>
     <requestid>984870</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>20ce177cbe69105949abb64d8c293641</srcmd5>
+    <version>1.7.0~git20220914.47a96e1</version>
+    <time>1663694610</time>
+    <user>dimstar_suse</user>
+    <comment>- fix file list in spec file
+  - do not include /usr/share/mime/packages directory owned by
+    filesystem
+- update to version 1.7.0~git20220914.47a96e1
+- feat: user configurable shortcuts
+  * add 0460-shortcut-configuration.patch
+- fix: boxing in single screen mode
+  * update 0633-improve-displaymanager.patch
+- fix: PDF background export
+  * update 0637-fix-pdf-background-export.patch
+- fix: font handling
+  * update 0641-fix-font-handling.patch
+- fix: PDF export scaling
+  * add 0649-fix-pdf-export-scaling.patch
+- refactor: Linux build and installation
+  * add 0651-chore-reorganize-linux-build.patch
+  * replaces 0001-Rewrite-libs.pri.patch
+  * replaces 0002-Install-to-correct-directories-on-linux.patch
+  * replaces 0003-podcast.pri-port-to-pkgconfig.patch
+  * replaces 0004-Use-QStandardPaths-to-locate-resources.patch
+  * replaces 0005-Add-svg-icon.patch
+  * replaces 0006-pro-Remove-UB_THIRDPARTY_INTERACTIVE.patch
+  * replaces 0007-Linux-Only-use-onboard-by-default-if-it-s-installed.patch
+  * replaces 0008-install-fonts.patch
+  * add mimespec for .ubz files
+  * also improve handling of onboard on-screen keyboard
+- refactor: clean spec file
+</comment>
+    <requestid>1004929</requestid>
+  </revision>
 </revisionlist>

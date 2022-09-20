@@ -24,20 +24,23 @@
 %bcond_with libalternatives
 %endif
 Name:           python-tempora
-Version:        5.0.0
+Version:        5.0.2
 Release:        0
 Summary:        Objects and routines pertaining to date and time (tempora)
 License:        MIT
 URL:            https://github.com/jaraco/tempora
 Source:         https://files.pythonhosted.org/packages/source/t/tempora/tempora-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module jaraco.functools >= 1.20}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest > 4.6}
 BuildRequires:  %{python_module pytest-freezegun}
 BuildRequires:  %{python_module pytz}
+BuildRequires:  %{python_module setuptools  >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-jaraco.functools >= 1.20
@@ -65,10 +68,10 @@ Modules include:
 sed -i '/--mypy/d' pytest.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/calc-prorate
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -91,6 +94,6 @@ sed -i -e 's:--black::' -e 's:--cov::' -e 's/--flake8//g' pytest.ini
 %doc CHANGES.rst README.rst docs/*rst
 %python_alternative %{_bindir}/calc-prorate
 %{python_sitelib}/tempora
-%{python_sitelib}/tempora-%{version}-py*.egg-info
+%{python_sitelib}/tempora-%{version}.dist-info
 
 %changelog

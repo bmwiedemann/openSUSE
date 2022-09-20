@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-repl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 URL:            https://github.com/untitaker/click-repl
 # No tests in PyPI archive
 Source:         https://github.com/click-contrib/click-repl/archive/%{version}.tar.gz#/click-repl-%{version}-gh.tar.gz
+# https://github.com/click-contrib/click-repl/commit/1ad52b2ba601d5107b5457ffa8a885eff95ea031
+Patch0:         python-click-repl-remove-six.patch
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module prompt_toolkit}
 BuildRequires:  %{python_module pytest}

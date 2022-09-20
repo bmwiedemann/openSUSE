@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Fri Sep  2 14:16:40 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 0.14.2 -> 0.14.3
+- Features
+  * languages: Handle hyphenation of inter-word apostrophes in Turkish
+  * packages: Add \open-spread function with more features that \open-double-page
+  * packages: Add ability to select a page in PDF images
+  * packages: Allow for customized content on otherwise blank filler pages
+  * packages: Provide base directory to packages
+  * utilities: Return image resolution with libtexpdf backend
+- Bug Fixes
+  * cli: Actually apply cli provided class options
+  * cli: Allow CLI option to override document specified class
+  * languages: Make Turkish hyphenation less bad around intraword apostrophes
+  * nodes: Correct calculating width of postbreak discretionaries
+  * nodes: Work around discressionaries being output when not wanted
+  * packages: Fix over-aggressive eject in \open-double-page
+  * packages: Homogenize image width and height as measurements
+    - closes gh#sile-typesetter/sile#1504
+  * packages: Make sure PDF initialized before PDF package does anything
+    - closes gh#sile-typesetter/sile#1534
+  * packages: Resolve src= relative to document for SVG images
+    - closes gh#sile-typesetter/sile#1532
+- Reverts
+  * Revert "chore(cli): Output header before doing anything that might throw warnings"
+
+remove(pdf-metadata.patch): upstreamed 
+
+-------------------------------------------------------------------
+Fri Aug 26 05:27:25 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+patch(pdf-metadata.patch): no return 0 at end of function
+
+-------------------------------------------------------------------
+Thu Aug 25 15:45:13 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+- initial commit

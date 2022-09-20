@@ -1,7 +1,7 @@
 #
 # spec file for package python-coconut
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # coconut is a programming language, not a python module
 %define pythons python3
 Name:           python-coconut
-Version:        1.4.1
+Version:        1.6.0
 Release:        0
 Summary:        A functional programming language that compiles to Python
 License:        MIT
@@ -32,13 +32,11 @@ BuildRequires:  %{python_module Pygments >= 2.2}
 BuildRequires:  %{python_module prompt_toolkit >= 2}
 BuildRequires:  %{python_module pyparsing >= 2.2}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pygments >= 2.2
 Requires:       python-prompt_toolkit >= 2
 Requires:       python-pyparsing >= 2.2
-Requires:       python-six
 Recommends:     python-cPyparsing >= 2.2.0.1.1
 Recommends:     python-ipykernel >= 4.6
 Recommends:     python-ipython >= 5.4
@@ -84,6 +82,8 @@ find . -name '*.py' -exec sed -i -e '/^#!\//, 1d' {} +
 %install
 %python_install
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}/
+# a hint how to package it welcome
+rm %{buildroot}/usr/share/jupyter/kernels/coconut/kernel.json
 
 %files %{python_files}
 %doc README.rst CONTRIBUTING.md DOCS.md FAQ.md HELP.md

@@ -1525,4 +1525,12 @@ If we cannot get this in, we need to push an security update for the current blu
 - drop bluez-test-2to3.diff (obsolete/upstream)</comment>
     <requestid>998704</requestid>
   </revision>
+  <revision rev="190" vrev="2">
+    <srcmd5>f1e7ec46f96c5cbd3742a2799ed8c1df</srcmd5>
+    <version>5.65</version>
+    <time>1663694584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004575</requestid>
+  </revision>
 </revisionlist>

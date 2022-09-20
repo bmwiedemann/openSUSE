@@ -262,4 +262,12 @@ Note: resubmit with fixed license</comment>
 </comment>
     <requestid>993135</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>035ee060d815d9e18faea4c7ed73237c</srcmd5>
+    <version>1.11.1</version>
+    <time>1663694601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004692</requestid>
+  </revision>
 </revisionlist>

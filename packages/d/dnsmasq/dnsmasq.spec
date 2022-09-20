@@ -47,7 +47,6 @@ BuildRequires:  lua-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libnetfilter_conntrack)
 BuildRequires:  pkgconfig(systemd)
-Requires(pre):  group(nogroup)
 Provides:       dns_daemon
 %if %{with tftp_user_package}
 BuildRequires:  sysuser-tools
@@ -96,13 +95,13 @@ sed -i -e 's|\(PREFIX *= *\)%{_prefix}/local|\1/usr|;
 sed -i -e 's|lua5.2|lua%{lua_version}|' Makefile
 
 # SED-FIX-UPSTREAM -- Fix man page
-sed -i -e 's|The default is "dip",|The default is "nogroup",|' \
+sed -i -e 's|The default is "dip",|The default is "dnsmasq",|' \
 	man/dnsmasq.8
 
 # SED-FIX-UPSTREAM -- Fix cachesize, group and user
 sed -i -e 's|CACHESIZ 150|CACHESIZ 2000|;
 	   s|CHUSER "nobody"|CHUSER "dnsmasq"|;
-	   s|CHGRP "dip"|CHGRP "nogroup"|' \
+	   s|CHGRP "dip"|CHGRP "dnsmasq"|' \
 	src/config.h
 
 # Tweaks to the default configuration:

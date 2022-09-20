@@ -1,7 +1,7 @@
 #
 # spec file for package fixmath
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,13 @@ Summary:        Fixed point math operations library
 License:        MIT
 URL:            https://github.com/PetteriAimonen/libfixmath
 Source0:        %{url}/archive/refs/heads/master.tar.gz#:/%{name}-%{version}.tar.gz
+BuildRequires:  gcc-c++
 # Use cmake3 package on SLE12 because cmake is too old (version 3.5)
 %if !0%{?is_opensuse} && 0%{?sle_version} < 150000
-BuildRequires:  cmake3-full >= 3.14
+BuildRequires:  cmake3-full >= 3.13
 # Requires C++17
-BuildRequires:  gcc11-c++
 %else
-BuildRequires:  cmake >= 3.14
-BuildRequires:  gcc-c++
+BuildRequires:  cmake >= 3.13
 %endif
 
 %description
@@ -50,14 +49,14 @@ This package contains the headers and the static library.
 %autosetup -n lib%{name}-master
 
 %build
+# Fix lto-no-text-in-archive rpmlint error
 export CFLAGS="${CFLAGS} -ffat-lto-objects"
 export CXXFLAGS="${CXXFLAGS} -ffat-lto-objects"
-# Use g++-11 to build a C++17 codebase
-%cmake \
 %if !0%{?is_opensuse} && 0%{?sle_version} < 150000
-    -DCMAKE_CXX_COMPILER=/usr/bin/g++-11 \
+# Remove -fsanitize=undefined opts in SLE-12-SP5
+sed -e '/set(sanitizer_opts/d' -i tests/tests.cmake
 %endif
- ;
+%cmake
 %cmake_build
 
 %install

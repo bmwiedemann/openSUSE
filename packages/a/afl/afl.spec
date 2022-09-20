@@ -36,7 +36,7 @@
 %endif
 
 Name:           afl
-Version:        4.02c
+Version:        4.03c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
 #URL:            https://lcamtuf.coredump.cx/afl/

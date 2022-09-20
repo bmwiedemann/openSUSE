@@ -141,7 +141,7 @@ used by graphical Plymouth splashes.
 %package branding-upstream
 Summary:        Default configuration file and branding from the Plymouth upstream
 Group:          System/Base
-Provides:       %{name}-branding = %{version}-%{release}.
+Provides:       %{name}-branding = %{version}
 Conflicts:      %{name}-branding
 BuildArch:      noarch
 
@@ -170,7 +170,7 @@ and headers needed to develop 3rd party splash plugins for Plymouth.
 Summary:        Plymouth related utilities for dracut
 Group:          System/Base
 Requires:       %{name} = %{version}
-Supplements:    packageand(plymouth:dracut)
+Supplements:    (plymouth and dracut)
 BuildArch:      noarch
 
 %description dracut

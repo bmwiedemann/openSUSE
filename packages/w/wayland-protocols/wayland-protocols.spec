@@ -33,6 +33,7 @@ Patch0:         wayland-protocols-disable-pedantic-test-unstable-xdg-decoration-
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  meson >= 0.55.0
+BuildRequires:  python3-base
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildArch:      noarch

@@ -19,10 +19,11 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
+%define skip_python37 1
 # Tests run 7h53m47s in OBS ... so we are switching them off right now
 %bcond_with  test
 Name:           python-sympy
-Version:        1.10.1
+Version:        1.11.1
 Release:        0
 Summary:        Computer algebra system (CAS) in Python
 License:        BSD-3-Clause
@@ -30,9 +31,6 @@ Group:          Development/Libraries/Python
 URL:            https://www.sympy.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/sympy/sympy-%{version}.tar.gz
 Source99:       python-sympy-rpmlintrc
-# PATCH-FIX-UPSTREAM sympy_printing_ccode.patch gh#sympy/sympy#23533 mcepl@suse.com
-# just eliminate already deprecated sympy.printing.ccode module
-Patch0:         sympy_printing_ccode.patch
 BuildRequires:  %{python_module mpmath >= 0.19}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

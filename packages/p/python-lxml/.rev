@@ -880,4 +880,14 @@ Send to Staging:E.
     <comment>- update to version 4.9.1 (bsc#1201253, CVE-2022-2309):</comment>
     <requestid>998154</requestid>
   </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>87303a6c2353629ac698cf95d40245fb</srcmd5>
+    <version>4.9.1</version>
+    <time>1663694599</time>
+    <user>dimstar_suse</user>
+    <comment>- Update BR for libxml2-devel to the current version.
+- Add missing BR for python-base.
+</comment>
+    <requestid>1004688</requestid>
+  </revision>
 </revisionlist>

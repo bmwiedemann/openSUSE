@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 15 21:52:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+- Use 'cmake()' style BuildRequires and Qt6 build macros to
+  fix build on Leap 15.4
+
+-------------------------------------------------------------------
 Fri Sep  2 13:15:29 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.2:

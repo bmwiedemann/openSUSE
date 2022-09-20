@@ -298,6 +298,8 @@ This package contains headers for OpenBLAS.
 %ifarch s390
 sed -i -e "s@m32@m31@" Makefile.system
 %endif
+sed -i -e '/FLDFLAGS = \|$(CC)\|$(CXX)/s@$@ $(LDFLAGS_TESTS)@' \
+    test/Makefile ctest/Makefile utest/Makefile cpp_thread_test/Makefile
 
 %if %{without hpc}
 cp %{SOURCE1} .
@@ -317,10 +319,13 @@ EOF
 
 %build
 
-# Limit lto jobs to 1 - -flto=auto together with make -j<m>
-# would cause a huge number of build jobs spawned in parallel
+# For static libraries use -ffat-lto-objects to make sure the 'regular'
+# assembler code is generated as well as the intermediate code will be
+# stripped during pre-packaging post-processing. Also, set ldflags_tests
+# to speed up building of tests.
 %if "%{?_lto_cflags}" != ""
-%global _lto_cflags -flto=1 -ffat-lto-objects
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%global ldflags_tests -fno-lto
 %endif
 
 # disable lto for ppc64le, boo#1181733
@@ -385,6 +390,7 @@ make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
      OPENBLAS_CMAKE_DIR=%{p_cmakedir} \
      PREFIX=%{p_prefix} \
      %{!?with_hpc:LIBNAMESUFFIX=%flavor FC=gfortran CC=gcc%{?cc_v:-%{cc_v}} %{?cc_v:CEXTRALIB=""}} \
+     %{?ldflags_tests:LDFLAGS_TESTS=%{ldflags_tests}} \
      %{?with_hpc:%{?cc_v:CC=gcc-%{cc_v} CEXTRALIB=""}}
 
 %install

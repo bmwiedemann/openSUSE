@@ -80,4 +80,12 @@
   * Only to trigger Python 3.9 wheels building</comment>
     <requestid>925628</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>86a2ec725b5b2c85d3792ddfa831c0d3</srcmd5>
+    <version>3.0.0</version>
+    <time>1663694597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004676</requestid>
+  </revision>
 </revisionlist>

@@ -20,26 +20,21 @@
 %bcond_without tests
 
 Name:           google-or-tools
-Version:        9.3
+Version:        9.4
 Release:        0
 License:        Apache-2.0
 Summary:        Suite for solving combinatorial optimization problems
 URL:            https://developers.google.com/optimization/
 Group:          Development/Languages/C++
-Source:         https://github.com/google/or-tools/archive/refs/tags/v9.3.tar.gz#/google-or-tools-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - fix incompatibility with re2, abseil and C++17
-Patch0:         https://github.com/google/or-tools/commit/0d3572bda874ce30b35af161a713ecd1793cd296.patch#/fix_re2_string_view.patch
-# PATCH-FIX-UPSTREAM - fix build with -Wl,--no-undefined
-Patch1:         0001-Build-Python-modules-as-CMake-MODULEs.patch
+Source:         https://github.com/google/or-tools/archive/refs/tags/v%{version}.tar.gz#/google-or-tools-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE
 Patch2:         0001-Do-not-try-to-download-ortools-wheel.patch
-# PATCH-FIX-UPSTREAM - fix malformed C++
-Patch3:         https://github.com/google/or-tools/commit/672303cc2f2396c4bd5fbed8430208308815bd54.patch#/fix_malformed_Cpp.patch
-# PATCH-FIX-UPSTREAM - allow build on i586/armv7
-Patch4:         0001-Set-SWIGWORDSIZE-dependent-on-architecture-bitness.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/google/or-tools/issues/3429
+Patch3:         https://github.com/google/or-tools/commit/7072ae92ec204afcbfce17d5360a5884c136ce90.patch#/do_not_call_pdlp_solve_test.patch
 # PATCH-FIX-UPSTREAM - remove bad entries from RUNPATHs
 Patch5:         0001-Only-add-relevant-directories-to-sample-RUNPATHs.patch
 Patch6:         0002-Only-add-relevant-directories-to-flatzinc-library-ex.patch
+Patch7:         0003-Reuse-common-add_cxx_example-function-for-Sat-Runner.patch
 BuildRequires:  abseil-cpp-devel
 BuildRequires:  cmake >= 3.18
 BuildRequires:  fdupes
@@ -88,18 +83,18 @@ Group:          System/Libraries
 %description -n libortools%{sonum}
 OR-Tools is an open source software suite for optimization.
 
-%package -n libflatzinc%{sonum}
+%package -n libortools_flatzinc%{sonum}
 Summary:        Suite for solving combinatorial optimization problems
 Group:          System/Libraries
 
-%description -n libflatzinc%{sonum}
+%description -n libortools_flatzinc%{sonum}
 OR-Tools is an open source software suite for optimization.
 
 %package devel
 Summary:        Suite for solving combinatorial optimization problems
 Group:          Development/Languages/C++
-Requires:       libflatzinc%{sonum} = %{version}
 Requires:       libortools%{sonum} = %{version}
+Requires:       libortools_flatzinc%{sonum} = %{version}
 
 %description devel
 Development files (C/C++) for the OR-Tools suite.
@@ -110,6 +105,7 @@ Development files (C/C++) for the OR-Tools suite.
 %build
 %global optflags %{optflags} -Wno-error=return-type
 %cmake \
+  -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name}/ \
   -DBUILD_DEPS:BOOL=OFF \
   -DBUILD_pybind11:BOOL=OFF \
   -DBUILD_PYTHON:BOOL=ON \
@@ -121,16 +117,19 @@ Development files (C/C++) for the OR-Tools suite.
 
 %install
 %cmake_install
+rm %{buildroot}/%{_docdir}/%{name}/LICENSE
 # Remove duplicate library
 rm %{buildroot}/%{python3_sitearch}/ortools/.libs/libortools.so.9
 rmdir %{buildroot}/%{python3_sitearch}/ortools/.libs
 
 %post -n libortools%{sonum} -p /sbin/ldconfig
 %postun -n libortools%{sonum} -p /sbin/ldconfig
-%post -n libflatzinc%{sonum} -p /sbin/ldconfig
-%postun -n libflatzinc%{sonum} -p /sbin/ldconfig
+%post -n libortools_flatzinc%{sonum} -p /sbin/ldconfig
+%postun -n libortools_flatzinc%{sonum} -p /sbin/ldconfig
 
 %check
+# https://github.com/google/or-tools/issues/3461
+sed -i -e 's/max_time_in_seconds = 15.0/max_time_in_seconds = 30.0/' examples/python/prize_collecting_vrp_sat.py
 # Test using e.g. SCIP are not skipped, exclude
 %if %{with tests}
 %define known_fail 'python.*mip|python_contrib.*|python_linear_solver_integer_programming_example|python_python_appointments|python_python_steel_mill_slab_sat|cxx_tests_issue173|python_tests_dual_loading|python_tests_pywraplp_test'
@@ -145,21 +144,23 @@ rmdir %{buildroot}/%{python3_sitearch}/ortools/.libs
 %doc CONTRIBUTING.md README.md
 %license LICENSE
 %{_bindir}/*
-%exclude %{_bindir}/fz
+%{_docdir}/%{name}/{sat,constraint_solver}
+%exclude %{_bindir}/fzn-ortools
 
 %files -n python3-ortools
 %{python3_sitearch}/ortools
 %{python3_sitearch}/ortools-%{version}*info
 
 %files minizinc
-%{_bindir}/fz
+%{_bindir}/fzn-ortools
 %{_datadir}/minizinc
 
 %files -n libortools%{sonum}
 %{_libdir}/libor*.so.%{sonum}*
+%exclude %{_libdir}/libortools_flatzinc*.so.%{sonum}*
 
-%files -n libflatzinc%{sonum}
-%{_libdir}/libflatzinc*.so.%{sonum}*
+%files -n libortools_flatzinc%{sonum}
+%{_libdir}/libortools_flatzinc*.so.%{sonum}*
 
 %files devel
 %{_libdir}/lib*.so

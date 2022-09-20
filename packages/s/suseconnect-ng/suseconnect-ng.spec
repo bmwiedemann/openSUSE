@@ -23,11 +23,11 @@
 %bcond_with hwinfo
 
 Name:           suseconnect-ng
-Version:        0.0.9~git8.f9adb71
+Version:        0.0.9~git10.de887da7231f
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
-License:        LGPL-2.1-or-later
 Summary:        Utility to register a system with the SUSE Customer Center
+License:        LGPL-2.1-or-later
 Group:          System/Management
 Source:         connect-ng-%{version}.tar.xz
 Source1:        %name-rpmlintrc
@@ -85,9 +85,9 @@ replaced SUSEConnect.
 %{go_provides}
 
 %package -n libsuseconnect
-Summary:        C interface to suseconnect-ng.
-Group:          System/Management
+Summary:        C interface to suseconnect-ng
 # the CLI is not used by libsuseconnect but it has the same dependencies and it's easier to keep one list above
+Group:          System/Management
 Requires:       suseconnect-ng
 
 %description -n libsuseconnect
@@ -95,7 +95,7 @@ This package contains library which provides C interface to selected
 suseconnect-ng functions.
 
 %package -n suseconnect-ruby-bindings
-Summary:        Ruby bindings for libsuseconnect library.
+Summary:        Ruby bindings for libsuseconnect library
 Group:          System/Management
 Requires:       libsuseconnect
 

@@ -17,7 +17,7 @@
 
 
 Name:           zathura
-Version:        0.4.9
+Version:        0.5.1
 Release:        0
 Summary:        A customizable document viewer
 License:        Zlib

@@ -25,6 +25,7 @@ Group:          Productivity/Networking/Web/Proxy
 URL:            https://tinyproxy.github.io/
 Source:         https://github.com/tinyproxy/tinyproxy/releases/download/%version/tinyproxy-%version.tar.xz
 Source1:        %name.logrotate
+Patch1:         0001-prevent-junk-from-showing-up-in-error-page-in-invali.patch
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 Requires:       logrotate

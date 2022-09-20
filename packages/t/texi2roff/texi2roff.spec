@@ -1,7 +1,7 @@
 #
 # spec file for package texi2roff
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,9 @@ Release:        0
 Summary:        Tool for converting texinfo documents to HTML
 License:        SUSE-Permissive-Modify-By-Patch
 Group:          Productivity/Publishing/Texinfo
-Url:            http://www.nongnu.org/texi2html/
-Source0:        http://mirrors.ctan.org/support/texi2roff/texi2roff-2.0.tar.gz
-Source1:        http://mirrors.ctan.org/support/texi2roff/texi2roff.patch.gz
+URL:            https://www.ctan.org/pkg/texi2roff
+Source0:        https://mirrors.ctan.org/support/texi2roff/texi2roff-2.0.tar.gz
+Source1:        https://mirrors.ctan.org/support/texi2roff/texi2roff.patch.gz
 Patch1:         texi2roff-2.0.dif
 Patch2:         texi2roff-2.0-gcc4.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -38,7 +38,7 @@ with Plain TeX or LaTeX sources). While the conversion is not complete, it
 provides a solid basis for translating most texinfo documentation.
 
 %prep
-%setup -q 
+%setup -q
 zcat %{S:1} | patch --fuzz=%{_default_patch_fuzz} --suffix=.Bader
 %patch1 -p0
 %patch2 -p1

@@ -1585,4 +1585,20 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
 </comment>
     <requestid>994530</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>f77e966792ae2d45bcb959594ce28fa2</srcmd5>
+    <version>0.182.0</version>
+    <time>1663694640</time>
+    <user>dimstar_suse</user>
+    <comment>- 0.182.0
+  - fix build on SLE12 / python 2.7
+  - SSH auth: Fix getallmatchingheaders() output to correspond with headers.get_all()
+  - send HTTP header Accept: application/xml
+  - git_version: return version from the source code if there's no matching tag
+- spec file:
+  - Revert to python2 on SLE12
+  - Recommend openssh for ssh key auth
+</comment>
+    <requestid>1004901</requestid>
+  </revision>
 </revisionlist>

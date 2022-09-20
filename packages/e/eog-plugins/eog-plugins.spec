@@ -17,7 +17,7 @@
 
 
 Name:           eog-plugins
-Version:        42.1
+Version:        42.2
 Release:        0
 Summary:        A collection of plugins for Eye of GNOME
 License:        GPL-2.0-or-later

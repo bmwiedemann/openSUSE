@@ -1,7 +1,7 @@
 #
-# spec file for package mpitests
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,11 +30,11 @@
 # or in a dependency (when the top is an HPC meta RPM).
 # However all the necessary packages MUST be installed.
 %define hpc_mpi_home %( \
-   check_package(){ (rpm -ql $1 | egrep -q 'bin/mpicc$') && echo $1;};                \
+   check_package(){ (rpm -ql $1 | grep -E -q 'bin/mpicc$') && echo $1;};                \
    get_linked_pack(){ rpm -qR $1 | grep -v rpmlib | grep -v /sh | awk '{print $1}';}; \
    dirname $(dirname $(rpm -ql $(check_package %flavor || check_package %{flavor}-devel ||        \
    check_package $(get_linked_pack %flavor) || check_package $(get_linked_pack %{flavor}-devel)) | \
-   egrep 'bin/mpicc$')))
+   grep -E 'bin/mpicc$')))
 
 %endif
 
@@ -109,7 +109,7 @@ ExclusiveArch:  do_not_build
 ExcludeArch:    %{arm}
 %endif
 
-%if "%{flavor}" == "mvapich2-psm" 
+%if "%{flavor}" == "mvapich2-psm"
 ExclusiveArch:  %ix86 x86_64
 %endif
 

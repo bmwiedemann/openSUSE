@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 20 14:14:44 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.6.0
+  * https://github.com/evhub/coconut/releases/tag/v1.6.0
+- does not require six
+
+-------------------------------------------------------------------
 Thu Feb 18 14:02:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip multi-version build, this is a compiler not a python module

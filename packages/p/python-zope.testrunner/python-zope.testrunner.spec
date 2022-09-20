@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.testrunner
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.testrunner
-Version:        5.3.0
+Version:        5.5
 Release:        0
 Summary:        Zope testrunner script
 License:        ZPL-2.1
@@ -41,6 +41,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-six
 Requires:       python-zope.exceptions
 Requires:       python-zope.interface
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module zope.testing}

@@ -24,23 +24,23 @@ Summary:        A fullscreen, distraction-free writing program
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Word Processor
 URL:            https://gottcode.org/focuswriter
-Source:         http://gottcode.org/focuswriter/%{name}-%{version}.tar.bz2
+Source:         https://gottcode.org/focuswriter/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-linguist-devel
 BuildRequires:  qt6-tools-linguist
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt6Concurrent)
-BuildRequires:  pkgconfig(Qt6Core)
-BuildRequires:  pkgconfig(Qt6Gui)
-BuildRequires:  pkgconfig(Qt6Multimedia)
-BuildRequires:  pkgconfig(Qt6Network)
-BuildRequires:  pkgconfig(Qt6PrintSupport)
-BuildRequires:  pkgconfig(Qt6UiTools)
-BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Linguist)
+BuildRequires:  cmake(Qt6Multimedia)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6UiTools)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-io)
@@ -48,9 +48,8 @@ BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(zlib)
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun):hicolor-icon-theme
-Requires(postun):update-desktop-files
-Recommends:     %{name}-lang
+Requires(postun): hicolor-icon-theme
+Requires(postun): update-desktop-files
 
 %description
 A fullscreen, distraction-free writing program. You can customize your
@@ -68,24 +67,18 @@ back in.
 %setup -q
 
 %build
-%cmake -DCMAKE_INSTALL_PREFIX=%{_prefix}
-%make_build
+%cmake_qt6
+
+%qt6_build
 
 %install
-%cmake_install
+%qt6_install
+
 %suse_update_desktop_file %{name}
+
 %find_lang %{name} --with-qt
+
 %fdupes -s %{buildroot}
-
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %doc ChangeLog CREDITS README

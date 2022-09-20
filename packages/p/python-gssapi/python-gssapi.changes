@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 17 13:50:48 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Move tests out of runtime package
+- Enable test suite
+
+-------------------------------------------------------------------
 Tue Feb 22 21:53:06 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.7.3

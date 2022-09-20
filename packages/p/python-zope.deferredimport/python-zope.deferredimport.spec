@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.deferredimport
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zope.deferredimport
-Version:        4.3.1
+Version:        4.4
 Release:        0
 Summary:        On-demand import name resolver
 License:        ZPL-2.1
 Group:          Development/Languages/Python
-Url:            http://github.com/zopefoundation/zope.deferredimport
+URL:            http://github.com/zopefoundation/zope.deferredimport
 Source:         https://files.pythonhosted.org/packages/source/z/zope.deferredimport/zope.deferredimport-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zope.proxy}

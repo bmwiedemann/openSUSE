@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep  8 11:53:22 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
+
+- 0.182.0
+  - fix build on SLE12 / python 2.7
+  - SSH auth: Fix getallmatchingheaders() output to correspond with headers.get_all()
+  - send HTTP header Accept: application/xml
+  - git_version: return version from the source code if there's no matching tag
+
+- spec file:
+  - Revert to python2 on SLE12
+  - Recommend openssh for ssh key auth
+
+-------------------------------------------------------------------
 Thu Aug 11 11:38:19 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
 
 - fix building on distros that are not openSUSE or SLE

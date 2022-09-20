@@ -1,7 +1,7 @@
 #
 # spec file for package xosview
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _appdefdir  %{_datadir}/X11/app-defaults
 Name:           xosview
-Version:        1.22
+Version:        1.23
 Release:        0
 Summary:        System Load Information
 License:        GPL-2.0-or-later
@@ -81,12 +81,10 @@ mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_appdefdir}
 mkdir -p %{buildroot}%{_docdir}/xosview
-make PREFIX=%{_prefix} \
+%make_install PREFIX=%{_prefix} \
      MANDIR=%{_mandir} \
      XAPPLOADDIR=%{_appdefdir} \
-     USE_SYSCALLS=1 \
-     DESTDIR=%{buildroot} \
-     install
+     USE_SYSCALLS=1
 install -m 0444 Xdefaults         %{buildroot}%{_appdefdir}/XOsview
 install -m 0444 README            %{buildroot}%{_docdir}/xosview/
 install -m 0444 README.linux      %{buildroot}%{_docdir}/xosview/

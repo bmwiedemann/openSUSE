@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Sep 19 07:48:28 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.0500, fixes the following problems
+- boo#1203508 - CVE-2022-3234
+- boo#1203509 - CVE-2022-3235
+  * On an AZERTY keyboard digit keys get the shift modifier.
+  * Incorrect color for modeless selection with GTK.
+  * A few problems with 'splitscroll'.
+  * Function called at debug prompt is also debugged.
+  * Substitute prompt does not highlight an empty match.
+  * Splitting a line with a text prop "above" moves it to a new line below.
+  * Vim9: block in for loop doesn't behave like a code block.
+  * Loop variable can't be found.
+  * 'scroll' is not always updated.
+  * ASAN warning for integer overflow.
+  * Command line test leaves directory behind.
+  * With virtual text "above" indenting doesn't work well.
+  * Cursor moves when cmdwin is closed when 'splitscroll' is off.
+  * Virtual text wrong after adding line break after line.
+  * Build failure.
+  * Exectution stack underflow without the +eval feature. (Dominique Pellé)
+  * Cursor moves if cmdwin is closed when 'splitscroll' is off.
+  * In a :def function all closures in a loop get the same variables.
+  * No test for what patch 9.0.0469 fixes.
+  * Virtual text "below" doesn't show in list mode.
+  * fullcommand() only works for the current script version.
+  * fullcommand() test failure.
+  * Not using deferred delete in tests.
+  * Varargs does not work for replacement function of substitute().
+  * Missing dependency may cause crashes on incomplete build.
+  * Test for 'splitscroll' takes too much time.
+  * Valva Date Format files are not recognized.
+  * Cannot use a :def varargs function with substitute().
+  * In a :def function all closures in a loop get the same variables.
+  * "g0" moves to wrong location with virtual text "above".
+  * Illegal memory access when replacing in virtualedit mode.
+  * In a :def function all closures in a loop get the same variables.
+  * Text scrolled with 'nosplitscroll', autocmd win opened and help window
+  closed.
+  * Using freed memory with combination of closures.
+  * Cursor in wrong position with virtual text "above" and 'showbreak'.
+  * Using "end_lnum" with virtual text causes problems.
+  * Using freed memory with cmdwin and BufEnter autocmd.
+  * No good reason to build without the float feature.
+  * Cmdwin test fails on MS-Windows.
+  * Perl test fails.
+  * Small build misses float function declaraitons.
+  * Closure doesn't work properly in nested loop.
+  * No good reason to keep supporting Windows-XP.
+  * LyRiCs files are not recognized.
+  * Various small issues.
+  * In :def function list created after const is locked.
+  * When quitting the cmdline window with CTRL-C it remains visible.
+
+-------------------------------------------------------------------
 Tue Sep 13 07:41:04 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0453, fixes the following problems

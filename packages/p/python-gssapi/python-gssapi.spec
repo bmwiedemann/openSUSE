@@ -28,7 +28,10 @@ Source:         https://files.pythonhosted.org/packages/source/g/gssapi/gssapi-%
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module k5test}
+BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -44,6 +47,9 @@ usable with other GSSAPI mechanisms.
 
 %prep
 %setup -q -n gssapi-%{version}
+sed -i "s/'gssapi.tests'//" setup.py
+
+mv gssapi/tests .
 
 %build
 export CFLAGS="%{optflags} -DHAS_GSSAPI_EXT_H -fno-strict-aliasing"
@@ -54,7 +60,9 @@ export CFLAGS="%{optflags} -DHAS_GSSAPI_EXT_H -fno-strict-aliasing"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# requires 'MIT Kerberos installation'
+mv gssapi gssapi_temp
+%pytest_arch tests
+mv gssapi_temp gssapi
 
 %files %{python_files}
 %{python_sitearch}/gssapi*

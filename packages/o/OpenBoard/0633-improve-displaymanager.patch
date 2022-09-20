@@ -1,7 +1,7 @@
 From aef0bfb171e9df1206381ebba95b95830212c576 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Tue, 7 Jun 2022 09:28:21 +0200
-Subject: [PATCH 01/12] fix: validation of screen configuration
+Subject: [PATCH 01/13] fix: validation of screen configuration
 
 - never reject
 - make inacceptable input status visible by red border
@@ -208,7 +208,7 @@ index 874cdbd76..9bc49769c 100644
 From 03050cf3136911e95c598719081aa43e033388b4 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Tue, 7 Jun 2022 19:12:57 +0200
-Subject: [PATCH 02/12] fix: improve UBDisplayManager
+Subject: [PATCH 02/13] fix: improve UBDisplayManager
 
 - set initial window size in window mode
 - use the UBPlatformUtils.showFullScreen for control widget only
@@ -396,7 +396,7 @@ index de324014c..e06c01692 100644
 From c7996ff0768ee90a80b077010b6b69ac9f9052e8 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Fri, 10 Jun 2022 11:29:50 +0200
-Subject: [PATCH 03/12] fix: position minimized dock palette
+Subject: [PATCH 03/13] fix: position minimized dock palette
 
 - recompute position when screen configuration is updated
 - recompute position on screen when window is resized
@@ -467,7 +467,7 @@ index 4c3f8c68e..0b714d2e5 100644
 From e4df0d6146cd0035fbeb5b973038ac9712861fcc Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Fri, 10 Jun 2022 13:45:16 +0200
-Subject: [PATCH 04/12] fix: re-initialize previous screens on layout change
+Subject: [PATCH 04/13] fix: re-initialize previous screens on layout change
 
 ---
  src/core/UBApplicationController.cpp | 22 +++++++++++++++-------
@@ -537,7 +537,7 @@ index 0136fa3c6..2342faebf 100644
 From ebb5c5a83bab2e1f0a2803967a106510dd2d004e Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Fri, 10 Jun 2022 16:13:00 +0200
-Subject: [PATCH 05/12] feat: configure screen list by index
+Subject: [PATCH 05/13] feat: configure screen list by index
 
 - use a numeric index to identify screens
 - store separate configurations per monitor configuration
@@ -553,7 +553,7 @@ diff --git a/src/core/UBPreferencesController.cpp b/src/core/UBPreferencesContro
 index 2b40e4822..d797db561 100644
 --- a/src/core/UBPreferencesController.cpp
 +++ b/src/core/UBPreferencesController.cpp
-@@ -116,7 +116,37 @@ UBPreferencesController::~UBPreferencesController()
+@@ -203,7 +203,37 @@ UBPreferencesController::~UBPreferencesController()
  
  void UBPreferencesController::adjustScreens()
  {
@@ -591,7 +591,7 @@ index 2b40e4822..d797db561 100644
 +    }
  }
  
- void UBPreferencesController::show()
+ void UBPreferencesController::applyShortcutFilter(const QString &filter, int filterCol)
 @@ -137,10 +167,12 @@ void UBPreferencesController::wire()
      connect(mPreferencesUI->closeButton, SIGNAL(released()), this, SLOT(close()));
      connect(mPreferencesUI->defaultSettingsButton, SIGNAL(released()), this, SLOT(defaultSettings()));
@@ -807,7 +807,7 @@ index 9bc49769c..16e13bc3b 100644
 From fdf430cfeb82cb0fac6132974cc700f122f78435 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Sat, 11 Jun 2022 15:53:15 +0200
-Subject: [PATCH 06/12] fix: showFullscreen in window mode
+Subject: [PATCH 06/13] fix: showFullscreen in window mode
 
 - restrict window mode to control widget only
 - make same changes for MacOS
@@ -963,7 +963,7 @@ index 73d611e22..65682391d 100644
 From df7577796c44cea5faf328877e3bb1f2f86c58a3 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Sat, 11 Jun 2022 17:13:02 +0200
-Subject: [PATCH 07/12] refactor: store indexes instead of screen names, checks
+Subject: [PATCH 07/13] refactor: store indexes instead of screen names, checks
  and formatting
 
 - an entry like
@@ -1431,9 +1431,9 @@ index d797db561..7f479f96a 100644
      adjustScreens();
 -    connect(UBApplication::displayManager, &UBDisplayManager::screenLayoutChanged, this, &UBPreferencesController::adjustScreens);
 +    connect(UBApplication::displayManager, &UBDisplayManager::availableScreenCountChanged, this, &UBPreferencesController::adjustScreens);
-     wire();
- }
+     mPreferencesUI->shortcutTab->installEventFilter(this);
  
+     wire();
 @@ -133,10 +133,9 @@ void UBPreferencesController::adjustScreens()
  
      for (QScreen* screen : availableScreens)
@@ -1517,7 +1517,7 @@ index d797db561..7f479f96a 100644
 From 45761b5c2cdef916d8afaec5d8ce434b75ef9ac9 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Mon, 13 Jun 2022 15:57:51 +0200
-Subject: [PATCH 08/12] fix: initialize previous screen widgets and content
+Subject: [PATCH 08/13] fix: initialize previous screen widgets and content
 
 - create widgets immediately after screen count is known
 - update content after widgets are positioned
@@ -1589,7 +1589,7 @@ index d08281174..3058f0381 100644
 From e5ef9eb96cb618bd373b12df7dff0408204be0d9 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Wed, 15 Jun 2022 09:54:20 +0200
-Subject: [PATCH 09/12] fix: typo in debug message
+Subject: [PATCH 09/13] fix: typo in debug message
 
 ---
  src/core/UBPersistenceWorker.cpp | 2 +-
@@ -1612,7 +1612,7 @@ index 3d8667ab6..abb098686 100644
 From e639f0ae496ec45268c3233c9d894641b0a9299c Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Wed, 15 Jun 2022 11:35:25 +0200
-Subject: [PATCH 10/12] fix: additional UBDisplayManager and
+Subject: [PATCH 10/13] fix: additional UBDisplayManager and
  UBPreferencesController changes
 
 - split into three phases
@@ -2181,18 +2181,19 @@ index 16e13bc3b..dee191610 100644
  
  class UBStringListValidator : public QValidator
 
-From 281a072d48297a7e00932b4ee191e5d371a5395a Mon Sep 17 00:00:00 2001
+From 9af1f3e18a0040707c39858c6f23ca58c2d92123 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Wed, 15 Jun 2022 17:13:56 +0200
-Subject: [PATCH 11/12] feat: improve boxing in window mode
+Subject: [PATCH 11/13] feat: improve boxing in window mode
 
 - calculate boxing as if window would be full screen
+- set boxing only if display screen exists
 ---
- src/board/UBBoardController.cpp | 25 +++++++++++++++++++++----
- 1 file changed, 21 insertions(+), 4 deletions(-)
+ src/board/UBBoardController.cpp | 27 ++++++++++++++++++++++-----
+ 1 file changed, 22 insertions(+), 5 deletions(-)
 
 diff --git a/src/board/UBBoardController.cpp b/src/board/UBBoardController.cpp
-index 0bdd0d894..e69a7ddff 100644
+index 0bdd0d894..a4ca32ed3 100644
 --- a/src/board/UBBoardController.cpp
 +++ b/src/board/UBBoardController.cpp
 @@ -252,8 +252,12 @@ void UBBoardController::setBoxing(QRect displayRect)
@@ -2238,8 +2239,12 @@ index 0bdd0d894..e69a7ddff 100644
          mControlLayout->setContentsMargins(0, boxHeight, 0, boxHeight);
      }
      else
-@@ -1810,6 +1826,7 @@ void UBBoardController::boardViewResized(QResizeEvent* event)
-     if (mDisplayView) {
+@@ -1807,9 +1823,10 @@ void UBBoardController::boardViewResized(QResizeEvent* event)
+ 
+     mControlView->centerOn(0,0);
+ 
+-    if (mDisplayView) {
++    if (mDisplayView && UBApplication::displayManager->hasDisplay()) {
          UBApplication::applicationController->adjustDisplayView();
          mDisplayView->centerOn(0,0);
 +        setBoxing(mDisplayView->geometry());
@@ -2247,10 +2252,10 @@ index 0bdd0d894..e69a7ddff 100644
  
      mPaletteManager->containerResized();
 
-From 6a38501e33735f82e064656c4b82294798028e7a Mon Sep 17 00:00:00 2001
+From 2e0d11bcd059b4f20dc8dd789a16eeb1817b09df Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Fri, 17 Jun 2022 09:50:08 +0200
-Subject: [PATCH 12/12] fix: object ownership, some cleanup
+Subject: [PATCH 12/13] fix: object ownership, some cleanup
 
 - set ownership of UBStringListValidator
 - make UBStringListValidator mutable and add setValidationStringList
@@ -2501,3 +2506,135 @@ index 84ff96ee5..1848ef708 100644
          UBSetting* appToolBarOrientationVertical;
          UBSetting* appPreferredLanguage;
          UBSetting* appRunInWindow;
+
+From 8d5d76a6a56a7e50cbef1acbe0cb6655eacddfd5 Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Wed, 22 Jun 2022 11:38:04 +0200
+Subject: [PATCH 13/13] refactor: move string list trim to UBStringUtils
+
+- separate splitting from trimming
+- create function trimmed in UBStringUtils
+- remove trimmedTokens from UBPreferencesController
+---
+ src/core/UBPreferencesController.cpp | 25 ++++++-------------------
+ src/frameworks/UBStringUtils.cpp     | 22 ++++++++++++++++++++++
+ src/frameworks/UBStringUtils.h       |  2 +-
+ 3 files changed, 29 insertions(+), 20 deletions(-)
+
+diff --git a/src/core/UBPreferencesController.cpp b/src/core/UBPreferencesController.cpp
+index 132b87fd1..ba14c6e7d 100644
+--- a/src/core/UBPreferencesController.cpp
++++ b/src/core/UBPreferencesController.cpp
+@@ -38,6 +38,8 @@
+ #include "core/UBDisplayManager.h"
+ #include "core/UBShortcutManager.h"
+ 
++#include "frameworks/UBStringUtils.h"
++
+ #include "board/UBBoardController.h"
+ #include "document/UBDocumentController.h"
+ #include "domain/UBGraphicsScene.h"
+@@ -52,21 +54,6 @@ qreal UBPreferencesController::sSliderRatio = 10.0;
+ qreal UBPreferencesController::sMinPenWidth = 0.5;
+ qreal UBPreferencesController::sMaxPenWidth = 50.0;
+ 
+-// convenience function to split a comma separated list of tokens to a QStringList
+-QStringList trimmedTokens(const QString& input)
+-{
+-    QStringList tokens = input.split(',');
+-
+-    for (QString& entry : tokens)
+-    {
+-        entry = entry.trimmed();
+-    }
+-
+-    tokens.removeAll("");
+-
+-    return tokens;
+-}
+-
+ 
+ UBPreferencesDialog::UBPreferencesDialog(UBPreferencesController* prefController, QWidget* parent,Qt::WindowFlags f)
+     :QDialog(parent,f)
+@@ -813,7 +800,7 @@ void UBScreenListLineEdit::focusInEvent(QFocusEvent *focusEvent)
+ 
+     if (mScreenLabels.empty())
+     {
+-        QStringList screenList = trimmedTokens(text());
++        QStringList screenList = UBStringUtils::trimmed(text().split(','));
+ 
+         QList<QScreen*> screens = UBApplication::displayManager->availableScreens();
+         QStringList availableScreenIndexes;
+@@ -884,7 +871,7 @@ void UBScreenListLineEdit::addScreen()
+ 
+ void UBScreenListLineEdit::onTextChanged(const QString &input)
+ {
+-    QStringList screenList = trimmedTokens(input);
++    QStringList screenList = UBStringUtils::trimmed(input.split(','));
+ 
+     for (QPushButton* button : mScreenLabels)
+     {
+@@ -926,7 +913,7 @@ UBStringListValidator::UBStringListValidator(QObject *parent)
+ void UBStringListValidator::fixup(QString &input) const
+ {
+     // remove invalid tokens from list, trim tokens
+-    QStringList inputList = trimmedTokens(input);
++    QStringList inputList = UBStringUtils::trimmed(input.split(','));
+     QStringList outputList;
+ 
+     for (const QString& token : inputList)
+@@ -943,7 +930,7 @@ void UBStringListValidator::fixup(QString &input) const
+ QValidator::State UBStringListValidator::validate(QString &input, int &) const
+ {
+     bool ok = true;
+-    QStringList inputList = trimmedTokens(input);
++    QStringList inputList = UBStringUtils::trimmed(input.split(','));
+     // number of commas must match number of list items - 1
+     int commas = input.count(',');
+ 
+diff --git a/src/frameworks/UBStringUtils.cpp b/src/frameworks/UBStringUtils.cpp
+index ce579d2d0..e3201fcde 100644
+--- a/src/frameworks/UBStringUtils.cpp
++++ b/src/frameworks/UBStringUtils.cpp
+@@ -127,6 +127,28 @@ QDateTime UBStringUtils::fromUtcIsoDate(const QString& dateString)
+     return date.toLocalTime();
+ }
+ 
++/**
++ * @brief Create a list of trimmed, non-empty strings
++ * @param list input list of strings
++ * @return list of trimmed, nonempty strings
++ */
++QStringList UBStringUtils::trimmed(const QStringList &list)
++{
++    QStringList output;
++
++    for (const QString& entry : list)
++    {
++        QString trimmedEntry = entry.trimmed();
++
++        if (!trimmedEntry.isEmpty())
++        {
++            output << trimmedEntry;
++        }
++    }
++
++    return output;
++}
++
+ 
+ 
+ 
+diff --git a/src/frameworks/UBStringUtils.h b/src/frameworks/UBStringUtils.h
+index 5844fdb5f..ac9db2e10 100644
+--- a/src/frameworks/UBStringUtils.h
++++ b/src/frameworks/UBStringUtils.h
+@@ -50,7 +50,7 @@ class UBStringUtils
+         static QString toUtcIsoDateTime(const QDateTime& dateTime);
+         static QDateTime fromUtcIsoDate(const QString& dateString);
+ 
+-
++        static QStringList trimmed(const QStringList& list);
+ };
+ 
+ #endif // UBSTRINGUTILS_H

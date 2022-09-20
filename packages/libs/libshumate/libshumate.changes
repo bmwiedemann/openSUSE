@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep 18 19:45:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.1:
+  + Release 1.0.1 to avoid Meson considering 1.0.0 < 1.0.0.beta.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 18 09:00:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.0:
+  + Fix build error with Clang.
+
+-------------------------------------------------------------------
 Tue Sep  6 08:20:09 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add libshumate Provides to shared library to make -lang package

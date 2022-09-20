@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 18 09:44:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.53:
+  + Fix problem rendering "...E-xx" numbers.
+  + Hack around introspection issue.
+  + Fix crash in plot.
+
+-------------------------------------------------------------------
 Tue Apr 19 20:31:44 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Updated to version 0.10.52

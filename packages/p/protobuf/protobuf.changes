@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 19 07:27:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.6:
+  C++:
+  * Reduce memory consumption of MessageSet parsing 
+
+-------------------------------------------------------------------
 Wed Aug 17 19:33:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 21.5:

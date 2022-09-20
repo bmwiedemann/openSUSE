@@ -58,4 +58,12 @@
     <comment>- skip multi-version build, this is a compiler not a python module</comment>
     <requestid>873397</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>373afde420622ebc00f696cb939cf3af</srcmd5>
+    <version>1.6.0</version>
+    <time>1663694660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004997</requestid>
+  </revision>
 </revisionlist>

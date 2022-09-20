@@ -22,7 +22,7 @@
 %define use_usretc 1
 %endif
 Name:           less
-Version:        590
+Version:        608
 Release:        0
 Summary:        Text File Browser and Pager Similar to more
 License:        BSD-2-Clause OR GPL-3.0-or-later

@@ -157,4 +157,12 @@
  - Updated phone metadata for region code(s): EH, IL, KE, LA, MA, OM, SG</comment>
     <requestid>965037</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>336ff282d0bdc2b4851239530d647d16</srcmd5>
+    <version>8.12.55</version>
+    <time>1663694633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004904</requestid>
+  </revision>
 </revisionlist>

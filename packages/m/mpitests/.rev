@@ -90,4 +90,12 @@
 - Update Intel MPI Benchmarks to v2019.6</comment>
     <requestid>813106</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>b33d1cc0c906788577a1b83fac020dcb</srcmd5>
+    <version>3.2</version>
+    <time>1663694617</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1004730</requestid>
+  </revision>
 </revisionlist>

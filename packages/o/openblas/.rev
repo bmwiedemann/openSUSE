@@ -592,4 +592,15 @@
     <comment></comment>
     <requestid>976143</requestid>
   </revision>
+  <revision rev="51" vrev="6">
+    <srcmd5>91be6cdca09970bdde0ff126a9b4f753</srcmd5>
+    <version>0.3.20</version>
+    <time>1663694592</time>
+    <user>dimstar_suse</user>
+    <comment>- The toolchain and 'make' in TW have been updated to handle parallel
+  makes spawned by gcc (for LTO optimization) properly. Thus, remove
+  restrictions.
+- Disable lto when linking test programs to speeds up building. (forwarded request 1003588 from eeich)</comment>
+    <requestid>1004663</requestid>
+  </revision>
 </revisionlist>

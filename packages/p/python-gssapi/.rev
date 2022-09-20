@@ -81,4 +81,12 @@
   - Add support for str objects in the cred store dict</comment>
     <requestid>958123</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>28c30db2e5690024bf5f58fbe5a3e0de</srcmd5>
+    <version>1.7.3</version>
+    <time>1663694597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004682</requestid>
+  </revision>
 </revisionlist>

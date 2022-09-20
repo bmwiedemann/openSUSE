@@ -127,4 +127,16 @@
 - drop 295-overagreesive-escape_url.patch (upstream)</comment>
     <requestid>955499</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>161f04f9cd2ba75358d2075ab12e71fb</srcmd5>
+    <version>2.0.4</version>
+    <time>1663694592</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.4 (bsc#1201862, CVE-2022-34749):
+  * Fix url plugin in &lt;a&gt; tag
+  * Fix * formatting
+  * Fix table plugin
+  * Security fix for CVE-2022-34749</comment>
+    <requestid>1004639</requestid>
+  </revision>
 </revisionlist>

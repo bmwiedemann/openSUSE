@@ -1,5 +1,5 @@
 #
-# spec file for package python-Mathics
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -47,7 +47,6 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.10}
 BuildRequires:  %{python_module sympy >= 1.10.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -59,7 +58,6 @@ Requires:       python-mpmath >= 0.19
 Requires:       python-palettable
 Requires:       python-python-dateutil
 Requires:       python-recordclass
-Requires:       python-six >= 1.10
 Requires:       python-sympy >= 1.10.1
 Requires(post): update-alternatives
 Requires(postun):update-alternatives

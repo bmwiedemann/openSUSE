@@ -17,7 +17,7 @@
 
 
 Name:           feh
-Version:        3.9
+Version:        3.9.1
 Release:        0
 Summary:        X11 image viewer
 License:        LGPL-2.0-or-later AND MIT
@@ -47,8 +47,8 @@ Requires:       imlib2-loaders
 Requires:       libjpeg-turbo
 Requires(post): desktop-file-utils
 Requires(post): hicolor-icon-theme
-Requires(postun): desktop-file-utils
-Requires(postun): hicolor-icon-theme
+Requires(postun):desktop-file-utils
+Requires(postun):hicolor-icon-theme
 
 %description
 feh is an X11 image viewer aimed mostly at console users. It does not

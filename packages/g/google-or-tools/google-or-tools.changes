@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Sep 17 16:21:13 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 9.4:
+  * Graph
+    + Split ortools.graph.pywrapgraph into:
+      - ortools.graph.python.linear_sum_assignment
+      - ortools.graph.python.max_flow
+      - ortools.graph.python.min_cost_flow
+      This allows using numpy to speed up the setup of the problems.
+  * CP-SAT
+    + Some improvement on:
+      - scheduling (propagation, cuts, lower bounds)
+      - MaxSAT (presolve, core based heuristics)
+      - MIP performance (presolve, cuts)
+- Drop upstream patches:
+  * fix_re2_string_view.patch
+  * 0001-Build-Python-modules-as-CMake-MODULEs.patch
+  * fix_malformed_Cpp.patch
+  * 0001-Set-SWIGWORDSIZE-dependent-on-architecture-bitness.patch
+- Add patches:
+  * do_not_call_pdlp_solve_test.patch
+  * 0003-Reuse-common-add_cxx_example-function-for-Sat-Runner.patch
+
+-------------------------------------------------------------------
 Fri Jul 15 12:31:32 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix failing builds due to stricter RUNPATH checks, add

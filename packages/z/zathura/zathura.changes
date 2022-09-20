@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 19 13:13:52 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.5.1
+ * seccomp: Make glibc fallback to clone instead of using clone3
+ * magic is now a required dependency
+ * Various fixes and improvements
+
+-------------------------------------------------------------------
 Thu Feb 24 23:04:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to 0.4.9

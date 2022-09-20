@@ -167,8 +167,8 @@ Summary:        Command-line user interface for Octave
 Group:          Productivity/Scientific/Math
 Requires:       makeinfo
 Requires(pre):  update-alternatives
-# SECTION Resolve degeneracy between multiple libsundials{_ida}.so providers from serial and parallel flavours of sundials
-Requires:       %(rpm -qR sundials-devel | grep -oP "libsundials[0-9]")
+# SECTION Resolve degeneracy between multiple libsundials_{sunlinsol,ida}.so providers from serial and parallel flavours of sundials
+Requires:       %(rpm -qR sundials-devel | grep -oP "libsundials_sunlinsol[0-9_]+")
 Requires:       %(rpm -qR sundials-devel | grep -oP "libsundials_ida[0-9]")
 # /SECTION
 %if %{with native_graphics}

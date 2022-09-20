@@ -6338,4 +6338,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1003566</requestid>
   </revision>
+  <revision rev="324" vrev="1">
+    <srcmd5>e33032b54723a1d9e25d8ba4b8c4a2af</srcmd5>
+    <version>9.0.0500</version>
+    <time>1663694590</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.0500, fixes the following problems
+- boo#1203508 - CVE-2022-3234
+- boo#1203509 - CVE-2022-3235
+  * On an AZERTY keyboard digit keys get the shift modifier.
+  * Incorrect color for modeless selection with GTK.
+  * A few problems with 'splitscroll'.
+  * Function called at debug prompt is also debugged.
+  * Substitute prompt does not highlight an empty match.
+  * Splitting a line with a text prop &quot;above&quot; moves it to a new line below.
+  * Vim9: block in for loop doesn't behave like a code block.
+  * Loop variable can't be found.
+  * 'scroll' is not always updated.
+  * ASAN warning for integer overflow.
+  * Command line test leaves directory behind.
+  * With virtual text &quot;above&quot; indenting doesn't work well.
+  * Cursor moves when cmdwin is closed when 'splitscroll' is off.
+  * Virtual text wrong after adding line break after line.
+  * Build failure.
+  * Exectution stack underflow without the +eval feature. (Dominique Pellé)
+  * Cursor moves if cmdwin is closed when 'splitscroll' is off.
+  * In a :def function all closures in a loop get the same variables.
+  * No test for what patch 9.0.0469 fixes.
+  * Virtual text &quot;below&quot; doesn't show in list mode.
+  * fullcommand() only works for the current script version.
+  * fullcommand() test failure.
+  * Not using deferred delete in tests.
+  * Varargs does not work for replacement function of substitute().
+  * Missing dependency may cause crashes on incomplete build.
+  * Test for 'splitscroll' takes too much time.
+  * Valva Date Format files are not recognized.</comment>
+    <requestid>1004616</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 16 07:44:04 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- octave-cli: Fix Requires after sundials main library was split
+  into multiple shared libs.
+- Update _constraints: Upto 10 GiB now required.
+
+-------------------------------------------------------------------
 Mon Aug 22 10:55:29 UTC 2022 - Markus Ebner <info@ebner-markus.de>
 
 - Update to version 7.2.0:

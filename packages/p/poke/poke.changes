@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep  7 18:53:40 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 2.4:
+  * Lot of changes since 1.4, see packaged NEWS for details.
+- Add jitter-0.9.284-noexec-stack-arm-i586.patch: Make sure the stack
+  is defined as non-executable in jitter on arm and i586.
+- Trim not strictly needed build requirements.
+- Recommend a handler for opening app:// hyperlinks.
+- Move Emacs support from poke to emacs-poke.
+- Package new vim support in vim-poke.
+- Enable tests.
+
+-------------------------------------------------------------------
+Thu Aug 11 11:07:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- remove unused lua53 buildrequires
+
+-------------------------------------------------------------------
 Fri Dec  3 19:04:42 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4

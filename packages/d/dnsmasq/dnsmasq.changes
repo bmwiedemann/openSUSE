@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  9 11:00:25 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Ensure the dnsmasq user's group is used
+- Remove nogroup requirement
+
+-------------------------------------------------------------------
 Wed Jun  8 14:24:38 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move the dbus-1 system.d file to /usr (bsc#1200344)

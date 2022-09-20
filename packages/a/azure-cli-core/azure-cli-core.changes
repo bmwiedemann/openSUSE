@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 16 09:40:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.40.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Refresh patches for new version
+  + acc_disable-update-check.patch
+  + acc_update-argcomplete.patch
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Aug  8 07:55:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - refresh previously empty acc_update-argcomplete.patch

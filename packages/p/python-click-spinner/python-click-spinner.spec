@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-spinner
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Summary:        Spinner for Click
 URL:            https://github.com/click-contrib/click-spinner
 Group:          Development/Languages/Python
 Source:         https://github.com/click-contrib/click-spinner/archive/v%{version}.tar.gz#/click-spinner-%{version}.tar.gz
+# https://github.com/click-contrib/click-spinner
+Patch0:         python-click-spinner-remove-six.patch
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -41,7 +43,7 @@ BuildArch:      noarch
 Spinner for Click.
 
 %prep
-%setup -q -n click-spinner-%{version}
+%autosetup -p1 -n click-spinner-%{version}
 
 %build
 export LANG=en_US.UTF-8
