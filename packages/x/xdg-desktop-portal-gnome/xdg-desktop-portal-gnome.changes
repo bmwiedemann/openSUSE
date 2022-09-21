@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Sep 15 15:28:37 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  4 17:34:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.rc:
+  + Remember last app folder in the Filechooser portal
+  + Improve Closed signal emission in the RemoteDesktop/Screencast
+    portal
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 12 06:43:39 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.beta:
+  + Don't show screenshot sharing dialog for non-interactive
+    screenshots.
+  + Fix restoring window screencast streams.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jul 17 19:08:50 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.alpha:
+  + Various fixes to the screencast dialog.
+  + New Dynamic Launcher portal.
+  + Plug various memory leaks.
+  + Tweak wallpaper portal dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Jul  3 18:06:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.3:

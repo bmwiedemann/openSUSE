@@ -41,4 +41,30 @@
     <comment>New stable release (forwarded request 986486 from iznogood)</comment>
     <requestid>986582</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>43fa52f2f651d81ef1d352d2bd585455</srcmd5>
+    <version>43.0</version>
+    <time>1663764010</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.0:
+  + Updated translations.
+- Update to version 43.rc:
+  + Remember last app folder in the Filechooser portal
+  + Improve Closed signal emission in the RemoteDesktop/Screencast
+    portal
+  + Updated translations.
+- Update to version 43.beta:
+  + Don't show screenshot sharing dialog for non-interactive
+    screenshots.
+  + Fix restoring window screencast streams.
+  + Updated translations.
+- Update to version 43.alpha:
+  + Various fixes to the screencast dialog.
+  + New Dynamic Launcher portal.
+  + Plug various memory leaks.
+  + Tweak wallpaper portal dialog.
+  + Updated translations.
+</comment>
+    <requestid>1004769</requestid>
+  </revision>
 </revisionlist>
