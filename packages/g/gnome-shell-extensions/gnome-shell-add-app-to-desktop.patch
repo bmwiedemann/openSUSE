@@ -1,11 +1,11 @@
-Index: gnome-shell-extensions-42.rc/extensions/apps-menu/extension.js
+Index: gnome-shell-extensions-43.rc/extensions/apps-menu/extension.js
 ===================================================================
---- gnome-shell-extensions-42.rc.orig/extensions/apps-menu/extension.js
-+++ gnome-shell-extensions-42.rc/extensions/apps-menu/extension.js
+--- gnome-shell-extensions-43.rc.orig/extensions/apps-menu/extension.js
++++ gnome-shell-extensions-43.rc/extensions/apps-menu/extension.js
 @@ -5,6 +5,8 @@ const {
      Atk, Clutter, Gio, GLib, GMenu, GObject, Gtk, Meta, Shell, St,
  } = imports.gi;
- const Signals = imports.signals;
+ const {EventEmitter} = imports.misc.signals;
 +const BoxPointer = imports.ui.boxpointer;
 +const AppFavorites = imports.ui.appFavorites;
  

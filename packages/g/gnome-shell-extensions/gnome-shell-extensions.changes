@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep  6 15:36:16 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rebase gnome-shell-add-app-to-desktop.patch.
+
+-------------------------------------------------------------------
+Tue Sep  6 06:28:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.rc:
+  + Misc. bug fixes and cleanups.
+
+-------------------------------------------------------------------
+Wed Aug 10 20:17:54 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.beta:
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug  3 09:47:05 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.alpha:
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Jul  6 12:23:18 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.3:
@@ -17,7 +41,7 @@ Sun May  8 00:20:21 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Update to version 42.1:
   + Misc. bug fixes and cleanups.
-  + Updated translations. 
+  + Updated translations.
 
 -------------------------------------------------------------------
 Wed Apr  6 06:20:55 UTC 2022 - QK ZHU <qkzhu@suse.com>

@@ -2284,4 +2284,12 @@
   + window-list: Improve touch support. (forwarded request 987252 from iznogood)</comment>
     <requestid>987359</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>0d7255e90ba896430d883e7d127ec1e8</srcmd5>
+    <version>43.rc</version>
+    <time>1663763963</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002649 from dimstar)</comment>
+    <requestid>1003177</requestid>
+  </revision>
 </revisionlist>
