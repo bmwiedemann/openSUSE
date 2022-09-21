@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 21 07:26:29 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1663745179.57e1160:
+  * Improve validate_script_output for clarity
+  * Slightly simplify autotest
+  * Log HTTP response in VMWare test
+  * Ensure the VMWare test is using one event loop instance consistently
+  * Log the used underlying reactor in VMWare test
+  * Extend unit tests of general hardware backend
+  * Avoid adding multiple QEMU graphic backends on ARM
+  * Test setting the QEMU graphics backend (depnding on `QEMUVGA`)
+  * Fix resolution with default graphics backend on new QEMU versions
+  * Fix resolution with virtio backend on new QEMU versions
+
+-------------------------------------------------------------------
 Fri Sep 16 18:58:09 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1663323740.d1930d4:
