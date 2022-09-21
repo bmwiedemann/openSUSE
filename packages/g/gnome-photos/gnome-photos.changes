@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Sep 20 17:38:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Drop flickr plugin: It pulls soup2.
+  + build: reduce libdazzle usage.
+  + Updated translations.
+- Drop c6f66fc47d2d434c34dd84d446f081389015785b.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Tue Aug 30 20:34:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add c6f66fc47d2d434c34dd84d446f081389015785b.patch: Drop flickr
+  plugin: It pulls soup2. Following this, drop pkgconfig(grilo-0.3)
+  BuildRequires: No longer needed.
+
+-------------------------------------------------------------------
+Mon Aug  8 09:09:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.beta:
+  + Build with soup3, drops libgfbgraph as it is not compatible
+    with soup3 / rest 1.0.
+  + Use Wallpaper portal for setting as a background/lockscreen.
+  + Stop using deprecated gexiv2 API.
+  + Updated translations.
+- Changes in BuildRequires following upstream changes:
+  + Drop pkgconfig(geocode-glib-1.0), pkgconfig(libgfbgraph-0.2)
+    and pkgconfig(libgdata)
+  + Add pkgconfig(geocode-glib-2.0), pkgconfig(libportal) and
+    pkgconfig(libportal-gtk3)
+ 
+-------------------------------------------------------------------
 Sun Mar 20 08:41:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.0:

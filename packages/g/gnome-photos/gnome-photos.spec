@@ -17,13 +17,13 @@
 
 
 Name:           gnome-photos
-Version:        42.0
+Version:        43.0
 Release:        0
 Summary:        Photo viewer for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Design/Apps/Photos
-Source0:        https://download.gnome.org/sources/gnome-photos/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-photos/43/%{name}-%{version}.tar.xz
 # PATCH-NEEDS-REBASE gnome-photos-on-demand-activate-dleyna.patch bsc#992420, glgo#GNOME/gnome-photos#75 sckang@suse.com -- Activate dleyna-renderer-service on demand instead of on start-up. WAS PATCH-FIX-UPSTREAM
 Patch0:         gnome-photos-on-demand-activate-dleyna.patch
 
@@ -42,23 +42,22 @@ BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(exempi-2.0) >= 1.99.5
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.32
 BuildRequires:  pkgconfig(gegl-0.4) >= 0.4.0
-BuildRequires:  pkgconfig(geocode-glib-1.0)
+BuildRequires:  pkgconfig(geocode-glib-2.0)
 BuildRequires:  pkgconfig(gexiv2)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(goa-1.0) >= 3.8.0
-BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.16
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.26.0
 BuildRequires:  pkgconfig(libexif) >= 0.6.14
-BuildRequires:  pkgconfig(libgdata) >= 0.15.2
-BuildRequires:  pkgconfig(libgfbgraph-0.2) >= 0.2.1
 BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libpng16)
+BuildRequires:  pkgconfig(libportal)
+BuildRequires:  pkgconfig(libportal-gtk3)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.26.0
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
 # gnome-photos references tracker's glib schemas
