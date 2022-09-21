@@ -17,7 +17,7 @@
 
 
 Name:           yelp
-Version:        42.1
+Version:        42.2
 Release:        0
 Summary:        Help Browser for the GNOME Desktop
 License:        GPL-2.0-or-later
@@ -96,7 +96,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %{_bindir}/gnome-help
 %{_bindir}/yelp
 %{_datadir}/applications/yelp.desktop
