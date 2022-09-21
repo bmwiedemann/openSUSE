@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Sun Sep 18 07:39:53 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Fix rebooting into boot loader menu.
+  + Improve entry legibility in GNOME Classic.
+  + Fixed crash.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  5 10:21:56 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Pass -Dtests=false to meson: we build mutter without installed
+  tests and thus do not have the deps available for this.
+
+-------------------------------------------------------------------
+Mon Sep  5 07:51:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.rc:
+  + Tweak quick settings appearance
+  + Use NM connectivity check URI for portal helper
+  + Only show "Night Light" toggle when supported
+  + Fix accessibility of quick settings sliders
+  + Use more unambiguous icons in on-screen keyboard
+  + Add screenshot item to quick settings
+  + Fix entering extended characters from on-screen keyboard
+  + Prevent SignalTracker from leaking objects
+  + Fix turning off VPN in quick settings
+  + Fix initial selection in switch-monitor popup on desktop
+  + Improve handling of recurring events
+  + Indicate transitional states in bluetooth quick toggle
+  + Work around pipewire regression for screencasts
+  + Plugged memory leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 29 18:17:45 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(libsoup-2.4) with pkgconfig(libsoup-3.0)
+  BuildRequires: gnome-shell already supports soup3.
+
+-------------------------------------------------------------------
+Fri Aug 12 20:09:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.beta:
+  + Allow extension updates with only Extension Manager installed
+  + Use new About window in Extensions app
+  + Stop auto-dismissing notifications on focus changes
+  + Tweak access portal dialog
+  + Add device switcher to volume sliders
+  + Replace combined system menu with quick settings
+  + Use the same format in screencast and screenshot file names
+  + Only load extensions that support the current session mode
+  + Improve overview animation performance
+  + Port to gcr4
+  + Fix logging in with realmd
+  + Optimize workspace background shadow
+  + Improve app grid navigation
+  + Improve on-screen keyboard
+    - Delete multiple characters and words when holding backspace
+    - Provide word suggestions when using plan keyboard layouts
+    - Use extended layout when TERMINAL hint is set
+  + Fix remembering set up bluetooth devices
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Replace pkgconfig(gcr-base-3) with pkgconfig(gcr-4) BuildRequires
+  following upstreams port.
+
+-------------------------------------------------------------------
+Fri Aug 12 16:41:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.alpha:
+  + Add convenience property for icon-only buttons.
+  + Align space-padded times in world clock.
+  + Fix top bar menus on lock screen.
+  + Show wireguard connects in VPN list.
+  + Fix on-screen keyboard gestures.
+  + Fix focus tracking in magnifier on wayland.
+  + Fix OSD colors with light stylesheet.
+  + Only close messages via delete key if they can be closed.
+  + Fix screenshots when XDG directories are disabled.
+  + Do not create systemd scope for D-Bus activated apps.
+  + Improve high-contrast stylesheet.
+  + Hide overview after 'Show Details' from app context menu.
+  + Fix feedback when turning on a11y features by keyboard.
+  + Fix stylesheet papercuts.
+  + Use libsoup 3.0 by default.
+  + Indicate selected language in on-screen keyboard menu.
+  + Respect IM hint for candidates list in on-screen keyboard.
+  + Fix edge case where windows stay dimmed after a modal is
+    closed.
+  + Improve Belgian on-screen keyboard layout.
+  + Fix fallback ibus-daemon launching.
+  + Make sure screenshot UI opens above dialogs.
+  + Use EventEmitter class instead of injecting Signal methods.
+  + Plugged leak.
+  + Misc. bug fixes and cleanups.
+
+-------------------------------------------------------------------
 Thu Aug 11 18:44:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.4:

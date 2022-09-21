@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        42.4
+Version:        43.0
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -75,7 +75,7 @@ BuildRequires:  sassc
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(atk-bridge-2.0)
 BuildRequires:  pkgconfig(bash-completion)
-BuildRequires:  pkgconfig(gcr-base-3) >= 3.7.5
+BuildRequires:  pkgconfig(gcr-4) >= 3.90.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
@@ -99,19 +99,19 @@ BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.1
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.33.1
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
-BuildRequires:  pkgconfig(libmutter-10) >= 41.0
+BuildRequires:  pkgconfig(libmutter-11) >= 43.beta
 BuildRequires:  pkgconfig(libnm) >= 1.10.4
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
-BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.11
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mutter-clutter-10) >= 41.0
-BuildRequires:  pkgconfig(mutter-cogl-10) >= 41.0
-BuildRequires:  pkgconfig(mutter-cogl-pango-10) >= 41.0
+BuildRequires:  pkgconfig(mutter-clutter-11) >= 43.beta
+BuildRequires:  pkgconfig(mutter-cogl-11) >= 43.beta
+BuildRequires:  pkgconfig(mutter-cogl-pango-11) >= 43.beta
 BuildRequires:  pkgconfig(polkit-agent-1) >= 0.100
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  python(abi) >= 3
@@ -178,7 +178,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 
 %prep
 %setup -q
-%patch1 -p1
+#patch1 -p1
 %patch5 -p1
 %patch7 -p1
 %patch8 -p1
@@ -208,6 +208,7 @@ cp %{SOURCE1} js/ui/
 	-Dman=true \
 	-Dnetworkmanager=true \
 	-Dsystemd=true \
+        -Dtests=false \
 	%{nil}
 %meson_build
 
