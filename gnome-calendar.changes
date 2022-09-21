@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Sep 15 15:43:19 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  4 17:38:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.rc:
+  + Update appdata screenshots
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 12 06:30:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.beta:
+  + Collapse sidebar in smaller window sizes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug  3 09:48:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.alpha:
+  + Introduce sidebar to the main window.
+  + Add ability to zoom the Week view.
+  + Improved style of events.
+  + Drop the Year view.
+  + Use new entry rows in event editor.
+  + Switch to soup3.
+  + Updated translations.
+- Replace pkgconfig() BuildRequires for port to soup3:
+  + geocode-glib-1.0 -> geocode-glib-2.0
+  + libedataserverui-1.2 -> libedataserverui4-1.0
+  + libsoup-2.4 -> libsoup-3.0
+
+-------------------------------------------------------------------
 Wed Jun 15 11:12:16 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.2:
