@@ -22,13 +22,13 @@
 %define with_glade 1
 
 Name:           libhandy
-Version:        1.6.3
+Version:        1.8.0
 Release:        0
 Summary:        A GTK+ library to develop UI for mobile devices
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://gitlab.gnome.org/GNOME/libhandy
-Source0:        https://download.gnome.org/sources/libhandy/1.6/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libhandy/1.8/%{name}-%{version}.tar.xz
 
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
