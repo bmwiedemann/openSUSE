@@ -16,9 +16,9 @@
 #
 
 
-%bcond_without nautilus_extension
+%bcond_without  nautilus_extension
 Name:           gnome-terminal
-Version:        3.44.1
+Version:        3.46.1
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -44,7 +44,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.50
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 0.1.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18
 %if %{with nautilus_extension}
-BuildRequires:  pkgconfig(libnautilus-extension) >= 3.28.0
+BuildRequires:  pkgconfig(libnautilus-extension-4)
 %endif
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.00
 BuildRequires:  pkgconfig(uuid)
@@ -60,6 +60,7 @@ Summary:        GNOME Terminal -- Search Provider for GNOME Shell
 Group:          System/X11/Terminals
 Requires:       %{name} = %{version}
 Supplements:    (gnome-shell and %{name})
+BuildArch:      noarch
 
 %description -n gnome-shell-search-provider-gnome-terminal
 This package contains a search provider to enable GNOME Shell to get
@@ -114,6 +115,7 @@ rm %{buildroot}/usr/share/metainfo/org.gnome.Terminal.Nautilus.metainfo.xml
 %{_mandir}/man1/gnome-terminal.1%{?ext_man}
 %dir %{_libdir}/gnome-terminal
 %{_libdir}/gnome-terminal/gschemas.compiled
+%{_libdir}/gnome-terminal/gnome-terminal-preferences
 
 %files -n gnome-shell-search-provider-gnome-terminal
 %dir %{_datadir}/gnome-shell
@@ -122,7 +124,7 @@ rm %{buildroot}/usr/share/metainfo/org.gnome.Terminal.Nautilus.metainfo.xml
 
 %if %{with nautilus_extension}
 %files -n nautilus-extension-terminal
-%{_libdir}/nautilus/extensions-3.0/libterminal-nautilus.so
+%{_libdir}/nautilus/extensions-4/libterminal-nautilus.so
 %{_datadir}/metainfo/org.gnome.Terminal.Nautilus.metainfo.xml
 %endif
 

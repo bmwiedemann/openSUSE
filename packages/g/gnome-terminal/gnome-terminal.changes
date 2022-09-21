@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Sep 17 00:00:27 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 3.46.1:
+  * prefs:
+    - Make preferences dialogue OOP
+    - Change default value
+  * build: Update README
+  * po: Mark bogus translated string as fuzzy
+  * prefs: Try to improve translator hint comment
+  * Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 07 21:13:21 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 3.45.99:
+  * all:
+    - ODR fix
+    - Replace %m with using g_strerror() in printf calls
+  * build:
+    - Assert sanity
+    - Build fix for netbsd
+    - Fix nautilus extension install directory
+    - Remove erroneous volatile
+    - Update nautilus extension build req
+  + nautilus: Don't include gdk headers in the nautilus extension
+  + profile: Use the correct schema source to lookup schemas
+  + Updated translations.
+- Replace pkgconfig(libnautilus-extension) with
+  pkgconfig(libnautilus-extension-4) BuildRequires, following
+  upstream changes/port.
+
+-------------------------------------------------------------------
+Tue Aug 09 16:53:49 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 3.45.90:
+  + all: Insert text as paste
+  + build:
+    - Improve libc feature extension defines
+    - Move version defines from config.h to meson cpp_args
+  + client: Filter out other terminal's environment variables
+  + nautilus: Do not use deprecated symbols
+  + profile:
+    - editor:
+      . Remove unknown charsets from the builtin list
+      . Skip unknown charsets
+  + regex: Revert sed accident
+  + Revert "screen: Use clean env when creating new tab"
+  + screen: Use same match cursor as vte hyperlink cursor.
+  + util: Show timestamps in the local timezone
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon May 30 12:01:19 UTC 2022 - dimstar@opensuse.org
 
 - Update to version 3.44.1:

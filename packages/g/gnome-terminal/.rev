@@ -2352,4 +2352,12 @@
     <comment>GNOME 42.2 (forwarded request 979898 from dimstar)</comment>
     <requestid>980034</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>b1fe800d298f5768c4e0ca4f742d30d2</srcmd5>
+    <version>3.46.1</version>
+    <time>1663764039</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004806</requestid>
+  </revision>
 </revisionlist>
