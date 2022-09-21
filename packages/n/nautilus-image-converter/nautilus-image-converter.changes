@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 15 08:05:04 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.0:
+  + Port to GTK4
+  + Port to libnautilus-extension-4
+  + Port to Meson
+  + Fix progress window
+  + Misc ui cleanup
+- Switch to source service git checkout.
+- Drop nautilus-image-converter-git.patch: Fixed upstream.
+- Changes in BuildRequires:
+  + Drop: gnome-common, gtk3-devel, intltool and nautilus-devel.
+  + Add: meson, pkgconfig, pkgconfig(libnautilus-extension-4),
+    pkgconfig(gtk4) and pkgconfig(glib-2.0).
+- Modernize spec, use meson macros following upstreams port.
+
+-------------------------------------------------------------------
 Thu Jan 30 11:14:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
