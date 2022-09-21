@@ -406,4 +406,12 @@ New package for Factory, dependency for gnome-boxes. Hardware seems to be the be
     <comment>Update to version 1.10.0</comment>
     <requestid>958326</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>5b031696d0ad72157870ed8c6943114d</srcmd5>
+    <version>1.10.0</version>
+    <time>1663763948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003004</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 31 19:33:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 3a0fef72.patch: build: Add option to select libsoup ABI.
+  Following this, add conditional pkgconfig(libsoup-3.0)
+  BuildRequires.
+- Modernize spec, use ldconfig_scriptlets macro for post(un)
+  handling, package COPYING with license macro.
+
+-------------------------------------------------------------------
 Tue Mar  1 10:49:08 MST 2022 - carnold@suse.com
 
 - Update to version 1.10.0

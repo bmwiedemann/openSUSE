@@ -25,8 +25,11 @@ Release:        0
 Summary:        Operating system and hypervisor information management library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://releases.pagure.org/libosinfo/
-Source0:        https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.xz
+URL:            https://releases.pagure.org/libosinfo
+Source0:        %{url}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 3a0fef72.patch -- build: Add option to select libsoup ABI
+Patch0:         https://gitlab.com/libosinfo/libosinfo/-/commit/3a0fef72.patch
+
 BuildRequires:  gtk-doc
 BuildRequires:  hwdata
 BuildRequires:  libcurl-devel
@@ -36,7 +39,11 @@ BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+%if 0%{suse_version} > 1550
+BuildRequires:  pkgconfig(libsoup-3.0)
+%else
 BuildRequires:  pkgconfig(libsoup-2.4)
+%endif
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt) >= 1.0.0
 Requires:       osinfo-db
@@ -87,7 +94,7 @@ as well as Vala bindings for the libosinfo library.
 %endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson \
@@ -104,13 +111,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 %endif
 
-%post -n libosinfo-1_0-0 -p /sbin/ldconfig
-
-%postun -n libosinfo-1_0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libosinfo-1_0-0
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog README COPYING
+%license COPYING
+%doc ChangeLog README
 %{_bindir}/osinfo-detect
 %{_bindir}/osinfo-install-script
 %{_bindir}/osinfo-query
@@ -119,21 +124,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/osinfo-query.1%{?ext_man}
 
 %files -n libosinfo-1_0-0
-%defattr(-, root, root)
 %{_libdir}/libosinfo-1.0.so.*
 
 %files -n typelib-1_0-Libosinfo-1_0
-%defattr(-,root,root)
 %{_libdir}/girepository-1.0/Libosinfo-1.0.typelib
 
 %files devel
-%defattr(-, root, root)
 %{_datadir}/gtk-doc/html/Libosinfo/
 %{_includedir}/%{name}-1.0
 %{_libdir}/pkgconfig/%{name}-1.0.pc
 %{_libdir}/libosinfo-1.0.so
 %{_datadir}/gir-1.0/Libosinfo-1.0.gir
-
 %dir %{_datadir}/vala
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/libosinfo-1.0.deps
