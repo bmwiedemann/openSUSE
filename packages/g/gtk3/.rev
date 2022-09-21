@@ -1577,4 +1577,14 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
     <comment>- avoid bashism in baselibs postscript (bsc#1195391) (forwarded request 995216 from dirkmueller)</comment>
     <requestid>997732</requestid>
   </revision>
+  <revision rev="179" vrev="5">
+    <srcmd5>8c8bba34fab91d81fe3a02f026752d34</srcmd5>
+    <version>3.24.34</version>
+    <time>1663763978</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop pkgconfig(rest-0.7) BuildRequires: it seems to serve no
+  purpose, nor can I find anything to suggest that gtk depends on
+  it. (forwarded request 1002762 from iznogood)</comment>
+    <requestid>1003227</requestid>
+  </revision>
 </revisionlist>

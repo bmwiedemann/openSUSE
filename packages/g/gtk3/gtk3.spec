@@ -77,7 +77,6 @@ BuildRequires:  pkgconfig(harfbuzz) >= 0.9
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(pango) >= 1.41.0
 BuildRequires:  pkgconfig(pangoft2)
-BuildRequires:  pkgconfig(rest-0.7)
 BuildRequires:  pkgconfig(wayland-client) >= 1.14.91
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.14.91
 BuildRequires:  pkgconfig(wayland-egl)
