@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Sep 19 20:34:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.rc:
+  + This is the truly the largest release of Builder yet, with
+    nearly every aspect of the application improved in some way or
+    another this cycle.
+
+-------------------------------------------------------------------
+Tue Aug 30 14:21:27 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add Dirty-quick-hackfix-typelibs.patch: Avoid our typelib scanner
+  adding non-existing typelibs as dependencies.
+
+-------------------------------------------------------------------
+Sat Aug 20 17:46:00 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.alpha1:
+  + This release is not intended for end-users.
+    This is our first release of the GTK 4 port of GNOME Builder.
+    It contains a significantly redesigned interface and foundry.
+  + Given the size of the Builder project this port is not yet
+    complete. It is far enough along to get testing from
+    distributions and enthusiastic users alike. However, expect
+    missing features and please don't overwhelm upstream with issue
+    reports on that. First check the GTK 4 port issue to see if it
+    is already known at
+    https://gitlab.gnome.org/GNOME/gnome-builder/-/issues/1675
+  + Developer builds of Builder now use org.gnome.Builder.Devel as
+    the application identifier so that we can allow parallel
+    installing of nightly/stable Flatpaks.
+  + While Builder still supports plugins written in Python, there
+    are no more Python-based plugins bundled with Builder. We've
+    stopped using the bindings ourselves due to instability. We may
+    change our scripting language but that is for another time.
+  + Thanks to everyone who has contributed to the GTK 4 port, it's
+    been a full out scramble to port such a gigantic project in one
+    cycle.
+- Changes in BuildRequires following upstream changes:
+  + Drop pkgconfig(gladeui-2.0), pkgconfig(gspell-1),
+    pkgconfig(gtk+-3.0), pkgconfig(gtksourceview-4),
+    pkgconfig(libhandy-1), pkgconfig(libportal-gtk3),
+    pkgconfig(libsoup-2.4), pkgconfig(pangoft2),
+    pkgconfig(sysprof-ui-4), pkgconfig(vte-2.91),
+    pkgconfig(webkit2gtk-4.0) and pkgconfig(libdevhelp-3.0).
+  + Add appstream-glib, desktop-file-utils, pkgconfig(dspy-1),
+    pkgconfig(editorconfig), pkgconfig(gtk4),
+    pkgconfig(gtksourceview-5), pkgconfig(libadwaita-1),
+    pkgconfig(libpanel-1), pkgconfig(libportal-gtk4),
+    pkgconfig(sysprof-capture-4), pkgconfig(sysprof-ui-5),
+    pkgconfig(vte-2.91-gtk4) and pkgconfig(webkit2gtk-5.0).
+- Validata appdata and desktop files during build.
+- Update Supplements to current standard.
+- Update rpmlintrc.
+- Drop jhbuild sub-package, jhbuild support is ported to c, and no
+  longer depends on the python package version.
+
+-------------------------------------------------------------------
 Mon Apr 25 09:20:30 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.1:

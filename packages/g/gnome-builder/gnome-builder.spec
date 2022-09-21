@@ -21,18 +21,24 @@
 %global __requires_exclude_from %{_libdir}/gnome-builder/plugins
 
 # Update this on every major/minor bump
-%define basever 42
+%define basever 43
 
 Name:           gnome-builder
-Version:        42.1
+### FIXME ### Enable docs build again on next versionbump (see meson options)
+Version:        43.rc
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Builder
-Source0:        https://download.gnome.org/sources/gnome-builder/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-builder/%{basever}/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 
+# PATCH-FIX-OPENSUSE Dirty-quick-hackfix-typelibs.patch -- Nuke away bogus typelibs dependencies
+Patch0:         Dirty-quick-hackfix-typelibs.patch
+
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  llvm-clang-devel >= 3.5
@@ -41,36 +47,36 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-gi-docgen
 BuildRequires:  python3-gobject
+# Disable d-spy plugin
+#BuildRequires:  pkgconfig(dspy-1)
+BuildRequires:  pkgconfig(editorconfig)
 BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(flatpak) >= 0.8.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.61.2
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(gladeui-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.69.1
+BuildRequires:  pkgconfig(glib-2.0) >= 2.71
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.48.0
-BuildRequires:  pkgconfig(gspell-1) >= 1.2.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
-BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.0
+BuildRequires:  pkgconfig(gtk4) >= 4.7
+BuildRequires:  pkgconfig(gtksourceview-5) >= 5.5
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
 BuildRequires:  pkgconfig(jsonrpc-glib-1.0) >= 3.41.0
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libcmark)
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.37.0
-BuildRequires:  pkgconfig(libdevhelp-3.0) >= 3.25.1
 BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 0.25.0
-BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(libpanel-1) >= 1.0.alpha1
 BuildRequires:  pkgconfig(libpcre2-posix)
-BuildRequires:  pkgconfig(libpeas-1.0) >= 1.22.0
-BuildRequires:  pkgconfig(libportal-gtk3)
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.52.0
+BuildRequires:  pkgconfig(libpeas-1.0) >= 1.32.0
+BuildRequires:  pkgconfig(libportal-gtk4)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
-BuildRequires:  pkgconfig(pangoft2) >= 1.38.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.21.0
-BuildRequires:  pkgconfig(sysprof-4) >= 3.37.1
-BuildRequires:  pkgconfig(sysprof-ui-4)
-BuildRequires:  pkgconfig(template-glib-1.0) >= 3.28.0
+BuildRequires:  pkgconfig(sysprof-4) >= 3.42.0
+BuildRequires:  pkgconfig(sysprof-capture-4) >= 3.42.0
+BuildRequires:  pkgconfig(sysprof-ui-5) >= 3.42.0
+BuildRequires:  pkgconfig(template-glib-1.0) >= 3.35.0
 BuildRequires:  pkgconfig(vapigen) >= 0.30.0.55
-BuildRequires:  pkgconfig(vte-2.91) >= 0.65.0
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.26
+BuildRequires:  pkgconfig(vte-2.91-gtk4) >= 0.69.0
+BuildRequires:  pkgconfig(webkit2gtk-5.0)
 Requires:       autoconf
 Requires:       automake
 Requires:       libtool
@@ -79,22 +85,22 @@ Requires:       typelib(Jsonrpc) = 1.0
 Recommends:     %{name}-doc
 Recommends:     flatpak
 Recommends:     flatpak-builder
-Recommends:     gnome-builder-plugin-jhbuild = %{version}
 Obsoletes:      gnome-builder-plugin-beautifier < 3.27.4
-Obsoletes:      gnome-builder-plugin-clang < %{version}
-Obsoletes:      gnome-builder-plugin-cmake < %{version}
-Obsoletes:      gnome-builder-plugin-ctags < %{version}
-Obsoletes:      gnome-builder-plugin-devhelp < %{version}
-Obsoletes:      gnome-builder-plugin-fpaste < %{version}
-Obsoletes:      gnome-builder-plugin-gettext < %{version}
-Obsoletes:      gnome-builder-plugin-gnome-code-assistance < %{version}
-Obsoletes:      gnome-builder-plugin-html-completion < %{version}
-Obsoletes:      gnome-builder-plugin-mingw < %{version}
-Obsoletes:      gnome-builder-plugin-symbol-tree < %{version}
-Obsoletes:      gnome-builder-plugin-sysmon < %{version}
-Obsoletes:      gnome-builder-plugin-todo < %{version}
-Obsoletes:      gnome-builder-plugin-vala-pack < %{version}
-Obsoletes:      gnome-builder-plugin-xml-pack < %{version}
+Obsoletes:      gnome-builder-plugin-clang < 43.alpha
+Obsoletes:      gnome-builder-plugin-cmake < 43.alpha
+Obsoletes:      gnome-builder-plugin-ctags < 43.alpha
+Obsoletes:      gnome-builder-plugin-devhelp < 43.alpha
+Obsoletes:      gnome-builder-plugin-fpaste < 43.alpha
+Obsoletes:      gnome-builder-plugin-gettext < 43.alpha
+Obsoletes:      gnome-builder-plugin-gnome-code-assistance < 43.alpha
+Obsoletes:      gnome-builder-plugin-html-completion < 43.alpha
+Obsoletes:      gnome-builder-plugin-jhbuild < 43.alpha
+Obsoletes:      gnome-builder-plugin-mingw < 43.alpha
+Obsoletes:      gnome-builder-plugin-symbol-tree < 43.alpha
+Obsoletes:      gnome-builder-plugin-sysmon < 43.alpha
+Obsoletes:      gnome-builder-plugin-todo < 43.alpha
+Obsoletes:      gnome-builder-plugin-vala-pack < 43.alpha
+Obsoletes:      gnome-builder-plugin-xml-pack < 43.alpha
 
 %description
 Builder is an IDE for GNOME and a tool to help writing GNOME-based
@@ -110,27 +116,18 @@ BuildArch:      noarch
 Builder is an IDE for GNOME and a tool to help writing GNOME-based
 applications.
 
-%package plugin-jhbuild
-Summary:        Jhbuild plugin for %{name}
-Group:          Development/Tools/IDE
-Requires:       %{name} = %{version}
-# Disabled, as many users prefer to run jhbuild from a git checkout, no need to install our distro jhbuild.
-#Requires:       jhbuild
-Supplements:    packageand(%{name}:jhbuild)
-
-%description plugin-jhbuild
-This package provides the jhbuild plugin for %{name}.
-
 %lang_package
 
 %prep
 %autosetup -p1
 
 %build
+### FIXME ### Enable on next versionbump
+#	-D docs=true \
 %meson \
-	-Ddocs=true \
-	-Dhelp=true \
-	-Dnetwork_tests=false \
+	-D help=true \
+	-D network_tests=false \
+	-D plugin_dspy=false \
 	%{nil}
 %meson_build
 
@@ -139,7 +136,8 @@ This package provides the jhbuild plugin for %{name}.
 %fdupes %{buildroot}%{_datadir}
 %find_lang %{name}
 
-# [RPMLINT] REMOVE __pycache__ DIR CONTAINING AN UNNECESSARY PYTHON OBJECT FILE W/O CORRESPONDING SOURCE CODE
+# [RPMLINT] REMOVE __pycache__ DIR CONTAINING AN UNNECESSARY
+# PYTHON OBJECT FILE W/O CORRESPONDING SOURCE CODE
 rm -fr %{buildroot}%{python3_sitearch}/gi/overrides/__pycache__/Ide.cpython-35.opt-1.pyc
 # Drop temp files used in doc creation.
 # The /usr/share/doc/gnome-builder/en/.doctrees/environment.pickle
@@ -147,7 +145,8 @@ rm -fr %{buildroot}%{python3_sitearch}/gi/overrides/__pycache__/Ide.cpython-35.o
 rm -fr %{buildroot}%{_datadir}/doc/%{name}/*/.doctrees
 
 %check
-#%%meson_test
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.Builder.appdata.xml
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Builder.desktop
 
 %files
 %license COPYING
@@ -158,51 +157,21 @@ rm -fr %{buildroot}%{_datadir}/doc/%{name}/*/.doctrees
 %{_libexecdir}/%{name}-clang
 %{_libexecdir}/%{name}-flatpak
 %{_libexecdir}/%{name}-git
-# EXCLUDE THE OPTIONAL PLUGINS FROM THE MAIN PACKAGE
-%exclude %{_libdir}/%{name}/plugins/jhbuild.plugin
-%exclude %{_libdir}/%{name}/plugins/jhbuild_plugin.py
 %{_datadir}/metainfo/org.gnome.Builder.appdata.xml
 %{_datadir}/applications/org.gnome.Builder.desktop
 %{_datadir}/dbus-1/services/org.gnome.Builder.service
 %{_datadir}/%{name}/
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.build.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.clang.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.code-insight.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.editor.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.editor.language.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.extension-type.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.gnome-code-assistance.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.plugin.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.plugins.color_picker_plugin.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.plugins.copyright.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.plugins.eslint.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.plugins.stylelint.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.project-tree.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.project.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.rust-analyzer.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.terminal.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.workbench.gschema.xml
-%{_datadir}/gtksourceview-4/styles/Adwaita-dark.style-scheme.xml
-%{_datadir}/gtksourceview-4/styles/Adwaita.style-scheme.xml
-%{_datadir}/gtksourceview-4/styles/builder-dark.style-scheme.xml
-%{_datadir}/gtksourceview-4/styles/builder.style-scheme.xml
-%{_datadir}/gtksourceview-4/language-specs/blueprint.lang
+%{_datadir}/glib-2.0/schemas/org.gnome.builder*.gschema.xml
 %{_datadir}/icons/hicolor/
-%{_includedir}/%{name}/
 %{_includedir}/%{name}-%{basever}/
-%{_libdir}/pkgconfig/gnome-builder-%{version}.pc
+#%%{_libdir}/pkgconfig/gnome-builder-%%{version}.pc
+%{_libdir}/pkgconfig/gnome-builder-43.0.pc
 %dir %{python3_sitelib}/gi
 %dir %{python3_sitelib}/gi/overrides
 %{python3_sitelib}/gi/overrides/*
 
 %files doc
-%doc %{_datadir}/doc/libide/
-
-%files plugin-jhbuild
-%dir %{_libdir}/%{name}/plugins
-%{_libdir}/%{name}/plugins/jhbuild.plugin
-%{_libdir}/%{name}/plugins/jhbuild_plugin.py
+#%%doc %%{_datadir}/doc/libide/
 
 %files lang -f %{name}.lang
 
