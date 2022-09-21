@@ -3,6 +3,7 @@ Wed Aug 31 13:00:31 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Update to runc v1.1.4. Upstream changelog is available from
   https://github.com/opencontainers/runc/releases/tag/v1.1.4.
+  bsc#1202021
 
   * Fix mounting via wrong proc fd. When the user and mount namespaces are
     used, and the bind mount is followed by the cgroup mount in the spec,
