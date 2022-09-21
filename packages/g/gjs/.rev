@@ -1700,4 +1700,12 @@ Fri Dec  18 23:51:08 UTC 2015 - damjanovic.ivo@gmail.com
     - doc: Reflect support for constructor with GObject. (forwarded request 993714 from iznogood)</comment>
     <requestid>993950</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>e0c6eecfeeb0f723d3547fb8fff857f0</srcmd5>
+    <version>1.74.0</version>
+    <time>1663764097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005094</requestid>
+  </revision>
 </revisionlist>

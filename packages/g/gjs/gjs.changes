@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Wed Sep 21 05:15:05 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.74.0:
+  + Many improvements to the examples and documentation.
+  + Overrides to certain non-introspectable functions that will now
+    gracefully throw an exception instead of crashing.
+  + Closed bugs and merge requests:
+    - Various maintenance.
+    - http example not reliable, relies on server provided
+      content-length.
+    - Gio set_attribute SIGSEGV (Address boundary error).
+    - doc:
+      . Reformat for better scraping with DevDocs.
+      . Update Home.
+    - GLib: override GThread functions.
+
+-------------------------------------------------------------------
+Mon Sep 19 09:35:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
+Thu Sep 15 15:25:18 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Require xorg-x11-Xvfb on SLE-15-SP5, rather than
+  xorg-11-server-Xvfb (bsc#1203274).
+
+-------------------------------------------------------------------
+Fri Aug 26 18:31:37 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.73.2:
+  + New JavaScript features! This version of GJS is based on
+    SpiderMonkey 102, an upgrade from the previous ESR (Extended
+    Support Release) of SpiderMonkey 91. Here are the highlights of
+    the new JavaScript features. For more information, look them up
+    on MDN or devdocs.io.
+  + New APIs
+    - The `Object.hasOwn()` static method can be used as an easier
+      replacement for `Object.prototype.hasOwnProperty.call(...)`.
+    - `Intl.supportedValuesOf()` lets you enumerate which
+      calendars, currencies, collation strategies, numbering
+      systems, time zones, and units are available for
+      internationalization.
+  + It's now possible to use
+    `GObject.BindingGroup.prototype.bind_full()` with JS functions.
+    Previously this method was unusable in JS.
+  + Gio.FileEnumerator is now iterable, both synchronously (with
+    for-of or array spread syntax) and asynchronously (with
+    for-await-of).
+  + Performance improvements in the built-in `imports.signals`
+    module.
+  + Many improvements to the examples and documentation.
+  + Closed bugs and merge requests:
+    - Spidermonkey 102
+    - Object connections / signal emissions optimizations
+    - tests/Gio: Cleanup Gio._promisify
+    - Include JUnit reports in builds
+    - Integrate pretty print to the debugger
+    - doc:
+      . Edit GJS description
+      . note the version `constructor()` became supported
+      . Modernize examples
+      . Document byteArray deprecation and migration
+      . add simple Gtk.TickCallback example
+    - build: disable sysprof agent for subproject fallback
+    - Update CI images
+    - GListModel.get_n_items returns garbage value
+    - Add override for g_binding_group_bind_full()
+    - Make GFileEnumerator iterable and async iterable
+- Replace pkgconfig(mozjs-91) with pkgconfig(mozjs-102)
+  BuildRequires following upstreams changes.
+
+-------------------------------------------------------------------
+Tue Aug  9 12:23:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.73.1:
+  + The interactive interpreter now displays its output more
+    intelligently, pretty-printing the properties and values of
+    objects based on their type. This improvement also applies to
+    the log() and logError() functions.
+  + New API: DBus proxy classes now include methods named with the
+    suffix 'Async', which perform async calls to DBus APIs and
+    return Promises. This is in addition to the existing suffixes
+    'Sync' (for blocking calls) and 'Remote' (for async calls with
+    callbacks.)
+  + There is an override for
+    Gio.ActionMap.prototype.add_action_entries(). Previously this
+    method wouldn't work because it required an array of
+    Gio.ActionEntry objects, which are not possible to construct in
+    GJS. Now it can be used with an array of plain objects. (e.g.
+    `this.add_action_entries
+    ([{name: 'open', activate() { ... }}]);`
+  + GJS is now compatible with libffi 3.4.2 and later. All earlier
+    versions of GJS are not compatible with libffi 3.4.2 and later
+    unless libffi is built with the --disable-exec-static-tramp
+    flag.
+  + GJS now requires Meson 0.54 to build.
+  + Closed bugs and merge requests:
+    - Verbose Object Print Output
+    - Add support for JS async calls in DBusProxyWrapper
+    - Crash after build against libffi 3.4.2
+    - Handle reference cycles in new console pretty print function
+    - Gnome-Shell 42 - crash after login (general protection fault)
+    - Various maintenance
+    - jsapi-util-strings: Ignore locale to compute the upper case
+      of a char (i.e. fix implicit properties on Turkish locale)
+    - Dockerfile: Install Turkish locale in CI for UTF-8 locale too
+    - Improve pretty-print output for GObject-introspected objects
+    - Expose pretty print function to tests
+    - build: track changes to Sysprof meson options
+    - Make Gio.ActionMap.add_action_entries work
+    - Make DBus session and system props non-enumerable
+    - gi/arg-inl: Mark the arg functions as constexpr
+    - build: Do not use verbose GJS debug logging in tests by
+      default
+    - minijasmine: Print test JS errors output if any
+    - doc: document the existence of the console object in GJS
+    - arg-cache: Use a switch to select the not-introspectable error
+    - log_set_writer_func is not safe to use
+
+-------------------------------------------------------------------
 Mon Aug  8 08:39:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.72.2:
