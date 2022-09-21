@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep 20 17:36:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug  7 10:23:27 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.beta:
+  + Port to AdwAboutWindow
+  + Fix notifications are immediately withdrawn.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 18 09:03:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.alpha:
+  + Build against either geocode-glib-1.0 or geocode-glib-2.0.
+  + Disable "Add" button by default on new timer dialog.
+  + Fix the incorrect order of stopwatch's time label using RTL
+    locale.
+  + Do not match timezones on search.
+- Replace pkgconfig(geocode-glib-1.0) with
+  pkgconfig(geocode-glib-2.0) BuildRequires following upstream
+  changes.
+
+-------------------------------------------------------------------
 Sun Mar 20 08:16:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.0:
