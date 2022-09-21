@@ -1080,4 +1080,29 @@
   + Bugs fixed: Calendar: Fix occurrence index counter. (forwarded request 993263 from iznogood)</comment>
     <requestid>993943</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>f710818a04cf0c02fee5c128d2cf05df</srcmd5>
+    <version>3.46.0</version>
+    <time>1663764019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.46.0:
+  + Updated translations.
+- Update to version 3.45.3:
+  + Updated translations.
+- Update to version 3.45.2:
+  + Remove false runtime check in
+    ews_connection_notification_start_thread().
+  + Microsoft365: Split iCalendar component manipulation code into
+    separate file.
+  + Use uhttpmock 0.9 for internal tests.
+  + Bug Fixes:
+    - Calendar:
+     . Ability to create Online meeting.
+     . Fix occurrence index counter.
+  + Updated translations.
+- Replace pkgconfig(libsoup-2.4) with pkgconfig(libsoup-3.0)
+  following upstream changes.
+</comment>
+    <requestid>1004779</requestid>
+  </revision>
 </revisionlist>

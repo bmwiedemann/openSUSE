@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Sep 16 07:06:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.46.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  2 07:33:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.45.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  5 16:54:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.45.2:
+  + Remove false runtime check in
+    ews_connection_notification_start_thread().
+  + Microsoft365: Split iCalendar component manipulation code into
+    separate file.
+  + Use uhttpmock 0.9 for internal tests.
+  + Bug Fixes:
+    - Calendar:
+     . Ability to create Online meeting.
+     . Fix occurrence index counter.
+  + Updated translations.
+- Replace pkgconfig(libsoup-2.4) with pkgconfig(libsoup-3.0)
+  following upstream changes.
+
+-------------------------------------------------------------------
 Fri Aug  5 09:05:11 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.44.4:
