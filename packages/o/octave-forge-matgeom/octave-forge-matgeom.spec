@@ -1,7 +1,7 @@
 #
-# spec file for package octave-forge-matgeom
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define octpkg  matgeom
 Name:           octave-forge-%{octpkg}
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Geometry toolbox for Octave
 License:        BSD-2-Clause
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io
+URL:            https://octave.sourceforge.io/%{octpkg}/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  octave-devel >= 4.2.0
 BuildArch:      noarch
