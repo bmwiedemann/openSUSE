@@ -17,13 +17,13 @@
 
 
 Name:           gnome-desktop
-Version:        42.4
+Version:        43
 Release:        0
 Summary:        The GNOME Desktop API Library
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-desktop/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-desktop/43/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gnome-desktop-switch-Japanese-default-input-to-mozc.patch bnc#1029083 boo#1056289 qzhao@suse.com -- Switch new user's default input engine from "anthy" to "mozc" in gnome-desktop with Japanese language and ibus input frame-work condition.
 Patch1:         gnome-desktop-switch-Japanese-default-input-to-mozc.patch
@@ -53,13 +53,6 @@ BuildRequires:  pkgconfig(xkeyboard-config)
 %description
 This package contains the desktop-wide files.
 
-%package -n gnome-version
-Summary:        GNOME version
-Group:          System/GUI/GNOME
-
-%description -n gnome-version
-This package contains information on the version of GNOME that is installed.
-
 %package -n libgnome-desktop-3_0-common
 Summary:        Common data files for the GNOME Desktop API library
 Group:          System/Libraries
@@ -71,7 +64,7 @@ reasons.
 
 This package contains data files used by libgnome-dekstop.
 
-%package -n libgnome-desktop-3-19
+%package -n libgnome-desktop-3-20
 Summary:        The GNOME Desktop API Library
 # the library calls out to bwrap in order to fire up thumbnailers in a secure container
 Group:          System/Libraries
@@ -81,8 +74,10 @@ Requires:       gsettings-desktop-schemas
 Requires:       libgnome-desktop-3_0-common >= %{version}
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
+Provides:       gnome-version = %{version}
+Obsoletes:      gnome-version < %{version}
 
-%description -n libgnome-desktop-3-19
+%description -n libgnome-desktop-3-20
 The libgnome-desktop library provides API shared by several applications
 on the desktop, but that cannot live in the platform for various
 reasons.
@@ -102,7 +97,7 @@ libgnome-desktop.
 %package -n libgnome-desktop-3-devel
 Summary:        Development files for the GNOME Desktop API library
 Group:          Development/Libraries/GNOME
-Requires:       libgnome-desktop-3-19 = %{version}
+Requires:       libgnome-desktop-3-20 = %{version}
 # Needed as /usr/include/gnome-desktop-3.0/libgnome-desktop/gnome-xkb-info.h includes X11/extensions/XKBrules.h
 Requires:       libxkbfile-devel
 Requires:       typelib-1_0-GnomeDesktop-3_0 = %{version}
@@ -119,7 +114,7 @@ reasons.
 %package -n libgnome-desktop-4-devel
 Summary:        Development files for the GNOME Desktop API library
 Group:          Development/Libraries/GNOME
-Requires:       libgnome-desktop-4-1 = %{version}
+Requires:       libgnome-desktop-4-2 = %{version}
 Requires:       typelib-1_0-GnomeBG-4_0 = %{version}
 Requires:       typelib-1_0-GnomeDesktop-4_0 = %{version}
 Requires:       typelib-1_0-GnomeRR-4_0 = %{version}
@@ -129,7 +124,7 @@ The libgnome-desktop library provides API shared by several applications
 on the desktop, but that cannot live in the platform for various
 reasons.
 
-%package -n libgnome-desktop-4-1
+%package -n libgnome-desktop-4-2
 Summary:        The GNOME Desktop API Library
 Group:          System/Libraries
 # the library calls out to bwrap in order to fire up thumbnailers in a secure container
@@ -140,7 +135,7 @@ Requires:       libgnome-desktop-3_0-common >= %{version}
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 
-%description -n libgnome-desktop-4-1
+%description -n libgnome-desktop-4-2
 The libgnome-desktop library provides API shared by several applications
 on the desktop, but that cannot live in the platform for various
 reasons.
@@ -188,8 +183,6 @@ libgnome-desktop.
 
 %build
 %meson \
-	-Dgnome_distributor=openSUSE \
-	-Ddate_in_gnome_version=false \
 	-Ddesktop_docs=true \
 	-Dgtk_doc=true \
 	%{nil}
@@ -205,13 +198,10 @@ libgnome-desktop.
 
 %fdupes %{buildroot}/%{_prefix}
 
-%post -n libgnome-desktop-3-19 -p /sbin/ldconfig
-%postun -n libgnome-desktop-3-19 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgnome-desktop-3-20
+%ldconfig_scriptlets -n libgnome-desktop-4-2
 
-%post -n libgnome-desktop-4-1 -p /sbin/ldconfig
-%postun -n libgnome-desktop-4-1 -p /sbin/ldconfig
-
-%files -n libgnome-desktop-3-19
+%files -n libgnome-desktop-3-20
 %license COPYING.LIB
 %doc AUTHORS NEWS
 %{_libdir}/libgnome-desktop-3.so.*
@@ -237,10 +227,6 @@ libgnome-desktop.
 # english locale should be in the main package
 %exclude %{_datadir}/locale/en
 
-%files -n gnome-version
-%dir %{_datadir}/gnome
-%{_datadir}/gnome/gnome-version.xml
-
 %files -n libgnome-desktop-4-devel
 %{_datadir}/gir-1.0/GnomeBG-4.0.gir
 %{_datadir}/gir-1.0/GnomeDesktop-4.0.gir
@@ -262,9 +248,9 @@ libgnome-desktop.
 %files -n typelib-1_0-GnomeRR-4_0
 %{_libdir}/girepository-1.0/GnomeRR-4.0.typelib
 
-%files -n libgnome-desktop-4-1
-%{_libdir}/libgnome-desktop-4.so.1*
-%{_libdir}/libgnome-bg-4.so.1*
-%{_libdir}/libgnome-rr-4.so.1*
+%files -n libgnome-desktop-4-2
+%{_libdir}/libgnome-desktop-4.so.2*
+%{_libdir}/libgnome-bg-4.so.2*
+%{_libdir}/libgnome-rr-4.so.2*
 
 %changelog
