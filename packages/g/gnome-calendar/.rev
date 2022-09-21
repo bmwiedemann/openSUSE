@@ -366,4 +366,12 @@
     <comment>New stable rel (forwarded request 982772 from iznogood)</comment>
     <requestid>983436</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>bed25a1b8efb14321e5a9920099de054</srcmd5>
+    <version>43.0</version>
+    <time>1663764141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004789</requestid>
+  </revision>
 </revisionlist>
