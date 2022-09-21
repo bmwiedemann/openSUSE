@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Sep  9 14:27:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.10.2:
+  + Do not pop a certificate chooser if nobody clicked the button.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  7 18:27:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.10.0:
+  + Libnma-gtk4 now has Smart Card support viad Gtk4-enabled
+    version of Gcr.
+  + nma-cert-chooser.c is now included in the list of translated
+    files.
+- Add fix-dependency-pc-name.patch: Update gcr-4.pc name to new
+  form. Following this: Add pkgconfig(gcr-4) and pkgconfig(gck-2)
+  BuildRequires and pass gcr_gtk4=true to meson, build the new
+  gcr-gtk4 based advanced certificate chooser.
+- Pass b_lto=true to meson, build with LTO support.
+
+-------------------------------------------------------------------
 Thu Jun 16 06:36:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.40:

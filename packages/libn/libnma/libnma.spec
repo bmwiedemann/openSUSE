@@ -17,21 +17,25 @@
 
 
 %define sover 0
-%define base_ver 1.8
+%define base_ver 1.10
 
 Name:           libnma
-Version:        1.8.40
+Version:        1.10.2
 Release:        0
 Summary:        Shared library for NetworkManager-applet
 License:        GPL-2.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/libnma
 Source0:        https://download.gnome.org/sources/%{name}/%{base_ver}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM fix-dependency-pc-name.patch -- Update .pc name to new form
+Patch0:         fix-dependency-pc-name.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gck-1) >= 3.14
+BuildRequires:  pkgconfig(gck-2)
 BuildRequires:  pkgconfig(gcr-3) >= 3.14
+BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38
 BuildRequires:  pkgconfig(gmodule-export-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.6
@@ -110,7 +114,9 @@ Documentation files for %{name}.
 
 %build
 %meson \
+	-D b_lto=true \
 	-D libnma_gtk4=true \
+	-D gcr_gtk4=true \
 	%{nil}
 %meson_build
 
