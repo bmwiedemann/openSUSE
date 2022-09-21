@@ -17,7 +17,7 @@
 
 
 Name:           geary
-Version:        40.0+50
+Version:        40.0+146
 Release:        0
 Summary:        An email reader for the GNOME desktop
 License:        BSD-2-Clause AND CC-BY-3.0 AND LGPL-2.1-or-later
@@ -37,10 +37,11 @@ BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(enchant-2) >= 2.1
 BuildRequires:  pkgconfig(folks)
+BuildRequires:  pkgconfig(gck-1)
 BuildRequires:  pkgconfig(gcr-3) >= 3.10.1
 BuildRequires:  pkgconfig(gee-0.8) >= 0.8.5
-BuildRequires:  pkgconfig(gio-2.0) >= 2.64.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.64.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.68.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.68.0
 BuildRequires:  pkgconfig(gmime-3.0) >= 3.2.4
 BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
@@ -50,19 +51,19 @@ BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 BuildRequires:  pkgconfig(icu-uc) >= 60
 BuildRequires:  pkgconfig(iso-codes)
-BuildRequires:  pkgconfig(javascriptcoregtk-4.0) >= 2.10.0
+BuildRequires:  pkgconfig(javascriptcoregtk-4.1)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libhandy-1) >= 1.2.1
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.24.0
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.24.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.11
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.48
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libunwind)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
 BuildRequires:  pkgconfig(sqlite3) >= 3.24
 BuildRequires:  pkgconfig(vapigen) >= 0.48.6
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.26.0
-BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.0) >= 2.26.0
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
+BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.1)
 
 %description
 Geary is a email reader for GNOME.

@@ -523,4 +523,12 @@
     <comment></comment>
     <requestid>963399</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>fff0cca2ae7a0828a7b86829745e3532</srcmd5>
+    <version>40.0+146</version>
+    <time>1663764136</time>
+    <user>dimstar_suse</user>
+    <comment>New checkout</comment>
+    <requestid>1004747</requestid>
+  </revision>
 </revisionlist>

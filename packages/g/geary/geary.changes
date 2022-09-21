@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Sep 15 15:54:02 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 40.0+146:
+  * Update POTFILES.in
+  * treewide: Removed unused Yahoo imap engine
+  * client:
+    - accounts: Add support for Thunderbird autoconfig
+    - Fix adding a new infobar to Components.InfoBarStack
+  * plugin: Only enable mail merge action for templates
+  * Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 29 20:49:52 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 40.0+127:
+  * client:
+    - Fix handling of 'mark messages' menu
+    - Add support for Background portal
+    - Remove deprecated hidden option
+    - Startup notifications is a freedesktop.org concept
+    - Running as a service does not mean running in the background
+      indefinitely
+    - composer: Remove workaround for GTK merge request
+  * appdata: State hardware support the old way
+  * build:
+    - Fix building against libsoup3
+    - Update GitLab CI requirements
+  * editor: Set capture phase for the gesture
+  * engine:
+    - Fix GLib.Timezone deprecation warning in GLib 2.68
+    - If email not found in outbox, do not queue it again. Prevent
+      an infinite loop
+    - TlsCertificateFlags.VALIDATE_ALL is the default value
+    - Vala disallows using nullabe enum value as real GObject
+      property
+  * Fix touch input in composer
+  * icons: Update icons to match recent Adwaita
+  * meson:
+    - Remove uses of get_pkgconfig_variable
+    - Update to 0.59
+    - Use gnome.post_install
+  * Removed CMake from build dependencies
+  * Updated translations.
+- Changes in BuildRequires following upstream changes:
+  * Drop: pkgconfig(javascriptcoregtk-4.0), pkgconfig(libsoup-2.4),
+    pkgconfig(webkit2gtk-4.0) and
+    pkgconfig(webkit2gtk-web-extension-4.1)
+  * Add: pkgconfig(gck-1), pkgconfig(javascriptcoregtk-4.1),
+    pkgconfig(libsoup-3.0), pkgconfig(webkit2gtk-4.1) and
+    pkgconfig(webkit2gtk-web-extension-4.1)
+
+-------------------------------------------------------------------
 Thu Feb 10 19:15:25 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 40.0+50:
