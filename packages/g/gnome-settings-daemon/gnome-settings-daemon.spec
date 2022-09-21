@@ -27,14 +27,16 @@
 %bcond_without wacom
 %endif
 
+%define base_ver 43
+
 Name:           gnome-settings-daemon
-Version:        42.2
+Version:        43.0
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-settings-daemon
-Source0:        https://download.gnome.org/sources/gnome-settings-daemon/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-settings-daemon/%{base_ver}/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-initial-keyboard.patch bsc#979051 boo#1009515 federico@suse.com -- Deal with the default keyboard being set from xkb instead of GNOME
 Patch1:         gnome-settings-daemon-initial-keyboard.patch
@@ -62,9 +64,9 @@ BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(colord) >= 1.3.5
 BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(gcr-3) >= 3.7.5
+BuildRequires:  pkgconfig(gcr-4) >= 3.7.5
 BuildRequires:  pkgconfig(geoclue-2.0) >= 2.1.2
-BuildRequires:  pkgconfig(geocode-glib-1.0) >= 3.10.0
+BuildRequires:  pkgconfig(geocode-glib-2.0) >= 3.10.0
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.58
@@ -178,8 +180,8 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %{_datadir}/gnome-settings-daemon/
 %{_libexecdir}/gsd-backlight-helper
 %{_libexecdir}/gsd-printer
-%dir %{_libdir}/gnome-settings-daemon-42/
-%{_libdir}/gnome-settings-daemon-42/libgsd.so
+%dir %{_libdir}/gnome-settings-daemon-%{base_ver}/
+%{_libdir}/gnome-settings-daemon-%{base_ver}/libgsd.so
 # Explicitly list all the plugins so we know we don't lose any
 
 %{_libexecdir}/gsd-a11y-settings
@@ -284,7 +286,7 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 
 %files devel
 %doc AUTHORS ChangeLog
-%{_includedir}/gnome-settings-daemon-42/
+%{_includedir}/gnome-settings-daemon-%{base_ver}/
 %{_libdir}/pkgconfig/gnome-settings-daemon.pc
 
 %files lang -f %{name}.lang

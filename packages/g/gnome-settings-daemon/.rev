@@ -1431,4 +1431,12 @@ work. (forwarded request 640069 from iznogood)</comment>
   better here than having to worry what package carries the binary.</comment>
     <requestid>992578</requestid>
   </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>647aa8b7ddf8a71d9f832bedcaaaac60</srcmd5>
+    <version>43.0</version>
+    <time>1663764034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004802</requestid>
+  </revision>
 </revisionlist>
