@@ -1172,4 +1172,12 @@
     <comment>Scripted push from GNOME:Next (forwarded request 972580 from dimstar)</comment>
     <requestid>973137</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>85cf0b9e456261b7c2fa7809df2e6f95</srcmd5>
+    <version>0.56.3</version>
+    <time>1663763974</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002693 from dimstar)</comment>
+    <requestid>1003217</requestid>
+  </revision>
 </revisionlist>
