@@ -82,4 +82,20 @@
   https://github.com/cockpit-project/cockpit-podman/releases/tag/49.1</comment>
     <requestid>983430</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>30a9dadb6b8ed6ba441673a0fb5df3fa</srcmd5>
+    <version>53</version>
+    <time>1663764072</time>
+    <user>dimstar_suse</user>
+    <comment>- new version 53. Changes since 49.1 include,
+  * Use NumberInput for Image Run Dialog
+  * Fix events with large number of containers
+  * Translation updates
+  * Add Volumes and Env Variables to container details
+  * Show volume permission in container integration tab
+  * Allow no system users to set restart policy
+  * Show image history
+  * Stability and performance improvements</comment>
+    <requestid>1005002</requestid>
+  </revision>
 </revisionlist>

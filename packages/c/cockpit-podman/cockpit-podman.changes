@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 20 10:11:52 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- new version 53. Changes since 49.1 include,
+  * Use NumberInput for Image Run Dialog
+  * Fix events with large number of containers
+  * Translation updates
+  * Add Volumes and Env Variables to container details
+  * Show volume permission in container integration tab
+  * Allow no system users to set restart policy
+  * Show image history
+  * Stability and performance improvements
+
+-------------------------------------------------------------------
 Fri Jun 17 10:11:13 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - load-css-overrides.patch: css overrides for better theming support 
