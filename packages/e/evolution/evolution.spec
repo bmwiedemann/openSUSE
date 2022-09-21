@@ -20,7 +20,7 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution
-Version:        3.44.4
+Version:        3.46.0
 Release:        0
 # FIXME: check if note on license is still valid (comment before license)
 Summary:        The Integrated GNOME Mail, Calendar, and Address Book Suite
@@ -28,7 +28,7 @@ Summary:        The Integrated GNOME Mail, Calendar, and Address Book Suite
 License:        CC-BY-SA-3.0 AND LGPL-2.0-only AND LGPL-3.0-only AND OLDAP-2.8 AND GFDL-1.1-only AND GFDL-1.3-only
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Evolution/
-Source0:        https://download.gnome.org/sources/evolution/3.44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evolution/3.46/%{name}-%{version}.tar.xz
 BuildRequires:  bison
 BuildRequires:  bogofilter
 BuildRequires:  cmake
@@ -51,9 +51,8 @@ BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(camel-1.2) >= %{_version}
 BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(gail-3.0) >= 3.2.0
-BuildRequires:  pkgconfig(gcr-3) >= 3.4
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.24.0
-BuildRequires:  pkgconfig(geocode-glib-1.0) >= 3.10
+BuildRequires:  pkgconfig(geocode-glib-2.0)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gladeui-2.0) >= 3.10.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.40.0
@@ -67,7 +66,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.8.0
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gtkspell3-3.0)
 # NOTE when bumping this BR, bump the req in devel pac below
-BuildRequires:  pkgconfig(gweather-3.0) >= 3.10
+BuildRequires:  pkgconfig(gweather4)
 # /NOTE
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(iso-codes)
@@ -78,22 +77,21 @@ BuildRequires:  pkgconfig(libebook-1.2) >= %{_version}
 BuildRequires:  pkgconfig(libecal-2.0) >= %{_version}
 BuildRequires:  pkgconfig(libedataserver-1.2) >= %{_version}
 BuildRequires:  pkgconfig(libedataserverui-1.2) >= %{_version}
-# NOTE when bumping this BR, bump the req in devel pac below
-BuildRequires:  pkgconfig(libgdata) >= 0.10
 BuildRequires:  pkgconfig(libnotify) >= 0.7
 # /NOTE
 BuildRequires:  pkgconfig(libpst) >= 0.6.54
 # NOTE when bumping this BR, bump the req in devel pac below
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42
+BuildRequires:  pkgconfig(libsoup-3.0)
 # /NOTE
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.3
 BuildRequires:  pkgconfig(nspr)
 BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(shared-mime-info) >= 0.22
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.13.90
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 Requires:       evolution-data-server >= %{_version}
 # Mono and python plugins were available until evo 3.5.x
 Obsoletes:      evolution-mono-plugins < %{version}
+Obsoletes:      evolution-plugin-rss < %{version}
 Obsoletes:      evolution-python-plugins < %{version}
 
 %description
@@ -169,9 +167,8 @@ Requires:       evolution-data-server-devel >= %{version}
 Requires:       pkgconfig(enchant-2)
 Requires:       pkgconfig(gtk+-3.0) >= 3.8.0
 Requires:       pkgconfig(gtkspell3-3.0)
-Requires:       pkgconfig(gweather-3.0) >= 3.10
-Requires:       pkgconfig(libgdata) >= 0.10
-Requires:       pkgconfig(libsoup-2.4) >= 2.42
+Requires:       pkgconfig(gweather4)
+Requires:       pkgconfig(libsoup-3.0)
 Requires:       pkgconfig(libxml-2.0)
 Provides:       evolution2-devel = %{version}
 Obsoletes:      evolution2-devel < %{version}
@@ -297,6 +294,9 @@ to develop applications that require these.
 %{_libdir}/evolution/web-extensions/webkit-editor/module-webkit-editor-webextension.so
 %dir %{_libdir}/evolution-data-server/ui-modules
 %{_libdir}/evolution-data-server/ui-modules/module-evolution-alarm-notify.so
+%{_libdir}/evolution-data-server/camel-providers/libcamelrss.so
+%{_libdir}/evolution-data-server/camel-providers/libcamelrss.urls
+%{_libdir}/evolution/modules/module-rss.so
 
 %files -n glade-catalog-evolution
 %{_libdir}/glade/modules/libgladeevolution.so

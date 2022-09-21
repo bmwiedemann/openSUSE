@@ -2188,4 +2188,189 @@ Recommended for 12.3</comment>
     - Calendar: The default reminder not always added. (forwarded request 993262 from iznogood)</comment>
     <requestid>993942</requestid>
   </revision>
+  <revision rev="260" vrev="1">
+    <srcmd5>760046aedf14d003c74390397c60bde3</srcmd5>
+    <version>3.46.0</version>
+    <time>1663764017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.46.0:
+  + Bugs fixed: Use icon-only buttons in the header bar.
+  + Updated translations.
+- Update to version 3.45.3:
+  + ECert: Correct free function of two private members
+  + Use certificate widget provided by libedataserverui
+  + MessageList: Remove unneeded condition in an 'if' statement
+  + Bugs fixed:
+    - EShellWindow: The 'New' menu is not filled after start
+    - Composer: Send of Outbox message doesn't remove it
+    - EMFormat: Do not &quot;mark citation&quot; in header values
+  + Updated translations.
+- Drop unused pkgconfig(gcr-4-gtk3) BuildRequires.
+- Update to version 3.45.2:
+  + Mail: Handle built-in accounts similar to 'On This Computer'
+    and 'Search Folders'
+  + e_mail_folder_to_full_display_name: Use display-name for
+    folders with no parent
+  + EMFolderTree: Add 'folder-custom-icon' and 'compare-folders'
+    signals
+  + Implement News &amp; Blogs (RSS) reader
+  + RSS: Require camel and libedataserer pkgconfig files
+  + Use camel_folder_get_full_display_name() in user-visible
+    strings
+  + Composer: Some parts of HTML not always converted into Plain
+    Text
+  + ECompEditor:
+    - Add signals for core virtual methods
+    - Prefer &quot;Save and Close&quot; in the header bar
+  + Change when symbolic icons are forced in the application
+  + flatpak: Add access to gvfsd in the Flatpak manifests
+  + Build with gcr4 by default
+  + Add Abkhazian translation into the list of supported locales
+  + EHeaderBarButton:
+    - Use gtk_action_is_sensitive() in &quot;sensitivity&quot; property
+      binding
+    - Uniform how a GtkAction is added into the header bar button
+    - Disable the dropdown button with the main
+      button
+  + EMenuBar: Ensure GSettings signal handler is removed on menu
+    bar free
+  + Show a menu button in the header bar when the menu bar is
+    hidden
+  + Bugs fixed:
+    - Calendar:
+      . Sort reminder times in the component editor
+      . The default reminder not always added
+    - EColorSchemeWatcher: Verify chosen dark variant theme name
+      exists
+    - ECompEditor:
+      . Cannot save changes
+      . Reminders list is too small
+    - EMailBrowser: Move 'Reply' to the right side of the header
+      bar
+    - Mail:
+      . Change Template folder icon to 'folder-templates'
+      . Option to use user-specified Date format in Inline reply
+        style
+    - Missing divider lines and paddings under GNOME
+    - Use Client Side Decoration (header bar)
+  + Updated translations.
+- Changes from version 3.45.1:
+  + build: Update geocode-glib dependency
+  + Calendar:
+    - Add option to shorten event end time for new events
+    - Default to event move on drag&amp;drop in Week/Month/Year views
+    - Fix recently introduced &quot;maybe used uninitialized&quot; warning in
+      the print code
+    - Highlight today in the Year View
+    - Ignore event drag&amp;drop in read-only calendars in Year View
+    - Implement event drag&amp;drop for the Year view
+    - Implement 'Year View'
+    - Minicalendar shown after search in the List View
+    - Option to shorten an event time from the end or from the
+      start
+    - Unify tooltip query in calendar views
+    - Update preview on a component change in the Year View
+  + CompEditor: Consider 'shorten-end-time' when adjusting end time
+  + Correct spelling of word 'GitLab'
+  + Disable hardware acceleration for WebKitGTK
+  + docs: Add some missing sections into the developer
+    documentation
+  + ECalComponentPreview: Linkify 'Location' value
+  + ECompEditor: Change packing of the Organizer combo
+  + EContactEditor: Use a GWeakRef on the editor when opening
+    target client
+  + EMailStripSigFilter: Make sure it doesn't read out of buffer
+    bounds
+  + EMonthWidget: Fix a memory leak
+  + ENameSelectorDialog: Set a11y description for the Add/Remove
+    buttons
+  + EShell: Auto-close ESource connection alerts on idle
+  + EWebDAVConfigLookup: Set also authentication method
+  + EWebKitEditor: Mode change not propagated into the Editor
+    widget
+  + EWebView: Unset has-selection flag on content load start
+  + Fix cairo_surface_t memory leaks after drag begin
+  + flatpak: Prepare manifest for the development version
+  + gal-view-instance: Do not crash on broken setup
+    it, and all of its dependencies, should be libsoup3 too.
+  + itip-view: Ignore empty text/plain subpart in meeting
+    invitation mail
+  + Mail: Handle CAMEL_PROVIDER_CONF_ADVANCED_SECTION_START in
+    provider config page
+  + Tasks: Ensure ICalTime::zone is set for current time
+  + The Evolution had been ported to libsoup3, which means anything
+    what uses
+  + Update the information in the AUTHORS file
+  + Bugs fixed:
+    - Calendar: Display multi-lingual properties in current locale
+    - alarm-notify: Add option to enable/disable desktop
+      notifications
+    - Calendar: Drag&amp;drop events in Week/Month views
+    - Cannot import PKCS12 certificate with non-ASCII or empty
+      password
+    - icons: emblem-new hard to spot with adwaita-icon-theme 42
+    - itip-formatter: Properly update content on message preview
+      reload
+    - Correct GSettings schema strings for translation
+    - Mail: Preview uses wrong colors for HTML mail with dark theme
+    - Meeting attendees should default to Required Participants
+    - attachment-reminder: Existing keyword lost on editing cancel
+    - icons: Add symbolic variants for toolbar/folder tree icons
+    - markdown-utils: Ignore character encoding hints in HTML when
+      converting to text
+    - Flatpak: Attachments cannot be opened
+    - Tasks: Cannot remove recurrence and Start date at the same
+      time
+    - Composer: Markdown should prevent soft line breaks
+    - Calendar: Show recurring information near event time in
+      preview/iTip
+    - itip-formatter: Colorize meeting summary with the event color
+    - Show mailto: hyperlinks in the status bar percent-decoded
+    - WebKitEditor: Convert to plain text incorrect on
+      reply/forward open
+    - Contacts: Add a way to create a contact copy
+    - Calendar: Read Organizer/Attendee EMAIL parameter
+    - itip-formatter: Use whole URL value as a link href
+    - Fails to build with libgweather 3.36
+    - Misc: Handle numpad Enter similarly as the Enter key
+    - Composer: Ensure URL entry is focused in Link Properties
+    - Better handle Dark Style GNOME 42 setting
+    - iTIP formatter shows twice &quot;Attendee status updated&quot;
+    - Calendars with very long names hide the organizer in the
+      CompEditor
+    - Tasks: Overdue calculation sometimes incorrect
+    - CompEditor: Move whole component between calendars
+    - DUE-today color in Tasks window not always applied
+    - Calendar: iTip message not sent to a Room address
+    - Allow to search in &quot;Describe Filters&quot;
+    - Calendar: Add option to change 'today' background color
+    - Composer: Skip STYLE and other tags in convert to Plain Text
+    - Drag&amp;Drop creates many identical temporary files
+    - Composer: Add &quot;Copy/Open Link&quot; into the context menu
+    - Update Task preview, when Task is updated
+    - Mail: Add option to print attachment content
+    - ESourceSelectorDialog: Close on double-click on source only
+    - Calendar: Show extra Google attendee info in component
+      preview
+    - Crash when printing task list to pdf
+    - Logic of &quot;Do not sign meeting requests&quot; is inverted
+    - Add Web Key Directory (WKD) support for OpenPGP
+    - Add option to respect Power Saver mode
+    - EMFolderTreeModel: Prefer Inbox over other folder types
+    - Port to libsoup3
+    - icon-factory: update for new gnome-desktop API
+    - em-format: Make contact photo rounded
+    - EShell: Use symbolic icons on GNOME
+  + Updated translations.
+- Replace pkgconfig(geocode-glib-1.0), pkgconfig(gcr-3),
+  pkgconfig(gweather-3.0), pkgconfig(libsoup-2.4) and
+  pkgconfig(webkit2gtk-4.0) with pkgconfig(geocode-glib-2.0),
+  pkgconfig(gcr-4-gtk3), pkgconfig(gweather4),
+  pkgconfig(libsoup-3.0), pkgconfig(webkit2gtk-4.1)
+  BuildRequires/Requires following upstream changes.
+- Drop pkgconfig(libgdata) BuildRequires/Requires: No longer
+  required, nor needed.
+</comment>
+    <requestid>1004778</requestid>
+  </revision>
 </revisionlist>
