@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 21 08:24:30 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- Added several RPM requires that are needed by the SUSE remediation
+  scripts. (e.g. awk is not necessary installed)
+
+-------------------------------------------------------------------
 Sat Jul 30 13:59:29 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.1.63 (jsc#ECO-3319)

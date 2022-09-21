@@ -53,6 +53,16 @@ Packager:       SUSE Security Team <security@suse.de>
 %endif
 Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
 Patch0:         scap-security-guide-UnicodeEncodeError-character-fix.patch
+
+# explicit require what is needed by the detection logic in the scripts
+Requires:	gawk
+Requires:	sed
+Requires:	grep
+Requires:	findutils
+Requires:	coreutils
+Requires:	zypper
+
+
 BuildRequires:  cmake
 
 %if "%{_vendor}" == "debbuild"
