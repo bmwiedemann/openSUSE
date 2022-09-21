@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Fri Sep 16 23:52:32 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 0.70.0:
+  + build: Post release version bump
+
+-------------------------------------------------------------------
+Sun Sep 04 15:52:02 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 0.69.99:
+  + build: Version 0.69.99 for gnome 43rc
+  + lib: Fix spawning on netbsd
+  + widget:
+    - Fix Widget::regex_match_check_at()
+    - Use correct view coordinates
+    - gtk4:
+      . Only notify terminal when focused
+      . Don't grab the focus on focus-in
+
+-------------------------------------------------------------------
+Thu Sep  1 14:18:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable glade catalog support via bcond.
+- Fixup the defines, most importantly name the vte typelib
+  correctly again.
+
+-------------------------------------------------------------------
+Tue Aug 09 09:33:51 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 0.69.92:
+  + all:
+    - Include <termios.h> directly
+    - Remove SIXEL support from stable branch
+    - Don't override widget's CSS names
+  + bindings:
+    - gir: Change vte/gtk4 gir nsversion
+    - vala:
+      . Add vapi for vte/gtk4
+      . Remove the test app
+  + build:
+    - Also set _XOPEN_SOURCE
+    - Build fix for netbsd
+    - Bump meson req version to 0.51
+    - Check for python version
+    - Define __BSD_VISIBLE on freebsd
+    - Define list of libc feature test macros only once
+    - Fix debug build
+    - Make sure __BSD_VISIBLE is defined on freebsd
+    - Remove gtk4 notice
+    - Try to fix pwrite detection on non-glibc systems
+    - Update gtk3 req version
+    - Use an explict python interpreter
+  + docs:
+    - Install toml file to subdir
+    - Port to gi-docgen
+  + fonts:
+    - gtk4: Create a new pango context
+    - Only set language if different to the current language
+    - Pass nullptr for language
+  + glib:
+    - glue:
+      . Include string
+      . Include string_view
+  + lib:
+    - Fix reserved size calculation
+    - Move glib glue code to glib-glue.cc
+  + Revert "emulation: Support XTVERSION sequence"
+  + sixel: Remove stray semicolon
+  + spawn: Fix build without CLOSE_RANGE_CLOEXEC
+  + widget:
+    - Add API to get selected text
+    - widget: Add format arg to new API to get selected text
+    - Correct some Since annotations
+    - Defer alignment API to next cycle
+    - Don't queue_resize() during allocation
+    - Fix padding borders
+    - Fix some API version tags
+    - gtk4:
+      . Add API to check event context
+      . Don't invalidate endlessly
+      . Lower the priority of the style provider
+      . Make background API available on gtk4
+      . Simplify invalidation tracking
+    - gtk: Make new API naming self-consistent
+    - Ignore synthetic scroll events
+    - Listen for toplevel focus change
+    - Only avoid reentrant queue_resize() in GTK4
+    - Queue a resize on CSS changes
+    - Remove errneous gtk_widget_allocate call
+  + Update translations.
+- Rebase vte-enable-build-flag-pie.patch with quilt.
+- Set bcond to without, build gtk4 support.
+- Drop gtk-doc and add pkgconfig(gi-docgen) BuildRequires following
+  upstreams port to gi-docgen.
+
+-------------------------------------------------------------------
 Sun Mar 27 23:26:09 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 0.68.0:
