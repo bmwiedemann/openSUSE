@@ -17,13 +17,13 @@
 
 
 Name:           totem
-Version:        42.0
+Version:        43.0
 Release:        0
 Summary:        Movie Player for the GNOME Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://wiki.gnome.org/Apps/Videos
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/totem/43/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -53,6 +53,7 @@ BuildRequires:  pkgconfig(libepc-ui-1.0) > 0.4.0
 BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.1.0
 BuildRequires:  pkgconfig(libpeas-gtk-1.0)
+BuildRequires:  pkgconfig(libportal-gtk3)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 2.90.3
 BuildRequires:  pkgconfig(shared-mime-info)
@@ -143,11 +144,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Totem.deskt
 %{_datadir}/applications/*.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.totem.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.totem.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/org.gnome.Totem*.svg
+%{_datadir}/icons/hicolor/*/apps/*.svg
 %dir %{_datadir}/thumbnailers
 %{_datadir}/thumbnailers/totem.thumbnailer
 %{_libexecdir}/totem-gallery-thumbnailer
-%{_datadir}/totem/
 %{_mandir}/man?/*%{ext_man}
 # Own directories for plugins
 %dir %{_libdir}/totem
