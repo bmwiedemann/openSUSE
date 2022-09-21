@@ -17,18 +17,18 @@
 
 
 Name:           template-glib
-Version:        3.34.1
+Version:        3.36.0
 Release:        0
 Summary:        Library for generating text based on a template and user defined state
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://git.gnome.org/browse/template-glib/
-Source0:        https://download.gnome.org/sources/template-glib/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/template-glib/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gtk-doc
-BuildRequires:  meson
+BuildRequires:  meson >= 0.51.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -84,11 +84,11 @@ This package provides the development files.
 
 %build
 %meson \
-	-Denable_tracing=false \
-	-Denable_profiling=false \
-	-Dwith_introspection=true \
-	-Dwith_vapi=true \
-	-Denable_gtk_doc=true \
+	-Dtracing=false \
+	-Dprofiling=false \
+	-Dintrospection=enabled \
+	-Dvapi=true \
+	-Dgtk_doc=true \
 	%{nil}
 %meson_build
 
