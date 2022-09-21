@@ -18,13 +18,13 @@
 
 %define _name   gtksourceview
 Name:           gtksourceview5
-Version:        5.4.2
+Version:        5.6.0
 Release:        0
 Summary:        GTK+ Source Editing Widget
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GtkSourceView
-Source0:        https://download.gnome.org/sources/gtksourceview/5.4/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtksourceview/5.6/%{_name}-%{version}.tar.xz
 Source1:        changes.lang
 
 BuildRequires:  gobject-introspection-devel >= 1.70
@@ -33,11 +33,14 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-gi-docgen
 BuildRequires:  vala
 BuildRequires:  valgrind
-BuildRequires:  pkgconfig(fribidi)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.70
-BuildRequires:  pkgconfig(glib-2.0) >= 2.70
-BuildRequires:  pkgconfig(gtk4) >= 4.4
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(fribidi) >= 0.19.7
+BuildRequires:  pkgconfig(gio-2.0) >= 2.72
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72
+BuildRequires:  pkgconfig(gtk4) >= 4.6
+BuildRequires:  pkgconfig(libpcre2-8) >= 10.21
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
+BuildRequires:  pkgconfig(pangoft2)
 
 %description
 GtkSourceView is a text widget that extends GtkTextView, the standard
@@ -103,8 +106,7 @@ features typical of a source editor.
 # Install language definition for *.changes files:
 install -m 644 %{S:1} %{buildroot}%{_datadir}/gtksourceview-5/language-specs/
 
-%post -n libgtksourceview-5-0 -p /sbin/ldconfig
-%postun -n libgtksourceview-5-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgtksourceview-5-0
 
 %files -n libgtksourceview-5-0
 %license COPYING

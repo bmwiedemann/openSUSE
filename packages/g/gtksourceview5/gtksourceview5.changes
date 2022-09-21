@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Sun Sep 18 10:38:39 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.6.0:
+  + Updated languages: awk.lang, lean.lang
+  + Updated style schemes: Adwaita.xml, Adwaita-dark.xml,
+    solarized-light.xml, solarized-dark.xml, cobalt.xml.
+  + A bug with input grabs has been fixed when using GtkSourceHover
+    to create interactive tooltips in a stack or notebook.
+  + highlight-current-line is only rendered when the toplevel is
+    active.
+  + Merging of snippet bundles handles tooltips now.
+  + The snippet manager now delays snippet parsing until needed.
+  + Completion of snippets is now lazier resulting in less memory
+    and CPU usage.
+  + Informative tooltips for snippets are now more aggressively
+    dismissed.
+  + Scrolling now dismisses interactive hover tooltips.
+  + Use of Escape now dismisses the completion list and forwards
+    the event to the GtkSourceView, improving integration of Vim
+    emulation.
+  + Snippet filtering correctness has been improved when
+    adding/removing characters from the filter text.
+  + Assistants such as the completion list defer repositioning to
+    the next frame tick which improves some situations with
+    widgetry not having an allocation when snapshotted.
+  + A new GtkSourceCompletion::provider-model-changed signal has
+    been added which allows observation of providers by external
+    tooling. This can be used to implement features like
+    "top matches" from various completion providers.
+  + Testsuite improvements.
+  + GtkSourceView now uses GSignalGroup and GBindingGroup from
+    GLib, and therefore bumps our GLib dependency as it would be
+    necessary with updated GTK releases anyway.
+  + GtkSourceHoverDisplay now specifies a CSS element name for use
+    by applications in styling.
+  + GtkSourceCompletion now uses PANGO_UNDERLINE_SINGLE_LINE and
+    PANGO_WEIGHT_BOLD Pango attributes for highlighting fuzzy
+    matches. This improves visibility when used with certain
+    character sets.
+  + Splicing of Pango attributes has been improved for completion
+    which ensures the merging does not result in missing
+    attributes.
+  + Some methods have been marked as virtual for Vala.
+  + Updated translations.
+- Add optional pkgconfig(fontconfig) and pkgconfig(pangoft2)
+  BuildRequires: build fonconfig support.
+
+-------------------------------------------------------------------
+Thu Aug 11 16:04:19 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.5.1:
+  + Many fixes to GtkSourceSnippet parsing and expaction.
+  + Various test-suite fixes.
+  + The snippet completion provider now avoids inflating snippet
+    objects until they are inserted.
+  + Input-method integration improvements for custom indenters.
+  + Performance improvements to GtkSourceBuffer.
+  + Performance improvements when translating improperly encoded
+    documents to fallback hexadecimal characters.
+  + Disable GtkSourceBuffer::cursor-moved signal while loading
+    buffers with GtkSourceFileLoader.
+  + Adwaita.xml styling fixes for def:error.
+  + More profiling integration with sysprof.
+  + Updated languages: lean, latex, chdr, cpphdr.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 18 07:49:37 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.5.0:
+  + Build fixes for deprecated meson features and MSVC
+    improvements.
+  + Fixes for hover assistant placement and display.
+  + A number of improvements to Vim emulation.
+  + The overview map can now avoid redrawing in a number of
+    scenarios.
+  + The completion popover can now avoid repositioning in a number
+    of scenarios.
+  + The completion popover now hides before resetting grid content.
+  + Language specifications can now provide a suggested suffix or
+    name for new files. GNOME Text Editor has examples for using
+    this new opt-in metadata.
+  + Various fixes display of snippet assistants.
+  + New languages: twig.lang.
+  + Updated translations.
+- Add explicit pkgconfig(libpcre2-8) BuildRequires as meson checks
+  for it, already pulled in by other dependencies.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Mon Jun 13 11:26:32 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 5.4.2:

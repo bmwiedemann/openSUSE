@@ -65,4 +65,12 @@
   + Updated translations. (forwarded request 983489 from iznogood)</comment>
     <requestid>983863</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c6a9458af59442ae9f880c31029c462e</srcmd5>
+    <version>5.6.0</version>
+    <time>1663764048</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004815</requestid>
+  </revision>
 </revisionlist>
