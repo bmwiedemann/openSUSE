@@ -1,0 +1,9 @@
+<package name="libpanel" project="openSUSE:Factory">
+  <title>IDE paneling library for GTK</title>
+  <description>A collection of GTK widgets for IDE-like applications targeting
+GNOME using GTK and libadwaita.
+
+</description>
+  <devel project="GNOME:Factory" package="libpanel"/>
+  <url>https://gitlab.gnome.org/GNOME/libpanel</url>
+</package>
