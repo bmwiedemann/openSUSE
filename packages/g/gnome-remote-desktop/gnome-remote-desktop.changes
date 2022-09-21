@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Sun Sep 18 07:29:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  4 11:12:59 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 43.rc:
+  + Many small fixes and improvements.
+  + Updated translations.
+- Add explicit pkgconfig(gio-2.0) as build requirement to align
+  with what Meson searches. It was already being pulled to the
+  build by its siblings (gio-unix-2.0/glib-2.0) since they come
+  from the same package.
+- Add explicit pkgconfig modules as build requirements: tss2-mu,
+  tss2-rc, and tss2-tctildr. Same reason as gio-2.0 above, but this
+  time pkgconfig(tss2-esys) was the one helping the others being
+  pulled.
+- Pass 1.4 and 11.1.5.0 as minimum requirement versions for epoxy
+  and ffnvcodec respectively to ensure the package uses the minimum
+  that upstream recommends using.
+
+-------------------------------------------------------------------
+Mon Aug 08 09:38:48 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 43.beta:
+  + Add man page
+  + Add TPM 2.0 helper class
+  + Add TPM credentials using headless runtime mode
+  + build:
+    - Bump FreeRDP version requirement
+    - Bump version to 43.alpha
+    - Disable VNC support by default
+    - List credentials dependencies separately
+    - Sort dependencies alphabetically
+    - Sort sources alphabetically
+  + ci:
+    - Add tss2 related devel packages
+    - Build with VNC backend
+  + context: Move out debug flags
+  + Convert README data/README to MD
+  + credentials:
+    - Add TPM 2.0 backend
+    - Do not crash when deleting non-existent credentials
+  + credentials-libsecret: Do not crash, when deleting legacy VNC
+    password
+  + ctl:
+    - Add support for TPM credentials
+    - Fix error messages
+  + egl-thread: Release EGL context before destroying it
+  + hwaccel-nvidia: Don't dereference NULL pointer in assertion
+  + Introduce GrdCredentials
+  + pipewire-utils:
+    - Add helper function for creating PipeWire source
+    - Remove grd_maybe_initialize_pipewire()
+  + rdp:
+    - Add API to tear down channels during a session
+    - Add classes for audio output forwarding
+    - Add RDP DSP class
+    - Add support for audio output forwarding
+    - Combine buffer creation and resize operations
+    - Don't dereference NULL pointer when parent dir cannot be
+      found
+  + rdp-event-queue: Correctly clean up resources
+  + rdp-gfx-surface: Delete GFX surface before clearing its members
+  + rdp-graphics-pipeline:
+    - Extend comment with documentation reference
+    - Fix uninitialized caps mutex
+    - Measure bandwidth when sending frame updates
+  + rdp/nw-auto:
+    - Add APIs for bandwidth measurement
+    - Also notify client about network characteristics results
+    - Assert RTT consumer != NONE, when removing RTT consumer
+    - Disallow unqueued bandwidth measure stops
+    - Fix initial ping source not being created
+    - Remove superfluous if condition
+    - Turn assertion into normal conditional statement
+    - Turn ping info condition into assertion
+  + rdp-pipewire-stream:
+    - Properly deinitialize PipeWire upon destruction
+    - Remove unused SPA_DATA_MemPtr path
+    - Use common helper for PipeWire source creation
+  + rdp/rdpgfx:
+    - Create RTT pause source while GFX mutex is locked
+    - Only clear unacked frames when surface has frame controller
+  + session-rdp:
+    - Add API to subscribe to DVC creation statuses
+    - Do not crash, when credentials are not set
+    - Handle queued bandwidth measure stop operations
+    - Stop leaking session sources when session creation fails
+    - Stop leaking the event queue, when session creation fails
+    - Use trivial boolean value for condition in graphics thread
+  + session-vnc:
+    - Add support for sessions with virtual monitors
+    - Do not crash, when password is not set
+  + settings:
+    - Add new screenshare mode setting for the VNC backend
+    - Fix title of specification in setting description
+    - Remove a doubled 'to'
+  + tests: Add test for the RDP backend
+  + tests/egl: Replace tautologies with actual modifier checks
+  + tests/rdp:
+    - Add additional debug messages to RDP test
+    - Add missing NULL check on stop_event
+  + tests/tpm: Skip tests when TPM module not compatible
+  + tests/vnc: Use mutter headless backend
+  + tpm:
+    - Add ability to do capability check
+    - Make tss2 log into /dev/null
+  + types: Sort typedefs alphabetically
+  + vnc:
+    - Add ability to resize virtual monitors during a session
+    - Add VNC virtual monitor config
+    - Allow passing virtual monitor settings to pipewire-stream
+      instance
+  + vnc-pipewire-stream:
+    - Properly deinitialize PipeWire upon destruction
+    - Remove unused SPA_DATA_MemPtr path
+    - Use common helper for PipeWire source creation
+  + Updated translations.
+- Add asciidoc, pkgconfig(fdk-aac) and pkgconfig(tss2-esys)
+  BuildRequires: New dependencies.
+- Pass vnc=true to meson, build vnc support even if disabled by
+  default upstream. We are not quite ready to drop that support
+  yet.
+
+-------------------------------------------------------------------
 Mon Aug 08 09:27:42 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 42.4:

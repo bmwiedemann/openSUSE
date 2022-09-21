@@ -16,12 +16,13 @@
 #
 
 
-%global systemd_unit gnome-remote-desktop.service
-
-%define freerdp_version 2.2.0
+%global systemd_unit       gnome-remote-desktop.service
+%define freerdp_version    2.8.0
+%define glib_version       2.68
+%define gstreamer_version  1.10.0
 
 Name:           gnome-remote-desktop
-Version:        42.4
+Version:        43.0
 Release:        0
 Summary:        GNOME Remote Desktop screen sharing service
 License:        GPL-2.0-or-later
@@ -29,21 +30,24 @@ Group:          System/Management
 URL:            https://gitlab.gnome.org/GNOME/gnome-remote-desktop
 Source0:        %{name}-%{version}.tar.xz
 
+BuildRequires:  asciidoc
 BuildRequires:  meson >= 0.36.0
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(epoxy)
-BuildRequires:  pkgconfig(ffnvcodec)
+BuildRequires:  pkgconfig(epoxy) >= 1.4
+BuildRequires:  pkgconfig(fdk-aac)
+BuildRequires:  pkgconfig(ffnvcodec) >= 11.1.5.0
 BuildRequires:  pkgconfig(freerdp-client2) >= %{freerdp_version}
 BuildRequires:  pkgconfig(freerdp-server2) >= %{freerdp_version}
 BuildRequires:  pkgconfig(freerdp2) >= %{freerdp_version}
 BuildRequires:  pkgconfig(fuse3) >= 3.9.1
 BuildRequires:  pkgconfig(gbm)
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.68
-BuildRequires:  pkgconfig(glib-2.0) >= 2.68
-BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.10.0
-BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.10.0
+BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(gio-unix-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_version}
+BuildRequires:  pkgconfig(gstreamer-video-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libnotify)
@@ -53,6 +57,10 @@ BuildRequires:  pkgconfig(libvncclient)
 BuildRequires:  pkgconfig(libvncserver)
 BuildRequires:  pkgconfig(libvncserver) >= 0.9.10
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(tss2-esys)
+BuildRequires:  pkgconfig(tss2-mu)
+BuildRequires:  pkgconfig(tss2-rc)
+BuildRequires:  pkgconfig(tss2-tctildr)
 BuildRequires:  pkgconfig(winpr2) >= %{freerdp_version}
 BuildRequires:  pkgconfig(xkbcommon) >= 1.0.0
 %{?systemd_ordering}
@@ -69,7 +77,9 @@ GNOME desktop environment.
 %autosetup -p1
 
 %build
-%meson
+%meson \
+	-D vnc=true \
+	%{nil}
 %meson_build
 
 %install
@@ -87,13 +97,14 @@ GNOME desktop environment.
 
 %files
 %license COPYING
-%doc README
+%doc README.md
 %{_bindir}/grdctl
 %{_libexecdir}/gnome-remote-desktop-daemon
 %{_userunitdir}/gnome-remote-desktop.service
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.remote-desktop.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.remote-desktop.enums.xml
 %{_datadir}/%{name}/
+%{_mandir}/man1/grdctl.1%{ext_man}
 
 %files lang -f %{name}.lang
 
