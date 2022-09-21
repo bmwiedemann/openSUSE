@@ -170,4 +170,12 @@ please use same ADI as https://build.opensuse.org/request/show/902766</comment>
 - Fixes for CVE-2022-36059 and CVE-2022-36060</comment>
     <requestid>1000621</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b33b16e293030917c6e1a6fac0e67e8b</srcmd5>
+    <version>1.11.5</version>
+    <time>1663764202</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1005167</requestid>
+  </revision>
 </revisionlist>
