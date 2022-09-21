@@ -17,18 +17,18 @@
 
 
 Name:           epiphany
-Version:        42.4
+Version:        43.0
 Release:        0
 Summary:        GNOME Web Browser
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Web
-Source0:        https://download.gnome.org/sources/epiphany/42/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM e7d53b1409dcdf983995e227fb9cfc200ed1cf87.patch -- web-app: do not show the search suggestions settings in web app mode
-Patch0:         https://gitlab.gnome.org/GNOME/epiphany/-/commit/e7d53b1409dcdf983995e227fb9cfc200ed1cf87.patch
+Source0:        https://download.gnome.org/sources/epiphany/43/%{name}-%{version}.tar.xz
+
 # PATCH-FIX-UPSTREAM epiphany-fix-nb-translation.patch -- Spellfix for Norwegian Bokmål translation
 Patch1:         epiphany-fix-nb-translation.patch
 
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
@@ -50,19 +50,19 @@ BuildRequires:  pkgconfig(json-glib-1.0) >= 1.6
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.37.1
 BuildRequires:  pkgconfig(libhandy-1) >= 0.90.0
+BuildRequires:  pkgconfig(libportal-gtk3)
 BuildRequires:  pkgconfig(libsecret-1) >= 0.19.0
 BuildRequires:  pkgconfig(libsoup-3.0) >= 2.48.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.12
 BuildRequires:  pkgconfig(libxslt) >= 1.1.7
 BuildRequires:  pkgconfig(nettle) >= 3.2
 BuildRequires:  pkgconfig(sqlite3) >= 3.22
-BuildRequires:  pkgconfig(webkit2gtk-4.1) >= 2.33.2
-BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.1) >= 2.33.2
+BuildRequires:  pkgconfig(webkit2gtk-4.1) >= 2.37.1
+BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.1) >= 2.37.1
 Requires:       %{name}-branding = %{version}
 Requires:       iso-codes
 Recommends:     ca-certificates
 Recommends:     gnome-keyring
-Recommends:     gstreamer-plugins-rs
 
 %description
 Epiphany is a Web browser for the GNOME Desktop. Its principles are
@@ -106,8 +106,6 @@ search results from Web (epiphany)
 %meson \
 	-D developer_mode=false \
 	-D unit_tests=disabled \
-	-D soup2=disabled \
-	-D libportal=disabled \
 	%{nil}
 %meson_build
 
@@ -115,6 +113,9 @@ search results from Web (epiphany)
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
 %license COPYING
@@ -133,11 +134,14 @@ search results from Web (epiphany)
 %dir %{_libdir}/epiphany
 %dir %{_libdir}/epiphany/web-process-extensions
 %{_libdir}/epiphany/web-process-extensions/libephywebprocessextension.so
+%{_libdir}/epiphany/web-process-extensions/libephywebextension.so
 %{_libdir}/epiphany/libephymain.so
 %{_libdir}/epiphany/libephymisc.so
 %{_libdir}/epiphany/libephysync.so
 %dir %{_libexecdir}/epiphany
 %{_libexecdir}/epiphany/ephy-profile-migrator
+%{_libexecdir}/epiphany-webapp-provider
+%{_datadir}/dbus-1/services/org.gnome.Epiphany.WebAppProvider.service
 
 %files branding-upstream
 %{_datadir}/epiphany/default-bookmarks.rdf

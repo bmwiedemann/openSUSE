@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Thu Sep 15 16:15:27 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  1 18:37:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.rc:
+  + Use internal copy of bookmarks icons instead of system version.
+  + Fix various issues when closing tabs.
+  + WebExtensions: Fix crash when failing to get translated string.
+  + Fix loss of tab history if placeholder page is not removed.
+- Drop gstreamer-plugins-rs Recommends: gstreamer with standard
+  aom now delivers ok performance on av1 encoded videoes.
+
+-------------------------------------------------------------------
+Fri Aug 26 11:42:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.beta:
+  + Fix crashes and misbehavior when importing bookmarks.
+  + Remove PDF.js, moved to WebKit.
+  + WebExtensions:
+    - set Content Security Policy.
+    - implement commands API.
+    - allow web inspector on background pages.
+    - should not use separate network processes.
+    - should use sandbox.
+    - should not receive hardware acceleration.
+  + Update to highlight.js 11.6.0.
+  + Add Take Screenshot to context menu.
+  + Preferences: do not show search suggestions in web app mode.
+  + Fix desktop notification priority.
+- Add desktop-file-utils BuildRequires, new dependency. Since we
+  now have desktop-file-validate available during build, add check
+  section and validate desktop files during build.
+- Drop e7d53b1409dcdf983995e227fb9cfc200ed1cf87.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Fri Aug 26 11:42:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.alpha:
+  + Major rearchitecting of WebExtensions, including many new APIs.
+  + Add favicons to history dialog.
+  + Fix critical errors when loading malformed session state.
+  + Remove accelerator to open web app manager.
+  + Fix reader mode crash when JavaScript is disabled by Content
+    Security Policy.
+  + Fix Epiphany icon in system sound settings.
+  + Several fixes for downloads.
+  + Support view-source: URI scheme.
+  + Fix empty tmp directories after running custom profiles.
+  + Improve reader mode stylesheet.
+  + Revamped web app support, including new D-Bus provider.
+  + Preparatory refactorings for GTK 4, and miscellaneous
+    improvements.
+  + Fix non-internationalized string on synced tabs dialog.
+  + Update to PDF.js 2.13.216.
+  + Fix encodings test.
+  + Fix broken link in README.
+  + Update to highlight.js 11.5.0.
+  + Improve description of search-engine-providers setting.
+  + Fix blurry favicons on hidpi.
+  + Password manager should not print warnings when operation is
+    cancelled.
+  + Rename "Personal Data" dialog to "Website Data".
+- Add pkgconfig(libportal-gtk3) BuildRequires, new dependency.
+- Stop passing libportal and soup2 = disabled, no longer needed nor
+  recognized.
+
+-------------------------------------------------------------------
 Fri Aug 26 11:42:05 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add epiphany-fix-nb-translation.patch: Spellfix for Norwegian
