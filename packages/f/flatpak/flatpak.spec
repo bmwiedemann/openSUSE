@@ -67,8 +67,8 @@ BuildRequires:  pkgconfig(libarchive) >= 2.8.0
 BuildRequires:  pkgconfig(libcurl) >= 7.29.0
 BuildRequires:  pkgconfig(libelf) >= 0.8.12
 BuildRequires:  pkgconfig(libseccomp)
-BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.4
 BuildRequires:  pkgconfig(libzstd) >= 0.8.1
 BuildRequires:  pkgconfig(ostree-1) >= 2020.8
 BuildRequires:  pkgconfig(polkit-gobject-1)
@@ -151,6 +151,7 @@ sed -i -e '1s,#!%{_bindir}/env python3,#!%{_bindir}/python3,' scripts/flatpak-*
 %configure \
 	--disable-silent-rules \
 	--with-system-bubblewrap \
+	--with-curl \
 	--with-priv-mode=none \
 	--with-dbus-config-dir=%{_dbusconfigdir} \
 	--with-system-dbus-proxy=%{_bindir}/xdg-dbus-proxy \
