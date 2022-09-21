@@ -357,4 +357,37 @@
     - MSVC build: Export classes selectively. (forwarded request 899511 from iznogood)</comment>
     <requestid>899637</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>dc0548a78a4e77b428a9c25ac687a880</srcmd5>
+    <version>5.0.2</version>
+    <time>1663764114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.2:
+  + Document, Node: Recognize HTML documents
+  + Parsers: Avoid std::getline for istream inputs
+  + Many small updates, suggested by the clang-tidy program
+  + Build:
+    - Meson build:
+      . When mm-common &gt;= 1.0.4 is used, Perl is not required
+      . Specify 'check' option in run_command(). Will be necessary
+        with future versions of Meson.
+      . Avoid configuration warnings
+* Meson build: Enable static building on windows
+  (Andrew Potter) Pull request #29
+* Meson build: Require meson &gt;= 0.60.0
+* Meson build: libxml2 can be built as a subproject
+    - Win32: Don't include afxres.h in resources
+    - Support Visual Studio 2022
+    - docs/manual: Sort example file lists. See
+      glgo/GNOME/gtkmm-documentation/!15
+    - NMake Makefiles:
+      . Remove dependency on msvc_recommended_pragmas.h
+      . Make things more configurable
+  + Documentation:
+    - docs/manual: Upgrade from DocBook 4.1 to DocBook 5.0
+    - MSVC_NMake/README: Document dependency placement
+- Drop erroneous executable bit from docs and headerfiles.
+- Use ldconfig_scriptlets macro for post(un) handling. (forwarded request 1002496 from iznogood)</comment>
+    <requestid>1003128</requestid>
+  </revision>
 </revisionlist>
