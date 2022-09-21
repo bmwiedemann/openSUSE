@@ -16,10 +16,10 @@
 #
 
 
-%define base_version 42
+%define base_version 43
 
 Name:           gnote
-Version:        42.1
+Version:        43.beta
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
@@ -34,7 +34,7 @@ BuildRequires:  c_compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  libboost_test-devel >= 1.5.1
-BuildRequires:  meson
+BuildRequires:  meson >= 0.59
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.62
@@ -92,7 +92,7 @@ search results from documents.
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/gnote
 %{_libdir}/gnote/
