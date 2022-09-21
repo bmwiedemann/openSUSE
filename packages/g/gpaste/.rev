@@ -418,4 +418,12 @@
   typelib-1_0-GPasteGtk-4</comment>
     <requestid>966770</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>1aa378f820b00b02279190103857ef0a</srcmd5>
+    <version>42.1+29</version>
+    <time>1663764120</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002659 from dimstar)</comment>
+    <requestid>1003186</requestid>
+  </revision>
 </revisionlist>

@@ -20,13 +20,15 @@
 %global __requires_exclude typelib\\(Clutter\\)
 %global alt_name GPaste
 Name:           gpaste
-Version:        42.1
+Version:        42.1+29
 Release:        0
 Summary:        Clipboard management system for GNOME
 License:        BSD-2-Clause
 Group:          System/GUI/GNOME
 URL:            https://github.com/Keruspe/GPaste
-Source0:        http://www.imagination-land.org/files/%{name}/%{alt_name}-%{version}.tar.xz
+# Source url disabled as we are using a git checkout
+# Source0:        http://www.imagination-land.org/files/%%{name}/%%{alt_name}-%%{version}.tar.xz
+Source0:        %{alt_name}-%{version}.tar.xz
 # For directory ownership
 BuildRequires:  gnome-shell >= 3.28
 BuildRequires:  gobject-introspection-devel >= 1.58.0
@@ -38,6 +40,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(clutter-1.0)
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:  pkgconfig(gdk-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.58.0
@@ -156,6 +159,7 @@ menu, and provides the ability to copy/paste text.
 Summary:        Zsh tab-completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and zsh)
+BuildArch:      noarch
 
 %description zsh-completion
 GPaste is a clipboard management daemon with DBus interface.
