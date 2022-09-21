@@ -632,4 +632,12 @@
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963586</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>de5623d0ae0831cd6d2e5d2a997af8cb</srcmd5>
+    <version>43.0</version>
+    <time>1663764029</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004795</requestid>
+  </revision>
 </revisionlist>
