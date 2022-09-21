@@ -42,8 +42,8 @@ BuildRequires:  pkgconfig(fuse) >= 2.9.2
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gpgme) >= 1.1.8
 BuildRequires:  pkgconfig(libarchive) >= 2.8.0
+BuildRequires:  pkgconfig(libcurl) >= 7.29.0
 BuildRequires:  pkgconfig(liblzma) >= 5.0.5
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.39.1
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(mount) >= 2-23.0
 BuildRequires:  pkgconfig(systemd)
@@ -130,6 +130,8 @@ of both.
 %if %{with ed25519}
 	--with-ed25519-libsodium \
 %endif
+	--with-curl=yes \
+	--with-soup=no \
 	%{nil}
 %make_build
 
@@ -186,7 +188,8 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 %dir %{_libexecdir}/libostree
 %{_prefix}/lib/ostree/ostree-prepare-root
 %{_prefix}/lib/ostree/ostree-remount
-%{_libexecdir}/libostree/ostree-trivial-httpd
+# Lost in move to curl, needs soup, but upstream have not yet ported to soup3
+#%%{_libexecdir}/libostree/ostree-trivial-httpd
 %{_libexecdir}/libostree/s390x-se-luks-gencpio
 %{_dracutmodulesdir}/98ostree/
 %{_unitdir}/ostree-prepare-root.service

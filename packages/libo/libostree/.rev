@@ -307,4 +307,12 @@ CVE-2014-9862 boo#1201770 (forwarded request 991255 from AndreasStieger)</commen
     <comment>- fix build with glibc 2.36 (boo#1202300) ostree-glibc_2.36.patch (forwarded request 994345 from AndreasStieger)</comment>
     <requestid>994789</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>99f861303420034bb1610072555334bd</srcmd5>
+    <version>2022.5</version>
+    <time>1663763968</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002677 from dimstar)</comment>
+    <requestid>1003204</requestid>
+  </revision>
 </revisionlist>
