@@ -21,13 +21,13 @@
 %define RPMTrackerAPI 3_0
 
 Name:           tracker
-Version:        3.3.3
+Version:        3.4.0
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Projects/Tracker
-Source0:        https://download.gnome.org/sources/tracker/3.3/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/tracker/3.4/%{name}-%{version}.tar.xz
 
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
@@ -36,7 +36,7 @@ BuildRequires:  glib2-devel >= 2.52.0
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
 BuildRequires:  libicu-devel >= 4.8.1.1
-BuildRequires:  meson >= 0.51
+BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-gobject
@@ -47,7 +47,7 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.0
 BuildRequires:  pkgconfig(libseccomp) >= 2.0
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.40
+#BuildRequires:  pkgconfig(libsoup-2.4) >= 2.40
 BuildRequires:  pkgconfig(libsoup-3.0) >= 2.99.2
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
 BuildRequires:  pkgconfig(systemd)
@@ -174,8 +174,8 @@ mkdir %{buildroot}%{_datadir}/tracker3/domain-ontologies
 %license COPYING
 %{_bindir}/tracker3
 %dir %{_libdir}/tracker-%{TrackerAPI}/
-%{_libdir}/tracker-%{TrackerAPI}/libtracker-remote-soup2.so
-%{_libdir}/tracker-%{TrackerAPI}/libtracker-remote-soup3.so
+#%%{_libdir}/tracker-%%{TrackerAPI}/libtracker-http-soup2.so
+%{_libdir}/tracker-%{TrackerAPI}/libtracker-http-soup3.so
 %{_datadir}/bash-completion/completions/tracker3
 %dir %{_datadir}/tracker3/
 %{_libexecdir}/tracker3/
