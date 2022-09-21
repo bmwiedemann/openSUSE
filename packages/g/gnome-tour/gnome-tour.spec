@@ -17,13 +17,13 @@
 
 
 Name:           gnome-tour
-Version:        42.0
+Version:        43.0
 Release:        0
 Summary:        GNOME Tour & Greeter
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-tour
-Source0:        https://download.gnome.org/sources/gnome-tour/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-tour/43/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  cargo
