@@ -1222,4 +1222,26 @@ X-GNOME-DocPath=eog/eog.xml (forwarded request 128768 from dimstar)</comment>
     <comment>New stable release (forwarded request 993615 from iznogood)</comment>
     <requestid>993949</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>2312d6fd78ed6e4914e5f72b5d77cf14</srcmd5>
+    <version>43.0</version>
+    <time>1663764015</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.0:
+  + Updated translations.
+- Update to version 43.rc:
+  + Updated translations.
+- Update to version 43.beta:
+  + Update eog-multiple-save-as-dialog.ui.
+  + Update (or drop) the Docker image used by Flatpak job.
+  + desktop: Add webp to MimeType list.
+  + Updated translations.
+- Update to version 43.alpha:
+  + Use G_DECLARE_INTERFACE in interface headers.
+  + Replace include guards with #pragma once.
+  + Window previews in shell overview are missing the title.
+  + Updated translations.
+</comment>
+    <requestid>1004775</requestid>
+  </revision>
 </revisionlist>
