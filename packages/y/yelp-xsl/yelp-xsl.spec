@@ -18,7 +18,7 @@
 
 
 Name:           yelp-xsl
-Version:        42.0
+Version:        42.1
 Release:        0
 Summary:        XSL stylesheets for the yelp help browser
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
@@ -48,7 +48,7 @@ This package contains XSL stylesheets that are used by the yelp help browser.
 
 %files
 %license COPYING
-%doc AUTHORS
+%doc AUTHORS NEWS README.md
 %{_datadir}/yelp-xsl/
 %{_datadir}/pkgconfig/yelp-xsl.pc
 
