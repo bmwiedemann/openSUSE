@@ -4,6 +4,13 @@ Mon Aug 15 19:13:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - avoid bashism in baselibs postscript (bsc#1195391) 
 
 -------------------------------------------------------------------
+Thu Aug 11 16:25:30 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace atk-devel with pkgconfig(atk): closer match what
+  configure checks for and, more importantly, don't care for atk.pc
+  moving to at-spi2-core.
+
+-------------------------------------------------------------------
 Thu Oct 21 09:23:07 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add gtk2-rpmlintrc (boo#1191758):

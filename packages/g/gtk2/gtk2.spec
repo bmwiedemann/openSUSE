@@ -50,7 +50,6 @@ Patch5:         gtk2-bgo625202-30-bit-drawables-remain-black.patch
 Patch6:         gtk2-bgo743166-remember-printing-authentication.patch
 # PATCH-FEATURE-OPENSUSE gtk2-updateiconcache_sort.patch olh@opensuse.org -- Have gtp-update-icon-cache sort the file list before producing a cache
 Patch8:         gtk2-updateiconcache_sort.patch
-BuildRequires:  atk-devel
 BuildRequires:  cairo-devel
 BuildRequires:  cups-devel
 BuildRequires:  fdupes
@@ -60,6 +59,7 @@ BuildRequires:  gnome-patch-translation
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  libtiff-devel
+BuildRequires:  pkgconfig(atk)
 # Needed for patches touching the build system / bootstrapping
 BuildRequires:  libtool
 BuildRequires:  pango-devel

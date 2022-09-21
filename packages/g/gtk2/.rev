@@ -1315,4 +1315,12 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
     <comment>- avoid bashism in baselibs postscript (bsc#1195391) (forwarded request 995217 from dirkmueller)</comment>
     <requestid>997733</requestid>
   </revision>
+  <revision rev="180" vrev="4">
+    <srcmd5>1039139eef50498fdf08769f59e264f1</srcmd5>
+    <version>2.24.33</version>
+    <time>1663763964</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002663 from dimstar)</comment>
+    <requestid>1003189</requestid>
+  </revision>
 </revisionlist>
