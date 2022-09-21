@@ -25,23 +25,19 @@
 %endif
 
 Name:           fcitx5
-Version:        5.0.18
+Version:        5.0.19
 Release:        0
 Summary:        Next generation of fcitx
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
-Source1:        en_dict-20121020.tar.gz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.xz
 Source2:        https://raw.githubusercontent.com/fcitx/fcitx-artwork/master/logo/Fcitx.svg
 Source3:        xim.d-fcitx5
 Source4:        macros.fcitx5
 Source102:      fcitx5.service
-Patch0:         fcitx5-no-download.patch
 Patch1:         fcitx5-gcc7.patch
 Patch2:         fcitx5-5.0.13-memfd.patch
-# PATCH-FIX-UPSTREAM gh#fcitx/fcitx5#538
-Patch3:         0001-Remove-unused-xkbcommon-headers.patch
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
 BuildRequires:  extra-cmake-modules
@@ -142,7 +138,6 @@ This package provides utility libraries for fcitx5.
 
 %prep
 %autosetup -p1
-cp -r %{SOURCE1} src/modules/spell/dict/
 
 %build
 %if 0%{?suse_version} < 1550

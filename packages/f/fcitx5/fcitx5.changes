@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 20 13:29:06 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.19
+  * classicui: support blur mask on kwin (x11&wayland)
+  * xim: fix preedit start callback
+- switch source to _dict variant and drop
+  * en_dict-20121020.tar.gz
+  * fcitx5-no-download.patch
+- drop 0001-Remove-unused-xkbcommon-headers.patch,
+  upstreamed
+
+-------------------------------------------------------------------
 Mon Sep 19 07:43:09 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix the fcitx 4 obsoletes - obsoleting fcitx <= 4.2.9.8 does not suffice, we
