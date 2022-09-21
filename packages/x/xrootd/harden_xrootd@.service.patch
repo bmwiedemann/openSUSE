@@ -1,7 +1,7 @@
-Index: xrootd-4.12.8/packaging/common/xrootd@.service
+Index: xrootd-5.5.0/packaging/common/xrootd@.service
 ===================================================================
---- xrootd-4.12.8.orig/packaging/common/xrootd@.service
-+++ xrootd-4.12.8/packaging/common/xrootd@.service
+--- xrootd-5.5.0.orig/packaging/common/xrootd@.service
++++ xrootd-5.5.0/packaging/common/xrootd@.service
 @@ -6,6 +6,17 @@ Requires=network-online.target
  After=network-online.target
  
@@ -16,7 +16,7 @@ Index: xrootd-4.12.8/packaging/common/xrootd@.service
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
-+# end of automatic additions 
- ExecStart=/usr/bin/xrootd -l /var/log/xrootd/xrootd.log -c /etc/xrootd/xrootd-%i.cfg -k fifo -s /var/run/xrootd/xrootd-%i.pid -n %i
++# end of automatic additions
+ ExecStart=/usr/bin/xrootd -l /var/log/xrootd/xrootd.log -c /etc/xrootd/xrootd-%i.cfg -k fifo -s /run/xrootd/xrootd-%i.pid -n %i
  User=xrootd
  Group=xrootd

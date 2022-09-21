@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep 20 16:39:20 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.5.0:
+  * Long list of changes, see
+    https://github.com/xrootd/xrootd/blob/v5.5.0/docs/ReleaseNotes.txt
+- Update patches to apply cleanly:
+  * harden_cmsd@.service.patch
+  * harden_frm_purged@.service.patch
+  * harden_frm_xfrd@.service.patch
+  * harden_xrootd@.service.patch
+- Adapt to changes in installed files list for python3.
+- Build python bindings for all supported python versions (python3
+  only).
+- Add BuildRequires: python-pip needed to install standard
+  python egg-info (avoiding installing .pth files).
+- Install /run/%{name} as ghost dir.
+- Drop unused filter from rpmlintrc.
+- Rename logrotate file to xrootd-server to conform with rpmlint
+  suggestion.
+- Add BuildRequires: sysuser-tools and use its macros to set up
+  xrootd user and group in compliance with
+  <https://en.opensuse.org/openSUSE:Packaging_guidelines#Users_and_Groups>.
+- Add %{name}-user.conf as source as required for above.
+- Drop conditionals for openSUSE < 1500 (sle_version < 150000).
+- Minor specfile cleanups using spec-cleaner.
+
+-------------------------------------------------------------------
 Sat Mar 26 22:52:26 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.12.9:
