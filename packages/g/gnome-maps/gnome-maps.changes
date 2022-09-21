@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Sun Sep 18 09:02:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Remove build-dependency on GTK3.
+  + Don't install tests gresource.
+  + Updated translations.
+- Drop update-desktop-files BuildRequires and macro, no longer
+  needed.
+- Add appstream-glib and desktop-file-utils BuildRequires, validate
+  appdata and desktop files during build.
+- Add gnome-maps-fix-dependency.patch: Fix upstream dodo when
+  setting dependency for libshumate.
+
+-------------------------------------------------------------------
+Sun Sep  4 15:56:54 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.rc:
+  + Use Adwaita about dialog
+  + Various UI cleanups, tweaks, and fixes
+  + Switch OSM edit authorization to use OAuth 2
+  + Update POI definitions for OSM editing
+  + Updated translations.
+- Drop pkgconfig(champlain-0.12) BuildRequires: No longer used, nor
+  needed since the port to gtk4/libshumate.
+
+-------------------------------------------------------------------
+Thu Sep  1 13:45:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- GNOME Maps uses a gi dep syntax that is not yet understood by the
+  dep scanner, thus add explicit Requires on typelib(GeocodeGlib)
+  and typelib(GtkClutter),
+
+-------------------------------------------------------------------
+Mon Aug 22 10:36:27 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.beta:
+  + Port to GTK 4 and libshumate.
+  + Port to use libsoup 3.
+- Adjust BuildRequires for upstream changes:
+  + Drop pkgconfig(gtl3.0), pkgconfig(libndy-1)pkgconfig(rest-0.7),
+    pkgconfig(geocode-glib-1.0)
+  + Add pkgconfig(gtk4), pkgconfig(liadwaita-1),
+    pkgconfig(rest-1.0),pkgconfig(geocode-glib-2.0),
+    pkgconfig(shumate-1.0)
+
+-------------------------------------------------------------------
+Thu Jul  7 13:38:10 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.alpha:
+  + Remove network check (always assume network is available).
+  + Remove check-in support (as no GOA backends support this
+    anymore).
+  + Use external browser to authorize OSM account for editing.
+  + Add checkbox to select the visibility of the scale.
+  + Migrate code to use ES 6 modules.
+  + Tune location bias scale parameter for the Photon geocoder.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Jul  3 18:24:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.3:

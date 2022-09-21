@@ -17,14 +17,18 @@
 
 
 Name:           gnome-maps
-Version:        42.3
+Version:        43.0
 Release:        0
 Summary:        Maps Application for GNOME
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Maps
-Source0:        https://download.gnome.org/sources/gnome-maps/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-maps/43/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gnome-maps-fix-dependency.patch -- Fix upstream dodo when setting dependency for libshumate
+Patch0:         gnome-maps-fix-dependency.patch
 
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 # Needed for typelib() Requires
 BuildRequires:  gobject-introspection
 #
@@ -32,23 +36,25 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool >= 0.40.0
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(champlain-0.12) >= 0.12.14
 BuildRequires:  pkgconfig(folks) >= 0.10.0
 BuildRequires:  pkgconfig(gee-0.8) >= 0.16.0
 BuildRequires:  pkgconfig(geoclue-2.0) >= 0.12.99
-BuildRequires:  pkgconfig(geocode-glib-1.0) >= 3.15.2
+BuildRequires:  pkgconfig(geocode-glib-2.0) >= 3.15.2
 BuildRequires:  pkgconfig(gio-2.0) >= 2.44.0
-BuildRequires:  pkgconfig(gjs-1.0) >= 1.50.0
+BuildRequires:  pkgconfig(gjs-1.0) >= 1.69.2
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.10.1
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(gtk4) >= 3.22.0
 # Needed for test run
 BuildRequires:  pkgconfig(gweather4) >= 3.90.0
 #
-BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(rest-0.7) >= 0.7.90
+BuildRequires:  pkgconfig(rest-1.0) >= 0.7.90
+BuildRequires:  pkgconfig(shumate-1.0) >= 1.0.0
 Recommends:     dbus(org.freedesktop.GeoClue2)
+# gnome-maps 43 found a new way to specify typelib deps, which are not (yet) understood by gi-dep-scanner
+Requires:       typelib(GtkClutter) = 1.0
+Requires:       typelib(GeocodeGlib) = 1.0
 
 %description
 Maps is a maps application for GNOME 3. It allows viewing street maps from
@@ -70,7 +76,6 @@ for your journeys, whether on foot, by bike, or by car.
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
-%suse_update_desktop_file -G "Maps Application" org.gnome.Maps DesktopUtility
 # There is no devel package, so at this moment also no need to keep gir and so files
 rm %{buildroot}%{_datadir}/gnome-maps/gir-1.0/GnomeMaps-1.0.gir
 rm %{buildroot}%{_libdir}/%{name}/libgnome-maps.so
