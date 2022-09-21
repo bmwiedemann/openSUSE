@@ -1,14 +1,123 @@
 -------------------------------------------------------------------
+Fri Sep 16 11:40:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  7 13:58:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.rc.1:
+  + The authentication dialog in the enterprise login page
+    regressed in the port to GTK 4; in this release, its buttons
+    are accessible once again, and its appearance improved.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  4 10:53:32 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 43.rc:
+  + Initial Setup no longer crashes if using capital letters or
+    periods in the username. Now, it always forbids such characters
+    to be used (glgo#GNOME/gnome-initial-setup#117,
+    glgo#GNOME/gnome-initial-setup!30).
+  + Several regressions in the timezone page got fixed
+    (glgo#GNOME/gnome-initial-setup#145,
+    glgo#GNOME/gnome-initial-setup!157,
+    glgo#GNOME/gnome-initial-setup!158).
+  + Page-skipping works again (glgo#GNOME/gnome-initial-setup!156).
+  + Parental Controls support now correctly requires malcontent
+    0.11.0's new API name.
+
+-------------------------------------------------------------------
+Thu Aug 11 13:38:57 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.beta:
+  + Initial Setup has been ported to GTK 4, libadwaita, and
+    friends. As a result:
+    - libnma-gtk4 is now required, rather than libnma.
+    - GTK 4 is required in addition to GTK 3. This is because
+      goa-backend does not have a GTK 4 port. Like in
+      gnome-control-center, the use of goa-backend is split out
+      into a separate process.
+    - webkit2gtk5 is now required. (However, goa-backend brings a
+      transitive dependency on webkit2gtk4.)
+    - Since webkit2gtk5 requires libsoup 3, the soup2=true
+      configuration option has been removed. Initial Setup depends
+      on geocode-glib-2.0, and versions of librest and gweather4
+      built against libsoup 3.
+    - Support for taking a selfie as your account avatar has been
+      removed, since libcheese-gtk lacks a GTK 4 port, and the
+      optional libcheese[-gtk] dependency is no more.
+    - Parental controls support requires malcontent 0.11 which is
+      not released at the time of writing.
+  + When systemd support is enabled, Initial Setup now installs a
+    sysusers.d snippet for its user.
+- Adjustments for port to GTK4:
+  + Drop pkgconfig(cheese) and pkgconfig(cheese-gtk) BuildRequires.
+  + Replaced BuildRequires:
+    - pkgconfig(libhandy-1) -> pkgconfig(libadaita-1)
+    - pkgconfig(libnma) -> pkgconfig(libnma-gtk4)    
+    - pkgconfig(webkit2gtk-4.1) -> pkgconfig(webkit2gtk-5.0)
+-------------------------------------------------------------------
+Fri Jul 29 20:43:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.alpha.1:
+  + When built with -Dsoup2=false (the default), Initial Setup now
+    depends on geocode-glib-2.0, introduced in geocode-glib 3.26.3
+    as a parallel-installable, soup3-flavoured version of the
+    library. When built with -Dsoup2=true, Initial Setup continues
+    to depend on geocode-glib-1.0.
+  + Initial Setup's build system tries to detect when its
+    dependencies are built against an incompatible libsoup, but
+    there is one known case that is not detected at build time. If
+    Initial Setup is built with parental controls enabled, the
+    malcontent parental controls library brings with it a
+    dependency on libflatpak and libostree. Neither of these
+    libraries can currently be built against libsoup3. Either they
+    must be built against  libcurl rather than libsoup; or Initial
+    Setup must be built with -Dsoup2=true; or Initial Setup must be
+    built with -Dparental_controls=disabled; or Initial Setup will
+    abort on startup.
+- Stop passing soup2=true to meson.
+- Replace pkgconfig(geocode-glib-1.0), pkgconfig(rest-0.7) and
+  pkgconfig(webkit2gtk-4.0) with pkgconfig(geocode-glib-2.0),
+  pkgconfig(rest-1.0) and pkgconfig(webkit2gtk-4.1) BuildRequires
+  following upstream changes.
+
+-------------------------------------------------------------------
+Thu Jul  7 13:52:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.alpha:
+  + Initial Setup now builds against rest-1.0 if available, falling
+    back to rest-0.7 if not. There is no meson option to control
+    this.
+  + Initial Setup now builds against libsoup 3 by default. As a
+    transitional measure, you can opt to build against libsoup 2 by
+    passing -Dsoup2=true to meson setup. geocode-glib-1.0,
+    gweather4, and rest (1.0 or 0.7) must have been built against
+    the same version of libsoup.
+  + A number of Meson .wrap files for dependencies such as
+    gweather4 have been removed. These dependencies are now widely
+    available in stable distros and container images thereof.
+  + Initial Setup no longer reads gnome-version.xml to determine
+    the GNOME version in the fallback case when no OS information
+    is available from /etc/os-release. gnome-version.xml has been
+    removed from GNOME 43.
+- Pass -D soup2=true to meson: we are not yet ready for the soup3
+  switch.
+
+-------------------------------------------------------------------
 Mon May 30 12:14:37 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.2:
-  + Updated translations.  
+  + Updated translations.
 
 -------------------------------------------------------------------
 Thu Apr 21 11:02:12 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Updated to version 42.1.1:
-  + Updated translations.  
+  + Updated translations.
 
 -------------------------------------------------------------------
 Fri Apr  8 17:21:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>

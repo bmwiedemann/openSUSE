@@ -17,24 +17,22 @@
 
 
 Name:           gnome-initial-setup
-Version:        42.2
+Version:        43.0
 Release:        0
 Summary:        GNOME Initial Setup Assistant
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/OS/InitialSetup
-Source0:        https://download.gnome.org/sources/gnome-initial-setup/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-initial-setup/43/%{name}-%{version}.tar.xz
 
 BuildRequires:  krb5-devel
 BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(accountsservice)
-BuildRequires:  pkgconfig(cheese) >= 3.28
-BuildRequires:  pkgconfig(cheese-gtk) >= 3.3.5
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gdm) >= 3.8.3
-BuildRequires:  pkgconfig(geocode-glib-1.0)
+BuildRequires:  pkgconfig(geocode-glib-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.53.0
 BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(goa-1.0)
@@ -47,17 +45,17 @@ BuildRequires:  pkgconfig(gweather4)
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.4.99
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.alpha
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.3.1
-BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libnm) >= 1.2
-BuildRequires:  pkgconfig(libnma) >= 1.0
+BuildRequires:  pkgconfig(libnma-gtk4) >= 1.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18.8
 BuildRequires:  pkgconfig(pango) >= 1.32.5
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
 BuildRequires:  pkgconfig(pwquality)
-BuildRequires:  pkgconfig(rest-0.7)
+BuildRequires:  pkgconfig(rest-1.0)
 BuildRequires:  pkgconfig(systemd) >= 242
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.26.0
+BuildRequires:  pkgconfig(webkit2gtk-5.0)
 # Remove the yelp document dependency on both sle and leap, keeping tw consistent with upstream
 %if !0%{?sle_version}
 Requires:       gnome-getting-started-docs
@@ -105,6 +103,7 @@ useradd -rM -d /run/gnome-initial-setup/ -s /sbin/nologin %{name} || :
 %{_datadir}/polkit-1/rules.d/20-gnome-initial-setup.rules
 %{_libexecdir}/gnome-initial-setup
 %{_libexecdir}/gnome-initial-setup-copy-worker
+%{_libexecdir}/gnome-initial-setup-goa-helper
 #%%{_sysconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop
 %{_distconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop
 #%%{_sysconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop
@@ -117,6 +116,7 @@ useradd -rM -d /run/gnome-initial-setup/ -s /sbin/nologin %{name} || :
 %dir %{_userunitdir}/gnome-session.target.wants
 %{_userunitdir}/gnome-session.target.wants/gnome-initial-setup-copy-worker.service
 %{_userunitdir}/gnome-session.target.wants/gnome-initial-setup-first-login.service
+%{_sysusersdir}/gnome-initial-setup.conf
 %endif
 
 %files lang -f %{name}.lang
