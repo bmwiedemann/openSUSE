@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Sep 21 08:29:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220916T091647Z:
+  * disks must be renamed to drives everywhere for display (#4255)
+  * Upload profile zip to SUBNET (#4226)
+  * Export perf test result related types (#4246)
+  * ilm-add: update flags related to tiering (#4250)
+  * fix: use deadlineconn properly (#4249)
+  * Remove duplicate key in .golangci.yml (#4247)
+  * Do Go vulncheck directly (#4248)
+  * allow support for airgapped 'mc update' URL (#4244)
+  * Add --request-header to trace cmd to filter http requests (#4238)
+  * add vulncheck action to CI (#4243)
+  * add hotfix build support (#4240)
+  * allow terminal control back for 'top api/disk' (#4239)
+  * Avoid cutting policy name in admin policy list command (#4241)
+  * allow terminal control back after bubbletea UI (#4237)
+  * fix: alignment issue in mc ping. (#4218)
+  * Add a pull request github template (#4234)
+  * Add objects sizes histogram to bucket info (#4236)
+  * Update minio-go to for recent pkg/lifecycle fixes (#4235)
+  * ls: Fix ls exit code related to some errors in FS (#4233)
+  * cleanup commands to use Go 'err' as 'e' (#4232)
+  * Add mc admin trace --call=healing (#4229)
+  * use go1.18 alpine image (#4228)
+  * fix: use DurationFlag to response-threshold (#4227)
+
+-------------------------------------------------------------------
 Wed Sep 07 13:03:34 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20220828T200811Z:
