@@ -1,7 +1,7 @@
 #
 # spec file for package texi2html
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,10 @@ Release:        0
 Summary:        Tool for converting texinfo documents to HTML
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/Texinfo
-URL:            http://www.nongnu.org/texi2html/
-Source0:        http://download.savannah.nongnu.org/releases/texi2html/texi2html-%{version}.tar.bz2
+URL:            https://www.nongnu.org/texi2html/
+Source0:        https://download.savannah.nongnu.org/releases/texi2html/texi2html-%{version}.tar.bz2
+Source1:        https://download.savannah.nongnu.org/releases/texi2html/texi2html-%{version}.tar.bz2.sig
+Source3:        texi2html.keyring
 Patch1:         texi2html-1.78.dif
 Patch2:         texi2html-5584.patch
 Patch3:         03_add_build-date_param.patch

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 20 12:54:07 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Move http to https
+- Add texi2html-5.0.tar.bz2.sig and texi2html.keyring
+
+-------------------------------------------------------------------
 Sat Oct 17 20:11:10 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Fix wrong perl provides for Unicode::EastAsianWidth
