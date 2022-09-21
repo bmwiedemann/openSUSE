@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Sep 16 18:09:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0.1:
+  + Fixed appdata versioning.
+
+-------------------------------------------------------------------
+Fri Sep 16 17:17:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Removed old issue tracker references.
+
+-------------------------------------------------------------------
+Sun Sep  4 12:53:29 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Updated to version 43.rc:
+  + Fix crash when entering new function name.
+  + Fix source view border.
+  + Flatpak build update.
+  + Port about window to libadwaita.
+  + Port to libsoup3.
+  + Updated translations.
+  + Drop patch 4fff5e1.patch due to libsoup3 being patched upstream 
+
+-------------------------------------------------------------------
+Thu Sep  1 08:36:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 4fff5e1.patch: Build with soup3. Following this, replace
+  pkgconfig(libsoup-2.4) with pkgconfig(libsoup-3.0) BuildRequires.
+
+-------------------------------------------------------------------
+Fri Jul  8 16:40:50 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.alpha:
+  + Fixed broken undo/redo.
+  + Make sure variable name definitions work with whitespace too.
+  + Fix translatable strings.
+  + Fixed missing implicit multiplication with variable and root.
+  + Meson warning fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Jul  3 18:53:25 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Update to version 42.2:

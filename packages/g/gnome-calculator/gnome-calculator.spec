@@ -20,13 +20,13 @@
 %define gcisover 1-0_0_0
 
 Name:           gnome-calculator
-Version:        42.2
+Version:        43.0.1
 Release:        0
 Summary:        A GNOME Calculator Application
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://wiki.gnome.org/Apps/Calculator
-Source0:        https://download.gnome.org/sources/gnome-calculator/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-calculator/43/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.52.0
@@ -43,7 +43,7 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.40
 BuildRequires:  pkgconfig(gtk4) >= 4.4.1
 BuildRequires:  pkgconfig(gtksourceview-5) >= 5.2.0
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.0.0
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
