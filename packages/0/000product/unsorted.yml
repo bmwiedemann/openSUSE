@@ -753,6 +753,8 @@ unsorted:
   - arabic-amiri-fonts 
   - arandr 
   - aranym 
+  - aravis 
+  - aravis-viewer 
   - arb-devel 
   - arc-icon-theme 
   - arcanist 
@@ -2332,6 +2334,7 @@ unsorted:
   - coredns-for-k8s1.24-extras 
   - corepack16 
   - corepack17 
+  - corepack18 
   - coreutils-doc: [i586] 
   - coreutils-single 
   - coreutils-testsuite 
@@ -2682,6 +2685,8 @@ unsorted:
   - czmq-devel 
   - d-feet 
   - d-feet-lang 
+  - d-spy 
+  - d-spy-devel 
   - d0_blind_id 
   - d0_blind_id-devel 
   - dMagnetic 
@@ -3320,6 +3325,7 @@ unsorted:
   - emacs-gnuplot-mode 
   - emacs-gnuplot-mode-doc 
   - emacs-plugin-devhelp 
+  - emacs-poke 
   - emacs-scheme48 
   - emacs-semi 
   - embree-devel-static: [x86_64] 
@@ -6512,6 +6518,7 @@ unsorted:
   - gstreamer-docs 
   - gstreamer-editing-services 
   - gstreamer-editing-services-devel 
+  - gstreamer-plugin-aravis 
   - gstreamer-plugin-pocketsphinx 
   - gstreamer-plugin-python 
   - gstreamer-plugins-bad-32bit: [x86_64] 
@@ -9769,6 +9776,8 @@ unsorted:
   - libapr-util1-0-dbd-mysql 
   - libapr-util1-0-dbd-pgsql 
   - libapr-util1-0-dbd-sqlite3 
+  - libaravis-0_8-0 
+  - libaravis-0_8-devel 
   - libarb2 
   - libarchive-devel 
   - libarchive13-32bit: [x86_64] 
@@ -10675,6 +10684,7 @@ unsorted:
   - libdrumstick-widgets2 
   - libdruntime-ldc99 
   - libdrvproxy2 
+  - libdspy-1-1 
   - libdtkcore5 
   - libdtkgui5 
   - libdtkwidget5 
@@ -10933,7 +10943,6 @@ unsorted:
   - libflann1_9 
   - libflashrom1 
   - libflatbuffers2 
-  - libflatzinc9 
   - libflickcurl-devel 
   - libflickcurl0 
   - libflickcurl0-32bit: [x86_64] 
@@ -11321,14 +11330,6 @@ unsorted:
   - libgraphene-devel 
   - libgravatar-devel 
   - libgromacs6 
-  - libgroove-devel 
-  - libgroove4 
-  - libgroovefingerprinter-devel 
-  - libgroovefingerprinter4 
-  - libgrooveloudness-devel 
-  - libgrooveloudness4 
-  - libgrooveplayer-devel 
-  - libgrooveplayer4 
   - libgrpc++1_48 
   - libgrpc26 
   - libgrpc_plugin_support1_48 
@@ -12903,6 +12904,7 @@ unsorted:
   - liborigin-tools 
   - liborigin3 
   - libortools9 
+  - libortools_flatzinc9 
   - libortp15 
   - libortp15-32bit: [x86_64] 
   - libosdCPU3_4_4 
@@ -13253,13 +13255,13 @@ unsorted:
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
-  - libprotobuf-lite3_21_5-32bit: [x86_64] 
+  - libprotobuf-lite3_21_6-32bit: [x86_64] 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
   - libprotobuf-nanopb0 
-  - libprotobuf3_21_5-32bit: [x86_64] 
-  - libprotoc3_21_5 
-  - libprotoc3_21_5-32bit: [x86_64] 
+  - libprotobuf3_21_6-32bit: [x86_64] 
+  - libprotoc3_21_6 
+  - libprotoc3_21_6-32bit: [x86_64] 
   - libproxy-devel 
   - libproxy-sharp 
   - libproxy-tools 
@@ -14350,6 +14352,8 @@ unsorted:
   - libtevent-devel 
   - libtexlua53-5 
   - libtexluajit2 
+  - libtexpdf-devel 
+  - libtexpdf0 
   - libtextstyle-devel 
   - libtextstyle0-32bit: [x86_64] 
   - libtfm1 
@@ -17551,8 +17555,11 @@ unsorted:
   - nodejs16 
   - nodejs16-devel 
   - nodejs16-docs 
+  - nodejs17 
   - nodejs17-devel 
   - nodejs17-docs 
+  - nodejs18-devel 
+  - nodejs18-docs 
   - noisetorch 
   - nomacs 
   - nomacs-lang 
@@ -17813,6 +17820,7 @@ unsorted:
   - npkg 
   - npm-default 
   - npm16 
+  - npm17 
   - npth-devel 
   - nqp 
   - nrpe 
@@ -18346,7 +18354,6 @@ unsorted:
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
-  - openSUSE-xfce-icon-theme 
   - openSUSEway 
   - openafs-authlibs 
   - openafs-authlibs-devel 
@@ -22230,7 +22237,6 @@ unsorted:
   - python310-addict 
   - python310-aeidon 
   - python310-aenum 
-  - python310-aesara 
   - python310-aexpect 
   - python310-afdko 
   - python310-affine 
@@ -23288,7 +23294,6 @@ unsorted:
   - python310-gmpy2 
   - python310-gns3fy 
   - python310-gobject-devel 
-  - python310-goobook 
   - python310-google-api-core 
   - python310-google-api-python-client 
   - python310-google-auth 
@@ -25457,7 +25462,6 @@ unsorted:
   - python38-addict 
   - python38-aeidon 
   - python38-aenum 
-  - python38-aesara 
   - python38-aexpect 
   - python38-afdko 
   - python38-affine 
@@ -26549,7 +26553,6 @@ unsorted:
   - python38-gobject-Gdk 
   - python38-gobject-cairo 
   - python38-gobject-devel 
-  - python38-goobook 
   - python38-google-api-core 
   - python38-google-api-python-client 
   - python38-google-auth 
@@ -28788,7 +28791,6 @@ unsorted:
   - python39-addict 
   - python39-aeidon 
   - python39-aenum 
-  - python39-aesara 
   - python39-aexpect 
   - python39-afdko 
   - python39-affine 
@@ -29878,7 +29880,6 @@ unsorted:
   - python39-gobject-Gdk 
   - python39-gobject-cairo 
   - python39-gobject-devel 
-  - python39-goobook 
   - python39-google-api-core 
   - python39-google-api-python-client 
   - python39-google-auth 
@@ -33264,6 +33265,7 @@ unsorted:
   - sil-mondulkiri-fonts 
   - sil-padauk-fonts 
   - silan 
+  - sile 
   - simh 
   - simple-ccsm 
   - simple-ccsm-lang 
@@ -42904,6 +42906,7 @@ unsorted:
   - typelib-1_0-Anjuta-3_0 
   - typelib-1_0-AppStream-1.0 
   - typelib-1_0-AppStreamGlib-1_0 
+  - typelib-1_0-Aravis-0.8 
   - typelib-1_0-AtrilDocument-1_5_0 
   - typelib-1_0-AtrilView-1_5_0 
   - typelib-1_0-Avahi-0_6 
@@ -43494,6 +43497,7 @@ unsorted:
   - vim-plugin-utl 
   - vim-plugin-vimwiki 
   - vim-plugin-zoomwin 
+  - vim-poke 
   - vim-small: [i586] 
   - vimb 
   - vino 
