@@ -146,18 +146,15 @@ install -d -m 755 %{buildroot}%{_includedir}
 install -d -m 755 %{buildroot}%{_libdir}
 install -d -m 755 %{buildroot}%{_sbindir}
 install -d -m 755 %{buildroot}%{_mandir}/man{1,3,5,8}
-install -d -m 755 %{buildroot}/%{_lib}
 install -m 644 ip6utils.h tcpd.h %{buildroot}%{_includedir}
 install -m 644 libwrap.a %{buildroot}/%{_libdir}
 install -m 755 safe_finger tcpd tcpdchk tcpdmatch try-from %{buildroot}%{_sbindir}
 install -m 644 hosts_access.3 %{buildroot}%{_mandir}/man3
 install -m 644 hosts_access.5 hosts_options.5 %{buildroot}%{_mandir}/man5
 install -m 644 tcpd.8 tcpdchk.8 tcpdmatch.8 %{buildroot}%{_mandir}/man8
-install -m 644 shared/libwrap.so.0.%{version} %{buildroot}/%{_lib}
-cd %{buildroot}/%{_lib}
-ln -sf libwrap.so.0.%{version} libwrap.so.0
-cd %{buildroot}%{_libdir}
-ln -sf /%{_lib}/libwrap.so.0.%{version} libwrap.so
+install -m 644 shared/libwrap.so.0.%{version} %{buildroot}/%{_libdir}
+ln -sf libwrap.so.0.%{version} %{buildroot}/%{_libdir}/libwrap.so.0
+ln -sf libwrap.so.0.%{version} %{buildroot}/%{_libdir}/libwrap.so
 
 %post -n %{lname} -p /sbin/ldconfig
 
@@ -172,7 +169,7 @@ ln -sf /%{_lib}/libwrap.so.0.%{version} libwrap.so
 %files -n %{lname}
 %defattr(-,root,root)
 %doc DISCLAIMER
-%attr(755,root,root) /%{_lib}/libwrap.so.0*
+%attr(755,root,root) %{_libdir}/libwrap.so.0*
 
 %files devel
 %defattr(644,root,root,755)

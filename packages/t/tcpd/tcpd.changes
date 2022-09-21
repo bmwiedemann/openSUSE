@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  5 14:42:10 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- use _libdir (boo#1191098)
+
+-------------------------------------------------------------------
 Wed Aug 24 10:48:01 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Makefile is not parallel-safe
