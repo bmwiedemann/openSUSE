@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  6 19:23:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Temporarily disable the nautilus extension: not yet compatible
+  with Nautilus/GTK4.
+
+-------------------------------------------------------------------
 Wed Mar  2 01:59:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Enable nautilus extension again.

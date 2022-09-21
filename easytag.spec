@@ -16,7 +16,7 @@
 #
 
 
-%bcond_without nautilus_extension
+%bcond_with    nautilus_extension
 Name:           easytag
 Version:        2.4.3
 Release:        0
