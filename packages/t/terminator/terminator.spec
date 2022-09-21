@@ -39,7 +39,7 @@ BuildRequires:  python3-psutil
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
-BuildRequires:  typelib(Vte)
+BuildRequires:  typelib(Vte) = 2.91
 Requires:       python3-cairo
 Requires:       python3-configobj
 Requires:       python3-dbus-python
