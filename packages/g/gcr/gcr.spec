@@ -17,41 +17,41 @@
 
 
 Name:           gcr
-Version:        3.41.0
+Version:        3.92.0
 Release:        0
-# FIXME: Verify if the requires in typelib-1_0-Gcr-3 is still correct and required (see bgo#725501).
+# FIXME: Verify if the requires in typelib-1_0-Gcr-4 is still correct and required (see bgo#725501).
 Summary:        Library for Crypto UI related tasks
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://www.gnome.org
-Source0:        https://download.gnome.org/sources/gcr/3.41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gcr/3.92/gcr-%{version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-SLE gcr-bsc932232-use-libgcrypt-allocators.patch bsc#932232 hpj@suse.com -- use libgcrypt allocators for FIPS mode
 Patch1:         gcr-bsc932232-use-libgcrypt-allocators.patch
-# PATCH-FIX-UPSTREAM b3ca1d02bb0148ca787ac4aead164d7c8ce2c4d8.patch -- Fix build with meson 060.0 and newer
-Patch2:         https://gitlab.gnome.org/GNOME/gcr/-/commit/b3ca1d02bb0148ca787ac4aead164d7c8ce2c4d8.patch
 
 # For directory ownership
 BuildRequires:  dbus-1
+BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
 BuildRequires:  gobject-introspection-devel >= 1.34
 # configure is looking for the gpg2 path
-BuildRequires:  gtk-doc
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  libgcrypt-devel >= 1.4.5
-BuildRequires:  meson
+BuildRequires:  meson >= 0.59
 BuildRequires:  openssh-clients
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.18.0.22
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gmodule-no-export-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(p11-kit-1) >= 0.19.0
@@ -60,8 +60,7 @@ BuildRequires:  pkgconfig(systemd)
 
 %description
 GCR is a library for displaying certificates, and crypto UI, accessing
-key stores. It also provides the viewer for crypto files on the GNOME
-desktop.
+key stores.
 
 GCK is a library for accessing PKCS#11 modules like smart cards, in a
 (G)object oriented way.
@@ -72,21 +71,10 @@ Group:          Productivity/Security
 
 %description viewer
 This packages provides the viewer for crypto files on the GNOME desktop.
+key stores.
 
-%package data
-Summary:        Data and icon set for gcr
-Group:          System/Libraries
-
-%description data
-This package provides the GSettings schemas and a collection of icons
-needed by libgcr.
-
-%package prompter
-Summary:        Prompt dialog for gcr
-Group:          System/Libraries
-
-%description prompter
-This package provides the prompt dialog needed by libgcr.
+GCK is a library for accessing PKCS#11 modules like smart cards, in a
+(G)object oriented way.
 
 %package ssh-askpass
 Summary:        SSH password callback helper for gcr
@@ -105,38 +93,26 @@ Supplements:    (gpg2 and gnome-shell)
 gcr-ssh-agent as a standalone binary, so that it can easily be
 managed through systemd.
 
-%package -n libgcr-3-1
+%package -n libgcr-4-0_0_0
 Summary:        Library for Crypto UI related tasks
 Group:          System/Libraries
-Requires:       %{name}-data >= %{version}
-Requires:       %{name}-prompter >= %{version}
 Recommends:     %{name}-ask-pass
 Recommends:     %{name}-ssh-agent
 Recommends:     %{name}-viewer = %{version}
 # To make lang package installable
 Provides:       %{name} = %{version}
 
-%description -n libgcr-3-1
+%description -n libgcr-4-0_0_0
 GCR is a library for displaying certificates, and crypto UI, accessing
 key stores.
 
-%package -n typelib-1_0-Gcr-3
+%package -n typelib-1_0-Gcr-4
 Summary:        Introspection bindings for gcr, a library for crypto UI related tasks
 # Due to broken typelib files, this one cannot be automatically inspected
 Group:          System/Libraries
-Requires:       typelib-1_0-Gck-1
+Requires:       typelib-1_0-Gck-2
 
-%description -n typelib-1_0-Gcr-3
-GCR is a library for displaying certificates, and crypto UI, accessing
-key stores.
-
-This package provides the GObject Introspection bindings for GCR.
-
-%package -n typelib-1_0-GcrUi-3
-Summary:        Introspection bindings for gcr, a library for crypto UI related tasks
-Group:          System/Libraries
-
-%description -n typelib-1_0-GcrUi-3
+%description -n typelib-1_0-Gcr-4
 GCR is a library for displaying certificates, and crypto UI, accessing
 key stores.
 
@@ -145,15 +121,14 @@ This package provides the GObject Introspection bindings for GCR.
 %package -n libgcr-devel
 Summary:        Development files for gcr, a library for crypto UI related tasks
 Group:          Development/Libraries/GNOME
-Requires:       libgcr-3-1 = %{version}
-Requires:       typelib-1_0-Gcr-3 = %{version}
-Requires:       typelib-1_0-GcrUi-3 = %{version}
+Requires:       libgcr-4-0_0_0 = %{version}
+Requires:       typelib-1_0-Gcr-4 = %{version}
 
 %description -n libgcr-devel
 GCR is a library for displaying certificates, and crypto UI, accessing
 key stores.
 
-%package -n libgck-1-0
+%package -n libgck-2-0_0_0
 Summary:        GObject library to access PKCS#11 modules
 # Small hack, to help gnome-keyring subpackage containing gck
 # modules have a proper dependency, without having to care about
@@ -161,15 +136,15 @@ Summary:        GObject library to access PKCS#11 modules
 Group:          System/Libraries
 Provides:       gck = %{version}
 
-%description -n libgck-1-0
+%description -n libgck-2-0_0_0
 GCK is a library for accessing PKCS#11 modules like smart cards, in a
 (G)object oriented way.
 
-%package -n typelib-1_0-Gck-1
+%package -n typelib-1_0-Gck-2
 Summary:        Introspection bindings for gck, a GObject library to access PKCS#11 modules
 Group:          System/Libraries
 
-%description -n typelib-1_0-Gck-1
+%description -n typelib-1_0-Gck-2
 GCK is a library for accessing PKCS#11 modules like smart cards, in a
 (G)object oriented way.
 
@@ -178,37 +153,48 @@ This package provides the GObject Introspection bindings for GCK.
 %package -n libgck-devel
 Summary:        Development files for gck, a GObject library to access PKCS#11 modules
 Group:          Development/Libraries/GNOME
-Requires:       libgck-1-0 = %{version}
-Requires:       typelib-1_0-Gck-1 = %{version}
+Requires:       libgck-2-0_0_0 = %{version}
+Requires:       typelib-1_0-Gck-2 = %{version}
 
 %description -n libgck-devel
 GCK is a library for accessing PKCS#11 modules like smart cards, in a
 (G)object oriented way.
 
+%package doc
+Summary:        Documentation for gcr
+BuildArch:      noarch
+
+%description doc
+This packages provides the documentation for various gcr packages.
+
 %lang_package
 
 %prep
-%setup -q
+%setup -q -n gcr-%{version}
 %if 0%{?sle_version}
 %patch1 -p1
 %endif
-%patch2 -p1
 
 %build
 %meson \
-  -Dgpg_path=%{_bindir}/gpg2
+	-Dgpg_path=%{_bindir}/gpg2 \
+	-Dgtk4=true \
+	%nil
 %meson_build
 
 %install
 %meson_install
-%suse_update_desktop_file gcr-prompter
-%suse_update_desktop_file gcr-viewer
-%find_lang %{name}
+%find_lang gcr-4
 
-%post -n libgcr-3-1 -p /sbin/ldconfig
-%postun -n libgcr-3-1 -p /sbin/ldconfig
-%post -n libgck-1-0 -p /sbin/ldconfig
-%postun -n libgck-1-0 -p /sbin/ldconfig
+# Make default docdir ref openSUSE standard
+mkdir -p %{buildroot}%{_docdir}
+# Move docs from upstream docdir to openSUSE docdir standard
+mv %{buildroot}%{_datadir}/doc/gcr-4* %{buildroot}%{_docdir}
+mv %{buildroot}%{_datadir}/doc/gck-2* %{buildroot}%{_docdir}
+%fdupes %{buildroot}%{_docdir}
+
+%ldconfig_scriptlets -n libgcr-4-0_0_0
+%ldconfig_scriptlets -n libgck-2-0_0_0
 
 %post -n %{name}-ssh-agent
 %systemd_user_post gcr-ssh-agent.service
@@ -216,80 +202,55 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 %preun -n %{name}-ssh-agent
 %systemd_user_preun gcr-ssh-agent.service
 
-%postun -n %{name}-ssh-agent
-%systemd_user_postun_with_restart gcr-ssh-agent.service
-
 %files viewer
 %license COPYING
 %doc NEWS
-%{_bindir}/gcr-viewer
-%{_datadir}/applications/gcr-viewer.desktop
-%{_datadir}/mime/packages/gcr-crypto-types.xml
-
-%files data
-%doc NEWS
-%{_datadir}/icons/hicolor/*/apps/*
-# Own the directory since we can't depend on gconf providing them
-%dir %{_datadir}/GConf
-%dir %{_datadir}/GConf/gsettings
-%{_datadir}/GConf/gsettings/org.gnome.crypto.pgp.convert
-%{_datadir}/GConf/gsettings/org.gnome.crypto.pgp_keyservers.convert
-%{_datadir}/glib-2.0/schemas/org.gnome.crypto.pgp.gschema.xml
-
-%files prompter
-%{_libexecdir}/gcr-prompter
-%{_datadir}/applications/gcr-prompter.desktop
-%{_datadir}/dbus-1/services/org.gnome.keyring.PrivatePrompter.service
-%{_datadir}/dbus-1/services/org.gnome.keyring.SystemPrompter.service
+%{_bindir}/gcr-viewer-gtk4
 
 %files ssh-askpass
-%{_libexecdir}/gcr-ssh-askpass
+%{_libexecdir}/gcr4-ssh-askpass
 
 %files ssh-agent
 %{_libexecdir}/gcr-ssh-agent
 %{_userunitdir}/gcr-ssh-agent.service
 %{_userunitdir}/gcr-ssh-agent.socket
 
-%files -n libgcr-3-1
+%files -n libgcr-4-0_0_0
 %license COPYING
 %doc NEWS
-%{_libdir}/libgcr-base-3.so.*
-%{_libdir}/libgcr-ui-3.so.*
+%{_libdir}/libgcr-4*.so.*
 
-%files -n typelib-1_0-Gcr-3
-%{_libdir}/girepository-1.0/Gcr-3.typelib
-
-%files -n typelib-1_0-GcrUi-3
-%{_libdir}/girepository-1.0/GcrUi-3.typelib
+%files -n typelib-1_0-Gcr-4
+%{_libdir}/girepository-1.0/Gcr-4.typelib
 
 %files -n libgcr-devel
-%doc %{_datadir}/gtk-doc/html/gcr/
-%{_libdir}/libgcr-base-3.so
-%{_libdir}/libgcr-ui-3.so
-%{_libdir}/pkgconfig/gcr-3.pc
-%{_libdir}/pkgconfig/gcr-base-3.pc
-%{_libdir}/pkgconfig/gcr-ui-3.pc
-%dir %{_includedir}/gcr-3
-%{_includedir}/gcr-3
-%{_datadir}/gir-1.0/GcrUi-3.gir
+%{_libdir}/libgcr-4*.so
+%{_libdir}/pkgconfig/gcr-4.pc
+%{_includedir}/gcr-4/
+%{_datadir}/gir-1.0/Gcr-4.gir
+%{_datadir}/vala/vapi/gcr-4.deps
+%{_datadir}/vala/vapi/gcr-4.vapi
 
-%files -n libgck-1-0
+%files -n libgck-2-0_0_0
 %license COPYING
 %doc NEWS
-%{_libdir}/libgck-1.so.*
+%{_libdir}/libgck-2.so.*
 
-%files -n typelib-1_0-Gck-1
-%{_libdir}/girepository-1.0/Gck-1.typelib
+%files -n typelib-1_0-Gck-2
+%{_libdir}/girepository-1.0/Gck-2.typelib
 
 %files -n libgck-devel
-%doc %{_datadir}/gtk-doc/html/gck/
-%{_libdir}/libgck-1.so
-%{_libdir}/pkgconfig/gck-1.pc
-%{_includedir}/gck-1/
-%{_datadir}/gir-1.0/Gck-1.gir
-%{_datadir}/gir-1.0/Gcr-3.gir
-%{_datadir}/vala/vapi/
+%{_libdir}/libgck-2.so
+%{_libdir}/pkgconfig/gck-2.pc
+%{_includedir}/gck-2/
+%{_datadir}/gir-1.0/Gck-2.gir
+%{_datadir}/vala/vapi/gck-2.deps
+%{_datadir}/vala/vapi/gck-2.vapi
 
-%files lang -f %{name}.lang
+%files lang -f gcr-4.lang
+
+%files doc
+%doc %{_docdir}/gcr-4*
+%doc %{_docdir}/gck-2*
 
 %changelog

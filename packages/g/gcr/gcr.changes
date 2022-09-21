@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Sep  5 13:07:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.92.0:
+  + This is the beta release of gcr4, which is a major version bump
+    after gcr3 with several API and ABI breaks.
+  + `GcrCertificateSection` and `GcrCertificateField` have been
+    added, which now allow consumers to more easily create their
+    own GcrCertificate-based UIs.
+  + gcr4 will no longer ship UI libraries, i.e. gcr-gtk3 or
+    gcr-gtk4.
+  + `GcrComparable` and `GckList` have been removed.
+- Drop pkgconfig(gtk+-3.0) BuildRequires, no longer needed, nor
+  supported. Following upstream changes, stop passing gtk3=true to
+  meson.
+- Drop sub-package typelib-1_0-GcrUi-3, it was already gone since
+  3.90.0 release.
+
+-------------------------------------------------------------------
+Wed Aug  3 12:34:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.90.0:
+  + The "gcr" pkgconfig package now no longer contains the UI
+    widgets (i.e. the former "gcr-base" package)..
+  + "gcr-ui" no longer exists. There is now "gcr-gtk3" and
+    "gcr-gtk4" for the GTK3 and GTK4 versions respectively. These
+     might be removed from by the beta release however, in favor of
+    widgets for each DE (e.g. libadwaita or libgranite or ...).
+  + All deprecated API has been removed, as well as most UI-related
+    code. This includes most widgets, GcrColumn and any icons.
+  + Most GObject-based code has been updated to use modern
+    constructs like the `G_DECLARE_*` macros.
+  + "pkcs11.h" and "pkcs11.vapi" have been removed. If you used
+    "pcks11.h", this is provided by the p11-kit package. If you
+    used pkcs11.vapi, you'll have to copy it directly in your
+    repository.
+  + The org.gnome.crypto.pgp schema is no longer shipped. The
+    options provided in it are part of GPG configuration files.
+  + The minimally required version of Meson is now 0.59.
+  + All `GcrCollection` based APIs are now ported to `GListModel`.
+  + Added lookup of trust assertions for distrusted certs.
+  + Updated translations.
+- Drop b3ca1d02bb0148ca787ac4aead164d7c8ce2c4d8.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Mon Jul 18 10:01:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.41.1:
+  + meson: Fix unknown kw argument in gnome.generate_gir.
+  + gcr: Add G_SPAWN_CLOEXEC_PIPES flag to all the g_spawn
+    commands.
+  + docs: Port from gtk-doc to gi-docgen.
+  + Unbreak build without systemd.
+  + Several CI fixes.
+  + Updated translations.
+- Drop b3ca1d02bb0148ca787ac4aead164d7c8ce2c4d8.patch: Fixed
+  upstream.
+- Replace gtk-doc with pkgconfig(gi-docgen) BuildRequires following
+  upstreams port.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Split out doc subpackage.
+- Add fdupes BuildRequires and macro, remove duplicate files.
+- Build data and doc sub-packages as noarch.
+
+-------------------------------------------------------------------
 Tue Feb  1 13:47:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add b3ca1d02bb0148ca787ac4aead164d7c8ce2c4d8.patch: Fix build

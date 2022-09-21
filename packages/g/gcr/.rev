@@ -356,4 +356,12 @@
     <comment></comment>
     <requestid>951415</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>8876fe4b0cc7d202da8602713a085774</srcmd5>
+    <version>3.92.0</version>
+    <time>1663763952</time>
+    <user>dimstar_suse</user>
+    <comment>43.rc - with gcr3 next to it (forwarded request 1002334 from dimstar)</comment>
+    <requestid>1003127</requestid>
+  </revision>
 </revisionlist>
