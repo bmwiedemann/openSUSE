@@ -1,7 +1,7 @@
 #
 # spec file for package libxml++30
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,12 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _name   libxml++
 # Bump the version in baselibs too!
 %define so_ver  3_0-1
 
 Name:           libxml++30
-Version:        3.2.2
+Version:        3.2.4
 Release:        0
 Summary:        C++ Interface for XML Files
 License:        LGPL-2.1-or-later
@@ -31,7 +32,7 @@ Source1:        baselibs.conf
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
-BuildRequires:  meson
+BuildRequires:  meson >= 0.55.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.32.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.7
@@ -62,6 +63,7 @@ to develop applications that require these.
 
 %prep
 %autosetup -p1 -n %{_name}-%{version}
+chmod -x NEWS libxml++config.h.in libxml++config.h.meson
 
 %build
 %meson \
@@ -70,10 +72,9 @@ to develop applications that require these.
 
 %install
 %meson_install
-%fdupes %{buildroot}/%{_prefix}
+%fdupes %{buildroot}%{_prefix}
 
-%post -n libxml++-%{so_ver} -p /sbin/ldconfig
-%postun -n libxml++-%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libxml++-%{so_ver}
 
 %files -n libxml++-%{so_ver}
 %license COPYING
