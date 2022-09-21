@@ -17,15 +17,16 @@
 
 
 Name:           at-spi2-core
-Version:        2.44.1
+Version:        2.46.0
 Release:        0
 Summary:        Assistive Technology Service Provider Interface - D-Bus based implementation
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org/
-Source0:        https://download.gnome.org/sources/at-spi2-core/2.44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/at-spi2-core/2.46/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
+BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
@@ -35,12 +36,15 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.62.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(xtst)
 # dbus-daemon is needed to have this work fine
 Requires:       dbus-1
+Provides:       at-spi2-atk-gtk2 = %{version}
+Obsoletes:      at-spi2-atk-gtk2 < %{version}
 
 %description
 AT-SPI is a general interface for applications to make use of the
@@ -73,12 +77,47 @@ libatspi library.
 Summary:        Development files for the Assistive Technology Service Provider Interface
 Group:          Development/Libraries/GNOME
 Requires:       at-spi2-core = %{version}
+Requires:       libatk-1_0-0 = %{version}
+Requires:       libatk-bridge-2_0-0 = %{version}
 Requires:       libatspi0 = %{version}
+Requires:       typelib-1_0-Atk-1_0 = %{version}
 Requires:       typelib-1_0-Atspi-2_0 = %{version}
 
 %description devel
 This package contains all necessary include files and libraries needed
 to develop applications that require these.
+
+%package -n libatk-1_0-0
+Summary:        An Accessibility Toolkit
+Group:          System/Libraries
+Provides:       atk = %{version}
+Obsoletes:      atk < %{version}
+
+%description -n libatk-1_0-0
+The ATK library provides a set of accessibility interfaces. By
+supporting the ATK interfaces, an application or toolkit can be used
+with screen readers, magnifiers, and alternate input devices.
+
+%package -n typelib-1_0-Atk-1_0
+Summary:        Introspection bindings for the ATK accessibility toolkit
+Group:          System/Libraries
+
+%description -n typelib-1_0-Atk-1_0
+The ATK library provides a set of accessibility interfaces. By
+supporting the ATK interfaces, an application or toolkit can be used
+with screen readers, magnifiers, and alternate input devices.
+
+This package provides the GObject Introspection bindings for ATK.
+
+%package -n libatk-bridge-2_0-0
+Summary:        ATK/D-Bus bridging library
+Group:          System/Libraries
+
+%description -n libatk-bridge-2_0-0
+AT-SPI is a general interface for applications to make use of the
+accessibility toolkit. This version is based on dbus.
+
+The package contains a ATK/D-Bus bridge library.
 
 %lang_package
 
@@ -99,6 +138,7 @@ to develop applications that require these.
 %install
 %meson_install
 %find_lang %{name}
+%fdupes %{buildroot}%{_datadir}/gtk-doc/html/
 # Move autostart file to /usr/etc
 mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
 mkdir -p %{buildroot}%{_distconfdir}/xdg/Xwayland-session.d
@@ -106,6 +146,8 @@ mv %{buildroot}%{_sysconfdir}/xdg/autostart/* %{buildroot}%{_distconfdir}/xdg/au
 mv %{buildroot}%{_sysconfdir}/xdg/Xwayland-session.d/* %{buildroot}%{_distconfdir}/xdg/Xwayland-session.d/
 
 %ldconfig_scriptlets -n libatspi0
+%ldconfig_scriptlets -n libatk-1_0-0
+%ldconfig_scriptlets -n libatk-bridge-2_0-0
 
 %files
 %license COPYING
@@ -119,20 +161,42 @@ mv %{buildroot}%{_sysconfdir}/xdg/Xwayland-session.d/* %{buildroot}%{_distconfdi
 %{_datadir}/dbus-1/services/org.a11y.Bus.service
 %dir %{_datadir}/defaults
 %{_datadir}/defaults/at-spi2/
+%dir %{_libdir}/gnome-settings-daemon-3.0
+%dir %{_libdir}/gnome-settings-daemon-3.0/gtk-modules
+%{_libdir}/gnome-settings-daemon-3.0/gtk-modules/at-spi2-atk.desktop
+%dir %{_libdir}/gtk-2.0
+%dir %{_libdir}/gtk-2.0/modules
+%{_libdir}/gtk-2.0/modules/libatk-bridge.so
 
 %files -n libatspi0
 %{_libdir}/libatspi.so.0*
 
+%files -n libatk-1_0-0
+%{_libdir}/libatk-1.0.so.0*
+
+%files -n libatk-bridge-2_0-0
+%{_libdir}/libatk-bridge-2.0.so.0*
+
 %files -n typelib-1_0-Atspi-2_0
 %{_libdir}/girepository-1.0/Atspi-2.0.typelib
 
+%files -n typelib-1_0-Atk-1_0
+%{_libdir}/girepository-1.0/Atk-1.0.typelib
+
 %files devel
-%doc AUTHORS README.md
+%doc NEWS README.md
 %{_includedir}/at-spi-2.0/
+%{_includedir}/at-spi2-atk/
+%{_includedir}/atk-1.0/
 %{_libdir}/libatspi.so
+%{_libdir}/libatk-1.0.so
+%{_libdir}/libatk-bridge-2.0.so
 %{_libdir}/pkgconfig/atspi-2.pc
+%{_libdir}/pkgconfig/atk-bridge-2.0.pc
+%{_libdir}/pkgconfig/atk.pc
 %{_datadir}/gir-1.0/*.gir
 %doc %{_datadir}/gtk-doc/html/libatspi/
+%doc %{_datadir}/gtk-doc/html/atk/
 
 %files lang -f at-spi2-core.lang
 
