@@ -125,7 +125,7 @@ Requires:       %{_name}-data >= %{version}
 Requires:       %{_name}-prompter >= %{version}
 Recommends:     %{_name}-ssh-agent
 Recommends:     %{name}-ssh-askpass
-Recommends:     %{_name}-viewer = %{version}
+Recommends:     %{_name}-viewer
 # To make lang package installable
 Provides:       %{name} = %{version}
 
