@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Sep 21 08:27:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 10.2.2:
+  * Release 10.2.2 (#16469)
+  * update e-ref
+  * rework cmd registration
+  * Add EC2 joining for Windows Desktop Service (#16438)
+  * Fix incorrect PagerDuty guide redirect (#15917)
+  * [v10] VSCode remote ssh extension settings (#16462)
+  * Add documentation for Event Handler chart (#15662)
+  * adding video banner to mssql server db quide (#16420)
+  * Fix minor issues that impact SEO (#15920)
+  * Fix auditd status on older kernels (#16448)
+  * [v10] Fix `known_hosts` locking by refactoring our locks in `utils/fs` (#16441)
+  * [v10] Nodes use FIPS STS endpoints for IAM join method when in FIPS mode (#16374)
+  * Added 09/15 Upcoming Releases Update
+  * operator: Fix flaky drift tests (#15815) (#16338)
+  * Add `where` predicate and Machine ID support to SSH host certificates (#16261) (#16427)
+  * [v10] helm: support Kubernetes 1.25 (#16343)
+  * Capture stderr from "tsh db connect" and reformat redis error (#13843) (#16416)
+  * [v10] Rephrase docs on moderated sessions backward compatibility (#16349)
+  * Remove Stripe from `Content-Security-Policy` header (#16390)
+  * Unhide tctl alert create (#16290)
+  * Add Default Allow Rules for new resources (#16237) (#16399)
+  * [v10] Prevent ssh.Session SendRequest from wrapping payload twice (#16171)
+  * [v10] Correct hsm service docs command (#16405)
+  * [v10] docs: fix joinParams reference (#16381)
+  * [v10] ci: Add paths/paths-ignore to GitHub Actions workflows to reduce unnecessary builds (#15708)
+  * [v10] Kubernetes Exec via Websockets (#16282)
+  * Documentation for AWS API access (#14429) (#16066)
+  * Use tracing handler per server not per route (#16372)
+  * [v10] Document `tbot configure` (#16373)
+  * [v10] Add /webapi/sites/:site/alerts endpoint to the apiserver (#16336)
+  * updates changelog to document when rdp licensing negotiation was added (#16340)
+  * Fix `TestTokenGeneration` flakiness (#15090) (#16362)
+  * [v10] backport #16136 and #16151 (#16213)
+  * [v10] Wrap `desktopplayback` endpoint with `WithClusterAuth` rather than `WithAuth` (#16292)
+  * [v10] Adds warning about directories blocked from being shared (#16328)
+  * [v10] Clarify access denied due to Teleport role permission (#16331)
+  * [v10] Dial by UUID for label based ssh (#16324)
+  * spell fixes (#16166)
+  * [v10] docs: Add missing commands key to dynamic labels in reference (#16294)
+  * Update on-prem docs version (#16313)
+  * Tweak TestAgentForward (#16304)
+  * changelog: fix moderated sessions typo (#16222)
+
+-------------------------------------------------------------------
 Tue Sep 13 12:46:41 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 10.2.1:
