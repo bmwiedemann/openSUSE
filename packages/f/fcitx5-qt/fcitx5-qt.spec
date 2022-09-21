@@ -29,7 +29,7 @@
 %endif
 
 Name:           fcitx5-qt
-Version:        5.0.14
+Version:        5.0.15
 Release:        0
 Summary:        Qt library and IM module for fcitx5
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -39,6 +39,7 @@ Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.
 Patch:          %{name}-5.9.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 %if %build_qt4
 BuildRequires:  libqt4-devel
@@ -154,6 +155,7 @@ make %{?_smp_mflags}
 %install
 %cmake_install
 %find_lang %{name}
+%fdupes -s %{buildroot}
 
 %if %build_qt4
 %post -n libFcitx5Qt4DBusAddons1 -p /sbin/ldconfig
