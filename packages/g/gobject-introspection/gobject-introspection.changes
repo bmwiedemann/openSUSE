@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Sep 18 07:04:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.74.0:
+  + Update the GIR data for GLib, GObject, GModule, and GIO.
+
+-------------------------------------------------------------------
+Sat Sep  3 14:09:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.73.1:
+  + Update the GIR data for GLib, GObject, GModule, and GIO
+  + Disable rpath on Windows
+  + Add llvm/mingw support on Windows
+  + Fix annotations in libgirepository
+  + Support C99 designated initializers when parsing C declarations
+  + Add some more types to win32 GIR
+  + Let doctool prepend emitting objects in GJS signals
+  + Require a C99 toolchain like GLib
+
+-------------------------------------------------------------------
+Thu Sep  1 14:09:49 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- gi-find-deps.sh: extend js script parser to detect imports in the
+  form import 'gi://GeocodeGlib?version=2.0'.
+
+-------------------------------------------------------------------
+Thu Jul 21 13:30:09 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.73.0:
+  + Update the GIR data for GLib, GObject, GModule, and GIO.
+  + scanner:
+    - Support pre-processor macros with zero arguments.
+    - Support ISO C varargs in macros.
+  + Fix subproject build.
+
+-------------------------------------------------------------------
 Fri Mar 18 12:30:38 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.72.0:

@@ -24,6 +24,13 @@ function split_name_version2 {
   version=$(echo $1 | awk -F: '{print $2}' | sed "s:[' ]::g")
 }
 
+# some javascript code imports gi like this (seen since GNOME 43, e.g. GNOME Maps)
+# import 'gi://GeocodeGlib?version=2.0'
+function split_name_versionjs_gi_name_version {
+  symbol=$(echo $1 | awk -F? '{print $1}')
+  version=$(echo $1 | awk -F? '/version=/ {print $2}' | sed 's/version=//')
+}
+
 function print_req_prov {
 echo -n "typelib($symbol)"
 if [ ! -z "$version" ]; then
@@ -93,6 +100,12 @@ function javascript_requires {
 		split_name_version $module
 		print_req_prov
 	done
+  # some javascript code imports gi like this (seen since GNOME 43, e.g. GNOME Maps)
+  # import 'gi://GeocodeGlib?version=2.0'
+        for module in $(grep -h -P -o "[']gi://([^']+)" $1 | sed "s|'gi://||"); do
+                split_name_versionjs_gi_name_version $module
+                print_req_prov
+        done
     # This is, at the moment, specifically for Polari where a "const { Foo, Bar } = imports.gi;" is used.
 	for module in $(grep -h -E -o "\{ \w+(: \w+|, \w+)+ \} = imports.gi;" $1 | \
         sed -r -e '0,/\w+:\s\w+/ s/:\s\w+//g' -e 's: = imports.gi;:: ; s:\{ :: ; s: \}:: ; s/,//g'); do
