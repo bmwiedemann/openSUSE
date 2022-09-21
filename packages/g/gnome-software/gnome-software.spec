@@ -16,23 +16,23 @@
 #
 
 
-%define gs_plugin_api 17
+%define gs_plugin_api 19
 
 Name:           gnome-software
-Version:        42.4
+Version:        43.0
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Software
-Source0:        https://download.gnome.org/sources/gnome-software/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-software/43/%{name}-%{version}.tar.xz
 %if 0%{?sle_version}
 # PATCH-FIX-OPENSUSE gnome-software-launch-gpk-update-viewer-for-updates.patch bsc#1077332 boo#1090042 sckang@suse.com -- Don't launch gnome-software when clicking the updates notification. Launch gpk-update-viewer instead.
 Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
 %endif
 
 BuildRequires:  gtk-doc
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  suse-xsl-stylesheets
 BuildRequires:  pkgconfig(appstream) >= 0.14.0
@@ -50,8 +50,7 @@ BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libhandy-1) >= 1.2.0
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.52.0
-#BuildRequires:  pkgconfig(libsoup-3.0)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(malcontent-0) >= 0.3.0
 BuildRequires:  pkgconfig(ostree-1)
 BuildRequires:  pkgconfig(packagekit-glib2) >= 1.1.0
@@ -91,9 +90,8 @@ GNOME software store plugins.
 %build
 %meson \
 	-D tests=false \
-	-D valgrind=false \
 	-D malcontent=true \
-	-D soup2=true \
+	-D soup2=false \
 	%{nil}
 %meson_build
 
@@ -107,7 +105,7 @@ rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
 mv %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.Software.desktop %{buildroot}%{_distconfdir}/xdg/autostart/org.gnome.Software.desktop
 
-cat >> %{buildroot}%{_datadir}/glib-2.0/schemas/org.gnome.software-opensuse.gschema.override << FOE
+cat >> %{buildroot}%{_datadir}/glib-2.0/schemas/20_org.gnome.software-opensuse.gschema.override << FOE
 [org.gnome.software]
 official-repos = [ 'repo-oss', 'repo-update', 'repo-non-oss' ]
 FOE
@@ -116,15 +114,18 @@ FOE
 %license COPYING
 %doc NEWS README.md
 %{_bindir}/%{name}
-%{_datadir}/metainfo/org.gnome.Software.appdata.xml
+%{_datadir}/metainfo/org.gnome.Software.Plugin.Epiphany.metainfo.xml
 %{_datadir}/metainfo/org.gnome.Software.Plugin.Flatpak.metainfo.xml
 %{_datadir}/metainfo/org.gnome.Software.Plugin.Fwupd.metainfo.xml
-%{_datadir}/applications/gnome-software-local-file.desktop
+%{_datadir}/metainfo/org.gnome.Software.metainfo.xml
+%{_datadir}/applications/gnome-software-local-file-flatpak.desktop
+%{_datadir}/applications/gnome-software-local-file-fwupd.desktop
+%{_datadir}/applications/gnome-software-local-file-packagekit.desktop
 %{_datadir}/applications/org.gnome.Software.desktop
 %{_datadir}/dbus-1/services/org.gnome.Software.service
 %{_datadir}/dbus-1/services/org.freedesktop.PackageKit.service
 %{_datadir}/glib-2.0/schemas/org.gnome.software.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.software-opensuse.gschema.override
+%{_datadir}/glib-2.0/schemas/20_org.gnome.software-opensuse.gschema.override
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/search-providers
 %{_datadir}/gnome-shell/search-providers/org.gnome.Software-search-provider.ini
@@ -135,13 +136,15 @@ FOE
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_distconfdir}/xdg/autostart/org.gnome.Software.desktop
 
-%dir %{_libdir}/gnome-software/plugins-18/
-%{_libdir}/gnome-software/plugins-18/*.so
-%{_libdir}/gnome-software/libgnomesoftware.so.18
+%dir %{_libdir}/gnome-software/plugins-%{gs_plugin_api}/
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/*.so
+%{_libdir}/gnome-software/libgnomesoftware.so.%{gs_plugin_api}
 %dir %{_datadir}/swcatalog/
 %dir %{_datadir}/swcatalog/xml/
+%{_datadir}/swcatalog/xml/gnome-pwa-list-foss.xml
+%{_datadir}/swcatalog/xml/gnome-pwa-list-proprietary.xml
+%{_datadir}/swcatalog/xml/org.gnome.Software.Curated.xml
 %{_datadir}/swcatalog/xml/org.gnome.Software.Featured.xml
-%{_datadir}/swcatalog/xml/org.gnome.Software.Popular.xml
 
 %files devel
 %doc AUTHORS

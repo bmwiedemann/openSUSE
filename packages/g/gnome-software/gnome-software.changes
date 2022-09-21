@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Fri Sep 16 06:59:45 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 13 10:07:36 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Install gschema override with distribution default priority of
+  20
+
+-------------------------------------------------------------------
+Fri Sep  2 11:26:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.rc:
+  + Supports video as a screenshot.
+  + Improvements of source picker in the details page.
+  + Fixes a bug when viewing details of a package file.
+  + Fixes a bug when reading certain .flatpakref file.
+  + Updated translations.
+- Drop 81301904.patch: Applied upstream.
+
+-------------------------------------------------------------------
+Thu Sep  1 08:59:27 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Now that flatpak is switched to use soup3, we can drop
+  pkgconfig(libsoup-2.4) and enable pkgconfig(libsoup-3.0)
+  BuildRequires, and pass soup2=false to meson.
+- Add 81301904.patch: Remove apicheck of flatpak soupapi, patch
+  needed until next gnome-software release.
+
+-------------------------------------------------------------------
+Fri Aug  5 18:57:43 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.beta:
+  + Various fixes related to changed threading model.
+  + Various UI parts updated.
+  + Sources dropdown had been reworked.
+  + Fixes a rare crash when showing app details.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  5 12:47:12 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.alpha:
+  + Various improvements to notifications.
+  + Fix several crashes when handling flatpak apps.
+  + Add ‘Other Apps by Author’ section in the app details page.
+  + Improve styling of app context lozenges.
+  + Add ‘Available for Distro’ section to the overview page
+  + Show more details about file system permissions requested by
+    flatpak apps.
+  + Show more types of URI from app metainfo.
+  + Fix a few issues when using a dark mode theme.
+  + Fix some issues with arrows in right-to-left locales.
+  + Fix language pack installation for certain locales.
+  + Improve debug output to make user bug reports more useful.
+  + Add `--uninstall=ID` command line option.
+  + Allow scrolling screenshots by clicking on next and previous
+    screenshots.
+  + Add support for webapps.
+  + Allow swiping back in the shell using touch gestures.
+  + Improved caching of downloaded metadata.
+  + Many internal architectural changes to make the code more
+    maintainable.
+  + The popular-overrides GSettings key has been removed.
+  + The hardcoded_popular Meson option has been renamed to
+    hardcoded_curated.
+- Bump gs_plugin_api to 19.
+- Drop -D valgrind=false meson paramters: no longer understood.
+
+-------------------------------------------------------------------
 Fri Aug  5 11:03:28 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.4:
