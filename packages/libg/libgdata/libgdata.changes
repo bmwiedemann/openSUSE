@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep  5 10:14:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 47.patch: build: Build against new gcr-4 library. Following
+  this, replace pkgconfig(gcr-base-3) with pkgconfig(gcr-4)
+  BuildRequires. Patch based on mr
+  https://gitlab.gnome.org/GNOME/libgdata/-/merge_requests/47
+- Pass oauth1=disabled to meson and drop pkgconfig(oauth)
+  BuildRequires. Disabled by default upstream, and google have
+  deprecated oauth1 since 2012.
+- Drop unused pkgconfig(gdk-pixbuf-2.0) and
+  pkgconfig(libuhttpmock-0.0), we already pass
+  always_build_tests=false to meson, so they are "wasted".
+- Remove already disabled pkgconfig(gtk+-3.0) BuildRequires.
+
+-------------------------------------------------------------------
 Thu Sep 16 01:58:05 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

@@ -1,7 +1,7 @@
 #
 # spec file for package libgdata
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,23 +27,19 @@ Group:          Development/Libraries/GNOME
 URL:            http://live.gnome.org/libgdata
 Source:         https://download.gnome.org/sources/libgdata/0.18/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM 47.patch -- build: Build against new gcr-4 library
+Patch0:         47.patch
 
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gcr-base-3)
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.14
+BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(goa-1.0) >= 3.8
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.15
-# Note: as of 0.10.0, gtk+-3.0 is only needed to build a demo that isn't
-# installed, so no need to depend on it
-#BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.55.90
-BuildRequires:  pkgconfig(libuhttpmock-0.0) >= 0.5.0
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(oauth) >= 0.9.4
 BuildRequires:  pkgconfig(vapigen)
 
 %description
@@ -98,7 +94,7 @@ applications that want to make use of libgdata.
 	-Dinstalled_tests=false \
 	-Dgtk_doc=true \
 	-Dvapi=true \
-	-Doauth1=enabled \
+	-Doauth1=disabled \
 	%{nil}
 %meson_build
 
