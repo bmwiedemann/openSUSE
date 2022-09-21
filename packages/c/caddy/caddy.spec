@@ -19,7 +19,7 @@
 %define project github.com/caddyserver/caddy
 
 Name:           caddy
-Version:        2.5.2
+Version:        2.6.0
 Release:        0
 Summary:        Fast, multi-platform web server with automatic HTTPS
 License:        Apache-2.0
@@ -34,7 +34,7 @@ Source5:        bash-completion
 Source6:        zsh-completion
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) >= 1.17
+BuildRequires:  golang(API) >= 1.18
 %{?systemd_requires}
 %{go_provides}
 # Make sure that the binary is not getting stripped.

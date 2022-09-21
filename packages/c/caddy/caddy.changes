@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Tue Sep 20 20:44:58 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 2.6.0:
+  * httpcaddyfile: Fix `protocols` global option parsing (#5054)
+  * caddyhttp: Skip inserting HTTP->HTTPS redir if catch-all for both exist (#5051)
+  * caddyhttp: Honor grace period in background (#5043)
+  * events: Make event data exported
+  * caddyhttp: responseRecorder save status in all cases (#5049)
+  * caddyhttp: Fix write header on responseRecorder
+  * ci: fix the name template of singing certificate and sboms (#5046)
+  * core: Variadic Context.Logger(); soft deprecation
+  * caddyhttp: Support configuring Server from handler provisioning (#4933)
+  * caddyhttp: Support TLS key logging for debugging (#4808)
+  * caddyhttp: Make metrics opt-in (#5042)
+  * caddytls: Debug log on implicit tailscale error (#5041)
+  * caddyhttp: Add --debug flag to commands
+  * encode: Fix Accept-Ranges header; HEAD requests  (#5039)
+  * Reject absurdly long duration strings (fix #4175)
+  * Fix #4169 (correct e6c58fd)
+  * caddyfile: Prevent infinite nesting on fmt (fix #4175)
+  * Limit unclosed placeholder tolerance (fix #4170)
+  * reverseproxy: Support repeated --to flags in command (#4693)
+  * caddyhttp: Add 'skip_log' var to omit request from logs (#4691)
+  * httpcaddyfile: Fix bind when IPv6 is specified with network (#4950)
+  * cmd: Improve error message if config missing
+  * cmd: Customizable user agent (close #2795)
+  * httpcaddyfile: Fix sorting of repeated directives
+  * caddyhttp: Very minor optimization to path matcher
+  * caddyhttp: Explicitly disallow multiple regexp matchers (#5030)
+  * caddytls: Error if placeholder is empty in 'ask'
+  * supplychain: publish signing cert, sbom, and signatures of sbom (#5027)
+  * go.mod: Update truststore
+  * Very minor tweaks
+  * core: Check error on ListenQUIC
+  * fileserver: Ignore EOF when browsing empty dir
+  * caddyhttp: ensure ResponseWriterWrapper and ResponseRecorder use ReadFrom if the underlying response writer implements it. (#5022)
+  * cmd: Enhance some help text
+  * httpcaddyfile: Add a couple more placeholder shortcuts (#5015)
+  * Drop requirement for filesystems to implement fs.StatFS
+  * ci: grant the `release` workflow the `write` permission to `contents` (#5017)
+  * ci: add `id-token` permission and update the signing command (#5016)
+  * go.mod: Upgrade CertMagic (v0.17.1)
+  * fileserver: Support glob expansion in file matcher (#4993)
+  * caddyhttp: Support `respond` with HTTP 103 Early Hints (#5006)
+  * Remove unnecessary error check
+  * caddyauth: Speed up basicauth provision, deprecate scrypt (#4720)
+  * ci: generate SBOM and sign artifacts using cosign (#4910)
+  * reverseproxy: Close hijacked conns on reload/quit (#4895)
+  * core: Refactor listeners; use SO_REUSEPORT on Unix (#4705)
+  * fastcgi: Optimize FastCGI transport (#4978)
+  * Minor style adjustments for HTTP redir logging
+  * Update readme
+  * Minor fix of error log
+  * notify: Don't send ready after error (fix #5003)
+  * templates: Document `httpError` function (#4972)
+  * fastcgi: allow users to log stderr output (#4967) (#5004)
+  * cmd: Don't print long help text on error
+  * Fix failing test
+  * dist: deb package manpages and bash completion scripts (#5007)
+  * caddyhttp: Copy logger config to HTTP server during AutoHTTPS (#4990)
+  * map: Coerce val to string, fix #4987
+  * httpcaddyfile: Add shortcut for expression matchers (#4976)
+  * caddyhttp: Accept placeholders in vars matcher key
+  * core: Plugins can register listener networks (#5002)
+  * caddyhttp: Disable draft versions of QUIC
+  * events: Tune logging and context cancellation
+  * events: Implement event system (#4912)
+  * httpcaddyfile: Add `{cookie.*}` placeholder shortcut (#5001)
+  * caddyhttp: Set Content-Type for static response (#4999)
+  * cmd: Enhance CLI docs
+  * cmd: add completion command (#4994)
+  * cmd: Migrate to `spf13/cobra`, remove single-dash arg support (#4565)
+  * Minor cleanup, resolve a couple lint warnings
+  * Remove duplicate words in comments (#4986)
+  * reverseproxy: Add upstreams healthy metrics (#4935)
+  * admin: Don't stop old server if new one fails (#4964)
+  * reverseproxy: Multiple dynamic upstreams
+  * Fix comment indentation
+  * zstd: fix typo in comment (#4985)
+  * httpcaddyfile: Add ocsp_interval global option (#4980)
+  * caddytls: Log error if ask request fails
+  * ci: Increase linter timeout (#4981)
+  * templates: cap of slice should not be smaller than length (#4975)
+  * caddyhttp: Fix for nil `handlerErr.Err` (#4977)
+  * caddyhttp: Set `http.error.message` to the HandlerError message (#4971)
+  * go.mod: Upgrade CertMagic to v0.16.3
+  * core: Change net.IP to netip.Addr; use netip.Prefix (#4966)
+  * Clean up metrics test code
+  * caddyhttp: Smarter path matching and rewriting (#4948)
+  * fileserver: reset buffer before using it (#4962) (#4963)
+  * caddyhttp: Enable HTTP/3 by default (#4707)
+  * reverseproxy: Add `unix+h2c` Caddyfile network shortcut (#4953)
+  * reverseproxy: Ignore context cancel in stream mode (#4952)
+  * reverseproxy: Fix H2C dialer using new stdlib `DialTLSContext` (#4951)
+  * httpcaddyfile: redir with "html" emits 200, no Location (fix #4940)
+  * reverseproxy: Support 1xx status codes (HTTP early hints) (#4882)
+  * logging: Fix `cookie` filter (#4943)
+  * go.mod: Upgrade OpenTelemetry dependencies (#4937)
+  * fileserver: Better fix for Etag of compressed files
+  * fileserver: Generate Etag from sidecar file
+  * Improve docs for ZeroSSL issuer
+  * Replace strings.Index with strings.Cut (#4932)
+  * Replace strings.Index usages with strings.Cut (#4930)
+  * cmd: Use newly-available version information (#4931)
+  * httpserver: Configurable shutdown delay (#4906)
+  * go.mod: Upgrade CertMagic and acmez
+  * chore: Bump up to Go 1.19, minimum 1.18 (#4925)
+  * Oops (sigh)
+  * caddyhttp: Implement `caddy respond` command (#4870)
+  * fileserver: Support virtual file system in Caddyfile
+  * fileserver: Support virtual file systems (#4909)
+  * Minor docs clarification
+  * core: Windows service integration (#4790)
+  * chore: Add .gitattributes to force *.go to LF (#4919)
+  * Fix compilation on Windows
+  * Ignore linter warnings
+  * Fix deprecation notice by using UTF16PtrFromString
+  * caddyhttp: Clear out matcher error immediately after grabbing it (#4916)
+  * Finish fixing lint errors from ea8df6ff
+  * caddytls: Remove PreferServerCipherSuites
+  * caddyhttp: Use new CEL APIs (fix #4915)
+  * ci: Run golangci-lint on multiple os(#4875) (#4913)
+  * go.mod: Upgrade dependencies
+  * httpcaddyfile: Detect ambiguous site definitions (fix #4635)
+  * caddyhttp: Log shutdown errors, don't return (fix #4908)
+  * reverseproxy: Implement read & write timeouts for HTTP transport (#4905)
+  * cmd: Fix reload with stdin (#4900)
+  * caddyhttp: Enhance comment
+  * reverseproxy: Implement retry count, alternative to try_duration (#4756)
+  * caddyhttp: Make query matcher more efficient
+  * reverseproxy: Export SetScheme() again
+- BuildRequires: golang(API) >= 1.18 for new net/netip package
+
+-------------------------------------------------------------------
 Fri Jul 15 19:01:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 2.5.2:
